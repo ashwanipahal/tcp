@@ -10,7 +10,7 @@ import {
 } from './OverlayModal.selectors';
 import OverlayModalComponent from '../views/OverlayModal.view';
 import { closeOverlayModal } from './OverlayModal.actions';
-import { isPlccUser } from '../../account/LoginPage/container/LoginPage.selectors';
+import { isPlccUser } from '../../account/User/container/User.selectors';
 
 const propTypes = {
   component: PropTypes.string,

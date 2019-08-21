@@ -115,6 +115,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        resValue "string", "build_config_package", "com.mobileapp"
     }
     splits {
         abi {
@@ -139,12 +140,69 @@ android {
             // Assigns this product flavor to the "version" flavor dimension.
             // This property is optional if you are using only one dimension.
             dimension "version"
+            applicationIdSuffix ".tcp.dev"
+            versionNameSuffix "-tcp"
+            versionName = 'MyPlace'
+            buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+
+        }
+        gymboree {
+            dimension "version"
+            applicationIdSuffix ".gymboree.dev"
+            versionNameSuffix "-gymboree"
+            versionName = 'Gymboree'
+            buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+        }
+
+        tcpInt {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // This property is optional if you are using only one dimension.
+            dimension "version"
+            applicationIdSuffix ".tcp.int"
+            versionNameSuffix "-tcp"
+            versionName = 'MyPlace'
+            buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+
+        }
+
+        gymboreeInt {
+            dimension "version"
+            applicationIdSuffix ".gymboree.int"
+            versionNameSuffix "-gymboree"
+            versionName = 'Gymboree'
+            buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+        }
+
+        tcpUat {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // This property is optional if you are using only one dimension.
+            dimension "version"
+            applicationIdSuffix ".tcp.uat"
+            versionNameSuffix "-tcp"
+            versionName = 'MyPlace'
+            buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+
+        }
+
+        gymboreeUat {
+            dimension "version"
+            applicationIdSuffix ".gymboree.uat"
+            versionNameSuffix "-gymboree"
+            versionName = 'Gymboree'
+            buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+        }
+
+        tcpProd {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // This property is optional if you are using only one dimension.
+            dimension "version"
             applicationIdSuffix ".tcp"
             versionNameSuffix "-tcp"
             versionName = 'MyPlace'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
         }
-        gymboree {
+
+        gymboreeProd {
             dimension "version"
             applicationIdSuffix ".gymboree"
             versionNameSuffix "-gymboree"
@@ -166,9 +224,24 @@ android {
             }
         }
     }
+
+    sourceSets {
+        gymboreeInt {
+            res.srcDirs = ['src/gymboree/res']
+        }
+
+        gymboreeUat {
+            res.srcDirs = ['src/gymboree/res']
+        }
+
+        gymboreeProd {
+            res.srcDirs = ['src/gymboree/res']
+        }
+    }
 }
 
 dependencies {
+    implementation project(':react-native-config')
     implementation project(':react-native-touch-id')
     implementation project(':react-native-keychain')
     implementation project(':@react-native-community_async-storage')
@@ -192,3 +265,28 @@ project.ext.vectoricons = [
 ]
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+
+project.ext.envConfigFiles = [
+    tcpdebug: "src/env/.env.dev",
+    gymboreedebug: "src/env/.env.dev",
+    tcprelease: "src/env/.env.local",
+    gymboreerelease: "src/env/.env.local",
+
+    tcpintdebug: "src/env/.env.int",
+    tcpintrelease: "src/env/.env.int",
+    gymboreeintdebug: "src/env/.env.int",
+    gymboreeintrelease: "src/env/.env.int",
+
+    tcpuatdebug: "src/env/.env.uat",
+    tcpuatrelease: "src/env/.env.uat",
+    gymboreeuatdebug: "src/env/.env.uat",
+    gymboreeuatrelease: "src/env/.env.uat",
+
+    tcpproddebug: "src/env/.env.prod",
+    tcpprodrelease: "src/env/.env.prod",
+    gymboreeproddebug: "src/env/.env.prod",
+    gymboreeprodrelease: "src/env/.env.prod",
+
+]
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"

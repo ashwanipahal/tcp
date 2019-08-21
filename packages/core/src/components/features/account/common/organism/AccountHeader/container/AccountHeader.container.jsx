@@ -8,7 +8,7 @@ import {
   getCurrentPointsState,
   getTotalRewardsState,
   isPlccUser,
-} from '../../../../LoginPage/container/LoginPage.selectors';
+} from '../../../../User/container/User.selectors';
 import { fetchModuleX } from './AccountHeader.actions';
 import { getRewardsPointsBannerContent } from './AccountHeader.selectors';
 

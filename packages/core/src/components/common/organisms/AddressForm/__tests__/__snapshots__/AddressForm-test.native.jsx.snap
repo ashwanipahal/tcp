@@ -1,0 +1,788 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressForm component should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="addnewaddress-firstname"
+      id="firstName"
+      maxLength={50}
+      name="firstName"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="addnewaddress-lastname"
+      id="lastName"
+      name="lastName"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="addnewaddress-addressl1"
+      id="addressLine1"
+      name="addressLine1"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="addnewaddress-addressl2"
+      id="addressLine2"
+      name="addressLine2"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="addnewaddress-city"
+      id="city"
+      name="city"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "data": Array [],
+            "dropDownStyle": null,
+            "itemStyle": null,
+            "onValueChange": null,
+            "selectedValue": null,
+            "variation": "primary",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(DropDown)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  height: ",
+              [Function],
+              "px;
+  ",
+              [Function],
+              ";
+  background-color: ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data={
+        Array [
+          Object {
+            "displayName": "AL",
+            "fullName": "Alabama",
+            "id": "AL",
+          },
+          Object {
+            "displayName": "AK",
+            "fullName": "Alaska",
+            "id": "AK",
+          },
+          Object {
+            "displayName": "AS",
+            "fullName": "American Samoa",
+            "id": "AS",
+          },
+          Object {
+            "displayName": "AZ",
+            "fullName": "Arizona",
+            "id": "AZ",
+          },
+          Object {
+            "displayName": "AR",
+            "fullName": "Arkansas",
+            "id": "AR",
+          },
+          Object {
+            "displayName": "AA",
+            "fullName": "",
+            "id": "AA",
+          },
+          Object {
+            "displayName": "AE",
+            "fullName": "",
+            "id": "AE",
+          },
+          Object {
+            "displayName": "AP",
+            "fullName": "",
+            "id": "AP",
+          },
+          Object {
+            "displayName": "CA",
+            "fullName": "California",
+            "id": "CA",
+          },
+          Object {
+            "displayName": "CO",
+            "fullName": "Colorado",
+            "id": "CO",
+          },
+          Object {
+            "displayName": "CT",
+            "fullName": "Connecticut",
+            "id": "CT",
+          },
+          Object {
+            "displayName": "DE",
+            "fullName": "Delaware",
+            "id": "DE",
+          },
+          Object {
+            "displayName": "DC",
+            "fullName": "Dist. of Columbia",
+            "id": "DC",
+          },
+          Object {
+            "displayName": "FM",
+            "fullName": "",
+            "id": "FM",
+          },
+          Object {
+            "displayName": "FL",
+            "fullName": "Florida",
+            "id": "FL",
+          },
+          Object {
+            "displayName": "GA",
+            "fullName": "Georgia",
+            "id": "GA",
+          },
+          Object {
+            "displayName": "GU",
+            "fullName": "Guam",
+            "id": "GU",
+          },
+          Object {
+            "displayName": "HI",
+            "fullName": "Hawaii",
+            "id": "HI",
+          },
+          Object {
+            "displayName": "ID",
+            "fullName": "Idaho",
+            "id": "ID",
+          },
+          Object {
+            "displayName": "IL",
+            "fullName": "Illinois",
+            "id": "IL",
+          },
+          Object {
+            "displayName": "IN",
+            "fullName": "Indiana",
+            "id": "IN",
+          },
+          Object {
+            "displayName": "IA",
+            "fullName": "Iowa",
+            "id": "IA",
+          },
+          Object {
+            "displayName": "KS",
+            "fullName": "Kansas",
+            "id": "KS",
+          },
+          Object {
+            "displayName": "KY",
+            "fullName": "Kentucky",
+            "id": "KY",
+          },
+          Object {
+            "displayName": "LA",
+            "fullName": "Louisiana",
+            "id": "LA",
+          },
+          Object {
+            "displayName": "ME",
+            "fullName": "Maine",
+            "id": "ME",
+          },
+          Object {
+            "displayName": "MH",
+            "fullName": "Marshall Islands",
+            "id": "MH",
+          },
+          Object {
+            "displayName": "MD",
+            "fullName": "Maryland",
+            "id": "MD",
+          },
+          Object {
+            "displayName": "MA",
+            "fullName": "Massachusetts",
+            "id": "MA",
+          },
+          Object {
+            "displayName": "MI",
+            "fullName": "Michigan",
+            "id": "MI",
+          },
+          Object {
+            "displayName": "MN",
+            "fullName": "Minnesota",
+            "id": "MN",
+          },
+          Object {
+            "displayName": "MS",
+            "fullName": "Mississippi",
+            "id": "MS",
+          },
+          Object {
+            "displayName": "MO",
+            "fullName": "Missouri",
+            "id": "MO",
+          },
+          Object {
+            "displayName": "MT",
+            "fullName": "Montana",
+            "id": "MT",
+          },
+          Object {
+            "displayName": "NE",
+            "fullName": "Nebraska",
+            "id": "NE",
+          },
+          Object {
+            "displayName": "NV",
+            "fullName": "Nevada",
+            "id": "NV",
+          },
+          Object {
+            "displayName": "NH",
+            "fullName": "New Hampshire",
+            "id": "NH",
+          },
+          Object {
+            "displayName": "NJ",
+            "fullName": "New Jersey",
+            "id": "NJ",
+          },
+          Object {
+            "displayName": "NM",
+            "fullName": "New Mexico",
+            "id": "NM",
+          },
+          Object {
+            "displayName": "NY",
+            "fullName": "New York",
+            "id": "NY",
+          },
+          Object {
+            "displayName": "NC",
+            "fullName": "North Carolina",
+            "id": "NC",
+          },
+          Object {
+            "displayName": "ND",
+            "fullName": "North Dakota",
+            "id": "ND",
+          },
+          Object {
+            "displayName": "MP",
+            "fullName": "Northern Marianas",
+            "id": "MP",
+          },
+          Object {
+            "displayName": "OH",
+            "fullName": "Ohio",
+            "id": "OH",
+          },
+          Object {
+            "displayName": "OK",
+            "fullName": "Oklahoma",
+            "id": "OK",
+          },
+          Object {
+            "displayName": "OR",
+            "fullName": "Oregon",
+            "id": "OR",
+          },
+          Object {
+            "displayName": "PW",
+            "fullName": "Palau",
+            "id": "PW",
+          },
+          Object {
+            "displayName": "PA",
+            "fullName": "Pennsylvania",
+            "id": "PA",
+          },
+          Object {
+            "displayName": "PR",
+            "fullName": "Puerto Rico",
+            "id": "PR",
+          },
+          Object {
+            "displayName": "RI",
+            "fullName": "Rhode Island",
+            "id": "RI",
+          },
+          Object {
+            "displayName": "SC",
+            "fullName": "South Carolina",
+            "id": "SC",
+          },
+          Object {
+            "displayName": "SD",
+            "fullName": "South Dakota",
+            "id": "SD",
+          },
+          Object {
+            "displayName": "TN",
+            "fullName": "Tennessee",
+            "id": "TN",
+          },
+          Object {
+            "displayName": "TX",
+            "fullName": "Texas",
+            "id": "TX",
+          },
+          Object {
+            "displayName": "UT",
+            "fullName": "Utah",
+            "id": "UT",
+          },
+          Object {
+            "displayName": "VT",
+            "fullName": "Vermont",
+            "id": "VT",
+          },
+          Object {
+            "displayName": "VI",
+            "fullName": "Virginia",
+            "id": "VI",
+          },
+          Object {
+            "displayName": "VA",
+            "fullName": "Virgin Islands",
+            "id": "VA",
+          },
+          Object {
+            "displayName": "WA",
+            "fullName": "Washington",
+            "id": "WA",
+          },
+          Object {
+            "displayName": "WV",
+            "fullName": "West Virginia",
+            "id": "WV",
+          },
+          Object {
+            "displayName": "WI",
+            "fullName": "Wisconsin",
+            "id": "WI",
+          },
+          Object {
+            "displayName": "WY",
+            "fullName": "Wyoming",
+            "id": "WY",
+          },
+        ]
+      }
+      dataLocator="addnewaddress-city"
+      dropDownStyle={
+        Object {
+          "border": 1,
+          "height": 42,
+        }
+      }
+      id="state"
+      itemStyle={
+        Object {
+          "height": 49,
+        }
+      }
+      name="state"
+      onValueChange={[Function]}
+      selectedValue="AL"
+      variation="secondary"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="addnewaddress-zipcode"
+      id="zipCode"
+      maxLength={5}
+      name="zipCode"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "data": Array [],
+            "dropDownStyle": null,
+            "itemStyle": null,
+            "onValueChange": null,
+            "selectedValue": null,
+            "variation": "primary",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(DropDown)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  height: ",
+              [Function],
+              "px;
+  ",
+              [Function],
+              ";
+  background-color: ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data={
+        Array [
+          Object {
+            "displayName": "United States",
+            "id": "US",
+          },
+          Object {
+            "displayName": "Canada",
+            "id": "CA",
+          },
+        ]
+      }
+      dataLocator="addnewaddress-country"
+      dropDownStyle={
+        Object {
+          "border": 1,
+          "height": 42,
+        }
+      }
+      id="country"
+      itemStyle={
+        Object {
+          "height": 49,
+        }
+      }
+      name="country"
+      onValueChange={[Function]}
+      selectedValue="US"
+      variation="secondary"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="addnewaddress-phnumber"
+      id="phoneNumber"
+      name="phoneNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="addnewaddress-city"
+      disabled={false}
+      id="primary"
+      name="primary"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={false}
+      disabled={false}
+      fill="BLUE"
+      fullWidth=""
+      locator=""
+      style={
+        Object {
+          "color": "white",
+          "fontWeight": "normal",
+          "marginTop": 48,
+          "opacity": 0.5,
+        }
+      }
+      text=""
+      type="submit"
+      url=""
+    />
+    <Styled(View) />
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      locator=""
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "function (props) {return props.theme.colorPalette.black;}",
+          "fontWeight": "normal",
+          "opacity": 0.5,
+        }
+      }
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
