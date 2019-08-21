@@ -5,7 +5,7 @@ export default css`
   top: 0;
   left: 0;
   width: 100%;
-  background: white;
+  background: ${props => props.theme.colorPalette.white};
   z-index: 10;
 
   .shop-by-size-links {
@@ -16,7 +16,7 @@ export default css`
   }
   .shop-by-size-links li {
     cursor: pointer;
-    border: 1px solid #6b6b6b;
+    border: 1px solid ${props => props.theme.colors.NAVIGATION.CIRCULAR_BORDER};
     width: 40px;
     height: 40px;
     border-radius: 20px 20px;
@@ -27,8 +27,8 @@ export default css`
     margin-bottom: 16px;
   }
   .shop-by-size-links li:hover {
-    border: solid 1px #2e6a91;
-    background-color: #e2ecf3;
+    border: solid 1px ${props => props.theme.colors.TEXT.blue};
+    background-color: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
   }
   .l2-image-banner {
     display: none;
@@ -65,7 +65,7 @@ export default css`
   .l2-nav-category-heading {
     margin: 0;
     padding: 18px 14px 17px 14px;
-    background-color: #ebf7ff;
+    background-color: ${props => props.theme.colors.PRIMARY.PALEBLUE};
   }
 
   .s-display-none {
@@ -74,7 +74,7 @@ export default css`
 
   .dark-overlay {
     display: none;
-    background-color: #1a1a1a;
+    background-color: ${props => props.theme.colorPalette.gray[900]};
     position: fixed;
     top: 0;
     left: 0;
@@ -108,7 +108,7 @@ export default css`
     }
     .l2-nav-category {
       box-sizing: border-box;
-      border-right: 1px solid #c3c3c3;
+      border-right: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
       margin-top: 36px;
       margin-bottom: 36px;
     }
@@ -131,7 +131,7 @@ export default css`
       width: 88px;
       height: 1px;
       border-radius: 0.5px;
-      background-color: #439ad4;
+      background-color: ${props => props.theme.colors.TEXT.DARKERBLUE};
     }
     .l2-nav-category-links {
       display: flex;

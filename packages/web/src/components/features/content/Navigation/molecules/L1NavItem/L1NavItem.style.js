@@ -9,7 +9,7 @@ export default css`
   border-bottom: 3px solid ${props => props.theme.colorPalette.white};
 
   &.is-open {
-    background: #f3f3f3;
+    background: ${props => props.theme.colorPalette.gray[300]};
   }
 
   span {
@@ -64,7 +64,7 @@ export default css`
       display: inline-block;
     }
     &.l1-overlay.is-open {
-      background: #1a1a1a;
+      background: ${props => props.theme.colorPalette.gray[900]};
       position: absolute;
       top: 75px;
       z-index: 1;
@@ -74,7 +74,11 @@ export default css`
       height: 1000vh;
     }
     &.is-open {
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.99),
+        ${props => props.theme.colors.NAVIGATION.L1_BACKGROUND}
+      );
       color: ${props => props.theme.colorPalette.text.primary};
       border-bottom-color: ${props => props.theme.colorPalette.primary.main};
       .nav-bar-l2 {
@@ -87,7 +91,7 @@ export default css`
         top: 88px;
         left: 0;
         width: 100%;
-        color: #1a1a1a;
+        color: ${props => props.theme.colorPalette.gray[900]};
         text-align: center;
         font-weight: 600;
         z-index: 11;
