@@ -11,6 +11,10 @@ export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');
 };
 
+export const getCartOrderId = state => {
+  return getCartOrderDetails(state).get('orderId');
+};
+
 export const getProductName = product => {
   return product.getIn(['productInfo', 'name']);
 };
