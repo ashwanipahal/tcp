@@ -34,6 +34,8 @@ export default {
   down_arrow_icon: '/static/images/carrot-small-down.png',
   up_arrow_icon: '/static/images/carrot-small-up.png',
   active_icon: '/static/images/circle-check.png',
+  'circle-check-fill': '/static/images/circle-check-fill.png',
+  'circle-error-fill': '/static/images/circle-error-fill.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
