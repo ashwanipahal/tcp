@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreditCardNumber component should renders correctly when cardType is present 1`] = `
-<View>
+<View
+  className="field"
+>
   <Styled(CreditCardTextBox)
     ariaLabel="input"
     dataLocator="input-field"
@@ -17,7 +19,6 @@ exports[`CreditCardNumber component should renders correctly when cardType is pr
       }
     }
     secureTextEntry={false}
-    showErrorIcon={true}
     type="text"
     val=""
   />
@@ -46,7 +47,6 @@ exports[`CreditCardNumber component should renders correctly when isExpirationRe
       }
     }
     secureTextEntry={false}
-    showErrorIcon={true}
     type="text"
     val=""
   />

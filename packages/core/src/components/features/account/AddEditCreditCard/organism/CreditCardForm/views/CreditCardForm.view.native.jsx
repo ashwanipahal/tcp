@@ -35,8 +35,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
     isEdit: PropTypes.bool,
-    pristine: PropTypes.bool.isRequired,
-    invalid: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,

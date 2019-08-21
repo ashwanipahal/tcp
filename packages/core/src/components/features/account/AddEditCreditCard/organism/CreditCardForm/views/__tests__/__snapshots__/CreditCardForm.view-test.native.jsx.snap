@@ -18,6 +18,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       cardType=""
       cardTypeImgUrl=""
       className=""
+      dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
         Array [
@@ -119,6 +120,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           },
         ]
       }
+      handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
       isPLCCEnabled={true}

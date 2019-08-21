@@ -8,16 +8,9 @@ import {
   TextBoxStyle,
   StyledTextBox,
   StyledLabel,
-  StyledErrorIcon,
   StyledErrorWrapper,
   StyledTextBoxWrapper,
-  StyledSuccessIcon,
-  HiddenView,
 } from '../CreditCardTextBox.style.native';
-import Image from '../../Image';
-
-const errorIcon = require('../../../../../assets/alert-triangle.png');
-const successIcon = require('../../../../../assets/success-icon.png');
 
 export class CreditCardTextBox extends React.Component {
   static propTypes = {
@@ -35,7 +28,6 @@ export class CreditCardTextBox extends React.Component {
     enableSuccessCheck: PropTypes.bool,
     label: PropTypes.string,
     keyboardType: PropTypes.string,
-    showErrorIcon: PropTypes.bool,
     secureTextEntry: PropTypes.bool,
     isEdit: PropTypes.bool,
     val: PropTypes.string,
@@ -50,7 +42,6 @@ export class CreditCardTextBox extends React.Component {
     enableSuccessCheck: false,
     label: 'input',
     keyboardType: 'default',
-    showErrorIcon: true,
     secureTextEntry: false,
     isEdit: false,
     val: '',
@@ -90,16 +81,10 @@ export class CreditCardTextBox extends React.Component {
   getErrorMsg = () => {
     const {
       meta: { touched, error },
-      showErrorIcon,
     } = this.props;
     if (touched && error) {
       return (
         <StyledErrorWrapper>
-          {showErrorIcon && (
-            <StyledErrorIcon>
-              <Image source={errorIcon} width="15px" height="15px" />
-            </StyledErrorIcon>
-          )}
           <BodyCopy
             mobilefontFamily={['secondary']}
             fontWeight="semibold"
@@ -152,11 +137,6 @@ export class CreditCardTextBox extends React.Component {
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
         />
-        {enableSuccessCheck && (
-          <StyledSuccessIcon>
-            <Image source={successIcon} width="15px" height="12px" />
-          </StyledSuccessIcon>
-        )}
       </View>
     );
   };
@@ -172,17 +152,10 @@ export class CreditCardTextBox extends React.Component {
     }
     return (
       <View>
-        {type === 'hidden' ? (
-          <View>
-            <HiddenView>{this.renderTextBox({ elemValue, isFocused, others })}</HiddenView>
-            {this.getErrorMsg()}
-          </View>
-        ) : (
-          <View>
-            {this.renderTextBox({ elemValue, isFocused, others })}
-            <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
-          </View>
-        )}
+        <View>
+          {this.renderTextBox({ elemValue, isFocused, others })}
+          <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
+        </View>
       </View>
     );
   }
