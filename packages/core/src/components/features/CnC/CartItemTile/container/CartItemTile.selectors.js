@@ -4,7 +4,7 @@ export const getCartOrderList = state => {
 };
 export const getEditableProductInfo = state => {
   // needs to do it with get method.
-  return state.CartItemTileReducer.get('editableItemData');
+  return state.CartItemTileReducer.getIn(['editableItemData', 'colorFitsSizesMap']);
 };
 
 export const getCartOrderDetails = state => {
@@ -51,12 +51,20 @@ export const getProductImage = product => {
   return product.getIn(['productInfo', 'imagePath']);
 };
 
+export const getOrderItemId = product => {
+  return product.getIn(['itemInfo', 'itemId']);
+};
+
 export const getProductPartNumber = product => {
   return product.getIn(['productInfo', 'productPartNumber']);
 };
 
 export const getProductItemPartNumber = product => {
   return product.getIn(['productInfo', 'itemPartNumber']);
+};
+
+export const getVariantNumber = product => {
+  return product.getIn(['productInfo', 'variantNo']);
 };
 
 export const getProductBadge = product => {
@@ -137,11 +145,11 @@ export const getLabelsCartItemTile = state => {
         lbl_error_problemWithOrder: problemWithOrder,
         lbl_error_please: pleaseText,
         lbl_error_remove: remove,
-        lbl_error_removeSoldOut: removeSoldOut,
-        lbl_error_itemUnavailable: itemUnavailable,
-        lbl_error_itemSoldOut: itemSoldOut,
+        lbl_miniBag_error: removeSoldOut,
+        lbl_miniBag_itemUnavailable: itemUnavailable,
+        lbl_miniBag_itemSoldOut: itemSoldOut,
         lbl_error_chooseDiff: chooseDiff,
-        lbl_error_soldOut: soldOut,
+        lbl_miniBag_soldOut: soldOut,
       },
     },
   } = state.Labels;
@@ -191,14 +199,15 @@ export const getProductDetails = tile => {
       myPlacePoints: getProductPoints(tile),
       itemBrand: getProductBrand(tile),
       imagePath: getProductImage(tile),
+      itemId: getOrderItemId(tile),
       itemPrice: getProductItemPrice(tile),
-      itemId: getProductItemId(tile),
       unitOfferPrice: getProductItemUnitOfferPrice(tile),
       itemUnitPrice: getProductItemUnitPrice(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),
       itemPartNumber: getProductItemPartNumber(tile),
+      variantNo: getVariantNumber(tile),
       upc: getProductItemUpcNumber(tile),
     },
     miscInfo: {

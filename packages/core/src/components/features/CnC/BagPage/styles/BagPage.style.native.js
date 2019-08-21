@@ -1,5 +1,13 @@
 import styled from 'styled-components/native';
 
+export const WrapperStyle = styled.View`
+  flex: 1;
+`;
+
+export const ScrollViewWrapper = styled.ScrollView`
+  height: ${props => (props.showAddTobag ? '60%' : '75%')};
+`;
+
 export const HeadingViewStyle = styled.View`
   border-bottom-color: ${props => props.theme.colorPalette.primary.dark};
   border-bottom-width: 2;
@@ -23,9 +31,16 @@ export const RowSectionStyle = styled.View`
 `;
 
 export const MainSection = styled.View`
+  flex: 1;
   background: #f3f3f3;
   padding-bottom: 15px;
   margin-bottom: 3px;
 `;
 
-export default { HeadingViewStyle, MainSection, RowSectionStyle, HeadingTextStyle };
+export default {
+  HeadingViewStyle,
+  MainSection,
+  RowSectionStyle,
+  HeadingTextStyle,
+  ScrollViewWrapper,
+};

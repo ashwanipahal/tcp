@@ -59,11 +59,9 @@ const SelectBox = ({
             );
           })}
       </select>
-      {input.value && (
-        <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
-          {placeholder}
-        </BodyCopy>
-      )}
+      <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
+        {placeholder}
+      </BodyCopy>
       {touched && error && (
         <BodyCopy fontSize="fs12" fontFamily="secondary" component="div" color="error">
           {error}

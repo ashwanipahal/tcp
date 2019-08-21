@@ -96,7 +96,8 @@ class LoginSection extends PureComponent<Props> {
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>{labels.login.lbl_login_createAccountHelp}</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp_1}</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp_2}</Text>
           </DescriptionStyle>
           <CustomButton
             color={colorPallete.text.secondary}
@@ -142,7 +143,14 @@ LoginSection.propTypes = {
 
 LoginSection.defaultProps = {
   loginErrorMessage: '',
-  labels: { login: { lbl_login_createAccountCTA: '', lbl_login_createAccountHelp: '' } },
+  labels: {
+    login: {
+      lbl_login_createAccountCTA: '',
+      lbl_login_createAccountHelp: '',
+      lbl_login_createAccountHelp_1: 'Don\u0027t have an account? Create one now to',
+      lbl_login_createAccountHelp_2: 'start earning points!',
+    },
+  },
 };
 
 export default withStyles(LoginSection, FormStyle);

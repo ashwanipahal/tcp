@@ -11,7 +11,7 @@ import {
   getError,
   getLabels,
 } from './CreateAccount.selectors';
-import { getUserLoggedInState } from '../../LoginPage/container/LoginPage.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 import {
   closeOverlayModal,
   openOverlayModal,
@@ -66,7 +66,7 @@ export class CreateAccountContainer extends React.Component {
     const { isUserLoggedIn, closeOverlay, onRequestClose } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       if (this.hasMobileApp()) {
-        onRequestClose();
+        onRequestClose({ getComponentId: { login: '', createAccount: '' } });
       } else {
         closeOverlay();
         routerPush('/', '/home');

@@ -145,5 +145,9 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/removePromotionCode',
   },
+  getAllOffers: {
+    method: API_METHODS.GET,
+    URI: 'v2/wallet/getAllCoupons',
+  },
 };
 export default endpoints;

@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
-import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
+import { getUserInfo } from '../../User/container/User.actions';
 import { createAccountErr } from './CreateAccount.actions';
 import { createAccountApi } from '../../../../../services/abstractors/account';
 
