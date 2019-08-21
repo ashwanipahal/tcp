@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address component should renders correctly 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 1"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 2"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test city, test state 111-111"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test country"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="1234567890"
+  />
+</View>
+`;
+
+exports[`Address component should renders correctly when optional fields are not present 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 1"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 2"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test city, test state 111-111"
+  />
+</View>
+`;
