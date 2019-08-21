@@ -28,7 +28,6 @@ exports[`AddEditPaymentModal component should render correctly 1`] = `
     <Styled(View)>
       <Connect(AddEditCreditCard)
         dto={Object {}}
-        isEdit={false}
         labels={
           Object {
             "paymentGC": Object {

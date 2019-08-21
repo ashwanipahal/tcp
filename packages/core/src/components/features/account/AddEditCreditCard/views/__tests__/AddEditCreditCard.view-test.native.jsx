@@ -9,6 +9,9 @@ describe('AddEditCreditCard component', () => {
         paymentGC: {},
         common: {},
       },
+      selectedCard: {
+        billingAddressId: 150786,
+      },
     };
     const component = shallow(<AddEditCreditCard {...props} />);
     expect(component).toMatchSnapshot();
@@ -22,6 +25,9 @@ describe('AddEditCreditCard component', () => {
       },
       isEdit: true,
       errorMessage: 'There is some error',
+      selectedCard: {
+        billingAddressId: 150786,
+      },
     };
     const component = shallow(<AddEditCreditCard {...props} />);
     expect(component).toMatchSnapshot();
