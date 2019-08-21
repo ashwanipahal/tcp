@@ -193,7 +193,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               selectedValue={onFileAddresskey}
             />
           )}
-          {addressComponentList && addressComponentList.length && (
+          {addressComponentList && addressComponentList.length > 1 && (
             <DefaultAddress>
               <LeftBracket />
               <Address
