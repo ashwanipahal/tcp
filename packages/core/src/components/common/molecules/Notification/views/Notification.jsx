@@ -1,36 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getIconPath } from '../../../../../utils';
-import Col from '../../../atoms/Col';
 import styles from '../Notification.style';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
-// @flow
-
-type Props = {
-  colSize: Object,
-  className: String,
-  status: String,
-  message: String,
-};
-
-// Notification component will be modified after Body Copy component is changed
-// TODO: Will add error icon when available
-const Notification = ({ colSize, className, status, message }: Props) => {
-  const successIcon = getIconPath('icon-done');
+const Notification = ({ className, status, message }) => {
+  const successIcon = getIconPath('circle-check-fill');
+  const errorIcon = getIconPath('circle-error-fill');
   return (
-    <Col colSize={colSize} className={className}>
-      {status === 'success' && <img alt="success icon" src={successIcon} />}
-      <BodyCopy
-        fontSize="fs12"
-        color={status === 'success' ? 'darkGray' : 'white'}
-        className="notification"
-        component="span"
-      >
+    <div className={`${className} elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG`}>
+      <img
+        alt={status === 'success' ? 'success icon' : 'error icon'}
+        src={status === 'success' ? successIcon : errorIcon}
+        className="elem-mr-MED"
+      />
+      <BodyCopy fontSize="fs14" fontWeight="extrabold">
         {message}
       </BodyCopy>
-    </Col>
+    </div>
   );
+};
+
+Notification.propTypes = {
+  className: PropTypes.string,
+  status: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
+
+Notification.defaultProps = {
+  className: '',
 };
 
 export default withStyles(Notification, styles);

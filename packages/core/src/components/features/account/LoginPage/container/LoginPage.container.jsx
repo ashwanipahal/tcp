@@ -63,7 +63,7 @@ class LoginPageContainer extends React.PureComponent {
       queryParams,
       onRequestClose,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
+    const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,

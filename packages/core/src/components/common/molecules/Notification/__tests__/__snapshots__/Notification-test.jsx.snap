@@ -1,53 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification Component should render notification component with status error 1`] = `
-<Styled(Col)
-  colSize={
-    Object {
-      "large": 10,
-      "medium": 8,
-      "small": 6,
-    }
-  }
+<div
+  className=" elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG"
 >
+  <img
+    alt="error icon"
+    className="elem-mr-MED"
+    src="/static/images/circle-error-fill.png"
+  />
   <Styled(BodyCopy)
-    className="notification"
-    color="white"
-    component="span"
+    className={null}
+    color="text.primary"
+    component="p"
     fontFamily="primary"
-    fontSize="fs12"
-    fontWeight="regular"
+    fontSize="fs14"
+    fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
   />
-</Styled(Col)>
+</div>
 `;
 
 exports[`Notification Component should render notification component with status success 1`] = `
-<Styled(Col)
-  colSize={
-    Object {
-      "large": 10,
-      "medium": 8,
-      "small": 6,
-    }
-  }
+<div
+  className=" elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG"
 >
   <img
     alt="success icon"
-    src="/static/images/done.svg"
+    className="elem-mr-MED"
+    src="/static/images/circle-check-fill.png"
   />
   <Styled(BodyCopy)
-    className="notification"
-    color="darkGray"
-    component="span"
+    className={null}
+    color="text.primary"
+    component="p"
     fontFamily="primary"
-    fontSize="fs12"
-    fontWeight="regular"
+    fontSize="fs14"
+    fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
   />
-</Styled(Col)>
+</div>
 `;

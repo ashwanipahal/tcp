@@ -28,6 +28,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
+          bonusDayAvailableToday={false}
           bonusPoints={
             Array [
               Object {
@@ -38,6 +39,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             ]
           }
           className="availability-msg"
+          getBonusDaysData={Object {}}
           labels={
             Object {
               "common": Object {
@@ -52,6 +54,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               },
             }
           }
+          orderDetails={Object {}}
         />
         <ForwardRef
           anchorVariation="primary"
@@ -138,6 +141,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
+          bonusDayAvailableToday={false}
           bonusPoints={
             Array [
               Object {
@@ -158,6 +162,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             ]
           }
           className="availability-msg"
+          getBonusDaysData={Object {}}
           labels={
             Object {
               "common": Object {
@@ -172,6 +177,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               },
             }
           }
+          orderDetails={Object {}}
         />
         <ForwardRef
           anchorVariation="primary"
@@ -258,6 +264,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
+          bonusDayAvailableToday={false}
           bonusPoints={
             Array [
               Object {
@@ -278,6 +285,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             ]
           }
           className="availability-msg"
+          getBonusDaysData={Object {}}
           labels={
             Object {
               "common": Object {
@@ -292,6 +300,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               },
             }
           }
+          orderDetails={Object {}}
         />
         <ForwardRef
           anchorVariation="primary"
@@ -378,6 +387,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
+          bonusDayAvailableToday={false}
           bonusPoints={
             Array [
               Object {
@@ -398,6 +408,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             ]
           }
           className="availability-msg"
+          getBonusDaysData={Object {}}
           labels={
             Object {
               "common": Object {
@@ -412,6 +423,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               },
             }
           }
+          orderDetails={Object {}}
         />
         <ForwardRef
           anchorVariation="primary"
@@ -485,6 +497,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           />
         </ForwardRef>
         <BonusPointsAvailability
+          bonusDayAvailableToday={false}
           bonusPoints={
             Array [
               Object {
@@ -495,6 +508,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             ]
           }
           className="availability-msg"
+          getBonusDaysData={Object {}}
           labels={
             Object {
               "common": Object {
@@ -509,6 +523,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
               },
             }
           }
+          orderDetails={Object {}}
         />
         <ForwardRef
           anchorVariation="primary"
