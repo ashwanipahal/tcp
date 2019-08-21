@@ -261,7 +261,7 @@ export default class ProductsOperator {
     );
   }
 
-  getProductsListingForUrlLocation(state, location, sortParam, sortBySelected) {
+  getProductsListingForUrlLocation(state, location = window.location, sortParam, sortBySelected) {
     const match =
       matchPath(location.pathname, { path: PAGES.PRODUCT_LISTING_PAGE }) ||
       matchPath(location.pathname, { path: PAGES.SEARCH_PAGE });

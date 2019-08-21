@@ -62,7 +62,7 @@ class BucketingBL {
    */
 
   doBucketingLogic = (
-    location,
+    location = '',
     state,
     bucketingConfig,
     sortBySelected,
@@ -82,7 +82,6 @@ class BucketingBL {
       ? matchPath(window.location.pathname, '/search/')
       : matchPath(window.location.pathname, '/c/');
     temp.categoryKey = temp.isSearchPage ? match.searchTerm : match.listingKey;
-    // eslint-disable-next-line
     // temp.navigationTree = generalStoreView.getHeaderNavigationTree(state);
     temp.navigationTree = state.Navigation.navigationData;
     // categoryNameList is an array of the categories. Eg if the click has happened over L2 which is boys -> Denim. Then categoryNameList will
@@ -100,7 +99,7 @@ class BucketingBL {
       bucketingConfigTemp.productsToFetchPerLoad = PRODUCTS_PER_LOAD;
       temp.filtersAndSort = filterAndSortParam;
     } else {
-      temp.filtersAndSort = callback(location.search);
+      temp.filtersAndSort = (location && callback(location.search)) || {};
       temp.sortingAvailable = temp.filtersAndSort.sort;
     }
     // const isSearchPage = routingStoreView.getCurrentPageId(state) === PAGES.search.id;

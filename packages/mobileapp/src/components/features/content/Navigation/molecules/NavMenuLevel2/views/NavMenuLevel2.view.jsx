@@ -24,7 +24,7 @@ const BackIcon = require('../../../../../../../../../core/src/assets/carrot-larg
  * @param {object} subCategories Details of the L2 menu item that has been clicked
  * @param {object} hasL3 flag that defines if L3 is present for the L2
  */
-const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabels) => {
+const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabels, url) => {
   if (hasL3) {
     return navigate('NavMenuLevel3', {
       navigationObj: subCategories,
@@ -32,7 +32,11 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
       accessibilityLabels,
     });
   }
-  return navigate('ProductListingPage');
+  return navigate('ProductListing', {
+    l2Title: name,
+    url,
+    accessibilityLabels,
+  });
 };
 
 /**
@@ -84,7 +88,8 @@ const NavMenuLevel2 = props => {
         item.subCategories,
         item.categoryContent.name,
         hasL3,
-        accessibilityLabels
+        accessibilityLabels,
+        item.url
       );
 
     // In case of empty group category, using Lorem Ipsum to

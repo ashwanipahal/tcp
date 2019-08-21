@@ -4,6 +4,7 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import AsyncStorage from '@react-native-community/async-storage';
+import { getAPIConfig } from './utils';
 
 import config from '../components/common/atoms/Anchor/config.native';
 
@@ -279,4 +280,33 @@ export const resetNavigationStack = navigation => {
       ],
     })
   );
+};
+
+export const getSiteId = () => {
+  const { siteId } = getAPIConfig();
+  return siteId;
+};
+
+export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
+  const prototype = Object.getPrototypeOf(obj);
+  // eslint-disable-next-line
+  for (let name of Object.getOwnPropertyNames(prototype)) {
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
+    const isGetter = descriptor && typeof descriptor.get === 'function';
+    // eslint-disable-next-line
+    if (isGetter) continue;
+    if (
+      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
+        ? !name.startsWith(namePrefix)
+        : name.startsWith(namePrefix)
+    ) {
+      // eslint-disable-next-line
+      obj[name] = prototype[name].bind(obj);
+    }
+  }
+};
+
+export default {
+  getSiteId,
+  bindAllClassMethodsToThis,
 };

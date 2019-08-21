@@ -185,10 +185,13 @@ export const isBopisProduct = (isUSStore, product) => {
   let isOnlineOnly;
   if (isUSStore) {
     isOnlineOnly =
-      (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false; // validate if product is online only so it is not BOPIS eligible
+      (product && product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) ||
+      false; // validate if product is online only so it is not BOPIS eligible
   } else {
     isOnlineOnly =
-      (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
+      (product &&
+        product.TCPWebOnlyFlagCanadaStore &&
+        parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
       false;
   }
   return !isOnlineOnly;

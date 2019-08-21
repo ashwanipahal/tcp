@@ -36,7 +36,7 @@ const getProductByColorId = (products, colorDetails) => {
   /* NOTE: we need to FISH for the product on the page in order to pull its attributes, if its not on page we wont show the swatch
   // If this needs to be changed we can default to somthing but need approval for what
   */
-  return products.find(product => product.prodpartno === colorDetails[0]);
+  return products.find(product => product.prodpartno === colorDetails[0]) || {};
 };
 const isUnbxdFacetKey = key =>
   key.toLowerCase() !== FACETS_FIELD_KEY.unbxdDisplayName &&

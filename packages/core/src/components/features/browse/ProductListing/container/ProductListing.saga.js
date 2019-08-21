@@ -10,7 +10,7 @@ function* fetchPlpProducts() {
     const state = yield select();
     const instanceProductListing = new Abstractor();
     const operatorInstance = new ProductsOperator();
-    const reqObj = operatorInstance.getProductListingBucketedData(state, window.location);
+    const reqObj = operatorInstance.getProductListingBucketedData(state);
     const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
     yield put(setPlpProducts({ ...plpProducts }));
   } catch (err) {
