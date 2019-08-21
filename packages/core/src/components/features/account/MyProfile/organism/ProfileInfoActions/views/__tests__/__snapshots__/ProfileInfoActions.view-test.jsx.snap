@@ -138,6 +138,17 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       className="profile-message"
     >
       <Styled(BodyCopy)
+        className="elem-mb-MED"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
         className={null}
         color="text.primary"
         component="p"
@@ -159,12 +170,30 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         lineHeight="normal"
         textAlign="left"
       />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(Anchor)
+          fontSizeVariation="xlarge"
+          to="/account/extra-points"
+          underline={true}
+        />
+        ?
+      </Styled(BodyCopy)>
     </div>
     <div
-      className="progress-image-wrapper"
+      className="elem-pt-MED"
     >
       <Styled(ProfileProgress)
-        className="elem-ml-LRG"
+        className="elem-ml-LRG elem-mr-LRG"
         profileCompletion="100"
       />
     </div>

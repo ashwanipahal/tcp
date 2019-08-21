@@ -10,6 +10,7 @@ import ProfileProgress from '../../../molecules/ProfileProgress';
 
 import styles from '../styles/ProfileInfoActions.style';
 import { getIconPath } from '../../../../../../../utils';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
 export const getMailingAddressState = (mailingAddress, labels) => {
   if (mailingAddress && mailingAddress.get('isComplete')) {
@@ -53,16 +54,14 @@ export const ProfileInfoActions = ({
     <MyProfileTile className={className}>
       <div className="profile-wrapper elem-mb-XXXL">
         <div className="profile-message">
-          {profileCompletion !== '100' && (
-            <BodyCopy
-              className="elem-mb-MED"
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="extrabold"
-            >
-              {labels.lbl_profile_Enhance_Experience}
-            </BodyCopy>
-          )}
+          <BodyCopy
+            className="elem-mb-MED"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="extrabold"
+          >
+            {labels.lbl_profile_Enhance_Experience}
+          </BodyCopy>
           {profileCompletion === '100' ? (
             <>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
@@ -70,6 +69,13 @@ export const ProfileInfoActions = ({
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.lbl_profile_profileCompletionMessage}
+              </BodyCopy>
+              <BodyCopy fontSize="fs16" fontFamily="secondary">
+                {labels.lbl_profile_getMorePoints}
+                <Anchor to="/account/extra-points" underline fontSizeVariation="xlarge">
+                  {labels.lbl_profile_getMorePointsLink}
+                </Anchor>
+                {'?'}
               </BodyCopy>
             </>
           ) : (
@@ -79,8 +85,11 @@ export const ProfileInfoActions = ({
           )}
         </div>
         {profileCompletion && (
-          <div className="progress-image-wrapper">
-            <ProfileProgress className="elem-ml-LRG" profileCompletion={profileCompletion} />
+          <div className="elem-pt-MED">
+            <ProfileProgress
+              className="elem-ml-LRG elem-mr-LRG"
+              profileCompletion={profileCompletion}
+            />
           </div>
         )}
       </div>

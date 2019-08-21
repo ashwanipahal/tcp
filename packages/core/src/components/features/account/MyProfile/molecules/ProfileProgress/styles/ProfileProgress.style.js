@@ -1,6 +1,24 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  @keyframes left {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes right {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
   width: 100px;
   height: 100px;
   position: relative;
@@ -21,6 +39,7 @@ const styles = css`
       clip: rect(0px, 100px, 0px, 50px);
     }
   }
+
   &.level2 {
     .hold {
       clip: rect(0px, 100px, 85px, 50px);
@@ -29,6 +48,7 @@ const styles = css`
       clip: rect(0px, 100px, 0px, 50px);
     }
   }
+
   &.level3 {
     .hold {
       clip: rect(0px, 100px, 100px, 50px);
@@ -37,6 +57,7 @@ const styles = css`
       clip: rect(0px, 100px, 30px, 50px);
     }
   }
+
   &.level4 {
     .hold {
       clip: rect(0px, 100px, 100px, 50px);
@@ -45,6 +66,7 @@ const styles = css`
       clip: rect(0px, 100px, 70px, 50px);
     }
   }
+
   &.level5 {
     .hold {
       clip: rect(0px, 100px, 100px, 50px);
@@ -54,17 +76,17 @@ const styles = css`
     }
   }
 
-  .outer-shadow {
-    background: black;
-    z-index: 4;
-  }
-
   .outer-shadow,
   .inner-shadow {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 100%;
+  }
+
+  .outer-shadow {
+    background: black;
+    z-index: 4;
   }
 
   .inner-shadow {
@@ -79,12 +101,8 @@ const styles = css`
     z-index: 5;
   }
 
-  .fill,
-  .dot span {
-    background-color: ${props => props.theme.colorPalette.blue[600]};
-  }
-
   .fill {
+    background-color: ${props => props.theme.colorPalette.blue[600]};
     position: absolute;
     width: 100%;
     height: 100%;
@@ -94,27 +112,7 @@ const styles = css`
 
   .left .fill {
     z-index: 4;
-    -webkit-animation: left 1s linear;
-    -moz-animation: left 1s linear;
     animation: left 1s linear both;
-  }
-
-  @keyframes left {
-    0% {
-      -webkit-transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(180deg);
-    }
-  }
-
-  @-webkit-keyframes left {
-    0% {
-      -webkit-transform: rotate(0deg);
-    }
-    100% {
-      -webkit-transform: rotate(180deg);
-    }
   }
 
   .right {
@@ -126,24 +124,6 @@ const styles = css`
     z-index: 4;
     animation: right 1s linear both;
     animation-delay: 1s;
-  }
-
-  @keyframes right {
-    0% {
-      -webkit-transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(180deg);
-    }
-  }
-
-  @-webkit-keyframes right {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(180deg);
-    }
   }
 
   .inner-shadow img {
