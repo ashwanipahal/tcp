@@ -2,6 +2,8 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import ProductListingPageContainer from '@tcp/core/src/components/features/browse/ProductListingPage';
 import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
+import PickupPage from '@tcp/core/src/components/features/CnC/PickupPage';
+import ShippingPage from '@tcp/core/src/components/features/CnC/ShippingPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
@@ -19,6 +21,8 @@ const HomeStack = createStackNavigator(
     ProductListingPageContainer,
     BagPage,
     LoginPageContainer,
+    PickupPage,
+    ShippingPage,
   },
   {
     defaultNavigationOptions: {

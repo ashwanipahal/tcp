@@ -5,7 +5,15 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor/views/Anchor';
 import styles from '../styles/MyProfileTile.style';
 
-export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, ctaPath, children, className, dataLocator }) => {
+export const AccountOverviewTile = ({
+  title,
+  ctaTitle,
+  ctaLink,
+  ctaPath,
+  children,
+  className,
+  dataLocator,
+}) => {
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="container">
@@ -19,7 +27,7 @@ export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, ctaPath, childre
         >
           {title}
         </BodyCopy>
-        <BodyCopy component="div" className="elem-pb-XL content">
+        <BodyCopy component="div" className={`${title ? 'elem-pt-LRG' : ''} elem-pb-XL content`}>
           {children}
         </BodyCopy>
 

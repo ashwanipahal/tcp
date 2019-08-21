@@ -10,6 +10,10 @@ const ButtonStyles = css`
   opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
   text-transform: uppercase;
   min-height: 42px;
+  letter-spacing: 0.93px;
+  ${props => `@media ${props.theme.mediaQuery.large} {
+    letter-spacing: 1px;
+    }`}
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `

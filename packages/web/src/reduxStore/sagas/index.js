@@ -1,11 +1,12 @@
 import { all } from 'redux-saga/effects';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
+import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
 import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import ResetPasswordSaga from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.saga';
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
-import AddEditAddressSaga from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.saga';
+import AddEditAddressSaga from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import CreateAccountSaga from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.saga';
@@ -15,9 +16,9 @@ import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Paymen
 import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
-import BonusPointsSaga from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.saga';
+import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
-import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.saga';
+import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.saga';
@@ -36,6 +37,7 @@ export default function* rootSaga() {
     HomePageSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),
+    UserSaga(),
     LogOutPageSaga(),
     ForgotPasswordSaga(),
     AddEditAddressSaga(),

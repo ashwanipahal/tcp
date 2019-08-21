@@ -1,12 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import LoginSync from '../screens/LoginSync';
+import walletPage from '../screens/walletPage';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 
 const Login = createStackNavigator(
   {
-    LoginSync,
+    walletPage,
   },
   {
     defaultNavigationOptions: {

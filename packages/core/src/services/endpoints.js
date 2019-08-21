@@ -83,6 +83,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/bonusDay',
   },
+  applyBonusPoints: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/bonusDay',
+  },
   addCoupons: {
     method: 'post',
     URI: 'v2/checkout/coupons',

@@ -1,5 +1,5 @@
 import React from 'react';
-import BonusPointsDays from '../../../../BonusPointsDays';
+import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 
 const BonusPointsDaysSection = () => {
   return <BonusPointsDays />;

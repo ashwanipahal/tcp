@@ -7,16 +7,21 @@ import {
 } from '../../../../../services/abstractors/CnC/AddedToBag';
 import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { getAPIConfig } from '../../../../../utils';
 
 export function* addToCartEcom({ payload }) {
   try {
     const sku = payload.skuInfo.skuId;
     const qty = payload.quantity;
     const { wishlistItemId } = payload;
+    const { storeId, langId, catalogId } = getAPIConfig();
+    const apiConfigParams = {
+      catalogId,
+      storeId,
+      langId,
+    };
     const params = {
-      storeId: 10151,
-      catalogId: 10551,
-      langId: '-1',
+      ...apiConfigParams,
       orderId: '.',
       field2: '0',
       requesttype: 'ajax',

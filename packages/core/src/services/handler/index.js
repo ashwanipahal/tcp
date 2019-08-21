@@ -3,4 +3,5 @@ export {
   executeStatefulAPICall,
   executeUnbxdAPICall,
   executeExternalAPICall,
+  resetGraphQLClient,
 } from './handler';
