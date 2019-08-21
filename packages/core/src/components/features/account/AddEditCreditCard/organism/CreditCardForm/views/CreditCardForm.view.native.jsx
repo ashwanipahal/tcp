@@ -114,11 +114,14 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   submitCardInformation = () => {
     const { selectedYear, selectedMonth } = this.state;
-    const { handleSubmit, dispatch } = this.props;
+    const { handleSubmit, dispatch, isEdit, selectedCard } = this.props;
 
     // Setting form value to take dropdown values.
-    dispatch(change('addEditCreditCard', 'expYear', selectedYear));
-    dispatch(change('addEditCreditCard', 'expMonth', selectedMonth));
+    dispatch(change(constants.FORM_NAME, 'expYear', selectedYear));
+    dispatch(change(constants.FORM_NAME, 'expMonth', selectedMonth));
+    if (isEdit && selectedCard) {
+      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
+    }
     handleSubmit();
   };
 

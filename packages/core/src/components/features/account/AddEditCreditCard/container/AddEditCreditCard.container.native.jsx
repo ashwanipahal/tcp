@@ -154,15 +154,14 @@ export class AddEditCreditCard extends React.PureComponent {
   };
 
   onCreditCardFormSubmit = data => {
-    const { cardType, creditCard, addCreditCardAction, editCreditCardAction } = this.props;
+    const { cardType, addCreditCardAction, editCreditCardAction } = this.props;
 
     const payload = Object.assign(data, {
       cardType,
     });
 
-    if (creditCard && creditCard.creditCardId) {
-      payload.creditCardId = creditCard.creditCardId;
-      payload.isDefault = creditCard.defaultInd;
+    if (data && data.creditCardId) {
+      payload.creditCardId = data.creditCardId;
       return editCreditCardAction(payload);
     }
     return addCreditCardAction(payload);
