@@ -22,7 +22,6 @@ const StyledTextBox = styled.TextInput`
   border-bottom-width: 1px;
   height: 40px;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: 0;
 `;
 
 const StyledLabel = styled.Text`
