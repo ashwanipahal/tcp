@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Anchor from '../../../../../../common/atoms/Anchor/views/Anchor';
@@ -19,9 +20,18 @@ const ProfileInformation = ({
   userSurvey,
   percentageIncrement,
   defaultStore,
+  successMessage,
 }) => {
   return (
     <div>
+      {successMessage && (
+        <Notification
+          className="elem-mt-MED"
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={labels[`lbl_profile_${successMessage}`]}
+        />
+      )}
       <Row fullBleed className={`${className} elem-pt-LRG`}>
         <Col
           colSize={{
@@ -142,6 +152,7 @@ ProfileInformation.propTypes = {
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
+  successMessage: PropTypes.string,
 };
 
 ProfileInformation.defaultProps = {
@@ -153,6 +164,7 @@ ProfileInformation.defaultProps = {
   userSurvey: [],
   percentageIncrement: {},
   defaultStore: '',
+  successMessage: '',
 };
 
 export default withStyles(ProfileInformation, styles);

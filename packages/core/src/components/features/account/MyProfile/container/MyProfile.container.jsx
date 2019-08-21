@@ -12,6 +12,8 @@ import {
   getDefaultStore,
 } from '../../User/container/User.selectors';
 
+import { getSuccess } from '../../ChangePassword/container/ChangePassword.selectors';
+
 const getMyProfileInfoLabels = labels => {
   return (labels && labels.profile) || {};
 };
@@ -38,6 +40,7 @@ const mapStateToProps = state => {
     profileCompletion: getProfileCompletion(state),
     percentageIncrement: getPercentageIncrement(state),
     defaultStore: getDefaultStore(state),
+    successMessage: getSuccess(state),
   };
 };
 

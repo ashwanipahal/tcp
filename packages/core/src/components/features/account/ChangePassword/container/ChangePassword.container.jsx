@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 import utils from '../../../../../utils';
 import { getError, getSuccess, getChangePasswordLabels } from './ChangePassword.selectors';
 import ChangePasswordComponent from '../views';
-import {
-  changePassword,
-  changePasswordSuccess,
-  changePasswordError,
-} from './ChangePassword.actions';
+import { changePassword, changePasswordError } from './ChangePassword.actions';
 
 export class ChangePasswordContainer extends PureComponent {
   static propTypes = {
@@ -69,7 +65,6 @@ export const mapDispatchToProps = dispatch => ({
     dispatch(changePassword(payload));
   },
   messageSateChangeAction: payload => {
-    dispatch(changePasswordSuccess(payload));
     dispatch(changePasswordError(payload));
   },
 });

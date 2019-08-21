@@ -14,23 +14,9 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ChangePasswordForm.style';
 
-export const ChangePasswordForm = ({
-  className,
-  labels,
-  pristine,
-  successMessage,
-  errorMessage,
-  handleSubmit,
-}) => {
+export const ChangePasswordForm = ({ className, labels, pristine, errorMessage, handleSubmit }) => {
   return (
     <form name="ChangePasswordForm" noValidate onSubmit={handleSubmit} className={className}>
-      {successMessage && (
-        <Notification
-          status="success"
-          colSize={{ large: 12, medium: 8, small: 6 }}
-          message={labels[`lbl_changePassword_${successMessage}`]}
-        />
-      )}
       {errorMessage && (
         <Notification
           className="elem-mt-MED"
@@ -143,7 +129,6 @@ ChangePasswordForm.propTypes = {
     lbl_changePassword_saveCta: PropTypes.string,
   }),
   pristine: PropTypes.bool.isRequired,
-  successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
