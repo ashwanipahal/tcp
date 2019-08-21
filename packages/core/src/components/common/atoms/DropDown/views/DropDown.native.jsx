@@ -165,6 +165,7 @@ class DropDown extends React.PureComponent<Props> {
       dropDownIsOpen: false,
       selectedLabelState: label,
     });
+
     // pass the callback here with value
     const { onValueChange } = this.props;
     if (onValueChange) onValueChange(value);

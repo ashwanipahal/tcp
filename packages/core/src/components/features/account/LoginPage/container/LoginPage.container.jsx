@@ -26,19 +26,11 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
 
 import LoginView from '../views';
 
-// eslint-disable-next-line
-import { isMobileApp, navigateToNestedRoute } from '../../../../../utils';
-
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (isMobileApp()) {
-        const { navigation } = this.props;
-        navigateToNestedRoute(navigation, 'HomeStack', 'home');
-      } else {
-        closeOverlay();
-      }
+      closeOverlay();
     }
   }
 
