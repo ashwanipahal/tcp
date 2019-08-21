@@ -124,7 +124,7 @@ const getContent = ({
   orderDetails,
 }) => {
   let allUsed = false;
-  let valueOfbonusDayAvailableToday = 2;
+  let valueOfbonusDayAvailableToday = 0;
   if (bonusData) {
     const { totalBonusPointDays, usedBonusPointDays, appliedToBagBonusPointDays } = bonusData;
     allUsed = totalBonusPointDays === usedBonusPointDays;

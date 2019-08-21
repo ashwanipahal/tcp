@@ -30,7 +30,7 @@ const BonusPointsAvailability = ({
           if (!enableApplyCta) {
             btnClass = `availability-btn ${item.disabled ? 'disable-btn' : ''}`;
           } else {
-            btnClass = '';
+            btnClass = 'availability-btn-active';
           }
 
           return (

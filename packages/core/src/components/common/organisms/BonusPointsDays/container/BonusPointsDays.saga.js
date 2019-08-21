@@ -12,6 +12,7 @@ import {
   setModuleX,
 } from './BonusPointsDays.actions';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
+import BAG_PAGE_ACTIONS from '../../../../features/CnC/BagPage/container/BagPage.actions';
 
 export function* getBonusDaysData() {
   try {
@@ -27,6 +28,7 @@ export function* applyBonusDaysData(dto) {
   try {
     yield call(applyBonusPointsData, dto);
     yield call(getBonusDaysData);
+    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     yield put(setBonusDaysError(err));
   }
