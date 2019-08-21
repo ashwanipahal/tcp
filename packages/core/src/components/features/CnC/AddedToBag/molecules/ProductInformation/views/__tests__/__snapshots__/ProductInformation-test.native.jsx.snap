@@ -11,15 +11,16 @@ exports[`GiftCardList Component renders correctly 1`] = `
       }
     />
     <Styled(Image)
+      data-locator="cartItemBrandLogo"
       source={
         Object {
-          "uri": "https://test4.childrensplace.com/static/images/undefined",
+          "testUri": "../../../../core/src/assets/gymboree-logo.png",
         }
       }
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(Text)>
+    <Styled(View)>
       <Styled(BodyCopy)
         fontSize="fs12"
         fontWeight={
@@ -29,57 +30,65 @@ exports[`GiftCardList Component renders correctly 1`] = `
         }
         text="Boys Basic Skinny Jeans"
       />
-    </Styled(Text)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        fontWeight={
-          Array [
-            "semibold",
-          ]
-        }
-        text="Color: "
-        textAlign="center"
-      />
-      <Styled(BodyCopy)
-        fontSize="fs12"
-      />
     </Styled(View)>
     <Styled(View)>
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        fontWeight={
-          Array [
-            "semibold",
-          ]
-        }
-        text="Size: "
-        textAlign="center"
-      />
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        text="M "
-      />
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        text="slim"
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        fontWeight={
-          Array [
-            "semibold",
-          ]
-        }
-        text="Qty: "
-        textAlign="center"
-      />
-      <Styled(BodyCopy)
-        fontSize="fs12"
-        text="1"
-      />
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            text="Color: "
+            textAlign="left"
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          fontSize="fs12"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            text="Size: "
+            textAlign="left"
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          fontSize="fs12"
+          text="M "
+        />
+        <Styled(BodyCopy)
+          fontSize="fs12"
+          text="slim"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            text="Qty: "
+            textAlign="left"
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          fontSize="fs12"
+          text="1"
+        />
+      </Styled(View)>
     </Styled(View)>
   </Styled(View)>
 </Styled(View)>

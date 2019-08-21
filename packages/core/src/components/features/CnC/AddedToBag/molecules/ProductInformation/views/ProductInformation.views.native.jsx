@@ -10,52 +10,79 @@ import {
   ImgWrapper,
   ImageStyle,
   ProductDescription,
+  ImageBrandStyle,
+  ImageGymBrandStyle,
+  ProductSubDetails,
+  ProductSubDetailLabel,
 } from '../styles/ProductInformation.style.native';
+import { getLocator } from '../../../../../../../utils';
+
+const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
+const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 
 const ProductInformation = ({ data, labels, quantity }) => {
   return (
     <OuterContainer>
       <ImgWrapper>
         <ImageStyle source={{ uri: endpoints.global.baseURI + data.skuInfo.imageUrl }} />
-        {!data.isGiftCard && (
-          <ImageStyle source={{ uri: `${endpoints.global.baseURI}/static/images/${data.brand}` }} />
-        )}
+        {!data.isGiftCard &&
+          (data.isGiftCard === 'TCP' ? (
+            <ImageBrandStyle data-locator={getLocator('cart_item_brand_logo')} source={tcpImage} />
+          ) : (
+            <ImageGymBrandStyle
+              data-locator={getLocator('cart_item_brand_logo')}
+              source={gymboreeImage}
+            />
+          ))}
       </ImgWrapper>
       <ProductDescription>
         <ProductName>
           <BodyCopy fontSize="fs12" fontWeight={['semibold']} text={data.productName} />
         </ProductName>
-        <ProductDesc>
-          <BodyCopy
-            fontSize="fs12"
-            fontWeight={['semibold']}
-            textAlign="center"
-            text={data.isGiftCard === true ? `${labels.giftDesign}: ` : `${labels.colorLabel}: `}
-          />
-          <BodyCopy fontSize="fs12" text={data.skuInfo.color.name} />
-        </ProductDesc>
-        <ProductDesc>
-          <BodyCopy
-            fontSize="fs12"
-            fontWeight={['semibold']}
-            textAlign="center"
-            text={data.isGiftCard === true ? `${labels.giftValue}: ` : `${labels.sizeLabel}: `}
-          />
-          <BodyCopy fontSize="fs12" text={`${data.skuInfo.size} `} />
-          <BodyCopy
-            fontSize="fs12"
-            text={!data.skuInfo.fit || data.skuInfo.fit === 'Regular' ? ' ' : data.skuInfo.fit}
-          />
-        </ProductDesc>
-        <ProductDesc>
-          <BodyCopy
-            fontSize="fs12"
-            fontWeight={['semibold']}
-            textAlign="center"
-            text={`${labels.qtyLabel}: `}
-          />
-          <BodyCopy fontSize="fs12" text={quantity || data.quantity} />
-        </ProductDesc>
+        <ProductSubDetails>
+          <ProductDesc>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs12"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={
+                  data.isGiftCard === true ? `${labels.giftDesign}: ` : `${labels.colorLabel}: `
+                }
+              />
+            </ProductSubDetailLabel>
+
+            <BodyCopy fontSize="fs12" text={data.skuInfo.color.name} />
+          </ProductDesc>
+          <ProductDesc>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs12"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={data.isGiftCard === true ? `${labels.giftValue}: ` : `${labels.sizeLabel}: `}
+              />
+            </ProductSubDetailLabel>
+
+            <BodyCopy fontSize="fs12" text={`${data.skuInfo.size} `} />
+            <BodyCopy
+              fontSize="fs12"
+              text={!data.skuInfo.fit || data.skuInfo.fit === 'Regular' ? ' ' : data.skuInfo.fit}
+            />
+          </ProductDesc>
+          <ProductDesc>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs12"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={`${labels.qtyLabel}: `}
+              />
+            </ProductSubDetailLabel>
+
+            <BodyCopy fontSize="fs12" text={quantity || data.quantity} />
+          </ProductDesc>
+        </ProductSubDetails>
       </ProductDescription>
     </OuterContainer>
   );
