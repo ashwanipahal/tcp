@@ -149,6 +149,8 @@ const FooterMiddleDesktop = ({
 FooterMiddleDesktop.propTypes = {
   navLinks: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+  loginModalMountedState: PropTypes.bool.isRequired,
 };
 
 export default FooterMiddleDesktop;

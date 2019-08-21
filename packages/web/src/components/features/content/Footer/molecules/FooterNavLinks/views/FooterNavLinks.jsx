@@ -41,6 +41,8 @@ FooterNavLinks.propTypes = {
   headerAsImage: PropTypes.bool.isRequired,
   isSubHeader: PropTypes.bool.isRequired,
   colNum: PropTypes.number.isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+  loginModalMountedState: PropTypes.bool.isRequired,
 };
 
 export default FooterNavLinks;
