@@ -3,6 +3,7 @@ import { getIconPath } from '../../../../utils';
 
 const downArrowIcon = getIconPath('down_arrow_icon');
 
+const styleBottomSpacing = '26px';
 const selectStyles = css`
   position: relative;
   display: block;
@@ -23,8 +24,7 @@ const selectStyles = css`
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
-      ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding: ${styleBottomSpacing} 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: 100%;
 
     ${props =>
