@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail Coupon Modal should render correctly 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="coupondetailmodalcrossicon"
+  fixedWidth={true}
+  isOpen={false}
+  maxWidth="616px"
+  minHeight="540px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div>
+    <Styled(BodyStyle)
+      className="couponModal_modalTitle"
+      data-locator="couponDetailModal_applied_NameLbl"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+    >
+      $10 OFF On $80
+    </Styled(BodyStyle)>
+    <Styled(BodyStyle)
+      className="couponModal_modalSubTitle"
+      data-locator="couponDetailModal_applied_ValidityDateLbl"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+    >
+      undefined 8/10/19
+    </Styled(BodyStyle)>
+    <div
+      className="couponModal_modalbarcode"
+      data-locator="couponDetailModal_applied_BarCode"
+    >
+      Y00105578
+    </div>
+    <div
+      className="couponModal_btnWrapper"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="couponModal_applyToBag couponModal_btn"
+        data-locator="couponDetailModal_applied_AddToBagBtn"
+        fill="BLUE"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="couponModal_print"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="couponModal_print_anchor"
+        data-locator="couponDetailModal_applied_printAch"
+        fontSize="fs14"
+        onClick={[Function]}
+        to="/#"
+        underline={true}
+      />
+    </div>
+    <Styled(BodyStyle)
+      className="couponModal_modalLongDesc"
+      data-locator="couponDetailModal_applied_LongDesc"
+      fontFamily="secondaryFontFamily"
+    >
+      undefined
+    </Styled(BodyStyle)>
+    <Styled(BodyStyle)
+      className="couponModal_modalShortDesc"
+      data-locator="couponDetailModal_applied_ShortDesc"
+      fontFamily="secondaryFontFamily"
+    >
+      undefined
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="couponModal_print_anchortext"
+        data-locator="couponDetailModal_applied_tAndC"
+        fontSize="fs14"
+        onClick={[Function]}
+        underline={true}
+      >
+        undefined
+      </Styled(Anchor)>
+       and 
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="couponModal_print_anchortext"
+        data-locator="couponDetailModal_applied_pp"
+        fontSize="fs14"
+        onClick={[Function]}
+        underline={true}
+      >
+        undefined
+      </Styled(Anchor)>
+    </Styled(BodyStyle)>
+  </div>
+</Styled(Modal)>
+`;

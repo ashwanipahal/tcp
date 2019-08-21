@@ -22,6 +22,13 @@ const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
 
+const getLanguageByDomain = domain => {
+  let langCode = domain.substr(0, 2).toLowerCase();
+
+  // FIXME: backend should return this somehow, if not possible we need to complete this list
+  return langCode === 'es' || langCode === 'en' || langCode === 'fr' ? langCode : 'en';
+};
+
 const setSiteId = (req, res) => {
   const { url } = req;
   let siteId = siteIds.us;
@@ -33,6 +40,8 @@ const setSiteId = (req, res) => {
     }
   }
   res.locals.siteId = siteId;
+  res.locals.currency = siteId === siteIds.ca ? 'CAD' : 'USD';
+  res.locals.language = getLanguageByDomain(req.hostname);
 };
 
 // TODO - To be picked from env config file when Gym build process is done....

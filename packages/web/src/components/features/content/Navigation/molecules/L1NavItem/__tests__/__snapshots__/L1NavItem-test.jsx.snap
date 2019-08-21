@@ -29,10 +29,10 @@ exports[`Drawer component renders correctly 1`] = `
       tabIndex={0}
     >
       <span
-        className="nav-bar-l1-item-label "
+        className="nav-bar-item-label "
       />
       <span
-        className="nav-bar-l1-item-content "
+        className="nav-bar-item-content "
         data-locator="promo_badge_undefined"
       >
         <Styled(PromoBadge)

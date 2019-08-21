@@ -47,7 +47,50 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        First
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 10,
+                "medium": 6,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="elem-mb-SM elem-ml-SM"
+              color="text.primary"
+              component="h4"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="elem-mb-MED reward-points"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="reward-points-section"
+            colSize={
+              Object {
+                "large": 10,
+                "medium": 6,
+                "small": 4,
+              }
+            }
+          >
+            <Connect(RewardsPointsContainer)
+              labels={Object {}}
+            />
+          </Styled(Col)>
+        </Styled(Row)>
       </Styled(Col)>
       <Styled(Col)
         className="place-rewards-col2"
@@ -59,7 +102,48 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        Second
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 10,
+                "medium": 6,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="elem-mb-SM elem-ml-SM"
+              color="text.primary"
+              component="h4"
+              data-locator="pointshistorylbl"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="elem-mb-MED"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 11,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <Connect(PointsHistoryContainer) />
+          </Styled(Col)>
+        </Styled(Row)>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -76,7 +160,11 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        Third
+        <div
+          className="bonusPointsWrapper"
+        >
+          <BonusPointsDaysSection />
+        </div>
       </Styled(Col)>
       <Styled(Col)
         className="place-rewards-col4"
@@ -88,7 +176,9 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        Fourth
+        <FPO
+          text=""
+        />
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Row)>

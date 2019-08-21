@@ -30,8 +30,8 @@ export const createAccountApi = payload => {
       return res;
     })
     .catch(err => {
-      throw new Error(err);
+      throw err;
     });
 };
 
-export default createAccountApi;
+export default { createAccountApi };

@@ -8,7 +8,25 @@ exports[`AccountDrawerPage should render correctly 1`] = `
     userName=""
   />
   <Connect(RewardsPointsContainer) />
-  <Styled(ExtraPointsTeaser) />
+  <Styled(ExtraPointsTeaser)
+    plccUser={false}
+  />
+  <Styled(MyRewardsAndOffers) />
+  <Styled(AccountDrawerBottomLinks) />
+</div>
+`;
+
+exports[`should not render RewardsPoints should renders correctly when addresses are not present 1`] = `
+<div
+  className=""
+>
+  <Styled(AccountDrawerHeading)
+    userName=""
+  />
+  <Connect(RewardsPointsContainer) />
+  <Styled(ExtraPointsTeaser)
+    plccUser={false}
+  />
   <Styled(MyRewardsAndOffers) />
   <Styled(AccountDrawerBottomLinks) />
 </div>

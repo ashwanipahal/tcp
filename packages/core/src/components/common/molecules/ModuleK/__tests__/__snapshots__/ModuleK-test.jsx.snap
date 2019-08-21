@@ -99,7 +99,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-jKJlTe",
+              "componentId": "sc-hMqMXs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -122,6 +122,26 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
   }
+
+  .style11 {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: 36px;
+    line-height: 1.05;
+
+    @media ",
+                [Function],
+                " {
+      font-size: 74px;
+    }
+  }
 ",
                 ";
 ",
@@ -139,7 +159,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-kpOJdX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-jKJlTe",
+            "styledComponentId": "sc-hMqMXs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -174,14 +194,17 @@ exports[`ModuleK component renders correctly 1`] = `
             "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
-            "inheritedStyles": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-ckVGcZ",
-                "isStatic": true,
-                "rules": Array [
-                  "
+          }
+        }
+        inheritedStyles={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-eNQAEJ",
+              "isStatic": true,
+              "rules": Array [
+                "
   .slick-arrow {
     top: 44%;
   }
@@ -199,17 +222,16 @@ exports[`ModuleK component renders correctly 1`] = `
     bottom: -10px;
   }
 ",
-                ],
-              },
-              "displayName": "Styled(errorBoundaryComponent)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-ckVGcZ",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
+              ],
             },
+            "displayName": "Styled(errorBoundaryComponent)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-eNQAEJ",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
           }
         }
         options={

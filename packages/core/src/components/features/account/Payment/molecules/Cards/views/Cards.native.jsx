@@ -28,6 +28,10 @@ const Cards = props => {
     setDefaultPaymentMethod,
     onGetBalanceCard,
     checkbalanceValueInfo,
+    toggleModal,
+    openUpdateModal,
+    setSelectedCard,
+    setCardHandler,
   } = props;
   return (
     <View {...props}>
@@ -49,6 +53,7 @@ const Cards = props => {
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"
+          onPress={setCardHandler}
         />
       </ButtonWrapperStyle>
       {cardList.size > 0 &&
@@ -60,7 +65,14 @@ const Cards = props => {
             onGetBalanceCard,
             checkbalanceValueInfo,
           };
-          return <CardTile {...cardTileProps} />;
+          return (
+            <CardTile
+              toggleModal={toggleModal}
+              openUpdateModal={openUpdateModal}
+              setSelectedCard={setSelectedCard}
+              {...cardTileProps}
+            />
+          );
         })}
     </View>
   );
@@ -78,12 +90,20 @@ Cards.propTypes = {
   setDefaultPaymentMethod: PropTypes.func,
   onGetBalanceCard: PropTypes.func,
   checkbalanceValueInfo: PropTypes.func,
+  toggleModal: PropTypes.func,
+  openUpdateModal: PropTypes.func,
+  setSelectedCard: PropTypes.func,
+  setCardHandler: PropTypes.func,
 };
 
 Cards.defaultProps = {
   setDefaultPaymentMethod: null,
   onGetBalanceCard: null,
   checkbalanceValueInfo: null,
+  toggleModal: null,
+  openUpdateModal: null,
+  setSelectedCard: null,
+  setCardHandler: () => {},
 };
 
 export default withStyles(Cards, ParentContainerStyle);

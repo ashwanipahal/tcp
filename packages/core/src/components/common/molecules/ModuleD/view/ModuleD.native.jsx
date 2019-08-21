@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
-import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/index.native';
+import { FlatList } from 'react-native';
+import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
-import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
+import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
@@ -39,7 +39,7 @@ const getUrlWithCrop = url => {
  * @param {Object} item : Single object to render inside Flatlist.
  * @return {node} function returns module D single element item.
  */
-const renderItem = item => {
+const renderItem = (item, navigation) => {
   const {
     item: { image, link },
     index,
@@ -47,8 +47,8 @@ const renderItem = item => {
 
   const anchorEnable = true;
   return (
-    <Tile tileIndex={index}>
-      <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
+    <Tile tileIndex={index} key={index.toString()}>
+      <Anchor url={link.url} navigation={navigation}>
         <Image
           alt={image.alt}
           testID={`${getLocator('moduleD_image')}${index + 1}`}
@@ -57,16 +57,15 @@ const renderItem = item => {
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
         />
-      </TouchableOpacity>
+      </Anchor>
 
       <Anchor
         testID={`${getLocator('moduleD_textlink')}${index + 1}`}
         fontSizeVariation="large"
         text={link.text}
         visible={anchorEnable}
-        onPress={() => {
-          UrlHandler(link.url);
-        }}
+        url={link.url}
+        navigation={navigation}
       />
     </Tile>
   );
@@ -104,14 +103,18 @@ const ModuleD = (props: Props) => {
         />
       )}
       {promoBanner && (
-        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleD_promobanner')} />
+        <PromoBanner
+          promoBanner={promoBanner}
+          testID={getLocator('moduleD_promobanner')}
+          navigation={navigation}
+        />
       )}
 
       <FlatList
         numColumns={2}
         data={smallCompImage}
         keyExtractor={keyExtractor}
-        renderItem={renderItem}
+        renderItem={item => renderItem(item, navigation)}
       />
 
       <ButtonWrapper>
@@ -120,11 +123,10 @@ const ModuleD = (props: Props) => {
           accessibilityLabel={singleCTAButton.title}
           buttonVariation="variable-width"
           style={buttonWidth}
-          text={singleCTAButton.title}
+          text={singleCTAButton.text}
           testID={getLocator('moduleD_button')}
-          onPress={() => {
-            UrlHandler(singleCTAButton.url);
-          }}
+          url={singleCTAButton.url}
+          navigation={navigation}
         />
       </ButtonWrapper>
     </Wrapper>

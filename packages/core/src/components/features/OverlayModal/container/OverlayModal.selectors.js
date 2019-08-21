@@ -13,3 +13,7 @@ export const getOpenState = state => {
 export const getColor = state => {
   return state.OverlayModalReducer.get('color');
 };
+
+export const getProps = state => {
+  return state.OverlayModalReducer.get('componentProps') || {};
+};

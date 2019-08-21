@@ -7,22 +7,25 @@ import {
   ViewBagButton,
   CheckoutButton,
 } from '../styles/AddedToBagActions.style.native';
+import { navigateToNestedRoute } from '../../../../../utils/utils.app';
 
-const AddedToBagActions = ({ labels }) => {
+const AddedToBagActions = ({ labels, showAddTobag, navigation }) => {
   return (
     <ActionsWrapper>
-      <ButtonWrapper>
-        <ViewBagButton>
-          <BodyCopy
-            textTransform="uppercase"
-            color="white"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            fontSize="fs13"
-            text={labels.viewBag.toUpperCase()}
-          />
-        </ViewBagButton>
-      </ButtonWrapper>
+      {showAddTobag && (
+        <ButtonWrapper>
+          <ViewBagButton>
+            <BodyCopy
+              textTransform="uppercase"
+              color="white"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              fontSize="fs13"
+              text={labels.viewBag && labels.viewBag.toUpperCase()}
+            />
+          </ViewBagButton>
+        </ButtonWrapper>
+      )}
       <ButtonWrapper>
         <CheckoutButton>
           <BodyCopy
@@ -30,7 +33,10 @@ const AddedToBagActions = ({ labels }) => {
             fontWeight="extrabold"
             fontFamily="secondary"
             fontSize="fs13"
-            text={labels.checkout.toUpperCase()}
+            text={labels.checkout && labels.checkout.toUpperCase()}
+            onPress={() => {
+              navigateToNestedRoute(navigation, 'HomeStack', 'PickupPage');
+            }}
           />
         </CheckoutButton>
       </ButtonWrapper>
@@ -40,6 +46,12 @@ const AddedToBagActions = ({ labels }) => {
 
 AddedToBagActions.propTypes = {
   labels: PropTypes.shape.isRequired,
+  showAddTobag: PropTypes.shape,
+  navigation: PropTypes.shape({}).isRequired,
+};
+
+AddedToBagActions.defaultProps = {
+  showAddTobag: true,
 };
 
 export default AddedToBagActions;

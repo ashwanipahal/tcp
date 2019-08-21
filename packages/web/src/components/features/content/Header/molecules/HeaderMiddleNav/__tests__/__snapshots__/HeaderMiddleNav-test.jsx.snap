@@ -30,7 +30,6 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         data-locator="menu_bar_icon"
         onClick={[Function]}
         src="/static/images/menu.svg"
-        tabIndex="0"
       />
       <Styled(BrandLogo)
         alt="The Children's Place"
@@ -69,6 +68,35 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       >
         Login
       </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="rightLink"
+        fontSizeVariation="small"
+        id="cartIcon"
+        noLink={true}
+        onClick={[Function]}
+        to=""
+      >
+        <Styled(Image)
+          alt="Product"
+          className="product-image"
+          data-locator="addedtobag-bag-icon"
+          src="/static/images/bag.png"
+        />
+        <Styled(BodyCopy)
+          className="cartCount"
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs10"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          0
+        </Styled(BodyCopy)>
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -96,5 +124,9 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(MiniBagContainer)
+    isOpen={false}
+    toggleMiniBagModal={[Function]}
+  />
 </Fragment>
 `;

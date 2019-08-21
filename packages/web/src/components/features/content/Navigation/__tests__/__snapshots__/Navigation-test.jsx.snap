@@ -3,13 +3,14 @@
 exports[`NavBar component renders correctly 1`] = `
 <Styled(Drawer)
   close={false}
+  drawerFooter={[Function]}
   id="l1_drawer"
   medium={true}
   open={true}
   position={
     Object {
       "left": 0,
-      "top": "157px",
+      "top": "155px",
       "topMedium": "111px",
     }
   }

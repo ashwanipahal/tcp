@@ -36,6 +36,19 @@ export default {
   moduleK_button_set: 'moduleK_button_set_',
   moduleK_play_button: 'moduleK_play_button',
   moduleK_pause_button: 'moduleK_pause_button',
+
+  // Module A
+  moduleA_header_text: 'moduleA_header_text_',
+  moduleA_promobanner_text: 'moduleA_promobanner_text_',
+  moduleA_promobanner_img: 'moduleA_promobanner_img',
+  moduleA_image: 'moduleA_image_',
+  moduleA_button: 'moduleA_button',
+  moduleA_button_set: 'moduleA_button_set_',
+  moduleA_play_button: 'moduleA_play_button',
+  moduleA_pause_button: 'moduleA_pause_button',
+  moduleA_ribbon_promobanner_text: 'moduleA_ribbon_promobanner_text_',
+  moduleA_cta_links: 'moduleA_cta_links_',
+  carousel_banner: 'carousel_banner',
   // Module L
   moduleL_header_text: 'moduleL_header_text',
   moduleL_title: 'moduleL_title_',
@@ -73,4 +86,33 @@ export default {
   order_ledger_gift_card_label: 'orderLedgerGiftCardLbl',
   order_ledger_balance_total_label: 'orderLedgerBalanceTotalLbl',
   order_ledger_total_order_savings_label: 'orderLedgerTotalOrderSavingsLabel',
+
+  // CardTile
+  cart_item_image: 'cartItemImage',
+  cart_item_title: 'cartItemTitle',
+  cart_item_upc: 'cartItemUpc',
+  cart_item_brand_logo: 'cartItemBrandLogo',
+  cart_item_edit_link: 'cartItemEditLink',
+  cart_item_price: 'cartItemPrice',
+  cart_item_points: 'cartItemPoints',
+  cart_item_total_price: 'cartItemTotalPrice',
+  cart_item_color: 'cartItemColor',
+  cart_item_size: 'cartItemSize',
+  cart_item_no_rush_radio_button: 'ItemNoRushRadioButton',
+  cart_item_cartNoRush: 'cartNoRush',
+  cart_item_pickup_radio_today_button: 'ItemPickUpTodayRadioButton',
+  cart_item_pickup_today: 'cartPickUpToday',
+  cart_item_ship_to_home_radio_button: 'ItemShipToHomeRadioButton',
+  cart_item_ship_to_home: 'cartShipToHome',
+  cart_item_cross_button: 'cartItemCrossButton',
+  // moduleN
+  moduleN_header_text: 'moduleN_header_text',
+  moduleN_promobanner_text: 'moduleN_promobanner_text',
+  moduleN_cta_links: 'moduleN_cta_links',
+
+  // Empty Bag Locator
+  empty_bag_Msg: 'cartEmptyBagMessage',
+  empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
+  empty_bag_guestUserCTA: 'cartGuestLoginCta',
+  empty_bag_recommendation_msg: 'cartRecommendationMessage',
 };

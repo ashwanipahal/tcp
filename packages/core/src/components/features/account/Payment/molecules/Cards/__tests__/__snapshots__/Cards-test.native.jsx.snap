@@ -18,7 +18,11 @@ exports[`CardList Component should render correctly 1`] = `
     }
   }
   onGetBalanceCard={null}
+  openUpdateModal={null}
+  setCardHandler={[Function]}
   setDefaultPaymentMethod={[MockFunction]}
+  setSelectedCard={null}
+  toggleModal={null}
 >
   <Styled(Text) />
   <Styled(View)>
@@ -38,6 +42,8 @@ exports[`CardList Component should render correctly 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
+      locator=""
+      onPress={[Function]}
       text=""
       url=""
     />
@@ -89,7 +95,11 @@ exports[`CardList Component should render correctly if list is present 1`] = `
     }
   }
   onGetBalanceCard={null}
+  openUpdateModal={null}
+  setCardHandler={[Function]}
   setDefaultPaymentMethod={[MockFunction]}
+  setSelectedCard={null}
+  toggleModal={null}
 >
   <Styled(Text) />
   <Styled(View)>
@@ -100,6 +110,8 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
+      locator=""
+      onPress={[Function]}
       text=""
       url=""
     />
@@ -144,14 +156,17 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       }
     }
     onGetBalanceCard={null}
+    openUpdateModal={null}
     persistentSubmitErrors={false}
     pure={true}
     setDefaultPaymentMethod={[MockFunction]}
+    setSelectedCard={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}
     shouldWarn={[Function]}
     submitAsSideEffect={false}
+    toggleModal={null}
     touchOnBlur={true}
     touchOnChange={false}
     updateUnregisteredFields={false}

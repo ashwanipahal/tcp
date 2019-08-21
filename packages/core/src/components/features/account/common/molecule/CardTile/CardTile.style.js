@@ -7,7 +7,7 @@ const styles = css`
   flex-direction: column;
   justify-content: space-between;
   word-break: break-word;
-  height: ${props => (props.card && props.card.ccType === 'GiftCard' ? 'auto' : '100%')};
+  height: 100%;
   min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : '')};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -55,6 +55,7 @@ const styles = css`
   .cardTile__number {
     margin-bottom: ${props =>
       props.card.ccType === 'PLACE CARD' ? props.theme.spacing.ELEM_SPACING.XL : ''};
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
   }
   .cardTile__expiry {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

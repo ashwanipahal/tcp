@@ -10,18 +10,20 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
-import { login, resetLoginInfo } from './LoginPage.actions';
+import { login } from './LoginPage.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
 import {
-  getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
   getLabels,
 } from './LoginPage.selectors';
+import { resetUserInfo } from '../../User/container/User.actions';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
+
 import LoginView from '../views';
 
 // eslint-disable-next-line
@@ -47,12 +49,9 @@ class LoginPageContainer extends React.PureComponent {
     }
   }
 
-  onCreateAccountClick = () => {
+  openModal = params => {
     const { openOverlay } = this.props;
-    openOverlay({
-      component: 'createAccount',
-      variation: 'primary',
-    });
+    openOverlay(params);
   };
 
   render() {
@@ -68,8 +67,11 @@ class LoginPageContainer extends React.PureComponent {
       SubmitForgot,
       showNotification,
       successFullResetEmail,
+      currentForm,
+      queryParams,
+      onRequestClose,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
+    const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -83,11 +85,14 @@ class LoginPageContainer extends React.PureComponent {
         showRecaptcha={showRecaptcha}
         resetForm={resetForm}
         getUserInfo={getUserInfoAction}
-        onCreateAccountClick={this.onCreateAccountClick}
+        openModal={this.openModal}
         resetLoginState={resetLoginState}
         SubmitForgot={SubmitForgot}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
+        currentForm={currentForm}
+        queryParams={queryParams}
+        onRequestClose={onRequestClose}
       />
     );
   }
@@ -109,6 +114,9 @@ LoginPageContainer.propTypes = {
   SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
+  currentForm: PropTypes.string,
+  queryParams: PropTypes.shape({}),
+  onRequestClose: PropTypes.shape({}).isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -120,6 +128,8 @@ LoginPageContainer.defaultProps = {
   openOverlay: () => {},
   isUserLoggedIn: false,
   navigation: {},
+  currentForm: '',
+  queryParams: {},
 };
 
 const mapDispatchToProps = dispatch => {
@@ -131,7 +141,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(resetLoginForgotPasswordState(payload));
     },
     resetLoginState: () => {
-      dispatch(resetLoginInfo());
+      dispatch(resetUserInfo());
     },
     SubmitForgot: payload => {
       dispatch(resetPassword(payload));

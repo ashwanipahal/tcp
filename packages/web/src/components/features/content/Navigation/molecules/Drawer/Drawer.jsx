@@ -27,7 +27,18 @@ const showOnViewport = viewport => {
 };
 
 const Drawer = props => {
-  const { children, className, small, medium, large, open, id, close, renderOverlay } = props;
+  const {
+    children,
+    className,
+    small,
+    medium,
+    large,
+    open,
+    id,
+    close,
+    renderOverlay,
+    drawerFooter,
+  } = props;
 
   let openDrawer = open;
   if (typeof open === 'string') {
@@ -42,6 +53,7 @@ const Drawer = props => {
   const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
   const classToShowOnViewports = showOnViewport({ small, medium, large });
+  const Footer = drawerFooter;
 
   return (
     <div className={className}>
@@ -50,11 +62,16 @@ const Drawer = props => {
       isDrawerNotRequiredOnAllViewports(small, medium, large) && (
         <div className={`${classToShowOnViewports}`}>{children}</div>
       )}
-      <React.Fragment>
-        <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
-          <div className="tcp-drawer-content">{children}</div>
-        </aside>
-      </React.Fragment>
+      {openDrawer && (
+        <React.Fragment>
+          <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
+            <div className="tcp-drawer-content">
+              {children}
+              {drawerFooter && <Footer />}
+            </div>
+          </aside>
+        </React.Fragment>
+      )}
     </div>
   );
 };
@@ -69,6 +86,7 @@ Drawer.propTypes = {
   id: PropTypes.string.isRequired,
   close: PropTypes.bool.isRequired,
   renderOverlay: PropTypes.bool,
+  drawerFooter: PropTypes.element,
 };
 
 Drawer.defaultProps = {
@@ -76,6 +94,7 @@ Drawer.defaultProps = {
   medium: false,
   large: false,
   renderOverlay: false,
+  drawerFooter: '',
 };
 
 export { Drawer as DrawerVanilla };

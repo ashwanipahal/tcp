@@ -3,11 +3,14 @@
 exports[`ModuleH component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <TouchableOpacity
-      accessibilityRole="link"
-      activeOpacity={0.2}
+    <Styled(Anchor)
+      anchorVariation=""
+      customStyle={Object {}}
       key="0"
-      onPress={[Function]}
+      locator=""
+      text=""
+      url="/toddler"
+      visible={false}
     >
       <Styled(Heading)
         color="white"
@@ -15,16 +18,25 @@ exports[`ModuleH component renders correctly 1`] = `
         fontSize="fs36"
         fontWeight="black"
         letterSpacing="ls167"
+        locator=""
+        style={
+          Object {
+            "height": 38,
+          }
+        }
         testID="moduleH_header_text_1"
         text="New arrivals"
         textAlign="left"
       />
-    </TouchableOpacity>
-    <TouchableOpacity
-      accessibilityRole="link"
-      activeOpacity={0.2}
+    </Styled(Anchor)>
+    <Styled(Anchor)
+      anchorVariation=""
+      customStyle={Object {}}
       key="1"
-      onPress={[Function]}
+      locator=""
+      text=""
+      url="/toddler"
+      visible={false}
     >
       <Styled(Heading)
         color="white"
@@ -32,11 +44,17 @@ exports[`ModuleH component renders correctly 1`] = `
         fontSize="fs36"
         fontWeight="black"
         letterSpacing="ls167"
+        locator=""
+        style={
+          Object {
+            "height": 38,
+          }
+        }
         testID="moduleH_header_text_2"
         text="New adventures"
         textAlign="left"
       />
-    </TouchableOpacity>
+    </Styled(Anchor)>
   </Styled(View)>
   <WithTheme(SnapCarousel)
     carouselConfig={
@@ -147,106 +165,146 @@ exports[`ModuleH component renders correctly 1`] = `
     width={750}
   />
   <Styled(View)>
-    <Styled(BodyCopy)
-      color="white"
-      fontFamily="secondary"
-      fontSize="fs20"
-      fontWeight="extrabold"
-      key="0"
-      letterSpacing="ls167"
-      onPress={[Function]}
-      style={
-        Object {
-          "color": "#fff",
-          "fontSize": 20,
-          "lineHeight": 20,
-          "marginTop": 38,
+    <Styled(Anchor)
+      anchorVariation=""
+      customStyle={Object {}}
+      locator=""
+      text=""
+      url="/toddler"
+      visible={false}
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs20"
+        fontWeight="extrabold"
+        key="0"
+        letterSpacing="ls167"
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+            "lineHeight": 20,
+            "marginTop": 38,
+          }
         }
-      }
-      testID="moduleH_cta_links_1"
-      text="Toddler Girl"
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      color="white"
-      fontFamily="secondary"
-      fontSize="fs20"
-      fontWeight={null}
-      key="1"
-      letterSpacing="ls167"
-      onPress={[Function]}
-      style={
-        Object {
-          "color": "#fff",
-          "fontSize": 20,
-          "lineHeight": 20,
-          "marginTop": 38,
+        testID="moduleH_cta_links_1"
+        text="Toddler Girl"
+        textAlign="left"
+      />
+    </Styled(Anchor)>
+    <Styled(Anchor)
+      anchorVariation=""
+      customStyle={Object {}}
+      locator=""
+      text=""
+      url="/girl"
+      visible={false}
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs20"
+        fontWeight={null}
+        key="1"
+        letterSpacing="ls167"
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+            "lineHeight": 20,
+            "marginTop": 38,
+          }
         }
-      }
-      testID="moduleH_cta_links_2"
-      text="Girl"
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      color="white"
-      fontFamily="secondary"
-      fontSize="fs20"
-      fontWeight={null}
-      key="2"
-      letterSpacing="ls167"
-      onPress={[Function]}
-      style={
-        Object {
-          "color": "#fff",
-          "fontSize": 20,
-          "lineHeight": 20,
-          "marginTop": 38,
+        testID="moduleH_cta_links_2"
+        text="Girl"
+        textAlign="left"
+      />
+    </Styled(Anchor)>
+    <Styled(Anchor)
+      anchorVariation=""
+      customStyle={Object {}}
+      locator=""
+      text=""
+      url="/toddler-boy"
+      visible={false}
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs20"
+        fontWeight={null}
+        key="2"
+        letterSpacing="ls167"
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+            "lineHeight": 20,
+            "marginTop": 38,
+          }
         }
-      }
-      testID="moduleH_cta_links_3"
-      text="Toddler boy"
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      color="white"
-      fontFamily="secondary"
-      fontSize="fs20"
-      fontWeight={null}
-      key="3"
-      letterSpacing="ls167"
-      onPress={[Function]}
-      style={
-        Object {
-          "color": "#fff",
-          "fontSize": 20,
-          "lineHeight": 20,
-          "marginTop": 38,
+        testID="moduleH_cta_links_3"
+        text="Toddler boy"
+        textAlign="left"
+      />
+    </Styled(Anchor)>
+    <Styled(Anchor)
+      anchorVariation=""
+      customStyle={Object {}}
+      locator=""
+      text=""
+      url="/boy"
+      visible={false}
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs20"
+        fontWeight={null}
+        key="3"
+        letterSpacing="ls167"
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+            "lineHeight": 20,
+            "marginTop": 38,
+          }
         }
-      }
-      testID="moduleH_cta_links_4"
-      text="Boy"
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      color="white"
-      fontFamily="secondary"
-      fontSize="fs20"
-      fontWeight={null}
-      key="4"
-      letterSpacing="ls167"
-      onPress={[Function]}
-      style={
-        Object {
-          "color": "#fff",
-          "fontSize": 20,
-          "lineHeight": 20,
-          "marginTop": 38,
+        testID="moduleH_cta_links_4"
+        text="Boy"
+        textAlign="left"
+      />
+    </Styled(Anchor)>
+    <Styled(Anchor)
+      anchorVariation=""
+      customStyle={Object {}}
+      locator=""
+      text=""
+      url="/baby"
+      visible={false}
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs20"
+        fontWeight={null}
+        key="4"
+        letterSpacing="ls167"
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+            "lineHeight": 20,
+            "marginTop": 38,
+          }
         }
-      }
-      testID="moduleH_cta_links_5"
-      text="Baby"
-      textAlign="left"
-    />
+        testID="moduleH_cta_links_5"
+        text="Baby"
+        textAlign="left"
+      />
+    </Styled(Anchor)>
   </Styled(View)>
 </Styled(View)>
 `;

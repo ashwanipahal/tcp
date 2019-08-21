@@ -1,12 +1,36 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleK/mock';
-import PromoBanner, { bodyCopyStyles } from '../views/PromoBanner.native';
+import { PromoBannerVanilla, bodyCopyStyles } from '../views/PromoBanner.native';
 
 describe('PromoTextBanner native component', () => {
+  let component;
+
+  beforeEach(() => {
+    component = shallow(
+      <PromoBannerVanilla promoBanner={mock.moduleK.composites.masonryGrid[0].promoBanner} />
+    );
+  });
+
+  it('ModuleN should be defined', () => {
+    expect(component).toBeDefined();
+  });
+
+  it('ModuleN should render correctly', () => {
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should render 1View', () => {
+    expect(component.find('Styled(View)')).toHaveLength(1);
+  });
+
+  it('should render View', () => {
+    expect(component.find('Styled(Styled(BodyCopy))')).toHaveLength(0);
+  });
+
   it('renders correctly', () => {
     const wrapper = shallow(
-      <PromoBanner
+      <PromoBannerVanilla
         promoBanner={mock.moduleK.composites.masonryGrid[0].promoBanner}
         dataLocator="moduleK_text_"
       />

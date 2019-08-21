@@ -2,13 +2,15 @@ import { LOGINPAGE_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants
 import { createSelector } from 'reselect';
 import constants from '../LoginPage.constants';
 
-const getLoginState = state => {
+export const getLoginState = state => {
   return state[LOGINPAGE_REDUCER_KEY];
 };
 
-export const getUserLoggedInState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('isLoggedin')
+export const getLabels = state => state.Labels.global;
+
+export const getLoginLabels = createSelector(
+  getLabels,
+  labels => labels && labels.login
 );
 
 export const getLoginError = createSelector(
@@ -17,8 +19,14 @@ export const getLoginError = createSelector(
 );
 
 export const getLoginErrorMessage = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('errorMessage')
+  [getLoginState, getLoginLabels],
+  (loginState, labels) => {
+    const errorCode = loginState && loginState.get('errorCode');
+    if (errorCode && labels[`lbl_login_error_${errorCode}`]) {
+      return labels[`lbl_login_error_${errorCode}`];
+    }
+    return (loginState && loginState.getIn(['errorMessage', '_error'])) || labels.lbl_login_error;
+  }
 );
 
 export const shouldShowRecaptcha = createSelector(
@@ -32,8 +40,6 @@ export const getUserName = createSelector(
   getLoginState,
   loginState => loginState && loginState.get('firstName')
 );
-
-export const getLabels = state => state.Labels.global;
 
 export const getPointsToNextRewardState = createSelector(
   getLoginState,

@@ -5,6 +5,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
   appType="tcp"
   theme={
     Object {
+      "brand": "tcp",
       "breakpoints": Object {
         "keys": Array [
           "xs",
@@ -32,6 +33,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
+          "600": "#1ba5e0",
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
@@ -55,9 +57,13 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#fbd5a5",
           "50": "#fef4e8",
           "500": "#fac078",
-          "700": "#f8ab4b",
+          "700": "#f9b662",
           "800": "#f7971f",
           "900": "#c25621",
+        },
+        "pink": Object {
+          "400": "#f78cc6",
+          "500": "#df4b9a",
         },
         "primary": Object {
           "dark": "#3c7fb0",
@@ -81,6 +87,13 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "hint": "#9b9b9b",
           "primary": "#1a1a1a",
           "secondary": "#575757",
+        },
+        "userTheme": Object {
+          "mpr": "#f7971f",
+          "mprLight": "#fdead2",
+          "mprPrimary": "#fbd5a5",
+          "plcc": "#254f6e",
+          "plccLight": "#dbebf8",
         },
         "white": "#fff",
         "yellow": Object {
@@ -111,6 +124,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "PRIMARY": "#4b9fdd",
         },
         "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#ffffff",
+            "HOVER": "#ffffff",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
           "BLUE": Object {
             "ALT_FOCUS": "#1f4862",
             "ALT_HOVER": "#1f4862",
@@ -142,7 +164,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "BUTTON_HOVER": "rgba(24, 24, 24, 0.8)",
         "CHECKBOX": Object {
           "BORDER": "#575757",
-          "CHECKED_BORDER": "#2e6a91",
+          "CHECKED_BORDER": "#1a1a1a",
           "TICK_COLOR": "#fff",
         },
         "COUNT_ICON_DISABLE": "rgba(0, 0, 0, 0.3)",
@@ -493,6 +515,8 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "ls222": "2.22px",
           "ls257": "2.57px",
           "ls271": "2.71px",
+          "ls317": "3.17px",
+          "ls400": "4px",
           "normal": "normal",
         },
         "lineHeights": Object {

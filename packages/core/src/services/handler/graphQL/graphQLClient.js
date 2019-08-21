@@ -54,21 +54,23 @@ class AwsAppSyncClient extends AWSAppSync {
   }
 
   /**
+   * @function resetClient
+   * This method resets singleton instance - needed for brand switch in mobile app
+   *
+   * @static
+   * @memberof AwsAppSyncClient
+   */
+  static resetClient() {
+    this[singleton] = null;
+  }
+
+  /**
    * This function executes graphQL query
    * @param {*} query GraphQL query
    * @returns {Promise} Resolves with data or rejects with error object
    */
   executeQuery(query) {
-    return this.hydrated().then(client => {
-      return client.query({ query, fetchPolicy: 'network-only' }).catch(e => {
-        this.errorHandler(e);
-      });
-    });
-  }
-
-  errorHandler(e) {
-    // eslint-disable-next-line no-console
-    console.log(this, e);
+    return this.hydrated().then(client => client.query({ query, fetchPolicy: 'network-only' }));
   }
 }
 

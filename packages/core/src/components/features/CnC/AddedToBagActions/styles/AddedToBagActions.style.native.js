@@ -28,6 +28,7 @@ export const CheckoutButton = styled.TouchableOpacity`
   height: 42px;
   justify-content: center;
   align-items: center;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export default {

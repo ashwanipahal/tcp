@@ -8,7 +8,6 @@ export default css`
   background: white;
   z-index: 10;
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
   .shop-by-size-links {
     padding: 10px 14px 10px;
     ul {
@@ -37,7 +36,7 @@ export default css`
   .icon-back {
     position: absolute;
     top: 17px;
-    left: 14px;
+    left: 0;
     background: url('/static/images/carrot-medium-left-gray.svg');
     width: 10px;
     height: 18px;
@@ -45,15 +44,17 @@ export default css`
   .l1-label {
     padding: 18px 0;
   }
-  .sizes-rage-background {
-    background: #f3f3f3;
-    width: 100%;
+  .sizes-range-background {
     min-height: 40px;
     text-align: center;
     position: relative;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    margin: 0 14px;
   }
 
   .l2-nav-link {
+    display: flex;
+    align-items: center;
     padding: 18px 14px 17px 14px;
     line-height: 1.15;
     &.highlighted {
@@ -94,7 +95,9 @@ export default css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     display: none;
-    top: 71px;
+    top: 75px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+
     .s-display-none {
       display: block;
     }
@@ -122,7 +125,7 @@ export default css`
     .l2-nav-category-divider {
       display: inline-block;
       position: absolute;
-      width: 80px;
+      width: 88px;
       height: 1px;
       border-radius: 0.5px;
       background-color: #439ad4;
@@ -130,10 +133,15 @@ export default css`
     .l2-nav-category-links {
       display: flex;
       ul {
+        width: 100%;
         flex-grow: 1;
+      }
+      ul.half-width {
+        width: 50%;
       }
     }
     .l2-nav-link {
+      display: block;
       padding: 13px 0 12px 0;
       line-height: 1.07;
     }
@@ -168,6 +176,12 @@ export default css`
       span {
         display: inline-block;
       }
+    }
+    .sizes-range-background {
+      background: ${props => props.theme.colorPalette.gray[300]};
+      width: 100%;
+      border-bottom: none;
+      margin: 0;
     }
   }
 `;

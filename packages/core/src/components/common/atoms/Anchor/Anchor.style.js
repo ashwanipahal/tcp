@@ -3,6 +3,8 @@ import buttonStyles from '../Button/Button.style';
 
 const AnchorStyles = css`
   font-family: ${props => props.theme.fonts.secondaryFontFamily};
+  color: inherit;
+
   ${props =>
     props.anchorVariation === 'primary'
       ? `
@@ -25,6 +27,12 @@ const AnchorStyles = css`
     props.anchorVariation === 'grayed'
       ? `
       color: ${props.theme.colors.ANCHOR.GRAYED};
+    `
+      : ''};
+  ${props =>
+    props.anchorVariation === 'white'
+      ? `
+      color: ${props.theme.colors.WHITE};
     `
       : ''};
   ${props =>
@@ -93,6 +101,14 @@ const AnchorStyles = css`
   `
       : ''};
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
+  .left-arrow {
+    border: solid ${props => props.theme.colors.ANCHOR.SECONDARY};
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
 `;
 
 export default AnchorStyles;

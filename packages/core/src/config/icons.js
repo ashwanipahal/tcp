@@ -34,7 +34,18 @@ export default {
   down_arrow_icon: '/static/images/carrot-small-down.png',
   up_arrow_icon: '/static/images/carrot-small-up.png',
   active_icon: '/static/images/circle-check.png',
+  'circle-check-fill': '/static/images/circle-check-fill.png',
+  'circle-error-fill': '/static/images/circle-error-fill.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
+  // TODO - Remove the fav_icon when the vector Icons would be implemented
+  'fav-icon': '/static/images/heart.png',
+  'cart-icon': '/static/images/bag.png',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
+  'close-icon': '/static/images/close.png',
+  'mailing-address-icon': '/static/images/mailingAddress.jpg',
+  'fav-store-icon': '/static/images/store.jpg',
+  'birthday-icon': '/static/images/birthday.jpg',
+  'survey-icon': '/static/images/survey.png',
+  'smiley-icon': '/static/images/smiley-icon.png',
 };

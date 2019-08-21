@@ -15,6 +15,12 @@ export default css`
     position: relative;
   }
 
+  .no-scroll {
+    @media ${mediaQuery.smallOnly} {
+      overflow: hidden;
+    }
+  }
+
   .ReactModal__Body--open {
     overflow: hidden;
   }
@@ -95,7 +101,7 @@ export default css`
   }
 
   .margin-none {
-    margin: 0;
+    margin: 0 !important;
   }
 
   ul {

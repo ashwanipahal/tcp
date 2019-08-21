@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
+import Footer from '../../Footer';
 import style from '../Navigation.style';
 
 const Navigation = props => {
@@ -20,11 +21,12 @@ const Navigation = props => {
         large: '100%',
       }}
       position={{
-        top: '157px',
+        top: '155px',
         left: 0,
         topMedium: '111px',
       }}
       renderOverlay
+      drawerFooter={Footer}
     >
       <nav className={`${className} navigation nav-bar`}>
         <NavBar {...props} />

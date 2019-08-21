@@ -19,12 +19,12 @@ const Abstractor = {
     return navLinkList.map(listItem => {
       const subCategories = {};
       listItem.subCategories.map(subCategory => {
-        if (!subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum']) {
-          subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'] = [];
+        const subCat = subCategory;
+        const category = subCat.categoryContent.groupIdentifierName || 'Lorem Ipsum';
+        if (!subCategories[category]) {
+          subCategories[category] = [];
         }
-        subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'].push(
-          subCategory
-        );
+        subCategories[category].push(subCat);
         return subCategory;
       });
 

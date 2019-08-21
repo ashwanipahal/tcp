@@ -7,7 +7,8 @@ import {
   getPointsToNextRewardState,
   getCurrentPointsState,
   getTotalRewardsState,
-} from '../../../../LoginPage/container/LoginPage.selectors';
+  isPlccUser,
+} from '../../../../User/container/User.selectors';
 
 /**
  * @function RewardsPointsContainer The RewardsPointsContainer component is the main container for the Rewards Points Container section
@@ -23,7 +24,14 @@ export class RewardsPointsContainer extends React.PureComponent {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { pointsToNextReward, currentPoints, totalRewards, labels, tableView } = this.props;
+    const {
+      pointsToNextReward,
+      currentPoints,
+      totalRewards,
+      labels,
+      tableView,
+      plccUser,
+    } = this.props;
 
     if (tableView) {
       return (
@@ -40,13 +48,15 @@ export class RewardsPointsContainer extends React.PureComponent {
         pointsToNextReward={pointsToNextReward}
         currentPoints={currentPoints}
         totalRewards={totalRewards}
+        plccUser={plccUser}
         labels={labels}
       />
     );
   }
 }
 
-const commonLabels = state => state.Labels.account.common;
+const commonLabels = state =>
+  state.Labels && state.Labels.account ? state.Labels.account.common : '';
 
 const mapStateToProps = state => {
   return {
@@ -54,6 +64,7 @@ const mapStateToProps = state => {
     pointsToNextReward: getPointsToNextRewardState(state),
     currentPoints: getCurrentPointsState(state),
     totalRewards: getTotalRewardsState(state),
+    plccUser: isPlccUser(state),
   };
 };
 
@@ -61,6 +72,7 @@ RewardsPointsContainer.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
+  plccUser: PropTypes.bool,
   labels: PropTypes.shape({
     lbl_common_current_points: PropTypes.string,
     lbl_common_heading: PropTypes.string,
@@ -74,6 +86,7 @@ RewardsPointsContainer.defaultProps = {
   pointsToNextReward: '',
   currentPoints: '',
   totalRewards: '',
+  plccUser: false,
   labels: {
     lbl_common_current_points: '',
     lbl_common_heading: '',

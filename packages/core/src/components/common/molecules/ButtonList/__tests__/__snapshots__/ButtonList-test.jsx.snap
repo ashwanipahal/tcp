@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList component renders correctly 1`] = `
+<div
+  className=" link-comp-wrapper"
+>
+  <Styled(Anchor)
+    className="link-button"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      dataLocator="0"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="link-button"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      dataLocator="1"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="link-button"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      dataLocator="2"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="link-button"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      dataLocator="3"
+    />
+  </Styled(Anchor)>
+</div>
+`;
+
+exports[`ButtonList component renders correctly for image cta List 1`] = `
+<div
+  className=" scroll-comp-wrapper"
+>
+  <div
+    className="scroll-cta-wrapper div-image-wrapper"
+  >
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="0"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v156206en-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          />
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="1"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          />
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="2"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w61640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          />
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="3"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          />
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="4"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          />
+        </Styled(Anchor)>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
+<div
+  className=" scroll-comp-wrapper"
+>
+  <Styled(Anchor)
+    className="scroll-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      dataLocator="0"
+      fill="RED"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      dataLocator="1"
+      fill="RED"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      dataLocator="2"
+      fill="RED"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      dataLocator="3"
+      fill="RED"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      dataLocator="4"
+      fill="RED"
+    />
+  </Styled(Anchor)>
+</div>
+`;
+
+exports[`ButtonList component renders correctly with props for stacked CTA buttons 1`] = `
+<div
+  className=" stack-comp-wrapper"
+>
+  <Styled(Anchor)
+    className="stacked-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      dataLocator="0"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      dataLocator="1"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      dataLocator="2"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      dataLocator="3"
+    />
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      dataLocator="4"
+    />
+  </Styled(Anchor)>
+</div>
+`;
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<div
+  className=" "
+>
+  <Component />
+</div>
+`;

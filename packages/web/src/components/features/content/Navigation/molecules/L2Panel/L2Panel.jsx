@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import mock from '@tcp/core/src/services/abstractors/bootstrap/navigation/mock';
 import { Heading, Row, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import PromoBadge from '../PromoBadge';
+import L3Panel from '../L3Panel';
 import style from './L2Panel.style';
 
 const createShopByLinks = (links, column) => {
@@ -29,39 +30,79 @@ const createShopByLinks = (links, column) => {
   );
 };
 
-const createLinks = (links, column, categoryIndex) => {
+const renderArrowIcon = hasSubCategories => {
+  return hasSubCategories && <span className="icon-arrow" />;
+};
+
+const renderLabel = (classForRedContent, promoBadge, name) => {
+  return (
+    <span className={`nav-bar-item-label ${classForRedContent} ${!promoBadge ? 'full-width' : ''}`}>
+      {name}
+    </span>
+  );
+};
+
+const renderPromoBadge = (promoBadge, currentIndex) => {
+  return (
+    promoBadge && (
+      <span className="nav-bar-item-content" data-locator={`promo_badge_${currentIndex}`}>
+        {<PromoBadge data={promoBadge} />}
+      </span>
+    )
+  );
+};
+
+const renderL3Panel = (hasSubCategories, index, l3Drawer, hideL3Drawer, name, subCategories) => {
+  return (
+    hasSubCategories && (
+      <L3Panel
+        id={`l3-drawer-${index.toString()}`}
+        open={l3Drawer && l3Drawer.openDrawer}
+        close={l3Drawer && l3Drawer.closeDrawer}
+        hideL3Drawer={hideL3Drawer(`l3-drawer-${index.toString()}`)}
+        name={name}
+        links={subCategories}
+      />
+    )
+  );
+};
+
+const createLinks = (
+  links,
+  column,
+  categoryIndex,
+  { openL3Drawer, hideL3Drawer, l3Drawer, className }
+) => {
   if (links.length) {
     return (
-      <ul>
+      <ul className={className}>
         {links.map((l2Links, index) => {
           const {
             categoryContent: { id, name, seoToken, mainCategory },
+            subCategories,
           } = l2Links;
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + 7 : index;
+          const hasSubCategories = subCategories && subCategories.length > 0;
+
           return (
-            <Anchor
-              to={`/c/${seoToken}`}
-              data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}
-            >
-              <BodyCopy
-                className="l2-nav-link"
-                fontFamily="secondary"
-                fontSize={['fs13', 'fs13', 'fs14']}
-                lineHeight="lh107"
-                color="text.primary"
-              >
-                <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
-                <span
-                  className="nav-bar-l1-item-content"
-                  data-locator={`promo_badge_${currentIndex}`}
+            <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
+              <Anchor to={`/c/${seoToken}`} onClick={openL3Drawer(`l3-drawer-${index.toString()}`)}>
+                <BodyCopy
+                  className="l2-nav-link"
+                  fontFamily="secondary"
+                  fontSize={['fs13', 'fs13', 'fs14']}
+                  lineHeight="lh107"
+                  color="text.primary"
                 >
-                  {(promoBadge && <PromoBadge data={promoBadge} />) || ``}
-                </span>
-                <span className="icon-arrow" />
-              </BodyCopy>
-            </Anchor>
+                  {renderLabel(classForRedContent, promoBadge, name)}
+                  {renderPromoBadge(promoBadge, currentIndex)}
+                  {renderArrowIcon(hasSubCategories)}
+                </BodyCopy>
+              </Anchor>
+              {renderL3Panel(hasSubCategories, index, l3Drawer, hideL3Drawer, name, subCategories)}
+            </li>
           );
         })}
       </ul>
@@ -71,12 +112,23 @@ const createLinks = (links, column, categoryIndex) => {
 };
 
 const L2Panel = props => {
-  const { className, panelData, categoryLayout, order, name, hideL2Drawer, l1Index } = props;
+  const {
+    className,
+    panelData,
+    categoryLayout,
+    order,
+    name,
+    hideL2Drawer,
+    l1Index,
+    openL3Drawer,
+    hideL3Drawer,
+    l3Drawer,
+  } = props;
 
   return (
     <React.Fragment>
       <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel`}>
-        <div className="sizes-rage-background">
+        <div className="sizes-range-background">
           <span
             role="button"
             tabIndex={0}
@@ -102,6 +154,10 @@ const L2Panel = props => {
             };
             const firstCol = panelData[category].slice(0, 7);
             const secondCol = panelData[category].slice(7);
+            let columnClass = '';
+            if (firstCol.length && secondCol.length) {
+              columnClass = 'half-width';
+            }
             const hideOnMobileClass = category === 'Lorem Ipsum' ? 's-display-none' : '';
             return (
               <React.Fragment>
@@ -117,8 +173,18 @@ const L2Panel = props => {
                     <span className="l2-nav-category-divider" />
                   </div>
                   <div className="l2-nav-category-links">
-                    {createLinks(firstCol, 1, categoryIndex)}
-                    {createLinks(secondCol, 2, categoryIndex)}
+                    {createLinks(firstCol, 1, categoryIndex, {
+                      openL3Drawer,
+                      hideL3Drawer,
+                      l3Drawer,
+                      className: { columnClass },
+                    })}
+                    {createLinks(secondCol, 2, categoryIndex, {
+                      openL3Drawer,
+                      hideL3Drawer,
+                      l3Drawer,
+                      className: { columnClass },
+                    })}
                   </div>
                 </Col>
               </React.Fragment>
@@ -213,6 +279,9 @@ L2Panel.propTypes = {
   name: PropTypes.string.isRequired,
   hideL2Drawer: PropTypes.func.isRequired,
   l1Index: PropTypes.number,
+  openL3Drawer: PropTypes.func.isRequired,
+  hideL3Drawer: PropTypes.func.isRequired,
+  l3Drawer: PropTypes.shape({}).isRequired,
 };
 
 L2Panel.defaultProps = {

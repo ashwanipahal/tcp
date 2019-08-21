@@ -90,18 +90,21 @@ const TextBox = ({
       <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
       </BodyCopy>
-      <BodyCopy
-        className="TextBox__error"
-        color="error"
-        component="div"
-        fontSize="fs12"
-        fontFamily="secondary"
-        role="alert"
-        aria-live="assertive"
-        data-locator={errorDataLocator}
-      >
-        {touched && error ? error : ''}
-      </BodyCopy>
+      <div className="TextBox__error">
+        <div className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
+        <BodyCopy
+          color="error"
+          component="div"
+          fontSize="fs12"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          role="alert"
+          aria-live="assertive"
+          data-locator={errorDataLocator}
+        >
+          {touched && error ? error : ''}
+        </BodyCopy>
+      </div>
       {enableSuccessCheck && <div className="success__checkmark" />}
     </label>
   );

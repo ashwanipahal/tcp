@@ -1,30 +1,34 @@
 import React from 'react';
-import withStyles from '../../../hoc/withStyles.native';
 import BodyCopy from '../../BodyCopy';
-import { BadgeStyles, BadgeView, DefaultBadgeView } from '../Badge.style.native';
+import CustomIcon from '../../Icon';
+import { ICON_NAME } from '../../Icon/Icon.constants';
+import { BadgeView, DefaultBadgeView, PrimaryBadgeView } from '../Badge.style.native';
 
 // @flow
 
 type Props = {
   children: string,
-  showCheckmark: boolean,
   dataLocator: ?string,
+  primary: ?boolean,
 };
 
-const Badge = ({ children, showCheckmark, dataLocator }: Props) => (
-  <React.Fragment>
-    {showCheckmark && (
-      <DefaultBadgeView data-locator={dataLocator}>
-        <BodyCopy fontSize="fs10" fontWeight="regular" color="white" text={children} />
-      </DefaultBadgeView>
-    )}
-    {!showCheckmark && (
-      <BadgeView data-locator={dataLocator}>
-        <BodyCopy fontSize="fs10" fontWeight="regular" text={children} />
-      </BadgeView>
-    )}
-  </React.Fragment>
-);
+const Badge = ({ children, dataLocator, primary }: Props) => {
+  const BadgeViewWrapper = primary ? PrimaryBadgeView : DefaultBadgeView;
 
-export default withStyles(Badge, BadgeStyles);
-export { Badge as BadgeVanilla };
+  return (
+    <BadgeViewWrapper data-locator={dataLocator}>
+      <BadgeView>
+        {!primary && <CustomIcon name={ICON_NAME.checkmark} size={10} color="white" />}
+        <BodyCopy
+          mobilefontFamily={['secondary']}
+          fontWeight="semibold"
+          fontSize="fs10"
+          color="white"
+          text={children}
+        />
+      </BadgeView>
+    </BadgeViewWrapper>
+  );
+};
+
+export default Badge;

@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
-import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
+import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import {
   Container,
@@ -49,10 +49,9 @@ const renderItem = (item, navigation) => {
     <Anchor
       url={link.url}
       navigation={navigation}
-      external={link.external}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer>
+      <ChildContainer bgClass={item.item.class.class}>
         <Image
           url={image.url}
           height={127}
@@ -76,7 +75,6 @@ const renderItem = (item, navigation) => {
               visible={anchorIcon}
               url={link.url}
               navigation={navigation}
-              external={link.external}
               testID={`${getLocator('moduleL_link')}${index + 1}`}
             />
           </LinkContainer>
@@ -112,7 +110,11 @@ const ModuleL = (props: Props) => {
         />
       )}
       {promoBanner && (
-        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleL_promobanner_text')} />
+        <PromoBanner
+          promoBanner={promoBanner}
+          testID={getLocator('moduleL_promobanner_text')}
+          navigation={navigation}
+        />
       )}
       <ListContainer>
         <FlatList

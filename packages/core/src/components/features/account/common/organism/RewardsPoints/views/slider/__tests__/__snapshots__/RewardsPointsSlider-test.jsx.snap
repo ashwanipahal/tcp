@@ -6,9 +6,10 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
 >
   <Styled(Row)>
     <Styled(Col)
+      className="current-points"
       colSize={
         Object {
-          "large": 4,
+          "large": 5,
           "medium": 3,
           "small": 2,
         }
@@ -18,6 +19,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         className={null}
         color="text.primary"
         component="p"
+        data-locator="slidercurrentpointslbl"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -30,6 +32,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           className={null}
           color="text.primary"
           component="span"
+          data-locator="slidercurrentpointsvalue"
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="black"
@@ -40,9 +43,10 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="my-rewards"
       colSize={
         Object {
-          "large": 8,
+          "large": 7,
           "medium": 5,
           "small": 4,
         }
@@ -52,6 +56,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         className={null}
         color="text.primary"
         component="p"
+        data-locator="slidermyrewardslbl"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -64,6 +69,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           className={null}
           color="text.primary"
           component="span"
+          data-locator="slidermyrewardsvalue"
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="black"
@@ -88,9 +94,10 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     >
       <div
         className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM"
+        data-locator="sliderpointsgraph"
       >
         <div
-          className="progressbar-rewards"
+          className="progressbar-rewards currentpoint-slider progressbar-rewards "
           style={
             Object {
               "width": "%",
@@ -114,6 +121,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         className={null}
         color="text.primary"
         component="p"
+        data-locator="slidernextrewardspointslbl"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -126,6 +134,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           className={null}
           color="text.primary"
           component="span"
+          data-locator="slidernextrewardspointsvalue"
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="black"

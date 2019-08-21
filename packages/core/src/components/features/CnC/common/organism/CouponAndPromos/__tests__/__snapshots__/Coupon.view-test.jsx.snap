@@ -1,22 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CartItemTile Component CartItemTile should render correctly 1`] = `
-<ReduxForm
-  destroyOnUnmount={true}
-  enableReinitialize={false}
-  forceUnregisterOnUnmount={false}
-  form="CouponForm"
-  getFormState={[Function]}
-  keepDirtyOnReinitialize={false}
-  persistentSubmitErrors={false}
-  pure={true}
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateUnregisteredFields={false}
-/>
+exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
+<div>
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="CouponForm"
+    getFormState={[Function]}
+    isFetching={false}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "APPLIED_REWARDS_HEADING": "Applied",
+        "AVAILABLE_REWARDS_HEADING": "Available",
+      }
+    }
+    onNeedHelpTextClick={[Function]}
+    onSubmit={[Function]}
+    onSubmitSuccess={[Function]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    source="form"
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+  />
+  <div
+    className="coupon_list"
+  >
+    <Styled(CouponListSection)
+      className="applied_coupon"
+      couponDetailClick={[Function]}
+      couponList={Immutable.List []}
+      dataLocator="coupon-cartAppliedRewards"
+      heading="Applied"
+      isFetching={false}
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
+      }
+    />
+    <Styled(CouponListSection)
+      className="available_coupon"
+      couponDetailClick={[Function]}
+      couponList={Immutable.List []}
+      dataLocator="coupon-cartAvaliableRewards"
+      heading="Available"
+      helpAnchorClick={[Function]}
+      helpSubHeading="true"
+      isFetching={false}
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
+      }
+    />
+    <Styled(CouponDetailModal)
+      coupon={Object {}}
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
+      }
+      onRequestClose={[Function]}
+      openState={false}
+    />
+    <CouponHelpModal
+      coupon={Object {}}
+      heading="Help Modal"
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
+      }
+      onRequestClose={[Function]}
+      openState={false}
+    />
+  </div>
+</div>
+`;
+
+exports[`Coupon component should renders correctly when Coupon are present 1`] = `
+<div>
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="CouponForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+      }
+    }
+    onNeedHelpTextClick={[Function]}
+    onSubmitSuccess={[Function]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    source="form"
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+  />
+  <div
+    className="coupon_list"
+  >
+    <Styled(CouponDetailModal)
+      coupon={Object {}}
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
+      }
+      onRequestClose={[Function]}
+      openState={false}
+    />
+    <CouponHelpModal
+      coupon={Object {}}
+      heading="Help Modal"
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
+      }
+      onRequestClose={[Function]}
+      openState={false}
+    />
+  </div>
+</div>
 `;

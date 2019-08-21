@@ -10,8 +10,7 @@ import style from './L1NavItem.style';
  * This function handles if navigation drawer needs to open on current viewport or now
  * @param {*} onClick
  */
-const openNavigationDrawer = onClick => e => {
-  e.preventDefault();
+const openNavigationDrawer = onClick => () => {
   if (!getViewportInfo().isDesktop) {
     onClick();
   }
@@ -50,9 +49,9 @@ const L1NavItem = props => {
           role="button"
           tabIndex={0}
         >
-          <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
+          <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
           <span
-            className={`nav-bar-l1-item-content ${description ? 'nav-bar-item-sizes-range' : ''}`}
+            className={`nav-bar-item-content ${description ? 'nav-bar-item-sizes-range' : ''}`}
             data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
           >
             {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}

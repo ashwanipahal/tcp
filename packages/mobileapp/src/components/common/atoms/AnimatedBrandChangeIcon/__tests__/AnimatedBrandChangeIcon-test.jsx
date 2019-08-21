@@ -17,6 +17,6 @@ describe('Animated Brand Change Icon Native', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('TouchableOpacity')).toHaveLength(3);
+    expect(component.find('TouchableOpacity')).toHaveLength(2);
   });
 });

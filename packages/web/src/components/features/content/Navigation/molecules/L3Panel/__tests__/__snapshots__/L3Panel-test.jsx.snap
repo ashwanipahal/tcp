@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`L3 Panel component renders correctly 1`] = `
+<Styled(Drawer)
+  close={false}
+  height="100%"
+  id="test"
+  large={true}
+  medium={true}
+  open={true}
+  position={
+    Object {
+      "left": 0,
+      "top": 0,
+    }
+  }
+  small={true}
+  width={
+    Object {
+      "large": "100%",
+      "medium": "314px",
+      "small": "314px",
+    }
+  }
+>
+  <div
+    className="undefined nav-bar-l3-panel"
+    data-locator="overrlay_img"
+  >
+    <div
+      className="l3-panel-header"
+    >
+      <span
+        className="icon-back"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
+      />
+      <span
+        className="l1-label l3-label"
+      >
+        testing
+      </span>
+    </div>
+    <Styled(Row)
+      className="nav-bar-l3-details"
+      tabIndex={0}
+    >
+      <ul>
+        <li>
+          <Styled(Anchor)
+            data-locator="l3_link_shop_all"
+            to="/c"
+          >
+            <Styled(BodyCopy)
+              className="l2-nav-link"
+              color="text.primary"
+              component="p"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs13",
+                  "fs13",
+                  "fs14",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="lh107"
+              textAlign="left"
+            >
+              <span
+                className="nav-bar-item-label full-width"
+              >
+                Shop All
+              </span>
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </li>
+        <li>
+          <Styled(Anchor)
+            data-locator="l3_link_0"
+            to="/c/"
+          >
+            <Styled(BodyCopy)
+              className="l2-nav-link"
+              color="text.primary"
+              component="p"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs13",
+                  "fs13",
+                  "fs14",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="lh107"
+              textAlign="left"
+            >
+              <span
+                className="nav-bar-item-label full-width"
+              >
+                Spring Dressy
+              </span>
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </li>
+      </ul>
+    </Styled(Row)>
+  </div>
+</Styled(Drawer)>
+`;

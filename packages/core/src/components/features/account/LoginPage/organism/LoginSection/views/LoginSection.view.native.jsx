@@ -59,6 +59,7 @@ class LoginSection extends PureComponent<Props> {
       successFullResetEmail,
       resetForm,
       resetForgotPasswordErrorResponse,
+      navigation,
     } = this.props;
 
     const { resetPassword, showModal } = this.state;
@@ -95,11 +96,12 @@ class LoginSection extends PureComponent<Props> {
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>{labels.login.lbl_login_createAccountHelp}</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp_1}</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp_2}</Text>
           </DescriptionStyle>
           <CustomButton
-            color={colorPallete.white}
-            fill="BLUE"
+            color={colorPallete.text.secondary}
+            fill="WHITE"
             type="submit"
             buttonVariation="variable-width"
             data-locator=""
@@ -122,7 +124,7 @@ class LoginSection extends PureComponent<Props> {
             </LineWrapper>
             <SafeAreaView>
               <ModalViewWrapper>
-                <CreateAccount onRequestClose={this.toggleModal} />
+                <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
               </ModalViewWrapper>
             </SafeAreaView>
           </ModalNative>
@@ -134,13 +136,21 @@ class LoginSection extends PureComponent<Props> {
 
 LoginSection.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {
   loginErrorMessage: '',
+  labels: {
+    login: {
+      lbl_login_createAccountCTA: '',
+      lbl_login_createAccountHelp: '',
+      lbl_login_createAccountHelp_1: 'Don\u0027t have an account? Create one now to',
+      lbl_login_createAccountHelp_2: 'start earning points!',
+    },
+  },
 };
 
 export default withStyles(LoginSection, FormStyle);

@@ -13,7 +13,7 @@ import {
   countriesOptionsMap,
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from '../../../organism/AddressForm/CountriesAndStates.constants';
+} from '../../../../../../common/organisms/AddressForm/CountriesAndStates.constants';
 import styles from '../styles/AddressFields.style';
 
 export class AddressFields extends React.PureComponent {

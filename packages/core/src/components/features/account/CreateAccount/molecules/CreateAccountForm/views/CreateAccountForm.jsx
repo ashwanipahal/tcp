@@ -6,10 +6,13 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { Image } from '../../../../../../common/atoms';
 import { getIconPath } from '../../../../../../../utils';
+import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 
 // @flow
 type Props = {
@@ -19,6 +22,8 @@ type Props = {
   hideShowPwd: boolean,
   confirmHideShowPwd: boolean,
   onAlreadyHaveAnAccountClick: any,
+  className: string,
+  tooltipContent: any,
 };
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -29,9 +34,11 @@ let CreateAccountForm = ({
   confirmHideShowPwd,
   handleSubmit,
   onAlreadyHaveAnAccountClick,
+  className,
+  tooltipContent,
 }: Props) => {
   return (
-    <div>
+    <div className={className}>
       <form onSubmit={handleSubmit}>
         <Row fullBleed className="row-form-wrapper">
           <Col className="elem-pt-XXL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
@@ -112,7 +119,9 @@ let CreateAccountForm = ({
             />
             <span className="hide-show show-hide-icons">
               <span className="info-icon-img-wrapper">
-                <Image className="tcp_carousel__play" src={getIconPath('info-icon')} />
+                <ReactTooltip message={tooltipContent} aligned="right">
+                  <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+                </ReactTooltip>
               </span>
               <Col
                 className="checkbox-hide-show"
@@ -187,6 +196,7 @@ let CreateAccountForm = ({
               component={InputCheckbox}
               dataLocator="i-agree-checkbox"
               disabled={isMakeDefaultDisabled}
+              alignCheckbox="top"
             >
               {labels.registration.lbl_createAccount_termsConditions}
             </Field>
@@ -198,7 +208,10 @@ let CreateAccountForm = ({
               dataLocator="remember-me-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.registration.lbl_createAccount_rememberMe}
+              <span className="remember-me-text">
+                {labels.registration.lbl_createAccount_rememberMe}
+              </span>
+              <span>{labels.registration.lbl_createAccount_rememberMeHelpText}</span>
             </Field>
           </Col>
           <Col
@@ -250,4 +263,5 @@ CreateAccountForm = reduxForm({
   enableReinitialize: true,
 })(CreateAccountForm);
 
-export default CreateAccountForm;
+export default withStyles(CreateAccountForm, Styles);
+export { CreateAccountForm as CreateAccountFormVanilla };

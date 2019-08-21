@@ -53,8 +53,11 @@ describe('#getOrderPointSummary', () => {
     });
   });
   it('should return valid constructCouponStructure', () => {
-    const result = constructCouponStructure(couponResponse);
-    expect(result).toEqual(couponFormatResponse);
+    let result = constructCouponStructure(couponResponse);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(couponFormatResponse);
   });
 
   it('should return valid constructCouponStructure response', () => {
@@ -67,12 +70,16 @@ describe('#getOrderPointSummary', () => {
     const expected = [
       {
         ...couponFormatResponse[0],
+        offerType: 'PLACECASH',
         promotionType: 'PLACECASH',
         redemptionType: 'PLACECASH',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
 
   it('should return valid constructCouponStructure LOYALTY', () => {
@@ -85,13 +92,18 @@ describe('#getOrderPointSummary', () => {
     const expected = [
       {
         ...couponFormatResponse[0],
+        offerType: 'rewards',
         promotionType: 'LOYALTY',
         redemptionType: 'LOYALTY',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
+
   it('should return valid constructCouponStructure isApplied', () => {
     const temp = [
       {
@@ -102,10 +114,15 @@ describe('#getOrderPointSummary', () => {
     const expected = [
       {
         ...couponFormatResponse[0],
+        offerType: 'saving',
         status: 'applied',
+        labelStatus: 'REMOVE',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
 });

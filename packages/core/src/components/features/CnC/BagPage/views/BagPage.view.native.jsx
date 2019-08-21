@@ -1,13 +1,44 @@
 import React from 'react';
-import { Text } from 'react-native';
-import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger';
+import PropTypes from 'prop-types';
+import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
+import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
+import CouponAndPromos from '../../common/organism/CouponAndPromos';
+import AddedToBagActions from '../../AddedToBagActions';
+import {
+  HeadingViewStyle,
+  MainSection,
+  RowSectionStyle,
+  HeadingTextStyle,
+  ScrollViewWrapper,
+} from '../styles/BagPage.style.native';
 
-const BagPage = () => {
+const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
   return (
-    <React.Fragment>
-      <Text>APP BAG PAGE</Text>
-      <OrderLedgerContainer />
-    </React.Fragment>
+    <>
+      <ScrollViewWrapper showAddTobag={showAddTobag}>
+        <HeadingViewStyle>
+          <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
+        </HeadingViewStyle>
+        <MainSection>
+          <ProductTileWrapper bagLabels={labels} />
+          <RowSectionStyle>
+            <OrderLedgerContainer />
+          </RowSectionStyle>
+          <RowSectionStyle>
+            <CouponAndPromos />
+          </RowSectionStyle>
+        </MainSection>
+      </ScrollViewWrapper>
+      <AddedToBagActions labels={labels} showAddTobag={showAddTobag} navigation={navigation} />
+    </>
   );
 };
+
+BagPage.propTypes = {
+  labels: PropTypes.shape.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  showAddTobag: PropTypes.bool.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+};
+
 export default BagPage;
