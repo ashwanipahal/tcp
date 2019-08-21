@@ -111,6 +111,7 @@ class PaymentView extends React.Component<Props> {
       selectedCard: {},
       showGiftCardModal: false,
     };
+    this.isEdit = false;
   }
 
   componentWillReceiveProps = nextProps => {
@@ -139,8 +140,9 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
-  setUpdateModalMountState = () => {
+  setUpdateModalMountState = (isAdd = true) => {
     const { setUpdateModalMountedState } = this.state;
+    this.isEdit = !isAdd;
     this.setState({
       setUpdateModalMountedState: !setUpdateModalMountedState,
     });
@@ -166,7 +168,7 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
-  getPaymentModal = (setUpdateModalMountedState, dto, labels, updateCardList) => {
+  getPaymentModal = (setUpdateModalMountedState, dto, labels, updateCardList, selectedCard) => {
     return (
       setUpdateModalMountedState && (
         <AddEditPaymentModal
@@ -176,6 +178,8 @@ class PaymentView extends React.Component<Props> {
           toggleModal={this.setUpdateModalMountState}
           setUpdateModalMountedState={setUpdateModalMountedState}
           updateCardList={updateCardList}
+          isEdit={this.isEdit}
+          selectedCard={selectedCard}
         />
       )
     );
@@ -288,7 +292,7 @@ class PaymentView extends React.Component<Props> {
               addressDetails={selectedCard.addressDetails}
             />
           )}
-          {this.getPaymentModal(setUpdateModalMountedState, dto, labels, updateCardList)}
+          {this.getPaymentModal(setUpdateModalMountedState, dto, labels, updateCardList, selectedCard)}
           {showGiftCardModal && (
             <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
               <ModalHeading>

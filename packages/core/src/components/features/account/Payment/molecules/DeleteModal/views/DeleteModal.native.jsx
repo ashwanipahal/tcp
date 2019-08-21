@@ -70,7 +70,7 @@ class DeleteModal extends React.PureComponent<Props> {
           <ModalHeading>
             <BodyCopy
               mobileFontFamily={['secondary']}
-              fontWeight="semibold"
+              fontWeight="regular"
               fontSize="fs16"
               text={labels.paymentGC.lbl_payment_modalDeleteCard}
             />

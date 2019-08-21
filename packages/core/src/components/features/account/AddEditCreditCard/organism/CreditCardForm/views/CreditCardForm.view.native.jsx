@@ -41,13 +41,15 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
     dto: PropTypes.shape({}),
+    selectedCard: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
     onFileAddressKey: '',
     isEdit: false,
-    dto: PropTypes.shape({}),
+    dto: {},
+    selectedCard: {},
   };
 
   constructor(props) {
@@ -71,6 +73,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             address.primary === 'true' ? '(Default)' : ''
           }`,
           content: address,
+          primary: address.primary === 'true',
         }))) ||
       [];
 
@@ -78,6 +81,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       id: '',
       label: labels.paymentGC.lbl_payment_addNewAddCta,
       content: '',
+      primary: false,
     });
 
     return addressOptions.valueSeq().toArray();
@@ -119,7 +123,17 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { labels, addressLabels, addressList, isEdit, invalid, onClose } = this.props;
+    const {
+      labels,
+      addressLabels,
+      addressList,
+      isEdit,
+      invalid,
+      onClose,
+      dto,
+      selectedCard,
+      onFileAddresskey,
+    } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const dropDownStyle = {
       height: 30,
@@ -133,7 +147,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
-          <CreditCardFields {...this.props} updateExpiryDate={this.updateExpiryDate} />
+          <CreditCardFields
+            {...this.props}
+            updateExpiryDate={this.updateExpiryDate}
+            dto={dto}
+            selectedCard={selectedCard}
+          />
         </CreditCardWrapper>
         <AddressWrapper>
           <Heading
@@ -168,6 +187,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 this.handleComponentChange(itemValue);
               }}
               labels={labels}
+              selectedValue={onFileAddresskey}
             />
           )}
           {addressComponentList && addressComponentList.length && (

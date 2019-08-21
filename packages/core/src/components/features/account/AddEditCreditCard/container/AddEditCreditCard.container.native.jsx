@@ -36,6 +36,9 @@ export class AddEditCreditCard extends React.PureComponent {
     labels: PropTypes.shape({}),
     onClose: PropTypes.func,
     updateCardList: PropTypes.func,
+    dto: PropTypes.shape({}),
+    isEdit: PropTypes.bool,
+    selectedCard: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -49,6 +52,9 @@ export class AddEditCreditCard extends React.PureComponent {
     labels: {},
     onClose: () => {},
     updateCardList: () => {},
+    dto: {},
+    isEdit: false,
+    selectedCard: {},
   };
 
   constructor(props) {
@@ -172,6 +178,9 @@ export class AddEditCreditCard extends React.PureComponent {
       addEditCreditCardError,
       labels,
       onClose,
+      dto,
+      isEdit,
+      selectedCard,
     } = this.props;
 
     if (addressList === null) {
@@ -184,7 +193,7 @@ export class AddEditCreditCard extends React.PureComponent {
 
     return (
       <AddEditCreditCardComponent
-        isEdit={!!creditCard}
+        isEdit={isEdit}
         creditCard={creditCard}
         cardType={cardType}
         onFileAddressKey={onFileAddressKey}
@@ -200,6 +209,8 @@ export class AddEditCreditCard extends React.PureComponent {
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}
         onClose={onClose}
+        dto={dto}
+        selectedCard={selectedCard}
       />
     );
   }
