@@ -26,7 +26,7 @@ export function* loginSaga({ payload }) {
         success: false,
         errorCode,
         errorMessage,
-        ...errorResponse
+        ...errorResponse,
       })
     );
   }

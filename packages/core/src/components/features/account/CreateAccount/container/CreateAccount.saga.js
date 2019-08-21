@@ -8,7 +8,7 @@ const getErrorMessage = res => {
   let errorMessageRecieved = '';
   errorMessageRecieved = res && res.body && res.body.errors && res.body.errors[0].errorMessage;
   return {
-    errorMessage: errorMessageRecieved
+    errorMessage: errorMessageRecieved,
   };
 };
 
@@ -27,9 +27,12 @@ export function* createsaga({ payload }) {
     return yield put(createAccountErr(resErr));
   } catch (err) {
     const { errorCode, errorMessage } = err;
-    return yield put(createAccountErr({
-      errorCode, errorMessage
-    }));
+    return yield put(
+      createAccountErr({
+        errorCode,
+        errorMessage,
+      })
+    );
   }
 }
 
