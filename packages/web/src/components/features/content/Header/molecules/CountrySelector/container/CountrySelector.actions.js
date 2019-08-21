@@ -8,7 +8,6 @@ export const getCountryListData = payload => {
 };
 
 export const submitCountrySelection = payload => {
-  console.log(payload);
   return {
     payload,
     type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SUBMIT_DATA,
@@ -46,6 +45,27 @@ export const updateSelectedCurrency = currency => {
   };
 };
 
+export const storeCountriesMap = payload => {
+  return {
+    payload,
+    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_STORE_COUNTRIES_MAP,
+  };
+};
+
+export const storeCurrenciesMap = payload => {
+  return {
+    payload,
+    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_STORE_CURRENCIES_MAP,
+  };
+};
+
+export const udpateSiteId = siteId => {
+  return {
+    siteId,
+    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_SITEID,
+  };
+};
+
 export default {
   getCountryListData,
   submitCountrySelection,
@@ -53,4 +73,7 @@ export default {
   updateSelectedCountry,
   updateSelectedLanguage,
   updateSelectedCurrency,
+  storeCountriesMap,
+  storeCurrenciesMap,
+  udpateSiteId,
 };

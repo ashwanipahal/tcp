@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { BodyCopy, Button } from '@tcp/core/src/components/common/atoms';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getSiteId } from '@tcp/core/src/utils';
+
 import styles, { modalStyles } from '../styles/CountrySelectorModal.style';
 
 class CountrySelectorModal extends React.Component {
@@ -35,7 +37,8 @@ class CountrySelectorModal extends React.Component {
   render() {
     const {
       className,
-      countryListData,
+      countriesMap,
+      currenciesMap,
       handleSubmit,
       isModalOpen,
       closeModal,
@@ -69,34 +72,34 @@ class CountrySelectorModal extends React.Component {
             <label htmlFor="country">
               <span>{labels.lbl_global_country}</span>
               <select name="country" id="country" onChange={this.handleCountryChange}>
-                {countryListData.length > 0 &&
-                  countryListData.map(({ country: { code, name } }) => (
-                    <option value={code}>{name}</option>
+                {countriesMap.length > 0 &&
+                  countriesMap.map(({ code, name }) => (
+                    <option value={code} selected={getSiteId() === code.toLowerCase()}>
+                      {name}
+                    </option>
                   ))}
               </select>
             </label>
             <label htmlFor="language">
               <span>{labels.lbl_global_language}</span>
               <select name="language" id="language" onChange={this.handleLanguageChange}>
-                {languages.map(({ code, name }) => (
-                  <option value={code}>{name}</option>
+                {languages.map(({ id, displayName }) => (
+                  <option value={id}>{displayName}</option>
                 ))}
               </select>
             </label>
             <label htmlFor="currency">
               <span>{labels.lbl_global_currency}</span>
               <select name="currency" id="currency" onChange={this.handleCurrencyChange}>
-                {countryListData.length > 0 &&
-                  countryListData.map(({ currency: { code, name } }) => (
-                    <option value={code}>{name}</option>
-                  ))}
+                {currenciesMap.length > 0 &&
+                  currenciesMap.map(({ code, name }) => <option value={code}>{name}</option>)}
               </select>
             </label>
             <Button
               className="shipToModal__button"
               fill="BLUE"
               buttonVariation="fixed-width"
-              onClick={() => handleSubmit()}
+              onClick={handleSubmit}
             >
               {labels.lbl_global_country_selector_cta}
             </Button>
@@ -112,7 +115,8 @@ class CountrySelectorModal extends React.Component {
 
 CountrySelectorModal.propTypes = {
   className: PropTypes.string.isRequired,
-  countryListData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  countriesMap: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  currenciesMap: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,

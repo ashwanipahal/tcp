@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import utils from '@tcp/core/src/utils';
 
 import {
   getCountryListData,
@@ -7,7 +8,20 @@ import {
   updateSelectedCountry,
   updateSelectedLanguage,
   updateSelectedCurrency,
+  udpateSiteId,
 } from './CountrySelector.actions';
+import {
+  getCurrentCountry,
+  getIsModalOpen,
+  getCountriesMap,
+  getCurrenciesMap,
+  getCurrentLanguage,
+  getCurrentCurrency,
+  getOldCountryCode,
+  getOldLanguageCode,
+  getSitesTable,
+  getSiteId,
+} from './CountrySelector.selectors';
 import CountrySelectorView from '../views';
 
 export const mapDispatchToProps = dispatch => {
@@ -18,8 +32,8 @@ export const mapDispatchToProps = dispatch => {
     loadCountryListData: () => {
       dispatch(getCountryListData());
     },
-    handleSubmit: () => {
-      dispatch(submitCountrySelection());
+    handleSubmit: payload => {
+      dispatch(submitCountrySelection(payload));
     },
     updateCountry: selectedCountry => {
       dispatch(updateSelectedCountry(selectedCountry));
@@ -30,15 +44,24 @@ export const mapDispatchToProps = dispatch => {
     updateCurrency: selectedCurrency => {
       dispatch(updateSelectedCurrency(selectedCurrency));
     },
+    updateSiteId: siteId => {
+      dispatch(udpateSiteId(siteId));
+    },
   };
 };
 
 const mapStateToProps = state => {
-  const { CountrySelector = {} } = state;
   return {
-    isModalOpen: CountrySelector.isModalOpen,
-    countryListData: CountrySelector.countryList,
-    country: CountrySelector.country,
+    isModalOpen: getIsModalOpen(state),
+    countriesMap: getCountriesMap(state),
+    currenciesMap: getCurrenciesMap(state),
+    sitesTable: getSitesTable(state),
+    country: getCurrentCountry(state),
+    language: getCurrentLanguage(state),
+    currency: getCurrentCurrency(state),
+    oldLanguage: getOldLanguageCode(state),
+    oldCountry: getOldCountryCode(state),
+    siteId: getSiteId(state) || utils.getSiteId(),
     labels: state.Labels.global.countrySelector,
   };
 };

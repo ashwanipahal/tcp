@@ -41,8 +41,7 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const routerPush = (href, as) => {
-  const siteId = getSiteId();
+export const routerPush = (href, as, siteId = getSiteId()) => {
   return Router.push(href, `/${siteId}${as}`);
 };
 

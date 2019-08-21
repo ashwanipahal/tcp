@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getFlagIconPath } from '@tcp/core/src/utils';
+import { getSiteId, getFlagIconPath } from '@tcp/core/src/utils';
 
 import CountrySelectorModal from './CountrySelectorModal';
 import style from '../styles/CountrySelector.styles';
-import language from '../../../../../../../config/language';
 
 class CountrySelector extends React.Component {
   openModal = () => {
@@ -25,15 +24,29 @@ class CountrySelector extends React.Component {
     loadCountryListData();
   };
 
+  getSelectedCountry = countryCode => {
+    const { countriesMap } = this.props;
+    return countriesMap.find(country => country.code === countryCode);
+  };
+
   submitForm = () => {
-    const { handleSubmit } = this.props;
-    handleSubmit();
+    const { handleSubmit, country, currency, language, oldCountry, oldLanguage } = this.props;
+    const formData = {
+      country,
+      currency,
+      language,
+      oldCountry,
+      oldLanguage,
+    };
+    handleSubmit(formData);
     this.closeModal();
   };
 
   changeCountry = selectedCountry => {
-    const { updateCountry } = this.props;
+    const { updateCountry, updateSiteId } = this.props;
+    const { siteId } = this.getSelectedCountry(selectedCountry);
     updateCountry(selectedCountry);
+    updateSiteId(siteId);
   };
 
   changeLanguage = selectedLanguage => {
@@ -46,11 +59,24 @@ class CountrySelector extends React.Component {
     updateCurrency(selectedCurrency);
   };
 
+  getLanguageMap = () => {
+    const { siteId, sitesTable } = this.props;
+    return sitesTable[siteId].languages;
+  };
+
   render() {
-    const { className, flag, countryListData, isModalOpen, labels, showInFooter } = this.props;
     const {
-      US: { languages },
-    } = language;
+      className,
+      country,
+      countriesMap,
+      currenciesMap,
+      isModalOpen,
+      labels,
+      showInFooter,
+    } = this.props;
+    const languages = this.getLanguageMap();
+    const flag = country || getSiteId().toUpperCase();
+
     return (
       <div className={`${className} countrySelector`}>
         {showInFooter ? (
@@ -66,7 +92,8 @@ class CountrySelector extends React.Component {
             <CountrySelectorModal
               isModalOpen={isModalOpen}
               closeModal={this.closeModal}
-              countryListData={countryListData}
+              countriesMap={countriesMap}
+              currenciesMap={currenciesMap}
               labels={labels}
               languages={languages}
               handleSubmit={this.submitForm}
@@ -82,7 +109,7 @@ class CountrySelector extends React.Component {
           <Image src={getFlagIconPath(flag)} width="20px" height="20px" onClick={this.openModal} />
         </div>
         <div>
-          {languages.map(({ code }, index) => (
+          {languages.map(({ id }, index) => (
             <BodyCopy
               component="span"
               fontSize="fs13"
@@ -93,7 +120,7 @@ class CountrySelector extends React.Component {
               } countrySelector__locale`}
               onClick={this.openModal}
             >
-              {code}
+              {id}
             </BodyCopy>
           ))}
         </div>
@@ -104,21 +131,30 @@ class CountrySelector extends React.Component {
 
 CountrySelector.propTypes = {
   className: PropTypes.string.isRequired,
-  flag: PropTypes.string.isRequired,
-  countryListData: PropTypes.arrayOf(PropTypes.shape({})),
+  country: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  oldCountry: PropTypes.string.isRequired,
+  oldLanguage: PropTypes.string.isRequired,
+  countriesMap: PropTypes.arrayOf(PropTypes.shape({})),
+  currenciesMap: PropTypes.arrayOf(PropTypes.shape({})),
   handleSubmit: PropTypes.func,
   isModalOpen: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
   loadCountryListData: PropTypes.func,
   showInFooter: PropTypes.bool,
+  sitesTable: PropTypes.shape({}).isRequired,
+  siteId: PropTypes.string.isRequired,
   toggleModal: PropTypes.func,
   updateCountry: PropTypes.func,
   updateLanguage: PropTypes.func,
   updateCurrency: PropTypes.func,
+  updateSiteId: PropTypes.func,
 };
 
 CountrySelector.defaultProps = {
-  countryListData: [],
+  countriesMap: [],
+  currenciesMap: [],
   showInFooter: false,
   handleSubmit: () => {},
   loadCountryListData: () => {},
@@ -126,6 +162,7 @@ CountrySelector.defaultProps = {
   updateCountry: () => {},
   updateLanguage: () => {},
   updateCurrency: () => {},
+  updateSiteId: () => {},
 };
 
 export default withStyles(CountrySelector, style);

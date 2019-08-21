@@ -108,7 +108,7 @@ const endpoints = {
   },
   addShipToStore: {
     method: API_METHODS.POST,
-    URI: 'https://www.childrensplace.com/api/v2/cart/addShipToStore',
+    URI: 'v2/cart/addShipToStore',
   },
 };
 export default endpoints;
