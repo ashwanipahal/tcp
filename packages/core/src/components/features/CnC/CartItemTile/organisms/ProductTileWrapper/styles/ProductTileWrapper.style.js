@@ -20,7 +20,4 @@ export default css`
   margin: 15px 0;
   background: #fff;
   padding: 20px;
-  .removeItem {
-    margin: -11px 27px;
-  }
 `;

@@ -9,6 +9,7 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class ProductTileWrapper extends React.PureComponent<props> {
   constructor(props) {
@@ -51,8 +52,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
       const orderItemsView = orderItems.map(tile => {
         const productDetail = getProductDetails(tile);
         if (
-          productDetail.miscInfo.availability === 'SOLDOUT' ||
-          productDetail.miscInfo.availability === 'UNAVAILABLE'
+          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
+          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         ) {
           isAvailable = true;
         }

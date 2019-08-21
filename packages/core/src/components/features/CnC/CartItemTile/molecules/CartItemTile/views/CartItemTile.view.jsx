@@ -88,7 +88,7 @@ class CartItemTile extends React.Component {
     );
   };
 
-  getItemDetails = (productDetail, labels, pageView) => {
+  getItemDetails = (removeCartItem, productDetail, labels, pageView) => {
     return (
       <Row className="padding-top-15 padding-bottom-20" fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -99,7 +99,7 @@ class CartItemTile extends React.Component {
               fontSize="fs12"
               color="error"
               component="span"
-              onClick={() => this.removeCartItem(productDetail.itemInfo.itemId)}
+              onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
             >
               <u>Remove</u>
             </BodyCopy>
@@ -467,7 +467,7 @@ class CartItemTile extends React.Component {
                 </BodyCopy>
               </Col>
             </Row>
-            {this.getItemDetails(productDetail, labels, pageView)}
+            {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
           </Col>
         </Row>
         {pageView === 'myBag' && (
