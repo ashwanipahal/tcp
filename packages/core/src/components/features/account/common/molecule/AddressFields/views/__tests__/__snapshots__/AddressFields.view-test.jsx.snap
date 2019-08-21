@@ -796,9 +796,8 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
     outline: 0;
     padding: ",
-                [Function],
-                " 0
-      ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -1391,9 +1390,8 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
     outline: 0;
     padding: ",
-                [Function],
-                " 0
-      ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -2550,9 +2548,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     outline: 0;
     padding: ",
-                [Function],
-                " 0
-      ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -3145,9 +3142,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     outline: 0;
     padding: ",
-                [Function],
-                " 0
-      ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
