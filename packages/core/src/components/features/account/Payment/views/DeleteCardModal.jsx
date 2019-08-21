@@ -125,7 +125,6 @@ class DeleteCardModal extends React.Component<Props> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    debugger;
     const { className, data, openState, showUpdatedNotificationOnModal, labels } = this.props;
     const { heading } = data;
     return (

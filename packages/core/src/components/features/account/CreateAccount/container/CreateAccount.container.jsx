@@ -32,6 +32,7 @@ export class CreateAccountContainer extends React.Component {
     isUserLoggedIn: PropTypes.bool,
     closeOverlay: PropTypes.func,
     navigation: PropTypes.shape({}),
+    setLoginModalMountState: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -101,7 +102,6 @@ export class CreateAccountContainer extends React.Component {
     } else {
       openOverlay(params);
     }
-    // openOverlay(params);
   };
 
   render() {
