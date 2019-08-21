@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import BodyCopy from '../../BodyCopy';
-import withStyles from '../../../hoc/withStyles';
 
 import {
-  TextBoxStyle,
   StyledTextBox,
   StyledLabel,
   StyledErrorWrapper,
@@ -161,6 +159,4 @@ export class CreditCardTextBox extends React.Component {
   }
 }
 
-// export default TextBox;
-export default withStyles(CreditCardTextBox, TextBoxStyle);
-export { CreditCardTextBox as CreditCardTextBoxVanilla };
+export default CreditCardTextBox;

@@ -14,7 +14,7 @@ const getInputBottomColor = props => {
   `;
 };
 
-const TextBoxStyle = css`
+const CreditCardTextBoxStyle = css`
   ${getInputBottomColor};
 `;
 
@@ -58,17 +58,12 @@ const StyledSuccessIcon = styled.View`
   top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-const HiddenView = styled.View`
-  display: none;
-`;
-
 export {
-  TextBoxStyle,
+  CreditCardTextBoxStyle,
   StyledTextBox,
   StyledLabel,
   StyledErrorIcon,
   StyledErrorWrapper,
   StyledTextBoxWrapper,
   StyledSuccessIcon,
-  HiddenView,
 };

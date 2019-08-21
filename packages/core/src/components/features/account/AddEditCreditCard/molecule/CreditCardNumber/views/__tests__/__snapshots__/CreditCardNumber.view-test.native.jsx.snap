@@ -4,7 +4,7 @@ exports[`CreditCardNumber component should renders correctly when cardType is pr
 <View
   className="field"
 >
-  <Styled(CreditCardTextBox)
+  <CreditCardTextBox
     ariaLabel="input"
     dataLocator="input-field"
     enableSuccessCheck={false}
@@ -32,7 +32,7 @@ exports[`CreditCardNumber component should renders correctly when cardType is pr
 
 exports[`CreditCardNumber component should renders correctly when isExpirationRequired is false 1`] = `
 <View>
-  <Styled(CreditCardTextBox)
+  <CreditCardTextBox
     ariaLabel="input"
     dataLocator="input-field"
     enableSuccessCheck={false}

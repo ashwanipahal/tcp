@@ -1,1 +1,1 @@
-export { default, TextBoxVanilla } from './views';
+export { default } from './views';
