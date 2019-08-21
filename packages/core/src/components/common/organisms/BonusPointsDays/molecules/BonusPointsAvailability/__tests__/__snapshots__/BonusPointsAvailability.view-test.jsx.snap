@@ -29,6 +29,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       className="availability-btn "
       color="black"
       id={0}
+      onClick={[Function]}
     >
       Available For Future Use
     </Styled(Button)>
@@ -60,6 +61,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       className="availability-btn disable-btn"
       color="black"
       id={1}
+      onClick={[Function]}
     >
       Applied to Order
     </Styled(Button)>
@@ -96,6 +98,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
       className="availability-btn "
       color="black"
       id={0}
+      onClick={[Function]}
     >
       Available For Future Use
     </Styled(Button)>

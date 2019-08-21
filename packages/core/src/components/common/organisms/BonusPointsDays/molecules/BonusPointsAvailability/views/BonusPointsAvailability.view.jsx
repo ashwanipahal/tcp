@@ -6,11 +6,33 @@ import Button from '../../../../../atoms/Button';
 import Col from '../../../../../atoms/Col';
 import Row from '../../../../../atoms/Row';
 
-const BonusPointsAvailability = ({ bonusPoints, className }) => {
+const applyBonusPoints = (getBonusDaysData, orderDetails, bonusDayAvailableToday) => {
+  const dto = {
+    bonusDaySelected: bonusDayAvailableToday ? 0 : 1,
+    orderId: orderDetails,
+  };
+  return getBonusDaysData(dto);
+};
+
+const BonusPointsAvailability = ({
+  bonusPoints,
+  className,
+  enableApplyCta,
+  getBonusDaysData,
+  orderDetails,
+  bonusDayAvailableToday,
+}) => {
   return (
     bonusPoints && (
       <Row>
         {bonusPoints.map((item, index) => {
+          let btnClass = '';
+          if (!enableApplyCta) {
+            btnClass = `availability-btn ${item.disabled ? 'disable-btn' : ''}`;
+          } else {
+            btnClass = '';
+          }
+
           return (
             <Col
               colSize={{
@@ -33,7 +55,10 @@ const BonusPointsAvailability = ({ bonusPoints, className }) => {
                 color="black"
                 id={index}
                 data-locator={item.dataLocator}
-                className={`availability-btn ${item.disabled ? 'disable-btn' : ''}`}
+                className={btnClass}
+                onClick={() =>
+                  applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
+                }
               >
                 {item.buttonText}
               </Button>

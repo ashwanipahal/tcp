@@ -32,7 +32,7 @@ class CnCTemplate extends React.PureComponent<Props> {
             <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
               <OrderLedgerContainer />
               {BagActions && <BagActions />}
-              <BonusPointsDays />
+              <BonusPointsDays enableApplyCta />
               <CouponAndPromos />
             </Col>
           )}
