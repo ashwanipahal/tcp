@@ -52,10 +52,21 @@ export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit 
 };
 
 ChangePassword.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({
+    lbl_changePassword_back: PropTypes.string,
+    lbl_changePassword_heading: PropTypes.string,
+    lbl_changePassword_password_info: PropTypes.string,
+  }),
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
+ChangePassword.defaultProps = {
+  labels: {
+    lbl_changePassword_back: '',
+    lbl_changePassword_heading: '',
+    lbl_changePassword_password_info: '',
+  },
+};
 export default ChangePassword;

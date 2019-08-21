@@ -22,28 +22,38 @@ export const errorHandler = err => {
  */
 
 export const UpdateProfileInfo = args => {
+  const {
+    firstName,
+    lastName,
+    associateId,
+    email,
+    phone,
+    currentPassword,
+    newPassword,
+    newPasswordVerify,
+    status,
+    userBirthday,
+    airmiles,
+  } = args;
   const payload = {
-    header: {
-      'Content-Type': 'application/json',
-    },
     webService: endpoints.updateProfileInfo,
     body: {
-      firstName: args.firstName,
-      lastName: args.lastName,
-      associateId: args.associateId,
-      email1: args.email,
-      phone1: args.phone,
-      currentPassword: args.currentPassword,
-      logonPassword: args.newPassword,
-      logonPasswordVerify: args.newPasswordVerify,
-      status: args.status,
-      operation: (args.currentPassword && args.newPassword && 'resetPassword') || '', // If resetPassword backend will validate currentPassword
-      userBirthday: args.userBirthday,
+      firstName,
+      lastName,
+      associateId,
+      email1: email,
+      phone1: phone,
+      currentPassword,
+      logonPassword: newPassword,
+      logonPasswordVerify: newPasswordVerify,
+      status,
+      operation: (currentPassword && newPassword && 'resetPassword') || '', // If resetPassword backend will validate currentPassword
+      userBirthday,
     },
   };
 
-  if (args.airmiles) {
-    payload.body.customMemberAttributes = [{ airMilesCard: args.airmiles }];
+  if (airmiles) {
+    payload.body.customMemberAttributes = [{ airMilesCard: airmiles }];
   }
 
   return executeStatefulAPICall(payload, errorHandler).then(() => {

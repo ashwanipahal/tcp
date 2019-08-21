@@ -135,7 +135,13 @@ export const ChangePasswordForm = ({
 };
 
 ChangePasswordForm.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({
+    lbl_changePassword_current_password: PropTypes.string,
+    lbl_changePassword_new_password: PropTypes.string,
+    lbl_changePassword_confirm_password: PropTypes.string,
+    lbl_changePassword_cancelCta: PropTypes.string,
+    lbl_changePassword_saveCta: PropTypes.string,
+  }),
   pristine: PropTypes.bool.isRequired,
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
@@ -145,6 +151,13 @@ ChangePasswordForm.propTypes = {
 
 ChangePasswordForm.defaultProps = {
   className: '',
+  labels: {
+    lbl_changePassword_current_password: '',
+    lbl_changePassword_new_password: '',
+    lbl_changePassword_confirm_password: '',
+    lbl_changePassword_cancelCta: '',
+    lbl_changePassword_saveCta: '',
+  },
 };
 
 const validateMethod = createValidateMethod(
