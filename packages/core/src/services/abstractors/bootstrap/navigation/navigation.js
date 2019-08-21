@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import mock from './mock';
 import handler from '../../../handler';
 
@@ -8,6 +7,22 @@ const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
  * Abstractor layer for loading data from API for Navigation
  */
 const Abstractor = {
+  /**
+   * This function generate URL for the link
+   * @param {*} seoUrl This parameter takes the highest priority
+   * @param {*} seoToken This parameter is appended to form url in format "/c/{seoToken}" and takes 2nd priority
+   * @param {*} catgroupId This parameter is appended to form url in format "/c/{catgroupId}" and takes last priority
+   */
+  constructUrl: ({ seoUrl, seoToken, catgroupId }) => {
+    return (
+      seoUrl ||
+      `/${
+        seoToken.startsWith('content-')
+          ? seoToken.replace(new RegExp('content-', 'g'), 'content/')
+          : `c/${seoToken || catgroupId}`
+      }`
+    );
+  },
   getData: (module, data) => {
     return handler
       .fetchModuleDataFromGraphQL({ name: module, data })
@@ -33,6 +48,7 @@ const Abstractor = {
             items: [],
           };
         }
+        subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
         subCategories[category].items.push(subCat);
         return subCategory;
       });

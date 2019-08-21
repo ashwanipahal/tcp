@@ -72,23 +72,6 @@ const renderL3Panel = (hasSubCategories, index, l3Drawer, hideL3Drawer, name, su
   );
 };
 
-/**
- * This function generate URL for the link
- * @param {*} seoUrl This parameter takes the highest priority
- * @param {*} seoToken This parameter is appended to form url in format "/c/{seoToken}" and takes 2nd priority
- * @param {*} catgroupId This parameter is appended to form url in format "/c/{catgroupId}" and takes last priority
- */
-const generateUrl = (seoUrl, seoToken, catgroupId) => {
-  return (
-    seoUrl ||
-    `/${
-      seoToken.startsWith('content-')
-        ? seoToken.replace(new RegExp('content-', 'g'), 'content/')
-        : `c/${seoToken || catgroupId}`
-    }`
-  );
-};
-
 const createLinks = (
   links,
   column,
@@ -100,14 +83,14 @@ const createLinks = (
       <ul className={className}>
         {links.map((l2Links, index) => {
           const {
-            categoryContent: { id, name, seoToken, seoUrl, mainCategory, catgroupId },
+            url,
+            categoryContent: { id, name, mainCategory },
             subCategories,
           } = l2Links;
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + 7 : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
-          const url = generateUrl(seoUrl, seoToken, catgroupId);
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
