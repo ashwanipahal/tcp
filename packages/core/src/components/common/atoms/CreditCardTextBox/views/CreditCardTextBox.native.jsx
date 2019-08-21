@@ -37,6 +37,8 @@ export class CreditCardTextBox extends React.Component {
     keyboardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
     secureTextEntry: PropTypes.bool,
+    isEdit: PropTypes.bool,
+    val: PropTypes.string,
   };
 
   static defaultProps = {
@@ -50,6 +52,8 @@ export class CreditCardTextBox extends React.Component {
     keyboardType: 'default',
     showErrorIcon: true,
     secureTextEntry: false,
+    isEdit: false,
+    val: '',
   };
 
   constructor(props) {
@@ -65,7 +69,7 @@ export class CreditCardTextBox extends React.Component {
     const { isEdit } = this.props;
     const { clearValue } = this.state;
     if (isEdit) {
-      this.textboxValue = isEdit && !clearValue ? false : true;
+      this.textboxValue = !(isEdit && !clearValue);
       this.setState({
         isFocused: true,
         clearValue: true,
@@ -123,7 +127,6 @@ export class CreditCardTextBox extends React.Component {
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
-      isEdit,
     } = this.props;
     return (
       <View>
