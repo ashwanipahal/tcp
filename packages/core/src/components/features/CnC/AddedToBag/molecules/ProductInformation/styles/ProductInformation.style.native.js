@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 const OuterContainer = styled.View`
   flex-direction: row;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 const ProductName = styled.View``;
 const ProductDesc = styled.View`
