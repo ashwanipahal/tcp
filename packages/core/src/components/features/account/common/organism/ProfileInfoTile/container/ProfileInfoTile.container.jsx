@@ -2,18 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ProfileInfoTileComponent from '../views';
-import { getUserContactInfo, getMailingAddress } from '../../../../User/container/User.selectors';
+import { getProfileInfoTileData } from '../../../../User/container/User.selectors';
 
-const ProfileInfoTile = ({
-  labels,
-  handleComponentChange,
-  personalInformation,
-  mailingAddress,
-}) => {
+const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
   return (
     <ProfileInfoTileComponent
-      personalInformation={personalInformation}
-      mailingAddress={mailingAddress}
+      profileInfo={profileInfo}
       labels={labels}
       handleComponentChange={handleComponentChange}
     />
@@ -23,20 +17,16 @@ const ProfileInfoTile = ({
 ProfileInfoTile.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
-  personalInformation: PropTypes.shape({}),
-  mailingAddress: PropTypes.shape({}),
+  profileInfo: PropTypes.shape({}).isRequired,
 };
 
 ProfileInfoTile.defaultProps = {
   labels: {},
-  personalInformation: {},
-  mailingAddress: {},
   handleComponentChange: () => {},
 };
 
 const mapStateToProps = state => ({
-  personalInformation: getUserContactInfo(state),
-  mailingAddress: getMailingAddress(state),
+  profileInfo: getProfileInfoTileData(state),
 });
 
 const mapDispatchToProps = () => ({});

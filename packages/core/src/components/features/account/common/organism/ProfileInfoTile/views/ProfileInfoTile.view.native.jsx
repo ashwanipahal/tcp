@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import Address from '@tcp/core/src/components/common/molecules/Address';
+import { isCanada } from '@tcp/core/src/utils';
 
 import {
   UnderlineStyle,
@@ -15,13 +17,8 @@ import {
   RightCol,
 } from '../styles/ProfileInfoTile.style.native';
 
-const ProfileInfoTile = ({
-  labels,
-  handleComponentChange,
-  personalInformation,
-  mailingAddress,
-}) => {
-  console.log('labels', labels, personalInformation, mailingAddress);
+const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
+  const { firstName, lastName, emailAddress, rewardsAccountNumber, address } = profileInfo;
   return (
     <ProfileInfoTileContainer>
       <BodyCopy
@@ -37,7 +34,8 @@ const ProfileInfoTile = ({
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs14"
-              text="Christine Smith"
+              fontWeight="extrabold"
+              text={`${firstName} ${lastName}`}
               color="gray.900"
             />
           </LeftCol>
@@ -54,13 +52,15 @@ const ProfileInfoTile = ({
             />
           </RightCol>
         </Row>
-        <BodyCopy
-          fontWeight="regular"
-          fontSize="fs14"
-          mobilefontFamily={['secondary']}
-          text={labels.lbl_overview_profileInfoMember}
-          color="gray.900"
-        />
+        {!isCanada() && (
+          <BodyCopy
+            fontWeight="regular"
+            fontSize="fs14"
+            mobilefontFamily={['secondary']}
+            text={`${labels.lbl_overview_profileInfoMember} ${rewardsAccountNumber}`}
+            color="gray.900"
+          />
+        )}
       </InfoContainer>
       <EmailContainer>
         <BodyCopy
@@ -74,7 +74,7 @@ const ProfileInfoTile = ({
           fontWeight="regular"
           fontSize="fs14"
           mobilefontFamily={['secondary']}
-          text="christine.smith@gmail.com"
+          text={emailAddress}
           color="gray.900"
         />
       </EmailContainer>
@@ -85,6 +85,7 @@ const ProfileInfoTile = ({
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs14"
+              fontWeight="extrabold"
               text={labels.lbl_overview_profileInfoMailingAddress}
               color="gray.900"
             />
@@ -102,13 +103,7 @@ const ProfileInfoTile = ({
             />
           </RightCol>
         </Row>
-        <BodyCopy
-          fontWeight="regular"
-          fontSize="fs14"
-          mobilefontFamily={['secondary']}
-          text="11209"
-          color="gray.900"
-        />
+        <Address showName={false} showPhone={false} showCountry={false} address={address} />
       </InfoContainer>
       <UnderlineStyle />
       <InfoContainer>
@@ -117,6 +112,7 @@ const ProfileInfoTile = ({
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs14"
+              fontWeight="extrabold"
               text={labels.lbl_overview_profileInfoPassword}
               color="gray.900"
             />
@@ -134,7 +130,13 @@ const ProfileInfoTile = ({
             />
           </RightCol>
         </Row>
-        <BodyCopy fontFamily="secondary" fontSize="fs14" text="**********" color="gray.900" />
+        <BodyCopy
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          fontSize="fs14"
+          text="**********"
+          color="gray.900"
+        />
       </InfoContainer>
       <ButtonWrapperStyle>
         <CustomButton
@@ -151,8 +153,7 @@ const ProfileInfoTile = ({
 
 ProfileInfoTile.propTypes = {
   labels: PropTypes.shape({}),
-  personalInformation: PropTypes.shape({}),
-  mailingAddress: PropTypes.shape({}),
+  profileInfo: PropTypes.shape({}).isRequired,
   handleComponentChange: PropTypes.func,
 };
 
@@ -167,8 +168,6 @@ ProfileInfoTile.defaultProps = {
     lbl_overview_profileInfoChangeCTA: '',
     lbl_overview_profileInfoViewCTA: '',
   },
-  personalInformation: {},
-  mailingAddress: {},
   handleComponentChange: () => {},
 };
 
