@@ -130,6 +130,7 @@ const FooterMiddleDesktop = ({
       )}
       {navLinkColumns}
       <OpenLoginModal
+        variation="fav"
         setLoginModalMountState={setLoginModalMountState}
         openState={loginModalMountedState}
         data={{

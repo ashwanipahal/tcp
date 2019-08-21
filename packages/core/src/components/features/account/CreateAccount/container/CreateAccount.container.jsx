@@ -8,8 +8,8 @@ import {
   getIAgree,
   getHideShowPwd,
   getConfirmHideShowPwd,
-  getError,
   getLabels,
+  getErrorMessage,
 } from './CreateAccount.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import {
@@ -138,7 +138,7 @@ export const mapStateToProps = state => {
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
     isUserLoggedIn: getUserLoggedInState(state),
-    error: getError(state),
+    error: getErrorMessage(state),
     labels: getLabels(state),
   };
 };

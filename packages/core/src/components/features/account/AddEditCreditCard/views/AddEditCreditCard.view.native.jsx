@@ -10,6 +10,7 @@ export const AddEditCreditCard = ({
   onClose,
   dto,
   updateCardList,
+  selectedCard,
   ...otherProps
 }) => {
   return (
@@ -20,6 +21,8 @@ export const AddEditCreditCard = ({
         onClose={onClose}
         dto={dto}
         updateCardList={updateCardList}
+        selectedCard={selectedCard}
+        onFileAddresskey={selectedCard && isEdit ? selectedCard.billingAddressId.toString() : ''}
         {...otherProps}
       />
     </SafeAreaView>
@@ -33,6 +36,7 @@ AddEditCreditCard.propTypes = {
   errorMessage: PropTypes.string,
   onClose: PropTypes.func,
   updateCardList: PropTypes.func,
+  selectedCard: PropTypes.shape({}),
 };
 
 AddEditCreditCard.defaultProps = {
@@ -41,6 +45,7 @@ AddEditCreditCard.defaultProps = {
   dto: {},
   onClose: () => {},
   updateCardList: () => {},
+  selectedCard: {},
 };
 
 export default AddEditCreditCard;
