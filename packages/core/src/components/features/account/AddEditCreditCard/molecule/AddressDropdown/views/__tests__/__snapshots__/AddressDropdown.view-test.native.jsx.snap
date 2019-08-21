@@ -38,7 +38,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="black"
-        text=""
+        text={0}
         textAlign="center"
       />
     </Styled(View)>
