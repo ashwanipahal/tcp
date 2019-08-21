@@ -15,10 +15,21 @@ import {
   RightCol,
 } from '../styles/ProfileInfoTile.style.native';
 
-const ProfileInfoTile = ({ handleComponentChange }) => {
+const ProfileInfoTile = ({
+  labels,
+  handleComponentChange,
+  personalInformation,
+  mailingAddress,
+}) => {
+  console.log('labels', labels, personalInformation, mailingAddress);
   return (
     <ProfileInfoTileContainer>
-      <BodyCopy fontFamily="secondary" fontSize="fs16" text="Profile Information" color="black" />
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs16"
+        text={labels.lbl_overview_profileInformationHeading}
+        color="black"
+      />
       <UnderlineStyle />
       <InfoContainer>
         <Row>
@@ -33,12 +44,12 @@ const ProfileInfoTile = ({ handleComponentChange }) => {
           <RightCol>
             <Anchor
               anchorVariation="primary"
-              text="Edit"
-              onPress={() => handleComponentChange('addressBookMobile')}
+              text={labels.lbl_overview_profileInfoEditCTA}
+              onPress={() => handleComponentChange('editPersonalInfoMobile')}
               underline
               fontSizeVariation="large"
               noLink
-              data-locator="addressbook-overview-edit"
+              data-locator="personalInfo-overview-edit"
               color="gray.900"
             />
           </RightCol>
@@ -47,7 +58,7 @@ const ProfileInfoTile = ({ handleComponentChange }) => {
           fontWeight="regular"
           fontSize="fs14"
           mobilefontFamily={['secondary']}
-          text="Member #"
+          text={labels.lbl_overview_profileInfoMember}
           color="gray.900"
         />
       </InfoContainer>
@@ -56,7 +67,7 @@ const ProfileInfoTile = ({ handleComponentChange }) => {
           fontWeight="regular"
           fontSize="fs14"
           mobilefontFamily={['secondary']}
-          text="Email Address:"
+          text={labels.lbl_overview_profileInfoEmailAddress}
           color="gray.900"
         />
         <BodyCopy
@@ -74,19 +85,19 @@ const ProfileInfoTile = ({ handleComponentChange }) => {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs14"
-              text="Mailing Address:"
+              text={labels.lbl_overview_profileInfoMailingAddress}
               color="gray.900"
             />
           </LeftCol>
           <RightCol>
             <Anchor
               anchorVariation="primary"
-              text="Edit"
-              onPress={() => handleComponentChange('addressBookMobile')}
+              text={labels.lbl_overview_profileInfoEditCTA}
+              onPress={() => handleComponentChange('editMailingAddressMobile')}
               underline
               fontSizeVariation="large"
               noLink
-              data-locator="addressbook-overview-edit"
+              data-locator="mailingAddress-overview-edit"
               color="gray.900"
             />
           </RightCol>
@@ -103,17 +114,22 @@ const ProfileInfoTile = ({ handleComponentChange }) => {
       <InfoContainer>
         <Row>
           <LeftCol>
-            <BodyCopy fontFamily="secondary" fontSize="fs14" text="Password" color="gray.900" />
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs14"
+              text={labels.lbl_overview_profileInfoPassword}
+              color="gray.900"
+            />
           </LeftCol>
           <RightCol>
             <Anchor
               anchorVariation="primary"
-              text="Change"
-              onPress={() => handleComponentChange('addressBookMobile')}
+              text={labels.lbl_overview_profileInfoChangeCTA}
+              onPress={() => handleComponentChange('changePasswordMobile')}
               underline
               fontSizeVariation="large"
               noLink
-              data-locator="addressbook-overview-edit"
+              data-locator="password-overview-edit"
               color="gray.900"
             />
           </RightCol>
@@ -122,11 +138,11 @@ const ProfileInfoTile = ({ handleComponentChange }) => {
       </InfoContainer>
       <ButtonWrapperStyle>
         <CustomButton
-          text="View Profile"
+          text={labels.lbl_overview_profileInfoViewCTA}
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"
-          onPress={() => handleComponentChange('addressBookMobile')}
+          onPress={() => handleComponentChange('profileInfoMobile')}
         />
       </ButtonWrapperStyle>
     </ProfileInfoTileContainer>
@@ -135,11 +151,24 @@ const ProfileInfoTile = ({ handleComponentChange }) => {
 
 ProfileInfoTile.propTypes = {
   labels: PropTypes.shape({}),
+  personalInformation: PropTypes.shape({}),
+  mailingAddress: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
 };
 
 ProfileInfoTile.defaultProps = {
-  labels: {},
+  labels: {
+    lbl_overview_profileInformationHeading: '',
+    lbl_overview_profileInfoEditCTA: '',
+    lbl_overview_profileInfoMember: '',
+    lbl_overview_profileInfoEmailAddress: '',
+    lbl_overview_profileInfoMailingAddress: '',
+    lbl_overview_profileInfoPassword: '',
+    lbl_overview_profileInfoChangeCTA: '',
+    lbl_overview_profileInfoViewCTA: '',
+  },
+  personalInformation: {},
+  mailingAddress: {},
   handleComponentChange: () => {},
 };
 

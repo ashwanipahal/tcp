@@ -82,7 +82,7 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={labels.lbl_overview_earnPointsHeading} />
             <Panel title={labels.lbl_overview_ordersHeading} />
             <Panel title={labels.lbl_overview_profileInformationHeading}>
-              <ProfileInfoContainer />
+              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
             <Panel title={labels.lbl_overview_addressBookHeading}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
