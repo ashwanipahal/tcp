@@ -5,12 +5,21 @@ import Col from '../../../../../../common/atoms/Col';
 import Anchor from '../../../../../../common/atoms/Anchor/views/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProfileInformation.style';
-import CompleteProfile from '../../CompleteProfile/views';
+import ProfileInfoActions from '../../ProfileInfoActions/views';
 import PersonalInformation from '../../PersonalInformation/views';
 import ChangePassword from '../../ChangePassword/views';
 import BirthdaySaving from '../../BirthdaySaving/views';
 
-const ProfileInformation = ({ className, labels }) => {
+const ProfileInformation = ({
+  className,
+  labels,
+  profileCompletion,
+  mailingAddress,
+  userBirthday,
+  userSurvey,
+  percentageIncrement,
+  defaultStore,
+}) => {
   return (
     <div>
       <Row fullBleed className={`${className} elem-pt-LRG`}>
@@ -25,7 +34,19 @@ const ProfileInformation = ({ className, labels }) => {
           }}
           className="profileInfoCol elem-mb-XL"
         >
-          <CompleteProfile labels={labels} />
+          <ProfileInfoActions
+            labels={labels}
+            /* isCanada={isCanada}
+            onEditPersonalInfo={this.handleEditPersonalInfo}
+            toggleModalState={this.toggleModalState}
+            onEditMailingAddress={this.handleEditMailingAddress} */
+            profileCompletion={profileCompletion}
+            defaultStore={defaultStore}
+            mailingAddress={mailingAddress}
+            userBirthday={userBirthday}
+            userSurvey={userSurvey}
+            percentageIncrement={percentageIncrement}
+          />
         </Col>
         <Col
           colSize={{
@@ -129,11 +150,23 @@ const ProfileInformation = ({ className, labels }) => {
 ProfileInformation.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
+  profileCompletion: PropTypes.string,
+  mailingAddress: PropTypes.shape({}),
+  userBirthday: PropTypes.string,
+  userSurvey: PropTypes.shape([]),
+  percentageIncrement: PropTypes.shape({}),
+  defaultStore: PropTypes.string,
 };
 
 ProfileInformation.defaultProps = {
   className: '',
   labels: {},
+  profileCompletion: '',
+  mailingAddress: {},
+  userBirthday: '',
+  userSurvey: [],
+  percentageIncrement: {},
+  defaultStore: '',
 };
 
 export default withStyles(ProfileInformation, styles);

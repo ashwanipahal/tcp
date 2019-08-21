@@ -43,4 +43,9 @@ export default {
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
   'close-icon': '/static/images/close.png',
+  'mailing-address-icon': '/static/images/mailingAddress.jpg',
+  'fav-store-icon': '/static/images/store.jpg',
+  'birthday-icon': '/static/images/birthday.jpg',
+  'survey-icon': '/static/images/survey.png',
+  'smiley-icon': '/static/images/smiley-icon.png',
 };
