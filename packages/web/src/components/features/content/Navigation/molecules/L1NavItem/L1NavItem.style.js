@@ -84,7 +84,7 @@ export default css`
         cursor: default;
         position: absolute;
         display: block;
-        top: 80px;
+        top: 88px;
         left: 0;
         width: 100%;
         color: #1a1a1a;

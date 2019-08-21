@@ -35,6 +35,10 @@ const generateUrl = (seoUrl, seoToken, catgroupId) => {
   );
 };
 
+const highlightContent = id => {
+  return id === '505518' || id === '454010' ? `highlighted` : ``;
+};
+
 class L1NavItem extends React.PureComponent {
   state = {
     hovered: false,
@@ -84,7 +88,7 @@ class L1NavItem extends React.PureComponent {
     }
 
     const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
-    const classForRedContent = id === '505518' ? `highlighted` : ``;
+    const classForRedContent = highlightContent(id);
     const promoBadge = this.fetchPromoBadge(mainCategory);
     const url = generateUrl(seoUrl, seoToken, catgroupId);
 
