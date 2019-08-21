@@ -71,7 +71,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
         );
       });
       return (
-        <div className="miniBagWrapper">
+        <>
           {isAvailable && (
             <>
               <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
@@ -86,7 +86,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
             </>
           )}
           {orderItemsView}
-        </div>
+        </>
       );
     }
     return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;

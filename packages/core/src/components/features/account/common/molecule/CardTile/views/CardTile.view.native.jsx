@@ -193,7 +193,7 @@ class CardTile extends React.Component<Props> {
     e.preventDefault();
     const { card, openUpdateModal, setSelectedCard } = this.props;
     setSelectedCard(card);
-    openUpdateModal({ state: true });
+    openUpdateModal(false);
   };
 
   getCtaRow = (
