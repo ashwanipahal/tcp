@@ -24,13 +24,15 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { addressResponse, address, labels } = this.props;
+    const { addressResponse, address, labels, onCancel, showHeading } = this.props;
     return (
       <AddAddressComponent
         addressResponse={addressResponse}
         isEdit={!!address}
         backToAddressBookClick={this.backToAddressBookClick}
         labels={labels}
+        onCancel={onCancel}
+        showHeading={showHeading}
       />
     );
   }

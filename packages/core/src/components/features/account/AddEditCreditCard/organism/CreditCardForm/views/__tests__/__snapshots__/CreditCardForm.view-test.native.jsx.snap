@@ -1,0 +1,527 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardForm component should renders correctly with address dropdown 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <CreditCardFields
+      addressLabels={Object {}}
+      addressList={
+        Immutable.List [
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          },
+        ]
+      }
+      cardType=""
+      cardTypeImgUrl=""
+      className=""
+      dto={[Function]}
+      expMonthOptionsMap={
+        Array [
+          Object {
+            "id": "1",
+            "label": "Jan",
+          },
+          Object {
+            "id": "2",
+            "label": "Feb",
+          },
+          Object {
+            "id": "3",
+            "label": "Mar",
+          },
+          Object {
+            "id": "4",
+            "label": "Apr",
+          },
+          Object {
+            "id": "5",
+            "label": "May",
+          },
+          Object {
+            "id": "6",
+            "label": "Jun",
+          },
+          Object {
+            "id": "7",
+            "label": "Jul",
+          },
+          Object {
+            "id": "8",
+            "label": "Aug",
+          },
+          Object {
+            "id": "9",
+            "label": "Sep",
+          },
+          Object {
+            "id": "10",
+            "label": "Oct",
+          },
+          Object {
+            "id": "11",
+            "label": "Nov",
+          },
+          Object {
+            "id": "12",
+            "label": "Dec",
+          },
+        ]
+      }
+      expYearOptionsMap={
+        Array [
+          Object {
+            "id": "2019",
+            "label": "2019",
+          },
+          Object {
+            "id": "2020",
+            "label": "2020",
+          },
+          Object {
+            "id": "2021",
+            "label": "2021",
+          },
+          Object {
+            "id": "2022",
+            "label": "2022",
+          },
+          Object {
+            "id": "2023",
+            "label": "2023",
+          },
+          Object {
+            "id": "2024",
+            "label": "2024",
+          },
+          Object {
+            "id": "2025",
+            "label": "2025",
+          },
+          Object {
+            "id": "2026",
+            "label": "2026",
+          },
+          Object {
+            "id": "2027",
+            "label": "2027",
+          },
+          Object {
+            "id": "2028",
+            "label": "2028",
+          },
+          Object {
+            "id": "2029",
+            "label": "2029",
+          },
+        ]
+      }
+      initialValues={Object {}}
+      isEdit={false}
+      isPLCCEnabled={true}
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
+        }
+      }
+      onFileAddressKey=""
+      onFileAddresskey="12345"
+      updateExpiryDate={[Function]}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Heading)
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="black"
+      letterSpacing="ls167"
+      locator=""
+      text=""
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="black"
+      text="Select from Address Book"
+      textAlign="left"
+    />
+    <Field
+      addAddress={[Function]}
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressId": "12345",
+              "firstName": "test",
+              "lastName": "test",
+              "primary": "true",
+            },
+            "id": "12345",
+            "label": "test test (Default)",
+          },
+          Object {
+            "content": "",
+            "id": "",
+            "label": undefined,
+          },
+        ]
+      }
+      dataLocator="payment-billingaddressdd"
+      dropDownStyle={
+        Object {
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 15,
+        }
+      }
+      id="onFileAddressKey"
+      itemStyle={
+        Object {
+          "height": 100,
+        }
+      }
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
+        }
+      }
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      variation="secondary"
+    />
+    <Styled(View)>
+      <Styled(View) />
+      <Address
+        address={
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          }
+        }
+        className="CreditCardForm__address"
+        customStyle={Object {}}
+        dataLocatorPrefix="address"
+        showCountry={false}
+        showName={true}
+        showPhone={false}
+      />
+      <Styled(View) />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={false}
+      external={true}
+      fill="BLUE"
+      fullWidth=""
+      locator=""
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "white",
+          "fontWeight": "normal",
+          "marginTop": 48,
+          "opacity": 0.5,
+          "width": 190,
+        }
+      }
+      text=""
+      url=""
+    />
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      locator=""
+      style={
+        Object {
+          "border": 1,
+          "color": "black",
+          "fontWeight": "normal",
+          "marginTop": 15,
+          "opacity": 0.5,
+          "width": 190,
+        }
+      }
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CreditCardForm component should renders correctly with addressForm 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <CreditCardFields
+      addressLabels={Object {}}
+      addressList={
+        Immutable.List [
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          },
+        ]
+      }
+      cardType=""
+      cardTypeImgUrl=""
+      className=""
+      dto={[Function]}
+      expMonthOptionsMap={
+        Array [
+          Object {
+            "id": "1",
+            "label": "Jan",
+          },
+          Object {
+            "id": "2",
+            "label": "Feb",
+          },
+          Object {
+            "id": "3",
+            "label": "Mar",
+          },
+          Object {
+            "id": "4",
+            "label": "Apr",
+          },
+          Object {
+            "id": "5",
+            "label": "May",
+          },
+          Object {
+            "id": "6",
+            "label": "Jun",
+          },
+          Object {
+            "id": "7",
+            "label": "Jul",
+          },
+          Object {
+            "id": "8",
+            "label": "Aug",
+          },
+          Object {
+            "id": "9",
+            "label": "Sep",
+          },
+          Object {
+            "id": "10",
+            "label": "Oct",
+          },
+          Object {
+            "id": "11",
+            "label": "Nov",
+          },
+          Object {
+            "id": "12",
+            "label": "Dec",
+          },
+        ]
+      }
+      expYearOptionsMap={
+        Array [
+          Object {
+            "id": "2019",
+            "label": "2019",
+          },
+          Object {
+            "id": "2020",
+            "label": "2020",
+          },
+          Object {
+            "id": "2021",
+            "label": "2021",
+          },
+          Object {
+            "id": "2022",
+            "label": "2022",
+          },
+          Object {
+            "id": "2023",
+            "label": "2023",
+          },
+          Object {
+            "id": "2024",
+            "label": "2024",
+          },
+          Object {
+            "id": "2025",
+            "label": "2025",
+          },
+          Object {
+            "id": "2026",
+            "label": "2026",
+          },
+          Object {
+            "id": "2027",
+            "label": "2027",
+          },
+          Object {
+            "id": "2028",
+            "label": "2028",
+          },
+          Object {
+            "id": "2029",
+            "label": "2029",
+          },
+        ]
+      }
+      initialValues={Object {}}
+      isEdit={false}
+      isPLCCEnabled={true}
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
+        }
+      }
+      onFileAddressKey=""
+      pristine={true}
+      updateExpiryDate={[Function]}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Heading)
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="black"
+      letterSpacing="ls167"
+      locator=""
+      text=""
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="black"
+      text="Select from Address Book"
+      textAlign="left"
+    />
+    <Field
+      addAddress={[Function]}
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressId": "12345",
+              "firstName": "test",
+              "lastName": "test",
+              "primary": "true",
+            },
+            "id": "12345",
+            "label": "test test (Default)",
+          },
+          Object {
+            "content": "",
+            "id": "",
+            "label": undefined,
+          },
+        ]
+      }
+      dataLocator="payment-billingaddressdd"
+      dropDownStyle={
+        Object {
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 15,
+        }
+      }
+      id="onFileAddressKey"
+      itemStyle={
+        Object {
+          "height": 100,
+        }
+      }
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
+        }
+      }
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      variation="secondary"
+    />
+    <Styled(View)>
+      <Styled(View) />
+      <Address
+        address={
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          }
+        }
+        className="CreditCardForm__address"
+        customStyle={Object {}}
+        dataLocatorPrefix="address"
+        showCountry={false}
+        showName={true}
+        showPhone={false}
+      />
+      <Styled(View) />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={false}
+      external={true}
+      fill="BLUE"
+      fullWidth=""
+      locator=""
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "white",
+          "fontWeight": "normal",
+          "marginTop": 48,
+          "opacity": 0.5,
+          "width": 190,
+        }
+      }
+      text=""
+      url=""
+    />
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      locator=""
+      style={
+        Object {
+          "border": 1,
+          "color": "black",
+          "fontWeight": "normal",
+          "marginTop": 15,
+          "opacity": 0.5,
+          "width": 190,
+        }
+      }
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -13,6 +13,7 @@ import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/Ba
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
+import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 
@@ -37,6 +38,7 @@ import {
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
   APICONFIG_REDUCER_KEY,
+  ADDEDITCREDITCARD_REDUCER_KEY,
   USER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -77,5 +79,6 @@ export default combineReducers({
   [COUPON_REDUCER_KEY]: CouponReducer,
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
+  [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [USER_REDUCER_KEY]: UserReducer,
 });
