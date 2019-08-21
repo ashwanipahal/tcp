@@ -1,43 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification Component should render notification component with status error 1`] = `
-<Styled(Col)
-  colSize={
-    Object {
-      "large": 10,
-      "medium": 8,
-      "small": 6,
-    }
-  }
+<div
+  className=" elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG"
 >
-  <Styled(BodyStyle)
-    bodyColor="white"
-    bodySize="five"
-    className="notification"
-    tag="span"
+  <img
+    alt="error icon"
+    className="elem-mr-MED"
+    src="/static/images/circle-error-fill.png"
   />
-</Styled(Col)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+</div>
 `;
 
 exports[`Notification Component should render notification component with status success 1`] = `
-<Styled(Col)
-  colSize={
-    Object {
-      "large": 10,
-      "medium": 8,
-      "small": 6,
-    }
-  }
+<div
+  className=" elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG"
 >
   <img
     alt="success icon"
-    src="/static/images/done.svg"
+    className="elem-mr-MED"
+    src="/static/images/circle-check-fill.png"
   />
-  <Styled(BodyStyle)
-    bodyColor="darkGray"
-    bodySize="five"
-    className="notification"
-    tag="span"
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   />
-</Styled(Col)>
+</div>
 `;

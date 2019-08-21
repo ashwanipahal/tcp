@@ -221,9 +221,8 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               ";
     outline: 0;
     padding: ",
-              [Function],
-              " 0
-      ",
+              "26px",
+              " 0 ",
               [Function],
               ";
     width: 100%;
@@ -320,9 +319,8 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               ";
     outline: 0;
     padding: ",
-              [Function],
-              " 0
-      ",
+              "26px",
+              " 0 ",
               [Function],
               ";
     width: 100%;
