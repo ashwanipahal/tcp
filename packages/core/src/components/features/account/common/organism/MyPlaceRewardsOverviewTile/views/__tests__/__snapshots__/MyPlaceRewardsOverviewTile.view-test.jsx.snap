@@ -3,6 +3,8 @@
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are not present 1`] = `
 <Styled(AccountOverviewTile)
   className=""
+  ctaLink="/account?id=place-rewards"
+  ctaPath="/account/place-rewards"
   dataLocatorPrefix="myrewardstile"
 >
   <section
@@ -43,6 +45,8 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are present 1`] = `
 <Styled(AccountOverviewTile)
   className=""
+  ctaLink="/account?id=place-rewards"
+  ctaPath="/account/place-rewards"
   dataLocatorPrefix="myrewardstile"
 >
   <section

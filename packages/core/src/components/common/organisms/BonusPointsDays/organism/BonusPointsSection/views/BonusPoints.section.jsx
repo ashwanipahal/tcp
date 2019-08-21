@@ -114,11 +114,21 @@ const getHeader = ({ labels }) => {
   );
 };
 
-const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) => {
+const getContent = ({
+  labels,
+  toggleBonusPointsModal,
+  bonusPoints,
+  bonusData,
+  enableApplyCta,
+  getBonusDaysData,
+  orderDetails,
+}) => {
   let allUsed = false;
+  let valueOfbonusDayAvailableToday = 0;
   if (bonusData) {
-    const { totalBonusPointDays, usedBonusPointDays } = bonusData;
+    const { totalBonusPointDays, usedBonusPointDays, appliedToBagBonusPointDays } = bonusData;
     allUsed = totalBonusPointDays === usedBonusPointDays;
+    valueOfbonusDayAvailableToday = appliedToBagBonusPointDays;
   }
 
   return (
@@ -166,6 +176,10 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
           <BonusPointsAvailability
             labels={labels}
             bonusPoints={bonusPoints}
+            enableApplyCta={enableApplyCta}
+            getBonusDaysData={getBonusDaysData}
+            orderDetails={orderDetails}
+            bonusDayAvailableToday={valueOfbonusDayAvailableToday}
             className="availability-msg"
           />
         </Col>
@@ -185,10 +199,26 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
   );
 };
 
-const BonusPointsSection = ({ labels, bonusData, className, toggleBonusPointsModal }) => {
+const BonusPointsSection = ({
+  labels,
+  bonusData,
+  className,
+  toggleBonusPointsModal,
+  enableApplyCta,
+  getBonusDaysData,
+  orderDetails,
+}) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
   const header = getHeader({ labels });
-  const body = getContent({ labels, toggleBonusPointsModal, bonusPoints, bonusData });
+  const body = getContent({
+    labels,
+    toggleBonusPointsModal,
+    bonusPoints,
+    bonusData,
+    enableApplyCta,
+    getBonusDaysData,
+    orderDetails,
+  });
   return (
     <div className={className}>
       <Col
@@ -220,6 +250,9 @@ BonusPointsSection.propTypes = {
   className: PropTypes.string,
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
+  enableApplyCta: PropTypes.bool,
+  getBonusDaysData: PropTypes.func,
+  orderDetails: PropTypes.shape({}),
 };
 
 BonusPointsSection.defaultProps = {
@@ -227,6 +260,9 @@ BonusPointsSection.defaultProps = {
   className: '',
   bonusData: {},
   toggleBonusPointsModal: () => {},
+  enableApplyCta: false,
+  getBonusDaysData: () => {},
+  orderDetails: {},
 };
 
 getContent.propTypes = {
@@ -234,6 +270,9 @@ getContent.propTypes = {
   toggleBonusPointsModal: PropTypes.func,
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
+  enableApplyCta: PropTypes.bool,
+  getBonusDaysData: PropTypes.func,
+  orderDetails: PropTypes.shape({}),
 };
 
 getContent.defaultProps = {
@@ -244,10 +283,14 @@ getContent.defaultProps = {
   bonusPoints: [],
   toggleBonusPointsModal: () => {},
   bonusData: {},
+  enableApplyCta: false,
+  getBonusDaysData: () => {},
+  orderDetails: {},
 };
 
 getHeader.propTypes = {
   labels: PropTypes.shape({ myPlaceRewards: {} }),
+  orderDetails: PropTypes.shape({}),
 };
 
 getHeader.defaultProps = {
@@ -258,6 +301,7 @@ getHeader.defaultProps = {
       lbl_place_rewards_day: '',
     },
   },
+  orderDetails: {},
 };
 
 export default withStyles(BonusPointsSection, styles);

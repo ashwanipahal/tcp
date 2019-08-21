@@ -125,7 +125,9 @@
       "**/react-native-touch-id",
       "**/react-native-touch-id/**",
       "**/react-native-simple-radio-button",
-      "**/react-native-simple-radio-button/**"
+      "**/react-native-simple-radio-button/**",
+      "**/react-native-config",
+      "**/react-native-config/**"
     ]
   }
 }
