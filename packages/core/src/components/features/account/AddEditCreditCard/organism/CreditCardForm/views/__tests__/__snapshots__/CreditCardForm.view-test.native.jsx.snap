@@ -18,7 +18,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       cardType=""
       cardTypeImgUrl=""
       className=""
-      dto={[Function]}
+      dto={Object {}}
       expMonthOptionsMap={
         Array [
           Object {
@@ -130,6 +130,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
       onFileAddressKey=""
       onFileAddresskey="12345"
+      selectedCard={Object {}}
       updateExpiryDate={[Function]}
     />
   </Styled(View)>
@@ -164,11 +165,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             },
             "id": "12345",
             "label": "test test (Default)",
+            "primary": true,
           },
           Object {
             "content": "",
             "id": "",
             "label": undefined,
+            "primary": false,
           },
         ]
       }
@@ -194,6 +197,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
       name="onFileAddressKey"
       onValueChange={[Function]}
+      selectedValue="12345"
       variation="secondary"
     />
     <Styled(View)>
@@ -281,7 +285,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       cardType=""
       cardTypeImgUrl=""
       className=""
-      dto={[Function]}
+      dto={Object {}}
       expMonthOptionsMap={
         Array [
           Object {
@@ -393,6 +397,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       }
       onFileAddressKey=""
       pristine={true}
+      selectedCard={Object {}}
       updateExpiryDate={[Function]}
     />
   </Styled(View)>
@@ -427,11 +432,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             },
             "id": "12345",
             "label": "test test (Default)",
+            "primary": true,
           },
           Object {
             "content": "",
             "id": "",
             "label": undefined,
+            "primary": false,
           },
         ]
       }
