@@ -38,6 +38,7 @@ class CardTile extends React.Component<Props> {
     change: PropTypes.func,
     handleSubmit: PropTypes.func,
     toggleModal: PropTypes.func,
+    openUpdateModal: PropTypes.func,
     setSelectedCard: PropTypes.func,
   };
 
@@ -49,6 +50,7 @@ class CardTile extends React.Component<Props> {
     change: () => {},
     handleSubmit: () => {},
     toggleModal: () => {},
+    openUpdateModal: () => {},
     setSelectedCard: () => {},
   };
 
@@ -187,6 +189,13 @@ class CardTile extends React.Component<Props> {
     toggleModal({ state: true });
   };
 
+  onUpdateCardClick = e => {
+    e.preventDefault();
+    const { card, openUpdateModal, setSelectedCard } = this.props;
+    setSelectedCard(card);
+    openUpdateModal(false);
+  };
+
   getCtaRow = (
     isGiftCard,
     isVenmo,
@@ -227,10 +236,10 @@ class CardTile extends React.Component<Props> {
             <Anchor
               fontSizeVariation="large"
               underline
-              to="/#"
               anchorVariation="primary"
               data-locator={`payment-${dataLocatorPrefix}editlink`}
               text={labels.common.lbl_common_edit}
+              onPress={e => this.onUpdateCardClick(e)}
             />
           )}
           <CardCtaLinkMargin />

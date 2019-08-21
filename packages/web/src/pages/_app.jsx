@@ -7,13 +7,15 @@ import withReduxSaga from 'next-redux-saga';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { bootstrapData, loadUserProfile } from '@tcp/core/src/reduxStore/actions';
+import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
-import { getLoginState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { Header, Footer } from '../components/features/content';
+import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
+import APP_CONSTANTS from './App.constants';
 
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -43,8 +45,8 @@ class TCPWebApp extends App {
           },
         })
       );
-    } else if (!getLoginState(store.getState())) {
-      store.dispatch(loadUserProfile());
+    } else {
+      store.dispatch(getUserInfo());
     }
   };
 
@@ -86,7 +88,15 @@ class TCPWebApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store } = this.props;
+    const { Component, pageProps, store, router } = this.props;
+    let isNonCheckoutPage = true;
+    const { PICKUP, SHIPPING, BILLING, REVIEW } = APP_CONSTANTS;
+    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW];
+    for (let i = 0; i < checkoutPageURL.length; i += 1) {
+      if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
+        isNonCheckoutPage = false;
+      }
+    }
     const theme = getCurrentTheme();
     return (
       <Container>
@@ -95,10 +105,11 @@ class TCPWebApp extends App {
             <GlobalStyle />
             <Grid>
               <Header />
+              <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />
-                <Footer />
+                {isNonCheckoutPage && <Footer />}
               </div>
             </Grid>
           </Provider>

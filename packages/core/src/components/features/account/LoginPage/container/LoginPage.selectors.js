@@ -6,9 +6,11 @@ export const getLoginState = state => {
   return state[LOGINPAGE_REDUCER_KEY];
 };
 
-export const getUserLoggedInState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('isLoggedin')
+export const getLabels = state => state.Labels.global;
+
+export const getLoginLabels = createSelector(
+  getLabels,
+  labels => labels && labels.login
 );
 
 export const getLoginError = createSelector(
@@ -17,8 +19,14 @@ export const getLoginError = createSelector(
 );
 
 export const getLoginErrorMessage = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('errorMessage')
+  [getLoginState, getLoginLabels],
+  (loginState, labels) => {
+    const errorCode = loginState && loginState.get('errorCode');
+    if (errorCode && labels[`lbl_login_error_${errorCode}`]) {
+      return labels[`lbl_login_error_${errorCode}`];
+    }
+    return (loginState && loginState.getIn(['errorMessage', '_error'])) || labels.lbl_login_error;
+  }
 );
 
 export const shouldShowRecaptcha = createSelector(
@@ -26,37 +34,4 @@ export const shouldShowRecaptcha = createSelector(
   loginState =>
     loginState &&
     parseInt(loginState.get('retriesCount') || 0, 10) > constants.FAILED_ATTEMPT_ALLOWED
-);
-
-export const getUserName = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('firstName')
-);
-
-export const getUserFullName = createSelector(
-  getLoginState,
-  loginState => {
-    return loginState && ` ${loginState.get('firstName')} ${loginState.get('lastName')}`;
-  }
-);
-export const getLabels = state => state.Labels.global;
-
-export const getPointsToNextRewardState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('pointsToNextReward')
-);
-
-export const getCurrentPointsState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('currentPoints')
-);
-
-export const getTotalRewardsState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('totalRewards')
-);
-
-export const isPlccUser = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('x_hasPLCC') === 'true'
 );

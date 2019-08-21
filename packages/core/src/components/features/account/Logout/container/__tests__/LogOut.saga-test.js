@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { logoutSaga, LogOutPageSaga } from '../LogOut.saga';
-import { resetLoginInfo } from '../../../LoginPage/container/LoginPage.actions';
+import { resetUserInfo } from '../../../User/container/User.actions';
 import LOGOUT_CONSTANTS from '../../LogOut.constants';
 
 describe('LoginPage saga', () => {
@@ -17,7 +17,7 @@ describe('LoginPage saga', () => {
       };
       global.window = Object.create(window);
       const putDescriptor = logoutGen.next(response).value;
-      expect(putDescriptor).toEqual(put(resetLoginInfo(response)));
+      expect(putDescriptor).toEqual(put(resetUserInfo(response)));
     });
   });
 

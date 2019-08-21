@@ -31,7 +31,7 @@ export const AccountHeader = ({
         isNotInlineBlock
         className="hide-on-mobile hide-on-tablet"
       >
-        <BodyCopy fontSize="fs20" fontWeight="extrabold" fontFamily="secondary">
+        <BodyCopy fontSize="fs20" fontWeight="extrabold" fontFamily="secondary" textAlign="right">
           {`${labels.lbl_overview_greeting} ${name || ''}`}
         </BodyCopy>
       </Col>

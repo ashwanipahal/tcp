@@ -13,7 +13,7 @@ const PaymentInfoContainer = styled.View`
 const PaymentInfo = styled.View`
   flex: 1;
   flex-direction: column;
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const TouchableLink = styled.TouchableHighlight.attrs({
@@ -35,6 +35,8 @@ const PaymentWrapper = styled.View`
   height: 80px;
   flex: 1;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 const RecaptchaWrapper = styled.View`

@@ -6,7 +6,6 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
-    locator=""
     text="Address Book"
   />
   <Styled(View) />
@@ -24,7 +23,6 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         color="black"
         fontFamily="secondary"
         fontSize="fs16"
-        locator=""
         text="Default Shiping Address"
       />
     </View>
@@ -57,7 +55,6 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
-    locator=""
     text="You have not added an address yet."
   />
   <Styled(View) />
@@ -75,7 +72,6 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         color="black"
         fontFamily="secondary"
         fontSize="fs16"
-        locator=""
         text="Default Billing Address"
       />
     </View>
@@ -109,7 +105,6 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
-    locator=""
     text="You have not added an address yet."
   />
   <Styled(View)>
@@ -135,8 +130,6 @@ exports[`AddressOverviewTile render empty address component should render correc
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
-    locator=""
-    text=""
   />
   <Styled(View) />
   <Styled(View)>
@@ -153,8 +146,6 @@ exports[`AddressOverviewTile render empty address component should render correc
         color="black"
         fontFamily="secondary"
         fontSize="fs16"
-        locator=""
-        text=""
       />
     </View>
     <View
@@ -186,8 +177,6 @@ exports[`AddressOverviewTile render empty address component should render correc
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
-    locator=""
-    text=""
   />
   <Styled(View) />
   <Styled(View)>
@@ -204,8 +193,6 @@ exports[`AddressOverviewTile render empty address component should render correc
         color="black"
         fontFamily="secondary"
         fontSize="fs16"
-        locator=""
-        text=""
       />
     </View>
     <View
@@ -238,8 +225,6 @@ exports[`AddressOverviewTile render empty address component should render correc
     fontFamily="primary"
     fontSize="fs13"
     fontWeight="regular"
-    locator=""
-    text=""
   />
   <Styled(View)>
     <Styled(CustomButton)

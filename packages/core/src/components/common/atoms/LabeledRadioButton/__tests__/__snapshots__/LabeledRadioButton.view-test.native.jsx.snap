@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemRadioButtons native Component LabeledRadioButton native should render correctly 1`] = `
+<RadioButton
+  buttonColor="#2196f3"
+  disabled={false}
+  idSeparator="|"
+  isSelected={false}
+  labelHorizontal={true}
+  selectedButtonColor="#2196f3"
+>
+  <RadioButtonInput
+    borderWidth={1}
+    buttonInnerColor="#e74c3c"
+    buttonOuterColor="#2196f3"
+    buttonOuterSize={80}
+    buttonSize={40}
+    buttonStyle={Object {}}
+    disabled={false}
+    isSelected={true}
+  />
+  <RadioButtonLabel
+    labelHorizontal={true}
+    labelWrapStyle={Object {}}
+  />
+</RadioButton>
+`;

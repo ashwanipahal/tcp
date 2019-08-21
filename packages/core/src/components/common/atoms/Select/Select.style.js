@@ -3,6 +3,7 @@ import { getIconPath } from '../../../../utils';
 
 const downArrowIcon = getIconPath('down_arrow_icon');
 
+const styleBottomSpacing = '26px';
 const selectStyles = css`
   position: relative;
   display: block;
@@ -19,12 +20,11 @@ const selectStyles = css`
         : ''};
     border-radius: 0;
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
-    font-size: ${props => props.theme.fonts.fontSize.textbox_input}px;
+    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
-      ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding: ${styleBottomSpacing} 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: 100%;
 
     ${props =>

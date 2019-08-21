@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInfoActionTile should render correctly 1`] = `
+<Styled(Anchor)
+  centered={true}
+  className=""
+  onClick={[Function]}
+  to="/"
+>
+  <Styled(BodyCopy)
+    className="img-cont"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  >
+    <Styled(Image)
+      alt="test"
+      className="tile-icon"
+      src="/test"
+      title="test"
+    />
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="msg-cont elem-pl-SM elem-pr-SM"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      test
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="lh107"
+      textAlign="center"
+    >
+      test
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(Anchor)>
+`;
+
+exports[`ProfileInfoActionTile should render correctly when activityCompletionState is present 1`] = `
+<Styled(Anchor)
+  centered={true}
+  className=""
+  onClick={[Function]}
+  to=""
+>
+  <Styled(Image)
+    alt="test"
+    className="activity-complete-icon"
+    src="/static/images/circle-check.png"
+    title="test"
+  />
+  <Styled(BodyCopy)
+    className="img-cont"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  >
+    <Styled(Image)
+      alt="test"
+      className="tile-icon"
+      src="/test"
+      title="test"
+    />
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="msg-cont elem-pl-SM elem-pr-SM"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      added
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="lh107"
+      textAlign="center"
+    >
+      test
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(Anchor)>
+`;

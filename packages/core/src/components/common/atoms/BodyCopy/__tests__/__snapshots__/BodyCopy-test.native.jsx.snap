@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeadingVanilla should render correctly 1`] = `<Text />`;
+exports[`HeadingVanilla should render correctly 1`] = `
+<Text
+  accessibilityLabel=" undefined"
+  accessibilityRole="text"
+/>
+`;

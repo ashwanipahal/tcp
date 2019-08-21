@@ -7,6 +7,7 @@ export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const FORM_REDUCER_KEY = 'form';
+export const LOADER_REDUCER_KEY = 'PageLoader';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -30,6 +31,8 @@ export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 export const BONUS_POINTS_DAYS = '@@Bonus-';
 export const BONUS_POINTS_DAYS_REDUCER_KEY = 'BonusPointsDaysReducer';
+export const USER_ACTION_PATTERN = '@@User-';
+export const USER_REDUCER_KEY = 'User';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
