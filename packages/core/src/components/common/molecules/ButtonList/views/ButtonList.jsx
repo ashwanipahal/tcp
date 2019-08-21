@@ -145,9 +145,9 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    compWrapper = `scroll-comp-wrapper ${
-      buttonsData.length < 3 ? ' no-scrollable-image-cta' : ''
-    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
+    compWrapper = `scroll-comp-wrapper ${buttonsData.length < 3 ? ' no-scrollable-cta' : ''} ${
+      buttonsData.length > 5 ? wrappedTextClass : ''
+    }`;
     compProps = {
       ...scrollCTAProps,
       buttonsData,
@@ -159,9 +159,9 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'imageCTAList') {
-    compWrapper = `scroll-comp-wrapper ${
-      buttonsData.length < 4 ? ' no-scrollable-image-cta' : ''
-    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
+    compWrapper = `scroll-comp-wrapper ${buttonsData.length < 4 ? ' no-scrollable-cta' : ''} ${
+      buttonsData.length > 5 ? wrappedTextClass : ''
+    }`;
     compProps = {
       buttonListVariation,
       dataLocatorDivisionImages,

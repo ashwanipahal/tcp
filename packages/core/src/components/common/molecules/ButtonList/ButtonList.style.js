@@ -73,6 +73,10 @@ export default css`
     margin-left: 16px;
   }
 
+  &.no-scrollable-cta .scroll-button:first-of-type {
+    margin-left: 0;
+  }
+
   .img-wrapper {
     display: inline-block;
     margin: 0 19px;
@@ -85,8 +89,8 @@ export default css`
 
   .image-cta {
     border-radius: 35px;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   .image-comp {
@@ -115,7 +119,7 @@ export default css`
     }
   }
 
-  &.scroll-comp-wrapper.no-scrollable-image-cta {
+  &.scroll-comp-wrapper.no-scrollable-cta {
     justify-content: center;
   }
 
@@ -139,6 +143,7 @@ export default css`
       button {
         width: 140px;
         white-space: nowrap;
+        padding: 12px;
       }
     }
 
@@ -151,6 +156,7 @@ export default css`
       button {
         width: 140px;
         white-space: nowrap;
+        padding: 12px;
       }
     }
 
@@ -199,8 +205,8 @@ export default css`
       }
     }
 
-    &.stack-comp-wrapper.wrapped-button-text .stacked-button,
-    &.scroll-comp-wrapper.wrapped-button-text .scroll-button {
+    &.wrapped-button-text .stacked-button,
+    &.wrapped-button-text .scroll-button {
       margin: 0 8px;
       button {
         white-space: normal;

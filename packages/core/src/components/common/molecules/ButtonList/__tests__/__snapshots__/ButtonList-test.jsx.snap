@@ -330,7 +330,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     title="Girl"
   >
     <Styled(Button)
-      buttonVariation="fixed-width"
+      buttonVariation="variable-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_0"
       fill=""
@@ -346,7 +346,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     title="Toddler Girl"
   >
     <Styled(Button)
-      buttonVariation="fixed-width"
+      buttonVariation="variable-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_1"
       fill=""
@@ -362,7 +362,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     title="Boy"
   >
     <Styled(Button)
-      buttonVariation="fixed-width"
+      buttonVariation="variable-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_2"
       fill=""
@@ -378,7 +378,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     title="Tod Boy"
   >
     <Styled(Button)
-      buttonVariation="fixed-width"
+      buttonVariation="variable-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_3"
       fill=""
@@ -394,7 +394,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     title="Baby"
   >
     <Styled(Button)
-      buttonVariation="fixed-width"
+      buttonVariation="variable-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_4"
       fill=""
@@ -410,7 +410,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     title="Alt"
   >
     <Styled(Button)
-      buttonVariation="fixed-width"
+      buttonVariation="variable-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_5"
       fill=""

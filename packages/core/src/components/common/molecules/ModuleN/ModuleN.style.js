@@ -2,15 +2,12 @@ import { css } from 'styled-components';
 
 export default css`
   .heading-wrapper {
-    padding: 10px 0;
+    padding: 16px 0;
 
-    @media ${props => props.theme.mediaQuery.medium} {
-      padding: 16px 0;
-    }
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding: 0;
-      margin-bottom: 22px;
+      padding-top: 30px;
+      padding-bottom: 25px;
     }
   }
 

@@ -10,7 +10,7 @@ export default {
     className: 'scroll-cta-wrapper',
     compProps: {
       className: 'scroll-button',
-      buttonVariation: 'fixed-width',
+      buttonVariation: 'variable-width',
     },
   },
   imageCTAList: {
