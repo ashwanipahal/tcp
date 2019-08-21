@@ -12,8 +12,9 @@ const FooterNavLinksList = ({ className, listArray, colNum, openTrackOrder, isUs
     else routerPush('/account', '/account');
   };
   const createLink = (linkItems, index) => {
-    const toVal = linkItems.title === 'Track Order' ? '#' : linkItems.url;
-    const onClick = linkItems.title === 'Track Order' ? e => trackLink(e) : null;
+    const isTrackOrderLink = linkItems.url.indexOf('track-order') > -1;
+    const toVal = isTrackOrderLink ? '/#' : linkItems.url;
+    const onClick = isTrackOrderLink ? e => trackLink(e) : null;
     return (
       <Anchor
         className={className}
