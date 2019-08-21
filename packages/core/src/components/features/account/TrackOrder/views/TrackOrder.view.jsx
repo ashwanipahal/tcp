@@ -1,5 +1,6 @@
 import React from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import Notification from '../../../../common/molecules/Notification';
 import TrackOrderForm from '../molecules/TrackOrderForm';
 import TrackOrderTopSection from '../molecules/TrackOrderTopSection';
 import TrackOrderBottomSection from '../molecules/TrackOrderBottomSection';
@@ -12,6 +13,8 @@ type Props = {
   onSubmit: Function,
   openLoginOverlay: Function,
   setModalMountState: Function,
+  showNotification: string,
+  onChangeForm: Function,
 };
 export const TrackOrderView = ({
   labels,
@@ -19,15 +22,25 @@ export const TrackOrderView = ({
   onSubmit,
   openLoginOverlay,
   setModalMountState,
+  showNotification,
+  onChangeForm,
 }: Props) => {
   return (
     <React.Fragment>
       <TrackOrderTopSection labels={labels} className="trackorder__modal__topsection" />
+      {errorMessage ? (
+        <Notification
+          status={showNotification}
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={errorMessage}
+        />
+      ) : null}
+
       <TrackOrderForm
-        errorMessage={errorMessage}
         labels={labels}
         handleSubmit={onSubmit}
         className="trackorder__modal__form"
+        onChangeForm={onChangeForm}
       />
       <TrackOrderBottomSection
         labels={labels}
@@ -40,3 +53,4 @@ export const TrackOrderView = ({
 };
 
 export default withStyles(TrackOrderView, styles);
+export { TrackOrderView as TrackOrderViewVanilla };

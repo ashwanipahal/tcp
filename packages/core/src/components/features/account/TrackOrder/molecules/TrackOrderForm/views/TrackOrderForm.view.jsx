@@ -11,23 +11,24 @@ import styles from '../styles/TrackOrderForm.style';
 
 // @flow
 type Props = {
-  errorMessage: String,
   className: String,
   labels: object,
   handleSubmit: Function,
+  onChangeForm: Function,
 };
 
 class TrackOrderForm extends React.PureComponent<Props> {
   render() {
-    const { errorMessage, className, labels, handleSubmit } = this.props;
+    const { className, labels, handleSubmit, onChangeForm } = this.props;
     return (
       <BodyCopy component="div">
-        <form name="TrackOrderForm" onSubmit={handleSubmit} noValidate className={className}>
-          {errorMessage && (
-            <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
-              {errorMessage}
-            </BodyCopy>
-          )}
+        <form
+          name="TrackOrderForm"
+          onSubmit={handleSubmit}
+          noValidate
+          onChange={onChangeForm}
+          className={className}
+        >
           <BodyCopy component="div" className="elem-mb-LRG">
             <Field
               id="emailAddress"
@@ -56,8 +57,8 @@ class TrackOrderForm extends React.PureComponent<Props> {
                 fontSizeVariation="medium"
                 anchorVariation="primary"
                 underline
-                dataLocator="track_order_need_help"
-                href="labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink"
+                data-locator="track_order_need_help"
+                to={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
               >
                 {labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
               </Anchor>
@@ -81,9 +82,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
   }
 }
 
-const validateMethod = createValidateMethod(
-  getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, { orderNumber: 'orderNumber' }])
-);
+const validateMethod = createValidateMethod(getStandardConfig(['emailAddress', 'orderNumber']));
 
 export default reduxForm({
   form: 'TrackOrderForm', // a unique identifier for this form

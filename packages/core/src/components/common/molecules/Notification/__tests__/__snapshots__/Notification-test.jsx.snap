@@ -10,11 +10,16 @@ exports[`Notification Component should render notification component with status
     }
   }
 >
-  <Styled(BodyStyle)
-    bodyColor="white"
-    bodySize="five"
+  <Styled(BodyCopy)
     className="notification"
-    tag="span"
+    color="white"
+    component="span"
+    fontFamily="primary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   />
 </Styled(Col)>
 `;
@@ -33,11 +38,16 @@ exports[`Notification Component should render notification component with status
     alt="success icon"
     src="/static/images/done.svg"
   />
-  <Styled(BodyStyle)
-    bodyColor="darkGray"
-    bodySize="five"
+  <Styled(BodyCopy)
     className="notification"
-    tag="span"
+    color="darkGray"
+    component="span"
+    fontFamily="primary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   />
 </Styled(Col)>
 `;

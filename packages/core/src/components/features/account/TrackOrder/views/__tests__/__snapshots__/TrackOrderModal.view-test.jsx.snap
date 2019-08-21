@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderModal component should renders correctly 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content TrackOrder__Modal__content"
+  data-locator="track_order_modal"
+  fixedWidth={true}
+  isOpen={true}
+  maxWidth="450px"
+  minHeight="576px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <Styled(TrackOrderView)
+    errorMessage={null}
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    onChangeForm={[MockFunction]}
+    onSubmit={[MockFunction]}
+    openLoginOverlay={[MockFunction]}
+    setModalMountState={[MockFunction]}
+    showNotification="error"
+  />
+</Styled(Modal)>
+`;

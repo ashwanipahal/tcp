@@ -70,8 +70,8 @@ export const formValidationMessages = {
     validEmail: 'Email format is invalid',
   },
   emailAddress: {
-    required: `Please enter a valid email`,
-    emailPattern: 'Email format is invalid',
+    required: `ERROR: Please enter a valid email`,
+    emailPattern: 'ERROR: Email format is invalid',
   },
   confirmEmailAddress: {
     required: 'Please confirm your email address',
@@ -86,14 +86,14 @@ export const formValidationMessages = {
     equalTo: 'Passwords must match',
   },
   emailAddressNoAsync: {
-    required: `Error: Please enter a valid email`,
-    email: 'Error: Email format is invalid.',
-    validEmail: 'Error: Email format is invalid',
+    required: `ERROR: Please enter a valid email`,
+    email: 'ERROR: Email format is invalid.',
+    validEmail: 'ERROR: Email format is invalid',
   },
   iAgree: {
     required: 'Please Select',
   },
-  orderNumber: 'Error: Please enter a valid order number.',
+  orderNumber: 'ERROR: Please enter a valid order number.',
 };
 
 export const formValidationRules = {
@@ -186,6 +186,7 @@ export const formValidationRules = {
   emailAddress: {
     required: true,
     emailPattern: 'isValid',
+    validEmail: true,
   },
   confirmEmailAddress: {
     required: true,

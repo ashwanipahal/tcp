@@ -27,3 +27,9 @@ export const setError = payload => {
     payload,
   };
 };
+
+export const setErrorInfoNull = () => {
+  return {
+    type: TRACK_ORDER_CONSTANTS.SET_ERROR_INFO_NULL,
+  };
+};

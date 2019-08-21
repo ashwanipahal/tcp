@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
-import { trackOrder, setTrackOrderModalMountedState } from './TrackOrder.actions';
+import { trackOrder, setTrackOrderModalMountedState, setErrorInfoNull } from './TrackOrder.actions';
 import TrackOrderView from '../views';
 import {
   getLabels,
@@ -10,6 +10,7 @@ import {
   getEmailId,
   getOrderId,
   getOrderDetail,
+  getShowNotificationState,
 } from './TrackOrder.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 // import labels from './TrackOrder.labels';
@@ -27,11 +28,13 @@ type Props = {
   openLoginOverlay: Function,
   trackOrderMountedState: Function,
   setTrackOrderModalMountState: Function,
+  showNotification: string,
+  onChangeForm: Function,
 };
-class TrackOrderContainer extends React.PureComponent<Props> {
+export class TrackOrderContainer extends React.PureComponent<Props> {
   componentDidUpdate() {
     const { orderDetailResponse, isUserLoggedIn } = this.props;
-    const isSuccess = orderDetailResponse && orderDetailResponse.success;
+    const isSuccess = orderDetailResponse && orderDetailResponse.get('success');
     if (isSuccess) {
       this.trackOrderDetail(
         orderDetailResponse.orderId,
@@ -69,6 +72,8 @@ class TrackOrderContainer extends React.PureComponent<Props> {
       openLoginOverlay,
       trackOrderMountedState,
       setTrackOrderModalMountState,
+      showNotification,
+      onChangeForm,
     } = this.props;
     return (
       <TrackOrderView
@@ -80,6 +85,8 @@ class TrackOrderContainer extends React.PureComponent<Props> {
         openState={trackOrderMountedState}
         setModalMountState={setTrackOrderModalMountState}
         className="TrackOrder__Modal"
+        showNotification={showNotification}
+        onChangeForm={onChangeForm}
       />
     );
   }
@@ -94,6 +101,7 @@ export const mapStateToProps = state => {
     emailId: getEmailId(state),
     orderId: getOrderId(state),
     orderDetailResponse: getOrderDetail(state),
+    showNotification: getShowNotificationState(state),
   };
 };
 
@@ -101,6 +109,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     onSubmit: payload => {
       dispatch(trackOrder(payload));
+    },
+    onChangeForm: () => {
+      dispatch(setErrorInfoNull());
     },
     openLoginOverlay: payload => {
       dispatch(openOverlayModal(payload));

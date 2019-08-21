@@ -13,6 +13,8 @@ export const trackOrderApi = payload => {
     webService: endpoints.orderLookUp,
     header: {
       isRest: true,
+    },
+    body: {
       orderId: payload.orderNumber,
       emailId: payload.emailAddress,
     },
@@ -20,7 +22,10 @@ export const trackOrderApi = payload => {
 
   return executeStatefulAPICall(payloadData)
     .then(res => {
-      const trackingNumber = res.body.orderLookupResponse.orderDetails.tracking;
+      const trackingNumber =
+        res && res.body && res.body.orderLookupResponse
+          ? res.body.orderLookupResponse.orderDetails.tracking
+          : null;
       return {
         success: true,
         trackingNumber: trackingNumber === 'N/A' ? null : trackingNumber,

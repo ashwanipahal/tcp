@@ -3,7 +3,7 @@ import { getIconPath } from '../../../../../utils';
 import Col from '../../../atoms/Col';
 import styles from '../Notification.style';
 import withStyles from '../../../hoc/withStyles';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 // @flow
 
@@ -22,10 +22,10 @@ const Notification = ({ colSize, className, status, message }: Props) => {
     <Col colSize={colSize} className={className}>
       {status === 'success' && <img alt="success icon" src={successIcon} />}
       <BodyCopy
-        bodySize="five"
-        bodyColor={status === 'success' ? 'darkGray' : 'white'}
+        fontSize="fs12"
+        color={status === 'success' ? 'darkGray' : 'white'}
         className="notification"
-        tag="span"
+        component="span"
       >
         {message}
       </BodyCopy>

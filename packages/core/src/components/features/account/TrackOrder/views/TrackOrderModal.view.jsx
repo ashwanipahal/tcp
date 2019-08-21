@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from '../../../../common/hoc/withStyles';
 import Modal from '../../../../common/molecules/Modal';
-import TrackOrderViewTemplate from './TrackOrderView';
+import TrackOrderViewTemplate from './TrackOrder.view';
 import styles from '../styles/TrackOrderModal.style';
 
 // @flow
@@ -12,6 +12,8 @@ type Props = {
   openLoginOverlay: Function,
   onSubmit: Function,
   errorMessage: string,
+  onChangeForm: Function,
+  showNotification: string,
 };
 
 /**
@@ -43,6 +45,8 @@ class TrackOrderModal extends React.Component<Props> {
       openLoginOverlay,
       onSubmit,
       errorMessage,
+      showNotification,
+      onChangeForm,
     } = this.props;
     return (
       <Modal
@@ -61,6 +65,8 @@ class TrackOrderModal extends React.Component<Props> {
           onSubmit={onSubmit}
           openLoginOverlay={openLoginOverlay}
           setModalMountState={setModalMountState}
+          showNotification={showNotification}
+          onChangeForm={onChangeForm}
         />
       </Modal>
     );

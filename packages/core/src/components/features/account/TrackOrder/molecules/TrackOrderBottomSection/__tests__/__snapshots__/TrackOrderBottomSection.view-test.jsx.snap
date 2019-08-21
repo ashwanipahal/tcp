@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderBottomSection component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=" center-align"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="trackorder__modal__section center-align"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="trackorder__modal__overlaycontent"
+      color="text.primary"
+      component="p"
+      data-locator="trackordermodal-overlaycontent1"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      className="trackorder__modal__overlaycontent"
+      color="text.primary"
+      component="p"
+      data-locator="trackordermodal-overlaycontent1"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="trackorder__modal__loginlink"
+        data-locator="track_order_login"
+        fontSize="fs12"
+        href="#"
+        id="login"
+        onClick={[Function]}
+        underline={true}
+      />
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="trackorder__modal__overlaycontent center-align center-align-row"
+    color="text.primary"
+    component="p"
+    data-locator="trackordermodal-overlaycontent2"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="trackorder__modal__clickhere_link"
+      data-locator="track_order_click_here"
+      fontSize="fs12"
+      target="_blank"
+      underline={true}
+    />
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
