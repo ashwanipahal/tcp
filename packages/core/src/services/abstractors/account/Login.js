@@ -208,7 +208,7 @@ export const login = ({
       };
     })
     .catch(err => {
-      throw new Error(err);
+      throw err;
     });
 };
 
