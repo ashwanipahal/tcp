@@ -6,6 +6,8 @@ describe('CreditCardNumber component', () => {
   it('should renders correctly when cardType is present', () => {
     const props = {
       cardType: 'VISA',
+      className: 'field',
+      isEdit: false,
     };
     const component = shallow(<CreditCardNumber {...props} />);
     expect(component).toMatchSnapshot();

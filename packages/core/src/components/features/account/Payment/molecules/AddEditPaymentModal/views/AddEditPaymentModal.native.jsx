@@ -23,7 +23,15 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, toggleModal, setUpdateModalMountedState, dto, updateCardList } = this.props;
+    const {
+      labels,
+      toggleModal,
+      setUpdateModalMountedState,
+      dto,
+      updateCardList,
+      isEdit,
+      selectedCard,
+    } = this.props;
     return (
       <ModalNative isOpen={setUpdateModalMountedState} onRequestClose={toggleModal}>
         <ModalHeading>
@@ -41,10 +49,11 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
           <ModalViewWrapper>
             <AddEditCreditCard
               labels={labels}
-              isEdit={false}
+              isEdit={isEdit}
               onClose={toggleModal}
               dto={dto}
               updateCardList={updateCardList}
+              selectedCard={selectedCard}
             />
           </ModalViewWrapper>
         </SafeAreaView>
