@@ -12,7 +12,7 @@ type Props = {
   name: string,
 };
 
-const SlotA = (props: Props) => {
+const SlotF = (props: Props) => {
   switch (props.name) {
     case 'moduleD':
       return <ModuleD {...props} />;
@@ -29,4 +29,4 @@ const SlotA = (props: Props) => {
   }
 };
 
-export default SlotA;
+export default SlotF;

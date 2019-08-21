@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import mock from '../../../../../services/abstractors/common/moduleN/mock';
+import moduleNMockData from '../../../../../services/abstractors/common/moduleN/mock';
 import { ButtonListVanilla } from '../views/ButtonList.native';
 import { Container } from '../ButtonList.styles.native';
 
@@ -12,14 +12,14 @@ describe('ButtonList', () => {
     stackedCTAList = shallow(
       <ButtonListVanilla
         buttonListVariation="stackedCTAList"
-        stackedCTAButtons={mock.moduleN.composites.stackedCTAButtons}
+        buttonsData={moduleNMockData.moduleN.composites.ctaItems}
       />
     );
 
     scrollCTAList = shallow(
       <ButtonListVanilla
         buttonListVariation="scrollCTAList"
-        scrollCTAButtons={mock.moduleN.composites.scrollCTAButtons}
+        buttonsData={moduleNMockData.moduleN.composites.ctaItems}
       />
     );
   });

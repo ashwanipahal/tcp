@@ -16,7 +16,7 @@ describe('ModuleL component', () => {
   });
 
   it('should render header', () => {
-    expect(ModuleNComp.find(LinkText)).toHaveLength(4);
+    expect(ModuleNComp.find(LinkText)).toHaveLength(1);
   });
 
   /* it('should render promo text banner', () => {
