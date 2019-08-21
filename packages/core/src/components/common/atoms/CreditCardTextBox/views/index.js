@@ -1,1 +1,1 @@
-export { default, TextBoxVanilla } from './CreditCardTextBox';
+export { default } from './CreditCardTextBox.native';
