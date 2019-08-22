@@ -26,7 +26,11 @@ class SMSFormFields extends React.PureComponent {
               dataLocator="hide-show-checkbox"
               enableSuccessCheck={false}
             >
-              <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">
+              <BodyCopy
+                fontSize={['fs14', 'fs16', 'fs16']}
+                fontFamily="secondary"
+                fontWeight="regular"
+              >
                 {labels.orderUpdates}
               </BodyCopy>
             </Field>
@@ -57,7 +61,7 @@ class SMSFormFields extends React.PureComponent {
                   anchorVariation="primary"
                   fontSizeVariation="small"
                   noLink
-                  href="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
+                  href="#"
                   target="_blank"
                 >
                   {labels.privacyPolicy}

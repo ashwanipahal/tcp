@@ -92,7 +92,7 @@ class PickUpFormPart extends React.PureComponent {
                     anchorVariation="primary"
                     fontSizeVariation="small"
                     noLink
-                    href="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
+                    href="#"
                     target="_blank"
                   >
                     {pickUpLabels.emailSignupContact}

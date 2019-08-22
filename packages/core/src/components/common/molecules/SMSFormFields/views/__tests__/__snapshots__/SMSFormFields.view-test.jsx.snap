@@ -125,7 +125,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs16"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
@@ -262,7 +268,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs16"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
@@ -476,7 +488,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         <Styled(Anchor)
           anchorVariation="primary"
           fontSizeVariation="small"
-          href="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
+          href="#"
           noLink={true}
           noUnderline={true}
           target="_blank"

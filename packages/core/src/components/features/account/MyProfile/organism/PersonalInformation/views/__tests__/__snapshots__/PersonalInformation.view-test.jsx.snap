@@ -3,6 +3,7 @@
 exports[`PersonalInformation component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
   ctaTitle="Edit personal Info"
+  dataLocator="pi-editpersonalinfo"
   title="Personal Information"
 >
   <FPO
