@@ -52,6 +52,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .align-product-img {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .color-fit-size-separator {

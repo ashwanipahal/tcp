@@ -38,6 +38,7 @@ export default css`
   .align-product-img {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .color-fit-size-separator {
