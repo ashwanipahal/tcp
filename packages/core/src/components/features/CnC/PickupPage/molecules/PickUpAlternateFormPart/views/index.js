@@ -1,1 +1,1 @@
-export { default } from './PickUpAlternateFormPart';
+export { default } from './PickUpAlternateFormPart.view';

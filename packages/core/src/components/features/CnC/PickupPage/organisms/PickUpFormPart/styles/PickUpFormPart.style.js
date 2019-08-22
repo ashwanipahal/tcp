@@ -15,13 +15,21 @@ const styles = css`
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   }
   .emailSignupText {
-    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   }
   .pickupError {
     margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
   .checkoutPickupForm {
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  .pickUpContact {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  .pick-up-form-container,
+  .mail-signup-container,
+  .ickUpAlternate-container {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
 

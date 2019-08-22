@@ -11,7 +11,13 @@ import styles from '../styles/style';
 
 class PickUpAlternateFormPart extends React.PureComponent {
   render() {
-    const { className, isCondensed, showNoteOnToggle, isAlternateUpdateChecked } = this.props;
+    const {
+      className,
+      isCondensed,
+      showNoteOnToggle,
+      isAlternateUpdateChecked,
+      labels,
+    } = this.props;
     return (
       <div className={className}>
         <Row fullBleed>
@@ -23,7 +29,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
               enableSuccessCheck={false}
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">
-                Add an alternate pickup person (optional)
+                {labels.alternativeHeading}
               </BodyCopy>
             </Field>
             {showNoteOnToggle && (
@@ -33,7 +39,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
                 fontWeight="regular"
                 className="alterNativeSubText"
               >
-                Alternate pickup contact will also receive a copy of all Order Pickup emails.
+                {labels.alternativeSubHeading}
               </BodyCopy>
             )}
           </Col>
@@ -43,6 +49,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
             className="pick-up-alternate-input"
             showEmailAddress
             isCondensed={isCondensed}
+            labels={labels}
           />
         )}
       </div>
@@ -51,6 +58,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
 }
 
 PickUpAlternateFormPart.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
   isCondensed: PropTypes.bool,
   showNoteOnToggle: PropTypes.bool,
@@ -63,3 +71,4 @@ PickUpAlternateFormPart.defaultProps = {
 };
 
 export default withStyles(PickUpAlternateFormPart, styles);
+export { PickUpAlternateFormPart as PickUpAlternateFormPartVanilla };

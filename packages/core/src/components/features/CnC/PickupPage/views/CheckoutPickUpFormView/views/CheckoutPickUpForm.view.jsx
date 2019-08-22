@@ -13,6 +13,8 @@ class PickupPage extends React.PureComponent {
       isGuest,
       error,
       isUsSite,
+      pickUpLabels,
+      smsSignUpLabels,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
       isOrderUpdateChecked,
@@ -26,6 +28,8 @@ class PickupPage extends React.PureComponent {
         isGuest={isGuest}
         isSMSActive={isSmsUpdatesEnabled}
         isUsSite={isUsSite}
+        pickUpLabels={pickUpLabels}
+        smsSignUpLabels={smsSignUpLabels}
         currentPhoneNumber={currentPhoneNumber}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -39,9 +43,7 @@ class PickupPage extends React.PureComponent {
         header={() => {
           return null;
         }}
-        leftSection={() => {
-          return this.pickupForm();
-        }}
+        leftSection={this.pickupForm}
       />
     );
   }
@@ -57,6 +59,8 @@ PickupPage.propTypes = {
   isAlternateUpdateChecked: PropTypes.bool,
   error: PropTypes.string,
   currentPhoneNumber: PropTypes.string,
+  pickUpLabels: PropTypes.shape({}).isRequired,
+  smsSignUpLabels: PropTypes.shape({}).isRequired,
 };
 
 PickupPage.defaultProps = {

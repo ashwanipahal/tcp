@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm, FormSection } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
-// import CheckoutSectionTitleDisplay from '../../../molecules/CheckoutSectionTitleDisplay';
+import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-// import SMSFormFields from '../../../molecules/SmsSignupFormSection';
+import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import ContactFormFields from '../../../molecules/ContactFormFields';
 import styles from '../styles/PickUpFormPart.style';
@@ -14,18 +14,16 @@ import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
-const SMSFormFields = () => {
-  return null;
-};
 class PickUpFormPart extends React.PureComponent {
   render() {
     const {
       className,
       isGuest,
       isMobile,
-      isSMSActive,
       pickupError,
       isUsSite,
+      pickUpLabels,
+      smsSignUpLabels,
       currentPhoneNumber,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
@@ -33,7 +31,10 @@ class PickUpFormPart extends React.PureComponent {
     return (
       <div className={className}>
         <div className="container">
-          {/* <CheckoutSectionTitleDisplay title="Pickup" className="summary-title-pick-up" /> */}
+          <CheckoutSectionTitleDisplay
+            title={pickUpLabels.title}
+            className="summary-title-pick-up"
+          />
           {pickupError && (
             <ErrorMessage
               error={pickupError}
@@ -43,64 +44,73 @@ class PickUpFormPart extends React.PureComponent {
             />
           )}
           <form name="checkoutPickup" className="checkoutPickupForm">
-            <FormSection name="pickUpContact">
-              {isGuest ? (
-                <ContactFormFields
-                  className="pickup-contact-guest-form"
-                  showEmailAddress
-                  showPhoneNumber
-                />
-              ) : (
-                <ContactFormFields isMobile={isMobile} />
-              )}
-            </FormSection>
-            <FormSection name="smsSignUp" className="pick-up-form-container">
-              <SMSFormFields
-                isOrderUpdateChecked={isOrderUpdateChecked}
-                formName="checkoutPickup"
-                formSection="smsSignUp"
-                altInitValue={currentPhoneNumber}
-                shouldRender={isSMSActive}
-              />
-            </FormSection>
+            <div className="pickUpContact">
+              <FormSection name="pickUpContact" className="pickUpContact">
+                {isGuest ? (
+                  <ContactFormFields
+                    className="pickup-contact-guest-form"
+                    showEmailAddress
+                    showPhoneNumber
+                    labels={pickUpLabels}
+                  />
+                ) : (
+                  <ContactFormFields isMobile={isMobile} />
+                )}
+              </FormSection>
+            </div>
+
+            {isUsSite && (
+              <div className="pick-up-form-container">
+                <FormSection name="smsSignUp">
+                  <SMSFormFields
+                    isOrderUpdateChecked={isOrderUpdateChecked}
+                    formName="checkoutPickup"
+                    formSection="smsSignUp"
+                    altInitValue={currentPhoneNumber}
+                    labels={smsSignUpLabels}
+                  />
+                </FormSection>
+              </div>
+            )}
+
             {isGuest && !isUsSite && (
               <div className="email-signup-container">
-                <Field
-                  name="emailSignup"
-                  component={InputCheckbox}
-                  title="Sign up for email today & get $10 off your next purchase!*"
-                  className="email-signup"
-                >
+                <Field name="emailSignup" component={InputCheckbox} className="email-signup">
                   <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">
-                    Sign up for email today & get $10 off your next purchase!*
+                    {pickUpLabels.emailSignupHeading}
                   </BodyCopy>
                 </Field>
                 <div className="emailSignupText">
                   <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                    I understand I will receive marketing emails from The Childrens Place.
+                    {pickUpLabels.emailSignupSubHeading}
                   </BodyCopy>
                   <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                    *Applies to new email subscribers only. Exclusions apply. Offer valid on your
-                    next purchase of $40 or more. You may withdraw your consent at any time.
+                    {pickUpLabels.emailSignupSubSubHeading}
                   </BodyCopy>
                   <Anchor
-                    anchorVariation="secondary"
-                    dataLocator="pickup-contactUs"
-                    onClick={this.showForgotPasswordForm}
+                    noUnderline
+                    anchorVariation="primary"
+                    fontSizeVariation="small"
+                    noLink
+                    href="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
+                    target="_blank"
                   >
-                    Contact us
+                    {pickUpLabels.emailSignupContact}
                   </Anchor>
                 </div>
               </div>
             )}
-            <FormSection name="pickUpAlternate">
-              <PickUpAlternateFormPart
-                isAlternateUpdateChecked={isAlternateUpdateChecked}
-                showNoteOnToggle
-                formName="checkoutPickup"
-                formSection="pickUpAlternate"
-              />
-            </FormSection>
+            <div lassName="pickUpAlternate-container">
+              <FormSection name="pickUpAlternate">
+                <PickUpAlternateFormPart
+                  isAlternateUpdateChecked={isAlternateUpdateChecked}
+                  showNoteOnToggle
+                  formName="checkoutPickup"
+                  formSection="pickUpAlternate"
+                  labels={pickUpLabels}
+                />
+              </FormSection>
+            </div>
           </form>
         </div>
       </div>
@@ -112,19 +122,19 @@ PickUpFormPart.propTypes = {
   className: PropTypes.string,
   isGuest: PropTypes.bool,
   isMobile: PropTypes.bool,
-  isSMSActive: PropTypes.bool,
   isUsSite: PropTypes.bool,
   isOrderUpdateChecked: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
   pickupError: PropTypes.string,
   currentPhoneNumber: PropTypes.string,
+  pickUpLabels: PropTypes.shape({}).isRequired,
+  smsSignUpLabels: PropTypes.shape({}).isRequired,
 };
 
 PickUpFormPart.defaultProps = {
   className: '',
   isGuest: false,
   isMobile: false,
-  isSMSActive: false,
   isUsSite: false,
   isOrderUpdateChecked: false,
   isAlternateUpdateChecked: false,
@@ -134,6 +144,7 @@ PickUpFormPart.defaultProps = {
 
 const validateMethod = createValidateMethod({
   pickUpContact: ContactFormFields.ContactValidationConfig,
+  smsSignUp: SMSFormFields.smsFormFieldsConfig,
   pickUpAlternate: ContactFormFields.ContactValidationConfig,
 });
 
@@ -142,3 +153,4 @@ export default reduxForm({
   ...validateMethod,
   destroyOnUnmount: false,
 })(withStyles(PickUpFormPart, styles));
+export { PickUpFormPart as PickUpFormPartVanilla };

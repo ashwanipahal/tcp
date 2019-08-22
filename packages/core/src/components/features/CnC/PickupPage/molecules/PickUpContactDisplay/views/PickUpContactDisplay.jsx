@@ -15,3 +15,4 @@ PickUpContactDisplay.propTypes = {
 };
 
 export default withStyles(PickUpContactDisplay, styles);
+export { PickUpContactDisplay as PickUpContactDisplayVanilla };

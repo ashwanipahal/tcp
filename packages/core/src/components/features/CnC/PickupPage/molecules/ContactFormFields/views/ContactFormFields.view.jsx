@@ -18,14 +18,14 @@ class ContactFormFields extends React.PureComponent {
   ]);
 
   render() {
-    const { className, showEmailAddress, showPhoneNumber } = this.props;
+    const { className, showEmailAddress, showPhoneNumber, labels } = this.props;
 
     return (
       <div className={className}>
         <Row fullBleed>
           <Col className="fieldFirstName" colSize={{ small: 6, medium: 8, large: 6 }}>
             <Field
-              placeholder="First Name"
+              placeholder={labels.firstName}
               name="firstName"
               id="firstName"
               component={TextBox}
@@ -33,12 +33,12 @@ class ContactFormFields extends React.PureComponent {
               enableSuccessCheck={false}
             />
             <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-              A government issued ID is required to pickup the order.
+              {labels.govIdText}
             </BodyCopy>
           </Col>
           <Col className="fieldLastName" colSize={{ small: 6, medium: 8, large: 6 }}>
             <Field
-              placeholder="Last Name"
+              placeholder={labels.lastName}
               name="lastName"
               id="lastName"
               component={TextBox}
@@ -51,21 +51,20 @@ class ContactFormFields extends React.PureComponent {
             <Col className="fieldEmail" colSize={{ small: 6, medium: 8, large: 6 }}>
               <Field
                 id="emailAddress"
-                placeholder="Email Address"
+                placeholder={labels.email}
                 name="emailAddress"
                 component={TextBox}
                 dataLocator="login-emailfield"
                 errorDataLocator="login-emailerror"
                 showSuccessCheck={false}
                 enableSuccessCheck={false}
-                className="elem-mb-SM"
               />
             </Col>
           )}
           {showPhoneNumber && (
             <Col className="fieldNumber" colSize={{ small: 6, medium: 8, large: 6 }}>
               <Field
-                placeholder="Phone Number"
+                placeholder={labels.mobile}
                 name="phoneNumber"
                 id="phoneNumber"
                 type="tel"
@@ -86,6 +85,7 @@ ContactFormFields.propTypes = {
   className: PropTypes.string,
   showEmailAddress: PropTypes.bool,
   showPhoneNumber: PropTypes.bool,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 ContactFormFields.defaultProps = {
@@ -95,5 +95,4 @@ ContactFormFields.defaultProps = {
 };
 
 export default withStyles(ContactFormFields, styles);
-
 export { ContactFormFields as ContactFormFieldsVanilla };
