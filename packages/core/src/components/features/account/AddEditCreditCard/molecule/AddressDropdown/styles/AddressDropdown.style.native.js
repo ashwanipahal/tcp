@@ -1,5 +1,4 @@
 import {
-  DropDownStyle,
   HeaderContainer,
   Row,
   OverLayView,
@@ -8,12 +7,4 @@ import {
   FlatList,
 } from '../../../../../../common/atoms/DropDown/DropDown.style.native';
 
-export {
-  DropDownStyle,
-  HeaderContainer,
-  Row,
-  OverLayView,
-  DropDownItemContainer,
-  Separator,
-  FlatList,
-};
+export { HeaderContainer, Row, OverLayView, DropDownItemContainer, Separator, FlatList };
