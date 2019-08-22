@@ -94,7 +94,7 @@ export function* startCartCheckout() {
 
 export function* removeUnqualifiedItemsAndCheckout() {
   const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
-  if (unqualifiedItemsIds.size > 0) {
+  if (unqualifiedItemsIds && unqualifiedItemsIds.size > 0) {
     yield call(removeItem, unqualifiedItemsIds);
     yield call(getCartDataSaga);
   }
@@ -104,7 +104,6 @@ export function* removeUnqualifiedItemsAndCheckout() {
 export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
-  yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
   yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
   yield takeLatest(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
   yield takeLatest(

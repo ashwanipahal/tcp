@@ -8,7 +8,7 @@ import PayPalButton from '../../../../common/atoms/PaypalButton';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import { getLocator } from '../../../../../utils';
+import { getLocator, routerPush } from '../../../../../utils';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   render() {
@@ -66,6 +66,10 @@ class AddedToBagActions extends React.PureComponent<Props> {
           variation="checkout"
           openState={checkoutModalMountedState}
           setLoginModalMountState={closeCheckoutModalMountState}
+          handleContinueAsGuest={e => {
+            e.preventDefault();
+            routerPush('/checkout', '/checkout');
+          }}
         />
       </div>
     );
