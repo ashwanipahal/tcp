@@ -17,7 +17,7 @@ const Header = ({
   userName,
   openOverlay,
   openTrackOrderOverlay,
-  isUserLoggedIn,
+  isLoggedIn,
 }) => {
   return (
     <header className={className}>
@@ -26,7 +26,7 @@ const Header = ({
         brandTabs={brandTabs}
         promoMessageWrapper={promoMessageWrapper}
         openOverlay={openTrackOrderOverlay}
-        isUserLoggedIn={isUserLoggedIn}
+        isUserLoggedIn={isLoggedIn}
       />
       <HeaderMiddleNav
         openNavigationDrawer={openNavigationDrawer}
@@ -34,6 +34,7 @@ const Header = ({
         navigationDrawer={navigationDrawer}
         userName={userName}
         openOverlay={openOverlay}
+        isLoggedIn={isLoggedIn}
       />
       <HeaderPromo
         mobileMarkup
@@ -58,7 +59,7 @@ Header.propTypes = {
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withStyles(Header, style);

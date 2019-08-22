@@ -30,4 +30,16 @@ describe('HeaderMiddleNav component', () => {
 
     expect(HeaderMiddleNavComp.find('.header-middle-nav-bar')).toHaveLength(1);
   });
+
+  it('renders correctly when props dont change', () => {
+    const props = {
+      isLoggedIn: false,
+    };
+    const HeaderMiddleNavComp = shallow(<HeaderMiddleNav props={props} />);
+    HeaderMiddleNavComp.setProps({
+      isLoggedIn: false,
+    });
+    expect(HeaderMiddleNavComp.state('isLoggedIn')).toBe(false);
+    expect(HeaderMiddleNavComp).toMatchSnapshot();
+  });
 });

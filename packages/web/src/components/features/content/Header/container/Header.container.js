@@ -19,7 +19,7 @@ const mapStateToProps = state => {
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
     userName: getUserName(state),
-    isUserLoggedIn: getUserLoggedInState(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 

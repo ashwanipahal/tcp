@@ -12,11 +12,19 @@ import {
 export class CreditCardFields extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap } = props;
-    this.state = {
-      selectedYear: expYearOptionsMap[1].label,
-      selectedMonth: expMonthOptionsMap[0].label,
-    };
+    const { expMonthOptionsMap, expYearOptionsMap, isEdit, selectedCard } = props;
+    if (isEdit && selectedCard) {
+      const { expMonth, expYear } = selectedCard;
+      this.state = {
+        selectedYear: expYear,
+        selectedMonth: expMonth,
+      };
+    } else {
+      this.state = {
+        selectedYear: expYearOptionsMap[1].label,
+        selectedMonth: expMonthOptionsMap[0].label,
+      };
+    }
   }
 
   render() {
@@ -29,6 +37,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
       expYearOptionsMap,
       dto,
       updateExpiryDate,
+      isEdit,
+      creditCard,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -45,7 +55,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       <PaymentContainer>
         <CardContainer>
           <Field
-            label={(dto && dto.accountNo) || labels.paymentGC.lbl_payment_cardNumber}
+            label={labels.paymentGC.lbl_payment_cardNumber}
             name="cardNumber"
             id="cardNumber"
             component={CreditCardNumber}
@@ -55,6 +65,9 @@ export class CreditCardFields extends React.PureComponent<Props> {
             cardType={cardType}
             className="field"
             enableSuccessCheck={false}
+            isEdit={isEdit}
+            val={isEdit ? dto.accountNo : ''}
+            creditCard={creditCard}
           />
         </CardContainer>
         <ExpiryContainer>
@@ -101,6 +114,7 @@ CreditCardFields.propTypes = {
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
   dto: PropTypes.shape({}),
+  selectedCard: PropTypes.shape({}),
 };
 
 CreditCardFields.defaultProps = {
@@ -109,6 +123,7 @@ CreditCardFields.defaultProps = {
   cardType: '',
   isPLCCEnabled: true,
   dto: {},
+  selectedCard: {},
 };
 
 export default CreditCardFields;
