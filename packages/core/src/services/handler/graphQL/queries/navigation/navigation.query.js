@@ -1,7 +1,16 @@
 const buildQuery = ({ brand, country, channel }) => `
   navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
     categoryContent {
+      seoToken
+      isShortImage
+      isUnique
+      productCount
       description
+      catgroupId
+      seoTitle
+      seoMetaDesc
+      seoUrl
+      productNodeCount
       name
       id
       mainCategory {
