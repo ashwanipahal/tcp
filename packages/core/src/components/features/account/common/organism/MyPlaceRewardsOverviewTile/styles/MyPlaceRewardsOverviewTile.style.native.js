@@ -33,7 +33,7 @@ const ShopAnchor = styled.View`
   height: 42px;
   border: 1px solid gray;
   justify-content: center;
-  margin: 25px 0px;
+  margin-top: 25px;
 `;
 
 const BodyCopyStyle = {
