@@ -11,6 +11,15 @@ const styles = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
       ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
+
+  .right-sec {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    }
+  }
 `;
 
 export default styles;
