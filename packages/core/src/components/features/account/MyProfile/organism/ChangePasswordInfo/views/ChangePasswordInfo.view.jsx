@@ -24,7 +24,12 @@ const ChangePassword = ({ labels }) => {
               large: 12,
             }}
           >
-            <BodyCopy className="elem-pb-SM" fontSize="fs16" fontFamily="secondary">
+            <BodyCopy
+              className="elem-pb-SM"
+              fontSize="fs16"
+              data-locator="pi-passwordtextheader"
+              fontFamily="secondary"
+            >
               {labels.lbl_profile_change_your_password}
             </BodyCopy>
           </Col>
@@ -37,7 +42,7 @@ const ChangePassword = ({ labels }) => {
               large: 12,
             }}
           >
-            <BodyCopy fontSize="fs14" fontFamily="secondary">
+            <BodyCopy data-locator="pi-passwordtextinfo1" fontSize="fs14" fontFamily="secondary">
               {labels.lbl_profile_password_info_line1}
             </BodyCopy>
           </Col>
@@ -50,7 +55,7 @@ const ChangePassword = ({ labels }) => {
               large: 12,
             }}
           >
-            <BodyCopy fontSize="fs14" fontFamily="secondary">
+            <BodyCopy data-locator="pi-passwordtextinfo2" fontSize="fs14" fontFamily="secondary">
               {labels.lbl_profile_password_info_line2}
             </BodyCopy>
           </Col>
