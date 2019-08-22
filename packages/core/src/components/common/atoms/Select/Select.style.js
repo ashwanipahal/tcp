@@ -44,6 +44,21 @@ const selectStyles = css`
     top: 0;
   }
 
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
