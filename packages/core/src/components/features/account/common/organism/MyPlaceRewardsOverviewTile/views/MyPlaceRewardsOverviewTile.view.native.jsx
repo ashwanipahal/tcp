@@ -9,13 +9,11 @@ import {
   UnderlineStyle,
   AddressTileContainer,
   ButtonWrapperStyle,
-  BodyCopyStyle,
-  AddressTypeContainer,
-  LeftContainer,
-  RightContainer,
   ShopAnchor,
 } from '../styles/MyPlaceRewardsOverviewTile.style.native';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import CouponList from '../../../molecule/CouponList';
+import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 
 export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
   render() {
@@ -44,8 +42,10 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
             text={labels.lbl_overview_myPlaceRewardsHeading}
             color="black"
           />
-
           <UnderlineStyle />
+          <View>
+            {rewardCouponsCount > 0 && <CouponList coupons={coupons} sliceCount={2} labels={labels} />}
+          </View>
           {!rewardCouponsCount && (
             <View>
               <BodyCopy
@@ -72,6 +72,8 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
               </ShopAnchor>
             </View>
           )}
+          <UnderlineStyle />
+          {isBrierleyEnabled && <BonusPointsDays view="read" labels={labels} />}
           <ButtonWrapperStyle>
             <CustomButton
               text={labels.lbl_overview_myPlaceRewardsCTA}
