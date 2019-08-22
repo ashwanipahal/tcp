@@ -16,22 +16,21 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
 
 ProfileInfoTile.propTypes = {
   labels: PropTypes.shape({}),
-  handleComponentChange: PropTypes.func,
+  handleComponentChange: PropTypes.func.isRequired,
   profileInfo: PropTypes.shape({}).isRequired,
 };
 
 ProfileInfoTile.defaultProps = {
   labels: {},
-  handleComponentChange: () => {},
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   profileInfo: getProfileInfoTileData(state),
 });
 
-const mapDispatchToProps = () => ({});
+export { ProfileInfoTile as ProfileInfoTileVanilla };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(ProfileInfoTile);

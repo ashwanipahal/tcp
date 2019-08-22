@@ -4,7 +4,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Address from '@tcp/core/src/components/common/molecules/Address';
-import { isCanada } from '@tcp/core/src/utils';
 
 import {
   UnderlineStyle,
@@ -52,15 +51,13 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
             />
           </RightCol>
         </Row>
-        {!isCanada() && (
-          <BodyCopy
-            fontWeight="regular"
-            fontSize="fs14"
-            mobilefontFamily={['secondary']}
-            text={`${labels.lbl_overview_profileInfoMember} ${rewardsAccountNumber}`}
-            color="gray.900"
-          />
-        )}
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={`${labels.lbl_overview_profileInfoMember} ${rewardsAccountNumber}`}
+          color="gray.900"
+        />
       </InfoContainer>
       <EmailContainer>
         <BodyCopy
@@ -154,7 +151,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
 ProfileInfoTile.propTypes = {
   labels: PropTypes.shape({}),
   profileInfo: PropTypes.shape({}).isRequired,
-  handleComponentChange: PropTypes.func,
+  handleComponentChange: PropTypes.func.isRequired,
 };
 
 ProfileInfoTile.defaultProps = {
@@ -168,7 +165,6 @@ ProfileInfoTile.defaultProps = {
     lbl_overview_profileInfoChangeCTA: '',
     lbl_overview_profileInfoViewCTA: '',
   },
-  handleComponentChange: () => {},
 };
 
 export default ProfileInfoTile;

@@ -144,6 +144,7 @@ const Address = ({
 Address.defaultProps = {
   showPhone: true,
   showCountry: true,
+  showName: true,
   customStyle: {},
 };
 
