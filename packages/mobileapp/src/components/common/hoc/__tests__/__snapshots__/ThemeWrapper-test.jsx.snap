@@ -174,6 +174,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "DIVIDER": "#c3c3c3",
         },
         "MODAL_OVERLAY": "rgba(0, 0, 0, 0.6)",
+        "NAVIGATION": Object {
+          "CIRCULAR_BORDER": "#6b6b6b",
+          "L1_BACKGROUND": "#f6f6f6",
+        },
         "NOTIFICATION": Object {
           "ERROR": "#c8102e",
           "SUCCESS": "#26762c",

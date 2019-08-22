@@ -129,6 +129,7 @@ export class AddressView extends React.PureComponent<Props> {
           data={{
             heading: labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING,
             title: labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE,
+            msg: labels.addressBook.lbl_deleteAddressModal_ccAssociatedAddressMsg,
             description: selectedAddress,
             buttons: {
               cancel: labels.common.lbl_common_dontDelete,
