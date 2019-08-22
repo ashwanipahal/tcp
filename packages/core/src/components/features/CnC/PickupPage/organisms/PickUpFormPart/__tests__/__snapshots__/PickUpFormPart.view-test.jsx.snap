@@ -9,6 +9,7 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
   >
     <Styled(CheckoutSectionTitleDisplay)
       className="summary-title-pick-up"
+      dataLocator="pickup-title"
     />
     <form
       className="checkoutPickupForm"
@@ -16,6 +17,7 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
     >
       <div
         className="pickUpContact"
+        dataLocator="pickup-contact"
       >
         <FormSection
           className="pickUpContact"

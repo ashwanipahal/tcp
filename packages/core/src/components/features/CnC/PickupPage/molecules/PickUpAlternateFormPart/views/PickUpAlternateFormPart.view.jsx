@@ -19,13 +19,13 @@ class PickUpAlternateFormPart extends React.PureComponent {
       labels,
     } = this.props;
     return (
-      <div className={className}>
+      <div className={className} dataLocator="alternate-div">
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <Field
               name="hasAlternatePickup"
               component={InputCheckbox}
-              dataLocator="hide-show-checkbox"
+              dataLocator="Alternate-checkbox"
               enableSuccessCheck={false}
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">

@@ -29,7 +29,7 @@ class ContactFormFields extends React.PureComponent {
               name="firstName"
               id="firstName"
               component={TextBox}
-              dataLocator="first-name-field"
+              dataLocator="pickup-first-name"
               enableSuccessCheck={false}
             />
             <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
@@ -42,7 +42,7 @@ class ContactFormFields extends React.PureComponent {
               name="lastName"
               id="lastName"
               component={TextBox}
-              dataLocator="last name-field"
+              dataLocator="pickup-last-name"
               enableSuccessCheck={false}
             />
           </Col>
@@ -54,8 +54,8 @@ class ContactFormFields extends React.PureComponent {
                 placeholder={labels.email}
                 name="emailAddress"
                 component={TextBox}
-                dataLocator="login-emailfield"
-                errorDataLocator="login-emailerror"
+                dataLocator="pickup-email"
+                errorDataLocator="pickup-email-error"
                 showSuccessCheck={false}
                 enableSuccessCheck={false}
               />
@@ -70,7 +70,7 @@ class ContactFormFields extends React.PureComponent {
                 type="tel"
                 component={TextBox}
                 maxLength={50}
-                dataLocator="phone-number-field"
+                dataLocator="pickup-phone-number"
                 enableSuccessCheck={false}
               />
             </Col>

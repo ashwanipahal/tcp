@@ -3,6 +3,7 @@
 exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
 <div
   className=""
+  dataLocator="alternate-div"
 >
   <Styled(Row)
     fullBleed={true}
@@ -116,7 +117,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "withComponent": [Function],
           }
         }
-        dataLocator="hide-show-checkbox"
+        dataLocator="Alternate-checkbox"
         enableSuccessCheck={false}
         name="hasAlternatePickup"
       >
@@ -140,6 +141,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
 exports[`Coupon component should renders correctly when data is present 1`] = `
 <div
   className=""
+  dataLocator="alternate-div"
 >
   <Styled(Row)
     fullBleed={true}
@@ -253,7 +255,7 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator="hide-show-checkbox"
+        dataLocator="Alternate-checkbox"
         enableSuccessCheck={false}
         name="hasAlternatePickup"
       >

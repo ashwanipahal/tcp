@@ -173,7 +173,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "withComponent": [Function],
           }
         }
-        dataLocator="first-name-field"
+        dataLocator="pickup-first-name"
         enableSuccessCheck={false}
         id="firstName"
         name="firstName"
@@ -356,7 +356,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "withComponent": [Function],
           }
         }
-        dataLocator="last name-field"
+        dataLocator="pickup-last-name"
         enableSuccessCheck={false}
         id="lastName"
         name="lastName"

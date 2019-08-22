@@ -33,6 +33,7 @@ class PickUpFormPart extends React.PureComponent {
         <div className="container">
           <CheckoutSectionTitleDisplay
             title={pickUpLabels.title}
+            dataLocator="pickup-title"
             className="summary-title-pick-up"
           />
           {pickupError && (
@@ -41,10 +42,11 @@ class PickUpFormPart extends React.PureComponent {
               className="pickupError"
               fontSize="fs14"
               fontWeight="black"
+              dataLocator="pickup-error"
             />
           )}
           <form name="checkoutPickup" className="checkoutPickupForm">
-            <div className="pickUpContact">
+            <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">
                 {isGuest ? (
                   <ContactFormFields
@@ -60,7 +62,7 @@ class PickUpFormPart extends React.PureComponent {
             </div>
 
             {isUsSite && (
-              <div className="pick-up-form-container">
+              <div className="pick-up-form-container" dataLocator="pickup-sms">
                 <FormSection name="smsSignUp">
                   <SMSFormFields
                     isOrderUpdateChecked={isOrderUpdateChecked}
@@ -75,13 +77,28 @@ class PickUpFormPart extends React.PureComponent {
 
             {isGuest && !isUsSite && (
               <div className="email-signup-container">
-                <Field name="emailSignup" component={InputCheckbox} className="email-signup">
-                  <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">
+                <Field
+                  dataLocator="signUp-checkbox-field"
+                  name="emailSignup"
+                  component={InputCheckbox}
+                  className="email-signup"
+                >
+                  <BodyCopy
+                    dataLocator="pickup-email-signUp-heading-lbl"
+                    fontSize="fs16"
+                    fontFamily="secondary"
+                    fontWeight="regular"
+                  >
                     {pickUpLabels.emailSignupHeading}
                   </BodyCopy>
                 </Field>
                 <div className="emailSignupText">
-                  <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
+                  <BodyCopy
+                    dataLocator="pickup-email-signUp-sub-heading-text"
+                    fontSize="fs12"
+                    fontFamily="secondary"
+                    fontWeight="regular"
+                  >
                     {pickUpLabels.emailSignupSubHeading}
                   </BodyCopy>
                   <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
@@ -94,6 +111,7 @@ class PickUpFormPart extends React.PureComponent {
                     noLink
                     href="#"
                     target="_blank"
+                    dataLocator="pickup-email-signUp-contact-anchor"
                   >
                     {pickUpLabels.emailSignupContact}
                   </Anchor>
