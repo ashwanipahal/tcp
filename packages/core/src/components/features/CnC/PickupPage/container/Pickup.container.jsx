@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getAlternateFormUpdate, getPickUpContactFormLabels } from './Pickup.selectors';
 import {
   getSendOrderUpdate,
-  getAlternateFormUpdate,
-  getPickUpContactFormLabels,
   getSmsSignUpLabels,
-} from './Pickup.selectors';
+} from '../../ShippingPage/container/ShippingPage.selectors';
 
 import CheckoutPickUpForm from '../views/CheckoutPickUpFormView';
 import { isCanada } from '../../../../../utils';

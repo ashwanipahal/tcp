@@ -1,11 +1,6 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 
-export const getSmsSignUpFields = state => {
-  const selector = formValueSelector('checkoutPickup');
-  return selector(state, 'smsSignUp');
-};
-
 export const getAlternateFormFields = state => {
   const selector = formValueSelector('checkoutPickup');
   return selector(state, 'pickUpAlternate');
@@ -55,24 +50,6 @@ export const getPickUpContactFormLabels = state => {
     emailSignupContact,
   };
 };
-
-export const getSmsSignUpLabels = state => {
-  const {
-    lbl_smsSignup_smsSignupText: smsSignupText,
-    lbl_smsSignup_privacyPolicy: privacyPolicy,
-    lbl_smsSignup_orderUpdates: orderUpdates,
-  } = state.Labels.global && state.Labels.global.smsSignup;
-  return {
-    smsSignupText,
-    privacyPolicy,
-    orderUpdates,
-  };
-};
-
-export const getSendOrderUpdate = createSelector(
-  getSmsSignUpFields,
-  smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
-);
 
 export const getAlternateFormUpdate = createSelector(
   getAlternateFormFields,
