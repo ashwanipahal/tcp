@@ -35,6 +35,21 @@ const styles = css`
   .anchor-wrapper {
     text-align: center;
   }
+
+  .rewards-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-row-gap: 24px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      grid-template-columns: repeat(2, calc(50% - 15px));
+      grid-column-gap: 30px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      grid-template-columns: repeat(5, calc(20% - 24px));
+    }
+  }
 `;
 
 export default styles;

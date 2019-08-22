@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponIcon should render correctly 1`] = `
+<Styled(BodyCopy)
+  className=" coupon coupon-reward elem-mr-XS"
+  color="white"
+  component="div"
+  fontFamily="primary"
+  fontSize="fs13"
+  fontWeight="black"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="center"
+>
+  <span>
+    reward
+  </span>
+</Styled(BodyCopy)>
+`;

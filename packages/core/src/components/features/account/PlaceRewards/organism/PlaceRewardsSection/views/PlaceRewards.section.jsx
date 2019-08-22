@@ -5,7 +5,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import styles from '../styles/PlaceRewards.section.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import MyRewards from '../../../molecules/MyRewards';
+import MyRewards from '../../../../common/organism/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
 import { isCanada } from '../../../../../../../utils';
@@ -146,7 +146,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           </Col>
         </Row>
       </Row>
-      <MyRewards labels={labels} />
+      {!isCA && <MyRewards labels={labels} />}
     </div>
   );
 };
