@@ -152,6 +152,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
           },
         ]
       }
+      color="red"
       locator="moduleN_cta_links"
     />
     <Styled(View)

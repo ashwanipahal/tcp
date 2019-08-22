@@ -67,6 +67,7 @@ const ModuleN = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
+            color="white"
           />
         </DivImageCTAContainer>
       )}
@@ -78,6 +79,7 @@ const ModuleN = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
+            color="red"
           />
           <Border background="red" />
         </ContainerView>

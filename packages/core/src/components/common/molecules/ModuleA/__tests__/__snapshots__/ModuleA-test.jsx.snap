@@ -38,7 +38,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Girl",
-              "url": "http://image.com/girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -55,7 +55,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Girl title",
-              "url": "http://image.com/toddler-girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -72,7 +72,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Boy",
-              "url": "http://image.com/boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
             },
           },
           Object {
@@ -89,7 +89,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Boy title",
-              "url": "http://image.com/toddler-boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
             },
           },
           Object {
@@ -106,7 +106,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Baby",
-              "url": "http://image.com/baby",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
             },
           },
         ]
@@ -130,7 +130,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 1",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -165,12 +165,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -208,7 +204,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 2",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -243,12 +239,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -286,7 +278,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 3",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -321,12 +313,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -364,7 +352,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 4",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -399,12 +387,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -472,7 +456,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Girl",
-              "url": "http://image.com/girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -489,7 +473,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Girl title",
-              "url": "http://image.com/toddler-girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -506,7 +490,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Boy",
-              "url": "http://image.com/boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
             },
           },
           Object {
@@ -523,7 +507,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Boy title",
-              "url": "http://image.com/toddler-boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
             },
           },
           Object {
@@ -540,7 +524,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Baby",
-              "url": "http://image.com/baby",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
             },
           },
         ]
@@ -564,7 +548,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 1",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -599,12 +583,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -642,7 +622,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 2",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -677,12 +657,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -720,7 +696,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 3",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -755,12 +731,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -798,7 +770,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 4",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -833,12 +805,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
-                    "text": "60%OFF",
-                  },
-                  Object {
-                    "style": "style10",
-                    "text": "50% Off - All Shoes & Select Accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },

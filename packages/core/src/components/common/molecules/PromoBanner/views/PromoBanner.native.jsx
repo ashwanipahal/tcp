@@ -10,6 +10,7 @@ import {
 } from '../PromoBanner.style.native';
 
 type Props = {
+  ribbonBanner: Array<Object>,
   promoBanner: Array<Object>,
   bodyCopyStyles: Array<Object>,
 };
@@ -66,31 +67,49 @@ export const bodyCopyStyles = {
     />
   ),
   style6: props => <PercentageStyle {...props} />,
-
-  // eslint-disable-next-line sonarjs/no-identical-functions
   style7: props => <PercentagePinkStyle {...props} />,
   style8: props => (
     <BodyCopy
       fontSize="fs16"
       fontWeight="black"
-      color="white"
+      color="black"
       fontFamily="primary"
       textAlign="center"
+      lineHeight="16px"
       {...props}
     />
   ),
   style9: props => (
     <BodyCopy
       fontSize="fs16"
-      fontWeight="black"
+      color="gray.900"
+      fontFamily="primary"
+      textAlign="left"
+      lineHeight="16px"
+      {...props}
+    />
+  ),
+  style10: props => (
+    <BodyCopy
+      fontSize="fs14"
+      color="white"
+      fontFamily="secondary"
+      textAlign="center"
+      lineHeight="14px"
+      {...props}
+    />
+  ),
+  style11: props => <AllTextInRowStyle {...props} />,
+  style12: props => (
+    <BodyCopy
+      fontSize="fs16"
+      fontWeight="regular"
       color="white"
       fontFamily="primary"
-      lineHeight="64px"
       textAlign="center"
       {...props}
     />
   ),
-  style10: props => <AllTextInRowStyle {...props} />,
 };
 
 /**
@@ -114,7 +133,7 @@ const PromoBanner = (props: Props) => {
   return [
     <ContainerView>
       {textItems && (
-        <Anchor url={link.url} navigation={navigation}>
+        <Anchor url={link ? link.url : ''} navigation={navigation}>
           {textItems.map(({ text, style }, index) => {
             const StyleBodyCopy = bodyCopyStyles[style];
             return (

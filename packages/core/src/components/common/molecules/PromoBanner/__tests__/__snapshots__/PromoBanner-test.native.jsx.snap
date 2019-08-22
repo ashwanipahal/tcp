@@ -338,7 +338,7 @@ exports[`PromoTextBanner native component renders all style correctly 7`] = `
 
 exports[`PromoTextBanner native component renders all style correctly 8`] = `
 <StyledNativeComponent
-  color="white"
+  color="black"
   fontFamily="primary"
   fontSize="fs16"
   fontWeight="black"
@@ -377,16 +377,16 @@ exports[`PromoTextBanner native component renders all style correctly 8`] = `
     }
   }
   forwardedRef={null}
+  lineHeight="16px"
   textAlign="center"
 />
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 9`] = `
 <StyledNativeComponent
-  color="white"
+  color="gray.900"
   fontFamily="primary"
   fontSize="fs16"
-  fontWeight="black"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -422,12 +422,57 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
     }
   }
   forwardedRef={null}
-  lineHeight="64px"
-  textAlign="center"
+  lineHeight="16px"
+  textAlign="left"
 />
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 10`] = `
+<StyledNativeComponent
+  color="white"
+  fontFamily="secondary"
+  fontSize="fs14"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": undefined,
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  ",
+          [Function],
+          "
+  ",
+          [Function],
+          "
+",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  lineHeight="14px"
+  textAlign="center"
+/>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 11`] = `
 <Styled(View)>
   <Styled(Text)>
     <Styled(Styled(BodyCopy))
@@ -446,6 +491,51 @@ exports[`PromoTextBanner native component renders all style correctly 10`] = `
     />
   </Styled(Text)>
 </Styled(View)>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 12`] = `
+<StyledNativeComponent
+  color="white"
+  fontFamily="primary"
+  fontSize="fs16"
+  fontWeight="regular"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": undefined,
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  ",
+          [Function],
+          "
+  ",
+          [Function],
+          "
+",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  textAlign="center"
+/>
 `;
 
 exports[`PromoTextBanner native component renders correctly 1`] = `

@@ -67,7 +67,7 @@ const ModuleATcpCarousel = (props: Props) => {
           autoplay: true,
         }}
         showDots
-        overlay
+        overlap
       />
     </Container>
   );

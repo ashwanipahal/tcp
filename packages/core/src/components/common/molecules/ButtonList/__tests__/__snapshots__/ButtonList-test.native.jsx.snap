@@ -93,7 +93,6 @@ exports[`ButtonList ButtonList should render correctly 1`] = `
       accessibilityLabel="Baby"
       accessibilityRole="button"
       buttonVariation="cautionary-button"
-      color="red"
       customStyle={Object {}}
       disableButton={false}
       fullWidth=""

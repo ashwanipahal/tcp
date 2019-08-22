@@ -1,10 +1,16 @@
 // @flow
 import React from 'react';
-import { Container } from '../ModuleA.style.native';
-import moduleA from '../../../../../services/abstractors/common/moduleA/mock';
 import ModuleATcpCarousel from '../../ModuleATcpCarousel';
-
-const datamoduleA = { ...moduleA };
+import ModuleAGymCarousel from '../../ModuleAGymCarousel';
+import ButtonList from '../../ButtonList';
+import {
+  Container,
+  ButtonContainer,
+  Border,
+  ContainerView,
+  DivImageCTAContainer,
+  ButtonLinksContainer,
+} from '../ModuleA.style.native';
 
 /**
  * @param {object} props : Props for Module A multi type of banner list, button list, header text.
@@ -13,13 +19,74 @@ const datamoduleA = { ...moduleA };
  * Author can surface teaser content leading to corresponding pages.
  */
 
+// TODO: keys will be changed once we get the actual data from CMS
+
+// const { ctaTypes } = config;
+
 const ModuleA = (props: Props) => {
-  const { navigation } = props;
-  const { largeCompImageCarousel } = datamoduleA.moduleA.composites;
+  const { navigation, variant, largeCompImageCarousel, ctaItems } = props;
+  const ctaType = 'linkCTAList';
 
   return (
     <Container>
-      <ModuleATcpCarousel navigation={navigation} largeCompImageCarousel={largeCompImageCarousel} />
+      {variant === 'tcp' ? (
+        <ModuleATcpCarousel
+          navigation={navigation}
+          largeCompImageCarousel={largeCompImageCarousel}
+        />
+      ) : (
+        <ModuleAGymCarousel
+          navigation={navigation}
+          largeCompImageCarousel={largeCompImageCarousel}
+        />
+      )}
+
+      {ctaType === 'imageCTAList' && (
+        <DivImageCTAContainer>
+          <ButtonList
+            buttonListVariation={ctaType}
+            navigation={navigation}
+            buttonsData={ctaItems}
+            locator="moduleA_cta_links"
+            color="black"
+          />
+        </DivImageCTAContainer>
+      )}
+
+      {ctaType === 'stackedCTAList' && (
+        <ContainerView>
+          <ButtonList
+            buttonListVariation={ctaType}
+            navigation={navigation}
+            buttonsData={ctaItems}
+            locator="moduleA_cta_links"
+            color="text"
+          />
+          <Border background="red" />
+        </ContainerView>
+      )}
+
+      {ctaType === 'scrollCTAList' && (
+        <ButtonContainer>
+          <ButtonList
+            buttonListVariation={ctaType}
+            navigation={navigation}
+            buttonsData={ctaItems}
+            locator="moduleA_cta_links"
+            color="text"
+          />
+        </ButtonContainer>
+      )}
+      {ctaType === 'linkCTAList' && (
+        <ButtonLinksContainer>
+          <ButtonList
+            buttonListVariation={ctaType}
+            navigation={navigation}
+            buttonsData={ctaItems}
+            locator="moduleA_cta_links"
+          />
+        </ButtonLinksContainer>
+      )}
     </Container>
   );
 };

@@ -15,6 +15,8 @@ import {
   Icon,
   Container,
   PaginationWrapper,
+  ControlsWrapperLeft,
+  ControlsWrapperRight,
 } from '../Carousel.native.style';
 
 /**
@@ -43,9 +45,10 @@ type Props = {
   variation: String,
   vertical: Boolean,
   showDots?: Boolean,
-  overlay?: Boolean,
+  overlap?: Boolean,
   hidePlayStopButton?: Boolean,
   autoplayInterval: Number,
+  buttonPosition: String,
 };
 
 type State = {
@@ -143,7 +146,30 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     );
   }
 
-  getOverlay(carouselConfig) {
+  getOverlap(carouselConfig, buttonPosition) {
+    if (buttonPosition === 'right') {
+      return (
+        <View>
+          <ControlsWrapperRight>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {this.getPagination()}
+          </ControlsWrapperRight>
+        </View>
+      );
+    } else if (buttonPosition === 'left') {
+      return (
+        <View>
+          <ControlsWrapperLeft>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {this.getPagination()}
+          </ControlsWrapperLeft>
+        </View>
+      );
+    }
     return (
       <View>
         <ControlsWrapper>
@@ -227,7 +253,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       vertical,
       autoplayInterval,
       showDots,
-      overlay,
+      overlap,
+      buttonPosition,
     } = this.props;
 
     if (!data) {
@@ -291,22 +318,13 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           autoplayInterval={autoplayInterval}
         />
 
-        {data.length > 1 && (
+        {data.length && (
           <View>
-            {showDots && overlay
-              ? this.getOverlay(carouselConfig)
+            {showDots && overlap
+              ? this.getOverlap(carouselConfig, buttonPosition)
               : this.getBottomView(carouselConfig, showDots)}
           </View>
         )}
-
-        {/* {data.length && (
-          <ControlsWrapper>
-            {carouselConfig.autoplay && (
-              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
-            )}
-            {showDots ? this.getPagination() : null }
-          </ControlsWrapper>
-        )} */}
       </View>
     );
   }
@@ -316,7 +334,7 @@ SnapCarousel.defaultProps = {
   onSnapToItem: () => {},
   showDots: false,
   hidePlayStopButton: false,
-  overlay: false,
+  overlap: false,
 };
 
 export default withTheme(SnapCarousel);

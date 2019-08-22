@@ -22,6 +22,8 @@ export const Style8ContainerView = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
+  background: #ff0000;
 `;
 
 export const PromoText = styled.Text`

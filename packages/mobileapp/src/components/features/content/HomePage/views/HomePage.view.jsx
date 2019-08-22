@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ModuleA from '@tcp/core/src/components/common/molecules/ModuleA';
 import { SlotA, SlotB, SlotC, SlotD, SlotF } from '../molecules';
 import moduleNMockData from '../../../../../../../core/src/services/abstractors/common/moduleN/mock';
+import moduleAMockData from '../../../../../../../core/src/services/abstractors/common/moduleA/mock';
 
 class HomePageView extends React.Component {
   componentDidMount() {
@@ -41,7 +42,11 @@ class HomePageView extends React.Component {
             text="PLP Page"
             onPress={() => navigation.navigate('ProductListingPageContainer')}
           />
-          <ModuleA navigation={navigation} />
+          <ModuleA
+            navigation={navigation}
+            set={moduleAMockData.moduleA.set}
+            {...moduleAMockData.moduleA.composites}
+          />
         </React.Fragment>
       </ScrollView>
     );

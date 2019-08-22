@@ -163,6 +163,404 @@ exports[`HomePageView should render correctly 1`] = `
     text="PLP Page"
     url=""
   />
-  <ModuleA />
+  <ModuleA
+    ctaItems={
+      Array [
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
+          },
+          "image": Object {
+            "alt": "Girl",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Girl",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
+          },
+          "image": Object {
+            "alt": "Toddler Girl alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Toddler Girl title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
+          },
+          "image": Object {
+            "alt": "Boy",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Boy",
+            "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Boy",
+            "title": "Toddler Boy",
+            "url": "/toddler-boy",
+          },
+          "image": Object {
+            "alt": "Toddler Boy alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Toddler Boy title",
+            "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Baby",
+            "title": "Baby",
+            "url": "/baby",
+          },
+          "image": Object {
+            "alt": "Baby",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Baby",
+            "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
+          },
+        },
+      ]
+    }
+    largeCompImageCarousel={
+      Array [
+        Object {
+          "headerText": Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/trending",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style1",
+                  "text": "Spring is Every Wear",
+                },
+              ],
+            },
+          ],
+          "linkedImage": Array [
+            Object {
+              "image": Object {
+                "alt": "Family Tees Image 1",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Family Tees title",
+                "url": "https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Family Tees",
+                "title": "Family Tees",
+                "url": "/image/url",
+              },
+            },
+          ],
+          "promoBanner": Array [
+            Object {
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style12",
+                  "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                },
+              ],
+            },
+          ],
+          "ribbonBanner": Array [
+            Object {
+              "position": "right",
+              "textItems": Array [
+                Object {
+                  "style": "style10",
+                  "text": "Order By XX/XX",
+                },
+                Object {
+                  "style": "style10",
+                  "text": "For Easter Delivery!",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "headerText": Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/trending",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style1",
+                  "text": "Spring is Every Wear",
+                },
+              ],
+            },
+          ],
+          "linkedImage": Array [
+            Object {
+              "image": Object {
+                "alt": "Family Tees Image 2",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Family Tees title",
+                "url": "https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Family Tees",
+                "title": "Family Tees",
+                "url": "/image/url",
+              },
+            },
+          ],
+          "promoBanner": Array [
+            Object {
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style12",
+                  "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                },
+              ],
+            },
+          ],
+          "ribbonBanner": Array [
+            Object {
+              "position": "right",
+              "textItems": Array [
+                Object {
+                  "style": "style10",
+                  "text": "Order By XX/XX",
+                },
+                Object {
+                  "style": "style10",
+                  "text": "For Easter Delivery!",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "headerText": Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/trending",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style1",
+                  "text": "Spring is Every Wear",
+                },
+              ],
+            },
+          ],
+          "linkedImage": Array [
+            Object {
+              "image": Object {
+                "alt": "Family Tees Image 3",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Family Tees title",
+                "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Family Tees",
+                "title": "Family Tees",
+                "url": "/image/url",
+              },
+            },
+          ],
+          "promoBanner": Array [
+            Object {
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style12",
+                  "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                },
+              ],
+            },
+          ],
+          "ribbonBanner": Array [
+            Object {
+              "position": "right",
+              "textItems": Array [
+                Object {
+                  "style": "style10",
+                  "text": "Order By XX/XX",
+                },
+                Object {
+                  "style": "style10",
+                  "text": "For Easter Delivery!",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "headerText": Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/trending",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style1",
+                  "text": "Spring is Every Wear",
+                },
+              ],
+            },
+          ],
+          "linkedImage": Array [
+            Object {
+              "image": Object {
+                "alt": "Family Tees Image 4",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Family Tees title",
+                "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Family Tees",
+                "title": "Family Tees",
+                "url": "/image/url",
+              },
+            },
+          ],
+          "promoBanner": Array [
+            Object {
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style12",
+                  "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                },
+              ],
+            },
+          ],
+          "ribbonBanner": Array [
+            Object {
+              "position": "right",
+              "textItems": Array [
+                Object {
+                  "style": "style10",
+                  "text": "Order By XX/XX",
+                },
+                Object {
+                  "style": "style10",
+                  "text": "For Easter Delivery!",
+                },
+              ],
+            },
+          ],
+        },
+      ]
+    }
+    set={
+      Array [
+        Object {
+          "key": "ctaType",
+          "val": "scrollCTAList",
+        },
+      ]
+    }
+  />
 </ScrollViewMock>
 `;

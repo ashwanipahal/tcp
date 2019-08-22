@@ -31,15 +31,14 @@ for (let i = 1; i <= totalImageSlides; i++) {
   // eslint-disable-next-line no-unused-vars
   const tcpPromoTextItems = [
     { text: '60%OFF', style: 'style7' },
-    { text: '50% Off - All Shoes & Select Accessories', style: 'style10' },
-    // { text: '50 % Off', style: 'style8' },
-    // { text: 'All Shoes & Select Accessories', style: 'style9' },
+    { text: '50 % Off', style: 'style8' },
+    { text: ' All Shoes & Select Accessories', style: 'style9' },
   ];
 
   imageSlides.push({
     headerText: [
       {
-        textItems: tcpHeaderTextItems,
+        textItems: gymboreeHeaderTextItems,
         link: {
           url: '/trending',
           text: '',
@@ -59,7 +58,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           target: '',
           external: 0,
         },
-        textItems: tcpPromoTextItems,
+        textItems: gymboreePromoTextItems,
       },
     ],
     linkedImage: [
@@ -103,7 +102,8 @@ export default {
       ctaItems: [
         {
           image: {
-            url: 'http://image.com/girl',
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
             alt: 'Girl',
             title: 'Girl',
             crop_d: '',
@@ -120,7 +120,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/toddler-girl',
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
             alt: 'Toddler Girl alt',
             title: 'Toddler Girl title',
             crop_d: '',
@@ -137,7 +138,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/boy',
+            url:
+              'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
             alt: 'Boy',
             title: 'Boy',
             crop_d: '',
@@ -154,7 +156,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/toddler-boy',
+            url:
+              'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
             alt: 'Toddler Boy alt',
             title: 'Toddler Boy title',
             crop_d: '',
@@ -171,7 +174,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/baby',
+            url:
+              'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
             alt: 'Baby',
             title: 'Baby',
             crop_d: '',
@@ -192,7 +196,7 @@ export default {
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[0],
+        val: ctaTypes[2],
       },
     ],
   },
