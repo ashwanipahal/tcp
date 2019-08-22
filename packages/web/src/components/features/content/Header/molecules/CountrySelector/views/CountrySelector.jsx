@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getSiteId, getFlagIconPath } from '@tcp/core/src/utils';
+import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
 
 import CountrySelectorModal from './CountrySelectorModal';
 import style from '../styles/CountrySelector.styles';
 
 class CountrySelector extends React.Component {
   openModal = () => {
-    const { toggleModal } = this.props;
+    const { countriesMap, toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
-    this.getCountryListData();
+    if (!countriesMap.length) {
+      this.getCountryListData();
+    }
   };
 
   closeModal = () => {
@@ -29,14 +31,36 @@ class CountrySelector extends React.Component {
     return countriesMap.find(country => country.code === countryCode);
   };
 
+  getCurrencyMap = countryCode => {
+    const { countriesMap } = this.props;
+    return countriesMap.find(country => country.code === countryCode).currencyId;
+  };
+
+  getSelectedCurrency = currencyCode => {
+    const { currenciesMap } = this.props;
+    return currenciesMap.find(currency => currency.code === currencyCode);
+  };
+
   submitForm = () => {
-    const { handleSubmit, country, currency, language, oldCountry, oldLanguage } = this.props;
-    const formData = {
+    const {
+      handleSubmit,
       country,
       currency,
       language,
-      oldCountry,
-      oldLanguage,
+      savedCountry,
+      savedCurrency,
+      savedLanguage,
+    } = this.props;
+    const selectedCurrency = this.getSelectedCurrency(currency || savedCurrency);
+    const { value, merchantMargin } = selectedCurrency;
+    const formData = {
+      country: country || savedCountry,
+      currency: currency || savedCurrency,
+      language: language || savedLanguage,
+      savedCountry,
+      savedLanguage,
+      value,
+      merchantMargin,
     };
     handleSubmit(formData);
     this.closeModal();
@@ -45,6 +69,9 @@ class CountrySelector extends React.Component {
   changeCountry = selectedCountry => {
     const { updateCountry, updateSiteId } = this.props;
     const { siteId } = this.getSelectedCountry(selectedCountry);
+    const currencyCode = this.getCurrencyMap(selectedCountry);
+    console.log(currencyCode);
+    this.updateCurrency(currencyCode);
     updateCountry(selectedCountry);
     updateSiteId(siteId);
   };
@@ -54,7 +81,7 @@ class CountrySelector extends React.Component {
     updateLanguage(selectedLanguage);
   };
 
-  changeCurrency = selectedCurrency => {
+  updateCurrency = selectedCurrency => {
     const { updateCurrency } = this.props;
     updateCurrency(selectedCurrency);
   };
@@ -67,16 +94,19 @@ class CountrySelector extends React.Component {
   render() {
     const {
       className,
-      country,
       countriesMap,
       currenciesMap,
+      country,
+      currency,
       isModalOpen,
+      savedCountry,
+      savedCurrency,
+      savedLanguage,
       labels,
       showInFooter,
     } = this.props;
     const languages = this.getLanguageMap();
-    const flag = country || getSiteId().toUpperCase();
-
+    const flagIconSrc = getFlagIconPath(savedCountry);
     return (
       <div className={`${className} countrySelector`}>
         {showInFooter ? (
@@ -85,6 +115,7 @@ class CountrySelector extends React.Component {
               className="countrySelector__shipTo"
               color="gray.800"
               component="div"
+              fontFamily="secondary"
               fontSize="fs12"
             >
               {labels.lbl_global_country_selector_header}
@@ -96,25 +127,45 @@ class CountrySelector extends React.Component {
               currenciesMap={currenciesMap}
               labels={labels}
               languages={languages}
+              savedCountry={savedCountry}
+              savedCurrency={savedCurrency}
+              savedLanguage={savedLanguage}
               handleSubmit={this.submitForm}
               updateCountry={this.changeCountry}
               updateLanguage={this.changeLanguage}
-              updateCurrency={this.changeCurrency}
+              updateCurrency={this.updateCurrency}
+              updatedCountry={country}
+              updatedCurrency={currency}
             />
           </React.Fragment>
         ) : (
           ''
         )}
         <div className="countrySelector__flag-icon">
-          <Image src={getFlagIconPath(flag)} width="20px" height="20px" onClick={this.openModal} />
+          <Image
+            src={flagIconSrc}
+            width="20px"
+            height="20px"
+            onClick={this.openModal}
+            data-locator={getLocator(showInFooter ? 'footer_country_flag' : 'header_country_flag')}
+          />
         </div>
         <div>
           {languages.map(({ id }, index) => (
             <BodyCopy
+              key={index.toString()}
               component="span"
+              fontFamily="secondary"
               fontSize="fs13"
+              data-locator={
+                id === savedLanguage
+                  ? getLocator(
+                      showInFooter ? 'footer_language_selected' : 'header_language_selected'
+                    )
+                  : ''
+              }
               className={`${
-                index < 1
+                id === savedLanguage
                   ? 'countrySelector__locale--selected'
                   : 'countrySelector__locale--disabled'
               } countrySelector__locale`}
@@ -134,8 +185,9 @@ CountrySelector.propTypes = {
   country: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
-  oldCountry: PropTypes.string.isRequired,
-  oldLanguage: PropTypes.string.isRequired,
+  savedCountry: PropTypes.string.isRequired,
+  savedCurrency: PropTypes.string.isRequired,
+  savedLanguage: PropTypes.string.isRequired,
   countriesMap: PropTypes.arrayOf(PropTypes.shape({})),
   currenciesMap: PropTypes.arrayOf(PropTypes.shape({})),
   handleSubmit: PropTypes.func,

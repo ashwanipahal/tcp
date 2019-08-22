@@ -1,4 +1,8 @@
-import { COUNTRY_SELECTOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  APICONFIG_REDUCER_KEY,
+  COUNTRY_SELECTOR_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
 
 export const getCountrySelectorState = state => {
   return state[COUNTRY_SELECTOR_REDUCER_KEY];
@@ -39,13 +43,17 @@ export const getIsModalOpen = state => {
 };
 
 export const getSiteId = state => {
-  return getCountrySelectorState(state).get('siteId');
+  return getCountrySelectorState(state).get('siteId') || state[APICONFIG_REDUCER_KEY].siteId;
 };
 
-export const getOldCountryCode = state => {
-  return getCountrySelectorState(state).get('oldCountryCode');
+export const getOldCountry = state => {
+  return state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country']);
 };
 
-export const getOldLanguageCode = state => {
-  return getCountrySelectorState(state).get('oldLanguageCode');
+export const getOldCurrency = state => {
+  return state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'currency']);
+};
+
+export const getOldLanguage = state => {
+  return state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'language']);
 };

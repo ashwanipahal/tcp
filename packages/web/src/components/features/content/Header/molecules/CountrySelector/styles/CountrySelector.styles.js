@@ -31,8 +31,10 @@ export default css`
   .countrySelector__locale {
     border-right: 1px solid ${props => props.theme.colorPalette.gray['600']};
     cursor: pointer;
+    display: inline-block;
     padding: 0 6px;
-    line-height: 20px;
+    height: 13px;
+    line-height: 14px;
     text-transform: uppercase;
 
     :first-child {
@@ -41,6 +43,10 @@ export default css`
 
     :last-child {
       border: none;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 4px;
     }
   }
   .countrySelector__locale--selected {

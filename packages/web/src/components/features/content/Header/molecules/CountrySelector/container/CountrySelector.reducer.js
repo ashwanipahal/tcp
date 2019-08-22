@@ -39,13 +39,11 @@ const initialState = fromJS({
   language: '',
   currency: '',
   siteId: '',
-  oldCountryCode: 'US',
-  oldLanguageCode: 'es',
 });
 
 const CountrySelectorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_GET_DATA:
+    case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SET_DATA:
       return state.set('countryList', action.payload);
     case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_MODAL_TOGGLE:
       return state.set('isModalOpen', action.payload.isModalOpen);

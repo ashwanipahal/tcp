@@ -1,13 +1,16 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import countrySelectorAbstractor from '@tcp/core/src/services/abstractors/common/countrySelector';
-import { isCanada, routerPush } from '@tcp/core/src/utils';
+import { getSiteId, isCanada, routerPush } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import endpoints from '@tcp/core/src/services/endpoints';
-import { COUNTRY_SELECTOR_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import {
+  COUNTRY_SELECTOR_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+} from '@tcp/core/src/constants/reducer.constants';
 
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
 import {
-  getCountryListData,
+  setCountryListData,
   storeCountriesMap,
   storeCurrenciesMap,
   udpateSiteId,
@@ -18,16 +21,22 @@ const getCountries = data => {
   const countries = [
     {
       code: 'US',
+      currencyId: 'USD',
       name: 'United States',
       siteId: 'us',
     },
     {
       code: 'CA',
+      currencyId: 'CAD',
       name: 'CANADA',
       siteId: 'ca',
     },
   ];
-  data.map(value => countries.push(Object.assign({}, value.country, { siteId: 'us' })));
+  data.map(value =>
+    countries.push(
+      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.code })
+    )
+  );
   return countries;
 };
 
@@ -73,12 +82,13 @@ export function* fetchCountryListData() {
   const countriesMap = getCountries(data);
   const currenciesMap = getCurrencies(data);
   yield all([
-    put(getCountryListData(data)),
+    put(setCountryListData(data)),
     put(storeCountriesMap(countriesMap)),
     put(storeCurrenciesMap(currenciesMap)),
   ]);
 }
 
+// eslint-disable-next-line complexity
 export function* submitCountrySelectionData({ payload: data }) {
   const siteConfig = isCanada() ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const { addShipToStore } = endpoints;
@@ -97,10 +107,10 @@ export function* submitCountrySelectionData({ payload: data }) {
       ccd: data.country,
       languageTCP: getModifiedLanguageCode(data.language),
       curr: data.currency,
-      cc: data.oldCountry,
-      selLanguage: getModifiedLanguageCode(data.oldLanguage),
-      er: '1.0',
-      mm: '1.0',
+      cc: data.savedCountry,
+      selLanguage: getModifiedLanguageCode(data.savedLanguage),
+      er: data.value || '1.0',
+      mm: data.merchantMargin || '1.0',
       orderId: '.',
       USA: 'USD',
       CA: 'CAD',
@@ -110,23 +120,31 @@ export function* submitCountrySelectionData({ payload: data }) {
   };
   const { submitData } = countrySelectorAbstractor;
   const res = yield call(submitData, payload);
-  console.log(res);
-  const { country } = data;
-  const countriesMap = yield select(state =>
-    state[COUNTRY_SELECTOR_REDUCER_KEY].get('countriesMap')
-  );
-  const newCountry = country;
+  if (!res) console.log('Error occurered');
+  const { country: newCountry, language: newLanguage } = data;
   const oldCountry = yield select(state =>
-    state[COUNTRY_SELECTOR_REDUCER_KEY].get('oldCountryCode')
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
   );
-  const selectedCountry = countriesMap.find(c => c.code === newCountry);
-  const { siteId: newSiteId } = selectedCountry;
-  const oldSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
-  console.log();
-  yield all([put(udpateSiteId(newSiteId))]);
+  const oldLanguage = yield select(state =>
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'language'])
+  );
+  const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
+  const oldSiteId = getSiteId();
+  yield put(udpateSiteId(newSiteId));
 
-  if (newCountry !== oldCountry || newSiteId !== oldSiteId) {
+  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location, '/home', newSiteId);
+  }
+
+  if (newLanguage && newLanguage !== oldLanguage) {
+    const { protocol, host, pathname } = window.location;
+    if (newLanguage === 'fr' && host.indexOf('fr.') === -1) {
+      const href = `${protocol}//fr.${host}${pathname}`;
+      window.location = href;
+    } else if (newLanguage === 'es' && host.indexOf('es.') === -1) {
+      const href = `${protocol}//es.${host}${pathname}`;
+      window.location = href;
+    }
   }
 }
 

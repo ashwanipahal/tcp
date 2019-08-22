@@ -38,6 +38,8 @@ class Modal extends React.PureComponent {
       heading,
       fixedWidth,
       className,
+      dataLocator,
+      dataLocatorHeader,
       closeIconDataLocator,
       headingStyle,
       closeIconLeftAligned,
@@ -50,13 +52,18 @@ class Modal extends React.PureComponent {
             {!fixedWidth && (
               <Grid>
                 <Row>
-                  <Col colSize={column} className="TCPModal__InnerContent">
+                  <Col
+                    colSize={column}
+                    className="TCPModal__InnerContent"
+                    data-locator={dataLocator}
+                  >
                     <ModalHeader
                       closeFunc={onRequestClose}
                       title={title}
                       heading={heading}
                       closeIconDataLocator={closeIconDataLocator}
                       closeIconLeftAligned={closeIconLeftAligned}
+                      dataLocatorHeader={dataLocatorHeader}
                       headingStyle={headingStyle}
                     />
                     {children}
@@ -65,13 +72,14 @@ class Modal extends React.PureComponent {
               </Grid>
             )}
             {fixedWidth && (
-              <div className="TCPModal__InnerContent">
+              <div className="TCPModal__InnerContent" data-locator={dataLocator}>
                 <ModalHeader
                   closeFunc={onRequestClose}
                   title={title}
                   heading={heading}
                   closeIconDataLocator={closeIconDataLocator}
                   closeIconLeftAligned={closeIconLeftAligned}
+                  dataLocatorHeader={dataLocatorHeader}
                   headingStyle={headingStyle}
                 />
                 {children}

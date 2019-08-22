@@ -58,6 +58,7 @@ export default {
   moduleL_tiles: 'moduleL_tiles_',
   moduleL_left_arrow: 'moduleL_left_arrow',
   moduleL_right_arrow: 'moduleL_right_arrow',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
@@ -115,4 +116,19 @@ export default {
   empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
   empty_bag_guestUserCTA: 'cartGuestLoginCta',
   empty_bag_recommendation_msg: 'cartRecommendationMessage',
+
+  // Country Selector
+  header_country_flag: 'header_country_flag',
+  footer_country_flag: 'footer_country_flag',
+  header_language_selected: 'header_language_selected',
+  footer_language_selected: 'footer_language_selected',
+  country_selector_ship_to_modal: 'country_selector_ship_to_modal',
+  ship_to_text_1: 'ship_to_text_1',
+  ship_to_text_2: 'ship_to_text_2',
+  country: 'country',
+  language: 'language',
+  currency: 'currency',
+  country_selector_save_btn: 'country_selector_save_btn',
+  country_selector_tnc_text: 'country_selector_tnc_text',
+  country_selector_tnc_link: 'country_selector_tnc_link',
 };

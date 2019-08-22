@@ -73,10 +73,6 @@ export class App extends React.PureComponent {
     this.setState({ apiConfig });
   };
 
-  removeSplash = () => {
-    this.setState({ isSplashVisible: false });
-  };
-
   render() {
     const { appType } = this.props;
     const { isSplashVisible, showBrands, apiConfig } = this.state;

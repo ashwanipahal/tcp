@@ -40,6 +40,7 @@ const setSiteId = (req, res) => {
     }
   }
   res.locals.siteId = siteId;
+  res.locals.country = siteId === siteIds.ca ? 'CA' : 'US';
   res.locals.currency = siteId === siteIds.ca ? 'CAD' : 'USD';
   res.locals.language = getLanguageByDomain(req.hostname);
 };

@@ -7,6 +7,13 @@ export const getCountryListData = payload => {
   };
 };
 
+export const setCountryListData = payload => {
+  return {
+    payload,
+    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SET_DATA,
+  };
+};
+
 export const submitCountrySelection = payload => {
   return {
     payload,
@@ -68,6 +75,7 @@ export const udpateSiteId = siteId => {
 
 export default {
   getCountryListData,
+  setCountryListData,
   submitCountrySelection,
   toggleCountrySelectorModal,
   updateSelectedCountry,

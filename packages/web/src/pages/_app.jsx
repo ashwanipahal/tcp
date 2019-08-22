@@ -7,7 +7,12 @@ import withReduxSaga from 'next-redux-saga';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
+import {
+  bootstrapData,
+  setCountry,
+  setCurrency,
+  setLanguage,
+} from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
@@ -65,11 +70,15 @@ class TCPWebApp extends App {
     if (isServer) {
       const { locals } = res;
       const apiConfig = createAPIConfig(locals);
+      const { country, currency, language } = locals;
       const payload = {
         pageInfo: Component.pageInfo,
         apiConfig,
       };
       store.dispatch(bootstrapData(payload));
+      store.dispatch(setCountry(country));
+      store.dispatch(setCurrency(currency));
+      store.dispatch(setLanguage(language));
     }
     return pageProps;
   }

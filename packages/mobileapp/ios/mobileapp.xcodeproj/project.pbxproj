@@ -1369,14 +1369,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8487901E22F3D6B800A0494D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8487902222F3D6B800A0494D /* libRNCAsyncStorage.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8BBF590722C0F18E003678A7 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -3198,10 +3190,6 @@
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

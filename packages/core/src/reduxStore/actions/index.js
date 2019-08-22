@@ -36,9 +36,33 @@ export const loadModulesData = payload => {
   };
 };
 
+export const setCountry = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_COUNTRY,
+  };
+};
+
+export const setCurrency = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_CURRENCY,
+  };
+};
+
+export const setLanguage = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_LANGUAGE,
+  };
+};
+
 export default {
   loadLayoutData,
   loadLabelsData,
   bootstrapData,
   loadModulesData,
+  setCountry,
+  setCurrency,
+  setLanguage,
 };

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import utils from '@tcp/core/src/utils';
 
 import {
   getCountryListData,
@@ -17,8 +16,9 @@ import {
   getCurrenciesMap,
   getCurrentLanguage,
   getCurrentCurrency,
-  getOldCountryCode,
-  getOldLanguageCode,
+  getOldCountry,
+  getOldCurrency,
+  getOldLanguage,
   getSitesTable,
   getSiteId,
 } from './CountrySelector.selectors';
@@ -59,9 +59,10 @@ const mapStateToProps = state => {
     country: getCurrentCountry(state),
     language: getCurrentLanguage(state),
     currency: getCurrentCurrency(state),
-    oldLanguage: getOldLanguageCode(state),
-    oldCountry: getOldCountryCode(state),
-    siteId: getSiteId(state) || utils.getSiteId(),
+    savedLanguage: getOldLanguage(state),
+    savedCountry: getOldCountry(state),
+    savedCurrency: getOldCurrency(state),
+    siteId: getSiteId(state),
     labels: state.Labels.global.countrySelector,
   };
 };
