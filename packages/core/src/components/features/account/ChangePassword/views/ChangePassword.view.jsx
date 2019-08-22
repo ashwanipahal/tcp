@@ -25,8 +25,9 @@ export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit 
       <FormPageHeadingComponent
         heading={labels.lbl_changePassword_heading}
         className="margin-none"
+        dataLocator="pi-profileinformationheading"
       />
-      <BodyCopy component="div" className="elem-pt-XS">
+      <BodyCopy component="div" className="elem-pt-LRG">
         <Row fullBleed>
           <Col
             colSize={{
@@ -35,7 +36,7 @@ export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit 
               large: 12,
             }}
           >
-            <BodyCopy dataLocator="passwordInstructionTxt" fontSize="fs14" fontFamily="secondary">
+            <BodyCopy data-locator="passwordInstructionTxt" fontSize="fs14" fontFamily="secondary">
               {labels.lbl_changePassword_password_info}
             </BodyCopy>
           </Col>
