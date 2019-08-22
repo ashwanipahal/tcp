@@ -49,6 +49,7 @@ import NavigationReducer from '@tcp/core/src/components/features/content/Navigat
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
+import { RESET_STORE_TYPE } from '../actions/ResetStore.actions';
 
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
@@ -57,7 +58,7 @@ const filteredProductListingPageReducer = createFilteredReducer(
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
-export default combineReducers({
+const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
@@ -82,3 +83,13 @@ export default combineReducers({
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [USER_REDUCER_KEY]: UserReducer,
 });
+
+export default (state, action = {}) => {
+  let appstate = state;
+  // Reset data stored in redux
+  if (action.type === RESET_STORE_TYPE) {
+    appstate = undefined;
+  }
+
+  return rootReducer(appstate, action);
+};
