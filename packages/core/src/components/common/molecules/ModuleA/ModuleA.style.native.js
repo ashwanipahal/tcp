@@ -34,8 +34,8 @@ export const DivImageCTAContainer = styled.View`
 `;
 
 export const ButtonLinksContainer = styled.View`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   background: #003057;
 `;
 

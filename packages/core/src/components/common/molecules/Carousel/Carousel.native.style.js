@@ -42,14 +42,14 @@ export const ControlsWrapperLeft = styled.View`
   flex-direction: row;
   justify-content: center;
   position: absolute;
-  bottom: 22px;
+  bottom: 10px;
   margin-left: 20px;
 `;
 
 export const ControlsWrapperRight = styled.View`
   flex-direction: row;
   position: absolute;
-  bottom: 22px;
+  bottom: 10px;
   right: 0;
 `;
 

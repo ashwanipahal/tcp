@@ -38,9 +38,9 @@ for (let i = 1; i <= totalImageSlides; i++) {
   imageSlides.push({
     headerText: [
       {
-        textItems: gymboreeHeaderTextItems,
+        textItems: tcpHeaderTextItems,
         link: {
-          url: '/trending',
+          url: '/c/',
           text: '',
           title: '',
           target: '',
@@ -52,13 +52,13 @@ for (let i = 1; i <= totalImageSlides; i++) {
     promoBanner: [
       {
         link: {
-          url: '/banner/url',
+          url: '/c/',
           text: '',
           title: '',
           target: '',
           external: 0,
         },
-        textItems: gymboreePromoTextItems,
+        textItems: tcpPromoTextItems,
       },
     ],
     linkedImage: [
@@ -72,7 +72,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           crop_m: '',
         },
         link: {
-          url: '/image/url',
+          url: '/c/image/url',
           text: 'Family Tees',
           title: 'Family Tees',
           target: '',
@@ -111,7 +111,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/girl',
+            url: '/c/',
             text: 'Girl',
             title: 'Girl',
             target: '',
@@ -129,7 +129,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/toddler-girl',
+            url: '/c/',
             text: 'Toddler Girl',
             title: 'Toddler Girl',
             target: '',
@@ -147,7 +147,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/boy',
+            url: '/c/',
             text: 'Boy',
             title: 'Boy',
             target: '',
@@ -165,7 +165,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/toddler-boy',
+            url: '/c/',
             text: 'Toddler Boy',
             title: 'Toddler Boy',
             target: '',
@@ -183,7 +183,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/baby',
+            url: '/c/',
             text: 'Baby',
             title: 'Baby',
             target: '',
@@ -196,7 +196,7 @@ export default {
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[2],
+        val: ctaTypes[0],
       },
     ],
   },

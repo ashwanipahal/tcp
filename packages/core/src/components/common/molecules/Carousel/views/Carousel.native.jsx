@@ -93,7 +93,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}
-        containerStyle={{ paddingVertical: 24, paddingHorizontal: 20 }}
+        containerStyle={{ paddingVertical: 22, paddingHorizontal: 10 }}
         dotContainerStyle={{ marginHorizontal: 4 }}
         dotStyle={{
           width: 10,
@@ -318,7 +318,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           autoplayInterval={autoplayInterval}
         />
 
-        {data.length && (
+        {data.length > 1 && (
           <View>
             {showDots && overlap
               ? this.getOverlap(carouselConfig, buttonPosition)

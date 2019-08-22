@@ -24,6 +24,11 @@ class HomePageView extends React.Component {
     } = this.props;
     return (
       <ScrollView>
+        <ModuleA
+          navigation={navigation}
+          set={moduleAMockData.moduleA.set}
+          {...moduleAMockData.moduleA.composites}
+        />
         <React.Fragment>
           {slotA && <SlotA {...slotA} navigation={navigation} />}
           {slotB && <SlotB {...slotB} navigation={navigation} />}
@@ -41,11 +46,6 @@ class HomePageView extends React.Component {
             buttonVariation="variable-width"
             text="PLP Page"
             onPress={() => navigation.navigate('ProductListingPageContainer')}
-          />
-          <ModuleA
-            navigation={navigation}
-            set={moduleAMockData.moduleA.set}
-            {...moduleAMockData.moduleA.composites}
           />
         </React.Fragment>
       </ScrollView>

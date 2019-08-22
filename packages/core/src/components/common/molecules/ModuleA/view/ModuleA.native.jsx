@@ -22,10 +22,11 @@ import {
 // TODO: keys will be changed once we get the actual data from CMS
 
 // const { ctaTypes } = config;
+const variant = 'tcp';
 
 const ModuleA = (props: Props) => {
-  const { navigation, variant, largeCompImageCarousel, ctaItems } = props;
-  const ctaType = 'linkCTAList';
+  const { navigation, largeCompImageCarousel, ctaItems } = props;
+  const ctaType = 'imageCTAList';
 
   return (
     <Container>
@@ -62,7 +63,7 @@ const ModuleA = (props: Props) => {
             locator="moduleA_cta_links"
             color="text"
           />
-          <Border background="red" />
+          <Border background="text" />
         </ContainerView>
       )}
 

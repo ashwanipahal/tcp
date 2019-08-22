@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleATCPCarousel component renders correctly 1`] = `
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "displayName": "Styled(View)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+>
+  <WithTheme(SnapCarousel)
+    carouselConfig={
+      Object {
+        "autoplay": true,
+      }
+    }
+    height={200}
+    overlap={true}
+    renderItem={[Function]}
+    showDots={true}
+    width={750}
+  />
+</StyledNativeComponent>
+`;

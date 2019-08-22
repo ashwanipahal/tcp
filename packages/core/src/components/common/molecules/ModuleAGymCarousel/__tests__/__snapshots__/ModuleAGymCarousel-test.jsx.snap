@@ -97,12 +97,12 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 1",
                   },
                 ],
               },
@@ -128,12 +128,20 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60%OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -218,12 +226,12 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 2",
                   },
                 ],
               },
@@ -249,12 +257,20 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60%OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -339,12 +355,12 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 3",
                   },
                 ],
               },
@@ -370,12 +386,20 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60%OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -460,12 +484,12 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 4",
                   },
                 ],
               },
@@ -491,12 +515,20 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60%OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -548,7 +580,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "target": "",
                 "text": "Girl",
                 "title": "Girl",
-                "url": "/girl",
+                "url": "/c/",
               },
               "image": Object {
                 "alt": "Girl",
@@ -565,7 +597,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "target": "",
                 "text": "Toddler Girl",
                 "title": "Toddler Girl",
-                "url": "/toddler-girl",
+                "url": "/c/",
               },
               "image": Object {
                 "alt": "Toddler Girl alt",
@@ -582,7 +614,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "target": "",
                 "text": "Boy",
                 "title": "Boy",
-                "url": "/boy",
+                "url": "/c/",
               },
               "image": Object {
                 "alt": "Boy",
@@ -599,7 +631,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "target": "",
                 "text": "Toddler Boy",
                 "title": "Toddler Boy",
-                "url": "/toddler-boy",
+                "url": "/c/",
               },
               "image": Object {
                 "alt": "Toddler Boy alt",
@@ -616,7 +648,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "target": "",
                 "text": "Baby",
                 "title": "Baby",
-                "url": "/baby",
+                "url": "/c/",
               },
               "image": Object {
                 "alt": "Baby",

@@ -20,9 +20,16 @@ export const Wrapper = styled.View`
 
 export const DivImageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   align-items: center;
+`;
+
+export const SeperatorView = styled.View`
+  width: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export const ContainerView = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export default {
@@ -31,4 +38,6 @@ export default {
   TextLiksViewContainer,
   DivImageContainer,
   Wrapper,
+  SeperatorView,
+  ContainerView,
 };

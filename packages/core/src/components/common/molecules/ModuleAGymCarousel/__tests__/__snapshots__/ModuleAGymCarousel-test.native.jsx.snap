@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleAGymCarousel component renders correctly 1`] = `
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "displayName": "Styled(View)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+>
+  <WithTheme(SnapCarousel)
+    buttonPosition="left"
+    carouselConfig={
+      Object {
+        "autoplay": true,
+      }
+    }
+    height={500}
+    overlap={true}
+    renderItem={[Function]}
+    showDots={true}
+    width={750}
+  />
+</StyledNativeComponent>
+`;

@@ -27,8 +27,8 @@ export const HeaderView = styled.View`
 `;
 
 export const PromoRibbonWrapperRight = styled.View`
-  width: 170px;
-  height: 67px;
+  width: 174px;
+  height: 54px;
   position: absolute;
   bottom: 10px;
   right: 0;
@@ -36,8 +36,8 @@ export const PromoRibbonWrapperRight = styled.View`
 `;
 
 export const PromoRibbonWrapperLeft = styled.View`
-  width: 170px;
-  height: 67px;
+  width: 174px;
+  height: 54px;
   position: absolute;
   bottom: 10px;
   left: 0;

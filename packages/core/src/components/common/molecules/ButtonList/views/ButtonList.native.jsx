@@ -9,6 +9,8 @@ import {
   ScrollViewContainer,
   DivImageContainer,
   TextLiksViewContainer,
+  SeperatorView,
+  ContainerView,
 } from '../ButtonList.styles.native';
 
 type Props = {
@@ -204,6 +206,13 @@ const divImageRenderItem = (item, navigation, locator, color) => {
 };
 
 /**
+ * This function is used to generate view .
+ */
+const renderSeparatorComponent = () => {
+  return <SeperatorView />;
+};
+
+/**
  * This function is used to generate DivImageCTA view .
  */
 const renderDivImageCTA = (ctxButton, navigation, locator, color) => {
@@ -216,6 +225,7 @@ const renderDivImageCTA = (ctxButton, navigation, locator, color) => {
       keyExtractor={keyExtractor}
       data={ctxButton}
       renderItem={item => divImageRenderItem(item, navigation, locator, color)}
+      ItemSeparatorComponent={renderSeparatorComponent}
     />
   );
 };
@@ -247,7 +257,9 @@ const ButtonList = ({ locator, buttonListVariation, navigation, buttonsData, col
   }
 
   if (buttonListVariation === 'imageCTAList') {
-    return <Container>{renderDivImageCTA(buttonsData, navigation, locator, color)}</Container>;
+    return (
+      <ContainerView>{renderDivImageCTA(buttonsData, navigation, locator, color)}</ContainerView>
+    );
   }
 
   return null;
