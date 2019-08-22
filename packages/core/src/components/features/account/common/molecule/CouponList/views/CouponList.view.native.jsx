@@ -6,9 +6,10 @@ import CouponTile from '../../CouponTile';
 export const CouponList = ({ coupons, sliceCount, labels }) => {
   return (
     <View>
-      {coupons.slice(0, sliceCount).map(coupon => {
-        return <CouponTile key={coupon.id} labels={labels} coupon={coupon} />;
-      })}
+      {coupons &&
+        coupons.slice(0, sliceCount).map(coupon => {
+          return <CouponTile key={coupon.id} labels={labels} coupon={coupon} />;
+        })}
     </View>
   );
 };

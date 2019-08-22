@@ -18,10 +18,10 @@ const ButtonWrapperStyle = styled.View`
 `;
 
 const ShopAnchor = styled.View`
-  height: 42px;
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   border: 1px solid gray;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export { UnderlineStyle, PlaceRewardsTileContainer, ButtonWrapperStyle, ShopAnchor };

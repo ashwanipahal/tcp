@@ -6,7 +6,7 @@ const BonusDayReadSection = styled.View`
 
 const BonusDayHeader = styled.View`
   flex-direction: row;
-  height: 20px;
+  height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const BonusDayWrapper = styled.View`
@@ -15,19 +15,18 @@ const BonusDayWrapper = styled.View`
   align-items: center;
 `;
 
-const DotActive = styled.View`
-  width: 11px;
-  height: 11px;
-  border-radius: 5px;
-  margin: 5px;
+const Circle = styled.View`
+  width: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  height: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  border-radius: ${props => props.theme.spacing.ELEM_SPACING.SM / 2};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
+const DotActive = styled(Circle)`
   background-color: ${props => props.theme.colorPalette.gray[600]};
 `;
 
-const DotInactive = styled.View`
-  width: 11px;
-  height: 11px;
-  border-radius: 5px;
-  margin: 5px;
+const DotInactive = styled(Circle)`
   background-color: ${props =>
     props.isPlcc
       ? props.theme.colorPalette.userTheme.plcc

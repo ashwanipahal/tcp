@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Anchor from '../../../../../atoms/Anchor';
-import BodyCopy from '../../../../../atoms/BodyCopy/views/BodyCopy';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import {
   BonusDayReadSection,
   BonusDayHeader,
@@ -12,17 +12,18 @@ import {
   DotInactive,
 } from '../styles/BonusPointsReadSection.style.native';
 
+/* BonusPointsReadSection component is to show number of bonus days applied and left in dots representation */
 export const BonusPointsReadSection = ({
   toggleBonusPointsModal,
   labels,
   availableBonusPointDays,
   usedBonusPointDays,
 }) => {
-  if (availableBonusPointDays === null) {
+  if (!availableBonusPointDays) {
     return null;
   }
   const availableDaysArray = Array(availableBonusPointDays).fill('');
-  const usedDaysArray = Array(usedBonusPointDays).fill('');
+  const usedDaysArray = usedBonusPointDays && Array(usedBonusPointDays).fill('');
   const message = labels.lbl_bonus_points_daysLeft.replace(/\{0\}/, availableBonusPointDays);
 
   return (
