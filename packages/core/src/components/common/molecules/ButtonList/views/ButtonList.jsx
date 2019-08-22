@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Anchor, Button, DamImage } from '../../../atoms';
+import { Anchor, Button, DamImage, BodyCopy } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import ButtonListStyle from '../ButtonList.style';
 import config from '../ButtonList.config';
@@ -41,7 +41,13 @@ const getImageCTA = item => {
                   className={className}
                   data-locator={`${dataLocatorDivisionImages}${index}`}
                 />
-                <div className="image-comp">{button.text}</div>
+                <BodyCopy
+                  fontWeight="extrabold"
+                  fontSize={['fs14', 'fs20', 'fs20']}
+                  className="image-comp"
+                >
+                  {button.text}
+                </BodyCopy>
               </Anchor>
             </div>
           </div>

@@ -131,11 +131,25 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
               }
             }
           />
-          <div
+          <Styled(BodyCopy)
             className="image-comp"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs14",
+                "fs20",
+                "fs20",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             Girl
-          </div>
+          </Styled(BodyCopy)>
         </Styled(Anchor)>
       </div>
     </div>
@@ -166,11 +180,25 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
               }
             }
           />
-          <div
+          <Styled(BodyCopy)
             className="image-comp"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs14",
+                "fs20",
+                "fs20",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             Toddler Girl
-          </div>
+          </Styled(BodyCopy)>
         </Styled(Anchor)>
       </div>
     </div>
@@ -201,11 +229,25 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
               }
             }
           />
-          <div
+          <Styled(BodyCopy)
             className="image-comp"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs14",
+                "fs20",
+                "fs20",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             Boy
-          </div>
+          </Styled(BodyCopy)>
         </Styled(Anchor)>
       </div>
     </div>
@@ -236,11 +278,25 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
               }
             }
           />
-          <div
+          <Styled(BodyCopy)
             className="image-comp"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs14",
+                "fs20",
+                "fs20",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             Toddler Boy
-          </div>
+          </Styled(BodyCopy)>
         </Styled(Anchor)>
       </div>
     </div>
@@ -271,11 +327,25 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
               }
             }
           />
-          <div
+          <Styled(BodyCopy)
             className="image-comp"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs14",
+                "fs20",
+                "fs20",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             Baby
-          </div>
+          </Styled(BodyCopy)>
         </Styled(Anchor)>
       </div>
     </div>
@@ -306,11 +376,25 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
               }
             }
           />
-          <div
+          <Styled(BodyCopy)
             className="image-comp"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs14",
+                "fs20",
+                "fs20",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             Alt
-          </div>
+          </Styled(BodyCopy)>
         </Styled(Anchor)>
       </div>
     </div>
