@@ -1,10 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import {
+  CouponTileSection,
+  CouponWrapper,
+  CouponInfo,
+  CouponReward,
+} from '../styles/CouponTile.style.native';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
-export const CouponTile = ({ className, coupon, labels }) => {
+export const CouponTile = ({ coupon, labels }) => {
   let couponClass = '';
   let couponTextLabel = '';
 
@@ -23,15 +28,46 @@ export const CouponTile = ({ className, coupon, labels }) => {
   }
 
   return (
-    <View>
-      <BodyCopy
-        fontSize="fs13"
-        fontWeight="black"
-        color="black"
-        textAlign="center"
-        text={couponTextLabel}
-      />
-    </View>
+    <CouponTileSection>
+      <CouponWrapper>
+        <CouponReward>
+          <BodyCopy
+            fontSize="fs13"
+            fontWeight="black"
+            color="white"
+            text={couponTextLabel}
+          />
+        </CouponReward>
+
+        <CouponInfo>
+          <BodyCopy
+            fontSize="fs12"
+            fontWeight="semibold"
+            title={coupon.title}
+            data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+            text={coupon.title}
+          />
+
+          {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH && (
+            <BodyCopy
+              fontSize="fs10"
+              data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+              text={`${labels.lbl_overview_couponValid} ${coupon.effectiveDate} - ${
+                coupon.expirationDate
+              }`}
+            />
+          )}
+
+          {coupon.offerType !== COUPON_REDEMPTION_TYPE.PLACECASH && (
+            <BodyCopy
+              fontSize="fs10"
+              data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+              text={`${labels.lbl_overview_couponUseBy} ${coupon.expirationDate}`}
+            />
+          )}
+        </CouponInfo>
+      </CouponWrapper>
+    </CouponTileSection>
   );
 };
 

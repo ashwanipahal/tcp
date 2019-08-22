@@ -43,9 +43,19 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
             color="black"
           />
           <UnderlineStyle />
-          <View>
-            {rewardCouponsCount > 0 && <CouponList coupons={coupons} sliceCount={2} labels={labels} />}
-          </View>
+          {rewardCouponsCount > 0 && (
+            <View>
+              <BodyCopy
+                className="elem-mb-LRG"
+                fontSize="fs14"
+                fontWeight="semibold"
+                data-locator={rewardDataLocator}
+                text={walletOverviewInfo}
+                margin-bottom="15"
+              />
+              <CouponList coupons={coupons} sliceCount={2} labels={labels} />
+            </View>
+          )}
           {!rewardCouponsCount && (
             <View>
               <BodyCopy
