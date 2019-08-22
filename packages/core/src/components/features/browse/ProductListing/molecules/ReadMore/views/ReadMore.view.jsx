@@ -1,6 +1,7 @@
 import React from 'react';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import style from '../ReadMore.style';
+import { getLocator } from '../../../../../../../utils';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { PropTypes } from 'prop-types';
@@ -12,7 +13,7 @@ class ReadMore extends React.Component {
   };
 
   render() {
-    const { description, className } = this.props;
+    const { description, className, labels } = this.props;
 
     return (
       <BodyCopy component="div" className={className}>
@@ -26,6 +27,7 @@ class ReadMore extends React.Component {
           fontWeight="regular"
           textAlign="center"
           dangerouslySetInnerHTML={{ __html: description }}
+          data-locator={getLocator('plp_seo_module')}
         />
         {description && description.includes('read-more-target') && (
           <label htmlFor="categoryDescription" className="read-more-trigger">
@@ -35,8 +37,9 @@ class ReadMore extends React.Component {
               fontFamily="secondary"
               fontWeight="semibold"
               textAlign="center"
+              data-locator={getLocator('plp_seo_readmore')}
             >
-              Read More +
+              {labels.lbl_read_more}
             </BodyCopy>
             <BodyCopy
               className="read-less"
@@ -44,8 +47,9 @@ class ReadMore extends React.Component {
               fontFamily="secondary"
               fontWeight="semibold"
               textAlign="center"
+              data-locator={getLocator('plp_seo_readless')}
             >
-              Read Less -
+              {labels.lbl_read_less}
             </BodyCopy>
           </label>
         )}

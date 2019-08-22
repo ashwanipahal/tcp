@@ -13,7 +13,7 @@ class ProductListingPageContainer extends React.PureComponent {
   }
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs, longDescription } = this.props;
+    const { products, currentNavIds, navTree, breadCrumbs, longDescription, labels } = this.props;
     return (
       <ProductListing
         products={products}
@@ -21,6 +21,7 @@ class ProductListingPageContainer extends React.PureComponent {
         navTree={navTree}
         breadCrumbs={breadCrumbs}
         longDescription={longDescription}
+        labels={labels}
       />
     );
   }
@@ -33,6 +34,7 @@ function mapStateToProps(state) {
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
     longDescription: state.ProductListing.currentListingDescription,
+    labels: state.Labels.PLP.seoText,
   };
 }
 
@@ -52,7 +54,8 @@ ProductListingPageContainer.propTypes = {
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
-  longDescription: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingPageContainer.defaultProps = {
@@ -60,7 +63,8 @@ ProductListingPageContainer.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
-  longDescription: [],
+  longDescription: '',
+  labels: {},
 };
 
 export default connect(

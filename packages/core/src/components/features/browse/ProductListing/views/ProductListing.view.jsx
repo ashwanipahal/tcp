@@ -15,6 +15,7 @@ const ProductListView = ({
   navTree,
   breadCrumbs,
   longDescription,
+  labels,
 }) => {
   return (
     <div className={className}>
@@ -45,7 +46,11 @@ const ProductListView = ({
             <ProductList products={products} className={`${className} product-list`} />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ReadMore description={longDescription} className={`${className} seo-text`} />
+            <ReadMore
+              description={longDescription}
+              labels={labels}
+              className={`${className} seo-text`}
+            />
           </Col>
         </Col>
       </Row>
@@ -57,6 +62,7 @@ ProductListView.propTypes = {
   className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   longDescription: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
@@ -70,6 +76,7 @@ ProductListView.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  labels: {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

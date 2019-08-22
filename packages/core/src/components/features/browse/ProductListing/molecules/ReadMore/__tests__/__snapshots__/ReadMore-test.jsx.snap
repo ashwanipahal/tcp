@@ -26,6 +26,7 @@ exports[`ReadMore component Read More component renders correctly with props 1`]
         "__html": "Check out all of our girls school dresses, jumpers and more:",
       }
     }
+    data-locator="plp_seo_module"
     fontFamily="secondary"
     fontSize="fs14"
     fontWeight="regular"
@@ -62,6 +63,7 @@ exports[`ReadMore component renders correctly without props 1`] = `
         "__html": undefined,
       }
     }
+    data-locator="plp_seo_module"
     fontFamily="secondary"
     fontSize="fs14"
     fontWeight="regular"

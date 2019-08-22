@@ -116,4 +116,9 @@ export default {
   empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
   empty_bag_guestUserCTA: 'cartGuestLoginCta',
   empty_bag_recommendation_msg: 'cartRecommendationMessage',
+
+  // PLP SEO TEXT
+  plp_seo_module: 'plp_seo_module',
+  plp_seo_readmore: 'plp_seo_module_readmore',
+  plp_seo_readless: 'plp_seo_module_readless',
 };
