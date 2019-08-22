@@ -1,1 +1,1 @@
-export { default } from './views/PickupPage.view';
+export { default } from './container/Pickup.container';
