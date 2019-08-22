@@ -5,6 +5,7 @@ import style from '../ModuleN.style';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 type Props = {
   stackedCTAButtons: Array,
@@ -115,5 +116,5 @@ const ModuleN = (props: Props) => {
   );
 };
 
-export default withStyles(ModuleN, style);
+export default withStyles(errorBoundary(ModuleN), style);
 export { ModuleN as ModuleNVanilla };

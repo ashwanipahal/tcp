@@ -4,6 +4,7 @@ import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
 import { PromoBanner } from '../..';
 import { Carousel, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import config from '../config';
 import { getIconPath, getLocator } from '../../../../../utils';
 
@@ -133,5 +134,5 @@ class ModuleK extends React.PureComponent<Props, State> {
   }
 }
 
-export default withStyles(ModuleK, style);
+export default withStyles(errorBoundary(ModuleK), style);
 export { ModuleK as ModuleKVanilla };

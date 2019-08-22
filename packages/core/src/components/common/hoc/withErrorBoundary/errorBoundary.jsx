@@ -77,10 +77,8 @@ const wrapMethod = (methodName, WrappedComponent) => {
 
   // define default state
   WrappedComponent.prototype.state = {
-    ...{
-      hasError: false,
-      error: null,
-    },
+    hasError: false,
+    error: null,
     ...WrappedComponent.prototype.state,
   };
 
