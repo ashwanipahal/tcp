@@ -22,7 +22,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
   const gymboreePromoTextItems = [
     {
       text: 'The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!',
-      style: 'style12',
+      style: 'gymboree_description',
     },
   ];
 
@@ -30,9 +30,9 @@ for (let i = 1; i <= totalImageSlides; i++) {
   const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
   // eslint-disable-next-line no-unused-vars
   const tcpPromoTextItems = [
-    { text: '60%OFF', style: 'style7' },
-    { text: '50 % Off', style: 'style8' },
-    { text: ' All Shoes & Select Accessories', style: 'style9' },
+    { text: '60%OFF', style: 'percentage_wrapped_extra_large' },
+    { text: '50 % Off', style: 'small_text_bold' },
+    { text: ' All Shoes & Select Accessories', style: 'small_text_normal' },
   ];
 
   imageSlides.push({
@@ -84,8 +84,8 @@ for (let i = 1; i <= totalImageSlides; i++) {
       {
         position: 'right',
         textItems: [
-          { text: 'Order By XX/XX', style: 'style10' },
-          { text: 'For Easter Delivery!', style: 'style10' },
+          { text: 'Order By XX/XX', style: 'ribbon_default_text' },
+          { text: 'For Easter Delivery!', style: 'ribbon_default_text' },
         ],
       },
     ],

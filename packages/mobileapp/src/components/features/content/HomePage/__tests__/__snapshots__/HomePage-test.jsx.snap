@@ -146,15 +146,15 @@ exports[`HomePageView should render correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "style7",
+                  "style": "percentage_wrapped_extra_large",
                   "text": "60%OFF",
                 },
                 Object {
-                  "style": "style8",
+                  "style": "small_text_bold",
                   "text": "50 % Off",
                 },
                 Object {
-                  "style": "style9",
+                  "style": "small_text_normal",
                   "text": " All Shoes & Select Accessories",
                 },
               ],
@@ -165,11 +165,11 @@ exports[`HomePageView should render correctly 1`] = `
               "position": "right",
               "textItems": Array [
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "Order By XX/XX",
                 },
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "For Easter Delivery!",
                 },
               ],
@@ -228,15 +228,15 @@ exports[`HomePageView should render correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "style7",
+                  "style": "percentage_wrapped_extra_large",
                   "text": "60%OFF",
                 },
                 Object {
-                  "style": "style8",
+                  "style": "small_text_bold",
                   "text": "50 % Off",
                 },
                 Object {
-                  "style": "style9",
+                  "style": "small_text_normal",
                   "text": " All Shoes & Select Accessories",
                 },
               ],
@@ -247,11 +247,11 @@ exports[`HomePageView should render correctly 1`] = `
               "position": "right",
               "textItems": Array [
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "Order By XX/XX",
                 },
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "For Easter Delivery!",
                 },
               ],
@@ -310,15 +310,15 @@ exports[`HomePageView should render correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "style7",
+                  "style": "percentage_wrapped_extra_large",
                   "text": "60%OFF",
                 },
                 Object {
-                  "style": "style8",
+                  "style": "small_text_bold",
                   "text": "50 % Off",
                 },
                 Object {
-                  "style": "style9",
+                  "style": "small_text_normal",
                   "text": " All Shoes & Select Accessories",
                 },
               ],
@@ -329,11 +329,11 @@ exports[`HomePageView should render correctly 1`] = `
               "position": "right",
               "textItems": Array [
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "Order By XX/XX",
                 },
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "For Easter Delivery!",
                 },
               ],
@@ -392,15 +392,15 @@ exports[`HomePageView should render correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "style7",
+                  "style": "percentage_wrapped_extra_large",
                   "text": "60%OFF",
                 },
                 Object {
-                  "style": "style8",
+                  "style": "small_text_bold",
                   "text": "50 % Off",
                 },
                 Object {
-                  "style": "style9",
+                  "style": "small_text_normal",
                   "text": " All Shoes & Select Accessories",
                 },
               ],
@@ -411,11 +411,11 @@ exports[`HomePageView should render correctly 1`] = `
               "position": "right",
               "textItems": Array [
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "Order By XX/XX",
                 },
                 Object {
-                  "style": "style10",
+                  "style": "ribbon_default_text",
                   "text": "For Easter Delivery!",
                 },
               ],

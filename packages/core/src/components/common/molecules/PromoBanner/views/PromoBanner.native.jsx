@@ -67,8 +67,8 @@ export const bodyCopyStyles = {
     />
   ),
   style6: props => <PercentageStyle {...props} />,
-  style7: props => <PercentagePinkStyle {...props} />,
-  style8: props => (
+  percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
+  small_text_bold: props => (
     <BodyCopy
       fontSize="fs16"
       fontWeight="black"
@@ -79,7 +79,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style9: props => (
+  small_text_normal: props => (
     <BodyCopy
       fontSize="fs16"
       color="gray.900"
@@ -89,7 +89,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style10: props => (
+  ribbon_default_text: props => (
     <BodyCopy
       fontSize="fs14"
       color="white"
@@ -100,7 +100,7 @@ export const bodyCopyStyles = {
     />
   ),
   style11: props => <AllTextInRowStyle {...props} />,
-  style12: props => (
+  gymboree_description: props => (
     <BodyCopy
       fontSize="fs16"
       fontWeight="regular"
