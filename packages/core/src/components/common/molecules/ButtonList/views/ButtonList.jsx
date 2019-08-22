@@ -24,6 +24,7 @@ const getImageCTA = item => {
     <div className={`${config[buttonListVariation].className} div-image-wrapper`}>
       {item.buttonsData.map((data, index) => {
         const { image, button = {} } = data;
+
         return (
           <div className="img-wrapper">
             <div>
@@ -36,11 +37,13 @@ const getImageCTA = item => {
                 fontWeightVariation="active"
                 data-locator={`${dataLocatorTextCta}${index + 1}`}
               >
-                <DamImage
-                  imgData={image}
-                  className={className}
-                  data-locator={`${dataLocatorDivisionImages}${index + 1}`}
-                />
+                {image && (
+                  <DamImage
+                    imgData={image}
+                    className={className}
+                    data-locator={`${dataLocatorDivisionImages}${index + 1}`}
+                  />
+                )}
                 <div className="image-comp">{button.text}</div>
               </Anchor>
             </div>

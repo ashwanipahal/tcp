@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
+  margin-bottom: 40px;
   .heading-wrapper {
     padding-top: 11px;
     @media ${props => props.theme.mediaQuery.medium} {
