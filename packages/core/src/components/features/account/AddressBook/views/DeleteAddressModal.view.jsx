@@ -83,6 +83,7 @@ class DeleteAddressModal extends React.Component<Props> {
               fontFamily="secondary"
               color="red.500"
               className="elem-mb-SM"
+              dataLocator="address-delete-redtext"
             >
               {msg}
             </BodyCopy>
