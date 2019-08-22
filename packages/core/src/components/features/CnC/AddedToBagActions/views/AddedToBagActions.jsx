@@ -12,9 +12,9 @@ import { getLocator } from '../../../../../utils';
 
 class AddedToBagActions extends React.Component<Props> {
   loginModalOpenClick = e => {
-    const { setLoginModalMountState } = this.props;
+    const { setCheckoutModalMountState } = this.props;
     e.preventDefault();
-    setLoginModalMountState({ state: true });
+    setCheckoutModalMountState({ state: true });
   };
 
   render() {
@@ -23,8 +23,8 @@ class AddedToBagActions extends React.Component<Props> {
       labels,
       onClickViewBag,
       showAddTobag,
-      setLoginModalMountState,
-      loginModalMountedState,
+      setCheckoutModalMountState,
+      checkoutModalMountedState,
     } = this.props;
     return (
       <div className={className}>
@@ -50,7 +50,7 @@ class AddedToBagActions extends React.Component<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          <PayPalButton className="payPal-button" />
+          {/* <PayPalButton className="payPal-button" /> */}
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"
@@ -68,8 +68,9 @@ class AddedToBagActions extends React.Component<Props> {
           </Button>
         </Row>
         <OpenLoginModal
-          setLoginModalMountState={setLoginModalMountState}
-          openState={loginModalMountedState}
+          variation="checkout"
+          setLoginModalMountState={setCheckoutModalMountState}
+          openState={checkoutModalMountedState}
           data={{
             heading: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING',
             title: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE',

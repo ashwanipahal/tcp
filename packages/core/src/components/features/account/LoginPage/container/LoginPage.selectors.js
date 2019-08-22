@@ -3,11 +3,15 @@ import { createSelector } from 'reselect';
 import constants from '../LoginPage.constants';
 
 export const getLoginState = state => {
-  return state[LOGINPAGE_REDUCER_KEY];
+  return state[LOGINPAGE_REDUCER_KEY].get('error');
 };
 
 export const loginModalOpenState = state => {
   return state.LoginPageReducer.get('loginModalMountedState');
+};
+
+export const checkoutModalOpenState = state => {
+  return state.LoginPageReducer.get('checkoutModalMountedState');
 };
 
 export const getUserLoggedInState = createSelector(

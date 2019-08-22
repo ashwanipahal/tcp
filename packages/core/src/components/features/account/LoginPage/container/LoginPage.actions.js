@@ -14,6 +14,13 @@ export const setLoginModalMountedState = payload => {
   };
 };
 
+export const setCheckoutModalMountedState = payload => {
+  return {
+    type: LOGINPAGE_CONSTANTS.CHECKOUT_MODAL_MOUNTED_STATE,
+    payload,
+  };
+};
+
 export const setLoginInfo = payload => {
   return {
     type: LOGINPAGE_CONSTANTS.SET_LOGIN_INFO,

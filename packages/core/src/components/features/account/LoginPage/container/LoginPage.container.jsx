@@ -28,8 +28,12 @@ import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay } = this.props;
+    const { isUserLoggedIn, closeOverlay, closeModal, variation } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
+      if (variation === 'checkout' || variation === 'favorites') {
+        closeModal();
+      }
+
       closeOverlay();
     }
   }
@@ -67,6 +71,7 @@ class LoginPageContainer extends React.PureComponent {
       queryParams,
       setLoginModalMountState,
       onRequestClose,
+      variation,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -91,6 +96,7 @@ class LoginPageContainer extends React.PureComponent {
         queryParams={queryParams}
         setLoginModalMountState={setLoginModalMountState}
         onRequestClose={onRequestClose}
+        variation={variation}
       />
     );
   }
@@ -116,6 +122,8 @@ LoginPageContainer.propTypes = {
   queryParams: PropTypes.shape({}),
   onRequestClose: PropTypes.shape({}).isRequired,
   setLoginModalMountState: PropTypes.bool.isRequired,
+  closeModal: PropTypes.bool.isRequired,
+  variation: PropTypes.bool.isRequired,
 };
 
 LoginPageContainer.defaultProps = {

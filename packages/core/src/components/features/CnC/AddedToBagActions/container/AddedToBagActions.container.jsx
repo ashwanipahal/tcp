@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddedToBagActionsView from '../views/AddedToBagActions';
-import { setLoginModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
+import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
+import { checkoutModalOpenState } from '../../../account/LoginPage/container/LoginPage.selectors';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
 import { routerPush } from '../../../../../utils';
 
@@ -22,8 +23,9 @@ export class AddedToBagContainer extends React.Component<Props> {
       labels,
       showAddTobag,
       inheritedStyles,
-      setLoginModalMountState,
+      setCheckoutModalMountState,
       navigation,
+      checkoutModalMountedState,
     } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
@@ -35,7 +37,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
         inheritedStyles={inheritedStyles}
-        setLoginModalMountState={setLoginModalMountState}
+        setCheckoutModalMountState={setCheckoutModalMountState}
+        checkoutModalMountedState={checkoutModalMountedState}
         navigation={navigation}
       />
     );
@@ -43,14 +46,13 @@ export class AddedToBagContainer extends React.Component<Props> {
 }
 
 AddedToBagContainer.propTypes = {
-  // loginInfo: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setLoginModalMountState: payload => {
-      dispatch(setLoginModalMountedState(payload));
+    setCheckoutModalMountState: payload => {
+      dispatch(setCheckoutModalMountedState(payload));
     },
   };
 };
@@ -58,6 +60,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     labels: getLabelsAddToActions(state),
+    checkoutModalMountedState: checkoutModalOpenState(state),
   };
 };
 

@@ -38,7 +38,7 @@ class OpenLoginModal extends React.Component<Props> {
   };
 
   render() {
-    const { className, openState } = this.props;
+    const { className, openState, variation } = this.props;
     const { currentForm, component } = this.state;
     return (
       <Modal
@@ -53,7 +53,9 @@ class OpenLoginModal extends React.Component<Props> {
       >
         {component === 'login' ? (
           <LoginPageContainer
+            variation={variation}
             currentForm={currentForm}
+            closeModal={this.onClose}
             setLoginModalMountState={this.openForgotPasswordModal}
           />
         ) : (

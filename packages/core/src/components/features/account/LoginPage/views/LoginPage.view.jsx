@@ -18,6 +18,7 @@ const LoginView = ({
   currentForm,
   queryParams,
   setLoginModalMountState,
+  variation,
 }) => {
   return (
     <LoginSection
@@ -36,6 +37,7 @@ const LoginView = ({
       currentForm={currentForm}
       queryParams={queryParams}
       setLoginModalMountState={setLoginModalMountState}
+      variation={variation}
     />
   );
 };
