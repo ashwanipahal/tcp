@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import {
   CouponTileSection,
   CouponWrapper,
@@ -10,20 +10,16 @@ import {
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
 export const CouponTile = ({ coupon, labels }) => {
-  let couponClass = '';
   let couponTextLabel = '';
 
   switch (coupon.offerType) {
     case COUPON_REDEMPTION_TYPE.PLACECASH:
-      couponClass = 'coupon-placecash';
       couponTextLabel = `${labels.lbl_overview_couponTypePlacecash}`;
       break;
     case COUPON_REDEMPTION_TYPE.REWARDS:
-      couponClass = 'coupon-reward';
       couponTextLabel = `${labels.lbl_overview_couponTypeReward}`;
       break;
     default:
-      couponClass = 'coupon-saving';
       couponTextLabel = `${labels.lbl_overview_couponTypeSaving}`;
   }
 
@@ -31,12 +27,7 @@ export const CouponTile = ({ coupon, labels }) => {
     <CouponTileSection>
       <CouponWrapper>
         <CouponReward>
-          <BodyCopy
-            fontSize="fs13"
-            fontWeight="black"
-            color="white"
-            text={couponTextLabel}
-          />
+          <BodyCopy fontSize="fs13" fontWeight="black" color="white" text={couponTextLabel} />
         </CouponReward>
 
         <CouponInfo>
@@ -72,16 +63,23 @@ export const CouponTile = ({ coupon, labels }) => {
 };
 
 CouponTile.propTypes = {
-  coupon: PropTypes.shape({}).isRequired,
+  coupon: PropTypes.shape({
+    offerType: PropTypes.string,
+    expirationDate: PropTypes.string,
+    title: PropTypes.string,
+    effectiveDate: PropTypes.string,
+  }).isRequired,
   labels: PropTypes.shape({
     lbl_overview_myPlaceRewardsCouponType: PropTypes.string.isRequired,
     lbl_overview_myPlaceRewardsUseBy: PropTypes.string.isRequired,
+    lbl_overview_couponTypePlacecash: PropTypes.string.isRequired,
+    lbl_overview_couponTypeReward: PropTypes.string.isRequired,
+    lbl_overview_couponTypeSaving: PropTypes.string.isRequired,
+    lbl_overview_couponValid: PropTypes.string.isRequired,
+    lbl_overview_couponUseBy: PropTypes.string.isRequired,
   }).isRequired,
-  className: PropTypes.string,
 };
 
-CouponTile.defaultProps = {
-  className: '',
-};
+CouponTile.defaultProps = {};
 
 export default CouponTile;

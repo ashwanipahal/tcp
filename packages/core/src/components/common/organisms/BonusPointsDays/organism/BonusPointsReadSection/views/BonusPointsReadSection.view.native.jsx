@@ -5,10 +5,11 @@ import BodyCopy from '../../../../../atoms/BodyCopy/views/BodyCopy';
 import {
   BonusDayReadSection,
   BonusDayHeader,
+  LeftHeaderContainer,
+  RightHeaderContainer,
   BonusDayWrapper,
   DotActive,
   DotInactive,
-  LinkWrapper,
 } from '../styles/BonusPointsReadSection.style.native';
 
 export const BonusPointsReadSection = ({
@@ -27,23 +28,26 @@ export const BonusPointsReadSection = ({
   return (
     <BonusDayReadSection>
       <BonusDayHeader>
-        <BodyCopy
-          fontSize="fs14"
-          fontWeight="semibold"
-          data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
-          text={labels.lbl_bonus_points_bonusPointsDay}
-        />
-        <LinkWrapper>
+        <LeftHeaderContainer>
+          <BodyCopy
+            fontSize="fs14"
+            fontWeight="semibold"
+            data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
+            text={labels.lbl_bonus_points_bonusPointsDay}
+          />
+        </LeftHeaderContainer>
+        <RightHeaderContainer>
           <Anchor
             anchorVariation="primary"
             fontSizeVariation="large"
             underline
-            onClick={toggleBonusPointsModal}
+            onPress={toggleBonusPointsModal}
             data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
             text={labels.lbl_bonus_points_detailLink}
           />
-        </LinkWrapper>
+        </RightHeaderContainer>
       </BonusDayHeader>
+
       <BonusDayWrapper>
         <BodyCopy
           fontSize="fs14"

@@ -2,19 +2,17 @@ import styled from 'styled-components/native';
 
 const BonusDayReadSection = styled.View`
   flex: 1;
-  border: 1px solid red;
 `;
 
 const BonusDayHeader = styled.View`
   flex-direction: row;
   height: 20px;
-  border: 1px solid green;
 `;
 
 const BonusDayWrapper = styled.View`
   flex: 1;
   flex-direction: row;
-  border: 1px solid blue;
+  align-items: center;
 `;
 
 const DotActive = styled.View`
@@ -30,18 +28,31 @@ const DotInactive = styled.View`
   height: 11px;
   border-radius: 5px;
   margin: 5px;
-  background-color: ${props => props.theme.colorPalette.userTheme.mpr};
+  background-color: ${props =>
+    props.isPlcc
+      ? props.theme.colorPalette.userTheme.plcc
+      : props.theme.colorPalette.userTheme.mpr};
 `;
 
-const LinkWrapper = styled.View`
+const LeftHeaderContainer = styled.View`
+  flex: 1.5;
+  flex-direction: row;
+  justify-content: flex-start;
+`;
+
+const RightHeaderContainer = styled.View`
+  flex: 0.5;
+  flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 `;
 
 export {
   BonusDayReadSection,
   BonusDayHeader,
+  LeftHeaderContainer,
+  RightHeaderContainer,
   BonusDayWrapper,
   DotActive,
   DotInactive,
-  LinkWrapper,
 };
