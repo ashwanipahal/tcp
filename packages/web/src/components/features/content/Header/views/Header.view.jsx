@@ -15,6 +15,7 @@ const Header = ({
   closeNavigationDrawer,
   userName,
   openOverlay,
+  isLoggedIn,
 }) => {
   return (
     <header className={className}>
@@ -29,6 +30,7 @@ const Header = ({
         navigationDrawer={navigationDrawer}
         userName={userName}
         openOverlay={openOverlay}
+        isLoggedIn={isLoggedIn}
       />
       <HeaderPromo
         mobileMarkup
@@ -51,6 +53,7 @@ Header.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withStyles(Header, style);

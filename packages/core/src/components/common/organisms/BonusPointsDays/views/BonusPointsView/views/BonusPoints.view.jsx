@@ -16,6 +16,9 @@ class BonusPointsView extends React.Component {
     className: PropTypes.string,
     view: PropTypes.string,
     isPlcc: PropTypes.bool,
+    enableApplyCta: PropTypes.bool,
+    getBonusDaysData: PropTypes.func,
+    orderDetails: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -25,6 +28,9 @@ class BonusPointsView extends React.Component {
     className: '',
     view: constants.VIEWS.EDIT,
     isPlcc: false,
+    enableApplyCta: false,
+    getBonusDaysData: () => {},
+    orderDetails: {},
   };
 
   constructor(props) {
@@ -41,7 +47,17 @@ class BonusPointsView extends React.Component {
   };
 
   render() {
-    const { labels, bonusData, bonusDetailsData, className, view, isPlcc } = this.props;
+    const {
+      labels,
+      bonusData,
+      bonusDetailsData,
+      className,
+      view,
+      isPlcc,
+      enableApplyCta,
+      getBonusDaysData,
+      orderDetails,
+    } = this.props;
     const { openModalState } = this.state;
     return (
       <>
@@ -60,6 +76,9 @@ class BonusPointsView extends React.Component {
               labels={labels}
               bonusData={bonusData}
               toggleBonusPointsModal={this.toggleBonusPointsModal}
+              enableApplyCta={enableApplyCta}
+              getBonusDaysData={getBonusDaysData}
+              orderDetails={orderDetails}
             />
           </div>
         )}

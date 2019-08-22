@@ -35,19 +35,19 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
     isEdit: PropTypes.bool,
-    pristine: PropTypes.bool.isRequired,
-    invalid: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
     dto: PropTypes.shape({}),
+    selectedCard: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
     onFileAddressKey: '',
     isEdit: false,
-    dto: PropTypes.shape({}),
+    dto: {},
+    selectedCard: {},
   };
 
   constructor(props) {
@@ -71,6 +71,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             address.primary === 'true' ? '(Default)' : ''
           }`,
           content: address,
+          primary: address.primary === 'true',
         }))) ||
       [];
 
@@ -78,6 +79,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       id: '',
       label: labels.paymentGC.lbl_payment_addNewAddCta,
       content: '',
+      primary: false,
     });
 
     return addressOptions.valueSeq().toArray();
@@ -110,16 +112,29 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   submitCardInformation = () => {
     const { selectedYear, selectedMonth } = this.state;
-    const { handleSubmit, dispatch } = this.props;
+    const { handleSubmit, dispatch, isEdit, selectedCard } = this.props;
 
     // Setting form value to take dropdown values.
-    dispatch(change('addEditCreditCard', 'expYear', selectedYear));
-    dispatch(change('addEditCreditCard', 'expMonth', selectedMonth));
+    dispatch(change(constants.FORM_NAME, 'expYear', selectedYear));
+    dispatch(change(constants.FORM_NAME, 'expMonth', selectedMonth));
+    if (isEdit && selectedCard) {
+      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
+    }
     handleSubmit();
   };
 
   render() {
-    const { labels, addressLabels, addressList, isEdit, invalid, onClose } = this.props;
+    const {
+      labels,
+      addressLabels,
+      addressList,
+      isEdit,
+      invalid,
+      onClose,
+      dto,
+      selectedCard,
+      onFileAddresskey,
+    } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const dropDownStyle = {
       height: 30,
@@ -133,7 +148,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
-          <CreditCardFields {...this.props} updateExpiryDate={this.updateExpiryDate} />
+          <CreditCardFields
+            {...this.props}
+            updateExpiryDate={this.updateExpiryDate}
+            dto={dto}
+            selectedCard={selectedCard}
+          />
         </CreditCardWrapper>
         <AddressWrapper>
           <Heading
@@ -168,9 +188,10 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 this.handleComponentChange(itemValue);
               }}
               labels={labels}
+              selectedValue={onFileAddresskey}
             />
           )}
-          {addressComponentList && addressComponentList.length && (
+          {addressComponentList && addressComponentList.length > 1 && (
             <DefaultAddress>
               <LeftBracket />
               <Address

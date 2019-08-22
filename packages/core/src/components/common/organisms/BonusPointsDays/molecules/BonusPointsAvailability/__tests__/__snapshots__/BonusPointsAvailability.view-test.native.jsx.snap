@@ -13,6 +13,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       height="42px"
       id={0}
       locator=""
+      onPress={[Function]}
       style={
         Object {
           "color": undefined,
@@ -41,6 +42,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       height="42px"
       id={1}
       locator=""
+      onPress={[Function]}
       style={
         Object {
           "color": Object {
@@ -76,6 +78,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
       height="42px"
       id={0}
       locator=""
+      onPress={[Function]}
       style={
         Object {
           "color": undefined,
