@@ -28,7 +28,7 @@ class ModuleAGymCarousel extends React.Component {
   setRibbonPosition = index => {
     const { largeCompImageCarousel } = this.props;
     const [ribbonBanner] = largeCompImageCarousel[index].ribbonBanner;
-    if (ribbonBanner.position === 'left') {
+    if (ribbonBanner.ribbonPlacement === 'left') {
       this.setState({ isRibbonLeftAligned: true });
     } else {
       this.setState({ isRibbonLeftAligned: false });
@@ -75,7 +75,10 @@ class ModuleAGymCarousel extends React.Component {
             } = item;
 
             return (
-              <div className="banner-slide" key={linkedImage.image.alt.replace(/\s/g, '_')}>
+              <div
+                className="banner-slide"
+                key={linkedImage.image.alt && linkedImage.image.alt.replace(/\s/g, '_')}
+              >
                 <DamImage
                   className={`moduleA_image_${i}`}
                   imgData={linkedImage.image}
@@ -89,13 +92,15 @@ class ModuleAGymCarousel extends React.Component {
                     className="link-text-wrapper"
                     data-locator={`${getLocator('moduleA_header_text')}${i}`}
                   />
-                  <PromoBanner
-                    promoBanner={promoBanner}
-                    className="moduleA__promoBanner"
-                    data-locator={`${getLocator('moduleA_promobanner_text')}${i}`}
-                    color="white"
-                    fontSize={['fs16', 'fs16', 'fs28']}
-                  />
+                  {promoBanner && (
+                    <PromoBanner
+                      promoBanner={promoBanner}
+                      className="moduleA__promoBanner"
+                      data-locator={`${getLocator('moduleA_promobanner_text')}${i}`}
+                      color="white"
+                      fontSize={['fs16', 'fs16', 'fs28']}
+                    />
+                  )}
                 </div>
                 <div className="ribbon-container">
                   <PromoBanner

@@ -159,7 +159,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           promoBanner={
             Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -288,7 +288,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           promoBanner={
             Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -417,7 +417,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           promoBanner={
             Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -546,7 +546,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           promoBanner={
             Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",

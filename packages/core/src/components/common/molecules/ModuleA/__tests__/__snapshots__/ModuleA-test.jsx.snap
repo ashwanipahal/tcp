@@ -181,7 +181,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -263,7 +263,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -345,7 +345,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -427,7 +427,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -631,7 +631,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -713,7 +713,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -795,7 +795,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",
@@ -877,7 +877,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "style10",

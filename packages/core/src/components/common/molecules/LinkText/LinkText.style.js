@@ -26,7 +26,7 @@ export default css`
     }
   }
 
-  .style11 {
+  .gymboree_title_text {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
