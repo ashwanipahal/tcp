@@ -289,7 +289,6 @@ export const resetNavigationStack = navigation => {
 
 /**
  * function getAPIInfoFromEnv
- *
  * @param {*} apiSiteInfo
  * @param {*} envConfig
  * @param {*} appTypeSuffix
@@ -334,7 +333,6 @@ const getGraphQLApiFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
 /**
  * function createAPIConfigForApp
  * This method creates and returns api config for input apptype
- *
  * @param {*} envConfig
  * @param {*} appTypeSuffix
  * @returns api config for input app type
@@ -361,33 +359,41 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
 };
 
 /**
+ * getCurrentAPIConfig
+ * This method returns current api config
+ */
+const getCurrentAPIConfig = (envConfig, isTCPBrand) => {
+  if (isTCPBrand) {
+    // return tcp config
+    tcpAPIConfig = tcpAPIConfig || createAPIConfigForApp(envConfig, 'TCP');
+    currentAppAPIConfig = tcpAPIConfig;
+  } else {
+    // return gym config
+    gymAPIConfig = gymAPIConfig || createAPIConfigForApp(envConfig, 'GYM');
+    currentAppAPIConfig = gymAPIConfig;
+  }
+  return currentAppAPIConfig;
+};
+
+/**
  * createAPIConfig
- * This method creates two apiconfig - one for tcp and one for gymboree
- *
- * @param {*} envConfig
- * @param {*} appType
- * @returns api config for current app type
+ * This method returns current api config, creates new if not already created
  */
 export const createAPIConfig = (envConfig, appType) => {
-  tcpAPIConfig = createAPIConfigForApp(envConfig, 'TCP');
-  gymAPIConfig = createAPIConfigForApp(envConfig, 'GYM');
   const { RWD_APP_BRANDID_TCP: tcpBrandId } = envConfig;
-  currentAppAPIConfig = appType === tcpBrandId ? tcpAPIConfig : gymAPIConfig;
-  return currentAppAPIConfig;
+  const isTCPBrand = appType === tcpBrandId;
+  return getCurrentAPIConfig(envConfig, isTCPBrand);
 };
 
 /**
  * switchAPIConfig
  * This method switches api config on brand switch in app
- *
- * @returns current app api config
  */
-export const switchAPIConfig = () => {
+export const switchAPIConfig = envConfig => {
   // reset singleton instance of graphql client
   resetGraphQLClient();
 
   // return second api config stored in local
-  const apiConfig = currentAppAPIConfig === tcpAPIConfig ? gymAPIConfig : tcpAPIConfig;
-  currentAppAPIConfig = apiConfig;
-  return currentAppAPIConfig;
+  const isPrevConfigTCP = currentAppAPIConfig === tcpAPIConfig;
+  return getCurrentAPIConfig(envConfig, !isPrevConfigTCP);
 };
