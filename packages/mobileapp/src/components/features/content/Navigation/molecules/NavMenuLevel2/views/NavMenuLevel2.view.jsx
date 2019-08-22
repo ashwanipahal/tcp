@@ -146,8 +146,6 @@ const NavMenuLevel2 = props => {
           textAlign="center"
           text={l1Title}
           color="text.primary"
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{ textTransform: 'uppercase' }}
         />
         <Text />
       </HeadingContainer>
@@ -163,8 +161,6 @@ const NavMenuLevel2 = props => {
                 fontSize="fs16"
                 text={section.title}
                 color="text.primary"
-                // eslint-disable-next-line react-native/no-inline-styles
-                style={{ textTransform: 'uppercase' }}
               />
             </TitleContainer>
           ) : null;

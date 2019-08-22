@@ -3,7 +3,7 @@
 exports[`Drawer component renders correctly 1`] = `
 <Fragment>
   <Styled(BodyCopy)
-    className="undefined  nav-bar-l1-item "
+    className="undefined  nav-bar-l1-item"
     color="text.hint"
     component="li"
     data-locator=""
@@ -27,7 +27,6 @@ exports[`Drawer component renders correctly 1`] = `
   >
     <Styled(Anchor)
       onClick={[Function]}
-      to="/c/undefined"
     >
       <div
         className="nav-bar-l1-content"

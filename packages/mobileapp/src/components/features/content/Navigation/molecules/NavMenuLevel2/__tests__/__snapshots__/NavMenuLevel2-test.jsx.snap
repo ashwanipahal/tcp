@@ -72,11 +72,6 @@ exports[`NavMenuLevel2 should render component when renderSectionHeader is calle
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
-    style={
-      Object {
-        "textTransform": "uppercase",
-      }
-    }
     text="Lorem Ipsum"
   />
 </ForwardRef>
@@ -88,11 +83,6 @@ exports[`NavMenuLevel2 should render component when renderSectionHeader is calle
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
-    style={
-      Object {
-        "textTransform": "uppercase",
-      }
-    }
     text="Categories"
   />
 </ForwardRef>
@@ -117,11 +107,6 @@ exports[`NavMenuLevel2 should render correctly 1`] = `
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs16"
-      style={
-        Object {
-          "textTransform": "uppercase",
-        }
-      }
       text="GIRL"
       textAlign="center"
     />

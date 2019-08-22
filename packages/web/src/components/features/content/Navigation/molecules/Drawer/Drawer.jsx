@@ -28,7 +28,11 @@ const showOnViewport = viewport => {
 
 const renderDrawerFooter = (hideNavigationFooter, drawerFooter) => {
   const Footer = drawerFooter;
-  return !hideNavigationFooter && drawerFooter && <Footer />;
+  let classToHide = '';
+  if (hideNavigationFooter) {
+    classToHide = 'is-hidden';
+  }
+  return drawerFooter && <Footer className={classToHide} />;
 };
 
 const Drawer = props => {
@@ -59,7 +63,6 @@ const Drawer = props => {
   const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
   const classToShowOnViewports = showOnViewport({ small, medium, large });
-  // const Footer = drawerFooter;
 
   return (
     <div className={className}>

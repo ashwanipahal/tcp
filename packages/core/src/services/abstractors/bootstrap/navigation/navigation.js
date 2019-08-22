@@ -1,7 +1,7 @@
+import 'core-js/stable/string/virtual/starts-with';
 import mock from './mock';
+import { UNIDENTIFIED_GROUP } from './constants';
 import handler from '../../../handler';
-
-const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
 
 /**
  * Abstractor layer for loading data from API for Navigation
@@ -53,8 +53,12 @@ const Abstractor = {
         return subCategory;
       });
 
+      const { categoryContent } = listItem;
+
+      categoryContent.url = Abstractor.constructUrl(listItem.categoryContent);
+
       return {
-        categoryContent: listItem.categoryContent,
+        categoryContent,
         subCategories,
       };
     });

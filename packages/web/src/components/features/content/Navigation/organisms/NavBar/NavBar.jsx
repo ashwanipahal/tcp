@@ -38,7 +38,6 @@ const NavBar = props => {
               });
             }
           }
-
           return (
             <L1NavItem
               dataLocator={`l1menu_link_${index}`}
@@ -46,7 +45,7 @@ const NavBar = props => {
               key={`l1menu_link_${index.toString()}`}
               sizesRange={sizesRange}
               onClick={openL2Drawer(`l2-drawer-${index.toString()}`)}
-              showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
+              // showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
               removeL1Focus={removeL1Focus}
               {...navL1Item}
             >

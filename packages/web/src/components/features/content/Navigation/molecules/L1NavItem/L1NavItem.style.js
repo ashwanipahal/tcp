@@ -71,7 +71,7 @@ export default css`
       opacity: 0.6;
       width: 200%;
       left: -50%;
-      height: 1000vh;
+      height: 200vh;
     }
     &.is-open {
       background: linear-gradient(

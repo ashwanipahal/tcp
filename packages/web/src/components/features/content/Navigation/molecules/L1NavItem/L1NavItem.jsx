@@ -1,4 +1,5 @@
 import React from 'react';
+import 'core-js/stable/array/includes';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
@@ -19,22 +20,9 @@ const openNavigationDrawer = onClick => e => {
 };
 
 /**
- * This function generate URL for the link
- * @param {*} seoUrl This parameter takes the highest priority
- * @param {*} seoToken This parameter is appended to form url in format "/c/{seoToken}" and takes 2nd priority
- * @param {*} catgroupId This parameter is appended to form url in format "/c/{catgroupId}" and takes last priority
+ * This function highlights clearance links in red color on the base of id in unbxd
+ * @param {*} id
  */
-const generateUrl = (seoUrl, seoToken, catgroupId) => {
-  return (
-    seoUrl ||
-    `/${
-      seoToken.startsWith('content-')
-        ? seoToken.replace(new RegExp('content-', 'g'), 'content/')
-        : `c/${seoToken || catgroupId}`
-    }`
-  );
-};
-
 const highlightContent = id => {
   return id === '505518' || id === '454010' ? `highlighted` : ``;
 };
@@ -45,16 +33,12 @@ class L1NavItem extends React.PureComponent {
   };
 
   onHover = e => {
-    e.preventDefault();
-    e.stopPropagation();
     this.setState({
-      hovered: true,
+      hovered: !e.target.classList.contains('l1-overlay'),
     });
   };
 
-  onMouseLeave = e => {
-    e.preventDefault();
-    e.stopPropagation();
+  onMouseLeave = () => {
     this.setState({
       hovered: false,
     });
@@ -69,13 +53,13 @@ class L1NavItem extends React.PureComponent {
 
   render() {
     const {
-      categoryContent: { id, name, description, mainCategory, seoUrl, seoToken, catgroupId },
+      categoryContent: { id, name, description, mainCategory, url },
       className,
       dataLocator,
       index,
       children,
       onClick,
-      showOnlyOnApp,
+      // showOnlyOnApp,
       removeL1Focus,
       ...others
     } = this.props;
@@ -87,16 +71,20 @@ class L1NavItem extends React.PureComponent {
       classForHovered = 'is-open';
     }
 
-    const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
+    // If we receive flag showOnlyOnApp then we add this class to links to hide them
+    // const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
+
+    // This class is used to highlight link in red color, it performs check based on id
     const classForRedContent = highlightContent(id);
+    // This function renders promoBadge
     const promoBadge = this.fetchPromoBadge(mainCategory);
-    const url = generateUrl(seoUrl, seoToken, catgroupId);
 
     return (
       <React.Fragment>
         <BodyCopy
           component="li"
-          className={`${className} ${classForHovered} nav-bar-l1-item ${classToShowOnlyOnApp}`}
+          // className={`${className} ${classForHovered} nav-bar-l1-item ${classToShowOnlyOnApp}`}
+          className={`${className} ${classForHovered} nav-bar-l1-item`}
           fontFamily="secondary"
           fontSize={['fs13', 'fs13', 'fs15']}
           fontWeight="semibold"
@@ -137,8 +125,9 @@ L1NavItem.propTypes = {
   index: PropTypes.number.isRequired,
   children: PropTypes.element.isRequired,
   onClick: PropTypes.func.isRequired,
-  showOnlyOnApp: PropTypes.bool.isRequired,
+  // showOnlyOnApp: PropTypes.bool.isRequired,
   removeL1Focus: PropTypes.bool.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 L1NavItem.defaultProps = {
