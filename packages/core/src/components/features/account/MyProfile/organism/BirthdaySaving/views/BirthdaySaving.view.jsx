@@ -22,7 +22,7 @@ const BirthdaySaving = ({ labels }) => {
               large: 12,
             }}
           >
-            <BodyCopy fontSize="fs14" fontFamily="secondary">
+            <BodyCopy fontSize="fs14" dataLocator="pi-addbirthdayinfo" fontFamily="secondary">
               {labels.lbl_profile_birthday_saving_info}
             </BodyCopy>
           </Col>

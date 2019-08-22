@@ -33,6 +33,7 @@ exports[`BirthdaySaving component should render correctly 1`] = `
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="pi-addbirthdayinfo"
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
