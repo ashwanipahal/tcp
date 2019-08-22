@@ -130,7 +130,9 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col3"
           >
-            <BonusPointsDays />
+            <div className="bonusPointsWrapper">
+              <BonusPointsDays />
+            </div>
           </Col>
           <Col
             colSize={{

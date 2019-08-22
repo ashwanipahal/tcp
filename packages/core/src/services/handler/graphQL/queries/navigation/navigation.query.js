@@ -14,6 +14,8 @@ const buildQuery = ({ brand, country, channel }) => `
       name
       longDescription
       id
+      seoUrl
+      seoToken
       mainCategory {
         set {
           key
@@ -79,6 +81,7 @@ const buildQuery = ({ brand, country, channel }) => `
     subCategories {
       categoryContent {
         seoToken
+        seoUrl
         groupIdentifierSequence
         isShortImage
         isUnique
@@ -98,6 +101,7 @@ const buildQuery = ({ brand, country, channel }) => `
       subCategories {
         categoryContent {
           seoToken
+          seoUrl
           groupIdentifierSequence
           isShortImage
           isUnique

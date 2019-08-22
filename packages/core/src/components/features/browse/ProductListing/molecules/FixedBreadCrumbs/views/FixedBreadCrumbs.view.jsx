@@ -1,10 +1,7 @@
-/* eslint-disable react/no-array-index-key */
 /**
  * @module BreadCrumbs
  * @summary A React component rendering a list of hyperlinks as bread crumbs.
  /**
- * @module Breadcrum
- * @author Florencia Acosta <facosta@minutentag.com>
  * Component that displays a list of section links.
  *
  * @example
@@ -45,7 +42,7 @@ const FixedBreadCrumbs = ({ crumbs, separationChar }) => {
         const itemClassName =
           index === crumbs.length - 1 ? 'breadcrum-last-item' : 'breadcrum-item';
         return (
-          <span key={`${displayName} ${index}`} className="breadcrum-item-container">
+          <span key={`${displayName}`} className="breadcrum-item-container">
             {destinationUrl ? (
               <a className={itemClassName} href={destinationUrl}>
                 {displayName}

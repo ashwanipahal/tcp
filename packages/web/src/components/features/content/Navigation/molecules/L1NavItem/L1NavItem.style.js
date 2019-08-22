@@ -8,9 +8,8 @@ export default css`
   color: ${props => props.theme.colorPalette.text.primary};
   border-bottom: 3px solid ${props => props.theme.colorPalette.white};
 
-  &:hover,
-  &:focus {
-    background: #f3f3f3;
+  &.is-open {
+    background: ${props => props.theme.colorPalette.gray[300]};
   }
 
   span {
@@ -50,7 +49,8 @@ export default css`
     span {
       display: inline;
     }
-    .nav-bar-item-content {
+    .nav-bar-item-content,
+    &.show-on-mobile {
       display: none;
     }
     .nav-bar-l1-content {
@@ -63,8 +63,22 @@ export default css`
       width: 100%;
       display: inline-block;
     }
-    &:hover {
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);
+    &.l1-overlay.is-open {
+      background: ${props => props.theme.colorPalette.gray[900]};
+      position: absolute;
+      top: 75px;
+      z-index: 1;
+      opacity: 0.6;
+      width: 200%;
+      left: -50%;
+      height: 200vh;
+    }
+    &.is-open {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.99),
+        ${props => props.theme.colors.NAVIGATION.L1_BACKGROUND}
+      );
       color: ${props => props.theme.colorPalette.text.primary};
       border-bottom-color: ${props => props.theme.colorPalette.primary.main};
       .nav-bar-l2 {
@@ -74,10 +88,10 @@ export default css`
         cursor: default;
         position: absolute;
         display: block;
-        top: 80px;
+        top: 88px;
         left: 0;
         width: 100%;
-        color: #1a1a1a;
+        color: ${props => props.theme.colorPalette.gray[900]};
         text-align: center;
         font-weight: 600;
         z-index: 11;

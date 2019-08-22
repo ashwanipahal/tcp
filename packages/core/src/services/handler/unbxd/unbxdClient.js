@@ -1,7 +1,7 @@
 import superagent from 'superagent';
 import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
-import { isClient } from '../../../utils';
+import { isClient, isMobileApp } from '../../../utils';
 
 /**
  * @summary This is to generate and return both the request params and the request URL.
@@ -46,7 +46,7 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
 
   // make the api call
   if (requestType === 'get') {
-    const unbxdUID = readCookie('unbxd.userId', document && document.cookie);
+    const unbxdUID = !isMobileApp() ? readCookie('unbxd.userId', document && document.cookie) : '';
     if (isClient() && unbxdUID) {
       // eslint-disable-next-line
       reqObj.body.uid = unbxdUID;

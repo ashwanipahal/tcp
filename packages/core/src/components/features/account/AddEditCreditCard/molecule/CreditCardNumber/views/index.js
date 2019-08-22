@@ -1,1 +1,1 @@
-export { default } from './CreditCardNumber.views';
+export { default } from './CreditCardNumber.view';

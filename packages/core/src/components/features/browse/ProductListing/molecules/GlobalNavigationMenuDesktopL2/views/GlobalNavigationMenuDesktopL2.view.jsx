@@ -1,12 +1,27 @@
-/* eslint-disable */
+/* eslint-disable extra-rules/no-commented-out-code */
 /**
  * Presentational component that renders a single entry of L1 navigation (such
  * as Girl, or Accessories) and it's associated L2 navigation.
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class GlobalNavigationMenuDesktopL2 extends React.Component {
+  static propTypes = {
+    activeCategoryIds: PropTypes.arrayOf(PropTypes.string),
+    navTree: PropTypes.shape({}),
+    isTopNav: PropTypes.bool,
+    navigationTree: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    activeCategoryIds: [],
+    navTree: {},
+    isTopNav: false,
+    navigationTree: {},
+  };
+
   constructor() {
     super();
     this.menuGroupings = this.menuGroupings.bind(this);
@@ -15,13 +30,13 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
   menuGroupings = () => {
     const { navigationTree } = this.props;
     const groups = [];
-    let menuItemCount = 0;
-    const maxItemsInGroup = 1;
+    // let menuItemCount = 0;
+    // const maxItemsInGroup = 1;
 
     const subCategoryArr =
       (navigationTree.subCategories && Object.keys(navigationTree.subCategories)) || [];
-    for (let i = 0; i < subCategoryArr.length; i++) {
-      let tempGroups = [];
+    for (let i = 0; i < subCategoryArr.length; i += 1) {
+      const tempGroups = [];
       if (navigationTree.subCategories && navigationTree.subCategories[subCategoryArr[i]]) {
         tempGroups.push({
           groupName: subCategoryArr[i],
@@ -66,7 +81,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
     const {
       /* primaryContentSlotName, secondaryContentSlotName, */
       activeCategoryIds,
-      navTree,
+      /* navTree, */
       isTopNav,
     } = this.props;
 
@@ -99,12 +114,11 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
     );
   }
 }
-
 export default GlobalNavigationMenuDesktopL2;
 
 // This is a column
-function NavGroupContainer(props) {
-  let { groups, activeCategoryIds, isTopNav, isLastGroup, className } = props;
+const NavGroupContainer = props => {
+  const { groups, activeCategoryIds, isTopNav, isLastGroup, className } = props;
 
   /* let className = cssClassName({
     'sub-menu-group ': true,
@@ -113,7 +127,7 @@ function NavGroupContainer(props) {
   }); */
 
   return (
-    <div className={className}>
+    <div className={`${isLastGroup}${className}`}>
       {groups.map(({ menuItems, groupName } /* , index */) => {
         // let className = `group-title group-index-${index + 1} sub-menu-outliers-group`
         return (
@@ -125,7 +139,23 @@ function NavGroupContainer(props) {
       })}
     </div>
   );
-}
+};
+
+NavGroupContainer.propTypes = {
+  groups: PropTypes.shape({}),
+  activeCategoryIds: PropTypes.arrayOf(PropTypes.string),
+  isTopNav: PropTypes.bool,
+  isLastGroup: PropTypes.bool,
+  className: PropTypes.string,
+};
+
+NavGroupContainer.defaultProps = {
+  groups: {},
+  activeCategoryIds: [],
+  isTopNav: false,
+  isLastGroup: false,
+  className: '',
+};
 
 function L2({ menuItems, activeCategoryIds, isTopNav }) {
   return (
@@ -159,18 +189,14 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
 function L3({ menuItems, activeCategoryIds }) {
   return (
     <ol className="sub-menu-category sub-menu-category-level-three" role="none">
-      {menuItems.map(({ categoryContent: { name, categoryId, displayToCustomer }, url }) => {
-        // let isActive = activeCategoryIds && categoryId === activeCategoryIds[2];
+      {menuItems.map(({ categoryContent: { name, categoryId }, url }) => {
+        const isActive = activeCategoryIds && categoryId === activeCategoryIds[2];
         // let className = cssClassName('sub-menu-category-item navigation-level-three-item ');
 
         return (
           <React.Fragment>
             {
-              /* displayToCustomer && */ <li
-                key={categoryId}
-                id={`list-item-${categoryId}`}
-                role="none"
-              >
+              <li className={isActive} key={categoryId} id={`list-item-${categoryId}`} role="none">
                 <a href={url}>{name}</a>
               </li>
             }
@@ -180,3 +206,25 @@ function L3({ menuItems, activeCategoryIds }) {
     </ol>
   );
 }
+
+L2.propTypes = {
+  menuItems: PropTypes.arrayOf(PropTypes.shape({})),
+  activeCategoryIds: PropTypes.arrayOf(PropTypes.shape({})),
+  isTopNav: PropTypes.bool,
+};
+
+L2.defaultProps = {
+  menuItems: [],
+  activeCategoryIds: [],
+  isTopNav: false,
+};
+
+L3.propTypes = {
+  menuItems: PropTypes.arrayOf(PropTypes.shape({})),
+  activeCategoryIds: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+L3.defaultProps = {
+  menuItems: [],
+  activeCategoryIds: [],
+};
