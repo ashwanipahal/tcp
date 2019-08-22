@@ -162,7 +162,7 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
 
-  .style12 {
+  .spaced_text {
     color: ",
                 [Function],
                 ";

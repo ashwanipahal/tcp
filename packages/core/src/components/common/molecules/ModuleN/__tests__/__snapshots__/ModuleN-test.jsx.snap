@@ -80,6 +80,7 @@ exports[`N component renders correctly 1`] = `
       />
     </div>
     <Styled(ButtonList)
+      buttonListVariation="stackedCTAList"
       buttonsData={
         Array [
           Object {

@@ -12,7 +12,7 @@ export default css`
     }
   }
 
-  background-color: ${props => props.bgColor};
+  background-color: #f53d3d;
 
   h3.link-text {
     margin: 0;

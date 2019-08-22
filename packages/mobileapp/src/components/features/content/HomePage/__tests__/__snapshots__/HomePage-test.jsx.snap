@@ -147,6 +147,14 @@ exports[`HomePageView should render correctly 1`] = `
     set={
       Array [
         Object {
+          "key": "moduleWidth",
+          "val": "full",
+        },
+        Object {
+          "key": "bgClass",
+          "val": "bgClass",
+        },
+        Object {
           "key": "ctaType",
           "val": "stackedCTAButtons",
         },

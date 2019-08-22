@@ -38,7 +38,7 @@ export default css`
     }
   }
 
-  .style12 {
+  .spaced_text {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};

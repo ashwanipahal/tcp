@@ -13,15 +13,10 @@ import config from '../ModuleN.config';
 const { ctaTypes } = config;
 
 const ModuleN = props => {
-  const {
-    className,
-    ctaItems,
-    headerText,
-    promoBanner,
-    set: [set = {}],
-  } = props;
+  const { className, ctaItems, headerText, promoBanner, set } = props;
 
-  const ctaType = ctaTypes[set.val];
+  const ctaType = ctaTypes[set[2].val];
+
   return (
     <Row className={`${className} moduleN`} fullBleed={{ small: true, medium: true, large: true }}>
       <Col
