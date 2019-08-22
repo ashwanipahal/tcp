@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import ShippingForm from '../organisms/ShippingForm';
+import { getSiteId } from '../../../../../utils/utils.web';
 
 export default class ShippingPage extends React.PureComponent {
   static propTypes = {
@@ -23,6 +24,7 @@ export default class ShippingPage extends React.PureComponent {
         isOrderUpdateChecked={isOrderUpdateChecked}
         shippingLabels={shippingLabels}
         smsSignUpLabels={smsSignUpLabels}
+        initialValues={{ address: { country: getSiteId() && getSiteId().toUpperCase() } }}
       />
     );
   };
