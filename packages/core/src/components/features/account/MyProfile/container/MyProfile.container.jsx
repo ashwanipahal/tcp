@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MyProfile from '../views/MyProfile.view';
@@ -13,18 +13,28 @@ import {
 } from '../../User/container/User.selectors';
 
 import { getSuccess } from '../../ChangePassword/container/ChangePassword.selectors';
+import { changePasswordSuccess } from '../../ChangePassword/container/ChangePassword.actions';
 
 const getMyProfileInfoLabels = labels => {
   return (labels && labels.profile) || {};
 };
 
-export const MyProfileContainer = ({ labels, ...otherProps }) => {
-  const profileInfoLabels = getMyProfileInfoLabels(labels);
-  return <MyProfile labels={profileInfoLabels} {...otherProps} />;
-};
+export class MyProfileContainer extends PureComponent {
+  componentWillUnmount() {
+    const { messageSateChangeAction } = this.props;
+    messageSateChangeAction(null);
+  }
+
+  render() {
+    const { labels, ...otherProps } = this.props;
+    const profileInfoLabels = getMyProfileInfoLabels(labels);
+    return <MyProfile labels={profileInfoLabels} {...otherProps} />;
+  }
+}
 
 MyProfileContainer.propTypes = {
   labels: PropTypes.shape({}),
+  messageSateChangeAction: PropTypes.func.isRequired,
 };
 
 MyProfileContainer.defaultProps = {
@@ -44,4 +54,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(MyProfileContainer);
+export const mapDispatchToProps = dispatch => ({
+  messageSateChangeAction: payload => {
+    dispatch(changePasswordSuccess(payload));
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyProfileContainer);
