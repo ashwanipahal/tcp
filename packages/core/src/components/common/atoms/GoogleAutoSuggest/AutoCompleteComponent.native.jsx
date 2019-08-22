@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-// eslint-disable-next-line import/no-unresolved
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { getAPIConfig } from '@tcp/core/src/utils';
 import {
@@ -25,7 +24,7 @@ export const GooglePlacesInput = props => {
   const { map_api_key } = apiConfigObj;
   return (
     <Container>
-      {focussed || <StyledLabel>{headerTitle}</StyledLabel>}
+      <StyledLabel isFocused={focussed}>{headerTitle}</StyledLabel>
       <GooglePlacesAutocomplete
         placeholder={null}
         suppressDefaultStyles
@@ -44,6 +43,7 @@ export const GooglePlacesInput = props => {
           key: map_api_key,
           language: 'en', // language of the results
           types: '(cities)', // default: 'geocode'
+          components: 'country:us',
         }}
         textInputProps={{
           onFocus,
@@ -73,7 +73,7 @@ GooglePlacesInput.propTypes = {
 };
 
 GooglePlacesInput.defaultProps = {
-  headerTitle: '',
+  headerTitle: 'Address Line',
 };
 
 export default GooglePlacesInput;

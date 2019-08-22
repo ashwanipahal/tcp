@@ -2,7 +2,9 @@
 
 exports[`AutoCompleteComponent Native should render correctly 1`] = `
 <Styled(View)>
-  <Styled(Text)>
+  <Styled(Text)
+    isFocused={false}
+  >
     test
   </Styled(Text)>
   <GooglePlacesAutocomplete
@@ -46,6 +48,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     predefinedPlacesAlwaysVisible={false}
     query={
       Object {
+        "components": "country:us",
         "key": undefined,
         "language": "en",
         "types": "(cities)",
@@ -60,13 +63,17 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
         },
         "listView": Object {
           "backgroundColor": "#ffffff",
+          "height": 300,
+          "marginTop": 40,
           "opacity": 1,
-          "zIndex": 3,
+          "position": "absolute",
         },
         "poweredContainer": Object {
           "display": "flex",
           "flexDirection": "row",
           "justifyContent": "flex-end",
+          "opacity": 1,
+          "position": "absolute",
         },
         "separator": Object {
           "borderBottomColor": "#c3c3c3",

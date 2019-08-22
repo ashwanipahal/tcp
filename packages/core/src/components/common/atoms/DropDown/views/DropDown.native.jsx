@@ -79,6 +79,8 @@ class DropDown extends React.PureComponent<Props> {
       dropDownIsOpen: false,
       selectedLabelState,
       top: 0,
+      flatListTop: 0,
+      flatListBottom: 0,
     };
   }
 
@@ -110,6 +112,16 @@ class DropDown extends React.PureComponent<Props> {
       const topMargin = {
         top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
       };
+
+      if (showInBottom) {
+        this.setState({ flatListBottom: 120 });
+      } else {
+        if (calculateHeight > windowHeight) {
+          this.setState({ flatListBottom: 120 });
+        }
+        this.setState({ flatListTop: 120 });
+      }
+
       this.setState({ top: topMargin.top });
     });
   };
@@ -182,7 +194,7 @@ class DropDown extends React.PureComponent<Props> {
 
   render() {
     const { data, dropDownStyle } = this.props;
-    const { dropDownIsOpen, selectedLabelState, top } = this.state;
+    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
     return (
       <View style={dropDownStyle}>
         <Row
@@ -215,6 +227,8 @@ class DropDown extends React.PureComponent<Props> {
               width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
+              marginTop: flatListTop,
+              marginBottom: flatListBottom,
             }}
           >
             <OverLayView
@@ -231,7 +245,6 @@ class DropDown extends React.PureComponent<Props> {
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.key}
                   ItemSeparatorComponent={() => <Separator />}
-                  style={{ height: getScreenHeight() / 2 }}
                 />
               )}
             </OverLayView>

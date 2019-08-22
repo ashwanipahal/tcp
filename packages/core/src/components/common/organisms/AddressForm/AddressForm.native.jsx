@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
 import { PropTypes } from 'prop-types';
-import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+// import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import TextBox from '../../atoms/TextBox';
 import DropDown from '../../atoms/DropDown/views/DropDown.native';
 import InputCheckbox from '../../atoms/InputCheckbox';
@@ -15,15 +15,19 @@ import {
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
 import {
-  InputField,
-  AddressFormView,
   AddAddressButton,
   CancelButton,
-  EmptyView,
-  CtaView,
+  SaveButtonWrapper,
+  CancelButtonWrapper,
   dropDownStyle,
   itemStyle,
+  InputFieldPhoneNumber,
   InputFieldHalf,
+  StateZipCodeContainer,
+  Separator,
+  SetDefaultShippingWrapper,
+  StyledLabel,
+  AddAddressWrapper,
 } from './AddressForm.native.style';
 
 export class AddressForm extends React.PureComponent<Props, State> {
@@ -50,6 +54,10 @@ export class AddressForm extends React.PureComponent<Props, State> {
     dispatch(change('AddressForm', 'addressLine1', address.street));
   };
 
+  renderStyledLabel = label => {
+    return <StyledLabel>{label}</StyledLabel>;
+  };
+
   render() {
     const {
       handleSubmit,
@@ -61,99 +69,97 @@ export class AddressForm extends React.PureComponent<Props, State> {
       onCancel,
     } = this.props;
     const { country, dropDownItem } = this.state;
-    return (
-      <AddressFormView>
-        <InputField>
-          <Field
-            name="firstName"
-            id="firstName"
-            label={addressFormLabels.firstName}
-            type="text"
-            component={TextBox}
-            maxLength={50}
-            dataLocator="addnewaddress-firstname"
-          />
-        </InputField>
-        <InputField>
-          <Field
-            id="lastName"
-            name="lastName"
-            label={addressFormLabels.lastName}
-            component={TextBox}
-            dataLocator="addnewaddress-lastname"
-          />
-        </InputField>
-        <InputField>
-          <Field
-            id="addressLine1"
-            name="addressLine1"
-            headerTitle={addressFormLabels.addressLine1}
-            component={GooglePlacesInput}
-            dataLocator="addnewaddress-addressl1"
-          />
-        </InputField>
 
-        <InputField>
-          <Field
-            id="addressLine2"
-            name="addressLine2"
-            label={addressFormLabels.addressLine2}
-            component={TextBox}
-            dataLocator="addnewaddress-addressl2"
-          />
-        </InputField>
-        <InputFieldHalf>
-          <Field
-            id="city"
-            name="city"
-            label={addressFormLabels.city}
-            component={TextBox}
-            dataLocator="addnewaddress-city"
-          />
-        </InputFieldHalf>
-        <InputFieldHalf>
-          <Field
-            id="state"
-            name="state"
-            component={DropDown}
-            dataLocator="addnewaddress-city"
-            selectedValue={dropDownItem}
-            data={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
-            onValueChange={itemValue => {
-              this.setState({ dropDownItem: itemValue });
-            }}
-            variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-          />
-        </InputFieldHalf>
-        <InputField>
-          <Field
-            id="zipCode"
-            name="zipCode"
-            label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
-            maxLength={country === 'CA' ? 6 : 5}
-            component={TextBox}
-            dataLocator="addnewaddress-zipcode"
-          />
-        </InputField>
-        <InputField>
-          <Field
-            id="country"
-            name="country"
-            component={DropDown}
-            selectedValue={country}
-            data={countriesOptionsMap}
-            dataLocator="addnewaddress-country"
-            onValueChange={itemValue => {
-              this.setState({ country: itemValue });
-            }}
-            variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-          />
-        </InputField>
-        <InputField>
+    return (
+      <AddAddressWrapper>
+        <Field
+          name="firstName"
+          id="firstName"
+          label={addressFormLabels.firstName}
+          type="text"
+          component={TextBox}
+          maxLength={50}
+          dataLocator="addnewaddress-firstname"
+        />
+        <Field
+          id="lastName"
+          name="lastName"
+          label={addressFormLabels.lastName}
+          component={TextBox}
+          dataLocator="addnewaddress-lastname"
+        />
+        {/* <Field
+          id="addressLine1"
+          name="addressLine1"
+          headerTitle={addressFormLabels.addressLine1}
+          component={GooglePlacesInput}
+          dataLocator="addnewaddress-addressl1"
+        /> */}
+
+        <Field
+          id="addressLine2"
+          name="addressLine2"
+          label={addressFormLabels.addressLine2}
+          component={TextBox}
+          dataLocator="addnewaddress-addressl2"
+        />
+
+        <Field
+          id="city"
+          name="city"
+          label={addressFormLabels.city}
+          component={TextBox}
+          dataLocator="addnewaddress-city"
+        />
+
+        <StateZipCodeContainer>
+          <InputFieldHalf>
+            <Field
+              id="state"
+              name="state"
+              component={DropDown}
+              dataLocator="addnewaddress-city"
+              selectedValue={dropDownItem}
+              data={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
+              onValueChange={itemValue => {
+                this.setState({ dropDownItem: itemValue });
+              }}
+              variation="secondary"
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+            />
+          </InputFieldHalf>
+
+          <Separator />
+
+          <InputFieldHalf>
+            <Field
+              id="zipCode"
+              name="zipCode"
+              label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
+              maxLength={country === 'CA' ? 6 : 5}
+              component={TextBox}
+              dataLocator="addnewaddress-zipcode"
+            />
+          </InputFieldHalf>
+        </StateZipCodeContainer>
+
+        <Field
+          id="country"
+          name="country"
+          component={DropDown}
+          selectedValue={country}
+          data={countriesOptionsMap}
+          dataLocator="addnewaddress-country"
+          onValueChange={itemValue => {
+            this.setState({ country: itemValue });
+          }}
+          variation="secondary"
+          dropDownStyle={{ ...dropDownStyle }}
+          itemStyle={{ ...itemStyle }}
+        />
+
+        <InputFieldPhoneNumber>
           <Field
             id="phoneNumber"
             name="phoneNumber"
@@ -162,8 +168,9 @@ export class AddressForm extends React.PureComponent<Props, State> {
             dataLocator="addnewaddress-phnumber"
             type="tel"
           />
-        </InputField>
-        <InputField>
+        </InputFieldPhoneNumber>
+
+        <SetDefaultShippingWrapper>
           <Field
             id="primary"
             name="primary"
@@ -172,8 +179,9 @@ export class AddressForm extends React.PureComponent<Props, State> {
             disabled={isMakeDefaultDisabled}
             rightText={addressFormLabels.setDefaultMsg}
           />
-        </InputField>
-        <CtaView>
+        </SetDefaultShippingWrapper>
+
+        <SaveButtonWrapper>
           <Button
             fill="BLUE"
             type="submit"
@@ -183,7 +191,9 @@ export class AddressForm extends React.PureComponent<Props, State> {
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
             style={AddAddressButton}
           />
-          <EmptyView />
+        </SaveButtonWrapper>
+
+        <CancelButtonWrapper>
           <Button
             fill="WHITE"
             onPress={onCancel}
@@ -191,8 +201,8 @@ export class AddressForm extends React.PureComponent<Props, State> {
             text={addressFormLabels.cancel}
             style={CancelButton}
           />
-        </CtaView>
-      </AddressFormView>
+        </CancelButtonWrapper>
+      </AddAddressWrapper>
     );
   }
 }
@@ -202,7 +212,21 @@ AddressForm.propTypes = {
   invalid: PropTypes.bool,
   dispatch: PropTypes.func,
   submitAddressFormAction: PropTypes.func,
-  addressFormLabels: PropTypes.shape({}),
+  addressFormLabels: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    addressLine1: PropTypes.string,
+    addressLine2: PropTypes.string,
+    city: PropTypes.string,
+    postalCode: PropTypes.string,
+    zipCode: PropTypes.string,
+    country: PropTypes.string,
+    phoneNumber: PropTypes.string,
+    setDefaultMsg: PropTypes.string,
+    update: PropTypes.string,
+    addAddress: PropTypes.string,
+    cancel: PropTypes.string,
+  }),
   isEdit: PropTypes.bool,
   isMakeDefaultDisabled: PropTypes.bool,
   onCancel: PropTypes.func,
@@ -213,7 +237,21 @@ AddressForm.defaultProps = {
   isMakeDefaultDisabled: false,
   invalid: false,
   handleSubmit: () => {},
-  addressFormLabels: {},
+  addressFormLabels: {
+    firstName: '',
+    lastName: '',
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    postalCode: '',
+    zipCode: '',
+    country: '',
+    phoneNumber: '',
+    setDefaultMsg: '',
+    update: '',
+    addAddress: '',
+    cancel: '',
+  },
   dispatch: () => {},
   onCancel: () => {},
   submitAddressFormAction: () => {},

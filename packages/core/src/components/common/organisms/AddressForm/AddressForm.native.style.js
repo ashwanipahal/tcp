@@ -1,33 +1,60 @@
 import styled from 'styled-components/native';
 
-const AddressFormView = styled.View`
-  display: flex;
+const InputFieldPhoneNumber = styled.View`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+const StateZipCodeContainer = styled.View`
+  flex: 1;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-const InputField = styled.View`
-  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  width: ${props => props.theme.spacing.LAYOUT_SPACING.XXXL};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  z-index: 1;
-`;
-
-const CtaView = styled.View`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 `;
 
 const InputFieldHalf = styled.View`
-  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  width: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  width: 48%;
+`;
+
+const Separator = styled.View`
+  width: 4%;
+`;
+
+const SaveButtonWrapper = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+`;
+
+const CancelButtonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+const SetDefaultShippingWrapper = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+`;
+
+const StyledLabel = styled.Text`
+  position: absolute;
+  left: 0;
+  top: ${props => (!props.isFocused ? props.theme.spacing.ELEM_SPACING.MED : '0')};
+  font-size: ${props =>
+    !props.isFocused
+      ? props.theme.typography.fontSizes.fs14
+      : props.theme.typography.fontSizes.fs10};
+  color: #1a1a1a;
+  font-weight: ${props =>
+    !props.isFocused
+      ? props.theme.typography.fontWeights.regular
+      : props.theme.typography.fontWeights.extrabold};
+  margin-bottom: ${props => (props.isFocused ? props.theme.spacing.ELEM_SPACING.XXS : '0')};
+`;
+
+const AddAddressWrapper = styled.View`
+  flex: 1;
+  flex-direction: column;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
 `;
 
 const AddAddressButton = {
@@ -48,22 +75,27 @@ const EmptyView = styled.View`
 `;
 
 const dropDownStyle = {
-  height: 42,
+  height: 41,
   border: 1,
 };
-
 const itemStyle = {
-  height: 49,
+  height: 41,
+  paddingLeft: 6,
 };
 
 export {
-  AddressFormView,
-  InputField,
   AddAddressButton,
   CancelButton,
   EmptyView,
-  CtaView,
+  SaveButtonWrapper,
+  CancelButtonWrapper,
   dropDownStyle,
   itemStyle,
   InputFieldHalf,
+  InputFieldPhoneNumber,
+  StateZipCodeContainer,
+  Separator,
+  SetDefaultShippingWrapper,
+  StyledLabel,
+  AddAddressWrapper,
 };

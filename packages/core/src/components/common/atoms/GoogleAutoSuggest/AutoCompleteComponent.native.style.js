@@ -21,7 +21,7 @@ const StyledLabel = styled.Text`
 const Container = styled.View`
   position: absolute;
   width: 100%;
-  z-index: 99;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const textInput = {
@@ -41,9 +41,11 @@ const description = {
 };
 
 const listView = {
-  zIndex: 3,
-  backgroundColor: `${colors.WHITE}`,
+  position: 'absolute',
+  marginTop: 40,
   opacity: 1,
+  backgroundColor: `${colors.WHITE}`,
+  height: 300,
 };
 
 const separator = {
@@ -53,7 +55,9 @@ const separator = {
 };
 
 const poweredContainer = {
+  position: 'absolute',
   display: 'flex',
+  opacity: 1,
   justifyContent: 'flex-end',
   flexDirection: 'row',
 };
