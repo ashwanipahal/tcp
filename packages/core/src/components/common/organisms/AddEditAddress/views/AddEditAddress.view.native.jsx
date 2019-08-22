@@ -1,12 +1,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import {
-  StyledHeading,
-  ParentContainer,
-  UnderlineStyle,
-} from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { ParentContainer } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
 import AddressFormComponent from '../../AddressForm/AddressForm';
 
@@ -18,21 +13,10 @@ const AddressBook = props => {
     isMakeDefaultDisabled,
     addressFormLabels,
     onCancel,
-    showHeading,
   } = props;
   return (
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {showHeading && (
-          <StyledHeading>
-            <BodyCopy
-              fontSize="fs16"
-              fontWeight="extrabold"
-              text={addressFormLabels.addressHeading}
-            />
-          </StyledHeading>
-        )}
-        <UnderlineStyle />
         <AddressFormComponent
           onSubmit={verifyAddressAction}
           addressFormLabels={addressFormLabels}
@@ -50,7 +34,6 @@ AddressBook.propTypes = {
   addressFormLabels: PropTypes.shape({}).isRequired,
   isEdit: PropTypes.bool,
   isMakeDefaultDisabled: PropTypes.bool,
-  showHeading: PropTypes.bool,
   submitAddressFormAction: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   onCancel: PropTypes.func,
@@ -59,7 +42,6 @@ AddressBook.propTypes = {
 AddressBook.defaultProps = {
   isEdit: false,
   isMakeDefaultDisabled: false,
-  showHeading: true,
   submitAddressFormAction: () => null,
   verifyAddressAction: () => null,
   onCancel: () => null,

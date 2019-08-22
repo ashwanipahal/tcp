@@ -6,20 +6,12 @@ exports[`AddEditAddress Native should render correctly 1`] = `
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
-  showHeading={true}
   submitAddressFormAction={[Function]}
   verifyAddressAction={[Function]}
 >
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
   >
-    <Styled(Text)>
-      <Styled(BodyCopy)
-        fontSize="fs16"
-        fontWeight="extrabold"
-      />
-    </Styled(Text)>
-    <Styled(View) />
     <ReduxForm
       addressFormLabels={Object {}}
       destroyOnUnmount={true}
