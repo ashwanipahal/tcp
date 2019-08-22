@@ -7,8 +7,11 @@ import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
 
 class HomePageView extends React.Component {
   componentDidMount() {
-    const { getBootstrapData } = this.props;
-    getBootstrapData({ name: 'homepage' });
+    const {
+      getBootstrapData,
+      screenProps: { apiConfig },
+    } = this.props;
+    getBootstrapData({ name: 'homepage' }, apiConfig);
   }
 
   render() {
@@ -60,6 +63,8 @@ HomePageView.propTypes = {
   }),
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
+  appType: PropTypes.string.isRequired,
+  screenProps: PropTypes.shape({}),
 };
 
 HomePageView.defaultProps = {
@@ -67,6 +72,7 @@ HomePageView.defaultProps = {
   slot_2: {},
   slot_3: {},
   slot_4: {},
+  screenProps: {},
 };
 
 export default HomePageView;

@@ -17,7 +17,7 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, showAddTobag, inheritedStyles } = this.props;
+    const { labels, showAddTobag, inheritedStyles, navigation } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
     };
@@ -28,6 +28,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
         inheritedStyles={inheritedStyles}
+        navigation={navigation}
       />
     );
   }

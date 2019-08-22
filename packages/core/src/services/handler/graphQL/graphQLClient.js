@@ -54,6 +54,17 @@ class AwsAppSyncClient extends AWSAppSync {
   }
 
   /**
+   * @function resetClient
+   * This method resets singleton instance - needed for brand switch in mobile app
+   *
+   * @static
+   * @memberof AwsAppSyncClient
+   */
+  static resetClient() {
+    this[singleton] = null;
+  }
+
+  /**
    * This function executes graphQL query
    * @param {*} query GraphQL query
    * @returns {Promise} Resolves with data or rejects with error object

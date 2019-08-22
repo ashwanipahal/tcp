@@ -1,18 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Anchor from '../../../../../../common/atoms/Anchor/views/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProfileInformation.style';
-import CompleteProfile from '../../CompleteProfile/views';
+import ProfileInfoActions from '../../ProfileInfoActions/views';
 import PersonalInformation from '../../PersonalInformation/views';
-import ChangePassword from '../../ChangePassword/views';
+import ChangePasswordInfo from '../../ChangePasswordInfo/views';
 import BirthdaySaving from '../../BirthdaySaving/views';
 
-const ProfileInformation = ({ className, labels }) => {
+const ProfileInformation = ({
+  className,
+  labels,
+  profileCompletion,
+  mailingAddress,
+  userBirthday,
+  userSurvey,
+  percentageIncrement,
+  defaultStore,
+  successMessage,
+}) => {
   return (
     <div>
+      {successMessage && (
+        <Notification
+          className="elem-mt-MED"
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={labels[`lbl_profile_${successMessage}`]}
+        />
+      )}
       <Row fullBleed className={`${className} elem-pt-LRG`}>
         <Col
           colSize={{
@@ -25,7 +44,19 @@ const ProfileInformation = ({ className, labels }) => {
           }}
           className="profileInfoCol elem-mb-XL"
         >
-          <CompleteProfile labels={labels} />
+          <ProfileInfoActions
+            labels={labels}
+            /* isCanada={isCanada}
+            onEditPersonalInfo={this.handleEditPersonalInfo}
+            toggleModalState={this.toggleModalState}
+            onEditMailingAddress={this.handleEditMailingAddress} */
+            profileCompletion={profileCompletion}
+            defaultStore={defaultStore}
+            mailingAddress={mailingAddress}
+            userBirthday={userBirthday}
+            userSurvey={userSurvey}
+            percentageIncrement={percentageIncrement}
+          />
         </Col>
         <Col
           colSize={{
@@ -63,7 +94,7 @@ const ProfileInformation = ({ className, labels }) => {
           }}
           className="profileInfoCol elem-mb-XL"
         >
-          <ChangePassword labels={labels} />
+          <ChangePasswordInfo labels={labels} />
         </Col>
         <Col
           colSize={{
@@ -92,14 +123,7 @@ const ProfileInformation = ({ className, labels }) => {
             small: 1,
           }}
         >
-          <Anchor
-            fontSizeVariation="small"
-            underline
-            anchorVariation="primary"
-            fontSize="fs10"
-            to="/#"
-            asPath
-          >
+          <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
             {labels.lbl_profile_program_details}
           </Anchor>
         </Col>
@@ -110,14 +134,7 @@ const ProfileInformation = ({ className, labels }) => {
             small: 2,
           }}
         >
-          <Anchor
-            fontSizeVariation="small"
-            underline
-            anchorVariation="primary"
-            fontSize="fs10"
-            to="/#"
-            asPath
-          >
+          <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
             {labels.lbl_profile_terms_condition}
           </Anchor>
         </Col>
@@ -129,11 +146,25 @@ const ProfileInformation = ({ className, labels }) => {
 ProfileInformation.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
+  profileCompletion: PropTypes.string,
+  mailingAddress: PropTypes.shape({}),
+  userBirthday: PropTypes.string,
+  userSurvey: PropTypes.shape([]),
+  percentageIncrement: PropTypes.shape({}),
+  defaultStore: PropTypes.string,
+  successMessage: PropTypes.string,
 };
 
 ProfileInformation.defaultProps = {
   className: '',
   labels: {},
+  profileCompletion: '',
+  mailingAddress: {},
+  userBirthday: '',
+  userSurvey: [],
+  percentageIncrement: {},
+  defaultStore: '',
+  successMessage: '',
 };
 
 export default withStyles(ProfileInformation, styles);

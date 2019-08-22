@@ -76,7 +76,7 @@ class AddressBookTile extends React.Component<Props> {
                 medium: 4,
               }}
             >
-              <Address address={address} dataLocatorPrefix="addressbook" fontWeight="bold" />
+              <Address address={address} dataLocatorPrefix="addressbook" fontWeight="extrabold" />
             </Col>
             <Col
               colSize={{
