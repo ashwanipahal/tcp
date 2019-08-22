@@ -298,7 +298,13 @@ export const resetNavigationStack = navigation => {
  */
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
-  const country = envConfig[siteIdKey];
+  const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
+  console.log(
+    'unboxKey',
+    `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
+    }`
+  );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
@@ -308,8 +314,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
-    unboxKey: `${envConfig[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
-      envConfig[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
+    unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN`]}/${
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
     }`,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],

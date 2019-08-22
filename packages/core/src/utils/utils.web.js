@@ -226,13 +226,7 @@ export default {
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
-  const country = siteId.toUpperCase();
-  console.log(
-    'site id ',
-    `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
-      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
-    }`
-  );
+  const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
