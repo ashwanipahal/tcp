@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductsGridItem component should renders correctly 1`] = `
+<li
+  className=""
+  onMouseEnter={[Function]}
+>
+  <div
+    className="item-container-inner"
+  >
+    <BadgeItem
+      className="top-badge-container"
+      haveSpace={true}
+      isShowBadges={true}
+    />
+    <Styled(ProductAltImages)
+      analyticsData={
+        Object {
+          "pId": undefined,
+          "prank": 123,
+          "requestId": "",
+        }
+      }
+      colorsMap={
+        Array [
+          Object {
+            "color": Object {
+              "name": "",
+            },
+            "colorProductId": "",
+            "miscInfo": Object {},
+          },
+        ]
+      }
+      imageUrls={Array []}
+      isMobile={false}
+      isPLPredesign={false}
+      isShowVideoOnPlp={false}
+      loadedProductCount={12}
+      onImageChange={[Function]}
+      videoUrl=""
+    />
+    <Styled(Row)
+      className="badge2-fav-container"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 6,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          dataLocator="global-Extended-sizes-text"
+          fontFamily="secondary"
+          fontSize={12}
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 2,
+            "small": 2,
+          }
+        }
+      >
+        <ProductWishlistIcon
+          className="fav-icon"
+          onClick={[Function]}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <ProductPricesSection
+      currencySymbol="$"
+      hidePrefixListPrice={true}
+      listPrice={NaN}
+      offerPrice={NaN}
+    />
+    <ProductTitle
+      analyticsData={
+        Object {
+          "pId": undefined,
+          "prank": 123,
+          "requestId": "",
+        }
+      }
+      loadedProductCount={12}
+    />
+    <Styled(ProductColorChips)
+      colorsMap={
+        Array [
+          Object {
+            "color": Object {
+              "name": "",
+            },
+            "colorProductId": "",
+            "miscInfo": Object {},
+          },
+        ]
+      }
+      isMobile={false}
+      isPLPredesign={false}
+      maxVisibleItems={5}
+      onChipClick={[Function]}
+      selectedColorId=""
+      showColorEvenOne={true}
+    />
+    <PromotionalMessage />
+    <div>
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="added-to-bag"
+        dataLocator="global-addtocart-Button"
+        fullWidth={true}
+      >
+        ADD TO BAG
+      </Styled(Button)>
+    </div>
+  </div>
+</li>
+`;

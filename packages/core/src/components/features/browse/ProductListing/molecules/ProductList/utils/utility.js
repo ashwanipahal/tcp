@@ -84,9 +84,128 @@ function validateBopisEligibility({ isBopisClearanceProductEnabled, isBopisEnabl
     : bopisEligibility;
 }
 
+/*
+ * Truncates the given element's text to the number of lines specified.
+ * emt: Element to be truncated
+ * lines: Number of lines
+ */
+const lineClamp = (emt, lines) => {
+  if (typeof window !== 'undefined') {
+    window.clamp(emt, lines);
+  }
+};
+
+const initLineClamp = () => {
+  if (typeof window !== 'undefined' && window.document && window.document.createElement) {
+    // the actual meat is here
+    let w = window;
+    let d = document;
+    if (typeof window !== 'undefined' && window.document && window.document.createElement) {
+      let clamp;
+      let measure;
+      let text;
+      let lineWidth;
+      let lineStart;
+      let lineCount;
+      let wordStart;
+      let line;
+      let lineText;
+      let wasNewLine;
+      let ce = d.createElement.bind(d);
+      let ctn = d.createTextNode.bind(d);
+
+      // measurement element is made a child of the clamped element to get it's style
+      measure = ce('span');
+
+      measure.style.position = 'absolute'; // prevent page reflow
+      measure.style.whiteSpace = 'pre'; // cross-browser width results
+      measure.style.visibility = 'hidden'; // prevent drawing
+
+      clamp = function(el, lineClamp) {
+        // make sure the element belongs to the document
+        if (!el || !el.ownerDocument || !el.ownerDocument === d) return;
+        // reset to safe starting values
+        lineStart = 0;
+        wordStart = 0;
+        lineCount = 1;
+        wasNewLine = false;
+        lineWidth = el.clientWidth;
+        // get all the text, remove any line changes
+        text = (el.textContent || el.innerText).replace(/\n/g, ' ');
+        // remove all content
+        while (el.firstChild !== null) {
+          el.removeChild(el.firstChild);
+        }
+        // Revert to original state if lines set to 0
+        if (lineClamp === 0 || text.length < 30) {
+          line = ce('span');
+          // add all text to the line element
+          line.appendChild(ctn(text));
+          // add the line element to the container
+          el.appendChild(line);
+          return;
+        }
+        // add measurement element within so it inherits styles
+        el.appendChild(measure);
+        // http://ejohn.org/blog/search-and-dont-replace/
+        text.replace(/ /g, function(m, pos) {
+          // ignore any further processing if we have total lines
+          if (lineCount === lineClamp) return;
+          // create a text node and place it in the measurement element
+          measure.appendChild(ctn(text.substr(lineStart, pos - lineStart)));
+          // have we exceeded allowed line width?
+          if (lineWidth < measure.clientWidth + 50) {
+            if (wasNewLine) {
+              // we have a long word so it gets a line of it's own
+              lineText = text.substr(lineStart, pos + 1 - lineStart);
+              // next line start position
+              lineStart = pos + 1;
+            } else {
+              // grab the text until this word
+              lineText = text.substr(lineStart, wordStart - lineStart);
+              // next line start position
+              lineStart = wordStart;
+            }
+            // create a line element
+            line = ce('span');
+            // add text to the line element
+            line.appendChild(ctn(lineText));
+            // add the line element to the container
+            el.appendChild(line);
+            // yes, we created a new line
+            wasNewLine = true;
+            lineCount++;
+          } else {
+            // did not create a new line
+            wasNewLine = false;
+          }
+          // remember last word start position
+          wordStart = pos + 1;
+          // clear measurement element
+          measure.removeChild(measure.firstChild);
+        });
+        // remove the measurement element from the container
+        el.removeChild(measure);
+        // create the last line element
+        line = ce('span');
+        // give styles required for text-overflow to kick in
+        line.className += 'text-ellipsis';
+
+        // add all remaining text to the line element
+        line.appendChild(ctn(text.substr(lineStart)));
+        // add the line element to the container
+        el.appendChild(line);
+      };
+      w.clamp = clamp;
+    }
+  }
+};
+
 export {
   getPromotionalMessage,
   getAddToBagFormName,
   validateBossEligibility,
   validateBopisEligibility,
+  lineClamp,
+  initLineClamp,
 };

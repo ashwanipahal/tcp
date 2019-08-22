@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAltImages component should renders correctly 1`] = `
+<figure
+  className="product-image-container"
+  itemScope={true}
+  itemType="http://schema.org/ImageObject"
+>
+  <a
+    className="out-of-stock-overlap"
+    href=""
+    onClick={[Function]}
+    title=""
+    unbxdattr="product"
+    unbxdparam_prank={1}
+    unbxdparam_sku={1}
+  >
+    <img
+      alt=""
+      className="product-image-content img-item"
+      itemProp="contentUrl"
+      src={1}
+      srcSet=""
+    />
+  </a>
+</figure>
+`;

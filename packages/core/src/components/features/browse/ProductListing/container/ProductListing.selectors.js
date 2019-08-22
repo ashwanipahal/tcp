@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import { createSelector } from 'reselect';
 import { generateGroups } from './ProductListing.util';
 import {
