@@ -96,35 +96,6 @@ class ProductList extends React.Component {
                 isPLPredesign={false}
                 isKeepAliveKillSwitch={false}
               />
-
-              {/* <p>
-                  Name12:
-                  {item.productInfo.name}
-                </p>
-                <p>
-                  listPrice:
-                  {item.productInfo.listPrice}
-                </p>
-                <p>
-                  offerPrice:
-                  {item.productInfo.offerPrice}
-                </p>
-                <p>
-                  ratings:
-                  {item.productInfo.ratings}
-                </p>
-                <p>
-                  reviewsCount:
-                  {item.productInfo.reviewsCount}
-                </p>
-                <Button
-                  onClick={() => {}}
-                  buttonVariation="fixed-width"
-                  fill="BLUE"
-                  className="add-to-bag-btn"
-                >
-                  Add to bag
-                </Button> */}
             </div>
           );
         })}
@@ -186,3 +157,4 @@ ProductList.defaultProps = {
 };
 
 export default withStyles(ProductList, ProductListStyle);
+export { ProductList as ProductListVanilla };

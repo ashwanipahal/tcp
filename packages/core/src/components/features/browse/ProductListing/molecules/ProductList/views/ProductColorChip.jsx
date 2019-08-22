@@ -51,3 +51,5 @@ export default class ProductColorChip extends React.Component {
     );
   }
 }
+
+export { ProductColorChip as ProductColorChipVanilla };

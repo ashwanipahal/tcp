@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner component CustomSpinnerIcon called correctly 1`] = `
+<i
+  className="custom-loading-icon"
+>
+  Spinner
+</i>
+`;
+
+exports[`Spinner component FullPageLoaderSpinner render CustomSpinnerIcon 1`] = `
+<CustomSpinnerIcon
+  className="venmo-button-spinner"
+/>
+`;
+
+exports[`Spinner component FullPageLoaderSpinner render Spinner 1`] = `
+<Spinner
+  className="general-loading--fullpage"
+/>
+`;
+
+exports[`Spinner component FullPageLoaderSpinner render null 1`] = `null`;
+
+exports[`Spinner component Spinner called correctly 1`] = `
+<div
+  className="general-loading"
+>
+  <div
+    className="general-loading-content"
+  >
+    <CustomSpinnerIcon />
+    Loading...
+  </div>
+</div>
+`;
+
+exports[`Spinner component SpinnerIcon called correctly 1`] = `
+<i
+  className="loading-icon"
+>
+  Loading...
+</i>
+`;

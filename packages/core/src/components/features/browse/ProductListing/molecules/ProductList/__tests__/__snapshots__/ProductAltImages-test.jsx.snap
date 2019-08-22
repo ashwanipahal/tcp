@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductAltImages component should renders correctly 1`] = `
+exports[`ProductAltImages component should renders renderVideoContent correctly 1`] = `
 <figure
   className="product-image-container"
   itemScope={true}
   itemType="http://schema.org/ImageObject"
 >
   <a
-    className="out-of-stock-overlap"
-    href=""
+    className={false}
+    href="url"
     onClick={[Function]}
     title=""
     unbxdattr="product"

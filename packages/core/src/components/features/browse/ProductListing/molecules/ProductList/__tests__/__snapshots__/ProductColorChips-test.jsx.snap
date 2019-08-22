@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductColorChipsVanilla component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <ol
+    className="content-colors "
+  >
+    <ProductColorChip
+      colorEntry={
+        Object {
+          "color": Object {
+            "name": "",
+          },
+          "colorProductId": 123,
+        }
+      }
+      isActive={false}
+      key="123"
+      onChipClick={[MockFunction]}
+    />
+  </ol>
+  <button
+    className="button-next"
+    onClick={[Function]}
+    title="Next"
+  />
+</div>
+`;
+
+exports[`ProductColorChipsVanilla component should renders null 1`] = `""`;

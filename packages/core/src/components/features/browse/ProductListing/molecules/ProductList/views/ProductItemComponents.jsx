@@ -7,16 +7,17 @@
 
 import React from 'react';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
-import { isClient, isTouchClient, getIconPath, getLocator } from '../../../../../../../utils';
-import { labels } from '../labels/labels';
+// import { isTouchClient } from '../../../../../../../utils';
+import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
+// import { labels } from '../labels/labels';
 import { Image, BodyCopy, Anchor } from '../../../../../../common/atoms';
-import cssClassName from '../utils/cssClassName';
+// import cssClassName from '../utils/cssClassName';
 
-import ButtonWithSpinner from './ButtonWithSpinner';
+// import ButtonWithSpinner from './ButtonWithSpinner';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
 
-function productLink(loadedProductCount, pdpUrl, event) {
+export function productLink(loadedProductCount, pdpUrl, event) {
   event.preventDefault();
   if (isClient()) {
     window.sessionStorage.setItem('LAST_PAGE_PATH', window.location.pathname);
@@ -133,37 +134,37 @@ export function ProductPricesSection(props) {
   );
 }
 
-export function ProductPickupIcon(props) {
-  // eslint-disable-next-line
-  const { isMobile, className, onClick, isShowBopisButton, keepAlive } = props;
-  const myClassName = isMobile
-    ? cssClassName('pickup-button-container ', className)
-    : cssClassName(
-        'pickup-icon-container ',
-        { 'hover-button-enabled ': !isTouchClient() },
-        className,
-        { ' keep-alive-pickup-icon': keepAlive }
-      );
+// export function ProductPickupIcon(props) {
+//   // eslint-disable-next-line
+//   const { isMobile, className, onClick, isShowBopisButton, keepAlive } = props;
+//   const myClassName = isMobile
+//     ? cssClassName('pickup-button-container ', className)
+//     : cssClassName(
+//         'pickup-icon-container ',
+//         { 'hover-button-enabled ': !isTouchClient() },
+//         className,
+//         { ' keep-alive-pickup-icon': keepAlive }
+//       );
 
-  const spinnerClassName = cssClassName(
-    isMobile ? 'pickup-button-icon-spinner ' : 'pickup-icon-spinner inline-spinner-item '
-  );
+//   const spinnerClassName = cssClassName(
+//     isMobile ? 'pickup-button-icon-spinner ' : 'pickup-icon-spinner inline-spinner-item '
+//   );
 
-  if (!isShowBopisButton) {
-    return null;
-  }
-  return (
-    <ButtonWithSpinner
-      spinnerClassName={spinnerClassName}
-      type="button"
-      data-analytics={labels.ANALYTICS.PICKUP_BUTTON_EVENT}
-      className={myClassName}
-      onClick={onClick}
-    >
-      <span className={cssClassName({ 'message-icon ': !isMobile })}>Pick up in store</span>
-    </ButtonWithSpinner>
-  );
-}
+//   if (!isShowBopisButton) {
+//     return null;
+//   }
+//   return (
+//     <ButtonWithSpinner
+//       spinnerClassName={spinnerClassName}
+//       type="button"
+//       data-analytics={labels.ANALYTICS.PICKUP_BUTTON_EVENT}
+//       className={myClassName}
+//       onClick={onClick}
+//     >
+//       <span className={cssClassName({ 'message-icon ': !isMobile })}>Pick up in store</span>
+//     </ButtonWithSpinner>
+//   );
+// }
 
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {

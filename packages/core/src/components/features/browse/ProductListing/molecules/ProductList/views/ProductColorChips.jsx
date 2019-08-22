@@ -148,3 +148,4 @@ class ProductColorChips extends React.Component {
 }
 
 export default withStyles(ProductColorChips, styles);
+export { ProductColorChips as ProductColorChipsVanilla };
