@@ -36,6 +36,11 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		36C9821022E6F96D0002786B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		36C982A122E727F00002786B /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
+		557DAD68230E61010083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
+		557DAD69230E61350083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
+		557DAD6A230E61400083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
+		557DAD6B230E61490083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
+		557DAD6C230E61520083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
 		6D66792DBE54465ABA2EA17A /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */; };
 		8007DC4A904D4561AB40A306 /* libReactNativeConfig-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F3F78905354C238B4F93B7 /* libReactNativeConfig-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -194,7 +199,6 @@
 		84677AD6230BCE0A001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677AD7230BCE0A001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
 		84677AE0230BCE94001F5301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
-		84677AE2230BCE94001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F47F8C230AA36000291446 /* libReactNativeConfig.a */; };
 		84677AE3230BCE94001F5301 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
 		84677AE4230BCE94001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D123008EA900803213 /* libRNKeychain.a */; };
 		84677AE5230BCE94001F5301 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D623008EA900803213 /* libTouchID.a */; };
@@ -229,7 +233,6 @@
 		84677B03230BCE94001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677B04230BCE94001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
 		84677B0D230BCECC001F5301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
-		84677B0F230BCECC001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F47F8C230AA36000291446 /* libReactNativeConfig.a */; };
 		84677B10230BCECC001F5301 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
 		84677B11230BCECC001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D123008EA900803213 /* libRNKeychain.a */; };
 		84677B12230BCECC001F5301 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D623008EA900803213 /* libTouchID.a */; };
@@ -264,7 +267,6 @@
 		84677B30230BCECC001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677B31230BCECC001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
 		84677B3A230BCF01001F5301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
-		84677B3C230BCF01001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F47F8C230AA36000291446 /* libReactNativeConfig.a */; };
 		84677B3D230BCF01001F5301 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
 		84677B3E230BCF01001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D123008EA900803213 /* libRNKeychain.a */; };
 		84677B3F230BCF01001F5301 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D623008EA900803213 /* libTouchID.a */; };
@@ -299,7 +301,6 @@
 		84677B5D230BCF01001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677B5E230BCF01001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
 		84677B67230BCF37001F5301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
-		84677B69230BCF37001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F47F8C230AA36000291446 /* libReactNativeConfig.a */; };
 		84677B6A230BCF37001F5301 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
 		84677B6B230BCF37001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D123008EA900803213 /* libRNKeychain.a */; };
 		84677B6C230BCF37001F5301 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D623008EA900803213 /* libTouchID.a */; };
@@ -357,7 +358,6 @@
 		8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
 		8487904822F3E69A00A0494D /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8487902222F3D6B800A0494D /* libRNCAsyncStorage.a */; };
-		84F47F8F230AA37500291446 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F47F8C230AA36000291446 /* libReactNativeConfig.a */; };
 		A39FE9F1DE394B51A832B506 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C86F0D507E46B3AA37AB71 /* libRNGestureHandler-tvOS.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		C98BEA06FFE64D828BF894FF /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C474A67D034863BF52706E /* libReactNativeConfig.a */; };
@@ -601,6 +601,20 @@
 			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
 			remoteInfo = "cxxreact-tvOS";
 		};
+		557DAD5A230E60D60083E52C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C437F2BE7DC4B36B691308D /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
+			remoteInfo = ReactNativeConfig;
+		};
+		557DAD5C230E60D60083E52C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C437F2BE7DC4B36B691308D /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
+			remoteInfo = "ReactNativeConfig-tvOS";
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -649,20 +663,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNCAsyncStorage;
-		};
-		84F47F8B230AA36000291446 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F011A74D9BA34BAC9ABD6B8A /* ReactNativeConfig.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
-			remoteInfo = ReactNativeConfig;
-		};
-		84F47F8D230AA36000291446 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F011A74D9BA34BAC9ABD6B8A /* ReactNativeConfig.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
-			remoteInfo = "ReactNativeConfig-tvOS";
 		};
 		8BBF592D22C0F18F003678A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -761,6 +761,7 @@
 		32EA895B596D4A60B1A2ED68 /* RNCNetInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCNetInfo.xcodeproj; path = "../node_modules/@react-native-community/netinfo/ios/RNCNetInfo.xcodeproj"; sourceTree = "<group>"; };
 		36C9820F22E6F96D0002786B /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		36C9829822E727D50002786B /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		5C437F2BE7DC4B36B691308D /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6380F65D473B4E6291EDCB04 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		75F3F78905354C238B4F93B7 /* libReactNativeConfig-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libReactNativeConfig-tvOS.a"; sourceTree = "<group>"; };
@@ -803,7 +804,6 @@
 		DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCAsyncStorage.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F011A74D9BA34BAC9ABD6B8A /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		F376CC6FC2054681A5A6E13E /* libRNCNetInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCNetInfo.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -982,7 +982,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677AE2230BCE94001F5301 /* libReactNativeConfig.a in Frameworks */,
+				557DAD69230E61350083E52C /* libReactNativeConfig.a in Frameworks */,
 				84677AE3230BCE94001F5301 /* libRNVectorIcons.a in Frameworks */,
 				84677AE4230BCE94001F5301 /* libRNKeychain.a in Frameworks */,
 				84677AE5230BCE94001F5301 /* libTouchID.a in Frameworks */,
@@ -1009,7 +1009,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677B0F230BCECC001F5301 /* libReactNativeConfig.a in Frameworks */,
+				557DAD6A230E61400083E52C /* libReactNativeConfig.a in Frameworks */,
 				84677B10230BCECC001F5301 /* libRNVectorIcons.a in Frameworks */,
 				84677B11230BCECC001F5301 /* libRNKeychain.a in Frameworks */,
 				84677B12230BCECC001F5301 /* libTouchID.a in Frameworks */,
@@ -1036,7 +1036,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677B3C230BCF01001F5301 /* libReactNativeConfig.a in Frameworks */,
+				557DAD6B230E61490083E52C /* libReactNativeConfig.a in Frameworks */,
 				84677B3D230BCF01001F5301 /* libRNVectorIcons.a in Frameworks */,
 				84677B3E230BCF01001F5301 /* libRNKeychain.a in Frameworks */,
 				84677B3F230BCF01001F5301 /* libTouchID.a in Frameworks */,
@@ -1063,7 +1063,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677B69230BCF37001F5301 /* libReactNativeConfig.a in Frameworks */,
+				557DAD6C230E61520083E52C /* libReactNativeConfig.a in Frameworks */,
 				84677B6A230BCF37001F5301 /* libRNVectorIcons.a in Frameworks */,
 				84677B6B230BCF37001F5301 /* libRNKeychain.a in Frameworks */,
 				84677B6C230BCF37001F5301 /* libTouchID.a in Frameworks */,
@@ -1090,7 +1090,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F47F8F230AA37500291446 /* libReactNativeConfig.a in Frameworks */,
+				557DAD68230E61010083E52C /* libReactNativeConfig.a in Frameworks */,
 				E684BDC0230145C500A09F02 /* libRNVectorIcons.a in Frameworks */,
 				E684BDBF230145BE00A09F02 /* libRNKeychain.a in Frameworks */,
 				E684BD90230145B600A09F02 /* libTouchID.a in Frameworks */,
@@ -1254,6 +1254,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		557DAD31230E60D60083E52C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				557DAD5B230E60D60083E52C /* libReactNativeConfig.a */,
+				557DAD5D230E60D60083E52C /* libReactNativeConfig-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1293,7 +1302,7 @@
 				32EA895B596D4A60B1A2ED68 /* RNCNetInfo.xcodeproj */,
 				7F365846A6144367A24D66B5 /* RNKeychain.xcodeproj */,
 				BBB52792E31445029C5CAACA /* TouchID.xcodeproj */,
-				F011A74D9BA34BAC9ABD6B8A /* ReactNativeConfig.xcodeproj */,
+				5C437F2BE7DC4B36B691308D /* ReactNativeConfig.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1356,15 +1365,6 @@
 			isa = PBXGroup;
 			children = (
 				8487902222F3D6B800A0494D /* libRNCAsyncStorage.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		84F47F87230AA36000291446 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				84F47F8C230AA36000291446 /* libReactNativeConfig.a */,
-				84F47F8E230AA36000291446 /* libReactNativeConfig-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1803,8 +1803,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 84F47F87230AA36000291446 /* Products */;
-					ProjectRef = F011A74D9BA34BAC9ABD6B8A /* ReactNativeConfig.xcodeproj */;
+					ProductGroup = 557DAD31230E60D60083E52C /* Products */;
+					ProjectRef = 5C437F2BE7DC4B36B691308D /* ReactNativeConfig.xcodeproj */;
 				},
 				{
 					ProductGroup = 8487901E22F3D6B800A0494D /* Products */;
@@ -2061,6 +2061,20 @@
 			remoteRef = 3DAD3EAA1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		557DAD5B230E60D60083E52C /* libReactNativeConfig.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeConfig.a;
+			remoteRef = 557DAD5A230E60D60083E52C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		557DAD5D230E60D60083E52C /* libReactNativeConfig-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactNativeConfig-tvOS.a";
+			remoteRef = 557DAD5C230E60D60083E52C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2108,20 +2122,6 @@
 			fileType = archive.ar;
 			path = libRNCAsyncStorage.a;
 			remoteRef = 8487902122F3D6B800A0494D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84F47F8C230AA36000291446 /* libReactNativeConfig.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReactNativeConfig.a;
-			remoteRef = 84F47F8B230AA36000291446 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84F47F8E230AA36000291446 /* libReactNativeConfig-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libReactNativeConfig-tvOS.a";
-			remoteRef = 84F47F8D230AA36000291446 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8BBF592E22C0F18F003678A7 /* libjsi.a */ = {
@@ -2745,6 +2745,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileappTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2784,6 +2785,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileappTests/Info.plist;
@@ -2830,6 +2832,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2865,6 +2868,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
@@ -2902,6 +2906,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOS/Info.plist";
@@ -2950,6 +2955,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2996,6 +3002,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -3041,6 +3048,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOSTests/Info.plist";
@@ -3187,6 +3195,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3222,6 +3231,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
@@ -3259,6 +3269,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3294,6 +3305,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
@@ -3331,6 +3343,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3366,6 +3379,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
@@ -3403,6 +3417,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "mobileapp_prod-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3439,6 +3454,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "mobileapp_prod-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3473,6 +3489,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
@@ -3517,6 +3534,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
@@ -3563,6 +3581,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3606,6 +3625,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
@@ -3652,6 +3672,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3695,6 +3716,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
@@ -3741,6 +3763,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree_prod-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3784,6 +3807,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree_prod-Info.plist";
@@ -3830,6 +3854,7 @@
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3873,6 +3898,7 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/netinfo/ios",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
 					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";

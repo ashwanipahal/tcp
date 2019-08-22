@@ -21,8 +21,13 @@ const RoutesMap = [
     resolver: '/DeltaSyncSamplePage',
   },
   {
-    path: '/c',
+    path: '/cc',
     resolver: '/ProductListingPage',
+  },
+  {
+    path: '/c/:l2?/:l3?',
+    resolver: '/ProductListing',
+    params: ['l2', 'l3'],
   },
   {
     path: '/test',

@@ -60,6 +60,8 @@ const Abstractor = {
       return {
         categoryContent,
         subCategories,
+        url: Abstractor.constructUrl(listItem.categoryContent),
+        categoryId: listItem.categoryContent.catgroupId,
       };
     });
   },
