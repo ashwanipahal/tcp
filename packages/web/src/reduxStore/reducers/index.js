@@ -25,6 +25,7 @@ import AccountHeaderReducer from '@tcp/core/src/components/features/account/comm
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
+import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -58,6 +59,7 @@ import {
   ACCOUNTHEADER_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
+  CHANGE_PASSWORD_REDUCER_KEY,
   USER_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -112,6 +114,7 @@ export default combineReducers({
   [ACCOUNTHEADER_REDUCER_KEY]: AccountHeaderReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
+  [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [USER_REDUCER_KEY]: UserReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
 });

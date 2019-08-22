@@ -6,7 +6,7 @@ import ProfileInformation from '../organism/ProfileInformation';
 const MyProfile = ({ labels, ...otherProps }) => {
   return (
     <div>
-      <FormPageHeadingComponent className="margin-none" />
+      <FormPageHeadingComponent heading={labels.lbl_profile_heading} className="margin-none" />
       <ProfileInformation labels={labels} {...otherProps} />
     </div>
   );
