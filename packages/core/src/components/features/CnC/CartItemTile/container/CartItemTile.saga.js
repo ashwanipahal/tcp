@@ -9,19 +9,14 @@ import { getImgPath } from '@tcp/core/src/components/features/browse/ProductList
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 import fetchData from '../../../../../service/API';
-import {
-  removeCartItemComplete,
-  updateCartItemComplete,
-  getProductSKUInfoSuccess,
-} from './CartItemTile.actions';
+import { updateCartItemComplete, getProductSKUInfoSuccess } from './CartItemTile.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
 
 export function* removeCartItem({ payload }) {
   try {
-    const res = yield call(removeItem, payload);
-    yield put(removeCartItemComplete(res));
+    yield call(removeItem, payload);
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     console.log(err);

@@ -36,6 +36,7 @@ export class BagPageContainer extends React.Component<Props> {
       handleCartCheckout,
       showConfirmationModal,
       closeCheckoutConfirmationModal,
+      removeUnqualifiedItemsAndCheckout,
     } = this.props;
     const showAddTobag = false;
     return (
@@ -47,6 +48,7 @@ export class BagPageContainer extends React.Component<Props> {
         handleCartCheckout={handleCartCheckout}
         showConfirmationModal={showConfirmationModal}
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
+        removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         navigation={navigation}
       />
     );
@@ -66,6 +68,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     closeCheckoutConfirmationModal: () => {
       dispatch(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
+    },
+    removeUnqualifiedItemsAndCheckout: () => {
+      dispatch(BAG_PAGE_ACTIONS.removeUnqualifiedItemsAndCheckout());
     },
   };
 };

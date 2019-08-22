@@ -9,12 +9,17 @@ const initialState = fromJS({
   showConfirmationModal: false,
 });
 
-function updateItem(state, itemId, property) {
-  state.updateIn(['orderDetails', 'orderItems'], items =>
-    items.update(items.findIndex(item => item.get('itemId') === itemId), item =>
-      item.update(property, miscInfo => miscInfo.set('availability', AVAILABILITY.SOLDOUT))
-    )
-  );
+function updateItem(state, itemId) {
+  const indexValue = state
+    .getIn(['orderDetails', 'orderItems'])
+    .findIndex(item => item.getIn(['itemInfo', 'itemId']) === itemId);
+  if (indexValue >= 0) {
+    return state.setIn(
+      ['orderDetails', 'orderItems', indexValue, 'miscInfo', 'availability'],
+      AVAILABILITY.SOLDOUT
+    );
+  }
+  return state;
 }
 
 const BagPageReducer = (state = initialState, action) => {
@@ -26,7 +31,7 @@ const BagPageReducer = (state = initialState, action) => {
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
       return state.set('moduleXContent', List(action.payload));
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
-      return updateItem(state, action.payload, 'miscInfo');
+      return updateItem(state, action.payload);
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
       return state.set('showConfirmationModal', true);
     case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:

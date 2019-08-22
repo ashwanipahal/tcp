@@ -50,6 +50,7 @@ class BagPageView extends React.PureComponent {
       orderItemsCount,
       showConfirmationModal,
       closeCheckoutConfirmationModal,
+      removeUnqualifiedItemsAndCheckout,
     } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     return (
@@ -67,8 +68,10 @@ class BagPageView extends React.PureComponent {
           bagActions={this.renderActions}
         />
         <BagConfirmationModal
+          labels={labels}
           isOpen={showConfirmationModal}
           closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
+          removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         />
       </div>
     );
@@ -84,6 +87,7 @@ BagPageView.propTypes = {
   showAddTobag: PropTypes.bool.isRequired,
   showConfirmationModal: PropTypes.bool.isRequired,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
+  removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
 };
 
 export default withStyles(BagPageView, styles);

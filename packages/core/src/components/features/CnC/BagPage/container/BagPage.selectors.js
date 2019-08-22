@@ -76,7 +76,8 @@ const getFilteredItems = (state, filter) =>
 const getUnqualifiedItems = state => getFilteredItems(state, type => type !== AVAILABILITY.OK);
 
 const getUnqualifiedCount = state => getUnqualifiedItems(state).size;
-const getUnqualifiedItemIds = state => getUnqualifiedItems(state).map(item => item.get('itemId'));
+const getUnqualifiedItemsIds = state =>
+  getUnqualifiedItems(state).map(item => item.getIn(['itemInfo', 'itemId']));
 
 const getUnavailableCount = state =>
   getFilteredItems(state, type => type === AVAILABILITY.UNAVAILABLE);
@@ -90,7 +91,7 @@ export default {
   getProductsTypes,
   getNeedHelpContentId,
   getUnqualifiedCount,
-  getUnqualifiedItemIds,
+  getUnqualifiedItemsIds,
   getUnavailableCount,
   getOOSCount,
   getConfirmationModalFlag,

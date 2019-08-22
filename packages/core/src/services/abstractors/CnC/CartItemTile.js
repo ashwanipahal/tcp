@@ -126,12 +126,12 @@ export const removeItem = orderItemId => {
       quantity: '0',
     });
   } else {
-    orderItems = Object.keys(orderItemId).map(index => {
-      return {
-        orderItemId: orderItemId[index],
+    for (let value of orderItemId.values()) {
+      orderItems.push({
+        orderItemId: value,
         quantity: '0',
-      };
-    });
+      });
+    }
   }
   const payload = {
     body: {
@@ -732,7 +732,6 @@ export const deriveItemAvailability = (orderDetails, item, store) => {
   const isUsOrder = orderDetails.currencyCode === 'USD';
   const isCaOrder = orderDetails.currencyCode !== 'USD';
   const isStoreBOSSEligible = true;
-  console.log(item);
   if (
     (isUsOrder && item.productInfo.articleOOSUS) ||
     (isCaOrder && item.productInfo.articleOOSCA)
@@ -775,7 +774,6 @@ export const getUnqualifiedItems = () => {
       const {
         body: { orderItemList = [] },
       } = res;
-
       return orderItemList.map(item => item.orderItemId.toString());
     })
     .catch(err => {

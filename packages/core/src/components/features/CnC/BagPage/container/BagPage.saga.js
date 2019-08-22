@@ -5,6 +5,7 @@ import {
   getOrderDetailsData,
   getCartData,
   getUnqualifiedItems,
+  removeItem,
 } from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -52,6 +53,14 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+export function* checkoutCart(recalc) {
+  const isLoggedIn = yield select(getUserLoggedInState);
+  if (!isLoggedIn) {
+    // return yield put(openAuthLoginForCheckoutModal());
+  }
+  return yield call(routerPush, '/checkout', '/checkout', { recalc });
+}
+
 function* confirmStartCheckout() {
   // this.store.dispatch(setVenmoData({ error: null })); // Clear Venmo error message
   // if (cartStoreView.getIsEditingSomeItem(state)) {
@@ -60,42 +69,35 @@ function* confirmStartCheckout() {
   //     generalOperator.openConfirmationModal(CONFIRM_MODAL_IDS.EDITING, null, null)
   //   );
   // }
-  let isOOSModalShown = false;
-  const [OOSCount, unavailableCount] = yield all(
-    [BAG_SELECTORS.getOOSCount, BAG_SELECTORS.getUnqualifiedCount].map(val => select(val))
-  );
 
+  const [OOSCount, unavailableCount] = yield all(
+    [BAG_SELECTORS.getOOSCount, BAG_SELECTORS.getUnavailableCount].map(val => select(val))
+  );
   if (OOSCount > 0 || unavailableCount > 0) {
-    // yield put(openCheckoutConfirmationModal());
-    isOOSModalShown = true;
+    yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal());
+    return yield true;
   }
-  yield isOOSModalShown;
+  return false;
 }
 
 export function* startCartCheckout() {
-  try {
-    // this.store.dispatch(setVenmoPaymentInProgress(false));
-    let res = yield call(getUnqualifiedItems);
-    res = res || [];
-    all(res.map(item => BAG_PAGE_ACTIONS.setItemOOS(item)));
-
-    const recalc = yield call(confirmStartCheckout);
-    const OOSCount = yield select(BAG_SELECTORS.getUnqualifiedCount);
-    if (OOSCount > 0) {
-      // const unqualifiedItemsIds =
-      yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
-      // yield call(removeItem, unqualifiedItemsIds);
-      yield call(getCartDataSaga);
-    }
-    const isLoggedIn = yield select(getUserLoggedInState);
-    if (!isLoggedIn) {
-      // put(openAuthLoginForCheckoutModal());
-    } else {
-      yield call(routerPush, '/checkout', '/checkout', { recalc });
-    }
-  } catch (e) {
-    // error
+  // this.store.dispatch(setVenmoPaymentInProgress(false));
+  let res = yield call(getUnqualifiedItems);
+  res = res || [];
+  yield all(res.map(item => put(BAG_PAGE_ACTIONS.setItemOOS(item))));
+  const oOSModalOpen = yield call(confirmStartCheckout);
+  if (!oOSModalOpen) {
+    yield call(checkoutCart);
   }
+}
+
+export function* removeUnqualifiedItemsAndCheckout() {
+  const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
+  if (unqualifiedItemsIds.size > 0) {
+    yield call(removeItem, unqualifiedItemsIds);
+    yield call(getCartDataSaga);
+  }
+  yield call(checkoutCart, true);
 }
 
 export function* BagPageSaga() {
@@ -104,6 +106,10 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
   yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
   yield takeLatest(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
+  yield takeLatest(
+    BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
+    removeUnqualifiedItemsAndCheckout
+  );
 }
 
 export default BagPageSaga;

@@ -6,28 +6,8 @@ import {
   updateCartItemSaga,
   getProductSKUInfoSaga,
 } from '../container/CartItemTile.saga';
-import { removeCartItemComplete, updateCartItemComplete } from '../container/CartItemTile.actions';
+import { updateCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
-
-describe('Cart Item saga remove', () => {
-  it('should dispatch removeCartItem action for success resposnse', () => {
-    const payload = [
-      {
-        orderItemId: '3001545548',
-        quantity: '0',
-      },
-    ];
-    const removeCartItemGen = removeCartItem(payload);
-    removeCartItemGen.next();
-
-    const res = {
-      orderId: '3000284778',
-      x_orderTotal: '49.35000',
-    };
-    const putDescriptor = removeCartItemGen.next(res).value;
-    expect(putDescriptor).toEqual(put(removeCartItemComplete(res)));
-  });
-});
 
 describe('Cart Item saga update', () => {
   it('should dispatch updateCartItem action for success resposnse', () => {

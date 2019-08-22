@@ -11,12 +11,14 @@ import styles from '../styles/BagConfirmationModal.style';
 const BagConfirmationModal = ({
   className,
   labels: { confirmationText, backToBag, continueCheckout },
+  closeCheckoutConfirmationModal,
+  removeUnqualifiedItemsAndCheckout,
   isOpen,
 }) => {
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => {}}
+      onRequestClose={closeCheckoutConfirmationModal}
       overlayClassName="TCPModal__Overlay"
       className={`${className} TCPModal__Content`}
       fixedWidth
@@ -37,6 +39,7 @@ const BagConfirmationModal = ({
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="confirmation-button back-to-bag"
+            onClick={closeCheckoutConfirmationModal}
           >
             <BodyCopy
               component="span"
@@ -52,6 +55,7 @@ const BagConfirmationModal = ({
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="confirmation-button confirm-checkout"
+            onClick={removeUnqualifiedItemsAndCheckout}
           >
             <BodyCopy
               component="span"
@@ -73,6 +77,8 @@ BagConfirmationModal.propTypes = {
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}),
   isOpen: PropTypes.bool,
+  closeCheckoutConfirmationModal: PropTypes.func.isRequired,
+  removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
 };
 
 BagConfirmationModal.defaultProps = {

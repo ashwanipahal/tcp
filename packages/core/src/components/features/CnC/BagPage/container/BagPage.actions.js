@@ -72,6 +72,12 @@ const setModuleX = payload => {
   };
 };
 
+const removeUnqualifiedItemsAndCheckout = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -82,6 +88,7 @@ export default {
   setModuleX,
   startCheckout,
   closeCheckoutConfirmationModal,
+  removeUnqualifiedItemsAndCheckout,
   openCheckoutConfirmationModal,
   setItemOOS,
 };
