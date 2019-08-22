@@ -1,15 +1,21 @@
 import React from 'react';
-import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import Anchor from '../../../../../atoms/Anchor';
 import BodyCopy from '../../../../../atoms/BodyCopy/views/BodyCopy';
+import {
+  BonusDayReadSection,
+  BonusDayHeader,
+  BonusDayWrapper,
+  DotActive,
+  DotInactive,
+  LinkWrapper,
+} from '../styles/BonusPointsReadSection.style.native';
 
 export const BonusPointsReadSection = ({
   toggleBonusPointsModal,
   labels,
   availableBonusPointDays,
   usedBonusPointDays,
-  className,
 }) => {
   if (availableBonusPointDays === null) {
     return null;
@@ -19,22 +25,41 @@ export const BonusPointsReadSection = ({
   const message = labels.lbl_bonus_points_daysLeft.replace(/\{0\}/, availableBonusPointDays);
 
   return (
-    <View>
-      <BodyCopy
-        fontSize="fs14"
-        fontWeight="semibold"
-        data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
-        text={labels.lbl_bonus_points_bonusPointsDay}
-      />
-      <Anchor
-        anchorVariation="primary"
-        fontSizeVariation="large"
-        underline
-        onClick={toggleBonusPointsModal}
-        data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
-        text={labels.lbl_bonus_points_detailLink}
-      />
-    </View>
+    <BonusDayReadSection>
+      <BonusDayHeader>
+        <BodyCopy
+          fontSize="fs14"
+          fontWeight="semibold"
+          data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
+          text={labels.lbl_bonus_points_bonusPointsDay}
+        />
+        <LinkWrapper>
+          <Anchor
+            anchorVariation="primary"
+            fontSizeVariation="large"
+            underline
+            onClick={toggleBonusPointsModal}
+            data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
+            text={labels.lbl_bonus_points_detailLink}
+          />
+        </LinkWrapper>
+      </BonusDayHeader>
+      <BonusDayWrapper>
+        <BodyCopy
+          fontSize="fs14"
+          fontWeight="regular"
+          color="black"
+          text={message}
+          marginRight="10"
+        />
+        {usedDaysArray.map(() => (
+          <DotInactive />
+        ))}
+        {availableDaysArray.map(() => (
+          <DotActive />
+        ))}
+      </BonusDayWrapper>
+    </BonusDayReadSection>
   );
 };
 
@@ -47,11 +72,8 @@ BonusPointsReadSection.propTypes = {
     lbl_bonus_points_bonusPointsDay: PropTypes.string.isRequired,
     lbl_bonus_points_detailLink: PropTypes.string.isRequired,
   }).isRequired,
-  className: PropTypes.string,
 };
 
-BonusPointsReadSection.defaultProps = {
-  className: '',
-};
+BonusPointsReadSection.defaultProps = {};
 
 export default BonusPointsReadSection;
