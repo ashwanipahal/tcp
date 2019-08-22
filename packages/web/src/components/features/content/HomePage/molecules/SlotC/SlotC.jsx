@@ -15,9 +15,12 @@ const SlotC = dynamic({
     ModuleH: () => import('@tcp/core/src/components/common/molecules/ModuleH').then(returnModule),
     ModuleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
     ModuleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
+    ModuleA: () => import('@tcp/core/src/components/common/molecules/ModuleA').then(returnModule),
   }),
-  render: (props: Props, { ModuleD, ModuleH, ModuleK, ModuleL }) => {
+  render: (props: Props, { ModuleD, ModuleH, ModuleK, ModuleL, ModuleA }) => {
     switch (props.name) {
+      case 'moduleA':
+        return <ModuleA {...props} />;
       case 'moduleD':
         return <ModuleD {...props} />;
       case 'moduleH':

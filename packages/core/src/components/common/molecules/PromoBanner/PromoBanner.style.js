@@ -160,8 +160,7 @@ export default css`
     }
   }
 
-  /* Module-A and N % style promo text */
-  .style7 {
+  .percentage_wrapped_extra_large {
     color: ${props => props.theme.colorPalette.pink['400']};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
@@ -172,14 +171,14 @@ export default css`
     margin: 0 auto;
     position: relative;
 
-    .style7-1 {
+    .percentage_wrapped_extra_large-1 {
       font-size: 99px;
       position: absolute;
       top: 0;
       line-height: 1.01;
     }
 
-    .style7-2 {
+    .percentage_wrapped_extra_large-2 {
       font-size: 43px;
       position: absolute;
       bottom: 8px;
@@ -191,9 +190,9 @@ export default css`
       text-align: center;
       line-height: 0.6;
 
-      .style7-0,
-      .style7-1,
-      .style7-2 {
+      .percentage_wrapped_extra_large-0,
+      .percentage_wrapped_extra_large-1,
+      .percentage_wrapped_extra_large-2 {
         font-size: 122px;
         line-height: 0.88;
         position: relative;
@@ -202,16 +201,15 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
-      .style7-0,
-      .style7-1,
-      .style7-2 {
+      .percentage_wrapped_extra_large-0,
+      .percentage_wrapped_extra_large-1,
+      .percentage_wrapped_extra_large-2 {
         font-size: 204px;
       }
     }
   }
 
-  /* Module A promo banner bold text style*/
-  .style8 {
+  .small_text_bold {
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
@@ -231,8 +229,7 @@ export default css`
     }
   }
 
-  /* Module A promo banner normal text style*/
-  .style9 {
+  .small_text_normal {
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
