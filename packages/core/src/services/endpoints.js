@@ -1,4 +1,4 @@
-import { API_METHODS } from './api.constants';
+import { API_METHODS, PRODUCTS_URI } from './api.constants';
 
 const endpoints = {
   graphQL: {
@@ -66,6 +66,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
   },
+  getListofDefaultWishlist: {
+    method: API_METHODS.GET,
+    URI: 'v2/wishlist/getListOfDefaultWishlist',
+  },
   getCouponList: {
     method: API_METHODS.GET,
     URI: 'v2/account/getAddressFromBook',
@@ -95,6 +99,10 @@ const endpoints = {
     method: 'put',
     URI: 'v2/account/resetPassword',
   },
+  updateProfileInfo: {
+    method: 'put',
+    URI: 'v2/account/updatesAccountDataForRegisteredUser',
+  },
   getGifCardBalance: {
     method: API_METHODS.POST,
     URI: 'v2/wallet/getGiftCardBalance',
@@ -118,6 +126,30 @@ const endpoints = {
   deleteAddress: {
     method: API_METHODS.DELETE,
     URI: 'v2/account/deleteAddressDetails',
+  },
+  getProductDetails: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS,
+    unbxd: true,
+    unbxdCustom: true,
+  },
+  getProductsByOutfits: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_OUTFITS,
+  },
+  getProductviewbyCategory: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_VIEW_BY_CATEGORY,
+  },
+  getProductsBySearchTerm: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
+  },
+  getProductInfoById: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
   },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
