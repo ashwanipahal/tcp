@@ -45,11 +45,11 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
       {variation === 'checkout' && (
         <>
           <BodyCopy fontSize="fs36" fontWeight="black" fontFamily="secondary" textAlign="center">
-            Welcome Back!
+            {labels.login.lbl_login_error_checkout_modal_heading}
           </BodyCopy>
 
           <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
-            Log in to earn points for
+            {labels.login.lbl_login_error_checkout_modal_heading_1}
           </BodyCopy>
           <BodyCopy
             component="span"
@@ -58,14 +58,14 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
             fontFamily="secondary"
             textAlign="center"
           >
-            MY PLACE REWARDS.
+            {labels.login.lbl_login_error_checkout_modal_heading_2}
           </BodyCopy>
         </>
       )}
       {variation === 'favorites' && (
         <>
           <BodyCopy fontSize="fs16" fontWeight="black" fontFamily="secondary" textAlign="center">
-            Love it. Save it. Share it!
+            {labels.login.lbl_login_error_favorites_modal_heading}
           </BodyCopy>
 
           <BodyCopy
@@ -75,7 +75,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
             fontFamily="secondary"
             textAlign="center"
           >
-            Note: It can’t be your last password or your email addresss.
+            {labels.login.lbl_login_error_favorites_modal_heading_1}
           </BodyCopy>
         </>
       )}
@@ -91,6 +91,7 @@ LoginTopSection.propTypes = {
   }),
   className: PropTypes.string.isRequired,
   isCanada: PropTypes.bool,
+  variation: PropTypes.bool.isRequired,
 };
 
 LoginTopSection.defaultProps = {

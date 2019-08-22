@@ -10,7 +10,7 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
-import { login } from './LoginPage.actions';
+import { login, resetLoginInfo } from './LoginPage.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
@@ -41,6 +41,7 @@ class LoginPageContainer extends React.PureComponent {
   componentWillUnmount() {
     const { resetLoginState, loginError } = this.props;
     if (loginError) {
+      resetLoginInfo();
       resetLoginState();
     }
   }

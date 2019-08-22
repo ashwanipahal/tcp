@@ -58,6 +58,7 @@ LoginView.propTypes = {
   currentForm: PropTypes.string.isRequired,
   queryParams: PropTypes.shape({}).isRequired,
   setLoginModalMountState: PropTypes.bool.isRequired,
+  variation: PropTypes.bool.isRequired,
 };
 
 LoginView.defaultProps = {

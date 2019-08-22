@@ -81,6 +81,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         "title": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE",
       }
     }
+    variation="checkout"
   />
 </div>
 `;

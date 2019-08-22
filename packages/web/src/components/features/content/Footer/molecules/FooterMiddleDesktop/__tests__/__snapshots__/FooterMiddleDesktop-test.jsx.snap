@@ -136,7 +136,7 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
         "title": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE",
       }
     }
-    variation="fav"
+    variation="favorites"
   />
 </Fragment>
 `;
@@ -278,7 +278,7 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
         "title": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE",
       }
     }
-    variation="fav"
+    variation="favorites"
   />
 </Fragment>
 `;

@@ -50,7 +50,7 @@ class AddedToBagActions extends React.Component<Props> {
           </Row>
         )}
         <Row className="checkout-button">
-          {/* <PayPalButton className="payPal-button" /> */}
+          <PayPalButton className="payPal-button" />
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"

@@ -33,8 +33,9 @@ export function* loginSaga({ payload }) {
 
     const isCheckoutModalOpen = yield select(checkoutModalOpenState);
     if (isCheckoutModalOpen) {
-      return yield put(setCheckoutModalMountedState({ state: true }));
+      yield put(setCheckoutModalMountedState({ state: true }));
     }
+    return null;
   }
 }
 
