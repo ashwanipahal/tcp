@@ -30,7 +30,7 @@ const getRequestParams = (apiConfig, reqObj) => {
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Promise} Resolves with promise to consume the unbxd api or reject in case of error
  */
-const unbxdAPIClient = (apiConfig, reqObj) => {
+const UnbxdAPIClient = (apiConfig, reqObj) => {
   const { requestUrl, reqHeaders } = getRequestParams(apiConfig, reqObj);
   const reqTimeout = API_CONFIG.apiRequestTimeout;
   const requestType = reqObj.webService.method.toLowerCase();
@@ -61,11 +61,12 @@ const unbxdAPIClient = (apiConfig, reqObj) => {
         resolve(response);
       })
       .catch(err => {
-        reject(err);
+        // eslint-disable-next-line prefer-promise-reject-errors
+        reject({ err, reqObj });
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.
   return result;
 };
 
-export default unbxdAPIClient;
+export default UnbxdAPIClient;
