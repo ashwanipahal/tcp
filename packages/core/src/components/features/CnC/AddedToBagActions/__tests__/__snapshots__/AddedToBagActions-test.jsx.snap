@@ -68,5 +68,8 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       />
     </Styled(Button)>
   </Styled(Row)>
+  <OpenLoginModal
+    variation="checkout"
+  />
 </div>
 `;

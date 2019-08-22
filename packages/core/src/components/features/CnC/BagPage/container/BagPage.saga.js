@@ -13,6 +13,7 @@ import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import { routerPush } from '../../../../../utils';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 
 export function* getOrderDetailSaga() {
   try {
@@ -56,7 +57,7 @@ export function* fetchModuleX({ payload = [] }) {
 export function* checkoutCart(recalc) {
   const isLoggedIn = yield select(getUserLoggedInState);
   if (!isLoggedIn) {
-    // return yield put(openAuthLoginForCheckoutModal());
+    return yield put(setCheckoutModalMountedState({ state: true }));
   }
   return yield call(routerPush, '/checkout', '/checkout', { recalc });
 }
