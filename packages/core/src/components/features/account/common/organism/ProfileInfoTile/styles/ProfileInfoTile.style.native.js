@@ -13,7 +13,7 @@ const ProfileInfoTileContainer = styled.View`
 `;
 
 const ButtonWrapperStyle = styled.View`
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
