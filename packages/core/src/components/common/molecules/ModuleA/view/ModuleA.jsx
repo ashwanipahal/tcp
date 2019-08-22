@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { style } from '../ModuleA.style';
 import { Col, Row } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
 
 import ModuleAGymCarousel from '../../ModuleAGymCarousel';
 import ModuleATcpCarousel from '../../ModuleATcpCarousel';
@@ -57,5 +56,5 @@ ModuleA.propTypes = {
   set: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-export default errorBoundary(withStyles(ModuleA, style));
+export default withStyles(ModuleA, style);
 export { ModuleA as ModuleAVanilla };

@@ -2,7 +2,6 @@
 import React from 'react';
 import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Row } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
@@ -77,5 +76,5 @@ class ModuleH extends React.PureComponent<Props, State> {
   }
 }
 
-export default errorBoundary(withStyles(ModuleH, style));
+export default withStyles(ModuleH, style);
 export { ModuleH as ModuleHVanilla };
