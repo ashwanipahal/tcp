@@ -225,7 +225,14 @@ export default {
   scrollPage,
 };
 
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
+  const country = siteId.toUpperCase();
+  console.log(
+    'site id ',
+    `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
+    }`
+  );
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
@@ -235,6 +242,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
+    }`,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
@@ -263,7 +273,7 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv);
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
