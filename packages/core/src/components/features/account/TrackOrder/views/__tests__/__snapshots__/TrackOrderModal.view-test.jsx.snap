@@ -2,6 +2,8 @@
 
 exports[`TrackOrderModal component should renders correctly 1`] = `
 <Styled(Modal)
+  ariaDescribedby="trackorder__modal__subheading"
+  ariaLabelledby="trackorder__modal__heading"
   className="TCPModal__Content TrackOrder__Modal__content"
   data-locator="track_order_modal"
   fixedWidth={true}

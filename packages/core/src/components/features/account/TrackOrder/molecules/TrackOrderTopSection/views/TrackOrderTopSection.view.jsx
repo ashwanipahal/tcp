@@ -22,9 +22,9 @@ const TrackOrderTopSection = ({ labels, className }: Props) => {
         fontSize="fs22"
         fontWeight="extrabold"
         fontFamily="secondary"
-        data-locator="track_order_header"
         className="trackorder__modal__overlayheading"
         component="h2"
+        id="trackorder__modal__heading"
       >
         {labels.trackOrder.lbl_header_trackOrderOverlay_header}
       </BodyCopy>
@@ -35,6 +35,7 @@ const TrackOrderTopSection = ({ labels, className }: Props) => {
         className="trackorder__modal__overlaysubheading"
         data-locator="trackordermodal-overlaysubheading"
         component="p"
+        id="trackorder__modal__subheading"
       >
         {labels.trackOrder.lbl_header_trackOrderOverlay_subheader}
       </BodyCopy>

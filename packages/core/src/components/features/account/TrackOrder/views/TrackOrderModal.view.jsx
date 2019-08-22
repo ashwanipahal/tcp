@@ -58,6 +58,8 @@ class TrackOrderModal extends React.Component<Props> {
         maxWidth="450px"
         minHeight="576px"
         data-locator="track_order_modal"
+        ariaLabelledby="trackorder__modal__heading"
+        ariaDescribedby="trackorder__modal__subheading"
       >
         <TrackOrderViewTemplate
           labels={labels}

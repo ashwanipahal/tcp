@@ -49,6 +49,8 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
+        aria-label="undefined
+                undefined"
         className="trackorder__modal__loginlink"
         data-locator="track_order_login"
         fontSize="fs12"
@@ -73,6 +75,8 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-label="undefined
+                undefined"
       className="trackorder__modal__clickhere_link"
       data-locator="track_order_click_here"
       fontSize="fs12"

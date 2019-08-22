@@ -55,6 +55,8 @@ class TrackOrderBottomSection extends React.Component<Props> {
               href="#"
               onClick={e => this.handleDefaultLinkClick(e)}
               className="trackorder__modal__loginlink"
+              aria-label={`${labels.trackOrder.lbl_header_trackOrderOverlay_login}
+                ${labels.trackOrder.lbl_header_trackOrderOverlay_content1}`}
             >
               {labels.trackOrder.lbl_header_trackOrderOverlay_login}
             </Anchor>
@@ -77,6 +79,8 @@ class TrackOrderBottomSection extends React.Component<Props> {
             to={labels.trackOrder.lbl_header_trackOrderOverlay_internationTrackOrderLink}
             target="_blank"
             className="trackorder__modal__clickhere_link"
+            aria-label={`${labels.trackOrder.lbl_header_trackOrderOverlay_clickHere}
+                ${labels.trackOrder.lbl_header_trackOrderOverlay_content2}`}
           >
             {labels.trackOrder.lbl_header_trackOrderOverlay_clickHere}
           </Anchor>

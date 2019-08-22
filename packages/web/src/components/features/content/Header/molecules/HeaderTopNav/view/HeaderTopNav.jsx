@@ -34,6 +34,7 @@ const HeaderTopNav = ({
             textAlign="right"
             className="header-topnav__track-order"
             onClick={e => onLinkClick(e)}
+            data-locator="track_order_header"
           >
             Track order
           </BodyCopy>

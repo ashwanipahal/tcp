@@ -139,6 +139,7 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
       className="header-topnav__track-order"
       color="text.primary"
       component="p"
+      data-locator="track_order_header"
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"
@@ -293,6 +294,7 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
       className="header-topnav__track-order"
       color="text.primary"
       component="p"
+      data-locator="track_order_header"
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"
