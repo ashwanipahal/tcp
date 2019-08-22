@@ -71,16 +71,10 @@ const style = css`
      background: ${props.fill || props.theme.colorPalette.white};
      ${props.color === 'red' ? ` color: ${props.theme.colorPalette.secondary.dark}; ` : ''};
      ${props.color === 'blue' ? ` color: ${props.theme.colorPalette.primary.dark};` : ''};
-    ${
-      props.color === 'text'
-        ? ` color: ${props.theme.colors.BUTTON.WHITE.TEXT};
-      `
-        : ''
-    };
+     ${props.color === 'gray' ? ` color: ${props.theme.colorPalette.gray[700]};` : ''};
      font-family: ${props.theme.typography.fonts.secondary};
      font-size: ${props.theme.fonts.fontSize.button.size}px;
      font-weight: ${props.theme.typography.fontWeights.extrabold};
-
      ${
        props.color === 'red'
          ? ` border: 1px solid ${props.theme.colorPalette.secondary.dark}; `
@@ -91,12 +85,7 @@ const style = css`
          ? ` border: : 1px solid ${props.theme.colorPalette.primary.dark};`
          : ''
      };
-    ${
-      props.color === 'text'
-        ? ` border: 1px solid ${props.theme.colors.BUTTON.WHITE.BORDER};
-   `
-        : ''
-    };
+     ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
      padding: 12px 32px;
      `
       : ''};

@@ -26,7 +26,7 @@ const variant = 'tcp';
 
 const ModuleA = (props: Props) => {
   const { navigation, largeCompImageCarousel, ctaItems } = props;
-  const ctaType = 'imageCTAList';
+  const ctaType = 'stackedCTAList';
 
   return (
     <Container>
@@ -61,7 +61,7 @@ const ModuleA = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleA_cta_links"
-            color="text"
+            color="gray"
           />
           <Border background="text" />
         </ContainerView>
@@ -74,7 +74,7 @@ const ModuleA = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleA_cta_links"
-            color="text"
+            color="gray"
           />
         </ButtonContainer>
       )}
