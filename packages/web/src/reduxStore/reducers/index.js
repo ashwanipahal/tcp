@@ -17,6 +17,7 @@ import AddressVerificationReducer from '@tcp/core/src/components/common/organism
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
+import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
@@ -58,6 +59,7 @@ import {
   POINTS_HISTORY_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   USER_REDUCER_KEY,
+  CHECKOUT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -102,6 +104,7 @@ export default combineReducers({
   [ACCOUNT_REDUCER_KEY]: AccountReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
+  [CHECKOUT_REDUCER_KEY]: CheckoutReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,

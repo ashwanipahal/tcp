@@ -14,6 +14,7 @@ import PointsHistoryReducer from '@tcp/core/src/components/features/account/comm
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
+import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -35,6 +36,7 @@ import {
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
   USER_REDUCER_KEY,
+  CHECKOUT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -66,6 +68,7 @@ export default combineReducers({
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
+  [CHECKOUT_REDUCER_KEY]: CheckoutReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [COUPON_REDUCER_KEY]: CouponReducer,

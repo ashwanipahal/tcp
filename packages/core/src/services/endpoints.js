@@ -149,5 +149,9 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
   },
+  giftOptionsCmd: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/giftOptionsCmd',
+  },
 };
 export default endpoints;
