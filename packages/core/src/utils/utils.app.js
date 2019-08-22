@@ -1,8 +1,7 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable global-require */
+/* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-// eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
-// eslint-disable-next-line import/no-unresolved
 import AsyncStorage from '@react-native-community/async-storage';
 
 import config from '../components/common/atoms/Anchor/config.native';
@@ -29,7 +28,6 @@ export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
     switch (module) {
       case 'graphQL':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL'));
         break;
       default:
@@ -42,8 +40,13 @@ export const importGraphQLClientDynamically = module => {
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
-      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleX'));
+      break;
+    case 'moduleA':
+      resolve(require('../services/handler/graphQL/queries/moduleA'));
+      break;
+    case 'moduleN':
+      resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
     default:
       reject();
@@ -55,39 +58,30 @@ export const importGraphQLQueriesDynamically = query => {
   return new Promise((resolve, reject) => {
     switch (query) {
       case 'footer':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/footer'));
         break;
       case 'header':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/header'));
         break;
       case 'navigation':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/navigation'));
         break;
       case 'layout':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/layout'));
         break;
       case 'labels':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/labels'));
         break;
       case 'moduleD':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleD'));
         break;
       case 'moduleH':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleH'));
         break;
       case 'moduleK':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleK'));
         break;
       case 'moduleL':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleL'));
         break;
       default:
