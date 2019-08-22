@@ -292,7 +292,13 @@ class PaymentView extends React.Component<Props> {
               addressDetails={selectedCard.addressDetails}
             />
           )}
-          {this.getPaymentModal(setUpdateModalMountedState, dto, labels, updateCardList, selectedCard)}
+          {this.getPaymentModal(
+            setUpdateModalMountedState,
+            dto,
+            labels,
+            updateCardList,
+            selectedCard
+          )}
           {showGiftCardModal && (
             <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
               <ModalHeading>
