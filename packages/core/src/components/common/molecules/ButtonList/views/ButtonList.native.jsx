@@ -83,7 +83,7 @@ const renderOddButtonGrid = (ctxButton, navigation, locator, color) => {
 /**
  * This function is used to render a single button in scroll Button view .
  */
-const scrollViewRenderItem = (item, navigation, locator, color) => {
+const renderItemScrollCTAList = (item, navigation, locator, color) => {
   const {
     item: { button },
   } = item;
@@ -107,7 +107,7 @@ const scrollViewRenderItem = (item, navigation, locator, color) => {
 /**
  * This function is used to generate Scroll ButtonList view .
  */
-const renderScrollView = (ctxButton, navigation, locator, color) => {
+const renderScrollCTAList = (ctxButton, navigation, locator, color) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
   return (
@@ -116,7 +116,7 @@ const renderScrollView = (ctxButton, navigation, locator, color) => {
       horizontal={isHorizontalScroll}
       keyExtractor={keyExtractor}
       data={ctxButton}
-      renderItem={item => scrollViewRenderItem(item, navigation, locator, color)}
+      renderItem={item => renderItemScrollCTAList(item, navigation, locator, color)}
     />
   );
 };
@@ -124,7 +124,7 @@ const renderScrollView = (ctxButton, navigation, locator, color) => {
 /**
  * This function is used to generate links for LinkText view .
  */
-const linkTextViewRenderItem = (item, navigation, locator) => {
+const renderItemCTAList = (item, navigation, locator) => {
   const style = { borderBottomWidth: 2, borderColor: 'white' };
 
   const {
@@ -156,7 +156,7 @@ const linkTextViewRenderItem = (item, navigation, locator) => {
 /**
  * This function is used to generate LinkText view .
  */
-const renderLinkTextView = (ctxButton, navigation, locator) => {
+const renderCTAList = (ctxButton, navigation, locator) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
 
@@ -167,7 +167,7 @@ const renderLinkTextView = (ctxButton, navigation, locator) => {
         horizontal={isHorizontalScroll}
         keyExtractor={keyExtractor}
         data={ctxButton}
-        renderItem={item => linkTextViewRenderItem(item, navigation, locator)}
+        renderItem={item => renderItemCTAList(item, navigation, locator)}
       />
     </Wrapper>
   );
@@ -176,7 +176,7 @@ const renderLinkTextView = (ctxButton, navigation, locator) => {
 /**
  * This function is used to generate links for DivImageCTA view .
  */
-const divImageRenderItem = (item, navigation, locator, color) => {
+const renderItemImageCTAList = (item, navigation, locator, color) => {
   const style = { borderRadius: 60 / 2 };
   const bodycopyStyle = { marginTop: 20 };
   const {
@@ -215,7 +215,7 @@ const renderSeparatorComponent = () => {
 /**
  * This function is used to generate DivImageCTA view .
  */
-const renderDivImageCTA = (ctxButton, navigation, locator, color) => {
+const renderImageCTAList = (ctxButton, navigation, locator, color) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
   return (
@@ -224,7 +224,7 @@ const renderDivImageCTA = (ctxButton, navigation, locator, color) => {
       horizontal={isHorizontalScroll}
       keyExtractor={keyExtractor}
       data={ctxButton}
-      renderItem={item => divImageRenderItem(item, navigation, locator, color)}
+      renderItem={item => renderItemImageCTAList(item, navigation, locator, color)}
       ItemSeparatorComponent={renderSeparatorComponent}
     />
   );
@@ -249,16 +249,16 @@ const ButtonList = ({ locator, buttonListVariation, navigation, buttonsData, col
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    return <Container>{renderScrollView(buttonsData, navigation, locator, color)}</Container>;
+    return <Container>{renderScrollCTAList(buttonsData, navigation, locator, color)}</Container>;
   }
 
   if (buttonListVariation === 'linkCTAList') {
-    return <Container>{renderLinkTextView(buttonsData, navigation, locator)}</Container>;
+    return <Container>{renderCTAList(buttonsData, navigation, locator)}</Container>;
   }
 
   if (buttonListVariation === 'imageCTAList') {
     return (
-      <ContainerView>{renderDivImageCTA(buttonsData, navigation, locator, color)}</ContainerView>
+      <ContainerView>{renderImageCTAList(buttonsData, navigation, locator, color)}</ContainerView>
     );
   }
 
