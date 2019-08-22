@@ -133,15 +133,6 @@ const FooterMiddleDesktop = ({
         variation="favorites"
         setLoginModalMountState={setLoginModalMountState}
         openState={loginModalMountedState}
-        data={{
-          heading: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING',
-          title: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE',
-          description: 'selectedAddress',
-          buttons: {
-            cancel: 'labels.common.lbl_common_dontDelete',
-            confirm: 'labels.common.lbl_common_YesDelete',
-          },
-        }}
       />
     </Fragment>
   );

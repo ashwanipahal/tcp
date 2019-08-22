@@ -45,11 +45,11 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
       {variation === 'checkout' && (
         <>
           <BodyCopy fontSize="fs36" fontWeight="black" fontFamily="secondary" textAlign="center">
-            {labels.login.lbl_login_error_checkout_modal_heading}
+            {labels.login.lbl_login_checkout_modal_heading}
           </BodyCopy>
 
           <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
-            {labels.login.lbl_login_error_checkout_modal_heading_1}
+            {labels.login.lbl_login_checkout_modal_heading_1}
           </BodyCopy>
           <BodyCopy
             component="span"
@@ -58,14 +58,14 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
             fontFamily="secondary"
             textAlign="center"
           >
-            {labels.login.lbl_login_error_checkout_modal_heading_2}
+            {labels.login.lbl_login_checkout_modal_heading_2}
           </BodyCopy>
         </>
       )}
       {variation === 'favorites' && (
         <>
           <BodyCopy fontSize="fs16" fontWeight="black" fontFamily="secondary" textAlign="center">
-            {labels.login.lbl_login_error_favorites_modal_heading}
+            {labels.login.lbl_login_favorites_modal_heading}
           </BodyCopy>
 
           <BodyCopy
@@ -75,7 +75,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
             fontFamily="secondary"
             textAlign="center"
           >
-            {labels.login.lbl_login_error_favorites_modal_heading_1}
+            {labels.login.lbl_login_favorites_modal_heading_1}
           </BodyCopy>
         </>
       )}

@@ -71,15 +71,6 @@ class AddedToBagActions extends React.Component<Props> {
           variation="checkout"
           setLoginModalMountState={setCheckoutModalMountState}
           openState={checkoutModalMountedState}
-          data={{
-            heading: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING',
-            title: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE',
-            description: 'selectedAddress',
-            buttons: {
-              cancel: 'labels.common.lbl_common_dontDelete',
-              confirm: 'labels.common.lbl_common_YesDelete',
-            },
-          }}
         />
       </div>
     );

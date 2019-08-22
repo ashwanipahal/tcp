@@ -125,7 +125,7 @@ class LoginForm extends React.PureComponent<Props> {
                 fullWidth
                 className="elem-mb-XS"
               >
-                CONTINUE AS GUEST
+                {labels.login.lbl_login_modal_checkout_as_guest}
               </Button>
             )}
             <Anchor
