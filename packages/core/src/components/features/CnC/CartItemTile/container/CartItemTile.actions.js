@@ -11,6 +11,12 @@ export const removeCartItem = (payload?) => {
   };
 };
 
+export const removeCartItemComplete = () => {
+  return {
+    type: CARTPAGE_CONSTANTS.REMOVE_CART_ITEM_COMPLETE,
+  };
+};
+
 export const getProductSKUInfo = (payload?) => {
   return {
     type: CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO,
