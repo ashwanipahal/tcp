@@ -11,6 +11,7 @@ import {
   DivImageCTAContainer,
   ButtonLinksContainer,
 } from '../ModuleA.style.native';
+import config from '../../ModuleN/ModuleN.config';
 
 /**
  * @param {object} props : Props for Module A multi type of banner list, button list, header text.
@@ -20,14 +21,18 @@ import {
  */
 
 // TODO: keys will be changed once we get the actual data from CMS
+const { ctaTypes } = config;
 
-// const { ctaTypes } = config;
 const variant = 'tcp';
 
 const ModuleA = (props: Props) => {
-  const { navigation, largeCompImageCarousel, ctaItems } = props;
-  const ctaType = 'stackedCTAList';
-
+  const {
+    navigation,
+    largeCompImageCarousel,
+    ctaItems,
+    set: [set = {}],
+  } = props;
+  const ctaType = ctaTypes[set.val];
   return (
     <Container>
       {variant === 'tcp' ? (

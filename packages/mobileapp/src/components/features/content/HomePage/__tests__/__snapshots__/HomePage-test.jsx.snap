@@ -428,7 +428,7 @@ exports[`HomePageView should render correctly 1`] = `
       Array [
         Object {
           "key": "ctaType",
-          "val": "stackedCTAList",
+          "val": "stackedCTAButtons",
         },
       ]
     }
