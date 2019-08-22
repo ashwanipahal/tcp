@@ -5,15 +5,28 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor/views/Anchor';
 import styles from '../styles/MyProfileTile.style';
 
-export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, ctaPath, children, className }) => {
+export const AccountOverviewTile = ({
+  title,
+  ctaTitle,
+  ctaLink,
+  ctaPath,
+  children,
+  className,
+  dataLocator,
+}) => {
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="container">
-        {title && (
-          <BodyCopy component="h3" fontSize="fs16" fontWeight="semibold" className="heading">
-            {title}
-          </BodyCopy>
-        )}
+        <BodyCopy
+          component="h3"
+          fontSize="fs16"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          className="heading"
+          dataLocator={`${dataLocator}_header`}
+        >
+          {title}
+        </BodyCopy>
         <BodyCopy component="div" className={`${title ? 'elem-pt-LRG' : ''} elem-pb-XL content`}>
           {children}
         </BodyCopy>
@@ -28,6 +41,7 @@ export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, ctaPath, childre
             fill="BLUE"
             centered
             className="elem-mb-SM"
+            dataLocator={`${dataLocator}_btn`}
           >
             {ctaTitle}
           </Anchor>
@@ -44,6 +58,7 @@ AccountOverviewTile.propTypes = {
   ctaPath: PropTypes.string,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  dataLocator: PropTypes.string,
 };
 
 AccountOverviewTile.defaultProps = {
@@ -52,6 +67,7 @@ AccountOverviewTile.defaultProps = {
   ctaLink: '',
   ctaPath: '',
   className: '',
+  dataLocator: '',
 };
 
 export default withStyles(AccountOverviewTile, styles);
