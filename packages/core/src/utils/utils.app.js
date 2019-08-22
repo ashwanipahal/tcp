@@ -1,10 +1,7 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-// eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
-// eslint-disable-next-line import/no-unresolved
 import AsyncStorage from '@react-native-community/async-storage';
-
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
@@ -44,6 +41,14 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleX':
       // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleX'));
+      break;
+    case 'moduleA':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleA'));
+      break;
+    case 'moduleN':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
     default:
       reject();
