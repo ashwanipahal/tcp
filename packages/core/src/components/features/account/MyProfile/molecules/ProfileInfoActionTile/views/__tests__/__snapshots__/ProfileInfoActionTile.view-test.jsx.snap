@@ -21,6 +21,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
     <Styled(Image)
       alt="test"
       className="tile-icon"
+      data-locator="Img"
       src="/test"
       title="test"
     />
@@ -40,6 +41,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
       className={null}
       color="text.primary"
       component="p"
+      data-locator="StatusTxt"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
@@ -53,6 +55,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
       className={null}
       color="text.primary"
       component="p"
+      data-locator="Text"
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
@@ -76,7 +79,8 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
   <Styled(Image)
     alt="test"
     className="activity-complete-icon"
-    src="/static/images/circle-check.png"
+    data-locator="ChkmarkIcon"
+    src="/static/images/done.png"
     title="test"
   />
   <Styled(BodyCopy)
@@ -93,6 +97,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
     <Styled(Image)
       alt="test"
       className="tile-icon"
+      data-locator="Img"
       src="/test"
       title="test"
     />
@@ -112,6 +117,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
       className={null}
       color="text.primary"
       component="p"
+      data-locator="StatusTxt"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
@@ -125,6 +131,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
       className={null}
       color="text.primary"
       component="p"
+      data-locator="Text"
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"

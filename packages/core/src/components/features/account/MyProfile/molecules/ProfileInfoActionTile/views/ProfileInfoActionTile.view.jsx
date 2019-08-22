@@ -21,6 +21,7 @@ export const ProfileInfoActionTile = ({
   activityCompletionState,
   onClick,
   redirectTo,
+  dataLocatorPrefix,
 }) => {
   const titleToShow = activityCompletionState || activityTitle;
 
@@ -35,8 +36,9 @@ export const ProfileInfoActionTile = ({
         <Image
           className="activity-complete-icon"
           alt={activityDescription}
-          src={getIconPath('active_icon')}
+          src={getIconPath('icon-done')}
           title={activityDescription}
+          data-locator={`${dataLocatorPrefix}ChkmarkIcon`}
         />
       )}
       <BodyCopy className="img-cont" component="div" textAlign="center">
@@ -45,13 +47,26 @@ export const ProfileInfoActionTile = ({
           src={activityIcon}
           title={activityDescription}
           className="tile-icon"
+          data-locator={`${dataLocatorPrefix}Img`}
         />
       </BodyCopy>
       <BodyCopy className="msg-cont elem-pl-SM elem-pr-SM" component="div">
-        <BodyCopy textAlign="center" fontFamily="secondary" fontSize="fs16" fontWeight="extrabold">
+        <BodyCopy
+          textAlign="center"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          data-locator={`${dataLocatorPrefix}StatusTxt`}
+        >
           {titleToShow}
         </BodyCopy>
-        <BodyCopy textAlign="center" fontFamily="secondary" fontSize="fs14" lineHeight="lh107">
+        <BodyCopy
+          textAlign="center"
+          fontFamily="secondary"
+          fontSize="fs14"
+          lineHeight="lh107"
+          data-locator={`${dataLocatorPrefix}Text`}
+        >
           {activityDescription}
         </BodyCopy>
       </BodyCopy>
@@ -67,6 +82,7 @@ ProfileInfoActionTile.propTypes = {
   onClick: PropTypes.func,
   redirectTo: PropTypes.string,
   className: PropTypes.string,
+  dataLocatorPrefix: PropTypes.string,
 };
 
 ProfileInfoActionTile.defaultProps = {
@@ -77,6 +93,7 @@ ProfileInfoActionTile.defaultProps = {
   onClick: () => {},
   redirectTo: '',
   className: '',
+  dataLocatorPrefix: '',
 };
 
 export default withStyles(ProfileInfoActionTile, styles);
