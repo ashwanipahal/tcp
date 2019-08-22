@@ -6,7 +6,7 @@ const initialState = fromJS({
   error: null,
 });
 
-const ChangePasswordReducer = (state = initialState, action) => {
+const ChangePasswordReducer = (state, action) => {
   switch (action.type) {
     case constants.CHANGE_PASSWORD_SUCCESS:
       return state.set('error', null).set('success', action.payload);
@@ -16,6 +16,10 @@ const ChangePasswordReducer = (state = initialState, action) => {
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
         return fromJS(state);
+      }
+
+      if (typeof state === 'undefined') {
+        return initialState;
       }
       return state;
   }
