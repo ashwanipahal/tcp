@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getBonusDays, fetchModuleX } from './BonusPointsDays.actions';
+import { getBonusDays, fetchModuleX, applyBonusDays } from './BonusPointsDays.actions';
 import {
   getLabels,
   getBonusData,
@@ -13,6 +13,7 @@ import { isPlccUser } from '../../../../features/account/User/container/User.sel
 import BonusPointsView from '../views/BonusPointsView';
 import { isCanada } from '../../../../../utils';
 import constants from '../BonusPointsDays.constants';
+import { getCartOrderId } from '../../../../features/CnC/CartItemTile/container/CartItemTile.selectors';
 
 export class BonusPointsDays extends React.Component {
   static propTypes = {
@@ -25,6 +26,9 @@ export class BonusPointsDays extends React.Component {
     isBonusPointsEnabled: PropTypes.bool,
     view: PropTypes.string,
     isPlcc: PropTypes.bool,
+    enableApplyCta: PropTypes.bool,
+    getAvailableBonusDaysData: PropTypes.func,
+    orderId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -37,6 +41,9 @@ export class BonusPointsDays extends React.Component {
     isBonusPointsEnabled: false,
     view: constants.VIEWS.EDIT,
     isPlcc: false,
+    enableApplyCta: false,
+    getAvailableBonusDaysData: () => {},
+    orderId: '',
   };
 
   componentDidMount() {
@@ -49,7 +56,17 @@ export class BonusPointsDays extends React.Component {
   }
 
   render() {
-    const { labels, bonusData, bonusDetailsData, isBonusPointsEnabled, view, isPlcc } = this.props;
+    const {
+      labels,
+      bonusData,
+      bonusDetailsData,
+      isBonusPointsEnabled,
+      view,
+      isPlcc,
+      enableApplyCta,
+      getAvailableBonusDaysData,
+      orderId,
+    } = this.props;
     return (
       !isCanada() &&
       isBonusPointsEnabled && (
@@ -59,6 +76,9 @@ export class BonusPointsDays extends React.Component {
           bonusDetailsData={bonusDetailsData}
           view={view}
           isPlcc={isPlcc}
+          enableApplyCta={enableApplyCta}
+          getBonusDaysData={getAvailableBonusDaysData}
+          orderDetails={orderId}
         />
       )
     );
@@ -73,6 +93,7 @@ export const mapStateToProps = state => {
     bonusDetailsData: getBonusDetailsData(state),
     isBonusPointsEnabled: getBonusPointsSwitch(state),
     isPlcc: isPlccUser(state),
+    orderId: getCartOrderId(state),
   };
 };
 
@@ -80,6 +101,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     getBonusDaysData: () => {
       dispatch(getBonusDays());
+    },
+    getAvailableBonusDaysData: dto => {
+      dispatch(applyBonusDays(dto));
     },
     getBonusPointsDetails: cid => {
       dispatch(fetchModuleX(cid));

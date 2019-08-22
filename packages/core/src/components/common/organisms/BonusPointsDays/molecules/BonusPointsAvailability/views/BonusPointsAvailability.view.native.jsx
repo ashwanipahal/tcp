@@ -19,7 +19,20 @@ let buttonStyle = {
 const graySecondary = theme.colorPalette.gray.secondary;
 const grayPrimary = theme.colorPalette.gray.primary;
 
-const BonusPointsAvailability = ({ bonusPoints }) => {
+const applyBonusPoints = (getBonusDaysData, orderDetails, bonusDayAvailableToday) => {
+  const dto = {
+    bonusDaySelected: bonusDayAvailableToday ? 0 : 1,
+    orderId: orderDetails,
+  };
+  return getBonusDaysData(dto);
+};
+
+const BonusPointsAvailability = ({
+  bonusPoints,
+  getBonusDaysData,
+  orderDetails,
+  bonusDayAvailableToday,
+}) => {
   const bonusPointsLength = bonusPoints && bonusPoints.length;
 
   return (
@@ -41,6 +54,9 @@ const BonusPointsAvailability = ({ bonusPoints }) => {
                 text={item.buttonText}
                 style={buttonStyle}
                 disableButton
+                onPress={() =>
+                  applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
+                }
               />
             </MarginRightWrapper>
           );
@@ -51,10 +67,16 @@ const BonusPointsAvailability = ({ bonusPoints }) => {
 
 BonusPointsAvailability.propTypes = {
   bonusPoints: PropTypes.shape([]),
+  getBonusDaysData: PropTypes.shape({}),
+  orderDetails: PropTypes.shape({}),
+  bonusDayAvailableToday: PropTypes.bool,
 };
 
 BonusPointsAvailability.defaultProps = {
   bonusPoints: [{ disabled: false, buttonText: '' }],
+  getBonusDaysData: {},
+  orderDetails: {},
+  bonusDayAvailableToday: false,
 };
 
 export default BonusPointsAvailability;

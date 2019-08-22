@@ -18,8 +18,14 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
       }
     }
     onClose={[Function]}
+    onFileAddresskey=""
     persistentSubmitErrors={false}
     pure={true}
+    selectedCard={
+      Object {
+        "billingAddressId": 150786,
+      }
+    }
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}
@@ -52,8 +58,14 @@ exports[`AddEditCreditCard component should renders correctly with error message
       }
     }
     onClose={[Function]}
+    onFileAddresskey="150786"
     persistentSubmitErrors={false}
     pure={true}
+    selectedCard={
+      Object {
+        "billingAddressId": 150786,
+      }
+    }
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}

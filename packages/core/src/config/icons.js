@@ -11,7 +11,7 @@ export default {
   'icon-carrot-grey-large': '/static/images/carrot-icon-grey.svg',
   'icon-carrot-black-small': '/static/images/carrot-small-black.svg',
   'icon-carrot-white': '/static/images/carrot-icon-white.svg',
-  'icon-done': '/static/images/done.svg',
+  'icon-done': '/static/images/done.png',
   'footer__mpr-container--col1': '/static/images/mp-rewards-orange.png',
   'footer__mpr-container--col2': '/static/images/mp-rewards-blue.png',
   'header__brand-tab--tcp': '/static/images/tcp-logo.svg',
@@ -43,4 +43,9 @@ export default {
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
   'close-icon': '/static/images/close.png',
+  'mailing-address-icon': '/static/images/mailingAddress.jpg',
+  'fav-store-icon': '/static/images/store.jpg',
+  'birthday-icon': '/static/images/birthday.jpg',
+  'survey-icon': '/static/images/survey.png',
+  'smiley-icon': '/static/images/smiley-icon.png',
 };

@@ -18,6 +18,12 @@ const styles = css`
   .availability-btn:hover {
     background: ${props => props.theme.colorPalette.white};
   }
+  .availability-btn-active,
+  .availability-btn-active:hover {
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    color: ${props => props.theme.colorPalette.white};
+    background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+  }
 `;
 
 export default styles;
