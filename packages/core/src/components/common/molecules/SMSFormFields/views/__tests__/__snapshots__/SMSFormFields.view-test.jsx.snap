@@ -119,7 +119,25 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
         dataLocator="hide-show-checkbox"
         enableSuccessCheck={false}
         name="sendOrderUpdate"
-      />
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </Field>
     </Styled(Col)>
   </Styled(Row)>
 </div>
@@ -244,7 +262,25 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         dataLocator="hide-show-checkbox"
         enableSuccessCheck={false}
         name="sendOrderUpdate"
-      />
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs14",
+              "fs16",
+              "fs16",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </Field>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)>

@@ -26,7 +26,13 @@ class SMSFormFields extends React.PureComponent {
               dataLocator="hide-show-checkbox"
               enableSuccessCheck={false}
             >
-              {labels.orderUpdates}
+              <BodyCopy
+                fontSize={['fs14', 'fs16', 'fs16']}
+                fontFamily="secondary"
+                fontWeight="regular"
+              >
+                {labels.orderUpdates}
+              </BodyCopy>
             </Field>
           </Col>
         </Row>
