@@ -1,6 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { LoginPageSaga, loginSaga, getUserInfoSaga } from '../LoginPage.saga';
-import { setLoginInfo, getUserInfo } from '../LoginPage.actions';
+import { LoginPageSaga, loginSaga } from '../LoginPage.saga';
+import { setLoginInfo } from '../LoginPage.actions';
+import { getUserInfo } from '../../../User/container/User.actions';
 import constants from '../../LoginPage.constants';
 
 describe('LoginPage saga', () => {
@@ -35,34 +36,6 @@ describe('LoginPage saga', () => {
     it('should dispatch setLoginInfo for error response', () => {
       const error = new Error();
       const putDescriptor = loginGen.throw(error).value;
-      expect(putDescriptor).toEqual(
-        put(
-          setLoginInfo({
-            success: false,
-          })
-        )
-      );
-    });
-  });
-
-  describe('getUserInfoSaga', () => {
-    let getUserInfoGen;
-    beforeEach(() => {
-      getUserInfoGen = getUserInfoSaga();
-      getUserInfoGen.next();
-    });
-
-    it('should dispatch setLoginInfo action for success resposnse', () => {
-      const response = {
-        addressBook: [{}],
-      };
-      const putDescriptor = getUserInfoGen.next(response).value;
-      expect(putDescriptor).toEqual(put(setLoginInfo(response)));
-    });
-
-    it('should dispatch setLoginInfo for error response', () => {
-      const error = new Error();
-      const putDescriptor = getUserInfoGen.throw(error).value;
       expect(putDescriptor).toEqual(
         put(
           setLoginInfo({

@@ -81,6 +81,10 @@ export const formValidationMessages = {
     required: 'Please enter your password',
     password: 'Please enter a valid password',
   },
+  currentPassword: {
+    required: 'Please enter your password',
+    password: 'Your current password is incorrect. Please try again.',
+  },
   confirmPassword: {
     required: 'Please enter a valid password',
     equalTo: 'Passwords must match',
@@ -192,6 +196,10 @@ export const formValidationRules = {
     },
   },
   password: {
+    required: true,
+    password: true,
+  },
+  currentPassword: {
     required: true,
     password: true,
   },

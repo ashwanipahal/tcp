@@ -12,6 +12,7 @@ import ExternalAPIClient from './external/externalClient';
 const errorHandler = e => {
   // eslint-disable-next-line no-console
   console.log(e);
+  throw e;
 };
 
 /**
@@ -43,6 +44,15 @@ export const executeGraphQLQuery = query => {
   return loadGraphQLInterface()
     .then(client => executeQuery(query, client))
     .catch(errorHandler);
+};
+
+/**
+ * @function resetGraphQLClient
+ * This method resets graphql client
+ *
+ */
+export const resetGraphQLClient = () => {
+  loadGraphQLInterface().then(client => client.resetClient());
 };
 
 /**

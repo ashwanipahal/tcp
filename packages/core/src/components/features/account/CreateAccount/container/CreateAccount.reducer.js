@@ -8,7 +8,7 @@ const initialState = fromJS({
 const CreateAccountReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.CREATE_AN_ACCOUNT_ERR:
-      return state.set('error', action.payload);
+      return state.set('error', fromJS(action.payload));
     case constants.RESET_CREATE_AN_ACCOUNT_ERR:
       return state.set('error', null);
     default:

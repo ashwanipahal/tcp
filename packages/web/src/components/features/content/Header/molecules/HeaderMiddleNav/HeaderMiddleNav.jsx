@@ -10,8 +10,6 @@ import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
 
-let cartItemCount = getCartItemCount();
-
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
  * @param {Function} openNavigationDrawer Function to dispatch open drawer action to store
@@ -25,11 +23,23 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
 class HeaderMiddleNav extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
+    const { isLoggedIn } = props;
     this.state = {
       isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
+      isLoggedIn: isLoggedIn || false,
+      cartItemCount: getCartItemCount(),
     };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { isLoggedIn: prevLoggedInState } = prevState;
+    const { isLoggedIn: nextLoggedInState } = nextProps;
+    if (prevLoggedInState !== nextLoggedInState) {
+      return { cartItemCount: getCartItemCount() };
+    }
+    return null;
   }
 
   onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }) => {
@@ -40,7 +50,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
         variation: 'primary',
       });
     }
-    this.setState({ userNameClick: triggerLoginCreateAccount ? userNameClick : !userNameClick });
+    this.setState({
+      userNameClick: triggerLoginCreateAccount && userNameClick ? userNameClick : !userNameClick,
+    });
   };
 
   toggleMiniBagModal = ({ e, isOpen }) => {
@@ -50,7 +62,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     } else {
       this.setState({ isOpenMiniBagModal: isOpen });
       if (!isOpen) {
-        cartItemCount = getCartItemCount();
+        this.setState({
+          cartItemCount: getCartItemCount(),
+        });
       }
     }
   };
@@ -65,7 +79,12 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       userName,
     } = this.props;
     const brand = getBrand();
-    const { isOpenMiniBagModal, userNameClick, triggerLoginCreateAccount } = this.state;
+    const {
+      isOpenMiniBagModal,
+      userNameClick,
+      triggerLoginCreateAccount,
+      cartItemCount,
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -214,6 +233,7 @@ HeaderMiddleNav.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

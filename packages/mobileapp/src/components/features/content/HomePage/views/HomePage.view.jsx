@@ -9,8 +9,11 @@ import moduleAMockData from '../../../../../../../core/src/services/abstractors/
 
 class HomePageView extends React.Component {
   componentDidMount() {
-    const { getBootstrapData } = this.props;
-    getBootstrapData({ name: 'homepage' });
+    const {
+      getBootstrapData,
+      screenProps: { apiConfig },
+    } = this.props;
+    getBootstrapData({ name: 'homepage' }, apiConfig);
   }
 
   render() {
@@ -86,6 +89,8 @@ HomePageView.propTypes = {
   }),
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
+  appType: PropTypes.string.isRequired,
+  screenProps: PropTypes.shape({}),
 };
 
 HomePageView.defaultProps = {
@@ -94,6 +99,7 @@ HomePageView.defaultProps = {
   slot_3: {},
   slot_4: {},
   slot_6: {},
+  screenProps: {},
 };
 
 export default HomePageView;

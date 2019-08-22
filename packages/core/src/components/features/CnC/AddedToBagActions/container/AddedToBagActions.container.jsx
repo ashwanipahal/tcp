@@ -1,5 +1,4 @@
 import React from 'react';
-import Router from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddedToBagActionsView from '../views/AddedToBagActions';
@@ -18,7 +17,7 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, showAddTobag, inheritedStyles } = this.props;
+    const { labels, showAddTobag, inheritedStyles, navigation } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
     };
@@ -29,6 +28,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
         inheritedStyles={inheritedStyles}
+        navigation={navigation}
       />
     );
   }
