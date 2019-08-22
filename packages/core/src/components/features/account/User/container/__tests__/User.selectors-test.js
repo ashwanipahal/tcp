@@ -15,6 +15,7 @@ import {
   getProfileCompletion,
   getAnswersList,
   getDefaultStore,
+  getProfileInfoTileData,
 } from '../User.selectors';
 import { USER_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
@@ -141,5 +142,9 @@ describe('#User selector', () => {
 
   it('#getDefaultStore should return hobbies ', () => {
     expect(getDefaultStore(state)).toBe(stateObject.personalData.hobbies);
+  });
+
+  it('#getProfileInfoTileData should return profile information data', () => {
+    expect(getProfileInfoTileData(state).firstName).toBe('first');
   });
 });

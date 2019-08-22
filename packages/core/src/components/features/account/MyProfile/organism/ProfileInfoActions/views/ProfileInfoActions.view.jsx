@@ -59,6 +59,7 @@ export const ProfileInfoActions = ({
             fontFamily="secondary"
             fontSize="fs16"
             fontWeight="extrabold"
+            data-locator="enhanceExpHdr"
           >
             {labels.lbl_profile_Enhance_Experience}
           </BodyCopy>
@@ -67,25 +68,25 @@ export const ProfileInfoActions = ({
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.lbl_profile_profileCompletionExclamation}
               </BodyCopy>
-              <BodyCopy fontSize="fs16" fontFamily="secondary">
+              <BodyCopy fontSize="fs16" fontFamily="secondary" data-locator="infoAddedTxt">
                 {labels.lbl_profile_profileCompletionMessage}
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.lbl_profile_getMorePoints}
-                <Anchor to="/account/extra-points" underline fontSizeVariation="xlarge">
+                <Anchor to="/account" underline fontSizeVariation="xlarge" data-locator="hereLink">
                   {labels.lbl_profile_getMorePointsLink}
                 </Anchor>
                 {'?'}
               </BodyCopy>
             </>
           ) : (
-            <BodyCopy fontSize="fs16" fontFamily="secondary">
+            <BodyCopy fontSize="fs16" fontFamily="secondary" data-locator="instructionTxt">
               {labels.lbl_profile_profileInCompleteMessage}
             </BodyCopy>
           )}
         </div>
         {profileCompletion && (
-          <div className="elem-pt-MED">
+          <div className="elem-pt-MED" data-locator="profileCompletionImg">
             <ProfileProgress
               className="elem-ml-LRG elem-mr-LRG"
               profileCompletion={profileCompletion}
@@ -109,6 +110,7 @@ export const ProfileInfoActions = ({
             activityCompletionState={getMailingAddressState(mailingAddress, labels)}
             activityDescription={labels.lbl_profile_mailingAddressDescription}
             redirectTo="/account"
+            dataLocatorPrefix="email"
           />
         </Col>
         <Col
@@ -131,6 +133,7 @@ export const ProfileInfoActions = ({
             activityCompletionState={getFavStoreState(defaultStore, labels)}
             activityDescription={labels.lbl_profile_favStoreDescription}
             redirectTo="/account"
+            dataLocatorPrefix="favStore"
           />
         </Col>
         <Col
@@ -148,6 +151,7 @@ export const ProfileInfoActions = ({
             activityCompletionState={getUserBirthdayState(userBirthday, labels)}
             activityDescription={labels.lbl_profile_userBirthdayDescription}
             redirectTo="/account"
+            dataLocatorPrefix="birthday"
           />
         </Col>
         <Col
@@ -170,6 +174,7 @@ export const ProfileInfoActions = ({
             activityCompletionState={getAboutYourselfState(userSurvey, labels)}
             activityDescription={labels.lbl_profile_aboutYourselfDescription}
             redirectTo="/account"
+            dataLocatorPrefix="survey"
           />
         </Col>
       </Row>
