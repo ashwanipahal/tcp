@@ -19,6 +19,8 @@ class PickupPage extends React.PureComponent {
       currentPhoneNumber,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
+      initialValues,
+      pickUpData,
     } = this.props;
     return (
       <PickUpFormPart
@@ -33,6 +35,8 @@ class PickupPage extends React.PureComponent {
         currentPhoneNumber={currentPhoneNumber}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
+        initialValues={initialValues}
+        pickUpData={pickUpData}
       />
     );
   };
@@ -61,6 +65,7 @@ PickupPage.propTypes = {
   currentPhoneNumber: PropTypes.string,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
 };
 
 PickupPage.defaultProps = {

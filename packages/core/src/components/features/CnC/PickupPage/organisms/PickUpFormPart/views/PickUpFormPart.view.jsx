@@ -8,13 +8,53 @@ import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
+import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import ContactFormFields from '../../../molecules/ContactFormFields';
 import styles from '../styles/PickUpFormPart.style';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 class PickUpFormPart extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { isEditing: props.isGuest };
+  }
+
+  handleEditModeChange = isEditing => {
+    this.setState({ isEditing });
+  };
+
+  onEditMainContactSubmit = () => {
+    this.setState({ isEditing: false });
+  };
+
+  SaveAndCancelButton = () => {
+    return (
+      <div className="buttonContainer">
+        <Button
+          onClick={() => {}}
+          buttonVariation="variable-width"
+          type="button"
+          data-locator="payment-cancelbtn"
+        >
+          Cancel
+        </Button>
+        <Button
+          className="updateButton"
+          onClick={() => {}}
+          buttonVariation="variable-width"
+          type="button"
+          fill="BLUE"
+          data-locator="payment-cancelbtn"
+        >
+          Update
+        </Button>
+      </div>
+    );
+  };
+
   render() {
     const {
       className,
@@ -27,7 +67,9 @@ class PickUpFormPart extends React.PureComponent {
       currentPhoneNumber,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
+      pickUpData,
     } = this.props;
+    const { isEditing } = this.state;
     return (
       <div className={className}>
         <div className="container">
@@ -56,25 +98,30 @@ class PickUpFormPart extends React.PureComponent {
                     labels={pickUpLabels}
                   />
                 ) : (
-                  <ContactFormFields isMobile={isMobile} />
+                  <PickupMainContactEditForm
+                    isMobile={isMobile}
+                    isEditing={isEditing}
+                    className="pickup-contact-guest-form"
+                    showPhoneNumber
+                    pickUpData={pickUpData}
+                    labels={pickUpLabels}
+                    onSubmit={this.onEditMainContactSubmit}
+                    onEditModeChange={this.handleEditModeChange}
+                  />
                 )}
               </FormSection>
             </div>
-
-            {isUsSite && (
-              <div className="pick-up-form-container" dataLocator="pickup-sms">
-                <FormSection name="smsSignUp">
-                  <SMSFormFields
-                    isOrderUpdateChecked={isOrderUpdateChecked}
-                    formName="checkoutPickup"
-                    formSection="smsSignUp"
-                    altInitValue={currentPhoneNumber}
-                    labels={smsSignUpLabels}
-                  />
-                </FormSection>
-              </div>
-            )}
-
+            <div className="pick-up-form-container" dataLocator="pickup-sms">
+              <FormSection name="smsSignUp">
+                <SMSFormFields
+                  isOrderUpdateChecked={isOrderUpdateChecked}
+                  formName="checkoutPickup"
+                  formSection="smsSignUp"
+                  altInitValue={currentPhoneNumber}
+                  labels={smsSignUpLabels}
+                />
+              </FormSection>
+            </div>
             {isGuest && !isUsSite && (
               <div className="email-signup-container">
                 <Field
@@ -126,9 +173,11 @@ class PickUpFormPart extends React.PureComponent {
                   formName="checkoutPickup"
                   formSection="pickUpAlternate"
                   labels={pickUpLabels}
+                  isEditing={isEditing}
                 />
               </FormSection>
             </div>
+            {isEditing && this.SaveAndCancelButton()}
           </form>
         </div>
       </div>
@@ -147,6 +196,7 @@ PickUpFormPart.propTypes = {
   currentPhoneNumber: PropTypes.string,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
 };
 
 PickUpFormPart.defaultProps = {

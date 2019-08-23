@@ -5,15 +5,12 @@ const styles = css`
   .header {
     display: flex;
     justify-content: flex-start;
-    margin-top: 15px;
-    margin-bottom: 32px;
+    margin-top: 42px;
+    margin-bottom: 28px;
   }
   .EditAnchor {
     margin-left: 26px;
     align-self: flex-end;
-  }
-  .contactBody {
-    margin-bottom: 28px;
   }
 `;
 

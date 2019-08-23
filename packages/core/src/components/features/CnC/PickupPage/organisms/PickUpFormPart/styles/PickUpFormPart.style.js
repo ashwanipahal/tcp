@@ -7,6 +7,10 @@ const styles = css`
       ${props => props.theme.spacing.LAYOUT_SPACING.SM}
       ${props => props.theme.spacing.LAYOUT_SPACING.SM}
       ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+    min-height: 419px;
+    padding-bottom: 24px;
+    border-radius: 0.5px;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.black};
   }
   .TextBox__input {
     background: transparent;
@@ -30,6 +34,15 @@ const styles = css`
   .mail-signup-container,
   .ickUpAlternate-container {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 45px;
+    margin-top: 71px;
+  }
+  .updateButton {
+    margin-left: 30px;
   }
 `;
 

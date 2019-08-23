@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAlternateFormUpdate, getPickUpContactFormLabels } from './Pickup.selectors';
 import {
+  getAlternateFormUpdate,
+  getPickUpContactFormLabels,
   getSendOrderUpdate,
-  getSmsSignUpLabels,
-} from '../../ShippingPage/container/ShippingPage.selectors';
+} from './Pickup.selectors';
+import { getSmsSignUpLabels } from '../../ShippingPage/container/ShippingPage.selectors';
 
 import CheckoutPickUpForm from '../views/CheckoutPickUpFormView';
 import { isCanada } from '../../../../../utils';
@@ -19,8 +20,38 @@ export class PickupContainer extends React.PureComponent {
       smsSignUpLabels,
     } = this.props;
     const props = {
+      pickUpData: {
+        firstName: 'firstName',
+        lastName: 'lastName',
+        emailAddress: 'name@gmail.com',
+        phoneNumber: '8778788778',
+        smsInfo: {
+          wantsSmsOrderUpdates: '8778788778',
+          smsUpdateNumber: '8778788778',
+        },
+        hasAlternatePickup: true,
+        pickUpAlternate: {},
+      },
+      initialValues: {
+        pickUpContact: {
+          firstName: 'deependra',
+          lastName: 'sankhala',
+          emailAddress: 'deep@gmail.com',
+          phoneNumber: '8778788778',
+        },
+        smsSignUp: {
+          sendOrderUpdate: true,
+          phoneNumber: '8778788778',
+        },
+        pickUpAlternate: {
+          hasAlternatePickup: true,
+          firstName: 'firstName',
+          lastName: 'lastName',
+          emailAddress: 'name@gmail.com',
+        },
+      },
       error: '',
-      isGuest: true,
+      isGuest: false,
       isUsSite: !isCanada(),
       pickUpLabels,
       smsSignUpLabels,
@@ -36,6 +67,7 @@ PickupContainer.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
 };
 
 const mapStateToProps = state => {
