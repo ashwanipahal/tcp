@@ -91,7 +91,11 @@ const CardCtaLinkMargin = styled.View`
 
 const RecaptchaContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  height: 89px;
+  height: 400px;
+  position:relative;
+  top:0;
+  bottom:0;
+  border:1px solid red;
 `;
 
 export {

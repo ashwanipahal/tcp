@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { get } from 'lodash';
 import { View, ScrollView } from 'react-native';
 import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
@@ -114,6 +115,7 @@ class PaymentView extends React.Component<Props> {
       setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
+      recpatchaToken:''
     };
     this.isEdit = false;
   }
@@ -127,9 +129,9 @@ class PaymentView extends React.Component<Props> {
 
   getCardExpiryText = (labels, selectedCard) => {
     return selectedCard && selectedCard.expMonth
-      ? `${labels.paymentGC.lbl_payment_expDate}${selectedCard.expMonth.trim()}/${
-          selectedCard.expYear
-        }`
+      ? `${
+          labels.paymentGC.lbl_payment_expDate
+        }${selectedCard.expMonth.trim()}/${selectedCard.expYear}`
       : '';
   };
 
@@ -143,13 +145,6 @@ class PaymentView extends React.Component<Props> {
     const { setDeleteModalMountedState } = this.state;
     this.setState({
       setDeleteModalMountedState: !setDeleteModalMountedState,
-    });
-  };
-
-  setRecaptchaModalMountState = () => {
-    const { setRecaptchaModalMountedState } = this.state;
-    this.setState({
-      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
     });
   };
 
@@ -181,7 +176,13 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
-  getPaymentModal = (setUpdateModalMountedState, dto, labels, updateCardList, selectedCard) => {
+  getPaymentModal = (
+    setUpdateModalMountedState,
+    dto,
+    labels,
+    updateCardList,
+    selectedCard
+  ) => {
     return (
       setUpdateModalMountedState && (
         <AddEditPaymentModal
@@ -198,11 +199,29 @@ class PaymentView extends React.Component<Props> {
     );
   };
 
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
+    });
+  };
+
+  onMessage = event => {
+    debugger
+    if (event && event.nativeEvent.data) {
+      const value =  get(event, 'nativeEvent.data', '');
+      this.setState({recpatchaToken : value})
+    }
+  };
+
+
   toogleRecaptcha = ({ labels, setRecaptchaModalMountedState }) => {
+    debugger;
     return (
       <React.Fragment>
         {setRecaptchaModalMountedState && (
           <RecaptchaModal
+            onMessage={this.onMessage}
             labels={labels}
             setRecaptchaModalMountedState={setRecaptchaModalMountedState}
             toggleRecaptchaModal={this.setRecaptchaModalMountState}
@@ -213,6 +232,9 @@ class PaymentView extends React.Component<Props> {
       </React.Fragment>
     );
   };
+
+
+
   // toogleRecaptcha = () => {
 
   // }
@@ -236,6 +258,7 @@ class PaymentView extends React.Component<Props> {
       setUpdateModalMountedState,
       setRecaptchaModalMountedState,
       selectedCard,
+      recpatchaToken
     } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
@@ -318,8 +341,11 @@ class PaymentView extends React.Component<Props> {
               toggleRecaptchaModal={this.setRecaptchaModalMountState}
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.toggleGiftCardModal}
+              recpatchaToken={recpatchaToken}
             />
           )}
+          {this.toogleRecaptcha({ labels, setRecaptchaModalMountedState })}
+
           {setDeleteModalMountedState && (
             <DeleteModal
               dto={dto}
@@ -332,7 +358,7 @@ class PaymentView extends React.Component<Props> {
               addressDetails={selectedCard.addressDetails}
             />
           )}
-          {this.toogleRecaptcha({ labels, setRecaptchaModalMountedState })}
+
           {this.getPaymentModal(
             setUpdateModalMountedState,
             dto,
@@ -341,7 +367,10 @@ class PaymentView extends React.Component<Props> {
             selectedCard
           )}
           {showGiftCardModal && (
-            <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
+            <ModalNative
+              isOpen={showGiftCardModal}
+              onRequestClose={this.toggleGiftCardModal}
+            >
               <ModalHeading>
                 <BodyCopy
                   mobileFontFamily={['secondary']}
@@ -354,7 +383,10 @@ class PaymentView extends React.Component<Props> {
                 <LineComp marginTop={5} borderWidth={1} borderColor="black" />
               </LineWrapper>
               <ModalViewWrapper>
-                <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />
+                <AddGiftCardContainer
+                  toggleModal={this.toggleGiftCardModal}
+                  labels={labels}
+                />
               </ModalViewWrapper>
             </ModalNative>
           )}
