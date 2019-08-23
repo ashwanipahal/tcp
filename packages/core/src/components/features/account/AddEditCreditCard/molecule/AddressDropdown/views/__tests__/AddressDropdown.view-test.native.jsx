@@ -9,6 +9,7 @@ describe('CreditCardFields component', () => {
       input: { value: '', onChange: () => {} },
       selectListTitle: 'Select Address',
       labels: { common: { lbl_common_tapClose: 'Tap to close' } },
+      data: [],
     };
     const component = shallow(<AddressDropdown {...props} />);
     expect(component).toMatchSnapshot();

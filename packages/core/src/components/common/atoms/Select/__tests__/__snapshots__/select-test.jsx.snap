@@ -5,11 +5,13 @@ exports[`Selectbox component renders correctly 1`] = `
   className="asdfasdf"
 >
   <select
+    Value="hi"
     aria-label=""
     className="select__input"
     data-locator=""
     id="abcd"
     name=""
+    type="text"
     value="hello"
   >
     <option
@@ -40,6 +42,14 @@ exports[`Selectbox component renders correctly 1`] = `
   >
     placeholder
   </Styled(BodyCopy)>
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+  </div>
 </div>
 `;
 
@@ -51,9 +61,11 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     aria-label=""
     className="select__input"
     data-locator=""
+    defaultValue="United States"
     id="abcd"
     name=""
-    value="first name for user"
+    type="text"
+    value="some string @@LABEL@@"
   >
     <option
       value=""
@@ -88,19 +100,29 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
   >
     first name for user
   </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className={null}
-    color="error"
-    component="div"
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
+  <div
+    className="SelectBox__error"
   >
-    REQUIRED_FIELD
-  </Styled(BodyCopy)>
+    <div
+      aria-disabled="true"
+      className="warning-icon"
+    />
+    <Styled(BodyCopy)
+      aria-live="assertive"
+      className={null}
+      color="error"
+      component="div"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      role="alert"
+      textAlign="left"
+    >
+      REQUIRED_FIELD
+    </Styled(BodyCopy)>
+  </div>
 </div>
 `;
 
@@ -112,8 +134,10 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     aria-label=""
     className="select__input"
     data-locator=""
+    defaultValue="United States"
     id="abcd"
     name=""
+    type="text"
     value=""
   >
     <option
@@ -142,5 +166,13 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     lineHeight="normal"
     textAlign="left"
   />
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+  </div>
 </div>
 `;

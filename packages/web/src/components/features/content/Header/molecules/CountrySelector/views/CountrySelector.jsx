@@ -7,6 +7,13 @@ import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
 import CountrySelectorModal from './CountrySelectorModal';
 import style from '../styles/CountrySelector.styles';
 
+
+/**
+ * @class CountrySelector - Invokes a country, language, currency change selector
+ * from the global header and footer
+ * A Modal will be opened by clicking on flag icon or language from header and footer.
+ * @param {props} accepts countriesMap, currenciesMap and languageMap as props.
+ */
 class CountrySelector extends React.Component {
   openModal = () => {
     const { countriesMap, toggleModal } = this.props;
@@ -17,8 +24,11 @@ class CountrySelector extends React.Component {
   };
 
   closeModal = () => {
-    const { toggleModal } = this.props;
+    const { toggleModal, updateCountry, updateLanguage, updateCurrency } = this.props;
     toggleModal({ isModalOpen: false });
+    updateCountry('');
+    updateLanguage('');
+    updateCurrency('');
   };
 
   getCountryListData = () => {
@@ -28,17 +38,17 @@ class CountrySelector extends React.Component {
 
   getSelectedCountry = countryCode => {
     const { countriesMap } = this.props;
-    return countriesMap.find(country => country.code === countryCode);
+    return countriesMap.find(country => country.id === countryCode);
   };
 
   getCurrencyMap = countryCode => {
     const { countriesMap } = this.props;
-    return countriesMap.find(country => country.code === countryCode).currencyId;
+    return countriesMap.find(country => country.id === countryCode).currencyId;
   };
 
   getSelectedCurrency = currencyCode => {
     const { currenciesMap } = this.props;
-    return currenciesMap.find(currency => currency.code === currencyCode);
+    return currenciesMap.find(currency => currency.id === currencyCode);
   };
 
   submitForm = () => {
@@ -106,6 +116,7 @@ class CountrySelector extends React.Component {
     } = this.props;
     const languages = this.getLanguageMap();
     const flagIconSrc = getFlagIconPath(savedCountry);
+
     return (
       <div className={`${className} countrySelector`}>
         {showInFooter ? (

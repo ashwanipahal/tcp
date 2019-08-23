@@ -26,8 +26,8 @@ const LoginTopSection = props => {
       <LineComp marginTop={30} marginBottom={17} />
       <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
       <SubHeadingStyle>{labels.login.lbl_login_subHeading}</SubHeadingStyle>
-      <DescriptionStyle>{labels.login.lbl_login_subDescription_heading_1}</DescriptionStyle>
-      <DescriptionStyle>{labels.login.lbl_login_subDescription_heading_2}</DescriptionStyle>
+      <DescriptionStyle>{labels.login.lbl_login_Description_heading_1}</DescriptionStyle>
+      <DescriptionStyle>{labels.login.lbl_login_Description_heading_2}</DescriptionStyle>
       <LineComp marginTop={25} marginBottom={0} />
     </View>
   );

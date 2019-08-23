@@ -36,11 +36,6 @@ const buildQuery = ({ slot, contentId }) => `
           alt
           title
         }
-        image {
-          url
-          alt
-          title
-        }
         textItems {
           text
           style

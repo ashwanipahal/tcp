@@ -1,13 +1,20 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Button } from '@tcp/core/src/components/common/atoms';
+import { Field, reduxForm } from 'redux-form';
+import { BodyCopy, Button, SelectBox } from '@tcp/core/src/components/common/atoms';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLocator } from '@tcp/core/src/utils';
 
-import styles, { modalStyles } from '../styles/CountrySelectorModal.style';
+import styles, { modalStyles, selectBoxStyle } from '../styles/CountrySelectorModal.style';
+import { sites } from '../../../../../../../constants';
 
+/**
+ * @class CountrySelectorModal - Opens a Modal containing options to select
+ * Country Language, and Currency
+ * @param {props} accepts countriesMap, currenciesMap and languageMap as props.
+ */
 class CountrySelectorModal extends React.Component {
   constructor(props) {
     super(props);
@@ -37,9 +44,10 @@ class CountrySelectorModal extends React.Component {
 
   toggleDisable = () => {
     const { updatedCountry, updatedCurrency } = this.props;
+    const { us, ca } = sites;
     return (
-      (updatedCountry === 'US' && updatedCurrency === 'USD') ||
-      (updatedCountry === 'CA' && updatedCurrency === 'CAD')
+      (updatedCountry === us.countryCode && updatedCurrency === us.currencyCode) ||
+      (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode)
     );
   };
 
@@ -53,9 +61,9 @@ class CountrySelectorModal extends React.Component {
       closeModal,
       labels,
       languages,
-      savedCountry,
       savedCurrency,
       savedLanguage,
+      savedCountry,
       updatedCurrency,
     } = this.props;
     return (
@@ -87,54 +95,47 @@ class CountrySelectorModal extends React.Component {
           <form className="shipToForm">
             <label htmlFor="country">
               <span>{labels.lbl_global_country}</span>
-              <select
-                data-locator={getLocator('country')}
-                name="country"
+              <Field
                 id="country"
+                name="country"
+                component={SelectBox}
+                options={countriesMap}
+                dataLocator={getLocator('country')}
                 onChange={this.handleCountryChange}
-              >
-                {countriesMap.length > 0 &&
-                  countriesMap.map(({ code, name }) => (
-                    <option value={code} selected={savedCountry === code}>
-                      {name}
-                    </option>
-                  ))}
-              </select>
+                inheritedStyles={selectBoxStyle}
+                defaultSelected={savedCountry}
+              />
             </label>
             <label htmlFor="language">
               <span>{labels.lbl_global_language}</span>
-              <select
-                data-locator={getLocator('language')}
-                name="language"
+              <Field
                 id="language"
+                name="language"
+                component={SelectBox}
+                options={languages}
+                dataLocator={getLocator('language')}
                 onChange={this.handleLanguageChange}
-              >
-                {languages.map(({ id, displayName }) => (
-                  <option value={id} selected={savedLanguage === id}>
-                    {displayName}
-                  </option>
-                ))}
-              </select>
+                input={{
+                  value: savedLanguage,
+                }}
+                inheritedStyles={selectBoxStyle}
+              />
             </label>
             <label htmlFor="currency">
               <span>{labels.lbl_global_currency}</span>
-              <select
-                data-locator={getLocator('currency')}
-                name="currency"
+              <Field
                 id="currency"
+                name="currency"
+                component={SelectBox}
+                options={currenciesMap}
+                dataLocator={getLocator('currency')}
                 onChange={this.handleCurrencyChange}
                 disabled={this.toggleDisable()}
-              >
-                {currenciesMap.length > 0 &&
-                  currenciesMap.map(({ code, name }) => (
-                    <option
-                      value={code}
-                      selected={updatedCurrency === code || savedCurrency === code}
-                    >
-                      {name}
-                    </option>
-                  ))}
-              </select>
+                input={{
+                  value: updatedCurrency || savedCurrency,
+                }}
+                inheritedStyles={selectBoxStyle}
+              />
             </label>
             <Button
               className="shipToModal__button"
@@ -186,5 +187,7 @@ CountrySelectorModal.defaultPropTypes = {
   toggleModal: () => {},
 };
 
-export default withStyles(CountrySelectorModal, styles);
-export { CountrySelectorModal as CountrySelectorModalVanilla };
+export default reduxForm({
+  form: 'CountrySelectorForm', // a unique identifier for this form
+  enableReinitialize: true,
+})(withStyles(CountrySelectorModal, styles));

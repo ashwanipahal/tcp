@@ -5,6 +5,7 @@ import icons from '../config/icons';
 import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
+import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -183,11 +184,80 @@ export const closeOverlay = () => {
   }
 };
 
+export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
+  const prototype = Object.getPrototypeOf(obj);
+  // eslint-disable-next-line
+  for (let name of Object.getOwnPropertyNames(prototype)) {
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
+    const isGetter = descriptor && typeof descriptor.get === 'function';
+    // eslint-disable-next-line
+    if (isGetter) continue;
+    if (
+      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
+        ? !name.startsWith(namePrefix)
+        : name.startsWith(namePrefix)
+    ) {
+      // eslint-disable-next-line
+      obj[name] = prototype[name].bind(obj);
+    }
+  }
+};
+
 export const scrollPage = (x = 0, y = 0) => {
   if (window) {
     window.scrollTo(x, y);
   }
 };
+
+export const getCountriesMap = data => {
+  const countries = defaultCountries;
+  data.map(value =>
+    countries.push(
+      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+    )
+  );
+  return countries;
+};
+
+export const getCurrenciesMap = data => {
+  const currencies = defaultCurrencies;
+  data.map(value => currencies.push(Object.assign({}, value.currency, value.exchangeRate)));
+  return currencies.filter(
+    (currency, index, self) => index === self.findIndex(cur => cur.id === currency.id)
+  );
+};
+
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+
+export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
+  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
+    routerPush(window.location, '/home', newSiteId);
+  }
+}
+
+export const languageRedirect = (newLanguage, oldLanguage) => {
+  if (newLanguage && newLanguage !== oldLanguage) {
+    const { protocol, host, pathname } = window.location;
+    if (newLanguage === 'fr' && host.indexOf('fr.') === -1) {
+      const href = `${protocol}//fr.${host}${pathname}`;
+      window.location = href;
+    } else if (newLanguage === 'es' && host.indexOf('es.') === -1) {
+      const href = `${protocol}//es.${host}${pathname}`;
+      window.location = href;
+    }
+  }
+}
 
 export default {
   importGraphQLClientDynamically,
@@ -201,10 +271,17 @@ export default {
   getCreditCardExpirationOptionMap,
   getSiteId,
   routerPush,
+  bindAllClassMethodsToThis,
   scrollPage,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
 };
 
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
+  const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
@@ -214,6 +291,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
+    }`,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
@@ -242,7 +322,7 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv);
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,

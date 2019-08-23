@@ -13,6 +13,7 @@ import {
   getCurrentCountry,
   getIsModalOpen,
   getCountriesMap,
+  getLabels,
   getCurrenciesMap,
   getCurrentLanguage,
   getCurrentCurrency,
@@ -63,7 +64,7 @@ const mapStateToProps = state => {
     savedCountry: getOldCountry(state),
     savedCurrency: getOldCurrency(state),
     siteId: getSiteId(state),
-    labels: state.Labels.global.countrySelector,
+    labels: getLabels(state),
   };
 };
 

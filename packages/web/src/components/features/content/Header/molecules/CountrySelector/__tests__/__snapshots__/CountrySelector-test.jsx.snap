@@ -4,11 +4,96 @@ exports[`Country Selector Component renders correctly 1`] = `
 <div
   className="undefined countrySelector"
 >
+  <Styled(BodyCopy)
+    className="countrySelector__shipTo"
+    color="gray.800"
+    component="div"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+  <ReduxForm
+    closeModal={[Function]}
+    countriesMap={
+      Array [
+        Object {
+          "currencyId": "USD",
+          "displayName": "United States",
+          "id": "US",
+          "siteId": "us",
+        },
+        Object {
+          "currencyId": "CAD",
+          "displayName": "CANADA",
+          "id": "CA",
+          "siteId": "ca",
+        },
+      ]
+    }
+    currenciesMap={
+      Array [
+        Object {
+          "displayName": "Dollars",
+          "id": "USD",
+          "merchantMargin": "1.0",
+          "value": "1.0",
+        },
+        Object {
+          "displayName": "Canada Dollar",
+          "id": "CAD",
+          "merchantMargin": "1.0",
+          "value": "1.0",
+        },
+      ]
+    }
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="CountrySelectorForm"
+    getFormState={[Function]}
+    handleSubmit={[Function]}
+    isModalOpen={false}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    languages={
+      Array [
+        Object {
+          "displayName": "English",
+          "id": "en",
+        },
+        Object {
+          "displayName": "Spanish",
+          "id": "es",
+        },
+      ]
+    }
+    persistentSubmitErrors={false}
+    pure={true}
+    savedCountry="US"
+    savedCurrency="USD"
+    savedLanguage="en"
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateCountry={[Function]}
+    updateCurrency={[Function]}
+    updateLanguage={[Function]}
+    updateUnregisteredFields={false}
+    updatedCountry="US"
+    updatedCurrency="USD"
+  />
   <div
     className="countrySelector__flag-icon"
   >
     <Styled(Image)
-      data-locator="header_country_flag"
+      data-locator="footer_country_flag"
       height="20px"
       onClick={[Function]}
       src="/static/images/flags/united-states-of-america.svg"
@@ -20,7 +105,7 @@ exports[`Country Selector Component renders correctly 1`] = `
       className="countrySelector__locale--selected countrySelector__locale"
       color="text.primary"
       component="span"
-      data-locator="header_language_selected"
+      data-locator="footer_language_selected"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"

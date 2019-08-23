@@ -57,3 +57,7 @@ export const getOldCurrency = state => {
 export const getOldLanguage = state => {
   return state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'language']);
 };
+
+export const getLabels = state => {
+  return state.Labels.global.countrySelector;
+};

@@ -2,12 +2,12 @@ const buildQuery = () => `
   query fetchCMSData {
     countryList {
       country {
-        code
-        name
+        id: code
+        displayName: name
       }
       currency {
-        code
-        name
+        id: code
+        displayName: name
       }
       exchangeRate {
         value

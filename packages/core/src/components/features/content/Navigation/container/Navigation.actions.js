@@ -43,3 +43,22 @@ export const hideL3Drawer = payload => {
     type: NAVIGATION_CONSTANTS.HIDE_L3_DRAWER,
   };
 };
+
+export const hideNavigationFooter = () => {
+  return {
+    type: NAVIGATION_CONSTANTS.HIDE_NAVIGATION_FOOTER,
+  };
+};
+
+export const showNavigationFooter = () => {
+  return {
+    type: NAVIGATION_CONSTANTS.SHOW_NAVIGATION_FOOTER,
+  };
+};
+
+export const removeL1Focus = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.REMOVE_L1_FOCUS,
+  };
+};

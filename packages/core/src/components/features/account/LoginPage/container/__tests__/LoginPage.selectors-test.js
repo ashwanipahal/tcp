@@ -11,7 +11,9 @@ describe('#LoginPage selector', () => {
   it('#getLoginError should return false if user is logged in', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        success: true,
+        error: fromJS({ success: true }),
+        loginModalMountedState: false,
+        checkoutModalMountedState: false,
       }),
     };
     expect(getLoginError(initialState)).toBeFalsy();
@@ -20,7 +22,9 @@ describe('#LoginPage selector', () => {
   it('#getLoginError should return true if user is not logged in', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        success: false,
+        error: fromJS({ success: false }),
+        loginModalMountedState: false,
+        checkoutModalMountedState: false,
       }),
     };
     expect(getLoginError(initialState)).toBeTruthy();
@@ -29,7 +33,9 @@ describe('#LoginPage selector', () => {
   it('#shouldShowRecaptcha should return true or false based on error response', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        retiresCount: '1',
+        error: fromJS({ success: false, retiresCount: '1' }),
+        loginModalMountedState: false,
+        checkoutModalMountedState: false,
       }),
     };
     expect(shouldShowRecaptcha(initialState)).toEqual(false);
@@ -59,7 +65,9 @@ describe('#LoginPage selector', () => {
           },
         },
         [LOGINPAGE_REDUCER_KEY]: fromJS({
-          errorCode: '1234',
+          error: fromJS({ success: false, errorCode: '1234' }),
+          loginModalMountedState: false,
+          checkoutModalMountedState: false,
         }),
       };
     });
@@ -80,10 +88,15 @@ describe('#LoginPage selector', () => {
           },
         },
         [LOGINPAGE_REDUCER_KEY]: fromJS({
-          errorCode: '2222',
-          errorMessage: {
-            _error: APIError,
-          },
+          error: fromJS({
+            success: false,
+            errorCode: '2222',
+            errorMessage: {
+              _error: APIError,
+            },
+          }),
+          loginModalMountedState: false,
+          checkoutModalMountedState: false,
         }),
       };
       const errorMessage = getLoginErrorMessage(updatedState);

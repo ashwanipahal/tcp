@@ -29,6 +29,8 @@ export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrier
       title={labels.lbl_overview_myPlaceRewardsHeading}
       ctaTitle={labels.lbl_overview_myPlaceRewardsCTA}
       dataLocatorPrefix="myrewardstile"
+      ctaLink="/account?id=place-rewards"
+      ctaPath="/account/place-rewards"
     >
       <section className={`elem-pb-MED ${isBrierleyEnabled ? 'bordered' : ''}`}>
         <BodyCopy

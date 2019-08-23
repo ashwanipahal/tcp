@@ -1,6 +1,14 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import countrySelectorAbstractor from '@tcp/core/src/services/abstractors/common/countrySelector';
-import { getSiteId, isCanada, routerPush } from '@tcp/core/src/utils';
+import {
+  getSiteId,
+  isCanada,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
+} from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import endpoints from '@tcp/core/src/services/endpoints';
 import {
@@ -16,71 +24,11 @@ import {
   udpateSiteId,
 } from './CountrySelector.actions';
 
-const getCountries = data => {
-  // US and CA are not coming from backend. They said we need to append it at the top from front end.
-  const countries = [
-    {
-      code: 'US',
-      currencyId: 'USD',
-      name: 'United States',
-      siteId: 'us',
-    },
-    {
-      code: 'CA',
-      currencyId: 'CAD',
-      name: 'CANADA',
-      siteId: 'ca',
-    },
-  ];
-  data.map(value =>
-    countries.push(
-      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.code })
-    )
-  );
-  return countries;
-};
-
-const getCurrencies = data => {
-  const currencies = [
-    {
-      code: 'USD',
-      name: 'Dollars',
-      value: '1.0',
-      merchantMargin: '1.0',
-    },
-    {
-      code: 'CAD',
-      name: 'Canada Dollar',
-      value: '1.0',
-      merchantMargin: '1.0',
-    },
-  ];
-  data.map(value => currencies.push(Object.assign({}, value.currency, value.exchangeRate)));
-  return currencies
-    .map(currency => currency.code)
-    .map((cur, ind, final) => final.indexOf(cur) === ind && ind)
-    .filter(e => currencies[e])
-    .map(e => currencies[e]);
-};
-
-const getModifiedLanguageCode = code => {
-  switch (code) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return code;
-  }
-};
-
 export function* fetchCountryListData() {
   const res = yield call(countrySelectorAbstractor.getData);
   const data = res && res.data.countryList;
-  const countriesMap = getCountries(data);
-  const currenciesMap = getCurrencies(data);
+  const countriesMap = getCountriesMap(data);
+  const currenciesMap = getCurrenciesMap(data);
   yield all([
     put(setCountryListData(data)),
     put(storeCountriesMap(countriesMap)),
@@ -88,7 +36,6 @@ export function* fetchCountryListData() {
   ]);
 }
 
-// eslint-disable-next-line complexity
 export function* submitCountrySelectionData({ payload: data }) {
   const siteConfig = isCanada() ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const { addShipToStore } = endpoints;
@@ -120,7 +67,7 @@ export function* submitCountrySelectionData({ payload: data }) {
   };
   const { submitData } = countrySelectorAbstractor;
   const res = yield call(submitData, payload);
-  if (!res) console.log('Error occurered');
+  if (!res) console.log('Error occurered!');
   const { country: newCountry, language: newLanguage } = data;
   const oldCountry = yield select(state =>
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
@@ -132,20 +79,8 @@ export function* submitCountrySelectionData({ payload: data }) {
   const oldSiteId = getSiteId();
   yield put(udpateSiteId(newSiteId));
 
-  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location, '/home', newSiteId);
-  }
-
-  if (newLanguage && newLanguage !== oldLanguage) {
-    const { protocol, host, pathname } = window.location;
-    if (newLanguage === 'fr' && host.indexOf('fr.') === -1) {
-      const href = `${protocol}//fr.${host}${pathname}`;
-      window.location = href;
-    } else if (newLanguage === 'es' && host.indexOf('es.') === -1) {
-      const href = `${protocol}//es.${host}${pathname}`;
-      window.location = href;
-    }
-  }
+  siteRedirect(newCountry, oldCountry, newSiteId, oldSiteId);
+  languageRedirect(newLanguage, oldLanguage);
 }
 
 function* CountrySelectorSaga() {

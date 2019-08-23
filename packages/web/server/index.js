@@ -29,7 +29,7 @@ const getLanguageByDomain = domain => {
   return langCode === 'es' || langCode === 'en' || langCode === 'fr' ? langCode : 'en';
 };
 
-const setSiteId = (req, res) => {
+const setSiteDetails = (req, res) => {
   const { url } = req;
   let siteId = siteIds.us;
   let reqUrl = url.split('/');
@@ -72,7 +72,7 @@ app.prepare().then(() => {
       ? route.path
       : sites.map(location => `/${location}${route.path}`);
     server.get(routePaths, (req, res) => {
-      setSiteId(req, res);
+      setSiteDetails(req, res);
       setBrandId(req, res);
       setHostname(req, res);
       // Handling routes without params

@@ -14,8 +14,14 @@ export {
   getViewportInfo,
   showOverlay,
   closeOverlay,
+  bindAllClassMethodsToThis,
   scrollPage,
   createAPIConfig,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
 } from './utils.web';
 
 export {

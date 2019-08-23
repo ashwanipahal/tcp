@@ -213,7 +213,7 @@ export default {
   VU: '/static/images/flags/vanuatu.svg',
   VN: '/static/images/flags/vietnam.svg',
   VG: '/static/images/flags/virgin-islands.svg',
-  WF: '/static/images/flags/united-states-of-america.svg',
+  WF: '/static/images/flags/wallis-and-futuna.gif',
   YE: '/static/images/flags/yemen.svg',
   ZM: '/static/images/flags/zambia.svg',
   ZW: '/static/images/flags/zimbabwe.svg',
