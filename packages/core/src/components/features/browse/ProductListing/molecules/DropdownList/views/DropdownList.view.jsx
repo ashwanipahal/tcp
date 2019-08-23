@@ -1,4 +1,3 @@
-/* eslint-disable */
 /** @module DropdownList
  * Note: this component is not meant to be directly used in forms!
  * It is a helper component for rendering the dropdown portion of other components such as  CustomSelect or Combobox
@@ -11,12 +10,9 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import DropdownListStyle from '../DropdownList.style';
-import Button from '../../../../../../../../../core/src/components/common/atoms/Button';
-/**TODO
- * Temp commented
- */
+import Button from '../../../../../../common/atoms/Button';
 
-//import invariant from './node_modules/invariant';
+// TODO Fix this import invariant from './node_modules/invariant';
 import cssClassName from '../../utils/cssClassName';
 import SelectItem from '../../SelectItem/views';
 
@@ -66,6 +62,11 @@ const PROP_TYPES = {
    * the corresponding entry in optionsMap is selected or not (used when multiple selections are needed)
    */
   selectedIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.bool)]),
+
+  facetName: PropTypes.string.isRequired,
+  autosuggestAnalytics: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired,
 };
 
 class DropdownList extends React.Component {
@@ -74,12 +75,15 @@ class DropdownList extends React.Component {
    * @return the first index in optionsMap starting at index start, and incrementing by increment while scanning;
    * returns -1 if start is out of bounds, or if all items scanned are disabled
    */
+
   static getFirstEnabledIndex(optionsMap, start, increment) {
     let result = start;
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       if (result < 0 || result >= optionsMap.length) {
         return -1;
-      } else if (optionsMap[result].disabled) {
+      }
+      if (optionsMap[result].disabled) {
         result += increment;
       } else {
         return result;
@@ -106,8 +110,8 @@ class DropdownList extends React.Component {
         // look for last enabled item in optionsMap
         return DropdownList.getFirstEnabledIndex(optionsMap, optionsMap.length - 1, -1);
       default:
-        //invariant(true, `${this.displayName}: unknown destination of highlited option ${direction}`);
-        return; // eslint-disable-line no-useless-return
+        // TODO Fix this invariant(true, `${this.displayName}: unknown destination of highlited option ${direction}`);
+        return true; // eslint-disable-line no-useless-return
     }
   }
   // --------------- end of static methods --------------- //
@@ -123,50 +127,69 @@ class DropdownList extends React.Component {
     this.captureHighlightedRef = this.captureHighlightedRef.bind(this);
   }
 
+  componentDidMount() {
+    if (this.scrollToHighlightedOnUpdate) {
+      // if needs to scroll to put the highlighted item into view
+      this.scrollToHighlighted();
+      this.scrollToHighlightedOnUpdate = false;
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (
-      this.props.optionsMap !== nextProps.optionsMap ||
-      this.props.highlightedIndex !== nextProps.higlightedIndex
-    ) {
+    const { optionsMap, highlightedIndex } = this.props;
+    if (optionsMap !== nextProps.optionsMap || highlightedIndex !== nextProps.highlightedIndex) {
       // flag that after this component renders the highlighted element should be scrolled into view
       this.scrollToHighlightedOnUpdate = true;
     }
   }
+  // --------------- private methods --------------- //
 
-  componentDidMount(prevProps, prevState) {
-    if (this.scrollToHighlightedOnUpdate) {
-      // if needs to scroll to put the highlighted item into view
-      this.scrollToHighlighted();
-      this.scrollToHighlightedOnUpdate = false;
-    }
+  captureItemsListRef(ref) {
+    this.itemsListRef = ref;
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.scrollToHighlightedOnUpdate) {
-      // if needs to scroll to put the highlighted item into view
-      this.scrollToHighlighted();
-      this.scrollToHighlightedOnUpdate = false;
+  captureHighlightedRef(ref) {
+    this.highlightedRef = ref;
+  }
+
+  // called to scroll this.itemsListRef to bring this.itemsListRef into view (i.e. to show the highlited item)
+  scrollToHighlighted() {
+    if (this.highlightedRef) {
+      const itemsListRect = this.itemsListRef.getBoundingClientRect();
+      const highlightedItemRect = this.highlightedRef.getBoundingClientRect();
+      if (
+        highlightedItemRect.bottom > itemsListRect.bottom ||
+        highlightedItemRect.top < itemsListRect.top
+      ) {
+        this.itemsListRef.scrollTop =
+          this.highlightedRef.offsetTop +
+          this.highlightedRef.clientHeight -
+          this.itemsListRef.offsetHeight;
+      }
     }
   }
 
   render() {
-    let {
+    const {
       classNamePrefix,
       optionsMap,
       selectedIndex,
       handleItemClick,
       facetName,
       autosuggestAnalytics,
+      className,
+      query,
+      highlightedIndex,
     } = this.props;
     if (optionsMap.length < 0) return null;
 
-    let selectedClassStr = ' item-selected ' + classNamePrefix + '-selected';
-    let highlightedClassStr = ' item-highlighted ' + classNamePrefix + '-highlighted';
-    let disablededClassStr = ' item-disabledOption ' + classNamePrefix + '-disabledOption';
-    let isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
+    const selectedClassStr = ` item-selected ${classNamePrefix}-selected`;
+    const highlightedClassStr = ` item-highlighted ${classNamePrefix}-highlighted`;
+    const disabledClassStr = ` item-disabledOption ${classNamePrefix}-disabledOption`;
+    const isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
 
     return (
-      <div className={this.props.className}>
+      <div className={`${className} common-dropdown`}>
         <div className={cssClassName('item-list-wrapper')}>
           <ul
             ref={this.captureItemsListRef}
@@ -183,11 +206,11 @@ class DropdownList extends React.Component {
               <SelectItem
                 key={item.value}
                 title={item.value}
-                query={this.props.query}
+                query={query}
                 index={index}
                 docType={item.doctype}
                 content={item.content}
-                highlighted={index === this.props.highlightedIndex}
+                highlighted={index === highlightedIndex}
                 highlightedRefCapturer={this.captureHighlightedRef}
                 clickHandler={handleItemClick}
                 facetName={facetName}
@@ -201,8 +224,8 @@ class DropdownList extends React.Component {
                     [selectedClassStr]:
                       index === selectedIndex || (isMultipleSElections && selectedIndex[index]),
                   },
-                  { [highlightedClassStr]: index === this.props.highlightedIndex },
-                  { [disablededClassStr]: item.disabled }
+                  { [highlightedClassStr]: index === highlightedIndex },
+                  { [disabledClassStr]: item.disabled }
                 )}
               >
                 {item.content}
@@ -223,33 +246,11 @@ class DropdownList extends React.Component {
     );
   }
 
-  // --------------- private methods --------------- //
-  captureItemsListRef(ref) {
-    this.itemsListRef = ref;
-  }
-
-  captureHighlightedRef(ref) {
-    this.highlightedRef = ref;
-  }
-
-  // called to scroll this.itemsListRef to bring this.itemsListRef into view (i.e. to show the highlited item)
-  scrollToHighlighted() {
-    if (this.highlightedRef) {
-      let itemsListRect = this.itemsListRef.getBoundingClientRect();
-      let highlightedItemRect = this.highlightedRef.getBoundingClientRect();
-      if (
-        highlightedItemRect.bottom > itemsListRect.bottom ||
-        highlightedItemRect.top < itemsListRect.top
-      ) {
-        this.itemsListRef.scrollTop =
-          this.highlightedRef.offsetTop +
-          this.highlightedRef.clientHeight -
-          this.itemsListRef.offsetHeight;
-      }
-    }
-  }
   // --------------- end of private methods --------------- //
 }
 DropdownList.propTypes = PROP_TYPES;
+DropdownList.defaultProps = {
+  selectedIndex: '',
+};
 
 export default withStyles(DropdownList, DropdownListStyle);

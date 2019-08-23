@@ -1,4 +1,3 @@
-/* eslint-disable */
 /** @module SelectItem
  * @summary A React component rendering one item inside a {@linkcode module:CustomSelect} dropdown
  *
@@ -18,11 +17,7 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import SelectItemStyle from '../SelectItem.style';
 
-/**
- * TODO
- * Commented for RWD
- */
-//import shallowEqual from 'util/shallowEqual';
+// TODO Fix this import shallowEqual from 'util/shallowEqual';
 
 class SelectItem extends React.PureComponent {
   static propTypes = {
@@ -53,6 +48,11 @@ class SelectItem extends React.PureComponent {
      */
     highlightedRefCapturer: PropTypes.func.isRequired,
     docType: PropTypes.string,
+    facetName: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    isAutosuggestAnalytics: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    query: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -63,62 +63,77 @@ class SelectItem extends React.PureComponent {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // shouldComponentUpdate (nextProps) {
-  //   // do not render if props did not change
-  //   /**
-  //    * TODO
-  //    * Commented for RWD
-  //    */
+  //  TODO Fix this shouldComponentUpdate (nextProps) {
+  //    do not render if props did not change
+  //
   //   return !shallowEqual(this.props, nextProps);
   // }
 
   // We hook into this life-cycle method so we can invoke our callback when this item becomes highlighted.
   // Note that when this item was first mounted it may have been highlighted, and thus the current value of this.ref
   // may point to an old DOM element that has now been replaced by React.
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.highlighted) {
-      this.props.highlightedRefCapturer(this.ref);
+  componentDidUpdate() {
+    const { highlighted, highlightedRefCapturer } = this.props;
+    if (highlighted) {
+      highlightedRefCapturer(this.ref);
     }
   }
 
   // captures the initial (i.e. on mount) DOM element used to render this item
   handleRef(ref) {
+    const { highlighted, highlightedRefCapturer } = this.props;
     this.ref = ref;
-    if (this.props.highlighted) {
-      this.props.highlightedRefCapturer(this.ref);
+    if (highlighted) {
+      highlightedRefCapturer(this.ref);
     }
   }
 
   // handles onClick events for this item
   handleClick(event) {
-    this.props.clickHandler(event, this.props.index);
+    const { clickHandler, index } = this.props;
+    clickHandler(event, index);
   }
 
   // IMPORTANT: 3/28 - WORK AROUND - IE11 isn't working with an onClick on the component below
   // We moved to: onMouseDown, which was supported by ALL major browsers.
   render() {
+    const {
+      className,
+      facetName,
+      value,
+      isAutosuggestAnalytics,
+      docType,
+      title,
+      content,
+      query,
+    } = this.props;
     return (
       <li
-        className={this.props.className}
-        unbxdparam_facetname={this.props.facetName}
-        unbxdParam_facetValue={this.props.value}
-        unbxdAttr={this.props.isAutosuggestAnalytics ? 'autosuggest' : null}
-        unbxdParam_autosuggestType={this.props.docType}
-        unbxdParam_autosuggestSuggestion={this.props.title}
+        className={className}
+        unbxdparam_facetname={facetName}
+        unbxdParam_facetValue={value}
+        unbxdAttr={isAutosuggestAnalytics ? 'autosuggest' : null}
+        unbxdParam_autosuggestType={docType}
+        unbxdParam_autosuggestSuggestion={title}
       >
         <div
-          data-doctype={this.props.docType}
-          data-title={this.props.title}
-          data-query={this.props.query}
+          data-doctype={docType}
+          data-title={title}
+          data-query={query}
           ref={this.handleRef}
           className="selected-item"
           onMouseDown={this.handleClick}
+          onKeyPress={this.handleClick}
+          role="presentation"
         >
-          {this.props.content}
+          {content}
         </div>
       </li>
     );
   }
 }
+SelectItem.defaultProps = {
+  docType: '',
+};
 
 export default withStyles(SelectItem, SelectItemStyle);
