@@ -9,6 +9,7 @@ import {
 } from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
+import { checkoutSetCartData } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import { routerPush } from '../../../../../utils';
@@ -23,8 +24,11 @@ export function* getOrderDetailSaga() {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
 }
-export function* getCartDataSaga(isRecalculateTaxes) {
+export function* getCartDataSaga(payload) {
   try {
+    const {
+      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo },
+    } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
     const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
@@ -38,6 +42,9 @@ export function* getCartDataSaga(isRecalculateTaxes) {
       isRadialInvEnabled,
     });
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    if (isCheckoutFlow) {
+      yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
+    }
     yield put(BAG_PAGE_ACTIONS.setCouponsData(res.coupons));
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));

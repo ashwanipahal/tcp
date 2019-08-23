@@ -36,6 +36,11 @@ export const getUserName = createSelector(
   state => state && state.getIn(['contactInfo', 'firstName'])
 );
 
+export const getUserLastName = createSelector(
+  getPersonalDataState,
+  state => state && state.getIn(['contactInfo', 'lastName'])
+);
+
 export const getUserFullName = createSelector(
   getPersonalDataState,
   state => {
