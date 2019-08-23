@@ -1,18 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FPO from '../../../../../../common/atoms/FPO';
+import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay'
+import Address from '../../../../../../common/molecules/Address';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
-const PersonalInformation = ({ labels }) => {
+const PersonalInformation = ({
+  labels,
+  mailingAddress,
+  UserEmail,
+  userBirthday,
+  UserFullName,
+  UserPhoneNumber,
+  airMiles,
+  MyPlaceNumber,
+ }) => {
+let address ='';
+if(mailingAddress && mailingAddress.get('type')==='Mailing'){
+   address = mailingAddress.get('address');
+   console.log("fkjhaskfksagfkjsagf");
+   console.log(address);
+   console.log("fkjhaskfksagfkjsagf");
+ }
+
   return (
-    <MyProfileTile
-      title={labels.lbl_profile_personal_information}
-      ctaTitle={labels.lbl_profile_edit_personal_info}
-      dataLocator="pi-editpersonalinfo"
-    >
-      <FPO />
-    </MyProfileTile>
+    <>
+      <MyProfileTile
+        title={labels.lbl_profile_personal_information}
+        ctaTitle={labels.lbl_profile_edit_personal_info}
+        dataLocator="pi-editpersonalinfo"
+      >
+        <PersonalInformationDisplay
+          labels={labels}
+          mailingAddress={mailingAddress}
+          UserEmail={UserEmail}
+          userBirthday={userBirthday}
+          UserFullName={UserFullName}
+          UserPhoneNumber={UserPhoneNumber}
+          airMiles={airMiles}
+          MyPlaceNumber={MyPlaceNumber}
+        />
+      </MyProfileTile>
+      <MyProfileTile
+        title="Mailing Address"
+        ctaTitle="EDIT MAILING ADDRESS"
+        dataLocator="pi-editpersonalinfo"
+      >
+        <Address
+          address={address}
+          showCountry={false}
+          showPhone={false}
+        />
+      </MyProfileTile>
+    </>
   );
 };
 
@@ -21,6 +61,13 @@ PersonalInformation.propTypes = {
     lbl_profile_personal_information: PropTypes.string,
     lbl_profile_edit_personal_info: PropTypes.string,
   }),
+  mailingAddress: PropTypes.shape({}),
+  userBirthday: PropTypes.string,
+  UserEmail: PropTypes.string,
+  UserFullName: PropTypes.string,
+  UserPhoneNumber: PropTypes.number,
+  airMiles: PropTypes.string,
+  MyPlaceNumber: PropTypes.string,
 };
 
 PersonalInformation.defaultProps = {
@@ -28,6 +75,13 @@ PersonalInformation.defaultProps = {
     lbl_profile_personal_information: '',
     lbl_profile_edit_personal_info: '',
   },
+  mailingAddress: {},
+  userBirthday: '',
+  UserEmail: '',
+  UserFullName: '',
+  UserPhoneNumber: '',
+  airMiles: '',
+  MyPlaceNumber: '',
 };
 
 export default PersonalInformation;

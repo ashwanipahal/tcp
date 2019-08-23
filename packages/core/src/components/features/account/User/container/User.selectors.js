@@ -9,6 +9,10 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
+export const getAirmilesDataState = state => {
+  return state[USER_REDUCER_KEY].get('airmiles');
+};
+
 export const getRewardsState = state => {
   return state[USER_REDUCER_KEY].get('rewards');
 };
@@ -96,6 +100,16 @@ export const getDefaultStore = createSelector(
   getPersonalDataState,
   state => state && state.get('hobbies')
 );
+
+export const getAirmilesDetails = createSelector(
+  getAirmilesDataState,
+  state => state && state.get('accountNumber')
+)
+
+export const getMyPlaceNumber = createSelector(
+  getRewardsState,
+  state => state && state.get('accountNumber')
+)
 
 export const getProfileInfoTileData = createSelector(
   getUserContactInfo,

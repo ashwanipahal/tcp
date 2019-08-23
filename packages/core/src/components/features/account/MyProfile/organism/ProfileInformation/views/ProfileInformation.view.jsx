@@ -16,7 +16,12 @@ const ProfileInformation = ({
   labels,
   profileCompletion,
   mailingAddress,
+  UserEmail,
   userBirthday,
+  UserFullName,
+  UserPhoneNumber,
+  airMiles,
+  MyPlaceNumber,
   userSurvey,
   percentageIncrement,
   defaultStore,
@@ -67,9 +72,18 @@ const ProfileInformation = ({
           ignoreGutter={{
             small: true,
           }}
-          className="profileInfoCol elem-mb-XL"
+          className="profileInformationCol elem-mb-XL"
         >
-          <PersonalInformation labels={labels} />
+          <PersonalInformation
+            labels={labels}
+            mailingAddress={mailingAddress}
+            UserEmail={UserEmail}
+            userBirthday={userBirthday}
+            UserFullName={UserFullName}
+            UserPhoneNumber={UserPhoneNumber}
+            airMiles={airMiles}
+            MyPlaceNumber={MyPlaceNumber}
+          />
         </Col>
       </Row>
 
@@ -149,8 +163,14 @@ ProfileInformation.propTypes = {
   profileCompletion: PropTypes.string,
   mailingAddress: PropTypes.shape({}),
   userBirthday: PropTypes.string,
+  UserEmail: PropTypes.string,
+  airMiles: PropTypes.string,
+  MyPlaceNumber: PropTypes.string,
+  UserFullName: PropTypes.string,
+  UserPhoneNumber: PropTypes.number,
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
+
   defaultStore: PropTypes.string,
   successMessage: PropTypes.string,
 };
@@ -161,6 +181,11 @@ ProfileInformation.defaultProps = {
   profileCompletion: '',
   mailingAddress: {},
   userBirthday: '',
+  UserEmail: '',
+  UserFullName: '',
+  UserPhoneNumber: '',
+  airMiles: '',
+  MyPlaceNumber: '',
   userSurvey: [],
   percentageIncrement: {},
   defaultStore: '',
