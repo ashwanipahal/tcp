@@ -30,6 +30,8 @@ const BagPageReducer = (state = initialState, action) => {
       return state.set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
       return state.set('moduleXContent', List(action.payload));
+    case 'CART_SUMMARY_SET_ORDER_ID':
+      return state.setIn(['orderDetails', 'orderId'], action.orderId);
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
       return updateItem(state, action.payload);
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
