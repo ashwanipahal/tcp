@@ -6,7 +6,7 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       max-width: 458px;
       min-height: 237px;
-      height: 237px;
+      bottom: auto;
       padding: 19.5px;
     }
     @media ${props => props.theme.mediaQuery.large} {
