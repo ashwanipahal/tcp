@@ -57,11 +57,12 @@ class NavBar extends React.PureComponent<Props> {
     const { appType: prevAppType } = this.props;
     const { appType } = nextProps;
 
-    if (appType !== prevAppType) {
+    if (appType !== prevAppType && prevAppType) {
       // navigate to home page of home stack when app type is changed
       const { navigation } = this.props;
       resetNavigationStack(navigation);
-      navigateToNestedRoute(navigation, 'HomeStack', 'home');
+      const refresh = navigation.getParam('refresh', false);
+      navigateToNestedRoute(navigation, 'HomeStack', 'Home', { refresh: !refresh });
     }
   }
 
@@ -115,8 +116,6 @@ class NavBar extends React.PureComponent<Props> {
                     if (toggleBrandAction) toggleBrandAction();
                     return;
                   }
-                  // reset current stack and then navigate to second stack
-                  resetNavigationStack(navigation);
                   onTabPress({ route });
                 }}
                 onLongPress={() => {

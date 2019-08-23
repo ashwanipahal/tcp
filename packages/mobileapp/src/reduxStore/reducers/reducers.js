@@ -57,7 +57,7 @@ const filteredProductListingPageReducer = createFilteredReducer(
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
-export default combineReducers({
+const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
@@ -82,3 +82,5 @@ export default combineReducers({
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [USER_REDUCER_KEY]: UserReducer,
 });
+
+export default rootReducer;
