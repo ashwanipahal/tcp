@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import moduleAAbstractor from '@tcp/core/src/services/abstractors/common/moduleA';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
+import { ModuleN } from '@tcp/core/src/components/common/molecules';
 
 import { SlotA, SlotB, SlotC, SlotD, SlotE } from '../molecules';
+import mock from '../../../../../../../core/src/services/abstractors/common/moduleN/mock';
 
 const HomePageView = props => {
   const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, slot_5: slotE } = props;
@@ -17,6 +19,7 @@ const HomePageView = props => {
       <SlotB {...slotB} />
       <SlotC {...slotC} />
       <SlotD {...slotD} />
+      <ModuleN {...mock.moduleN.composites} set={mock.moduleN.set} />
       <GetCandid />
     </Fragment>
   );

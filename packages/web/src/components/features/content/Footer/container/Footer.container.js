@@ -4,7 +4,6 @@ import {
   getOrderDetail,
   setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
-
 import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 
 import {
@@ -17,10 +16,10 @@ import {
   submitSmsSignup,
   clearSmsSignupForm,
 } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
-
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
-
+import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import FooterView from '../views';
 
 const mapStateToProps = state => {
@@ -51,6 +50,7 @@ const mapStateToProps = state => {
     emailSignupLabels,
     smsSignupLabels,
     loginModalMountedState: loginModalOpenState(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -116,6 +116,7 @@ const mapDispatchToProps = dispatch => {
       }
       return Promise.resolve();
     },
+    openTrackOrder: payload => dispatch(setTrackOrderModalMountedState(payload)),
   };
 };
 

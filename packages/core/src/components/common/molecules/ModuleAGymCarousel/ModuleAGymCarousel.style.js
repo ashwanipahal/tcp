@@ -42,6 +42,10 @@ const style = css`
 
   .bottom-bar {
     height: 54px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 62px;
+    }
   }
 
   .banner-slide {
@@ -58,7 +62,7 @@ const style = css`
   .banner-content {
     text-align: center;
     position: absolute;
-    top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    top: 9px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -66,14 +70,15 @@ const style = css`
     .link-text {
       margin-bottom: 0;
     }
+
     @media ${props => props.theme.mediaQuery.medium} {
-      top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-      left: 120px;
+      top: 40px;
+      left: 14px;
       width: 280px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      top: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      top: 99px;
       left: 120px;
       width: 470px;
     }
