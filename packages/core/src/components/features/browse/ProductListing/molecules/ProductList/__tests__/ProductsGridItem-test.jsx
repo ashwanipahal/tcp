@@ -53,4 +53,11 @@ describe('ProductsGridItem component', () => {
     const component = shallow(<ProductsGridItemVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
+
+  it('ProductsGridItem should call handleOpenAltImages', () => {
+    const component = shallow(<ProductsGridItemVanilla {...props} />);
+    component.setState({ isAltImgRequested: false });
+    component.instance().handleOpenAltImages();
+    expect(component.state('isAltImgRequested')).toEqual(true);
+  });
 });

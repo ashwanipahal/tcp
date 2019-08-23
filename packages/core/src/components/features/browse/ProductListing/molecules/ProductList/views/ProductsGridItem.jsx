@@ -154,24 +154,19 @@ class ProductsGridItem extends React.PureComponent {
       isMobile,
       item: { colorsMap },
       isPLPredesign,
-      siblingProperties,
     } = this.props;
-    return (
-      !isPLPredesign &&
-      (colorsMap.length >= 1 ? (
-        <ProductColorChips
-          onChipClick={this.handleChangeColor}
-          maxVisibleItems={5}
-          selectedColorId={curentColorEntry.color.name}
-          colorsMap={colorsMap}
-          isMobile={isMobile}
-          showColorEvenOne
-          isPLPredesign={isPLPredesign}
-        />
-      ) : (
-        siblingProperties &&
-        siblingProperties.colorsMap.length > 1 && <div className="empty-color-chips-container" />
-      ))
+    return colorsMap.length >= 1 ? (
+      <ProductColorChips
+        onChipClick={this.handleChangeColor}
+        maxVisibleItems={5}
+        selectedColorId={curentColorEntry.color.name}
+        colorsMap={colorsMap}
+        isMobile={isMobile}
+        showColorEvenOne
+        isPLPredesign={isPLPredesign}
+      />
+    ) : (
+      <div className="empty-color-chips-container" />
     );
   };
 

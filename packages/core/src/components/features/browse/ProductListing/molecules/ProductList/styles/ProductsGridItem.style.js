@@ -46,7 +46,7 @@ const styles = css`
   }
 
   .empty-color-chips-container {
-    min-height: 39px;
+    min-height: 35px;
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -97,7 +97,7 @@ const styles = css`
       }
     }
     .empty-color-chips-container {
-      min-height: 43px;
+      min-height: 40px;
     }
   }
 `;

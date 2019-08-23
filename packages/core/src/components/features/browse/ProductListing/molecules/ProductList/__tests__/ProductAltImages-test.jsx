@@ -32,18 +32,34 @@ describe('ProductAltImages component', () => {
   });
   it('ProductAltImages should call handledNextImage', () => {
     const component = shallow(<ProductAltImagesVanilla {...props} />);
+    component.setState({ currentIndex: 3 });
+    component.setProps({ imageUrls: [] });
     component.instance().handledNextImage();
+    expect(component.state('currentIndex')).toEqual(0);
   });
   it('ProductAltImages should call handledPrevImage', () => {
     const component = shallow(<ProductAltImagesVanilla {...props} />);
+    component.setState({ currentIndex: 0 });
+    component.setProps({ imageUrls: [1, 2, 3] });
     component.instance().handledPrevImage();
+    expect(component.state('currentIndex')).toEqual(3);
   });
   it('ProductAltImages should call handleNextImage', () => {
     const component = shallow(<ProductAltImagesVanilla {...props} />);
+    component.setState({ currentIndex: 3 });
+    component.setProps({ imageUrls: [1, 2, 3] });
     component.instance().handleNextImage();
+    expect(component.state('currentIndex')).toEqual(1);
   });
   it('ProductAltImages should call renderVideoContent', () => {
     const component = shallow(<ProductAltImagesVanilla {...props} />);
     component.instance().renderVideoContent();
+  });
+  it('ProductAltImages should call handlePrevImage', () => {
+    const component = shallow(<ProductAltImagesVanilla {...props} />);
+    component.setState({ currentIndex: 0 });
+    component.setProps({ imageUrls: [1, 2, 3] });
+    component.instance().handlePrevImage();
+    expect(component.state('currentIndex')).toEqual(2);
   });
 });
