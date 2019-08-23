@@ -161,10 +161,10 @@ describe('Checkout Selectors', () => {
         lastName: '',
         emailAddress: '',
         phoneNumber: 212,
-        smsInfo: {
-          wantsSmsOrderUpdates: false,
-          smsUpdateNumber: undefined,
-        },
+      },
+      smsInfo: {
+        wantsSmsOrderUpdates: false,
+        smsUpdateNumber: undefined,
       },
       hasAlternatePickup: false,
       pickUpAlternate: {},
