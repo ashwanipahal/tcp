@@ -31,7 +31,7 @@ export default css`
       list-style-type: none;
       width: 33.3%;
       float: left;
-      font-size: 12px;
+      font-size: ${props => props.theme.spacing.ELEM_SPACING.SM};
       position: relative;
       text-align: center;
       color: ${props => props.theme.colors.TEXT.DARK};

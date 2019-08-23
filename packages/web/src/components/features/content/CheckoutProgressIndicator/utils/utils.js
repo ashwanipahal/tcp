@@ -1,4 +1,4 @@
-import Router, { useRouter } from 'next/router'; //eslint-disable-line
+import Router, { useRouter } from 'next/router';
 import CHECKOUT_STAGES, { CHECKOUT_SECTIONS } from '../../../../../pages/App.constants';
 import utils from '../../../../../../../core/src/utils';
 

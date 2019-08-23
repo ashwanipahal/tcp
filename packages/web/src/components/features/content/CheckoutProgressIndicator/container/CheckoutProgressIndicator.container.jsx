@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; //eslint-disable-line
+import { withRouter } from 'next/router';
 import { PropTypes } from 'prop-types';
 import CheckoutProgressIndicatorComponent from '../views';
 import utils from '../../../../../../../core/src/utils';
