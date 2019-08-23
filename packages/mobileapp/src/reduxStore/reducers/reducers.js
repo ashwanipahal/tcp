@@ -49,7 +49,6 @@ import NavigationReducer from '@tcp/core/src/components/features/content/Navigat
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
-import { RESET_STORE_TYPE } from '../actions/ResetStore.actions';
 
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
@@ -84,12 +83,4 @@ const rootReducer = combineReducers({
   [USER_REDUCER_KEY]: UserReducer,
 });
 
-export default (state, action = {}) => {
-  let appstate = state;
-  // Reset data stored in redux
-  if (action.type === RESET_STORE_TYPE) {
-    appstate = undefined;
-  }
-
-  return rootReducer(appstate, action);
-};
+export default rootReducer;

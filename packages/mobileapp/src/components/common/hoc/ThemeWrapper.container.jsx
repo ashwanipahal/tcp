@@ -7,7 +7,7 @@ import themeGymboree from '@tcp/core/styles/themes/Gymboree';
 import updateAppType from './ThemeWrapper.actions';
 import { APP_TYPE } from './ThemeWrapper.constants';
 import { getAppType } from './ThemeWrapper.selectors';
-import resetReduxStore from '../../../reduxStore/actions/ResetStore.actions';
+import resetReduxStore from '../../../reduxStore/actions';
 
 /**
  * @param {string} appType : Props for app type
