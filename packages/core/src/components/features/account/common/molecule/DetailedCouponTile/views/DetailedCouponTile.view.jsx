@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Barcode from '../../../../../../common/molecules/Barcode';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/DetailedCouponTile.style';
 import {
   COUPON_REDEMPTION_TYPE,

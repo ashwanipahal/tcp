@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Col from '../../../../../../common/atoms/Col';
-import Button from '../../../../../../common/atoms/Button';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Col from '@tcp/core/src/components/common/atoms/Col';
+import Button from '@tcp/core/src/components/common/atoms/Button';
 
 export const EmptyRewards = ({ labels }) => {
   return (

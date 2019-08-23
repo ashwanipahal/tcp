@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/CouponIcon.style';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 

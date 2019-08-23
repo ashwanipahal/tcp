@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import { DetailedCouponTile } from '../DetailedCouponTile.view';
-import Barcode from '../../../../../../../common/molecules/Barcode';
 
 import { COUPON_STATUS } from '../../../../../../../../services/abstractors/CnC/CartItemTile';
 
