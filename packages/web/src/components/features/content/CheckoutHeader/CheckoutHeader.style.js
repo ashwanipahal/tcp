@@ -24,11 +24,6 @@ export default css`
   .header-stepindicator {
     position: relative;
     text-align: center;
-
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-      margin-top: 5px;
-    }
   }
 
   .header-topnav__brand-tabs,
@@ -38,26 +33,14 @@ export default css`
     padding-top: 15px;
   }
 
-  .header-topnav__promo-area span {
-    margin-right: 20%;
-  }
-
   .header-topnav__brand-tabs {
-    width: 60%;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 30%;
-    }
-
     @media ${props => props.theme.mediaQuery.mediumMax} {
-      width: 80%;
       padding-top: 0;
     }
   }
 
   .header-topnav__promo-area {
     text-align: center;
-    width: 50%;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       display: none;
@@ -68,11 +51,6 @@ export default css`
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
     text-align: right;
     padding-top: 15px;
-    width: 40%;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 20%;
-    }
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
@@ -87,6 +65,16 @@ export default css`
     position: absolute;
     top: 16px;
     left: 20px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
+
+  .checkout-mobile-header {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
     @media ${props => props.theme.mediaQuery.large} {
       display: none;

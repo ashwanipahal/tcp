@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor, Image, Row, Col } from '@tcp/core/src/components/common/atoms';
 import style from '../CheckoutHeader.style';
 import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
@@ -11,7 +11,7 @@ import { getIconPath } from '../../../../../../../core/src/utils';
 const CheckoutHeader = ({ className, brandTabs, labels }) => {
   return (
     <header className={className}>
-      <div className="header-topnav__row">
+      <Row className="header-topnav__row">
         <button
           onClick={() => {
             Router.push('/us/bag');
@@ -21,16 +21,37 @@ const CheckoutHeader = ({ className, brandTabs, labels }) => {
           <Image src={getIconPath('carrot-large-left')} className="collapsible-icon" />
         </button>
 
-        <div className="header-topnav__brand-tabs">
+        <Col
+          className="header-topnav__brand-tabs"
+          colSize={{
+            small: 4,
+            medium: 2,
+            large: 3,
+          }}
+        >
           <BrandTabs data={brandTabs} />
-        </div>
-        <div className="header-topnav__promo-area">
+        </Col>
+        <Col
+          className="header-topnav__promo-area"
+          colSize={{
+            small: 1,
+            medium: 4,
+            large: 6,
+          }}
+        >
           <BodyCopy component="span" fontSize="fs32">
             {labels.checkoutHeaderLabel}
           </BodyCopy>
-        </div>
+        </Col>
 
-        <div className="header-topnav__track-order">
+        <Col
+          className="header-topnav__track-order"
+          colSize={{
+            small: 1,
+            medium: 2,
+            large: 3,
+          }}
+        >
           <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
             <Anchor
               fontSizeVariation="medium"
@@ -42,11 +63,32 @@ const CheckoutHeader = ({ className, brandTabs, labels }) => {
               {labels.returnBagLabel}
             </Anchor>
           </BodyCopy>
-        </div>
-      </div>
-      <div className="header-stepindicator">
-        <CheckoutProgressIndicator />
-      </div>
+        </Col>
+      </Row>
+      <Row className="checkout-mobile-header" centered>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          <BodyCopy component="span" fontSize="fs16">
+            {labels.checkoutHeaderLabel}
+          </BodyCopy>
+        </Col>
+      </Row>
+      <Row className="header-stepindicator" centered>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          <CheckoutProgressIndicator />
+        </Col>
+      </Row>
     </header>
   );
 };
