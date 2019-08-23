@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderView component should renders correctly 1`] = `
+<Fragment>
+  <Styled(TrackOrderTopSection)
+    className="trackorder__modal__topsection"
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+  />
+  <ReduxForm
+    className="trackorder__modal__form"
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="TrackOrderForm"
+    getFormState={[Function]}
+    handleSubmit={[MockFunction]}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    onChangeForm={[MockFunction]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <Styled(TrackOrderBottomSection)
+    className="trackorder__modal__bottomsection"
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    openLoginOverlay={[MockFunction]}
+    setModalMountState={[MockFunction]}
+  />
+</Fragment>
+`;
