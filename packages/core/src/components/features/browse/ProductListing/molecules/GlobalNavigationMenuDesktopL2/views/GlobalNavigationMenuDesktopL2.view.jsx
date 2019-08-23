@@ -39,8 +39,8 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
       const tempGroups = [];
       if (navigationTree.subCategories && navigationTree.subCategories[subCategoryArr[i]]) {
         tempGroups.push({
-          groupName: subCategoryArr[i],
-          menuItems: navigationTree.subCategories[subCategoryArr[i]],
+          groupName: subCategoryArr[i].label,
+          menuItems: navigationTree.subCategories[subCategoryArr[i]].items,
         });
       }
       groups.push(tempGroups);

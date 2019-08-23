@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModuleL component renders correctly 1`] = `
+exports[`N component renders correctly 1`] = `
 <Styled(Row)
   className=" moduleN"
+  data-locator="moduleN_promobanner_img"
   fullBleed={
     Object {
       "large": true,
@@ -27,7 +28,7 @@ exports[`ModuleL component renders correctly 1`] = `
         className="ModuleN-heading"
         color="white"
         component="h3"
-        data-locator="moduleN_header_text"
+        dataLocator="moduleN_header_text"
         headerText={
           Array [
             Object {
@@ -122,7 +123,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "target": "",
               "text": "Boy",
               "title": "Boy",
-              "url": "/c/boy",
+              "url": "/boy",
             },
             "image": Object {
               "alt": "Boy",
@@ -139,7 +140,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "target": "",
               "text": "Toddler Boy",
               "title": "Tod Boy",
-              "url": "/c/",
+              "url": "/toddler-boy2",
             },
             "image": Object {
               "alt": "Toddler Boy alt",
@@ -156,7 +157,24 @@ exports[`ModuleL component renders correctly 1`] = `
               "target": "",
               "text": "Baby",
               "title": "Baby",
-              "url": "/c/",
+              "url": "/toddler-boy",
+            },
+            "image": Object {
+              "alt": "Baby Alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Baby title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Alt",
+              "title": "Alt",
+              "url": "/toddler-boy",
             },
             "image": Object {
               "alt": "Baby Alt",
@@ -169,7 +187,8 @@ exports[`ModuleL component renders correctly 1`] = `
           },
         ]
       }
-      dataLocatorTextCta="moduleN_cta_links"
+      dataLocatorDivisionImages="moduleN_image_"
+      dataLocatorTextCta="moduleN_cta_links_"
       fill="RED"
     />
   </Styled(Col)>

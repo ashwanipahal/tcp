@@ -6,11 +6,16 @@ import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
 import { Row, Col } from '../../../atoms';
-import config from '../ModuleN.config';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
-const { ctaTypes } = config;
+// TODO: keys will be changed once we get the actual data from CMS
+const ctaTypes = {
+  stackedCTAList: 'stackedCTAList',
+  linkCTAList: 'linkCTAList',
+  scrollCTAList: 'scrollCTAList',
+  imageCTAList: 'imageCTAList',
+};
 
 const ModuleN = props => {
   const {
@@ -22,8 +27,13 @@ const ModuleN = props => {
   } = props;
 
   const ctaType = ctaTypes[set.val];
+
   return (
-    <Row className={`${className} moduleN`} fullBleed={{ small: true, medium: true, large: true }}>
+    <Row
+      className={`${className} moduleN`}
+      fullBleed={{ small: true, medium: true, large: true }}
+      data-locator={getLocator('moduleN_promobanner_img')}
+    >
       <Col
         colSize={{
           small: 6,
@@ -40,7 +50,7 @@ const ModuleN = props => {
               type="heading"
               color="white"
               className="ModuleN-heading"
-              data-locator={getLocator('moduleN_header_text')}
+              dataLocator={getLocator('moduleN_header_text')}
             />
           )}
           {promoBanner && (
@@ -80,5 +90,5 @@ ModuleN.propTypes = {
   set: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-export default errorBoundary(withStyles(ModuleN, style));
+export default withStyles(errorBoundary(ModuleN), style);
 export { ModuleN as ModuleNVanilla };

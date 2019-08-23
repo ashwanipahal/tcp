@@ -4,13 +4,41 @@ exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
   <SlotA
     className="moduleD"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
   />
   <SlotB
     className="moduleH"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
   />
-  <SlotC />
-  <SlotD />
-  <SlotE />
+  <SlotC
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <SlotD
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <SlotE
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
   <SlotF
     bgColor="#f53d3d"
     ctaItems={
@@ -55,7 +83,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "Boy",
             "title": "Boy",
-            "url": "/c/boy",
+            "url": "/boy",
           },
           "image": Object {
             "alt": "Boy",
@@ -72,7 +100,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "Toddler Boy",
             "title": "Tod Boy",
-            "url": "/c/",
+            "url": "/toddler-boy2",
           },
           "image": Object {
             "alt": "Toddler Boy alt",
@@ -89,7 +117,24 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "Baby",
             "title": "Baby",
-            "url": "/c/",
+            "url": "/toddler-boy",
+          },
+          "image": Object {
+            "alt": "Baby Alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Baby title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Alt",
+            "title": "Alt",
+            "url": "/toddler-boy",
           },
           "image": Object {
             "alt": "Baby Alt",
@@ -121,6 +166,11 @@ exports[`HomePageView should render correctly 1`] = `
       ]
     }
     name="moduleN"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
     promoBanner={
       Array [
         Object {
@@ -149,7 +199,7 @@ exports[`HomePageView should render correctly 1`] = `
       Array [
         Object {
           "key": "ctaType",
-          "val": "stackedCTAButtons",
+          "val": "stackedCTAList",
         },
       ]
     }

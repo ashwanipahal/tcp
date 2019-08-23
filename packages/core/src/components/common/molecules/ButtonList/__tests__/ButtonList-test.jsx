@@ -16,9 +16,10 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleN.composites.ctaItems}
         buttonListVariation="stackedCTAList"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.stack-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.stacked-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
 
@@ -27,9 +28,10 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleN.composites.ctaItems}
         buttonListVariation="scrollCTAList"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.scroll-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.scroll-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
   it('renders correctly for image cta List', () => {
@@ -37,9 +39,11 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleN.composites.ctaItems}
         buttonListVariation="imageCTAList"
+        dataLocatorDivisionImages="moduleN_image_"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.scroll-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.scroll-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
 
@@ -48,9 +52,10 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleN.composites.ctaItems}
         buttonListVariation="linkCTAList"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.link-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.link-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
 });

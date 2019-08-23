@@ -33,15 +33,15 @@ describe('ButtonList', () => {
   });
 
   it('should render Container', () => {
-    expect(stackedCTAList.find(Container)).toHaveLength(2);
+    expect(stackedCTAList.find(Container)).toHaveLength(1);
   });
 
   it('should render View', () => {
-    expect(stackedCTAList.find('Styled(View)')).toHaveLength(2);
+    expect(stackedCTAList.find('Styled(View)')).toHaveLength(1);
   });
 
   it('should render CustomButton', () => {
-    expect(stackedCTAList.find('Styled(CustomButton)')).toHaveLength(1);
+    expect(stackedCTAList.find('Styled(CustomButton)')).toHaveLength(0);
   });
 
   it('should render CustomButton', () => {

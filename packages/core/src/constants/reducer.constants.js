@@ -27,6 +27,7 @@ export const ACCOUNTHEADER_ACTION_PATTERN = '@@AccountHeader-';
 export const ACCOUNTHEADER_REDUCER_KEY = 'AccountHeader';
 export const CARTITEMTILE_REDUCER_KEY = 'CartItemTileReducer';
 export const CARTPAGE_REDUCER_KEY = 'CartPageReducer';
+export const CHECKOUT_REDUCER_KEY = 'Checkout';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 export const BONUS_POINTS_DAYS = '@@Bonus-';
@@ -73,10 +74,15 @@ export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
 
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
+export const TRACK_ORDER_REDUCER_KEY = 'TrackOrderReducer';
+export const TRACK_ORDER_ACTION_PATTERN = '@@TrackOrder-';
 
 // change password reducer
 export const CHANGE_PASSWORD_REDUCER_KEY = 'ChangePassword';
 export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
+
+// device type detection
+export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
 
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -90,6 +96,7 @@ export const REDUCER_ACTION_MAPPING = {
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
   [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
+  [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
   [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
 };
 

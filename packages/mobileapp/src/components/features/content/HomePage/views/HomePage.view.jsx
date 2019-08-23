@@ -7,12 +7,35 @@ import moduleNMockData from '../../../../../../../core/src/services/abstractors/
 
 class HomePageView extends React.Component {
   componentDidMount() {
+    this.refreshData();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { navigation: prevNav } = this.props;
+    const { navigation } = nextProps;
+    const prevShouldRefresh = prevNav.getParam('refresh', false);
+    const shouldRefresh = navigation.getParam('refresh', false);
+
+    // refresh page data on navigation refresh
+    if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
+      this.refreshData();
+      navigation.setParams({ refresh: false });
+    }
+  }
+
+  /**
+   * @function refreshData
+   * Refreshes bootstrap data
+   *
+   * @memberof HomePageView
+   */
+  refreshData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
     } = this.props;
     getBootstrapData({ name: 'homepage' }, apiConfig);
-  }
+  };
 
   render() {
     const {
