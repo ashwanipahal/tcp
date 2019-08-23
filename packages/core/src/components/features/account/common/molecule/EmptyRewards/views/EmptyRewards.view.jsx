@@ -49,7 +49,21 @@ export const EmptyRewards = ({ labels }) => {
 };
 
 EmptyRewards.propTypes = {
-  labels: PropTypes.string.isRequired,
+  labels: PropTypes.shape({
+    myPlaceRewards: {
+      ACC_LBL_MY_REWARDS_SHOP_NOW: PropTypes.string,
+      ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: PropTypes.string,
+    },
+  }),
+};
+
+EmptyRewards.defaultProps = {
+  labels: {
+    myPlaceRewards: {
+      ACC_LBL_MY_REWARDS_SHOP_NOW: '',
+      ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
+    },
+  },
 };
 
 export default EmptyRewards;

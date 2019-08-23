@@ -4,11 +4,6 @@ import JsBarcode from 'jsbarcode';
 import PropTypes from 'prop-types';
 
 class Barcode extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.update = this.update.bind(this);
-  }
-
   componentDidMount() {
     this.update();
   }
@@ -17,7 +12,7 @@ class Barcode extends PureComponent {
     this.update();
   }
 
-  update() {
+  update = () => {
     const { value } = this.props;
     const renderElement = document.querySelector(`#${value}`);
     try {
@@ -26,7 +21,7 @@ class Barcode extends PureComponent {
       // prevent stop the parent process
       window.console.error(e);
     }
-  }
+  };
 
   render() {
     const { barcodeId, renderer, value } = this.props;

@@ -41,7 +41,18 @@ export class DetailedCouponTile extends React.Component {
     onApplyCouponToBag: () => {},
     onRemove: () => {},
     onViewCouponDetails: () => {},
-    labels: {},
+    labels: {
+      lbl_coupon_expiringSoon: '',
+      lbl_coupon_couponValid: '',
+      lbl_coupon_couponUseBy: '',
+      lbl_coupon_detailsLink: '',
+      lbl_coupon_viewPrint: '',
+      lbl_coupon_removeFromBag: '',
+      lbl_coupon_applyToBag: '',
+      lbl_common_couponTypePlacecash: '',
+      lbl_common_couponTypeReward: '',
+      lbl_common_couponTypeSaving: '',
+    },
   };
 
   handleApplyToBag = () => {

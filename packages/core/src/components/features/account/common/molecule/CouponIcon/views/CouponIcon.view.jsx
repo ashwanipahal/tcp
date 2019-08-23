@@ -40,14 +40,18 @@ export const CouponIcon = ({ className, coupon, labels }) => {
 CouponIcon.propTypes = {
   coupon: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({
-    lbl_overview_myPlaceRewardsCouponType: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsUseBy: PropTypes.string.isRequired,
-  }).isRequired,
+    lbl_coupon_myPlaceRewardsCouponType: PropTypes.string.isRequired,
+    lbl_coupon_myPlaceRewardsUseBy: PropTypes.string.isRequired,
+  }),
   className: PropTypes.string,
 };
 
 CouponIcon.defaultProps = {
   className: '',
+  labels: {
+    lbl_coupon_myPlaceRewardsCouponType: '',
+    lbl_coupon_myPlaceRewardsUseBy: '',
+  },
 };
 
 export default withStyles(CouponIcon, styles);

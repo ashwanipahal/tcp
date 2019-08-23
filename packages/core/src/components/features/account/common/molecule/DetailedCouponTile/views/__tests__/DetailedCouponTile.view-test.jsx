@@ -58,4 +58,37 @@ describe('DetailedCouponTile', () => {
     const tree = shallow(<DetailedCouponTile {...props} />);
     expect(tree).toMatchSnapshot();
   });
+
+  describe('#instances', () => {
+    const onApplyCouponToBag = jest.fn();
+    const onRemove = jest.fn();
+    const onViewCouponDetails = jest.fn();
+    let componentInstance;
+    beforeEach(() => {
+      const props = {
+        labels: {},
+        coupon: {},
+        onApplyCouponToBag,
+        onRemove,
+        onViewCouponDetails,
+      };
+      const component = shallow(<DetailedCouponTile {...props} />);
+      componentInstance = component.instance();
+    });
+
+    it('#handleApplyToBag should call onApplyCouponToBag prop', () => {
+      componentInstance.handleApplyToBag();
+      expect(onApplyCouponToBag).toBeCalled();
+    });
+
+    it('#handleRemove should call onRemove prop', () => {
+      componentInstance.handleRemove();
+      expect(onRemove).toBeCalled();
+    });
+
+    it('#handleViewCouponDetails should call onViewCouponDetails prop', () => {
+      componentInstance.handleViewCouponDetails();
+      expect(onViewCouponDetails).toBeCalled();
+    });
+  });
 });
