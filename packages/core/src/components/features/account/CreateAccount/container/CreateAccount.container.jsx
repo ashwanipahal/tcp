@@ -8,8 +8,8 @@ import {
   getIAgree,
   getHideShowPwd,
   getConfirmHideShowPwd,
-  getError,
   getLabels,
+  getErrorMessage,
 } from './CreateAccount.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import {
@@ -32,6 +32,7 @@ export class CreateAccountContainer extends React.Component {
     isUserLoggedIn: PropTypes.bool,
     closeOverlay: PropTypes.func,
     navigation: PropTypes.shape({}),
+    setLoginModalMountState: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -80,17 +81,27 @@ export class CreateAccountContainer extends React.Component {
   }
 
   onAlreadyHaveAnAccountClick = e => {
-    const { openOverlay } = this.props;
+    const { openOverlay, setLoginModalMountState } = this.props;
     e.preventDefault();
-    openOverlay({
-      component: 'login',
-      variation: 'primary',
-    });
+    if (setLoginModalMountState) {
+      setLoginModalMountState({
+        component: 'login',
+      });
+    } else {
+      openOverlay({
+        component: 'login',
+        variation: 'primary',
+      });
+    }
   };
 
   openModal = params => {
-    const { openOverlay } = this.props;
-    openOverlay(params);
+    const { openOverlay, setLoginModalMountState } = this.props;
+    if (setLoginModalMountState) {
+      setLoginModalMountState(params);
+    } else {
+      openOverlay(params);
+    }
   };
 
   render() {
@@ -127,7 +138,7 @@ export const mapStateToProps = state => {
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
     isUserLoggedIn: getUserLoggedInState(state),
-    error: getError(state),
+    error: getErrorMessage(state),
     labels: getLabels(state),
   };
 };

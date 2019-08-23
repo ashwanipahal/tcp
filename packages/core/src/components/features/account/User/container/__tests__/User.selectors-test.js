@@ -9,6 +9,13 @@ import {
   getPointsToNextRewardState,
   getCurrentPointsState,
   getTotalRewardsState,
+  getUserContactInfo,
+  getMailingAddress,
+  getUserBirthday,
+  getProfileCompletion,
+  getAnswersList,
+  getDefaultStore,
+  getProfileInfoTileData,
 } from '../User.selectors';
 import { USER_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
@@ -20,14 +27,21 @@ describe('#User selector', () => {
         lastName: 'last',
         emailAddress: 'first@abc.com',
         phoneNumber: '1111111111',
+        profileAddress: {
+          isComplete: true,
+        },
       },
       isGuest: false,
       isPlcc: 'false',
+      userBirthday: 'aug-8',
     },
     rewards: {
       rewardPoints: '20',
       rewardDollars: '$20',
       rewardPointsToNextReward: '80',
+    },
+    survey: {
+      answers: [[''], ['']],
     },
   };
   const state = {
@@ -102,5 +116,35 @@ describe('#User selector', () => {
 
   it('#getTotalRewardsState should return rewardDollars', () => {
     expect(getTotalRewardsState(state)).toBe(stateObject.rewards.rewardDollars);
+  });
+
+  it('#getUserContactInfo should return contactInfo', () => {
+    expect(getUserContactInfo(state)).toEqual(fromJS(stateObject.personalData.contactInfo));
+  });
+
+  it('#getMailingAddress should return profileAddress', () => {
+    expect(getMailingAddress(state)).toEqual(
+      fromJS(stateObject.personalData.contactInfo.profileAddress)
+    );
+  });
+
+  it('#getUserBirthday should return userBirthday', () => {
+    expect(getUserBirthday(state)).toBe(stateObject.personalData.userBirthday);
+  });
+
+  it('#getProfileCompletion should return getProfileCompletion value', () => {
+    expect(getProfileCompletion(state)).toBe(stateObject.personalData.profileCompletion);
+  });
+
+  it('#getAnswersList should return survey answers', () => {
+    expect(getAnswersList(state)).toEqual(fromJS(stateObject.survey.answers));
+  });
+
+  it('#getDefaultStore should return hobbies ', () => {
+    expect(getDefaultStore(state)).toBe(stateObject.personalData.hobbies);
+  });
+
+  it('#getProfileInfoTileData should return profile information data', () => {
+    expect(getProfileInfoTileData(state).firstName).toBe('first');
   });
 });

@@ -6,8 +6,8 @@ import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
 import { Row, Col } from '../../../atoms';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 // TODO: keys will be changed once we get the actual data from CMS
 const ctaTypes = {
@@ -27,6 +27,7 @@ const ModuleN = props => {
   } = props;
 
   const ctaType = ctaTypes[set.val];
+
   return (
     <Row
       className={`${className} moduleN`}
@@ -89,5 +90,5 @@ ModuleN.propTypes = {
   set: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-export default errorBoundary(withStyles(ModuleN, style));
+export default withStyles(errorBoundary(ModuleN), style);
 export { ModuleN as ModuleNVanilla };

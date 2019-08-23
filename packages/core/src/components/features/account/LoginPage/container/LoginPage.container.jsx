@@ -10,7 +10,7 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
-import { login } from './LoginPage.actions';
+import { login, resetLoginInfo } from './LoginPage.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
@@ -21,15 +21,18 @@ import {
   getLoginErrorMessage,
   getLabels,
 } from './LoginPage.selectors';
-import { resetUserInfo } from '../../User/container/User.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay } = this.props;
+    const { isUserLoggedIn, closeOverlay, closeModal, variation } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
+      if (variation === 'checkout' || variation === 'favorites') {
+        closeModal();
+      }
+
       closeOverlay();
     }
   }
@@ -42,8 +45,12 @@ class LoginPageContainer extends React.PureComponent {
   }
 
   openModal = params => {
-    const { openOverlay } = this.props;
-    openOverlay(params);
+    const { openOverlay, setLoginModalMountState } = this.props;
+    if (setLoginModalMountState) {
+      setLoginModalMountState(params);
+    } else {
+      openOverlay(params);
+    }
   };
 
   render() {
@@ -61,9 +68,11 @@ class LoginPageContainer extends React.PureComponent {
       successFullResetEmail,
       currentForm,
       queryParams,
+      setLoginModalMountState,
       onRequestClose,
+      variation,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
+    const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -84,7 +93,9 @@ class LoginPageContainer extends React.PureComponent {
         successFullResetEmail={successFullResetEmail}
         currentForm={currentForm}
         queryParams={queryParams}
+        setLoginModalMountState={setLoginModalMountState}
         onRequestClose={onRequestClose}
+        variation={variation}
       />
     );
   }
@@ -109,6 +120,9 @@ LoginPageContainer.propTypes = {
   currentForm: PropTypes.string,
   queryParams: PropTypes.shape({}),
   onRequestClose: PropTypes.shape({}).isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+  closeModal: PropTypes.bool.isRequired,
+  variation: PropTypes.bool.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -133,7 +147,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(resetLoginForgotPasswordState(payload));
     },
     resetLoginState: () => {
-      dispatch(resetUserInfo());
+      dispatch(resetLoginInfo());
     },
     SubmitForgot: payload => {
       dispatch(resetPassword(payload));
