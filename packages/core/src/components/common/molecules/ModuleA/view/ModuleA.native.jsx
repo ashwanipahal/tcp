@@ -1,8 +1,10 @@
 // @flow
 import React from 'react';
-import ModuleATcpCarousel from '../../ModuleATcpCarousel';
-import ModuleAGymCarousel from '../../ModuleAGymCarousel';
 import ButtonList from '../../ButtonList';
+import Carousel from '../../Carousel';
+import { Image } from '../../../atoms';
+import LinkText from '../../LinkText';
+import PromoBanner from '../../PromoBanner';
 import {
   Container,
   ButtonContainer,
@@ -10,20 +12,85 @@ import {
   ContainerView,
   DivImageCTAContainer,
   ButtonLinksContainer,
+  HeaderWrapper,
 } from '../ModuleA.style.native';
 import config from '../../ModuleN/ModuleN.config';
+import { getScreenWidth } from '../../../../../utils/utils.app';
+
+/**
+ * Module height and width.
+ * Height is fixed for mobile : TCP & Gymb
+ * Width can vary as per device width.
+ */
+const MODULE_TCP_HEIGHT = 200;
+const MODULE_WIDTH = getScreenWidth();
 
 // TODO: keys will be changed once we get the actual data from CMS
 const { ctaTypes } = config;
 
-const variant = 'tcp';
+const renderView = (item, navigation) => {
+  const {
+    item: {
+      headerText,
+      promoBanner,
+      linkedImage: [{ image }],
+    },
+  } = item;
+  return (
+    <ContainerView>
+      <Image width={MODULE_WIDTH} height="311px" url={image.url} />
+      <HeaderWrapper>
+        {headerText && (
+          <LinkText
+            type="heading"
+            color="text.primary"
+            fontFamily="primary"
+            fontSize="fs36"
+            fontWeight="black"
+            navigation={navigation}
+            headerText={headerText}
+            locator="moduleA_header_text"
+          />
+        )}
+
+        <ContainerView>
+          {promoBanner && (
+            <PromoBanner
+              promoBanner={promoBanner}
+              navigation={navigation}
+              locator="moduleA_promobanner_text"
+            />
+          )}
+        </ContainerView>
+      </HeaderWrapper>
+    </ContainerView>
+  );
+};
+
+const renderCarousel = (largeCompImageCarousel, navigation) => {
+  return (
+    <ContainerView>
+      <Carousel
+        data={largeCompImageCarousel}
+        renderItem={item => renderView(item, navigation)}
+        height={MODULE_TCP_HEIGHT}
+        width={MODULE_WIDTH}
+        carouselConfig={{
+          autoplay: true,
+        }}
+        showDots
+        overlap
+      />
+    </ContainerView>
+  );
+};
 
 /**
  * This method return the ButtonList View according to the different variation .
  *  @ctaType are four types : 'imageCTAList' ,'stackedCTAList','scrollCTAList','linkCTAList'.
  *  @naviagtion is used to navigate the page.
  */
-const renderView = (ctaType, navigation, ctaItems, locator, color) => {
+const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
   return (
     <ButtonList
       buttonListVariation={ctaType}
@@ -53,40 +120,30 @@ const ModuleA = (props: Props) => {
   const ctaType = ctaTypes[set.val];
   return (
     <Container>
-      {variant === 'tcp' ? (
-        <ModuleATcpCarousel
-          navigation={navigation}
-          largeCompImageCarousel={largeCompImageCarousel}
-        />
-      ) : (
-        <ModuleAGymCarousel
-          navigation={navigation}
-          largeCompImageCarousel={largeCompImageCarousel}
-        />
-      )}
+      {renderCarousel(largeCompImageCarousel, navigation)}
 
       {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
-          {renderView(ctaType, navigation, ctaItems, 'moduleA_cta_links', 'black')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'moduleA_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
       {ctaType === 'stackedCTAList' && (
         <ContainerView>
-          {renderView(ctaType, navigation, ctaItems, 'stacked_cta_list', 'gray')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'gray')}
           <Border background="gray" />
         </ContainerView>
       )}
 
       {ctaType === 'scrollCTAList' && (
         <ButtonContainer>
-          {renderView(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>
       )}
 
       {ctaType === 'linkCTAList' && (
         <ButtonLinksContainer>
-          {renderView(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
         </ButtonLinksContainer>
       )}
     </Container>

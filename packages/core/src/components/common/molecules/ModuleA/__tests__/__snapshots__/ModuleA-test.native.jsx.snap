@@ -2,340 +2,352 @@
 
 exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
 <Styled(View)>
-  <ModuleATcpCarousel
-    largeCompImageCarousel={
-      Array [
+  <Styled(View)>
+    <WithTheme(SnapCarousel)
+      carouselConfig={
         Object {
-          "headerText": Array [
-            Object {
-              "icon": Object {
-                "icon": "",
-                "placement": "",
+          "autoplay": true,
+        }
+      }
+      data={
+        Array [
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 1",
+                  },
+                ],
               },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 1",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
+                },
               },
-              "textItems": Array [
-                Object {
-                  "style": "style1",
-                  "text": "ENTER SITE 1",
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
                 },
-              ],
-            },
-          ],
-          "linkedImage": Array [
-            Object {
-              "image": Object {
-                "alt": "Family Tees Image 1",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Family Tees title",
-                "url": "https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg",
+                "textItems": Array [
+                  Object {
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
+                  },
+                ],
               },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "Family Tees",
-                "title": "Family Tees",
-                "url": "/c/image/url",
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
               },
-            },
-          ],
-          "promoBanner": Array [
-            Object {
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 2",
+                  },
+                ],
               },
-              "textItems": Array [
-                Object {
-                  "style": "percentage_wrapped_extra_large",
-                  "text": "60 % OFF",
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 2",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg",
                 },
-                Object {
-                  "style": "small_text_bold",
-                  "text": "50 % Off",
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
                 },
-                Object {
-                  "style": "small_text_normal",
-                  "text": " All Shoes & Select Accessories",
-                },
-              ],
-            },
-          ],
-          "ribbonBanner": Array [
-            Object {
-              "position": "right",
-              "textItems": Array [
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "Order By XX/XX",
-                },
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "For Easter Delivery!",
-                },
-              ],
-            },
-          ],
-        },
-        Object {
-          "headerText": Array [
-            Object {
-              "icon": Object {
-                "icon": "",
-                "placement": "",
               },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
+                  },
+                ],
               },
-              "textItems": Array [
-                Object {
-                  "style": "style1",
-                  "text": "ENTER SITE 2",
-                },
-              ],
-            },
-          ],
-          "linkedImage": Array [
-            Object {
-              "image": Object {
-                "alt": "Family Tees Image 2",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Family Tees title",
-                "url": "https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg",
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
               },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "Family Tees",
-                "title": "Family Tees",
-                "url": "/c/image/url",
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 3",
+                  },
+                ],
               },
-            },
-          ],
-          "promoBanner": Array [
-            Object {
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 3",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
+                },
               },
-              "textItems": Array [
-                Object {
-                  "style": "percentage_wrapped_extra_large",
-                  "text": "60 % OFF",
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
                 },
-                Object {
-                  "style": "small_text_bold",
-                  "text": "50 % Off",
-                },
-                Object {
-                  "style": "small_text_normal",
-                  "text": " All Shoes & Select Accessories",
-                },
-              ],
-            },
-          ],
-          "ribbonBanner": Array [
-            Object {
-              "position": "right",
-              "textItems": Array [
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "Order By XX/XX",
-                },
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "For Easter Delivery!",
-                },
-              ],
-            },
-          ],
-        },
-        Object {
-          "headerText": Array [
-            Object {
-              "icon": Object {
-                "icon": "",
-                "placement": "",
+                "textItems": Array [
+                  Object {
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
+                  },
+                ],
               },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
               },
-              "textItems": Array [
-                Object {
-                  "style": "style1",
-                  "text": "ENTER SITE 3",
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
                 },
-              ],
-            },
-          ],
-          "linkedImage": Array [
-            Object {
-              "image": Object {
-                "alt": "Family Tees Image 3",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Family Tees title",
-                "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 4",
+                  },
+                ],
               },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "Family Tees",
-                "title": "Family Tees",
-                "url": "/c/image/url",
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 4",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
+                },
               },
-            },
-          ],
-          "promoBanner": Array [
-            Object {
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
+                  },
+                ],
               },
-              "textItems": Array [
-                Object {
-                  "style": "percentage_wrapped_extra_large",
-                  "text": "60 % OFF",
-                },
-                Object {
-                  "style": "small_text_bold",
-                  "text": "50 % Off",
-                },
-                Object {
-                  "style": "small_text_normal",
-                  "text": " All Shoes & Select Accessories",
-                },
-              ],
-            },
-          ],
-          "ribbonBanner": Array [
-            Object {
-              "position": "right",
-              "textItems": Array [
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "Order By XX/XX",
-                },
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "For Easter Delivery!",
-                },
-              ],
-            },
-          ],
-        },
-        Object {
-          "headerText": Array [
-            Object {
-              "icon": Object {
-                "icon": "",
-                "placement": "",
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
               },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
-              },
-              "textItems": Array [
-                Object {
-                  "style": "style1",
-                  "text": "ENTER SITE 4",
-                },
-              ],
-            },
-          ],
-          "linkedImage": Array [
-            Object {
-              "image": Object {
-                "alt": "Family Tees Image 4",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Family Tees title",
-                "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
-              },
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "Family Tees",
-                "title": "Family Tees",
-                "url": "/c/image/url",
-              },
-            },
-          ],
-          "promoBanner": Array [
-            Object {
-              "link": Object {
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
-              },
-              "textItems": Array [
-                Object {
-                  "style": "percentage_wrapped_extra_large",
-                  "text": "60 % OFF",
-                },
-                Object {
-                  "style": "small_text_bold",
-                  "text": "50 % Off",
-                },
-                Object {
-                  "style": "small_text_normal",
-                  "text": " All Shoes & Select Accessories",
-                },
-              ],
-            },
-          ],
-          "ribbonBanner": Array [
-            Object {
-              "position": "right",
-              "textItems": Array [
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "Order By XX/XX",
-                },
-                Object {
-                  "style": "ribbon_default_text",
-                  "text": "For Easter Delivery!",
-                },
-              ],
-            },
-          ],
-        },
-      ]
-    }
-  />
+            ],
+          },
+        ]
+      }
+      height={200}
+      overlap={true}
+      renderItem={[Function]}
+      showDots={true}
+      width={750}
+    />
+  </Styled(View)>
   <Styled(View)>
     <ButtonList
       buttonListVariation="stackedCTAList"
