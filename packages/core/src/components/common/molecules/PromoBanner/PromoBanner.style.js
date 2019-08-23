@@ -42,12 +42,11 @@ export default css`
     text-align: center;
     color: ${props => props.theme.colorPalette.white};
     display: block;
-    line-height: 2.5;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: inline-block;
       font-size: 26px;
-      width: 148px;
+      width: 136px;
       text-align: left;
       margin-left: 10px;
       position: relative;
@@ -199,19 +198,6 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 20px;
-    }
-  }
-
-  .style11 {
-    color: ${props => props.theme.colorPalette.white};
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: 36px;
-    line-height: 1.11;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: 74px;
-      line-height: 1.05;
     }
   }
 

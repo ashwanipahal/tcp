@@ -19,7 +19,7 @@ describe('ButtonList component', () => {
         dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.stack-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.stacked-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
 
@@ -31,7 +31,7 @@ describe('ButtonList component', () => {
         dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.scroll-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.scroll-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
   it('renders correctly for image cta List', () => {
@@ -43,7 +43,7 @@ describe('ButtonList component', () => {
         dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.scroll-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.scroll-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
 
@@ -55,7 +55,7 @@ describe('ButtonList component', () => {
         dataLocatorTextCta="moduleN_cta_links_"
       />
     );
-    expect(ButtonListComp.find('.link-comp-wrapper')).toHaveLength(1);
+    expect(ButtonListComp.find('.link-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
 });

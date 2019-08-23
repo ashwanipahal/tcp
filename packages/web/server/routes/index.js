@@ -59,6 +59,11 @@ const RoutesMap = [
     path: '/gallery',
     resolver: '/gallery',
   },
+  {
+    path: '/checkout/:section?',
+    resolver: '/Checkout',
+    params: ['section'],
+  },
 ];
 
 module.exports = RoutesMap;

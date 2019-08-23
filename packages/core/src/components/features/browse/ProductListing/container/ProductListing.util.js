@@ -53,9 +53,13 @@ export const findCategoryIdandName = (data, category) => {
       // TODO - only looking for items in Categories. Should look for all the groups
       data[iterator].subCategories &&
       data[iterator].subCategories.Categories &&
-      data[iterator].subCategories.Categories.length
+      data[iterator].subCategories.Categories.items &&
+      data[iterator].subCategories.Categories.items.length
     ) {
-      categoryFound = findCategoryIdandName(data[iterator].subCategories.Categories, category);
+      categoryFound = findCategoryIdandName(
+        data[iterator].subCategories.Categories.items,
+        category
+      );
       if (categoryFound.length) {
         categoryFound.push(getRequiredCategoryData(data[iterator]));
       }
@@ -108,8 +112,8 @@ export const generateGroups = level1 => {
     const groupings = {};
 
     // for each L2 parse and place in proper group
-    if (level1.subCategories.Categories) {
-      level1.subCategories.Categories.forEach(L2 => {
+    if (level1.subCategories.Categories && level1.subCategories.Categories.items) {
+      level1.subCategories.Categories.items.forEach(L2 => {
         const groupName = 'Categories';
         const groupOrder = 1;
 

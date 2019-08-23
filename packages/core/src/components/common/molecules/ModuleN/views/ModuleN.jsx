@@ -18,7 +18,11 @@ const ModuleN = props => {
   const ctaType = ctaTypes[set[2].val];
 
   return (
-    <Row className={`${className} moduleN`} fullBleed={{ small: true, medium: true, large: true }}>
+    <Row
+      className={`${className} moduleN`}
+      fullBleed={{ small: true, medium: true, large: true }}
+      data-locator={getLocator('moduleN_promobanner_img')}
+    >
       <Col
         colSize={{
           small: 6,
@@ -35,7 +39,7 @@ const ModuleN = props => {
               type="heading"
               color="white"
               className="ModuleN-heading"
-              data-locator={getLocator('moduleN_header_text')}
+              dataLocator={getLocator('moduleN_header_text')}
             />
           )}
           {promoBanner && (

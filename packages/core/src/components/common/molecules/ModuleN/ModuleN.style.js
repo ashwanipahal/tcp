@@ -2,14 +2,14 @@ import { css } from 'styled-components';
 
 export default css`
   margin-bottom: 40px;
+
   .heading-wrapper {
-    padding-top: 11px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      padding-top: 16px;
-    }
+    padding: 16px 0;
+
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding-top: 0;
+      padding-top: 30px;
+      padding-bottom: 25px;
     }
   }
 
@@ -17,14 +17,16 @@ export default css`
 
   h3.link-text {
     margin: 0;
+    margin-bottom: 5px;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: inline;
+      margin-bottom: 0;
     }
   }
 
   .promo-link {
-    color: white;
+    color: ${props => props.theme.colorPalette.white};
   }
 
   .moduleN-heading-wrapper {
