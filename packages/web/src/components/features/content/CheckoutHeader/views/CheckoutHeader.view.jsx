@@ -8,7 +8,7 @@ import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
 import { getIconPath } from '../../../../../../../core/src/utils';
 
-const CheckoutHeader = ({ className, brandTabs }) => {
+const CheckoutHeader = ({ className, brandTabs, labels }) => {
   return (
     <header className={className}>
       <div className="header-topnav__row">
@@ -26,7 +26,7 @@ const CheckoutHeader = ({ className, brandTabs }) => {
         </div>
         <div className="header-topnav__promo-area">
           <BodyCopy component="span" fontSize="fs32">
-            CHECKOUT
+            {labels.checkoutHeaderLabel}
           </BodyCopy>
         </div>
 
@@ -39,7 +39,7 @@ const CheckoutHeader = ({ className, brandTabs }) => {
               to="/bag"
               data-locator="checkout-header-returnToBag"
             >
-              Return to Bag
+              {labels.returnBagLabel}
             </Anchor>
           </BodyCopy>
         </div>
@@ -54,6 +54,7 @@ const CheckoutHeader = ({ className, brandTabs }) => {
 CheckoutHeader.propTypes = {
   className: PropTypes.string.isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 CheckoutHeader.defaultProps = {};
