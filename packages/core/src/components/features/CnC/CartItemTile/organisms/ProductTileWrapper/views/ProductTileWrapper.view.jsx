@@ -5,6 +5,7 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
@@ -26,13 +27,36 @@ class ProductTileWrapper extends React.PureComponent<props> {
     });
   };
 
-  getRemoveString = labels => {
-    return `${labels.removeSoldOut.replace('#remove#', `remove`)}`;
+  getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
+    const remove = labels.removeSoldOut.split('#remove#');
+    const newRemove = (
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs12"
+        component="span"
+        className="removeErrorMessage"
+        fontWeight="extrabold"
+        onClick={() => removeCartItem(getUnavailableOOSItems)}
+      >
+        remove
+      </BodyCopy>
+    );
+    remove.splice(1, 0, newRemove);
+    return remove;
   };
 
   render() {
-    const { orderItems, bagLabels, labels, pageView, isUserLoggedIn, isPlcc } = this.props;
+    const {
+      orderItems,
+      bagLabels,
+      labels,
+      pageView,
+      removeCartItem,
+      isUserLoggedIn,
+      isPlcc,
+    } = this.props;
     let isAvailable;
+    const getUnavailableOOSItems = [];
     const { isEditAllowed } = this.state;
     if (orderItems && orderItems.size > 0) {
       const orderItemsView = orderItems.map(tile => {
@@ -41,6 +65,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         ) {
+          getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
           isAvailable = true;
         }
         return (
@@ -67,7 +92,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
                 fontFamily="secondary"
                 fontSize="fs12"
               >
-                {this.getRemoveString(labels)}
+                {this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
               </BodyCopy>
             </>
           )}
@@ -87,6 +112,7 @@ ProductTileWrapper.defaultProps = {
 ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  removeCartItem: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,

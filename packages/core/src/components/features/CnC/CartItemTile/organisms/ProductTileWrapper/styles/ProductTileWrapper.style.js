@@ -9,11 +9,15 @@ export const customStyles = css`
   img {
     height: 13px;
     width: 13px;
-    padding: 3px 13px 0 0;
+    padding: 4px 7px 0 0;
   }
   span {
     font-weight: bold;
     font-size: 16px;
+  }
+  .removeErrorMessage {
+    text-decoration: underline;
+    cursor: pointer;
   }
 `;
 export default css`
