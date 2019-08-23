@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
 import ProductList from '../molecules/ProductList/views';
+import withStyles from '../../../../common/hoc/withStyles';
+
+import ProductListingStyle from '../ProductListing.style';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
@@ -85,4 +88,4 @@ ProductListView.defaultProps = {
   filtersLength: {},
 };
 
-export default ProductListView;
+export default withStyles(ProductListView, ProductListingStyle);

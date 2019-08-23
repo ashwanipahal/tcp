@@ -13,7 +13,7 @@ export default css`
     background: url('/static/images/carrot-small-up.png') no-repeat;
     background-position: 98% 18px;
     background-color: #eeeeee;
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy13}px;
+    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
 
     &.open-filter-button-expanded {
       background: url('/static/images/carrot-small-down.png') no-repeat;
@@ -33,7 +33,7 @@ export default css`
     }
   }
 
-  .common-drop-down {
+  .common-dropdown {
     position: relative;
     border: 0;
 

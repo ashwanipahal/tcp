@@ -5,9 +5,10 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingFiltersFormStyle from '../ProductListingFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
 import { reduxForm, Field, submit } from 'redux-form';
-import BodyCopy from '../../../../../../../../../core/src/components/common/atoms/BodyCopy';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import cssClassName from '../../utils/cssClassName';
 import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersForm';
+import Image from '../../../../../../common/atoms/Image';
 
 class ProductListingFiltersForm extends React.Component {
   constructor(props) {
@@ -186,13 +187,30 @@ function getColorFilterOptionsMap(colorOptionsMap, isMobile) {
     title: color.displayName,
     content: (
       <div className="color-title">
-        <img
+        <Image
           className="color-chip"
-          data-colorname={color.displayName.toLowerCase()}
-          alt={color.displayName}
           src={color.imagePath}
+          height="19px"
+          width="19px"
+          alt={color.displayName}
+          data-colorname={color.displayName.toLowerCase()}
         />
-        {!isMobile && <span className="color-name">{color.displayName}</span>}
+
+        {!isMobile && (
+          <BodyCopy
+            component="span"
+            role="label"
+            textAlign="center"
+            tabIndex={-1}
+            fontSize="fs14"
+            fontFamily="secondary"
+            color="gray.900"
+            className="color-name"
+            outline="none"
+          >
+            {color.displayName}
+          </BodyCopy>
+        )}
       </div>
     ),
   }));

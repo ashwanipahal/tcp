@@ -1,4 +1,3 @@
-/* eslint-disable */
 // aria support ?
 // searchable support ?
 // do we want a "clearable" property, and a clear button? (currently escape clears)
@@ -35,17 +34,28 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import cssClassName from '../../utils/cssClassName';
 import DropdownList from '../../DropdownList/views';
-import BodyCopy from '../../../../../../../../../core/src/components/common/atoms/BodyCopy';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CustomSelectStyle from '../CustomSelect.style';
-/**TODO
- * Temp Commented in RWD
- */
-//import {ErrorMessage, ERROR_FORM_NAME_DATA_ATTRIBUTE} from '../ErrorMessage.jsx';
-//import warning from 'warning';
+
+// TODO Fix This import {ErrorMessage, ERROR_FORM_NAME_DATA_ATTRIBUTE} from '../ErrorMessage.jsx';
+// TODO Fix This import warning from 'warning';
 
 const UNSELECTED_VALUE = '';
 const UNSELECTED_ARRAY_VALUE = [];
+
+// returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
+function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
+  return Array.isArray(valueOrValues)
+    ? optionsMap.map(
+        item => valueOrValues.findIndex(selectedValue => item.value === selectedValue) >= 0
+      )
+    : optionsMap.findIndex(item => item.value === valueOrValues);
+}
+
+function getButtonText({ selectedIndex, selectTextOverride, optionsMap, placeholder }) {
+  return selectedIndex >= 0 ? selectTextOverride || optionsMap[selectedIndex].title : placeholder;
+}
 
 class CustomSelect extends React.Component {
   static propTypes = {
@@ -201,6 +211,8 @@ class CustomSelect extends React.Component {
      * If a value exisits then when an option is selected you will see this value as opposed to the selected value.
      */
     selectTextOverride: PropTypes.string,
+    facetName: PropTypes.string.isRequired,
+    appliedFilterVal: PropTypes.number,
   };
 
   static customSelectCounter = 0;
@@ -208,7 +220,7 @@ class CustomSelect extends React.Component {
   constructor(props) {
     super(props);
 
-    //this.verifyPropsConsistency(props);
+    // TODO - Fix this - this.verifyPropsConsistency(props);
 
     this.containerDivRef = null; // the HTML DOM element of the containing div element of this component
     this.state = {
@@ -223,53 +235,93 @@ class CustomSelect extends React.Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.customSelectCounter = CustomSelect.customSelectCounter++;
+    this.customSelectCounter = CustomSelect.customSelectCounter + 1;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // TODO Fix This this.verifyPropsConsistency(nextProps);
+    const { expanded, optionsMap } = this.props;
+    const { highlightedIndex } = this.state;
+
+    if (nextProps.expanded !== expanded || nextProps.disableExpandStateChanges) {
+      this.setState({ expanded: nextProps.expanded });
+    }
+    if (optionsMap !== nextProps.optionsMap && highlightedIndex > 0) {
+      // sync. this.state.highlightedIndex with the new optionsMap
+      // (to point to the same highlighted item as now if possible)
+      this.setState({
+        highlightedIndex: getIndexOrIndicesOfValue(
+          nextProps.optionsMap,
+          optionsMap[highlightedIndex].value
+        ),
+      });
+    }
+  }
+
+  setHighlightedIndex(index) {
+    this.setState({ highlightedIndex: index });
+  }
+
+  // select the item with the given value
+  setValue(selectedValue, noClose) {
+    const {
+      allowMultipleSelections,
+      input: { value, onChange },
+    } = this.props;
+
+    if (allowMultipleSelections) {
+      const newValue = [...value];
+      newValue.push(selectedValue);
+      // notify our listeners that the user wants the value of this component to change
+      onChange(newValue);
+    } else {
+      // only single selection allowed
+      if (value !== selectedValue) {
+        // if the value to select is not the current value of this component
+        // notify our listeners that the user wants the value of this component to change
+        onChange(selectedValue);
+      }
+      if (!noClose) this.closeMenu(); // close the dropdown
+    }
   }
 
   /** closes the dropdown */
   closeMenu() {
-    if (!this.state.expanded || this.props.disableExpandStateChanges) return;
+    const { expanded } = this.state;
+    const { disableExpandStateChanges, onCloseCallback } = this.props;
+    if (!expanded || disableExpandStateChanges) return;
     this.setState({ expanded: false });
-    if (this.state.expanded && this.props.onCloseCallback) this.props.onCloseCallback();
+    if (expanded && onCloseCallback) onCloseCallback();
   }
 
   /** opens the dropdown */
   expandMenu() {
-    // alert('expandMenu..');
     // if (this.state.expanded || this.props.disableExpandStateChanges) return;
     // let highlightedIndex = this.getIndexOrIndicesOfValue(this.props.optionsMap, this.props.input.value);
     // if (Array.isArray(highlightedIndex)) {
     //   highlightedIndex = highlightedIndex.findIndex((isSelected) => isSelected);
     // }
-    // this.setHighlightedIndex(highlightedIndex);
+    // TODO Fix This this.setHighlightedIndex(highlightedIndex);
+
     this.setState({ expanded: true });
-    console.log('....' + this.state.expanded);
-    //if (!this.state.expanded && this.props.onExpandCallback) this.props.onExpandCallback();
+
+    // TODO Fix This if (!this.state.expanded && this.props.onExpandCallback) this.props.onExpandCallback();
   }
 
   // ------------------------ protected methods ------------------- //
 
-  verifyPropsConsistency(props) {
-    let {
-      placeholder,
-      allowMultipleSelections,
-      input: { value },
-    } = props;
-    //warning(placeholder || !allowMultipleSelections, "CustomSelect: 'placeholder' prop must be provided if 'allowMultipleSelections' prop is true.");
-    // warning(!allowMultipleSelections || Array.isArray(value), "CustomSelect: input.value prop must be an array if 'allowMultipleSelections' prop is true.");
-  }
+  // TODO Fix This verifyPropsConsistency(props) {
+  //   let {
+  //     placeholder,
+  //     allowMultipleSelections,
+  //     input: { value },
+  //   } = props;
+  // TODO Fix This  warning(placeholder || !allowMultipleSelections, "CustomSelect: 'placeholder' prop must be provided if 'allowMultipleSelections' prop is true.");
+  // TODO Fix This  warning(!allowMultipleSelections || Array.isArray(value), "CustomSelect: input.value prop must be an array if 'allowMultipleSelections' prop is true.");
+  //  }
 
   captureContainerDivRef(ref) {
     this.containerDivRef = ref;
-  }
-
-  // returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
-  getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
-    return Array.isArray(valueOrValues)
-      ? optionsMap.map(
-          item => valueOrValues.findIndex(selectedValue => item.value === selectedValue) >= 0
-        )
-      : optionsMap.findIndex(item => item.value === valueOrValues);
   }
 
   // assign focus to this component
@@ -279,8 +331,10 @@ class CustomSelect extends React.Component {
 
   // handles clicks on the button that opens the dropdown
   handleButtonClick(event) {
-    if (this.props.disabled || event.button !== 0) return; // ignore clicks not on main button, or if disabled
-    if (this.state.expanded) {
+    const { disabled } = this.props;
+    const { expanded } = this.state;
+    if (disabled || event.button !== 0) return; // ignore clicks not on main button, or if disabled
+    if (expanded) {
       this.closeMenu();
     } else {
       this.expandMenu();
@@ -289,19 +343,19 @@ class CustomSelect extends React.Component {
 
   // handles mouse clicks on items in the dropdown
   handleItemClick(event, clickedItemIndex) {
-    let {
+    const {
       optionsMap,
       allowMultipleSelections,
       input: { value },
     } = this.props;
 
     if (event.button !== 0) return; // ignore clicks not on the main (left) mouse button
-    //  event.preventDefault();
+    // TODO Fix This  event.preventDefault();
     if (!optionsMap[clickedItemIndex].disabled) {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
-      let clickedItemValue = optionsMap[clickedItemIndex].value; // value of clicked on item
-      let selectedIndex = this.getIndexOrIndicesOfValue(optionsMap, value);
+      const clickedItemValue = optionsMap[clickedItemIndex].value; // value of clicked on item
+      const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
       if (allowMultipleSelections && selectedIndex[clickedItemIndex]) {
         this.unsetValue(clickedItemValue); // remove clickedItemValue from this component's selcted values list
       } else {
@@ -317,8 +371,8 @@ class CustomSelect extends React.Component {
 
     // IE9-11 does not provide relatedTarget for React (focusing vs focus, etc)
     // so we'll use document.activeElement (if available)
-    let target = event.relatedTarget || document.activeElement;
-
+    const target = event.relatedTarget || document.activeElement;
+    const { input } = this.props;
     if (
       target !== null &&
       target !== this.containerDivRef &&
@@ -328,8 +382,7 @@ class CustomSelect extends React.Component {
       // note that we do not pass the event along to our listeners, but opt for the option of sending them the value
       // the reason is that Redux-form sometimes tries to pick up the value from the event, and this value will be wrong
       // when multiple selections are allowed (as it may be the value retrieved from the single input DOM element that renders a single item).
-      if (this.props.input && this.props.input.onBlur)
-        this.props.input.onBlur(this.props.input.value);
+      if (input && input.onBlur) input.onBlur(input.value);
 
       this.closeMenu(); // close the dropdown
     }
@@ -337,7 +390,8 @@ class CustomSelect extends React.Component {
 
   // handles focus events of the containing div of this component
   handleFocus(event) {
-    if (this.props.disabled) {
+    const { input, disabled } = this.props;
+    if (disabled) {
       // if disabled prevent this component and any of its child elements from receiving focus
       if (event.target === this.containerDivRef || this.containerDivRef.contains(event.target)) {
         event.target.blur();
@@ -345,37 +399,47 @@ class CustomSelect extends React.Component {
     } else {
       // not disabled
       // notify our listeners that this component was focused
-      if (this.props.input && this.props.input.onFocus) this.props.input.onFocus(event);
+      // eslint-disable-next-line no-lonely-if
+      if (input && input.onFocus) {
+        input.onFocus(event);
+      }
+    }
+  }
+
+  handleEscapeKeyEvent({ expanded }, { placeholder, allowMultipleSelections }) {
+    if (expanded) {
+      this.closeMenu(); // close the dropdown if it is open
+    } else if (typeof placeholder !== 'undefined' && !allowMultipleSelections) {
+      // if dropdown is closed and placeholder is defined then select the empty value
+      this.setValue(allowMultipleSelections ? UNSELECTED_ARRAY_VALUE : UNSELECTED_VALUE);
+    }
+  }
+
+  handleSpaceKeyEvent({ expanded }) {
+    if (expanded) {
+      this.selectHighlightedItem(); // the user selected the currently highlighted item
+    } else {
+      this.expandMenu(); // show dropdown
     }
   }
 
   // handles key presses for this component
   handleKeyDown(event) {
-    if (this.props.disabled) return; // ignore everything if this compoinent is disabled
+    const { disabled } = this.props;
+    const { expanded } = this.state;
+    if (disabled) return; // ignore everything if this component is disabled
     switch (event.keyCode) {
       case 13: // enter
-        if (!this.state.expanded) return;
+        if (!expanded) return;
         this.selectHighlightedItem(); // the user selected the currently highlighted item
         break;
       case 27: // escape
-        if (this.state.expanded) {
-          this.closeMenu(); // close the dropdown if it is open
-        } else if (
-          typeof this.props.placeholder !== 'undefined' &&
-          !this.props.allowMultipleSelections
-        ) {
-          // if dropdown is closed and placeholder is defined then select the empty value
-          this.setValue(
-            this.props.allowMultipleSelections ? UNSELECTED_ARRAY_VALUE : UNSELECTED_VALUE
-          );
-        }
+        this.handleEscapeKeyEvent(this.state, this.props);
+
         break;
       case 32: // space
-        if (this.state.expanded) {
-          this.selectHighlightedItem(); // the user selected the currently highlighted item
-        } else {
-          this.expandMenu(); // show dropdown
-        }
+        this.handleSpaceKeyEvent(this.state);
+
         break;
       case 38: // up
         this.moveHighlightOrExpand('up');
@@ -395,89 +459,46 @@ class CustomSelect extends React.Component {
     event.preventDefault();
   }
 
-  setHighlightedIndex(index) {
-    this.setState({ highlightedIndex: index });
-  }
-
   // select the currently highlighted item
   selectHighlightedItem() {
-    let highlightedItem = this.props.optionsMap[this.state.highlightedIndex];
+    const { optionsMap } = this.props;
+    const { highlightedIndex } = this.state;
+
+    const highlightedItem = optionsMap[highlightedIndex];
     if (highlightedItem) this.setValue(highlightedItem.value);
   }
 
   unsetValue(value) {
-    let newValues = this.props.input.value.filter(val => val !== value);
+    const { input } = this.props;
+    const newValues = input.value.filter(val => val !== value);
     // notify our listeners that the user wants the value of this component to change
-    this.props.input.onChange(newValues);
-  }
-
-  // select the item with the given value
-  setValue(selectedValue, noClose) {
-    let {
-      allowMultipleSelections,
-      input: { value, onChange },
-    } = this.props;
-
-    if (allowMultipleSelections) {
-      let newValue = [...value];
-      newValue.push(selectedValue);
-      // notify our listeners that the user wants the value of this component to change
-      onChange(newValue);
-    } else {
-      // only single selection allowed
-      if (value !== selectedValue) {
-        // if the value to select is not the current value of this component
-        // notify our listeners that the user wants the value of this component to change
-        onChange(selectedValue);
-      }
-      if (!noClose) this.closeMenu(); // close the dropdown
-    }
+    input.onChange(newValues);
   }
 
   // if dropdown is expanded then move highlight to the item in the specified direction
   // if dropdown is closed then simply expand it
   moveHighlightOrExpand(direction) {
-    if (!this.state.expanded) {
+    const { optionsMap, selectOnHighlight, allowMultipleSelections } = this.props;
+    const { highlightedIndex, expanded } = this.state;
+    if (!expanded) {
       this.expandMenu();
     } else {
-      let newHighlightedIndex = DropdownList.getNewHighlightIndex(
-        this.props.optionsMap,
-        this.state.highlightedIndex,
+      const newHighlightedIndex = DropdownList.getNewHighlightIndex(
+        optionsMap,
+        highlightedIndex,
         direction
       );
       if (newHighlightedIndex >= 0) {
         this.setHighlightedIndex(newHighlightedIndex);
-        if (
-          newHighlightedIndex >= 0 &&
-          this.props.selectOnHighlight &&
-          !this.props.allowMultipleSelections
-        ) {
-          this.setValue(this.props.optionsMap[newHighlightedIndex].value, true); // the user selected the currently highlighted item
+        if (newHighlightedIndex >= 0 && selectOnHighlight && !allowMultipleSelections) {
+          this.setValue(optionsMap[newHighlightedIndex].value, true); // the user selected the currently highlighted item
         }
       }
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    //this.verifyPropsConsistency(nextProps);
-
-    if (nextProps.expanded !== this.props.expanded || nextProps.disableExpandStateChanges) {
-      this.setState({ expanded: nextProps.expanded });
-    }
-    if (this.props.optionsMap !== nextProps.optionsMap && this.state.highlightedIndex > 0) {
-      // sync. this.state.highlightedIndex with the new optionsMap
-      // (to point to the same highlighted item as now if possible)
-      this.setState({
-        highlightedIndex: this.getIndexOrIndicesOfValue(
-          nextProps.optionsMap,
-          this.props.optionsMap[this.state.highlightedIndex].value
-        ),
-      });
-    }
-  }
-
   render() {
-    let {
+    const {
       title,
       buttonIconExpanded,
       buttonIconClosed,
@@ -495,53 +516,53 @@ class CustomSelect extends React.Component {
       input: { value },
       selectTextOverride,
       /* we do not want the props in the next line to be part of otherProps */
-      meta,
-      expanded,
+      // meta,
+      // TODO Fix This expanded,
       selectOnHighlight,
       onCloseCallback,
       onExpandCallback, // eslint-disable-line no-unused-vars
       ...otherProps
     } = this.props;
 
-    meta = meta || {}; // meta may be undefined if this component is not wrapped with a redux-form Field HOC
+    const { expanded, highlightedIndex } = this.state;
+
+    // TODO Fix This meta = meta || {}; // meta may be undefined if this component is not wrapped with a redux-form Field HOC
     // let {touched, error, warning} = meta;
 
-    let showError = false; //error && (touched || showErrorIfUntouched);
-    let showWarning = false; //!showError && warning && (touched || showWarningIfUntouched);
+    const showError = false; // TODO Fix This error && (touched || showErrorIfUntouched);
+    const showWarning = false; // TODO Fix This !showError && warning && (touched || showWarningIfUntouched);
     // If there is an error then show it; otherwise, if there is a warning then show it
-    /**TODO
-     * Temp Commented in RWD
-     */
-    //let errorMessage = showError ? error : (showWarning ? warning : null);
 
-    let messageClassName = cssClassName('inline-', {
-      'error-message': showError,
-      'warning-message': showWarning,
-    });
-    let dataAttributes =
-      showError || showWarning ? { [ERROR_FORM_NAME_DATA_ATTRIBUTE]: meta.form || '' } : {};
+    // TODO Fix This let errorMessage = showError ? error : (showWarning ? warning : null);
 
-    let selectedIndex = this.getIndexOrIndicesOfValue(optionsMap, value);
-    let buttonText =
-      selectedIndex >= 0 ? selectTextOverride || optionsMap[selectedIndex].title : placeholder;
-    let buttonIconText = this.state.expanded ? buttonIconExpanded : buttonIconClosed; // || '+';
-    let buttonClassName = cssClassName(
+    // TODO Fix This const  messageClassName = cssClassName('inline-', {
+    //   'error-message': showError,
+    //   'warning-message': showWarning,
+    // });
+    const dataAttributes = 0;
+    // TODO Fix This showError || showWarning ? { [ERROR_FORM_NAME_DATA_ATTRIBUTE]: meta.form || '' } : {};
+
+    const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
+    const buttonText = getButtonText(this.props);
+
+    const buttonIconText = expanded ? buttonIconExpanded : buttonIconClosed; // || '+';
+    const buttonClassName = cssClassName(
       'custom-select-button ',
       className,
       '-button',
-      { '-closed': !this.state.expanded },
-      { ' custom-select-button-placeholder': !(selectedIndex >= 0) }
+      { '-closed': !expanded },
+      { ' custom-select-button-placeholder': selectedIndex < 0 }
     );
-    let appliedTabIndex = disabled ? -1 : tabIndex || 0;
-    let containingClassName = cssClassName(
-      'custom-select-common ' + className + ' ',
+    const appliedTabIndex = 0; // TODO Fix This disabled ? -1 : tabIndex || 0;
+    const containingClassName = cssClassName(
+      `custom-select-common ${className} `,
       className,
-      { '-closed': !this.state.expanded },
+      { '-closed': !expanded },
       { '-disabled': disabled },
       (showError || showWarning) && ' label-error'
     );
-    let uniqueId = `custom-select_${this.customSelectCounter}`;
-    let errorUniqueId = 'error_' + uniqueId; // Unique Id to connect the error input with its error message. Both needs to be the same. Accessibility requirement. DT-30852
+    const uniqueId = `custom-select_${this.customSelectCounter}`;
+    const errorUniqueId = `error_${uniqueId}`; // Unique Id to connect the error input with its error message. Both needs to be the same. Accessibility requirement. DT-30852
 
     return (
       <div
@@ -563,18 +584,16 @@ class CustomSelect extends React.Component {
             className={buttonClassName}
             onClick={this.handleButtonClick}
             aria-describedby={errorUniqueId}
+            onKeyPress={this.handleButtonClick}
           >
             <BodyCopy
               component="span"
-              role="label"
               textAlign="center"
               tabIndex={-1}
               fontSize="fs14"
               fontFamily="secondary"
               color="gray.900"
-              className={['filter-label', this.state.expanded ? 'filter-label-expanded' : ''].join(
-                ' '
-              )}
+              className={['filter-label', expanded ? 'filter-label-expanded' : ''].join(' ')}
               outline="none"
             >
               {buttonText}
@@ -582,24 +601,39 @@ class CustomSelect extends React.Component {
             <span aria-hidden>{buttonIconText}</span>
           </div>
         )}
-        {this.state.expanded && optionsMap.length > 0 && (
+        {expanded && optionsMap.length > 0 && (
           <DropdownList
             classNamePrefix={className}
             optionsMap={optionsMap}
             selectedIndex={selectedIndex}
-            highlightedIndex={this.state.highlightedIndex}
+            highlightedIndex={highlightedIndex}
             handleItemClick={this.handleItemClick}
             facetName={facetName}
           />
         )}
 
-        {/**TODO
-         * Temp Commented in RWD
-         * <ErrorMessage error={errorMessage} errorId={errorUniqueId} className={messageClassName} withoutErrorDataAttribute />
-         */}
+        {/* TODO Fix This <ErrorMessage error={errorMessage} errorId={errorUniqueId} className={messageClassName} withoutErrorDataAttribute /> */}
       </div>
     );
   }
 }
 
+CustomSelect.defaultProps = {
+  title: '',
+  disabled: false,
+  allowMultipleSelections: false,
+  placeholder: '',
+  buttonIconClosed: '',
+  buttonIconExpanded: '',
+  onExpandCallback: {},
+  tabIndex: 0,
+  expanded: false,
+  onCloseCallback: {},
+  disableExpandStateChanges: false,
+  selectOnHighlight: false,
+  showErrorIfUntouched: false,
+  showWarningIfUntouched: false,
+  selectTextOverride: '',
+  appliedFilterVal: 0,
+};
 export default withStyles(CustomSelect, CustomSelectStyle);
