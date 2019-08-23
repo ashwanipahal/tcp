@@ -7,6 +7,7 @@ import CustomSelect from '../../CustomSelect/views';
 import { reduxForm, Field, submit } from 'redux-form';
 import BodyCopy from '../../../../../../../../../core/src/components/common/atoms/BodyCopy';
 import cssClassName from '../../utils/cssClassName';
+import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersForm';
 
 class ProductListingFiltersForm extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class ProductListingFiltersForm extends React.Component {
     //let { isMobile, filtersMaps } = this.props;
     let isMobile = false;
     //console.log(this.props.filters);
-    let filtersMaps = this.props.filters;
+    let filtersMaps = this.props.filtersMaps;
     let className = cssClassName(isMobile ? 'size-detail-chips' : 'size-detail');
     let filters = (
       <Field
@@ -61,7 +62,7 @@ class ProductListingFiltersForm extends React.Component {
     //let { isMobile, filtersMaps } = this.props;
     let isMobile = false;
     //console.log(this.props.filters);
-    let filtersMaps = this.props.filters;
+    let filtersMaps = this.props.filtersMaps;
     let className = cssClassName(isMobile ? 'color-detail-chips' : 'color-filter-chip size-detail');
     let colorFilters = (
       <Field
@@ -113,10 +114,10 @@ class ProductListingFiltersForm extends React.Component {
       l1category: 'l1category',
     };
     //let { filtersMaps, filtersLength, isShopByColor } = this.props;
-    const filterKeys = Object.keys(this.props.filters);
+    const filterKeys = Object.keys(this.props.filtersMaps);
     let isShopByColor = false;
     let filtersLength = {};
-    let filtersMaps = this.props.filters;
+    let filtersMaps = this.props.filtersMaps;
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const appliedFilterAvailable = 0;
     return filterKeys.map(key => {
@@ -157,16 +158,25 @@ class ProductListingFiltersForm extends React.Component {
   }
 
   render() {
+    const { totalProductsCount, initialValues, filtersMaps } = this.props;
     return (
-      <form onSubmit={() => console.log('submit..')}>
-        <div className={this.props.className}>
-          <div className="filters-only-container">
-            {<span className="filter-title">Filter By:</span>}
+      <React.Fragment>
+        <form className="render-desktop-view">
+          <div className={this.props.className}>
+            <div className="filters-only-container">
+              {<span className="filter-title">Filter By:</span>}
 
-            {this.props.filters && this.renderDesktopFilters()}
+              {this.props.filtersMaps && this.renderDesktopFilters()}
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+        <ProductListingMobileFiltersForm
+          totalProductsCount={totalProductsCount}
+          initialValues={initialValues}
+          filtersMaps={filtersMaps}
+          className="render-mobile-view"
+        />
+      </React.Fragment>
     );
   }
 }
@@ -187,21 +197,8 @@ function getColorFilterOptionsMap(colorOptionsMap, isMobile) {
     ),
   }));
   return result;
-  // !isMobile
-  //   ? result.concat([
-  //       {
-  //         value: 'APPLY',
-  //         title: 'Apply',
-  //         content: (
-  //           <button type="submit" className="apply-filter-button">
-  //             Apply
-  //           </button>
-  //         ),
-  //         disabled: true,
-  //       },
-  //     ])
-  //   : result;
 }
+
 function getFilterOptionsMap(optionsMap, isMobile) {
   let result = optionsMap.map(option => ({
     value: option.id,

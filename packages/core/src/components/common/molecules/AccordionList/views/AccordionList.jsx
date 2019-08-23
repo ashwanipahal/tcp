@@ -52,7 +52,9 @@ export default class AccordionList extends React.Component<Props, State> {
       const clickedIndex = e.currentTarget.dataset.index;
       this.setState({
         elementClicked: clickedIndex,
-        isExpanded: !!e.currentTarget.closest('.list-item').getElementsByTagName('a').length,
+        isExpanded:
+          !!e.currentTarget.closest('.list-item').getElementsByTagName('a').length ||
+          !!e.currentTarget.closest('.list-item').getElementsByTagName('span').length,
       });
     }
   }
@@ -69,27 +71,33 @@ export default class AccordionList extends React.Component<Props, State> {
 
     return (
       <div className={`${className} container-accordion`}>
-        {children.map((item, index) => (
-          <div className="list-item">
-            {index.toString() === elementClicked.toString() && !isExpanded ? (
-              <AccordionItem
-                titleText={accordionItems[index].header.text || accordionItems[index].header.title}
-                updateAccordionState={this.changeAccordianState}
-                index={index}
-                activeClass="inactive"
-              >
-                {item}
-              </AccordionItem>
-            ) : (
-              <AccordionItem
-                titleText={accordionItems[index].header.text || accordionItems[index].header.title}
-                updateAccordionState={this.changeAccordianState}
-                index={index}
-                activeClass="active"
-              />
-            )}
-          </div>
-        ))}
+        {children.map((item, index) =>
+          item ? (
+            <div className="list-item">
+              {index.toString() === elementClicked.toString() && !isExpanded ? (
+                <AccordionItem
+                  titleText={
+                    accordionItems[index].header.text || accordionItems[index].header.title
+                  }
+                  updateAccordionState={this.changeAccordianState}
+                  index={index}
+                  activeClass="inactive"
+                >
+                  {item}
+                </AccordionItem>
+              ) : (
+                <AccordionItem
+                  titleText={
+                    accordionItems[index].header.text || accordionItems[index].header.title
+                  }
+                  updateAccordionState={this.changeAccordianState}
+                  index={index}
+                  activeClass="active"
+                />
+              )}
+            </div>
+          ) : null
+        )}
       </div>
     );
   }

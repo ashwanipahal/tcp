@@ -1,10 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const styles = css`
-  .continue-shopping {
-    text-align: center;
-    margin: 24px 0;
-  }
+export const StyledAnchorWrapper = styled.View`
+  text-align: center;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 export const PlaceHolderView = styled.View`
@@ -15,9 +13,7 @@ export const PlaceHolderView = styled.View`
 `;
 
 export const StyledText = styled.Text`
-  position: absolute;
-  left: 20;
-  top: 23;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const AddedToBagWrapper = styled.View`
@@ -25,4 +21,7 @@ export const AddedToBagWrapper = styled.View`
   flex: 1;
 `;
 
-export default { styles, StyledText, PlaceHolderView, AddedToBagWrapper };
+export const StyledWrapper = styled.View`
+  height: 100%;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;

@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
+  position: relative;
   .footer_top_candidate_a .flex-align-center {
     align-items: center;
   }

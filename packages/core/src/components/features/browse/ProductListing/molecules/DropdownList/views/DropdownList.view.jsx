@@ -166,7 +166,7 @@ class DropdownList extends React.Component {
     let isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
 
     return (
-      <div className={this.props.className}>
+      <div className={`${this.props.className} common-drop-down`}>
         <div className={cssClassName('item-list-wrapper')}>
           <ul
             ref={this.captureItemsListRef}

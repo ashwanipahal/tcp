@@ -1,13 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Col, Row } from '@tcp/core/src/components/common/atoms';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
+import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
-import headerStyles from '../Header.style';
-
-const { HeaderLoyalty } = headerStyles;
+import style from '../Header.style';
 
 const Header = ({
+  className,
   brandTabs,
   promoMessageWrapper,
   headerPromoArea,
@@ -16,13 +16,17 @@ const Header = ({
   closeNavigationDrawer,
   userName,
   openOverlay,
+  openTrackOrderOverlay,
+  isLoggedIn,
 }) => {
   return (
-    <header>
+    <header className={className}>
       <HeaderTopNav
         className="header-topnav"
         brandTabs={brandTabs}
         promoMessageWrapper={promoMessageWrapper}
+        openOverlay={openTrackOrderOverlay}
+        isUserLoggedIn={isLoggedIn}
       />
       <HeaderMiddleNav
         openNavigationDrawer={openNavigationDrawer}
@@ -30,6 +34,7 @@ const Header = ({
         navigationDrawer={navigationDrawer}
         userName={userName}
         openOverlay={openOverlay}
+        isLoggedIn={isLoggedIn}
       />
       <HeaderPromo
         mobileMarkup
@@ -37,26 +42,14 @@ const Header = ({
         dataPromo={headerPromoArea}
       />
       <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-      <HeaderLoyalty className="header-loyalty">
-        <Row>
-          <Col
-            className="header-loyalty__promo-loyalty"
-            colSize={{
-              large: 12,
-              medium: 8,
-              small: 6,
-            }}
-          >
-            Loyalty Promo banners
-          </Col>
-        </Row>
-      </HeaderLoyalty>
       <OverlayModal />
+      <TrackOrder />
     </header>
   );
 };
 
 Header.propTypes = {
+  className: PropTypes.string.isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -65,6 +58,8 @@ Header.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  openTrackOrderOverlay: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
-export default Header;
+export default withStyles(Header, style);

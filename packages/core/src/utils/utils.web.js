@@ -4,6 +4,7 @@ import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
+import { API_CONFIG } from '../services/config';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -41,9 +42,9 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const routerPush = (href, as) => {
+export const routerPush = (href, as, query) => {
   const siteId = getSiteId();
-  return Router.push(href, `/${siteId}${as}`);
+  return Router.push(href, `/${siteId}${as}`, { query });
 };
 
 export const identifyBrand = () => {
@@ -222,4 +223,58 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+};
+
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
+  const country = siteId && siteId.toUpperCase();
+  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  return {
+    traceIdCount: 0,
+    langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
+    MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
+    BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
+    domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
+    unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
+    }`,
+    CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
+    CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
+    googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+  };
+};
+
+const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
+  const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
+  return {
+    graphql_reqion: processEnv.RWD_WEB_GRAPHQL_API_REGION,
+    graphql_endpoint_url: `${graphQlEndpoint}/${processEnv.RWD_WEB_GRAPHQL_API_IDENTIFIER}`,
+    graphql_auth_type: processEnv.RWD_WEB_GRAPHQL_API_AUTH_TYPE,
+    graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
+  };
+};
+
+export const createAPIConfig = resLocals => {
+  // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
+  // TODO - use isMobile and cookie as well..
+
+  const { siteId, brandId, hostname } = resLocals;
+  const isCASite = siteId === API_CONFIG.siteIds.ca;
+  const isGYMSite = brandId === API_CONFIG.brandIds.gym;
+  const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
+  const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
+  const apiSiteInfo = API_CONFIG.sitesInfo;
+  const processEnv = process.env;
+  const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
+  const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
+  return {
+    ...basicConfig,
+    ...graphQLConfig,
+    ...countryConfig,
+    ...brandConfig,
+    isMobile: false,
+    cookie: null,
+  };
 };

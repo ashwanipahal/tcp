@@ -8,7 +8,17 @@ import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 
-const ProductListView = ({ className, products, currentNavIds, navTree, breadCrumbs, filters }) => {
+const ProductListView = ({
+  className,
+  products,
+  currentNavIds,
+  navTree,
+  breadCrumbs,
+  filters,
+  totalProductsCount,
+  initialValues,
+  filtersLength,
+}) => {
   return (
     <div className={className}>
       <Row>
@@ -33,7 +43,12 @@ const ProductListView = ({ className, products, currentNavIds, navTree, breadCru
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-area">
-              <ProductListingFiltersForm filters={filters} />
+              <ProductListingFiltersForm
+                filtersMaps={filters}
+                totalProductsCount={totalProductsCount}
+                initialValues={initialValues}
+                filtersLength={filtersLength}
+              />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -53,6 +68,9 @@ ProductListView.propTypes = {
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
+  totalProductsCount: PropTypes.string,
+  initialValues: PropTypes.shape({}),
+  filtersLength: PropTypes.shape({}),
 };
 
 ProductListView.defaultProps = {
@@ -62,6 +80,9 @@ ProductListView.defaultProps = {
   navTree: {},
   breadCrumbs: [],
   filters: {},
+  totalProductsCount: '',
+  initialValues: {},
+  filtersLength: {},
 };
 
 export default ProductListView;

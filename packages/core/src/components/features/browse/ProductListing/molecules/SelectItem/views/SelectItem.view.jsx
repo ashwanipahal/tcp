@@ -111,7 +111,9 @@ class SelectItem extends React.PureComponent {
           data-title={this.props.title}
           data-query={this.props.query}
           ref={this.handleRef}
-          className="selected-item"
+          //TODO: when selecting a filter item
+          // className="selected-item"
+          className="item-select"
           onMouseDown={this.handleClick}
         >
           {this.props.content}

@@ -5,11 +5,10 @@ import { getScreenWidth } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ShopBySize from '../../ShopBySize';
 import MenuItem from '../../MenuItems';
-import { shopBySizeArr, placeHolderText, shopBySize } from '../shopBySizeMock';
+import { shopBySizeArr, shopBySize } from '../shopBySizeMock';
 import {
   TitleContainer,
   HeadingContainer,
-  ItemView,
   ArrowBackIcon,
   TouchableOpacityArrow,
   ItemViewWithHeading,
@@ -24,7 +23,7 @@ const BackIcon = require('../../../../../../../../../core/src/assets/carrot-larg
  * @param {object} subCategories Details of the L2 menu item that has been clicked
  * @param {object} hasL3 flag that defines if L3 is present for the L2
  */
-const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabels) => {
+const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabels, url) => {
   if (hasL3) {
     return navigate('NavMenuLevel3', {
       navigationObj: subCategories,
@@ -32,7 +31,11 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
       accessibilityLabels,
     });
   }
-  return navigate('ProductListingPage');
+  return navigate('ProductListing', {
+    l2Title: name,
+    url,
+    accessibilityLabels,
+  });
 };
 
 /**
@@ -84,30 +87,10 @@ const NavMenuLevel2 = props => {
         item.subCategories,
         item.categoryContent.name,
         hasL3,
-        accessibilityLabels
+        accessibilityLabels,
+        item.url
       );
 
-    // In case of empty group category, using Lorem Ipsum to
-    // group these items and rendering it on top of the menu items
-    if (title === placeHolderText) {
-      return (
-        <ItemView
-          accessibilityRole="button"
-          accessibilityLabel={item.categoryContent.name}
-          onPress={routeHandler}
-        >
-          <MenuItem
-            navigate={navigate}
-            route={routeHandler}
-            maxWidthItem={maxWidthItem}
-            item={item}
-            hasBadge={hasBadge}
-            promoBannerMargin={promoBannerMargin}
-            hasL3={hasL3}
-          />
-        </ItemView>
-      );
-    }
     return (
       <ItemViewWithHeading
         accessibilityRole="button"
@@ -134,67 +117,62 @@ const NavMenuLevel2 = props => {
   } = item;
 
   // TODO - Appending the dummy shop by size object for development. Remove it later
-  subCategories[shopBySize] = shopBySizeArr;
+  subCategories[shopBySize] = {
+    label: shopBySize,
+    order: 0,
+    items: shopBySizeArr,
+  };
 
-  // Extract the object keys and place the placeHolderText key
-  // as the first element of the array since that appears first
-  const subCatArr = Object.keys(subCategories);
-  const indexOfSubFirstSection = subCatArr.indexOf(placeHolderText);
-  if (indexOfSubFirstSection !== 0) {
-    subCatArr.splice(indexOfSubFirstSection, 1);
-    subCatArr.unshift(placeHolderText);
-  }
-
-  const sectionArr = subCatArr.map(subcatName => {
-    return { data: subCategories[subcatName] || [], title: subcatName };
+  const subCatArr = Object.keys(subCategories).sort((prevGroup, curGroup) => {
+    return parseInt(prevGroup.order, 10) - parseInt(curGroup.order, 10);
   });
 
-  console.log(sectionArr);
+  const sectionArr = subCatArr.map(subcatName => {
+    return {
+      data: subCategories[subcatName].items || [],
+      title: subCategories[subcatName].label,
+      order: parseInt(subCategories[subcatName].order, 10),
+    };
+  });
 
   return (
-    <SectionList
-      renderItem={renderItem}
-      keyExtractor={keyExtractor}
-      stickySectionHeadersEnabled={false}
-      renderSectionHeader={({ section }) => {
-        if (section.title === placeHolderText) {
-          return (
-            <HeadingContainer>
-              <TouchableOpacityArrow
-                accessibilityRole="button"
-                accessibilityLabel={accessibilityLabels.back_button}
-                onPress={() => goBack()}
-              >
-                <ArrowBackIcon source={BackIcon} />
-              </TouchableOpacityArrow>
+    <React.Fragment>
+      <HeadingContainer>
+        <TouchableOpacityArrow
+          accessibilityRole="button"
+          accessibilityLabel={accessibilityLabels.back_button}
+          onPress={() => goBack()}
+        >
+          <ArrowBackIcon source={BackIcon} />
+        </TouchableOpacityArrow>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          textAlign="center"
+          text={l1Title}
+          color="text.primary"
+        />
+        <Text />
+      </HeadingContainer>
+      <SectionList
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        stickySectionHeadersEnabled={false}
+        renderSectionHeader={({ section }) => {
+          return section.title ? (
+            <TitleContainer>
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs16"
-                textAlign="center"
-                text={l1Title}
+                text={section.title}
                 color="text.primary"
-                // eslint-disable-next-line react-native/no-inline-styles
-                style={{ textTransform: 'uppercase' }}
               />
-              <Text />
-            </HeadingContainer>
-          );
-        }
-        return (
-          <TitleContainer>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs16"
-              text={section.title}
-              color="text.primary"
-              // eslint-disable-next-line react-native/no-inline-styles
-              style={{ textTransform: 'uppercase' }}
-            />
-          </TitleContainer>
-        );
-      }}
-      sections={sectionArr}
-    />
+            </TitleContainer>
+          ) : null;
+        }}
+        sections={sectionArr}
+      />
+    </React.Fragment>
   );
 };
 

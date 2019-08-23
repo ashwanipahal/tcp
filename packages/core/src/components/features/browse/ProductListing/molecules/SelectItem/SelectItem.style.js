@@ -27,4 +27,9 @@ export default css`
     margin-bottom: 14px;
     padding-bottom: 1px;
   }
+
+  .item-select {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: 14px;
+  }
 `;

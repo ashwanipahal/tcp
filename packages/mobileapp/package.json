@@ -42,7 +42,8 @@
     "@react-native-community/async-storage": "^1.6.1",
     "@react-native-community/netinfo": "^3.2.1",
     "react-native-keychain": "3.0.0",
-    "react-native-touch-id": "4.4.1"
+    "react-native-touch-id": "4.4.1",
+    "react-native-simple-radio-button": "2.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -122,7 +123,11 @@
       "**/react-native-keychain",
       "**/react-native-keychain/**",
       "**/react-native-touch-id",
-      "**/react-native-touch-id/**"
+      "**/react-native-touch-id/**",
+      "**/react-native-simple-radio-button",
+      "**/react-native-simple-radio-button/**",
+      "**/react-native-config",
+      "**/react-native-config/**"
     ]
   }
 }

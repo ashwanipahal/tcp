@@ -2,12 +2,11 @@ import { PRODUCTLISTINGPAGE_ACTION_PATTERN } from '../../../../../constants/redu
 
 const SET_PRODUCTS = `${PRODUCTLISTINGPAGE_ACTION_PATTERN}SET_PLP_PRODUCTS`;
 const FETCH_PRODUCTS = `${PRODUCTLISTINGPAGE_ACTION_PATTERN}GET_PLP_PRODUCTS`;
-const PRODUCTS_PER_LOAD = 20; // the number of products to load on each call to BE (as the user scrolls)
+export const PRODUCTS_PER_LOAD = 20; // TODO - change this to config value. the number of products to load on each call to BE (as the user scrolls)
 
 const PRODUCTLISTING_CONSTANTS = {
   SET_PRODUCTS,
   FETCH_PRODUCTS,
-  PRODUCTS_PER_LOAD,
 };
 
 export default PRODUCTLISTING_CONSTANTS;
