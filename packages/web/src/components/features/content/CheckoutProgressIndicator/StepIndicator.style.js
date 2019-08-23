@@ -35,13 +35,13 @@ export default css`
       font-size: 12px;
       position: relative;
       text-align: center;
-      color: #999999;
+      color: ${props => props.theme.colors.TEXT.DARK};
 
       &:before {
         width: 14px;
         height: 14px;
         content: '';
-        background-color: #999999;
+        background-color: ${props => props.theme.colors.PRIMARY.GRAY};
         display: block;
         text-align: center;
         margin: 0 auto 7px;
@@ -52,7 +52,7 @@ export default css`
         height: 2px;
         content: '';
         position: absolute;
-        background-color: #999999;
+        background-color: ${props => props.theme.colors.PRIMARY.GRAY};
         top: 7px;
         right: calc(50% + 12px);
         left: calc(-50% + 12px);
@@ -69,7 +69,7 @@ export default css`
       }
 
       button {
-        color: #333333;
+        color: ${props => props.theme.colors.TEXT.DARK};
         border: none;
         cursor: pointer;
         background-color: transparent;
@@ -80,13 +80,13 @@ export default css`
       display: block;
 
       &.stageName {
-        color: #333333;
+        color: ${props => props.theme.colors.TEXT.DARKGRAY};
       }
 
       &:before {
         content: '';
         background: url(${checkouttick});
-        background-color: #ffffff;
+        background-color: ${props => props.theme.colors.WHITE};
         height: 14px;
         width: 14px;
         position: inherit;
@@ -106,18 +106,18 @@ export default css`
 
     .active {
       &.stageName {
-        color: #333333;
+        color: ${props => props.theme.colors.TEXT.DARK};
       }
 
       &:before {
         padding: 1px;
         content: '';
-        background-color: #ffffff;
+        background-color: ${props => props.theme.colors.WHITE};
       }
 
       .white-dot {
         background: url(${checkoutwhitedot});
-        background-color: #ffffff;
+        background-color: ${props => props.theme.colors.WHITE};
         display: block;
         height: 17px;
         width: 17px;
