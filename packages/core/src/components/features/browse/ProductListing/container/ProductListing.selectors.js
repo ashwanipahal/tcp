@@ -1,8 +1,15 @@
-/* eslint-disable extra-rules/no-commented-out-code */
-import { PRODUCTLISTINGPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import { createSelector } from 'reselect';
 import { generateGroups } from './ProductListing.util';
+import {
+  PRODUCTLISTINGPAGE_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY,
+} from '../../../../../constants/reducer.constants';
 
 const getReducer = state => state[PRODUCTLISTINGPAGE_REDUCER_KEY];
+
+const getProductListingState = state => {
+  return state[PRODUCT_LISTING_REDUCER_KEY];
+};
 
 const getPlpProducts = state => getReducer(state).products;
 
@@ -25,22 +32,50 @@ const getOrganizedHeaderNavigationTree = state => {
 
   // only on browser so we dont need to keep deriving this
   if (/* isClient() && */ organizedNav.length) {
-    // cachedOrganizedNavTree = organizedNav;
+    // TODO - fix this - cachedOrganizedNavTree = organizedNav;
   }
 
   return organizedNav;
 };
 
+export const getCurrentListingIds = createSelector(
+  getProductListingState,
+  products => products && products.get('currentNavigationIds')
+);
+
 export const getNavigationTree = state => {
   // const currentListingIds = state.productListing.breadcrumbs.map(crumb => crumb.pathSuffix);
-  const currentListingIds = state.ProductListing.currentNavigationIds;
+  const currentListingIds = getCurrentListingIds(state);
   const navTree = getOrganizedHeaderNavigationTree(state);
-
   return (
     currentListingIds &&
     currentListingIds[0] &&
     navTree.find(L1 => L1.categoryId === currentListingIds[0])
   );
 };
+
+export const getBreadCrumbTrail = createSelector(
+  getProductListingState,
+  products => products && products.get('breadCrumbTrail')
+);
+
+export const getProductsSelect = createSelector(
+  getProductListingState,
+  products => products && products.get('loadedProducts')
+);
+
+export const getLoadedProductsCount = createSelector(
+  getProductListingState,
+  products => {
+    const allProducts = products && products.get('loadedProducts');
+    const totalProductCount = (allProducts && allProducts.length) || 0;
+    return totalProductCount || 0;
+  }
+);
+
+export const getUnbxdId = createSelector(
+  getProductListingState,
+  products => products && products.get('unbxdId')
+);
 
 export default getPlpProducts;

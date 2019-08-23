@@ -7,6 +7,7 @@ export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const FORM_REDUCER_KEY = 'form';
+export const LOADER_REDUCER_KEY = 'PageLoader';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -30,6 +31,8 @@ export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 export const BONUS_POINTS_DAYS = '@@Bonus-';
 export const BONUS_POINTS_DAYS_REDUCER_KEY = 'BonusPointsDaysReducer';
+export const USER_ACTION_PATTERN = '@@User-';
+export const USER_REDUCER_KEY = 'User';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -70,6 +73,12 @@ export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
 
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
+export const TRACK_ORDER_REDUCER_KEY = 'TrackOrderReducer';
+export const TRACK_ORDER_ACTION_PATTERN = '@@TrackOrder-';
+
+// change password reducer
+export const CHANGE_PASSWORD_REDUCER_KEY = 'ChangePassword';
+export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -83,6 +92,8 @@ export const REDUCER_ACTION_MAPPING = {
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
   [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
+  [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
+  [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

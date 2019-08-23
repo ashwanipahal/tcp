@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickUpFormPartVanilla component should renders correctly when Coupon are not present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="container"
+  >
+    <Styled(CheckoutSectionTitleDisplay)
+      className="summary-title-pick-up"
+      dataLocator="pickup-title"
+    />
+    <form
+      className="checkoutPickupForm"
+      name="checkoutPickup"
+    >
+      <div
+        className="pickUpContact"
+        dataLocator="pickup-contact"
+      >
+        <FormSection
+          className="pickUpContact"
+          name="pickUpContact"
+        >
+          <Styled(ContactFormFields)
+            isMobile={false}
+          />
+        </FormSection>
+      </div>
+      <div
+        lassName="pickUpAlternate-container"
+      >
+        <FormSection
+          name="pickUpAlternate"
+        >
+          <Styled(PickUpAlternateFormPart)
+            formName="checkoutPickup"
+            formSection="pickUpAlternate"
+            isAlternateUpdateChecked={false}
+            labels={Object {}}
+            showNoteOnToggle={true}
+          />
+        </FormSection>
+      </div>
+    </form>
+  </div>
+</div>
+`;

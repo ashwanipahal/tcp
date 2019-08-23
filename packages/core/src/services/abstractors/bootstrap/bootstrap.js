@@ -105,14 +105,15 @@ const bootstrap = async pages => {
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
   };
 
-  // TODO - This should be ideally done in Handler of graphQL
   try {
     const bootstrapData = await fetchBootstrapData(bootstrapParams);
+
     for (let i = 0; i < pages.length; i += 1) {
       const page = pages[i];
       // eslint-disable-next-line no-await-in-loop
-      response[pages] = bootstrapData[page];
+      response[page] = bootstrapData[page];
     }
+
     response.modules = await layoutAbstractor.processData(bootstrapData.homepage);
     response.header = headerAbstractor.processData(bootstrapData.header);
     response.footer = footerAbstractor.processData(bootstrapData.footer);

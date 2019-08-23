@@ -221,9 +221,8 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               ";
     outline: 0;
     padding: ",
-              [Function],
-              " 0
-      ",
+              "26px",
+              " 0 ",
               [Function],
               ";
     width: 100%;
@@ -243,6 +242,23 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     padding: 0;
     position: absolute;
     top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+              [Function],
+              ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 
   ",
@@ -320,9 +336,8 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               ";
     outline: 0;
     padding: ",
-              [Function],
-              " 0
-      ",
+              "26px",
+              " 0 ",
               [Function],
               ";
     width: 100%;
@@ -342,6 +357,23 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     padding: 0;
     position: absolute;
     top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+              [Function],
+              ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 
   ",

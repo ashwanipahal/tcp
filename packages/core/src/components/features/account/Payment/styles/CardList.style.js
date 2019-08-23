@@ -3,7 +3,8 @@ import { css } from 'styled-components';
 const styles = css`
   .cardList__heading {
     margin-top: 0;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    line-height: 2.8;
   }
   .cardList__col {
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};

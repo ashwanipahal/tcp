@@ -3,17 +3,24 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts } from './ProductListing.actions';
-import { getNavigationTree } from './ProductListing.selectors';
 import { processBreadCrumbs } from './ProductListing.util';
+import {
+  getProductsSelect,
+  getNavigationTree,
+  getLoadedProductsCount,
+  getUnbxdId,
+  getBreadCrumbTrail,
+} from './ProductListing.selectors';
 
-class ProductListingPageContainer extends React.PureComponent {
+class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
-    const { getProducts } = this.props;
-    getProducts({ URI: 'category' });
+    const { getProducts, navigation } = this.props;
+    const url = navigation && navigation.getParam('url');
+    getProducts({ URI: 'category', url });
   }
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs, filters } = this.props;
+    const { products, currentNavIds, navTree, breadCrumbs, filters, ...otherProps } = this.props;
     return (
       <ProductListing
         products={products}
@@ -21,6 +28,7 @@ class ProductListingPageContainer extends React.PureComponent {
         currentNavIds={currentNavIds}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
+        {...otherProps}
       />
     );
   }
@@ -28,11 +36,13 @@ class ProductListingPageContainer extends React.PureComponent {
 
 function mapStateToProps(state) {
   return {
-    products: state.ProductListing.loadedProducts,
+    products: getProductsSelect(state),
     filters: state.ProductListing.filtersMaps,
     currentNavIds: state.ProductListing.currentNavigationIds,
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
+    breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
+    loadedProductCount: getLoadedProductsCount(state),
+    unbxdId: getUnbxdId(state),
   };
 }
 
@@ -46,16 +56,17 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-ProductListingPageContainer.propTypes = {
+ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
-ProductListingPageContainer.defaultProps = {
+ProductListingContainer.defaultProps = {
   products: [],
   currentNavIds: [],
   navTree: {},
@@ -66,4 +77,4 @@ ProductListingPageContainer.defaultProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductListingPageContainer);
+)(ProductListingContainer);

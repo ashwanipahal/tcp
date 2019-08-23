@@ -3,11 +3,24 @@
 exports[`Native Badge component renders correctly with  as false 1`] = `
 <Styled(View)>
   <Styled(View)>
+    <Styled(CustomIcon)
+      backgroundColor="#ffffff"
+      borderRadius={0}
+      color="white"
+      iconFontName="FontAwesome"
+      iconStyle={Object {}}
+      isButton={false}
+      isDisabled={false}
+      name="check"
+      onPress={[Function]}
+      size={10}
+    >
+      <Component />
+    </Styled(CustomIcon)>
     <Styled(BodyCopy)
       color="white"
       fontSize="fs10"
       fontWeight="semibold"
-      locator=""
       mobilefontFamily={
         Array [
           "secondary",

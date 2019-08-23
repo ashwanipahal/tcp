@@ -36,227 +36,6 @@ exports[`L2 Panel component renders correctly 1`] = `
         className="l2-nav-category"
         colSize={
           Object {
-            "large": 2,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <div
-          className="l2-nav-category-header"
-        >
-          <Styled(Heading)
-            className="l2-nav-category-heading s-display-none"
-            color="text.primary"
-            component={null}
-            dataLocator="l2_col_heading_0"
-            textAlign="left"
-            variant="h6"
-          >
-            Lorem Ipsum
-          </Styled(Heading)>
-          <span
-            className="l2-nav-category-divider"
-          />
-        </div>
-        <div
-          className="l2-nav-category-links"
-        >
-          <ul
-            className={
-              Object {
-                "columnClass": "",
-              }
-            }
-          >
-            <li
-              data-locator="l2_col_0_link_0"
-            >
-              <Styled(Anchor)
-                to="/c/"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Spring Dressy
-                  </span>
-                  <span
-                    className="icon-arrow"
-                  />
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-              <Styled(L3Panel)
-                id="l3-drawer-0"
-                links={
-                  Array [
-                    Object {
-                      "categoryContent": Object {
-                        "description": "spring dressy",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "512521",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Spring Dressy",
-                        "productCount": 202,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                  ]
-                }
-                name="Spring Dressy"
-              />
-            </li>
-            <li
-              data-locator="l2_col_0_link_1"
-            >
-              <Styled(Anchor)
-                to="/c/"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    New Arrivals
-                  </span>
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-            </li>
-            <li
-              data-locator="l2_col_0_link_2"
-            >
-              <Styled(Anchor)
-                to="/c/"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Online Only
-                  </span>
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-            </li>
-            <li
-              data-locator="l2_col_0_link_3"
-            >
-              <Styled(Anchor)
-                to="/c/"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Extended Sizes
-                  </span>
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-            </li>
-            <li
-              data-locator="l2_col_0_link_4"
-            >
-              <Styled(Anchor)
-                to="/c/girl-clearance-us"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label highlighted full-width"
-                  >
-                    Clearance|Girl
-                  </span>
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-            </li>
-          </ul>
-        </div>
-      </Styled(Col)>
-      <Styled(Col)
-        className="l2-nav-category"
-        colSize={
-          Object {
             "large": 4,
             "medium": 8,
             "small": 6,
@@ -270,7 +49,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             className="l2-nav-category-heading "
             color="text.primary"
             component={null}
-            dataLocator="l2_col_heading_1"
+            dataLocator="l2_col_heading_0"
             textAlign="left"
             variant="h6"
           >
@@ -291,7 +70,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             }
           >
             <li
-              data-locator="l2_col_1_link_0"
+              data-locator="l2_col_0_link_0"
             >
               <Styled(Anchor)
                 to="/c/girls-clothing-school-uniforms"
@@ -314,9 +93,23 @@ exports[`L2 Panel component renders correctly 1`] = `
                   textAlign="left"
                 >
                   <span
-                    className="nav-bar-item-label  full-width"
+                    className="nav-bar-item-label  "
                   >
                     School Uniforms
+                  </span>
+                  <span
+                    className="nav-bar-item-content"
+                    data-locator="promo_badge_0"
+                  >
+                    <Styled(PromoBadge)
+                      data={
+                        Array [
+                          Object {
+                            "text": "60% OFF",
+                          },
+                        ]
+                      }
+                    />
                   </span>
                   <span
                     className="icon-arrow"
@@ -329,78 +122,153 @@ exports[`L2 Panel component renders correctly 1`] = `
                   Array [
                     Object {
                       "categoryContent": Object {
-                        "description": "Bottoms",
+                        "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "54164",
+                        "id": "478507",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Bottoms",
-                        "productCount": 41,
-                        "seoToken": "girls-clothing-school-uniforms-bottoms",
+                        "isUnique": false,
+                        "name": "Polos",
+                        "productCount": 77,
+                        "seoToken": "girls-school-uniform-polo-shirts",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-clothing-school-uniforms-bottoms",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Dresses & Jumpers",
+                        "description": "tops",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "54167",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Tops",
+                        "productCount": 35,
+                        "seoToken": "girls-clothing-school-uniforms-tops",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "478508",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Jeggings & Chinos",
+                        "productCount": 14,
+                        "seoToken": "girls-school-uniform-chino-pants",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "478509",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Skorts & Shorts",
+                        "productCount": 27,
+                        "seoToken": "girls-school-uniform-shorts",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "478542",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Leggings",
+                        "productCount": 20,
+                        "seoToken": "girls-school-uniform-leggings",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "478539",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Active",
+                        "productCount": 25,
+                        "seoToken": "girls-school-uniform-active",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "dresses & jumpers",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54165",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Dresses & Jumpers 55",
-                        "productCount": 24,
+                        "isUnique": false,
+                        "name": "Dresses & Jumpers",
+                        "productCount": 22,
                         "seoToken": "girls-clothing-school-uniforms-dresses-and-jumpers",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-clothing-school-uniforms-dresses-and-jumpers",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "jackets",
+                        "description": "outerwear",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54166",
                         "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "jackets",
-                        "productCount": 1,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Outerwear",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489143",
-                        "isShortImage": "false",
                         "isUnique": true,
                         "name": "Outerwear",
                         "productCount": 5,
                         "seoToken": "girls-clothing-school-uniforms-jackets-and-vests",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-clothing-school-uniforms-jackets-and-vests",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Accessories & Shoes",
+                        "description": "backpacks & accessories",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "489155",
+                        "id": "54163",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Backpacks & Accessories",
+                        "productCount": 34,
+                        "seoToken": "girls-clothing-school-uniforms-backpacks-and-essentials",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "479504",
                         "isShortImage": "false",
                         "isUnique": true,
-                        "name": "Accessories & Shoes",
-                        "productCount": 44,
-                        "seoToken": "girls-clothing-school-uniforms-accessories-socks-hair-tights",
+                        "name": "Uniform Extended Sizes",
+                        "productCount": 64,
+                        "seoToken": "girls-plus-slim-size-school-uniforms",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-clothing-school-uniforms-accessories-socks-hair-tights",
                     },
                   ]
                 }
@@ -408,10 +276,10 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_1"
+              data-locator="l2_col_0_link_1"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/girl-americana-shop"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -433,13 +301,85 @@ exports[`L2 Panel component renders correctly 1`] = `
                   <span
                     className="nav-bar-item-label  full-width"
                   >
-                    Backpacks & Essentials
+                    Americana Shop
                   </span>
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_1_link_2"
+              data-locator="l2_col_0_link_2"
+            >
+              <Styled(Anchor)
+                to="/c/girls-dresses"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    Dresses & Rompers
+                  </span>
+                  <span
+                    className="icon-arrow"
+                  />
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+              <Styled(L3Panel)
+                id="l3-drawer-2"
+                links={
+                  Array [
+                    Object {
+                      "categoryContent": Object {
+                        "description": "dresses",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "54160",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Dresses",
+                        "productCount": 65,
+                        "seoToken": "girls-dresses-casual",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "rompers",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "54162",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Rompers",
+                        "productCount": 24,
+                        "seoToken": "girls-dresses-rompers",
+                        "seoUrl": null,
+                      },
+                    },
+                  ]
+                }
+                name="Dresses & Rompers"
+              />
+            </li>
+            <li
+              data-locator="l2_col_0_link_3"
             >
               <Styled(Anchor)
                 to="/c/girl-t-shirts"
@@ -472,7 +412,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-2"
+                id="l3-drawer-3"
                 links={
                   Array [
                     Object {
@@ -481,29 +421,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "489122",
-                        "isShortImage": "true",
-                        "isUnique": true,
-                        "name": "Short Sleeve",
-                        "productCount": 14,
-                        "seoToken": "girls-tops-shirts-graphic-tees",
-                      },
-                      "url": "/undefined/c/girls-tops-shirts-graphic-tees",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Long Sleeve",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489114",
+                        "id": "419526",
                         "isShortImage": "false",
                         "isUnique": true,
-                        "name": "Long Sleeve",
-                        "productCount": 12,
-                        "seoToken": "girls-long-sleeve-t-shirts",
+                        "name": "Short Sleeve",
+                        "productCount": 164,
+                        "seoToken": "girls-tops-shirts-graphic-tees",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-long-sleeve-t-shirts",
                     },
                   ]
                 }
@@ -511,10 +436,10 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_3"
+              data-locator="l2_col_0_link_4"
             >
               <Styled(Anchor)
-                to="/c/girls-denim-bottoms"
+                to="/c/girls-kids-shorts"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -536,109 +461,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                   <span
                     className="nav-bar-item-label  full-width"
                   >
-                    Denim
-                  </span>
-                  <span
-                    className="icon-arrow"
-                  />
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-              <Styled(L3Panel)
-                id="l3-drawer-3"
-                links={
-                  Array [
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Super Skinny",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489067",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Super Skinny",
-                        "productCount": 3,
-                        "seoToken": "girls-super-skinny-jeans",
-                      },
-                      "url": "/undefined/c/girls-super-skinny-jeans",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Skinny",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489066",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Skinny",
-                        "productCount": 11,
-                        "seoToken": "girls-skinny-jeans",
-                      },
-                      "url": "/undefined/c/girls-skinny-jeans",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Bootcut",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489063",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Denim",
-                        "productCount": 8,
-                        "seoToken": "girls-bootcut-jeans",
-                      },
-                      "url": "/undefined/c/girls-bootcut-jeans",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Jeggings",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489065",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Jeggings",
-                        "productCount": 17,
-                        "seoToken": "girls-jeggings",
-                      },
-                      "url": "/undefined/c/girls-jeggings",
-                    },
-                  ]
-                }
-                name="Denim"
-              />
-            </li>
-            <li
-              data-locator="l2_col_1_link_4"
-            >
-              <Styled(Anchor)
-                to="/c/girls-dresses"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Dresses and Rompers
+                    Shorts
                   </span>
                   <span
                     className="icon-arrow"
@@ -651,26 +474,117 @@ exports[`L2 Panel component renders correctly 1`] = `
                   Array [
                     Object {
                       "categoryContent": Object {
-                        "description": "Dresses",
+                        "description": "skimmer",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "489071",
+                        "id": "464020",
                         "isShortImage": "false",
                         "isUnique": true,
-                        "name": "Dresses",
-                        "productCount": 9,
-                        "seoToken": "girls-dresses-casual",
+                        "name": "Skimmer",
+                        "productCount": 33,
+                        "seoToken": "girls-shorts-skimmer",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-dresses-casual",
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "midi",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "464021",
+                        "isShortImage": "false",
+                        "isUnique": true,
+                        "name": "Midi",
+                        "productCount": 2,
+                        "seoToken": "girls-shorts-midi",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "464022",
+                        "isShortImage": "false",
+                        "isUnique": true,
+                        "name": "Short",
+                        "productCount": 32,
+                        "seoToken": "girls-shorts-short",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "pull-on",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "464023",
+                        "isShortImage": "false",
+                        "isUnique": true,
+                        "name": "Pull-on",
+                        "productCount": 37,
+                        "seoToken": "girls-pull-on",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "479002",
+                        "isShortImage": "false",
+                        "isUnique": true,
+                        "name": "Extended Sizes",
+                        "productCount": 79,
+                        "seoToken": "girls-plus-slim-size-shorts",
+                        "seoUrl": null,
+                      },
                     },
                   ]
                 }
-                name="Dresses and Rompers"
+                name="Shorts"
               />
             </li>
             <li
-              data-locator="l2_col_1_link_5"
+              data-locator="l2_col_0_link_5"
+            >
+              <Styled(Anchor)
+                to="/c/girls-matching-clothes"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    Matchables
+                  </span>
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+            </li>
+            <li
+              data-locator="l2_col_0_link_6"
             >
               <Styled(Anchor)
                 to="/c/girls-tops-girls-shirts"
@@ -703,12 +617,12 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-5"
+                id="l3-drawer-6"
                 links={
                   Array [
                     Object {
                       "categoryContent": Object {
-                        "description": "Short Sleeve",
+                        "description": "short sleeve",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
@@ -716,85 +630,70 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "isShortImage": "false",
                         "isUnique": true,
                         "name": "Short Sleeve",
-                        "productCount": 17,
+                        "productCount": 110,
                         "seoToken": "girls-tops-shirts-short-sleeve-tops",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-tops-shirts-short-sleeve-tops",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "graphic tees",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54174",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "graphic tees",
-                        "productCount": 1,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Long Sleeve",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54177",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Long Sleeve",
-                        "productCount": 122,
-                        "seoToken": "girls-tops-girls-shirts-long-sleeve-tops",
-                      },
-                      "url": "/undefined/c/girls-tops-girls-shirts-long-sleeve-tops",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Sweaters",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54180",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Sweaters",
-                        "productCount": 5,
-                        "seoToken": "girls-tops-girls-shirts-sweaters",
-                      },
-                      "url": "/undefined/c/girls-tops-girls-shirts-sweaters",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Hoodies & Sweatshirts",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489057",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Hoodies & Sweatshirts",
-                        "productCount": 2,
-                        "seoToken": "girls-tops-girls-shirts-active-tops",
-                      },
-                      "url": "/undefined/c/girls-tops-girls-shirts-active-tops",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Tanks & Camis",
+                        "description": "tanks & camis",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54181",
                         "isShortImage": "false",
-                        "isUnique": true,
+                        "isUnique": false,
                         "name": "Tanks & Camis",
-                        "productCount": 21,
+                        "productCount": 72,
                         "seoToken": "girls-tops-girls-shirts-tanks-and-camis",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-tops-girls-shirts-tanks-and-camis",
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "polo shirts",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "464013",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Polo Shirts",
+                        "productCount": 77,
+                        "seoToken": "girls-polo-shirts",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "long sleeve",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "54177",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Long Sleeve",
+                        "productCount": 8,
+                        "seoToken": "girls-tops-girls-shirts-long-sleeve-tops",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "sweaters",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "54180",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Sweaters & Cardigans",
+                        "productCount": 12,
+                        "seoToken": "girls-tops-girls-shirts-sweaters",
+                        "seoUrl": null,
+                      },
                     },
                   ]
                 }
@@ -802,7 +701,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_6"
+              data-locator="l2_col_0_link_7"
             >
               <Styled(Anchor)
                 to="/c/girls-bottoms-girls-pants"
@@ -835,143 +734,53 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-6"
+                id="l3-drawer-7"
                 links={
                   Array [
                     Object {
                       "categoryContent": Object {
-                        "description": "Leggings",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54154",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Leggings",
-                        "productCount": 152,
-                        "seoToken": "girls-bottoms-girls-pants-leggings",
-                      },
-                      "url": "/undefined/c/girls-bottoms-girls-pants-leggings",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Pants",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489070",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Pants",
-                        "productCount": 21,
-                        "seoToken": "girls-bottoms-girls-pants-woven-pants",
-                      },
-                      "url": "/undefined/c/girls-bottoms-girls-pants-woven-pants",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Shorts",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54155",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Shorts",
-                        "productCount": 106,
-                        "seoToken": "girls-shorts",
-                      },
-                      "url": "/undefined/c/girls-shorts",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Skirts & Skorts",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489076",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Skirts & Skorts",
-                        "productCount": 6,
-                        "seoToken": "girls-skirts-skorts",
-                      },
-                      "url": "/undefined/c/girls-skirts-skorts",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Jeggings",
+                        "description": "jeggings",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54152",
                         "isShortImage": "false",
-                        "isUnique": true,
+                        "isUnique": false,
                         "name": "Jeggings",
-                        "productCount": 12,
+                        "productCount": 13,
                         "seoToken": "girls-bottoms-girls-pants-jeggings",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-bottoms-girls-pants-jeggings",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Active",
+                        "description": "leggings",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "54159",
+                        "id": "54154",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Active",
-                        "productCount": 46,
-                        "seoToken": "girls-bottoms-girls-pants-active",
+                        "isUnique": false,
+                        "name": "Leggings",
+                        "productCount": 43,
+                        "seoToken": "girls-bottoms-girls-pants-leggings",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-bottoms-girls-pants-active",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "woven pants",
+                        "description": "pants",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54158",
                         "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "woven pants",
-                        "productCount": 2,
-                        "seoToken": "",
+                        "isUnique": false,
+                        "name": "Pants",
+                        "productCount": 12,
+                        "seoToken": "girls-bottoms-girls-pants-woven-pants",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "denim",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54151",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Denim",
-                        "productCount": 40,
-                        "seoToken": "denim",
-                      },
-                      "url": "/undefined/c/denim",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "knit pants",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54153",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "knit pants",
-                        "productCount": 2,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -987,7 +796,38 @@ exports[`L2 Panel component renders correctly 1`] = `
             }
           >
             <li
-              data-locator="l2_col_1_link_7"
+              data-locator="l2_col_0_link_7"
+            >
+              <Styled(Anchor)
+                to="/c/girls-denim-bottoms"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    Denim
+                  </span>
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+            </li>
+            <li
+              data-locator="l2_col_0_link_8"
             >
               <Styled(Anchor)
                 to="/c/girls-leggings"
@@ -1014,280 +854,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                   >
                     Leggings
                   </span>
-                  <span
-                    className="icon-arrow"
-                  />
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-              <Styled(L3Panel)
-                id="l3-drawer-0"
-                links={
-                  Array [
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Full Length",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "498037",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Full Length",
-                        "productCount": 8,
-                        "seoToken": "girls-long-leggings",
-                      },
-                      "url": "/undefined/c/girls-long-leggings",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Cartwheel Shorts",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "498038",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Cartwheel Shorts",
-                        "productCount": 6,
-                        "seoToken": "girls-cartwheel-shorts",
-                      },
-                      "url": "/undefined/c/girls-cartwheel-shorts",
-                    },
-                  ]
-                }
-                name="Leggings"
-              />
-            </li>
-            <li
-              data-locator="l2_col_1_link_8"
-            >
-              <Styled(Anchor)
-                to="/c/"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Active
-                  </span>
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_1_link_9"
+              data-locator="l2_col_0_link_9"
             >
               <Styled(Anchor)
-                to="/c/girls-outerwear-girls-jackets-girls-blazers"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Jackets and Outerwear
-                  </span>
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-            </li>
-            <li
-              data-locator="l2_col_1_link_10"
-            >
-              <Styled(Anchor)
-                to="/c/"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Shorts
-                  </span>
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-            </li>
-            <li
-              data-locator="l2_col_1_link_11"
-            >
-              <Styled(Anchor)
-                to="/c/active"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Matchables
-                  </span>
-                  <span
-                    className="icon-arrow"
-                  />
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-              <Styled(L3Panel)
-                id="l3-drawer-4"
-                links={
-                  Array [
-                    Object {
-                      "categoryContent": Object {
-                        "description": "",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "516524",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Rainbows & Unicorns",
-                        "productCount": 24,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "516527",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Butterflies & Flowers",
-                        "productCount": 18,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "516525",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Festival",
-                        "productCount": 19,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "516529",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Essentials",
-                        "productCount": 41,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "516526",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Tropical Floral",
-                        "productCount": 24,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "516528",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Americana",
-                        "productCount": 3,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                  ]
-                }
-                name="Matchables"
-              />
-            </li>
-            <li
-              data-locator="l2_col_1_link_12"
-            >
-              <Styled(Anchor)
-                to="/c/"
+                to="/c/girls-swimwear"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1317,38 +891,38 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-5"
+                id="l3-drawer-2"
                 links={
                   Array [
                     Object {
                       "categoryContent": Object {
-                        "description": "Swimsuits & Coverups",
+                        "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "54172",
+                        "id": "470019",
                         "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Swimsuits & Coverups",
-                        "productCount": 18,
-                        "seoToken": "",
+                        "isUnique": true,
+                        "name": "Swimwear",
+                        "productCount": 16,
+                        "seoToken": "girls-swimsuits-all",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "accessories",
+                        "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "54171",
+                        "id": "470020",
                         "isShortImage": "false",
                         "isUnique": null,
-                        "name": "accessories",
-                        "productCount": 20,
+                        "name": "Sunglasses",
+                        "productCount": 41,
                         "seoToken": "",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -1356,7 +930,38 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_13"
+              data-locator="l2_col_0_link_10"
+            >
+              <Styled(Anchor)
+                to="/c/girls-outerwear-girls-jackets-girls-blazers"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    Jackets & Outerwear
+                  </span>
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+            </li>
+            <li
+              data-locator="l2_col_0_link_11"
             >
               <Styled(Anchor)
                 to="/c/girls-clothing-sleepwear"
@@ -1383,82 +988,83 @@ exports[`L2 Panel component renders correctly 1`] = `
                   >
                     Sleepwear
                   </span>
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+            </li>
+            <li
+              data-locator="l2_col_0_link_12"
+            >
+              <Styled(Anchor)
+                to="/c/girls-shoes"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    Shoes|Girl
+                  </span>
                   <span
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-6"
+                id="l3-drawer-5"
                 links={
                   Array [
                     Object {
                       "categoryContent": Object {
-                        "description": "Pajamas",
+                        "description": "Slides",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "54168",
+                        "id": "451506",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Pajamas",
-                        "productCount": 76,
-                        "seoToken": "girls-clothing-sleepwear-pajamas",
+                        "isUnique": false,
+                        "name": "Slides",
+                        "productCount": 14,
+                        "seoToken": "girls-slides",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-clothing-sleepwear-pajamas",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Nightgowns",
+                        "description": "ballet flats",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "489088",
+                        "id": "54203",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Nightgowns",
+                        "isUnique": false,
+                        "name": "Ballet Flats & Dressy",
                         "productCount": 11,
-                        "seoToken": "girls-nightgowns",
+                        "seoToken": "girls-shoes-ballet-flats",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girls-nightgowns",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "underwear",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54170",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "underwear",
-                        "productCount": 1,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Robes & Slippers",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54169",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Robes & Slippers",
-                        "productCount": 2,
-                        "seoToken": "girls-clothing-sleepwear-robes",
-                      },
-                      "url": "/undefined/c/girls-clothing-sleepwear-robes",
                     },
                   ]
                 }
-                name="Sleepwear"
+                name="Shoes|Girl"
               />
             </li>
             <li
-              data-locator="l2_col_1_link_14"
+              data-locator="l2_col_0_link_13"
             >
               <Styled(Anchor)
                 to="/c/girl-accessories"
@@ -1491,429 +1097,117 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-7"
+                id="l3-drawer-6"
                 links={
                   Array [
                     Object {
                       "categoryContent": Object {
-                        "description": "Cold Weather",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "73097",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Cold Weather",
-                        "productCount": 36,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Backpacks & Essentials",
+                        "description": "backpacks & essentials",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54183",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Backpacks & Essentials",
-                        "productCount": 18,
+                        "isUnique": false,
+                        "name": "Backpacks & Accessories",
+                        "productCount": 34,
                         "seoToken": "girl-accessories-backpacks-and-essentials",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girl-accessories-backpacks-and-essentials",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Socks",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54188",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Socks",
-                        "productCount": 87,
-                        "seoToken": "girl-accessories-socks",
-                      },
-                      "url": "/undefined/c/girl-accessories-socks",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Tights",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54187",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Tights",
-                        "productCount": 38,
-                        "seoToken": "girl-accessories-tights",
-                      },
-                      "url": "/undefined/c/girl-accessories-tights",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Underwear",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489120",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Underwear",
-                        "productCount": 46,
-                        "seoToken": "girls-accessories-underwear",
-                      },
-                      "url": "/undefined/c/girls-accessories-underwear",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Belts",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54185",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Belts",
-                        "productCount": 2,
-                        "seoToken": "girl-accessories-belts",
-                      },
-                      "url": "/undefined/c/girl-accessories-belts",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "necklaces & sets",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54191",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "necklaces & sets",
-                        "productCount": 10,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Hair",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54193",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Hair",
-                        "productCount": 73,
-                        "seoToken": "girl-accessories-hair",
-                      },
-                      "url": "/undefined/c/girl-accessories-hair",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Hats",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54192",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Hats",
-                        "productCount": 14,
-                        "seoToken": "girl-accessories-hats",
-                      },
-                      "url": "/undefined/c/girl-accessories-hats",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "earrings",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54194",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "earrings",
-                        "productCount": 3,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Scarves",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54189",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Scarves",
-                        "productCount": 1,
-                        "seoToken": "girl-accessories-scarves",
-                      },
-                      "url": "/undefined/c/girl-accessories-scarves",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Bags",
+                        "description": "fashion bags",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54184",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Bags",
-                        "productCount": 1,
+                        "isUnique": false,
+                        "name": "Fashion Bags",
+                        "productCount": 12,
                         "seoToken": "girl-accessories-bags",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girl-accessories-bags",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Sunglasses",
+                        "description": "hair",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "54193",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Hair",
+                        "productCount": 67,
+                        "seoToken": "girl-accessories-hair",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "hats",
+                        "groupIdentifier": "",
+                        "groupIdentifierName": null,
+                        "groupIdentifierSequence": null,
+                        "id": "54192",
+                        "isShortImage": "false",
+                        "isUnique": false,
+                        "name": "Hats",
+                        "productCount": 3,
+                        "seoToken": "girl-accessories-hats",
+                        "seoUrl": null,
+                      },
+                    },
+                    Object {
+                      "categoryContent": Object {
+                        "description": "sunglasses",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
                         "id": "54186",
                         "isShortImage": "false",
-                        "isUnique": true,
+                        "isUnique": false,
                         "name": "Sunglasses",
-                        "productCount": 29,
+                        "productCount": 41,
                         "seoToken": "girl-accessories-sunglasses",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girl-accessories-sunglasses",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Umbrellas",
+                        "description": "belts",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "489113",
+                        "id": "54185",
                         "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Umbrellas",
-                        "productCount": 3,
-                        "seoToken": "girl-accessories-novelty",
+                        "isUnique": false,
+                        "name": "Belts",
+                        "productCount": 5,
+                        "seoToken": "girl-accessories-belts",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girl-accessories-novelty",
                     },
                     Object {
                       "categoryContent": Object {
-                        "description": "Jewelry & Watches",
+                        "description": "jewelry & watches",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
                         "groupIdentifierSequence": null,
-                        "id": "489112",
+                        "id": "54191",
                         "isShortImage": "false",
-                        "isUnique": true,
+                        "isUnique": false,
                         "name": "Jewelry & Watches",
-                        "productCount": 317,
+                        "productCount": 62,
                         "seoToken": "girl-accessories-necklaces-and-sets",
+                        "seoUrl": null,
                       },
-                      "url": "/undefined/c/girl-accessories-necklaces-and-sets",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Beauty",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489119",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Beauty",
-                        "productCount": 42,
-                        "seoToken": "girl-accessories-beauty",
-                      },
-                      "url": "/undefined/c/girl-accessories-beauty",
                     },
                   ]
                 }
                 name="Accessories|Girl"
-              />
-            </li>
-            <li
-              data-locator="l2_col_1_link_15"
-            >
-              <Styled(Anchor)
-                to="/c/girls-shoes"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Shoes
-                  </span>
-                  <span
-                    className="icon-arrow"
-                  />
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-              <Styled(L3Panel)
-                id="l3-drawer-8"
-                links={
-                  Array [
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Ballet Flats",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54203",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Shoes",
-                        "productCount": 25,
-                        "seoToken": "girls-shoes-ballet-flats",
-                      },
-                      "url": "/undefined/c/girls-shoes-ballet-flats",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Sneakers & Casual",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489062",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Sneakers & Casual",
-                        "productCount": 31,
-                        "seoToken": "girls-shoes-sneakers",
-                      },
-                      "url": "/undefined/c/girls-shoes-sneakers",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Boots",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54204",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Boots",
-                        "productCount": 7,
-                        "seoToken": "girls-shoes-boots",
-                      },
-                      "url": "/undefined/c/girls-shoes-boots",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Dressy",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "489064",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Dressy",
-                        "productCount": 14,
-                        "seoToken": "girls-formal-shoes",
-                      },
-                      "url": "/undefined/c/girls-formal-shoes",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Slippers",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54210",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Slippers",
-                        "productCount": 2,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Sandals",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54209",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "Sandals",
-                        "productCount": 26,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "sneakers",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54211",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "sneakers",
-                        "productCount": 2,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "Water Shoes",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54212",
-                        "isShortImage": "false",
-                        "isUnique": true,
-                        "name": "Water Shoes",
-                        "productCount": 2,
-                        "seoToken": "girls-shoes-water-shoes",
-                      },
-                      "url": "/undefined/c/girls-shoes-water-shoes",
-                    },
-                    Object {
-                      "categoryContent": Object {
-                        "description": "flip flops",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "54207",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "flip flops",
-                        "productCount": 13,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                  ]
-                }
-                name="Shoes"
               />
             </li>
           </ul>
@@ -1936,11 +1230,11 @@ exports[`L2 Panel component renders correctly 1`] = `
             className="l2-nav-category-heading "
             color="text.primary"
             component={null}
-            dataLocator="l2_col_heading_2"
+            dataLocator="l2_col_heading_1"
             textAlign="left"
             variant="h6"
           >
-            Featured Shops
+            What's Trending
           </Styled(Heading)>
           <span
             className="l2-nav-category-divider"
@@ -1957,10 +1251,10 @@ exports[`L2 Panel component renders correctly 1`] = `
             }
           >
             <li
-              data-locator="l2_col_2_link_0"
+              data-locator="l2_col_1_link_0"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/girl-unicorn-shop"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1982,7 +1276,126 @@ exports[`L2 Panel component renders correctly 1`] = `
                   <span
                     className="nav-bar-item-label  full-width"
                   >
-                    Mom and Me
+                    Unicorn & Friends
+                  </span>
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+            </li>
+            <li
+              data-locator="l2_col_1_link_1"
+            >
+              <Styled(Anchor)
+                to="/c/girl-flip-sequins-shop"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    Flip Sequins & Confetti Shakers
+                  </span>
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+            </li>
+            <li
+              data-locator="l2_col_1_link_2"
+            >
+              <Styled(Anchor)
+                to="/c/girl-emoji-shop"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    Emoji
+                  </span>
+                </Styled(BodyCopy)>
+              </Styled(Anchor)>
+            </li>
+          </ul>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="l2-nav-category"
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <div
+          className="l2-nav-category-empty-header"
+        />
+        <div
+          className="l2-nav-category-links"
+        >
+          <ul
+            className={
+              Object {
+                "columnClass": "",
+              }
+            }
+          >
+            <li
+              data-locator="l2_col_2_link_0"
+            >
+              <Styled(Anchor)
+                to="/c/girls-new-arrivals"
+              >
+                <Styled(BodyCopy)
+                  className="l2-nav-link"
+                  color="text.primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize={
+                    Array [
+                      "fs13",
+                      "fs13",
+                      "fs14",
+                    ]
+                  }
+                  fontWeight="regular"
+                  letterSpacing="normal"
+                  lineHeight="lh107"
+                  textAlign="left"
+                >
+                  <span
+                    className="nav-bar-item-label  full-width"
+                  >
+                    New Arrivals
                   </span>
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
@@ -1991,7 +1404,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_1"
             >
               <Styled(Anchor)
-                to="/c/girls-outfit"
+                to="/c/girls-plus-sizes"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -2013,64 +1426,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                   <span
                     className="nav-bar-item-label  full-width"
                   >
-                    Outfits
-                  </span>
-                  <span
-                    className="icon-arrow"
-                  />
-                </Styled(BodyCopy)>
-              </Styled(Anchor)>
-              <Styled(L3Panel)
-                id="l3-drawer-1"
-                links={
-                  Array [
-                    Object {
-                      "categoryContent": Object {
-                        "description": "All about active",
-                        "groupIdentifier": "",
-                        "groupIdentifierName": null,
-                        "groupIdentifierSequence": null,
-                        "id": "511018",
-                        "isShortImage": "false",
-                        "isUnique": null,
-                        "name": "All about active",
-                        "productCount": null,
-                        "seoToken": "",
-                      },
-                      "url": "/undefined/c/undefined",
-                    },
-                  ]
-                }
-                name="Outfits"
-              />
-            </li>
-            <li
-              data-locator="l2_col_2_link_2"
-            >
-              <Styled(Anchor)
-                to="/c/content-girls-style-squad-outfits"
-              >
-                <Styled(BodyCopy)
-                  className="l2-nav-link"
-                  color="text.primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize={
-                    Array [
-                      "fs13",
-                      "fs13",
-                      "fs14",
-                    ]
-                  }
-                  fontWeight="regular"
-                  letterSpacing="normal"
-                  lineHeight="lh107"
-                  textAlign="left"
-                >
-                  <span
-                    className="nav-bar-item-label  full-width"
-                  >
-                    Style Squad Outfits
+                    Extended Sizes
                   </span>
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
@@ -2347,7 +1703,7 @@ exports[`L2 Panel component renders correctly 1`] = `
         <Styled(Anchor)
           className="l2-image-banner-link"
           data-locator="overlay_img_link_0"
-          target=""
+          target="_blank"
           title="Shop Big & Lil Sis"
           to="/Shop-Big-Lil-Sis"
         >
@@ -2359,7 +1715,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             crop_t=""
             data-locator="overlay_img_0"
             title="Shop Big & Lil Sis"
-            url="http://banner.com/image.jpg"
+            url="https://test5.childrensplace.com/image/upload/v1565180960/navigation_teaser_seesk1.jpg"
           />
           <Styled(BodyCopy)
             className="l2-nav-link"

@@ -10,6 +10,9 @@ export default css`
   .padding-left-10 {
     padding-left: 10px;
   }
+  .padding-left-6 {
+    padding-left: 6px;
+  }
   .padding-left-13 {
     padding-left: 13px;
   }
@@ -21,6 +24,7 @@ export default css`
   }
   .brand-image {
     text-align: center;
+    width: 55px;
   }
   .edit-button {
     padding-left: 10px;
@@ -47,6 +51,27 @@ export default css`
   }
   .imageWrapper {
     position: relative;
+    width: 100px;
+  }
+  .logoWrapper {
+    position: relative;
+    margin-top: 8px;
+  }
+  .product-attributes {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 75%;
+    margin: 0 13px;
+  }
+  .editLinkWrapper {
+    display: inline-block;
+  }
+
+  .crossDeleteIcon {
+    float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
   }
 
   .product-tile-wrapper {

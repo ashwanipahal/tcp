@@ -34,23 +34,27 @@ const ModuleN = (props: Props) => {
   } = datamoduleN.moduleN.composites;
   return (
     <Container background="red">
-      <LinkText
-        type="heading"
-        fontFamily="primary"
-        fontSize="fs20"
-        letterSpacing="ls271"
-        textAlign="center"
-        color="white"
-        navigation={navigation}
-        headerText={headerText}
-        locator="moduleN_header_text"
-      />
-      <PromoTextBannerWrapper>
-        <PromoBanner
-          promoBanner={promoBanner}
+      {headerText && (
+        <LinkText
+          type="heading"
+          fontFamily="primary"
+          fontSize="fs20"
+          letterSpacing="ls271"
+          textAlign="center"
+          color="white"
           navigation={navigation}
-          locator="moduleN_promobanner_text"
+          headerText={headerText}
+          locator="moduleN_header_text"
         />
+      )}
+      <PromoTextBannerWrapper>
+        {promoBanner && (
+          <PromoBanner
+            promoBanner={promoBanner}
+            navigation={navigation}
+            locator="moduleN_promobanner_text"
+          />
+        )}
       </PromoTextBannerWrapper>
       {divImageCTACarousel && (
         <DivImageCTAContainer>
