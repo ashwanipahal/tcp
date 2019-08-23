@@ -78,6 +78,12 @@ class Dropdown extends React.PureComponent {
     this.toggleHandler();
   };
 
+  // Validating and returning if displayname needs to be on caps
+  getDisplayName = name => {
+    const { isUpperCase } = this.props;
+    return isUpperCase ? name && name.toUpperCase() : name;
+  };
+
   subMenuList = (subSection, activeComponent) => {
     return (
       <BodyCopy
@@ -96,7 +102,7 @@ class Dropdown extends React.PureComponent {
               activeComponent === subSection.component ? 'dropdownActiveClass' : ''
             }`}
           >
-            {subSection.displayName}
+            {this.getDisplayName(subSection.displayName)}
           </li>
         </Anchor>
       </BodyCopy>
@@ -122,7 +128,7 @@ class Dropdown extends React.PureComponent {
                 activeComponent === nav.component ? 'dropdownActiveClass' : ''
               }`}
             >
-              {nav.displayName}
+              {this.getDisplayName(nav.displayName)}
             </li>
           </Anchor>
         </BodyCopy>
@@ -153,7 +159,7 @@ class Dropdown extends React.PureComponent {
             fontWeight="extrabold"
             className={`${dropDownExpand ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`}
           />
-          {navState.displayName}
+          {this.getDisplayName(navState.displayName)}
         </BodyCopy>
         {dropDownExpand && (
           <BodyCopy component="div" className="dropdownUpperDiv">
@@ -169,13 +175,15 @@ class Dropdown extends React.PureComponent {
 
 Dropdown.propTypes = {
   className: PropTypes.string,
-  options: PropTypes.shape({}).isRequired,
+  options: PropTypes.arrayOf({}).isRequired,
   active: PropTypes.string,
+  isUpperCase: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
   className: '',
   active: '',
+  isUpperCase: false,
 };
 
 export default withStyles(Dropdown, styles);

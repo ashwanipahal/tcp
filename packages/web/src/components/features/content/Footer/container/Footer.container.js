@@ -2,7 +2,13 @@ import { connect } from 'react-redux';
 import {
   getUserInfoPOC,
   getOrderDetail,
+  setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
+
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+
+import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+
 import {
   toggleEmailSignupModal,
   submitEmailSignup,
@@ -46,6 +52,8 @@ const mapStateToProps = state => {
     referenceID,
     emailSignupLabels,
     smsSignupLabels,
+    loginModalMountedState: loginModalOpenState(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -57,9 +65,15 @@ const mapDispatchToProps = dispatch => {
     getOrderDetailAction: () => {
       dispatch(getOrderDetail());
     },
+
     openEmailSignUpModal: () => {
       dispatch(toggleEmailSignupModal({ isModalOpen: true }));
     },
+
+    setLoginModalMountState: payload => {
+      dispatch(setLoginModalMountedState(payload));
+    },
+
     openSmsSignUpModal: () => {
       dispatch(toggleSmsSignupModal({ isModalOpen: true }));
     },

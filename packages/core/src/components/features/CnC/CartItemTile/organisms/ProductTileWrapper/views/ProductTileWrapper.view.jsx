@@ -27,21 +27,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
   };
 
   getRemoveString = labels => {
-    const subHeading = `<span className="spanNoRush">${labels.removeSoldOut.replace(
-      '#remove#',
-      `<u><Anchor
-      fontSizeVariation="medium"
-      underline
-      anchorVariation="primary"
-      data-locator="addressbook-makedefault"
-    >
-    remove
-    </Anchor></u>`
-    )}</span>`;
-    return (
-      // eslint-disable-next-line react/no-danger
-      <span dangerouslySetInnerHTML={{ __html: subHeading }} />
-    );
+    return `${labels.removeSoldOut.replace('#remove#', `remove`)}`;
   };
 
   render() {
@@ -71,7 +57,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
         );
       });
       return (
-        <div className="miniBagWrapper">
+        <>
           {isAvailable && (
             <>
               <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
@@ -86,7 +72,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
             </>
           )}
           {orderItemsView}
-        </div>
+        </>
       );
     }
     return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;

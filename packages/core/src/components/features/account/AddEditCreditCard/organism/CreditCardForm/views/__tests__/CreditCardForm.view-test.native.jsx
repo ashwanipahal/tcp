@@ -24,6 +24,8 @@ describe('CreditCardForm component', () => {
       initialValues: {},
       expMonthOptionsMap: getCreditCardExpirationOptionMap().monthsMap,
       expYearOptionsMap: getCreditCardExpirationOptionMap().yearsMap,
+      handleSubmit: jest.fn(),
+      dispatch: jest.fn(),
     };
     const component = shallow(<CreditCardForm {...props} />);
     expect(component).toMatchSnapshot();
