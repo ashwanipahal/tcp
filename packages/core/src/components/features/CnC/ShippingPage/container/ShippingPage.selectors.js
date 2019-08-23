@@ -11,6 +11,16 @@ export const getSendOrderUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
 
+export const getAddressFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'address');
+};
+
+export const getAddressPhoneNo = createSelector(
+  getAddressFields,
+  addressFields => addressFields && addressFields.phoneNumber
+);
+
 export const getShippingLabels = state => {
   const { lbl_shipping_header: header, lbl_shipping_sectionHeader: sectionHeader } =
     state.Labels.checkout && state.Labels.checkout.shipping;

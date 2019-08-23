@@ -1,4 +1,3 @@
-import 'core-js/stable/string/virtual/starts-with';
 import mock from './mock';
 import { UNIDENTIFIED_GROUP } from './constants';
 import handler from '../../../handler';

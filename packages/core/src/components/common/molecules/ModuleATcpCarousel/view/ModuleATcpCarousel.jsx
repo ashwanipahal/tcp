@@ -8,7 +8,7 @@ import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleATcpCarousel.config';
 
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const bigCarrotIcon = 'carousel-big-carrot';
 
@@ -95,5 +95,5 @@ ModuleATcpCarousel.propTypes = {
   className: PropTypes.string,
 };
 
-export default errorBoundary(withStyles(ModuleATcpCarousel, style));
+export default withStyles(errorBoundary(ModuleATcpCarousel), style);
 export { ModuleATcpCarousel as ModuleATcpCarouselVanilla };
