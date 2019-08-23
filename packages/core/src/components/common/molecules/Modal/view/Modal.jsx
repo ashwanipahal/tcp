@@ -41,12 +41,21 @@ class Modal extends React.PureComponent {
       closeIconDataLocator,
       headingStyle,
       closeIconLeftAligned,
+      ariaLabelledby,
+      ariaDescribedby,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
       <div className={className}>
         <div className="TCPModal__Wrapper">
-          <ReactModal {...otherProps} parentSelector={getParent}>
+          <ReactModal
+            {...otherProps}
+            parentSelector={getParent}
+            aria={{
+              labelledby: ariaLabelledby,
+              describedby: ariaDescribedby,
+            }}
+          >
             {!fixedWidth && (
               <Grid>
                 <Row>
