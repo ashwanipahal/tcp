@@ -9,6 +9,7 @@ const FooterMiddleDesktop = ({
   className,
   setLoginModalMountState,
   loginModalMountedState,
+  isLoggedIn,
 }) => {
   let numberOfNavLinkCols = navLinks.length;
 
@@ -129,11 +130,13 @@ const FooterMiddleDesktop = ({
         ''
       )}
       {navLinkColumns}
-      <OpenLoginModal
-        variation="favorites"
-        setLoginModalMountState={setLoginModalMountState}
-        openState={loginModalMountedState}
-      />
+      {!isLoggedIn && (
+        <OpenLoginModal
+          variation="favorites"
+          setLoginModalMountState={setLoginModalMountState}
+          openState={loginModalMountedState}
+        />
+      )}
     </Fragment>
   );
 };
@@ -143,6 +146,7 @@ FooterMiddleDesktop.propTypes = {
   className: PropTypes.string.isRequired,
   setLoginModalMountState: PropTypes.bool.isRequired,
   loginModalMountedState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default FooterMiddleDesktop;
