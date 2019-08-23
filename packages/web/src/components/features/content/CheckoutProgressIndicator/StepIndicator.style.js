@@ -157,7 +157,8 @@ export default css`
 
     li.active {
       .white-dot {
-        left: 46%;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }
