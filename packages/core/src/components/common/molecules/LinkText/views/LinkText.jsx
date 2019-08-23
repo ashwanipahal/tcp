@@ -34,8 +34,8 @@ const LinkText = (props: Props) => {
     component,
     headerText: [{ textItems, link }],
     headingClass,
-    dataLocator,
     color,
+    dataLocator,
     ...otherProps
   } = props;
   let Component;
@@ -45,6 +45,7 @@ const LinkText = (props: Props) => {
   if (type === 'heading') {
     Component = Heading;
     compProps.variant = component;
+    compProps.color = color;
     compProps.dataLocator = dataLocator;
     compProps.color = color;
   } else {
