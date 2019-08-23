@@ -70,16 +70,26 @@ CouponTile.propTypes = {
     effectiveDate: PropTypes.string,
   }).isRequired,
   labels: PropTypes.shape({
-    lbl_overview_myPlaceRewardsCouponType: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsUseBy: PropTypes.string.isRequired,
-    lbl_overview_couponTypePlacecash: PropTypes.string.isRequired,
-    lbl_overview_couponTypeReward: PropTypes.string.isRequired,
-    lbl_overview_couponTypeSaving: PropTypes.string.isRequired,
-    lbl_overview_couponValid: PropTypes.string.isRequired,
-    lbl_overview_couponUseBy: PropTypes.string.isRequired,
-  }).isRequired,
+    lbl_overview_myPlaceRewardsCouponType: PropTypes.string,
+    lbl_overview_myPlaceRewardsUseBy: PropTypes.string,
+    lbl_overview_couponTypePlacecash: PropTypes.string,
+    lbl_overview_couponTypeReward: PropTypes.string,
+    lbl_overview_couponTypeSaving: PropTypes.string,
+    lbl_overview_couponValid: PropTypes.string,
+    lbl_overview_couponUseBy: PropTypes.string,
+  }),
 };
 
-CouponTile.defaultProps = {};
+CouponTile.defaultProps = {
+  labels: PropTypes.shape({
+    lbl_overview_myPlaceRewardsCouponType: '',
+    lbl_overview_myPlaceRewardsUseBy: '',
+    lbl_overview_couponTypePlacecash: '',
+    lbl_overview_couponTypeReward: '',
+    lbl_overview_couponTypeSaving: '',
+    lbl_overview_couponValid: '',
+    lbl_overview_couponUseBy: '',
+  }),
+};
 
 export default CouponTile;

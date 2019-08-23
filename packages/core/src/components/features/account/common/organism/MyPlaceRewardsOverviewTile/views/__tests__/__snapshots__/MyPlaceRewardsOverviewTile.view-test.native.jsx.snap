@@ -7,7 +7,12 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     fontFamily="secondary"
     fontSize="fs16"
   />
-  <Styled(View) />
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={1}
+    marginBottom={24}
+    marginTop={24}
+  />
   <View>
     <Styled(BodyCopy)
       color="black"
@@ -33,7 +38,12 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       />
     </Styled(View)>
   </View>
-  <Styled(View) />
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={1}
+    marginBottom={24}
+    marginTop={24}
+  />
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
@@ -58,7 +68,12 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     fontFamily="secondary"
     fontSize="fs16"
   />
-  <Styled(View) />
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={1}
+    marginBottom={24}
+    marginTop={24}
+  />
   <View>
     <Styled(BodyCopy)
       data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
@@ -81,7 +96,12 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       sliceCount={2}
     />
   </View>
-  <Styled(View) />
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={1}
+    marginBottom={24}
+    marginTop={24}
+  />
   <Connect(BonusPointsDays)
     labels={
       Object {

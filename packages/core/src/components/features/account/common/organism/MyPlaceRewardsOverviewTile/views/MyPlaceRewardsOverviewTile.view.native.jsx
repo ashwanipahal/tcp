@@ -6,6 +6,7 @@ import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
+import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import BonusPointsDays from '@tcp/core/src/components/common/organisms/BonusPointsDays';
 import {
   UnderlineStyle,
@@ -44,7 +45,8 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
           text={labels.lbl_overview_myPlaceRewardsHeading}
           color="black"
         />
-        <UnderlineStyle />
+
+        <LineComp {...UnderlineStyle} />
 
         {rewardCouponsCount > 0 && (
           <View>
@@ -86,7 +88,8 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
           </View>
         )}
 
-        <UnderlineStyle />
+        <LineComp {...UnderlineStyle} />
+
         {isBrierleyEnabled && <BonusPointsDays view="read" labels={labels} />}
 
         <ButtonWrapperStyle>
@@ -105,18 +108,25 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
 
 MyPlaceRewardsOverviewTile.propTypes = {
   labels: PropTypes.shape({
-    lbl_overview_myPlaceRewardsHeading: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsCTA: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsAvailable: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsDesc: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsShopNow: PropTypes.string.isRequired,
-  }).isRequired,
+    lbl_overview_myPlaceRewardsHeading: PropTypes.string,
+    lbl_overview_myPlaceRewardsCTA: PropTypes.string,
+    lbl_overview_myPlaceRewardsAvailable: PropTypes.string,
+    lbl_overview_myPlaceRewardsDesc: PropTypes.string,
+    lbl_overview_myPlaceRewardsShopNow: PropTypes.string,
+  }),
   coupons: PropTypes.shape([]).isRequired,
   isBrierleyEnabled: PropTypes.bool,
 };
 
 MyPlaceRewardsOverviewTile.defaultProps = {
   isBrierleyEnabled: true,
+  labels: PropTypes.shape({
+    lbl_overview_myPlaceRewardsHeading: '',
+    lbl_overview_myPlaceRewardsCTA: '',
+    lbl_overview_myPlaceRewardsAvailable: '',
+    lbl_overview_myPlaceRewardsDesc: '',
+    lbl_overview_myPlaceRewardsShopNow: '',
+  }),
 };
 
 export default withNavigation(MyPlaceRewardsOverviewTile);

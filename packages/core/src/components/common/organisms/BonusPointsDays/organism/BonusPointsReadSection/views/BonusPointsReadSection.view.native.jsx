@@ -57,12 +57,8 @@ export const BonusPointsReadSection = ({
           text={message}
           marginRight="10"
         />
-        {usedDaysArray.map(() => (
-          <DotInactive />
-        ))}
-        {availableDaysArray.map(() => (
-          <DotActive />
-        ))}
+        {usedDaysArray.length > 0 && usedDaysArray.map(() => <DotInactive />)}
+        {availableDaysArray.length > 0 && availableDaysArray.map(() => <DotActive />)}
       </BonusDayWrapper>
     </BonusDayReadSection>
   );
@@ -73,12 +69,18 @@ BonusPointsReadSection.propTypes = {
   usedBonusPointDays: PropTypes.number.isRequired,
   toggleBonusPointsModal: PropTypes.func.isRequired,
   labels: PropTypes.shape({
-    lbl_bonus_points_daysLeft: PropTypes.string.isRequired,
-    lbl_bonus_points_bonusPointsDay: PropTypes.string.isRequired,
-    lbl_bonus_points_detailLink: PropTypes.string.isRequired,
-  }).isRequired,
+    lbl_bonus_points_daysLeft: PropTypes.string,
+    lbl_bonus_points_bonusPointsDay: PropTypes.string,
+    lbl_bonus_points_detailLink: PropTypes.string,
+  }),
 };
 
-BonusPointsReadSection.defaultProps = {};
+BonusPointsReadSection.defaultProps = {
+  labels: PropTypes.shape({
+    lbl_bonus_points_daysLeft: '',
+    lbl_bonus_points_bonusPointsDay: '',
+    lbl_bonus_points_detailLink: '',
+  }),
+};
 
 export default BonusPointsReadSection;

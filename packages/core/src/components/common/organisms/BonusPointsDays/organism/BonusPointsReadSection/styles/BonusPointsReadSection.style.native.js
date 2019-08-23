@@ -18,7 +18,7 @@ const BonusDayWrapper = styled.View`
 const Circle = styled.View`
   width: ${props => props.theme.spacing.ELEM_SPACING.SM};
   height: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  border-radius: ${props => props.theme.spacing.ELEM_SPACING.SM / 2};
+  border-radius: 6px;
   margin: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
