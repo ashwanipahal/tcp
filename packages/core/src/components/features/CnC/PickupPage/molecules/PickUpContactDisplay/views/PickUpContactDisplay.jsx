@@ -8,22 +8,22 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 class PickUpContactDisplay extends React.PureComponent {
   render() {
-    const { className, contactDetails } = this.props;
+    const { className, formData } = this.props;
     return (
       <div className={className}>
         <Row className="contactBody" fullBleed>
           <Col colSize={{ small: 6, medium: 8, large: 6 }}>
             <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-              {`${contactDetails.firstName} ${contactDetails.lastName}`}
+              {`${formData.pickUpContact.firstName} ${formData.pickUpContact.lastName}`}
             </BodyCopy>
-            {contactDetails.phoneNumber && (
+            {formData.pickUpContact.phoneNumber && (
               <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-                {contactDetails.phoneNumber}
+                {formData.pickUpContact.phoneNumber}
               </BodyCopy>
             )}
-            {contactDetails.emailAddress && (
+            {formData.pickUpContact.emailAddress && (
               <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-                {contactDetails.emailAddress}
+                {formData.pickUpContact.emailAddress}
               </BodyCopy>
             )}
           </Col>
@@ -35,7 +35,7 @@ class PickUpContactDisplay extends React.PureComponent {
 
 PickUpContactDisplay.propTypes = {
   className: PropTypes.string.isRequired,
-  contactDetails: PropTypes.shape({}).isRequired,
+  formData: PropTypes.shape({}).isRequired,
   onEditModeChange: PropTypes.func.isRequired,
 };
 

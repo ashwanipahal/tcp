@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { propTypes as reduxFormPropTypes } from 'redux-form';
+import { propTypes as reduxFormPropTypes, resetSection } from 'redux-form';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import PickUpContactDisplay from '../../PickUpContactDisplay';
 import ContactFormFields from '../../ContactFormFields';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
-
 import styles from '../styles/style';
 
 class PickupMainContactEditForm extends React.PureComponent {
@@ -17,12 +16,6 @@ class PickupMainContactEditForm extends React.PureComponent {
     const { onEditModeChange } = this.props;
     event.preventDefault();
     onEditModeChange(true);
-  };
-
-  handleExitEditModeClick = () => {
-    const { onEditModeChange, reset } = this.props;
-    reset();
-    onEditModeChange(false);
   };
 
   renderSectionTitle = () => {
@@ -55,11 +48,15 @@ class PickupMainContactEditForm extends React.PureComponent {
   };
 
   render() {
-    const { className, isMobile, pickUpData, isEditing, labels } = this.props;
+    const { className, isMobile, formData, isEditing, labels, isReset } = this.props;
+    if (isReset) {
+      const { dispatch } = this.props;
+      dispatch(resetSection('checkoutPickup', 'pickUpContact'));
+    }
     return (
       <div className={className}>
         {this.renderSectionTitle()}
-        {!isEditing && <PickUpContactDisplay contactDetails={pickUpData} />}
+        {!isEditing && <PickUpContactDisplay formData={formData} />}
         {isEditing && !isMobile && (
           <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
         )}

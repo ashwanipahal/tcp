@@ -7,6 +7,7 @@ import {
   getSendOrderUpdate,
 } from './Pickup.selectors';
 import { getSmsSignUpLabels } from '../../ShippingPage/container/ShippingPage.selectors';
+import { getProfileInfoTileData } from '../../../account/User/container/User.selectors';
 
 import CheckoutPickUpForm from '../views/CheckoutPickUpFormView';
 import { isCanada } from '../../../../../utils';
@@ -19,19 +20,8 @@ export class PickupContainer extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
     } = this.props;
+
     const props = {
-      pickUpData: {
-        firstName: 'firstName',
-        lastName: 'lastName',
-        emailAddress: 'name@gmail.com',
-        phoneNumber: '8778788778',
-        smsInfo: {
-          wantsSmsOrderUpdates: '8778788778',
-          smsUpdateNumber: '8778788778',
-        },
-        hasAlternatePickup: true,
-        pickUpAlternate: {},
-      },
       initialValues: {
         pickUpContact: {
           firstName: 'deependra',
@@ -40,14 +30,14 @@ export class PickupContainer extends React.PureComponent {
           phoneNumber: '8778788778',
         },
         smsSignUp: {
-          sendOrderUpdate: true,
+          sendOrderUpdate: false,
           phoneNumber: '8778788778',
         },
         pickUpAlternate: {
-          hasAlternatePickup: true,
-          firstName: 'firstName',
-          lastName: 'lastName',
-          emailAddress: 'name@gmail.com',
+          hasAlternatePickup: false,
+          firstName: '',
+          lastName: '',
+          emailAddress: '',
         },
       },
       error: '',

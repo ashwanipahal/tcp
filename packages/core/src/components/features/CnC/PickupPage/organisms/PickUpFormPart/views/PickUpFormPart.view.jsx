@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, FormSection } from 'redux-form';
+import { Field, reduxForm, FormSection, SubmissionError } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
@@ -19,22 +19,32 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 class PickUpFormPart extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { isEditing: props.isGuest };
+    this.state = { isEditing: props.isGuest, isReset: false };
   }
 
   handleEditModeChange = isEditing => {
-    this.setState({ isEditing });
+    this.setState({ isEditing, isReset: false });
   };
 
   onEditMainContactSubmit = () => {
     this.setState({ isEditing: false });
   };
 
+  handleExitEditModeClick = () => {
+    this.setState({ isEditing: false, isReset: true });
+  };
+
+  submit = () => {
+    const { handleSubmit } = this.props;
+    SubmissionError({ username: 'User does not exist', _error: 'Login failed!' });
+    handleSubmit();
+  };
+
   SaveAndCancelButton = () => {
     return (
       <div className="buttonContainer">
         <Button
-          onClick={() => {}}
+          onClick={this.handleExitEditModeClick}
           buttonVariation="variable-width"
           type="button"
           data-locator="payment-cancelbtn"
@@ -43,14 +53,15 @@ class PickUpFormPart extends React.PureComponent {
         </Button>
         <Button
           className="updateButton"
-          onClick={() => {}}
-          buttonVariation="variable-width"
-          type="button"
           fill="BLUE"
-          data-locator="payment-cancelbtn"
+          type="submit"
+          buttonVariation="fixed-width"
+          data-locator="payment-addcardbtn"
         >
           Update
         </Button>
+
+        <button type="submit">Submit</button>
       </div>
     );
   };
@@ -67,9 +78,11 @@ class PickUpFormPart extends React.PureComponent {
       currentPhoneNumber,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
-      pickUpData,
+      initialValues,
+      dispatch,
+      handleSubmit,
     } = this.props;
-    const { isEditing } = this.state;
+    const { isEditing, isReset } = this.state;
     return (
       <div className={className}>
         <div className="container">
@@ -87,7 +100,11 @@ class PickUpFormPart extends React.PureComponent {
               dataLocator="pickup-error"
             />
           )}
-          <form name="checkoutPickup" className="checkoutPickupForm">
+          <form
+            onSubmit={handleSubmit(val => console.log(val))}
+            name="checkoutPickup"
+            className="checkoutPickupForm"
+          >
             <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">
                 {isGuest ? (
@@ -99,11 +116,13 @@ class PickUpFormPart extends React.PureComponent {
                   />
                 ) : (
                   <PickupMainContactEditForm
+                    dispatch={dispatch}
                     isMobile={isMobile}
                     isEditing={isEditing}
                     className="pickup-contact-guest-form"
                     showPhoneNumber
-                    pickUpData={pickUpData}
+                    formData={initialValues}
+                    isReset={isReset}
                     labels={pickUpLabels}
                     onSubmit={this.onEditMainContactSubmit}
                     onEditModeChange={this.handleEditModeChange}
@@ -197,6 +216,8 @@ PickUpFormPart.propTypes = {
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
+  dispatch: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {
