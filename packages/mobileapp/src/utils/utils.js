@@ -13,7 +13,6 @@ import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 
 let brandName = APP_TYPE.TCP;
 const MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
-export const CART_ITEM_COUNTER = 'cartItemsCount';
 
 // constants for last splash animation
 export const AppAnimationConfig = {
@@ -153,15 +152,8 @@ export default {
 /**
  * This function reads cookie for mobile app
  */
-export const readCookieMobileApp = () => {
+export const readCookieMobileApp = key => {
   const apiConfigObj = getAPIConfig();
   const res = CookieManager.get(apiConfigObj.domain);
-  return res.CART_ITEM_COUNTER;
+  return res[key];
 };
-
-/**
- * This function return cart item count
- */
-export function getCartItemCount() {
-  return parseInt(readCookieMobileApp() || 0, 10);
-}
