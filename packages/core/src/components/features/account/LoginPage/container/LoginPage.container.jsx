@@ -21,7 +21,6 @@ import {
   getLoginErrorMessage,
   getLabels,
 } from './LoginPage.selectors';
-import { resetUserInfo } from '../../User/container/User.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 
 import LoginView from '../views';
@@ -41,7 +40,6 @@ class LoginPageContainer extends React.PureComponent {
   componentWillUnmount() {
     const { resetLoginState, loginError } = this.props;
     if (loginError) {
-      resetLoginInfo();
       resetLoginState();
     }
   }
@@ -149,7 +147,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(resetLoginForgotPasswordState(payload));
     },
     resetLoginState: () => {
-      dispatch(resetUserInfo());
+      dispatch(resetLoginInfo());
     },
     SubmitForgot: payload => {
       dispatch(resetPassword(payload));
