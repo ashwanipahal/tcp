@@ -97,7 +97,7 @@ export default css`
         width: 20px;
         height: 10px;
         position: absolute;
-        background: white;
+        background: ${props => props.theme.colors.WHITE};
         top: 0px;
         right: 44%;
       }
