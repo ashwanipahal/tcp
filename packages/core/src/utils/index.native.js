@@ -16,6 +16,8 @@ export {
   switchAPIConfig,
 } from './utils.app';
 
+export { default, getSiteId } from './utils.app';
+
 export {
   isServer,
   isClient,
@@ -25,4 +27,5 @@ export {
   getAPIConfig,
   isCanada,
   resetApiConfig,
+  bindAllClassMethodsToThis,
 } from './utils';
