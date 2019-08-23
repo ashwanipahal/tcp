@@ -9,7 +9,10 @@ const {
   setEnvConfig,
   HEALTH_CHECK_PATH,
 } = require('./config/server.config');
-const { initErrorHandler, getExpressMiddleware } = require('@tcp/core/src/utils/errorHandler.util');
+const {
+  initErrorReporter,
+  getExpressMiddleware,
+} = require('@tcp/core/src/utils/errorReporter.util');
 const { ENV_DEVELOPMENT } = require('@tcp/core/src/constants/env.config');
 
 const dev = process.env.NODE_ENV === 'development';
@@ -31,7 +34,7 @@ const setErrorHandler = () => {
     raygunApiKey: process.env.RWD_WEB_RAYGUN_API_KEY,
     isDevelopment: process.env.NODE_ENV === ENV_DEVELOPMENT,
   };
-  initErrorHandler(config);
+  initErrorReporter(config);
   const expressMiddleWare = getExpressMiddleware();
   if (expressMiddleWare) {
     server.use(expressMiddleWare);

@@ -1,4 +1,4 @@
-import { trackError } from '@tcp/core/src/utils/errorHandler.util';
+import { trackError } from '@tcp/core/src/utils/errorReporter.util';
 import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';

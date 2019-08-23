@@ -26,15 +26,15 @@ const getRaygunInstance = () => {
   return raygunInstance;
 };
 
-const initServerErrorHandler = (envId, raygunApiKey) => {
+const initServerErrorReporter = (envId, raygunApiKey) => {
   const raygunInst = new raygun.Client().init({ apiKey: raygunApiKey });
   raygunInst.setVersion(envId);
   setRaygunInstance(raygunInst);
-  const message = `Initializing  ErrorHandler Raygun on Node Server: release = ${envId}`;
+  const message = `Initializing  ErrorReporter Raygun on Node Server: release = ${envId}`;
   console.log(message);
 };
 
-const initWebClientErrorHandler = (envId, raygunApiKey, channelId) => {
+const initWebClientErrorReporter = (envId, raygunApiKey, channelId) => {
   // eslint-disable-next-line global-require
   Promise.all([require('raygun4js')]).then(([rg4js]) => {
     rg4js('enableCrashReporting', true);
@@ -42,12 +42,12 @@ const initWebClientErrorHandler = (envId, raygunApiKey, channelId) => {
     rg4js('setVersion', envId);
     rg4js('withCustomData', { channel: channelId });
     setRaygunInstance(rg4js);
-    const message = `Initializing  ErrorHandler Raygun on Web Client: release = ${envId} - channelId = ${channelId}`;
+    const message = `Initializing  ErrorReporter Raygun on Web Client: release = ${envId} - channelId = ${channelId}`;
     console.log(message);
   });
 };
 
-const initErrorHandler = config => {
+const initErrorReporter = config => {
   const { envId, raygunApiKey, channelId, isServer: isNodeServer, isDevelopment } = config;
   if (isDevelopment || !raygunApiKey) {
     return null;
@@ -56,9 +56,9 @@ const initErrorHandler = config => {
     return getRaygunInstance();
   }
   if (isNodeServer) {
-    initServerErrorHandler(envId, raygunApiKey);
+    initServerErrorReporter(envId, raygunApiKey);
   } else if (!isNodeServer) {
-    initWebClientErrorHandler(envId, raygunApiKey, channelId);
+    initWebClientErrorReporter(envId, raygunApiKey, channelId);
   }
   return getRaygunInstance();
 };
@@ -89,7 +89,7 @@ const getExpressMiddleware = () => {
 };
 
 module.exports = {
-  initErrorHandler,
+  initErrorReporter,
   trackError,
   getExpressMiddleware,
 };

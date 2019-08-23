@@ -9,7 +9,7 @@ import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig, getAPIConfig, isDevelopment } from '@tcp/core/src/utils';
-import { initErrorHandler } from '@tcp/core/src/utils/errorHandler.util';
+import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { Header, Footer } from '../components/features/content';
@@ -55,7 +55,7 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     const { envId, raygunApiKey, channelId } = getAPIConfig();
-    initErrorHandler({
+    initErrorReporter({
       isServer: false,
       envId,
       raygunApiKey,
