@@ -16,7 +16,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
   getRecalcOrderPointsInterval,
-  // getIsOrderHasShipping,
+  // getIsOrderHasShipping ,
   // getShippingDestinationValues,
   // getDefaultAddress,
   // isGuest,
