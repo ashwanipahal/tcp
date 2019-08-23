@@ -170,7 +170,12 @@ class DropdownList extends React.Component {
         <div className={cssClassName('item-list-wrapper')}>
           <ul
             ref={this.captureItemsListRef}
-            className={cssClassName('item-list-common ', classNamePrefix, '-items-list')}
+            className={cssClassName(
+              'item-list-common ',
+              classNamePrefix,
+              '-items-list',
+              optionsMap.length <= 27 ? ' item-list-column ' : ' item-list-row '
+            )}
           >
             {optionsMap.map((item, index) => (
               // observe that we make sure that all event handlers are constants (i.e., not calculated here).

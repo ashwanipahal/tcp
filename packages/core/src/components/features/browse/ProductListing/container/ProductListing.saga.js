@@ -16,7 +16,7 @@ const userStoreView = {
 
 const routingInfoStoreView = {
   getOriginImgHostSetting: () => {
-    return {};
+    return 'https://www.childrensplace.com/';
   },
 };
 class ProductsOperator {
@@ -234,14 +234,14 @@ class ProductsOperator {
 
     /* return this.productsAbstractor.getCategoryListingPage(match.params.searchTerm || match.params.listingKey,
         isSearchPage,
-        filtersAndSort, 
-        pageNumber, 
-        this.getImgPath, 
-        categoryId, 
-        breadCrumb, 
-        bucketingSeqConfig, 
-        this.getFacetSwatchImgPath, 
-        isUnbxdSequencing, 
+        filtersAndSort,
+        pageNumber,
+        this.getImgPath,
+        categoryId,
+        breadCrumb,
+        bucketingSeqConfig,
+        this.getFacetSwatchImgPath,
+        isUnbxdSequencing,
         excludeBage,
         startProductCount,
         numberOfProducts,

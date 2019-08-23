@@ -4,12 +4,9 @@ import { getIconPath } from '../../../../../../utils';
 const selectedIcon = getIconPath('selected-item');
 
 export default css`
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-bottom: 10px;
-  outline: none;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  width: 166px;
 
   .dropdownActiveIcon {
     background-image: url(${selectedIcon});
@@ -23,8 +20,8 @@ export default css`
   .selected-item {
     background: url(${selectedIcon}) no-repeat left top;
     background-size: 20px 20px;
-    padding-left: 32px;
-    margin-bottom: 14px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
     padding-bottom: 1px;
   }
 `;
