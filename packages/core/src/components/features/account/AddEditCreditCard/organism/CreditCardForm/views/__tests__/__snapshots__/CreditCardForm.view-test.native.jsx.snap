@@ -238,7 +238,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           "color": "white",
           "fontWeight": "normal",
           "marginTop": 48,
-          "opacity": 0.5,
           "width": 190,
         }
       }
@@ -504,7 +503,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           "color": "white",
           "fontWeight": "normal",
           "marginTop": 48,
-          "opacity": 0.5,
           "width": 190,
         }
       }

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 const Style = css``;
 
 const ModalHeading = styled.Text`
-  margin-top: -120px;
+  margin-top: -80px;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
@@ -58,6 +58,8 @@ const ImgWrapper = styled.View`
 const ImageStyle = styled.Image`
   max-width: 100%;
   max-height: 100%;
+  border: 1px solid gray;
+  border-radius: 4px;
 `;
 
 const CenterAlign = styled.View`

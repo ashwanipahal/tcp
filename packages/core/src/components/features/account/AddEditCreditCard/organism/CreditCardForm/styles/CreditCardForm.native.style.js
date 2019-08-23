@@ -21,7 +21,6 @@ const ActionsWrapper = styled.View`
 const AddAddressButton = {
   color: 'white',
   fontWeight: 'normal',
-  opacity: 0.5,
   marginTop: 48,
   width: 190,
 };

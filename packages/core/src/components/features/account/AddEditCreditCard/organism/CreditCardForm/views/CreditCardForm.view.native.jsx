@@ -129,7 +129,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       addressLabels,
       addressList,
       isEdit,
-      invalid,
       onClose,
       dto,
       selectedCard,
@@ -209,7 +208,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
         <ActionsWrapper>
           <Button
             fill="BLUE"
-            disabled={invalid}
             buttonVariation="variable-width"
             text={isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
             style={AddAddressButton}

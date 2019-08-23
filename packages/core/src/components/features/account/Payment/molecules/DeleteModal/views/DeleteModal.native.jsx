@@ -31,6 +31,8 @@ const buttonStyle = {
   fontWeight: theme.typography.fontWeights.regular,
 };
 
+const redColor = theme.colorPalette.red[300];
+
 class DeleteModal extends React.PureComponent<Props> {
   static propTypes = {
     labels: PropTypes.shape({}),
@@ -122,8 +124,7 @@ class DeleteModal extends React.PureComponent<Props> {
                     text={labels.paymentGC.lbl_payment_modalGCCancel}
                     buttonVariation="variable-width"
                     fill="RED"
-                    color="red"
-                    width="162px"
+                    color={redColor}
                     font-size="14"
                     onPress={onClose}
                     style={buttonStyle}
