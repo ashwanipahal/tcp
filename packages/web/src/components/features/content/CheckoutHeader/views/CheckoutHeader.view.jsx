@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Router from 'next/router'; //eslint-disable-line
+import Router from 'next/router';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Anchor, Image, Row, Col } from '@tcp/core/src/components/common/atoms';
 import style from '../CheckoutHeader.style';
