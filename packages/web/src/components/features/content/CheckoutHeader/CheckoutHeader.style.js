@@ -7,7 +7,6 @@ export default css`
     overflow: auto;
     padding: 0 14px;
     position: relative;
-    height: 80px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0 15px;
@@ -19,13 +18,11 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       padding-left: 25%;
-      height: 54px;
     }
   }
 
   .header-stepindicator {
     position: relative;
-    height: 70px;
     text-align: center;
 
     @media ${props => props.theme.mediaQuery.mediumMax} {

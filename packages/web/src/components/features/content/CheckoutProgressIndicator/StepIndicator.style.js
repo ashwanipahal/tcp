@@ -16,7 +16,6 @@ export default css`
     padding: 0;
     overflow: hidden;
     width: 100%;
-    max-width: 660px;
     position: relative;
     padding-top: 6px;
 
