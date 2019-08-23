@@ -418,14 +418,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
     <Field
       className="visibility-recaptcha"
       component={
@@ -472,7 +464,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
       label=""
       name="recaptchaToken"
       title=""
-      type="hidden"
     />
   </View>
   <Styled(View)>
@@ -602,14 +593,6 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
     <Field
       className="visibility-recaptcha"
       component={
@@ -656,7 +639,6 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       label=""
       name="recaptchaToken"
       title=""
-      type="hidden"
     />
   </View>
   <Styled(View)>
@@ -945,14 +927,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
     <Field
       className="visibility-recaptcha"
       component={
@@ -999,7 +973,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       label=""
       name="recaptchaToken"
       title=""
-      type="hidden"
     />
   </View>
   <Styled(View)>

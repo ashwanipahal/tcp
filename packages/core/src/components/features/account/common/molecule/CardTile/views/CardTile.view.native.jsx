@@ -265,13 +265,13 @@ class CardTile extends React.Component<Props> {
               )}
             />
 
-            <CustomButton
+            {/* <CustomButton
               color="white"
               fill="BLUE"
               text="check balance captcha"
               buttonVariation="variable-width"
               onPress={e => this.recaptchaModal(e)}
-            />
+            /> */}
           </>
         )}
 

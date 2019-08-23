@@ -17,6 +17,7 @@ exports[`Payment View should render correctly 1`] = `
   setDefaultPaymentMethod={[Function]}
   setDeleteModalMountState={false}
   setDeleteModalMountedState={false}
+  setRecaptchaModalMountedState={false}
   setUpdateModalMountState={false}
   setUpdateModalMountedState={false}
   updateModalMountedState={false}
