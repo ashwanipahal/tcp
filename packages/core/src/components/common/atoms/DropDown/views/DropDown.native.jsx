@@ -113,13 +113,11 @@ class DropDown extends React.PureComponent<Props> {
         top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
       };
 
+      this.setState({ top: topMargin.top });
       if (showInBottom) {
-        this.setState({ flatListBottom: 120, top: topMargin.top });
-      } else {
-        if (calculateHeight > windowHeight) {
-          this.setState({ flatListBottom: 200 });
-        }
-        this.setState({ flatListTop: 120, top: topMargin.top });
+        this.setState({ flatListBottom: 120 });
+      } else if (calculateHeight > windowHeight) {
+        this.setState({ flatListTop: 120, flatListBottom: 200 });
       }
     });
   };
