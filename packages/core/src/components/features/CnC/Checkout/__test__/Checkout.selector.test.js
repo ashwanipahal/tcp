@@ -2,94 +2,172 @@ import { fromJS } from 'immutable';
 import CHECKOUT_SELECTORS from '../container/Checkout.selector';
 
 describe('Checkout Selectors', () => {
-
   it('#isGuest should return boolean', () => {
     const UserState = fromJS({
-        personalData: {
-          isGuest:true
-        },
+      personalData: {
+        isGuest: true,
+      },
     });
 
-    const State = {User :
-      fromJS({
+    const State = {
+      User: fromJS({
         personalData: {
-          isGuest: true
+          isGuest: true,
         },
-    })
-  }
+      }),
+    };
     expect(CHECKOUT_SELECTORS.isGuest(State)).toEqual(UserState.getIn(['personalData', 'isGuest']));
   });
 
   it('#isExpressCheckout should return boolean', () => {
     const UserState = fromJS({
-        personalData: {
-          isExpressEligible:true
-        },
+      personalData: {
+        isExpressEligible: true,
+      },
     });
 
-    const State = {User :
-      fromJS({
+    const State = {
+      User: fromJS({
         personalData: {
-          isExpressEligible: true
+          isExpressEligible: true,
         },
-    })
-  }
-    expect(CHECKOUT_SELECTORS.isExpressCheckout(State)).toEqual(UserState.getIn(['personalData', 'isExpressEligible']));
+      }),
+    };
+    expect(CHECKOUT_SELECTORS.isExpressCheckout(State)).toEqual(
+      UserState.getIn(['personalData', 'isExpressEligible'])
+    );
+  });
+
+  it('#getCheckoutStage', () => {
+    const Checkout = fromJS({
+      uiFlags: {
+        stage: '',
+      },
+    });
+
+    const State = {
+      Checkout: fromJS({
+        uiFlags: {
+          stage: '',
+        },
+      }),
+    };
+    expect(CHECKOUT_SELECTORS.getCheckoutStage(State)).toEqual(
+      Checkout.getIn(['uiFlags', 'stage'])
+    );
+  });
+
+  it('#getRecalcOrderPointsInterval', () => {
+    expect(CHECKOUT_SELECTORS.getRecalcOrderPointsInterval()).toEqual(300000);
+  });
+
+  it('#igetIsOrderHasShipping', () => {
+    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping()).toEqual(true);
+  });
+
+  it('#igetUserContactInfo', () => {
+    const UserState = fromJS({
+      personalData: {
+        contactInfo: {},
+      },
+    });
+
+    const State = {
+      User: fromJS({
+        personalData: {
+          contactInfo: {},
+        },
+      }),
+    };
+    expect(CHECKOUT_SELECTORS.getUserContactInfo(State)).toEqual(
+      UserState.getIn(['personalData', 'contactInfo'])
+    );
+  });
+
+  it('#getIsMobile', () => {
+    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(undefined);
+  });
+
+  it('#getCurrentSiteId', () => {
+    expect(CHECKOUT_SELECTORS.getCurrentSiteId()).toEqual(undefined);
+  });
+
+  it('#getIsSmsUpdatesEnabled', () => {
+    expect(CHECKOUT_SELECTORS.getIsSmsUpdatesEnabled()).toEqual(true);
+  });
+
+  it('#getPickupAltValues', () => {
+    const Checkout = fromJS({
+      values: {
+        pickUpAlternative: {},
+      },
+    });
+
+    const State = {
+      Checkout: fromJS({
+        values: {
+          pickUpAlternative: {},
+        },
+      }),
+    };
+    expect(CHECKOUT_SELECTORS.getPickupAltValues(State)).toEqual(
+      Checkout.getIn(['values', 'pickUpAlternative'])
+    );
   });
 
   it('#getInitialPickupSectionValues should return boolean', () => {
-    const State = {Checkout :
-      fromJS({
+    const State = {
+      Checkout: fromJS({
         values: {
           pickUpContact: {
-            firstName:'',
-            lastName:'',
-            emailAddress:'',
-            phoneNumber:212
+            firstName: '',
+            lastName: '',
+            emailAddress: '',
+            phoneNumber: 212,
           },
-          pickUpAlternative:{
-            firstName:'',
+          pickUpAlternative: {
+            firstName: '',
           },
-          smsInfo:{
-            numberForUpdates:null,
+          smsInfo: {
+            numberForUpdates: null,
             smsUpdateNumber: null,
-          }
-        },
-    }),
-    User : fromJS({
-      personalData: {
-        userId: '320503',
-        contactInfo: {
-          profileAddress: {
-            type: 'Mailing',
-            isComplete: false,
-            address: {}
           },
-          firstName:'',
-      lastName:'',
-      emailAddress:'',
-      phoneNumber:212,
         },
-        isGuest: true,
-        isRemembered: false,
-        associateId: '',
-        isExpressEligible: false
-      },
-    })
-  }
+      }),
+      User: fromJS({
+        personalData: {
+          userId: '320503',
+          contactInfo: {
+            profileAddress: {
+              type: 'Mailing',
+              isComplete: false,
+              address: {},
+            },
+            firstName: '',
+            lastName: '',
+            emailAddress: '',
+            phoneNumber: 212,
+          },
+          isGuest: true,
+          isRemembered: false,
+          associateId: '',
+          isExpressEligible: false,
+        },
+      }),
+    };
     expect(CHECKOUT_SELECTORS.getInitialPickupSectionValues(State)).toEqual({
-    pickUpContact:{
-      firstName:'',
-      lastName:'',
-      emailAddress:'',
-      phoneNumber:212,
-      smsInfo:{
-        wantsSmsOrderUpdates:false,
-            smsUpdateNumber: undefined,
-      }
-    },
-    hasAlternatePickup: false,
-    pickUpAlternate: {},
+      pickUpContact: {
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        phoneNumber: 212,
+        smsInfo: {
+          wantsSmsOrderUpdates: false,
+          smsUpdateNumber: undefined,
+        },
+      },
+      hasAlternatePickup: false,
+      pickUpAlternate: {},
+    });
   });
 });
-})

@@ -22,7 +22,7 @@ describe('Cart Item saga', () => {
   });
 
   it('should dispatch getCartDataSaga action for success resposnse', () => {
-    const getCartDataSagaGen = getCartDataSaga();
+    const getCartDataSagaGen = getCartDataSaga({ payload: {} });
     getCartDataSagaGen.next();
 
     const res = {

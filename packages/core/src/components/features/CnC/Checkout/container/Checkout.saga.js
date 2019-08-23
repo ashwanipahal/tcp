@@ -17,7 +17,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 const {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
-  getShippingDestinationValues,
+  // getShippingDestinationValues,
   // getDefaultAddress,
   isGuest,
   getIsMobile,
@@ -113,7 +113,7 @@ function* loadCartAndCheckoutDetails(isRecalcRewards) {
   yield call(loadUpdatedCheckoutValues, null, null, null, isRecalcRewards);
   const getIsShippingRequired = yield select(getIsOrderHasShipping);
   if (getIsShippingRequired) {
-    let shippingAddress = yield select(getShippingDestinationValues);
+    let shippingAddress = {}; // yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;
     // const defaultAddress = yield select(getDefaultAddress);
     const hasShipping =
