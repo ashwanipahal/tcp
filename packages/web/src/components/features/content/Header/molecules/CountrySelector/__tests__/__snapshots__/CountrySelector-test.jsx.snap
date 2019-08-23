@@ -14,7 +14,9 @@ exports[`Country Selector Component renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
-  />
+  >
+    Ship To
+  </Styled(BodyCopy)>
   <ReduxForm
     closeModal={[Function]}
     countriesMap={
@@ -55,9 +57,26 @@ exports[`Country Selector Component renders correctly 1`] = `
     form="CountrySelectorForm"
     getFormState={[Function]}
     handleSubmit={[Function]}
+    initialValues={
+      Object {
+        "country": "US",
+        "currency": "USD",
+        "language": "en",
+      }
+    }
     isModalOpen={false}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "lbl_global_country": "Country",
+        "lbl_global_country_selector_cta": "SAVE",
+        "lbl_global_country_selector_header": "Ship To",
+        "lbl_global_country_selector_note": "NOTE: If you change your shipping destination.",
+        "lbl_global_country_selector_subheader": "Change Shipping Preference",
+        "lbl_global_currency": "Currency",
+        "lbl_global_language": "Language",
+      }
+    }
     languages={
       Array [
         Object {

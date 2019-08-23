@@ -59,6 +59,13 @@ export default {
   moduleL_left_arrow: 'moduleL_left_arrow',
   moduleL_right_arrow: 'moduleL_right_arrow',
 
+  // Module N
+  moduleN_header_text: 'moduleN_header_text',
+  moduleN_promobanner_text: 'moduleN_promobanner_text',
+  moduleN_promobanner_img: 'moduleN_promobanner_img',
+  moduleN_image: 'moduleN_image_',
+  moduleN_cta_links: 'moduleN_cta_links_',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
@@ -106,10 +113,6 @@ export default {
   cart_item_ship_to_home_radio_button: 'ItemShipToHomeRadioButton',
   cart_item_ship_to_home: 'cartShipToHome',
   cart_item_cross_button: 'cartItemCrossButton',
-  // moduleN
-  moduleN_header_text: 'moduleN_header_text',
-  moduleN_promobanner_text: 'moduleN_promobanner_text',
-  moduleN_cta_links: 'moduleN_cta_links',
 
   // Empty Bag Locator
   empty_bag_Msg: 'cartEmptyBagMessage',

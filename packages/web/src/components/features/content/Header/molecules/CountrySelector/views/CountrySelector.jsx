@@ -23,11 +23,8 @@ class CountrySelector extends React.Component {
   };
 
   closeModal = () => {
-    const { toggleModal, updateCountry, updateLanguage, updateCurrency } = this.props;
+    const { toggleModal } = this.props;
     toggleModal({ isModalOpen: false });
-    updateCountry('');
-    updateLanguage('');
-    updateCurrency('');
   };
 
   getCountryListData = () => {
@@ -96,7 +93,14 @@ class CountrySelector extends React.Component {
 
   getLanguageMap = () => {
     const { siteId, sitesTable } = this.props;
-    return sitesTable[siteId].languages;
+    let siteLanguages = '';
+    Object.keys(sitesTable).map(site => {
+      if (site === siteId) {
+        siteLanguages = sitesTable[site].languages;
+      }
+      return siteLanguages;
+    });
+    return siteLanguages;
   };
 
   render() {
@@ -110,7 +114,7 @@ class CountrySelector extends React.Component {
       savedCountry,
       savedCurrency,
       savedLanguage,
-      labels,
+      labels: { countrySelector: labelValues },
       showInFooter,
     } = this.props;
     const languages = this.getLanguageMap();
@@ -127,14 +131,14 @@ class CountrySelector extends React.Component {
               fontFamily="secondary"
               fontSize="fs12"
             >
-              {labels.lbl_global_country_selector_header}
+              {labelValues.lbl_global_country_selector_header}
             </BodyCopy>
             <CountrySelectorModal
               isModalOpen={isModalOpen}
               closeModal={this.closeModal}
               countriesMap={countriesMap}
               currenciesMap={currenciesMap}
-              labels={labels}
+              labels={labelValues}
               languages={languages}
               savedCountry={savedCountry}
               savedCurrency={savedCurrency}
@@ -145,6 +149,11 @@ class CountrySelector extends React.Component {
               updateCurrency={this.updateCurrency}
               updatedCountry={country}
               updatedCurrency={currency}
+              initialValues={{
+                country: savedCountry,
+                language: savedLanguage,
+                currency: savedCurrency,
+              }}
             />
           </React.Fragment>
         ) : (

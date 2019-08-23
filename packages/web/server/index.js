@@ -1,9 +1,11 @@
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
+const device = require('express-device');
 const RoutesMap = require('./routes');
 const {
   settingHelmetConfig,
+  settingDeviceConfig,
   sites,
   siteIds,
   setEnvConfig,
@@ -21,6 +23,8 @@ const server = express();
 const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
+
+settingDeviceConfig(server, device);
 
 const getLanguageByDomain = domain => {
   let langCode = domain.substr(0, 2).toLowerCase();

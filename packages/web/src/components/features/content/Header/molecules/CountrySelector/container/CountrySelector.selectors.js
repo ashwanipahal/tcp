@@ -59,5 +59,5 @@ export const getOldLanguage = state => {
 };
 
 export const getLabels = state => {
-  return state.Labels.global.countrySelector;
+  return state.Labels.global;
 };

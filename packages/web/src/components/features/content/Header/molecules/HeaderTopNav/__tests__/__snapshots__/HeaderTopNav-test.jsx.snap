@@ -143,11 +143,14 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
         className="track-order"
         color="gray.900"
         component="div"
+        data-locator="track_order_header"
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="regular"
+        id="trackOrder"
         letterSpacing="normal"
         lineHeight="normal"
+        onClick={[Function]}
         textAlign="left"
       >
         Track Order
@@ -300,11 +303,14 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
         className="track-order"
         color="gray.900"
         component="div"
+        data-locator="track_order_header"
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="regular"
+        id="trackOrder"
         letterSpacing="normal"
         lineHeight="normal"
+        onClick={[Function]}
         textAlign="left"
       >
         Track Order

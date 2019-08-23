@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { change, Field, reduxForm } from 'redux-form';
 import { BodyCopy, Button, SelectBox } from '@tcp/core/src/components/common/atoms';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -24,9 +24,10 @@ class CountrySelectorModal extends React.Component {
     this.toggleDisable = this.toggleDisable.bind(this);
   }
 
-  handleCountryChange = event => {
-    const selectedCountry = event.target.value;
-    const { updateCountry } = this.props;
+  handleCountryChange = (event, selectedCountry) => {
+    const { dispatch, updateCountry, countriesMap } = this.props;
+    const currentCountry = countriesMap.find(country => country.id === selectedCountry);
+    dispatch(change('CountrySelectorForm', 'currency', currentCountry.currencyId));
     updateCountry(selectedCountry);
   };
 
@@ -61,10 +62,6 @@ class CountrySelectorModal extends React.Component {
       closeModal,
       labels,
       languages,
-      savedCurrency,
-      savedLanguage,
-      savedCountry,
-      updatedCurrency,
     } = this.props;
     return (
       <Modal
@@ -103,7 +100,6 @@ class CountrySelectorModal extends React.Component {
                 dataLocator={getLocator('country')}
                 onChange={this.handleCountryChange}
                 inheritedStyles={selectBoxStyle}
-                defaultSelected={savedCountry}
               />
             </label>
             <label htmlFor="language">
@@ -115,9 +111,6 @@ class CountrySelectorModal extends React.Component {
                 options={languages}
                 dataLocator={getLocator('language')}
                 onChange={this.handleLanguageChange}
-                input={{
-                  value: savedLanguage,
-                }}
                 inheritedStyles={selectBoxStyle}
               />
             </label>
@@ -131,9 +124,6 @@ class CountrySelectorModal extends React.Component {
                 dataLocator={getLocator('currency')}
                 onChange={this.handleCurrencyChange}
                 disabled={this.toggleDisable()}
-                input={{
-                  value: updatedCurrency || savedCurrency,
-                }}
                 inheritedStyles={selectBoxStyle}
               />
             </label>
@@ -169,11 +159,9 @@ CountrySelectorModal.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
   languages: PropTypes.shape({}).isRequired,
-  savedCountry: PropTypes.string.isRequired,
-  savedCurrency: PropTypes.string.isRequired,
-  savedLanguage: PropTypes.string.isRequired,
   updateCountry: PropTypes.func.isRequired,
   updateLanguage: PropTypes.func.isRequired,
   updateCurrency: PropTypes.func.isRequired,

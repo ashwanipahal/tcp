@@ -43,8 +43,8 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const routerPush = (href, as, siteId = getSiteId()) => {
-  return Router.push(href, `/${siteId}${as}`);
+export const routerPush = (href, as, query, siteId = getSiteId()) => {
+  return Router.push(href, `/${siteId}${as}`, { query });
 };
 
 export const identifyBrand = () => {

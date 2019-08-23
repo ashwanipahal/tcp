@@ -41,12 +41,6 @@ export function* submitCountrySelectionData({ payload: data }) {
   const { addShipToStore } = endpoints;
   const { sitesInfo } = API_CONFIG;
   const payload = {
-    header: {
-      'X-Cookie': document.cookie,
-      storeId: siteConfig.storeId,
-      catalogId: siteConfig.catalogId,
-      langId: sitesInfo.langId,
-    },
     body: {
       storeId: siteConfig.storeId,
       catalogId: siteConfig.catalogId,

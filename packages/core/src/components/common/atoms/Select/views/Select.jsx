@@ -25,6 +25,7 @@ type Props = {
   options: any,
   defaultValue: any,
   dataLocator?: string,
+  disabled?: boolean,
 };
 
 const SelectBox = ({
@@ -37,6 +38,7 @@ const SelectBox = ({
   options,
   meta: { touched, error },
   dataLocator,
+  disabled,
   ...otherProps
 }: Props): Node => {
   return (
@@ -50,16 +52,13 @@ const SelectBox = ({
         value={input.value || placeholder}
         data-locator={dataLocator}
         {...otherProps}
+        disabled={disabled}
       >
         {!input.value && placeholder && <option value="">{placeholder}</option>}
         {options &&
           options.map(option => {
             return (
-              <option
-                value={option.id}
-                id={option.id}
-                key={option.id}
-              >
+              <option value={option.id} id={option.id} key={option.id}>
                 {option.displayName}
               </option>
             );
@@ -95,6 +94,7 @@ SelectBox.defaultProps = {
   type: 'text',
   placeholder: '',
   dataLocator: '',
+  disabled: false,
 };
 
 export default withStyles(SelectBox, StyledTextBox);

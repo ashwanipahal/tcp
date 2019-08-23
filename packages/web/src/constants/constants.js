@@ -14,7 +14,10 @@ export const sites = {
   },
 };
 
+export const defaultDeviceType = 'desktop';
+
 export default {
   brand,
+  defaultDeviceType,
   sites,
 };

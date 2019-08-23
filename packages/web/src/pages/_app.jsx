@@ -64,21 +64,28 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
-  static loadGlobalData(Component, { store, res, isServer }, pageProps) {
+  static loadGlobalData(
+    Component,
+    {
+      store,
+      res,
+      isServer,
+      req: { device = {} },
+    },
+    pageProps
+  ) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     if (isServer) {
       const { locals } = res;
       const apiConfig = createAPIConfig(locals);
-      const { country, currency, language } = locals;
       const payload = {
         pageInfo: Component.pageInfo,
         apiConfig,
+        deviceType: device.type,
+        locals,
       };
       store.dispatch(bootstrapData(payload));
-      store.dispatch(setCountry(country));
-      store.dispatch(setCurrency(currency));
-      store.dispatch(setLanguage(language));
     }
     return pageProps;
   }

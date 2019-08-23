@@ -57,6 +57,11 @@ export const setLanguage = payload => {
   };
 };
 
+export const setDeviceInfo = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.SET_DEVICE_INFO,
+});
+
 export default {
   loadLayoutData,
   loadLabelsData,
