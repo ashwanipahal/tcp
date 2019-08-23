@@ -1,15 +1,15 @@
-export function getRecalcOrderPointsInterval() {
+/* eslint-disable extra-rules/no-commented-out-code */
+import { getAPIConfig } from '@tcp/core/src/utils';
+import {
+  getUserName,
+  getUserLastName,
+  getUserPhoneNumber,
+} from '../../../account/User/container/User.selectors';
+import constants from '../Checkout.constants';
+
+function getRecalcOrderPointsInterval() {
   return 300000;
   // return state.session.siteDetails.recalcOrderPointsInterval;
-}
-
-function getHistory(state) {
-  return state.mutable.history;
-}
-
-function getCurrentLocation(state) {
-  const history = getHistory(state);
-  return history && history.location;
 }
 
 function getIsOrderHasShipping() {
@@ -18,30 +18,40 @@ function getIsOrderHasShipping() {
 }
 
 function isGuest(state) {
-  return state.user.personalData.isGuest;
+  return state.User.getIn(['personalData', 'isGuest']);
 }
 
-function getIsMobile(state) {
-  return state.session.siteDetails.isMobile;
+function getIsMobile() {
+  return getAPIConfig().isMobile;
+}
+
+function isExpressCheckout(state) {
+  return !!state.User.getIn(['personalData', 'isExpressEligible']);
+}
+
+function getCheckoutStage(state) {
+  return state.Checkout.getIn(['uiFlags', 'stage']);
 }
 
 function isRemembered(state) {
-  return state.user.personalData.isRemembered;
+  return state.User.getIn(['personalData', 'isRemembered']);
 }
 
 function getUserContactInfo(state) {
-  return state.user.personalData.contactInfo;
+  return state.User.getIn(['personalData', 'contactInfo']);
 }
 
 function getUserEmail(state) {
-  return !isGuest(state) || isRemembered(state) ? getUserContactInfo(state).emailAddress : '';
+  return !isGuest(state) || isRemembered(state)
+    ? getUserContactInfo(state) && getUserContactInfo(state).emailAddress
+    : '';
 }
 
 function getShippingDestinationValues() {
-  // let {emailAddress} = state.checkout.values.shipping;
-  // const {method, ...result}  =  state.checkout.values.shipping  // eslint-disable-line no-unused-vars
-  // // For shipping address when user logged-in, override email address that of user.
-  // // When user is guest, keep the address he specified in shipping section.
+  // let {emailAddress} = state.Checkout.values.shipping;
+  // const {method, ...result}  =  state.Checkout.values.shipping  // eslint-disable-line no-unused-vars
+  //  For shipping address when user logged-in, override email address that of User.
+  //  When user is guest, keep the address he specified in shipping section.
   // emailAddress = getUserEmail(state) || emailAddress;
   // return {
   //   emailAddress,
@@ -56,16 +66,20 @@ function getAddressBook(state, country, noBillingAddresses) {
 
   if (!country) {
     if (noBillingAddresses) {
-      addresses = state.addresses.addressBook.filter(entry => entry.type !== 'BILLING');
+      addresses = state.addresses
+        .getIn(['addressBook'])
+        .filter(entry => entry.type !== constants.ADDREESS_TYPE.BILLING);
     } else {
-      addresses = state.addresses.addressBook;
+      addresses = state.addresses.getIn(['addressBook']);
     }
   } else {
-    const filtered = state.addresses.addressBook.filter(
-      entry =>
-        entry.address.country === country &&
-        (!noBillingAddresses || entry.type !== ADDREESS_TYPE.BILLING)
-    );
+    const filtered = state.addresses
+      .getIn(['addressBook'])
+      .filter(
+        entry =>
+          entry.address.country === country &&
+          (!noBillingAddresses || entry.type !== constants.ADDREESS_TYPE.BILLING)
+      );
     const defaultAddress = filtered.find(addressEntry => addressEntry.isDefault);
 
     // REVIEW: if there's no default for the selected requested country (country filter might leave it out)
@@ -97,6 +111,75 @@ function getDefaultAddress(state, country, noBillingAddresses) {
   return defaultAddress;
 }
 
+function getSmsNumberForOrderUpdates(state) {
+  return state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
+}
+
+function getPickupValues(state) {
+  return state.Checkout.getIn(['values', 'pickUpContact']);
+}
+
+function isPickupAlt(state) {
+  return (
+    state.Checkout.getIn(['values', 'pickUpAlternative']) &&
+    !!state.Checkout.getIn(['values', 'pickUpAlternative', 'firstName'])
+  );
+}
+
+function getPickupAltValues(state) {
+  return state.Checkout.getIn(['values', 'pickUpAlternative']);
+}
+
+function getInitialPickupSectionValues(state) {
+  // let userContactInfo = userStoreView.getUserContactInfo(state);
+  // values (if any) entered previously in the checkout process,
+  // or reported as checkout defaults by backend
+  const pickupValues = getPickupValues(state);
+
+  return {
+    pickUpContact: {
+      firstName: pickupValues.firstName || getUserName(state),
+      lastName: pickupValues.lastName || getUserLastName(state),
+      emailAddress: pickupValues.emailAddress || getUserEmail(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+      smsInfo: {
+        wantsSmsOrderUpdates: !!getSmsNumberForOrderUpdates(state),
+        smsUpdateNumber: getSmsNumberForOrderUpdates(state) || getPickupValues(state).phoneNumber,
+      },
+    },
+    hasAlternatePickup: isPickupAlt(state),
+    pickUpAlternate: isPickupAlt(state) ? getPickupAltValues(state) : {},
+  };
+}
+
+function getCurrentSiteId() {
+  return getAPIConfig().siteId;
+}
+
+function getIsSmsUpdatesEnabled() {
+  return getAPIConfig().isSmsUpdatesEnabled || true;
+}
+
+function isUsSite() {
+  return getCurrentSiteId() === constants.ROUTING_CONST.siteIds.us;
+}
+
+function isSmsUpdatesEnabled() {
+  return isUsSite() && getIsSmsUpdatesEnabled();
+}
+
+function getCurrentPickupFormNumber(state) {
+  let phoneNumber = '';
+
+  try {
+    phoneNumber = state.form.getIn(['checkoutPickup', 'values', 'pickUpContact', 'phoneNumber']);
+  } catch (error) {
+    // Gobble...Gobble.
+  }
+
+  return phoneNumber;
+}
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -104,5 +187,10 @@ export default {
   getDefaultAddress,
   isGuest,
   getIsMobile,
-  getCurrentLocation,
+  getInitialPickupSectionValues,
+  isSmsUpdatesEnabled,
+  getCurrentPickupFormNumber,
+  isExpressCheckout,
+  getCheckoutStage,
+  isUsSite,
 };

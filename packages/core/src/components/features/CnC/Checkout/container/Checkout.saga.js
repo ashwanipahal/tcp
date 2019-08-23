@@ -1,39 +1,40 @@
-/* eslint-disable */
+/* eslint-disable extra-rules/no-commented-out-code */
+
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
-import constants from '../Checkout.constants';
-import { getGiftWrappingOptions, getCartData } from '../../../../../services/abstractors/CnC/index';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
+import constants from '../Checkout.constants';
+import { getGiftWrappingOptions } from '../../../../../services/abstractors/CnC/index';
 import selectors from './Checkout.selector';
 import utility from '../util/utility';
 import {
   getSetPickupValuesActn,
   getSetPickupAltValuesActn,
   getSetShippingValuesActn,
+  getSetGiftWrapOptionsActn,
 } from './Checkout.action';
-import queryString from 'query-string';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
   getShippingDestinationValues,
-  getDefaultAddress,
+  // getDefaultAddress,
   isGuest,
   getIsMobile,
-  getCurrentLocation,
 } = selectors;
 
 function* loadGiftWrappingOptions() {
-  // try{
-  const res = yield call(getGiftWrappingOptions);
-  // yield put(getSetGiftWrapOptionsActn(res))
-  // }
-  //  catch(e) {
-  //   // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
-  //   throw e;
-  // }
+  try {
+    const res = yield call(getGiftWrappingOptions);
+    yield put(getSetGiftWrapOptionsActn(res));
+  } catch (e) {
+    // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
+    // throw e;
+    console.log(e);
+  }
 }
 
-const { getOrderPointsRecalcFlag, updateCartInfo } = utility;
+const { getOrderPointsRecalcFlag } = utility;
 
 function* loadUpdatedCheckoutValues(
   isUpdateRewards,
@@ -43,36 +44,48 @@ function* loadUpdatedCheckoutValues(
   updateSmsInfo
 ) {
   console.log('loadUpdatedCheckoutValues');
-  let imageGenerator = getImgPath;
-  const recalcOrderPointsInterval = yield select(selectors.getRecalcOrderPointsInterval);
+  const imageGenerator = getImgPath;
+  const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
   const recalcOrderPoints = yield call(
     getOrderPointsRecalcFlag,
     recalcRewards,
     recalcOrderPointsInterval
   );
   console.log('loadUpdatedCheckoutValues - 5');
-  const res = yield call(getCartData, {
-    isTaxCalculation,
-    isCartNotRequired,
-    imageGenerator,
-    recalcRewards,
-    recalcOrderPoints,
-    isCheckoutFlow: true,
-  });
+  yield put(
+    BAG_PAGE_ACTIONS.getCartData({
+      isTaxCalculation,
+      isCartNotRequired,
+      imageGenerator,
+      recalcRewards,
+      recalcOrderPoints,
+      isCheckoutFlow: true,
+      updateSmsInfo,
+    })
+  );
+  // const res = yield call(getCartData, {
+  //   isTaxCalculation,
+  //   isCartNotRequired,
+  //   imageGenerator,
+  //   recalcRewards,
+  //   recalcOrderPoints,
+  //   isCheckoutFlow: true,
+  // });
+  // console.log('loadUpdatedCheckoutValues - 5', res);
   // yield call (storeUpdatedCheckoutValues, res.orderDetails, isCartNotRequired, updateSmsInfo);
-  //Load coupons to the store after constructing the coupons structure
+  // Load coupons to the store after constructing the coupons structure
   // getWalletOperator(this.store).getWallet(res.coupons.offers);
 }
 
-function* setCartInfo(cartInfo, isSetCartItems) {
-  return updateCartInfo(this.store, cartInfo, isSetCartItems);
-}
+// function setCartInfo(cartInfo, isSetCartItems) {
+//   return updateCartInfo(cartInfo, isSetCartItems);
+// }
 
-function* storeUpdatedCheckoutValues(res, isCartNotRequired, updateSmsInfo = true) {
+function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
   // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
-  let cartActions = yield call(setCartInfo, res, !isCartNotRequired);
-  let resCheckoutValues = res.checkout;
-  let actions = [
+
+  const resCheckoutValues = res.payload.res.orderDetails.checkout;
+  const actions = [
     resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
     resCheckoutValues.pickUpAlternative &&
       getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
@@ -89,7 +102,7 @@ function* storeUpdatedCheckoutValues(res, isCartNotRequired, updateSmsInfo = tru
     //   ),
     // resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing)
   ];
-  yield call([...actions, ...cartActions]);
+  yield all([...actions].map(action => put(action)));
   // if (checkoutStoreView.isExpressCheckout(this.store.getState()) && resCheckoutValues.billing && resCheckoutValues.billing.paymentMethod === 'venmo') {
   //   // We have
   //   this.store.dispatch(setVenmoPaymentInProgress(true));
@@ -97,7 +110,6 @@ function* storeUpdatedCheckoutValues(res, isCartNotRequired, updateSmsInfo = tru
 }
 
 function* loadCartAndCheckoutDetails(isRecalcRewards) {
-  console.log('loadCartAndCheckoutDetails');
   yield call(loadUpdatedCheckoutValues, null, null, null, isRecalcRewards);
   const getIsShippingRequired = yield select(getIsOrderHasShipping);
   if (getIsShippingRequired) {
@@ -110,27 +122,29 @@ function* loadCartAndCheckoutDetails(isRecalcRewards) {
         shippingAddress.state &&
         shippingAddress.zipCode) ||
       true;
-    const isGuestUser = true; // yield select(isGuest);
-    const isMobile = false; // getIsMobile
-    if ((!hasShipping && !defaultAddress) || isGuestUser || isMobile) {
+    const isGuestUser = yield select(isGuest);
+    const isMobile = getIsMobile;
+    if (!hasShipping /* && !defaultAddress */ || isGuestUser || isMobile) {
       // if some data is missing request defaults (new user would have preselected
       //  country and zipcode, but not state but service needs all 3 of them)
-      return ''; /*loadShipmentMethods(
+      return '';
+      /* loadShipmentMethods(
         this.store,
         {country: '', state: '', zipCode: ''},
         {state: true, zipCode: true},
         true,
         this.checkoutServiceAbstractor
-      );*/
+      ); */
     }
   }
+  return '';
 }
 
-function* loadStartupData(isPaypalPostBack, isRecalcRewards, isVenmo) {
+function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   // if (isVenmo) {
   //   const venmoData = getLocalStorage(VENMO_STORAGE_KEY);
   //   if (venmoData) {
-  //     this.setVenmoData(JSON.parse(venmoData));
+  //    this.setVenmoData(JSON.parse(venmoData));
   //   }
   //   if (!(venmoData && venmoData.details && venmoData.details.username)) {
   //     const contextAttributes = userStoreView.getContextAttributes(storeState);
@@ -155,9 +169,9 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, isVenmo) {
   // };
 
   // let loadSelectedOrDefaultShippingMethods = () => {
-  //   // We need the shipping methods to load AFTER the cart details
-  //   // in case there are already prefilled shipping details
-  //   // (such in paypal postback)
+  //    We need the shipping methods to load AFTER the cart details
+  //    in case there are already prefilled shipping details
+  //    (such in paypal postback)
 
   //   };
 
@@ -170,9 +184,9 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, isVenmo) {
   //   };
 
   //   let loadExpressCheckout = () => {
-  //   // On shipping we taking into acocunt if this is a gift or not.
-  //   // On express checkout we pre-screen no matter what,
-  //   // even though the user may have a gift order
+  //    On shipping we taking into acocunt if this is a gift or not.
+  //    On express checkout we pre-screen no matter what,
+  //    even though the user may have a gift order
   //     let shouldPreScreenUser = generalStoreView
   //       .getIsPrescreenFormEnabled(storeState) &&
   //       !userStoreView.getUserIsPlcc(storeState);
@@ -249,9 +263,9 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, isVenmo) {
   //     let storeState = this.store.getState();
   //     const venmoEnabled = isVenmo && generalStoreView.isVenmoDirectIntegrationEnabled(this.store.getState());
   //     const venmoNonceActive = checkoutStoreView.isVenmoNonceActive(this.store.getState());
-  //     // What if Venmo is enabled, goes directly to the billing page, but venmo app is not installed,
-  //     // we should check to check for the Venmo Error in location hash and try to close the tab or
-  //     // move user to the billing step.
+  //      What if Venmo is enabled, goes directly to the billing page, but venmo app is not installed,
+  //      we should check to check for the Venmo Error in location hash and try to close the tab or
+  //      move user to the billing step.
   //     let gotoBillingStep = false;
   //     if (venmoEnabled
   //       && !venmoNonceActive
@@ -295,8 +309,8 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, isVenmo) {
   //       };
   //       let billingAddressId = null;
   //       if (checkoutStoreView.isDefaultAddressUsed(storeState) || checkoutStoreView.isShippingMethodValuesAvailable(storeState) || addressesStoreView.getDefaultAddress(storeState)) {
-  //         // We need to submit Shipping address too
-  //         // setShippingMethodAndAddressId
+  //          We need to submit Shipping address too
+  //          setShippingMethodAndAddressId
   //         const shipToValues = checkoutStoreView.getInitialShippingSectionValues(storeState);
   //         if (shipToValues.shipTo && shipToValues.shipTo.addressId) {
   //           const shippingMethod = (shipToValues.shipTo && shipToValues.shipTo.method && shipToValues.shipTo.method.shippingMethodId) || checkoutStoreView.getDefaultShippingMethod(storeState);
@@ -332,7 +346,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, isVenmo) {
   //     };
   //     const handleVenmoNavigation = () => {
   //       if (!userStoreView.isGuest(storeState) && addressesStoreView.getDefaultAddress(storeState)) {
-  //         // We we go directly to the review section
+  //          We we go directly to the review section
   //         runPrescreenOnLoadVenmo();
   //       } else if (userStoreView.isGuest(storeState) && cartStoreView.getIsOrderHasPickup(storeState) && !checkoutStoreView.isPickupValuesAvailable(storeState)) {
   //         checkoutSignalsOperator.openPickupSectionForm(true);
@@ -374,6 +388,7 @@ function* initCheckout() {
 
 export function* CheckoutSaga() {
   yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
+  yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
 }
 
 export default CheckoutSaga;

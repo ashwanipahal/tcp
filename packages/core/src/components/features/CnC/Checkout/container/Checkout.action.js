@@ -1,10 +1,20 @@
-/* eslint-disable extra-rules/no-commented-out-code */
-
 import constants from '../Checkout.constants';
 
-export const initCheckout = () => ({
+export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
+
+export const checkoutSetCartData = payload => ({
+  type: 'CHECKOUT_SET_CART_DATA',
+  payload,
+});
+
+export function getSetGiftWrapOptionsActn(giftWrapOptions) {
+  return {
+    giftWrapOptions,
+    type: 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP',
+  };
+}
 
 export function getSetPickupValuesActn(pickup) {
   return {

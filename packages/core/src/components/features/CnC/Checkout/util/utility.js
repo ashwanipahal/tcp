@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 /* eslint-disable no-else-return */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable complexity */
@@ -27,8 +28,7 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 
-const getOrderPointsRecalcFlag = (recalcRewards, recalcOrderPointsInterval) => {
-  console.log('getOrderPointsRecalcFlag');
+const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
   // if(recalcOrderPointsInterval && !recalcRewards) {
   //   const orderPointsTimeStamp = getLocalStorage('orderPointsTimeStamp') || null;
@@ -40,7 +40,7 @@ const getOrderPointsRecalcFlag = (recalcRewards, recalcOrderPointsInterval) => {
   return false;
 };
 
-const updateCartInfo = (store, cartInfo, isUpdateCartItems) => {
+const updateCartInfo = (cartInfo, isUpdateCartItems) => {
   const getRewardPoints = {
     estimatedRewards: cartInfo.estimatedRewards,
     earnedReward: cartInfo.earnedReward,

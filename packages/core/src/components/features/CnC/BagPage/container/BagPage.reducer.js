@@ -15,6 +15,8 @@ const BagPageReducer = (state = initialState, action) => {
       return state.set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
       return state.set('moduleXContent', List(action.payload));
+    case 'CART_SUMMARY_SET_ORDER_ID':
+      return state.setIn(['orderDetails', 'orderId'], action.orderId);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
