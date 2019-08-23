@@ -8,6 +8,7 @@ const ignorePsuedoCodeDir = [
   '/server/',
   '/service/',
   '/FPO/',
+  '/services/abstractors/CnC/Checkout.js',
 ];
 
 module.exports = {
