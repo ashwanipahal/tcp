@@ -148,12 +148,12 @@ export default css`
       flex-grow: 0;
       width: 50%;
       white-space: normal;
+    }
 
-      button {
-        width: 140px;
-        white-space: nowrap;
-        padding: 12px;
-      }
+    .scroll-button button {
+      width: 140px;
+      white-space: nowrap;
+      padding: 12px;
     }
 
     .scroll-button:nth-child(1) {
