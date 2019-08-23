@@ -83,8 +83,8 @@ BagConfirmationModal.propTypes = {
 
 BagConfirmationModal.defaultProps = {
   labels: {
-    confirmationText: `Some of the item(s) in your bag are either sold out or need updating.
-Continuing with checkout will remove them from your bag.`,
+    confirmationText:
+      'Some of the item(s) in your bag are either sold out or need updating. Continuing with checkout will remove them from your bag.',
     backToBag: 'BACK TO BAG',
     continueCheckout: 'CONTINUE TO CHECKOUT',
   },

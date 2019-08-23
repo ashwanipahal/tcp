@@ -23,6 +23,9 @@ const getBagPageLabels = state => {
         lbl_emptyBag_shopNow: shopNow,
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
+        lbl_checkoutmodal_confirmation: confirmationText,
+        lbl_checkoutmodal_backToBag: backToBag,
+        lbl_checkoutmodal_continueCheckout: continueCheckout,
       },
     },
   } = state.Labels;
@@ -36,6 +39,9 @@ const getBagPageLabels = state => {
     tagLine,
     guestUserMsg,
     helperMsg,
+    confirmationText,
+    backToBag,
+    continueCheckout,
   };
 };
 
