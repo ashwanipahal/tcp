@@ -82,7 +82,9 @@ export function ProductTitle(props) {
         to={pdpUrl}
         inheritedStyles="product-title-content"
       >
-        <BodyCopy fontFamily="secondary">{name}</BodyCopy>
+        <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
+          {name}
+        </BodyCopy>
       </Anchor>
       {children}
     </div>
@@ -100,10 +102,10 @@ export function ProductPricesSection(props) {
       {offerPrice && (
         <BodyCopy
           dataLocator={getLocator('global_Price_text')}
-          className="product-offer-price"
           color="red.500"
           fontWeight="extrabold"
           fontFamily="secondary"
+          fontSize={['fs15', 'fs18', 'fs20']}
         >
           {currencySymbol + offerPrice.toFixed(2)}
         </BodyCopy>
@@ -114,6 +116,7 @@ export function ProductPricesSection(props) {
           color="gray.700"
           fontFamily="secondary"
           fontWeight="semibold"
+          fontSize={['fs10', 'fs12', 'fs14']}
           className={'list-price'}
         >
           {currencySymbol + listPrice.toFixed(2)}
@@ -126,6 +129,7 @@ export function ProductPricesSection(props) {
           fontFamily="secondary"
           fontWeight="semibold"
           className="merchant-tag"
+          fontSize={['fs10', 'fs12', 'fs14']}
         >
           {merchantTag}
         </BodyCopy>
@@ -217,6 +221,7 @@ export function BadgeItem(props) {
         dataLocator={getLocator('global_productbadge_txt')}
         fontFamily="secondary"
         fontWeight="semibold"
+        fontSize={['fs10', 'fs12', 'fs14']}
       >
         {isShowBadges && text}
       </BodyCopy>

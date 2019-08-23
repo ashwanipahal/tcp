@@ -19,34 +19,23 @@ const styles = css`
   .list-price {
     text-decoration: line-through;
     padding-right: 10px;
-    font-size: ${props => props.theme.typography.fontSizes.fs10};
   }
   .product-title-container {
     box-sizing: border-box;
     height: 36px;
-    padding-top: 4px;
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     overflow: hidden;
   }
 
   .added-to-bag {
     width: 100%;
-    margin-top: 12px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .top-badge-container {
     min-height: 14px;
     width: 100%;
-    font-size: ${props => props.theme.typography.fontSizes.fs10};
   }
-  .badge2-fav-container {
-    font-size: ${props => props.theme.typography.fontSizes.fs10};
-  }
-  .product-offer-price {
-    font-size: ${props => props.theme.typography.fontSizes.fs15};
-  }
-  .merchant-tag {
-    font-size: ${props => props.theme.typography.fontSizes.fs10};
-  }
+
   .loyalty-text-container {
     height: 28px;
     font-size: ${props => props.theme.typography.fontSizes.fs10};
@@ -56,29 +45,20 @@ const styles = css`
     overflow: hidden;
   }
 
+  .empty-color-chips-container {
+    min-height: 39px;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .top-badge-container {
       min-height: 16px;
-      font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
-    .badge2-fav-container {
-      font-size: ${props => props.theme.typography.fontSizes.fs12};
-    }
-    .product-offer-price {
-      font-size: ${props => props.theme.typography.fontSizes.fs18};
-    }
-    .list-price {
-      font-size: ${props => props.theme.typography.fontSizes.fs12};
-    }
-    .merchant-tag {
-      font-size: ${props => props.theme.typography.fontSizes.fs12};
-    }
+
     .container-price {
       margin-top: 4px;
       min-height: 43px;
     }
     .product-title-container {
-      font-size: ${props => props.theme.typography.fontSizes.fs13};
       padding-top: 11px;
       height: 47px;
     }
@@ -92,26 +72,13 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.large} {
     .top-badge-container {
       min-height: 19px;
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
     }
-    .badge2-fav-container {
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
-    }
-    .product-offer-price {
-      font-size: ${props => props.theme.typography.fontSizes.fs20};
-    }
-    .list-price {
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
-    }
-    .merchant-tag {
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
-    }
+
     .container-price {
       margin-top: 0px;
       min-height: 47px;
     }
     .product-title-container {
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
       padding-top: 8px;
       height: 46px;
     }
@@ -128,6 +95,9 @@ const styles = css`
       .button-next {
         display: block;
       }
+    }
+    .empty-color-chips-container {
+      min-height: 43px;
     }
   }
 `;

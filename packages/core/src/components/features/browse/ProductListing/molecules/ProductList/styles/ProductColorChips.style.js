@@ -1,89 +1,58 @@
 import { css } from 'styled-components';
+import { buttonPrev, buttonNext } from './CommonStyle';
+
+const commonButtonCss = css`
+  top: 50%;
+  width: 25px;
+  height: 34px;
+
+  ::before {
+    border-left: 2px solid ${props => props.theme.colors.DARK};
+    border-top: 2px solid ${props => props.theme.colors.DARK};
+    height: 7px;
+    width: 7px;
+  }
+`;
 
 const styles = css`
   vertical-align: top;
   position: relative;
   opacity: 1;
-  margin: -1px 0 8px -2px;
   width: 100%;
 
   .button-next {
-    cursor: pointer;
-    border: 0;
-    background: transparent;
-    top: 11px;
-    right: 0px;
-    display: block;
-    width: 25px;
-    position: absolute;
-    transform: translateY(-50%);
-    overflow: hidden;
-    height: 34px;
-    padding-right: 0;
-
-    ::before {
-      content: '';
-      display: inline-block;
-      border-left: 2px solid ${props => props.theme.colors.DARK};
-      border-top: 2px solid ${props => props.theme.colors.DARK};
-      height: 7px;
-      width: 7px;
-      position: relative;
-      border-radius: 2px;
-      transform: rotate(135deg);
-      top: -1px;
-      right: 0px;
-    }
+    ${buttonNext}
+    ${commonButtonCss}
   }
 
   .button-prev {
-    cursor: pointer;
-    padding-left: 0;
-    border: 0;
-    background: transparent;
-    top: 11px;
-    left: 0px;
-    display: block;
-    width: 25px;
-    position: absolute;
-    transform: translateY(-50%);
-    overflow: hidden;
-    height: 34px;
-
-    ::before {
-      content: '';
-      display: inline-block;
-      border-left: 2px solid ${props => props.theme.colors.DARK};
-      border-top: 2px solid ${props => props.theme.colors.DARK};
-      height: 7px;
-      width: 7px;
-      position: relative;
-      border-radius: 2px;
-      transform: rotate(-45deg);
-      top: -1px;
-      left: 0px;
-    }
+    ${buttonPrev}
+    ${commonButtonCss}
   }
 
   .content-colors {
+    display: flex;
+    width: 100%;
     padding: 0;
-    margin: 8px 0px 12px;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0px
+      ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .color-swatches-container {
-    margin-left: 30px;
+    margin-left: 15px;
+    width: 100%;
   }
 
   .content-colors-button {
-    margin: 0 2px;
+    margin-right: 6px;
     font-size: 0;
     border-radius: 50%;
     width: 15px;
     height: 15px;
     display: inline;
-    vertical-align: top;
     overflow: hidden;
     background: transparent;
     padding: 0;
+    border: 0;
 
     &.active {
       border: 1px solid ${props => props.theme.colors.DARK};
@@ -91,8 +60,12 @@ const styles = css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     .content-colors-button {
+      margin-right: 14px;
       width: 20px;
       height: 20px;
+    }
+    .color-swatches-container {
+      margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     }
   }
 `;

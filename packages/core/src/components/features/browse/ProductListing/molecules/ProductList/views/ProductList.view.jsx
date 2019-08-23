@@ -6,7 +6,6 @@ import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItem from './ProductsGridItem';
 import { GRID_ITEMS_TYPES } from '../propTypes/productsAndItemsPropTypes';
-import { initLineClamp } from '../utils/utility';
 
 const isGridItem = item => {
   let flag = true;
@@ -23,86 +22,80 @@ const isGridItem = item => {
   return flag;
 };
 
-class ProductList extends React.Component {
-  constructor(props) {
-    super(props);
-    initLineClamp();
-  }
+const ProductList = props => {
+  const {
+    className,
+    products,
+    showQuickViewForProductId,
+    currencySymbol,
+    onAddItemToFavorites,
+    onQuickViewOpenClick,
+    onPickUpOpenClick,
+    onColorChange,
+    isBopisEnabled,
+    unbxdId,
+    onProductCardHover,
+    isBopisEnabledForClearance,
+    onQuickBopisOpenClick,
+    currencyExchange,
+    siblingProperties,
+    loadedProductCount,
+  } = props;
+  let gridIndex = 0;
 
-  render() {
-    const {
-      className,
-      products,
-      showQuickViewForProductId,
-      currencySymbol,
-      onAddItemToFavorites,
-      onQuickViewOpenClick,
-      onPickUpOpenClick,
-      onColorChange,
-      isBopisEnabled,
-      unbxdId,
-      onProductCardHover,
-      isBopisEnabledForClearance,
-      onQuickBopisOpenClick,
-      currencyExchange,
-      siblingProperties,
-      loadedProductCount,
-    } = this.props;
-    let gridIndex = 0;
-    return (
-      <div className={className}>
-        {products.map((item, index) => {
-          const isEvenElement = gridIndex % 2;
-          if (typeof item === 'string') {
-            gridIndex = 0;
-          } else if (isGridItem(item)) {
-            gridIndex += 1;
-          }
-          window.gridIndex = gridIndex;
-          return (
-            <div className="product-tile">
-              <ProductsGridItem
-                isMobile={isMobileApp()}
-                loadedProductCount={loadedProductCount}
-                key={item.productInfo.generalProductId}
-                item={item}
-                isGridView
-                isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}
-                currencySymbol={currencySymbol}
-                currencyExchange={currencyExchange}
-                onAddItemToFavorites={onAddItemToFavorites}
-                onQuickViewOpenClick={onQuickViewOpenClick}
-                onPickUpOpenClick={onPickUpOpenClick}
-                onColorChange={onColorChange}
-                isBopisEnabled={isBopisEnabled}
-                sqnNmbr={index + 1}
-                unbxdId={unbxdId}
-                onProductCardHover={onProductCardHover}
-                isBopisEnabledForClearance={isBopisEnabledForClearance}
-                isCanada={false}
-                isPlcc={false}
-                isPLPShowPickupCTA={false}
-                isOnModelImgDisplay={false}
-                isBossEnabled
-                isBossClearanceProductEnabled
-                isInternationalShipping={false}
-                isShowVideoOnPlp={false}
-                onQuickBopisOpenClick={onQuickBopisOpenClick}
-                isProductsGridCTAView
-                isMatchingFamily={false}
-                siblingProperties={siblingProperties}
-                isEvenElement={isEvenElement}
-                gridIndex={gridIndex}
-                isPLPredesign={false}
-                isKeepAliveKillSwitch={false}
-              />
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={className}>
+      {products.map((item, index) => {
+        const isEvenElement = gridIndex % 2;
+        if (typeof item === 'string') {
+          gridIndex = 0;
+        } else if (isGridItem(item)) {
+          gridIndex += 1;
+        }
+        window.gridIndex = gridIndex;
+        return (
+          <div className="product-tile">
+            <ProductsGridItem
+              isMobile={isMobileApp()}
+              loadedProductCount={loadedProductCount}
+              key={item.productInfo.generalProductId}
+              item={item}
+              isGridView
+              isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}
+              currencySymbol={currencySymbol}
+              currencyExchange={currencyExchange}
+              onAddItemToFavorites={onAddItemToFavorites}
+              onQuickViewOpenClick={onQuickViewOpenClick}
+              onPickUpOpenClick={onPickUpOpenClick}
+              onColorChange={onColorChange}
+              isBopisEnabled={isBopisEnabled}
+              sqnNmbr={index + 1}
+              unbxdId={unbxdId}
+              onProductCardHover={onProductCardHover}
+              isBopisEnabledForClearance={isBopisEnabledForClearance}
+              isCanada={false}
+              isPlcc={false}
+              isPLPShowPickupCTA={false}
+              isOnModelImgDisplay={false}
+              isBossEnabled
+              isBossClearanceProductEnabled
+              isInternationalShipping={false}
+              isShowVideoOnPlp={false}
+              onQuickBopisOpenClick={onQuickBopisOpenClick}
+              isProductsGridCTAView
+              isMatchingFamily={false}
+              siblingProperties={siblingProperties}
+              isEvenElement={isEvenElement}
+              gridIndex={gridIndex}
+              isPLPredesign={false}
+              isKeepAliveKillSwitch={false}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 ProductList.propTypes = {
   className: PropTypes.string,

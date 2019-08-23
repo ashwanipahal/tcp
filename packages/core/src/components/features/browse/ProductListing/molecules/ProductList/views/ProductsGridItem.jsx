@@ -22,7 +22,6 @@ import {
   getPromotionalMessage,
   // validateBossEligibility,
   // validateBopisEligibility,
-  lineClamp,
 } from '../utils/utility';
 
 import {
@@ -60,8 +59,6 @@ class ProductsGridItem extends React.PureComponent {
       isAltImgRequested: false,
     };
 
-    this.refTitle = React.createRef();
-
     this.handleAddToWishlist = this.handleAddToWishlist.bind(this);
     this.handleOpenAltImages = this.handleOpenAltImages.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
@@ -76,7 +73,6 @@ class ProductsGridItem extends React.PureComponent {
     this.handleOpenQuickViewClick = () =>
       onQuickViewOpenClick(generalProductId, selectedColorProductId, generalProductId);
     this.handleImageChange = index => this.setState({ currentImageIndex: index });
-    this.refreshItemEllipsis = this.refreshItemEllipsis.bind(this);
   }
 
   // DT-32496
@@ -136,14 +132,6 @@ class ProductsGridItem extends React.PureComponent {
       return;
     }
     this.setState({ isAltImgRequested: true });
-  };
-
-  refreshItemEllipsis = () => {
-    const { isPLPredesign } = this.props;
-    if (this.refTitle.current) {
-      const linesToClamp = isPLPredesign ? 2 : 0;
-      lineClamp(this.refTitle.current.children[0].children[0].children[0], linesToClamp);
-    }
   };
 
   /* getTopBadge  */
@@ -441,12 +429,13 @@ class ProductsGridItem extends React.PureComponent {
             keepAlive={isKeepAlive}
           />
           {
-            <Row fullBleed className="badge2-fav-container">
+            <Row fullBleed>
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
                 <BodyCopy
                   dataLocator={getLocator('global_Extended_sizes_text')}
                   fontWeight="extrabold"
                   fontFamily="secondary"
+                  fontSize={['fs10', 'fs12', 'fs14']}
                 >
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
@@ -501,7 +490,6 @@ class ProductsGridItem extends React.PureComponent {
           {/* {!isPLPredesign && isShowBadges && (
             <BadgeItem className="merchant-badge-container" text={badge3} />
           )} */}
-          {/* {!isPLPredesign && !!ratings && <ProductRating ratings={ratings} reviews={reviews} />} */}
           {/* {isPLPredesign && !isCanada && !isInternationalShipping && (
             <PromotionalMessage
               wrapperClassName="promotion-message-container-v1"

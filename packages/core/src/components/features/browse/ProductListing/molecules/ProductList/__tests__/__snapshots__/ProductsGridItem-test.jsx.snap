@@ -41,7 +41,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       videoUrl=""
     />
     <Styled(Row)
-      className="badge2-fav-container"
       fullBleed={true}
     >
       <Styled(Col)
@@ -59,7 +58,13 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           component="p"
           dataLocator="global-Extended-sizes-text"
           fontFamily="secondary"
-          fontSize={12}
+          fontSize={
+            Array [
+              "fs10",
+              "fs12",
+              "fs14",
+            ]
+          }
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"

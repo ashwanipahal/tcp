@@ -10,7 +10,13 @@ exports[`ProductItemComponents component BadgeItem render Text 1`] = `
     component="p"
     dataLocator="global-productbadge-txt"
     fontFamily="secondary"
-    fontSize={12}
+    fontSize={
+      Array [
+        "fs10",
+        "fs12",
+        "fs14",
+      ]
+    }
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -49,12 +55,18 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
   className="container-price"
 >
   <ForwardRef
-    className="product-offer-price"
+    className={null}
     color="red.500"
     component="p"
     dataLocator="global-Price-text"
     fontFamily="secondary"
-    fontSize={12}
+    fontSize={
+      Array [
+        "fs15",
+        "fs18",
+        "fs20",
+      ]
+    }
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -67,7 +79,13 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
     color="red.500"
     component="span"
     fontFamily="secondary"
-    fontSize={12}
+    fontSize={
+      Array [
+        "fs10",
+        "fs12",
+        "fs14",
+      ]
+    }
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -118,7 +136,13 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
       color="text.primary"
       component="p"
       fontFamily="secondary"
-      fontSize={12}
+      fontSize={
+        Array [
+          "fs12",
+          "fs13",
+          "fs14",
+        ]
+      }
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
