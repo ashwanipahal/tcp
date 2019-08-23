@@ -76,7 +76,7 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
   );
 };
 
-const renderView = (item, navigation, varient, position) => {
+const renderView = (item, navigation, variant, position) => {
   let PromoBannerComponent;
   let HeaderComponent;
   const {
@@ -87,7 +87,7 @@ const renderView = (item, navigation, varient, position) => {
       linkedImage: [{ image }],
     },
   } = item;
-  if (varient === 'tcp') {
+  if (variant === 'tcp') {
     PromoBannerComponent = ContainerView;
     HeaderComponent = ContainerView;
   } else {
@@ -99,7 +99,7 @@ const renderView = (item, navigation, varient, position) => {
     <ContainerView>
       <Image
         width={MODULE_WIDTH}
-        height={varient === 'tcp' ? MODULE_TCP_HEIGHT : MODULE_GYM_HEIGHT}
+        height={variant === 'tcp' ? MODULE_TCP_HEIGHT : MODULE_GYM_HEIGHT}
         url={image.url}
       />
       <HeaderWrapper>
@@ -129,14 +129,14 @@ const renderView = (item, navigation, varient, position) => {
         </PromoBannerComponent>
       </HeaderWrapper>
 
-      {varient === 'gym' && ribbonView({ ribbonBanner, navigation, position })}
+      {variant === 'gym' && ribbonView({ ribbonBanner, navigation, position })}
     </ContainerView>
   );
 };
 
-const renderCarousel = (largeCompImageCarousel, navigation, varient, position) => {
+const renderCarousel = (largeCompImageCarousel, navigation, variant, position) => {
   let config = {};
-  if (varient === 'tcp') {
+  if (variant === 'tcp') {
     config = {
       height: MODULE_TCP_HEIGHT,
     };
@@ -151,7 +151,7 @@ const renderCarousel = (largeCompImageCarousel, navigation, varient, position) =
       <Carousel
         {...config}
         data={largeCompImageCarousel}
-        renderItem={item => renderView(item, navigation, varient, position)}
+        renderItem={item => renderView(item, navigation, variant, position)}
         width={MODULE_WIDTH}
         carouselConfig={{
           autoplay: true,
@@ -189,7 +189,6 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
  */
 
 const ModuleA = (props: Props) => {
-  console.log('propspropsprops-----', props);
   const {
     navigation,
     largeCompImageCarousel,
@@ -228,11 +227,6 @@ const ModuleA = (props: Props) => {
     </Container>
   );
 };
-
-renderCarousel.propTypes = {
-  config: PropTypes.shape({}).isRequired,
-};
-renderCarousel.defaultProps = {};
 
 ribbonView.propTypes = {
   ribbonBanner: PropTypes.shape([]).isRequired,
