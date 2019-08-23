@@ -4,8 +4,6 @@ import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import { SlotA, SlotB, SlotC, SlotD, SlotF } from '../molecules';
 
-import moduleNMockData from '../../../../../../../core/src/services/abstractors/common/moduleN/mock';
-
 class HomePageView extends React.Component {
   componentDidMount() {
     const { getBootstrapData } = this.props;
@@ -28,13 +26,7 @@ class HomePageView extends React.Component {
           {slotB && <SlotB {...slotB} navigation={navigation} />}
           {slotC && <SlotC {...slotC} navigation={navigation} />}
           {slotD && <SlotD {...slotD} navigation={navigation} />}
-          <SlotF
-            name="moduleN"
-            set={moduleNMockData.moduleN.set}
-            {...moduleNMockData.moduleN.composites}
-            {...slotF}
-            navigation={navigation}
-          />
+          {slotF && <SlotF {...slotF} navigation={navigation} />}
           <Button
             fullWidth
             buttonVariation="variable-width"
