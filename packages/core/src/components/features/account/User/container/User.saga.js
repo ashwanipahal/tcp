@@ -6,7 +6,9 @@ import { validateReduxCache } from '../../../../../utils/cache.util';
 
 export function* getUserInfoSaga() {
   try {
-    const response = yield call(getProfile, {});
+    const response = yield call(getProfile, {
+      pageId: 'myAccount',
+    });
     yield put(setUserInfo(response));
   } catch (err) {
     console.log('Error: error in fetching user profile information');

@@ -13,8 +13,11 @@ import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/Ba
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
+import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
+import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
+
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -35,6 +38,8 @@ import {
   COUPON_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
+  APICONFIG_REDUCER_KEY,
+  ADDEDITCREDITCARD_REDUCER_KEY,
   USER_REDUCER_KEY,
   CHECKOUT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -52,7 +57,10 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
+const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+
 export default combineReducers({
+  [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
@@ -74,5 +82,6 @@ export default combineReducers({
   [COUPON_REDUCER_KEY]: CouponReducer,
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
+  [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [USER_REDUCER_KEY]: UserReducer,
 });

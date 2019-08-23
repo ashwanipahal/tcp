@@ -5,6 +5,7 @@ export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
 export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
+export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const FORM_REDUCER_KEY = 'form';
 export const LOADER_REDUCER_KEY = 'PageLoader';
 
@@ -73,6 +74,12 @@ export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
 
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
+export const TRACK_ORDER_REDUCER_KEY = 'TrackOrderReducer';
+export const TRACK_ORDER_ACTION_PATTERN = '@@TrackOrder-';
+
+// change password reducer
+export const CHANGE_PASSWORD_REDUCER_KEY = 'ChangePassword';
+export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -86,6 +93,8 @@ export const REDUCER_ACTION_MAPPING = {
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
   [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
+  [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
+  [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

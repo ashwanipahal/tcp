@@ -40,6 +40,7 @@ const AddAddressButton = {
 const CancelButton = {
   fontWeight: 'normal',
   opacity: 0.5,
+  color: `${props => props.theme.colorPalette.black}`,
 };
 
 const EmptyView = styled.View`

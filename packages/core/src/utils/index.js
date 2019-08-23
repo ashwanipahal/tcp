@@ -14,7 +14,9 @@ export {
   getViewportInfo,
   showOverlay,
   closeOverlay,
+  bindAllClassMethodsToThis,
   scrollPage,
+  createAPIConfig,
 } from './utils.web';
 
 export {
@@ -27,6 +29,5 @@ export {
   getIconPath,
   getLocator,
   getAPIConfig,
-  createAPIConfig,
   isCanada,
 } from './utils';

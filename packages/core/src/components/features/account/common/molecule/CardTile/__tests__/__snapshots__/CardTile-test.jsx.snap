@@ -513,7 +513,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -644,10 +644,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 ",
                   ";
@@ -657,7 +656,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -950,7 +949,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1081,10 +1080,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 ",
                   ";
@@ -1094,7 +1092,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1593,7 +1591,7 @@ exports[`CardTile should show loading 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1724,10 +1722,9 @@ exports[`CardTile should show loading 1`] = `
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 ",
                   ";
@@ -1737,7 +1734,7 @@ exports[`CardTile should show loading 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1875,7 +1872,7 @@ exports[`CardTile should show remining balance 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -2006,10 +2003,9 @@ exports[`CardTile should show remining balance 1`] = `
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 ",
                   ";
@@ -2019,7 +2015,7 @@ exports[`CardTile should show remining balance 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

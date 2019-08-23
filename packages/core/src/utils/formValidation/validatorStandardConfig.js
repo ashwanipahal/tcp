@@ -70,8 +70,8 @@ export const formValidationMessages = {
     validEmail: 'Email format is invalid',
   },
   emailAddress: {
-    required: `Please enter a valid email`,
-    emailPattern: 'Email format is invalid',
+    required: `ERROR: Please enter a valid email`,
+    emailPattern: 'ERROR: Email format is invalid',
   },
   confirmEmailAddress: {
     required: 'Please confirm your email address',
@@ -81,17 +81,23 @@ export const formValidationMessages = {
     required: 'Please enter your password',
     password: 'Please enter a valid password',
   },
+  currentPassword: {
+    required: 'Please enter your password',
+    password: 'Your current password is incorrect. Please try again.',
+  },
   confirmPassword: {
     required: 'Please enter a valid password',
     equalTo: 'Passwords must match',
   },
   emailAddressNoAsync: {
-    required: `Please enter a valid email`,
-    email: 'Email format is invalid.',
+    required: `ERROR: Please enter a valid email`,
+    email: 'ERROR: Email format is invalid.',
+    validEmail: 'ERROR: Email format is invalid',
   },
   iAgree: {
     required: 'Please Select',
   },
+  orderNumber: 'ERROR: Please enter a valid order number.',
 };
 
 export const formValidationRules = {
@@ -184,6 +190,7 @@ export const formValidationRules = {
   emailAddress: {
     required: true,
     emailPattern: 'isValid',
+    validEmail: true,
   },
   confirmEmailAddress: {
     required: true,
@@ -192,6 +199,10 @@ export const formValidationRules = {
     },
   },
   password: {
+    required: true,
+    password: true,
+  },
+  currentPassword: {
     required: true,
     password: true,
   },
@@ -207,6 +218,11 @@ export const formValidationRules = {
   },
   legacyPassword: {
     required: true,
+  },
+  orderNumber: {
+    required: true,
+    minLength: 6,
+    number: true,
   },
   iAgree: {
     required: true,

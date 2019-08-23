@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
+import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
 import style from '../Header.style';
 
@@ -15,6 +16,8 @@ const Header = ({
   closeNavigationDrawer,
   userName,
   openOverlay,
+  openTrackOrderOverlay,
+  isLoggedIn,
 }) => {
   return (
     <header className={className}>
@@ -22,6 +25,8 @@ const Header = ({
         className="header-topnav"
         brandTabs={brandTabs}
         promoMessageWrapper={promoMessageWrapper}
+        openOverlay={openTrackOrderOverlay}
+        isUserLoggedIn={isLoggedIn}
       />
       <HeaderMiddleNav
         openNavigationDrawer={openNavigationDrawer}
@@ -29,6 +34,7 @@ const Header = ({
         navigationDrawer={navigationDrawer}
         userName={userName}
         openOverlay={openOverlay}
+        isLoggedIn={isLoggedIn}
       />
       <HeaderPromo
         mobileMarkup
@@ -37,6 +43,7 @@ const Header = ({
       />
       <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
       <OverlayModal />
+      <TrackOrder />
     </header>
   );
 };
@@ -51,6 +58,8 @@ Header.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  openTrackOrderOverlay: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withStyles(Header, style);
