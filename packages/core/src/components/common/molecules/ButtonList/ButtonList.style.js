@@ -210,7 +210,7 @@ export default css`
       }
     }
 
-    &.scroll-comp-wrapper.wrapped-button-text .img-wrapper .image-comp {
+    &.scroll-button-list-wrapper.wrapped-button-text .img-wrapper .image-comp {
       white-space: normal;
       width: 70px;
     }
