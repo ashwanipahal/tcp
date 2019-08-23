@@ -79,6 +79,7 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
 const renderView = (item, navigation, variant, position) => {
   let PromoBannerComponent;
   let HeaderComponent;
+  let HeaderConfig = {};
   const {
     item: {
       headerText,
@@ -90,9 +91,11 @@ const renderView = (item, navigation, variant, position) => {
   if (variant === 'tcp') {
     PromoBannerComponent = ContainerView;
     HeaderComponent = ContainerView;
+    HeaderConfig = { color: 'text.primary' };
   } else {
     PromoBannerComponent = PromoBannerWrapper;
     HeaderComponent = HeaderView;
+    HeaderConfig = { color: 'white' };
   }
 
   return (
@@ -106,8 +109,8 @@ const renderView = (item, navigation, variant, position) => {
         <HeaderComponent>
           {headerText && (
             <LinkText
+              {...HeaderConfig}
               type="heading"
-              color="text.primary"
               fontFamily="primary"
               fontSize="fs36"
               fontWeight="black"
