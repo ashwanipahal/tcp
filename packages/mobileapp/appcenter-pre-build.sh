@@ -26,7 +26,6 @@ if [ ! -z "$ENV" ]; then
      printf "\n.env created with contents:\n"
      cat src/env/.env.local
    fi
-   
 fi
 
 
