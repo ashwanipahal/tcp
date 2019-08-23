@@ -189,6 +189,7 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
  */
 
 const ModuleA = (props: Props) => {
+  console.log('propspropsprops-----', props);
   const {
     navigation,
     largeCompImageCarousel,
