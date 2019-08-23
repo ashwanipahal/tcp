@@ -9,6 +9,7 @@ const PersonalInformation = ({ labels }) => {
     <MyProfileTile
       title={labels.lbl_profile_personal_information}
       ctaTitle={labels.lbl_profile_edit_personal_info}
+      dataLocator="pi-editpersonalinfo"
     >
       <FPO />
     </MyProfileTile>

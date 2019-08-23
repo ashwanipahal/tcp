@@ -33,6 +33,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
             profileCompletion: payload.userProfileState.profileCompletion,
             isExpressEligible: payload.isExpressEligible,
             associateId: payload.associateId,
+            hobbies: payload.hobbies,
           })
         )
         .set(

@@ -25,6 +25,7 @@ import {
 
 import CreateAccount from '../../CreateAccount';
 import LoginPageContainer from '../../LoginPage';
+import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 
 class AccountOverview extends PureComponent<Props> {
   constructor(props) {
@@ -80,7 +81,9 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={labels.lbl_overview_myWalletHeading} />
             <Panel title={labels.lbl_overview_earnPointsHeading} />
             <Panel title={labels.lbl_overview_ordersHeading} />
-            <Panel title={labels.lbl_overview_profileInformationHeading} />
+            <Panel title={labels.lbl_overview_profileInformationHeading}>
+              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
             <Panel title={labels.lbl_overview_addressBookHeading}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>

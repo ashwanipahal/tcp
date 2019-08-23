@@ -7,7 +7,7 @@ import Footer from '../../Footer';
 import style from '../Navigation.style';
 
 const Navigation = props => {
-  const { openNavigationDrawer, className, closeNavigationDrawer } = props;
+  const { openNavigationDrawer, className, closeNavigationDrawer, hideNavigationFooter } = props;
   return (
     <Drawer
       id="l1_drawer"
@@ -27,6 +27,7 @@ const Navigation = props => {
       }}
       renderOverlay
       drawerFooter={Footer}
+      hideNavigationFooter={hideNavigationFooter}
     >
       <nav className={`${className} navigation nav-bar`}>
         <NavBar {...props} />
@@ -39,6 +40,7 @@ Navigation.propTypes = {
   openNavigationDrawer: PropTypes.bool.isRequired,
   closeNavigationDrawer: PropTypes.bool.isRequired,
   className: PropTypes.string.isRequired,
+  hideNavigationFooter: PropTypes.bool.isRequired,
 };
 
 export { Navigation as NavigationVanilla };

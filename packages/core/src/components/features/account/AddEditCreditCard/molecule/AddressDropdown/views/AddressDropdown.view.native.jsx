@@ -63,16 +63,17 @@ export class AddressDropdown extends React.PureComponent<Props> {
     };
 
     const { data, selectedValue } = this.props;
-    const selectedObject = data.filter(item => {
-      return item.value === selectedValue;
-    });
 
     let selectedLabelState;
+    const defaultSelectedValue = data && data.length && data[0].label; // If nothing falls under any condition then this value will be selected.
     if (selectedValue) {
-      if (selectedObject[0]) selectedLabelState = selectedObject[0].label;
-      else selectedLabelState = selectedValue;
+      const selectedAddress = data.filter(item => item.id === selectedValue);
+      selectedLabelState =
+        selectedAddress && selectedAddress.length ? selectedAddress[0].label : defaultSelectedValue;
     } else {
-      selectedLabelState = (data && data.length && data[0].label) || '';
+      const primaryAddress = data.filter(item => item.primary === true);
+      selectedLabelState =
+        primaryAddress && primaryAddress.length ? primaryAddress[0].label : defaultSelectedValue;
     }
 
     this.state = {

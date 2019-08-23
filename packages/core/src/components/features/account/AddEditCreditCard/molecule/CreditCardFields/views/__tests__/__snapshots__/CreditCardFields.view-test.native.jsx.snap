@@ -13,6 +13,7 @@ exports[`CreditCardFields component should render correctly 1`] = `
       id="cardNumber"
       isPLCCEnabled={true}
       name="cardNumber"
+      val=""
     />
   </Styled(View)>
   <Styled(View)>

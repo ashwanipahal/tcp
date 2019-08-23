@@ -1,7 +1,8 @@
 import React from 'react';
+import 'core-js/stable/array/includes';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
@@ -10,59 +11,112 @@ import style from './L1NavItem.style';
  * This function handles if navigation drawer needs to open on current viewport or now
  * @param {*} onClick
  */
-const openNavigationDrawer = onClick => () => {
+const openNavigationDrawer = onClick => e => {
   if (!getViewportInfo().isDesktop) {
+    e.preventDefault();
+    e.stopPropagation();
     onClick();
   }
 };
 
-const L1NavItem = props => {
-  const {
-    categoryContent: { id, name, description, mainCategory },
-    className,
-    dataLocator,
-    index,
-    children,
-    onClick,
-    ...others
-  } = props;
-  const classForRedContent = id === '505518' ? `highlighted` : ``;
-  const promoBadge = mainCategory && mainCategory.promoBadge;
-  return (
-    <React.Fragment>
-      <BodyCopy
-        component="li"
-        className={`${className} nav-bar-l1-item`}
-        fontFamily="secondary"
-        fontSize={['fs13', 'fs13', 'fs15']}
-        fontWeight="semibold"
-        color="text.hint"
-        lineHeight="lh115"
-        data-locator={dataLocator}
-        tabIndex={0}
-        {...others}
-      >
-        <div
-          className="nav-bar-l1-content"
-          onClick={openNavigationDrawer(onClick)}
-          onKeyDown={openNavigationDrawer(onClick)}
-          role="button"
-          tabIndex={0}
-        >
-          <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
-          <span
-            className={`nav-bar-item-content ${description ? 'nav-bar-item-sizes-range' : ''}`}
-            data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
-          >
-            {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
-          </span>
-          <span className="icon-arrow" />
-        </div>
-        {children}
-      </BodyCopy>
-    </React.Fragment>
-  );
+/**
+ * This function highlights clearance links in red color on the base of id in unbxd
+ * @param {*} id
+ */
+const highlightContent = id => {
+  return id === '505518' || id === '454010' ? `highlighted` : ``;
 };
+
+class L1NavItem extends React.PureComponent {
+  state = {
+    hovered: false,
+  };
+
+  onHover = e => {
+    this.setState({
+      hovered: !e.target.classList.contains('l1-overlay'),
+    });
+  };
+
+  onMouseLeave = () => {
+    this.setState({
+      hovered: false,
+    });
+  };
+
+  fetchPromoBadge() {
+    const {
+      categoryContent: { mainCategory },
+    } = this.props;
+    return mainCategory && mainCategory.promoBadge;
+  }
+
+  render() {
+    const {
+      categoryContent: { id, name, description, mainCategory, url },
+      className,
+      dataLocator,
+      index,
+      children,
+      onClick,
+      // showOnlyOnApp,
+      removeL1Focus,
+      ...others
+    } = this.props;
+
+    const { hovered } = this.state;
+
+    let classForHovered = '';
+    if (hovered && !removeL1Focus) {
+      classForHovered = 'is-open';
+    }
+
+    // If we receive flag showOnlyOnApp then we add this class to links to hide them
+    // const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
+
+    // This class is used to highlight link in red color, it performs check based on id
+    const classForRedContent = highlightContent(id);
+    // This function renders promoBadge
+    const promoBadge = this.fetchPromoBadge(mainCategory);
+
+    return (
+      <React.Fragment>
+        <BodyCopy
+          component="li"
+          // className={`${className} ${classForHovered} nav-bar-l1-item ${classToShowOnlyOnApp}`}
+          className={`${className} ${classForHovered} nav-bar-l1-item`}
+          fontFamily="secondary"
+          fontSize={['fs13', 'fs13', 'fs15']}
+          fontWeight="semibold"
+          color="text.hint"
+          lineHeight="lh115"
+          data-locator={dataLocator}
+          tabIndex={0}
+          onMouseOver={this.onHover}
+          onFocus={this.onHover}
+          onMouseOut={this.onMouseLeave}
+          onBlur={this.onMouseLeave}
+          {...others}
+        >
+          <Anchor to={url} onClick={openNavigationDrawer(onClick)}>
+            <div className="nav-bar-l1-content" role="button" tabIndex={0}>
+              <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
+              <span
+                className={`nav-bar-item-content ${description ? 'nav-bar-item-sizes-range' : ''}`}
+                data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
+              >
+                {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
+              </span>
+              <span className="icon-arrow" />
+            </div>
+          </Anchor>
+          {children}
+          <div className={`${className} l1-overlay ${classForHovered}`} />
+        </BodyCopy>
+      </React.Fragment>
+    );
+  }
+}
 
 L1NavItem.propTypes = {
   categoryContent: PropTypes.shape({}).isRequired,
@@ -71,6 +125,9 @@ L1NavItem.propTypes = {
   index: PropTypes.number.isRequired,
   children: PropTypes.element.isRequired,
   onClick: PropTypes.func.isRequired,
+  // showOnlyOnApp: PropTypes.bool.isRequired,
+  removeL1Focus: PropTypes.bool.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 L1NavItem.defaultProps = {

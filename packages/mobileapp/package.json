@@ -129,7 +129,9 @@
       "**/react-native-simple-radio-button",
       "**/react-native-simple-radio-button/**",
       "**/react-native-cookies",
-      "**/react-native-cookies/**"
+      "**/react-native-cookies/**",
+      "**/react-native-config",
+      "**/react-native-config/**"
     ]
   }
 }
