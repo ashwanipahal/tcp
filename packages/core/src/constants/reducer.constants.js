@@ -81,6 +81,9 @@ export const TRACK_ORDER_ACTION_PATTERN = '@@TrackOrder-';
 export const CHANGE_PASSWORD_REDUCER_KEY = 'ChangePassword';
 export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 
+// device type detection
+export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
+
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
