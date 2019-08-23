@@ -61,10 +61,17 @@ export class DetailedCouponTile extends React.Component {
     onViewCouponDetails(coupon);
   };
 
+  getAddToBagCtaLabel = (labels, isStarted, isPlaceCash) => {
+    return !isStarted && isPlaceCash
+      ? labels.lbl_coupon_seeRedeemDates
+      : labels.lbl_coupon_applyToBag;
+  };
+
   render() {
     const { className, coupon, labels, isMobile, isDisabled } = this.props;
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
+    const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
 
     return (
       <BodyCopy component="div" className={className}>
@@ -140,7 +147,7 @@ export class DetailedCouponTile extends React.Component {
                   disabled={isApplyButtonDisabled}
                   onClick={this.handleApplyToBag}
                 >
-                  {labels.lbl_coupon_applyToBag}
+                  {addToBagCTALabel}
                 </Button>
               )}
             </BodyCopy>

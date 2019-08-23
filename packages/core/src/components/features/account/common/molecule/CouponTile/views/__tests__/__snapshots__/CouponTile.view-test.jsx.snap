@@ -12,19 +12,9 @@ exports[`CouponTile Component should render correctly 1`] = `
   lineHeight="normal"
   textAlign="left"
 >
-  <Styled(BodyCopy)
-    className="coupon coupon-saving elem-mr-XS"
-    color="white"
-    component="div"
-    fontFamily="primary"
-    fontSize="fs13"
-    fontWeight="black"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="center"
-  >
-    <span />
-  </Styled(BodyCopy)>
+  <Styled(CouponIcon)
+    coupon={Object {}}
+  />
   <Styled(BodyCopy)
     className="elem-pt-XS"
     color="text.primary"
