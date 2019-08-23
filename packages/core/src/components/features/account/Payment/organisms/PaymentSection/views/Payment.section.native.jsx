@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
+import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   ParentContainer,
@@ -53,6 +54,7 @@ class PaymentView extends React.Component<Props> {
     setDeleteModalMountState: PropTypes.bool,
     setUpdateModalMountState: PropTypes.bool,
     setDeleteModalMountedState: PropTypes.bool,
+    setRecaptchaModalMountedState: PropTypes.bool,
     setUpdateModalMountedState: PropTypes.bool,
     deleteModalMountedState: PropTypes.bool,
     updateModalMountedState: PropTypes.bool,
@@ -87,6 +89,7 @@ class PaymentView extends React.Component<Props> {
     onDeleteCard: {},
     setDeleteModalMountState: false,
     setDeleteModalMountedState: false,
+    setRecaptchaModalMountedState: false,
     setUpdateModalMountedState: false,
     deleteModalMountedState: false,
     updateModalMountedState: false,
@@ -107,6 +110,7 @@ class PaymentView extends React.Component<Props> {
     super(props);
     this.state = {
       setDeleteModalMountedState: false,
+      setRecaptchaModalMountedState: false,
       setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
@@ -116,7 +120,9 @@ class PaymentView extends React.Component<Props> {
 
   componentWillReceiveProps = nextProps => {
     if (!nextProps.deleteModalMountedState)
-      this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
+      this.setState({
+        setDeleteModalMountedState: nextProps.deleteModalMountedState,
+      });
   };
 
   getCardExpiryText = (labels, selectedCard) => {
@@ -137,6 +143,13 @@ class PaymentView extends React.Component<Props> {
     const { setDeleteModalMountedState } = this.state;
     this.setState({
       setDeleteModalMountedState: !setDeleteModalMountedState,
+    });
+  };
+
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
     });
   };
 
@@ -185,6 +198,25 @@ class PaymentView extends React.Component<Props> {
     );
   };
 
+  toogleRecaptcha = ({ labels, setRecaptchaModalMountedState }) => {
+    return (
+      <React.Fragment>
+        {setRecaptchaModalMountedState && (
+          <RecaptchaModal
+            labels={labels}
+            setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+            toggleRecaptchaModal={this.setRecaptchaModalMountState}
+            onConfirm={this.onConfirm}
+            onClose={this.onClose}
+          />
+        )}
+      </React.Fragment>
+    );
+  };
+  // toogleRecaptcha = () => {
+
+  // }
+
   render() {
     const {
       labels,
@@ -197,8 +229,14 @@ class PaymentView extends React.Component<Props> {
       checkbalanceValueInfo,
       updateCardList,
     } = this.props;
-    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
-    const { showGiftCardModal } = this.state;
+
+    const {
+      showGiftCardModal,
+      setDeleteModalMountedState,
+      setUpdateModalMountedState,
+      setRecaptchaModalMountedState,
+      selectedCard,
+    } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
 
@@ -250,6 +288,7 @@ class PaymentView extends React.Component<Props> {
               cardList={creditCardList}
               setDefaultPaymentMethod={setDefaultPaymentMethod}
               toggleModal={this.setDeleteModalMountState}
+              toggleRecaptchaModal={this.setRecaptchaModalMountState}
               openUpdateModal={this.setUpdateModalMountState} // Update handler to edit card with edit story
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.setUpdateModalMountState}
@@ -276,6 +315,7 @@ class PaymentView extends React.Component<Props> {
               checkbalanceValueInfo={checkbalanceValueInfo}
               onGetBalanceCard={onGetBalanceCard}
               toggleModal={this.setDeleteModalMountState}
+              toggleRecaptchaModal={this.setRecaptchaModalMountState}
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.toggleGiftCardModal}
             />
@@ -292,6 +332,7 @@ class PaymentView extends React.Component<Props> {
               addressDetails={selectedCard.addressDetails}
             />
           )}
+          {this.toogleRecaptcha({ labels, setRecaptchaModalMountedState })}
           {this.getPaymentModal(
             setUpdateModalMountedState,
             dto,

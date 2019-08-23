@@ -23,7 +23,13 @@ type Props = {
 };
 
 const GiftCards = (props: Props) => {
-  const { labels, giftCardList, onGetBalanceCard, checkbalanceValueInfo } = props;
+  const {
+    labels,
+    giftCardList,
+    onGetBalanceCard,
+    checkbalanceValueInfo,
+    toggleRecaptchaModal,
+  } = props;
   return (
     <View {...props}>
       <HeadingTextStyle>{labels.ACC_LBL_GC_HEADING}</HeadingTextStyle>
@@ -53,6 +59,7 @@ const GiftCards = (props: Props) => {
         giftCardList.map(cardItem => (
           <CardTile
             card={cardItem}
+            toggleRecaptchaModal={toggleRecaptchaModal}
             labels={labels}
             onGetBalanceCard={onGetBalanceCard}
             checkbalanceValueInfo={checkbalanceValueInfo}

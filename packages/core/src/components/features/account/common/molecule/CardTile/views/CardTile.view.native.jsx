@@ -189,6 +189,12 @@ class CardTile extends React.Component<Props> {
     toggleModal({ state: true });
   };
 
+  recaptchaModal = e => {
+    const { toggleRecaptchaModal } = this.props;
+    e.preventDefault();
+    toggleRecaptchaModal({ state: true });
+  };
+
   onUpdateCardClick = e => {
     e.preventDefault();
     const { card, openUpdateModal, setSelectedCard } = this.props;
@@ -220,15 +226,29 @@ class CardTile extends React.Component<Props> {
         )}
 
         {isGiftCard && balance == null && (
-          <CustomButton
-            color="white"
-            fill="BLUE"
-            text={labels.paymentGC.lbl_payment_checkBalance}
-            buttonVariation="variable-width"
-            onPress={handleSubmit(formData =>
-              this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
-            )}
-          />
+          <>
+            {/* <CustomButton
+              color="white"
+              fill="BLUE"
+              text={labels.paymentGC.lbl_payment_checkBalance}
+              buttonVariation="variable-width"
+              onPress={handleSubmit(formData =>
+                this.handleGetGiftCardBalanceClick(
+                  formData,
+                  card,
+                  onGetBalanceCard
+                )
+              )}
+            /> */}
+
+            <CustomButton
+              color="white"
+              fill="BLUE"
+              text="check balance captcha"
+              buttonVariation="variable-width"
+              onPress={e => this.recaptchaModal(e)}
+            />
+          </>
         )}
 
         <CardCtaLinks>
@@ -293,7 +313,11 @@ class CardTile extends React.Component<Props> {
             />
           </CardTileHeading>
           {isCreditCard
-            ? this.getMakeDefaultBadge({ card, labels, setDefaultPaymentMethod })
+            ? this.getMakeDefaultBadge({
+                card,
+                labels,
+                setDefaultPaymentMethod,
+              })
             : null}
         </CardTileContext>
         <CardTileDefaultSection isVenmo={isVenmo} isGiftCard={isGiftCard}>
