@@ -21,7 +21,6 @@ import {
   getLoginErrorMessage,
   getLabels,
 } from './LoginPage.selectors';
-import { resetUserInfo } from '../../User/container/User.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 
 import LoginView from '../views';
@@ -41,7 +40,6 @@ class LoginPageContainer extends React.PureComponent {
   componentWillUnmount() {
     const { resetLoginState, loginError } = this.props;
     if (loginError) {
-      resetLoginInfo();
       resetLoginState();
     }
   }
@@ -73,6 +71,7 @@ class LoginPageContainer extends React.PureComponent {
       setLoginModalMountState,
       onRequestClose,
       variation,
+      handleContinueAsGuest,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -98,6 +97,7 @@ class LoginPageContainer extends React.PureComponent {
         setLoginModalMountState={setLoginModalMountState}
         onRequestClose={onRequestClose}
         variation={variation}
+        handleContinueAsGuest={handleContinueAsGuest}
       />
     );
   }
@@ -125,6 +125,7 @@ LoginPageContainer.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   closeModal: PropTypes.bool.isRequired,
   variation: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -134,6 +135,7 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
+  handleContinueAsGuest: () => {},
   isUserLoggedIn: false,
   navigation: {},
   currentForm: '',
@@ -149,7 +151,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(resetLoginForgotPasswordState(payload));
     },
     resetLoginState: () => {
-      dispatch(resetUserInfo());
+      dispatch(resetLoginInfo());
     },
     SubmitForgot: payload => {
       dispatch(resetPassword(payload));

@@ -3,6 +3,7 @@ import {
   openNavigationDrawer,
   closeNavigationDrawer,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import {
   getUserName,
@@ -31,6 +32,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(closeNavigationDrawer());
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
+    openTrackOrderOverlay: payload => dispatch(setTrackOrderModalMountedState(payload)),
   };
 };
 

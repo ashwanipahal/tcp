@@ -185,5 +185,13 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
   },
+  orderLookUp: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/orderLookUp',
+  },
+  getUnqualifiedItems: {
+    method: 'GET',
+    URI: 'v2/cart/getUnqualifiedItems',
+  },
 };
 export default endpoints;
