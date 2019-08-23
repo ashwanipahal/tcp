@@ -45,6 +45,7 @@ const getImageCTA = item => {
                   fontWeight="extrabold"
                   fontSize={['fs14', 'fs20', 'fs20']}
                   className="image-comp"
+                  textAlign="center"
                 >
                   {button.text}
                 </BodyCopy>
@@ -128,7 +129,7 @@ const ButtonList = (props: Props) => {
   let compProps = {};
 
   if (buttonListVariation === 'stackedCTAList') {
-    compWrapper = `stack-comp-wrapper ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
+    compWrapper = `stacked-button-list-wrapper ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {
       ...stackCTAProps,
       fill,
@@ -140,7 +141,7 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'linkCTAList') {
-    compWrapper = 'link-comp-wrapper';
+    compWrapper = 'link-button-list-wrapper';
     compProps = {
       ...linkCTAProps,
       buttonsData,
@@ -151,9 +152,9 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    compWrapper = `scroll-comp-wrapper ${buttonsData.length < 3 ? ' no-scrollable-cta' : ''} ${
-      buttonsData.length > 5 ? wrappedTextClass : ''
-    }`;
+    compWrapper = `scroll-button-list-wrapper ${
+      buttonsData.length < 3 ? ' no-scrollable-cta' : ''
+    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {
       ...scrollCTAProps,
       buttonsData,
@@ -165,9 +166,9 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'imageCTAList') {
-    compWrapper = `scroll-comp-wrapper ${buttonsData.length < 4 ? ' no-scrollable-cta' : ''} ${
-      buttonsData.length > 5 ? wrappedTextClass : ''
-    }`;
+    compWrapper = `scroll-button-list-wrapper ${
+      buttonsData.length < 4 ? ' no-scrollable-cta' : ''
+    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {
       buttonListVariation,
       dataLocatorDivisionImages,

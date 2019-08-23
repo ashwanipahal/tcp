@@ -2,7 +2,7 @@
 
 exports[`ButtonList component renders correctly 1`] = `
 <div
-  className=" link-comp-wrapper"
+  className=" link-button-list-wrapper"
 >
   <Styled(Anchor)
     className="link-button"
@@ -99,7 +99,7 @@ exports[`ButtonList component renders correctly 1`] = `
 
 exports[`ButtonList component renders correctly for image cta List 1`] = `
 <div
-  className=" scroll-comp-wrapper   wrapped-button-text"
+  className=" scroll-button-list-wrapper   wrapped-button-text"
 >
   <div
     className="scroll-cta-wrapper div-image-wrapper"
@@ -146,7 +146,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            textAlign="left"
+            textAlign="center"
           >
             Girl
           </Styled(BodyCopy)>
@@ -195,7 +195,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            textAlign="left"
+            textAlign="center"
           >
             Toddler Girl
           </Styled(BodyCopy)>
@@ -244,7 +244,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            textAlign="left"
+            textAlign="center"
           >
             Boy
           </Styled(BodyCopy)>
@@ -293,7 +293,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            textAlign="left"
+            textAlign="center"
           >
             Toddler Boy
           </Styled(BodyCopy)>
@@ -342,7 +342,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            textAlign="left"
+            textAlign="center"
           >
             Baby
           </Styled(BodyCopy)>
@@ -391,7 +391,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            textAlign="left"
+            textAlign="center"
           >
             Alt
           </Styled(BodyCopy)>
@@ -404,7 +404,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
 
 exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 <div
-  className=" scroll-comp-wrapper   wrapped-button-text"
+  className=" scroll-button-list-wrapper   wrapped-button-text"
 >
   <Styled(Anchor)
     className="scroll-button"
@@ -507,7 +507,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 
 exports[`ButtonList component renders correctly with props for stacked CTA buttons 1`] = `
 <div
-  className=" stack-comp-wrapper  wrapped-button-text"
+  className=" stacked-button-list-wrapper  wrapped-button-text"
 >
   <Styled(Anchor)
     className="stacked-button"

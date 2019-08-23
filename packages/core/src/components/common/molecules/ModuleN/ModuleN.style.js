@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
 
 export default css`
+  margin-bottom: 40px;
+
   .heading-wrapper {
     padding: 16px 0;
 
@@ -24,7 +26,7 @@ export default css`
   }
 
   .promo-link {
-    color: white;
+    color: ${props => props.theme.colorPalette.white};
   }
 
   .moduleN-heading-wrapper {

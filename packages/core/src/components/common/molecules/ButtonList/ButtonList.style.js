@@ -41,7 +41,7 @@ export default css`
     flex-wrap: wrap;
     width: 100%;
   }
-  &.link-comp-wrapper {
+  &.link-button-list-wrapper {
     justify-content: center;
     flex-wrap: nowrap;
   }
@@ -69,11 +69,11 @@ export default css`
     white-space: nowrap;
   }
 
-  .scroll-button:first-of-type {
+  .scroll-button:nth-child(1) {
     margin-left: 16px;
   }
 
-  &.no-scrollable-cta .scroll-button:first-of-type {
+  &.no-scrollable-cta .scroll-button:nth-child(1) {
     margin-left: 0;
   }
 
@@ -81,10 +81,6 @@ export default css`
     display: inline-block;
     margin: 0 19px;
     min-width: 70px;
-  }
-
-  .img-wrapper > div {
-    text-align: center;
   }
 
   .image-cta {
@@ -98,7 +94,7 @@ export default css`
     text-align: center;
   }
 
-  &.scroll-comp-wrapper {
+  &.scroll-button-list-wrapper {
     overflow-x: scroll;
     flex-wrap: nowrap;
     scrollbar-width: none;
@@ -119,7 +115,7 @@ export default css`
     }
   }
 
-  &.scroll-comp-wrapper.no-scrollable-cta {
+  &.scroll-button-list-wrapper.no-scrollable-cta {
     justify-content: center;
   }
 
@@ -139,12 +135,12 @@ export default css`
       :first-child {
         margin-left: 0;
       }
+    }
 
-      button {
-        width: 140px;
-        white-space: nowrap;
-        padding: 12px;
-      }
+    .stacked-button button {
+      width: 140px;
+      white-space: nowrap;
+      padding: 12px;
     }
 
     .scroll-button {
@@ -160,7 +156,7 @@ export default css`
       }
     }
 
-    .scroll-button:first-of-type {
+    .scroll-button:nth-child(1) {
       margin-left: 0;
     }
 
@@ -174,7 +170,7 @@ export default css`
       margin: 0 26px;
     }
 
-    &.scroll-comp-wrapper {
+    &.scroll-button-list-wrapper {
       flex-wrap: nowrap;
     }
 
@@ -192,8 +188,8 @@ export default css`
       height: 100%;
     }
 
-    &.scroll-comp-wrapper,
-    &.stack-comp-wrapper {
+    &.scroll-button-list-wrapper,
+    &.stacked-button-list-wrapper {
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
@@ -240,8 +236,8 @@ export default css`
       width: auto;
     }
 
-    &.stack-comp-wrapper,
-    &.scroll-comp-wrapper {
+    &.stacked-button-list-wrapper,
+    &.scroll-button-list-wrapper {
       justify-content: center;
       display: flex;
       flex-wrap: nowrap;
@@ -251,8 +247,8 @@ export default css`
       font-size: 14px;
     }
 
-    &.stack-comp-wrapper .stacked-button,
-    &.scroll-comp-wrapper .scroll-button {
+    &.stacked-button-list-wrapper .stacked-button,
+    &.scroll-button-list-wrapper .scroll-button {
       button {
         width: 210px;
       }
