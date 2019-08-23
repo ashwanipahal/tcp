@@ -1,12 +1,5 @@
 import { fromJS } from 'immutable';
-
-export const CHECKOUT_STAGES = fromJS({
-  PICKUP: 'pickup',
-  SHIPPING: 'shipping',
-  BILLING: 'billing',
-  REVIEW: 'review',
-  CONFIRMATION: 'confirmation',
-});
+import CheckoutConstants from '../Checkout.constants';
 
 const initialState = fromJS({
   values: {
@@ -35,7 +28,7 @@ const initialState = fromJS({
     internationalUrl: null,
   },
   uiFlags: {
-    stage: 'shipping',
+    stage: CheckoutConstants.CHECKOUT_STAGES.SHIPPING,
     stageChangeCount: 0,
     isGiftOptionsEnabled: true,
     isPLCCPaymentEnabled: false,

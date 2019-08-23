@@ -1,35 +1,33 @@
-import { SubmissionError } from 'redux-form'; // ES6
+/* eslint-disable extra-rules/no-commented-out-code */
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { getFormattedError, getDynamicCodeErrorMessage } from '../../../utils/errorMessage.util';
-import { constructCouponStructure, getCurrentOrderFormatter } from './CartItemTile';
+import { getCurrentOrderFormatter } from './CartItemTile';
 
 export const getGiftWrappingOptions = () => {
-  console.log('getGiftWrappingOptions');
   const payload = {
     webService: endpoints.giftOptionsCmd,
   };
 
-  return executeStatefulAPICall(payload)
-    .then(res => {
-      // if (responseContainsErrors(res)) {
-      //   throw new ServiceResponseError(res);
-      // }
-      //     let filteredRes = [];
-      // // eslint-disable-next-line array-callback-return
-      //     Object.keys(res.body.giftOptions).map((index) => {
-      //       filteredRes.push({
-      //         id: res.body.giftOptions[index].catEntryId,
-      //         displayName: res.body.giftOptions[index].name.split(':')[0],
-      //         price: flatCurrencyToCents(res.body.giftOptions[index].price),
-      //         shortDescription: res.body.giftOptions[index].longDescription
-      //       });
-      //     });
-      //     return filteredRes;
-    })
-    .catch(err => {
-      // throw getFormattedError(err);
-    });
+  return executeStatefulAPICall(payload);
+  // .then(res => {
+  // if (responseContainsErrors(res)) {
+  //   throw new ServiceResponseError(res);
+  // }
+  //     let filteredRes = [];
+  //
+  //     Object.keys(res.body.giftOptions).map((index) => {
+  //       filteredRes.push({
+  //         id: res.body.giftOptions[index].catEntryId,
+  //         displayName: res.body.giftOptions[index].name.split(':')[0],
+  //         price: flatCurrencyToCents(res.body.giftOptions[index].price),
+  //         shortDescription: res.body.giftOptions[index].longDescription
+  //       });
+  //     });
+  //     return filteredRes;
+  // })
+  // .catch(err => {
+  //   // throw getFormattedError(err);
+  // });
 };
 
 export const getCurrentOrderAndCouponsDetails = (
@@ -40,7 +38,6 @@ export const getCurrentOrderAndCouponsDetails = (
   recalcRewards,
   isLoggedIn
 ) => {
-  console.log('getCurrentOrderAndCouponsDetails');
   // isLoggedIn = false;
   const payload = {
     header: {
@@ -57,33 +54,32 @@ export const getCurrentOrderAndCouponsDetails = (
     webService: endpoints.fullDetails,
   };
 
-  return executeStatefulAPICall(payload)
-    .then(res => {
-      // if (this.apiHelper.responseContainsErrors(res)) {
-      //   throw new ServiceResponseError(res);
-      // }
+  return executeStatefulAPICall(payload).then(res => {
+    // if (this.apiHelper.responseContainsErrors(res)) {
+    //   throw new ServiceResponseError(res);
+    // }
 
-      //If recalculate is true in the header of the request and the response is success,
-      //Set the time when the recalculated order points have been updated.
-      // if(res.req && res.req.header && res.req.header.recalculate) {
-      //   setBrierleyOrderPointsTimeCache();
-      // }
+    // If recalculate is true in the header of the request and the response is success,
+    // Set the time when the recalculated order points have been updated.
+    // if(res.req && res.req.header && res.req.header.recalculate) {
+    //   setBrierleyOrderPointsTimeCache();
+    // }
 
-      const orderDetailsResponse =
-        res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
+    const orderDetailsResponse =
+      res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
 
-      return {
-        coupons: res.body.coupons,
-        orderDetails: getCurrentOrderFormatter(
-          orderDetailsResponse,
-          excludeCartItems,
-          imageGenerator
-        ),
-      };
-    })
-    .catch(err => {
-      // throw this.apiHelper.getFormattedError(err);
-    });
+    return {
+      coupons: res.body.coupons,
+      orderDetails: getCurrentOrderFormatter(
+        orderDetailsResponse,
+        excludeCartItems,
+        imageGenerator
+      ),
+    };
+  });
+  // .catch(err => {
+  //   // throw this.apiHelper.getFormattedError(err);
+  // });
 };
 
 export default {

@@ -1,7 +1,4 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-/* eslint-disable no-else-return */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable complexity */
 
 import {
   getSetCurrentOrderIdActn,

@@ -49,7 +49,7 @@ function getUserEmail(state) {
 
 // function getShippingDestinationValues() {
 // let {emailAddress} = state.Checkout.values.shipping;
-// const {method, ...result}  =  state.Checkout.values.shipping  // eslint-disable-line no-unused-vars
+// const {method, ...result}  =  state.Checkout.values.shipping
 //  For shipping address when user logged-in, override email address that of User.
 //  When user is guest, keep the address he specified in shipping section.
 // emailAddress = getUserEmail(state) || emailAddress;
