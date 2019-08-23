@@ -1,5 +1,4 @@
 const getIndex = data => {
-  console.log('data', data);
   return data && data.some(category => !!category.url) ? data.length : 0;
 };
 
