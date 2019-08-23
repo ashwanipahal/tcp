@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import HeaderPromo from '../HeaderPromo/HeaderPromo';
+import { getCartItemCount } from '../../../../utils/utils';
 import {
   Container,
   MessageContainer,
@@ -51,7 +52,7 @@ class Header extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isDownIcon: false,
-      cartVal: 0,
+      cartVal: getCartItemCount(),
     };
   }
 

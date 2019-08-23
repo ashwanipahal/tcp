@@ -1,4 +1,6 @@
 import moment from 'moment';
+import CookieManager from 'react-native-cookies';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   setValueInAsyncStorage,
@@ -11,6 +13,7 @@ import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 
 let brandName = APP_TYPE.TCP;
 const MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
+export const CART_ITEM_COUNTER = 'cartItemsCount';
 
 // constants for last splash animation
 export const AppAnimationConfig = {
@@ -146,3 +149,19 @@ export const shouldAnimateLogo = async () => {
 export default {
   getIcon,
 };
+
+/**
+ * This function reads cookie for mobile app
+ */
+export const readCookieMobileApp = () => {
+  const apiConfigObj = getAPIConfig();
+  const res = CookieManager.get(apiConfigObj.domain);
+  return res.CART_ITEM_COUNTER;
+};
+
+/**
+ * This function return cart item count
+ */
+export function getCartItemCount() {
+  return parseInt(readCookieMobileApp() || 0, 10);
+}
