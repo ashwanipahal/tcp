@@ -1,16 +1,23 @@
 import { call, put, putResolve, takeLatest } from 'redux-saga/effects';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
-import { loadLayoutData, loadLabelsData, loadModulesData, setAPIConfig } from '../actions';
+import {
+  loadLayoutData,
+  loadLabelsData,
+  loadModulesData,
+  setAPIConfig,
+  setDeviceInfo,
+} from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS from '../constants';
 
-function* bootstrap({ payload: { pageInfo = { name: 'homepage' }, apiConfig } }) {
+function* bootstrap({ payload: { pageInfo = { name: 'homepage' }, apiConfig, deviceType } }) {
   const pagesList = [pageInfo.name];
   try {
     // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
     yield putResolve(setAPIConfig(apiConfig));
+    yield putResolve(setDeviceInfo({ deviceType }));
     const result = yield call(bootstrapAbstractor, pagesList);
     yield put(loadLayoutData(result[pageInfo.name].items[0].layout, pageInfo.name));
     yield put(loadLabelsData(result.labels));

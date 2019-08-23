@@ -69,7 +69,7 @@ export class App extends React.PureComponent {
   switchBrand = appType => {
     resetApiConfig();
     updateBrandName(appType);
-    const apiConfig = switchAPIConfig();
+    const apiConfig = switchAPIConfig(env);
     this.setState({ apiConfig });
   };
 
