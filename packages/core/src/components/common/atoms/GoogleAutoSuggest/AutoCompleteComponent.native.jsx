@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { getAPIConfig } from '@tcp/core/src/utils';
+// import { getAPIConfig } from '@tcp/core/src/utils';
 import {
   StyledLabel,
   textInput,
@@ -11,17 +11,24 @@ import {
   separator,
   poweredContainer,
   Container,
+  item,
+  container,
 } from './AutoCompleteComponent.native.style';
 
 export const GooglePlacesInput = props => {
-  const { headerTitle } = props;
+  const { headerTitle, componentRestrictions } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
     setFocussed(true);
   };
-  const apiConfigObj = getAPIConfig();
+  const onBlur = () => {
+    setFocussed(false);
+  };
+  // const apiConfigObj = getAPIConfig();
   // eslint-disable-next-line
-  const { map_api_key } = apiConfigObj;
+  const map_api_key = 'AIzaSyAd-jljPEQ6kgrLRJuN-ENKypW9K6sbQgc';
+  // const { map_api_key } = apiConfigObj;
+
   return (
     <Container>
       <StyledLabel isFocused={focussed}>{headerTitle}</StyledLabel>
@@ -35,6 +42,7 @@ export const GooglePlacesInput = props => {
         fetchDetails
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
+          setFocussed(true);
           // 'details' is provided when fetchDetails = true
           return [data, details];
         }}
@@ -43,10 +51,11 @@ export const GooglePlacesInput = props => {
           key: map_api_key,
           language: 'en', // language of the results
           types: '(cities)', // default: 'geocode'
-          components: 'country:us',
+          components: `country:${componentRestrictions.country[0]}`,
         }}
         textInputProps={{
           onFocus,
+          onBlur,
         }}
         styles={{
           textInputContainer,
@@ -55,13 +64,10 @@ export const GooglePlacesInput = props => {
           listView,
           separator,
           poweredContainer,
+          row: item,
+          container,
         }}
         nearbyPlacesAPI="GooglePlacesSearch"
-        GoogleReverseGeocodingQuery={{}}
-        GooglePlacesSearchQuery={{
-          rankby: 'distance',
-        }}
-        filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']}
         debounce={200} // debounce the requests in ms.
       />
     </Container>
@@ -70,10 +76,16 @@ export const GooglePlacesInput = props => {
 
 GooglePlacesInput.propTypes = {
   headerTitle: PropTypes.string,
+  componentRestrictions: PropTypes.shape({
+    country: PropTypes.shape([]),
+  }),
 };
 
 GooglePlacesInput.defaultProps = {
   headerTitle: 'Address Line',
+  componentRestrictions: {
+    country: [],
+  },
 };
 
 export default GooglePlacesInput;

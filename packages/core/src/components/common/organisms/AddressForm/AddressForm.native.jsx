@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
 import { PropTypes } from 'prop-types';
-// import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import TextBox from '../../atoms/TextBox';
 import DropDown from '../../atoms/DropDown/views/DropDown.native';
 import InputCheckbox from '../../atoms/InputCheckbox';
@@ -15,8 +15,6 @@ import {
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
 import {
-  AddAddressButton,
-  CancelButton,
   SaveButtonWrapper,
   CancelButtonWrapper,
   dropDownStyle,
@@ -28,6 +26,8 @@ import {
   SetDefaultShippingWrapper,
   StyledLabel,
   AddAddressWrapper,
+  GooglePlaceInputWrapper,
+  AddressSecondWrapper,
 } from './AddressForm.native.style';
 
 export class AddressForm extends React.PureComponent<Props, State> {
@@ -35,7 +35,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
     super(props);
     this.state = {
       country: 'US',
-      dropDownItem: UScountriesStatesTable[0].displayName,
+      dropDownItem: UScountriesStatesTable[0].fullName,
     };
   }
 
@@ -68,7 +68,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
       submitAddressFormAction,
       onCancel,
     } = this.props;
-    const { country, dropDownItem } = this.state;
+    const { dropDownItem, country } = this.state;
 
     return (
       <AddAddressWrapper>
@@ -88,21 +88,27 @@ export class AddressForm extends React.PureComponent<Props, State> {
           component={TextBox}
           dataLocator="addnewaddress-lastname"
         />
-        {/* <Field
-          id="addressLine1"
-          name="addressLine1"
-          headerTitle={addressFormLabels.addressLine1}
-          component={GooglePlacesInput}
-          dataLocator="addnewaddress-addressl1"
-        /> */}
 
-        <Field
-          id="addressLine2"
-          name="addressLine2"
-          label={addressFormLabels.addressLine2}
-          component={TextBox}
-          dataLocator="addnewaddress-addressl2"
-        />
+        <GooglePlaceInputWrapper>
+          <Field
+            id="addressLine1"
+            name="addressLine1"
+            headerTitle={addressFormLabels.addressLine1}
+            component={GooglePlacesInput}
+            dataLocator="addnewaddress-addressl1"
+            componentRestrictions={Object.assign({}, { country: [country] })}
+          />
+        </GooglePlaceInputWrapper>
+
+        <AddressSecondWrapper>
+          <Field
+            id="addressLine2"
+            name="addressLine2"
+            label={addressFormLabels.addressLine2}
+            component={TextBox}
+            dataLocator="addnewaddress-addressl2"
+          />
+        </AddressSecondWrapper>
 
         <Field
           id="city"
@@ -134,8 +140,6 @@ export class AddressForm extends React.PureComponent<Props, State> {
 
           <InputFieldHalf>
             <Field
-              id="zipCode"
-              name="zipCode"
               label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
               maxLength={country === 'CA' ? 6 : 5}
               component={TextBox}
@@ -148,7 +152,11 @@ export class AddressForm extends React.PureComponent<Props, State> {
           id="country"
           name="country"
           component={DropDown}
-          selectedValue={country}
+          selectedValue={
+            country === 'US'
+              ? countriesOptionsMap[0].displayName
+              : countriesOptionsMap[1].displayName
+          }
           data={countriesOptionsMap}
           dataLocator="addnewaddress-country"
           onValueChange={itemValue => {
@@ -185,11 +193,11 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Button
             fill="BLUE"
             type="submit"
+            color="white"
             disabled={invalid}
             onPress={handleSubmit(submitAddressFormAction)}
             buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
-            style={AddAddressButton}
           />
         </SaveButtonWrapper>
 
@@ -199,7 +207,6 @@ export class AddressForm extends React.PureComponent<Props, State> {
             onPress={onCancel}
             buttonVariation="variable-width"
             text={addressFormLabels.cancel}
-            style={CancelButton}
           />
         </CancelButtonWrapper>
       </AddAddressWrapper>

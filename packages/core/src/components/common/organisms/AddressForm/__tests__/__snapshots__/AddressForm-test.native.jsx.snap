@@ -94,51 +94,69 @@ exports[`AddressForm component should renders correctly 1`] = `
     label=""
     name="lastName"
   />
-  <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "ariaLabel": "input",
-          "dataLocator": "input-field",
-          "enableSuccessCheck": false,
-          "id": "input",
-          "keyboardType": "default",
-          "label": "input",
-          "meta": Object {
-            "error": "",
-            "touched": "",
-          },
-          "secureTextEntry": false,
-          "showErrorIcon": true,
-          "type": "text",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(TextBox)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  ",
-            [Function],
-            ";
-",
-            ";
-  ",
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            "US",
           ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
+        }
       }
-    }
-    dataLocator="addnewaddress-addressl2"
-    id="addressLine2"
-    label=""
-    name="addressLine2"
-  />
+      dataLocator="addnewaddress-addressl1"
+      headerTitle=""
+      id="addressLine1"
+      name="addressLine1"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="addnewaddress-addressl2"
+      id="addressLine2"
+      label=""
+      name="addressLine2"
+    />
+  </Styled(View)>
   <Field
     component={
       Object {
@@ -549,13 +567,14 @@ exports[`AddressForm component should renders correctly 1`] = `
         id="state"
         itemStyle={
           Object {
+            "color": "black",
             "height": 41,
             "paddingLeft": 6,
           }
         }
         name="state"
         onValueChange={[Function]}
-        selectedValue="AL"
+        selectedValue="Alabama"
         variation="secondary"
       />
     </Styled(View)>
@@ -602,10 +621,8 @@ exports[`AddressForm component should renders correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-zipcode"
-        id="zipCode"
         label=""
         maxLength={5}
-        name="zipCode"
       />
     </Styled(View)>
   </Styled(View)>
@@ -670,13 +687,14 @@ exports[`AddressForm component should renders correctly 1`] = `
     id="country"
     itemStyle={
       Object {
+        "color": "black",
         "height": 41,
         "paddingLeft": 6,
       }
     }
     name="country"
     onValueChange={[Function]}
-    selectedValue="US"
+    selectedValue="United States"
     variation="secondary"
   />
   <Styled(View)>
@@ -740,20 +758,13 @@ exports[`AddressForm component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
+      color="white"
       customStyle={Object {}}
       disableButton={false}
       disabled={false}
       fill="BLUE"
       fullWidth=""
       locator=""
-      style={
-        Object {
-          "color": "white",
-          "fontWeight": "normal",
-          "marginTop": 48,
-          "opacity": 0.5,
-        }
-      }
       text=""
       type="submit"
       url=""
@@ -768,13 +779,6 @@ exports[`AddressForm component should renders correctly 1`] = `
       fullWidth=""
       locator=""
       onPress={[Function]}
-      style={
-        Object {
-          "color": "function (props) {return props.theme.colorPalette.black;}",
-          "fontWeight": "normal",
-          "opacity": 0.5,
-        }
-      }
       text=""
       url=""
     />
