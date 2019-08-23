@@ -58,7 +58,7 @@ const mapStateToProps = state => {
     defaultStore: getDefaultStore(state),
     successMessage: getSuccess(state),
     UserFullName: getUserFullName(state),
-    UserEmail: getUserEmail(state) && getUserEmail(state).toLowerCase(),
+    UserEmail: getUserEmail(state),
     UserPhoneNumber: getUserPhoneNumber(state),
     airMiles: getAirmilesDetails(state),
     MyPlaceNumber: getMyPlaceNumber(state),

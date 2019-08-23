@@ -48,7 +48,7 @@ export const getUserFullName = createSelector(
 
 export const getUserEmail = createSelector(
   getPersonalDataState,
-  state => state && state.getIn(['contactInfo', 'emailAddress'])
+  state => state && state.getIn(['contactInfo', 'emailAddress']).toLowerCase()
 );
 
 export const getUserPhoneNumber = createSelector(
@@ -134,6 +134,7 @@ export const getProfileInfoTileData = createSelector(
           state: addressTemp.get('state') || '',
           zipCode: addressTemp.get('zipCode'),
           country: addressTemp.get('country'),
+          isComplete: mailingAddress.get('isComplete') || false,
         }
       : null;
     return {

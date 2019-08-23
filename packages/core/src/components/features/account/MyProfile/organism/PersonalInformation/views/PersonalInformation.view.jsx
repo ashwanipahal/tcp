@@ -16,6 +16,11 @@ const PersonalInformation = ({
   MyPlaceNumber,
 }) => {
   const { address } = ProfileInfoTile;
+
+  console.log('tertsing--------------------');
+  console.log(ProfileInfoTile);
+  console.log('tertsing--------------------');
+
   return (
     <>
       <MyProfileTile
@@ -33,7 +38,7 @@ const PersonalInformation = ({
           MyPlaceNumber={MyPlaceNumber}
         />
       </MyProfileTile>
-      {address && (
+      {address && address.isComplete && (
         <MyProfileTile
           title={labels.lbl_profile_mailing_address}
           ctaTitle={labels.lbl_profile_edit_mailing_info}
