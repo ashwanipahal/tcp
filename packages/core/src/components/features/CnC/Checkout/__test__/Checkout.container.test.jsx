@@ -6,21 +6,21 @@ import CheckoutPage from '../views/CheckoutPage.view';
 describe('CheckoutPage Container', () => {
   const router = {
     query: {
-      section: ''
+      section: '',
     },
   };
 
   const props = {
     router,
-    initialValues:{},
+    initialValues: {},
     onEditModeChange: true,
     isSmsUpdatesEnabled: true,
-    currentPhoneNumber: "",
+    currentPhoneNumber: '',
     isGuest: true,
     isMobile: false,
     isExpressCheckout: false,
-    activeStage: "shipping",
-    activeStep: "shipping",
+    activeStage: 'shipping',
+    activeStep: 'shipping',
     isUsSite: false,
     initCheckout: jest.fn(),
   };
