@@ -73,6 +73,11 @@ export const getLoadedProductsCount = createSelector(
   }
 );
 
+export const getLongDescription = createSelector(
+  getProductListingState,
+  ProductListing => ProductListing && ProductListing.get('currentListingDescription')
+);
+
 export const getUnbxdId = createSelector(
   getProductListingState,
   products => products && products.get('unbxdId')

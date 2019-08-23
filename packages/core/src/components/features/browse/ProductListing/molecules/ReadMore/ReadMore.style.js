@@ -6,7 +6,7 @@ export default css`
     text-align: left;
 
     p {
-      margin-bottom: 10px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
 
     a {

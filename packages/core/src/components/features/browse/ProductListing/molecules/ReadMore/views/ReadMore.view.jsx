@@ -1,22 +1,17 @@
 import React from 'react';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import style from '../ReadMore.style';
-import { getLocator } from '../../../../../../../utils';
-import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { PropTypes } from 'prop-types';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLocator } from '../../../../../../../utils';
+import style from '../ReadMore.style';
 
-class ReadMore extends React.Component {
-  static propTypes = {
-    /** Description for the category */
-    description: PropTypes.string.isRequired,
-  };
+const ReadMore = props => {
+  const { description, className, labels } = props;
 
-  render() {
-    const { description, className, labels } = this.props;
-
-    return (
-      <BodyCopy component="div" className={className}>
+  return (
+    <BodyCopy component="div" className={className}>
+      <label htmlFor="categoryDescription" className="read-more-trigger">
         <input type="checkbox" className="read-more-state" id="categoryDescription" />
         <BodyCopy
           className="body-copy"
@@ -30,7 +25,7 @@ class ReadMore extends React.Component {
           data-locator={getLocator('plp_seo_module')}
         />
         {description && description.includes('read-more-target') && (
-          <label htmlFor="categoryDescription" className="read-more-trigger">
+          <React.Fragment>
             <BodyCopy
               className="read-more"
               component="p"
@@ -51,12 +46,24 @@ class ReadMore extends React.Component {
             >
               {labels.lbl_read_less}
             </BodyCopy>
-          </label>
+          </React.Fragment>
         )}
-      </BodyCopy>
-    );
-  }
-}
+      </label>
+    </BodyCopy>
+  );
+};
 
-export default errorBoundary(withStyles(ReadMore, style));
+ReadMore.propTypes = {
+  description: PropTypes.string,
+  className: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+};
+
+ReadMore.defaultProps = {
+  className: '',
+  description: '',
+  labels: {},
+};
+
+export default withStyles(errorBoundary(ReadMore), style);
 export { ReadMore as ReadMoreVanilla };

@@ -12,34 +12,39 @@ exports[`ReadMore component Read More component renders correctly with props 1`]
   lineHeight="normal"
   textAlign="left"
 >
-  <input
-    className="read-more-state"
-    id="categoryDescription"
-    type="checkbox"
-  />
-  <Styled(BodyCopy)
-    className="body-copy"
-    color="text.primary"
-    component="div"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Check out all of our girls school dresses, jumpers and more:",
+  <label
+    className="read-more-trigger"
+    htmlFor="categoryDescription"
+  >
+    <input
+      className="read-more-state"
+      id="categoryDescription"
+      type="checkbox"
+    />
+    <Styled(BodyCopy)
+      className="body-copy"
+      color="text.primary"
+      component="div"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Check out all of our girls school dresses, jumpers and more:",
+        }
       }
-    }
-    data-locator="plp_seo_module"
-    fontFamily="secondary"
-    fontSize="fs14"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="center"
-  />
+      data-locator="plp_seo_module"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+  </label>
 </Styled(BodyCopy)>
 `;
 
 exports[`ReadMore component renders correctly without props 1`] = `
 <Styled(BodyCopy)
-  className={null}
+  className=""
   color="text.primary"
   component="div"
   fontFamily="primary"
@@ -49,27 +54,32 @@ exports[`ReadMore component renders correctly without props 1`] = `
   lineHeight="normal"
   textAlign="left"
 >
-  <input
-    className="read-more-state"
-    id="categoryDescription"
-    type="checkbox"
-  />
-  <Styled(BodyCopy)
-    className="body-copy"
-    color="text.primary"
-    component="div"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
+  <label
+    className="read-more-trigger"
+    htmlFor="categoryDescription"
+  >
+    <input
+      className="read-more-state"
+      id="categoryDescription"
+      type="checkbox"
+    />
+    <Styled(BodyCopy)
+      className="body-copy"
+      color="text.primary"
+      component="div"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
       }
-    }
-    data-locator="plp_seo_module"
-    fontFamily="secondary"
-    fontSize="fs14"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="center"
-  />
+      data-locator="plp_seo_module"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+  </label>
 </Styled(BodyCopy)>
 `;
