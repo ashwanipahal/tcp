@@ -8,6 +8,7 @@ import {
   getSmsSignUpLabels,
   getSelectedShipmentId,
   getAddressFields,
+  getAddressPhoneNo,
 } from './ShippingPage.selectors';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
@@ -18,6 +19,7 @@ const ShippingPage = ({
   smsSignUpLabels,
   selectedShipmentId,
   address,
+  addressPhoneNumber,
 }) => {
   return (
     <ShippingPageView
@@ -27,6 +29,7 @@ const ShippingPage = ({
       smsSignUpLabels={smsSignUpLabels}
       selectedShipmentId={selectedShipmentId}
       address={address}
+      addressPhoneNo={addressPhoneNumber}
     />
   );
 };
@@ -39,6 +42,7 @@ export const mapStateToProps = state => {
     smsSignUpLabels: getSmsSignUpLabels(state),
     selectedShipmentId: getSelectedShipmentId(state),
     address: getAddressFields(state),
+    addressPhoneNumber: getAddressPhoneNo(state),
   };
 };
 
@@ -49,12 +53,14 @@ ShippingPage.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
   address: PropTypes.shape({}),
+  addressPhoneNumber: PropTypes.number,
 };
 
 ShippingPage.defaultProps = {
   isOrderUpdateChecked: false,
   selectedShipmentId: null,
   address: null,
+  addressPhoneNumber: null,
 };
 
 export default connect(mapStateToProps)(ShippingPage);

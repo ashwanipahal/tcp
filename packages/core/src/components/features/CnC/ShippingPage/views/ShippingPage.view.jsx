@@ -12,10 +12,12 @@ export default class ShippingPage extends React.PureComponent {
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
     selectedShipmentId: PropTypes.string,
+    addressPhoneNo: PropTypes.number,
   };
 
   static defaultProps = {
     isOrderUpdateChecked: false,
+    addressPhoneNo: null,
     address: null,
     selectedShipmentId: null,
   };
@@ -47,6 +49,7 @@ export default class ShippingPage extends React.PureComponent {
       isOrderUpdateChecked,
       shippingLabels,
       smsSignUpLabels,
+      addressPhoneNo,
       selectedShipmentId,
     } = this.props;
     return (
@@ -62,6 +65,7 @@ export default class ShippingPage extends React.PureComponent {
           }}
           selectedShipmentId={selectedShipmentId}
           checkPOBoxAddress={this.checkPOBoxAddress}
+          addressPhoneNo={addressPhoneNo}
         />
       </>
     );

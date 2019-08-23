@@ -20,6 +20,7 @@ const ShippingForm = ({
   smsSignUpLabels,
   selectedShipmentId,
   checkPOBoxAddress,
+  addressPhoneNo,
 }) => {
   return (
     <>
@@ -44,6 +45,7 @@ const ShippingForm = ({
               variation="secondary"
               dispatch={dispatch}
               checkPOBoxAddress={checkPOBoxAddress}
+              addressPhoneNo={addressPhoneNo}
             />
           </FormSection>
         </div>
@@ -104,6 +106,7 @@ ShippingForm.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
   checkPOBoxAddress: PropTypes.func,
+  addressPhoneNo: PropTypes.number,
 };
 
 ShippingForm.defaultProps = {
@@ -111,6 +114,7 @@ ShippingForm.defaultProps = {
   isOrderUpdateChecked: false,
   selectedShipmentId: null,
   checkPOBoxAddress: () => {},
+  addressPhoneNo: null,
 };
 
 const validateMethod = createValidateMethod({

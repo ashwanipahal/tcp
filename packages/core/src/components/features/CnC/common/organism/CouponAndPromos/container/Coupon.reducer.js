@@ -26,6 +26,8 @@ const CouponReducer = (state = initialState, action) => {
       return state
         .set('couponsAndOffers', List(action.payload))
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(COUPON_CONSTANTS.GET_COUPON_LIST_TTL));
+    case COUPON_CONSTANTS.CLEAR_COUPON_TTL:
+      return state.set(DEFAULT_REDUCER_KEY, null);
     case COUPON_CONSTANTS.HIDE_LOADER:
       return state.set('isFetching', false);
     case COUPON_CONSTANTS.SET_STATUS_COUPON:

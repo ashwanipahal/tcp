@@ -1,3 +1,5 @@
+import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
   const filterArray = arr.filter(value => {
@@ -21,6 +23,9 @@ const getBagPageLabels = state => {
         lbl_emptyBag_shopNow: shopNow,
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
+        lbl_checkoutmodal_confirmation: confirmationText,
+        lbl_checkoutmodal_backToBag: backToBag,
+        lbl_checkoutmodal_continueCheckout: continueCheckout,
       },
     },
   } = state.Labels;
@@ -34,6 +39,9 @@ const getBagPageLabels = state => {
     tagLine,
     guestUserMsg,
     helperMsg,
+    confirmationText,
+    backToBag,
+    continueCheckout,
   };
 };
 
@@ -43,6 +51,9 @@ const getTotalItems = state => {
 
 const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
+};
+const getConfirmationModalFlag = state => {
+  return state.CartPageReducer.get('showConfirmationModal');
 };
 
 const getProductsTypes = state => {
@@ -65,10 +76,29 @@ const getNeedHelpContentId = state => {
   return content && content.contentId;
 };
 
+const getFilteredItems = (state, filter) =>
+  getOrderItems(state).filter(item => filter(item.getIn(['miscInfo', 'availability'])));
+
+const getUnqualifiedItems = state => getFilteredItems(state, type => type !== AVAILABILITY.OK);
+
+const getUnqualifiedCount = state => getUnqualifiedItems(state).size;
+const getUnqualifiedItemsIds = state =>
+  getUnqualifiedItems(state).map(item => item.getIn(['itemInfo', 'itemId']));
+
+const getUnavailableCount = state =>
+  getFilteredItems(state, type => type === AVAILABILITY.UNAVAILABLE);
+
+const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
+
 export default {
   getBagPageLabels,
   getTotalItems,
   getOrderItems,
   getProductsTypes,
   getNeedHelpContentId,
+  getUnqualifiedCount,
+  getUnqualifiedItemsIds,
+  getUnavailableCount,
+  getOOSCount,
+  getConfirmationModalFlag,
 };

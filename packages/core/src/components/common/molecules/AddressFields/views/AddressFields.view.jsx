@@ -76,7 +76,7 @@ export class AddressFields extends React.PureComponent {
   };
 
   renderCountrySelector = () => {
-    const { addressFormLabels } = this.props;
+    const { addressFormLabels, formSection } = this.props;
     return (
       <>
         <Col
@@ -85,7 +85,7 @@ export class AddressFields extends React.PureComponent {
           className="country-selector"
         >
           <Field
-            id="country"
+            id={`${formSection}.country`}
             placeholder={addressFormLabels.country}
             name="country"
             component={SelectBox}
@@ -93,6 +93,7 @@ export class AddressFields extends React.PureComponent {
             onChange={this.StateCountryChange}
             dataLocator="addnewaddress-country"
             enableSuccessCheck={false}
+            disabled
           />
           <Anchor
             fontSizeVariation="small"
@@ -112,14 +113,14 @@ export class AddressFields extends React.PureComponent {
   };
 
   renderStateZipCode = () => {
-    const { variation, addressFormLabels } = this.props;
+    const { variation, addressFormLabels, formSection } = this.props;
     const { country } = this.state;
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <>
         <Col colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}>
           <Field
-            id="state"
+            id={`${formSection}.state`}
             placeholder={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
             name="state"
             component={SelectBox}
@@ -135,7 +136,7 @@ export class AddressFields extends React.PureComponent {
         >
           <Field
             placeholder={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
-            id="zipCode"
+            id={`${formSection}.zipCode`}
             name="zipCode"
             maxLength={isCA ? 6 : 5}
             component={TextBox}
@@ -149,7 +150,7 @@ export class AddressFields extends React.PureComponent {
   };
 
   renderAddressFields = () => {
-    const { variation, addressFormLabels } = this.props;
+    const { variation, addressFormLabels, formSection } = this.props;
     const { country } = this.state;
     return (
       <>
@@ -159,7 +160,7 @@ export class AddressFields extends React.PureComponent {
             colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}
           >
             <Field
-              id="addressLine1"
+              id={`${formSection}.addressLine1`}
               placeholder={addressFormLabels.addressLine1}
               component={AutoCompleteComponent}
               name="addressLine1"
@@ -175,7 +176,7 @@ export class AddressFields extends React.PureComponent {
             <Field
               placeholder={addressFormLabels.addressLine2}
               name="addressLine2"
-              id="addressLine2"
+              id={`${formSection}.addressLine2`}
               component={TextBox}
               dataLocator="addnewaddress-addressl2"
               className="address-field"
@@ -189,7 +190,7 @@ export class AddressFields extends React.PureComponent {
             colSize={{ small: 6, medium: 4, large: variation === 'primary' ? 6 : 3 }}
           >
             <Field
-              id="city"
+              id={`${formSection}.city`}
               placeholder={addressFormLabels.city}
               name="city"
               component={TextBox}
@@ -213,6 +214,7 @@ export class AddressFields extends React.PureComponent {
       className,
       addressFormLabels,
       variation,
+      formSection,
     } = this.props;
     return (
       <div className={className}>
@@ -224,7 +226,7 @@ export class AddressFields extends React.PureComponent {
             <Field
               placeholder={addressFormLabels.firstName}
               name="firstName"
-              id="firstName"
+              id={`${formSection}.firstName`}
               type="text"
               component={TextBox}
               dataLocator="addnewaddress-firstname"
@@ -236,7 +238,7 @@ export class AddressFields extends React.PureComponent {
             <Field
               placeholder={addressFormLabels.lastName}
               name="lastName"
-              id="lastName"
+              id={`${formSection}.lastName`}
               component={TextBox}
               dataLocator="addnewaddress-lastname"
               className="address-field"
@@ -249,7 +251,7 @@ export class AddressFields extends React.PureComponent {
           <Row fullBleed>
             <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
               <Field
-                id="country"
+                id={`${formSection}.country`}
                 placeholder={addressFormLabels.country}
                 name="country"
                 component={SelectBox}
@@ -265,7 +267,7 @@ export class AddressFields extends React.PureComponent {
                 <Field
                   placeholder={addressFormLabels.phoneNumber}
                   name="phoneNumber"
-                  id="phoneNumber"
+                  id={`${formSection}.phoneNumber`}
                   component={TextBox}
                   dataLocator="addnewaddress-phnumber"
                   type="tel"
@@ -297,7 +299,7 @@ export class AddressFields extends React.PureComponent {
               <Field
                 placeholder={addressFormLabels.phoneNumber}
                 name="phoneNumber"
-                id="phoneNumber"
+                id={`${formSection}.phoneNumber`}
                 component={TextBox}
                 dataLocator="addnewaddress-phnumber"
                 type="tel"
@@ -309,7 +311,7 @@ export class AddressFields extends React.PureComponent {
               <Field
                 placeholder="Email (For Order Updates)"
                 name="emailAddress"
-                id="emailAddress"
+                id={`${formSection}.emailAddress`}
                 component={TextBox}
                 dataLocator="email-address-field"
                 enableSuccessCheck={false}

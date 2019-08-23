@@ -49,7 +49,7 @@ function validateReduxCache(sagaMethod) {
     if (isCacheValid && !ignoreCacheValidity) {
       return null;
     }
-    return yield sagaMethod();
+    return yield sagaMethod(action);
   }
   return cachedSagaMethod;
 }

@@ -7,6 +7,7 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     heading=""
   />
   <Styled(AccountOverviewTileList)
+    commonLabels={Object {}}
     labels={
       Object {
         "lbl_overview_heading": "",

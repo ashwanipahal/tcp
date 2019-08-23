@@ -1,9 +1,9 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable global-require */
+/* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-// eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
-// eslint-disable-next-line import/no-unresolved
 import AsyncStorage from '@react-native-community/async-storage';
+import { getAPIConfig } from './utils';
 
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
@@ -29,7 +29,6 @@ export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
     switch (module) {
       case 'graphQL':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL'));
         break;
       default:
@@ -42,8 +41,13 @@ export const importGraphQLClientDynamically = module => {
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
-      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleX'));
+      break;
+    case 'moduleA':
+      resolve(require('../services/handler/graphQL/queries/moduleA'));
+      break;
+    case 'moduleN':
+      resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
     default:
       reject();
@@ -55,39 +59,30 @@ export const importGraphQLQueriesDynamically = query => {
   return new Promise((resolve, reject) => {
     switch (query) {
       case 'footer':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/footer'));
         break;
       case 'header':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/header'));
         break;
       case 'navigation':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/navigation'));
         break;
       case 'layout':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/layout'));
         break;
       case 'labels':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/labels'));
         break;
       case 'moduleD':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleD'));
         break;
       case 'moduleH':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleH'));
         break;
       case 'moduleK':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleK'));
         break;
       case 'moduleL':
-        // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleL'));
         break;
       default:
@@ -289,13 +284,20 @@ export const resetNavigationStack = navigation => {
 
 /**
  * function getAPIInfoFromEnv
- *
  * @param {*} apiSiteInfo
  * @param {*} envConfig
  * @param {*} appTypeSuffix
  * @returns
  */
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
+  const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
+  const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
+  console.log(
+    'unboxKey',
+    `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
+    }`
+  );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
@@ -305,6 +307,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
+    unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN`]}/${
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
+    }`,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
@@ -334,7 +339,6 @@ const getGraphQLApiFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
 /**
  * function createAPIConfigForApp
  * This method creates and returns api config for input apptype
- *
  * @param {*} envConfig
  * @param {*} appTypeSuffix
  * @returns api config for input app type
@@ -361,33 +365,70 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
 };
 
 /**
+ * getCurrentAPIConfig
+ * This method returns current api config
+ */
+const getCurrentAPIConfig = (envConfig, isTCPBrand) => {
+  if (isTCPBrand) {
+    // return tcp config
+    tcpAPIConfig = tcpAPIConfig || createAPIConfigForApp(envConfig, 'TCP');
+    currentAppAPIConfig = tcpAPIConfig;
+  } else {
+    // return gym config
+    gymAPIConfig = gymAPIConfig || createAPIConfigForApp(envConfig, 'GYM');
+    currentAppAPIConfig = gymAPIConfig;
+  }
+  return currentAppAPIConfig;
+};
+
+/**
  * createAPIConfig
- * This method creates two apiconfig - one for tcp and one for gymboree
- *
- * @param {*} envConfig
- * @param {*} appType
- * @returns api config for current app type
+ * This method returns current api config, creates new if not already created
  */
 export const createAPIConfig = (envConfig, appType) => {
-  tcpAPIConfig = createAPIConfigForApp(envConfig, 'TCP');
-  gymAPIConfig = createAPIConfigForApp(envConfig, 'GYM');
   const { RWD_APP_BRANDID_TCP: tcpBrandId } = envConfig;
-  currentAppAPIConfig = appType === tcpBrandId ? tcpAPIConfig : gymAPIConfig;
-  return currentAppAPIConfig;
+  const isTCPBrand = appType === tcpBrandId;
+  return getCurrentAPIConfig(envConfig, isTCPBrand);
 };
 
 /**
  * switchAPIConfig
  * This method switches api config on brand switch in app
- *
- * @returns current app api config
  */
-export const switchAPIConfig = () => {
+export const switchAPIConfig = envConfig => {
   // reset singleton instance of graphql client
   resetGraphQLClient();
 
   // return second api config stored in local
-  const apiConfig = currentAppAPIConfig === tcpAPIConfig ? gymAPIConfig : tcpAPIConfig;
-  currentAppAPIConfig = apiConfig;
-  return currentAppAPIConfig;
+  const isPrevConfigTCP = currentAppAPIConfig === tcpAPIConfig;
+  return getCurrentAPIConfig(envConfig, !isPrevConfigTCP);
+};
+
+export const getSiteId = () => {
+  const { siteId } = getAPIConfig();
+  return siteId;
+};
+
+export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
+  const prototype = Object.getPrototypeOf(obj);
+  // eslint-disable-next-line
+  for (let name of Object.getOwnPropertyNames(prototype)) {
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
+    const isGetter = descriptor && typeof descriptor.get === 'function';
+    // eslint-disable-next-line
+    if (isGetter) continue;
+    if (
+      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
+        ? !name.startsWith(namePrefix)
+        : name.startsWith(namePrefix)
+    ) {
+      // eslint-disable-next-line
+      obj[name] = prototype[name].bind(obj);
+    }
+  }
+};
+
+export default {
+  getSiteId,
+  bindAllClassMethodsToThis,
 };
