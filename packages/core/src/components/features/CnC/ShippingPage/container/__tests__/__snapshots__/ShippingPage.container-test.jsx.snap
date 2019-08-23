@@ -2,6 +2,7 @@
 
 exports[`Shipping Page should render correctly 1`] = `
 <ShippingPage
+  addressPhoneNo={null}
   isOrderUpdateChecked={false}
 />
 `;

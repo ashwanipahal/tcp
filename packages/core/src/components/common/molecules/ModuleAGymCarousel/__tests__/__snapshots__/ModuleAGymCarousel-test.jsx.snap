@@ -4,7 +4,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
 <div
   className=" "
 >
-  <Styled(errorBoundaryComponent)
+  <Styled(Styled(Carousel))
     carouselConfig={
       Object {
         "autoplay": true,
@@ -563,7 +563,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
       </div>
     </div>
-  </Styled(errorBoundaryComponent)>
+  </Styled(Styled(Carousel))>
   <div
     className="bottom-blue-bar"
   >

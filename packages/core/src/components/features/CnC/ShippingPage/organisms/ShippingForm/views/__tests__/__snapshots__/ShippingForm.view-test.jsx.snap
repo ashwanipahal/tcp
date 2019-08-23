@@ -38,6 +38,7 @@ exports[`Shipping Form should render correctly 1`] = `
       name="smsSignUp"
     >
       <Styled(SMSFormFields)
+        addressPhoneNo={null}
         formName="checkoutShipping"
         formSection="smsSignUp"
         isOrderUpdateChecked={false}
