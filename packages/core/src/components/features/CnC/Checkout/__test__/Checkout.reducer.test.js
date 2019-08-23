@@ -60,9 +60,9 @@ describe('Checkout Reducer', () => {
     type: 'CHECKOUT_VALUES_SET_PICKUP_ALT',
     payload: {
       values: {
-          pickUpAlternative: {},
+        pickUpAlternative: {},
       },
-    }
+    },
   };
 
   const checkoutValuesSetShipping = {
@@ -71,7 +71,7 @@ describe('Checkout Reducer', () => {
       values: {
         shipping: {},
       },
-    }
+    },
   };
 
   const checkoutOrderOptionsSetGiftWrap = {
@@ -80,34 +80,34 @@ describe('Checkout Reducer', () => {
       options: {
         giftWrapOptions: {},
       },
-    }
+    },
   };
 
   it('CHECKOUT_VALUES_SET_PICKUP', () => {
     const newState = CheckoutReducer(initialState, {
       ...checkoutValuesSetPickup,
     });
-    expect(newState.getIn(['values','pickUpContact'])).toEqual(undefined);
+    expect(newState.getIn(['values', 'pickUpContact'])).toEqual(undefined);
   });
 
   it('CHECKOUT_VALUES_SET_PICKUP_ALT', () => {
     const newState = CheckoutReducer(initialState, {
       ...checkoutValuesSetPickupAlt,
     });
-    expect(newState.getIn(['values','pickUpAlternative'])).toEqual(undefined);
+    expect(newState.getIn(['values', 'pickUpAlternative'])).toEqual(undefined);
   });
 
   it('CHECKOUT_VALUES_SET_SHIPPING', () => {
     const newState = CheckoutReducer(initialState, {
       ...checkoutValuesSetShipping,
     });
-    expect(newState.getIn(['values','shipping'])).toEqual(undefined);
+    expect(newState.getIn(['values', 'shipping'])).toEqual(undefined);
   });
 
   it('CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP', () => {
     const newState = CheckoutReducer(initialState, {
       ...checkoutOrderOptionsSetGiftWrap,
     });
-    expect(newState.getIn(['options','giftWrapOptions'])).toEqual(undefined);
+    expect(newState.getIn(['options', 'giftWrapOptions'])).toEqual(undefined);
   });
 });
