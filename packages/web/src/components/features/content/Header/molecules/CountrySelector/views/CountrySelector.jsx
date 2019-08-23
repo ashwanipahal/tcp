@@ -70,7 +70,6 @@ class CountrySelector extends React.Component {
     const { updateCountry, updateSiteId } = this.props;
     const { siteId } = this.getSelectedCountry(selectedCountry);
     const currencyCode = this.getCurrencyMap(selectedCountry);
-    console.log(currencyCode);
     this.updateCurrency(currencyCode);
     updateCountry(selectedCountry);
     updateSiteId(siteId);

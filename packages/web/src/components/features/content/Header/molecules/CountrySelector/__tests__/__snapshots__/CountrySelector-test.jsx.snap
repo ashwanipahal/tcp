@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Country Selector Component renders correctly 1`] = `
+<div
+  className="undefined countrySelector"
+>
+  <div
+    className="countrySelector__flag-icon"
+  >
+    <Styled(Image)
+      data-locator="header_country_flag"
+      height="20px"
+      onClick={[Function]}
+      src="/static/images/flags/united-states-of-america.svg"
+      width="20px"
+    />
+  </div>
+  <div>
+    <Styled(BodyCopy)
+      className="countrySelector__locale--selected countrySelector__locale"
+      color="text.primary"
+      component="span"
+      data-locator="header_language_selected"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      key="0"
+      letterSpacing="normal"
+      lineHeight="normal"
+      onClick={[Function]}
+      textAlign="left"
+    >
+      en
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="countrySelector__locale--disabled countrySelector__locale"
+      color="text.primary"
+      component="span"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      key="1"
+      letterSpacing="normal"
+      lineHeight="normal"
+      onClick={[Function]}
+      textAlign="left"
+    >
+      es
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;

@@ -150,6 +150,7 @@ class CountrySelectorModal extends React.Component {
             className="shipToForm__note-clarification"
             fontFamily="secondary"
             fontSize="fs12"
+            textAlign="center"
             data-locator={getLocator('country_selector_tnc_text')}
           >
             {labels.lbl_global_country_selector_note}
