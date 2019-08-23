@@ -9,3 +9,4 @@ export {
 } from './CartItemTile';
 
 export { applyCouponToCart, removeCouponOrPromo, getAllCoupons } from './Coupon';
+export { getGiftWrappingOptions, getCurrentOrderAndCouponsDetails } from './Checkout';

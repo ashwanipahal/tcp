@@ -9,8 +9,8 @@ import {
 
 let buttonStyle = {
   fontWeight: theme.typography.fontWeights.regular,
-  marginBottom: theme.spacing.ELEM_SPACING.LRG,
-  fontSize: theme.typography.fontSizes.fs10,
+  marginBottom: 24,
+  fontSize: 10,
   paddingRight: 5,
   paddingLeft: 5,
   paddingBottom: 5,
@@ -40,7 +40,7 @@ const BonusPointsAvailability = ({
       {bonusPoints &&
         bonusPoints.map((item, index) => {
           buttonStyle = Object.assign({}, buttonStyle, {
-            color: item.disabled ? { graySecondary } : grayPrimary,
+            color: item.disabled ? graySecondary : grayPrimary,
             paddingTop: bonusPointsLength === 1 ? 14 : 5,
           });
           return (

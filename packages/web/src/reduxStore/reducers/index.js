@@ -17,6 +17,7 @@ import AddressVerificationReducer from '@tcp/core/src/components/common/organism
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
+import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 import ProductListingReducer from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
@@ -27,6 +28,7 @@ import PointsHistoryReducer from '@tcp/core/src/components/features/account/comm
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -63,6 +65,8 @@ import {
   RESET_PASSWORD_REDUCER_KEY,
   CHANGE_PASSWORD_REDUCER_KEY,
   USER_REDUCER_KEY,
+  CHECKOUT_REDUCER_KEY,
+  DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -109,6 +113,7 @@ export default combineReducers({
   [ACCOUNT_REDUCER_KEY]: AccountReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
+  [CHECKOUT_REDUCER_KEY]: CheckoutReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [PRODUCT_LISTING_REDUCER_KEY]: ProductListingReducer,
@@ -120,5 +125,6 @@ export default combineReducers({
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [USER_REDUCER_KEY]: UserReducer,
+  [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
 });
