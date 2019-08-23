@@ -185,6 +185,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
   },
+  giftOptionsCmd: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/giftOptionsCmd',
+  },
   orderLookUp: {
     method: API_METHODS.GET,
     URI: 'v2/account/orderLookUp',

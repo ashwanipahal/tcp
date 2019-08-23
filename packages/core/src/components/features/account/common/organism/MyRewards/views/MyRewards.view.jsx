@@ -5,12 +5,25 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import styles from '../styles/MyRewards.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
+import EmptyRewards from '../../../molecule/EmptyRewards';
+import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
-const MyRewards = ({ labels, className }) => {
-  const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (0)`;
-
+const MyRewards = ({
+  labels,
+  className,
+  coupons,
+  onViewCouponDetails,
+  onApplyCouponToBag,
+  onRemove,
+  isApplyingOrRemovingCoupon,
+  isMobile,
+}) => {
+  const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
+  const isApplyingCoupon = !!coupons.find(
+    coupon => coupon.status === COUPON_STATUS.APPLYING || coupon.status === COUPON_STATUS.REMOVING
+  );
   return (
     <div className={className}>
       <Row fullBleed>
@@ -33,41 +46,39 @@ const MyRewards = ({ labels, className }) => {
         </Col>
         <Col
           colSize={{
-            small: 4,
+            small: 6,
             large: 12,
             medium: 8,
           }}
-          offsetLeft={{ large: 0, small: 1, medium: 0 }}
-        >
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="regular"
-            className="no-rewards-msg"
-            data-locator="no_rewards_msg"
-          >
-            {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG}
-          </BodyCopy>
-        </Col>
-        <Col
-          colSize={{
-            small: 6,
-            large: 2,
-            medium: 4,
+          ignoreGutter={{
+            small: true,
+            medium: true,
+            large: true,
           }}
-          offsetLeft={{ large: 4, small: 0, medium: 2 }}
-          className="shop-now-btn-wrapper"
         >
-          <Button
-            buttonVariation="fixed-width"
-            fill="BLUE"
-            color="white"
-            className="shop-now-btn"
-            data-locator="my-rewards-shop-now-btn"
-          >
-            {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW}
-          </Button>
+          {coupons.size > 0 ? (
+            <BodyCopy component="div" className="rewards-container elem-mb-XXL">
+              {coupons.map(coupon => {
+                return (
+                  <DetailedCouponTile
+                    key={coupon.id}
+                    labels={labels.common}
+                    coupon={coupon}
+                    onViewCouponDetails={onViewCouponDetails}
+                    onApplyCouponToBag={onApplyCouponToBag}
+                    onRemove={onRemove}
+                    isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
+                    isMobile={isMobile}
+                    className="elem-mb-LRG"
+                  />
+                );
+              })}
+            </BodyCopy>
+          ) : (
+            <EmptyRewards labels={labels} />
+          )}
         </Col>
+
         <Col
           colSize={{
             small: 6,
@@ -108,6 +119,12 @@ const MyRewards = ({ labels, className }) => {
 MyRewards.propTypes = {
   labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
   className: PropTypes.string,
+  coupons: PropTypes.shape([]),
+  onViewCouponDetails: PropTypes.func,
+  onApplyCouponToBag: PropTypes.func,
+  onRemove: PropTypes.func,
+  isApplyingOrRemovingCoupon: PropTypes.bool,
+  isMobile: PropTypes.bool,
 };
 
 MyRewards.defaultProps = {
@@ -121,6 +138,12 @@ MyRewards.defaultProps = {
     },
   },
   className: '',
+  coupons: [],
+  onViewCouponDetails: () => {},
+  onApplyCouponToBag: () => {},
+  onRemove: () => {},
+  isApplyingOrRemovingCoupon: false,
+  isMobile: true,
 };
 
 export default withStyles(MyRewards, styles);

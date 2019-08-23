@@ -649,7 +649,13 @@ export const getOrderDetailsData = () => {
   });
 };
 
-export const getCartData = ({ calcsEnabled, excludeCartItems, recalcRewards, isCanada }) => {
+export const getCartData = ({
+  calcsEnabled,
+  excludeCartItems,
+  recalcRewards,
+  isCanada,
+  isCheckoutFlow,
+}) => {
   const payload = {
     webService: endpoints.fullDetails,
     header: {
@@ -669,11 +675,13 @@ export const getCartData = ({ calcsEnabled, excludeCartItems, recalcRewards, isC
 
     const orderDetailsResponse =
       res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
-    return {
-      coupons:
-        res.body.coupons &&
+    const coupons = isCheckoutFlow
+      ? res.body.coupons
+      : res.body.coupons &&
         res.body.coupons.offers &&
-        constructCouponStructure(res.body.coupons.offers),
+        constructCouponStructure(res.body.coupons.offers);
+    return {
+      coupons,
       orderDetails: getCurrentOrderFormatter(orderDetailsResponse, excludeCartItems, isCanada),
     };
   });
