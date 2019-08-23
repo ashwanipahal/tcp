@@ -44,5 +44,34 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       width: 80%;
     }
+
+    .filter-row {
+      margin-bottom: 7px;
+      margin-top: 14px;
+    }
+  }
+
+  .open-filter-button {
+    background: url('/static/images/carrot-small-up.png') no-repeat;
+    background-position: 98% 18px;
+    background-color: #eeeeee;
+    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
+
+    &.open-filter-button-expanded {
+      background: url('/static/images/carrot-small-down.png') no-repeat;
+      background-position: 98% 18px;
+
+      &:hover:not([disabled]) {
+        background: url('/static/images/carrot-small-down.png') no-repeat;
+        background-position: 98% 18px;
+        background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      }
+    }
+
+    &:hover:not([disabled]) {
+      background: url(/static/images/carrot-small-up.png) no-repeat;
+      background-position: 98% 18px;
+      background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    }
   }
 `;

@@ -179,44 +179,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
     return (
       <React.Fragment>
-        <FilterModal show={show} handleClose={this.hideModal}>
+        <FilterModal show={show} handleClose={this.hideModal} classNames={classNames}>
           <div className={`${className} new-filter-and-sort-form-container`}>
-            <Row centered className="filter-row">
-              <Col
-                colSize={{
-                  small: 3,
-                  medium: 3,
-                  large: 3,
-                }}
-              >
-                <Button
-                  buttonVariation="fixed-width"
-                  type="button"
-                  className={classNames}
-                  data-locator="view_gallery_button"
-                  onClick={this.toggleFilterIcon}
-                >
-                  FILTER
-                </Button>
-              </Col>
-              <Col
-                colSize={{
-                  small: 3,
-                  medium: 3,
-                  large: 3,
-                }}
-              >
-                <Button
-                  buttonVariation="fixed-width"
-                  type="button"
-                  className="open-filter-button"
-                  data-locator="view_gallery_button"
-                >
-                  SORT
-                </Button>
-              </Col>
-            </Row>
-
             <form className="available-filters-sorting-container">
               {this.renderMobilePlpFilterForm()}
             </form>
