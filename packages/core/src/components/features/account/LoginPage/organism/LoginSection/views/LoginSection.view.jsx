@@ -67,6 +67,7 @@ class LoginSection extends React.PureComponent<Props> {
       queryParams,
       currentForm,
       variation,
+      handleContinueAsGuest,
     } = this.props;
     return (
       <Row className={className}>
@@ -97,6 +98,7 @@ class LoginSection extends React.PureComponent<Props> {
                 className="elem-mb-LRG"
                 onCreateAccountClick={this.showCreateAccountForm}
                 variation={variation}
+                handleContinueAsGuest={handleContinueAsGuest}
               />
             </React.Fragment>
           )}
@@ -141,6 +143,7 @@ LoginSection.propTypes = {
   openModal: PropTypes.func,
   queryParams: PropTypes.shape({}).isRequired,
   currentForm: PropTypes.string,
+  handleContinueAsGuest: PropTypes.func.isRequired,
 };
 
 LoginSection.defaultProps = {

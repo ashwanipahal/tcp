@@ -180,7 +180,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-firstname"
         enableSuccessCheck={false}
-        id="firstName"
+        id="address.firstName"
         name="firstName"
         type="text"
       />
@@ -353,7 +353,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-lastname"
         enableSuccessCheck={false}
-        id="lastName"
+        id="address.lastName"
         name="lastName"
       />
     </Styled(Col)>
@@ -387,7 +387,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-addressl1"
         enableSuccessCheck={false}
-        id="addressLine1"
+        id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
       />
@@ -560,7 +560,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-addressl2"
         enableSuccessCheck={false}
-        id="addressLine2"
+        id="address.addressLine2"
         name="addressLine2"
       />
     </Styled(Col)>
@@ -741,7 +741,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-city"
         enableSuccessCheck={false}
-        id="city"
+        id="address.city"
         name="city"
       />
     </Styled(Col)>
@@ -856,7 +856,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-state"
         enableSuccessCheck={false}
-        id="state"
+        id="address.state"
         name="state"
         options={
           Array [
@@ -1343,7 +1343,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-zipcode"
         enableSuccessCheck={false}
-        id="zipCode"
+        id="address.zipCode"
         maxLength={5}
         name="zipCode"
       />
@@ -1468,7 +1468,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-country"
         enableSuccessCheck={false}
-        id="country"
+        id="address.country"
         name="country"
         onChange={[Function]}
         options={
@@ -1653,7 +1653,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         dataLocator="addnewaddress-phnumber"
         enableSuccessCheck={false}
-        id="phoneNumber"
+        id="address.phoneNumber"
         name="phoneNumber"
         type="tel"
       />
@@ -1967,7 +1967,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-firstname"
         enableSuccessCheck={false}
-        id="firstName"
+        id="address.firstName"
         name="firstName"
         type="text"
       />
@@ -2140,7 +2140,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-lastname"
         enableSuccessCheck={false}
-        id="lastName"
+        id="address.lastName"
         name="lastName"
       />
     </Styled(Col)>
@@ -2174,7 +2174,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-addressl1"
         enableSuccessCheck={false}
-        id="addressLine1"
+        id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
       />
@@ -2347,7 +2347,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-addressl2"
         enableSuccessCheck={false}
-        id="addressLine2"
+        id="address.addressLine2"
         name="addressLine2"
       />
     </Styled(Col)>
@@ -2528,7 +2528,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-city"
         enableSuccessCheck={false}
-        id="city"
+        id="address.city"
         name="city"
       />
     </Styled(Col)>
@@ -2643,7 +2643,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-state"
         enableSuccessCheck={false}
-        id="state"
+        id="address.state"
         name="state"
         options={
           Array [
@@ -3130,7 +3130,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-zipcode"
         enableSuccessCheck={false}
-        id="zipCode"
+        id="address.zipCode"
         maxLength={5}
         name="zipCode"
       />
@@ -3255,7 +3255,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-country"
         enableSuccessCheck={false}
-        id="country"
+        id="address.country"
         name="country"
         onChange={[Function]}
         options={
@@ -3456,7 +3456,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-firstname"
         enableSuccessCheck={false}
-        id="firstName"
+        id="address.firstName"
         name="firstName"
         type="text"
       />
@@ -3629,7 +3629,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-lastname"
         enableSuccessCheck={false}
-        id="lastName"
+        id="address.lastName"
         name="lastName"
       />
     </Styled(Col)>
@@ -3663,7 +3663,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-addressl1"
         enableSuccessCheck={false}
-        id="addressLine1"
+        id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
       />
@@ -3836,7 +3836,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-addressl2"
         enableSuccessCheck={false}
-        id="addressLine2"
+        id="address.addressLine2"
         name="addressLine2"
       />
     </Styled(Col)>
@@ -4017,7 +4017,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-city"
         enableSuccessCheck={false}
-        id="city"
+        id="address.city"
         name="city"
       />
     </Styled(Col)>
@@ -4132,7 +4132,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-state"
         enableSuccessCheck={false}
-        id="state"
+        id="address.state"
         name="state"
         options={
           Array [
@@ -4619,7 +4619,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-zipcode"
         enableSuccessCheck={false}
-        id="zipCode"
+        id="address.zipCode"
         maxLength={5}
         name="zipCode"
       />
@@ -4744,7 +4744,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-country"
         enableSuccessCheck={false}
-        id="country"
+        id="address.country"
         name="country"
         onChange={[Function]}
         options={
@@ -4945,7 +4945,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-firstname"
         enableSuccessCheck={false}
-        id="firstName"
+        id="address.firstName"
         name="firstName"
         type="text"
       />
@@ -5118,7 +5118,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-lastname"
         enableSuccessCheck={false}
-        id="lastName"
+        id="address.lastName"
         name="lastName"
       />
     </Styled(Col)>
@@ -5152,7 +5152,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-addressl1"
         enableSuccessCheck={false}
-        id="addressLine1"
+        id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
       />
@@ -5325,7 +5325,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-addressl2"
         enableSuccessCheck={false}
-        id="addressLine2"
+        id="address.addressLine2"
         name="addressLine2"
       />
     </Styled(Col)>
@@ -5506,7 +5506,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-city"
         enableSuccessCheck={false}
-        id="city"
+        id="address.city"
         name="city"
       />
     </Styled(Col)>
@@ -5621,7 +5621,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-state"
         enableSuccessCheck={false}
-        id="state"
+        id="address.state"
         name="state"
         options={
           Array [
@@ -5863,7 +5863,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-zipcode"
         enableSuccessCheck={false}
-        id="zipCode"
+        id="address.zipCode"
         maxLength={6}
         name="zipCode"
       />
@@ -5983,8 +5983,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-country"
+        disabled={true}
         enableSuccessCheck={false}
-        id="country"
+        id="address.country"
         name="country"
         onChange={[Function]}
         options={
@@ -6183,7 +6184,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="addnewaddress-phnumber"
         enableSuccessCheck={false}
-        id="phoneNumber"
+        id="address.phoneNumber"
         name="phoneNumber"
         type="tel"
       />
@@ -6355,7 +6356,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         dataLocator="email-address-field"
         enableSuccessCheck={false}
-        id="emailAddress"
+        id="address.emailAddress"
         name="emailAddress"
         placeholder="Email (For Order Updates)"
       />

@@ -29,6 +29,10 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
+// @flow
+
+type Props = {};
+
 class CardTile extends React.Component<Props> {
   static propTypes = {
     card: PropTypes.shape({}),
@@ -40,6 +44,7 @@ class CardTile extends React.Component<Props> {
     toggleModal: PropTypes.func,
     openUpdateModal: PropTypes.func,
     setSelectedCard: PropTypes.func,
+    checkbalanceValueInfo: PropTypes.instanceOf(Map),
   };
 
   static defaultProps = {
@@ -52,6 +57,7 @@ class CardTile extends React.Component<Props> {
     toggleModal: () => {},
     openUpdateModal: () => {},
     setSelectedCard: () => {},
+    checkbalanceValueInfo: new Map(),
   };
 
   cardIconMapping = {

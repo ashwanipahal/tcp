@@ -45,8 +45,10 @@ class Footer extends React.Component {
       getOrderDetailAction,
       emailSignup,
       smsSignup,
+      openTrackOrder,
       loginModalMountedState,
       setLoginModalMountState,
+      isLoggedIn,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -60,14 +62,21 @@ class Footer extends React.Component {
         <EmailSignupModal buttonConfig={emailSignup} />
         <SmsSignupModal buttonConfig={smsSignup} />
         <Row className="footer-middle mobile" fullBleed>
-          <FooterMiddleMobile className={className} navLinkItems={navLinks} />
+          <FooterMiddleMobile
+            className={className}
+            navLinkItems={navLinks}
+            openTrackOrder={openTrackOrder}
+            isLoggedIn={isLoggedIn}
+          />
         </Row>
         <Row className="footer-middle desktop">
           <FooterMiddleDesktop
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
             className={className}
             navLinks={navLinks}
+            openTrackOrder={openTrackOrder}
+            loginModalMountedState={loginModalMountedState}
+            setLoginModalMountState={setLoginModalMountState}
+            isLoggedIn={isLoggedIn}
           />
         </Row>
         <div className="footer-bottom">
@@ -138,6 +147,8 @@ Footer.propTypes = {
   getUserInfoAction: PropTypes.func.isRequired,
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
+  openTrackOrder: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 Footer.defaultProps = {
@@ -146,6 +157,8 @@ Footer.defaultProps = {
   navLinks: [],
   referenceID: '',
   openEmailSignUpModal: () => {},
+  openTrackOrder: () => null,
+  isLoggedIn: false,
 };
 
 export default withStyles(Footer, style);
