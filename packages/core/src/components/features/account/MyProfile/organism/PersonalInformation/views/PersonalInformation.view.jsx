@@ -16,11 +16,6 @@ const PersonalInformation = ({
   MyPlaceNumber,
 }) => {
   const { address } = ProfileInfoTile;
-
-  console.log('tertsing--------------------');
-  console.log(ProfileInfoTile);
-  console.log('tertsing--------------------');
-
   return (
     <>
       <MyProfileTile
