@@ -18,13 +18,16 @@ import AccountReducer from '@tcp/core/src/components/features/account/Account/co
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
+import ProductListingReducer from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
+import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -52,6 +55,7 @@ import {
   FORGOTPASSWORD_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   COUPON_REDUCER_KEY,
@@ -60,6 +64,8 @@ import {
   RESET_PASSWORD_REDUCER_KEY,
   CHANGE_PASSWORD_REDUCER_KEY,
   USER_REDUCER_KEY,
+  DEVICE_INFO_REDUCER_KEY,
+  TRACK_ORDER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -74,7 +80,8 @@ import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/c
 // A higher order reducer to filter out actions not matching a certain action name pattern.
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
-  PRODUCTLISTINGPAGE_REDUCER_KEY
+  PRODUCTLISTINGPAGE_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
@@ -106,6 +113,7 @@ export default combineReducers({
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
+  [PRODUCT_LISTING_REDUCER_KEY]: ProductListingReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [COUPON_REDUCER_KEY]: CouponsReducer,
@@ -114,4 +122,6 @@ export default combineReducers({
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [USER_REDUCER_KEY]: UserReducer,
+  [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
+  [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
 });

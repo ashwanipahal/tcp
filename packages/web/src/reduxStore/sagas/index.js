@@ -24,8 +24,10 @@ import AccountSaga from '@tcp/core/src/components/features/account/Account/conta
 import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
+import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
+import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
@@ -47,6 +49,7 @@ export default function* rootSaga() {
     SetDefaultShippingAddressSaga(),
     AddressVerificationSaga(),
     PaymentSaga(),
+    TrackOrderSaga(),
     EmailSignupSaga(),
     SmsSignupSaga(),
     DeleteCardSaga(),
@@ -58,6 +61,7 @@ export default function* rootSaga() {
     BagPageSaga(),
     CartPageSaga(),
     CreateAccountSaga(),
+    ProductListingSaga(),
     BonusPointsSaga(),
     CouponSaga(),
     AccountHeaderSaga(),

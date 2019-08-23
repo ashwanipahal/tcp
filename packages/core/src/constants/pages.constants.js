@@ -1,2 +1,6 @@
-const CHECKOUT_PAGE = 'checkout';
-export default CHECKOUT_PAGE;
+const PAGES = {
+  CHECKOUT_PAGE: 'checkout',
+  SEARCH_PAGE: 'search',
+  PRODUCT_LISTING_PAGE: 'c',
+};
+export default PAGES;
