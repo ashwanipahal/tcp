@@ -45,6 +45,7 @@ class HomePageView extends React.Component {
       slot_6: slotF,
       navigation,
     } = this.props;
+
     return (
       <ScrollView>
         <React.Fragment>
