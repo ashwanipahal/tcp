@@ -38,7 +38,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
   imageSlides.push({
     headerText: [
       {
-        textItems: gymboreeHeaderTextItems,
+        textItems: tcpHeaderTextItems,
         link: {
           url: '/c/',
           text: '',
@@ -58,7 +58,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           target: '',
           external: 0,
         },
-        textItems: gymboreePromoTextItems,
+        textItems: tcpPromoTextItems,
       },
     ],
     linkedImage: [

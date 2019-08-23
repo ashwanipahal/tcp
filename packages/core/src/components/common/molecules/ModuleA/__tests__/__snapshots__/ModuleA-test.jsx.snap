@@ -130,7 +130,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 1",
                   },
                 ],
               },
@@ -165,8 +165,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -204,7 +212,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 2",
                   },
                 ],
               },
@@ -239,8 +247,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -278,7 +294,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 3",
                   },
                 ],
               },
@@ -313,8 +329,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -352,7 +376,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 4",
                   },
                 ],
               },
@@ -387,8 +411,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -548,7 +580,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 1",
                   },
                 ],
               },
@@ -583,8 +615,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -622,7 +662,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 2",
                   },
                 ],
               },
@@ -657,8 +697,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -696,7 +744,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 3",
                   },
                 ],
               },
@@ -731,8 +779,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -770,7 +826,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "Spring is Every Wear",
+                    "text": "ENTER SITE 4",
                   },
                 ],
               },
@@ -805,8 +861,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "gymboree_description",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "percentage_wrapped_extra_large",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
+                  },
+                  Object {
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },

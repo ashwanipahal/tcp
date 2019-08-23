@@ -3,25 +3,28 @@ const buildQuery = ({ slot, contentId }) => `
 	contentId
 	name
 	type
-
+  set {
+    val
+    key
+  }
 	composites {
 		largeCompImageCarousel {
 			headerText {
-          			textItems {
-            				text
-            				style
-          			}
-          			icon {
-            				placement
-            				icon
-          			}
-         			link {
-           				url
-            				title
-            				target
-            				external
+        textItems {
+          text
+          style
+        }
+        icon {
+          placement
+          icon
+        }
+         link {
+          url
+          title
+          target
+          external
 				}
-       			}
+      }
 
 			promoBanner {
 				link {
@@ -56,29 +59,25 @@ const buildQuery = ({ slot, contentId }) => `
 			}
 		}
 
-		linkList {
-			url
-			text
-		}
-
-		CTAButtonCarousel {
-			url
-			text
-		}
-
-		stackedCTAButtons {
-			url
-			text
-		}
-
-		divImageCTACarousel {
-			link {
+		ctaItems {
+			button {
 				url
-			}
+        text
+        target
+        title
+        external
+      }
 			image {
 				url
+        title
+        alt
+        crop_d
+        crop_t
+        crop_m
+        position
 			}
-		}
+    }
+
 	}
 }
 `;

@@ -198,7 +198,7 @@ const ModuleA = (props: Props) => {
   const ctaType = ctaTypes[set.val];
   return (
     <Container>
-      {renderCarousel(largeCompImageCarousel, navigation, 'gym', 'left')}
+      {renderCarousel(largeCompImageCarousel, navigation, 'tcp', 'left')}
 
       {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
