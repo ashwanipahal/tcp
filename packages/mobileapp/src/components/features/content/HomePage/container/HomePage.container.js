@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import HomePageView from '../views';
 
+import { THEME_WRAPPER_REDUCER_KEY } from '../../../../common/hoc/ThemeWrapper.constants';
+
 const mapStateToProps = state => {
   const headerPromo = state.Header && state.Header.promoTextBannerCarousel;
   const homepageSlots = state.Layouts.homepage ? state.Layouts.homepage.slots : '';
@@ -18,12 +20,19 @@ const mapStateToProps = state => {
   return {
     ...moduleSlots,
     headerPromo,
+    appType: state[THEME_WRAPPER_REDUCER_KEY].get('APP_TYPE'),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getBootstrapData: pages => dispatch(bootstrapData(pages)),
+    getBootstrapData: (pages, apiConfig) => {
+      const payload = {
+        ...pages,
+        apiConfig,
+      };
+      dispatch(bootstrapData(payload));
+    },
   };
 };
 

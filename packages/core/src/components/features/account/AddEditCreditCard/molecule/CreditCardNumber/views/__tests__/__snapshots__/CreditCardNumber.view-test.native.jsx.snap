@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardNumber component should renders correctly when cardType is present 1`] = `
+<View
+  className="field"
+>
+  <CreditCardTextBox
+    ariaLabel="input"
+    dataLocator="input-field"
+    enableSuccessCheck={false}
+    id="input"
+    isEdit={false}
+    keyboardType="default"
+    label="input"
+    meta={
+      Object {
+        "error": "",
+        "touched": "",
+      }
+    }
+    secureTextEntry={false}
+    type="text"
+    val=""
+  />
+  <Styled(ImageComp)
+    height="15px"
+    source="/static/images/visa.svg"
+    width="20px"
+  />
+</View>
+`;
+
+exports[`CreditCardNumber component should renders correctly when isExpirationRequired is false 1`] = `
+<View>
+  <CreditCardTextBox
+    ariaLabel="input"
+    dataLocator="input-field"
+    enableSuccessCheck={false}
+    id="input"
+    isEdit={false}
+    keyboardType="default"
+    label="input"
+    meta={
+      Object {
+        "error": "",
+        "touched": "",
+      }
+    }
+    secureTextEntry={false}
+    type="text"
+    val=""
+  />
+</View>
+`;

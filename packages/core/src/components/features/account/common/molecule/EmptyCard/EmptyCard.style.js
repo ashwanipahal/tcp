@@ -10,16 +10,19 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
       display: block;
+      line-height: 1.3;
     }
   }
   .emptyCard__description--mobile {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    line-height: 1.3;
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
   }
   .emptyCard__heading {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    line-height: 1.08;
   }
   .emptyCard__imgWrapper {
     text-align: center;

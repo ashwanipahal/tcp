@@ -38,10 +38,31 @@ const RoutesMap = [
     path: '/bag',
     resolver: '/Bag',
   },
+  {
+    path: '/pickup',
+    resolver: '/Pickup',
+  },
+  {
+    path: '/shipping',
+    resolver: '/Shipping',
+  },
+  {
+    path: '/billing',
+    resolver: '/billing',
+  },
+  {
+    path: '/review',
+    resolver: '/review',
+  },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
   {
     path: '/gallery',
     resolver: '/gallery',
+  },
+  {
+    path: '/checkout/:section?',
+    resolver: '/Checkout',
+    params: ['section'],
   },
 ];
 

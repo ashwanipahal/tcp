@@ -72,10 +72,141 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         anchorVariation="primary"
         className="rightLink"
         fontSizeVariation="small"
-        handleLinkClick={[Function]}
-        href="#"
         id="cartIcon"
         noLink={true}
+        onClick={[Function]}
+        to=""
+      >
+        <Styled(Image)
+          alt="Product"
+          className="product-image"
+          data-locator="addedtobag-bag-icon"
+          src="/static/images/bag.png"
+        />
+        <Styled(BodyCopy)
+          className="cartCount"
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs10"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          0
+        </Styled(BodyCopy)>
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={
+      Object {
+        "large": true,
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(Col)
+      className="header-middle-nav-bar"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(Styled(Navigation))
+        closeNavigationDrawer={true}
+        openNavigationDrawer={false}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Connect(MiniBagContainer)
+    isOpen={false}
+    toggleMiniBagModal={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`HeaderMiddleNav component renders correctly when props dont change 1`] = `
+<Fragment>
+  <Styled(Row)
+    className="undefined header-middle-nav"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Styled(Col)
+      className="header-middle-nav-search"
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="hamburger menu"
+        className="hamburger-menu"
+        data-locator="menu_bar_icon"
+        onClick={[Function]}
+        src="/static/images/menu.svg"
+      />
+      <Styled(BrandLogo)
+        alt="The Children's Place"
+        className="header-brand__home-logo--brand"
+        dataLocator="global_TCPlink"
+        imgSrc="/static/images/tcp-logo.svg"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="textRight"
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="leftLink"
+        fontSizeVariation="large"
+        href="#"
+        id="createAccount"
+        onClick={[Function]}
+      >
+        Create Account
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="rightLink"
+        fontSizeVariation="large"
+        href="#"
+        id="login"
+        onClick={[Function]}
+      >
+        Login
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="rightLink"
+        fontSizeVariation="small"
+        id="cartIcon"
+        noLink={true}
+        onClick={[Function]}
+        to=""
       >
         <Styled(Image)
           alt="Product"

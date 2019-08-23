@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInfoActionTile should render correctly 1`] = `
+<div
+  className=" level1"
+>
+  <Styled(BodyCopy)
+    className="completion-text"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    20%
+  </Styled(BodyCopy)>
+  <div
+    className="outer-shadow"
+  />
+  <div
+    className="inner-shadow"
+  >
+    <img
+      alt="Completion"
+      className="progress-image"
+      src="/static/images/smiley-icon.png"
+      title="profile completion"
+    />
+  </div>
+  <div
+    className="hold left"
+  >
+    <div
+      className="fill"
+    />
+  </div>
+  <div
+    className="hold right"
+  >
+    <div
+      className="fill"
+    />
+  </div>
+</div>
+`;

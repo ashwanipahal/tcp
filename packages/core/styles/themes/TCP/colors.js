@@ -74,6 +74,15 @@ export default {
       ALT_FOCUS: '#e19999',
       TEXT: '#c84747',
     },
+    BLACK: {
+      NORMAL: '#1a1a1a',
+      BORDER: '#1a1a1a',
+      HOVER: '#ffffff',
+      FOCUS: '#ffffff',
+      ALT_HOVER: '#ffffff',
+      ALT_FOCUS: '#ffffff',
+      TEXT: '#ffffff',
+    },
   },
   ANCHOR: {
     PRIMARY: '#1a1a1a',
@@ -109,5 +118,9 @@ export default {
     BORDER: '#575757',
     CHECKED_BORDER: '#1a1a1a',
     TICK_COLOR: '#fff',
+  },
+  NAVIGATION: {
+    CIRCULAR_BORDER: '#6b6b6b',
+    L1_BACKGROUND: '#f6f6f6',
   },
 };

@@ -32,6 +32,8 @@ class LoginForm extends React.PureComponent<Props> {
       change,
       showSavePlcc,
       pristine,
+      variation,
+      handleContinueAsGuest,
     } = this.props;
     return (
       <div className={className}>
@@ -115,6 +117,19 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {labels.login.lbl_login_loginCTA}
             </Button>
+            {variation === 'checkout' && (
+              <Button
+                fill="WHITE"
+                type="button"
+                buttonVariation="fixed-width"
+                dataLocator="login-logincta"
+                fullWidth
+                className="elem-mb-XS"
+                onClick={handleContinueAsGuest}
+              >
+                {labels.login.lbl_login_modal_checkout_as_guest}
+              </Button>
+            )}
             <Anchor
               fontSizeVariation="xlarge"
               anchorVariation="secondary"
@@ -139,6 +154,7 @@ LoginForm.propTypes = {
   change: PropTypes.func,
   showSavePlcc: PropTypes.bool,
   pristine: PropTypes.bool,
+  handleContinueAsGuest: PropTypes.func.isRequired,
 };
 
 LoginForm.defaultProps = {

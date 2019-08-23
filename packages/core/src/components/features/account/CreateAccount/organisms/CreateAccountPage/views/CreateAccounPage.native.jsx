@@ -52,7 +52,7 @@ class CreateAccounPage extends React.Component {
       <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
         <View>
           <CreateAccountTopSection labels={labels} />
-          {error && (
+          {!!error && (
             <ErrorWrapper>
               <BodyCopy
                 mobileFontFamily={['secondary']}

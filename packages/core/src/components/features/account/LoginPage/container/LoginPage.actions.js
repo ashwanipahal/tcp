@@ -1,7 +1,3 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 
 export const login = payload => {
@@ -11,22 +7,31 @@ export const login = payload => {
   };
 };
 
-export const setLoginInfo = payload => {
+export const setLoginModalMountedState = payload => {
   return {
-    type: LOGINPAGE_CONSTANTS.SET_LOGIN_INFO,
+    type: LOGINPAGE_CONSTANTS.LOGIN_MODAL_MOUNTED_STATE,
     payload,
   };
 };
 
-export const resetLoginInfo = () => {
+export const resetLoginInfo = payload => {
   return {
     type: LOGINPAGE_CONSTANTS.RESET_LOGIN_INFO,
+    payload,
   };
 };
 
-export const getUserInfo = () => {
+export const setCheckoutModalMountedState = payload => {
   return {
-    type: LOGINPAGE_CONSTANTS.GET_USER_INFO,
+    type: LOGINPAGE_CONSTANTS.CHECKOUT_MODAL_MOUNTED_STATE,
+    payload,
+  };
+};
+
+export const setLoginInfo = payload => {
+  return {
+    type: LOGINPAGE_CONSTANTS.SET_LOGIN_INFO,
+    payload,
   };
 };
 

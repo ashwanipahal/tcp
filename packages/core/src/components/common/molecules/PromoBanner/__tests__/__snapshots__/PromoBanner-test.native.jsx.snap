@@ -1,21 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `
-<Styled(Anchor)
-  anchorVariation=""
-  customStyle={Object {}}
-  locator=""
-  text=""
-  url="http://example.com235"
-  visible={false}
->
-  <style1
-    text="alL DINOS"
-  />
-  <style2
-    text="50% OFF"
-  />
-</Styled(Anchor)>
+<Styled(View)>
+  <Styled(Anchor)
+    anchorVariation=""
+    customStyle={Object {}}
+    locator=""
+    text=""
+    url="http://example.com235"
+    visible={false}
+  >
+    <style1
+      key="0"
+      text="alL DINOS"
+    />
+    <style2
+      key="1"
+      text="50% OFF"
+    />
+  </Styled(Anchor)>
+</Styled(View)>
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 1`] = `
@@ -27,10 +31,7 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -62,8 +63,6 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
     }
   }
   forwardedRef={null}
-  locator=""
-  text=""
 />
 `;
 
@@ -75,10 +74,7 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -111,8 +107,6 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
   }
   forwardedRef={null}
   lineHeight="42px"
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
@@ -126,10 +120,7 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -162,8 +153,6 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
   }
   forwardedRef={null}
   lineHeight="64px"
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
@@ -176,10 +165,7 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -211,8 +197,6 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
     }
   }
   forwardedRef={null}
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
@@ -226,10 +210,7 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -262,8 +243,6 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
   }
   forwardedRef={null}
   lineHeight="64px"
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
@@ -276,14 +255,12 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
     fontSize="fs64"
     fontWeight="black"
     lineHeight="64px"
-    locator=""
     style={
       Object {
         "height": 58,
         "marginTop": 8,
       }
     }
-    text=""
     textAlign="center"
   />
   <Styled(View)>
@@ -293,7 +270,6 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       fontSize="fs42"
       fontWeight="black"
       lineHeight="42px"
-      locator=""
       style={
         Object {
           "height": 33,
@@ -307,8 +283,6 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       fontSize="fs20"
       fontWeight="black"
       lineHeight="20px"
-      locator=""
-      text=""
       textAlign="center"
     />
   </Styled(View)>
@@ -316,21 +290,25 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
 `;
 
 exports[`PromoTextBanner native component renders correctly 1`] = `
-<Styled(Anchor)
-  anchorVariation=""
-  customStyle={Object {}}
-  locator=""
-  text=""
-  url="http://example.com235"
-  visible={false}
->
-  <style1
-    dataLocator="moduleK_text_"
-    text="alL DINOS"
-  />
-  <style2
-    dataLocator="moduleK_text_"
-    text="50% OFF"
-  />
-</Styled(Anchor)>
+<Styled(View)>
+  <Styled(Anchor)
+    anchorVariation=""
+    customStyle={Object {}}
+    locator=""
+    text=""
+    url="http://example.com235"
+    visible={false}
+  >
+    <style1
+      dataLocator="moduleK_text_"
+      key="0"
+      text="alL DINOS"
+    />
+    <style2
+      dataLocator="moduleK_text_"
+      key="1"
+      text="50% OFF"
+    />
+  </Styled(Anchor)>
+</Styled(View)>
 `;
