@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalInformationDisplay should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator="profileinfo-username"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    test
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator="profileinfo-emailaddress"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    test
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator="profileinfo-phonenumber"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    test
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator="profileinfo-userbday"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="elem-mt-LRG"
+    color="text.primary"
+    component="p"
+    dataLocator="profileinfo-rewardsid"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    undefined XXXXXXX
+  </Styled(BodyCopy)>
+</div>
+`;

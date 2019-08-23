@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import styles from '../styles/PersonalInformationDisplay.style';
 import { MONTH_DISPLAY_MAP } from '../../../myProfile.constants';
 import { isCanada } from '../../../../../../../utils';
 
@@ -96,4 +94,4 @@ PersonalInformationDisplay.defaultProps = {
   },
 };
 
-export default withStyles(PersonalInformationDisplay, styles);
+export default PersonalInformationDisplay;

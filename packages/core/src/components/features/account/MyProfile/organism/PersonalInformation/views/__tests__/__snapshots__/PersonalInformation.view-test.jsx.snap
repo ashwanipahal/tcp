@@ -7,18 +7,20 @@ exports[`PersonalInformation component should render correctly 1`] = `
     dataLocator="pi-editpersonalinfo"
     title="Personal Information"
   >
-    <Styled(PersonalInformationDisplay)
+    <PersonalInformationDisplay
       MyPlaceNumber=""
       UserEmail=""
       UserFullName=""
       UserPhoneNumber=""
       airMiles=""
+      className=""
       labels={
         Object {
           "lbl_profile_edit_personal_info": "Edit personal Info",
           "lbl_profile_personal_information": "Personal Information",
         }
       }
+      mailingAddress={Object {}}
       userBirthday=""
     />
   </Styled(AccountOverviewTile)>
