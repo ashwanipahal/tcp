@@ -6,10 +6,25 @@ export const getSmsSignUpFields = state => {
   return selector(state, 'smsSignUp');
 };
 
+export const getShipmentMethodsFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'shipmentMethods');
+};
+
+export const getSelectedShipmentId = createSelector(
+  getShipmentMethodsFields,
+  shipmentMethodsFields => shipmentMethodsFields && shipmentMethodsFields.shippingMethodId
+);
+
 export const getSendOrderUpdate = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
+
+export const getAddressFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'address');
+};
 
 export const getShippingLabels = state => {
   const { lbl_shipping_header: header, lbl_shipping_sectionHeader: sectionHeader } =

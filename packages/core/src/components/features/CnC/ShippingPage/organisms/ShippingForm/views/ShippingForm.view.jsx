@@ -8,6 +8,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import styles from '../styles/ShippingForm.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../common/molecules/CheckoutSectionTitleDisplay';
+import ShipmentMethods from '../../../../common/molecules/ShipmentMethods';
 
 const ShippingForm = ({
   addressLabels: { addressFormLabels },
@@ -17,6 +18,8 @@ const ShippingForm = ({
   isOrderUpdateChecked,
   shippingLabels,
   smsSignUpLabels,
+  selectedShipmentId,
+  checkPOBoxAddress,
 }) => {
   return (
     <>
@@ -40,6 +43,7 @@ const ShippingForm = ({
               formSection="address"
               variation="secondary"
               dispatch={dispatch}
+              checkPOBoxAddress={checkPOBoxAddress}
             />
           </FormSection>
         </div>
@@ -51,6 +55,38 @@ const ShippingForm = ({
             formSection="smsSignUp"
             variation="secondary"
             isOrderUpdateChecked={isOrderUpdateChecked}
+            dispatch={dispatch}
+            borderBottom
+          />
+        </FormSection>
+        <FormSection name="shipmentMethods">
+          <ShipmentMethods
+            shipmentMethods={[
+              {
+                id: '901101',
+                displayName: 'Standard - FREE',
+                shippingSpeed: 'Up To 10 Business Days',
+                price: 0,
+                isDefault: true,
+              },
+              {
+                displayName: 'Express',
+                isDefault: false,
+                shippingSpeed: 'Up To 5 Business Days',
+                id: '901102',
+                price: 15,
+              },
+              {
+                displayName: 'Rush',
+                isDefault: false,
+                shippingSpeed: 'Up To 3 Business Days',
+                id: '901103',
+                price: 20,
+              },
+            ]}
+            formName="checkoutShipping"
+            formSection="shipmentMethods"
+            selectedShipmentId={selectedShipmentId}
           />
         </FormSection>
       </form>
@@ -66,11 +102,15 @@ ShippingForm.propTypes = {
   isOrderUpdateChecked: PropTypes.bool,
   shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
+  selectedShipmentId: PropTypes.string,
+  checkPOBoxAddress: PropTypes.func,
 };
 
 ShippingForm.defaultProps = {
   className: '',
   isOrderUpdateChecked: false,
+  selectedShipmentId: null,
+  checkPOBoxAddress: () => {},
 };
 
 const validateMethod = createValidateMethod({
