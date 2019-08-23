@@ -16,6 +16,7 @@ const ProfileInformation = ({
   labels,
   profileCompletion,
   mailingAddress,
+  ProfileInfoTile,
   UserEmail,
   userBirthday,
   UserFullName,
@@ -76,7 +77,7 @@ const ProfileInformation = ({
         >
           <PersonalInformation
             labels={labels}
-            mailingAddress={mailingAddress}
+            ProfileInfoTile={ProfileInfoTile}
             UserEmail={UserEmail}
             userBirthday={userBirthday}
             UserFullName={UserFullName}
@@ -162,6 +163,7 @@ ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
   profileCompletion: PropTypes.string,
   mailingAddress: PropTypes.shape({}),
+  ProfileInfoTile: PropTypes.shape({}),
   userBirthday: PropTypes.string,
   UserEmail: PropTypes.string,
   airMiles: PropTypes.string,
@@ -180,6 +182,7 @@ ProfileInformation.defaultProps = {
   labels: {},
   profileCompletion: '',
   mailingAddress: {},
+  ProfileInfoTile: {},
   userBirthday: '',
   UserEmail: '',
   UserFullName: '',

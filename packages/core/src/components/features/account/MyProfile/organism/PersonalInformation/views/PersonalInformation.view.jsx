@@ -1,28 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay'
+import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay';
 import Address from '../../../../../../common/molecules/Address';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
 const PersonalInformation = ({
   labels,
-  mailingAddress,
+  ProfileInfoTile,
   UserEmail,
   userBirthday,
   UserFullName,
   UserPhoneNumber,
   airMiles,
   MyPlaceNumber,
- }) => {
-let address ='';
-if(mailingAddress && mailingAddress.get('type')==='Mailing'){
-   address = mailingAddress.get('address');
-   console.log("fkjhaskfksagfkjsagf");
-   console.log(address);
-   console.log("fkjhaskfksagfkjsagf");
- }
-
+}) => {
+  const { address } = ProfileInfoTile;
   return (
     <>
       <MyProfileTile
@@ -32,7 +25,6 @@ if(mailingAddress && mailingAddress.get('type')==='Mailing'){
       >
         <PersonalInformationDisplay
           labels={labels}
-          mailingAddress={mailingAddress}
           UserEmail={UserEmail}
           userBirthday={userBirthday}
           UserFullName={UserFullName}
@@ -41,17 +33,15 @@ if(mailingAddress && mailingAddress.get('type')==='Mailing'){
           MyPlaceNumber={MyPlaceNumber}
         />
       </MyProfileTile>
-      <MyProfileTile
-        title="Mailing Address"
-        ctaTitle="EDIT MAILING ADDRESS"
-        dataLocator="pi-editpersonalinfo"
-      >
-        <Address
-          address={address}
-          showCountry={false}
-          showPhone={false}
-        />
-      </MyProfileTile>
+      {address && (
+        <MyProfileTile
+          title={labels.lbl_profile_mailing_address}
+          ctaTitle={labels.lbl_profile_edit_mailing_info}
+          dataLocator="profileinfo-editmailingaddress"
+        >
+          <Address address={address} dataLocatorPrefix="profileinfo-editmailing" showName={false} />
+        </MyProfileTile>
+      )}
     </>
   );
 };
@@ -61,7 +51,7 @@ PersonalInformation.propTypes = {
     lbl_profile_personal_information: PropTypes.string,
     lbl_profile_edit_personal_info: PropTypes.string,
   }),
-  mailingAddress: PropTypes.shape({}),
+  ProfileInfoTile: PropTypes.shape({}),
   userBirthday: PropTypes.string,
   UserEmail: PropTypes.string,
   UserFullName: PropTypes.string,
@@ -75,7 +65,7 @@ PersonalInformation.defaultProps = {
     lbl_profile_personal_information: '',
     lbl_profile_edit_personal_info: '',
   },
-  mailingAddress: {},
+  ProfileInfoTile: {},
   userBirthday: '',
   UserEmail: '',
   UserFullName: '',

@@ -15,6 +15,7 @@ import {
   getUserPhoneNumber,
   getAirmilesDetails,
   getMyPlaceNumber,
+  getProfileInfoTileData,
 } from '../../User/container/User.selectors';
 
 import { getSuccess } from '../../ChangePassword/container/ChangePassword.selectors';
@@ -61,6 +62,7 @@ const mapStateToProps = state => {
     UserPhoneNumber: getUserPhoneNumber(state),
     airMiles: getAirmilesDetails(state),
     MyPlaceNumber: getMyPlaceNumber(state),
+    ProfileInfoTile: getProfileInfoTileData(state),
   };
 };
 

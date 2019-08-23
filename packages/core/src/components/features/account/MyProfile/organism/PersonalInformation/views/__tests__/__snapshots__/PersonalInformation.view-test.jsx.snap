@@ -1,13 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PersonalInformation component should render correctly 1`] = `
-<Styled(AccountOverviewTile)
-  ctaTitle="Edit personal Info"
-  dataLocator="pi-editpersonalinfo"
-  title="Personal Information"
->
-  <FPO
-    text=""
-  />
-</Styled(AccountOverviewTile)>
+<Fragment>
+  <Styled(AccountOverviewTile)
+    ctaTitle="Edit personal Info"
+    dataLocator="pi-editpersonalinfo"
+    title="Personal Information"
+  >
+    <Styled(PersonalInformationDisplay)
+      MyPlaceNumber=""
+      UserEmail=""
+      UserFullName=""
+      UserPhoneNumber=""
+      airMiles=""
+      labels={
+        Object {
+          "lbl_profile_edit_personal_info": "Edit personal Info",
+          "lbl_profile_personal_information": "Personal Information",
+        }
+      }
+      userBirthday=""
+    />
+  </Styled(AccountOverviewTile)>
+</Fragment>
 `;

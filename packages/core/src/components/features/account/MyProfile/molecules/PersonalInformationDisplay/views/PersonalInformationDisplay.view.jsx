@@ -6,22 +6,21 @@ import styles from '../styles/PersonalInformationDisplay.style';
 import { MONTH_DISPLAY_MAP } from '../../../myProfile.constants';
 import { isCanada } from '../../../../../../../utils';
 
-
-export const MyPlaceRewards = (airMiles, MyPlaceNumber) =>{
+export const MyPlaceRewards = (airMiles, MyPlaceNumber, labels) => {
   return (
     <BodyCopy
+      dataLocator="profileinfo-rewardsid"
       className="elem-mt-LRG"
       fontSize="fs16"
       fontFamily="secondary"
     >
-      {isCanada()  && airMiles && (
-        `Air Miles #: ${airMiles}`
-      )}
-      {!isCanada() && MyPlaceNumber && (
-          `My Place Rewards #: ${MyPlaceNumber}`
-      )}
+      {isCanada() && airMiles && `${labels.lbl_profile_air_miles} ${airMiles}`}
+      {!isCanada() &&
+        MyPlaceNumber &&
+        `${labels.lbl_profile_my_place_rewards_info} ${MyPlaceNumber}`}
     </BodyCopy>
-  )}
+  );
+};
 
 export const PersonalInformationDisplay = ({
   className,
@@ -31,42 +30,36 @@ export const PersonalInformationDisplay = ({
   userBirthday,
   airMiles,
   MyPlaceNumber,
+  labels,
 }) => {
-  const birthdayArray = userBirthday ? userBirthday && userBirthday.split('|'):'';
-  const userBirthdayDisplay = birthdayArray && birthdayArray.length === 2 ? `Birthday: ${MONTH_DISPLAY_MAP[birthdayArray[0]]} ${birthdayArray[1]}` : '';
+  const birthdayArray = userBirthday ? userBirthday && userBirthday.split('|') : '';
+  const userBirthdayDisplay =
+    birthdayArray && birthdayArray.length === 2
+      ? `${labels.lbl_profile_edit_birthday_heading}${MONTH_DISPLAY_MAP[birthdayArray[0]]} ${
+          birthdayArray[1]
+        }`
+      : '';
   return (
     <div className={className}>
       {UserFullName && (
-      <BodyCopy
-        fontSize="fs16"
-        fontFamily="secondary"
-      >
-        {UserFullName}
-      </BodyCopy>
+        <BodyCopy fontSize="fs16" fontFamily="secondary" dataLocator="profileinfo-username">
+          {UserFullName}
+        </BodyCopy>
       )}
       {UserEmail && (
-      <BodyCopy
-        fontSize="fs16"
-        fontFamily="secondary"
-      >
-        {UserEmail}
-      </BodyCopy>
+        <BodyCopy dataLocator="profileinfo-emailaddress" fontSize="fs16" fontFamily="secondary">
+          {UserEmail}
+        </BodyCopy>
       )}
       {UserPhoneNumber && (
-      <BodyCopy
-        fontSize="fs16"
-        fontFamily="secondary"
-      >
-        {UserPhoneNumber}
-      </BodyCopy>
+        <BodyCopy dataLocator="profileinfo-phonenumber" fontSize="fs16" fontFamily="secondary">
+          {UserPhoneNumber}
+        </BodyCopy>
       )}
-      <BodyCopy
-        fontSize="fs16"
-        fontFamily="secondary"
-      >
+      <BodyCopy dataLocator="profileinfo-userbday" fontSize="fs16" fontFamily="secondary">
         {userBirthdayDisplay}
       </BodyCopy>
-      {MyPlaceRewards(airMiles,MyPlaceNumber)}
+      {MyPlaceRewards(airMiles, MyPlaceNumber, labels)}
     </div>
   );
 };
@@ -80,6 +73,11 @@ PersonalInformationDisplay.propTypes = {
   UserPhoneNumber: PropTypes.number,
   airMiles: PropTypes.string,
   MyPlaceNumber: PropTypes.string,
+  labels: PropTypes.shape({
+    lbl_profile_edit_birthday_heading: PropTypes.string,
+    lbl_profile_my_place_rewards_info: PropTypes.string,
+    lbl_profile_air_miles: PropTypes.string,
+  }),
 };
 
 PersonalInformationDisplay.defaultProps = {
@@ -91,6 +89,11 @@ PersonalInformationDisplay.defaultProps = {
   UserPhoneNumber: '',
   airMiles: '',
   MyPlaceNumber: '',
+  labels: {
+    lbl_profile_edit_birthday_heading: '',
+    lbl_profile_my_place_rewards_info: '',
+    lbl_profile_air_miles: '',
+  },
 };
 
 export default withStyles(PersonalInformationDisplay, styles);

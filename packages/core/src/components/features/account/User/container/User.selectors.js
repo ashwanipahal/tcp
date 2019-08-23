@@ -104,23 +104,28 @@ export const getDefaultStore = createSelector(
 export const getAirmilesDetails = createSelector(
   getAirmilesDataState,
   state => state && state.get('accountNumber')
-)
+);
 
 export const getMyPlaceNumber = createSelector(
   getRewardsState,
   state => state && state.get('accountNumber')
-)
+);
 
 export const getProfileInfoTileData = createSelector(
   getUserContactInfo,
   getMailingAddress,
   getRewardsState,
   (personalInformation, mailingAddress, rewards) => {
-    const firstName = personalInformation.get('firstName');
-    const lastName = personalInformation.get('lastName');
-    const emailAddress = personalInformation.get('emailAddress').toLowerCase();
-    const rewardsAccountNumber = rewards.get('accountNumber');
-    const addressTemp = mailingAddress.get('address');
+    let firstName;
+    let lastName;
+    let emailAddress;
+    if (personalInformation) {
+      firstName = personalInformation.get('firstName');
+      lastName = personalInformation.get('lastName');
+      emailAddress = personalInformation.get('emailAddress').toLowerCase();
+    }
+    const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
+    const addressTemp = mailingAddress ? mailingAddress.get('address') : null;
     const address = addressTemp
       ? {
           addressLine1: addressTemp.get('addressLine1') || '',
@@ -128,6 +133,7 @@ export const getProfileInfoTileData = createSelector(
           city: addressTemp.get('city') || '',
           state: addressTemp.get('state') || '',
           zipCode: addressTemp.get('zipCode'),
+          country: addressTemp.get('country'),
         }
       : null;
     return {
