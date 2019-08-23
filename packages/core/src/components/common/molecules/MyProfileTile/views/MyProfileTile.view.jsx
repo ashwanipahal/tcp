@@ -23,7 +23,7 @@ export const AccountOverviewTile = ({
           fontFamily="secondary"
           fontWeight="extrabold"
           className="heading"
-          dataLocator={`${dataLocator}_header`}
+          data-locator={`${dataLocator}_header`}
         >
           {title}
         </BodyCopy>
@@ -41,7 +41,7 @@ export const AccountOverviewTile = ({
             fill="BLUE"
             centered
             className="elem-mb-SM"
-            dataLocator={`${dataLocator}_btn`}
+            data-locator={`${dataLocator}_btn`}
           >
             {ctaTitle}
           </Anchor>

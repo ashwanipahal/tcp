@@ -78,6 +78,25 @@ export const isCanada = () => {
   return siteId === API_CONFIG.siteIds.ca;
 };
 
+export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
+  const prototype = Object.getPrototypeOf(obj);
+  // eslint-disable-next-line
+  for (let name of Object.getOwnPropertyNames(prototype)) {
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
+    const isGetter = descriptor && typeof descriptor.get === 'function';
+    // eslint-disable-next-line
+    if (isGetter) continue;
+    if (
+      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
+        ? !name.startsWith(namePrefix)
+        : name.startsWith(namePrefix)
+    ) {
+      // eslint-disable-next-line
+      obj[name] = prototype[name].bind(obj);
+    }
+  }
+};
+
 export const isGymboree = () => {
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
@@ -91,7 +110,8 @@ export default {
   isMobileApp,
   isServer,
   getAPIConfig,
+  isCanada,
+  bindAllClassMethodsToThis,
   isGymboree,
   isTCP,
-  isCanada,
 };
