@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import FooterNavLinksList from '../../FooterNavLinksList';
 import FooterNavHeader from '../../FooterNavHeader';
 
@@ -12,6 +13,8 @@ const FooterNavLinks = ({
   colNum,
   openTrackOrder,
   isUserLoggedIn,
+  loginModalMountedState,
+  setLoginModalMountState,
 }) => {
   return (
     <div className={`${className} container-nav-link`} key={navLinkItems.id} data-index={colNum}>
@@ -28,6 +31,8 @@ const FooterNavLinks = ({
         colNum={colNum}
         isUserLoggedIn={isUserLoggedIn}
         openTrackOrder={openTrackOrder}
+        loginModalMountedState={loginModalMountedState}
+        setLoginModalMountState={setLoginModalMountState}
       />
     </div>
   );
@@ -42,6 +47,8 @@ FooterNavLinks.propTypes = {
   colNum: PropTypes.number.isRequired,
   openTrackOrder: PropTypes.func,
   isUserLoggedIn: PropTypes.bool,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+  loginModalMountedState: PropTypes.bool.isRequired,
 };
 
 FooterNavLinks.defaultProps = {

@@ -47,6 +47,8 @@ class Footer extends React.Component {
       smsSignup,
       isUserLoggedIn,
       openTrackOrder,
+      loginModalMountedState,
+      setLoginModalMountState,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -73,6 +75,8 @@ class Footer extends React.Component {
             navLinks={navLinks}
             openTrackOrder={openTrackOrder}
             isUserLoggedIn={isUserLoggedIn}
+            loginModalMountedState={loginModalMountedState}
+            setLoginModalMountState={setLoginModalMountState}
           />
         </Row>
         <div className="footer-bottom">

@@ -14,6 +14,7 @@ export {
   getViewportInfo,
   showOverlay,
   closeOverlay,
+  bindAllClassMethodsToThis,
   scrollPage,
   createAPIConfig,
 } from './utils.web';

@@ -136,6 +136,9 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
       openTrackOrder={[Function]}
     />
   </Styled(Col)>
+  <OpenLoginModal
+    variation="favorites"
+  />
 </Fragment>
 `;
 
@@ -276,5 +279,8 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
       openTrackOrder={[Function]}
     />
   </Styled(Col)>
+  <OpenLoginModal
+    variation="favorites"
+  />
 </Fragment>
 `;

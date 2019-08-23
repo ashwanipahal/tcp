@@ -5,16 +5,30 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { routerPush } from '@tcp/core/src/utils';
 import styles from '../FooterNavLinksList.style';
 
-const FooterNavLinksList = ({ className, listArray, colNum, openTrackOrder, isUserLoggedIn }) => {
+const FooterNavLinksList = ({
+  className,
+  listArray,
+  colNum,
+  openTrackOrder,
+  isUserLoggedIn,
+  setLoginModalMountState,
+}) => {
   const trackLink = e => {
     e.preventDefault();
     if (!isUserLoggedIn) openTrackOrder({ state: true });
     else routerPush('/account', '/account');
   };
+  const loginModalOpenClick = e => {
+    e.preventDefault();
+    setLoginModalMountState({ state: true });
+  };
   const createLink = (linkItems, index) => {
     const isTrackOrderLink = linkItems.url.indexOf('track-order') > -1;
-    const toVal = isTrackOrderLink ? '/#' : linkItems.url;
-    const onClick = isTrackOrderLink ? e => trackLink(e) : null;
+    const isLoginLink = linkItems.url.toLowerCase().indexOf('favorites') > -1;
+    const toVal = isTrackOrderLink || isLoginLink ? '/#' : linkItems.url;
+    let onClick;
+    if (isTrackOrderLink) onClick = e => trackLink(e);
+    if (isLoginLink) onClick = e => loginModalOpenClick(e);
     return (
       <Anchor
         className={className}
@@ -46,11 +60,13 @@ FooterNavLinksList.propTypes = {
   colNum: PropTypes.number.isRequired,
   openTrackOrder: PropTypes.func,
   isUserLoggedIn: PropTypes.bool,
+  setLoginModalMountState: PropTypes.func,
 };
 
 FooterNavLinksList.defaultProps = {
   openTrackOrder: () => null,
   isUserLoggedIn: false,
+  setLoginModalMountState: () => null,
 };
 
 export default withStyles(FooterNavLinksList, styles);

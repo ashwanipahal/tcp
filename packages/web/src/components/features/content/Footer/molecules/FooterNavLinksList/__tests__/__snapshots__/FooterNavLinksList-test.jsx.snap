@@ -11,7 +11,7 @@ exports[`FooterNavLinksList component renders default footer correctly 1`] = `
       data-locator="col_1_link_0"
       fontSizeVariation="large"
       noLink={true}
-      onClick={null}
+      title="gift card"
       to=""
     />
   </li>
@@ -22,7 +22,7 @@ exports[`FooterNavLinksList component renders default footer correctly 1`] = `
       data-locator="col_1_link_1"
       fontSizeVariation="large"
       noLink={true}
-      onClick={null}
+      title="gift card"
       to=""
     />
   </li>
@@ -33,7 +33,7 @@ exports[`FooterNavLinksList component renders default footer correctly 1`] = `
       data-locator="col_1_link_2"
       fontSizeVariation="large"
       noLink={true}
-      onClick={null}
+      title="gift card"
       to=""
     />
   </li>

@@ -221,6 +221,8 @@ export const formValidationRules = {
   },
   orderNumber: {
     required: true,
+    minLength: 6,
+    number: true,
   },
   iAgree: {
     required: true,
