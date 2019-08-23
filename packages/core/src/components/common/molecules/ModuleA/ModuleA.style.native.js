@@ -15,6 +15,11 @@ export const HeaderWrapper = styled.View`
 
 export const PromoTextBannerWrapper = styled.View``;
 
+export const PromoBannerWrapper = styled.View`
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export const ButtonContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -39,6 +44,46 @@ export const ButtonLinksContainer = styled.View`
   background: #003057;
 `;
 
+export const PromoRibbonWrapperRight = styled.View`
+  width: 174px;
+  height: 54px;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  z-index: ${props => props.theme.zindex.zOverlay};
+`;
+
+export const PromoRibbonWrapperLeft = styled.View`
+  width: 174px;
+  height: 54px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  z-index: ${props => props.theme.zindex.zOverlay};
+`;
+
+export const MessageContainer = styled.View`
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  position: absolute;
+  right: 0;
+  z-index: ${props => props.theme.zindex.zOverlay};
+`;
+
+export const HeaderView = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+`;
+
+/**
+ * RibbonBanner height and width.
+ * Height is fixed for mobile : TCP & Gymb
+ * Width can vary as per deign.
+ */
+
+export const RibbonBannerHeight = '200px';
+export const RibbonBannerWidth = '54px';
+
 export default {
   Container,
   HeaderWrapper,
@@ -48,4 +93,11 @@ export default {
   ContainerView,
   DivImageCTAContainer,
   ButtonLinksContainer,
+  PromoRibbonWrapperLeft,
+  PromoRibbonWrapperRight,
+  MessageContainer,
+  RibbonBannerHeight,
+  RibbonBannerWidth,
+  PromoBannerWrapper,
+  HeaderView,
 };

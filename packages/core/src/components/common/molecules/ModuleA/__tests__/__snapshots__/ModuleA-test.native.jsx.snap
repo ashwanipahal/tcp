@@ -4,6 +4,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <WithTheme(SnapCarousel)
+      buttonPosition="left"
       carouselConfig={
         Object {
           "autoplay": true,
@@ -28,7 +29,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 1",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -63,16 +64,8 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -110,7 +103,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 2",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -145,16 +138,8 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -192,7 +177,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 3",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -227,16 +212,8 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -274,7 +251,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 4",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -309,16 +286,8 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -341,7 +310,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
           },
         ]
       }
-      height={200}
+      height={500}
       overlap={true}
       renderItem={[Function]}
       showDots={true}
