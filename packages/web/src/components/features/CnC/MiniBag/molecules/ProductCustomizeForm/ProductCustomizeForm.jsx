@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Row, Button, Image } from '@tcp/core/src/components/common/atoms';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import ColorSelector from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ColorSelect/views/ColorSelect.view';
@@ -266,7 +267,13 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                 dataLocator="addnewaddress-state"
               />
               {isErrorMessageDisplayed && (
-                <div className="size-error">
+                <BodyCopy
+                  className="size-error"
+                  fontSize="fs12"
+                  component="div"
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                >
                   <Image
                     alt="Error"
                     className="error-image"
@@ -275,7 +282,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                   />
                   Please select a size
                   {/* will come from label */}
-                </div>
+                </BodyCopy>
               )}
             </div>
             <div className="qty-selector">

@@ -23,15 +23,8 @@ const styles = css`
   }
 
   .size-error {
-    font-style: normal;
-    font-stretch: normal;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 0.25px;
-    line-height: 1.38;
-    margin-top: 9px;
-    color: #c60808;
-    display: block;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    color: ${props => props.theme.colors.NOTIFICATION.ERROR};
     width: 69px;
   }
 
@@ -42,7 +35,7 @@ const styles = css`
   .size-field-error {
     height: 33px;
     .select__input {
-      border-bottom: 2px solid #c60808;
+      border-bottom: 2px solid ${props => props.theme.colors.NOTIFICATION.ERROR};
     }
   }
 

@@ -56,6 +56,8 @@ export default css`
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    display: flex;
+    justify-content: center;
   }
   .product-attributes {
     display: inline-flex;

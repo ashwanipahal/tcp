@@ -70,6 +70,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    display: flex;
+    justify-content: center;
   }
   .product-attributes {
     display: inline-flex;
