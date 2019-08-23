@@ -154,6 +154,6 @@ export default {
  */
 export const readCookieMobileApp = key => {
   const apiConfigObj = getAPIConfig();
-  const res = CookieManager.get(apiConfigObj.domain);
-  return res[key];
+  const res = apiConfigObj.domain ? CookieManager.get(apiConfigObj.domain) : null;
+  return res && res[key];
 };
