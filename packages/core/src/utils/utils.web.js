@@ -244,7 +244,7 @@ export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
     routerPush(window.location, '/home', newSiteId);
   }
-}
+};
 
 export const languageRedirect = (newLanguage, oldLanguage) => {
   if (newLanguage && newLanguage !== oldLanguage) {
@@ -257,7 +257,7 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
       window.location = href;
     }
   }
-}
+};
 
 export default {
   importGraphQLClientDynamically,

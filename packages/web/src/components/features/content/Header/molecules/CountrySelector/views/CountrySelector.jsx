@@ -7,7 +7,6 @@ import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
 import CountrySelectorModal from './CountrySelectorModal';
 import style from '../styles/CountrySelector.styles';
 
-
 /**
  * @class CountrySelector - Invokes a country, language, currency change selector
  * from the global header and footer
