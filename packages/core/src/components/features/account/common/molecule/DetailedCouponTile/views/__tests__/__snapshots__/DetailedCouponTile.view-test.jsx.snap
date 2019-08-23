@@ -50,7 +50,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-XL"
+        className="elem-mb-SM"
         color="text.primary"
         component="p"
         data-locator="accountoverview-myplacerewatdstile-rewardvalue"
@@ -100,7 +100,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             color="text.primary"
             component="p"
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"
@@ -113,7 +113,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             className={null}
             color="text.primary"
             component="p"
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"
@@ -219,7 +219,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-XL"
+        className="elem-mb-SM"
         color="text.primary"
         component="p"
         data-locator="accountoverview-myplacerewatdstile-rewardvalue"
@@ -297,7 +297,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             color="text.primary"
             component="p"
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"
@@ -310,7 +310,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             className={null}
             color="text.primary"
             component="p"
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"
@@ -428,7 +428,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-XL"
+        className="elem-mb-SM"
         color="text.primary"
         component="p"
         data-locator="accountoverview-myplacerewatdstile-rewardvalue"
@@ -506,7 +506,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             color="text.primary"
             component="p"
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"
@@ -519,7 +519,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             className={null}
             color="text.primary"
             component="p"
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
             letterSpacing="normal"

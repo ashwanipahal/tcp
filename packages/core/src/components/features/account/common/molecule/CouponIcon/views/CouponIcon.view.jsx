@@ -26,7 +26,7 @@ export const CouponIcon = ({ className, coupon, labels }) => {
   return (
     <BodyCopy
       component="div"
-      className={`${className} coupon ${couponClass} elem-mr-XS`}
+      className={`${className} coupon ${couponClass}`}
       fontSize="fs13"
       fontWeight="black"
       color="white"

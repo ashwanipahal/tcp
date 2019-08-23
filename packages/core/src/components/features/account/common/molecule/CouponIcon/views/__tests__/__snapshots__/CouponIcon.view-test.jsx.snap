@@ -2,7 +2,7 @@
 
 exports[`CouponIcon should render correctly 1`] = `
 <Styled(BodyCopy)
-  className=" coupon coupon-reward elem-mr-XS"
+  className=" coupon coupon-reward"
   color="white"
   component="div"
   fontFamily="primary"

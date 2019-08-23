@@ -13,6 +13,7 @@ exports[`CouponTile Component should render correctly 1`] = `
   textAlign="left"
 >
   <Styled(CouponIcon)
+    className="elem-mr-XS"
     coupon={Object {}}
   />
   <Styled(BodyCopy)

@@ -9,7 +9,7 @@ import CouponIconComponent from '../../CouponIcon/views/CouponIcon.view';
 export const CouponTile = ({ className, coupon, labels, commonLabels }) => {
   return (
     <BodyCopy component="li" className={`${className} elem-mb-SM`}>
-      <CouponIconComponent labels={commonLabels} coupon={coupon} />
+      <CouponIconComponent labels={commonLabels} coupon={coupon} className="elem-mr-XS" />
       <BodyCopy component="div" className="elem-pt-XS">
         <BodyCopy
           fontSize="fs12"

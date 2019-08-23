@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Row from '@tcp/core/src/components/common/atoms/Row';
+import Col from '@tcp/core/src/components/common/atoms/Col';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isCanada } from '@tcp/core/src/utils';
+import FPO from '@tcp/core/src/components/common/atoms/FPO';
+
 import styles from '../styles/PlaceRewards.section.style';
-import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../../common/organism/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
-import { isCanada } from '../../../../../../../utils';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
-import FPO from '../../../../../../common/atoms/FPO';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   const isCA = isCanada();

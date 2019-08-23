@@ -98,7 +98,7 @@ export class DetailedCouponTile extends React.Component {
               fontSize="fs14"
               fontWeight="extrabold"
               title={coupon.title}
-              className="elem-mb-XL"
+              className="elem-mb-SM"
               textAlign="center"
               data-locator="accountoverview-myplacerewatdstile-rewardvalue"
             >
@@ -117,10 +117,11 @@ export class DetailedCouponTile extends React.Component {
                 <BodyCopy
                   fontSize="fs14"
                   data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+                  fontFamily="secondary"
                 >
                   {`${isPlaceCash ? labels.lbl_coupon_couponValid : labels.lbl_coupon_couponUseBy}`}
                 </BodyCopy>
-                <BodyCopy fontSize="fs14">
+                <BodyCopy fontSize="fs14" fontFamily="secondary">
                   {isPlaceCash
                     ? `${coupon.effectiveDate} - ${coupon.expirationDate}`
                     : `${coupon.expirationDate}`}
