@@ -3,6 +3,8 @@ import {
   getSendOrderUpdate,
   getShippingLabels,
   getSmsSignUpLabels,
+  getAddressFields,
+  getAddressPhoneNo,
 } from '../ShippingPage.selectors';
 
 describe('#Shipping Page Selectors', () => {
@@ -59,6 +61,23 @@ describe('#Shipping Page Selectors', () => {
 
     expect(getSmsSignUpFields(state)).toEqual(state.form.checkoutShipping.values.smsSignUp);
   });
+
+  it('#getAddressFields', () => {
+    const state = {
+      form: {
+        checkoutShipping: {
+          values: {
+            address: {
+              phoneNumber: 12324,
+            },
+          },
+        },
+      },
+    };
+
+    expect(getAddressFields(state)).toEqual(state.form.checkoutShipping.values.address);
+  });
+
   it('#getSendOrderUpdate', () => {
     const state = {
       form: {
@@ -73,5 +92,20 @@ describe('#Shipping Page Selectors', () => {
     };
 
     expect(getSendOrderUpdate(state)).toEqual(false);
+  });
+  it('#getAddressPhoneNo', () => {
+    const state = {
+      form: {
+        checkoutShipping: {
+          values: {
+            address: {
+              phoneNumber: 12324,
+            },
+          },
+        },
+      },
+    };
+
+    expect(getAddressPhoneNo(state)).toEqual(12324);
   });
 });

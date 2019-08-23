@@ -143,7 +143,8 @@ export default class ProductsOperator {
       if (currItm.categoryId === targetId) {
         newTrgtChildItm =
           currItm.subCategories.Categories &&
-          currItm.subCategories.Categories.length &&
+          currItm.subCategories.Categories.items &&
+          currItm.subCategories.Categories.items.length &&
           currItm.menuItems;
         return newTrgtChildItm;
       }
