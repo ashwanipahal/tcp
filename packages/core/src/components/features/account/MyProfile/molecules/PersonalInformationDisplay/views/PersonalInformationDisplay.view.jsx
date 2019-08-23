@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import { MONTH_DISPLAY_MAP } from '../../../myProfile.constants';
+import { MONTH_DISPLAY_MAP } from '../../../../../../../utils/parseDate';
 import { isCanada } from '../../../../../../../utils';
 
 export const MyPlaceRewards = (airMiles, MyPlaceNumber, labels) => {
@@ -33,7 +33,7 @@ export const PersonalInformationDisplay = ({
   const birthdayArray = userBirthday ? userBirthday && userBirthday.split('|') : '';
   const userBirthdayDisplay =
     birthdayArray && birthdayArray.length === 2
-      ? `${labels.lbl_profile_edit_birthday_heading}${MONTH_DISPLAY_MAP[birthdayArray[0]]} ${
+      ? `${labels.lbl_profile_edit_birthday_heading} ${MONTH_DISPLAY_MAP[birthdayArray[0]]} ${
           birthdayArray[1]
         }`
       : '';

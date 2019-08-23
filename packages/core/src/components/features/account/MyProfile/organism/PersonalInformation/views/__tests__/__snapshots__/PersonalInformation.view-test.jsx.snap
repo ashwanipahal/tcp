@@ -5,7 +5,33 @@ exports[`PersonalInformation component should render correctly 1`] = `
   <Styled(AccountOverviewTile)
     ctaTitle="Edit personal Info"
     dataLocator="pi-editpersonalinfo"
-    title="Personal Information"
+  >
+    <PersonalInformationDisplay
+      MyPlaceNumber="XXXXXXX"
+      UserEmail="test"
+      UserFullName="test"
+      UserPhoneNumber="test"
+      airMiles="XXXXXXX"
+      className=""
+      labels={
+        Object {
+          "lbl_profile_edit_mailing_info": "Edit mailing Info",
+          "lbl_profile_edit_personal_info": "Edit personal Info",
+          "lbl_profile_mailing_address": "Mailing Information",
+          "llbl_profile_personal_information": "Personal Information",
+        }
+      }
+      mailingAddress={Object {}}
+      userBirthday="feb 2019"
+    />
+  </Styled(AccountOverviewTile)>
+</Fragment>
+`;
+
+exports[`PersonalInformation component should render emptyu correctly 1`] = `
+<Fragment>
+  <Styled(AccountOverviewTile)
+    dataLocator="pi-editpersonalinfo"
   >
     <PersonalInformationDisplay
       MyPlaceNumber=""
@@ -14,12 +40,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
       UserPhoneNumber=""
       airMiles=""
       className=""
-      labels={
-        Object {
-          "lbl_profile_edit_personal_info": "Edit personal Info",
-          "lbl_profile_personal_information": "Personal Information",
-        }
-      }
+      labels={Object {}}
       mailingAddress={Object {}}
       userBirthday=""
     />
