@@ -64,6 +64,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
         className="size-selector"
       >
         <Field
+          className="size-field"
           component={[Function]}
           dataLocator="addnewaddress-state"
           id="size"

@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Row, Button } from '@tcp/core/src/components/common/atoms';
+import { Row, Button, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import ColorSelector from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ColorSelect/views/ColorSelect.view';
 import endpoints from '@tcp/core/src/service/endpoint';
+import { getIconPath } from '@tcp/core/src/utils';
 import style, { buttonCustomStyles } from './ProductCustomizeForm.style';
 
 // @flow
@@ -28,6 +29,9 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
       selectedFit: '',
       selectedSize: '',
       selectedQuantity: '',
+      isErrorMessageDisplayed: false,
+      fitChanged: false,
+      persistSelectedFit: '',
     };
   }
 
@@ -38,6 +42,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
       selectedFit: initialValues.Fit,
       selectedSize: initialValues.Size,
       selectedQuantity: initialValues.Qty,
+      persistSelectedFit: initialValues.Fit,
     });
   }
 
@@ -109,7 +114,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     );
   };
 
-  getSizeOptions = (colorItem, selectedFit?) => {
+  getSizeOptions = (colorItem, selectedFit?, fitChanged) => {
     let sizeOptions = [];
     if (colorItem) {
       colorItem.get('fits').forEach(fit => {
@@ -119,6 +124,12 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               displayName: size.get('sizeName'),
               id: size.get('sizeName'),
             }));
+            if (fitChanged) {
+              sizeOptions = sizeOptions.unshift({
+                displayName: 'Select',
+                id: 'Select',
+              });
+            }
           }
         } else {
           sizeOptions = fit.get('sizes').map(size => ({
@@ -138,15 +149,33 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   fitChange = e => {
-    this.setState({
-      selectedFit: e.target.value,
-    });
+    const { selectedSize, persistSelectedFit } = this.state;
+    if (persistSelectedFit !== e.target.value) {
+      this.setState({
+        selectedFit: e.target.value,
+        fitChanged: true,
+      });
+    } else {
+      this.setState({
+        selectedFit: e.target.value,
+        fitChanged: false,
+      });
+    }
+    if (selectedSize !== 'Select') {
+      this.displayErrorMessage(false);
+    }
   };
 
   sizeChange = e => {
+    const { selectedFit } = this.state;
     this.setState({
+      persistSelectedFit: selectedFit,
       selectedSize: e.target.value,
+      fitChanged: false,
     });
+    if (e.target.value !== 'Select') {
+      this.displayErrorMessage(false);
+    }
   };
 
   quantityChange = e => {
@@ -164,9 +193,21 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.value}` : `${labels.size}`;
   };
 
+  displayErrorMessage = displayError => {
+    this.setState({
+      isErrorMessageDisplayed: displayError,
+    });
+  };
+
   render() {
     const { colorFitsSizesMap, item, labels, formVisiblity } = this.props;
-    const { selectedColor, selectedFit, selectedQuantity } = this.state;
+    const {
+      selectedColor,
+      selectedFit,
+      selectedQuantity,
+      isErrorMessageDisplayed,
+      fitChanged,
+    } = this.state;
 
     const colorList = this.getColorOptions(colorFitsSizesMap);
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
@@ -175,7 +216,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const sizeList =
       selectedColorElement &&
       (hasFits
-        ? this.getSizeOptions(selectedColorElement.get(0), selectedFit)
+        ? this.getSizeOptions(selectedColorElement.get(0), selectedFit, fitChanged)
         : this.getSizeOptions(selectedColorElement.get(0)));
 
     const { className } = this.props;
@@ -216,6 +257,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             <div className="size-selector">
               <Field
                 width={69}
+                className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
                 id="size"
                 name={this.getSizeLabel(item, labels)}
                 component={MiniBagSelect}
@@ -223,6 +265,18 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                 onChange={this.sizeChange}
                 dataLocator="addnewaddress-state"
               />
+              {isErrorMessageDisplayed && (
+                <div className="size-error">
+                  <Image
+                    alt="Error"
+                    className="error-image"
+                    src={getIconPath('alert-triangle')}
+                    data-locator="productcustomizeform-error-icon"
+                  />
+                  Please select a size
+                  {/* will come from label */}
+                </div>
+              )}
             </div>
             <div className="qty-selector">
               <Field
@@ -242,7 +296,12 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               type="submit"
               onClick={e => {
                 e.preventDefault();
-                handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
+                if (fitChanged) {
+                  this.displayErrorMessage(fitChanged);
+                } else {
+                  this.displayErrorMessage(fitChanged);
+                  handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
+                }
               }}
             >
               {/* <u>{labels.update}</u> */}
