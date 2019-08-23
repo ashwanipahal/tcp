@@ -12,13 +12,18 @@ type Props = {
   openLoginOverlay: Function,
 };
 
+/**
+ * @function TrackOrderBottomSection The TrackOrderBottomSection component shows the Track Order Modal bottom section.
+ * This component includes the Track order bottom view with all the required.
+ * @param {props} props object with details to render in modal
+ */
 class TrackOrderBottomSection extends React.Component<Props> {
   handleDefaultLinkClick(e) {
     const { openLoginOverlay, setModalMountState } = this.props;
     e.preventDefault();
     setModalMountState({ state: false });
     openLoginOverlay({
-      component: e.target.id,
+      component: 'login',
       variation: 'primary',
     });
   }
@@ -48,7 +53,6 @@ class TrackOrderBottomSection extends React.Component<Props> {
           >
             <Anchor
               data-locator="track_order_login"
-              id="login"
               underline
               anchorVariation="primary"
               fontSize="fs12"

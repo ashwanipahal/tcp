@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TrackOrderViewVanilla } from '../TrackOrder.view';
+import { TrackOrderViewVanilla } from '../views/TrackOrder.view';
 
 describe('TrackOrderView component', () => {
   it('should renders correctly', () => {

@@ -13,8 +13,8 @@ import {
   getShowNotificationState,
 } from './TrackOrder.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
-// import labels from './TrackOrder.labels';
 import { routerPush } from '../../../../../utils';
+import ROUTE_PATH from '../../../../../config/route.config';
 
 // @flow
 type Props = {
@@ -30,6 +30,7 @@ type Props = {
   setTrackOrderModalMountState: Function,
   showNotification: string,
   onChangeForm: Function,
+  toggleSubmit: Boolean,
 };
 export class TrackOrderContainer extends React.PureComponent<Props> {
   componentDidUpdate() {
@@ -51,7 +52,10 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
    * @param {boolean} isGuest - check if it is guest login or signed in user.
    */
   trackOrderDetail = (orderId = '', encryptedEmailAddress = '', isUserLoggedIn = false) => {
-    if (!isUserLoggedIn) routerPush(`/account/order-detail/${orderId}/${encryptedEmailAddress}`);
+    if (!isUserLoggedIn)
+      routerPush(
+        ROUTE_PATH.guestOrderDetails({ pathSuffix: `${orderId}/${encryptedEmailAddress}` })
+      );
   };
 
   handleSubmit(e) {
@@ -74,6 +78,7 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
       setTrackOrderModalMountState,
       showNotification,
       onChangeForm,
+      toggleSubmit,
     } = this.props;
     return (
       <TrackOrderView
@@ -87,6 +92,7 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
         className="TrackOrder__Modal"
         showNotification={showNotification}
         onChangeForm={onChangeForm}
+        toggleSubmit={toggleSubmit}
       />
     );
   }
@@ -102,6 +108,7 @@ export const mapStateToProps = state => {
     orderId: getOrderId(state),
     orderDetailResponse: getOrderDetail(state),
     showNotification: getShowNotificationState(state),
+    toggleSubmit: getEmailId(state) || getOrderId(state),
   };
 };
 

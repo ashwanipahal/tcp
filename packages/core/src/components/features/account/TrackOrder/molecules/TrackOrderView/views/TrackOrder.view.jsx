@@ -1,9 +1,9 @@
 import React from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import Notification from '../../../../common/molecules/Notification';
-import TrackOrderForm from '../molecules/TrackOrderForm';
-import TrackOrderTopSection from '../molecules/TrackOrderTopSection';
-import TrackOrderBottomSection from '../molecules/TrackOrderBottomSection';
+import Notification from '../../../../../../common/molecules/Notification';
+import TrackOrderForm from '../../TrackOrderForm';
+import TrackOrderTopSection from '../../TrackOrderTopSection';
+import TrackOrderBottomSection from '../../TrackOrderBottomSection';
 import styles from '../styles/TrackOrderView.style';
 
 // @flow
@@ -15,6 +15,7 @@ type Props = {
   setModalMountState: Function,
   showNotification: string,
   onChangeForm: Function,
+  toggleSubmit: boolean,
 };
 export const TrackOrderView = ({
   labels,
@@ -24,6 +25,7 @@ export const TrackOrderView = ({
   setModalMountState,
   showNotification,
   onChangeForm,
+  toggleSubmit,
 }: Props) => {
   return (
     <React.Fragment>
@@ -41,6 +43,7 @@ export const TrackOrderView = ({
         handleSubmit={onSubmit}
         className="trackorder__modal__form"
         onChangeForm={onChangeForm}
+        toggleSubmit={toggleSubmit}
       />
       <TrackOrderBottomSection
         labels={labels}

@@ -38,7 +38,7 @@ class OpenLoginModal extends React.Component<Props> {
   };
 
   render() {
-    const { className, openState, variation } = this.props;
+    const { className, openState, variation, handleContinueAsGuest } = this.props;
     const { currentForm, component } = this.state;
     return (
       <Modal
@@ -57,6 +57,7 @@ class OpenLoginModal extends React.Component<Props> {
             currentForm={currentForm}
             closeModal={this.onClose}
             setLoginModalMountState={this.openForgotPasswordModal}
+            handleContinueAsGuest={handleContinueAsGuest}
           />
         ) : (
           <CreateAccount
@@ -72,6 +73,7 @@ class OpenLoginModal extends React.Component<Props> {
 OpenLoginModal.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   setLoginModalMountState: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func.isRequired,
 };
 
 export default OpenLoginModal;

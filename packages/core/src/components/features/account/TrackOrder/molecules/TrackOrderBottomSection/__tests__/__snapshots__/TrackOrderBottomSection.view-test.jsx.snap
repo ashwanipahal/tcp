@@ -55,7 +55,6 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
         data-locator="track_order_login"
         fontSize="fs12"
         href="#"
-        id="login"
         onClick={[Function]}
         underline={true}
       />

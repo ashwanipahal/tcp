@@ -4,7 +4,6 @@ import {
   getOrderDetail,
   setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
-
 import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 
 import {
@@ -50,8 +49,8 @@ const mapStateToProps = state => {
     referenceID,
     emailSignupLabels,
     smsSignupLabels,
-    isUserLoggedIn: getUserLoggedInState(state),
     loginModalMountedState: loginModalOpenState(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 

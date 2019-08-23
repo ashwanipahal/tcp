@@ -55,37 +55,37 @@ exports[`FooterMiddleMobile component renders correctly 1`] = `
   >
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
@@ -149,37 +149,37 @@ exports[`FooterMiddleMobile component renders correctly 2`] = `
   >
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       listArray={Array []}
       openTrackOrder={[Function]}
     />

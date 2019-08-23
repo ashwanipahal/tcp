@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from '../../../../common/hoc/withStyles';
 import Modal from '../../../../common/molecules/Modal';
-import TrackOrderViewTemplate from './TrackOrder.view';
+import TrackOrderViewTemplate from '../molecules/TrackOrderView';
 import styles from '../styles/TrackOrderModal.style';
 
 // @flow
@@ -14,18 +14,17 @@ type Props = {
   errorMessage: string,
   onChangeForm: Function,
   showNotification: string,
+  toggleSubmit: boolean,
 };
 
 /**
  * @function TrackOrderModal The TrackOrderModal component shows the Track Order Modal.
  * This component includes the Track order form view and track order button.
- * @param {data} data object with details to render in modal
+ * @param {props} props object with details to render in modal
  */
 class TrackOrderModal extends React.Component<Props> {
   /**
-   * @function onCloseModal  Used to render the JSX of the component
-   * @param {closeModalComponent} closeModalComponent function to close the modal.
-   * @return {[Function]} function called
+   * @function onCloseModal  Used to close the modal
    */
   onClose = () => {
     const { setModalMountState } = this.props;
@@ -47,6 +46,7 @@ class TrackOrderModal extends React.Component<Props> {
       errorMessage,
       showNotification,
       onChangeForm,
+      toggleSubmit,
     } = this.props;
     return (
       <Modal
@@ -69,6 +69,7 @@ class TrackOrderModal extends React.Component<Props> {
           setModalMountState={setModalMountState}
           showNotification={showNotification}
           onChangeForm={onChangeForm}
+          toggleSubmit={toggleSubmit}
         />
       </Modal>
     );

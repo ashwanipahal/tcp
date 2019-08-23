@@ -10,7 +10,7 @@ const FooterMiddleDesktop = ({
   setLoginModalMountState,
   loginModalMountedState,
   openTrackOrder,
-  isUserLoggedIn,
+  isLoggedIn,
 }) => {
   let numberOfNavLinkCols = navLinks.length;
 
@@ -70,7 +70,7 @@ const FooterMiddleDesktop = ({
               links: navLinks[i].links,
             }}
             colNum={i}
-            isUserLoggedIn={isUserLoggedIn}
+            isLoggedIn={isLoggedIn}
             openTrackOrder={openTrackOrder}
             loginModalMountedState={loginModalMountedState}
             setLoginModalMountState={setLoginModalMountState}
@@ -133,11 +133,13 @@ const FooterMiddleDesktop = ({
         ''
       )}
       {navLinkColumns}
-      <OpenLoginModal
-        variation="favorites"
-        setLoginModalMountState={setLoginModalMountState}
-        openState={loginModalMountedState}
-      />
+      {!isLoggedIn && (
+        <OpenLoginModal
+          variation="favorites"
+          setLoginModalMountState={setLoginModalMountState}
+          openState={loginModalMountedState}
+        />
+      )}
     </Fragment>
   );
 };
@@ -146,14 +148,13 @@ FooterMiddleDesktop.propTypes = {
   navLinks: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
   openTrackOrder: PropTypes.func,
-  isUserLoggedIn: PropTypes.bool,
   setLoginModalMountState: PropTypes.bool.isRequired,
   loginModalMountedState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 FooterMiddleDesktop.defaultProps = {
   openTrackOrder: () => null,
-  isUserLoggedIn: false,
 };
 
 export default FooterMiddleDesktop;

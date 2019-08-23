@@ -7,7 +7,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
   <Styled(FooterTopCandidateA)
     className="footer-class"
     copyrightText=""
-    isUserLoggedIn={false}
+    isLoggedIn={false}
     legalLinks={Array []}
     navLinks={Array []}
     openEmailSignUpModal={[Function]}
@@ -22,7 +22,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
   >
     <FooterMiddleMobile
       className="footer-class"
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       navLinkItems={Array []}
       openTrackOrder={[Function]}
     />
@@ -32,7 +32,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
   >
     <FooterMiddleDesktop
       className="footer-class"
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       navLinks={Array []}
       openTrackOrder={[Function]}
     />
@@ -123,7 +123,7 @@ exports[`Footer component Footer component renders correctly without props 1`] =
 <footer>
   <Styled(FooterTopCandidateA)
     copyrightText=""
-    isUserLoggedIn={false}
+    isLoggedIn={false}
     legalLinks={Array []}
     navLinks={Array []}
     openEmailSignUpModal={[Function]}
@@ -137,7 +137,7 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     fullBleed={true}
   >
     <FooterMiddleMobile
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       navLinkItems={Array []}
       openTrackOrder={[Function]}
     />
@@ -146,7 +146,7 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     className="footer-middle desktop"
   >
     <FooterMiddleDesktop
-      isUserLoggedIn={false}
+      isLoggedIn={false}
       navLinks={Array []}
       openTrackOrder={[Function]}
     />
