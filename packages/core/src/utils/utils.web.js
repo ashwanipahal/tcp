@@ -42,9 +42,9 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const routerPush = (href, as) => {
+export const routerPush = (href, as, query) => {
   const siteId = getSiteId();
-  return Router.push(href, `/${siteId}${as}`);
+  return Router.push(href, `/${siteId}${as}`, { query });
 };
 
 export const identifyBrand = () => {
