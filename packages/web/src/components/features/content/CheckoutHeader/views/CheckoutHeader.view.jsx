@@ -102,3 +102,4 @@ CheckoutHeader.propTypes = {
 CheckoutHeader.defaultProps = {};
 
 export default withStyles(CheckoutHeader, style);
+export { CheckoutHeader as CheckoutHeaderVanilla };

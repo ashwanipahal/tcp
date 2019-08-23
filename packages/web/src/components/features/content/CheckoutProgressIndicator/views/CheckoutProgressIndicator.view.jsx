@@ -92,3 +92,4 @@ export class CheckoutProgressIndicator extends React.Component {
 }
 
 export default withStyles(CheckoutProgressIndicator, styles);
+export { CheckoutProgressIndicator as CheckoutProgressIndicatorVanilla };
