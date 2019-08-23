@@ -146,7 +146,12 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     );
   }
 
-  getOverlap(carouselConfig, buttonPosition) {
+  /**
+   * @function getOverlapComponent This function return the Play Or Pause Button with pagination.
+   * @Component is configurable : leftBottom , rightBottom  and centerBottom .
+   */
+
+  getOverlapComponent(carouselConfig, buttonPosition) {
     if (buttonPosition === 'right') {
       return (
         <View>
@@ -182,6 +187,9 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     );
   }
 
+  /**
+   * @function getBottomView This function return the Play Or Pause Button.
+   */
   getBottomView(carouselConfig, showDots) {
     return (
       <PaginationWrapper>
@@ -321,7 +329,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         {data.length > 1 && (
           <View>
             {showDots && overlap
-              ? this.getOverlap(carouselConfig, buttonPosition)
+              ? this.getOverlapComponent(carouselConfig, buttonPosition)
               : this.getBottomView(carouselConfig, showDots)}
           </View>
         )}

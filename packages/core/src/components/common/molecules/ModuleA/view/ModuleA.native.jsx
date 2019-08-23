@@ -13,17 +13,35 @@ import {
 } from '../ModuleA.style.native';
 import config from '../../ModuleN/ModuleN.config';
 
+// TODO: keys will be changed once we get the actual data from CMS
+const { ctaTypes } = config;
+
+const variant = 'tcp';
+
+/**
+ * This method return the ButtonList View according to the different variation .
+ *  @ctaType are four types : 'imageCTAList' ,'stackedCTAList','scrollCTAList','linkCTAList'.
+ *  @naviagtion is used to navigate the page.
+ */
+const renderView = (ctaType, navigation, ctaItems, locator, color) => {
+  return (
+    <ButtonList
+      buttonListVariation={ctaType}
+      navigation={navigation}
+      buttonsData={ctaItems}
+      locator={locator}
+      color={color}
+    />
+  );
+};
+
 /**
  * @param {object} props : Props for Module A multi type of banner list, button list, header text.
  * @desc This is Module A global component. It has capability to display
  * featured content module with 1 backckground color tiles ,links and a CTA Button list.
  * Author can surface teaser content leading to corresponding pages.
+ * To manage the TCP And Gymboree View .
  */
-
-// TODO: keys will be changed once we get the actual data from CMS
-const { ctaTypes } = config;
-
-const variant = 'tcp';
 
 const ModuleA = (props: Props) => {
   const {
@@ -49,48 +67,26 @@ const ModuleA = (props: Props) => {
 
       {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
-          <ButtonList
-            buttonListVariation={ctaType}
-            navigation={navigation}
-            buttonsData={ctaItems}
-            locator="moduleA_cta_links"
-            color="black"
-          />
+          {renderView(ctaType, navigation, ctaItems, 'moduleA_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
       {ctaType === 'stackedCTAList' && (
         <ContainerView>
-          <ButtonList
-            buttonListVariation={ctaType}
-            navigation={navigation}
-            buttonsData={ctaItems}
-            locator="moduleA_cta_links"
-            color="gray"
-          />
-          <Border background="text" />
+          {renderView(ctaType, navigation, ctaItems, 'stacked_cta_list', 'gray')}
+          <Border background="gray" />
         </ContainerView>
       )}
 
       {ctaType === 'scrollCTAList' && (
         <ButtonContainer>
-          <ButtonList
-            buttonListVariation={ctaType}
-            navigation={navigation}
-            buttonsData={ctaItems}
-            locator="moduleA_cta_links"
-            color="gray"
-          />
+          {renderView(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>
       )}
+
       {ctaType === 'linkCTAList' && (
         <ButtonLinksContainer>
-          <ButtonList
-            buttonListVariation={ctaType}
-            navigation={navigation}
-            buttonsData={ctaItems}
-            locator="moduleA_cta_links"
-          />
+          {renderView(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
         </ButtonLinksContainer>
       )}
     </Container>

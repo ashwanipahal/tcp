@@ -47,11 +47,11 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
             },
             "textItems": Array [
               Object {
-                "style": "style6",
-                "text": "60-70% OFF",
+                "style": "percentage_wrapped_large",
+                "text": "60-70 % OFF",
               },
               Object {
-                "style": "style4",
+                "style": "text_normal",
                 "text": "No Exclusions",
               },
             ],

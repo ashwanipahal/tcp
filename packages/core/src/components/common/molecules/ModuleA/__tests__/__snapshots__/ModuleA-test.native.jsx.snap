@@ -58,7 +58,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
               "textItems": Array [
                 Object {
                   "style": "percentage_wrapped_extra_large",
-                  "text": "60%OFF",
+                  "text": "60 % OFF",
                 },
                 Object {
                   "style": "small_text_bold",
@@ -140,7 +140,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
               "textItems": Array [
                 Object {
                   "style": "percentage_wrapped_extra_large",
-                  "text": "60%OFF",
+                  "text": "60 % OFF",
                 },
                 Object {
                   "style": "small_text_bold",
@@ -222,7 +222,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
               "textItems": Array [
                 Object {
                   "style": "percentage_wrapped_extra_large",
-                  "text": "60%OFF",
+                  "text": "60 % OFF",
                 },
                 Object {
                   "style": "small_text_bold",
@@ -304,7 +304,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
               "textItems": Array [
                 Object {
                   "style": "percentage_wrapped_extra_large",
-                  "text": "60%OFF",
+                  "text": "60 % OFF",
                 },
                 Object {
                   "style": "small_text_bold",
@@ -429,10 +429,10 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
         ]
       }
       color="gray"
-      locator="moduleA_cta_links"
+      locator="stacked_cta_list"
     />
     <Styled(View)
-      background="text"
+      background="gray"
     />
   </Styled(View)>
 </Styled(View)>

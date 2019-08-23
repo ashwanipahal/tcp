@@ -133,7 +133,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "percentage_wrapped_extra_large",
-                    "text": "60%OFF",
+                    "text": "60 % OFF",
                   },
                   Object {
                     "style": "small_text_bold",
@@ -262,7 +262,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "percentage_wrapped_extra_large",
-                    "text": "60%OFF",
+                    "text": "60 % OFF",
                   },
                   Object {
                     "style": "small_text_bold",
@@ -391,7 +391,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "percentage_wrapped_extra_large",
-                    "text": "60%OFF",
+                    "text": "60 % OFF",
                   },
                   Object {
                     "style": "small_text_bold",
@@ -520,7 +520,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "percentage_wrapped_extra_large",
-                    "text": "60%OFF",
+                    "text": "60 % OFF",
                   },
                   Object {
                     "style": "small_text_bold",

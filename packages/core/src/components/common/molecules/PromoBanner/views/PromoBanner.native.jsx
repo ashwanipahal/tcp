@@ -1,13 +1,7 @@
 // @flow
 import React from 'react';
 import { Anchor } from '../../../atoms';
-import {
-  BodyCopy,
-  Container,
-  ContainerView,
-  Style8ContainerView,
-  PromoText,
-} from '../PromoBanner.style.native';
+import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
 
 type Props = {
   ribbonBanner: Array<Object>,
@@ -22,6 +16,7 @@ type PercentageStyleProps = {
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
 export const bodyCopyStyles = {
+  // large_text_normal
   style1: props => (
     <BodyCopy
       color="text.primary"
@@ -31,6 +26,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  // large_text_bold
   style2: props => (
     <BodyCopy
       color="text.primary"
@@ -52,7 +48,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style4: props => (
+  text_normal: props => (
     <BodyCopy fontSize="fs16" color="white" fontFamily="primary" textAlign="center" {...props} />
   ),
   style5: props => (
@@ -66,7 +62,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style6: props => <PercentageStyle {...props} />,
+  percentage_wrapped_large: props => <PercentageStyle {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
   small_text_bold: props => (
     <BodyCopy
@@ -99,7 +95,6 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style11: props => <AllTextInRowStyle {...props} />,
   gymboree_description: props => (
     <BodyCopy
       fontSize="fs16"
@@ -158,7 +153,7 @@ const PromoBanner = (props: Props) => {
 const PercentageStyle = (props: PercentageStyleProps) => {
   const { text } = props;
 
-  const strArray = text && text.split('%');
+  const strArray = text && text.split(' ');
   const bodyCopyStyle = { height: 33 };
   const bodyCopyStyle1 = { height: 58, marginTop: 8 };
 
@@ -180,7 +175,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
           fontWeight="black"
           color="white"
           fontFamily="primary"
-          text="%"
+          text={strArray && strArray[1]}
           lineHeight="42px"
           style={bodyCopyStyle}
         />
@@ -191,7 +186,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
           fontFamily="primary"
           textAlign="center"
           lineHeight="20px"
-          text={strArray && strArray[1]}
+          text={strArray && strArray[2]}
         />
       </ContainerView>
     </Container>
@@ -205,7 +200,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
 const PercentagePinkStyle = (props: PercentageStyleProps) => {
   const { text } = props;
 
-  const strArray = text && text.split('%');
+  const strArray = text && text.split(' ');
   const bodyCopyStyle = { height: 85, fontSize: 99 };
   const bodyCopyStyle1 = { height: 131, marginTop: 8, fontSize: 153 };
   const bodyCopyStyle2 = { height: 42 };
@@ -226,7 +221,7 @@ const PercentagePinkStyle = (props: PercentageStyleProps) => {
           fontWeight="black"
           color="pink.400"
           fontFamily="primary"
-          text="%"
+          text={strArray && strArray[1]}
           lineHeight="99px"
           style={bodyCopyStyle}
         />
@@ -237,41 +232,11 @@ const PercentagePinkStyle = (props: PercentageStyleProps) => {
           fontFamily="primary"
           textAlign="center"
           lineHeight="42px"
-          text={strArray && strArray[1]}
+          text={strArray && strArray[2]}
           style={bodyCopyStyle2}
         />
       </ContainerView>
     </Container>
-  );
-};
-
-/**
- * This function return the Promobanner two text Style combination.
- */
-const AllTextInRowStyle = (props: PercentageStyleProps) => {
-  const { text } = props;
-  const strArray = text && text.split('-');
-  return (
-    <Style8ContainerView>
-      <PromoText>
-        <BodyCopy
-          fontWeight="black"
-          color="black"
-          fontFamily="primary"
-          textAlign="center"
-          lineHeight="16px"
-          text={strArray && strArray[0]}
-        />
-        <BodyCopy
-          fontSize="fs16"
-          color="gray.900"
-          fontFamily="primary"
-          textAlign="left"
-          lineHeight="16px"
-          text={strArray && strArray[1]}
-        />
-      </PromoText>
-    </Style8ContainerView>
   );
 };
 
