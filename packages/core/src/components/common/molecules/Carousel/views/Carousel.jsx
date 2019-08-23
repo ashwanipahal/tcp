@@ -6,7 +6,7 @@ import { Image } from '../../../atoms';
 import { getIconPath } from '../../../../../utils';
 import CarouselStyle from '../Carousel.style';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
@@ -125,5 +125,5 @@ class Carousel extends React.PureComponent<Props, State> {
   }
 }
 
-export default errorBoundary(withStyles(Carousel, CarouselStyle));
+export default withStyles(errorBoundary(Carousel), CarouselStyle);
 export { Carousel as CarouselVanilla };
