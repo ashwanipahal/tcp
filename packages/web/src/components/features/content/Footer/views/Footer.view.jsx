@@ -47,6 +47,7 @@ class Footer extends React.Component {
       smsSignup,
       loginModalMountedState,
       setLoginModalMountState,
+      isLoggedIn,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -68,6 +69,7 @@ class Footer extends React.Component {
             setLoginModalMountState={setLoginModalMountState}
             className={className}
             navLinks={navLinks}
+            isLoggedIn={isLoggedIn}
           />
         </Row>
         <div className="footer-bottom">
