@@ -119,4 +119,8 @@ export default {
     CHECKED_BORDER: '#1a1a1a',
     TICK_COLOR: '#fff',
   },
+  NAVIGATION: {
+    CIRCULAR_BORDER: '#6b6b6b',
+    L1_BACKGROUND: '#f6f6f6',
+  },
 };

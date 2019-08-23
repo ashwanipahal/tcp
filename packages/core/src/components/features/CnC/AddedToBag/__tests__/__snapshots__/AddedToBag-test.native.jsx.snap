@@ -38,6 +38,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       />
       <AddedToBagActions
         labels={Object {}}
+        showAddTobag={true}
       />
       <Styled(BossBanner)
         labels={Object {}}

@@ -1,47 +1,83 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
+import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.container';
 import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
-import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut/views/RemoveSoldOut.view';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
-const ProductTileWrapper = props => {
-  let isAvailable = false;
-  const { orderItems, bagLabels, labels, pageView, isUserLoggedIn, isPlcc } = props;
-  if (orderItems && orderItems.size > 0) {
-    return (
-      <>
-        {(isAvailable === 'SOLDOUT' || isAvailable === 'UNAVAILABLE') && (
-          <>
-            <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
-            <RemoveSoldOut labels={labels} />
-          </>
-        )}
-
-        {orderItems.map(tile => {
-          const productDetail = getProductDetails(tile);
-          isAvailable = productDetail.miscInfo.store;
-          return (
-            <CartItemTile
-              inheritedStyles={pageView === 'myBag' && productTileCss}
-              labels={labels}
-              productDetail={productDetail}
-              key={`${getProductName(tile)}`}
-              pageView={pageView}
-              isPlcc={isPlcc}
-            />
-          );
-        })}
-      </>
-    );
+class ProductTileWrapper extends React.PureComponent<props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isEditAllowed: true,
+    };
   }
-  return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
-};
+
+  toggleEditAllowance = () => {
+    const { isEditAllowed } = this.state;
+    this.setState({
+      isEditAllowed: !isEditAllowed,
+    });
+  };
+
+  getRemoveString = labels => {
+    return `${labels.removeSoldOut.replace('#remove#', `remove`)}`;
+  };
+
+  render() {
+    const { orderItems, bagLabels, labels, pageView, isUserLoggedIn, isPlcc } = this.props;
+    let isAvailable;
+    const { isEditAllowed } = this.state;
+    if (orderItems && orderItems.size > 0) {
+      const orderItemsView = orderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        if (
+          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
+          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
+        ) {
+          isAvailable = true;
+        }
+        return (
+          <CartItemTile
+            inheritedStyles={pageView === 'myBag' && productTileCss}
+            labels={labels}
+            productDetail={productDetail}
+            key={`${getProductName(tile)}`}
+            pageView={pageView}
+            toggleEditAllowance={this.toggleEditAllowance}
+            isEditAllowed={isEditAllowed}
+            isPlcc={isPlcc}
+          />
+        );
+      });
+      return (
+        <>
+          {isAvailable && (
+            <>
+              <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
+              <BodyCopy
+                className="removeItem"
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs12"
+              >
+                {this.getRemoveString(labels)}
+              </BodyCopy>
+            </>
+          )}
+          {orderItemsView}
+        </>
+      );
+    }
+    return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+  }
+}
 
 ProductTileWrapper.defaultProps = {
   pageView: '',

@@ -15,19 +15,7 @@ exports[`RemoveSoldOut Component ItemAvailability should render correctly 1`] = 
       letterSpacing="normal"
       lineHeight="normal"
       textAlign="left"
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="removeAnchor"
-        data-locator="miniBag-removeItems"
-        fontSizeVariation="medium"
-        noLink={true}
-        to=""
-        underline={true}
-      >
-         undefined 
-      </Styled(Anchor)>
-    </Styled(BodyCopy)>
+    />
   </div>
 </Fragment>
 `;

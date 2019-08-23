@@ -174,7 +174,11 @@ export class AddressForm extends React.PureComponent {
           </Col>
         </Row>
         <Row fullBleed className="elem-mb-XL">
-          <Col colSize={{ small: 4, medium: 4, large: 6 }} offsetLeft={{ small: 1 }}>
+          <Col
+            colSize={{ small: 4, medium: 4, large: 6 }}
+            offsetLeft={{ small: 1 }}
+            className="dropdown-text"
+          >
             <Field
               name="primary"
               component={InputCheckbox}

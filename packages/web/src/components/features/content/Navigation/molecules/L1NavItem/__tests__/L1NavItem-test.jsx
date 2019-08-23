@@ -6,6 +6,7 @@ const data1 = {
   categoryContent: {
     name: '',
     description: '',
+    seoToken: '',
     mainCategory: {
       promoBadge: [
         {
@@ -20,6 +21,7 @@ const data1 = {
 const data2 = {
   categoryContent: {
     name: 'Girl',
+    seoToken: '',
     description: 'Sizes 4-14',
     mainCategory: {
       promoBadge: '',

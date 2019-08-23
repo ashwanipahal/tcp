@@ -17,17 +17,21 @@ const AddressBook = props => {
     isEdit,
     isMakeDefaultDisabled,
     addressFormLabels,
+    onCancel,
+    showHeading,
   } = props;
   return (
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <StyledHeading>
-          <BodyCopy
-            fontSize="fs16"
-            fontWeight="extrabold"
-            text={addressFormLabels.addressHeading}
-          />
-        </StyledHeading>
+        {showHeading && (
+          <StyledHeading>
+            <BodyCopy
+              fontSize="fs16"
+              fontWeight="extrabold"
+              text={addressFormLabels.addressHeading}
+            />
+          </StyledHeading>
+        )}
         <UnderlineStyle />
         <AddressFormComponent
           onSubmit={verifyAddressAction}
@@ -35,6 +39,7 @@ const AddressBook = props => {
           isEdit={isEdit}
           isMakeDefaultDisabled={isMakeDefaultDisabled}
           submitAddressFormAction={submitAddressFormAction}
+          onCancel={onCancel}
         />
       </ScrollView>
     </View>
@@ -45,15 +50,19 @@ AddressBook.propTypes = {
   addressFormLabels: PropTypes.shape({}).isRequired,
   isEdit: PropTypes.bool,
   isMakeDefaultDisabled: PropTypes.bool,
+  showHeading: PropTypes.bool,
   submitAddressFormAction: PropTypes.func,
   verifyAddressAction: PropTypes.func,
+  onCancel: PropTypes.func,
 };
 
 AddressBook.defaultProps = {
   isEdit: false,
   isMakeDefaultDisabled: false,
+  showHeading: true,
   submitAddressFormAction: () => null,
   verifyAddressAction: () => null,
+  onCancel: () => null,
 };
 
 export default withStyles(AddressBook, ParentContainer);

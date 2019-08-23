@@ -55,9 +55,7 @@ export default css`
   }
   .logoWrapper {
     position: relative;
-    width: 100px;
     margin-top: 8px;
-    margin-left: 25%;
   }
   .product-attributes {
     display: inline-flex;
@@ -67,6 +65,13 @@ export default css`
   }
   .editLinkWrapper {
     display: inline-block;
+  }
+
+  .crossDeleteIcon {
+    float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
   }
 
   .product-tile-wrapper {

@@ -4,7 +4,10 @@ import {
   closeNavigationDrawer,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
-import { getUserName } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+import {
+  getUserName,
+  getUserLoggedInState,
+} from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
@@ -15,6 +18,7 @@ const mapStateToProps = state => {
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
     userName: getUserName(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 

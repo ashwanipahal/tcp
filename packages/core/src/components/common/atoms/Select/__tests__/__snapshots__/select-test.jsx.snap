@@ -40,6 +40,14 @@ exports[`Selectbox component renders correctly 1`] = `
   >
     placeholder
   </Styled(BodyCopy)>
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+  </div>
 </div>
 `;
 
@@ -76,9 +84,9 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     </option>
   </select>
   <Styled(BodyCopy)
-    className={null}
-    color="error"
-    component="div"
+    className="select__label"
+    color="text.primary"
+    component="p"
     fontFamily="secondary"
     fontSize="fs12"
     fontWeight="regular"
@@ -86,8 +94,31 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     lineHeight="normal"
     textAlign="left"
   >
-    REQUIRED_FIELD
+    first name for user
   </Styled(BodyCopy)>
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className="warning-icon"
+    />
+    <Styled(BodyCopy)
+      aria-live="assertive"
+      className={null}
+      color="error"
+      component="div"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      role="alert"
+      textAlign="left"
+    >
+      REQUIRED_FIELD
+    </Styled(BodyCopy)>
+  </div>
 </div>
 `;
 
@@ -118,5 +149,24 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
       Canada
     </option>
   </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+  </div>
 </div>
 `;
