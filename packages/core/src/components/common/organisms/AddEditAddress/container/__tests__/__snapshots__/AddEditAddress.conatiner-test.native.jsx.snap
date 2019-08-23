@@ -22,7 +22,6 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
   isEdit={false}
   isMakeDefaultDisabled={true}
   onCancel={[Function]}
-  showHeading={true}
   submitAddressFormAction={[Function]}
   verifyAddressAction={[Function]}
 />

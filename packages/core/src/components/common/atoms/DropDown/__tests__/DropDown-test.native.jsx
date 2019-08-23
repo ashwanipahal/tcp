@@ -10,6 +10,9 @@ describe('DropDown Test', () => {
     selectedValue: 'foo',
     onValueChange: jest.fn(),
     variation: 'primary',
+    itemStyle: {
+      color: 'foo',
+    },
   };
 
   beforeEach(() => {

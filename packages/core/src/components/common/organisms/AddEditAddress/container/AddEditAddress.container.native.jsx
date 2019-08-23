@@ -24,6 +24,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     address: PropTypes.shape({}),
     labels: PropTypes.shape({}),
     backToAddressBookClick: PropTypes.func,
+    onCancel: PropTypes.func,
   };
 
   static defaultProps = {
@@ -36,6 +37,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     address: {},
     labels: {},
     backToAddressBookClick: () => {},
+    onCancel: () => {},
   };
 
   constructor(props) {
@@ -108,12 +110,14 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       labels,
       backToAddressBookClick,
       isEdit,
+      onCancel,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
     const isMakeDefaultDisabled = address ? addressListSize === 1 : addressListSize === 0;
     return (
       <AddAddressComponent
+        onCancel={onCancel}
         addressResponse={addressResponse}
         submitAddressFormAction={this.submitAddressForm}
         verifyAddressAction={this.verifyAddress}

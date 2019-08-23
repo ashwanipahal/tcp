@@ -11,6 +11,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     GooglePlacesSearchQuery={
       Object {
         "rankby": "distance",
+        "types": "food",
       }
     }
     GoogleReverseGeocodingQuery={Object {}}
@@ -24,12 +25,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     enableHighAccuracyLocation={true}
     enablePoweredByContainer={true}
     fetchDetails={true}
-    filterReverseGeocodingByTypes={
-      Array [
-        "locality",
-        "administrative_area_level_3",
-      ]
-    }
+    filterReverseGeocodingByTypes={Array []}
     getDefaultValue={[Function]}
     isRowScrollable={true}
     keyboardShouldPersistTaps="always"
@@ -48,8 +44,8 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     predefinedPlacesAlwaysVisible={false}
     query={
       Object {
-        "components": "country:us",
-        "key": undefined,
+        "components": "country:undefined",
+        "key": "AIzaSyAd-jljPEQ6kgrLRJuN-ENKypW9K6sbQgc",
         "language": "en",
         "types": "(cities)",
       }
@@ -58,22 +54,24 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     returnKeyType="search"
     styles={
       Object {
+        "container": Object {
+          "flex": 1,
+        },
         "description": Object {
           "fontWeight": "700",
         },
         "listView": Object {
           "backgroundColor": "#ffffff",
-          "height": 300,
-          "marginTop": 40,
-          "opacity": 1,
-          "position": "absolute",
         },
         "poweredContainer": Object {
-          "display": "flex",
+          "alignItems": "center",
           "flexDirection": "row",
           "justifyContent": "flex-end",
-          "opacity": 1,
-          "position": "absolute",
+        },
+        "row": Object {
+          "flexDirection": "row",
+          "height": 30,
+          "padding": 6,
         },
         "separator": Object {
           "borderBottomColor": "#c3c3c3",
@@ -96,6 +94,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     textInputHide={false}
     textInputProps={
       Object {
+        "onBlur": [Function],
         "onFocus": [Function],
       }
     }

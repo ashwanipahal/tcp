@@ -114,15 +114,13 @@ class DropDown extends React.PureComponent<Props> {
       };
 
       if (showInBottom) {
-        this.setState({ flatListBottom: 120 });
+        this.setState({ flatListBottom: 120, top: topMargin.top });
       } else {
         if (calculateHeight > windowHeight) {
-          this.setState({ flatListBottom: 120 });
+          this.setState({ flatListBottom: 200 });
         }
-        this.setState({ flatListTop: 120 });
+        this.setState({ flatListTop: 120, top: topMargin.top });
       }
-
-      this.setState({ top: topMargin.top });
     });
   };
 
@@ -142,11 +140,11 @@ class DropDown extends React.PureComponent<Props> {
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         <BodyCopy
-          fontFamily="secondary"
+          mobileFontFamily="secondary"
           fontSize="fs13"
           textAlign={variation === 'primary' ? 'center' : ''}
-          color="gray.800"
-          fontWeight="black"
+          color={itemStyle.color}
+          fontWeight="semibold"
           text={label}
         />
       </DropDownItemContainer>
@@ -206,11 +204,11 @@ class DropDown extends React.PureComponent<Props> {
         >
           <HeaderContainer>
             <BodyCopy
-              fontFamily="secondary"
+              mobileFontFamily="secondary"
               fontSize="fs13"
               textAlign="center"
               color="gray.800"
-              fontWeight="black"
+              fontWeight="semibold"
               text={selectedLabelState}
             />
           </HeaderContainer>
@@ -228,7 +226,6 @@ class DropDown extends React.PureComponent<Props> {
               left: this.rowFrame.x,
               height: getScreenHeight(),
               marginTop: flatListTop,
-              marginBottom: flatListBottom,
             }}
           >
             <OverLayView
@@ -237,6 +234,7 @@ class DropDown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
+                marginBottom: flatListBottom,
               }}
             >
               {dropDownIsOpen && (

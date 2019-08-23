@@ -21,6 +21,7 @@ const Separator = styled.View`
 const SaveButtonWrapper = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 const CancelButtonWrapper = styled.View`
@@ -57,19 +58,6 @@ const AddAddressWrapper = styled.View`
   margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
 `;
 
-const AddAddressButton = {
-  color: 'white',
-  fontWeight: 'normal',
-  opacity: 0.5,
-  marginTop: 48,
-};
-
-const CancelButton = {
-  fontWeight: 'normal',
-  opacity: 0.5,
-  color: `${props => props.theme.colorPalette.black}`,
-};
-
 const EmptyView = styled.View`
   height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
@@ -81,11 +69,20 @@ const dropDownStyle = {
 const itemStyle = {
   height: 41,
   paddingLeft: 6,
+  color: 'black',
 };
 
+// https://github.com/FaridSafi/react-native-google-places-autocomplete/issues/379#issuecomment-457845834
+const GooglePlaceInputWrapper = styled.View`
+  z-index: 9999;
+  width: 100%;
+`;
+
+const AddressSecondWrapper = styled.View`
+  margin-top: 0;
+`;
+
 export {
-  AddAddressButton,
-  CancelButton,
   EmptyView,
   SaveButtonWrapper,
   CancelButtonWrapper,
@@ -98,4 +95,6 @@ export {
   SetDefaultShippingWrapper,
   StyledLabel,
   AddAddressWrapper,
+  GooglePlaceInputWrapper,
+  AddressSecondWrapper,
 };
