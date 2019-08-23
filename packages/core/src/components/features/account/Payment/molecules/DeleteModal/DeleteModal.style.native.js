@@ -31,8 +31,23 @@ const CardDetailWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
-const CardDetail = styled.Text`
+const CardContainer = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+const CardDetail = styled.Text`
+  justify-content: flex-start;
+  font-size: ${props => props.theme.typography.fontSizes.fs14};
+  font-weight: ${props => props.theme.typography.fontWeights.semibold};
+`;
+
+const CardExpiry = styled.Text`
+  justify-content: flex-start;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  font-size: ${props => props.theme.typography.fontSizes.fs13};
 `;
 
 const ImgWrapper = styled.View`
@@ -73,4 +88,6 @@ export {
   CenterAlign,
   ConfirmButtonWrapper,
   CloseButtonWrapper,
+  CardContainer,
+  CardExpiry,
 };

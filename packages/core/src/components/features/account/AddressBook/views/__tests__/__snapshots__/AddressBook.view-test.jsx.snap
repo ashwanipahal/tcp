@@ -70,6 +70,7 @@ exports[`AddressBook component should renders correctly when addresses are not p
         },
         "description": Object {},
         "heading": undefined,
+        "msg": undefined,
         "title": undefined,
       }
     }
@@ -169,6 +170,7 @@ exports[`AddressBook component should renders correctly when addresses are prese
         },
         "description": Object {},
         "heading": undefined,
+        "msg": undefined,
         "title": undefined,
       }
     }

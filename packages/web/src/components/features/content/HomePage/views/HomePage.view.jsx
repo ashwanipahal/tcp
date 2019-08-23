@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 
 import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';

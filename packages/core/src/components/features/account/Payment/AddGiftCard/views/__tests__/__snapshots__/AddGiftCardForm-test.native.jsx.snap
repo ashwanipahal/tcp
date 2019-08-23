@@ -1,0 +1,432 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add gift card form component render error message 1`] = `
+<ScrollViewMock
+  addGiftCardResponse="foo"
+  change={[MockFunction]}
+  handleSubmit={[Function]}
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
+  onAddGiftCardClick={[Function]}
+  showsVerticalScrollIndicator={false}
+  toggleModal={[Function]}
+>
+  <View>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="error"
+        fontSize="fs12"
+        fontWeight="semibold"
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        text="foo"
+      />
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-cardnaumberfield"
+      name="giftCardNumber"
+      type="tel"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-pinnumberfield"
+      name="cardPin"
+      type="tel"
+    />
+    <View>
+      <Styled(View)>
+        <Recaptcha
+          onMessage={[Function]}
+          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+          style={Object {}}
+          url="https://www.childrensplace.com"
+        />
+      </Styled(View)>
+      <Field
+        className="visibility-recaptcha"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="gift-card-recaptchcb"
+        id="recaptchaToken"
+        label=""
+        name="recaptchaToken"
+        title=""
+        type="hidden"
+      />
+    </View>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.900"
+        fontFamily="secondary"
+        fontSize="fs14"
+      />
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          color="black"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+        />
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="white"
+        customStyle={Object {}}
+        data-locator="gift-card-addcardbtn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        locator=""
+        text=""
+        url=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="black"
+        customStyle={Object {}}
+        data-locator="gift-card-cancelbtn"
+        disableButton={false}
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text=""
+        url=""
+      />
+    </Styled(View)>
+  </View>
+</ScrollViewMock>
+`;
+
+exports[`Add gift card form component should render component correctly 1`] = `
+<ScrollViewMock
+  addGiftCardResponse={null}
+  change={[MockFunction]}
+  handleSubmit={[Function]}
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
+  onAddGiftCardClick={[Function]}
+  showsVerticalScrollIndicator={false}
+  toggleModal={[Function]}
+>
+  <View>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-cardnaumberfield"
+      name="giftCardNumber"
+      type="tel"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-pinnumberfield"
+      name="cardPin"
+      type="tel"
+    />
+    <View>
+      <Styled(View)>
+        <Recaptcha
+          onMessage={[Function]}
+          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+          style={Object {}}
+          url="https://www.childrensplace.com"
+        />
+      </Styled(View)>
+      <Field
+        className="visibility-recaptcha"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="gift-card-recaptchcb"
+        id="recaptchaToken"
+        label=""
+        name="recaptchaToken"
+        title=""
+        type="hidden"
+      />
+    </View>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.900"
+        fontFamily="secondary"
+        fontSize="fs14"
+      />
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          color="black"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+        />
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="white"
+        customStyle={Object {}}
+        data-locator="gift-card-addcardbtn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        locator=""
+        text=""
+        url=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="black"
+        customStyle={Object {}}
+        data-locator="gift-card-cancelbtn"
+        disableButton={false}
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text=""
+        url=""
+      />
+    </Styled(View)>
+  </View>
+</ScrollViewMock>
+`;

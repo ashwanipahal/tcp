@@ -43,6 +43,7 @@ const getSubHeadingStyle = props => {
   return `
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs13};
+  margin-bottom: 10px;
   align-self: ${'center'};
   `;
 };
@@ -54,7 +55,7 @@ const getDescriptionStyle = props => {
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs12};
   color: ${colorPalette.text.primary};
-  margin-top: ${'10px'};
+
   text-align: ${'center'};
   `;
 };

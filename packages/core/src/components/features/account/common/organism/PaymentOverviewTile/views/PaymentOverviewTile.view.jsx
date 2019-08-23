@@ -28,6 +28,8 @@ export const PaymentOverviewTile = ({
     <AccountOverviewTile
       title={labels.lbl_overview_paymentHeading}
       ctaTitle={labels.lbl_overview_paymentCTA}
+      ctaLink="/account?id=payment"
+      ctaPath="/account/payment"
     >
       <div className={className}>
         {/* Credit card list */}
@@ -57,11 +59,23 @@ export const PaymentOverviewTile = ({
               }}
             >
               {creditCardDefault && creditCardDefault.ccType ? (
-                <Anchor fontSizeVariation="medium" underline anchorVariation="primary">
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=payment"
+                  asPath="/account/payment"
+                >
                   {labels.lbl_overview_addressBookEdit}
                 </Anchor>
               ) : (
-                <Anchor fontSizeVariation="medium" underline anchorVariation="primary">
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=payment"
+                  asPath="/account/payment"
+                >
                   {labels.lbl_overview_addressBookAdd}
                 </Anchor>
               )}
@@ -126,7 +140,7 @@ export const PaymentOverviewTile = ({
 
         {/* Venmo card list */}
         {venmoCardList && venmoCardList.ccBrand && (
-          <BodyCopy component="div" className="elem-mt-LRG">
+          <BodyCopy component="div" className="elem-mt-LRG venmo-tile">
             <Row fullBleed>
               <Col
                 colSize={{
@@ -151,7 +165,13 @@ export const PaymentOverviewTile = ({
                   medium: 1,
                 }}
               >
-                <Anchor fontSizeVariation="medium" underline anchorVariation="primary">
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=payment"
+                  asPath="/account/payment"
+                >
                   {labels.lbl_overview_addressBookEdit}
                 </Anchor>
               </Col>
@@ -202,11 +222,15 @@ export const PaymentOverviewTile = ({
               }}
             >
               {giftCardList && giftCardList.ccType ? (
-                <Anchor fontSizeVariation="medium" underline anchorVariation="primary">
-                  {labels.lbl_overview_addressBookEdit}
-                </Anchor>
+                ''
               ) : (
-                <Anchor fontSizeVariation="medium" underline anchorVariation="primary">
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=payment"
+                  asPath="/account/payment"
+                >
                   {labels.lbl_overview_addressBookAdd}
                 </Anchor>
               )}
