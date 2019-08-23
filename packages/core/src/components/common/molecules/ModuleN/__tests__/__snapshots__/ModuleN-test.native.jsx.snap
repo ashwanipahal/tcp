@@ -60,5 +60,120 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
       }
     />
   </Styled(View)>
+  <Styled(View)>
+    <ButtonList
+      buttonListVariation="stackedCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Girl",
+              "title": "Girl",
+              "url": "/girl",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Toddler Girl",
+              "title": "Toddler Girl",
+              "url": "/toddler-girl",
+            },
+            "image": Object {
+              "alt": "Toddler Girl alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Girl title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Boy",
+              "title": "Boy",
+              "url": "/boy",
+            },
+            "image": Object {
+              "alt": "Boy",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Boy",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Toddler Boy",
+              "title": "Tod Boy",
+              "url": "/toddler-boy2",
+            },
+            "image": Object {
+              "alt": "Toddler Boy alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Tod Boy title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Baby",
+              "title": "Baby",
+              "url": "/toddler-boy",
+            },
+            "image": Object {
+              "alt": "Baby Alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Baby title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Alt",
+              "title": "Alt",
+              "url": "/toddler-boy",
+            },
+            "image": Object {
+              "alt": "Baby Alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Baby title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+        ]
+      }
+      locator="moduleN_cta_links"
+    />
+    <Styled(View)
+      background="red"
+    />
+  </Styled(View)>
 </Styled(View)>
 `;

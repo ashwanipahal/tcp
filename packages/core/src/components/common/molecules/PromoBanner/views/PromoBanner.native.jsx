@@ -45,7 +45,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style4: props => (
+  text_normal: props => (
     <BodyCopy fontSize="fs16" color="white" fontFamily="primary" textAlign="center" {...props} />
   ),
   style5: props => (
@@ -59,7 +59,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style6: props => <PercentageStyle {...props} />,
+  percentage_wrapped_large: props => <PercentageStyle {...props} />,
 };
 
 /**
@@ -80,6 +80,7 @@ const PromoBanner = (props: Props) => {
     promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
+
   return [
     <ContainerView>
       {textItems && (

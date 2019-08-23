@@ -2,13 +2,6 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
-  <ModuleN
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
   <SlotA
     className="moduleD"
     navigation={
