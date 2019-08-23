@@ -27,7 +27,7 @@ const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
 
-const setErrorHandler = () => {
+const setErrorReporter = () => {
   const config = {
     isServer: true,
     envId: process.env.RWD_WEB_ENV_ID,
@@ -73,7 +73,7 @@ const setHostname = (req, res) => {
   res.locals.hostname = hostname;
 };
 
-setErrorHandler();
+setErrorReporter();
 
 app.prepare().then(() => {
   // Looping through the routes and providing the corresponding resolver route
