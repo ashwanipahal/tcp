@@ -19,6 +19,15 @@ jest.setMock('@react-native-community/async-storage', AsyncStorage);
 jest.useFakeTimers();
 jest.mock('LayoutAnimation');
 
+jest.mock('react-native-cookies', () => ({
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  openURL: jest.fn(),
+  canOpenURL: jest.fn(),
+  getInitialURL: jest.fn(),
+  get: () => Promise.resolve(null),
+}));
+
 // Mock NetInfo for react-native modules
 NativeModules.RNCNetInfo = {
   getCurrentState: jest.fn(() => Promise.resolve()),

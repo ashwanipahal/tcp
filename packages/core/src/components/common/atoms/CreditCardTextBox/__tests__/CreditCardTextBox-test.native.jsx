@@ -14,6 +14,7 @@ describe('CreditCardTextBox component', () => {
     keyboardType: 'default',
     showErrorIcon: true,
     input: { value: 'foo' },
+    maxLength: 16,
   };
 
   let component;

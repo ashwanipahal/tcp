@@ -116,6 +116,18 @@ export const getMyPlaceNumber = createSelector(
   state => state && state.get('accountNumber')
 );
 
+const userAddressData = (mailingAddress, addressTemp) => {
+  return {
+    addressLine1: addressTemp.get('addressLine1') || '',
+    addressLine2: addressTemp.get('addressLine2') || '',
+    city: addressTemp.get('city') || '',
+    country: addressTemp.get('country') || '',
+    state: addressTemp.get('state') || '',
+    zipCode: addressTemp.get('zipCode'),
+    isComplete: mailingAddress.get('isComplete') || false,
+  };
+};
+
 export const getProfileInfoTileData = createSelector(
   getUserContactInfo,
   getMailingAddress,
@@ -131,17 +143,7 @@ export const getProfileInfoTileData = createSelector(
     }
     const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
     const addressTemp = mailingAddress ? mailingAddress.get('address') : null;
-    const address = addressTemp
-      ? {
-          addressLine1: addressTemp.get('addressLine1') || '',
-          addressLine2: addressTemp.get('addressLine2') || '',
-          city: addressTemp.get('city') || '',
-          state: addressTemp.get('state') || '',
-          zipCode: addressTemp.get('zipCode'),
-          country: addressTemp.get('country'),
-          isComplete: mailingAddress.get('isComplete') || false,
-        }
-      : null;
+    const address = addressTemp ? userAddressData(mailingAddress, addressTemp) : null;
     return {
       firstName,
       lastName,
