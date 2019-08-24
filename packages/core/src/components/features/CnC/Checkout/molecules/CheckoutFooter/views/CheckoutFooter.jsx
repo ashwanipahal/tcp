@@ -11,8 +11,8 @@ class CheckoutFooter extends React.PureComponent {
   render() {
     const {
       className,
-      backLinkText = 'Return to Pickup',
-      nextButtonText = 'NEXT: BILLING',
+      backLinkText,
+      nextButtonText,
       disableNext,
       backLinkHandler,
       disableBackLink,

@@ -24,20 +24,14 @@ class PickUpFormPart extends React.Component {
   }
 
   handleEditModeChange = isEditing => {
-    const { onEditModeChange } = this.props;
-    onEditModeChange(isEditing);
     this.setState({ isEditing, isReset: false });
   };
 
   onEditMainContactSubmit = () => {
-    const { onEditModeChange } = this.props;
-    onEditModeChange(false);
     this.setState({ isEditing: false });
   };
 
   handleExitEditModeClick = () => {
-    const { onEditModeChange } = this.props;
-    onEditModeChange(false);
     this.setState({ isEditing: false, isReset: true });
   };
 
@@ -108,7 +102,7 @@ class PickUpFormPart extends React.Component {
               dataLocator="pickup-error"
             />
           )}
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="checkoutPickupForm">
             <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">
                 {isGuest ? (
@@ -205,7 +199,11 @@ class PickUpFormPart extends React.Component {
           </form>
         </div>
         <form onSubmit={handleSubmit}>
-          <CheckoutFooter disableNext={isEditing} />
+          <CheckoutFooter
+            backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
+            nextButtonText={`${pickUpLabels.nextText}: ${pickUpLabels.billingText}`}
+            disableNext={isEditing}
+          />
         </form>
       </div>
     );
@@ -227,7 +225,6 @@ PickUpFormPart.propTypes = {
   initialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  onEditModeChange: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

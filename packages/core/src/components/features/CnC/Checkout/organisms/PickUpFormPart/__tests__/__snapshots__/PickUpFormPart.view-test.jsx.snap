@@ -12,6 +12,7 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
       dataLocator="pickup-title"
     />
     <form
+      className="checkoutPickupForm"
       onSubmit={[MockFunction]}
     >
       <div
@@ -57,7 +58,9 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
     onSubmit={[MockFunction]}
   >
     <Styled(CheckoutFooter)
+      backLinkText="undefined undefined"
       disableNext={false}
+      nextButtonText="undefined: undefined"
     />
   </form>
 </div>
