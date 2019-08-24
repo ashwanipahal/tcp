@@ -1,10 +1,11 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import { setLoginInfo } from './LoginPage.actions';
+import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
 import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
+import { checkoutModalOpenState } from './LoginPage.selectors';
 
 const errorLabel = 'Error in API';
 
@@ -12,16 +13,19 @@ const notIsLocalHost = siteOrigin => {
   return siteOrigin.indexOf('local') === -1;
 };
 
-export function* loginSaga({ payload }) {
+export function* loginSaga({ payload, afterLoginHandler }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      if (afterLoginHandler) {
+        yield call(afterLoginHandler);
+      }
       return yield put(getUserInfo());
     }
     return yield put(setLoginInfo(response));
   } catch (err) {
     const { errorCode, errorMessage, errorResponse } = err;
-    return yield put(
+    yield put(
       setLoginInfo({
         success: false,
         errorCode,
@@ -29,6 +33,12 @@ export function* loginSaga({ payload }) {
         ...errorResponse,
       })
     );
+
+    const isCheckoutModalOpen = yield select(checkoutModalOpenState);
+    if (isCheckoutModalOpen) {
+      yield put(setCheckoutModalMountedState({ state: true }));
+    }
+    return null;
   }
 }
 

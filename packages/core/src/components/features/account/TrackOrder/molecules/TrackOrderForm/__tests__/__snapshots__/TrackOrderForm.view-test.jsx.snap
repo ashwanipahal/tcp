@@ -1,0 +1,388 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderForm component should renders correctly 1`] = `
+<form
+  name="TrackOrderForm"
+  onChange={[Function]}
+  onSubmit={[Function]}
+>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Field
+      className="elem-mb-L"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bxivhb",
+            "isStatic": false,
+            "rules": Array [
+              "
+  ",
+              "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+              [Function],
+              "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+              [Function],
+              ";
+    ",
+              [Function],
+              "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+              [Function],
+              "px;
+    color: ",
+              [Function],
+              ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+    padding-bottom: ",
+              [Function],
+              ";
+    margin-bottom: ",
+              [Function],
+              ";
+    padding-top: ",
+              [Function],
+              ";
+
+    ",
+              [Function],
+              "
+
+    ",
+              [Function],
+              ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+              [Function],
+              "px;
+      font-weight: ",
+              [Function],
+              ";
+      top: ",
+              [Function],
+              ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+              [Function],
+              ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+              [Function],
+              ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+              [Function],
+              ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+              [Function],
+              ";
+      bottom: 0;
+    }
+  }
+
+  ",
+              [Function],
+              ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+              [Function],
+              ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+              ";
+",
+            ],
+          },
+          "displayName": "Styled(TextBox)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bxivhb",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="track_order_email_address"
+      enableSuccessCheck={false}
+      errorDataLocator="track_order_email_error_msg"
+      id="emailAddress"
+      name="emailAddress"
+      showSuccessCheck={false}
+    />
+    <Field
+      className="elem-mb-L"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bxivhb",
+            "isStatic": false,
+            "rules": Array [
+              "
+  ",
+              "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+              [Function],
+              "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+              [Function],
+              ";
+    ",
+              [Function],
+              "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+              [Function],
+              "px;
+    color: ",
+              [Function],
+              ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+    padding-bottom: ",
+              [Function],
+              ";
+    margin-bottom: ",
+              [Function],
+              ";
+    padding-top: ",
+              [Function],
+              ";
+
+    ",
+              [Function],
+              "
+
+    ",
+              [Function],
+              ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+              [Function],
+              "px;
+      font-weight: ",
+              [Function],
+              ";
+      top: ",
+              [Function],
+              ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+              [Function],
+              ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+              [Function],
+              ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+              [Function],
+              ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+              [Function],
+              ";
+      bottom: 0;
+    }
+  }
+
+  ",
+              [Function],
+              ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+              [Function],
+              ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+              ";
+",
+            ],
+          },
+          "displayName": "Styled(TextBox)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bxivhb",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="track_order_no"
+      enableSuccessCheck={false}
+      errorDataLocator="track_order_no_error_msg"
+      id="orderNumber"
+      name="orderNumber"
+      showSuccessCheck={false}
+    />
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="track_order_need_help"
+        fontSizeVariation="medium"
+        underline={true}
+      />
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="elem-mb-L trackOrder-trackOrdercta"
+      dataLocator="track_order_btn"
+      fill="BLUE"
+      fullWidth={true}
+      type="submit"
+    />
+  </Styled(BodyCopy)>
+</form>
+`;

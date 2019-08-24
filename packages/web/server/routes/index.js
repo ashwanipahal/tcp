@@ -21,8 +21,13 @@ const RoutesMap = [
     resolver: '/DeltaSyncSamplePage',
   },
   {
-    path: '/c',
+    path: '/cc',
     resolver: '/ProductListingPage',
+  },
+  {
+    path: '/c/:l2?/:l3?',
+    resolver: '/ProductListing',
+    params: ['l2', 'l3'],
   },
   {
     path: '/test',
@@ -49,10 +54,20 @@ const RoutesMap = [
     path: '/review',
     resolver: '/review',
   },
+  {
+    path: '/checkout/:subSection?',
+    resolver: '/Pickup',
+    params: ['subSection'],
+  },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
   {
     path: '/gallery',
     resolver: '/gallery',
+  },
+  {
+    path: '/checkout/:section?',
+    resolver: '/Checkout',
+    params: ['section'],
   },
 ];
 

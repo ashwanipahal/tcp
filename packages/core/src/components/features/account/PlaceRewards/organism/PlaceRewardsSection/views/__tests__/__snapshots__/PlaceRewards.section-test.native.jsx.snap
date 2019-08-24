@@ -38,7 +38,7 @@ exports[`MyRewards should render correctly 1`] = `
         FPO
       </Text>
     </Styled(View)>
-    <MyRewards
+    <Connect(MyRewardsContainer)
       labels={
         Object {
           "common": Object {},

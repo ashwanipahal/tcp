@@ -35,6 +35,7 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       }
     >
       <Styled(Dropdown)
+        isUpperCase={true}
         options={
           Array [
             Object {

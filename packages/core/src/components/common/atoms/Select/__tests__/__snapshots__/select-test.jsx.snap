@@ -8,6 +8,7 @@ exports[`Selectbox component renders correctly 1`] = `
     aria-label=""
     className="select__input"
     data-locator=""
+    disabled={false}
     id="abcd"
     name=""
     value="hello"
@@ -40,6 +41,66 @@ exports[`Selectbox component renders correctly 1`] = `
   >
     placeholder
   </Styled(BodyCopy)>
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Selectbox component renders correctly with disabled props 1`] = `
+<div
+  className="asdfasdf"
+>
+  <select
+    aria-label=""
+    className="select__input"
+    data-locator=""
+    disabled={true}
+    id="abcd"
+    name=""
+    value="hello"
+  >
+    <option
+      id="US"
+      key="US"
+      value="US"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
+      value="CA"
+    >
+      Canada
+    </option>
+  </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    placeholder
+  </Styled(BodyCopy)>
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+  </div>
 </div>
 `;
 
@@ -51,6 +112,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     aria-label=""
     className="select__input"
     data-locator=""
+    disabled={false}
     id="abcd"
     name=""
     value="first name for user"
@@ -88,19 +150,29 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
   >
     first name for user
   </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className={null}
-    color="error"
-    component="div"
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
+  <div
+    className="SelectBox__error"
   >
-    REQUIRED_FIELD
-  </Styled(BodyCopy)>
+    <div
+      aria-disabled="true"
+      className="warning-icon"
+    />
+    <Styled(BodyCopy)
+      aria-live="assertive"
+      className={null}
+      color="error"
+      component="div"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      role="alert"
+      textAlign="left"
+    >
+      REQUIRED_FIELD
+    </Styled(BodyCopy)>
+  </div>
 </div>
 `;
 
@@ -112,6 +184,7 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     aria-label=""
     className="select__input"
     data-locator=""
+    disabled={false}
     id="abcd"
     name=""
     value=""
@@ -142,5 +215,13 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     lineHeight="normal"
     textAlign="left"
   />
+  <div
+    className="SelectBox__error"
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+  </div>
 </div>
 `;

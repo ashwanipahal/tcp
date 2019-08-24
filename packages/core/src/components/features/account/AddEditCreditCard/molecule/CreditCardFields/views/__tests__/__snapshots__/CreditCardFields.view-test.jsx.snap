@@ -244,6 +244,23 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     top: 0;
   }
 
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+              [Function],
+              ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
   ",
               [Function],
               ";
@@ -340,6 +357,23 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     padding: 0;
     position: absolute;
     top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+              [Function],
+              ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 
   ",

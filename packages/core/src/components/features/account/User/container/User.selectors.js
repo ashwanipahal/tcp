@@ -32,6 +32,11 @@ export const getUserName = createSelector(
   state => state && state.getIn(['contactInfo', 'firstName'])
 );
 
+export const getUserLastName = createSelector(
+  getPersonalDataState,
+  state => state && state.getIn(['contactInfo', 'lastName'])
+);
+
 export const getUserFullName = createSelector(
   getPersonalDataState,
   state => {
@@ -95,6 +100,35 @@ export const getAnswersList = createSelector(
 export const getDefaultStore = createSelector(
   getPersonalDataState,
   state => state && state.get('hobbies')
+);
+
+export const getProfileInfoTileData = createSelector(
+  getUserContactInfo,
+  getMailingAddress,
+  getRewardsState,
+  (personalInformation, mailingAddress, rewards) => {
+    const firstName = personalInformation.get('firstName');
+    const lastName = personalInformation.get('lastName');
+    const emailAddress = personalInformation.get('emailAddress').toLowerCase();
+    const rewardsAccountNumber = rewards.get('accountNumber');
+    const addressTemp = mailingAddress.get('address');
+    const address = addressTemp
+      ? {
+          addressLine1: addressTemp.get('addressLine1') || '',
+          addressLine2: addressTemp.get('addressLine2') || '',
+          city: addressTemp.get('city') || '',
+          state: addressTemp.get('state') || '',
+          zipCode: addressTemp.get('zipCode'),
+        }
+      : null;
+    return {
+      firstName,
+      lastName,
+      emailAddress,
+      rewardsAccountNumber,
+      address,
+    };
+  }
 );
 
 export const getPercentageIncrement = () => ({

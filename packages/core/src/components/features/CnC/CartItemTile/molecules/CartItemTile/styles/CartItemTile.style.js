@@ -38,6 +38,7 @@ export default css`
   .align-product-img {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .color-fit-size-separator {
@@ -48,6 +49,7 @@ export default css`
   }
   .responsive-edit-css {
     padding-top: 2px;
+    cursor: pointer;
   }
   .imageWrapper {
     position: relative;
@@ -55,9 +57,7 @@ export default css`
   }
   .logoWrapper {
     position: relative;
-    width: 100px;
     margin-top: 8px;
-    margin-left: 25%;
   }
   .product-attributes {
     display: inline-flex;
@@ -127,6 +127,7 @@ export default css`
 
       .responsive-edit-css {
         padding-top: 2px;
+        cursor: pointer;
       }
     }
 
@@ -149,6 +150,7 @@ export default css`
         position: absolute;
         bottom: 0;
         right: 50%;
+        cursor: pointer;
       }
       .bag-product-detail-wrapper {
         position: static;

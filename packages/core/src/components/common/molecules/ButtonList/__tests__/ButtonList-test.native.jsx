@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import mock from '../../../../../services/abstractors/common/moduleN/mock';
+import mock from '../../ModuleN/mock';
 import { ButtonListVanilla } from '../views/ButtonList.native';
 import { Container } from '../ButtonList.styles.native';
 
