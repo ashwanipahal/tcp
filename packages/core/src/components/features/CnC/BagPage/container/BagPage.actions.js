@@ -6,14 +6,14 @@ const getOrderDetails = () => {
   };
 };
 
-const getCartData = (payload?) => {
+const getCartData = payload => {
   return {
     type: BAGPAGE_CONSTANTS.GET_CART_DATA,
     payload,
   };
 };
 
-const getOrderDetailsComplete = (payload?) => {
+const getOrderDetailsComplete = payload => {
   return {
     type: BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE,
     payload,
@@ -26,7 +26,7 @@ const startCheckout = () => {
   };
 };
 
-const setCouponsData = (payload?) => {
+const setCouponsData = payload => {
   return {
     type: BAGPAGE_CONSTANTS.SET_COUPONS_DATA,
     payload,
@@ -52,7 +52,7 @@ const closeCheckoutConfirmationModal = () => {
   };
 };
 
-const setBagPageError = (payload?) => {
+const setBagPageError = payload => {
   return {
     type: BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS,
     payload,
