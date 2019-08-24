@@ -10,6 +10,7 @@ import {
   getLoadedProductsCount,
   getUnbxdId,
   getBreadCrumbTrail,
+  getCategoryId,
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -20,11 +21,12 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs, ...otherProps } = this.props;
+    const { products, currentNavIds, navTree, breadCrumbs, categoryId, ...otherProps } = this.props;
     return (
       <ProductListing
         products={products}
         currentNavIds={currentNavIds}
+        categoryId={categoryId}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
         {...otherProps}
@@ -37,6 +39,7 @@ function mapStateToProps(state) {
   return {
     products: getProductsSelect(state),
     currentNavIds: state.ProductListing.currentNavigationIds,
+    categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
@@ -56,6 +59,7 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),

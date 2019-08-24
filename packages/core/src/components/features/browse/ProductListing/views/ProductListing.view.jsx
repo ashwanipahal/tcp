@@ -6,8 +6,16 @@ import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesk
 import withStyles from '../../../../common/hoc/withStyles';
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 import ProductListingStyle from '../ProductListing.style';
+import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 
-const ProductListView = ({ className, products, currentNavIds, navTree, breadCrumbs }) => {
+const ProductListView = ({
+  className,
+  products,
+  currentNavIds,
+  navTree,
+  breadCrumbs,
+  categoryId,
+}) => {
   return (
     <div className={className}>
       <Row>
@@ -36,6 +44,7 @@ const ProductListView = ({ className, products, currentNavIds, navTree, breadCru
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductList products={products} className={`${className} product-list`} />
           </Col>
+          <SpotlightContainer categoryId={categoryId} />
         </Col>
       </Row>
     </div>
@@ -47,6 +56,7 @@ ProductListView.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})),
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
+  categoryId: PropTypes.string,
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
 };
@@ -57,6 +67,7 @@ ProductListView.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  categoryId: '',
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
