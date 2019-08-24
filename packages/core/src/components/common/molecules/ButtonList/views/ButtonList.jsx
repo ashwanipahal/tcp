@@ -124,7 +124,7 @@ const ButtonList = (props: Props) => {
   const imageCTAProps = config.imageCTAList.compProps;
   const wrappedTextClass = ' wrapped-button-text';
 
-  let component = Button;
+  let component = null;
   let compWrapper = '';
   let compProps = {};
 
@@ -191,7 +191,12 @@ ButtonList.defaultProps = {
 };
 
 ButtonList.propTypes = {
-  buttonListVariation: PropTypes.string,
+  buttonListVariation: PropTypes.oneOf([
+    'stackedCTAList',
+    'linkCTAList',
+    'scrollCTAList',
+    'imageCTAList',
+  ]),
   className: PropTypes.string,
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,

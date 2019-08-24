@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { css } from 'styled-components/native';
 
 const style = css`
@@ -68,19 +69,23 @@ const style = css`
      width: ${props.width};
      height: ${props.height};
      background: ${props.fill || props.theme.colorPalette.white};
-     color: ${
-       props.color === 'red'
-         ? props.theme.colorPalette.secondary.dark
-         : props.theme.colorPalette.primary.dark
-     };
+     ${props.color === 'red' ? ` color: ${props.theme.colorPalette.secondary.dark}; ` : ''};
+     ${props.color === 'blue' ? ` color: ${props.theme.colorPalette.primary.dark};` : ''};
+     ${props.color === 'gray' ? ` color: ${props.theme.colorPalette.gray[700]};` : ''};
      font-family: ${props.theme.typography.fonts.secondary};
      font-size: ${props.theme.fonts.fontSize.button.size}px;
      font-weight: ${props.theme.typography.fontWeights.extrabold};
-     border: 1px solid ${
+     ${
        props.color === 'red'
-         ? props.theme.colorPalette.secondary.dark
-         : props.theme.colorPalette.primary.dark
+         ? ` border: 1px solid ${props.theme.colorPalette.secondary.dark}; `
+         : ''
      };
+     ${
+       props.color === 'blue'
+         ? ` border: : 1px solid ${props.theme.colorPalette.primary.dark};`
+         : ''
+     };
+     ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
      padding: 12px 32px;
      `
       : ''};

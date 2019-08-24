@@ -6,7 +6,7 @@ import CreditCardTextBox from '@tcp/core/src/components/common/atoms/CreditCardT
 export const CreditCardNumber = ({ cardType, isEdit, ...otherProps }) => {
   return (
     <View>
-      <CreditCardTextBox {...otherProps} isEdit={isEdit} cardType={cardType} />
+      <CreditCardTextBox {...otherProps} isEdit={isEdit} cardType={cardType} maxLength={16} />
     </View>
   );
 };
