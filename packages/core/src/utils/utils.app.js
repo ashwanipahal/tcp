@@ -218,8 +218,9 @@ export const getScreenHeight = () => {
  */
 export const cropImageUrl = (url, crop) => {
   const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
+  const imgPath = urlPath && urlPath.replace(/^\//, '');
   if (urlPath && crop) {
-    return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+    return `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
   }
   return url;
 };

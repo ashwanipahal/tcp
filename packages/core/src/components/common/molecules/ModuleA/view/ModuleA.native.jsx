@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 // @flow
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ButtonList from '../../ButtonList';
 import Carousel from '../../Carousel';
@@ -151,17 +152,23 @@ const renderCarousel = (largeCompImageCarousel, navigation, variant, position) =
   }
   return (
     <ContainerView>
-      <Carousel
-        {...config}
-        data={largeCompImageCarousel}
-        renderItem={item => renderView(item, navigation, variant, position)}
-        width={MODULE_WIDTH}
-        carouselConfig={{
-          autoplay: true,
-        }}
-        showDots
-        overlap
-      />
+      {largeCompImageCarousel.length > 1 ? (
+        <Carousel
+          {...config}
+          data={largeCompImageCarousel}
+          renderItem={item => renderView(item, navigation, variant, position)}
+          width={MODULE_WIDTH}
+          carouselConfig={{
+            autoplay: true,
+          }}
+          showDots
+          overlap
+        />
+      ) : (
+        <View>
+          {renderView({ item: largeCompImageCarousel[0] }, navigation, variant, position)}
+        </View>
+      )}
     </ContainerView>
   );
 };
@@ -199,6 +206,7 @@ const ModuleA = (props: Props) => {
     set: [set = {}],
   } = props;
   const ctaType = ctaTypes[set.val];
+
   return (
     <Container>
       {renderCarousel(largeCompImageCarousel, navigation, 'tcp', 'left')}
@@ -211,6 +219,7 @@ const ModuleA = (props: Props) => {
 
       {ctaType === 'stackedCTAList' && (
         <ContainerView>
+          <Border background="gray" />
           {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'gray')}
           <Border background="gray" />
         </ContainerView>

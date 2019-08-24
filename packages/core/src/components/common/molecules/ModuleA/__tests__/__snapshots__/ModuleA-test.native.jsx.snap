@@ -349,6 +349,9 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View)>
+    <Styled(View)
+      background="gray"
+    />
     <ButtonList
       buttonListVariation="stackedCTAList"
       buttonsData={

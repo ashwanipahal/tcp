@@ -9,7 +9,6 @@ import {
   ScrollViewContainer,
   DivImageContainer,
   TextLiksViewContainer,
-  SeperatorView,
   ContainerView,
 } from '../ButtonList.styles.native';
 
@@ -187,7 +186,7 @@ const renderItemImageCTAList = (item, navigation, locator, color) => {
   return (
     <Anchor url={button.url} navigation={navigation} locator={locator}>
       <DivImageContainer>
-        <Image url={image.url} height={60} width={60} style={style} />
+        <Image url={image && image.url} height={60} width={60} style={style} />
         <BodyCopy
           key={index.toString()}
           accessibilityRole="text"
@@ -206,13 +205,6 @@ const renderItemImageCTAList = (item, navigation, locator, color) => {
 };
 
 /**
- * This function is used to generate view .
- */
-const renderSeparatorComponent = () => {
-  return <SeperatorView />;
-};
-
-/**
  * This function is used to generate DivImageCTA view .
  */
 const renderImageCTAList = (ctxButton, navigation, locator, color) => {
@@ -225,7 +217,6 @@ const renderImageCTAList = (ctxButton, navigation, locator, color) => {
       keyExtractor={keyExtractor}
       data={ctxButton}
       renderItem={item => renderItemImageCTAList(item, navigation, locator, color)}
-      ItemSeparatorComponent={renderSeparatorComponent}
     />
   );
 };
