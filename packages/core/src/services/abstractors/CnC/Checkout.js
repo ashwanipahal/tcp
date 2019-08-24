@@ -2,6 +2,11 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getCurrentOrderFormatter } from './CartItemTile';
+import {
+  responseContainsErrors,
+  ServiceResponseError,
+  getFormattedError,
+} from '../../../utils/errorMessage.util';
 
 export const getGiftWrappingOptions = () => {
   const payload = {
@@ -82,7 +87,69 @@ export const getCurrentOrderAndCouponsDetails = (
   // });
 };
 
+const shippingMethodResponseHandler = res => {
+  if (responseContainsErrors(res)) {
+    throw new ServiceResponseError(res);
+  }
+  const methods = res.body.jsonArr;
+  let hasDefault = false;
+
+  // eslint-disable-next-line array-callback-return
+  const resFiltered = Object.keys(methods).map(index => {
+    const root = methods[index].description;
+    const tmp = root.split('Up To ');
+    const price = methods[index].shippingPrice.match(/\$([0-9]+[.]*[0-9]*)/);
+    let displayName = tmp[0].indexOf('-') === -1 ? tmp[0].replace('FREE', '- FREE') : tmp[0];
+    const shippingMethod = tmp.length > 1 ? `Up To ${tmp[1]}` : '';
+
+    if (price) {
+      displayName = displayName.replace(`$${price[1]}`, '');
+    }
+
+    hasDefault = hasDefault || methods[index].defaultShipMode;
+    return {
+      id: methods[index].shipModeId,
+      displayName: (displayName || '').trim(), // return anything until $ sign is being matched
+      shippingSpeed: (shippingMethod || '').trim(), // whichever value using 'price' as anchor
+      price: price ? parseInt(price[1], 10) : 0,
+      isDefault: methods[index].defaultShipMode,
+    };
+  });
+
+  if (!hasDefault && methods.length) {
+    resFiltered[0].isDefault = true;
+  }
+
+  return resFiltered;
+};
+
+export const getShippingMethods = (state, zipCode, addressLine1, addressLine2) => {
+  // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
+  // if (this.activeGetShippingMethodsRequest && this.activeGetShippingMethodsRequest.abort) {
+  //   this.activeGetShippingMethodsRequest.abort();
+  // }
+
+  // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
+  const dynamicHeader = { state, zipCode, addressLine1, addressLine2 };
+  Object.keys(dynamicHeader).forEach(key => {
+    if (!dynamicHeader[key]) {
+      delete dynamicHeader[key];
+    }
+  });
+  const payload = {
+    header: dynamicHeader,
+    webService: endpoints.getShipmentMethods,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(shippingMethodResponseHandler)
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+};
+
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
+  getShippingMethods,
 };

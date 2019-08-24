@@ -189,3 +189,17 @@ export function setItemsCount(itemsCount) {
     type: 'CART_SUMMARY_SET_ITEMCOUNT',
   };
 }
+
+export function setIsLoadingShippingMethods(isLoading) {
+  return {
+    isLoading,
+    type: constants.CHECKOUT_FLAGS_SET_LOAD_METHODS,
+  };
+}
+
+export function setShippingOptions(shippingMethods) {
+  return {
+    shippingMethods,
+    type: constants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING,
+  };
+}

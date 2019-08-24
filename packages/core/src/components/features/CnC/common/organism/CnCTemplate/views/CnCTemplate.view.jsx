@@ -9,42 +9,40 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 
 import styles from '../styles/CnCTemplate.style';
 
-class CnCTemplate extends React.PureComponent<Props> {
-  render() {
-    const {
-      leftSection: LeftSection,
-      bagActions: BagActions,
-      showLeftSection,
-      className,
-      header: Header,
-    } = this.props;
-    return (
-      <section className={className}>
-        {Header && <Header />}
-        <Row>
-          <Col
-            colSize={{ small: 6, medium: showLeftSection ? 5 : 8, large: showLeftSection ? 8 : 12 }}
-            className="left-sec"
-          >
-            <LeftSection />
+const CnCTemplate = ({
+  leftSection: LeftSection,
+  bagActions: BagActions,
+  showLeftSection,
+  className,
+  header: Header,
+}) => {
+  return (
+    <section className={className}>
+      {Header && <Header />}
+      <Row>
+        <Col
+          colSize={{ small: 6, medium: showLeftSection ? 5 : 8, large: showLeftSection ? 8 : 12 }}
+          className="left-sec"
+        >
+          <LeftSection />
+        </Col>
+        {showLeftSection && (
+          <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
+            <OrderLedgerContainer />
+            {BagActions && <BagActions />}
+            <div className="bonusPointsDaysWrapper">
+              <BonusPointsDays enableApplyCta />
+            </div>
+            <CouponAndPromos />
           </Col>
-          {showLeftSection && (
-            <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
-              <OrderLedgerContainer />
-              {BagActions && <BagActions />}
-              <div className="bonusPointsDaysWrapper">
-                <BonusPointsDays enableApplyCta />
-              </div>
-              <CouponAndPromos />
-            </Col>
-          )}
-        </Row>
-      </section>
-    );
-  }
-}
+        )}
+      </Row>
+    </section>
+  );
+};
 
 CnCTemplate.propTypes = {
+  className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
   bagActions: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
