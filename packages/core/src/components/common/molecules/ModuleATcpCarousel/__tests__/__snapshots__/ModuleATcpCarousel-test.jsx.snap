@@ -50,7 +50,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     <div
       className="banner-slide"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleA_image_0"
         imgConfigs={
           Array [
@@ -139,7 +139,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     <div
       className="banner-slide"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleA_image_1"
         imgConfigs={
           Array [
@@ -228,7 +228,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     <div
       className="banner-slide"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleA_image_2"
         imgConfigs={
           Array [
@@ -317,7 +317,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     <div
       className="banner-slide"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleA_image_3"
         imgConfigs={
           Array [

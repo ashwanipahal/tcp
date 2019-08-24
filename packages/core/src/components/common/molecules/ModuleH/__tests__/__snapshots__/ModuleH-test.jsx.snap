@@ -231,7 +231,7 @@ exports[`ModuleH component renders correctly 1`] = `
         }
       }
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleH_composite_image__1"
         imgConfigs={
           Array [
@@ -249,7 +249,7 @@ exports[`ModuleH component renders correctly 1`] = `
         }
         key="0"
       />
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleH_composite_image__2"
         imgConfigs={
           Array [
@@ -267,7 +267,7 @@ exports[`ModuleH component renders correctly 1`] = `
         }
         key="1"
       />
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleH_composite_image__3"
         imgConfigs={
           Array [
@@ -285,7 +285,7 @@ exports[`ModuleH component renders correctly 1`] = `
         }
         key="2"
       />
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleH_composite_image__4"
         imgConfigs={
           Array [
@@ -303,7 +303,7 @@ exports[`ModuleH component renders correctly 1`] = `
         }
         key="3"
       />
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         data-locator="moduleH_composite_image__5"
         imgConfigs={
           Array [

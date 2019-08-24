@@ -51,7 +51,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
       className="banner-slide"
       key="Family_Tees_Image_1"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         className="moduleA_image_0"
         imgConfigs={
           Array [
@@ -180,7 +180,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
       className="banner-slide"
       key="Family_Tees_Image_2"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         className="moduleA_image_1"
         imgConfigs={
           Array [
@@ -309,7 +309,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
       className="banner-slide"
       key="Family_Tees_Image_3"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         className="moduleA_image_2"
         imgConfigs={
           Array [
@@ -438,7 +438,7 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
       className="banner-slide"
       key="Family_Tees_Image_4"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         className="moduleA_image_3"
         imgConfigs={
           Array [

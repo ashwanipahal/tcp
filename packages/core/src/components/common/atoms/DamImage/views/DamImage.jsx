@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
+import withLazyLoad from '../../../hoc/withLazyLoad';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -116,5 +117,5 @@ DamImage.propTypes = {
   imgPathSplitter: PropTypes.string,
 };
 
-export default withTheme(DamImage);
+export default withTheme(withLazyLoad(DamImage));
 export { DamImage as DamImageVanilla };

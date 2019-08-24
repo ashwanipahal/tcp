@@ -12549,6 +12549,15 @@ react-clone-referenced-element@^1.0.1:
   resolved "https://registry.yarnpkg.com/react-clone-referenced-element/-/react-clone-referenced-element-1.1.0.tgz#9cdda7f2aeb54fea791f3ab8c6ab96c7a77d0158"
   integrity sha512-FKOsfKbBkPxYE8576EM6uAfHC4rnMpLyH6/TJUL4WcHUEB3EUn8AxPjnnV/IiwSSzsClvHYK+sDELKN/EJ0WYg==
 
+react-component-lazy-loader@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-component-lazy-loader/-/react-component-lazy-loader-1.1.2.tgz#055f7113c1d69fddc7579e253942559b634c618c"
+  integrity sha512-pW0ew/3DCD2QemMvjx+jLMp/FzLdRhLyFzt8dZwVpCmR1gz4OypDFudJYbCWH//2mNjEXAM90qnHdEI2bPYgqA==
+  dependencies:
+    lodash.get "^4.4.2"
+    lodash.throttle "^4.1.1"
+    prop-types "^15.7.2"
+
 react-deep-force-update@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.1.2.tgz#3d2ae45c2c9040cbb1772be52f8ea1ade6ca2ee1"

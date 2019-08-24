@@ -21,7 +21,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
       }
       data-locator="moduleL_tiles_NaN"
     >
-      <WithTheme(DamImage)
+      <WithTheme(Component)
         className="moduleL__tile-image"
         data-locator="moduleL_image_NaN"
         imgConfigs={

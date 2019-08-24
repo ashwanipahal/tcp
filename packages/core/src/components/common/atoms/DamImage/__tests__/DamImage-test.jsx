@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import DamImage from '../views/DamImage';
+import { DamImageVanilla as DamImage} from '../views/DamImage';
 
 const themeMock = {
   breakpoints: {

@@ -109,7 +109,7 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Family Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <WithTheme(DamImage)
+          <WithTheme(Component)
             className="moduleD_image"
             data-locator="moduleD_image_1"
             imgConfigs={
@@ -169,7 +169,7 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Mom & Me Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <WithTheme(DamImage)
+          <WithTheme(Component)
             className="moduleD_image"
             data-locator="moduleD_image_2"
             imgConfigs={
@@ -227,7 +227,7 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Family Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <WithTheme(DamImage)
+          <WithTheme(Component)
             className="moduleD_image"
             data-locator="moduleD_image_3"
             imgConfigs={
@@ -290,7 +290,7 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Mom & Me Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <WithTheme(DamImage)
+          <WithTheme(Component)
             className="moduleD_image"
             data-locator="moduleD_image_4"
             imgConfigs={

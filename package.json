@@ -112,6 +112,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "core-js": "3.2.1",
+    "react-component-lazy-loader": "1.1.2",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "immutable": "^4.0.0-rc.12",
