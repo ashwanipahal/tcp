@@ -42,6 +42,10 @@ const SuggestSectionWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
+const VerifyAddressWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
+
 export {
   AddressVerificationContainer,
   ButtonWrapper,
@@ -51,4 +55,5 @@ export {
   SuggestWrapper,
   EnteredSectionWrapper,
   SuggestSectionWrapper,
+  VerifyAddressWrapper,
 };

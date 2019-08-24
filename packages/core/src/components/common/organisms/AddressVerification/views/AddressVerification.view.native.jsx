@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { PropTypes } from 'prop-types';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
@@ -15,6 +15,7 @@ import {
   EnteredSectionWrapper,
   SuggestWrapper,
   SuggestSectionWrapper,
+  VerifyAddressWrapper,
 } from '../styles/AddressVerification.style.native';
 import CONSTANTS from '../AddressVerification.constants';
 import AddressOption from '../../../molecules/AddressOption';
@@ -238,6 +239,7 @@ export default class AddressVerification extends React.PureComponent {
       verificationResult,
       userAddress,
       suggestedAddress,
+      toggleAddressModal,
       labels: { verifyAddressLabels },
     } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
@@ -245,7 +247,7 @@ export default class AddressVerification extends React.PureComponent {
     if (this.showVerifyModal) {
       return (
         <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
-          <View>
+          <VerifyAddressWrapper>
             <BodyCopy
               mobilefontFamily={['secondary']}
               fontSize="fs22"
@@ -273,11 +275,11 @@ export default class AddressVerification extends React.PureComponent {
                   fill="WHITE"
                   text={verifyAddressLabels.editAddress}
                   buttonVariation="variable-width"
-                  onPress={this.onCloseModal}
+                  onPress={toggleAddressModal}
                 />
               </ButtonWrapper>
             </AddressVerificationContainer>
-          </View>
+          </VerifyAddressWrapper>
         </ScrollView>
       );
     }
@@ -299,6 +301,7 @@ AddressVerification.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
   resetVerifyAddressAction: PropTypes.func,
+  toggleAddressModal: PropTypes.func,
 };
 
 AddressVerification.defaultProps = {
@@ -315,4 +318,5 @@ AddressVerification.defaultProps = {
   onError: () => {},
   onSuccess: () => {},
   resetVerifyAddressAction: () => {},
+  toggleAddressModal: () => {},
 };

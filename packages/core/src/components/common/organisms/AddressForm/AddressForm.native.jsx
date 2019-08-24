@@ -70,7 +70,6 @@ export class AddressForm extends React.PureComponent<Props, State> {
       dispatch,
     } = this.props;
     const { dropDownItem, country } = this.state;
-
     return (
       <AddAddressWrapper>
         <Field
@@ -129,6 +128,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               id="state"
               name="state"
               component={DropDown}
+              heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"
               selectedValue={dropDownItem}
               data={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
@@ -144,7 +144,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
 
           <Separator />
 
-          <InputFieldHalf>
+          <InputFieldHalf zipCode>
             <Field
               id="zipCode"
               name="zipCode"
@@ -160,6 +160,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           id="country"
           name="country"
           component={DropDown}
+          heading={addressFormLabels.country}
           selectedValue={
             country === 'US'
               ? countriesOptionsMap[0].displayName
@@ -283,5 +284,7 @@ const validateMethod = createValidateMethod(
 export default reduxForm({
   form: 'AddressForm', // a unique identifier for this form
   enableReinitialize: true,
+  destroyOnUnmount: false,
+  keepDirtyOnReinitialize: true,
   ...validateMethod,
 })(AddressForm);

@@ -32,7 +32,7 @@ const labels = {
   addressFormLabels: {},
 };
 
-describe('AddEditAddressContainer', () => {
+describe.skip('AddEditAddressContainer', () => {
   it('should render correctly', () => {
     const component = shallow(
       <AddEditAddressContainer
