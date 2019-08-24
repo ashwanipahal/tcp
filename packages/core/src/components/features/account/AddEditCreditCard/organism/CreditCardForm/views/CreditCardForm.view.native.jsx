@@ -25,6 +25,7 @@ import {
   DefaultAddress,
   LeftBracket,
   RightBracket,
+  CustomAddress,
 } from '../styles/CreditCardForm.native.style';
 
 export class CreditCardForm extends React.PureComponent<Props, State> {
@@ -47,7 +48,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     onFileAddressKey: '',
     isEdit: false,
     dto: {},
-    selectedCard: {},
+    selectedCard: null,
   };
 
   constructor(props) {
@@ -85,10 +86,14 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     return addressOptions.valueSeq().toArray();
   };
 
-  getSelectedAddress = (addressList, onFileAddresskey) =>
-    onFileAddresskey
+  getSelectedAddress = (addressList, onFileAddresskey) => {
+    const { dispatch } = this.props;
+    const defaultAddress = onFileAddresskey
       ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
       : addressList && addressList.find(add => add.primary);
+    dispatch(change(constants.FORM_NAME, 'onFileAddressKey', defaultAddress.addressId));
+    return defaultAddress;
+  };
 
   handleComponentChange = item => {
     const { dispatch } = this.props;
@@ -129,7 +134,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       addressLabels,
       addressList,
       isEdit,
-      invalid,
       onClose,
       dto,
       selectedCard,
@@ -145,6 +149,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       height: 100,
     };
     const addressComponentList = this.getAddressOptions();
+    const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
@@ -166,10 +171,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           />
           <BodyCopy
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             textAlign="left"
-            fontWeight="black"
-            text="Select from Address Book"
+            fontWeight="semibold"
+            marginTop="10"
+            text={labels.paymentGC.lbl_payment_ccAdressSelect}
           />
 
           {addressComponentList && (
@@ -195,12 +201,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <DefaultAddress>
               <LeftBracket />
               <Address
-                address={this.getSelectedAddress(addressList, selectedAddress)}
+                address={defaultAddress}
                 showCountry={false}
                 showPhone={false}
                 showName
-                className="CreditCardForm__address"
                 dataLocatorPrefix="address"
+                customStyle={CustomAddress}
               />
               <RightBracket />
             </DefaultAddress>
@@ -209,12 +215,13 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
         <ActionsWrapper>
           <Button
             fill="BLUE"
-            disabled={invalid}
             buttonVariation="variable-width"
-            text={isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
+            text={
+              isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
+            }
             style={AddAddressButton}
+            type="submit"
             onPress={this.submitCardInformation}
-            external
           />
           <Button
             fill="WHITE"

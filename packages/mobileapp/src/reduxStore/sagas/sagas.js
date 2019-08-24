@@ -18,14 +18,17 @@ import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
+import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
+import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
   yield all([
     BootstrapSaga(),
     HomePageSaga(),
+    NavigationSaga(),
     LoginPageSaga(),
     LogOutPageSaga(),
     ForgotPasswordSaga(),
@@ -46,5 +49,6 @@ export default function* rootSaga() {
     AddEditCreditCardSaga(),
     UserSaga(),
     AddGiftCardSaga(),
+    CheckoutSaga(),
   ]);
 }

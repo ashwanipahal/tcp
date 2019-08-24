@@ -20,8 +20,9 @@ export const AccountOverviewTile = ({
         <BodyCopy
           component="h3"
           fontSize="fs16"
-          fontWeight="semibold"
+          fontWeight="extrabold"
           className="heading"
+          fontFamily="secondary"
           data-locator={`accountoverview-${dataLocatorPrefix}-header`}
         >
           {title}

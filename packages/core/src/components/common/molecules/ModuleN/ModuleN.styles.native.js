@@ -12,7 +12,6 @@ export const PromoTextBannerWrapper = styled.View`
 `;
 export const ButtonContainer = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 export const ContainerView = styled.View``;
 export const Border = styled.View`

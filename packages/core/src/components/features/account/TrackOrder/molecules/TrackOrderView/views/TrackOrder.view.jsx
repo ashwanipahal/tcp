@@ -15,7 +15,6 @@ type Props = {
   setModalMountState: Function,
   showNotification: string,
   onChangeForm: Function,
-  toggleSubmit: boolean,
 };
 export const TrackOrderView = ({
   labels,
@@ -25,7 +24,6 @@ export const TrackOrderView = ({
   setModalMountState,
   showNotification,
   onChangeForm,
-  toggleSubmit,
 }: Props) => {
   return (
     <React.Fragment>
@@ -43,7 +41,6 @@ export const TrackOrderView = ({
         handleSubmit={onSubmit}
         className="trackorder__modal__form"
         onChangeForm={onChangeForm}
-        toggleSubmit={toggleSubmit}
       />
       <TrackOrderBottomSection
         labels={labels}

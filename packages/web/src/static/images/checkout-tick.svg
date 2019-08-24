@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="checkout-tick" data-name="checkout-tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #4a4a4a;
+            }
+            .cls-2,.cls-3 {
+                fill: none;
+            }
+            .cls-2 {
+                stroke: #000;
+            }
+            .cls-3 {
+                stroke: #fff;
+                stroke-width: 2px;
+            }
+        </style>
+    </defs>
+    <title>checkout-tick</title>
+    <g id="Page-1">
+        <g id="icon-_-check-success" data-name="icon-/-check-success">
+            <g id="Group-11-Copy">
+                <g id="Group-10">
+                    <g id="Oval-5">
+                        <circle id="path-1" class="cls-1" cx="8.5" cy="8.5" r="8.5"/>
+                        <circle class="cls-2" cx="8.5" cy="8.5" r="8"/>
+                    </g>
+                    <g id="icon-_-check-success-white" data-name="icon-/-check-success-white">
+                        <polyline id="Path-2" class="cls-3" points="4.62 8.82 7.31 10.85 12.62 7.15"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

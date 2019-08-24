@@ -11,6 +11,13 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator, routerPush } from '../../../../../utils';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+  routeToCheckout = e => {
+    if (e) {
+      e.preventDefault();
+    }
+    routerPush('/checkout', '/checkout');
+  };
+
   render() {
     const {
       className,
@@ -66,10 +73,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
           variation="checkout"
           openState={checkoutModalMountedState}
           setLoginModalMountState={closeCheckoutModalMountState}
-          handleContinueAsGuest={e => {
-            e.preventDefault();
-            routerPush('/checkout', '/checkout');
-          }}
+          handleContinueAsGuest={this.routeToCheckout}
+          handleAfterLogin={this.routeToCheckout}
         />
       </div>
     );

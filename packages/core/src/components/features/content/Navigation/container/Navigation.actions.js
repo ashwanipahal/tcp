@@ -1,4 +1,10 @@
-import NAVIGATION_CONSTANTS from './Navigation.constants';
+import NAVIGATION_CONSTANTS, { FETCH_NAVIGATION_DATA } from './Navigation.constants';
+
+export const fetchNavigationData = () => {
+  return {
+    type: FETCH_NAVIGATION_DATA,
+  };
+};
 
 export const loadNavigationData = payload => {
   return {

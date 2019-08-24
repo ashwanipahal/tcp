@@ -7,6 +7,10 @@ const internalEndpoints = {
     link: '/home',
     path: '/home',
   },
+  changePassowrdPage: {
+    link: '/account?id=profile&subSection=change-password',
+    path: '/account/profile',
+  },
 };
 
 export default internalEndpoints;

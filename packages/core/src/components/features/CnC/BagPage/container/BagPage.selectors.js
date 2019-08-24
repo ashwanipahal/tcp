@@ -23,6 +23,10 @@ const getBagPageLabels = state => {
         lbl_emptyBag_shopNow: shopNow,
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
+      },
+    },
+    global: {
+      checkoutConfirmation: {
         lbl_checkoutmodal_confirmation: confirmationText,
         lbl_checkoutmodal_backToBag: backToBag,
         lbl_checkoutmodal_continueCheckout: continueCheckout,
@@ -86,7 +90,7 @@ const getUnqualifiedItemsIds = state =>
   getUnqualifiedItems(state).map(item => item.getIn(['itemInfo', 'itemId']));
 
 const getUnavailableCount = state =>
-  getFilteredItems(state, type => type === AVAILABILITY.UNAVAILABLE);
+  getFilteredItems(state, type => type === AVAILABILITY.UNAVAILABLE).size;
 
 const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
 
