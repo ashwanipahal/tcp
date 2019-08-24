@@ -206,31 +206,31 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
-  onMessage = event => {
-    debugger
-    if (event && event.nativeEvent.data) {
-      const value =  get(event, 'nativeEvent.data', '');
-      this.setState({recaptchaToken : value})
-    }
-  };
+  // onMessage = event => {
+  //   debugger
+  //   if (event && event.nativeEvent.data) {
+  //     const value =  get(event, 'nativeEvent.data', '');
+  //     this.setState({recaptchaToken : value})
+  //   }
+  // };
 
 
-  toogleRecaptcha = ({ labels, setRecaptchaModalMountedState }) => {
-    return (
-      <React.Fragment>
-        {setRecaptchaModalMountedState && (
-          <RecaptchaModal
-            onMessage={this.onMessage}
-            labels={labels}
-            setRecaptchaModalMountedState={setRecaptchaModalMountedState}
-            toggleRecaptchaModal={this.setRecaptchaModalMountState}
-            onConfirm={this.onConfirm}
-            onClose={this.onClose}
-          />
-        )}
-      </React.Fragment>
-    );
-  };
+  // toogleRecaptcha = ({ labels, setRecaptchaModalMountedState }) => {
+  //   return (
+  //     <React.Fragment>
+  //       {setRecaptchaModalMountedState && (
+  //         <RecaptchaModal
+  //           onMessage={this.onMessage}
+  //           labels={labels}
+  //           setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+  //           toggleRecaptchaModal={this.setRecaptchaModalMountState}
+  //           onConfirm={this.onConfirm}
+  //           onClose={this.onClose}
+  //         />
+  //       )}
+  //     </React.Fragment>
+  //   );
+  // };
 
 
 
@@ -310,7 +310,6 @@ class PaymentView extends React.Component<Props> {
               cardList={creditCardList}
               setDefaultPaymentMethod={setDefaultPaymentMethod}
               toggleModal={this.setDeleteModalMountState}
-              toggleRecaptchaModal={this.setRecaptchaModalMountState}
               openUpdateModal={this.setUpdateModalMountState} // Update handler to edit card with edit story
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.setUpdateModalMountState}
@@ -343,7 +342,7 @@ class PaymentView extends React.Component<Props> {
               recaptchaToken={recaptchaToken}
             />
           )}
-          {this.toogleRecaptcha({ labels, setRecaptchaModalMountedState })}
+          {/* {this.toogleRecaptcha({ labels, setRecaptchaModalMountedState })} */}
 
           {setDeleteModalMountedState && (
             <DeleteModal
