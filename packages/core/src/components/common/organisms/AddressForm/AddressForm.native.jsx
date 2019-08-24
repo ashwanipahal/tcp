@@ -8,7 +8,6 @@ import InputCheckbox from '../../atoms/InputCheckbox';
 import Button from '../../atoms/Button';
 import createValidateMethod from '../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../utils/formValidation/validatorStandardConfig';
-import { AutoCompleteComponent } from '../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
@@ -35,23 +34,25 @@ export class AddressForm extends React.PureComponent<Props, State> {
     super(props);
     this.state = {
       country: 'US',
-      dropDownItem: UScountriesStatesTable[0].fullName,
+      dropDownItem: UScountriesStatesTable[0].displayName,
     };
   }
 
-  StateCountryChange = e => {
-    this.setState({
-      country: e.target.value ? e.target.value : '',
-    });
-  };
+  componentDidMount() {
+    const { dispatch, initialValues } = this.props;
+    dispatch(change('AddressForm', 'state', initialValues.state));
+    dispatch(change('AddressForm', 'country', initialValues.country));
+    dispatch(change('AddressForm', 'addressLine1', initialValues.addressLine1));
+  }
 
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = GooglePlacesInput.getAddressFromPlace(place, inputValue);
     dispatch(change('AddressForm', 'city', address.city));
     dispatch(change('AddressForm', 'zipCode', address.zip));
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
+    this.setState({ dropDownItem: address.state });
   };
 
   renderStyledLabel = label => {
@@ -60,13 +61,13 @@ export class AddressForm extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      handleSubmit,
-      invalid,
       addressFormLabels,
       isEdit,
       isMakeDefaultDisabled,
-      submitAddressFormAction,
       onCancel,
+      invalid,
+      handleSubmit,
+      dispatch,
     } = this.props;
     const { dropDownItem, country } = this.state;
 
@@ -95,6 +96,10 @@ export class AddressForm extends React.PureComponent<Props, State> {
             name="addressLine1"
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
+            onValueChange={(data, inputValue) => {
+              dispatch(change('AddressForm', 'addressLine1', data));
+              this.handlePlaceSelected(data, inputValue);
+            }}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={Object.assign({}, { country: [country] })}
           />
@@ -128,6 +133,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               selectedValue={dropDownItem}
               data={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
               onValueChange={itemValue => {
+                dispatch(change('AddressForm', 'state', itemValue));
                 this.setState({ dropDownItem: itemValue });
               }}
               variation="secondary"
@@ -140,6 +146,8 @@ export class AddressForm extends React.PureComponent<Props, State> {
 
           <InputFieldHalf>
             <Field
+              id="zipCode"
+              name="zipCode"
               label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
               maxLength={country === 'CA' ? 6 : 5}
               component={TextBox}
@@ -160,6 +168,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           data={countriesOptionsMap}
           dataLocator="addnewaddress-country"
           onValueChange={itemValue => {
+            dispatch(change('AddressForm', 'country', itemValue));
             this.setState({ country: itemValue });
           }}
           variation="secondary"
@@ -195,7 +204,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
             type="submit"
             color="white"
             disabled={invalid}
-            onPress={handleSubmit(submitAddressFormAction)}
+            onPress={handleSubmit}
             buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
           />
@@ -215,10 +224,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
 }
 
 AddressForm.propTypes = {
-  handleSubmit: PropTypes.func,
-  invalid: PropTypes.bool,
   dispatch: PropTypes.func,
-  submitAddressFormAction: PropTypes.func,
   addressFormLabels: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -242,8 +248,6 @@ AddressForm.propTypes = {
 AddressForm.defaultProps = {
   isEdit: false,
   isMakeDefaultDisabled: false,
-  invalid: false,
-  handleSubmit: () => {},
   addressFormLabels: {
     firstName: '',
     lastName: '',
@@ -261,20 +265,18 @@ AddressForm.defaultProps = {
   },
   dispatch: () => {},
   onCancel: () => {},
-  submitAddressFormAction: () => {},
 };
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
     'firstName',
     'lastName',
-    'addressLine1',
     'addressLine2',
     'city',
     'state',
-    'zipCode',
     'country',
     'phoneNumber',
+    'zipCode',
   ])
 );
 

@@ -16,19 +16,16 @@ import {
 } from './AutoCompleteComponent.native.style';
 
 export const GooglePlacesInput = props => {
-  const { headerTitle, componentRestrictions } = props;
+  const { headerTitle, componentRestrictions, onValueChange } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
     setFocussed(true);
   };
-  const onBlur = () => {
-    setFocussed(false);
-  };
+
   // const apiConfigObj = getAPIConfig();
   // eslint-disable-next-line
   const map_api_key = 'AIzaSyAd-jljPEQ6kgrLRJuN-ENKypW9K6sbQgc';
   // const { map_api_key } = apiConfigObj;
-
   return (
     <Container>
       <StyledLabel isFocused={focussed}>{headerTitle}</StyledLabel>
@@ -38,11 +35,12 @@ export const GooglePlacesInput = props => {
         minLength={2} // minimum length of text to search
         autoFocus={false}
         returnKeyType="search"
-        listViewDisplayed="auto"
+        listViewDisplayed={false}
         fetchDetails
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
           setFocussed(true);
+          onValueChange(details, data.description);
           // 'details' is provided when fetchDetails = true
           return [data, details];
         }}
@@ -55,7 +53,6 @@ export const GooglePlacesInput = props => {
         }}
         textInputProps={{
           onFocus,
-          onBlur,
         }}
         styles={{
           textInputContainer,
@@ -74,11 +71,87 @@ export const GooglePlacesInput = props => {
   );
 };
 
+GooglePlacesInput.GOOGLE_PLACE_PARTS = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  sublocality_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name',
+};
+
+GooglePlacesInput.getAddressFromPlace = (place, inputValue) => {
+  let address = {
+    street: '',
+    city: '',
+    state: '',
+    country: '',
+    zip: '',
+    steet_number: '',
+    street_name: '',
+  };
+  if (typeof place.address_components === 'undefined') {
+    return address;
+  }
+  for (let i = 0; i < place.address_components.length; i += 1) {
+    const addressType = place.address_components[i].types[0];
+    if (GooglePlacesInput.GOOGLE_PLACE_PARTS[addressType]) {
+      const val = place.address_components[i][GooglePlacesInput.GOOGLE_PLACE_PARTS[addressType]];
+      address = GooglePlacesInput.returngetAddress(addressType, val, address);
+    }
+  }
+  if (!address.street_number) {
+    const regex = new RegExp(`^(.*)${address.street_name.split(' ', 1)[0]}`);
+    const result = regex.exec(inputValue);
+    const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
+
+    if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
+      address.street_number = inputNum;
+    }
+  }
+
+  address.street = `${address.street_number} ${address.street_name}`;
+
+  return address;
+};
+
+GooglePlacesInput.returngetAddress = (addressType, val, address) => {
+  const addressRef = Object.assign({}, address);
+  switch (addressType) {
+    case 'street_number':
+      addressRef.street_number = val;
+      break;
+    case 'route':
+      addressRef.street_name = val;
+      break;
+    case 'locality':
+      addressRef.city = val;
+      break;
+    case 'sublocality_level_1':
+      addressRef.city = val;
+      break;
+    case 'administrative_area_level_1':
+      addressRef.state = val;
+      break;
+    case 'country':
+      addressRef.country = val;
+      break;
+    case 'postal_code':
+      addressRef.zip = val;
+      break;
+    default:
+      addressRef.zip = val;
+  }
+  return addressRef;
+};
+
 GooglePlacesInput.propTypes = {
   headerTitle: PropTypes.string,
   componentRestrictions: PropTypes.shape({
     country: PropTypes.shape([]),
   }),
+  onValueChange: PropTypes.func,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -86,6 +159,7 @@ GooglePlacesInput.defaultProps = {
   componentRestrictions: {
     country: [],
   },
+  onValueChange: () => {},
 };
 
 export default GooglePlacesInput;

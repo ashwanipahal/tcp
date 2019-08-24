@@ -8,14 +8,7 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
   initialValues={
     Object {
       "addressLine2": "",
-      "country": Object {
-        "ADD_USER_ADDRESS_FAIL": "ADD_USER_ADDRESS_FAIL",
-        "ADD_USER_ADDRESS_REQ": "ADD_USER_ADDRESS_REQ",
-        "ADD_USER_ADDRESS_SUCCESS": "ADD_USER_ADDRESS_SUCCESS",
-        "COUNTRY_CA": "CA",
-        "COUNTRY_US": "US",
-        "UPDATE_USER_ADDRESS_REQ": "UPDATE_USER_ADDRESS_REQ",
-      },
+      "country": "US",
       "primary": true,
     }
   }
