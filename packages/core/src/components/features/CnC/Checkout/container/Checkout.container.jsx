@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// eslint-disable-next-line import/no-unresolved
-import { withRouter } from 'next/router';
 import { initCheckoutAction, onEditModeChangeAction } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -36,10 +34,12 @@ export class CheckoutContainer extends React.Component<Props> {
       isAlternateUpdateChecked,
       pickUpLabels,
       smsSignUpLabels,
+      navigation,
     } = this.props;
 
     return (
       <CheckoutPage
+        router={router}
         initialValues={initialValues}
         currentSection={router.query.section}
         onEditModeChange={onEditModeChange}
@@ -56,6 +56,7 @@ export class CheckoutContainer extends React.Component<Props> {
         isAlternateUpdateChecked={isAlternateUpdateChecked}
         pickUpLabels={pickUpLabels}
         smsSignUpLabels={smsSignUpLabels}
+        navigation={navigation}
       />
     );
   }
@@ -103,9 +104,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CheckoutContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CheckoutContainer);

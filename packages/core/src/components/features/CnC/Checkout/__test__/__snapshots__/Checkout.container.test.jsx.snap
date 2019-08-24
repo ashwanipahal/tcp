@@ -13,5 +13,12 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   isSmsUpdatesEnabled={true}
   isUsSite={false}
   onEditModeChange={true}
+  router={
+    Object {
+      "query": Object {
+        "section": "",
+      },
+    }
+  }
 />
 `;

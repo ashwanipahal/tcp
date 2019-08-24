@@ -23,6 +23,7 @@ export default class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      navigation,
     } = this.props;
 
     return (
@@ -43,6 +44,7 @@ export default class CheckoutPage extends React.PureComponent {
               pickUpLabels={pickUpLabels}
               smsSignUpLabels={smsSignUpLabels}
               onSubmit={this.onPickUpSubmit}
+              navigation={navigation}
             />
           )}
         {currentSection.toLowerCase() === 'shipping' && <ShippingPage />}
@@ -73,4 +75,7 @@ CheckoutPage.propTypes = {
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
+  router: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
