@@ -3,7 +3,6 @@ const buildQuery = ({ brand, country, channel }) => `
     categoryContent {
       description
       catgroupId
-      seoUrl
       name
       id
       seoUrl
