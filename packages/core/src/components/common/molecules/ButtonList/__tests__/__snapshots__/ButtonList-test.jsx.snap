@@ -611,7 +611,5 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
 exports[`ButtonList component renders correctly without props 1`] = `
 <div
   className=" "
->
-  <Component />
-</div>
+/>
 `;
