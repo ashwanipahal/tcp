@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field, change } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
-import Button from '@tcp/core/src/components/common/atoms/Button';
+import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import { Heading } from '@tcp/core/src/components/common/atoms';
 import AddEditAddressContainer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.container';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
@@ -53,13 +53,17 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap, onFileAddresskey } = props;
+    const { expMonthOptionsMap, expYearOptionsMap, onFileAddresskey, dispatch } = props;
     this.state = {
       addAddressMount: false,
       selectedAddress: onFileAddresskey,
       selectedYear: expYearOptionsMap[1].id,
       selectedMonth: expMonthOptionsMap[0].id,
     };
+    // Setting form value to take dropdown values.
+    dispatch(change('addEditCreditCard', 'expYear', expYearOptionsMap[1].id));
+    dispatch(change('addEditCreditCard', 'expMonth', expMonthOptionsMap[0].id));
+    this.submitCardInformation = this.submitCardInformation.bind(this);
   }
 
   getAddressOptions = () => {
@@ -91,7 +95,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     const defaultAddress = onFileAddresskey
       ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
       : addressList && addressList.find(add => add.primary);
-    dispatch(change(constants.FORM_NAME, 'onFileAddressKey', defaultAddress.addressId));
+    dispatch(change('addEditCreditCard', 'onFileAddressKey', defaultAddress.addressId));
     return defaultAddress;
   };
 
@@ -120,8 +124,8 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     const { handleSubmit, dispatch, isEdit, selectedCard } = this.props;
 
     // Setting form value to take dropdown values.
-    dispatch(change(constants.FORM_NAME, 'expYear', selectedYear));
-    dispatch(change(constants.FORM_NAME, 'expMonth', selectedMonth));
+    dispatch(change('addEditCreditCard', 'expYear', selectedYear));
+    dispatch(change('addEditCreditCard', 'expMonth', selectedMonth));
     if (isEdit && selectedCard) {
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
@@ -213,17 +217,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           )}
         </AddressWrapper>
         <ActionsWrapper>
-          <Button
+          <CustomButton
             fill="BLUE"
             buttonVariation="variable-width"
             text={
               isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
             }
             style={AddAddressButton}
-            type="submit"
             onPress={this.submitCardInformation}
           />
-          <Button
+          <CustomButton
             fill="WHITE"
             onPress={onClose}
             buttonVariation="variable-width"
