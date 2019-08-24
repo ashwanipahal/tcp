@@ -79,7 +79,14 @@ export const getUnbxdId = createSelector(
 );
 
 export const getLabelsProductTiles = state => {
-  return state.Labels.PLP['PLP Tiles'];
+  const {
+    PLP: {
+      plpTiles: { lbl_add_to_bag: addToBag },
+    },
+  } = state.Labels;
+  return {
+    addToBag,
+  };
 };
 
 export default getPlpProducts;

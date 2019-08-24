@@ -530,7 +530,7 @@ class ProductsGridItem extends React.PureComponent {
               buttonVariation="fixed-width"
               dataLocator={getLocator('global_addtocart_Button')}
             >
-              {labels.lbl_add_to_bag}
+              {labels.addToBag}
             </Button>
           </div>
 
