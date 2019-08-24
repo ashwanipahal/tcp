@@ -77,14 +77,14 @@ export const updateAddress = args => {
       firstName: args.firstName,
       lastName: args.lastName,
       phone1: args.phoneNumber,
-      phone1Publish: 'false',
+      phone1Publish: args.saveToAccount || 'false',
       primary: args.primary,
       state: args.state,
       zipCode: args.zip,
       xcont_addressField2: args.isCommercialAddress ? '2' : '1',
       email1: args.email,
       xcont_addressField3: args.zip,
-      fromPage: '',
+      fromPage: args.applyToOrder ? 'checkout' : '',
     },
   };
   return executeStatefulAPICall(payload)

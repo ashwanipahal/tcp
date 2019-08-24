@@ -13,6 +13,7 @@ const {
   getAddressFields,
   getAddressPhoneNo,
   getIsOrderHasPickup,
+  getEmailSignUpLabels,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -85,6 +86,7 @@ const mapStateToProps = state => {
       selectedShipmentId: getSelectedShipmentId(state),
       address: getAddressFields(state),
       addressPhoneNumber: getAddressPhoneNo(state),
+      emailSignUpLabels: getEmailSignUpLabels(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormSection, reduxForm } from 'redux-form';
+import { FormSection, reduxForm, Field } from 'redux-form';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
+import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
@@ -10,6 +11,8 @@ import withStyles from '../../../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import CheckoutFooter from '../../../../../molecules/CheckoutFooter';
+import Anchor from '../../../../../../../../common/atoms/Anchor';
+import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 
 const ShippingForm = ({
   addressLabels: { addressFormLabels },
@@ -22,6 +25,10 @@ const ShippingForm = ({
   selectedShipmentId,
   checkPOBoxAddress,
   addressPhoneNo,
+  emailSignUpLabels,
+  isGuest,
+  isUsSite,
+  orderHasPickUp,
 }) => {
   return (
     <>
@@ -50,47 +57,97 @@ const ShippingForm = ({
             />
           </FormSection>
         </div>
-        <FormSection name="smsSignUp">
-          <SMSFormFields
-            labels={smsSignUpLabels}
-            showDefaultCheckbox={false}
-            formName="checkoutShipping"
-            formSection="smsSignUp"
-            variation="secondary"
-            isOrderUpdateChecked={isOrderUpdateChecked}
-            dispatch={dispatch}
-            borderBottom
-          />
-        </FormSection>
+        {!orderHasPickUp && isUsSite && (
+          <FormSection name="smsSignUp">
+            <SMSFormFields
+              labels={smsSignUpLabels}
+              showDefaultCheckbox={false}
+              formName="checkoutShipping"
+              formSection="smsSignUp"
+              variation="secondary"
+              isOrderUpdateChecked={isOrderUpdateChecked}
+              dispatch={dispatch}
+              borderBottom
+            />
+          </FormSection>
+        )}
+        {!orderHasPickUp && isGuest && !isUsSite && (
+          <FormSection name="emailSignUp">
+            <div className="email-signup-container">
+              <Field
+                dataLocator="signUp-checkbox-field"
+                name="sendEmailSignup"
+                component={InputCheckbox}
+                className="email-signup"
+              >
+                <BodyCopy
+                  dataLocator="pickup-email-signUp-heading-lbl"
+                  fontSize="fs16"
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                >
+                  {emailSignUpLabels.emailSignupHeading}
+                </BodyCopy>
+              </Field>
+              <div className="email-signup-text">
+                <BodyCopy
+                  dataLocator="pickup-email-signUp-sub-heading-text"
+                  fontSize="fs12"
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                >
+                  {emailSignUpLabels.emailSignupSubHeading}
+                </BodyCopy>
+                <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
+                  {emailSignUpLabels.emailSignupSubSubHeading}
+                </BodyCopy>
+                <Anchor
+                  noUnderline
+                  anchorVariation="primary"
+                  fontSizeVariation="small"
+                  noLink
+                  href="#"
+                  target="_blank"
+                  dataLocator="shipping-email-signUp-contact-anchor"
+                >
+                  {emailSignUpLabels.emailSignupContact}
+                </Anchor>
+              </div>
+            </div>
+          </FormSection>
+        )}
         <FormSection name="shipmentMethods">
-          <ShipmentMethods
-            shipmentMethods={[
-              {
-                id: '901101',
-                displayName: 'Standard - FREE',
-                shippingSpeed: 'Up To 10 Business Days',
-                price: 0,
-                isDefault: true,
-              },
-              {
-                displayName: 'Express',
-                isDefault: false,
-                shippingSpeed: 'Up To 5 Business Days',
-                id: '901102',
-                price: 15,
-              },
-              {
-                displayName: 'Rush',
-                isDefault: false,
-                shippingSpeed: 'Up To 3 Business Days',
-                id: '901103',
-                price: 20,
-              },
-            ]}
-            formName="checkoutShipping"
-            formSection="shipmentMethods"
-            selectedShipmentId={selectedShipmentId}
-          />
+          <div className="shipment-methods-form">
+            <ShipmentMethods
+              shipmentMethods={[
+                {
+                  id: '901101',
+                  displayName: 'Standard - FREE',
+                  shippingSpeed: 'Up To 10 Business Days',
+                  price: 0,
+                  isDefault: true,
+                },
+                {
+                  displayName: 'Express',
+                  isDefault: false,
+                  shippingSpeed: 'Up To 5 Business Days',
+                  id: '901102',
+                  price: 15,
+                },
+                {
+                  displayName: 'Rush',
+                  isDefault: false,
+                  shippingSpeed: 'Up To 3 Business Days',
+                  id: '901103',
+                  price: 20,
+                },
+              ]}
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={selectedShipmentId}
+              shipmentHeader={shippingLabels.shipmentHeader}
+            />
+          </div>
         </FormSection>
         <CheckoutFooter />
       </form>
@@ -122,6 +179,7 @@ ShippingForm.defaultProps = {
 const validateMethod = createValidateMethod({
   address: AddressFields.addressValidationConfig,
   smsSignUp: SMSFormFields.smsFormFieldsConfig,
+  emailSignUp: getStandardConfig(['sendEmailSignup']),
 });
 
 export default reduxForm({

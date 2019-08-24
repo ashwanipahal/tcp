@@ -14,27 +14,31 @@ export default class CheckoutPage extends React.PureComponent {
       currentPhoneNumber,
       shippingProps,
       navigation,
+      isGuest,
+      isUsSite,
+      orderHasPickUp,
     } = this.props;
     const currentSection = router.query.section;
     return (
-      <CnCTemplate
-        leftSection={() => {
-          return (
-            <>
-              {currentSection.toLowerCase() === 'pickup' && (
-                <PickupPage
-                  initialValues={initialValues}
-                  onEditModeChange={onEditModeChange}
-                  isSmsUpdatesEnabled={isSmsUpdatesEnabled}
-                  currentPhoneNumber={currentPhoneNumber}
-                  navigation={navigation}
-                />
-              )}
-              {currentSection.toLowerCase() === 'shipping' && <ShippingPage {...shippingProps} />}
-            </>
-          );
-        }}
-      />
+      <>
+        {currentSection.toLowerCase() === 'pickup' && (
+          <PickupPage
+            initialValues={initialValues}
+            onEditModeChange={onEditModeChange}
+            isSmsUpdatesEnabled={isSmsUpdatesEnabled}
+            currentPhoneNumber={currentPhoneNumber}
+            navigation={navigation}
+          />
+        )}
+        {currentSection.toLowerCase() === 'shipping' && (
+          <ShippingPage
+            {...shippingProps}
+            isGuest={isGuest}
+            isUsSite={isUsSite}
+            orderHasPickUp={orderHasPickUp}
+          />
+        )}
+      </>
     );
   };
 

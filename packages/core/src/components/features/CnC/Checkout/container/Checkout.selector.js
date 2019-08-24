@@ -2,12 +2,14 @@ import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig } from '@tcp/core/src/utils';
+import progressUtils from '@tcp/web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 import {
   getUserName,
   getUserLastName,
   getUserPhoneNumber,
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
+import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 
 function getRecalcOrderPointsInterval() {
   return 300000;
@@ -18,6 +20,11 @@ function getIsOrderHasShipping() {
   return true;
   // state.cart.items.reduce((isShipToHome, item) => isShipToHome || !item.miscInfo.store, false);
 }
+
+const getIsOrderHasPickup = createSelector(
+  BagPageSelector.getOrderItems,
+  orderItems => orderItems && progressUtils.isOrderHasPickup(orderItems)
+);
 
 function isGuest(state) {
   return state.User.getIn(['personalData', 'isGuest']);
@@ -213,11 +220,15 @@ const getAddressPhoneNo = createSelector(
 );
 
 const getShippingLabels = state => {
-  const { lbl_shipping_header: header, lbl_shipping_sectionHeader: sectionHeader } =
-    state.Labels.checkout && state.Labels.checkout.shipping;
+  const {
+    lbl_shipping_header: header,
+    lbl_shipping_sectionHeader: sectionHeader,
+    lbl_shipping_shipmentHeader: shipmentHeader,
+  } = state.Labels.checkout && state.Labels.checkout.shipping;
   return {
     header,
     sectionHeader,
+    shipmentHeader,
   };
 };
 
@@ -231,6 +242,21 @@ const getSmsSignUpLabels = state => {
     smsSignupText,
     privacyPolicy,
     orderUpdates,
+  };
+};
+
+const getEmailSignUpLabels = state => {
+  const {
+    lbl_pickup_emailSignupHeading: emailSignupHeading,
+    lbl_pickup_emailSignupSubHeading: emailSignupSubHeading,
+    lbl_pickup_emailSignupSubSubHeading: emailSignupSubSubHeading,
+    lbl_pickup_emailSignupContact: emailSignupContact,
+  } = state.Labels.checkout && state.Labels.checkout.pickup;
+  return {
+    emailSignupHeading,
+    emailSignupSubHeading,
+    emailSignupSubSubHeading,
+    emailSignupContact,
   };
 };
 
@@ -259,4 +285,6 @@ export default {
   getAddressPhoneNo,
   getShippingLabels,
   getSmsSignUpLabels,
+  getIsOrderHasPickup,
+  getEmailSignUpLabels,
 };

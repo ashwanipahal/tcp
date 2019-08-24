@@ -12,15 +12,19 @@ exports[`Shipping Page should render correctly 1`] = `
   initialValues={
     Object {
       "address": Object {
-        "country": undefined,
+        "country": "US",
       },
       "shipmentMethods": Object {
         "shippingMethodId": "901101",
       },
     }
   }
+  isGuest={true}
   isOrderUpdateChecked={false}
+  isUsSite={true}
   keepDirtyOnReinitialize={false}
+  onSubmit={[Function]}
+  orderHasPickUp={false}
   persistentSubmitErrors={false}
   pure={true}
   selectedShipmentId={null}
