@@ -124,7 +124,7 @@ const ButtonList = (props: Props) => {
   const imageCTAProps = config.imageCTAList.compProps;
   const wrappedTextClass = ' wrapped-button-text';
 
-  let component = Button;
+  let component = null;
   let compWrapper = '';
   let compProps = {};
 
