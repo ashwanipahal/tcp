@@ -7,7 +7,7 @@ import moduleNMockData from '../../../../../../../core/src/services/abstractors/
 
 class HomePageView extends React.Component {
   componentDidMount() {
-    this.refreshData();
+    this.loadBootstrapData();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -18,23 +18,29 @@ class HomePageView extends React.Component {
 
     // refresh page data on navigation refresh
     if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
-      this.refreshData();
+      this.loadBootstrapData();
       navigation.setParams({ refresh: false });
     }
   }
 
   /**
-   * @function refreshData
-   * Refreshes bootstrap data
+   * @function loadBootstrapData
+   * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  refreshData = () => {
+  loadBootstrapData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
     } = this.props;
-    getBootstrapData({ name: 'homepage' }, apiConfig);
+    getBootstrapData(
+      {
+        name: 'homepage',
+        modules: ['labels', 'header'],
+      },
+      apiConfig
+    );
   };
 
   render() {

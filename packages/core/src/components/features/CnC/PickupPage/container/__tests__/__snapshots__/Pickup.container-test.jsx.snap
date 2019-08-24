@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Pickup Page should render correctly 1`] = `
-<Styled(PickupPage)
-  error=""
-  isGuest={true}
-  isUsSite={true}
-/>
-`;

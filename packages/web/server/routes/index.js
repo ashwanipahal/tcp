@@ -39,10 +39,6 @@ const RoutesMap = [
     resolver: '/Bag',
   },
   {
-    path: '/pickup',
-    resolver: '/Pickup',
-  },
-  {
     path: '/shipping',
     resolver: '/Shipping',
   },

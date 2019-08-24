@@ -194,3 +194,10 @@ export function setItemsCount(itemsCount) {
     type: 'CART_SUMMARY_SET_ITEMCOUNT',
   };
 }
+
+export function onEditModeChangeAction(isEditingSubform) {
+  return {
+    isEditingSubform,
+    type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
+  };
+}
