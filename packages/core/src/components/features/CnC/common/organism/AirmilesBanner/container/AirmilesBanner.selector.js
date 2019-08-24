@@ -20,6 +20,8 @@ export const getAirmilesBannerLabels = state => {
         lbl_airmilesBanner_footerText: footerText,
         lbl_airmilesBanner_collectorFlyout: collectorFlyout,
         lbl_airmilesBanner_offerFlyout: offerFlyout,
+        lbl_airmilesBanner_exactLength: exactLength,
+        lbl_airmilesBanner_collectorOnlyNumber: collectorOnlyNumber,
       },
     },
   } = state.Labels;
@@ -31,5 +33,7 @@ export const getAirmilesBannerLabels = state => {
     footerText,
     collectorFlyout,
     offerFlyout,
+    exactLength,
+    collectorOnlyNumber,
   };
 };

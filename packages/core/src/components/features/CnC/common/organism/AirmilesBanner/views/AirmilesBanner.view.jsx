@@ -7,7 +7,6 @@ import ReactToolTip from '../../../../../../common/atoms/ReactToolTip';
 import { TextBox, BodyCopy, Image, Row, Col } from '../../../../../../common/atoms';
 
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getIconPath, getLocator } from '../../../../../../../utils';
 
 import styles from '../styles/AirmilesBanner.style';
@@ -121,7 +120,22 @@ AirmilesBanner.defaultProps = {
   airmilesBannerData: {},
   labels: {},
 };
-const validateMethod = createValidateMethod(getStandardConfig(['collectorNumber', 'offerCode']));
+
+const validateMethod = createValidateMethod({
+  rules: {
+    collectorNumber: {
+      number: true,
+      exactLength: 11,
+    },
+  },
+  messages: ({ labels }) => ({
+    collectorNumber: {
+      exactLength: labels.exactLength,
+      number: labels.collectorOnlyNumber,
+    },
+  }),
+});
+
 export default reduxForm({
   form: 'AirmilesBanner',
   ...validateMethod,

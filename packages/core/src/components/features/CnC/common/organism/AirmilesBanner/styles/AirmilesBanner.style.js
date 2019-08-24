@@ -4,7 +4,10 @@ const styles = css`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 
   .coupon_form_container {
-    padding: 18px 16px 12px 14px;
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     box-sizing: border-box;
     background-color: ${props => props.theme.colors.WHITE};
   }
