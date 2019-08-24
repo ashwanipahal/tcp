@@ -95,8 +95,13 @@ const hasPOBox = (addressLine1 = '', addressLine2 = '') => {
   );
 };
 
+const isOrderHasPickup = cartItems => {
+  return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
+};
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
   hasPOBox,
+  isOrderHasPickup,
 };

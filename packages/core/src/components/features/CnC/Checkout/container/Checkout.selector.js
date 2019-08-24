@@ -2,7 +2,7 @@ import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig } from '@tcp/core/src/utils';
-import progressUtils from '@tcp/web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
+import CheckoutUtils from '../util/utility';
 import {
   getUserName,
   getUserLastName,
@@ -26,7 +26,7 @@ function getIsOrderHasShipping() {
 
 const getIsOrderHasPickup = createSelector(
   BagPageSelector.getOrderItems,
-  orderItems => orderItems && progressUtils.isOrderHasPickup(orderItems)
+  orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
 );
 
 function isGuest(state) {
