@@ -1,57 +1,8 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import BodyCopy from '../../../atoms/BodyCopy';
 
-type Props = {
-  address: {
-    firstName: string,
-    lastName: string,
-    addressLine: string[],
-    city: string,
-    state: string,
-    zipCode: string,
-    country: ?string,
-    phone1: ?string,
-  },
-  dataLocatorPrefix: ?string,
-  className: string,
-  fontWeight: string,
-  showPhone?: boolean,
-  showCountry?: boolean,
-  isDefault?: boolean,
-  showName?: boolean,
-};
-
-type GetAddressLineProps = {
-  address: {
-    firstName: string,
-    lastName: string,
-    addressLine1: string[],
-    addressLine2: string[],
-    city: string,
-    state: string,
-    zipCode: string,
-    country: ?string,
-    phone1: ?string,
-  },
-  dataLocatorPrefix: ?string,
-};
-
-type UserAddressProps = {
-  address: {
-    firstName: string,
-    lastName: string,
-    addressLine: string[],
-    city: string,
-    state: string,
-    zipCode: string,
-    country: ?string,
-    phone1: ?string,
-  },
-  dataLocatorPrefix: ?string,
-};
-
-const getAddressfromDiffLines = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
+const getAddressfromDiffLines = (address, dataLocatorPrefix) => {
   return (
     <React.Fragment>
       <BodyCopy
@@ -86,7 +37,7 @@ const getAddessLines = ({ address, dataLocatorPrefix }) => {
     ));
 };
 
-const getFormattedAddress = ({ address, dataLocatorPrefix }: UserAddressProps) => {
+const getFormattedAddress = (address, dataLocatorPrefix) => {
   return (
     <React.Fragment>
       <BodyCopy
@@ -118,7 +69,7 @@ const Address = ({
   showCountry,
   isDefault,
   showName,
-}: Props) =>
+}) =>
   address && (
     <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
       {showName && (
@@ -134,8 +85,8 @@ const Address = ({
       )}
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix })
-        : getAddressfromDiffLines({ address, dataLocatorPrefix })}
-      {getFormattedAddress({ address, dataLocatorPrefix })}
+        : getAddressfromDiffLines(address, dataLocatorPrefix)}
+      {getFormattedAddress(address, dataLocatorPrefix)}
       {showCountry && address.country && (
         <BodyCopy component="p" fontFamily="secondary">
           {address.country}
@@ -148,6 +99,17 @@ const Address = ({
       )}
     </BodyCopy>
   );
+
+Address.propTypes = {
+  address: PropTypes.shape({}),
+  className: PropTypes.string,
+  dataLocatorPrefix: PropTypes.string,
+  fontWeight: PropTypes.string,
+  showPhone: PropTypes.bool,
+  showCountry: PropTypes.bool,
+  isDefault: PropTypes.bool,
+  showName: PropTypes.bool,
+};
 
 Address.defaultProps = {
   showPhone: true,

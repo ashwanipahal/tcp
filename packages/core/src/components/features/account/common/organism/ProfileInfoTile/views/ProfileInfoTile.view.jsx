@@ -7,6 +7,7 @@ import styles from '../styles/ProfileInfoTile.style';
 
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import Address from '../../../../../../common/molecules/Address';
+import internalEndpoints from '../../../internalEndpoints';
 import { isCanada } from '../../../../../../../utils';
 
 const ProfileInfoTile = ({ labels, profileInfo }) => {
@@ -185,8 +186,8 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 fontSizeVariation="large"
                 underline
                 anchorVariation="primary"
-                to="/account?id=profile&subSection=change-password"
-                asPath="/account/profile"
+                to={internalEndpoints.changePassowrdPage.link}
+                asPath={internalEndpoints.changePassowrdPage.path}
                 data-locator="passwordChangeLnk"
               >
                 {labels.lbl_overview_profileInfoChangeCTA}
