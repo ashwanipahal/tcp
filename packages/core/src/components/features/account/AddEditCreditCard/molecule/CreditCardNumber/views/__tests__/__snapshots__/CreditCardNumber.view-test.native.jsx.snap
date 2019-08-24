@@ -13,6 +13,7 @@ exports[`CreditCardNumber component should renders correctly when cardType is pr
     isEdit={false}
     keyboardType="default"
     label="input"
+    maxLength={16}
     meta={
       Object {
         "error": "",
@@ -38,6 +39,7 @@ exports[`CreditCardNumber component should renders correctly when isExpirationRe
     isEdit={false}
     keyboardType="default"
     label="input"
+    maxLength={16}
     meta={
       Object {
         "error": "",

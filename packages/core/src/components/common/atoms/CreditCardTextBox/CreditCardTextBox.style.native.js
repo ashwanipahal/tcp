@@ -11,6 +11,7 @@ const CardTextSection = styled.View`
   border-bottom-width: 1px;
   flex-direction: row;
   align-items: center;
+  position: relative;
 `;
 
 const InputWrapper = styled.View`
@@ -18,10 +19,11 @@ const InputWrapper = styled.View`
 `;
 
 const ImageWrapper = styled.View`
-  flex: 0.3;
+  position: absolute;
+  right: 0;
+  top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   border: 1px solid ${props => props.theme.colorPalette.gray[800]};
   border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-  align-items: center;
 `;
 
 export {
