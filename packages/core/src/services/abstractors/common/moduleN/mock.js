@@ -1,4 +1,4 @@
-const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
+const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 const divImageUrl =
   'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg';
 
@@ -37,12 +37,12 @@ export default {
           },
           textItems: [
             {
-              text: '60-70% OFF',
-              style: 'style6',
+              text: '60-70 % OFF',
+              style: 'percentage_wrapped_large',
             },
             {
               text: 'No Exclusions',
-              style: 'style4',
+              style: 'text_normal',
             },
           ],
         },

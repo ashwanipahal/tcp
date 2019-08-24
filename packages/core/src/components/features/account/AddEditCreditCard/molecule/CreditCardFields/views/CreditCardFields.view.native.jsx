@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import CreditCardNumber from '../../CreditCardNumber';
 import {
   PaymentContainer,
   CardContainer,
   ExpiryContainer,
+  ExpiryMonth,
+  ExpiryYear,
+  CardTextboxStyle,
 } from '../styles/CreditCardFields.native.style';
 
 export class CreditCardFields extends React.PureComponent<Props> {
@@ -63,41 +67,56 @@ export class CreditCardFields extends React.PureComponent<Props> {
             cardTypeImgUrl={cardTypeImgUrl}
             isPLCCEnabled={isPLCCEnabled}
             cardType={cardType}
-            className="field"
             enableSuccessCheck={false}
             isEdit={isEdit}
             val={isEdit ? dto.accountNo : ''}
             creditCard={creditCard}
+            customStyle={CardTextboxStyle}
           />
         </CardContainer>
         <ExpiryContainer>
-          <Field
-            component={DropDown}
-            data={expMonthOptionsMap}
-            dataLocator="addEditCreditCard-expMonth1"
-            onValueChange={itemValue => {
-              this.setState({ selectedMonth: itemValue });
-              updateExpiryDate(itemValue, selectedYear);
-            }}
-            variation="secondary"
-            selectedValue={selectedMonth}
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-          />
-
-          <Field
-            component={DropDown}
-            data={expYearOptionsMap}
-            dataLocator="addEditCreditCard-expYear1"
-            variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-            onValueChange={itemValue => {
-              this.setState({ selectedYear: itemValue });
-              updateExpiryDate(selectedMonth, itemValue);
-            }}
-            selectedValue={selectedYear}
-          />
+          <ExpiryMonth>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="black"
+              text={labels.paymentGC.lbl_payment_expMonth}
+            />
+            <Field
+              component={DropDown}
+              data={expMonthOptionsMap}
+              dataLocator="addEditCreditCard-expMonth1"
+              onValueChange={itemValue => {
+                this.setState({ selectedMonth: itemValue });
+                updateExpiryDate(itemValue, selectedYear);
+              }}
+              variation="secondary"
+              selectedValue={selectedMonth}
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+            />
+          </ExpiryMonth>
+          <ExpiryYear>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="black"
+              text={labels.paymentGC.lbl_payment_expYear}
+            />
+            <Field
+              component={DropDown}
+              data={expYearOptionsMap}
+              dataLocator="addEditCreditCard-expYear1"
+              variation="secondary"
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+              onValueChange={itemValue => {
+                this.setState({ selectedYear: itemValue });
+                updateExpiryDate(selectedMonth, itemValue);
+              }}
+              selectedValue={selectedYear}
+            />
+          </ExpiryYear>
         </ExpiryContainer>
       </PaymentContainer>
     );
@@ -123,7 +142,7 @@ CreditCardFields.defaultProps = {
   cardType: '',
   isPLCCEnabled: true,
   dto: {},
-  selectedCard: {},
+  selectedCard: null,
 };
 
 export default CreditCardFields;

@@ -14,7 +14,6 @@ type Props = {
   errorMessage: string,
   onChangeForm: Function,
   showNotification: string,
-  toggleSubmit: boolean,
 };
 
 /**
@@ -46,7 +45,6 @@ class TrackOrderModal extends React.Component<Props> {
       errorMessage,
       showNotification,
       onChangeForm,
-      toggleSubmit,
     } = this.props;
     return (
       <Modal
@@ -69,7 +67,6 @@ class TrackOrderModal extends React.Component<Props> {
           setModalMountState={setModalMountState}
           showNotification={showNotification}
           onChangeForm={onChangeForm}
-          toggleSubmit={toggleSubmit}
         />
       </Modal>
     );

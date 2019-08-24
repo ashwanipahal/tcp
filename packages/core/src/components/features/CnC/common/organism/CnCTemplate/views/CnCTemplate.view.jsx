@@ -9,7 +9,9 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 
 import styles from '../styles/CnCTemplate.style';
 
-class CnCTemplate extends React.PureComponent<Props> {
+class CnCTemplate extends React.Component<Props> {
+  submit = () => {};
+
   render() {
     const {
       leftSection: LeftSection,
