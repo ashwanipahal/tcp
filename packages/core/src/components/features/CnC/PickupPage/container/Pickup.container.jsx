@@ -2,14 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAlternateFormUpdate, getPickUpContactFormLabels } from './Pickup.selectors';
-import {
-  getSendOrderUpdate,
-  getSmsSignUpLabels,
-} from '../../ShippingPage/container/ShippingPage.selectors';
-
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 import CheckoutPickUpForm from '../views/CheckoutPickUpFormView';
 import { isCanada } from '../../../../../utils';
 
+const { getSendOrderUpdate, getSmsSignUpLabels } = checkoutSelectors;
 export class PickupContainer extends React.PureComponent {
   render() {
     const {

@@ -5,6 +5,16 @@ import { withRouter } from 'next/router';
 import { initCheckoutAction } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors from './Checkout.selector';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+
+const {
+  getSendOrderUpdate,
+  getShippingLabels,
+  getSmsSignUpLabels,
+  getSelectedShipmentId,
+  getAddressFields,
+  getAddressPhoneNo,
+} = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
   componentDidMount() {
@@ -25,6 +35,7 @@ export class CheckoutContainer extends React.Component<Props> {
       activeStage,
       activeStep,
       isUsSite,
+      shippingProps,
     } = this.props;
     return (
       <CheckoutPage
@@ -39,6 +50,7 @@ export class CheckoutContainer extends React.Component<Props> {
         activeStage={activeStage}
         activeStep={activeStep}
         isUsSite={isUsSite}
+        shippingProps={shippingProps}
       />
     );
   }
@@ -62,6 +74,15 @@ const mapStateToProps = state => {
     isMobile: selectors.getIsMobile(),
     isExpressCheckout: selectors.isExpressCheckout(state),
     activeStage: selectors.getCheckoutStage(state),
+    shippingProps: {
+      addressLabels: getAddEditAddressLabels(state),
+      isOrderUpdateChecked: getSendOrderUpdate(state),
+      shippingLabels: getShippingLabels(state),
+      smsSignUpLabels: getSmsSignUpLabels(state),
+      selectedShipmentId: getSelectedShipmentId(state),
+      address: getAddressFields(state),
+      addressPhoneNumber: getAddressPhoneNo(state),
+    },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
     // onShippingSubmit: storeOperators.checkoutFormOperator.submitShippingSection,

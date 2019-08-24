@@ -1,3 +1,5 @@
+import { formValueSelector } from 'redux-form';
+import { createSelector } from 'reselect';
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig } from '@tcp/core/src/utils';
 import {
@@ -180,6 +182,58 @@ function getCurrentPickupFormNumber(state) {
   return phoneNumber;
 }
 
+const getSmsSignUpFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'smsSignUp');
+};
+
+const getShipmentMethodsFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'shipmentMethods');
+};
+
+const getSelectedShipmentId = createSelector(
+  getShipmentMethodsFields,
+  shipmentMethodsFields => shipmentMethodsFields && shipmentMethodsFields.shippingMethodId
+);
+
+const getSendOrderUpdate = createSelector(
+  getSmsSignUpFields,
+  smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
+);
+
+const getAddressFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'address');
+};
+
+const getAddressPhoneNo = createSelector(
+  getAddressFields,
+  addressFields => addressFields && addressFields.phoneNumber
+);
+
+const getShippingLabels = state => {
+  const { lbl_shipping_header: header, lbl_shipping_sectionHeader: sectionHeader } =
+    state.Labels.checkout && state.Labels.checkout.shipping;
+  return {
+    header,
+    sectionHeader,
+  };
+};
+
+const getSmsSignUpLabels = state => {
+  const {
+    lbl_smsSignup_smsSignupText: smsSignupText,
+    lbl_smsSignup_privacyPolicy: privacyPolicy,
+    lbl_smsSignup_orderUpdates: orderUpdates,
+  } = state.Labels.global && state.Labels.global.smsSignup;
+  return {
+    smsSignupText,
+    privacyPolicy,
+    orderUpdates,
+  };
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -197,4 +251,12 @@ export default {
   getPickupAltValues,
   getCurrentSiteId,
   getIsSmsUpdatesEnabled,
+  getSmsSignUpFields,
+  getShipmentMethodsFields,
+  getSelectedShipmentId,
+  getSendOrderUpdate,
+  getAddressFields,
+  getAddressPhoneNo,
+  getShippingLabels,
+  getSmsSignUpLabels,
 };

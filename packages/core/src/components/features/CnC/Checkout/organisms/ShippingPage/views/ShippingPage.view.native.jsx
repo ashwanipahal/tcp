@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
-import CnCTemplate from '../../common/organism/CnCTemplate';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import CnCTemplate from '../../../../common/organism/CnCTemplate';
 
 const ShippingPage = ({ navigation }) => {
   return (

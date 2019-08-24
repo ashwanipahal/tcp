@@ -112,3 +112,4 @@ class LabeledRadioButton extends React.Component {
 }
 
 export default withStyles(LabeledRadioButton, styles);
+export { LabeledRadioButton as LabeledRadioButtonVanilla };

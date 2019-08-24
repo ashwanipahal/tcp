@@ -6,7 +6,6 @@ import { ShippingFormVanilla } from '../../organisms/ShippingForm/views/Shipping
 describe('Shipping Page', () => {
   it('should render correctly', () => {
     const tree = shallow(<ShippingPage />);
-    tree.instance().renderLeftSection();
     expect(tree).toMatchSnapshot();
     expect(ShippingFormVanilla).toHaveLength(1);
   });

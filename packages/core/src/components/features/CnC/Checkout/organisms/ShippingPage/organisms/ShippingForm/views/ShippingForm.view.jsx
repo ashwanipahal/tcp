@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection, reduxForm } from 'redux-form';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import AddressFields from '../../../../../../common/molecules/AddressFields';
-import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
-import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
+import AddressFields from '../../../../../../../../common/molecules/AddressFields';
+import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
+import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
 import styles from '../styles/ShippingForm.styles';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import CheckoutSectionTitleDisplay from '../../../../common/molecules/CheckoutSectionTitleDisplay';
-import ShipmentMethods from '../../../../common/molecules/ShipmentMethods';
+import withStyles from '../../../../../../../../common/hoc/withStyles';
+import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
+import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
+import CheckoutFooter from '../../../../../molecules/CheckoutFooter';
 
 const ShippingForm = ({
   addressLabels: { addressFormLabels },
@@ -91,6 +92,7 @@ const ShippingForm = ({
             selectedShipmentId={selectedShipmentId}
           />
         </FormSection>
+        <CheckoutFooter />
       </form>
     </>
   );

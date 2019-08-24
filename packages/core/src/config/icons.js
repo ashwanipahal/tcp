@@ -48,4 +48,5 @@ export default {
   'birthday-icon': '/static/images/birthday.jpg',
   'survey-icon': '/static/images/survey.png',
   'smiley-icon': '/static/images/smiley-icon.png',
+  'carrot-left': '/static/images/carrot-left.png',
 };

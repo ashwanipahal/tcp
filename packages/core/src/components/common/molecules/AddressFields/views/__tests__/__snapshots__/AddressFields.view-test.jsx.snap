@@ -389,6 +389,7 @@ exports[`AddressFields component should render correctly 1`] = `
         enableSuccessCheck={false}
         id="address.addressLine1"
         name="addressLine1"
+        onChange={[Function]}
         onPlaceSelected={[Function]}
       />
     </Styled(Col)>
@@ -2176,6 +2177,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.addressLine1"
         name="addressLine1"
+        onChange={[Function]}
         onPlaceSelected={[Function]}
       />
     </Styled(Col)>
@@ -3665,6 +3667,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.addressLine1"
         name="addressLine1"
+        onChange={[Function]}
         onPlaceSelected={[Function]}
       />
     </Styled(Col)>
@@ -5154,6 +5157,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.addressLine1"
         name="addressLine1"
+        onChange={[Function]}
         onPlaceSelected={[Function]}
       />
     </Styled(Col)>
