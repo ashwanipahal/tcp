@@ -1,7 +1,8 @@
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
-import { PropTypes } from 'prop-types';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { PropTypes } from 'prop-types';
 import TextBox from '../../atoms/TextBox';
 import DropDown from '../../atoms/DropDown/views/DropDown.native';
 import InputCheckbox from '../../atoms/InputCheckbox';
@@ -47,7 +48,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
 
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
-    const address = GooglePlacesInput.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change('AddressForm', 'city', address.city));
     dispatch(change('AddressForm', 'zipCode', address.zip));
     dispatch(change('AddressForm', 'state', address.state));
@@ -100,7 +101,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               this.handlePlaceSelected(data, inputValue);
             }}
             dataLocator="addnewaddress-addressl1"
-            componentRestrictions={Object.assign({}, { country: [country] })}
+            componentRestrictions={{ ...{ country: [country] } }}
           />
         </GooglePlaceInputWrapper>
 

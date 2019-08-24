@@ -53,11 +53,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   }
 
   componentDidUpdate() {
-    const { addressResponse, getAddressListAction, onCancel } = this.props;
+    const { addressResponse, getAddressListAction, onCancel, resetFormState } = this.props;
     const isSuccess = addressResponse && addressResponse.get('addressId');
     if (isSuccess) {
       getAddressListAction();
       onCancel();
+      resetFormState();
     }
   }
 
