@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import BodyCopy from '../../BodyCopy';
+import Image from '@tcp/core/src/components/common/atoms/Image';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { getIconCard } from '@tcp/core/src/utils/index.native';
+import { cardIconMapping } from '@tcp/core/src/components/features/account/common/molecule/CardTile/views/CardTile.utils';
 
 import {
   StyledTextBox,
   StyledLabel,
   StyledErrorWrapper,
   StyledTextBoxWrapper,
+  CardTextSection,
+  InputWrapper,
+  ImageWrapper,
 } from '../CreditCardTextBox.style.native';
+
+const getCardTypeImgUrl = cardType => {
+  return getIconCard(cardIconMapping[cardType]);
+};
 
 export class CreditCardTextBox extends React.Component {
   static propTypes = {
@@ -29,6 +39,8 @@ export class CreditCardTextBox extends React.Component {
     secureTextEntry: PropTypes.bool,
     isEdit: PropTypes.bool,
     val: PropTypes.string,
+    customStyle: PropTypes.shape({}),
+    cardType: PropTypes.string,
   };
 
   static defaultProps = {
@@ -43,6 +55,8 @@ export class CreditCardTextBox extends React.Component {
     secureTextEntry: false,
     isEdit: false,
     val: '',
+    customStyle: {},
+    cardType: '',
   };
 
   constructor(props) {
@@ -110,32 +124,41 @@ export class CreditCardTextBox extends React.Component {
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
+      customStyle,
+      cardType,
     } = this.props;
     return (
-      <View>
-        <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
-        <StyledTextBox
-          {...others}
-          {...input}
-          id={id}
-          aria-label={ariaLabel}
-          className="TextBox__input"
-          name={input.name}
-          type={type}
-          maxLength={maxLength}
-          value={elemValue}
-          ref={inputRef}
-          data-locator={dataLocator}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onEndEditing={this.handleBlur}
-          keyboardType={keyboardType}
-          returnKeyType="next"
-          error={error}
-          enableSuccessCheck={enableSuccessCheck}
-          secureTextEntry={secureTextEntry}
-        />
-      </View>
+      <CardTextSection>
+        <InputWrapper>
+          <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
+          <StyledTextBox
+            {...others}
+            {...input}
+            id={id}
+            aria-label={ariaLabel}
+            name={input.name}
+            type={type}
+            maxLength={maxLength}
+            value={elemValue}
+            ref={inputRef}
+            data-locator={dataLocator}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onEndEditing={this.handleBlur}
+            keyboardType={keyboardType}
+            returnKeyType="next"
+            error={error}
+            enableSuccessCheck={enableSuccessCheck}
+            secureTextEntry={secureTextEntry}
+            {...customStyle}
+          />
+        </InputWrapper>
+        {cardType !== '' && (
+          <ImageWrapper>
+            <Image source={getCardTypeImgUrl(cardType)} width="40" height="30" />
+          </ImageWrapper>
+        )}
+      </CardTextSection>
     );
   };
 

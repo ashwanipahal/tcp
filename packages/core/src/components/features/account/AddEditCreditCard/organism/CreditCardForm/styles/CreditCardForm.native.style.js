@@ -10,12 +10,13 @@ const CreditCardWrapper = styled.View`
 `;
 
 const AddressWrapper = styled.View`
-  height: 250px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  height: 200px;
 `;
 
 const ActionsWrapper = styled.View`
   align-items: center;
-  height: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
 `;
 
 const AddAddressButton = {
@@ -68,6 +69,11 @@ const ModalViewWrapper = styled.View`
   height: 820px;
 `;
 
+const CustomAddress = {
+  fontWeight: 'regular',
+  fontSize: 'fs14',
+};
+
 export {
   CreditCardContainer,
   CreditCardWrapper,
@@ -80,4 +86,5 @@ export {
   DefaultAddress,
   LeftBracket,
   RightBracket,
+  CustomAddress,
 };

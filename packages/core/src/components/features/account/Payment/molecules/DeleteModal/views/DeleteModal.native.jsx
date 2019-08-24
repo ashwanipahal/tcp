@@ -19,6 +19,7 @@ import {
   CloseButtonWrapper,
   CardContainer,
   CardExpiry,
+  CustomAddress,
 } from '../DeleteModal.style.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
@@ -72,7 +73,7 @@ class DeleteModal extends React.PureComponent<Props> {
           <ModalHeading>
             <BodyCopy
               mobileFontFamily={['secondary']}
-              fontWeight="regular"
+              fontWeight="extrabold"
               fontSize="fs16"
               text={labels.paymentGC.lbl_payment_modalDeleteCard}
             />
@@ -95,14 +96,29 @@ class DeleteModal extends React.PureComponent<Props> {
                   <ImageStyle source={dto.cardImage} />
                 </ImgWrapper>
                 <CardContainer>
-                  <CardDetail>{cardTitle}</CardDetail>
-                  <CardExpiry>{dto.cardExpiry}</CardExpiry>
+                  <CardDetail>
+                    <BodyCopy
+                      mobileFontFamily={['secondary']}
+                      fontWeight="semibold"
+                      fontSize="fs14"
+                      text={cardTitle}
+                    />
+                  </CardDetail>
+                  <CardExpiry>
+                    <BodyCopy
+                      mobileFontFamily={['secondary']}
+                      fontWeight="regular"
+                      fontSize="fs14"
+                      text={dto.cardExpiry}
+                    />
+                  </CardExpiry>
                   <Address
                     showCountry={false}
                     showPhone={false}
                     showName
                     dataLocatorPrefix="address"
                     address={addressDetails}
+                    customStyle={CustomAddress}
                   />
                 </CardContainer>
               </CardDetailWrapper>

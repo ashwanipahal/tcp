@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 const Style = css``;
 
 const ModalHeading = styled.Text`
-  margin-top: -80px;
+  margin-top: -70px;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
@@ -77,6 +77,11 @@ const CloseButtonWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
+const CustomAddress = {
+  fontWeight: 'regular',
+  fontSize: 'fs14',
+};
+
 export {
   Style,
   ModalHeading,
@@ -92,4 +97,5 @@ export {
   CloseButtonWrapper,
   CardContainer,
   CardExpiry,
+  CustomAddress,
 };

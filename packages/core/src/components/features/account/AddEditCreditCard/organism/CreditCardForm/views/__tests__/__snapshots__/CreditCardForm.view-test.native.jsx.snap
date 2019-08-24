@@ -148,9 +148,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     />
     <Styled(BodyCopy)
       fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="black"
-      text="Select from Address Book"
+      fontSize="fs12"
+      fontWeight="semibold"
+      marginTop="10"
       textAlign="left"
     />
     <Field
@@ -213,8 +213,12 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "primary": "true",
           }
         }
-        className="CreditCardForm__address"
-        customStyle={Object {}}
+        customStyle={
+          Object {
+            "fontSize": "fs14",
+            "fontWeight": "regular",
+          }
+        }
         dataLocatorPrefix="address"
         showCountry={false}
         showName={true}
@@ -414,9 +418,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     />
     <Styled(BodyCopy)
       fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="black"
-      text="Select from Address Book"
+      fontSize="fs12"
+      fontWeight="semibold"
+      marginTop="10"
       textAlign="left"
     />
     <Field
@@ -478,8 +482,12 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "primary": "true",
           }
         }
-        className="CreditCardForm__address"
-        customStyle={Object {}}
+        customStyle={
+          Object {
+            "fontSize": "fs14",
+            "fontWeight": "regular",
+          }
+        }
         dataLocatorPrefix="address"
         showCountry={false}
         showName={true}

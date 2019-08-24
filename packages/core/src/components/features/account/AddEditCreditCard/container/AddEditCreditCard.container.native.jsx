@@ -110,16 +110,16 @@ export class AddEditCreditCard extends React.PureComponent {
     return !cardType || cardType !== constants.ACCEPTED_CREDIT_CARDS['PLACE CARD'];
   };
 
-  getInitialValuesForEditMode = creditCard => {
-    if (creditCard) {
-      let cardType = creditCard.ccBrand || creditCard.ccType;
-      cardType = constants.ACCEPTED_CREDIT_CARDS[cardType.toUpperCase()];
+  getInitialValuesForEditMode = selectedCard => {
+    if (selectedCard !== null) {
+      let cardType = selectedCard.ccBrand || selectedCard.ccType;
+      cardType = cardType && constants.ACCEPTED_CREDIT_CARDS[cardType.toUpperCase()];
       return {
-        onFileAddressKey: creditCard.billingAddressId.toString(),
+        onFileAddressKey: selectedCard.billingAddressId.toString(),
         cardType,
-        cardNumber: creditCard.accountNo,
-        expYear: creditCard.expYear.trim(),
-        expMonth: creditCard.expMonth.trim(),
+        cardNumber: selectedCard.accountNo,
+        expYear: selectedCard.expYear.trim(),
+        expMonth: selectedCard.expMonth.trim(),
         address: {
           country: constants.COUNTRY_US,
           addressLine2: '',
@@ -131,7 +131,7 @@ export class AddEditCreditCard extends React.PureComponent {
   };
 
   getInitialValues = () => {
-    const { addressList, creditCard } = this.props;
+    const { addressList, selectedCard } = this.props;
     let onFileAddressKey = '';
 
     if (addressList && addressList.size > 0) {
@@ -140,8 +140,8 @@ export class AddEditCreditCard extends React.PureComponent {
         defaultBillingAddress.size > 0 ? defaultBillingAddress.get(0).addressId : '';
     }
 
-    if (creditCard) {
-      return this.getInitialValuesForEditMode(creditCard);
+    if (selectedCard && Object.getOwnPropertyNames(selectedCard).length) {
+      return this.getInitialValuesForEditMode(selectedCard);
     }
 
     return {
@@ -170,7 +170,6 @@ export class AddEditCreditCard extends React.PureComponent {
   render() {
     const {
       creditCard,
-      cardType,
       onFileAddressKey,
       addressList,
       isPLCCEnabled,
@@ -188,6 +187,7 @@ export class AddEditCreditCard extends React.PureComponent {
 
     const isExpirationRequired = this.getExpirationRequiredFlag();
     const { initialValues } = this.state;
+    const { cardType } = initialValues;
     const addressLabels = convertObjectKeysToLowerCase(labels.addressBook);
 
     return (

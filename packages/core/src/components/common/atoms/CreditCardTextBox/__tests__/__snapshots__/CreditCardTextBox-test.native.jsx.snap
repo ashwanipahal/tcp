@@ -3,45 +3,48 @@
 exports[`CreditCardTextBox component render enableSuccessCheck on validation fail 1`] = `
 <View>
   <View>
-    <View>
-      <Styled(Text)
-        isFocused="foo"
-      >
-        input
-      </Styled(Text)>
-      <Styled(TextInput)
-        aria-label="input"
-        className="TextBox__input"
-        data-locator="input-field"
-        enableSuccessCheck={false}
-        error="food"
-        id="input"
-        keyboardType="default"
-        onBlur={[Function]}
-        onEndEditing={[Function]}
-        onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "food",
-              "touched": "foo",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={false}
+          error="food"
+          id="input"
+          keyboardType="default"
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "meta": Object {
+                "error": "food",
+                "touched": "foo",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
           }
-        }
-        returnKeyType="next"
-        secureTextEntry={false}
-        type="text"
-        value="foo"
-      />
-    </View>
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="text"
+          value="foo"
+        />
+      </Styled(View)>
+    </Styled(View)>
     <Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
@@ -64,45 +67,48 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
 exports[`CreditCardTextBox component render enableSuccessCheck on validation true 1`] = `
 <View>
   <View>
-    <View>
-      <Styled(Text)
-        isFocused="foo"
-      >
-        input
-      </Styled(Text)>
-      <Styled(TextInput)
-        aria-label="input"
-        className="TextBox__input"
-        data-locator="input-field"
-        enableSuccessCheck={true}
-        error=""
-        id="input"
-        keyboardType="default"
-        onBlur={[Function]}
-        onEndEditing={[Function]}
-        onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": true,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={true}
+          error=""
+          id="input"
+          keyboardType="default"
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": true,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
           }
-        }
-        returnKeyType="next"
-        secureTextEntry={false}
-        type="text"
-        value="foo"
-      />
-    </View>
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="text"
+          value="foo"
+        />
+      </Styled(View)>
+    </Styled(View)>
     <Styled(View) />
   </View>
 </View>
@@ -111,45 +117,48 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation tru
 exports[`CreditCardTextBox component renders correctly 1`] = `
 <View>
   <View>
-    <View>
-      <Styled(Text)
-        isFocused="foo"
-      >
-        input
-      </Styled(Text)>
-      <Styled(TextInput)
-        aria-label="input"
-        className="TextBox__input"
-        data-locator="input-field"
-        enableSuccessCheck={false}
-        error=""
-        id="input"
-        keyboardType="default"
-        onBlur={[Function]}
-        onEndEditing={[Function]}
-        onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={false}
+          error=""
+          id="input"
+          keyboardType="default"
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
           }
-        }
-        returnKeyType="next"
-        secureTextEntry={false}
-        type="text"
-        value="foo"
-      />
-    </View>
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="text"
+          value="foo"
+        />
+      </Styled(View)>
+    </Styled(View)>
     <Styled(View) />
   </View>
 </View>
@@ -158,45 +167,48 @@ exports[`CreditCardTextBox component renders correctly 1`] = `
 exports[`CreditCardTextBox component renders correctly hidden textbox 1`] = `
 <View>
   <View>
-    <View>
-      <Styled(Text)
-        isFocused="foo"
-      >
-        input
-      </Styled(Text)>
-      <Styled(TextInput)
-        aria-label="input"
-        className="TextBox__input"
-        data-locator="input-field"
-        enableSuccessCheck={false}
-        error=""
-        id="input"
-        keyboardType="default"
-        onBlur={[Function]}
-        onEndEditing={[Function]}
-        onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={false}
+          error=""
+          id="input"
+          keyboardType="default"
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
           }
-        }
-        returnKeyType="next"
-        secureTextEntry={false}
-        type="hidden"
-        value="foo"
-      />
-    </View>
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="hidden"
+          value="foo"
+        />
+      </Styled(View)>
+    </Styled(View)>
     <Styled(View) />
   </View>
 </View>
