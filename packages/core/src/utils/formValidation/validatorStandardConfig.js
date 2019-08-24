@@ -98,6 +98,10 @@ export const formValidationMessages = {
     required: 'Please Select',
   },
   orderNumber: 'ERROR: Please enter a valid order number.',
+  collectorNumber: {
+    exactLength: 'Must be an 11 digit number',
+    number: 'Must be numbers only',
+  },
 };
 
 export const formValidationRules = {
@@ -226,6 +230,10 @@ export const formValidationRules = {
   },
   iAgree: {
     required: true,
+  },
+  collectorNumber: {
+    number: true,
+    exactLength: 11,
   },
 };
 
