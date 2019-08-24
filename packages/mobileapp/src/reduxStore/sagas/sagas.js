@@ -21,12 +21,14 @@ import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/Co
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
+import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
   yield all([
     BootstrapSaga(),
     HomePageSaga(),
+    NavigationSaga(),
     LoginPageSaga(),
     LogOutPageSaga(),
     ForgotPasswordSaga(),

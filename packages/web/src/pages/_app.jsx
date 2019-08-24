@@ -76,7 +76,7 @@ class TCPWebApp extends App {
       const { locals } = res;
       const apiConfig = createAPIConfig(locals);
       const payload = {
-        pageInfo: Component.pageInfo,
+        ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
       };
@@ -120,7 +120,7 @@ class TCPWebApp extends App {
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
-                <Component {...pageProps} router />
+                <Component {...pageProps} router={router} />
                 {isNonCheckoutPage && <Footer />}
               </div>
             </Grid>
