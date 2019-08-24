@@ -19,6 +19,8 @@ export default class ShippingPage extends React.PureComponent {
     isGuest: PropTypes.bool,
     isUsSite: PropTypes.bool,
     orderHasPickUp: PropTypes.bool,
+    shipmentMethods: PropTypes.shape([]),
+    defaultShipmentId: PropTypes.number,
   };
 
   static defaultProps = {
@@ -29,6 +31,8 @@ export default class ShippingPage extends React.PureComponent {
     isGuest: true,
     isUsSite: true,
     orderHasPickUp: false,
+    shipmentMethods: null,
+    defaultShipmentId: null,
   };
 
   checkPOBoxAddress = () => {
@@ -97,6 +101,8 @@ export default class ShippingPage extends React.PureComponent {
       isGuest,
       isUsSite,
       orderHasPickUp,
+      shipmentMethods,
+      defaultShipmentId,
     } = this.props;
     return (
       <ShippingForm
@@ -106,7 +112,7 @@ export default class ShippingPage extends React.PureComponent {
         smsSignUpLabels={smsSignUpLabels}
         initialValues={{
           address: { country: getSiteId() && getSiteId().toUpperCase() },
-          shipmentMethods: { shippingMethodId: '901101' },
+          shipmentMethods: { shippingMethodId: defaultShipmentId },
         }}
         selectedShipmentId={selectedShipmentId}
         checkPOBoxAddress={this.checkPOBoxAddress}
@@ -116,6 +122,7 @@ export default class ShippingPage extends React.PureComponent {
         isGuest={isGuest}
         isUsSite={isUsSite}
         orderHasPickUp={orderHasPickUp}
+        shipmentMethods={shipmentMethods}
       />
     );
   }

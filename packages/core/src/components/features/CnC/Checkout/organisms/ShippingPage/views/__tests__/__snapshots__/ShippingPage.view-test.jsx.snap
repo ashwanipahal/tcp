@@ -15,7 +15,7 @@ exports[`Shipping Page should render correctly 1`] = `
         "country": "US",
       },
       "shipmentMethods": Object {
-        "shippingMethodId": "901101",
+        "shippingMethodId": undefined,
       },
     }
   }

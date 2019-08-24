@@ -46,31 +46,6 @@ exports[`Shipping Form should render correctly 1`] = `
           formName="checkoutShipping"
           formSection="shipmentMethods"
           selectedShipmentId={null}
-          shipmentMethods={
-            Array [
-              Object {
-                "displayName": "Standard - FREE",
-                "id": "901101",
-                "isDefault": true,
-                "price": 0,
-                "shippingSpeed": "Up To 10 Business Days",
-              },
-              Object {
-                "displayName": "Express",
-                "id": "901102",
-                "isDefault": false,
-                "price": 15,
-                "shippingSpeed": "Up To 5 Business Days",
-              },
-              Object {
-                "displayName": "Rush",
-                "id": "901103",
-                "isDefault": false,
-                "price": 20,
-                "shippingSpeed": "Up To 3 Business Days",
-              },
-            ]
-          }
         />
       </div>
     </FormSection>

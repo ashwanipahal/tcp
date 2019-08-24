@@ -262,6 +262,18 @@ const getEmailSignUpLabels = state => {
   };
 };
 
+const getShipmentMethods = state => {
+  return state.Checkout.getIn(['options', 'shippingMethods']);
+};
+
+const getDefaultShipmentID = createSelector(
+  getShipmentMethods,
+  shipmentMethods => {
+    const defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+    return defaultMethod && defaultMethod.id;
+  }
+);
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -289,4 +301,6 @@ export default {
   getSmsSignUpLabels,
   getIsOrderHasPickup,
   getEmailSignUpLabels,
+  getShipmentMethods,
+  getDefaultShipmentID,
 };
