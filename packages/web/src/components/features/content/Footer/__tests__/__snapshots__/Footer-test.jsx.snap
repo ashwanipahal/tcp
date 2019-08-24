@@ -7,9 +7,11 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
   <Styled(FooterTopCandidateA)
     className="footer-class"
     copyrightText=""
+    isLoggedIn={false}
     legalLinks={Array []}
     navLinks={Array []}
     openEmailSignUpModal={[Function]}
+    openTrackOrder={[Function]}
     referenceID=""
   />
   <Connect(Styled(ReduxForm)) />
@@ -20,7 +22,9 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
   >
     <FooterMiddleMobile
       className="footer-class"
+      isLoggedIn={false}
       navLinkItems={Array []}
+      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <Styled(Row)
@@ -28,7 +32,9 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
   >
     <FooterMiddleDesktop
       className="footer-class"
+      isLoggedIn={false}
       navLinks={Array []}
+      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <div
@@ -117,9 +123,11 @@ exports[`Footer component Footer component renders correctly without props 1`] =
 <footer>
   <Styled(FooterTopCandidateA)
     copyrightText=""
+    isLoggedIn={false}
     legalLinks={Array []}
     navLinks={Array []}
     openEmailSignUpModal={[Function]}
+    openTrackOrder={[Function]}
     referenceID=""
   />
   <Connect(Styled(ReduxForm)) />
@@ -129,14 +137,18 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     fullBleed={true}
   >
     <FooterMiddleMobile
+      isLoggedIn={false}
       navLinkItems={Array []}
+      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <Styled(Row)
     className="footer-middle desktop"
   >
     <FooterMiddleDesktop
+      isLoggedIn={false}
       navLinks={Array []}
+      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <div

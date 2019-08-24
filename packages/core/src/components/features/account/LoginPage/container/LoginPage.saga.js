@@ -13,10 +13,13 @@ const notIsLocalHost = siteOrigin => {
   return siteOrigin.indexOf('local') === -1;
 };
 
-export function* loginSaga({ payload }) {
+export function* loginSaga({ payload, afterLoginHandler }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      if (afterLoginHandler) {
+        yield call(afterLoginHandler);
+      }
       return yield put(getUserInfo());
     }
     return yield put(setLoginInfo(response));

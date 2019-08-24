@@ -25,7 +25,7 @@ const CnCCommonTemplate = ({ navigation, btnText, routeToPage }) => {
             fontSize="fs13"
             text={btnText}
             onPress={() => {
-              navigateToNestedRoute(navigation, 'HomeStack', { routeToPage });
+              navigateToNestedRoute(navigation, 'HomeStack', routeToPage);
             }}
           />
         </CheckoutButton>
