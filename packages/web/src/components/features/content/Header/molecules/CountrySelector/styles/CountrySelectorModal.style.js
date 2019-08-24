@@ -24,6 +24,7 @@ export const selectBoxStyle = css`
   .select__input {
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
     color: ${props => props.theme.colorPalette.gray['900']};
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     margin: 0 0 32px;
     padding: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
 
@@ -49,13 +50,10 @@ const styles = css`
     border-bottom: 2px solid ${props => props.theme.colorPalette.gray['500']};
   }
 
-  label,
-  select {
+  label {
     display: block;
     text-align: left;
     width: 100%;
-  }
-  label {
     color: ${props => props.theme.colorPalette.gray['900']};
     font-family: ${props => props.theme.typography.fonts.secondary};
     font-size: ${props => props.theme.typography.fontSizes.fs10};
@@ -66,8 +64,7 @@ const styles = css`
       padding-bottom: 5px;
     }
   }
-  button,
-  select {
+  button {
     margin-bottom: 32px;
   }
   .shipToForm__note-clarification {
