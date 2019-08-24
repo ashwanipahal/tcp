@@ -9,7 +9,6 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import ModuleAGymCarousel from '../../ModuleAGymCarousel';
 import ModuleATcpCarousel from '../../ModuleATcpCarousel';
 
-// TODO: keys will be changed once we get the actual data from CMS
 const ctaTypes = {
   stackedCTAButtons: 'stackedCTAList',
   linkList: 'linkCTAList',
