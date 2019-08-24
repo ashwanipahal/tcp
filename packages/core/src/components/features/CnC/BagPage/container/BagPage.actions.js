@@ -6,7 +6,7 @@ const getOrderDetails = () => {
   };
 };
 
-const getCartData = (payload?) => {
+const getCartData = payload => {
   return {
     type: BAGPAGE_CONSTANTS.GET_CART_DATA,
     payload,
