@@ -41,7 +41,6 @@ export class CheckoutContainer extends React.Component<Props> {
       <CheckoutPage
         router={router}
         initialValues={initialValues}
-        currentSection={router.query.section}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}

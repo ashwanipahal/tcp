@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PickUpFormPartVanilla } from '../views/PickUpFormPart.view';
+import { PickUpFormPartVanilla } from '../views/PickupPage.view';
 
 describe('PickUpFormPartVanilla component', () => {
   it('should renders correctly when Coupon are not present', () => {

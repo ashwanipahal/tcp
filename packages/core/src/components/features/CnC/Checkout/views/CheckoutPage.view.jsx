@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CnCTemplate from '../../common/organism/CnCTemplate';
-import PickUpFormPart from '../organisms/PickUpFormPart';
+import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
