@@ -7,7 +7,7 @@ import {
 } from '../TextBox/TextBox.style.native';
 
 const CardTextSection = styled.View`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   border-bottom-width: 1px;
   flex-direction: row;
   align-items: center;

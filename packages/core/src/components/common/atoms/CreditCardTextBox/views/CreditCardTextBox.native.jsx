@@ -153,7 +153,7 @@ export class CreditCardTextBox extends React.Component {
             {...customStyle}
           />
         </InputWrapper>
-        {cardType !== '' && (
+        {cardType !== null && (
           <ImageWrapper>
             <Image source={getCardTypeImgUrl(cardType)} width="40" height="30" />
           </ImageWrapper>

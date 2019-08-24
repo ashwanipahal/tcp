@@ -44,6 +44,17 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
           value="foo"
         />
       </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
       <Styled(View)>
@@ -108,6 +119,17 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation tru
           value="foo"
         />
       </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View) />
   </View>
@@ -158,6 +180,17 @@ exports[`CreditCardTextBox component renders correctly 1`] = `
           value="foo"
         />
       </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View) />
   </View>
@@ -206,6 +239,17 @@ exports[`CreditCardTextBox component renders correctly hidden textbox 1`] = `
           secureTextEntry={false}
           type="hidden"
           value="foo"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
         />
       </Styled(View)>
     </Styled(View)>

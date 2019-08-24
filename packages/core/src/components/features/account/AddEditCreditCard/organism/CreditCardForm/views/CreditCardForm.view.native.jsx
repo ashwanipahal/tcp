@@ -48,7 +48,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     onFileAddressKey: '',
     isEdit: false,
     dto: {},
-    selectedCard: {},
+    selectedCard: null,
   };
 
   constructor(props) {
@@ -86,10 +86,14 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     return addressOptions.valueSeq().toArray();
   };
 
-  getSelectedAddress = (addressList, onFileAddresskey) =>
-    onFileAddresskey
+  getSelectedAddress = (addressList, onFileAddresskey) => {
+    const { dispatch } = this.props;
+    const defaultAddress = onFileAddresskey
       ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
       : addressList && addressList.find(add => add.primary);
+    dispatch(change(constants.FORM_NAME, 'onFileAddressKey', defaultAddress.addressId));
+    return defaultAddress;
+  };
 
   handleComponentChange = item => {
     const { dispatch } = this.props;
@@ -145,6 +149,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       height: 100,
     };
     const addressComponentList = this.getAddressOptions();
+    const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
@@ -196,7 +201,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <DefaultAddress>
               <LeftBracket />
               <Address
-                address={this.getSelectedAddress(addressList, selectedAddress)}
+                address={defaultAddress}
                 showCountry={false}
                 showPhone={false}
                 showName
@@ -215,8 +220,8 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
             }
             style={AddAddressButton}
+            type="submit"
             onPress={this.submitCardInformation}
-            external
           />
           <Button
             fill="WHITE"

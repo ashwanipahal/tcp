@@ -54,7 +54,7 @@ export class AddEditCreditCard extends React.PureComponent {
     updateCardList: () => {},
     dto: {},
     isEdit: false,
-    selectedCard: {},
+    selectedCard: null,
   };
 
   constructor(props) {
@@ -110,16 +110,16 @@ export class AddEditCreditCard extends React.PureComponent {
     return !cardType || cardType !== constants.ACCEPTED_CREDIT_CARDS['PLACE CARD'];
   };
 
-  getInitialValuesForEditMode = selectedCard => {
-    if (selectedCard !== null) {
-      let cardType = selectedCard.ccBrand || selectedCard.ccType;
-      cardType = cardType && constants.ACCEPTED_CREDIT_CARDS[cardType.toUpperCase()];
+  getInitialValuesForEditMode = creditCard => {
+    if (creditCard) {
+      let cardType = creditCard.ccBrand || creditCard.ccType;
+      cardType = constants.ACCEPTED_CREDIT_CARDS[cardType.toUpperCase()];
       return {
-        onFileAddressKey: selectedCard.billingAddressId.toString(),
+        onFileAddressKey: creditCard.billingAddressId.toString(),
         cardType,
-        cardNumber: selectedCard.accountNo,
-        expYear: selectedCard.expYear.trim(),
-        expMonth: selectedCard.expMonth.trim(),
+        cardNumber: creditCard.accountNo,
+        expYear: creditCard.expYear.trim(),
+        expMonth: creditCard.expMonth.trim(),
         address: {
           country: constants.COUNTRY_US,
           addressLine2: '',
@@ -131,7 +131,7 @@ export class AddEditCreditCard extends React.PureComponent {
   };
 
   getInitialValues = () => {
-    const { addressList, selectedCard } = this.props;
+    const { addressList, creditCard } = this.props;
     let onFileAddressKey = '';
 
     if (addressList && addressList.size > 0) {
@@ -140,8 +140,8 @@ export class AddEditCreditCard extends React.PureComponent {
         defaultBillingAddress.size > 0 ? defaultBillingAddress.get(0).addressId : '';
     }
 
-    if (selectedCard && Object.getOwnPropertyNames(selectedCard).length) {
-      return this.getInitialValuesForEditMode(selectedCard);
+    if (creditCard) {
+      return this.getInitialValuesForEditMode(creditCard);
     }
 
     return {
@@ -170,6 +170,7 @@ export class AddEditCreditCard extends React.PureComponent {
   render() {
     const {
       creditCard,
+      cardType,
       onFileAddressKey,
       addressList,
       isPLCCEnabled,
@@ -187,14 +188,19 @@ export class AddEditCreditCard extends React.PureComponent {
 
     const isExpirationRequired = this.getExpirationRequiredFlag();
     const { initialValues } = this.state;
-    const { cardType } = initialValues;
     const addressLabels = convertObjectKeysToLowerCase(labels.addressBook);
+    let creditCardType = cardType;
+    if (selectedCard && !cardType) {
+      creditCardType = selectedCard.ccBrand || selectedCard.ccType;
+      creditCardType =
+        (creditCardType && constants.ACCEPTED_CREDIT_CARDS[creditCardType.toUpperCase()]) || null;
+    }
 
     return (
       <AddEditCreditCardComponent
         isEdit={isEdit}
         creditCard={creditCard}
-        cardType={cardType}
+        cardType={creditCardType}
         onFileAddressKey={onFileAddressKey}
         isPLCCEnabled={isPLCCEnabled}
         isExpirationRequired={isExpirationRequired}

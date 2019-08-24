@@ -18,7 +18,30 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       cardType=""
       cardTypeImgUrl=""
       className=""
-      dispatch={[MockFunction]}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "onFileAddressKey",
+                  "form": "addEditCreditCard",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "12345",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       dto={Object {}}
       expMonthOptionsMap={
         Array [
@@ -132,7 +155,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
       onFileAddressKey=""
       onFileAddresskey="12345"
-      selectedCard={Object {}}
+      selectedCard={null}
       updateExpiryDate={[Function]}
     />
   </Styled(View)>
@@ -232,7 +255,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       buttonVariation="variable-width"
       customStyle={Object {}}
       disableButton={false}
-      external={true}
       fill="BLUE"
       fullWidth=""
       locator=""
@@ -246,6 +268,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
       }
       text=""
+      type="submit"
       url=""
     />
     <Styled(CustomButton)
@@ -290,6 +313,30 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       cardType=""
       cardTypeImgUrl=""
       className=""
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "onFileAddressKey",
+                  "form": "addEditCreditCard",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "12345",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       dto={Object {}}
       expMonthOptionsMap={
         Array [
@@ -391,6 +438,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           },
         ]
       }
+      handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
       isPLCCEnabled={true}
@@ -402,7 +450,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       }
       onFileAddressKey=""
       pristine={true}
-      selectedCard={Object {}}
+      selectedCard={null}
       updateExpiryDate={[Function]}
     />
   </Styled(View)>
@@ -501,7 +549,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       buttonVariation="variable-width"
       customStyle={Object {}}
       disableButton={false}
-      external={true}
       fill="BLUE"
       fullWidth=""
       locator=""
@@ -515,6 +562,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         }
       }
       text=""
+      type="submit"
       url=""
     />
     <Styled(CustomButton)
