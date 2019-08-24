@@ -2,8 +2,8 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
-import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN/views/ModuleN.native';
-import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
+import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
+import moduleNMockData from '../../../../../../../core/src/services/abstractors/common/moduleN/mock';
 
 class HomePageView extends React.Component {
   componentDidMount() {
@@ -44,16 +44,30 @@ class HomePageView extends React.Component {
   };
 
   render() {
-    const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, navigation } = this.props;
-
+    const {
+      slot_1: slotA,
+      slot_2: slotB,
+      slot_3: slotC,
+      slot_4: slotD,
+      slot_6: slotF,
+      slot_5: slotE,
+      navigation,
+    } = this.props;
     return (
       <ScrollView>
         <React.Fragment>
-          <ModuleN navigation={navigation} />
           {slotA && <SlotA {...slotA} navigation={navigation} />}
           {slotB && <SlotB {...slotB} navigation={navigation} />}
           {slotC && <SlotC {...slotC} navigation={navigation} />}
           {slotD && <SlotD {...slotD} navigation={navigation} />}
+          {slotE && <SlotE {...slotE} navigation={navigation} />}
+          <SlotF
+            name="moduleN"
+            set={moduleNMockData.moduleN.set}
+            {...moduleNMockData.moduleN.composites}
+            {...slotF}
+            navigation={navigation}
+          />
           <Button
             fullWidth
             buttonVariation="variable-width"
@@ -91,6 +105,18 @@ HomePageView.propTypes = {
     type: PropTypes.string,
     contentId: PropTypes.string,
   }),
+  slot_6: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_5: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
   appType: PropTypes.string.isRequired,
@@ -102,6 +128,8 @@ HomePageView.defaultProps = {
   slot_2: {},
   slot_3: {},
   slot_4: {},
+  slot_6: {},
+  slot_5: {},
   screenProps: {},
 };
 

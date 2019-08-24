@@ -45,7 +45,7 @@ AddEditCreditCard.defaultProps = {
   dto: {},
   onClose: () => {},
   updateCardList: () => {},
-  selectedCard: {},
+  selectedCard: null,
 };
 
 export default AddEditCreditCard;
