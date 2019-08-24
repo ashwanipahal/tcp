@@ -1,28 +1,27 @@
 import { fromJS } from 'immutable';
 import LoginPageReducer from '../LoginPage.reducer';
-import { setLoginInfo, resetLoginInfo } from '../LoginPage.actions';
+import { setLoginInfo } from '../LoginPage.actions';
 
 describe('LoginPage reducer', () => {
-  const initialState = null;
-
+  const initialState = fromJS({
+    loginModalMountedState: false,
+    error: null,
+    checkoutModalMountedState: false,
+  });
   it('should return default state', () => {
     expect(LoginPageReducer(undefined, {})).toEqual(initialState);
   });
 
   it('should handle setLoginInfo action correctly', () => {
     const payload = {
-      firstName: 'test',
+      success: true,
     };
-    const expectedState = fromJS(payload);
-    expect(LoginPageReducer(initialState, setLoginInfo(payload))).toEqual(expectedState);
-  });
+    const expectedState = fromJS({
+      error: fromJS(payload),
+      loginModalMountedState: false,
+      checkoutModalMountedState: false,
+    });
 
-  it('should handle resetLoginInfo action correctly', () => {
-    const payload = {
-      firstName: 'test',
-    };
-    const state = fromJS(payload);
-    const expectedState = null;
-    expect(LoginPageReducer(state, resetLoginInfo())).toEqual(expectedState);
+    expect(LoginPageReducer(initialState, setLoginInfo(payload))).toEqual(expectedState);
   });
 });

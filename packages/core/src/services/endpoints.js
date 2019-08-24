@@ -1,4 +1,4 @@
-import { API_METHODS } from './api.constants';
+import { API_METHODS, PRODUCTS_URI } from './api.constants';
 
 const endpoints = {
   graphQL: {
@@ -66,6 +66,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
   },
+  getListofDefaultWishlist: {
+    method: API_METHODS.GET,
+    URI: 'v2/wishlist/getListOfDefaultWishlist',
+  },
   getCouponList: {
     method: API_METHODS.GET,
     URI: 'v2/account/getAddressFromBook',
@@ -83,6 +87,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/bonusDay',
   },
+  applyBonusPoints: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/bonusDay',
+  },
   addCoupons: {
     method: 'post',
     URI: 'v2/checkout/coupons',
@@ -90,6 +98,10 @@ const endpoints = {
   requestPassword: {
     method: 'put',
     URI: 'v2/account/resetPassword',
+  },
+  updateProfileInfo: {
+    method: 'put',
+    URI: 'v2/account/updatesAccountDataForRegisteredUser',
   },
   getGifCardBalance: {
     method: API_METHODS.POST,
@@ -114,6 +126,30 @@ const endpoints = {
   deleteAddress: {
     method: API_METHODS.DELETE,
     URI: 'v2/account/deleteAddressDetails',
+  },
+  getProductDetails: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS,
+    unbxd: true,
+    unbxdCustom: true,
+  },
+  getProductsByOutfits: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_OUTFITS,
+  },
+  getProductviewbyCategory: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_VIEW_BY_CATEGORY,
+  },
+  getProductsBySearchTerm: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
+  },
+  getProductInfoById: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
   },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
@@ -148,6 +184,18 @@ const endpoints = {
   getAllOffers: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
+  },
+  giftOptionsCmd: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/giftOptionsCmd',
+  },
+  orderLookUp: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/orderLookUp',
+  },
+  getUnqualifiedItems: {
+    method: 'GET',
+    URI: 'v2/cart/getUnqualifiedItems',
   },
 };
 export default endpoints;

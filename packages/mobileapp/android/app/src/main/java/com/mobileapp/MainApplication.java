@@ -3,6 +3,8 @@ package com.mobileapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.psykar.cookiemanager.CookieManagerPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.rnfingerprint.FingerprintAuthPackage;
 import com.oblador.keychain.KeychainPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -28,6 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new CookieManagerPackage(),
+            new ReactNativeConfigPackage(),
             new FingerprintAuthPackage(),
             new KeychainPackage(),
             new NetInfoPackage(),

@@ -10,8 +10,7 @@ const images = [
 const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
-  // eslint-disable-next-line no-unused-vars
-  const gymboreeHeaderTextItems = [
+  /*   const gymboreeHeaderTextItems = [
     {
       text: 'Spring is Every Wear',
       style: 'style1',
@@ -24,7 +23,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
       text: 'The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!',
       style: 'style12',
     },
-  ];
+  ]; */
 
   // eslint-disable-next-line no-unused-vars
   const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];

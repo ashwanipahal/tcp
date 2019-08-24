@@ -52,6 +52,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .align-product-img {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .color-fit-size-separator {
@@ -62,6 +63,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .responsive-edit-css {
     padding-top: 2px;
+    cursor: pointer;
   }
   .imageWrapper {
     position: relative;
@@ -69,9 +71,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .logoWrapper {
     position: relative;
-    width: 100px;
     margin-top: 8px;
-    margin-left: 25%;
   }
   .product-attributes {
     display: inline-flex;
@@ -81,6 +81,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .editLinkWrapper {
     display: inline-block;
+  }
+
+  .crossDeleteIcon {
+    float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
   }
 
   .product-tile-wrapper {
@@ -138,6 +145,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
       .responsive-edit-css {
         padding-top: 2px;
+        cursor: pointer;
       }
     }
 
@@ -162,6 +170,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
         position: absolute;
         bottom: 0;
         right: 50%;
+        cursor: pointer;
       }
       .bag-product-detail-wrapper {
         position: static;

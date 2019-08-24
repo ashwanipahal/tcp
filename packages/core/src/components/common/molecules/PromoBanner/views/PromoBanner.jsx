@@ -25,6 +25,7 @@ const PromoBanner = (props: Props) => {
     className,
     ...otherProps
   } = props;
+
   return (
     <BodyCopy component="div" className={className} {...otherProps}>
       <React.Fragment>

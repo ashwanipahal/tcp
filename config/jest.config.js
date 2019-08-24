@@ -1,4 +1,6 @@
 const ignorePsuedoCodeDir = [
+  '/ProductListing/',
+  '/services/abstractors/productListing/',
   '/ProductListingPage/',
   '/services/abstractors/CnC/AddedToBag.js',
   '/plpDeltaSync/',
@@ -6,6 +8,7 @@ const ignorePsuedoCodeDir = [
   '/server/',
   '/service/',
   '/FPO/',
+  '/services/abstractors/CnC/Checkout.js',
 ];
 
 module.exports = {

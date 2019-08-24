@@ -8,7 +8,7 @@ import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleAGymCarousel.config';
 
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const bigCarrotIcon = 'carousel-big-carrot';
 
@@ -143,5 +143,5 @@ ModuleAGymCarousel.propTypes = {
   className: PropTypes.string,
 };
 
-export default errorBoundary(withStyles(ModuleAGymCarousel, style));
+export default withStyles(errorBoundary(ModuleAGymCarousel), style);
 export { ModuleAGymCarousel as ModuleAGymCarouselVanilla };

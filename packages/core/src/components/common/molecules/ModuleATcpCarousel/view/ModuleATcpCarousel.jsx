@@ -8,7 +8,7 @@ import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleATcpCarousel.config';
 
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const bigCarrotIcon = 'carousel-big-carrot';
 
@@ -59,12 +59,14 @@ const ModuleATcpCarousel = props => {
                   className="link-text-wrapper"
                   dataLocator={`${getLocator('moduleA_header_text')}${i}`}
                 />
-                <PromoBanner
-                  promoBanner={promoBanner}
-                  className="moduleA__promoBanner"
-                  data-locator={`${getLocator('moduleA_promobanner_text')}${i}`}
-                  fontSize="fs48"
-                />
+                {promoBanner && (
+                  <PromoBanner
+                    promoBanner={promoBanner}
+                    className="moduleA__promoBanner"
+                    data-locator={`${getLocator('moduleA_promobanner_text')}${i}`}
+                    fontSize="fs48"
+                  />
+                )}
               </div>
             </div>
           );
@@ -96,5 +98,5 @@ ModuleATcpCarousel.propTypes = {
   className: PropTypes.string,
 };
 
-export default errorBoundary(withStyles(ModuleATcpCarousel, style));
+export default withStyles(errorBoundary(ModuleATcpCarousel), style);
 export { ModuleATcpCarousel as ModuleATcpCarouselVanilla };

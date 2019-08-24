@@ -15,12 +15,14 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
       className="footer-links"
       colNum={0}
       headerAsImage={true}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -36,12 +38,14 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
       className="footer-links"
       colNum={1}
       headerAsImage={true}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -56,12 +60,14 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={2}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -76,12 +82,14 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={3}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -96,12 +104,14 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={4}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -116,14 +126,19 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={5}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
+  <OpenLoginModal
+    variation="favorites"
+  />
 </Fragment>
 `;
 
@@ -142,12 +157,14 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
       className="footer-links"
       colNum={0}
       headerAsImage={true}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -163,12 +180,14 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
       className="footer-links"
       colNum={1}
       headerAsImage={true}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -193,12 +212,14 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={2}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -213,23 +234,27 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={3}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
     <FooterNavLinks
       className="footer-links"
       colNum={4}
       isSubHeader={true}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -244,13 +269,18 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
     <FooterNavLinks
       className="footer-links"
       colNum={5}
+      isUserLoggedIn={false}
       navLinkItems={
         Object {
           "header": "",
           "links": Array [],
         }
       }
+      openTrackOrder={[Function]}
     />
   </Styled(Col)>
+  <OpenLoginModal
+    variation="favorites"
+  />
 </Fragment>
 `;

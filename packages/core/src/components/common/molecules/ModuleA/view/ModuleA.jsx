@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { style } from '../ModuleA.style';
 import { Col, Row } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 import ModuleAGymCarousel from '../../ModuleAGymCarousel';
 import ModuleATcpCarousel from '../../ModuleATcpCarousel';
@@ -13,13 +13,7 @@ import config from '../ModuleA.config';
 const { ctaTypes } = config;
 
 const ModuleA = props => {
-  const {
-    className,
-    variant,
-    set: [set = {}],
-  } = props;
-
-  const ctaType = ctaTypes[set.val];
+  const { className, variant = 'tcp', ctaType, ...others } = props;
 
   return (
     <Row className={`${className} moduleA`} fullBleed={{ small: true, medium: true, large: false }}>
@@ -31,9 +25,9 @@ const ModuleA = props => {
         }}
       >
         {variant === 'tcp' ? (
-          <ModuleATcpCarousel ctaType={ctaType} {...props} />
+          <ModuleATcpCarousel ctaType={ctaTypes[ctaType]} {...others} />
         ) : (
-          <ModuleAGymCarousel ctaType={ctaType} {...props} />
+          <ModuleAGymCarousel ctaType={ctaTypes[ctaType]} {...others} />
         )}
       </Col>
     </Row>
@@ -43,14 +37,14 @@ const ModuleA = props => {
 ModuleA.defaultProps = {
   className: '',
   variant: 'tcp',
-  set: [],
+  ctaType: '',
 };
 
 ModuleA.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.string,
-  set: PropTypes.arrayOf(PropTypes.shape({})),
+  ctaType: PropTypes.string,
 };
 
-export default errorBoundary(withStyles(ModuleA, style));
+export default withStyles(errorBoundary(ModuleA), style);
 export { ModuleA as ModuleAVanilla };

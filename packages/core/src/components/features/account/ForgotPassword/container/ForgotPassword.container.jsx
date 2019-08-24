@@ -7,17 +7,17 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from './ForgotPassword.selectors';
-import { resetLoginInfo } from '../../LoginPage/container/LoginPage.actions';
+import { resetUserInfo } from '../../User/container/User.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
 import {
-  getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
 } from '../../LoginPage/container/LoginPage.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 import ForgotPasswordView from '../views/ForgotPassword.view';
 
 class ForgotPasswordContainer extends React.PureComponent {
@@ -70,7 +70,7 @@ ForgotPasswordContainer.defaultProps = {
 const mapDispatchToProps = dispatch => {
   return {
     resetLoginState: () => {
-      dispatch(resetLoginInfo());
+      dispatch(resetUserInfo());
     },
     SubmitForgot: payload => {
       dispatch(resetPassword(payload));

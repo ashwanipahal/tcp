@@ -20,8 +20,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
       }
     }
   >
-    <errorBoundaryComponent
-      className=""
+    <ForwardRef
       ctaItems={
         Array [
           Object {
@@ -443,8 +442,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           },
         ]
       }
-      set={Array []}
-      variant="gymboree"
     />
   </ForwardRef>
 </ForwardRef>
@@ -470,8 +467,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
       }
     }
   >
-    <errorBoundaryComponent
-      className=""
+    <ForwardRef
       ctaItems={
         Array [
           Object {
@@ -893,8 +889,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           },
         ]
       }
-      set={Array []}
-      variant="tcp"
     />
   </ForwardRef>
 </ForwardRef>

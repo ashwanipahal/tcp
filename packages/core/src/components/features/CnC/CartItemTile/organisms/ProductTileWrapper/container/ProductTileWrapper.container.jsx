@@ -8,8 +8,10 @@ import {
 import {
   getUserLoggedInState,
   isPlccUser,
-} from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+} from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import { removeCartItem, updateCartItem } from '../../../container/CartItemTile.actions';
+
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export class ProductTileWrapperContainer extends React.Component {
@@ -35,6 +37,12 @@ export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
       dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
+    },
+    removeCartItem: orderItemId => {
+      dispatch(removeCartItem(orderItemId));
+    },
+    updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
+      dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
   };
 };

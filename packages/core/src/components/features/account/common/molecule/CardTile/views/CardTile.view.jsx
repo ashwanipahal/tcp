@@ -4,6 +4,8 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../CardTile.style';
 import { getIconPath } from '../../../../../../../utils';
@@ -305,24 +307,42 @@ class CardTile extends React.Component<Props> {
           />
         )}
         <div className="cardTile">
-          <div className="cardTile__cardDetails">
-            <BodyCopy
-              tag="span"
-              fontSize="fs16"
-              fontFamily="secondary"
-              fontWeight="normal"
-              className="cardTile__heading"
-              data-locator={`payment-${dataLocatorPrefix}nametitle`}
+          <Row fullBleed>
+            <Col
+              colSize={{
+                small: 3,
+                large: 7,
+                medium: 4,
+              }}
             >
-              {cardName}
-            </BodyCopy>
-            {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
-            {isCreditCard ? getAddressDetails({ card }) : null}
-          </div>
-          <div className="cardTile__defaultSection">
-            {isCreditCard ? this.getMakeDefaultBadge() : null}
-            {this.getCardImage({ card, cardIcon })}
-          </div>
+              <div className="cardTile__cardDetails">
+                <BodyCopy
+                  tag="span"
+                  fontSize="fs16"
+                  fontFamily="secondary"
+                  fontWeight="normal"
+                  className="cardTile__heading"
+                  data-locator={`payment-${dataLocatorPrefix}nametitle`}
+                >
+                  {cardName}
+                </BodyCopy>
+                {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
+                {isCreditCard ? getAddressDetails({ card }) : null}
+              </div>
+            </Col>
+            <Col
+              colSize={{
+                small: 3,
+                large: 5,
+                medium: 4,
+              }}
+            >
+              <div className="cardTile__defaultSection">
+                {isCreditCard ? this.getMakeDefaultBadge() : null}
+                {this.getCardImage({ card, cardIcon })}
+              </div>
+            </Col>
+          </Row>
         </div>
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">

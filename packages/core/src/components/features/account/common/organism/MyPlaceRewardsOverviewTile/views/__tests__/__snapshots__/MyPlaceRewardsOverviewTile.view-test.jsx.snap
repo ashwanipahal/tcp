@@ -3,6 +3,8 @@
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are not present 1`] = `
 <Styled(AccountOverviewTile)
   className=""
+  ctaLink="/account?id=place-rewards"
+  ctaPath="/account/place-rewards"
   dataLocatorPrefix="myrewardstile"
 >
   <section
@@ -21,6 +23,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       textAlign="left"
     />
     <CouponList
+      commonLabels={Object {}}
       coupons={Immutable.List []}
       labels={Object {}}
       sliceCount={2}
@@ -43,6 +46,8 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are present 1`] = `
 <Styled(AccountOverviewTile)
   className=""
+  ctaLink="/account?id=place-rewards"
+  ctaPath="/account/place-rewards"
   dataLocatorPrefix="myrewardstile"
 >
   <section
@@ -61,6 +66,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       textAlign="left"
     />
     <CouponList
+      commonLabels={Object {}}
       coupons={
         Immutable.List [
           Object {},

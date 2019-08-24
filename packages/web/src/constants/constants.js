@@ -3,6 +3,9 @@ export const brand = {
   GYMBOREE: 'gymboree',
 };
 
+export const defaultDeviceType = 'desktop';
+
 export default {
   brand,
+  defaultDeviceType,
 };
