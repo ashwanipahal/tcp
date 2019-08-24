@@ -142,10 +142,10 @@ LoginPageContainer.defaultProps = {
   queryParams: {},
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: payload => {
-      dispatch(login(payload));
+      dispatch(login(payload, props.handleAfterLogin));
     },
     resetForm: payload => {
       dispatch(resetLoginForgotPasswordState(payload));

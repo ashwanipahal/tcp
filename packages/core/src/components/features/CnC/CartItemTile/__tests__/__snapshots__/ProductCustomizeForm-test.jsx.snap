@@ -63,7 +63,22 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             onChange={[Function]}
             options={
               Immutable.List [
-                1,
+                Object {
+                  "content": <span>
+                    <img
+                      alt=""
+                      src="https://test4.childrensplace.comundefined"
+                    />
+                  </span>,
+                  "title": <span>
+                    <img
+                      alt=""
+                      className="selected-color-image"
+                      src="https://test4.childrensplace.comundefined"
+                    />
+                  </span>,
+                  "value": undefined,
+                },
               ]
             }
             width={87}

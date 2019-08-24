@@ -60,6 +60,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .responsive-edit-css {
     padding-top: 2px;
+    cursor: pointer;
   }
   .imageWrapper {
     position: relative;
@@ -145,6 +146,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
       .responsive-edit-css {
         padding-top: 2px;
+        cursor: pointer;
       }
     }
 
@@ -169,6 +171,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
         position: absolute;
         bottom: 0;
         right: 50%;
+        cursor: pointer;
       }
       .bag-product-detail-wrapper {
         position: static;

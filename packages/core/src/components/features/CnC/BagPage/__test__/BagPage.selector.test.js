@@ -7,6 +7,7 @@ describe('#Added to bag Selectors', () => {
       addedToBag: { lbl_header_addedToBag: 'AddedToBag', lbl_cta_checkout: 'Checkout' },
       bagOverview: { lbl_header_bag: 'bagHeading' },
     },
+    global: { checkoutConfirmation: {} },
   };
   const CartPageReducer = fromJS({
     orderDetails: {
@@ -40,8 +41,9 @@ describe('#Added to bag Selectors', () => {
     expect(BAGPAGE_SELECTORS.getUnqualifiedItemsIds(state)).toEqual(fromJS([]));
   });
   it('#getUnavailableCount', () => {
-    expect(BAGPAGE_SELECTORS.getUnavailableCount(state)).toEqual(fromJS([]));
+    expect(BAGPAGE_SELECTORS.getUnavailableCount(state)).toEqual(0);
   });
+
   it('#getUnqualifiedCount', () => {
     expect(BAGPAGE_SELECTORS.getUnqualifiedCount(state)).toEqual(0);
   });

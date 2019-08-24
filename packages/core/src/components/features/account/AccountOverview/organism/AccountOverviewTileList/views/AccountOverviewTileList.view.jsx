@@ -4,6 +4,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import AddressOverviewTile from '../../../../common/organism/AddressOverviewTile';
 import PaymentOverviewTile from '../../../../common/organism/PaymentOverviewTile';
+import ProfileInfoTile from '../../../../common/organism/ProfileInfoTile';
 import MyPlaceRewardsOverviewTile from '../../../../common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '../../../../common/organism/MyWalletTile';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -25,6 +26,19 @@ export const AccountOverviewTileList = ({ className, ...otherProps }) => {
         }}
         className="overviewCol elem-mb-XL"
       >
+        <ProfileInfoTile {...otherProps} />
+      </Col>
+      <Col
+        colSize={{
+          small: 6,
+          medium: 4,
+          large: 4,
+        }}
+        ignoreGutter={{
+          small: true,
+        }}
+        className="overviewCol elem-mb-XL"
+      >
         <AddressOverviewTile {...otherProps} />
       </Col>
       <Col
@@ -34,6 +48,7 @@ export const AccountOverviewTileList = ({ className, ...otherProps }) => {
           large: 4,
         }}
         ignoreGutter={{
+          large: true,
           small: true,
         }}
         className="overviewCol elem-mb-XL"
@@ -48,7 +63,6 @@ export const AccountOverviewTileList = ({ className, ...otherProps }) => {
             large: 4,
           }}
           ignoreGutter={{
-            large: true,
             small: true,
           }}
           className="overviewCol elem-mb-XL"

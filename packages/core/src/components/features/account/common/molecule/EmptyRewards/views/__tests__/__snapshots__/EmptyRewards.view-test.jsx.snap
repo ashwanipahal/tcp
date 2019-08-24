@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyRewards should render correctly 1`] = `
+<Fragment>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 4,
+      }
+    }
+    offsetLeft={
+      Object {
+        "large": 0,
+        "medium": 0,
+        "small": 1,
+      }
+    }
+  >
+    <Styled(BodyCopy)
+      className="no-rewards-msg"
+      color="text.primary"
+      component="p"
+      data-locator="no_rewards_msg"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      msg
+    </Styled(BodyCopy)>
+  </Styled(Col)>
+  <Styled(Col)
+    className="shop-now-btn-wrapper"
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    offsetLeft={
+      Object {
+        "large": 4,
+        "medium": 2,
+        "small": 0,
+      }
+    }
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="shop-now-btn"
+      color="white"
+      data-locator="my-rewards-shop-now-btn"
+      fill="BLUE"
+    >
+      shop now
+    </Styled(Button)>
+  </Styled(Col)>
+</Fragment>
+`;

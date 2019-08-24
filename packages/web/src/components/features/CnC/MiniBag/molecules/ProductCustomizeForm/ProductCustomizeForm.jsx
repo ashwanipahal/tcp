@@ -74,33 +74,27 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   getColorOptions = colorFitsSizesMap => {
-    const colorOptions = [];
     return (
       colorFitsSizesMap &&
-      colorFitsSizesMap.map(colorItem => {
-        return colorOptions.push({
-          title: (
-            <span>
-              <img
-                alt=""
-                className="selected-color-image"
-                src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])}
-              />
-              {colorItem.getIn(['color', 'name'])}
-            </span>
-          ),
-          content: (
-            <span>
-              <img
-                alt=""
-                src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])}
-              />
-              {colorItem.getIn(['color', 'name'])}
-            </span>
-          ),
-          value: colorItem.getIn(['color', 'name']),
-        });
-      })
+      colorFitsSizesMap.map(colorItem => ({
+        title: (
+          <span>
+            <img
+              alt=""
+              className="selected-color-image"
+              src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])}
+            />
+            {colorItem.getIn(['color', 'name'])}
+          </span>
+        ),
+        content: (
+          <span>
+            <img alt="" src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])} />
+            {colorItem.getIn(['color', 'name'])}
+          </span>
+        ),
+        value: colorItem.getIn(['color', 'name']),
+      }))
     );
   };
 

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutHeaderVanilla should render CheckoutProgressIndicatorVanilla section 1`] = `
+<div
+  className="test"
+>
+  <div
+    className="checkout-progress-indicator"
+  >
+    <ul
+      className="checkout-progress-bar desktop "
+    >
+      <Styled(StepIndicator)
+        isComplete={true}
+        name="Pickup"
+        onClick={[Function]}
+        stage="pickup"
+      />
+      <Styled(StepIndicator)
+        isComplete={true}
+        name="Shipping"
+        onClick={[Function]}
+        stage="shipping"
+      />
+      <Styled(StepIndicator)
+        isComplete={true}
+        name="Billing"
+        onClick={[Function]}
+        stage="billing"
+      />
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`CheckoutHeaderVanilla should render CheckoutProgressIndicatorVanilla section with active stage  1`] = `
+<div
+  className="test"
+>
+  <div
+    className="checkout-progress-indicator"
+  >
+    <ul
+      className="checkout-progress-bar desktop "
+    >
+      <Styled(StepIndicator)
+        isActive={true}
+        key="pickup"
+        name="Pickup"
+      />
+      <Styled(StepIndicator)
+        key="shipping"
+        name="Shipping"
+      />
+      <Styled(StepIndicator)
+        key="billing"
+        name="Billing"
+      />
+    </ul>
+  </div>
+</div>
+`;
