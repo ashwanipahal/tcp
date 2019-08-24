@@ -30,4 +30,5 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  getAddressFromPlace,
 } from './utils';

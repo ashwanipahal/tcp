@@ -50,14 +50,14 @@ class DropDown extends React.PureComponent<Props> {
   static getDerivedStateFromProps(props, state) {
     const { selectedLabelState } = state;
     if (props.selectedValue !== selectedLabelState) {
-      const result = props.data.filter(item => {
+      const result = props.data.find(item => {
         if (item.value) return item.value === props.selectedValue;
         return item.id === props.selectedValue;
       });
 
-      if (result.length > 0) {
-        if (result[0].label) return { selectedLabelState: result[0].label };
-        return { selectedLabelState: result[0].displayName };
+      if (result) {
+        if (result.label) return { selectedLabelState: result.label };
+        return { selectedLabelState: result.displayName };
       }
     }
     return null;
@@ -80,16 +80,16 @@ class DropDown extends React.PureComponent<Props> {
     };
 
     const { data, selectedValue } = this.props;
-    const selectedObject = data.filter(item => {
+    const selectedObject = data.find(item => {
       return item.value === selectedValue;
     });
 
     let selectedLabelState;
     if (selectedValue) {
-      if (selectedObject[0]) selectedLabelState = selectedObject[0].label;
+      if (selectedObject) selectedLabelState = selectedObject.label;
       else selectedLabelState = selectedValue;
     } else {
-      selectedLabelState = data[0].label;
+      selectedLabelState = data.label;
     }
 
     this.state = {

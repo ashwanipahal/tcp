@@ -45,7 +45,7 @@ const StyledLabel = styled.Text`
     !props.isFocused
       ? props.theme.typography.fontSizes.fs14
       : props.theme.typography.fontSizes.fs10};
-  color: #1a1a1a;
+  color: ${props => props.theme.colorPalette.gray[900]};
   font-weight: ${props =>
     !props.isFocused
       ? props.theme.typography.fontWeights.regular
@@ -75,7 +75,6 @@ const itemStyle = {
 
 // https://github.com/FaridSafi/react-native-google-places-autocomplete/issues/379#issuecomment-457845834
 const GooglePlaceInputWrapper = styled.View`
-  z-index: 9999;
   width: 100%;
 `;
 

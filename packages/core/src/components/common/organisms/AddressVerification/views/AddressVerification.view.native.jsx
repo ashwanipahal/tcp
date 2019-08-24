@@ -54,10 +54,10 @@ export default class AddressVerification extends React.PureComponent {
     if (suggestedAddress) {
       addressPayload =
         selectAddress === 'userAddress'
-          ? Object.assign(addressPayload, userAddress)
-          : Object.assign(addressPayload, suggestedAddress);
+          ? { ...addressPayload, ...userAddress }
+          : { ...addressPayload, ...suggestedAddress };
     } else {
-      addressPayload = Object.assign(addressPayload, userAddress);
+      addressPayload = { ...addressPayload, ...userAddress };
     }
     if (optionalAddressLine) {
       addressPayload.address2 = optionalAddressLine;
