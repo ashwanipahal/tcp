@@ -1,84 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModuleATcpCarousel component renders correctly 1`] = `
-<div
-  className=""
->
-  <Styled(Styled(Carousel))
-    carouselConfig={
-      Object {
-        "autoplay": true,
-        "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-        "customArrowRight": "/static/images/right-carousel-carrot.svg",
-        "dataLocatorCarousel": "carousel_banner",
-        "dataLocatorPause": "moduleA_pause_button",
-        "dataLocatorPlay": "moduleA_play_button",
-      }
-    }
-    options={
-      Object {
-        "arrows": true,
-        "autoplay": true,
-        "autoplaySpeed": 4000,
-        "dots": true,
-        "dotsClass": "slick-dots",
-        "fade": false,
-        "hidePlayPause": false,
-        "nextArrow": <button
-          className="slick-prev"
-          data-locator="moduleA_right_arrow"
-          type="button"
-        />,
-        "prevArrow": <button
-          className="slick-prev"
-          data-locator="moduleA_left_arrow"
-          type="button"
-        />,
-        "responsive": Array [
-          Object {
-            "breakpoint": 1024,
-            "settings": Object {
-              "arrows": false,
-            },
-          },
-        ],
-        "speed": 1000,
-        "swipe": true,
-      }
-    }
-  >
-    <div
-      className="banner-slide"
-    >
-      <WithTheme(DamImage)
-        data-locator="moduleA_image_0"
-        imgConfigs={
-          Array [
-            "c_fill,g_face:center,q_auto:best,h_622,w_750",
-            "c_fill,g_face:center,q_auto:best,h_406,w_768",
-            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-          ]
+exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <WithTheme(SnapCarousel)
+      carouselConfig={
+        Object {
+          "autoplay": true,
         }
-        imgData={
+      }
+      data={
+        Array [
           Object {
-            "alt": "Family Tees Image 1",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Family Tees title",
-            "url": "https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg",
-          }
-        }
-      />
-      <div
-        className="banner-content"
-      >
-        <Styled(Styled(LinkText))
-          className="link-text-wrapper"
-          component="h2"
-          dataLocator="moduleA_header_text_0"
-          headerText={
-            Array [
+            "headerText": Array [
               Object {
                 "icon": Object {
                   "icon": "",
@@ -98,16 +32,27 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-          type="heading"
-        />
-        <Styled(PromoBanner)
-          className="moduleA__promoBanner"
-          data-locator="moduleA_promobanner_text_0"
-          fontSize="fs48"
-          promoBanner={
-            Array [
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 1",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
               Object {
                 "link": Object {
                   "external": 0,
@@ -131,43 +76,25 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-        />
-      </div>
-    </div>
-    <div
-      className="banner-slide"
-    >
-      <WithTheme(DamImage)
-        data-locator="moduleA_image_1"
-        imgConfigs={
-          Array [
-            "c_fill,g_face:center,q_auto:best,h_622,w_750",
-            "c_fill,g_face:center,q_auto:best,h_406,w_768",
-            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-          ]
-        }
-        imgData={
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
           Object {
-            "alt": "Family Tees Image 2",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Family Tees title",
-            "url": "https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg",
-          }
-        }
-      />
-      <div
-        className="banner-content"
-      >
-        <Styled(Styled(LinkText))
-          className="link-text-wrapper"
-          component="h2"
-          dataLocator="moduleA_header_text_1"
-          headerText={
-            Array [
+            "headerText": Array [
               Object {
                 "icon": Object {
                   "icon": "",
@@ -187,16 +114,27 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-          type="heading"
-        />
-        <Styled(PromoBanner)
-          className="moduleA__promoBanner"
-          data-locator="moduleA_promobanner_text_1"
-          fontSize="fs48"
-          promoBanner={
-            Array [
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 2",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
               Object {
                 "link": Object {
                   "external": 0,
@@ -220,43 +158,25 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-        />
-      </div>
-    </div>
-    <div
-      className="banner-slide"
-    >
-      <WithTheme(DamImage)
-        data-locator="moduleA_image_2"
-        imgConfigs={
-          Array [
-            "c_fill,g_face:center,q_auto:best,h_622,w_750",
-            "c_fill,g_face:center,q_auto:best,h_406,w_768",
-            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-          ]
-        }
-        imgData={
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
           Object {
-            "alt": "Family Tees Image 3",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Family Tees title",
-            "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
-          }
-        }
-      />
-      <div
-        className="banner-content"
-      >
-        <Styled(Styled(LinkText))
-          className="link-text-wrapper"
-          component="h2"
-          dataLocator="moduleA_header_text_2"
-          headerText={
-            Array [
+            "headerText": Array [
               Object {
                 "icon": Object {
                   "icon": "",
@@ -276,16 +196,27 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-          type="heading"
-        />
-        <Styled(PromoBanner)
-          className="moduleA__promoBanner"
-          data-locator="moduleA_promobanner_text_2"
-          fontSize="fs48"
-          promoBanner={
-            Array [
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 3",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
               Object {
                 "link": Object {
                   "external": 0,
@@ -309,43 +240,25 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-        />
-      </div>
-    </div>
-    <div
-      className="banner-slide"
-    >
-      <WithTheme(DamImage)
-        data-locator="moduleA_image_3"
-        imgConfigs={
-          Array [
-            "c_fill,g_face:center,q_auto:best,h_622,w_750",
-            "c_fill,g_face:center,q_auto:best,h_406,w_768",
-            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
-          ]
-        }
-        imgData={
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
           Object {
-            "alt": "Family Tees Image 4",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Family Tees title",
-            "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
-          }
-        }
-      />
-      <div
-        className="banner-content"
-      >
-        <Styled(Styled(LinkText))
-          className="link-text-wrapper"
-          component="h2"
-          dataLocator="moduleA_header_text_3"
-          headerText={
-            Array [
+            "headerText": Array [
               Object {
                 "icon": Object {
                   "icon": "",
@@ -365,16 +278,27 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-          type="heading"
-        />
-        <Styled(PromoBanner)
-          className="moduleA__promoBanner"
-          data-locator="moduleA_promobanner_text_3"
-          fontSize="fs48"
-          promoBanner={
-            Array [
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 4",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "title": "Family Tees title",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/c/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
               Object {
                 "link": Object {
                   "external": 0,
@@ -398,16 +322,37 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   },
                 ],
               },
-            ]
-          }
-        />
-      </div>
-    </div>
-  </Styled(Styled(Carousel))>
-  <div
-    className="button-list-container stackedCTAList"
-  >
-    <Styled(ButtonList)
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "ribbon_default_text",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+        ]
+      }
+      height={300}
+      overlap={true}
+      renderItem={[Function]}
+      showDots={true}
+      width={750}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)
+      background="gray"
+    />
+    <ButtonList
       buttonListVariation="stackedCTAList"
       buttonsData={
         Array [
@@ -498,8 +443,12 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           },
         ]
       }
-      dataLocator="moduleA_button_set_"
+      color="gray"
+      locator="stacked_cta_list"
     />
-  </div>
-</div>
+    <Styled(View)
+      background="gray"
+    />
+  </Styled(View)>
+</Styled(View)>
 `;

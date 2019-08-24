@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import moduleNMockData from '../../../../../services/abstractors/common/moduleN/mock';
-import { ModuleNVanilla } from '../views/ModuleN.native';
+import moduleAMockData from '../../../../../services/abstractors/common/moduleA/mock';
+import { ModuleAVanilla } from '../view/ModuleA.native';
 
 describe('ModuleNVanilla', () => {
   let componentSingleCTAButton;
@@ -11,29 +11,29 @@ describe('ModuleNVanilla', () => {
 
   beforeEach(() => {
     componentSingleCTAButton = shallow(
-      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
+      <ModuleAVanilla set={moduleAMockData.moduleA.set} {...moduleAMockData.moduleA.composites} />
     );
     divImageCTACarousel = shallow(
-      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
+      <ModuleAVanilla set={moduleAMockData.moduleA.set} {...moduleAMockData.moduleA.composites} />
     );
 
     linkList = shallow(
-      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
+      <ModuleAVanilla set={moduleAMockData.moduleA.set} {...moduleAMockData.moduleA.composites} />
     );
 
     scrollCTAButtons = shallow(
-      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
+      <ModuleAVanilla set={moduleAMockData.moduleA.set} {...moduleAMockData.moduleA.composites} />
     );
   });
 
-  it('ModuleN should be defined', () => {
+  it('ModuleA should be defined', () => {
     expect(componentSingleCTAButton).toBeDefined();
     expect(divImageCTACarousel).toBeDefined();
     expect(linkList).toBeDefined();
     expect(scrollCTAButtons).toBeDefined();
   });
 
-  it('ModuleN should render correctly', () => {
+  it('ModuleA should render correctly', () => {
     expect(componentSingleCTAButton).toMatchSnapshot();
     expect(divImageCTACarousel).toBeDefined();
     expect(linkList).toBeDefined();
