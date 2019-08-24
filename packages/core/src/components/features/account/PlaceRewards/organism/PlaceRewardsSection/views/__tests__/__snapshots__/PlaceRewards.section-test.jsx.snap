@@ -26,7 +26,6 @@ exports[`MyRewards should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
     </Styled(Col)>
@@ -69,7 +68,6 @@ exports[`MyRewards should render correctly 1`] = `
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
-              link={Object {}}
               textAlign="left"
             />
           </Styled(Col)>
@@ -126,7 +124,6 @@ exports[`MyRewards should render correctly 1`] = `
               fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
-              link={Object {}}
               textAlign="left"
             />
           </Styled(Col)>

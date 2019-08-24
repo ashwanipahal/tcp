@@ -37,7 +37,6 @@ exports[`Selectbox component renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     placeholder
@@ -90,7 +89,6 @@ exports[`Selectbox component renders correctly with disabled props 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     placeholder
@@ -148,7 +146,6 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     first name for user
@@ -170,7 +167,6 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       role="alert"
       textAlign="left"
     >
@@ -217,7 +213,6 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
   <div

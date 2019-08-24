@@ -10,7 +10,6 @@ exports[`CreditCardNumber component should renders correctly when cardType is pr
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <Styled(TextBox)
@@ -32,7 +31,6 @@ exports[`CreditCardNumber component should renders correctly when isExpirationRe
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <Styled(TextBox)

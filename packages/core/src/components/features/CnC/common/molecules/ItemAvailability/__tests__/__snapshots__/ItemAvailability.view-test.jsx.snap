@@ -25,7 +25,6 @@ exports[`ItemAvailability Component ItemAvailability should render correctly 1`]
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
       </Styled(Col)>
@@ -49,7 +48,6 @@ exports[`ItemAvailability Component ItemAvailability should render correctly 1`]
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         >
           Choose different product

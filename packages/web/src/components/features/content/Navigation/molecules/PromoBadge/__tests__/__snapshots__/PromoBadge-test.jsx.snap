@@ -11,7 +11,6 @@ exports[`Promo Badge component renders correctly 1`] = `
     fontWeight="black"
     letterSpacing="normal"
     lineHeight="lh115"
-    link={Object {}}
     textAlign="left"
   >
     30% off shoes

@@ -13,7 +13,6 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
     fontWeight="black"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     20%

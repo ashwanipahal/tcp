@@ -68,7 +68,6 @@ exports[`L3 Panel component renders correctly 1`] = `
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="lh107"
-              link={Object {}}
               textAlign="left"
             >
               <span
@@ -81,7 +80,7 @@ exports[`L3 Panel component renders correctly 1`] = `
         </li>
         <li>
           <Styled(Anchor)
-            data-locator="l3_link_0"
+            dataLocator="l3_link_0"
             to="/c/"
           >
             <Styled(BodyCopy)
@@ -99,7 +98,6 @@ exports[`L3 Panel component renders correctly 1`] = `
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="lh107"
-              link={Object {}}
               textAlign="left"
             >
               <span

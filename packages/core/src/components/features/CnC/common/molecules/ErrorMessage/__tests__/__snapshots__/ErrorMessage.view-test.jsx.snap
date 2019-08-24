@@ -17,7 +17,6 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
       fontWeight="normal"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       This is test error.

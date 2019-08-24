@@ -39,6 +39,7 @@ const Anchor = ({
   const incomingUrl = to || url;
   const isCompleteUrl = incomingUrl.startsWith('http');
   const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
+  const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
 
   return noLink ? (
     <a
@@ -53,7 +54,7 @@ const Anchor = ({
       {children}
     </a>
   ) : (
-    <Link href={to || url} as={asPath} shallow={shallow} scroll={scroll}>
+    <Link href={to || url} as={asLinkPath} shallow={shallow} scroll={scroll}>
       <a
         className={className}
         href={to || url}

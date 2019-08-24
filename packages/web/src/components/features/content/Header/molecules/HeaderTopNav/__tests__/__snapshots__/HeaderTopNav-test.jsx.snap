@@ -146,7 +146,6 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
       id="trackOrder"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       onClick={[Function]}
       textAlign="right"
     >
@@ -302,7 +301,6 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
       id="trackOrder"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       onClick={[Function]}
       textAlign="right"
     >

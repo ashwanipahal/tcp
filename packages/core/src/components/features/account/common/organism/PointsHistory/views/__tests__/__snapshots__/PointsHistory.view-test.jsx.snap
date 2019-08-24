@@ -27,7 +27,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         08/08/19
@@ -52,7 +51,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         Credit
@@ -77,7 +75,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         5
@@ -107,7 +104,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         08/08/19
@@ -132,7 +128,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         AddBirthDate
@@ -157,7 +152,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="center"
       >
         5
@@ -179,7 +173,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="pointshistorylnk"
+        dataLocator="pointshistorylnk"
         fontSizeVariation="medium"
         underline={true}
       >

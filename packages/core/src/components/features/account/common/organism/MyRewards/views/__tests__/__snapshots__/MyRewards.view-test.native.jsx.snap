@@ -47,7 +47,7 @@ exports[`MyRewards should render correctly 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="my-rewards-program-details"
+      dataLocator="my-rewards-program-details"
       fontSizeVariation="medium"
       locator=""
       onPress={[Function]}
@@ -59,7 +59,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="my-rewards-tnc"
+        dataLocator="my-rewards-tnc"
         fontSizeVariation="medium"
         locator=""
         noLink={true}

@@ -40,7 +40,6 @@ exports[`ModuleK component renders correctly 1`] = `
         "fontWeight": "regular",
         "letterSpacing": "normal",
         "lineHeight": "normal",
-        "link": Object {},
         "textAlign": "left",
       },
       "displayName": "Styled(BodyCopy)",
@@ -56,7 +55,6 @@ exports[`ModuleK component renders correctly 1`] = `
   forwardedRef={null}
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <Styled(Row)>

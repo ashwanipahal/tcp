@@ -43,7 +43,7 @@ export const BonusPointsReadSection = ({
             fontSizeVariation="large"
             underline
             onPress={toggleBonusPointsModal}
-            data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
+            dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
             text={labels.lbl_bonus_points_detailLink}
           />
         </RightHeaderContainer>

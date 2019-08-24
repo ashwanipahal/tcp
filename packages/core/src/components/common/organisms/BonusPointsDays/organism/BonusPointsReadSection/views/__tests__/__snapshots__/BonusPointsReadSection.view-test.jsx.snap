@@ -10,7 +10,6 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -22,7 +21,6 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -35,14 +33,13 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       BONUS POINTS DAY
     </Styled(BodyCopy)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
+      dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
       fontSizeVariation="large"
       onClick={[Function]}
       underline={true}
@@ -59,7 +56,6 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     You have 1 days left

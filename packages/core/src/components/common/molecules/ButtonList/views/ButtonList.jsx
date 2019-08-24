@@ -34,7 +34,7 @@ const getImageCTA = item => {
                 title={button.title}
                 fontSizeVariation="large"
                 fontWeightVariation="active"
-                data-locator={`${dataLocatorTextCta}${index}`}
+                dataLocator={`${dataLocatorTextCta}${index}`}
               >
                 <DamImage
                   imgData={image}

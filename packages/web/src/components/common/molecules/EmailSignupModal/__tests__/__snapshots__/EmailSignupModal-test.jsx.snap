@@ -262,7 +262,6 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
-                link={Object {}}
                 textAlign="left"
               />
             </Styled(Col)>
@@ -561,7 +560,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
-                link={Object {}}
                 textAlign="left"
               />
             </Styled(Col)>
@@ -860,7 +858,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
-                link={Object {}}
                 textAlign="left"
               />
             </Styled(Col)>

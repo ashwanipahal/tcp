@@ -10,7 +10,6 @@ exports[`ColorSelectorListVanilla component ColorSelectorListVanilla component r
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -22,7 +21,6 @@ exports[`ColorSelectorListVanilla component ColorSelectorListVanilla component r
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     <ul
@@ -43,7 +41,6 @@ exports[`ColorSelectorListVanilla component ColorSelectorListVanilla component r
           key="red"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           onClick={[Function]}
           onKeyPress={[Function]}
           textAlign="left"

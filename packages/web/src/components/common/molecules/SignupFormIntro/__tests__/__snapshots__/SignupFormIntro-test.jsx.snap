@@ -42,7 +42,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -60,7 +59,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -72,7 +70,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="center"
       >
         <Styled(BodyCopy)
@@ -84,7 +81,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
         <Styled(BodyCopy)
@@ -96,7 +92,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
         <Styled(BodyCopy)
@@ -108,7 +103,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
         <Styled(BodyCopy)
@@ -120,7 +114,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="center"
         />
       </Styled(BodyCopy)>
@@ -133,7 +126,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="center"
       />
     </section>

@@ -136,7 +136,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
       </Field>
@@ -281,7 +280,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
       </Field>
@@ -487,7 +485,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
         <Styled(Anchor)
@@ -640,7 +637,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
       </Field>
@@ -846,7 +842,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           textAlign="left"
         />
         <Styled(Anchor)

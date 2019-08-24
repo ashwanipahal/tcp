@@ -19,7 +19,6 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       <Field
@@ -266,7 +265,6 @@ exports[`LoginForm component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         <Field
@@ -388,7 +386,6 @@ exports[`LoginForm component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
     </Styled(BodyCopy)>
@@ -401,7 +398,6 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="center"
     >
       <Styled(Button)
@@ -444,7 +440,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       test errror
@@ -458,7 +453,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       <Field
@@ -705,7 +699,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         <Field
@@ -827,7 +820,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
     </Styled(BodyCopy)>
@@ -840,7 +832,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="center"
     >
       <Styled(Button)

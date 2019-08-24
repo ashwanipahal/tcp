@@ -27,7 +27,7 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
           anchorVariation="primary"
           noLink
           to=""
-          data-locator="addedToBag-continueShopping"
+          dataLocator="addedToBag-continueShopping"
         >
           {labels.continueShopping}
         </Anchor>

@@ -47,7 +47,6 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
     </Styled(Col)>
@@ -70,12 +69,11 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          data-locator="checkout-header-returnToBag"
+          dataLocator="checkout-header-returnToBag"
           fontSizeVariation="medium"
           to="/bag"
           underline={true}
@@ -105,7 +103,6 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
     </Styled(Col)>

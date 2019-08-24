@@ -582,7 +582,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
           fontWeight="bold"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           tag="p"
           textAlign="left"
         />
@@ -596,7 +595,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
-          link={Object {}}
           tag="p"
           textAlign="left"
         />

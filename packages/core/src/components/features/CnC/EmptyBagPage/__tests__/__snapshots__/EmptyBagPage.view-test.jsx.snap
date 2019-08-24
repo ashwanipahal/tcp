@@ -14,7 +14,6 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
   <div
@@ -34,7 +33,6 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
     </Styled(Button)>
@@ -49,7 +47,6 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
   <Styled(BodyCopy)
@@ -62,7 +59,6 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
 </div>

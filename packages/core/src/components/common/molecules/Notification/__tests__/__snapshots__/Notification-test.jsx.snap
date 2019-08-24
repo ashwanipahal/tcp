@@ -18,7 +18,6 @@ exports[`Notification Component should render notification component with status
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
 </div>
@@ -42,7 +41,6 @@ exports[`Notification Component should render notification component with status
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
 </div>

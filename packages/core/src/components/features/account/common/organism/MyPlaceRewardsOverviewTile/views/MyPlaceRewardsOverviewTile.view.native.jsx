@@ -76,7 +76,7 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
                 fullWidth
                 centered
                 fill="WHITE"
-                data-locator="accountoverview-myplacerewardstile-startshopbtn"
+                dataLocator="accountoverview-myplacerewardstile-startshopbtn"
                 accessibilityRole="link"
                 accessibilityLabel={labels.lbl_overview_myPlaceRewardsShopNow}
                 text={labels.lbl_overview_myPlaceRewardsShopNow}

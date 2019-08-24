@@ -19,7 +19,6 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       <Styled(Row)
@@ -43,7 +42,6 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             textAlign="left"
           />
         </Styled(Col)>
@@ -87,7 +85,6 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             textAlign="left"
           />
         </Styled(Col)>
@@ -102,7 +99,6 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       <Styled(Row)
@@ -126,7 +122,6 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             textAlign="left"
           />
         </Styled(Col)>
@@ -170,7 +165,6 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             textAlign="left"
           />
         </Styled(Col)>

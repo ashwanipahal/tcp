@@ -187,7 +187,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
     </Styled(Col)>

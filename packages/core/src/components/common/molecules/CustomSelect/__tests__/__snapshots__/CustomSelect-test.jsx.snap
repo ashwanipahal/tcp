@@ -10,7 +10,6 @@ exports[`CustomSelect component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <span>
@@ -25,7 +24,6 @@ exports[`CustomSelect component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     onClick={[Function]}
     textAlign="left"
   >
@@ -44,7 +42,6 @@ exports[`CustomSelect component should renders correctly when optional fields ar
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <span>
@@ -59,7 +56,6 @@ exports[`CustomSelect component should renders correctly when optional fields ar
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     onClick={[Function]}
     textAlign="left"
   />

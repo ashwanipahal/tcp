@@ -25,7 +25,6 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       />
       <div
@@ -46,7 +45,6 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             textAlign="left"
           >
             undefined 5%
@@ -60,7 +58,6 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             textAlign="left"
           />
         </div>
@@ -85,7 +82,6 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     />
   </Styled(LabeledRadioButton)>
@@ -107,7 +103,6 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     />
   </Styled(LabeledRadioButton)>

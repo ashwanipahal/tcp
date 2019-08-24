@@ -24,7 +24,6 @@ exports[`AccountHeader Component should render correctly 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="right"
     >
       undefined test

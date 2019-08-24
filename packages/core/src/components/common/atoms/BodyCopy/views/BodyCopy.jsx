@@ -16,7 +16,6 @@ const BodyCopy = props => {
     letterSpacing,
     textAlign,
     color,
-    link,
     ...others
   } = props;
   return (
@@ -37,7 +36,6 @@ BodyCopy.defaultProps = {
   letterSpacing: 'normal',
   textAlign: 'left',
   color: 'text.primary',
-  link: {},
 };
 
 BodyCopy.propTypes = {
@@ -79,7 +77,6 @@ BodyCopy.propTypes = {
     PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),
   ]),
   dataLocator: PropTypes.string,
-  link: PropTypes.shape({}),
   /* eslint-enable */
 };
 

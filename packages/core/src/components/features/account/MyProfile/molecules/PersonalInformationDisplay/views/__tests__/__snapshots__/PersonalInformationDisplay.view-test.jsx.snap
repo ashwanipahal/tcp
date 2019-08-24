@@ -14,7 +14,6 @@ exports[`PersonalInformationDisplay should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
   <Styled(BodyCopy)
@@ -27,7 +26,6 @@ exports[`PersonalInformationDisplay should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
 </div>
@@ -47,7 +45,6 @@ exports[`PersonalInformationDisplay should render empty correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
   <Styled(BodyCopy)
@@ -60,7 +57,6 @@ exports[`PersonalInformationDisplay should render empty correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   />
 </div>

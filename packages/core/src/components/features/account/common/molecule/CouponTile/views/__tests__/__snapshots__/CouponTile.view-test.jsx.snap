@@ -10,7 +10,6 @@ exports[`CouponTile Component should render correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   <Styled(CouponIcon)
@@ -26,7 +25,6 @@ exports[`CouponTile Component should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -39,7 +37,6 @@ exports[`CouponTile Component should render correctly 1`] = `
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     />
     <Styled(BodyCopy)
@@ -52,7 +49,6 @@ exports[`CouponTile Component should render correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
        undefined

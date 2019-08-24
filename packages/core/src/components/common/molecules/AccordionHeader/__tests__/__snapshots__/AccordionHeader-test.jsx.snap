@@ -12,7 +12,6 @@ exports[`AccordionHeader component renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="lh115"
-  link={Object {}}
   onClick={[Function]}
   onKeyPress={[Function]}
   tabIndex="0"

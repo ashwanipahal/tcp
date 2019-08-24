@@ -71,7 +71,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             tag="span"
             textAlign="left"
           >
@@ -108,7 +107,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             tag="span"
             textAlign="left"
           >
@@ -137,7 +135,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             tag="span"
             textAlign="left"
           />
@@ -172,7 +169,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             tag="span"
             textAlign="left"
           >
@@ -200,7 +196,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             tag="span"
             textAlign="left"
           >
@@ -238,7 +233,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             }
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             tag="span"
             textAlign="left"
           >
@@ -268,7 +262,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
-            link={Object {}}
             tag="span"
             textAlign="left"
           >

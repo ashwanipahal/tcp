@@ -19,7 +19,6 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         Want to Earn Extra Points?
@@ -37,7 +36,6 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         Get even closer to your next reward!

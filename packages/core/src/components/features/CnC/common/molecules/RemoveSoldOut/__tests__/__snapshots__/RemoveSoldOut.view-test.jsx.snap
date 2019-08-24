@@ -14,7 +14,6 @@ exports[`RemoveSoldOut Component ItemAvailability should render correctly 1`] = 
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     />
   </div>

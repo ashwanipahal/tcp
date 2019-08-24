@@ -61,7 +61,6 @@ exports[`LoginSection component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       <Styled(BodyCopy)
@@ -73,7 +72,6 @@ exports[`LoginSection component should renders correctly 1`] = `
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="center"
       />
     </Styled(BodyCopy)>

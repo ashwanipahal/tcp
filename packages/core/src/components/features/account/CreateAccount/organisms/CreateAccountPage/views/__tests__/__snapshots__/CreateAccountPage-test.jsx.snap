@@ -32,7 +32,6 @@ exports[`Create Account Page should render correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        link={Object {}}
         textAlign="left"
       >
         <Component />

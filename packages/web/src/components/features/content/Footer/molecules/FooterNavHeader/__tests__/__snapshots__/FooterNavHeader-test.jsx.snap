@@ -13,7 +13,6 @@ exports[`FooterNavHeader component renders default footer correctly 1`] = `
   fontWeight="semibold"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   Title
@@ -43,7 +42,6 @@ exports[`FooterNavHeader component renders subheader variation correctly 1`] = `
   fontWeight="semibold"
   letterSpacing="normal"
   lineHeight="normal"
-  link={Object {}}
   textAlign="left"
 >
   Title

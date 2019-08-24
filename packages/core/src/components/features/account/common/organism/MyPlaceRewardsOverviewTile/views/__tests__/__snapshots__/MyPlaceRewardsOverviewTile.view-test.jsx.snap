@@ -20,7 +20,6 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     />
     <CouponList
@@ -34,7 +33,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         anchorVariation="button"
         buttonVariation="variable-width"
         centered={true}
-        data-locator="accountoverview-myplacerewardstile-startshopbtn"
+        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
         to="/home"
@@ -64,7 +63,6 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     />
     <CouponList

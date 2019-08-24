@@ -94,7 +94,7 @@ class PaymentItem extends React.Component<Props> {
             underline
             fontSizeVariation="large"
             noLink
-            data-locator="payment-overview-editlink"
+            dataLocator="payment-overview-editlink"
             color="gray.900"
             lineHeight="10"
           />

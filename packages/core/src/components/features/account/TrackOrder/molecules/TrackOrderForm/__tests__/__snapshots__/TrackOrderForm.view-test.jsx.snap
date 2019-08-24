@@ -15,7 +15,6 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="left"
   >
     <Field
@@ -355,12 +354,11 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      link={Object {}}
       textAlign="left"
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="track_order_need_help"
+        dataLocator="track_order_need_help"
         fontSizeVariation="medium"
         underline={true}
       />
@@ -375,7 +373,6 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
-    link={Object {}}
     textAlign="center"
   >
     <Styled(Button)
