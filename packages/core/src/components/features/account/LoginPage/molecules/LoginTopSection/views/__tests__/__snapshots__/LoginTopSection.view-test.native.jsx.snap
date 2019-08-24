@@ -2,18 +2,23 @@
 
 exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
 <View
-  labels={Object {}}
+  labels={
+    Object {
+      "login": Object {},
+    }
+  }
 >
   <Styled(ImageComp)
-    customStyle={
-      Object {
-        "alignSelf": "center",
-      }
-    }
     height={60}
     source={
       Object {
         "testUri": "../../../../core/src/assets/my-place-rewards.png",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "center",
+        "marginTop": 20,
       }
     }
     width={186}
@@ -24,6 +29,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     marginBottom={17}
     marginTop={30}
   />
+  <Styled(Text) />
   <Styled(Text) />
   <Styled(Text) />
   <Styled(Text) />

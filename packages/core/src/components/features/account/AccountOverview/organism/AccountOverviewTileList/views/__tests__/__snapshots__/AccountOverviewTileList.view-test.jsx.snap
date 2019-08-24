@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountOverviewTileList component should render correctly 1`] = `
+<Styled(Row)
+  className=" elem-pt-LRG"
+  fullBleed={true}
+>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
+  >
+    <Connect(ProfileInfoTile) />
+  </Styled(Col)>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
+  >
+    <Connect(AddressOverviewTile) />
+  </Styled(Col)>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": true,
+        "small": true,
+      }
+    }
+  >
+    <Connect(PaymentOverviewTile) />
+  </Styled(Col)>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
+  >
+    <Connect(MyPlaceRewardsOverviewTile) />
+  </Styled(Col)>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
+  >
+    <Connect(MyWalletTile) />
+  </Styled(Col)>
+</Styled(Row)>
+`;

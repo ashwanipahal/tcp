@@ -9,28 +9,55 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       "labelledby": "undefined",
     }
   }
-  className="TCPModal__Content, "
   closeIconDataLocator="added-to-bg-close"
-  fixedWidth={true}
   headingAlign="left"
   isOpen={[Function]}
   onRequestClose={[Function]}
-  overlayClassName="TCPModal__Overlay"
 >
   <Styled(View)>
-    <Styled(ProductInformation)
-      data={Object {}}
-      labels={Object {}}
-    />
-    <Connect(AddedToBagViewPointsContainer)
-      labels={Object {}}
-    />
-    <AddedToBagActions
-      labels={Object {}}
-    />
-    <Styled(BossBanner)
-      labels={Object {}}
-    />
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        color="black"
+        fontSize="fs16"
+        fontWeight="semibold"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(ProductInformation)
+        data={Object {}}
+        labels={Object {}}
+        quantity=""
+      />
+      <Connect(AddedToBagViewPointsContainer)
+        labels={Object {}}
+      />
+      <AddedToBagActions
+        labels={Object {}}
+        showAddTobag={true}
+      />
+      <Styled(BossBanner)
+        labels={Object {}}
+      />
+      <Styled(View)>
+        <Styled(Anchor)
+          anchorVariation="primary"
+          customStyle={Object {}}
+          data-locator="addedToBag-continueShopping"
+          fontSizeVariation="medium"
+          locator=""
+          noLink={true}
+          text=""
+          to=""
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
+    </Styled(View)>
   </Styled(View)>
 </ModalNative>
 `;

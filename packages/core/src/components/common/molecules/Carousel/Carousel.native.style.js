@@ -17,19 +17,57 @@ export const Touchable = styled.TouchableOpacity`
 
 export const TouchableView = styled.TouchableOpacity`
   align-items: center;
+  width: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const Icon = styled.Image`
   width: 6px;
   height: 10px;
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const Container = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 `;
 
-export default { Touchable, TouchableView, Icon, Container };
+export const ControlsWrapper = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+`;
+
+export const ControlsWrapperLeft = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  margin-left: 20px;
+`;
+
+export const ControlsWrapperRight = styled.View`
+  flex-direction: row;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+`;
+
+export const PlayPauseButtonView = styled.View`
+  width: 30px;
+`;
+
+export const PaginationWrapper = styled.View`
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export default {
+  Touchable,
+  TouchableView,
+  Icon,
+  Container,
+  PaginationWrapper,
+  ControlsWrapperLeft,
+  ControlsWrapperRight,
+};

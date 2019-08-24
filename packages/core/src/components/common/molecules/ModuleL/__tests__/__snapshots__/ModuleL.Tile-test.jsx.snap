@@ -3,7 +3,6 @@
 exports[`ModuleL Header component renders correctly 1`] = `
 <Styled(Anchor)
   class=""
-  data-locator="moduleL_tiles_NaN"
   external={0}
   target=""
   text="Shop Unicorns & Friends"
@@ -12,7 +11,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
 >
   <Styled(Row)>
     <Styled(Col)
-      className="moduleL__tile"
+      className="moduleL__tile moduleL__red"
       colSize={
         Object {
           "large": 12,
@@ -20,6 +19,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           "small": 6,
         }
       }
+      data-locator="moduleL_tiles_NaN"
     >
       <WithTheme(DamImage)
         className="moduleL__tile-image"

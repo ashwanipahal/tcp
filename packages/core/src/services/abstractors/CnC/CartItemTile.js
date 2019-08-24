@@ -3,11 +3,120 @@
 /* eslint-disable */
 
 import { executeStatefulAPICall } from '../../handler';
+import { parseDate, compareDate } from '../../../utils/parseDate';
 import endpoints from '../../endpoints';
+import {
+  parseBoolean,
+  extractPrioritizedBadge,
+  getDateInformation,
+  getCartProductAttributes,
+} from '../../../utils/badge.util';
+import {
+  responseContainsErrors,
+  ServiceResponseError,
+  getFormattedError,
+} from '../../../utils/errorMessage.util';
+
+const ORDER_ITEM_TYPE = {
+  BOSS: 'BOSS',
+  BOPIS: 'BOPIS',
+  ECOM: 'ECOM',
+};
+
+export const AVAILABILITY = {
+  OK: 'OK',
+  SOLDOUT: 'SOLDOUT',
+  UNAVAILABLE: 'UNAVAILABLE',
+  SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+};
+
+export const COUPON_STATUS = {
+  AVAILABLE: 'available',
+  EXPIRING_SOON: 'expiration-limit',
+  APPLYING: 'applying',
+  APPLIED: 'applied',
+  PENDING: 'pending',
+  REMOVING: 'removing',
+};
+
+export const BUTTON_LABEL_STATUS = {
+  APPLY: 'APPLY',
+  REMOVE: 'REMOVE',
+};
+
+export const COUPON_REDEMPTION_TYPE = {
+  PUBLIC: 'public',
+  WALLET: 'wallet',
+  REWARDS: 'rewards',
+  SAVING: 'saving',
+  LOYALTY: 'LOYALTY',
+  PLACECASH: 'PLACECASH',
+  PC: 'PLACECASH',
+};
+
+/**
+ * @function constructDateFormat This function creates the date in DD/MM/YY format
+ * @param date {Object} The date to be worked on.
+ * @return {String} The date in required format.
+ */
+
+const constructDateFormat = date => {
+  return `${date.getMonth() + 1}/${date.getDate()}/${date
+    .getFullYear()
+    .toString()
+    .substr(-2)}`;
+};
+
+const getCouponType = promotionType => {
+  switch (promotionType) {
+    case 'PC':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'PLACECASH':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'LOYALTY':
+      return COUPON_REDEMPTION_TYPE.REWARDS;
+    case 'OTHERS':
+      return COUPON_REDEMPTION_TYPE.SAVING;
+    default:
+      return COUPON_REDEMPTION_TYPE.SAVING;
+  }
+};
 
 export const getProductSkuInfoByUnbxd = item => {
   // calling unbxd API logic is written in CartItemTile.saga.js, needs to move it in this abstractor, as of now getting result from saga and formatting it here.
 };
+
+export const imageGenerator = (id, excludeExtension) => {
+  return {
+    colorSwatch: getSwatchImgPath(id, excludeExtension),
+    productImages: getProductImgPath(id, excludeExtension),
+  };
+};
+
+export const getSwatchImgPath = (id, excludeExtension) => {
+  return `/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${excludeExtension ? '' : '.jpg'}`;
+};
+
+export const getProductImgPath = (id, excludeExtension) => {
+  return {
+    125: `/wcsstore/GlobalSAS/images/tcp/products/125/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `/wcsstore/GlobalSAS/images/tcp/products/380/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
+  };
+};
+
+// NOTE: (DT-19681) LOYALTY/PLACECASH/OTHERS
+export function getPromotionType(promotionType) {
+  switch (promotionType) {
+    case 'PC':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'LOYALTY':
+      return COUPON_REDEMPTION_TYPE.LOYALTY;
+    default:
+      return COUPON_REDEMPTION_TYPE.PUBLIC;
+  }
+}
 
 export const removeItem = orderItemId => {
   let orderItems = [];
@@ -17,14 +126,14 @@ export const removeItem = orderItemId => {
       quantity: '0',
     });
   } else {
-    orderItems = Object.keys(orderItemId).map(index => {
-      return {
-        orderItemId: orderItemId[index],
+    for (let value of orderItemId.values()) {
+      orderItems.push({
+        orderItemId: value,
         quantity: '0',
-      };
-    });
+      });
+    }
   }
-  let payload = {
+  const payload = {
     body: {
       orderItem: orderItems,
     },
@@ -43,8 +152,8 @@ export const removeItem = orderItemId => {
 };
 
 export const updateItem = payloadData => {
-  let { itemId, skuId, quantity, itemPartNumber, variantNo } = payloadData;
-  let payload = {
+  const { itemId, skuId, quantity, itemPartNumber, variantNo } = payloadData;
+  const payload = {
     body: {
       orderItem: [
         {
@@ -69,31 +178,46 @@ export const updateItem = payloadData => {
   });
 };
 
-export const getOrderDetailsData = () => {
-  const payload = {
-    webService: endpoints.getOrderDetails,
-    header: {
-      catalogId: 10551,
-      storeId: 10151,
-      calc: true,
-      pageName: 'fullOrderInfo',
-      langId: -1,
-      recalculate: true,
-    },
-  };
-
-  return executeStatefulAPICall(payload).then(res => {
-    if (!res.body) {
-      throw new Error('res body is null');
-      // TODO - Set API Helper to filter if error exists in response
-    }
-
-    const orderDetailsResponse = res.body;
-
-    return {
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
-    };
+/**
+ * @function constructCouponStructure This function parses the coupons got from API
+ *                                    to the desired format to be used by FE code
+ * @param cpnArray {Array} The array of offers available with user.
+ * @return coupons {Array} Array of coupons with each coupons object in desired format.
+ */
+export const constructCouponStructure = cpnArray => {
+  const now = new Date();
+  const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+  const expirationThreshold = 7;
+  const coupons = [];
+  cpnArray.forEach(itm => {
+    const startDate = parseDate(itm.validFrom);
+    const endDate = parseDate(itm.validTo);
+    const isPlaceCash =
+      itm.offerType === COUPON_REDEMPTION_TYPE.PLACECASH || itm.offerType === 'PC';
+    const isExpiring =
+      Math.round(Math.abs((endDate.getTime() - now.getTime()) / oneDay)) <= expirationThreshold;
+    coupons.push({
+      id: itm.offerCode.toUpperCase(),
+      status: itm.isApplied ? COUPON_STATUS.APPLIED : COUPON_STATUS.AVAILABLE,
+      labelStatus: itm.isApplied ? BUTTON_LABEL_STATUS.REMOVE : BUTTON_LABEL_STATUS.APPLY,
+      isExpiring,
+      title: itm.offerText,
+      detailsOpen: false,
+      expirationDate: constructDateFormat(endDate),
+      effectiveDate: constructDateFormat(startDate),
+      details: itm.offerDescription,
+      legalText: itm.legalText,
+      isStarted: isPlaceCash ? compareDate(now, startDate) : true,
+      offerType: getCouponType(itm.offerType),
+      // imageThumbUrl: getCouponImageThumb(itm.offerType),
+      // imageUrl: getCouponImage(itm.offerType),
+      error: '',
+      redemptionType: COUPON_REDEMPTION_TYPE[itm.offerType],
+      promotionType: getPromotionType(itm.offerType),
+      expirationDateTimeStamp: endDate,
+    });
   });
+  return coupons;
 };
 
 export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems, isCanada) => {
@@ -102,7 +226,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   let pickUpAlternative = {};
   // replaced "BOPIS" with a config variable
   // Check if order is of pickup type instead of just BOPIS
-  let pickupOrder =
+  const pickupOrder =
     orderDetailsResponse.mixOrderDetails &&
     orderDetailsResponse.mixOrderDetails.data &&
     orderDetailsResponse.mixOrderDetails.data.find(
@@ -110,14 +234,14 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     );
   // show pickup address for both BOSS and BOPIS
   if (pickupOrder) {
-    let address = pickupOrder.shippingAddressDetails || {};
+    const address = pickupOrder.shippingAddressDetails || {};
     pickUpContact = {
       firstName: address.firstName,
       lastName: address.lastName,
       emailAddress: address.email1,
       phoneNumber: address.phone1,
     };
-    let pickUpAltName = address.altName || '';
+    const pickUpAltName = address.altName || '';
     pickUpAlternative = {
       firstName: pickUpAltName.substr(0, pickUpAltName.indexOf(' ')),
       lastName: pickUpAltName.substr(pickUpAltName.indexOf(' ') + 1).trim(),
@@ -129,12 +253,12 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   let smsInfo = {};
   let shippingTotal = undefined; // eslint-disable-line no-undef-init
   if (orderDetailsResponse.mixOrderDetails && orderDetailsResponse.mixOrderDetails.data) {
-    let orderShippingElement = orderDetailsResponse.mixOrderDetails.data.find(
+    const orderShippingElement = orderDetailsResponse.mixOrderDetails.data.find(
       // replaced "ECOM" with a config variable
       element => element.orderType === 'ECOM'
     );
     if (orderShippingElement && orderShippingElement.shippingAddressDetails) {
-      let orderShippingInfo = orderShippingElement.shippingAddressDetails;
+      const orderShippingInfo = orderShippingElement.shippingAddressDetails;
       if (orderShippingInfo.addressId) {
         // orderDetailsResponse.finalShippingCharge may contain garbage that should be ignored if we have no shipping addressId
         shippingTotal = flatCurrencyToCents(orderDetailsResponse.finalShippingCharge);
@@ -166,8 +290,8 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   shipping.emailSignup =
     orderDetailsResponse.mixOrderDetails &&
     orderDetailsResponse.mixOrderDetails.marketingPromoBox === '1';
-  let giftWrapItem = orderDetailsResponse.orderItems.find(item => item.giftOptions);
-  let giftWrap = !giftWrapItem
+  const giftWrapItem = orderDetailsResponse.orderItems.find(item => item.giftOptions);
+  const giftWrap = !giftWrapItem
     ? {}
     : {
         optionId: giftWrapItem.itemCatentryId.toString(),
@@ -176,8 +300,8 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
 
   let stateTax = -1;
   if (orderDetailsResponse.salesTax && orderDetailsResponse.salesTax.salesTax) {
-    for (let country in orderDetailsResponse.salesTax.salesTax) {
-      for (let state in orderDetailsResponse.salesTax.salesTax[country]) {
+    for (const country in orderDetailsResponse.salesTax.salesTax) {
+      for (const state in orderDetailsResponse.salesTax.salesTax[country]) {
         if (stateTax === -1) {
           stateTax = 0;
         }
@@ -186,7 +310,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
       }
     }
   }
-  //When brierley fails, backend returns -1 in these fields
+  // When brierley fails, backend returns -1 in these fields
   if (orderDetailsResponse.pointsToNextReward === -1) {
     orderDetailsResponse.pointsToNextReward = null;
   }
@@ -194,7 +318,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     orderDetailsResponse.userPoints = null;
   }
 
-  let usersOrder = {
+  const usersOrder = {
     orderId: orderDetailsResponse.parentOrderId,
     totalItems: excludeCartItems ? null : 0,
     appliedGiftCards: [],
@@ -202,7 +326,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     savingsTotal: Math.abs(flatCurrencyToCents(orderDetailsResponse.orderDiscountAmount) || 0),
     couponsTotal: 0,
     giftCardsTotal: flatCurrencyToCents(orderDetailsResponse.totalGiftCardAmount || 0),
-    shippingTotal: shippingTotal,
+    shippingTotal,
     totalTax:
       stateTax > -1 ? flatCurrencyToCents(orderDetailsResponse.shippingTax) + stateTax : undefined,
     grandTotal: flatCurrencyToCents(orderDetailsResponse.grandTotal),
@@ -217,12 +341,12 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     pointsToNextReward: orderDetailsResponse.pointsToNextReward || 0,
     totalOrderSavings: flatCurrencyToCents(orderDetailsResponse.orderTotalSaving || 0),
     checkout: {
-      pickUpContact: pickUpContact,
-      pickUpAlternative: pickUpAlternative,
-      shipping: shipping,
+      pickUpContact,
+      pickUpAlternative,
+      shipping,
       billing: {},
-      giftWrap: giftWrap,
-      smsInfo: smsInfo,
+      giftWrap,
+      smsInfo,
     },
     orderItems: [],
     stores: [],
@@ -236,8 +360,8 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   }
 
   if (orderDetailsResponse.orderLevelPromos && orderDetailsResponse.orderLevelPromos.explicit) {
-    for (let item of orderDetailsResponse.orderLevelPromos.explicit) {
-      for (let promoCode in item) {
+    for (const item of orderDetailsResponse.orderLevelPromos.explicit) {
+      for (const promoCode in item) {
         usersOrder.couponsTotal += Math.abs(flatCurrencyToCents(item[promoCode].price));
       }
     }
@@ -251,7 +375,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     usersOrder.savingsTotal = 0;
   }
   if (orderDetailsResponse.giftCardDetails) {
-    for (let giftCard of orderDetailsResponse.giftCardDetails) {
+    for (const giftCard of orderDetailsResponse.giftCardDetails) {
       usersOrder.appliedGiftCards.push({
         id: giftCard.piId,
         onFileCardId: giftCard.creditCardId.toString(),
@@ -266,14 +390,14 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   // Not sure why payment information is in mixOrderPaymentDetails AND paymentsList...
   // Backend will clear out mixOrderPaymentDetails array if the payment method is inactive in the DB
   // If mixOrderPaymentDetails is empty we should not save billing details and show error message
-  let mixOrderPaymentDetails = orderDetailsResponse.mixOrderPaymentDetails;
+  const { mixOrderPaymentDetails } = orderDetailsResponse;
   if (mixOrderPaymentDetails && mixOrderPaymentDetails.length > 0) {
-    for (let payment of orderDetailsResponse.paymentsList) {
+    for (const payment of orderDetailsResponse.paymentsList) {
       if (payment.cardType !== 'GC') {
         // CC or PayPal
-        let billingAddress = payment.billingAddressDetails;
-        let billingFirstName = (billingAddress.customerName || '').match(/(\w+)/);
-        let billingLastName = (billingAddress.customerName || '').match(/(\w+)$/);
+        const billingAddress = payment.billingAddressDetails;
+        const billingFirstName = (billingAddress.customerName || '').match(/(\w+)/);
+        const billingLastName = (billingAddress.customerName || '').match(/(\w+)$/);
         let paymentMethod = '';
         switch (payment.cardType) {
           case 'PayPal':
@@ -327,10 +451,10 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     orderDetailsResponse.mixOrderDetails &&
     orderDetailsResponse.mixOrderDetails.data
   ) {
-    for (let store of orderDetailsResponse.mixOrderDetails.data) {
+    for (const store of orderDetailsResponse.mixOrderDetails.data) {
       if (store.orderType !== 'ECOM') {
         usersOrder.stores.push({
-          stLocId: store.shippingAddressDetails.stLocId,
+          stLocId: store.shippingAddressDetails.stLocId || '',
           itemsCount: store.itemsCount,
           storeName: capitalize(store.shippingAddressDetails.storeName),
           orderType: store.orderType,
@@ -347,11 +471,11 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
             zipCode: store.shippingAddressDetails.zipCode,
           },
           bossStartDate:
-            store.orderType === config.ORDER_ITEM_TYPE.BOSS
+            store.orderType === ORDER_ITEM_TYPE.BOSS
               ? getDateInformation(store.shippingAddressDetails.bossMinDate, false)
               : null,
           bossEndDate:
-            store.orderType === config.ORDER_ITEM_TYPE.BOSS
+            store.orderType === ORDER_ITEM_TYPE.BOSS
               ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false)
               : null,
           storeHours: store.shippingAddressDetails.storeHours,
@@ -361,15 +485,15 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     }
   }
 
-  for (let item of orderDetailsResponse.orderItems) {
-    let sizeAndFit = item.productInfo.itemsAttributes[item.itemCatentryId.toString()];
-    //When brierley fails, backend returns -1
+  for (const item of orderDetailsResponse.orderItems) {
+    const sizeAndFit = item.productInfo.itemsAttributes[item.itemCatentryId.toString()];
+    // When brierley fails, backend returns -1
     if (item.itemPoints === -1) {
       item.itemPoints = null;
     }
     // making pickup page visible for BOSS items as well
     // replaced "BOPIS" and "BOSS" with a config variable
-    let store =
+    const store =
       (item.orderItemType === 'BOPIS' || item.orderItemType === 'BOSS') &&
       item.stLocId &&
       orderDetailsResponse.mixOrderDetails &&
@@ -384,14 +508,14 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     if (!item.giftOptions) {
       usersOrder.totalItems += parseInt(item.qty);
 
-      /*let {
-        todayOpeningTime,
-        todayClosingTime,
-        tomorrowOpeningTime,
-        tomorrowClosingTime
-      } = parseStoreOpeningAndClosingTimes(store);*/
+      /* let {
+todayOpeningTime,
+todayClosingTime,
+tomorrowOpeningTime,
+tomorrowClosingTime
+} = parseStoreOpeningAndClosingTimes(store);*/
 
-      let isGiftCard = item.giftItem;
+      const isGiftCard = item.giftItem;
       usersOrder.orderItems.push({
         productInfo: {
           generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
@@ -401,7 +525,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           itemPartNumber: item.itemPartNumber,
           variantNo: item.variantNo,
           name: sanitizeEntity(item.productInfo.productName),
-          //imagePath: imageGenerator(item.productInfo.productPartNumber).productImages[500],
+          imagePath: imageGenerator(item.productInfo.productPartNumber).productImages[500],
           upc: item.itemPartNumber,
           size: sizeAndFit ? sizeAndFit.TCPSize : item.itemUnitDstPrice, // giftCard Size is its price
           fit: sizeAndFit ? sizeAndFit.TCPFit : null, // no fit for gift cards
@@ -410,12 +534,13 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
             name: item.productInfo.productColor
               ? item.productInfo.productColor
               : item.productInfo.productName,
-            //imagePath: imageGenerator(item.productInfo.productThumbnail).colorSwatch
+            // imagePath: imageGenerator(item.productInfo.productThumbnail).colorSwatch
           },
-          isGiftCard: isGiftCard,
+          isGiftCard,
           colorFitSizeDisplayNames: isGiftCard ? { color: 'Design', size: 'Value' } : EMPTY_OBJECT,
           // added to read type of order for the item
           orderType: item.orderItemType,
+          itemBrand: item.itemBrand,
         },
         itemInfo: {
           quantity: parseInt(item.qty),
@@ -425,7 +550,9 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
           listPrice: flatCurrencyToCents(item.itemPrice),
+          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
+          unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
           salePrice: isCanada
             ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
@@ -433,10 +560,12 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
         },
         miscInfo: {
           // clearanceItem: this.apiHelper.configOptions.isUSStore ? item.productInfo.itemTCPProductIndUSStore === 'Clearance' : item.productInfo.itemTCPProductIndCanadaStore === 'Clearance',
-          //isOnlineOnly: (this.apiHelper.configOptions.isUSStore ? (Boolean(parseInt(item.productInfo.webOnlyFlagUSStore))) : (Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore)))),
+          isOnlineOnly: true
+            ? Boolean(parseInt(item.productInfo.webOnlyFlagUSStore))
+            : Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore)),
           isBopisEligible: !parseBoolean(orderDetailsResponse.bopisIntlField),
           isBossEligible: deriveBossEligiblity(item, orderDetailsResponse),
-          //badge: extractPrioritizedBadge(item.productInfo, getProductAttributes()),
+          badge: extractPrioritizedBadge(item.productInfo, getCartProductAttributes()),
           // onlineInventoryAvailable: item.inventoryAvail,
 
           // TODO: cleanup structure
@@ -455,14 +584,20 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
             : null,
           // making store details visible for both BOSS and BOPIS
           storePhoneNumber: store ? (store.shippingAddressDetails.phone1 || '').trim() : null,
-          //storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
-          //storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
+          // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
+          // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
 
-          //availability: deriveItemAvailability(orderDetailsResponse, item, store),
+          availability: deriveItemAvailability(orderDetailsResponse, item, store),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
-          // bossStartDate: item.orderItemType === config.ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMinDate, false) : null,
-          //bossEndDate: item.orderItemType === config.ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false) : null,
+          bossStartDate:
+            item.orderItemType === ORDER_ITEM_TYPE.BOSS
+              ? getDateInformation(store.shippingAddressDetails.bossMinDate, false)
+              : null,
+          bossEndDate:
+            item.orderItemType === ORDER_ITEM_TYPE.BOSS
+              ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false)
+              : null,
           // shows number of items from the store
           storeItemsCount: store ? +store.itemsCount : 0,
           orderItemType: item.orderItemType && item.orderItemType.toUpperCase(),
@@ -489,6 +624,69 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   return usersOrder;
 };
 
+export const getOrderDetailsData = () => {
+  const payload = {
+    webService: endpoints.getOrderDetails,
+    header: {
+      calc: true,
+      pageName: 'fullOrderInfo',
+      langId: -1,
+      recalculate: true,
+    },
+  };
+
+  return executeStatefulAPICall(payload).then(res => {
+    if (!res.body) {
+      throw new Error('res body is null');
+      // TODO - Set API Helper to filter if error exists in response
+    }
+
+    const orderDetailsResponse = res.body;
+
+    return {
+      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
+    };
+  });
+};
+
+export const getCartData = ({
+  calcsEnabled,
+  excludeCartItems,
+  recalcRewards,
+  isCanada,
+  isCheckoutFlow,
+}) => {
+  const payload = {
+    webService: endpoints.fullDetails,
+    header: {
+      pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      langId: -1,
+      source: '',
+      calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
+      recalculate: !!recalcRewards,
+    },
+  };
+
+  return executeStatefulAPICall(payload).then(res => {
+    if (!res.body) {
+      throw new Error('res body is null');
+      // TODO - Set API Helper to filter if error exists in response
+    }
+
+    const orderDetailsResponse =
+      res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
+    const coupons = isCheckoutFlow
+      ? res.body.coupons
+      : res.body.coupons &&
+        res.body.coupons.offers &&
+        constructCouponStructure(res.body.coupons.offers);
+    return {
+      coupons,
+      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, excludeCartItems, isCanada),
+    };
+  });
+};
+
 export const flatCurrencyToCents = currency => {
   try {
     return parseFloat(parseFloat(currency.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]).toFixed(2));
@@ -496,20 +694,22 @@ export const flatCurrencyToCents = currency => {
     throw new Error(e);
   }
 };
+
 export const capitalize = string => {
   return string.replace(/\b\w/g, l => l.toUpperCase());
 };
+
 export const toTimeString = est => {
   let hh = est.getHours();
   let mm = est.getMinutes();
-  let ampm = hh >= 12 ? ' pm' : ' am';
-  hh = hh % 12;
+  const ampm = hh >= 12 ? ' pm' : ' am';
+  hh %= 12;
   hh = hh > 0 ? hh : 12;
-  mm = mm < 10 ? '0' + mm : mm;
+  mm = mm < 10 ? `0${mm}` : mm;
   if (hh === 11 && mm === 59 && ampm === ' pm') {
     return 'Midnight';
   }
-  return hh + ':' + mm + ampm;
+  return `${hh}:${mm}${ampm}`;
 };
 
 export const sanitizeEntity = string => {
@@ -536,21 +736,62 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
   );
 };
 
-// partially copied
-export const getProductAttributes = () => {
-  return {
-    onlineOnly: 'webOnlyFlagUSStore',
-    clearance: 'itemTCPProductIndUSStore',
-    glowInTheDark: 'itemTCPGlowInDarkUSStore',
-    limitedQuantity: 'inventoryMessageUSStore',
-  };
+export const deriveItemAvailability = (orderDetails, item, store) => {
+  const isUsOrder = orderDetails.currencyCode === 'USD';
+  const isCaOrder = orderDetails.currencyCode !== 'USD';
+  const isStoreBOSSEligible = true;
+  if (
+    (isUsOrder && item.productInfo.articleOOSUS) ||
+    (isCaOrder && item.productInfo.articleOOSCA)
+  ) {
+    return AVAILABILITY.SOLDOUT;
+  } else if (
+    item.orderItemType === ORDER_ITEM_TYPE.BOPIS &&
+    item.stLocId &&
+    !parseBoolean(orderDetails.bopisIntlField)
+  ) {
+    return AVAILABILITY.OK;
+  } else if (
+    item.orderItemType === ORDER_ITEM_TYPE.BOSS &&
+    item.stLocId &&
+    (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible)
+  ) {
+    /**
+     * Adding new check to return status unavailable
+     * in case of boss store ineligible or boss international order
+     */
+    return AVAILABILITY.UNAVAILABLE;
+  } else if (item.inventoryAvail > 0) {
+    // inventory check for BOSS and ECOM
+    return AVAILABILITY.OK;
+  } else {
+    return AVAILABILITY.UNAVAILABLE;
+  }
 };
 
-export const parseBoolean = bool => {
-  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+export const getUnqualifiedItems = () => {
+  let payload = {
+    webService: endpoints.getUnqualifiedItems,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then((res = { body: {} }) => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      const {
+        body: { orderItemList = [] },
+      } = res;
+      return orderItemList.map(item => item.orderItemId.toString());
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
 };
 
 export default {
   getOrderDetailsData,
   removeItem,
+  getCartData,
+  getUnqualifiedItems,
 };

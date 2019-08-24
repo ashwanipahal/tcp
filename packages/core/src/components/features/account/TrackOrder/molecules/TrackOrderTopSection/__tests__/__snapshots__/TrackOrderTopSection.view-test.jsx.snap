@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderTopSection component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={Object {}}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="trackorder__modal__overlayheading"
+    color="text.primary"
+    component="h2"
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="extrabold"
+    id="trackorder__modal__heading"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="trackorder__modal__overlaysubheading"
+    color="text.primary"
+    component="p"
+    data-locator="trackordermodal-overlaysubheading"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    id="trackorder__modal__subheading"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  />
+</Styled(BodyCopy)>
+`;

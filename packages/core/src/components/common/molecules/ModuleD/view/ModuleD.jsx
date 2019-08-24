@@ -1,17 +1,18 @@
 // @flow
 import React from 'react';
 import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
-import { Grid, LinkText } from '../..';
+import { Grid, LinkText, PromoBanner } from '../..';
 import config from '../config';
 import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 type Props = {
   className: string,
-  headerText: Object,
-  smallCompImage: Object,
+  headerText: Array<Object>,
+  promoBanner: Array<Object>,
+  smallCompImage: Array<Object>,
   singleCTAButton: Object,
 };
 
@@ -43,9 +44,10 @@ const ignoreGutter = [
 ];
 
 const ModuleD = (props: Props) => {
-  const { className, headerText, smallCompImage, singleCTAButton } = props;
+  const { className, headerText, promoBanner, smallCompImage, singleCTAButton } = props;
   let colSize;
   let imgDataConfig;
+  const checkPromo = promoBanner && promoBanner.length;
 
   if (smallCompImage && smallCompImage.length === 2) {
     colSize = colSize2Elements;
@@ -63,12 +65,19 @@ const ModuleD = (props: Props) => {
         <LinkText
           headerText={headerText}
           headingClass="moduleD_header"
-          component="div"
-          fontSize={['fs32', 'fs48']}
-          lineHeight="lh107"
-          fontWeight="black"
+          component="h2"
+          type="heading"
           textAlign="center"
           dataLocator="moduleD_headerlink"
+          promo={checkPromo}
+        />
+      )}
+      {checkPromo && (
+        <PromoBanner
+          promoBanner={promoBanner}
+          className="moduleD__promo-banner"
+          fontSize="fs48"
+          data-locator={getLocator('moduleD_promobanner')}
         />
       )}
       <Row centered>
@@ -92,7 +101,7 @@ const ModuleD = (props: Props) => {
                     >
                       <DamImage
                         className="moduleD_image"
-                        data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
+                        data-locator={`${getLocator('moduleD_image')}${index + 1}`}
                         imgConfigs={imgDataConfig}
                         imgData={item.image}
                       />
@@ -106,7 +115,7 @@ const ModuleD = (props: Props) => {
                       to={item.link.url}
                       target={item.link.target}
                       title={item.link.title}
-                      dataLocator={`${getLocator('moduleD_textlink')}_${index + 1}`}
+                      dataLocator={`${getLocator('moduleD_textlink')}${index + 1}`}
                     >
                       {item.link.text}
                     </Anchor>
@@ -122,10 +131,9 @@ const ModuleD = (props: Props) => {
             <Button
               buttonVariation="variable-width"
               className="moduleD_button"
-              title={singleCTAButton.title}
               data-locator={getLocator('moduleD_button')}
             >
-              {singleCTAButton.title}
+              {singleCTAButton.text}
             </Button>
           </Anchor>
         </Row>
@@ -134,5 +142,5 @@ const ModuleD = (props: Props) => {
   );
 };
 
-export default errorBoundary(withStyles(ModuleD, style));
+export default withStyles(errorBoundary(ModuleD), style);
 export { ModuleD as ModuleDVanilla };

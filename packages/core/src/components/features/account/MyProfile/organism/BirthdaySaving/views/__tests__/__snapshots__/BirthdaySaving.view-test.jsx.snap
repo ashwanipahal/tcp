@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdaySaving component should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaTitle="ADD BIRTHDAY INFO"
+  dataLocator="pi-addbirthdayinfo"
+  title="Birthday Savings"
+>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          dataLocator="pi-addbirthdayinfo"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          textAlign="left"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(BodyCopy)>
+</Styled(AccountOverviewTile)>
+`;

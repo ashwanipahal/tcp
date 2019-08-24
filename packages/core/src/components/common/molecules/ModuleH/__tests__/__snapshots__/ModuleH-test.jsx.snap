@@ -203,11 +203,12 @@ exports[`ModuleH component renders correctly 1`] = `
       }
     }
   >
-    <errorBoundaryComponent
+    <Styled(Carousel)
       carouselConfig={
         Object {
           "autoplay": true,
-          "dataLocator": "moduleH_play_button",
+          "dataLocatorPause": "moduleH_pause_button",
+          "dataLocatorPlay": "moduleH_play_button",
           "type": "light",
         }
       }
@@ -231,7 +232,7 @@ exports[`ModuleH component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        data-locator="moduleH_composite_image_1"
+        data-locator="moduleH_composite_image__1"
         imgConfigs={
           Array [
             "c_fill,g_face,q_80,h_425,w_375",
@@ -249,7 +250,7 @@ exports[`ModuleH component renders correctly 1`] = `
         key="0"
       />
       <WithTheme(DamImage)
-        data-locator="moduleH_composite_image_2"
+        data-locator="moduleH_composite_image__2"
         imgConfigs={
           Array [
             "c_fill,g_face,q_80,h_425,w_375",
@@ -267,7 +268,7 @@ exports[`ModuleH component renders correctly 1`] = `
         key="1"
       />
       <WithTheme(DamImage)
-        data-locator="moduleH_composite_image_3"
+        data-locator="moduleH_composite_image__3"
         imgConfigs={
           Array [
             "c_fill,g_face,q_80,h_425,w_375",
@@ -285,7 +286,7 @@ exports[`ModuleH component renders correctly 1`] = `
         key="2"
       />
       <WithTheme(DamImage)
-        data-locator="moduleH_composite_image_4"
+        data-locator="moduleH_composite_image__4"
         imgConfigs={
           Array [
             "c_fill,g_face,q_80,h_425,w_375",
@@ -303,7 +304,7 @@ exports[`ModuleH component renders correctly 1`] = `
         key="3"
       />
       <WithTheme(DamImage)
-        data-locator="moduleH_composite_image_5"
+        data-locator="moduleH_composite_image__5"
         imgConfigs={
           Array [
             "c_fill,g_face,q_80,h_425,w_375",
@@ -320,7 +321,7 @@ exports[`ModuleH component renders correctly 1`] = `
         }
         key="4"
       />
-    </errorBoundaryComponent>
+    </Styled(Carousel)>
   </Styled(Col)>
 </StyledComponent>
 `;

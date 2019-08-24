@@ -4,13 +4,7 @@ import styled from 'styled-components';
 const styles = StyleSheet.create({
   firstIconFinalState: {
     bottom: 90,
-    left: '-90%',
-    position: 'absolute',
-  },
-  iconInitialState: {
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+    right: 20,
   },
   logo: {
     borderRadius: 35,
@@ -24,13 +18,20 @@ const styles = StyleSheet.create({
   },
   secondIconFinalState: {
     bottom: 90,
-    position: 'absolute',
-    right: '-130%',
+    left: 20,
   },
 });
 
-const Container = styled.View`
-  left: -20px;
+const Container = styled.TouchableOpacity`
+  align-items: flex-end;
+  background: transparent;
+  bottom: 0;
+  flex-direction: row;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 `;
 
 export { styles, Container };

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemAvailability Component ItemAvailability should render correctly 1`] = `
+<Fragment>
+  <div
+    className=""
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="error"
+          component="span"
+          ffontFamily="secondary"
+          fontFamily="primary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          textAlign="left"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="error"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          textAlign="left"
+        >
+          Choose different product
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</Fragment>
+`;

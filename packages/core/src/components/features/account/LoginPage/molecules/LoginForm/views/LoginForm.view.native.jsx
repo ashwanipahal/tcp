@@ -3,8 +3,9 @@ import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { FormStyle, DescriptionStyle } from '../styles/LoginForm.style.native';
+import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -12,6 +13,8 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+
+const colorPallete = createThemeColorPalette();
 
 const styles = {
   loginButtonStyle: {
@@ -25,6 +28,7 @@ const styles = {
   forgotPasswordStyle: {
     marginTop: 10,
   },
+
   inputCheckBoxStyle: {
     width: '90%',
   },
@@ -35,102 +39,134 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-export const LoginForm = props => {
-  const { labels, handleSubmit, onSubmit } = props;
 
-  return (
-    <View {...props}>
-      <Field
-        label={labels.ACC_LBL_LOGIN_EMAIL}
-        name="emailAddress"
-        id="emailAddress"
-        type="text"
-        component={TextBox}
-        dataLocator="emailAddress"
-      />
-      <Field
-        label={labels.ACC_LBL_LOGIN_PASSWORD}
-        name="password"
-        id="password"
-        type="text"
-        component={TextBox}
-        dataLocator="password"
-        secureTextEntry
-      />
-      <View style={styles.inputCheckBoxStyle}>
+class LoginForm extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: 'password',
+    };
+  }
+
+  showForgotPassword = () => {
+    const { showForgotPasswordForm, resetForm } = this.props;
+    resetForm();
+    showForgotPasswordForm();
+  };
+
+  changeType = e => {
+    e.preventDefault();
+    const { type } = this.state;
+    this.setState({
+      type: type === 'password' ? 'text' : 'password',
+    });
+  };
+
+  render() {
+    const { labels, handleSubmit, onSubmit } = this.props;
+    const { type } = this.state;
+    return (
+      <View {...this.props}>
         <Field
-          name="rememberMe"
-          component={InputCheckbox}
-          dataLocator="rememberMe"
-          disabled={false}
-          rightText={labels.ACC_LBL_LOGIN_REMEMBER_ME}
+          label={labels.login.lbl_login_email}
+          name="emailAddress"
+          id="emailAddress"
+          type="text"
+          autoCapitalize="none"
+          component={TextBox}
+          dataLocator="emailAddress"
         />
-        <Field
-          name="savePlcc"
-          component={InputCheckbox}
-          dataLocator="savePlcc"
-          disabled={false}
-          rightText={labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
-          marginTop={13}
+        <ShowHideWrapper>
+          <Field
+            label={labels.login.lbl_login_password}
+            name="password"
+            id="password"
+            type={type}
+            component={TextBox}
+            dataLocator="password"
+            secureTextEntry={type === 'password'}
+          />
+          <HideShowFieldWrapper>
+            <Anchor
+              fontSizeVariation="small"
+              fontFamily="secondary"
+              underline
+              anchorVariation="primary"
+              onPress={this.changeType}
+              noLink
+              to="/#"
+              data-locator=""
+              text={type === 'password' ? 'show' : 'hide'}
+            />
+          </HideShowFieldWrapper>
+        </ShowHideWrapper>
+        <View style={styles.inputCheckBoxStyle}>
+          <Field
+            name="userTouchId"
+            component={InputCheckbox}
+            dataLocator="rememberMe"
+            disabled={false}
+            rightText={labels.login.lbl_login_touch_id}
+          />
+        </View>
+
+        <CustomButton
+          color={colorPallete.white}
+          fill="BLUE"
+          text={labels.login.lbl_login_loginCTA}
+          buttonVariation="variable-width"
+          customStyle={styles.loginButtonStyle}
+          onPress={handleSubmit(onSubmit)}
         />
+        <Anchor
+          style={styles.underline}
+          class="underlink"
+          underlineBlue
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          text={labels.login.lbl_login_forgetPasswordCTA}
+          customStyle={styles.forgotPasswordStyle}
+          onPress={this.showForgotPassword}
+        />
+        <LineComp marginTop={28} />
       </View>
-
-      <CustomButton
-        color="#FFFFFF"
-        fill="BLUE"
-        text={labels.ACC_LBL_LOGIN_CTA}
-        buttonVariation="variable-width"
-        customStyle={styles.loginButtonStyle}
-        onPress={handleSubmit(onSubmit)}
-      />
-      <Anchor
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        text={labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
-        customStyle={styles.forgotPasswordStyle}
-      />
-      <LineComp marginTop={28} />
-      <DescriptionStyle>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
-      <CustomButton
-        text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-        buttonVariation="variable-width"
-        customStyle={styles.createAccountStyle}
-      />
-    </View>
-  );
-};
-
+    );
+  }
+}
 LoginForm.propTypes = {
   labels: PropTypes.shape({
-    ACC_LBL_LOGIN_EMAIL: PropTypes.string,
-    ACC_LBL_LOGIN_PASSWORD: PropTypes.string,
-    ACC_LBL_LOGIN_REMEMBER_ME: PropTypes.string,
-    ACC_LBL_LOGIN_SAVE_MY_PLACE: PropTypes.string,
-    login: PropTypes.string,
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA: PropTypes.string,
-    ACC_LBL_LOGIN_FORGET_PASSWORD_CTA: PropTypes.string,
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP: PropTypes.string,
+    login: {
+      lbl_login_email: PropTypes.string,
+      lbl_login_password: PropTypes.string,
+      lbl_login_rememberMe: PropTypes.string,
+      lbl_login_saveMyPlace: PropTypes.string,
+      login: PropTypes.string,
+      lbl_login_createAccountCTA: PropTypes.string,
+      lbl_login_forgetPasswordCTA: PropTypes.string,
+      lbl_login_createAccountHelp: PropTypes.string,
+    },
   }),
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
-  loginErrorMessage: PropTypes.string,
+  showForgotPasswordForm: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
 };
 
 LoginForm.defaultProps = {
   labels: {
-    ACC_LBL_LOGIN_EMAIL: 'Email Address',
-    ACC_LBL_LOGIN_PASSWORD: 'Password',
-    ACC_LBL_LOGIN_REMEMBER_ME: `Remember me.\nNot recommended on shared devices.`,
-    ACC_LBL_LOGIN_SAVE_MY_PLACE: `Save My Place Rewards Credit Card ending in 1234\nto my account for future purchases.`,
-    ACC_LBL_LOGIN_CTA: 'LOG IN',
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA: 'CREATE ACCOUNT',
-    ACC_LBL_LOGIN_FORGET_PASSWORD_CTA: 'Forgot password?',
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP:
-      "Don't have an account? Create one now to start earning points!",
+    login: {
+      lbl_login_email: 'Email Address',
+      lbl_login_password: 'Password',
+      lbl_login_rememberMe: `Remember me.\nNot recommended on shared devices.`,
+      lbl_login_saveMyPlace: `Save My Place Rewards Credit Card ending in 1234\nto my account for future purchases.`,
+      lbl_login_loginCTA: 'LOG IN',
+      lbl_login_createAccountCTA: 'CREATE ACCOUNT',
+      lbl_login_forgetPasswordCTA: 'Forgot password?',
+      lbl_login_createAccountHelp: "Don't have an account? Create one now to start earning points!",
+    },
   },
   handleSubmit: noop,
   onSubmit: noop,
-  loginErrorMessage: '',
 };
 
 const validateMethod = createValidateMethod(

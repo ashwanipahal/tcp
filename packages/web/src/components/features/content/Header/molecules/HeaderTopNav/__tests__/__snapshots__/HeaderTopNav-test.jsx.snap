@@ -135,11 +135,23 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
         mobile={false}
       />
     </div>
-    <div
+    <Styled(BodyCopy)
       className="header-topnav__track-order"
+      color="text.primary"
+      component="p"
+      data-locator="track_order_header"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      id="trackOrder"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      onClick={[Function]}
+      textAlign="right"
     >
       Track order
-    </div>
+    </Styled(BodyCopy)>
   </div>
 </div>
 `;
@@ -279,11 +291,23 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
         mobile={false}
       />
     </div>
-    <div
+    <Styled(BodyCopy)
       className="header-topnav__track-order"
+      color="text.primary"
+      component="p"
+      data-locator="track_order_header"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      id="trackOrder"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      onClick={[Function]}
+      textAlign="right"
     >
       Track order
-    </div>
+    </Styled(BodyCopy)>
   </div>
 </div>
 `;

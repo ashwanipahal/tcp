@@ -1,9 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getComponent, getVariation, getColor, getOpenState } from './OverlayModal.selectors';
+import {
+  getComponent,
+  getVariation,
+  getColor,
+  getOpenState,
+  getProps,
+} from './OverlayModal.selectors';
 import OverlayModalComponent from '../views/OverlayModal.view';
 import { closeOverlayModal } from './OverlayModal.actions';
+import { isPlccUser } from '../../account/User/container/User.selectors';
 
 const propTypes = {
   component: PropTypes.string,
@@ -11,6 +18,8 @@ const propTypes = {
   color: PropTypes.string,
   openState: PropTypes.bool,
   closeOverlay: PropTypes.func,
+  plccUser: PropTypes.bool.isRequired,
+  componentProps: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -19,9 +28,18 @@ const defaultProps = {
   color: null,
   openState: false,
   closeOverlay: () => {},
+  componentProps: {},
 };
 
-export const OverlayModal = ({ component, variation, color, openState, closeOverlay }) => {
+export const OverlayModal = ({
+  component,
+  variation,
+  color,
+  openState,
+  closeOverlay,
+  componentProps,
+  plccUser,
+}) => {
   return (
     <OverlayModalComponent
       component={component}
@@ -29,6 +47,8 @@ export const OverlayModal = ({ component, variation, color, openState, closeOver
       color={color}
       openState={openState}
       closeOverlay={closeOverlay}
+      componentProps={componentProps}
+      plccUser={plccUser}
     />
   );
 };
@@ -39,6 +59,8 @@ const mapStateToProps = state => {
     variation: getVariation(state),
     color: getColor(state),
     openState: getOpenState(state),
+    componentProps: getProps(state),
+    plccUser: isPlccUser(state),
   };
 };
 

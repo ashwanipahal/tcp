@@ -46,7 +46,7 @@ const CreditCardList = ({
         className="cardList__heading"
         dataLocator="payment-creditAndDebitCardsLabel"
       >
-        {labels.ACC_LBL_CC_HEADING}
+        {labels.paymentGC.lbl_payment_ccHeading}
       </Heading>
       {creditCardList.size === 0 && (
         <EmptyCard labels={labels} icon="credit-card" alt="card icon" prefix="CC" />
@@ -54,10 +54,11 @@ const CreditCardList = ({
       <Row fullBleed>
         <Col
           colSize={{
-            large: 3,
-            medium: 3,
+            large: 4,
+            medium: 4,
             small: 6,
           }}
+          className={`${creditCardList.size !== 0 ? 'payment__addBtn__cont' : ''}`}
         >
           <Button
             buttonVariation="fixed-width"
@@ -66,7 +67,9 @@ const CreditCardList = ({
             dataLocator="payment-addcreditcard"
             onClick={addCreditCard}
           >
-            {creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
+            {creditCardList.size === 0
+              ? labels.paymentGC.lbl_payment_ccEmptyAddBtn
+              : labels.paymentGC.lbl_payment_addBtn}
           </Button>
         </Col>
       </Row>

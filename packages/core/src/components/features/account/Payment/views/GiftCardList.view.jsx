@@ -55,7 +55,7 @@ const GiftCardList = ({
         className="cardList__heading"
         dataLocator="payment-gcAndMerchandiseCards"
       >
-        {labels.ACC_LBL_GC_HEADING}
+        {labels.paymentGC.lbl_payment_gcHeading}
       </Heading>
       {giftCardList.size === 0 && (
         <EmptyCard labels={labels} icon="gift-card" alt="gift card icon" prefix="GC" />
@@ -63,10 +63,11 @@ const GiftCardList = ({
       <Row fullBleed>
         <Col
           colSize={{
-            large: 3,
-            medium: 3,
+            large: 4,
+            medium: 4,
             small: 6,
           }}
+          className={`${giftCardList.size !== 0 ? 'payment__addBtn__cont' : ''}`}
         >
           <Button
             buttonVariation="fixed-width"
@@ -75,7 +76,9 @@ const GiftCardList = ({
             className="cardList__ccAddCta"
             onClick={onAddGiftCardClick}
           >
-            {giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
+            {giftCardList.size === 0
+              ? labels.paymentGC.lbl_payment_GCEmptyAddBtn
+              : labels.paymentGC.lbl_payment_addBtn}
           </Button>
         </Col>
       </Row>

@@ -6,12 +6,22 @@ export const BodyCopyContainer = styled.View`
   width: ${props => props.width};
 `;
 
-export const ChildContainer = styled.TouchableOpacity`
+const colorSelect = (className, props) => {
+  let colorClass;
+  switch (className) {
+    default:
+      colorClass = props.theme.colors.PRIMARY.PALEGRAY;
+  }
+  return colorClass;
+};
+
+export const ChildContainer = styled.View`
   flex-direction: row;
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   align-items: center;
-  background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+  background: ${props =>
+    props.bgColor ? colorSelect(props.bgColor) : props.theme.colors.PRIMARY.PALEGRAY};
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 

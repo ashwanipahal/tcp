@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponList component should renders applied list 1`] = `
+<div
+  className="applied_coupon"
+>
+  <div
+    className="couponList__title"
+  >
+    <Styled(BodyCopy)
+      className="couponList__heading"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    >
+      Heading (6)
+    </Styled(BodyCopy)>
+  </div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 12,
+          "small": 12,
+        }
+      }
+    >
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-11T18:29:00.001Z",
+            "id": "Y00105575",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $60",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$10 OFF on $50",
+          }
+        }
+        key="Y00105575"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-12T18:29:00.001Z",
+            "id": "Y00105578",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $70",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$20 OFF On $50",
+          }
+        }
+        key="Y00105578"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-13T18:29:00.001Z",
+            "id": "Y00105575",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $80",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$30 OFF On $50",
+          }
+        }
+        key="Y00105575"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-14T18:29:00.001Z",
+            "id": "Y00105578",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $150",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$40 OFF On $50",
+          }
+        }
+        key="Y00105578"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-15T18:29:00.001Z",
+            "id": "Y00105575",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $520",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$50 OFF On $50",
+          }
+        }
+        key="Y00105575"
+        labels={Object {}}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="cartShowLessButton"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontSizeVariation="small"
+      onClick={[Function]}
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`CouponList component should renders available list 1`] = `
+<div
+  className="applied_coupon"
+>
+  <div
+    className="couponList__title"
+  >
+    <Styled(BodyCopy)
+      className="couponList__heading"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    >
+      Heading (6)
+    </Styled(BodyCopy)>
+    <div
+      className="couponList__iconContainer"
+    >
+      <div
+        className="couponList__helpIcon"
+      >
+        ?
+      </div>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="couponcard-helpApplyingPlaceCashlink"
+        fontFamily="secondary"
+        fontSize="fs10"
+        fontSizeVariation="small"
+        onClick={[Function]}
+        underline={true}
+      />
+    </div>
+  </div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 12,
+          "small": 12,
+        }
+      }
+    >
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-11T18:29:00.001Z",
+            "id": "Y00105575",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $60",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$10 OFF on $50",
+          }
+        }
+        couponDetailClick={[Function]}
+        key="Y00105575"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-12T18:29:00.001Z",
+            "id": "Y00105578",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $70",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$20 OFF On $50",
+          }
+        }
+        couponDetailClick={[Function]}
+        key="Y00105578"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-13T18:29:00.001Z",
+            "id": "Y00105575",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $80",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$30 OFF On $50",
+          }
+        }
+        couponDetailClick={[Function]}
+        key="Y00105575"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-14T18:29:00.001Z",
+            "id": "Y00105578",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $150",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$40 OFF On $50",
+          }
+        }
+        couponDetailClick={[Function]}
+        key="Y00105578"
+        labels={Object {}}
+      />
+      <Styled(CouponCard)
+        coupon={
+          Object {
+            "details": null,
+            "detailsOpen": false,
+            "effectiveDate": "8/6/19",
+            "error": null,
+            "expirationDate": "8/10/19",
+            "expirationDateTimeStamp": "2019-08-15T18:29:00.001Z",
+            "id": "Y00105575",
+            "isExpiring": true,
+            "isStarted": true,
+            "legalText": "$10 OFF On $520",
+            "promotionType": "public",
+            "status": "available",
+            "title": "$50 OFF On $50",
+          }
+        }
+        couponDetailClick={[Function]}
+        key="Y00105575"
+        labels={Object {}}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="cartShowLessButton"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontSizeVariation="small"
+      onClick={[Function]}
+      underline={true}
+    />
+  </div>
+</div>
+`;

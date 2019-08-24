@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutSectionTitleDisplay should render correctly 1`] = `
+<div>
+  <div
+    className="checkoutSectionTitle"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="pickup-title"
+      fontFamily="primary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    >
+      hello
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;

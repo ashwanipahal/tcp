@@ -2,10 +2,24 @@
 
 exports[`Payment View should render correctly 1`] = `
 <Styled(PaymentView)
+  cardList={Object {}}
+  checkbalanceValueInfo={Object {}}
+  creditCardList={Object {}}
+  deleteModalMountedState={false}
+  giftCardList={Object {}}
   labels={
     Object {
       "giftCard": "Payment",
     }
   }
+  onDeleteCard={Object {}}
+  onGetBalanceCard={[Function]}
+  setDefaultPaymentMethod={[Function]}
+  setDeleteModalMountState={false}
+  setDeleteModalMountedState={false}
+  setUpdateModalMountState={false}
+  setUpdateModalMountedState={false}
+  updateModalMountedState={false}
+  venmoCardList={Object {}}
 />
 `;

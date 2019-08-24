@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorSelectorListVanilla component ColorSelectorListVanilla component renders correctly 1`] = `
+<Styled(BodyCopy)
+  className="checkout"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={Object {}}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="dropdownDivOverFlow"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  >
+    <ul
+      className="dropdownUlBorder"
+    >
+      <li
+        className="dropdownliBottomBorder  lastElementClass"
+        key="red"
+        tabIndex={-1}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          key="red"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          textAlign="left"
+        >
+          red
+        </Styled(BodyCopy)>
+      </li>
+    </ul>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

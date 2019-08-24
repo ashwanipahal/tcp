@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components/native';
 
-const getPageStyle = () => {
+const getPageStyle = props => {
+  const { theme } = props;
   return `
-  margin-horizontal: ${'30px'}
+  margin: auto  ${theme.spacing.APP_LAYOUT_SPACING.SM};
   justify-content: ${'center'};
-
+ 
   `;
 };
 const SectionStyle = css`
@@ -42,6 +43,7 @@ const getSubHeadingStyle = props => {
   return `
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs13};
+  margin-bottom: 10px;
   align-self: ${'center'};
   `;
 };
@@ -53,7 +55,7 @@ const getDescriptionStyle = props => {
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs12};
   color: ${colorPalette.text.primary};
-  margin-top: ${'10px'};
+
   text-align: ${'center'};
   `;
 };
@@ -61,6 +63,7 @@ const getDescriptionStyle = props => {
 const HeadingStyle = styled.Text`
   ${getHeadingStyle}
 `;
+
 const SubHeadingStyle = styled.Text`
   ${getSubHeadingStyle}
 `;

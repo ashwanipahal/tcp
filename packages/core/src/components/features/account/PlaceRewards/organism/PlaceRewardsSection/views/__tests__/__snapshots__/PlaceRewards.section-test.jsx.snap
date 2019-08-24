@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRewards should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="place-rewards__heading"
+        color="text.primary"
+        component="h4"
+        data-locator="place-rewards-heading"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Row)
+      className="place-rewards-sections-row1"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="place-rewards-col1"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 10,
+                "medium": 6,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="elem-mb-SM elem-ml-SM"
+              color="text.primary"
+              component="h4"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={Object {}}
+              textAlign="left"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="elem-mb-MED reward-points"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="reward-points-section"
+            colSize={
+              Object {
+                "large": 10,
+                "medium": 6,
+                "small": 4,
+              }
+            }
+          >
+            <Connect(RewardsPointsContainer)
+              labels={Object {}}
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="place-rewards-col2"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 10,
+                "medium": 6,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="elem-mb-SM elem-ml-SM"
+              color="text.primary"
+              component="h4"
+              data-locator="pointshistorylbl"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={Object {}}
+              textAlign="left"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="elem-mb-MED"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 11,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <Connect(PointsHistoryContainer) />
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="place-rewards-sections-row2"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="place-rewards-col3"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <div
+          className="bonusPointsWrapper"
+        >
+          <BonusPointsDaysSection />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="place-rewards-col4"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <FPO
+          text=""
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Row)>
+  <Connect(MyRewardsContainer)
+    labels={
+      Object {
+        "common": Object {},
+        "myPlaceRewards": Object {},
+      }
+    }
+  />
+</div>
+`;

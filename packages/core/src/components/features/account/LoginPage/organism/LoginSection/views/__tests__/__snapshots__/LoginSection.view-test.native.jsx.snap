@@ -1,32 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginSection component should renders correctly 1`] = `
-<Fragment>
-  <Styled(LoginTopSection)
-    labels={Object {}}
-  />
-  <ReduxForm
-    destroyOnUnmount={true}
-    enableReinitialize={true}
-    forceUnregisterOnUnmount={false}
-    form="myLoginForm"
-    getFormState={[Function]}
-    initialValues={Object {}}
-    keepDirtyOnReinitialize={false}
-    labels={Object {}}
-    loginErrorMessage=""
-    onSubmit={[Function]}
-    persistentSubmitErrors={false}
-    pure={true}
-    shouldAsyncValidate={[Function]}
-    shouldError={[Function]}
-    shouldValidate={[Function]}
-    shouldWarn={[Function]}
-    submitAsSideEffect={false}
-    touchOnBlur={true}
-    touchOnChange={false}
-    updateUnregisteredFields={false}
-    validate={[Function]}
-  />
-</Fragment>
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "labels": Object {
+          "login": Object {
+            "lbl_login_createAccountCTA": "",
+            "lbl_login_createAccountHelp": "",
+            "lbl_login_createAccountHelp_1": "Don't have an account? Create one now to",
+            "lbl_login_createAccountHelp_2": "start earning points!",
+          },
+        },
+        "loginErrorMessage": "",
+      },
+      "attrs": Array [],
+      "displayName": "Styled(LoginSection)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  ",
+          [Function],
+          "
+",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  initialValues={Object {}}
+  labels={Object {}}
+  loginErrorMessage=""
+  onSubmit={[Function]}
+/>
 `;

@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 import { getIconPath } from '../../../../utils';
 
 const darkArrow = getIconPath('icon-carrot-black-small');
 const darkArrowLarge = getIconPath('icon-carrot-grey-large');
 const lightArrow = getIconPath('icon-carrot-white');
-const CarouselStyle = styled.div`
+const CarouselStyle = css`
   .slick-slider {
     position: relative;
     padding: 0px ${props => (props.carouselConfig.arrow === 'small' ? '38px' : '0px')};
@@ -243,6 +243,7 @@ const CarouselStyle = styled.div`
       }
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default CarouselStyle;

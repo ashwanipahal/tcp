@@ -1,6 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const styles = css``;
+export const StyledAnchorWrapper = styled.View`
+  text-align: center;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+`;
 
 export const PlaceHolderView = styled.View`
   height: 150px;
@@ -9,9 +12,18 @@ export const PlaceHolderView = styled.View`
   text-align: center;
 `;
 
+export const StyledText = styled.Text`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
 export const AddedToBagWrapper = styled.View`
   display: flex;
   flex: 1;
 `;
 
-export default { styles, PlaceHolderView, AddedToBagWrapper };
+export const StyledWrapper = styled.View`
+  height: 100%;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;

@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponForm Component CouponForm should render correctly 1`] = `
+<div>
+  <Styled(ErrorMessage)
+    error=""
+  />
+  <div
+    className="coupon_form_container"
+  >
+    <Styled(Heading)
+      className="coupon_form_heading"
+      color="black"
+      component={null}
+      dataLocator=""
+      fontFamily="primaryFontFamily"
+      textAlign="left"
+      variant="h6"
+    >
+      <Styled(BodyCopy)
+        className="coupon_need_help_link"
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        onClick={[Function]}
+        textAlign="left"
+      />
+    </Styled(Heading)>
+    <form
+      className="coupon_submit_form"
+      onSubmit={[Function]}
+    >
+      <Field
+        className="coupon_code_input"
+        component={[Function]}
+        dataLocator="coupon_code"
+        id="coupon_code"
+        name="coupon_code"
+        onChange={[Function]}
+        placeholder="Enter Coupon Code"
+        type="text"
+      />
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="coupon_submit_button"
+        data-locator="coupon_submit_btn"
+        type="submit"
+      >
+        Apply
+      </Styled(Button)>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`CouponForm Component CouponForm should render with error correctly 1`] = `
+<div>
+  <Styled(ErrorMessage)
+    error="1234"
+  />
+  <div
+    className="coupon_form_container"
+  >
+    <Styled(Heading)
+      className="coupon_form_heading"
+      color="black"
+      component={null}
+      dataLocator=""
+      fontFamily="primaryFontFamily"
+      textAlign="left"
+      variant="h6"
+    >
+      <Styled(BodyCopy)
+        className="coupon_need_help_link"
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        onClick={[Function]}
+        textAlign="left"
+      />
+    </Styled(Heading)>
+    <form
+      className="coupon_submit_form"
+      onSubmit={[Function]}
+    >
+      <Field
+        className="coupon_code_input"
+        component={[Function]}
+        dataLocator="coupon_code"
+        id="coupon_code"
+        name="coupon_code"
+        onChange={[Function]}
+        placeholder="Enter Coupon Code"
+        type="text"
+      />
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="coupon_submit_button"
+        data-locator="coupon_submit_btn"
+        type="submit"
+      >
+        Apply
+      </Styled(Button)>
+    </form>
+  </div>
+</div>
+`;

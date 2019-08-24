@@ -2,6 +2,9 @@ import superagent from 'superagent';
 import { API_CONFIG } from '../../config';
 import { isClient, isMobileApp } from '../../../utils';
 import { readCookie } from '../../../utils/cookie.util';
+import verifyErrorResponseHandler from './verifyErrorResponse';
+import ErrorConstructor from '../../../utils/errorConstructor.util';
+import { API_ERROR_MESSAGE } from './config';
 
 /**
  * @summary this is meant to generate a new UID on each API call
@@ -52,9 +55,9 @@ const generateSessionId = apiConfig => {
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
-  const { proto, domain, catalogId, storeId, langId, isMobile } = apiConfig;
+  const { domain, catalogId, storeId, langId, isMobile } = apiConfig;
   const deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
-  const requestUrl = `${proto}${domain}${reqObj.webService.URI}`;
+  const requestUrl = `${domain}${reqObj.webService.URI}`;
   const reqHeaders = {
     langId,
     storeId,
@@ -102,6 +105,14 @@ const StatefulAPIClient = (apiConfig, reqObj) => {
   const result = new Promise((resolve, reject) => {
     request
       .then(response => {
+        const errorObject = verifyErrorResponseHandler(response);
+        if (errorObject.errorCode) {
+          throw new ErrorConstructor({
+            ...errorObject,
+            errorMsg: API_ERROR_MESSAGE,
+            errorResponse: response.body,
+          });
+        }
         resolve(response);
       })
       .catch(err => {

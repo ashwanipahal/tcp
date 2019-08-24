@@ -12,13 +12,12 @@ import {
   getAddEditCreditCardError,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
-import labels from './AddEditCreditCard.labels';
-import addressLabels from '../../AddressBook/container/AddressBook.labels';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
-import { getCreditCardExpirationOptionMap } from '../../../../../utils/utils';
+import { getCreditCardExpirationOptionMap } from '../../../../../utils';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -33,6 +32,8 @@ export class AddEditCreditCard extends React.PureComponent {
     addCreditCardAction: PropTypes.func.isRequired,
     editCreditCardAction: PropTypes.func.isRequired,
     showSuccessNotification: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}),
+    addressLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -43,6 +44,8 @@ export class AddEditCreditCard extends React.PureComponent {
     addEditCreditCardSuccess: null,
     addEditCreditCardError: null,
     creditCard: null,
+    labels: {},
+    addressLabels: { addressFormLabels: {} },
   };
 
   constructor(props) {
@@ -165,6 +168,8 @@ export class AddEditCreditCard extends React.PureComponent {
       addressList,
       isPLCCEnabled,
       addEditCreditCardError,
+      labels,
+      addressLabels,
     } = this.props;
 
     if (addressList === null) {
@@ -187,10 +192,11 @@ export class AddEditCreditCard extends React.PureComponent {
         expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
         expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
         initialValues={initialValues}
-        addressLabels={addressLabels}
+        addressLabels={labels}
         backToPaymentClick={this.backToPaymentClick}
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}
+        addressFormLabels={addressLabels.addressFormLabels}
       />
     );
   }
@@ -205,6 +211,7 @@ const mapStateToProps = (state, ownProps) => {
     isPLCCEnabled: true,
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
+    addressLabels: getAddEditAddressLabels(state),
   };
 };
 

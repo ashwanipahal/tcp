@@ -5,6 +5,7 @@ import red from './colors/red';
 import common from './colors/common';
 import yellow from './colors/yellow';
 import orange from './colors/orange';
+import pink from './colors/pink';
 
 function createThemeColorPalette(colors = {}) {
   const { primary = { light: blue[300], main: blue[500], dark: blue[700] } } = colors;
@@ -13,11 +14,21 @@ function createThemeColorPalette(colors = {}) {
     text = { primary: gray[900], secondary: gray[700], disabled: gray[500], hint: gray[600] },
   } = colors;
 
-  const { white, black } = common;
+  const { white, black, purple } = common;
+  const {
+    userTheme = {
+      plcc: blue[800],
+      plccLight: blue[100],
+      mpr: orange[800],
+      mprLight: orange[100],
+      mprPrimary: orange[300],
+    },
+  } = colors;
 
   return {
     white,
     black,
+    purple,
     primary,
     secondary,
     text,
@@ -26,6 +37,10 @@ function createThemeColorPalette(colors = {}) {
     gray,
     yellow,
     orange,
+    red,
+    pink,
+    blue,
+    userTheme,
   };
 }
 

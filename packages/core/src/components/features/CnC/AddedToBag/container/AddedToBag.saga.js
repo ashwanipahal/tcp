@@ -1,50 +1,44 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../utils/cache.util';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
-import fetchData from '../../../../../service/API';
-import { getOrderDetails } from '../../Cart/containers/Cart.actions';
+import {
+  addCartEcomItem,
+  addCartBopisItem,
+} from '../../../../../services/abstractors/CnC/AddedToBag';
 import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
-import endpoints from '../../../../../service/endpoint';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { getAPIConfig } from '../../../../../utils';
 
 export function* addToCartEcom({ payload }) {
   try {
     const sku = payload.skuInfo.skuId;
     const qty = payload.quantity;
     const { wishlistItemId } = payload;
-
-    const params = {
-      payload: {
-        storeId: 10151,
-        catalogId: 10551,
-        langId: '-1',
-        orderId: '.',
-        field2: '0',
-        requesttype: 'ajax',
-        catEntryId: sku,
-        quantity: qty.toString(),
-        'calculationUsage[]': '-7',
-        externalId: wishlistItemId || '',
-      },
-      langId: -1,
-      storeId: 10151,
-      catalogId: 10551,
+    const { storeId, langId, catalogId } = getAPIConfig();
+    const apiConfigParams = {
+      catalogId,
+      storeId,
+      langId,
     };
-    const { relURI, method } = endpoints.addProductToCart;
-    const baseURI = endpoints.addProductToCart.baseURI || endpoints.global.baseURI;
-    const res = yield call(fetchData, baseURI, relURI, params, method);
-    if (res.body && !res.body.error && !res.body.errors) {
-      yield put(
-        SetAddedToBagData({
-          ...payload,
-          orderId: res.body.orderId && res.body.orderId[0],
-          orderItemId: res.body.orderItemId && res.body.orderItemId[0],
-        })
-      );
-      yield put(openAddedToBag());
-      yield put(getOrderDetails());
-    } else {
-      yield put(AddToCartError(res.error || res.body.error));
-    }
+    const params = {
+      ...apiConfigParams,
+      orderId: '.',
+      field2: '0',
+      requesttype: 'ajax',
+      catEntryId: sku,
+      quantity: qty.toString(),
+      'calculationUsage[]': '-7',
+      externalId: wishlistItemId || '',
+    };
+    const res = yield call(addCartEcomItem, params);
+    yield put(
+      SetAddedToBagData({
+        ...payload,
+        ...res,
+      })
+    );
+    yield put(openAddedToBag());
+    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     yield put(AddToCartError(err));
   }
@@ -63,34 +57,23 @@ export function* addItemToCartBopis({ payload }) {
       bopis: 'bopis',
     };
     const params = {
-      payload: {
-        storeLocId: storeLocId.toString(),
-        quantity: quantity.toString(),
-        catEntryId: skuId,
-        isRest: 'false',
-        pickupType: isBoss ? PICKUP_TYPE.boss : PICKUP_TYPE.bopis,
-        variantNo,
-        itemPartNumber: variantId,
-      },
-      langId: -1,
-      storeId: 10151,
-      catalogId: 10551,
+      storeLocId: storeLocId.toString(),
+      quantity: quantity.toString(),
+      catEntryId: skuId,
+      isRest: 'false',
+      pickupType: isBoss ? PICKUP_TYPE.boss : PICKUP_TYPE.bopis,
+      variantNo,
+      itemPartNumber: variantId,
     };
-    const { relURI, method } = endpoints.addOrderBopisItem;
-    const baseURI = endpoints.addOrderBopisItem.baseURI || endpoints.global.baseURI;
-    const res = yield call(fetchData, baseURI, relURI, params, method);
-    if (res.body && !res.body.error && !res.body.errors) {
-      yield put(
-        SetAddedToBagData({
-          ...payload,
-          orderItemId: res.body.orderItemId,
-        })
-      );
-      yield put(openAddedToBag());
-      yield put(getOrderDetails());
-    } else {
-      yield put(AddToCartError(res.error || res.body.error));
-    }
+    const res = yield call(addCartBopisItem, params);
+    yield put(
+      SetAddedToBagData({
+        ...payload,
+        ...res,
+      })
+    );
+    yield put(openAddedToBag());
+    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     yield put(AddToCartError(err));
   }

@@ -255,9 +255,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           >
             <Styled(Button)
               buttonVariation="variable-width"
-              data-locator="refer_a_btn"
+              data-locator="global_referfriend"
               id="extole_zone_global_footer"
-              type="refer_a"
             >
               REFER FRIEND
             </Styled(Button)>

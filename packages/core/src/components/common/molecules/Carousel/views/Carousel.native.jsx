@@ -1,10 +1,23 @@
 import React from 'react';
 import { View } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
+import { withTheme } from 'styled-components';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { getLocator } from '../../../../../utils';
+
 import { Image } from '../../../atoms';
 import config from '../Config.native';
-import { getLocator } from '../../../../../utils/utils.native';
-import { Touchable, TouchableView, Icon, Container } from '../Carousel.native.style';
+
+import {
+  ControlsWrapper,
+  PlayPauseButtonView,
+  Touchable,
+  TouchableView,
+  Icon,
+  Container,
+  PaginationWrapper,
+  ControlsWrapperLeft,
+  ControlsWrapperRight,
+} from '../Carousel.native.style';
 
 /**
  * Import play pause image icons.
@@ -24,12 +37,18 @@ type Props = {
   carouselConfig: Object,
   data: Array<Object>,
   renderItem: Function,
-  onSnapToItem: Function,
+  onSnapToItem?: Function,
   width: Number,
   height: Number,
   slideStyle: Object,
+  theme: Object,
   variation: String,
   vertical: Boolean,
+  showDots?: Boolean,
+  overlap?: Boolean,
+  hidePlayStopButton?: Boolean,
+  autoplayInterval: Number,
+  buttonPosition: String,
 };
 
 type State = {
@@ -55,10 +74,47 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     super(props);
     this.state = {
       autoplay: true,
+      activeSlide: 0,
     };
     this.getPlayButton = this.getPlayButton.bind(this);
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
+  }
+
+  getPagination() {
+    const { activeSlide } = this.state;
+    const {
+      data,
+      theme: { colorPalette },
+    } = this.props;
+
+    /* eslint-disable  */
+    return (
+      <Pagination
+        dotsLength={data.length}
+        activeDotIndex={activeSlide}
+        containerStyle={{ paddingVertical: 22, paddingHorizontal: 10 }}
+        dotContainerStyle={{ marginHorizontal: 4 }}
+        dotStyle={{
+          width: 10,
+          height: 10,
+          borderRadius: 5,
+          marginHorizontal: 0,
+          padding: 0,
+          borderColor: colorPalette.gray[700],
+          borderWidth: 1,
+          backgroundColor: colorPalette.white,
+        }}
+        inactiveDotStyle={{
+          backgroundColor: colorPalette.gray[700],
+          width: 6,
+          height: 6,
+        }}
+        inactiveDotOpacity={1}
+        inactiveDotScale={1}
+      />
+    );
+    // eslint-enable
   }
 
   /**
@@ -66,17 +122,82 @@ class SnapCarousel extends React.PureComponent<Props, State> {
    * @param {[Object]} element [Event object of click].
    * @return {node} function returns slider element.
    */
-  getPlayButton() {
+  getPlayButton(carouselConfig) {
     const { autoplay } = this.state;
 
     return autoplay ? (
       <Touchable accessibilityRole="button" onPress={this.pause}>
-        <Image source={pauseIcon} height={playIconHeight} width={playIconWidth} />
+        <Image
+          source={pauseIcon}
+          height={playIconHeight}
+          width={playIconWidth}
+          testID={getLocator(carouselConfig.dataLocatorPause)}
+        />
       </Touchable>
     ) : (
       <Touchable accessibilityRole="button" onPress={this.play}>
-        <Image source={playIcon} height={playIconHeight} width={playIconWidth} />
+        <Image
+          source={playIcon}
+          height={playIconHeight}
+          width={playIconWidth}
+          testID={getLocator(carouselConfig.dataLocatorPlay)}
+        />
       </Touchable>
+    );
+  }
+
+  /**
+   * @function getOverlapComponent This function return the Play Or Pause Button with pagination.
+   * @Component is configurable : leftBottom , rightBottom  and centerBottom .
+   */
+
+  getOverlapComponent(carouselConfig, buttonPosition) {
+    if (buttonPosition === 'right') {
+      return (
+        <View>
+          <ControlsWrapperRight>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {this.getPagination()}
+          </ControlsWrapperRight>
+        </View>
+      );
+    } else if (buttonPosition === 'left') {
+      return (
+        <View>
+          <ControlsWrapperLeft>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {this.getPagination()}
+          </ControlsWrapperLeft>
+        </View>
+      );
+    }
+    return (
+      <View>
+        <ControlsWrapper>
+          {carouselConfig.autoplay && (
+            <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+          )}
+          {this.getPagination()}
+        </ControlsWrapper>
+      </View>
+    );
+  }
+
+  /**
+   * @function getBottomView This function return the Play Or Pause Button.
+   */
+  getBottomView(carouselConfig, showDots) {
+    return (
+      <PaginationWrapper>
+        {carouselConfig.autoplay && (
+          <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+        )}
+        {showDots ? this.getPagination() : null}
+      </PaginationWrapper>
     );
   }
 
@@ -89,6 +210,16 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       return this.carousel.snapToPrev();
     }
     return this.carousel.snapToNext();
+  };
+
+  /**
+   * Called on slide item
+   */
+
+  onSnapToItemHandler = index => {
+    const { onSnapToItem } = this.props;
+    this.setState({ activeSlide: index });
+    onSnapToItem(index);
   };
 
   /**
@@ -120,42 +251,54 @@ class SnapCarousel extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      carouselConfig: { autoplay: defaultAutoplay },
+      carouselConfig,
       data,
       height,
       width,
-      onSnapToItem,
       renderItem,
       slideStyle,
       variation,
       vertical,
+      autoplayInterval,
+      showDots,
+      overlap,
+      buttonPosition,
     } = this.props;
 
+    if (!data) {
+      return null;
+    }
+
     if (variation === 'show-arrow') {
+      // reduce left and right arrow with from the total with to fix center aline issue
+      const carouselWidth = width - 64;
       return (
         <Container>
           <TouchableView
             accessibilityRole="button"
-            data-locator={getLocator('global_promobanner_right_arrow')}
+            accessibilityLabel="Previous"
+            testID={getLocator('global_promobanner_right_arrow')}
             onPress={() => this.manageSlide('next')}
           >
             <Icon source={nextIcon} />
           </TouchableView>
           <Carousel
+            {...defaults}
             data={data}
             renderItem={renderItem}
-            sliderWidth={width}
-            itemWidth={width}
+            sliderWidth={carouselWidth}
+            itemWidth={carouselWidth}
             sliderHeight={height}
             itemHeight={height}
-            {...defaults}
+            autoplayInterval={autoplayInterval}
             ref={c => {
               this.carousel = c;
             }}
           />
           <TouchableView
             accessibilityRole="button"
-            data-locator={getLocator('global_promobanner_left_arrowRight')}
+            accessibilityLabel="next"
+            testID={getLocator('global_promobanner_left_arrowRight')}
             onPress={() => this.manageSlide('prev')}
           >
             <Icon source={prevIcon} />
@@ -167,10 +310,11 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     return (
       <View>
         <Carousel
+          {...defaults}
           ref={c => {
             this.carousel = c;
           }}
-          onSnapToItem={onSnapToItem}
+          onSnapToItem={this.onSnapToItemHandler}
           data={data}
           renderItem={renderItem}
           sliderWidth={width}
@@ -179,12 +323,26 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           itemHeight={height}
           slideStyle={slideStyle}
           vertical={vertical}
-          {...defaults}
+          autoplayInterval={autoplayInterval}
         />
-        {defaultAutoplay && this.getPlayButton()}
+
+        {data.length > 1 && (
+          <View>
+            {showDots && overlap
+              ? this.getOverlapComponent(carouselConfig, buttonPosition)
+              : this.getBottomView(carouselConfig, showDots)}
+          </View>
+        )}
       </View>
     );
   }
 }
 
-export default SnapCarousel;
+SnapCarousel.defaultProps = {
+  onSnapToItem: () => {},
+  showDots: false,
+  hidePlayStopButton: false,
+  overlap: false,
+};
+
+export default withTheme(SnapCarousel);

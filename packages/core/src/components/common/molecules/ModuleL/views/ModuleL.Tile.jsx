@@ -7,6 +7,7 @@ import config from '../config';
 type Props = {
   tileData: Object,
   index: number,
+  tileColor: Object,
 };
 
 /**
@@ -18,16 +19,20 @@ const colSize = { ...config.COL_SIZE_TILE };
  * @function ModuleLTile This function renders tiles for carousel
  * @param {tileData} tileData Accepts image, link and styled object and index
  */
-const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
+const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor }: Props) => {
   return (
-    <Anchor data-locator={`${getLocator('moduleL_tiles')}_${index + 1}`} {...link}>
+    <Anchor {...link}>
       <Row>
-        <Col colSize={colSize} className="moduleL__tile">
+        <Col
+          colSize={colSize}
+          className={`moduleL__tile moduleL__${tileColor.class}`}
+          data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
+        >
           <DamImage
             imgData={image}
             imgConfigs={config.IMG_DATA.crops}
             className="moduleL__tile-image"
-            data-locator={`${getLocator('moduleL_image')}_${index + 1}`}
+            data-locator={`${getLocator('moduleL_image')}${index + 1}`}
           />
           <div className="moduleL__tile-text">
             <BodyCopy
@@ -40,14 +45,14 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
               lineHeight="lh107"
               textAlign="left"
               color="text.primary"
-              data-locator={`${getLocator('moduleL_title')}_${index + 1}`}
+              data-locator={`${getLocator('moduleL_title')}${index + 1}`}
             >
               {styled.text}
             </BodyCopy>
             <Anchor
               withCaret
               className="moduleL__tile-link"
-              data-locator={`${getLocator('moduleL_link')}_${index + 1}`}
+              data-locator={`${getLocator('moduleL_link')}${index + 1}`}
               {...link}
             >
               {link.text}

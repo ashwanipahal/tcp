@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are not present 1`] = `
+<Styled(AccountOverviewTile)
+  className=""
+  ctaLink="/account?id=place-rewards"
+  ctaPath="/account/place-rewards"
+  dataLocatorPrefix="myrewardstile"
+>
+  <section
+    className="elem-pb-MED "
+  >
+    <Styled(BodyCopy)
+      className="elem-mb-LRG"
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-myplacerewatdstile-startshoptext"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    />
+    <CouponList
+      commonLabels={Object {}}
+      coupons={Immutable.List []}
+      labels={Object {}}
+      sliceCount={2}
+    />
+    <div>
+      <Styled(Anchor)
+        anchorVariation="button"
+        buttonVariation="variable-width"
+        centered={true}
+        data-locator="accountoverview-myplacerewardstile-startshopbtn"
+        fill="WHITE"
+        fullWidth={true}
+        to="/home"
+      />
+    </div>
+  </section>
+</Styled(AccountOverviewTile)>
+`;
+
+exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are present 1`] = `
+<Styled(AccountOverviewTile)
+  className=""
+  ctaLink="/account?id=place-rewards"
+  ctaPath="/account/place-rewards"
+  dataLocatorPrefix="myrewardstile"
+>
+  <section
+    className="elem-pb-MED bordered"
+  >
+    <Styled(BodyCopy)
+      className="elem-mb-LRG"
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    />
+    <CouponList
+      commonLabels={Object {}}
+      coupons={
+        Immutable.List [
+          Object {},
+        ]
+      }
+      labels={
+        Object {
+          "lbl_overview_myPlaceRewardsAvailable": "",
+        }
+      }
+      sliceCount={2}
+    />
+  </section>
+  <Connect(BonusPointsDays)
+    labels={
+      Object {
+        "lbl_overview_myPlaceRewardsAvailable": "",
+      }
+    }
+    view="read"
+  />
+</Styled(AccountOverviewTile)>
+`;

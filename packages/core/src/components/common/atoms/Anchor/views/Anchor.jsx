@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import utils, { buildUrl } from '../../../../../utils';
+import { buildUrl, getSiteId } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
@@ -31,14 +31,14 @@ const Anchor = ({
   url,
   text,
   dataLocator,
+  ...other
 }) => {
   const targetVal = target || '_self';
-  const siteId = utils.getSiteId();
+  const siteId = getSiteId();
 
   const incomingUrl = to || url;
   const isCompleteUrl = incomingUrl.startsWith('http');
   const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
-  const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
 
   return noLink ? (
     <a
@@ -48,6 +48,7 @@ const Anchor = ({
       title={title}
       target={targetVal}
       data-locator={dataLocator}
+      {...other}
     >
       {children}
     </a>

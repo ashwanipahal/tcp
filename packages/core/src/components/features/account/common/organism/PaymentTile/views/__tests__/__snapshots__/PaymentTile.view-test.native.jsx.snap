@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaymentTile component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    color="black"
+    fontFamily="secondary"
+    fontSize="fs16"
+  />
+  <Styled(View) />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="PaymentItemForm"
+    getFormState={[Function]}
+    isGiftCard={false}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    paymentInfo={
+      Object {
+        "icon": "",
+        "subText": "",
+        "text": undefined,
+        "title": undefined,
+        "variation": undefined,
+      }
+    }
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <Styled(View) />
+  <ReduxForm
+    card={null}
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="PaymentItemForm"
+    getFormState={[Function]}
+    isGiftCard={true}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    paymentInfo={
+      Object {
+        "icon": "",
+        "subText": "",
+        "text": undefined,
+        "title": undefined,
+        "variation": undefined,
+      }
+    }
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      locator=""
+      onPress={[Function]}
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

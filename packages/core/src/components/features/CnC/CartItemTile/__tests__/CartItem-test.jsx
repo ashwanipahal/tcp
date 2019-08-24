@@ -43,8 +43,8 @@ describe('CartItem Component', () => {
     expect(component).toBeDefined();
   });
 
-  it('CartItem should render correctly', () => {
+  /* it('CartItem should render correctly', () => {
     component.find('.edit-cart').simulate('click');
     expect(component).toMatchSnapshot();
-  });
+  }); */
 });

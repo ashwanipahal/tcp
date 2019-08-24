@@ -4,6 +4,8 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../CardTile.style';
 import { getIconPath } from '../../../../../../../utils';
@@ -65,7 +67,7 @@ class CardTile extends React.Component<Props> {
     const { card, labels } = this.props;
     return card.defaultInd ? (
       <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge" noMargin>
-        {labels.ACC_LBL_DEFAULT_PAYMENT}
+        {labels.paymentGC.lbl_payment_defaultPayment}
       </Badge>
     ) : (
       <Anchor
@@ -76,7 +78,7 @@ class CardTile extends React.Component<Props> {
         dataLocator="payment-makedefault"
         onClick={this.handleDefaultLinkClick}
       >
-        {labels.ACC_LBL_MAKE_DEFAULT}
+        {labels.common.lbl_common_makeDefault}
       </Anchor>
     );
   };
@@ -102,15 +104,17 @@ class CardTile extends React.Component<Props> {
 
   getCardDetails = dataLocatorPrefix => {
     const { card, labels } = this.props;
-    const cardNum = `${labels.ACC_LBL_CARD_NUM}${card.accountNo.slice(-4)}`;
-    const expDate = `${labels.ACC_LBL_EXP_DATE}${card.expMonth.trim()}/${card.expYear}`;
+    const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
+    const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${
+      card.expYear
+    }`;
     return (
       <React.Fragment>
         <BodyCopy
-          tag="span"
+          component="span"
           fontSize="fs14"
           fontFamily="secondary"
-          fontWeight="black"
+          fontWeight="bold"
           className="cardTile__number"
           lineHeights="lh107"
           data-locator={`payment-${dataLocatorPrefix}endingtext`}
@@ -179,7 +183,7 @@ class CardTile extends React.Component<Props> {
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
           >
-            {labels.ACC_LBL_CHECK_BALANCE}
+            {labels.paymentGC.lbl_payment_checkBalance}
           </Button>
         )}
       </React.Fragment>
@@ -199,7 +203,7 @@ class CardTile extends React.Component<Props> {
             className=""
             lineHeights="lh115"
           >
-            {balance && labels.ACC_LBL_REMAINING_BALANCE}
+            {balance && labels.paymentGC.lbl_payment_remainingBalance}
           </BodyCopy>
         )}
         {this.renderBalance({ balance, isGiftCardBalanceRequested, labels })}
@@ -245,7 +249,7 @@ class CardTile extends React.Component<Props> {
             dataLocator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
           >
-            {labels.ACC_LBL_EDIT}
+            {labels.common.lbl_common_edit}
           </Anchor>
         )}
         <Anchor
@@ -257,7 +261,7 @@ class CardTile extends React.Component<Props> {
           dataLocator={`payment-${dataLocatorPrefix}deletelink`}
           onClick={e => this.onDeletegiftardClick(e)}
         >
-          {labels.ACC_LBL_DELETE}
+          {labels.common.lbl_common_delete}
         </Anchor>
       </div>
     );
@@ -303,24 +307,42 @@ class CardTile extends React.Component<Props> {
           />
         )}
         <div className="cardTile">
-          <div className="cardTile__cardDetails">
-            <BodyCopy
-              tag="span"
-              fontSize="fs16"
-              fontFamily="secondary"
-              fontWeight="normal"
-              className="cardTile__heading"
-              data-locator={`payment-${dataLocatorPrefix}nametitle`}
+          <Row fullBleed>
+            <Col
+              colSize={{
+                small: 3,
+                large: 7,
+                medium: 4,
+              }}
             >
-              {cardName}
-            </BodyCopy>
-            {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
-            {isCreditCard ? getAddressDetails({ card }) : null}
-          </div>
-          <div className="cardTile__defaultSection">
-            {isCreditCard ? this.getMakeDefaultBadge() : null}
-            {this.getCardImage({ card, cardIcon })}
-          </div>
+              <div className="cardTile__cardDetails">
+                <BodyCopy
+                  tag="span"
+                  fontSize="fs16"
+                  fontFamily="secondary"
+                  fontWeight="normal"
+                  className="cardTile__heading"
+                  data-locator={`payment-${dataLocatorPrefix}nametitle`}
+                >
+                  {cardName}
+                </BodyCopy>
+                {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
+                {isCreditCard ? getAddressDetails({ card }) : null}
+              </div>
+            </Col>
+            <Col
+              colSize={{
+                small: 3,
+                large: 5,
+                medium: 4,
+              }}
+            >
+              <div className="cardTile__defaultSection">
+                {isCreditCard ? this.getMakeDefaultBadge() : null}
+                {this.getCardImage({ card, cardIcon })}
+              </div>
+            </Col>
+          </Row>
         </div>
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">

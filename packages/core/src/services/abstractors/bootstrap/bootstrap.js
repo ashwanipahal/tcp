@@ -9,19 +9,18 @@ import { getAPIConfig } from '../../../utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
 
 /**
- * Config Responsible for making all the http requests that need to be resolved before loading the application
- *  -   Header
- *  -   Footer
- *  -   Labels
- *  -   Navigation
- */
-const bootstrapModules = ['labels', 'header', 'footer', 'navigation'];
-
-/**
  * Asynchronous function to fetch data from service for given array of moduleIds
  * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
  */
-const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) => {
+const fetchBootstrapData = async ({ pages, labels, brand, country, channel }, modules) => {
+  /**
+   * Config Responsible for making all the http requests that need to be resolved before loading the application
+   *  -   Header
+   *  -   Footer
+   *  -   Labels
+   *  -   Navigation
+   */
+  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
   /**
    * Sets up query params for page requests
    */
@@ -94,7 +93,7 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
  *  -   Labels
  * @param {Array} pages
  */
-const bootstrap = async pages => {
+const bootstrap = async (pages, modules) => {
   const response = {};
   const apiConfig = typeof getAPIConfig === 'function' ? getAPIConfig() : '';
   const bootstrapParams = {
@@ -105,20 +104,21 @@ const bootstrap = async pages => {
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
   };
 
-  // TODO - This should be ideally done in Handler of graphQL
   try {
-    const bootstrapData = await fetchBootstrapData(bootstrapParams);
+    const bootstrapData = await fetchBootstrapData(bootstrapParams, modules);
+
     for (let i = 0; i < pages.length; i += 1) {
       const page = pages[i];
       // eslint-disable-next-line no-await-in-loop
-      response[pages] = bootstrapData[page];
+      response[page] = bootstrapData[page];
     }
-    response.modules = await layoutAbstractor.processData(bootstrapData.homepage);
-    response.header = await headerAbstractor.processData(bootstrapData.header);
-    response.footer = await footerAbstractor.processData(bootstrapData.footer);
-    response.labels = await labelsAbstractor.processData(bootstrapData.labels);
+
+    response.modules =
+      bootstrapData.homepage && (await layoutAbstractor.processData(bootstrapData.homepage));
+    response.header = headerAbstractor.processData(bootstrapData.header);
+    response.footer = footerAbstractor.processData(bootstrapData.footer);
+    response.labels = labelsAbstractor.processData(bootstrapData.labels);
     response.navigation = navigationAbstractor.processData(bootstrapData.navigation);
-    response.nav = await navigationAbstractor.getMock();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

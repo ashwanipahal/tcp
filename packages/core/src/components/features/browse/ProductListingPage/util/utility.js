@@ -1,8 +1,5 @@
 /* eslint-disable */
-export function parseBoolean(bool) {
-  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
-}
-
+import { parseBoolean } from '../../../../../utils/badge.util';
 /*
  * @method numericStringToBool
  * @description this method returns the bool value of string numeric passed
@@ -31,10 +28,13 @@ export const isBopisProduct = (isUSStore, product) => {
   let isOnlineOnly;
   if (isUSStore) {
     isOnlineOnly =
-      (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false; //validate if product is online only so it is not BOPIS eligible
+      (product && product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) ||
+      false; //validate if product is online only so it is not BOPIS eligible
   } else {
     isOnlineOnly =
-      (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
+      (product &&
+        product.TCPWebOnlyFlagCanadaStore &&
+        parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
       false;
   }
   return !isOnlineOnly;

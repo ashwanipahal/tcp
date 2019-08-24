@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { validateReduxCache } from '../../../../../../utils/cache.util';
-import { getCardList, PaymentSaga } from '../Payment.saga';
-import { setCardList, getCardListErr } from '../Payment.actions';
+import { getCardList, PaymentSaga, fetchModuleX } from '../Payment.saga';
+import { setCardList, getCardListErr, setModuleX } from '../Payment.actions';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
 
 describe('CardList saga', () => {
@@ -49,6 +49,20 @@ describe('CardList saga', () => {
       const cachedMethod = validateReduxCache(getCardList);
       const expected = takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedMethod);
       expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
+    });
+  });
+});
+
+describe('Module X Saga', () => {
+  let moduleXGen;
+  const payload = '66b73859-0893-4abe-9d0d-dc3d58fa2782';
+  beforeEach(() => {
+    moduleXGen = fetchModuleX({ payload });
+  });
+  describe('fetchmoduleX', () => {
+    it('should dispatch setmoduleX action for success response', () => {
+      const response = moduleXGen.next().value;
+      expect(moduleXGen.next(response).value).toEqual(put(setModuleX(response)));
     });
   });
 });

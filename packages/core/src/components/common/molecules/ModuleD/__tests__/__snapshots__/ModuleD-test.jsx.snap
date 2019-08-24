@@ -8,7 +8,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gqjmRU",
+        "componentId": "sc-jTzLTM",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gqjmRU",
+      "styledComponentId": "sc-jTzLTM",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -35,15 +35,8 @@ exports[`ModuleD component renders correctly 1`] = `
   forwardedRef={null}
 >
   <Styled(LinkText)
-    component="div"
+    component="h2"
     dataLocator="moduleD_headerlink"
-    fontSize={
-      Array [
-        "fs32",
-        "fs48",
-      ]
-    }
-    fontWeight="black"
     headerText={
       Array [
         Object {
@@ -61,8 +54,36 @@ exports[`ModuleD component renders correctly 1`] = `
       ]
     }
     headingClass="moduleD_header"
-    lineHeight="lh107"
+    promo={1}
     textAlign="center"
+    type="heading"
+  />
+  <Styled(PromoBanner)
+    className="moduleD__promo-banner"
+    data-locator="moduleD_promobanner"
+    fontSize="fs48"
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "http://example.com",
+          },
+          "textItems": Array [
+            Object {
+              "style": "style1",
+              "text": "ALL TEES",
+            },
+            Object {
+              "style": "style2",
+              "text": "67% OFF",
+            },
+          ],
+        },
+      ]
+    }
   />
   <Styled(Row)
     centered={true}
@@ -317,7 +338,6 @@ exports[`ModuleD component renders correctly 1`] = `
         buttonVariation="variable-width"
         className="moduleD_button"
         data-locator="moduleD_button"
-        title="SHOP ALL"
       >
         SHOP ALL
       </Styled(Button)>

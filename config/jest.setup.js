@@ -12,3 +12,7 @@ window.matchMedia =
       removeListener() {},
     };
   };
+
+jest.mock('../packages/core/src/components/common/hoc/withErrorBoundary/errorBoundary', () => {
+  return WrappedComponent => WrappedComponent;
+});

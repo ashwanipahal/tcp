@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { identifyBrand, getIconPath, getLocator } from '@tcp/core/src/utils';
-import { brand } from '../../../../../../../constants';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import { isGymboree, isTCP, getIconPath, getLocator } from '@tcp/core/src/utils';
 import style from '../BrandTabs.style';
 
 const BrandTabs = ({ className, data }) => {
@@ -14,10 +14,10 @@ const BrandTabs = ({ className, data }) => {
           const { title: alt, class: logoClass, target, url } = tabData;
           let active = false;
 
-          if (logoClass === 'header__brand-tab--tcp' && identifyBrand() === brand.TCP) {
+          if (logoClass === 'header__brand-tab--tcp' && isTCP()) {
             active = true;
           }
-          if (logoClass === 'header__brand-tab-gymboree' && identifyBrand() === brand.GYMBOREE) {
+          if (logoClass === 'header__brand-tab-gymboree' && isGymboree()) {
             active = true;
           }
           return (
@@ -48,5 +48,5 @@ BrandTabs.propTypes = {
   ).isRequired,
 };
 
-export default withStyles(BrandTabs, style);
+export default withStyles(errorBoundary(BrandTabs), style);
 export { BrandTabs as BrandTabsVanilla };

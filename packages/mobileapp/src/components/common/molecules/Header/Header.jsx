@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator } from '@tcp/core/src/utils/utils.native';
+import { getLocator } from '@tcp/core/src/utils';
 import HeaderPromo from '../HeaderPromo/HeaderPromo';
+import { readCookieMobileApp } from '../../../../utils/utils';
 import {
   Container,
   MessageContainer,
@@ -16,12 +17,14 @@ import {
   CartIconView,
   ImageColor,
   HeaderPromoContainer,
+  Touchable,
 } from './Header.style';
 
 // @flow
 type Props = {
   labels: object,
   headerPromo: Array,
+  navigation: object,
 };
 
 /**
@@ -47,9 +50,10 @@ class Header extends React.PureComponent<Props> {
    */
   constructor(props) {
     super(props);
+    const CART_ITEM_COUNTER = 'cartItemsCount';
     this.state = {
       isDownIcon: false,
-      cartVal: 0,
+      cartVal: parseInt(readCookieMobileApp(CART_ITEM_COUNTER) || 0, 10),
     };
   }
 
@@ -63,6 +67,18 @@ class Header extends React.PureComponent<Props> {
     });
   };
 
+  renderPromo = () => {
+    const { headerPromo } = this.props;
+    if (headerPromo) {
+      return (
+        <HeaderPromoContainer>
+          <HeaderPromo headerPromo={headerPromo} />
+        </HeaderPromoContainer>
+      );
+    }
+    return null;
+  };
+
   render() {
     const { isDownIcon, cartVal } = this.state;
     let headerLabels = {
@@ -70,8 +86,7 @@ class Header extends React.PureComponent<Props> {
       lbl_header_welcomeMessage: '',
     };
 
-    const { labels, headerPromo } = this.props;
-
+    const { labels } = this.props;
     if (labels) {
       headerLabels = labels;
     }
@@ -98,6 +113,7 @@ class Header extends React.PureComponent<Props> {
                 fontWeight="regular"
                 text={headerLabels.lbl_header_storeDefaultTitle}
                 data-locator={getLocator('global_findastoretext')}
+                accessibilityText="Drop Down"
               />
               {isDownIcon ? (
                 <Icon
@@ -115,24 +131,31 @@ class Header extends React.PureComponent<Props> {
             </StoreContainer>
           </MessageContainer>
           <CartContainer>
-            <CartIconView
-              source={cartIcon}
-              data-locator={getLocator('global_headerpanelbagicon')}
-            />
-            <BackgroundView />
-            <RoundView />
-            <BodyCopy
-              text={cartVal}
-              color="white"
-              style={TextStyle}
-              fontSize="fs10"
-              data-locator={getLocator('global_headerpanelbagitemtext')}
-            />
+            <Touchable
+              accessibilityRole="button"
+              onPress={() => {
+                // eslint-disable-next-line react/destructuring-assignment
+                this.props.navigation.navigate('BagPage');
+              }}
+            >
+              <CartIconView
+                source={cartIcon}
+                data-locator={getLocator('global_headerpanelbagicon')}
+              />
+              <BackgroundView />
+              <RoundView />
+              <BodyCopy
+                text={cartVal}
+                color="white"
+                style={TextStyle}
+                fontSize="fs10"
+                data-locator={getLocator('global_headerpanelbagitemtext')}
+                accessibilityText="Mini bag with count"
+              />
+            </Touchable>
           </CartContainer>
         </Container>
-        <HeaderPromoContainer>
-          <HeaderPromo headerPromo={headerPromo} />
-        </HeaderPromoContainer>
+        {this.renderPromo()}
       </SafeAreaViewStyle>
     );
   }

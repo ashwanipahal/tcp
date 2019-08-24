@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)
+    bonusPointsLength={2}
+  >
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={true}
+      fullWidth=""
+      height="42px"
+      id={0}
+      locator=""
+      onPress={[Function]}
+      style={
+        Object {
+          "color": undefined,
+          "fontSize": 10,
+          "fontWeight": "400",
+          "marginBottom": 24,
+          "paddingBottom": 5,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 5,
+        }
+      }
+      text="Available For Future Use"
+      url=""
+      width="103px"
+    />
+  </Styled(View)>
+  <Styled(View)
+    bonusPointsLength={2}
+  >
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={true}
+      fullWidth=""
+      height="42px"
+      id={1}
+      locator=""
+      onPress={[Function]}
+      style={
+        Object {
+          "color": undefined,
+          "fontSize": 10,
+          "fontWeight": "400",
+          "marginBottom": 24,
+          "paddingBottom": 5,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 5,
+        }
+      }
+      text="Applied to Order"
+      url=""
+      width="103px"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus point 1`] = `
+<Styled(View)>
+  <Styled(View)
+    bonusPointsLength={1}
+  >
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      disableButton={true}
+      fullWidth=""
+      height="42px"
+      id={0}
+      locator=""
+      onPress={[Function]}
+      style={
+        Object {
+          "color": undefined,
+          "fontSize": 10,
+          "fontWeight": "400",
+          "marginBottom": 24,
+          "paddingBottom": 5,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 14,
+        }
+      }
+      text="Available For Future Use"
+      url=""
+      width="225px"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

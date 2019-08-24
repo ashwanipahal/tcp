@@ -5,7 +5,13 @@ import FormPageHeading from '../../common/molecule/FormPageHeading';
 import CreditCardForm from '../organism/CreditCardForm';
 import Notification from '../../../../common/molecules/Notification';
 
-export const AddEditCreditCard = ({ labels, isEdit, errorMessage, ...otherProps }) => {
+export const AddEditCreditCard = ({
+  labels,
+  isEdit,
+  errorMessage,
+  addressFormLabels,
+  ...otherProps
+}) => {
   return (
     <React.Fragment>
       <Anchor
@@ -15,10 +21,14 @@ export const AddEditCreditCard = ({ labels, isEdit, errorMessage, ...otherProps 
         data-locator="payment-backlink"
         asPath="/account/payment"
       >
-        {labels.ACC_LBL_BACK_LINK_CTA}
+        {labels.common.lbl_common_backLink}
       </Anchor>
       <FormPageHeading
-        heading={isEdit ? labels.ACC_LBL_EDIT_CC_HEADING : labels.ACC_LBL_ADD_CC_HEADING}
+        heading={
+          isEdit
+            ? labels.paymentGC.lbl_payment_editCCHeading
+            : labels.paymentGC.lbl_payment_addCCHeading
+        }
         data-locator="payment-addcreditordebitcardheader"
       />
       {errorMessage && (
@@ -28,7 +38,12 @@ export const AddEditCreditCard = ({ labels, isEdit, errorMessage, ...otherProps 
           message={errorMessage}
         />
       )}
-      <CreditCardForm labels={labels} isEdit={isEdit} {...otherProps} />
+      <CreditCardForm
+        labels={labels}
+        isEdit={isEdit}
+        addressFormLabels={addressFormLabels}
+        {...otherProps}
+      />
     </React.Fragment>
   );
 };
@@ -37,6 +52,7 @@ AddEditCreditCard.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isEdit: PropTypes.bool,
   errorMessage: PropTypes.string,
+  addressFormLabels: PropTypes.shape({}).isRequired,
 };
 
 AddEditCreditCard.defaultProps = {

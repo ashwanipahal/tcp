@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExtraPointsTeaser should render correctly 1`] = `
+<div
+  className=" elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL"
+>
+  <div
+    className="extraPointsWrapper elem-pt-LRG elem-pb-SM"
+  >
+    <div
+      className="earnExtra alignCenter"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      >
+        Want to Earn Extra Points?
+      </Styled(BodyCopy)>
+    </div>
+    <div
+      className="getCloser alignCenter elem-pt-XS"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.secondary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      >
+        Get even closer to your next reward!
+      </Styled(BodyCopy)>
+    </div>
+    <div
+      className="learnMore alignCenter elem-pt-XS"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        fontSizeVariation="medium"
+        text="Learn More"
+        underline={true}
+      />
+    </div>
+  </div>
+</div>
+`;

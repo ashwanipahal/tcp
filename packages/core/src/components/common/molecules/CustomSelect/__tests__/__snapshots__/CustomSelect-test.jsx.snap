@@ -14,7 +14,7 @@ exports[`CustomSelect component should renders correctly 1`] = `
   textAlign="left"
 >
   <span>
-    Select from address book
+    Select from address book:
   </span>
   <Styled(BodyCopy)
     className="customSelectTitle"
@@ -47,7 +47,9 @@ exports[`CustomSelect component should renders correctly when optional fields ar
   link={Object {}}
   textAlign="left"
 >
-  <span />
+  <span>
+    :
+  </span>
   <Styled(BodyCopy)
     className="customSelectTitle"
     color="text.primary"

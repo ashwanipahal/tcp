@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRewards should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="my-rewards-heading"
+        color="text.primary"
+        component="p"
+        data-locator="my-rewards-heading"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      >
+        undefined (undefined)
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <EmptyRewards
+        labels={
+          Object {
+            "common": Object {},
+            "myPlaceRewards": Object {},
+          }
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="anchor-wrapper"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="my-rewards-program-details"
+        fontSizeVariation="medium"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+        noLink={true}
+        target="_blank"
+        underline={true}
+      />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="elem-ml-XXL"
+        data-locator="my-rewards-tnc"
+        fontSizeVariation="medium"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+        noLink={true}
+        target="_self"
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

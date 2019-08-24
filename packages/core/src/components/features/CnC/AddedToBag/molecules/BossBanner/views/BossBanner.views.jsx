@@ -18,7 +18,16 @@ const getModifiedString = labels => {
     <span dangerouslySetInnerHTML={{ __html: subHeading }} />
   );
 };
-
+const getModifiedHeaderText = labels => {
+  const heading = `<span className="spanNoRush">${labels.pickUpText.replace(
+    '#value',
+    `<b>5%</b>`
+  )}</span>`;
+  return (
+    // eslint-disable-next-line react/no-danger
+    <span dangerouslySetInnerHTML={{ __html: heading }} />
+  );
+};
 const BOSSBanner = ({ labels }: Props) => {
   return (
     <React.Fragment>
@@ -37,7 +46,7 @@ const BOSSBanner = ({ labels }: Props) => {
               fontWeight={['semibold']}
               textAlign="center"
             >
-              {labels.pickUpText}
+              {getModifiedHeaderText(labels)}
             </BodyCopy>
           </Col>
         </Row>

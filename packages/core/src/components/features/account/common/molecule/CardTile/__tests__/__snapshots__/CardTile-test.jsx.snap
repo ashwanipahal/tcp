@@ -5,101 +5,121 @@ exports[`CardTile should render correctly with amex card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
-      <Address
-        address={
+      <Styled(Col)
+        colSize={
           Object {
-            "addressLine1": "Yucca Street",
-            "addressLine2": "",
-            "city": "Los Angeles",
-            "country": "US",
-            "firstName": "six",
-            "lastName": "test",
-            "phone1": "3214567890",
-            "state": "CA",
-            "zipCode": "90028",
+            "large": 7,
+            "medium": 4,
+            "small": 3,
           }
         }
-        dataLocatorPrefix="payment-creditcard"
-        fontWeight="normal"
-        isDefault={false}
-        showCountry={false}
-        showPhone={false}
-      />
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <Styled(Badge)
-        dataLocator="payment-carddefaultpaymentbadge"
-        noMargin={true}
-        showCheckmark={true}
       >
-        DEFAULT PAYMENT
-      </Styled(Badge)>
-      <div
-        className="cardTile__img_wrapper elem-mt-XS"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-creditdebitendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="cardTile__expiry"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitexpiretext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh115"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          >
+            undefined10/2025
+          </Styled(BodyCopy)>
+          <Address
+            address={
+              Object {
+                "addressLine1": "Yucca Street",
+                "addressLine2": "",
+                "city": "Los Angeles",
+                "country": "US",
+                "firstName": "six",
+                "lastName": "test",
+                "phone1": "3214567890",
+                "state": "CA",
+                "zipCode": "90028",
+              }
+            }
+            dataLocatorPrefix="payment-creditcard"
+            fontWeight="normal"
+            isDefault={false}
+            showCountry={false}
+            showName={true}
+            showPhone={false}
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        <img
-          alt="COMPASSAMEX"
-          className="cardTile__img"
-          data-locator="Amex"
-          src="/static/images/amex-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <Styled(Badge)
+            dataLocator="payment-carddefaultpaymentbadge"
+            noMargin={true}
+            showCheckmark={true}
+          />
+          <div
+            className="cardTile__img_wrapper elem-mt-XS"
+          >
+            <img
+              alt="COMPASSAMEX"
+              className="cardTile__img"
+              data-locator="Amex"
+              src="/static/images/amex.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -112,9 +132,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    >
-      Edit
-    </Styled(Anchor)>
+    />
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
@@ -123,9 +141,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -135,87 +151,107 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        My Place Rewards Credit Card
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-      <Address
-        address={
+      <Styled(Col)
+        colSize={
           Object {
-            "addressLine1": "Yucca Street",
-            "addressLine2": "",
-            "city": "Los Angeles",
-            "country": "US",
-            "firstName": "six",
-            "lastName": "test",
-            "phone1": "3214567890",
-            "state": "CA",
-            "zipCode": "90028",
+            "large": 7,
+            "medium": 4,
+            "small": 3,
           }
         }
-        dataLocatorPrefix="payment-creditcard"
-        fontWeight="normal"
-        isDefault={false}
-        showCountry={false}
-        showPhone={false}
-      />
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="payment-makedefault"
-        fontSizeVariation="small"
-        onClick={[Function]}
-        to="/#"
-        underline={true}
       >
-        Make Default
-      </Styled(Anchor)>
-      <div
-        className="cardTile__img_wrapper elem-mt-MED"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-creditdebitendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+          <Address
+            address={
+              Object {
+                "addressLine1": "Yucca Street",
+                "addressLine2": "",
+                "city": "Los Angeles",
+                "country": "US",
+                "firstName": "six",
+                "lastName": "test",
+                "phone1": "3214567890",
+                "state": "CA",
+                "zipCode": "90028",
+              }
+            }
+            dataLocatorPrefix="payment-creditcard"
+            fontWeight="normal"
+            isDefault={false}
+            showCountry={false}
+            showName={true}
+            showPhone={false}
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        <img
-          alt="PLACE CARD"
-          className="cardTile__img"
-          data-locator="PLACE CARD"
-          src="/static/images/place-card-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="payment-makedefault"
+            fontSizeVariation="small"
+            onClick={[Function]}
+            to="/#"
+            underline={true}
+          />
+          <div
+            className="cardTile__img_wrapper elem-mt-MED"
+          >
+            <img
+              alt="PLACE CARD"
+              className="cardTile__img"
+              data-locator="PLACE CARD"
+              src="/static/images/TCP-CC.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -228,9 +264,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    >
-      Edit
-    </Styled(Anchor)>
+    />
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
@@ -239,9 +273,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -251,104 +283,124 @@ exports[`CardTile should render correctly with discover card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
-      <Address
-        address={
+      <Styled(Col)
+        colSize={
           Object {
-            "addressLine1": "Yucca Street",
-            "addressLine2": "",
-            "city": "Los Angeles",
-            "country": "US",
-            "firstName": "six",
-            "lastName": "test",
-            "phone1": "3214567890",
-            "state": "CA",
-            "zipCode": "90028",
+            "large": 7,
+            "medium": 4,
+            "small": 3,
           }
         }
-        dataLocatorPrefix="payment-creditcard"
-        fontWeight="normal"
-        isDefault={false}
-        showCountry={false}
-        showPhone={false}
-      />
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="payment-makedefault"
-        fontSizeVariation="small"
-        onClick={[Function]}
-        to="/#"
-        underline={true}
       >
-        Make Default
-      </Styled(Anchor)>
-      <div
-        className="cardTile__img_wrapper elem-mt-MED"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-creditdebitendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="cardTile__expiry"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitexpiretext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh115"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          >
+            undefined10/2025
+          </Styled(BodyCopy)>
+          <Address
+            address={
+              Object {
+                "addressLine1": "Yucca Street",
+                "addressLine2": "",
+                "city": "Los Angeles",
+                "country": "US",
+                "firstName": "six",
+                "lastName": "test",
+                "phone1": "3214567890",
+                "state": "CA",
+                "zipCode": "90028",
+              }
+            }
+            dataLocatorPrefix="payment-creditcard"
+            fontWeight="normal"
+            isDefault={false}
+            showCountry={false}
+            showName={true}
+            showPhone={false}
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        <img
-          alt="COMPASSDISCOVER"
-          className="cardTile__img"
-          data-locator="DISC"
-          src="/static/images/disc-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="payment-makedefault"
+            fontSizeVariation="small"
+            onClick={[Function]}
+            to="/#"
+            underline={true}
+          />
+          <div
+            className="cardTile__img_wrapper elem-mt-MED"
+          >
+            <img
+              alt="COMPASSDISCOVER"
+              className="cardTile__img"
+              data-locator="DISC"
+              src="/static/images/discover.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -361,9 +413,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    >
-      Edit
-    </Styled(Anchor)>
+    />
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
@@ -372,9 +422,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -384,57 +432,78 @@ exports[`CardTile should render correctly with gift card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Gift Card Name
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-giftcardnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-giftcardendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <div
-        className="cardTile__img_wrapper elem-mt-XL"
-      >
-        <img
-          alt="GiftCard"
-          className="cardTile__img"
-          data-locator="GC"
-          src="/static/images/gift-card-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <div
+            className="cardTile__img_wrapper elem-mt-XL"
+          >
+            <img
+              alt="GiftCard"
+              className="cardTile__img"
+              data-locator="GC"
+              src="/static/images/TCP-gift.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="giftcardTile__wrapper"
@@ -457,7 +526,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -522,7 +591,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
       font-weight: ",
                   [Function],
                   ";
-      top: 0;
+      top: ",
+                  [Function],
+                  ";
     }
   }
   .success__checkmark {
@@ -535,7 +606,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -572,6 +645,22 @@ exports[`CardTile should render correctly with gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                   ";
 ",
@@ -580,7 +669,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -600,9 +689,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        >
-           Check Balance
-        </Styled(Button)>
+        />
       </div>
     </form>
   </div>
@@ -617,9 +704,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -629,104 +714,124 @@ exports[`CardTile should render correctly with master card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
-      <Address
-        address={
+      <Styled(Col)
+        colSize={
           Object {
-            "addressLine1": "Yucca Street",
-            "addressLine2": "",
-            "city": "Los Angeles",
-            "country": "US",
-            "firstName": "six",
-            "lastName": "test",
-            "phone1": "3214567890",
-            "state": "CA",
-            "zipCode": "90028",
+            "large": 7,
+            "medium": 4,
+            "small": 3,
           }
         }
-        dataLocatorPrefix="payment-creditcard"
-        fontWeight="normal"
-        isDefault={false}
-        showCountry={false}
-        showPhone={false}
-      />
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="payment-makedefault"
-        fontSizeVariation="small"
-        onClick={[Function]}
-        to="/#"
-        underline={true}
       >
-        Make Default
-      </Styled(Anchor)>
-      <div
-        className="cardTile__img_wrapper elem-mt-MED"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-creditdebitendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="cardTile__expiry"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitexpiretext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh115"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          >
+            undefined10/2025
+          </Styled(BodyCopy)>
+          <Address
+            address={
+              Object {
+                "addressLine1": "Yucca Street",
+                "addressLine2": "",
+                "city": "Los Angeles",
+                "country": "US",
+                "firstName": "six",
+                "lastName": "test",
+                "phone1": "3214567890",
+                "state": "CA",
+                "zipCode": "90028",
+              }
+            }
+            dataLocatorPrefix="payment-creditcard"
+            fontWeight="normal"
+            isDefault={false}
+            showCountry={false}
+            showName={true}
+            showPhone={false}
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        <img
-          alt="COMPASSMASTERCARD"
-          className="cardTile__img"
-          data-locator="MC"
-          src="/static/images/mc-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="payment-makedefault"
+            fontSizeVariation="small"
+            onClick={[Function]}
+            to="/#"
+            underline={true}
+          />
+          <div
+            className="cardTile__img_wrapper elem-mt-MED"
+          >
+            <img
+              alt="COMPASSMASTERCARD"
+              className="cardTile__img"
+              data-locator="MC"
+              src="/static/images/mastercard.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -739,9 +844,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    >
-      Edit
-    </Styled(Anchor)>
+    />
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
@@ -750,9 +853,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -773,57 +874,78 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Gift Card Name
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-giftcardnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-giftcardendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <div
-        className="cardTile__img_wrapper elem-mt-XL"
-      >
-        <img
-          alt="GiftCard"
-          className="cardTile__img"
-          data-locator="GC"
-          src="/static/images/gift-card-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <div
+            className="cardTile__img_wrapper elem-mt-XL"
+          >
+            <img
+              alt="GiftCard"
+              className="cardTile__img"
+              data-locator="GC"
+              src="/static/images/TCP-gift.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="giftcardTile__wrapper"
@@ -846,7 +968,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -911,7 +1033,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       font-weight: ",
                   [Function],
                   ";
-      top: 0;
+      top: ",
+                  [Function],
+                  ";
     }
   }
   .success__checkmark {
@@ -924,7 +1048,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -961,6 +1087,22 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                   ";
 ",
@@ -969,7 +1111,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -989,9 +1131,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        >
-           Check Balance
-        </Styled(Button)>
+        />
       </div>
     </form>
   </div>
@@ -1006,9 +1146,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -1018,87 +1156,107 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        My Place Rewards Credit Card
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-      <Address
-        address={
+      <Styled(Col)
+        colSize={
           Object {
-            "addressLine1": "Yucca Street",
-            "addressLine2": "",
-            "city": "Los Angeles",
-            "country": "US",
-            "firstName": "six",
-            "lastName": "test",
-            "phone1": "3214567890",
-            "state": "CA",
-            "zipCode": "90028",
+            "large": 7,
+            "medium": 4,
+            "small": 3,
           }
         }
-        dataLocatorPrefix="payment-creditcard"
-        fontWeight="normal"
-        isDefault={false}
-        showCountry={false}
-        showPhone={false}
-      />
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="payment-makedefault"
-        fontSizeVariation="small"
-        onClick={[Function]}
-        to="/#"
-        underline={true}
       >
-        Make Default
-      </Styled(Anchor)>
-      <div
-        className="cardTile__img_wrapper elem-mt-MED"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-creditdebitendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+          <Address
+            address={
+              Object {
+                "addressLine1": "Yucca Street",
+                "addressLine2": "",
+                "city": "Los Angeles",
+                "country": "US",
+                "firstName": "six",
+                "lastName": "test",
+                "phone1": "3214567890",
+                "state": "CA",
+                "zipCode": "90028",
+              }
+            }
+            dataLocatorPrefix="payment-creditcard"
+            fontWeight="normal"
+            isDefault={false}
+            showCountry={false}
+            showName={true}
+            showPhone={false}
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        <img
-          alt="PLACE CARD"
-          className="cardTile__img"
-          data-locator="PLACE CARD"
-          src="/static/images/place-card-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="payment-makedefault"
+            fontSizeVariation="small"
+            onClick={[Function]}
+            to="/#"
+            underline={true}
+          />
+          <div
+            className="cardTile__img_wrapper elem-mt-MED"
+          >
+            <img
+              alt="PLACE CARD"
+              className="cardTile__img"
+              data-locator="PLACE CARD"
+              src="/static/images/TCP-CC.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -1111,9 +1269,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    >
-      Edit
-    </Styled(Anchor)>
+    />
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
@@ -1122,9 +1278,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -1134,57 +1288,79 @@ exports[`CardTile should render correctly with venmocard 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-venmonametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Your Venmo Account
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-venmoid"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-venmonametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-venmoid"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          >
+            1234
+          </Styled(BodyCopy)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        1234
-      </Styled(BodyCopy)>
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <div
-        className="cardTile__img_wrapper elem-mt-XL"
-      >
-        <img
-          alt="VENMO"
-          className="cardTile__img"
-          data-locator="VENMO"
-          src="/static/images/venmo-blue-acc-mark.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <div
+            className="cardTile__img_wrapper elem-mt-XL"
+          >
+            <img
+              alt="VENMO"
+              className="cardTile__img"
+              data-locator="VENMO"
+              src="/static/images/venmo.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -1197,9 +1373,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -1209,104 +1383,124 @@ exports[`CardTile should render correctly with visa card 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        data-locator="payment-creditdebitexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
-      <Address
-        address={
+      <Styled(Col)
+        colSize={
           Object {
-            "addressLine1": "Yucca Street",
-            "addressLine2": "",
-            "city": "Los Angeles",
-            "country": "US",
-            "firstName": "six",
-            "lastName": "test",
-            "phone1": "3214567890",
-            "state": "CA",
-            "zipCode": "90028",
+            "large": 7,
+            "medium": 4,
+            "small": 3,
           }
         }
-        dataLocatorPrefix="payment-creditcard"
-        fontWeight="normal"
-        isDefault={false}
-        showCountry={false}
-        showPhone={false}
-      />
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="payment-makedefault"
-        fontSizeVariation="small"
-        onClick={[Function]}
-        to="/#"
-        underline={true}
       >
-        Make Default
-      </Styled(Anchor)>
-      <div
-        className="cardTile__img_wrapper elem-mt-MED"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-creditdebitendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="cardTile__expiry"
+            color="text.primary"
+            component="p"
+            data-locator="payment-creditdebitexpiretext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh115"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          >
+            undefined10/2025
+          </Styled(BodyCopy)>
+          <Address
+            address={
+              Object {
+                "addressLine1": "Yucca Street",
+                "addressLine2": "",
+                "city": "Los Angeles",
+                "country": "US",
+                "firstName": "six",
+                "lastName": "test",
+                "phone1": "3214567890",
+                "state": "CA",
+                "zipCode": "90028",
+              }
+            }
+            dataLocatorPrefix="payment-creditcard"
+            fontWeight="normal"
+            isDefault={false}
+            showCountry={false}
+            showName={true}
+            showPhone={false}
+          />
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        <img
-          alt="COMPASSVISA"
-          className="cardTile__img"
-          data-locator="Visa"
-          src="/static/images/visa-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="payment-makedefault"
+            fontSizeVariation="small"
+            onClick={[Function]}
+            to="/#"
+            underline={true}
+          />
+          <div
+            className="cardTile__img_wrapper elem-mt-MED"
+          >
+            <img
+              alt="COMPASSVISA"
+              className="cardTile__img"
+              data-locator="Visa"
+              src="/static/images/visa.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -1319,9 +1513,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    >
-      Edit
-    </Styled(Anchor)>
+    />
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
@@ -1330,9 +1522,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -1342,57 +1532,78 @@ exports[`CardTile should show loading 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Gift Card Name
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-giftcardnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-giftcardendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <div
-        className="cardTile__img_wrapper elem-mt-XL"
-      >
-        <img
-          alt="GiftCard"
-          className="cardTile__img"
-          data-locator="GC"
-          src="/static/images/gift-card-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <div
+            className="cardTile__img_wrapper elem-mt-XL"
+          >
+            <img
+              alt="GiftCard"
+              className="cardTile__img"
+              data-locator="GC"
+              src="/static/images/TCP-gift.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="giftcardTile__wrapper"
@@ -1410,7 +1621,7 @@ exports[`CardTile should show loading 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1475,7 +1686,9 @@ exports[`CardTile should show loading 1`] = `
       font-weight: ",
                   [Function],
                   ";
-      top: 0;
+      top: ",
+                  [Function],
+                  ";
     }
   }
   .success__checkmark {
@@ -1488,7 +1701,9 @@ exports[`CardTile should show loading 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1525,6 +1740,22 @@ exports[`CardTile should show loading 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                   ";
 ",
@@ -1533,7 +1764,7 @@ exports[`CardTile should show loading 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1560,9 +1791,7 @@ exports[`CardTile should show loading 1`] = `
           link={Object {}}
           tag="span"
           textAlign="left"
-        >
-          LOADING...
-        </Styled(BodyCopy)>
+        />
       </div>
     </form>
   </div>
@@ -1577,9 +1806,7 @@ exports[`CardTile should show loading 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;
@@ -1589,57 +1816,78 @@ exports[`CardTile should show remining balance 1`] = `
   <div
     className="cardTile"
   >
-    <div
-      className="cardTile__cardDetails"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(BodyCopy)
-        className="cardTile__heading"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardnametitle"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Gift Card Name
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__number"
-        color="text.primary"
-        component="p"
-        data-locator="payment-giftcardendingtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh107"
-        link={Object {}}
-        tag="span"
-        textAlign="left"
+        <div
+          className="cardTile__cardDetails"
+        >
+          <Styled(BodyCopy)
+            className="cardTile__heading"
+            color="text.primary"
+            component="p"
+            data-locator="payment-giftcardnametitle"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="normal"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            tag="span"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="cardTile__number"
+            color="text.primary"
+            component="span"
+            data-locator="payment-giftcardendingtext"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            lineHeights="lh107"
+            link={Object {}}
+            textAlign="left"
+          >
+            undefined6765
+          </Styled(BodyCopy)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 4,
+            "small": 3,
+          }
+        }
       >
-        Card ending in 6765
-      </Styled(BodyCopy)>
-    </div>
-    <div
-      className="cardTile__defaultSection"
-    >
-      <div
-        className="cardTile__img_wrapper elem-mt-XL"
-      >
-        <img
-          alt="GiftCard"
-          className="cardTile__img"
-          data-locator="GC"
-          src="/static/images/gift-card-small.png"
-        />
-      </div>
-    </div>
+        <div
+          className="cardTile__defaultSection"
+        >
+          <div
+            className="cardTile__img_wrapper elem-mt-XL"
+          >
+            <img
+              alt="GiftCard"
+              className="cardTile__img"
+              data-locator="GC"
+              src="/static/images/TCP-gift.svg"
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
   </div>
   <div
     className="giftcardTile__wrapper"
@@ -1657,7 +1905,7 @@ exports[`CardTile should show remining balance 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-htoDjs",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1722,7 +1970,9 @@ exports[`CardTile should show remining balance 1`] = `
       font-weight: ",
                   [Function],
                   ";
-      top: 0;
+      top: ",
+                  [Function],
+                  ";
     }
   }
   .success__checkmark {
@@ -1735,7 +1985,9 @@ exports[`CardTile should show remining balance 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1772,6 +2024,22 @@ exports[`CardTile should show remining balance 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                   ";
 ",
@@ -1780,7 +2048,7 @@ exports[`CardTile should show remining balance 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1807,9 +2075,7 @@ exports[`CardTile should show remining balance 1`] = `
           link={Object {}}
           tag="span"
           textAlign="left"
-        >
-          Remaining balance
-        </Styled(BodyCopy)>
+        />
         <Styled(BodyCopy)
           className=""
           color="text.primary"
@@ -1840,9 +2106,7 @@ exports[`CardTile should show remining balance 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    >
-      Delete
-    </Styled(Anchor)>
+    />
   </div>
 </div>
 `;

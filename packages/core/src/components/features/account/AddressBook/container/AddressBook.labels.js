@@ -33,7 +33,7 @@ const labels = {
   acc_lbl_phone_number: 'Phone Number',
   acc_lbl_cancel_cta: 'CANCEL',
   acc_lbl_add_address_cta: 'ADD ADDRESS',
-  acc_lbl_update_address_cta: 'UPDATE',
+  lbl_common_updateAddressCTA: 'UPDATE',
   acc_lbl_set_default: 'Set as default shipping address',
   acc_lbl_verify_your_address_header: 'Verify Your Address',
   acc_lbl_verify_your_address_heading_add: 'Add Address',
@@ -55,6 +55,7 @@ const labels = {
   acc_lbl_edit_address_cta: 'EDIT ADDRESS',
   acc_lbl_add_address_form_heading: 'Add New Shipping Address',
   acc_lbl_edit_address_form_heading: 'EDIT SHIPPING ADDRESS',
+  acc_lbl_create_account: 'Create Account',
 };
 
 export default labels;

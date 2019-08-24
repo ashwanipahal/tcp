@@ -7,6 +7,8 @@ export const FONTS = {
 };
 
 export const LETTER_SPACINGS = {
+  ls400: '4px',
+  ls317: '3.17px',
   ls271: '2.71px',
   ls257: '2.57px',
   ls222: '2.22px',
@@ -27,6 +29,7 @@ export const FONT_WEIGHTS = {
 
 export const FONT_SIZES = {
   fs64: '64px',
+  fs52: '52px',
   fs48: '48px',
   fs42: '42px',
   fs38: '38px',

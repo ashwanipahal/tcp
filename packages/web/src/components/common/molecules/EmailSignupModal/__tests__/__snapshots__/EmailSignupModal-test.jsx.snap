@@ -2,7 +2,7 @@
 
 exports[`EmailSignupModal component renders correctly 1`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -160,7 +160,9 @@ exports[`EmailSignupModal component renders correctly 1`] = `
       font-weight: ",
                         [Function],
                         ";
-      top: 0;
+      top: ",
+                        [Function],
+                        ";
     }
   }
   .success__checkmark {
@@ -173,7 +175,9 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                        [Function],
+                        ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -210,6 +214,22 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   ",
                         [Function],
                         ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                        [Function],
+                        ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                         ";
 ",
@@ -275,13 +295,13 @@ exports[`EmailSignupModal component renders correctly 1`] = `
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;
 
 exports[`EmailSignupModal component renders correctly when button is clicked 1`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -439,7 +459,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       font-weight: ",
                         [Function],
                         ";
-      top: 0;
+      top: ",
+                        [Function],
+                        ";
     }
   }
   .success__checkmark {
@@ -452,7 +474,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                        [Function],
+                        ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -489,6 +513,22 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
   ",
                         [Function],
                         ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                        [Function],
+                        ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                         ";
 ",
@@ -554,13 +594,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;
 
 exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -718,7 +758,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       font-weight: ",
                         [Function],
                         ";
-      top: 0;
+      top: ",
+                        [Function],
+                        ";
     }
   }
   .success__checkmark {
@@ -731,7 +773,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                        [Function],
+                        ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -768,6 +812,22 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   ",
                         [Function],
                         ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                        [Function],
+                        ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                         ";
 ",
@@ -833,6 +893,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;

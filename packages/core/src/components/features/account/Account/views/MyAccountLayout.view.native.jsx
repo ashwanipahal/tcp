@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import RewardsPoints from '@tcp/core/src/components/features/account/common/organism/RewardsPoints';
 import MyAccountDropdownNav from './MyAccountDropdownNav.view';
 import ParentContainer from '../styles/MyAccountLayout.style.native';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -10,6 +11,9 @@ type Props = {
   mainContent: Function,
   handleComponentChange: Function,
   className: string,
+  labels: object,
+  isUserLoggedIn: string,
+  navigation: object,
 };
 
 /**
@@ -21,11 +25,29 @@ type Props = {
  */
 
 const MyAccountLayoutView = (props: Props) => {
-  const { navData, mainContent: MainContent, handleComponentChange, className } = props;
+  const {
+    navData,
+    mainContent: MainContent,
+    handleComponentChange,
+    className,
+    labels,
+    isUserLoggedIn,
+    navigation,
+  } = props;
   return (
     <View className={className} {...props}>
-      <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
-      <MainContent />
+      {isUserLoggedIn && (
+        <React.Fragment>
+          <RewardsPoints tableView labels={labels} />
+          <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
+        </React.Fragment>
+      )}
+      <MainContent
+        isUserLoggedIn={isUserLoggedIn}
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+        navigation={navigation}
+      />
     </View>
   );
 };

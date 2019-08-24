@@ -1,6 +1,6 @@
 import AWSAppSync from 'aws-appsync';
 import fetch from 'node-fetch';
-import { awsAppSync as config } from '../../config';
+import { getAPIConfig } from '../../../utils/utils';
 
 // TODO - use util's isServer Method
 if (!process.browser) {
@@ -39,15 +39,29 @@ class AwsAppSyncClient extends AWSAppSync {
    * This function returns config options used to initialize awsAppSync Class
    */
   static clientOptions() {
+    const apiConfigObj = getAPIConfig();
+    // eslint-disable-next-line no-console
+    console.log('GraphQL Endpoint ------------ ', apiConfigObj.graphql_endpoint_url);
     return {
-      url: config.aws_appsync_graphqlEndpoint,
-      region: config.aws_appsync_region,
+      url: apiConfigObj.graphql_endpoint_url,
+      region: apiConfigObj.graphql_reqion,
       auth: {
-        type: config.aws_appsync_authenticationType,
-        apiKey: config.aws_appsync_apiKey,
+        type: apiConfigObj.graphql_auth_type,
+        apiKey: apiConfigObj.graphql_api_key,
       },
       disableOffline: true,
     };
+  }
+
+  /**
+   * @function resetClient
+   * This method resets singleton instance - needed for brand switch in mobile app
+   *
+   * @static
+   * @memberof AwsAppSyncClient
+   */
+  static resetClient() {
+    this[singleton] = null;
   }
 
   /**
@@ -56,16 +70,7 @@ class AwsAppSyncClient extends AWSAppSync {
    * @returns {Promise} Resolves with data or rejects with error object
    */
   executeQuery(query) {
-    return this.hydrated().then(client => {
-      return client.query({ query, fetchPolicy: 'network-only' }).catch(e => {
-        this.errorHandler(e);
-      });
-    });
-  }
-
-  errorHandler(e) {
-    // eslint-disable-next-line no-console
-    console.log(this, e);
+    return this.hydrated().then(client => client.query({ query, fetchPolicy: 'network-only' }));
   }
 }
 

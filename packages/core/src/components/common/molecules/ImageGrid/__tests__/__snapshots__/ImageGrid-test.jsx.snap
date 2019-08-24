@@ -4,13 +4,7 @@ exports[`Image grid component renders correctly 1`] = `
 <div>
   <Styled(Row)
     className="image-grid"
-    fullBlead={
-      Object {
-        "large": true,
-        "medium": false,
-        "small": false,
-      }
-    }
+    fullBleed={true}
   >
     <Styled(Col)
       className="image-col"
@@ -21,27 +15,34 @@ exports[`Image grid component renders correctly 1`] = `
           "small": 3,
         }
       }
+      key="0"
     >
-      <WithTheme(DamImage)
-        data-locator="moduleK_image_0"
-        imgConfigs={
-          Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
-          ]
-        }
-        imgData={
-          Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-1.jpg",
+      <Styled(Anchor)
+        target=""
+        text="link 1"
+        title=""
+        url="http://example.com"
+      >
+        <WithTheme(DamImage)
+          data-locator="moduleK_image__1"
+          imgConfigs={
+            Array [
+              "ar_1:1,q_80,w_384",
+              "ar_1:1,q_80,w_300",
+              "ar_1:1,q_80,w_360",
+            ]
           }
-        }
-      />
+          imgData={
+            Object {
+              "alt": "dinos",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg",
+            }
+          }
+        />
+      </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
       className="image-col"
@@ -52,27 +53,34 @@ exports[`Image grid component renders correctly 1`] = `
           "small": 3,
         }
       }
+      key="1"
     >
-      <WithTheme(DamImage)
-        data-locator="moduleK_image_1"
-        imgConfigs={
-          Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
-          ]
-        }
-        imgData={
-          Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-2.jpg",
+      <Styled(Anchor)
+        target=""
+        text=""
+        title=""
+        url="http://example.com"
+      >
+        <WithTheme(DamImage)
+          data-locator="moduleK_image__2"
+          imgConfigs={
+            Array [
+              "ar_1:1,q_80,w_384",
+              "ar_1:1,q_80,w_300",
+              "ar_1:1,q_80,w_360",
+            ]
           }
-        }
-      />
+          imgData={
+            Object {
+              "alt": "",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
+            }
+          }
+        />
+      </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
       className="image-col"
@@ -83,27 +91,34 @@ exports[`Image grid component renders correctly 1`] = `
           "small": 3,
         }
       }
+      key="2"
     >
-      <WithTheme(DamImage)
-        data-locator="moduleK_image_2"
-        imgConfigs={
-          Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
-          ]
-        }
-        imgData={
-          Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-3.jpg",
+      <Styled(Anchor)
+        target=""
+        text=""
+        title=""
+        url="http://example.com"
+      >
+        <WithTheme(DamImage)
+          data-locator="moduleK_image__3"
+          imgConfigs={
+            Array [
+              "ar_1:1,q_80,w_384",
+              "ar_1:1,q_80,w_300",
+              "ar_1:1,q_80,w_360",
+            ]
           }
-        }
-      />
+          imgData={
+            Object {
+              "alt": "",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
+            }
+          }
+        />
+      </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
       className="image-col"
@@ -114,27 +129,34 @@ exports[`Image grid component renders correctly 1`] = `
           "small": 3,
         }
       }
+      key="3"
     >
-      <WithTheme(DamImage)
-        data-locator="moduleK_image_3"
-        imgConfigs={
-          Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
-          ]
-        }
-        imgData={
-          Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-4.jpg",
+      <Styled(Anchor)
+        target=""
+        text=""
+        title=""
+        url="http://example.com"
+      >
+        <WithTheme(DamImage)
+          data-locator="moduleK_image__4"
+          imgConfigs={
+            Array [
+              "ar_1:1,q_80,w_384",
+              "ar_1:1,q_80,w_300",
+              "ar_1:1,q_80,w_360",
+            ]
           }
-        }
-      />
+          imgData={
+            Object {
+              "alt": "",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
+            }
+          }
+        />
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
 </div>

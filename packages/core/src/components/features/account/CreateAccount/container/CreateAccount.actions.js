@@ -1,8 +1,15 @@
 import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
 
-const createAccount = payload => ({
+export const createAccount = payload => ({
   type: CREATE_ACCOUNT_CONSTANTS.CREATE_AN_ACCOUNT,
   payload,
 });
 
-export default createAccount;
+export const createAccountErr = payload => ({
+  type: CREATE_ACCOUNT_CONSTANTS.CREATE_AN_ACCOUNT_ERR,
+  payload,
+});
+
+export const resetCreateAccountErr = () => ({
+  type: CREATE_ACCOUNT_CONSTANTS.RESET_CREATE_AN_ACCOUNT_ERR,
+});

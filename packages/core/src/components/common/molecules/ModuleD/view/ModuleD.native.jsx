@@ -1,20 +1,23 @@
 // @flow
 import React from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
-import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { FlatList } from 'react-native';
+import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
-import { ButtonWrapper, Tile, HeadingWrapper, Wrapper } from '../ModuleD.style.native';
+import PromoBanner from '../../PromoBanner';
+import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 import LinkText from '../../LinkText';
 
 type Props = {
   headerText: Object[],
+  promoBanner: Object[],
   smallCompImage: Object[],
   singleCTAButton: Object,
+  navigation: Object,
 };
 
-const imageSize = parseInt((getScreenWidth() - 32) / 2, 10);
+const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
 
 /**
@@ -36,31 +39,33 @@ const getUrlWithCrop = url => {
  * @param {Object} item : Single object to render inside Flatlist.
  * @return {node} function returns module D single element item.
  */
-const renderItem = item => {
+const renderItem = (item, navigation) => {
   const {
     item: { image, link },
+    index,
   } = item;
 
   const anchorEnable = true;
   return (
-    <Tile tileIndex={item.index}>
-      <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
+    <Tile tileIndex={index} key={index.toString()}>
+      <Anchor url={link.url} navigation={navigation}>
         <Image
           alt={image.alt}
+          testID={`${getLocator('moduleD_image')}${index + 1}`}
           source={{ uri: getUrlWithCrop(image.url) }}
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
         />
-      </TouchableOpacity>
+      </Anchor>
 
       <Anchor
+        testID={`${getLocator('moduleD_textlink')}${index + 1}`}
         fontSizeVariation="large"
         text={link.text}
         visible={anchorEnable}
-        onPress={() => {
-          UrlHandler(link.url);
-        }}
+        url={link.url}
+        navigation={navigation}
       />
     </Tile>
   );
@@ -79,30 +84,37 @@ const renderItem = item => {
  */
 
 const ModuleD = (props: Props) => {
-  const { smallCompImage, headerText, singleCTAButton } = props;
+  const { smallCompImage, headerText, promoBanner, singleCTAButton, navigation } = props;
   const buttonWidth = { width: 225 };
   return (
     <Wrapper>
-      <HeadingWrapper accessibilityRole="button" onPress={() => UrlHandler(headerText[0].link.url)}>
+      {headerText && (
         <LinkText
+          headerText={headerText}
+          navigation={navigation}
           fontFamily="primary"
           fontSize="fs36"
           letterSpacing="ls167"
           textAlign="center"
           color="text.primary"
           fontWeight="extrabold"
-          textItems={headerText[0].textItems}
-          onPress={() => {
-            UrlHandler(headerText[0].link.url);
-          }}
+          type="heading"
+          testID={getLocator('moduleD_headerlink')}
         />
-      </HeadingWrapper>
+      )}
+      {promoBanner && (
+        <PromoBanner
+          promoBanner={promoBanner}
+          testID={getLocator('moduleD_promobanner')}
+          navigation={navigation}
+        />
+      )}
 
       <FlatList
         numColumns={2}
         data={smallCompImage}
         keyExtractor={keyExtractor}
-        renderItem={renderItem}
+        renderItem={item => renderItem(item, navigation)}
       />
 
       <ButtonWrapper>
@@ -111,10 +123,10 @@ const ModuleD = (props: Props) => {
           accessibilityLabel={singleCTAButton.title}
           buttonVariation="variable-width"
           style={buttonWidth}
-          text={singleCTAButton.title}
-          onPress={() => {
-            UrlHandler(singleCTAButton.url);
-          }}
+          text={singleCTAButton.text}
+          testID={getLocator('moduleD_button')}
+          url={singleCTAButton.url}
+          navigation={navigation}
         />
       </ButtonWrapper>
     </Wrapper>

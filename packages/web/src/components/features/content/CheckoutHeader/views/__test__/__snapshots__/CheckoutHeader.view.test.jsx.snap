@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
+<header
+  className="test"
+>
+  <Styled(Row)
+    className="header-topnav__row"
+  >
+    <button
+      className="exitFromCheckout"
+      onClick={[Function]}
+    >
+      <Styled(Image)
+        className="collapsible-icon"
+        src="/static/images/carrot-large-left.png"
+      />
+    </button>
+    <Styled(Col)
+      className="header-topnav__brand-tabs"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 4,
+        }
+      }
+    >
+      <Styled(BrandTabs) />
+    </Styled(Col)>
+    <Styled(Col)
+      className="header-topnav__promo-area"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs32"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="header-topnav__track-order"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          data-locator="checkout-header-returnToBag"
+          fontSizeVariation="medium"
+          to="/bag"
+          underline={true}
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+    className="checkout-mobile-header"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+    className="header-stepindicator"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <withRouter(Connect(CheckoutProgressIndicator)) />
+    </Styled(Col)>
+  </Styled(Row)>
+</header>
+`;

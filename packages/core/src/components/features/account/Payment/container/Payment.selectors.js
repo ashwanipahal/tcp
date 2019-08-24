@@ -21,6 +21,15 @@ export const getVenmoCards = createSelector(
   creditCardList => creditCardList && creditCardList.filter(card => card.ccType === 'VENMO')
 );
 
+export const getCreditCardDefault = createSelector(
+  [getCardListState],
+  creditCardList =>
+    creditCardList &&
+    creditCardList.filter(
+      card => card.defaultInd === true && card.ccType !== 'VENMO' && card.ccType !== 'GiftCard'
+    )
+);
+
 export const getCardListFetchingState = state => {
   return state.PaymentReducer.get('isFetching');
 };
@@ -44,3 +53,19 @@ export const showUpdatedNotificationOnModalState = state => {
 export const checkbalanceValue = state => {
   return state.PaymentReducer.get('giftcardBalance');
 };
+
+export const getPaymentBannerContentId = state => {
+  let paymentBannerContentId;
+  if (state.Labels.account.paymentGC && Array.isArray(state.Labels.account.paymentGC.referred)) {
+    state.Labels.account.paymentGC.referred.forEach(label => {
+      if (label.name === 'paymentGCTopBanner') paymentBannerContentId = label.contentId;
+    });
+  }
+  return paymentBannerContentId;
+};
+
+export const getPaymentBannerRichTextSelector = state => {
+  return state.PaymentReducer.get('paymentBannerRichText');
+};
+
+export const getLabels = state => state.Labels.account;

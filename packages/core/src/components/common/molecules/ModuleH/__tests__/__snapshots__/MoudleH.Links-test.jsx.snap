@@ -10,7 +10,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
   >
     <Styled(Anchor)
       className="moduleH__CTALink "
-      dataLocator="moduleH_cta_links_1"
+      dataocator="moduleH_cta_links_1"
       target=""
       to="/toddler"
     >
@@ -23,7 +23,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
   >
     <Styled(Anchor)
       className="moduleH__CTALink moduleH__CTALink--active"
-      dataLocator="moduleH_cta_links_2"
+      dataocator="moduleH_cta_links_2"
       target=""
       to="/girl"
     >
@@ -36,7 +36,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
   >
     <Styled(Anchor)
       className="moduleH__CTALink "
-      dataLocator="moduleH_cta_links_3"
+      dataocator="moduleH_cta_links_3"
       target=""
       to="/toddler-boy"
     >
@@ -49,7 +49,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
   >
     <Styled(Anchor)
       className="moduleH__CTALink "
-      dataLocator="moduleH_cta_links_4"
+      dataocator="moduleH_cta_links_4"
       target=""
       to="/boy"
     >
@@ -62,7 +62,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
   >
     <Styled(Anchor)
       className="moduleH__CTALink "
-      dataLocator="moduleH_cta_links_5"
+      dataocator="moduleH_cta_links_5"
       target=""
       to="/baby"
     >

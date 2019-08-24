@@ -3,7 +3,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Image.style';
-import { cropImageUrl } from '../../../../../utils/utils.native';
+import { cropImageUrl } from '../../../../../utils/index.native';
 
 type Props = {
   source: string,
@@ -17,9 +17,15 @@ const ImageComp = (props: Props) => {
   const urlVal = url || '';
   const sourceVal = source || '';
   if (sourceVal === '') {
-    return <Image {...otherProps} source={{ uri: cropImageUrl(urlVal, cropVal) }} />;
+    return (
+      <Image
+        {...otherProps}
+        accessibilityRole="image"
+        source={{ uri: cropImageUrl(urlVal, cropVal) }}
+      />
+    );
   }
-  return <Image {...otherProps} source={source} />;
+  return <Image {...otherProps} source={source} accessibilityRole="image" />;
 };
 
 export default withStyles(ImageComp, style);

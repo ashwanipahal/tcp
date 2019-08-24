@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
+<div
+  className=""
+  dataLocator="alternate-div"
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-EHOje",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-EHOje",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="Alternate-checkbox"
+        enableSuccessCheck={false}
+        name="hasAlternatePickup"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          textAlign="left"
+        />
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`Coupon component should renders correctly when data is present 1`] = `
+<div
+  className=""
+  dataLocator="alternate-div"
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-EHOje",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-EHOje",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="Alternate-checkbox"
+        enableSuccessCheck={false}
+        name="hasAlternatePickup"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          textAlign="left"
+        />
+      </Field>
+      <Styled(BodyCopy)
+        className="alterNativeSubText"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={Object {}}
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(ContactFormFields)
+    className="pick-up-alternate-input"
+    isCondensed={false}
+    labels={Object {}}
+    showEmailAddress={true}
+  />
+</div>
+`;

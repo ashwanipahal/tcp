@@ -3,7 +3,7 @@ import Address from '../../../../common/molecules/Address';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteAddressModal.style';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
 
@@ -60,26 +60,41 @@ class DeleteAddressModal extends React.Component<Props> {
    */
   renderModal = () => {
     const { data, className } = this.props;
-    const { buttons, description, title } = data;
+    const { buttons, description, title, msg } = data;
     const { confirm, cancel } = buttons;
     return (
       <div className={className}>
-        <BodyCopy
-          bodySize="seven"
-          fontWeight="bold"
-          fontFamily="secondaryFontFamily"
-          className="deleteAddressModal_modalTitle"
-          dataLocator="addressdeletemodalconfirmtext"
-        >
-          {title}
-        </BodyCopy>
-        <Address
-          address={description}
-          className="deleteAddressModal_addressToDelete"
-          fontWeight="bold"
-          dataLocatorPrefix="address-delete-modal"
-        />
         <div className="deleteAddressModal_btnWrapper">
+          <BodyCopy
+            fontSize="fs22"
+            textAlign="center"
+            fontWeight="semibold"
+            fontFamily="secondary"
+            className="elem-mb-SM elem-mt-LRG"
+            dataLocator="addressdeletemodalconfirmtext"
+          >
+            {title}
+          </BodyCopy>
+          {description.xcont_isBillingAddress === 'true' && (
+            <BodyCopy
+              fontSize="fs12"
+              textAlign="center"
+              fontWeight="semibold"
+              fontFamily="secondary"
+              color="red.500"
+              className="elem-mb-SM"
+              dataLocator="address-delete-redtext"
+            >
+              {msg}
+            </BodyCopy>
+          )}
+          <Address
+            address={description}
+            className="deleteAddressModal_addressToDelete elem-mt-LRG"
+            fontWeight="extrabold"
+            dataLocatorPrefix="address-delete-modal"
+          />
+
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
@@ -127,7 +142,7 @@ class DeleteAddressModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.errorMessage}
+            message={labels.common.lbl_common_errorMessage}
           />
         )}
 

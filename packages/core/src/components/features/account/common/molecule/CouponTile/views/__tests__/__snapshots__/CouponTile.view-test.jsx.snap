@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponTile Component should render correctly 1`] = `
+<Styled(BodyCopy)
+  className=" elem-mb-SM"
+  color="text.primary"
+  component="li"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={Object {}}
+  textAlign="left"
+>
+  <Styled(CouponIcon)
+    className="elem-mr-XS"
+    coupon={Object {}}
+  />
+  <Styled(BodyCopy)
+    className="elem-pt-XS"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="elem-mb-XXXS"
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+      fontFamily="primary"
+      fontSize="fs10"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    >
+       undefined
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

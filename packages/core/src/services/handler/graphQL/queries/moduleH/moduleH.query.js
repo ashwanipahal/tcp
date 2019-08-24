@@ -3,7 +3,6 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
-
     composites {
       headerText {
         textItems {
@@ -14,7 +13,6 @@ const buildQuery = ({ slot, contentId }) => `
           url
           title
           target
-          external
         }
       }
 
@@ -23,7 +21,6 @@ const buildQuery = ({ slot, contentId }) => `
             url
             title
             target
-            external
           }
           image {
             url

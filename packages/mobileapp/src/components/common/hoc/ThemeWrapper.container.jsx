@@ -7,6 +7,7 @@ import themeGymboree from '@tcp/core/styles/themes/Gymboree';
 import updateAppType from './ThemeWrapper.actions';
 import { APP_TYPE } from './ThemeWrapper.constants';
 import { getAppType } from './ThemeWrapper.selectors';
+import resetReduxStore from '../../../reduxStore/actions';
 
 /**
  * @param {string} appType : Props for app type
@@ -18,6 +19,18 @@ export class ThemeWrapper extends React.PureComponent {
     super(props);
     const { appType, updateAppTypeHandler } = props;
     updateAppTypeHandler(appType);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { appType: prevAppType } = this.props;
+    const { appType, switchBrand, resetReduxStoreData, updateAppTypeHandler } = nextProps;
+
+    // update brand name in utils when app type is changed
+    if (appType !== prevAppType && switchBrand) {
+      resetReduxStoreData();
+      updateAppTypeHandler(appType);
+      switchBrand(appType);
+    }
   }
 
   /**
@@ -47,10 +60,14 @@ ThemeWrapper.propTypes = {
   children: PropTypes.shape({}).isRequired,
   appType: PropTypes.string.isRequired,
   updateAppTypeHandler: PropTypes.func,
+  switchBrand: PropTypes.func,
+  resetReduxStoreData: PropTypes.func,
 };
 
 ThemeWrapper.defaultProps = {
   updateAppTypeHandler: () => {},
+  switchBrand: null,
+  resetReduxStoreData: null,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -67,6 +84,7 @@ export const mapDispatchToProps = dispatch => {
     updateAppTypeHandler: _appType => {
       dispatch(updateAppType(_appType));
     },
+    resetReduxStoreData: () => dispatch(resetReduxStore()),
   };
 };
 

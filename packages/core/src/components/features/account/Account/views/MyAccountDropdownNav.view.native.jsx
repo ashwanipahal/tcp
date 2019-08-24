@@ -25,7 +25,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      dropDownItem: 'addressBookMobile',
+      dropDownItem: 'accountOverviewMobile',
     };
   }
 
@@ -33,7 +33,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     const { navData, handleComponentChange, className } = this.props;
     const { dropDownItem } = this.state;
     const dropDownStyle = {
-      height: 42,
+      height: 49,
       border: 1,
     };
     const itemStyle = {

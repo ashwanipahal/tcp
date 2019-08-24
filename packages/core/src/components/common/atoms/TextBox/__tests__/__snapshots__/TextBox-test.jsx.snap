@@ -27,21 +27,29 @@ exports[`Textbox component renders correctly 1`] = `
     link={Object {}}
     textAlign="left"
   />
-  <Styled(BodyCopy)
-    aria-live="assertive"
+  <div
     className="TextBox__error"
-    color="error"
-    component="div"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={Object {}}
-    role="alert"
-    textAlign="left"
-  />
+  >
+    <div
+      aria-disabled="true"
+      className=""
+    />
+    <Styled(BodyCopy)
+      aria-live="assertive"
+      className={null}
+      color="error"
+      component="div"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      role="alert"
+      textAlign="left"
+    />
+  </div>
   <div
     className="success__checkmark"
   />

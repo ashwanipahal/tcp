@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponList component should renders applied list 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="semibold"
+      text="Heading (6)"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-11T18:29:00.001Z",
+          "id": "Y00105575",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $60",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$10 OFF on $50",
+        }
+      }
+      key="Y00105575"
+      labels={Object {}}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-12T18:29:00.001Z",
+          "id": "Y00105578",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $70",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$20 OFF On $50",
+        }
+      }
+      key="Y00105578"
+      labels={Object {}}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-13T18:29:00.001Z",
+          "id": "Y00105575",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $80",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$30 OFF On $50",
+        }
+      }
+      key="Y00105575"
+      labels={Object {}}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-14T18:29:00.001Z",
+          "id": "Y00105578",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $150",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$40 OFF On $50",
+        }
+      }
+      key="Y00105578"
+      labels={Object {}}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-15T18:29:00.001Z",
+          "id": "Y00105575",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $520",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$50 OFF On $50",
+        }
+      }
+      key="Y00105575"
+      labels={Object {}}
+    />
+  </Styled(View)>
+  <Styled(View) />
+</Styled(View)>
+`;
+
+exports[`CouponList component should renders available list 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      data-locator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="semibold"
+      text="Heading (6)"
+    />
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)>
+          ?
+        </Styled(Text)>
+      </Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator=""
+        fontFamily="secondary"
+        fontSizeVariation="small"
+        locator=""
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-11T18:29:00.001Z",
+          "id": "Y00105575",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $60",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$10 OFF on $50",
+        }
+      }
+      couponDetailClick={[Function]}
+      isFetching={false}
+      key="Y00105575"
+      labels={Object {}}
+      onApply={[Function]}
+      onRemove={[Function]}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-12T18:29:00.001Z",
+          "id": "Y00105578",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $70",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$20 OFF On $50",
+        }
+      }
+      couponDetailClick={[Function]}
+      isFetching={false}
+      key="Y00105578"
+      labels={Object {}}
+      onApply={[Function]}
+      onRemove={[Function]}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-13T18:29:00.001Z",
+          "id": "Y00105575",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $80",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$30 OFF On $50",
+        }
+      }
+      couponDetailClick={[Function]}
+      isFetching={false}
+      key="Y00105575"
+      labels={Object {}}
+      onApply={[Function]}
+      onRemove={[Function]}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-14T18:29:00.001Z",
+          "id": "Y00105578",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $150",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$40 OFF On $50",
+        }
+      }
+      couponDetailClick={[Function]}
+      isFetching={false}
+      key="Y00105578"
+      labels={Object {}}
+      onApply={[Function]}
+      onRemove={[Function]}
+    />
+    <Styled(CouponCard)
+      coupon={
+        Object {
+          "details": null,
+          "detailsOpen": false,
+          "effectiveDate": "8/6/19",
+          "error": null,
+          "expirationDate": "8/10/19",
+          "expirationDateTimeStamp": "2019-08-15T18:29:00.001Z",
+          "id": "Y00105575",
+          "isExpiring": true,
+          "isStarted": true,
+          "legalText": "$10 OFF On $520",
+          "promotionType": "public",
+          "status": "available",
+          "title": "$50 OFF On $50",
+        }
+      }
+      couponDetailClick={[Function]}
+      isFetching={false}
+      key="Y00105575"
+      labels={Object {}}
+      onApply={[Function]}
+      onRemove={[Function]}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      customStyle={Object {}}
+      data-locator=""
+      fontFamily="secondary"
+      fontSizeVariation="small"
+      locator=""
+      noLink={true}
+      onPress={[Function]}
+      text=""
+      to="/#"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -90,7 +90,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -103,7 +105,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -140,6 +144,22 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                 ";
 ",
@@ -246,7 +266,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -259,7 +281,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -296,6 +320,22 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                 ";
 ",
@@ -421,7 +461,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -434,7 +476,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -471,6 +515,22 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
 ",
                 ";
 ",
@@ -512,8 +572,33 @@ exports[`Add gift card form component should render component correctly 1`] = `
       <div
         className="card__msgWrapper"
       >
-        <Styled(RichText)
+        <Styled(BodyCopy)
+          className="card__msg--bold elem-mb-XS"
+          color="text.primary"
+          component="p"
+          dataLocator="git-card-headertext"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="bold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          tag="p"
+          textAlign="left"
+        />
+        <Styled(BodyCopy)
+          className="card__msg"
+          color="text.primary"
+          component="p"
           dataLocator="git-card-messagetext"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          tag="p"
+          textAlign="left"
         />
       </div>
     </Styled(Col)>

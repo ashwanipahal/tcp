@@ -26,6 +26,17 @@ exports[`InputCheckbox component should render correctly 1`] = `
     mobileFontFamily="secondary"
     text="checkbox"
   />
+  <Styled(BodyCopy)
+    className="Checkbox__error"
+    color="error"
+    fontSize="fs12"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text=""
+  />
 </Styled(View)>
 `;
 
@@ -54,6 +65,17 @@ exports[`InputCheckbox component should render correctly with checked state fals
     fontSize="fs12"
     mobileFontFamily="secondary"
     text="checkbox"
+  />
+  <Styled(BodyCopy)
+    className="Checkbox__error"
+    color="error"
+    fontSize="fs12"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text=""
   />
 </Styled(View)>
 `;

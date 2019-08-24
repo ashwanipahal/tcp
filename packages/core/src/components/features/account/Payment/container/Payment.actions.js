@@ -83,3 +83,17 @@ export const setPaymentNotification = payload => ({
   type: PAYMENT_CONSTANTS.SET_PAYMENT_NOTIFICATION,
   payload,
 });
+
+export const fetchModuleX = payload => {
+  return {
+    payload,
+    type: PAYMENT_CONSTANTS.FETCH_MODULEX_CONTENT,
+  };
+};
+
+export const setModuleX = payload => {
+  return {
+    payload,
+    type: PAYMENT_CONSTANTS.SET_MODULEX_CONTENT,
+  };
+};

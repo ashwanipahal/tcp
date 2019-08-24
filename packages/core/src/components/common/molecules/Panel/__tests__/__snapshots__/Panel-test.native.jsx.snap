@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(TouchableHighlight)
+      onPress={[Function]}
+    >
+      <Styled(BodyCopy)
+        color="gray.900"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        text="Orders"
+      />
+    </Styled(TouchableHighlight)>
+    <Styled(TouchableHighlight)
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        customStyle={
+          Object {
+            "alignSelf": "center",
+          }
+        }
+        height={6}
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-down-gray.png",
+          }
+        }
+        width={10}
+      />
+    </Styled(TouchableHighlight)>
+  </Styled(View)>
+</Styled(View)>
+`;

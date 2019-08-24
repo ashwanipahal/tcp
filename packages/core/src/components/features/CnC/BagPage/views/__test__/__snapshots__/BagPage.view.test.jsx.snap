@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bag page Container should render Added to Bag view section 1`] = `
+<div
+  className="test"
+>
+  <Styled(Row)
+    tagName="header"
+  >
+    <Styled(Col)
+      className="left-sec"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(Heading)
+        className="bag-header"
+        color="text.primary"
+        component={null}
+        dataLocator=""
+        fontSize="fs16"
+        textAlign="left"
+        variant="h6"
+      >
+        undefined (10)
+      </Styled(Heading)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(CnCTemplate)
+    bagActions={[Function]}
+    leftSection={[Function]}
+    showLeftSection={true}
+  />
+  <Styled(BagConfirmationModal)
+    closeCheckoutConfirmationModal={[MockFunction]}
+    isOpen={true}
+    labels={Object {}}
+    removeUnqualifiedItemsAndCheckout={[MockFunction]}
+  />
+</div>
+`;

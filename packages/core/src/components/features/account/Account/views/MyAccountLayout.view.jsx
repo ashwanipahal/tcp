@@ -4,6 +4,8 @@ import Col from '../../../../common/atoms/Col';
 import MyAccountLeftNav from './MyAccountLeftNav.view';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountContainer.style';
+import Dropdown from '../../../../common/molecules/Dropdown';
+import AccountHeader from '../../common/organism/AccountHeader';
 
 // @flow
 type Props = {
@@ -12,6 +14,7 @@ type Props = {
   active: string,
   className: string,
   router: object,
+  labels: object,
 };
 
 /**
@@ -22,15 +25,25 @@ type Props = {
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
 const MyAccountLayoutView = (props: Props) => {
-  const { navData, mainContent: MainContent, active, className, router } = props;
+  const { navData, mainContent: MainContent, active, className, router, labels } = props;
   return (
     <div className={className}>
+      <Row className="elem-mb-XL">
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+          <AccountHeader labels={labels} />
+        </Col>
+      </Row>
+      <Row className="is-hidden-nav">
+        <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
+          <Dropdown options={navData} active={active} isUpperCase />
+        </Col>
+      </Row>
       <Row>
-        <Col colSize={{ large: 2, medium: 8, small: 6 }}>
+        <Col colSize={{ large: 2, medium: 8, small: 6 }} className="is-visible-nav">
           <MyAccountLeftNav navData={navData} active={active} />
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
-          <MainContent router={router} />
+          <MainContent router={router} labels={labels} />
         </Col>
       </Row>
     </div>

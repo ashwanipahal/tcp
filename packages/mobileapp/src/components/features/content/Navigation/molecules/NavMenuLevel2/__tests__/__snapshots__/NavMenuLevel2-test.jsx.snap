@@ -28,6 +28,7 @@ exports[`NavMenuLevel2 should render component when renderItem is called 1`] = `
     }
     maxWidthItem={510}
     promoBannerMargin={40}
+    route={[Function]}
   />
 </ForwardRef>
 `;
@@ -60,6 +61,7 @@ exports[`NavMenuLevel2 should render component when renderItem is with title cat
     }
     maxWidthItem={510}
     promoBannerMargin={40}
+    route={[Function]}
   />
 </ForwardRef>
 `;
@@ -67,30 +69,11 @@ exports[`NavMenuLevel2 should render component when renderItem is with title cat
 exports[`NavMenuLevel2 should render component when renderSectionHeader is called 1`] = `
 <ForwardRef>
   <ForwardRef
-    accessibilityRole="button"
-    onPress={[Function]}
-  >
-    <ForwardRef
-      source={
-        Object {
-          "testUri": "../../../../core/src/assets/carrot-large-left.png",
-        }
-      }
-    />
-  </ForwardRef>
-  <ForwardRef
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
-    style={
-      Object {
-        "textTransform": "uppercase",
-      }
-    }
-    text="GIRL"
-    textAlign="center"
+    text="Lorem Ipsum"
   />
-  <Text />
 </ForwardRef>
 `;
 
@@ -100,50 +83,105 @@ exports[`NavMenuLevel2 should render component when renderSectionHeader is calle
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
-    style={
-      Object {
-        "textTransform": "uppercase",
-      }
-    }
     text="Categories"
   />
 </ForwardRef>
 `;
 
 exports[`NavMenuLevel2 should render correctly 1`] = `
-<SectionList
-  data={Array []}
-  disableVirtualization={false}
-  horizontal={false}
-  initialNumToRender={10}
-  keyExtractor={[Function]}
-  maxToRenderPerBatch={10}
-  onEndReachedThreshold={2}
-  renderItem={[Function]}
-  renderSectionHeader={[Function]}
-  scrollEventThrottle={50}
-  sections={
-    Array [
-      Object {
-        "data": undefined,
-        "title": "Lorem Ipsum",
-      },
-      Object {
-        "data": Object {
-          "title": "Lorem",
+<Fragment>
+  <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityRole="button"
+      onPress={[Function]}
+    >
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/carrot-large-left.png",
+          }
+        }
+      />
+    </Styled(TouchableOpacity)>
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs16"
+      text="GIRL"
+      textAlign="center"
+    />
+    <Text />
+  </Styled(View)>
+  <SectionList
+    data={Array []}
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onEndReachedThreshold={2}
+    renderItem={[Function]}
+    renderSectionHeader={[Function]}
+    scrollEventThrottle={50}
+    sections={
+      Array [
+        Object {
+          "data": Array [],
+          "order": NaN,
+          "title": undefined,
         },
-        "title": "0",
-      },
-      Object {
-        "data": Object {
-          "title": "Categoriess",
+        Object {
+          "data": Array [],
+          "order": NaN,
+          "title": undefined,
         },
-        "title": "1",
-      },
-    ]
-  }
-  stickySectionHeadersEnabled={false}
-  updateCellsBatchingPeriod={50}
-  windowSize={21}
-/>
+        Object {
+          "data": Array [
+            Object {
+              "links": Array [
+                Object {
+                  "text": "1",
+                  "url": "1",
+                },
+                Object {
+                  "text": "2",
+                  "url": "2",
+                },
+                Object {
+                  "text": "3",
+                  "url": "3",
+                },
+                Object {
+                  "text": "4",
+                  "url": "4",
+                },
+                Object {
+                  "text": "5",
+                  "url": "5",
+                },
+                Object {
+                  "text": "6",
+                  "url": "6",
+                },
+                Object {
+                  "text": "7",
+                  "url": "7",
+                },
+                Object {
+                  "text": "8",
+                  "url": "8",
+                },
+              ],
+            },
+          ],
+          "order": 0,
+          "title": "Shop By Size",
+        },
+      ]
+    }
+    stickySectionHeadersEnabled={false}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</Fragment>
 `;

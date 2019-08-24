@@ -1,45 +1,55 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import { setLoginInfo, getUserInfo } from './LoginPage.actions';
+import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
+import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
-import { login, getProfile } from '../../../../../services/abstractors/account';
+import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
+import { checkoutModalOpenState } from './LoginPage.selectors';
 
 const errorLabel = 'Error in API';
 
-export function* loginSaga({ payload }) {
+const notIsLocalHost = siteOrigin => {
+  return siteOrigin.indexOf('local') === -1;
+};
+
+export function* loginSaga({ payload, afterLoginHandler }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      if (afterLoginHandler) {
+        yield call(afterLoginHandler);
+      }
       return yield put(getUserInfo());
     }
     return yield put(setLoginInfo(response));
   } catch (err) {
-    return yield put(
+    const { errorCode, errorMessage, errorResponse } = err;
+    yield put(
       setLoginInfo({
         success: false,
+        ...errorResponse,
+        errorCode,
+        errorMessage,
       })
     );
-  }
-}
 
-export function* getUserInfoSaga() {
-  try {
-    const response = yield call(getProfile, {});
-    return yield put(setLoginInfo(response));
-  } catch (err) {
-    return yield put(
-      setLoginInfo({
-        success: false,
-      })
-    );
+    const isCheckoutModalOpen = yield select(checkoutModalOpenState);
+    if (isCheckoutModalOpen) {
+      yield put(setCheckoutModalMountedState({ state: true }));
+    }
+    return null;
   }
 }
 
 function* getUserInfoPOCSaga() {
   try {
     const { relURI, method } = endpoints.registeredUserInfoPOC;
-    const baseURI = endpoints.registeredUserInfoPOC.baseURI || endpoints.global.baseURI;
+    const siteOrigin = window && window.location && window.location.origin;
+    const baseURI = notIsLocalHost(siteOrigin)
+      ? siteOrigin
+      : endpoints.registeredUserInfoPOC.baseURI || endpoints.global.baseURI;
+
     const res = yield call(
       fetchData,
       baseURI,
@@ -61,7 +71,11 @@ function* getUserInfoPOCSaga() {
 function* getOrderDetailSaga() {
   try {
     const { relURI, method } = endpoints.getOrderDetails;
-    const baseURI = endpoints.getOrderDetails.baseURI || endpoints.global.baseURI;
+    const siteOrigin = window && window.location && window.location.origin;
+    const baseURI = notIsLocalHost(siteOrigin)
+      ? siteOrigin
+      : endpoints.getOrderDetails.baseURI || endpoints.global.baseURI;
+
     const res = yield call(
       fetchData,
       baseURI,
@@ -84,7 +98,6 @@ function* getOrderDetailSaga() {
 
 export function* LoginPageSaga() {
   yield takeLatest(LOGINPAGE_CONSTANTS.LOGIN, loginSaga);
-  yield takeLatest(LOGINPAGE_CONSTANTS.GET_USER_INFO, getUserInfoSaga);
   yield takeLatest('GET_ORDER_DETAIL', getOrderDetailSaga);
   yield takeLatest('GET_USER_DETAIL_POC', getUserInfoPOCSaga);
 }

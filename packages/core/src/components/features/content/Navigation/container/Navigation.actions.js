@@ -1,4 +1,10 @@
-import NAVIGATION_CONSTANTS from './Navigation.constants';
+import NAVIGATION_CONSTANTS, { FETCH_NAVIGATION_DATA } from './Navigation.constants';
+
+export const fetchNavigationData = () => {
+  return {
+    type: FETCH_NAVIGATION_DATA,
+  };
+};
 
 export const loadNavigationData = payload => {
   return {
@@ -7,17 +13,58 @@ export const loadNavigationData = payload => {
   };
 };
 
-export const openL2Panel = (data, order) => {
+export const openL2Panel = (panelData, mainCategory, order) => {
   return {
-    data,
+    panelData,
+    mainCategory,
     order,
     type: NAVIGATION_CONSTANTS.OPEN_L2_PANEL,
   };
 };
 
-export const closeL2Panel = payload => {
+export const openL2Drawer = payload => {
   return {
     payload,
-    type: NAVIGATION_CONSTANTS.CLOSE_L2_PANEL,
+    type: NAVIGATION_CONSTANTS.OPEN_L2_DRAWER,
+  };
+};
+
+export const hideL2Drawer = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.HIDE_L2_DRAWER,
+  };
+};
+
+export const openL3Drawer = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.OPEN_L3_DRAWER,
+  };
+};
+
+export const hideL3Drawer = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.HIDE_L3_DRAWER,
+  };
+};
+
+export const hideNavigationFooter = () => {
+  return {
+    type: NAVIGATION_CONSTANTS.HIDE_NAVIGATION_FOOTER,
+  };
+};
+
+export const showNavigationFooter = () => {
+  return {
+    type: NAVIGATION_CONSTANTS.SHOW_NAVIGATION_FOOTER,
+  };
+};
+
+export const removeL1Focus = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.REMOVE_L1_FOCUS,
   };
 };

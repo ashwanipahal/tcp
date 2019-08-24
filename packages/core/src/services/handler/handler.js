@@ -2,7 +2,7 @@ import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';
 import StatefulAPIClient from './stateful/statefulClient';
-import unbxdAPIClient from './unbxd/unbxdClient';
+import UnbxdAPIClient from './unbxd/unbxdClient';
 import ExternalAPIClient from './external/externalClient';
 
 /**
@@ -12,6 +12,7 @@ import ExternalAPIClient from './external/externalClient';
 const errorHandler = e => {
   // eslint-disable-next-line no-console
   console.log(e);
+  throw e;
 };
 
 /**
@@ -46,6 +47,15 @@ export const executeGraphQLQuery = query => {
 };
 
 /**
+ * @function resetGraphQLClient
+ * This method resets graphql client
+ *
+ */
+export const resetGraphQLClient = () => {
+  loadGraphQLInterface().then(client => client.resetClient());
+};
+
+/**
  * Fetches Queries based on passed module, then executes the query and returns a promise for query execution
  * @param {*} moduleName Module for which query needs to be executed
  * @returns {Promise} Resolves with data or rejects with error object
@@ -60,12 +70,12 @@ export const fetchModuleDataFromGraphQL = async modules => {
  * @param {Object} reqObj request param with endpoints and payload
  * @returns {Promise} Resolves with unbxd or stateful client based on request object or returns null
  */
-export const executeStatefulAPICall = reqObj => {
+export const executeStatefulAPICall = (reqObj, errHandler) => {
   if (!reqObj.webService) {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return new StatefulAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return new StatefulAPIClient(apiConfigObj, reqObj).catch(errHandler || errorHandler);
 };
 
 export const executeUnbxdAPICall = reqObj => {
@@ -73,7 +83,7 @@ export const executeUnbxdAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
+  return new UnbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
 };
 
 export const executeExternalAPICall = reqObj => {

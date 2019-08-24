@@ -1,5 +1,4 @@
 import React from 'react';
-import Router from 'next/router'; // eslint-disable-line
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -8,7 +7,9 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
+  fetchModuleX,
 } from './Payment.actions';
+
 import {
   getCreditDebitCards,
   getCardListFetchingState,
@@ -20,9 +21,12 @@ import {
   getCardListState,
   checkbalanceValue,
   getShowNotificationCaptchaState,
+  getPaymentBannerContentId,
+  getPaymentBannerRichTextSelector,
 } from './Payment.selectors';
-import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
+
+import utils from '../../../../../utils';
 
 // @flow
 type Props = {
@@ -39,14 +43,19 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
+  getPaymentBannerRichText: Function,
+  paymentBannerContentId: string,
   showNotificationCaptcha: boolean,
+  paymentBannerRichText: string,
   clearPaymentNotification: () => void,
+  labels: object,
 };
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getCardListAction } = this.props;
+    const { getCardListAction, paymentBannerContentId, getPaymentBannerRichText } = this.props;
     getCardListAction();
+    getPaymentBannerRichText(paymentBannerContentId);
   }
 
   componentWillUnmount() {
@@ -55,7 +64,7 @@ export class PaymentContainer extends React.Component<Props> {
   }
 
   addNewCreditCard = () => {
-    Router.push('/account?id=add-credit-card', '/us/account/payment/add-credit-card');
+    utils.routerPush('/account?id=add-credit-card', '/account/payment/add-credit-card');
   };
 
   render() {
@@ -73,7 +82,12 @@ export class PaymentContainer extends React.Component<Props> {
       checkbalanceValueInfo,
       setDefaultPaymentMethod,
       showNotificationCaptcha,
+      paymentBannerRichText,
+      labels,
     } = this.props;
+
+    const updatedLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };
+
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
@@ -82,7 +96,7 @@ export class PaymentContainer extends React.Component<Props> {
         showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-        labels={labels}
+        labels={updatedLabels}
         creditCardList={creditCardList}
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
@@ -120,6 +134,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
         })
       );
     },
+    getPaymentBannerRichText: cid => {
+      dispatch(fetchModuleX(cid));
+    },
   };
 };
 
@@ -135,6 +152,8 @@ const mapStateToProps = state => {
     deleteModalMountedState: deleteModalOpenState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
+    paymentBannerContentId: getPaymentBannerContentId(state),
+    paymentBannerRichText: getPaymentBannerRichTextSelector(state),
   };
 };
 

@@ -21,7 +21,7 @@ export const MessageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-export const CartContainer = styled.TouchableOpacity`
+export const CartContainer = styled.View`
   align-items: flex-end;
   align-self: flex-end;
   flex-basis: 100%;
@@ -70,8 +70,16 @@ export const ImageColor = { tintColor: 'gray' };
 
 export const HeaderPromoContainer = styled.View`
   height: 45px;
+  align-items: center;
+  justify-content: center;
   background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export const Touchable = styled.TouchableOpacity`
+  align-items: flex-end;
+  align-self: flex-end;
+  width: 45px;
 `;
 
 export default {
@@ -87,4 +95,5 @@ export default {
   CartIconView,
   ImageColor,
   HeaderPromoContainer,
+  Touchable,
 };

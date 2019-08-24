@@ -9,6 +9,8 @@ const propTypes = {
   color: PropTypes.string,
   openState: PropTypes.bool,
   closeOverlay: PropTypes.func,
+  plccUser: PropTypes.bool.isRequired,
+  componentProps: PropTypes.shape({}).isRequired,
 };
 
 const defaultProps = {
@@ -19,7 +21,15 @@ const defaultProps = {
   closeOverlay: () => {},
 };
 
-const OverlayModal = ({ component, variation, color, openState, closeOverlay }) => {
+const OverlayModal = ({
+  component,
+  variation,
+  color,
+  openState,
+  closeOverlay,
+  componentProps,
+  plccUser,
+}) => {
   const ModalContent = OverlayModalComponentMapping[component];
   return openState && ModalContent ? (
     <OverlayModalView
@@ -29,6 +39,8 @@ const OverlayModal = ({ component, variation, color, openState, closeOverlay }) 
       color={color}
       openState={openState}
       closeOverlay={closeOverlay}
+      componentProps={componentProps}
+      plccUser={plccUser}
     />
   ) : null;
 };

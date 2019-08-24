@@ -3,10 +3,10 @@
 exports[`Drawer component renders correctly 1`] = `
 <Fragment>
   <Styled(BodyCopy)
-    className="undefined nav-bar-l1-item"
+    className="undefined  nav-bar-l1-item"
     color="text.hint"
     component="li"
-    dataLocator=""
+    data-locator=""
     fontFamily="secondary"
     fontSize={
       Array [
@@ -19,28 +19,46 @@ exports[`Drawer component renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="lh115"
     link={Object {}}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex={0}
     textAlign="left"
   >
-    <span
-      className="nav-bar-l1-item-label "
-    />
-    <span
-      className="nav-bar-l1-item-content"
-      data-locator="promo_badge_undefined"
+    <Styled(Anchor)
+      onClick={[Function]}
     >
-      <Styled(PromoBadge)
-        data={
-          Array [
-            Object {
-              "style": "style1",
-              "text": "30% off shoes",
-            },
-          ]
-        }
-      />
-    </span>
-    <span
-      className="icon-arrow"
+      <div
+        className="nav-bar-l1-content"
+        role="button"
+        tabIndex={0}
+      >
+        <span
+          className="nav-bar-item-label "
+        />
+        <span
+          className="nav-bar-item-content "
+          data-locator="promo_badge_undefined"
+        >
+          <Styled(PromoBadge)
+            data={
+              Array [
+                Object {
+                  "style": "style1",
+                  "text": "30% off shoes",
+                },
+              ]
+            }
+          />
+        </span>
+        <span
+          className="icon-arrow"
+        />
+      </div>
+    </Styled(Anchor)>
+    <div
+      className="undefined l1-overlay "
     />
   </Styled(BodyCopy)>
 </Fragment>

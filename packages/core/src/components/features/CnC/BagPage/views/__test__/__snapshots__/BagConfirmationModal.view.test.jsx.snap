@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bag page Container should render modal when open true 1`] = `
+<Styled(Modal)
+  className="test TCPModal__Content"
+  closeIconDataLocator="coupondetailmodalcrossicon"
+  fixedWidth={true}
+  isOpen={true}
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div
+    className="modal-content"
+  >
+    <Styled(BodyCopy)
+      className="bag-checkout-confirmation-text"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="normal"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    />
+    <div
+      className="button-container"
+    >
+      <Styled(Button)
+        className="confirmation-button back-to-bag"
+        data-locator="addedtobag-btncheckout"
+        onClick={[MockFunction]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs13",
+              "fs13",
+              "fs14",
+            ]
+          }
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          onClick={[Function]}
+          textAlign="left"
+        />
+      </Styled(Button)>
+      <Styled(Button)
+        className="confirmation-button confirm-checkout"
+        data-locator="addedtobag-btncheckout"
+        onClick={[MockFunction]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs13",
+              "fs13",
+              "fs14",
+            ]
+          }
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          onClick={[Function]}
+          textAlign="left"
+        />
+      </Styled(Button)>
+    </div>
+  </div>
+</Styled(Modal)>
+`;
+
+exports[`Bag page Container should render no modal when isOpen is false 1`] = `
+<Styled(Modal)
+  className="test TCPModal__Content"
+  closeIconDataLocator="coupondetailmodalcrossicon"
+  fixedWidth={true}
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div
+    className="modal-content"
+  >
+    <Styled(BodyCopy)
+      className="bag-checkout-confirmation-text"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="normal"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    />
+    <div
+      className="button-container"
+    >
+      <Styled(Button)
+        className="confirmation-button back-to-bag"
+        data-locator="addedtobag-btncheckout"
+        onClick={[MockFunction]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs13",
+              "fs13",
+              "fs14",
+            ]
+          }
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          onClick={[Function]}
+          textAlign="left"
+        />
+      </Styled(Button)>
+      <Styled(Button)
+        className="confirmation-button confirm-checkout"
+        data-locator="addedtobag-btncheckout"
+        onClick={[MockFunction]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs13",
+              "fs13",
+              "fs14",
+            ]
+          }
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={Object {}}
+          onClick={[Function]}
+          textAlign="left"
+        />
+      </Styled(Button)>
+    </div>
+  </div>
+</Styled(Modal)>
+`;

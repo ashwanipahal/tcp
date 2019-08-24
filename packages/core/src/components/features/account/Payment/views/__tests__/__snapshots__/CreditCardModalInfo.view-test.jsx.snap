@@ -61,7 +61,9 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         link={Object {}}
         textAlign="left"
       >
-        <Styled(Image) />
+        <Styled(Image)
+          className="deleteCreditModal__card__icon"
+        />
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
@@ -172,6 +174,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
               fontWeight="regular"
               isDefault={false}
               showCountry={false}
+              showName={true}
               showPhone={false}
             />
           </Styled(BodyCopy)>

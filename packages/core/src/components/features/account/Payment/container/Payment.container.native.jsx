@@ -20,8 +20,8 @@ import {
   getCardListState,
   checkbalanceValue,
   getShowNotificationCaptchaState,
+  getLabels,
 } from './Payment.selectors';
-import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
 
 export class PaymentContainer extends React.Component<Props> {
@@ -41,6 +41,7 @@ export class PaymentContainer extends React.Component<Props> {
     setDefaultPaymentMethod: PropTypes.func,
     showNotificationCaptcha: PropTypes.bool,
     clearPaymentNotification: PropTypes.func,
+    labels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -59,6 +60,7 @@ export class PaymentContainer extends React.Component<Props> {
     setDefaultPaymentMethod: () => {},
     showNotificationCaptcha: '',
     clearPaymentNotification: () => {},
+    labels: {},
   };
 
   componentDidMount() {
@@ -70,6 +72,11 @@ export class PaymentContainer extends React.Component<Props> {
     const { clearPaymentNotification } = this.props;
     clearPaymentNotification();
   }
+
+  updateCardList = () => {
+    const { getCardListAction } = this.props;
+    getCardListAction();
+  };
 
   render() {
     const {
@@ -86,6 +93,7 @@ export class PaymentContainer extends React.Component<Props> {
       checkbalanceValueInfo,
       setDefaultPaymentMethod,
       showNotificationCaptcha,
+      labels,
     } = this.props;
     return (
       <PaymentView
@@ -103,6 +111,7 @@ export class PaymentContainer extends React.Component<Props> {
         onGetBalanceCard={onGetBalanceCard}
         checkbalanceValueInfo={checkbalanceValueInfo}
         setDefaultPaymentMethod={setDefaultPaymentMethod}
+        updateCardList={this.updateCardList}
       />
     );
   }
@@ -147,6 +156,7 @@ const mapStateToProps = state => {
     deleteModalMountedState: deleteModalOpenState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
+    labels: getLabels(state),
   };
 };
 

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="header"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs36"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    />
+    <div
+      className="EditAnchor"
+    >
+      <Styled(Anchor)
+        anchorVariation="secondary"
+        className="couponModal_print_anchortext"
+        dataLocator=""
+        fontSize="fs12"
+        onClick={[Function]}
+        underline={true}
+      />
+    </div>
+  </div>
+  <Styled(PickUpContactDisplay) />
+</div>
+`;

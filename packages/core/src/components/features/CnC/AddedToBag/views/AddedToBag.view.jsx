@@ -7,6 +7,7 @@ import withStyles from '../../../../common/hoc/withStyles';
 import styles, { modalStyles } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
+import Anchor from '../../../../common/atoms/Anchor';
 
 // @flow
 type Props = {
@@ -15,9 +16,20 @@ type Props = {
   className: string,
   addedToBagData: any,
   labels: any,
+  quantity: number,
+  handleContinueShopping: Function,
 };
 
-const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labels }: Props) => {
+const AddedToBag = ({
+  openState,
+  onRequestClose,
+  addedToBagData,
+  className,
+  labels,
+  quantity,
+  handleContinueShopping,
+  handleCartCheckout,
+}: Props) => {
   return (
     <Modal
       fixedWidth
@@ -35,16 +47,30 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labe
       inheritedStyles={modalStyles}
     >
       <div className="addedToBagWrapper">
-        <ProductInformationView data={addedToBagData} labels={labels} />
+        <ProductInformationView data={addedToBagData} labels={labels} quantity={quantity} />
         <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
-        <AddedToBagActions labels={labels} />
+        <AddedToBagActions labels={labels} handleCartCheckout={handleCartCheckout} />
         <BossBannerView labels={labels} />
+        <div className="continue-shopping">
+          <Anchor
+            fontSizeVariation="medium"
+            underline
+            anchorVariation="primary"
+            handleLinkClick={handleContinueShopping}
+            noLink
+            to=""
+            data-locator="addedToBag-continueShopping"
+          >
+            {labels.continueShopping}
+          </Anchor>
+        </div>
       </div>
     </Modal>
   );
 };
 AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

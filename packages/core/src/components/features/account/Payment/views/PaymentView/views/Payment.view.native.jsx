@@ -9,6 +9,11 @@ type Props = {
   giftCardList: object,
   venmoCardList: object,
   cardList: object,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
+  onDeleteCard: any,
+  deleteModalMountedState: any,
+  updateCardList: Function,
 };
 
 const PaymentViewContainer = ({
@@ -18,6 +23,11 @@ const PaymentViewContainer = ({
   venmoCardList,
   cardList,
   setDefaultPaymentMethod,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
+  onDeleteCard,
+  deleteModalMountedState,
+  updateCardList,
 }: Props) => {
   return (
     <PaymentSection
@@ -26,7 +36,12 @@ const PaymentViewContainer = ({
       giftCardList={giftCardList}
       venmoCardList={venmoCardList}
       cardList={cardList}
+      onGetBalanceCard={onGetBalanceCard}
+      checkbalanceValueInfo={checkbalanceValueInfo}
       setDefaultPaymentMethod={setDefaultPaymentMethod}
+      onDeleteCard={onDeleteCard}
+      deleteModalMountedState={deleteModalMountedState}
+      updateCardList={updateCardList}
     />
   );
 };

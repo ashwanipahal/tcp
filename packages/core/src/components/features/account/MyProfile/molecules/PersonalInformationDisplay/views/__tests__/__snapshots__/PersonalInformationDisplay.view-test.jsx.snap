@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalInformationDisplay should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="personalUserBirthday"
+    color="text.primary"
+    component="p"
+    dataLocator="profileInfoUserbday"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="elem-mt-LRG"
+    color="text.primary"
+    component="p"
+    dataLocator="profileinfo-rewardsid"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  />
+</div>
+`;
+
+exports[`PersonalInformationDisplay should render empty correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="personalUserBirthday"
+    color="text.primary"
+    component="p"
+    dataLocator="profileInfoUserbday"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="elem-mt-LRG"
+    color="text.primary"
+    component="p"
+    dataLocator="profileinfo-rewardsid"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  />
+</div>
+`;

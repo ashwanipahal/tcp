@@ -14,7 +14,7 @@ import ModalHeader from './ModalHeader';
 import styles from '../Modal.style';
 import Config from '../Modal.config';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+// import errorBoundary from '../../../hoc/errorBoundary';
 
 function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
@@ -40,12 +40,22 @@ class Modal extends React.PureComponent {
       className,
       closeIconDataLocator,
       headingStyle,
+      closeIconLeftAligned,
+      ariaLabelledby,
+      ariaDescribedby,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
       <div className={className}>
         <div className="TCPModal__Wrapper">
-          <ReactModal {...otherProps} parentSelector={getParent}>
+          <ReactModal
+            {...otherProps}
+            parentSelector={getParent}
+            aria={{
+              labelledby: ariaLabelledby,
+              describedby: ariaDescribedby,
+            }}
+          >
             {!fixedWidth && (
               <Grid>
                 <Row>
@@ -55,6 +65,7 @@ class Modal extends React.PureComponent {
                       title={title}
                       heading={heading}
                       closeIconDataLocator={closeIconDataLocator}
+                      closeIconLeftAligned={closeIconLeftAligned}
                       headingStyle={headingStyle}
                     />
                     {children}
@@ -69,6 +80,7 @@ class Modal extends React.PureComponent {
                   title={title}
                   heading={heading}
                   closeIconDataLocator={closeIconDataLocator}
+                  closeIconLeftAligned={closeIconLeftAligned}
                   headingStyle={headingStyle}
                 />
                 {children}
@@ -85,5 +97,6 @@ Modal.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default errorBoundary(withStyles(Modal, styles));
+// TODO removed errorBoundary from modal as its not working properly right now
+export default withStyles(Modal, styles);
 export { Modal as ModalVanilla };

@@ -37,7 +37,7 @@ const VenmoCardList = ({
   return (
     <div className={className}>
       <Heading variant="h6" className="cardList__heading" dataLocator="payment-venmocardtile">
-        {labels.ACC_LBL_VENMO_HEADING}
+        {labels.paymentGC.lbl_payment_venmoHeading}
       </Heading>
       {venmoCardList.size !== 0 && (
         <CardView
