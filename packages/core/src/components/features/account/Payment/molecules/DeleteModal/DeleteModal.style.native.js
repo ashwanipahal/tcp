@@ -58,7 +58,7 @@ const ImgWrapper = styled.View`
 const ImageStyle = styled.Image`
   max-width: 100%;
   max-height: 100%;
-  border: 1px solid gray;
+  border: 1px solid ${props => props.theme.colorPalette.gray[700]};
   border-radius: 4px;
 `;
 

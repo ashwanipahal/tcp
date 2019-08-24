@@ -19,7 +19,7 @@ const InputWrapper = styled.View`
 
 const ImageWrapper = styled.View`
   flex: 0.3;
-  border: 1px solid gray;
+  border: 1px solid ${props => props.theme.colorPalette.gray[800]};
   border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   align-items: center;
 `;
