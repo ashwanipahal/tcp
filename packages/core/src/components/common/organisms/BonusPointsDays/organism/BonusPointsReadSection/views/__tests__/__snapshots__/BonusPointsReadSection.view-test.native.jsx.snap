@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BonusPointsReadSection should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
+        fontSize="fs14"
+        fontWeight="semibold"
+        text="BONUS POINTS DAY"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
+        fontSizeVariation="large"
+        locator=""
+        onPress={[Function]}
+        text="details"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="black"
+      fontSize="fs14"
+      fontWeight="regular"
+      marginRight="10"
+      text="You have 1 days left"
+    />
+    <Styled(Styled(View)) />
+    <Styled(Styled(View)) />
+  </Styled(View)>
+</Styled(View)>
+`;
