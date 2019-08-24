@@ -8,14 +8,14 @@ import {
   setDeviceInfo,
   setCountry,
   setCurrency,
-  setLanguage,
+  setLanguage
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS from '../constants';
 
-function* bootstrap({ payload: { pageInfo = { name: 'homepage' }, apiConfig, deviceType, locals } }) {
+function* bootstrap({ payload: { pageInfo = { name: 'homepage' }, apiConfig, deviceType } }) {
   const pagesList = [pageInfo.name];
   const { country, currency, language } = locals;
   try {

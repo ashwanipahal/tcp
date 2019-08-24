@@ -1,9 +1,37 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { fromJS } from 'immutable';
 import { defaultCountries, defaultCurrencies } from '@tcp/core/src/constants/site.constants';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { CountrySelectorVanilla } from '../views/CountrySelector';
 import CountrySelectorModal from '../views/CountrySelectorModal';
+
+const sitesTable = fromJS({
+    us: {
+      languages: [
+        {
+          id: 'en',
+          displayName: 'English',
+        },
+        {
+          id: 'es',
+          displayName: 'Spanish',
+        },
+      ],
+    },
+    ca: {
+      languages: [
+        {
+          id: 'en',
+          displayName: 'English',
+        },
+        {
+          id: 'fr',
+          displayName: 'French',
+        },
+      ],
+    },
+  });
 
 describe('Country Selector Component', () => {
   const props = {
@@ -28,32 +56,10 @@ describe('Country Selector Component', () => {
     },
     showInFooter: true,
     siteId: 'us',
-    sitesTable: {
-      us: {
-        languages: [
-          {
-            id: 'en',
-            displayName: 'English',
-          },
-          {
-            id: 'es',
-            displayName: 'Spanish',
-          },
-        ],
-      },
-      ca: {
-        languages: [
-          {
-            id: 'en',
-            displayName: 'English',
-          },
-          {
-            id: 'fr',
-            displayName: 'French',
-          },
-        ],
-      },
-    },
+    sitesTable,
+    noteContent: 'sdfsdf',
+    noteContentId: 'abc-test',
+    getModuleXContent: jest.fn(),
   };
 
   it('renders correctly', () => {
@@ -75,10 +81,5 @@ describe('Country Selector Component', () => {
     const component = shallow(<CountrySelectorVanilla {...props} />);
     expect(component.find('.countrySelector__shipTo')).toHaveLength(1);
     expect(component.find(CountrySelectorModal)).toHaveLength(1);
-  });
-
-  it('execute methods', () => {
-    const component = shallow(<CountrySelectorVanilla {...props} />);
-    component.props.openModal = jest.fn();
   });
 });

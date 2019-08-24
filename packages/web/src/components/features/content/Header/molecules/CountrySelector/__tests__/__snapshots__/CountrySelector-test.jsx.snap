@@ -78,17 +78,18 @@ exports[`Country Selector Component renders correctly 1`] = `
       }
     }
     languages={
-      Array [
-        Object {
-          "displayName": "English",
+      Immutable.List [
+        Immutable.Map {
           "id": "en",
+          "displayName": "English",
         },
-        Object {
-          "displayName": "Spanish",
+        Immutable.Map {
           "id": "es",
+          "displayName": "Spanish",
         },
       ]
     }
+    noteContent="sdfsdf"
     persistentSubmitErrors={false}
     pure={true}
     savedCountry="US"
