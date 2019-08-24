@@ -120,7 +120,7 @@ class TCPWebApp extends App {
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
-                <Component {...pageProps} router />
+                <Component {...pageProps} router={router} />
                 {isNonCheckoutPage && <Footer />}
               </div>
             </Grid>
