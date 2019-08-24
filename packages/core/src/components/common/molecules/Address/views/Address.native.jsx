@@ -39,22 +39,26 @@ type GetAddressLineProps = {
 const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle }) => {
   return (
     <React.Fragment>
-      <BodyCopy
-        fontSize="fs14"
-        mobilefontFamily={['secondary']}
-        fontWeight="regular"
-        text={address.addressLine1}
-        color="gray.900"
-        {...customStyle}
-      />
-      <BodyCopy
-        fontSize="fs14"
-        mobilefontFamily={['secondary']}
-        fontWeight="regular"
-        text={address.addressLine2}
-        color="gray.900"
-        {...customStyle}
-      />
+      {address.addressLine1 ? (
+        <BodyCopy
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          fontWeight="regular"
+          text={address.addressLine1}
+          color="gray.900"
+          {...customStyle}
+        />
+      ) : null}
+      {address.addressLine2 ? (
+        <BodyCopy
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          fontWeight="regular"
+          text={address.addressLine2}
+          color="gray.900"
+          {...customStyle}
+        />
+      ) : null}
     </React.Fragment>
   );
 };
@@ -108,7 +112,9 @@ const Address = ({
         fontSize="fs14"
         mobilefontFamily={['secondary']}
         fontWeight="regular"
-        text={`${address.city}, ${address.state} ${address.zipCode}`}
+        text={`${address.city ? `${address.city}, ` : ''}${
+          address.state ? `${address.state} ` : ''
+        }${address.zipCode}`}
         color="gray.900"
         {...customStyle}
       />
@@ -138,6 +144,7 @@ const Address = ({
 Address.defaultProps = {
   showPhone: true,
   showCountry: true,
+  showName: true,
   customStyle: {},
 };
 

@@ -10,15 +10,19 @@ const ButtonStyles = css`
   opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
   text-transform: uppercase;
   min-height: 42px;
+  letter-spacing: 0.93px;
+  ${props => `@media ${props.theme.mediaQuery.large} {
+    letter-spacing: 1px;
+    }`}
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
       min-width: 40px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
       color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-      font-family: ${props.theme.fonts.secondaryFontSemilBoldFamily};
+      font-family: ${props.theme.typography.fonts.secondary};
       font-size: ${props.theme.fonts.fontSize.button.size}px;
-      font-weight: ${props.theme.fonts.fontWeight.semiBold};
+      font-weight: ${props.theme.typography.fontWeights.extrabold};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 12px 20px;
       width: 100%;
@@ -64,7 +68,6 @@ const ButtonStyles = css`
       font-size: ${props.theme.typography.fontSizes.fs14};
       font-weight: ${props.theme.typography.fontWeights.regular};
       border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
-      margin: 0 8px;
       padding-bottom: 3px;
 
       @media ${props.theme.mediaQuery.large} {

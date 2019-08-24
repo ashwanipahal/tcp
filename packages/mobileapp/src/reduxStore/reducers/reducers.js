@@ -14,7 +14,12 @@ import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/Ba
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
-import BonusPointsDaysReducer from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.reducer';
+import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
+import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
+import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
+import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
+import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
+
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -36,12 +41,18 @@ import {
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
   PRODUCT_LISTING_REDUCER_KEY,
+  APICONFIG_REDUCER_KEY,
+  ADDEDITCREDITCARD_REDUCER_KEY,
+  USER_REDUCER_KEY,
+  CHECKOUT_REDUCER_KEY,
+  DEVICE_INFO_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
+import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
 
@@ -55,7 +66,10 @@ const filteredProductListingReducer = createFilteredReducer(
   PRODUCT_LISTING_REDUCER_KEY
 );
 
-export default combineReducers({
+const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+
+const rootReducer = combineReducers({
+  [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
@@ -72,9 +86,15 @@ export default combineReducers({
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
+  [CHECKOUT_REDUCER_KEY]: CheckoutReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [COUPON_REDUCER_KEY]: CouponReducer,
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
+  [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
+  [USER_REDUCER_KEY]: UserReducer,
+  [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
 });
+
+export default rootReducer;

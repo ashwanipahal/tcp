@@ -87,6 +87,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/bonusDay',
   },
+  applyBonusPoints: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/bonusDay',
+  },
   addCoupons: {
     method: 'post',
     URI: 'v2/checkout/coupons',
@@ -94,6 +98,10 @@ const endpoints = {
   requestPassword: {
     method: 'put',
     URI: 'v2/account/resetPassword',
+  },
+  updateProfileInfo: {
+    method: 'put',
+    URI: 'v2/account/updatesAccountDataForRegisteredUser',
   },
   getGifCardBalance: {
     method: API_METHODS.POST,
@@ -176,6 +184,18 @@ const endpoints = {
   getAllOffers: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
+  },
+  giftOptionsCmd: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/giftOptionsCmd',
+  },
+  orderLookUp: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/orderLookUp',
+  },
+  getUnqualifiedItems: {
+    method: 'GET',
+    URI: 'v2/cart/getUnqualifiedItems',
   },
 };
 export default endpoints;

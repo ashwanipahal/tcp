@@ -32,7 +32,7 @@ const getOrganizedHeaderNavigationTree = state => {
 
   // only on browser so we dont need to keep deriving this
   if (/* isClient() && */ organizedNav.length) {
-    // cachedOrganizedNavTree = organizedNav;
+    // TODO - fix this - cachedOrganizedNavTree = organizedNav;
   }
 
   return organizedNav;

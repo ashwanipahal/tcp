@@ -36,9 +36,7 @@ export const addGiftCardApi = payload => {
       recapchaResponse: payload.recaptchaToken,
     },
   };
-  return executeStatefulAPICall(payloadArgs)
-    .then(res => {
-      return res;
-    })
-    .catch(errorHandler);
+  return executeStatefulAPICall(payloadArgs, errorHandler).then(res => {
+    return res;
+  });
 };

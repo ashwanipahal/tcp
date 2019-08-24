@@ -60,6 +60,7 @@ ProductListingContainer.propTypes = {
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 ProductListingContainer.defaultProps = {

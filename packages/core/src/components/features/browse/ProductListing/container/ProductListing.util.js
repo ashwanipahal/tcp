@@ -53,9 +53,13 @@ export const findCategoryIdandName = (data, category) => {
       // TODO - only looking for items in Categories. Should look for all the groups
       data[iterator].subCategories &&
       data[iterator].subCategories.Categories &&
-      data[iterator].subCategories.Categories.length
+      data[iterator].subCategories.Categories.items &&
+      data[iterator].subCategories.Categories.items.length
     ) {
-      categoryFound = findCategoryIdandName(data[iterator].subCategories.Categories, category);
+      categoryFound = findCategoryIdandName(
+        data[iterator].subCategories.Categories.items,
+        category
+      );
       if (categoryFound.length) {
         categoryFound.push(getRequiredCategoryData(data[iterator]));
       }
@@ -108,8 +112,8 @@ export const generateGroups = level1 => {
     const groupings = {};
 
     // for each L2 parse and place in proper group
-    if (level1.subCategories.Categories) {
-      level1.subCategories.Categories.forEach(L2 => {
+    if (level1.subCategories.Categories && level1.subCategories.Categories.items) {
+      level1.subCategories.Categories.items.forEach(L2 => {
         const groupName = 'Categories';
         const groupOrder = 1;
 
@@ -140,4 +144,70 @@ export const generateGroups = level1 => {
     console.error('getHeaderNavigationTree:generateGroups', error);
     return [];
   }
+};
+
+export const isSearch = () => {
+  return false;
+};
+
+export const matchValue = isSearchPage => {
+  return isSearchPage
+    ? matchPath(window.location.pathname, '/search/')
+    : matchPath(window.location.pathname, '/c/');
+};
+
+export const getCategoryKey = (isSearchPage, match) => {
+  return isSearchPage ? match.searchTerm : match.listingKey;
+};
+
+export const getCurrentCatId = breadCrumb => {
+  return breadCrumb.length ? breadCrumb[breadCrumb.length - 1].categoryId : '';
+};
+
+export const getCatId = categoryNameList => {
+  return categoryNameList ? categoryNameList.map(item => item.categoryId).join('>') : '';
+};
+
+export const getDesiredL3 = (catNameL3, bucketingConfig) => {
+  return !catNameL3 && bucketingConfig.L3Left.length
+    ? bucketingConfig.L3Left[0] && bucketingConfig.L3Left[0].name
+    : catNameL3;
+};
+
+export const getCatIdUbxd = (categoryPathMap, categoryNameList) => {
+  return (
+    categoryPathMap ||
+    (categoryNameList ? categoryNameList.map(item => item.categoryId).join('>') : '')
+  );
+};
+
+export const isRequiredChildrenExists = requiredChildren => {
+  return requiredChildren && requiredChildren.length;
+};
+
+export const isCatIdBucketingSeq = (categoryNameList, clickedL2) => {
+  return categoryNameList && categoryNameList.length ? clickedL2.categoryId : null;
+};
+
+export const getSeoKeywordOrCategoryIdOrSearchTerm = match => {
+  return match.searchTerm || match.listingKey;
+};
+
+export const getDesiredNav = clickedNav => {
+  return clickedNav ? clickedNav.title : '';
+};
+
+export const isRequiredL2L1 = (isUnbxdSequencing, shouldApplyUnbxdLogic) => {
+  return !isUnbxdSequencing || shouldApplyUnbxdLogic;
+};
+
+export const getBreadCrumb = categoryNameList => {
+  return categoryNameList
+    ? categoryNameList.map(crumb => ({
+        categoryId: crumb.categoryId,
+        displayName: crumb.title,
+        urlPathSuffix: extractCategory(crumb.url),
+        longDescription: crumb.longDescription,
+      }))
+    : [];
 };

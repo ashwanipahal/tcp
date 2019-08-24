@@ -79,7 +79,13 @@ const MiniBagHeader = ({
             src={getIconPath('cart-icon')}
             data-locator="addedtobag-bag-icon"
           />
-          <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
+          <BodyCopy
+            className="cartCount"
+            component="span"
+            fontWeight="semibold"
+            fontSize="fs10"
+            dataLocator="miniBagCount"
+          >
             {cartItemCount || 0}
           </BodyCopy>
         </Col>
