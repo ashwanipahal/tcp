@@ -25,7 +25,9 @@ const Abstractor = {
   getData: (module, data) => {
     return handler
       .fetchModuleDataFromGraphQL({ name: module, data })
-      .then(response => response.data)
+      .then(response => {
+        return response.data.navigation;
+      })
       .then(Abstractor.processData);
   },
   getMock: () => {
