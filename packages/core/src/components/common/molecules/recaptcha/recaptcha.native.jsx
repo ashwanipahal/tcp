@@ -8,10 +8,7 @@ const patchPostMessageJsCode = `(${String(() => {
     originalPostMessage(message, targetOrigin, transfer);
   };
   patchedPostMessage.toString = () => {
-    return String(Object.hasOwnProperty).replace(
-      'hasOwnProperty',
-      'postMessage'
-    );
+    return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
   };
   window.postMessage = patchedPostMessage;
 })})();`;
@@ -21,7 +18,7 @@ const generateTheWebViewContent = siteKey => {
           <html>
             <head>
                 <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="viewport" content="width=device-width, initial-scale=1.2">
                 <script src="https://recaptcha.google.com/recaptcha/api.js"></script>
                 <script type="text/javascript"> var onloadCallback = function() { };
                   var onDataCallback = function(response) { console.log(response); window.postMessage(response);  };
