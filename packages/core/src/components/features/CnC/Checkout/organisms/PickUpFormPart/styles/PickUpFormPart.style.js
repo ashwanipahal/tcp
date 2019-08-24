@@ -2,15 +2,14 @@ import { css } from 'styled-components';
 
 const styles = css`
   width: 100%;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+
   .container {
     margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM}
       ${props => props.theme.spacing.LAYOUT_SPACING.SM}
       ${props => props.theme.spacing.LAYOUT_SPACING.SM}
       ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     min-height: 419px;
-    padding-bottom: 24px;
-    border-radius: 0.5px;
-    border-bottom: 1px solid ${props => props.theme.colorPalette.black};
   }
   .TextBox__input {
     background: transparent;

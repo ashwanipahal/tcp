@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-unresolved
 import { withRouter } from 'next/router';
-import { initCheckoutAction } from './Checkout.action';
+import { initCheckoutAction, onEditModeChangeAction } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   getAlternateFormUpdate,
@@ -66,6 +66,9 @@ export const mapDispatchToProps = dispatch => {
     initCheckout: () => {
       dispatch(initCheckoutAction());
     },
+    onEditModeChange: data => {
+      dispatch(onEditModeChangeAction(data));
+    },
   };
 };
 
@@ -73,7 +76,6 @@ const mapStateToProps = state => {
   return {
     initialValues: selectors.getPickupInitialPickupSectionValues(state),
     pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
-    onEditModeChange: true, // storeOperators.checkoutSignalsOperator.setIsEditingSubform,
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
     isGuest: selectors.isGuest(state),

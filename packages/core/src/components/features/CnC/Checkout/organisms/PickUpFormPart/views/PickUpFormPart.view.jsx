@@ -15,6 +15,7 @@ import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import CheckoutFooter from '../../../molecules/CheckoutFooter';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -23,14 +24,20 @@ class PickUpFormPart extends React.Component {
   }
 
   handleEditModeChange = isEditing => {
+    const { onEditModeChange } = this.props;
+    onEditModeChange(isEditing);
     this.setState({ isEditing, isReset: false });
   };
 
   onEditMainContactSubmit = () => {
+    const { onEditModeChange } = this.props;
+    onEditModeChange(false);
     this.setState({ isEditing: false });
   };
 
   handleExitEditModeClick = () => {
+    const { onEditModeChange } = this.props;
+    onEditModeChange(false);
     this.setState({ isEditing: false, isReset: true });
   };
 
@@ -41,6 +48,7 @@ class PickUpFormPart extends React.Component {
   };
 
   SaveAndCancelButton = () => {
+    const { pickUpLabels } = this.props;
     return (
       <div className="buttonContainer">
         <Button
@@ -49,7 +57,7 @@ class PickUpFormPart extends React.Component {
           type="button"
           data-locator="pickup-cancelbtn"
         >
-          Cancel
+          {pickUpLabels.btnCancel}
         </Button>
         <Button
           className="updateButton"
@@ -58,7 +66,7 @@ class PickUpFormPart extends React.Component {
           buttonVariation="variable-width"
           data-locator="pickup-addcardbtn"
         >
-          Update
+          {pickUpLabels.btnUpdate}
         </Button>
       </div>
     );
@@ -77,6 +85,7 @@ class PickUpFormPart extends React.Component {
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
       initialValues,
+      isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
     } = this.props;
@@ -99,11 +108,7 @@ class PickUpFormPart extends React.Component {
               dataLocator="pickup-error"
             />
           )}
-          <form
-            onSubmit={handleSubmit(val => val)}
-            name="checkoutPickup"
-            className="checkoutPickupForm"
-          >
+          <form onSubmit={handleSubmit}>
             <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">
                 {isGuest ? (
@@ -129,17 +134,19 @@ class PickUpFormPart extends React.Component {
                 )}
               </FormSection>
             </div>
-            <div className="pick-up-form-container" dataLocator="pickup-sms">
-              <FormSection name="smsSignUp">
-                <SMSFormFields
-                  isOrderUpdateChecked={isOrderUpdateChecked}
-                  formName="checkoutPickup"
-                  formSection="smsSignUp"
-                  altInitValue={currentPhoneNumber}
-                  labels={smsSignUpLabels}
-                />
-              </FormSection>
-            </div>
+            {isSmsUpdatesEnabled && (
+              <div className="pick-up-form-container" dataLocator="pickup-sms">
+                <FormSection name="smsSignUp">
+                  <SMSFormFields
+                    isOrderUpdateChecked={isOrderUpdateChecked}
+                    formName="checkoutPickup"
+                    formSection="smsSignUp"
+                    altInitValue={currentPhoneNumber}
+                    labels={smsSignUpLabels}
+                  />
+                </FormSection>
+              </div>
+            )}
             {isGuest && !isUsSite && (
               <div className="email-signup-container">
                 <Field
@@ -170,7 +177,6 @@ class PickUpFormPart extends React.Component {
                     {pickUpLabels.emailSignupSubSubHeading}
                   </BodyCopy>
                   <Anchor
-                    noUnderline
                     anchorVariation="primary"
                     fontSizeVariation="small"
                     noLink
@@ -198,6 +204,9 @@ class PickUpFormPart extends React.Component {
             {isEditing && this.SaveAndCancelButton()}
           </form>
         </div>
+        <form onSubmit={handleSubmit}>
+          <CheckoutFooter disableNext={isEditing} />
+        </form>
       </div>
     );
   }
@@ -208,6 +217,7 @@ PickUpFormPart.propTypes = {
   isGuest: PropTypes.bool,
   isMobile: PropTypes.bool,
   isUsSite: PropTypes.bool,
+  isSmsUpdatesEnabled: PropTypes.bool,
   isOrderUpdateChecked: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
   pickupError: PropTypes.string,
@@ -217,6 +227,7 @@ PickUpFormPart.propTypes = {
   initialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  onEditModeChange: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {
@@ -224,6 +235,7 @@ PickUpFormPart.defaultProps = {
   isGuest: false,
   isMobile: false,
   isUsSite: false,
+  isSmsUpdatesEnabled: false,
   isOrderUpdateChecked: false,
   isAlternateUpdateChecked: false,
   pickupError: '',

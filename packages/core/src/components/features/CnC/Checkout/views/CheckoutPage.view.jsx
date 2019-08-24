@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CnCTemplate from '../../common/organism/CnCTemplate';
+// import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickUpFormPart';
 import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
+  onPickUpSubmit = data => {
+    console.log(data);
+  };
+
   leftSection = () => {
     const {
       isGuest,
@@ -23,28 +27,36 @@ export default class CheckoutPage extends React.PureComponent {
 
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && (
-          <PickUpFormPart
-            isGuest={isGuest}
-            isMobile={isMobile}
-            isUsSite={isUsSite}
-            initialValues={pickupInitialValues}
-            onEditModeChange={onEditModeChange}
-            isSmsUpdatesEnabled={isSmsUpdatesEnabled}
-            currentPhoneNumber={currentPhoneNumber}
-            isOrderUpdateChecked={isOrderUpdateChecked}
-            isAlternateUpdateChecked={isAlternateUpdateChecked}
-            pickUpLabels={pickUpLabels}
-            smsSignUpLabels={smsSignUpLabels}
-          />
-        )}
+        {currentSection.toLowerCase() === 'pickup' &&
+          pickupInitialValues &&
+          pickupInitialValues.pickUpContact && (
+            <PickUpFormPart
+              isGuest={isGuest}
+              isMobile={isMobile}
+              isUsSite={isUsSite}
+              initialValues={pickupInitialValues}
+              onEditModeChange={onEditModeChange}
+              isSmsUpdatesEnabled={isSmsUpdatesEnabled}
+              currentPhoneNumber={currentPhoneNumber}
+              isOrderUpdateChecked={isOrderUpdateChecked}
+              isAlternateUpdateChecked={isAlternateUpdateChecked}
+              pickUpLabels={pickUpLabels}
+              smsSignUpLabels={smsSignUpLabels}
+              onSubmit={this.onPickUpSubmit}
+            />
+          )}
         {currentSection.toLowerCase() === 'shipping' && <ShippingPage />}
       </div>
     );
   };
 
   render() {
-    return <CnCTemplate leftSection={this.leftSection} />;
+    return (
+      <div>
+        {this.leftSection()}
+        {/* <CnCTemplate leftSection={this.leftSection} /> */}
+      </div>
+    );
   }
 }
 

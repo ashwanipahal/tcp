@@ -166,7 +166,7 @@ describe('Checkout Selectors', () => {
         wantsSmsOrderUpdates: false,
         smsUpdateNumber: undefined,
       },
-      hasAlternatePickup: false,
+      hasAlternatePickup: undefined,
       pickUpAlternate: {},
     });
   });

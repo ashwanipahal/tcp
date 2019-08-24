@@ -19,17 +19,17 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   renderSectionTitle = () => {
-    const { isEditing } = this.props;
+    const { isEditing, labels } = this.props;
     return isEditing ? (
       <div className="header">
         <BodyCopy fontSize="fs36" fontFamily="primary" fontWeight="regular">
-          Pickup Contact
+          {labels.pickupContactText}
         </BodyCopy>
       </div>
     ) : (
       <div className="header">
         <BodyCopy fontSize="fs36" fontFamily="primary" fontWeight="regular">
-          Pickup Contact
+          {labels.pickupContactText}
         </BodyCopy>
         <div className="EditAnchor">
           <Anchor
@@ -40,7 +40,7 @@ class PickupMainContactEditForm extends React.Component {
             onClick={this.handleEnterEditModeClick}
             className="couponModal_print_anchortext"
           >
-            Edit
+            {labels.anchorEdit}
           </Anchor>
         </div>
       </div>

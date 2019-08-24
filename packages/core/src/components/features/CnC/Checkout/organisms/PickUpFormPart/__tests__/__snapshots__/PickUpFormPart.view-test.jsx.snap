@@ -12,8 +12,7 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
       dataLocator="pickup-title"
     />
     <form
-      className="checkoutPickupForm"
-      name="checkoutPickup"
+      onSubmit={[MockFunction]}
     >
       <div
         className="pickUpContact"
@@ -37,22 +36,6 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
         </FormSection>
       </div>
       <div
-        className="pick-up-form-container"
-        dataLocator="pickup-sms"
-      >
-        <FormSection
-          name="smsSignUp"
-        >
-          <Styled(SMSFormFields)
-            altInitValue=""
-            formName="checkoutPickup"
-            formSection="smsSignUp"
-            isOrderUpdateChecked={false}
-            labels={Object {}}
-          />
-        </FormSection>
-      </div>
-      <div
         lassName="pickUpAlternate-container"
       >
         <FormSection
@@ -70,5 +53,12 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
       </div>
     </form>
   </div>
+  <form
+    onSubmit={[MockFunction]}
+  >
+    <Styled(CheckoutFooter)
+      disableNext={false}
+    />
+  </form>
 </div>
 `;

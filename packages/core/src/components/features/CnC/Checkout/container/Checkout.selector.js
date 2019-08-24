@@ -114,70 +114,12 @@ function getUserEmail(state) {
 //   return defaultAddress;
 // }
 
-function getSmsNumberForOrderUpdates(state) {
-  return state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
-}
-
 function getPickupValues(state) {
   return state.Checkout.getIn(['values', 'pickUpContact']);
 }
 
-function isPickupAlt(state) {
-  return (
-    state.Checkout.getIn(['values', 'pickUpAlternative']) &&
-    !!state.Checkout.getIn(['values', 'pickUpAlternative', 'firstName'])
-  );
-}
-
 function getPickupAltValues(state) {
   return state.Checkout.getIn(['values', 'pickUpAlternative']);
-}
-
-function getInitialPickupSectionValues(state) {
-  // let userContactInfo = userStoreView.getUserContactInfo(state);
-  // values (if any) entered previously in the checkout process,
-  // or reported as checkout defaults by backend
-  const pickupValues = getPickupValues(state);
-
-  return {
-    pickUpContact: {
-      firstName: pickupValues.firstName || getUserName(state),
-      lastName: pickupValues.lastName || getUserLastName(state),
-      emailAddress: pickupValues.emailAddress || getUserEmail(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
-    },
-    smsInfo: {
-      wantsSmsOrderUpdates: !!getSmsNumberForOrderUpdates(state),
-      smsUpdateNumber: getSmsNumberForOrderUpdates(state) || getPickupValues(state).phoneNumber,
-    },
-    hasAlternatePickup: isPickupAlt(state),
-    pickUpAlternate: isPickupAlt(state) ? getPickupAltValues(state) : {},
-  };
-}
-
-function getPickupInitialPickupSectionValues(state) {
-  // let userContactInfo = userStoreView.getUserContactInfo(state);
-  // values (if any) entered previously in the checkout process,
-  // or reported as checkout defaults by backend
-  const pickupValues = getPickupValues(state);
-  const alternativeData = {
-    ...{ hasAlternatePickup: isPickupAlt(state) },
-    ...getPickupAltValues(state),
-  };
-  return {
-    pickUpContact: {
-      firstName: pickupValues.firstName || getUserName(state),
-      lastName: pickupValues.lastName || getUserLastName(state),
-      emailAddress: pickupValues.emailAddress || getUserEmail(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
-    },
-    smsSignUp: {
-      sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
-      phoneNumber: getSmsNumberForOrderUpdates(state) || getPickupValues(state).phoneNumber,
-    },
-    hasAlternatePickup: isPickupAlt(state),
-    pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
-  };
 }
 
 function getCurrentSiteId() {
@@ -213,6 +155,11 @@ export const getAlternateFormFields = state => {
   return selector(state, 'pickUpAlternate');
 };
 
+export const isPickupAlt = createSelector(
+  getAlternateFormFields,
+  pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
+);
+
 export const getPickUpContactFormLabels = state => {
   const {
     lbl_pickup_title: title,
@@ -234,6 +181,10 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_emailSignupSubHeading: emailSignupSubHeading,
     lbl_pickup_emailSignupSubSubHeading: emailSignupSubSubHeading,
     lbl_pickup_emailSignupContact: emailSignupContact,
+    lbl_pickup_pickup_contact: pickupContactText,
+    lbl_pickup_btn_cancel: btnCancel,
+    lbl_pickup_btn_update: btnUpdate,
+    lbl_pickup_anchor_edit: anchorEdit,
   } = state.Labels.global && state.Labels.checkout.pickup;
   return {
     title,
@@ -255,6 +206,10 @@ export const getPickUpContactFormLabels = state => {
     emailSignupSubHeading,
     emailSignupSubSubHeading,
     emailSignupContact,
+    pickupContactText,
+    btnCancel,
+    btnUpdate,
+    anchorEdit,
   };
 };
 
@@ -272,6 +227,59 @@ export const getSendOrderUpdate = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
+
+export const getSmsNumberForOrderUpdates = createSelector(
+  getSmsSignUpFields,
+  smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
+);
+
+function getPickupInitialPickupSectionValues(state) {
+  // let userContactInfo = userStoreView.getUserContactInfo(state);
+  // values (if any) entered previously in the checkout process,
+  // or reported as checkout defaults by backend
+  const pickupValues = getPickupValues(state);
+  const alternativeData = {
+    ...{ hasAlternatePickup: isPickupAlt(state) },
+    ...getPickupAltValues(state),
+  };
+
+  return {
+    pickUpContact: {
+      firstName: pickupValues.firstName || getUserName(state),
+      lastName: pickupValues.lastName || getUserLastName(state),
+      emailAddress: pickupValues.emailAddress || getUserEmail(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+    },
+    smsSignUp: {
+      sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+    },
+    hasAlternatePickup: isPickupAlt(state),
+    pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
+  };
+}
+
+function getInitialPickupSectionValues(state) {
+  // let userContactInfo = userStoreView.getUserContactInfo(state);
+  // values (if any) entered previously in the checkout process,
+  // or reported as checkout defaults by backend
+  const pickupValues = getPickupValues(state);
+
+  return {
+    pickUpContact: {
+      firstName: pickupValues.firstName || getUserName(state),
+      lastName: pickupValues.lastName || getUserLastName(state),
+      emailAddress: pickupValues.emailAddress || getUserEmail(state),
+      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+    },
+    smsInfo: {
+      wantsSmsOrderUpdates: !!getSmsNumberForOrderUpdates(state),
+      smsUpdateNumber: getSmsNumberForOrderUpdates(state) || getPickupValues(state).phoneNumber,
+    },
+    hasAlternatePickup: isPickupAlt(state),
+    pickUpAlternate: isPickupAlt(state) ? getPickupAltValues(state) : {},
+  };
+}
 
 export default {
   getRecalcOrderPointsInterval,

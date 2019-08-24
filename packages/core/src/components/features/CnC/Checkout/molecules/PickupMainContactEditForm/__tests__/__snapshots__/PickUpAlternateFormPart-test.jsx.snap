@@ -17,9 +17,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       letterSpacing="normal"
       lineHeight="normal"
       textAlign="left"
-    >
-      Pickup Contact
-    </Styled(BodyCopy)>
+    />
     <div
       className="EditAnchor"
     >
@@ -30,9 +28,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
         fontSize="fs12"
         onClick={[Function]}
         underline={true}
-      >
-        Edit
-      </Styled(Anchor)>
+      />
     </div>
   </div>
   <Styled(PickUpContactDisplay) />
