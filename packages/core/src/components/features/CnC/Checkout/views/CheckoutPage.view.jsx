@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CnCTemplate from '../../common/organism/CnCTemplate';
-import PickUpFormPart from '../organisms/PickUpFormPart';
+import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
@@ -24,6 +24,7 @@ export default class CheckoutPage extends React.PureComponent {
       smsSignUpLabels,
       pickupInitialValues,
       navigation,
+      // onPickupSubmit,
     } = this.props;
     const currentSection = router.query.section || router.query.subSection;
     return (
@@ -74,4 +75,5 @@ CheckoutPage.propTypes = {
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  // onPickupSubmit: PropTypes.func.isRequired,
 };

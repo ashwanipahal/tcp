@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { initCheckoutAction, onEditModeChangeAction } from './Checkout.action';
+import { initCheckoutAction, submitPickupSection, onEditModeChangeAction } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   getAlternateFormUpdate,
@@ -35,13 +35,13 @@ export class CheckoutContainer extends React.Component<Props> {
       pickUpLabels,
       smsSignUpLabels,
       navigation,
+      onPickupSubmit,
     } = this.props;
 
     return (
       <CheckoutPage
         router={router}
         initialValues={initialValues}
-        currentSection={router.query.section}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
@@ -57,6 +57,7 @@ export class CheckoutContainer extends React.Component<Props> {
         pickUpLabels={pickUpLabels}
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
+        onPickupSubmit={onPickupSubmit}
       />
     );
   }
@@ -66,6 +67,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: () => {
       dispatch(initCheckoutAction());
+    },
+    onPickupSubmit: () => {
+      dispatch(submitPickupSection());
     },
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));

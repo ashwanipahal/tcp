@@ -185,10 +185,10 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_btn_cancel: btnCancel,
     lbl_pickup_btn_update: btnUpdate,
     lbl_pickup_anchor_edit: anchorEdit,
-    lbl_pickup_return_to: returnTo,
-    lbl_pickup_next_text: nextText,
-    lbl_pickup_button_text: pickupText,
-    lbl_pickup_billing_text: billingText,
+    lbl_pickup_returnTo: returnTo,
+    lbl_pickup_nextText: nextText,
+    lbl_pickup_buttonText: pickupText,
+    lbl_pickup_billingText: billingText,
   } = state.Labels.global && state.Labels.checkout.pickup;
   return {
     title,
