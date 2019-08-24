@@ -3,46 +3,37 @@
 exports[`AddEditAddress Native should render correctly 1`] = `
 <View
   addressFormLabels={Object {}}
+  currentForm={null}
   initialValues={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
   submitAddressFormAction={[Function]}
+  toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
 >
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
   >
-    <Connect(AddressVerification)
-      onError={[Function]}
-      onSuccess={[Function]}
-    />
-    <ReduxForm
-      addressFormLabels={Object {}}
-      destroyOnUnmount={true}
-      enableReinitialize={true}
-      forceUnregisterOnUnmount={false}
-      form="AddressForm"
-      getFormState={[Function]}
-      initialValues={Object {}}
-      isEdit={false}
-      isMakeDefaultDisabled={false}
-      keepDirtyOnReinitialize={false}
-      onCancel={[Function]}
-      onSubmit={[Function]}
-      persistentSubmitErrors={false}
-      pure={true}
-      shouldAsyncValidate={[Function]}
-      shouldError={[Function]}
-      shouldValidate={[Function]}
-      shouldWarn={[Function]}
-      submitAddressFormAction={[Function]}
-      submitAsSideEffect={false}
-      touchOnBlur={true}
-      touchOnChange={false}
-      updateUnregisteredFields={false}
-      validate={[Function]}
-    />
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs16"
+        fontWeight="extrabold"
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(LineComp)
+        borderColor="black"
+        borderWidth={1}
+        marginBottom={0}
+        marginTop={5}
+      />
+    </Styled(View)>
   </ScrollViewMock>
 </View>
 `;

@@ -12,6 +12,7 @@ import {
   DropDownItemContainer,
   Separator,
   FlatList,
+  StyledLabel,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -49,7 +50,10 @@ class DropDown extends React.PureComponent<Props> {
   static getDerivedStateFromProps(props, state) {
     const { selectedLabelState } = state;
     if (props.selectedValue !== selectedLabelState) {
-      const result = props.data.filter(item => item.value || item.id === props.selectedValue);
+      const result = props.data.filter(item => {
+        if (item.value) return item.value === props.selectedValue;
+        return item.id === props.selectedValue;
+      });
 
       if (result.length > 0) {
         if (result[0].label) return { selectedLabelState: result[0].label };
@@ -198,10 +202,11 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   render() {
-    const { data, dropDownStyle } = this.props;
+    const { data, dropDownStyle, heading } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
     return (
       <View style={dropDownStyle}>
+        {heading && <StyledLabel isFocused>{heading}</StyledLabel>}
         <Row
           {...this.props}
           onStartShouldSetResponder={this.openDropDown}

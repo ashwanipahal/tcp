@@ -11,32 +11,20 @@ import {
   NoAddressHeading,
   NoAddressBody,
   UnderlineStyle,
-  ModalHeading,
-  LineWrapper,
   ModalViewWrapper,
 } from '../../../styles/AddressBook.style.native';
 import Button from '../../../../../../common/atoms/Button';
 import AddressListComponent from '../../AddressList.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
-import AddressVerification from '../../../../../../common/organisms/AddressVerification/views/AddressVerification.view.native';
-import LineComp from '../../../../../../common/atoms/Line';
 
 export class AddressView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showVerifyAddressModal: false,
       addAddressMount: false,
     };
   }
-
-  toggleVerifyModal = () => {
-    const { showVerifyAddressModal } = this.state;
-    this.setState({
-      showVerifyAddressModal: !showVerifyAddressModal,
-    });
-  };
 
   toggleAddAddressModal = () => {
     const { addAddressMount } = this.state;
@@ -53,7 +41,7 @@ export class AddressView extends React.Component {
       deleteModalMountedState,
       setDeleteModalMountState,
     } = this.props;
-    const { addAddressMount, showVerifyAddressModal } = this.state;
+    const { addAddressMount } = this.state;
     return (
       <View {...this.props}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -115,40 +103,11 @@ export class AddressView extends React.Component {
           )}
           {addAddressMount && (
             <ModalNative isOpen={addAddressMount} onRequestClose={this.toggleAddAddressModal}>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={['secondary']}
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  text={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
-                />
-              </ModalHeading>
-              <LineWrapper>
-                <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-              </LineWrapper>
               <ModalViewWrapper>
                 <AddEditAddressContainer
                   onCancel={this.toggleAddAddressModal}
                   showHeading={false}
                 />
-              </ModalViewWrapper>
-            </ModalNative>
-          )}
-          {showVerifyAddressModal && (
-            <ModalNative isOpen={showVerifyAddressModal} onRequestClose={this.toggleVerifyModal}>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={['secondary']}
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  text="EDIT ADDRESS"
-                />
-              </ModalHeading>
-              <LineWrapper>
-                <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-              </LineWrapper>
-              <ModalViewWrapper>
-                <AddressVerification toggleModal={this.toggleVerifyModal} labels={labels} />
               </ModalViewWrapper>
             </ModalNative>
           )}
