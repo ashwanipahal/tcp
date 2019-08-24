@@ -191,7 +191,12 @@ ButtonList.defaultProps = {
 };
 
 ButtonList.propTypes = {
-  buttonListVariation: PropTypes.string,
+  buttonListVariation: PropTypes.oneOf([
+    'stackedCTAList',
+    'linkCTAList',
+    'scrollCTAList',
+    'imageCTAList',
+  ]),
   className: PropTypes.string,
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,
