@@ -115,7 +115,7 @@ class PaymentView extends React.Component<Props> {
       setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
-      recpatchaToken:''
+      recaptchaToken:''
     };
     this.isEdit = false;
   }
@@ -210,13 +210,12 @@ class PaymentView extends React.Component<Props> {
     debugger
     if (event && event.nativeEvent.data) {
       const value =  get(event, 'nativeEvent.data', '');
-      this.setState({recpatchaToken : value})
+      this.setState({recaptchaToken : value})
     }
   };
 
 
   toogleRecaptcha = ({ labels, setRecaptchaModalMountedState }) => {
-    debugger;
     return (
       <React.Fragment>
         {setRecaptchaModalMountedState && (
@@ -258,7 +257,7 @@ class PaymentView extends React.Component<Props> {
       setUpdateModalMountedState,
       setRecaptchaModalMountedState,
       selectedCard,
-      recpatchaToken
+      recaptchaToken
     } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
@@ -341,7 +340,7 @@ class PaymentView extends React.Component<Props> {
               toggleRecaptchaModal={this.setRecaptchaModalMountState}
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.toggleGiftCardModal}
-              recpatchaToken={recpatchaToken}
+              recaptchaToken={recaptchaToken}
             />
           )}
           {this.toogleRecaptcha({ labels, setRecaptchaModalMountedState })}

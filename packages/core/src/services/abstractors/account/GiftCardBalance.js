@@ -2,6 +2,7 @@ import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
 export const getGiftCardBalanceApi = payload => {
+  debugger
   const payloadData = {
     webService: endpoints.getGifCardBalance,
     body: {

@@ -33,7 +33,7 @@ const Cards = props => {
     setSelectedCard,
     setCardHandler,
     toggleRecaptchaModal,
-    recpatchaToken
+    recaptchaToken
   } = props;
   return (
     <View {...props}>
@@ -69,7 +69,7 @@ const Cards = props => {
           };
           return (
             <CardTile
-              recpatchaToken={recpatchaToken}
+              recaptchaToken={recaptchaToken}
               toggleModal={toggleModal}
               toggleRecaptchaModal={toggleRecaptchaModal}
               openUpdateModal={openUpdateModal}
