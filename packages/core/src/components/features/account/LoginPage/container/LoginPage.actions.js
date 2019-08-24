@@ -1,9 +1,10 @@
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 
-export const login = payload => {
+export const login = (payload, afterLoginHandler) => {
   return {
     type: LOGINPAGE_CONSTANTS.LOGIN,
     payload,
+    afterLoginHandler,
   };
 };
 
