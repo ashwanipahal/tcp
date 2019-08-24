@@ -47,6 +47,7 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
     case 'moduleN':
+      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
     default:
@@ -409,26 +410,6 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
-  const prototype = Object.getPrototypeOf(obj);
-  // eslint-disable-next-line
-  for (let name of Object.getOwnPropertyNames(prototype)) {
-    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
-    const isGetter = descriptor && typeof descriptor.get === 'function';
-    // eslint-disable-next-line
-    if (isGetter) continue;
-    if (
-      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
-        ? !name.startsWith(namePrefix)
-        : name.startsWith(namePrefix)
-    ) {
-      // eslint-disable-next-line
-      obj[name] = prototype[name].bind(obj);
-    }
-  }
-};
-
 export default {
   getSiteId,
-  bindAllClassMethodsToThis,
 };

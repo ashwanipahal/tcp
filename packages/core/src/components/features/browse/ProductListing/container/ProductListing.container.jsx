@@ -19,6 +19,14 @@ class ProductListingContainer extends React.PureComponent {
     getProducts({ URI: 'category', url });
   }
 
+  componentWillUpdate(nextProps) {
+    const { navigation } = this.props;
+    const { navigation: nextPropsNavigation } = { nextProps };
+    const url = navigation && navigation.getParam('url');
+    const nextPropsUrl = nextPropsNavigation && nextPropsNavigation.getParam('url');
+    console.log('url, nextPropsUrl', url, nextPropsUrl);
+  }
+
   render() {
     const { products, currentNavIds, navTree, breadCrumbs, ...otherProps } = this.props;
     return (

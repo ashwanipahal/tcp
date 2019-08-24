@@ -254,12 +254,13 @@ export default class ProductsOperator {
     }
     // if the bucketing is not required then we need to fallback to original approach.
     // If sorting is applied by the customer then we need to fallback to the original approach.
-    return this.getProductsListingForUrlLocation(
+    const abcdef = this.getProductsListingForUrlLocation(
       state,
       location,
       filterAndSortParam,
       sortBySelected
     );
+    return abcdef;
   }
 
   getProductsListingForUrlLocation(state, location = window.location, sortParam, sortBySelected) {
@@ -343,7 +344,7 @@ export default class ProductsOperator {
       }
       categoryId = getCatId(categoryNameList);
     }
-    return {
+    const abcd = {
       seoKeywordOrCategoryIdOrSearchTerm: getSeoKeywordOrCategoryIdOrSearchTerm(match),
       isSearch: isSearchPage,
       filtersAndSort,
@@ -362,6 +363,7 @@ export default class ProductsOperator {
       shouldApplyUnbxdLogic: this.shouldApplyUnbxdLogic,
       hasShortImage,
     };
+    return abcd;
   };
 
   addCustomUserInfoToProducts(products) {

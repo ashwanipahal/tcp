@@ -19,6 +19,7 @@ function* bootstrap({ payload: { pageInfo = { name: 'homepage' }, apiConfig, dev
     yield putResolve(setAPIConfig(apiConfig));
     yield putResolve(setDeviceInfo({ deviceType }));
     const result = yield call(bootstrapAbstractor, pagesList);
+    console.log('result: ', result);
     yield put(loadLayoutData(result[pageInfo.name].items[0].layout, pageInfo.name));
     yield put(loadLabelsData(result.labels));
     yield put(loadHeaderData(result.header));

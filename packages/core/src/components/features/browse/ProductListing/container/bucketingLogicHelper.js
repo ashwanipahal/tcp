@@ -5,6 +5,7 @@ import { findCategoryIdandName, matchPath } from './ProductListing.util';
 // import { getSessionStorage } from 'util/sessionStorageManagement';
 import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
 // import PAGES from '../../../../../constants/pages.constants';
+import { isMobileApp } from '../../../../../utils';
 
 class BucketingBL {
   /**
@@ -61,6 +62,13 @@ class BucketingBL {
    * @function doBucketingLogic This function does the logic work needed for bucketing
    */
 
+  getMatchPath = (isSearchPage, location) => {
+    const params = isSearchPage ? '/search/' : '/c/';
+    const pathname = isMobileApp() ? location.pathname : window.location.pathname;
+    const match = matchPath(pathname, params);
+    return match;
+  };
+
   doBucketingLogic = (
     location = '',
     state,
@@ -78,9 +86,7 @@ class BucketingBL {
     //   : matchPath(location.pathname, { path: PAGES.productListing.pathPattern });
     // temp.categoryKey = temp.isSearchPage ? match.params.searchTerm : match.params.listingKey;
     temp.isSearchPage = false;
-    const match = temp.isSearchPage
-      ? matchPath(window.location.pathname, '/search/')
-      : matchPath(window.location.pathname, '/c/');
+    const match = this.getMatchPath(temp.isSearchPage, location);
     temp.categoryKey = temp.isSearchPage ? match.searchTerm : match.listingKey;
     // temp.navigationTree = generalStoreView.getHeaderNavigationTree(state);
     temp.navigationTree = state.Navigation.navigationData;

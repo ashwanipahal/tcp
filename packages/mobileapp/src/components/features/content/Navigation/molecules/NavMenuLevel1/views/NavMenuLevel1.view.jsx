@@ -19,6 +19,7 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  */
 const NavMenuLevel1 = props => {
   const { navigationMenuObj, accessibilityLabels } = props;
+  console.log('accessibilityLabels: ', accessibilityLabels);
 
   /**
    * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
