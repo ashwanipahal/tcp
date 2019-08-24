@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import LabeledRadioButton from '../../../../../../common/atoms/LabeledRadioButton';
 import Row from '../../../../../../common/atoms/Row';
@@ -7,8 +8,9 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/ShipmentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
-const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className }) => {
-  const selectedShipment = shipmentMethods.find(method => method.id === selectedShipmentId);
+const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipmentHeader }) => {
+  const selectedShipment =
+    shipmentMethods && shipmentMethods.find(method => method.id === selectedShipmentId);
   return (
     <>
       <BodyCopy
@@ -17,10 +19,11 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className }) => 
         fontWeight="extrabold"
         className="elem-mb-MED"
       >
-        Shipping Method
+        {shipmentHeader}
       </BodyCopy>
       <Row fullBleed className={className}>
-        {shipmentMethods.length > 0 &&
+        {shipmentMethods &&
+          shipmentMethods.length > 0 &&
           shipmentMethods.map(option => {
             const { id, displayName, price, shippingSpeed } = option;
             const title = price > 0 ? `${displayName} - $${price}` : displayName;
@@ -64,6 +67,19 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className }) => 
       </Row>
     </>
   );
+};
+
+ShipmentMethods.propTypes = {
+  shipmentMethods: PropTypes.shape([]),
+  selectedShipmentId: PropTypes.string,
+  className: PropTypes.string,
+  shipmentHeader: PropTypes.string,
+};
+ShipmentMethods.defaultProps = {
+  shipmentMethods: null,
+  selectedShipmentId: null,
+  className: '',
+  shipmentHeader: '',
 };
 
 export default withStyles(ShipmentMethods, styles);
