@@ -8,7 +8,8 @@ import {
   Container,
   ScrollViewContainer,
   DivImageContainer,
-  TextLiksViewContainer,
+  TextLinksViewContainer,
+  ContainerView,
 } from '../ButtonList.styles.native';
 
 type Props = {
@@ -16,6 +17,7 @@ type Props = {
   navigation: Object,
   buttonListVariation: string,
   locator: string,
+  color: string,
 };
 
 /**
@@ -30,7 +32,7 @@ const keyExtractor = (_, index) => index.toString();
 /**
  * This function is used to render button either full-width or half
  */
-const renderItem = (item, navigation, showFullWidth, locator) => {
+const renderItem = (item, navigation, showFullWidth, locator, color) => {
   const { button } = item;
 
   return (
@@ -40,7 +42,7 @@ const renderItem = (item, navigation, showFullWidth, locator) => {
       accessibilityLabel={button.text}
       buttonVariation="cautionary-button"
       text={button.text}
-      color="red"
+      color={color}
       style={showFullWidth ? buttonFullWidth : buttonWidth}
       url={button.url}
       navigation={navigation}
@@ -51,13 +53,13 @@ const renderItem = (item, navigation, showFullWidth, locator) => {
 /**
  * This function is used to render Even number of Buttons into Grid
  */
-const renderEvenButtonGrid = (updatedCtxButton, navigation, locator) => {
+const renderEvenButtonGrid = (updatedCtxButton, navigation, locator, color) => {
   return (
     <FlatList
       numColumns={2}
       keyExtractor={keyExtractor}
       data={updatedCtxButton}
-      renderItem={({ item }) => renderItem(item, navigation, false, locator)}
+      renderItem={({ item }) => renderItem(item, navigation, false, locator, color)}
     />
   );
 };
@@ -65,14 +67,14 @@ const renderEvenButtonGrid = (updatedCtxButton, navigation, locator) => {
 /**
  * This function is used to render Odd number of Buttons into Grid
  */
-const renderOddButtonGrid = (ctxButton, navigation, locator) => {
+const renderOddButtonGrid = (ctxButton, navigation, locator, color) => {
   const updatedCtxButton = ctxButton.slice();
   const item = updatedCtxButton.pop();
   const showFullWidth = true;
   return (
     <Container>
-      {renderEvenButtonGrid(updatedCtxButton, navigation, locator)}
-      {renderItem(item, navigation, showFullWidth, locator)}
+      {renderEvenButtonGrid(updatedCtxButton, navigation, locator, color)}
+      {renderItem(item, navigation, showFullWidth, locator, color)}
     </Container>
   );
 };
@@ -80,7 +82,7 @@ const renderOddButtonGrid = (ctxButton, navigation, locator) => {
 /**
  * This function is used to render a single button in scroll Button view .
  */
-const scrollViewRenderItem = (item, navigation, locator) => {
+const renderItemScrollCTAList = (item, navigation, locator, color) => {
   const {
     item: { button },
   } = item;
@@ -92,7 +94,7 @@ const scrollViewRenderItem = (item, navigation, locator) => {
         accessibilityRole="button"
         accessibilityLabel={button.text}
         buttonVariation="cautionary-button"
-        color="red"
+        color={color}
         text={button.text}
         url={button.url}
         navigation={navigation}
@@ -104,7 +106,7 @@ const scrollViewRenderItem = (item, navigation, locator) => {
 /**
  * This function is used to generate Scroll ButtonList view .
  */
-const renderScrollView = (ctxButton, navigation, locator) => {
+const renderScrollCTAList = (ctxButton, navigation, locator, color) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
   return (
@@ -113,7 +115,7 @@ const renderScrollView = (ctxButton, navigation, locator) => {
       horizontal={isHorizontalScroll}
       keyExtractor={keyExtractor}
       data={ctxButton}
-      renderItem={item => scrollViewRenderItem(item, navigation, locator)}
+      renderItem={item => renderItemScrollCTAList(item, navigation, locator, color)}
     />
   );
 };
@@ -121,7 +123,7 @@ const renderScrollView = (ctxButton, navigation, locator) => {
 /**
  * This function is used to generate links for LinkText view .
  */
-const linkTextViewRenderItem = (item, navigation, locator) => {
+const renderItemCTAList = (item, navigation, locator) => {
   const style = { borderBottomWidth: 2, borderColor: 'white' };
 
   const {
@@ -132,7 +134,7 @@ const linkTextViewRenderItem = (item, navigation, locator) => {
   } = item;
 
   return (
-    <TextLiksViewContainer>
+    <TextLinksViewContainer>
       <Anchor
         key={index.toString()}
         locator={locator}
@@ -146,14 +148,14 @@ const linkTextViewRenderItem = (item, navigation, locator) => {
         customStyle={style}
         centered
       />
-    </TextLiksViewContainer>
+    </TextLinksViewContainer>
   );
 };
 
 /**
  * This function is used to generate LinkText view .
  */
-const renderLinkTextView = (ctxButton, navigation, locator) => {
+const renderCTAList = (ctxButton, navigation, locator) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
 
@@ -164,7 +166,7 @@ const renderLinkTextView = (ctxButton, navigation, locator) => {
         horizontal={isHorizontalScroll}
         keyExtractor={keyExtractor}
         data={ctxButton}
-        renderItem={item => linkTextViewRenderItem(item, navigation, locator)}
+        renderItem={item => renderItemCTAList(item, navigation, locator)}
       />
     </Wrapper>
   );
@@ -173,7 +175,7 @@ const renderLinkTextView = (ctxButton, navigation, locator) => {
 /**
  * This function is used to generate links for DivImageCTA view .
  */
-const divImageRenderItem = (item, navigation, locator) => {
+const renderItemImageCTAList = (item, navigation, locator, color) => {
   const style = { borderRadius: 60 / 2 };
   const bodycopyStyle = { marginTop: 20 };
   const {
@@ -191,7 +193,7 @@ const divImageRenderItem = (item, navigation, locator) => {
           accessibilityLabel={button.text}
           fontFamily="secondary"
           fontSize="fs14"
-          color="white"
+          color={color}
           fontWeight="extrabold"
           letterSpacing="black"
           text={button.text}
@@ -205,7 +207,7 @@ const divImageRenderItem = (item, navigation, locator) => {
 /**
  * This function is used to generate DivImageCTA view .
  */
-const renderDivImageCTA = (ctxButton, navigation, locator) => {
+const renderImageCTAList = (ctxButton, navigation, locator, color) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
   return (
@@ -214,7 +216,7 @@ const renderDivImageCTA = (ctxButton, navigation, locator) => {
       horizontal={isHorizontalScroll}
       keyExtractor={keyExtractor}
       data={ctxButton}
-      renderItem={item => divImageRenderItem(item, navigation, locator)}
+      renderItem={item => renderItemImageCTAList(item, navigation, locator, color)}
     />
   );
 };
@@ -226,27 +228,29 @@ const renderDivImageCTA = (ctxButton, navigation, locator) => {
  * buttonsData: Takes the list of linktext, tackedCTAButton, scrollCTAButton and divImageCTA button .
  */
 
-const ButtonList = ({ locator, buttonListVariation, navigation, buttonsData }: Props) => {
+const ButtonList = ({ locator, buttonListVariation, navigation, buttonsData, color }: Props) => {
   if (buttonListVariation === 'stackedCTAList') {
     const isEvenButtonGrid = buttonsData.length % 2 === 0;
     return (
       <Container>
-        {isEvenButtonGrid && renderEvenButtonGrid(buttonsData, navigation, locator)}
-        {!isEvenButtonGrid && renderOddButtonGrid(buttonsData, navigation, locator)}
+        {isEvenButtonGrid && renderEvenButtonGrid(buttonsData, navigation, locator, color)}
+        {!isEvenButtonGrid && renderOddButtonGrid(buttonsData, navigation, locator, color)}
       </Container>
     );
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    return <Container>{renderScrollView(buttonsData, navigation, locator)}</Container>;
+    return <Container>{renderScrollCTAList(buttonsData, navigation, locator, color)}</Container>;
   }
 
   if (buttonListVariation === 'linkCTAList') {
-    return <Container>{renderLinkTextView(buttonsData, navigation, locator)}</Container>;
+    return <Container>{renderCTAList(buttonsData, navigation, locator)}</Container>;
   }
 
   if (buttonListVariation === 'imageCTAList') {
-    return <Container>{renderDivImageCTA(buttonsData, navigation, locator)}</Container>;
+    return (
+      <ContainerView>{renderImageCTAList(buttonsData, navigation, locator, color)}</ContainerView>
+    );
   }
 
   return null;

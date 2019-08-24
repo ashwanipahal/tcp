@@ -107,16 +107,24 @@ export const getProfileInfoTileData = createSelector(
   getMailingAddress,
   getRewardsState,
   (personalInformation, mailingAddress, rewards) => {
-    const firstName = personalInformation.get('firstName');
-    const lastName = personalInformation.get('lastName');
-    const emailAddress = personalInformation.get('emailAddress').toLowerCase();
-    const rewardsAccountNumber = rewards.get('accountNumber');
-    const addressTemp = mailingAddress.get('address');
+    let firstName;
+    let lastName;
+    let emailAddress;
+
+    if (personalInformation) {
+      firstName = personalInformation.get('firstName');
+      lastName = personalInformation.get('lastName');
+      emailAddress = personalInformation.get('emailAddress').toLowerCase();
+    }
+
+    const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
+    const addressTemp = mailingAddress ? mailingAddress.get('address') : null;
     const address = addressTemp
       ? {
           addressLine1: addressTemp.get('addressLine1') || '',
           addressLine2: addressTemp.get('addressLine2') || '',
           city: addressTemp.get('city') || '',
+          country: addressTemp.get('country') || '',
           state: addressTemp.get('state') || '',
           zipCode: addressTemp.get('zipCode'),
         }

@@ -1,13 +1,13 @@
 const buildQuery = ({ slot, contentId }) => `
   ${slot}: moduleById(id: "${contentId}") {
 	contentId
-	name
-  type
-  set {
+    name
+    type
+    set {
       val
       key
     }
-  composites {
+    composites {
       headerText {
         textItems {
           text
@@ -21,6 +21,7 @@ const buildQuery = ({ slot, contentId }) => `
           url
           title
           target
+          external
         }
       }
       promoBanner {
@@ -39,6 +40,7 @@ const buildQuery = ({ slot, contentId }) => `
           text
           target
           title
+          external
         }
         image {
           url
@@ -47,6 +49,7 @@ const buildQuery = ({ slot, contentId }) => `
           crop_d
           crop_t
           crop_m
+          position
         }
       }
     }

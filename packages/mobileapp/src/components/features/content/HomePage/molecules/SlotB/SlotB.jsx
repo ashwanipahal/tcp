@@ -5,6 +5,7 @@ import {
   ModuleK,
   ModuleL,
   ModuleN,
+  ModuleA,
 } from '@tcp/core/src/components/common/molecules';
 
 // @flow
@@ -24,6 +25,8 @@ const SlotB = (props: Props) => {
       return <ModuleK {...props} />;
     case 'moduleN':
       return <ModuleN {...props} />;
+    case 'moduleA':
+      return <ModuleA {...props} />;
     default:
       return null;
   }

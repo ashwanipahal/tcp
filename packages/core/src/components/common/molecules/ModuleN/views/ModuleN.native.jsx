@@ -20,12 +20,20 @@ import config from '../ModuleN.config';
  * Author can surface teaser content leading to corresponding pages.
  */
 
+// TODO: keys will be changed once we get the actual data from CMS
+
 const { ctaTypes } = config;
 
 const ModuleN = (props: Props) => {
-  const { ctaItems, headerText, navigation, promoBanner, set } = props;
+  const {
+    ctaItems,
+    headerText,
+    navigation,
+    promoBanner,
+    set: [set = {}],
+  } = props;
 
-  const ctaType = ctaTypes[set[2].val];
+  const ctaType = ctaTypes[set.val];
 
   return (
     <Container background="red">
@@ -59,6 +67,7 @@ const ModuleN = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
+            color="white"
           />
         </DivImageCTAContainer>
       )}
@@ -70,6 +79,7 @@ const ModuleN = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
+            color="red"
           />
           <Border background="red" />
         </ContainerView>

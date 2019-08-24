@@ -7,12 +7,14 @@ import ShippingPage from '../organisms/ShippingPage';
 export default class CheckoutPage extends React.PureComponent {
   render() {
     const {
-      currentSection,
+      router,
       initialValues,
       onEditModeChange,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
+      navigation,
     } = this.props;
+    const currentSection = router.query.section;
     return (
       <CnCTemplate
         leftSection={() => {
@@ -24,6 +26,7 @@ export default class CheckoutPage extends React.PureComponent {
                   onEditModeChange={onEditModeChange}
                   isSmsUpdatesEnabled={isSmsUpdatesEnabled}
                   currentPhoneNumber={currentPhoneNumber}
+                  navigation={navigation}
                 />
               )}
               {currentSection.toLowerCase() === 'shipping' && <ShippingPage />}
@@ -36,9 +39,10 @@ export default class CheckoutPage extends React.PureComponent {
 }
 
 CheckoutPage.propTypes = {
-  currentSection: PropTypes.string.isRequired,
+  router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   onEditModeChange: PropTypes.bool.isRequired,
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };

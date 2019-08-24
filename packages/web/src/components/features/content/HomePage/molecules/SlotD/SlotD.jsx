@@ -1,12 +1,6 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-// @flow
-
-type Props = {
-  name: string,
-};
-
 const returnModule = mod => mod.default;
 
 const SlotB = dynamic({
@@ -15,20 +9,25 @@ const SlotB = dynamic({
     ModuleH: () => import('@tcp/core/src/components/common/molecules/ModuleH').then(returnModule),
     ModuleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
     ModuleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
+    ModuleA: () => import('@tcp/core/src/components/common/molecules/ModuleA').then(returnModule),
     ModuleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
   }),
-  render: (props: Props, { ModuleD, ModuleH, ModuleK, ModuleL, ModuleN }) => {
-    switch (props.name) {
+  render: (slotProps, { ModuleD, ModuleH, ModuleK, ModuleL, ModuleA, ModuleN }) => {
+    const { name } = slotProps;
+
+    switch (name) {
+      case 'moduleA':
+        return <ModuleA {...slotProps} />;
       case 'moduleD':
-        return <ModuleD {...props} />;
+        return <ModuleD {...slotProps} />;
       case 'moduleH':
-        return <ModuleH {...props} />;
+        return <ModuleH {...slotProps} />;
       case 'moduleK':
-        return <ModuleK {...props} />;
+        return <ModuleK {...slotProps} />;
       case 'moduleL':
-        return <ModuleL {...props} />;
+        return <ModuleL {...slotProps} />;
       case 'moduleN':
-        return <ModuleN {...props} />;
+        return <ModuleN {...slotProps} />;
       default:
         return null;
     }

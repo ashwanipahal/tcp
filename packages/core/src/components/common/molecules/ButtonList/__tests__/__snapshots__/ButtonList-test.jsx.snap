@@ -610,8 +610,103 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
 
 exports[`ButtonList component renders correctly without props 1`] = `
 <div
-  className=" "
+  className=" stacked-button-list-wrapper  wrapped-button-text"
 >
-  <Component />
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/girl"
+    key="Girl"
+    target=""
+    title="Girl"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="0"
+      fill=""
+    >
+      Girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-girl"
+    key="Toddler_Girl"
+    target=""
+    title="Toddler Girl"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="1"
+      fill=""
+    >
+      Toddler Girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/boy"
+    key="Boy"
+    target=""
+    title="Boy"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="2"
+      fill=""
+    >
+      Boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-boy2"
+    key="Tod_Boy"
+    target=""
+    title="Tod Boy"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="3"
+      fill=""
+    >
+      Toddler Boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-boy"
+    key="Baby"
+    target=""
+    title="Baby"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="4"
+      fill=""
+    >
+      Baby
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-boy"
+    key="Alt"
+    target=""
+    title="Alt"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="5"
+      fill=""
+    >
+      Alt
+    </Styled(Button)>
+  </Styled(Anchor)>
 </div>
 `;

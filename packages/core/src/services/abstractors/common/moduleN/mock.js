@@ -37,12 +37,12 @@ export default {
           },
           textItems: [
             {
-              text: '60-70% OFF',
-              style: 'style6',
+              text: '60-70 % OFF',
+              style: 'percentage_wrapped_large',
             },
             {
               text: 'No Exclusions',
-              style: 'style4',
+              style: 'text_normal',
             },
           ],
         },

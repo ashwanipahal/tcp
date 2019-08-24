@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
-import { SlotA, SlotB, SlotC, SlotD, SlotF } from '../molecules';
+import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
 class HomePageView extends React.Component {
   componentDidMount() {
@@ -42,10 +42,10 @@ class HomePageView extends React.Component {
       slot_2: slotB,
       slot_3: slotC,
       slot_4: slotD,
+      slot_5: slotE,
       slot_6: slotF,
       navigation,
     } = this.props;
-
     return (
       <ScrollView>
         <React.Fragment>
@@ -53,6 +53,7 @@ class HomePageView extends React.Component {
           {slotB && <SlotB {...slotB} navigation={navigation} />}
           {slotC && <SlotC {...slotC} navigation={navigation} />}
           {slotD && <SlotD {...slotD} navigation={navigation} />}
+          {slotE && <SlotE {...slotE} navigation={navigation} />}
           {slotF && <SlotF {...slotF} navigation={navigation} />}
           <Button
             fullWidth
@@ -97,6 +98,12 @@ HomePageView.propTypes = {
     type: PropTypes.string,
     contentId: PropTypes.string,
   }),
+  slot_5: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
   appType: PropTypes.string.isRequired,
@@ -108,6 +115,7 @@ HomePageView.defaultProps = {
   slot_2: {},
   slot_3: {},
   slot_4: {},
+  slot_5: {},
   slot_6: {},
   screenProps: {},
 };

@@ -128,6 +128,7 @@ class PaymentView extends React.Component<Props> {
   };
 
   setSelectedCard = card => {
+    this.isEdit = true;
     this.setState({
       selectedCard: card,
     });
@@ -172,14 +173,14 @@ class PaymentView extends React.Component<Props> {
     return (
       setUpdateModalMountedState && (
         <AddEditPaymentModal
-          dto={dto}
+          dto={this.isEdit ? dto : {}}
           labels={labels}
           setSelectedCard={this.setSelectedCard}
           toggleModal={this.setUpdateModalMountState}
           setUpdateModalMountedState={setUpdateModalMountedState}
           updateCardList={updateCardList}
           isEdit={this.isEdit}
-          selectedCard={selectedCard}
+          selectedCard={this.isEdit ? selectedCard : {}}
         />
       )
     );

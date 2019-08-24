@@ -184,7 +184,7 @@ const ButtonList = (props: Props) => {
 };
 
 ButtonList.defaultProps = {
-  buttonListVariation: 'stackedCTA',
+  buttonListVariation: 'stackedCTAList',
   className: '',
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',
