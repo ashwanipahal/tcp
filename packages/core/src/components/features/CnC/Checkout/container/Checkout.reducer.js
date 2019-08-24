@@ -89,8 +89,8 @@ export default function CheckoutReducer(state = initialState, action) {
     //     },
     //
     //   );
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_SHIPPING':
-    //   return merge(orderOptions, { shippingMethods: action.shippingMethods });
+    case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING:
+      return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
     // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
     //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
     // case 'CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT':
@@ -112,8 +112,8 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return merge(uiFlags, { maxGiftCards: action.maxGiftCards });
     // case 'CHECKOUT_FLAGS_SET_PLCC_ENABLED':
     //   return merge(uiFlags, { isPLCCPaymentEnabled: action.isPLCCPaymentEnabled });
-    // case 'CHECKOUT_FLAGS_SET_LOAD_METHODS':
-    //   return merge(uiFlags, { isLoadingShippingMethods: action.isLoading });
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_LOAD_METHODS:
+      return checkout.setIn(['uiFlags', 'isLoadingShippingMethods'], action.isLoading);
     // case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
     //   return merge(uiFlags, { isEditingSubform: action.isEditingSubform });
     // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':

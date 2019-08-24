@@ -101,4 +101,5 @@ export default {
   getUnavailableCount,
   getOOSCount,
   getConfirmationModalFlag,
+  getFilteredItems,
 };

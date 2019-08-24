@@ -197,5 +197,9 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/cart/getUnqualifiedItems',
   },
+  getShipmentMethods: {
+    method: 'GET',
+    URI: 'v2/checkout/getShipmentMethods',
+  },
 };
 export default endpoints;

@@ -3,7 +3,10 @@
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import constants from '../Checkout.constants';
-import { getGiftWrappingOptions } from '../../../../../services/abstractors/CnC/index';
+import {
+  getGiftWrappingOptions,
+  getShippingMethods,
+} from '../../../../../services/abstractors/CnC/index';
 import selectors from './Checkout.selector';
 import utility from '../util/utility';
 import {
@@ -11,15 +14,18 @@ import {
   getSetPickupAltValuesActn,
   getSetShippingValuesActn,
   getSetGiftWrapOptionsActn,
+  setIsLoadingShippingMethods,
+  setShippingOptions,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+// import { getUserEmail } from '../../../../features/account/User/container/User.selectors';
 
 const {
   getRecalcOrderPointsInterval,
-  // getIsOrderHasShipping  ,
-  // getShippingDestinationValues,
-  // getDefaultAddress,
-  // isGuest,
+  getIsOrderHasShipping,
+  getShippingDestinationValues,
+  getDefaultAddress,
+  isGuest,
   // getIsMobile,
 } = selectors;
 
@@ -34,7 +40,8 @@ function* loadGiftWrappingOptions() {
   }
 }
 
-const { getOrderPointsRecalcFlag } = utility;
+const { getOrderPointsRecalcFlag, hasPOBox } = utility;
+let oldHasPOB = {};
 
 function* loadUpdatedCheckoutValues(
   isUpdateRewards,
@@ -105,36 +112,74 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   //   this.store.dispatch(setVenmoPaymentInProgress(true));
   // }
 }
+function* loadShipmentMethods(miniAddress, throwError) {
+  try {
+    const res = yield getShippingMethods(
+      miniAddress.state,
+      miniAddress.zipCode,
+      miniAddress.addressLine1,
+      miniAddress.addressLine2
+    );
+    yield all([setShippingOptions(res), setIsLoadingShippingMethods(false)].map(val => put(val)));
+  } catch (err) {
+    yield put(setIsLoadingShippingMethods(false));
+    if (throwError) {
+      throw err;
+    }
+  }
+}
+
+function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError) {
+  // Note: this convoluted logic is due to BE. If address lines do not contain a pobox
+  // then in the US we should only respond to state changes, and in Canada only to
+  // zipcode changes. And we also have to react to any change if switching from having
+  // to not having a pobox, or a change in address lines if currently has a pobox
+  const newHasPOB = hasPOBox(miniAddress.addressLine1, miniAddress.addressLine2);
+  if (
+    !(
+      oldHasPOB !== newHasPOB ||
+      (newHasPOB && (changhedFlags.addressLine1 || changhedFlags.addressLine2))
+    ) &&
+    // zipCode changed, but not state
+    ((miniAddress.country === 'US' && !changhedFlags.state) ||
+      // state changed, but not zipCode
+      (miniAddress.country === 'CA' && !changhedFlags.zipCode))
+  ) {
+    // shipping methods are the same as we already have
+    return yield;
+  }
+  oldHasPOB = newHasPOB;
+
+  yield put(setIsLoadingShippingMethods(true));
+  return yield loadShipmentMethods(miniAddress, throwError);
+}
 
 function* loadCartAndCheckoutDetails(isRecalcRewards) {
   yield call(loadUpdatedCheckoutValues, null, null, null, isRecalcRewards);
-  // const getIsShippingRequired = yield select(getIsOrderHasShipping);
-  // if (getIsShippingRequired) {
-  // let shippingAddress = {}; // yield select(getShippingDestinationValues);
-  // shippingAddress = shippingAddress.address;
-  // const defaultAddress = yield select(getDefaultAddress);
-  // const hasShipping =
-  //   (shippingAddress &&
-  //     shippingAddress.country &&
-  //     shippingAddress.state &&
-  //     shippingAddress.zipCode) ||
-  //   true;
-  // const isGuestUser = yield select(isGuest);
-  // const isMobile = getIsMobile;
-  // if (!hasShipping /* && !defaultAddress */ || isGuestUser || isMobile) {
-  // if some data is missing request defaults (new user would have preselected
-  //  country and zipcode, but not state but service needs all 3 of them)
-  // return '';
-  /* loadShipmentMethods(
-        this.store,
-        {country: '', state: '', zipCode: ''},
-        {state: true, zipCode: true},
-        true,
-        this.checkoutServiceAbstractor
-      ); */
-  // }
-  // }
-  return '';
+  const getIsShippingRequired = yield select(getIsOrderHasShipping);
+  if (getIsShippingRequired) {
+    let shippingAddress = yield select(getShippingDestinationValues);
+    shippingAddress = shippingAddress.address;
+    const defaultAddress = yield select(getDefaultAddress);
+    const hasShipping =
+      shippingAddress &&
+      shippingAddress.get('country') &&
+      shippingAddress.get('state') &&
+      shippingAddress.get('zipCode');
+    const isGuestUser = yield select(isGuest);
+    // const isMobile = getIsMobile;
+    if (isGuestUser || (!hasShipping && !defaultAddress)) {
+      // isMobile check is left
+
+      // if some data is missing request defaults (new user would have preselected
+      //  country and zipcode, but not state but service needs all 3 of them)
+      yield validDateAndLoadShipmentMethods(
+        { country: '', state: '', zipCode: '' },
+        { state: true, zipCode: true },
+        true
+      );
+    }
+  }
 }
 
 function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
