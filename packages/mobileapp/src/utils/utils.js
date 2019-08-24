@@ -1,4 +1,6 @@
 import moment from 'moment';
+import CookieManager from 'react-native-cookies';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   setValueInAsyncStorage,
@@ -145,4 +147,13 @@ export const shouldAnimateLogo = async () => {
 
 export default {
   getIcon,
+};
+
+/**
+ * This function reads cookie for mobile app
+ */
+export const readCookieMobileApp = key => {
+  const apiConfigObj = getAPIConfig();
+  const res = apiConfigObj.domain ? CookieManager.get(apiConfigObj.domain) : null;
+  return res && res[key];
 };
