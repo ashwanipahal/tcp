@@ -1,5 +1,6 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import countrySelectorAbstractor from '@tcp/core/src/services/abstractors/common/countrySelector';
+import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
 import {
   getSiteId,
   isCanada,
@@ -16,13 +17,24 @@ import {
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 
+import GLOBAL_CONSTANT from '@tcp/core/src/reduxStore/constants';
+
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
 import {
-  setCountryListData,
   storeCountriesMap,
   storeCurrenciesMap,
   udpateSiteId,
+  setModuleXContent,
 } from './CountrySelector.actions';
+
+export function* fetchModuleX({ payload = '' }) {
+  try {
+    const result = yield call(getModuleX, payload);
+    yield put(setModuleXContent(result.richText));
+  } catch (err) {
+    yield null;
+  }
+}
 
 export function* fetchCountryListData() {
   const res = yield call(countrySelectorAbstractor.getData);
@@ -30,7 +42,6 @@ export function* fetchCountryListData() {
   const countriesMap = getCountriesMap(data);
   const currenciesMap = getCurrenciesMap(data);
   yield all([
-    put(setCountryListData(data)),
     put(storeCountriesMap(countriesMap)),
     put(storeCurrenciesMap(currenciesMap)),
   ]);
@@ -78,6 +89,7 @@ export function* submitCountrySelectionData({ payload: data }) {
 }
 
 function* CountrySelectorSaga() {
+  yield takeLatest(GLOBAL_CONSTANT.GET_MODULEX_CONTENT, fetchModuleX);
   yield takeLatest(COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_GET_DATA, fetchCountryListData);
   yield takeLatest(
     COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SUBMIT_DATA,

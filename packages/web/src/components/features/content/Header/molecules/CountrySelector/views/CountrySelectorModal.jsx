@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { change, Field, reduxForm } from 'redux-form';
-import { BodyCopy, Button, SelectBox } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Button, RichText, SelectBox } from '@tcp/core/src/components/common/atoms';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLocator } from '@tcp/core/src/utils';
@@ -62,6 +62,7 @@ class CountrySelectorModal extends React.Component {
       closeModal,
       labels,
       languages,
+      noteContent,
     } = this.props;
     return (
       <Modal
@@ -144,7 +145,9 @@ class CountrySelectorModal extends React.Component {
             textAlign="center"
             data-locator={getLocator('country_selector_tnc_text')}
           >
-            {labels.lbl_global_country_selector_note}
+            <RichText
+              richTextHtml={noteContent}
+            />
           </BodyCopy>
         </div>
       </Modal>
@@ -154,6 +157,7 @@ class CountrySelectorModal extends React.Component {
 
 CountrySelectorModal.propTypes = {
   className: PropTypes.string.isRequired,
+  noteContent: PropTypes.string.isRequired,
   countriesMap: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   currenciesMap: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleSubmit: PropTypes.func.isRequired,

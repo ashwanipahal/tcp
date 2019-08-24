@@ -1,12 +1,12 @@
 import { fromJS } from 'immutable';
 import { API_CONFIG } from '@tcp/core/src/services/config';
+import GLOBAL_CONSTANT from '@tcp/core/src/reduxStore/constants';
 
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
 
 const { siteIds } = API_CONFIG;
 const initialState = fromJS({
   isModalOpen: false,
-  countryList: [],
   countriesMap: [],
   currenciesMap: [],
   sitesTable: {
@@ -39,12 +39,11 @@ const initialState = fromJS({
   language: '',
   currency: '',
   siteId: '',
+  moduleXContent: '',
 });
 
 const CountrySelectorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SET_DATA:
-      return state.set('countryList', action.payload);
     case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_MODAL_TOGGLE:
       return state.set('isModalOpen', action.payload.isModalOpen);
     case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_COUNTRY:
@@ -59,6 +58,8 @@ const CountrySelectorReducer = (state = initialState, action) => {
       return state.set('currenciesMap', action.payload);
     case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_SITEID:
       return state.set('siteId', action.siteId);
+    case GLOBAL_CONSTANT.SET_MODULEX_CONTENT:
+        return state.set('moduleXContent', action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import {
   getCountryListData,
+  getModuleXContent,
   submitCountrySelection,
   toggleCountrySelectorModal,
   updateSelectedCountry,
@@ -22,11 +23,16 @@ import {
   getOldLanguage,
   getSitesTable,
   getSiteId,
+  getModuleXContentId,
+  getNoteContent,
 } from './CountrySelector.selectors';
 import CountrySelectorView from '../views';
 
 export const mapDispatchToProps = dispatch => {
   return {
+    getModuleXContent: payload => {
+      dispatch(getModuleXContent(payload));
+    },
     toggleModal: payload => {
       dispatch(toggleCountrySelectorModal(payload));
     },
@@ -65,6 +71,8 @@ const mapStateToProps = state => {
     savedCurrency: getOldCurrency(state),
     siteId: getSiteId(state),
     labels: getLabels(state),
+    noteContent: getNoteContent(state),
+    noteContentId: getModuleXContentId(state),
   };
 };
 

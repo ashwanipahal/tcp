@@ -14,6 +14,11 @@ import style from '../styles/CountrySelector.styles';
  * @param {props} accepts countriesMap, currenciesMap and languageMap as props.
  */
 class CountrySelector extends React.Component {
+  componentDidMount() {
+    const { getModuleXContent, noteContentId } = this.props;
+    getModuleXContent(noteContentId);
+  }
+
   openModal = () => {
     const { countriesMap, toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
@@ -93,14 +98,8 @@ class CountrySelector extends React.Component {
 
   getLanguageMap = () => {
     const { siteId, sitesTable } = this.props;
-    let siteLanguages = '';
-    Object.keys(sitesTable).map(site => {
-      if (site === siteId) {
-        siteLanguages = sitesTable[site].languages;
-      }
-      return siteLanguages;
-    });
-    return siteLanguages;
+    const siteLanguages = sitesTable.get(siteId);
+    return siteLanguages.get('languages');
   };
 
   render() {
@@ -115,11 +114,11 @@ class CountrySelector extends React.Component {
       savedCurrency,
       savedLanguage,
       labels: { countrySelector: labelValues },
+      noteContent,
       showInFooter,
     } = this.props;
     const languages = this.getLanguageMap();
     const flagIconSrc = getFlagIconPath(savedCountry);
-
     return (
       <div className={`${className} countrySelector`}>
         {showInFooter ? (
@@ -140,6 +139,7 @@ class CountrySelector extends React.Component {
               currenciesMap={currenciesMap}
               labels={labelValues}
               languages={languages}
+              noteContent={noteContent}
               savedCountry={savedCountry}
               savedCurrency={savedCurrency}
               savedLanguage={savedLanguage}
@@ -169,27 +169,27 @@ class CountrySelector extends React.Component {
           />
         </div>
         <div>
-          {languages.map(({ id }, index) => (
+          {languages.map((language, index) => (
             <BodyCopy
               key={index.toString()}
               component="span"
               fontFamily="secondary"
               fontSize="fs13"
               data-locator={
-                id === savedLanguage
+                language.get('id') === savedLanguage
                   ? getLocator(
                       showInFooter ? 'footer_language_selected' : 'header_language_selected'
                     )
                   : ''
               }
               className={`${
-                id === savedLanguage
+                language.get('id') === savedLanguage
                   ? 'countrySelector__locale--selected'
                   : 'countrySelector__locale--disabled'
               } countrySelector__locale`}
               onClick={this.openModal}
             >
-              {id}
+              {language.get('id')}
             </BodyCopy>
           ))}
         </div>
@@ -203,11 +203,14 @@ CountrySelector.propTypes = {
   country: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
+  noteContentId: PropTypes.string.isRequired,
+  noteContent: PropTypes.string.isRequired,
   savedCountry: PropTypes.string.isRequired,
   savedCurrency: PropTypes.string.isRequired,
   savedLanguage: PropTypes.string.isRequired,
   countriesMap: PropTypes.arrayOf(PropTypes.shape({})),
   currenciesMap: PropTypes.arrayOf(PropTypes.shape({})),
+  getModuleXContent: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func,
   isModalOpen: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,

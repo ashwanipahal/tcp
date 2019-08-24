@@ -59,3 +59,13 @@ export const getOldLanguage = state => {
 export const getLabels = state => {
   return state.Labels.global;
 };
+
+export const getNoteContent = state => {
+  return getCountrySelectorState(state).get('moduleXContent');
+};
+
+export const getModuleXContentId = state => {
+  const { referred = [] } = state.Labels.global.countrySelector;
+  const content = referred.find(label => label.name === 'lbl_global_country_selector_note');
+  return content && content.contentId;
+};

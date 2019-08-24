@@ -69,6 +69,10 @@ const styles = css`
   }
   .shipToForm__note-clarification {
     margin: 32px 32px 0;
+
+    a {
+      color: ${props => props.theme.colorPalette.gray['900']};
+    }
   }
 `;
 

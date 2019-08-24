@@ -58,8 +58,12 @@ const SelectBox = ({
         {options &&
           options.map(option => {
             return (
-              <option value={option.id} id={option.id} key={option.id}>
-                {option.displayName}
+              <option
+                value={option.id || option.get('id')}
+                id={option.id || option.get('id')}
+                key={option.id || option.get('id')}
+              >
+                { option.displayName || option.get('displayName') }
               </option>
             );
           })}

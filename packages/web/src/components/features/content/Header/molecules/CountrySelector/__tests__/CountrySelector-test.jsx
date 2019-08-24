@@ -76,4 +76,9 @@ describe('Country Selector Component', () => {
     expect(component.find('.countrySelector__shipTo')).toHaveLength(1);
     expect(component.find(CountrySelectorModal)).toHaveLength(1);
   });
+
+  it('execute methods', () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.props.openModal = jest.fn();
+  });
 });
