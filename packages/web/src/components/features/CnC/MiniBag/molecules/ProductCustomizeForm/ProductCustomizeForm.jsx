@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Row, Button, Image } from '@tcp/core/src/components/common/atoms';
+import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
@@ -230,99 +230,103 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
-          <div className="select-value-wrapper">
-            <div className="color-selector">
-              <Field
-                width={87}
-                id="color"
-                name={selectedColor}
-                component={ColorSelector}
-                options={colorList}
-                onChange={this.colorChange}
-                dataLocator="addnewaddress-state"
-              />
-            </div>
-            {hasFits && (
-              <div className="fit-selector">
+          <Col colSize={{ small: 10, medium: 10, large: 10 }}>
+            <div className="select-value-wrapper">
+              <div className="color-selector">
                 <Field
-                  width={69}
-                  id="fit"
-                  name="Fit"
-                  component={MiniBagSelect}
-                  options={fitList}
-                  onChange={this.fitChange}
+                  width={87}
+                  id="color"
+                  name={selectedColor}
+                  component={ColorSelector}
+                  options={colorList}
+                  onChange={this.colorChange}
                   dataLocator="addnewaddress-state"
                 />
               </div>
-            )}
-            <div className="size-selector">
-              <Field
-                width={69}
-                className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
-                id="size"
-                name={this.getSizeLabel(item, labels)}
-                component={MiniBagSelect}
-                options={sizeList}
-                onChange={this.sizeChange}
-                dataLocator="addnewaddress-state"
-              />
-              {isErrorMessageDisplayed && (
-                <BodyCopy
-                  className="size-error"
-                  fontSize="fs12"
-                  component="div"
-                  fontFamily="secondary"
-                  fontWeight="regular"
-                >
-                  <Image
-                    alt="Error"
-                    className="error-image"
-                    src={getIconPath('alert-triangle')}
-                    data-locator="productcustomizeform-error-icon"
+              {hasFits && (
+                <div className="fit-selector">
+                  <Field
+                    width={69}
+                    id="fit"
+                    name="Fit"
+                    component={MiniBagSelect}
+                    options={fitList}
+                    onChange={this.fitChange}
+                    dataLocator="addnewaddress-state"
                   />
-                  Please select a size
-                  {/* will come from label */}
-                </BodyCopy>
+                </div>
               )}
+              <div className="size-selector">
+                <Field
+                  width={69}
+                  className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
+                  id="size"
+                  name={this.getSizeLabel(item, labels)}
+                  component={MiniBagSelect}
+                  options={sizeList}
+                  onChange={this.sizeChange}
+                  dataLocator="addnewaddress-state"
+                />
+                {isErrorMessageDisplayed && (
+                  <BodyCopy
+                    className="size-error"
+                    fontSize="fs12"
+                    component="div"
+                    fontFamily="secondary"
+                    fontWeight="regular"
+                  >
+                    <Image
+                      alt="Error"
+                      className="error-image"
+                      src={getIconPath('alert-triangle')}
+                      data-locator="productcustomizeform-error-icon"
+                    />
+                    {labels.errorSize}
+                  </BodyCopy>
+                )}
+              </div>
+              <div className="qty-selector">
+                <Field
+                  width={32}
+                  id="quantity"
+                  name="Qty"
+                  component={MiniBagSelect}
+                  options={this.getQuantityList()}
+                  onChange={this.quantityChange}
+                  dataLocator="addnewaddress-state"
+                />
+              </div>
             </div>
-            <div className="qty-selector">
-              <Field
-                width={32}
-                id="quantity"
-                name="Qty"
-                component={MiniBagSelect}
-                options={this.getQuantityList()}
-                onChange={this.quantityChange}
-                dataLocator="addnewaddress-state"
-              />
+          </Col>
+          <Col colSize={{ small: 2, medium: 2, large: 2 }}>
+            <div className="button-wrapper">
+              <Button
+                inheritedStyles={buttonCustomStyles}
+                type="submit"
+                onClick={e => {
+                  e.preventDefault();
+                  if (fitChanged) {
+                    this.displayErrorMessage(fitChanged);
+                  } else {
+                    this.displayErrorMessage(fitChanged);
+                    handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
+                  }
+                }}
+              >
+                {/* <u>{labels.update}</u> */}
+                <u>Update</u>
+              </Button>
+              <Button
+                className="button-cancel"
+                inheritedStyles={buttonCustomStyles}
+                onClick={() => {
+                  formVisiblity();
+                }}
+              >
+                <u>{labels.cancel}</u>
+              </Button>
             </div>
-          </div>
-          <div className="button-wrapper">
-            <Button
-              inheritedStyles={buttonCustomStyles}
-              type="submit"
-              onClick={e => {
-                e.preventDefault();
-                if (fitChanged) {
-                  this.displayErrorMessage(fitChanged);
-                } else {
-                  this.displayErrorMessage(fitChanged);
-                  handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
-                }
-              }}
-            >
-              {/* <u>{labels.update}</u> */}
-              <u>Update</u>
-            </Button>
-            <Button
-              inheritedStyles={buttonCustomStyles}
-              onClick={() => {
-                formVisiblity();
-              }}
-            >
-              <u>{labels.cancel}</u>
-            </Button>
-          </div>
+          </Col>
         </Row>
       </form>
     );

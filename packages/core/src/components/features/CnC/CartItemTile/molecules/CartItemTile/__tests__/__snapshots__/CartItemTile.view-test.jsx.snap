@@ -18,11 +18,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           ";
   margin-bottom: 20px;
-  .padding-top-10 {
-    padding-top: 10px;
-  }
   .padding-left-10 {
-    padding-left: 10px;
+    padding-left: 4px;
   }
   .padding-left-6 {
     padding-left: 6px;
@@ -52,6 +49,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .align-product-img {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .color-fit-size-separator {
@@ -129,8 +127,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
 
       .label-responsive {
-        width: 40px;
-        margin-right: 0;
+        width: auto;
+        margin-right: 22px;
       }
 
       .value-responsive {
@@ -141,6 +139,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
         padding-top: 0;
         display: flex;
         flex: 1;
+        width: auto;
+        margin-right: 22px;
       }
 
       .responsive-edit-css {
@@ -188,6 +188,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
     .price-label {
       margin-left: 170px;
+    }
+  }
+
+  .productImgBrand {
+    p {
+      margin-right: 35px;
     }
   }
 
