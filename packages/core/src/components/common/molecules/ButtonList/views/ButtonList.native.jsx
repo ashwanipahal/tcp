@@ -184,7 +184,7 @@ const divImageRenderItem = (item, navigation, locator) => {
   return (
     <Anchor url={button.url} navigation={navigation} locator={locator}>
       <DivImageContainer>
-        <Image url={image.url} height={60} width={60} style={style} />
+        {image && <Image url={image.url} height={60} width={60} style={style} />}
         <BodyCopy
           key={index.toString()}
           accessibilityRole="text"
