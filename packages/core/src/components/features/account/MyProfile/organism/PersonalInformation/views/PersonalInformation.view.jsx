@@ -11,15 +11,15 @@ import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
 const PersonalInformation = ({
   labels,
-  ProfileInfoTile,
-  UserEmail,
+  profileInfoTile,
+  userEmail,
   userBirthday,
-  UserFullName,
-  UserPhoneNumber,
+  userFullName,
+  userPhoneNumber,
   airMiles,
-  MyPlaceNumber,
+  myPlaceNumber,
 }) => {
-  const { address } = ProfileInfoTile;
+  const { address } = profileInfoTile;
   return (
     <>
       <MyProfileTile
@@ -29,12 +29,12 @@ const PersonalInformation = ({
       >
         <PersonalInformationDisplay
           labels={labels}
-          UserEmail={UserEmail}
+          userEmail={userEmail}
           userBirthday={userBirthday}
-          UserFullName={UserFullName}
-          UserPhoneNumber={UserPhoneNumber}
+          userFullName={userFullName}
+          userPhoneNumber={userPhoneNumber}
           airMiles={airMiles}
-          MyPlaceNumber={MyPlaceNumber}
+          myPlaceNumber={myPlaceNumber}
         />
       </MyProfileTile>
       {address && address.isComplete && (
@@ -70,13 +70,13 @@ PersonalInformation.propTypes = {
     lbl_profile_personal_information: PropTypes.string,
     lbl_profile_edit_personal_info: PropTypes.string,
   }),
-  ProfileInfoTile: PropTypes.shape({}),
+  profileInfoTile: PropTypes.shape({}),
   userBirthday: PropTypes.string,
-  UserEmail: PropTypes.string,
-  UserFullName: PropTypes.string,
-  UserPhoneNumber: PropTypes.number,
+  userEmail: PropTypes.string,
+  userFullName: PropTypes.string,
+  userPhoneNumber: PropTypes.number,
   airMiles: PropTypes.string,
-  MyPlaceNumber: PropTypes.string,
+  myPlaceNumber: PropTypes.string,
 };
 
 PersonalInformation.defaultProps = {
@@ -84,13 +84,13 @@ PersonalInformation.defaultProps = {
     lbl_profile_personal_information: '',
     lbl_profile_edit_personal_info: '',
   },
-  ProfileInfoTile: {},
+  profileInfoTile: {},
   userBirthday: '',
-  UserEmail: '',
-  UserFullName: '',
-  UserPhoneNumber: '',
+  userEmail: '',
+  userFullName: '',
+  userPhoneNumber: '',
   airMiles: '',
-  MyPlaceNumber: '',
+  myPlaceNumber: '',
 };
 
 export default withStyles(PersonalInformation, styles);

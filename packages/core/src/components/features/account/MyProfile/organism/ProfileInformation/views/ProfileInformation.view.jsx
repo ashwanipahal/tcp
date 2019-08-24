@@ -16,13 +16,13 @@ const ProfileInformation = ({
   labels,
   profileCompletion,
   mailingAddress,
-  ProfileInfoTile,
-  UserEmail,
+  profileInfoTile,
+  userEmail,
   userBirthday,
-  UserFullName,
-  UserPhoneNumber,
+  userFullName,
+  userPhoneNumber,
   airMiles,
-  MyPlaceNumber,
+  myPlaceNumber,
   userSurvey,
   percentageIncrement,
   defaultStore,
@@ -77,13 +77,13 @@ const ProfileInformation = ({
         >
           <PersonalInformation
             labels={labels}
-            ProfileInfoTile={ProfileInfoTile}
-            UserEmail={UserEmail}
+            profileInfoTile={profileInfoTile}
+            userEmail={userEmail}
             userBirthday={userBirthday}
-            UserFullName={UserFullName}
-            UserPhoneNumber={UserPhoneNumber}
+            userFullName={userFullName}
+            userPhoneNumber={userPhoneNumber}
             airMiles={airMiles}
-            MyPlaceNumber={MyPlaceNumber}
+            myPlaceNumber={myPlaceNumber}
           />
         </Col>
       </Row>
@@ -163,16 +163,15 @@ ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
   profileCompletion: PropTypes.string,
   mailingAddress: PropTypes.shape({}),
-  ProfileInfoTile: PropTypes.shape({}),
+  profileInfoTile: PropTypes.shape({}),
   userBirthday: PropTypes.string,
-  UserEmail: PropTypes.string,
+  userEmail: PropTypes.string,
   airMiles: PropTypes.string,
-  MyPlaceNumber: PropTypes.string,
-  UserFullName: PropTypes.string,
-  UserPhoneNumber: PropTypes.number,
+  myPlaceNumber: PropTypes.string,
+  userFullName: PropTypes.string,
+  userPhoneNumber: PropTypes.number,
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
-
   defaultStore: PropTypes.string,
   successMessage: PropTypes.string,
 };
@@ -182,13 +181,13 @@ ProfileInformation.defaultProps = {
   labels: {},
   profileCompletion: '',
   mailingAddress: {},
-  ProfileInfoTile: {},
+  profileInfoTile: {},
   userBirthday: '',
-  UserEmail: '',
-  UserFullName: '',
-  UserPhoneNumber: '',
+  userEmail: '',
+  userFullName: '',
+  userPhoneNumber: '',
   airMiles: '',
-  MyPlaceNumber: '',
+  myPlaceNumber: '',
   userSurvey: [],
   percentageIncrement: {},
   defaultStore: '',

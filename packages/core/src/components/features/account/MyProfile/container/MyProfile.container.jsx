@@ -57,12 +57,12 @@ const mapStateToProps = state => {
     percentageIncrement: getPercentageIncrement(state),
     defaultStore: getDefaultStore(state),
     successMessage: getSuccess(state),
-    UserFullName: getUserFullName(state),
-    UserEmail: getUserEmail(state),
-    UserPhoneNumber: getUserPhoneNumber(state),
+    userFullName: getUserFullName(state),
+    userEmail: getUserEmail(state),
+    userPhoneNumber: getUserPhoneNumber(state),
     airMiles: getAirmilesDetails(state),
-    MyPlaceNumber: getMyPlaceNumber(state),
-    ProfileInfoTile: getProfileInfoTileData(state),
+    myPlaceNumber: getMyPlaceNumber(state),
+    profileInfoTile: getProfileInfoTileData(state),
   };
 };
 

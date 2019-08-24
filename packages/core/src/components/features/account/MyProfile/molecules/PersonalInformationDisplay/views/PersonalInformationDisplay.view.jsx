@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import { MONTH_DISPLAY_MAP } from '../../../../../../../utils/parseDate';
+import { COMPLETE_MONTH } from '../../../../../../../utils/parseDate';
 import { isCanada } from '../../../../../../../utils';
 
-export const MyPlaceRewards = (airMiles, MyPlaceNumber, labels) => {
+const getMyPlaceRewards = (airMiles, myPlaceNumber, labels) => {
   return (
     <BodyCopy
       dataLocator="profileinfo-rewardsid"
@@ -14,50 +14,55 @@ export const MyPlaceRewards = (airMiles, MyPlaceNumber, labels) => {
     >
       {isCanada() && airMiles && `${labels.lbl_profile_air_miles} ${airMiles}`}
       {!isCanada() &&
-        MyPlaceNumber &&
-        `${labels.lbl_profile_my_place_rewards_info} ${MyPlaceNumber}`}
+        myPlaceNumber &&
+        `${labels.lbl_profile_my_place_rewards_info} ${myPlaceNumber}`}
     </BodyCopy>
   );
 };
 
 export const PersonalInformationDisplay = ({
   className,
-  UserEmail,
-  UserFullName,
-  UserPhoneNumber,
+  userEmail,
+  userFullName,
+  userPhoneNumber,
   userBirthday,
   airMiles,
-  MyPlaceNumber,
+  myPlaceNumber,
   labels,
 }) => {
-  const birthdayArray = userBirthday ? userBirthday && userBirthday.split('|') : '';
+  const birthdayArray = userBirthday ? userBirthday.split('|') : [];
   const userBirthdayDisplay =
     birthdayArray && birthdayArray.length === 2
-      ? `${labels.lbl_profile_edit_birthday_heading} ${MONTH_DISPLAY_MAP[birthdayArray[0]]} ${
+      ? `${labels.lbl_profile_edit_birthday_heading} ${COMPLETE_MONTH[birthdayArray[0] - 1]} ${
           birthdayArray[1]
         }`
       : '';
   return (
     <div className={className}>
-      {UserFullName && (
+      {userFullName && (
         <BodyCopy fontSize="fs16" fontFamily="secondary" dataLocator="profileinfo-username">
-          {UserFullName}
+          {userFullName}
         </BodyCopy>
       )}
-      {UserEmail && (
+      {userEmail && (
         <BodyCopy dataLocator="profileinfo-emailaddress" fontSize="fs16" fontFamily="secondary">
-          {UserEmail}
+          {userEmail}
         </BodyCopy>
       )}
-      {UserPhoneNumber && (
+      {userPhoneNumber && (
         <BodyCopy dataLocator="profileinfo-phonenumber" fontSize="fs16" fontFamily="secondary">
-          {UserPhoneNumber}
+          {userPhoneNumber}
         </BodyCopy>
       )}
-      <BodyCopy dataLocator="profileinfo-userbday" fontSize="fs16" fontFamily="secondary">
+      <BodyCopy
+        dataLocator="profileInfoUserbday"
+        className="personalUserBirthday"
+        fontSize="fs16"
+        fontFamily="secondary"
+      >
         {userBirthdayDisplay}
       </BodyCopy>
-      {MyPlaceRewards(airMiles, MyPlaceNumber, labels)}
+      {getMyPlaceRewards(airMiles, myPlaceNumber, labels)}
     </div>
   );
 };
@@ -66,11 +71,11 @@ PersonalInformationDisplay.propTypes = {
   className: PropTypes.string,
   mailingAddress: PropTypes.shape({}),
   userBirthday: PropTypes.string,
-  UserEmail: PropTypes.string,
-  UserFullName: PropTypes.string,
-  UserPhoneNumber: PropTypes.number,
+  userEmail: PropTypes.string,
+  userFullName: PropTypes.string,
+  userPhoneNumber: PropTypes.number,
   airMiles: PropTypes.string,
-  MyPlaceNumber: PropTypes.string,
+  myPlaceNumber: PropTypes.string,
   labels: PropTypes.shape({
     lbl_profile_edit_birthday_heading: PropTypes.string,
     lbl_profile_my_place_rewards_info: PropTypes.string,
@@ -82,11 +87,11 @@ PersonalInformationDisplay.defaultProps = {
   className: '',
   mailingAddress: {},
   userBirthday: '',
-  UserEmail: '',
-  UserFullName: '',
-  UserPhoneNumber: '',
+  userEmail: '',
+  userFullName: '',
+  userPhoneNumber: '',
   airMiles: '',
-  MyPlaceNumber: '',
+  myPlaceNumber: '',
   labels: {
     lbl_profile_edit_birthday_heading: '',
     lbl_profile_my_place_rewards_info: '',

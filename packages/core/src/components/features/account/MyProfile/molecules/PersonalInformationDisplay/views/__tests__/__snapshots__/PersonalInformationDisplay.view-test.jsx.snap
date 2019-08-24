@@ -5,52 +5,10 @@ exports[`PersonalInformationDisplay should render correctly 1`] = `
   className=""
 >
   <Styled(BodyCopy)
-    className={null}
+    className="personalUserBirthday"
     color="text.primary"
     component="p"
-    dataLocator="profileinfo-username"
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    test
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className={null}
-    color="text.primary"
-    component="p"
-    dataLocator="profileinfo-emailaddress"
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    test
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className={null}
-    color="text.primary"
-    component="p"
-    dataLocator="profileinfo-phonenumber"
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    test
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className={null}
-    color="text.primary"
-    component="p"
-    dataLocator="profileinfo-userbday"
+    dataLocator="profileInfoUserbday"
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="regular"
@@ -69,9 +27,7 @@ exports[`PersonalInformationDisplay should render correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
-  >
-    567567874 XXXXXXX
-  </Styled(BodyCopy)>
+  />
 </div>
 `;
 
@@ -80,10 +36,10 @@ exports[`PersonalInformationDisplay should render empty correctly 1`] = `
   className=""
 >
   <Styled(BodyCopy)
-    className={null}
+    className="personalUserBirthday"
     color="text.primary"
     component="p"
-    dataLocator="profileinfo-userbday"
+    dataLocator="profileInfoUserbday"
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="regular"
