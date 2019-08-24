@@ -18,7 +18,10 @@ export default class ProductColorChip extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleClick = () => {
     const {
       colorEntry: {
         colorProductId,
@@ -28,8 +31,8 @@ export default class ProductColorChip extends React.Component {
       isActive,
       onChipClick,
     } = this.props;
-    this.handleClick = () => !isActive && onChipClick(colorProductId, name, miscInfo);
-  }
+    return !isActive && onChipClick(colorProductId, name, miscInfo);
+  };
 
   render() {
     const {

@@ -6,7 +6,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { isClient, getLocator } from '@tcp/core/src/utils';
-import cssClassName from '../utils/cssClassName';
+// import cssClassName from '../utils/cssClassName';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
 import { Anchor } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -231,7 +231,7 @@ class ProductAltImages extends React.PureComponent {
     } = this.props;
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
-    const productImageCss = cssClassName('product-image-content', ' img-item');
+    // const productImageCss = cssClassName('product-image-content', ' img-item');
 
     return isMobile || imageUrls.length < 2 ? (
       <figure
@@ -249,7 +249,7 @@ class ProductAltImages extends React.PureComponent {
           href={pdpUrl}
         >
           <img
-            className={productImageCss}
+            // className={productImageCss}
             src={imageUrls[0]}
             srcSet={
               isPLPredesign
@@ -288,7 +288,7 @@ class ProductAltImages extends React.PureComponent {
           inheritedStyles={imageAnchorInheritedStyles}
         >
           <img
-            className={productImageCss}
+            //  className={productImageCss}
             src={imageUrls[currentIndex]}
             data-locator={getLocator('global_productimg_imagelink')}
             srcSet={

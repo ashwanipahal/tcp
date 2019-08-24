@@ -102,7 +102,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       }
       loadedProductCount={12}
     />
-    <Styled(ProductColorChips)
+    <Styled(ProductColorChipWrapper)
       colorsMap={
         Array [
           Object {
@@ -128,9 +128,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         className="added-to-bag"
         dataLocator="global-addtocart-Button"
         fullWidth={true}
-      >
-        ADD TO BAG
-      </Styled(Button)>
+      />
     </div>
   </div>
 </li>

@@ -1,3 +1,5 @@
+/* eslint-disable extra-rules/no-commented-out-code */
+
 /** @module productsAndItemsPropTypes
  * @summary basic propTypes used for coupons
  *
@@ -5,17 +7,12 @@
  */
 import { PropTypes } from 'prop-types';
 
-export const AVAILABILITY = {
-  OK: 'OK',
-  SOLDOUT: 'SOLDOUT',
-  UNAVAILABLE: 'UNAVAILABLE',
-  SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
-};
-
-export const GRID_ITEMS_TYPES = {
-  MARKETING: 'marketing',
-  CONTAINED_MARKETING_ITEM: 'marketing_contained',
-};
+// export const AVAILABILITY = {
+//   OK: 'OK',
+//   SOLDOUT: 'SOLDOUT',
+//   UNAVAILABLE: 'UNAVAILABLE',
+//   SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+// };
 
 /** describes a color or a pattern of a product/SKU */
 export const COLOR_PROP_TYPE = PropTypes.shape({
@@ -186,26 +183,27 @@ export const SKU_INFO_PROP_TYPE_SHAPE = PropTypes.shape(SKU_INFO_PROP_TYPES);
 /**
  *  Extra information (to add to product_info and sku_info) to describe an item in a cart or wihslist.
  */
-export const ITEM_INFO_PROP_TYPES = {
-  /** the id of this item */
-  itemId: PropTypes.string.isRequired,
-  /** This cart/wihslist item is made up of quantity many copies of some SKU */
-  quantity: PropTypes.number.isRequired,
-  /** If falsy (i.e., null, undefined, etc.) this item is to be shipped;
-   * otherwise, it is the name of the store from which it is to be picked up
-   */
-  store: PropTypes.string, // FIXME: allow full store information -- look in myAccount orders.
-  /** FIXME: why is this here? zipcode for edit modal */
-  storeZipCode: PropTypes.string,
-  /**
-   * if <code>OK</code>, the item is available (in required quantity);
-   * if <code>UNAVAILABLE</code> this item is unavailable at required quantity (but may be available in another color/size/fit)
-   * if <code>SOLDOUT</code> this SKU is sold out (i.e., not available in any color/size/fit)
-   */
-  availability: PropTypes.oneOf([AVAILABILITY.OK, AVAILABILITY.UNAVAILABLE, AVAILABILITY.SOLDOUT])
-    .isRequired,
-};
-export const ITEM_INFO_PROP_TYPE_SHAPE = PropTypes.shape(ITEM_INFO_PROP_TYPES);
+// export const ITEM_INFO_PROP_TYPES = {
+//   /** the id of this item */
+//   itemId: PropTypes.string.isRequired,
+//   /** This cart/wihslist item is made up of quantity many copies of some SKU */
+//   quantity: PropTypes.number.isRequired,
+//   /** If falsy (i.e., null, undefined, etc.) this item is to be shipped;
+//    * otherwise, it is the name of the store from which it is to be picked up
+//    */
+//   store: PropTypes.string, // FIXME: allow full store information -- look in myAccount orders.
+//   /** FIXME: why is this here? zipcode for edit modal */
+//   storeZipCode: PropTypes.string,
+//   /**
+//    * if <code>OK</code>, the item is available (in required quantity);
+//    * if <code>UNAVAILABLE</code> this item is unavailable at required quantity (but may be available in another color/size/fit)
+//    * if <code>SOLDOUT</code> this SKU is sold out (i.e., not available in any color/size/fit)
+//    */
+//   availability: PropTypes.oneOf([AVAILABILITY.OK, AVAILABILITY.UNAVAILABLE, AVAILABILITY.SOLDOUT])
+//     .isRequired,
+// };
+
+// export const ITEM_INFO_PROP_TYPE_SHAPE = PropTypes.shape(ITEM_INFO_PROP_TYPES);
 
 /**
  * Information about a recommended product

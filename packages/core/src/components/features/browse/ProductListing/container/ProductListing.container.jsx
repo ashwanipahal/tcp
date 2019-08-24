@@ -10,6 +10,7 @@ import {
   getLoadedProductsCount,
   getUnbxdId,
   getBreadCrumbTrail,
+  getLabelsProductTiles,
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -41,6 +42,7 @@ function mapStateToProps(state) {
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
+    labels: getLabelsProductTiles(state),
   };
 }
 

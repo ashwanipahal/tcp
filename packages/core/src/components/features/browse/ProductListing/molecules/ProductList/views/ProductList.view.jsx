@@ -5,7 +5,6 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItem from './ProductsGridItem';
-import { GRID_ITEMS_TYPES } from '../propTypes/productsAndItemsPropTypes';
 
 const isGridItem = item => {
   let flag = true;
@@ -14,8 +13,7 @@ const isGridItem = item => {
     (item &&
       // eslint-disable-next-line
       item.hasOwnProperty('type') &&
-      (item.type === GRID_ITEMS_TYPES.MARKETING ||
-        item.type === GRID_ITEMS_TYPES.CONTAINED_MARKETING_ITEM))
+      (item.type === 'marketing' || item.type === 'marketing_contained'))
   ) {
     flag = false;
   }
@@ -40,6 +38,7 @@ const ProductList = props => {
     currencyExchange,
     siblingProperties,
     loadedProductCount,
+    labels,
   } = props;
   let gridIndex = 0;
 
@@ -89,6 +88,7 @@ const ProductList = props => {
               gridIndex={gridIndex}
               isPLPredesign={false}
               isKeepAliveKillSwitch={false}
+              labels={labels}
             />
           </div>
         );
@@ -125,6 +125,7 @@ ProductList.propTypes = {
     promotionalPLCCMessage: PropTypes.string,
   }),
   loadedProductCount: PropTypes.number.isRequired,
+  labels: PropTypes.shape().isRequired,
 };
 
 ProductList.defaultProps = {

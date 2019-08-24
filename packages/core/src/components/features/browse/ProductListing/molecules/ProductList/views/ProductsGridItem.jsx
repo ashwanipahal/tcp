@@ -7,7 +7,7 @@
  * @author Ben
  */
 import React from 'react';
-import productGridItemPropTypes from './ProductGridItemPropTypes';
+import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
 import Button from '../../../../../../common/atoms/Button';
 import { getLocator } from '../../../../../../../utils';
 
@@ -32,7 +32,7 @@ import {
   BadgeItem,
   PromotionalMessage,
 } from './ProductItemComponents';
-import ProductColorChips from './ProductColorChips';
+import ProductColorChipWrapper from './ProductColorChipWrapper';
 
 import ProductAltImages from './ProductAltImages';
 
@@ -156,7 +156,7 @@ class ProductsGridItem extends React.PureComponent {
       isPLPredesign,
     } = this.props;
     return colorsMap.length >= 1 ? (
-      <ProductColorChips
+      <ProductColorChipWrapper
         onChipClick={this.handleChangeColor}
         maxVisibleItems={5}
         selectedColorId={curentColorEntry.color.name}
@@ -303,6 +303,7 @@ class ProductsGridItem extends React.PureComponent {
       className,
       sqnNmbr,
       unbxdId,
+      labels,
     } = this.props;
     // eslint-disable-next-line camelcase
     const prodNameAltImages = long_product_title || name;
@@ -362,13 +363,6 @@ class ProductsGridItem extends React.PureComponent {
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
 
     const videoUrl = this.getVideoUrl(curentColorEntry);
-
-    // const itemContainerClassName = cssClassName(
-    //   'item-container ',
-    //   { 'grid-cta-enabled ': isProductsGridCTAView },
-    //   { 'item-container-v1 ': isPLPredesign },
-    //   { 'even ': isEvenElement }
-    // );
 
     return (
       <li
@@ -446,7 +440,7 @@ class ProductsGridItem extends React.PureComponent {
           }
           {/* {!isPLPredesign &&
             (colorsMap.length > 1 ? (
-              <ProductColorChips
+              <ProductColorChipWrapper
                 onChipClick={this.handleChangeColor}
                 maxVisibleItems={isGridView ? 4 : 5}
                 selectedColorId={curentColorEntry.color.name}
@@ -536,7 +530,7 @@ class ProductsGridItem extends React.PureComponent {
               buttonVariation="fixed-width"
               dataLocator={getLocator('global_addtocart_Button')}
             >
-              ADD TO BAG
+              {labels.lbl_add_to_bag}
             </Button>
           </div>
 

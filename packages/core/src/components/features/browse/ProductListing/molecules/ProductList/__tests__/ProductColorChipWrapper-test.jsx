@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductColorChipsVanilla } from '../views/ProductColorChips';
+import { ProductColorChipWrapperVanilla } from '../views/ProductColorChipWrapper';
 
 const props = {
   onChipClick: jest.fn(),
@@ -20,25 +20,25 @@ const props = {
     },
   ],
 };
-describe('ProductColorChipsVanilla component', () => {
+describe('ProductColorChipWrapperVanilla component', () => {
   it('should renders correctly', () => {
-    const component = shallow(<ProductColorChipsVanilla {...props} />);
+    const component = shallow(<ProductColorChipWrapperVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
   it('should renders null', () => {
-    const component = shallow(<ProductColorChipsVanilla {...props} colorsMap={[]} />);
+    const component = shallow(<ProductColorChipWrapperVanilla {...props} colorsMap={[]} />);
     expect(component).toMatchSnapshot();
   });
 
-  it('ProductColorChips should call handlePreviousClick', () => {
-    const component = shallow(<ProductColorChipsVanilla {...props} />);
+  it('ProductColorChipWrapper should call handlePreviousClick', () => {
+    const component = shallow(<ProductColorChipWrapperVanilla {...props} />);
     component.setState({ firstItemIndex: 1 });
     component.instance().handlePreviousClick();
     expect(component.state('firstItemIndex')).toEqual(0);
   });
 
-  it('ProductColorChips should call handleNextClick', () => {
-    const component = shallow(<ProductColorChipsVanilla {...props} />);
+  it('ProductColorChipWrapper should call handleNextClick', () => {
+    const component = shallow(<ProductColorChipWrapperVanilla {...props} />);
     component.setState({ firstItemIndex: 2 });
     component.setProps({
       isPLPredesign: false,

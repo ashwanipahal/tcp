@@ -46,6 +46,7 @@ const props = {
 
   isOnModelImgDisplay: true,
   isInternationalShipping: false,
+  labels: {},
 };
 
 describe('ProductsGridItem component', () => {

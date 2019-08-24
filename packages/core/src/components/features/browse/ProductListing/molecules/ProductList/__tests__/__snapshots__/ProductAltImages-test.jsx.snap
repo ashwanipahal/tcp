@@ -17,7 +17,6 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
   >
     <img
       alt=""
-      className="product-image-content img-item"
       itemProp="contentUrl"
       src={1}
       srcSet=""

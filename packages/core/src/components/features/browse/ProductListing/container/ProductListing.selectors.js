@@ -78,4 +78,8 @@ export const getUnbxdId = createSelector(
   products => products && products.get('unbxdId')
 );
 
+export const getLabelsProductTiles = state => {
+  return state.Labels.PLP['PLP Tiles'];
+};
+
 export default getPlpProducts;

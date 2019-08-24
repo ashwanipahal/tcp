@@ -11,9 +11,6 @@ import React from 'react';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
 // import { labels } from '../labels/labels';
 import { Image, BodyCopy, Anchor } from '../../../../../../common/atoms';
-// import cssClassName from '../utils/cssClassName';
-
-// import ButtonWithSpinner from './ButtonWithSpinner';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
 
@@ -204,16 +201,7 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
 
 export function BadgeItem(props) {
   // eslint-disable-next-line
-  const { text, className, haveSpace, isShowBadges } = props;
-  // const containerClassName = cssClassName('badge-item-container ', className);
-  // const hiddenClassName = cssClassName('sibling-badge-hidden ', className);
-
-  // if (!text) {
-  //   if (haveSpace) {
-  //     return <span className={hiddenClassName}>&nbsp;</span>;
-  //   }
-  //   return null;
-  // }
+  const { text, className, isShowBadges } = props;
 
   return (
     <div className={className}>

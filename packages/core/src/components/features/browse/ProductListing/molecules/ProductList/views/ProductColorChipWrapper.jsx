@@ -1,5 +1,5 @@
 /**
- * @module ProductColorChips
+ * @module ProductColorChipWrapper
  *
  * @author Agu
  */
@@ -8,9 +8,9 @@ import { PropTypes } from 'prop-types';
 import { COLOR_PROP_TYPE } from '../propTypes/productsAndItemsPropTypes';
 import ProductColorChip from './ProductColorChip';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/ProductColorChips.style';
+import styles from '../styles/ProductColorChipWrapper.style';
 
-class ProductColorChips extends React.Component {
+class ProductColorChipWrapper extends React.Component {
   static propTypes = {
     /**
      * Callback for clicks on color chips. Accepts colorProductId, colorName.
@@ -147,5 +147,5 @@ class ProductColorChips extends React.Component {
   }
 }
 
-export default withStyles(ProductColorChips, styles);
-export { ProductColorChips as ProductColorChipsVanilla };
+export default withStyles(ProductColorChipWrapper, styles);
+export { ProductColorChipWrapper as ProductColorChipWrapperVanilla };

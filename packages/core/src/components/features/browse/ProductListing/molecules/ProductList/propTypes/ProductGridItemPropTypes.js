@@ -4,7 +4,7 @@ import {
   PRODUCT_INFO_PROP_TYPE_SHAPE,
   COLOR_PROP_TYPE,
   PRODUCT_INFO_PROP_TYPES,
-} from '../propTypes/productsAndItemsPropTypes';
+} from './productsAndItemsPropTypes';
 
 export default {
   currencyExchange: PropTypes.shape({

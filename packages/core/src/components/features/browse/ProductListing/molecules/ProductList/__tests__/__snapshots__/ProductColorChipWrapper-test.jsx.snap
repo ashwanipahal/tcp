@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductColorChipsVanilla component should renders correctly 1`] = `
+exports[`ProductColorChipWrapperVanilla component should renders correctly 1`] = `
 <div
   className=""
 >
@@ -29,4 +29,4 @@ exports[`ProductColorChipsVanilla component should renders correctly 1`] = `
 </div>
 `;
 
-exports[`ProductColorChipsVanilla component should renders null 1`] = `""`;
+exports[`ProductColorChipWrapperVanilla component should renders null 1`] = `""`;
