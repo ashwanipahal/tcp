@@ -135,14 +135,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -184,14 +178,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -233,14 +221,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -282,14 +264,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -331,14 +307,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -380,14 +350,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"

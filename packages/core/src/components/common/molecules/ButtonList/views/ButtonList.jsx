@@ -44,8 +44,9 @@ const getImageCTA = item => {
                 />
                 <BodyCopy
                   fontWeight="extrabold"
-                  fontSize={['fs14', 'fs20', 'fs20']}
+                  fontSize="fs13"
                   className="image-comp"
+                  fontFamily="secondary"
                   textAlign="center"
                 >
                   {button.text}
