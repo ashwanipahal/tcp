@@ -23,14 +23,14 @@ const Circle = styled.View`
 `;
 
 const DotActive = styled(Circle)`
-  background-color: ${props => props.theme.colorPalette.gray[600]};
-`;
-
-const DotInactive = styled(Circle)`
   background-color: ${props =>
     props.isPlcc
       ? props.theme.colorPalette.userTheme.plcc
       : props.theme.colorPalette.userTheme.mpr};
+`;
+
+const DotInactive = styled(Circle)`
+  background-color: ${props => props.theme.colorPalette.gray[600]};
 `;
 
 const LeftHeaderContainer = styled.View`
