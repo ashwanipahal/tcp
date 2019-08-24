@@ -7,7 +7,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-cSHVUG",
         "isStatic": false,
         "rules": Array [
           "
@@ -15,16 +15,25 @@ exports[`ProfileInformation component should render correctly 1`] = `
           "
   .profileInfoCol {
     display: flex;
+    flex-direction: column;
   }
 
   .profileInformationCol {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
   .profileInfoSeparator {
     border: 1px solid ",
           [Function],
           ";
+  }
+  .hideOnMobile {
+    @media ",
+          [Function],
+          " {
+      display: none;
+    }
   }
 ",
           ";
@@ -34,7 +43,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       "displayName": "Styled(ProfileInformation)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-cSHVUG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

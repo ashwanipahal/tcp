@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import styles from '../../ProfileInformation/styles/ProfileInformation.style';
 import Address from '../../../../../../common/molecules/Address';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
@@ -34,13 +38,28 @@ const PersonalInformation = ({
         />
       </MyProfileTile>
       {address && address.isComplete && (
-        <MyProfileTile
-          title={labels.lbl_profile_mailing_address}
-          ctaTitle={labels.lbl_profile_edit_mailing_info}
-          dataLocator="profileinfo-editmailingaddress"
-        >
-          <Address address={address} dataLocatorPrefix="profileinfo-editmailing" showName={false} />
-        </MyProfileTile>
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 12,
+            }}
+            className="profileInformationCol"
+          >
+            <MyProfileTile
+              title={labels.lbl_profile_mailing_address}
+              ctaTitle={labels.lbl_profile_edit_mailing_info}
+              dataLocator="profileinfo-editmailingaddress"
+            >
+              <Address
+                address={address}
+                dataLocatorPrefix="profileinfo-editmailing"
+                showName={false}
+              />
+            </MyProfileTile>
+          </Col>
+        </Row>
       )}
     </>
   );
@@ -74,4 +93,4 @@ PersonalInformation.defaultProps = {
   MyPlaceNumber: '',
 };
 
-export default PersonalInformation;
+export default withStyles(PersonalInformation, styles);

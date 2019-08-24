@@ -29,7 +29,7 @@ const ProfileInformation = ({
   successMessage,
 }) => {
   return (
-    <div>
+    <div className={className}>
       {successMessage && (
         <Notification
           className="elem-mt-MED"
@@ -38,7 +38,7 @@ const ProfileInformation = ({
           message={labels[`lbl_profile_${successMessage}`]}
         />
       )}
-      <Row fullBleed className={`${className} elem-pt-LRG`}>
+      <Row fullBleed className="elem-pt-LRG">
         <Col
           colSize={{
             small: 6,
@@ -48,7 +48,7 @@ const ProfileInformation = ({
           ignoreGutter={{
             small: true,
           }}
-          className="profileInfoCol elem-mb-XL"
+          className="profileInfoCol"
         >
           <ProfileInfoActions
             labels={labels}
@@ -73,7 +73,7 @@ const ProfileInformation = ({
           ignoreGutter={{
             small: true,
           }}
-          className="profileInformationCol elem-mb-XL"
+          className="profileInfoCol"
         >
           <PersonalInformation
             labels={labels}
@@ -88,7 +88,7 @@ const ProfileInformation = ({
         </Col>
       </Row>
 
-      <Row fullBleed className={`${className} elem-pt-LRG elem-pb-LRG`}>
+      <Row fullBleed className="hideOnMobile elem-pt-LRG elem-pb-LRG">
         <Col
           colSize={{
             large: 12,
@@ -97,7 +97,7 @@ const ProfileInformation = ({
         />
       </Row>
 
-      <Row fullBleed className={`${className} elem-pt-LRG`}>
+      <Row fullBleed className="elem-pt-LRG">
         <Col
           colSize={{
             small: 6,
@@ -125,7 +125,7 @@ const ProfileInformation = ({
           <BirthdaySaving labels={labels} />
         </Col>
       </Row>
-      <Row fullBleed className={`${className} elem-pb-MED`}>
+      <Row fullBleed className="elem-pb-MED">
         <Col
           colSize={{
             large: 2,
