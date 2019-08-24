@@ -33,26 +33,6 @@ export default class AddressVerification extends React.PureComponent {
     this.showInput = false;
     this.showVerifyModal = false;
     this.showOptionalAddressLine = false;
-
-    this.labels = {
-      verifyAddressLabels: {
-        AE09:
-          'There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.',
-        AE10:
-          'The house / building number is missing from your address. Please review and confirm your address.',
-        AE11: 'The house / building number is not valid. Please review and confirm your address.',
-        AE12: 'The house / building number is not valid. Please review and confirm your address.',
-        addAddressHeading: 'Add Address',
-        addressLine2: 'Address Line 2 (Optional)',
-        continueCta: 'CONTINUE',
-        defaultErrorMessage:
-          'There may be an issue with your address as entered. Please double check it, or select from the below.',
-        editAddress: 'EDIT ADDRESS',
-        verifyHeader: 'Verify Your Address',
-        weSuggest: 'WE SUGGEST',
-        youEntered: 'YOU ENTERED',
-      },
-    };
   }
 
   componentDidUpdate() {
@@ -98,6 +78,9 @@ export default class AddressVerification extends React.PureComponent {
   };
 
   getMessage = verificationResult => {
+    const {
+      labels: { verifyAddressLabels },
+    } = this.props;
     return (
       <MessageWrapper>
         <BodyCopy
@@ -110,7 +93,7 @@ export default class AddressVerification extends React.PureComponent {
               : 'text.primary'
           }
           mobilefontFamily={['secondary']}
-          text={this.labels.verifyAddressLabels[verificationResult]}
+          text={verifyAddressLabels[verificationResult]}
         />
       </MessageWrapper>
     );
@@ -158,6 +141,9 @@ export default class AddressVerification extends React.PureComponent {
   };
 
   renderUserAddress = userAddress => {
+    const {
+      labels: { verifyAddressLabels },
+    } = this.props;
     const { selectAddress } = this.state;
     return (
       <EnteredSectionWrapper>
@@ -168,7 +154,7 @@ export default class AddressVerification extends React.PureComponent {
             mobilefontFamily={['secondary']}
             fontWeight="extrabold"
             data-locator="verifyaddress-youenteredlbl"
-            text={this.labels.verifyAddressLabels.youEntered}
+            text={verifyAddressLabels.youEntered}
           />
         </EnteredWrapper>
 
@@ -190,6 +176,9 @@ export default class AddressVerification extends React.PureComponent {
   };
 
   renderSuggestedAddress = (verificationResult, suggestedAddress) => {
+    const {
+      labels: { verifyAddressLabels },
+    } = this.props;
     if (this.showInput) {
       const { selectAddress } = this.state;
       return (
@@ -201,7 +190,7 @@ export default class AddressVerification extends React.PureComponent {
               mobilefontFamily={['secondary']}
               fontWeight="extrabold"
               data-locator="verifyaddress-wesuggestlbl"
-              text={this.labels.verifyAddressLabels.weSuggest}
+              text={verifyAddressLabels.weSuggest}
             />
           </SuggestWrapper>
 
@@ -245,33 +234,12 @@ export default class AddressVerification extends React.PureComponent {
   };
 
   render() {
-    const verificationResult = 'AE11';
-    const userAddress = {
-      address1: 'Albany, NY, USA',
-      address2: '',
-      city: 'Jaipur',
-      country: 'US',
-      firstName: 'Ajay',
-      lastName: 'Saini',
-      phoneNumber: '9782145901',
-      primary: 'true',
-      state: 'AK',
-      zip: '30201',
-    };
-    const suggestedAddress = {
-      address1: 'Albany, Ny, Usa',
-      address2: '',
-      city: 'Jaipur',
-      country: 'US',
-      firstName: 'Ajay',
-      isCommercialAddress: '',
-      lastName: 'Saini',
-      phoneNumber: '9782145901',
-      primary: 'true',
-      state: 'AK',
-      zip: '30201',
-    };
-
+    const {
+      verificationResult,
+      userAddress,
+      suggestedAddress,
+      labels: { verifyAddressLabels },
+    } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
 
     if (this.showVerifyModal) {
@@ -284,7 +252,7 @@ export default class AddressVerification extends React.PureComponent {
               textAlign="center"
               color="gray.900"
               fontWeight="extrabold"
-              text={this.labels.verifyAddressLabels.verifyHeader}
+              text={verifyAddressLabels.verifyHeader}
             />
             {this.getMessage(verificationResult, suggestedAddress)}
             {this.renderUserAddress(userAddress)}
@@ -294,7 +262,7 @@ export default class AddressVerification extends React.PureComponent {
                 <CustomButton
                   color="white"
                   fill="BLUE"
-                  text={this.labels.verifyAddressLabels.continueCta}
+                  text={verifyAddressLabels.continueCta}
                   buttonVariation="variable-width"
                   onPress={this.onConfirm}
                 />
@@ -303,7 +271,7 @@ export default class AddressVerification extends React.PureComponent {
                 <CustomButton
                   color={colorPallete.red[300]}
                   fill="WHITE"
-                  text={this.labels.verifyAddressLabels.editAddress}
+                  text={verifyAddressLabels.editAddress}
                   buttonVariation="variable-width"
                   onPress={this.onCloseModal}
                 />

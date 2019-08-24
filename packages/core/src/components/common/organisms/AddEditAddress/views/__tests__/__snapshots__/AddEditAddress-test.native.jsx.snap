@@ -3,6 +3,7 @@
 exports[`AddEditAddress Native should render correctly 1`] = `
 <View
   addressFormLabels={Object {}}
+  initialValues={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
@@ -12,6 +13,10 @@ exports[`AddEditAddress Native should render correctly 1`] = `
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
   >
+    <Connect(AddressVerification)
+      onError={[Function]}
+      onSuccess={[Function]}
+    />
     <ReduxForm
       addressFormLabels={Object {}}
       destroyOnUnmount={true}
@@ -19,6 +24,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       forceUnregisterOnUnmount={false}
       form="AddressForm"
       getFormState={[Function]}
+      initialValues={Object {}}
       isEdit={false}
       isMakeDefaultDisabled={false}
       keepDirtyOnReinitialize={false}

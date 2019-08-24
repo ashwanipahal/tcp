@@ -29,7 +29,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     getDefaultValue={[Function]}
     isRowScrollable={true}
     keyboardShouldPersistTaps="always"
-    listViewDisplayed="auto"
+    listViewDisplayed={false}
     minLength={2}
     nearbyPlacesAPI="GooglePlacesSearch"
     numberOfLines={1}
@@ -69,14 +69,15 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
           "justifyContent": "flex-end",
         },
         "row": Object {
-          "flexDirection": "row",
-          "height": 30,
-          "padding": 6,
+          "height": 35,
+          "paddingBottom": 6,
+          "paddingLeft": 6,
+          "paddingRight": 6,
+          "paddingTop": 8,
         },
         "separator": Object {
           "borderBottomColor": "#c3c3c3",
           "borderBottomWidth": 1,
-          "padding": 2,
         },
         "textInput": Object {
           "borderBottomColor": "#c3c3c3",
@@ -94,7 +95,6 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     textInputHide={false}
     textInputProps={
       Object {
-        "onBlur": [Function],
         "onFocus": [Function],
       }
     }

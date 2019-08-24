@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { AddressForm } from '../AddressForm.native';
 
 describe('AddressForm component', () => {
-  it('should renders correctly', () => {
+  it.skip('should renders correctly', () => {
     const props = {
       handleSubmit: jest.fn(),
       className: 'any',

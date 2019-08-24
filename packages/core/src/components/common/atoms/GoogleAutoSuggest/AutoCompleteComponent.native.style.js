@@ -44,15 +44,16 @@ const listView = {
 };
 
 const separator = {
-  padding: 2,
   borderBottomWidth: 1,
   borderBottomColor: `${colors.FOOTER.DIVIDER}`,
 };
 
 const item = {
-  padding: 6,
-  height: 30,
-  flexDirection: 'row',
+  paddingLeft: 6,
+  paddingBottom: 6,
+  paddingRight: 6,
+  paddingTop: 8,
+  height: 35,
 };
 
 const poweredContainer = {

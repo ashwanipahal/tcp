@@ -46,6 +46,19 @@ class DropDown extends React.PureComponent<Props> {
     variation: 'primary',
   };
 
+  static getDerivedStateFromProps(props, state) {
+    const { selectedLabelState } = state;
+    if (props.selectedValue !== selectedLabelState) {
+      const result = props.data.filter(item => item.value || item.id === props.selectedValue);
+
+      if (result.length > 0) {
+        if (result[0].label) return { selectedLabelState: result[0].label };
+        return { selectedLabelState: result[0].displayName };
+      }
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
     this.rowFrame = {
@@ -127,13 +140,10 @@ class DropDown extends React.PureComponent<Props> {
    */
   dropDownLayout = ({ item }) => {
     const { variation, itemStyle } = this.props;
-    const { displayName, fullName } = item;
+    const { displayName } = item;
     let { label } = item;
     if (!label) {
-      if (fullName) label = fullName;
-      else {
-        label = displayName;
-      }
+      label = displayName;
     }
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
@@ -163,10 +173,9 @@ class DropDown extends React.PureComponent<Props> {
    */
   onDropDownItemClick = item => {
     let { label, value } = item;
-    const { id, displayName, fullName } = item;
+    const { id, displayName } = item;
     if (!label) {
-      if (fullName) label = fullName;
-      else label = displayName;
+      label = displayName;
     }
     if (!value) value = id;
     this.setState({
