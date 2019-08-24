@@ -89,7 +89,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
           }
         }
       >
-        <Connect(Styled(CountrySelector))
+        <Component
           showInFooter={true}
         />
       </Styled(Col)>
@@ -207,7 +207,7 @@ exports[`Footer component Footer component renders correctly without props 1`] =
           }
         }
       >
-        <Connect(Styled(CountrySelector))
+        <Component
           showInFooter={true}
         />
       </Styled(Col)>

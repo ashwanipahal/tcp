@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { CountrySelector } from '../../Header/molecules';
+import CountrySelector from '../../Header/molecules/CountrySelector';
 
 import {
   FooterMiddleMobile,

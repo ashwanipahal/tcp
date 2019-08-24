@@ -17,9 +17,7 @@ export const getCurrenciesMap = state => {
 };
 
 export const getSitesTable = state => {
-  return getCountrySelectorState(state)
-    .get('sitesTable')
-    .toJS();
+  return getCountrySelectorState(state).get('sitesTable');
 };
 
 export const getCurrentCountry = state => {
