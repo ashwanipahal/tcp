@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { initCheckoutAction } from './Checkout.action';
+import { initCheckoutAction, submitPickupSection } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors from './Checkout.selector';
 
@@ -24,6 +24,7 @@ export class CheckoutContainer extends React.Component<Props> {
       activeStep,
       isUsSite,
       navigation,
+      onPickupSubmit,
     } = this.props;
     return (
       <CheckoutPage
@@ -39,6 +40,7 @@ export class CheckoutContainer extends React.Component<Props> {
         activeStep={activeStep}
         isUsSite={isUsSite}
         navigation={navigation}
+        onPickupSubmit={onPickupSubmit}
       />
     );
   }
@@ -48,6 +50,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: () => {
       dispatch(initCheckoutAction());
+    },
+    onPickupSubmit: () => {
+      dispatch(submitPickupSection());
     },
   };
 };

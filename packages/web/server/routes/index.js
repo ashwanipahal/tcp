@@ -54,11 +54,6 @@ const RoutesMap = [
     path: '/review',
     resolver: '/review',
   },
-  {
-    path: '/checkout/:subSection?',
-    resolver: '/Pickup',
-    params: ['subSection'],
-  },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
   {
     path: '/gallery',

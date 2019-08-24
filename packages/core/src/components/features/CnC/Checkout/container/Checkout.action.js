@@ -4,6 +4,11 @@ export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
 
+export const submitPickupSection = payload => ({
+  type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
+  payload,
+});
+
 export const checkoutSetCartData = payload => ({
   type: 'CHECKOUT_SET_CART_DATA',
   payload,

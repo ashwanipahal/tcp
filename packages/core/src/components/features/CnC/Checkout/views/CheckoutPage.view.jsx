@@ -13,6 +13,7 @@ export default class CheckoutPage extends React.PureComponent {
       isSmsUpdatesEnabled,
       currentPhoneNumber,
       navigation,
+      onPickupSubmit,
     } = this.props;
     const currentSection = router.query.section;
     return (
@@ -27,6 +28,7 @@ export default class CheckoutPage extends React.PureComponent {
                   isSmsUpdatesEnabled={isSmsUpdatesEnabled}
                   currentPhoneNumber={currentPhoneNumber}
                   navigation={navigation}
+                  onPickupSubmit={onPickupSubmit}
                 />
               )}
               {currentSection.toLowerCase() === 'shipping' && <ShippingPage />}
@@ -45,4 +47,5 @@ CheckoutPage.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  onPickupSubmit: PropTypes.func.isRequired,
 };
