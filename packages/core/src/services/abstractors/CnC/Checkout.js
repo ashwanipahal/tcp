@@ -2,7 +2,11 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getCurrentOrderFormatter } from './CartItemTile';
-import { responseContainsErrors, ServiceResponseError } from '../../../utils/errorMessage.util';
+import {
+  responseContainsErrors,
+  ServiceResponseError,
+  getFormattedError,
+} from '../../../utils/errorMessage.util';
 
 export const getGiftWrappingOptions = () => {
   const payload = {
@@ -140,7 +144,7 @@ export const getShippingMethods = (state, zipCode, addressLine1, addressLine2) =
   return executeStatefulAPICall(payload)
     .then(shippingMethodResponseHandler)
     .catch(err => {
-      throw this.apiHelper.getFormattedError(err);
+      throw getFormattedError(err);
     });
 };
 
