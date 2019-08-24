@@ -50,11 +50,6 @@ const RoutesMap = [
     path: '/review',
     resolver: '/review',
   },
-  {
-    path: '/checkout/:subSection?',
-    resolver: '/Checkout',
-    params: ['subSection'],
-  },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
   {
     path: '/gallery',

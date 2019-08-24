@@ -24,6 +24,7 @@ export default class CheckoutPage extends React.PureComponent {
       smsSignUpLabels,
       pickupInitialValues,
       navigation,
+      // onPickupSubmit,
     } = this.props;
     const currentSection = router.query.section || router.query.subSection;
     return (
@@ -74,4 +75,5 @@ CheckoutPage.propTypes = {
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  // onPickupSubmit: PropTypes.func.isRequired,
 };
