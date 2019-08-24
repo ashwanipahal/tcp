@@ -8,6 +8,7 @@ import Carousel from '../../Carousel';
 import { Image } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
+import { isGymboree, getScreenWidth } from '../../../../../utils/index.native';
 import {
   Container,
   ButtonContainer,
@@ -25,7 +26,6 @@ import {
   HeaderView,
 } from '../ModuleA.style.native';
 import config from '../../ModuleN/ModuleN.config';
-import { getScreenWidth } from '../../../../../utils/utils.app';
 
 /**
  * Module height and width.
@@ -63,21 +63,23 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
   }
   return (
     <ContainerView>
-      <Component>
-        <Image {...ribbonConfig} />
-        <MessageContainer>
-          <PromoBanner
-            promoBanner={ribbonBanner}
-            navigation={navigation}
-            locator="moduleA_promoribbonbanner_text"
-          />
-        </MessageContainer>
-      </Component>
+      {ribbonBanner && (
+        <Component>
+          <Image {...ribbonConfig} />
+          <MessageContainer>
+            <PromoBanner
+              promoBanner={ribbonBanner}
+              navigation={navigation}
+              locator="moduleA_promoribbonbanner_text"
+            />
+          </MessageContainer>
+        </Component>
+      )}
     </ContainerView>
   );
 };
 
-const renderView = (item, navigation, variant, position) => {
+const renderView = (item, navigation, position) => {
   let PromoBannerComponent;
   let HeaderComponent;
   let HeaderConfig = {};
@@ -89,21 +91,21 @@ const renderView = (item, navigation, variant, position) => {
       linkedImage: [{ image }],
     },
   } = item;
-  if (variant === 'tcp') {
-    PromoBannerComponent = ContainerView;
-    HeaderComponent = ContainerView;
-    HeaderConfig = { color: 'text.primary' };
-  } else {
+  if (isGymboree()) {
     PromoBannerComponent = PromoBannerWrapper;
     HeaderComponent = HeaderView;
     HeaderConfig = { color: 'white' };
+  } else {
+    PromoBannerComponent = ContainerView;
+    HeaderComponent = ContainerView;
+    HeaderConfig = { color: 'text.primary' };
   }
 
   return (
     <ContainerView>
       <Image
         width={MODULE_WIDTH}
-        height={variant === 'tcp' ? MODULE_TCP_HEIGHT : MODULE_GYM_HEIGHT}
+        height={isGymboree() === false ? MODULE_TCP_HEIGHT : MODULE_GYM_HEIGHT}
         url={image.url}
       />
       <HeaderWrapper>
@@ -133,30 +135,30 @@ const renderView = (item, navigation, variant, position) => {
         </PromoBannerComponent>
       </HeaderWrapper>
 
-      {variant === 'gym' && ribbonView({ ribbonBanner, navigation, position })}
+      {isGymboree() === true && ribbonView({ ribbonBanner, navigation, position })}
     </ContainerView>
   );
 };
 
-const renderCarousel = (largeCompImageCarousel, navigation, variant, position) => {
+const renderCarousel = (largeCompImageCarousel, navigation, position) => {
   let config = {};
-  if (variant === 'tcp') {
-    config = {
-      height: MODULE_TCP_HEIGHT,
-    };
-  } else {
+  if (isGymboree()) {
     config = {
       height: MODULE_GYM_HEIGHT,
       buttonPosition: position,
     };
+  } else {
+    config = {
+      height: MODULE_TCP_HEIGHT,
+    };
   }
   return (
     <ContainerView>
-      {largeCompImageCarousel.length > 1 ? (
+      {largeCompImageCarousel && largeCompImageCarousel.length > 1 ? (
         <Carousel
           {...config}
           data={largeCompImageCarousel}
-          renderItem={item => renderView(item, navigation, variant, position)}
+          renderItem={item => renderView(item, navigation, position)}
           width={MODULE_WIDTH}
           carouselConfig={{
             autoplay: true,
@@ -165,9 +167,7 @@ const renderCarousel = (largeCompImageCarousel, navigation, variant, position) =
           overlap
         />
       ) : (
-        <View>
-          {renderView({ item: largeCompImageCarousel[0] }, navigation, variant, position)}
-        </View>
+        <View>{renderView({ item: largeCompImageCarousel[0] }, navigation, position)}</View>
       )}
     </ContainerView>
   );
@@ -209,7 +209,7 @@ const ModuleA = (props: Props) => {
 
   return (
     <Container>
-      {renderCarousel(largeCompImageCarousel, navigation, 'tcp', 'left')}
+      {renderCarousel(largeCompImageCarousel, navigation, 'left')}
 
       {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>

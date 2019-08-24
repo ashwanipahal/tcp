@@ -431,6 +431,18 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 };
 
 /**
+ * @function isGymboree
+ *
+ * @returns get status of gymboree brand selected in mobile app
+ */
+export const isGymboree = () => {
+  if (currentBrand === 'gymboree') {
+    return true;
+  }
+  return false;
+};
+
+/**
  * @function getCurrentBrand
  *
  * @returns current brand selected in mobile app

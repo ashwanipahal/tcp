@@ -16,6 +16,7 @@ export {
   switchAPIConfig,
   updateCurrentBrand,
   getCurrentBrand,
+  isGymboree,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
