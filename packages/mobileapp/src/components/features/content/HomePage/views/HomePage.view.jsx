@@ -34,7 +34,13 @@ class HomePageView extends React.Component {
       getBootstrapData,
       screenProps: { apiConfig },
     } = this.props;
-    getBootstrapData({ name: 'homepage' }, apiConfig);
+    getBootstrapData(
+      {
+        name: 'homepage',
+        modules: ['labels', 'header'],
+      },
+      apiConfig
+    );
   };
 
   render() {

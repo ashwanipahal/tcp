@@ -1,13 +1,17 @@
+import { getAPIConfig } from '../../../../../utils';
+import { defaultBrand, defaultChannel, defaultCountry } from '../../../../api.constants';
+
 const buildQuery = ({ brand, country, channel }) => `
   navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
     categoryContent {
+      seoToken
+      isShortImage
       description
       catgroupId
+      seoTitle
       seoUrl
       name
       id
-      seoUrl
-      seoToken
       mainCategory {
         set {
           key
@@ -16,26 +20,18 @@ const buildQuery = ({ brand, country, channel }) => `
         sizesRange {
           text
         }
+        categoryImage {
+          url
+          alt
+          title
+          crop_d
+          crop_m
+          crop_t
+          position
+        }
         categoryLayout {
           name
           columns {
-            imageBanner {
-              image {
-                url
-                alt
-                title
-                crop_d
-                crop_m
-                crop_t
-              }
-              link {
-                url
-                text
-                title
-                target
-                external
-              }
-            }
             shopBySize {
               text {
                 text
@@ -52,6 +48,7 @@ const buildQuery = ({ brand, country, channel }) => `
       categoryContent {
         seoToken
         seoUrl
+        catgroupId
         groupIdentifierSequence
         description
         groupIdentifier
@@ -68,6 +65,7 @@ const buildQuery = ({ brand, country, channel }) => `
         categoryContent {
           seoToken
           seoUrl
+          catgroupId
           groupIdentifierSequence
           description
           groupIdentifier
@@ -81,7 +79,13 @@ const buildQuery = ({ brand, country, channel }) => `
 `;
 
 export default {
-  getQuery: data => {
-    return buildQuery(data);
+  getQuery: () => {
+    const apiConfig = getAPIConfig();
+
+    return buildQuery({
+      brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
+      channel: defaultChannel,
+      country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
+    });
   },
 };
