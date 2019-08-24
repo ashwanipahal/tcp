@@ -6,8 +6,12 @@ exports[`CreditCardFields component should render correctly 1`] = `
     <Field
       cardType=""
       cardTypeImgUrl=""
-      className="field"
       component={[Function]}
+      customStyle={
+        Object {
+          "height": 50,
+        }
+      }
       dataLocator="payment-cardtextfield"
       enableSuccessCheck={false}
       id="cardNumber"
@@ -17,222 +21,236 @@ exports[`CreditCardFields component should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View)>
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "data": Array [],
-            "dropDownStyle": null,
-            "itemStyle": null,
-            "onValueChange": null,
-            "selectedValue": null,
-            "variation": "primary",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(DropDown)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="black"
+      />
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "data": Array [],
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
     ",
-              "
+                "
   height: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
   ",
-              [Function],
-              ";
+                [Function],
+                ";
   background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
 ",
-              ";
+                ";
   ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
         }
-      }
-      data={
-        Array [
-          Object {
-            "id": "1",
-            "label": "Jan",
-          },
-          Object {
-            "id": "2",
-            "label": "Feb",
-          },
-          Object {
-            "id": "3",
-            "label": "Mar",
-          },
-          Object {
-            "id": "4",
-            "label": "Apr",
-          },
-          Object {
-            "id": "5",
-            "label": "May",
-          },
-          Object {
-            "id": "6",
-            "label": "Jun",
-          },
-          Object {
-            "id": "7",
-            "label": "Jul",
-          },
-          Object {
-            "id": "8",
-            "label": "Aug",
-          },
-          Object {
-            "id": "9",
-            "label": "Sep",
-          },
-          Object {
-            "id": "10",
-            "label": "Oct",
-          },
-          Object {
-            "id": "11",
-            "label": "Nov",
-          },
-          Object {
-            "id": "12",
-            "label": "Dec",
-          },
-        ]
-      }
-      dataLocator="addEditCreditCard-expMonth1"
-      dropDownStyle={
-        Object {
-          "border": 1,
-          "height": 40,
-          "marginRight": 15,
-          "width": 100,
+        data={
+          Array [
+            Object {
+              "id": "1",
+              "label": "Jan",
+            },
+            Object {
+              "id": "2",
+              "label": "Feb",
+            },
+            Object {
+              "id": "3",
+              "label": "Mar",
+            },
+            Object {
+              "id": "4",
+              "label": "Apr",
+            },
+            Object {
+              "id": "5",
+              "label": "May",
+            },
+            Object {
+              "id": "6",
+              "label": "Jun",
+            },
+            Object {
+              "id": "7",
+              "label": "Jul",
+            },
+            Object {
+              "id": "8",
+              "label": "Aug",
+            },
+            Object {
+              "id": "9",
+              "label": "Sep",
+            },
+            Object {
+              "id": "10",
+              "label": "Oct",
+            },
+            Object {
+              "id": "11",
+              "label": "Nov",
+            },
+            Object {
+              "id": "12",
+              "label": "Dec",
+            },
+          ]
         }
-      }
-      itemStyle={
-        Object {
-          "height": 40,
-          "width": 100,
+        dataLocator="addEditCreditCard-expMonth1"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 40,
+            "marginRight": 15,
+            "width": 100,
+          }
         }
-      }
-      onValueChange={[Function]}
-      selectedValue="Jan"
-      variation="secondary"
-    />
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "data": Array [],
-            "dropDownStyle": null,
-            "itemStyle": null,
-            "onValueChange": null,
-            "selectedValue": null,
-            "variation": "primary",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(DropDown)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
+        itemStyle={
+          Object {
+            "height": 40,
+            "width": 100,
+          }
+        }
+        onValueChange={[Function]}
+        selectedValue="Jan"
+        variation="secondary"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="black"
+      />
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "data": Array [],
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
     ",
-              "
+                "
   height: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
   ",
-              [Function],
-              ";
+                [Function],
+                ";
   background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
 ",
-              ";
+                ";
   ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
         }
-      }
-      data={
-        Array [
-          Object {
-            "id": "2019",
-            "label": "2019",
-          },
-          Object {
-            "id": "2020",
-            "label": "2020",
-          },
-          Object {
-            "id": "2021",
-            "label": "2021",
-          },
-          Object {
-            "id": "2022",
-            "label": "2022",
-          },
-          Object {
-            "id": "2023",
-            "label": "2023",
-          },
-          Object {
-            "id": "2024",
-            "label": "2024",
-          },
-          Object {
-            "id": "2025",
-            "label": "2025",
-          },
-          Object {
-            "id": "2026",
-            "label": "2026",
-          },
-          Object {
-            "id": "2027",
-            "label": "2027",
-          },
-          Object {
-            "id": "2028",
-            "label": "2028",
-          },
-          Object {
-            "id": "2029",
-            "label": "2029",
-          },
-        ]
-      }
-      dataLocator="addEditCreditCard-expYear1"
-      dropDownStyle={
-        Object {
-          "border": 1,
-          "height": 40,
-          "marginRight": 15,
-          "width": 100,
+        data={
+          Array [
+            Object {
+              "id": "2019",
+              "label": "2019",
+            },
+            Object {
+              "id": "2020",
+              "label": "2020",
+            },
+            Object {
+              "id": "2021",
+              "label": "2021",
+            },
+            Object {
+              "id": "2022",
+              "label": "2022",
+            },
+            Object {
+              "id": "2023",
+              "label": "2023",
+            },
+            Object {
+              "id": "2024",
+              "label": "2024",
+            },
+            Object {
+              "id": "2025",
+              "label": "2025",
+            },
+            Object {
+              "id": "2026",
+              "label": "2026",
+            },
+            Object {
+              "id": "2027",
+              "label": "2027",
+            },
+            Object {
+              "id": "2028",
+              "label": "2028",
+            },
+            Object {
+              "id": "2029",
+              "label": "2029",
+            },
+          ]
         }
-      }
-      itemStyle={
-        Object {
-          "height": 40,
-          "width": 100,
+        dataLocator="addEditCreditCard-expYear1"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 40,
+            "marginRight": 15,
+            "width": 100,
+          }
         }
-      }
-      onValueChange={[Function]}
-      selectedValue="2020"
-      variation="secondary"
-    />
+        itemStyle={
+          Object {
+            "height": 40,
+            "width": 100,
+          }
+        }
+        onValueChange={[Function]}
+        selectedValue="2020"
+        variation="secondary"
+      />
+    </Styled(View)>
   </Styled(View)>
 </Styled(View)>
 `;

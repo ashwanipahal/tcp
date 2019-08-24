@@ -30,7 +30,6 @@ type Props = {
   setTrackOrderModalMountState: Function,
   showNotification: string,
   onChangeForm: Function,
-  toggleSubmit: Boolean,
 };
 export class TrackOrderContainer extends React.PureComponent<Props> {
   componentDidUpdate() {
@@ -78,7 +77,6 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
       setTrackOrderModalMountState,
       showNotification,
       onChangeForm,
-      toggleSubmit,
     } = this.props;
     return (
       <TrackOrderView
@@ -92,7 +90,6 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
         className="TrackOrder__Modal"
         showNotification={showNotification}
         onChangeForm={onChangeForm}
-        toggleSubmit={toggleSubmit}
       />
     );
   }
@@ -108,7 +105,6 @@ export const mapStateToProps = state => {
     orderId: getOrderId(state),
     orderDetailResponse: getOrderDetail(state),
     showNotification: getShowNotificationState(state),
-    toggleSubmit: getEmailId(state) || getOrderId(state),
   };
 };
 

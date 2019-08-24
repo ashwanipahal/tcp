@@ -69,6 +69,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     </Styled(Button)>
   </Styled(Row)>
   <OpenLoginModal
+    handleAfterLogin={[Function]}
     handleContinueAsGuest={[Function]}
     variation="checkout"
   />

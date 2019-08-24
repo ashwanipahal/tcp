@@ -16,11 +16,11 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
   getRecalcOrderPointsInterval,
-  getIsOrderHasShipping,
+  // getIsOrderHasShipping  ,
   // getShippingDestinationValues,
   // getDefaultAddress,
-  isGuest,
-  getIsMobile,
+  // isGuest,
+  // getIsMobile,
 } = selectors;
 
 function* loadGiftWrappingOptions() {
@@ -43,7 +43,6 @@ function* loadUpdatedCheckoutValues(
   recalcRewards,
   updateSmsInfo
 ) {
-  console.log('loadUpdatedCheckoutValues');
   const imageGenerator = getImgPath;
   const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
   const recalcOrderPoints = yield call(
@@ -51,7 +50,6 @@ function* loadUpdatedCheckoutValues(
     recalcRewards,
     recalcOrderPointsInterval
   );
-  console.log('loadUpdatedCheckoutValues - 5');
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
       isTaxCalculation,
@@ -71,7 +69,6 @@ function* loadUpdatedCheckoutValues(
   //   recalcOrderPoints,
   //   isCheckoutFlow: true,
   // });
-  // console.log('loadUpdatedCheckoutValues - 5', res);
   // yield call (storeUpdatedCheckoutValues, res.orderDetails, isCartNotRequired, updateSmsInfo);
   // Load coupons to the store after constructing the coupons structure
   // getWalletOperator(this.store).getWallet(res.coupons.offers);
@@ -111,32 +108,32 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
 
 function* loadCartAndCheckoutDetails(isRecalcRewards) {
   yield call(loadUpdatedCheckoutValues, null, null, null, isRecalcRewards);
-  const getIsShippingRequired = yield select(getIsOrderHasShipping);
-  if (getIsShippingRequired) {
-    let shippingAddress = {}; // yield select(getShippingDestinationValues);
-    shippingAddress = shippingAddress.address;
-    // const defaultAddress = yield select(getDefaultAddress);
-    const hasShipping =
-      (shippingAddress &&
-        shippingAddress.country &&
-        shippingAddress.state &&
-        shippingAddress.zipCode) ||
-      true;
-    const isGuestUser = yield select(isGuest);
-    const isMobile = getIsMobile;
-    if (!hasShipping /* && !defaultAddress */ || isGuestUser || isMobile) {
-      // if some data is missing request defaults (new user would have preselected
-      //  country and zipcode, but not state but service needs all 3 of them)
-      return '';
-      /* loadShipmentMethods(
+  // const getIsShippingRequired = yield select(getIsOrderHasShipping);
+  // if (getIsShippingRequired) {
+  // let shippingAddress = {}; // yield select(getShippingDestinationValues);
+  // shippingAddress = shippingAddress.address;
+  // const defaultAddress = yield select(getDefaultAddress);
+  // const hasShipping =
+  //   (shippingAddress &&
+  //     shippingAddress.country &&
+  //     shippingAddress.state &&
+  //     shippingAddress.zipCode) ||
+  //   true;
+  // const isGuestUser = yield select(isGuest);
+  // const isMobile = getIsMobile;
+  // if (!hasShipping /* && !defaultAddress */ || isGuestUser || isMobile) {
+  // if some data is missing request defaults (new user would have preselected
+  //  country and zipcode, but not state but service needs all 3 of them)
+  // return '';
+  /* loadShipmentMethods(
         this.store,
         {country: '', state: '', zipCode: ''},
         {state: true, zipCode: true},
         true,
         this.checkoutServiceAbstractor
       ); */
-    }
-  }
+  // }
+  // }
   return '';
 }
 

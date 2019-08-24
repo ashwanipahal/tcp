@@ -414,6 +414,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
+        underline={true}
       />
     </Styled(BodyCopy)>
   </form>
@@ -847,6 +848,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
+        underline={true}
       />
     </Styled(BodyCopy)>
   </form>

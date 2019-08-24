@@ -2,13 +2,6 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
-  <ModuleN
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
   <SlotA
     className="moduleD"
     navigation={
@@ -37,6 +30,178 @@ exports[`HomePageView should render correctly 1`] = `
       Object {
         "getParam": [Function],
       }
+    }
+  />
+  <SlotE
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <SlotF
+    bgColor="#f53d3d"
+    ctaItems={
+      Array [
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
+          },
+          "image": Object {
+            "alt": "Girl",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Girl",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
+          },
+          "image": Object {
+            "alt": "Toddler Girl alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Toddler Girl title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
+          },
+          "image": Object {
+            "alt": "Boy",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Boy",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
+          },
+          "image": Object {
+            "alt": "Toddler Boy alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Tod Boy title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Baby",
+            "title": "Baby",
+            "url": "/toddler-boy",
+          },
+          "image": Object {
+            "alt": "Baby Alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Baby title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Alt",
+            "title": "Alt",
+            "url": "/toddler-boy",
+          },
+          "image": Object {
+            "alt": "Baby Alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Baby title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "link": Object {
+            "target": "",
+            "title": "",
+            "url": "plpUrl",
+          },
+          "textItems": Array [
+            Object {
+              "color": "color2",
+              "style": "style12",
+              "text": "ALL CLEARANCE",
+            },
+          ],
+        },
+      ]
+    }
+    name="moduleN"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "class": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "percentage_wrapped_large",
+              "text": "60-70 % OFF",
+            },
+            Object {
+              "style": "text_normal",
+              "text": "No Exclusions",
+            },
+          ],
+        },
+      ]
+    }
+    set={
+      Array [
+        Object {
+          "key": "ctaType",
+          "val": "stackedCTAButtons",
+        },
+      ]
     }
   />
   <Styled(CustomButton)

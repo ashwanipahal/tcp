@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="checkout-white-dot" data-name="checkout-white-dot" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #fff;
+            }
+            .cls-2 {
+                fill: none;
+                stroke: #000;
+                stroke-opacity: 0.01;
+                stroke-width: 0px;
+            }
+        </style>
+    </defs>
+    <title>checkout-white-dot</title>
+    <g id="Icons_Desktop_breadcrumbs-current" data-name="Icons/Desktop/breadcrumbs-current">
+        <g id="Group-2"><circle id="Oval" class="cls-1" cx="15" cy="15" r="12"/>
+            <g id="Icons_breadcrumbs-current" data-name="Icons/breadcrumbs-current">
+                <polygon id="Stroke-1" class="cls-2" points="0 0 30 0 30 30 0 30 0 0"/>
+                <path id="Fill-2" d="M13,6.75A6.25,6.25,0,1,0,19.25,13,6.25,6.25,0,0,0,13,6.75ZM13,.5A12.5,12.5,0,1,0,25.5,13,12.5,12.5,0,0,0,13,.5ZM13,23A10,10,0,1,1,23,13,10,10,0,0,1,13,23Z" transform="translate(2 2)"/>
+            </g>
+        </g>
+    </g>
+</svg>
