@@ -35,7 +35,7 @@ const AddedToBagActions = ({ labels, showAddTobag, navigation }) => {
             fontSize="fs13"
             text={labels.checkout && labels.checkout.toUpperCase()}
             onPress={() => {
-              navigateToNestedRoute(navigation, 'HomeStack', 'PickupPage');
+              navigateToNestedRoute(navigation, 'HomeStack', 'Checkout');
             }}
           />
         </CheckoutButton>

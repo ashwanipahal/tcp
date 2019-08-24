@@ -389,6 +389,10 @@
     "errorMessage": "Please check the recaptcha value.",
     "formFieldName": ""
   },
+  "EMPTY_RECAPTCHA": {
+    "errorMessage": "Please check the recaptcha value.",
+    "formFieldName": ""
+  },
   "_TCP_PAYMENT_INSUFFICIENT": {
     "errorMessage": "There was a problem processing your payment, please try again.",
     "formFieldName": ""

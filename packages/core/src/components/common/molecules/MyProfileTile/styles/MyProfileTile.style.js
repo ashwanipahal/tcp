@@ -25,6 +25,9 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.medium} {
     min-height: 250px;
   }
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    width: 90%;
+  }
 `;
 
 export default styles;

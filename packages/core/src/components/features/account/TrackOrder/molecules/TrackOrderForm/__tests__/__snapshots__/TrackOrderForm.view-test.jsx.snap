@@ -379,7 +379,6 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
       buttonVariation="fixed-width"
       className="elem-mb-L trackOrder-trackOrdercta"
       dataLocator="track_order_btn"
-      disabled={true}
       fill="BLUE"
       fullWidth={true}
       type="submit"
