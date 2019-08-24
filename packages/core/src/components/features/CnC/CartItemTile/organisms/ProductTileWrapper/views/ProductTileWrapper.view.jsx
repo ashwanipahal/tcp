@@ -55,7 +55,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isUserLoggedIn,
       isPlcc,
     } = this.props;
-    let isAvailable;
+    let isUnavailable;
     const getUnavailableOOSItems = [];
     const { isEditAllowed } = this.state;
     if (orderItems && orderItems.size > 0) {
@@ -66,7 +66,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         ) {
           getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
-          isAvailable = true;
+          isUnavailable = true;
         }
         return (
           <CartItemTile
@@ -83,7 +83,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       });
       return (
         <>
-          {isAvailable && (
+          {isUnavailable && (
             <>
               <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
               <BodyCopy
