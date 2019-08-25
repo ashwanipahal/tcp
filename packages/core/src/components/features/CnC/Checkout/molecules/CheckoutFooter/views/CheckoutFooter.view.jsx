@@ -52,3 +52,4 @@ CheckoutFooter.propTypes = {
 };
 
 export default withStyles(CheckoutFooter, style);
+export { CheckoutFooter as CheckoutFooterVanilla };

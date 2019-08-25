@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
+<div>
+  <Styled(Button)
+    className="back-link"
+    type="button"
+  >
+    <Styled(Image)
+      className="back-link-image"
+      src="/static/images/carrot-left.png"
+    />
+  </Styled(Button)>
+  <Styled(Button)
+    className="footer-button"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    type="submit"
+  />
+</div>
+`;

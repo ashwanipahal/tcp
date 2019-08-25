@@ -87,3 +87,5 @@ CheckoutPage.propTypes = {
   submitShippingSection: PropTypes.func.isRequired,
   // onPickupSubmit: PropTypes.func.isRequired,
 };
+
+export { CheckoutPage as CheckoutPageVanilla };
