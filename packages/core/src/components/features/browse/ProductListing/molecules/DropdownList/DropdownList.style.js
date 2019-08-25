@@ -43,8 +43,7 @@ export default css`
   .item-list-row {
     flex-flow: row wrap;
   }
-
   .apply-button {
-    width: 223px;
+    width: 210px;
   }
 `;

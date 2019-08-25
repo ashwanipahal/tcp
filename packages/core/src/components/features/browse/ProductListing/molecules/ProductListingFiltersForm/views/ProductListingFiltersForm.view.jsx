@@ -8,6 +8,7 @@ import { reduxForm, Field, submit } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import cssClassName from '../../utils/cssClassName';
 import Image from '../../../../../../common/atoms/Image';
+import { getLocator } from '../../../../../../../utils';
 
 class ProductListingFiltersForm extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class ProductListingFiltersForm extends React.Component {
         appliedFilterVal={appliedFilterVal}
         facetName={facetName}
         component={CustomSelect}
-        optionsMap={getFilterOptionsMap(filtersMaps[facetName], isMobile)}
+        optionsMap={getFilterOptionsMap(filtersMaps[facetName], filterName, isMobile)}
         title={isMobile ? filterName : ''}
         placeholder={filterName}
         allowMultipleSelections
@@ -36,6 +37,7 @@ class ProductListingFiltersForm extends React.Component {
         ref={this.captureFilterRef}
         withRef
         onBlur={this.handleFilterFieldBlur}
+        labels={this.props.labels}
       />
     );
 
@@ -70,7 +72,7 @@ class ProductListingFiltersForm extends React.Component {
         appliedFilterVal={appliedFilterVal}
         facetName={facetName}
         component={CustomSelect}
-        optionsMap={getColorFilterOptionsMap(filtersMaps[facetName], isMobile)}
+        optionsMap={getColorFilterOptionsMap(filtersMaps[facetName], filterName, isMobile)}
         title={isMobile ? filterName : ''}
         placeholder={filterName}
         allowMultipleSelections
@@ -159,10 +161,22 @@ class ProductListingFiltersForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={() => console.log('submit..')}>
+      <form>
         <div className={this.props.className}>
           <div className="filters-only-container">
-            {<span className="filter-title">Filter By:</span>}
+            <BodyCopy
+              component="span"
+              role="label"
+              textAlign="center"
+              tabIndex={-1}
+              fontSize="fs14"
+              fontFamily="secondary"
+              color="gray.900"
+              outline="none"
+              data-locator={getLocator('plp_filter_label_filterby')}
+            >
+              {this.props.labels.lbl_filter_by}:
+            </BodyCopy>
 
             {this.props.filters && this.renderDesktopFilters()}
           </div>
@@ -171,7 +185,7 @@ class ProductListingFiltersForm extends React.Component {
     );
   }
 }
-function getColorFilterOptionsMap(colorOptionsMap, isMobile) {
+function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
   let result = colorOptionsMap.map(color => ({
     value: color.id,
     title: color.displayName,
@@ -197,6 +211,7 @@ function getColorFilterOptionsMap(colorOptionsMap, isMobile) {
             color="gray.900"
             className="color-name"
             outline="none"
+            data-locator={`${getLocator(`plp_filter_color_option_`)}${color.displayName}`}
           >
             {color.displayName}
           </BodyCopy>
@@ -220,7 +235,7 @@ function getColorFilterOptionsMap(colorOptionsMap, isMobile) {
   //     ])
   //   : result;
 }
-function getFilterOptionsMap(optionsMap, isMobile) {
+function getFilterOptionsMap(optionsMap, filterName, isMobile) {
   let result = optionsMap.map(option => ({
     value: option.id,
     title: option.displayName,
@@ -235,6 +250,12 @@ function getFilterOptionsMap(optionsMap, isMobile) {
         color="gray.900"
         className="size-title"
         outline="none"
+        data-locator={`${getLocator(
+          `plp_filter_${filterName
+            .toLowerCase()
+            .split(' ')
+            .join('_')}_option_`
+        )}${option.displayName}`}
       >
         {option.displayName}
       </BodyCopy>
@@ -258,10 +279,12 @@ function getFilterOptionsMap(optionsMap, isMobile) {
 }
 ProductListingFiltersForm.propTypes = {
   filters: PropTypes.shape({}),
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingFiltersForm.defaultProps = {
   filters: {},
+  labels: {},
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

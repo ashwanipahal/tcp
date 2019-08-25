@@ -11,6 +11,7 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import DropdownListStyle from '../DropdownList.style';
 import Button from '../../../../../../common/atoms/Button';
+import { getLocator } from '../../../../../../../utils';
 
 // TODO Fix this import invariant from './node_modules/invariant';
 import cssClassName from '../../utils/cssClassName';
@@ -67,6 +68,8 @@ const PROP_TYPES = {
   autosuggestAnalytics: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   query: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string.isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 class DropdownList extends React.Component {
@@ -180,6 +183,8 @@ class DropdownList extends React.Component {
       className,
       query,
       highlightedIndex,
+      dataLocator,
+      labels,
     } = this.props;
     if (optionsMap.length < 0) return null;
 
@@ -239,8 +244,9 @@ class DropdownList extends React.Component {
           fill="BLACK"
           color="WHITE"
           className={cssClassName('apply-button')}
+          data-locator={getLocator(`plp_filter_${dataLocator}_apply`)}
         >
-          Apply
+          {labels.lbl_apply}
         </Button>
       </div>
     );
@@ -251,6 +257,7 @@ class DropdownList extends React.Component {
 DropdownList.propTypes = PROP_TYPES;
 DropdownList.defaultProps = {
   selectedIndex: '',
+  labels: {},
 };
 
 export default withStyles(DropdownList, DropdownListStyle);

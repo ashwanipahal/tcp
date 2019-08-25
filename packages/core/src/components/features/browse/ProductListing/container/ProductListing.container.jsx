@@ -10,6 +10,7 @@ import {
   getLoadedProductsCount,
   getUnbxdId,
   getBreadCrumbTrail,
+  getProductsFilters,
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -37,12 +38,13 @@ class ProductListingContainer extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     products: getProductsSelect(state),
-    filters: state.ProductListing.filtersMaps,
+    filters: getProductsFilters(state),
     currentNavIds: state.ProductListing.currentNavigationIds,
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
+    labels: state.Labels.PLP.PLP_sort_filter,
   };
 }
 
@@ -64,6 +66,7 @@ ProductListingContainer.propTypes = {
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
   navigation: PropTypes.shape({}).isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingContainer.defaultProps = {
@@ -72,6 +75,7 @@ ProductListingContainer.defaultProps = {
   navTree: {},
   breadCrumbs: [],
   filters: {},
+  labels: {},
 };
 
 export default connect(

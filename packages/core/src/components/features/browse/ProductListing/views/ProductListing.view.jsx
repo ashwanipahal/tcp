@@ -8,7 +8,15 @@ import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 
-const ProductListView = ({ className, products, currentNavIds, navTree, breadCrumbs, filters }) => {
+const ProductListView = ({
+  className,
+  products,
+  currentNavIds,
+  navTree,
+  breadCrumbs,
+  filters,
+  labels,
+}) => {
   return (
     <div className={className}>
       <Row>
@@ -33,7 +41,7 @@ const ProductListView = ({ className, products, currentNavIds, navTree, breadCru
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-area">
-              <ProductListingFiltersForm filters={filters} />
+              <ProductListingFiltersForm filters={filters} labels={labels} />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -53,6 +61,7 @@ ProductListView.propTypes = {
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {

@@ -4,13 +4,13 @@ import CustomSelect from '../views/CustomSelect.view';
 
 describe('Custom Select is shown', () => {
   const props = {
-    title: "",
+    title: '',
     disabled: false,
     allowMultipleSelections: false,
-    placeholder: "",
-    buttonIconClosed: "",
-    buttonIconExpanded: "",
-    className: "",
+    placeholder: '',
+    buttonIconClosed: '',
+    buttonIconExpanded: '',
+    className: '',
     optionsMap: {},
     input: {},
     onCloseCallback: jest.fn(),
@@ -20,10 +20,10 @@ describe('Custom Select is shown', () => {
     disableExpandStateChanges: false,
     selectOnHighlight: false,
     showErrorIfUntouched: false,
-    selectTextOverride: "",
-    facetName: "",
+    selectTextOverride: '',
+    facetName: '',
     appliedFilterVal: 1,
-    labels: {}
+    labels: {},
   };
   it('should render Custom Select ', () => {
     const component = shallow(<CustomSelect {...props} />);

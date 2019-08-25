@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Added to Bag View should render Added to Bag view  1`] = `
+exports[`Select Item is shown should render select item  1`] = `
 <StyledComponent
   className="Test"
   clickHandler={[MockFunction]}
-  content="<span></span>"
-  docType="docType"
-  facetName="facetName"
+  content={Object {}}
+  docType=""
+  facetName="categoryPath2_uFilter"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -57,10 +57,10 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
   forwardedRef={null}
   highlighted={false}
   highlightedRefCapturer={[MockFunction]}
-  index={1}
+  index={0}
   isAutosuggestAnalytics="PropTypes.string.isRequired"
-  query="query"
-  title="title"
-  value="value"
+  query="Sample Query"
+  title="Sample Title"
+  value="Sample Value"
 />
 `;
