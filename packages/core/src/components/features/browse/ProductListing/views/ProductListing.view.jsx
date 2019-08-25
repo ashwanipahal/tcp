@@ -20,6 +20,7 @@ const ProductListView = ({
   filters,
   longDescription,
   labels,
+  labelsFilter,
 }) => {
   return (
     <div className={className}>
@@ -45,7 +46,7 @@ const ProductListView = ({
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-area">
-              <ProductListingFiltersForm filters={filters} labels={labels} />
+              <ProductListingFiltersForm filters={filters} labels={labelsFilter} />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -74,7 +75,7 @@ ProductListView.propTypes = {
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
-  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -86,5 +87,6 @@ ProductListView.defaultProps = {
   breadCrumbs: [],
   filters: {},
   labels: {},
+  labelsFilter: {},
 };
 export default ProductListView;
