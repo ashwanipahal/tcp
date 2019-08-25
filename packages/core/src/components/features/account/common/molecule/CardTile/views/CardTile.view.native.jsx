@@ -272,13 +272,12 @@ class CardTile extends React.Component<Props> {
     );
   };
 
-  recaptchaRender({ labels, setRecaptchaModalMountedState, onMessage }) {
+  recaptchaRender({ setRecaptchaModalMountedState, onMessage }) {
     return (
       <React.Fragment>
         {setRecaptchaModalMountedState && (
           <RecaptchaModal
             onMessage={onMessage}
-            labels={labels}
             setRecaptchaModalMountedState={setRecaptchaModalMountedState}
             toggleRecaptchaModal={this.setRecaptchaModalMountState}
             onClose={this.onClose}

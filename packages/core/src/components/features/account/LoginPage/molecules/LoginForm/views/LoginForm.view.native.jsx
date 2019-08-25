@@ -63,15 +63,16 @@ class LoginForm extends React.PureComponent<Props> {
       const value = get(event, 'nativeEvent.data', '');
       change('recaptchaToken', value);
       handleSubmit(data => {
-        const wholeData = {
-          emailAddress: data.emailAddress,
-          password: data.password,
-          rememberMe: data.rememberMe,
-          savePlcc: data.savePlcc,
-          userTouchId: data.userTouchId,
+        const { emailAddress, password, rememberMe, savePlcc, userTouchId } = data;
+        const LoginData = {
+          emailAddress,
+          password,
+          rememberMe,
+          savePlcc,
+          userTouchId,
           recaptchaToken: value,
         };
-        onSubmit(wholeData);
+        onSubmit(LoginData);
       })();
 
       this.setRecaptchaModalMountState();
@@ -158,7 +159,6 @@ class LoginForm extends React.PureComponent<Props> {
           {setRecaptchaModalMountedState && showRecaptcha && (
             <RecaptchaModal
               onMessage={this.onMessage}
-              labels={labels}
               setRecaptchaModalMountedState={setRecaptchaModalMountedState}
               toggleRecaptchaModal={this.setRecaptchaModalMountState}
               onClose={this.onClose}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import {
@@ -14,15 +15,7 @@ import {
 } from '../GiftCards.style.native';
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
 
-// @flow
-type Props = {
-  labels: string,
-  giftCardList: object,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-};
-
-const GiftCards = (props: Props) => {
+const GiftCards = props => {
   const {
     labels,
     giftCardList,
@@ -67,6 +60,14 @@ const GiftCards = (props: Props) => {
         ))}
     </View>
   );
+};
+
+GiftCards.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  giftCardList: PropTypes.shape([]).isRequired,
+  onGetBalanceCard: PropTypes.string.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  toggleRecaptchaModal: PropTypes.bool.isRequired,
 };
 
 export default withStyles(GiftCards, ParentContainerStyle);

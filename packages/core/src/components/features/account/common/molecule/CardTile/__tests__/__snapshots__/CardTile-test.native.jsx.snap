@@ -547,14 +547,6 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   </Styled(View)>
   <View>
     <RecaptchaModal
-      labels={
-        Object {
-          "common": Object {},
-          "paymentGC": Object {
-            "lbl_payment_giftCard": "",
-          },
-        }
-      }
       onClose={[Function]}
       onMessage={[Function]}
       setRecaptchaModalMountedState={true}
@@ -849,14 +841,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   </Styled(View)>
   <View>
     <RecaptchaModal
-      labels={
-        Object {
-          "common": Object {},
-          "paymentGC": Object {
-            "lbl_payment_giftCard": "",
-          },
-        }
-      }
       onClose={[Function]}
       onMessage={[Function]}
       setRecaptchaModalMountedState={true}

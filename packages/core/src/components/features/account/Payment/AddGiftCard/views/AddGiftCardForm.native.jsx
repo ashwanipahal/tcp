@@ -39,12 +39,13 @@ class AddGiftCardForm extends React.PureComponent {
       const value = get(event, 'nativeEvent.data', '');
       this.setState({ tokenInfomation: value });
       handleSubmit(data => {
-        const wholeData = {
-          cardPin: data.cardPin,
-          giftCardNumber: data.giftCardNumber,
+        const { cardPin, giftCardNumber } = data;
+        const addGifteData = {
+          cardPin,
+          giftCardNumber,
           recaptchaToken: value,
         };
-        onAddGiftCardClick(wholeData);
+        onAddGiftCardClick(addGifteData);
       })();
       this.setRecaptchaModalMountState();
     }
@@ -104,7 +105,6 @@ class AddGiftCardForm extends React.PureComponent {
               {setRecaptchaModalMountedState && (
                 <RecaptchaModal
                   onMessage={this.onMessage}
-                  labels={labels}
                   setRecaptchaModalMountedState={setRecaptchaModalMountedState}
                   toggleRecaptchaModal={this.setRecaptchaModalMountState}
                   onClose={this.onClose}
