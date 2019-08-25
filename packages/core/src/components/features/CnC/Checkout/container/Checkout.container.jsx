@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { initCheckoutAction, submitShippingSection } from './Checkout.action';
+import {
+  initCheckoutAction,
+  submitShippingSection,
+  submitPickupSection,
+  onEditModeChangeAction,
+} from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
@@ -14,6 +19,11 @@ const {
   getAddressPhoneNo,
   getIsOrderHasPickup,
   getEmailSignUpLabels,
+  getShipmentMethods,
+  getDefaultShipmentID,
+  getAlternateFormUpdate,
+  getPickUpContactFormLabels,
+  getShippingSendOrderUpdate,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -26,6 +36,7 @@ export class CheckoutContainer extends React.Component<Props> {
     const {
       router,
       initialValues,
+      pickupInitialValues,
       onEditModeChange,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
@@ -39,7 +50,13 @@ export class CheckoutContainer extends React.Component<Props> {
       navigation,
       orderHasPickUp,
       submitShipping,
+      isOrderUpdateChecked,
+      isAlternateUpdateChecked,
+      pickUpLabels,
+      smsSignUpLabels,
+      onPickupSubmit,
     } = this.props;
+
     return (
       <CheckoutPage
         router={router}
@@ -53,8 +70,14 @@ export class CheckoutContainer extends React.Component<Props> {
         activeStage={activeStage}
         activeStep={activeStep}
         isUsSite={isUsSite}
-        shippingProps={shippingProps}
+        pickupInitialValues={pickupInitialValues}
+        isOrderUpdateChecked={isOrderUpdateChecked}
+        isAlternateUpdateChecked={isAlternateUpdateChecked}
+        pickUpLabels={pickUpLabels}
+        smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
+        onPickupSubmit={onPickupSubmit}
+        shippingProps={shippingProps}
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
       />
@@ -70,13 +93,19 @@ export const mapDispatchToProps = dispatch => {
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
     },
+    onPickupSubmit: () => {
+      dispatch(submitPickupSection());
+    },
+    onEditModeChange: data => {
+      dispatch(onEditModeChangeAction(data));
+    },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    initialValues: selectors.getInitialPickupSectionValues(state),
-    onEditModeChange: true, // storeOperators.checkoutSignalsOperator.setIsEditingSubform,
+    initialValues: selectors.getPickupInitialPickupSectionValues(state),
+    pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
     isGuest: selectors.isGuest(state),
@@ -85,13 +114,15 @@ const mapStateToProps = state => {
     activeStage: selectors.getCheckoutStage(state),
     shippingProps: {
       addressLabels: getAddEditAddressLabels(state),
-      isOrderUpdateChecked: getSendOrderUpdate(state),
+      isOrderUpdateChecked: getShippingSendOrderUpdate(state),
       shippingLabels: getShippingLabels(state),
       smsSignUpLabels: getSmsSignUpLabels(state),
       selectedShipmentId: getSelectedShipmentId(state),
       address: getAddressFields(state),
       addressPhoneNumber: getAddressPhoneNo(state),
       emailSignUpLabels: getEmailSignUpLabels(state),
+      shipmentMethods: getShipmentMethods(state),
+      defaultShipmentId: getDefaultShipmentID(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
@@ -108,6 +139,10 @@ const mapStateToProps = state => {
     isUsSite: selectors.isUsSite(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
+    pickUpLabels: getPickUpContactFormLabels(state),
+    smsSignUpLabels: getSmsSignUpLabels(state),
+    isOrderUpdateChecked: getSendOrderUpdate(state),
+    isAlternateUpdateChecked: getAlternateFormUpdate(state),
   };
 };
 

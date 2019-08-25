@@ -116,14 +116,18 @@ export default function CheckoutReducer(state = initialState, action) {
       return checkout.setIn(['uiFlags', 'isLoadingShippingMethods'], action.isLoading);
     // case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
     //   return merge(uiFlags, { isEditingSubform: action.isEditingSubform });
+    // case 'CHECKOUT_FLAGS_SET_LOAD_METHODS':
+    //   return merge(uiFlags, { isLoadingShippingMethods: action.isLoading });
+    case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
+      return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
     //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
     //   return merge(uiFlags, { paymentError: action.paymentError });
-    case CheckoutConstants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR:
-      return checkout.setIn(['uiFlags', 'addressError'], action.addressError);
+    // case CheckoutConstants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR:
+    //   return checkout.setIn(['uiFlags', 'addressError'], action.addressError);
     //  case 'CHECKOUT_FLAGS_SET_VENMO_PAYMENT_IN_PROGRESS':
     //    return uiFlags.setIn(['venmoPaymentInProgress'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_VENMO_INFO_MESG_DISPLAYED':

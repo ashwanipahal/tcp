@@ -36,6 +36,10 @@ export const addAddress = args => {
           nickName: addressKey,
           phone1: args.phoneNumber,
           phone1Publish: args.phone1Publish || 'false',
+          phone2: args.alternatePhoneNumber,
+          email2: args.alternateEmail
+            ? `${args.alternateEmail.trim()}|${args.alternateFirstName} ${args.alternateLastName}`
+            : '',
           primary: args.primary,
           state: args.state,
           zipCode: args.zip || args.zipCode,

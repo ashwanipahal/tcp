@@ -39,10 +39,6 @@ const RoutesMap = [
     resolver: '/Bag',
   },
   {
-    path: '/pickup',
-    resolver: '/Pickup',
-  },
-  {
     path: '/shipping',
     resolver: '/Shipping',
   },
@@ -53,11 +49,6 @@ const RoutesMap = [
   {
     path: '/review',
     resolver: '/review',
-  },
-  {
-    path: '/checkout/:subSection?',
-    resolver: '/Pickup',
-    params: ['subSection'],
   },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
   {

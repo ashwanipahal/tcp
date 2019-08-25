@@ -15,7 +15,7 @@ exports[`Shipping Page should render correctly 1`] = `
         "country": "US",
       },
       "shipmentMethods": Object {
-        "shippingMethodId": "901101",
+        "shippingMethodId": null,
       },
     }
   }
@@ -28,6 +28,7 @@ exports[`Shipping Page should render correctly 1`] = `
   persistentSubmitErrors={false}
   pure={true}
   selectedShipmentId={null}
+  shipmentMethods={null}
   shouldAsyncValidate={[Function]}
   shouldError={[Function]}
   shouldValidate={[Function]}

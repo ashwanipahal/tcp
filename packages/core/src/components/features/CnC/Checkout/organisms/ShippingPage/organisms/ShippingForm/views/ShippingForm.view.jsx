@@ -29,6 +29,7 @@ const ShippingForm = ({
   isGuest,
   isUsSite,
   orderHasPickUp,
+  shipmentMethods,
 }) => {
   return (
     <>
@@ -119,29 +120,7 @@ const ShippingForm = ({
         <FormSection name="shipmentMethods">
           <div className="shipment-methods-form">
             <ShipmentMethods
-              shipmentMethods={[
-                {
-                  id: '901101',
-                  displayName: 'Standard - FREE',
-                  shippingSpeed: 'Up To 10 Business Days',
-                  price: 0,
-                  isDefault: true,
-                },
-                {
-                  displayName: 'Express',
-                  isDefault: false,
-                  shippingSpeed: 'Up To 5 Business Days',
-                  id: '901102',
-                  price: 15,
-                },
-                {
-                  displayName: 'Rush',
-                  isDefault: false,
-                  shippingSpeed: 'Up To 3 Business Days',
-                  id: '901103',
-                  price: 20,
-                },
-              ]}
+              shipmentMethods={shipmentMethods}
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={selectedShipmentId}
@@ -166,6 +145,11 @@ ShippingForm.propTypes = {
   selectedShipmentId: PropTypes.string,
   checkPOBoxAddress: PropTypes.func,
   addressPhoneNo: PropTypes.number,
+  emailSignUpLabels: PropTypes.shape({}).isRequired,
+  isGuest: PropTypes.bool,
+  isUsSite: PropTypes.bool,
+  orderHasPickUp: PropTypes.bool,
+  shipmentMethods: PropTypes.shape([]),
 };
 
 ShippingForm.defaultProps = {
@@ -174,6 +158,10 @@ ShippingForm.defaultProps = {
   selectedShipmentId: null,
   checkPOBoxAddress: () => {},
   addressPhoneNo: null,
+  isGuest: true,
+  isUsSite: true,
+  orderHasPickUp: false,
+  shipmentMethods: null,
 };
 
 const validateMethod = createValidateMethod({

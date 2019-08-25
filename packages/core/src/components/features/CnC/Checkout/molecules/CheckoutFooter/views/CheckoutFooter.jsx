@@ -11,8 +11,8 @@ class CheckoutFooter extends React.PureComponent {
   render() {
     const {
       className,
-      backLinkText = 'Return to Pickup',
-      nextButtonText = 'NEXT: BILLING',
+      backLinkText,
+      nextButtonText,
       disableNext,
       backLinkHandler,
       disableBackLink,
@@ -20,7 +20,7 @@ class CheckoutFooter extends React.PureComponent {
     return (
       <div className={className}>
         <Button
-          disable={disableBackLink}
+          disabled={disableBackLink}
           type="button"
           className="back-link"
           onClick={backLinkHandler}
@@ -28,7 +28,7 @@ class CheckoutFooter extends React.PureComponent {
           <Image src={carrotLeft} className="back-link-image" />
           {backLinkText}
         </Button>
-        <Button disable={disableNext} type="submit" className="footer-button">
+        <Button disabled={disableNext} type="submit" className="footer-button">
           {nextButtonText}
         </Button>
       </div>

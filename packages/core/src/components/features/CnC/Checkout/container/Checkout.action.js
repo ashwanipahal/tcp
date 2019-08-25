@@ -4,6 +4,11 @@ export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
 
+export const submitPickupSection = payload => ({
+  type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
+  payload,
+});
+
 export const checkoutSetCartData = payload => ({
   type: 'CHECKOUT_SET_CART_DATA',
   payload,
@@ -222,5 +227,12 @@ export function setSmsNumberForUpdates(phoneNumber) {
   return {
     phoneNumber,
     type: constants.CHECKOUT_VALUES_SET_SMS_UPDATES,
+  };
+}
+
+export function onEditModeChangeAction(isEditingSubform) {
+  return {
+    isEditingSubform,
+    type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
   };
 }

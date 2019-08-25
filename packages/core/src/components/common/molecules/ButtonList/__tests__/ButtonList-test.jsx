@@ -7,7 +7,7 @@ describe('ButtonList component', () => {
   let ButtonListComp;
 
   it('renders correctly without props', () => {
-    ButtonListComp = shallow(<VanillaButtonList />);
+    ButtonListComp = shallow(<VanillaButtonList buttonsData={mock.moduleN.composites.ctaItems} />);
     expect(ButtonListComp).toMatchSnapshot();
   });
 

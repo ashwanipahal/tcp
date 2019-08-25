@@ -9,6 +9,10 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
+export const getAirmilesDataState = state => {
+  return state[USER_REDUCER_KEY].get('airmiles');
+};
+
 export const getRewardsState = state => {
   return state[USER_REDUCER_KEY].get('rewards');
 };
@@ -49,7 +53,7 @@ export const getUserFullName = createSelector(
 
 export const getUserEmail = createSelector(
   getPersonalDataState,
-  state => state && state.getIn(['contactInfo', 'emailAddress'])
+  state => state && state.getIn(['contactInfo', 'emailAddress']).toLowerCase()
 );
 
 export const getUserPhoneNumber = createSelector(
@@ -102,6 +106,28 @@ export const getDefaultStore = createSelector(
   state => state && state.get('hobbies')
 );
 
+export const getAirmilesDetails = createSelector(
+  getAirmilesDataState,
+  state => state && state.get('accountNumber')
+);
+
+export const getMyPlaceNumber = createSelector(
+  getRewardsState,
+  state => state && state.get('accountNumber')
+);
+
+const userAddressData = (mailingAddress, addressTemp) => {
+  return {
+    addressLine1: addressTemp.get('addressLine1') || '',
+    addressLine2: addressTemp.get('addressLine2') || '',
+    city: addressTemp.get('city') || '',
+    country: addressTemp.get('country') || '',
+    state: addressTemp.get('state') || '',
+    zipCode: addressTemp.get('zipCode'),
+    isComplete: mailingAddress.get('isComplete') || false,
+  };
+};
+
 export const getProfileInfoTileData = createSelector(
   getUserContactInfo,
   getMailingAddress,
@@ -110,25 +136,14 @@ export const getProfileInfoTileData = createSelector(
     let firstName;
     let lastName;
     let emailAddress;
-
     if (personalInformation) {
       firstName = personalInformation.get('firstName');
       lastName = personalInformation.get('lastName');
       emailAddress = personalInformation.get('emailAddress').toLowerCase();
     }
-
     const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
     const addressTemp = mailingAddress ? mailingAddress.get('address') : null;
-    const address = addressTemp
-      ? {
-          addressLine1: addressTemp.get('addressLine1') || '',
-          addressLine2: addressTemp.get('addressLine2') || '',
-          city: addressTemp.get('city') || '',
-          country: addressTemp.get('country') || '',
-          state: addressTemp.get('state') || '',
-          zipCode: addressTemp.get('zipCode'),
-        }
-      : null;
+    const address = addressTemp ? userAddressData(mailingAddress, addressTemp) : null;
     return {
       firstName,
       lastName,
