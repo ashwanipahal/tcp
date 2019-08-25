@@ -13,4 +13,6 @@ export {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
   getShippingMethods,
+  briteVerifyStatusExtraction,
+  setShippingMethodAndAddressId,
 } from './Checkout';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { initCheckoutAction } from './Checkout.action';
+import { initCheckoutAction, submitShippingSection } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
@@ -38,6 +38,7 @@ export class CheckoutContainer extends React.Component<Props> {
       shippingProps,
       navigation,
       orderHasPickUp,
+      submitShipping,
     } = this.props;
     return (
       <CheckoutPage
@@ -55,6 +56,7 @@ export class CheckoutContainer extends React.Component<Props> {
         shippingProps={shippingProps}
         navigation={navigation}
         orderHasPickUp={orderHasPickUp}
+        submitShippingSection={submitShipping}
       />
     );
   }
@@ -64,6 +66,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: () => {
       dispatch(initCheckoutAction());
+    },
+    submitShipping: payload => {
+      dispatch(submitShippingSection(payload));
     },
   };
 };

@@ -1,4 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
+import superagent from 'superagent';
+import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getCurrentOrderFormatter } from './CartItemTile';
@@ -7,6 +9,8 @@ import {
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
+
+const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
 export const getGiftWrappingOptions = () => {
   const payload = {
@@ -148,8 +152,82 @@ export const getShippingMethods = (state, zipCode, addressLine1, addressLine2) =
     });
 };
 
+export function briteVerifyStatusExtraction(emailAddress) {
+  return new Promise(resolve => {
+    superagent
+      .get('https://bpi.briteverify.com/emails.json')
+      .query({
+        apikey: BV_API_KEY,
+        address: emailAddress,
+      })
+      .use(
+        jsonp({
+          timeout: 2000,
+        })
+      )
+      .then(response => {
+        const result = response.body;
+        resolve(`${result.status}::false:false`);
+      })
+      .catch(() => {
+        // call to briteverify validation failed
+        /** assume email address is OK -- this validation is a nicety */
+        resolve('no_response::false:false');
+      });
+  });
+}
+
+function extractRtpsEligibleAndCode(apiResponse) {
+  const response = apiResponse.body.processOLPSResponse;
+  const prescreenResponse = (response && response.response) || {};
+
+  return {
+    plccEligible: prescreenResponse.returnCode === '01',
+    prescreenCode: prescreenResponse.prescreenId || '',
+  };
+}
+
+export function setShippingMethodAndAddressId(
+  shippingTypeId,
+  addressId,
+  verifyPrescreen,
+  transVibesSmsPhoneNo
+) {
+  const payload = {
+    body: {
+      shipModeId: shippingTypeId,
+      addressId,
+      requesttype: 'ajax',
+      prescreen: verifyPrescreen, // as per backend, DT-19753 & DT-19757, we are to pass this so they can run pre-screen function - DT-21915
+      x_calculationUsage: '-1,-2,-3,-4,-5,-6,-7',
+      transVibesSmsPhoneNo,
+    },
+    webService: endpoints.updateShippingMethodSelection,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      } else {
+        const rtpsData = extractRtpsEligibleAndCode(res);
+
+        return {
+          success: true,
+          plccEligible: rtpsData.plccEligible,
+          prescreenCode: rtpsData.prescreenCode,
+        };
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
   getShippingMethods,
+  briteVerifyStatusExtraction,
+  setShippingMethodAndAddressId,
 };

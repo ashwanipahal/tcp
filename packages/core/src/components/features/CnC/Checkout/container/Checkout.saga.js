@@ -1,11 +1,14 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
+import { subscribeEmail } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import constants from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
   getShippingMethods,
+  briteVerifyStatusExtraction,
+  setShippingMethodAndAddressId,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors from './Checkout.selector';
 import utility from '../util/utility';
@@ -16,9 +19,13 @@ import {
   getSetGiftWrapOptionsActn,
   setIsLoadingShippingMethods,
   setShippingOptions,
+  setAddressError,
+  setSmsNumberForUpdates,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-// import { getUserEmail } from '../../../../features/account/User/container/User.selectors';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
+import { isCanada } from '../../../../../utils/utils';
+import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 
 const {
   getRecalcOrderPointsInterval,
@@ -95,7 +102,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
       getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
-    //   getSetSmsNumberForUpdatesActn(resCheckoutValues.smsInfo.numberForUpdates),
+    //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
     // resCheckoutValues.giftWrap &&
     //   getSetGiftWrapValuesActn(
     //     {
@@ -428,9 +435,164 @@ function* initCheckout() {
   yield call(loadStartupData);
 }
 
+function* saveLocalSmsInfo(smsInfo) {
+  let returnVal;
+  if (smsInfo) {
+    const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
+    if (wantsSmsOrderUpdates) {
+      returnVal = yield call(setSmsNumberForUpdates(smsUpdateNumber));
+    } else {
+      returnVal = yield call(setSmsNumberForUpdates(null));
+    }
+  }
+  return returnVal;
+}
+
+function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress) {
+  if (isEmailSignUpAllowed && emailSignup && emailAddress) {
+    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
+    yield subscribeEmail({ payload: emailAddress }, statusCode);
+  }
+}
+
+function* submitShippingSection({ payload: formData }) {
+  // console.log('>>>', { formData });
+  const {
+    // giftWrap,
+    method,
+    smsInfo,
+    shipTo: {
+      // onFileAddressKey,
+      address,
+      setAsDefault,
+      phoneNumber,
+
+      saveToAccount,
+      emailSignup,
+    },
+  } = formData;
+  let { emailAddress } = formData;
+  let isEmailSignUpAllowed = true;
+  const recalcFlag = false;
+  const isGuestUser = yield select(isGuest);
+  if (!emailAddress || !isGuestUser) {
+    // on registered user entering a new address the email field is not visible -> emailAddress = null
+    emailAddress = yield select(getUserEmail);
+  }
+
+  const isCanadaUser = yield select(isCanada);
+  if (!isCanadaUser && isGuestUser) {
+    isEmailSignUpAllowed = false;
+  }
+
+  // let getGiftWrappingValues = yield select(getGiftWrappingValues);
+  // let initialGiftWrappingVal = getGiftWrappingValues.hasGiftWrapping;
+  // const giftWrappingStoreOptionID = getGiftWrappingValues.optionId;
+  // // If the giftwrapping option differs from the initial state
+  // // Recalculate true needs to be sent as true
+  // if (
+  //   initialGiftWrappingVal !== giftWrap.hasGiftWrapping ||
+  //   (giftWrappingStoreOptionID && giftWrap.optionId !== giftWrappingStoreOptionID)
+  // ) {
+  //   recalcFlag = true;
+  // }
+
+  yield put(setAddressError(null));
+
+  const pendingPromises = [
+    // add the requested gift wrap options
+    // giftWrap.hasGiftWrapping && call(addGiftWrappingOption, giftWrap.message, giftWrap.optionId),
+    // remove old gift wrap option (if any)
+    // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
+    // sign up to receive mail newsletter
+    validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress),
+  ];
+  let addOrEditAddressRes;
+  if (isGuestUser) {
+    const oldShippingDestination = yield select(getShippingDestinationValues);
+    if (!oldShippingDestination.onFileAddressKey) {
+      // guest user that is using a new address
+      addOrEditAddressRes = yield call(
+        addAddressGet,
+        {
+          ...address,
+          zip: address.zipCode,
+          phoneNumber,
+          email: emailAddress,
+          primary: setAsDefault,
+          phone1Publish: `${saveToAccount}`,
+          fromPage: 'checkout',
+        },
+        false
+      );
+    }
+    // else {
+    // guest user is editing a previously entered shipping address
+    // addOrEditAddressRes = yield call(
+    //   updateAddress,
+    //   { address, phoneNumber, emailAddress, addressKey: oldShippingDestination.onFileAddressKey },
+    //   {},
+    //   false
+    // );
+    // }
+  } // else {
+  // if (onFileAddressKey) {
+  //   let selectedAddressBookEntry = yield select(getAddressByKey(onFileAddressKey));
+  //   addOrEditAddressPromise = new Promise(resolve =>
+  //     resolve({ addressId: selectedAddressBookEntry && selectedAddressBookEntry.addressId })
+  //   );
+  // } else {
+  //   let oldShippingDestination = yield select(getShippingDestinationValues);
+  //   let oldSelectedAddressBookEntry = yield select(
+  //     getAddressByKey(store.getState(), oldShippingDestination.onFileAddressKey)
+  //   );
+  //   onFileAddressKey = !oldSelectedAddressBookEntry
+  //     ? oldShippingDestination.onFileAddressKey
+  //     : null;
+  //   addOrEditAddressPromise = addressesOperator.addAddress(
+  //     { address, phoneNumber, emailAddress, addressKey: onFileAddressKey },
+  //     { isDefault: setAsDefault, saveToAccount: saveToAccount },
+  //     true // add to address book inside redux-store
+  //   );
+  // }
+  // }
+
+  // Retrieve phone number info for sms updates
+  const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
+  // eslint-disable-next-line no-unused-expressions
+  yield saveLocalSmsInfo(smsInfo);
+  yield all(pendingPromises);
+  try {
+    yield call(
+      setShippingMethodAndAddressId,
+      method.shippingMethodId,
+      addOrEditAddressRes.addressId,
+      false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
+      transVibesSmsPhoneNo,
+      addOrEditAddressRes.addressKey
+    );
+    // return getPlccOperator(store)
+    //   .optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
+    // REVIEW: the true indicates to load the reward data for user.
+    // But how can the reward points change here?
+    const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
+    const smsNumberForOrderUpdates = yield select(selectors.getSmsNumberForOrderUpdates);
+    yield loadUpdatedCheckoutValues(
+      true,
+      false,
+      true,
+      recalcFlag,
+      !(isOrderHasPickup && smsNumberForOrderUpdates)
+    );
+  } catch (err) {
+    // throw getSubmissionError(store, 'submitShippingSection', err);
+  }
+}
+
 export function* CheckoutSaga() {
   yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
+  yield takeLatest(constants.SUBMIT_SHIPPING_SECTION, submitShippingSection);
 }
 
 export default CheckoutSaga;

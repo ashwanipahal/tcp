@@ -141,6 +141,10 @@ function getPickupAltValues(state) {
   return state.Checkout.getIn(['values', 'pickUpAlternative']);
 }
 
+function getGiftWrappingValues(state) {
+  return state.Checkout.getIn(['values', 'giftWrap']);
+}
+
 function getInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);
   // values (if any) entered previously in the checkout process,
@@ -289,4 +293,6 @@ export default {
   getSmsSignUpLabels,
   getIsOrderHasPickup,
   getEmailSignUpLabels,
+  getGiftWrappingValues,
+  getSmsNumberForOrderUpdates,
 };

@@ -7,9 +7,12 @@ import {
 } from '../../../../features/account/AddressBook/container/AddressBook.actions';
 import { addAddress, updateAddress } from '../../../../../services/abstractors/account';
 
-export function* addAddressGet({ payload }) {
+export function* addAddressGet({ payload }, addToAddressBook = true) {
   try {
     const res = yield call(addAddress, payload);
+    if (!addToAddressBook) {
+      return res;
+    }
     if (res) {
       yield put(
         setAddressBookNotification({

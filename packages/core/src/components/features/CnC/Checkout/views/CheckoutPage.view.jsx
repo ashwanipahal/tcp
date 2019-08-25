@@ -17,6 +17,7 @@ export default class CheckoutPage extends React.PureComponent {
       isGuest,
       isUsSite,
       orderHasPickUp,
+      submitShippingSection,
     } = this.props;
     const currentSection = router.query.section;
     return (
@@ -36,6 +37,7 @@ export default class CheckoutPage extends React.PureComponent {
             isGuest={isGuest}
             isUsSite={isUsSite}
             orderHasPickUp={orderHasPickUp}
+            handleSubmit={submitShippingSection}
           />
         )}
       </>
@@ -55,4 +57,8 @@ CheckoutPage.propTypes = {
   currentPhoneNumber: PropTypes.number.isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  isGuest: PropTypes.bool.isRequired,
+  isUsSite: PropTypes.bool.isRequired,
+  orderHasPickUp: PropTypes.bool.isRequired,
+  submitShippingSection: PropTypes.func.isRequired,
 };

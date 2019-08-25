@@ -203,3 +203,24 @@ export function setShippingOptions(shippingMethods) {
     type: constants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING,
   };
 }
+
+export function submitShippingSection(payload) {
+  return {
+    type: constants.SUBMIT_SHIPPING_SECTION,
+    payload,
+  };
+}
+
+export function setAddressError(addressError) {
+  return {
+    addressError,
+    type: constants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR,
+  };
+}
+
+export function setSmsNumberForUpdates(phoneNumber) {
+  return {
+    phoneNumber,
+    type: constants.CHECKOUT_VALUES_SET_SMS_UPDATES,
+  };
+}

@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
@@ -19,6 +20,7 @@ export default class ShippingPage extends React.PureComponent {
     isGuest: PropTypes.bool,
     isUsSite: PropTypes.bool,
     orderHasPickUp: PropTypes.bool,
+    handleSubmit: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -41,48 +43,52 @@ export default class ShippingPage extends React.PureComponent {
   };
 
   submitShippingData = data => {
-    console.log(data);
+    // console.log(data);
     const { address, shipmentMethods, smsSignUp } = data;
-    const addressData = {
-      // verify address data
-      addressLine1: address.address1,
-      addressLine2: address.address2 || '',
-      city: address.city,
-      state: address.state,
-      zip: address.zip,
-      country: address.country,
-    };
-    const updateShipmentMethodsData = {
-      // shipment Methods data
-      transVibesSmsPhoneNo: smsSignUp.phoneNumber || '',
-      shipModeId: shipmentMethods.shippingMethodId,
-    };
 
-    const addAddressData = {
-      // addAddressData
-      address1: address.address1,
-      address2: address.address2,
-      zip: address.zip,
-      city: address.city,
-      country: address.country,
-      firstName: address.firstName,
-      lastName: address.lastName,
-      phone1: address.phoneNumber,
-      state: address.state,
-      email1: address.email,
-      saveToAccount: address.saveToAccount || false,
-      primary: address.isDefault || false,
-      applyToOrder: true,
-    };
+    // const addAddressData = {
+    //   applyToOrder: true,
+    // };
 
-    const addEmailSignUp = {
-      URL: 'email-confirmation',
-      catalogId: '10552',
-      emailaddr: address.email,
-      langId: '-1',
-      response: 'invalid::false:false',
-      storeId: '10152',
-    };
+    // const addEmailSignUp = {
+    //   URL: 'email-confirmation',
+    //   catalogId: '10552',
+    //   emailaddr: address.email,
+    //   langId: '-1',
+    //   response: 'invalid::false:false',
+    //   storeId: '10152',
+    // };
+    const { handleSubmit } = this.props;
+    handleSubmit({
+      method: {
+        shippingMethodId: shipmentMethods.shippingMethodId,
+      },
+      shipTo: {
+        address: {
+          addressLine1: address.address1,
+          addressLine2: address.address2,
+          city: address.city,
+          country: address.country,
+          firstName: address.firstName,
+          lastName: address.lastName,
+          isCommercialAddress: false,
+          state: address.state,
+          zipCode: address.zipCode,
+        },
+        addressId: undefined,
+        emailAddress: address.emailAddress,
+
+        emailSignup: true,
+        onFileAddressKey: undefined,
+        phoneNumber: address.phoneNumber,
+        saveToAccount: address.saveToAccount || true,
+        setAsDefault: address.isDefault || true,
+      },
+      smsInfo: {
+        smsUpdateNumber: smsSignUp.phoneNumber,
+        wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
+      },
+    });
   };
 
   render() {

@@ -71,8 +71,8 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return orderValues.setIn(['shipping', 'method'], action.method);
     // case 'CHECKOUT_VALUES_SET_GIFT_WRAP':
     //   return merge(orderValues, { giftWrap: action.giftWrap });
-    // case 'CHECKOUT_VALUES_SET_SMS_UPDATES':
-    //   return orderValues.setIn(['smsInfo', 'numberForUpdates'], action.phoneNumber);
+    case CheckoutConstants.CHECKOUT_VALUES_SET_SMS_UPDATES:
+      return checkout.setIn(['values', 'smsInfo', 'numberForUpdates'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SMS_MARKETING':
     //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':
@@ -122,8 +122,8 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
     //   return merge(uiFlags, { paymentError: action.paymentError });
-    // case 'CHECKOUT_FLAGS_SET_ADDRESS_ERROR':
-    //   return merge(uiFlags, { addressError: action.addressError });
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR:
+      return checkout.setIn(['uiFlags', 'addressError'], action.addressError);
     //  case 'CHECKOUT_FLAGS_SET_VENMO_PAYMENT_IN_PROGRESS':
     //    return uiFlags.setIn(['venmoPaymentInProgress'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_VENMO_INFO_MESG_DISPLAYED':
