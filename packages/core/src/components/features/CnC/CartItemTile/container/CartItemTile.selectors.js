@@ -154,6 +154,7 @@ export const getLabelsCartItemTile = state => {
         lbl_miniBag_itemSoldOut: itemSoldOut,
         lbl_miniBag_chooseDiff: chooseDiff,
         lbl_miniBag_soldOut: soldOut,
+        lbl_minibag_errorSize: errorSize,
       },
     },
   } = state.Labels;
@@ -187,6 +188,7 @@ export const getLabelsCartItemTile = state => {
     itemSoldOut,
     chooseDiff,
     soldOut,
+    errorSize,
   };
 };
 
