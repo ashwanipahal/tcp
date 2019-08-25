@@ -53,16 +53,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap, onFileAddresskey, dispatch } = props;
+    const { onFileAddresskey } = props;
     this.state = {
       addAddressMount: false,
       selectedAddress: onFileAddresskey,
-      selectedYear: expYearOptionsMap[1].id,
-      selectedMonth: expMonthOptionsMap[0].id,
     };
-    // Setting form value to take dropdown values.
-    dispatch(change('addEditCreditCard', 'expYear', expYearOptionsMap[1].id));
-    dispatch(change('addEditCreditCard', 'expMonth', expMonthOptionsMap[0].id));
+
     this.submitCardInformation = this.submitCardInformation.bind(this);
   }
 
@@ -106,10 +102,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   updateExpiryDate = (month, year) => {
-    this.setState({
-      selectedYear: year,
-      selectedMonth: month,
-    });
+    const { dispatch } = this.props;
+
+    // Setting form value to take dropdown values.
+    dispatch(change('addEditCreditCard', 'expYear', year));
+    dispatch(change('addEditCreditCard', 'expMonth', month));
   };
 
   toggleModal = () => {
@@ -120,15 +117,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   submitCardInformation = () => {
-    const { selectedYear, selectedMonth } = this.state;
-    const { handleSubmit, dispatch, isEdit, selectedCard } = this.props;
-
-    // Setting form value to take dropdown values.
-    dispatch(change('addEditCreditCard', 'expYear', selectedYear));
-    dispatch(change('addEditCreditCard', 'expMonth', selectedMonth));
-    if (isEdit && selectedCard) {
-      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
-    }
+    const { handleSubmit } = this.props;
     handleSubmit();
   };
 
@@ -142,6 +131,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       dto,
       selectedCard,
       onFileAddresskey,
+      dispatch
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const dropDownStyle = {
@@ -154,6 +144,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     };
     const addressComponentList = this.getAddressOptions();
     const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
+    if (isEdit && selectedCard) {
+      const { expMonth, expYear } = selectedCard;
+      // Setting form value to take dropdown values.
+      this.updateExpiryDate(expMonth, expYear);
+      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
+    }
     return (
       <CreditCardContainer>
         <CreditCardWrapper>

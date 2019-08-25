@@ -16,7 +16,7 @@ import {
 export class CreditCardFields extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap, isEdit, selectedCard } = props;
+    const { isEdit, selectedCard } = props;
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
       this.state = {
@@ -25,8 +25,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
       };
     } else {
       this.state = {
-        selectedYear: expYearOptionsMap[1].label,
-        selectedMonth: expMonthOptionsMap[0].label,
+        selectedYear: '',
+        selectedMonth: '',
       };
     }
   }
@@ -55,6 +55,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       height: 40,
       width: 100,
     };
+
     return (
       <PaymentContainer>
         <CardContainer>
@@ -80,18 +81,18 @@ export class CreditCardFields extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="black"
-              text={labels.paymentGC.lbl_payment_expMonth}
+              text={selectedMonth !== '' ? labels.paymentGC.lbl_payment_expMonth : ''}
             />
             <Field
               component={DropDown}
               data={expMonthOptionsMap}
-              dataLocator="addEditCreditCard-expMonth1"
+              dataLocator="addEditCreditCard-expMonth"
               onValueChange={itemValue => {
                 this.setState({ selectedMonth: itemValue });
                 updateExpiryDate(itemValue, selectedYear);
               }}
               variation="secondary"
-              selectedValue={selectedMonth}
+              selectedValue={selectedMonth !== '' ? selectedMonth : labels.paymentGC.lbl_payment_expMonth}
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
@@ -101,12 +102,12 @@ export class CreditCardFields extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="black"
-              text={labels.paymentGC.lbl_payment_expYear}
+              text={selectedYear !== '' ? labels.paymentGC.lbl_payment_expYear : ''}
             />
             <Field
               component={DropDown}
               data={expYearOptionsMap}
-              dataLocator="addEditCreditCard-expYear1"
+              dataLocator="addEditCreditCard-expYear"
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
@@ -114,7 +115,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 this.setState({ selectedYear: itemValue });
                 updateExpiryDate(selectedMonth, itemValue);
               }}
-              selectedValue={selectedYear}
+              selectedValue={selectedYear !== '' ? selectedYear : labels.paymentGC.lbl_payment_expYear}
             />
           </ExpiryYear>
         </ExpiryContainer>

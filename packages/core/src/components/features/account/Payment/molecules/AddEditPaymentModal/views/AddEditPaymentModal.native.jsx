@@ -39,7 +39,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
             mobileFontFamily={['secondary']}
             fontWeight="extrabold"
             fontSize="fs16"
-            text={labels.paymentGC.lbl_payment_addCCHeading}
+            text={isEdit ? labels.paymentGC.lbl_payment_editCCHeading : labels.paymentGC.lbl_payment_addCCHeading}
           />
         </ModalHeading>
         <LineWrapper>
