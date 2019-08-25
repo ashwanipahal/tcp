@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
@@ -77,7 +78,12 @@ class AccountOverview extends PureComponent<Props> {
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
           <React.Fragment>
-            <Panel title={labels.lbl_overview_myPlaceRewardsHeading} />
+            <Panel title={labels.lbl_overview_myPlaceRewardsHeading}>
+              <MyPlaceRewardsOverviewTile
+                labels={labels}
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
             <Panel title={labels.lbl_overview_myWalletHeading} />
             <Panel title={labels.lbl_overview_earnPointsHeading} />
             <Panel title={labels.lbl_overview_ordersHeading} />

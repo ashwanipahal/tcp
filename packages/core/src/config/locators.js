@@ -138,4 +138,8 @@ export default {
   plp_filter_size_range_option_: 'plp_filter_size_range_option_',
   plp_filter_size_range_apply: 'plp_filter_size_range_apply',
   plp_filter_filtering_by: 'plp_filter_filtering_by',
+  // PLP SEO TEXT
+  plp_seo_module: 'plp_seo_module',
+  plp_seo_readmore: 'plp_seo_module_readmore',
+  plp_seo_readless: 'plp_seo_module_readless',
 };

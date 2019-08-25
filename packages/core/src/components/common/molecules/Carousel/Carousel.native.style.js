@@ -33,10 +33,41 @@ export const Container = styled.View`
 export const ControlsWrapper = styled.View`
   flex-direction: row;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+`;
+
+export const ControlsWrapperLeft = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  margin-left: 20px;
+`;
+
+export const ControlsWrapperRight = styled.View`
+  flex-direction: row;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
 `;
 
 export const PlayPauseButtonView = styled.View`
   width: 30px;
 `;
 
-export default { Touchable, TouchableView, Icon, Container };
+export const PaginationWrapper = styled.View`
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export default {
+  Touchable,
+  TouchableView,
+  Icon,
+  Container,
+  PaginationWrapper,
+  ControlsWrapperLeft,
+  ControlsWrapperRight,
+};

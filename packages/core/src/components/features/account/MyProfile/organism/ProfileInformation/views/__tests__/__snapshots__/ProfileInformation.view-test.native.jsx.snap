@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInformation should render correctly 1`] = `
+<Fragment>
+  <ProfileInfoActions
+    handleComponentChange={[Function]}
+    labels={Object {}}
+  />
+  <PersonalInformation
+    handleComponentChange={[Function]}
+    labels={Object {}}
+  />
+  <ChangePassword
+    handleComponentChange={[Function]}
+    labels={Object {}}
+  />
+  <BirthdaySaving
+    handleComponentChange={[Function]}
+    labels={Object {}}
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      customStyle={Object {}}
+      data-locator="my-rewards-program-details"
+      fontSizeVariation="medium"
+      locator=""
+      onPress={[Function]}
+      text=""
+      underline={true}
+      visible={false}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="my-rewards-tnc"
+        fontSizeVariation="medium"
+        locator=""
+        noLink={true}
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;

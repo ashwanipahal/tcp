@@ -8,6 +8,9 @@ import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 
+import ReadMore from '../molecules/ReadMore/views';
+import ProductListingStyle from '../ProductListing.style';
+
 const ProductListView = ({
   className,
   products,
@@ -15,6 +18,7 @@ const ProductListView = ({
   navTree,
   breadCrumbs,
   filters,
+  longDescription,
   labels,
 }) => {
   return (
@@ -47,6 +51,13 @@ const ProductListView = ({
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductList products={products} className={`${className} product-list`} />
           </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ReadMore
+              description={longDescription}
+              labels={labels}
+              className={`${className} seo-text`}
+            />
+          </Col>
         </Col>
       </Row>
     </div>
@@ -56,6 +67,8 @@ const ProductListView = ({
 ProductListView.propTypes = {
   className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
@@ -67,9 +80,11 @@ ProductListView.propTypes = {
 ProductListView.defaultProps = {
   className: '',
   products: [],
+  longDescription: [],
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
   filters: {},
+  labels: {},
 };
 export default ProductListView;

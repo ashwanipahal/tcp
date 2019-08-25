@@ -11,6 +11,7 @@ import {
   getUnbxdId,
   getBreadCrumbTrail,
   getProductsFilters,
+  getLongDescription,
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -21,7 +22,18 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs, filters, ...otherProps } = this.props;
+    const {
+      products,
+      currentNavIds,
+      navTree,
+      breadCrumbs,
+      filters,
+      longDescription,
+      labels,
+      labelsFilter,
+
+      ...otherProps
+    } = this.props;
     return (
       <ProductListing
         products={products}
@@ -29,6 +41,9 @@ class ProductListingContainer extends React.PureComponent {
         currentNavIds={currentNavIds}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
+        longDescription={longDescription}
+        labelsFilter={labelsFilter}
+        labels={labels}
         {...otherProps}
       />
     );
@@ -44,7 +59,9 @@ function mapStateToProps(state) {
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
-    labels: state.Labels.PLP.PLP_sort_filter,
+    labelsFilter: state.Labels.PLP.PLP_sort_filter,
+    longDescription: getLongDescription(state),
+    labels: state.Labels.PLP.seoText,
   };
 }
 
@@ -65,8 +82,10 @@ ProductListingContainer.propTypes = {
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
+  longDescription: PropTypes.string,
   navigation: PropTypes.shape({}).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string]))
 };
 
 ProductListingContainer.defaultProps = {
@@ -75,7 +94,9 @@ ProductListingContainer.defaultProps = {
   navTree: {},
   breadCrumbs: [],
   filters: {},
+  longDescription: '',
   labels: {},
+  labelsFilter: {}
 };
 
 export default connect(
