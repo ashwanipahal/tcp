@@ -2,11 +2,14 @@ import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig, getViewportInfo } from '@tcp/core/src/utils';
+
 import {
+  getPersonalDataState,
   getUserName,
   getUserLastName,
   getUserPhoneNumber,
+  getUserEmail,
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
 
@@ -20,35 +23,49 @@ function getIsOrderHasShipping() {
   // state.cart.items.reduce((isShipToHome, item) => isShipToHome || !item.miscInfo.store, false);
 }
 
-function isGuest(state) {
-  return state.User.getIn(['personalData', 'isGuest']);
-}
+// function isGuest(state) {
+//   return state.User.getIn(['personalData', 'isGuest']);
+// }
+
+export const isGuest = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isGuest')
+);
 
 function getIsMobile() {
-  return getAPIConfig().isMobile;
+  return getViewportInfo().isMobile;
 }
 
-function isExpressCheckout(state) {
-  return !!state.User.getIn(['personalData', 'isExpressEligible']);
-}
+// function isExpressCheckout(state) {
+//   return !!state.User.getIn(['personalData', 'isExpressEligible']);
+// }
+
+export const isExpressCheckout = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isExpressEligible')
+);
 
 function getCheckoutStage(state) {
   return state.Checkout.getIn(['uiFlags', 'stage']);
 }
 
-function isRemembered(state) {
-  return state.User.getIn(['personalData', 'isRemembered']);
-}
+// function isRemembered(state) {
+//   return state.User.getIn(['personalData', 'isRemembered']);
+// }
 
-function getUserContactInfo(state) {
-  return state.User.getIn(['personalData', 'contactInfo']);
-}
+export const isRemembered = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isRemembered')
+);
 
-function getUserEmail(state) {
-  return !isGuest(state) || isRemembered(state)
-    ? getUserContactInfo(state) && getUserContactInfo(state).emailAddress
-    : '';
-}
+// function getUserContactInfo(state) {
+//   return state.User.getIn(['personalData', 'contactInfo']);
+// }
+
+export const getUserContactInfo = createSelector(
+  getPersonalDataState,
+  state => state && state.get('contactInfo')
+);
 
 // function getShippingDestinationValues() {
 // let {emailAddress} = state.Checkout.values.shipping;
@@ -184,6 +201,8 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_pickup_contact: pickupContactText,
     lbl_pickup_btn_cancel: btnCancel,
     lbl_pickup_btn_update: btnUpdate,
+    lbl_pickup_btn_SaveUpdate: btnSaveUpdate = 'Save Pickup Details',
+    lbl_pickup_title_editPickUp: titleEditPickup = 'EDIT PICKUP',
     lbl_pickup_anchor_edit: anchorEdit,
     lbl_pickup_returnTo: returnTo,
     lbl_pickup_nextText: nextText,
@@ -213,6 +232,8 @@ export const getPickUpContactFormLabels = state => {
     pickupContactText,
     btnCancel,
     btnUpdate,
+    btnSaveUpdate,
+    titleEditPickup,
     anchorEdit,
     returnTo,
     nextText,
@@ -240,6 +261,12 @@ export const getSmsNumberForOrderUpdates = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
+
+// export const getUserEmailNew = createSelector(
+//   [isGuest,isRemembered],
+//   (getUserContactInfo)=>
+
+// )
 
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);

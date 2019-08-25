@@ -124,6 +124,7 @@ class PickUpFormPart extends React.Component {
                     labels={pickUpLabels}
                     onSubmit={this.onEditMainContactSubmit}
                     onEditModeChange={this.handleEditModeChange}
+                    onClose={this.handleExitEditModeClick}
                   />
                 )}
               </FormSection>
@@ -195,7 +196,7 @@ class PickUpFormPart extends React.Component {
                 />
               </FormSection>
             </div>
-            {isEditing && this.SaveAndCancelButton()}
+            {isEditing && !isMobile && this.SaveAndCancelButton()}
           </form>
         </div>
         <form onSubmit={handleSubmit}>

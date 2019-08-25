@@ -26,6 +26,7 @@ export default class CheckoutPage extends React.PureComponent {
       navigation,
       // onPickupSubmit,
     } = this.props;
+    console.log('isMobile', isMobile);
     const currentSection = router.query.section || router.query.subSection;
     return (
       <div>

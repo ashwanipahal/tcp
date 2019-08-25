@@ -30,6 +30,7 @@ exports[`PickUpFormPartVanilla component should renders correctly when Coupon ar
             isMobile={false}
             isReset={false}
             labels={Object {}}
+            onClose={[Function]}
             onEditModeChange={[Function]}
             onSubmit={[Function]}
             showPhoneNumber={true}

@@ -1,5 +1,9 @@
 import { fromJS } from 'immutable';
-import CHECKOUT_SELECTORS from '../container/Checkout.selector';
+import CHECKOUT_SELECTORS, {
+  isGuest,
+  isExpressCheckout,
+  getUserContactInfo,
+} from '../container/Checkout.selector';
 
 describe('Checkout Selectors', () => {
   it('#isGuest should return boolean', () => {
@@ -16,7 +20,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.isGuest(State)).toEqual(UserState.getIn(['personalData', 'isGuest']));
+    expect(isGuest(State)).toEqual(UserState.getIn(['personalData', 'isGuest']));
   });
 
   it('#isExpressCheckout should return boolean', () => {
@@ -33,7 +37,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.isExpressCheckout(State)).toEqual(
+    expect(isExpressCheckout(State)).toEqual(
       UserState.getIn(['personalData', 'isExpressEligible'])
     );
   });
@@ -79,13 +83,11 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getUserContactInfo(State)).toEqual(
-      UserState.getIn(['personalData', 'contactInfo'])
-    );
+    expect(getUserContactInfo(State)).toEqual(UserState.getIn(['personalData', 'contactInfo']));
   });
 
   it('#getIsMobile', () => {
-    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(undefined);
+    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(false);
   });
 
   it('#getCurrentSiteId', () => {
