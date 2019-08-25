@@ -59,11 +59,23 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   onMessage = event => {
-    const { handleSubmit, onSubmit } = this.props;
+    const { handleSubmit, onSubmit, change } = this.props;
     if (event && event.nativeEvent.data) {
       const value = get(event, 'nativeEvent.data', '');
       this.setState({ tokenInfomation: value });
-      handleSubmit(onSubmit)();
+      change('recaptchaToken', value);
+      handleSubmit(data => {
+        const wholeData = {
+          emailAddress: data.emailAddress,
+          password: data.password,
+          rememberMe: data.rememberMe,
+          savePlcc: data.savePlcc,
+          userTouchId: data.userTouchId,
+          recaptchaToken: value,
+        };
+        onSubmit(wholeData);
+      })();
+
       this.setRecaptchaModalMountState();
     }
   };
@@ -76,7 +88,7 @@ class LoginForm extends React.PureComponent<Props> {
     const { tokenInfomation } = this.state;
     const { handleSubmit, invalid, showRecaptcha } = this.props;
     e.preventDefault();
-    if (!tokenInfomation && !invalid && showRecaptcha) {
+    if (!invalid && showRecaptcha && !tokenInfomation) {
       this.setRecaptchaModalMountState();
     } else {
       handleSubmit();
@@ -156,7 +168,6 @@ class LoginForm extends React.PureComponent<Props> {
             />
           )}
         </React.Fragment>
-
         <CustomButton
           color={colorPallete.white}
           fill="BLUE"
@@ -218,11 +229,7 @@ LoginForm.defaultProps = {
 };
 
 const validateMethod = createValidateMethod(
-  getStandardConfig([
-    { emailAddress: 'emailAddressNoAsync' },
-    { password: 'legacyPassword' },
-    'recaptchaToken',
-  ])
+  getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, { password: 'legacyPassword' }])
 );
 
 export default reduxForm({
