@@ -84,6 +84,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
               text={selectedMonth !== '' ? labels.paymentGC.lbl_payment_expMonth : ''}
             />
             <Field
+              name="expMonth"
               component={DropDown}
               data={expMonthOptionsMap}
               dataLocator="addEditCreditCard-expMonth"
@@ -92,7 +93,9 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 updateExpiryDate(itemValue, selectedYear);
               }}
               variation="secondary"
-              selectedValue={selectedMonth !== '' ? selectedMonth : labels.paymentGC.lbl_payment_expMonth}
+              selectedValue={
+                selectedMonth !== '' ? selectedMonth : labels.paymentGC.lbl_payment_expMonth
+              }
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
@@ -105,6 +108,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
               text={selectedYear !== '' ? labels.paymentGC.lbl_payment_expYear : ''}
             />
             <Field
+              name="expYear"
               component={DropDown}
               data={expYearOptionsMap}
               dataLocator="addEditCreditCard-expYear"
@@ -115,7 +119,9 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 this.setState({ selectedYear: itemValue });
                 updateExpiryDate(selectedMonth, itemValue);
               }}
-              selectedValue={selectedYear !== '' ? selectedYear : labels.paymentGC.lbl_payment_expYear}
+              selectedValue={
+                selectedYear !== '' ? selectedYear : labels.paymentGC.lbl_payment_expYear
+              }
             />
           </ExpiryYear>
         </ExpiryContainer>

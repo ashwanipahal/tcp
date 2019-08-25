@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field, change } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
-import CustomButton from '@tcp/core/src/components/common/atoms/Button';
+import Button from '@tcp/core/src/components/common/atoms/Button';
 import { Heading } from '@tcp/core/src/components/common/atoms';
 import AddEditAddressContainer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.container';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
@@ -26,6 +26,9 @@ import {
   LeftBracket,
   RightBracket,
   CustomAddress,
+  TextWrapper,
+  dropDownStyle,
+  itemStyle,
 } from '../styles/CreditCardForm.native.style';
 
 export class CreditCardForm extends React.PureComponent<Props, State> {
@@ -131,17 +134,9 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       dto,
       selectedCard,
       onFileAddresskey,
-      dispatch
+      dispatch,
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
-    const dropDownStyle = {
-      height: 30,
-      borderBottomWidth: 1,
-      marginTop: 15,
-    };
-    const itemStyle = {
-      height: 100,
-    };
     const addressComponentList = this.getAddressOptions();
     const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
     if (isEdit && selectedCard) {
@@ -169,14 +164,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             fontWeight="black"
             text={labels.paymentGC.lbl_payment_billingAddress}
           />
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            textAlign="left"
-            fontWeight="semibold"
-            marginTop="10"
-            text={labels.paymentGC.lbl_payment_ccAdressSelect}
-          />
+          <TextWrapper>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              textAlign="left"
+              fontWeight="semibold"
+              marginTop="10"
+              text={labels.paymentGC.lbl_payment_ccAdressSelect}
+            />
+          </TextWrapper>
 
           {addressComponentList && (
             <Field
@@ -213,7 +210,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           )}
         </AddressWrapper>
         <ActionsWrapper>
-          <CustomButton
+          <Button
             fill="BLUE"
             buttonVariation="variable-width"
             text={
@@ -222,7 +219,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             style={AddAddressButton}
             onPress={this.submitCardInformation}
           />
-          <CustomButton
+          <Button
             fill="WHITE"
             onPress={onClose}
             buttonVariation="variable-width"
