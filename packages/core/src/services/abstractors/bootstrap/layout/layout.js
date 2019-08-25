@@ -66,11 +66,18 @@ const LayoutAbstractor = {
   processModuleData: moduleData => {
     const modulesObject = {};
     Object.keys(moduleData).forEach(slotKey => {
+      const { set = [] } = moduleData[slotKey];
+
       modulesObject[moduleData[slotKey].contentId] = {
         ...moduleData[slotKey].composites,
-        set: moduleData[slotKey].set,
+        set,
       };
+
+      set.forEach(({ key, val }) => {
+        modulesObject[moduleData[slotKey].contentId][key] = val;
+      });
     });
+
     return modulesObject;
   },
   /**
