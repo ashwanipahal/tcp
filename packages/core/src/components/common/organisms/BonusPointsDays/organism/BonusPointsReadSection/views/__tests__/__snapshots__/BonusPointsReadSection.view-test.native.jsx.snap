@@ -20,7 +20,6 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
         locator=""
         onPress={[Function]}
         text="details"
-        underline={true}
         visible={false}
       />
     </Styled(View)>
@@ -30,7 +29,6 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
       color="black"
       fontSize="fs14"
       fontWeight="regular"
-      marginRight="10"
       text="You have 1 days left"
     />
     <Styled(Styled(View)) />
