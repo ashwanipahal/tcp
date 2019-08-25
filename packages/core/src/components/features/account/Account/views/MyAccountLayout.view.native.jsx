@@ -42,7 +42,6 @@ const MyAccountLayoutView = (props: Props) => {
           <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
         </React.Fragment>
       )}
-
       <MainContent
         isUserLoggedIn={isUserLoggedIn}
         labels={labels}

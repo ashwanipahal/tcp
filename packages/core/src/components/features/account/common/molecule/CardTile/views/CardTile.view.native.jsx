@@ -1,8 +1,6 @@
-/* eslint-disable*/
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { get } from 'lodash';
 import { View, Text } from 'react-native';
 import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
@@ -22,20 +20,12 @@ import {
   CardCtaLinkMargin,
   CardCtaLinks,
   CardCtaRow,
-  RecaptchaContainer,
 } from '../CardTile.style.native';
 import { getIconCard } from '../../../../../../../utils/index.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CustomButton from '../../../../../../common/atoms/Button';
-import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-
-var tokenflag = true;
-
-// @flow
-
-type Props = {};
 
 class CardTile extends React.Component<Props> {
   static propTypes = {
@@ -43,7 +33,6 @@ class CardTile extends React.Component<Props> {
     labels: PropTypes.shape({}),
     setDefaultPaymentMethod: PropTypes.func,
     onGetBalanceCard: PropTypes.func,
-    change: PropTypes.func,
     handleSubmit: PropTypes.func,
     toggleModal: PropTypes.func,
     openUpdateModal: PropTypes.func,
@@ -56,7 +45,6 @@ class CardTile extends React.Component<Props> {
     labels: {},
     setDefaultPaymentMethod: () => {},
     onGetBalanceCard: () => {},
-    change: () => {},
     handleSubmit: () => {},
     toggleModal: () => {},
     openUpdateModal: () => {},
@@ -78,7 +66,6 @@ class CardTile extends React.Component<Props> {
     super(props);
     this.state = {
       setRecaptchaModalMountedState: false,
-      recaptchaToken: '',
     };
   }
 
@@ -110,24 +97,6 @@ class CardTile extends React.Component<Props> {
   getGiftCardBalance = (key, checkbalanceValueInfo) => {
     return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
   };
-
-  componentDidUpdate() {
-    const {
-      change,
-      toggleRecaptchaModal,
-      card,
-      onGetBalanceCard,
-      checkbalanceValueInfo,
-    } = this.props;
-    const { recaptchaToken } = this.state;
-    debugger;
-    // if (recaptchaToken) {
-    //   const formData = { recaptchaToken };
-    //   this.setRecaptchaModalMountState();
-    //   onGetBalanceCard({ formData, card });
-
-    // }
-  }
 
   getDataLocatorPrefix = ({ card }) => {
     switch (card.ccType) {
@@ -239,14 +208,6 @@ class CardTile extends React.Component<Props> {
     toggleModal({ state: true });
   };
 
-  // recaptchaModal = e => {
-  //   const { toggleRecaptchaModal, change } = this.props;
-  //   debugger
-  //   e.preventDefault();
-  //   toggleRecaptchaModal({ state: true });
-  //   tokenflag = true;
-  // };
-
   onUpdateCardClick = e => {
     e.preventDefault();
     const { card, openUpdateModal, setSelectedCard } = this.props;
@@ -259,10 +220,7 @@ class CardTile extends React.Component<Props> {
     isVenmo,
     balance,
     labels,
-    dataLocatorPrefix,
-    card,
-    onGetBalanceCard,
-    handleSubmit
+    dataLocatorPrefix
     // eslint-disable-next-line max-params
   ) => {
     return (
@@ -314,6 +272,22 @@ class CardTile extends React.Component<Props> {
     );
   };
 
+  recaptchaRender({ labels, setRecaptchaModalMountedState, onMessage }) {
+    return (
+      <React.Fragment>
+        {setRecaptchaModalMountedState && (
+          <RecaptchaModal
+            onMessage={onMessage}
+            labels={labels}
+            setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+            toggleRecaptchaModal={this.setRecaptchaModalMountState}
+            onClose={this.onClose}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
+
   render() {
     const {
       card,
@@ -321,17 +295,14 @@ class CardTile extends React.Component<Props> {
       setDefaultPaymentMethod,
       checkbalanceValueInfo,
       onGetBalanceCard,
-      recaptchaToken,
       handleSubmit,
-      change,
     } = this.props;
-    console.log('recaptchaToken==========================================', recaptchaToken);
+    const { setRecaptchaModalMountedState } = this.state;
     const onMessage = event => {
       if (event && event.nativeEvent.data) {
         const value = get(event, 'nativeEvent.data', '');
         if (value) {
           const formData = { recaptchaToken: value };
-          debugger;
           this.setRecaptchaModalMountState();
           onGetBalanceCard({ formData, card });
         }
@@ -392,17 +363,11 @@ class CardTile extends React.Component<Props> {
         )}
         {isGiftCard && (balance === undefined || balance === null) && (
           <View>
-            <React.Fragment>
-              {this.state.setRecaptchaModalMountedState && (
-                <RecaptchaModal
-                  onMessage={onMessage}
-                  labels={labels}
-                  setRecaptchaModalMountedState={this.state.setRecaptchaModalMountedState}
-                  toggleRecaptchaModal={this.setRecaptchaModalMountState}
-                  onClose={this.onClose}
-                />
-              )}
-            </React.Fragment>
+            {this.recaptchaRender({
+              labels,
+              onMessage,
+              setRecaptchaModalMountedState,
+            })}
           </View>
         )}
         {this.getCtaRow(

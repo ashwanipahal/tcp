@@ -27,8 +27,8 @@ const generateTheWebViewContent = siteKey => {
                 </script>
             </head>
             <body style="padding: 0; margin: 0;">
-                <div style="text-align: left;">
-                  <div class="g-recaptcha" style="display: inline-block;"
+                <div style="text-align: left">
+                  <div class="g-recaptcha" style="display: inline-block"
                       data-sitekey="
                       ${siteKey}
                       "data-callback="onDataCallback"
