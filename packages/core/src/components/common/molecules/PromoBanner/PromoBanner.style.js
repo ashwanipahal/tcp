@@ -35,7 +35,7 @@ export default css`
     }
   }
 
-  .style4 {
+  .text_normal {
     font-size: 16px;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
@@ -56,7 +56,7 @@ export default css`
   }
 
   /* Module-A and N % style promo text */
-  .style6 {
+  .percentage_wrapped_large {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
@@ -68,13 +68,13 @@ export default css`
     position: relative;
     display: block;
 
-    .style6-1 {
+    .percentage_wrapped_large-1 {
       font-size: 46px;
       position: absolute;
       top: 0;
     }
 
-    .style6-2 {
+    .percentage_wrapped_large-2 {
       font-size: 20px;
       position: absolute;
       bottom: 8px;
@@ -86,10 +86,10 @@ export default css`
       text-align: center;
       margin-left: 10px;
 
-      .style6-0,
-      .style6-1,
-      .style6-2 {
-        font-size: 64px;
+      .percentage_wrapped_large-0,
+      .percentage_wrapped_large-1,
+      .percentage_wrapped_large-2 {
+        font-size: 74px;
         line-height: normal;
         position: static;
         vertical-align: middle;

@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 
-import { SlotA, SlotB, SlotC, SlotD, SlotE } from '../molecules';
+import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
 const HomePageView = props => {
-  const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, slot_5: slotE } = props;
+  const {
+    slot_1: slotA,
+    slot_2: slotB,
+    slot_3: slotC,
+    slot_4: slotD,
+    slot_5: slotE,
+    slot_6: slotF,
+  } = props;
 
   return (
     <Fragment>
@@ -15,6 +22,7 @@ const HomePageView = props => {
       <SlotC {...slotC} />
       <SlotD {...slotD} />
       <SlotE {...slotE} />
+      <SlotF {...slotF} />
       <GetCandid />
     </Fragment>
   );
@@ -51,6 +59,12 @@ HomePageView.propTypes = {
     type: PropTypes.string,
     contentId: PropTypes.string,
   }),
+  slot_6: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
 };
 
 HomePageView.defaultProps = {
@@ -59,6 +73,7 @@ HomePageView.defaultProps = {
   slot_3: {},
   slot_4: {},
   slot_5: {},
+  slot_6: {},
 };
 
 export default errorBoundary(HomePageView);

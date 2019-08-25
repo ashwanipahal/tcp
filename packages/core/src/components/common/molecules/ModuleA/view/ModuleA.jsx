@@ -24,10 +24,10 @@ const ModuleA = props => {
           large: 12,
         }}
       >
-        {variant === 'tcp' ? (
-          <ModuleATcpCarousel ctaType={ctaTypes[ctaType]} {...others} />
-        ) : (
+        {variant === 'gymboree' ? (
           <ModuleAGymCarousel ctaType={ctaTypes[ctaType]} {...others} />
+        ) : (
+          <ModuleATcpCarousel ctaType={ctaTypes[ctaType]} {...others} />
         )}
       </Col>
     </Row>
@@ -36,8 +36,8 @@ const ModuleA = props => {
 
 ModuleA.defaultProps = {
   className: '',
-  variant: 'tcp',
-  ctaType: '',
+  variant: 'gymboree',
+  ctaType: 'stackedCTAButtons',
 };
 
 ModuleA.propTypes = {
