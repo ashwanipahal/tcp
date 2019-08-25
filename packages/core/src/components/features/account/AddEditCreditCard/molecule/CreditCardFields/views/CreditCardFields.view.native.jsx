@@ -25,8 +25,8 @@ export class CreditCardFields extends React.PureComponent<Props> {
       };
     } else {
       this.state = {
-        selectedYear: '',
-        selectedMonth: '',
+        selectedYear: null,
+        selectedMonth: null,
       };
     }
   }
@@ -81,7 +81,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="black"
-              text={selectedMonth !== '' ? labels.paymentGC.lbl_payment_expMonth : ''}
+              text={selectedMonth ? labels.paymentGC.lbl_payment_expMonth : ''}
             />
             <Field
               name="expMonth"
@@ -93,9 +93,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 updateExpiryDate(itemValue, selectedYear);
               }}
               variation="secondary"
-              selectedValue={
-                selectedMonth !== '' ? selectedMonth : labels.paymentGC.lbl_payment_expMonth
-              }
+              selectedValue={selectedMonth || labels.paymentGC.lbl_payment_expMonth}
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
@@ -105,7 +103,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="black"
-              text={selectedYear !== '' ? labels.paymentGC.lbl_payment_expYear : ''}
+              text={selectedYear ? labels.paymentGC.lbl_payment_expYear : ''}
             />
             <Field
               name="expYear"
@@ -119,9 +117,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 this.setState({ selectedYear: itemValue });
                 updateExpiryDate(selectedMonth, itemValue);
               }}
-              selectedValue={
-                selectedYear !== '' ? selectedYear : labels.paymentGC.lbl_payment_expYear
-              }
+              selectedValue={selectedYear || labels.paymentGC.lbl_payment_expYear}
             />
           </ExpiryYear>
         </ExpiryContainer>
