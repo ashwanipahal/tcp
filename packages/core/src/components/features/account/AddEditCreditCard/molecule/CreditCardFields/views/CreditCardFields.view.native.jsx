@@ -46,7 +46,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
-      height: 40,
+      height: 35,
       border: 1,
       width: 100,
       marginRight: 15,
@@ -79,7 +79,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
           <ExpiryMonth>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs10"
               fontWeight="black"
               text={selectedMonth ? labels.paymentGC.lbl_payment_expMonth : ''}
             />
@@ -101,7 +101,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
           <ExpiryYear>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs10"
               fontWeight="black"
               text={selectedYear ? labels.paymentGC.lbl_payment_expYear : ''}
             />

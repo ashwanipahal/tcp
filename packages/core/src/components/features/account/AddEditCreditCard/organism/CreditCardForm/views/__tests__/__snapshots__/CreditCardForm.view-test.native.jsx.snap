@@ -47,51 +47,51 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         Array [
           Object {
             "id": "1",
-            "label": "Jan",
+            "label": "01 (Jan.)",
           },
           Object {
             "id": "2",
-            "label": "Feb",
+            "label": "02 (Feb.)",
           },
           Object {
             "id": "3",
-            "label": "Mar",
+            "label": "03 (Mar.)",
           },
           Object {
             "id": "4",
-            "label": "Apr",
+            "label": "04 (Apr.)",
           },
           Object {
             "id": "5",
-            "label": "May",
+            "label": "05 (May.)",
           },
           Object {
             "id": "6",
-            "label": "Jun",
+            "label": "06 (Jun.)",
           },
           Object {
             "id": "7",
-            "label": "Jul",
+            "label": "07 (Jul.)",
           },
           Object {
             "id": "8",
-            "label": "Aug",
+            "label": "08 (Aug.)",
           },
           Object {
             "id": "9",
-            "label": "Sep",
+            "label": "09 (Sep.)",
           },
           Object {
             "id": "10",
-            "label": "Oct",
+            "label": "10 (Oct.)",
           },
           Object {
             "id": "11",
-            "label": "Nov",
+            "label": "11 (Nov.)",
           },
           Object {
             "id": "12",
-            "label": "Dec",
+            "label": "12 (Dec.)",
           },
         ]
       }
@@ -343,51 +343,51 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         Array [
           Object {
             "id": "1",
-            "label": "Jan",
+            "label": "01 (Jan.)",
           },
           Object {
             "id": "2",
-            "label": "Feb",
+            "label": "02 (Feb.)",
           },
           Object {
             "id": "3",
-            "label": "Mar",
+            "label": "03 (Mar.)",
           },
           Object {
             "id": "4",
-            "label": "Apr",
+            "label": "04 (Apr.)",
           },
           Object {
             "id": "5",
-            "label": "May",
+            "label": "05 (May.)",
           },
           Object {
             "id": "6",
-            "label": "Jun",
+            "label": "06 (Jun.)",
           },
           Object {
             "id": "7",
-            "label": "Jul",
+            "label": "07 (Jul.)",
           },
           Object {
             "id": "8",
-            "label": "Aug",
+            "label": "08 (Aug.)",
           },
           Object {
             "id": "9",
-            "label": "Sep",
+            "label": "09 (Sep.)",
           },
           Object {
             "id": "10",
-            "label": "Oct",
+            "label": "10 (Oct.)",
           },
           Object {
             "id": "11",
-            "label": "Nov",
+            "label": "11 (Nov.)",
           },
           Object {
             "id": "12",
-            "label": "Dec",
+            "label": "12 (Dec.)",
           },
         ]
       }
