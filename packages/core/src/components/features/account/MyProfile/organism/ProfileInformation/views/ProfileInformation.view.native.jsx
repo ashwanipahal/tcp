@@ -1,62 +1,57 @@
 import React from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
 import ChangePasswordInfo from '../../ChangePasswordInfo';
 import BirthdaySaving from '../../BirthdaySaving';
+import { StyledAnchorWrapper, AnchorLeftMargin } from '../../../../common/styledWrapper';
 
-const ProfileInformation = ({
-  labels,
-  profileCompletion,
-  mailingAddress,
-  userBirthday,
-  userSurvey,
-  percentageIncrement,
-  defaultStore,
-}) => {
+export const ProfileInformation = ({ labels, handleComponentChange }) => {
   return (
-    <View>
-      <ProfileInfoActions
-        labels={labels}
-        profileCompletion={profileCompletion}
-        defaultStore={defaultStore}
-        mailingAddress={mailingAddress}
-        userBirthday={userBirthday}
-        userSurvey={userSurvey}
-        percentageIncrement={percentageIncrement}
-      />
-      <PersonalInformation
-        labels={labels}
-      />
-      <ChangePasswordInfo
-        labels={labels}
-      />
-      <BirthdaySaving
-        labels={labels}
-      />
-    </View>
+    <>
+      <ProfileInfoActions labels={labels} handleComponentChange={handleComponentChange} />
+      <PersonalInformation labels={labels} handleComponentChange={handleComponentChange} />
+      <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
+      <BirthdaySaving labels={labels} handleComponentChange={handleComponentChange} />
+      <StyledAnchorWrapper>
+        <Anchor
+          fontSizeVariation="medium"
+          underline
+          onPress={() => {
+            UrlHandler('https://www.childrensplace.com/us/content/myplace-rewards-page');
+          }}
+          anchorVariation="primary"
+          data-locator="my-rewards-program-details"
+          text={labels.lbl_profile_program_details}
+        />
+        <AnchorLeftMargin>
+          <Anchor
+            fontSizeVariation="medium"
+            underline
+            noLink
+            onPress={() => {
+              UrlHandler('https://www.childrensplace.com/us/help-center/#termsAndConditionsli');
+            }}
+            anchorVariation="primary"
+            data-locator="my-rewards-tnc"
+            text={labels.lbl_profile_terms_condition}
+          />
+        </AnchorLeftMargin>
+      </StyledAnchorWrapper>
+    </>
   );
 };
 
 ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
-  profileCompletion: PropTypes.string,
-  mailingAddress: PropTypes.shape({}),
-  userBirthday: PropTypes.string,
-  userSurvey: PropTypes.shape([]),
-  percentageIncrement: PropTypes.shape({}),
-  defaultStore: PropTypes.string,
+  handleComponentChange: PropTypes.func,
 };
 
 ProfileInformation.defaultProps = {
   labels: {},
-  profileCompletion: '',
-  mailingAddress: {},
-  userBirthday: '',
-  userSurvey: [],
-  percentageIncrement: {},
-  defaultStore: '',
+  handleComponentChange: () => {},
 };
 
 export default ProfileInformation;

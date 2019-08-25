@@ -1,41 +1,39 @@
 import React from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import {
-  StyledTile,
-  BodyCopyWithMEDMargin
-} from '../styles/MyProfileTile.style.native';
+  BodyCopyWithSpacing,
+  ViewWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
 
-export const MyProfileTile = ({
-  title,
-  ctaTitle,
-  ctaLink,
-  ctaPath,
-  children,
-  dataLocator,
-}) => {
+export const MyProfileTile = ({ title, ctaTitle, ctaLink, children, handleComponentChange }) => {
+  const isCtaPresent = !!ctaTitle;
   return (
-    <StyledTile>
+    <ViewWithSpacing spacingStyles="margin-bottom-XXXL">
       {!!title && (
-        <BodyCopyWithMEDMargin
+        <BodyCopyWithSpacing
           text={title}
           fontSize="fs16"
           fontWeight="extrabold"
           fontFamily="secondary"
+          spacingStyles="margin-bottom-MED"
         />
       )}
-      <View>{children}</View>
-      {!!ctaTitle && (
+      <ViewWithSpacing spacingStyles={isCtaPresent ? 'margin-bottom-XXXL' : ''}>
+        {children}
+      </ViewWithSpacing>
+      {isCtaPresent && (
         <CustomButton
           fill="BLUE"
           buttonVariation="variable-width"
           text={ctaTitle}
           color="white"
-          onPress={() => {}}
+          onPress={() => {
+            handleComponentChange(ctaLink);
+          }}
         />
       )}
-    </StyledTile>
+    </ViewWithSpacing>
   );
 };
 
@@ -43,17 +41,15 @@ MyProfileTile.propTypes = {
   title: PropTypes.string,
   ctaTitle: PropTypes.string,
   ctaLink: PropTypes.string,
-  ctaPath: PropTypes.string,
   children: PropTypes.node.isRequired,
-  dataLocator: PropTypes.string,
+  handleComponentChange: PropTypes.func,
 };
 
 MyProfileTile.defaultProps = {
   title: '',
   ctaTitle: '',
-  ctaLink: '',
-  ctaPath: '',
-  dataLocator: '',
+  ctaLink: 'accountOverviewMobile',
+  handleComponentChange: () => {},
 };
 
 export default MyProfileTile;

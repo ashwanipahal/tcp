@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Myprofile should render correctly 1`] = `
+<View>
+  <Styled(Text) />
+  <Styled(View) />
+  <ProfileInformation
+    handleComponentChange={[Function]}
+    labels={Object {}}
+  />
+</View>
+`;

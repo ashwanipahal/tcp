@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 
-import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
-
-const ChangePassword = ({ labels }) => {
+export const ChangePassword = ({ labels, handleComponentChange }) => {
   return (
     <MyProfileTile
       title={labels.lbl_profile_password}
       ctaTitle={labels.lbl_profile_change_password}
+      handleComponentChange={handleComponentChange}
     >
-      <BodyCopy fontSize="fs16" text={labels.lbl_profile_change_your_password} />
-      <BodyCopy fontSize="fs14" text={labels.lbl_profile_password_info_line1} />
-      <BodyCopy fontSize="fs14" text={labels.lbl_profile_password_info_line2} />
+      <BodyCopyWithSpacing
+        fontSize="fs16"
+        spacingStyles="margin-bottom-MED"
+        text={labels.lbl_profile_change_your_password}
+      />
+      <BodyCopyWithSpacing
+        fontSize="fs14"
+        spacingStyles="margin-bottom-MED"
+        text={labels.lbl_profile_password_info_line1}
+      />
+      <BodyCopyWithSpacing fontSize="fs14" text={labels.lbl_profile_password_info_line2} />
     </MyProfileTile>
   );
 };
@@ -25,6 +33,7 @@ ChangePassword.propTypes = {
     lbl_profile_password_info_line1: PropTypes.string,
     lbl_profile_password_info_line2: PropTypes.string,
   }),
+  handleComponentChange: PropTypes.func.isRequired,
 };
 
 ChangePassword.defaultProps = {

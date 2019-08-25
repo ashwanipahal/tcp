@@ -4,11 +4,12 @@ import FPO from '@tcp/core/src/components/common/atoms/FPO';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
-const PersonalInformation = ({ labels }) => {
+export const PersonalInformation = ({ labels, handleComponentChange }) => {
   return (
     <MyProfileTile
       title={labels.lbl_profile_personal_information}
       ctaTitle={labels.lbl_profile_edit_personal_info}
+      handleComponentChange={handleComponentChange}
     >
       <FPO />
     </MyProfileTile>
@@ -20,6 +21,7 @@ PersonalInformation.propTypes = {
     lbl_profile_personal_information: PropTypes.string,
     lbl_profile_edit_personal_info: PropTypes.string,
   }),
+  handleComponentChange: PropTypes.func.isRequired,
 };
 
 PersonalInformation.defaultProps = {

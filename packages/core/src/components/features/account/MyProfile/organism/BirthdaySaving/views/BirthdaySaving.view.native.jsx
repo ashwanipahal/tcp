@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 
-import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
+import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 
-const BirthdaySaving = ({ labels }) => {
+export const BirthdaySaving = ({ labels, handleComponentChange }) => {
   return (
     <MyProfileTile
       title={labels.lbl_profile_birthday_savings}
       ctaTitle={labels.lbl_profile_add_birthday_info}
       dataLocator="pi-addbirthdayinfo"
+      handleComponentChange={handleComponentChange}
     >
-      <BodyCopy text={labels.lbl_profile_birthday_saving_info} />
+      <BodyCopyWithSpacing fontSize="fs14" text={labels.lbl_profile_birthday_saving_info} />
     </MyProfileTile>
   );
 };
@@ -22,6 +23,7 @@ BirthdaySaving.propTypes = {
     lbl_profile_add_birthday_info: PropTypes.string,
     lbl_profile_birthday_saving_info: PropTypes.string,
   }),
+  handleComponentChange: PropTypes.func.isRequired,
 };
 
 BirthdaySaving.defaultProps = {

@@ -1,28 +1,30 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import ProfileInformation from '../organism/ProfileInformation';
 import {
   StyledHeading,
-  UnderlineStyle
-} from '../../common/styles/styles.native';
+  StyledUnderline,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
+import ProfileInformation from '../organism/ProfileInformation';
 
-const MyProfile = ({ labels }) => {
+export const MyProfile = ({ labels, handleComponentChange }) => {
   return (
     <View>
       <StyledHeading>{labels.lbl_profile_heading}</StyledHeading>
-      <UnderlineStyle />
-      <ProfileInformation labels={labels} />
+      <StyledUnderline />
+      <ProfileInformation labels={labels} handleComponentChange={handleComponentChange} />
     </View>
   );
 };
 
 MyProfile.propTypes = {
   labels: PropTypes.shape({}),
+  handleComponentChange: PropTypes.func,
 };
 
 MyProfile.defaultProps = {
   labels: {},
+  handleComponentChange: () => {},
 };
 
 export default MyProfile;
