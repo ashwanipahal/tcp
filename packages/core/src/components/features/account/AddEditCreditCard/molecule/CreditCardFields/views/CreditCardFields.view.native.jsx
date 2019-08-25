@@ -140,7 +140,7 @@ CreditCardFields.propTypes = {
 };
 
 CreditCardFields.defaultProps = {
-  labels: {},
+  labels: { lbl_payment_cardNumber: '', lbl_payment_expMonth: '', lbl_payment_expYear: '' },
   cardTypeImgUrl: '',
   cardType: '',
   isPLCCEnabled: true,

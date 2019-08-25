@@ -16,7 +16,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
   };
 
   static defaultProps = {
-    labels: {},
+    labels: { paymentGC: { lbl_payment_editCCHeading: '', lbl_payment_addCCHeading: '' } },
     dto: {},
     toggleModal: {},
     updateCardList: {},
@@ -39,7 +39,11 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
             mobileFontFamily={['secondary']}
             fontWeight="extrabold"
             fontSize="fs16"
-            text={isEdit ? labels.paymentGC.lbl_payment_editCCHeading : labels.paymentGC.lbl_payment_addCCHeading}
+            text={
+              isEdit
+                ? labels.paymentGC.lbl_payment_editCCHeading
+                : labels.paymentGC.lbl_payment_addCCHeading
+            }
           />
         </ModalHeading>
         <LineWrapper>

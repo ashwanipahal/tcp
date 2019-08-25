@@ -34,7 +34,7 @@ import {
 export class CreditCardForm extends React.PureComponent<Props, State> {
   static propTypes = {
     className: PropTypes.string,
-    labels: PropTypes.shape({}).isRequired,
+    labels: PropTypes.shape({}),
     addressLabels: PropTypes.shape({}).isRequired,
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
@@ -52,6 +52,14 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     isEdit: false,
     dto: {},
     selectedCard: null,
+    labels: {
+      paymentGC: {
+        lbl_payment_billingAddress: '',
+        lbl_payment_ccAdressSelect: '',
+        lbl_payment_addCard: '',
+      },
+      common: { lbl_common_updateCTA: '' },
+    },
   };
 
   constructor(props) {
@@ -61,8 +69,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       addAddressMount: false,
       selectedAddress: onFileAddresskey,
     };
-
-    this.submitCardInformation = this.submitCardInformation.bind(this);
   }
 
   getAddressOptions = () => {
@@ -119,11 +125,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     });
   };
 
-  submitCardInformation = () => {
-    const { handleSubmit } = this.props;
-    handleSubmit();
-  };
-
   render() {
     const {
       labels,
@@ -135,6 +136,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       selectedCard,
       onFileAddresskey,
       dispatch,
+      handleSubmit,
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
@@ -217,7 +219,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
             }
             style={AddAddressButton}
-            onPress={this.submitCardInformation}
+            onPress={handleSubmit}
           />
           <Button
             fill="WHITE"

@@ -260,7 +260,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       fill="BLUE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
+      onPress={[MockFunction]}
       style={
         Object {
           "color": "white",
@@ -555,7 +555,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       fill="BLUE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
+      onPress={[MockFunction]}
       style={
         Object {
           "color": "white",
