@@ -37,7 +37,7 @@ exports[`Select Item is shown should render select item  1`] = `
     margin-bottom: ",
           [Function],
           ";
-    padding-bottom: 1px;
+    padding-bottom: 8px;
   }
 ",
           ";

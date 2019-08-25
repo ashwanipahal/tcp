@@ -38,13 +38,14 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
   margin-top: ",
           [Function],
           ";
-  background-color: #fff;
+  background-color: ",
+          [Function],
+          ";
   text-align: center;
   min-width: 233px;
 
   .item-list-wrapper {
     max-height: 360px;
-
     margin-bottom: ",
           [Function],
           ";
@@ -57,9 +58,9 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
   .item-list-common {
     display: flex;
     position: static;
-
-    max-height: 319px;
+    max-height: 350px;
     max-width: 570px;
+    overflow: scroll;
   }
   .item-list-column {
     flex-flow: column wrap;

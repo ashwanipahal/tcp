@@ -82,6 +82,7 @@ class ProductListingFiltersForm extends React.Component {
         ref={this.captureFilterRef}
         withRef
         onBlur={this.handleFilterFieldBlur}
+        labels={this.props.labels}
       />
     );
 
@@ -194,8 +195,8 @@ function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
         <Image
           className="color-chip"
           src={color.imagePath}
-          height="19px"
-          width="19px"
+          height={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
+          width={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
           alt={color.displayName}
           data-colorname={color.displayName.toLowerCase()}
         />
@@ -242,7 +243,7 @@ function getFilterOptionsMap(optionsMap, filterName, isMobile) {
     content: (
       <BodyCopy
         component="span"
-        role="label"
+        role="button"
         textAlign="center"
         tabIndex={-1}
         fontSize="fs14"

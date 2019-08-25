@@ -600,7 +600,7 @@ class CustomSelect extends React.Component {
               fontFamily="secondary"
               color="gray.900"
               fontWeight={expanded ? 'extrabold' : 'regular'}
-              className="filter-label"
+              className={['filter-label', expanded ? 'filter-label-expanded' : ''].join(' ')}
               outline="none"
               data-locator={getLocator(`plp_filter_${dataLocatorSuffix}`)}
             >

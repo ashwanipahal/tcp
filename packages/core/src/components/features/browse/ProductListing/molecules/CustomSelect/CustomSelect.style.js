@@ -4,16 +4,14 @@ export default css`
   .filter-label {
     outline: none;
     position: relative;
-
     display: inline-block;
-    padding-right: 20px;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
     &:after {
       content: '';
       position: absolute;
-
       transform: rotate(45deg);
-      width: 9px;
+      width: 7px;
       height: 2px;
       background: ${props => props.theme.colorPalette.gray['600']};
       display: inline-block;
@@ -23,7 +21,7 @@ export default css`
     &:before {
       content: '';
       position: absolute;
-      width: 9px;
+      width: 8px;
       height: 2px;
       border-radius: 15px;
       background: ${props => props.theme.colorPalette.gray['600']};

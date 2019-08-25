@@ -13,6 +13,6 @@ export default css`
     background-size: 20px 20px;
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
-    padding-bottom: 1px;
+    padding-bottom: 8px;
   }
 `;

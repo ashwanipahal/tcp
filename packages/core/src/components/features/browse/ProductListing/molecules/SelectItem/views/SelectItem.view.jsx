@@ -124,7 +124,9 @@ class SelectItem extends React.PureComponent {
           className="selected-item"
           onMouseDown={this.handleClick}
           onKeyPress={this.handleClick}
-          role="presentation"
+          role="option"
+          tabIndex="0"
+          aria-selected="false"
         >
           {content}
         </div>

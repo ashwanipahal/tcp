@@ -192,9 +192,9 @@ class DropdownList extends React.Component {
     const highlightedClassStr = ` item-highlighted ${classNamePrefix}-highlighted`;
     const disabledClassStr = ` item-disabledOption ${classNamePrefix}-disabledOption`;
     const isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
-
+    const MAX_FILTER_OPTION_FOR_COLUMN = 27;
     return (
-      <div className={`${className} common-dropdown`}>
+      <div className={className}>
         <div className={cssClassName('item-list-wrapper')}>
           <ul
             ref={this.captureItemsListRef}
@@ -202,7 +202,9 @@ class DropdownList extends React.Component {
               'item-list-common ',
               classNamePrefix,
               '-items-list',
-              optionsMap.length <= 27 ? ' item-list-column ' : ' item-list-row '
+              optionsMap.length <= MAX_FILTER_OPTION_FOR_COLUMN
+                ? ' item-list-column '
+                : ' item-list-row '
             )}
           >
             {optionsMap.map((item, index) => (
@@ -246,7 +248,7 @@ class DropdownList extends React.Component {
           className={cssClassName('apply-button')}
           data-locator={getLocator(`plp_filter_${dataLocator}_apply`)}
         >
-          {labels.lbl_apply}
+          {`${labels.lbl_apply}`}
         </Button>
       </div>
     );
