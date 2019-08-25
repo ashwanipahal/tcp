@@ -72,5 +72,4 @@ ProductListView.defaultProps = {
   breadCrumbs: [],
   filters: {},
 };
-
 export default ProductListView;
