@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Added to Bag View should render Added to Bag view  1`] = `
+<StyledComponent
+  className="Test"
+  clickHandler={[MockFunction]}
+  content="<span></span>"
+  docType="docType"
+  facetName="facetName"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  margin-bottom: ",
+          [Function],
+          ";
+  margin-right: ",
+          [Function],
+          ";
+  width: 166px;
+
+  .selected-item {
+    background: url(",
+          "/static/images/selected-item.svg",
+          ") no-repeat left top;
+    background-size: 20px 20px;
+    padding-left: ",
+          [Function],
+          ";
+    margin-bottom: ",
+          [Function],
+          ";
+    padding-bottom: 1px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(SelectItem)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  highlighted={false}
+  highlightedRefCapturer={[MockFunction]}
+  index={1}
+  isAutosuggestAnalytics="PropTypes.string.isRequired"
+  query="query"
+  title="title"
+  value="value"
+/>
+`;
