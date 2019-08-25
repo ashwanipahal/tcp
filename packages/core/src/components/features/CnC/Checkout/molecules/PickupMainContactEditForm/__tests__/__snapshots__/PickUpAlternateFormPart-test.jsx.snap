@@ -31,6 +31,8 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       />
     </div>
   </div>
-  <Styled(PickUpContactDisplay) />
+  <Styled(PickUpContactDisplay)
+    formData={Object {}}
+  />
 </div>
 `;

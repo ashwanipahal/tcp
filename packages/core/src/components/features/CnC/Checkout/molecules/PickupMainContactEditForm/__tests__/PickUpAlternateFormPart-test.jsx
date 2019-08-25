@@ -10,6 +10,11 @@ describe('Coupon component', () => {
       isCondensed: false,
       showNoteOnToggle: false,
       isAlternateUpdateChecked: false,
+      isMobile: false,
+      formData: {},
+      isEditing: false,
+      isReset: false,
+      onClose: jest.fn(),
     };
     const component = shallow(<PickupMainContactEditFormVanilla {...props} />);
     expect(component).toMatchSnapshot();
