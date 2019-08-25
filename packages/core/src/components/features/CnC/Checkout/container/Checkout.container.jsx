@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { initCheckoutAction, submitPickupSection, onEditModeChangeAction } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
+  isGuest,
+  isExpressCheckout,
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getSendOrderUpdate,
@@ -24,9 +26,7 @@ export class CheckoutContainer extends React.Component<Props> {
       onEditModeChange,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
-      isGuest,
       isMobile,
-      isExpressCheckout,
       activeStage,
       activeStep,
       isUsSite,
@@ -68,8 +68,8 @@ export const mapDispatchToProps = dispatch => {
     initCheckout: () => {
       dispatch(initCheckoutAction());
     },
-    onPickupSubmit: () => {
-      dispatch(submitPickupSection());
+    onPickupSubmit: data => {
+      dispatch(submitPickupSection(data));
     },
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
@@ -83,9 +83,9 @@ const mapStateToProps = state => {
     pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
-    isGuest: selectors.isGuest(state),
+    isGuest: isGuest(state),
     isMobile: selectors.getIsMobile(),
-    isExpressCheckout: selectors.isExpressCheckout(state),
+    isExpressCheckout: isExpressCheckout(state),
     activeStage: selectors.getCheckoutStage(state),
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

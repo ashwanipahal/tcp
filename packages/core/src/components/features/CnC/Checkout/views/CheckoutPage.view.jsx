@@ -6,7 +6,17 @@ import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
-    console.log(data);
+    const { onPickupSubmit } = this.props;
+    const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
+    const params = {
+      contact: {
+        firstName,
+        lastName,
+        phoneNumber,
+        emailAddress,
+      },
+    };
+    onPickupSubmit(params);
   };
 
   leftSection = () => {
@@ -26,7 +36,6 @@ export default class CheckoutPage extends React.PureComponent {
       navigation,
       // onPickupSubmit,
     } = this.props;
-    console.log('isMobile', isMobile);
     const currentSection = router.query.section || router.query.subSection;
     return (
       <div>
@@ -76,5 +85,5 @@ CheckoutPage.propTypes = {
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
-  // onPickupSubmit: PropTypes.func.isRequired,
+  onPickupSubmit: PropTypes.func.isRequired,
 };

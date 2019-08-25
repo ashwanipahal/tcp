@@ -33,7 +33,7 @@ export const isGuest = createSelector(
 );
 
 function getIsMobile() {
-  return getViewportInfo().isMobile;
+  return false ? getViewportInfo().isMobile : false;
 }
 
 // function isExpressCheckout(state) {
