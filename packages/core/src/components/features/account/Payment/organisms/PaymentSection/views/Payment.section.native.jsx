@@ -1,9 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
 import { View, ScrollView } from 'react-native';
-import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   ParentContainer,
@@ -55,7 +53,6 @@ class PaymentView extends React.Component<Props> {
     setDeleteModalMountState: PropTypes.bool,
     setUpdateModalMountState: PropTypes.bool,
     setDeleteModalMountedState: PropTypes.bool,
-    setRecaptchaModalMountedState: PropTypes.bool,
     setUpdateModalMountedState: PropTypes.bool,
     deleteModalMountedState: PropTypes.bool,
     updateModalMountedState: PropTypes.bool,
@@ -90,7 +87,6 @@ class PaymentView extends React.Component<Props> {
     onDeleteCard: {},
     setDeleteModalMountState: false,
     setDeleteModalMountedState: false,
-    setRecaptchaModalMountedState: false,
     setUpdateModalMountedState: false,
     deleteModalMountedState: false,
     updateModalMountedState: false,
@@ -111,7 +107,6 @@ class PaymentView extends React.Component<Props> {
     super(props);
     this.state = {
       setDeleteModalMountedState: false,
-      setRecaptchaModalMountedState: false,
       setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
@@ -194,42 +189,6 @@ class PaymentView extends React.Component<Props> {
     );
   };
 
-  setRecaptchaModalMountState = () => {
-    const { setRecaptchaModalMountedState } = this.state;
-    this.setState({
-      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
-    });
-  };
-
-  // onMessage = event => {
-  //   debugger
-  //   if (event && event.nativeEvent.data) {
-  //     const value =  get(event, 'nativeEvent.data', '');
-  //     this.setState({recaptchaToken : value})
-  //   }
-  // };
-
-  // toogleRecaptcha = ({ labels, setRecaptchaModalMountedState }) => {
-  //   return (
-  //     <React.Fragment>
-  //       {setRecaptchaModalMountedState && (
-  //         <RecaptchaModal
-  //           onMessage={this.onMessage}
-  //           labels={labels}
-  //           setRecaptchaModalMountedState={setRecaptchaModalMountedState}
-  //           toggleRecaptchaModal={this.setRecaptchaModalMountState}
-  //           onConfirm={this.onConfirm}
-  //           onClose={this.onClose}
-  //         />
-  //       )}
-  //     </React.Fragment>
-  //   );
-  // };
-
-  // toogleRecaptcha = () => {
-
-  // }
-
   render() {
     const {
       labels,
@@ -247,7 +206,6 @@ class PaymentView extends React.Component<Props> {
       showGiftCardModal,
       setDeleteModalMountedState,
       setUpdateModalMountedState,
-      setRecaptchaModalMountedState,
       selectedCard,
       recaptchaToken,
     } = this.state;
@@ -334,8 +292,6 @@ class PaymentView extends React.Component<Props> {
               recaptchaToken={recaptchaToken}
             />
           )}
-          {/* {this.toogleRecaptcha({ labels, setRecaptchaModalMountedState })} */}
-
           {setDeleteModalMountedState && (
             <DeleteModal
               dto={dto}

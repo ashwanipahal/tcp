@@ -47,7 +47,6 @@ class LoginForm extends React.PureComponent<Props> {
     this.state = {
       type: 'password',
       setRecaptchaModalMountedState: false,
-      tokenInfomation: '',
     };
   }
 
@@ -62,7 +61,6 @@ class LoginForm extends React.PureComponent<Props> {
     const { handleSubmit, onSubmit, change } = this.props;
     if (event && event.nativeEvent.data) {
       const value = get(event, 'nativeEvent.data', '');
-      this.setState({ tokenInfomation: value });
       change('recaptchaToken', value);
       handleSubmit(data => {
         const wholeData = {
@@ -85,10 +83,9 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   handleLoginClick = e => {
-    const { tokenInfomation } = this.state;
     const { handleSubmit, invalid, showRecaptcha } = this.props;
     e.preventDefault();
-    if (!invalid && showRecaptcha && !tokenInfomation) {
+    if (!invalid && showRecaptcha) {
       this.setRecaptchaModalMountState();
     } else {
       handleSubmit();
