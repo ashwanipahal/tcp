@@ -127,11 +127,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
 }
 
 CreditCardFields.propTypes = {
-  labels: PropTypes.shape({
-    lbl_payment_cardNumber: '',
-    lbl_payment_expMonth: '',
-    lbl_payment_expYear: '',
-  }),
+  labels: PropTypes.shape({}),
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
@@ -140,7 +136,9 @@ CreditCardFields.propTypes = {
 };
 
 CreditCardFields.defaultProps = {
-  labels: { lbl_payment_cardNumber: '', lbl_payment_expMonth: '', lbl_payment_expYear: '' },
+  labels: {
+    paymentGC: { lbl_payment_cardNumber: '', lbl_payment_expMonth: '', lbl_payment_expYear: '' },
+  },
   cardTypeImgUrl: '',
   cardType: '',
   isPLCCEnabled: true,
