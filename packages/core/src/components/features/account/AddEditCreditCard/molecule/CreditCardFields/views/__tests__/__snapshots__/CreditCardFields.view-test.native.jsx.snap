@@ -26,6 +26,7 @@ exports[`CreditCardFields component should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="black"
+        text=""
       />
       <Field
         component={
@@ -118,7 +119,7 @@ exports[`CreditCardFields component should render correctly 1`] = `
             },
           ]
         }
-        dataLocator="addEditCreditCard-expMonth1"
+        dataLocator="addEditCreditCard-expMonth"
         dropDownStyle={
           Object {
             "border": 1,
@@ -133,8 +134,8 @@ exports[`CreditCardFields component should render correctly 1`] = `
             "width": 100,
           }
         }
+        name="expMonth"
         onValueChange={[Function]}
-        selectedValue="Jan"
         variation="secondary"
       />
     </Styled(View)>
@@ -143,6 +144,7 @@ exports[`CreditCardFields component should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="black"
+        text=""
       />
       <Field
         component={
@@ -231,7 +233,7 @@ exports[`CreditCardFields component should render correctly 1`] = `
             },
           ]
         }
-        dataLocator="addEditCreditCard-expYear1"
+        dataLocator="addEditCreditCard-expYear"
         dropDownStyle={
           Object {
             "border": 1,
@@ -246,8 +248,8 @@ exports[`CreditCardFields component should render correctly 1`] = `
             "width": 100,
           }
         }
+        name="expYear"
         onValueChange={[Function]}
-        selectedValue="2020"
         variation="secondary"
       />
     </Styled(View)>
