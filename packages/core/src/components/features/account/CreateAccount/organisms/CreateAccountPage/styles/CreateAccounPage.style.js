@@ -23,12 +23,11 @@ const styles = css`
   }
 
   .spend-points {
-    font-weight: bold;
     color: ${props => props.theme.colorPalette.gray[700]};
   }
 
   .my-place-rewards {
-    font-weight: bold;
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
     color: ${props => props.theme.colorPalette.gray[700]};
   }
 
