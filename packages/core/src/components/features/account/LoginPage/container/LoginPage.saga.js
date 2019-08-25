@@ -28,9 +28,9 @@ export function* loginSaga({ payload, afterLoginHandler }) {
     yield put(
       setLoginInfo({
         success: false,
+        ...errorResponse,
         errorCode,
         errorMessage,
-        ...errorResponse,
       })
     );
 

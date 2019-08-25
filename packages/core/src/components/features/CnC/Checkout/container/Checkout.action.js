@@ -4,6 +4,11 @@ export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
 
+export const submitPickupSection = payload => ({
+  type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
+  payload,
+});
+
 export const checkoutSetCartData = payload => ({
   type: 'CHECKOUT_SET_CART_DATA',
   payload,
@@ -201,5 +206,12 @@ export function setShippingOptions(shippingMethods) {
   return {
     shippingMethods,
     type: constants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING,
+  };
+}
+
+export function onEditModeChangeAction(isEditingSubform) {
+  return {
+    isEditingSubform,
+    type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
   };
 }

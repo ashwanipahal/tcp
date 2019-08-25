@@ -18,6 +18,8 @@ import {
   setShippingOptions,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
+
 // import { getUserEmail } from '../../../../features/account/User/container/User.selectors';
 
 const {
@@ -26,8 +28,11 @@ const {
   getShippingDestinationValues,
   getDefaultAddress,
   isGuest,
+  getUserEmail,
   // getIsMobile,
 } = selectors;
+
+const { getOrderPointsRecalcFlag, hasPOBox } = utility;
 
 function* loadGiftWrappingOptions() {
   try {
@@ -40,7 +45,6 @@ function* loadGiftWrappingOptions() {
   }
 }
 
-const { getOrderPointsRecalcFlag, hasPOBox } = utility;
 let oldHasPOB = {};
 
 function* loadUpdatedCheckoutValues(
@@ -79,6 +83,53 @@ function* loadUpdatedCheckoutValues(
   // yield call (storeUpdatedCheckoutValues, res.orderDetails, isCartNotRequired, updateSmsInfo);
   // Load coupons to the store after constructing the coupons structure
   // getWalletOperator(this.store).getWallet(res.coupons.offers);
+}
+
+// eslint-disable-next-line complexity
+function* submitPickupSection(formData) {
+  // let pickupOperator = getPickupOperator(this.store);
+  // let storeState = this.store.getState();
+  // let isEmailSignUpAllowed = true;
+
+  // if ((yield select(isUsSite)) && (yield select(isGuest))) {
+  //   isEmailSignUpAllowed = false;
+  // }
+
+  //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
+  //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
+  //  }
+  yield call(addAddress, {
+    firstName: formData.pickUpContact.firstName,
+    lastName: formData.pickUpContact.lastName,
+    alternatePhoneNumber: formData.pickUpContact.phoneNumber,
+    emailAddress:
+      formData.pickUpContact.emailAddress ||
+      (yield select(isGuest) ? yield select(getUserEmail) : ''),
+    alternateEmail:
+      formData.hasAlternatePickup && formData.pickUpAlternate
+        ? formData.pickUpAlternate.emailAddress
+        : '',
+    alternateFirstName:
+      formData.hasAlternatePickup && formData.pickUpAlternate
+        ? formData.pickUpAlternate.firstName
+        : '',
+    alternateLastName:
+      formData.hasAlternatePickup && formData.pickUpAlternate
+        ? formData.pickUpAlternate.lastName
+        : '',
+  });
+  /* In the future I imagine us sending the SMS to backend for them to
+       store so it will be loaded in the below loadUpdatedCheckoutValues function.
+       for now we are storing it only on browser so will lose this info on page re-load.
+    */
+  // eslint-disable-next-line no-unused-expressions
+  // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
+  const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
+  yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
+  // }).catch((err) => {
+  //   throw getSubmissionError(this.store, 'submitPickupSection', err);
+  // });
 }
 
 // function setCartInfo(cartInfo, isSetCartItems) {
@@ -431,6 +482,7 @@ function* initCheckout() {
 export function* CheckoutSaga() {
   yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
+  yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
 }
 
 export default CheckoutSaga;

@@ -5,13 +5,13 @@ const styles = css`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  padding-top: 32px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   .back-link {
     margin-top: ;
   }
   .back-link-image {
-    width: 9px;
-    height: 18px;
+    width: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
   .footer-button {
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
