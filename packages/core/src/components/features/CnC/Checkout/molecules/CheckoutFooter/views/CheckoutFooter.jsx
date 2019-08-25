@@ -28,7 +28,13 @@ class CheckoutFooter extends React.PureComponent {
           <Image src={carrotLeft} className="back-link-image" />
           {backLinkText}
         </Button>
-        <Button disabled={disableNext} type="submit" className="footer-button">
+        <Button
+          disabled={disableNext}
+          type="submit"
+          className="footer-button"
+          fontSize="fs14"
+          fontWeight="extrabold"
+        >
           {nextButtonText}
         </Button>
       </div>

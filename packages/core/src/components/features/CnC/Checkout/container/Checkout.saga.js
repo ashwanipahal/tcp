@@ -490,7 +490,7 @@ function* saveLocalSmsInfo(smsInfo) {
   if (smsInfo) {
     const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
     if (wantsSmsOrderUpdates) {
-      returnVal = yield call(setSmsNumberForUpdates(smsUpdateNumber));
+      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
     } else {
       returnVal = yield call(setSmsNumberForUpdates(null));
     }
@@ -565,13 +565,15 @@ function* submitShippingSection({ payload: formData }) {
       addOrEditAddressRes = yield call(
         addAddressGet,
         {
-          ...address,
-          zip: address.zipCode,
-          phoneNumber,
-          email: emailAddress,
-          primary: setAsDefault,
-          phone1Publish: `${saveToAccount}`,
-          fromPage: 'checkout',
+          payload: {
+            ...address,
+            zip: address.zipCode,
+            phoneNumber,
+            email: emailAddress,
+            primary: setAsDefault,
+            phone1Publish: `${saveToAccount}`,
+            fromPage: 'checkout',
+          },
         },
         false
       );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ShippingFormVanilla } from '../ShippingForm.view';
+import { ShippingFormVanilla } from '../views/ShippingForm.view';
 
 describe('Shipping Form', () => {
   it('should render correctly', () => {
