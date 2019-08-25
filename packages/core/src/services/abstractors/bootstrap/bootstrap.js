@@ -116,7 +116,7 @@ const bootstrap = async pages => {
 
     response.modules = await layoutAbstractor.processData(bootstrapData.homepage);
     response.header = headerAbstractor.processData(bootstrapData.header);
-    response.footer = footerAbstractor.processData(bootstrapData.footer);
+    response.footer = bootstrapData.footer && footerAbstractor.processData(bootstrapData.footer);
     response.labels = labelsAbstractor.processData(bootstrapData.labels);
     response.navigation = navigationAbstractor.processData(bootstrapData.navigation);
   } catch (error) {
