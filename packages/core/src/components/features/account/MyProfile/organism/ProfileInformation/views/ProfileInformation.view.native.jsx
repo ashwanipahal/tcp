@@ -7,6 +7,7 @@ import PersonalInformation from '../../PersonalInformation';
 import ChangePasswordInfo from '../../ChangePasswordInfo';
 import BirthdaySaving from '../../BirthdaySaving';
 import { StyledAnchorWrapper, AnchorLeftMargin } from '../../../../common/styledWrapper';
+import endpoints from '../../../../common/externalEndpoints';
 
 export const ProfileInformation = ({ labels, handleComponentChange }) => {
   return (
@@ -20,7 +21,7 @@ export const ProfileInformation = ({ labels, handleComponentChange }) => {
           fontSizeVariation="medium"
           underline
           onPress={() => {
-            UrlHandler('https://www.childrensplace.com/us/content/myplace-rewards-page');
+            UrlHandler(endpoints.myPlaceRewardsPage);
           }}
           anchorVariation="primary"
           data-locator="my-rewards-program-details"
@@ -32,7 +33,7 @@ export const ProfileInformation = ({ labels, handleComponentChange }) => {
             underline
             noLink
             onPress={() => {
-              UrlHandler('https://www.childrensplace.com/us/help-center/#termsAndConditionsli');
+              UrlHandler(endpoints.termsAndConditionsPage);
             }}
             anchorVariation="primary"
             data-locator="my-rewards-tnc"
