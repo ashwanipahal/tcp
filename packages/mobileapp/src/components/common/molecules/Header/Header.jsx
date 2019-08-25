@@ -50,7 +50,6 @@ class Header extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      isDownIcon: false,
       cartVal: 0,
     };
   }

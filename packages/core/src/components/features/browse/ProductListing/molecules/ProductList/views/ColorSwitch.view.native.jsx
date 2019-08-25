@@ -6,8 +6,6 @@ const styles = StyleSheet.create({
   /* eslint-disable */
   colowSwitchesContainerStyle: {
     height: 17,
-    // borderColor: '#ff0000',
-    // borderWidth: 1,
     marginTop: 8,
   },
   itemSeparatorStyle: {
@@ -18,6 +16,16 @@ const styles = StyleSheet.create({
     height: 16,
     borderRadius: 16 / 2,
     resizeMode: 'contain',
+    borderColor: 'rgba(26, 26, 26, 0)',
+    borderWidth: 1,
+  },
+  selectedImageStyle: {
+    width: 16,
+    height: 16,
+    borderRadius: 16 / 2,
+    resizeMode: 'contain',
+    borderColor: '#1a1a1a',
+    borderWidth: 1,
   },
   /* eslint-enable */
 });
@@ -25,51 +33,50 @@ const styles = StyleSheet.create({
 class ColorSwitch extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { colorsMap } = props;
+    const { colorProductId } = colorsMap[0];
     this.state = {
-      selected: (new Map(): Map<string, boolean>),
+      selectedColorId: colorProductId,
     };
   }
 
-  onSelectColor = colorProductId => {
-    // updater functions are preferred for transactional updates
-    console.log('colorProductId--', colorProductId);
-    this.setState(state => {
-      // copy the map rather than modifying state.
-      const selected = new Map(state.selected);
-      selected.set(colorProductId, !selected.get(colorProductId)); // toggle
-      // selected.set(colorProductId, colorProductId); // toggle
-      console.log('selected:::', selected);
-      return { selected };
-    });
-  };
-
-  renderColorItem = ({ item }) => {
+  renderColorItem = ({ item, index }) => {
     const { color } = item;
     const imageUrl = color.imagePath;
-    // console.log('id, name :', colorProductId, color.name.toLowerCase(), imageUrl);
-    // console.log('circleColor: ', circleColor);
+    const { colorProductId } = item;
+    const { selectedColorId } = this.state;
+    const { selectedImageStyle, imageStyle } = styles;
+    const selectedStyle = colorProductId === selectedColorId ? selectedImageStyle : imageStyle;
     return (
-      <TouchableOpacity onPress={this.onSelectHandler} accessibilityRole="button">
-        {this.getImageIcon(imageUrl)}
+      <TouchableOpacity
+        onPress={() => this.onSelectHandler(colorProductId, index)}
+        accessibilityRole="button"
+      >
+        {this.getImageIcon(imageUrl, selectedStyle)}
       </TouchableOpacity>
     );
   };
 
-  onSelectHandler = () => {};
+  onSelectHandler = (selectedId, index) => {
+    const { setImageIndex } = this.props;
+    setImageIndex(index);
+    this.setState({
+      selectedColorId: selectedId,
+    });
+  };
 
   renderSeparator = () => {
     const { itemSeparatorStyle } = styles;
     return <View style={itemSeparatorStyle} />;
   };
 
-  getImageIcon = imageUrl => {
-    const { imageStyle } = styles;
+  getImageIcon = (imageUrl, selectedStyle) => {
     return (
       <Image
         source={{
           uri: imageUrl,
         }}
-        style={imageStyle}
+        style={selectedStyle}
       />
     );
   };
@@ -96,10 +103,12 @@ class ColorSwitch extends React.PureComponent {
 
 ColorSwitch.propTypes = {
   colorsMap: PropTypes.arrayOf(PropTypes.shape({})),
+  setImageIndex: PropTypes.func,
 };
 
 ColorSwitch.defaultProps = {
   colorsMap: [],
+  setImageIndex: () => {},
 };
 
 export default ColorSwitch;

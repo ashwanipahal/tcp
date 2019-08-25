@@ -1,12 +1,11 @@
 import React from 'react';
-import { FlatList, View, StyleSheet, Dimensions } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import { ListItem } from './ProductListItem.view.native';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 
-const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   /* eslint-disable */
   container: {
@@ -15,8 +14,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   listContainer: {
-    borderColor: '#595959',
-    borderWidth: 1,
+    // borderColor: '#595959',
+    // borderWidth: 1,
+    marginTop: 20,
   },
   columnWrapperStyle: {
     flex: 1,
@@ -26,25 +26,6 @@ const styles = StyleSheet.create({
 });
 
 class ProductList extends React.PureComponent {
-  // const ProductList = ({
-  //   className,
-  //   products,
-  //   showQuickViewForProductId,
-  //   // currencySymbol,
-  //   onAddItemToFavorites,
-  //   onQuickViewOpenClick,
-  //   onPickUpOpenClick,
-  //   onColorChange,
-  //   isBopisEnabled,
-  //   unbxdId,
-  //   onProductCardHover,
-  //   isBopisEnabledForClearance,
-  //   onQuickBopisOpenClick,
-  //   currencyExchange,
-  //   siblingProperties,
-  //   loadedProductCount,
-  //   isMatchingFamily,
-  // }) => {
   constructor(props) {
     super(props);
     const { products } = this.props;
@@ -54,33 +35,17 @@ class ProductList extends React.PureComponent {
     this.colorsExtraInfo = {
       [colorName]: miscInfo,
     };
-    this.state = {
-      // selectedColor: '';
-      selected: (new Map(): Map<string, boolean>),
-    };
   }
 
-  onAddToBag = data => {
-    console.log('onAddToBag', data);
-  };
+  // eslint-disable-next-line
+  onAddToBag = data => {};
 
-  onSelectColor = colorProductId => {
-    // updater functions are preferred for transactional updates
-    console.log('colorProductId--', colorProductId);
-    this.setState(state => {
-      // copy the map rather than modifying state.
-      const selected = new Map(state.selected);
-      // selected.set(colorProductId, !selected.get(colorProductId)); // toggle
-      selected.set(colorProductId, colorProductId); // toggle
-      console.log('selected:::', selected);
-      return { selected };
-    });
-  };
+  // eslint-disable-next-line
+  onFavorite = item => {};
 
   renderItemList = itemData => {
     const { isMatchingFamily, currencyExchange, isPlcc } = this.props;
     const { item } = itemData;
-    // console.log('item:::', item);
     const { colorsMap, imagesByColor, productInfo } = item;
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
     const { colorProductId } = colorsMap[0];
@@ -101,7 +66,6 @@ class ProductList extends React.PureComponent {
       promotionalMessage,
       promotionalPLCCMessage,
     });
-    const { selected } = this.state;
     return (
       <ListItem
         item={item}
@@ -114,14 +78,12 @@ class ProductList extends React.PureComponent {
         offerPriceForColor={offerPriceForColor}
         loyaltyPromotionMessage={loyaltyPromotionMessage}
         onAddToBag={this.onAddToBag}
-        // selected={selected.get(item.colorProductId)}
-        // onSelectColor={this.onSelectColor}
+        onFavorite={this.onFavorite}
       />
     );
   };
 
   renderList = () => {
-    // console.log('this.state: ', this.state);
     const { products } = this.props;
     const { listContainer, columnWrapperStyle } = styles;
     return (
@@ -130,14 +92,10 @@ class ProductList extends React.PureComponent {
         data={products}
         renderItem={this.renderItemList}
         keyExtractor={item => item.generalProductId}
-        // ListHeaderComponent={<Header totalResults={totalResults} />}
-        // ListFooterComponent={<Footer />}
-        // onEndReached={() => dispatchFetchPage()}
         initialNumToRender={8}
         maxToRenderPerBatch={2}
         numColumns={2}
         columnWrapperStyle={columnWrapperStyle}
-        // onEndReachedThreshold={0.5}
         extraData={this.state}
       />
     );

@@ -2,14 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductList from '../molecules/ProductList/views';
 
-const ProductListView = ({
-  className,
-  products,
-  currentNavIds,
-  navTree,
-  breadCrumbs,
-  ...otherProps
-}) => {
+const ProductListView = ({ products, breadCrumbs, ...otherProps }) => {
   return <ProductList products={products} {...otherProps} />;
 };
 
@@ -19,8 +12,8 @@ ProductListView.propTypes = {
 };
 
 ProductListView.defaultProps = {
-  className: '',
   products: [],
+  breadCrumbs: [],
 };
 
 export default ProductListView;

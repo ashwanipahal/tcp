@@ -1,9 +1,11 @@
-import React from 'react';
-import { View, FlatList, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from './ColorSwitch.view.native';
+import CustomIcon from '../../../../../../common/atoms/Icon';
+import { ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
 // import { relativeSizeHeight } from '../../../../../../../utils/dimensions';
 
 const styles = StyleSheet.create({
@@ -22,6 +24,11 @@ const styles = StyleSheet.create({
     width: 164,
     height: 205,
     resizeMode: 'contain',
+  },
+  favoriteIconContainerStyle: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
   },
   badge1ContainerStyle: {
     // borderColor: 'pink',
@@ -117,6 +124,10 @@ const styles = StyleSheet.create({
   addToBagStyle: {
     marginTop: 12,
   },
+  customTextStyle: {
+    fontSize: 12,
+    lineHeight: 14.5,
+  },
   /* eslint-enable */
 });
 
@@ -138,18 +149,17 @@ const ListItem = props => {
     offerPriceForColor,
     loyaltyPromotionMessage,
     onAddToBag,
-    onSelectColor,
-    selected,
+    onFavorite,
   } = props;
+  const [imageIndex, setImageIndex] = useState(0);
   const { listContainer, addToBagStyle } = styles;
   const { productInfo, colorsMap } = item;
-  const { name, generalProductId } = productInfo;
-  const imageUrl = get(imageUrls, '[0]', {});
-  // console.log('selected----', selected);
+  const { name } = productInfo;
+  const imageUrl = get(imageUrls, `[${imageIndex}]`, {});
   return (
     <View style={listContainer}>
       <RenderTopBadge1 text={badge1} />
-      <GenerateImage data={imageUrl} />
+      <GenerateImage imageUrl={imageUrl} onFavorite={onFavorite} />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
         listPrice={listPriceForColor}
@@ -157,19 +167,14 @@ const ListItem = props => {
         noMerchantBadge={badge3}
       />
       <RenderTitle text={name} />
-      <ColorSwitch colorsMap={colorsMap} />
-      {/* <RenderColorswitches
-        productInfo={productInfo}
-        colorsMap={colorsMap}
-        onSelectColor={onSelectColor}
-        selected={selected}
-      /> */}
+      <ColorSwitch colorsMap={colorsMap} setImageIndex={setImageIndex} />
       <RenderPromotionalMessage text={loyaltyPromotionMessage} />
       <CustomButton
         customStyle={addToBagStyle}
         color="white"
         fill="BLUE"
         type="submit"
+        size={12}
         buttonVariation="variable-width"
         data-locator=""
         text="ADD TO BAG"
@@ -190,14 +195,20 @@ const RenderTopBadge1 = ({ text }) => {
   );
 };
 
-const GenerateImage = imageUrl => {
+const GenerateImage = ({ imageUrl, onFavorite }) => {
+  const { favoriteIconContainerStyle } = styles;
   return (
-    <Image
-      source={{
-        uri: imageUrl.data,
-      }}
-      style={styles.imageStyle}
-    />
+    <View>
+      <Image
+        source={{
+          uri: imageUrl,
+        }}
+        style={styles.imageStyle}
+      />
+      <View style={favoriteIconContainerStyle}>
+        <CustomIcon name={ICON_NAME.favorite} size={21} color="#9b9b9b" onPress={onFavorite} />
+      </View>
+    </View>
   );
 };
 
@@ -252,46 +263,6 @@ const RenderPromotionalMessage = ({ text }) => {
   );
 };
 
-const renderColorItem = ({ item }, productInfo, onSelectColor, selected) => {
-  const { colorProductId, color } = item;
-  const { name } = productInfo;
-  // console.log('id, name, color :', colorProductId, name, color.name);
-  return <GenerateColorCircle item={item} onSelectColor={onSelectColor} selected={selected} />;
-};
-
-const RenderColorswitches = ({ productInfo, colorsMap, onSelectColor, selected }) => {
-  const { colowSwitchesContainerStyle } = styles;
-  return (
-    <View style={colowSwitchesContainerStyle}>
-      <FlatList
-        listKey={item => item.colorProductId}
-        data={colorsMap}
-        renderItem={item => renderColorItem(item, productInfo, onSelectColor, selected)}
-        keyExtractor={item => item.colorProductId}
-        initialNumToRender={8}
-        maxToRenderPerBatch={2}
-        horizontal
-      />
-    </View>
-  );
-};
-
-const GenerateColorCircle = ({ item, onSelectColor, selected }) => {
-  const { colorSwitchCircleStyle } = styles;
-  const { colorProductId } = item;
-  const onSelectHandler = () => {
-    console.log('selected: ', selected);
-    if (onSelectColor) {
-      onSelectColor(colorProductId);
-    }
-  };
-  return (
-    <TouchableOpacity onPress={onSelectHandler} accessibilityRole="button">
-      <View style={colorSwitchCircleStyle} />
-    </TouchableOpacity>
-  );
-};
-
 ListItem.propTypes = {
   item: PropTypes.shape({}),
   imageUrls: PropTypes.arrayOf(PropTypes.shape({})),
@@ -302,6 +273,7 @@ ListItem.propTypes = {
   offerPriceForColor: PropTypes.number.isRequired,
   loyaltyPromotionMessage: PropTypes.string,
   onAddToBag: PropTypes.func,
+  onFavorite: PropTypes.func,
 };
 
 ListItem.defaultProps = {
@@ -312,13 +284,7 @@ ListItem.defaultProps = {
   badge3: '',
   loyaltyPromotionMessage: '',
   onAddToBag: () => {},
-};
-RenderColorswitches.propTypes = {
-  colorsMap: PropTypes.arrayOf(PropTypes.shape({})),
-};
-
-RenderColorswitches.defaultProps = {
-  colorsMap: [],
+  onFavorite: () => {},
 };
 
 export { ListItem, ItemSeparator };

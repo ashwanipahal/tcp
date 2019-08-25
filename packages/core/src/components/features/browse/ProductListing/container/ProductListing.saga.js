@@ -8,7 +8,6 @@ import ProductsOperator from './productsRequestFormatter';
 function* fetchPlpProducts({ payload }) {
   try {
     const { url } = payload;
-    console.log('url-----', url);
     const location = {
       pathname: url,
     };

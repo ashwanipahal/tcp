@@ -13,4 +13,5 @@ export const ICON_NAME = {
   arrowDown: 'arrow-down',
   Facebook: 'facebook',
   checkmark: 'check',
+  favorite: 'heart-o',
 };
