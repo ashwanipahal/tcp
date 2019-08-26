@@ -20,7 +20,7 @@ import CheckoutFooter from '../../../molecules/CheckoutFooter';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isEditing: props.isGuest, isReset: false };
+    this.state = { isEditing: false, isReset: false };
   }
 
   handleEditModeChange = isEditing => {

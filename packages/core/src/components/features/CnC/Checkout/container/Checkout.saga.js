@@ -3,7 +3,10 @@
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import constants from '../Checkout.constants';
-import { getGiftWrappingOptions } from '../../../../../services/abstractors/CnC/index';
+import {
+  getGiftWrappingOptions,
+  addPickupPerson,
+} from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
@@ -14,7 +17,7 @@ import {
   getSetGiftWrapOptionsActn,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
+// import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 
 const {
   getRecalcOrderPointsInterval,
@@ -78,7 +81,9 @@ function* loadUpdatedCheckoutValues(
 }
 
 // eslint-disable-next-line complexity
-function* submitPickupSection(formData) {
+function* submitPickupSection(data) {
+  const { payload } = data;
+  const formData = { ...payload };
   // let pickupOperator = getPickupOperator(this.store);
   // let storeState = this.store.getState();
   // let isEmailSignUpAllowed = true;
@@ -90,10 +95,10 @@ function* submitPickupSection(formData) {
   //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
   //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
   //  }
-  yield call(addAddress, {
+  yield call(addPickupPerson, {
     firstName: formData.pickUpContact.firstName,
     lastName: formData.pickUpContact.lastName,
-    alternatePhoneNumber: formData.pickUpContact.phoneNumber,
+    phoneNumber: formData.pickUpContact.phoneNumber,
     emailAddress:
       formData.pickUpContact.emailAddress ||
       (yield select(isGuest) ? yield select(getUserEmail) : ''),

@@ -9,12 +9,22 @@ class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
     const { onPickupSubmit } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
+    const { hasAlternatePickup } = data.pickUpAlternate;
     const params = {
-      contact: {
+      pickUpContact: {
         firstName,
         lastName,
         phoneNumber,
         emailAddress,
+        smsInfo: {
+          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+        },
+      },
+      hasAlternatePickup,
+      pickUpAlternate: {
+        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
+        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
+        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
       },
     };
     onPickupSubmit(params);

@@ -220,7 +220,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
             formName="checkoutPickup"
             formSection="pickUpAlternate"
             isAlternateUpdateChecked={false}
-            isEditing={true}
+            isEditing={false}
             labels={Object {}}
             showNoteOnToggle={true}
           />
@@ -233,7 +233,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
-      disableNext={true}
+      disableNext={false}
       nextButtonText="undefined: undefined"
     />
   </form>
@@ -528,7 +528,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
             formName="checkoutPickup"
             formSection="pickUpAlternate"
             isAlternateUpdateChecked={false}
-            isEditing={true}
+            isEditing={false}
             labels={Object {}}
             showNoteOnToggle={true}
           />
@@ -541,7 +541,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
-      disableNext={true}
+      disableNext={false}
       nextButtonText="undefined: undefined"
     />
   </form>
