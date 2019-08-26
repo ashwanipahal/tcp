@@ -22,7 +22,9 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
           [Function],
           ";
   position: absolute;
-  z-index: 9;
+  z-index: ",
+          [Function],
+          ";
   border: 1px solid ",
           [Function],
           ";

@@ -4,7 +4,6 @@
  *
  * @summary A React component rendering a dropdown list of options to select from.
  *
- * @author Ben
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';

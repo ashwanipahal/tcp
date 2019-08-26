@@ -13,7 +13,7 @@ export default css`
     (props.optionsMap.length <= TWO_COL_OPTION_COUNT && TWO_COL_WIDTH) ||
     (props.optionsMap.length <= THREE_COL_OPTION_COUNT && THREE_COL_WIDTH)};
   position: absolute;
-  z-index: 9;
+  z-index: ${props => props.theme.zindex.zPLPFilterDropDown};
   border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;

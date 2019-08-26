@@ -42,7 +42,6 @@
  *
  * @param {...(string | number | Array | Object)} pieces - the pieces to concatenate.
  *
- * @author Ben
  */
 const cssClassName = function() {
   let classNameParts = []; // the pieces are accumulatred here
