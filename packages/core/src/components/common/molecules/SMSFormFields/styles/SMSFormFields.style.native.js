@@ -17,12 +17,23 @@ const StyledText = styled.Text`
 
 const StyledCheckbox = styled.View`
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const StyledMsgWrapper = styled.View`
-margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-export { PhoneWrapper, PhoneFieldWrapper, StyledText, StyledCheckbox, StyledMsgWrapper };
+const SMSFormFieldsWrapper = styled.View`
+  display: flex;
+`;
+
+export {
+  PhoneWrapper,
+  PhoneFieldWrapper,
+  StyledText,
+  StyledCheckbox,
+  StyledMsgWrapper,
+  SMSFormFieldsWrapper,
+};

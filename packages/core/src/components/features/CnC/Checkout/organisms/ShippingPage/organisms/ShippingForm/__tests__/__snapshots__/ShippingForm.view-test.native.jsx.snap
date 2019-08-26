@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shipping Form should render correctly 1`] = `
+<Styled(View)>
+  <FormSection
+    name="address"
+  >
+    <AddressFields
+      addressFormLabels={Object {}}
+      addressPhoneNo={null}
+      checkPOBoxAddress={[Function]}
+      formName="checkoutShipping"
+      formSection="address"
+      showDefaultCheckbox={false}
+    />
+  </FormSection>
+  <FormSection
+    name="smsSignUp"
+  >
+    <SMSFormFields
+      addressPhoneNo={null}
+      dispatch={[Function]}
+      formName="checkoutShipping"
+      formSection="smsSignUp"
+      isOrderUpdateChecked={false}
+      labels={Object {}}
+      showDefaultCheckbox={false}
+    />
+  </FormSection>
+  <FormSection
+    name="shipmentMethods"
+  >
+    <ShipmentMethods
+      formName="checkoutShipping"
+      formSection="shipmentMethods"
+      selectedShipmentId={null}
+      shipmentHeader=""
+      shipmentMethods={null}
+    />
+  </FormSection>
+</Styled(View)>
+`;

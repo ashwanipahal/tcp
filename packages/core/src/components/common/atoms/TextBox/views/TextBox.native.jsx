@@ -160,10 +160,12 @@ export class TextBox extends React.Component {
           </View>
         ) : (
           <View>
-              {this.renderTextBox({ elemValue, isFocused, others })}
-              <StyledTextBoxWrapper marginBottom={marginBottom}>{this.getErrorMsg()}</StyledTextBoxWrapper>
-            </View>
-          )}
+            {this.renderTextBox({ elemValue, isFocused, ...others })}
+            <StyledTextBoxWrapper marginBottom={marginBottom}>
+              {this.getErrorMsg()}
+            </StyledTextBoxWrapper>
+          </View>
+        )}
       </View>
     );
   }

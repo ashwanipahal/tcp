@@ -83,3 +83,4 @@ ShipmentMethods.defaultProps = {
 };
 
 export default withStyles(ShipmentMethods, styles);
+export { ShipmentMethods as ShipmentMethodsVanilla };

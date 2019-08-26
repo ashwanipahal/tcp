@@ -16,7 +16,6 @@ class SMSFormFields extends React.PureComponent {
 
   handleChange = () => {
     const { dispatch, addressPhoneNo, formName, formSection } = this.props;
-    /* istanbul ignore else */
     if (dispatch) {
       dispatch(change(formName, `${formSection}.phoneNumber`, addressPhoneNo));
     }

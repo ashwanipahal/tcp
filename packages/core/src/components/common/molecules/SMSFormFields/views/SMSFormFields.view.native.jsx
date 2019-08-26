@@ -7,7 +7,14 @@ import TextBox from '../../../atoms/TextBox';
 import InputCheckbox from '../../../atoms/InputCheckbox';
 import Anchor from '../../../atoms/Anchor';
 import BodyCopy from '../../../atoms/BodyCopy';
-import { PhoneWrapper, PhoneFieldWrapper, StyledText, StyledCheckbox, StyledMsgWrapper } from '../styles/SMSFormFields.style.native'
+import {
+  PhoneWrapper,
+  PhoneFieldWrapper,
+  StyledText,
+  StyledCheckbox,
+  StyledMsgWrapper,
+  SMSFormFieldsWrapper,
+} from '../styles/SMSFormFields.style.native';
 
 class SMSFormFields extends React.PureComponent {
   static smsFormFieldsConfig = getStandardConfig(['phoneNumber']);
@@ -23,14 +30,14 @@ class SMSFormFields extends React.PureComponent {
   render() {
     const { isOrderUpdateChecked, labels, formSection } = this.props;
     return (
-      <>
+      <SMSFormFieldsWrapper>
         <StyledCheckbox>
           <Field
             name="sendOrderUpdate"
             component={InputCheckbox}
             dataLocator="hide-show-checkbox"
             enableSuccessCheck={false}
-            onChange={this.handleChange}
+            onChange={() => this.handleChange()}
           />
           <BodyCopy
             dataLocator="pickup-email-signUp-heading-lbl"
@@ -40,41 +47,45 @@ class SMSFormFields extends React.PureComponent {
             text={labels.orderUpdates}
           />
         </StyledCheckbox>
-        {
-          isOrderUpdateChecked && (
-            <View>
-              <PhoneWrapper>
-                <StyledText> +1 </StyledText>
-                <PhoneFieldWrapper>
-                  <Field
-                    name="phoneNumber"
-                    id={`${formSection}.phoneNumber`}
-                    type="tel"
-                    component={TextBox}
-                    maxLength={50}
-                    dataLocator="phone-number-field"
-                    enableSuccessCheck={false}
-                    className="phone-field"
-                    marginBottom={false}
-                  />
-                </PhoneFieldWrapper>
-              </PhoneWrapper>
-              <StyledMsgWrapper>
-                <BodyCopy fontSize="fs10" fontFamily="primary" fontWeight="regular" text={labels.smsSignupText} />
-                <Anchor
-                  noUnderline
-                  anchorVariation="primary"
-                  fontSizeVariation="small"
-                  noLink
-                  href="#"
-                  target="_blank"
-                  text={labels.privacyPolicy}
+        {isOrderUpdateChecked && (
+          <View>
+            <PhoneWrapper>
+              <StyledText> +1 </StyledText>
+              <PhoneFieldWrapper>
+                <Field
+                  label="Phone Number"
+                  name="phoneNumber"
+                  id={`${formSection}.phoneNumber`}
+                  type="tel"
+                  component={TextBox}
+                  maxLength={50}
+                  dataLocator="phone-number-field"
+                  enableSuccessCheck={false}
+                  className="phone-field"
+                  marginBottom={false}
                 />
-              </StyledMsgWrapper>
-            </View>
-          )
-        }
-      </>
+              </PhoneFieldWrapper>
+            </PhoneWrapper>
+            <StyledMsgWrapper>
+              <BodyCopy
+                fontSize="fs10"
+                fontFamily="primary"
+                fontWeight="regular"
+                text={labels.smsSignupText}
+              />
+              <Anchor
+                noUnderline
+                anchorVariation="primary"
+                fontSizeVariation="small"
+                noLink
+                href="#"
+                target="_blank"
+                text={labels.privacyPolicy}
+              />
+            </StyledMsgWrapper>
+          </View>
+        )}
+      </SMSFormFieldsWrapper>
     );
   }
 }
@@ -90,11 +101,10 @@ SMSFormFields.propTypes = {
 
 SMSFormFields.defaultProps = {
   isOrderUpdateChecked: false,
-  dispatch: () => { },
+  dispatch: () => {},
   addressPhoneNo: null,
   formName: '',
   formSection: '',
 };
 
 export default SMSFormFields;
-

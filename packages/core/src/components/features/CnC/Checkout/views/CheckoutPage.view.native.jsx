@@ -11,7 +11,8 @@ export default class CheckoutPage extends React.PureComponent {
       isSmsUpdatesEnabled,
       currentPhoneNumber,
       navigation,
-      shippingProps
+      shippingProps,
+      loadShipmentMethods,
     } = this.props;
     return (
       <>
@@ -22,7 +23,11 @@ export default class CheckoutPage extends React.PureComponent {
           currentPhoneNumber={currentPhoneNumber}
           navigation={navigation}
         />
-        <ShippingPage {...shippingProps} />
+        <ShippingPage
+          {...shippingProps}
+          loadShipmentMethods={loadShipmentMethods}
+          navigation={navigation}
+        />
       </>
     );
   }
@@ -34,4 +39,6 @@ CheckoutPage.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  shippingProps: PropTypes.shape({}).isRequired,
+  loadShipmentMethods: PropTypes.func.isRequired,
 };

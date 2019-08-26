@@ -1,0 +1,342 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shipping Page should render correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="elem-mb-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+  <Styled(Row)
+    className=""
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 2,
+        }
+      }
+    >
+      <Field
+        className="radio-method"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+",
+                [Function],
+                ";
+
+  @media ",
+                [Function],
+                "{
+    padding-left: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                [Function],
+                "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+    ",
+                [Function],
+                "
+    }
+  }
+
+  .radio-button-checked:after {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                " {
+      border: 1px solid ",
+                [Function],
+                ";
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                [Function],
+                ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                [Function],
+                ";
+  }
+
+  .input-subtitle {
+    display: ",
+                [Function],
+                ";
+    @media ",
+                [Function],
+                " {
+      display: block;
+    }
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(LabeledRadioButton)",
+            "foldedComponentIds": Array [],
+            "labeledRadioButtonCounter": 0,
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        hideSubtitleOnMobile={true}
+        key="11901"
+        name="shippingMethodId"
+        selectedValue="11901"
+        subtitle="(express)"
+        title="standard - $5"
+        variation="secondary"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 2,
+        }
+      }
+    >
+      <Field
+        className="radio-method"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+",
+                [Function],
+                ";
+
+  @media ",
+                [Function],
+                "{
+    padding-left: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                [Function],
+                "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+    ",
+                [Function],
+                "
+    }
+  }
+
+  .radio-button-checked:after {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                " {
+      border: 1px solid ",
+                [Function],
+                ";
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                [Function],
+                ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                [Function],
+                ";
+  }
+
+  .input-subtitle {
+    display: ",
+                [Function],
+                ";
+    @media ",
+                [Function],
+                " {
+      display: block;
+    }
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(LabeledRadioButton)",
+            "foldedComponentIds": Array [],
+            "labeledRadioButtonCounter": 0,
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        hideSubtitleOnMobile={true}
+        key="11904"
+        name="shippingMethodId"
+        selectedValue="11904"
+        subtitle="(express)"
+        title="rush hour - $10"
+        variation="secondary"
+      />
+    </Styled(Col)>
+    <Styled(BodyCopy)
+      className="estimated-shipping-rate elem-mt-LRG"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      standard - 
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="estimated-shipping-rate elem-mt-LRG"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+       express
+    </Styled(BodyCopy)>
+  </Styled(Row)>
+</Fragment>
+`;

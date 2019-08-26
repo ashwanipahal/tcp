@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shipping Page should render correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs16"
+    fontWeight="semibold"
+    mobileFontFamily="secondary"
+    text=""
+    textAlign="left"
+  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      id="11901"
+      index={0}
+      name="shippingMethodId"
+      onPress={[Function]}
+      selectedShipmentId="11901"
+      title="standard - $5"
+    />
+    <Field
+      component={[Function]}
+      id="11904"
+      index={1}
+      name="shippingMethodId"
+      onPress={[Function]}
+      selectedShipmentId="11901"
+      title="rush hour - $10"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontSize="fs12"
+      fontWeight="semibold"
+      mobileFontFamily="secondary"
+      text="standard - "
+    />
+    <Styled(BodyCopy)
+      fontSize="fs12"
+      fontWeight="semibold"
+      mobileFontFamily="secondary"
+      style={
+        Object {
+          "fontStyle": "italic",
+        }
+      }
+      text=" express"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

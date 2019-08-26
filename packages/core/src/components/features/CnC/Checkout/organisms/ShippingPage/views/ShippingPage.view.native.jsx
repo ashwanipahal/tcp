@@ -1,10 +1,23 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import ShippingForm from '../organisms/ShippingForm';
 import StyledHeader from '../styles/ShippingPage.style.native';
+import checkoutUtil from '../../../util/utility';
+
+const { hasPOBox } = checkoutUtil;
+
+export const checkPOBoxAddress = ({ address, loadShipmentMethods }) => {
+  if (address) {
+    const { addressLine1, addressLine2 } = address;
+    if (hasPOBox(addressLine1, addressLine2)) {
+      return loadShipmentMethods();
+    }
+  }
+  return null;
+};
 
 const ShippingPage = ({
   navigation,
@@ -17,14 +30,17 @@ const ShippingPage = ({
   orderHasPickUp,
   smsSignUpLabels,
   isOrderUpdateChecked,
-  addressPhoneNo,
+  addressPhoneNumber,
   addressLabels,
-  emailSignUpLabels }) => {
+  emailSignUpLabels,
+  loadShipmentMethods,
+  address,
+}) => {
   return (
     <ScrollView>
-      {/* <View>
+      <View>
         <Text>Checkout Progress Bar container</Text>
-      </View> */}
+      </View>
       <StyledHeader>
         <BodyCopy
           color="black"
@@ -49,8 +65,10 @@ const ShippingPage = ({
           smsSignUpLabels={smsSignUpLabels}
           isOrderUpdateChecked={isOrderUpdateChecked}
           emailSignUpLabels={emailSignUpLabels}
-          addressPhoneNo={addressPhoneNo}
+          addressPhoneNo={addressPhoneNumber}
           addressLabels={addressLabels}
+          loadShipmentMethods={loadShipmentMethods}
+          checkPOBoxAddress={checkPOBoxAddress({ address, loadShipmentMethods })}
         />
       )}
       <CnCTemplate navigation={navigation} btnText="NEXT:BILLING" routeToPage="" />
@@ -64,17 +82,20 @@ ShippingPage.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   address: PropTypes.shape({}),
   selectedShipmentId: PropTypes.string,
+  addressPhoneNumber: PropTypes.number,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
   isUsSite: PropTypes.bool,
   orderHasPickUp: PropTypes.bool,
   shipmentMethods: PropTypes.shape([]),
   defaultShipmentId: PropTypes.number,
+  loadShipmentMethods: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
 };
 
 ShippingPage.defaultProps = {
   isOrderUpdateChecked: false,
+  addressPhoneNumber: null,
   address: null,
   selectedShipmentId: null,
   isGuest: true,

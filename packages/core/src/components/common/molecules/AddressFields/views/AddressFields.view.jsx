@@ -190,6 +190,7 @@ export class AddressFields extends React.PureComponent {
               dataLocator="addnewaddress-addressl2"
               className="address-field"
               enableSuccessCheck={false}
+              onChange={this.checkHasPoAddress}
             />
           </Col>
         </Row>

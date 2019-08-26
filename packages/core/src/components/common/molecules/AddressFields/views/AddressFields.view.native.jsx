@@ -1,33 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { Field, change } from 'redux-form';
+import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import TextBox from '../../../atoms/TextBox';
-// import SelectBox from '../../../atoms/Select';
-import InputCheckbox from '../../../atoms/InputCheckbox';
+import DropDown from '../../../atoms/DropDown/views/DropDown.native';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
-import AutoCompleteComponent from '../../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import {
+  dropDownStyle,
+  itemStyle,
+  InputFieldPhoneNumber,
+  InputFieldHalf,
+  StateZipCodeContainer,
+  Separator,
+  GooglePlaceInputWrapper,
+  AddressSecondWrapper,
+} from '../styles/AddressFields.style.native';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from '../../../organisms/AddressForm/CountriesAndStates.constants';
-import Anchor from '../../../atoms/Anchor';
-import { getSiteId } from '../../../../../utils/utils.web';
 import { API_CONFIG } from '../../../../../services/config';
 
 export class AddressFields extends React.PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     addressFormLabels: PropTypes.shape({}).isRequired,
-    isMakeDefaultDisabled: PropTypes.bool,
     formName: PropTypes.string.isRequired,
-    showDefaultCheckbox: PropTypes.bool,
-    showPhoneNumber: PropTypes.bool,
     formSection: PropTypes.string,
-    className: PropTypes.string,
-    variation: PropTypes.string,
     checkPOBoxAddress: PropTypes.func,
+    loadShipmentMethods: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    formSection: '',
+    checkPOBoxAddress: () => {},
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -46,23 +55,19 @@ export class AddressFields extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      country: getSiteId() && getSiteId().toUpperCase(),
+      country: API_CONFIG.siteIds.us.toUpperCase(),
+      dropDownItem: UScountriesStatesTable[0].displayName,
     };
   }
 
-  StateCountryChange = e => {
-    this.setState({
-      country: e.target.value ? e.target.value : '',
-    });
-  };
-
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
     dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
+    this.setState({ dropDownItem: address.state });
   };
 
   checkHasPoAddress = () => {
@@ -72,162 +77,131 @@ export class AddressFields extends React.PureComponent {
     }
   };
 
-  renderCountrySelector = () => {
-    const { addressFormLabels, formSection } = this.props;
-    return (
-      <>
-        {/* <Field
-          id={`${formSection}.country`}
-          placeholder={addressFormLabels.country}
-          name="country"
-          component={SelectBox}
-          options={countriesOptionsMap}
-          onChange={this.StateCountryChange}
-          dataLocator="addnewaddress-country"
-          enableSuccessCheck={false}
-          disabled
-        /> */}
-        <Anchor
-          fontSizeVariation="small"
-          underline
-          noLink
-          href="#"
-          anchorVariation="primary"
-          data-locator="shipping internationally"
-          target="_self"
-          className="change-country-link"
-          text={addressFormLabels.shipInternationally}
-        />
-      </>
-    );
-  };
-
-  renderStateZipCode = () => {
-    const { variation, addressFormLabels, formSection } = this.props;
-    const { country } = this.state;
-    const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
-    return (
-      <>
-        {/* <Field
-          id={`${formSection}.state`}
-          placeholder={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
-          name="state"
-          component={SelectBox}
-          options={isCA ? CAcountriesStatesTable : UScountriesStatesTable}
-          dataLocator="addnewaddress-state"
-          className="address-field"
-          enableSuccessCheck={false}
-        /> */}
-        <Field
-          placeholder={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
-          id={`${formSection}.zipCode`}
-          name="zipCode"
-          maxLength={isCA ? 6 : 5}
-          component={TextBox}
-          dataLocator="addnewaddress-zipcode"
-          className="address-field"
-          enableSuccessCheck={false}
-        />
-      </>
-    );
-  };
-
-  renderAddressFields = () => {
-    const { variation, addressFormLabels, formSection } = this.props;
-    const { country } = this.state;
-    return (
-      <>
-        <Field
-          id={`${formSection}.addressLine1`}
-          placeholder={addressFormLabels.addressLine1}
-          component={AutoCompleteComponent}
-          name="addressLine1"
-          onPlaceSelected={this.handlePlaceSelected}
-          componentRestrictions={Object.assign({}, { country: [country] })}
-          dataLocator="addnewaddress-addressl1"
-          className="address-field"
-          enableSuccessCheck={false}
-          onChange={this.checkHasPoAddress}
-        />
-        <Field
-          placeholder={addressFormLabels.addressLine2}
-          name="addressLine2"
-          id={`${formSection}.addressLine2`}
-          component={TextBox}
-          dataLocator="addnewaddress-addressl2"
-          className="address-field"
-          enableSuccessCheck={false}
-        />
-        <Field
-          id={`${formSection}.city`}
-          placeholder={addressFormLabels.city}
-          name="city"
-          component={TextBox}
-          dataLocator="addnewaddress-city"
-          className="address-field"
-          enableSuccessCheck={false}
-        />
-        {this.renderStateZipCode()}
-        {this.renderCountrySelector()}
-      </>
-    );
+  changeShipmentMethods = () => {
+    const { loadShipmentMethods } = this.props;
+    if (loadShipmentMethods) {
+      loadShipmentMethods();
+    }
   };
 
   render() {
-    const {
-      isMakeDefaultDisabled,
-      showDefaultCheckbox,
-      showPhoneNumber,
-      className,
-      addressFormLabels,
-      variation,
-      formSection,
-    } = this.props;
+    const { addressFormLabels, formSection, dispatch, formName } = this.props;
+    const { dropDownItem, country } = this.state;
+    const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <View>
         <Field
-          placeholder={addressFormLabels.firstName}
           name="firstName"
-          id={`${formSection}.firstName`}
+          id="firstName"
+          label={addressFormLabels.firstName}
           type="text"
           component={TextBox}
+          maxLength={50}
           dataLocator="addnewaddress-firstname"
-          className="address-field"
-          enableSuccessCheck={false}
         />
         <Field
-          placeholder={addressFormLabels.lastName}
+          id="lastName"
           name="lastName"
-          id={`${formSection}.lastName`}
+          label={addressFormLabels.lastName}
           component={TextBox}
           dataLocator="addnewaddress-lastname"
-          className="address-field"
-          enableSuccessCheck={false}
         />
-        {this.renderAddressFields()}
-        {showDefaultCheckbox && (
+        <GooglePlaceInputWrapper>
           <Field
-            name="primary"
-            component={InputCheckbox}
-            dataLocator="addnewaddress-setdefaddress"
-            disabled={isMakeDefaultDisabled}
-            className="address-field"
-          >
-            {addressFormLabels.setDefaultMsg}
-          </Field>
-        )}
+            id="addressLine1"
+            name="addressLine1"
+            headerTitle={addressFormLabels.addressLine1}
+            component={GooglePlacesInput}
+            onValueChange={(data, inputValue) => {
+              dispatch(change(formName, `${formSection}.addressLine1`, data));
+              this.handlePlaceSelected(data, inputValue);
+              this.checkHasPoAddress();
+            }}
+            dataLocator="addnewaddress-addressl1"
+            componentRestrictions={{ ...{ country: [country] } }}
+          />
+        </GooglePlaceInputWrapper>
+        <AddressSecondWrapper>
+          <Field
+            id="addressLine2"
+            name="addressLine2"
+            label={addressFormLabels.addressLine2}
+            component={TextBox}
+            dataLocator="addnewaddress-addressl2"
+            onValueChange={this.checkHasPoAddress}
+          />
+        </AddressSecondWrapper>
         <Field
-          placeholder={addressFormLabels.phoneNumber}
-          name="phoneNumber"
-          id={`${formSection}.phoneNumber`}
+          id="city"
+          name="city"
+          label={addressFormLabels.city}
           component={TextBox}
-          dataLocator="addnewaddress-phnumber"
-          type="tel"
-          className="address-field"
-          enableSuccessCheck={false}
+          dataLocator="addnewaddress-city"
         />
+        <StateZipCodeContainer>
+          <InputFieldHalf>
+            <Field
+              id="state"
+              name="state"
+              component={DropDown}
+              heading={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
+              dataLocator="addnewaddress-city"
+              selectedValue={dropDownItem}
+              data={isCA ? CAcountriesStatesTable : UScountriesStatesTable}
+              onValueChange={itemValue => {
+                dispatch(change(formName, `${formSection}.state`, itemValue));
+                this.setState({ dropDownItem: itemValue });
+                this.changeShipmentMethods();
+              }}
+              variation="secondary"
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+            />
+          </InputFieldHalf>
+          <Separator />
+          <InputFieldHalf zipCode>
+            <Field
+              id="zipCode"
+              name="zipCode"
+              label={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
+              maxLength={isCA ? 6 : 5}
+              component={TextBox}
+              dataLocator="addnewaddress-zipcode"
+            />
+          </InputFieldHalf>
+        </StateZipCodeContainer>
         <Field
-          placeholder="Email (For Order Updates)"
+          id="country"
+          name="country"
+          component={DropDown}
+          heading={addressFormLabels.country}
+          selectedValue={
+            country === 'US'
+              ? countriesOptionsMap[0].displayName
+              : countriesOptionsMap[1].displayName
+          }
+          data={countriesOptionsMap}
+          dataLocator="addnewaddress-country"
+          onValueChange={itemValue => {
+            dispatch(change(formName, `${formSection}.country`, itemValue));
+            this.setState({ country: itemValue });
+          }}
+          variation="secondary"
+          dropDownStyle={{ ...dropDownStyle }}
+          itemStyle={{ ...itemStyle }}
+        />
+        <InputFieldPhoneNumber>
+          <Field
+            id="phoneNumber"
+            name="phoneNumber"
+            label={addressFormLabels.phoneNumber}
+            component={TextBox}
+            dataLocator="addnewaddress-phnumber"
+            type="tel"
+          />
+        </InputFieldPhoneNumber>
+        <Field
+          label="Email (For Order Updates)"
           name="emailAddress"
           id={`${formSection}.emailAddress`}
           component={TextBox}
@@ -238,15 +212,5 @@ export class AddressFields extends React.PureComponent {
     );
   }
 }
-
-AddressFields.defaultProps = {
-  isMakeDefaultDisabled: false,
-  showDefaultCheckbox: true,
-  showPhoneNumber: true,
-  formSection: '',
-  className: '',
-  variation: 'primary',
-  checkPOBoxAddress: () => { },
-};
 
 export default AddressFields;

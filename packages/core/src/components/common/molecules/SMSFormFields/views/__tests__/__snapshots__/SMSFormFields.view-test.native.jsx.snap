@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SMSFormFields should render correctly with isOrderUpdateChecked as false 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="hide-show-checkbox"
+      enableSuccessCheck={false}
+      name="sendOrderUpdate"
+      onChange={[Function]}
+    />
+    <Styled(BodyCopy)
+      dataLocator="pickup-email-signUp-heading-lbl"
+      fontSize="fs14"
+      fontWeight="regular"
+      mobileFontFamily="secondary"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="hide-show-checkbox"
+      enableSuccessCheck={false}
+      name="sendOrderUpdate"
+      onChange={[Function]}
+    />
+    <Styled(BodyCopy)
+      dataLocator="pickup-email-signUp-heading-lbl"
+      fontSize="fs14"
+      fontWeight="regular"
+      mobileFontFamily="secondary"
+    />
+  </Styled(View)>
+  <View>
+    <Styled(View)>
+      <Styled(Text)>
+         +1 
+      </Styled(Text)>
+      <Styled(View)>
+        <Field
+          className="phone-field"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="phone-number-field"
+          enableSuccessCheck={false}
+          id=".phoneNumber"
+          label="Phone Number"
+          marginBottom={false}
+          maxLength={50}
+          name="phoneNumber"
+          type="tel"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="primary"
+        fontSize="fs10"
+        fontWeight="regular"
+      />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        fontSizeVariation="small"
+        href="#"
+        locator=""
+        noLink={true}
+        noUnderline={true}
+        target="_blank"
+        text=""
+        visible={false}
+      />
+    </Styled(View)>
+  </View>
+</Styled(View)>
+`;
+
+exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true aand dispatch is passed 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="hide-show-checkbox"
+      enableSuccessCheck={false}
+      name="sendOrderUpdate"
+      onChange={[Function]}
+    />
+    <Styled(BodyCopy)
+      dataLocator="pickup-email-signUp-heading-lbl"
+      fontSize="fs14"
+      fontWeight="regular"
+      mobileFontFamily="secondary"
+    />
+  </Styled(View)>
+  <View>
+    <Styled(View)>
+      <Styled(Text)>
+         +1 
+      </Styled(Text)>
+      <Styled(View)>
+        <Field
+          className="phone-field"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="phone-number-field"
+          enableSuccessCheck={false}
+          id=".phoneNumber"
+          label="Phone Number"
+          marginBottom={false}
+          maxLength={50}
+          name="phoneNumber"
+          type="tel"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="primary"
+        fontSize="fs10"
+        fontWeight="regular"
+      />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        fontSizeVariation="small"
+        href="#"
+        locator=""
+        noLink={true}
+        noUnderline={true}
+        target="_blank"
+        text=""
+        visible={false}
+      />
+    </Styled(View)>
+  </View>
+</Styled(View)>
+`;

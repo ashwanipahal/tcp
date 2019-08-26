@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shipping Page should render correctly 1`] = `
+<ScrollViewMock>
+  <View>
+    <Text>
+      Checkout Progress Bar container
+    </Text>
+  </View>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="black"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="regular"
+      text=""
+      textAlign="left"
+    />
+  </Styled(View)>
+  <ReduxForm
+    addressPhoneNo={null}
+    destroyOnUnmount={false}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="checkoutShipping"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "shipmentMethods": Object {
+          "shippingMethodId": null,
+        },
+      }
+    }
+    isGuest={true}
+    isOrderUpdateChecked={false}
+    isUsSite={true}
+    keepDirtyOnReinitialize={false}
+    loadShipmentMethods={[Function]}
+    orderHasPickUp={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedShipmentId={null}
+    shipmentMethods={
+      Array [
+        Object {},
+      ]
+    }
+    shippingLabels={
+      Object {
+        "sectionHeader": "",
+      }
+    }
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <CnCCommonTemplate
+    btnText="NEXT:BILLING"
+    routeToPage=""
+  />
+</ScrollViewMock>
+`;

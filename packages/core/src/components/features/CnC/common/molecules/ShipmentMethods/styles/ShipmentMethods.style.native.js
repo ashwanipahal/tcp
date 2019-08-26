@@ -8,18 +8,18 @@ const ShippingMsgWrapper = styled.View`
 `;
 
 const FieldWrapper = styled.View`
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
 `;
 
 const italicStyle = {
-  fontStyle: 'italic'
-}
+  fontStyle: 'italic',
+};
 
-export {
-  ShippingMsgWrapper,
-  FieldWrapper,
-  italicStyle
-}
+const ShipmentMethodsWrapper = styled.View`
+  display: flex;
+`;
+
+export { ShippingMsgWrapper, FieldWrapper, italicStyle, ShipmentMethodsWrapper };
