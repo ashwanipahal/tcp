@@ -1,49 +1,51 @@
 import styled from 'styled-components/native';
 
+// Spacing.js not having near pixel values.
 const BonusDayReadSection = styled.View`
-  flex: 1;
+  height: 80px;
 `;
 
 const BonusDayHeader = styled.View`
   flex-direction: row;
-  height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const BonusDayWrapper = styled.View`
   flex: 1;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 `;
 
+// Making Height Width as pixel perfect, otherwise doesn't match with the zeplin.
 const Circle = styled.View`
-  width: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  height: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  border-radius: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
   margin: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const DotActive = styled(Circle)`
-  background-color: ${props => props.theme.colorPalette.gray[600]};
-`;
-
-const DotInactive = styled(Circle)`
   background-color: ${props =>
     props.isPlcc
       ? props.theme.colorPalette.userTheme.plcc
       : props.theme.colorPalette.userTheme.mpr};
 `;
 
+const DotInactive = styled(Circle)`
+  background-color: ${props => props.theme.colorPalette.gray[600]};
+`;
+
 const LeftHeaderContainer = styled.View`
-  flex: 1.5;
+  flex: 1.7;
   flex-direction: row;
   justify-content: flex-start;
 `;
 
 const RightHeaderContainer = styled.View`
-  flex: 0.5;
+  flex: 0.3;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  border-bottom-width: 1px;
 `;
 
 export {

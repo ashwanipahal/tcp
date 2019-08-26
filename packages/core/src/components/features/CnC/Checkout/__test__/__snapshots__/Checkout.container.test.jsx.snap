@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
-<CheckoutPage
+<withRouter(CheckoutPage)
   activeStage="shipping"
   activeStep="shipping"
   currentPhoneNumber=""
-  currentSection=""
   initialValues={Object {}}
   isExpressCheckout={false}
   isGuest={true}
