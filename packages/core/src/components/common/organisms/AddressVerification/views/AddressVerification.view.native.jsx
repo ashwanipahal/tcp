@@ -188,7 +188,7 @@ export default class AddressVerification extends React.PureComponent {
           <AddressOptionWrapper>
             <AddressOption
               name="selectAddress"
-              address={this.formatAddress(suggestedAddress)}
+              address={formatAddress(suggestedAddress)}
               value="suggestedAddress"
               isSelected={selectAddress === 'suggestedAddress'}
               onChange={this.handleSuggestAddress}
