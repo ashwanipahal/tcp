@@ -73,6 +73,10 @@ export const COUNTRY_SELECTOR_ACTION_PATTERN = '@@CountrySelector-';
 // Coupon reducer
 export const COUPON_REDUCER_KEY = 'CouponsAndPromos';
 export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
+
+// Airmiles Banner reducer
+export const AIRMILES_BANNER_REDUCER_KEY = 'AirmilesBanner';
+export const AIRMILES_BANNER_ACTION_PATTERN = '@@AirmilesBanner-';
 // logout reducer
 export const LOGOUT_REDUCER_KEY = 'logoutReducer';
 export const LOGOUT_ACTION_PATTERN = '@@logout-';

@@ -95,6 +95,10 @@ const endpoints = {
     method: 'post',
     URI: 'v2/checkout/coupons',
   },
+  addAirmilesBanner: {
+    method: 'post',
+    URI: 'v2/wallet/updateAirMilesInfo',
+  },
   requestPassword: {
     method: 'put',
     URI: 'v2/account/resetPassword',

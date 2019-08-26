@@ -52,11 +52,11 @@ export const getAPIConfig = () => {
   // When apiConfig is null (the very first time) or is an empty object, derive value from store..
   const validApiConfigObj = !apiConfig || (apiConfig && !Object.keys(apiConfig).length);
   // This check is to make sure that same instance of apiConfig for different country/brand ssr requests
-  const deriveApiConfigObj = validApiConfigObj;
+  const deriveApiConfigObj = validApiConfigObj || !isClient();
 
   if (deriveApiConfigObj) {
     apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};
-    if (!isServer() && !isMobileApp()) {
+    if (isClient()) {
       resetStoreRef(); // This is to make module variable reduxStore as null
     }
   }

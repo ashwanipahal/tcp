@@ -134,4 +134,9 @@ export default {
   country_selector_save_btn: 'country_selector_save_btn',
   country_selector_tnc_text: 'country_selector_tnc_text',
   country_selector_tnc_link: 'country_selector_tnc_link',
+
+  // PLP SEO TEXT
+  plp_seo_module: 'plp_seo_module',
+  plp_seo_readmore: 'plp_seo_module_readmore',
+  plp_seo_readless: 'plp_seo_module_readless',
 };
