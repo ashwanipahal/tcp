@@ -65,7 +65,7 @@ exports[`AddressTile component should renders correctly 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="addressbook-edit"
+      dataLocator="addressbook-edit"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
@@ -73,7 +73,7 @@ exports[`AddressTile component should renders correctly 1`] = `
     />
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="addressbook-deletelink"
+      dataLocator="addressbook-deletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"

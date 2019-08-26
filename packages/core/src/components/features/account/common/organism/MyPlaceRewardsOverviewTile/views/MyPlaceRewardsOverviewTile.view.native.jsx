@@ -13,6 +13,8 @@ import {
   PlaceRewardsTileContainer,
   ButtonWrapperStyle,
   ShopAnchor,
+  CouponListWrapper,
+  CouponWrapper,
 } from '../styles/MyPlaceRewardsOverviewTile.style.native';
 import CouponList from '../../../molecule/CouponList';
 
@@ -49,16 +51,19 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
         <LineComp {...UnderlineStyle} />
 
         {rewardCouponsCount > 0 && (
-          <View>
-            <BodyCopy
-              fontSize="fs14"
-              fontWeight="semibold"
-              data-locator={rewardDataLocator}
-              text={walletOverviewInfo}
-              margin-bottom="15"
-            />
-            <CouponList coupons={coupons} sliceCount={2} labels={labels} />
-          </View>
+          <CouponWrapper>
+            <View>
+              <BodyCopy
+                fontSize="fs14"
+                fontWeight="semibold"
+                data-locator={rewardDataLocator}
+                text={walletOverviewInfo}
+              />
+            </View>
+            <CouponListWrapper>
+              <CouponList coupons={coupons} sliceCount={2} labels={labels} />
+            </CouponListWrapper>
+          </CouponWrapper>
         )}
 
         {!rewardCouponsCount && (
@@ -76,7 +81,7 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
                 fullWidth
                 centered
                 fill="WHITE"
-                data-locator="accountoverview-myplacerewardstile-startshopbtn"
+                dataLocator="accountoverview-myplacerewardstile-startshopbtn"
                 accessibilityRole="link"
                 accessibilityLabel={labels.lbl_overview_myPlaceRewardsShopNow}
                 text={labels.lbl_overview_myPlaceRewardsShopNow}

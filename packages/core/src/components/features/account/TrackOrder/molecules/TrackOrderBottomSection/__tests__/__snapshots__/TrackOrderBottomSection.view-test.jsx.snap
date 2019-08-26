@@ -52,7 +52,7 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
         aria-label="undefined
                 undefined"
         className="trackorder__modal__loginlink"
-        data-locator="track_order_login"
+        dataLocator="track_order_login"
         fontSize="fs12"
         href="#"
         onClick={[Function]}
@@ -77,7 +77,7 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
       aria-label="undefined
                 undefined"
       className="trackorder__modal__clickhere_link"
-      data-locator="track_order_click_here"
+      dataLocator="track_order_click_here"
       fontSize="fs12"
       target="_blank"
       underline={true}

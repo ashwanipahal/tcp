@@ -44,18 +44,18 @@ describe('CardTile', () => {
       ccBrand: 'GC',
       ccType: 'GiftCard',
     });
-    const handleSubmit = jest.fn();
+    const setRecaptchaModalMountState = jest.fn();
 
     const tree = shallow(
       <CardTileVanilla
         labels={labels}
         card={giftCard}
         checkbalanceValueInfo={{ get: jest.fn() }}
-        handleSubmit={handleSubmit}
+        setRecaptchaModalMountState={setRecaptchaModalMountState}
       />
     );
     tree.find('Styled(CustomButton)').simulate('press');
-    expect(handleSubmit).toHaveBeenCalledTimes(1);
+    expect(setRecaptchaModalMountState).toHaveBeenCalledTimes(0);
     expect(tree).toMatchSnapshot();
   });
 
@@ -121,19 +121,19 @@ describe('CardTile', () => {
       ccType: 'GiftCard',
     });
 
-    const handleSubmit = jest.fn();
+    const setRecaptchaModalMountState = jest.fn();
 
     const tree = shallow(
       <CardTileVanilla
         labels={labels}
         card={giftCard}
         showNotificationCaptcha
-        handleSubmit={handleSubmit}
+        setRecaptchaModalMountState={setRecaptchaModalMountState}
       />
     );
 
     tree.find('Styled(CustomButton)').simulate('press');
-    expect(handleSubmit).toHaveBeenCalledTimes(1);
+    expect(setRecaptchaModalMountState).toHaveBeenCalledTimes(0);
     expect(tree).toMatchSnapshot();
   });
 });

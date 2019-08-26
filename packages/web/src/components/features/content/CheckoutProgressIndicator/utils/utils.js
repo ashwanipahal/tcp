@@ -48,13 +48,12 @@ const moveToStage = (stageName, isReplace) => {
 
 const routeToStage = (requestedStage, cartItems, isAllowForward) => {
   const router = useRouter();
-  const currentStage = utils.getObjectValue(router, undefined, 'query', 'subSection');
+  const currentStage = utils.getObjectValue(router, undefined, 'query', 'section');
 
   if (requestedStage === currentStage) return;
 
   const availableStages = getAvailableStages(cartItems);
   const routeToUrl = CHECKOUT_SECTIONS[currentStage].pathPattern;
-  const as = routeToUrl;
   let currentFound = false;
   let requestedFound = false;
 
@@ -66,19 +65,31 @@ const routeToStage = (requestedStage, cartItems, isAllowForward) => {
       if (isAllowForward || !currentFound) {
         moveToStage(requestedStage, true);
       } else {
-        Router.push(routeToUrl, as, { shallow: true });
+        moveToStage(routeToUrl, true);
       }
       break;
     }
   }
   if (!requestedFound) {
     // requested stage is not available (or illegal)
-    Router.push(routeToUrl, as, { shallow: true });
+    moveToStage(routeToUrl, true);
   }
+};
+
+/**
+ * This Method will return for which checkout path, app will navigate on click
+ * of checkout button
+ * @param {cartItems} cartItems
+ */
+const getRoutePathCheckoutBtn = cartItems => {
+  const totalCheckoutStages = getAvailableStages(cartItems);
+  return totalCheckoutStages[0];
 };
 
 export default {
   getAvailableStages,
   moveToStage,
   routeToStage,
+  isOrderHasPickup,
+  getRoutePathCheckoutBtn,
 };

@@ -19,7 +19,7 @@ export class CheckoutProgressIndicator extends React.Component {
 
     const availableStages = CheckoutProgressUtils.getAvailableStages(cartOrderItems);
 
-    const activeStageUrl = utils.getObjectValue(router, undefined, 'query', 'subSection');
+    const activeStageUrl = utils.getObjectValue(router, undefined, 'query', 'section');
     return (
       <CheckoutProgressIndicatorComponent
         activeStage={activeStageUrl}

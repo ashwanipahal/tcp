@@ -1,1 +1,1 @@
-export { default } from './views/CheckoutFooter';
+export { default } from './views/CheckoutFooter.view';

@@ -61,7 +61,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator={`couponDetailModal_${coupon.status}_printAch`}
+            dataLocator={`couponDetailModal_${coupon.status}_printAch`}
             to="/#"
             onClick={this.printClick}
             className="couponModal_print_anchor"
@@ -86,7 +86,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator={`couponDetailModal_${coupon.status}_tAndC`}
+            dataLocator={`couponDetailModal_${coupon.status}_tAndC`}
             onClick={this.tAndCClick}
             className="couponModal_print_anchortext"
           >
@@ -98,7 +98,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator={`couponDetailModal_${coupon.status}_pp`}
+            dataLocator={`couponDetailModal_${coupon.status}_pp`}
             onClick={this.tAndCClick}
             className="couponModal_print_anchortext"
           >
