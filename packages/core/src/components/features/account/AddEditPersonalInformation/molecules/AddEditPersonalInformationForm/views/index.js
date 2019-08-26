@@ -1,1 +1,1 @@
-export { default } from './ChangePasswordForm.view';
+export { default } from './AddEditPersonalInformationForm.view';
