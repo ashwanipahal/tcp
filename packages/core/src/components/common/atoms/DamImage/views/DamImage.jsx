@@ -52,7 +52,7 @@ const DamImage = props => {
     ...other
   } = props;
 
-  const { alt = '' } = imgData;
+  const { alt } = imgData;
 
   return (
     <picture>
