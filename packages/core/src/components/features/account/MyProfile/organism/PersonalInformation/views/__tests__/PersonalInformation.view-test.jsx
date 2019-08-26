@@ -20,7 +20,7 @@ describe('PersonalInformation component', () => {
       address: {
         firstName: 'test',
         lastName: 'test',
-        addressLine: ['addressline 1', 'addressline 2'],
+        addressLine: ['addressline 1', 'address line 2'],
         city: 'test city',
         state: 'test state',
         zipCode: '111-111',

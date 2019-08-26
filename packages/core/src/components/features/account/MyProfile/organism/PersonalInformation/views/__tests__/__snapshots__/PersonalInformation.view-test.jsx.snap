@@ -10,7 +10,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
     Object {
       "addressLine": Array [
         "addressline 1",
-        "addressline 2",
+        "address line 2",
       ],
       "city": "test city",
       "country": "USA",
