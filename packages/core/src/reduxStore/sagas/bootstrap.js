@@ -14,7 +14,7 @@ import { loadHeaderData } from '../../components/common/organisms/Header/contain
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS from '../constants';
-import { isClient } from '../../utils';
+import { isMobileApp } from '../../utils';
 
 function* bootstrap(params) {
   const {
@@ -33,7 +33,7 @@ function* bootstrap(params) {
     yield put(loadNavigationData(result.navigation));
     yield put(loadFooterData(result.footer));
     yield put(loadModulesData(result.modules));
-    if (isClient()) {
+    if (!isMobileApp()) {
       const { country, currency, language } = locals;
       yield put(setCountry(country));
       yield put(setCurrency(currency));
