@@ -54,7 +54,7 @@ const Anchor = ({
       {children}
     </a>
   ) : (
-    <Link href={to || url} as={asLinkPath} shallow={shallow} scroll={scroll}>
+    <Link href={linkUrl} as={asLinkPath} shallow={shallow} scroll={scroll}>
       <a
         className={className}
         href={to || url}
