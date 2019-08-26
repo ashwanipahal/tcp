@@ -54,6 +54,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         fontSizeVariation="large"
         href="#"
         id="createAccount"
+        noLink={true}
         onClick={[Function]}
       >
         Create Account
@@ -64,6 +65,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         fontSizeVariation="large"
         href="#"
         id="login"
+        noLink={true}
         onClick={[Function]}
       >
         Login
@@ -185,6 +187,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         fontSizeVariation="large"
         href="#"
         id="createAccount"
+        noLink={true}
         onClick={[Function]}
       >
         Create Account
@@ -195,6 +198,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         fontSizeVariation="large"
         href="#"
         id="login"
+        noLink={true}
         onClick={[Function]}
       >
         Login

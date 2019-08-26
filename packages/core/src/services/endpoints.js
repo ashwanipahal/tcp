@@ -201,5 +201,13 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/cart/getUnqualifiedItems',
   },
+  getShipmentMethods: {
+    method: 'GET',
+    URI: 'v2/checkout/getShipmentMethods',
+  },
+  updateShippingMethodSelection: {
+    method: 'PUT',
+    URI: 'v2/checkout/updateShippingMethodSelection',
+  },
 };
 export default endpoints;

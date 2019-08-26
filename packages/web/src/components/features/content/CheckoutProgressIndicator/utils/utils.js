@@ -90,5 +90,6 @@ export default {
   getAvailableStages,
   moveToStage,
   routeToStage,
+  isOrderHasPickup,
   getRoutePathCheckoutBtn,
 };

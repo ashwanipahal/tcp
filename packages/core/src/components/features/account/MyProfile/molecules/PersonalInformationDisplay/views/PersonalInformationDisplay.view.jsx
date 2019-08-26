@@ -54,12 +54,7 @@ export const PersonalInformationDisplay = ({
           {userPhoneNumber}
         </BodyCopy>
       )}
-      <BodyCopy
-        dataLocator="profileInfoUserbday"
-        className="personalUserBirthday"
-        fontSize="fs16"
-        fontFamily="secondary"
-      >
+      <BodyCopy dataLocator="profileinfo-userbday" fontSize="fs16" fontFamily="secondary">
         {userBirthdayDisplay}
       </BodyCopy>
       {getMyPlaceRewards(airMiles, myPlaceNumber, labels)}

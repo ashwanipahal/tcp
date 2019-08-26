@@ -30,4 +30,6 @@ export {
   isCanada,
   resetApiConfig,
   bindAllClassMethodsToThis,
+  getAddressFromPlace,
+  formatAddress,
 } from './utils';
