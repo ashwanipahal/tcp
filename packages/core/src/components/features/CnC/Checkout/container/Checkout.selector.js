@@ -1,7 +1,9 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
-import { getAPIConfig, getViewportInfo } from '@tcp/core/src/utils';
+
+/* eslint-disable extra-rules/no-commented-out-code */
+import { getAPIConfig, isMobileApp, getViewportInfo } from '@tcp/core/src/utils';
 
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
@@ -51,6 +53,7 @@ export const isGuest = createSelector(
 );
 
 function getIsMobile() {
+  if (isMobileApp()) return true;
   if (typeof window === 'undefined')
     return {
       width: 0,
@@ -332,8 +335,8 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_pickup_contact: pickupContactText,
     lbl_pickup_btn_cancel: btnCancel,
     lbl_pickup_btn_update: btnUpdate,
-    lbl_pickup_btn_SaveUpdate: btnSaveUpdate = 'Save Pickup Details',
-    lbl_pickup_title_editPickUp: titleEditPickup = 'EDIT PICKUP',
+    lbl_pickup_btnSaveUpdate: btnSaveUpdate,
+    lbl_pickup_titleEditPickUp: titleEditPickup,
     lbl_pickup_anchor_edit: anchorEdit,
     lbl_pickup_returnTo: returnTo,
     lbl_pickup_nextText: nextText,
