@@ -66,6 +66,12 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
+    props.fontWeight === 'semiBold'
+      ? `
+      font-weight: ${props.theme.fonts.fontWeight.semiBold};
+    `
+      : ''};
+  ${props =>
     props.fullWidth
       ? `
       width: 100%;

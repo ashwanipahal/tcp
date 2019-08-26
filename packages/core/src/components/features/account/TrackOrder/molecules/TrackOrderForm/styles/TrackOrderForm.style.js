@@ -4,6 +4,7 @@ const styles = css`
   .trackOrder-trackOrdercta {
     height: 51px;
     margin-top: 20px;
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
   }
 `;
 
