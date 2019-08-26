@@ -1,13 +1,13 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
-import { subscribeEmail } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
+// import { subscribeEmail } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import constants from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
   getShippingMethods,
-  briteVerifyStatusExtraction,
+  // briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
 } from '../../../../../services/abstractors/CnC/index';
@@ -26,7 +26,7 @@ import {
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
-import { isCanada } from '../../../../../utils/utils';
+// import { isCanada } from '../../../../../utils/utils';
 import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 
@@ -504,12 +504,12 @@ function* saveLocalSmsInfo(smsInfo) {
   return returnVal;
 }
 
-function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress) {
-  if (isEmailSignUpAllowed && emailSignup && emailAddress) {
-    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
-    yield subscribeEmail({ payload: emailAddress }, statusCode);
-  }
-}
+// function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress) {
+//   if (isEmailSignUpAllowed && emailSignup && emailAddress) {
+//     const statusCode = call(briteVerifyStatusExtraction, emailAddress);
+//     yield subscribeEmail({ payload: emailAddress }, statusCode);
+//   }
+// }
 
 function* submitShippingSection({ payload: formData }) {
   // console.log('>>>', { formData });
@@ -524,11 +524,11 @@ function* submitShippingSection({ payload: formData }) {
       phoneNumber,
 
       saveToAccount,
-      emailSignup,
+      // emailSignup,
     },
   } = formData;
   let { emailAddress } = formData;
-  let isEmailSignUpAllowed = true;
+  // let isEmailSignUpAllowed = true;
   const recalcFlag = false;
   const isGuestUser = yield select(isGuest);
   if (!emailAddress || !isGuestUser) {
@@ -536,10 +536,10 @@ function* submitShippingSection({ payload: formData }) {
     emailAddress = yield select(getUserEmail);
   }
 
-  const isCanadaUser = yield select(isCanada);
-  if (!isCanadaUser && isGuestUser) {
-    isEmailSignUpAllowed = false;
-  }
+  // const isCanadaUser = yield select(isCanada);
+  // if (!isCanadaUser && isGuestUser) {
+  //   isEmailSignUpAllowed = false;
+  // }
 
   // let getGiftWrappingValues = yield select(getGiftWrappingValues);
   // let initialGiftWrappingVal = getGiftWrappingValues.hasGiftWrapping;
@@ -561,7 +561,7 @@ function* submitShippingSection({ payload: formData }) {
     // remove old gift wrap option (if any)
     // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
     // sign up to receive mail newsletter
-    validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress),
+    // validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress),
   ];
   let addOrEditAddressRes;
   if (isGuestUser) {
