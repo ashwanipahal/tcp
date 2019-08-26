@@ -95,6 +95,10 @@ const endpoints = {
     method: 'post',
     URI: 'v2/checkout/coupons',
   },
+  addAirmilesBanner: {
+    method: 'post',
+    URI: 'v2/wallet/updateAirMilesInfo',
+  },
   requestPassword: {
     method: 'put',
     URI: 'v2/account/resetPassword',
@@ -184,6 +188,18 @@ const endpoints = {
   getAllOffers: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
+  },
+  giftOptionsCmd: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/giftOptionsCmd',
+  },
+  orderLookUp: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/orderLookUp',
+  },
+  getUnqualifiedItems: {
+    method: 'GET',
+    URI: 'v2/cart/getUnqualifiedItems',
   },
 };
 export default endpoints;

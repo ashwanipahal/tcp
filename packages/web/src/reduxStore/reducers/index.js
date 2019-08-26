@@ -17,15 +17,20 @@ import AddressVerificationReducer from '@tcp/core/src/components/common/organism
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
+import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 import ProductListingReducer from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
+import AirmilesBannerReducer from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.reducer';
+
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
+import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -57,11 +62,15 @@ import {
   CREATE_ACCOUNT_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   COUPON_REDUCER_KEY,
+  AIRMILES_BANNER_REDUCER_KEY,
   ACCOUNTHEADER_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   CHANGE_PASSWORD_REDUCER_KEY,
   USER_REDUCER_KEY,
+  CHECKOUT_REDUCER_KEY,
+  DEVICE_INFO_REDUCER_KEY,
+  TRACK_ORDER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -107,15 +116,19 @@ export default combineReducers({
   [ACCOUNT_REDUCER_KEY]: AccountReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
+  [CHECKOUT_REDUCER_KEY]: CheckoutReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [PRODUCT_LISTING_REDUCER_KEY]: ProductListingReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [COUPON_REDUCER_KEY]: CouponsReducer,
+  [AIRMILES_BANNER_REDUCER_KEY]: AirmilesBannerReducer,
   [ACCOUNTHEADER_REDUCER_KEY]: AccountHeaderReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [USER_REDUCER_KEY]: UserReducer,
+  [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
+  [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
 });

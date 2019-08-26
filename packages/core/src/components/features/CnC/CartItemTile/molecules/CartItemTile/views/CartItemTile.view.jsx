@@ -431,7 +431,7 @@ class CartItemTile extends React.Component {
               />
             )}
             <Row className="product-detail-row label-responsive-wrapper padding-top-10">
-              <Col className="label-responsive" colSize={{ large: 4, medium: 3, small: 2 }}>
+              <Col className="label-responsive" colSize={{ large: 3, medium: 3, small: 2 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
@@ -444,7 +444,7 @@ class CartItemTile extends React.Component {
               {this.getProductPriceList(productDetail, pageView)}
             </Row>
             <Row className="product-detail-row label-responsive-wrapper">
-              <Col className="label-responsive" colSize={{ large: 4, medium: 3, small: 2 }}>
+              <Col className="label-responsive" colSize={{ large: 3, medium: 3, small: 2 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
@@ -454,7 +454,7 @@ class CartItemTile extends React.Component {
                   {`${labels.points}:`}
                 </BodyCopy>
               </Col>
-              <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 8 }}>
+              <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 3 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"

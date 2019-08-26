@@ -38,6 +38,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     };
     const itemStyle = {
       height: 49,
+      color: 'gray.800',
     };
     return (
       <View className={className} {...this.props}>

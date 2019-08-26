@@ -23,6 +23,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       textAlign="left"
     />
     <CouponList
+      commonLabels={Object {}}
       coupons={Immutable.List []}
       labels={Object {}}
       sliceCount={2}
@@ -32,7 +33,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         anchorVariation="button"
         buttonVariation="variable-width"
         centered={true}
-        data-locator="accountoverview-myplacerewardstile-startshopbtn"
+        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
         to="/home"
@@ -65,6 +66,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       textAlign="left"
     />
     <CouponList
+      commonLabels={Object {}}
       coupons={
         Immutable.List [
           Object {},

@@ -8,13 +8,14 @@ import PayPalButton from '../../../../common/atoms/PaypalButton';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import { getLocator } from '../../../../../utils';
+import { getLocator, routerPush } from '../../../../../utils';
 
-class AddedToBagActions extends React.Component<Props> {
-  loginModalOpenClick = e => {
-    const { setCheckoutModalMountState } = this.props;
-    e.preventDefault();
-    setCheckoutModalMountState({ state: true });
+class AddedToBagActions extends React.PureComponent<Props> {
+  routeToCheckout = e => {
+    if (e) {
+      e.preventDefault();
+    }
+    routerPush('/checkout', '/checkout');
   };
 
   render() {
@@ -23,8 +24,9 @@ class AddedToBagActions extends React.Component<Props> {
       labels,
       onClickViewBag,
       showAddTobag,
-      setCheckoutModalMountState,
       checkoutModalMountedState,
+      handleCartCheckout,
+      closeCheckoutModalMountState,
     } = this.props;
     return (
       <div className={className}>
@@ -54,7 +56,7 @@ class AddedToBagActions extends React.Component<Props> {
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"
-            onClick={e => this.loginModalOpenClick(e)}
+            onClick={handleCartCheckout}
           >
             <BodyCopy
               component="span"
@@ -69,8 +71,10 @@ class AddedToBagActions extends React.Component<Props> {
         </Row>
         <OpenLoginModal
           variation="checkout"
-          setLoginModalMountState={setCheckoutModalMountState}
           openState={checkoutModalMountedState}
+          setLoginModalMountState={closeCheckoutModalMountState}
+          handleContinueAsGuest={this.routeToCheckout}
+          handleAfterLogin={this.routeToCheckout}
         />
       </div>
     );
@@ -82,6 +86,7 @@ AddedToBagActions.propTypes = {
   onClickViewBag: PropTypes.func.isRequired,
   labels: PropTypes.shape.isRequired,
   showAddTobag: PropTypes.bool,
+  handleCartCheckout: PropTypes.func.isRequired,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,

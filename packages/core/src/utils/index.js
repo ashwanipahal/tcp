@@ -22,6 +22,7 @@ export {
 export {
   isServer,
   isClient,
+  isTouchClient,
   isMobileApp,
   isGymboree,
   isTCP,
@@ -30,4 +31,6 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  getAddressFromPlace,
+  formatAddress,
 } from './utils';

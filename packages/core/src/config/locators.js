@@ -59,6 +59,13 @@ export default {
   moduleL_left_arrow: 'moduleL_left_arrow',
   moduleL_right_arrow: 'moduleL_right_arrow',
 
+  // Module N
+  moduleN_header_text: 'moduleN_header_text',
+  moduleN_promobanner_text: 'moduleN_promobanner_text',
+  moduleN_promobanner_img: 'moduleN_promobanner_img',
+  moduleN_image: 'moduleN_image_',
+  moduleN_cta_links: 'moduleN_cta_links_',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
@@ -106,14 +113,26 @@ export default {
   cart_item_ship_to_home_radio_button: 'ItemShipToHomeRadioButton',
   cart_item_ship_to_home: 'cartShipToHome',
   cart_item_cross_button: 'cartItemCrossButton',
-  // moduleN
-  moduleN_header_text: 'moduleN_header_text',
-  moduleN_promobanner_text: 'moduleN_promobanner_text',
-  moduleN_cta_links: 'moduleN_cta_links',
 
   // Empty Bag Locator
   empty_bag_Msg: 'cartEmptyBagMessage',
   empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
   empty_bag_guestUserCTA: 'cartGuestLoginCta',
   empty_bag_recommendation_msg: 'cartRecommendationMessage',
+
+  // Product Tile locators
+  global_productbadge_txt: 'global-productbadge-txt',
+  global_productimg_imagelink: 'global-productimg-imagelink',
+  global_imagecursors_arrows: 'global-imagecursors-arrows',
+  global_favorite_button: 'global-favorite-button',
+  global_Extended_sizes_text: 'global-Extended-sizes-text',
+  global_Price_text: 'global-Price-text',
+  global_ColorSwatch_Swatch_link: 'global-ColorSwatch-Swatch link',
+  global_loyalty_text: 'global-loyalty-text',
+  global_addtocart_Button: 'global-addtocart-Button',
+
+  // PLP SEO TEXT
+  plp_seo_module: 'plp_seo_module',
+  plp_seo_readmore: 'plp_seo_module_readmore',
+  plp_seo_readless: 'plp_seo_module_readless',
 };

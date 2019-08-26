@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInfoActions should render correctly 1`] = `
+<MyProfileTile
+  ctaLink="accountOverviewMobile"
+  ctaTitle=""
+  handleComponentChange={[Function]}
+  title=""
+>
+  <Styled(Styled(BodyCopy))
+    fontSize="fs16"
+    fontWeight="semibold"
+    spacingStyles="margin-bottom-MED"
+  />
+  <Styled(Styled(BodyCopy))
+    fontSize="fs16"
+    spacingStyles="margin-bottom-MED"
+  />
+</MyProfileTile>
+`;

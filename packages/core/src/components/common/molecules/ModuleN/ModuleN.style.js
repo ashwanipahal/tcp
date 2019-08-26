@@ -1,12 +1,32 @@
 import { css } from 'styled-components';
 
 export default css`
+  margin-bottom: 40px;
+
+  .heading-wrapper {
+    padding: 16px 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      text-align: center;
+      padding-top: 30px;
+      padding-bottom: 25px;
+    }
+  }
+
   background-color: #f53d3d;
+
   h3.link-text {
     margin: 0;
+    margin-bottom: 5px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: inline;
+      margin-bottom: 0;
+    }
   }
-  .separator {
-    background-color: white;
+
+  .promo-link {
+    color: ${props => props.theme.colorPalette.white};
   }
 
   .moduleN-heading-wrapper {

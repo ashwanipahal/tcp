@@ -6004,7 +6004,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       <Styled(Anchor)
         anchorVariation="primary"
         className="change-country-link"
-        data-locator="shipping internationally"
+        dataLocator="shipping internationally"
         fontSizeVariation="small"
         href="#"
         noLink={true}

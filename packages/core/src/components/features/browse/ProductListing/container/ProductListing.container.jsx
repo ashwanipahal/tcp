@@ -10,6 +10,9 @@ import {
   getLoadedProductsCount,
   getUnbxdId,
   getBreadCrumbTrail,
+  getCategoryId,
+  getLabelsProductListing,
+  getLongDescription,
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -20,13 +23,25 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs, ...otherProps } = this.props;
+    const {
+      products,
+      currentNavIds,
+      navTree,
+      breadCrumbs,
+      longDescription,
+      labels,
+      categoryId,
+      ...otherProps
+    } = this.props;
     return (
       <ProductListing
         products={products}
         currentNavIds={currentNavIds}
+        categoryId={categoryId}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
+        longDescription={longDescription}
+        labels={labels}
         {...otherProps}
       />
     );
@@ -37,10 +52,13 @@ function mapStateToProps(state) {
   return {
     products: getProductsSelect(state),
     currentNavIds: state.ProductListing.currentNavigationIds,
+    categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
+    longDescription: getLongDescription(state),
+    labels: getLabelsProductListing(state),
   };
 }
 
@@ -56,10 +74,13 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   navigation: PropTypes.shape({}).isRequired,
 };
 
@@ -68,6 +89,8 @@ ProductListingContainer.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  longDescription: '',
+  labels: {},
 };
 
 export default connect(

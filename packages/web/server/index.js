@@ -1,9 +1,11 @@
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
+const device = require('express-device');
 const RoutesMap = require('./routes');
 const {
   settingHelmetConfig,
+  settingDeviceConfig,
   sites,
   siteIds,
   setEnvConfig,
@@ -40,6 +42,7 @@ const setErrorReporter = () => {
     server.use(expressMiddleWare);
   }
 };
+settingDeviceConfig(server, device);
 
 const setSiteId = (req, res) => {
   const { url } = req;

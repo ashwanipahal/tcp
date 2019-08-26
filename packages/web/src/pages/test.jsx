@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Fragment } from 'react';
+import NoSSR from 'react-no-ssr';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
@@ -10,6 +11,7 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import { PropTypes } from 'prop-types';
 import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
 import { NavBar, Test } from '../components/features/content/HomePage/molecules';
+import constants from '../constants';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -31,8 +33,19 @@ const colSize2 = {
 };
 
 const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
-const HomePageView = ({ links }) => (
+const HomePageView = ({ links, deviceType }) => (
   <Fragment>
+    {deviceType === constants.defaultDeviceType ? (
+      <NoSSR>
+        <Notification
+          status="success"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message="client"
+        />
+      </NoSSR>
+    ) : (
+      <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message="server" />
+    )}
     <Notification status="success" colSize={{ large: 12, medium: 8, small: 6 }} message="success" />
     <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message="error" />
 
@@ -99,6 +112,7 @@ const HomePageView = ({ links }) => (
 
 HomePageView.propTypes = {
   links: PropTypes.arrayOf.isRequired,
+  deviceType: PropTypes.string.isRequired,
 };
 
 HomePageView.getInitActions = () => initActions;
@@ -106,6 +120,7 @@ HomePageView.getInitActions = () => initActions;
 const mapStateToProps = state => {
   return {
     links: state.HomePage.links,
+    deviceType: state.DeviceInfo.deviceType,
   };
 };
 

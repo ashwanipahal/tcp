@@ -43,7 +43,7 @@ const MiniBagBody = ({
                   underline
                   anchorVariation="primary"
                   to="/bag"
-                  data-locator="addressbook-makedefault"
+                  dataLocator="addressbook-makedefault"
                 >
                   {`${labels.viewBag}(${cartItemCount})`}
                 </Anchor>

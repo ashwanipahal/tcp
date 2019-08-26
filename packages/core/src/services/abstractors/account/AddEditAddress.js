@@ -35,6 +35,7 @@ export const addAddress = args => {
           lastName: args.lastName,
           nickName: addressKey,
           phone1: args.phoneNumber,
+          phone2: args.alternatePhoneNumber,
           phone1Publish: 'false',
           primary: args.primary,
           state: args.state,

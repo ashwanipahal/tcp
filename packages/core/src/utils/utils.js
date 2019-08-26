@@ -31,6 +31,14 @@ export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
 
+/**
+ * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
+ *  side and client side hydration should be the same. If this is needed use ServerToClientRenderPatch.jsx.
+ */
+export function isTouchClient() {
+  return typeof window !== 'undefined' && !!('ontouchstart' in window);
+}
+
 export const isServer = () => {
   return typeof window === 'undefined' && !isMobileApp();
 };
@@ -43,11 +51,11 @@ export const getAPIConfig = () => {
   // When apiConfig is null (the very first time) or is an empty object, derive value from store..
   const validApiConfigObj = !apiConfig || (apiConfig && !Object.keys(apiConfig).length);
   // This check is to make sure that same instance of apiConfig for different country/brand ssr requests
-  const deriveApiConfigObj = validApiConfigObj;
+  const deriveApiConfigObj = validApiConfigObj || !isClient();
 
   if (deriveApiConfigObj) {
     apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};
-    if (!isServer() && !isMobileApp()) {
+    if (isClient()) {
       resetStoreRef(); // This is to make module variable reduxStore as null
     }
   }
@@ -102,6 +110,92 @@ export const isGymboree = () => {
   return brandId === API_CONFIG.brandIds.gym;
 };
 
+const GOOGLE_PLACE_PARTS = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  sublocality_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name',
+};
+
+const returngetAddress = (addressType, val, address) => {
+  const addressRef = { ...address };
+  switch (addressType) {
+    case 'street_number':
+      addressRef.street_number = val;
+      break;
+    case 'route':
+      addressRef.street_name = val;
+      break;
+    case 'locality':
+      addressRef.city = val;
+      break;
+    case 'sublocality_level_1':
+      addressRef.city = val;
+      break;
+    case 'administrative_area_level_1':
+      addressRef.state = val;
+      break;
+    case 'country':
+      addressRef.country = val;
+      break;
+    case 'postal_code':
+      addressRef.zip = val;
+      break;
+    default:
+      addressRef.zip = val;
+  }
+  return addressRef;
+};
+
+export const getAddressFromPlace = (place, inputValue) => {
+  let address = {
+    street: '',
+    city: '',
+    state: '',
+    country: '',
+    zip: '',
+    steet_number: '',
+    street_name: '',
+  };
+  if (typeof place.address_components === 'undefined') {
+    return address;
+  }
+  for (let i = 0; i < place.address_components.length; i += 1) {
+    const addressType = place.address_components[i].types[0];
+    if (GOOGLE_PLACE_PARTS[addressType]) {
+      const val = place.address_components[i][GOOGLE_PLACE_PARTS[addressType]];
+      address = returngetAddress(addressType, val, address);
+    }
+  }
+  if (!address.street_number) {
+    const regex = new RegExp(`^(.*)${address.street_name.split(' ', 1)[0]}`);
+    const result = regex.exec(inputValue);
+    const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
+
+    if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
+      address.street_number = inputNum;
+    }
+  }
+
+  address.street = `${address.street_number} ${address.street_name}`;
+
+  return address;
+};
+
+export const formatAddress = address => ({
+  firstName: address.firstName,
+  lastName: address.lastName,
+  addressLine: [address.address1, address.address2 || ''],
+  city: address.city,
+  state: address.state,
+  country: address.country,
+  zipCode: address.zip,
+  phone1: address.phoneNumber,
+});
+
 export default {
   getIconPath,
   getLocator,
@@ -114,4 +208,6 @@ export default {
   bindAllClassMethodsToThis,
   isGymboree,
   isTCP,
+  getAddressFromPlace,
+  formatAddress,
 };

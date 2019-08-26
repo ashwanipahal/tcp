@@ -2,15 +2,50 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
-  <ModuleN />
   <SlotA
     className="moduleD"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
   />
   <SlotB
     className="moduleH"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
   />
-  <SlotC />
-  <SlotD />
+  <SlotC
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <SlotD
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <SlotE
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <SlotF
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
   <Styled(CustomButton)
     buttonVariation="variable-width"
     customStyle={Object {}}

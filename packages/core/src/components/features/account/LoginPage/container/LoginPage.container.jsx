@@ -71,6 +71,7 @@ class LoginPageContainer extends React.PureComponent {
       setLoginModalMountState,
       onRequestClose,
       variation,
+      handleContinueAsGuest,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -96,6 +97,7 @@ class LoginPageContainer extends React.PureComponent {
         setLoginModalMountState={setLoginModalMountState}
         onRequestClose={onRequestClose}
         variation={variation}
+        handleContinueAsGuest={handleContinueAsGuest}
       />
     );
   }
@@ -123,6 +125,7 @@ LoginPageContainer.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   closeModal: PropTypes.bool.isRequired,
   variation: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -132,16 +135,17 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
+  handleContinueAsGuest: () => {},
   isUserLoggedIn: false,
   navigation: {},
   currentForm: '',
   queryParams: {},
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: payload => {
-      dispatch(login(payload));
+      dispatch(login(payload, props.handleAfterLogin));
     },
     resetForm: payload => {
       dispatch(resetLoginForgotPasswordState(payload));

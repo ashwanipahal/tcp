@@ -3,11 +3,13 @@ import {
   openNavigationDrawer,
   closeNavigationDrawer,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import {
   getUserName,
   getUserLoggedInState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
@@ -19,6 +21,7 @@ const mapStateToProps = state => {
     navigationDrawer: Header.navigationDrawer,
     userName: getUserName(state),
     isLoggedIn: getUserLoggedInState(state),
+    cartItemCount: getCartItemCount(),
   };
 };
 
@@ -31,6 +34,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(closeNavigationDrawer());
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
+    openTrackOrderOverlay: payload => dispatch(setTrackOrderModalMountedState(payload)),
   };
 };
 

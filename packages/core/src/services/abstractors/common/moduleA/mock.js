@@ -7,11 +7,10 @@ const images = [
   'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
   'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
 ];
-const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
+const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
-  // eslint-disable-next-line no-unused-vars
-  const gymboreeHeaderTextItems = [
+  /*   const gymboreeHeaderTextItems = [
     {
       text: 'Spring is Every Wear',
       style: 'style1',
@@ -22,17 +21,17 @@ for (let i = 1; i <= totalImageSlides; i++) {
   const gymboreePromoTextItems = [
     {
       text: 'The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!',
-      style: 'style12',
+      style: 'gymboree_description',
     },
-  ];
+  ]; */
 
   // eslint-disable-next-line no-unused-vars
   const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
   // eslint-disable-next-line no-unused-vars
   const tcpPromoTextItems = [
-    { text: '60 % OFF', style: 'style7' },
-    { text: '50% Off', style: 'style8' },
-    { text: 'All Shoes & Select Accessories', style: 'style9' },
+    { text: '60 % OFF', style: 'percentage_wrapped_extra_large' },
+    { text: '50 % Off', style: 'small_text_bold' },
+    { text: ' All Shoes & Select Accessories', style: 'small_text_normal' },
   ];
 
   imageSlides.push({
@@ -40,7 +39,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
       {
         textItems: tcpHeaderTextItems,
         link: {
-          url: '/trending',
+          url: '/c/',
           text: '',
           title: '',
           target: '',
@@ -52,7 +51,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
     promoBanner: [
       {
         link: {
-          url: '/banner/url',
+          url: '/c/',
           text: '',
           title: '',
           target: '',
@@ -72,7 +71,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           crop_m: '',
         },
         link: {
-          url: '/image/url',
+          url: '/c/image/url',
           text: 'Family Tees',
           title: 'Family Tees',
           target: '',
@@ -84,8 +83,8 @@ for (let i = 1; i <= totalImageSlides; i++) {
       {
         position: 'right',
         textItems: [
-          { text: 'Order By XX/XX', style: 'style10' },
-          { text: 'For Easter Delivery!', style: 'style10' },
+          { text: 'Order By XX/XX', style: 'ribbon_default_text' },
+          { text: 'For Easter Delivery!', style: 'ribbon_default_text' },
         ],
       },
     ],
@@ -102,7 +101,8 @@ export default {
       ctaItems: [
         {
           image: {
-            url: 'http://image.com/girl',
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
             alt: 'Girl',
             title: 'Girl',
             crop_d: '',
@@ -110,7 +110,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/girl',
+            url: '/c/',
             text: 'Girl',
             title: 'Girl',
             target: '',
@@ -119,7 +119,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/toddler-girl',
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
             alt: 'Toddler Girl alt',
             title: 'Toddler Girl title',
             crop_d: '',
@@ -127,7 +128,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/toddler-girl',
+            url: '/c/',
             text: 'Toddler Girl',
             title: 'Toddler Girl',
             target: '',
@@ -136,7 +137,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/boy',
+            url:
+              'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
             alt: 'Boy',
             title: 'Boy',
             crop_d: '',
@@ -144,7 +146,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/boy',
+            url: '/c/',
             text: 'Boy',
             title: 'Boy',
             target: '',
@@ -153,7 +155,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/toddler-boy',
+            url:
+              'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
             alt: 'Toddler Boy alt',
             title: 'Toddler Boy title',
             crop_d: '',
@@ -161,7 +164,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/toddler-boy',
+            url: '/c/',
             text: 'Toddler Boy',
             title: 'Toddler Boy',
             target: '',
@@ -170,7 +173,8 @@ export default {
         },
         {
           image: {
-            url: 'http://image.com/baby',
+            url:
+              'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
             alt: 'Baby',
             title: 'Baby',
             crop_d: '',
@@ -178,7 +182,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/baby',
+            url: '/c/',
             text: 'Baby',
             title: 'Baby',
             target: '',

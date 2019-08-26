@@ -19,6 +19,7 @@ const LoginView = ({
   queryParams,
   setLoginModalMountState,
   variation,
+  handleContinueAsGuest,
 }) => {
   return (
     <LoginSection
@@ -38,6 +39,7 @@ const LoginView = ({
       queryParams={queryParams}
       setLoginModalMountState={setLoginModalMountState}
       variation={variation}
+      handleContinueAsGuest={handleContinueAsGuest}
     />
   );
 };
@@ -59,6 +61,7 @@ LoginView.propTypes = {
   queryParams: PropTypes.shape({}).isRequired,
   setLoginModalMountState: PropTypes.bool.isRequired,
   variation: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func.isRequired,
 };
 
 LoginView.defaultProps = {

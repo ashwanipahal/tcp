@@ -23,9 +23,10 @@ export class AddedToBagContainer extends React.Component<Props> {
       labels,
       showAddTobag,
       inheritedStyles,
-      setCheckoutModalMountState,
       navigation,
+      handleCartCheckout,
       checkoutModalMountedState,
+      closeCheckoutModalMountState,
     } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
@@ -33,11 +34,12 @@ export class AddedToBagContainer extends React.Component<Props> {
     return (
       <AddedToBagActionsView
         onClickViewBag={onClickViewBag}
+        handleCartCheckout={handleCartCheckout}
         labels={labels}
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
         inheritedStyles={inheritedStyles}
-        setCheckoutModalMountState={setCheckoutModalMountState}
+        closeCheckoutModalMountState={closeCheckoutModalMountState}
         checkoutModalMountedState={checkoutModalMountedState}
         navigation={navigation}
       />
@@ -51,8 +53,8 @@ AddedToBagContainer.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCheckoutModalMountState: payload => {
-      dispatch(setCheckoutModalMountedState(payload));
+    closeCheckoutModalMountState: () => {
+      dispatch(setCheckoutModalMountedState({ state: false }));
     },
   };
 };

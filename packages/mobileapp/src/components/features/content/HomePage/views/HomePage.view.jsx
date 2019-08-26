@@ -2,28 +2,65 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
-import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN/views/ModuleN.native';
-import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
+import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
 class HomePageView extends React.Component {
   componentDidMount() {
+    this.loadBootstrapData();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { navigation: prevNav } = this.props;
+    const { navigation } = nextProps;
+    const prevShouldRefresh = prevNav.getParam('refresh', false);
+    const shouldRefresh = navigation.getParam('refresh', false);
+
+    // refresh page data on navigation refresh
+    if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
+      this.loadBootstrapData();
+      navigation.setParams({ refresh: false });
+    }
+  }
+
+  /**
+   * @function loadBootstrapData
+   * Loads bootstrap data
+   *
+   * @memberof HomePageView
+   */
+  loadBootstrapData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
     } = this.props;
-    getBootstrapData({ name: 'homepage' }, apiConfig);
-  }
+    getBootstrapData(
+      {
+        name: 'homepage',
+        modules: ['labels', 'header'],
+      },
+      apiConfig
+    );
+  };
 
   render() {
-    const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, navigation } = this.props;
+    const {
+      slot_1: slotA,
+      slot_2: slotB,
+      slot_3: slotC,
+      slot_4: slotD,
+      slot_5: slotE,
+      slot_6: slotF,
+      navigation,
+    } = this.props;
     return (
       <ScrollView>
         <React.Fragment>
-          <ModuleN navigation={navigation} />
           {slotA && <SlotA {...slotA} navigation={navigation} />}
           {slotB && <SlotB {...slotB} navigation={navigation} />}
           {slotC && <SlotC {...slotC} navigation={navigation} />}
           {slotD && <SlotD {...slotD} navigation={navigation} />}
+          {slotE && <SlotE {...slotE} navigation={navigation} />}
+          {slotF && <SlotF {...slotF} navigation={navigation} />}
           <Button
             fullWidth
             buttonVariation="variable-width"
@@ -61,6 +98,18 @@ HomePageView.propTypes = {
     type: PropTypes.string,
     contentId: PropTypes.string,
   }),
+  slot_6: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_5: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
   appType: PropTypes.string.isRequired,
@@ -72,6 +121,8 @@ HomePageView.defaultProps = {
   slot_2: {},
   slot_3: {},
   slot_4: {},
+  slot_5: {},
+  slot_6: {},
   screenProps: {},
 };
 
