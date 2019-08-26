@@ -11,6 +11,9 @@ const styles = css`
     box-sizing: border-box;
     background-color: ${props => props.theme.colors.WHITE};
   }
+  .circle-info-image {
+    width: 15px;
+  }
   .coupon_form_heading {
     margin: 0px;
     margin-bottom: 18px;

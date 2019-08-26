@@ -11,6 +11,8 @@ import { getIconPath, getLocator } from '../../../../../../../utils';
 
 import styles from '../styles/AirmilesBanner.style';
 
+// @flow
+
 class AirmilesBanner extends React.PureComponent<Props> {
   state = { touched: false };
 
@@ -25,18 +27,17 @@ class AirmilesBanner extends React.PureComponent<Props> {
     this.setState({ touched: !touched });
   };
 
-  handleSubmit = e => {
-    const { handleSubmit } = this.props;
+  handleSubmit = (data: { promoId: string, orderId: string }) => {
+    const { onAddAirmilesBanner } = this.props;
     const { touched } = this.state;
-
     if (touched) {
       this.toggleTouched();
     }
-    return handleSubmit(e);
+    onAddAirmilesBanner(data);
   };
 
   render() {
-    const { className, airmilesBannerData, labels } = this.props;
+    const { className, airmilesBannerData, labels, handleSubmit } = this.props;
 
     return (
       <div className={className}>
@@ -50,16 +51,19 @@ class AirmilesBanner extends React.PureComponent<Props> {
           >
             {labels.headerText}
           </BodyCopy>
-          <form onSubmit={this.handleSubmit} className="coupon_submit_form">
+          <form
+            onSubmit={handleSubmit(this.handleSubmit.bind(this))}
+            className="coupon_submit_form"
+          >
             <Row
               className="items-total rowMargin"
               data-locator={getLocator('order_ledger_item_label')}
             >
               <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 4, small: 3 }}>
                 <Field
-                  id="collectorNumber"
+                  id="promoId"
                   placeholder={labels.collectorNumber}
-                  name="collectorNumber"
+                  name="promoId"
                   type="text"
                   component={TextBox}
                   maxLength={11}
@@ -115,21 +119,23 @@ class AirmilesBanner extends React.PureComponent<Props> {
 AirmilesBanner.propTypes = {
   labels: PropTypes.shape({}),
   airmilesBannerData: PropTypes.shape({}),
+  onAddAirmilesBanner: PropTypes.func,
 };
 AirmilesBanner.defaultProps = {
   airmilesBannerData: {},
   labels: {},
+  onAddAirmilesBanner: () => {},
 };
 
 const validateMethod = createValidateMethod({
   rules: {
-    collectorNumber: {
+    promoId: {
       number: true,
       exactLength: 11,
     },
   },
   messages: ({ labels }) => ({
-    collectorNumber: {
+    promoId: {
       exactLength: labels.exactLength,
       number: labels.collectorOnlyNumber,
     },
