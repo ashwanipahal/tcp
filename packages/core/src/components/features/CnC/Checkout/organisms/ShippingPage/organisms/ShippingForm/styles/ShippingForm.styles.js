@@ -11,7 +11,7 @@ const styles = css`
   .email-signup-container {
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL}};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
   .emailSignupText {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};

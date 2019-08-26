@@ -31,6 +31,7 @@ export class AddressFields extends React.PureComponent {
     className: PropTypes.string,
     variation: PropTypes.string,
     checkPOBoxAddress: PropTypes.func,
+    loadShipmentMethods: PropTypes.func.isRequired,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -72,6 +73,13 @@ export class AddressFields extends React.PureComponent {
     const { checkPOBoxAddress } = this.props;
     if (checkPOBoxAddress) {
       checkPOBoxAddress();
+    }
+  };
+
+  changeShipmentMethods = () => {
+    const { loadShipmentMethods } = this.props;
+    if (loadShipmentMethods) {
+      loadShipmentMethods();
     }
   };
 
@@ -128,6 +136,7 @@ export class AddressFields extends React.PureComponent {
             dataLocator="addnewaddress-state"
             className="address-field"
             enableSuccessCheck={false}
+            onChange={this.changeShipmentMethods}
           />
         </Col>
         <Col

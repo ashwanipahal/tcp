@@ -859,6 +859,7 @@ exports[`AddressFields component should render correctly 1`] = `
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {
@@ -2647,6 +2648,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {
@@ -4137,6 +4139,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {
@@ -5627,6 +5630,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {

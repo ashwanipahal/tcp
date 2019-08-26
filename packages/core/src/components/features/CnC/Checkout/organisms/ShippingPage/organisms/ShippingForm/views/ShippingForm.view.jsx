@@ -30,6 +30,7 @@ const ShippingForm = ({
   isUsSite,
   orderHasPickUp,
   shipmentMethods,
+  loadShipmentMethods,
 }) => {
   return (
     <>
@@ -55,6 +56,7 @@ const ShippingForm = ({
               dispatch={dispatch}
               checkPOBoxAddress={checkPOBoxAddress}
               addressPhoneNo={addressPhoneNo}
+              loadShipmentMethods={loadShipmentMethods}
             />
           </FormSection>
         </div>
@@ -153,6 +155,7 @@ ShippingForm.propTypes = {
   isUsSite: PropTypes.bool,
   orderHasPickUp: PropTypes.bool,
   shipmentMethods: PropTypes.shape([]),
+  loadShipmentMethods: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {

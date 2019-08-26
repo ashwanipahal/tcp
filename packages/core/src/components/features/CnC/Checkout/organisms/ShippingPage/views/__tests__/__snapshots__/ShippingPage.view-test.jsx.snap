@@ -24,6 +24,7 @@ exports[`Shipping Page should render correctly 1`] = `
     isOrderUpdateChecked={false}
     isUsSite={true}
     keepDirtyOnReinitialize={false}
+    loadShipmentMethods={[Function]}
     onSubmit={[Function]}
     orderHasPickUp={false}
     persistentSubmitErrors={false}

@@ -111,6 +111,7 @@ export default class ShippingPage extends React.PureComponent {
       orderHasPickUp,
       shipmentMethods,
       defaultShipmentId,
+      loadShipmentMethods,
     } = this.props;
     return (
       <>
@@ -133,6 +134,7 @@ export default class ShippingPage extends React.PureComponent {
             isUsSite={isUsSite}
             orderHasPickUp={orderHasPickUp}
             shipmentMethods={shipmentMethods}
+            loadShipmentMethods={loadShipmentMethods}
           />
         )}
       </>
