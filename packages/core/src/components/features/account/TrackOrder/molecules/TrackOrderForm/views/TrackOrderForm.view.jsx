@@ -59,6 +59,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
               underline
               data-locator="track_order_need_help"
               to={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
+              target="_blank"
             >
               {labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
             </Anchor>

@@ -19,6 +19,7 @@ const getGenericErrorMessage = labels => (
       href={labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
       className="trackorder__modal__contactus"
       aria-label=""
+      target="_blank"
     >
       {labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
     </Anchor>

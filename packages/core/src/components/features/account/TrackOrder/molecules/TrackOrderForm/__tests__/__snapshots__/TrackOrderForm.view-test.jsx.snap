@@ -360,6 +360,7 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
         anchorVariation="primary"
         data-locator="track_order_need_help"
         fontSizeVariation="medium"
+        target="_blank"
         underline={true}
       />
     </Styled(BodyCopy)>
