@@ -5,6 +5,13 @@ import styles from '../Notification.style';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
+/**
+ *
+ * @param {String} className -  classname for the parent container
+ * @param {String} status - to show error or success message
+ * @param {String} message - error message
+ * @param {node} children - notification child nodes.
+ */
 const Notification = ({ className, status, message, children }) => {
   const successIcon = getIconPath('circle-check-fill');
   const errorIcon = getIconPath('circle-error-fill');

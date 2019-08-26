@@ -113,7 +113,7 @@ class AddressBookTile extends React.Component<Props> {
                       handleLinkClick={this.handleDefaultLinkClick}
                       noLink
                       to=""
-                      data-locator="addressbook-makedefault"
+                      dataLocator="addressbook-makedefault"
                     >
                       {labels.common.lbl_common_makeDefault}
                     </Anchor>
@@ -129,7 +129,7 @@ class AddressBookTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            data-locator="addressbook-edit"
+            dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
           >
             {labels.common.lbl_common_edit}
@@ -139,7 +139,7 @@ class AddressBookTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            data-locator="addressbook-deletelink"
+            dataLocator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
           >
             {labels.common.lbl_common_delete}

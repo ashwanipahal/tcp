@@ -16,19 +16,25 @@ const getGenericErrorMessage = labels => (
     fontWeight="extrabold"
     fontFamily="secondary"
   >
-    <BodyCopy>{labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}</BodyCopy>
+    <BodyCopy>
+      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}
+    </BodyCopy>
     <Anchor
       data-locator="contact_us_form_help"
       underline
       anchorVariation="primary"
-      href={labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
+      href={
+        labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref
+      }
       className="trackorder__modal__contactus"
       aria-label=""
       target="_blank"
     >
-      {labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
+      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
     </Anchor>
-    <BodyCopy>{labels.trackOrder.lbl_header_trackOrderOverlay_genericError2}</BodyCopy>
+    <BodyCopy>
+      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError2}
+    </BodyCopy>
   </BodyCopy>
 );
 

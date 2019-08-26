@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FooterVanilla } from '../views/Footer.view';
 
+jest.mock('../../Header/molecules/CountrySelector', () => () => <div>country selector</div>);
+
 describe('Footer component', () => {
   it('Footer component renders correctly without props', () => {
     const component = shallow(<FooterVanilla />);

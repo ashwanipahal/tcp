@@ -22,7 +22,7 @@ const renderMobileMarkup = (dataPromo, className) => {
     >
       {dataPromo.map(promoItem => (
         <Anchor
-          data-locator={getLocator('promo_item')}
+          dataLocator={getLocator('promo_item')}
           className="header-promo__item"
           to={promoItem.linkClass.url}
           target={promoItem.linkClass.target}
@@ -71,7 +71,7 @@ const renderDesktopMarkup = (dataPromo, className) => {
           }}
         >
           <Anchor
-            data-locator={getLocator('promo_item')}
+            dataLocator={getLocator('promo_item')}
             className="header-promo__item"
             to={promoItem.linkClass.url}
             target={promoItem.linkClass.target}

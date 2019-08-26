@@ -57,7 +57,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
               fontSizeVariation="medium"
               anchorVariation="primary"
               underline
-              data-locator="track_order_need_help"
+              dataLocator="track_order_need_help"
               to={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
               target="_blank"
             >

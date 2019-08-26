@@ -39,6 +39,7 @@ const SelectBox = ({
   meta: { touched, error },
   dataLocator,
   disabled,
+  ...otherProps
 }: Props): Node => {
   return (
     <div className={className}>
@@ -50,14 +51,19 @@ const SelectBox = ({
         name={name}
         value={input.value || placeholder}
         data-locator={dataLocator}
+        {...otherProps}
         disabled={disabled}
       >
         {!input.value && placeholder && <option value="">{placeholder}</option>}
         {options &&
           options.map(option => {
             return (
-              <option value={option.id} id={option.id} key={option.id}>
-                {option.displayName}
+              <option
+                value={option.id || option.get('id')}
+                id={option.id || option.get('id')}
+                key={option.id || option.get('id')}
+              >
+                {option.displayName || option.get('displayName')}
               </option>
             );
           })}
