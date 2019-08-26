@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdaySaving should render correctly 1`] = `
+<MyProfileTile
+  ctaLink="accountOverviewMobile"
+  ctaTitle=""
+  dataLocator="pi-addbirthdayinfo"
+  handleComponentChange={[Function]}
+  title=""
+>
+  <Styled(Styled(BodyCopy))
+    fontSize="fs14"
+  />
+</MyProfileTile>
+`;
