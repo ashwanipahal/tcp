@@ -31,4 +31,5 @@ export {
   resetApiConfig,
   bindAllClassMethodsToThis,
   getAddressFromPlace,
+  formatAddress,
 } from './utils';

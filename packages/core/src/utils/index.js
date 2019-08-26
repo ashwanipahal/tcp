@@ -31,4 +31,5 @@ export {
   getAPIConfig,
   isCanada,
   getAddressFromPlace,
+  formatAddress,
 } from './utils';

@@ -177,6 +177,17 @@ export const getAddressFromPlace = (place, inputValue) => {
   return address;
 };
 
+export const formatAddress = address => ({
+  firstName: address.firstName,
+  lastName: address.lastName,
+  addressLine: [address.address1, address.address2 || ''],
+  city: address.city,
+  state: address.state,
+  country: address.country,
+  zipCode: address.zip,
+  phone1: address.phoneNumber,
+});
+
 export default {
   getIconPath,
   getLocator,
@@ -190,4 +201,5 @@ export default {
   isGymboree,
   isTCP,
   getAddressFromPlace,
+  formatAddress,
 };
