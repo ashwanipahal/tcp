@@ -338,8 +338,6 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_btnSaveUpdate: btnSaveUpdate,
     lbl_pickup_titleEditPickUp: titleEditPickup,
     lbl_pickup_anchor_edit: anchorEdit,
-    lbl_pickup_returnTo: returnTo,
-    lbl_pickup_nextText: nextText,
     lbl_pickup_buttonText: pickupText,
     lbl_pickup_billingText: billingText,
   } = state.Labels.global && state.Labels.checkout.pickup;
@@ -366,8 +364,6 @@ export const getPickUpContactFormLabels = state => {
     btnSaveUpdate,
     titleEditPickup,
     anchorEdit,
-    returnTo,
-    nextText,
     pickupText,
     billingText,
   };
