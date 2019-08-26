@@ -6,7 +6,7 @@ export const ScrollViewContainer = styled.View`
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
-export const TextLiksViewContainer = styled.View`
+export const TextLinksViewContainer = styled.View`
   padding-left: 16px;
 `;
 
@@ -34,7 +34,7 @@ export const ContainerView = styled.View``;
 export default {
   Container,
   ScrollViewContainer,
-  TextLiksViewContainer,
+  TextLinksViewContainer,
   DivImageContainer,
   Wrapper,
   SeperatorView,

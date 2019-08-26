@@ -41,7 +41,6 @@ export const BonusPointsReadSection = ({
           <Anchor
             anchorVariation="primary"
             fontSizeVariation="large"
-            underline
             onPress={toggleBonusPointsModal}
             data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
             text={labels.lbl_bonus_points_detailLink}
@@ -50,13 +49,7 @@ export const BonusPointsReadSection = ({
       </BonusDayHeader>
 
       <BonusDayWrapper>
-        <BodyCopy
-          fontSize="fs14"
-          fontWeight="regular"
-          color="black"
-          text={message}
-          marginRight="10"
-        />
+        <BodyCopy fontSize="fs14" fontWeight="regular" color="black" text={message} />
         {usedDaysArray.length > 0 && usedDaysArray.map(() => <DotInactive />)}
         {availableDaysArray.length > 0 && availableDaysArray.map(() => <DotActive />)}
       </BonusDayWrapper>
