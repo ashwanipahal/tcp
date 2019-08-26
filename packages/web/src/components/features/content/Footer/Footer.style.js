@@ -96,6 +96,12 @@ export default css`
     }
   }
 
+  &.navigation-footer {
+    .reference-id {
+      display: none;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;

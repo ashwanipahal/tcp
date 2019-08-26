@@ -10,6 +10,8 @@ import {
   getLoadedProductsCount,
   getUnbxdId,
   getBreadCrumbTrail,
+  getProductsFilters,
+  getCategoryId,
   getLabelsProductListing,
   getLongDescription,
 } from './ProductListing.selectors';
@@ -27,17 +29,23 @@ class ProductListingContainer extends React.PureComponent {
       currentNavIds,
       navTree,
       breadCrumbs,
+      filters,
       longDescription,
       labels,
+      labelsFilter,
+      categoryId,
       ...otherProps
     } = this.props;
     return (
       <ProductListing
         products={products}
+        filters={filters}
         currentNavIds={currentNavIds}
+        categoryId={categoryId}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
         longDescription={longDescription}
+        labelsFilter={labelsFilter}
         labels={labels}
         {...otherProps}
       />
@@ -48,11 +56,14 @@ class ProductListingContainer extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     products: getProductsSelect(state),
+    filters: getProductsFilters(state),
     currentNavIds: state.ProductListing.currentNavigationIds,
+    categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
+    labelsFilter: state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
   };
@@ -70,13 +81,16 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  filters: PropTypes.shape({}),
   longDescription: PropTypes.string,
-  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   navigation: PropTypes.shape({}).isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingContainer.defaultProps = {
@@ -84,8 +98,10 @@ ProductListingContainer.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  filters: {},
   longDescription: '',
   labels: {},
+  labelsFilter: {},
 };
 
 export default connect(

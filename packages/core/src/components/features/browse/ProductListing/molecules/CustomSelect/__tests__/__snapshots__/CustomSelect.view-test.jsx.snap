@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Select is shown should render Custom Select  1`] = `
+<StyledComponent
+  allowMultipleSelections={false}
+  appliedFilterVal={1}
+  buttonIconClosed=""
+  buttonIconExpanded=""
+  className=""
+  disableExpandStateChanges={false}
+  disabled={false}
+  expanded={false}
+  facetName=""
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-ifAKCX",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .filter-label {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    padding-right: ",
+          [Function],
+          ";
+
+    &:after {
+      content: '';
+      position: absolute;
+      transform: rotate(45deg);
+      width: 7px;
+      height: 2px;
+      background: ",
+          [Function],
+          ";
+      display: inline-block;
+      top: 10px;
+      right: 3px;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      border-radius: 15px;
+      background: ",
+          [Function],
+          ";
+      display: inline-block;
+      top: 10px;
+      right: -2px;
+      bottom: 16px;
+      transform: rotate(-45deg);
+    }
+  }
+  .filter-label-expanded {
+    font-weight: bold;
+    &:after {
+      transform: rotate(-45deg);
+      background: ",
+          [Function],
+          ";
+    }
+    &:before {
+      transform: rotate(45deg);
+      background: ",
+          [Function],
+          ";
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "customSelectCounter": 0,
+      "displayName": "Styled(CustomSelect)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-ifAKCX",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  input={Object {}}
+  labels={Object {}}
+  onCloseCallback={[MockFunction]}
+  onExpandCallback={[MockFunction]}
+  optionsMap={Object {}}
+  placeholder=""
+  selectOnHighlight={false}
+  selectTextOverride=""
+  showErrorIfUntouched={false}
+  tabIndex={0}
+  title=""
+/>
+`;

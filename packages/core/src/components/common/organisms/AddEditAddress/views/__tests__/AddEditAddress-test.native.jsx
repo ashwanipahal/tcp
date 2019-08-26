@@ -13,11 +13,17 @@ describe('AddEditAddress Native', () => {
   });
 
   it('should render correctly', () => {
+    component.setProps({ currentForm: 'AddAddress' });
     expect(component).toMatchSnapshot();
   });
 
   it('should return the length of view as 1', () => {
     expect(component).toHaveLength(1);
     expect(component.find('View')).toHaveLength(1);
+  });
+
+  it('should test with verification modal', () => {
+    component.setProps({ currentForm: 'VerificationModal' });
+    expect(component).toMatchSnapshot();
   });
 });
