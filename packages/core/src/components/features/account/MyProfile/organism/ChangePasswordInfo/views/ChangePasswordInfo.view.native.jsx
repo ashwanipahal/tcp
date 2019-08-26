@@ -5,7 +5,8 @@ import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/style
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
-import { ChangePassword } from '@tcp/core/src/components/features/account/ChangePassword';
+import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import ChangePasswordContainer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.container';
 import {
   ModalHeading,
   ModalViewWrapper,
@@ -55,18 +56,15 @@ export class ChangePasswordInfo extends React.PureComponent {
               mobileFontFamily={['secondary']}
               fontWeight="extrabold"
               fontSize="fs16"
-              text="password"
+              text={labels.lbl_profile_change_password}
             />
           </ModalHeading>
+          <LineWrapper>
+            <LineComp marginTop={10} marginBottom={10} borderWidth={1.5} borderColor="black" />
+          </LineWrapper>
           <SafeAreaView>
             <ModalViewWrapper>
-              <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="extrabold"
-                fontSize="fs16"
-                text="password"
-              />
-              {/* <ChangePassword labels={labels} onClose={this.toggleModal} /> */}
+              <ChangePasswordContainer labels={labels} onClose={this.toggleModal} />
             </ModalViewWrapper>
           </SafeAreaView>
         </ModalNative>

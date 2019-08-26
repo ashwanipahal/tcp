@@ -13,6 +13,11 @@ export class ChangePasswordContainer extends PureComponent {
     changePasswordAction: PropTypes.func.isRequired,
     messageSateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
+    onClose: PropTypes.func,
+  };
+
+  static defaultProps = {
+    onClose: () => {},
   };
 
   componentDidUpdate() {
@@ -42,13 +47,14 @@ export class ChangePasswordContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels } = this.props;
+    const { successMessage, errorMessage, labels, onClose } = this.props;
     return (
       <ChangePasswordComponent
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={this.changePassword}
         labels={labels}
+        onClose={onClose}
       />
     );
   }

@@ -1,15 +1,29 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-const styles = css`
-  @media ${props => props.theme.mediaQuery.smallMax} {
-    .ChangePasswordForm_cancel {
-      order: 2;
-    }
-
-    .ChangePasswordForm_save {
-      order: 1;
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
-  }
+const HideShowField = styled.View`
+  position: absolute;
+  right: 0;
+  top: 16px;
+  border-bottom-width: 1px;
+  border-bottom-color: black;
 `;
-export default styles;
+
+const CurrentPasswordWrapper = styled.View`
+  position: relative;
+  margin-top: 25px;
+`;
+
+const NewPasswordWrapper = styled.View`
+  position: relative;
+`;
+
+const ConfirmPasswordWrapper = styled.View`
+  position: relative;
+  margin-bottom: 30px;
+`;
+
+const CancelWrapper = styled.View`
+  margin-top: 20px;
+`;
+
+export { HideShowField, CurrentPasswordWrapper, NewPasswordWrapper, ConfirmPasswordWrapper, CancelWrapper };
