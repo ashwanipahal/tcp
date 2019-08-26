@@ -81,7 +81,6 @@ ChangePasswordInfo.propTypes = {
     lbl_profile_password_info_line1: PropTypes.string,
     lbl_profile_password_info_line2: PropTypes.string,
   }),
-  handleComponentChange: PropTypes.func.isRequired,
 };
 
 ChangePasswordInfo.defaultProps = {

@@ -3,14 +3,14 @@ import styled from 'styled-components';
 const HideShowField = styled.View`
   position: absolute;
   right: 0;
-  top: 16px;
+  top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   border-bottom-width: 1px;
   border-bottom-color: black;
 `;
 
 const CurrentPasswordWrapper = styled.View`
   position: relative;
-  margin-top: 25px;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 const NewPasswordWrapper = styled.View`
@@ -19,11 +19,17 @@ const NewPasswordWrapper = styled.View`
 
 const ConfirmPasswordWrapper = styled.View`
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 const CancelWrapper = styled.View`
-  margin-top: 20px;
+  margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 
-export { HideShowField, CurrentPasswordWrapper, NewPasswordWrapper, ConfirmPasswordWrapper, CancelWrapper };
+export {
+  HideShowField,
+  CurrentPasswordWrapper,
+  NewPasswordWrapper,
+  ConfirmPasswordWrapper,
+  CancelWrapper,
+};
