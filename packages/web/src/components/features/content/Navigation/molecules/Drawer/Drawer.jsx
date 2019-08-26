@@ -32,7 +32,7 @@ const renderDrawerFooter = (hideNavigationFooter, drawerFooter) => {
   if (hideNavigationFooter) {
     classToHide = 'is-hidden';
   }
-  return drawerFooter && <Footer className={classToHide} />;
+  return drawerFooter && <Footer className={`navigation-footer ${classToHide}`} />;
 };
 
 const Drawer = props => {
