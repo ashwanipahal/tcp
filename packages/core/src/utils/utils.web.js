@@ -5,6 +5,7 @@ import icons from '../config/icons';
 import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
+import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -42,8 +43,7 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const routerPush = (href, as, query) => {
-  const siteId = getSiteId();
+export const routerPush = (href, as, query, siteId = getSiteId()) => {
   return Router.push(href, `/${siteId}${as}`, { query });
 };
 
@@ -209,6 +209,56 @@ export const scrollPage = (x = 0, y = 0) => {
   }
 };
 
+export const getCountriesMap = data => {
+  const countries = defaultCountries;
+  data.map(value =>
+    countries.push(
+      Object.assign({}, value.country, { siteId: 'us', currencyId: value.currency.id })
+    )
+  );
+  return countries;
+};
+
+export const getCurrenciesMap = data => {
+  const currencies = defaultCurrencies;
+  data.map(value => currencies.push(Object.assign({}, value.currency, value.exchangeRate)));
+  return currencies.filter(
+    (currency, index, self) => index === self.findIndex(cur => cur.id === currency.id)
+  );
+};
+
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+
+export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
+  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
+    routerPush(window.location, '/home', newSiteId);
+  }
+};
+
+export const languageRedirect = (newLanguage, oldLanguage) => {
+  if (newLanguage && newLanguage !== oldLanguage) {
+    const { protocol, host, pathname } = window.location;
+    if (newLanguage === 'fr' && host.indexOf('fr.') === -1) {
+      const href = `${protocol}//fr.${host}${pathname}`;
+      window.location = href;
+    } else if (newLanguage === 'es' && host.indexOf('es.') === -1) {
+      const href = `${protocol}//es.${host}${pathname}`;
+      window.location = href;
+    }
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -223,6 +273,11 @@ export default {
   routerPush,
   bindAllClassMethodsToThis,
   scrollPage,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
@@ -243,9 +298,6 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
-    raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
-    envId: processEnv.RWD_WEB_ENV_ID,
-    channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
   };
 };
 

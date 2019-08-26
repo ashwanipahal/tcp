@@ -11,11 +11,6 @@ const {
   setEnvConfig,
   HEALTH_CHECK_PATH,
 } = require('./config/server.config');
-const {
-  initErrorReporter,
-  getExpressMiddleware,
-} = require('@tcp/core/src/utils/errorReporter.util');
-const { ENV_DEVELOPMENT } = require('@tcp/core/src/constants/env.config');
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
@@ -29,22 +24,16 @@ const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
 
-const setErrorReporter = () => {
-  const config = {
-    isServer: true,
-    envId: process.env.RWD_WEB_ENV_ID,
-    raygunApiKey: process.env.RWD_WEB_RAYGUN_API_KEY,
-    isDevelopment: process.env.NODE_ENV === ENV_DEVELOPMENT,
-  };
-  initErrorReporter(config);
-  const expressMiddleWare = getExpressMiddleware();
-  if (expressMiddleWare) {
-    server.use(expressMiddleWare);
-  }
-};
 settingDeviceConfig(server, device);
 
-const setSiteId = (req, res) => {
+const getLanguageByDomain = domain => {
+  let langCode = domain.substr(0, 2).toLowerCase();
+
+  // FIXME: backend should return this somehow, if not possible we need to complete this list
+  return langCode === 'es' || langCode === 'en' || langCode === 'fr' ? langCode : 'en';
+};
+
+const setSiteDetails = (req, res) => {
   const { url } = req;
   let siteId = siteIds.us;
   let reqUrl = url.split('/');
@@ -55,6 +44,9 @@ const setSiteId = (req, res) => {
     }
   }
   res.locals.siteId = siteId;
+  res.locals.country = siteId === siteIds.ca ? 'CA' : 'US';
+  res.locals.currency = siteId === siteIds.ca ? 'CAD' : 'USD';
+  res.locals.language = getLanguageByDomain(req.hostname);
 };
 
 // TODO - To be picked from env config file when Gym build process is done....
@@ -76,8 +68,6 @@ const setHostname = (req, res) => {
   res.locals.hostname = hostname;
 };
 
-setErrorReporter();
-
 app.prepare().then(() => {
   // Looping through the routes and providing the corresponding resolver route
   RoutesMap.forEach(route => {
@@ -86,7 +76,7 @@ app.prepare().then(() => {
       ? route.path
       : sites.map(location => `/${location}${route.path}`);
     server.get(routePaths, (req, res) => {
-      setSiteId(req, res);
+      setSiteDetails(req, res);
       setBrandId(req, res);
       setHostname(req, res);
       // Handling routes without params

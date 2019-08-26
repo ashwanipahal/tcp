@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Country Selector Component renders correctly 1`] = `
+<div
+  className="undefined countrySelector"
+>
+  <Styled(BodyCopy)
+    className="countrySelector__shipTo"
+    color="gray.800"
+    component="div"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    Ship To
+  </Styled(BodyCopy)>
+  <ReduxForm
+    closeModal={[Function]}
+    countriesMap={
+      Array [
+        Object {
+          "currencyId": "USD",
+          "displayName": "United States",
+          "id": "US",
+          "siteId": "us",
+        },
+        Object {
+          "currencyId": "CAD",
+          "displayName": "CANADA",
+          "id": "CA",
+          "siteId": "ca",
+        },
+      ]
+    }
+    currenciesMap={
+      Array [
+        Object {
+          "displayName": "Dollars",
+          "id": "USD",
+          "merchantMargin": "1.0",
+          "value": "1.0",
+        },
+        Object {
+          "displayName": "Canada Dollar",
+          "id": "CAD",
+          "merchantMargin": "1.0",
+          "value": "1.0",
+        },
+      ]
+    }
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="CountrySelectorForm"
+    getFormState={[Function]}
+    handleSubmit={[Function]}
+    initialValues={
+      Object {
+        "country": "US",
+        "currency": "USD",
+        "language": "en",
+      }
+    }
+    isModalOpen={false}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "lbl_global_country": "Country",
+        "lbl_global_country_selector_cta": "SAVE",
+        "lbl_global_country_selector_header": "Ship To",
+        "lbl_global_country_selector_note": "NOTE: If you change your shipping destination.",
+        "lbl_global_country_selector_subheader": "Change Shipping Preference",
+        "lbl_global_currency": "Currency",
+        "lbl_global_language": "Language",
+      }
+    }
+    languages={
+      Immutable.List [
+        Immutable.Map {
+          "id": "en",
+          "displayName": "English",
+        },
+        Immutable.Map {
+          "id": "es",
+          "displayName": "Spanish",
+        },
+      ]
+    }
+    noteContent="sdfsdf"
+    persistentSubmitErrors={false}
+    pure={true}
+    savedCountry="US"
+    savedCurrency="USD"
+    savedLanguage="en"
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateCountry={[Function]}
+    updateCurrency={[Function]}
+    updateLanguage={[Function]}
+    updateUnregisteredFields={false}
+    updatedCountry="US"
+    updatedCurrency="USD"
+  />
+  <div
+    className="countrySelector__flag-icon"
+  >
+    <Styled(Image)
+      data-locator="footer_country_flag"
+      height="20px"
+      onClick={[Function]}
+      src="/static/images/flags/united-states-of-america.svg"
+      width="20px"
+    />
+  </div>
+  <div>
+    <Styled(BodyCopy)
+      className="countrySelector__locale--selected countrySelector__locale"
+      color="text.primary"
+      component="span"
+      data-locator="footer_language_selected"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      key="0"
+      letterSpacing="normal"
+      lineHeight="normal"
+      onClick={[Function]}
+      textAlign="left"
+    >
+      en
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="countrySelector__locale--disabled countrySelector__locale"
+      color="text.primary"
+      component="span"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      key="1"
+      letterSpacing="normal"
+      lineHeight="normal"
+      onClick={[Function]}
+      textAlign="left"
+    >
+      es
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
