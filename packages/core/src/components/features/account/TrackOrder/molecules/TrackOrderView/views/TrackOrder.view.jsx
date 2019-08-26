@@ -9,13 +9,18 @@ import TrackOrderBottomSection from '../../TrackOrderBottomSection';
 import styles from '../styles/TrackOrderView.style';
 
 const getGenericErrorMessage = labels => (
-  <BodyCopy component="div" className="generic__error__message">
+  <BodyCopy
+    component="div"
+    className="generic__error__message"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    fontFamily="secondary"
+  >
     <BodyCopy>{labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}</BodyCopy>
     <Anchor
       data-locator="contact_us_form_help"
       underline
       anchorVariation="primary"
-      fontSize="fs12"
       href={labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
       className="trackorder__modal__contactus"
       aria-label=""
