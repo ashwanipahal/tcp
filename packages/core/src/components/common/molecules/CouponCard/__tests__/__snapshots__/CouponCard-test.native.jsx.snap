@@ -47,7 +47,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               <Styled(Anchor)
                 anchorVariation="primary"
                 customStyle={Object {}}
-                data-locator=""
+                dataLocator=""
                 fontFamily="secondary"
                 fontSizeVariation="small"
                 locator=""

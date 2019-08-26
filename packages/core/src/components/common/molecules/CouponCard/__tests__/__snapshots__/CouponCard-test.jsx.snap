@@ -95,7 +95,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             <Styled(Anchor)
               anchorVariation="primary"
               className="cartDetailsLink"
-              data-locator="coupon_available_cartDetailsLink"
+              dataLocator="coupon_available_cartDetailsLink"
               fontSize="fs10"
               fontSizeVariation="small"
               onClick={[Function]}

@@ -9,7 +9,9 @@ exports[`Anchor component renders correctly 1`] = `
 >
   <a
     className="sample-anchor"
-    target=""
+    data-locator=""
+    href="/undefined"
+    target="_self"
     title=""
   >
     Random anchor
@@ -23,7 +25,7 @@ exports[`Anchor component renders correctly with nolink variation 1`] = `
   data-locator=""
   href="/undefined"
   onClick={[Function]}
-  target=""
+  target="_self"
   title=""
 >
   Random anchor with no link component

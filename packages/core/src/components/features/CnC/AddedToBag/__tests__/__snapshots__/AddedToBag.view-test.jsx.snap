@@ -78,7 +78,7 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="addedToBag-continueShopping"
+        dataLocator="addedToBag-continueShopping"
         fontSizeVariation="medium"
         handleLinkClick={[MockFunction]}
         noLink={true}

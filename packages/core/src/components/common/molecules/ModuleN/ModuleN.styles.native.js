@@ -22,9 +22,7 @@ export const Border = styled.View`
       : props.theme.colorPalette.primary.dark};
 `;
 
-export const DivImageCTAContainer = styled.View`
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-`;
+export const DivImageCTAContainer = styled.View``;
 
 export default {
   Container,

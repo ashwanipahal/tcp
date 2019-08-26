@@ -2,13 +2,16 @@
 
 exports[`AutoCompleteComponent Native should render correctly 1`] = `
 <Styled(View)>
-  <Styled(Text)>
+  <Styled(Text)
+    isFocused={false}
+  >
     test
   </Styled(Text)>
   <GooglePlacesAutocomplete
     GooglePlacesSearchQuery={
       Object {
         "rankby": "distance",
+        "types": "food",
       }
     }
     GoogleReverseGeocodingQuery={Object {}}
@@ -22,16 +25,11 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     enableHighAccuracyLocation={true}
     enablePoweredByContainer={true}
     fetchDetails={true}
-    filterReverseGeocodingByTypes={
-      Array [
-        "locality",
-        "administrative_area_level_3",
-      ]
-    }
+    filterReverseGeocodingByTypes={Array []}
     getDefaultValue={[Function]}
     isRowScrollable={true}
     keyboardShouldPersistTaps="always"
-    listViewDisplayed="auto"
+    listViewDisplayed={false}
     minLength={2}
     nearbyPlacesAPI="GooglePlacesSearch"
     numberOfLines={1}
@@ -46,7 +44,8 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     predefinedPlacesAlwaysVisible={false}
     query={
       Object {
-        "key": undefined,
+        "components": "country:undefined",
+        "key": "AIzaSyAd-jljPEQ6kgrLRJuN-ENKypW9K6sbQgc",
         "language": "en",
         "types": "(cities)",
       }
@@ -55,23 +54,30 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     returnKeyType="search"
     styles={
       Object {
+        "container": Object {
+          "flex": 1,
+        },
         "description": Object {
           "fontWeight": "700",
         },
         "listView": Object {
           "backgroundColor": "#ffffff",
-          "opacity": 1,
-          "zIndex": 3,
         },
         "poweredContainer": Object {
-          "display": "flex",
+          "alignItems": "center",
           "flexDirection": "row",
           "justifyContent": "flex-end",
+        },
+        "row": Object {
+          "height": 35,
+          "paddingBottom": 6,
+          "paddingLeft": 6,
+          "paddingRight": 6,
+          "paddingTop": 8,
         },
         "separator": Object {
           "borderBottomColor": "#c3c3c3",
           "borderBottomWidth": 1,
-          "padding": 2,
         },
         "textInput": Object {
           "borderBottomColor": "#c3c3c3",

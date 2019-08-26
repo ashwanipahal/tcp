@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAltImages component should renders renderVideoContent correctly 1`] = `
+<figure
+  className="product-image-container"
+  itemScope={true}
+  itemType="http://schema.org/ImageObject"
+>
+  <a
+    className={false}
+    href="url"
+    onClick={[Function]}
+    title=""
+    unbxdattr="product"
+    unbxdparam_prank={1}
+    unbxdparam_sku={1}
+  >
+    <img
+      alt=""
+      itemProp="contentUrl"
+      src={1}
+      srcSet=""
+    />
+  </a>
+</figure>
+`;

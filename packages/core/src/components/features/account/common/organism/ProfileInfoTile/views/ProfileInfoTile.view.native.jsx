@@ -46,7 +46,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
               underline
               fontSizeVariation="large"
               noLink
-              data-locator="personalInfo-overview-edit"
+              dataLocator="personalInfo-overview-edit"
               color="gray.900"
             />
           </RightCol>
@@ -95,7 +95,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
               underline
               fontSizeVariation="large"
               noLink
-              data-locator="mailingAddress-overview-edit"
+              dataLocator="mailingAddress-overview-edit"
               color="gray.900"
             />
           </RightCol>
@@ -122,7 +122,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
               underline
               fontSizeVariation="large"
               noLink
-              data-locator="password-overview-edit"
+              dataLocator="password-overview-edit"
               color="gray.900"
             />
           </RightCol>
