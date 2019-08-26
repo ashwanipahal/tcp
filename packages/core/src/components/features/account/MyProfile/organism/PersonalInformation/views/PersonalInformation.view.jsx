@@ -56,6 +56,7 @@ const PersonalInformation = ({
                 address={address}
                 dataLocatorPrefix="profileinfo-editmailing"
                 showName={false}
+                className="profileInformationAddress"
               />
             </MyProfileTile>
           </Col>
