@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInfoActionTile should render correctly 1`] = `
+<Styled(View)
+  onPress={[Function]}
+>
+  <Styled(Styled(ImageComp))
+    alt="test"
+    source="/test"
+    title="test"
+  />
+  <View>
+    <Styled(BodyCopy)
+      fontSize="fs16"
+      fontWeight="semibold"
+      text="test"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      fontSize="fs14"
+      text="test"
+      textAlign="center"
+    />
+  </View>
+</Styled(View)>
+`;
+
+exports[`ProfileInfoActionTile should render correctly when activityCompletionState is present 1`] = `
+<Styled(View)
+  onPress={[Function]}
+>
+  <Styled(Styled(ImageComp))
+    alt="test"
+    source={
+      Object {
+        "testUri": "../../../../core/src/assets/done.png",
+      }
+    }
+    title="test"
+  />
+  <Styled(Styled(ImageComp))
+    alt="test"
+    source="/test"
+    title="test"
+  />
+  <View>
+    <Styled(BodyCopy)
+      fontSize="fs16"
+      fontWeight="semibold"
+      text="added"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      fontSize="fs14"
+      text="test"
+      textAlign="center"
+    />
+  </View>
+</Styled(View)>
+`;

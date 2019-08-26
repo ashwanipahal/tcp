@@ -5,19 +5,23 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 export const OuterCircleWrapper = styled.View`
   align-items: center;
   justify-content: center;
-  width: ${props => props.radius * 2};
-  height: ${props => props.radius * 2};
-  border-radius: ${props => props.radius};
-  backgroundColor: ${props => props.shadowColor || props.theme.colorPalette.black};
   position: relative;
+  ${props => `
+    width: ${props.radius * 2};
+    height: ${props.radius * 2};
+    border-radius: ${props.radius};
+    backgroundColor: ${props.shadowColor};
+  `}
 `;
 
 export const HalfCircleOuterWrapper = styled.View`
   position: absolute;
   top: 0;
   left: 0;
-  width: ${props => props.radius};
-  height: ${props => props.radius * 2};
+  ${props => `
+    width: ${props.radius};
+    height: ${props.radius * 2};
+  `}
 `;
 
 export const HalfCircleInnerWrapper = styled.View`
@@ -31,7 +35,9 @@ export const HalfCircleInnerWrapper = styled.View`
     width: ${props.radius};
     height: ${props.radius * 2};
     border-radius: ${props.radius};
-    transform: translateX(-${props.radius/2}px) rotate(${props.rotateDegrees}deg) translateX(${props.radius/2}px);
+    transform: translateX(-${props.radius / 2}px) rotate(${
+    props.rotateDegrees
+  }deg) translateX(${props.radius / 2}px);
     background-color: ${props.backgroundColor ? props.backgroundColor : props.color};
   `}
 `;

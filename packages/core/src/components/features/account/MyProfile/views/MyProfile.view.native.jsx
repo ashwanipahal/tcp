@@ -9,7 +9,7 @@ export const MyProfile = ({ labels, handleComponentChange }) => {
   return (
     <View>
       <StyledHeading>{labels.lbl_profile_heading}</StyledHeading>
-      <LineComp marginBottom={40} borderWidth={1} borderColor="black" />
+      <LineComp marginBottom={28} borderWidth={1} borderColor="black" />
       <ProfileInformation labels={labels} handleComponentChange={handleComponentChange} />
     </View>
   );

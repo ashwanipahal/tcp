@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileProgress should render correctly 1`] = `
+<Styled(View)
+  radius={50}
+  shadowColor="#000"
+>
+  <Styled(View)
+    radius={50}
+  >
+    <Styled(View)
+      color="#1ba5e0"
+      radius={50}
+      rotateDegrees={72}
+    />
+  </Styled(View)>
+  <Styled(View)
+    radius={50}
+  >
+    <Styled(View)
+      backgroundColor="#000"
+      color="#1ba5e0"
+      radius={50}
+      rotateDegrees={0}
+    />
+  </Styled(View)>
+  <Styled(View)
+    bgColor="#fff"
+    radiusMinusBorder={48}
+  >
+    <Styled(Styled(ImageComp))
+      alt="Completion"
+      resizeMode="contain"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/smiley-icon.png",
+        }
+      }
+      title="profile completion"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    fontSize="fs18"
+    fontWeight="black"
+    text="20%"
+  />
+</Styled(View)>
+`;

@@ -2,24 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-// import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import { fromJS } from 'immutable';
 import ProfileInfoActionTile from '../../../molecules/ProfileInfoActionTile';
 import ProfileProgress from '../../../molecules/ProfileProgress';
-import { TopRowWrapper, ProfileProgressWrapper, ProfileTextWrapper, ProfileTileWrapper } from '../styles/ProfileInfoActions.style.native';
+import {
+  TopRowWrapper,
+  ProfileProgressWrapper,
+  ProfileTextWrapper,
+  ProfileTileWrapper,
+} from '../styles/ProfileInfoActions.style.native';
 import {
   getMailingAddressState,
   getFavStoreState,
   getUserBirthdayState,
-  getAboutYourselfState
+  getAboutYourselfState,
 } from '../ProfileInfoActions.utils';
 
 const mailingAddressIcon = require('@tcp/core/src/assets/mailingAddress.png');
 const favStoreIcon = require('@tcp/core/src/assets/store.png');
 const birthdayIcon = require('@tcp/core/src/assets/birthday.png');
 const surveyIcon = require('@tcp/core/src/assets/survey.png');
-
 
 export const ProfileInfoActions = ({
   labels,
@@ -29,7 +31,8 @@ export const ProfileInfoActions = ({
   userBirthday,
   userSurvey,
   percentageIncrement,
- }) => {
+  handleComponentChange,
+}) => {
   return (
     <MyProfileTile>
       <TopRowWrapper>
@@ -42,36 +45,19 @@ export const ProfileInfoActions = ({
           />
           {profileCompletion === '100' ? (
             <>
-              <BodyCopy
-                fontSize="fs16"
-                text={labels.lbl_profile_profileCompletionExclamation}
-              />
-              <BodyCopy
-                fontSize="fs16"
-                text={labels.lbl_profile_profileCompletionMessage}
-              />
-              <BodyCopy
-                fontSize="fs16"
-                text={labels.lbl_profile_getMorePoints}
-              />
+              <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileCompletionExclamation} />
+              <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileCompletionMessage} />
+              <BodyCopy fontSize="fs16" text={labels.lbl_profile_getMorePoints} />
             </>
           ) : (
-            <BodyCopy
-              fontSize="fs16"
-              text={labels.lbl_profile_profileInCompleteMessage}
-            />
+            <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileInCompleteMessage} />
           )}
         </ProfileTextWrapper>
         {!!profileCompletion && (
-        <ProfileProgressWrapper>
-          <ProfileProgress
-            percent={profileCompletion}
-            radius={50}
-            borderWidth={10}
-          />
-        </ProfileProgressWrapper>
+          <ProfileProgressWrapper>
+            <ProfileProgress profileCompletion={profileCompletion} radius={50} borderWidth={10} />
+          </ProfileProgressWrapper>
         )}
-
       </TopRowWrapper>
       <ProfileTileWrapper>
         <ProfileInfoActionTile
@@ -80,8 +66,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageMailingAddress}%`}
           activityCompletionState={getMailingAddressState(mailingAddress, labels)}
           activityDescription={labels.lbl_profile_mailingAddressDescription}
-          redirectTo="/account"
-          dataLocatorPrefix="email"
+          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
         />
         <ProfileInfoActionTile
           activityId="favStore"
@@ -89,8 +74,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageFavStore}%`}
           activityCompletionState={getFavStoreState(defaultStore, labels)}
           activityDescription={labels.lbl_profile_favStoreDescription}
-          redirectTo="/account"
-          dataLocatorPrefix="favStore"
+          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
         />
         <ProfileInfoActionTile
           activityId="userBirthday"
@@ -98,8 +82,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageUserBirthday}%`}
           activityCompletionState={getUserBirthdayState(userBirthday, labels)}
           activityDescription={labels.lbl_profile_userBirthdayDescription}
-          redirectTo="/account"
-          dataLocatorPrefix="birthday"
+          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
         />
         <ProfileInfoActionTile
           activityId="aboutYourself"
@@ -107,8 +90,7 @@ export const ProfileInfoActions = ({
           activityTitle={`+${percentageIncrement.percentageUserSurvey}%`}
           activityCompletionState={getAboutYourselfState(userSurvey, labels)}
           activityDescription={labels.lbl_profile_aboutYourselfDescription}
-          redirectTo="/account"
-          dataLocatorPrefix="survey"
+          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
         />
       </ProfileTileWrapper>
     </MyProfileTile>
@@ -123,6 +105,7 @@ ProfileInfoActions.propTypes = {
   userBirthday: PropTypes.string,
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
+  handleComponentChange: PropTypes.func.isRequired,
 };
 
 ProfileInfoActions.defaultProps = {
@@ -131,10 +114,10 @@ ProfileInfoActions.defaultProps = {
     lbl_profile_profileInCompleteMessage: '',
   },
   profileCompletion: '',
-  mailingAddress: fromJS({}),
+  mailingAddress: {},
   defaultStore: '',
   userBirthday: '',
-  userSurvey: fromJS([]),
+  userSurvey: [],
   percentageIncrement: {
     percentageMailingAddress: '20',
     percentageFavStore: '20',
