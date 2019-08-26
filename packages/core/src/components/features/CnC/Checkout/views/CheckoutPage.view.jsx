@@ -1,12 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 
-export default class CheckoutPage extends React.PureComponent {
+class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
-    console.log(data);
+    const { onPickupSubmit } = this.props;
+    const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
+    const { hasAlternatePickup } = data.pickUpAlternate;
+    const params = {
+      pickUpContact: {
+        firstName,
+        lastName,
+        phoneNumber,
+        emailAddress,
+        smsInfo: {
+          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+        },
+      },
+      hasAlternatePickup,
+      pickUpAlternate: {
+        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
+        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
+        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
+      },
+    };
+    onPickupSubmit(params);
   };
 
   leftSection = () => {
@@ -75,5 +96,7 @@ CheckoutPage.propTypes = {
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
-  // onPickupSubmit: PropTypes.func.isRequired,
+  onPickupSubmit: PropTypes.func.isRequired,
 };
+
+export default withRouter(CheckoutPage);

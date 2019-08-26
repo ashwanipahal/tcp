@@ -76,7 +76,7 @@ export class CouponListSection extends React.Component<Props> {
                 underline
                 anchorVariation="primary"
                 onPress={this.helpAnchorClick}
-                data-locator=""
+                dataLocator=""
                 text={labels.HELP_APPLYING}
               />
             </PCContainer>
@@ -109,7 +109,7 @@ export class CouponListSection extends React.Component<Props> {
               onPress={this.toggleShow}
               noLink
               to="/#"
-              data-locator=""
+              dataLocator=""
               text={buttonText}
             />
           )}

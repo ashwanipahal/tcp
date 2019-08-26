@@ -65,7 +65,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
 
 const getAddessLines = ({ address, customStyle }) => {
   return address.addressLine
-    .filter(al => al.trim() !== '')
+    .filter(al => al && al.trim() !== '')
     .map(addressLine => (
       <BodyCopy
         fontSize="fs14"

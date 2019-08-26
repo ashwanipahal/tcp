@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductColorChipVanilla component should renders correctly 1`] = `
+<button
+  className="content-colors-button active"
+  data-locator="global-ColorSwatch-Swatch link"
+  onClick={[Function]}
+  type="button"
+>
+  <img
+    alt=""
+    className="product-color-chip-image"
+    src=""
+  />
+</button>
+`;

@@ -3,27 +3,29 @@
 exports[`AddEditAddressContainer should render correctly 1`] = `
 <Styled(AddressBook)
   addressFormLabels={Object {}}
-  addressResponse={Object {}}
+  addressResponse=""
   backToAddressBookClick={[Function]}
+  currentForm="AddAddress"
   initialValues={
     Object {
-      "addressLine2": "",
-      "country": Object {
-        "ADD_USER_ADDRESS_FAIL": "ADD_USER_ADDRESS_FAIL",
-        "ADD_USER_ADDRESS_REQ": "ADD_USER_ADDRESS_REQ",
-        "ADD_USER_ADDRESS_SUCCESS": "ADD_USER_ADDRESS_SUCCESS",
-        "COUNTRY_CA": "CA",
-        "COUNTRY_US": "US",
-        "UPDATE_USER_ADDRESS_REQ": "UPDATE_USER_ADDRESS_REQ",
-      },
+      "addressLine1": "test 1",
+      "addressLine2": "test 2",
+      "city": "city",
+      "country": "US",
+      "firstName": "test",
+      "lastName": "test",
+      "nickName": "123",
+      "phoneNumber": "1234567890",
       "primary": true,
+      "state": "state",
+      "zipCode": "12345",
     }
   }
   isEdit={false}
-  isMakeDefaultDisabled={true}
+  isMakeDefaultDisabled={false}
   onCancel={[Function]}
-  showHeading={true}
   submitAddressFormAction={[Function]}
+  toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
 />
 `;

@@ -59,7 +59,7 @@ const MyRewards = ({ labels }) => {
             UrlHandler('https://www.childrensplace.com/us/content/myplace-rewards-page');
           }}
           anchorVariation="primary"
-          data-locator="my-rewards-program-details"
+          dataLocator="my-rewards-program-details"
           text={labels.myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS}
         />
         <AnchorLeftMargin>
@@ -71,7 +71,7 @@ const MyRewards = ({ labels }) => {
               UrlHandler('https://www.childrensplace.com/us/help-center/#termsAndConditionsli');
             }}
             anchorVariation="primary"
-            data-locator="my-rewards-tnc"
+            dataLocator="my-rewards-tnc"
             text={labels.common.lbl_common_tnc}
           />
         </AnchorLeftMargin>

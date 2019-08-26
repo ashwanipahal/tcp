@@ -11,6 +11,8 @@ import {
   getUnbxdId,
   getBreadCrumbTrail,
   getProductsFilters,
+  getCategoryId,
+  getLabelsProductListing,
   getLongDescription,
 } from './ProductListing.selectors';
 
@@ -31,7 +33,7 @@ class ProductListingContainer extends React.PureComponent {
       longDescription,
       labels,
       labelsFilter,
-
+      categoryId,
       ...otherProps
     } = this.props;
     return (
@@ -39,6 +41,7 @@ class ProductListingContainer extends React.PureComponent {
         products={products}
         filters={filters}
         currentNavIds={currentNavIds}
+        categoryId={categoryId}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
         longDescription={longDescription}
@@ -55,13 +58,14 @@ function mapStateToProps(state) {
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
     currentNavIds: state.ProductListing.currentNavigationIds,
+    categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     labelsFilter: state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
-    labels: state.Labels.PLP.seoText,
+    labels: getLabelsProductListing(state),
   };
 }
 
@@ -77,6 +81,7 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
@@ -85,7 +90,7 @@ ProductListingContainer.propTypes = {
   longDescription: PropTypes.string,
   navigation: PropTypes.shape({}).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string]))
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingContainer.defaultProps = {
@@ -96,7 +101,7 @@ ProductListingContainer.defaultProps = {
   filters: {},
   longDescription: '',
   labels: {},
-  labelsFilter: {}
+  labelsFilter: {},
 };
 
 export default connect(
