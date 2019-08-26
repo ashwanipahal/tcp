@@ -3,11 +3,13 @@
 exports[`AddEditAddress Native should render correctly 1`] = `
 <View
   addressFormLabels={Object {}}
+  currentForm="AddAddress"
+  initialValues={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
-  showHeading={true}
   submitAddressFormAction={[Function]}
+  toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
 >
   <ScrollViewMock
@@ -17,19 +19,33 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
       />
     </Styled(Text)>
-    <Styled(View) />
+    <Styled(View)>
+      <Styled(LineComp)
+        borderColor="black"
+        borderWidth={1}
+        marginBottom={0}
+        marginTop={5}
+      />
+    </Styled(View)>
     <ReduxForm
       addressFormLabels={Object {}}
-      destroyOnUnmount={true}
+      currentForm="AddAddress"
+      destroyOnUnmount={false}
       enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="AddressForm"
       getFormState={[Function]}
+      initialValues={Object {}}
       isEdit={false}
       isMakeDefaultDisabled={false}
-      keepDirtyOnReinitialize={false}
+      keepDirtyOnReinitialize={true}
       onCancel={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
@@ -44,6 +60,49 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       touchOnChange={false}
       updateUnregisteredFields={false}
       validate={[Function]}
+    />
+  </ScrollViewMock>
+</View>
+`;
+
+exports[`AddEditAddress Native should test with verification modal 1`] = `
+<View
+  addressFormLabels={Object {}}
+  currentForm="VerificationModal"
+  initialValues={Object {}}
+  isEdit={false}
+  isMakeDefaultDisabled={false}
+  onCancel={[Function]}
+  submitAddressFormAction={[Function]}
+  toggleAddressModal={[Function]}
+  verifyAddressAction={[Function]}
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs16"
+        fontWeight="extrabold"
+        mobileFontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(LineComp)
+        borderColor="black"
+        borderWidth={1}
+        marginBottom={0}
+        marginTop={5}
+      />
+    </Styled(View)>
+    <Connect(AddressVerification)
+      onError={[Function]}
+      onSuccess={[Function]}
+      toggleAddressModal={[Function]}
     />
   </ScrollViewMock>
 </View>
