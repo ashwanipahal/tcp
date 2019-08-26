@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
@@ -36,37 +37,46 @@ class AccountOverview extends PureComponent<Props> {
       getComponentId: {
         login: '',
         createAccount: '',
+        trackOrder: '',
       },
     };
   }
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
-    return (
-      <React.Fragment>
-        {getComponentId.login ? (
-          <LoginPageContainer
-            onRequestClose={this.toggleModal}
-            navigation={navigation}
-            isUserLoggedIn={isUserLoggedIn}
-          />
-        ) : (
-          <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
-        )}
-      </React.Fragment>
-    );
+    let componentContainer = null;
+    if (getComponentId.login) {
+      componentContainer = (
+        <LoginPageContainer
+          onRequestClose={this.toggleModal}
+          navigation={navigation}
+          isUserLoggedIn={isUserLoggedIn}
+        />
+      );
+    }
+    if (getComponentId.createAccount) {
+      componentContainer = (
+        <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
+      );
+    }
+    if (getComponentId.trackOrder) {
+      componentContainer = (
+        <TrackOrderContainer navigation={navigation} onRequestClose={this.toggleModal} />
+      );
+    }
+    return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
   toggleModal = ({ getComponentId }) => {
-    const { showModal } = this.state;
-    this.setState({
-      showModal: !showModal,
+    this.setState(state => ({
+      showModal: !state.showModal,
       getComponentId: getComponentId
         ? {
             login: getComponentId.login,
             createAccount: getComponentId.createAccount,
+            trackOrder: getComponentId.trackOrder,
           }
         : '',
-    });
+    }));
   };
 
   render() {
@@ -74,6 +84,10 @@ class AccountOverview extends PureComponent<Props> {
     const colorPallete = createThemeColorPalette();
     const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
     const { showModal, getComponentId } = this.state;
+    let modalHeader = null;
+    if (getComponentId.login) modalHeader = labels.lbl_overview_login_text;
+    if (getComponentId.createAccount) modalHeader = labels.lbl_overview_createAccount;
+    if (getComponentId.trackOrder) modalHeader = labels.lbl_overview_trackYourOrder;
     return (
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
@@ -130,7 +144,7 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: false, createAccount: true },
+                    getComponentId: { login: false, createAccount: true, trackOrder: false },
                   })
                 }
               />
@@ -148,7 +162,7 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: true, createAccount: false },
+                    getComponentId: { login: true, createAccount: false, trackOrder: false },
                   })
                 }
               />
@@ -160,11 +174,7 @@ class AccountOverview extends PureComponent<Props> {
                     mobileFontFamily={['secondary']}
                     fontWeight="extrabold"
                     fontSize="fs16"
-                    text={
-                      getComponentId.login
-                        ? `${labels.lbl_overview_login_text}`
-                        : `${labels.lbl_overview_createAccount}`
-                    }
+                    text={modalHeader}
                   />
                 </ModalHeading>
                 <LineWrapper>
@@ -198,9 +208,20 @@ class AccountOverview extends PureComponent<Props> {
 
             <Panel title={labels.lbl_overview_purchase_giftCards} isVariationTypeLink />
             <Panel title={labels.lbl_overview_refer_friend} isVariationTypeLink />
+            {!isUserLoggedIn ? (
+              <Panel
+                title="Track Order"
+                isVariationTypeLink
+                handleComponentChange={e =>
+                  this.toggleModal({
+                    e,
+                    getComponentId: { login: false, createAccount: false, trackOrder: true },
+                  })
+                }
+              />
+            ) : null}
 
             <UnderlineStyle />
-
             <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
             <Panel title={labels.lbl_overview_help} isVariationTypeLink />
             <Panel title={labels.lbl_overview_messages} isVariationTypeLink />

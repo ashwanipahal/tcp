@@ -5,12 +5,13 @@ const style = css`
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.93px;
+  opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
    width: 40px;
    height: 100px;
-   color: ${props.theme.colorPalette.black};
+   color: ${props.theme.colorPalette[props.color || 'black']};
    font-size: ${props.theme.fonts.fontSize.button.size}px
    font-family: ${props.theme.typography.fonts.primary};
    font-weight: ${props.theme.typography.fontWeights.semibold};

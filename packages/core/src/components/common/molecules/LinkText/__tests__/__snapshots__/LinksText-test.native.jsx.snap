@@ -2,6 +2,7 @@
 
 exports[`LinkText component renders correctly 1`] = `
 <Styled(Anchor)
+  accessibilityLabel=""
   anchorVariation=""
   customStyle={Object {}}
   locator=""

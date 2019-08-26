@@ -133,6 +133,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -145,6 +146,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -204,6 +206,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -292,6 +295,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -304,6 +308,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -434,6 +439,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
@@ -569,6 +575,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
@@ -628,6 +635,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -716,6 +724,7 @@ exports[`CardTile should render correctly with master card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -728,6 +737,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -863,6 +873,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
@@ -922,6 +933,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -1002,6 +1014,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -1014,6 +1027,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -1133,6 +1147,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-venmodeletelink"
@@ -1192,6 +1207,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -1280,6 +1296,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -1292,6 +1309,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"

@@ -66,9 +66,11 @@ export class TextBox extends React.Component {
   };
 
   handleBlur = () => {
+    const { input } = this.props;
     this.setState({
       isFocused: false,
     });
+    input.onBlur(input.value);
   };
 
   getErrorMsg = () => {

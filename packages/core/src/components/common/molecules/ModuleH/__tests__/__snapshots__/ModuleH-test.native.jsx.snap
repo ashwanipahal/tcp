@@ -4,6 +4,7 @@ exports[`ModuleH component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       key="0"
@@ -30,6 +31,7 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       key="1"
@@ -166,6 +168,7 @@ exports[`ModuleH component renders correctly 1`] = `
   />
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
@@ -194,6 +197,7 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
@@ -222,6 +226,7 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
@@ -250,6 +255,7 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
@@ -278,6 +284,7 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""

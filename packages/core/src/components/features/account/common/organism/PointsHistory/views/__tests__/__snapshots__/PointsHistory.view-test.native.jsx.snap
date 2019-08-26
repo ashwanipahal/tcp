@@ -55,6 +55,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
   </Styled(View)>
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       fontSizeVariation="medium"

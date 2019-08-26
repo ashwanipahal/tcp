@@ -3,6 +3,7 @@
 exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `
 <Styled(View)>
   <Styled(Anchor)
+    accessibilityLabel=""
     anchorVariation=""
     customStyle={Object {}}
     locator=""
@@ -518,6 +519,7 @@ exports[`PromoTextBanner native component renders all style correctly 11`] = `
 exports[`PromoTextBanner native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(Anchor)
+    accessibilityLabel=""
     anchorVariation=""
     customStyle={Object {}}
     locator=""

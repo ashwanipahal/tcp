@@ -153,4 +153,7 @@ export default {
   plp_seo_module: 'plp_seo_module',
   plp_seo_readmore: 'plp_seo_module_readmore',
   plp_seo_readless: 'plp_seo_module_readless',
+
+  // Track Order Locator
+  track_order_click_here: 'track_order_click_here',
 };

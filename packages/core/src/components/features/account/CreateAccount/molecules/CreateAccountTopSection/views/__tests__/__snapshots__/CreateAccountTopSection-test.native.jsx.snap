@@ -63,6 +63,7 @@ An online account has been created with your email! Click here to reset your pas
         </Styled(Text)>
         <Styled(View)>
           <Styled(Anchor)
+            accessibilityLabel=""
             anchorVariation=""
             customStyle={Object {}}
             fontSizeVariation="xlarge"

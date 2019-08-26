@@ -45,6 +45,7 @@ exports[`MyRewards should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="my-rewards-program-details"
@@ -57,6 +58,7 @@ exports[`MyRewards should render correctly 1`] = `
     />
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="my-rewards-tnc"

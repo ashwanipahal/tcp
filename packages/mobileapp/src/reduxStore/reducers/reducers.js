@@ -16,7 +16,7 @@ import PointsHistoryReducer from '@tcp/core/src/components/features/account/comm
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AirmilesBannerReducer from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.reducer';
-
+import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
@@ -51,6 +51,7 @@ import {
   DEVICE_INFO_REDUCER_KEY,
   ADDEDITADDRESS_REDUCER_KEY,
   ADDRESS_VERIFICATION_REDUCER_KEY,
+  TRACK_ORDER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -98,6 +99,7 @@ const rootReducer = combineReducers({
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
+  [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
 });
 
 export default rootReducer;

@@ -21,6 +21,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     />
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         accessibilityRole="link"
         anchorVariation="button"
         borderColor="black"

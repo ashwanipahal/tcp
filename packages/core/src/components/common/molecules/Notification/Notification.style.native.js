@@ -22,7 +22,7 @@ const getTextBaseStyle = props => {
     `;
 };
 
-const NotificationWrapper = styled.Text`
+const NotificationWrapper = styled.View`
   ${getTextBaseStyle}
 `;
 
