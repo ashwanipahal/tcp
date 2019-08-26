@@ -11,14 +11,19 @@ jest.mock('../../../../../../../../utils/utils.web', () => ({
 describe('Shipping Page', () => {
   it('should render correctly', () => {
     getSiteId.mockImplementation(() => 'us');
+    const address = {
+      addressLine1: 'pob',
+      addressLine2: '',
+    };
     const props = {
-      address: {
-        addressLine1: 'pob',
-        addressLine2: '',
-      },
+      address,
+      shipmentMethods: [{}],
+      loadShipmentMethods: () => {},
+      handleSubmit: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().checkPOBoxAddress();
+    tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
     expect(tree).toMatchSnapshot();
     expect(ShippingFormVanilla).toHaveLength(1);
   });

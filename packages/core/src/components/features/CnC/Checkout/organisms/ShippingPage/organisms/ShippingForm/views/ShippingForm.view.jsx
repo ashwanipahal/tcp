@@ -7,12 +7,12 @@ import AddressFields from '../../../../../../../../common/molecules/AddressField
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
 import styles from '../styles/ShippingForm.styles';
-import withStyles from '../../../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import CheckoutFooter from '../../../../../molecules/CheckoutFooter';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
+import withStyles from '../../../../../../../../common/hoc/withStyles';
 
 const ShippingForm = ({
   addressLabels: { addressFormLabels },
@@ -30,6 +30,7 @@ const ShippingForm = ({
   isUsSite,
   orderHasPickUp,
   shipmentMethods,
+  loadShipmentMethods,
 }) => {
   return (
     <>
@@ -55,6 +56,7 @@ const ShippingForm = ({
               dispatch={dispatch}
               checkPOBoxAddress={checkPOBoxAddress}
               addressPhoneNo={addressPhoneNo}
+              loadShipmentMethods={loadShipmentMethods}
             />
           </FormSection>
         </div>
@@ -128,7 +130,10 @@ const ShippingForm = ({
             />
           </div>
         </FormSection>
-        <CheckoutFooter />
+        <CheckoutFooter
+          nextButtonText={`${shippingLabels.returnTo} ${shippingLabels.billingText}`}
+          backLinkText={`${shippingLabels.nextText}: ${shippingLabels.backLinkText}`}
+        />
       </form>
     </>
   );
@@ -150,6 +155,7 @@ ShippingForm.propTypes = {
   isUsSite: PropTypes.bool,
   orderHasPickUp: PropTypes.bool,
   shipmentMethods: PropTypes.shape([]),
+  loadShipmentMethods: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {

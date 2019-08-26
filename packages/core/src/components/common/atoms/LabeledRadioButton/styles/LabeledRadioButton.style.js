@@ -116,17 +116,7 @@ ${props =>
     }
 
     }
-.radio-button-checked + .input-radio-title {
-  ${props =>
-    props.variation === 'secondary'
-      ? `@media ${props.theme.mediaQuery.smallOnly}{
-          font-weight: ${props.theme.typography.fontWeights.black};
-          color: ${props.theme.colorPalette.white};
-        }`
-      : ''};
-}
-
-.input-radio-title {
+  .input-radio-title {
   ${props =>
     props.variation === 'secondary'
       ? `@media ${props.theme.mediaQuery.smallOnly}{
@@ -134,6 +124,15 @@ ${props =>
             font-size:10px;
       }`
       : ''};
+  }
+  .radio-button-checked + .input-radio-title {
+    ${props =>
+      props.variation === 'secondary'
+        ? `@media ${props.theme.mediaQuery.smallOnly}{
+            font-weight: ${props.theme.typography.fontWeights.black};
+            color: ${props.theme.colorPalette.white};
+          }`
+        : ''};
   }
 
   .input-subtitle {

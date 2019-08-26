@@ -26,7 +26,7 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
   } catch (err) {
     let error = {};
     if (err instanceof Error) {
-      error = err.response.body;
+      error = err.response && err.response.body;
     }
     return yield put(addAddressFail(error));
   }

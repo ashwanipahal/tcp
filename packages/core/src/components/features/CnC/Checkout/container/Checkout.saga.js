@@ -490,7 +490,7 @@ function* saveLocalSmsInfo(smsInfo) {
   if (smsInfo) {
     const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
     if (wantsSmsOrderUpdates) {
-      returnVal = yield call(setSmsNumberForUpdates(smsUpdateNumber));
+      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
     } else {
       returnVal = yield call(setSmsNumberForUpdates(null));
     }
@@ -565,13 +565,17 @@ function* submitShippingSection({ payload: formData }) {
       addOrEditAddressRes = yield call(
         addAddressGet,
         {
-          ...address,
-          zip: address.zipCode,
-          phoneNumber,
-          email: emailAddress,
-          primary: setAsDefault,
-          phone1Publish: `${saveToAccount}`,
-          fromPage: 'checkout',
+          payload: {
+            ...address,
+            address1: address.addressLine1,
+            address2: address.addressLine2,
+            zip: address.zipCode,
+            phoneNumber,
+            email: emailAddress,
+            primary: setAsDefault,
+            phone1Publish: `${saveToAccount}`,
+            fromPage: 'checkout',
+          },
         },
         false
       );
@@ -644,6 +648,7 @@ export function* CheckoutSaga() {
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(constants.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
+  yield takeLatest(constants.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
 }
 
 export default CheckoutSaga;

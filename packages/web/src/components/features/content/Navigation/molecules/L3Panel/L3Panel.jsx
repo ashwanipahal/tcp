@@ -60,7 +60,7 @@ const L3Panel = props => {
               } = l3Links;
               return (
                 <li>
-                  <Anchor to={`/c/${seoToken}`} data-locator={`l3_link_${index}`}>
+                  <Anchor to={`/c/${seoToken}`} dataLocator={`l3_link_${index}`}>
                     <BodyCopy
                       className="l2-nav-link"
                       fontFamily="secondary"

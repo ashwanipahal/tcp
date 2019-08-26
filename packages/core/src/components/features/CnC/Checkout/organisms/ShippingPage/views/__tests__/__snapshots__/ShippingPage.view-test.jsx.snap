@@ -1,42 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shipping Page should render correctly 1`] = `
-<ReduxForm
-  addressPhoneNo={null}
-  checkPOBoxAddress={[Function]}
-  destroyOnUnmount={false}
-  enableReinitialize={false}
-  forceUnregisterOnUnmount={false}
-  form="checkoutShipping"
-  getFormState={[Function]}
-  initialValues={
-    Object {
-      "address": Object {
-        "country": "US",
-      },
-      "shipmentMethods": Object {
-        "shippingMethodId": null,
-      },
+<Fragment>
+  <ReduxForm
+    addressPhoneNo={null}
+    checkPOBoxAddress={[Function]}
+    destroyOnUnmount={false}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="checkoutShipping"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "address": Object {
+          "country": "US",
+        },
+        "shipmentMethods": Object {
+          "shippingMethodId": null,
+        },
+      }
     }
-  }
-  isGuest={true}
-  isOrderUpdateChecked={false}
-  isUsSite={true}
-  keepDirtyOnReinitialize={false}
-  onSubmit={[Function]}
-  orderHasPickUp={false}
-  persistentSubmitErrors={false}
-  pure={true}
-  selectedShipmentId={null}
-  shipmentMethods={null}
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateUnregisteredFields={false}
-  validate={[Function]}
-/>
+    isGuest={true}
+    isOrderUpdateChecked={false}
+    isUsSite={true}
+    keepDirtyOnReinitialize={false}
+    loadShipmentMethods={[Function]}
+    onSubmit={[Function]}
+    orderHasPickUp={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedShipmentId={null}
+    shipmentMethods={
+      Array [
+        Object {},
+      ]
+    }
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</Fragment>
 `;

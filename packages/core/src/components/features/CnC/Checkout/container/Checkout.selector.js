@@ -198,11 +198,19 @@ const getShippingLabels = state => {
     lbl_shipping_header: header,
     lbl_shipping_sectionHeader: sectionHeader,
     lbl_shipping_shipmentHeader: shipmentHeader,
+    lbl_shipping_returnTo: returnTo,
+    lbl_shipping_nextText: nextText,
+    lbl_shipping_backLinkText: backLinkText,
+    lbl_shipping_billingText: billingText,
   } = state.Labels.checkout && state.Labels.checkout.shipping;
   return {
     header,
     sectionHeader,
     shipmentHeader,
+    returnTo,
+    nextText,
+    billingText,
+    backLinkText,
   };
 };
 
@@ -414,4 +422,5 @@ export default {
   getShippingSendOrderUpdate,
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
+  getUserEmail,
 };

@@ -23,6 +23,7 @@ export default class ShippingPage extends React.PureComponent {
     handleSubmit: PropTypes.func.isRequired,
     shipmentMethods: PropTypes.shape([]),
     defaultShipmentId: PropTypes.number,
+    loadShipmentMethods: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -40,9 +41,10 @@ export default class ShippingPage extends React.PureComponent {
   checkPOBoxAddress = () => {
     const {
       address: { addressLine1, addressLine2 },
+      loadShipmentMethods,
     } = this.props;
     if (hasPOBox(addressLine1, addressLine2)) {
-      console.log('action to call shipment method');
+      loadShipmentMethods();
     }
   };
 
@@ -69,8 +71,8 @@ export default class ShippingPage extends React.PureComponent {
       },
       shipTo: {
         address: {
-          addressLine1: address.address1,
-          addressLine2: address.address2,
+          addressLine1: address.addressLine1,
+          addressLine2: address.addressLine2,
           city: address.city,
           country: address.country,
           firstName: address.firstName,
@@ -109,27 +111,33 @@ export default class ShippingPage extends React.PureComponent {
       orderHasPickUp,
       shipmentMethods,
       defaultShipmentId,
+      loadShipmentMethods,
     } = this.props;
     return (
-      <ShippingForm
-        addressLabels={addressLabels}
-        isOrderUpdateChecked={isOrderUpdateChecked}
-        shippingLabels={shippingLabels}
-        smsSignUpLabels={smsSignUpLabels}
-        initialValues={{
-          address: { country: getSiteId() && getSiteId().toUpperCase() },
-          shipmentMethods: { shippingMethodId: defaultShipmentId },
-        }}
-        selectedShipmentId={selectedShipmentId}
-        checkPOBoxAddress={this.checkPOBoxAddress}
-        addressPhoneNo={addressPhoneNo}
-        onSubmit={this.submitShippingData}
-        emailSignUpLabels={emailSignUpLabels}
-        isGuest={isGuest}
-        isUsSite={isUsSite}
-        orderHasPickUp={orderHasPickUp}
-        shipmentMethods={shipmentMethods}
-      />
+      <>
+        {shipmentMethods.length > 0 && (
+          <ShippingForm
+            addressLabels={addressLabels}
+            isOrderUpdateChecked={isOrderUpdateChecked}
+            shippingLabels={shippingLabels}
+            smsSignUpLabels={smsSignUpLabels}
+            initialValues={{
+              address: { country: getSiteId() && getSiteId().toUpperCase() },
+              shipmentMethods: { shippingMethodId: defaultShipmentId },
+            }}
+            selectedShipmentId={selectedShipmentId}
+            checkPOBoxAddress={this.checkPOBoxAddress}
+            addressPhoneNo={addressPhoneNo}
+            onSubmit={this.submitShippingData}
+            emailSignUpLabels={emailSignUpLabels}
+            isGuest={isGuest}
+            isUsSite={isUsSite}
+            orderHasPickUp={orderHasPickUp}
+            shipmentMethods={shipmentMethods}
+            loadShipmentMethods={loadShipmentMethods}
+          />
+        )}
+      </>
     );
   }
 }

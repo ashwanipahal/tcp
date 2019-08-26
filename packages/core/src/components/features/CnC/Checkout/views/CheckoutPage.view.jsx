@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 
-export default class CheckoutPage extends React.PureComponent {
+class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
     console.log(data);
   };
@@ -27,6 +28,7 @@ export default class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      loadShipmentMethods,
       // onPickupSubmit,
     } = this.props;
     const currentSection = router.query.section || router.query.subSection;
@@ -56,6 +58,7 @@ export default class CheckoutPage extends React.PureComponent {
             isUsSite={isUsSite}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={submitShippingSection}
+            loadShipmentMethods={loadShipmentMethods}
           />
         )}
       </div>
@@ -85,5 +88,9 @@ CheckoutPage.propTypes = {
   orderHasPickUp: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
+  loadShipmentMethods: PropTypes.func.isRequired,
   // onPickupSubmit: PropTypes.func.isRequired,
 };
+
+export default withRouter(CheckoutPage);
+export { CheckoutPage as CheckoutPageVanilla };

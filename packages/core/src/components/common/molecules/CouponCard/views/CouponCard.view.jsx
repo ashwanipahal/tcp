@@ -160,7 +160,7 @@ class CouponCard extends React.Component<Props> {
                       this.RenderValidText(coupon)}
                   </BodyCopy>
                   <Anchor
-                    data-locator={`coupon_${coupon.status}_cartDetailsLink`}
+                    dataLocator={`coupon_${coupon.status}_cartDetailsLink`}
                     fontSizeVariation="small"
                     underline
                     anchorVariation="primary"

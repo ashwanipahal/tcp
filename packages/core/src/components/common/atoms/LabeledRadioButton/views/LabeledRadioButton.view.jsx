@@ -1,7 +1,6 @@
 /** @module LabeledRadioButton
  * @summary A React component rendering an RadioButton field
  *
- * @author Ben
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
