@@ -52,7 +52,7 @@ class TrackOrderBottomSection extends React.Component<Props> {
             component="p"
           >
             <Anchor
-              data-locator="track_order_login"
+              dataLocator="track_order_login"
               underline
               anchorVariation="primary"
               fontSize="fs12"
@@ -76,7 +76,7 @@ class TrackOrderBottomSection extends React.Component<Props> {
           component="p"
         >
           <Anchor
-            data-locator="track_order_click_here"
+            dataLocator="track_order_click_here"
             underline
             anchorVariation="primary"
             fontSize="fs12"

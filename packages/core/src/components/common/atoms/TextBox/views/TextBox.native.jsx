@@ -194,7 +194,7 @@ export class TextBox extends React.Component {
       <View>
         {type === 'hidden' ? (
           <View>
-            <HiddenView>{this.renderTextBox({ elemValue, isFocused, others })}</HiddenView>
+            <HiddenView>{this.renderTextBox({ elemValue, isFocused, ...others })}</HiddenView>
             {this.getErrorMsg()}
           </View>
         ) : (

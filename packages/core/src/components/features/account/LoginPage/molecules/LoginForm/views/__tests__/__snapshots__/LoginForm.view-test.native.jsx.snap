@@ -117,7 +117,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator=""
+        dataLocator=""
         fontFamily="secondary"
         fontSizeVariation="small"
         locator=""

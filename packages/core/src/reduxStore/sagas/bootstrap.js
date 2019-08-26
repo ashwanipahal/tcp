@@ -6,15 +6,19 @@ import {
   loadModulesData,
   setAPIConfig,
   setDeviceInfo,
+  setCountry,
+  setCurrency,
+  setLanguage,
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS from '../constants';
+import { isMobileApp } from '../../utils';
 
 function* bootstrap(params) {
   const {
-    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType },
+    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType, locals },
   } = params;
   const pagesList = [pageName];
   const modulesList = modules;
@@ -29,6 +33,12 @@ function* bootstrap(params) {
     yield put(loadNavigationData(result.navigation));
     yield put(loadFooterData(result.footer));
     yield put(loadModulesData(result.modules));
+    if (!isMobileApp()) {
+      const { country, currency, language } = locals;
+      yield put(setCountry(country));
+      yield put(setCurrency(currency));
+      yield put(setLanguage(language));
+    }
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);

@@ -154,30 +154,22 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
         </Styled(Text)>
         <Styled(TextInput)
           aria-label="input"
+          ariaLabel="input"
           className="TextBox__input"
           data-locator="input-field"
+          dataLocator="input-field"
           enableSuccessCheck={false}
           error=""
           id="input"
           keyboardType="default"
+          label="input"
           onBlur={[Function]}
           onEndEditing={[Function]}
           onFocus={[Function]}
-          others={
-            Object {
-              "ariaLabel": "input",
-              "dataLocator": "input-field",
-              "enableSuccessCheck": false,
-              "id": "input",
-              "keyboardType": "default",
-              "label": "input",
-              "secureTextEntry": false,
-              "showSuccessCheck": false,
-              "successText": "",
-            }
-          }
           returnKeyType="next"
           secureTextEntry={false}
+          showSuccessCheck={false}
+          successText=""
           type="hidden"
           value="foo"
         />

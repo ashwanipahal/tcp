@@ -140,7 +140,7 @@ class LoginForm extends React.PureComponent<Props> {
               onPress={this.changeType}
               noLink
               to="/#"
-              data-locator=""
+              dataLocator=""
               text={type === 'password' ? 'show' : 'hide'}
             />
           </HideShowFieldWrapper>

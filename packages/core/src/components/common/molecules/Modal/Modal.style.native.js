@@ -2,13 +2,14 @@ import styled from 'styled-components/native';
 
 const StyledCrossImage = styled.Image`
   width: 15px;
-  height: 15px;
-  margin: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  ${props => props.theme.spacing.ELEM_SPACING.XXXS}
+  ${props => props.theme.spacing.ELEM_SPACING.LRG}
 `;
 
 const ImageWrapper = styled.View`
   display: flex;
-  flex: 0.3;
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
