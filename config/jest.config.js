@@ -5,7 +5,6 @@ const ignorePsuedoCodeDir = [
   '/services/abstractors/CnC/AddedToBag.js',
   '/plpDeltaSync/',
   '/LoginPage/',
-  '/Checkout/',
   '/server/',
   '/service/',
   '/FPO/',
