@@ -5,7 +5,7 @@ import styles from '../Notification.style';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
-const Notification = ({ className, status, message }) => {
+const Notification = ({ className, status, message, children }) => {
   const successIcon = getIconPath('circle-check-fill');
   const errorIcon = getIconPath('circle-error-fill');
   return (
@@ -15,8 +15,9 @@ const Notification = ({ className, status, message }) => {
         src={status === 'success' ? successIcon : errorIcon}
         className="elem-mr-MED"
       />
-      <BodyCopy fontSize="fs14" fontWeight="extrabold">
+      <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
         {message}
+        {children}
       </BodyCopy>
     </div>
   );

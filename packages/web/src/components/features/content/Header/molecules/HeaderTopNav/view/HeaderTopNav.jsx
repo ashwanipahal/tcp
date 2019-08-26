@@ -12,6 +12,7 @@ const HeaderTopNav = ({
   promoMessageWrapper,
   openOverlay,
   isUserLoggedIn,
+  labels
 }) => {
   const onLinkClick = e => {
     e.preventDefault();
@@ -36,7 +37,7 @@ const HeaderTopNav = ({
             onClick={e => onLinkClick(e)}
             data-locator="track_order_header"
           >
-            Track order
+            {labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderHeaderLink}
           </BodyCopy>
         </React.Fragment>
       </div>

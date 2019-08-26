@@ -1,44 +1,45 @@
 import { connect } from 'react-redux';
 import {
-  openNavigationDrawer,
-  closeNavigationDrawer,
+    openNavigationDrawer,
+    closeNavigationDrawer,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import {
-  getUserName,
-  getUserLoggedInState,
+    getUserName,
+    getUserLoggedInState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
-  const { Header } = state;
-  return {
-    brandTabs: Header.brandTabs,
-    promoMessageWrapper: Header.promoMessageWrapper,
-    headerPromoArea: Header.promoTextBannerCarousel,
-    navigationDrawer: Header.navigationDrawer,
-    userName: getUserName(state),
-    isLoggedIn: getUserLoggedInState(state),
-    cartItemCount: getCartItemCount(),
-  };
+    const { Header } = state;
+    return {
+        brandTabs: Header.brandTabs,
+        promoMessageWrapper: Header.promoMessageWrapper,
+        headerPromoArea: Header.promoTextBannerCarousel,
+        navigationDrawer: Header.navigationDrawer,
+        userName: getUserName(state),
+        isLoggedIn: getUserLoggedInState(state),
+        cartItemCount: getCartItemCount(),
+        labels: state.Labels.global
+    };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    openNavigationDrawer: id => {
-      dispatch(openNavigationDrawer(id));
-    },
-    closeNavigationDrawer: () => {
-      dispatch(closeNavigationDrawer());
-    },
-    openOverlay: component => dispatch(openOverlayModal(component)),
-    openTrackOrderOverlay: payload => dispatch(setTrackOrderModalMountedState(payload)),
-  };
+    return {
+        openNavigationDrawer: id => {
+            dispatch(openNavigationDrawer(id));
+        },
+        closeNavigationDrawer: () => {
+            dispatch(closeNavigationDrawer());
+        },
+        openOverlay: component => dispatch(openOverlayModal(component)),
+        openTrackOrderOverlay: payload => dispatch(setTrackOrderModalMountedState(payload)),
+    };
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(HeaderView);
