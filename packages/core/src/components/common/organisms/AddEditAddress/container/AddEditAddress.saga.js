@@ -23,7 +23,7 @@ export function* addAddressGet({ payload }) {
   } catch (err) {
     let error = {};
     if (err instanceof Error) {
-      error = err.response.body;
+      error = err.message;
     }
     return yield put(addAddressFail(error));
   }
