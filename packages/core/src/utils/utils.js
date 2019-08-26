@@ -113,7 +113,7 @@ const GOOGLE_PLACE_PARTS = {
 };
 
 const returngetAddress = (addressType, val, address) => {
-  const addressRef = Object.assign({}, address);
+  const addressRef = { ...address };
   switch (addressType) {
     case 'street_number':
       addressRef.street_number = val;
