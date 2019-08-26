@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { fromJS } from 'immutable';
-import { PersonalInformationDisplay } from '../PersonalInformationDisplay.view';
+import { PersonalInformationDisplay } from '../PersonalInformationDisplay.view.native';
 
 describe('PersonalInformationDisplay', () => {
   it('should render correctly', () => {
@@ -33,7 +33,6 @@ describe('PersonalInformationDisplay', () => {
       UserPhoneNumber: '',
       airMiles: '',
       MyPlaceNumber: '',
-      isCanada: false,
     };
     const tree = shallow(<PersonalInformationDisplay {...props} />);
     expect(tree).toMatchSnapshot();

@@ -7,8 +7,15 @@ exports[`ProfileInformation should render correctly 1`] = `
     labels={Object {}}
   />
   <PersonalInformation
+    airMiles=""
     handleComponentChange={[Function]}
     labels={Object {}}
+    myPlaceNumber=""
+    profileInfoTile={Object {}}
+    userBirthday=""
+    userEmail=""
+    userFullName=""
+    userPhoneNumber=""
   />
   <ChangePassword
     handleComponentChange={[Function]}

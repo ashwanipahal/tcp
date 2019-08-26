@@ -5,12 +5,16 @@ import { StyledHeading } from '@tcp/core/src/components/common/atoms/styledWrapp
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ProfileInformation from '../organism/ProfileInformation';
 
-export const MyProfile = ({ labels, handleComponentChange }) => {
+export const MyProfile = ({ labels, handleComponentChange, ...otherProps }) => {
   return (
     <View>
       <StyledHeading>{labels.lbl_profile_heading}</StyledHeading>
       <LineComp marginBottom={40} borderWidth={1} borderColor="black" />
-      <ProfileInformation labels={labels} handleComponentChange={handleComponentChange} />
+      <ProfileInformation
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+        {...otherProps}
+      />
     </View>
   );
 };

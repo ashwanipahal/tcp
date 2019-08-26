@@ -9,11 +9,31 @@ import BirthdaySaving from '../../BirthdaySaving';
 import { StyledAnchorWrapper, AnchorLeftMargin } from '../../../../common/styledWrapper';
 import endpoints from '../../../../common/externalEndpoints';
 
-export const ProfileInformation = ({ labels, handleComponentChange }) => {
+export const ProfileInformation = ({
+  labels,
+  handleComponentChange,
+  profileInfoTile,
+  userEmail,
+  userBirthday,
+  userFullName,
+  userPhoneNumber,
+  airMiles,
+  myPlaceNumber,
+}) => {
   return (
     <>
       <ProfileInfoActions labels={labels} handleComponentChange={handleComponentChange} />
-      <PersonalInformation labels={labels} handleComponentChange={handleComponentChange} />
+      <PersonalInformation
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+        profileInfoTile={profileInfoTile}
+        userEmail={userEmail}
+        userBirthday={userBirthday}
+        userFullName={userFullName}
+        userPhoneNumber={userPhoneNumber}
+        airMiles={airMiles}
+        myPlaceNumber={myPlaceNumber}
+      />
       <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
       <BirthdaySaving labels={labels} handleComponentChange={handleComponentChange} />
       <StyledAnchorWrapper>
@@ -48,11 +68,25 @@ export const ProfileInformation = ({ labels, handleComponentChange }) => {
 ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
+  profileInfoTile: PropTypes.shape({}),
+  userBirthday: PropTypes.string,
+  userEmail: PropTypes.string,
+  airMiles: PropTypes.string,
+  myPlaceNumber: PropTypes.string,
+  userFullName: PropTypes.string,
+  userPhoneNumber: PropTypes.number,
 };
 
 ProfileInformation.defaultProps = {
   labels: {},
   handleComponentChange: () => {},
+  profileInfoTile: {},
+  userBirthday: '',
+  userEmail: '',
+  userFullName: '',
+  userPhoneNumber: '',
+  airMiles: '',
+  myPlaceNumber: '',
 };
 
 export default ProfileInformation;
