@@ -21,6 +21,8 @@ export const AddEditPersonalInformationForm = ({
   pristine,
   errorMessage,
   handleSubmit,
+  expMonthOptionsMap,
+  expYearOptionsMap
 }) => {
   return (
     <form className={className} onSubmit={handleSubmit} noValidate>
@@ -78,7 +80,7 @@ export const AddEditPersonalInformationForm = ({
         <Col colSize={{ small: 3, medium: 2, large: 3 }}>
 
           <Field
-            placeholder={labels.paymentGC.lbl_payment_expMonth}
+            placeholder={labels.lbl_profile_personal_info_birthday}
             name="expMonth"
             id="expMonth"
             component={SelectBox}
@@ -90,7 +92,7 @@ export const AddEditPersonalInformationForm = ({
         </Col>
         <Col colSize={{ small: 3, medium: 2, large: 3 }}>
           <Field
-            placeholder={labels.paymentGC.lbl_payment_expYear}
+            placeholder={labels.lbl_profile_personal_info_birthday}
             name="expYear"
             id="expYear"
             component={SelectBox}
@@ -115,7 +117,6 @@ export const AddEditPersonalInformationForm = ({
             className="AddAddressForm__makeDefault"
           >
             {labels.lbl_profile_personal_info_tcp_employee}
-            {/* {addressFormLabels.setDefaultMsg} */}
           </Field>
         </Col>
       </Row>

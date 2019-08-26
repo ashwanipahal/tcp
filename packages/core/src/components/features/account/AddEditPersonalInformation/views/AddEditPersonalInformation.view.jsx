@@ -5,7 +5,7 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../common/atoms/Anchor';
 
-export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit }) => {
+export const AddEditPersonalInformation = ({ labels, successMessage, errorMessage, onSubmit,expMonthOptionsMap , expYearOptionsMap }) => {
   return (
     <React.Fragment>
       <BodyCopy className="elem-mb-LRG">
@@ -30,12 +30,14 @@ export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit 
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={onSubmit}
+        expMonthOptionsMap={expMonthOptionsMap}
+        expYearOptionsMap={expYearOptionsMap}
       />
     </React.Fragment>
   );
 };
 
-ChangePassword.propTypes = {
+AddEditPersonalInformation.propTypes = {
   labels: PropTypes.shape({
     lbl_changePassword_back: PropTypes.string,
     lbl_changePassword_heading: PropTypes.string,
@@ -44,13 +46,15 @@ ChangePassword.propTypes = {
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  expMonthOptionsMap: PropTypes.shape([]).isRequired,
+  expYearOptionsMap: PropTypes.shape([]).isRequired,
 };
 
-ChangePassword.defaultProps = {
+AddEditPersonalInformation.defaultProps = {
   labels: {
     lbl_changePassword_back: '',
     lbl_changePassword_heading: '',
     lbl_changePassword_password_info: '',
   },
 };
-export default ChangePassword;
+export default AddEditPersonalInformation;

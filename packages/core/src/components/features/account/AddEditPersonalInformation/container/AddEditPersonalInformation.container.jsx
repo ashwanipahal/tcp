@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import utils from '../../../../../utils';
+import utils, { getCreditCardExpirationOptionMap } from '../../../../../utils';
 import {
   getError,
   getSuccess,
@@ -18,6 +18,11 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     messageSateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this.creditCardExpirationOptionMap = getCreditCardExpirationOptionMap();
+  }
 
   componentDidUpdate() {
     const { successMessage } = this.props;
@@ -53,6 +58,8 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         errorMessage={errorMessage}
         onSubmit={this.changePassword}
         labels={labels}
+        expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
+        expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
       />
     );
   }
