@@ -22,7 +22,7 @@ exports[`FooterNavHeader component renders default footer correctly 1`] = `
 exports[`FooterNavHeader component renders image in header variation correctly 1`] = `
 <Styled(Anchor)
   className="footer-nav-header img-link"
-  data-locator="col_heading_3"
+  dataLocator="col_heading_3"
   to=""
 >
   <Styled(Image) />
