@@ -76,7 +76,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     </option>
   </select>
   <Styled(BodyCopy)
-    className={null}
+    className="select__error"
     color="error"
     component="div"
     fontFamily="secondary"
@@ -86,7 +86,35 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     lineHeight="normal"
     textAlign="left"
   >
-    REQUIRED_FIELD
+    <Styled(BodyCopy)
+      aria-disabled="true"
+      className="warning-icon"
+      color="text.primary"
+      componen="span"
+      component="p"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      aria-live="assertive"
+      className={null}
+      color="error"
+      component="div"
+      data-locator="errorDataLocator"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      role="alert"
+      textAlign="left"
+    >
+      REQUIRED_FIELD
+    </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </div>
 `;

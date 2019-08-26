@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountInformations component should renders correctly 1`] = `
+<Styled(RichText)
+  dataLocator="pre_screen_code_link"
+  richTextHtml="<h1>Account Information</h1>"
+/>
+`;
+
+exports[`AccountInformations component should renders correctly when no arguments are passed 1`] = `
+<Styled(RichText)
+  dataLocator="pre_screen_code_link"
+  richTextHtml=""
+/>
+`;

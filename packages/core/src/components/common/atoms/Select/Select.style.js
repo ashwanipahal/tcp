@@ -44,6 +44,20 @@ const selectStyles = css`
     top: 0;
   }
 
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

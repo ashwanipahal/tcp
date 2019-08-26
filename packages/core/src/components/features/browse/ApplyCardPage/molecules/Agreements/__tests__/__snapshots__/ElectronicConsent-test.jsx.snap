@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ElectronicConsent component should renders correctly 1`] = `
+<Fragment>
+  <Styled(RichText)
+    dataLocator="contact_disclaimer_info"
+    richTextHtml="<h1>Electronic Consent</h1>"
+  />
+</Fragment>
+`;
+
+exports[`ElectronicConsent component should renders correctly when no arguments are passed 1`] = `
+<Fragment>
+  <Styled(RichText)
+    dataLocator="contact_disclaimer_info"
+    richTextHtml=""
+  />
+</Fragment>
+`;

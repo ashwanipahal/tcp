@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreScreenCode component should renders correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="prescreen-code"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    Click here to unbox the link
+    <Styled(BodyCopy)
+      className="click-here-link"
+      color="text.primary"
+      component="a"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      onClick={[Function]}
+      textAlign="left"
+    >
+      click here
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Fragment>
+`;

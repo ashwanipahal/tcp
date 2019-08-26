@@ -27,6 +27,7 @@ type Props = {
   dataLocator?: string,
 };
 
+// eslint-disable-next-line complexity
 const SelectBox = ({
   className,
   id,
@@ -65,8 +66,30 @@ const SelectBox = ({
         </BodyCopy>
       )}
       {touched && error && (
-        <BodyCopy fontSize="fs12" fontFamily="secondary" component="div" color="error">
-          {error}
+        <BodyCopy
+          fontSize="fs12"
+          fontFamily="secondary"
+          component="div"
+          color="error"
+          className="select__error"
+        >
+          <BodyCopy
+            componen="span"
+            className={touched && error ? 'warning-icon' : ''}
+            aria-disabled="true"
+          />
+          <BodyCopy
+            color="error"
+            component="div"
+            fontSize="fs12"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            role="alert"
+            aria-live="assertive"
+            data-locator="errorDataLocator"
+          >
+            {touched && error ? error : ''}
+          </BodyCopy>
         </BodyCopy>
       )}
     </div>

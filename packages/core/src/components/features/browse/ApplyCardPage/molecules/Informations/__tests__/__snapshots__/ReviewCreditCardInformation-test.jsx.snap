@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
+<Fragment>
+  <Styled(Col)
+    className="rewards_card_logo"
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 2,
+        "small": 6,
+      }
+    }
+    key="container_header_image"
+  >
+    <Styled(BodyCopy)
+      className="header-image"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="rewards_card_instruction"
+    colSize={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
+    }
+    key="container_header_text_plcc"
+  >
+    <Styled(RichText)
+      dataLocator="creditCardHeader"
+      richTextHtml="<h1>Contact Information</h1>"
+    />
+  </Styled(Col)>
+</Fragment>
+`;
+
+exports[`ReviewCreditCardInformation component should renders correctly when no arguments are passed 1`] = `
+<Fragment>
+  <Styled(Col)
+    className="rewards_card_logo"
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 2,
+        "small": 6,
+      }
+    }
+    key="container_header_image"
+  >
+    <Styled(BodyCopy)
+      className="header-image"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="rewards_card_instruction"
+    colSize={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
+    }
+    key="container_header_text_plcc"
+  >
+    <Styled(RichText)
+      dataLocator="creditCardHeader"
+      richTextHtml=""
+    />
+  </Styled(Col)>
+</Fragment>
+`;

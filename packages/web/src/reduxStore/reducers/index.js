@@ -24,9 +24,11 @@ import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organis
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
+import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
+  APPLY_PLCC_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -77,6 +79,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,

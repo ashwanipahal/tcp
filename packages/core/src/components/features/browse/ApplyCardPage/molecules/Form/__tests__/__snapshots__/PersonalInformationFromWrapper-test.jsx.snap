@@ -1,0 +1,1140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactInformationFormWrapper component should renders correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="title"
+    color="text.primary"
+    component="h2"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    personal information
+  </Styled(BodyCopy)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="contact_information_form"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      key="contact_information_form"
+    >
+      <Styled(BodyCopy)
+        className="free_dropdown_label"
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        Date of Birth
+      </Styled(BodyCopy)>
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          className="table_contact_month"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          key="contact_information_month"
+        >
+          <Field
+            className="field_dob"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-dnqmqq",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
+    border-radius: 0;
+    color: ",
+                    [Function],
+                    ";
+    font-size: ",
+                    [Function],
+                    "px;
+    margin: 0;
+    margin-bottom: ",
+                    [Function],
+                    ";
+    outline: 0;
+    padding: ",
+                    [Function],
+                    " 0
+      ",
+                    [Function],
+                    ";
+    width: 100%;
+
+    ",
+                    [Function],
+                    ";
+  }
+
+  .select__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    font-weight: ",
+                    [Function],
+                    ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-dnqmqq",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="plcc_date"
+            enableSuccessCheck={false}
+            id="month"
+            name="month"
+            options={
+              Array [
+                Object {
+                  "displayName": "Mm",
+                  "id": "Mm",
+                },
+                Object {
+                  "displayName": "Jan",
+                  "id": "01",
+                },
+                Object {
+                  "displayName": "Feb",
+                  "id": "02",
+                },
+                Object {
+                  "displayName": "Mar",
+                  "id": "03",
+                },
+                Object {
+                  "displayName": "Apr",
+                  "id": "04",
+                },
+                Object {
+                  "displayName": "May",
+                  "id": "05",
+                },
+                Object {
+                  "displayName": "Jun",
+                  "id": "06",
+                },
+                Object {
+                  "displayName": "Jul",
+                  "id": "07",
+                },
+                Object {
+                  "displayName": "Aug",
+                  "id": "08",
+                },
+                Object {
+                  "displayName": "Sep",
+                  "id": "09",
+                },
+                Object {
+                  "displayName": "Oct",
+                  "id": "10",
+                },
+                Object {
+                  "displayName": "Nov",
+                  "id": "11",
+                },
+                Object {
+                  "displayName": "Dec",
+                  "id": "12",
+                },
+              ]
+            }
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          className="table_contact_day"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          key="personal_info_day"
+        >
+          <Field
+            className="field_dob"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-dnqmqq",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
+    border-radius: 0;
+    color: ",
+                    [Function],
+                    ";
+    font-size: ",
+                    [Function],
+                    "px;
+    margin: 0;
+    margin-bottom: ",
+                    [Function],
+                    ";
+    outline: 0;
+    padding: ",
+                    [Function],
+                    " 0
+      ",
+                    [Function],
+                    ";
+    width: 100%;
+
+    ",
+                    [Function],
+                    ";
+  }
+
+  .select__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    font-weight: ",
+                    [Function],
+                    ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-dnqmqq",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="plcc_month"
+            enableSuccessCheck={false}
+            id="date"
+            name="date"
+            options={
+              Array [
+                Object {
+                  "displayName": "Dd",
+                  "id": "Dd",
+                },
+                Object {
+                  "displayName": "01",
+                  "id": "01",
+                },
+                Object {
+                  "displayName": "02",
+                  "id": "02",
+                },
+                Object {
+                  "displayName": "03",
+                  "id": "03",
+                },
+                Object {
+                  "displayName": "04",
+                  "id": "04",
+                },
+                Object {
+                  "displayName": "05",
+                  "id": "05",
+                },
+                Object {
+                  "displayName": "06",
+                  "id": "06",
+                },
+                Object {
+                  "displayName": "07",
+                  "id": "07",
+                },
+                Object {
+                  "displayName": "08",
+                  "id": "08",
+                },
+                Object {
+                  "displayName": "09",
+                  "id": "09",
+                },
+                Object {
+                  "displayName": "10",
+                  "id": "10",
+                },
+                Object {
+                  "displayName": "11",
+                  "id": "11",
+                },
+                Object {
+                  "displayName": "12",
+                  "id": "12",
+                },
+                Object {
+                  "displayName": "13",
+                  "id": "13",
+                },
+                Object {
+                  "displayName": "14",
+                  "id": "14",
+                },
+                Object {
+                  "displayName": "15",
+                  "id": "15",
+                },
+                Object {
+                  "displayName": "16",
+                  "id": "16",
+                },
+                Object {
+                  "displayName": "17",
+                  "id": "17",
+                },
+                Object {
+                  "displayName": "18",
+                  "id": "18",
+                },
+                Object {
+                  "displayName": "19",
+                  "id": "19",
+                },
+                Object {
+                  "displayName": "20",
+                  "id": "20",
+                },
+                Object {
+                  "displayName": "21",
+                  "id": "21",
+                },
+                Object {
+                  "displayName": "22",
+                  "id": "22",
+                },
+                Object {
+                  "displayName": "23",
+                  "id": "23",
+                },
+                Object {
+                  "displayName": "24",
+                  "id": "24",
+                },
+                Object {
+                  "displayName": "25",
+                  "id": "25",
+                },
+                Object {
+                  "displayName": "26",
+                  "id": "26",
+                },
+                Object {
+                  "displayName": "27",
+                  "id": "27",
+                },
+                Object {
+                  "displayName": "28",
+                  "id": "28",
+                },
+                Object {
+                  "displayName": "29",
+                  "id": "29",
+                },
+                Object {
+                  "displayName": "30",
+                  "id": "30",
+                },
+                Object {
+                  "displayName": "31",
+                  "id": "31",
+                },
+              ]
+            }
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          className="table_contact_year"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          key="personal_info_year"
+        >
+          <Field
+            className="field_dob"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-dnqmqq",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
+    border-radius: 0;
+    color: ",
+                    [Function],
+                    ";
+    font-size: ",
+                    [Function],
+                    "px;
+    margin: 0;
+    margin-bottom: ",
+                    [Function],
+                    ";
+    outline: 0;
+    padding: ",
+                    [Function],
+                    " 0
+      ",
+                    [Function],
+                    ";
+    width: 100%;
+
+    ",
+                    [Function],
+                    ";
+  }
+
+  .select__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    font-weight: ",
+                    [Function],
+                    ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-dnqmqq",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="plcc_year"
+            enableSuccessCheck={false}
+            id="year"
+            name="year"
+            options={
+              Array [
+                Object {
+                  "displayName": "Yyyy",
+                  "id": "Yyyy",
+                },
+                Object {
+                  "displayName": "2002",
+                  "id": "2002",
+                },
+                Object {
+                  "displayName": "2001",
+                  "id": "2001",
+                },
+                Object {
+                  "displayName": "2000",
+                  "id": "2000",
+                },
+                Object {
+                  "displayName": "1999",
+                  "id": "1999",
+                },
+                Object {
+                  "displayName": "1998",
+                  "id": "1998",
+                },
+                Object {
+                  "displayName": "1997",
+                  "id": "1997",
+                },
+                Object {
+                  "displayName": "1996",
+                  "id": "1996",
+                },
+                Object {
+                  "displayName": "1995",
+                  "id": "1995",
+                },
+                Object {
+                  "displayName": "1994",
+                  "id": "1994",
+                },
+                Object {
+                  "displayName": "1993",
+                  "id": "1993",
+                },
+                Object {
+                  "displayName": "1992",
+                  "id": "1992",
+                },
+                Object {
+                  "displayName": "1991",
+                  "id": "1991",
+                },
+                Object {
+                  "displayName": "1990",
+                  "id": "1990",
+                },
+                Object {
+                  "displayName": "1989",
+                  "id": "1989",
+                },
+                Object {
+                  "displayName": "1988",
+                  "id": "1988",
+                },
+                Object {
+                  "displayName": "1987",
+                  "id": "1987",
+                },
+                Object {
+                  "displayName": "1986",
+                  "id": "1986",
+                },
+                Object {
+                  "displayName": "1985",
+                  "id": "1985",
+                },
+                Object {
+                  "displayName": "1984",
+                  "id": "1984",
+                },
+                Object {
+                  "displayName": "1983",
+                  "id": "1983",
+                },
+                Object {
+                  "displayName": "1982",
+                  "id": "1982",
+                },
+                Object {
+                  "displayName": "1981",
+                  "id": "1981",
+                },
+                Object {
+                  "displayName": "1980",
+                  "id": "1980",
+                },
+                Object {
+                  "displayName": "1979",
+                  "id": "1979",
+                },
+                Object {
+                  "displayName": "1978",
+                  "id": "1978",
+                },
+                Object {
+                  "displayName": "1977",
+                  "id": "1977",
+                },
+                Object {
+                  "displayName": "1976",
+                  "id": "1976",
+                },
+                Object {
+                  "displayName": "1975",
+                  "id": "1975",
+                },
+                Object {
+                  "displayName": "1974",
+                  "id": "1974",
+                },
+                Object {
+                  "displayName": "1973",
+                  "id": "1973",
+                },
+                Object {
+                  "displayName": "1972",
+                  "id": "1972",
+                },
+                Object {
+                  "displayName": "1971",
+                  "id": "1971",
+                },
+                Object {
+                  "displayName": "1970",
+                  "id": "1970",
+                },
+                Object {
+                  "displayName": "1969",
+                  "id": "1969",
+                },
+                Object {
+                  "displayName": "1968",
+                  "id": "1968",
+                },
+                Object {
+                  "displayName": "1967",
+                  "id": "1967",
+                },
+                Object {
+                  "displayName": "1966",
+                  "id": "1966",
+                },
+                Object {
+                  "displayName": "1965",
+                  "id": "1965",
+                },
+                Object {
+                  "displayName": "1964",
+                  "id": "1964",
+                },
+                Object {
+                  "displayName": "1963",
+                  "id": "1963",
+                },
+                Object {
+                  "displayName": "1962",
+                  "id": "1962",
+                },
+                Object {
+                  "displayName": "1961",
+                  "id": "1961",
+                },
+                Object {
+                  "displayName": "1960",
+                  "id": "1960",
+                },
+                Object {
+                  "displayName": "1959",
+                  "id": "1959",
+                },
+                Object {
+                  "displayName": "1958",
+                  "id": "1958",
+                },
+                Object {
+                  "displayName": "1957",
+                  "id": "1957",
+                },
+                Object {
+                  "displayName": "1956",
+                  "id": "1956",
+                },
+                Object {
+                  "displayName": "1955",
+                  "id": "1955",
+                },
+                Object {
+                  "displayName": "1954",
+                  "id": "1954",
+                },
+                Object {
+                  "displayName": "1953",
+                  "id": "1953",
+                },
+                Object {
+                  "displayName": "1952",
+                  "id": "1952",
+                },
+                Object {
+                  "displayName": "1951",
+                  "id": "1951",
+                },
+                Object {
+                  "displayName": "1950",
+                  "id": "1950",
+                },
+                Object {
+                  "displayName": "1949",
+                  "id": "1949",
+                },
+                Object {
+                  "displayName": "1948",
+                  "id": "1948",
+                },
+                Object {
+                  "displayName": "1947",
+                  "id": "1947",
+                },
+                Object {
+                  "displayName": "1946",
+                  "id": "1946",
+                },
+                Object {
+                  "displayName": "1945",
+                  "id": "1945",
+                },
+                Object {
+                  "displayName": "1944",
+                  "id": "1944",
+                },
+                Object {
+                  "displayName": "1943",
+                  "id": "1943",
+                },
+                Object {
+                  "displayName": "1942",
+                  "id": "1942",
+                },
+                Object {
+                  "displayName": "1941",
+                  "id": "1941",
+                },
+                Object {
+                  "displayName": "1940",
+                  "id": "1940",
+                },
+                Object {
+                  "displayName": "1939",
+                  "id": "1939",
+                },
+                Object {
+                  "displayName": "1938",
+                  "id": "1938",
+                },
+                Object {
+                  "displayName": "1937",
+                  "id": "1937",
+                },
+                Object {
+                  "displayName": "1936",
+                  "id": "1936",
+                },
+                Object {
+                  "displayName": "1935",
+                  "id": "1935",
+                },
+                Object {
+                  "displayName": "1934",
+                  "id": "1934",
+                },
+                Object {
+                  "displayName": "1933",
+                  "id": "1933",
+                },
+                Object {
+                  "displayName": "1932",
+                  "id": "1932",
+                },
+                Object {
+                  "displayName": "1931",
+                  "id": "1931",
+                },
+                Object {
+                  "displayName": "1930",
+                  "id": "1930",
+                },
+                Object {
+                  "displayName": "1929",
+                  "id": "1929",
+                },
+                Object {
+                  "displayName": "1928",
+                  "id": "1928",
+                },
+                Object {
+                  "displayName": "1927",
+                  "id": "1927",
+                },
+                Object {
+                  "displayName": "1926",
+                  "id": "1926",
+                },
+                Object {
+                  "displayName": "1925",
+                  "id": "1925",
+                },
+                Object {
+                  "displayName": "1924",
+                  "id": "1924",
+                },
+                Object {
+                  "displayName": "1923",
+                  "id": "1923",
+                },
+                Object {
+                  "displayName": "1922",
+                  "id": "1922",
+                },
+                Object {
+                  "displayName": "1921",
+                  "id": "1921",
+                },
+                Object {
+                  "displayName": "1920",
+                  "id": "1920",
+                },
+                Object {
+                  "displayName": "1919",
+                  "id": "1919",
+                },
+                Object {
+                  "displayName": "1918",
+                  "id": "1918",
+                },
+                Object {
+                  "displayName": "1917",
+                  "id": "1917",
+                },
+                Object {
+                  "displayName": "1916",
+                  "id": "1916",
+                },
+                Object {
+                  "displayName": "1915",
+                  "id": "1915",
+                },
+                Object {
+                  "displayName": "1914",
+                  "id": "1914",
+                },
+                Object {
+                  "displayName": "1913",
+                  "id": "1913",
+                },
+                Object {
+                  "displayName": "1912",
+                  "id": "1912",
+                },
+                Object {
+                  "displayName": "1911",
+                  "id": "1911",
+                },
+                Object {
+                  "displayName": "1910",
+                  "id": "1910",
+                },
+                Object {
+                  "displayName": "1909",
+                  "id": "1909",
+                },
+              ]
+            }
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="contact_information_form"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      key="contact_information_form_plcc_SSN"
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gzVnrw",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                [Function],
+                ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                [Function],
+                ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                [Function],
+                ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gzVnrw",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="plcc_SSN"
+        id="lastName"
+        maxLength="4"
+        name="ssNumber"
+        placeholder="ssn"
+        title="ssn"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;

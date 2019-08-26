@@ -137,6 +137,18 @@ function legacyPasswordValidator(value) {
   return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
 }
 
+function alphanumericValidator(value) {
+  return !value ? true : /^[0-9A-Za-z]{12}$/.test(value);
+}
+
+function ssnValidator(value) {
+  return /^[0-9]{4}$/.test(value);
+}
+
+function dobValidator(value) {
+  return ['Mm', 'Dd', 'Yyyy'].indexOf(value) === -1;
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -161,6 +173,9 @@ const validatorMethods = {
   equalTo: equalToValidator,
   legacyPassword: legacyPasswordValidator,
   email: emailValidator,
+  alphanumeric: alphanumericValidator,
+  ssn: ssnValidator,
+  dob: dobValidator,
 };
 
 export default validatorMethods;

@@ -46,19 +46,23 @@ const InputCheckbox = ({
         >
           {children}
         </BodyCopy>
+
+        <BodyCopy className="Checkbox__error" component="div">
+          <span className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
+          <BodyCopy
+            color="error"
+            component="div"
+            fontSize="fs12"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            role="alert"
+            aria-live="assertive"
+            data-locator="errorDataLocator"
+          >
+            {touched && error ? error : ''}
+          </BodyCopy>
+        </BodyCopy>
       </label>
-      <BodyCopy
-        className="Checkbox__error"
-        color="error"
-        component="div"
-        fontSize="fs12"
-        fontFamily="secondary"
-        role="alert"
-        aria-live="assertive"
-        data-locator="errorDataLocator"
-      >
-        {touched && error ? error : ''}
-      </BodyCopy>
     </React.Fragment>
   );
 };

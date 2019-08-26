@@ -34,6 +34,10 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/addCreditCardDetails',
   },
+  instantCreditApplication: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processWIC',
+  },
   updateCreditCard: {
     method: API_METHODS.POST,
     URI: 'v2/account/modifyCreditCardDetails',

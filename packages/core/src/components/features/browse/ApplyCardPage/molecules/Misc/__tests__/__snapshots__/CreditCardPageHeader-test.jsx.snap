@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardPageHeader component should renders correctly 1`] = `
+<Fragment>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="back_button_container"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      key="back"
+    >
+      <Styled(Anchor)
+        data-locator="plcc_back_btn"
+        onClick={[Function]}
+      >
+        <Styled(BodyCopy)
+          className="back_button"
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          back
+        </Styled(BodyCopy)>
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="apply_Card_Header_Text"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      key="rewards"
+    >
+      <Styled(BodyCopy)
+        className="Apply_Card_Header_Text"
+        color="text.primary"
+        component="h2"
+        data-locator="rewards"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        rewards
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;

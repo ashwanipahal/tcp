@@ -8,7 +8,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
+        "componentId": "sc-jTzLTM",
         "isStatic": false,
         "rules": Array [
           "
@@ -46,7 +46,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
       "displayName": "Styled(OrderLedger)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-VigVT",
+      "styledComponentId": "sc-jTzLTM",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

@@ -804,6 +804,20 @@ exports[`AddressFields component should render correctly 1`] = `
     top: 0;
   }
 
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
   ",
                 [Function],
                 ";
@@ -1399,6 +1413,20 @@ exports[`AddressFields component should render correctly 1`] = `
     top: 0;
   }
 
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
   ",
                 [Function],
                 ";
@@ -1709,6 +1737,24 @@ exports[`AddressFields component should render correctly 1`] = `
     opacity: ",
                 [Function],
                 ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
+  & .potential {
+    margin: 2px;
   }
 ",
                 ";
@@ -2538,6 +2584,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
     top: 0;
   }
 
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
   ",
                 [Function],
                 ";
@@ -3131,6 +3191,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding: 0;
     position: absolute;
     top: 0;
+  }
+
+  .select__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
   }
 
   ",

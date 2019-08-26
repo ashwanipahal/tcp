@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplicationInProgress component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className="underprogress_application"
+  color="text.primary"
+  component="div"
+  fontFamily="secondary"
+  fontSize="fs16"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="card-InProgress-header"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs20"
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    in progress
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    application card is in progress
+  </Styled(BodyCopy)>
+  <Styled(Row)
+    className="submit_plcc_form"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="underproress_checkout_button"
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(Anchor)
+        asPath="/bag"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="underproress_checkout_button"
+          data-locator="submit-plcc-btn"
+          fill="BLUE"
+          type="submit"
+        >
+          continue to checkout
+        </Styled(Button)>
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="submit_plcc_form"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="underproress_continue_button"
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(Anchor)
+        asPath="/home"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="underproress_continue_button"
+          data-locator="submit-plcc-btn"
+          fill="BLUE"
+          type="submit"
+        >
+          continue shopping
+        </Styled(Button)>
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(BodyCopy)>
+`;

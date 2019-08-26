@@ -54,6 +54,24 @@ const styles = css`
   & .disabled {
     opacity: ${props => props.theme.opacity.opacity.medium};
   }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
+  & .potential {
+    margin: 2px;
+  }
 `;
 
 export default styles;
