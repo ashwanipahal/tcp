@@ -5,6 +5,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
   <Styled(FilterModal)
     classNames="open-filter-button"
     handleClose={[Function]}
+    labels={Object {}}
     show={false}
   >
     <div

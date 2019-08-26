@@ -33,17 +33,40 @@ export default css`
     }
   }
 
+  .item-common {
+    margin-bottom: 8px;
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: 120px;
+      margin-right: 0;
+      padding-left: 0;
+
+      .item-select {
+        padding-left: 20px;
+      }
+    }
+  }
+
   .common-dropdown {
     width: 98%;
     position: relative;
     border: 0;
+    padding-top: 6px;
+    padding-bottom: 0;
+
+    .item-list-common {
+      max-width: 98%;
+      margin: 0 auto;
+
+      @media ${props => props.theme.mediaQuery.medium} {
+        max-width: 95%;
+        margin: 0 auto;
+      }
+    }
 
     .item-list-wrapper {
       max-height: 500px;
-
-      .item-list-common {
-        max-width: 100%;
-      }
+      text-align: left;
     }
 
     .apply-button {
@@ -54,7 +77,8 @@ export default css`
       }
     }
 
-    .size-title, .color-name {
+    .size-title,
+    .color-name {
       font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
       vertical-align: top;
     }
@@ -68,22 +92,6 @@ export default css`
       border: 1px solid ${props => props.theme.colors.PRIMARY.DARK};
       width: 18px;
       height: 18px;
-    }
-
-    .item-list-common {
-      @media ${props => props.theme.mediaQuery.medium} {
-        column-count: 4;
-      }
-
-      @media ${props => props.theme.mediaQuery.smallOnly} {
-        li {
-          width: 120px;
-          margin-right: 0;
-        }
-        .item-select {
-          padding-left: 20px;
-        }
-      }
     }
 
     .item-list-column {

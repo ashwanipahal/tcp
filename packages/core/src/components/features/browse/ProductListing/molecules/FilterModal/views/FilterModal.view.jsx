@@ -10,11 +10,12 @@ type Props = {
   children: any,
   className: any,
   classNames: any,
+  labels: any,
 };
 
 class FilterModal extends React.PureComponent<Props> {
   render() {
-    const { handleClose, show, children, className, classNames } = this.props;
+    const { handleClose, show, children, className, classNames, labels } = this.props;
     const showHideClassName = show
       ? `${className} modal display-block`
       : `${className} modal display-none`;
@@ -26,7 +27,7 @@ class FilterModal extends React.PureComponent<Props> {
             <Col
               colSize={{
                 small: 3,
-                medium: 3,
+                medium: 4,
                 large: 3,
               }}
             >
@@ -37,13 +38,13 @@ class FilterModal extends React.PureComponent<Props> {
                 data-locator="view_gallery_button"
                 onClick={this.toggleFilterIcon}
               >
-                FILTER
+                {labels.lbl_filter}
               </Button>
             </Col>
             <Col
               colSize={{
                 small: 3,
-                medium: 3,
+                medium: 4,
                 large: 3,
               }}
             >
@@ -53,7 +54,7 @@ class FilterModal extends React.PureComponent<Props> {
                 className="open-filter-button"
                 data-locator="view_gallery_button"
               >
-                SORT
+                {labels.lbl_sort}
               </Button>
             </Col>
           </Row>
@@ -75,7 +76,7 @@ class FilterModal extends React.PureComponent<Props> {
                   data-locator="view_gallery_button"
                   onClick={handleClose}
                 >
-                  CLEAR ALL
+                  {labels.lbl_clear}
                 </Button>
               </Col>
               <Col
@@ -92,7 +93,7 @@ class FilterModal extends React.PureComponent<Props> {
                   data-locator="view_gallery_button"
                   fill="BLACK"
                 >
-                  APPLY
+                  {labels.lbl_apply}
                 </Button>
               </Col>
             </Row>
@@ -104,4 +105,4 @@ class FilterModal extends React.PureComponent<Props> {
 }
 
 export default withStyles(FilterModal, FilterModalStyle);
-export {FilterModal as FilterModalVanilla}
+export { FilterModal as FilterModalVanilla };

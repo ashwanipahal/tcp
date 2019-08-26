@@ -7,14 +7,26 @@ describe('FilterModal is shown', () => {
     handleClose: jest.fn(),
     show: true,
     className: '',
-    classNames: ''
+    classNames: '',
+    labels: {
+      lbl_filter: '',
+      lbl_sort: '',
+      lbl_clear: '',
+      lbl_apply: '',
+    },
   };
 
   const props1 = {
     handleClose: jest.fn(),
     show: false,
     className: '',
-    classNames: ''
+    classNames: '',
+    labels: {
+      lbl_filter: '',
+      lbl_sort: '',
+      lbl_clear: '',
+      lbl_apply: '',
+    },
   };
 
   it('should render FilterModal', () => {

@@ -243,6 +243,7 @@ class ProductListingFiltersForm extends React.Component {
           initialValues={initialValues}
           filtersMaps={filtersMaps}
           className="render-mobile-view"
+          labels={labels}
         />
       </React.Fragment>
     );

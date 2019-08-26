@@ -8,7 +8,7 @@ export default css`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
+    z-index: ${props => props.theme.zindex.zPLPFilterDropDown};
   }
 
   &.display-block {
@@ -25,6 +25,7 @@ export default css`
 
     button {
       max-width: 164px;
+      height: 42px;
     }
 
     .close-button {
@@ -40,6 +41,7 @@ export default css`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 27px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       width: 80%;
@@ -48,6 +50,13 @@ export default css`
     .filter-row {
       margin-bottom: 7px;
       margin-top: 14px;
+    }
+
+    .accordion {
+      &.active:after,
+      &.inactive:after {
+        right: 42px;
+      }
     }
   }
 

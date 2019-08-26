@@ -67,7 +67,7 @@ function mapStateToProps(state) {
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
-      filtersLength[`${key} Filters`] = appliedFilters[key].length;
+      filtersLength[`${key}Filters`] = appliedFilters[key].length;
     }
   }
 
