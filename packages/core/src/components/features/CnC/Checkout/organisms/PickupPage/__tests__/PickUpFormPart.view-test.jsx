@@ -23,6 +23,7 @@ describe('PickUpFormPartVanilla component', () => {
       dispatch: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
+    component.instance().SaveAndCancelButton();
     expect(component).toMatchSnapshot();
   });
 
@@ -34,7 +35,7 @@ describe('PickUpFormPartVanilla component', () => {
       className: '',
       isSmsUpdatesEnabled: true,
       isGuest: true,
-      isMobile: true,
+      isMobile: false,
       isSMSActive: false,
       isUsSite: false,
       isOrderUpdateChecked: false,
@@ -45,6 +46,7 @@ describe('PickUpFormPartVanilla component', () => {
       dispatch: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
+    component.setState({ isEditing: true });
     component.instance().SaveAndCancelButton();
     expect(component).toMatchSnapshot();
   });

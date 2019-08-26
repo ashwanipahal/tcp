@@ -226,6 +226,23 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
           />
         </FormSection>
       </div>
+      <div
+        className="buttonContainer"
+      >
+        <Styled(Button)
+          buttonVariation="variable-width"
+          data-locator="pickup-cancelbtn"
+          onClick={[Function]}
+          type="button"
+        />
+        <Styled(Button)
+          buttonVariation="variable-width"
+          className="updateButton"
+          data-locator="pickup-addcardbtn"
+          fill="BLUE"
+          type="submit"
+        />
+      </div>
     </form>
   </div>
   <form
