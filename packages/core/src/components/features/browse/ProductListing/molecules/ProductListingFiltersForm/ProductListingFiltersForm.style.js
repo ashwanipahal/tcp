@@ -32,6 +32,6 @@ export default css`
   }
   .color-name {
     vertical-align: top;
-    width: 93px;
+    width: 86px;
   }
 `;

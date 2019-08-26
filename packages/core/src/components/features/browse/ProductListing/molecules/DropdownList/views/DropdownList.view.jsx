@@ -239,17 +239,17 @@ class DropdownList extends React.Component {
               </SelectItem>
             ))}
           </ul>
+          <Button
+            buttonVariation="fixed-width"
+            type="submit"
+            fill="BLACK"
+            color="WHITE"
+            className={cssClassName('apply-button')}
+            data-locator={getLocator(`plp_filter_${dataLocator}_apply`)}
+          >
+            {`${labels.lbl_apply}`}
+          </Button>
         </div>
-        <Button
-          buttonVariation="fixed-width"
-          type="submit"
-          fill="BLACK"
-          color="WHITE"
-          className={cssClassName('apply-button')}
-          data-locator={getLocator(`plp_filter_${dataLocator}_apply`)}
-        >
-          {`${labels.lbl_apply}`}
-        </Button>
       </div>
     );
   }

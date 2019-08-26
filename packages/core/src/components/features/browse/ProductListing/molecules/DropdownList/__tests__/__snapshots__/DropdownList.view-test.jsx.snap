@@ -23,7 +23,6 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
           ";
   position: absolute;
   z-index: 9;
-  max-width: none;
   border: 1px solid ",
           [Function],
           ";
@@ -32,9 +31,7 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
           " 0
     ",
           [Function],
-          " ",
-          [Function],
-          ";
+          " 0;
   margin-top: ",
           [Function],
           ";
@@ -45,11 +42,8 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
   min-width: 233px;
 
   .item-list-wrapper {
-    max-height: 360px;
-    margin-bottom: ",
-          [Function],
-          ";
-    text-align: left;
+    max-height: 430px;
+    text-align: center;
   }
 
   .item-list-column-wrapper {
@@ -58,7 +52,7 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
   .item-list-common {
     display: flex;
     position: static;
-    max-height: 350px;
+    max-height: 352px;
     max-width: 570px;
     overflow: scroll;
   }
@@ -70,6 +64,9 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
   }
   .apply-button {
     width: 210px;
+    margin-top: ",
+          [Function],
+          ";
   }
 ",
           ";
