@@ -232,7 +232,7 @@ export default css`
     .stacked-button,
     .scroll-button {
       min-width: 210px;
-      margin: 0 8px;
+      margin: 0 15px;
     }
 
     .stacked-button {
