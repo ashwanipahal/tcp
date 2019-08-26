@@ -49,6 +49,11 @@ const Abstractor = {
             items: [],
           };
         }
+        subCat.subCategories.map(subCategoryL3 => {
+          const subCatL3 = subCategoryL3;
+          subCatL3.url = Abstractor.constructUrl(subCategoryL3.categoryContent);
+          return subCatL3;
+        });
         subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
         subCategories[category].items.push(subCat);
         return subCategory;

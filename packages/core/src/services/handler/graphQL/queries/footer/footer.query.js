@@ -8,12 +8,18 @@ const buildQuery = ({ type, brand, country, channel }) => `
     submodules {
       footerTop {
         composites {
-          buttonList {
-            url
-            text
-            title
-            external
-            target
+          footerButtons {
+            textItems {
+              text
+              style
+            }
+            link {
+              url
+              text
+              title
+              target
+              action
+            }
           }
           socialLinks {
             url

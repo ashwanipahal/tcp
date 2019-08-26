@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, RichText, Col, Row, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import {
+  Button,
+  RichText,
+  Col,
+  Row,
+  BodyCopy,
+  TextItems,
+} from '@tcp/core/src/components/common/atoms';
 import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -39,7 +46,7 @@ class FooterTopCandidateA extends React.PureComponent {
       smsSignup,
       smsSignupLabels,
       socialMediaLinks,
-      referAFriendButton,
+      referAFriendButtonLabels,
       referAFriend,
       emailSignUpAsyncValidate,
       smsSignUpAsyncValidate,
@@ -66,11 +73,15 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            <RichText
-              className="heading_text"
+            <BodyCopy
+              component="div"
+              fontWeight="black"
+              fontSize="fs15"
+              className="heading_text email-sign-up"
               dataLocator="email_promo_text"
-              richTextHtml={emailSignup.text}
-            />
+            >
+              <TextItems textItems={emailSignup.textItems} />
+            </BodyCopy>
             <FooterTopEmailSignUpForm
               labels={emailSignupLabels}
               asyncValidate={emailSignUpAsyncValidate}
@@ -106,11 +117,15 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            <RichText
+            <BodyCopy
+              component="div"
+              fontWeight="black"
+              fontSize="fs15"
+              className="heading_text sms_sign_up"
               dataLocator="sms_promo_text"
-              className="heading_text"
-              richTextHtml={smsSignup.text}
-            />
+            >
+              <TextItems textItems={smsSignup.textItems} />
+            </BodyCopy>
             <FooterTopSmsSignUpForm
               labels={smsSignupLabels}
               fieldName={smsSignupFieldName}
@@ -162,10 +177,14 @@ class FooterTopCandidateA extends React.PureComponent {
                     small: true,
                   }}
                 >
-                  <RichText
-                    className="heading_text refer_friend_text"
-                    richTextHtml={referAFriend.text}
-                  />
+                  <BodyCopy
+                    component="div"
+                    fontWeight="black"
+                    fontSize="fs15"
+                    className="heading_text refer-a-friend"
+                  >
+                    <TextItems textItems={referAFriend.textItems} />
+                  </BodyCopy>
                 </Col>
                 <Col
                   colSize={{
@@ -183,7 +202,7 @@ class FooterTopCandidateA extends React.PureComponent {
                     buttonVariation="variable-width"
                     data-locator={getLocator('refer_friend')}
                   >
-                    {referAFriendButton.text}
+                    {referAFriendButtonLabels.text}
                   </Button>
                 </Col>
               </Row>
@@ -263,7 +282,7 @@ FooterTopCandidateA.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
   }),
-  referAFriendButton: PropTypes.shape({
+  referAFriendButtonLabels: PropTypes.shape({
     title: PropTypes.string,
     text: PropTypes.string,
   }),
@@ -281,12 +300,16 @@ FooterTopCandidateA.propTypes = {
 
 FooterTopCandidateA.defaultProps = {
   emailSignup: {
-    text: 'GET $10 OFF BY SIGNING UP FOR EMAIL!',
+    text: '',
     title: '',
   },
   smsSignup: {
-    text: 'GET $10 OFF BY SIGNING UP FOR SMS!',
+    text: '',
     title: '',
+  },
+  referAFriendButtonLabels: {
+    title: '',
+    text: '',
   },
   emailSignupLabels: {
     placeholderText: 'Enter email address',
@@ -303,12 +326,8 @@ FooterTopCandidateA.defaultProps = {
     submitButtonLabel: 'Submit',
   },
   referAFriend: {
-    title: '$10 for a friend, $10 for you!',
-    text: '$10 for a friend, $10 for you!',
-  },
-  referAFriendButton: {
-    title: 'REFER FRIEND',
-    text: 'REFER FRIEND',
+    title: '',
+    text: '',
   },
   showError: false,
   isEmailValid: false,

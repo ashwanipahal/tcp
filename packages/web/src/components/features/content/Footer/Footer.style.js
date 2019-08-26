@@ -17,6 +17,19 @@ export default css`
 
   .footer_top_candidate_a .heading_text {
     margin-bottom: 15px;
+    text-align: center;
+
+    .style1 {
+      color: #6a6a6a;
+    }
+    .style2 {
+      color: #4b9fdd;
+    }
+  }
+
+  .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
+    font-size: 12px;
+    line-height: 2.08;
   }
 
   .footer_top_candidate_a .refer_a_frient_last_colm {
@@ -96,6 +109,10 @@ export default css`
     .footer_top_candidate_a .heading_text.refer_friend_text {
       margin-bottom: 0;
     }
+    .footer_top_candidate_a .refer-a-friend {
+      font-size: 12px;
+      line-height: 1.67;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
     .hide-in-large-up {
@@ -135,9 +152,12 @@ export default css`
       padding: 11px 0 24px;
       color: ${props => props.theme.colors.TEXT.DARKERGRAY};
     }
-
     .refer_a_friend_desktop {
       margin-right: 0;
+    }
+    .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up, .footer_top_candidate_a .refer-a-friend {
+      font-size: 15px;
+      line-height: 1.67;
     }
   }
 

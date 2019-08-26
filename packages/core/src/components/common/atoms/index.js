@@ -11,6 +11,7 @@ import Heading from './Heading';
 import BodyCopy from './BodyCopy';
 import SelectBox from './Select';
 import LabeledRadioButton from './LabeledRadioButton';
+import TextItems from './TextItems';
 
 export {
   Anchor,
@@ -26,4 +27,5 @@ export {
   BodyCopy,
   SelectBox,
   LabeledRadioButton,
+  TextItems,
 };

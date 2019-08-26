@@ -20,11 +20,20 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(RichText)
-        className="heading_text"
+      <Styled(BodyCopy)
+        className="heading_text email-sign-up"
+        color="text.primary"
+        component="div"
         dataLocator="email_promo_text"
-        richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
-      />
+        fontFamily="primary"
+        fontSize="fs15"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <TextItems />
+      </Styled(BodyCopy)>
       <ReduxForm
         asyncBlurFields={
           Array [
@@ -113,11 +122,20 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(RichText)
-        className="heading_text"
+      <Styled(BodyCopy)
+        className="heading_text sms_sign_up"
+        color="text.primary"
+        component="div"
         dataLocator="sms_promo_text"
-        richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
-      />
+        fontFamily="primary"
+        fontSize="fs15"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <TextItems />
+      </Styled(BodyCopy)>
       <ReduxForm
         asyncBlurFields={
           Array [
@@ -231,10 +249,19 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               }
             }
           >
-            <Styled(RichText)
-              className="heading_text refer_friend_text"
-              richTextHtml="$10 for a friend, $10 for you!"
-            />
+            <Styled(BodyCopy)
+              className="heading_text refer-a-friend"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              <TextItems />
+            </Styled(BodyCopy)>
           </Styled(Col)>
           <Styled(Col)
             className="candidate_a_inline_container_button"
@@ -255,9 +282,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               buttonVariation="variable-width"
               data-locator="global_referfriend"
               id="extole_zone_global_footer"
-            >
-              REFER FRIEND
-            </Styled(Button)>
+            />
           </Styled(Col)>
         </Styled(Row)>
         <div

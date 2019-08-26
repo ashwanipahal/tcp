@@ -43,11 +43,9 @@ const EmailSignupModalStyle = css`
       display: block;
     }
     .button-container {
-      position: absolute;
       bottom: 24px;
     }
     .shop-button {
-      position: absolute;
       bottom: 0;
       width: 100%;
     }

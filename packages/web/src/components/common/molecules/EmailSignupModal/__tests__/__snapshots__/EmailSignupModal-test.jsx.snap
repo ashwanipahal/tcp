@@ -19,6 +19,13 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "620px",
+        "maxHeight": "620px",
+        "minHeight": "500px",
+      }
+    }
     isOpen={false}
     noPadding={true}
     onRequestClose={[Function]}
@@ -317,6 +324,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "620px",
+        "maxHeight": "620px",
+        "minHeight": "500px",
+      }
+    }
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}
@@ -615,6 +629,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
+    heightConfig={
+      Object {
+        "height": "620px",
+        "maxHeight": "620px",
+        "minHeight": "500px",
+      }
+    }
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}

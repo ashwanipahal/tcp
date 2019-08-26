@@ -29,6 +29,7 @@ const mapStateToProps = state => {
       footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
+      referAFriend: referAFriendButtonLabels,
     },
   } = state.Labels;
   const { EmailSignUp = {}, SmsSignUp = {} } = state;
@@ -45,6 +46,7 @@ const mapStateToProps = state => {
     emailSignup: Footer.emailSignupBtn,
     smsSignup: Footer.smsSignupBtn,
     referAFriend: Footer.referFriendBtn,
+    referAFriendButtonLabels,
     copyrightText: Footer.copyrightText,
     referenceID,
     emailSignupLabels,

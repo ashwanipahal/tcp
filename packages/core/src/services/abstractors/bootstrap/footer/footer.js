@@ -3,9 +3,12 @@ import handler from '../../../handler';
 
 const processFooterTop = footerTop => {
   return {
-    emailSignupBtn: (footerTop.composites.buttonList && footerTop.composites.buttonList[0]) || {},
-    smsSignupBtn: (footerTop.composites.buttonList && footerTop.composites.buttonList[1]) || {},
-    referFriendBtn: (footerTop.composites.buttonList && footerTop.composites.buttonList[2]) || {},
+    emailSignupBtn:
+      (footerTop.composites.footerButtons && footerTop.composites.footerButtons[0]) || {},
+    smsSignupBtn:
+      (footerTop.composites.footerButtons && footerTop.composites.footerButtons[1]) || {},
+    referFriendBtn:
+      (footerTop.composites.footerButtons && footerTop.composites.footerButtons[2]) || {},
     socialLinks: footerTop.composites.socialLinks || [],
   };
 };

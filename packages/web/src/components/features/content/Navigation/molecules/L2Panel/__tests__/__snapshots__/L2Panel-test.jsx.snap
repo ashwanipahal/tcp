@@ -134,6 +134,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-polo-shirts",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-school-uniform-polo-shirts",
                     },
                     Object {
                       "categoryContent": Object {
@@ -149,6 +150,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-tops",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-clothing-school-uniforms-tops",
                     },
                     Object {
                       "categoryContent": Object {
@@ -164,6 +166,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-chino-pants",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-school-uniform-chino-pants",
                     },
                     Object {
                       "categoryContent": Object {
@@ -179,6 +182,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-shorts",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-school-uniform-shorts",
                     },
                     Object {
                       "categoryContent": Object {
@@ -194,6 +198,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-leggings",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-school-uniform-leggings",
                     },
                     Object {
                       "categoryContent": Object {
@@ -209,6 +214,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-active",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-school-uniform-active",
                     },
                     Object {
                       "categoryContent": Object {
@@ -224,6 +230,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-dresses-and-jumpers",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-clothing-school-uniforms-dresses-and-jumpers",
                     },
                     Object {
                       "categoryContent": Object {
@@ -239,6 +246,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-jackets-and-vests",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-clothing-school-uniforms-jackets-and-vests",
                     },
                     Object {
                       "categoryContent": Object {
@@ -254,6 +262,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-backpacks-and-essentials",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-clothing-school-uniforms-backpacks-and-essentials",
                     },
                     Object {
                       "categoryContent": Object {
@@ -269,6 +278,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-plus-slim-size-school-uniforms",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-plus-slim-size-school-uniforms",
                     },
                   ]
                 }
@@ -357,6 +367,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-dresses-casual",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-dresses-casual",
                     },
                     Object {
                       "categoryContent": Object {
@@ -372,6 +383,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-dresses-rompers",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-dresses-rompers",
                     },
                   ]
                 }
@@ -429,6 +441,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-shirts-graphic-tees",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-tops-shirts-graphic-tees",
                     },
                   ]
                 }
@@ -486,6 +499,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shorts-skimmer",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-shorts-skimmer",
                     },
                     Object {
                       "categoryContent": Object {
@@ -501,6 +515,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shorts-midi",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-shorts-midi",
                     },
                     Object {
                       "categoryContent": Object {
@@ -516,6 +531,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shorts-short",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-shorts-short",
                     },
                     Object {
                       "categoryContent": Object {
@@ -531,6 +547,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-pull-on",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-pull-on",
                     },
                     Object {
                       "categoryContent": Object {
@@ -546,6 +563,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-plus-slim-size-shorts",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-plus-slim-size-shorts",
                     },
                   ]
                 }
@@ -634,6 +652,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-shirts-short-sleeve-tops",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-tops-shirts-short-sleeve-tops",
                     },
                     Object {
                       "categoryContent": Object {
@@ -649,6 +668,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-girls-shirts-tanks-and-camis",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-tops-girls-shirts-tanks-and-camis",
                     },
                     Object {
                       "categoryContent": Object {
@@ -664,6 +684,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-polo-shirts",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-polo-shirts",
                     },
                     Object {
                       "categoryContent": Object {
@@ -679,6 +700,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-girls-shirts-long-sleeve-tops",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-tops-girls-shirts-long-sleeve-tops",
                     },
                     Object {
                       "categoryContent": Object {
@@ -694,6 +716,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-girls-shirts-sweaters",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-tops-girls-shirts-sweaters",
                     },
                   ]
                 }
@@ -751,6 +774,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-bottoms-girls-pants-jeggings",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-bottoms-girls-pants-jeggings",
                     },
                     Object {
                       "categoryContent": Object {
@@ -766,6 +790,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-bottoms-girls-pants-leggings",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-bottoms-girls-pants-leggings",
                     },
                     Object {
                       "categoryContent": Object {
@@ -781,6 +806,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-bottoms-girls-pants-woven-pants",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-bottoms-girls-pants-woven-pants",
                     },
                   ]
                 }
@@ -908,6 +934,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-swimsuits-all",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-swimsuits-all",
                     },
                     Object {
                       "categoryContent": Object {
@@ -923,6 +950,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "",
                         "seoUrl": null,
                       },
+                      "url": "/c/undefined",
                     },
                   ]
                 }
@@ -1042,6 +1070,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-slides",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-slides",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1057,6 +1086,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shoes-ballet-flats",
                         "seoUrl": null,
                       },
+                      "url": "/c/girls-shoes-ballet-flats",
                     },
                   ]
                 }
@@ -1114,6 +1144,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-backpacks-and-essentials",
                         "seoUrl": null,
                       },
+                      "url": "/c/girl-accessories-backpacks-and-essentials",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1129,6 +1160,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-bags",
                         "seoUrl": null,
                       },
+                      "url": "/c/girl-accessories-bags",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1144,6 +1176,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-hair",
                         "seoUrl": null,
                       },
+                      "url": "/c/girl-accessories-hair",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1159,6 +1192,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-hats",
                         "seoUrl": null,
                       },
+                      "url": "/c/girl-accessories-hats",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1174,6 +1208,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-sunglasses",
                         "seoUrl": null,
                       },
+                      "url": "/c/girl-accessories-sunglasses",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1189,6 +1224,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-belts",
                         "seoUrl": null,
                       },
+                      "url": "/c/girl-accessories-belts",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1204,6 +1240,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-necklaces-and-sets",
                         "seoUrl": null,
                       },
+                      "url": "/c/girl-accessories-necklaces-and-sets",
                     },
                   ]
                 }
