@@ -26,4 +26,8 @@ export default class ServerToClientRenderPatch extends React.PureComponent {
       }
     }
   }
+
+  render() {
+    return <div />;
+  }
 }

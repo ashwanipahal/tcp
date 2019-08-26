@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAltImages component should renders ListItem correctly 1`] = `
+<View
+  style={
+    Object {
+      "height": 436,
+      "maxWidth": 164,
+    }
+  }
+>
+  <RenderTopBadge1
+    text=""
+  />
+  <ImageSection
+    imageIndex={0}
+    item={
+      Object {
+        "colorsMap": Array [],
+        "productInfo": Object {
+          "name": "tcp",
+        },
+      }
+    }
+    onFavorite={[Function]}
+  />
+  <RenderBadge2
+    text=""
+  />
+  <RenderPricesSection
+    listPrice={10}
+    noMerchantBadge=""
+    offerPrice={12}
+  />
+  <RenderTitle
+    text="tcp"
+  />
+  <ColorSwitch
+    colorsMap={Array []}
+    setImageIndex={[Function]}
+  />
+  <RenderPromotionalMessage
+    text=""
+  />
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    color="white"
+    customStyle={
+      Object {
+        "marginTop": 12,
+      }
+    }
+    data-locator=""
+    disableButton={false}
+    fill="BLUE"
+    fullWidth=""
+    locator=""
+    onPress={[Function]}
+    size={12}
+    text="ADD TO BAG"
+    type="submit"
+    url=""
+  />
+</View>
+`;

@@ -5,7 +5,6 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItem from './ProductsGridItem';
-import { GRID_ITEMS_TYPES } from '../propTypes/productsAndItemsPropTypes';
 
 const isGridItem = item => {
   let flag = true;
@@ -14,33 +13,35 @@ const isGridItem = item => {
     (item &&
       // eslint-disable-next-line
       item.hasOwnProperty('type') &&
-      (item.type === GRID_ITEMS_TYPES.MARKETING ||
-        item.type === GRID_ITEMS_TYPES.CONTAINED_MARKETING_ITEM))
+      (item.type === 'marketing' || item.type === 'marketing_contained'))
   ) {
     flag = false;
   }
   return flag;
 };
 
-const ProductList = ({
-  className,
-  products,
-  showQuickViewForProductId,
-  currencySymbol,
-  onAddItemToFavorites,
-  onQuickViewOpenClick,
-  onPickUpOpenClick,
-  onColorChange,
-  isBopisEnabled,
-  unbxdId,
-  onProductCardHover,
-  isBopisEnabledForClearance,
-  onQuickBopisOpenClick,
-  currencyExchange,
-  siblingProperties,
-  loadedProductCount,
-}) => {
+const ProductList = props => {
+  const {
+    className,
+    products,
+    showQuickViewForProductId,
+    currencySymbol,
+    onAddItemToFavorites,
+    onQuickViewOpenClick,
+    onPickUpOpenClick,
+    onColorChange,
+    isBopisEnabled,
+    unbxdId,
+    onProductCardHover,
+    isBopisEnabledForClearance,
+    onQuickBopisOpenClick,
+    currencyExchange,
+    siblingProperties,
+    loadedProductCount,
+    labels,
+  } = props;
   let gridIndex = 0;
+
   return (
     <div className={className}>
       {products.map((item, index) => {
@@ -83,40 +84,12 @@ const ProductList = ({
               isProductsGridCTAView
               isMatchingFamily={false}
               siblingProperties={siblingProperties}
-              isEvenElement={false}
+              isEvenElement={isEvenElement}
               gridIndex={gridIndex}
               isPLPredesign={false}
               isKeepAliveKillSwitch={false}
+              labels={labels}
             />
-
-            {/* <p>
-              Name12:
-              {item.productInfo.name}
-            </p>
-            <p>
-              listPrice:
-              {item.productInfo.listPrice}
-            </p>
-            <p>
-              offerPrice:
-              {item.productInfo.offerPrice}
-            </p>
-            <p>
-              ratings:
-              {item.productInfo.ratings}
-            </p>
-            <p>
-              reviewsCount:
-              {item.productInfo.reviewsCount}
-            </p>
-            <Button
-              onClick={() => {}}
-              buttonVariation="fixed-width"
-              fill="BLUE"
-              className="add-to-bag-btn"
-            >
-              Add to bag
-            </Button> */}
           </div>
         );
       })}
@@ -130,7 +103,7 @@ ProductList.propTypes = {
   /** the generalProductId of the product (if any) requesting quickView to show */
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
-  currencySymbol: ProductsGridItem.propTypes.currencySymbol,
+  currencySymbol: PropTypes.string,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
   /** callback for clicks on wishlist CTAs. Accepts: colorProductId. */
   onAddItemToFavorites: PropTypes.func,
@@ -152,6 +125,7 @@ ProductList.propTypes = {
     promotionalPLCCMessage: PropTypes.string,
   }),
   loadedProductCount: PropTypes.number.isRequired,
+  labels: PropTypes.shape().isRequired,
 };
 
 ProductList.defaultProps = {
@@ -177,3 +151,4 @@ ProductList.defaultProps = {
 };
 
 export default withStyles(ProductList, ProductListStyle);
+export { ProductList as ProductListVanilla };

@@ -10,6 +10,12 @@ import {
   getProfileCompletion,
   getPercentageIncrement,
   getDefaultStore,
+  getUserFullName,
+  getUserEmail,
+  getUserPhoneNumber,
+  getAirmilesDetails,
+  getMyPlaceNumber,
+  getProfileInfoTileData,
 } from '../../User/container/User.selectors';
 
 import { getSuccess } from '../../ChangePassword/container/ChangePassword.selectors';
@@ -51,6 +57,12 @@ const mapStateToProps = state => {
     percentageIncrement: getPercentageIncrement(state),
     defaultStore: getDefaultStore(state),
     successMessage: getSuccess(state),
+    userFullName: getUserFullName(state),
+    userEmail: getUserEmail(state),
+    userPhoneNumber: getUserPhoneNumber(state),
+    airMiles: getAirmilesDetails(state),
+    myPlaceNumber: getMyPlaceNumber(state),
+    profileInfoTile: getProfileInfoTileData(state),
   };
 };
 

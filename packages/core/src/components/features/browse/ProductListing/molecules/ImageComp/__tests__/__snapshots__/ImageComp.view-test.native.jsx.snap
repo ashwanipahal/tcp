@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAltImages component should renders ListItem correctly 1`] = `
+<Image
+  source={
+    Object {
+      "uri": Object {},
+    }
+  }
+  style={
+    Object {
+      "height": 205,
+      "resizeMode": "contain",
+      "width": 164,
+    }
+  }
+/>
+`;

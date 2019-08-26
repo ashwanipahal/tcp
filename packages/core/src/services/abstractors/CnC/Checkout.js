@@ -2,6 +2,7 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getCurrentOrderFormatter } from './CartItemTile';
+import { getAPIConfig } from '../../../utils';
 
 export const getGiftWrappingOptions = () => {
   const payload = {
@@ -28,6 +29,42 @@ export const getGiftWrappingOptions = () => {
   // .catch(err => {
   //   // throw getFormattedError(err);
   // });
+};
+
+export const addPickupPerson = args => {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    header: {
+      'X-Cookie': apiConfig.cookie,
+    },
+    body: {
+      contact: [
+        {
+          addressType: 'shipping',
+          firstName: args.firstName,
+          lastName: args.lastName,
+          phone2: args.phoneNumber,
+          email1: (args.emailAddress || '').trim(),
+          email2: args.alternateEmail
+            ? `${args.alternateEmail.trim()}|${args.alternateFirstName} ${args.alternateLastName}`
+            : '',
+        },
+      ],
+    },
+    webService: endpoints.addAddress,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      // if (this.apiHelper.responseContainsErrors(res)) {
+      //   throw new ServiceResponseError(res);
+      // }
+
+      return { addressId: res.body.addressId };
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const getCurrentOrderAndCouponsDetails = (
@@ -85,4 +122,5 @@ export const getCurrentOrderAndCouponsDetails = (
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
+  addPickupPerson,
 };

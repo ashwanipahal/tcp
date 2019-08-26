@@ -16,12 +16,12 @@ type Props = {
   labels: object,
   handleSubmit: Function,
   onChangeForm: Function,
-  toggleSubmit: boolean,
+  invalid: Boolean,
 };
 
 class TrackOrderForm extends React.PureComponent<Props> {
   render() {
-    const { className, labels, handleSubmit, onChangeForm, toggleSubmit } = this.props;
+    const { className, labels, handleSubmit, onChangeForm, invalid } = this.props;
     return (
       <form
         name={constants.TRACK_ORDER_FORM_NAME}
@@ -57,7 +57,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
               fontSizeVariation="medium"
               anchorVariation="primary"
               underline
-              data-locator="track_order_need_help"
+              dataLocator="track_order_need_help"
               to={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
             >
               {labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
@@ -71,7 +71,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
             buttonVariation="fixed-width"
             dataLocator="track_order_btn"
             fullWidth
-            disabled={!toggleSubmit}
+            disabled={invalid}
             className="elem-mb-L trackOrder-trackOrdercta"
           >
             {labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderBtn}

@@ -4,42 +4,10 @@
  * @author Ben
  */
 import { isEmpty } from 'lodash';
-import { getCustomerSelection, setCustomerSelection } from './customerSelectionManagement';
 // import { getClearanceString } from 'service/WebAPIServiceAbstractors/parsers/productsParser';
 
 /* Below functions are used to check whether to show/hide clearance/New Arrivals/Online Only badges in both en and translated sites.
 Doing this as motion point is translating the categories in the redux store */
-export const LANG_STRINGS = {
-  PRODUCTS: {
-    ATTRIBUTES: {
-      CLEARANCE: {
-        en: 'Clearance',
-        fr: 'Liquidation',
-        es: 'Liquidación',
-      },
-      ONLINE_ONLY: {
-        en: 'Online Only',
-        fr: 'Online Only', // Added english word as we dont have online only for ca-fr
-        es: 'Solo en línea',
-      },
-      NEW_ARRIVALS: {
-        en: 'New Arrivals',
-        fr: 'Nouveautés',
-        es: 'Novedades',
-      },
-    },
-  },
-};
-
-// function
-function getAllLangConsts(categoryType) {
-  return Object.keys(categoryType).map(key => categoryType[key]);
-}
-
-// function to select the corresponding category
-export function getClearanceString(categoryType) {
-  return getAllLangConsts(LANG_STRINGS.PRODUCTS.ATTRIBUTES[categoryType]);
-}
 /* End of show/hide badge methods */
 
 /**
@@ -227,74 +195,6 @@ export const checkIsSelectedSizeDisabled = (productInfo, formData) => {
     return currentSizeObj.length ? currentSizeObj[0].maxAvailable <= 0 : true;
   }
   return false;
-};
-
-export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
-  let showDefaultSizeMsg = false;
-  let defaultSelection = {
-    fit: null,
-    size: null,
-  };
-
-  if (productInfo.categoryId && isShowDefaultSize) {
-    defaultSelection = getCustomerSelection(productInfo.categoryId);
-    showDefaultSizeMsg = !!(defaultSelection.size || defaultSelection.fit);
-  }
-
-  const formValuesWithDefaultSizes = {
-    ...formValues,
-    fit: defaultSelection.fit ? defaultSelection.fit : formValues.fit,
-    size: defaultSelection.size ? defaultSelection.size : formValues.size,
-  };
-  const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(
-    productInfo,
-    formValuesWithDefaultSizes
-  );
-  return isSelectedSizeDisabled ||
-    (defaultSelection.size && formValues.size && defaultSelection.size !== formValues.size)
-    ? { showDefaultSizeMsg: false, formValues }
-    : { showDefaultSizeMsg, formValues: formValuesWithDefaultSizes };
-};
-
-const isNotContainsOneSize = (productInfoOrWishlistItem, formData) => {
-  let isSetDefaultSizes = true;
-  const colorObject = getMapSliceForColor(
-    productInfoOrWishlistItem.colorFitsSizesMap,
-    formData.color
-  );
-  if (
-    colorObject &&
-    colorObject.fits &&
-    colorObject.fits.length === 1 &&
-    colorObject.fits[0].sizes &&
-    colorObject.fits[0].sizes.length === 1
-  ) {
-    isSetDefaultSizes = false;
-  }
-  return isSetDefaultSizes;
-};
-
-export const setDefaultSizes = (isShowDefaultSizeABTest, productInfoOrWishlistItem, formData) => {
-  const isShowDefaultSize =
-    isShowDefaultSizeABTest && isNotContainsOneSize(productInfoOrWishlistItem, formData);
-  const colorFitsSizesMapEntry = getMapSliceForColorProductId(
-    productInfoOrWishlistItem.colorFitsSizesMap,
-    productInfoOrWishlistItem.generalProductId
-  );
-  const { miscInfo } = colorFitsSizesMapEntry;
-  const isClearanceBool = getClearanceString('CLEARANCE').includes(miscInfo.isClearance);
-
-  if (
-    productInfoOrWishlistItem.categoryId &&
-    (formData.fit || formData.size) &&
-    !isClearanceBool &&
-    isShowDefaultSize
-  ) {
-    setCustomerSelection(productInfoOrWishlistItem.categoryId, {
-      fit: formData.fit ? formData.fit : null,
-      size: formData.size ? formData.size : null,
-    });
-  }
 };
 
 export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap) => {

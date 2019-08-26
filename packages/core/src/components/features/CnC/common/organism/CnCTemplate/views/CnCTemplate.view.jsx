@@ -4,12 +4,15 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import OrderLedgerContainer from '../../OrderLedger';
+import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 
 import styles from '../styles/CnCTemplate.style';
 
-class CnCTemplate extends React.PureComponent<Props> {
+class CnCTemplate extends React.Component<Props> {
+  submit = () => {};
+
   render() {
     const {
       leftSection: LeftSection,
@@ -35,6 +38,7 @@ class CnCTemplate extends React.PureComponent<Props> {
               <div className="bonusPointsDaysWrapper">
                 <BonusPointsDays enableApplyCta />
               </div>
+              <AirmilesBanner />
               <CouponAndPromos />
             </Col>
           )}

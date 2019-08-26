@@ -45,6 +45,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
         fontWeight="extrabold"
         isDefault={false}
         showCountry={true}
+        showName={true}
         showPhone={true}
       />
       <Styled(Button)

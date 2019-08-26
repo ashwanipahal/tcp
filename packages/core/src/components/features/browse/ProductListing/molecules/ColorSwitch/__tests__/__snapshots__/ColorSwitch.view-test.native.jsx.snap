@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAltImages component should renders ListItem correctly 1`] = `
+<View
+  style={
+    Object {
+      "height": 17,
+      "marginTop": 8,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "color": Object {
+            "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/3000785_10.jpg",
+            "name": "WHITE",
+          },
+          "colorProductId": "3000785_10",
+          "imageName": "3000785_10",
+          "miscInfo": Object {
+            "badge1": Object {},
+            "badge2": "Extended Sizes",
+            "badge3": "50% OFF",
+            "hasOnModelAltImages": false,
+            "isBopisEligible": true,
+            "isBossEligible": true,
+            "isClearance": "",
+            "keepAlive": false,
+            "listPrice": 16.95,
+            "offerPrice": 8.48,
+            "videoUrl": "",
+          },
+        },
+      ]
+    }
+    disableVirtualization={false}
+    horizontal={true}
+    initialNumToRender={8}
+    keyExtractor={[Function]}
+    listKey={[Function]}
+    maxToRenderPerBatch={2}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;

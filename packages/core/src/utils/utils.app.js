@@ -9,6 +9,7 @@ import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
 
+let currentBrand = null;
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
 let gymAPIConfig = null;
@@ -219,8 +220,9 @@ export const getScreenHeight = () => {
  */
 export const cropImageUrl = (url, crop) => {
   const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
+  const imgPath = urlPath && urlPath.replace(/^\//, '');
   if (urlPath && crop) {
-    return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+    return `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
   }
   return url;
 };
@@ -408,6 +410,42 @@ export const switchAPIConfig = envConfig => {
 export const getSiteId = () => {
   const { siteId } = getAPIConfig();
   return siteId;
+};
+
+export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
+  const prototype = Object.getPrototypeOf(obj);
+  // eslint-disable-next-line
+  for (let name of Object.getOwnPropertyNames(prototype)) {
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
+    const isGetter = descriptor && typeof descriptor.get === 'function';
+    // eslint-disable-next-line
+    if (isGetter) continue;
+    if (
+      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
+        ? !name.startsWith(namePrefix)
+        : name.startsWith(namePrefix)
+    ) {
+      // eslint-disable-next-line
+      obj[name] = prototype[name].bind(obj);
+    }
+  }
+};
+
+/**
+ * @function getCurrentBrand
+ *
+ * @returns current brand selected in mobile app
+ */
+export const getCurrentBrand = () => {
+  return currentBrand;
+};
+
+/**
+ * @function updateCurrentBrand
+ * updates current brand selected in mobile app
+ */
+export const updateCurrentBrand = brandName => {
+  currentBrand = brandName;
 };
 
 export default {

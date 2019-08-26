@@ -20,8 +20,9 @@ export const AccountOverviewTile = ({
         <BodyCopy
           component="h3"
           fontSize="fs16"
-          fontWeight="semibold"
+          fontWeight="extrabold"
           className="heading"
+          fontFamily="secondary"
           data-locator={`accountoverview-${dataLocatorPrefix}-header`}
         >
           {title}
@@ -38,7 +39,7 @@ export const AccountOverviewTile = ({
           fill="BLUE"
           centered
           className="elem-mb-SM"
-          data-locator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
+          dataLocator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
         >
           {ctaTitle}
         </Anchor>

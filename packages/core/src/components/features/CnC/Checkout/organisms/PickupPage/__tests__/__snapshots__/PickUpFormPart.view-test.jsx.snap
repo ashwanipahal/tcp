@@ -1,0 +1,566 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickUpFormPartVanilla component should renders correctly props  present  1`] = `
+<div
+  className=""
+>
+  <div
+    className="container"
+  >
+    <Styled(CheckoutSectionTitleDisplay)
+      className="summary-title-pick-up"
+      dataLocator="pickup-title"
+    />
+    <Styled(ErrorMessage)
+      className="pickupError"
+      dataLocator="pickup-error"
+      error="Error handle"
+      fontSize="fs14"
+      fontWeight="black"
+    />
+    <form
+      className="checkoutPickupForm"
+      onSubmit={[MockFunction]}
+    >
+      <div
+        className="pickUpContact"
+        dataLocator="pickup-contact"
+      >
+        <FormSection
+          className="pickUpContact"
+          name="pickUpContact"
+        >
+          <Styled(ContactFormFields)
+            className="pickup-contact-guest-form"
+            labels={Object {}}
+            showEmailAddress={true}
+            showPhoneNumber={true}
+          />
+        </FormSection>
+      </div>
+      <div
+        className="pick-up-form-container"
+        dataLocator="pickup-sms"
+      >
+        <FormSection
+          name="smsSignUp"
+        >
+          <Styled(SMSFormFields)
+            altInitValue=""
+            formName="checkoutPickup"
+            formSection="smsSignUp"
+            isOrderUpdateChecked={false}
+            labels={Object {}}
+          />
+        </FormSection>
+      </div>
+      <div
+        className="email-signup-container"
+      >
+        <Field
+          className="email-signup"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-VigVT",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: inline-flex;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-VigVT",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="signUp-checkbox-field"
+          name="emailSignup"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            dataLocator="pickup-email-signUp-heading-lbl"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Field>
+        <div
+          className="emailSignupText"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            dataLocator="pickup-email-signUp-sub-heading-text"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="pickup-email-signUp-contact-anchor"
+            fontSizeVariation="small"
+            href="#"
+            noLink={true}
+            target="_blank"
+          />
+        </div>
+      </div>
+      <div
+        lassName="pickUpAlternate-container"
+      >
+        <FormSection
+          name="pickUpAlternate"
+        >
+          <Styled(PickUpAlternateFormPart)
+            formName="checkoutPickup"
+            formSection="pickUpAlternate"
+            isAlternateUpdateChecked={false}
+            isEditing={true}
+            labels={Object {}}
+            showNoteOnToggle={true}
+          />
+        </FormSection>
+      </div>
+      <div
+        className="buttonContainer"
+      >
+        <Styled(Button)
+          buttonVariation="variable-width"
+          data-locator="pickup-cancelbtn"
+          onClick={[Function]}
+          type="button"
+        />
+        <Styled(Button)
+          buttonVariation="variable-width"
+          className="updateButton"
+          data-locator="pickup-addcardbtn"
+          fill="BLUE"
+          type="submit"
+        />
+      </div>
+    </form>
+  </div>
+  <form
+    onSubmit={[MockFunction]}
+  >
+    <Styled(CheckoutFooter)
+      backLinkText="undefined undefined"
+      disableNext={true}
+      nextButtonText="undefined: undefined"
+    />
+  </form>
+</div>
+`;
+
+exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="container"
+  >
+    <Styled(CheckoutSectionTitleDisplay)
+      className="summary-title-pick-up"
+      dataLocator="pickup-title"
+    />
+    <form
+      className="checkoutPickupForm"
+      onSubmit={[MockFunction]}
+    >
+      <div
+        className="pickUpContact"
+        dataLocator="pickup-contact"
+      >
+        <FormSection
+          className="pickUpContact"
+          name="pickUpContact"
+        >
+          <Styled(PickupMainContactEditForm)
+            className="pickup-contact-guest-form"
+            dispatch={[MockFunction]}
+            formData={Object {}}
+            isEditing={false}
+            isMobile={false}
+            isReset={false}
+            labels={Object {}}
+            onClose={[Function]}
+            onEditModeChange={[Function]}
+            onSubmit={[Function]}
+            showPhoneNumber={true}
+          />
+        </FormSection>
+      </div>
+      <div
+        lassName="pickUpAlternate-container"
+      >
+        <FormSection
+          name="pickUpAlternate"
+        >
+          <Styled(PickUpAlternateFormPart)
+            formName="checkoutPickup"
+            formSection="pickUpAlternate"
+            isAlternateUpdateChecked={false}
+            isEditing={false}
+            labels={Object {}}
+            showNoteOnToggle={true}
+          />
+        </FormSection>
+      </div>
+    </form>
+  </div>
+  <form
+    onSubmit={[MockFunction]}
+  >
+    <Styled(CheckoutFooter)
+      backLinkText="undefined undefined"
+      disableNext={false}
+      nextButtonText="undefined: undefined"
+    />
+  </form>
+</div>
+`;
+
+exports[`PickUpFormPartVanilla component should renders correctly props with state update  1`] = `
+<div
+  className=""
+>
+  <div
+    className="container"
+  >
+    <Styled(CheckoutSectionTitleDisplay)
+      className="summary-title-pick-up"
+      dataLocator="pickup-title"
+    />
+    <Styled(ErrorMessage)
+      className="pickupError"
+      dataLocator="pickup-error"
+      error="Error handle"
+      fontSize="fs14"
+      fontWeight="black"
+    />
+    <form
+      className="checkoutPickupForm"
+      onSubmit={[MockFunction]}
+    >
+      <div
+        className="pickUpContact"
+        dataLocator="pickup-contact"
+      >
+        <FormSection
+          className="pickUpContact"
+          name="pickUpContact"
+        >
+          <Styled(ContactFormFields)
+            className="pickup-contact-guest-form"
+            labels={Object {}}
+            showEmailAddress={true}
+            showPhoneNumber={true}
+          />
+        </FormSection>
+      </div>
+      <div
+        className="pick-up-form-container"
+        dataLocator="pickup-sms"
+      >
+        <FormSection
+          name="smsSignUp"
+        >
+          <Styled(SMSFormFields)
+            altInitValue=""
+            formName="checkoutPickup"
+            formSection="smsSignUp"
+            isOrderUpdateChecked={false}
+            labels={Object {}}
+          />
+        </FormSection>
+      </div>
+      <div
+        className="email-signup-container"
+      >
+        <Field
+          className="email-signup"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-VigVT",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: inline-flex;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-VigVT",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="signUp-checkbox-field"
+          name="emailSignup"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            dataLocator="pickup-email-signUp-heading-lbl"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Field>
+        <div
+          className="emailSignupText"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            dataLocator="pickup-email-signUp-sub-heading-text"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="pickup-email-signUp-contact-anchor"
+            fontSizeVariation="small"
+            href="#"
+            noLink={true}
+            target="_blank"
+          />
+        </div>
+      </div>
+      <div
+        lassName="pickUpAlternate-container"
+      >
+        <FormSection
+          name="pickUpAlternate"
+        >
+          <Styled(PickUpAlternateFormPart)
+            formName="checkoutPickup"
+            formSection="pickUpAlternate"
+            isAlternateUpdateChecked={false}
+            isEditing={false}
+            labels={Object {}}
+            showNoteOnToggle={true}
+          />
+        </FormSection>
+      </div>
+    </form>
+  </div>
+  <form
+    onSubmit={[MockFunction]}
+  >
+    <Styled(CheckoutFooter)
+      backLinkText="undefined undefined"
+      disableNext={false}
+      nextButtonText="undefined: undefined"
+    />
+  </form>
+</div>
+`;

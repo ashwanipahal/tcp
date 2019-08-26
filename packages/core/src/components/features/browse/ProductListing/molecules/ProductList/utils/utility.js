@@ -1,29 +1,3 @@
-import { labels } from '../labels/labels';
-
-/**
- * @param {object} history - the current component route history
- * @param {object} match - component's proper navigation details
- * @param {string} toRoute - the route to which the rediction is to be done
- * @description - this method gets all parameter as stated above to route the page as
- * the mentioned toRoute param
- */
-export function redirectToRoute(history, match, toRoute) {
-  return history.push(`/${match.params.siteId}${toRoute}`);
-}
-
-export function getSiteId() {
-  const paths = window.location.pathname.split('/', 2);
-  return paths[1];
-}
-
-export function getHostName() {
-  return window.location.hostname;
-}
-
-export function getLocationOrigin() {
-  return window.location.origin;
-}
-
 /**
  * @method getPromotionalMessage - this function checks whether the user is PLCC or not and
  *         returns the message respectively
@@ -42,7 +16,7 @@ const getPromotionalMessage = (isPlcc, handlers) => {
  * text 'AddToBagForm-'
  * @param {string} productId - id needs to be append to the add to bag text
  */
-const getAddToBagFormName = productId => labels.ADD_TO_BAG_FORM_NAME + productId;
+// const getAddToBagFormName = productId => labels.ADD_TO_BAG_FORM_NAME + productId;
 
 /**
  * @method validateBossEligibility
@@ -86,7 +60,7 @@ function validateBopisEligibility({ isBopisClearanceProductEnabled, isBopisEnabl
 
 export {
   getPromotionalMessage,
-  getAddToBagFormName,
+  // getAddToBagFormName,
   validateBossEligibility,
   validateBopisEligibility,
 };

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import HeaderPromo from '../HeaderPromo/HeaderPromo';
+import { readCookieMobileApp } from '../../../../utils/utils';
 import {
   Container,
   MessageContainer,
@@ -49,8 +50,10 @@ class Header extends React.PureComponent<Props> {
    */
   constructor(props) {
     super(props);
+    const CART_ITEM_COUNTER = 'cartItemsCount';
     this.state = {
-      cartVal: 0,
+      isDownIcon: false,
+      cartVal: parseInt(readCookieMobileApp(CART_ITEM_COUNTER) || 0, 10),
     };
   }
 

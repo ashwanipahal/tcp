@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyProfileTile should render correctly when all props are present 1`] = `
+<Styled(View)
+  spacingStyles="margin-bottom-XXXL"
+>
+  <Styled(Styled(BodyCopy))
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    spacingStyles="margin-bottom-MED"
+    text="Test"
+  />
+  <Styled(View)
+    spacingStyles="margin-bottom-XXXL"
+  />
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    color="white"
+    customStyle={Object {}}
+    disableButton={false}
+    fill="BLUE"
+    fullWidth=""
+    locator=""
+    onPress={[Function]}
+    text="Test CTA"
+    url=""
+  />
+</Styled(View)>
+`;
+
+exports[`MyProfileTile should render correctly when title and ctaTitle is not passed 1`] = `
+<Styled(View)
+  spacingStyles="margin-bottom-XXXL"
+>
+  <Styled(View)
+    spacingStyles=""
+  />
+</Styled(View)>
+`;

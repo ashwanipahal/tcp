@@ -89,7 +89,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -114,20 +114,20 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -178,7 +178,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -203,20 +203,20 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -267,7 +267,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -292,20 +292,20 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -356,7 +356,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -381,20 +381,20 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -417,7 +417,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "target": "",
               "text": "Girl",
               "title": "Girl",
-              "url": "/girl",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Girl",
@@ -425,7 +425,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Girl",
-              "url": "http://image.com/girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -434,7 +434,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "target": "",
               "text": "Toddler Girl",
               "title": "Toddler Girl",
-              "url": "/toddler-girl",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Toddler Girl alt",
@@ -442,7 +442,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Girl title",
-              "url": "http://image.com/toddler-girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -451,7 +451,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "target": "",
               "text": "Boy",
               "title": "Boy",
-              "url": "/boy",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Boy",
@@ -459,7 +459,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Boy",
-              "url": "http://image.com/boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
             },
           },
           Object {
@@ -468,7 +468,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "target": "",
               "text": "Toddler Boy",
               "title": "Toddler Boy",
-              "url": "/toddler-boy",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Toddler Boy alt",
@@ -476,7 +476,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Boy title",
-              "url": "http://image.com/toddler-boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
             },
           },
           Object {
@@ -485,7 +485,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "target": "",
               "text": "Baby",
               "title": "Baby",
-              "url": "/baby",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Baby",
@@ -493,7 +493,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Baby",
-              "url": "http://image.com/baby",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
             },
           },
         ]

@@ -7,15 +7,14 @@
 
 import React from 'react';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
-import { isClient, isTouchClient } from '@tcp/core/src/utils';
-import { labels } from '../labels/labels';
-import cssClassName from '../utils/cssClassName';
-
-import ButtonWithSpinner from './ButtonWithSpinner';
+// import { isTouchClient } from '../../../../../../../utils';
+import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
+// import { labels } from '../labels/labels';
+import { Image, BodyCopy, Anchor } from '../../../../../../common/atoms';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
 
-function productLink(loadedProductCount, pdpUrl, event) {
+export function productLink(loadedProductCount, pdpUrl, event) {
   event.preventDefault();
   if (isClient()) {
     window.sessionStorage.setItem('LAST_PAGE_PATH', window.location.pathname);
@@ -73,21 +72,17 @@ export function ProductTitle(props) {
   // eslint-disable-next-line
   const { name, pdpUrl, loadedProductCount, children } = props;
   // eslint-disable-next-line
-  const analyticsData = props.analyticsData ? props.analyticsData : {};
   return (
     <div className="product-title-container">
-      <h3>
-        <a
-          onClick={e => productLink(loadedProductCount, pdpUrl, e)}
-          className="product-title-content name-item"
-          unbxdattr="product"
-          unbxdparam_sku={analyticsData.pId}
-          unbxdparam_prank={analyticsData.prank}
-          href={pdpUrl}
-        >
+      <Anchor
+        handleLinkClick={e => productLink(loadedProductCount, pdpUrl, e)}
+        to={pdpUrl}
+        inheritedStyles="product-title-content"
+      >
+        <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
           {name}
-        </a>
-      </h3>
+        </BodyCopy>
+      </Anchor>
       {children}
     </div>
   );
@@ -98,92 +93,91 @@ export function ProductTitle(props) {
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 /* eslint-disable */
 export function ProductPricesSection(props) {
-  const {
-    currencySymbol,
-    listPrice,
-    offerPrice,
-    noMerchantBadge,
-    merchantTag,
-    hidePrefixListPrice,
-  } = props;
-
-  const offerPriceClass = cssClassName('text-price ', 'offer-price ', {
-    'offer-price-only': offerPrice === listPrice,
-  });
-  const listPriceClass = cssClassName('text-price ', 'list-price ', {
-    'no-badge': !noMerchantBadge,
-  });
-  const prefixListPrice = hidePrefixListPrice ? '' : 'Was: ';
+  const { currencySymbol, listPrice, offerPrice, noMerchantBadge, merchantTag } = props;
   return (
     <div className="container-price">
       {offerPrice && (
-        <span className={offerPriceClass}>{currencySymbol + offerPrice.toFixed(2)}</span>
+        <BodyCopy
+          dataLocator={getLocator('global_Price_text')}
+          color="red.500"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize={['fs15', 'fs18', 'fs20']}
+        >
+          {currencySymbol + offerPrice.toFixed(2)}
+        </BodyCopy>
       )}
       {offerPrice && offerPrice !== listPrice && (
-        <span className={listPriceClass}>
-          {prefixListPrice}
+        <BodyCopy
+          component="span"
+          color="gray.700"
+          fontFamily="secondary"
+          fontWeight="semibold"
+          fontSize={['fs10', 'fs12', 'fs14']}
+          className={'list-price'}
+        >
           {currencySymbol + listPrice.toFixed(2)}
-        </span>
+        </BodyCopy>
       )}
       {merchantTag && (
-        <span className="badge-item-container merchant-badge-container">{merchantTag}</span>
+        <BodyCopy
+          component="span"
+          color="red.500"
+          fontFamily="secondary"
+          fontWeight="semibold"
+          className="merchant-tag"
+          fontSize={['fs10', 'fs12', 'fs14']}
+        >
+          {merchantTag}
+        </BodyCopy>
       )}
     </div>
   );
 }
 
-export function ProductPickupIcon(props) {
-  // eslint-disable-next-line
-  const { isMobile, className, onClick, isShowBopisButton, keepAlive } = props;
-  const myClassName = isMobile
-    ? cssClassName('pickup-button-container ', className)
-    : cssClassName(
-        'pickup-icon-container ',
-        { 'hover-button-enabled ': !isTouchClient() },
-        className,
-        { ' keep-alive-pickup-icon': keepAlive }
-      );
+// export function ProductPickupIcon(props) {
+//   // eslint-disable-next-line
+//   const { isMobile, className, onClick, isShowBopisButton, keepAlive } = props;
+//   const myClassName = isMobile
+//     ? cssClassName('pickup-button-container ', className)
+//     : cssClassName(
+//         'pickup-icon-container ',
+//         { 'hover-button-enabled ': !isTouchClient() },
+//         className,
+//         { ' keep-alive-pickup-icon': keepAlive }
+//       );
 
-  const spinnerClassName = cssClassName(
-    isMobile ? 'pickup-button-icon-spinner ' : 'pickup-icon-spinner inline-spinner-item '
-  );
+//   const spinnerClassName = cssClassName(
+//     isMobile ? 'pickup-button-icon-spinner ' : 'pickup-icon-spinner inline-spinner-item '
+//   );
 
-  if (!isShowBopisButton) {
-    return null;
-  }
-  return (
-    <ButtonWithSpinner
-      spinnerClassName={spinnerClassName}
-      type="button"
-      data-analytics={labels.ANALYTICS.PICKUP_BUTTON_EVENT}
-      className={myClassName}
-      onClick={onClick}
-    >
-      <span className={cssClassName({ 'message-icon ': !isMobile })}>Pick up in store</span>
-    </ButtonWithSpinner>
-  );
-}
+//   if (!isShowBopisButton) {
+//     return null;
+//   }
+//   return (
+//     <ButtonWithSpinner
+//       spinnerClassName={spinnerClassName}
+//       type="button"
+//       data-analytics={labels.ANALYTICS.PICKUP_BUTTON_EVENT}
+//       className={myClassName}
+//       onClick={onClick}
+//     >
+//       <span className={cssClassName({ 'message-icon ': !isMobile })}>Pick up in store</span>
+//     </ButtonWithSpinner>
+//   );
+// }
 
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {
-    const { onClick, activeButton, isRemove, isDisabled, isMobile, keepAlive } = this.props;
+    const { onClick, isRemove, isDisabled, isMobile } = this.props;
     let { className } = this.props;
-    const { hasTouchClient } = this.state;
     const removeTextHeader = isMobile ? 'Tap to Remove' : 'Click to Remove';
     const removeTxtDesc = isMobile
       ? 'Remove this item from your Favorites List by tapping the heart icon again.'
       : 'Remove this item from your Favorites List by clicking the heart icon again.';
-    className = cssClassName(
-      { 'favorite-icon-active ': activeButton || isRemove },
-      { 'hover-button-enabled ': !hasTouchClient },
-      'favorite-icon-container ',
-      className,
-      { ' keep-alive-fav-icon': keepAlive }
-    );
 
     return (
-      <button type="button" className={className} onClick={onClick} disabled={isDisabled}>
-        Favorites
+      <div className="fav-icon-wrapper" onClick={onClick} isDisabled={isDisabled}>
         {isRemove ? (
           <div className="information-remove">
             <p className="information-remove-message">
@@ -193,48 +187,43 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             </p>
           </div>
         ) : (
-          <span className="message-icon">Add to favorites</span>
+          <Image
+            data-locator={getLocator('global_favorite_button')}
+            alt="Add-to-favorite"
+            className={className}
+            src={getIconPath('add-to-favorite')}
+          />
         )}
-      </button>
+      </div>
     );
   }
 }
 
 export function BadgeItem(props) {
   // eslint-disable-next-line
-  const { text, className, haveSpace } = props;
-  const containerClassName = cssClassName('badge-item-container ', className);
-  const hiddenClassName = cssClassName('sibling-badge-hidden ', className);
-
-  if (!text) {
-    if (haveSpace) {
-      return <span className={hiddenClassName}>&nbsp;</span>;
-    }
-    return null;
-  }
+  const { text, className, isShowBadges } = props;
 
   return (
-    <div className={containerClassName}>
-      <p>{text}</p>
+    <div className={className}>
+      <BodyCopy
+        dataLocator={getLocator('global_productbadge_txt')}
+        fontFamily="secondary"
+        fontWeight="semibold"
+        fontSize={['fs10', 'fs12', 'fs14']}
+      >
+        {isShowBadges && text}
+      </BodyCopy>
     </div>
   );
 }
 
 export function PromotionalMessage(props) {
-  // eslint-disable-next-line
-  const { message, className, haveSpace, wrapperClassName } = props;
-  // eslint-disable-next-line
-  const classNameValue = !!wrapperClassName ? wrapperClassName : 'promotion-message-container';
-  const containerClassName = cssClassName(`${classNameValue} `, className);
-  if (message) {
-    return (
-      <div className={containerClassName}>
-        <div className="promotion-message" dangerouslySetInnerHTML={{ __html: message }} />
-      </div>
-    );
-  }
-  if (haveSpace) {
-    return <span className="promotion-message-hidden">&nbsp;</span>;
-  }
-  return null;
+  const { message } = props;
+  return (
+    <div
+      data-locator={getLocator('global_loyalty_text')}
+      className="loyalty-text-container"
+      dangerouslySetInnerHTML={{ __html: message }}
+    />
+  );
 }

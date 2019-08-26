@@ -5,11 +5,13 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { isClient } from '@tcp/core/src/utils';
-import cssClassName from '../utils/cssClassName';
+import { isClient, getLocator } from '@tcp/core/src/utils';
+// import cssClassName from '../utils/cssClassName';
+import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
+import { Anchor } from '../../../../../../common/atoms';
+import withStyles from '../../../../../../common/hoc/withStyles';
 
-/* eslint-disable */
-export class ProductAltImages extends React.PureComponent {
+class ProductAltImages extends React.PureComponent {
   static propTypes = {
     /** callback for when the shown image changes. Accepts: image index */
     onImageChange: PropTypes.func,
@@ -23,6 +25,11 @@ export class ProductAltImages extends React.PureComponent {
     }),
     videoUrl: PropTypes.string,
     isShowVideoOnPlp: PropTypes.bool,
+    isMobile: PropTypes.bool.isRequired,
+    loadedProductCount: PropTypes.number.isRequired,
+    isPLPredesign: PropTypes.bool.isRequired,
+    keepAlive: PropTypes.bool.isRequired,
+    className: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -71,36 +78,44 @@ export class ProductAltImages extends React.PureComponent {
   };
 
   handledNextImage() {
-    let idx = this.state.currentIndex + 1;
-    if (idx > this.props.imageUrls.length) {
+    const { currentIndex } = this.state;
+    const { imageUrls, onImageChange } = this.props;
+    let idx = currentIndex + 1;
+    if (idx > imageUrls.length) {
       idx = 0;
     }
     this.setState({ currentIndex: idx });
-    if (this.props.onImageChange) this.props.onImageChange(idx);
+    if (onImageChange) onImageChange(idx);
   }
 
   handledPrevImage() {
-    let idx = this.state.currentIndex - 1;
+    const { currentIndex } = this.state;
+    const { imageUrls, onImageChange } = this.props;
+    let idx = currentIndex - 1;
     if (idx < 0) {
-      idx += this.props.imageUrls.length + 1;
+      idx += imageUrls.length + 1;
     }
     this.setState({ currentIndex: idx });
-    if (this.props.onImageChange) this.props.onImageChange(idx);
+    if (onImageChange) onImageChange(idx);
   }
 
   handlePrevImage() {
-    let idx = this.state.currentIndex - 1;
+    const { currentIndex } = this.state;
+    const { imageUrls, onImageChange } = this.props;
+    let idx = currentIndex - 1;
     if (idx < 0) {
-      idx += this.props.imageUrls.length;
+      idx += imageUrls.length;
     }
     this.setState({ currentIndex: idx });
-    if (this.props.onImageChange) this.props.onImageChange(idx);
+    if (onImageChange) onImageChange(idx);
   }
 
   handleNextImage() {
-    const idx = (this.state.currentIndex + 1) % this.props.imageUrls.length;
+    const { currentIndex } = this.state;
+    const { imageUrls, onImageChange } = this.props;
+    const idx = (currentIndex + 1) % imageUrls.length;
     this.setState({ currentIndex: idx });
-    if (this.props.onImageChange) this.props.onImageChange(idx);
+    if (onImageChange) onImageChange(idx);
   }
 
   renderVideoContent() {
@@ -113,13 +128,15 @@ export class ProductAltImages extends React.PureComponent {
       loadedProductCount,
       analyticsData,
       isPLPredesign,
+      className,
     } = this.props;
     const { currentIndex, videoHeight } = this.state;
     const unbxdData = analyticsData || {};
     return isMobile ? (
       <figure
+        // eslint-disable-next-line no-return-assign
         ref={node => (this.nodes[productName] = node)}
-        className="product-image-container"
+        className={className}
         itemScope
         itemType="http://schema.org/ImageObject"
       >
@@ -131,7 +148,7 @@ export class ProductAltImages extends React.PureComponent {
           unbxdparam_prank={analyticsData && analyticsData.prank}
           href={pdpUrl}
         >
-          <div style={{ position: 'absolute', height: '100%', width: '100%' }} />
+          {/* <div style={{ position: 'absolute', height: '100%', width: '100%' }} /> */}
           <video
             src={videoUrl}
             autoPlay
@@ -146,8 +163,9 @@ export class ProductAltImages extends React.PureComponent {
       </figure>
     ) : (
       <figure
+        // eslint-disable-next-line no-return-assign
         ref={node => (this.nodes[productName] = node)}
-        className="product-image-container"
+        className={className}
         itemScope
         itemType="http://schema.org/ImageObject"
       >
@@ -164,7 +182,7 @@ export class ProductAltImages extends React.PureComponent {
         >
           {currentIndex === 0 ? (
             <React.Fragment>
-              <div style={{ position: 'absolute', height: '100%', width: '100%' }} />
+              {/* <div style={{ position: 'absolute', height: '100%', width: '100%' }} /> */}
               <video
                 src={videoUrl}
                 autoPlay
@@ -209,10 +227,11 @@ export class ProductAltImages extends React.PureComponent {
       loadedProductCount,
       analyticsData,
       isPLPredesign,
+      className,
     } = this.props;
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
-    const productImageCss = cssClassName('product-image-content', ' img-item');
+    // const productImageCss = cssClassName('product-image-content', ' img-item');
 
     return isMobile || imageUrls.length < 2 ? (
       <figure
@@ -230,7 +249,7 @@ export class ProductAltImages extends React.PureComponent {
           href={pdpUrl}
         >
           <img
-            className={productImageCss}
+            // className={productImageCss}
             src={imageUrls[0]}
             srcSet={
               isPLPredesign
@@ -244,26 +263,34 @@ export class ProductAltImages extends React.PureComponent {
       </figure>
     ) : (
       <figure
+        // eslint-disable-next-line no-return-assign
         ref={node => (this.nodes[productName] = node)}
-        className="product-image-container"
+        className={className}
         itemScope
         itemType="http://schema.org/ImageObject"
       >
-        <button type="button" className="button-prev" onClick={this.handlePrevImage}>
+        <button
+          data-locator={getLocator('global_imagecursors_arrows')}
+          type="button"
+          className="button-prev"
+          onClick={this.handlePrevImage}
+        >
           prev
         </button>
-        <a
-          className={keepAlive && 'out-of-stock-overlap'}
-          onClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+
+        <Anchor
+          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+          to={pdpUrl}
           title={productName}
           unbxdattr="product"
           unbxdparam_sku={unbxdData.pId}
           unbxdparam_prank={unbxdData.prank}
-          href={pdpUrl}
+          inheritedStyles={imageAnchorInheritedStyles}
         >
           <img
-            className={productImageCss}
+            //  className={productImageCss}
             src={imageUrls[currentIndex]}
+            data-locator={getLocator('global_productimg_imagelink')}
             srcSet={
               isPLPredesign
                 ? `${imageUrls[currentIndex]}?w=200 1x, ${imageUrls[currentIndex]}?w=300 1.5x, ${
@@ -274,8 +301,13 @@ export class ProductAltImages extends React.PureComponent {
             alt={productName}
             itemProp="contentUrl"
           />
-        </a>
-        <button type="button" className="button-next" onClick={this.handleNextImage}>
+        </Anchor>
+        <button
+          data-locator={getLocator('global_imagecursors_arrows')}
+          type="button"
+          className="button-next"
+          onClick={this.handleNextImage}
+        >
           next
         </button>
       </figure>
@@ -290,3 +322,7 @@ export class ProductAltImages extends React.PureComponent {
       : this.renderImageContent();
   }
 }
+
+export default withStyles(ProductAltImages, styles);
+
+export { ProductAltImages as ProductAltImagesVanilla };

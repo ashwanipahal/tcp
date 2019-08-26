@@ -12,10 +12,11 @@ import { createAPIConfig } from '@tcp/core/src/utils';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { Header, Footer } from '../components/features/content';
+import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
-import APP_CONSTANTS from './App.constants';
+import CHECKOUT_STAGES from './App.constants';
 
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -59,23 +60,15 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
-  static loadGlobalData(
-    Component,
-    {
-      store,
-      res,
-      isServer,
-      req: { device = {} },
-    },
-    pageProps
-  ) {
+  static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     if (isServer) {
       const { locals } = res;
+      const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
       const payload = {
-        pageInfo: Component.pageInfo,
+        ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
       };
@@ -100,7 +93,7 @@ class TCPWebApp extends App {
   render() {
     const { Component, pageProps, store, router } = this.props;
     let isNonCheckoutPage = true;
-    const { PICKUP, SHIPPING, BILLING, REVIEW } = APP_CONSTANTS;
+    const { PICKUP, SHIPPING, BILLING, REVIEW } = CHECKOUT_STAGES;
     const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW];
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
@@ -114,7 +107,8 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid>
-              <Header />
+              {isNonCheckoutPage && <Header />}
+              {!isNonCheckoutPage && <CheckoutHeader />}
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />

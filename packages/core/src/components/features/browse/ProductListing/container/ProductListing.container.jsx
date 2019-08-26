@@ -10,6 +10,8 @@ import {
   getLoadedProductsCount,
   getUnbxdId,
   getBreadCrumbTrail,
+  getLabelsProductListing,
+  getLongDescription,
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -29,7 +31,15 @@ class ProductListingContainer extends React.PureComponent {
   };
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs, ...otherProps } = this.props;
+    const {
+      products,
+      currentNavIds,
+      navTree,
+      breadCrumbs,
+      longDescription,
+      labels,
+      ...otherProps
+    } = this.props;
     // have to call this method because when come back from L2/L3 none of the component lifecycle method calls.
     // But this method only making call once.
     this.makeApiCall();
@@ -39,6 +49,8 @@ class ProductListingContainer extends React.PureComponent {
         currentNavIds={currentNavIds}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
+        longDescription={longDescription}
+        labels={labels}
         {...otherProps}
       />
     );
@@ -53,6 +65,8 @@ function mapStateToProps(state) {
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
+    longDescription: getLongDescription(state),
+    labels: getLabelsProductListing(state),
   };
 }
 
@@ -72,6 +86,8 @@ ProductListingContainer.propTypes = {
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   navigation: PropTypes.shape({}).isRequired,
 };
 
@@ -80,6 +96,8 @@ ProductListingContainer.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  longDescription: '',
+  labels: {},
 };
 
 export default connect(
