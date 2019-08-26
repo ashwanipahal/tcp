@@ -72,7 +72,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
             to="/account?id=address-book"
-            data-locator="addnewaddress-back"
+            dataLocator="addnewaddress-back"
           >
             <span className="left-arrow"> </span>
             {labels.password.lbl_forgotPassword_backLogin}

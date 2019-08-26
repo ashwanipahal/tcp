@@ -57,13 +57,21 @@ class AddGiftCardForm extends React.PureComponent {
 
   handleAddGiftCardClick = e => {
     const { tokenInfomation } = this.state;
-    const { handleSubmit, invalid } = this.props;
+    const { handleSubmit, invalid, onAddGiftCardClick } = this.props;
     e.preventDefault();
     if (!tokenInfomation && !invalid) {
       this.setRecaptchaModalMountState();
     } else {
+      handleSubmit(data => {
+        const { cardPin, giftCardNumber } = data;
+        const addGifteData = {
+          cardPin,
+          giftCardNumber,
+          recaptchaToken: tokenInfomation,
+        };
+        onAddGiftCardClick(addGifteData);
+      })();
       this.setState({ tokenInfomation: '' });
-      handleSubmit();
     }
   };
 

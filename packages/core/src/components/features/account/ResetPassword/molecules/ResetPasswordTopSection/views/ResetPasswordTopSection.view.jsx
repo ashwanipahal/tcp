@@ -12,7 +12,7 @@ export const ResetPasswordTopSection = ({ className, labels, onBack }) => {
           onClick={onBack}
           fontSizeVariation="xlarge"
           anchorVariation="secondary"
-          data-locator="addnewaddress-back"
+          dataLocator="addnewaddress-back"
           className="elem-mb-LRG"
         >
           <span className="left-arrow"> </span>
