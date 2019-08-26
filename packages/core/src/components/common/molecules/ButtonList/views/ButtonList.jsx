@@ -37,11 +37,13 @@ const getImageCTA = item => {
                 fontWeightVariation="active"
                 data-locator={`${dataLocatorTextCta}${index}`}
               >
-                <DamImage
-                  imgData={image}
-                  className={className}
-                  data-locator={`${dataLocatorDivisionImages}${index}`}
-                />
+                {image && (
+                  <DamImage
+                    imgData={image}
+                    className={className}
+                    data-locator={`${dataLocatorDivisionImages}${index}`}
+                  />
+                )}
                 <BodyCopy
                   fontWeight="extrabold"
                   fontSize="fs13"

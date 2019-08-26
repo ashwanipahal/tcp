@@ -84,6 +84,14 @@ export default css`
     text-align: center;
   }
 
+  .img-wrapper:nth-child(1) {
+    margin-left: 38px;
+  }
+
+  &.no-scrollable-cta .img-wrapper:nth-child(1) {
+    margin-left: 19px;
+  }
+
   .image-cta {
     border-radius: 35px;
     width: 60px;
@@ -93,6 +101,7 @@ export default css`
   .image-comp {
     color: white;
     text-align: center;
+    width: 64px;
   }
 
   &.scroll-button-list-wrapper {
@@ -109,10 +118,6 @@ export default css`
       display: block;
       scrollbar-width: auto;
       padding-top: 8px;
-
-      .image-comp {
-        white-space: nowrap;
-      }
     }
   }
 
@@ -169,6 +174,10 @@ export default css`
 
     .img-wrapper {
       margin: 0 26px;
+    }
+
+    .img-wrapper:nth-child(1) {
+      margin-left: 26px;
     }
 
     &.scroll-button-list-wrapper {

@@ -20,7 +20,7 @@ export default css`
     line-height: 1.05;
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 74px;
+      font-size: 64px;
     }
   }
 

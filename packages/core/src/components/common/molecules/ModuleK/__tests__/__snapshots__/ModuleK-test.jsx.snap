@@ -140,7 +140,7 @@ exports[`ModuleK component renders correctly 1`] = `
     @media ",
                 [Function],
                 " {
-      font-size: 74px;
+      font-size: 64px;
     }
   }
 

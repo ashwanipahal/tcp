@@ -203,6 +203,7 @@ export default css`
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
     font-size: 16px;
+    display: block;
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 28px;
