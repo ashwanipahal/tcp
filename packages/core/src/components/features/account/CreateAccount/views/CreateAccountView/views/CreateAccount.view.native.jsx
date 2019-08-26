@@ -44,6 +44,7 @@ class CreateAccount extends React.Component<Props> {
       error,
       onAlreadyHaveAnAccountClick,
       onRequestClose,
+      showLogin,
     } = this.props;
     const { resetPassword } = this.state;
     return (
@@ -60,15 +61,15 @@ class CreateAccount extends React.Component<Props> {
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
             onRequestClose={onRequestClose}
             showForgotPasswordForm={this.showForgotPasswordForm}
+            showLogin={showLogin}
           />
         )}
         {resetPassword && (
-          <ForgotPwdWrapper className="forgotPasswordWrapper">
-            <ForgotPasswordContainer
-              showForgotPasswordForm={this.showForgotPasswordForm}
-              labels={labels}
-            />
-          </ForgotPwdWrapper>
+          <ForgotPasswordContainer
+            showForgotPasswordForm={this.showForgotPasswordForm}
+            labels={labels}
+            showLogin={showLogin}
+          />
         )}
       </View>
     );

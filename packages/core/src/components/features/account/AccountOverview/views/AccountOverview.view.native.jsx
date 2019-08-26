@@ -50,10 +50,22 @@ class AccountOverview extends PureComponent<Props> {
             isUserLoggedIn={isUserLoggedIn}
           />
         ) : (
-          <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
+          <CreateAccount
+            showLogin={this.showloginModal}
+            navigation={navigation}
+            onRequestClose={this.toggleModal}
+          />
         )}
       </React.Fragment>
     );
+  };
+
+  showloginModal = () => {
+    this.setState({
+      getComponentId: {
+        login: true,
+      },
+    });
   };
 
   toggleModal = ({ getComponentId }) => {

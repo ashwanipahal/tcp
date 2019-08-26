@@ -46,12 +46,23 @@ class CreateAccounPage extends React.Component {
   }
 
   render() {
-    const { labels, isIAgreeChecked, onRequestClose, error } = this.props;
+    const {
+      labels,
+      isIAgreeChecked,
+      onRequestClose,
+      error,
+      showForgotPasswordForm,
+      showLogin,
+    } = this.props;
     const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
       <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
         <View>
-          <CreateAccountTopSection labels={labels} />
+          <CreateAccountTopSection
+            showForgotPasswordForm={showForgotPasswordForm}
+            labels={labels}
+            showLogin={showLogin}
+          />
           {!!error && (
             <ErrorWrapper>
               <BodyCopy

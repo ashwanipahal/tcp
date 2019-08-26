@@ -54,6 +54,7 @@ class CreateAccounPage extends React.Component {
       error,
       onAlreadyHaveAnAccountClick,
       showForgotPasswordForm,
+      showLogin,
     } = this.props;
     return (
       <div className={className}>

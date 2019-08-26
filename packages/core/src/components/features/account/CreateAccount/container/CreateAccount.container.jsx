@@ -114,6 +114,7 @@ export class CreateAccountContainer extends React.Component {
       error,
       onRequestClose,
       labels,
+      showLogin,
     } = this.props;
     return (
       <CreateAccountView
@@ -127,6 +128,7 @@ export class CreateAccountContainer extends React.Component {
         onAlreadyHaveAnAccountClick={this.onAlreadyHaveAnAccountClick}
         onRequestClose={onRequestClose}
         openModal={this.openModal}
+        showLogin={showLogin}
       />
     );
   }
