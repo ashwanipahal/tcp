@@ -127,31 +127,71 @@ export default class ProductsOperator {
     return categoryFound;
   }
 
+  fetchFiltersAndCount = (filters, categoryId, categoryNameList, location, pageNumber) => {
+    // We need to send some extra params in query string in L2 to fetch the filters, available L3 and the product count in each L3.
+    const extraParams = {
+      'facet.multilevel': 'categoryPath',
+      'f.categoryPath.nameId': true,
+      'f.categoryPath.max.depth': 4,
+    };
+    // const isHideBundleProduct = abTestingStoreView.getIsHideBundleProduct(this.store.getState());
+    return {
+      seoKeywordOrCategoryIdOrSearchTerm: '',
+      isSearch: '',
+      filtersAndSort: filters,
+      pageNumber,
+      getImgPath: '',
+      categoryId,
+      breadCrumbs: '',
+      bucketingSeqConfig: '',
+      getFacetSwatchImgPath: this.getFacetSwatchImgPath,
+      isUnbxdSequencing: '',
+      excludeBadge: '',
+      startProductCount: 0,
+      numberOfProducts: 0,
+      cacheFiltersAndCount: true,
+      extraParams,
+      shouldApplyUnbxdLogic: this.shouldApplyUnbxdLogic,
+      hasShortImage: false,
+      categoryNameList,
+      location,
+    };
+    // isHideBundleProduct);
+  };
+
+  getCurrentItems = currItm => {
+    return (
+      currItm.subCategories.Categories &&
+      currItm.subCategories.Categories.items &&
+      currItm.subCategories.Categories.items.length &&
+      currItm.subCategories.Categories.items
+    );
+  };
+
   /** @function This function return the L3 items of the requested category id of L2.
    * @param navTree {Object} The vaigation free of left navigation.
    * @param targetId {String} The category ID of L2 whose children we need.
    * @param trgtChildItm {Array} The resultant desired array of all L3.
    * @return trgtChildItm {Array} The resultant desired array of all L3.
    */
-
   shouldBucktSeq(navTree, targetId, trgtChildItm) {
     const navTreeLength = navTree.length;
     let newTrgtChildItm = trgtChildItm || [];
     for (let idx = 0; idx < navTreeLength; idx += +1) {
       const currItm = navTree[idx];
       // Check if the category of the navigation bieng looped on matches with desired L2 category ID.
-      if (currItm.categoryId === targetId) {
-        newTrgtChildItm =
-          currItm.subCategories.Categories &&
-          currItm.subCategories.Categories.items &&
-          currItm.subCategories.Categories.items.length &&
-          currItm.menuItems;
+      if (currItm.categoryId === targetId || currItm.categoryContent.id === targetId) {
+        newTrgtChildItm = currItm.subCategories.length
+          ? currItm.subCategories
+          : this.getCurrentItems(currItm);
         return newTrgtChildItm;
       }
-      if (currItm.menuItems && currItm.menuItems.length) {
+      if (currItm.subCategories.Categories && currItm.subCategories.Categories.items.length) {
         // If the category ID does not matches up then recursively call the same function to search depe down the tree.
         newTrgtChildItm = this.shouldBucktSeq(
-          currItm.menuItems[0].length ? currItm.menuItems[0] : currItm.menuItems,
+          currItm.subCategories.Categories.items.length
+            ? currItm.subCategories.Categories.items
+            : currItm.subCategories.Categories,
           targetId,
           newTrgtChildItm
         );
@@ -159,6 +199,54 @@ export default class ProductsOperator {
     }
     return newTrgtChildItm;
   }
+
+  processProductFilterAndCountData = (res, state, reqObj) => {
+    const { categoryNameList, filtersAndSort, pageNumber, location } = reqObj;
+    // We need to update the available L3 on the basis of the L2 call response. If the filters are applied then the available L3 gets changed.
+    const updatedAvailableL3 = this.bucketingLogic.getUpdatedL3(
+      res.availableL3InFilter,
+      this.bucketingConfig.availableL3
+    );
+    this.bucketingConfig.availableL3 = [...updatedAvailableL3];
+    this.bucketingConfig.L3Left = [...updatedAvailableL3];
+    // const l2currentNavigationIds = res.currentNavigationIds;
+
+    // We check if there is any L3 category available to make unbxd call else resolving promise
+    // if (!this.bucketingConfig.L3Left.length) {
+    //   return Promise.resolve();
+    // }
+
+    // We are checking if the scroll point is available or not. If yes then this is the case of browser back and we need to do achoring operation.
+    // if(parseInt(getSessionStorage('SCROLL_POINT'), 10) || 0) {
+    //   return this.fetchProductsCachedCount(categoryNameList, l2currentNavigationIds);
+    // }
+    categoryNameList.push(this.bucketingConfig.L3Left[0]);
+    // Making the category path of the L3 according to the sequence which is there in L3left.
+    const categoryPathMap = categoryNameList
+      ? categoryNameList.map(item => item && (item.categoryId || item.categoryContent.id)).join('>')
+      : '';
+    // Making the L3 API Call.
+    // return {
+    //   state,
+    //   filtersAndSort,
+    //   pageNumber,
+    //   location,
+    //   start: this.bucketingConfig.start,
+    //   productsToFetchPerLoad: this.bucketingConfig.productsToFetchPerLoad,
+    //   categoryPathMap,
+    // }
+    return this.getProductsListingInfo({
+      state,
+      filtersAndSort,
+      pageNumber,
+      location,
+      start: this.bucketingConfig.start,
+      productsToFetchPerLoad: this.bucketingConfig.productsToFetchPerLoad,
+      categoryPathMap,
+    });
+    // TODO - .then of the this.getProductsListingInfo is removed from here add it back
+    // return null;
+  };
 
   getProductListingBucketedData(
     state,
@@ -214,43 +302,13 @@ export default class ProductsOperator {
         ? this.bucketingConfig.currL2NameList.map(item => item.categoryId).join('>')
         : '';
       // Making the L2 call first
-      return this.fetchFiltersAndCount(filtersAndSort, categoryPathMapL2).then(res => {
-        // We need to update the available L3 on the basis of the L2 call response. If the filters are applied then the available L3 gets changed.
-        const updatedAvailableL3 = this.bucketingLogic.getUpdatedL3(
-          res.availableL3InFilter,
-          this.bucketingConfig.availableL3
-        );
-        this.bucketingConfig.availableL3 = [...updatedAvailableL3];
-        this.bucketingConfig.L3Left = [...updatedAvailableL3];
-        // const l2currentNavigationIds = res.currentNavigationIds;
-
-        // We check if there is any L3 category available to make unbxd call else resolving promise
-        if (!this.bucketingConfig.L3Left.length) {
-          return Promise.resolve();
-        }
-
-        // We are checking if the scroll point is available or not. If yes then this is the case of browser back and we need to do achoring operation.
-        // if(parseInt(getSessionStorage('SCROLL_POINT'), 10) || 0) {
-        //   return this.fetchProductsCachedCount(categoryNameList, l2currentNavigationIds);
-        // }
-        categoryNameList.push(this.bucketingConfig.L3Left[0]);
-        // Making the category path of the L3 according to the sequence which is there in L3left.
-        const categoryPathMap = categoryNameList
-          ? categoryNameList.map(item => item && item.categoryId).join('>')
-          : '';
-        // Making the L3 API Call.
-        this.getProductsListingInfo({
-          state,
-          filtersAndSort,
-          pageNumber,
-          location,
-          start: this.bucketingConfig.start,
-          productsToFetchPerLoad: this.bucketingConfig.productsToFetchPerLoad,
-          categoryPathMap,
-        });
-        // TODO - .then of the this.getProductsListingInfo is removed from here add it back
-        return null;
-      });
+      return this.fetchFiltersAndCount(
+        filtersAndSort,
+        categoryPathMapL2,
+        categoryNameList,
+        location,
+        pageNumber
+      );
     }
     // if the bucketing is not required then we need to fallback to original approach.
     // If sorting is applied by the customer then we need to fallback to the original approach.
@@ -293,7 +351,8 @@ export default class ProductsOperator {
     state,
     filtersAndSort,
     pageNumber,
-    location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
+    // TODO - fix this for mobile APP - location needs to be defined
+    location = window.location, // TODO - this is the prod code - location = routingInfoStoreView.getHistory(this.store.getState()).location,
     startProductCount,
     numberOfProducts,
     categoryPathMap,

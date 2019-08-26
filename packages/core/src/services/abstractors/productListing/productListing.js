@@ -21,7 +21,8 @@ const isOutfit = (isSearch, searchTerm) => {
 };
 
 const getStart = (startProductCount, pageNumber) => {
-  return startProductCount !== undefined ? startProductCount : (pageNumber - 1) * PRODUCTS_PER_LOAD;
+  // return startProductCount !== undefined ? startProductCount : (pageNumber - 1) * PRODUCTS_PER_LOAD;
+  return startProductCount !== undefined ? startProductCount : pageNumber * PRODUCTS_PER_LOAD;
 };
 
 const isNoUnbxdLogic = (shouldApplyUnbxdLogic, isUnbxdSequencing) => {

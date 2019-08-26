@@ -22,7 +22,7 @@ class BucketingBL {
       // and then replcae it with cached L3 left and available L3. We are doing this beacuse, yes it is true that we need to make calls for all those
       // L3 which we recevied in L2 response but we need to make in the sequence which is there in Taxanomy.
       for (let idx = 0; idx < l3ReturnedByL2.length; idx += 1) {
-        if (itm.categoryId === l3ReturnedByL2[idx].id) {
+        if (itm.categoryContent.id === l3ReturnedByL2[idx].id) {
           itm.count = l3ReturnedByL2[idx].count;
           updatedAvailableL3.push(itm);
         }
