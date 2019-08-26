@@ -57,7 +57,7 @@ const Anchor = ({
     <Link href={linkUrl} as={asLinkPath} shallow={shallow} scroll={scroll}>
       <a
         className={className}
-        href={to || url}
+        href={linkUrl}
         title={title}
         target={targetVal}
         data-locator={dataLocator}

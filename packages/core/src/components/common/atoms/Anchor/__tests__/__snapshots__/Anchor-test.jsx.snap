@@ -10,7 +10,7 @@ exports[`Anchor component renders correctly 1`] = `
   <a
     className="sample-anchor"
     data-locator=""
-    href=""
+    href="/undefined"
     target="_self"
     title=""
   >
