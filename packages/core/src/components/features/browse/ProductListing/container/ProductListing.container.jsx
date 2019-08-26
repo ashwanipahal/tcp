@@ -35,7 +35,6 @@ class ProductListingContainer extends React.PureComponent {
       longDescription,
       labels,
       labelsFilter,
-
       categoryId,
       ...otherProps
     } = this.props;
@@ -116,7 +115,7 @@ ProductListingContainer.propTypes = {
   longDescription: PropTypes.string,
   navigation: PropTypes.shape({}).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string]))
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingContainer.defaultProps = {
@@ -130,7 +129,7 @@ ProductListingContainer.defaultProps = {
   initialValues: {},
   longDescription: '',
   labels: {},
-  labelsFilter: {}
+  labelsFilter: {},
 };
 
 export default connect(

@@ -9,7 +9,6 @@
  * (e.g., <code>onClick={() => handleOnClick(index)}</code>) as this would cause all items to re-render on any change
  * (such as moving the highlight).
  *
- * @author Ben
  */
 
 import React from 'react';

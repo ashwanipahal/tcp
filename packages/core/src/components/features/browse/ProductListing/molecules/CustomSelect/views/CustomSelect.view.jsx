@@ -28,7 +28,6 @@
  * input, meta</code>),
  * e.g., <code>aria-label</code>, passed to this component will be passed along to the containing <code>div</code> element.
  *
- * @author Ben
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';

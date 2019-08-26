@@ -6,8 +6,8 @@ const selectedIcon = getIconPath('selected-item');
 export default css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  width: 166px;
-
+  width: 156px;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   .selected-item {
     background: url(${selectedIcon}) no-repeat left top;
     background-size: 20px 20px;

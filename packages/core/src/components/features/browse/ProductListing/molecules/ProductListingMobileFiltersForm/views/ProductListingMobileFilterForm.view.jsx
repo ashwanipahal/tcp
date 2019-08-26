@@ -51,8 +51,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     }));
   }
 
-  getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
-    const result = colorOptionsMap.map(color => ({
+  /* eslint-disable */
+  getColorFilterOptionsMap(colorOptionsMap) {
+    return colorOptionsMap.map(color => ({
       value: color.id,
       title: color.displayName,
       content: (
@@ -82,7 +83,6 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         </div>
       ),
     }));
-    return result;
   }
 
   isUnbxdFacetKey = key =>
@@ -132,7 +132,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         facetName={facetName}
         component={CustomSelect}
         optionsMap={this.getColorFilterOptionsMap(filtersMaps[facetName], filterName)}
-        title=''
+        title=""
         placeholder={filterName}
         allowMultipleSelections
         className={className}
@@ -187,13 +187,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               const length = (filtersLength && filtersLength[`${key} Filters`]) || 0;
               return (
                 filtersMaps[key].length > 0 &&
-                this.renderColorFilterField(
-                  length,
-                  unbxdKeyMapping[key],
-                  key
-                )
+                this.renderColorFilterField(length, unbxdKeyMapping[key], key)
               );
-            } else if(this.isUnbxdFacetKey(key)) {
+            } else if (this.isUnbxdFacetKey(key)) {
               const length = (filtersLength && filtersLength[`${key} Filters`]) || 0;
               return (
                 filtersMaps[key].length > 0 &&
@@ -280,13 +276,15 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
 ProductListingMobileFiltersForm.propTypes = {
   filters: PropTypes.shape({}),
+  labels: PropTypes.shape({}),
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
   filters: {},
+  labels: {},
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
 })(withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle));
 
-export {ProductListingMobileFiltersForm as ProductListingMobileFiltersFormVanilla}
+export { ProductListingMobileFiltersForm as ProductListingMobileFiltersFormVanilla };

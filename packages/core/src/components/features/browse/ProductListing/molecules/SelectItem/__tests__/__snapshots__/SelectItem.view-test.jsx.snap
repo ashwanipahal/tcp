@@ -24,8 +24,10 @@ exports[`Select Item is shown should render select item  1`] = `
   margin-right: ",
           [Function],
           ";
-  width: 166px;
-
+  width: 156px;
+  padding-left: ",
+          [Function],
+          ";
   .selected-item {
     background: url(",
           "/static/images/selected-item.svg",

@@ -1,203 +1,26 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingFiltersFormStyle from '../ProductListingFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
-import { reduxForm, Field, submit } from 'redux-form';
+
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import cssClassName from '../../utils/cssClassName';
 import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersForm';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
+import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
 
-class ProductListingFiltersForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
-    //let { isMobile, filtersMaps } = this.props;
-    let isMobile = false;
-    //console.log(this.props.filters);
-    let filtersMaps = this.props.filtersMaps;
-    let className = cssClassName(isMobile ? 'size-detail-chips' : 'size-detail');
-    let filters = (
-      <Field
-        name={facetName}
-        appliedFilterVal={appliedFilterVal}
-        facetName={facetName}
-        component={CustomSelect}
-        optionsMap={getFilterOptionsMap(filtersMaps[facetName], filterName, isMobile)}
-        title={isMobile ? filterName : ''}
-        placeholder={filterName}
-        allowMultipleSelections
-        className={className}
-        expanded={isMobile}
-        disableExpandStateChanges={isMobile}
-        ref={this.captureFilterRef}
-        withRef
-        onBlur={this.handleFilterFieldBlur}
-        labels={this.props.labels}
-      />
-    );
-
-    return !isMobile ? (
-      filters
-    ) : (
-      <div className="filter-size-and-color-container">
-        {filters}
-        {!!selectedFilters && (
-          <button
-            type="button"
-            className="clear-all-size-plp-filters"
-            id={facetName}
-            onClick={this.handleRemoveFilters}
-          >
-            X Clear
-          </button>
-        )}
-      </div>
-    );
-  }
-
-  renderColorFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
-    //let { isMobile, filtersMaps } = this.props;
-    let isMobile = false;
-    //console.log(this.props.filters);
-    let filtersMaps = this.props.filtersMaps;
-    let className = cssClassName(isMobile ? 'color-detail-chips' : 'color-filter-chip size-detail');
-    let colorFilters = (
-      <Field
-        name={facetName}
-        appliedFilterVal={appliedFilterVal}
-        facetName={facetName}
-        component={CustomSelect}
-        optionsMap={getColorFilterOptionsMap(filtersMaps[facetName], filterName, isMobile)}
-        title={isMobile ? filterName : ''}
-        placeholder={filterName}
-        allowMultipleSelections
-        className={className}
-        expanded={isMobile}
-        disableExpandStateChanges={isMobile}
-        ref={this.captureFilterRef}
-        withRef
-        onBlur={this.handleFilterFieldBlur}
-        labels={this.props.labels}
-      />
-    );
-
-    return !isMobile ? (
-      colorFilters
-    ) : (
-      <div className="filter-size-and-color-container">
-        {colorFilters}
-        {!!selectedFilters && (
-          <button
-            type="button"
-            className="clear-all-color-plp-filters"
-            id={facetName}
-            onClick={this.handleRemoveFilters}
-          >
-            X Clear
-          </button>
-        )}
-      </div>
-    );
-  }
-  renderDesktopFilters() {
-    const FACETS_FIELD_KEY = {
-      color: 'tcpcolor_ufilter',
-      size: 'v_tcpsize_ufilter',
-      age: 'age_group_ufilter',
-      price: 'unbxd_price_range_ufilter',
-      sort: 'sort',
-      unbxdDisplayName: 'unbxddisplayname',
-      aux_color: 'auxdescription_ufilter',
-      aux_color_unbxd: 'auxdescription_uFilter',
-      l1category: 'l1category',
-    };
-    //let { filtersMaps, filtersLength, isShopByColor } = this.props;
-    const filterKeys = Object.keys(this.props.filtersMaps);
-    let isShopByColor = false;
-    let filtersLength = {};
-    let filtersMaps = this.props.filtersMaps;
-    const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
-    const appliedFilterAvailable = 0;
-    return filterKeys.map(key => {
-      if (
-        key.toLowerCase() !== FACETS_FIELD_KEY.unbxdDisplayName &&
-        key.toLowerCase() !== FACETS_FIELD_KEY.l1category
-      ) {
-        if (!isShopByColor && key.toLowerCase() === FACETS_FIELD_KEY.color) {
-          // If color facet then render differently compared to others
-          return (
-            filtersMaps[key].length > 0 &&
-            this.renderColorFilterField(
-              appliedFilterAvailable && appliedFilters[key],
-              filtersLength[key + 'Filters'],
-              unbxdKeyMapping[key],
-              key
-            )
-          );
-        } else if (
-          !(
-            key.toLowerCase() === FACETS_FIELD_KEY.color ||
-            key.toLowerCase() === FACETS_FIELD_KEY.aux_color
-          )
-        ) {
-          return (
-            filtersMaps[key].length > 0 &&
-            this.renderFilterField(
-              appliedFilterAvailable && appliedFilters[key],
-              filtersLength[key + 'Filters'],
-              unbxdKeyMapping[key],
-              key
-            )
-          );
-        }
-      }
-      return false;
-    });
-  }
-
-  render() {
-    const { totalProductsCount, initialValues, filtersMaps } = this.props;
-    return (
-    <React.Fragment>
-      <form className="render-desktop-view">
-        <div className={this.props.className}>
-          <div className="filters-only-container">
-            <BodyCopy
-              component="span"
-              role="label"
-              textAlign="center"
-              tabIndex={-1}
-              fontSize="fs14"
-              fontFamily="secondary"
-              color="gray.900"
-              outline="none"
-              data-locator={getLocator('plp_filter_label_filterby')}
-            >
-              {this.props.labels.lbl_filter_by}:
-            </BodyCopy>
-
-              {this.props.filtersMaps && this.renderDesktopFilters()}
-            </div>
-          </div>
-        </form>
-        <ProductListingMobileFiltersForm
-          totalProductsCount={totalProductsCount}
-          initialValues={initialValues}
-          filtersMaps={filtersMaps}
-          className="render-mobile-view"
-        />
-      </React.Fragment>
-    );
-  }
-}
+/**
+ * @function getColorFilterOptionsMap This handles to render the desktop filter fields of color
+ * @summary  This is to set the color filters
+ * @param {Array} colorOptionsMap - list of color options
+ * @param {String} filterName - filter names "color_group_uFilter etc"
+ * @param {Boolean} isMobile - check for mobile view
+ */
 function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
-  let result = colorOptionsMap.map(color => ({
+  return colorOptionsMap.map(color => ({
     value: color.id,
     title: color.displayName,
     content: (
@@ -214,7 +37,7 @@ function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
         {!isMobile && (
           <BodyCopy
             component="span"
-            role="label"
+            role="option"
             textAlign="center"
             tabIndex={-1}
             fontSize="fs14"
@@ -230,10 +53,17 @@ function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
       </div>
     ),
   }));
-  return result;
 }
-function getFilterOptionsMap(optionsMap, filterName, isMobile) {
-  let result = optionsMap.map(option => ({
+
+/**
+ * @function getFilterOptionsMap This handles to render the desktop filter fields of non-color
+ * @summary  This is to set the non-color filters
+ * @param {Array} colorOptionsMap - list of non-color options
+ * @param {String} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
+ * @param {Boolean} isMobile - check for mobile view
+ */
+function getFilterOptionsMap(optionsMap, filterName) {
+  return optionsMap.map(option => ({
     value: option.id,
     title: option.displayName,
     content: (
@@ -258,31 +88,184 @@ function getFilterOptionsMap(optionsMap, filterName, isMobile) {
       </BodyCopy>
     ),
   }));
-  return result;
-  // !isMobile
-  //   ? result.concat([
-  //       {
-  //         value: 'APPLY',
-  //         title: 'Apply',
-  //         content: (
-  //           <button type="submit" className="apply-filter-button">
-  //             Apply
-  //           </button>
-  //         ),
-  //         disabled: true,
-  //       },
-  //     ])
-  //   : result;
 }
+
+class ProductListingFiltersForm extends React.Component {
+  // TODO Fix this - would be used while add apply button functionality
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  /**
+   * @function renderFilterField
+   * @summary This handles to render the color filter fields
+   * @param {Object} appliedFilterVal - object of selected filters
+   * @param {Object} selectedFilters - object of selected filters
+   * @param {String} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
+   * @param {String} facetName - filter names "category, color etc"
+   */
+  renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
+    // TODO fix this
+    // let { isMobile, filtersMaps } = this.props;
+
+    const isMobile = false;
+    const { filtersMaps, labels } = this.props;
+
+    const className = cssClassName(isMobile ? 'size-detail-chips' : 'size-detail');
+    return (
+      <Field
+        name={facetName}
+        appliedFilterVal={appliedFilterVal}
+        facetName={facetName}
+        component={CustomSelect}
+        optionsMap={getFilterOptionsMap(filtersMaps[facetName], filterName)}
+        title={isMobile ? filterName : ''}
+        placeholder={filterName}
+        allowMultipleSelections
+        className={className}
+        expanded={isMobile}
+        disableExpandStateChanges={isMobile}
+        ref={this.captureFilterRef}
+        withRef
+        onBlur={this.handleFilterFieldBlur}
+        labels={labels}
+      />
+    );
+  }
+
+  /**
+   * @function renderColorFilterField This handles to render the color filter fields
+   * @param {appliedFilterVal} appliedFilterVal
+   * @param {selectedFilters} selectedFilters
+   * @param {filterName} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
+   * @param {facetName} facetName - filter names "category, color etc"
+   */
+  renderColorFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
+    const isMobile = false;
+    const { filtersMaps, labels } = this.props;
+
+    const className = cssClassName(
+      isMobile ? 'color-detail-chips' : 'color-filter-chip size-detail'
+    );
+    return (
+      <Field
+        name={facetName}
+        appliedFilterVal={appliedFilterVal}
+        facetName={facetName}
+        component={CustomSelect}
+        optionsMap={getColorFilterOptionsMap(filtersMaps[facetName], filterName, isMobile)}
+        title={isMobile ? filterName : ''}
+        placeholder={filterName}
+        allowMultipleSelections
+        className={className}
+        expanded={isMobile}
+        disableExpandStateChanges={isMobile}
+        ref={this.captureFilterRef}
+        withRef
+        onBlur={this.handleFilterFieldBlur}
+        labels={labels}
+      />
+    );
+  }
+
+  /**
+   * @function renderColorFilterField
+   * @summary This handles to render the desktop filter fields
+   * @param none
+   */
+  renderDesktopFilters() {
+    const { filtersMaps } = this.props;
+
+    const filterKeys = Object.keys(filtersMaps);
+    const isShopByColor = false;
+    const filtersLength = {};
+    const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
+    const appliedFilterAvailable = 0;
+    let filterList = {};
+    return filterKeys.map(key => {
+      if (
+        key.toLowerCase() !== FACETS_FIELD_KEY.unbxdDisplayName &&
+        key.toLowerCase() !== FACETS_FIELD_KEY.l1category
+      ) {
+        if (!isShopByColor && key.toLowerCase() === FACETS_FIELD_KEY.color) {
+          filterList =
+            filtersMaps[key].length > 0 &&
+            this.renderColorFilterField(
+              appliedFilterAvailable,
+              filtersLength[`${key}Filters`],
+              unbxdKeyMapping[key],
+              key
+            );
+        } else {
+          filterList =
+            filtersMaps[key].length > 0 &&
+            this.renderFilterField(
+              appliedFilterAvailable,
+              filtersLength[`${key}Filters`],
+              unbxdKeyMapping[key],
+              key
+            );
+        }
+        return filterList;
+      }
+
+      return false;
+    });
+  }
+
+  render() {
+    const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
+    return (
+      <React.Fragment>
+        <form className="render-desktop-view">
+          <div className={`${className} desktop-dropdown`}>
+            <div className="filters-only-container">
+              <BodyCopy
+                component="span"
+                role="option"
+                textAlign="center"
+                tabIndex={-1}
+                fontSize="fs14"
+                fontFamily="secondary"
+                color="gray.900"
+                outline="none"
+                data-locator={getLocator('plp_filter_label_filterby')}
+              >
+                {`${labels.lbl_filter_by}:`}
+              </BodyCopy>
+
+              {filtersMaps && this.renderDesktopFilters()}
+            </div>
+          </div>
+        </form>
+        <ProductListingMobileFiltersForm
+          totalProductsCount={totalProductsCount}
+          initialValues={initialValues}
+          filtersMaps={filtersMaps}
+          className="render-mobile-view"
+        />
+      </React.Fragment>
+    );
+  }
+}
+
 ProductListingFiltersForm.propTypes = {
-  filters: PropTypes.shape({}),
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  className: PropTypes.string,
+  filtersMaps: PropTypes.shape({}),
+  totalProductsCount: PropTypes.string,
+  initialValues: PropTypes.shape({}),
 };
 
 ProductListingFiltersForm.defaultProps = {
-  filters: {},
+  filtersMaps: {},
   labels: {},
+  className: '',
+  totalProductsCount: '0',
+  initialValues: {},
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
 })(withStyles(ProductListingFiltersForm, ProductListingFiltersFormStyle));
+
+export { ProductListingFiltersForm as ProductListingFiltersFormVanilla };

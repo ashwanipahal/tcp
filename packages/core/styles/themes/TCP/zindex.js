@@ -5,4 +5,5 @@ export default {
   zDrawer: 1200,
   zModal: 1300,
   zModule: 200,
+  zPLPFilterDropDown: 9,
 };
