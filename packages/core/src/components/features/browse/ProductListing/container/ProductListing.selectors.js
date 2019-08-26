@@ -84,6 +84,10 @@ export const getUnbxdId = createSelector(
   products => products && products.get('unbxdId')
 );
 
+export const getProductsFilters = createSelector(
+  getProductListingState,
+  products => products && products.get('filtersMaps')
+);
 export const getLabelsProductListing = state => {
   const {
     PLP: {
