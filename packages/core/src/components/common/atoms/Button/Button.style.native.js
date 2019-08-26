@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable no-shadow */
 import { css } from 'styled-components/native';
 
@@ -18,6 +19,7 @@ const style = css`
    padding: 4px 20px;
    width: 100%;
    margin : 40px;
+   ${props.brandName ? ` border-radius: 25px; ` : ''};
  `
       : ''};
 
@@ -34,6 +36,7 @@ const style = css`
  font-weight: ${props.theme.typography.fontWeights.black};
  border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
  padding: 12px 32px;
+ ${props.brandName ? ` border-radius: 25px; ` : ''};
  `
       : ''};
 
@@ -87,6 +90,7 @@ const style = css`
      };
      ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
      padding: 12px 32px;
+     ${props.brandName ? ` border-radius: 25px; ` : ''};
      `
       : ''};
 `;

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
+import { getLocator, getScreenWidth, isGymboree } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
@@ -127,6 +127,7 @@ const ModuleD = (props: Props) => {
           testID={getLocator('moduleD_button')}
           url={singleCTAButton.url}
           navigation={navigation}
+          brandName={isGymboree()}
         />
       </ButtonWrapper>
     </Wrapper>
