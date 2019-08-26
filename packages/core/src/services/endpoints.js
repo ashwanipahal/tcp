@@ -131,6 +131,10 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: 'v2/account/deleteAddressDetails',
   },
+  addShipToStore: {
+    method: API_METHODS.POST,
+    URI: 'v2/cart/addShipToStore',
+  },
   getProductDetails: {
     method: 'GET',
     URI: PRODUCTS_URI.PRODUCTS,
