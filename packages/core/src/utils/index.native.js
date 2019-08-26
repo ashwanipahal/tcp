@@ -29,4 +29,6 @@ export {
   resetApiConfig,
   bindAllClassMethodsToThis,
   isGymboree,
+  getAddressFromPlace,
+  formatAddress,
 } from './utils';

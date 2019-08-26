@@ -1,5 +1,18 @@
 import { fromJS } from 'immutable';
-import CHECKOUT_SELECTORS from '../container/Checkout.selector';
+import CHECKOUT_SELECTORS, {
+  isGuest,
+  isExpressCheckout,
+  getUserContactInfo,
+  getCheckoutStage,
+  getPickupAltValues,
+} from '../container/Checkout.selector';
+
+import { isMobileApp, getViewportInfo } from '../../../../../utils';
+
+jest.mock('../../../../../utils', () => ({
+  isMobileApp: jest.fn(),
+  getViewportInfo: jest.fn(),
+}));
 
 describe('Checkout Selectors', () => {
   it('#isGuest should return boolean', () => {
@@ -16,7 +29,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.isGuest(State)).toEqual(UserState.getIn(['personalData', 'isGuest']));
+    expect(isGuest(State)).toEqual(UserState.getIn(['personalData', 'isGuest']));
   });
 
   it('#isExpressCheckout should return boolean', () => {
@@ -33,7 +46,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.isExpressCheckout(State)).toEqual(
+    expect(isExpressCheckout(State)).toEqual(
       UserState.getIn(['personalData', 'isExpressEligible'])
     );
   });
@@ -52,9 +65,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getCheckoutStage(State)).toEqual(
-      Checkout.getIn(['uiFlags', 'stage'])
-    );
+    expect(getCheckoutStage(State)).toEqual(Checkout.getIn(['uiFlags', 'stage']));
   });
 
   it('#getRecalcOrderPointsInterval', () => {
@@ -79,21 +90,22 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getUserContactInfo(State)).toEqual(
-      UserState.getIn(['personalData', 'contactInfo'])
-    );
+    expect(getUserContactInfo(State)).toEqual(UserState.getIn(['personalData', 'contactInfo']));
   });
 
   it('#getIsMobile', () => {
-    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(undefined);
+    isMobileApp.mockImplementation(() => false);
+    getViewportInfo.mockImplementation(() => {
+      return {
+        isMobile: false,
+      };
+    });
+    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(false);
   });
 
-  it('#getCurrentSiteId', () => {
-    expect(CHECKOUT_SELECTORS.getCurrentSiteId()).toEqual(undefined);
-  });
-
-  it('#getIsSmsUpdatesEnabled', () => {
-    expect(CHECKOUT_SELECTORS.getIsSmsUpdatesEnabled()).toEqual(true);
+  it('#getIsMobile if isMobileApp true', () => {
+    isMobileApp.mockImplementation(() => true);
+    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(true);
   });
 
   it('#getPickupAltValues', () => {
@@ -110,9 +122,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getPickupAltValues(State)).toEqual(
-      Checkout.getIn(['values', 'pickUpAlternative'])
-    );
+    expect(getPickupAltValues(State)).toEqual(Checkout.getIn(['values', 'pickUpAlternative']));
   });
 
   it('#getInitialPickupSectionValues should return boolean', () => {
@@ -155,16 +165,16 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getInitialPickupSectionValues(State)).toEqual({
+    expect(CHECKOUT_SELECTORS.getPickupInitialPickupSectionValues(State)).toEqual({
       pickUpContact: {
         firstName: '',
         lastName: '',
         emailAddress: '',
         phoneNumber: 212,
       },
-      smsInfo: {
-        wantsSmsOrderUpdates: false,
-        smsUpdateNumber: undefined,
+      smsSignUp: {
+        phoneNumber: 212,
+        sendOrderUpdate: false,
       },
       hasAlternatePickup: undefined,
       pickUpAlternate: {},

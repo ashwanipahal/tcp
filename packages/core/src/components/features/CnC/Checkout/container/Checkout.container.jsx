@@ -1,14 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { initCheckoutAction, submitPickupSection, onEditModeChangeAction } from './Checkout.action';
+import {
+  initCheckoutAction,
+  submitShippingSection,
+  submitPickupSection,
+  onEditModeChangeAction,
+  fetchShipmentMethods,
+} from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
+  isGuest as isGuestUser,
+  isExpressCheckout,
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getSendOrderUpdate,
+  getCheckoutStage,
 } from './Checkout.selector';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
-import { getSmsSignUpLabels } from '../../ShippingPage/container/ShippingPage.selectors';
+const {
+  getShippingLabels,
+  getSmsSignUpLabels,
+  getSelectedShipmentId,
+  getAddressFields,
+  getAddressPhoneNo,
+  getIsOrderHasPickup,
+  getEmailSignUpLabels,
+  getShipmentMethods,
+  getDefaultShipmentID,
+  getShippingSendOrderUpdate,
+} = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
   componentDidMount() {
@@ -23,20 +44,23 @@ export class CheckoutContainer extends React.Component<Props> {
       onEditModeChange,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
-      isGuest,
       isMobile,
-      isExpressCheckout,
       activeStage,
       activeStep,
       isUsSite,
+      shippingProps,
+      navigation,
+      orderHasPickUp,
+      submitShipping,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
       smsSignUpLabels,
-      navigation,
       onPickupSubmit,
+      loadShipmentMethods,
+      isGuest,
+      isExpressCheckoutPage,
     } = this.props;
-
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -45,7 +69,7 @@ export class CheckoutContainer extends React.Component<Props> {
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
         isMobile={isMobile}
-        isExpressCheckout={isExpressCheckout}
+        isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
         activeStep={activeStep}
         isUsSite={isUsSite}
@@ -56,6 +80,10 @@ export class CheckoutContainer extends React.Component<Props> {
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
+        shippingProps={shippingProps}
+        orderHasPickUp={orderHasPickUp}
+        submitShippingSection={submitShipping}
+        loadShipmentMethods={loadShipmentMethods}
       />
     );
   }
@@ -66,11 +94,17 @@ export const mapDispatchToProps = dispatch => {
     initCheckout: () => {
       dispatch(initCheckoutAction());
     },
-    onPickupSubmit: () => {
-      dispatch(submitPickupSection());
+    submitShipping: payload => {
+      dispatch(submitShippingSection(payload));
+    },
+    onPickupSubmit: data => {
+      dispatch(submitPickupSection(data));
     },
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
+    },
+    loadShipmentMethods: () => {
+      dispatch(fetchShipmentMethods());
     },
   };
 };
@@ -81,17 +115,29 @@ const mapStateToProps = state => {
     pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
-    isGuest: selectors.isGuest(state),
+    isGuest: isGuestUser(state),
     isMobile: selectors.getIsMobile(),
-    isExpressCheckout: selectors.isExpressCheckout(state),
-    activeStage: selectors.getCheckoutStage(state),
+    isExpressCheckoutPage: isExpressCheckout(state),
+    activeStage: getCheckoutStage(state),
+    shippingProps: {
+      addressLabels: getAddEditAddressLabels(state),
+      isOrderUpdateChecked: getShippingSendOrderUpdate(state),
+      shippingLabels: getShippingLabels(state),
+      smsSignUpLabels: getSmsSignUpLabels(state),
+      selectedShipmentId: getSelectedShipmentId(state),
+      address: getAddressFields(state),
+      addressPhoneNumber: getAddressPhoneNo(state),
+      emailSignUpLabels: getEmailSignUpLabels(state),
+      shipmentMethods: getShipmentMethods(state),
+      defaultShipmentId: getDefaultShipmentID(state),
+    },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
     // onShippingSubmit: storeOperators.checkoutFormOperator.submitShippingSection,
     // onBillingSubmit: storeOperators.checkoutFormOperator.submitBillingSection,
     // onReviewSubmit: storeOperators.checkoutFormOperator.submitOrderForProcessing,
 
-    activeStep: selectors.getCheckoutStage(state),
+    activeStep: getCheckoutStage(state),
     // moveToCheckoutStage: storeOperators.checkoutSignalsOperator.moveToStage,
     // availableStages: storeOperators.checkoutSignalsOperator.getAvailableStages(),
 
@@ -99,6 +145,7 @@ const mapStateToProps = state => {
     // isPlccFormModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccFormModalId,
     isUsSite: selectors.isUsSite(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
+    orderHasPickUp: getIsOrderHasPickup(state),
     pickUpLabels: getPickUpContactFormLabels(state),
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
