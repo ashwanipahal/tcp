@@ -28,7 +28,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         buttonVariation="variable-width"
         centered={true}
         customStyle={Object {}}
-        data-locator="accountoverview-myplacerewardstile-startshopbtn"
+        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
         locator=""
