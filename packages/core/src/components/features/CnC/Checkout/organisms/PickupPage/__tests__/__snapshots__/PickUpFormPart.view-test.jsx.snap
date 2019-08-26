@@ -220,7 +220,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
             formName="checkoutPickup"
             formSection="pickUpAlternate"
             isAlternateUpdateChecked={false}
-            isEditing={false}
+            isEditing={true}
             labels={Object {}}
             showNoteOnToggle={true}
           />
@@ -250,7 +250,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
-      disableNext={false}
+      disableNext={true}
       nextButtonText="undefined: undefined"
     />
   </form>
