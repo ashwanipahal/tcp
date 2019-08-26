@@ -94,20 +94,6 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
 }
 
 CreateAccountTopSection.propTypes = {
-  labels: PropTypes.shape({
-    registration: {
-      lbl_createAccount_createA: '',
-      lbl_createAccount_myPlaceRewards: '',
-      lbl_createAccount_earnPoints: '',
-      lbl_createAccount_spendPoint: '',
-      lbl_createAccount_pointReward: '',
-      lbl_createAccount_signedUp: '',
-      lbl_createAccount_onlineAccCreated: '',
-    },
-  }),
-};
-
-CreateAccountTopSection.defaultProps = {
   labels: {
     registration: {
       lbl_createAccount_createA: PropTypes.string,
@@ -119,6 +105,20 @@ CreateAccountTopSection.defaultProps = {
       lbl_createAccount_onlineAccCreated: PropTypes.string,
     },
   },
+};
+
+CreateAccountTopSection.defaultProps = {
+  labels: PropTypes.shape({
+    registration: {
+      lbl_createAccount_createA: '',
+      lbl_createAccount_myPlaceRewards: '',
+      lbl_createAccount_earnPoints: '',
+      lbl_createAccount_spendPoint: '',
+      lbl_createAccount_pointReward: '',
+      lbl_createAccount_signedUp: '',
+      lbl_createAccount_onlineAccCreated: '',
+    },
+  }),
 };
 
 export default withStyles(CreateAccountTopSection, SectionStyle);

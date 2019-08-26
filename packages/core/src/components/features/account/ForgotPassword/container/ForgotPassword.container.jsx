@@ -63,10 +63,12 @@ ForgotPasswordContainer.propTypes = {
   successFullResetEmail: PropTypes.bool.isRequired,
   showForgotPasswordForm: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  showLogin: PropTypes.func,
 };
 
 ForgotPasswordContainer.defaultProps = {
   resetLoginState: () => {},
+  showLogin: () => {},
 };
 
 const mapDispatchToProps = dispatch => {

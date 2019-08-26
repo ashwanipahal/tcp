@@ -144,10 +144,8 @@ class ForgotPasswordView extends React.Component<Props> {
 ForgotPasswordView.propTypes = {
   SubmitForgot: PropTypes.string.isRequired,
   showNotification: PropTypes.string.isRequired,
-  showForgotPasswordForm: PropTypes.string.isRequired,
   resetForgotPasswordErrorResponse: PropTypes.string.isRequired,
   labels: PropTypes.string.isRequired,
-  resetLoginState: PropTypes.string.isRequired,
   successFullResetEmail: PropTypes.string.isRequired,
   handleSubmit: PropTypes.string.isRequired,
 };
