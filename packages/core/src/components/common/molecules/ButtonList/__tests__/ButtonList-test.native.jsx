@@ -57,6 +57,6 @@ describe('ButtonList', () => {
   });
 
   it('should render Container', () => {
-    expect(scrollCTAList.find(Container)).toHaveLength(1);
+    expect(scrollCTAList.find(Container)).toHaveLength(0);
   });
 });
