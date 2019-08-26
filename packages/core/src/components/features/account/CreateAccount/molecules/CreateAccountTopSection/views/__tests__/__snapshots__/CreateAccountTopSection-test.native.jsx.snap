@@ -41,34 +41,47 @@ An online account has been created with your email! Click here to reset your pas
     <Styled(View)
       className="labels-wrapper"
     >
-      <Styled(Text)>
-        Create a
-        My Place Rewards
-        account to earn
-      </Styled(Text)>
+      <Styled(BodyCopy)
+        component="span"
+        fontSize="fs13"
+        text="Create a My Place Rewards account to earn"
+        textAlign="center"
+      />
       <Styled(View)>
-        <Styled(Text)>
-          points on every purchase
-        </Styled(Text)>
-        <Styled(Text)>
-          $1 Spent = 1 POINT
-        </Styled(Text)>
+        <Styled(BodyCopy)
+          color="gray.800"
+          fontSize="fs14"
+          fontWeight="black"
+          text="points on every purchase"
+          textAlign="center"
+        />
+        <Styled(BodyCopy)
+          color="gray.800"
+          fontSize="fs14"
+          fontWeight="black"
+          text="$1 Spent = 1 POINT"
+          textAlign="center"
+        />
       </Styled(View)>
       <Styled(View)>
-        <Styled(Text)>
-          Signed up in Store?
-        </Styled(Text)>
-        <Styled(Text)>
-          An online account has been created
-        </Styled(Text)>
+        <Styled(BodyCopy)
+          fontSize="fs12"
+          text="Signed up in Store?"
+          textAlign="center"
+        />
+        <Styled(BodyCopy)
+          fontSize="fs12"
+          text="An online account has been created"
+          textAlign="center"
+        />
         <Styled(View)>
           <Styled(Anchor)
             anchorVariation=""
             customStyle={Object {}}
-            fontSizeVariation="xlarge"
+            fontSizeVariation="medium"
             locator=""
+            onPress={[Function]}
             text=""
-            underline={true}
             visible={false}
           />
         </Styled(View)>

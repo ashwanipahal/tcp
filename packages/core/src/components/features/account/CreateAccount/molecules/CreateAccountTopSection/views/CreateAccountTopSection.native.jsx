@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import ImageComp from '../../../../../../common/atoms/Image';
 // import LineComp from '../../../../../../common/atoms/';
@@ -9,7 +10,6 @@ import {
   SectionStyle,
   CenterAlignWrapper,
   LabelsWrapper,
-  TextAlignCenter,
   ViewAlignCenter,
   TopSectionWrapper,
   PointsWrapper,
@@ -40,25 +40,47 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
           </CenterAlignWrapper>
           <LineComp marginTop={28} />
           <LabelsWrapper className="labels-wrapper">
-            <TextAlignCenter>
-              {labels.registration.lbl_createAccount_createA}
-              {labels.registration.lbl_createAccount_myPlaceRewards}
-              {labels.registration.lbl_createAccount_earnPoints}
-            </TextAlignCenter>
+            <BodyCopy
+              fontSize="fs13"
+              component="span"
+              textAlign="center"
+              text={`${labels.registration.lbl_createAccount_createA} ${
+                labels.registration.lbl_createAccount_myPlaceRewards
+              } ${labels.registration.lbl_createAccount_earnPoints}`}
+            />
             <PointsWrapper>
-              <TextAlignCenter>{labels.registration.lbl_createAccount_spendPoint}</TextAlignCenter>
-              <TextAlignCenter>{labels.registration.lbl_createAccount_pointReward}</TextAlignCenter>
+              <BodyCopy
+                fontWeight="black"
+                fontSize="fs14"
+                textAlign="center"
+                color="gray.800"
+                text={labels.registration.lbl_createAccount_spendPoint}
+              />
+              <BodyCopy
+                fontWeight="black"
+                fontSize="fs14"
+                textAlign="center"
+                color="gray.800"
+                text={labels.registration.lbl_createAccount_pointReward}
+              />
             </PointsWrapper>
             <ResetWrapper>
-              <TextAlignCenter>{labels.registration.lbl_createAccount_signedUp}</TextAlignCenter>
-              <TextAlignCenter>
-                {labels.registration.lbl_createAccount_onlineAccCreated}
-              </TextAlignCenter>
+              <BodyCopy
+                fontSize="fs12"
+                textAlign="center"
+                text={labels.registration.lbl_createAccount_signedUp}
+              />
+
+              <BodyCopy
+                fontSize="fs12"
+                textAlign="center"
+                text={labels.registration.lbl_createAccount_onlineAccCreated}
+              />
+
               <ViewAlignCenter>
                 <Anchor
-                  fontSizeVariation="xlarge"
+                  fontSizeVariation="medium"
                   text={labels.registration.lbl_createAccount_resetPassword}
-                  underline
                   onPress={this.showForgotPassword}
                 />
               </ViewAlignCenter>

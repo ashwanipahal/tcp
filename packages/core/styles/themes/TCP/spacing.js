@@ -40,6 +40,7 @@ export default {
   APP_LAYOUT_SPACING: {
     XS: '20px',
     SM: '30px',
+    CHECKOUT_MODAL: '74px',
   },
   CREDIT_CARD_ICON_WIDTH: '50px',
   FORM_FIELD_HEIGHT: '70px',

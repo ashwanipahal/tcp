@@ -77,7 +77,9 @@ class LoginSection extends React.PureComponent<Props> {
             medium: 8,
             large: 12,
           }}
-          className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
+          className={`elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+            variation === 'checkout' ? 'checkoutForm' : 'loginForm'
+          }`}
         >
           {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
             <React.Fragment>

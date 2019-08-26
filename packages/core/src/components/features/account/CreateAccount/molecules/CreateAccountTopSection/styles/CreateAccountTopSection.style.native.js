@@ -19,10 +19,9 @@ const CenterAlignWrapper = styled.View`
 `;
 
 const LabelsWrapper = styled.View`
-  display: flex;
-  justify-content: ${'center'};
-  align-items: center;
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  width: 80%;
+  margin: 0 auto;
 `;
 
 const TextAlignCenter = styled.Text`

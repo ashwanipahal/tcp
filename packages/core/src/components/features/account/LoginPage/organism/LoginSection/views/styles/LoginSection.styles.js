@@ -7,6 +7,10 @@ const styles = css`
   .elem-pr-LRG {
     padding-right: 15px;
   }
+  .checkoutForm {
+    padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.CHECKOUT_MODAL};
+    padding-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.CHECKOUT_MODAL};
+  }
   .border {
     border-top: 1px solid ${props => props.theme.colors.BORDER.BLUE};
 

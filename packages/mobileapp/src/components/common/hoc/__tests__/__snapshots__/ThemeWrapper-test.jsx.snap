@@ -384,6 +384,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "spacing": Object {
         "APP_LAYOUT_SPACING": Object {
+          "CHECKOUT_MODAL": "74px",
           "SM": "30px",
           "XS": "20px",
         },
