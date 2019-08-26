@@ -31,9 +31,11 @@ class CheckoutFooter extends React.PureComponent {
         <Button
           disabled={disableNext}
           type="submit"
+          className="footer-button"
+          fontSize="fs14"
+          fontWeight="extrabold"
           buttonVariation="variable-width"
           fill="BLUE"
-          className="footer-button"
         >
           {nextButtonText}
         </Button>
@@ -52,3 +54,4 @@ CheckoutFooter.propTypes = {
 };
 
 export default withStyles(CheckoutFooter, style);
+export { CheckoutFooter as CheckoutFooterVanilla };

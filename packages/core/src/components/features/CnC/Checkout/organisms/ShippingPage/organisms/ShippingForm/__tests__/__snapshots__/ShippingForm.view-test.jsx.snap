@@ -27,6 +27,8 @@ exports[`Shipping Form should render correctly 1`] = `
       >
         <Styled(AddressFields)
           addressFormLabels={Object {}}
+          addressPhoneNo={null}
+          checkPOBoxAddress={[Function]}
           formName="checkoutShipping"
           formSection="address"
           showDefaultCheckbox={false}
@@ -38,7 +40,7 @@ exports[`Shipping Form should render correctly 1`] = `
       name="smsSignUp"
     >
       <Styled(SMSFormFields)
-        addressPhoneNo={null}
+        borderBottom={true}
         formName="checkoutShipping"
         formSection="smsSignUp"
         isOrderUpdateChecked={false}
@@ -47,6 +49,24 @@ exports[`Shipping Form should render correctly 1`] = `
         variation="secondary"
       />
     </FormSection>
+    <FormSection
+      name="shipmentMethods"
+    >
+      <div
+        className="shipment-methods-form"
+      >
+        <Styled(ShipmentMethods)
+          formName="checkoutShipping"
+          formSection="shipmentMethods"
+          selectedShipmentId={null}
+          shipmentMethods={null}
+        />
+      </div>
+    </FormSection>
+    <Styled(CheckoutFooter)
+      backLinkText="undefined undefined"
+      nextButtonText="undefined: undefined"
+    />
   </form>
 </Fragment>
 `;
