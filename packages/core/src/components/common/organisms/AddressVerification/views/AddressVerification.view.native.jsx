@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { PropTypes } from 'prop-types';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
+import { formatAddress } from '@tcp/core/src/utils';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
@@ -100,17 +101,6 @@ export default class AddressVerification extends React.PureComponent {
     );
   };
 
-  formatAddress = address => ({
-    firstName: address.firstName,
-    lastName: address.lastName,
-    addressLine: [address.address1, address.address2 || ''],
-    city: address.city,
-    state: address.state,
-    country: address.country,
-    zipCode: address.zip,
-    phone1: address.phoneNumber,
-  });
-
   handleUserAddress = () => {
     this.setState({
       selectAddress: 'userAddress',
@@ -162,7 +152,7 @@ export default class AddressVerification extends React.PureComponent {
         <AddressOptionWrapper>
           <AddressOption
             name="selectAddress"
-            address={this.formatAddress(userAddress)}
+            address={formatAddress(userAddress)}
             value="userAddress"
             isSelected={selectAddress === 'userAddress'}
             onChange={this.handleUserAddress}

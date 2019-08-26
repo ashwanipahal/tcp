@@ -1,5 +1,6 @@
 import React from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { formatAddress } from '@tcp/core/src/utils';
 import Modal from '../../../molecules/Modal';
 import Button from '../../../atoms/Button';
 import TextBox from '../../../atoms/TextBox';
@@ -46,17 +47,6 @@ export class AddressVerification extends React.Component<Props> {
       this.onCloseModal();
     }
   }
-
-  formatAddress = address => ({
-    firstName: address.firstName,
-    lastName: address.lastName,
-    addressLine: [address.address1, address.address2 || ''],
-    city: address.city,
-    state: address.state,
-    country: address.country,
-    zipCode: address.zip,
-    phone1: address.phoneNumber,
-  });
 
   updateDisplayFlag = (verificationResult, userAddress, suggestedAddress) => {
     if (verificationResult) {
@@ -162,7 +152,7 @@ export class AddressVerification extends React.Component<Props> {
         <div className="elem-mb-XL">
           <AddressOption
             className="addressVerification__input"
-            address={this.formatAddress(userAddress)}
+            address={formatAddress(userAddress)}
             name="selectAddress"
             value="userAddress"
             isSelected={selectAddress === 'userAddress'}
