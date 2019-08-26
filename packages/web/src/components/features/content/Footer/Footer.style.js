@@ -119,6 +119,9 @@ export default css`
       font-size: 12px;
       line-height: 1.67;
     }
+    &.navigation-footer .col-md-half-width {
+      width: 100%;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
     .hide-in-large-up {

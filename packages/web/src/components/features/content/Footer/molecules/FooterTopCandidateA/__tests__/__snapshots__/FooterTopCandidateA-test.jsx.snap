@@ -6,7 +6,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
 >
   <Styled(Row)>
     <Styled(Col)
-      className=""
+      className="col-md-half-width"
       colSize={
         Object {
           "large": 4,
@@ -108,7 +108,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className=""
+      className="col-md-half-width"
       colSize={
         Object {
           "large": 4,
@@ -215,7 +215,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       className="divider hide-in-large-up"
     />
     <Styled(Col)
-      className="refer_a_friend_desktop"
+      className="refer_a_friend_desktop col-md-half-width"
       colSize={
         Object {
           "large": 4,
@@ -235,7 +235,6 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           fullBleed={true}
         >
           <Styled(Col)
-            className=""
             colSize={
               Object {
                 "large": 7,
@@ -321,7 +320,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       className="divider hide-in-medium-up"
     />
     <Styled(Col)
-      className="hide-in-large-up refer_a_frient_last_colm"
+      className="hide-in-large-up refer_a_frient_last_colm col-md-half-width"
       colSize={
         Object {
           "large": 0,

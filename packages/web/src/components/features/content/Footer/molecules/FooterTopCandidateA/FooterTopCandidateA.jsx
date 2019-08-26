@@ -63,7 +63,7 @@ class FooterTopCandidateA extends React.PureComponent {
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
           <Col
-            className=""
+            className="col-md-half-width"
             colSize={{
               large: 4,
               medium: 4,
@@ -107,7 +107,7 @@ class FooterTopCandidateA extends React.PureComponent {
 
           {/* ---------- SMS Sign Up starts here ---------- */}
           <Col
-            className=""
+            className="col-md-half-width"
             colSize={{
               large: 4,
               medium: 4,
@@ -154,7 +154,7 @@ class FooterTopCandidateA extends React.PureComponent {
           {/* ---------- Refer a friend start here-------- */}
 
           <Col
-            className="refer_a_friend_desktop"
+            className="refer_a_friend_desktop col-md-half-width"
             colSize={{
               large: 4,
               medium: 4,
@@ -167,7 +167,6 @@ class FooterTopCandidateA extends React.PureComponent {
             <Grid>
               <Row fullBleed className="flex-align-center">
                 <Col
-                  className=""
                   colSize={{
                     large: 7,
                     medium: 4,
@@ -231,7 +230,7 @@ class FooterTopCandidateA extends React.PureComponent {
           {/* ---------- Refer a friend ends here-------- */}
           <div className="divider hide-in-medium-up" />
           <Col
-            className="hide-in-large-up refer_a_frient_last_colm"
+            className="hide-in-large-up refer_a_frient_last_colm col-md-half-width"
             colSize={{
               large: 0,
               medium: 4,
