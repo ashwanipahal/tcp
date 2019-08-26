@@ -188,7 +188,7 @@ export class AddressVerification extends React.Component<Props> {
           <div className="elem-mb-XL">
             <AddressOption
               className="addressVerification__input"
-              address={this.formatAddress(suggestedAddress)}
+              address={formatAddress(suggestedAddress)}
               name="selectAddress"
               value="suggestedAddress"
               isSelected={selectAddress === 'suggestedAddress'}
