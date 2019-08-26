@@ -6,6 +6,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
 >
   <Styled(Styled(ImageComp))
     alt="test"
+    resizeMode="contain"
     source="/test"
     title="test"
   />
@@ -40,6 +41,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
   />
   <Styled(Styled(ImageComp))
     alt="test"
+    resizeMode="contain"
     source="/test"
     title="test"
   />

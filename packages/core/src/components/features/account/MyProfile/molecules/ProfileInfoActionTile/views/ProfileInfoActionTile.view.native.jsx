@@ -32,6 +32,7 @@ export const ProfileInfoActionTile = ({
         alt={activityDescription}
         source={activityIcon}
         title={activityDescription}
+        resizeMode="contain"
       />
       <View>
         <BodyCopy textAlign="center" fontSize="fs16" fontWeight="semibold" text={titleToShow} />

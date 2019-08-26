@@ -12,6 +12,7 @@ export const ProfileProgressWrapper = styled.View`
   flex-basis: 140;
   position: relative;
   align-items: flex-start;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const ProfileTextWrapper = styled.View`

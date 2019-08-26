@@ -10,8 +10,14 @@ exports[`Myprofile should render correctly 1`] = `
     marginTop={0}
   />
   <ProfileInformation
+    defaultStore=""
     handleComponentChange={[Function]}
     labels={Object {}}
+    mailingAddress={Object {}}
+    percentageIncrement={Object {}}
+    profileCompletion=""
+    userBirthday=""
+    userSurvey={Array []}
   />
 </View>
 `;

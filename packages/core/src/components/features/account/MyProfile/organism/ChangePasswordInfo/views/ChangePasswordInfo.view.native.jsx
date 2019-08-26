@@ -15,11 +15,7 @@ export const ChangePassword = ({ labels, handleComponentChange }) => {
         spacingStyles="margin-bottom-MED"
         text={labels.lbl_profile_change_your_password}
       />
-      <BodyCopyWithSpacing
-        fontSize="fs14"
-        spacingStyles="margin-bottom-MED"
-        text={labels.lbl_profile_password_info_line1}
-      />
+      <BodyCopyWithSpacing fontSize="fs14" text={labels.lbl_profile_password_info_line1} />
       <BodyCopyWithSpacing fontSize="fs14" text={labels.lbl_profile_password_info_line2} />
     </MyProfileTile>
   );

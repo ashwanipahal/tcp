@@ -7,14 +7,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     handleComponentChange={[Function]}
     labels={Object {}}
     mailingAddress={Object {}}
-    percentageIncrement={
-      Object {
-        "percentageFavStore": "20",
-        "percentageMailingAddress": "20",
-        "percentageUserBirthday": "20",
-        "percentageUserSurvey": "20",
-      }
-    }
+    percentageIncrement={Object {}}
     profileCompletion=""
     userBirthday=""
     userSurvey={Array []}
