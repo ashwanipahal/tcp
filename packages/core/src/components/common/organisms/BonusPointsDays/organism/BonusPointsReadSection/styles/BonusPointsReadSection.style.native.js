@@ -24,10 +24,11 @@ const Circle = styled.View`
 `;
 
 const DotActive = styled(Circle)`
-  background-color: ${props =>
-    props.isPlcc
-      ? props.theme.colorPalette.userTheme.plcc
-      : props.theme.colorPalette.userTheme.mpr};
+  background-color: ${props => props.theme.colorPalette.userTheme.mpr};
+`;
+
+const DotActivePlcc = styled(Circle)`
+  background-color: ${props => props.theme.colorPalette.userTheme.plcc};
 `;
 
 const DotInactive = styled(Circle)`
@@ -56,4 +57,5 @@ export {
   BonusDayWrapper,
   DotActive,
   DotInactive,
+  DotActivePlcc,
 };
