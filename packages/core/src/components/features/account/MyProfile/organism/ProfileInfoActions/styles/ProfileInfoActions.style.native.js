@@ -8,12 +8,15 @@ export const TopRowWrapper = styled.View`
 `;
 
 export const ProfileProgressWrapper = styled.View`
-  flex-basis: 40%;
-  align-items: flex-end;
+  flex-shrink: 0;
+  flex-basis: 140;
+  position: relative;
+  align-items: flex-start;
 `;
 
 export const ProfileTextWrapper = styled.View`
-  flex-basis: 60%;
+  flex-shrink: 1;
+  padding-right: 10px;
 `;
 
 export const ProfileTileWrapper = styled.View`

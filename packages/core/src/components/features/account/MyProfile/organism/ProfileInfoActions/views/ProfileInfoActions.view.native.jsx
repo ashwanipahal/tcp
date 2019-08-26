@@ -15,10 +15,11 @@ import {
   getAboutYourselfState
 } from '../ProfileInfoActions.utils';
 
-const mailingAddressIcon = 'mailingAddress.jpg';
-const favStoreIcon = 'store.jpg';
-const birthdayIcon = 'birthday.jpg';
-const surveyIcon = 'survey.png';
+const mailingAddressIcon = require('@tcp/core/src/assets/mailingAddress.png');
+const favStoreIcon = require('@tcp/core/src/assets/store.png');
+const birthdayIcon = require('@tcp/core/src/assets/birthday.png');
+const surveyIcon = require('@tcp/core/src/assets/survey.png');
+
 
 export const ProfileInfoActions = ({
   labels,
@@ -61,13 +62,16 @@ export const ProfileInfoActions = ({
             />
           )}
         </ProfileTextWrapper>
+        {!!profileCompletion && (
         <ProfileProgressWrapper>
-          {profileCompletion && (
-            <ProfileProgress
-              profileCompletion={profileCompletion}
-            />
-          )}
+          <ProfileProgress
+            percent={profileCompletion}
+            radius={50}
+            borderWidth={10}
+          />
         </ProfileProgressWrapper>
+        )}
+
       </TopRowWrapper>
       <ProfileTileWrapper>
         <ProfileInfoActionTile
@@ -126,7 +130,7 @@ ProfileInfoActions.defaultProps = {
     lbl_profile_Enhance_Experience: '',
     lbl_profile_profileInCompleteMessage: '',
   },
-  profileCompletion: '40',
+  profileCompletion: '',
   mailingAddress: fromJS({}),
   defaultStore: '',
   userBirthday: '',
