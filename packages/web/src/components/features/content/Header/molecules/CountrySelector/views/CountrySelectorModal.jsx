@@ -91,43 +91,67 @@ class CountrySelectorModal extends React.Component {
           </BodyCopy>
           <hr className="shipToModal__divider" />
           <form className="shipToForm">
-            <label htmlFor="country">
+            <BodyCopy
+              component="label"
+              color="gray.900"
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="black"
+              textAlign="left"
+              for="country"
+              data-locator={getLocator('country')}
+            >
               <span>{labels.lbl_global_country}</span>
               <Field
                 id="country"
                 name="country"
                 component={SelectBox}
                 options={countriesMap}
-                dataLocator={getLocator('country')}
                 onChange={this.handleCountryChange}
                 inheritedStyles={selectBoxStyle}
               />
-            </label>
-            <label htmlFor="language">
+            </BodyCopy>
+            <BodyCopy
+              component="label"
+              color="gray.900"
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="black"
+              textAlign="left"
+              for="language"
+              data-locator={getLocator('language')}
+            >
               <span>{labels.lbl_global_language}</span>
               <Field
                 id="language"
                 name="language"
                 component={SelectBox}
                 options={languages}
-                dataLocator={getLocator('language')}
                 onChange={this.handleLanguageChange}
                 inheritedStyles={selectBoxStyle}
               />
-            </label>
-            <label htmlFor="currency">
+            </BodyCopy>
+            <BodyCopy
+              component="label"
+              color="gray.900"
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="black"
+              textAlign="left"
+              for="currency"
+              data-locator={getLocator('currency')}
+            >
               <span>{labels.lbl_global_currency}</span>
               <Field
                 id="currency"
                 name="currency"
                 component={SelectBox}
                 options={currenciesMap}
-                dataLocator={getLocator('currency')}
                 onChange={this.handleCurrencyChange}
                 disabled={this.toggleDisable()}
                 inheritedStyles={selectBoxStyle}
               />
-            </label>
+            </BodyCopy>
             <Button
               className="shipToModal__button"
               fill="BLUE"
@@ -145,9 +169,7 @@ class CountrySelectorModal extends React.Component {
             textAlign="center"
             data-locator={getLocator('country_selector_tnc_text')}
           >
-            <RichText
-              richTextHtml={noteContent}
-            />
+            <RichText richTextHtml={noteContent} />
           </BodyCopy>
         </div>
       </Modal>

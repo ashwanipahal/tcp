@@ -48,16 +48,6 @@ const styles = css`
   }
   form {
     border-bottom: 2px solid ${props => props.theme.colorPalette.gray['500']};
-  }
-
-  label {
-    display: block;
-    text-align: left;
-    width: 100%;
-    color: ${props => props.theme.colorPalette.gray['900']};
-    font-family: ${props => props.theme.typography.fonts.secondary};
-    font-size: ${props => props.theme.typography.fontSizes.fs10};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
 
     span {
       display: block;
