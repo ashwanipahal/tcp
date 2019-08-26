@@ -10,6 +10,7 @@ import {
   getLoadedProductsCount,
   getUnbxdId,
   getBreadCrumbTrail,
+  getLabelsProductListing,
   getLongDescription,
 } from './ProductListing.selectors';
 
@@ -53,7 +54,7 @@ function mapStateToProps(state) {
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     longDescription: getLongDescription(state),
-    labels: state.Labels.PLP.seoText,
+    labels: getLabelsProductListing(state),
   };
 }
 

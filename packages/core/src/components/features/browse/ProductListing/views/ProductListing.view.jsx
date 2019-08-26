@@ -16,6 +16,7 @@ const ProductListView = ({
   breadCrumbs,
   longDescription,
   labels,
+  ...otherProps
 }) => {
   return (
     <div className={className}>
@@ -43,7 +44,12 @@ const ProductListView = ({
             <div className="filter-area">FilterArea</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductList products={products} className={`${className} product-list`} />
+            <ProductList
+              products={products}
+              className={`${className} product-list`}
+              labels={labels}
+              {...otherProps}
+            />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ReadMore

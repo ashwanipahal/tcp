@@ -34,6 +34,8 @@ class CheckoutFooter extends React.PureComponent {
           className="footer-button"
           fontSize="fs14"
           fontWeight="extrabold"
+          buttonVariation="variable-width"
+          fill="BLUE"
         >
           {nextButtonText}
         </Button>

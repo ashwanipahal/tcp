@@ -9,6 +9,7 @@ import {
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
+import { getAPIConfig } from '../../../utils';
 
 const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
@@ -37,6 +38,42 @@ export const getGiftWrappingOptions = () => {
   // .catch(err => {
   //   // throw getFormattedError(err);
   // });
+};
+
+export const addPickupPerson = args => {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    header: {
+      'X-Cookie': apiConfig.cookie,
+    },
+    body: {
+      contact: [
+        {
+          addressType: 'shipping',
+          firstName: args.firstName,
+          lastName: args.lastName,
+          phone2: args.phoneNumber,
+          email1: (args.emailAddress || '').trim(),
+          email2: args.alternateEmail
+            ? `${args.alternateEmail.trim()}|${args.alternateFirstName} ${args.alternateLastName}`
+            : '',
+        },
+      ],
+    },
+    webService: endpoints.addAddress,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      // if (this.apiHelper.responseContainsErrors(res)) {
+      //   throw new ServiceResponseError(res);
+      // }
+
+      return { addressId: res.body.addressId };
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const getCurrentOrderAndCouponsDetails = (
@@ -230,4 +267,5 @@ export default {
   getShippingMethods,
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
+  addPickupPerson,
 };
