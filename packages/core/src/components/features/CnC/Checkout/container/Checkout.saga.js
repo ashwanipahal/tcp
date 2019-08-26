@@ -4,7 +4,8 @@ import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import constants from '../Checkout.constants';
 import { getGiftWrappingOptions } from '../../../../../services/abstractors/CnC/index';
-import selectors from './Checkout.selector';
+import selectors, { isGuest } from './Checkout.selector';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
 import {
   getSetPickupValuesActn,
@@ -18,8 +19,6 @@ import { addAddress } from '../../../../../services/abstractors/account/AddEditA
 const {
   getRecalcOrderPointsInterval,
   // isUsSite,
-  isGuest,
-  getUserEmail,
   // getIsOrderHasShipping  ,
   // getShippingDestinationValues,
   // getDefaultAddress,

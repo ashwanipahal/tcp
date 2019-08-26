@@ -8,6 +8,7 @@ import selectors, {
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getSendOrderUpdate,
+  getCheckoutStage,
 } from './Checkout.selector';
 
 import { getSmsSignUpLabels } from '../../ShippingPage/container/ShippingPage.selectors';
@@ -37,7 +38,6 @@ export class CheckoutContainer extends React.Component<Props> {
       navigation,
       onPickupSubmit,
     } = this.props;
-
     return (
       <CheckoutPage
         router={router}
@@ -86,14 +86,14 @@ const mapStateToProps = state => {
     isGuest: isGuest(state),
     isMobile: selectors.getIsMobile(),
     isExpressCheckout: isExpressCheckout(state),
-    activeStage: selectors.getCheckoutStage(state),
+    activeStage: getCheckoutStage(state),
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
     // onShippingSubmit: storeOperators.checkoutFormOperator.submitShippingSection,
     // onBillingSubmit: storeOperators.checkoutFormOperator.submitBillingSection,
     // onReviewSubmit: storeOperators.checkoutFormOperator.submitOrderForProcessing,
 
-    activeStep: selectors.getCheckoutStage(state),
+    activeStep: getCheckoutStage(state),
     // moveToCheckoutStage: storeOperators.checkoutSignalsOperator.moveToStage,
     // availableStages: storeOperators.checkoutSignalsOperator.getAvailableStages(),
 

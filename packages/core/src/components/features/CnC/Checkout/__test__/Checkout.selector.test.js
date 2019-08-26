@@ -3,6 +3,8 @@ import CHECKOUT_SELECTORS, {
   isGuest,
   isExpressCheckout,
   getUserContactInfo,
+  getCheckoutStage,
+  getPickupAltValues,
 } from '../container/Checkout.selector';
 
 describe('Checkout Selectors', () => {
@@ -56,9 +58,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getCheckoutStage(State)).toEqual(
-      Checkout.getIn(['uiFlags', 'stage'])
-    );
+    expect(getCheckoutStage(State)).toEqual(Checkout.getIn(['uiFlags', 'stage']));
   });
 
   it('#getRecalcOrderPointsInterval', () => {
@@ -112,9 +112,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getPickupAltValues(State)).toEqual(
-      Checkout.getIn(['values', 'pickUpAlternative'])
-    );
+    expect(getPickupAltValues(State)).toEqual(Checkout.getIn(['values', 'pickUpAlternative']));
   });
 
   it('#getInitialPickupSectionValues should return boolean', () => {
@@ -157,16 +155,16 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getInitialPickupSectionValues(State)).toEqual({
+    expect(CHECKOUT_SELECTORS.getPickupInitialPickupSectionValues(State)).toEqual({
       pickUpContact: {
         firstName: '',
         lastName: '',
         emailAddress: '',
         phoneNumber: 212,
       },
-      smsInfo: {
-        wantsSmsOrderUpdates: false,
-        smsUpdateNumber: undefined,
+      smsSignUp: {
+        phoneNumber: 212,
+        sendOrderUpdate: false,
       },
       hasAlternatePickup: undefined,
       pickUpAlternate: {},
