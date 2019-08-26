@@ -129,8 +129,8 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
             "ALT_FOCUS": "#ffffff",
             "ALT_HOVER": "#ffffff",
             "BORDER": "#1a1a1a",
-            "FOCUS": "#ffffff",
-            "HOVER": "#ffffff",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
             "NORMAL": "#1a1a1a",
             "TEXT": "#ffffff",
           },
@@ -571,6 +571,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "zModal": 1300,
         "zModule": 200,
         "zOverlay": 900,
+        "zPLPFilterDropDown": 9,
       },
     }
   }
