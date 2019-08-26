@@ -45,6 +45,7 @@ describe('PickUpFormPartVanilla component', () => {
       dispatch: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
+    component.instance().SaveAndCancelButton();
     expect(component).toMatchSnapshot();
   });
 
