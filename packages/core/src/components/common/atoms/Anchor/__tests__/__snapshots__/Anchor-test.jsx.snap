@@ -3,7 +3,7 @@
 exports[`Anchor component renders correctly 1`] = `
 <Link
   as=""
-  href=""
+  href="/undefined"
   scroll=""
   shallow={false}
 >
