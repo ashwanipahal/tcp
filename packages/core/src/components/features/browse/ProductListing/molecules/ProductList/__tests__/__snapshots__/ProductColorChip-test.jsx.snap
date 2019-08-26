@@ -5,6 +5,7 @@ exports[`ProductColorChipVanilla component should renders correctly 1`] = `
   className="content-colors-button active"
   data-locator="global-ColorSwatch-Swatch link"
   onClick={[Function]}
+  title=""
   type="button"
 >
   <img

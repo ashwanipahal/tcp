@@ -187,12 +187,15 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             </p>
           </div>
         ) : (
-          <Image
-            data-locator={getLocator('global_favorite_button')}
-            alt="Add-to-favorite"
-            className={className}
-            src={getIconPath('add-to-favorite')}
-          />
+          <button class="clear-button">
+            <Image
+              data-locator={getLocator('global_favorite_button')}
+              alt="Add-to-favorite"
+              title="addToFavorite"
+              className={className}
+              src={getIconPath('add-to-favorite')}
+            />
+          </button>
         )}
       </div>
     );

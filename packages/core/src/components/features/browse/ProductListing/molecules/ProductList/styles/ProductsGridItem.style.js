@@ -7,6 +7,10 @@ const styles = css`
     text-align: right;
   }
 
+  .clear-button {
+    border: none;
+    background: transparent;
+  }
   .fav-icon {
     width: 21px;
     height: 18px;

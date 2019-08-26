@@ -161,11 +161,16 @@ exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = 
   isDisabled={true}
   onClick={[MockFunction]}
 >
-  <Styled(Image)
-    alt="Add-to-favorite"
-    data-locator="global-favorite-button"
-    src="/static/images/add-to-favorite.svg"
-  />
+  <button
+    class="clear-button"
+  >
+    <Styled(Image)
+      alt="Add-to-favorite"
+      data-locator="global-favorite-button"
+      src="/static/images/add-to-favorite.svg"
+      title="addToFavorite"
+    />
+  </button>
 </div>
 `;
 
