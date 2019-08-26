@@ -35,7 +35,6 @@ export class CheckoutContainer extends React.Component<Props> {
 
   render() {
     const {
-      router,
       initialValues,
       pickupInitialValues,
       onEditModeChange,
@@ -61,7 +60,6 @@ export class CheckoutContainer extends React.Component<Props> {
 
     return (
       <CheckoutPage
-        router={router}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}

@@ -101,7 +101,7 @@ export class AddressFields extends React.PureComponent {
             noLink
             href="#"
             anchorVariation="primary"
-            data-locator="shipping internationally"
+            dataLocator="shipping internationally"
             target="_self"
             className="change-country-link"
           >
