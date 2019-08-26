@@ -25,15 +25,9 @@ import config from '../ModuleN.config';
 const { ctaTypes } = config;
 
 const ModuleN = (props: Props) => {
-  const {
-    ctaItems,
-    headerText,
-    navigation,
-    promoBanner,
-    set: [set = {}],
-  } = props;
+  const { ctaItems, headerText, navigation, promoBanner, ctaType } = props;
 
-  const ctaType = ctaTypes[set.val];
+  const ctaTypeVal = ctaTypes[ctaType];
 
   return (
     <Container background="red">
@@ -60,10 +54,10 @@ const ModuleN = (props: Props) => {
         )}
       </PromoTextBannerWrapper>
 
-      {ctaType === 'imageCTAList' && (
+      {ctaTypeVal === 'imageCTAList' && (
         <DivImageCTAContainer>
           <ButtonList
-            buttonListVariation={ctaType}
+            buttonListVariation={ctaTypeVal}
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
@@ -72,10 +66,10 @@ const ModuleN = (props: Props) => {
         </DivImageCTAContainer>
       )}
 
-      {ctaType === 'stackedCTAList' && (
+      {ctaTypeVal === 'stackedCTAList' && (
         <ContainerView>
           <ButtonList
-            buttonListVariation={ctaType}
+            buttonListVariation={ctaTypeVal}
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
@@ -85,20 +79,20 @@ const ModuleN = (props: Props) => {
         </ContainerView>
       )}
 
-      {ctaType === 'scrollCTAList' && (
+      {ctaTypeVal === 'scrollCTAList' && (
         <ButtonContainer>
           <ButtonList
-            buttonListVariation={ctaType}
+            buttonListVariation={ctaTypeVal}
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
           />
         </ButtonContainer>
       )}
-      {ctaType === 'linkCTAList' && (
+      {ctaTypeVal === 'linkCTAList' && (
         <ButtonContainer>
           <ButtonList
-            buttonListVariation={ctaType}
+            buttonListVariation={ctaTypeVal}
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
