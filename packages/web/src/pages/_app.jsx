@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -18,6 +19,10 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 
+const Script = dynamic(
+  () => import('../components/common/atoms/Script').then(module => module.ScriptWithErrorBoundary),
+  { ssr: false }
+);
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
@@ -119,6 +124,8 @@ class TCPWebApp extends App {
             </Grid>
           </Provider>
         </ThemeProvider>
+        {/* Output analytics scripts */}
+        {process.env.ANALYTICS && <Script src="/foo.js" />}
       </Container>
     );
   }
