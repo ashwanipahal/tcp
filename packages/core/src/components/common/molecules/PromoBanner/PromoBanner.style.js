@@ -60,22 +60,22 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: 68px;
+    font-size: 64px;
     line-height: 1;
-    width: 250px;
+    width: 235px;
     text-align: left;
     margin: 0 auto;
     position: relative;
     display: block;
 
     .percentage_wrapped_large-1 {
-      font-size: 46px;
+      font-size: 42px;
       position: absolute;
       top: 0;
     }
 
     .percentage_wrapped_large-2 {
-      font-size: 20px;
+      font-size: 18px;
       position: absolute;
       bottom: 8px;
     }
@@ -89,7 +89,7 @@ export default css`
       .percentage_wrapped_large-0,
       .percentage_wrapped_large-1,
       .percentage_wrapped_large-2 {
-        font-size: 74px;
+        font-size: 64px;
         line-height: normal;
         position: static;
         vertical-align: middle;

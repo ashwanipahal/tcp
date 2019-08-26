@@ -155,9 +155,9 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 20px;
-    line-height: 1.05;
-    letter-spacing: 2.22px;
+    font-size: 22px;
+    line-height: normal;
+    letter-spacing: 2px;
 
     @media ",
                 [Function],

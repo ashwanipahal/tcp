@@ -6,13 +6,14 @@ import { Col, Row, DamImage } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import { PromoBanner, ButtonList } from '../..';
-import { getIconPath, getLocator } from '../../../../../utils';
+import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 
 import config from '../ModuleA.config';
 
 const bigCarrotIcon = 'carousel-big-carrot';
 
 const { ctaTypes, CAROUSEL_OPTIONS } = config;
+const isGymboreeModuleA = isGymboree();
 
 class ModuleA extends React.Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class ModuleA extends React.Component {
 
     return (
       <Row
-        className={`${className} ${isLinkList ? 'link-list-carousel' : ''} ${
+        className={`${className} ${isGymboreeModuleA ? 'gymboree-module-a' : ''} ${
           isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
         } moduleA`}
         fullBleed={{ small: true, medium: true, large: false }}

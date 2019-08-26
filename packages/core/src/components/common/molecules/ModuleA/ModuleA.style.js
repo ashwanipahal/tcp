@@ -37,7 +37,7 @@ const style = css`
   position: relative;
   margin-bottom: 40px;
 
-  &.link-list-carousel {
+  &.gymboree-module-a {
     background-color: #003057;
   }
 
@@ -57,7 +57,7 @@ const style = css`
     height: 100%;
   }
 
-  &.link-list-carousel .banner-content {
+  &.gymboree-module-a .banner-content {
     @media ${props => props.theme.mediaQuery.medium} {
       top: 40px;
       left: 14px;
@@ -87,18 +87,22 @@ const style = css`
     }
   }
 
-  .button-list-container.imageCTAList,
-  .button-list-container.scrollCTAList {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  }
-
-  .button-list-container.imageCTAList .image-comp {
-    color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-  }
-
-  .button-list-container .scroll-button-list-wrapper,
-  .button-list-container .scroll-cta-wrapper {
+  .button-list-wrapper {
     padding: 0;
+  }
+
+  .button-list-container {
+    padding: 16px 0;
+  }
+
+  .button-list-container.stackedCTAList {
+    padding: 0;
+  }
+
+  .button-list-container.imageCTAList .image-comp,
+  .button-list-container.linkCTAList .link-button-wrapper-class {
+    color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
   }
 
   .tcp_carousel_wrapper .tcp_carousel__play {
@@ -113,7 +117,7 @@ const style = css`
     }
 
     .button-list-container.stackedCTAList {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding: 16px 0;
     }
   }
 
@@ -151,7 +155,13 @@ const style = css`
     }
   }
 
-  &.link-list-carousel .slick-dots {
+  &.gymboree-module-a .imageCTAList .image-comp,
+  &.gymboree-module-a .linkCTAList .link-button-wrapper-class {
+    color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
+    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
+  }
+
+  &.gymboree-module-a .slick-dots {
     bottom: 36px;
     left: 50px;
     text-align: left;
@@ -162,27 +172,23 @@ const style = css`
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
-    &.link-list-carousel.tcp_carousel_wrapper .tcp_carousel__play {
+    &.gymboree-module-a.tcp_carousel_wrapper .tcp_carousel__play {
       left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     }
   }
 
-  &.link-list-carousel .moduleA__promoBanner {
+  &.gymboree-module-a .moduleA__promoBanner {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
-    &.link-list-carousel .moduleA__promoBanner {
+    &.gymboree-module-a .moduleA__promoBanner {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
-  &.link-list-carousel .link-button-list-wrapper {
-    padding: 16px 0;
-  }
-
-  &.link-list-carousel .tcp_carousel__play {
+  &.gymboree-module-a .tcp_carousel__play {
     left: 30px;
     bottom: 28px;
     z-index: 1;

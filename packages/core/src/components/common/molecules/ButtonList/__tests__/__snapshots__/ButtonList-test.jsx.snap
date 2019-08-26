@@ -2,7 +2,7 @@
 
 exports[`ButtonList component renders correctly 1`] = `
 <div
-  className=" link-button-list-wrapper"
+  className=" button-list-wrapper link-button-list-wrapper"
 >
   <Styled(Anchor)
     className="link-button"
@@ -99,7 +99,7 @@ exports[`ButtonList component renders correctly 1`] = `
 
 exports[`ButtonList component renders correctly for image cta List 1`] = `
 <div
-  className=" scroll-button-list-wrapper   wrapped-button-text"
+  className=" button-list-wrapper scroll-button-list-wrapper   wrapped-button-text"
 >
   <div
     className="scroll-cta-wrapper div-image-wrapper"
@@ -368,7 +368,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
 
 exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 <div
-  className=" scroll-button-list-wrapper   wrapped-button-text"
+  className=" button-list-wrapper scroll-button-list-wrapper   wrapped-button-text"
 >
   <Styled(Anchor)
     className="scroll-button"
@@ -471,7 +471,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 
 exports[`ButtonList component renders correctly with props for stacked CTA buttons 1`] = `
 <div
-  className=" stacked-button-list-wrapper  wrapped-button-text"
+  className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text"
 >
   <Styled(Anchor)
     className="stacked-button"
@@ -574,7 +574,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
 
 exports[`ButtonList component renders correctly without props 1`] = `
 <div
-  className=" stacked-button-list-wrapper  wrapped-button-text"
+  className=" button-list-wrapper stacked-button-list-wrapper  wrapped-button-text"
 >
   <Styled(Anchor)
     className="stacked-button"

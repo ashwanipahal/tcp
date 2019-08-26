@@ -73,8 +73,14 @@ export default css`
     margin-left: 16px;
   }
 
+  .scroll-button:nth-last-child(1) {
+    padding-right: 16px;
+  }
+
+  &.no-scrollable-cta .scroll-button:nth-last-child(1),
   &.no-scrollable-cta .scroll-button:nth-child(1) {
     margin-left: 0;
+    padding-right: 0;
   }
 
   .img-wrapper {
@@ -164,6 +170,10 @@ export default css`
 
     .scroll-button:nth-child(1) {
       margin-left: 0;
+    }
+
+    .scroll-button:nth-last-child(1) {
+      padding-right: 0;
     }
 
     .stacked-cta-wrapper {
@@ -262,6 +272,11 @@ export default css`
       button {
         width: 210px;
       }
+    }
+
+    &.wrapped-button-text .stacked-button,
+    &.wrapped-button-text .scroll-button {
+      margin: 0 15px;
     }
   }
 

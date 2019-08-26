@@ -29,9 +29,9 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: 20px;
-    line-height: 1.05;
-    letter-spacing: 2.22px;
+    font-size: 22px;
+    line-height: normal;
+    letter-spacing: 2px;
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 42px;
