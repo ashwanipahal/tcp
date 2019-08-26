@@ -13,22 +13,26 @@ import {
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
+  categoryUrl = '';
+
   componentDidMount() {
-    const { getProducts, navigation } = this.props;
-    const url = navigation && navigation.getParam('url');
-    getProducts({ URI: 'category', url });
+    this.makeApiCall();
   }
 
-  componentWillUpdate(nextProps) {
-    const { navigation } = this.props;
-    const { navigation: nextPropsNavigation } = { nextProps };
+  makeApiCall = () => {
+    const { getProducts, navigation } = this.props;
     const url = navigation && navigation.getParam('url');
-    const nextPropsUrl = nextPropsNavigation && nextPropsNavigation.getParam('url');
-    console.log('url, nextPropsUrl', url, nextPropsUrl);
-  }
+    if (url && url !== this.categoryUrl) {
+      this.categoryUrl = url;
+      getProducts({ URI: 'category', url, ignoreCache: true });
+    }
+  };
 
   render() {
     const { products, currentNavIds, navTree, breadCrumbs, ...otherProps } = this.props;
+    // have to call this method because when come back from L2/L3 none of the component lifecycle method calls.
+    // But this method only making call once.
+    this.makeApiCall();
     return (
       <ProductListing
         products={products}

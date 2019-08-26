@@ -13,6 +13,7 @@ import {
   TouchableOpacityArrow,
   ItemViewWithHeading,
 } from '../NavMenuLevel2.style';
+import ROUTE_NAMES from '../../../../../../../reduxStore/routes';
 
 const keyExtractor = (_, index) => index.toString();
 
@@ -25,14 +26,14 @@ const BackIcon = require('../../../../../../../../../core/src/assets/carrot-larg
  */
 const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabels, url) => {
   if (hasL3) {
-    return navigate('NavMenuLevel3', {
+    return navigate(ROUTE_NAMES.NAV_MENU_LEVEL_3, {
       navigationObj: subCategories,
       l2Title: name,
       accessibilityLabels,
     });
   }
   return navigate('ProductListing', {
-    l2Title: name,
+    title: name,
     url,
     accessibilityLabels,
   });

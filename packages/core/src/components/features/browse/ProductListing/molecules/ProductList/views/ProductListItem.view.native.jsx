@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from './ColorSwitch.view.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
-// import { relativeSizeHeight } from '../../../../../../../utils/dimensions';
+import ImageComp from './ImageComp.view.native';
 
+const TextProps = {
+  text: PropTypes.string.isRequired,
+};
 const styles = StyleSheet.create({
   /* eslint-disable */
   listContainer: {
-    // borderColor: '#FF8C00',
-    // borderWidth: 1,
     maxWidth: 164,
     height: 426,
   },
@@ -20,19 +20,12 @@ const styles = StyleSheet.create({
     width: 19,
     backgroundColor: '#cccccc',
   },
-  imageStyle: {
-    width: 164,
-    height: 205,
-    resizeMode: 'contain',
-  },
   favoriteIconContainerStyle: {
     position: 'absolute',
     bottom: 0,
     right: 0,
   },
   badge1ContainerStyle: {
-    // borderColor: 'pink',
-    // borderWidth: 1,
     height: 14,
   },
   badge1Style: {
@@ -42,8 +35,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   badge2ContainerStyle: {
-    // borderColor: 'pink',
-    // borderWidth: 1,
     height: 14,
   },
   badge2Style: {
@@ -53,8 +44,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   pricesSectionStyle: {
-    // borderColor: '#ff0000',
-    // borderWidth: 1,
     marginTop: 4,
   },
   offerPriceAndBadge3Style: {
@@ -80,8 +69,6 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   titleContainerStyle: {
-    // borderColor: '#ff0000',
-    // borderWidth: 1,
     marginTop: 4,
     height: 32,
   },
@@ -91,8 +78,6 @@ const styles = StyleSheet.create({
     lineHeight: 14.4,
   },
   promotionalMessageContainerStyle: {
-    // borderColor: '#ff0000',
-    // borderWidth: 1,
     marginTop: 12,
     height: 24,
   },
@@ -138,10 +123,10 @@ const onAddToBagHandler = (onAddToBag, data) => {
     onAddToBag(data);
   }
 };
+
 const ListItem = props => {
   const {
     item,
-    imageUrls,
     badge1,
     badge2,
     badge3,
@@ -155,11 +140,11 @@ const ListItem = props => {
   const { listContainer, addToBagStyle } = styles;
   const { productInfo, colorsMap } = item;
   const { name } = productInfo;
-  const imageUrl = get(imageUrls, `[${imageIndex}]`, {});
+
   return (
     <View style={listContainer}>
       <RenderTopBadge1 text={badge1} />
-      <GenerateImage imageUrl={imageUrl} onFavorite={onFavorite} />
+      <ImageSection onFavorite={onFavorite} item={item} imageIndex={imageIndex} />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
         listPrice={listPriceForColor}
@@ -195,21 +180,24 @@ const RenderTopBadge1 = ({ text }) => {
   );
 };
 
-const GenerateImage = ({ imageUrl, onFavorite }) => {
+RenderTopBadge1.propTypes = TextProps;
+
+const ImageSection = ({ item, onFavorite, imageIndex }) => {
   const { favoriteIconContainerStyle } = styles;
   return (
     <View>
-      <Image
-        source={{
-          uri: imageUrl,
-        }}
-        style={styles.imageStyle}
-      />
+      <ImageComp item={item} imageIndex={imageIndex} />
       <View style={favoriteIconContainerStyle}>
         <CustomIcon name={ICON_NAME.favorite} size={21} color="#9b9b9b" onPress={onFavorite} />
       </View>
     </View>
   );
+};
+
+ImageSection.propTypes = {
+  item: PropTypes.shape({}).isRequired,
+  onFavorite: PropTypes.func.isRequired,
+  imageIndex: PropTypes.number.isRequired,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -220,6 +208,8 @@ const RenderBadge2 = ({ text }) => {
     </View>
   );
 };
+
+RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
   const {
@@ -252,6 +242,8 @@ const RenderTitle = ({ text }) => {
   );
 };
 
+RenderTitle.propTypes = TextProps;
+
 const RenderPromotionalMessage = ({ text }) => {
   const { promotionalMessageContainerStyle, promotionalMessageStyle } = styles;
   return (
@@ -263,9 +255,10 @@ const RenderPromotionalMessage = ({ text }) => {
   );
 };
 
+RenderPromotionalMessage.propTypes = TextProps;
+
 ListItem.propTypes = {
   item: PropTypes.shape({}),
-  imageUrls: PropTypes.arrayOf(PropTypes.shape({})),
   badge1: PropTypes.string,
   badge2: PropTypes.string,
   badge3: PropTypes.string,
@@ -278,7 +271,6 @@ ListItem.propTypes = {
 
 ListItem.defaultProps = {
   item: {},
-  imageUrls: [{}],
   badge1: '',
   badge2: '',
   badge3: '',

@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 export const SafeAreaViewStyle = styled.SafeAreaView`
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   background: ${props => props.theme.colorPalette.white};
   min-height: ${props => props.theme.spacing.LAYOUT_SPACING.LRG1};
 `;

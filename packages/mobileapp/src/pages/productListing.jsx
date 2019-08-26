@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListingPage';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
@@ -9,7 +8,7 @@ import HeaderNew from '../components/common/molecules/Header/HeaderNew';
 import Navigation from '../components/features/content/Navigation';
 import NavMenuLevel2 from '../components/features/content/Navigation/molecules/NavMenuLevel2';
 import NavMenuLevel3 from '../components/features/content/Navigation/molecules/NavMenuLevel3';
-import ROUTE_NAMES from '../reduxStore/routes/routes.constants';
+import ROUTE_NAMES from '../reduxStore/routes';
 
 const PlpStack = createStackNavigator(
   {
@@ -19,15 +18,14 @@ const PlpStack = createStackNavigator(
     [ROUTE_NAMES.NAV_MENU_LEVEL_2]: {
       screen: NavMenuLevel2,
     },
-    [ROUTE_NAMES.NavMenuLevel3]: {
-      screen: NavMenuLevel3,
-    },
+    NavMenuLevel3,
     [ROUTE_NAMES.PRODUCT_LISTING]: {
       screen: ProductListing,
       navigationOptions: ({ navigation }) => {
-        const l2Title = navigation && navigation.getParam('l2Title');
+        const title = navigation && navigation.getParam('title');
         return {
-          header: props => <HeaderNew {...props} title={l2Title} />,
+          header: props => <HeaderNew {...props} title={title} />,
+          headerBackground: 'transparent',
         };
       },
     },

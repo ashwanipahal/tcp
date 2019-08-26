@@ -1,1 +1,1 @@
-export ROUTE_NAMES from './routes.constants';
+export { default } from './routes.constants';

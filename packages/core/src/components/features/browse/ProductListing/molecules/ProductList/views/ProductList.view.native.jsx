@@ -3,19 +3,15 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import { ListItem } from './ProductListItem.view.native';
-import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
+import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 
 const styles = StyleSheet.create({
   /* eslint-disable */
   container: {
     flex: 1,
-    borderColor: '#1a1a1a',
-    borderWidth: 1,
   },
   listContainer: {
-    // borderColor: '#595959',
-    // borderWidth: 1,
     marginTop: 20,
   },
   columnWrapperStyle: {
@@ -46,15 +42,10 @@ class ProductList extends React.PureComponent {
   renderItemList = itemData => {
     const { isMatchingFamily, currencyExchange, isPlcc } = this.props;
     const { item } = itemData;
-    const { colorsMap, imagesByColor, productInfo } = item;
+    const { colorsMap, productInfo } = item;
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
     const { colorProductId } = colorsMap[0];
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
-    const imageUrls = getImagesToDisplay({
-      imagesByColor,
-      curentColorEntry,
-      isAbTestActive: true,
-    });
     const currentColorMiscInfo =
       this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo || {};
     const { badge1, badge2, badge3, listPrice, offerPrice } = currentColorMiscInfo;
@@ -66,11 +57,11 @@ class ProductList extends React.PureComponent {
       promotionalMessage,
       promotionalPLCCMessage,
     });
+
     return (
       <ListItem
         item={item}
         isMatchingFamily={isMatchingFamily}
-        imageUrls={imageUrls}
         badge1={topBadge}
         badge2={badge2}
         badge3={badge3}
@@ -108,6 +99,7 @@ class ProductList extends React.PureComponent {
 }
 
 ProductList.propTypes = {
+  /* eslint-disable */
   className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   /** the generalProductId of the product (if any) requesting quickView to show */
@@ -137,13 +129,13 @@ ProductList.propTypes = {
   loadedProductCount: PropTypes.number.isRequired,
   isMatchingFamily: PropTypes.bool,
   isPlcc: PropTypes.bool,
+  /* eslint-enable */
 };
 
 ProductList.defaultProps = {
   className: '',
   products: [],
   showQuickViewForProductId: '',
-  // currencySymbol: '',
   onAddItemToFavorites: () => {},
   onQuickViewOpenClick: () => {},
   onPickUpOpenClick: () => {},
