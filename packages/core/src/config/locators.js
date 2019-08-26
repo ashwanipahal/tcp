@@ -130,4 +130,9 @@ export default {
   global_ColorSwatch_Swatch_link: 'global-ColorSwatch-Swatch link',
   global_loyalty_text: 'global-loyalty-text',
   global_addtocart_Button: 'global-addtocart-Button',
+
+  // PLP SEO TEXT
+  plp_seo_module: 'plp_seo_module',
+  plp_seo_readmore: 'plp_seo_module_readmore',
+  plp_seo_readless: 'plp_seo_module_readless',
 };

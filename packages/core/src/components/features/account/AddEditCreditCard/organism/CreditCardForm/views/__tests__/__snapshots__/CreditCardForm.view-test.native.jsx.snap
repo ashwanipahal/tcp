@@ -18,57 +18,80 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       cardType=""
       cardTypeImgUrl=""
       className=""
-      dispatch={[MockFunction]}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "onFileAddressKey",
+                  "form": "addEditCreditCard",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "12345",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       dto={Object {}}
       expMonthOptionsMap={
         Array [
           Object {
             "id": "1",
-            "label": "Jan",
+            "label": "01 (Jan.)",
           },
           Object {
             "id": "2",
-            "label": "Feb",
+            "label": "02 (Feb.)",
           },
           Object {
             "id": "3",
-            "label": "Mar",
+            "label": "03 (Mar.)",
           },
           Object {
             "id": "4",
-            "label": "Apr",
+            "label": "04 (Apr.)",
           },
           Object {
             "id": "5",
-            "label": "May",
+            "label": "05 (May.)",
           },
           Object {
             "id": "6",
-            "label": "Jun",
+            "label": "06 (Jun.)",
           },
           Object {
             "id": "7",
-            "label": "Jul",
+            "label": "07 (Jul.)",
           },
           Object {
             "id": "8",
-            "label": "Aug",
+            "label": "08 (Aug.)",
           },
           Object {
             "id": "9",
-            "label": "Sep",
+            "label": "09 (Sep.)",
           },
           Object {
             "id": "10",
-            "label": "Oct",
+            "label": "10 (Oct.)",
           },
           Object {
             "id": "11",
-            "label": "Nov",
+            "label": "11 (Nov.)",
           },
           Object {
             "id": "12",
-            "label": "Dec",
+            "label": "12 (Dec.)",
           },
         ]
       }
@@ -132,7 +155,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
       onFileAddressKey=""
       onFileAddresskey="12345"
-      selectedCard={Object {}}
+      selectedCard={null}
       updateExpiryDate={[Function]}
     />
   </Styled(View)>
@@ -146,13 +169,15 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       text=""
       textAlign="left"
     />
-    <Styled(BodyCopy)
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="black"
-      text="Select from Address Book"
-      textAlign="left"
-    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        marginTop="10"
+        textAlign="left"
+      />
+    </Styled(View)>
     <Field
       addAddress={[Function]}
       component={[Function]}
@@ -182,13 +207,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         Object {
           "borderBottomWidth": 1,
           "height": 30,
-          "marginTop": 15,
+          "marginTop": 25,
         }
       }
       id="onFileAddressKey"
       itemStyle={
         Object {
-          "height": 100,
+          "height": 90,
         }
       }
       labels={
@@ -213,8 +238,12 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "primary": "true",
           }
         }
-        className="CreditCardForm__address"
-        customStyle={Object {}}
+        customStyle={
+          Object {
+            "fontSize": "fs14",
+            "fontWeight": "regular",
+          }
+        }
         dataLocatorPrefix="address"
         showCountry={false}
         showName={true}
@@ -228,17 +257,15 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       buttonVariation="variable-width"
       customStyle={Object {}}
       disableButton={false}
-      external={true}
       fill="BLUE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
+      onPress={[MockFunction]}
       style={
         Object {
           "color": "white",
           "fontWeight": "normal",
           "marginTop": 48,
-          "opacity": 0.5,
           "width": 190,
         }
       }
@@ -287,56 +314,80 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       cardType=""
       cardTypeImgUrl=""
       className=""
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "onFileAddressKey",
+                  "form": "addEditCreditCard",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "12345",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       dto={Object {}}
       expMonthOptionsMap={
         Array [
           Object {
             "id": "1",
-            "label": "Jan",
+            "label": "01 (Jan.)",
           },
           Object {
             "id": "2",
-            "label": "Feb",
+            "label": "02 (Feb.)",
           },
           Object {
             "id": "3",
-            "label": "Mar",
+            "label": "03 (Mar.)",
           },
           Object {
             "id": "4",
-            "label": "Apr",
+            "label": "04 (Apr.)",
           },
           Object {
             "id": "5",
-            "label": "May",
+            "label": "05 (May.)",
           },
           Object {
             "id": "6",
-            "label": "Jun",
+            "label": "06 (Jun.)",
           },
           Object {
             "id": "7",
-            "label": "Jul",
+            "label": "07 (Jul.)",
           },
           Object {
             "id": "8",
-            "label": "Aug",
+            "label": "08 (Aug.)",
           },
           Object {
             "id": "9",
-            "label": "Sep",
+            "label": "09 (Sep.)",
           },
           Object {
             "id": "10",
-            "label": "Oct",
+            "label": "10 (Oct.)",
           },
           Object {
             "id": "11",
-            "label": "Nov",
+            "label": "11 (Nov.)",
           },
           Object {
             "id": "12",
-            "label": "Dec",
+            "label": "12 (Dec.)",
           },
         ]
       }
@@ -388,6 +439,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           },
         ]
       }
+      handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
       isPLCCEnabled={true}
@@ -399,7 +451,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       }
       onFileAddressKey=""
       pristine={true}
-      selectedCard={Object {}}
+      selectedCard={null}
       updateExpiryDate={[Function]}
     />
   </Styled(View)>
@@ -413,13 +465,15 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       text=""
       textAlign="left"
     />
-    <Styled(BodyCopy)
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="black"
-      text="Select from Address Book"
-      textAlign="left"
-    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        marginTop="10"
+        textAlign="left"
+      />
+    </Styled(View)>
     <Field
       addAddress={[Function]}
       component={[Function]}
@@ -449,13 +503,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         Object {
           "borderBottomWidth": 1,
           "height": 30,
-          "marginTop": 15,
+          "marginTop": 25,
         }
       }
       id="onFileAddressKey"
       itemStyle={
         Object {
-          "height": 100,
+          "height": 90,
         }
       }
       labels={
@@ -479,8 +533,12 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "primary": "true",
           }
         }
-        className="CreditCardForm__address"
-        customStyle={Object {}}
+        customStyle={
+          Object {
+            "fontSize": "fs14",
+            "fontWeight": "regular",
+          }
+        }
         dataLocatorPrefix="address"
         showCountry={false}
         showName={true}
@@ -494,17 +552,15 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       buttonVariation="variable-width"
       customStyle={Object {}}
       disableButton={false}
-      external={true}
       fill="BLUE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
+      onPress={[MockFunction]}
       style={
         Object {
           "color": "white",
           "fontWeight": "normal",
           "marginTop": 48,
-          "opacity": 0.5,
           "width": 190,
         }
       }

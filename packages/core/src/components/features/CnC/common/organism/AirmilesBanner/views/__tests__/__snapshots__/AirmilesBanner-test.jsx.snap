@@ -1,0 +1,420 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AirmilesBanner form component should render component correctly 1`] = `
+<div>
+  <div
+    className="coupon_form_container"
+  >
+    <Styled(BodyCopy)
+      bodySize="one"
+      className={null}
+      color="secondary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      headerText
+    </Styled(BodyCopy)>
+    <form
+      className="coupon_submit_form"
+    >
+      <Styled(Row)
+        className="items-total rowMargin"
+        data-locator="orderLedgerItemLbl"
+      >
+        <Styled(Col)
+          className="airmilesBannerInput"
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htoDjs",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                    [Function],
+                    "px;
+    color: ",
+                    [Function],
+                    ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    padding-bottom: ",
+                    [Function],
+                    ";
+    margin-bottom: ",
+                    [Function],
+                    ";
+    padding-top: ",
+                    [Function],
+                    ";
+
+    ",
+                    [Function],
+                    "
+
+    ",
+                    [Function],
+                    ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                    [Function],
+                    "px;
+      font-weight: ",
+                    [Function],
+                    ";
+      top: ",
+                    [Function],
+                    ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                    [Function],
+                    ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                    [Function],
+                    ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                    [Function],
+                    ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                    [Function],
+                    ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                    [Function],
+                    ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(TextBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htoDjs",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="airmile-banner-collectorNumber"
+            id="promoId"
+            maxLength={11}
+            name="promoId"
+            placeholder="13131313222"
+            type="text"
+            value="13131313222"
+          />
+          <Styled(ReactTooltip)
+            className="coupon_submit_button"
+            direction="top"
+            id="tool"
+            message="collectorFlyout"
+          >
+            <Styled(Image)
+              alt="info"
+              className="circle-info-image"
+              src="/static/images/info-icon.png"
+            />
+          </Styled(ReactTooltip)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htoDjs",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                    [Function],
+                    "px;
+    color: ",
+                    [Function],
+                    ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    padding-bottom: ",
+                    [Function],
+                    ";
+    margin-bottom: ",
+                    [Function],
+                    ";
+    padding-top: ",
+                    [Function],
+                    ";
+
+    ",
+                    [Function],
+                    "
+
+    ",
+                    [Function],
+                    ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                    [Function],
+                    "px;
+      font-weight: ",
+                    [Function],
+                    ";
+      top: ",
+                    [Function],
+                    ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                    [Function],
+                    ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                    [Function],
+                    ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                    [Function],
+                    ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                    [Function],
+                    ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                    [Function],
+                    ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(TextBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htoDjs",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="airmile-banner-offerCode"
+            id="offerCode"
+            maxLength={50}
+            name="offerCode"
+            placeholder="124e12e"
+            type="text"
+            value="124e12e"
+          />
+          <Styled(ReactTooltip)
+            className="coupon_submit_button"
+            direction="top"
+            id="tool"
+            message="offerFlyout"
+          >
+            <Styled(Image)
+              alt="info"
+              className="circle-info-image"
+              src="/static/images/info-icon.png"
+            />
+          </Styled(ReactTooltip)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </form>
+    <Styled(BodyCopy)
+      bodySize="one"
+      className={null}
+      color="secondary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      footerText
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
