@@ -73,9 +73,18 @@ export const getLoadedProductsCount = createSelector(
   }
 );
 
+export const getLongDescription = createSelector(
+  getProductListingState,
+  ProductListing => ProductListing && ProductListing.get('currentListingDescription')
+);
+
 export const getUnbxdId = createSelector(
   getProductListingState,
   products => products && products.get('unbxdId')
 );
 
+export const getProductsFilters = createSelector(
+  getProductListingState,
+  products => products && products.get('filtersMaps')
+);
 export default getPlpProducts;

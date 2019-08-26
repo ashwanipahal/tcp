@@ -8,18 +8,6 @@ import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
 
 /**
- * This function handles if navigation drawer needs to open on current viewport or now
- * @param {*} onClick
- */
-const openNavigationDrawer = onClick => e => {
-  if (!getViewportInfo().isDesktop) {
-    e.preventDefault();
-    e.stopPropagation();
-    onClick();
-  }
-};
-
-/**
  * This function highlights clearance links in red color on the base of id in unbxd
  * @param {*} id
  */
@@ -33,15 +21,39 @@ class L1NavItem extends React.PureComponent {
   };
 
   onHover = e => {
-    this.setState({
-      hovered: !e.target.classList.contains('l1-overlay'),
-    });
+    if (getViewportInfo().isDesktop) {
+      this.setState({
+        hovered: !e.target.classList.contains('l1-overlay'),
+      });
+    }
   };
 
   onMouseLeave = () => {
-    this.setState({
-      hovered: false,
-    });
+    if (getViewportInfo().isDesktop) {
+      this.setState({
+        hovered: false,
+      });
+    }
+  };
+
+  /**
+   * This function handles if navigation drawer needs to open on current viewport or now
+   * @param {*} onClick
+   */
+  openNavigationDrawer = e => {
+    const { onClick } = this.props;
+    if (!getViewportInfo().isDesktop) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.setState(
+        {
+          hovered: true,
+        },
+        () => {
+          onClick();
+        }
+      );
+    }
   };
 
   fetchPromoBadge() {
@@ -58,7 +70,6 @@ class L1NavItem extends React.PureComponent {
       dataLocator,
       index,
       children,
-      onClick,
       // showOnlyOnApp,
       removeL1Focus,
       ...others
@@ -98,7 +109,7 @@ class L1NavItem extends React.PureComponent {
           onBlur={this.onMouseLeave}
           {...others}
         >
-          <Anchor to={url} onClick={openNavigationDrawer(onClick)}>
+          <Anchor to={url} onClick={this.openNavigationDrawer}>
             <div className="nav-bar-l1-content" role="button" tabIndex={0}>
               <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
               <span
@@ -110,7 +121,7 @@ class L1NavItem extends React.PureComponent {
               <span className="icon-arrow" />
             </div>
           </Anchor>
-          {children}
+          {hovered && children}
           <div className={`${className} l1-overlay ${classForHovered}`} />
         </BodyCopy>
       </React.Fragment>

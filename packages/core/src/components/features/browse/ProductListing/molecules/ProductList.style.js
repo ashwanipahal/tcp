@@ -17,18 +17,4 @@ export default css`
       width: calc(25% - 24px);
     }
   }
-
-  .render-desktop-view {
-    display: none;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      display: block;
-    }
-  }
-
-  .render-mobile-view {
-    @media ${props => props.theme.mediaQuery.medium} {
-      display: none;
-    }
-  }
 `;

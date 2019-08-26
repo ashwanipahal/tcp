@@ -17,6 +17,10 @@ export default css`
   .sidebar {
     display: none;
   }
+  .seo-text {
+    text-align: center;
+    padding-bottom: 20px;
+  }
   @media ${props => props.theme.mediaQuery.large} {
     .sidebar {
       display: flex;
@@ -26,14 +30,18 @@ export default css`
   .render-desktop-view {
     display: none;
 
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       display: block;
     }
   }
 
   .render-mobile-view {
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       display: none;
     }
+  }
+
+  .filter-section {
+    margin-top: 50px;
   }
 `;

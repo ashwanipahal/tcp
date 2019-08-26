@@ -10,6 +10,7 @@ import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesk
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
+import ReadMore from '../molecules/ReadMore/views';
 
 const ProductListView = ({
   className,
@@ -21,6 +22,9 @@ const ProductListView = ({
   totalProductsCount,
   initialValues,
   filtersLength,
+  longDescription,
+  labels,
+  labelsFilter,
 }) => {
   return (
     <div className={className}>
@@ -45,17 +49,25 @@ const ProductListView = ({
             <div className="promo-area">Promo area</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="filter-area">
+            <div className="filter-section">
               <ProductListingFiltersForm
                 filtersMaps={filters}
                 totalProductsCount={totalProductsCount}
                 initialValues={initialValues}
                 filtersLength={filtersLength}
+                labels={labelsFilter}
               />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductList products={products} className={`${className} product-list`} />
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ReadMore
+              description={longDescription}
+              labels={labels}
+              className={`${className} seo-text`}
+            />
           </Col>
         </Col>
       </Row>
@@ -66,6 +78,8 @@ const ProductListView = ({
 ProductListView.propTypes = {
   className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
@@ -74,11 +88,13 @@ ProductListView.propTypes = {
   totalProductsCount: PropTypes.string,
   initialValues: PropTypes.shape({}),
   filtersLength: PropTypes.shape({}),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
   className: '',
   products: [],
+  longDescription: [],
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
@@ -86,6 +102,8 @@ ProductListView.defaultProps = {
   totalProductsCount: '',
   initialValues: {},
   filtersLength: {},
+  labels: {},
+  labelsFilter: {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

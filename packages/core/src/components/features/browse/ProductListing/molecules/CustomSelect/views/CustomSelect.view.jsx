@@ -37,6 +37,7 @@ import DropdownList from '../../DropdownList/views';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CustomSelectStyle from '../CustomSelect.style';
+import { getLocator } from '../../../../../../../utils';
 
 // TODO Fix This import {ErrorMessage, ERROR_FORM_NAME_DATA_ATTRIBUTE} from '../ErrorMessage.jsx';
 // TODO Fix This import warning from 'warning';
@@ -213,6 +214,7 @@ class CustomSelect extends React.Component {
     selectTextOverride: PropTypes.string,
     facetName: PropTypes.string.isRequired,
     appliedFilterVal: PropTypes.number,
+    labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   };
 
   static customSelectCounter = 0;
@@ -521,6 +523,7 @@ class CustomSelect extends React.Component {
       selectOnHighlight,
       onCloseCallback,
       onExpandCallback, // eslint-disable-line no-unused-vars
+      labels,
       ...otherProps
     } = this.props;
 
@@ -544,7 +547,10 @@ class CustomSelect extends React.Component {
 
     const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
     const buttonText = getButtonText(this.props);
-
+    const dataLocatorSuffix = buttonText
+      .toLowerCase()
+      .split(' ')
+      .join('_');
     const buttonIconText = expanded ? buttonIconExpanded : buttonIconClosed; // || '+';
     const buttonClassName = cssClassName(
       'custom-select-button ',
@@ -593,8 +599,10 @@ class CustomSelect extends React.Component {
               fontSize="fs14"
               fontFamily="secondary"
               color="gray.900"
+              fontWeight={expanded ? 'extrabold' : 'regular'}
               className={['filter-label', expanded ? 'filter-label-expanded' : ''].join(' ')}
               outline="none"
+              data-locator={getLocator(`plp_filter_${dataLocatorSuffix}`)}
             >
               {buttonText}
             </BodyCopy>
@@ -609,6 +617,8 @@ class CustomSelect extends React.Component {
             highlightedIndex={highlightedIndex}
             handleItemClick={this.handleItemClick}
             facetName={facetName}
+            dataLocator={dataLocatorSuffix}
+            labels={labels}
           />
         )}
 
@@ -635,5 +645,6 @@ CustomSelect.defaultProps = {
   showWarningIfUntouched: false,
   selectTextOverride: '',
   appliedFilterVal: 0,
+  labels: {},
 };
 export default withStyles(CustomSelect, CustomSelectStyle);

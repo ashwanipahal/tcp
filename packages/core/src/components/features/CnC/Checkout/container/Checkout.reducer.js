@@ -114,8 +114,8 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return merge(uiFlags, { isPLCCPaymentEnabled: action.isPLCCPaymentEnabled });
     // case 'CHECKOUT_FLAGS_SET_LOAD_METHODS':
     //   return merge(uiFlags, { isLoadingShippingMethods: action.isLoading });
-    // case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
-    //   return merge(uiFlags, { isEditingSubform: action.isEditingSubform });
+    case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
+      return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
     //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':

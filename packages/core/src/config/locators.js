@@ -119,4 +119,27 @@ export default {
   empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
   empty_bag_guestUserCTA: 'cartGuestLoginCta',
   empty_bag_recommendation_msg: 'cartRecommendationMessage',
+
+  // PLPFilters
+  plp_filter_label_filterby: 'plp_filter_label_filterby',
+  plp_filter_category: 'plp_filter_category',
+  plp_filter_category_option_: 'plp_filter_category_option_',
+  plp_filter_category_apply: 'plp_filter_category_apply',
+  plp_filter_size: 'plp_filter_size',
+  plp_filter_size_option_: 'plp_filter_size_option_',
+  plp_filter_size_apply: 'plp_filter_size_apply',
+  plp_filter_color: 'plp_filter_color',
+  plp_filter_color_option_: 'plp_filter_color_option_',
+  plp_filter_color_apply: 'plp_filter_color_apply',
+  plp_filter_gender: 'plp_filter_gender',
+  plp_filter_gender_option_: 'plp_filter_gender_option_',
+  plp_filter_gender_apply: 'plp_filter_gender_apply',
+  plp_filter_size_range: 'plp_filter_size_range',
+  plp_filter_size_range_option_: 'plp_filter_size_range_option_',
+  plp_filter_size_range_apply: 'plp_filter_size_range_apply',
+  plp_filter_filtering_by: 'plp_filter_filtering_by',
+  // PLP SEO TEXT
+  plp_seo_module: 'plp_seo_module',
+  plp_seo_readmore: 'plp_seo_module_readmore',
+  plp_seo_readless: 'plp_seo_module_readless',
 };

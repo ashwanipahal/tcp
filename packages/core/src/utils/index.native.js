@@ -14,6 +14,8 @@ export {
   resetNavigationStack,
   createAPIConfig,
   switchAPIConfig,
+  updateCurrentBrand,
+  getCurrentBrand,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';

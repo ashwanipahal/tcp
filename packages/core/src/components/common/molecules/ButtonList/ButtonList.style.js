@@ -80,7 +80,8 @@ export default css`
   .img-wrapper {
     display: inline-block;
     margin: 0 19px;
-    min-width: 70px;
+    min-width: 62px;
+    text-align: center;
   }
 
   .image-cta {
@@ -212,7 +213,7 @@ export default css`
 
     &.scroll-button-list-wrapper.wrapped-button-text .image-comp {
       white-space: normal;
-      width: 70px;
+      width: 62px;
     }
   }
 

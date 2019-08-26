@@ -4,11 +4,13 @@ import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
-// import BodyCopy from '../../../../../../../../../core/src/components/common/atoms/BodyCopy';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import Image from '../../../../../../common/atoms/Image';
 import cssClassName from '../../utils/cssClassName';
 import AccordionList from '../../../../../../common/molecules/AccordionList';
 import FilterModal from '../../FilterModal/views';
 import { Row, Col, Button } from '../../../../../../common/atoms';
+import { getLocator } from '../../../../../../../utils';
 
 // @flow
 type Props = {
@@ -64,18 +66,52 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     }));
   }
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
+  getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
+    const result = colorOptionsMap.map(color => ({
+      value: color.id,
+      title: color.displayName,
+      content: (
+        <div className="color-title">
+          <Image
+            className="color-chip"
+            src={color.imagePath}
+            height={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
+            width={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
+            alt={color.displayName}
+            data-colorname={color.displayName.toLowerCase()}
+          />
+          <BodyCopy
+            component="span"
+            role="label"
+            textAlign="center"
+            tabIndex={-1}
+            fontSize="fs14"
+            fontFamily="secondary"
+            color="gray.900"
+            className="color-name"
+            outline="none"
+            data-locator={`${getLocator(`plp_filter_color_option_`)}${color.displayName}`}
+          >
+            {color.displayName}
+          </BodyCopy>
+        </div>
+      ),
+    }));
+    return result;
+  }
 
   isUnbxdFacetKey = key =>
     key.toLowerCase() !== FACETS_FIELD_KEY.unbxdDisplayName &&
     key.toLowerCase() !== FACETS_FIELD_KEY.sort &&
     key !== FACETS_FIELD_KEY.l1category;
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
 
   toggleFilterIcon = () => {
     const { isOpenFilterSection } = this.state;
@@ -98,6 +134,29 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         className={className}
         expanded
         disableExpandStateChanges
+      />
+    );
+  }
+
+  renderColorFilterField(selectedFilters, filterName, facetName) {
+    const { filtersMaps, labels } = this.props;
+    const className = 'color-filter-chip size-detail';
+    return (
+      <Field
+        name={facetName}
+        facetName={facetName}
+        component={CustomSelect}
+        optionsMap={this.getColorFilterOptionsMap(filtersMaps[facetName], filterName)}
+        title=''
+        placeholder={filterName}
+        allowMultipleSelections
+        className={className}
+        expanded
+        disableExpandStateChanges
+        ref={this.captureFilterRef}
+        withRef
+        onBlur={this.handleFilterFieldBlur}
+        labels={labels}
       />
     );
   }
@@ -139,14 +198,23 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       >
         <AccordionList accordionItems={accordionItems} className={className}>
           {filterKeys.map(key => {
-            if (this.isUnbxdFacetKey(key)) {
+            if (key.toLowerCase() === FACETS_FIELD_KEY.color) {
+              const length = (filtersLength && filtersLength[`${key} Filters`]) || 0;
+              return (
+                filtersMaps[key].length > 0 &&
+                this.renderColorFilterField(
+                  length,
+                  unbxdKeyMapping[key],
+                  key
+                )
+              );
+            } else if(this.isUnbxdFacetKey(key)) {
               const length = (filtersLength && filtersLength[`${key} Filters`]) || 0;
               return (
                 filtersMaps[key].length > 0 &&
                 this.renderFilterField(length, unbxdKeyMapping[key], key)
               );
             }
-            return false;
           })}
         </AccordionList>
       </Col>

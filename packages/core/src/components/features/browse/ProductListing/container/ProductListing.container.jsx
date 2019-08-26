@@ -9,6 +9,9 @@ import {
   getNavigationTree,
   getLoadedProductsCount,
   getUnbxdId,
+  getBreadCrumbTrail,
+  getProductsFilters,
+  getLongDescription,
 } from './ProductListing.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -28,6 +31,10 @@ class ProductListingContainer extends React.PureComponent {
       totalProductsCount,
       filtersLength,
       initialValues,
+      longDescription,
+      labels,
+      labelsFilter,
+
       ...otherProps
     } = this.props;
     return (
@@ -40,6 +47,9 @@ class ProductListingContainer extends React.PureComponent {
         totalProductsCount={totalProductsCount}
         initialValues={initialValues}
         filtersLength={filtersLength}
+        longDescription={longDescription}
+        labelsFilter={labelsFilter}
+        labels={labels}
         {...otherProps}
       />
     );
@@ -61,7 +71,7 @@ function mapStateToProps(state) {
 
   return {
     products: getProductsSelect(state),
-    filters: state.ProductListing.filtersMaps,
+    filters: getProductsFilters(state),
     currentNavIds: state.ProductListing.currentNavigationIds,
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
@@ -72,6 +82,9 @@ function mapStateToProps(state) {
     initialValues: {
       ...state.ProductListing.appliedFiltersIds,
     },
+    labelsFilter: state.Labels.PLP.PLP_sort_filter,
+    longDescription: getLongDescription(state),
+    labels: state.Labels.PLP.seoText,
   };
 }
 
@@ -95,7 +108,10 @@ ProductListingContainer.propTypes = {
   totalProductsCount: PropTypes.string,
   filtersLength: PropTypes.shape({}),
   initialValues: PropTypes.shape({}),
+  longDescription: PropTypes.string,
   navigation: PropTypes.shape({}).isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string]))
 };
 
 ProductListingContainer.defaultProps = {
@@ -107,6 +123,9 @@ ProductListingContainer.defaultProps = {
   totalProductsCount: '0',
   filtersLength: {},
   initialValues: {},
+  longDescription: '',
+  labels: {},
+  labelsFilter: {}
 };
 
 export default connect(
