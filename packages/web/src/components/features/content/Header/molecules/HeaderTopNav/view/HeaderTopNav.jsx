@@ -41,7 +41,8 @@ const HeaderTopNav = ({
             onClick={e => onLinkClick(e)}
             data-locator="track_order_header"
           >
-            {labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderHeaderLink}
+            {labels.trackOrder &&
+              labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderHeaderLink}
           </BodyCopy>
         </div>
       </div>

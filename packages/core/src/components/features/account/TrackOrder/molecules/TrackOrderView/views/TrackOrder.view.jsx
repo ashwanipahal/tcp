@@ -13,26 +13,24 @@ const getGenericErrorMessage = labels => (
     component="div"
     className="generic__error__message"
     fontSize="fs14"
-    fontWeight="extrabold"
     fontFamily="secondary"
   >
-    <BodyCopy>
+    <BodyCopy fontFamily="secondary">
       {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}
     </BodyCopy>
     <Anchor
       data-locator="contact_us_form_help"
       underline
       anchorVariation="primary"
-      href={
-        labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref
-      }
+      fontFamily="secondary"
+      to={labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
       className="trackorder__modal__contactus"
       aria-label=""
       target="_blank"
     >
       {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
     </Anchor>
-    <BodyCopy>
+    <BodyCopy fontFamily="secondary">
       {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError2}
     </BodyCopy>
   </BodyCopy>
