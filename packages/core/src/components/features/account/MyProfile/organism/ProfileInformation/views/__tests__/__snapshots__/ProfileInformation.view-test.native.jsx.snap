@@ -10,7 +10,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     handleComponentChange={[Function]}
     labels={Object {}}
   />
-  <ChangePassword
+  <ChangePasswordInfo
     handleComponentChange={[Function]}
     labels={Object {}}
   />

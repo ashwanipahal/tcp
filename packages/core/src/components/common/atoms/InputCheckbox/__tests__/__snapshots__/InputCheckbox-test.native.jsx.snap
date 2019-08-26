@@ -2,6 +2,7 @@
 
 exports[`InputCheckbox component should render correctly 1`] = `
 <Styled(View)
+  fontSize="fs12"
   id="checkbox"
   isChecked={false}
   onChange={[Function]}
@@ -42,6 +43,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
 
 exports[`InputCheckbox component should render correctly with checked state false 1`] = `
 <Styled(View)
+  fontSize="fs12"
   id="checkbox"
   isChecked={false}
   onChange={[Function]}

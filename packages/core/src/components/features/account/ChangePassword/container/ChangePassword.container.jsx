@@ -20,10 +20,26 @@ export class ChangePasswordContainer extends PureComponent {
     onClose: () => {},
   };
 
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(({ isMobileApp }) => {
+        this.hasMobileApp = isMobileApp;
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
+
   componentDidUpdate() {
     const { successMessage } = this.props;
+    const { onClose } = this.props;
     if (successMessage === 'successMessage') {
-      this.goBackToProfile();
+      if (this.hasMobileApp()) {
+        onClose();
+      } else {
+        this.goBackToProfile();
+      }
     }
   }
 

@@ -3,13 +3,8 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../common/atoms/Anchor/views/Anchor';
 import Button from '../../../../../../common/atoms/Button';
 import TextBox from '../../../../../../common/atoms/TextBox';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import PasswordField from '../../../../common/molecule/PasswordField';
-import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import Constants from '../../../container/CurrentPassword.utils';
@@ -41,6 +36,7 @@ export class ChangePasswordForm extends React.Component {
   };
 
   getHideShowView = (type, isShowText) => {
+    const { labels } = this.props;
     return (
       <HideShowField>
         <Field
@@ -48,7 +44,7 @@ export class ChangePasswordForm extends React.Component {
           component={InputCheckbox}
           dataLocator="hide-show-pwd"
           disabled={false}
-          rightText={isShowText ? 'show' : 'hide'}
+          rightText={isShowText ? labels.lbl_changePassword_show : labels.lbl_changePassword_hide}
           hideCheckboxIcon
           fontSize="fs13"
           onClick={() => this.onShowHidePassword(type)}
@@ -58,7 +54,7 @@ export class ChangePasswordForm extends React.Component {
   };
 
   render() {
-    const { labels, pristine, errorMessage, handleSubmit, onClose } = this.props;
+    const { labels, pristine, handleSubmit, onClose } = this.props;
     const { Password } = this.state;
     return (
       <View>
@@ -69,7 +65,6 @@ export class ChangePasswordForm extends React.Component {
             name="currentPassword"
             component={TextBox}
             dataLocator="currentPasswordtxtfield"
-            showSuccessCheck={false}
             enableSuccessCheck={false}
             secureTextEntry={Password.Current}
           />
@@ -82,7 +77,8 @@ export class ChangePasswordForm extends React.Component {
             name="password"
             component={TextBox}
             dataLocator="newPasswordtxtfield"
-            showSuccessCheck={false}
+            showSuccessCheck
+            successText={labels.lbl_changePassword_input_success}
             enableSuccessCheck={false}
             secureTextEntry={Password.New}
           />
@@ -96,7 +92,8 @@ export class ChangePasswordForm extends React.Component {
             name="confirmPassword"
             component={TextBox}
             dataLocator="confirmPasswordtxtfield"
-            showSuccessCheck={false}
+            showSuccessCheck
+            successText={labels.lbl_changePassword_input_success}
             enableSuccessCheck={false}
             secureTextEntry={Password.Confirm}
           />
@@ -132,14 +129,11 @@ ChangePasswordForm.propTypes = {
     lbl_changePassword_saveCta: PropTypes.string,
   }),
   pristine: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  className: PropTypes.string,
   onClose: PropTypes.func,
 };
 
 ChangePasswordForm.defaultProps = {
-  className: '',
   labels: {
     lbl_changePassword_current_password: '',
     lbl_changePassword_new_password: '',

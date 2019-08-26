@@ -28,12 +28,9 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
-            "meta": Object {
-              "error": "food",
-              "touched": "foo",
-            },
             "secureTextEntry": false,
-            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
           }
         }
         returnKeyType="next"
@@ -42,32 +39,6 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
         value="foo"
       />
     </View>
-    <Styled(View)>
-      <Styled(View)>
-        <Styled(View)>
-          <Styled(ImageComp)
-            height="15px"
-            source={
-              Object {
-                "testUri": "../../../../core/src/assets/alert-triangle.png",
-              }
-            }
-            width="15px"
-          />
-        </Styled(View)>
-        <Styled(BodyCopy)
-          color="error"
-          fontSize="fs12"
-          fontWeight="semibold"
-          mobilefontFamily={
-            Array [
-              "secondary",
-            ]
-          }
-          text="food"
-        />
-      </Styled(View)>
-    </Styled(View)>
   </View>
 </View>
 `;
@@ -100,12 +71,9 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
             "secureTextEntry": false,
-            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
           }
         }
         returnKeyType="next"
@@ -158,12 +126,9 @@ exports[`Textbox component renders correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
             "secureTextEntry": false,
-            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
           }
         }
         returnKeyType="next"
@@ -206,12 +171,9 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
               "id": "input",
               "keyboardType": "default",
               "label": "input",
-              "meta": Object {
-                "error": "",
-                "touched": "",
-              },
               "secureTextEntry": false,
-              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
             }
           }
           returnKeyType="next"
