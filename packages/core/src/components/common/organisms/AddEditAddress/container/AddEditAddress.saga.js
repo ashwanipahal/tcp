@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 import constants from './AddEditAddress.constants';
 import { addAddressSuccess, addAddressFail } from './AddEditAddress.actions';
 import {
@@ -6,10 +6,14 @@ import {
   clearGetAddressListTTL,
 } from '../../../../features/account/AddressBook/container/AddressBook.actions';
 import { addAddress, updateAddress } from '../../../../../services/abstractors/account';
+import { getUserEmail } from '../../../../features/account/User/container/User.selectors';
 
 export function* addAddressGet({ payload }) {
+  const userEmail = yield select(getUserEmail);
+  const updatedPayload = { ...payload, ...{ email: userEmail } };
+
   try {
-    const res = yield call(addAddress, payload);
+    const res = yield call(addAddress, updatedPayload);
     if (res) {
       yield put(
         setAddressBookNotification({
