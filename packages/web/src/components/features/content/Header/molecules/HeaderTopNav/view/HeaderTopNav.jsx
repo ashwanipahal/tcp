@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { routerPush } from '@tcp/core/src/utils';
-import { BrandTabs, PromotionalArea } from '../..';
+import { BrandTabs, CountrySelector, PromotionalArea } from '../..';
 import HeaderTopNavStyle from '../HeaderTopNav.style';
 
 const HeaderTopNav = ({
@@ -28,17 +28,21 @@ const HeaderTopNav = ({
         <div className="header-topnav__promo-area">
           <PromotionalArea mobile={false} data={promoMessageWrapper} />
         </div>
-        <React.Fragment>
+        <div className="header-topnav__track-order">
+          <CountrySelector />
           <BodyCopy
+            component="div"
+            color="gray.900"
+            className="track-order"
+            fontFamily="secondary"
+            fontSize="fs12"
             id="trackOrder"
-            textAlign="right"
-            className="header-topnav__track-order"
             onClick={e => onLinkClick(e)}
             data-locator="track_order_header"
           >
-            Track order
+            Track Order
           </BodyCopy>
-        </React.Fragment>
+        </div>
       </div>
     </div>
   );

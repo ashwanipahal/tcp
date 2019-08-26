@@ -5,12 +5,14 @@ exports[`Selectbox component renders correctly 1`] = `
   className="asdfasdf"
 >
   <select
+    Value="hi"
     aria-label=""
     className="select__input"
     data-locator=""
     disabled={false}
     id="abcd"
     name=""
+    type="text"
     value="hello"
   >
     <option
@@ -57,12 +59,14 @@ exports[`Selectbox component renders correctly with disabled props 1`] = `
   className="asdfasdf"
 >
   <select
+    Value="hi"
     aria-label=""
     className="select__input"
     data-locator=""
     disabled={true}
     id="abcd"
     name=""
+    type="text"
     value="hello"
   >
     <option
@@ -112,10 +116,12 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     aria-label=""
     className="select__input"
     data-locator=""
+    defaultValue="United States"
     disabled={false}
     id="abcd"
     name=""
-    value="first name for user"
+    type="text"
+    value="some string @@LABEL@@"
   >
     <option
       value=""
@@ -184,9 +190,11 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     aria-label=""
     className="select__input"
     data-locator=""
+    defaultValue="United States"
     disabled={false}
     id="abcd"
     name=""
+    type="text"
     value=""
   >
     <option
