@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
-<CheckoutPage
+<withRouter(CheckoutPage)
   activeStage="shipping"
   activeStep="shipping"
   currentPhoneNumber=""
@@ -12,12 +12,5 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   isSmsUpdatesEnabled={true}
   isUsSite={false}
   onEditModeChange={true}
-  router={
-    Object {
-      "query": Object {
-        "section": "",
-      },
-    }
-  }
 />
 `;

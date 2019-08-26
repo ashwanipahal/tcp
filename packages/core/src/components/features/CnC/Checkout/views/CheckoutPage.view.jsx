@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 
-export default class CheckoutPage extends React.PureComponent {
+class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
     const { onPickupSubmit } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
@@ -87,3 +88,5 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
 };
+
+export default withRouter(CheckoutPage);
