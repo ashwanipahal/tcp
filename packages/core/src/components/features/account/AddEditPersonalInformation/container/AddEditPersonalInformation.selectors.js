@@ -13,6 +13,6 @@ export const getSuccess = createSelector(
   state => state && state.get('success')
 );
 
-export const getChangePasswordLabels = state => {
-  return (state && state.Labels.global.password) || {};
+export const getProfileLabels = state => {
+  return (state && state.Labels.account.profile) || {};
 };

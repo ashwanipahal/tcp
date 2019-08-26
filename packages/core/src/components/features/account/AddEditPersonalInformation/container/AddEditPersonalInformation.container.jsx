@@ -5,9 +5,9 @@ import utils from '../../../../../utils';
 import {
   getError,
   getSuccess,
-  getChangePasswordLabels,
+  getProfileLabels,
 } from './AddEditPersonalInformation.selectors';
-import ChangePasswordComponent from '../views';
+import AddEditPersonalInformationComponent from '../views';
 import { changePassword, changePasswordError } from './AddEditPersonalInformation.actions';
 
 export class AddEditPersonalInformationContainer extends PureComponent {
@@ -48,7 +48,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   render() {
     const { successMessage, errorMessage, labels } = this.props;
     return (
-      <ChangePasswordComponent
+      <AddEditPersonalInformationComponent
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={this.changePassword}
@@ -61,7 +61,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
 export const mapStateToProps = state => ({
   successMessage: getSuccess(state),
   errorMessage: getError(state),
-  labels: getChangePasswordLabels(state),
+  labels: getProfileLabels(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

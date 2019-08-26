@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ChangePasswordForm from '../molecules/AddEditPersonalInformationForm';
+import AddEditPersonalInformationForm from '../molecules/AddEditPersonalInformationForm';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
-import Row from '../../../../common/atoms/Row';
-import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../common/atoms/Anchor';
 
@@ -19,30 +17,15 @@ export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit 
           className="elem-mb-LRG"
         >
           <span className="left-arrow"> </span>
-          {labels.lbl_changePassword_back}
+          {labels.lbl_profile_personal_info_back}
         </Anchor>
       </BodyCopy>
       <FormPageHeadingComponent
-        heading={labels.lbl_changePassword_heading}
+        heading={labels.lbl_profile_heading}
         className="margin-none"
         dataLocator="pi-profileinformationheading"
       />
-      <BodyCopy component="div" className="elem-pt-LRG">
-        <Row fullBleed>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-          >
-            <BodyCopy data-locator="passwordInstructionTxt" fontSize="fs14" fontFamily="secondary">
-              {labels.lbl_changePassword_password_info}
-            </BodyCopy>
-          </Col>
-        </Row>
-      </BodyCopy>
-      <ChangePasswordForm
+      <AddEditPersonalInformationForm
         labels={labels}
         successMessage={successMessage}
         errorMessage={errorMessage}

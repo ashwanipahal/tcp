@@ -32,10 +32,10 @@ export const AddEditPersonalInformationForm = ({
           message={labels[`lbl_changePassword_${errorMessage}`]}
         />
       )}
-      <Row fullBleed>
+      <Row fullBleed className="elem-mt-XXL">
         <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
-            placeholder="firstName"
+            placeholder={labels.lbl_profile_personal_info_firstName}
             name="firstName"
             id="firstName"
             type="text"
@@ -45,7 +45,7 @@ export const AddEditPersonalInformationForm = ({
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
-            placeholder="firstName"
+            placeholder={labels.lbl_profile_personal_info_lastName}
             name="lastName"
             id="lastName"
             component={TextBox}
@@ -53,38 +53,10 @@ export const AddEditPersonalInformationForm = ({
           />
         </Col>
       </Row>
-      <Row fullBleed>
-        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
-          <Field
-            id="state"
-            placeholder="state"
-            // placeholder={
-            //   country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl
-            // }
-            name="state"
-            component={SelectBox}
-            // options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
-            dataLocator="addnewaddress-state"
-          />
-        </Col>
-        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
-          <Field
-            id="state"
-            placeholder="state"
-            // placeholder={
-            //   country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl
-            // }
-            name="state"
-            component={SelectBox}
-            // options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
-            dataLocator="addnewaddress-state"
-          />
-        </Col>
-      </Row>
-      <Row fullBleed>
+      <Row fullBleed className="elem-mt-MED">
         <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
           <Field
-            placeholder="email"
+            placeholder={labels.lbl_profile_personal_info_email}
             name="email"
             id="email"
             component={TextBox}
@@ -93,7 +65,7 @@ export const AddEditPersonalInformationForm = ({
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
-            placeholder="phoneNumber"
+            placeholder={labels.lbl_profile_personal_info_phoneNumber}
             name="phoneNumber"
             id="phoneNumber"
             component={TextBox}
@@ -102,7 +74,34 @@ export const AddEditPersonalInformationForm = ({
           />
         </Col>
       </Row>
-      <Row fullBleed className="elem-mb-XL">
+      <Row fullBleed className="elem-mt-MED">
+        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+
+          <Field
+            placeholder={labels.paymentGC.lbl_payment_expMonth}
+            name="expMonth"
+            id="expMonth"
+            component={SelectBox}
+            dataLocator="payment-expmonthdd"
+            options={expMonthOptionsMap}
+            className="field"
+            enableSuccessCheck={false}
+          />
+        </Col>
+        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+          <Field
+            placeholder={labels.paymentGC.lbl_payment_expYear}
+            name="expYear"
+            id="expYear"
+            component={SelectBox}
+            dataLocator="payment-expyeardd"
+            options={expYearOptionsMap}
+            className="field"
+            enableSuccessCheck={false}
+          />
+        </Col>
+      </Row>
+      <Row fullBleed className="elem-mt-MED">
         <Col
           colSize={{ small: 4, medium: 4, large: 6 }}
           offsetLeft={{ small: 1 }}
@@ -115,15 +114,15 @@ export const AddEditPersonalInformationForm = ({
             // disabled={isMakeDefaultDisabled}
             className="AddAddressForm__makeDefault"
           >
-            Default Mailing addres
+            {labels.lbl_profile_personal_info_tcp_employee}
             {/* {addressFormLabels.setDefaultMsg} */}
           </Field>
         </Col>
       </Row>
-      <Row fullBleed>
+      <Row fullBleed className="elem-mt-LRG">
         <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
-            placeholder="Associate ID"
+            placeholder={labels.lbl_profile_personal_info_associate_id}
             name="associateId"
             id="associateId"
             type="text"
@@ -132,7 +131,7 @@ export const AddEditPersonalInformationForm = ({
           />
         </Col>
       </Row>
-      <BodyCopy component="div" textAlign="center" className="elem-mb-LRG elem-mt-LRG">
+      <BodyCopy component="div" textAlign="center" className="elem-mb-LRG elem-mt-XXL">
         <Row>
           <Col
             className="ChangePasswordForm_cancel"
@@ -154,7 +153,7 @@ export const AddEditPersonalInformationForm = ({
                 fullWidth
                 className="elem-mb-XS"
               >
-                {labels.lbl_changePassword_cancelCta}
+                {labels.lbl_profile_personal_info_cancelCta}
               </Button>
             </Anchor>
           </Col>
@@ -175,7 +174,7 @@ export const AddEditPersonalInformationForm = ({
               className="elem-mb-XS"
               disabled={pristine}
             >
-              {labels.lbl_changePassword_saveCta}
+              {labels.lbl_profile_personal_info_updateCta}
             </Button>
           </Col>
         </Row>
