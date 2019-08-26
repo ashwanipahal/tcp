@@ -205,3 +205,5 @@ export default reduxForm({
   form: 'CountrySelectorForm', // a unique identifier for this form
   enableReinitialize: true,
 })(withStyles(CountrySelectorModal, styles));
+
+export { CountrySelectorModal as CountrySelectorModalVanilla };

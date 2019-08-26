@@ -7,31 +7,31 @@ import { CountrySelectorVanilla } from '../views/CountrySelector';
 import CountrySelectorModal from '../views/CountrySelectorModal';
 
 const sitesTable = fromJS({
-    us: {
-      languages: [
-        {
-          id: 'en',
-          displayName: 'English',
-        },
-        {
-          id: 'es',
-          displayName: 'Spanish',
-        },
-      ],
-    },
-    ca: {
-      languages: [
-        {
-          id: 'en',
-          displayName: 'English',
-        },
-        {
-          id: 'fr',
-          displayName: 'French',
-        },
-      ],
-    },
-  });
+  us: {
+    languages: [
+      {
+        id: 'en',
+        displayName: 'English',
+      },
+      {
+        id: 'es',
+        displayName: 'Spanish',
+      },
+    ],
+  },
+  ca: {
+    languages: [
+      {
+        id: 'en',
+        displayName: 'English',
+      },
+      {
+        id: 'fr',
+        displayName: 'French',
+      },
+    ],
+  },
+});
 
 describe('Country Selector Component', () => {
   const props = {
@@ -45,21 +45,21 @@ describe('Country Selector Component', () => {
     savedLanguage: 'en',
     labels: {
       countrySelector: {
-        lbl_global_country: "Country",
-        lbl_global_language: "Language",
-        lbl_global_currency: "Currency",
-        lbl_global_country_selector_header: "Ship To",
-        lbl_global_country_selector_subheader: "Change Shipping Preference",
-        lbl_global_country_selector_cta: "SAVE",
-        lbl_global_country_selector_note: "NOTE: If you change your shipping destination."
-      }
+        lbl_global_country: 'Country',
+        lbl_global_language: 'Language',
+        lbl_global_currency: 'Currency',
+        lbl_global_country_selector_header: 'Ship To',
+        lbl_global_country_selector_subheader: 'Change Shipping Preference',
+        lbl_global_country_selector_cta: 'SAVE',
+        lbl_global_country_selector_note: 'NOTE: If you change your shipping destination.',
+      },
     },
     showInFooter: true,
     siteId: 'us',
     sitesTable,
     noteContent: 'sdfsdf',
     noteContentId: 'abc-test',
-    getModuleXContent: jest.fn(),
+    getModuleXContent: jest.fn(() => {}),
   };
 
   it('renders correctly', () => {
