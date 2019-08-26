@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { generateGroups } from './ProductListing.util';
+import { getAPIConfig } from '../../../../../utils';
 import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   PRODUCT_LISTING_REDUCER_KEY,
@@ -95,6 +96,15 @@ export const getLabelsProductListing = state => {
     readMore,
     readLess,
   };
+};
+
+export const getSpotlightReviewsUrl = () => {
+  return getAPIConfig().BAZAARVOICE_SPOTLIGHT;
+};
+
+export const getCategoryId = state => {
+  const currentNavigationIds = state.ProductListing.get('currentNavigationIds');
+  return currentNavigationIds && currentNavigationIds[currentNavigationIds.length - 1];
 };
 
 export default getPlpProducts;

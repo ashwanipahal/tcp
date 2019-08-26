@@ -96,7 +96,6 @@ function* loadUpdatedCheckoutValues(
   // getWalletOperator(this.store).getWallet(res.coupons.offers);
 }
 
-// eslint-disable-next-line complexity
 function* submitPickupSection(data) {
   const { payload } = data;
   const formData = { ...payload };

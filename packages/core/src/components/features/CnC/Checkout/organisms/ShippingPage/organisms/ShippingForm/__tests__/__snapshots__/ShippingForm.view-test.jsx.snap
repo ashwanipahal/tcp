@@ -64,8 +64,8 @@ exports[`Shipping Form should render correctly 1`] = `
       </div>
     </FormSection>
     <Styled(CheckoutFooter)
-      backLinkText="undefined: undefined"
-      nextButtonText="undefined undefined"
+      backLinkText="undefined undefined"
+      nextButtonText="undefined: undefined"
     />
   </form>
 </Fragment>

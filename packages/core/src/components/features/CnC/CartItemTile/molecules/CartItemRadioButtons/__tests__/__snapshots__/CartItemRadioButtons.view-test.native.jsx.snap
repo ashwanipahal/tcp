@@ -16,6 +16,8 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
     wrapStyle={Object {}}
   >
     <LabeledRadioButton
+      buttonInnerColor="#000"
+      buttonOuterColor="#000"
       checked={true}
       index={0}
       obj={
@@ -27,7 +29,10 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       onPress={[Function]}
     />
     <LabeledRadioButton
+      buttonInnerColor="#000"
+      buttonOuterColor="#000"
       checked={false}
+      index={-1}
       obj={
         Object {
           "label": "param2",
@@ -37,7 +42,10 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       onPress={[Function]}
     />
     <LabeledRadioButton
+      buttonInnerColor="#000"
+      buttonOuterColor="#000"
       checked={false}
+      index={-1}
       obj={
         Object {
           "label": undefined,
