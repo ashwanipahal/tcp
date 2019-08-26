@@ -44,15 +44,6 @@ import { getLocator } from '../../../../../../../utils';
 const UNSELECTED_VALUE = '';
 const UNSELECTED_ARRAY_VALUE = [];
 
-// returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
-function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
-  return Array.isArray(valueOrValues)
-    ? optionsMap.map(
-        item => valueOrValues.findIndex(selectedValue => item.value === selectedValue) >= 0
-      )
-    : optionsMap.findIndex(item => item.value === valueOrValues);
-}
-
 function getButtonText({ selectedIndex, selectTextOverride, optionsMap, placeholder }) {
   return selectedIndex >= 0 ? selectTextOverride || optionsMap[selectedIndex].title : placeholder;
 }
@@ -251,7 +242,7 @@ class CustomSelect extends React.Component {
       // sync. this.state.highlightedIndex with the new optionsMap
       // (to point to the same highlighted item as now if possible)
       this.setState({
-        highlightedIndex: getIndexOrIndicesOfValue(
+        highlightedIndex: this.getIndexOrIndicesOfValue(
           nextProps.optionsMap,
           optionsMap[highlightedIndex].value
         ),
@@ -286,29 +277,6 @@ class CustomSelect extends React.Component {
     }
   }
 
-  /** closes the dropdown */
-  closeMenu() {
-    const { expanded } = this.state;
-    const { disableExpandStateChanges, onCloseCallback } = this.props;
-    if (!expanded || disableExpandStateChanges) return;
-    this.setState({ expanded: false });
-    if (expanded && onCloseCallback) onCloseCallback();
-  }
-
-  /** opens the dropdown */
-  expandMenu() {
-    // if (this.state.expanded || this.props.disableExpandStateChanges) return;
-    // let highlightedIndex = this.getIndexOrIndicesOfValue(this.props.optionsMap, this.props.input.value);
-    // if (Array.isArray(highlightedIndex)) {
-    //   highlightedIndex = highlightedIndex.findIndex((isSelected) => isSelected);
-    // }
-    // TODO Fix This this.setHighlightedIndex(highlightedIndex);
-
-    this.setState({ expanded: true });
-
-    // TODO Fix This if (!this.state.expanded && this.props.onExpandCallback) this.props.onExpandCallback();
-  }
-
   // ------------------------ protected methods ------------------- //
 
   // TODO Fix This verifyPropsConsistency(props) {
@@ -321,8 +289,42 @@ class CustomSelect extends React.Component {
   // TODO Fix This  warning(!allowMultipleSelections || Array.isArray(value), "CustomSelect: input.value prop must be an array if 'allowMultipleSelections' prop is true.");
   //  }
 
+  // returns the index (or indices) of the item(s) with the given value(s) in the given optionsMap
+  getIndexOrIndicesOfValue = (optionsMap, valueOrValues) => {
+    return Array.isArray(valueOrValues)
+      ? optionsMap.map(
+        item => valueOrValues.findIndex(selectedValue => item.value === selectedValue) >= 0
+      )
+      : optionsMap.findIndex(item => item.value === valueOrValues);
+  }
+
+
   captureContainerDivRef(ref) {
     this.containerDivRef = ref;
+  }
+
+  
+  /** closes the dropdown */
+  closeMenu () {
+    if (!this.state.expanded || this.props.disableExpandStateChanges) return;
+    this.setState({ expanded: false });
+    if (this.state.expanded && this.props.onCloseCallback) this.props.onCloseCallback();
+  }
+
+  
+  /** opens the dropdown */
+  expandMenu() {
+    if (this.state.expanded || this.props.disableExpandStateChanges) return;
+    let highlightedIndex = this.getIndexOrIndicesOfValue(this.props.optionsMap, this.props.input.value);
+    if (Array.isArray(highlightedIndex)) {
+      highlightedIndex = highlightedIndex.findIndex((isSelected) => isSelected);
+    }
+    // TODO Fix This 
+    this.setHighlightedIndex(highlightedIndex);
+
+    this.setState({ expanded: true });
+
+    // TODO Fix This if (!this.state.expanded && this.props.onExpandCallback) this.props.onExpandCallback();
   }
 
   // assign focus to this component
@@ -356,7 +358,7 @@ class CustomSelect extends React.Component {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
       const clickedItemValue = optionsMap[clickedItemIndex].value; // value of clicked on item
-      const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
+      const selectedIndex = this.getIndexOrIndicesOfValue(optionsMap, value);
       if (allowMultipleSelections && selectedIndex[clickedItemIndex]) {
         this.unsetValue(clickedItemValue); // remove clickedItemValue from this component's selcted values list
       } else {
@@ -544,7 +546,7 @@ class CustomSelect extends React.Component {
     const dataAttributes = 0;
     // TODO Fix This showError || showWarning ? { [ERROR_FORM_NAME_DATA_ATTRIBUTE]: meta.form || '' } : {};
 
-    const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
+    const selectedIndex = this.getIndexOrIndicesOfValue(optionsMap, value);
     const buttonText = getButtonText(this.props);
     const dataLocatorSuffix = buttonText
       .toLowerCase()
@@ -581,7 +583,16 @@ class CustomSelect extends React.Component {
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
       >
-        {title && <span className="custom-select-title">{title}</span>}
+        {title && (
+          <BodyCopy
+            component="span"
+            className="custom-select-title sort-select-title"
+            fontSize="fs14"
+            fontFamily="secondary"
+          >
+            {title}
+          </BodyCopy>
+        )}
         {!disableExpandStateChanges && (
           <div
             role="button"

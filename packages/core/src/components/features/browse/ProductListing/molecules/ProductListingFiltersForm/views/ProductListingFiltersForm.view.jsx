@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
@@ -11,6 +12,8 @@ import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersFo
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
+import SortSelector from '../../SortSelector';
+import config from '../../SortSelector/SortSelector.config';
 
 /**
  * @function getColorFilterOptionsMap This handles to render the desktop filter fields of color
@@ -90,12 +93,60 @@ function getFilterOptionsMap(optionsMap, filterName) {
   }));
 }
 
+function getSortCustomOptionsMap(sortOptionsMap) {
+  return sortOptionsMap.map((sortOption) => ({
+    value: sortOption.id,
+    title: (
+      <BodyCopy
+        component="span"
+        className="sort-item-selected"
+        fontSize="fs13"
+        fontFamily="secondary"
+        fontWeight="extrabold"
+      >
+        {sortOption.displayName}
+      </BodyCopy>
+    ),
+    content: (
+      <BodyCopy component="span" className="sort-title" fontSize="fs14" fontFamily="secondary">
+        {sortOption.displayName}
+      </BodyCopy>
+    ),
+  }));
+}
+
 class ProductListingFiltersForm extends React.Component {
   // TODO Fix this - would be used while add apply button functionality
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.filterRef = [];
+    this.state = {
+      isOpenFilterSection: !!props.isOpenFilterSection,
+    };
+    this.handleSubmitOnChange = this.handleSubmitOnChange.bind(this);
 
+    this.handleToggleFilterSection = () => this.setState({ isOpenFilterSection: !this.state.isOpenFilterSection });
+  }
+
+  handleSubmitOnChange = () => {
+    if (this.props.submitting) return;
+    this.filterRef.forEach((filter) => {
+      if (filter.filterRefType !== "auxdescription_uFilter") filter.closeMenu();
+    });
+
+    // Observe that since submission can occur by capturing the change events in the CustomSelects of the form
+    // we need to wait for the next event loop for the value in the redux-store to reflect the ones in the fields
+    setTimeout(() => {
+      // DT-31958
+      // Need to get form values from props / redux-store and compare to the previous values
+      const { formValues } = this.props;
+      this.props.onSubmit(formValues, false).then(() => {
+        this.setState({
+          isOpenFilterSection: false
+        });
+      });
+    });
+  }
   /**
    * @function renderFilterField
    * @summary This handles to render the color filter fields
@@ -104,6 +155,7 @@ class ProductListingFiltersForm extends React.Component {
    * @param {String} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
    * @param {String} facetName - filter names "category, color etc"
    */
+
   renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
     // TODO fix this
     // let { isMobile, filtersMaps } = this.props;
@@ -214,7 +266,7 @@ class ProductListingFiltersForm extends React.Component {
   }
 
   render() {
-    const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
+    const { className, labels, handleSubmit, totalProductsCount, initialValues, filtersMaps } = this.props;
     return (
       <React.Fragment>
         <form className="render-desktop-view">
@@ -237,6 +289,9 @@ class ProductListingFiltersForm extends React.Component {
               {filtersMaps && this.renderDesktopFilters()}
             </div>
           </div>
+        </form>
+        <form>
+          <SortSelector isMobile={false} sortSelectOptions={getSortCustomOptionsMap(config)} onChange={handleSubmit(this.handleSubmitOnChange)} />
         </form>
         <ProductListingMobileFiltersForm
           totalProductsCount={totalProductsCount}
