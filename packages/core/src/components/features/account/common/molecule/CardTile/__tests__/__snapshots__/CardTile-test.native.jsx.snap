@@ -428,7 +428,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       fullWidth=""
       locator=""
       onPress={[Function]}
-      text="check balance captcha"
+      text=""
       url=""
     />
     <Styled(View)>
@@ -563,7 +563,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       fullWidth=""
       locator=""
       onPress={[Function]}
-      text="check balance captcha"
+      text=""
       url=""
     />
     <Styled(View)>
@@ -857,7 +857,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       fullWidth=""
       locator=""
       onPress={[Function]}
-      text="check balance captcha"
+      text=""
       url=""
     />
     <Styled(View)>
