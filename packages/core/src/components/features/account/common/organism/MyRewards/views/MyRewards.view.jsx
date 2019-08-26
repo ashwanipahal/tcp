@@ -93,7 +93,7 @@ const MyRewards = ({
             noLink
             href="https://www.childrensplace.com/us/content/myplace-rewards-page"
             anchorVariation="primary"
-            data-locator="my-rewards-program-details"
+            dataLocator="my-rewards-program-details"
             target="_blank"
           >
             {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS}
@@ -104,7 +104,7 @@ const MyRewards = ({
             noLink
             href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
             anchorVariation="primary"
-            data-locator="my-rewards-tnc"
+            dataLocator="my-rewards-tnc"
             className="elem-ml-XXL"
             target="_self"
           >

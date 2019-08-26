@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { initCheckoutAction, submitPickupSection, onEditModeChangeAction } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
+  isGuest,
+  isExpressCheckout,
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getSendOrderUpdate,
+  getCheckoutStage,
 } from './Checkout.selector';
 
 import { getSmsSignUpLabels } from '../../ShippingPage/container/ShippingPage.selectors';
@@ -18,15 +21,12 @@ export class CheckoutContainer extends React.Component<Props> {
 
   render() {
     const {
-      router,
       initialValues,
       pickupInitialValues,
       onEditModeChange,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
-      isGuest,
       isMobile,
-      isExpressCheckout,
       activeStage,
       activeStep,
       isUsSite,
@@ -37,10 +37,8 @@ export class CheckoutContainer extends React.Component<Props> {
       navigation,
       onPickupSubmit,
     } = this.props;
-
     return (
       <CheckoutPage
-        router={router}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
@@ -68,8 +66,8 @@ export const mapDispatchToProps = dispatch => {
     initCheckout: () => {
       dispatch(initCheckoutAction());
     },
-    onPickupSubmit: () => {
-      dispatch(submitPickupSection());
+    onPickupSubmit: data => {
+      dispatch(submitPickupSection(data));
     },
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
@@ -83,17 +81,17 @@ const mapStateToProps = state => {
     pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
-    isGuest: selectors.isGuest(state),
+    isGuest: isGuest(state),
     isMobile: selectors.getIsMobile(),
-    isExpressCheckout: selectors.isExpressCheckout(state),
-    activeStage: selectors.getCheckoutStage(state),
+    isExpressCheckout: isExpressCheckout(state),
+    activeStage: getCheckoutStage(state),
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
     // onShippingSubmit: storeOperators.checkoutFormOperator.submitShippingSection,
     // onBillingSubmit: storeOperators.checkoutFormOperator.submitBillingSection,
     // onReviewSubmit: storeOperators.checkoutFormOperator.submitOrderForProcessing,
 
-    activeStep: selectors.getCheckoutStage(state),
+    activeStep: getCheckoutStage(state),
     // moveToCheckoutStage: storeOperators.checkoutSignalsOperator.moveToStage,
     // availableStages: storeOperators.checkoutSignalsOperator.getAvailableStages(),
 

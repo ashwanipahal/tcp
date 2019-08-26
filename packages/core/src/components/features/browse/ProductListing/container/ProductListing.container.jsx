@@ -9,8 +9,9 @@ import {
   getNavigationTree,
   getLoadedProductsCount,
   getUnbxdId,
-  getBreadCrumbTrail,
   getProductsFilters,
+  getCategoryId,
+  getLabelsProductListing,
   getLongDescription,
 } from './ProductListing.selectors';
 
@@ -35,6 +36,7 @@ class ProductListingContainer extends React.PureComponent {
       labels,
       labelsFilter,
 
+      categoryId,
       ...otherProps
     } = this.props;
     return (
@@ -42,6 +44,7 @@ class ProductListingContainer extends React.PureComponent {
         products={products}
         filters={filters}
         currentNavIds={currentNavIds}
+        categoryId={categoryId}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
         totalProductsCount={totalProductsCount}
@@ -73,6 +76,7 @@ function mapStateToProps(state) {
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
     currentNavIds: state.ProductListing.currentNavigationIds,
+    categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
     loadedProductCount: getLoadedProductsCount(state),
@@ -84,7 +88,7 @@ function mapStateToProps(state) {
     },
     labelsFilter: state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
-    labels: state.Labels.PLP.seoText,
+    labels: getLabelsProductListing(state),
   };
 }
 
@@ -100,6 +104,7 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),

@@ -4,6 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import OrderLedgerContainer from '../../OrderLedger';
+import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 
@@ -37,6 +38,7 @@ class CnCTemplate extends React.Component<Props> {
               <div className="bonusPointsDaysWrapper">
                 <BonusPointsDays enableApplyCta />
               </div>
+              <AirmilesBanner />
               <CouponAndPromos />
             </Col>
           )}

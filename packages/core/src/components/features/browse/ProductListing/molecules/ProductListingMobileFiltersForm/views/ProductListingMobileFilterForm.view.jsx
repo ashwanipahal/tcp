@@ -42,21 +42,6 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     };
   }
 
-  getAppliedFiltersCount() {
-    const { initialValues } = this.props;
-    let count = 0;
-    // eslint-disable-next-line
-    for (let key in initialValues) {
-      if (Object.prototype.hasOwnProperty.call(initialValues, key)) {
-        count +=
-          key !== FACETS_FIELD_KEY.sort && key !== FACETS_FIELD_KEY.aux_color_unbxd
-            ? initialValues[key].length
-            : 0;
-      }
-    }
-    return count;
-  }
-
   // eslint-disable-next-line
   getFilterOptionsMap(optionsMap) {
     return optionsMap.map(option => ({
@@ -224,7 +209,6 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   render() {
     const { initialValues, filtersMaps, className } = this.props;
     const { isOpenFilterSection, show } = this.state;
-    // const appliedFiltersCount = this.getAppliedFiltersCount();
     // const selectedFiltersCount = this.getSelectedFiltersCount();
     const appliedFilters = [];
 
@@ -304,3 +288,5 @@ ProductListingMobileFiltersForm.defaultProps = {
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
 })(withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle));
+
+export {ProductListingMobileFiltersForm as ProductListingMobileFiltersFormVanilla}

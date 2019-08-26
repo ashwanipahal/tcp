@@ -18,7 +18,7 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
           "
   ",
           "
-  width: ",
+width: ",
           [Function],
           ";
   position: absolute;

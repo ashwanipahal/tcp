@@ -104,3 +104,4 @@ class FilterModal extends React.PureComponent<Props> {
 }
 
 export default withStyles(FilterModal, FilterModalStyle);
+export {FilterModal as FilterModalVanilla}

@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterModal is shown should render FilterModal 1`] = `
+<div
+  className=" modal display-block"
+>
+  <section
+    className="modal-main"
+  >
+    <Styled(Row)
+      centered={true}
+      className="filter-row"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className=""
+          data-locator="view_gallery_button"
+          type="button"
+        >
+          FILTER
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="open-filter-button"
+          data-locator="view_gallery_button"
+          type="button"
+        >
+          SORT
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <div
+      className="modal-spacing"
+    >
+      <Styled(Row)
+        centered={true}
+      >
+        <Styled(Col)
+          className="close-button"
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 3,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="gallery-button-left"
+            data-locator="view_gallery_button"
+            onClick={[MockFunction]}
+            type="button"
+          >
+            CLEAR ALL
+          </Styled(Button)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 3,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="gallery-button-left"
+            data-locator="view_gallery_button"
+            fill="BLACK"
+            type="button"
+          >
+            APPLY
+          </Styled(Button)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`FilterModal is shown should render FilterModal when show is false 1`] = `
+<div
+  className=" modal display-none"
+>
+  <section
+    className="modal-main"
+  >
+    <Styled(Row)
+      centered={true}
+      className="filter-row"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className=""
+          data-locator="view_gallery_button"
+          type="button"
+        >
+          FILTER
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="open-filter-button"
+          data-locator="view_gallery_button"
+          type="button"
+        >
+          SORT
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <div
+      className="modal-spacing"
+    >
+      <Styled(Row)
+        centered={true}
+      >
+        <Styled(Col)
+          className="close-button"
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 3,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="gallery-button-left"
+            data-locator="view_gallery_button"
+            onClick={[MockFunction]}
+            type="button"
+          >
+            CLEAR ALL
+          </Styled(Button)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 3,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="gallery-button-left"
+            data-locator="view_gallery_button"
+            fill="BLACK"
+            type="button"
+          >
+            APPLY
+          </Styled(Button)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </div>
+  </section>
+</div>
+`;
