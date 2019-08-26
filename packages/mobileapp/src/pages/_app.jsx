@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { createAPIConfig, switchAPIConfig, resetApiConfig } from '@tcp/core/src/utils';
-
 import env from 'react-native-config';
+// eslint-disable-next-line
+import ReactotronConfig from './Reactotron';
 
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Myprofile should render correctly 1`] = `
+<View>
+  <Styled(Text) />
+  <Styled(LineComp)
+    borderColor="black"
+    borderWidth={1}
+    marginBottom={40}
+    marginTop={0}
+  />
+  <ProfileInformation
+    handleComponentChange={[Function]}
+    labels={Object {}}
+  />
+</View>
+`;

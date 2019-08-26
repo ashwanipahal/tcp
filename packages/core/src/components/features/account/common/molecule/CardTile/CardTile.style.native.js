@@ -90,8 +90,9 @@ const CardCtaLinkMargin = styled.View`
 `;
 
 const RecaptchaContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  height: 89px;
+  width: 100%;
+  height: 500px;
+  margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
 `;
 
 export {
