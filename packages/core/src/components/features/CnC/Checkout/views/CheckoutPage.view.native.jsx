@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PickupPage from '../organisms/PickupPage';
-// import ShippingPage from '../organisms/ShippingPage';
+import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
   render() {
@@ -11,15 +11,19 @@ export default class CheckoutPage extends React.PureComponent {
       isSmsUpdatesEnabled,
       currentPhoneNumber,
       navigation,
+      shippingProps
     } = this.props;
     return (
-      <PickupPage
-        initialValues={initialValues}
-        onEditModeChange={onEditModeChange}
-        isSmsUpdatesEnabled={isSmsUpdatesEnabled}
-        currentPhoneNumber={currentPhoneNumber}
-        navigation={navigation}
-      />
+      <>
+        <PickupPage
+          initialValues={initialValues}
+          onEditModeChange={onEditModeChange}
+          isSmsUpdatesEnabled={isSmsUpdatesEnabled}
+          currentPhoneNumber={currentPhoneNumber}
+          navigation={navigation}
+        />
+        <ShippingPage {...shippingProps} />
+      </>
     );
   }
 }

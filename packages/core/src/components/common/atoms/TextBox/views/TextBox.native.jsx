@@ -37,6 +37,7 @@ export class TextBox extends React.Component {
     keyboardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
     secureTextEntry: PropTypes.bool,
+    marginBottom: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -50,6 +51,7 @@ export class TextBox extends React.Component {
     keyboardType: 'default',
     showErrorIcon: true,
     secureTextEntry: false,
+    marginBottom: true,
   };
 
   constructor(props) {
@@ -146,7 +148,7 @@ export class TextBox extends React.Component {
   };
 
   render() {
-    const { type, input, ...others } = this.props;
+    const { type, input, marginBottom, ...others } = this.props;
     const { isFocused } = this.state;
     const elemValue = input.value;
     return (
@@ -158,10 +160,10 @@ export class TextBox extends React.Component {
           </View>
         ) : (
           <View>
-            {this.renderTextBox({ elemValue, isFocused, others })}
-            <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
-          </View>
-        )}
+              {this.renderTextBox({ elemValue, isFocused, others })}
+              <StyledTextBoxWrapper marginBottom={marginBottom}>{this.getErrorMsg()}</StyledTextBoxWrapper>
+            </View>
+          )}
       </View>
     );
   }

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 const StyledTextBoxWrapper = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-bottom: ${props => props.marginBottom ? props.theme.spacing.ELEM_SPACING.XL : 0};
 `;
 
 const getInputBottomColor = props => {
