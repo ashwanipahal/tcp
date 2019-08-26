@@ -191,6 +191,8 @@ AddEditPersonalInformationForm.propTypes = {
     lbl_changePassword_cancelCta: PropTypes.string,
     lbl_changePassword_saveCta: PropTypes.string,
   }),
+  expMonthOptionsMap: PropTypes.shape([]).isRequired,
+  expYearOptionsMap: PropTypes.shape([]).isRequired,
   pristine: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
