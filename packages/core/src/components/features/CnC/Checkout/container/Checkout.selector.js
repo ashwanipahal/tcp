@@ -1,125 +1,185 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
+import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import { getAPIConfig, getViewportInfo } from '@tcp/core/src/utils';
 
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig } from '@tcp/core/src/utils';
+import CheckoutUtils from '../util/utility';
 import {
+  getPersonalDataState,
   getUserName,
   getUserLastName,
   getUserPhoneNumber,
+  getUserEmail,
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
+import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+// import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
 function getRecalcOrderPointsInterval() {
   return 300000;
   // return state.session.siteDetails.recalcOrderPointsInterval;
 }
 
+export const getCheckoutState = state => {
+  return state[CHECKOUT_REDUCER_KEY];
+};
+
+export const getCheckoutUiFlagState = state => {
+  return state[CHECKOUT_REDUCER_KEY].get('uiFlags');
+};
+
+export const getCheckoutValuesState = state => {
+  return state[CHECKOUT_REDUCER_KEY].get('values');
+};
+
 function getIsOrderHasShipping() {
   return true;
-  // state.cart.items.reduce((isShipToHome, item) => isShipToHome || !item.miscInfo.store, false);
+  // return state.CartPageReducer.getIn(['orderDetails', 'orderItems']).findIndex(
+  //   item => !item.getIn(['miscInfo', 'storeId'])
+  // );
 }
 
-function isGuest(state) {
-  return state.User.getIn(['personalData', 'isGuest']);
-}
+const getIsOrderHasPickup = createSelector(
+  BagPageSelector.getOrderItems,
+  orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
+);
+
+export const isGuest = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isGuest')
+);
 
 function getIsMobile() {
-  return getAPIConfig().isMobile;
+  if (typeof window === 'undefined')
+    return {
+      width: 0,
+      height: 0,
+      isMobile: false,
+      isTablet: false,
+      isDesktop: false,
+    };
+  return getViewportInfo().isMobile;
 }
 
-function isExpressCheckout(state) {
-  return !!state.User.getIn(['personalData', 'isExpressEligible']);
-}
-
-function getCheckoutStage(state) {
-  return state.Checkout.getIn(['uiFlags', 'stage']);
-}
-
-function isRemembered(state) {
-  return state.User.getIn(['personalData', 'isRemembered']);
-}
-
-function getUserContactInfo(state) {
-  return state.User.getIn(['personalData', 'contactInfo']);
-}
-
-function getUserEmail(state) {
-  return !isGuest(state) || isRemembered(state)
-    ? getUserContactInfo(state) && getUserContactInfo(state).emailAddress
-    : '';
-}
-
-// function getShippingDestinationValues() {
-// let {emailAddress} = state.Checkout.values.shipping;
-// const {method, ...result}  =  state.Checkout.values.shipping
-//  For shipping address when user logged-in, override email address that of User.
-//  When user is guest, keep the address he specified in shipping section.
-// emailAddress = getUserEmail(state) || emailAddress;
-// return {
-//   emailAddress,
-//   ...result
-// };
-
-// return {};
+// function isExpressCheckout(state) {
+//   return !!state.User.getIn(['personalData', 'isExpressEligible']);
 // }
+
+export const isExpressCheckout = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isExpressEligible')
+);
+
+// function getCheckoutStage(state) {
+//   return state.Checkout.getIn(['uiFlags', 'stage']);
+// }
+
+export const getCheckoutStage = createSelector(
+  getCheckoutUiFlagState,
+  state => state && state.get('stage')
+);
+
+// function isRemembered(state) {
+//   return state.User.getIn(['personalData', 'isRemembered']);
+// }
+
+export const isRemembered = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isRemembered')
+);
+
+// function getUserContactInfo(state) {
+//   return state.User.getIn(['personalData', 'contactInfo']);
+// }
+
+export const getUserContactInfo = createSelector(
+  getPersonalDataState,
+  state => state && state.get('contactInfo')
+);
+
+function getShippingDestinationValues(state) {
+  const { method, emailAddress, ...result } = JSON.parse(
+    JSON.stringify(state.Checkout.getIn(['values', 'shipping']))
+  );
+  // For shipping address when user logged-in, override email address that of user.
+  // When user is guest, keep the address he specified in shipping section.
+  const email = getUserEmail(state) || emailAddress;
+  return {
+    emailAddress: email,
+    ...result,
+  };
+}
 
 // function getAddressBook(state, country, noBillingAddresses) {
 //   let addresses = [];
 
 //   if (!country) {
-//     if (noBillingAddresses) {
-//       addresses = state.addresses
-//         .getIn(['addressBook'])
-//         .filter(entry => entry.type !== constants.ADDREESS_TYPE.BILLING);
-//     } else {
-//       addresses = state.addresses.getIn(['addressBook']);
-//     }
-//   } else {
-//     const filtered = state.addresses
-//       .getIn(['addressBook'])
-//       .filter(
-//         entry =>
-//           entry.address.country === country &&
-//           (!noBillingAddresses || entry.type !== constants.ADDREESS_TYPE.BILLING)
-//       );
-//     const defaultAddress = filtered.find(addressEntry => addressEntry.isDefault);
+//     // if (noBillingAddresses) {
+//     //   addresses = state.addresses.addressBook.filter(entry => entry.type !== ADDREESS_TYPE.BILLING);
+//     // } else {
+//     addresses = getAddressListState(state);
+//     // }
+//   } // else {
+//   // let filtered = state.addresses.addressBook.filter(
+//   //   entry =>
+//   //     entry.address.country === country &&
+//   //     (!noBillingAddresses || entry.type !== ADDREESS_TYPE.BILLING)
+//   // );
+//   // let defaultAddress = filtered.find(addressEntry => addressEntry.isDefault);
 
-//     // REVIEW: if there's no default for the selected requested country (country filter might leave it out)
-//     // then flag the first one as default. Can't be on the abstractor,
-//     // unless we store different versions of the address book (per country)
-//     // but I'm not sure about location because storeviews trigger on everything and want to avoid unnecesary renders
-//     if (!defaultAddress) {
-//       addresses = filtered.map((entry, index) => {
-//         return {
-//           ...entry,
-//           isDefault: index === 0,
-//         };
-//       });
-//     } else {
-//       addresses = filtered;
-//     }
-//   }
+//   // // REVIEW: if there's no default for the selected requested country (country filter might leave it out)
+//   // // then flag the first one as default. Can't be on the abstractor,
+//   // // unless we store different versions of the address book (per country)
+//   // // but I'm not sure about location because storeviews trigger on everything and want to avoid unnecesary renders
+//   // if (!defaultAddress) {
+//   //   addresses = filtered.map((entry, index) => {
+//   //     return {
+//   //       ...entry,
+//   //       isDefault: index === 0,
+//   //     };
+//   //   });
+//   // } else {
+//   //   addresses = filtered;
+//   // }
+//   // }
 
 //   return addresses;
 // }
 
-// function getDefaultAddress(state, country, noBillingAddresses) {
-//   const countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
-//   const defaultAddress = countryFilteredAddresses.find(addressEntry => addressEntry.isDefault);
+function getDefaultAddress(/* state, country, noBillingAddresses */) {
+  return false;
+  // let countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
+  // let defaultAddress = countryFilteredAddresses.find(
+  //   addressEntry => addressEntry.get && addressEntry.get('primary')
+  // );
 
-//   if (countryFilteredAddresses.length && !defaultAddress) {
-//     return countryFilteredAddresses[0];
-//   }
-//   return defaultAddress;
-// }
-
-function getPickupValues(state) {
-  return state.Checkout.getIn(['values', 'pickUpContact']);
+  // if (countryFilteredAddresses.length && !defaultAddress) {
+  //   return countryFilteredAddresses.get('0');
+  // } else {
+  //   return defaultAddress;
+  // }
 }
 
-function getPickupAltValues(state) {
-  return state.Checkout.getIn(['values', 'pickUpAlternative']);
+export const getPickupValues = createSelector(
+  getCheckoutValuesState,
+  state => state && state.get('pickUpContact')
+);
+
+// function getPickupValues(state) {
+//   return state.Checkout.getIn(['values', 'pickUpContact']);
+// }
+
+export const getPickupAltValues = createSelector(
+  getCheckoutValuesState,
+  state => state && state.get('pickUpAlternative')
+);
+// function getPickupAltValues(state) {
+//   return state.Checkout.getIn(['values', 'pickUpAlternative']);
+// }
+
+function getGiftWrappingValues(state) {
+  return state.Checkout.getIn(['values', 'giftWrap']);
 }
 
 function getCurrentSiteId() {
@@ -150,12 +210,103 @@ function getCurrentPickupFormNumber(state) {
   return phoneNumber;
 }
 
-export const getAlternateFormFields = state => {
+const getShippingSmsSignUpFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'smsSignUp');
+};
+
+const getShipmentMethodsFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'shipmentMethods');
+};
+
+const getSelectedShipmentId = createSelector(
+  getShipmentMethodsFields,
+  shipmentMethodsFields => shipmentMethodsFields && shipmentMethodsFields.shippingMethodId
+);
+
+const getShippingSendOrderUpdate = createSelector(
+  getShippingSmsSignUpFields,
+  smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
+);
+
+const getAddressFields = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'address');
+};
+
+const getAddressPhoneNo = createSelector(
+  getAddressFields,
+  addressFields => addressFields && addressFields.phoneNumber
+);
+
+const getShippingLabels = state => {
+  const {
+    lbl_shipping_header: header,
+    lbl_shipping_sectionHeader: sectionHeader,
+    lbl_shipping_shipmentHeader: shipmentHeader,
+    lbl_shipping_returnTo: returnTo,
+    lbl_shipping_nextText: nextText,
+    lbl_shipping_backLinkText: backLinkText,
+    lbl_shipping_billingText: billingText,
+  } = state.Labels.checkout && state.Labels.checkout.shipping;
+  return {
+    header,
+    sectionHeader,
+    shipmentHeader,
+    returnTo,
+    nextText,
+    billingText,
+    backLinkText,
+  };
+};
+
+const getSmsSignUpLabels = state => {
+  const {
+    lbl_smsSignup_smsSignupText: smsSignupText,
+    lbl_smsSignup_privacyPolicy: privacyPolicy,
+    lbl_smsSignup_orderUpdates: orderUpdates,
+  } = state.Labels.global && state.Labels.global.smsSignup;
+  return {
+    smsSignupText,
+    privacyPolicy,
+    orderUpdates,
+  };
+};
+
+const getEmailSignUpLabels = state => {
+  const {
+    lbl_pickup_emailSignupHeading: emailSignupHeading,
+    lbl_pickup_emailSignupSubHeading: emailSignupSubHeading,
+    lbl_pickup_emailSignupSubSubHeading: emailSignupSubSubHeading,
+    lbl_pickup_emailSignupContact: emailSignupContact,
+  } = state.Labels.checkout && state.Labels.checkout.pickup;
+  return {
+    emailSignupHeading,
+    emailSignupSubHeading,
+    emailSignupSubSubHeading,
+    emailSignupContact,
+  };
+};
+
+const getShipmentMethods = state => {
+  return state.Checkout.getIn(['options', 'shippingMethods']);
+};
+
+const getDefaultShipmentID = createSelector(
+  getShipmentMethods,
+  shipmentMethods => {
+    const defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+    return defaultMethod && defaultMethod.id;
+  }
+);
+
+const getAlternateFormFields = state => {
   const selector = formValueSelector('checkoutPickup');
   return selector(state, 'pickUpAlternate');
 };
 
-export const isPickupAlt = createSelector(
+const isPickupAlt = createSelector(
   getAlternateFormFields,
   pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
 );
@@ -177,13 +328,12 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_alternativeGovIdText: alternativeGovIdText,
     lbl_pickup_alternativeLastName: alternativeLastName,
     lbl_pickup_alternativeEmail: alternativeEmail,
-    lbl_pickup_emailSignupHeading: emailSignupHeading,
-    lbl_pickup_emailSignupSubHeading: emailSignupSubHeading,
-    lbl_pickup_emailSignupSubSubHeading: emailSignupSubSubHeading,
-    lbl_pickup_emailSignupContact: emailSignupContact,
+
     lbl_pickup_pickup_contact: pickupContactText,
     lbl_pickup_btn_cancel: btnCancel,
     lbl_pickup_btn_update: btnUpdate,
+    lbl_pickup_btn_SaveUpdate: btnSaveUpdate = 'Save Pickup Details',
+    lbl_pickup_title_editPickUp: titleEditPickup = 'EDIT PICKUP',
     lbl_pickup_anchor_edit: anchorEdit,
     lbl_pickup_returnTo: returnTo,
     lbl_pickup_nextText: nextText,
@@ -206,13 +356,12 @@ export const getPickUpContactFormLabels = state => {
     alternativeGovIdText,
     alternativeLastName,
     alternativeEmail,
-    emailSignupHeading,
-    emailSignupSubHeading,
-    emailSignupSubSubHeading,
-    emailSignupContact,
+
     pickupContactText,
     btnCancel,
     btnUpdate,
+    btnSaveUpdate,
+    titleEditPickup,
     anchorEdit,
     returnTo,
     nextText,
@@ -226,7 +375,7 @@ export const getAlternateFormUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.hasAlternatePickup
 );
 
-export const getSmsSignUpFields = state => {
+const getSmsSignUpFields = state => {
   const selector = formValueSelector('checkoutPickup');
   return selector(state, 'smsSignUp');
 };
@@ -236,10 +385,16 @@ export const getSendOrderUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
 
-export const getSmsNumberForOrderUpdates = createSelector(
+const getSmsNumberForOrderUpdates = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
+
+// export const getUserEmailNew = createSelector(
+//   [isGuest,isRemembered],
+//   (getUserContactInfo)=>
+
+// )
 
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);
@@ -267,44 +422,37 @@ function getPickupInitialPickupSectionValues(state) {
   };
 }
 
-function getInitialPickupSectionValues(state) {
-  // let userContactInfo = userStoreView.getUserContactInfo(state);
-  // values (if any) entered previously in the checkout process,
-  // or reported as checkout defaults by backend
-  const pickupValues = getPickupValues(state);
-
-  return {
-    pickUpContact: {
-      firstName: pickupValues.firstName || getUserName(state),
-      lastName: pickupValues.lastName || getUserLastName(state),
-      emailAddress: pickupValues.emailAddress || getUserEmail(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
-    },
-    smsInfo: {
-      wantsSmsOrderUpdates: !!getSmsNumberForOrderUpdates(state),
-      smsUpdateNumber: getSmsNumberForOrderUpdates(state) || getPickupValues(state).phoneNumber,
-    },
-    hasAlternatePickup: isPickupAlt(state),
-    pickUpAlternate: isPickupAlt(state) ? getPickupAltValues(state) : {},
-  };
-}
-
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
-  // getShippingDestinationValues,
-  // getDefaultAddress,
+  getShippingDestinationValues,
+  getDefaultAddress,
   isGuest,
   getIsMobile,
-  getInitialPickupSectionValues,
   getPickupInitialPickupSectionValues,
   isSmsUpdatesEnabled,
   getCurrentPickupFormNumber,
-  isExpressCheckout,
-  getCheckoutStage,
   isUsSite,
   getUserContactInfo,
   getPickupAltValues,
   getCurrentSiteId,
   getIsSmsUpdatesEnabled,
+  getSmsSignUpFields,
+  getShipmentMethodsFields,
+  getSelectedShipmentId,
+  getSendOrderUpdate,
+  getAddressFields,
+  getAddressPhoneNo,
+  getShippingLabels,
+  getSmsSignUpLabels,
+  getIsOrderHasPickup,
+  getEmailSignUpLabels,
+  getGiftWrappingValues,
+  getSmsNumberForOrderUpdates,
+  getShipmentMethods,
+  getDefaultShipmentID,
+  getShippingSendOrderUpdate,
+  getAlternateFormUpdate,
+  getPickUpContactFormLabels,
+  getUserEmail,
 };

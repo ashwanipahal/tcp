@@ -7,6 +7,7 @@ import withStyles from '../../../../common/hoc/withStyles';
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 import ReadMore from '../molecules/ReadMore/views';
 import ProductListingStyle from '../ProductListing.style';
+import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 
 const ProductListView = ({
   className,
@@ -14,8 +15,10 @@ const ProductListView = ({
   currentNavIds,
   navTree,
   breadCrumbs,
+  categoryId,
   longDescription,
   labels,
+  ...otherProps
 }) => {
   return (
     <div className={className}>
@@ -43,14 +46,23 @@ const ProductListView = ({
             <div className="filter-area">FilterArea</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductList products={products} className={`${className} product-list`} />
+            <ProductList
+              products={products}
+              className={`${className} product-list`}
+              labels={labels}
+              {...otherProps}
+            />
           </Col>
+
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ReadMore
               description={longDescription}
               labels={labels}
               className={`${className} seo-text`}
             />
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <SpotlightContainer categoryId={categoryId} />
           </Col>
         </Col>
       </Row>
@@ -65,6 +77,7 @@ ProductListView.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
+  categoryId: PropTypes.string,
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
 };
@@ -76,6 +89,7 @@ ProductListView.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  categoryId: '',
   labels: {},
 };
 

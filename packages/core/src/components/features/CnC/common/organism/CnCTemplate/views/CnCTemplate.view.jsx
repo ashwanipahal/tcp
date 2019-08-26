@@ -52,6 +52,7 @@ class CnCTemplate extends React.Component<Props> {
 }
 
 CnCTemplate.propTypes = {
+  className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
   bagActions: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),

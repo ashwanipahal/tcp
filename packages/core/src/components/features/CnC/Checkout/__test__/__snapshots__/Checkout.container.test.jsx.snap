@@ -6,7 +6,6 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   activeStep="shipping"
   currentPhoneNumber=""
   initialValues={Object {}}
-  isExpressCheckout={false}
   isGuest={true}
   isMobile={false}
   isSmsUpdatesEnabled={true}

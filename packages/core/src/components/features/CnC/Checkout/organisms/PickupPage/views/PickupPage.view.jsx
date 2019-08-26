@@ -20,7 +20,7 @@ import CheckoutFooter from '../../../molecules/CheckoutFooter';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isEditing: props.isGuest, isReset: false };
+    this.state = { isEditing: false, isReset: false };
   }
 
   handleEditModeChange = isEditing => {
@@ -124,6 +124,7 @@ class PickUpFormPart extends React.Component {
                     labels={pickUpLabels}
                     onSubmit={this.onEditMainContactSubmit}
                     onEditModeChange={this.handleEditModeChange}
+                    onClose={this.handleExitEditModeClick}
                   />
                 )}
               </FormSection>
@@ -183,7 +184,7 @@ class PickUpFormPart extends React.Component {
                 </div>
               </div>
             )}
-            <div lassName="pickUpAlternate-container">
+            <div className="pickUpAlternate-container">
               <FormSection name="pickUpAlternate">
                 <PickUpAlternateFormPart
                   isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -195,7 +196,7 @@ class PickUpFormPart extends React.Component {
                 />
               </FormSection>
             </div>
-            {isEditing && this.SaveAndCancelButton()}
+            {isEditing && !isMobile && this.SaveAndCancelButton()}
           </form>
         </div>
         <form onSubmit={handleSubmit}>
