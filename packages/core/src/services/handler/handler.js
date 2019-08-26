@@ -1,4 +1,3 @@
-import { trackError } from '@tcp/core/src/utils/errorReporter.util';
 import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';
@@ -10,31 +9,10 @@ import ExternalAPIClient from './external/externalClient';
  * Logs error
  * @param {*} e error object
  */
-const errorHandler = ({
-  err,
-  reqObj = {
-    webService: {
-      URI: 'GRAPHQL QUERY || URI_NOT_SENT_IN_ERROR_LOGGING',
-    },
-  },
-  reqHeaders = {
-    'tcp-trace-request-id': 'NO-TRACE-ID',
-    'tcp-trace-session-id': 'NO-TRACE-ID',
-  },
-} = {}) => {
-  trackError({
-    error: err,
-    tags: {
-      component: 'API Handler',
-      endpoint: reqObj.webService.URI,
-      'trace-request-id': reqHeaders['tcp-trace-request-id'],
-      'trace-session-id': reqHeaders['tcp-trace-session-id'],
-    },
-    extraData: {
-      ...reqObj,
-    },
-  });
-  throw err;
+const errorHandler = e => {
+  // eslint-disable-next-line no-console
+  console.log(e);
+  throw e;
 };
 
 /**
@@ -65,18 +43,7 @@ const loadGraphQLInterface = () => {
 export const executeGraphQLQuery = query => {
   return loadGraphQLInterface()
     .then(client => executeQuery(query, client))
-    .catch(err => {
-      const reqObj = {
-        webService: {
-          URI: 'GRAPHQL QUERY',
-          query,
-        },
-      };
-      errorHandler({
-        err,
-        reqObj,
-      });
-    });
+    .catch(errorHandler);
 };
 
 /**
@@ -95,7 +62,7 @@ export const resetGraphQLClient = () => {
  */
 export const fetchModuleDataFromGraphQL = async modules => {
   const query = await QueryBuilder.getQuery(modules);
-  return executeGraphQLQuery(query);
+  return executeGraphQLQuery(query).catch(errorHandler);
 };
 
 /**

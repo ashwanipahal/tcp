@@ -16,8 +16,6 @@
     "graphql-tag": "^2.10.1",
     "jsbarcode": "^3.11.0",
     "node-fetch": "^2.6.0",
-    "raygun": "^0.10.1",
-    "raygun4js": "^2.17.1",
     "react-apollo": "^2.5.2",
     "react-dom": "16.5.0",
     "redux-cache": "^0.3.0",

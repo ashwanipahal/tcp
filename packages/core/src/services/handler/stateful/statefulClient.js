@@ -116,8 +116,7 @@ const StatefulAPIClient = (apiConfig, reqObj) => {
         resolve(response);
       })
       .catch(err => {
-        // eslint-disable-next-line prefer-promise-reject-errors
-        reject({ err, reqObj, reqHeaders });
+        reject(err);
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.
