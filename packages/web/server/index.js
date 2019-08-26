@@ -11,6 +11,11 @@ const {
   setEnvConfig,
   HEALTH_CHECK_PATH,
 } = require('./config/server.config');
+const {
+  initErrorReporter,
+  getExpressMiddleware,
+} = require('@tcp/core/src/utils/errorReporter.util');
+const { ENV_DEVELOPMENT } = require('@tcp/core/src/constants/env.config');
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
@@ -24,6 +29,19 @@ const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
 
+const setErrorReporter = () => {
+  const config = {
+    isServer: true,
+    envId: process.env.RWD_WEB_ENV_ID,
+    raygunApiKey: process.env.RWD_WEB_RAYGUN_API_KEY,
+    isDevelopment: process.env.NODE_ENV === ENV_DEVELOPMENT,
+  };
+  initErrorReporter(config);
+  const expressMiddleWare = getExpressMiddleware();
+  if (expressMiddleWare) {
+    server.use(expressMiddleWare);
+  }
+};
 settingDeviceConfig(server, device);
 
 const setSiteId = (req, res) => {
@@ -57,6 +75,8 @@ const setHostname = (req, res) => {
   const { hostname } = req;
   res.locals.hostname = hostname;
 };
+
+setErrorReporter();
 
 app.prepare().then(() => {
   // Looping through the routes and providing the corresponding resolver route
