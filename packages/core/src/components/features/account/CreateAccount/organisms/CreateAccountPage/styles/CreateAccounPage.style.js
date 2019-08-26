@@ -12,26 +12,29 @@ const styles = css`
     padding: 40px 28px 60px;
   }
   .img-parent {
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
   }
   .my-rewards-img-wrapper {
     width: 192px;
   }
   .labels-wrapper {
-    font-size: 13px;
-    text-align: center;
-    border-bottom: 2px solid;
-    padding: 18px 0;
-    .my-place-rewards {
-      font-weight: bold;
-      color: ${props => props.theme.colorPalette.gray[700]};
-    }
-    .spend-points {
-      font-size: 14px;
-      font-weight: 900;
-      color: ${props => props.theme.colorPalette.gray[700]};
-    }
+    padding-left: 20px;
+    padding-right: 20px;
   }
+
+  .spend-points {
+    color: ${props => props.theme.colorPalette.gray[700]};
+  }
+
+  .my-place-rewards {
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
+    color: ${props => props.theme.colorPalette.gray[700]};
+  }
+
+  .signed-up-in-store {
+    border-bottom: 1px solid;
+  }
+
   .info-icon-img-wrapper {
     display: inline-block;
     width: 10px;
@@ -45,10 +48,10 @@ const styles = css`
     width: 30px;
   }
   .show-hide-icons {
-    top: 28px;
+    top: 3px;
   }
   .confirm-pwd-hide-show {
-    top: 45px;
+    top: 24px;
   }
   .checkbox-hide-show {
     label {

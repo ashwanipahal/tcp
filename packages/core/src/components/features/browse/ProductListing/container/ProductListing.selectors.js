@@ -73,9 +73,28 @@ export const getLoadedProductsCount = createSelector(
   }
 );
 
+export const getLongDescription = createSelector(
+  getProductListingState,
+  ProductListing => ProductListing && ProductListing.get('currentListingDescription')
+);
+
 export const getUnbxdId = createSelector(
   getProductListingState,
   products => products && products.get('unbxdId')
 );
+
+export const getLabelsProductListing = state => {
+  const {
+    PLP: {
+      plpTiles: { lbl_add_to_bag: addToBag },
+      seoText: { lbl_read_more: readMore, lbl_read_less: readLess },
+    },
+  } = state.Labels;
+  return {
+    addToBag,
+    readMore,
+    readLess,
+  };
+};
 
 export default getPlpProducts;

@@ -173,7 +173,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="pointshistorylnk"
+        dataLocator="pointshistorylnk"
         fontSizeVariation="medium"
         underline={true}
       >

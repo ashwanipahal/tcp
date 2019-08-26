@@ -31,6 +31,14 @@ export function isClient() {
   return typeof window !== 'undefined' && !isMobileApp();
 }
 
+/**
+ * @see ServerToClientRenderPatch.jsx - Do not use this to determine rendering of a component or part of a component. The server
+ *  side and client side hydration should be the same. If this is needed use ServerToClientRenderPatch.jsx.
+ */
+export function isTouchClient() {
+  return typeof window !== 'undefined' && !!('ontouchstart' in window);
+}
+
 export const isServer = () => {
   return typeof window === 'undefined' && !isMobileApp();
 };
@@ -43,11 +51,11 @@ export const getAPIConfig = () => {
   // When apiConfig is null (the very first time) or is an empty object, derive value from store..
   const validApiConfigObj = !apiConfig || (apiConfig && !Object.keys(apiConfig).length);
   // This check is to make sure that same instance of apiConfig for different country/brand ssr requests
-  const deriveApiConfigObj = validApiConfigObj;
+  const deriveApiConfigObj = validApiConfigObj || !isClient();
 
   if (deriveApiConfigObj) {
     apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};
-    if (!isServer() && !isMobileApp()) {
+    if (isClient()) {
       resetStoreRef(); // This is to make module variable reduxStore as null
     }
   }

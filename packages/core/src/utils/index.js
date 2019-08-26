@@ -22,6 +22,7 @@ export {
 export {
   isServer,
   isClient,
+  isTouchClient,
   isMobileApp,
   isGymboree,
   isTCP,

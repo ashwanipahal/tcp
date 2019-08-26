@@ -1467,7 +1467,7 @@ exports[`L2 Panel component renders correctly 1`] = `
           <ul>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_0"
+                dataLocator="l2_size_btn_0"
                 target=""
                 title="4"
                 to="/test"
@@ -1489,7 +1489,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_1"
+                dataLocator="l2_size_btn_1"
                 target=""
                 title="5"
                 to="/test"
@@ -1511,7 +1511,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_2"
+                dataLocator="l2_size_btn_2"
                 target=""
                 title="6"
                 to="/test"
@@ -1533,7 +1533,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_3"
+                dataLocator="l2_size_btn_3"
                 target=""
                 title="7"
                 to="/test"
@@ -1555,7 +1555,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_4"
+                dataLocator="l2_size_btn_4"
                 target=""
                 title="8"
                 to="/test"
@@ -1579,7 +1579,7 @@ exports[`L2 Panel component renders correctly 1`] = `
           <ul>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_5"
+                dataLocator="l2_size_btn_5"
                 target=""
                 title="10"
                 to="/test"
@@ -1601,7 +1601,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_6"
+                dataLocator="l2_size_btn_6"
                 target=""
                 title="12"
                 to="/test"
@@ -1623,7 +1623,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_7"
+                dataLocator="l2_size_btn_7"
                 target=""
                 title="14"
                 to="/test"
@@ -1645,7 +1645,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_8"
+                dataLocator="l2_size_btn_8"
                 target=""
                 title="16"
                 to="/test"
@@ -1667,7 +1667,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             </li>
             <li>
               <Styled(Anchor)
-                data-locator="l2_size_btn_9"
+                dataLocator="l2_size_btn_9"
                 target=""
                 title="18"
                 to="/test"
@@ -1702,7 +1702,7 @@ exports[`L2 Panel component renders correctly 1`] = `
       >
         <Styled(Anchor)
           className="l2-image-banner-link"
-          data-locator="overlay_img_link_0"
+          dataLocator="overlay_img_link_0"
           target="_blank"
           title="Shop Big & Lil Sis"
           to="/Shop-Big-Lil-Sis"

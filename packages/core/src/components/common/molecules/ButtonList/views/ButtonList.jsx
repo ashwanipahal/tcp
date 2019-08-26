@@ -24,6 +24,7 @@ const getImageCTA = item => {
     <div className={`${config[buttonListVariation].className} div-image-wrapper`}>
       {item.buttonsData.map((data, index) => {
         const { image, button = {} } = data;
+
         return (
           <div className="img-wrapper">
             <div>
@@ -34,7 +35,7 @@ const getImageCTA = item => {
                 title={button.title}
                 fontSizeVariation="large"
                 fontWeightVariation="active"
-                data-locator={`${dataLocatorTextCta}${index}`}
+                dataLocator={`${dataLocatorTextCta}${index}`}
               >
                 <DamImage
                   imgData={image}
@@ -43,8 +44,9 @@ const getImageCTA = item => {
                 />
                 <BodyCopy
                   fontWeight="extrabold"
-                  fontSize={['fs14', 'fs20', 'fs20']}
+                  fontSize="fs13"
                   className="image-comp"
+                  fontFamily="secondary"
                   textAlign="center"
                 >
                   {button.text}
@@ -183,7 +185,7 @@ const ButtonList = (props: Props) => {
 };
 
 ButtonList.defaultProps = {
-  buttonListVariation: 'stackedCTA',
+  buttonListVariation: 'stackedCTAList',
   className: '',
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',

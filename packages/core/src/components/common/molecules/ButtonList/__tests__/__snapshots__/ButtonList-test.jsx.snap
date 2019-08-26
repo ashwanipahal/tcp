@@ -109,7 +109,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_0"
+          dataLocator="moduleN_cta_links_0"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/girl"
@@ -135,14 +135,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -158,7 +152,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_1"
+          dataLocator="moduleN_cta_links_1"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-girl"
@@ -184,14 +178,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -207,7 +195,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_2"
+          dataLocator="moduleN_cta_links_2"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/boy"
@@ -233,14 +221,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -256,7 +238,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_3"
+          dataLocator="moduleN_cta_links_3"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-boy2"
@@ -282,14 +264,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -305,7 +281,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_4"
+          dataLocator="moduleN_cta_links_4"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-boy"
@@ -331,14 +307,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -354,7 +324,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_5"
+          dataLocator="moduleN_cta_links_5"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-boy"
@@ -380,14 +350,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             className="image-comp"
             color="text.primary"
             component="p"
-            fontFamily="primary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs20",
-                "fs20",
-              ]
-            }
+            fontFamily="secondary"
+            fontSize="fs13"
             fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
@@ -610,6 +574,103 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
 
 exports[`ButtonList component renders correctly without props 1`] = `
 <div
-  className=" "
-/>
+  className=" stacked-button-list-wrapper  wrapped-button-text"
+>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/girl"
+    key="Girl"
+    target=""
+    title="Girl"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="0"
+      fill=""
+    >
+      Girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-girl"
+    key="Toddler_Girl"
+    target=""
+    title="Toddler Girl"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="1"
+      fill=""
+    >
+      Toddler Girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/boy"
+    key="Boy"
+    target=""
+    title="Boy"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="2"
+      fill=""
+    >
+      Boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-boy2"
+    key="Tod_Boy"
+    target=""
+    title="Tod Boy"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="3"
+      fill=""
+    >
+      Toddler Boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-boy"
+    key="Baby"
+    target=""
+    title="Baby"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="4"
+      fill=""
+    >
+      Baby
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="/toddler-boy"
+    key="Alt"
+    target=""
+    title="Alt"
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      data-locator="5"
+      fill=""
+    >
+      Alt
+    </Styled(Button)>
+  </Styled(Anchor)>
+</div>
 `;
