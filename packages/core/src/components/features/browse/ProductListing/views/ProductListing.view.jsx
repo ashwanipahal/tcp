@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
 import ProductList from '../molecules/ProductList/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
+
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
@@ -101,5 +102,4 @@ ProductListView.defaultProps = {
   labels: {},
   labelsFilter: {},
 };
-
 export default ProductListView;
