@@ -131,8 +131,8 @@ const ShippingForm = ({
           </div>
         </FormSection>
         <CheckoutFooter
-          nextButtonText={`${shippingLabels.nextText}: ${shippingLabels.backLinkText}`}
-          backLinkText={`${shippingLabels.returnTo} ${shippingLabels.billingText}`}
+          nextButtonText={`${shippingLabels.nextText}: ${shippingLabels.billingText}`}
+          backLinkText={`${shippingLabels.returnTo} ${shippingLabels.backLinkText}`}
         />
       </form>
     </>
