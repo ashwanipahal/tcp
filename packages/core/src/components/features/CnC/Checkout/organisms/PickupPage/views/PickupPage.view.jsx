@@ -184,7 +184,7 @@ class PickUpFormPart extends React.Component {
                 </div>
               </div>
             )}
-            <div lassName="pickUpAlternate-container">
+            <div className="pickUpAlternate-container">
               <FormSection name="pickUpAlternate">
                 <PickUpAlternateFormPart
                   isAlternateUpdateChecked={isAlternateUpdateChecked}
