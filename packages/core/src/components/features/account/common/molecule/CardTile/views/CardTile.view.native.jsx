@@ -240,7 +240,7 @@ class CardTile extends React.Component<Props> {
             <CustomButton
               color="white"
               fill="BLUE"
-              text="check balance captcha"
+              text={labels.paymentGC.lbl_payment_checkBalance}
               buttonVariation="variable-width"
               onPress={e => this.setRecaptchaModalMountState(e)}
             />
