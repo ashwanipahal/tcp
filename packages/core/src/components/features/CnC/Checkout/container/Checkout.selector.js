@@ -1,13 +1,16 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
+import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import { getAPIConfig, getViewportInfo } from '@tcp/core/src/utils';
 
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig } from '@tcp/core/src/utils';
 import CheckoutUtils from '../util/utility';
 import {
+  getPersonalDataState,
   getUserName,
   getUserLastName,
   getUserPhoneNumber,
+  getUserEmail,
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
@@ -17,6 +20,18 @@ function getRecalcOrderPointsInterval() {
   return 300000;
   // return state.session.siteDetails.recalcOrderPointsInterval;
 }
+
+export const getCheckoutState = state => {
+  return state[CHECKOUT_REDUCER_KEY];
+};
+
+export const getCheckoutUiFlagState = state => {
+  return state[CHECKOUT_REDUCER_KEY].get('uiFlags');
+};
+
+export const getCheckoutValuesState = state => {
+  return state[CHECKOUT_REDUCER_KEY].get('values');
+};
 
 function getIsOrderHasShipping() {
   return true;
@@ -30,35 +45,58 @@ const getIsOrderHasPickup = createSelector(
   orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
 );
 
-function isGuest(state) {
-  return state.User.getIn(['personalData', 'isGuest']);
-}
+export const isGuest = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isGuest')
+);
 
 function getIsMobile() {
-  return getAPIConfig().isMobile;
+  if (typeof window === 'undefined')
+    return {
+      width: 0,
+      height: 0,
+      isMobile: false,
+      isTablet: false,
+      isDesktop: false,
+    };
+  return getViewportInfo().isMobile;
 }
 
-function isExpressCheckout(state) {
-  return !!state.User.getIn(['personalData', 'isExpressEligible']);
-}
+// function isExpressCheckout(state) {
+//   return !!state.User.getIn(['personalData', 'isExpressEligible']);
+// }
 
-function getCheckoutStage(state) {
-  return state.Checkout.getIn(['uiFlags', 'stage']);
-}
+export const isExpressCheckout = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isExpressEligible')
+);
 
-function isRemembered(state) {
-  return state.User.getIn(['personalData', 'isRemembered']);
-}
+// function getCheckoutStage(state) {
+//   return state.Checkout.getIn(['uiFlags', 'stage']);
+// }
 
-function getUserContactInfo(state) {
-  return state.User.getIn(['personalData', 'contactInfo']);
-}
+export const getCheckoutStage = createSelector(
+  getCheckoutUiFlagState,
+  state => state && state.get('stage')
+);
 
-function getUserEmail(state) {
-  return !isGuest(state) || isRemembered(state)
-    ? getUserContactInfo(state) && getUserContactInfo(state).emailAddress
-    : '';
-}
+// function isRemembered(state) {
+//   return state.User.getIn(['personalData', 'isRemembered']);
+// }
+
+export const isRemembered = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isRemembered')
+);
+
+// function getUserContactInfo(state) {
+//   return state.User.getIn(['personalData', 'contactInfo']);
+// }
+
+export const getUserContactInfo = createSelector(
+  getPersonalDataState,
+  state => state && state.get('contactInfo')
+);
 
 function getShippingDestinationValues(state) {
   const { method, emailAddress, ...result } = JSON.parse(
@@ -123,13 +161,22 @@ function getDefaultAddress(/* state, country, noBillingAddresses */) {
   // }
 }
 
-function getPickupValues(state) {
-  return state.Checkout.getIn(['values', 'pickUpContact']);
-}
+export const getPickupValues = createSelector(
+  getCheckoutValuesState,
+  state => state && state.get('pickUpContact')
+);
 
-function getPickupAltValues(state) {
-  return state.Checkout.getIn(['values', 'pickUpAlternative']);
-}
+// function getPickupValues(state) {
+//   return state.Checkout.getIn(['values', 'pickUpContact']);
+// }
+
+export const getPickupAltValues = createSelector(
+  getCheckoutValuesState,
+  state => state && state.get('pickUpAlternative')
+);
+// function getPickupAltValues(state) {
+//   return state.Checkout.getIn(['values', 'pickUpAlternative']);
+// }
 
 function getGiftWrappingValues(state) {
   return state.Checkout.getIn(['values', 'giftWrap']);
@@ -264,7 +311,7 @@ const isPickupAlt = createSelector(
   pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
 );
 
-const getPickUpContactFormLabels = state => {
+export const getPickUpContactFormLabels = state => {
   const {
     lbl_pickup_title: title,
     lbl_pickup_firstName: firstName,
@@ -285,6 +332,8 @@ const getPickUpContactFormLabels = state => {
     lbl_pickup_pickup_contact: pickupContactText,
     lbl_pickup_btn_cancel: btnCancel,
     lbl_pickup_btn_update: btnUpdate,
+    lbl_pickup_btn_SaveUpdate: btnSaveUpdate = 'Save Pickup Details',
+    lbl_pickup_title_editPickUp: titleEditPickup = 'EDIT PICKUP',
     lbl_pickup_anchor_edit: anchorEdit,
     lbl_pickup_returnTo: returnTo,
     lbl_pickup_nextText: nextText,
@@ -311,6 +360,8 @@ const getPickUpContactFormLabels = state => {
     pickupContactText,
     btnCancel,
     btnUpdate,
+    btnSaveUpdate,
+    titleEditPickup,
     anchorEdit,
     returnTo,
     nextText,
@@ -319,7 +370,7 @@ const getPickUpContactFormLabels = state => {
   };
 };
 
-const getAlternateFormUpdate = createSelector(
+export const getAlternateFormUpdate = createSelector(
   getAlternateFormFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.hasAlternatePickup
 );
@@ -329,7 +380,7 @@ const getSmsSignUpFields = state => {
   return selector(state, 'smsSignUp');
 };
 
-const getSendOrderUpdate = createSelector(
+export const getSendOrderUpdate = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
@@ -338,6 +389,12 @@ const getSmsNumberForOrderUpdates = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
+
+// export const getUserEmailNew = createSelector(
+//   [isGuest,isRemembered],
+//   (getUserContactInfo)=>
+
+// )
 
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);
@@ -365,28 +422,6 @@ function getPickupInitialPickupSectionValues(state) {
   };
 }
 
-function getInitialPickupSectionValues(state) {
-  // let userContactInfo = userStoreView.getUserContactInfo(state);
-  // values (if any) entered previously in the checkout process,
-  // or reported as checkout defaults by backend
-  const pickupValues = getPickupValues(state);
-
-  return {
-    pickUpContact: {
-      firstName: pickupValues.firstName || getUserName(state),
-      lastName: pickupValues.lastName || getUserLastName(state),
-      emailAddress: pickupValues.emailAddress || getUserEmail(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
-    },
-    smsInfo: {
-      wantsSmsOrderUpdates: !!getSmsNumberForOrderUpdates(state),
-      smsUpdateNumber: getSmsNumberForOrderUpdates(state) || getPickupValues(state).phoneNumber,
-    },
-    hasAlternatePickup: isPickupAlt(state),
-    pickUpAlternate: isPickupAlt(state) ? getPickupAltValues(state) : {},
-  };
-}
-
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -394,12 +429,9 @@ export default {
   getDefaultAddress,
   isGuest,
   getIsMobile,
-  getInitialPickupSectionValues,
   getPickupInitialPickupSectionValues,
   isSmsUpdatesEnabled,
   getCurrentPickupFormNumber,
-  isExpressCheckout,
-  getCheckoutStage,
   isUsSite,
   getUserContactInfo,
   getPickupAltValues,

@@ -15,4 +15,5 @@ export {
   getShippingMethods,
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
+  addPickupPerson,
 } from './Checkout';

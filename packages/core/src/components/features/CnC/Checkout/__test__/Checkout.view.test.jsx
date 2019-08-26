@@ -12,10 +12,15 @@ describe('CheckoutPageVanilla component', () => {
       backLinkHandler: () => {},
       disableBackLink: false,
       router: { query: { section: 'pickup' } },
+      onPickupSubmit: () => {},
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
-    component.instance().onPickUpSubmit();
+    component.instance().onPickUpSubmit({
+      pickUpContact: {},
+      pickUpAlternate: {},
+      smsSignUp: { sendOrderUpdate: false },
+    });
     expect(component).toMatchSnapshot();
   });
 
@@ -28,10 +33,15 @@ describe('CheckoutPageVanilla component', () => {
       backLinkHandler: () => {},
       disableBackLink: false,
       router: { query: { subSection: 'shipping' } },
+      onPickupSubmit: () => {},
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
-    component.instance().onPickUpSubmit();
+    component.instance().onPickUpSubmit({
+      pickUpContact: {},
+      pickUpAlternate: {},
+      smsSignUp: { sendOrderUpdate: false },
+    });
     expect(component).toMatchSnapshot();
   });
 });

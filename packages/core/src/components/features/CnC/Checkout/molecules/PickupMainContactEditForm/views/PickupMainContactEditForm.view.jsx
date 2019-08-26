@@ -7,10 +7,27 @@ import ContactFormFields from '../../ContactFormFields';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import Modal from '../../../../../../common/molecules/Modal';
+import Button from '../../../../../../common/atoms/Button';
 import styles from '../styles/style';
 
 class PickupMainContactEditForm extends React.Component {
   static defaultValidation = getStandardConfig(['firstName', 'lastName', 'phoneNumber']);
+
+  SaveButton = () => {
+    const { labels } = this.props;
+    return (
+      <Button
+        className="saveUpdateButton"
+        fill="BLUE"
+        type="submit"
+        buttonVariation="fixed-width"
+        data-locator="pickup-modal-save-btn"
+      >
+        {labels.btnSaveUpdate}
+      </Button>
+    );
+  };
 
   handleEnterEditModeClick = event => {
     const { onEditModeChange } = this.props;
@@ -48,7 +65,7 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   render() {
-    const { className, isMobile, formData, isEditing, labels, isReset } = this.props;
+    const { className, isMobile, formData, isEditing, labels, isReset, onClose } = this.props;
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
@@ -59,6 +76,29 @@ class PickupMainContactEditForm extends React.Component {
         {!isEditing && <PickUpContactDisplay formData={formData} />}
         {isEditing && !isMobile && (
           <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
+        )}
+        {isEditing && isMobile && (
+          <div>
+            <Modal
+              isOpen={isEditing}
+              className="TCPModal__Content PickupModal"
+              maxWidth="616px"
+              minHeight="540px"
+              fixedWidth
+              closeIconDataLocator="coupondetailmodalcrossicon"
+              onRequestClose={onClose}
+            >
+              <div className="pickupModalContainer">
+                <div className="pickupModalHeader">{labels.titleEditPickup}</div>
+                <ContactFormFields
+                  className="pick-up-input toggle"
+                  showPhoneNumber
+                  labels={labels}
+                />
+                {this.SaveButton()}
+              </div>
+            </Modal>
+          </div>
         )}
       </div>
     );

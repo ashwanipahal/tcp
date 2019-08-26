@@ -120,6 +120,17 @@ export default {
   empty_bag_guestUserCTA: 'cartGuestLoginCta',
   empty_bag_recommendation_msg: 'cartRecommendationMessage',
 
+  // Product Tile locators
+  global_productbadge_txt: 'global-productbadge-txt',
+  global_productimg_imagelink: 'global-productimg-imagelink',
+  global_imagecursors_arrows: 'global-imagecursors-arrows',
+  global_favorite_button: 'global-favorite-button',
+  global_Extended_sizes_text: 'global-Extended-sizes-text',
+  global_Price_text: 'global-Price-text',
+  global_ColorSwatch_Swatch_link: 'global-ColorSwatch-Swatch link',
+  global_loyalty_text: 'global-loyalty-text',
+  global_addtocart_Button: 'global-addtocart-Button',
+
   // PLP SEO TEXT
   plp_seo_module: 'plp_seo_module',
   plp_seo_readmore: 'plp_seo_module_readmore',

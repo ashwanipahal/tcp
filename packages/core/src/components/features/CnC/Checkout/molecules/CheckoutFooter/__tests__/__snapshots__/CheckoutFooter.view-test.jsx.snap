@@ -12,7 +12,9 @@ exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
     />
   </Styled(Button)>
   <Styled(Button)
+    buttonVariation="variable-width"
     className="footer-button"
+    fill="BLUE"
     fontSize="fs14"
     fontWeight="extrabold"
     type="submit"

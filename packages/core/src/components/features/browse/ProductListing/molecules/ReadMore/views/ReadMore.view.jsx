@@ -34,7 +34,7 @@ const ReadMore = props => {
               textAlign="center"
               data-locator={getLocator('plp_seo_readmore')}
             >
-              {labels.lbl_read_more}
+              {labels.readMore}
             </BodyCopy>
             <BodyCopy
               className="read-less"
@@ -44,7 +44,7 @@ const ReadMore = props => {
               textAlign="center"
               data-locator={getLocator('plp_seo_readless')}
             >
-              {labels.lbl_read_less}
+              {labels.readLess}
             </BodyCopy>
           </React.Fragment>
         )}

@@ -7,14 +7,18 @@ export default css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 12px;
-    margin: 0 0 63px 0;
-    width: calc(50% - 24px);
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 10px;
+    margin: 0 0 6px 0;
+    width: calc(50% - ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS});
     @media ${props => props.theme.mediaQuery.medium} {
-      width: calc(33.33% - 24px);
+      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
+      padding: 12px ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+      width: calc(33.33% - ${props => props.theme.spacing.LAYOUT_SPACING.LRG});
     }
     @media only screen and (min-width: 1350px) {
-      width: calc(25% - 24px);
+      margin: 0 0 19px 0;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 21px;
+      width: calc(25% - 42px);
     }
   }
 `;
