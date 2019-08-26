@@ -5,6 +5,7 @@ import ProductList from '../molecules/ProductList/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
+import ReadMore from '../molecules/ReadMore/views';
 import ProductListingStyle from '../ProductListing.style';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 
@@ -15,6 +16,8 @@ const ProductListView = ({
   navTree,
   breadCrumbs,
   categoryId,
+  longDescription,
+  labels,
 }) => {
   return (
     <div className={className}>
@@ -44,7 +47,17 @@ const ProductListView = ({
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductList products={products} className={`${className} product-list`} />
           </Col>
-          <SpotlightContainer categoryId={categoryId} />
+
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ReadMore
+              description={longDescription}
+              labels={labels}
+              className={`${className} seo-text`}
+            />
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <SpotlightContainer categoryId={categoryId} />
+          </Col>
         </Col>
       </Row>
     </div>
@@ -54,6 +67,8 @@ const ProductListView = ({
 ProductListView.propTypes = {
   className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string,
@@ -64,10 +79,12 @@ ProductListView.propTypes = {
 ProductListView.defaultProps = {
   className: '',
   products: [],
+  longDescription: [],
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
   categoryId: '',
+  labels: {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

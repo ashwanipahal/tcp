@@ -1,48 +1,82 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
-import PickupPage from '../organisms/PickupPage';
+import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 
-export default class CheckoutPage extends React.PureComponent {
-  render() {
+class CheckoutPage extends React.PureComponent {
+  onPickUpSubmit = data => {
+    console.log(data);
+  };
+
+  leftSection = () => {
     const {
       router,
-      initialValues,
+      isGuest,
+      isMobile,
+      isUsSite,
       onEditModeChange,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
+      isOrderUpdateChecked,
+      isAlternateUpdateChecked,
+      pickUpLabels,
+      smsSignUpLabels,
+      pickupInitialValues,
       navigation,
+      // onPickupSubmit,
     } = this.props;
-    const currentSection = router.query.section;
+    const currentSection = router.query.section || router.query.subSection;
     return (
-      <CnCTemplate
-        leftSection={() => {
-          return (
-            <>
-              {currentSection.toLowerCase() === 'pickup' && (
-                <PickupPage
-                  initialValues={initialValues}
-                  onEditModeChange={onEditModeChange}
-                  isSmsUpdatesEnabled={isSmsUpdatesEnabled}
-                  currentPhoneNumber={currentPhoneNumber}
-                  navigation={navigation}
-                />
-              )}
-              {currentSection.toLowerCase() === 'shipping' && <ShippingPage />}
-            </>
-          );
-        }}
-      />
+      <div>
+        {currentSection.toLowerCase() === 'pickup' && (
+          <PickUpFormPart
+            isGuest={isGuest}
+            isMobile={isMobile}
+            isUsSite={isUsSite}
+            initialValues={pickupInitialValues}
+            onEditModeChange={onEditModeChange}
+            isSmsUpdatesEnabled={isSmsUpdatesEnabled}
+            currentPhoneNumber={currentPhoneNumber}
+            isOrderUpdateChecked={isOrderUpdateChecked}
+            isAlternateUpdateChecked={isAlternateUpdateChecked}
+            pickUpLabels={pickUpLabels}
+            smsSignUpLabels={smsSignUpLabels}
+            onSubmit={this.onPickUpSubmit}
+            navigation={navigation}
+          />
+        )}
+        {currentSection.toLowerCase() === 'shipping' && <ShippingPage />}
+      </div>
+    );
+  };
+
+  render() {
+    return (
+      <div>
+        <CnCTemplate leftSection={this.leftSection} />
+      </div>
     );
   }
 }
 
 CheckoutPage.propTypes = {
-  router: PropTypes.shape({}).isRequired,
-  initialValues: PropTypes.shape({}).isRequired,
+  isGuest: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  isUsSite: PropTypes.bool.isRequired,
   onEditModeChange: PropTypes.bool.isRequired,
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
+  isOrderUpdateChecked: PropTypes.bool.isRequired,
+  isAlternateUpdateChecked: PropTypes.bool.isRequired,
+  pickupInitialValues: PropTypes.shape({}).isRequired,
+  pickUpLabels: PropTypes.shape({}).isRequired,
+  smsSignUpLabels: PropTypes.shape({}).isRequired,
+  router: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  // onPickupSubmit: PropTypes.func.isRequired,
 };
+
+export default withRouter(CheckoutPage);

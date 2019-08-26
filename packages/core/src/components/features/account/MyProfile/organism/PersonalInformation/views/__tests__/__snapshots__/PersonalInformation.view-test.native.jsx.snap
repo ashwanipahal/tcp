@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalInformation should render correctly 1`] = `
+<MyProfileTile
+  ctaLink="accountOverviewMobile"
+  ctaTitle=""
+  handleComponentChange={[Function]}
+  title=""
+>
+  <FPO
+    text=""
+  />
+</MyProfileTile>
+`;

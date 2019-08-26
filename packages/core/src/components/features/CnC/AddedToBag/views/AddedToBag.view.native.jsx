@@ -59,7 +59,7 @@ const AddedToBag = ({
               onPress={handleContinueShopping}
               noLink
               to=""
-              data-locator="addedToBag-continueShopping"
+              dataLocator="addedToBag-continueShopping"
               text={labels.continueShopping}
             />
           </StyledAnchorWrapper>

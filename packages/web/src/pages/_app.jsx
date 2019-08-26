@@ -60,23 +60,15 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
-  static loadGlobalData(
-    Component,
-    {
-      store,
-      res,
-      isServer,
-      req: { device = {} },
-    },
-    pageProps
-  ) {
+  static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     if (isServer) {
       const { locals } = res;
+      const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
       const payload = {
-        pageInfo: Component.pageInfo,
+        ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
       };
@@ -120,7 +112,7 @@ class TCPWebApp extends App {
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
-                <Component {...pageProps} router />
+                <Component {...pageProps} />
                 {isNonCheckoutPage && <Footer />}
               </div>
             </Grid>

@@ -27,7 +27,7 @@ export const AccountOverviewTile = ({
         >
           {title}
         </BodyCopy>
-        <BodyCopy component="div" className={`${title ? 'elem-pt-LRG' : ''} elem-pb-XL content`}>
+        <BodyCopy component="div" className="elem-pb-XL content">
           {children}
         </BodyCopy>
 
@@ -41,7 +41,7 @@ export const AccountOverviewTile = ({
             fill="BLUE"
             centered
             className="elem-mb-SM"
-            data-locator={`${dataLocator}_btn`}
+            dataLocator={`${dataLocator}_btn`}
           >
             {ctaTitle}
           </Anchor>
