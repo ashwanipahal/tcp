@@ -108,6 +108,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       headerTitle=""
       id="addressLine1"
       name="addressLine1"
+      onValueChange={[Function]}
     />
   </Styled(View)>
   <Styled(View)>
@@ -574,12 +575,14 @@ exports[`AddressForm component should renders correctly 1`] = `
         }
         name="state"
         onValueChange={[Function]}
-        selectedValue="Alabama"
+        selectedValue="AL"
         variation="secondary"
       />
     </Styled(View)>
     <Styled(View) />
-    <Styled(View)>
+    <Styled(View)
+      zipCode={true}
+    >
       <Field
         component={
           Object {
@@ -621,8 +624,10 @@ exports[`AddressForm component should renders correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-zipcode"
+        id="zipCode"
         label=""
         maxLength={5}
+        name="zipCode"
       />
     </Styled(View)>
   </Styled(View)>
@@ -684,6 +689,7 @@ exports[`AddressForm component should renders correctly 1`] = `
         "height": 41,
       }
     }
+    heading=""
     id="country"
     itemStyle={
       Object {
@@ -761,10 +767,11 @@ exports[`AddressForm component should renders correctly 1`] = `
       color="white"
       customStyle={Object {}}
       disableButton={false}
-      disabled={false}
+      disabled={[Function]}
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={[MockFunction]}
       text=""
       type="submit"
       url=""

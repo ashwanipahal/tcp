@@ -320,3 +320,5 @@ AddressVerification.defaultProps = {
   resetVerifyAddressAction: () => {},
   toggleAddressModal: () => {},
 };
+
+export { AddressVerification as AddressVerificationVanilla };

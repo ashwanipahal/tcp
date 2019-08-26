@@ -30,7 +30,7 @@ import {
   AddressSecondWrapper,
 } from './AddressForm.native.style';
 
-export class AddressForm extends React.PureComponent<Props, State> {
+class AddressForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -245,6 +245,13 @@ AddressForm.propTypes = {
   isEdit: PropTypes.bool,
   isMakeDefaultDisabled: PropTypes.bool,
   onCancel: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  invalid: PropTypes.func,
+  initialValues: PropTypes.shape({
+    state: PropTypes.string,
+    country: PropTypes.string,
+    addressLine1: PropTypes.string,
+  }),
 };
 
 AddressForm.defaultProps = {
@@ -267,6 +274,13 @@ AddressForm.defaultProps = {
   },
   dispatch: () => {},
   onCancel: () => {},
+  invalid: () => {},
+  handleSubmit: () => {},
+  initialValues: {
+    state: '',
+    country: '',
+    addressLine1: '',
+  },
 };
 
 const validateMethod = createValidateMethod(
@@ -289,3 +303,5 @@ export default reduxForm({
   keepDirtyOnReinitialize: true,
   ...validateMethod,
 })(AddressForm);
+
+export { AddressForm as AddressFormVanilla };

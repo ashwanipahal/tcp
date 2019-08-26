@@ -1,14 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddressForm } from '../AddressForm.native';
+import { AddressFormVanilla } from '../AddressForm.native';
 
 describe('AddressForm component', () => {
-  it.skip('should renders correctly', () => {
+  it('should renders correctly', () => {
     const props = {
       handleSubmit: jest.fn(),
-      className: 'any',
     };
-    const component = shallow(<AddressForm {...props} />);
+    const component = shallow(<AddressFormVanilla {...props} />);
+    component.setState({
+      country: 'US',
+      dropDownItem: 'AL',
+    });
     expect(component).toMatchSnapshot();
   });
 });
