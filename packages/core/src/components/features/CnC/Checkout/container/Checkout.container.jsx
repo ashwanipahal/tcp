@@ -5,6 +5,7 @@ import {
   submitShippingSection,
   submitPickupSection,
   onEditModeChangeAction,
+  fetchShipmentMethods,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors from './Checkout.selector';
@@ -55,6 +56,7 @@ export class CheckoutContainer extends React.Component<Props> {
       pickUpLabels,
       smsSignUpLabels,
       onPickupSubmit,
+      loadShipmentMethods,
     } = this.props;
 
     return (
@@ -80,6 +82,7 @@ export class CheckoutContainer extends React.Component<Props> {
         shippingProps={shippingProps}
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
+        loadShipmentMethods={loadShipmentMethods}
       />
     );
   }
@@ -98,6 +101,9 @@ export const mapDispatchToProps = dispatch => {
     },
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
+    },
+    loadShipmentMethods: () => {
+      dispatch(fetchShipmentMethods());
     },
   };
 };

@@ -567,6 +567,8 @@ function* submitShippingSection({ payload: formData }) {
         {
           payload: {
             ...address,
+            address1: address.addressLine1,
+            address2: address.addressLine2,
             zip: address.zipCode,
             phoneNumber,
             email: emailAddress,
@@ -646,6 +648,7 @@ export function* CheckoutSaga() {
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(constants.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
+  yield takeLatest(constants.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
 }
 
 export default CheckoutSaga;

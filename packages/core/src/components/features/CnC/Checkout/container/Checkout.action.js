@@ -236,3 +236,9 @@ export function onEditModeChangeAction(isEditingSubform) {
     type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
   };
 }
+
+export function fetchShipmentMethods() {
+  return {
+    type: constants.CHECKOUT_LOAD_SHIPMENT_METHODS,
+  };
+}

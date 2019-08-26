@@ -17,6 +17,8 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      shipmentMethods: [{}],
+      loadShipmentMethods: () => {},
       handleSubmit: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
