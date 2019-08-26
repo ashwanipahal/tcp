@@ -12,7 +12,7 @@ const HeaderTopNav = ({
   promoMessageWrapper,
   openOverlay,
   isUserLoggedIn,
-  labels
+  labels,
 }) => {
   const onLinkClick = e => {
     e.preventDefault();
@@ -51,6 +51,13 @@ HeaderTopNav.propTypes = {
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   openOverlay: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}),
+};
+
+HeaderTopNav.defaultProps = {
+  labels: {
+    trackOrder: {},
+  },
 };
 
 export default withStyles(HeaderTopNav, HeaderTopNavStyle);

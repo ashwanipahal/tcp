@@ -13,7 +13,7 @@ exports[`Notification Component should render notification component with status
     className={null}
     color="text.primary"
     component="p"
-    fontFamily="primary"
+    fontFamily="secondary"
     fontSize="fs14"
     fontWeight="extrabold"
     letterSpacing="normal"
@@ -36,7 +36,7 @@ exports[`Notification Component should render notification component with status
     className={null}
     color="text.primary"
     component="p"
-    fontFamily="primary"
+    fontFamily="secondary"
     fontSize="fs14"
     fontWeight="extrabold"
     letterSpacing="normal"

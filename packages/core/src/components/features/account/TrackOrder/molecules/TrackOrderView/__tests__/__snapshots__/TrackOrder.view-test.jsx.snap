@@ -1,7 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TrackOrderView component should renders correctly 1`] = `
-<Fragment>
+<Styled(BodyCopy)
+  className={null}
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
   <Styled(TrackOrderTopSection)
     className="trackorder__modal__topsection"
     labels={
@@ -47,5 +57,5 @@ exports[`TrackOrderView component should renders correctly 1`] = `
     openLoginOverlay={[MockFunction]}
     setModalMountState={[MockFunction]}
   />
-</Fragment>
+</Styled(BodyCopy)>
 `;

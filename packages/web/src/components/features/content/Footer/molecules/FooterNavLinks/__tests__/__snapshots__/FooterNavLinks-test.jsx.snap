@@ -16,7 +16,7 @@ exports[`FooterNavLinks component renders default footer correctly 1`] = `
     updateAccordionState={[Function]}
   />
   <Styled(FooterNavLinksList)
-    isUserLoggedIn={false}
+    isLoggedIn={false}
     listArray={Array []}
     openTrackOrder={[Function]}
   />

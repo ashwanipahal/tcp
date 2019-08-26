@@ -27,10 +27,12 @@ Notification.propTypes = {
   className: PropTypes.string,
   status: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 Notification.defaultProps = {
   className: '',
+  children: null,
 };
 
 export default withStyles(Notification, styles);
