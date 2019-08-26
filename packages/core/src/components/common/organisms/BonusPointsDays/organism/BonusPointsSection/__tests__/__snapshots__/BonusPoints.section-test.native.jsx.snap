@@ -12,7 +12,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
@@ -22,13 +21,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -39,7 +37,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -85,7 +84,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef>
@@ -95,7 +93,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef
@@ -104,7 +101,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
         />
       </ForwardRef>
     }
@@ -125,7 +121,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
@@ -135,13 +130,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={1}
           bonusPoints={
             Array [
               Object {
@@ -162,7 +156,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -208,7 +203,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef>
@@ -218,7 +212,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef
@@ -227,7 +220,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
         />
       </ForwardRef>
     }
@@ -248,7 +240,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
@@ -258,13 +249,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -285,7 +275,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -331,7 +322,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef>
@@ -341,7 +331,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef
@@ -350,7 +339,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
         />
       </ForwardRef>
     }
@@ -371,7 +359,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
@@ -381,13 +368,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
               textAlign="center"
             />
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -408,7 +394,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -454,7 +441,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef>
@@ -464,7 +450,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef
@@ -473,7 +458,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
         />
       </ForwardRef>
     }
@@ -497,7 +481,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           />
         </ForwardRef>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -508,7 +492,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -554,7 +539,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef>
@@ -564,7 +548,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
           />
         </ForwardRef>
         <ForwardRef
@@ -573,7 +556,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
         />
       </ForwardRef>
     }

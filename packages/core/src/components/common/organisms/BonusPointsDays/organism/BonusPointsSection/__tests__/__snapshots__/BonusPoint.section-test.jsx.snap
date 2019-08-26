@@ -41,9 +41,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
             <ForwardRef
               className="availability-msg"
               color="text.primary"
@@ -61,9 +59,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
           </React.Fragment>
           <ForwardRef
             fullBleed={true}
@@ -117,9 +113,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             href="#"
             onClick={[Function]}
             underline={true}
-          >
-            
-          </ForwardRef>
+          />
         </React.Fragment>
       }
       className=""
@@ -144,9 +138,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
@@ -163,9 +155,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className={null}
             color="pink.500"
@@ -182,9 +172,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
         </div>
       }
       iconLocator="arrowicon"
@@ -383,9 +371,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
             <ForwardRef
               className="availability-msg"
               color="text.primary"
@@ -403,9 +389,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
           </React.Fragment>
           <ForwardRef
             fullBleed={true}
@@ -469,9 +453,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             href="#"
             onClick={[Function]}
             underline={true}
-          >
-            
-          </ForwardRef>
+          />
         </React.Fragment>
       }
       className=""
@@ -496,9 +478,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
@@ -515,9 +495,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className={null}
             color="pink.500"
@@ -534,9 +512,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
         </div>
       }
       iconLocator="arrowicon"
@@ -745,9 +721,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
             <ForwardRef
               className="availability-msg"
               color="text.primary"
@@ -765,9 +739,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
           </React.Fragment>
           <ForwardRef
             fullBleed={true}
@@ -831,9 +803,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             href="#"
             onClick={[Function]}
             underline={true}
-          >
-            
-          </ForwardRef>
+          />
         </React.Fragment>
       }
       className=""
@@ -858,9 +828,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
@@ -877,9 +845,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className={null}
             color="pink.500"
@@ -896,9 +862,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
         </div>
       }
       iconLocator="arrowicon"
@@ -1107,9 +1071,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
             <ForwardRef
               className="availability-msg"
               color="text.primary"
@@ -1127,9 +1089,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               letterSpacing="normal"
               lineHeight="normal"
               textAlign="center"
-            >
-              
-            </ForwardRef>
+            />
           </React.Fragment>
           <ForwardRef
             fullBleed={true}
@@ -1193,9 +1153,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             href="#"
             onClick={[Function]}
             underline={true}
-          >
-            
-          </ForwardRef>
+          />
         </React.Fragment>
       }
       className=""
@@ -1220,9 +1178,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
@@ -1239,9 +1195,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className={null}
             color="pink.500"
@@ -1258,9 +1212,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
         </div>
       }
       iconLocator="arrowicon"
@@ -1521,9 +1473,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             href="#"
             onClick={[Function]}
             underline={true}
-          >
-            
-          </ForwardRef>
+          />
         </React.Fragment>
       }
       className=""
@@ -1548,9 +1498,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
@@ -1567,9 +1515,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             className={null}
             color="pink.500"
@@ -1586,9 +1532,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            
-          </ForwardRef>
+          />
         </div>
       }
       iconLocator="arrowicon"

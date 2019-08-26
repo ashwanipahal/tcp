@@ -16,15 +16,19 @@ class BonusPointsView extends React.Component {
     className: PropTypes.string,
     isPlcc: PropTypes.bool,
     view: PropTypes.string,
+    getBonusDaysData: PropTypes.func,
+    orderDetails: PropTypes.shape({}),
   };
 
   static defaultProps = {
-    labels: { myPlaceRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
+    labels: {},
     bonusData: {},
     bonusDetailsData: '',
     className: '',
     isPlcc: false,
     view: constants.VIEWS.EDIT,
+    getBonusDaysData: () => {},
+    orderDetails: {},
   };
 
   constructor(props) {
@@ -41,7 +45,16 @@ class BonusPointsView extends React.Component {
   };
 
   render() {
-    const { labels, bonusData, bonusDetailsData, className, view, isPlcc } = this.props;
+    const {
+      labels,
+      bonusData,
+      bonusDetailsData,
+      className,
+      view,
+      isPlcc,
+      getBonusDaysData,
+      orderDetails,
+    } = this.props;
     const { openModalState } = this.state;
     return (
       <View className={className}>
@@ -56,16 +69,18 @@ class BonusPointsView extends React.Component {
         )}
         {view !== constants.VIEWS.READ && (
           <BonusPointsSection
-            labels={labels}
+            labels={labels.global.bonusPoints}
             bonusData={bonusData}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
+            getBonusDaysData={getBonusDaysData}
+            orderDetails={orderDetails}
           />
         )}
         <Modal
           isOpen={openModalState}
           onRequestClose={this.toggleBonusPointsModal}
-          heading={`${labels.myPlaceRewards.lbl_place_rewards_bonus} ${
-            labels.myPlaceRewards.lbl_place_rewards_points
+          heading={`${labels.lbl_bonusPoints_placeRewardsBonus} ${
+            labels.lbl_bonusPoints_placeRewardsPoints
           } DETAILS`}
           headingAlign="left"
           headingFontFamily="secondary"

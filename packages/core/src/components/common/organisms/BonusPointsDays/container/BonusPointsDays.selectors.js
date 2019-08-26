@@ -1,6 +1,6 @@
 import BONUS_POINTS_DAYS_CONSTANTS from '../BonusPointsDays.constants';
 
-export const getLabels = state => state.Labels.account;
+export const getLabels = state => state.Labels;
 export const getBonusData = state => state.BonusPointsDaysReducer.get('bonusDaysData');
 export const getIsFetching = state => state.BonusPointsDaysReducer.get('isFetching');
 export const getError = state => state.BonusPointsDaysReducer.get('error');

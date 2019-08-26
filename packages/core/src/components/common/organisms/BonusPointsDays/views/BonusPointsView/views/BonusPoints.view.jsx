@@ -16,19 +16,17 @@ class BonusPointsView extends React.Component {
     className: PropTypes.string,
     view: PropTypes.string,
     isPlcc: PropTypes.bool,
-    enableApplyCta: PropTypes.bool,
     getBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
   };
 
   static defaultProps = {
-    labels: { myPlaceRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
+    labels: {},
     bonusData: {},
     bonusDetailsData: '',
     className: '',
     view: constants.VIEWS.EDIT,
     isPlcc: false,
-    enableApplyCta: false,
     getBonusDaysData: () => {},
     orderDetails: {},
   };
@@ -54,7 +52,6 @@ class BonusPointsView extends React.Component {
       className,
       view,
       isPlcc,
-      enableApplyCta,
       getBonusDaysData,
       orderDetails,
     } = this.props;
@@ -73,10 +70,9 @@ class BonusPointsView extends React.Component {
         {view === constants.VIEWS.EDIT && (
           <div className={className}>
             <BonusPointsSection
-              labels={labels}
+              labels={labels && labels.global && labels.global.bonusPoints}
               bonusData={bonusData}
               toggleBonusPointsModal={this.toggleBonusPointsModal}
-              enableApplyCta={enableApplyCta}
               getBonusDaysData={getBonusDaysData}
               orderDetails={orderDetails}
             />
@@ -87,8 +83,8 @@ class BonusPointsView extends React.Component {
           onRequestClose={this.toggleBonusPointsModal}
           overlayClassName="TCPModal__Overlay"
           className="TCPModal__Content bonus-details-modal"
-          heading={`${labels.myPlaceRewards.lbl_place_rewards_bonus} ${
-            labels.myPlaceRewards.lbl_place_rewards_points
+          heading={`${labels.lbl_bonusPoints_placeRewardsBonus} ${
+            labels.lbl_bonusPoints_placeRewardsPoints
           } DETAILS`}
           fixedWidth
           maxWidth="704px"

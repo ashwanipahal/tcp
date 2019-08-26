@@ -7,16 +7,7 @@ exports[`BonusPointsViewVanilla should render correctly 1`] = `
   >
     <Styled(BonusPointsSection)
       bonusData={Object {}}
-      enableApplyCta={false}
       getBonusDaysData={[Function]}
-      labels={
-        Object {
-          "myPlaceRewards": Object {
-            "lbl_place_rewards_bonus": "bonus",
-            "lbl_place_rewards_points": "points",
-          },
-        }
-      }
       orderDetails={Object {}}
       toggleBonusPointsModal={[Function]}
     />
@@ -24,7 +15,7 @@ exports[`BonusPointsViewVanilla should render correctly 1`] = `
   <Styled(Modal)
     className="TCPModal__Content bonus-details-modal"
     fixedWidth={true}
-    heading="bonus points DETAILS"
+    heading="undefined undefined DETAILS"
     inheritedStyles={
       Array [
         "

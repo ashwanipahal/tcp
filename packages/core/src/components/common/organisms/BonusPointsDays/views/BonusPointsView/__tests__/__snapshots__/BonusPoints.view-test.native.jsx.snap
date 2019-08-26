@@ -6,18 +6,20 @@ exports[`BonusPointsView should render correctly 1`] = `
 >
   <BonusPointsSection
     bonusData={Object {}}
+    enableApplyCta={false}
+    getBonusDaysData={[Function]}
     labels={
       Object {
         "myPlaceRewards": Object {
-          "lbl_place_rewards_bonus": "bonus",
-          "lbl_place_rewards_points": "points",
+          "lbl_bonus_points_msg": "",
         },
       }
     }
+    orderDetails={Object {}}
     toggleBonusPointsModal={[Function]}
   />
   <ModalNative
-    heading="bonus points DETAILS"
+    heading="undefined undefined DETAILS"
     headingAlign="left"
     headingFontFamily="secondary"
     isOpen={true}

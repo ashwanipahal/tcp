@@ -48,6 +48,7 @@ class BagPageView extends React.PureComponent {
       labels,
       totalCount,
       orderItemsCount,
+      isUserLoggedIn,
       showConfirmationModal,
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
@@ -66,6 +67,7 @@ class BagPageView extends React.PureComponent {
           leftSection={this.renderLeftSection}
           showLeftSection={isNoNEmptyBag}
           bagActions={this.renderActions}
+          isUserLoggedIn={isUserLoggedIn}
         />
         <BagConfirmationModal
           labels={labels}
@@ -88,6 +90,7 @@ BagPageView.propTypes = {
   showConfirmationModal: PropTypes.bool.isRequired,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
   removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withStyles(BagPageView, styles);

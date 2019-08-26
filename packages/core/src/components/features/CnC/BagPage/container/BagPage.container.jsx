@@ -4,6 +4,7 @@ import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
 import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 
 // @flow
 // type Props = {
@@ -33,6 +34,7 @@ export class BagPageContainer extends React.Component<Props> {
       totalCount,
       orderItemsCount,
       navigation,
+      isUserLoggedIn,
       handleCartCheckout,
       showConfirmationModal,
       closeCheckoutConfirmationModal,
@@ -50,6 +52,7 @@ export class BagPageContainer extends React.Component<Props> {
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         navigation={navigation}
+        isUserLoggedIn={isUserLoggedIn}
       />
     );
   }
@@ -84,6 +87,7 @@ const mapStateToProps = state => {
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 

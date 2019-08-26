@@ -26,7 +26,6 @@ export class BonusPointsDays extends React.Component {
     isBonusPointsEnabled: PropTypes.bool,
     view: PropTypes.string,
     isPlcc: PropTypes.bool,
-    enableApplyCta: PropTypes.bool,
     getAvailableBonusDaysData: PropTypes.func,
     orderId: PropTypes.string,
   };
@@ -41,7 +40,6 @@ export class BonusPointsDays extends React.Component {
     isBonusPointsEnabled: false,
     view: constants.VIEWS.EDIT,
     isPlcc: false,
-    enableApplyCta: false,
     getAvailableBonusDaysData: () => {},
     orderId: '',
   };
@@ -63,7 +61,6 @@ export class BonusPointsDays extends React.Component {
       isBonusPointsEnabled,
       view,
       isPlcc,
-      enableApplyCta,
       getAvailableBonusDaysData,
       orderId,
     } = this.props;
@@ -76,7 +73,6 @@ export class BonusPointsDays extends React.Component {
           bonusDetailsData={bonusDetailsData}
           view={view}
           isPlcc={isPlcc}
-          enableApplyCta={enableApplyCta}
           getBonusDaysData={getAvailableBonusDaysData}
           orderDetails={orderId}
         />

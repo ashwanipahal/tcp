@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
-import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
+// import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AddedToBagActions from '../../AddedToBagActions';
 import {
@@ -10,9 +10,11 @@ import {
   RowSectionStyle,
   HeadingTextStyle,
   ScrollViewWrapper,
+  BonusPointsWrapper,
 } from '../styles/BagPage.style.native';
+import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 
-const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
+const BagPage = ({ labels, totalCount, showAddTobag, navigation, isUserLoggedIn }) => {
   return (
     <>
       <ScrollViewWrapper showAddTobag={showAddTobag}>
@@ -20,10 +22,17 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
           <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
         </HeadingViewStyle>
         <MainSection>
-          <ProductTileWrapper bagLabels={labels} />
+          {/* <ProductTileWrapper bagLabels={labels} /> */}
           <RowSectionStyle>
             <OrderLedgerContainer />
           </RowSectionStyle>
+          {isUserLoggedIn && (
+            <RowSectionStyle>
+              <BonusPointsWrapper>
+                <BonusPointsDays />
+              </BonusPointsWrapper>
+            </RowSectionStyle>
+          )}
           <RowSectionStyle>
             <CouponAndPromos />
           </RowSectionStyle>
@@ -39,6 +48,7 @@ BagPage.propTypes = {
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default BagPage;

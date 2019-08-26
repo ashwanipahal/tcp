@@ -23,16 +23,16 @@ const getButtonText = ({
   let buttonText = '';
   let dataLocator = '';
   if (isUsed) {
-    buttonText = `${labels.myPlaceRewards.lbl_bonus_points_used_on} ${dateUsed}`;
+    buttonText = `${labels.lbl_bonusPoints_usedOn} ${dateUsed}`;
     dataLocator = 'usedonbtn';
   } else if (forFutureUse || futureDisabled) {
-    buttonText = labels.myPlaceRewards.lbl_bonus_points_future_use;
+    buttonText = labels.lbl_bonusPoints_futureUse;
     dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
-    buttonText = labels.common.lbl_common_applied_to_order;
+    buttonText = labels.lbl_bonusPoints_ctaApplied;
     dataLocator = 'appliedtoorderbtn';
   } else {
-    buttonText = labels.myPlaceRewards.lbl_bonus_points_available_today;
+    buttonText = labels.lbl_bonusPoints_ctaApply;
     dataLocator = 'availabletodaybtn';
   }
   return { buttonText, dataLocator };
@@ -94,7 +94,7 @@ const getHeader = ({ labels }) => {
           fontWeight="extrabold"
           component="span"
           color="orange.800"
-          text={labels.myPlaceRewards.lbl_place_rewards_bonus}
+          text={labels.lbl_bonusPoints_placeRewardsBonus}
         />
       </MarginRightWrapper>
       <MarginRightWrapper>
@@ -104,7 +104,7 @@ const getHeader = ({ labels }) => {
           fontWeight="extrabold"
           component="span"
           color="primary.main"
-          text={labels.myPlaceRewards.lbl_place_rewards_points}
+          text={labels.lbl_bonusPoints_placeRewardsPoints}
         />
       </MarginRightWrapper>
       <BodyCopy
@@ -113,17 +113,27 @@ const getHeader = ({ labels }) => {
         fontWeight="extrabold"
         component="span"
         color="pink.500"
-        text={labels.myPlaceRewards.lbl_place_rewards_day}
+        text={labels.lbl_bonusPoints_placeRewardsDay}
       />
     </StyledHeader>
   );
 };
 
-const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) => {
+const getContent = ({
+  labels,
+  toggleBonusPointsModal,
+  bonusPoints,
+  bonusData,
+  enableApplyCta,
+  getBonusDaysData,
+  orderDetails,
+}) => {
   let allUsed = false;
+  let valueOfbonusDayAvailableToday = 0;
   if (bonusData) {
-    const { totalBonusPointDays, usedBonusPointDays } = bonusData;
+    const { totalBonusPointDays, usedBonusPointDays, appliedToBagBonusPointDays } = bonusData;
     allUsed = totalBonusPointDays === usedBonusPointDays;
+    valueOfbonusDayAvailableToday = appliedToBagBonusPointDays;
   }
 
   return (
@@ -137,7 +147,7 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
               fontWeight="extrabold"
               data-locator="msgtextinbold"
               textAlign="center"
-              text={labels.myPlaceRewards.lbl_bonus_points_apply_any_day}
+              text={labels.lbl_bonusPoints_applyAnyDay}
             />
           </ApplyAnyDayWrapper>
           <InfoWrapper>
@@ -147,7 +157,7 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
               fontWeight="regular"
               data-locator="infomsg"
               textAlign="center"
-              text={labels.myPlaceRewards.lbl_bonus_points_msg}
+              text={labels.lbl_bonusPoints_msg}
             />
           </InfoWrapper>
         </React.Fragment>
@@ -159,13 +169,17 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
             fontWeight="regular"
             data-locator="infomsg"
             textAlign="center"
-            text={labels.myPlaceRewards.lbl_my_rewards_used_all}
+            text={labels.lbl_bonusPoints_myRewardsUsedAll}
           />
         </InfoWrapper>
       )}
       <BonusPointsAvailability
         labels={labels}
         bonusPoints={bonusPoints}
+        enableApplyCta={enableApplyCta}
+        getBonusDaysData={getBonusDaysData}
+        orderDetails={orderDetails}
+        bonusDayAvailableToday={valueOfbonusDayAvailableToday}
         className="availability-msg"
       />
       <Anchor
@@ -176,16 +190,31 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
         dataLocator="detailslink"
         className="details-link"
         onPress={e => toggleBonusPointsModal(e)}
-        text={labels.common.lbl_common_details}
+        text={labels.lbl_bonusPoints_details}
       />
     </React.Fragment>
   );
 };
 
-const BonusPointsSection = ({ labels, bonusData, toggleBonusPointsModal }) => {
+const BonusPointsSection = ({
+  labels,
+  bonusData,
+  toggleBonusPointsModal,
+  enableApplyCta,
+  getBonusDaysData,
+  orderDetails,
+}) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
   const header = getHeader({ labels });
-  const body = getContent({ labels, toggleBonusPointsModal, bonusPoints, bonusData });
+  const body = getContent({
+    labels,
+    toggleBonusPointsModal,
+    bonusPoints,
+    bonusData,
+    enableApplyCta,
+    getBonusDaysData,
+    orderDetails,
+  });
   return (
     <View>
       <CollapsibleContainer header={header} body={body} iconLocator="arrowicon" />
@@ -197,12 +226,18 @@ BonusPointsSection.propTypes = {
   labels: PropTypes.shape({ myPlaceRewards: {} }),
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
+  enableApplyCta: PropTypes.bool,
+  getBonusDaysData: PropTypes.func,
+  orderDetails: PropTypes.shape({}),
 };
 
 BonusPointsSection.defaultProps = {
   labels: { myPlaceRewards: { lbl_bonus_points_msg: '' } },
   bonusData: {},
   toggleBonusPointsModal: () => {},
+  enableApplyCta: false,
+  getBonusDaysData: () => {},
+  orderDetails: {},
 };
 
 getContent.propTypes = {
@@ -210,16 +245,19 @@ getContent.propTypes = {
   toggleBonusPointsModal: PropTypes.func,
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
+  enableApplyCta: PropTypes.bool,
+  getBonusDaysData: PropTypes.func,
+  orderDetails: PropTypes.shape({}),
 };
 
 getContent.defaultProps = {
-  labels: {
-    myPlaceRewards: { lbl_bonus_points_apply_any_day: '', lbl_bonus_points_msg: '' },
-    common: { lbl_common_details: '' },
-  },
+  labels: {},
   bonusPoints: [],
   toggleBonusPointsModal: () => {},
   bonusData: {},
+  enableApplyCta: false,
+  getBonusDaysData: () => {},
+  orderDetails: {},
 };
 
 getHeader.propTypes = {
@@ -229,8 +267,8 @@ getHeader.propTypes = {
 getHeader.defaultProps = {
   labels: {
     myPlaceRewards: {
-      lbl_place_rewards_bonus: '',
-      lbl_place_rewards_points: '',
+      lbl_bonusPoints_placeRewardsBonus: '',
+      lbl_bonusPoints_placeRewardsPoints: '',
       lbl_place_rewards_day: '',
     },
   },

@@ -20,6 +20,7 @@ class CnCTemplate extends React.Component<Props> {
       showLeftSection,
       className,
       header: Header,
+      isUserLoggedIn,
     } = this.props;
     return (
       <section className={className}>
@@ -35,9 +36,11 @@ class CnCTemplate extends React.Component<Props> {
             <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
               <OrderLedgerContainer />
               {BagActions && <BagActions />}
-              <div className="bonusPointsDaysWrapper">
-                <BonusPointsDays enableApplyCta />
-              </div>
+              {isUserLoggedIn && (
+                <div className="bonusPointsDaysWrapper">
+                  <BonusPointsDays enableApplyCta />
+                </div>
+              )}
               <AirmilesBanner />
               <CouponAndPromos />
             </Col>
