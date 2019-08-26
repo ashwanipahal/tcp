@@ -211,7 +211,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
         </div>
       </div>
       <div
-        lassName="pickUpAlternate-container"
+        className="pickUpAlternate-container"
       >
         <FormSection
           name="pickUpAlternate"
@@ -250,6 +250,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
+      disableBackLink="true"
       disableNext={true}
       nextButtonText="undefined: undefined"
     />
@@ -296,7 +297,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
         </FormSection>
       </div>
       <div
-        lassName="pickUpAlternate-container"
+        className="pickUpAlternate-container"
       >
         <FormSection
           name="pickUpAlternate"
@@ -318,6 +319,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
+      disableBackLink="true"
       disableNext={false}
       nextButtonText="undefined: undefined"
     />
@@ -536,7 +538,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
         </div>
       </div>
       <div
-        lassName="pickUpAlternate-container"
+        className="pickUpAlternate-container"
       >
         <FormSection
           name="pickUpAlternate"
@@ -558,6 +560,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
+      disableBackLink="true"
       disableNext={false}
       nextButtonText="undefined: undefined"
     />
