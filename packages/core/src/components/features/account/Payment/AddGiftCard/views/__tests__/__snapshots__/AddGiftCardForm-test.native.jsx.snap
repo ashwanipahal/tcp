@@ -200,6 +200,7 @@ exports[`Add gift card form component render error message 1`] = `
         fill="BLUE"
         fullWidth=""
         locator=""
+        onPress={[Function]}
         text=""
         url=""
       />
@@ -409,6 +410,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         fill="BLUE"
         fullWidth=""
         locator=""
+        onPress={[Function]}
         text=""
         url=""
       />

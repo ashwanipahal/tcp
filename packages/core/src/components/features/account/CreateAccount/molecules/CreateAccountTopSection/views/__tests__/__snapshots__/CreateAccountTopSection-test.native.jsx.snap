@@ -67,6 +67,7 @@ An online account has been created with your email! Click here to reset your pas
             customStyle={Object {}}
             fontSizeVariation="xlarge"
             locator=""
+            onPress={[Function]}
             text=""
             underline={true}
             visible={false}

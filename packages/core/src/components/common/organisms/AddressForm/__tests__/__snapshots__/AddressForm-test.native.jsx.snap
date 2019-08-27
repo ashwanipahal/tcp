@@ -752,6 +752,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={[Function]}
       style={
         Object {
           "color": "white",

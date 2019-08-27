@@ -13,6 +13,7 @@ type Props = {
   children?: Object,
   customStyle?: Object,
   locator?: string,
+  onPress?: Function,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -28,6 +29,7 @@ const Anchor = ({
   children,
   customStyle,
   locator,
+  onPress,
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
@@ -44,7 +46,7 @@ const Anchor = ({
     return (
       <TouchableOpacity
         accessibilityRole="link"
-        onPress={openUrl}
+        onPress={onPress || openUrl}
         {...otherProps}
         style={customStyle}
         testID={getLocator(locator)}
@@ -57,7 +59,7 @@ const Anchor = ({
     <AnchorView
       accessibilityRole="link"
       accessibilityLabel={text}
-      onPress={openUrl}
+      onPress={onPress || openUrl}
       style={customStyle}
       testID={getLocator(locator)}
     >
@@ -75,6 +77,7 @@ Anchor.defaultProps = {
   children: null,
   customStyle: {},
   locator: '',
+  onPress: () => {},
 };
 
 export default withStyles(Anchor, AnchorStyles);
