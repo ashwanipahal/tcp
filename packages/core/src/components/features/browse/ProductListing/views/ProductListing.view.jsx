@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
 import ProductList from '../molecules/ProductList/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
-import withStyles from '../../../../common/hoc/withStyles';
+
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
+
+import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
+
 import ReadMore from '../molecules/ReadMore/views';
-import ProductListingStyle from '../ProductListing.style';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 
 const ProductListView = ({
@@ -15,9 +17,11 @@ const ProductListView = ({
   currentNavIds,
   navTree,
   breadCrumbs,
-  categoryId,
+  filters,
   longDescription,
   labels,
+  labelsFilter,
+  categoryId,
   ...otherProps
 }) => {
   return (
@@ -43,7 +47,9 @@ const ProductListView = ({
             <div className="promo-area">Promo area</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="filter-area">FilterArea</div>
+            <div className="filter-area">
+              <ProductListingFiltersForm filters={filters} labels={labelsFilter} />
+            </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductList
@@ -80,6 +86,8 @@ ProductListView.propTypes = {
   categoryId: PropTypes.string,
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  filters: PropTypes.shape({}),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -89,8 +97,9 @@ ProductListView.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  filters: {},
   categoryId: '',
   labels: {},
+  labelsFilter: {},
 };
-
-export default withStyles(ProductListView, ProductListingStyle);
+export default ProductListView;

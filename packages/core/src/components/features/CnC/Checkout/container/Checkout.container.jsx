@@ -17,6 +17,7 @@ import selectors, {
   getCheckoutStage,
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 
 const {
   getShippingLabels,
@@ -60,6 +61,7 @@ export class CheckoutContainer extends React.Component<Props> {
       loadShipmentMethods,
       isGuest,
       isExpressCheckoutPage,
+      cartOrderItems,
     } = this.props;
     return (
       <CheckoutPage
@@ -84,6 +86,7 @@ export class CheckoutContainer extends React.Component<Props> {
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
+        cartOrderItems={cartOrderItems}
       />
     );
   }
@@ -150,6 +153,7 @@ const mapStateToProps = state => {
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
+    cartOrderItems: BagPageSelector.getOrderItems(state),
   };
 };
 

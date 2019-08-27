@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drop Down is shown should render Drop Down  1`] = `
+<StyledComponent
+  autosuggestAnalytics=""
+  className=""
+  classNamePrefix=""
+  dataLocator=""
+  facetName=""
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  width: ",
+          [Function],
+          ";
+  position: absolute;
+  z-index: ",
+          [Function],
+          ";
+  border: 1px solid ",
+          [Function],
+          ";
+  padding: ",
+          [Function],
+          " 0
+    ",
+          [Function],
+          " 0;
+  margin-top: ",
+          [Function],
+          ";
+  background-color: ",
+          [Function],
+          ";
+  text-align: center;
+  min-width: 233px;
+
+  .item-list-wrapper {
+    max-height: 430px;
+    text-align: center;
+  }
+
+  .item-list-column-wrapper {
+    display: inline-block;
+  }
+  .item-list-common {
+    display: flex;
+    position: static;
+    max-height: 352px;
+    max-width: 570px;
+    overflow: scroll;
+  }
+  .item-list-column {
+    flex-flow: column wrap;
+  }
+  .item-list-row {
+    flex-flow: row wrap;
+  }
+  .apply-button {
+    width: 210px;
+    margin-top: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(DropdownList)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  handleItemClick={[MockFunction]}
+  highlightedIndex={0}
+  labels={Object {}}
+  optionsMap={Array []}
+  query=""
+  selectedIndex={1}
+/>
+`;
