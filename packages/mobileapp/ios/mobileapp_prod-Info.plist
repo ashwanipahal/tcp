@@ -38,10 +38,6 @@
 		<string>Nunito.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
 		<string>Nunito-Bold.ttf</string>
-		<string>Mostardesign - Ariana Pro Black.otf</string>
-		<string>Mostardesign - Ariana Pro Bold.otf</string>
-		<string>Mostardesign - Ariana Pro Book.otf</string>
-		<string>Mostardesign - Ariana Pro Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>TCPLaunchScreen</string>

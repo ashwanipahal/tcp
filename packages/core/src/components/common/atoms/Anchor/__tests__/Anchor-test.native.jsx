@@ -16,6 +16,7 @@ describe('Anchor Native', () => {
         navigation={navigation}
         text="click Me"
         internal
+        name="Anchor"
       />
     );
   });
@@ -29,7 +30,7 @@ describe('Anchor Native', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('Text')).toHaveLength(1);
+    expect(component.find('[name="Anchor"]')).toHaveLength(1);
   });
 
   it('should call parseUrl', () => {

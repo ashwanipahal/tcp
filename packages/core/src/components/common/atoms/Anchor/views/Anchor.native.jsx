@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { StyledText } from '@tcp/core/styles/globalStyles/StyledText';
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
@@ -61,9 +62,9 @@ const Anchor = ({
       style={customStyle}
       testID={getLocator(locator)}
     >
-      <Text anchorVariation={anchorVariation} {...otherProps}>
+      <StyledText anchorVariation={anchorVariation} {...otherProps}>
         {text}
-      </Text>
+      </StyledText>
       {visible && <AnchorIcon source={Icon} />}
     </AnchorView>
   );

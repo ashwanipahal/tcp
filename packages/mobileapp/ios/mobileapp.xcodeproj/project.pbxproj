@@ -49,15 +49,7 @@
 		8424F1F622DC64A90090ECF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
 		844B115423001FA400A82DAA /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
 		844B115523001FB200A82DAA /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
-		844B12FD2301623600A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		844B13062301623600A82DAA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
-		844B13072301623600A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
-		844B13092301623600A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
-		844B13132301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
-		844B131B2301654300A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
-		844B131D2301654300A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
-		844B131F2301654300A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
-		844B13272301654300A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		844B13382301654300A82DAA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		846779FB230BC69E001F5301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
@@ -80,17 +72,13 @@
 		84677A0D230BC69E001F5301 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */; };
 		84677A0E230BC69E001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
 		84677A10230BC69E001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C474A67D034863BF52706E /* libReactNativeConfig.a */; };
-		84677A12230BC69E001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
-		84677A13230BC69E001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677A16230BC69E001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677A18230BC69E001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		84677A19230BC69E001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
-		84677A1A230BC69E001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677A1B230BC69E001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
-		84677A1C230BC69E001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677A1D230BC69E001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677A1E230BC69E001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677A1F230BC69E001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -115,17 +103,13 @@
 		84677A6C230BCD44001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
 		84677A6D230BCD44001F5301 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C354BFBC4F6D93F3AB43 /* libTouchID.a */; };
 		84677A6E230BCD44001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C474A67D034863BF52706E /* libReactNativeConfig.a */; };
-		84677A70230BCD44001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
-		84677A71230BCD44001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677A72230BCD44001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677A73230BCD44001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677A74230BCD44001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677A76230BCD44001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		84677A77230BCD44001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
-		84677A78230BCD44001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677A79230BCD44001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
-		84677A7A230BCD44001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677A7B230BCD44001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677A7C230BCD44001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677A7D230BCD44001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -150,17 +134,13 @@
 		84677A99230BCDAF001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
 		84677A9A230BCDAF001F5301 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C354BFBC4F6D93F3AB43 /* libTouchID.a */; };
 		84677A9B230BCDAF001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C474A67D034863BF52706E /* libReactNativeConfig.a */; };
-		84677A9D230BCDAF001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
-		84677A9E230BCDAF001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677A9F230BCDAF001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677AA0230BCDAF001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677AA1230BCDAF001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677AA3230BCDAF001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		84677AA4230BCDAF001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
-		84677AA5230BCDAF001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677AA6230BCDAF001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
-		84677AA7230BCDAF001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677AA8230BCDAF001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677AA9230BCDAF001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677AAA230BCDAF001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -185,17 +165,13 @@
 		84677AC6230BCE0A001F5301 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
 		84677AC7230BCE0A001F5301 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C354BFBC4F6D93F3AB43 /* libTouchID.a */; };
 		84677AC8230BCE0A001F5301 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C474A67D034863BF52706E /* libReactNativeConfig.a */; };
-		84677ACA230BCE0A001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
-		84677ACB230BCE0A001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677ACC230BCE0A001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677ACD230BCE0A001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677ACE230BCE0A001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677ACF230BCE0A001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677AD0230BCE0A001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		84677AD1230BCE0A001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
-		84677AD2230BCE0A001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677AD3230BCE0A001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
-		84677AD4230BCE0A001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677AD5230BCE0A001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677AD6230BCE0A001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677AD7230BCE0A001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -219,17 +195,13 @@
 		84677AF3230BCE94001F5301 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		84677AF4230BCE94001F5301 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		84677AF5230BCE94001F5301 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
-		84677AF7230BCE94001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
 		84677AF8230BCE94001F5301 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
-		84677AF9230BCE94001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677AFA230BCE94001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
-		84677AFB230BCE94001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677AFD230BCE94001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		84677AFE230BCE94001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677AFF230BCE94001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677B00230BCE94001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677B01230BCE94001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677B02230BCE94001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
 		84677B03230BCE94001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677B04230BCE94001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -253,17 +225,13 @@
 		84677B20230BCECC001F5301 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		84677B21230BCECC001F5301 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		84677B22230BCECC001F5301 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
-		84677B24230BCECC001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
 		84677B25230BCECC001F5301 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
-		84677B26230BCECC001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677B27230BCECC001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
-		84677B28230BCECC001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677B29230BCECC001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677B2A230BCECC001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		84677B2B230BCECC001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677B2C230BCECC001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677B2D230BCECC001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677B2E230BCECC001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677B2F230BCECC001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
 		84677B30230BCECC001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677B31230BCECC001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -287,17 +255,13 @@
 		84677B4D230BCF01001F5301 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		84677B4E230BCF01001F5301 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		84677B4F230BCF01001F5301 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
-		84677B51230BCF01001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
 		84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
-		84677B53230BCF01001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677B54230BCF01001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
-		84677B55230BCF01001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677B56230BCF01001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677B57230BCF01001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		84677B58230BCF01001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677B59230BCF01001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677B5A230BCF01001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677B5B230BCF01001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677B5C230BCF01001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
 		84677B5D230BCF01001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677B5E230BCF01001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -321,17 +285,13 @@
 		84677B7A230BCF37001F5301 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		84677B7B230BCF37001F5301 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		84677B7C230BCF37001F5301 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
-		84677B7E230BCF37001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
 		84677B7F230BCF37001F5301 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
-		84677B80230BCF37001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
 		84677B81230BCF37001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
-		84677B82230BCF37001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
 		84677B83230BCF37001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677B84230BCF37001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		84677B85230BCF37001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677B86230BCF37001F5301 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		84677B87230BCF37001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677B88230BCF37001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
 		84677B89230BCF37001F5301 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB022D70C2600D9D051 /* Nunito.ttf */; };
 		84677B8A230BCF37001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677B8B230BCF37001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -788,11 +748,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8424F1F222DC60160090ECF1 /* mobileapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobileapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8424F1F322DC60160090ECF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = mobileapp/AppDelegate.swift; sourceTree = "<group>"; };
-		844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Black.otf"; sourceTree = "<group>"; };
 		844B12E82301623400A82DAA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Book.otf"; sourceTree = "<group>"; };
-		844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Regular.otf"; sourceTree = "<group>"; };
-		844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Bold.otf"; sourceTree = "<group>"; };
 		84677A24230BC69E001F5301 /* mobileapp_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobileapp_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84677A82230BCD44001F5301 /* mobileapp_int.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobileapp_int.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84677AAF230BCDAF001F5301 /* mobileapp_uat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobileapp_uat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1445,10 +1401,6 @@
 		D94ECAAD22D70C2600D9D051 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */,
-				844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */,
-				844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */,
-				844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */,
 				844B12E82301623400A82DAA /* Nunito-Bold.ttf */,
 				D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */,
 				D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */,
@@ -2258,17 +2210,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844B13072301623600A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */,
-				844B12FD2301623600A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				D94ECADE22D70C2600D9D051 /* Montserrat-SemiBold.ttf in Resources */,
 				D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */,
 				844B13062301623600A82DAA /* Nunito-Bold.ttf in Resources */,
 				D94ECADB22D70C2600D9D051 /* Nunito-SemiBold.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D94ECADD22D70C2600D9D051 /* Nunito.ttf in Resources */,
-				844B13132301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				36C9821022E6F96D0002786B /* FontAwesome.ttf in Resources */,
-				844B13092301623600A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* TCPLaunchScreen.xib in Resources */,
 				D94ECADC22D70C2600D9D051 /* Nunito-Black.ttf in Resources */,
@@ -2294,17 +2242,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677A12230BC69E001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
-				84677A13230BC69E001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A16230BC69E001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A18230BC69E001F5301 /* Images.xcassets in Resources */,
 				84677A19230BC69E001F5301 /* Nunito.ttf in Resources */,
-				84677A1A230BC69E001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677A1B230BC69E001F5301 /* FontAwesome.ttf in Resources */,
-				84677A1C230BC69E001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677A1D230BC69E001F5301 /* Montserrat.ttf in Resources */,
 				84677A1E230BC69E001F5301 /* TCPLaunchScreen.xib in Resources */,
 				84677A1F230BC69E001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2315,17 +2259,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677A70230BCD44001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
-				84677A71230BCD44001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677A72230BCD44001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677A73230BCD44001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A74230BCD44001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A76230BCD44001F5301 /* Images.xcassets in Resources */,
 				84677A77230BCD44001F5301 /* Nunito.ttf in Resources */,
-				84677A78230BCD44001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677A79230BCD44001F5301 /* FontAwesome.ttf in Resources */,
-				84677A7A230BCD44001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677A7B230BCD44001F5301 /* Montserrat.ttf in Resources */,
 				84677A7C230BCD44001F5301 /* TCPLaunchScreen.xib in Resources */,
 				84677A7D230BCD44001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2336,17 +2276,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677A9D230BCDAF001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
-				84677A9E230BCDAF001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677A9F230BCDAF001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677AA0230BCDAF001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677AA1230BCDAF001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AA3230BCDAF001F5301 /* Images.xcassets in Resources */,
 				84677AA4230BCDAF001F5301 /* Nunito.ttf in Resources */,
-				84677AA5230BCDAF001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677AA6230BCDAF001F5301 /* FontAwesome.ttf in Resources */,
-				84677AA7230BCDAF001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677AA8230BCDAF001F5301 /* Montserrat.ttf in Resources */,
 				84677AA9230BCDAF001F5301 /* TCPLaunchScreen.xib in Resources */,
 				84677AAA230BCDAF001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2357,17 +2293,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677ACA230BCE0A001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
-				84677ACB230BCE0A001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677ACC230BCE0A001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677ACD230BCE0A001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677ACE230BCE0A001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677ACF230BCE0A001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AD0230BCE0A001F5301 /* Images.xcassets in Resources */,
 				84677AD1230BCE0A001F5301 /* Nunito.ttf in Resources */,
-				84677AD2230BCE0A001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677AD3230BCE0A001F5301 /* FontAwesome.ttf in Resources */,
-				84677AD4230BCE0A001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677AD5230BCE0A001F5301 /* Montserrat.ttf in Resources */,
 				84677AD6230BCE0A001F5301 /* TCPLaunchScreen.xib in Resources */,
 				84677AD7230BCE0A001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2378,17 +2310,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677AF7230BCE94001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
 				84677AF8230BCE94001F5301 /* GymboreeLaunchScreen.xib in Resources */,
-				84677AF9230BCE94001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677AFA230BCE94001F5301 /* Montserrat-SemiBold.ttf in Resources */,
-				84677AFB230BCE94001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677AFD230BCE94001F5301 /* FontAwesome.ttf in Resources */,
 				84677AFE230BCE94001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AFF230BCE94001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B00230BCE94001F5301 /* Images.xcassets in Resources */,
-				84677B01230BCE94001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677B02230BCE94001F5301 /* Nunito.ttf in Resources */,
 				84677B03230BCE94001F5301 /* Montserrat.ttf in Resources */,
 				84677B04230BCE94001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2399,17 +2327,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677B24230BCECC001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
 				84677B25230BCECC001F5301 /* GymboreeLaunchScreen.xib in Resources */,
-				84677B26230BCECC001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677B27230BCECC001F5301 /* Montserrat-SemiBold.ttf in Resources */,
-				84677B28230BCECC001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677B29230BCECC001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B2A230BCECC001F5301 /* FontAwesome.ttf in Resources */,
 				84677B2B230BCECC001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677B2C230BCECC001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B2D230BCECC001F5301 /* Images.xcassets in Resources */,
-				84677B2E230BCECC001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677B2F230BCECC001F5301 /* Nunito.ttf in Resources */,
 				84677B30230BCECC001F5301 /* Montserrat.ttf in Resources */,
 				84677B31230BCECC001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2420,17 +2344,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677B51230BCF01001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
 				84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */,
-				84677B53230BCF01001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677B54230BCF01001F5301 /* Montserrat-SemiBold.ttf in Resources */,
-				84677B55230BCF01001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677B56230BCF01001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B57230BCF01001F5301 /* FontAwesome.ttf in Resources */,
 				84677B58230BCF01001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677B59230BCF01001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B5A230BCF01001F5301 /* Images.xcassets in Resources */,
-				84677B5B230BCF01001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677B5C230BCF01001F5301 /* Nunito.ttf in Resources */,
 				84677B5D230BCF01001F5301 /* Montserrat.ttf in Resources */,
 				84677B5E230BCF01001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2441,17 +2361,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84677B7E230BCF37001F5301 /* Mostardesign - Ariana Pro Book.otf in Resources */,
 				84677B7F230BCF37001F5301 /* GymboreeLaunchScreen.xib in Resources */,
-				84677B80230BCF37001F5301 /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				84677B81230BCF37001F5301 /* Montserrat-SemiBold.ttf in Resources */,
-				84677B82230BCF37001F5301 /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				84677B83230BCF37001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B84230BCF37001F5301 /* FontAwesome.ttf in Resources */,
 				84677B85230BCF37001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677B86230BCF37001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B87230BCF37001F5301 /* Images.xcassets in Resources */,
-				84677B88230BCF37001F5301 /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				84677B89230BCF37001F5301 /* Nunito.ttf in Resources */,
 				84677B8A230BCF37001F5301 /* Montserrat.ttf in Resources */,
 				84677B8B230BCF37001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2462,17 +2378,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844B131F2301654300A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */,
 				8480856522D9B52500D7D25B /* GymboreeLaunchScreen.xib in Resources */,
-				844B131B2301654300A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				8480856622D9B52500D7D25B /* Montserrat-SemiBold.ttf in Resources */,
-				844B131D2301654300A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */,
 				8480856722D9B52500D7D25B /* Montserrat-Black.ttf in Resources */,
 				844B13382301654300A82DAA /* FontAwesome.ttf in Resources */,
 				8480856822D9B52500D7D25B /* Nunito-SemiBold.ttf in Resources */,
 				844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */,
 				8480856922D9B52500D7D25B /* Images.xcassets in Resources */,
-				844B13272301654300A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				8480856A22D9B52500D7D25B /* Nunito.ttf in Resources */,
 				8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */,
 				8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */,

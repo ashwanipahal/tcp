@@ -5,6 +5,7 @@ import {
   TEXT_ALIGNS,
   FONT_WEIGHTS,
   FONT_SIZES,
+  ANDROID_FONTS,
 } from './typography.constants';
 
 const BASE_HEADING_TYPOGRAPHY = {
@@ -17,6 +18,7 @@ const BASE_HEADING_TYPOGRAPHY = {
 
 const gymboreeTypography = {
   fonts: FONTS,
+  androidFonts: ANDROID_FONTS,
   letterSpacings: LETTER_SPACINGS,
   lineHeights: LINE_HEIGHTS,
   textAligns: TEXT_ALIGNS,

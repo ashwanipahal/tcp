@@ -415,6 +415,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "typography": Object {
+        "androidFonts": Object {
+          "primary": "montserrat",
+          "secondary": "nunito",
+        },
         "fontSizes": Object {
           "fs10": "10px",
           "fs12": "12px",

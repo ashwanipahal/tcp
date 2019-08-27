@@ -5,6 +5,7 @@ import {
   TEXT_ALIGNS,
   FONT_WEIGHTS,
   FONT_SIZES,
+  ANDROID_FONTS,
 } from './typography.constants';
 
 const BASE_HEADING_TYPOGRAPHY = {
@@ -81,6 +82,7 @@ function createThemeTypography(theme = {}) {
 
   return {
     fonts,
+    androidFonts: ANDROID_FONTS,
     fontWeights,
     fontSizes,
     letterSpacings,

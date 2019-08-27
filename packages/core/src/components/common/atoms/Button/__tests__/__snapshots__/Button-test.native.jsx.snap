@@ -8,7 +8,7 @@ exports[`CustomButton should render correctly 1`] = `
   onPress={[Function]}
   style={Object {}}
 >
-  <Text
+  <Styled(Text)
     buttonVariation="fixed-width"
     fullWidth=""
     url=""
