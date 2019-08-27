@@ -12,6 +12,7 @@ const HeaderTopNav = ({
   promoMessageWrapper,
   openOverlay,
   isUserLoggedIn,
+  labels,
 }) => {
   const onLinkClick = e => {
     e.preventDefault();
@@ -40,7 +41,7 @@ const HeaderTopNav = ({
             onClick={e => onLinkClick(e)}
             data-locator="track_order_header"
           >
-            Track Order
+            {labels.lbl_header_trackOrder}
           </BodyCopy>
         </div>
       </div>
@@ -54,6 +55,7 @@ HeaderTopNav.propTypes = {
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   openOverlay: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(HeaderTopNav, HeaderTopNavStyle);
