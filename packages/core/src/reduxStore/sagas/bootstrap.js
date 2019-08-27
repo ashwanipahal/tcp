@@ -24,7 +24,7 @@ function* bootstrap(params) {
       apiConfig,
       deviceType,
       locals,
-      optimizelyHeadersList,
+      optimizelyHeadersObject,
     },
   } = params;
   const { country, currency, language } = locals;
@@ -34,7 +34,7 @@ function* bootstrap(params) {
     // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
     yield putResolve(setAPIConfig(apiConfig));
     yield putResolve(setDeviceInfo({ deviceType }));
-    yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersList));
+    yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
     const result = yield call(bootstrapAbstractor, pagesList, modulesList);
     yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
     yield put(loadLabelsData(result.labels));

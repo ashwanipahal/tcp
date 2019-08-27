@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import setCookie from 'set-cookie-parser';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
@@ -72,21 +73,16 @@ class TCPWebApp extends App {
       const apiConfig = createAPIConfig(locals);
 
       // optimizely headers
-      const setCookieHeaders = res.getHeader('set-cookie');
-      const optimizelyHeaderPart = setCookieHeaders && setCookieHeaders.split('=');
-      const optimizelyHeaders =
-        optimizelyHeaderPart &&
-        JSON.parse(
-          optimizelyHeaderPart[
-            optimizelyHeaderPart.indexOf(constants.OPTIMIZELY_DECISION_LABEL) + 1
-          ]
-        );
-      const optimizelyHeadersList = [];
-      if (optimizelyHeaders) {
-        optimizelyHeaders.forEach(item => {
-          if (res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)) {
-            optimizelyHeadersList.push(item);
-          }
+      const optimizelyHeadersObject = {};
+      const setCookieHeaderList = setCookie.parse(res).map(({ name, value }) => ({
+        [name]: JSON.parse(value),
+      }));
+      const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
+      if (optimizelyHeader) {
+        optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
+          optimizelyHeadersObject[item] = JSON.parse(
+            res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
+          );
         });
       }
 
@@ -94,7 +90,7 @@ class TCPWebApp extends App {
         ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
-        optimizelyHeadersList,
+        optimizelyHeadersObject,
         locals,
       };
       store.dispatch(bootstrapData(payload));
