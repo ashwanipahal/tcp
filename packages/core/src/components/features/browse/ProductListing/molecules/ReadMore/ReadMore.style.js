@@ -45,12 +45,11 @@ export default css`
     cursor: pointer;
   }
 
-  .read-more-state:checked ~ .read-more-trigger {
-    .read-more {
-      display: none;
-    }
-    .read-less {
-      display: block;
-    }
+  .read-more-state:checked ~ .read-more {
+    display: none;
+  }
+
+  .read-more-state:checked ~ .read-less {
+    display: block;
   }
 `;

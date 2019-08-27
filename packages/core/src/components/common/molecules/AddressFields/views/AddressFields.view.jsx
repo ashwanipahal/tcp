@@ -30,6 +30,8 @@ export class AddressFields extends React.PureComponent {
     formSection: PropTypes.string,
     className: PropTypes.string,
     variation: PropTypes.string,
+    checkPOBoxAddress: PropTypes.func,
+    loadShipmentMethods: PropTypes.func.isRequired,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -67,6 +69,20 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
   };
 
+  checkHasPoAddress = () => {
+    const { checkPOBoxAddress } = this.props;
+    if (checkPOBoxAddress) {
+      checkPOBoxAddress();
+    }
+  };
+
+  changeShipmentMethods = () => {
+    const { loadShipmentMethods } = this.props;
+    if (loadShipmentMethods) {
+      loadShipmentMethods();
+    }
+  };
+
   renderCountrySelector = () => {
     const { addressFormLabels, formSection } = this.props;
     return (
@@ -93,7 +109,7 @@ export class AddressFields extends React.PureComponent {
             noLink
             href="#"
             anchorVariation="primary"
-            data-locator="shipping internationally"
+            dataLocator="shipping internationally"
             target="_self"
             className="change-country-link"
           >
@@ -120,6 +136,7 @@ export class AddressFields extends React.PureComponent {
             dataLocator="addnewaddress-state"
             className="address-field"
             enableSuccessCheck={false}
+            onChange={this.changeShipmentMethods}
           />
         </Col>
         <Col
@@ -161,6 +178,7 @@ export class AddressFields extends React.PureComponent {
               dataLocator="addnewaddress-addressl1"
               className="address-field"
               enableSuccessCheck={false}
+              onChange={this.checkHasPoAddress}
             />
           </Col>
           <Col colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}>
@@ -322,6 +340,7 @@ AddressFields.defaultProps = {
   formSection: '',
   className: '',
   variation: 'primary',
+  checkPOBoxAddress: () => {},
 };
 
 export default withStyles(AddressFields, styles);

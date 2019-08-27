@@ -58,7 +58,7 @@ const CheckoutHeader = ({ className, brandTabs, labels }) => {
               underline
               anchorVariation="primary"
               to="/bag"
-              data-locator="checkout-header-returnToBag"
+              dataLocator="checkout-header-returnToBag"
             >
               {labels.returnBagLabel}
             </Anchor>

@@ -109,7 +109,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_0"
+          dataLocator="moduleN_cta_links_0"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/girl"
@@ -152,7 +152,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_1"
+          dataLocator="moduleN_cta_links_1"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-girl"
@@ -195,7 +195,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_2"
+          dataLocator="moduleN_cta_links_2"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/boy"
@@ -238,7 +238,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_3"
+          dataLocator="moduleN_cta_links_3"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-boy2"
@@ -281,7 +281,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_4"
+          dataLocator="moduleN_cta_links_4"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-boy"
@@ -324,7 +324,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
-          data-locator="moduleN_cta_links_5"
+          dataLocator="moduleN_cta_links_5"
           fontSizeVariation="large"
           fontWeightVariation="active"
           href="/toddler-boy"

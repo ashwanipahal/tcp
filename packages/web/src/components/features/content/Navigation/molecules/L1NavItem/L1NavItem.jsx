@@ -80,6 +80,7 @@ class L1NavItem extends React.PureComponent {
     let classForHovered = '';
     if (hovered && !removeL1Focus) {
       classForHovered = 'is-open';
+      this.childRendered = true;
     }
 
     // If we receive flag showOnlyOnApp then we add this class to links to hide them
@@ -121,7 +122,7 @@ class L1NavItem extends React.PureComponent {
               <span className="icon-arrow" />
             </div>
           </Anchor>
-          {hovered && children}
+          {(hovered || this.childRendered) && children}
           <div className={`${className} l1-overlay ${classForHovered}`} />
         </BodyCopy>
       </React.Fragment>

@@ -8,6 +8,7 @@ import PaymentReducer from '@tcp/core/src/components/features/account/Payment/co
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
+import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
 import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -34,6 +35,8 @@ import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 
 import {
   APICONFIG_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+  COUNTRY_SELECTOR_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -80,6 +83,7 @@ import UserReducer from '@tcp/core/src/components/features/account/User/containe
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
+import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
@@ -93,6 +97,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
@@ -109,6 +114,7 @@ export default combineReducers({
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   form: reduxFormReducer,
   [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
+  [COUNTRY_SELECTOR_REDUCER_KEY]: CountrySelectorReducer,
   [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,

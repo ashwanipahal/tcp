@@ -41,7 +41,7 @@ export const AccountOverviewTile = ({
             fill="BLUE"
             centered
             className="elem-mb-SM"
-            data-locator={`${dataLocator}_btn`}
+            dataLocator={`${dataLocator}_btn`}
           >
             {ctaTitle}
           </Anchor>

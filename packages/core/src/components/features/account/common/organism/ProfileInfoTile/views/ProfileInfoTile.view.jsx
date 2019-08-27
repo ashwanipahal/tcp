@@ -92,7 +92,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 anchorVariation="primary"
                 to="/account?id=profile"
                 asPath="/account/profile"
-                data-locator="userdetailsEditLnk"
+                dataLocator="userdetailsEditLnk"
               >
                 {labels.lbl_overview_profileInfoEditCTA}
               </Anchor>
@@ -140,7 +140,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 anchorVariation="primary"
                 to="/account?id=profile"
                 asPath="/account/profile"
-                data-locator="mailingAddressEditLnk"
+                dataLocator="mailingAddressEditLnk"
               >
                 {labels.lbl_overview_profileInfoEditCTA}
               </Anchor>
@@ -188,7 +188,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 anchorVariation="primary"
                 to={internalEndpoints.changePassowrdPage.link}
                 asPath={internalEndpoints.changePassowrdPage.path}
-                data-locator="passwordChangeLnk"
+                dataLocator="passwordChangeLnk"
               >
                 {labels.lbl_overview_profileInfoChangeCTA}
               </Anchor>

@@ -240,7 +240,9 @@ const ButtonList = ({ locator, buttonListVariation, navigation, buttonsData, col
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    return <Container>{renderScrollCTAList(buttonsData, navigation, locator, color)}</Container>;
+    return (
+      <ContainerView>{renderScrollCTAList(buttonsData, navigation, locator, color)}</ContainerView>
+    );
   }
 
   if (buttonListVariation === 'linkCTAList') {

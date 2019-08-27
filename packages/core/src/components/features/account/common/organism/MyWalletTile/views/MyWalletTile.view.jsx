@@ -63,7 +63,7 @@ export const MyWalletTile = ({ className, labels, commonLabels, coupons }) => {
               fill="WHITE"
               to={internalEndpoints.shopNowPage.link}
               asPath={internalEndpoints.shopNowPage.path}
-              data-locator="accountoverview-mywallettile-startshopbtn"
+              dataLocator="accountoverview-mywallettile-startshopbtn"
             >
               {labels.lbl_overview_myWalletShopCTA}
             </Anchor>

@@ -5,8 +5,10 @@ import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPag
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
+import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import AddressVerificationReducer from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
@@ -47,6 +49,8 @@ import {
   USER_REDUCER_KEY,
   CHECKOUT_REDUCER_KEY,
   DEVICE_INFO_REDUCER_KEY,
+  ADDEDITADDRESS_REDUCER_KEY,
+  ADDRESS_VERIFICATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -92,6 +96,8 @@ const rootReducer = combineReducers({
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [USER_REDUCER_KEY]: UserReducer,
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
+  [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
+  [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
 });
 
 export default rootReducer;

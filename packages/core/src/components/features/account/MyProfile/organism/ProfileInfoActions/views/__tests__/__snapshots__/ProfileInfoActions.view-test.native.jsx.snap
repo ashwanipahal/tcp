@@ -1,20 +1,161 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProfileInfoActions should render correctly 1`] = `
+exports[`ProfileInfoActions should render correctly for empty state 1`] = `
 <MyProfileTile
   ctaLink="accountOverviewMobile"
   ctaTitle=""
   handleComponentChange={[Function]}
   title=""
 >
-  <Styled(Styled(BodyCopy))
-    fontSize="fs16"
-    fontWeight="semibold"
-    spacingStyles="margin-bottom-MED"
-  />
-  <Styled(Styled(BodyCopy))
-    fontSize="fs16"
-    spacingStyles="margin-bottom-MED"
-  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Styled(BodyCopy))
+        fontSize="fs16"
+        fontWeight="semibold"
+        spacingStyles="margin-bottom-MED"
+      />
+      <Styled(BodyCopy)
+        fontSize="fs16"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/mailingAddress.png",
+        }
+      }
+      activityId="mailingAddress"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/store.png",
+        }
+      }
+      activityId="favStore"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/birthday.png",
+        }
+      }
+      activityId="userBirthday"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/survey.png",
+        }
+      }
+      activityId="aboutYourself"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+  </Styled(View)>
+</MyProfileTile>
+`;
+
+exports[`ProfileInfoActions should render correctly for filled state 1`] = `
+<MyProfileTile
+  ctaLink="accountOverviewMobile"
+  ctaTitle=""
+  handleComponentChange={[Function]}
+  title=""
+>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Styled(BodyCopy))
+        fontSize="fs16"
+        fontWeight="semibold"
+        spacingStyles="margin-bottom-MED"
+      />
+      <Styled(BodyCopy)
+        fontSize="fs16"
+      />
+      <Styled(BodyCopy)
+        fontSize="fs16"
+      />
+      <Styled(BodyCopy)
+        fontSize="fs16"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <ProfileProgress
+        bgColor="#fff"
+        borderWidth={10}
+        color="#1ba5e0"
+        profileCompletion="100"
+        radius={50}
+        shadowColor="#000"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/mailingAddress.png",
+        }
+      }
+      activityId="mailingAddress"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/store.png",
+        }
+      }
+      activityId="favStore"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/birthday.png",
+        }
+      }
+      activityId="userBirthday"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+    <ProfileInfoActionTile
+      activityCompletionState=""
+      activityDescription=""
+      activityIcon={
+        Object {
+          "testUri": "../../../../core/src/assets/survey.png",
+        }
+      }
+      activityId="aboutYourself"
+      activityTitle="+20%"
+      handleComponentChange={[Function]}
+    />
+  </Styled(View)>
 </MyProfileTile>
 `;

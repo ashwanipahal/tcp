@@ -189,7 +189,7 @@ const getContent = ({
         underline
         href="#"
         anchorVariation="primary"
-        data-locator="detailslink"
+        dataLocator="detailslink"
         className="details-link"
         onClick={e => toggleBonusPointsModal(e)}
       >

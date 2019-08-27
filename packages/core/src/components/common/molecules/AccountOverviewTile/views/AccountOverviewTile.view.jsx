@@ -39,7 +39,7 @@ export const AccountOverviewTile = ({
           fill="BLUE"
           centered
           className="elem-mb-SM"
-          data-locator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
+          dataLocator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
         >
           {ctaTitle}
         </Anchor>

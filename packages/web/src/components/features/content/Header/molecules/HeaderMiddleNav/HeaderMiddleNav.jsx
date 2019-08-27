@@ -149,6 +149,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
               <React.Fragment>
                 <Anchor
                   href="#"
+                  noLink
                   id="createAccount"
                   className="leftLink"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
@@ -159,6 +160,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 </Anchor>
                 <Anchor
                   href="#"
+                  noLink
                   id="login"
                   className="rightLink"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
