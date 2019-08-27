@@ -69,9 +69,6 @@ const SelectBox = ({
             );
           })}
       </select>
-      <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
-        {placeholder}
-      </BodyCopy>
       <div className="SelectBox__error">
         <div className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
         {touched && error && (

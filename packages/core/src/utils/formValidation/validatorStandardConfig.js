@@ -70,8 +70,8 @@ export const formValidationMessages = {
     validEmail: 'Email format is invalid',
   },
   emailAddress: {
-    required: `ERROR: Please enter a valid email`,
-    emailPattern: 'ERROR: Email format is invalid',
+    required: `Please enter a valid email`,
+    emailPattern: 'Email format is invalid',
   },
   confirmEmailAddress: {
     required: 'Please confirm your email address',

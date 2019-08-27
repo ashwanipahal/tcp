@@ -5,7 +5,6 @@ import { ApplyCardLayoutView } from '../views/ApplyCardLayout.View';
 import { fetchModuleX, submitInstantCardApplication } from './ApplyCard.actions';
 import { getCreditCardContent, getPLCCApplicationStatus } from './ApplyCard.selector';
 import PropTypes from 'prop-types';
-import { isPlccUser } from '../../../account/LoginPage/container/LoginPage.selectors';
 
 class ApplyCardLayoutContainer extends React.Component {
   static propTypes = {
@@ -50,7 +49,6 @@ export const mapStateToProps = state => ({
   applicationStatus: getPLCCApplicationStatus(state),
   disclaimersData: getCreditCardContent(state),
   labels: state.Labels && state.Labels.PLCC && state.Labels.PLCC.plccForm,
-  isPlcc: isPlccUser(state),
 });
 
 export const mapDispatchToProps = dispatch => {

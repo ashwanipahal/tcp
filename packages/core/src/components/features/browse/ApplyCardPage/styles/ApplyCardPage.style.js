@@ -29,6 +29,7 @@ export default styled.div`
   .iAgree_terms_conditions {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     flex-direction: row;
     > input {
       flex: -1 0 50%;

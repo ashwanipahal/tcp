@@ -167,6 +167,7 @@ class ContactInformationFormWrapper extends React.Component {
                   id="state"
                   name="statewocountry"
                   component={SelectBox}
+                  placeholder={labels.plcc_form_state_placeholder}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
                   dataLocator="plcc_state"
                   className="field"
