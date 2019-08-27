@@ -109,8 +109,8 @@ const wrapMethod = (methodName, WrappedComponent) => {
       // eslint-disable-next-line prefer-rest-params
       return originalMethod.apply(this, arguments);
     } catch (err) {
+      logError({ error: err, errorInfo: WrappedComponent.name });
       if (methodName === 'render') {
-        logError({ error: err, errorInfo: WrappedComponent.name });
         return renderErrorComponent(err, WrappedComponent.name);
       }
       if (methodName === 'shouldComponentUpdate') {
