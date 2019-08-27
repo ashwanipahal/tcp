@@ -272,10 +272,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     margin-right: 4px;
     margin-top: 2px;
   }
-
-  & .potential {
-    margin: 2px;
-  }
 ",
                     ";
 ",

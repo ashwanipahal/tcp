@@ -68,10 +68,6 @@ const styles = css`
     margin-right: 4px;
     margin-top: 2px;
   }
-
-  & .potential {
-    margin: 2px;
-  }
 `;
 
 export default styles;

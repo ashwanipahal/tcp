@@ -3,8 +3,14 @@
 exports[`ProfileInformation should render correctly 1`] = `
 <Fragment>
   <ProfileInfoActions
+    defaultStore=""
     handleComponentChange={[Function]}
     labels={Object {}}
+    mailingAddress={Object {}}
+    percentageIncrement={Object {}}
+    profileCompletion=""
+    userBirthday=""
+    userSurvey={Array []}
   />
   <PersonalInformation
     handleComponentChange={[Function]}

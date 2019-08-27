@@ -157,10 +157,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
     margin-right: 4px;
     margin-top: 2px;
   }
-
-  & .potential {
-    margin: 2px;
-  }
 ",
                   ";
 ",
@@ -501,10 +497,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
     width: 15px;
     margin-right: 4px;
     margin-top: 2px;
-  }
-
-  & .potential {
-    margin: 2px;
   }
 ",
                   ";

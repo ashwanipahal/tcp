@@ -1779,10 +1779,6 @@ exports[`AddressFields component should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
-
-  & .potential {
-    margin: 2px;
-  }
 ",
                 ";
 ",

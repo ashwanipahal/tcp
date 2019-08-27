@@ -115,10 +115,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
     margin-right: 4px;
     margin-top: 2px;
   }
-
-  & .potential {
-    margin: 2px;
-  }
 ",
                 ";
 ",
@@ -276,10 +272,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     width: 15px;
     margin-right: 4px;
     margin-top: 2px;
-  }
-
-  & .potential {
-    margin: 2px;
   }
 ",
                 ";
@@ -651,10 +643,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     width: 15px;
     margin-right: 4px;
     margin-top: 2px;
-  }
-
-  & .potential {
-    margin: 2px;
   }
 ",
                 ";

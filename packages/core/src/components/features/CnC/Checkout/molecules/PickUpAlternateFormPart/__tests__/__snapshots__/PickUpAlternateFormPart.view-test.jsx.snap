@@ -116,10 +116,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     margin-right: 4px;
     margin-top: 2px;
   }
-
-  & .potential {
-    margin: 2px;
-  }
 ",
                 ";
 ",
@@ -271,10 +267,6 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
     width: 15px;
     margin-right: 4px;
     margin-top: 2px;
-  }
-
-  & .potential {
-    margin: 2px;
   }
 ",
                 ";
