@@ -19,6 +19,7 @@ function* bootstrap(params) {
   const {
     payload: { name: pageName = 'homepage', modules, apiConfig, deviceType },
   } = params;
+  const { country, currency, language } = apiConfig;
   const pagesList = [pageName];
   const modulesList = modules;
   try {
@@ -32,7 +33,6 @@ function* bootstrap(params) {
     yield put(loadNavigationData(result.navigation));
     yield put(loadFooterData(result.footer));
     yield put(loadModulesData(result.modules));
-    const { country, currency, language } = apiConfig;
     yield put(setCountry(country));
     yield put(setCurrency(currency));
     yield put(setLanguage(language));
