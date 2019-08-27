@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
+import { trackError } from '@tcp/core/src/utils/errorReporter.util';
 import FallbackErrorComponent from './ErrorFallbackComponent';
 import { DEFAULT_CLASS_NAME, LIFECYCLE_METHODS } from './config';
 
@@ -16,6 +17,18 @@ const renderErrorComponent = (error, componentName) => {
     },
     FallbackErrorComponent.call(this, { errorMessage: error.message, componentName })
   );
+};
+
+const logError = ({ error, errorInfo }) => {
+  trackError({
+    error,
+    extraData: {
+      errorInfo,
+    },
+    tags: {
+      component: 'ERROR_BOUNDARY',
+    },
+  });
 };
 
 /**
@@ -38,6 +51,7 @@ const renderClientSafeComponent = (renderComponent, componentName) => {
     componentDidCatch(error, errorInfo) {
       // eslint-disable-next-line no-console
       console.log(error, errorInfo);
+      logError({ error, errorInfo });
     }
 
     render() {
@@ -58,6 +72,7 @@ const functionalSafeComponent = WrappedComponent => {
         ? renderErrorComponent(error, WrappedComponent.name)
         : WrappedComponent(passedProps);
     } catch (err) {
+      logError({ error: err, errorInfo: WrappedComponent.name });
       return renderErrorComponent(err, WrappedComponent.name);
     }
   };
@@ -95,6 +110,7 @@ const wrapMethod = (methodName, WrappedComponent) => {
       return originalMethod.apply(this, arguments);
     } catch (err) {
       if (methodName === 'render') {
+        logError({ error: err, errorInfo: WrappedComponent.name });
         return renderErrorComponent(err, WrappedComponent.name);
       }
       if (methodName === 'shouldComponentUpdate') {
