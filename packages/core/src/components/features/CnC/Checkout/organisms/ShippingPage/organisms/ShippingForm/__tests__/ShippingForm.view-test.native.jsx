@@ -8,6 +8,7 @@ describe('Shipping Form', () => {
       addressLabels: { addressFormLabels: {} },
       shippingLabels: {},
       smsSignUpLabels: {},
+      handleSubmit: jest.fn(),
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();

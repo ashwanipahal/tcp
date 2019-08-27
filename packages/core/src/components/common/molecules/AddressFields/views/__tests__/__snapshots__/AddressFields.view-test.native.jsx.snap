@@ -155,7 +155,6 @@ exports[`AddressFields component should render correctly 1`] = `
       dataLocator="addnewaddress-addressl2"
       id="addressLine2"
       name="addressLine2"
-      onValueChange={[Function]}
     />
   </Styled(View)>
   <Field
@@ -955,7 +954,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
       dataLocator="addnewaddress-addressl2"
       id="addressLine2"
       name="addressLine2"
-      onValueChange={[Function]}
     />
   </Styled(View)>
   <Field
@@ -1755,7 +1753,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
       dataLocator="addnewaddress-addressl2"
       id="addressLine2"
       name="addressLine2"
-      onValueChange={[Function]}
     />
   </Styled(View)>
   <Field
@@ -2555,7 +2552,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
       dataLocator="addnewaddress-addressl2"
       id="addressLine2"
       name="addressLine2"
-      onValueChange={[Function]}
     />
   </Styled(View)>
   <Field

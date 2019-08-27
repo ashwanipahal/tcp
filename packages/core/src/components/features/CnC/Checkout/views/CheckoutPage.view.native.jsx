@@ -13,6 +13,10 @@ export default class CheckoutPage extends React.PureComponent {
       navigation,
       shippingProps,
       loadShipmentMethods,
+      isGuest,
+      isUsSite,
+      orderHasPickUp,
+      submitShippingSection,
     } = this.props;
     return (
       <>
@@ -27,6 +31,10 @@ export default class CheckoutPage extends React.PureComponent {
           {...shippingProps}
           loadShipmentMethods={loadShipmentMethods}
           navigation={navigation}
+          isGuest={isGuest}
+          isUsSite={isUsSite}
+          orderHasPickUp={orderHasPickUp}
+          handleSubmit={submitShippingSection}
         />
       </>
     );
@@ -41,4 +49,9 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
+  isGuest: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  isUsSite: PropTypes.bool.isRequired,
+  orderHasPickUp: PropTypes.bool.isRequired,
+  submitShippingSection: PropTypes.func.isRequired,
 };

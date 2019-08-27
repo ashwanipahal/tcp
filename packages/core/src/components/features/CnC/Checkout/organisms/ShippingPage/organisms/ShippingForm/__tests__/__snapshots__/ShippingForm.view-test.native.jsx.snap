@@ -8,7 +8,6 @@ exports[`Shipping Form should render correctly 1`] = `
     <AddressFields
       addressFormLabels={Object {}}
       addressPhoneNo={null}
-      checkPOBoxAddress={[Function]}
       formName="checkoutShipping"
       formSection="address"
       showDefaultCheckbox={false}
@@ -38,5 +37,9 @@ exports[`Shipping Form should render correctly 1`] = `
       shipmentMethods={null}
     />
   </FormSection>
+  <CnCCommonTemplate
+    btnText="NEXT:BILLING"
+    routeToPage=""
+  />
 </Styled(View)>
 `;

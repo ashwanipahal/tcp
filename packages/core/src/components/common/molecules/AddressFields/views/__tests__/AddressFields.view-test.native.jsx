@@ -47,9 +47,7 @@ describe('AddressFields component', () => {
 
     const component = shallow(<AddressFields {...props} />);
     component.setState({ country: 'US' });
-    component.instance().checkHasPoAddress();
     component.instance().changeShipmentMethods();
-    expect(mockedcheckPOBoxAddress).toHaveBeenCalled();
     expect(mockedloadShipmentMethods).toHaveBeenCalled();
     expect(component).toMatchSnapshot();
   });

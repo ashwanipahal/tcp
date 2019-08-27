@@ -7,6 +7,7 @@ exports[`Shipping Page should render correctly 1`] = `
       Checkout Progress Bar container
     </Text>
   </View>
+  <CheckoutSectionTitleDisplay />
   <Styled(View)>
     <Styled(BodyCopy)
       color="black"
@@ -55,14 +56,11 @@ exports[`Shipping Page should render correctly 1`] = `
     shouldValidate={[Function]}
     shouldWarn={[Function]}
     submitAsSideEffect={false}
+    submitShippingForm={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
     updateUnregisteredFields={false}
     validate={[Function]}
-  />
-  <CnCCommonTemplate
-    btnText="NEXT:BILLING"
-    routeToPage=""
   />
 </ScrollViewMock>
 `;
