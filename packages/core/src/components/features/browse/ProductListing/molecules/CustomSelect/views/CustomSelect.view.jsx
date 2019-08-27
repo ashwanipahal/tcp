@@ -293,33 +293,33 @@ class CustomSelect extends React.Component {
   getIndexOrIndicesOfValue = (optionsMap, valueOrValues) => {
     return Array.isArray(valueOrValues)
       ? optionsMap.map(
-        item => valueOrValues.findIndex(selectedValue => item.value === selectedValue) >= 0
-      )
+          item => valueOrValues.findIndex(selectedValue => item.value === selectedValue) >= 0
+        )
       : optionsMap.findIndex(item => item.value === valueOrValues);
-  }
-
+  };
 
   captureContainerDivRef(ref) {
     this.containerDivRef = ref;
   }
 
-  
   /** closes the dropdown */
-  closeMenu () {
+  closeMenu() {
     if (!this.state.expanded || this.props.disableExpandStateChanges) return;
     this.setState({ expanded: false });
     if (this.state.expanded && this.props.onCloseCallback) this.props.onCloseCallback();
   }
 
-  
   /** opens the dropdown */
   expandMenu() {
     if (this.state.expanded || this.props.disableExpandStateChanges) return;
-    let highlightedIndex = this.getIndexOrIndicesOfValue(this.props.optionsMap, this.props.input.value);
+    let highlightedIndex = this.getIndexOrIndicesOfValue(
+      this.props.optionsMap,
+      this.props.input.value
+    );
     if (Array.isArray(highlightedIndex)) {
-      highlightedIndex = highlightedIndex.findIndex((isSelected) => isSelected);
+      highlightedIndex = highlightedIndex.findIndex(isSelected => isSelected);
     }
-    // TODO Fix This 
+    // TODO Fix This
     this.setHighlightedIndex(highlightedIndex);
 
     this.setState({ expanded: true });
@@ -610,7 +610,10 @@ class CustomSelect extends React.Component {
               fontFamily="secondary"
               color="gray.900"
               fontWeight={expanded ? 'extrabold' : 'regular'}
-              className={['filter-label', expanded ? 'filter-label-expanded' : ''].join(' ')}
+              className={[
+                'filter-label sort-filter-label',
+                expanded ? 'filter-label-expanded' : '',
+              ].join(' ')}
               outline="none"
               data-locator={getLocator(`plp_filter_${dataLocatorSuffix}`)}
             >

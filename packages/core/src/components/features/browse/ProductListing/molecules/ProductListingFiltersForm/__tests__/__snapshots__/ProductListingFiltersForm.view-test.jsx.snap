@@ -2350,6 +2350,205 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
       </div>
     </div>
   </form>
+  <form>
+    <ReduxForm
+      destroyOnUnmount={true}
+      enableReinitialize={false}
+      forceUnregisterOnUnmount={false}
+      form="sort-selector"
+      getFormState={[Function]}
+      isMobile={false}
+      keepDirtyOnReinitialize={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      sortSelectOptions={
+        Array [
+          Object {
+            "content": <ForwardRef
+              className="sort-title"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Recommended
+            </ForwardRef>,
+            "title": <ForwardRef
+              className="sort-item-selected"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Recommended
+            </ForwardRef>,
+            "value": "",
+          },
+          Object {
+            "content": <ForwardRef
+              className="sort-title"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Price: High to Low
+            </ForwardRef>,
+            "title": <ForwardRef
+              className="sort-item-selected"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Price: High to Low
+            </ForwardRef>,
+            "value": "min_offer_price desc",
+          },
+          Object {
+            "content": <ForwardRef
+              className="sort-title"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Price: Low to High
+            </ForwardRef>,
+            "title": <ForwardRef
+              className="sort-item-selected"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Price: Low to High
+            </ForwardRef>,
+            "value": "min_offer_price asc",
+          },
+          Object {
+            "content": <ForwardRef
+              className="sort-title"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Newest
+            </ForwardRef>,
+            "title": <ForwardRef
+              className="sort-item-selected"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Newest
+            </ForwardRef>,
+            "value": "newest_score desc",
+          },
+          Object {
+            "content": <ForwardRef
+              className="sort-title"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Most Favorited
+            </ForwardRef>,
+            "title": <ForwardRef
+              className="sort-item-selected"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Most Favorited
+            </ForwardRef>,
+            "value": "favoritedcount desc",
+          },
+          Object {
+            "content": <ForwardRef
+              className="sort-title"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Top Rated
+            </ForwardRef>,
+            "title": <ForwardRef
+              className="sort-item-selected"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              Top Rated
+            </ForwardRef>,
+            "value": "TCPBazaarVoiceRating desc",
+          },
+        ]
+      }
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+    />
+  </form>
   <ReduxForm
     className="render-mobile-view"
     destroyOnUnmount={true}

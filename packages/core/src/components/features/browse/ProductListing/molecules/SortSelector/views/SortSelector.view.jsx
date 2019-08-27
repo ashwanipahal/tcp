@@ -13,18 +13,27 @@ export const FACETS_FIELD_KEY = {
 const SortSelector = props => {
   const {
     className,
-    isMobile,
     onChange,
     sortSelectOptions,
     selectTextOverride,
     onExpandCallback,
+    expanded,
+    hideTitle,
   } = props;
   console.info('sortSelectOptions', sortSelectOptions);
   return (
     <Field
-      name={FACETS_FIELD_KEY.sort} component={CustomSelect} optionsMap={sortSelectOptions} title={isMobile ? 'Sort' : 'Sort By: '}
-      placeholder="Sort" allowMultipleSelections={false} className={className} onChange={onChange} onExpandCallback={onExpandCallback}
-      expanded={isMobile} disableExpandStateChanges={isMobile} selectTextOverride={selectTextOverride}
+      name={FACETS_FIELD_KEY.sort}
+      component={CustomSelect}
+      optionsMap={sortSelectOptions}
+      title={hideTitle ? '' : 'Sort By: '}
+      placeholder={hideTitle ? '' : 'Sort'}
+      allowMultipleSelections={false}
+      className={className}
+      onChange={onChange}
+      onExpandCallback={onExpandCallback}
+      expanded={expanded}
+      selectTextOverride={selectTextOverride}
     />
   );
 };

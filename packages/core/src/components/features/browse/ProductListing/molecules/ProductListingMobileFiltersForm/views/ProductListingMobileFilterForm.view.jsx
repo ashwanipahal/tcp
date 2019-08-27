@@ -11,6 +11,8 @@ import AccordionList from '../../../../../../common/molecules/AccordionList';
 import FilterModal from '../../FilterModal/views';
 import { Row, Col, Button } from '../../../../../../common/atoms';
 import { getLocator } from '../../../../../../../utils';
+import SortSelector from '../../SortSelector';
+import config from '../../SortSelector/SortSelector.config';
 
 // @flow
 type Props = {
@@ -32,6 +34,28 @@ const FACETS_FIELD_KEY = {
   l1category: 'l1category',
 };
 
+function getSortCustomOptionsMap(sortOptionsMap) {
+  return sortOptionsMap.map(sortOption => ({
+    value: sortOption.id,
+    title: (
+      <BodyCopy
+        component="span"
+        className="sort-item-selected"
+        fontSize="fs13"
+        fontFamily="secondary"
+        fontWeight="extrabold"
+      >
+        {sortOption.displayName}
+      </BodyCopy>
+    ),
+    content: (
+      <BodyCopy component="span" className="sort-title" fontSize="fs14" fontFamily="secondary">
+        {sortOption.displayName}
+      </BodyCopy>
+    ),
+  }));
+}
+
 class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
@@ -39,6 +63,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     this.state = {
       isOpenFilterSection: false,
       show: false,
+      isSortOpenModal: false,
     };
   }
 
@@ -95,7 +120,11 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   };
 
   showModal = () => {
-    this.setState({ show: true });
+    this.setState({ show: true, isSortOpenModal: false });
+  };
+
+  showSortModal = () => {
+    this.setState({ show: true, isSortOpenModal: true });
   };
 
   toggleFilterIcon = () => {
@@ -147,9 +176,19 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   }
 
   renderMobilePlpFilterForm() {
+    const { isSortOpenModal } = this.state;
     return (
       <div>
-        <div className="filters-sorting-container">{this.renderMobileFilters()}</div>
+        {!isSortOpenModal && (
+          <div className="filters-sorting-container">{this.renderMobileFilters()}</div>
+        )}
+        {isSortOpenModal && (
+          <SortSelector
+            expanded={true}
+            sortSelectOptions={getSortCustomOptionsMap(config)}
+            hideTitle={true}
+          />
+        )}
       </div>
     );
   }
@@ -264,6 +303,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               type="button"
               className="open-filter-button"
               data-locator="view_gallery_button"
+              onClick={this.showSortModal}
             >
               SORT
             </Button>

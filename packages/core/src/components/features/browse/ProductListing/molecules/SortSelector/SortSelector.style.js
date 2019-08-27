@@ -5,9 +5,10 @@ const selectedIcon = getIconPath('selected-item');
 
 export default css`
   .sort-select-title {
-    display: inline-block;
+    display: none;
     padding-right: 5px;
   }
+
   .sort-item-selected {
     display: inline-block;
     width: 88px;
@@ -36,5 +37,11 @@ export default css`
   }
   .sort-select-button {
     display: inline-block;
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .sort-select-title {
+      display: inline-block;
+    }
   }
 `;

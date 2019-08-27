@@ -1709,6 +1709,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         buttonVariation="fixed-width"
         className="open-filter-button"
         data-locator="view_gallery_button"
+        onClick={[Function]}
         type="button"
       >
         SORT
