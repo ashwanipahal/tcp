@@ -264,6 +264,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       vertical,
       autoplayInterval,
       showDots,
+      overlap,
+      buttonPosition,
       autoplay,
       darkArrow,
     } = this.props;
@@ -357,7 +359,7 @@ SnapCarousel.defaultProps = {
   autoplay: true,
   hidePlayStopButton: false,
   overlap: false,
-  darkArrow: false
+  darkArrow: false,
 };
 
 export default withTheme(SnapCarousel);
