@@ -73,7 +73,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          data-locator="checkout-header-returnToBag"
+          dataLocator="checkout-header-returnToBag"
           fontSizeVariation="medium"
           to="/bag"
           underline={true}

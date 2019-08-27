@@ -23,13 +23,13 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
 class HeaderMiddleNav extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { isLoggedIn } = props;
+    const { isLoggedIn, cartItemCount } = props;
     this.state = {
       isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
-      cartItemCount: getCartItemCount(),
+      cartItemCount,
     };
   }
 
@@ -149,6 +149,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
               <React.Fragment>
                 <Anchor
                   href="#"
+                  noLink
                   id="createAccount"
                   className="leftLink"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
@@ -159,6 +160,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 </Anchor>
                 <Anchor
                   href="#"
+                  noLink
                   id="login"
                   className="rightLink"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
@@ -234,6 +236,7 @@ HeaderMiddleNav.propTypes = {
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  cartItemCount: PropTypes.func.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

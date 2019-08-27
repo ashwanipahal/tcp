@@ -79,7 +79,10 @@ class AccountOverview extends PureComponent<Props> {
         {isUserLoggedIn && (
           <React.Fragment>
             <Panel title={labels.lbl_overview_myPlaceRewardsHeading}>
-              <MyPlaceRewardsOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
+              <MyPlaceRewardsOverviewTile
+                labels={labels}
+                handleComponentChange={handleComponentChange}
+              />
             </Panel>
             <Panel title={labels.lbl_overview_myWalletHeading} />
             <Panel title={labels.lbl_overview_earnPointsHeading} />

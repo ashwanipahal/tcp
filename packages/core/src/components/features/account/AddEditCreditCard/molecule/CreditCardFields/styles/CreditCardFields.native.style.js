@@ -5,7 +5,7 @@ const PaymentContainer = styled.View`
 `;
 
 const CardContainer = styled.View`
-  height: 80px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const ExpiryContainer = styled.View`
@@ -13,4 +13,25 @@ const ExpiryContainer = styled.View`
   flex-direction: row;
 `;
 
-export { PaymentContainer, CardContainer, ExpiryContainer };
+const ExpiryMonth = styled.View`
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const ExpiryYear = styled.View`
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const CardTextboxStyle = {
+  height: 50,
+};
+
+export {
+  PaymentContainer,
+  CardContainer,
+  ExpiryContainer,
+  ExpiryMonth,
+  ExpiryYear,
+  CardTextboxStyle,
+};

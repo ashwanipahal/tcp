@@ -1,10 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// eslint-disable-next-line import/no-unresolved
-import { withRouter } from 'next/router';
-import { initCheckoutAction } from './Checkout.action';
+import {
+  initCheckoutAction,
+  submitShippingSection,
+  submitPickupSection,
+  onEditModeChangeAction,
+  fetchShipmentMethods,
+} from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
-import selectors from './Checkout.selector';
+import selectors, {
+  isGuest as isGuestUser,
+  isExpressCheckout,
+  getAlternateFormUpdate,
+  getPickUpContactFormLabels,
+  getSendOrderUpdate,
+  getCheckoutStage,
+} from './Checkout.selector';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+
+const {
+  getShippingLabels,
+  getSmsSignUpLabels,
+  getSelectedShipmentId,
+  getAddressFields,
+  getAddressPhoneNo,
+  getIsOrderHasPickup,
+  getEmailSignUpLabels,
+  getShipmentMethods,
+  getDefaultShipmentID,
+  getShippingSendOrderUpdate,
+} = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
   componentDidMount() {
@@ -14,31 +40,53 @@ export class CheckoutContainer extends React.Component<Props> {
 
   render() {
     const {
-      router,
       initialValues,
+      pickupInitialValues,
       onEditModeChange,
       isSmsUpdatesEnabled,
       currentPhoneNumber,
-      isGuest,
       isMobile,
-      isExpressCheckout,
       activeStage,
       activeStep,
       isUsSite,
+      shippingProps,
+      navigation,
+      orderHasPickUp,
+      submitShipping,
+      isOrderUpdateChecked,
+      isAlternateUpdateChecked,
+      pickUpLabels,
+      smsSignUpLabels,
+      onPickupSubmit,
+      loadShipmentMethods,
+      isGuest,
+      isExpressCheckoutPage,
+      cartOrderItems,
     } = this.props;
     return (
       <CheckoutPage
-        currentSection={router.query.section}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
         isMobile={isMobile}
-        isExpressCheckout={isExpressCheckout}
+        isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
         activeStep={activeStep}
         isUsSite={isUsSite}
+        pickupInitialValues={pickupInitialValues}
+        isOrderUpdateChecked={isOrderUpdateChecked}
+        isAlternateUpdateChecked={isAlternateUpdateChecked}
+        pickUpLabels={pickUpLabels}
+        smsSignUpLabels={smsSignUpLabels}
+        navigation={navigation}
+        onPickupSubmit={onPickupSubmit}
+        shippingProps={shippingProps}
+        orderHasPickUp={orderHasPickUp}
+        submitShippingSection={submitShipping}
+        loadShipmentMethods={loadShipmentMethods}
+        cartOrderItems={cartOrderItems}
       />
     );
   }
@@ -49,26 +97,50 @@ export const mapDispatchToProps = dispatch => {
     initCheckout: () => {
       dispatch(initCheckoutAction());
     },
+    submitShipping: payload => {
+      dispatch(submitShippingSection(payload));
+    },
+    onPickupSubmit: data => {
+      dispatch(submitPickupSection(data));
+    },
+    onEditModeChange: data => {
+      dispatch(onEditModeChangeAction(data));
+    },
+    loadShipmentMethods: () => {
+      dispatch(fetchShipmentMethods());
+    },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    initialValues: selectors.getInitialPickupSectionValues(state),
-    onEditModeChange: true, // storeOperators.checkoutSignalsOperator.setIsEditingSubform,
+    initialValues: selectors.getPickupInitialPickupSectionValues(state),
+    pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),
-    isGuest: selectors.isGuest(state),
+    isGuest: isGuestUser(state),
     isMobile: selectors.getIsMobile(),
-    isExpressCheckout: selectors.isExpressCheckout(state),
-    activeStage: selectors.getCheckoutStage(state),
+    isExpressCheckoutPage: isExpressCheckout(state),
+    activeStage: getCheckoutStage(state),
+    shippingProps: {
+      addressLabels: getAddEditAddressLabels(state),
+      isOrderUpdateChecked: getShippingSendOrderUpdate(state),
+      shippingLabels: getShippingLabels(state),
+      smsSignUpLabels: getSmsSignUpLabels(state),
+      selectedShipmentId: getSelectedShipmentId(state),
+      address: getAddressFields(state),
+      addressPhoneNumber: getAddressPhoneNo(state),
+      emailSignUpLabels: getEmailSignUpLabels(state),
+      shipmentMethods: getShipmentMethods(state),
+      defaultShipmentId: getDefaultShipmentID(state),
+    },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
     // onShippingSubmit: storeOperators.checkoutFormOperator.submitShippingSection,
     // onBillingSubmit: storeOperators.checkoutFormOperator.submitBillingSection,
     // onReviewSubmit: storeOperators.checkoutFormOperator.submitOrderForProcessing,
 
-    activeStep: selectors.getCheckoutStage(state),
+    activeStep: getCheckoutStage(state),
     // moveToCheckoutStage: storeOperators.checkoutSignalsOperator.moveToStage,
     // availableStages: storeOperators.checkoutSignalsOperator.getAvailableStages(),
 
@@ -76,12 +148,16 @@ const mapStateToProps = state => {
     // isPlccFormModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccFormModalId,
     isUsSite: selectors.isUsSite(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
+    orderHasPickUp: getIsOrderHasPickup(state),
+    pickUpLabels: getPickUpContactFormLabels(state),
+    smsSignUpLabels: getSmsSignUpLabels(state),
+    isOrderUpdateChecked: getSendOrderUpdate(state),
+    isAlternateUpdateChecked: getAlternateFormUpdate(state),
+    cartOrderItems: BagPageSelector.getOrderItems(state),
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CheckoutContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CheckoutContainer);

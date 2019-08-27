@@ -25,6 +25,7 @@ const PromoBanner = (props: Props) => {
     className,
     ...otherProps
   } = props;
+
   return (
     <BodyCopy component="div" className={className} {...otherProps}>
       <React.Fragment>
@@ -33,7 +34,7 @@ const PromoBanner = (props: Props) => {
             let promoText;
 
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
-            if (style === 'style7' || style === 'style6') {
+            if (style === 'style7' || style === 'percentage_wrapped_large') {
               const style7Texts = text.split('%');
               promoText = (
                 <div className={`promo-text ${style}`}>

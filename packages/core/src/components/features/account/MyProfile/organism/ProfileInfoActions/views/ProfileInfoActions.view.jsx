@@ -11,34 +11,13 @@ import ProfileProgress from '../../../molecules/ProfileProgress';
 import styles from '../styles/ProfileInfoActions.style';
 import { getIconPath } from '../../../../../../../utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import {
+  getMailingAddressState,
+  getFavStoreState,
+  getUserBirthdayState,
+  getAboutYourselfState
+} from '../ProfileInfoActions.utils';
 
-export const getMailingAddressState = (mailingAddress, labels) => {
-  if (mailingAddress && mailingAddress.get('isComplete')) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
-
-export const getFavStoreState = (defaultStore, labels) => {
-  if (defaultStore) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
-
-export const getUserBirthdayState = (userBirthday, labels) => {
-  if (userBirthday) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
-
-export const getAboutYourselfState = (userSurvey, labels) => {
-  if (userSurvey && userSurvey.getIn(['0', '0']) && userSurvey.getIn(['1', '0'])) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
 
 export const ProfileInfoActions = ({
   labels,
@@ -73,7 +52,7 @@ export const ProfileInfoActions = ({
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.lbl_profile_getMorePoints}
-                <Anchor to="/account" underline fontSizeVariation="xlarge" data-locator="hereLink">
+                <Anchor to="/account" underline fontSizeVariation="xlarge" dataLocator="hereLink">
                   {labels.lbl_profile_getMorePointsLink}
                 </Anchor>
                 {'?'}

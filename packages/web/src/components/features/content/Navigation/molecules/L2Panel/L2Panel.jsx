@@ -24,7 +24,7 @@ const createShopByLinks = (links, column) => {
               to={url}
               title={title}
               target={target}
-              data-locator={`l2_size_btn_${currentIndex}`}
+              dataLocator={`l2_size_btn_${currentIndex}`}
             >
               <BodyCopy className="l2-circle-link">{text}</BodyCopy>
             </Anchor>
@@ -251,7 +251,7 @@ const L2Panel = props => {
                               className="l2-image-banner-link"
                               to={link.url}
                               title={link.title}
-                              data-locator={`overlay_img_link_${l1Index}`}
+                              dataLocator={`overlay_img_link_${l1Index}`}
                               target={link.target}
                             >
                               <Image

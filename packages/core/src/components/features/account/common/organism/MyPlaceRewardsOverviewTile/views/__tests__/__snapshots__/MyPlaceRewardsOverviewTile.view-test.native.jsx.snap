@@ -9,9 +9,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   />
   <Styled(LineComp)
     borderColor="gray"
-    borderWidth={1}
-    marginBottom={24}
-    marginTop={24}
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
   />
   <View>
     <Styled(BodyCopy)
@@ -28,7 +28,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         buttonVariation="variable-width"
         centered={true}
         customStyle={Object {}}
-        data-locator="accountoverview-myplacerewardstile-startshopbtn"
+        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
         locator=""
@@ -40,9 +40,9 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   </View>
   <Styled(LineComp)
     borderColor="gray"
-    borderWidth={1}
-    marginBottom={24}
-    marginTop={24}
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
   />
   <Styled(View)>
     <Styled(CustomButton)
@@ -70,37 +70,40 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   />
   <Styled(LineComp)
     borderColor="gray"
-    borderWidth={1}
-    marginBottom={24}
-    marginTop={24}
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
   />
-  <View>
-    <Styled(BodyCopy)
-      data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
-      fontSize="fs14"
-      fontWeight="semibold"
-      margin-bottom="15"
-      text=""
-    />
-    <CouponList
-      coupons={
-        Immutable.List [
-          Object {},
-        ]
-      }
-      labels={
-        Object {
-          "lbl_overview_myPlaceRewardsAvailable": "",
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
+        fontSize="fs14"
+        fontWeight="semibold"
+        text=""
+      />
+    </View>
+    <Styled(View)>
+      <CouponList
+        coupons={
+          Immutable.List [
+            Object {},
+          ]
         }
-      }
-      sliceCount={2}
-    />
-  </View>
+        labels={
+          Object {
+            "lbl_overview_myPlaceRewardsAvailable": "",
+          }
+        }
+        sliceCount={2}
+      />
+    </Styled(View)>
+  </Styled(View)>
   <Styled(LineComp)
     borderColor="gray"
-    borderWidth={1}
-    marginBottom={24}
-    marginTop={24}
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
   />
   <Connect(BonusPointsDays)
     labels={

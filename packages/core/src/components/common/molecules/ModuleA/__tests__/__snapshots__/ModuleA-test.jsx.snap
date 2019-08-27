@@ -21,7 +21,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
     }
   >
     <ForwardRef
-      className=""
       ctaItems={
         Array [
           Object {
@@ -30,7 +29,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "target": "",
               "text": "Girl",
               "title": "Girl",
-              "url": "/girl",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Girl",
@@ -38,7 +37,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Girl",
-              "url": "http://image.com/girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -47,7 +46,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "target": "",
               "text": "Toddler Girl",
               "title": "Toddler Girl",
-              "url": "/toddler-girl",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Toddler Girl alt",
@@ -55,7 +54,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Girl title",
-              "url": "http://image.com/toddler-girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -64,7 +63,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "target": "",
               "text": "Boy",
               "title": "Boy",
-              "url": "/boy",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Boy",
@@ -72,7 +71,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Boy",
-              "url": "http://image.com/boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
             },
           },
           Object {
@@ -81,7 +80,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "target": "",
               "text": "Toddler Boy",
               "title": "Toddler Boy",
-              "url": "/toddler-boy",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Toddler Boy alt",
@@ -89,7 +88,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Boy title",
-              "url": "http://image.com/toddler-boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
             },
           },
           Object {
@@ -98,7 +97,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "target": "",
               "text": "Baby",
               "title": "Baby",
-              "url": "/baby",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Baby",
@@ -106,11 +105,12 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               "crop_m": "",
               "crop_t": "",
               "title": "Baby",
-              "url": "http://image.com/baby",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
             },
           },
         ]
       }
+      ctaType="stackedCTAList"
       largeCompImageCarousel={
         Array [
           Object {
@@ -125,7 +125,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -150,7 +150,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -161,20 +161,20 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -184,11 +184,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -207,7 +207,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -232,7 +232,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -243,20 +243,20 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -266,11 +266,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -289,7 +289,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -314,7 +314,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -325,20 +325,20 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -348,11 +348,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -371,7 +371,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -396,7 +396,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -407,20 +407,20 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -430,11 +430,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -443,8 +443,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           },
         ]
       }
-      set={Array []}
-      variant="gymboree"
     />
   </ForwardRef>
 </ForwardRef>
@@ -471,7 +469,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
     }
   >
     <ForwardRef
-      className=""
       ctaItems={
         Array [
           Object {
@@ -480,7 +477,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "target": "",
               "text": "Girl",
               "title": "Girl",
-              "url": "/girl",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Girl",
@@ -488,7 +485,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Girl",
-              "url": "http://image.com/girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -497,7 +494,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "target": "",
               "text": "Toddler Girl",
               "title": "Toddler Girl",
-              "url": "/toddler-girl",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Toddler Girl alt",
@@ -505,7 +502,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Girl title",
-              "url": "http://image.com/toddler-girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
@@ -514,7 +511,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "target": "",
               "text": "Boy",
               "title": "Boy",
-              "url": "/boy",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Boy",
@@ -522,7 +519,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Boy",
-              "url": "http://image.com/boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
             },
           },
           Object {
@@ -531,7 +528,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "target": "",
               "text": "Toddler Boy",
               "title": "Toddler Boy",
-              "url": "/toddler-boy",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Toddler Boy alt",
@@ -539,7 +536,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Toddler Boy title",
-              "url": "http://image.com/toddler-boy",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
             },
           },
           Object {
@@ -548,7 +545,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "target": "",
               "text": "Baby",
               "title": "Baby",
-              "url": "/baby",
+              "url": "/c/",
             },
             "image": Object {
               "alt": "Baby",
@@ -556,11 +553,12 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               "crop_m": "",
               "crop_t": "",
               "title": "Baby",
-              "url": "http://image.com/baby",
+              "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
             },
           },
         ]
       }
+      ctaType="stackedCTAList"
       largeCompImageCarousel={
         Array [
           Object {
@@ -575,7 +573,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -600,7 +598,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -611,20 +609,20 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -634,11 +632,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -657,7 +655,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -682,7 +680,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -693,20 +691,20 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -716,11 +714,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -739,7 +737,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -764,7 +762,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -775,20 +773,20 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -798,11 +796,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -821,7 +819,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/trending",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
@@ -846,7 +844,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "Family Tees",
                   "title": "Family Tees",
-                  "url": "/image/url",
+                  "url": "/c/image/url",
                 },
               },
             ],
@@ -857,20 +855,20 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "/c/",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style7",
+                    "style": "percentage_wrapped_extra_large",
                     "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
+                    "style": "small_text_bold",
+                    "text": "50 % Off",
                   },
                   Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "small_text_normal",
+                    "text": " All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -880,11 +878,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 "position": "right",
                 "textItems": Array [
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "Order By XX/XX",
                   },
                   Object {
-                    "style": "style10",
+                    "style": "ribbon_default_text",
                     "text": "For Easter Delivery!",
                   },
                 ],
@@ -893,8 +891,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           },
         ]
       }
-      set={Array []}
-      variant="tcp"
     />
   </ForwardRef>
 </ForwardRef>

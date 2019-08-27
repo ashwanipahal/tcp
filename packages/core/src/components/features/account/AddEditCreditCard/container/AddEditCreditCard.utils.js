@@ -15,18 +15,18 @@ const MONTH_SHORT_FORMAT = {
 
 export const getCreditCardExpirationOptionMap = () => {
   const expMonthOptionsMap = [
-    { id: '1', label: MONTH_SHORT_FORMAT.JAN },
-    { id: '2', label: MONTH_SHORT_FORMAT.FEB },
-    { id: '3', label: MONTH_SHORT_FORMAT.MAR },
-    { id: '4', label: MONTH_SHORT_FORMAT.APR },
-    { id: '5', label: MONTH_SHORT_FORMAT.MAY },
-    { id: '6', label: MONTH_SHORT_FORMAT.JUN },
-    { id: '7', label: MONTH_SHORT_FORMAT.JUL },
-    { id: '8', label: MONTH_SHORT_FORMAT.AUG },
-    { id: '9', label: MONTH_SHORT_FORMAT.SEP },
-    { id: '10', label: MONTH_SHORT_FORMAT.OCT },
-    { id: '11', label: MONTH_SHORT_FORMAT.NOV },
-    { id: '12', label: MONTH_SHORT_FORMAT.DEC },
+    { id: '1', label: `01 (${MONTH_SHORT_FORMAT.JAN}.)` },
+    { id: '2', label: `02 (${MONTH_SHORT_FORMAT.FEB}.)` },
+    { id: '3', label: `03 (${MONTH_SHORT_FORMAT.MAR}.)` },
+    { id: '4', label: `04 (${MONTH_SHORT_FORMAT.APR}.)` },
+    { id: '5', label: `05 (${MONTH_SHORT_FORMAT.MAY}.)` },
+    { id: '6', label: `06 (${MONTH_SHORT_FORMAT.JUN}.)` },
+    { id: '7', label: `07 (${MONTH_SHORT_FORMAT.JUL}.)` },
+    { id: '8', label: `08 (${MONTH_SHORT_FORMAT.AUG}.)` },
+    { id: '9', label: `09 (${MONTH_SHORT_FORMAT.SEP}.)` },
+    { id: '10', label: `10 (${MONTH_SHORT_FORMAT.OCT}.)` },
+    { id: '11', label: `11 (${MONTH_SHORT_FORMAT.NOV}.)` },
+    { id: '12', label: `12 (${MONTH_SHORT_FORMAT.DEC}.)` },
   ];
 
   const expYearOptionsMap = [];

@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`pickup view Page should render correctly 1`] = `
-<Styled(CnCTemplate)
-  header={[Function]}
-  leftSection={[Function]}
-/>
-`;

@@ -20,9 +20,11 @@ const styles = css`
   }
   .availability-btn-active,
   .availability-btn-active:hover {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
     color: ${props => props.theme.colorPalette.white};
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+    min-height: 42px;
+    padding: 0px;
   }
 `;
 

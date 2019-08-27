@@ -169,6 +169,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
               fontWeight="regular"
               isDefault={false}
               showCountry={false}
+              showName={true}
               showPhone={false}
             />
           </Styled(BodyCopy)>

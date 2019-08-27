@@ -145,7 +145,7 @@ exports[`ModuleK component renders correctly 1`] = `
   }
 
   /* this style is for Module N \\"ALL CLEARANCE\\" header text */
-  .style12 {
+  .spaced_text {
     color: ",
                 [Function],
                 ";

@@ -9,6 +9,7 @@ import {
   getUserName,
   getUserLoggedInState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
@@ -20,6 +21,7 @@ const mapStateToProps = state => {
     navigationDrawer: Header.navigationDrawer,
     userName: getUserName(state),
     isLoggedIn: getUserLoggedInState(state),
+    cartItemCount: getCartItemCount(),
   };
 };
 

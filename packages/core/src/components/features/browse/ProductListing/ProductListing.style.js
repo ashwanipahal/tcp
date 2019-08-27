@@ -17,6 +17,10 @@ export default css`
   .sidebar {
     display: none;
   }
+  .seo-text {
+    text-align: center;
+    padding-bottom: 20px;
+  }
   @media ${props => props.theme.mediaQuery.large} {
     .sidebar {
       display: flex;

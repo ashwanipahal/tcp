@@ -33,6 +33,7 @@ import PointsHistorySaga from '@tcp/core/src/components/features/account/common/
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
+import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -67,6 +68,7 @@ export default function* rootSaga() {
     CouponSaga(),
     CheckoutSaga(),
     AccountHeaderSaga(),
+    CountrySelectorSaga(),
     PointsHistorySaga(),
     ResetPasswordSaga(),
     ChangePasswordSaga(),

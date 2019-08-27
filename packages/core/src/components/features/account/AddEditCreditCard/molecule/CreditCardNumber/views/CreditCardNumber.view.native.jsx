@@ -2,18 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import CreditCardTextBox from '@tcp/core/src/components/common/atoms/CreditCardTextBox';
-import Image from '@tcp/core/src/components/common/atoms/Image';
-import { getIconPath } from '../../../../../../../utils';
 
-const getCardTypeImgUrl = cardType => {
-  return getIconPath(`${(cardType || '').toLowerCase().replace(' ', '-')}-small`);
-};
-
-export const CreditCardNumber = ({ cardType, className, isEdit, ...otherProps }) => {
+export const CreditCardNumber = ({ cardType, isEdit, ...otherProps }) => {
   return (
-    <View className={className}>
-      <CreditCardTextBox {...otherProps} isEdit={isEdit} />
-      {cardType && <Image source={getCardTypeImgUrl(cardType)} width="20px" height="15px" />}
+    <View>
+      <CreditCardTextBox {...otherProps} isEdit={isEdit} cardType={cardType} maxLength={16} />
     </View>
   );
 };

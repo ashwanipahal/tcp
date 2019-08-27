@@ -1,13 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PersonalInformation component should render correctly 1`] = `
-<Styled(AccountOverviewTile)
-  ctaTitle="Edit personal Info"
-  dataLocator="pi-editpersonalinfo"
-  title="Personal Information"
->
-  <FPO
-    text=""
-  />
-</Styled(AccountOverviewTile)>
+<Fragment>
+  <Styled(AccountOverviewTile)
+    ctaTitle="Edit personal Info"
+    dataLocator="pi-editpersonalinfo"
+  >
+    <PersonalInformationDisplay
+      airMiles="XXXXXXX"
+      className=""
+      labels={
+        Object {
+          "lbl_profile_edit_mailing_info": "Edit mailing Info",
+          "lbl_profile_edit_personal_info": "Edit personal Info",
+          "lbl_profile_mailing_address": "Mailing Information",
+          "llbl_profile_personal_information": "Personal Information",
+        }
+      }
+      mailingAddress={Object {}}
+      myPlaceNumber=""
+      userBirthday="feb 2019"
+      userEmail=""
+      userFullName=""
+      userPhoneNumber=""
+    />
+  </Styled(AccountOverviewTile)>
+</Fragment>
+`;
+
+exports[`PersonalInformation component should render emptyu correctly 1`] = `
+<Fragment>
+  <Styled(AccountOverviewTile)
+    dataLocator="pi-editpersonalinfo"
+  >
+    <PersonalInformationDisplay
+      airMiles=""
+      className=""
+      labels={Object {}}
+      mailingAddress={Object {}}
+      myPlaceNumber=""
+      userBirthday=""
+      userEmail=""
+      userFullName=""
+      userPhoneNumber=""
+    />
+  </Styled(AccountOverviewTile)>
+</Fragment>
 `;

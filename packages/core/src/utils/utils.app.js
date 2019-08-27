@@ -218,8 +218,9 @@ export const getScreenHeight = () => {
  */
 export const cropImageUrl = (url, crop) => {
   const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
+  const imgPath = urlPath && urlPath.replace(/^\//, '');
   if (urlPath && crop) {
-    return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+    return `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
   }
   return url;
 };
@@ -354,6 +355,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -378,6 +380,7 @@ const getCurrentAPIConfig = (envConfig, isTCPBrand) => {
     gymAPIConfig = gymAPIConfig || createAPIConfigForApp(envConfig, 'GYM');
     currentAppAPIConfig = gymAPIConfig;
   }
+
   return currentAppAPIConfig;
 };
 

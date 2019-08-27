@@ -112,7 +112,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -332,7 +332,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -464,7 +464,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -694,7 +694,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -826,7 +826,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -1056,7 +1056,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -1188,7 +1188,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -1418,7 +1418,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -1516,7 +1516,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -1718,7 +1718,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}

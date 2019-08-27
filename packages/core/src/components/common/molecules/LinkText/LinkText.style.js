@@ -25,7 +25,7 @@ export default css`
   }
 
   /* this style is for Module N "ALL CLEARANCE" header text */
-  .style12 {
+  .spaced_text {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};

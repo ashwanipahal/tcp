@@ -4,6 +4,11 @@ export const initCheckoutAction = () => ({
   type: constants.INIT_CHECKOUT,
 });
 
+export const submitPickupSection = payload => ({
+  type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
+  payload,
+});
+
 export const checkoutSetCartData = payload => ({
   type: 'CHECKOUT_SET_CART_DATA',
   payload,
@@ -189,3 +194,58 @@ export function setItemsCount(itemsCount) {
     type: 'CART_SUMMARY_SET_ITEMCOUNT',
   };
 }
+
+export function setIsLoadingShippingMethods(isLoading) {
+  return {
+    isLoading,
+    type: constants.CHECKOUT_FLAGS_SET_LOAD_METHODS,
+  };
+}
+
+export function setShippingOptions(shippingMethods) {
+  return {
+    shippingMethods,
+    type: constants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING,
+  };
+}
+
+export function submitShippingSection(payload) {
+  return {
+    type: constants.SUBMIT_SHIPPING_SECTION,
+    payload,
+  };
+}
+
+export function setAddressError(addressError) {
+  return {
+    addressError,
+    type: constants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR,
+  };
+}
+
+export function setSmsNumberForUpdates(phoneNumber) {
+  return {
+    phoneNumber,
+    type: constants.CHECKOUT_VALUES_SET_SMS_UPDATES,
+  };
+}
+
+export function onEditModeChangeAction(isEditingSubform) {
+  return {
+    isEditingSubform,
+    type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
+  };
+}
+
+export function fetchShipmentMethods() {
+  return {
+    type: constants.CHECKOUT_LOAD_SHIPMENT_METHODS,
+  };
+}
+
+export const emailSignupStatus = payload => {
+  return {
+    payload,
+    type: 'EMAIL_SUBSCRIPTION_STATUS',
+  };
+};

@@ -13,6 +13,8 @@ type Props = {
   fullWidth?: boolean,
   type?: string,
   dataLocator?: string,
+  customStyle?: string,
+  buttonVariation?: string,
 };
 
 /**
@@ -38,6 +40,8 @@ const Button = ({
   fullWidth,
   dataLocator,
   type,
+  customStyle,
+  buttonVariation,
   ...otherProps
 }: Props): Node => (
   <button
@@ -57,6 +61,8 @@ Button.defaultProps = {
   fullWidth: true,
   type: 'button',
   dataLocator: 'btn',
+  customStyle: '',
+  buttonVariation: '',
 };
 
 export default withStyles(Button, styles);
