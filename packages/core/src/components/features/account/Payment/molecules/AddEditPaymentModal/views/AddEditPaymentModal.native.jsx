@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes, { func } from 'prop-types';
 import { SafeAreaView } from 'react-native';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.container.native';
-import { ModalHeading, ModalViewWrapper, LineWrapper } from '../AddEditPaymentModal.style.native';
+import { ModalViewWrapper } from '../AddEditPaymentModal.style.native';
 
 export class AddEditPaymentModal extends React.PureComponent<Props> {
   static propTypes = {
