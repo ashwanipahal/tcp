@@ -118,7 +118,8 @@ function* loadUpdatedCheckoutValues(
   isTaxCalculation,
   isCartNotRequired,
   recalcRewards,
-  updateSmsInfo
+  updateSmsInfo,
+  handleCartRes
 ) {
   const imageGenerator = getImgPath;
   const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
@@ -132,6 +133,9 @@ function* loadUpdatedCheckoutValues(
     yield call(storeUpdatedCheckoutValues, { payload: { res } }, isCartNotRequired, updateSmsInfo);
     // Load coupons to the store after constructing the coupons structure
     // getWalletOperator(this.store).getWallet(res.coupons.offers);
+    if (handleCartRes) {
+      yield call(handleCartRes);
+    }
   }
 
   yield put(
@@ -242,8 +246,7 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
-function* loadCartAndCheckoutDetails(isRecalcRewards) {
-  yield call(loadUpdatedCheckoutValues, null, null, null, isRecalcRewards);
+function* loadCheckoutDetail() {
   const getIsShippingRequired = yield select(getIsOrderHasShipping);
   if (getIsShippingRequired) {
     let shippingAddress = yield select(getShippingDestinationValues);
@@ -251,10 +254,10 @@ function* loadCartAndCheckoutDetails(isRecalcRewards) {
     const defaultAddress = yield select(getDefaultAddress);
     const hasShipping =
       shippingAddress &&
-      shippingAddress.get('country') &&
-      shippingAddress.get('state') &&
-      shippingAddress.get('zipCode');
-    const isGuestUser = yield select(isGuest);
+      shippingAddress.country &&
+      shippingAddress.state &&
+      shippingAddress.zipCode;
+    const isGuestUser = yield select(isGuest) || true;
     // const isMobile = getIsMobile;
     if (isGuestUser || (!hasShipping && !defaultAddress)) {
       // isMobile check is left
@@ -268,6 +271,18 @@ function* loadCartAndCheckoutDetails(isRecalcRewards) {
       );
     }
   }
+}
+
+function* loadCartAndCheckoutDetails(isRecalcRewards) {
+  yield call(
+    loadUpdatedCheckoutValues,
+    null,
+    null,
+    null,
+    isRecalcRewards,
+    undefined,
+    loadCheckoutDetail
+  );
 }
 
 function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
