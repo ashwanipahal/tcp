@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
+import AirmilesBanner from '../../common/organism/AirmilesBanner';
+
 import AddedToBagActions from '../../AddedToBagActions';
 import {
   HeadingViewStyle,
@@ -23,6 +25,9 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheck
           <ProductTileWrapper bagLabels={labels} />
           <RowSectionStyle>
             <OrderLedgerContainer />
+          </RowSectionStyle>
+          <RowSectionStyle>
+            <AirmilesBanner />
           </RowSectionStyle>
           <RowSectionStyle>
             <CouponAndPromos />
