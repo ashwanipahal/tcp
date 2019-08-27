@@ -755,7 +755,6 @@ exports[`AddressForm component should renders correctly 1`] = `
     <Field
       component={[Function]}
       dataLocator="addnewaddress-city"
-      disabled={false}
       id="primary"
       name="primary"
       rightText=""
