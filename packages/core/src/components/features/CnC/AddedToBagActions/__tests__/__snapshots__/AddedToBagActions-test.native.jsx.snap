@@ -21,10 +21,14 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"
-        onPress={[Function]}
         text=""
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    variation="checkout"
+  />
 </Styled(View)>
 `;
