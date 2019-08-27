@@ -6,6 +6,9 @@ import {
   loadModulesData,
   setAPIConfig,
   setDeviceInfo,
+  setCountry,
+  setCurrency,
+  setLanguage,
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
@@ -16,6 +19,7 @@ function* bootstrap(params) {
   const {
     payload: { name: pageName = 'homepage', modules, apiConfig, deviceType },
   } = params;
+  const { country, currency, language } = apiConfig;
   const pagesList = [pageName];
   const modulesList = modules;
   try {
@@ -29,6 +33,9 @@ function* bootstrap(params) {
     yield put(loadNavigationData(result.navigation));
     yield put(loadFooterData(result.footer));
     yield put(loadModulesData(result.modules));
+    yield put(setCountry(country));
+    yield put(setCurrency(currency));
+    yield put(setLanguage(language));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);

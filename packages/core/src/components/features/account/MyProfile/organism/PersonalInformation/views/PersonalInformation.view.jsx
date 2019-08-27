@@ -9,7 +9,7 @@ import Address from '../../../../../../common/molecules/Address';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
-const PersonalInformation = ({
+export const PersonalInformation = ({
   labels,
   profileInfoTile,
   userEmail,
@@ -56,6 +56,7 @@ const PersonalInformation = ({
                 address={address}
                 dataLocatorPrefix="profileinfo-editmailing"
                 showName={false}
+                className="profileInformationAddress"
               />
             </MyProfileTile>
           </Col>

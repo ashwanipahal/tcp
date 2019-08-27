@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductItemComponents component BadgeItem render Text 1`] = `
+<div
+  className=""
+>
+  <ForwardRef
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator="global-productbadge-txt"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs10",
+        "fs12",
+        "fs14",
+      ]
+    }
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    
+  </ForwardRef>
+</div>
+`;
+
+exports[`ProductItemComponents component ProductMainImage called correctly 1`] = `
+<figure
+  className="product-image-container"
+  itemScope={true}
+  itemType="http://schema.org/ImageObject"
+>
+  <a
+    className=""
+    href=""
+    onClick={[Function]}
+    title=""
+    unbxdattr="product"
+  >
+    <img
+      alt=""
+      className="product-image-content img-item"
+      itemProp="contentUrl"
+      src=""
+    />
+  </a>
+</figure>
+`;
+
+exports[`ProductItemComponents component ProductPricesSection called correctly 1`] = `
+<div
+  className="container-price"
+>
+  <ForwardRef
+    className={null}
+    color="red.500"
+    component="p"
+    dataLocator="global-Price-text"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs15",
+        "fs18",
+        "fs20",
+      ]
+    }
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    12.00
+  </ForwardRef>
+  <ForwardRef
+    className="merchant-tag"
+    color="red.500"
+    component="span"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs10",
+        "fs12",
+        "fs14",
+      ]
+    }
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    Badge2
+  </ForwardRef>
+</div>
+`;
+
+exports[`ProductItemComponents component ProductSKUInfo called correctly 1`] = `
+<div
+  className="product-sku-info-container"
+>
+  
+  <span
+    className="size-container"
+  >
+    Size 
+    12
+  </span>
+  <i
+    className="separator-bar-icon"
+  >
+    |
+  </i>
+  <span
+    className="fit-container"
+  >
+    1
+  </span>
+</div>
+`;
+
+exports[`ProductItemComponents component ProductSKUInfo returned null 1`] = `null`;
+
+exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
+<div
+  className="product-title-container"
+>
+  <ForwardRef
+    handleLinkClick={[Function]}
+    inheritedStyles="product-title-content"
+    to=""
+  >
+    <ForwardRef
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs13",
+          "fs14",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      
+    </ForwardRef>
+  </ForwardRef>
+  Object {}
+</div>
+`;
+
+exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = `
+<div
+  className="fav-icon-wrapper"
+  isDisabled={true}
+  onClick={[MockFunction]}
+>
+  <Styled(Image)
+    alt="Add-to-favorite"
+    data-locator="global-favorite-button"
+    src="/static/images/add-to-favorite.svg"
+  />
+</div>
+`;
+
+exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
+<div
+  className="fav-icon-wrapper"
+  isDisabled={true}
+  onClick={[MockFunction]}
+>
+  <div
+    className="information-remove"
+  >
+    <p
+      className="information-remove-message"
+    >
+      <strong
+        className="remove-title"
+      >
+        Click to Remove
+      </strong>
+      <br />
+      Remove this item from your Favorites List by clicking the heart icon again.
+    </p>
+  </div>
+</div>
+`;
+
+exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
+<div
+  className="loyalty-text-container"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "",
+    }
+  }
+  data-locator="global-loyalty-text"
+/>
+`;
+
+exports[`ProductItemComponents component productLink called correctly 1`] = `undefined`;

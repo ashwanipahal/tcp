@@ -77,8 +77,8 @@ export default {
     BLACK: {
       NORMAL: '#1a1a1a',
       BORDER: '#1a1a1a',
-      HOVER: '#ffffff',
-      FOCUS: '#ffffff',
+      HOVER: '#595959',
+      FOCUS: '#595959',
       ALT_HOVER: '#ffffff',
       ALT_FOCUS: '#ffffff',
       TEXT: '#ffffff',

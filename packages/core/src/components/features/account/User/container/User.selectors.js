@@ -53,7 +53,10 @@ export const getUserFullName = createSelector(
 
 export const getUserEmail = createSelector(
   getPersonalDataState,
-  state => state && state.getIn(['contactInfo', 'emailAddress']).toLowerCase()
+  state =>
+    state &&
+    state.getIn(['contactInfo', 'emailAddress']) &&
+    state.getIn(['contactInfo', 'emailAddress']).toLowerCase()
 );
 
 export const getUserPhoneNumber = createSelector(
