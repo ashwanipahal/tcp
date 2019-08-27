@@ -45,7 +45,7 @@ export const mapDispatchToProps = dispatch => {
 
 function mapStateToProps(state) {
   return {
-    className: 'order-summary',
+    className: 'airmile-banner',
     airmilesBannerData: getAirmilesBannerData(state),
     labels: getAirmilesBannerLabels(state),
   };
