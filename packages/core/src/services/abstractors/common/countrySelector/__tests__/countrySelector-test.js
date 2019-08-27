@@ -1,5 +1,6 @@
 import CountrySelectorAbstractor from '../countrySelector';
 import * as handler from '../../../../handler/handler';
+import mock from '../mock';
 
 jest.mock('../../../../../service/API');
 jest.mock('../../../../handler/handler');
@@ -62,8 +63,16 @@ describe('CountrySelectorAbstractor', () => {
 
   test('Country Selector submit country selection', () => {
     return CountrySelectorAbstractor.submitData().then(data => {
-      console.log(data);
       expect(data.cc).toBeTruthy();
     });
+  });
+
+  it('Country Selector returns mock data', () => {
+    const data = CountrySelectorAbstractor.getMock();
+    expect(data).toMatchObject(mock);
+  });
+
+  it('Country Selector handles error', () => {
+    CountrySelectorAbstractor.handleError();
   });
 });
