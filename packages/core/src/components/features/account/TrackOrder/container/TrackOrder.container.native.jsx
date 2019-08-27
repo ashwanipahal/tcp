@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
-import { trackOrder, setTrackOrderModalMountedState, setErrorInfoNull } from './TrackOrder.actions';
+import { trackOrder, setErrorInfoNull } from './TrackOrder.actions';
 import TrackOrderView from '../molecules/TrackOrderView';
 import {
   getLabels,
   getErrorMessage,
-  getTrackOrderMountedState,
   getEmailId,
   getOrderId,
   getOrderDetail,
@@ -26,14 +24,12 @@ type Props = {
   isUserLoggedIn: Boolean,
   errorMessage: String,
   labels: Object,
-  openLoginOverlay: Function,
-  trackOrderMountedState: Function,
-  setTrackOrderModalMountState: Function,
   showNotification: string,
   onChangeForm: Function,
   onRequestClose: Function,
   navigation: Object,
 };
+
 export class TrackOrderContainer extends React.PureComponent<Props> {
   componentDidUpdate() {
     const { orderDetailResponse, isUserLoggedIn, onRequestClose } = this.props;
@@ -63,7 +59,7 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
     if (!isUserLoggedIn)
       if (hasMobile) {
         // TO DO - This has to be implemented when the track order page is available
-        navigateToNestedRoute(navigation, 'AccountStack', 'account');
+        navigateToNestedRoute(navigation, 'HomeStack', 'home');
       } else routerPush(pathToNavigate);
   };
 
@@ -82,9 +78,6 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
       errorMessage,
       isUserLoggedIn,
       labels,
-      openLoginOverlay,
-      trackOrderMountedState,
-      setTrackOrderModalMountState,
       showNotification,
       onChangeForm,
       onRequestClose,
@@ -95,10 +88,6 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
         errorMessage={errorMessage}
         isGuestUser={isUserLoggedIn}
         onSubmit={e => this.handleSubmit(e)}
-        openLoginOverlay={openLoginOverlay}
-        openState={trackOrderMountedState}
-        setModalMountState={setTrackOrderModalMountState}
-        className="TrackOrder__Modal"
         showNotification={showNotification}
         onChangeForm={onChangeForm}
         onRequestClose={onRequestClose}
@@ -112,7 +101,6 @@ export const mapStateToProps = state => {
     labels: getLabels(state),
     errorMessage: getErrorMessage(state),
     isUserLoggedIn: getUserLoggedInState(state),
-    trackOrderMountedState: getTrackOrderMountedState(state),
     emailId: getEmailId(state),
     orderId: getOrderId(state),
     orderDetailResponse: getOrderDetail(state),
@@ -127,12 +115,6 @@ export const mapDispatchToProps = dispatch => {
     },
     onChangeForm: () => {
       dispatch(setErrorInfoNull());
-    },
-    openLoginOverlay: payload => {
-      dispatch(openOverlayModal(payload));
-    },
-    setTrackOrderModalMountState: payload => {
-      dispatch(setTrackOrderModalMountedState(payload));
     },
   };
 };

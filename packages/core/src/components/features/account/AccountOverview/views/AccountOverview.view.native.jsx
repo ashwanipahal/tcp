@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
+import { TrackOrderModalHeader } from '@tcp/core/src/components/features/account/TrackOrder/styles/TrackOrderModal.native.style';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
@@ -41,6 +42,22 @@ class AccountOverview extends PureComponent<Props> {
       },
     };
   }
+
+  renderModalHeader = modalHeaderLbl => {
+    const { getComponentId } = this.state;
+    const isTrackOrder = getComponentId.trackOrder;
+    const StyledHeader = isTrackOrder ? TrackOrderModalHeader : ModalHeading;
+    return (
+      <StyledHeader>
+        <BodyCopy
+          mobileFontFamily={['secondary']}
+          fontWeight="extrabold"
+          fontSize={`${isTrackOrder ? 'fs22' : 'fs16'}`}
+          text={modalHeaderLbl}
+        />
+      </StyledHeader>
+    );
+  };
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     let componentContainer = null;
@@ -84,10 +101,10 @@ class AccountOverview extends PureComponent<Props> {
     const colorPallete = createThemeColorPalette();
     const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
     const { showModal, getComponentId } = this.state;
-    let modalHeader = null;
-    if (getComponentId.login) modalHeader = labels.lbl_overview_login_text;
-    if (getComponentId.createAccount) modalHeader = labels.lbl_overview_createAccount;
-    if (getComponentId.trackOrder) modalHeader = labels.lbl_overview_trackYourOrder;
+    let modalHeaderLbl = null;
+    if (getComponentId.login) modalHeaderLbl = labels.lbl_overview_login_text;
+    if (getComponentId.createAccount) modalHeaderLbl = labels.lbl_overview_createAccount;
+    if (getComponentId.trackOrder) modalHeaderLbl = labels.lbl_overview_trackYourOrder;
     return (
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
@@ -169,17 +186,12 @@ class AccountOverview extends PureComponent<Props> {
             </LoggedinWrapper>
             {showModal && (
               <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-                <ModalHeading>
-                  <BodyCopy
-                    mobileFontFamily={['secondary']}
-                    fontWeight="extrabold"
-                    fontSize="fs16"
-                    text={modalHeader}
-                  />
-                </ModalHeading>
-                <LineWrapper>
-                  <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-                </LineWrapper>
+                {this.renderModalHeader(modalHeaderLbl)}
+                {!getComponentId.trackOrder ? (
+                  <LineWrapper>
+                    <LineComp marginTop={5} borderWidth={2} borderColor="black" />
+                  </LineWrapper>
+                ) : null}
                 <SafeAreaView>
                   <ModalViewWrapper>
                     {this.renderComponent({
@@ -210,7 +222,7 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={labels.lbl_overview_refer_friend} isVariationTypeLink />
             {!isUserLoggedIn ? (
               <Panel
-                title="Track Order"
+                title={labels.lbl_overview_trackYourOrder}
                 isVariationTypeLink
                 handleComponentChange={e =>
                   this.toggleModal({

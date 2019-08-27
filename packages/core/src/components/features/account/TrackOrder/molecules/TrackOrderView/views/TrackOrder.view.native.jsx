@@ -11,6 +11,10 @@ import {
   AnchorView,
 } from '../styles/TrackOrderView.native.style';
 
+/**
+ * @function create generic error message module.
+ * @param {Object} labels - to render generic error message module
+ */
 const getGenericErrorMessage = labels => (
   <GenericErrorView>
     <BodyCopy

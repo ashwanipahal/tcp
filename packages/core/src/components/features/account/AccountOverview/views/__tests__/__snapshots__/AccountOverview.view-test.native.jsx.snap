@@ -101,7 +101,6 @@ exports[`AccountOverview component should render correctly 1`] = `
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
-    title="Track Order"
   />
   <Styled(View) />
   <Panel

@@ -19,7 +19,8 @@ type Props = {
  * @param {props} props object with details to render in modal
  */
 class TrackOrderBottomSection extends React.Component<Props> {
-  handleDefaultLinkClick() {
+  handleDefaultLinkClick(e) {
+    e.preventDefault();
     const { toggleModal } = this.props;
     const comp = {
       getComponentId: {
@@ -45,7 +46,7 @@ class TrackOrderBottomSection extends React.Component<Props> {
                 ${labels.trackOrder.lbl_header_trackOrderOverlay_content1}`}
               text={labels.trackOrder.lbl_header_trackOrderOverlay_login}
               anchorVariation="primary"
-              onPress={this.handleDefaultLinkClick}
+              onPress={e => this.handleDefaultLinkClick(e)}
               underline
             />
             <BodyCopy text={labels.trackOrder.lbl_header_trackOrderOverlay_content1} />

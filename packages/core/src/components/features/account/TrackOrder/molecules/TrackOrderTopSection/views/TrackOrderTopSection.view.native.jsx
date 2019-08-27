@@ -1,8 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import styles from '../styles/TrackOrderTopSection.style';
+import { TrackOrderTopSectionView } from '../styles/TrackOrderTopSection.native.style';
 
 // @flow
 type Props = {
@@ -16,15 +14,14 @@ type Props = {
  */
 const TrackOrderTopSection = ({ labels }: Props) => {
   return (
-    <View>
+    <TrackOrderTopSectionView>
       <BodyCopy
         data-locator="trackordermodal-overlaysubheading"
         id="trackorder__modal__subheading"
         text={labels.trackOrder.lbl_header_trackOrderOverlay_subheader}
       />
-    </View>
+    </TrackOrderTopSectionView>
   );
 };
 
-export default withStyles(TrackOrderTopSection, styles);
-export { TrackOrderTopSection as TrackOrderTopSectionVanilla };
+export default TrackOrderTopSection;
