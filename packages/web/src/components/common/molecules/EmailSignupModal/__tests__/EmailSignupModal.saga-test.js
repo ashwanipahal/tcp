@@ -1,18 +1,20 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, call } from 'redux-saga/effects';
+import { subscribeEmailAddress } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import EmailSignupSaga, { subscribeEmail, verifyEmail } from '../container/EmailSignupModal.saga';
-import { setEmailValidationStatus, emailSignupStatus } from '../container/EmailSignupModal.actions';
+import { setEmailValidationStatus } from '../container/EmailSignupModal.actions';
 import EMAILSIGNUP_CONSTANTS from '../container/EmailSignupModal.constants';
 
 describe('subscribeEmail', () => {
   let subscribeEmailGen;
+  const email = 'abcd@gmail.com';
+  const successString = 'success';
   beforeEach(() => {
-    subscribeEmailGen = subscribeEmail('abcd@gmail.com', 'success');
-    subscribeEmailGen.next();
+    subscribeEmailGen = subscribeEmail(email, successString);
   });
 
   it('should dispatch subscribeEmail action for success resposnse', () => {
-    const putDescriptor = subscribeEmailGen.next(true).value;
-    expect(putDescriptor).toEqual(put(emailSignupStatus({ subscription: true })));
+    const callDescriptor = subscribeEmailGen.next().value;
+    expect(callDescriptor).toEqual(call(subscribeEmailAddress, email, successString));
   });
 });
 

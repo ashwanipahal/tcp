@@ -8,12 +8,15 @@ import {
 import { addAddress, updateAddress } from '../../../../../services/abstractors/account';
 import { getUserEmail } from '../../../../features/account/User/container/User.selectors';
 
-export function* addAddressGet({ payload }) {
+export function* addAddressGet({ payload }, addToAddressBook = true) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
 
   try {
     const res = yield call(addAddress, updatedPayload);
+    if (!addToAddressBook) {
+      return res;
+    }
     if (res) {
       yield put(
         setAddressBookNotification({

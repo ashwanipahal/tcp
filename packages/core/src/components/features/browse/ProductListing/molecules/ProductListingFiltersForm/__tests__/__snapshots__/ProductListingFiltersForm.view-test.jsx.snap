@@ -2954,6 +2954,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     getFormState={[Function]}
     initialValues={Object {}}
     keepDirtyOnReinitialize={false}
+    labels={Object {}}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

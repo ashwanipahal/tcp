@@ -8,6 +8,7 @@ exports[`LogOutView Page should render correctly 1`] = `
     anchorVariation="primary"
     className="elem-pb-SM"
     fontSizeVariation="large"
+    noLink={true}
     onClick={[Function]}
   >
     hello

@@ -15,7 +15,7 @@ exports[`FilterModal is shown should render FilterModal 1`] = `
         colSize={
           Object {
             "large": 3,
-            "medium": 3,
+            "medium": 4,
             "small": 3,
           }
         }
@@ -25,15 +25,13 @@ exports[`FilterModal is shown should render FilterModal 1`] = `
           className=""
           data-locator="view_gallery_button"
           type="button"
-        >
-          FILTER
-        </Styled(Button)>
+        />
       </Styled(Col)>
       <Styled(Col)
         colSize={
           Object {
             "large": 3,
-            "medium": 3,
+            "medium": 4,
             "small": 3,
           }
         }
@@ -43,9 +41,7 @@ exports[`FilterModal is shown should render FilterModal 1`] = `
           className="open-filter-button"
           data-locator="view_gallery_button"
           type="button"
-        >
-          SORT
-        </Styled(Button)>
+        />
       </Styled(Col)>
     </Styled(Row)>
     <div
@@ -70,9 +66,7 @@ exports[`FilterModal is shown should render FilterModal 1`] = `
             data-locator="view_gallery_button"
             onClick={[MockFunction]}
             type="button"
-          >
-            CLEAR ALL
-          </Styled(Button)>
+          />
         </Styled(Col)>
         <Styled(Col)
           colSize={
@@ -89,9 +83,7 @@ exports[`FilterModal is shown should render FilterModal 1`] = `
             data-locator="view_gallery_button"
             fill="BLACK"
             type="button"
-          >
-            APPLY
-          </Styled(Button)>
+          />
         </Styled(Col)>
       </Styled(Row)>
     </div>
@@ -114,7 +106,7 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
         colSize={
           Object {
             "large": 3,
-            "medium": 3,
+            "medium": 4,
             "small": 3,
           }
         }
@@ -124,15 +116,13 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
           className=""
           data-locator="view_gallery_button"
           type="button"
-        >
-          FILTER
-        </Styled(Button)>
+        />
       </Styled(Col)>
       <Styled(Col)
         colSize={
           Object {
             "large": 3,
-            "medium": 3,
+            "medium": 4,
             "small": 3,
           }
         }
@@ -142,9 +132,7 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
           className="open-filter-button"
           data-locator="view_gallery_button"
           type="button"
-        >
-          SORT
-        </Styled(Button)>
+        />
       </Styled(Col)>
     </Styled(Row)>
     <div
@@ -169,9 +157,7 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
             data-locator="view_gallery_button"
             onClick={[MockFunction]}
             type="button"
-          >
-            CLEAR ALL
-          </Styled(Button)>
+          />
         </Styled(Col)>
         <Styled(Col)
           colSize={
@@ -188,9 +174,7 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
             data-locator="view_gallery_button"
             fill="BLACK"
             type="button"
-          >
-            APPLY
-          </Styled(Button)>
+          />
         </Styled(Col)>
       </Styled(Row)>
     </div>

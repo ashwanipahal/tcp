@@ -10,11 +10,13 @@ type Props = {
   children: any,
   className: any,
   classNames: any,
+  labels: any,
+  isSortOpenModal: boolean,
 };
 
 class FilterModal extends React.PureComponent<Props> {
   render() {
-    const { handleClose, show, children, className, classNames } = this.props;
+    const { handleClose, show, children, className, classNames, labels, isSortOpenModal } = this.props;
     const showHideClassName = show
       ? `${className} modal display-block`
       : `${className} modal display-none`;
@@ -26,7 +28,7 @@ class FilterModal extends React.PureComponent<Props> {
             <Col
               colSize={{
                 small: 3,
-                medium: 3,
+                medium: 4,
                 large: 3,
               }}
             >
@@ -37,13 +39,13 @@ class FilterModal extends React.PureComponent<Props> {
                 data-locator="view_gallery_button"
                 onClick={this.toggleFilterIcon}
               >
-                FILTER
+                {labels.lbl_filter}
               </Button>
             </Col>
             <Col
               colSize={{
                 small: 3,
-                medium: 3,
+                medium: 4,
                 large: 3,
               }}
             >
@@ -53,50 +55,54 @@ class FilterModal extends React.PureComponent<Props> {
                 className="open-filter-button"
                 data-locator="view_gallery_button"
               >
-                SORT
+                {labels.lbl_sort}
               </Button>
             </Col>
           </Row>
           {children}
-          <div className="modal-spacing">
-            <Row centered>
-              <Col
-                colSize={{
-                  small: 3,
-                  medium: 3,
-                  large: 3,
-                }}
-                className="close-button"
-              >
-                <Button
-                  buttonVariation="fixed-width"
-                  type="button"
-                  className="gallery-button-left"
-                  data-locator="view_gallery_button"
-                  onClick={handleClose}
+          {!isSortOpenModal && (
+            <div className="modal-spacing">
+              <Row centered>
+                <Col
+                  colSize={{
+                    small: 3,
+                    medium: 3,
+                    large: 3,
+                  }}
+                  className="close-button"
                 >
-                  CLEAR ALL
-                </Button>
-              </Col>
-              <Col
-                colSize={{
-                  small: 3,
-                  medium: 3,
-                  large: 3,
-                }}
-              >
-                <Button
-                  buttonVariation="fixed-width"
-                  type="button"
-                  className="gallery-button-left"
-                  data-locator="view_gallery_button"
-                  fill="BLACK"
+                  <Button
+                    buttonVariation="fixed-width"
+                    type="button"
+                    className="gallery-button-left"
+                    data-locator="view_gallery_button"
+                    onClick={handleClose}
+                  >
+                    {labels.lbl_clear}
+                  </Button>
+                </Col>
+                <Col
+                  colSize={{
+                    small: 3,
+                    medium: 3,
+                    large: 3,
+                  }}
                 >
-                  APPLY
-                </Button>
-              </Col>
-            </Row>
-          </div>
+                  <Button
+                    buttonVariation="fixed-width"
+                    type="button"
+                    className="gallery-button-left"
+                    data-locator="view_gallery_button"
+                    fill="BLACK"
+                  >
+                    {labels.lbl_apply}
+                  </Button>
+
+                </Col>
+              </Row>
+            </div>
+          )
+          }
         </section>
       </div>
     );
@@ -104,4 +110,4 @@ class FilterModal extends React.PureComponent<Props> {
 }
 
 export default withStyles(FilterModal, FilterModalStyle);
-export {FilterModal as FilterModalVanilla}
+export { FilterModal as FilterModalVanilla };

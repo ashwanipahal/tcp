@@ -32,7 +32,6 @@ const Cards = props => {
     openUpdateModal,
     setSelectedCard,
     setCardHandler,
-    toggleRecaptchaModal,
   } = props;
   return (
     <View {...props}>
@@ -69,7 +68,6 @@ const Cards = props => {
           return (
             <CardTile
               toggleModal={toggleModal}
-              toggleRecaptchaModal={toggleRecaptchaModal}
               openUpdateModal={openUpdateModal}
               setSelectedCard={setSelectedCard}
               {...cardTileProps}
@@ -93,7 +91,6 @@ Cards.propTypes = {
   onGetBalanceCard: PropTypes.func,
   checkbalanceValueInfo: PropTypes.func,
   toggleModal: PropTypes.func,
-  toggleRecaptchaModal: PropTypes.func,
   openUpdateModal: PropTypes.func,
   setSelectedCard: PropTypes.func,
   setCardHandler: PropTypes.func,
@@ -104,7 +101,6 @@ Cards.defaultProps = {
   onGetBalanceCard: null,
   checkbalanceValueInfo: null,
   toggleModal: null,
-  toggleRecaptchaModal: null,
   openUpdateModal: null,
   setSelectedCard: null,
   setCardHandler: () => {},

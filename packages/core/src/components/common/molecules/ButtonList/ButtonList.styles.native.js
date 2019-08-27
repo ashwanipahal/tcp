@@ -29,7 +29,10 @@ export const SeperatorView = styled.View`
   width: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
-export const ContainerView = styled.View``;
+export const ContainerView = styled.View`
+  align-items: center;
+  width: 100%;
+`;
 
 export default {
   Container,

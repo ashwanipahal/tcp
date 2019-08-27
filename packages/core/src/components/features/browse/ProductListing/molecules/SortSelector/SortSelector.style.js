@@ -8,7 +8,9 @@ export default css`
     display: none;
     padding-right: 5px;
   }
-
+  .sort-filter-label {
+    display: none;
+  }
   .sort-item-selected {
     display: inline-block;
     width: 88px;
@@ -33,14 +35,22 @@ export default css`
   .sort-dropdown-wrapper {
     margin-left: 8px;
     padding: 9px 0 0;
-    width: 162px;
+    width: 100%;
   }
   .sort-select-button {
     display: inline-block;
   }
 
   @media ${props => props.theme.mediaQuery.large} {
+    .sort-dropdown-wrapper {
+      margin-left: 8px;
+      padding: 9px 0 0;
+      width: 162px;
+    }
     .sort-select-title {
+      display: inline-block;
+    }
+    .sort-filter-label {
       display: inline-block;
     }
   }

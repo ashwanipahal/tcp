@@ -13,6 +13,7 @@ import { Row, Col, Button } from '../../../../../../common/atoms';
 import { getLocator } from '../../../../../../../utils';
 import SortSelector from '../../SortSelector';
 import config from '../../SortSelector/SortSelector.config';
+import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
 
 // @flow
 type Props = {
@@ -20,18 +21,6 @@ type Props = {
   className: any,
   filtersLength: any,
   filtersMaps: any,
-};
-
-const FACETS_FIELD_KEY = {
-  color: 'tcpcolor_ufilter',
-  size: 'v_tcpsize_ufilter',
-  age: 'age_group_ufilter',
-  price: 'unbxd_price_range_ufilter',
-  sort: 'sort',
-  unbxdDisplayName: 'unbxddisplayname',
-  aux_color: 'auxdescription_ufilter',
-  aux_color_unbxd: 'auxdescription_uFilter',
-  l1category: 'l1category',
 };
 
 function getSortCustomOptionsMap(sortOptionsMap) {
@@ -223,13 +212,13 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         <AccordionList accordionItems={accordionItems} className={className}>
           {filterKeys.map(key => {
             if (key.toLowerCase() === FACETS_FIELD_KEY.color) {
-              const length = (filtersLength && filtersLength[`${key} Filters`]) || 0;
+              const length = (filtersLength && filtersLength[`${key}Filters`]) || 0;
               return (
                 filtersMaps[key].length > 0 &&
                 this.renderColorFilterField(length, unbxdKeyMapping[key], key)
               );
             } else if (this.isUnbxdFacetKey(key)) {
-              const length = (filtersLength && filtersLength[`${key} Filters`]) || 0;
+              const length = (filtersLength && filtersLength[`${key}Filters`]) || 0;
               return (
                 filtersMaps[key].length > 0 &&
                 this.renderFilterField(length, unbxdKeyMapping[key], key)
@@ -242,7 +231,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   }
 
   render() {
-    const { initialValues, filtersMaps, className } = this.props;
+    const { initialValues, filtersMaps, className, labels } = this.props;
     const { isOpenFilterSection, show } = this.state;
     // const selectedFiltersCount = this.getSelectedFiltersCount();
     const appliedFilters = [];
@@ -263,10 +252,16 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         appliedFilters.push(selectedFacet);
       }
     }
-
+    const { isSortOpenModal } = this.state;
     return (
       <React.Fragment>
-        <FilterModal show={show} handleClose={this.hideModal} classNames={classNames}>
+        <FilterModal
+          show={show}
+          handleClose={this.hideModal}
+          classNames={classNames}
+          labels={labels}
+          isSortOpenModal={isSortOpenModal}
+        >
           <div className={`${className} new-filter-and-sort-form-container`}>
             <form className="available-filters-sorting-container">
               {this.renderMobilePlpFilterForm()}
@@ -288,7 +283,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               data-locator="view_gallery_button"
               onClick={this.showModal}
             >
-              FILTER
+              {labels.lbl_filter}
             </Button>
           </Col>
           <Col
@@ -305,7 +300,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               data-locator="view_gallery_button"
               onClick={this.showSortModal}
             >
-              SORT
+              {labels.lbl_sort}
             </Button>
           </Col>
         </Row>
