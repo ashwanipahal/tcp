@@ -1,8 +1,9 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
-import { subscribeEmail } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
+import endpoints from '../../../../../service/endpoint';
+import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import constants from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
@@ -23,6 +24,7 @@ import {
   setShippingOptions,
   setAddressError,
   setSmsNumberForUpdates,
+  emailSignupStatus,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -44,6 +46,30 @@ const {
 } = selectors;
 
 const { getOrderPointsRecalcFlag, hasPOBox } = utility;
+
+export function* subscribeEmailAddress(emailObj, status) {
+  try {
+    const { baseURI, relURI, method } = endpoints.addEmailSignup;
+    const params = {
+      payload: JSON.stringify({
+        storeId: 10151,
+        catalogId: 10551,
+        langId: '-1',
+        emailaddr: emailObj.payload,
+        URL: 'email-confirmation',
+        response: `${status}:::false:false`,
+        registrationType: '10',
+      }),
+      langId: -1,
+      storeId: 10151,
+      catalogId: 10551,
+    };
+    const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
+    yield put(emailSignupStatus({ subscription: res }));
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 function* loadGiftWrappingOptions() {
   try {
@@ -491,10 +517,10 @@ function* initCheckout() {
   yield call(loadStartupData);
 }
 
-function* saveLocalSmsInfo(smsInfo) {
+function* saveLocalSmsInfo(smsInfo = {}) {
   let returnVal;
-  if (smsInfo) {
-    const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
+  const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
+  if (smsUpdateNumber) {
     if (wantsSmsOrderUpdates) {
       returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
     } else {
@@ -507,7 +533,7 @@ function* saveLocalSmsInfo(smsInfo) {
 function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailAddress) {
   if (isEmailSignUpAllowed && emailSignup && emailAddress) {
     const statusCode = call(briteVerifyStatusExtraction, emailAddress);
-    yield subscribeEmail({ payload: emailAddress }, statusCode);
+    yield subscribeEmailAddress({ payload: emailAddress }, statusCode);
   }
 }
 
@@ -527,7 +553,9 @@ function* submitShippingSection({ payload: formData }) {
       emailSignup,
     },
   } = formData;
-  let { emailAddress } = formData;
+  let {
+    shipTo: { emailAddress },
+  } = formData;
   let isEmailSignUpAllowed = true;
   const recalcFlag = false;
   const isGuestUser = yield select(isGuest);
@@ -577,7 +605,7 @@ function* submitShippingSection({ payload: formData }) {
             address2: address.addressLine2,
             zip: address.zipCode,
             phoneNumber,
-            email: emailAddress,
+            emailAddress,
             primary: setAsDefault,
             phone1Publish: `${saveToAccount}`,
             fromPage: 'checkout',
