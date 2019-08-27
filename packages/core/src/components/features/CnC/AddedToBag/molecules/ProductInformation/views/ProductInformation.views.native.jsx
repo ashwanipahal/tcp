@@ -26,7 +26,7 @@ const ProductInformation = ({ data, labels, quantity }) => {
       <ImgWrapper>
         <ImageStyle source={{ uri: endpoints.global.baseURI + data.skuInfo.imageUrl }} />
         {!data.isGiftCard &&
-          (data.isGiftCard === 'TCP' ? (
+          (data.brand === 'tcp' ? (
             <ImageBrandStyle data-locator={getLocator('cart_item_brand_logo')} source={tcpImage} />
           ) : (
             <ImageGymBrandStyle
