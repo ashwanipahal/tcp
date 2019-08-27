@@ -14,8 +14,4 @@ const AnchorLeftMargin = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
-const CouponHeading = styled.View`
-  align-items: center;
-`;
-
-export { CouponHeading, StyledBodyCopy, StyledAnchorWrapper, AnchorLeftMargin };
+export { StyledBodyCopy, StyledAnchorWrapper, AnchorLeftMargin };

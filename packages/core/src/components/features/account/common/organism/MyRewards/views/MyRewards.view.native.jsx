@@ -1,99 +1,89 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { View } from 'react-native';
-import { UrlHandler } from '../../../../../../../utils/utils.app';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import {
-  StyledBodyCopy,
-  StyledAnchorWrapper,
-  AnchorLeftMargin,
-} from '../styles/MyRewards.style.native';
-import Button from '../../../../../../common/atoms/Button';
-import Anchor from '../../../../../../common/atoms/Anchor';
+import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
+import { getScreenWidth } from '@tcp/core/src/utils';
+import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
+import EmptyRewards from '../../../molecule/EmptyRewards';
+import { CouponHeading } from '../styles/MyRewards.style.native';
+import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
-const buttonStyle = { fontWeight: '400', marginBottom: 48 };
+/**
+ * Module height and width.
+ * Height is fixed for mobile
+ * Width can vary as per device width.
+ */
+const MODULE_HEIGHT = 220;
+const MODULE_WIDTH = getScreenWidth() - 30;
 
-const MyRewards = ({ labels }) => {
-  const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (0)`;
-
-  return (
-    <View>
-      <StyledBodyCopy>
-        <BodyCopy
-          mobileFontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="semibold"
-          data-locator="my-rewards-heading"
-          text={heading}
-        />
-      </StyledBodyCopy>
-      <StyledBodyCopy>
-        <BodyCopy
-          mobileFontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          data-locator="no_rewards_msg"
-          text={labels.myPlaceRewards.lbl_my_rewards_no_available_rewards}
-        />
-        <BodyCopy
-          mobileFontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          data-locator="no_rewards_msg"
-          text={labels.myPlaceRewards.lbl_my_rewards_start_shopping}
-        />
-      </StyledBodyCopy>
-      <Button
-        buttonVariation="variable-width"
-        fill="BLUE"
-        color="white"
-        data-locator="my-rewards-shop-now-btn"
-        text={labels.myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW}
-        style={buttonStyle}
+/**
+ * This Component return the mobile Promo Banner
+ */
+class MyRewards extends React.PureComponent<props> {
+  /**
+   * @desc Returns updated Banner text details with styles.
+   * Content render on the basis of style type .
+   */
+  renderView = ({ item }) => {
+    const {
+      labels,
+      coupons,
+      onViewCouponDetails,
+      onApplyCouponToBag,
+      onRemove,
+      isApplyingOrRemovingCoupon,
+    } = this.props;
+    const isApplyingCoupon = !!coupons.find(
+      coupon => coupon.status === COUPON_STATUS.APPLYING || coupon.status === COUPON_STATUS.REMOVING
+    );
+    return (
+      <DetailedCouponTile
+        key={item.id}
+        labels={labels.common}
+        coupon={item}
+        onViewCouponDetails={onViewCouponDetails}
+        onApplyCouponToBag={onApplyCouponToBag}
+        onRemove={onRemove}
+        isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
+        className="elem-mb-LRG"
       />
-      <StyledAnchorWrapper>
-        <Anchor
-          fontSizeVariation="medium"
-          underline
-          onPress={() => {
-            UrlHandler('https://www.childrensplace.com/us/content/myplace-rewards-page');
-          }}
-          anchorVariation="primary"
-          data-locator="my-rewards-program-details"
-          text={labels.myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS}
-        />
-        <AnchorLeftMargin>
-          <Anchor
-            fontSizeVariation="medium"
-            underline
-            noLink
-            onPress={() => {
-              UrlHandler('https://www.childrensplace.com/us/help-center/#termsAndConditionsli');
-            }}
-            anchorVariation="primary"
-            data-locator="my-rewards-tnc"
-            text={labels.common.lbl_common_tnc}
+    );
+  };
+
+  render() {
+    const { labels, coupons } = this.props;
+    const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
+    return (
+      <View>
+        <CouponHeading>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            className="my-rewards-heading"
+            data-locator="my-rewards-heading"
+            text={heading}
           />
-        </AnchorLeftMargin>
-      </StyledAnchorWrapper>
-    </View>
-  );
-};
-
-MyRewards.propTypes = {
-  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
-};
-
-MyRewards.defaultProps = {
-  labels: {
-    common: { lbl_common_tnc: '' },
-    myPlaceRewards: {
-      ACC_LBL_MY_REWARDS_PROGRAM_DETAILS: '',
-      ACC_LBL_MY_REWARDS_SHOP_NOW: '',
-      ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
-      ACC_LBL_MY_REWARDS_HEADING: '',
-    },
-  },
-};
+        </CouponHeading>
+        {coupons.size > 0 ? (
+          <View>
+            <Carousel
+              data={coupons.toArray()}
+              renderItem={this.renderView}
+              height={MODULE_HEIGHT}
+              width={MODULE_WIDTH}
+              variation="show-arrow"
+              showDots
+              darkArrow
+              autoplay={false}
+            />
+          </View>
+        ) : (
+          <EmptyRewards labels={labels} />
+        )}
+      </View>
+    );
+  }
+}
 
 export default MyRewards;
