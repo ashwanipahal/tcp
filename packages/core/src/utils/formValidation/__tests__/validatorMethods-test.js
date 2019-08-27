@@ -118,4 +118,34 @@ describe('validator methods', () => {
       expect(validatorMethods.stateRequired('', null, null, ['US'])).toBeFalsy();
     });
   });
+
+  describe('legacyPassword', () => {
+    it('should return true if value is correct password', () => {
+      expect(validatorMethods.legacyPassword('Test@1234')).toBeTruthy();
+    });
+
+    it('should return false if value is incorrect password', () => {
+      expect(validatorMethods.legacyPassword('abc.test.com')).toBeFalsy();
+    });
+  });
+
+  describe('equalTo', () => {
+    it('should return true if value passed is equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.equalTo('test', {}, [], ['test'])).toBeTruthy();
+    });
+
+    it('should return false if value passed is not equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.equalTo('test', {}, [], ['test1'])).toBeFalsy();
+    });
+  });
+
+  describe('password', () => {
+    it('should return true if value passed is correct password', () => {
+      expect(validatorMethods.password('Test@1234')).toBeTruthy();
+    });
+
+    it('should return false if value passed is not equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.password('test1234')).toBeFalsy();
+    });
+  });
 });

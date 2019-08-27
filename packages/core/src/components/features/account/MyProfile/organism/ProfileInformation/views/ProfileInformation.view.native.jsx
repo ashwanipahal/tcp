@@ -12,6 +12,9 @@ import endpoints from '../../../../common/externalEndpoints';
 export const ProfileInformation = ({
   labels,
   handleComponentChange,
+  profileCompletion,
+  defaultStore,
+  mailingAddress,
   profileInfoTile,
   userEmail,
   userBirthday,
@@ -19,10 +22,21 @@ export const ProfileInformation = ({
   userPhoneNumber,
   airMiles,
   myPlaceNumber,
+  userSurvey,
+  percentageIncrement,
 }) => {
   return (
     <>
-      <ProfileInfoActions labels={labels} handleComponentChange={handleComponentChange} />
+      <ProfileInfoActions
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+        profileCompletion={profileCompletion}
+        defaultStore={defaultStore}
+        mailingAddress={mailingAddress}
+        userBirthday={userBirthday}
+        userSurvey={userSurvey}
+        percentageIncrement={percentageIncrement}
+      />
       <PersonalInformation
         labels={labels}
         handleComponentChange={handleComponentChange}
@@ -69,12 +83,17 @@ ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
   profileInfoTile: PropTypes.shape({}),
-  userBirthday: PropTypes.string,
   userEmail: PropTypes.string,
   airMiles: PropTypes.string,
   myPlaceNumber: PropTypes.string,
   userFullName: PropTypes.string,
   userPhoneNumber: PropTypes.number,
+  profileCompletion: PropTypes.string,
+  mailingAddress: PropTypes.shape({}),
+  userBirthday: PropTypes.string,
+  userSurvey: PropTypes.shape([]),
+  percentageIncrement: PropTypes.shape({}),
+  defaultStore: PropTypes.string,
 };
 
 ProfileInformation.defaultProps = {
@@ -87,6 +106,11 @@ ProfileInformation.defaultProps = {
   userPhoneNumber: '',
   airMiles: '',
   myPlaceNumber: '',
+  profileCompletion: '',
+  mailingAddress: {},
+  userSurvey: [],
+  percentageIncrement: {},
+  defaultStore: '',
 };
 
 export default ProfileInformation;

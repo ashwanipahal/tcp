@@ -242,3 +242,10 @@ export function fetchShipmentMethods() {
     type: constants.CHECKOUT_LOAD_SHIPMENT_METHODS,
   };
 }
+
+export const emailSignupStatus = payload => {
+  return {
+    payload,
+    type: 'EMAIL_SUBSCRIPTION_STATUS',
+  };
+};

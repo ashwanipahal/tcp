@@ -3,7 +3,7 @@
 exports[`LoginSection component should renders correctly 1`] = `
 <Styled(Row)>
   <Styled(Col)
-    className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
+    className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG loginForm"
     colSize={
       Object {
         "large": 12,

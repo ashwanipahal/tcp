@@ -1,6 +1,6 @@
 import moment from 'moment';
 import CookieManager from 'react-native-cookies';
-import { getAPIConfig, updateCurrentBrand } from '@tcp/core/src/utils';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   setValueInAsyncStorage,
@@ -113,7 +113,6 @@ export const getSecondBrandThemeColor = () => {
  */
 export const updateBrandName = appType => {
   brandName = appType;
-  updateCurrentBrand(appType);
 };
 
 /**
