@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
+import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
+import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import { FormStyle, Container, PickupError } from '../styles/PickupPage.view.native.style';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
@@ -39,7 +41,6 @@ class PickUpFormPart extends React.Component {
           text={pickUpLabels.btnCancel}
           onPress={this.handleExitEditModeClick}
         />
-
         <Button buttonVariation="variable-width" text={pickUpLabels.btnUpdate} onPress={() => {}} />
       </View>
     );
@@ -63,7 +64,6 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
     } = this.props;
     const { isEditing, isReset } = this.state;
-
     return (
       <ScrollView>
         <Container>
@@ -76,7 +76,7 @@ class PickUpFormPart extends React.Component {
               dataLocator="pickup-error"
             />
           </PickupError>
-          {/* CheckoutSectionTitleDisplay */}
+          <CheckoutSectionTitleDisplay title={pickUpLabels.title} dataLocator="pickup-title" />
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs12"
@@ -87,7 +87,7 @@ class PickUpFormPart extends React.Component {
           />
           <View>
             <FormSection name="pickUpContact">
-              {!isGuest ? (
+              {isGuest ? (
                 <ContactFormFields
                   className="pickup-contact-guest-form"
                   showEmailAddress

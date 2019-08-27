@@ -47,6 +47,7 @@ export default class ProductColorChip extends React.Component {
         data-locator={getLocator('global_ColorSwatch_Swatch_link')}
         type="button"
         onClick={this.handleClick}
+        title={name}
         className={['content-colors-button', isActive ? 'active' : null].join(' ')}
       >
         <img className="product-color-chip-image" src={imagePath} alt={name} />

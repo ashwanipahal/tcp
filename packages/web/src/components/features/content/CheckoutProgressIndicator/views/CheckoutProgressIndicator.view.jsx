@@ -11,7 +11,6 @@ const CHECKOUT_STAGE_PROP_TYPE = PropTypes.oneOf(
 
 export class CheckoutProgressIndicator extends React.Component {
   static propTypes = {
-    isMobile: PropTypes.bool.isRequired,
     /** indicates the active step in the checkout */
     activeStage: CHECKOUT_STAGE_PROP_TYPE.isRequired,
     /** callback to change stages in the checkout process * */
@@ -40,13 +39,9 @@ export class CheckoutProgressIndicator extends React.Component {
   }
 
   render() {
-    const { activeStage, availableStages, isMobile, className } = this.props;
+    const { activeStage, availableStages, className } = this.props;
     let hasSeenActive = false;
     let checkoutProgressClass = 'checkout-progress-bar ';
-
-    if (!isMobile) {
-      checkoutProgressClass += 'desktop ';
-    }
 
     if (availableStages && availableStages.length > 3) {
       checkoutProgressClass += 'pickup-shipping';

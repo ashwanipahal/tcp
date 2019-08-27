@@ -1,8 +1,12 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .trackorder__modal__form {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  .generic__error__message {
+    display: flex;
+  }
+
+  .trackorder__modal__contactus {
+    padding: 0 4px;
   }
 `;
 
