@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
-import CouponList from '../molecules/CouponList';
-import BonusPointsDays from '../../../../BonusPointsDays';
+import CouponList from '../../../molecule/CouponList';
+import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
-import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/MyPlaceRewardsOverviewTile.style';
 
-export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrierleyEnabled }) => {
+export const MyPlaceRewardsOverviewTile = ({
+  className,
+  labels,
+  commonLabels,
+  coupons,
+  isBrierleyEnabled,
+}) => {
   const rewardCouponsCount = coupons.size;
   let walletOverviewInfo = '';
   let rewardDataLocator = '';
@@ -29,6 +35,8 @@ export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrier
       title={labels.lbl_overview_myPlaceRewardsHeading}
       ctaTitle={labels.lbl_overview_myPlaceRewardsCTA}
       dataLocatorPrefix="myrewardstile"
+      ctaLink="/account?id=place-rewards"
+      ctaPath="/account/place-rewards"
     >
       <section className={`elem-pb-MED ${isBrierleyEnabled ? 'bordered' : ''}`}>
         <BodyCopy
@@ -39,7 +47,7 @@ export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrier
         >
           {walletOverviewInfo}
         </BodyCopy>
-        <CouponList coupons={coupons} sliceCount={2} labels={labels} />
+        <CouponList coupons={coupons} sliceCount={2} labels={labels} commonLabels={commonLabels} />
         {!rewardCouponsCount && (
           <div>
             <Anchor
@@ -49,7 +57,7 @@ export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrier
               centered
               fill="WHITE"
               to="/home"
-              data-locator="accountoverview-myplacerewardstile-startshopbtn"
+              dataLocator="accountoverview-myplacerewardstile-startshopbtn"
             >
               {labels.lbl_overview_myPlaceRewardsShopNow}
             </Anchor>
@@ -69,6 +77,7 @@ MyPlaceRewardsOverviewTile.propTypes = {
     lbl_overview_myPlaceRewardsDesc: PropTypes.string.isRequired,
     lbl_overview_myPlaceRewardsShopNow: PropTypes.string.isRequired,
   }).isRequired,
+  commonLabels: PropTypes.shape({}),
   coupons: PropTypes.shape([]).isRequired,
   isBrierleyEnabled: PropTypes.bool,
   className: PropTypes.string,
@@ -77,6 +86,7 @@ MyPlaceRewardsOverviewTile.propTypes = {
 MyPlaceRewardsOverviewTile.defaultProps = {
   isBrierleyEnabled: true,
   className: '',
+  commonLabels: {},
 };
 
 export default withStyles(MyPlaceRewardsOverviewTile, styles);

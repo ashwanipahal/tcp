@@ -8,10 +8,10 @@ import { LogoutApplication } from '../../../../../services/abstractors/account';
 export function* logoutSaga() {
   try {
     const res = yield call(LogoutApplication);
-    const matchPath = window.location.pathname.split('/')[2];
     if (res.statusCode === 200) {
       yield put(resetUserInfo());
       if (!isMobileApp()) {
+        const matchPath = window.location.pathname.split('/')[2];
         yield put(closeOverlayModal());
         if (window.location.href.indexOf('account')) {
           routerPush('/', '/home');

@@ -5,10 +5,12 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
-import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut/views/RemoveSoldOut.view';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class ProductTileWrapper extends React.PureComponent<props> {
   constructor(props) {
@@ -25,36 +27,77 @@ class ProductTileWrapper extends React.PureComponent<props> {
     });
   };
 
+  getRemoveString = (labels, removeCartItem, getUnavailableOOSItems) => {
+    const remove = labels.removeSoldOut.split('#remove#');
+    const newRemove = (
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs12"
+        component="span"
+        className="removeErrorMessage"
+        fontWeight="extrabold"
+        onClick={() => removeCartItem(getUnavailableOOSItems)}
+      >
+        remove
+      </BodyCopy>
+    );
+    remove.splice(1, 0, newRemove);
+    return remove;
+  };
+
   render() {
-    const { orderItems, bagLabels, labels, pageView, isUserLoggedIn, isPlcc } = this.props;
-    let isAvailable = false;
+    const {
+      orderItems,
+      bagLabels,
+      labels,
+      pageView,
+      removeCartItem,
+      isUserLoggedIn,
+      isPlcc,
+    } = this.props;
+    let isUnavailable;
+    const getUnavailableOOSItems = [];
     const { isEditAllowed } = this.state;
     if (orderItems && orderItems.size > 0) {
+      const orderItemsView = orderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        if (
+          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
+          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
+        ) {
+          getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
+          isUnavailable = true;
+        }
+        return (
+          <CartItemTile
+            inheritedStyles={pageView === 'myBag' && productTileCss}
+            labels={labels}
+            productDetail={productDetail}
+            key={`${getProductName(tile)}`}
+            pageView={pageView}
+            toggleEditAllowance={this.toggleEditAllowance}
+            isEditAllowed={isEditAllowed}
+            isPlcc={isPlcc}
+          />
+        );
+      });
       return (
-        <div className="miniBagWrapper">
-          {(isAvailable === 'SOLDOUT' || isAvailable === 'UNAVAILABLE') && (
+        <>
+          {isUnavailable && (
             <>
               <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
-              <RemoveSoldOut labels={labels} />
+              <BodyCopy
+                className="removeItem"
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs12"
+              >
+                {this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
+              </BodyCopy>
             </>
           )}
-          {orderItems.map(tile => {
-            const productDetail = getProductDetails(tile);
-            isAvailable = productDetail.miscInfo.store;
-            return (
-              <CartItemTile
-                inheritedStyles={pageView === 'myBag' && productTileCss}
-                labels={labels}
-                productDetail={productDetail}
-                key={`${getProductName(tile)}`}
-                pageView={pageView}
-                toggleEditAllowance={this.toggleEditAllowance}
-                isEditAllowed={isEditAllowed}
-                isPlcc={isPlcc}
-              />
-            );
-          })}
-        </div>
+          {orderItemsView}
+        </>
       );
     }
     return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
@@ -69,6 +112,7 @@ ProductTileWrapper.defaultProps = {
 ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  removeCartItem: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,

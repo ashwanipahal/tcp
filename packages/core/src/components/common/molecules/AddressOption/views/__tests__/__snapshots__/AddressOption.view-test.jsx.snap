@@ -18,6 +18,7 @@ exports[`AddressOption component should renders correctly with input 1`] = `
     address={Object {}}
     isDefault={false}
     showCountry={false}
+    showName={true}
     showPhone={false}
   />
 </label>
@@ -31,6 +32,7 @@ exports[`AddressOption component should renders correctly without input 1`] = `
     address={Object {}}
     isDefault={false}
     showCountry={false}
+    showName={true}
     showPhone={false}
   />
 </div>

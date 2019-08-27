@@ -2,6 +2,8 @@
 
 exports[`PaymentOverviewTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
+  ctaLink="/account?id=payment"
+  ctaPath="/account/payment"
   ctaTitle=""
   title=""
 >

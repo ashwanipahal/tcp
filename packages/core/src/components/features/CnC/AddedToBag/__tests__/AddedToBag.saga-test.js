@@ -16,7 +16,6 @@ describe('Added to bag saga', () => {
     };
     const addToCartEcomGen = addToCartEcom({ payload });
     addToCartEcomGen.next();
-    addToCartEcomGen.next();
 
     const response = {
       orderId: '1234',
@@ -38,7 +37,7 @@ describe('Added to bag saga', () => {
 
     const addToCartEcomGen1 = addToCartEcom({ payload });
     addToCartEcomGen1.next();
-    addToCartEcomGen1.next();
+
     const putDescriptorError = addToCartEcomGen1.next(err).value;
     expect(putDescriptorError).toEqual(
       put({

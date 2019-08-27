@@ -8,9 +8,10 @@ exports[`FooterNavLinksList component renders default footer correctly 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="footer-nav-header1"
-      data-locator="col_1_link_0"
+      dataLocator="col_1_link_0"
       fontSizeVariation="large"
       noLink={true}
+      title="gift card"
       to=""
     />
   </li>
@@ -18,9 +19,10 @@ exports[`FooterNavLinksList component renders default footer correctly 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="footer-nav-header1"
-      data-locator="col_1_link_1"
+      dataLocator="col_1_link_1"
       fontSizeVariation="large"
       noLink={true}
+      title="gift card"
       to=""
     />
   </li>
@@ -28,9 +30,10 @@ exports[`FooterNavLinksList component renders default footer correctly 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="footer-nav-header1"
-      data-locator="col_1_link_2"
+      dataLocator="col_1_link_2"
       fontSizeVariation="large"
       noLink={true}
+      title="gift card"
       to=""
     />
   </li>

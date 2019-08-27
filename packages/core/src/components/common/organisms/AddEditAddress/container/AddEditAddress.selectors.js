@@ -40,6 +40,7 @@ export const getAddEditAddressLabels = state => {
     lbl_addEditAddress_addressButton: addAddress,
     lbl_addEditAddress_update: update,
     lbl_addEditAddress_cancel: cancel,
+    lbl_addEditAddress_internationalShipping: shipInternationally,
   } = state.Labels.global && state.Labels.global.addEditAddress;
   return {
     addressFormLabels: {
@@ -60,6 +61,7 @@ export const getAddEditAddressLabels = state => {
       cancel,
       editAddress,
       addAddressHeading,
+      shipInternationally,
     },
   };
 };

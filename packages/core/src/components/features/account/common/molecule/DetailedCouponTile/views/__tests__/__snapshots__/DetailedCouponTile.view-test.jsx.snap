@@ -1,0 +1,572 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailedCouponTile should render correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="content elem-pl-SM elem-pr-SM elem-pt-XL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="top-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      <Styled(CouponIcon)
+        className="elem-mb-XS"
+        coupon={Object {}}
+        labels={
+          Object {
+            "lbl_coupon_applyToBag": "apply",
+            "lbl_coupon_couponUseBy": "use by",
+            "lbl_coupon_couponValid": "valid",
+            "lbl_coupon_detailsLink": "details",
+            "lbl_coupon_expiringSoon": "expiring soon",
+            "lbl_coupon_removeFromBag": "remove from bag",
+            "lbl_coupon_viewPrint": "view & print",
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-SM"
+        color="text.primary"
+        component="p"
+        data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="bottom-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="coupon-desc elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            use by
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            undefined
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(Anchor)
+          fontSizeVariation="xlarge"
+          underline={true}
+        >
+          details
+        </Styled(Anchor)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="elem-mb-SM"
+          fill="WHITE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          view & print
+        </Styled(Button)>
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          disabled={true}
+          fill="BLUE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          apply
+        </Styled(Button)>
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
+
+exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="content elem-pl-SM elem-pr-SM elem-pt-XL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="top-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      <Styled(CouponIcon)
+        className="elem-mb-XS"
+        coupon={
+          Object {
+            "status": "applied",
+          }
+        }
+        labels={
+          Object {
+            "lbl_coupon_applyToBag": "apply",
+            "lbl_coupon_couponUseBy": "use by",
+            "lbl_coupon_couponValid": "valid",
+            "lbl_coupon_detailsLink": "details",
+            "lbl_coupon_expiringSoon": "expiring soon",
+            "lbl_coupon_removeFromBag": "remove from bag",
+            "lbl_coupon_viewPrint": "view & print",
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-SM"
+        color="text.primary"
+        component="p"
+        data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+      <Styled(BodyCopy)
+        className="barcode-content hide-on-desktop hide-on-tablet"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Barcode
+          background="#ffffff"
+          displayValue={true}
+          font="Nunito"
+          fontOptions=""
+          fontSize={20}
+          format="CODE128"
+          height={100}
+          lineColor="#000000"
+          margin={10}
+          renderer="svg"
+          textAlign="center"
+          textMargin={2}
+          textPosition="bottom"
+          width={2}
+        />
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="bottom-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="coupon-desc elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            use by
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            undefined
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(Anchor)
+          fontSizeVariation="xlarge"
+          underline={true}
+        >
+          details
+        </Styled(Anchor)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="elem-mb-SM"
+          fill="WHITE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          view & print
+        </Styled(Button)>
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          fill="BLUE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          remove from bag
+        </Styled(Button)>
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
+
+exports[`DetailedCouponTile should render expiring soon notification if coupon isExpiring is true 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="notification"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs10"
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  >
+    expiring soon
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="content elem-pl-SM elem-pr-SM elem-pt-XL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="top-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      <Styled(CouponIcon)
+        className="elem-mb-XS"
+        coupon={
+          Object {
+            "isExpiring": true,
+          }
+        }
+        labels={
+          Object {
+            "lbl_coupon_applyToBag": "apply",
+            "lbl_coupon_couponUseBy": "use by",
+            "lbl_coupon_couponValid": "valid",
+            "lbl_coupon_detailsLink": "details",
+            "lbl_coupon_expiringSoon": "expiring soon",
+            "lbl_coupon_removeFromBag": "remove from bag",
+            "lbl_coupon_viewPrint": "view & print",
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-SM"
+        color="text.primary"
+        component="p"
+        data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+      <Styled(BodyCopy)
+        className="barcode-content hide-on-desktop hide-on-tablet"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Barcode
+          background="#ffffff"
+          displayValue={true}
+          font="Nunito"
+          fontOptions=""
+          fontSize={20}
+          format="CODE128"
+          height={100}
+          lineColor="#000000"
+          margin={10}
+          renderer="svg"
+          textAlign="center"
+          textMargin={2}
+          textPosition="bottom"
+          width={2}
+        />
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="bottom-content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="coupon-desc elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            use by
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            undefined
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(Anchor)
+          fontSizeVariation="xlarge"
+          underline={true}
+        >
+          details
+        </Styled(Anchor)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-SM"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="elem-mb-SM"
+          fill="WHITE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          view & print
+        </Styled(Button)>
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          disabled={true}
+          fill="BLUE"
+          fullWidth={true}
+          onClick={[Function]}
+        >
+          apply
+        </Styled(Button)>
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

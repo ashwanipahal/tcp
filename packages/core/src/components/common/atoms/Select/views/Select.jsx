@@ -25,6 +25,7 @@ type Props = {
   options: any,
   defaultValue: any,
   dataLocator?: string,
+  disabled?: boolean,
 };
 
 const SelectBox = ({
@@ -37,6 +38,8 @@ const SelectBox = ({
   options,
   meta: { touched, error },
   dataLocator,
+  disabled,
+  ...otherProps
 }: Props): Node => {
   return (
     <div className={className}>
@@ -48,27 +51,42 @@ const SelectBox = ({
         name={name}
         value={input.value || placeholder}
         data-locator={dataLocator}
+        {...otherProps}
+        disabled={disabled}
       >
         {!input.value && placeholder && <option value="">{placeholder}</option>}
         {options &&
           options.map(option => {
             return (
-              <option value={option.id} id={option.id} key={option.id}>
-                {option.displayName}
+              <option
+                value={option.id || option.get('id')}
+                id={option.id || option.get('id')}
+                key={option.id || option.get('id')}
+              >
+                {option.displayName || option.get('displayName')}
               </option>
             );
           })}
       </select>
-      {input.value && (
-        <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
-          {placeholder}
-        </BodyCopy>
-      )}
-      {touched && error && (
-        <BodyCopy fontSize="fs12" fontFamily="secondary" component="div" color="error">
-          {error}
-        </BodyCopy>
-      )}
+      <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
+        {placeholder}
+      </BodyCopy>
+      <div className="SelectBox__error">
+        <div className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
+        {touched && error && (
+          <BodyCopy
+            fontSize="fs12"
+            fontFamily="secondary"
+            component="div"
+            color="error"
+            fontWeight="extrabold"
+            role="alert"
+            aria-live="assertive"
+          >
+            {error}
+          </BodyCopy>
+        )}
+      </div>
     </div>
   );
 };
@@ -80,6 +98,7 @@ SelectBox.defaultProps = {
   type: 'text',
   placeholder: '',
   dataLocator: '',
+  disabled: false,
 };
 
 export default withStyles(SelectBox, StyledTextBox);

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import ProfileInformation from '../organism/ProfileInformation';
 
-const MyProfile = ({ labels }) => {
+const MyProfile = ({ labels, ...otherProps }) => {
   return (
     <div>
-      <FormPageHeadingComponent className="margin-none" />
-      <ProfileInformation labels={labels} />
+      <FormPageHeadingComponent heading={labels.lbl_profile_heading} className="margin-none" />
+      <ProfileInformation labels={labels} {...otherProps} />
     </div>
   );
 };

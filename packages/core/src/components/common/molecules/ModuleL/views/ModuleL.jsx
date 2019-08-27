@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Col, Row } from '../../../atoms';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import { Carousel, LinkText, PromoBanner } from '../..';
 import { getIconPath, getLocator } from '../../../../../utils';
@@ -103,5 +103,5 @@ const ModuleL = ({
   );
 };
 
-export default errorBoundary(withStyles(ModuleL, style));
+export default withStyles(errorBoundary(ModuleL), style);
 export { ModuleL as ModuleLVanilla };

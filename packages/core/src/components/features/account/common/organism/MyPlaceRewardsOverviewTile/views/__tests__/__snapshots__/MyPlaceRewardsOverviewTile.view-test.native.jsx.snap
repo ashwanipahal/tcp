@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are not present 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    color="black"
+    fontFamily="secondary"
+    fontSize="fs16"
+  />
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
+  />
+  <View>
+    <Styled(BodyCopy)
+      color="black"
+      fontFamily="secondary"
+      fontSize="fs13"
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityRole="link"
+        anchorVariation="button"
+        borderColor="black"
+        borderWidth="1"
+        buttonVariation="variable-width"
+        centered={true}
+        customStyle={Object {}}
+        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
+        fill="WHITE"
+        fullWidth={true}
+        locator=""
+        onPress={[Function]}
+        text=""
+        visible={false}
+      />
+    </Styled(View)>
+  </View>
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      locator=""
+      onPress={[Function]}
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are present 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    color="black"
+    fontFamily="secondary"
+    fontSize="fs16"
+  />
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
+  />
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
+        fontSize="fs14"
+        fontWeight="semibold"
+        text=""
+      />
+    </View>
+    <Styled(View)>
+      <CouponList
+        coupons={
+          Immutable.List [
+            Object {},
+          ]
+        }
+        labels={
+          Object {
+            "lbl_overview_myPlaceRewardsAvailable": "",
+          }
+        }
+        sliceCount={2}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(LineComp)
+    borderColor="gray"
+    borderWidth={0.5}
+    marginBottom={20}
+    marginTop={20}
+  />
+  <Connect(BonusPointsDays)
+    labels={
+      Object {
+        "lbl_overview_myPlaceRewardsAvailable": "",
+      }
+    }
+    view="read"
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      locator=""
+      onPress={[Function]}
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

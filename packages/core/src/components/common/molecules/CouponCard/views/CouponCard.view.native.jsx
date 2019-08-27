@@ -237,7 +237,7 @@ export class CouponCard extends React.Component<Props> {
                       onPress={this.handleDefaultLinkClick}
                       noLink
                       to="/#"
-                      data-locator=""
+                      dataLocator=""
                       text={labels.DETAILS_BUTTON_TEXT}
                     />
                   </CouponAnchor>

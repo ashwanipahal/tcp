@@ -10,8 +10,6 @@ import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
 
-let cartItemCount = getCartItemCount();
-
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
  * @param {Function} openNavigationDrawer Function to dispatch open drawer action to store
@@ -25,11 +23,23 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
 class HeaderMiddleNav extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
+    const { isLoggedIn, cartItemCount } = props;
     this.state = {
       isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
+      isLoggedIn: isLoggedIn || false,
+      cartItemCount,
     };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { isLoggedIn: prevLoggedInState } = prevState;
+    const { isLoggedIn: nextLoggedInState } = nextProps;
+    if (prevLoggedInState !== nextLoggedInState) {
+      return { cartItemCount: getCartItemCount() };
+    }
+    return null;
   }
 
   onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }) => {
@@ -52,7 +62,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     } else {
       this.setState({ isOpenMiniBagModal: isOpen });
       if (!isOpen) {
-        cartItemCount = getCartItemCount();
+        this.setState({
+          cartItemCount: getCartItemCount(),
+        });
       }
     }
   };
@@ -67,7 +79,12 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       userName,
     } = this.props;
     const brand = getBrand();
-    const { isOpenMiniBagModal, userNameClick, triggerLoginCreateAccount } = this.state;
+    const {
+      isOpenMiniBagModal,
+      userNameClick,
+      triggerLoginCreateAccount,
+      cartItemCount,
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -132,6 +149,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
               <React.Fragment>
                 <Anchor
                   href="#"
+                  noLink
                   id="createAccount"
                   className="leftLink"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
@@ -142,6 +160,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 </Anchor>
                 <Anchor
                   href="#"
+                  noLink
                   id="login"
                   className="rightLink"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
@@ -216,6 +235,8 @@ HeaderMiddleNav.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  cartItemCount: PropTypes.func.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

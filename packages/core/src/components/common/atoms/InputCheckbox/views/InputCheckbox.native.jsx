@@ -80,12 +80,8 @@ class InputCheckBox extends React.Component {
         <BodyCopy
           className="Checkbox__error"
           color="error"
-          component="div"
           fontSize="fs12"
-          fontFamily="secondary"
-          role="alert"
-          aria-live="assertive"
-          data-locator="errorDataLocator"
+          mobilefontFamily={['secondary']}
           text={isError ? error : ''}
         />
       </StyledCheckBox>

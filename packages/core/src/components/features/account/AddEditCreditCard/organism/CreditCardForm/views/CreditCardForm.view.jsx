@@ -11,7 +11,7 @@ import constants from '../../../container/AddEditCreditCard.constants';
 import CreditCardFields from '../../../molecule/CreditCardFields';
 import { Heading } from '../../../../../../common/atoms';
 import AddressDropdown from '../../../molecule/AddressDropdown';
-import AddressFields from '../../../../common/molecule/AddressFields';
+import AddressFields from '../../../../../../common/molecules/AddressFields';
 import Address from '../../../../../../common/molecules/Address';
 import styles from '../styles/CreditCardForm.style';
 
@@ -29,6 +29,7 @@ export class CreditCardForm extends React.PureComponent {
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
+    addressFormLabels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -85,6 +86,7 @@ export class CreditCardForm extends React.PureComponent {
       handleSubmit,
       dispatch,
       initialValues,
+      addressFormLabels,
     } = this.props;
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
     return (
@@ -147,6 +149,7 @@ export class CreditCardForm extends React.PureComponent {
                 formName={constants.FORM_NAME}
                 formSection="address"
                 dispatch={dispatch}
+                addressFormLabels={addressFormLabels}
               />
             </FormSection>
           </div>

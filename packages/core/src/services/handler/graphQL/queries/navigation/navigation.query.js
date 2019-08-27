@@ -2,8 +2,12 @@ const buildQuery = ({ brand, country, channel }) => `
   navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
     categoryContent {
       description
+      catgroupId
       name
+      longDescription
       id
+      seoUrl
+      seoToken
       mainCategory {
         set {
           key
@@ -11,15 +15,6 @@ const buildQuery = ({ brand, country, channel }) => `
         }
         sizesRange {
           text
-        }
-        categoryImage {
-          url
-          alt
-          title
-          crop_d
-          crop_m
-          crop_t
-          position
         }
         categoryLayout {
           name
@@ -41,19 +36,6 @@ const buildQuery = ({ brand, country, channel }) => `
                 external
               }
             }
-            textBanner {
-              link {
-                url
-                text
-                target
-                title
-                external
-              }
-              textItems {
-                style
-                text
-              }
-            }
             shopBySize {
               text {
                 text
@@ -69,14 +51,13 @@ const buildQuery = ({ brand, country, channel }) => `
     subCategories {
       categoryContent {
         seoToken
+        seoUrl
         groupIdentifierSequence
-        isShortImage
-        isUnique
-        productCount
         description
         groupIdentifier
         groupIdentifierName
         name
+        longDescription
         id
         mainCategory {
           promoBadge {
@@ -87,14 +68,13 @@ const buildQuery = ({ brand, country, channel }) => `
       subCategories {
         categoryContent {
           seoToken
+          seoUrl
           groupIdentifierSequence
-          isShortImage
-          isUnique
-          productCount
           description
           groupIdentifier
           groupIdentifierName
           name
+          longDescription
           id
         }
       }

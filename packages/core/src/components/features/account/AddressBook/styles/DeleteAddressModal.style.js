@@ -5,7 +5,7 @@ const DeleteAddressModalStyle = css`
     margin: 0 80px;
   }
   .deleteAddressModal_btnWrapper {
-    width: 170px;
+    width: 225px;
     margin: 0 auto;
   }
   .deleteAddressModal_btn {
@@ -14,15 +14,11 @@ const DeleteAddressModalStyle = css`
     width: 100%;
   }
   .deleteAddressModal_addressToDelete {
-    margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL}
-      ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+    margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} auto
+      ${props => props.theme.spacing.LAYOUT_SPACING.LRG} auto;
     display: block;
+    width: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
     word-break: break-word;
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
-    }
   }
   .deleteAddressModal_deleteConfirm {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};

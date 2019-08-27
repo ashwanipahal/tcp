@@ -77,8 +77,8 @@ export default {
     BLACK: {
       NORMAL: '#1a1a1a',
       BORDER: '#1a1a1a',
-      HOVER: '#ffffff',
-      FOCUS: '#ffffff',
+      HOVER: '#595959',
+      FOCUS: '#595959',
       ALT_HOVER: '#ffffff',
       ALT_FOCUS: '#ffffff',
       TEXT: '#ffffff',
@@ -118,5 +118,9 @@ export default {
     BORDER: '#575757',
     CHECKED_BORDER: '#1a1a1a',
     TICK_COLOR: '#fff',
+  },
+  NAVIGATION: {
+    CIRCULAR_BORDER: '#6b6b6b',
+    L1_BACKGROUND: '#f6f6f6',
   },
 };

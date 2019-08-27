@@ -28,6 +28,8 @@ export const PaymentOverviewTile = ({
     <AccountOverviewTile
       title={labels.lbl_overview_paymentHeading}
       ctaTitle={labels.lbl_overview_paymentCTA}
+      ctaLink="/account?id=payment"
+      ctaPath="/account/payment"
     >
       <div className={className}>
         {/* Credit card list */}

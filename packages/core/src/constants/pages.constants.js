@@ -1,6 +1,7 @@
-export const CHECKOUT_PAGE = 'checkout';
-export const HOME_PAGE = 'Home';
-export default {
-  CHECKOUT_PAGE,
-  HOME_PAGE,
+const PAGES = {
+  HOME_PAGE: 'Home',
+  CHECKOUT_PAGE: 'checkout',
+  SEARCH_PAGE: 'search',
+  PRODUCT_LISTING_PAGE: 'c',
 };
+export default PAGES;

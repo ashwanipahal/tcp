@@ -1,6 +1,15 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  &.addEditAddress {
+    .select__input {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+    }
+
+    .select__label {
+      margin-top: 7px;
+    }
+  }
   .AddAddressForm__ctaContainer {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }

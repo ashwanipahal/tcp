@@ -11,6 +11,10 @@ export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');
 };
 
+export const getCartOrderId = state => {
+  return getCartOrderDetails(state).get('orderId');
+};
+
 export const getProductName = product => {
   return product.getIn(['productInfo', 'name']);
 };
@@ -142,14 +146,15 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_shipToHome: ecomShipping,
         lbl_cartTile_extra: extra,
         lbl_cartTile_off: off,
-        lbl_error_problemWithOrder: problemWithOrder,
+        lbl_miniBag_problemWithOrder: problemWithOrder,
         lbl_error_please: pleaseText,
         lbl_error_remove: remove,
-        lbl_error_removeSoldOut: removeSoldOut,
-        lbl_error_itemUnavailable: itemUnavailable,
-        lbl_error_itemSoldOut: itemSoldOut,
-        lbl_error_chooseDiff: chooseDiff,
-        lbl_error_soldOut: soldOut,
+        lbl_miniBag_error: removeSoldOut,
+        lbl_miniBag_itemUnavailable: itemUnavailable,
+        lbl_miniBag_itemSoldOut: itemSoldOut,
+        lbl_miniBag_chooseDiff: chooseDiff,
+        lbl_miniBag_soldOut: soldOut,
+        lbl_minibag_errorSize: errorSize,
       },
     },
   } = state.Labels;
@@ -183,6 +188,7 @@ export const getLabelsCartItemTile = state => {
     itemSoldOut,
     chooseDiff,
     soldOut,
+    errorSize,
   };
 };
 

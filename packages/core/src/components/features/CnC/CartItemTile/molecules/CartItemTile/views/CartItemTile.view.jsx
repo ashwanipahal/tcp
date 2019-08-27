@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
-import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability/views/ItemAvailability.view';
+import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
@@ -31,11 +31,13 @@ class CartItemTile extends React.Component {
     toggleEditAllowance();
   };
 
-  handleEditCartItem = productNumber => {
-    const productNum = productNumber.slice(0, productNumber.indexOf('_'));
-    this.toggleFormVisibility();
-    const { getProductSKUInfo } = this.props;
-    getProductSKUInfo(productNum);
+  handleEditCartItem = (pageView, productNumber) => {
+    if (pageView !== 'myBag') {
+      const productNum = productNumber.slice(0, productNumber.indexOf('_'));
+      this.toggleFormVisibility();
+      const { getProductSKUInfo } = this.props;
+      getProductSKUInfo(productNum);
+    }
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
@@ -86,18 +88,33 @@ class CartItemTile extends React.Component {
     );
   };
 
-  getItemDetails = (productDetail, labels, pageView) => {
+  getItemDetails = (removeCartItem, productDetail, labels, pageView) => {
     return (
       <Row className="padding-top-15 padding-bottom-20" fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === 'SOLDOUT' && (
-            <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              color="error"
+              component="span"
+              onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+            >
               <u>Remove</u>
             </BodyCopy>
           )}
           {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
-            <BodyCopy fontFamily="secondary" color="error" fontSize="fs12" component="span">
+            <BodyCopy
+              fontFamily="secondary"
+              color="error"
+              fontSize="fs12"
+              component="span"
+              dataLocator={getLocator('cart_item_unavailable_update')}
+              onClick={() => {
+                this.handleEditCartItem(pageView, productDetail.productInfo.productPartNumber);
+              }}
+            >
               <u>Update</u>
             </BodyCopy>
           )}
@@ -216,10 +233,10 @@ class CartItemTile extends React.Component {
     return (
       <div className={className}>
         {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
-          <ItemAvailability errorMsg={labels.itemUnavailable} />
+          <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />
         )}
         {productDetail.miscInfo.availability === 'SOLDOUT' && (
-          <ItemAvailability errorMsg={labels.itemSoldOut} chooseDiff={labels.chooseDiff} />
+          <ItemAvailability errorMsg={labels.itemSoldOut} />
         )}
         <div className="crossDeleteIcon">
           <Image
@@ -392,9 +409,10 @@ class CartItemTile extends React.Component {
                       dataLocator={getLocator('cart_item_edit_link')}
                       className="padding-left-10 responsive-edit-css"
                       onClick={() => {
-                        if (pageView !== 'myBag') {
-                          this.handleEditCartItem(productDetail.productInfo.productPartNumber);
-                        }
+                        this.handleEditCartItem(
+                          pageView,
+                          productDetail.productInfo.productPartNumber
+                        );
                       }}
                     >
                       <u>{labels.edit}</u>
@@ -413,7 +431,7 @@ class CartItemTile extends React.Component {
               />
             )}
             <Row className="product-detail-row label-responsive-wrapper padding-top-10">
-              <Col className="label-responsive" colSize={{ large: 4, medium: 3, small: 2 }}>
+              <Col className="label-responsive" colSize={{ large: 3, medium: 3, small: 2 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
@@ -426,7 +444,7 @@ class CartItemTile extends React.Component {
               {this.getProductPriceList(productDetail, pageView)}
             </Row>
             <Row className="product-detail-row label-responsive-wrapper">
-              <Col className="label-responsive" colSize={{ large: 4, medium: 3, small: 2 }}>
+              <Col className="label-responsive" colSize={{ large: 3, medium: 3, small: 2 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
@@ -436,7 +454,7 @@ class CartItemTile extends React.Component {
                   {`${labels.points}:`}
                 </BodyCopy>
               </Col>
-              <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 8 }}>
+              <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 3 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
@@ -449,7 +467,7 @@ class CartItemTile extends React.Component {
                 </BodyCopy>
               </Col>
             </Row>
-            {this.getItemDetails(productDetail, labels, pageView)}
+            {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
           </Col>
         </Row>
         {pageView === 'myBag' && (

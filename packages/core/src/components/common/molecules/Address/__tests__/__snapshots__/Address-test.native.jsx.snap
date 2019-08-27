@@ -1,0 +1,394 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address component should renders correctly 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs16"
+    fontWeight="semibold"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test test"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 1"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 2"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test city, test state 111-111"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test country"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="1234567890"
+  />
+</View>
+`;
+
+exports[`Address component should renders correctly when address Line 1 and 2 are not present 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs16"
+    fontWeight="semibold"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test test"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test city, test state 111-111"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test country"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="1234567890"
+  />
+</View>
+`;
+
+exports[`Address component should renders correctly when city & state are not present 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs16"
+    fontWeight="semibold"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test test"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 1"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 2"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="111-111"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test country"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="1234567890"
+  />
+</View>
+`;
+
+exports[`Address component should renders correctly when city is not present 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs16"
+    fontWeight="semibold"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test test"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 1"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 2"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test state 111-111"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test country"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="1234567890"
+  />
+</View>
+`;
+
+exports[`Address component should renders correctly when optional fields are not present 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs16"
+    fontWeight="semibold"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test test"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressLine1"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressLine2"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test city, test state 111-111"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test country"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="1234567890"
+  />
+</View>
+`;
+
+exports[`Address component should renders correctly when showName is switched off 1`] = `
+<View>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 1"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="addressline 2"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test city, test state 111-111"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="test country"
+  />
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontSize="fs14"
+    fontWeight="regular"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
+    text="1234567890"
+  />
+</View>
+`;

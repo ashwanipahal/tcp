@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemAvailability Component ItemAvailability should render correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="error"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="regular"
+      style={
+        Object {
+          "flex": 1,
+          "flexWrap": "wrap",
+        }
+      }
+      text="This is test error."
+    />
+  </Styled(View)>
+</Fragment>
+`;

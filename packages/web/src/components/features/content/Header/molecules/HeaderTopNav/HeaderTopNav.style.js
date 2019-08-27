@@ -33,21 +33,31 @@ export default css`
 
   .header-topnav__promo-area {
     text-align: center;
-    width: 50%;
+    width: 45%;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       display: none;
     }
   }
 
+  .track-order {
+    border-right: 1px solid ${props => props.theme.colorPalette.gray['600']};
+    line-height: 26px;
+    padding-right: 12px;
+    float: right;
+  }
+
   .header-topnav__track-order {
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
     text-align: right;
-    padding-top: 15px;
+    padding-top: 9px;
     width: 40%;
+    display: none;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      width: 20%;
+      display: block;
+      padding-top: 14px;
+      width: 25%;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
