@@ -1693,9 +1693,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         data-locator="view_gallery_button"
         onClick={[Function]}
         type="button"
-      >
-        FILTER
-      </Styled(Button)>
+      />
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -1711,9 +1709,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         className="open-filter-button"
         data-locator="view_gallery_button"
         type="button"
-      >
-        SORT
-      </Styled(Button)>
+      />
     </Styled(Col)>
   </Styled(Row)>
 </Fragment>

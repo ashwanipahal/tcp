@@ -243,7 +243,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               data-locator="view_gallery_button"
               onClick={this.showModal}
             >
-              FILTER
+              {labels.lbl_filter}
             </Button>
           </Col>
           <Col
@@ -259,7 +259,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               className="open-filter-button"
               data-locator="view_gallery_button"
             >
-              SORT
+              {labels.lbl_sort}
             </Button>
           </Col>
         </Row>
