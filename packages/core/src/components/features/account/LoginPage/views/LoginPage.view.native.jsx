@@ -63,6 +63,7 @@ class LoginView extends React.PureComponent {
       resetForgotPasswordErrorResponse,
       onCreateAccountClick,
       navigation,
+      variation,
     } = this.props;
     return (
       <ScrollViewStyle>
@@ -80,6 +81,7 @@ class LoginView extends React.PureComponent {
           resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
           onCreateAccountClick={onCreateAccountClick}
           navigation={navigation}
+          variation={variation}
         />
       </ScrollViewStyle>
     );
@@ -99,6 +101,7 @@ LoginView.propTypes = {
   resetForgotPasswordErrorResponse: PropTypes.string.isRequired,
   onCreateAccountClick: PropTypes.string.isRequired,
   navigation: PropTypes.shape({}),
+  variation: PropTypes.bool.isRequired,
 };
 
 LoginView.defaultProps = {

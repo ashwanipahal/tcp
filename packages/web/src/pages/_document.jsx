@@ -38,6 +38,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"
+          />
           <link href="/static/app.css" rel="stylesheet" />
         </Head>
         <body
