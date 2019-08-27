@@ -21,12 +21,12 @@ class ContactFormFields extends React.Component {
       <View className={className}>
         <View className="fieldFirstName">
           <Field
-            placeholder={labels.firstName}
+            label={labels.firstName}
             name="firstName"
             id="firstName"
+            type="text"
             component={TextBox}
             dataLocator="pickup-first-name"
-            enableSuccessCheck={false}
           />
           <BodyCopy
             fontFamily="secondary"
@@ -37,7 +37,7 @@ class ContactFormFields extends React.Component {
         </View>
         <View className="fieldLastName">
           <Field
-            placeholder={labels.lastName}
+            label={labels.lastName}
             name="lastName"
             id="lastName"
             component={TextBox}
@@ -50,7 +50,7 @@ class ContactFormFields extends React.Component {
           <View className="fieldEmail">
             <Field
               id="emailAddress"
-              placeholder={labels.email}
+              label={labels.email}
               name="emailAddress"
               component={TextBox}
               dataLocator="pickup-email"
@@ -63,7 +63,7 @@ class ContactFormFields extends React.Component {
         {showPhoneNumber && (
           <View className="fieldNumber">
             <Field
-              placeholder={labels.mobile}
+              label={labels.mobile}
               name="phoneNumber"
               id="phoneNumber"
               type="tel"

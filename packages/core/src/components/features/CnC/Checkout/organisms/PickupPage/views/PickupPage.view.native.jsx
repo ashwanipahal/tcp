@@ -77,7 +77,6 @@ class PickUpFormPart extends React.Component {
             />
           </PickupError>
           {/* CheckoutSectionTitleDisplay */}
-          <Text>PickUpFormPart</Text>
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs12"
@@ -87,16 +86,30 @@ class PickUpFormPart extends React.Component {
             text="PickUpFormPart"
           />
           <View>
-            {/* <FormSection name="pickUpContact" className="pickUpContact">
-              {isGuest ? (
+            <FormSection name="pickUpContact">
+              {!isGuest ? (
                 <ContactFormFields
                   className="pickup-contact-guest-form"
                   showEmailAddress
                   showPhoneNumber
                   labels={pickUpLabels}
                 />
-              ) : null}
-            </FormSection> */}
+              ) : (
+                <PickupMainContactEditForm
+                  dispatch={dispatch}
+                  isMobile={isMobile}
+                  isEditing={isEditing}
+                  className="pickup-contact-guest-form"
+                  showPhoneNumber
+                  formData={initialValues}
+                  isReset={isReset}
+                  labels={pickUpLabels}
+                  onSubmit={this.onEditMainContactSubmit}
+                  onEditModeChange={this.handleEditModeChange}
+                  onClose={this.handleExitEditModeClick}
+                />
+              )}
+            </FormSection>
           </View>
         </Container>
         {/* <CnCTemplate navigation={navigation} btnText="NEXT:SHIPPING" routeToPage="ShippingPage" /> */}
