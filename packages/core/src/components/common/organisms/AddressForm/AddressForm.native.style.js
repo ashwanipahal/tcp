@@ -37,26 +37,10 @@ const SetDefaultShippingWrapper = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
-const StyledLabel = styled.Text`
-  position: absolute;
-  left: 0;
-  top: ${props => (!props.isFocused ? props.theme.spacing.ELEM_SPACING.MED : '0')};
-  font-size: ${props =>
-    !props.isFocused
-      ? props.theme.typography.fontSizes.fs14
-      : props.theme.typography.fontSizes.fs10};
-  color: ${props => props.theme.colorPalette.gray[900]};
-  font-weight: ${props =>
-    !props.isFocused
-      ? props.theme.typography.fontWeights.regular
-      : props.theme.typography.fontWeights.extrabold};
-  margin-bottom: ${props => (props.isFocused ? props.theme.spacing.ELEM_SPACING.XXS : '0')};
-`;
-
 const AddAddressWrapper = styled.View`
   flex: 1;
   flex-direction: column;
-  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const EmptyView = styled.View`
@@ -93,7 +77,6 @@ export {
   StateZipCodeContainer,
   Separator,
   SetDefaultShippingWrapper,
-  StyledLabel,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
   AddressSecondWrapper,
