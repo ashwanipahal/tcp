@@ -29,6 +29,7 @@ const style = css`
  width: ${props.width};
  height: ${props.height};
  min-width: 64px;
+ min-height: 45px;
  background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
  color: ${props.color || props.theme.colorPalette.black};
  font-family: ${props.theme.typography.fonts.secondary};
@@ -36,8 +37,7 @@ const style = css`
  font-weight: ${props.theme.typography.fontWeights.black};
  border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
  padding: 12px 32px;
- ${props.brandName ? ` border-radius: 25px; ` : ''};
- `
+ ${props.brandName ? ` border-radius: 25px; ` : ''};`
       : ''};
 
   ${props => (props.fullWidth ? `width: 100% ;` : '')};
@@ -71,6 +71,7 @@ const style = css`
       ? `
      width: ${props.width};
      height: ${props.height};
+     min-height: 45px;
      background: ${props.fill || props.theme.colorPalette.white};
      ${props.color === 'red' ? ` color: ${props.theme.colorPalette.secondary.dark}; ` : ''};
      ${props.color === 'blue' ? ` color: ${props.theme.colorPalette.primary.dark};` : ''};
@@ -84,9 +85,7 @@ const style = css`
          : ''
      };
      ${
-       props.color === 'blue'
-         ? ` border: : 1px solid ${props.theme.colorPalette.primary.dark};`
-         : ''
+       props.color === 'blue' ? ` border: 1px solid ${props.theme.colorPalette.primary.dark};` : ''
      };
      ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
      padding: 12px 32px;
