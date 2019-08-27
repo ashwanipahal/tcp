@@ -94,6 +94,11 @@ export const formValidationMessages = {
     email: 'ERROR: Email format is invalid.',
     validEmail: 'ERROR: Email format is invalid',
   },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: 'Please enter a valid birth date',
+  },
+  airMilesAccountNumber: 'Please enter a valid 11 digit Air Miles ID',
+  associateId: 'The Associate ID you entered does not exist. Please try again',
   iAgree: {
     required: 'Please Select',
   },
@@ -223,6 +228,17 @@ export const formValidationRules = {
     required: true,
     minLength: 6,
     number: true,
+  },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: { linkedFields: ['userBirthYear'] }
+  },
+  airMilesAccountNumber: {
+    number: true,
+    exactLength: 11
+  },
+  associateId: {
+    required: true,
+    number: true
   },
   iAgree: {
     required: true,

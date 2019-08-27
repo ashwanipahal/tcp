@@ -65,11 +65,12 @@ export const AddEditPersonalInformationForm = ({
         <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
           <Field
             placeholder={labels.lbl_profile_personal_info_email}
-            name="emailAddress"
-            id="emailAddress"
+            name="Email"
+            id="Email"
             component={TextBox}
             dataLocator="addnewaddress-email"
           />
+          <BodyCopy fontSize="fs12">{labels.lbl_profile_email_used_login}</BodyCopy>
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
@@ -82,25 +83,30 @@ export const AddEditPersonalInformationForm = ({
           />
         </Col>
       </Row>
+      <Row fullBleed className="elem-mt-XL">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <BodyCopy component="div" fontWeight="extrabold" fontSize="fs12">{labels.lbl_profile_personal_info_birthday}</BodyCopy>
+        </Col>
+      </Row>
       <Row fullBleed className="elem-mt-MED">
         <Col colSize={{ small: 3, medium: 2, large: 3 }}>
-          <BodyCopy component="div">{labels.lbl_profile_personal_info_birthday}</BodyCopy>
           <Field
             placeholder={labels.lbl_profile_personal_info_month}
-            name="birthMonth"
-            id="birthMonth"
+            name="userBirthMonth"
+            id="userBirthMonth"
             component={SelectBox}
             dataLocator="payment-expmonthdd"
             options={birthMonthOptionsMap}
             className="field"
             enableSuccessCheck={false}
           />
+          <BodyCopy component="div" fontSize="fs12">{labels.lbl_profile_celebration_birthday}</BodyCopy>
         </Col>
-        <Col colSize={{ small: 3, medium: 2, large: 3 }} className="elem-mt-MED">
+        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
           <Field
             placeholder={labels.lbl_profile_personal_info_year}
-            name="birthYear"
-            id="birthYear"
+            name="userBirthYear"
+            id="userBirthYear"
             component={SelectBox}
             dataLocator="payment-expyeardd"
             options={birthYearOptionsMap}
@@ -109,18 +115,21 @@ export const AddEditPersonalInformationForm = ({
           />
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-          <BodyCopy component="div">{labels.lbl_profile_personal_info_birthday}</BodyCopy>
           {isCanada() && (
-            <Field
-              name="airMilesAccountNumber"
-              id="airMilesAccountNumber"
-              component={TextBox}
-              dataLocator="airMilesAccountNumber"
-            />
+            <>
+              <Field
+                placeholder={labels.lbl_profile_personal_air_miles}
+                name="airMilesAccountNumber"
+                id="airMilesAccountNumber"
+                component={TextBox}
+                dataLocator="airMilesAccountNumber"
+              />
+              <BodyCopy fontSize="fs12" component="div">{labels.lbl_profile_collector_number}</BodyCopy>
+            </>
           )}
         </Col>
       </Row>
-      <Row fullBleed className="elem-mt-MED">
+      <Row fullBleed className="elem-mt-LRG">
         <Col
           colSize={{ small: 4, medium: 4, large: 6 }}
           offsetLeft={{ small: 1 }}
@@ -137,7 +146,7 @@ export const AddEditPersonalInformationForm = ({
           </Field>
         </Col>
       </Row>
-      <Row fullBleed className="elem-mt-LRG">
+      <Row fullBleed className="elem-mt-XL">
         <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
             placeholder={labels.lbl_profile_personal_info_associate_id}
@@ -235,8 +244,8 @@ const validateMethod = createValidateMethod(
     'phoneNumber',
     'associateId',
     'airMilesAccountNumber',
-    { emailAddress: 'emailAddressNoAsync' },
-    { userBirthMonth: 'dateOfBirthBothRequired' },
+    'Email',
+    { userBirthMonth: 'userDateOfBirth' },
   ])
 );
 

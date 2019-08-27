@@ -137,6 +137,16 @@ function legacyPasswordValidator(value) {
   return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
 }
 
+function userDateOfBirthValidator (value, param, linkedPropsValues, linkedFieldsValue) {
+  //If either of the selected values is placeholder values, test should fail.
+  //Either none should be placeholder or both should be placeholder values.
+  if ((value !== 'MM' && linkedFieldsValue && linkedFieldsValue[0] === 'YYYY')
+  || (value === 'MM' && linkedFieldsValue && linkedFieldsValue[0] !== 'YYYY')) {
+    return false;
+  }
+  return true;
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -161,6 +171,7 @@ const validatorMethods = {
   equalTo: equalToValidator,
   legacyPassword: legacyPasswordValidator,
   email: emailValidator,
+  userDateOfBirth: userDateOfBirthValidator,
 };
 
 export default validatorMethods;

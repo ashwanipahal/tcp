@@ -26,8 +26,6 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.yearOptionsMap = getBirthDateOptionMap();
-    this.yearOptionsMap.yearsMap.unshift({ id: '0', displayName: 'Year' });
-    this.yearOptionsMap.monthsMap.unshift({ id: 'MM', displayName: 'Month' });
   }
 
   componentDidUpdate() {
@@ -48,12 +46,12 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     associateId,
     email,
     phoneNumber,
-    birthMonth,
-    birthYear,
+    userBirthMonth,
+    userBirthYear,
     isEmployee,
   }) => {
     const { changePasswordAction } = this.props;
-    const newUserBirthday = birthMonth && birthYear ? `${birthMonth}|${birthYear}` : '';
+    const newUserBirthday = userBirthMonth && userBirthYear ? `${userBirthMonth}|${userBirthYear}` : '';
     changePasswordAction({
       firstName,
       lastName,
@@ -80,8 +78,8 @@ export class AddEditPersonalInformationContainer extends PureComponent {
       email,
       phoneNumber,
       associateId,
-      birthMonth: birthdayArray[0],
-      birthYear: birthdayArray[1],
+      userBirthMonth: birthdayArray[0],
+      userBirthYear: birthdayArray[1],
     };
   };
 
