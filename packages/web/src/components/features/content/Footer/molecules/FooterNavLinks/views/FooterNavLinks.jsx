@@ -12,7 +12,7 @@ const FooterNavLinks = ({
   isSubHeader,
   colNum,
   openTrackOrder,
-  isUserLoggedIn,
+  isLoggedIn,
   loginModalMountedState,
   setLoginModalMountState,
 }) => {
@@ -29,7 +29,7 @@ const FooterNavLinks = ({
       <FooterNavLinksList
         listArray={navLinkItems.links}
         colNum={colNum}
-        isUserLoggedIn={isUserLoggedIn}
+        isLoggedIn={isLoggedIn}
         openTrackOrder={openTrackOrder}
         loginModalMountedState={loginModalMountedState}
         setLoginModalMountState={setLoginModalMountState}
@@ -46,14 +46,14 @@ FooterNavLinks.propTypes = {
   isSubHeader: PropTypes.bool.isRequired,
   colNum: PropTypes.number.isRequired,
   openTrackOrder: PropTypes.func,
-  isUserLoggedIn: PropTypes.bool,
+  isLoggedIn: PropTypes.bool,
   setLoginModalMountState: PropTypes.bool.isRequired,
   loginModalMountedState: PropTypes.bool.isRequired,
 };
 
 FooterNavLinks.defaultProps = {
   openTrackOrder: () => null,
-  isUserLoggedIn: false,
+  isLoggedIn: false,
 };
 
 export default FooterNavLinks;

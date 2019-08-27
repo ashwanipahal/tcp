@@ -1,25 +1,30 @@
 import { fromJS } from 'immutable';
-import { getCollectorNumber, getOfferCode } from '../AirmilesBanner.selector';
+import { getCollectorNumber, getOfferCode, getCartOrderDetails } from '../AirmilesBanner.selector';
 
 describe('#AirmilesBannerselector', () => {
   const AirmilesBannerState = fromJS({
     error: null,
     onAddAirmilesBanner: false,
   });
-
+  const CartState = fromJS({
+    error: null,
+    onAddAirmilesBanner: false,
+  });
   const state = {
-    CartPageReducer: AirmilesBannerState,
+    User: AirmilesBannerState,
+    CartPageReducer: CartState,
   };
 
-  it('#AirmilesBanner should return AirmilesBanner  state', () => {
+  it('#AirmilesBanner should return AirmilesBanner  accountNumber', () => {
     expect(getCollectorNumber(state)).toEqual(
-      AirmilesBannerState.getIn(['userDetails', 'collectorNumber']) || 0
+      AirmilesBannerState.getIn(['airmiles', 'accountNumber']) || 0
     );
   });
 
-  it('#AirmilesBanner should return AirmilesBanner state', () => {
-    expect(getOfferCode(state)).toEqual(
-      AirmilesBannerState.getIn(['userDetails', 'promoOffer']) || 0
-    );
+  it('#AirmilesBanner should return AirmilesBanner promoOffer', () => {
+    expect(getOfferCode(state)).toEqual(AirmilesBannerState.getIn(['airmiles', 'promoOffer']) || 0);
+  });
+  it('#AirmilesBanner should return AirmilesBanner  orderDetails', () => {
+    expect(getCartOrderDetails(state)).toEqual(CartState.get('orderDetails'));
   });
 });
