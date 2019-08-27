@@ -24,16 +24,9 @@ exports[`InputCheckbox component should render correctly 1`] = `
     >
       This is sample checkbox
     </Styled(BodyCopy)>
-    <Styled(BodyCopy)
+    <div
       className="Checkbox__error"
-      color="text.primary"
       component="div"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
     >
       <span
         aria-disabled="true"
@@ -53,7 +46,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
         role="alert"
         textAlign="left"
       />
-    </Styled(BodyCopy)>
+    </div>
   </label>
 </Fragment>
 `;

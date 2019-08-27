@@ -3,6 +3,7 @@ import constants from '../RewardsCard.constants';
 import { setModuleX, obtainInstantCardApplication } from './ApplyCard.actions';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleXComposite';
 import { applyInstantCard } from '../../../../../services/abstractors/account/ApplyInstantCard';
+import { validateReduxCache } from '../../../../../utils/cache.util';
 
 /*
  * @Generator - fetchModuleX Saga -
@@ -51,7 +52,8 @@ export function* submitCreditCardForm({ payload = '' }) {
  */
 
 export function* ApplyCreditCardSaga() {
-  yield takeLatest(constants.FETCH_MODULEX_CONTENT, fetchModuleX);
+  const cachedfetchModuleX = validateReduxCache(fetchModuleX);
+  yield takeLatest(constants.FETCH_MODULEX_CONTENT, cachedfetchModuleX);
 }
 
 /*
@@ -61,7 +63,8 @@ export function* ApplyCreditCardSaga() {
  */
 
 export function* SubmitInstantCardApplication() {
-  yield takeLatest(constants.SEND_INSTANT_CARD_APPLICATION, submitCreditCardForm);
+  const cachedsubmitCreditCardForm = validateReduxCache(submitCreditCardForm);
+  yield takeLatest(constants.SEND_INSTANT_CARD_APPLICATION, cachedsubmitCreditCardForm);
 }
 
 export default ApplyCreditCardSaga;

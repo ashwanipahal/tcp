@@ -47,7 +47,7 @@ const InputCheckbox = ({
           {children}
         </BodyCopy>
 
-        <BodyCopy className="Checkbox__error" component="div">
+        <div className="Checkbox__error" component="div">
           <span className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
           <BodyCopy
             color="error"
@@ -61,7 +61,7 @@ const InputCheckbox = ({
           >
             {touched && error ? error : ''}
           </BodyCopy>
-        </BodyCopy>
+        </div>
       </label>
     </React.Fragment>
   );
