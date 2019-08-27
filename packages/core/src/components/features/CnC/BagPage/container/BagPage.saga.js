@@ -24,6 +24,7 @@ export function* getOrderDetailSaga() {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
 }
+
 export function* getCartDataSaga(payload) {
   try {
     const {
