@@ -29,7 +29,6 @@ const style = css`
  width: ${props.width};
  height: ${props.height};
  min-width: 64px;
- min-height: 45px;
  background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
  color: ${props.color || props.theme.colorPalette.black};
  font-family: ${props.theme.typography.fonts.secondary};
