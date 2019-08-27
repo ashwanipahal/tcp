@@ -188,5 +188,10 @@ export default css`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .updateOOSMiniBag {
+    margin-left: 56px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
