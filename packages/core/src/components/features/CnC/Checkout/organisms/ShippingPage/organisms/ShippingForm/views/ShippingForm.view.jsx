@@ -23,7 +23,6 @@ const ShippingForm = ({
   shippingLabels,
   smsSignUpLabels,
   selectedShipmentId,
-  checkPOBoxAddress,
   addressPhoneNo,
   emailSignUpLabels,
   isGuest,
@@ -54,7 +53,6 @@ const ShippingForm = ({
               formSection="address"
               variation="secondary"
               dispatch={dispatch}
-              checkPOBoxAddress={checkPOBoxAddress}
               addressPhoneNo={addressPhoneNo}
               loadShipmentMethods={loadShipmentMethods}
             />
@@ -71,6 +69,7 @@ const ShippingForm = ({
               isOrderUpdateChecked={isOrderUpdateChecked}
               dispatch={dispatch}
               borderBottom
+              addressPhoneNo={addressPhoneNo}
             />
           </FormSection>
         )}
@@ -149,7 +148,6 @@ ShippingForm.propTypes = {
   shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
-  checkPOBoxAddress: PropTypes.func,
   addressPhoneNo: PropTypes.number,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
@@ -163,7 +161,6 @@ ShippingForm.defaultProps = {
   className: '',
   isOrderUpdateChecked: false,
   selectedShipmentId: null,
-  checkPOBoxAddress: () => {},
   addressPhoneNo: null,
   isGuest: true,
   isUsSite: true,

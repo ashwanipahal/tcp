@@ -93,7 +93,9 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
         />
       </Styled(View)>
     </View>
-    <Styled(View) />
+    <Styled(View)
+      marginBottom={true}
+    />
   </View>
 </View>
 `;
@@ -137,7 +139,9 @@ exports[`Textbox component renders correctly 1`] = `
         value="foo"
       />
     </View>
-    <Styled(View) />
+    <Styled(View)
+      marginBottom={true}
+    />
   </View>
 </View>
 `;
