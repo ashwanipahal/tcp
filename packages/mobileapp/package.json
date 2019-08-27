@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest --config ../../config/jest.config.native.js"
+    "test": "jest --config ../../config/jest.config.native.js",
+    "run:ios": "react-native run-ios",
+    "run:android": "react-native run-android"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
@@ -52,8 +54,8 @@
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.54.1",
-    "react-native-monorepo-helper": "^0.2.6",
     "react-test-renderer": "16.8.3",
+    "react-native-monorepo-helper": "^0.2.6",
     "reactotron-core-client": "^2.8.3",
     "reactotron-react-native": "^3.6.5",
     "reactotron-redux": "^3.1.1"
