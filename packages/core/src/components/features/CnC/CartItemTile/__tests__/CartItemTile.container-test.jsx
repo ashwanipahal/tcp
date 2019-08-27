@@ -1,11 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CartItemTileContainer, mapDispatchToProps } from '../container/CartItemTile.container';
-import CartItemTile from '../views/CartItemTile.view';
+import CartItemTile from '../molecules/CartItemTile/views/CartItemTile.view';
 
 describe('CartItemTile Container', () => {
   const cartItems = {};
   const editableProductInfo = {};
+  const isEditAllowed = true;
   it('should render CartItemTile view section', () => {
     const tree = shallow(
       <CartItemTileContainer
@@ -15,6 +16,8 @@ describe('CartItemTile Container', () => {
         updateCartItem={jest.fn()}
         getProductSKUInfo={jest.fn()}
         editableProductInfo={editableProductInfo}
+        isEditAllowed={isEditAllowed}
+        toggleEditAllowance={jest.fn()}
       />
     );
     expect(tree.is(CartItemTile)).toBeTruthy();

@@ -7,17 +7,17 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from './ForgotPassword.selectors';
-import { resetLoginInfo } from '../../LoginPage/container/LoginPage.actions';
+import { resetUserInfo } from '../../User/container/User.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
 import {
-  getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
 } from '../../LoginPage/container/LoginPage.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 import ForgotPasswordView from '../views/ForgotPassword.view';
 
 class ForgotPasswordContainer extends React.PureComponent {
@@ -31,6 +31,7 @@ class ForgotPasswordContainer extends React.PureComponent {
       resetLoginState,
       showForgotPasswordForm,
       labels,
+      showLogin,
     } = this.props;
     const initialValues = {
       rememberMe: true,
@@ -47,6 +48,7 @@ class ForgotPasswordContainer extends React.PureComponent {
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
         resetLoginState={resetLoginState}
+        showLogin={showLogin}
       />
     );
   }
@@ -61,16 +63,18 @@ ForgotPasswordContainer.propTypes = {
   successFullResetEmail: PropTypes.bool.isRequired,
   showForgotPasswordForm: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  showLogin: PropTypes.func,
 };
 
 ForgotPasswordContainer.defaultProps = {
   resetLoginState: () => {},
+  showLogin: () => {},
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     resetLoginState: () => {
-      dispatch(resetLoginInfo());
+      dispatch(resetUserInfo());
     },
     SubmitForgot: payload => {
       dispatch(resetPassword(payload));

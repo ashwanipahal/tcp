@@ -18,14 +18,7 @@ const RewardsPointsSlider = ({ pointsToNextReward, currentPoints, totalRewards, 
   return (
     <React.Fragment>
       <RewardsPointsView>
-        <PointHeadingWrapper>
-          <BodyCopy
-            text="Point Balance"
-            fontWeight="black"
-            fontFamily="secondary"
-            fontSize="fs16"
-          />
-        </PointHeadingWrapper>
+        <PointHeadingWrapper />
         <CurrentPointsWrapper>
           <BodyCopy
             fontSize="fs14"
@@ -45,8 +38,14 @@ const RewardsPointsSlider = ({ pointsToNextReward, currentPoints, totalRewards, 
             fontFamily="secondary"
             fontSize="fs14"
           />
-          {labels.lbl_common_currency}
-          {totalRewards && Math.trunc(totalRewards)}
+          {totalRewards && (
+            <BodyCopy
+              text={`${labels.lbl_common_currency} ${totalRewards && Math.trunc(totalRewards)} `}
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="black"
+            />
+          )}
         </RewardWrapper>
 
         <ProgressBarWrapper>

@@ -61,7 +61,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator={`couponDetailModal_${coupon.status}_printAch`}
+            dataLocator={`couponDetailModal_${coupon.status}_printAch`}
             to="/#"
             onClick={this.printClick}
             className="couponModal_print_anchor"
@@ -78,7 +78,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         </BodyCopy>
         <BodyCopy
           fontFamily="secondaryFontFamily"
-          className="couponModal_modalLongDesc"
+          className="couponModal_modalShortDesc"
           data-locator={`couponDetailModal_${coupon.status}_ShortDesc`}
         >
           {`${labels.MODAL_SHORT_DESCRIPTION}`}
@@ -86,9 +86,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator={`couponDetailModal_${coupon.status}_tAndC`}
+            dataLocator={`couponDetailModal_${coupon.status}_tAndC`}
             onClick={this.tAndCClick}
-            className="couponModal_print_anchor"
+            className="couponModal_print_anchortext"
           >
             {`${labels.TERMS_AND_CONDITIONS}`}
           </Anchor>
@@ -98,9 +98,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator={`couponDetailModal_${coupon.status}_pp`}
+            dataLocator={`couponDetailModal_${coupon.status}_pp`}
             onClick={this.tAndCClick}
-            className="couponModal_print_anchor"
+            className="couponModal_print_anchortext"
           >
             {`${labels.PRIVACY_POLICY}`}
           </Anchor>
@@ -118,7 +118,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="616px"
-        minHeight="500px"
+        minHeight="540px"
         fixedWidth
         closeIconDataLocator="coupondetailmodalcrossicon"
       >

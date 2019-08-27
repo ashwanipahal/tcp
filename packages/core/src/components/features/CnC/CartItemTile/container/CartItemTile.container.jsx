@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { removeCartItem, updateCartItem, getProductSKUInfo } from './CartItemTile.actions';
-import CartItemTile from '../views/CartItemTile.view';
+import CartItemTile from '../molecules/CartItemTile/views/CartItemTile.view';
 import { getCartOrderList, getEditableProductInfo } from './CartItemTile.selectors';
 
 // @flow
@@ -16,23 +16,38 @@ type Props = {
   updateCartItem: any,
   getProductSKUInfo: any,
   editableProductInfo: any,
+  isEditAllowed: any,
+  toggleEditAllowance: any,
+  isPlcc: any,
 };
 
 export const CartItemTileContainer = ({
-  getOrderDetails,
-  cartItems,
+  labels,
+  productDetail,
   removeCartItem,
   updateCartItem,
   getProductSKUInfo,
   editableProductInfo,
+  pageView,
+  className,
+  isEditAllowed,
+  toggleEditAllowance,
+  inheritedStyles,
+  isPlcc,
 }) => (
   <CartItemTile
-    getOrderDetails={getOrderDetails}
-    cartItems={cartItems}
+    labels={labels}
+    productDetail={productDetail}
     removeCartItem={removeCartItem}
     updateCartItem={updateCartItem}
     getProductSKUInfo={getProductSKUInfo}
     editableProductInfo={editableProductInfo}
+    pageView={pageView}
+    className={className}
+    toggleEditAllowance={toggleEditAllowance}
+    isEditAllowed={isEditAllowed}
+    inheritedStyles={inheritedStyles}
+    isPlcc={isPlcc}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -54,7 +69,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 
 export function mapStateToProps(state) {
   return {
-    cartItems: getCartOrderList(state),
     editableProductInfo: getEditableProductInfo(state),
   };
 }

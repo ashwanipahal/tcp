@@ -11,7 +11,7 @@ exports[`CouponList component should renders applied list 1`] = `
       className="couponList__heading"
       color="text.primary"
       component="p"
-      fontFamily="primary"
+      fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
       letterSpacing="normal"
@@ -143,7 +143,8 @@ exports[`CouponList component should renders applied list 1`] = `
   <div>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="cartShowLessButton"
+      dataLocator="cartShowLessButton"
+      fontFamily="secondary"
       fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}
@@ -164,7 +165,7 @@ exports[`CouponList component should renders available list 1`] = `
       className="couponList__heading"
       color="text.primary"
       component="p"
-      fontFamily="primary"
+      fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
       letterSpacing="normal"
@@ -183,7 +184,8 @@ exports[`CouponList component should renders available list 1`] = `
       </div>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="couponcard-helpApplyingPlaceCashlink"
+        dataLocator="couponcard-helpApplyingPlaceCashlink"
+        fontFamily="secondary"
         fontSize="fs10"
         fontSizeVariation="small"
         onClick={[Function]}
@@ -318,7 +320,8 @@ exports[`CouponList component should renders available list 1`] = `
   <div>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="cartShowLessButton"
+      dataLocator="cartShowLessButton"
+      fontFamily="secondary"
       fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}

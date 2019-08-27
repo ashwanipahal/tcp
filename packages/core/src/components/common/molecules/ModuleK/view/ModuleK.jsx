@@ -4,7 +4,7 @@ import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
 import { PromoBanner } from '../..';
 import { Carousel, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 import config from '../config';
 import { getIconPath, getLocator } from '../../../../../utils';
 
@@ -75,13 +75,13 @@ class ModuleK extends React.PureComponent<Props, State> {
           >
             <Carousel
               options={CAROUSEL_OPTIONS}
+              inheritedStyles={Carousel}
               carouselConfig={{
                 autoplay: true,
                 dataLocatorPlay: getLocator('moduleK_play_button'),
                 dataLocatorPause: getLocator('moduleK_pause_button'),
                 customArrowLeft: getIconPath('carousel-big-carrot'),
                 customArrowRight: getIconPath('carousel-big-carrot'),
-                inheritedStyles: Carousel,
               }}
             >
               {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
@@ -134,5 +134,5 @@ class ModuleK extends React.PureComponent<Props, State> {
   }
 }
 
-export default errorBoundary(withStyles(ModuleK, style));
+export default withStyles(errorBoundary(ModuleK), style);
 export { ModuleK as ModuleKVanilla };

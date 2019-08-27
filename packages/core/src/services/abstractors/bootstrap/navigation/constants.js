@@ -1,0 +1,5 @@
+export const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
+
+export default {
+  UNIDENTIFIED_GROUP,
+};

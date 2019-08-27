@@ -9,6 +9,7 @@ exports[`PlaceRewardsContainer should render correctly 1`] = `
       "lbl_acc_drawer_view_my_acc": "View My Account",
     }
   }
+  plccUser={false}
   userName=""
 />
 `;

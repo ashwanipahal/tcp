@@ -8,6 +8,7 @@ import style from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
 import { getAPIConfig } from '../../../../../utils';
 import { PDP_PAGE_ID } from '../config';
+import withLazyLoad from '../../../hoc/withLazyLoad';
 
 class GetCandid extends React.PureComponent {
   static propTypes = {
@@ -83,6 +84,7 @@ class GetCandid extends React.PureComponent {
           fontSize={['fs20', 'fs20', 'fs32']}
           textAlign="center"
           className="get-candid-main-heading"
+          data-locator="get_candid_module_header_textImages_1"
         >
           {labels.title}
         </BodyCopy>
@@ -92,6 +94,7 @@ class GetCandid extends React.PureComponent {
           fontSize={['fs16', 'fs16', 'fs26']}
           textAlign="center"
           className="get-candid-heading-desc"
+          data-locator="get_candid_module_header_textImages_2"
         >
           {labels.titleDescription}
         </BodyCopy>
@@ -139,7 +142,8 @@ class GetCandid extends React.PureComponent {
                 onClick={this.handleViewGalleryClick}
                 buttonVariation="fixed-width"
                 type="button"
-                className="gellary-button-right"
+                className="gallery-button-left"
+                data-locator="view_gallery_button"
               >
                 {labels.BtnGallery}
               </Button>
@@ -149,6 +153,7 @@ class GetCandid extends React.PureComponent {
                 buttonVariation="fixed-width"
                 type="button"
                 className="gellary-button-right"
+                data-locator="add_photo_button"
               >
                 {labels.BtnPhoto}
               </Button>
@@ -166,5 +171,5 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(withStyles(GetCandid, style));
+export default connect(mapStateToProps)(withStyles(withLazyLoad(GetCandid), style));
 export { GetCandid as GetCandidVanilla };

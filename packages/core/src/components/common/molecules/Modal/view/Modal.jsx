@@ -38,25 +38,41 @@ class Modal extends React.PureComponent {
       heading,
       fixedWidth,
       className,
+      dataLocator,
+      dataLocatorHeader,
       closeIconDataLocator,
       headingStyle,
       closeIconLeftAligned,
+      ariaLabelledby,
+      ariaDescribedby,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
       <div className={className}>
         <div className="TCPModal__Wrapper">
-          <ReactModal {...otherProps} parentSelector={getParent}>
+          <ReactModal
+            {...otherProps}
+            parentSelector={getParent}
+            aria={{
+              labelledby: ariaLabelledby,
+              describedby: ariaDescribedby,
+            }}
+          >
             {!fixedWidth && (
               <Grid>
                 <Row>
-                  <Col colSize={column} className="TCPModal__InnerContent">
+                  <Col
+                    colSize={column}
+                    className="TCPModal__InnerContent"
+                    data-locator={dataLocator}
+                  >
                     <ModalHeader
                       closeFunc={onRequestClose}
                       title={title}
                       heading={heading}
                       closeIconDataLocator={closeIconDataLocator}
                       closeIconLeftAligned={closeIconLeftAligned}
+                      dataLocatorHeader={dataLocatorHeader}
                       headingStyle={headingStyle}
                     />
                     {children}
@@ -65,13 +81,14 @@ class Modal extends React.PureComponent {
               </Grid>
             )}
             {fixedWidth && (
-              <div className="TCPModal__InnerContent">
+              <div className="TCPModal__InnerContent" data-locator={dataLocator}>
                 <ModalHeader
                   closeFunc={onRequestClose}
                   title={title}
                   heading={heading}
                   closeIconDataLocator={closeIconDataLocator}
                   closeIconLeftAligned={closeIconLeftAligned}
+                  dataLocatorHeader={dataLocatorHeader}
                   headingStyle={headingStyle}
                 />
                 {children}

@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReactTooltip Component ReactTooltip should render correctly 1`] = `
-<span
-  onMouseLeave={[Function]}
->
+<span>
   <span
-    onMouseEnter={[Function]}
+    onClick={[Function]}
   >
     <Component />
   </span>

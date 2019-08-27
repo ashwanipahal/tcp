@@ -25,7 +25,6 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs10"
       fontWeight="regular"
-      locator=""
       style={
         Object {
           "flex": 1,

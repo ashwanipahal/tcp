@@ -5,18 +5,15 @@ const getModifiedString = (labels, store, orderItemType, bossStartDate, bossEndD
   } else {
     let str = labels.bossLabel;
     const mapObj = {
-      '#store#': 'dog',
-      '#startMonth#': bossStartDate.month,
-      '#startdate#': bossStartDate.date,
-      '#endMonth#': bossEndDate.month,
-      '#enddate#': bossEndDate.date,
+      '#store#': store,
+      '#startMonth#': bossStartDate.get('month'),
+      '#startdate#': bossStartDate.get('date'),
+      '#endMonth#': bossEndDate.get('month'),
+      '#enddate#': bossEndDate.get('date'),
     };
-    str = str.replace(
-      /#store#|"#startMonth#"|"#startdate#"|"#endMonth#"|"#enddate#"/gi,
-      matched => {
-        return mapObj[matched];
-      }
-    );
+    str = str.replace(/#store#|#startMonth#|#startdate#|#endMonth#|#enddate#/gi, matched => {
+      return mapObj[matched];
+    });
     modifiedString = str;
   }
   return modifiedString;

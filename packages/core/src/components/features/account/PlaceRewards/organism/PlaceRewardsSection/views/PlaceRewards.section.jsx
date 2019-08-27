@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Row from '@tcp/core/src/components/common/atoms/Row';
+import Col from '@tcp/core/src/components/common/atoms/Col';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isCanada } from '@tcp/core/src/utils';
+import FPO from '@tcp/core/src/components/common/atoms/FPO';
+
 import styles from '../styles/PlaceRewards.section.style';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import MyRewards from '../../../molecules/MyRewards';
+import MyRewards from '../../../../common/organism/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
-import { isCanada } from '../../../../../../../utils';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
 const PlaceRewardsSection = ({ labels, className }) => {
@@ -100,6 +102,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                     fontWeight="extrabold"
                     component="h4"
                     className="elem-mb-SM elem-ml-SM"
+                    data-locator="pointshistorylbl"
                   >
                     {labels.myPlaceRewards.lbl_my_rewards_points_history}
                   </BodyCopy>
@@ -128,7 +131,9 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col3"
           >
-            <BonusPointsDays />
+            <div className="bonusPointsWrapper">
+              <BonusPointsDays />
+            </div>
           </Col>
           <Col
             colSize={{
@@ -138,11 +143,11 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col4"
           >
-            Fourth
+            <FPO />
           </Col>
         </Row>
       </Row>
-      <MyRewards labels={labels} />
+      {!isCA && <MyRewards labels={labels} />}
     </div>
   );
 };

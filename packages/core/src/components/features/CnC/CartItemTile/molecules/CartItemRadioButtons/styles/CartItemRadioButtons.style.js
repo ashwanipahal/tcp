@@ -5,6 +5,9 @@ const styles = css`
   .padding-left-5 {
     padding-left: 5px;
   }
+  .padding-horizontal-5 {
+    padding: 0 5px;
+  }
   .padding-top-10 {
     padding-top: 10px;
   }

@@ -7,16 +7,34 @@ export default css`
   .viewBagAndProduct {
     height: calc(100% - 120px);
     overflow-y: auto;
+    border-top: 2px solid ${props => props.theme.colorPalette.gray[300]};
   }
   .mainWrapper {
     text-align: center;
     background-color: ${props => props.theme.colorPalette.gray['300']};
-    height: 31px;
+    height: auto;
     padding-right: 0;
     padding-left: 0;
+    margin: 0;
+    width: 100%;
   }
+
+  .deleteMsg {
+    border: solid 2px ${props => props.theme.colors.NOTIFICATION.SUCCESS};
+    padding: 10px;
+    background: ${props => props.theme.colors.WHITE};
+    margin: 12px;
+    .tick-icon-image {
+      position: relative;
+      top: 1px;
+      right: 9px;
+    }
+  }
+
   .subHeaderText {
     text-decoration: underline;
+    vertical-align: middle;
+    line-height: 28px;
   }
   .miniBagFooter {
     height: 137px;

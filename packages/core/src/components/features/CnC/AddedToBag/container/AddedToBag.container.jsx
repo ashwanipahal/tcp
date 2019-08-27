@@ -69,6 +69,8 @@ const mapStateToProps = state => {
         lbl_info_giftDesign: giftDesign,
         lbl_info_giftValue: giftValue,
         lbl_footer_continueShopping: continueShopping,
+        lbl_cta_viewBag: viewBag,
+        lbl_cta_checkout: checkout,
       },
     },
   } = state.Labels;
@@ -92,6 +94,8 @@ const mapStateToProps = state => {
       giftDesign,
       giftValue,
       continueShopping,
+      viewBag,
+      checkout,
     },
   };
 };

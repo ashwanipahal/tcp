@@ -6,7 +6,7 @@ import { Image } from '../../../atoms';
 import { getIconPath } from '../../../../../utils';
 import CarouselStyle from '../Carousel.style';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
@@ -111,7 +111,7 @@ class Carousel extends React.PureComponent<Props, State> {
     const settings = { ...defaults, ...options };
 
     return (
-      <CarouselStyle
+      <div
         className={`${className} tcp_carousel_wrapper`}
         carouselConfig={carouselConfig}
         data-locator={carouselConfig.dataLocatorCarousel}
@@ -120,10 +120,10 @@ class Carousel extends React.PureComponent<Props, State> {
           {!children ? null : children}
         </Slider>
         {carouselConfig.autoplay && !options.hidePlayPause && this.getPlayButton(carouselConfig)}
-      </CarouselStyle>
+      </div>
     );
   }
 }
 
-export default errorBoundary(withStyles(Carousel, CarouselStyle));
+export default withStyles(errorBoundary(Carousel), CarouselStyle);
 export { Carousel as CarouselVanilla };

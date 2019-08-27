@@ -2,11 +2,126 @@
 
 exports[`PaymentOverviewTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
+  ctaLink="/account?id=payment"
+  ctaPath="/account/payment"
   ctaTitle=""
   title=""
 >
-  <p>
-    Dummy Credit card content will here...
-  </p>
+  <div
+    className=""
+  >
+    <div
+      className="heading"
+    >
+      <div
+        className="section-heading"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          asPath="/account/payment"
+          fontSizeVariation="large"
+          to="/account?id=payment"
+          underline={true}
+        />
+      </div>
+      <Styled(Row)
+        className="elem-mb-XL"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </div>
+    <Styled(BodyCopy)
+      className="elem-mt-LRG"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <div
+        className="section-heading"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          asPath="/account/payment"
+          fontSizeVariation="large"
+          to="/account?id=payment"
+          underline={true}
+        />
+      </div>
+      <Styled(Row)
+        className="elem-mb-XXL"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 10,
+              "medium": 7,
+              "small": 5,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(BodyCopy)>
+  </div>
 </Styled(AccountOverviewTile)>
 `;

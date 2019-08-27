@@ -1,4 +1,9 @@
-import { getFormattedError, getDynamicCodeErrorMessage } from '../errorMessage.util';
+import {
+  getFormattedError,
+  getDynamicCodeErrorMessage,
+  responseContainsErrors,
+  ServiceResponseError,
+} from '../errorMessage.util';
 
 describe('ErrorMessageFormatter test', () => {
   const couponCode = 'AAAA';
@@ -48,5 +53,29 @@ describe('ErrorMessageFormatter test', () => {
     getDynamicCodeErrorMessage(error, couponCode);
     // eslint-disable-next-line
     expect(error.errorMessages._error).toEqual(couponCode + errorMessage);
+  });
+
+  it('responseContainsErrors', () => {
+    expect(responseContainsErrors()).toEqual(false);
+    expect(responseContainsErrors({ body: { errorCode: '123' } })).toEqual(true);
+    expect(responseContainsErrors({ body: { errorMessageKey: '123' } })).toEqual(true);
+    expect(responseContainsErrors({ body: { errorKey: '123' } })).toEqual(true);
+    expect(responseContainsErrors({ body: { errors: [1] } })).toEqual(true);
+    expect(responseContainsErrors({ body: { error: { errorCode: '123' } } })).toEqual(true);
+  });
+
+  it('ServiceResponseError', () => {
+    const response = { body: { retriesCount: {} } };
+    const error = new ServiceResponseError(response);
+    expect(JSON.stringify(error)).toEqual(
+      JSON.stringify({
+        response: {
+          ...response,
+          misc: {
+            failedLoginAttempts: {},
+          },
+        },
+      })
+    );
   });
 });

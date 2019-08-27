@@ -8,6 +8,8 @@ const styles = css`
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     box-sizing: border-box;
     width: 100%;
+    border: none;
+    background: none;
   }
 
   .collapsible-icon {

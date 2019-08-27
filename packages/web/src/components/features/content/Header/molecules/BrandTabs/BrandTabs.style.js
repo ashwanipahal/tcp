@@ -40,9 +40,11 @@ export default css`
 
     img {
       width: 60px;
+      height: 21px;
 
       @media ${props => props.theme.mediaQuery.medium} {
         width: 70px;
+        height: 27px;
       }
     }
   }

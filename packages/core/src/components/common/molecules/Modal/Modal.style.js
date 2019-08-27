@@ -41,6 +41,9 @@ const ModalStyle = css`
       display: none;
     }
   }
+  .alignTop {
+    top: 25px;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ModalStyle;

@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';

@@ -16,6 +16,7 @@ class InputCheckBox extends React.Component {
     input: PropTypes.shape({}),
     hideCheckboxIcon: PropTypes.bool,
     meta: PropTypes.func,
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -26,6 +27,7 @@ class InputCheckBox extends React.Component {
     input: { val: '' },
     hideCheckboxIcon: false,
     meta: {},
+    disabled: false,
   };
 
   constructor(props) {
@@ -64,7 +66,7 @@ class InputCheckBox extends React.Component {
   }
 
   render() {
-    const { input, hideCheckboxIcon, meta, ...otherProps } = this.props;
+    const { input, hideCheckboxIcon, meta, disabled, ...otherProps } = this.props;
     const { value } = input;
     const { touched, error } = meta;
     const isError = touched && error;
@@ -74,18 +76,15 @@ class InputCheckBox extends React.Component {
         {...input}
         {...otherProps}
         value={value}
+        pointerEvents={disabled ? 'none' : 'auto'}
       >
         {!hideCheckboxIcon && this.genCheckedIcon()}
         {this.renderRight()}
         <BodyCopy
           className="Checkbox__error"
           color="error"
-          component="div"
           fontSize="fs12"
-          fontFamily="secondary"
-          role="alert"
-          aria-live="assertive"
-          data-locator="errorDataLocator"
+          mobilefontFamily={['secondary']}
           text={isError ? error : ''}
         />
       </StyledCheckBox>

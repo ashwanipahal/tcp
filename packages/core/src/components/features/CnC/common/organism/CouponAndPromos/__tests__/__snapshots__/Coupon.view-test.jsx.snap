@@ -18,6 +18,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     }
     onNeedHelpTextClick={[Function]}
     onSubmit={[Function]}
+    onSubmitSuccess={[Function]}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}
@@ -106,6 +107,7 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
       }
     }
     onNeedHelpTextClick={[Function]}
+    onSubmitSuccess={[Function]}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

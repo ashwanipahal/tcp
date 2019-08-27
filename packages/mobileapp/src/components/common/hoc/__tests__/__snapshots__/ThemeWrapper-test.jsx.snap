@@ -33,12 +33,14 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
+          "600": "#1ba5e0",
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
         },
         "error": "#c8102e",
         "gray": Object {
+          "1000": "#6d7278",
           "300": "#f3f3f3",
           "500": "#d8d8d8",
           "600": "#9b9b9b",
@@ -56,7 +58,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#fbd5a5",
           "50": "#fef4e8",
           "500": "#fac078",
-          "700": "#f8ab4b",
+          "700": "#f9b662",
           "800": "#f7971f",
           "900": "#c25621",
         },
@@ -69,6 +71,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "light": "#93c5ea",
           "main": "#4b9fdd",
         },
+        "purple": "#b976cc",
         "red": Object {
           "100": "#f3d7d7",
           "200": "#f3d7d7",
@@ -91,6 +94,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
+          "noMprPlcc": "#6d7278",
           "plcc": "#254f6e",
           "plccLight": "#dbebf8",
         },
@@ -123,6 +127,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "PRIMARY": "#4b9fdd",
         },
         "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
           "BLUE": Object {
             "ALT_FOCUS": "#1f4862",
             "ALT_HOVER": "#1f4862",
@@ -154,7 +167,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "BUTTON_HOVER": "rgba(24, 24, 24, 0.8)",
         "CHECKBOX": Object {
           "BORDER": "#575757",
-          "CHECKED_BORDER": "#2e6a91",
+          "CHECKED_BORDER": "#1a1a1a",
           "TICK_COLOR": "#fff",
         },
         "COUNT_ICON_DISABLE": "rgba(0, 0, 0, 0.3)",
@@ -163,6 +176,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "DIVIDER": "#c3c3c3",
         },
         "MODAL_OVERLAY": "rgba(0, 0, 0, 0.6)",
+        "NAVIGATION": Object {
+          "CIRCULAR_BORDER": "#6b6b6b",
+          "L1_BACKGROUND": "#f6f6f6",
+        },
         "NOTIFICATION": Object {
           "ERROR": "#c8102e",
           "SUCCESS": "#26762c",
@@ -336,6 +353,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "small": 6,
         },
       },
+      "isGymboree": false,
       "mediaQuery": Object {
         "large": "(min-width: 1024px)",
         "largeMax": "(max-width: 1439px)",
@@ -555,6 +573,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "zModal": 1300,
         "zModule": 200,
         "zOverlay": 900,
+        "zPLPFilterDropDown": 9,
       },
     }
   }

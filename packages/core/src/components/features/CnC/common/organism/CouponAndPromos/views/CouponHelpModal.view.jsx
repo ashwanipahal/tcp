@@ -12,7 +12,7 @@ class CouponHelpModal extends React.PureComponent<Props> {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="500px"
-        minHeight="700px"
+        minHeight="90%"
         closeIconDataLocator="helpmodalcrossicon"
         fixedWidth
       >

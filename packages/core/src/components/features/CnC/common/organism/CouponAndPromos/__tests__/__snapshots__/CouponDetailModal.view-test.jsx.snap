@@ -7,7 +7,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
   fixedWidth={true}
   isOpen={false}
   maxWidth="616px"
-  minHeight="500px"
+  minHeight="540px"
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
@@ -51,7 +51,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchor"
-        data-locator="couponDetailModal_applied_printAch"
+        dataLocator="couponDetailModal_applied_printAch"
         fontSize="fs14"
         onClick={[Function]}
         to="/#"
@@ -66,15 +66,15 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       undefined
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
-      className="couponModal_modalLongDesc"
+      className="couponModal_modalShortDesc"
       data-locator="couponDetailModal_applied_ShortDesc"
       fontFamily="secondaryFontFamily"
     >
       undefined
       <Styled(Anchor)
         anchorVariation="primary"
-        className="couponModal_print_anchor"
-        data-locator="couponDetailModal_applied_tAndC"
+        className="couponModal_print_anchortext"
+        dataLocator="couponDetailModal_applied_tAndC"
         fontSize="fs14"
         onClick={[Function]}
         underline={true}
@@ -84,8 +84,8 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
        and 
       <Styled(Anchor)
         anchorVariation="primary"
-        className="couponModal_print_anchor"
-        data-locator="couponDetailModal_applied_pp"
+        className="couponModal_print_anchortext"
+        dataLocator="couponDetailModal_applied_pp"
         fontSize="fs14"
         onClick={[Function]}
         underline={true}

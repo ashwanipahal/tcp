@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 const Style = css``;
 
 const ModalHeading = styled.Text`
-  margin-top: -130px;
+  margin-top: -70px;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
@@ -20,6 +20,8 @@ const LineWrapper = styled.View`
 const CardDescription = styled.Text`
   text-align: center;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const CardDetailWrapper = styled.View`
@@ -29,8 +31,23 @@ const CardDetailWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
-const CardDetail = styled.Text`
+const CardContainer = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+const CardDetail = styled.Text`
+  justify-content: flex-start;
+  font-size: ${props => props.theme.typography.fontSizes.fs14};
+  font-weight: ${props => props.theme.typography.fontWeights.semibold};
+`;
+
+const CardExpiry = styled.Text`
+  justify-content: flex-start;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  font-size: ${props => props.theme.typography.fontSizes.fs13};
 `;
 
 const ImgWrapper = styled.View`
@@ -41,6 +58,15 @@ const ImgWrapper = styled.View`
 const ImageStyle = styled.Image`
   max-width: 100%;
   max-height: 100%;
+  border: 1px solid ${props => props.theme.colorPalette.gray[700]};
+  border-radius: 4px;
+`;
+
+const CenterAlign = styled.View`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const ConfirmButtonWrapper = styled.View`
@@ -50,6 +76,11 @@ const ConfirmButtonWrapper = styled.View`
 const CloseButtonWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
+
+const CustomAddress = {
+  fontWeight: 'regular',
+  fontSize: 'fs14',
+};
 
 export {
   Style,
@@ -61,6 +92,10 @@ export {
   CardDetail,
   ImgWrapper,
   ImageStyle,
+  CenterAlign,
   ConfirmButtonWrapper,
   CloseButtonWrapper,
+  CardContainer,
+  CardExpiry,
+  CustomAddress,
 };

@@ -8,7 +8,6 @@ const CloseButtonStyle = css`
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 15px;
   padding: 0px 7px 13px 6px;
   background-size: 13px 13px;
   &.alignRight {
@@ -17,12 +16,15 @@ const CloseButtonStyle = css`
   &.alignLeft {
     left: 15px;
   }
+  &.alignTop {
+    top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  }
 `;
 
 const ModalCloseIcon = ({ className, closeFunc, closeIconDataLocator, closeIconLeftAligned }) => (
   <button
     aria-label="close"
-    className={`${className} ${closeIconLeftAligned ? 'alignLeft' : 'alignRight'}`}
+    className={`${className} ${'alignTop'} ${closeIconLeftAligned ? 'alignLeft' : 'alignRight'}`}
     onClick={e => closeFunc(e)}
     data-locator={closeIconDataLocator}
   />

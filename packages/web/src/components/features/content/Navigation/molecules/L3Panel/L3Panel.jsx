@@ -22,6 +22,10 @@ const L3Panel = props => {
         medium: '314px',
         large: '100%',
       }}
+      position={{
+        top: 0,
+        left: 0,
+      }}
       height="100%"
     >
       <div data-locator="overrlay_img" className={`${className} nav-bar-l3-panel`}>
@@ -56,7 +60,7 @@ const L3Panel = props => {
               } = l3Links;
               return (
                 <li>
-                  <Anchor to={`/c/${seoToken}`} data-locator={`l3_link_${index}`}>
+                  <Anchor to={`/c/${seoToken}`} dataLocator={`l3_link_${index}`}>
                     <BodyCopy
                       className="l2-nav-link"
                       fontFamily="secondary"

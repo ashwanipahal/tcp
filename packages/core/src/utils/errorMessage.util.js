@@ -1,3 +1,5 @@
+import ExtendableError from 'es6-error';
+
 const GLOBAL_ERROR = '_error';
 const OopsErrorMessage =
   'Oops... The card and/or pin number you entered is incorrect. Please try again.';
@@ -363,4 +365,31 @@ export function getFormattedError(err) {
   return err.response && err.response.body !== null
     ? getFormattedErrorFromResponse(err.response)
     : err;
+}
+
+export function responseContainsErrors(response) {
+  // Be paranoid and make sure that we can handle a situation where response.body is undefined
+  if (!response || !response.body) {
+    return false;
+  }
+  let responseBody = response.body;
+  return !!(
+    responseBody.errorCode ||
+    responseBody.errorMessageKey ||
+    responseBody.errorKey ||
+    (responseBody.errors && responseBody.errors.length > 0) ||
+    (response.body.error && response.body.error.errorCode)
+  );
+}
+
+export class ServiceResponseError extends ExtendableError {
+  constructor(response) {
+    super('API service call response with text reporting an error');
+    this.response = response;
+    this.response.misc = {};
+    // Map Backend error response data to a misc object in our error object
+    if (response.body && response.body['retriesCount']) {
+      this.response.misc['failedLoginAttempts'] = response.body['retriesCount'];
+    }
+  }
 }

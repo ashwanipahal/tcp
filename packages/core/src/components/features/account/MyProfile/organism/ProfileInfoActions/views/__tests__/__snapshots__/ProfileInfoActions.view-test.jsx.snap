@@ -1,0 +1,302 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInfoActions should render correctly for empty state 1`] = `
+<Styled(AccountOverviewTile)
+  className=""
+>
+  <div
+    className="profile-wrapper elem-mb-XXXL"
+  >
+    <div
+      className="profile-message"
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-MED"
+        color="text.primary"
+        component="p"
+        data-locator="enhanceExpHdr"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        data-locator="instructionTxt"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </div>
+  </div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityCompletionState=""
+        activityIcon="/static/images/mailingAddress.jpg"
+        activityId="mailingAddress"
+        activityTitle="+20%"
+        dataLocatorPrefix="email"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityCompletionState=""
+        activityIcon="/static/images/store.jpg"
+        activityId="favStore"
+        activityTitle="+20%"
+        dataLocatorPrefix="favStore"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityCompletionState=""
+        activityIcon="/static/images/birthday.jpg"
+        activityId="userBirthday"
+        activityTitle="+20%"
+        dataLocatorPrefix="birthday"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityCompletionState=""
+        activityIcon="/static/images/survey.png"
+        activityId="aboutYourself"
+        activityTitle="+20%"
+        dataLocatorPrefix="survey"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(AccountOverviewTile)>
+`;
+
+exports[`ProfileInfoActions should render correctly for filled state 1`] = `
+<Styled(AccountOverviewTile)
+  className=""
+>
+  <div
+    className="profile-wrapper elem-mb-XXXL"
+  >
+    <div
+      className="profile-message"
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-MED"
+        color="text.primary"
+        component="p"
+        data-locator="enhanceExpHdr"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        data-locator="infoAddedTxt"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(Anchor)
+          dataLocator="hereLink"
+          fontSizeVariation="xlarge"
+          to="/account"
+          underline={true}
+        />
+        ?
+      </Styled(BodyCopy)>
+    </div>
+    <div
+      className="elem-pt-MED"
+      data-locator="profileCompletionImg"
+    >
+      <Styled(ProfileProgress)
+        className="elem-ml-LRG elem-mr-LRG"
+        profileCompletion="100"
+      />
+    </div>
+  </div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityIcon="/static/images/mailingAddress.jpg"
+        activityId="mailingAddress"
+        activityTitle="+20%"
+        dataLocatorPrefix="email"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityIcon="/static/images/store.jpg"
+        activityId="favStore"
+        activityTitle="+20%"
+        dataLocatorPrefix="favStore"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityIcon="/static/images/birthday.jpg"
+        activityId="userBirthday"
+        activityTitle="+20%"
+        dataLocatorPrefix="birthday"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="elem-mb-SM"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": true,
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Styled(ProfileInfoActionTile)
+        activityIcon="/static/images/survey.png"
+        activityId="aboutYourself"
+        activityTitle="+20%"
+        dataLocatorPrefix="survey"
+        redirectTo="/account"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(AccountOverviewTile)>
+`;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, SafeAreaView } from 'react-native';
+import theme from '@tcp/core/styles/themes/TCP';
+import Address from '@tcp/core/src/components/common/molecules/Address';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Style,
@@ -12,13 +14,25 @@ import {
   CardDetail,
   ImgWrapper,
   ImageStyle,
+  CenterAlign,
   ConfirmButtonWrapper,
   CloseButtonWrapper,
+  CardContainer,
+  CardExpiry,
+  CustomAddress,
 } from '../DeleteModal.style.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import LineComp from '../../../../../../common/atoms/Line';
 import CustomButton from '../../../../../../common/atoms/Button';
+
+const buttonStyle = {
+  paddingRight: 5,
+  paddingLeft: 5,
+  fontWeight: theme.typography.fontWeights.regular,
+};
+
+const redColor = theme.colorPalette.red[300];
 
 class DeleteModal extends React.PureComponent<Props> {
   static propTypes = {
@@ -40,7 +54,19 @@ class DeleteModal extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, dto, setDeleteModalMountedState, toggleModal, onConfirm, onClose } = this.props;
+    const {
+      labels,
+      dto,
+      setDeleteModalMountedState,
+      toggleModal,
+      onConfirm,
+      onClose,
+      addressDetails,
+    } = this.props;
+    const cardTitle = dto.accountNo
+      ? `${dto.cardDetail} ${dto.accountNo.slice(-4)}`
+      : dto.cardDetail;
+
     return (
       <View>
         <ModalNative isOpen={setDeleteModalMountedState} onRequestClose={toggleModal}>
@@ -57,31 +83,70 @@ class DeleteModal extends React.PureComponent<Props> {
           </LineWrapper>
           <SafeAreaView>
             <ModalViewWrapper>
-              <CardDescription>{dto.cardDescription}</CardDescription>
+              <CardDescription>
+                <BodyCopy
+                  mobileFontFamily={['secondary']}
+                  fontWeight="extrabold"
+                  fontSize="fs16"
+                  text={dto.cardDescription}
+                />
+              </CardDescription>
               <CardDetailWrapper>
                 <ImgWrapper>
-                  <ImageStyle source={dto.cardImage1} />
+                  <ImageStyle source={dto.cardImage} />
                 </ImgWrapper>
-                <CardDetail>{dto.cardDetail}</CardDetail>
+                <CardContainer>
+                  <CardDetail>
+                    <BodyCopy
+                      mobileFontFamily={['secondary']}
+                      fontWeight="semibold"
+                      fontSize="fs14"
+                      text={cardTitle}
+                    />
+                  </CardDetail>
+                  <CardExpiry>
+                    <BodyCopy
+                      mobileFontFamily={['secondary']}
+                      fontWeight="regular"
+                      fontSize="fs14"
+                      text={dto.cardExpiry}
+                    />
+                  </CardExpiry>
+                  <Address
+                    showCountry={false}
+                    showPhone={false}
+                    showName
+                    dataLocatorPrefix="address"
+                    address={addressDetails}
+                    customStyle={CustomAddress}
+                  />
+                </CardContainer>
               </CardDetailWrapper>
-              <ConfirmButtonWrapper>
-                <CustomButton
-                  text={labels.paymentGC.lbl_payment_modalGCConfirm}
-                  buttonVariation="variable-width"
-                  fill="BLUE"
-                  color="white"
-                  onPress={onConfirm}
-                />
-              </ConfirmButtonWrapper>
-              <CloseButtonWrapper>
-                <CustomButton
-                  text={labels.paymentGC.lbl_payment_modalGCCancel}
-                  buttonVariation="variable-width"
-                  fill="RED"
-                  color="red"
-                  onPress={onClose}
-                />
-              </CloseButtonWrapper>
+              <CenterAlign>
+                <ConfirmButtonWrapper>
+                  <CustomButton
+                    text={labels.paymentGC.lbl_payment_modalGCConfirm}
+                    buttonVariation="variable-width"
+                    fill="BLUE"
+                    color="white"
+                    width="162px"
+                    font-size="14"
+                    onPress={onConfirm}
+                    style={buttonStyle}
+                  />
+                </ConfirmButtonWrapper>
+                <CloseButtonWrapper>
+                  <CustomButton
+                    text={labels.paymentGC.lbl_payment_modalGCCancel}
+                    buttonVariation="variable-width"
+                    fill="RED"
+                    color={redColor}
+                    font-size="14"
+                    onPress={onClose}
+                    style={buttonStyle}
+                  />
+                </CloseButtonWrapper>
+              </CenterAlign>
             </ModalViewWrapper>
           </SafeAreaView>
         </ModalNative>

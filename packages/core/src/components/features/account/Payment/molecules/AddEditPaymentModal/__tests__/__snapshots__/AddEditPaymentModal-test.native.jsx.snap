@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditPaymentModal component should render correctly 1`] = `
+<ModalNative
+  onRequestClose={Object {}}
+>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      fontSize="fs16"
+      fontWeight="extrabold"
+      mobileFontFamily={
+        Array [
+          "secondary",
+        ]
+      }
+      text=""
+    />
+  </Styled(Text)>
+  <Styled(View)>
+    <Styled(LineComp)
+      borderColor="black"
+      borderWidth={2}
+      marginBottom={0}
+      marginTop={5}
+    />
+  </Styled(View)>
+  <SafeAreaView>
+    <Styled(View)>
+      <Connect(AddEditCreditCard)
+        dto={Object {}}
+        labels={
+          Object {
+            "paymentGC": Object {
+              "lbl_payment_addCCHeading": "",
+            },
+          }
+        }
+        onClose={Object {}}
+        updateCardList={Object {}}
+      />
+    </Styled(View)>
+  </SafeAreaView>
+</ModalNative>
+`;

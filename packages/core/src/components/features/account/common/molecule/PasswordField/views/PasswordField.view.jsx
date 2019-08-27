@@ -47,7 +47,12 @@ export class PasswordField extends React.PureComponent {
         <TextBox {...otherProps} type={type} />
         <BodyCopy component="div" className="rightAlignedContent" textAlign="center">
           {tooltipContent && (
-            <ReactTooltip message={tooltipContent} aligned="right" minWidth="320px">
+            <ReactTooltip
+              message={tooltipContent}
+              className="reset-tooltip"
+              aligned="right"
+              minWidth="330px"
+            >
               <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
             </ReactTooltip>
           )}
@@ -57,7 +62,7 @@ export class PasswordField extends React.PureComponent {
             noLink
             handleLinkClick={this.changeType}
             underline
-            data-locator={type === 'password' ? 'login-showlnk' : 'login-hidelnk'}
+            dataLocator={type === 'password' ? 'login-showlnk' : 'login-hidelnk'}
           >
             {type === 'password' ? showText : hideText}
           </Anchor>

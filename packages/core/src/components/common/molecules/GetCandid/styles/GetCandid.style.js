@@ -46,4 +46,17 @@ export default css`
       width: 210px;
     }
   }
+
+  .gallery-button-left {
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    width: 164px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 162px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 210px;
+    }
+  }
 `;

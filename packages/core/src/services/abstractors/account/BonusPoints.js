@@ -37,6 +37,26 @@ export const getBonusPointsData = () => {
   });
 };
 
+export const applyBonusPointsData = dto => {
+  const payload = {
+    webService: endpoints.applyBonusPoints,
+    body: {
+      bonusDaySelected: dto.payload.bonusDaySelected,
+      orderId: dto.payload.orderId,
+    },
+  };
+  return executeStatefulAPICall(payload).then(res => {
+    /* istanbul ignore else */
+    if (!res.body) {
+      throw new Error('res body is coming null');
+      // TODO - Set API Helper to filter if error exists in response
+    }
+    const massagedData = getMassagedBonusData(res.body);
+    return massagedData || {};
+  });
+};
+
 export default {
   getBonusPointsData,
+  applyBonusPointsData,
 };

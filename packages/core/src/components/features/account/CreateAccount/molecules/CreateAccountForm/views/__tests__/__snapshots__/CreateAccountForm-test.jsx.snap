@@ -21,8 +21,6 @@ exports[`CreateAccountForm should render correctly 1`] = `
     display: block;
   }
   .tooltip-bubble {
-    min-width: 300px;
-
     li {
       text-align: left;
 

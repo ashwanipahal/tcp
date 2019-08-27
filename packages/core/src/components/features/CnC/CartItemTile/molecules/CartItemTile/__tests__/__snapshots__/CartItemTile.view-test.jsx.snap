@@ -18,11 +18,11 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           ";
   margin-bottom: 20px;
-  .padding-top-10 {
-    padding-top: 10px;
-  }
   .padding-left-10 {
-    padding-left: 10px;
+    padding-left: 4px;
+  }
+  .padding-left-6 {
+    padding-left: 6px;
   }
   .padding-left-13 {
     padding-left: 13px;
@@ -35,6 +35,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .brand-image {
     text-align: center;
+    width: 55px;
   }
   .edit-button {
     padding-left: 10px;
@@ -48,6 +49,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .align-product-img {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .color-fit-size-separator {
@@ -58,9 +60,33 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .responsive-edit-css {
     padding-top: 2px;
+    cursor: pointer;
   }
   .imageWrapper {
     position: relative;
+    width: 100px;
+  }
+  .logoWrapper {
+    position: relative;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+  }
+  .product-attributes {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 75%;
+    margin: 0 13px;
+  }
+  .editLinkWrapper {
+    display: inline-block;
+  }
+
+  .crossDeleteIcon {
+    float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
   }
 
   .product-tile-wrapper {
@@ -102,8 +128,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
 
       .label-responsive {
-        width: 40px;
-        margin-right: 0;
+        width: auto;
+        margin-right: 22px;
       }
 
       .value-responsive {
@@ -114,10 +140,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
         padding-top: 0;
         display: flex;
         flex: 1;
+        width: auto;
+        margin-right: 22px;
       }
 
       .responsive-edit-css {
         padding-top: 2px;
+        cursor: pointer;
       }
     }
 
@@ -142,6 +171,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
         position: absolute;
         bottom: 0;
         right: 50%;
+        cursor: pointer;
       }
       .bag-product-detail-wrapper {
         position: static;
@@ -161,6 +191,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
     .price-label {
       margin-left: 170px;
+    }
+  }
+
+  .productImgBrand {
+    p {
+      margin-right: 35px;
     }
   }
 

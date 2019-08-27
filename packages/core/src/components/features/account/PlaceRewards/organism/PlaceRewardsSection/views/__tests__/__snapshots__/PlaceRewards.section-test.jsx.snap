@@ -118,6 +118,7 @@ exports[`MyRewards should render correctly 1`] = `
               className="elem-mb-SM elem-ml-SM"
               color="text.primary"
               component="h4"
+              data-locator="pointshistorylbl"
               fontFamily="secondary"
               fontSize="fs16"
               fontWeight="extrabold"
@@ -159,7 +160,11 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        <BonusPointsDaysSection />
+        <div
+          className="bonusPointsWrapper"
+        >
+          <BonusPointsDaysSection />
+        </div>
       </Styled(Col)>
       <Styled(Col)
         className="place-rewards-col4"
@@ -171,11 +176,13 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        Fourth
+        <FPO
+          text=""
+        />
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Row)>
-  <Styled(MyRewards)
+  <Connect(MyRewardsContainer)
     labels={
       Object {
         "common": Object {},

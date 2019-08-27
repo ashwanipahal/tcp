@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const CouponDetailModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
-    margin: 0 80px;
+    margin: 0 60px;
   }
 
   .couponModal_btnWrapper {
@@ -60,13 +60,24 @@ const CouponDetailModalStyle = css`
     text-align: center;
   }
   .couponModal_print_anchor {
-    color: ${props => props.theme.colors.BRAND.PRIMARY};
+    color: ${props => props.theme.colors.ANCHOR.SECONDARY};
+  }
+
+  .couponModal_print_anchortext {
+    color: ${props => props.theme.colors.ANCHOR.PRIMARY};
   }
   .couponModal_modalLongDesc {
     text-align: left;
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
     color: ${props => props.theme.colors.BLACK};
     margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
+  }
+  .couponModal_modalShortDesc {
+    text-align: left;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    color: ${props => props.theme.colors.BLACK};
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0px
+      ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
   }
 `;
 

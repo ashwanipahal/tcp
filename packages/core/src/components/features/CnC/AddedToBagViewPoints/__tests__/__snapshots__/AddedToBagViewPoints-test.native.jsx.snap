@@ -6,13 +6,10 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
     <Styled(BodyCopy)
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
       text="$12"
     />
   </Styled(View)>
@@ -21,15 +18,12 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
       color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
       text={23}
     />
   </Styled(View)>
@@ -38,13 +32,11 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
     <Styled(BodyCopy)
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
       text="123"
     />
     <Styled(BodyCopy)
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
       text="$0"
     />
   </Styled(View)>
@@ -53,15 +45,12 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
       color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
       text={60}
     />
   </Styled(View)>
@@ -70,15 +59,12 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
       color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
       text={12}
     />
   </Styled(View)>

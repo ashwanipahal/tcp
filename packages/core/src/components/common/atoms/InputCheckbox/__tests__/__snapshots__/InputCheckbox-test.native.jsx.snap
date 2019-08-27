@@ -7,6 +7,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
   onChange={[Function]}
   onClick={[MockFunction]}
   onStartShouldSetResponder={[Function]}
+  pointerEvents="auto"
   rightText="checkbox"
   val=""
 >
@@ -23,20 +24,18 @@ exports[`InputCheckbox component should render correctly 1`] = `
   </Styled(View)>
   <Styled(BodyCopy)
     fontSize="fs12"
-    locator=""
     mobileFontFamily="secondary"
     text="checkbox"
   />
   <Styled(BodyCopy)
-    aria-live="assertive"
     className="Checkbox__error"
     color="error"
-    component="div"
-    data-locator="errorDataLocator"
-    fontFamily="secondary"
     fontSize="fs12"
-    locator=""
-    role="alert"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
     text=""
   />
 </Styled(View)>
@@ -49,6 +48,7 @@ exports[`InputCheckbox component should render correctly with checked state fals
   onChange={[Function]}
   onClick={[MockFunction]}
   onStartShouldSetResponder={[Function]}
+  pointerEvents="auto"
   rightText="checkbox"
   val=""
 >
@@ -65,20 +65,18 @@ exports[`InputCheckbox component should render correctly with checked state fals
   </Styled(View)>
   <Styled(BodyCopy)
     fontSize="fs12"
-    locator=""
     mobileFontFamily="secondary"
     text="checkbox"
   />
   <Styled(BodyCopy)
-    aria-live="assertive"
     className="Checkbox__error"
     color="error"
-    component="div"
-    data-locator="errorDataLocator"
-    fontFamily="secondary"
     fontSize="fs12"
-    locator=""
-    role="alert"
+    mobilefontFamily={
+      Array [
+        "secondary",
+      ]
+    }
     text=""
   />
 </Styled(View)>

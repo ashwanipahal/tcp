@@ -10,7 +10,7 @@ import {
 } from '../styles/PlaceRewards.section.style.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import MyRewards from '../../../molecules/MyRewards';
+import MyRewards from '../../../../common/organism/MyRewards';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
@@ -28,6 +28,11 @@ const PlaceRewardsSection = ({ labels, className }) => {
         </StyledHeading>
         <UnderlineStyle />
         <StyledView>
+          <BodyCopy
+            fontSize="fs16"
+            fontWeight="extrabold"
+            text={labels.common.lbl_common_point_balance}
+          />
           <RewardsPoints />
         </StyledView>
         <StyledView>
@@ -44,7 +49,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <BonusPointsDays />
         </StyledView>
         <StyledViewLargeMargin>
-          <Text>Fourth</Text>
+          <Text>FPO</Text>
         </StyledViewLargeMargin>
         <MyRewards labels={labels} />
       </ScrollView>

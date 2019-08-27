@@ -58,7 +58,7 @@ export const API_CONFIG = {
     traceIdCount: 0,
     assetHost: '/',
     domain: '/',
-    unbxd: '://search.unbxd.io',
+    unbxd: 'https://search.unbxd.io',
   },
   US_CONFIG_OPTIONS: {
     storeId: '10151',

@@ -11,7 +11,12 @@ export {
   getValueFromAsyncStorage,
   setValueInAsyncStorage,
   validateExternalUrl,
+  resetNavigationStack,
+  createAPIConfig,
+  switchAPIConfig,
 } from './utils.app';
+
+export { default, getSiteId } from './utils.app';
 
 export {
   isServer,
@@ -21,5 +26,9 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
-  createAPIConfig,
+  resetApiConfig,
+  bindAllClassMethodsToThis,
+  isGymboree,
+  getAddressFromPlace,
+  formatAddress,
 } from './utils';

@@ -66,8 +66,9 @@ class LoginSection extends React.PureComponent<Props> {
       className,
       queryParams,
       currentForm,
+      variation,
+      handleContinueAsGuest,
     } = this.props;
-
     return (
       <Row className={className}>
         <Col
@@ -76,11 +77,18 @@ class LoginSection extends React.PureComponent<Props> {
             medium: 8,
             large: 12,
           }}
-          className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
+          className={`elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+            variation === 'checkout' ? 'checkoutForm' : 'loginForm'
+          }`}
         >
           {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
             <React.Fragment>
-              <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
+              <LoginTopSection
+                variation={variation}
+                labels={labels}
+                className="elem-mb-LRG"
+                isCanada={this.isCanada}
+              />
               <LoginForm
                 onSubmit={onSubmit}
                 labels={labels}
@@ -91,6 +99,8 @@ class LoginSection extends React.PureComponent<Props> {
                 resetForm={resetForm}
                 className="elem-mb-LRG"
                 onCreateAccountClick={this.showCreateAccountForm}
+                variation={variation}
+                handleContinueAsGuest={handleContinueAsGuest}
               />
             </React.Fragment>
           )}
@@ -106,7 +116,7 @@ class LoginSection extends React.PureComponent<Props> {
           )}
 
           <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
-            <BodyCopy fontSize="fs12" textAlign="center">
+            <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
               {labels.login.lbl_login_createAccountHelp}
             </BodyCopy>
           </BodyCopy>
@@ -135,6 +145,7 @@ LoginSection.propTypes = {
   openModal: PropTypes.func,
   queryParams: PropTypes.shape({}).isRequired,
   currentForm: PropTypes.string,
+  handleContinueAsGuest: PropTypes.func.isRequired,
 };
 
 LoginSection.defaultProps = {

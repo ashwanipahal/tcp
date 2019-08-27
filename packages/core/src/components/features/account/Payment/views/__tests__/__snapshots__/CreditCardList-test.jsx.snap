@@ -28,10 +28,11 @@ exports[`CreditCardList Component should render correctly 1`] = `
     fullBleed={true}
   >
     <Styled(Col)
+      className=""
       colSize={
         Object {
-          "large": 3,
-          "medium": 3,
+          "large": 4,
+          "medium": 4,
           "small": 6,
         }
       }
@@ -63,10 +64,11 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
     fullBleed={true}
   >
     <Styled(Col)
+      className="payment__addBtn__cont"
       colSize={
         Object {
-          "large": 3,
-          "medium": 3,
+          "large": 4,
+          "medium": 4,
           "small": 6,
         }
       }

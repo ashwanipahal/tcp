@@ -64,6 +64,7 @@ class CouponView extends React.PureComponent<Props> {
               couponDetailClick={this.couponDetailClick}
               onRemove={handleRemoveCoupon}
               dataLocator="coupon-cartAppliedRewards"
+              handleErrorCoupon={handleErrorCoupon}
             />
           )}
           {availableCouponList && (

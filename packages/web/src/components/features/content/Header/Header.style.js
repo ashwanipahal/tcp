@@ -1,14 +1,9 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-const HeaderLoyalty = styled.div`
-  background-color: ${props => props.theme.colors.WHITE};
-  padding: 36px 0;
-  text-align: center;
-  text-transform: uppercase;
+export default css`
+  margin-bottom: 8px;
+
+  @media ${props => props.theme.mediaQuery.large} {
+    margin-bottom: 24px;
+  }
 `;
-
-const headerStyles = {
-  HeaderLoyalty,
-};
-
-export default headerStyles;

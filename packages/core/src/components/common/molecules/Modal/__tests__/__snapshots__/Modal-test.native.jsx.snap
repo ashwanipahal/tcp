@@ -13,27 +13,36 @@ exports[`Modal Native should render correctly 1`] = `
     visible={true}
   >
     <Styled(View)>
-      <Styled(TouchableOpacity)
-        onPress={[MockFunction]}
-      >
-        <Styled(Image)
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/close.png",
+      <Styled(View)>
+        <Styled(Text)>
+          <Styled(BodyCopy)
+            fontSize="fs16"
+            fontWeight="black"
+            mobileFontFamily="primary"
+            text="Modal Heading"
+          />
+        </Styled(Text)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(TouchableOpacity)
+          onPress={[MockFunction]}
+        >
+          <Styled(Image)
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/close.png",
+              }
             }
-          }
-        />
-      </Styled(TouchableOpacity)>
+          />
+        </Styled(TouchableOpacity)>
+      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(BodyCopy)
-        className="modalHeading"
-        color="#000"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        locator=""
-        mobileFontFamily="primary"
-        text="Modal Heading"
+      <Styled(LineComp)
+        borderColor="black"
+        borderWidth={1}
+        marginBottom={0}
+        marginTop={5}
       />
     </Styled(View)>
   </Component>

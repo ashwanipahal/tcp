@@ -66,6 +66,12 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
+    props.fontWeight === 'semiBold'
+      ? `
+      font-weight: ${props.theme.fonts.fontWeight.semiBold};
+    `
+      : ''};
+  ${props =>
     props.fullWidth
       ? `
       width: 100%;
@@ -101,6 +107,14 @@ const AnchorStyles = css`
   `
       : ''};
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
+  .left-arrow {
+    border: solid ${props => props.theme.colors.ANCHOR.SECONDARY};
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
 `;
 
 export default AnchorStyles;

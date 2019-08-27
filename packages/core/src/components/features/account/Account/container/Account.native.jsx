@@ -9,6 +9,8 @@ import {
   StyledScrollView,
 } from '../styles/MyAccountContainer.style.native';
 import { getLabels } from './Account.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
+import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.app';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -34,6 +36,18 @@ export class Account extends React.PureComponent<Props, State> {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { isUserLoggedIn, closeOverlay } = this.props;
+    const hasMobile = isMobileApp();
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
+      if (hasMobile) {
+        this.navigattePage();
+      } else {
+        closeOverlay();
+      }
+    }
+  }
+
   /**
    *  @function getComponent takes component and return the component that is required on the drop down click.
    */
@@ -46,6 +60,8 @@ export class Account extends React.PureComponent<Props, State> {
         return 'myPlaceRewardsMobile';
       case 'accountOverviewMobile':
         return 'accountOverview';
+      case 'profileInformationMobile':
+        return 'profile';
       default:
         return 'addressBookMobile';
     }
@@ -61,6 +77,11 @@ export class Account extends React.PureComponent<Props, State> {
     });
   };
 
+  navigattePage() {
+    const { navigation } = this.props;
+    navigateToNestedRoute(navigation, 'HomeStack', 'home');
+  }
+
   /**
    * @function render  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -68,7 +89,7 @@ export class Account extends React.PureComponent<Props, State> {
    */
   render() {
     const { component } = this.state;
-    const { labels } = this.props;
+    const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
         <StyledScrollView>
@@ -77,6 +98,8 @@ export class Account extends React.PureComponent<Props, State> {
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}
+            isUserLoggedIn={isUserLoggedIn}
+            navigation={navigation}
           />
         </StyledScrollView>
       </StyledKeyboardAvoidingView>
@@ -87,6 +110,7 @@ export class Account extends React.PureComponent<Props, State> {
 const mapStateToProps = state => {
   return {
     labels: getLabels(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 

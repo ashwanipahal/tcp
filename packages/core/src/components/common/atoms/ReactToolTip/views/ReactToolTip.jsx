@@ -18,17 +18,12 @@ class ReactTooltip extends React.Component<Props> {
   };
 
   /**
-   * @function hideTooltip - Hides the tooltip on the "onMouseLeave" mouse event.
-   */
-  hideTooltip = () => {
-    this.setState({ displayTooltip: false });
-  };
-
-  /**
    * @function showTooltip - Shows the tooltip on the "onMouseOver" mouse event.
    */
-  showTooltip = () => {
-    this.setState({ displayTooltip: true });
+  showHideTooltip = () => {
+    this.setState(prevState => ({
+      displayTooltip: !prevState.displayTooltip,
+    }));
   };
 
   /**
@@ -38,7 +33,7 @@ class ReactTooltip extends React.Component<Props> {
     const { id, children, direction, message, className } = this.props;
     const { displayTooltip } = this.state;
     return (
-      <span className={className} onMouseLeave={this.hideTooltip}>
+      <span className={className}>
         {displayTooltip && (
           <div className="tooltip-bubble" id={id} direction={direction} message={message}>
             <div className="tooltip-message">
@@ -46,7 +41,8 @@ class ReactTooltip extends React.Component<Props> {
             </div>
           </div>
         )}
-        <span onMouseEnter={this.showTooltip}>{children}</span>
+        {/* eslint-disable-next-line */}
+        <span onClick={this.showHideTooltip}>{children}</span>
       </span>
     );
   }

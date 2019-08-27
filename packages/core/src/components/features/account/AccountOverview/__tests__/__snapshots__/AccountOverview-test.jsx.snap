@@ -7,6 +7,7 @@ exports[`MyAccountOverview View should render AccountOverview Correctly 1`] = `
     heading=""
   />
   <Styled(AccountOverviewTileList)
+    commonLabels={Object {}}
     labels={
       Object {
         "lbl_overview_heading": "",

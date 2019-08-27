@@ -12,6 +12,8 @@ describe('AddressOverviewTile component', () => {
         city: 'test city',
         country: 'test country',
         phone1: '1234567890',
+        xcont_isDefaultBilling: 'true',
+        primary: 'true',
       },
     ];
     const labels = {
@@ -30,9 +32,29 @@ describe('AddressOverviewTile component', () => {
 
 describe('AddressOverviewTile render empty address component', () => {
   it('should render correctly', () => {
-    const addresses = [];
+    const addresses = [
+      {
+        firstName: '',
+        lastName: '',
+        addressLine: [],
+        city: '',
+        country: '',
+        phone1: '',
+        xcont_isDefaultBilling: 'false',
+        primary: 'false',
+      },
+    ];
     const labels = {};
     const component = shallow(<AddressOverviewTile labels={labels} addressList={addresses} />);
+    expect(component).toMatchSnapshot();
+  });
+});
+
+describe('AddressOverviewTile render empty address', () => {
+  it('should render empty address correctly', () => {
+    const addressList = null;
+    const labels = {};
+    const component = shallow(<AddressOverviewTile labels={labels} addressList={addressList} />);
     expect(component).toMatchSnapshot();
   });
 });

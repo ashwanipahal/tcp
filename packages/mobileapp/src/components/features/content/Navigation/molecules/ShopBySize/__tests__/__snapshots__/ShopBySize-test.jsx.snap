@@ -10,7 +10,6 @@ exports[`ShopBySize should render correctly 1`] = `
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs18"
-      locator=""
       text="1"
     />
   </Styled(TouchableOpacity)>
@@ -27,7 +26,6 @@ exports[`ShopBySize should render correctly with l3 1`] = `
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs18"
-      locator=""
       text="1"
     />
   </Styled(TouchableOpacity)>
@@ -44,7 +42,6 @@ exports[`ShopBySize should render correctly with no l3 1`] = `
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs18"
-      locator=""
       text="1"
     />
   </Styled(TouchableOpacity)>

@@ -180,7 +180,6 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight="extrabold"
         key="0"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -209,7 +208,6 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="1"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -238,7 +236,6 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="2"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -267,7 +264,6 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="3"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -296,7 +292,6 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="4"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",

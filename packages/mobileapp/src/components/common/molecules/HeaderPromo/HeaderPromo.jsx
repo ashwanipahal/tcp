@@ -36,7 +36,7 @@ class HeaderPromo extends React.PureComponent<props> {
   renderView = ({ item }) => {
     return (
       <MessageContainer
-        accessibilityRole="button"
+        accessibilityRole="text"
         width={MODULE_WIDTH}
         onPress={() => UrlHandler(item.linkClass.url)}
       >

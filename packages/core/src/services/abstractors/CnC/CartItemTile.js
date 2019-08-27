@@ -11,40 +11,26 @@ import {
   getDateInformation,
   getCartProductAttributes,
 } from '../../../utils/badge.util';
+import {
+  responseContainsErrors,
+  ServiceResponseError,
+  getFormattedError,
+} from '../../../utils/errorMessage.util';
+import { isCanada } from '../../../utils';
 
-export const getProductSkuInfoByUnbxd = item => {
-  // calling unbxd API logic is written in CartItemTile.saga.js, needs to move it in this abstractor, as of now getting result from saga and formatting it here.
-};
 const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
   BOPIS: 'BOPIS',
   ECOM: 'ECOM',
 };
-const AVAILABILITY = {
+
+export const AVAILABILITY = {
   OK: 'OK',
   SOLDOUT: 'SOLDOUT',
   UNAVAILABLE: 'UNAVAILABLE',
   SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
 };
-export const imageGenerator = (id, excludeExtension) => {
-  return {
-    colorSwatch: getSwatchImgPath(id, excludeExtension),
-    productImages: getProductImgPath(id, excludeExtension),
-  };
-};
 
-export const getSwatchImgPath = (id, excludeExtension) => {
-  return `/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${excludeExtension ? '' : '.jpg'}`;
-};
-
-export const getProductImgPath = (id, excludeExtension) => {
-  return {
-    125: `/wcsstore/GlobalSAS/images/tcp/products/125/${id}${excludeExtension ? '' : '.jpg'}`,
-    380: `/wcsstore/GlobalSAS/images/tcp/products/380/${id}${excludeExtension ? '' : '.jpg'}`,
-    500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
-    900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
-  };
-};
 export const COUPON_STATUS = {
   AVAILABLE: 'available',
   EXPIRING_SOON: 'expiration-limit',
@@ -58,6 +44,7 @@ export const BUTTON_LABEL_STATUS = {
   APPLY: 'APPLY',
   REMOVE: 'REMOVE',
 };
+
 export const COUPON_REDEMPTION_TYPE = {
   PUBLIC: 'public',
   WALLET: 'wallet',
@@ -67,18 +54,6 @@ export const COUPON_REDEMPTION_TYPE = {
   PLACECASH: 'PLACECASH',
   PC: 'PLACECASH',
 };
-
-// NOTE: (DT-19681) LOYALTY/PLACECASH/OTHERS
-export function getPromotionType(promotionType) {
-  switch (promotionType) {
-    case 'PC':
-      return COUPON_REDEMPTION_TYPE.PLACECASH;
-    case 'LOYALTY':
-      return COUPON_REDEMPTION_TYPE.LOYALTY;
-    default:
-      return COUPON_REDEMPTION_TYPE.PUBLIC;
-  }
-}
 
 /**
  * @function constructDateFormat This function creates the date in DD/MM/YY format
@@ -108,6 +83,42 @@ const getCouponType = promotionType => {
   }
 };
 
+export const getProductSkuInfoByUnbxd = item => {
+  // calling unbxd API logic is written in CartItemTile.saga.js, needs to move it in this abstractor, as of now getting result from saga and formatting it here.
+};
+
+export const imageGenerator = (id, excludeExtension) => {
+  return {
+    colorSwatch: getSwatchImgPath(id, excludeExtension),
+    productImages: getProductImgPath(id, excludeExtension),
+  };
+};
+
+export const getSwatchImgPath = (id, excludeExtension) => {
+  return `/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${excludeExtension ? '' : '.jpg'}`;
+};
+
+export const getProductImgPath = (id, excludeExtension) => {
+  return {
+    125: `/wcsstore/GlobalSAS/images/tcp/products/125/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `/wcsstore/GlobalSAS/images/tcp/products/380/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
+  };
+};
+
+// NOTE: (DT-19681) LOYALTY/PLACECASH/OTHERS
+export function getPromotionType(promotionType) {
+  switch (promotionType) {
+    case 'PC':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'LOYALTY':
+      return COUPON_REDEMPTION_TYPE.LOYALTY;
+    default:
+      return COUPON_REDEMPTION_TYPE.PUBLIC;
+  }
+}
+
 export const removeItem = orderItemId => {
   let orderItems = [];
   if (typeof orderItemId === 'string') {
@@ -116,12 +127,12 @@ export const removeItem = orderItemId => {
       quantity: '0',
     });
   } else {
-    orderItems = Object.keys(orderItemId).map(index => {
-      return {
-        orderItemId: orderItemId[index],
+    for (let value of orderItemId.values()) {
+      orderItems.push({
+        orderItemId: value,
         quantity: '0',
-      };
-    });
+      });
+    }
   }
   const payload = {
     body: {
@@ -174,7 +185,6 @@ export const updateItem = payloadData => {
  * @param cpnArray {Array} The array of offers available with user.
  * @return coupons {Array} Array of coupons with each coupons object in desired format.
  */
-
 export const constructCouponStructure = cpnArray => {
   const now = new Date();
   const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
@@ -500,11 +510,11 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
       usersOrder.totalItems += parseInt(item.qty);
 
       /* let {
-        todayOpeningTime,
-        todayClosingTime,
-        tomorrowOpeningTime,
-        tomorrowClosingTime
-      } = parseStoreOpeningAndClosingTimes(store);*/
+todayOpeningTime,
+todayClosingTime,
+tomorrowOpeningTime,
+tomorrowClosingTime
+} = parseStoreOpeningAndClosingTimes(store);*/
 
       const isGiftCard = item.giftItem;
       usersOrder.orderItems.push({
@@ -640,7 +650,13 @@ export const getOrderDetailsData = () => {
   });
 };
 
-export const getCartData = ({ calcsEnabled, excludeCartItems, recalcRewards, isCanada }) => {
+export const getCartData = ({
+  calcsEnabled,
+  excludeCartItems,
+  recalcRewards,
+  isCanada,
+  isCheckoutFlow,
+}) => {
   const payload = {
     webService: endpoints.fullDetails,
     header: {
@@ -660,11 +676,13 @@ export const getCartData = ({ calcsEnabled, excludeCartItems, recalcRewards, isC
 
     const orderDetailsResponse =
       res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
-    return {
-      coupons:
-        res.body.coupons &&
+    const coupons = isCheckoutFlow
+      ? res.body.coupons
+      : res.body.coupons &&
         res.body.coupons.offers &&
-        constructCouponStructure(res.body.coupons.offers),
+        constructCouponStructure(res.body.coupons.offers);
+    return {
+      coupons,
       orderDetails: getCurrentOrderFormatter(orderDetailsResponse, excludeCartItems, isCanada),
     };
   });
@@ -677,9 +695,11 @@ export const flatCurrencyToCents = currency => {
     throw new Error(e);
   }
 };
+
 export const capitalize = string => {
   return string.replace(/\b\w/g, l => l.toUpperCase());
 };
+
 export const toTimeString = est => {
   let hh = est.getHours();
   let mm = est.getMinutes();
@@ -721,7 +741,6 @@ export const deriveItemAvailability = (orderDetails, item, store) => {
   const isUsOrder = orderDetails.currencyCode === 'USD';
   const isCaOrder = orderDetails.currencyCode !== 'USD';
   const isStoreBOSSEligible = true;
-  console.log(item);
   if (
     (isUsOrder && item.productInfo.articleOOSUS) ||
     (isCaOrder && item.productInfo.articleOOSCA)
@@ -750,8 +769,34 @@ export const deriveItemAvailability = (orderDetails, item, store) => {
     return AVAILABILITY.UNAVAILABLE;
   }
 };
+
+export const getUnqualifiedItems = () => {
+  let payload = {
+    webService: endpoints.getUnqualifiedItems,
+  };
+  const isCanadaSite = isCanada();
+
+  return Promise.resolve()
+    .then((res = { body: {} }) => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      const {
+        body: { orderItemList = [] },
+      } = res;
+      return orderItemList.map(({ orderItemId, isArticleOOSCA, isArticleOOSUS }) => ({
+        orderItemId: orderItemId.toString(),
+        isOOS: isCanadaSite ? isArticleOOSCA : isArticleOOSUS,
+      }));
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+};
+
 export default {
   getOrderDetailsData,
   removeItem,
   getCartData,
+  getUnqualifiedItems,
 };
