@@ -16,7 +16,15 @@ type Props = {
 
 class FilterModal extends React.PureComponent<Props> {
   render() {
-    const { handleClose, show, children, className, classNames, labels, isSortOpenModal } = this.props;
+    const {
+      handleClose,
+      show,
+      children,
+      className,
+      classNames,
+      labels,
+      isSortOpenModal,
+    } = this.props;
     const showHideClassName = show
       ? `${className} modal display-block`
       : `${className} modal display-none`;
@@ -97,12 +105,10 @@ class FilterModal extends React.PureComponent<Props> {
                   >
                     {labels.lbl_apply}
                   </Button>
-
                 </Col>
               </Row>
             </div>
-          )
-          }
+          )}
         </section>
       </div>
     );

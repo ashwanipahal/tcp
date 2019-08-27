@@ -8,7 +8,7 @@ import {
   setDeviceInfo,
   setCountry,
   setCurrency,
-  setLanguage
+  setLanguage,
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
