@@ -110,16 +110,13 @@ class PaymentView extends React.Component<Props> {
       setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
-      recaptchaToken: '',
     };
     this.isEdit = false;
   }
 
   componentWillReceiveProps = nextProps => {
     if (!nextProps.deleteModalMountedState)
-      this.setState({
-        setDeleteModalMountedState: nextProps.deleteModalMountedState,
-      });
+      this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
   };
 
   getCardExpiryText = (labels, selectedCard) => {
@@ -201,14 +198,8 @@ class PaymentView extends React.Component<Props> {
       checkbalanceValueInfo,
       updateCardList,
     } = this.props;
-
-    const {
-      showGiftCardModal,
-      setDeleteModalMountedState,
-      setUpdateModalMountedState,
-      selectedCard,
-      recaptchaToken,
-    } = this.state;
+    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
+    const { showGiftCardModal } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
 
@@ -286,10 +277,8 @@ class PaymentView extends React.Component<Props> {
               checkbalanceValueInfo={checkbalanceValueInfo}
               onGetBalanceCard={onGetBalanceCard}
               toggleModal={this.setDeleteModalMountState}
-              toggleRecaptchaModal={this.setRecaptchaModalMountState}
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.toggleGiftCardModal}
-              recaptchaToken={recaptchaToken}
             />
           )}
           {setDeleteModalMountedState && (
@@ -304,7 +293,6 @@ class PaymentView extends React.Component<Props> {
               addressDetails={selectedCard.addressDetails}
             />
           )}
-
           {this.getPaymentModal(
             setUpdateModalMountedState,
             dto,
