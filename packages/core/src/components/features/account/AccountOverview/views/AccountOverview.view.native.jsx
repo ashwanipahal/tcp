@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
-import { TrackOrderModalHeader } from '@tcp/core/src/components/features/account/TrackOrder/styles/TrackOrderModal.native.style';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
@@ -12,13 +11,8 @@ import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import UnderlineStyle from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
-import LineComp from '../../../../common/atoms/Line';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import {
-  ModalHeading,
-  ModalViewWrapper,
-  LineWrapper,
-} from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
+import { ModalViewWrapper } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 
 import {
   LogoutWrapper,
@@ -43,22 +37,6 @@ class AccountOverview extends PureComponent<Props> {
     };
   }
 
-  renderModalHeader = modalHeaderLbl => {
-    const { getComponentId } = this.state;
-    const isTrackOrder = getComponentId.trackOrder;
-    const StyledHeader = isTrackOrder ? TrackOrderModalHeader : ModalHeading;
-    return (
-      <StyledHeader>
-        <BodyCopy
-          mobileFontFamily={['secondary']}
-          fontWeight="extrabold"
-          fontSize={`${isTrackOrder ? 'fs22' : 'fs16'}`}
-          text={modalHeaderLbl}
-        />
-      </StyledHeader>
-    );
-  };
-
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     let componentContainer = null;
     if (getComponentId.login) {
@@ -72,7 +50,11 @@ class AccountOverview extends PureComponent<Props> {
     }
     if (getComponentId.createAccount) {
       componentContainer = (
-        <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
+        <CreateAccount
+          showLogin={this.showloginModal}
+          navigation={navigation}
+          onRequestClose={this.toggleModal}
+        />
       );
     }
     if (getComponentId.trackOrder) {
@@ -81,6 +63,14 @@ class AccountOverview extends PureComponent<Props> {
       );
     }
     return <React.Fragment>{componentContainer}</React.Fragment>;
+  };
+
+  showloginModal = () => {
+    this.setState({
+      getComponentId: {
+        login: true,
+      },
+    });
   };
 
   toggleModal = ({ getComponentId }) => {
@@ -97,14 +87,17 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   render() {
-    const viewContainerStyle = { marginTop: 15 };
-    const colorPallete = createThemeColorPalette();
     const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
     const { showModal, getComponentId } = this.state;
-    let modalHeaderLbl = null;
+    let modalHeaderLbl;
+    const viewContainerStyle = { marginTop: 15 };
+    const colorPallete = createThemeColorPalette();
+    const isTrackOrder = getComponentId.trackOrder;
     if (getComponentId.login) modalHeaderLbl = labels.lbl_overview_login_text;
-    if (getComponentId.createAccount) modalHeaderLbl = labels.lbl_overview_createAccount;
-    if (getComponentId.trackOrder) modalHeaderLbl = labels.lbl_overview_trackYourOrder;
+    else if (getComponentId.createAccount) modalHeaderLbl = labels.lbl_overview_createAccount;
+    else if (getComponentId.trackOrder) modalHeaderLbl = labels.lbl_overview_trackYourOrder;
+    else modalHeaderLbl = null;
+
     return (
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
@@ -185,13 +178,15 @@ class AccountOverview extends PureComponent<Props> {
               />
             </LoggedinWrapper>
             {showModal && (
-              <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-                {this.renderModalHeader(modalHeaderLbl)}
-                {!getComponentId.trackOrder ? (
-                  <LineWrapper>
-                    <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-                  </LineWrapper>
-                ) : null}
+              <ModalNative
+                isOpen={showModal}
+                onRequestClose={this.toggleModal}
+                heading={modalHeaderLbl}
+                horizontalBar={!isTrackOrder}
+                headingAlign={isTrackOrder ? 'center' : ''}
+                headingFontFamily="secondary"
+                fontSize={isTrackOrder ? 'fs22' : 'fs16'}
+              >
                 <SafeAreaView>
                   <ModalViewWrapper>
                     {this.renderComponent({
@@ -220,19 +215,16 @@ class AccountOverview extends PureComponent<Props> {
 
             <Panel title={labels.lbl_overview_purchase_giftCards} isVariationTypeLink />
             <Panel title={labels.lbl_overview_refer_friend} isVariationTypeLink />
-            {!isUserLoggedIn ? (
-              <Panel
-                title={labels.lbl_overview_trackYourOrder}
-                isVariationTypeLink
-                handleComponentChange={e =>
-                  this.toggleModal({
-                    e,
-                    getComponentId: { login: false, createAccount: false, trackOrder: true },
-                  })
-                }
-              />
-            ) : null}
-
+            <Panel
+              title={labels.lbl_overview_trackYourOrder}
+              isVariationTypeLink
+              handleComponentChange={e =>
+                this.toggleModal({
+                  e,
+                  getComponentId: { login: false, createAccount: false, trackOrder: true },
+                })
+              }
+            />
             <UnderlineStyle />
             <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
             <Panel title={labels.lbl_overview_help} isVariationTypeLink />

@@ -30,5 +30,5 @@ export const defaultCurrencies = [
 
 export default {
   defaultCountries,
-  defaultCurrencies
+  defaultCurrencies,
 };

@@ -1,8 +1,15 @@
 export const getCollectorNumber = state => {
-  return state.CartPageReducer.getIn(['userDetails', 'collectorNumber']) || 0;
+  return state.User.getIn(['airmiles', 'accountNumber']) || 0;
 };
 export const getOfferCode = state => {
-  return state.CartPageReducer.getIn(['userDetails', 'promoOffer']) || 0;
+  return state.User.getIn(['airmiles', 'promoOffer']) || 0;
+};
+export const getCartOrderDetails = state => {
+  return state.CartPageReducer.get('orderDetails');
+};
+
+export const getCartOrderId = state => {
+  return getCartOrderDetails(state).get('orderId');
 };
 export const getAirmilesBannerData = state => {
   return {

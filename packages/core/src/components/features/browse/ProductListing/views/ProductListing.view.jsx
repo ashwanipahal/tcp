@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
 import ProductList from '../molecules/ProductList/views';
+import withStyles from '../../../../common/hoc/withStyles';
+
+import ProductListingStyle from '../ProductListing.style';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
 import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
-
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 
@@ -18,6 +20,9 @@ const ProductListView = ({
   navTree,
   breadCrumbs,
   filters,
+  totalProductsCount,
+  initialValues,
+  filtersLength,
   longDescription,
   labels,
   labelsFilter,
@@ -47,8 +52,14 @@ const ProductListView = ({
             <div className="promo-area">Promo area</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="filter-area">
-              <ProductListingFiltersForm filters={filters} labels={labelsFilter} />
+            <div className="filter-section">
+              <ProductListingFiltersForm
+                filtersMaps={filters}
+                totalProductsCount={totalProductsCount}
+                initialValues={initialValues}
+                filtersLength={filtersLength}
+                labels={labelsFilter}
+              />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -87,6 +98,9 @@ ProductListView.propTypes = {
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   filters: PropTypes.shape({}),
+  totalProductsCount: PropTypes.string,
+  initialValues: PropTypes.shape({}),
+  filtersLength: PropTypes.shape({}),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
@@ -98,8 +112,12 @@ ProductListView.defaultProps = {
   navTree: {},
   breadCrumbs: [],
   filters: {},
+  totalProductsCount: '',
+  initialValues: {},
+  filtersLength: {},
   categoryId: '',
   labels: {},
   labelsFilter: {},
 };
-export default ProductListView;
+
+export default withStyles(ProductListView, ProductListingStyle);
