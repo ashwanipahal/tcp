@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextItems component renders correctly 1`] = `
+Array [
+  <span
+    className="test"
+  >
+    test
+  </span>,
+  <span
+    className="test1"
+  >
+     test2
+  </span>,
+]
+`;

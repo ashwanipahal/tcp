@@ -40,7 +40,6 @@ const Anchor = ({
   const isCompleteUrl = incomingUrl.startsWith('http');
   const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
   const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
-
   return noLink ? (
     <a
       href={buildUrl(linkUrl)}

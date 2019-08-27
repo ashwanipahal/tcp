@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   position: relative;
+  padding-top: 32px;
   .footer_top_candidate_a .flex-align-center {
     align-items: center;
   }
@@ -30,10 +31,6 @@ export default css`
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
     font-size: 12px;
     line-height: 2.08;
-  }
-
-  .footer_top_candidate_a .refer_a_frient_last_colm {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
   .footer_top_candidate_a .divider {
     height: 1px;
@@ -100,6 +97,15 @@ export default css`
     .reference-id {
       display: none;
     }
+    .social-media-links, .social-media-label {
+      display: block;
+    }
+    .social-media-links {
+      padding: 0;
+    }
+    .email-sign-up-form button, .footer_top__signup_form button{
+      padding: 0;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -122,8 +128,12 @@ export default css`
     &.navigation-footer .col-md-half-width {
       width: 100%;
     }
+    &.navigation-footer .hide-in-medium-up {
+      display: block;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
+    padding-top: 12px;
     .hide-in-large-up {
       display: none;
     }

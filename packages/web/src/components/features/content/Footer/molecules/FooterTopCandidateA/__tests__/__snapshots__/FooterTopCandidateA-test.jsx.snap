@@ -235,6 +235,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           fullBleed={true}
         >
           <Styled(Col)
+            className="col-md-half-width"
             colSize={
               Object {
                 "large": 7,
@@ -263,7 +264,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             </Styled(BodyCopy)>
           </Styled(Col)>
           <Styled(Col)
-            className="candidate_a_inline_container_button"
+            className="candidate_a_inline_container_button col-md-half-width"
             colSize={
               Object {
                 "large": 5,
@@ -334,7 +335,9 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(SocialMediaLinks) />
+      <Styled(SocialMediaLinks)
+        className="social-media-links"
+      />
     </Styled(Col)>
   </Styled(Row)>
   <div

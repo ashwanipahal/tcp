@@ -167,6 +167,7 @@ class FooterTopCandidateA extends React.PureComponent {
             <Grid>
               <Row fullBleed className="flex-align-center">
                 <Col
+                  className="col-md-half-width"
                   colSize={{
                     large: 7,
                     medium: 4,
@@ -194,7 +195,7 @@ class FooterTopCandidateA extends React.PureComponent {
                   ignoreGutter={{
                     small: false,
                   }}
-                  className="candidate_a_inline_container_button"
+                  className="candidate_a_inline_container_button col-md-half-width"
                 >
                   <Button
                     id="extole_zone_global_footer"
@@ -240,7 +241,7 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            <SocialMediaLinks {...socialMediaLinks} />
+            <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
           </Col>
         </Row>
         <div className="divider hide-in-medium-down" />

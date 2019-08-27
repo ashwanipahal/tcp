@@ -130,7 +130,7 @@ class CountrySelector extends React.Component {
               fontFamily="secondary"
               fontSize="fs12"
             >
-              {labelValues.lbl_global_country_selector_header}
+              {labelValues && labelValues.lbl_global_country_selector_header}
             </BodyCopy>
             <CountrySelectorModal
               isModalOpen={isModalOpen}
