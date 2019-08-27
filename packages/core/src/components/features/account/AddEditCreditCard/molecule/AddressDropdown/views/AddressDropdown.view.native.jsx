@@ -46,6 +46,23 @@ export class AddressDropdown extends React.PureComponent<Props> {
     variation: 'primary',
   };
 
+  static getDerivedStateFromProps(props) {
+    const { data, selectedValue } = props;
+
+    let selectedLabelState = null;
+    const defaultSelectedValue = data && data.length && data[0].label; // If nothing falls under any condition then this value will be selected.
+    if (selectedValue) {
+      const selectedAddress = data.filter(item => item.id === selectedValue);
+      selectedLabelState =
+        selectedAddress && selectedAddress.length ? selectedAddress[0].label : defaultSelectedValue;
+    } else {
+      const primaryAddress = data.filter(item => item.primary === true);
+      selectedLabelState =
+        primaryAddress && primaryAddress.length ? primaryAddress[0].label : defaultSelectedValue;
+    }
+    return { selectedLabelState };
+  }
+
   constructor(props) {
     super(props);
     this.rowFrame = {
@@ -80,11 +97,13 @@ export class AddressDropdown extends React.PureComponent<Props> {
       dropDownIsOpen: false,
       selectedLabelState,
       top: 0,
+      flatListTop: 0,
+      flatListBottom: 0,
     };
   }
 
   componentDidUpdate() {
-    this.calculateDropDownPosition();
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
   }
 
   /**
@@ -112,6 +131,11 @@ export class AddressDropdown extends React.PureComponent<Props> {
         top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
       };
       this.setState({ top: topMargin.top });
+      if (showInBottom) {
+        this.setState({ flatListBottom: 300 });
+      } else if (calculateHeight > windowHeight) {
+        this.setState({ flatListTop: 120, flatListBottom: 200 });
+      }
     });
   };
 
@@ -202,7 +226,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
   render() {
     const { data, dropDownStyle, labels } = this.props;
-    const { dropDownIsOpen, selectedLabelState, top } = this.state;
+    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
     return (
       <View style={dropDownStyle}>
         <Row
@@ -210,6 +234,11 @@ export class AddressDropdown extends React.PureComponent<Props> {
           onStartShouldSetResponder={this.openDropDown}
           ref={ref => {
             this.rowMarker = ref;
+          }}
+          onLayout={() => {
+            if (this.rowMarker) {
+              this.rowMarker.measure(() => {});
+            }
           }}
         >
           <HeaderContainer>
@@ -235,6 +264,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
               width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
+              marginTop: flatListTop,
             }}
           >
             <OverLayView
@@ -243,15 +273,16 @@ export class AddressDropdown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
+                marginBottom: flatListBottom,
               }}
             >
               {dropDownIsOpen && (
                 <FlatList
                   data={data}
                   renderItem={this.dropDownLayout}
-                  keyExtractor={item => item.id}
+                  keyExtractor={item => item.key}
+                  bounces={false}
                   ItemSeparatorComponent={() => <Separator />}
-                  style={{ height: getScreenHeight() / 2 }}
                 />
               )}
             </OverLayView>
