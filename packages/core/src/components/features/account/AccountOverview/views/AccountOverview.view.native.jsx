@@ -38,6 +38,7 @@ class AccountOverview extends PureComponent<Props> {
       getComponentId: {
         login: '',
         createAccount: '',
+        favorites: '',
       },
     };
   }
@@ -45,13 +46,15 @@ class AccountOverview extends PureComponent<Props> {
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     return (
       <React.Fragment>
-        {getComponentId.login ? (
+        {(getComponentId.login || getComponentId.favorites) && (
           <LoginPageContainer
             onRequestClose={this.toggleModal}
             navigation={navigation}
             isUserLoggedIn={isUserLoggedIn}
+            variation={getComponentId.favorites && 'favorites'}
           />
-        ) : (
+        )}
+        {getComponentId.createAccount && (
           <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
         )}
       </React.Fragment>
@@ -66,6 +69,7 @@ class AccountOverview extends PureComponent<Props> {
         ? {
             login: getComponentId.login,
             createAccount: getComponentId.createAccount,
+            favorites: getComponentId.favorites,
           }
         : '',
     });
@@ -132,7 +136,7 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: false, createAccount: true },
+                    getComponentId: { login: false, createAccount: true, favorites: false },
                   })
                 }
               />
@@ -150,24 +154,34 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: true, createAccount: false },
+                    getComponentId: { login: true, createAccount: false, favorites: false },
                   })
                 }
               />
             </LoggedinWrapper>
+
             {showModal && (
               <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
                 <ModalHeading>
-                  <BodyCopy
-                    mobileFontFamily={['secondary']}
-                    fontWeight="extrabold"
-                    fontSize="fs16"
-                    text={
-                      getComponentId.login
-                        ? `${labels.lbl_overview_login_text}`
-                        : `${labels.lbl_overview_createAccount}`
-                    }
-                  />
+                  <React.Fragment>
+                    {(getComponentId.login || getComponentId.favorites) && (
+                      <BodyCopy
+                        mobileFontFamily={['secondary']}
+                        fontWeight="extrabold"
+                        fontSize="fs16"
+                        text={labels.lbl_overview_login_text}
+                      />
+                    )}
+
+                    {getComponentId.createAccount && (
+                      <BodyCopy
+                        mobileFontFamily={['secondary']}
+                        fontWeight="extrabold"
+                        fontSize="fs16"
+                        text={labels.lbl_overview_createAccount}
+                      />
+                    )}
+                  </React.Fragment>
                 </ModalHeading>
                 <LineWrapper>
                   <LineComp marginTop={5} borderWidth={2} borderColor="black" />
@@ -194,7 +208,7 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: true },
+                    getComponentId: { favorites: true },
                   })
                 }
               />

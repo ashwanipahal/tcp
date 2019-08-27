@@ -60,6 +60,7 @@ class LoginSection extends PureComponent<Props> {
       resetForm,
       resetForgotPasswordErrorResponse,
       navigation,
+      variation,
     } = this.props;
 
     const { resetPassword, showModal } = this.state;
@@ -67,7 +68,7 @@ class LoginSection extends PureComponent<Props> {
       <View>
         {!resetPassword && (
           <Fragment>
-            <LoginTopSection labels={labels} />
+            <LoginTopSection variation={variation} labels={labels} />
             <LoginForm
               onSubmit={onSubmit}
               labels={labels}
@@ -76,6 +77,7 @@ class LoginSection extends PureComponent<Props> {
               showRecaptcha={showRecaptcha}
               showForgotPasswordForm={this.showForgotPassword}
               resetForm={resetForm}
+              variation={variation}
             />
           </Fragment>
         )}
