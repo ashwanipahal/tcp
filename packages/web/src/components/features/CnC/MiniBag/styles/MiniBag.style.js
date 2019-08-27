@@ -9,7 +9,9 @@ export const modalStyles = css`
     transform: none;
     box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
     width: 480px;
-    padding: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
   }
   .Modal_Heading {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
