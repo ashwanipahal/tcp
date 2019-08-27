@@ -152,9 +152,7 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
         lineHeight="normal"
         onClick={[Function]}
         textAlign="left"
-      >
-        Track Order
-      </Styled(BodyCopy)>
+      />
     </div>
   </div>
 </div>
@@ -312,9 +310,7 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
         lineHeight="normal"
         onClick={[Function]}
         textAlign="left"
-      >
-        Track Order
-      </Styled(BodyCopy)>
+      />
     </div>
   </div>
 </div>

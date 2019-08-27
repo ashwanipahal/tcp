@@ -15,6 +15,7 @@ import {
   getLabelsProductListing,
   getLongDescription,
 } from './ProductListing.selectors';
+import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -57,7 +58,7 @@ function mapStateToProps(state) {
   return {
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
-    currentNavIds: state.ProductListing.currentNavigationIds,
+    currentNavIds: getCategoryId(state),
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
@@ -66,6 +67,7 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    isPlcc: isPlccUser(state),
   };
 }
 

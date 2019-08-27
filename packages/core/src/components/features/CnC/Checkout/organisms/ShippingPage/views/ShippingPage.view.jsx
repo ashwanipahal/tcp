@@ -60,7 +60,7 @@ export default class ShippingPage extends React.PureComponent {
 
   submitShippingData = data => {
     // console.log(data);
-    const { address, shipmentMethods, smsSignUp } = data;
+    const { address, shipmentMethods, smsSignUp = {} } = data;
 
     // const addAddressData = {
     //   applyToOrder: true,

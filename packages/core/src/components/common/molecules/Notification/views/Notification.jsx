@@ -5,7 +5,14 @@ import styles from '../Notification.style';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
-const Notification = ({ className, status, message }) => {
+/**
+ *
+ * @param {String} className -  classname for the parent container
+ * @param {String} status - to show error or success message
+ * @param {String} message - error message
+ * @param {node} children - notification child nodes.
+ */
+const Notification = ({ className, status, message, children }) => {
   const successIcon = getIconPath('circle-check-fill');
   const errorIcon = getIconPath('circle-error-fill');
   return (
@@ -15,8 +22,9 @@ const Notification = ({ className, status, message }) => {
         src={status === 'success' ? successIcon : errorIcon}
         className="elem-mr-MED"
       />
-      <BodyCopy fontSize="fs14" fontWeight="extrabold">
+      <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
         {message}
+        {children}
       </BodyCopy>
     </div>
   );
@@ -26,10 +34,12 @@ Notification.propTypes = {
   className: PropTypes.string,
   status: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 Notification.defaultProps = {
   className: '',
+  children: null,
 };
 
 export default withStyles(Notification, styles);

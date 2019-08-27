@@ -187,12 +187,15 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             </p>
           </div>
         ) : (
-          <Image
-            data-locator={getLocator('global_favorite_button')}
-            alt="Add-to-favorite"
-            className={className}
-            src={getIconPath('add-to-favorite')}
-          />
+          <button class="clear-button">
+            <Image
+              data-locator={getLocator('global_favorite_button')}
+              alt="Add-to-favorite"
+              title="addToFavorite"
+              className={className}
+              src={getIconPath('add-to-favorite')}
+            />
+          </button>
         )}
       </div>
     );
@@ -220,7 +223,10 @@ export function BadgeItem(props) {
 export function PromotionalMessage(props) {
   const { message } = props;
   return (
-    <div
+    <BodyCopy
+      fontSize={['fs10', 'fs12', 'fs14']}
+      fontWeight={['extrabold', 'semibold', 'semibold']}
+      fontFamily="secondary"
       data-locator={getLocator('global_loyalty_text')}
       className="loyalty-text-container"
       dangerouslySetInnerHTML={{ __html: message }}
