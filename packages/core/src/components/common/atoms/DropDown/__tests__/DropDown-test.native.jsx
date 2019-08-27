@@ -10,6 +10,10 @@ describe('DropDown Test', () => {
     selectedValue: 'foo',
     onValueChange: jest.fn(),
     variation: 'primary',
+    itemStyle: {
+      color: 'foo',
+    },
+    heading: 'foo',
   };
 
   beforeEach(() => {
@@ -75,5 +79,22 @@ describe('DropDown Test', () => {
     const flatList = component.find('Styled(FlatList)');
     expect(flatList).toHaveLength(1);
     expect(flatList.props().ItemSeparatorComponent()).not.toBeNull();
+  });
+
+  it('test getDerivedStateFromProps', () => {
+    const state = {
+      selectedLabelState: 'abc',
+    };
+    const result = DropDownVanilla.getDerivedStateFromProps(props, state);
+    expect(result).toEqual({ selectedLabelState: 'foo' });
+  });
+
+  it('test getDerivedStateFromProps with id as value', () => {
+    const state = {
+      selectedLabelState: 'abc',
+    };
+    props.data = [{ displayName: 'foo', id: 'foo' }];
+    const result = DropDownVanilla.getDerivedStateFromProps(props, state);
+    expect(result).toEqual({ selectedLabelState: 'foo' });
   });
 });

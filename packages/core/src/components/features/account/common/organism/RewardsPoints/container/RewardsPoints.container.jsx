@@ -8,7 +8,7 @@ import {
   getCurrentPointsState,
   getTotalRewardsState,
   isPlccUser,
-} from '../../../../LoginPage/container/LoginPage.selectors';
+} from '../../../../User/container/User.selectors';
 
 /**
  * @function RewardsPointsContainer The RewardsPointsContainer component is the main container for the Rewards Points Container section

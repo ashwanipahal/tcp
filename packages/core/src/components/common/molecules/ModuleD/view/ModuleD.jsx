@@ -6,7 +6,7 @@ import config from '../config';
 import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 type Props = {
   className: string,
@@ -115,7 +115,7 @@ const ModuleD = (props: Props) => {
                       to={item.link.url}
                       target={item.link.target}
                       title={item.link.title}
-                      data-locator={`${getLocator('moduleD_textlink')}${index + 1}`}
+                      dataLocator={`${getLocator('moduleD_textlink')}${index + 1}`}
                     >
                       {item.link.text}
                     </Anchor>
@@ -142,5 +142,5 @@ const ModuleD = (props: Props) => {
   );
 };
 
-export default errorBoundary(withStyles(ModuleD, style));
+export default withStyles(errorBoundary(ModuleD), style);
 export { ModuleD as ModuleDVanilla };

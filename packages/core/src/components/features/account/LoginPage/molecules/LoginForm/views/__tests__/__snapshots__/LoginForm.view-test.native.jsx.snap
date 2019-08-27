@@ -62,52 +62,70 @@ exports[`LoginForm component should renders correctly 1`] = `
     name="emailAddress"
     type="text"
   />
-  <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "ariaLabel": "input",
-          "dataLocator": "input-field",
-          "enableSuccessCheck": false,
-          "id": "input",
-          "keyboardType": "default",
-          "label": "input",
-          "meta": Object {
-            "error": "",
-            "touched": "",
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
           },
-          "secureTextEntry": false,
-          "showErrorIcon": true,
-          "type": "text",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(TextBox)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
     ",
-            "
+              "
   ",
-            [Function],
-            ";
+              [Function],
+              ";
 ",
-            ";
+              ";
   ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
       }
-    }
-    dataLocator="password"
-    id="password"
-    name="password"
-    secureTextEntry={true}
-    type="text"
-  />
+      dataLocator="password"
+      id="password"
+      name="password"
+      secureTextEntry={true}
+      type="password"
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        dataLocator=""
+        fontFamily="secondary"
+        fontSizeVariation="small"
+        locator=""
+        noLink={true}
+        onPress={[Function]}
+        text="show"
+        to="/#"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
   <View
     style={
       Object {
@@ -120,19 +138,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       dataLocator="rememberMe"
       disabled={false}
       name="userTouchId"
-      rightText="User Touch ID"
-    />
-    <Field
-      component={[Function]}
-      dataLocator="savePlcc"
-      disabled={false}
-      marginTop={13}
-      name="savePlcc"
     />
   </View>
   <Styled(CustomButton)
     buttonVariation="variable-width"
-    color="#FFFFFF"
+    color="#fff"
     customStyle={
       Object {
         "marginTop": 30,
@@ -142,11 +152,13 @@ exports[`LoginForm component should renders correctly 1`] = `
     fill="BLUE"
     fullWidth=""
     locator=""
+    onPress={[Function]}
     text=""
     url=""
   />
   <Styled(Anchor)
     anchorVariation="secondary"
+    class="underlink"
     customStyle={
       Object {
         "marginTop": 10,
@@ -156,6 +168,7 @@ exports[`LoginForm component should renders correctly 1`] = `
     locator=""
     onPress={[Function]}
     text=""
+    underlineBlue={true}
     visible={false}
   />
   <Styled(LineComp)

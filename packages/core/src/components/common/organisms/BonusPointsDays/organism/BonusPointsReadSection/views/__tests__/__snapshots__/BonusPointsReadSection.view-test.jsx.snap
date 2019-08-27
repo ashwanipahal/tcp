@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BonusPointsReadSection should render correctly 1`] = `
+<Styled(BodyCopy)
+  className=" elem-pt-LRG"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="bonusPointDayHeading elem-mb-XS"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      BONUS POINTS DAY
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
+      fontSizeVariation="large"
+      onClick={[Function]}
+      underline={true}
+    >
+      details
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    You have 1 days left
+    <span
+      className="dot filled elem-ml-XS"
+      data-locator="accountoverview-myplacerewatdstile-bonuspointdots"
+    />
+    <span
+      className="dot elem-ml-XS"
+      data-locator="accountoverview-myplacerewatdstile-bonuspointdots"
+    />
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

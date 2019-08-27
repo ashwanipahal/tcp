@@ -102,6 +102,18 @@ const LeftMargin = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
+const AddressLabelsPrimary = styled.View`
+  flex-basis: 60%;
+  margin-right: 0;
+  margin-left: auto;
+`;
+
+const ModalViewWrapper = styled.View`
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export {
   HeadingTextStyle,
   WrapperStyle,
@@ -122,4 +134,6 @@ export {
   AddressLinks,
   AddressLinkLeftMargin,
   LeftMargin,
+  AddressLabelsPrimary,
+  ModalViewWrapper,
 };

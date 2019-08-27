@@ -18,9 +18,12 @@ exports[`CardList Component should render correctly 1`] = `
     }
   }
   onGetBalanceCard={null}
+  openUpdateModal={null}
+  setCardHandler={[Function]}
   setDefaultPaymentMethod={[MockFunction]}
   setSelectedCard={null}
   toggleModal={null}
+  toggleRecaptchaModal={null}
 >
   <Styled(Text) />
   <Styled(View)>
@@ -41,6 +44,7 @@ exports[`CardList Component should render correctly 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={[Function]}
       text=""
       url=""
     />
@@ -92,9 +96,12 @@ exports[`CardList Component should render correctly if list is present 1`] = `
     }
   }
   onGetBalanceCard={null}
+  openUpdateModal={null}
+  setCardHandler={[Function]}
   setDefaultPaymentMethod={[MockFunction]}
   setSelectedCard={null}
   toggleModal={null}
+  toggleRecaptchaModal={null}
 >
   <Styled(Text) />
   <Styled(View)>
@@ -106,6 +113,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={[Function]}
       text=""
       url=""
     />
@@ -150,6 +158,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       }
     }
     onGetBalanceCard={null}
+    openUpdateModal={null}
     persistentSubmitErrors={false}
     pure={true}
     setDefaultPaymentMethod={[MockFunction]}
@@ -160,6 +169,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
     shouldWarn={[Function]}
     submitAsSideEffect={false}
     toggleModal={null}
+    toggleRecaptchaModal={null}
     touchOnBlur={true}
     touchOnChange={false}
     updateUnregisteredFields={false}

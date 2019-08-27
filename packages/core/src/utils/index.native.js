@@ -12,7 +12,13 @@ export {
   setValueInAsyncStorage,
   validateExternalUrl,
   resetNavigationStack,
+  createAPIConfig,
+  switchAPIConfig,
+  updateCurrentBrand,
+  getCurrentBrand,
 } from './utils.app';
+
+export { default, getSiteId } from './utils.app';
 
 export {
   isServer,
@@ -22,5 +28,8 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
-  createAPIConfig,
+  resetApiConfig,
+  bindAllClassMethodsToThis,
+  getAddressFromPlace,
+  formatAddress,
 } from './utils';

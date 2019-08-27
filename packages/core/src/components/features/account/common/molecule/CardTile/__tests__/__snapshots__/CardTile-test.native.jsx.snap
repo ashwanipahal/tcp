@@ -135,11 +135,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -147,7 +147,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -206,7 +206,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -294,11 +294,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -306,7 +306,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -417,64 +417,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
-    <Field
-      className="visibility-recaptcha"
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      data-locator="gift-card-recaptchcb"
-      id="recaptchaToken"
-      label=""
-      name="recaptchaToken"
-      title=""
-      type="hidden"
-    />
-  </View>
+  <View />
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
@@ -484,7 +427,8 @@ exports[`CardTile should render correctly with gift card 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
-      text=""
+      onPress={[Function]}
+      text="check balance captcha"
       url=""
     />
     <Styled(View)>
@@ -492,7 +436,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcarddeletelink"
+        dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -602,61 +546,11 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
-    <Field
-      className="visibility-recaptcha"
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      data-locator="gift-card-recaptchcb"
-      id="recaptchaToken"
-      label=""
-      name="recaptchaToken"
-      title=""
-      type="hidden"
+    <RecaptchaModal
+      onClose={[Function]}
+      onMessage={[Function]}
+      setRecaptchaModalMountedState={true}
+      toggleRecaptchaModal={[Function]}
     />
   </View>
   <Styled(View)>
@@ -668,7 +562,8 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
-      text=""
+      onPress={[Function]}
+      text="check balance captcha"
       url=""
     />
     <Styled(View)>
@@ -676,7 +571,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcarddeletelink"
+        dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -735,7 +630,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -823,11 +718,11 @@ exports[`CardTile should render correctly with master card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -835,7 +730,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -945,61 +840,11 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
-    <Field
-      className="visibility-recaptcha"
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      data-locator="gift-card-recaptchcb"
-      id="recaptchaToken"
-      label=""
-      name="recaptchaToken"
-      title=""
-      type="hidden"
+    <RecaptchaModal
+      onClose={[Function]}
+      onMessage={[Function]}
+      setRecaptchaModalMountedState={true}
+      toggleRecaptchaModal={[Function]}
     />
   </View>
   <Styled(View)>
@@ -1011,7 +856,8 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
-      text=""
+      onPress={[Function]}
+      text="check balance captcha"
       url=""
     />
     <Styled(View)>
@@ -1019,7 +865,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcarddeletelink"
+        dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -1078,7 +924,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -1158,11 +1004,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1170,7 +1016,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -1289,7 +1135,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-venmodeletelink"
+        dataLocator="payment-venmodeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -1348,7 +1194,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -1436,11 +1282,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1448,7 +1294,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}

@@ -2,11 +2,11 @@ import React from 'react';
 import { change, Field } from 'redux-form';
 import { BodyCopy, Col, Row, SelectBox, TextBox } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
-import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from '../../../../account/common/organism/AddressForm/CountriesAndStates.constants';
+} from '@tcp/core/src/components/common/organisms/AddressForm/CountriesAndStates.constants';
+import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import { getSiteId } from '../../../../../../utils/utils.web';
 
 class ContactInformationFormWrapper extends React.Component {

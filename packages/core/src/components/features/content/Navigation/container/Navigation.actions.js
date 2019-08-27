@@ -1,4 +1,10 @@
-import NAVIGATION_CONSTANTS from './Navigation.constants';
+import NAVIGATION_CONSTANTS, { FETCH_NAVIGATION_DATA } from './Navigation.constants';
+
+export const fetchNavigationData = () => {
+  return {
+    type: FETCH_NAVIGATION_DATA,
+  };
+};
 
 export const loadNavigationData = payload => {
   return {
@@ -41,5 +47,24 @@ export const hideL3Drawer = payload => {
   return {
     payload,
     type: NAVIGATION_CONSTANTS.HIDE_L3_DRAWER,
+  };
+};
+
+export const hideNavigationFooter = () => {
+  return {
+    type: NAVIGATION_CONSTANTS.HIDE_NAVIGATION_FOOTER,
+  };
+};
+
+export const showNavigationFooter = () => {
+  return {
+    type: NAVIGATION_CONSTANTS.SHOW_NAVIGATION_FOOTER,
+  };
+};
+
+export const removeL1Focus = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.REMOVE_L1_FOCUS,
   };
 };

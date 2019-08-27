@@ -28,6 +28,7 @@ const AddedToBag = ({
   labels,
   quantity,
   handleContinueShopping,
+  handleCartCheckout,
 }: Props) => {
   return (
     <Modal
@@ -48,7 +49,7 @@ const AddedToBag = ({
       <div className="addedToBagWrapper">
         <ProductInformationView data={addedToBagData} labels={labels} quantity={quantity} />
         <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
-        <AddedToBagActions labels={labels} />
+        <AddedToBagActions labels={labels} handleCartCheckout={handleCartCheckout} />
         <BossBannerView labels={labels} />
         <div className="continue-shopping">
           <Anchor
@@ -58,7 +59,7 @@ const AddedToBag = ({
             handleLinkClick={handleContinueShopping}
             noLink
             to=""
-            data-locator="addedToBag-continueShopping"
+            dataLocator="addedToBag-continueShopping"
           >
             {labels.continueShopping}
           </Anchor>
@@ -69,6 +70,7 @@ const AddedToBag = ({
 };
 AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

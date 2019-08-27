@@ -1,66 +1,56 @@
 const buildQuery = ({ slot, contentId }) => `
   ${slot}: moduleById(id: "${contentId}") {
-    contentId
+	contentId
     name
     type
     set {
-      key
       val
+      key
     }
     composites {
-      masonryGrid {
-        promoBanner {
-          textItems {
-            text
-            style
-          }
-          link {
-            url
-            title
-            target
-            external
-          }
-        }
-        mediaLinkedList {
-          image {
-            url
-            title
-            alt
-            crop_d
-            crop_t
-            crop_m
-          }
-          link {
-            url
-            text
-            title
-            target
-          }
-        }
-        singleCTAButton {
-          url
-          text
-          title
-          target
-          external
-        }
-      }
-
       headerText {
         textItems {
           text
           style
         }
+        icon {
+          placement
+          icon
+        }
         link {
           url
-          text
           title
-          external
           target
         }
       }
+      promoBanner {
+        link {
+          url
+          title
+        }
+        textItems {
+          text
+          style
+        }
+      }
+      ctaItems {
+        button {
+          url
+          text
+          target
+          title
+        }
+        image {
+          url
+          title
+          alt
+          crop_d
+          crop_t
+          crop_m
+        }
+      }
     }
-  }
+}
 `;
 
 export default {

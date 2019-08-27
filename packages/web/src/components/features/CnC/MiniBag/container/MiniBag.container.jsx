@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import {
   getGrandTotal,
   getCurrencySymbol,
-} from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger/container/orderLedger.selector';
+} from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import MiniBagView from '../views/MiniBag.view';
 import { getLabelsMiniBag, getTotalItemCount } from './MiniBag.selectors';
 import {
   getCurrentPointsState,
   getTotalRewardsState,
-} from '../../../../../../../core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+} from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
 
 // @flow
 type Props = {

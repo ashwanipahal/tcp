@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
+  position: relative;
   .footer_top_candidate_a .flex-align-center {
     align-items: center;
   }
@@ -79,6 +80,12 @@ export default css`
     @media ${props => props.theme.mediaQuery.largeMax} and ${props => props.theme.mediaQuery.large}{
       margin: 0 auto;
       flex-direction: column;
+    }
+  }
+
+  &.navigation-footer {
+    .reference-id {
+      display: none;
     }
   }
 

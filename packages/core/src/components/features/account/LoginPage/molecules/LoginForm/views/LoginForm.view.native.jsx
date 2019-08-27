@@ -1,10 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
+import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import { PropTypes } from 'prop-types';
-import { noop } from 'lodash';
+import { noop, get } from 'lodash';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { FormStyle } from '../styles/LoginForm.style.native';
+import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -12,6 +14,8 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+
+const colorPallete = createThemeColorPalette();
 
 const styles = {
   loginButtonStyle: {
@@ -25,6 +29,7 @@ const styles = {
   forgotPasswordStyle: {
     marginTop: 10,
   },
+
   inputCheckBoxStyle: {
     width: '90%',
   },
@@ -36,72 +41,154 @@ const styles = {
  * @desc This method based on the props generate icon component.
  */
 
-export const LoginForm = props => {
-  const { labels, handleSubmit, onSubmit } = props;
+class LoginForm extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: 'password',
+      setRecaptchaModalMountedState: false,
+    };
+  }
 
-  const showForgotPassword = () => {
-    const { showForgotPasswordForm, resetForm } = props;
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
+    });
+  };
+
+  onMessage = event => {
+    const { handleSubmit, onSubmit, change } = this.props;
+    if (event && event.nativeEvent.data) {
+      const value = get(event, 'nativeEvent.data', '');
+      change('recaptchaToken', value);
+      handleSubmit(data => {
+        const { emailAddress, password, rememberMe, savePlcc, userTouchId } = data;
+        const LoginData = {
+          emailAddress,
+          password,
+          rememberMe,
+          savePlcc,
+          userTouchId,
+          recaptchaToken: value,
+        };
+        onSubmit(LoginData);
+      })();
+
+      this.setRecaptchaModalMountState();
+    }
+  };
+
+  onClose = () => {
+    this.setRecaptchaModalMountState();
+  };
+
+  handleLoginClick = e => {
+    const { handleSubmit, invalid, showRecaptcha } = this.props;
+    e.preventDefault();
+    if (!invalid && showRecaptcha) {
+      this.setRecaptchaModalMountState();
+    } else {
+      handleSubmit();
+    }
+  };
+
+  showForgotPassword = () => {
+    const { showForgotPasswordForm, resetForm } = this.props;
     resetForm();
     showForgotPasswordForm();
   };
 
-  return (
-    <View {...props}>
-      <Field
-        label={labels.login.lbl_login_email}
-        name="emailAddress"
-        id="emailAddress"
-        type="text"
-        autoCapitalize="none"
-        component={TextBox}
-        dataLocator="emailAddress"
-      />
-      <Field
-        label={labels.login.lbl_login_password}
-        name="password"
-        id="password"
-        type="text"
-        component={TextBox}
-        dataLocator="password"
-        secureTextEntry
-      />
-      <View style={styles.inputCheckBoxStyle}>
-        <Field
-          name="userTouchId"
-          component={InputCheckbox}
-          dataLocator="rememberMe"
-          disabled={false}
-          rightText="User Touch ID"
-        />
-        <Field
-          name="savePlcc"
-          component={InputCheckbox}
-          dataLocator="savePlcc"
-          disabled={false}
-          rightText={labels.login.lbl_login_saveMyPlace}
-          marginTop={13}
-        />
-      </View>
+  changeType = e => {
+    e.preventDefault();
+    const { type } = this.state;
+    this.setState({
+      type: type === 'password' ? 'text' : 'password',
+    });
+  };
 
-      <CustomButton
-        color="#FFFFFF"
-        fill="BLUE"
-        text={labels.login.lbl_login_loginCTA}
-        buttonVariation="variable-width"
-        customStyle={styles.loginButtonStyle}
-        onPress={handleSubmit(onSubmit)}
-      />
-      <Anchor
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        text={labels.login.lbl_login_forgetPasswordCTA}
-        customStyle={styles.forgotPasswordStyle}
-        onPress={showForgotPassword}
-      />
-      <LineComp marginTop={28} />
-    </View>
-  );
-};
+  render() {
+    const { labels, showRecaptcha } = this.props;
+    const { type, setRecaptchaModalMountedState } = this.state;
+    return (
+      <View {...this.props}>
+        <Field
+          label={labels.login.lbl_login_email}
+          name="emailAddress"
+          id="emailAddress"
+          type="text"
+          autoCapitalize="none"
+          component={TextBox}
+          dataLocator="emailAddress"
+        />
+        <ShowHideWrapper>
+          <Field
+            label={labels.login.lbl_login_password}
+            name="password"
+            id="password"
+            type={type}
+            component={TextBox}
+            dataLocator="password"
+            secureTextEntry={type === 'password'}
+          />
+          <HideShowFieldWrapper>
+            <Anchor
+              fontSizeVariation="small"
+              fontFamily="secondary"
+              underline
+              anchorVariation="primary"
+              onPress={this.changeType}
+              noLink
+              to="/#"
+              dataLocator=""
+              text={type === 'password' ? 'show' : 'hide'}
+            />
+          </HideShowFieldWrapper>
+        </ShowHideWrapper>
+        <View style={styles.inputCheckBoxStyle}>
+          <Field
+            name="userTouchId"
+            component={InputCheckbox}
+            dataLocator="rememberMe"
+            disabled={false}
+            rightText={labels.login.lbl_login_touch_id}
+          />
+        </View>
+
+        <React.Fragment>
+          {setRecaptchaModalMountedState && showRecaptcha && (
+            <RecaptchaModal
+              onMessage={this.onMessage}
+              setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+              toggleRecaptchaModal={this.setRecaptchaModalMountState}
+              onClose={this.onClose}
+            />
+          )}
+        </React.Fragment>
+        <CustomButton
+          color={colorPallete.white}
+          fill="BLUE"
+          text={labels.login.lbl_login_loginCTA}
+          buttonVariation="variable-width"
+          customStyle={styles.loginButtonStyle}
+          onPress={this.handleLoginClick}
+        />
+
+        <Anchor
+          style={styles.underline}
+          class="underlink"
+          underlineBlue
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          text={labels.login.lbl_login_forgetPasswordCTA}
+          customStyle={styles.forgotPasswordStyle}
+          onPress={this.showForgotPassword}
+        />
+        <LineComp marginTop={28} />
+      </View>
+    );
+  }
+}
 LoginForm.propTypes = {
   labels: PropTypes.shape({
     login: {
@@ -117,7 +204,6 @@ LoginForm.propTypes = {
   }),
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
-  loginErrorMessage: PropTypes.string,
   showForgotPasswordForm: PropTypes.func.isRequired,
   resetForm: PropTypes.func.isRequired,
 };
@@ -137,15 +223,10 @@ LoginForm.defaultProps = {
   },
   handleSubmit: noop,
   onSubmit: noop,
-  loginErrorMessage: '',
 };
 
 const validateMethod = createValidateMethod(
-  getStandardConfig([
-    { emailAddress: 'emailAddressNoAsync' },
-    { password: 'legacyPassword' },
-    'recaptchaToken',
-  ])
+  getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, { password: 'legacyPassword' }])
 );
 
 export default reduxForm({

@@ -4,27 +4,20 @@ import PropTypes from 'prop-types';
 import { style } from '../ModuleA.style';
 import { Col, Row } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
-import errorBoundary from '../../../hoc/errorBoundary';
+import errorBoundary from '../../../hoc/withErrorBoundary';
 
 import ModuleAGymCarousel from '../../ModuleAGymCarousel';
 import ModuleATcpCarousel from '../../ModuleATcpCarousel';
 
-// TODO: keys will be changed once we get the actual data from CMS
 const ctaTypes = {
-  stackedCTAList: 'stackedCTAList',
-  linkCTAList: 'linkCTAList',
-  scrollCTAList: 'scrollCTAList',
-  imageCTAList: 'imageCTAList',
+  stackedCTAButtons: 'stackedCTAList',
+  linkList: 'linkCTAList',
+  CTAButtonCarousel: 'scrollCTAList',
+  divImageCTACarousel: 'imageCTAList',
 };
 
 const ModuleA = props => {
-  const {
-    className,
-    variant,
-    set: [set = {}],
-  } = props;
-
-  const ctaType = ctaTypes[set.val];
+  const { className, variant, ctaType, ...others } = props;
 
   return (
     <Row className={`${className} moduleA`} fullBleed={{ small: true, medium: true, large: false }}>
@@ -35,10 +28,10 @@ const ModuleA = props => {
           large: 12,
         }}
       >
-        {variant === 'tcp' ? (
-          <ModuleATcpCarousel ctaType={ctaType} {...props} />
+        {variant === 'gymboree' ? (
+          <ModuleAGymCarousel ctaType={ctaTypes[ctaType]} {...others} />
         ) : (
-          <ModuleAGymCarousel ctaType={ctaType} {...props} />
+          <ModuleATcpCarousel ctaType={ctaTypes[ctaType]} {...others} />
         )}
       </Col>
     </Row>
@@ -47,15 +40,15 @@ const ModuleA = props => {
 
 ModuleA.defaultProps = {
   className: '',
-  variant: 'tcp',
-  set: [],
+  variant: 'gymboree',
+  ctaType: 'stackedCTAButtons',
 };
 
 ModuleA.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.string,
-  set: PropTypes.arrayOf(PropTypes.shape({})),
+  ctaType: PropTypes.string,
 };
 
-export default errorBoundary(withStyles(ModuleA, style));
+export default withStyles(errorBoundary(ModuleA), style);
 export { ModuleA as ModuleAVanilla };

@@ -3,6 +3,7 @@ import { getIconPath } from '../../../../utils';
 
 const downArrowIcon = getIconPath('down_arrow_icon');
 
+const styleBottomSpacing = '26px';
 const selectStyles = css`
   position: relative;
   display: block;
@@ -18,13 +19,13 @@ const selectStyles = css`
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
         : ''};
     border-radius: 0;
-    color: ${props => props.theme.colors.TEXTBOX.COLOR};
-    font-size: ${props => props.theme.fonts.fontSize.textbox_input}px;
+    color: ${props =>
+      props.disabled ? props.theme.colorPalette.gray[600] : props.theme.colors.TEXTBOX.COLOR};
+    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
-      ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding: ${styleBottomSpacing} 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: 100%;
 
     ${props =>
@@ -44,18 +45,19 @@ const selectStyles = css`
     top: 0;
   }
 
-  .select__error {
+  .SelectBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
+
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

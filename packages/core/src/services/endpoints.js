@@ -1,4 +1,4 @@
-import { API_METHODS } from './api.constants';
+import { API_METHODS, PRODUCTS_URI } from './api.constants';
 
 const endpoints = {
   graphQL: {
@@ -70,6 +70,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
   },
+  getListofDefaultWishlist: {
+    method: API_METHODS.GET,
+    URI: 'v2/wishlist/getListOfDefaultWishlist',
+  },
   getCouponList: {
     method: API_METHODS.GET,
     URI: 'v2/account/getAddressFromBook',
@@ -87,13 +91,25 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/bonusDay',
   },
+  applyBonusPoints: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/bonusDay',
+  },
   addCoupons: {
     method: 'post',
     URI: 'v2/checkout/coupons',
   },
+  addAirmilesBanner: {
+    method: 'post',
+    URI: 'v2/wallet/updateAirMilesInfo',
+  },
   requestPassword: {
     method: 'put',
     URI: 'v2/account/resetPassword',
+  },
+  updateProfileInfo: {
+    method: 'put',
+    URI: 'v2/account/updatesAccountDataForRegisteredUser',
   },
   getGifCardBalance: {
     method: API_METHODS.POST,
@@ -119,6 +135,34 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: 'v2/account/deleteAddressDetails',
   },
+  addShipToStore: {
+    method: API_METHODS.POST,
+    URI: 'v2/cart/addShipToStore',
+  },
+  getProductDetails: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS,
+    unbxd: true,
+    unbxdCustom: true,
+  },
+  getProductsByOutfits: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_OUTFITS,
+  },
+  getProductviewbyCategory: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_VIEW_BY_CATEGORY,
+  },
+  getProductsBySearchTerm: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
+  },
+  getProductInfoById: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
+  },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
     URI: 'v2/account/deleteCreditCardDetails',
@@ -127,7 +171,7 @@ const endpoints = {
     method: 'get',
     domain: '://search.unbxd.io',
     // URI:
-    //   '/8870d5f30d9bebafac29a18cd12b801d/childrensplace-com702771523455856/category?start=0&rows=20&variants=true&variants.count=100&version=V2&facet.multiselect=true&selectedfacet=true&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant,%20low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price, TcpBossProductDisabled, TcpBossCategoryDisabled&pagetype=boolean&p-id=categoryPathId:%2247511%3E49005%22&sort=sort_49005%20asc,pop_score%20desc%27',
+    //   '/8eb8cb308b493ec0a6d92bff22ef8df3/childrensplace-com702771523455856/category?start=0&rows=20&variants=true&variants.count=100&version=V2&facet.multiselect=true&selectedfacet=true&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant,%20low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price, TcpBossProductDisabled, TcpBossCategoryDisabled&pagetype=boolean&p-id=categoryPathId:%2247511%3E49005%22&sort=sort_49005%20asc,pop_score%20desc%27',
     URI:
       '/8eb8cb308b493ec0a6d92bff22ef8df3/qa1-childrensplace-com702771542012808/search?variants=true&variants.count=100&version=V2&rows=20&pagetype=boolean&q=2092425&promotion=false&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant,%20low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price,long_product_title&uid=uid-1562746344280-64813',
   },
@@ -152,6 +196,26 @@ const endpoints = {
   getAllOffers: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
+  },
+  giftOptionsCmd: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/giftOptionsCmd',
+  },
+  orderLookUp: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/orderLookUp',
+  },
+  getUnqualifiedItems: {
+    method: 'GET',
+    URI: 'v2/cart/getUnqualifiedItems',
+  },
+  getShipmentMethods: {
+    method: 'GET',
+    URI: 'v2/checkout/getShipmentMethods',
+  },
+  updateShippingMethodSelection: {
+    method: 'PUT',
+    URI: 'v2/checkout/updateShippingMethodSelection',
   },
 };
 export default endpoints;
