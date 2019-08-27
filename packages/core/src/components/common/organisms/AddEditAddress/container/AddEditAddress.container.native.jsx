@@ -27,8 +27,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     addressList: PropTypes.shape({}),
     address: PropTypes.shape({}),
     labels: PropTypes.shape({
-      addressFormLabels: PropTypes.string,
-      addressBook: PropTypes.string,
+      addressFormLabels: PropTypes.shape({}),
+      addressBook: PropTypes.shape({}),
     }),
     backToAddressBookClick: PropTypes.func,
     onCancel: PropTypes.func,
@@ -45,8 +45,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     addressList: {},
     address: {},
     labels: {
-      addressFormLabels: '',
-      addressBook: '',
+      addressFormLabels: {},
+      addressBook: {},
     },
     backToAddressBookClick: () => {},
     onCancel: () => {},
