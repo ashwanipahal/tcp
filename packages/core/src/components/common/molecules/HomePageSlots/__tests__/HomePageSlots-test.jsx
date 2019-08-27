@@ -1,88 +1,85 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import HomePageSlot from '..';
+import HomePageSlots from '..';
 
-const slotsCmsDataMock = {
-  slot_2: {
-    name: 'moduleB',
+const slotsCmsDataMock = [
+  {
+    contentId: 'id-3',
+    data: { slotData: 'slot C Data' },
+    moduleName: 'moduleC',
+    name: 'slot_3',
   },
-  slot_3: {
-    name: 'moduleC',
+  {
+    contentId: 'id-1',
+    data: { slotData: 'slot A Data' },
+    moduleName: 'moduleA',
+    name: 'slot_1',
   },
-  slot_1: {
-    name: 'moduleA',
+  {
+    contentId: 'id-2',
+    data: { slotData: 'slotB Data' },
+    moduleName: 'moduleB',
+    name: 'slot_2',
   },
-};
+];
 
 const ModuleA = () => <div>Module A</div>;
 const ModuleB = () => <div>Module B</div>;
 const ModuleC = () => <div>Module C</div>;
 const ModuleX = () => <div>Module X</div>;
 
-const modulesDataMock = [
-  {
-    name: 'moduleB',
-    component: ModuleB,
-  },
-  {
-    name: 'moduleC',
-    component: ModuleC,
-  },
-  {
-    name: 'moduleA',
-    component: ModuleA,
-  },
-];
+const modulesDataMock = {
+  moduleA: ModuleA,
+  moduleB: ModuleB,
+  moduleC: ModuleC,
+};
 
 const snapshot = `
-      Array [
-        <ModuleA
-          key="moduleA"
-          name="moduleA"
-        >
-          <div>
-            Module A
-          </div>
-        </ModuleA>,
-        <ModuleB
-          key="moduleB"
-          name="moduleB"
-        >
-          <div>
-            Module B
-          </div>
-        </ModuleB>,
-        <ModuleC
-          key="moduleC"
-          name="moduleC"
-        >
-          <div>
-            Module C
-          </div>
-        </ModuleC>,
-      ]
-    `;
+Array [
+  <ModuleA
+    key="id-1"
+    slotData="slot A Data"
+  >
+    <div>
+      Module A
+    </div>
+  </ModuleA>,
+  <ModuleB
+    key="id-2"
+    slotData="slotB Data"
+  >
+    <div>
+      Module B
+    </div>
+  </ModuleB>,
+  <ModuleC
+    key="id-3"
+    slotData="slot C Data"
+  >
+    <div>
+      Module C
+    </div>
+  </ModuleC>,
+]
+`;
 
 describe('HomePageSlots component', () => {
-  it('Should renders slots according to the CMS Data', () => {
-    const component = mount(<HomePageSlot {...slotsCmsDataMock} modules={modulesDataMock} />);
+  it('Should renders slots according to the data', () => {
+    const component = mount(<HomePageSlots slots={slotsCmsDataMock} modules={modulesDataMock} />);
 
     expect(component.children()).toMatchInlineSnapshot(snapshot);
   });
 
   it('Should render slots even if the component is not available', () => {
     const component = mount(
-      <HomePageSlot
-        {...slotsCmsDataMock}
-        modules={[{ name: 'moduleX', component: ModuleX }, { name: 'moduleA', component: ModuleA }]}
-      />
+      <HomePageSlots slots={slotsCmsDataMock} modules={{ moduleX: ModuleX, moduleA: ModuleA }} />
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
         <ModuleA
-          key="moduleA"
-          name="moduleA"
+          key="id-1"
+          slotData="slot A Data"
         >
           <div>
             Module A
@@ -91,20 +88,25 @@ describe('HomePageSlots component', () => {
         `);
   });
 
-  it('Should render slots even if CMS does not send required slot', () => {
+  it('Should render slots even if data does not send required slot', () => {
     const component = mount(
-      <HomePageSlot
-        slot_2={{
-          name: 'moduleB',
-        }}
+      <HomePageSlots
+        slots={[
+          {
+            contentId: 'id-1',
+            data: { slotData: 'slot B Data' },
+            moduleName: 'moduleB',
+            name: 'slot_1',
+          },
+        ]}
         modules={modulesDataMock}
       />
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
       <ModuleB
-        key="moduleB"
-        name="moduleB"
+        key="id-1"
+        slotData="slot B Data"
       >
         <div>
           Module B
@@ -115,14 +117,89 @@ describe('HomePageSlots component', () => {
 
   it('Should render null if no slot match', () => {
     const component = mount(
-      <HomePageSlot
-        slot_2={{
-          name: 'moduleX',
-        }}
+      <HomePageSlots
+        slots={[
+          {
+            contentId: 'id-1',
+            data: { slotData: 'slot X Data' },
+            moduleName: 'moduleX',
+            name: 'slot_1',
+          },
+        ]}
         modules={modulesDataMock}
       />
     );
 
     expect(component.children()).toMatchInlineSnapshot(`null`);
+  });
+
+  it('Should render not render component if data is null or undefined', () => {
+    //  data prop is undefined in slots
+    const component = mount(
+      <HomePageSlots
+        slots={[
+          {
+            contentId: 'id-1',
+            moduleName: 'moduleA',
+            name: 'slot_1',
+          },
+        ]}
+        modules={modulesDataMock}
+      />
+    );
+
+    expect(component.children()).toMatchInlineSnapshot(`null`);
+  });
+
+  it('Should render null if there is blank slots data', () => {
+    const component = mount(<HomePageSlots slots={[]} modules={modulesDataMock} />);
+
+    expect(component.children()).toMatchInlineSnapshot(`null`);
+  });
+
+  it('Should verify if other props getting render in component', () => {
+    const component = mount(
+      <HomePageSlots
+        extraProp="extraProp"
+        slots={[
+          {
+            contentId: 'id-1',
+            data: { slotData: 'slot B Data' },
+            moduleName: 'moduleA',
+            name: 'slot_1',
+          },
+          {
+            contentId: 'id-2',
+            data: { slotData: 'slot A Data' },
+            moduleName: 'moduleB',
+            name: 'slot_2',
+          },
+        ]}
+        modules={modulesDataMock}
+      />
+    );
+
+    expect(component.children()).toMatchInlineSnapshot(`
+      Array [
+        <ModuleA
+          extraProp="extraProp"
+          key="id-1"
+          slotData="slot B Data"
+        >
+          <div>
+            Module A
+          </div>
+        </ModuleA>,
+        <ModuleB
+          extraProp="extraProp"
+          key="id-2"
+          slotData="slot A Data"
+        >
+          <div>
+            Module B
+          </div>
+        </ModuleB>,
+      ]
+      `);
   });
 });
