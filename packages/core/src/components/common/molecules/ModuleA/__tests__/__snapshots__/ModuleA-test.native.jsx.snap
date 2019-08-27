@@ -79,7 +79,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "ribbon_default_text",
@@ -161,7 +161,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "ribbon_default_text",
@@ -243,7 +243,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "ribbon_default_text",
@@ -325,7 +325,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
             ],
             "ribbonBanner": Array [
               Object {
-                "position": "right",
+                "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
                     "style": "ribbon_default_text",
