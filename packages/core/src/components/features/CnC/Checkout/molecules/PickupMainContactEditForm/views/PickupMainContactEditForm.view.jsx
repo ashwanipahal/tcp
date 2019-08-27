@@ -39,13 +39,13 @@ class PickupMainContactEditForm extends React.Component {
     const { isEditing, labels } = this.props;
     return isEditing ? (
       <div className="header">
-        <BodyCopy fontSize="fs36" fontFamily="primary" fontWeight="regular">
+        <BodyCopy fontSize="fs26" fontFamily="primary" fontWeight="regular">
           {labels.pickupContactText}
         </BodyCopy>
       </div>
     ) : (
       <div className="header">
-        <BodyCopy fontSize="fs36" fontFamily="primary" fontWeight="regular">
+        <BodyCopy fontSize="fs26" fontFamily="primary" fontWeight="regular">
           {labels.pickupContactText}
         </BodyCopy>
         <div className="EditAnchor">

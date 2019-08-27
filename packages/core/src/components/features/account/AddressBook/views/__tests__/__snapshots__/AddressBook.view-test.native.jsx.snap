@@ -3,10 +3,24 @@
 exports[`Native AddressBook component should renders correctly when addresses are not present 1`] = `
 <StyledNativeComponent
   addresses={Immutable.List []}
+  deleteModalMountedState={[Function]}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": undefined,
+      "_foldedDefaultProps": Object {
+        "addresses": Array [],
+        "deleteModalMountedState": [Function],
+        "labels": Object {
+          "addressBook": Object {
+            "ACC_LBL_ADDRESS_BOOK_HEADING": "",
+            "ACC_LBL_ADD_NEW_ADDRESS_CTA": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_MSG": "",
+          },
+        },
+        "onDefaultShippingAddressClick": [Function],
+        "setDeleteModalMountState": [Function],
+      },
       "attrs": Array [],
       "displayName": "Styled(AddressView)",
       "inlineStyle": InlineStyle {
@@ -28,6 +42,8 @@ exports[`Native AddressBook component should renders correctly when addresses ar
   }
   forwardedRef={null}
   labels={Object {}}
+  onDefaultShippingAddressClick={[Function]}
+  setDeleteModalMountState={[Function]}
 />
 `;
 
@@ -48,10 +64,24 @@ exports[`Native AddressBook component should renders correctly when addresses ar
       },
     ]
   }
+  deleteModalMountedState={[Function]}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": undefined,
+      "_foldedDefaultProps": Object {
+        "addresses": Array [],
+        "deleteModalMountedState": [Function],
+        "labels": Object {
+          "addressBook": Object {
+            "ACC_LBL_ADDRESS_BOOK_HEADING": "",
+            "ACC_LBL_ADD_NEW_ADDRESS_CTA": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_MSG": "",
+          },
+        },
+        "onDefaultShippingAddressClick": [Function],
+        "setDeleteModalMountState": [Function],
+      },
       "attrs": Array [],
       "displayName": "Styled(AddressView)",
       "inlineStyle": InlineStyle {
@@ -73,5 +103,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
   }
   forwardedRef={null}
   labels={Object {}}
+  onDefaultShippingAddressClick={[Function]}
+  setDeleteModalMountState={[Function]}
 />
 `;

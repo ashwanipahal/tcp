@@ -40,6 +40,13 @@ const setItemOOS = payload => {
   };
 };
 
+const setItemUnavailable = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE,
+    payload,
+  };
+};
+
 const openCheckoutConfirmationModal = () => {
   return {
     type: BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL,
@@ -100,4 +107,5 @@ export default {
   openCheckoutConfirmationModal,
   setItemOOS,
   setCartItemsUpdating,
+  setItemUnavailable,
 };

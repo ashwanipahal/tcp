@@ -83,7 +83,25 @@ const updateCartInfo = (cartInfo, isUpdateCartItems) => {
   return actions;
 };
 
+const hasPOBox = (addressLine1 = '', addressLine2 = '') => {
+  // some delimiter that will not allow them to match only if concatenated
+  const value = `${addressLine1}#${addressLine2}`;
+  // REVIEW: got the regex from: https://gist.github.com/gregferrell/7494667
+  // seems to cover most use cases; not in the mood to write it from scratch
+  return (
+    value.search(
+      /\bbox(?:\b$|([\s|-]+)?[0-9]+)|(p[-.\s]*o[-.\s]*|(post office|post)\s)b(\.|ox|in)?\b|(^p[.]?(o|b)[.]?$)/gim
+    ) >= 0
+  );
+};
+
+const isOrderHasPickup = cartItems => {
+  return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
+};
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
+  hasPOBox,
+  isOrderHasPickup,
 };

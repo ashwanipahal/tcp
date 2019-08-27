@@ -1,16 +1,18 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
-// @flow
+const colorPallete = createThemeColorPalette();
 
-type Props = {
-  obj: Object,
-  onPress: func,
-  checked: boolean,
-  index: number,
-};
-
-const LabeledRadioButton = ({ index, obj, onPress, checked }: Props) => {
+const LabeledRadioButton = ({
+  index,
+  obj,
+  onPress,
+  checked,
+  buttonInnerColor,
+  buttonOuterColor,
+}) => {
   return (
     <RadioButton labelHorizontal key={index}>
       {/*  You can set RadioButtonLabel before RadioButtonInput */}
@@ -20,10 +22,10 @@ const LabeledRadioButton = ({ index, obj, onPress, checked }: Props) => {
         isSelected={checked}
         onPress={onPress}
         borderWidth={1}
-        buttonInnerColor="#e74c3c"
-        buttonOuterColor="#2196f3"
-        buttonSize={40}
-        buttonOuterSize={80}
+        buttonInnerColor={buttonInnerColor}
+        buttonOuterColor={buttonOuterColor}
+        buttonSize={10}
+        buttonOuterSize={20}
         buttonStyle={{}}
       />
       <RadioButtonLabel
@@ -35,6 +37,24 @@ const LabeledRadioButton = ({ index, obj, onPress, checked }: Props) => {
       />
     </RadioButton>
   );
+};
+
+LabeledRadioButton.propTypes = {
+  obj: PropTypes.shape({}),
+  onPress: PropTypes.func,
+  checked: PropTypes.bool,
+  index: PropTypes.number,
+  buttonInnerColor: PropTypes.string,
+  buttonOuterColor: PropTypes.string,
+};
+
+LabeledRadioButton.defaultProps = {
+  obj: {},
+  onPress: () => {},
+  checked: false,
+  index: -1,
+  buttonInnerColor: colorPallete.black,
+  buttonOuterColor: colorPallete.black,
 };
 
 export default LabeledRadioButton;

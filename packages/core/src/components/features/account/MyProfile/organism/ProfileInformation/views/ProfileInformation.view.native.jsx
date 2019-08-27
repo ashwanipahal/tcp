@@ -9,10 +9,28 @@ import BirthdaySaving from '../../BirthdaySaving';
 import { StyledAnchorWrapper, AnchorLeftMargin } from '../../../../common/styledWrapper';
 import endpoints from '../../../../common/externalEndpoints';
 
-export const ProfileInformation = ({ labels, handleComponentChange }) => {
+export const ProfileInformation = ({
+  labels,
+  handleComponentChange,
+  profileCompletion,
+  defaultStore,
+  mailingAddress,
+  userBirthday,
+  userSurvey,
+  percentageIncrement,
+}) => {
   return (
     <>
-      <ProfileInfoActions labels={labels} handleComponentChange={handleComponentChange} />
+      <ProfileInfoActions
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+        profileCompletion={profileCompletion}
+        defaultStore={defaultStore}
+        mailingAddress={mailingAddress}
+        userBirthday={userBirthday}
+        userSurvey={userSurvey}
+        percentageIncrement={percentageIncrement}
+      />
       <PersonalInformation labels={labels} handleComponentChange={handleComponentChange} />
       <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
       <BirthdaySaving labels={labels} handleComponentChange={handleComponentChange} />
@@ -48,11 +66,23 @@ export const ProfileInformation = ({ labels, handleComponentChange }) => {
 ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
+  profileCompletion: PropTypes.string,
+  mailingAddress: PropTypes.shape({}),
+  userBirthday: PropTypes.string,
+  userSurvey: PropTypes.shape([]),
+  percentageIncrement: PropTypes.shape({}),
+  defaultStore: PropTypes.string,
 };
 
 ProfileInformation.defaultProps = {
   labels: {},
   handleComponentChange: () => {},
+  profileCompletion: '',
+  mailingAddress: {},
+  userSurvey: [],
+  percentageIncrement: {},
+  defaultStore: '',
+  userBirthday: '',
 };
 
 export default ProfileInformation;

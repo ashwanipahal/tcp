@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddAddressComponent from '../views/AddEditAddress.view';
+import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import { getAddressResponse, getAddressById } from './AddEditAddress.selectors';
-import { routerPush } from '../../../../../utils';
+import { routerPush, isMobileApp } from '../../../../../utils';
 
 export class AddEditAddressContainer extends React.PureComponent<Props> {
   static propTypes = {
@@ -12,10 +13,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   componentDidUpdate() {
-    const { addressResponse } = this.props;
+    const { addressResponse, getAddressListAction } = this.props;
     const isSuccess = addressResponse && addressResponse.get('addressId');
     if (isSuccess) {
-      this.backToAddressBookClick();
+      if (isMobileApp()) {
+        getAddressListAction();
+      } else this.backToAddressBookClick();
     }
   }
 
@@ -43,6 +46,14 @@ AddEditAddressContainer.defaultProps = {
   address: null,
 };
 
+export const mapDispatchToProps = dispatch => {
+  return {
+    getAddressListAction: () => {
+      dispatch(getAddressList());
+    },
+  };
+};
+
 const mapStateToProps = (state, ownProps) => {
   return {
     addressResponse: getAddressResponse(state),
@@ -50,4 +61,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(AddEditAddressContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddEditAddressContainer);

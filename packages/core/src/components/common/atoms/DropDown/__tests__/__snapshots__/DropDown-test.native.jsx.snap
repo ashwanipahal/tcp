@@ -4,6 +4,11 @@ exports[`DropDown Test should render correctly 1`] = `
 <View
   style={null}
 >
+  <Styled(Text)
+    isFocused={true}
+  >
+    foo
+  </Styled(Text)>
   <Styled(View)
     data={
       Array [
@@ -14,7 +19,12 @@ exports[`DropDown Test should render correctly 1`] = `
       ]
     }
     dropDownStyle={null}
-    itemStyle={null}
+    heading="foo"
+    itemStyle={
+      Object {
+        "color": "foo",
+      }
+    }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
     selectedValue="foo"
@@ -23,9 +33,9 @@ exports[`DropDown Test should render correctly 1`] = `
     <Styled(View)>
       <Styled(BodyCopy)
         color="gray.800"
-        fontFamily="secondary"
         fontSize="fs13"
-        fontWeight="black"
+        fontWeight="semibold"
+        mobileFontFamily="secondary"
         text="foo"
         textAlign="center"
       />
@@ -53,6 +63,7 @@ exports[`DropDown Test should render correctly 1`] = `
         Object {
           "height": 1334,
           "left": 0,
+          "marginTop": 0,
           "width": 0,
         }
       }
@@ -60,6 +71,7 @@ exports[`DropDown Test should render correctly 1`] = `
       <Styled(View)
         style={
           Object {
+            "marginBottom": 0,
             "top": 0,
           }
         }
@@ -73,6 +85,11 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
 <View
   style={null}
 >
+  <Styled(Text)
+    isFocused={true}
+  >
+    foo
+  </Styled(Text)>
   <Styled(View)
     data={
       Array [
@@ -83,7 +100,12 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       ]
     }
     dropDownStyle={null}
-    itemStyle={null}
+    heading="foo"
+    itemStyle={
+      Object {
+        "color": "foo",
+      }
+    }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
     selectedValue="foo"
@@ -92,9 +114,9 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     <Styled(View)>
       <Styled(BodyCopy)
         color="gray.800"
-        fontFamily="secondary"
         fontSize="fs13"
-        fontWeight="black"
+        fontWeight="semibold"
+        mobileFontFamily="secondary"
         text="foo"
         textAlign="center"
       />
@@ -122,6 +144,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         Object {
           "height": 1334,
           "left": 0,
+          "marginTop": 0,
           "width": 0,
         }
       }
@@ -129,6 +152,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       <Styled(View)
         style={
           Object {
+            "marginBottom": 0,
             "top": 0,
           }
         }
@@ -145,11 +169,6 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           }
           keyExtractor={[Function]}
           renderItem={[Function]}
-          style={
-            Object {
-              "height": 667,
-            }
-          }
         />
       </Styled(View)>
     </TouchableOpacity>
