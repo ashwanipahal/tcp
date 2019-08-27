@@ -137,11 +137,19 @@ export const PaymentOverviewTile = ({
                     medium: 7,
                   }}
                 >
-                  <BodyCopy component="div">
+                  <BodyCopy component="div" className="cardDetailsWrapper">
                     <Image
                       className="venmoCardList_img"
                       src={getIconPath(cardIconMapping[venmoCardList.ccBrand])}
                     />
+                    <BodyCopy
+                      fontSize="fs12"
+                      fontFamily="secondary"
+                      className="elem-mt-XS elem-ml-SM"
+                      fontWeight="extrabold"
+                    >
+                      {venmoCardList.properties.venmoUserId}
+                    </BodyCopy>
                   </BodyCopy>
                 </Col>
               </Row>

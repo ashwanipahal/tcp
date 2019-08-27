@@ -1,4 +1,4 @@
-import HOME_PAGE from '../constants/pages.constants';
+import PAGES from '../constants/pages.constants';
 import { getAPIConfig } from '../utils';
 
 const SEO_CONFIG = {
@@ -126,7 +126,7 @@ const getHomeSEOTags = () => {
 
 export const deriveSEOTags = pageId => {
   // Please Note: Convert into switch case if you are adding more cases in this method.
-  if (pageId === HOME_PAGE) {
+  if (pageId === PAGES.HOME_PAGE) {
     return getHomeSEOTags(); // Just a sample - any store specific data should be set in this
   }
   return getDefaultSEOTags();
