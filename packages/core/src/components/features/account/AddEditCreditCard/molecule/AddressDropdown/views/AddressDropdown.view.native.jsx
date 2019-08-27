@@ -46,23 +46,6 @@ export class AddressDropdown extends React.PureComponent<Props> {
     variation: 'primary',
   };
 
-  static getDerivedStateFromProps(props) {
-    const { data, selectedValue } = props;
-
-    let selectedLabelState = null;
-    const defaultSelectedValue = data && data.length && data[0].label; // If nothing falls under any condition then this value will be selected.
-    if (selectedValue) {
-      const selectedAddress = data.filter(item => item.id === selectedValue);
-      selectedLabelState =
-        selectedAddress && selectedAddress.length ? selectedAddress[0].label : defaultSelectedValue;
-    } else {
-      const primaryAddress = data.filter(item => item.primary === true);
-      selectedLabelState =
-        primaryAddress && primaryAddress.length ? primaryAddress[0].label : defaultSelectedValue;
-    }
-    return { selectedLabelState };
-  }
-
   constructor(props) {
     super(props);
     this.rowFrame = {
@@ -280,7 +263,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
                 <FlatList
                   data={data}
                   renderItem={this.dropDownLayout}
-                  keyExtractor={item => item.key}
+                  keyExtractor={item => item.id}
                   bounces={false}
                   ItemSeparatorComponent={() => <Separator />}
                 />
