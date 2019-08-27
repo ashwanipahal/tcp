@@ -31,6 +31,7 @@ import ResetPasswordReducer from '@tcp/core/src/components/features/account/Rese
 import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
+import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -71,6 +72,7 @@ import {
   CHECKOUT_REDUCER_KEY,
   DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
+  OPTIMIZELY_FEATURES_REDUCER,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -131,4 +133,5 @@ export default combineReducers({
   [USER_REDUCER_KEY]: UserReducer,
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
+  [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
 });

@@ -41,6 +41,11 @@ export const setDeviceInfo = payload => ({
   type: GLOBAL_CONSTANTS.SET_DEVICE_INFO,
 });
 
+export const setOptimizelyFeaturesList = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
+});
+
 export default {
   loadLayoutData,
   loadLabelsData,

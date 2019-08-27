@@ -6,6 +6,7 @@ import {
   loadModulesData,
   setAPIConfig,
   setDeviceInfo,
+  setOptimizelyFeaturesList,
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
@@ -14,7 +15,7 @@ import GLOBAL_CONSTANTS from '../constants';
 
 function* bootstrap(params) {
   const {
-    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType },
+    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType, optimizelyHeadersList },
   } = params;
   const pagesList = [pageName];
   const modulesList = modules;
@@ -22,6 +23,7 @@ function* bootstrap(params) {
     // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
     yield putResolve(setAPIConfig(apiConfig));
     yield putResolve(setDeviceInfo({ deviceType }));
+    yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersList));
     const result = yield call(bootstrapAbstractor, pagesList, modulesList);
     yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
     yield put(loadLabelsData(result.labels));

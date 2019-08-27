@@ -18,6 +18,9 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 
+// constants
+import constants from '../constants';
+
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
@@ -67,10 +70,31 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
+
+      // optimizely headers
+      const setCookieHeaders = res.getHeader('set-cookie');
+      const optimizelyHeaderPart = setCookieHeaders && setCookieHeaders.split('=');
+      const optimizelyHeaders =
+        optimizelyHeaderPart &&
+        JSON.parse(
+          optimizelyHeaderPart[
+            optimizelyHeaderPart.indexOf(constants.OPTIMIZELY_DECISION_LABEL) + 1
+          ]
+        );
+      const optimizelyHeadersList = [];
+      if (optimizelyHeaders) {
+        optimizelyHeaders.forEach(item => {
+          if (res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)) {
+            optimizelyHeadersList.push(item);
+          }
+        });
+      }
+
       const payload = {
         ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
+        optimizelyHeadersList,
       };
       store.dispatch(bootstrapData(payload));
     }
