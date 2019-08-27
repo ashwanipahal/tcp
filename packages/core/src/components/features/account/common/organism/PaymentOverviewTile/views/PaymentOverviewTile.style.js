@@ -8,7 +8,10 @@ const styles = css`
   .cardDescriptionWrapper {
     display: flex;
     flex-direction: column;
-    padding-left: 8px;
+  }
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
   }
   .venmo-tile {
     @media ${props => props.theme.mediaQuery.medium} {
@@ -16,7 +19,7 @@ const styles = css`
     }
   }
   .cardExpiryWrapper {
-    color: ${props => props.theme.colorPalette.gray[700]}
+    color: ${props => props.theme.colorPalette.gray[700]};
   }
 `;
 
