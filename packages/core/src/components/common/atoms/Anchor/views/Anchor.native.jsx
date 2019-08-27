@@ -77,7 +77,7 @@ Anchor.defaultProps = {
   children: null,
   customStyle: {},
   locator: '',
-  onPress: () => {},
+  onPress: null,
 };
 
 export default withStyles(Anchor, AnchorStyles);

@@ -9,7 +9,6 @@ exports[`Anchor Native should render correctly 1`] = `
 >
   <Text
     anchorVariation=""
-    internal={true}
     navigation={
       Object {
         "navigate": [MockFunction],

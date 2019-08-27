@@ -279,7 +279,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       fill="WHITE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
+      onPress={null}
       style={
         Object {
           "border": 1,
@@ -575,7 +575,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       fill="WHITE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
+      onPress={null}
       style={
         Object {
           "border": 1,

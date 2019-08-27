@@ -34,7 +34,7 @@ exports[`MyRewards should render correctly 1`] = `
     fill="BLUE"
     fullWidth=""
     locator=""
-    onPress={[Function]}
+    onPress={null}
     style={
       Object {
         "fontWeight": "400",

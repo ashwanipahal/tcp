@@ -15,7 +15,6 @@ describe('Anchor Native', () => {
         url="/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
         navigation={navigation}
         text="click Me"
-        internal
       />
     );
   });
@@ -34,36 +33,36 @@ describe('Anchor Native', () => {
 
   it('should call parseUrl', () => {
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(0);
+    expect(navigate).toHaveBeenCalledTimes(1);
   });
 
   it('should call onPress for external url handler', () => {
     component.setProps({ external: true, onPress: navigate });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(1);
+    expect(navigate).toHaveBeenCalledTimes(2);
   });
 
   it('should call for plp page', () => {
     component.setProps({ url: '/p/test' });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(1);
+    expect(navigate).toHaveBeenCalledTimes(3);
   });
 
   it('should call for shop page', () => {
     component.setProps({ url: '/c/test' });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(1);
+    expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return null', () => {
     component.setProps({ url: '/test' });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(1);
+    expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return navigation to default browser', () => {
     component.setProps({ onPress: null });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(2);
+    expect(navigate).toHaveBeenCalledTimes(5);
   });
 });

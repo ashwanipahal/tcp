@@ -79,7 +79,7 @@ CustomButton.defaultProps = {
   url: '',
   disableButton: false,
   locator: '',
-  onPress: () => {},
+  onPress: null,
 };
 
 export default withStyles(CustomButton, style);
