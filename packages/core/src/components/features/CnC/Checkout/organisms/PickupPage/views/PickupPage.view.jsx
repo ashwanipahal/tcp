@@ -88,11 +88,6 @@ class PickUpFormPart extends React.Component {
     return (
       <div className={className}>
         <div className="container">
-          <CheckoutSectionTitleDisplay
-            title={pickUpLabels.title}
-            dataLocator="pickup-title"
-            className="summary-title-pick-up"
-          />
           {pickupError && (
             <ErrorMessage
               error={pickupError}
@@ -102,6 +97,12 @@ class PickUpFormPart extends React.Component {
               dataLocator="pickup-error"
             />
           )}
+          <CheckoutSectionTitleDisplay
+            title={pickUpLabels.title}
+            dataLocator="pickup-title"
+            className="summary-title-pick-up"
+          />
+
           <form onSubmit={handleSubmit} className="checkoutPickupForm">
             <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">

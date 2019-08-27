@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
-import { subscribeEmail } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
+// import { subscribeEmail } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import constants from '../Checkout.constants';
 import {
