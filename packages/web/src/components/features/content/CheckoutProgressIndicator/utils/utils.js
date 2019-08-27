@@ -1,6 +1,5 @@
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import CHECKOUT_STAGES, { CHECKOUT_SECTIONS } from '../../../../../pages/App.constants';
-import utils from '../../../../../../../core/src/utils';
 
 const isOrderHasShipping = cartItems => {
   return cartItems && cartItems.filter(item => !item.getIn(['miscInfo', 'store'])).size;
@@ -46,15 +45,21 @@ const moveToStage = (stageName, isReplace) => {
   }
 };
 
-const routeToStage = (requestedStage, cartItems, isAllowForward) => {
-  const router = useRouter();
-  const currentStage = utils.getObjectValue(router, undefined, 'query', 'subSection');
+const routeToStage = (requestedStage, cartItems, isAllowForward, currentStageName) => {
+  if (requestedStage === currentStageName) return;
 
-  if (requestedStage === currentStage) return;
+  if (!cartItems) return;
 
+  let currentStage = currentStageName;
   const availableStages = getAvailableStages(cartItems);
-  const routeToUrl = CHECKOUT_SECTIONS[currentStage].pathPattern;
-  const as = routeToUrl;
+
+  if (availableStages.length > 3) {
+    currentStage = CHECKOUT_STAGES.PICKUP;
+  } else {
+    currentStage = CHECKOUT_STAGES.SHIPPING;
+  }
+
+  const routeToUrl = CHECKOUT_SECTIONS[currentStage].pathPart;
   let currentFound = false;
   let requestedFound = false;
 
@@ -66,19 +71,31 @@ const routeToStage = (requestedStage, cartItems, isAllowForward) => {
       if (isAllowForward || !currentFound) {
         moveToStage(requestedStage, true);
       } else {
-        Router.push(routeToUrl, as, { shallow: true });
+        moveToStage(routeToUrl, true);
       }
       break;
     }
   }
   if (!requestedFound) {
     // requested stage is not available (or illegal)
-    Router.push(routeToUrl, as, { shallow: true });
+    moveToStage(routeToUrl, true);
   }
+};
+
+/**
+ * This Method will return for which checkout path, app will navigate on click
+ * of checkout button
+ * @param {cartItems} cartItems
+ */
+const getRoutePathCheckoutBtn = cartItems => {
+  const totalCheckoutStages = getAvailableStages(cartItems);
+  return totalCheckoutStages[0];
 };
 
 export default {
   getAvailableStages,
   moveToStage,
   routeToStage,
+  isOrderHasPickup,
+  getRoutePathCheckoutBtn,
 };

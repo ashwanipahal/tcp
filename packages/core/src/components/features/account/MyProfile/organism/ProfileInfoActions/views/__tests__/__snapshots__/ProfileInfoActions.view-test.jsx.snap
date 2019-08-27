@@ -190,7 +190,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         textAlign="left"
       >
         <Styled(Anchor)
-          data-locator="hereLink"
+          dataLocator="hereLink"
           fontSizeVariation="xlarge"
           to="/account"
           underline={true}
