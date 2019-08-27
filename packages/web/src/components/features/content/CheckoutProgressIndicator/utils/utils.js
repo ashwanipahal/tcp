@@ -1,6 +1,5 @@
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import CHECKOUT_STAGES, { CHECKOUT_SECTIONS } from '../../../../../pages/App.constants';
-import utils from '../../../../../../../core/src/utils';
 
 const isOrderHasShipping = cartItems => {
   return cartItems && cartItems.filter(item => !item.getIn(['miscInfo', 'store'])).size;
@@ -46,14 +45,21 @@ const moveToStage = (stageName, isReplace) => {
   }
 };
 
-const routeToStage = (requestedStage, cartItems, isAllowForward) => {
-  const router = useRouter();
-  const currentStage = utils.getObjectValue(router, undefined, 'query', 'section');
+const routeToStage = (requestedStage, cartItems, isAllowForward, currentStageName) => {
+  if (requestedStage === currentStageName) return;
 
-  if (requestedStage === currentStage) return;
+  if (!cartItems) return;
 
+  let currentStage = currentStageName;
   const availableStages = getAvailableStages(cartItems);
-  const routeToUrl = CHECKOUT_SECTIONS[currentStage].pathPattern;
+
+  if (availableStages.length > 3) {
+    currentStage = CHECKOUT_STAGES.PICKUP;
+  } else {
+    currentStage = CHECKOUT_STAGES.SHIPPING;
+  }
+
+  const routeToUrl = CHECKOUT_SECTIONS[currentStage].pathPart;
   let currentFound = false;
   let requestedFound = false;
 
