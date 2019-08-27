@@ -1,22 +1,21 @@
 import styled from 'styled-components';
 
 const CreditCardContainer = styled.View`
-  flex: 1;
-  flex-direction: column;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
 const CreditCardWrapper = styled.View`
-  height: 200px;
+  height: 180px;
 `;
 
 const AddressWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  height: 230px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  height: 220px;
 `;
 
 const ActionsWrapper = styled.View`
   align-items: center;
-  height: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const AddAddressButton = {

@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { createAPIConfig, switchAPIConfig, resetApiConfig } from '@tcp/core/src/utils';
+import { login } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import env from 'react-native-config';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
-
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import AppSplash from '../navigation/AppSplash';
@@ -48,6 +48,15 @@ export class App extends React.PureComponent {
 
   removeSplash = () => {
     this.setState({ isSplashVisible: false });
+    this.store.dispatch(
+      login({
+        emailAddress: 'place123@yopmail.com',
+        password: 'Place@1234',
+        rememberMe: true,
+        savePlcc: true,
+        userTouchId: false,
+      })
+    );
   };
 
   /**

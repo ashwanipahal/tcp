@@ -33,22 +33,15 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
       selectedCard,
     } = this.props;
     return (
-      <ModalNative isOpen={setUpdateModalMountedState} onRequestClose={toggleModal}>
-        <ModalHeading>
-          <BodyCopy
-            mobileFontFamily={['secondary']}
-            fontWeight="extrabold"
-            fontSize="fs16"
-            text={
-              isEdit
-                ? labels.paymentGC.lbl_payment_editCCHeading
-                : labels.paymentGC.lbl_payment_addCCHeading
-            }
-          />
-        </ModalHeading>
-        <LineWrapper>
-          <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-        </LineWrapper>
+      <ModalNative
+        isOpen={setUpdateModalMountedState}
+        onRequestClose={toggleModal}
+        heading={
+          isEdit
+            ? labels.paymentGC.lbl_payment_editCCHeading
+            : labels.paymentGC.lbl_payment_addCCHeading
+        }
+      >
         <SafeAreaView>
           <ModalViewWrapper>
             <AddEditCreditCard
