@@ -12,6 +12,7 @@ module.exports = withTM({
   //    https://github.com/zeit/next.js/blob/canary/examples/with-dotenv/next.config.js
   env: {
     ANALYTICS: process.env.RWD_WEB_ANALYTICS,
+    ANALYTICS_SCRIPT_URL: process.env.RWD_WEB_ANALYTICS_SCRIPT_URL,
   },
   webpack(config) {
     config.module.rules.push({

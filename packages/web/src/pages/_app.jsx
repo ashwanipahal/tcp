@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -17,13 +18,21 @@ import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
-import Script from '../components/common/atoms/Script';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 
 // constants
 import constants from '../constants';
+
+// Script injection component
+// This is lazy-loaded so we inject it after SSR
+const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr: false });
+
+// Analytics script injection
+function AnalyticsScript() {
+  return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
+}
 
 class TCPWebApp extends App {
   constructor(props) {
@@ -166,10 +175,8 @@ class TCPWebApp extends App {
             </Grid>
           </Provider>
         </ThemeProvider>
-        {/* Output analytics scripts */}
-        {process.env.ANALYTICS && (
-          <Script src="https://postman-echo.com/response-headers?Content-Type=text/javascript" />
-        )}
+        {/* Inject analytics script if enabled */}
+        {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>
     );
   }
