@@ -152,7 +152,6 @@ exports[`LoginForm component should renders correctly 1`] = `
     fill="BLUE"
     fullWidth=""
     locator=""
-    onPress={[Function]}
     text=""
     url=""
   />
