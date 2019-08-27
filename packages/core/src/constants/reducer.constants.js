@@ -100,6 +100,8 @@ export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
 // plcc card Page Reducer
 export const APPLY_PLCC_REDUCER_KEY = 'ApplyCardPage';
 export const APPLY_PLCC_ACTION_PATTERN = '@@ApplyCardPage-';
+// optimizely features reducer
+export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,

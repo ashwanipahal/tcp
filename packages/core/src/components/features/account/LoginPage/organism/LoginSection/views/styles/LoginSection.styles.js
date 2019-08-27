@@ -7,6 +7,10 @@ const styles = css`
   .elem-pr-LRG {
     padding-right: 15px;
   }
+  .checkoutForm {
+    padding-left: 74px;
+    padding-right: 74px;
+  }
   .border {
     border-top: 1px solid ${props => props.theme.colors.BORDER.BLUE};
 
