@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import setCookie from 'set-cookie-parser';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
@@ -18,6 +19,9 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
+
+// constants
+import constants from '../constants';
 
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -76,10 +80,41 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
+
+      // optimizely headers
+      const optimizelyHeadersObject = {};
+      const setCookieHeaderList = setCookie.parse(res).map(({ name, value }) => {
+        let itemValue;
+        try {
+          itemValue = JSON.parse(value);
+        } catch (err) {
+          itemValue = {};
+        }
+        return {
+          [name]: itemValue,
+        };
+      });
+
+      const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
+      if (optimizelyHeader) {
+        optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
+          let optimizelyHeaderValue;
+          try {
+            optimizelyHeaderValue = JSON.parse(
+              res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
+            );
+          } catch {
+            optimizelyHeaderValue = {};
+          }
+          optimizelyHeadersObject[item] = optimizelyHeaderValue;
+        });
+      }
+
       const payload = {
         ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
+        optimizelyHeadersObject,
       };
       store.dispatch(bootstrapData(payload));
     }
