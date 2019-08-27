@@ -71,6 +71,7 @@ class TCPWebApp extends App {
         ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
+        locals,
       };
       store.dispatch(bootstrapData(payload));
     }
