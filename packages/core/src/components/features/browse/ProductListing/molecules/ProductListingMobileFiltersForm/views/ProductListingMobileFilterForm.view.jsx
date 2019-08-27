@@ -44,6 +44,55 @@ function getSortCustomOptionsMap(sortOptionsMap) {
     ),
   }));
 }
+/**
+ * @function getColorFilterOptionsMap This handles to render the desktop filter fields of color
+ * @summary  This is to set the color filters
+ * @param {Array} colorOptionsMap - list of color options
+ */
+const getColorFilterOptionsMap = colorOptionsMap => {
+  return colorOptionsMap.map(color => ({
+    value: color.id,
+    title: color.displayName,
+    content: (
+      <div className="color-title">
+        <Image
+          className="color-chip"
+          src={color.imagePath}
+          height={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
+          width={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
+          alt={color.displayName}
+          data-colorname={color.displayName.toLowerCase()}
+        />
+        <BodyCopy
+          component="span"
+          textAlign="center"
+          tabIndex={-1}
+          fontSize="fs14"
+          fontFamily="secondary"
+          color="gray.900"
+          className="color-name"
+          outline="none"
+          data-locator={`${getLocator(`plp_filter_color_option_`)}${color.displayName}`}
+        >
+          {color.displayName}
+        </BodyCopy>
+      </div>
+    ),
+  }));
+};
+
+/**
+ * @function getFilterOptionsMap This handles to render the desktop filter fields of non-color
+ * @summary  This is to set the non-color filters
+ * @param {Array} optionsMap - list of non-color options
+ */
+const getFilterOptionsMap = optionsMap => {
+  return optionsMap.map(option => ({
+    value: option.id,
+    title: option.displayName,
+    content: <span className="size-title">{option.displayName}</span>,
+  }));
+};
 
 class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   constructor(props) {
@@ -56,58 +105,30 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     };
   }
 
-  // eslint-disable-next-line
-  getFilterOptionsMap(optionsMap) {
-    return optionsMap.map(option => ({
-      value: option.id,
-      title: option.displayName,
-      content: <span className="size-title">{option.displayName}</span>,
-    }));
-  }
-
-  /* eslint-disable */
-  getColorFilterOptionsMap(colorOptionsMap) {
-    return colorOptionsMap.map(color => ({
-      value: color.id,
-      title: color.displayName,
-      content: (
-        <div className="color-title">
-          <Image
-            className="color-chip"
-            src={color.imagePath}
-            height={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
-            width={color.displayName.toLowerCase() === 'white' ? '18px' : '19px'}
-            alt={color.displayName}
-            data-colorname={color.displayName.toLowerCase()}
-          />
-          <BodyCopy
-            component="span"
-            role="label"
-            textAlign="center"
-            tabIndex={-1}
-            fontSize="fs14"
-            fontFamily="secondary"
-            color="gray.900"
-            className="color-name"
-            outline="none"
-            data-locator={`${getLocator(`plp_filter_color_option_`)}${color.displayName}`}
-          >
-            {color.displayName}
-          </BodyCopy>
-        </div>
-      ),
-    }));
-  }
-
+  /**
+   * @function isUnbxdFacetKey
+   * @summary This handles to render the desktop filter fields
+   * @param {Array} key - list of filter options
+   */
   isUnbxdFacetKey = key =>
     key.toLowerCase() !== FACETS_FIELD_KEY.unbxdDisplayName &&
     key.toLowerCase() !== FACETS_FIELD_KEY.sort &&
     key !== FACETS_FIELD_KEY.l1category;
 
+  /**
+   * @function hideModal
+   * @summary This handles to render the desktop filter fields
+   * @param none
+   */
   hideModal = () => {
     this.setState({ show: false });
   };
 
+  /**
+   * @function showModal
+   * @summary This handles to render the desktop filter fields
+   * @param none
+   */
   showModal = () => {
     this.setState({ show: true, isSortOpenModal: false });
   };
@@ -116,14 +137,26 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     this.setState({ show: true, isSortOpenModal: true });
   };
 
+  /**
+   * @function toggleFilterIcon
+   * @summary This handles to render the desktop filter fields
+   * @param none
+   */
   toggleFilterIcon = () => {
     const { isOpenFilterSection } = this.state;
     this.setState({ isOpenFilterSection: !isOpenFilterSection });
   };
 
+  /**
+   * @function renderFilterField
+   * @summary This handles to render the color filter fields
+   * @param {Object} selectedFilters - object of selected filters
+   * @param {String} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
+   * @param {String} facetName - filter names "category, color etc"
+   */
   renderFilterField(selectedFilters, filterName, facetName) {
     const { filtersMaps } = this.props;
-    const optionsMap = this.getFilterOptionsMap(filtersMaps[facetName]);
+    const optionsMap = getFilterOptionsMap(filtersMaps[facetName]);
 
     const className = 'item-list-collapsible item-list-collapsible-expanded size-detail-chips';
 
@@ -141,6 +174,12 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     );
   }
 
+  /**
+   * @function renderColorFilterField This handles to render the color filter fields
+   * @param {selectedFilters} selectedFilters
+   * @param {filterName} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
+   * @param {facetName} facetName - filter names "category, color etc"
+   */
   renderColorFilterField(selectedFilters, filterName, facetName) {
     const { filtersMaps, labels } = this.props;
     const className = 'color-filter-chip size-detail';
@@ -149,7 +188,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         name={facetName}
         facetName={facetName}
         component={CustomSelect}
-        optionsMap={this.getColorFilterOptionsMap(filtersMaps[facetName], filterName)}
+        optionsMap={getColorFilterOptionsMap(filtersMaps[facetName])}
         title=""
         placeholder={filterName}
         allowMultipleSelections
@@ -164,6 +203,11 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     );
   }
 
+  /**
+   * @function renderMobilePlpFilterForm
+   * @summary This handles to render the desktop filter fields
+   * @param none
+   */
   renderMobilePlpFilterForm() {
     const { isSortOpenModal } = this.state;
     return (
@@ -173,15 +217,20 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         )}
         {isSortOpenModal && (
           <SortSelector
-            expanded={true}
+            expanded
             sortSelectOptions={getSortCustomOptionsMap(config)}
-            hideTitle={true}
+            hideTitle
           />
         )}
       </div>
     );
   }
 
+  /**
+   * @function renderMobileFilters
+   * @summary This handles to render the desktop filter fields
+   * @param none
+   */
   renderMobileFilters() {
     const { filtersMaps, filtersLength, className } = this.props;
     const filterKeys = Object.keys(filtersMaps);
@@ -210,6 +259,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         ignoreGutter={{ small: true, medium: true }}
       >
         <AccordionList accordionItems={accordionItems} className={className}>
+          {/* eslint-disable */}
           {filterKeys.map(key => {
             if (key.toLowerCase() === FACETS_FIELD_KEY.color) {
               const length = (filtersLength && filtersLength[`${key}Filters`]) || 0;
@@ -241,7 +291,6 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       isOpenFilterSection && 'open-filter-button-expanded'
     );
 
-    // eslint-disable-next-line
     for (let key in initialValues) {
       if (Object.prototype.hasOwnProperty.call(initialValues, key)) {
         const selectedFacet = filtersMaps[key]
@@ -310,12 +359,16 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 }
 
 ProductListingMobileFiltersForm.propTypes = {
-  filters: PropTypes.shape({}),
-  labels: PropTypes.shape({}),
+  filtersMaps: PropTypes.shape({
+    age_group_uFilter: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
+  labels: PropTypes.shape({
+    lbl_sort: PropTypes.string,
+  }),
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
-  filters: {},
+  filtersMaps: {},
   labels: {},
 };
 export default reduxForm({

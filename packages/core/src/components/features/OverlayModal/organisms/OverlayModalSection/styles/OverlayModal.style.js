@@ -33,7 +33,8 @@ const StyledModal = css`
     position: absolute;
     height: 8px;
     width: 100%;
-    background-color: ${mprplcce};
+    background-color: ${props =>
+      !props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce};
     z-index: 99;
   }
   .modal__triangle {
@@ -41,7 +42,8 @@ const StyledModal = css`
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid ${mprplcce};
+    border-bottom: 10px solid
+      ${props => (!props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce)};
     position: absolute;
     top: -10px;
     z-index: 99;

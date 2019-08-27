@@ -42,7 +42,7 @@ export default {
   'cart-icon': '/static/images/bag.png',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
-  'selected-item': '/static/images/selected-item.svg',
+  'selected-item': '/static/images/circle-check-no-circle.svg',
   'checkout-tick': '/static/images/checkout-tick.svg',
   'checkout-white-dot': '/static/images/checkout-white-dot.svg',
   'carrot-large-left': '/static/images/carrot-large-left.png',

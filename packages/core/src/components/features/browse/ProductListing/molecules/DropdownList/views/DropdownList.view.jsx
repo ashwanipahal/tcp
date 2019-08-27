@@ -223,7 +223,7 @@ class DropdownList extends React.Component {
                 value={item.title}
                 isAutosuggestAnalytics={autosuggestAnalytics}
                 className={cssClassName(
-                  'item-common ',
+                  'item-common sort-item-list ',
                   classNamePrefix,
                   '-item',
                   {

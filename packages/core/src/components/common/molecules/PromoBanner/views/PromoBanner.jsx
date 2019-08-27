@@ -34,13 +34,20 @@ const PromoBanner = (props: Props) => {
             let promoText;
 
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
-            if (style === 'style7' || style === 'percentage_wrapped_large') {
-              const style7Texts = text.split('%');
+            if (
+              style === 'percentage_wrapped_extra_large' ||
+              style === 'percentage_wrapped_large'
+            ) {
+              const percentageTexts = text.split(' ');
               promoText = (
                 <div className={`promo-text ${style}`}>
-                  <span className={`${style}-0`}>{style7Texts[0] && style7Texts[0].trim()}</span>
+                  <span className={`${style}-0`}>
+                    {percentageTexts[0] && percentageTexts[0].trim()}
+                  </span>
                   <span className={`${style}-1`}>% </span>
-                  <span className={`${style}-2`}>{style7Texts[1] && style7Texts[1].trim()}</span>
+                  <span className={`${style}-2`}>
+                    {percentageTexts[2] && percentageTexts[2].trim()}
+                  </span>
                 </div>
               );
             } else {

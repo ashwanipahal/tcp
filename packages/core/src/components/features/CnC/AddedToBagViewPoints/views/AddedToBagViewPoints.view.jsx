@@ -35,24 +35,26 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${itemPrice || 0}`}
         </Col>
       </Row>
-      <Row>
-        <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          <BodyCopy fontFamily="secondary" fontWeight="extrabold">
-            {labels.pointsYouCanEarn}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy
-            data-locator="addedtobag-pointsonitem"
-            fontFamily="secondary"
-            className="text-value"
-            color="orange.800"
-            fontWeight="extrabold"
-          >
-            {itemPoints || 0}
-          </BodyCopy>
-        </Col>
-      </Row>
+      {itemPoints !== 0 && (
+        <Row>
+          <Col colSize={{ large: 9, small: 4, medium: 6 }}>
+            <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+              {labels.pointsYouCanEarn}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 3, small: 2, medium: 2 }}>
+            <BodyCopy
+              data-locator="addedtobag-pointsonitem"
+              fontFamily="secondary"
+              className="text-value"
+              color="orange.800"
+              fontWeight="extrabold"
+            >
+              {itemPoints || 0}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
       <Row className="divided-line" />
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
@@ -66,24 +68,26 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${bagSubTotal || 0}`}
         </Col>
       </Row>
-      <Row className="row-padding">
-        <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          <BodyCopy fontFamily="secondary" fontWeight="extrabold">
-            {labels.totalRewardsInPoints}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy
-            data-locator="addedtobag-totalrewardpoints"
-            fontFamily="secondary"
-            className="text-value"
-            color="orange.800"
-            fontWeight="extrabold"
-          >
-            {userPoints || 0}
-          </BodyCopy>
-        </Col>
-      </Row>
+      {userPoints !== 0 && (
+        <Row className="row-padding">
+          <Col colSize={{ large: 9, small: 4, medium: 6 }}>
+            <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+              {labels.totalRewardsInPoints}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 3, small: 2, medium: 2 }}>
+            <BodyCopy
+              data-locator="addedtobag-totalrewardpoints"
+              fontFamily="secondary"
+              className="text-value"
+              color="orange.800"
+              fontWeight="extrabold"
+            >
+              {userPoints || 0}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
           <BodyCopy fontFamily="secondary" fontWeight="extrabold">

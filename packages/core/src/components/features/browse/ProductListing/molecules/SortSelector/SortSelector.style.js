@@ -19,13 +19,30 @@ export default css`
     text-overflow: ellipsis;
     vertical-align: bottom;
   }
+
+  .item-select {
+    padding: 18px 0 17px 16px;
+  }
+  .sort-item-list {
+    width: 95%;
+  }
+
+  .item-selected {
+    background: ${props => props.theme.colors.ACCORDION.INACTIVE_HEADER} url(${selectedIcon}) no-repeat right;
+    background-size: 20px 20px;
+    .sort-title {
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+      font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
+    }
+  }
+
   .item-highlighted {
-    background: url(${selectedIcon}) no-repeat left top;
+    background: url(${selectedIcon}) no-repeat left;
     background-size: 20px 20px;
 
     .sort-title {
-      font-size: 13px;
-      font-weight: 800;
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+      font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
     }
   }
   .sort-list-wrapper {
@@ -41,6 +58,13 @@ export default css`
     display: inline-block;
   }
 
+  @media ${props => props.theme.mediaQuery.medium} {
+    .sort-item-list {
+      width: 100%;
+      margin-right: 0;
+      padding-left: 0;
+    }
+  }
   @media ${props => props.theme.mediaQuery.large} {
     .sort-dropdown-wrapper {
       margin-left: 8px;

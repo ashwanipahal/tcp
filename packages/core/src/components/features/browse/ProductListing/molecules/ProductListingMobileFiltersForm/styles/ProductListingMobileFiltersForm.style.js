@@ -34,7 +34,7 @@ export default css`
   }
 
   .item-common {
-    margin-bottom: 8px;
+    margin-bottom: 18px;
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 120px;

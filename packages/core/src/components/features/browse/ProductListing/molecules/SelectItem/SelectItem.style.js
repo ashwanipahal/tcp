@@ -18,6 +18,5 @@ export default css`
 
   .item-select {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    margin-bottom: 14px;
   }
 `;
