@@ -63,7 +63,7 @@ export default css`
   .open-filter-button {
     background: url('/static/images/carrot-small-up.png') no-repeat;
     background-position: 95% 18px;
-    background-color: #eeeeee;
+    background-color: ${props => props.theme.colors.ACCORDION.INACTIVE_HEADER};
     font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
 
     &.open-filter-button-expanded {

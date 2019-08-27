@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -216,7 +216,7 @@ class ProductListingFiltersForm extends React.Component {
   render() {
     const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
     return (
-      <React.Fragment>
+      <Fragment>
         <form className="render-desktop-view">
           <div className={`${className} desktop-dropdown`}>
             <div className="filters-only-container">
@@ -245,7 +245,7 @@ class ProductListingFiltersForm extends React.Component {
           className="render-mobile-view"
           labels={labels}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
