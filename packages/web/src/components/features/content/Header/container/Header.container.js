@@ -13,7 +13,7 @@ import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
-  const { Header, Labels } = state;
+  const { Header } = state;
   return {
     brandTabs: Header.brandTabs,
     promoMessageWrapper: Header.promoMessageWrapper,
@@ -22,7 +22,7 @@ const mapStateToProps = state => {
     userName: getUserName(state),
     isLoggedIn: getUserLoggedInState(state),
     cartItemCount: getCartItemCount(),
-    labels: Labels.global.header,
+    labels: state.Labels.global,
   };
 };
 

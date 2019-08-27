@@ -65,7 +65,13 @@ Header.propTypes = {
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
+};
+
+Header.defaultProps = {
+  labels: {
+    trackOrder: {},
+  },
 };
 
 export default withStyles(Header, style);
