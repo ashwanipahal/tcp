@@ -131,25 +131,32 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
     inheritedStyles="product-title-content"
     to=""
   >
-    <ForwardRef
-      className={null}
-      color="text.primary"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs13",
-          "fs14",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
+    <Dotdotdot
+      clamp={2}
+      tagName="div"
+      truncationChar="…"
+      useNativeClamp={false}
     >
-      
-    </ForwardRef>
+      <ForwardRef
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs12",
+            "fs13",
+            "fs14",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        
+      </ForwardRef>
+    </Dotdotdot>
   </ForwardRef>
   Object {}
 </div>
