@@ -8,7 +8,7 @@ import {
   setDeviceInfo,
   setCountry,
   setCurrency,
-  setLanguage
+  setLanguage,
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
@@ -17,9 +17,9 @@ import GLOBAL_CONSTANTS from '../constants';
 
 function* bootstrap(params) {
   const {
-    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType, locals },
+    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType },
   } = params;
-  const { country, currency, language } = locals;
+  const { country, currency, language } = apiConfig;
   const pagesList = [pageName];
   const modulesList = modules;
   try {
