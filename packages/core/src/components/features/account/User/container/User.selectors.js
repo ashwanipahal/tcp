@@ -106,6 +106,11 @@ export const getDefaultStore = createSelector(
   state => state && state.get('hobbies')
 );
 
+export const getAssociateId = createSelector(
+  getPersonalDataState,
+  state => state && state.get('associateId')
+);
+
 export const getAirmilesDetails = createSelector(
   getAirmilesDataState,
   state => state && state.get('accountNumber')

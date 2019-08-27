@@ -5,7 +5,7 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../common/atoms/Anchor';
 
-export const AddEditPersonalInformation = ({ labels, successMessage, errorMessage, onSubmit,expMonthOptionsMap , expYearOptionsMap }) => {
+export const AddEditPersonalInformation = ({ labels, successMessage, errorMessage, onSubmit,birthMonthOptionsMap , birthYearOptionsMap, initialValues }) => {
   return (
     <React.Fragment>
       <BodyCopy className="elem-mb-LRG">
@@ -30,8 +30,9 @@ export const AddEditPersonalInformation = ({ labels, successMessage, errorMessag
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={onSubmit}
-        expMonthOptionsMap={expMonthOptionsMap}
-        expYearOptionsMap={expYearOptionsMap}
+        birthMonthOptionsMap={birthMonthOptionsMap}
+        birthYearOptionsMap={birthYearOptionsMap}
+        initialValues={initialValues}
       />
     </React.Fragment>
   );
@@ -46,8 +47,9 @@ AddEditPersonalInformation.propTypes = {
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  expMonthOptionsMap: PropTypes.shape([]).isRequired,
-  expYearOptionsMap: PropTypes.shape([]).isRequired,
+  birthMonthOptionsMap: PropTypes.shape([]).isRequired,
+  birthYearOptionsMap: PropTypes.shape([]).isRequired,
+  initialValues: PropTypes.shape({}),
 };
 
 AddEditPersonalInformation.defaultProps = {
@@ -56,5 +58,6 @@ AddEditPersonalInformation.defaultProps = {
     lbl_changePassword_heading: '',
     lbl_changePassword_password_info: '',
   },
+  initialValues:{},
 };
 export default AddEditPersonalInformation;

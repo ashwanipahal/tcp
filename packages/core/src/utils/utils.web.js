@@ -143,6 +143,46 @@ export const getCreditCardExpirationOptionMap = () => {
   };
 };
 
+
+
+export const getBirthDateOptionMap = () => {
+  const monthOptionsMap = [
+    {id: '1', displayName: MONTH_SHORT_FORMAT.JAN},
+    {id: '2', displayName: MONTH_SHORT_FORMAT.FEB},
+    {id: '3', displayName: MONTH_SHORT_FORMAT.MAR},
+    {id: '4', displayName: MONTH_SHORT_FORMAT.APR},
+    {id: '5', displayName: MONTH_SHORT_FORMAT.MAY},
+    {id: '6', displayName: MONTH_SHORT_FORMAT.JUN},
+    {id: '7', displayName: MONTH_SHORT_FORMAT.JUL},
+    {id: '8', displayName: MONTH_SHORT_FORMAT.AUG},
+    {id: '9', displayName: MONTH_SHORT_FORMAT.SEP},
+    {id: '10', displayName: MONTH_SHORT_FORMAT.OCT},
+    {id: '11', displayName: MONTH_SHORT_FORMAT.NOV},
+    {id: '12', displayName: MONTH_SHORT_FORMAT.DEC}];
+
+  const yearOptionsMap = [];
+  const dayOptionsMap = [];
+  const nowYear = (new Date()).getFullYear();
+
+  for (let i = 1900; i < nowYear - 17; i += 1) {
+    yearOptionsMap.push({id: i.toString(), displayName: i.toString()});
+  }
+
+  for (let i = 1; i < 32; i += 1) {
+    if (i <= 9) { i = 0 + i; }
+    dayOptionsMap.push({id: i.toString(), displayName: i.toString()});
+  }
+
+  return {
+    daysMap: dayOptionsMap,
+    monthsMap: monthOptionsMap,
+    yearsMap: yearOptionsMap
+  };
+}
+
+
+
+
 /**
  * Calculates browser width and height, and informs the current viewport as per the defined viewport settings
  */
@@ -219,6 +259,7 @@ export default {
   createUrlSearchParams,
   buildUrl,
   getCreditCardExpirationOptionMap,
+  getBirthDateOptionMap,
   getSiteId,
   routerPush,
   bindAllClassMethodsToThis,

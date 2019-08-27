@@ -21,11 +21,11 @@ export const AddEditPersonalInformationForm = ({
   pristine,
   errorMessage,
   handleSubmit,
-  expMonthOptionsMap,
-  expYearOptionsMap
+  birthMonthOptionsMap,
+  birthYearOptionsMap
 }) => {
   return (
-    <form className={className} onSubmit={handleSubmit} noValidate>
+    <form name="AddEditPersonalInformationForm" className={className} onSubmit={handleSubmit} noValidate>
       {errorMessage && (
         <Notification
           className="elem-mt-MED"
@@ -67,9 +67,9 @@ export const AddEditPersonalInformationForm = ({
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
-            placeholder={labels.lbl_profile_personal_info_phoneNumber}
-            name="phoneNumber"
-            id="phoneNumber"
+            placeholder={labels.lbl_profile_personal_info_phone}
+            name="phone"
+            id="phone"
             component={TextBox}
             dataLocator="addnewaddress-phnumber"
             type="tel"
@@ -77,31 +77,46 @@ export const AddEditPersonalInformationForm = ({
         </Col>
       </Row>
       <Row fullBleed className="elem-mt-MED">
-        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+        <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={{ small: true }}>
+          <BodyCopy component="div">
+            {labels.lbl_profile_personal_info_birthday}
+          </BodyCopy>
+        </Col>
+      </Row>
 
+      <Row fullBleed className="elem-mt-MED">
+        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
           <Field
-            placeholder={labels.lbl_profile_personal_info_birthday}
-            name="expMonth"
-            id="expMonth"
+           // placeholder={labels.lbl_profile_personal_info_birthday}
+            name="birthMonth"
+            id="birthMonth"
             component={SelectBox}
             dataLocator="payment-expmonthdd"
-            options={expMonthOptionsMap}
+            options={birthMonthOptionsMap}
             className="field"
             enableSuccessCheck={false}
           />
         </Col>
         <Col colSize={{ small: 3, medium: 2, large: 3 }}>
           <Field
-            placeholder={labels.lbl_profile_personal_info_birthday}
-            name="expYear"
-            id="expYear"
+           //  placeholder={labels.lbl_profile_personal_info_birthday}
+            name="birthYear"
+            id="birthYear"
             component={SelectBox}
             dataLocator="payment-expyeardd"
-            options={expYearOptionsMap}
+            options={birthYearOptionsMap}
             className="field"
             enableSuccessCheck={false}
           />
         </Col>
+        {/* <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+          {isCanada && <Field component={LabeledInput} name="airMilesAccountNumber" title={titleAirMilesAccountNumber} className="air-miles-card" >
+          <ButtonTooltip className="air-miles-card-info" type="info" direction="top">
+            <p>Provide your Collector Number to get miles</p>
+          </ButtonTooltip>
+          <strong className="hint-text">Provide your Collector Number to get miles</strong>
+          </Field>}
+        </Col> */}
       </Row>
       <Row fullBleed className="elem-mt-MED">
         <Col
@@ -110,11 +125,11 @@ export const AddEditPersonalInformationForm = ({
           className="dropdown-text"
         >
           <Field
-            name="primary"
+            name="isEmployee"
             component={InputCheckbox}
             dataLocator="addnewaddress-setdefaddress"
             // disabled={isMakeDefaultDisabled}
-            className="AddAddressForm__makeDefault"
+            className="AddPersonalInfo-isEmployee"
           >
             {labels.lbl_profile_personal_info_tcp_employee}
           </Field>
@@ -135,7 +150,7 @@ export const AddEditPersonalInformationForm = ({
       <BodyCopy component="div" textAlign="center" className="elem-mb-LRG elem-mt-XXL">
         <Row>
           <Col
-            className="ChangePasswordForm_cancel"
+            className="AddEditPersonalInformationForm_cancel"
             colSize={{
               large: 3,
               medium: 2,
@@ -159,7 +174,7 @@ export const AddEditPersonalInformationForm = ({
             </Anchor>
           </Col>
           <Col
-            className="ChangePasswordForm_save"
+            className="AddEditPersonalInformationForm_update"
             colSize={{
               large: 3,
               medium: 2,
@@ -170,7 +185,7 @@ export const AddEditPersonalInformationForm = ({
               fill="BLUE"
               type="submit"
               buttonVariation="fixed-width"
-              dataLocator="SaveBtn"
+              dataLocator="UpdateBtn"
               fullWidth
               className="elem-mb-XS"
               disabled={pristine}
@@ -192,8 +207,8 @@ AddEditPersonalInformationForm.propTypes = {
     lbl_changePassword_cancelCta: PropTypes.string,
     lbl_changePassword_saveCta: PropTypes.string,
   }),
-  expMonthOptionsMap: PropTypes.shape([]).isRequired,
-  expYearOptionsMap: PropTypes.shape([]).isRequired,
+  birthMonthOptionsMap: PropTypes.shape([]).isRequired,
+  birthYearOptionsMap: PropTypes.shape([]).isRequired,
   pristine: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -212,11 +227,11 @@ AddEditPersonalInformationForm.defaultProps = {
 };
 
 const validateMethod = createValidateMethod(
-  getStandardConfig(['currentPassword', 'password', 'confirmPassword'])
+  getStandardConfig(['firstName', 'lastName', 'email'])
 );
 
 export default reduxForm({
-  form: 'ChangePasswordForm', // a unique identifier for this form
+  form: 'AddEditPersonalInformationForm', // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(AddEditPersonalInformationForm, styles));
