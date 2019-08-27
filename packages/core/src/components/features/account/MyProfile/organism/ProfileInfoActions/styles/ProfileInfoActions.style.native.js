@@ -17,7 +17,7 @@ export const ProfileProgressWrapper = styled.View`
 
 export const ProfileTextWrapper = styled.View`
   flex-shrink: 1;
-  padding-right: 10px;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export const ProfileTileWrapper = styled.View`

@@ -1,6 +1,6 @@
-/* eslint-disable */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   OuterCircleWrapper,
   HalfCircleOuterWrapper,
@@ -9,7 +9,7 @@ import {
   ImageWrapper,
   TextWrapper,
 } from '../styles/ProfileProgress.style.native';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+
 const smileyIcon = require('../../../../../../../assets/smiley-icon.png');
 
 function profileCompletionToDegrees(profileCompletion) {
@@ -37,18 +37,10 @@ export class ProfileProgress extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = this.getInitialStateFromProps(props);
+    this.state = ProfileProgress.getInitialStateFromProps(props);
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.profileCompletion !== state.profileCompletion) {
-      return getInitialStateFromProps(props);
-    }
-
-    return null;
-  }
-
-  getInitialStateFromProps({ profileCompletion }) {
+  static getInitialStateFromProps({ profileCompletion }) {
     const formattedprofileCompletion = Math.max(Math.min(100, profileCompletion), 0);
     const needHalfCircle2 = formattedprofileCompletion > 50;
     let halfCircle1Degree;
@@ -68,6 +60,14 @@ export class ProfileProgress extends PureComponent {
       needHalfCircle2,
       profileCompletion,
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.profileCompletion !== state.profileCompletion) {
+      return ProfileProgress.getInitialStateFromProps(props);
+    }
+
+    return null;
   }
 
   render() {
