@@ -130,6 +130,7 @@ const ShippingForm = ({
           </div>
         </FormSection>
         <CheckoutFooter
+          hideBackLink={!!orderHasPickUp}
           nextButtonText={shippingLabels.billingText}
           backLinkText={shippingLabels.backLinkText}
         />

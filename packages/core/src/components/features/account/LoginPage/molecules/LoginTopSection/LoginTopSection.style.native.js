@@ -48,6 +48,13 @@ const getSubHeadingStyle = props => {
   `;
 };
 
+const ImageWrapperStyle = () => {
+  return `
+  ${getTextBaseStyle};
+  align-self: ${'center'};
+  margin:${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0;
+  `;
+};
 const getDescriptionStyle = props => {
   const { theme } = props;
   const { typography, colorPalette } = theme;
@@ -71,4 +78,7 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle };
+const ImageWrapper = styled.Text`
+  ${ImageWrapperStyle}
+`;
+export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle, ImageWrapper };

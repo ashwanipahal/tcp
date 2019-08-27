@@ -16,6 +16,7 @@ class InputCheckBox extends React.Component {
     input: PropTypes.shape({}),
     hideCheckboxIcon: PropTypes.bool,
     meta: PropTypes.func,
+    fontSize: PropTypes.string,
     disabled: PropTypes.bool,
   };
 
@@ -27,6 +28,7 @@ class InputCheckBox extends React.Component {
     input: { val: '' },
     hideCheckboxIcon: false,
     meta: {},
+    fontSize: 'fs12',
     disabled: false,
   };
 
@@ -61,8 +63,8 @@ class InputCheckBox extends React.Component {
   }
 
   renderRight() {
-    const { rightText } = this.props;
-    return <BodyCopy mobileFontFamily="secondary" fontSize="fs12" text={rightText} />;
+    const { rightText, fontSize } = this.props;
+    return <BodyCopy mobileFontFamily="secondary" fontSize={fontSize || 'fs12'} text={rightText} />;
   }
 
   render() {
