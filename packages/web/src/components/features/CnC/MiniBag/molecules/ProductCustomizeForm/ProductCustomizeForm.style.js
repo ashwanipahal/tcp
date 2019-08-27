@@ -25,6 +25,11 @@ const styles = css`
     }
     .customSelectTitle {
       padding-bottom: 2px;
+      img {
+        border: solid 0.4px #000000;
+        margin-right: 5px;
+        border-radius: 5px;
+      }
     }
   }
   .button-wrapper {
@@ -48,6 +53,25 @@ const styles = css`
     font-size: 10px;
     margin-top: 12px;
     color: ${props => props.theme.colors.BUTTON.BLUE.NORMAL};
+  }
+
+  .color-selector {
+    cursor: pointer;
+    .dropdownliBottomBorder {
+      width: auto;
+      div {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        color: ${props => props.theme.colors.WHITE};
+      }
+    }
+    .dropdownActiveClass {
+      background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+    }
+    .dropdownUlBorder {
+      border: none;
+    }
   }
 
   .size-error {

@@ -40,15 +40,21 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     border: solid 2px ",
           [Function],
           ";
+    text-align: left;
     padding: 10px;
     background: ",
           [Function],
           ";
+    display: flex;
+    align-items: center;
     margin: 12px;
     .tick-icon-image {
       position: relative;
       top: 1px;
       right: 9px;
+      height: 23px;
+      width: 23px;
+      padding-left: 10px;
     }
   }
 
