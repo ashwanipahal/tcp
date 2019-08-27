@@ -351,6 +351,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "small": 6,
         },
       },
+      "isGymboree": false,
       "mediaQuery": Object {
         "large": "(min-width: 1024px)",
         "largeMax": "(max-width: 1439px)",

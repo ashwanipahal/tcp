@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AirmileBanner from '../views/AirmilesBanner.view';
 import { getAirmilesBannerData, getAirmilesBannerLabels } from './AirmilesBanner.selector';
 import { addAirmilesBannerRequest } from './AirmilesBanner.actions';
+import { isCanada } from '../../../../../../../utils';
 
 // @flow
 
@@ -20,15 +21,19 @@ export const AirmilesBannerContainer = ({
   airmilesBannerData,
   labels,
   addAirmilesBanner,
-}: Props) => (
-  <AirmileBanner
-    className={className}
-    onAddAirmilesBanner={onAddAirmilesBanner}
-    airmilesBannerData={airmilesBannerData}
-    labels={labels}
-    addAirmilesBanner={addAirmilesBanner}
-  />
-);
+}: Props) => {
+  return (
+    isCanada() && (
+      <AirmileBanner
+        className={className}
+        onAddAirmilesBanner={onAddAirmilesBanner}
+        airmilesBannerData={airmilesBannerData}
+        labels={labels}
+        addAirmilesBanner={addAirmilesBanner}
+      />
+    )
+  );
+};
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -40,7 +45,7 @@ export const mapDispatchToProps = dispatch => {
 
 function mapStateToProps(state) {
   return {
-    className: 'order-summary',
+    className: 'airmile-banner',
     airmilesBannerData: getAirmilesBannerData(state),
     labels: getAirmilesBannerLabels(state),
   };
