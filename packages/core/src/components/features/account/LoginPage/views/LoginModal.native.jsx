@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import CreateAccount from '../../CreateAccount';
 
-class OpenLoginModal extends React.Component<Props> {
+class OpenLoginModal extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,7 +63,6 @@ class OpenLoginModal extends React.Component<Props> {
 }
 
 OpenLoginModal.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
   setLoginModalMountState: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
   handleAfterLogin: PropTypes.func.isRequired,

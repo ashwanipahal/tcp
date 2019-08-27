@@ -52,7 +52,7 @@ const ImageWrapperStyle = () => {
   return `
   ${getTextBaseStyle};
   align-self: ${'center'};
-  margin:20px 0;
+  margin:${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0;
   `;
 };
 const getDescriptionStyle = props => {

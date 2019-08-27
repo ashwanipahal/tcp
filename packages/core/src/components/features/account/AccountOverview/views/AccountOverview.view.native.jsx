@@ -171,7 +171,7 @@ class AccountOverview extends PureComponent<Props> {
             {showModal && (
               <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
                 <ModalHeading>
-                  <React.Fragment>
+                  <>
                     {(getComponentId.login || getComponentId.favorites) && (
                       <BodyCopy
                         mobileFontFamily={['secondary']}
@@ -189,7 +189,7 @@ class AccountOverview extends PureComponent<Props> {
                         text={labels.lbl_overview_createAccount}
                       />
                     )}
-                  </React.Fragment>
+                  </>
                 </ModalHeading>
                 <LineWrapper>
                   <LineComp marginTop={5} borderWidth={2} borderColor="black" />
@@ -255,9 +255,36 @@ class AccountOverview extends PureComponent<Props> {
 }
 
 AccountOverview.propTypes = {
-  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   handleComponentChange: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+};
+
+AccountOverview.defaultProps = {
+  labels: {
+    lbl_overview_messages: '',
+    lbl_overview_help: '',
+    lbl_overview_app_settings: '',
+    lbl_overview_refer_friend: '',
+    lbl_overview_purchase_giftCards: '',
+    lbl_overview_manage_creditCard: '',
+    lbl_overview_apply_today: '',
+    lbl_overview_myFavoritesHeading: '',
+    lbl_overview_createAccount: '',
+    lbl_overview_login_text: '',
+    lbl_overview_join_text: '',
+    lbl_overview_logout_heading_Text_2: '',
+    lbl_overview_logout_heading_Text_1: '',
+    lbl_overview_myPlaceRewardsCardHeading: '',
+    lbl_overview_myPreferencesHeading: '',
+    lbl_overview_paymentHeading: '',
+    lbl_overview_addressBookHeading: '',
+    lbl_overview_profileInformationHeading: '',
+    lbl_overview_ordersHeading: '',
+    lbl_overview_earnPointsHeading: '',
+    lbl_overview_myWalletHeading: '',
+    lbl_overview_myPlaceRewardsHeading: '',
+  },
 };
 
 export default AccountOverview;

@@ -39,7 +39,7 @@ const LoginTopSection = props => {
       )}
 
       {variation === 'favorites' && (
-        <React.Fragment>
+        <>
           <ImageWrapper>
             <ImageComp source={favIcon} width={20} height={18} />
           </ImageWrapper>
@@ -57,11 +57,11 @@ const LoginTopSection = props => {
             textAlign="center"
             text={labels.login.lbl_login_favorites_modal_heading_1}
           />
-        </React.Fragment>
+        </>
       )}
 
       {variation === 'checkout' && (
-        <React.Fragment>
+        <>
           <BodyCopy
             fontSize="fs28"
             fontWeight="black"
@@ -87,7 +87,7 @@ const LoginTopSection = props => {
             text={labels.login.lbl_login_checkout_modal_heading_2}
           />
           <LineComp marginTop={25} marginBottom={0} />
-        </React.Fragment>
+        </>
       )}
     </View>
   );
@@ -112,6 +112,11 @@ LoginTopSection.defaultProps = {
       lbl_login_subDescription_heading_1: 'Signed up in store?\n',
       lbl_login_subDescription_heading_2:
         'An online account has been created with your email! Click here to reset your password.',
+      lbl_login_favorites_modal_heading: '',
+      lbl_login_favorites_modal_heading_1: '',
+      lbl_login_checkout_modal_heading: '',
+      lbl_login_checkout_modal_heading_1: '',
+      lbl_login_checkout_modal_heading_2: '',
     },
   },
 };
