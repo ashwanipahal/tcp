@@ -92,7 +92,13 @@ export function* startCartCheckout() {
   // this.store.dispatch(setVenmoPaymentInProgress(false));
   let res = yield call(getUnqualifiedItems);
   res = res || [];
-  yield all(res.map(item => put(BAG_PAGE_ACTIONS.setItemOOS(item))));
+  yield all(
+    res.map(({ orderItemId, isOOS }) =>
+      isOOS
+        ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
+        : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
+    )
+  );
   const oOSModalOpen = yield call(confirmStartCheckout);
   if (!oOSModalOpen) {
     yield call(checkoutCart);

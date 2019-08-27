@@ -52,7 +52,7 @@ export const ProfileInfoActions = ({
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.lbl_profile_getMorePoints}
-                <Anchor to="/account" underline fontSizeVariation="xlarge" data-locator="hereLink">
+                <Anchor to="/account" underline fontSizeVariation="xlarge" dataLocator="hereLink">
                   {labels.lbl_profile_getMorePointsLink}
                 </Anchor>
                 {'?'}

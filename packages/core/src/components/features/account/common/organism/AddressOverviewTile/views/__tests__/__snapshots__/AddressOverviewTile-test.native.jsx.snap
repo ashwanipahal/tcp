@@ -40,7 +40,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
-        data-locator="addressbook-overview-edit"
+        dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
         locator=""
         noLink={true}
@@ -162,7 +162,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
-        data-locator="addressbook-overview-edit"
+        dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
         locator=""
         noLink={true}
