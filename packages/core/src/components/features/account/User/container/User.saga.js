@@ -25,7 +25,6 @@ export function* getUserInfoSaga() {
     if (country === sites.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }
-
   } catch (err) {
     console.log('Error: error in fetching user profile information');
   }

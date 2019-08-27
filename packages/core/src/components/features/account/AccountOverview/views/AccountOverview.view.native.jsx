@@ -61,6 +61,14 @@ class AccountOverview extends PureComponent<Props> {
     );
   };
 
+  showloginModal = () => {
+    this.setState({
+      getComponentId: {
+        login: true,
+      },
+    });
+  };
+
   toggleModal = ({ getComponentId }) => {
     const { showModal } = this.state;
     this.setState({

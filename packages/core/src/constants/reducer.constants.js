@@ -97,6 +97,9 @@ export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 // device type detection
 export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
 
+// optimizely features reducer
+export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
+
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
   [SESSIONCONFIG_REDUCER_KEY]: SESSIONCONFIG_ACTION_PATTERN,
