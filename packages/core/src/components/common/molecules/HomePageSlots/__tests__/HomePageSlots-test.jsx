@@ -112,4 +112,17 @@ describe('HomePageSlots component', () => {
       </ModuleB>
       `);
   });
+
+  it('Should render null if no slot match', () => {
+    const component = mount(
+      <HomePageSlot
+        slot_2={{
+          name: 'moduleX',
+        }}
+        modules={modulesDataMock}
+      />
+    );
+
+    expect(component.children()).toMatchInlineSnapshot(`null`);
+  });
 });
