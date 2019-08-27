@@ -17,9 +17,9 @@ import GLOBAL_CONSTANTS from '../constants';
 
 function* bootstrap(params) {
   const {
-    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType, locals },
+    payload: { name: pageName = 'homepage', modules, apiConfig, deviceType },
   } = params;
-  const { country, currency, language } = locals;
+  const { country, currency, language } = apiConfig;
   const pagesList = [pageName];
   const modulesList = modules;
   try {
