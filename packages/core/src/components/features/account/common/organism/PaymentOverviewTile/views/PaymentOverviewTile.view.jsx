@@ -15,10 +15,6 @@ export const PaymentOverviewTile = ({
   giftCardList,
   venmoCardList,
 }) => {
-  console.log('furkn-----------------------------');
-  console.log(venmoCardList);
-  console.log('furkn-----------------------------');
-
   const cardIconMapping = {
     DISC: 'disc-small',
     MC: 'mc-small',
