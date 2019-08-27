@@ -117,7 +117,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           target=""
           title="Girl"
         >
-          <WithTheme(Component)
+          <WithTheme(DamImage)
             className="image-cta"
             data-locator="moduleN_image_0"
             imgData={
@@ -160,7 +160,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           target=""
           title="Toddler Girl"
         >
-          <WithTheme(Component)
+          <WithTheme(DamImage)
             className="image-cta"
             data-locator="moduleN_image_1"
             imgData={
@@ -203,7 +203,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           target=""
           title="Boy"
         >
-          <WithTheme(Component)
+          <WithTheme(DamImage)
             className="image-cta"
             data-locator="moduleN_image_2"
             imgData={
@@ -246,7 +246,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           target=""
           title="Tod Boy"
         >
-          <WithTheme(Component)
+          <WithTheme(DamImage)
             className="image-cta"
             data-locator="moduleN_image_3"
             imgData={
@@ -289,7 +289,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           target=""
           title="Baby"
         >
-          <WithTheme(Component)
+          <WithTheme(DamImage)
             className="image-cta"
             data-locator="moduleN_image_4"
             imgData={
@@ -332,7 +332,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           target=""
           title="Alt"
         >
-          <WithTheme(Component)
+          <WithTheme(DamImage)
             className="image-cta"
             data-locator="moduleN_image_5"
             imgData={

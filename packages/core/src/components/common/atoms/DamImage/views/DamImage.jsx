@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
-import withLazyLoad from '../../../hoc/withLazyLoad';
+import LazyLoadImage from '../../LazyImage';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -50,6 +50,7 @@ const DamImage = props => {
     imgData,
     basePath,
     imgPathSplitter,
+    lazyLoad,
     ...other
   } = props;
 
@@ -59,20 +60,25 @@ const DamImage = props => {
     <picture>
       <source
         media={`(min-width: ${breakpoints.values.lg}px)`}
-        srcSet={getBreakpointImgUrl('lg', props)}
+        data-srcset={getBreakpointImgUrl('lg', props)}
       />
 
       <source
         media={`(min-width: ${breakpoints.values.sm}px)`}
-        srcSet={getBreakpointImgUrl('sm', props)}
+        data-srcset={getBreakpointImgUrl('sm', props)}
       />
 
-      <img src={getBreakpointImgUrl('xs', props)} alt={alt} {...other} />
+      {lazyLoad ? (
+        <LazyLoadImage src={getBreakpointImgUrl('xs', props)} alt={alt} {...other} />
+      ) : (
+        <img src={getBreakpointImgUrl('xs', props)} alt={alt} {...other} />
+      )}
     </picture>
   );
 };
 
 DamImage.defaultProps = {
+  lazyLoad: true,
   theme: {},
   imgConfigs: [],
   imgData: {
@@ -85,6 +91,8 @@ DamImage.defaultProps = {
 };
 
 DamImage.propTypes = {
+  /* Load the image laziliy or not */
+  lazyLoad: PropTypes.bool,
   /* StyleComponent theme, will come from context */
   theme: PropTypes.shape({ breakpoints: PropTypes.object }),
 
@@ -117,5 +125,5 @@ DamImage.propTypes = {
   imgPathSplitter: PropTypes.string,
 };
 
-export default withTheme(withLazyLoad(DamImage));
+export default withTheme(DamImage);
 export { DamImage as DamImageVanilla };
