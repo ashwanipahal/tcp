@@ -6,6 +6,9 @@ const styles = css`
   justify-content: space-between;
   box-sizing: border-box;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  .back-space {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
   .back-link {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     color: ${props => props.theme.colors.PRIMARY.BLUE};
