@@ -7,6 +7,8 @@
     "postinstall-local": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
     "start:web": "cross-env NODE_ENV=development yarn workspace @tcp/web start",
+    "start:app:ios": "yarn workspace mobileapp run:ios",
+    "start:app:android": "yarn workspace mobileapp run:android",
     "build:web:prod": "yarn --production && yarn workspace @tcp/web build && yarn cleanup:mobileapp",
     "start:web:prod": "yarn workspace @tcp/web start",
     "cleanup:mobileapp": "rm -rf ./packages/mobileapp",
