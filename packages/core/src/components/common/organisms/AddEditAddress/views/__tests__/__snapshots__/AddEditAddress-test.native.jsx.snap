@@ -15,25 +15,6 @@ exports[`AddEditAddress Native should render correctly 1`] = `
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
   >
-    <Styled(Text)>
-      <Styled(BodyCopy)
-        fontSize="fs16"
-        fontWeight="extrabold"
-        mobileFontFamily={
-          Array [
-            "secondary",
-          ]
-        }
-      />
-    </Styled(Text)>
-    <Styled(View)>
-      <Styled(LineComp)
-        borderColor="black"
-        borderWidth={1}
-        marginBottom={0}
-        marginTop={5}
-      />
-    </Styled(View)>
     <ReduxForm
       addressFormLabels={Object {}}
       currentForm="AddAddress"
@@ -56,6 +37,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       shouldWarn={[Function]}
       submitAddressFormAction={[Function]}
       submitAsSideEffect={false}
+      toggleAddressModal={[Function]}
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}
@@ -80,25 +62,6 @@ exports[`AddEditAddress Native should test with verification modal 1`] = `
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
   >
-    <Styled(Text)>
-      <Styled(BodyCopy)
-        fontSize="fs16"
-        fontWeight="extrabold"
-        mobileFontFamily={
-          Array [
-            "secondary",
-          ]
-        }
-      />
-    </Styled(Text)>
-    <Styled(View)>
-      <Styled(LineComp)
-        borderColor="black"
-        borderWidth={1}
-        marginBottom={0}
-        marginTop={5}
-      />
-    </Styled(View)>
     <Connect(AddressVerification)
       onError={[Function]}
       onSuccess={[Function]}

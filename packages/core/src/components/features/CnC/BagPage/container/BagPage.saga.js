@@ -24,10 +24,11 @@ export function* getOrderDetailSaga() {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
 }
+
 export function* getCartDataSaga(payload) {
   try {
     const {
-      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo },
+      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo } = {},
     } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test

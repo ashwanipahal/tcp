@@ -132,7 +132,7 @@ class DropDown extends React.PureComponent<Props> {
 
       this.setState({ top: topMargin.top });
       if (showInBottom) {
-        this.setState({ flatListBottom: 120 });
+        this.setState({ flatListBottom: 300 });
       } else if (calculateHeight > windowHeight) {
         this.setState({ flatListTop: 120, flatListBottom: 200 });
       }
@@ -254,6 +254,7 @@ class DropDown extends React.PureComponent<Props> {
                   data={data}
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.key}
+                  bounces={false}
                   ItemSeparatorComponent={() => <Separator />}
                 />
               )}

@@ -31,7 +31,6 @@ export class CheckoutProgressIndicator extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    isMobile: false,
     cartOrderItems: BagPageSelector.getOrderItems(state),
   };
 };
