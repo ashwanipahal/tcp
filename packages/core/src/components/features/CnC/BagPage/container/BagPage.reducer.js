@@ -7,6 +7,29 @@ const initialState = fromJS({
   errors: false,
   moduleXContent: [],
   showConfirmationModal: false,
+  uiFlags: {
+    isPayPalEnabled: false,
+    lastItemUpdatedId: null,
+    isTotalEstimated: true,
+    isClosenessQualifier: false,
+    recentlyRemovedItemsCount: 0,
+    shouldRedirectBackTo: false,
+    cartItemForRecommendations: null,
+    largeProductImagesLoading: false,
+    isCartItemsUpdating: {
+      isItemDeleted: false,
+      isItemUpdated: false,
+    },
+    isPickupStoreUpdating: false,
+    isItemMovedToSflList: false,
+    cartItemLargeImagesViewer: {
+      opened: false,
+      currentIndex: 0,
+      itemId: '',
+      productId: '',
+    },
+    isPayPalModalActionOOS: false,
+  },
 });
 
 function updateItem(state, itemId) {
@@ -20,6 +43,10 @@ function updateItem(state, itemId) {
     );
   }
   return state;
+}
+
+function setCartItemsUpdating(state, isCartItemUpdating) {
+  return state.setIn(['uiFlags', 'isCartItemsUpdating'], isCartItemUpdating);
 }
 
 const BagPageReducer = (state = initialState, action) => {
@@ -38,6 +65,8 @@ const BagPageReducer = (state = initialState, action) => {
       return state.set('showConfirmationModal', true);
     case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:
       return state.set('showConfirmationModal', false);
+    case BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING:
+      return setCartItemsUpdating(state, action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
