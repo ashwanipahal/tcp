@@ -30,13 +30,11 @@ export class AddressFields extends React.PureComponent {
     addressFormLabels: PropTypes.shape({}).isRequired,
     formName: PropTypes.string.isRequired,
     formSection: PropTypes.string,
-    checkPOBoxAddress: PropTypes.func,
     loadShipmentMethods: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     formSection: '',
-    checkPOBoxAddress: () => {},
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -66,15 +64,7 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
-    dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
     this.setState({ dropDownItem: address.state });
-  };
-
-  checkHasPoAddress = () => {
-    const { checkPOBoxAddress } = this.props;
-    if (checkPOBoxAddress) {
-      checkPOBoxAddress();
-    }
   };
 
   changeShipmentMethods = () => {
@@ -113,9 +103,8 @@ export class AddressFields extends React.PureComponent {
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
-              dispatch(change(formName, `${formSection}.addressLine1`, data));
+              dispatch(change(formName, `${formSection}.addressLine1`, inputValue));
               this.handlePlaceSelected(data, inputValue);
-              this.checkHasPoAddress();
             }}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
@@ -128,7 +117,6 @@ export class AddressFields extends React.PureComponent {
             label={addressFormLabels.addressLine2}
             component={TextBox}
             dataLocator="addnewaddress-addressl2"
-            onValueChange={this.checkHasPoAddress}
           />
         </AddressSecondWrapper>
         <Field

@@ -14,6 +14,7 @@ import {
   EmailSignUpForm,
   ShippingFormWrapper,
 } from '../styles/ShippingForm.styles.native';
+import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 
 const ShippingForm = ({
   shippingLabels,
@@ -27,9 +28,11 @@ const ShippingForm = ({
   isOrderUpdateChecked,
   emailSignUpLabels,
   addressLabels: { addressFormLabels },
-  checkPOBoxAddress,
   addressPhoneNo,
   loadShipmentMethods,
+  navigation,
+  handleSubmit,
+  submitShippingForm,
 }) => {
   return (
     <ShippingFormWrapper>
@@ -40,7 +43,6 @@ const ShippingForm = ({
           formName="checkoutShipping"
           formSection="address"
           dispatch={dispatch}
-          checkPOBoxAddress={checkPOBoxAddress}
           addressPhoneNo={addressPhoneNo}
           loadShipmentMethods={loadShipmentMethods}
         />
@@ -111,6 +113,12 @@ const ShippingForm = ({
           dispatch={dispatch}
         />
       </FormSection>
+      <CnCTemplate
+        navigation={navigation}
+        btnText="NEXT:BILLING"
+        routeToPage=""
+        onPress={handleSubmit(submitShippingForm)}
+      />
     </ShippingFormWrapper>
   );
 };
@@ -123,13 +131,12 @@ const validateMethod = createValidateMethod({
 
 ShippingForm.propTypes = {
   addressLabels: PropTypes.shape({}).isRequired,
-  // handleSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   isOrderUpdateChecked: PropTypes.bool,
   shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
-  checkPOBoxAddress: PropTypes.func,
   addressPhoneNo: PropTypes.number,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
@@ -137,12 +144,13 @@ ShippingForm.propTypes = {
   orderHasPickUp: PropTypes.bool,
   shipmentMethods: PropTypes.shape([]),
   loadShipmentMethods: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  submitShippingForm: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {
   isOrderUpdateChecked: false,
   selectedShipmentId: null,
-  checkPOBoxAddress: () => {},
   addressPhoneNo: null,
   isGuest: true,
   isUsSite: true,
