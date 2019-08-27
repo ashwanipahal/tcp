@@ -4,9 +4,8 @@ import { getIconPath } from '../../../../../../utils';
 const selectedIcon = getIconPath('selected-item');
 
 export default css`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  width: 156px;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   .selected-item {
     background: url(${selectedIcon}) no-repeat left top;
@@ -14,5 +13,6 @@ export default css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
     padding-bottom: 8px;
+    display: flex;
   }
 `;
