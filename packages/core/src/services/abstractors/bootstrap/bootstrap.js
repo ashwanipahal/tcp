@@ -106,7 +106,6 @@ const bootstrap = async (pages, modules) => {
 
   try {
     const bootstrapData = await fetchBootstrapData(bootstrapParams, modules);
-    console.log(bootstrapData.labels.global);
 
     for (let i = 0; i < pages.length; i += 1) {
       const page = pages[i];
