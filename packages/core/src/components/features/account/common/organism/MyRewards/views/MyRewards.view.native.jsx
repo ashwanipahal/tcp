@@ -1,16 +1,15 @@
 import React from 'react';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { View } from 'react-native';
+import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
+import { getScreenWidth } from '@tcp/core/src/utils';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
   CouponHeading,
-  StyledBodyCopy,
   StyledAnchorWrapper,
   AnchorLeftMargin,
 } from '../styles/MyRewards.style.native';
 import Anchor from '../../../../../../common/atoms/Anchor';
-import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
-import { getScreenWidth } from '@tcp/core/src/utils';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
@@ -54,8 +53,8 @@ class MyRewards extends React.PureComponent<props> {
         isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
         className="elem-mb-LRG"
       />
-  );
-};
+    );
+  };
 
   render() {
     const { labels, coupons } = this.props;
