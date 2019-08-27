@@ -1,6 +1,5 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -18,17 +17,13 @@ import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
+import Script from '../components/common/atoms/Script';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 
 // constants
 import constants from '../constants';
-
-const Script = dynamic(
-  () => import('../components/common/atoms/Script').then(module => module.ScriptWithErrorBoundary),
-  { ssr: false }
-);
 
 class TCPWebApp extends App {
   constructor(props) {
@@ -172,7 +167,9 @@ class TCPWebApp extends App {
           </Provider>
         </ThemeProvider>
         {/* Output analytics scripts */}
-        {process.env.ANALYTICS && <Script src="/foo.js" />}
+        {process.env.ANALYTICS && (
+          <Script src="https://postman-echo.com/response-headers?Content-Type=text/javascript" />
+        )}
       </Container>
     );
   }
