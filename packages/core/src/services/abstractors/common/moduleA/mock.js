@@ -81,7 +81,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
     ],
     ribbonBanner: [
       {
-        position: 'right',
+        ribbonPlacement: 'right',
         textItems: [
           { text: 'Order By XX/XX', style: 'ribbon_default_text' },
           { text: 'For Easter Delivery!', style: 'ribbon_default_text' },

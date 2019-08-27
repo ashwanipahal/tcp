@@ -2,10 +2,7 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { ParentContainer } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
-import { ModalHeading, LineWrapper } from '../styles/AddEditAddress.style.native';
 import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
 import AddressFormComponent from '../../AddressForm/AddressForm';
 
@@ -24,18 +21,6 @@ const AddressBook = props => {
   return (
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ModalHeading>
-          <BodyCopy
-            mobileFontFamily={['secondary']}
-            fontWeight="extrabold"
-            fontSize="fs16"
-            text={addressFormLabels.addAddressHeading}
-          />
-        </ModalHeading>
-        <LineWrapper>
-          <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-        </LineWrapper>
-
         {currentForm === 'VerificationModal' && (
           <AddressVerification
             onSuccess={submitAddressFormAction}
@@ -50,6 +35,7 @@ const AddressBook = props => {
             onSubmit={verifyAddressAction}
             addressFormLabels={addressFormLabels}
             isEdit={isEdit}
+            toggleAddressModal={toggleAddressModal}
             isMakeDefaultDisabled={isMakeDefaultDisabled}
             submitAddressFormAction={submitAddressFormAction}
             onCancel={onCancel}

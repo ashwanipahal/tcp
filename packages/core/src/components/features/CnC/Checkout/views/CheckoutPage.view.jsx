@@ -105,7 +105,7 @@ class CheckoutPage extends React.PureComponent {
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} />;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop />;
   }
 }
 
@@ -128,7 +128,6 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
-  // onPickupSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
 };
