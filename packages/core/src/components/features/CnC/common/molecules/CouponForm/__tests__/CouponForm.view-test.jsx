@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CouponForm } from '../views/CouponForm.view';
+import { CouponForm, onSubmitSuccess } from '../views/CouponForm.view';
 
 describe.only('CouponForm Component', () => {
   let component;
@@ -30,6 +30,15 @@ describe.only('CouponForm Component', () => {
   it('CouponForm should render with error correctly', () => {
     props.error = { msg: '1234' };
     component = shallow(<CouponForm {...props} />);
+    component.instance().renderTextBox({ input: { value: '123' } });
+    component.instance().toggleTouched();
+    component.instance().handleSubmit();
     expect(component).toMatchSnapshot();
+  });
+
+  it('on Submit Success', () => {
+    const reset = jest.fn();
+    onSubmitSuccess(undefined, undefined, { reset });
+    expect(reset.mock.calls.length).toBe(1);
   });
 });
