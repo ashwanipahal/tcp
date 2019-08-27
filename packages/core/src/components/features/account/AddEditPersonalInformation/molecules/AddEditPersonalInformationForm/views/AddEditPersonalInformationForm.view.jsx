@@ -14,6 +14,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/AddEditPersonalInformationForm.style';
+import { isCanada } from '../../../../../../../utils';
 
 export const AddEditPersonalInformationForm = ({
   className,
@@ -22,10 +23,15 @@ export const AddEditPersonalInformationForm = ({
   errorMessage,
   handleSubmit,
   birthMonthOptionsMap,
-  birthYearOptionsMap
+  birthYearOptionsMap,
 }) => {
   return (
-    <form name="AddEditPersonalInformationForm" className={className} onSubmit={handleSubmit} noValidate>
+    <form
+      name="AddEditPersonalInformationForm"
+      className={className}
+      onSubmit={handleSubmit}
+      noValidate
+    >
       {errorMessage && (
         <Notification
           className="elem-mt-MED"
@@ -59,17 +65,17 @@ export const AddEditPersonalInformationForm = ({
         <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
           <Field
             placeholder={labels.lbl_profile_personal_info_email}
-            name="email"
-            id="email"
+            name="emailAddress"
+            id="emailAddress"
             component={TextBox}
             dataLocator="addnewaddress-email"
           />
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
-            placeholder={labels.lbl_profile_personal_info_phone}
-            name="phone"
-            id="phone"
+            placeholder={labels.lbl_profile_personal_info_phoneNumber}
+            name="phoneNumber"
+            id="phoneNumber"
             component={TextBox}
             dataLocator="addnewaddress-phnumber"
             type="tel"
@@ -77,17 +83,10 @@ export const AddEditPersonalInformationForm = ({
         </Col>
       </Row>
       <Row fullBleed className="elem-mt-MED">
-        <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={{ small: true }}>
-          <BodyCopy component="div">
-            {labels.lbl_profile_personal_info_birthday}
-          </BodyCopy>
-        </Col>
-      </Row>
-
-      <Row fullBleed className="elem-mt-MED">
         <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+          <BodyCopy component="div">{labels.lbl_profile_personal_info_birthday}</BodyCopy>
           <Field
-           // placeholder={labels.lbl_profile_personal_info_birthday}
+            placeholder={labels.lbl_profile_personal_info_month}
             name="birthMonth"
             id="birthMonth"
             component={SelectBox}
@@ -97,9 +96,9 @@ export const AddEditPersonalInformationForm = ({
             enableSuccessCheck={false}
           />
         </Col>
-        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+        <Col colSize={{ small: 3, medium: 2, large: 3 }} className="elem-mt-MED">
           <Field
-           //  placeholder={labels.lbl_profile_personal_info_birthday}
+            placeholder={labels.lbl_profile_personal_info_year}
             name="birthYear"
             id="birthYear"
             component={SelectBox}
@@ -109,14 +108,17 @@ export const AddEditPersonalInformationForm = ({
             enableSuccessCheck={false}
           />
         </Col>
-        {/* <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-          {isCanada && <Field component={LabeledInput} name="airMilesAccountNumber" title={titleAirMilesAccountNumber} className="air-miles-card" >
-          <ButtonTooltip className="air-miles-card-info" type="info" direction="top">
-            <p>Provide your Collector Number to get miles</p>
-          </ButtonTooltip>
-          <strong className="hint-text">Provide your Collector Number to get miles</strong>
-          </Field>}
-        </Col> */}
+        <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+          <BodyCopy component="div">{labels.lbl_profile_personal_info_birthday}</BodyCopy>
+          {isCanada() && (
+            <Field
+              name="airMilesAccountNumber"
+              id="airMilesAccountNumber"
+              component={TextBox}
+              dataLocator="airMilesAccountNumber"
+            />
+          )}
+        </Col>
       </Row>
       <Row fullBleed className="elem-mt-MED">
         <Col
@@ -227,7 +229,15 @@ AddEditPersonalInformationForm.defaultProps = {
 };
 
 const validateMethod = createValidateMethod(
-  getStandardConfig(['firstName', 'lastName', 'email'])
+  getStandardConfig([
+    'firstName',
+    'lastName',
+    'phoneNumber',
+    'associateId',
+    'airMilesAccountNumber',
+    { emailAddress: 'emailAddressNoAsync' },
+    { userBirthMonth: 'dateOfBirthBothRequired' },
+  ])
 );
 
 export default reduxForm({
