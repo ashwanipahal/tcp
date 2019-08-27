@@ -77,6 +77,7 @@ class TCPWebApp extends App {
       const setCookieHeaderList = setCookie.parse(res).map(({ name, value }) => ({
         [name]: JSON.parse(value),
       }));
+
       const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
       if (optimizelyHeader) {
         optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
