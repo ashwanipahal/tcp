@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 const StyledTextBoxWrapper = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-bottom: ${props => (props.marginBottom ? props.theme.spacing.ELEM_SPACING.XL : 0)};
 `;
 
 const getInputBottomColor = props => {
@@ -45,6 +45,10 @@ const StyledErrorIcon = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
+const StyledSuccessCheck = styled.View`
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
 const StyledErrorWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   display: flex;
@@ -71,4 +75,5 @@ export {
   StyledTextBoxWrapper,
   StyledSuccessIcon,
   HiddenView,
+  StyledSuccessCheck,
 };

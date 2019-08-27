@@ -11,9 +11,11 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig, getAPIConfig, isDevelopment } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
+import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { Header, Footer } from '../components/features/content';
+import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
@@ -24,6 +26,11 @@ import CHECKOUT_STAGES from './App.constants';
 import constants from '../constants';
 
 class TCPWebApp extends App {
+  constructor(props) {
+    super(props);
+    this.theme = getCurrentTheme();
+  }
+
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
@@ -134,6 +141,11 @@ class TCPWebApp extends App {
     return Object.assign(pageProps, compProps);
   }
 
+  getSEOTags = pageId => {
+    const seoConfig = deriveSEOTags(pageId);
+    return <SEOTags seoConfig={seoConfig} />;
+  };
+
   render() {
     const { Component, pageProps, store, router } = this.props;
     let isNonCheckoutPage = true;
@@ -144,13 +156,13 @@ class TCPWebApp extends App {
         isNonCheckoutPage = false;
       }
     }
-    const theme = getCurrentTheme();
     return (
       <Container>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
             <Grid>
+              {this.getSEOTags(Component.pageId)}
               {isNonCheckoutPage && <Header />}
               {!isNonCheckoutPage && <CheckoutHeader />}
               <Loader />

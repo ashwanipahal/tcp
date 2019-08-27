@@ -63,7 +63,7 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, handleSubmit, onSubmit } = this.props;
+    const { labels, handleSubmit, onSubmit, variation } = this.props;
     const { type } = this.state;
     return (
       <View {...this.props}>
@@ -118,6 +118,17 @@ class LoginForm extends React.PureComponent<Props> {
           customStyle={styles.loginButtonStyle}
           onPress={handleSubmit(onSubmit)}
         />
+
+        {variation === 'checkout' && (
+          <CustomButton
+            color={colorPallete.black}
+            fill="WHITE"
+            buttonVariation="variable-width"
+            customStyle={styles.loginButtonStyle}
+            text={labels.login.lbl_login_modal_checkout_as_guest}
+          />
+        )}
+
         <Anchor
           style={styles.underline}
           class="underlink"

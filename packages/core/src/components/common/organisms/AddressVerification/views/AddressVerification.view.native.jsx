@@ -17,6 +17,7 @@ import {
   SuggestWrapper,
   SuggestSectionWrapper,
   VerifyAddressWrapper,
+  OptionAddressLineWrapper,
 } from '../styles/AddressVerification.style.native';
 import CONSTANTS from '../AddressVerification.constants';
 import AddressOption from '../../../molecules/AddressOption';
@@ -205,18 +206,18 @@ export default class AddressVerification extends React.PureComponent {
       const { optionalAddressLine } = this.state;
       return (
         <SuggestSectionWrapper>
-          <AddressOptionWrapper>
+          <OptionAddressLineWrapper>
             <TextBox
               input={{
                 value: optionalAddressLine,
                 name: 'optionalAddressLine',
               }}
-              label={this.labels.verifyAddressLabels.addressLine2}
+              label={verifyAddressLabels.addressLine2}
               onChangeText={text => this.setState({ optionalAddressLine: text })}
               id="optionalAddressLine"
               dataLocator="verifyaddress-addressLine2InPopUp"
             />
-          </AddressOptionWrapper>
+          </OptionAddressLineWrapper>
         </SuggestSectionWrapper>
       );
     }
