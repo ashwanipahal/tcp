@@ -10,13 +10,8 @@ import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import { UnderlineStyle, ImageWrapper, FavtWrapper } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
-import LineComp from '../../../../common/atoms/Line';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import {
-  ModalHeading,
-  ModalViewWrapper,
-  LineWrapper,
-} from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
+import { ModalViewWrapper } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 
 import {
   LogoutWrapper,
@@ -144,7 +139,11 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: false, createAccount: true, favorites: false },
+                    getComponentId: {
+                      login: false,
+                      createAccount: true,
+                      favorites: false,
+                    },
                   })
                 }
               />
@@ -162,38 +161,26 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: true, createAccount: false, favorites: false },
+                    getComponentId: {
+                      login: true,
+                      createAccount: false,
+                      favorites: false,
+                    },
                   })
                 }
               />
             </LoggedinWrapper>
 
             {showModal && (
-              <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-                <ModalHeading>
-                  <>
-                    {(getComponentId.login || getComponentId.favorites) && (
-                      <BodyCopy
-                        mobileFontFamily={['secondary']}
-                        fontWeight="extrabold"
-                        fontSize="fs16"
-                        text={labels.lbl_overview_login_text}
-                      />
-                    )}
-
-                    {getComponentId.createAccount && (
-                      <BodyCopy
-                        mobileFontFamily={['secondary']}
-                        fontWeight="extrabold"
-                        fontSize="fs16"
-                        text={labels.lbl_overview_createAccount}
-                      />
-                    )}
-                  </>
-                </ModalHeading>
-                <LineWrapper>
-                  <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-                </LineWrapper>
+              <ModalNative
+                heading={
+                  ((getComponentId.login || getComponentId.favorites) &&
+                    `${labels.lbl_overview_login_text}`) ||
+                  (getComponentId.createAccount && `${labels.lbl_overview_createAccount}`)
+                }
+                isOpen={showModal}
+                onRequestClose={this.toggleModal}
+              >
                 <SafeAreaView>
                   <ModalViewWrapper>
                     {this.renderComponent({
