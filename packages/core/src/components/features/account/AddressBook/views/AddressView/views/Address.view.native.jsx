@@ -46,7 +46,6 @@ export class AddressView extends React.Component {
   };
 
   setSelectedAddress = address => {
-    console.log('setSelectedAddress----');
     this.setState({ selectedAddress: address });
   };
 
