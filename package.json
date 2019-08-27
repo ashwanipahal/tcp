@@ -94,7 +94,7 @@
     "*.{js,jsx}": [
       "eslint",
       "stylelint",
-      "yarn test:staged",
+      "yarn test:web",
       "yarn test:app:staged"
     ],
     "*.css": "stylelint"
@@ -114,6 +114,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "core-js": "3.2.1",
+    "react-component-lazy-loader": "1.1.2",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "immutable": "^4.0.0-rc.12",
@@ -128,6 +129,7 @@
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "vanilla-lazyload": "^12.0.0"
   }
 }
