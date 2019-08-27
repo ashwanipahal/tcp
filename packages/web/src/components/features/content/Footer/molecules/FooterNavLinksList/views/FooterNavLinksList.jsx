@@ -21,9 +21,11 @@ const FooterNavLinksList = ({
   openTrackOrder,
   isLoggedIn,
   setLoginModalMountState,
+  closeNavigationDrawer,
 }) => {
   const trackLink = e => {
     e.preventDefault();
+    closeNavigationDrawer();
     if (!isLoggedIn) openTrackOrder({ state: true });
     else routerPush('/account', '/account');
   };
@@ -81,12 +83,14 @@ FooterNavLinksList.propTypes = {
   openTrackOrder: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   setLoginModalMountState: PropTypes.func,
+  closeNavigationDrawer: PropTypes.func,
 };
 
 FooterNavLinksList.defaultProps = {
   openTrackOrder: () => null,
   isLoggedIn: false,
   setLoginModalMountState: () => null,
+  closeNavigationDrawer: () => null,
 };
 
 export default withStyles(FooterNavLinksList, styles);

@@ -40,6 +40,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "error": "#c8102e",
         "gray": Object {
+          "1000": "#6d7278",
           "300": "#f3f3f3",
           "500": "#d8d8d8",
           "600": "#9b9b9b",
@@ -93,6 +94,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
+          "noMprPlcc": "#6d7278",
           "plcc": "#254f6e",
           "plccLight": "#dbebf8",
         },
@@ -351,6 +353,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "small": 6,
         },
       },
+      "isGymboree": false,
       "mediaQuery": Object {
         "large": "(min-width: 1024px)",
         "largeMax": "(max-width: 1439px)",

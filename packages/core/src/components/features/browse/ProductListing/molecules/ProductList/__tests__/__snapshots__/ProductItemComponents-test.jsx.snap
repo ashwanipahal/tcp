@@ -131,25 +131,32 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
     inheritedStyles="product-title-content"
     to=""
   >
-    <ForwardRef
-      className={null}
-      color="text.primary"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs13",
-          "fs14",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
+    <Dotdotdot
+      clamp={2}
+      tagName="div"
+      truncationChar="…"
+      useNativeClamp={false}
     >
-      
-    </ForwardRef>
+      <ForwardRef
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs12",
+            "fs13",
+            "fs14",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        
+      </ForwardRef>
+    </Dotdotdot>
   </ForwardRef>
   Object {}
 </div>
@@ -161,11 +168,16 @@ exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = 
   isDisabled={true}
   onClick={[MockFunction]}
 >
-  <Styled(Image)
-    alt="Add-to-favorite"
-    data-locator="global-favorite-button"
-    src="/static/images/add-to-favorite.svg"
-  />
+  <button
+    class="clear-button"
+  >
+    <Styled(Image)
+      alt="Add-to-favorite"
+      data-locator="global-favorite-button"
+      src="/static/images/add-to-favorite.svg"
+      title="addToFavorite"
+    />
+  </button>
 </div>
 `;
 
@@ -194,14 +206,34 @@ exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
 `;
 
 exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
-<div
+<ForwardRef
   className="loyalty-text-container"
+  color="text.primary"
+  component="p"
   dangerouslySetInnerHTML={
     Object {
       "__html": "",
     }
   }
   data-locator="global-loyalty-text"
+  fontFamily="secondary"
+  fontSize={
+    Array [
+      "fs10",
+      "fs12",
+      "fs14",
+    ]
+  }
+  fontWeight={
+    Array [
+      "extrabold",
+      "semibold",
+      "semibold",
+    ]
+  }
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
 />
 `;
 
