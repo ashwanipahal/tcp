@@ -4,14 +4,18 @@ exports[`CartItemRadioButtons Component LabeledRadioButton should render correct
 <label
   className=""
   htmlFor="_2"
+  isChecked={true}
 >
-  <input
-    checked={true}
-    id="_2"
-    type="radio"
-  />
-  <span
-    className="checkmark"
-  />
+  <div
+    className="radio-button-checked"
+  >
+    <input
+      checked={true}
+      className={null}
+      disabled={false}
+      id="_2"
+      type="radio"
+    />
+  </div>
 </label>
 `;

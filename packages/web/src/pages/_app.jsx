@@ -95,6 +95,7 @@ class TCPWebApp extends App {
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersList,
+        locals,
       };
       store.dispatch(bootstrapData(payload));
     }
@@ -136,7 +137,7 @@ class TCPWebApp extends App {
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
-                <Component {...pageProps} router={router} />
+                <Component {...pageProps} />
                 {isNonCheckoutPage && <Footer />}
               </div>
             </Grid>

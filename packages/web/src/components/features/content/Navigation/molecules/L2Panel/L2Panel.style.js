@@ -6,7 +6,7 @@ export default css`
   left: 0;
   width: 100%;
   background: ${props => props.theme.colorPalette.white};
-  z-index: 10;
+  z-index: ${props => props.theme.zindex.zDrawer};
 
   .shop-by-size-links {
     padding: 10px 14px 10px;

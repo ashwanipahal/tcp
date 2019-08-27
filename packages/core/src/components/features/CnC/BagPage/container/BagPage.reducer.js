@@ -9,14 +9,14 @@ const initialState = fromJS({
   showConfirmationModal: false,
 });
 
-function updateItem(state, itemId) {
+function updateItem(state, itemId, status) {
   const indexValue = state
     .getIn(['orderDetails', 'orderItems'])
     .findIndex(item => item.getIn(['itemInfo', 'itemId']) === itemId);
   if (indexValue >= 0) {
     return state.setIn(
       ['orderDetails', 'orderItems', indexValue, 'miscInfo', 'availability'],
-      AVAILABILITY.SOLDOUT
+      status
     );
   }
   return state;
@@ -33,7 +33,9 @@ const BagPageReducer = (state = initialState, action) => {
     case 'CART_SUMMARY_SET_ORDER_ID':
       return state.setIn(['orderDetails', 'orderId'], action.orderId);
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
-      return updateItem(state, action.payload);
+      return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
+    case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
+      return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
       return state.set('showConfirmationModal', true);
     case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:
