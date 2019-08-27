@@ -193,7 +193,7 @@ class DropdownList extends React.Component {
     const isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
     const MAX_FILTER_OPTION_FOR_COLUMN = 27;
     return (
-      <div className={className}>
+      <div className={`${className} common-dropdown`}>
         <div className={cssClassName('item-list-wrapper')}>
           <ul
             ref={this.captureItemsListRef}

@@ -142,7 +142,9 @@ export const getProfileInfoTileData = createSelector(
     if (personalInformation) {
       firstName = personalInformation.get('firstName');
       lastName = personalInformation.get('lastName');
-      emailAddress = personalInformation.get('emailAddress').toLowerCase();
+      emailAddress =
+        personalInformation.get('emailAddress') &&
+        personalInformation.get('emailAddress').toLowerCase();
     }
     const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
     const addressTemp = mailingAddress ? mailingAddress.get('address') : null;

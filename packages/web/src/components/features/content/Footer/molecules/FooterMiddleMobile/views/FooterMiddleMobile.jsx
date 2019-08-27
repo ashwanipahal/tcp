@@ -4,7 +4,13 @@ import AccordionList from '@tcp/core/src/components/common/molecules/AccordionLi
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import FooterNavLinksList from '../../FooterNavLinksList';
 
-const FooterMiddleMobile = ({ className, navLinkItems, openTrackOrder, isLoggedIn }) => {
+const FooterMiddleMobile = ({
+  className,
+  navLinkItems,
+  openTrackOrder,
+  isLoggedIn,
+  closeNavigationDrawer,
+}) => {
   return (
     <Col
       colSize={{
@@ -21,6 +27,7 @@ const FooterMiddleMobile = ({ className, navLinkItems, openTrackOrder, isLoggedI
             listArray={item.links}
             isLoggedIn={isLoggedIn}
             openTrackOrder={openTrackOrder}
+            closeNavigationDrawer={closeNavigationDrawer}
           />
         ))}
       </AccordionList>
@@ -33,6 +40,7 @@ FooterMiddleMobile.propTypes = {
   navLinkItems: PropTypes.shape([]).isRequired,
   openTrackOrder: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  closeNavigationDrawer: PropTypes.func.isRequired,
 };
 
 FooterMiddleMobile.defaultProps = {

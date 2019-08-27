@@ -9,9 +9,7 @@ import {
   TileIconWrapper,
 } from '../styles/ProfileInfoActionTile.style.native';
 
-const noop = e => {
-  e.preventDefault();
-};
+const noop = () => {};
 
 const doneIcon = require('@tcp/core/src/assets/done.png');
 

@@ -21,7 +21,7 @@ import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
-import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
+import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 
 import {
   HEADER_REDUCER_KEY,
@@ -48,7 +48,7 @@ import {
   ADDEDITCREDITCARD_REDUCER_KEY,
   USER_REDUCER_KEY,
   CHECKOUT_REDUCER_KEY,
-  DEVICE_INFO_REDUCER_KEY,
+  CHANGE_PASSWORD_REDUCER_KEY,
   ADDEDITADDRESS_REDUCER_KEY,
   ADDRESS_VERIFICATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -95,7 +95,7 @@ const rootReducer = combineReducers({
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [USER_REDUCER_KEY]: UserReducer,
-  [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
+  [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
 });

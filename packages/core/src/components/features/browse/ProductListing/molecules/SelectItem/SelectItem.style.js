@@ -15,4 +15,8 @@ export default css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
     padding-bottom: 8px;
   }
+
+  .item-select {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
 `;

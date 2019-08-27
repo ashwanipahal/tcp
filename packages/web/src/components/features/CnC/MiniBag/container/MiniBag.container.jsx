@@ -5,7 +5,7 @@ import {
   getCurrencySymbol,
 } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import MiniBagView from '../views/MiniBag.view';
-import { getLabelsMiniBag, getTotalItemCount } from './MiniBag.selectors';
+import { getLabelsMiniBag, getTotalItemCount, getIsCartItemsUpdating } from './MiniBag.selectors';
 import {
   getCurrentPointsState,
   getTotalRewardsState,
@@ -22,6 +22,7 @@ type Props = {
   currencySymbol: any,
   currentPoints: any,
   totalRewards: any,
+  isCartItemsUpdating: any,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -45,6 +46,7 @@ export class MiniBagContainer extends React.Component<Props> {
       currencySymbol,
       currentPoints,
       totalRewards,
+      isCartItemsUpdating,
     } = this.props;
     return (
       <MiniBagView
@@ -57,6 +59,7 @@ export class MiniBagContainer extends React.Component<Props> {
         currencySymbol={currencySymbol}
         currentPoints={currentPoints}
         totalRewards={totalRewards}
+        isCartItemsUpdating={isCartItemsUpdating}
       />
     );
   }
@@ -69,6 +72,7 @@ const mapStateToProps = state => {
     currencySymbol: getCurrencySymbol(state),
     currentPoints: getCurrentPointsState(state),
     totalRewards: getTotalRewardsState(state),
+    isCartItemsUpdating: getIsCartItemsUpdating(state),
   };
 };
 export default connect(mapStateToProps)(MiniBagContainer);
