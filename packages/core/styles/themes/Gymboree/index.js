@@ -27,6 +27,7 @@ const typography = createThemeTypography({
 const themeGymboree = {
   colorPalette: { ...colorPalette, green, blue },
   brand: 'gym',
+  isGymboree: true,
   /* colors object has been deprecated and, will be removed in the future release.
    Please use colorPalette instead */
   colors,
