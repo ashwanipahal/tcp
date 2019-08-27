@@ -57,7 +57,7 @@ function mapStateToProps(state) {
   return {
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
-    currentNavIds: state.ProductListing.currentNavigationIds,
+    currentNavIds: getCategoryId(state),
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(getBreadCrumbTrail(state)),
