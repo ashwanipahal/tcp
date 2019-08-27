@@ -33,6 +33,7 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: PropTypes.func,
     navigation: PropTypes.shape({}),
     setLoginModalMountState: PropTypes.bool.isRequired,
+    showLogin: PropTypes.func,
   };
 
   static defaultProps = {
@@ -49,6 +50,7 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: () => {},
     isUserLoggedIn: false,
     navigation: {},
+    showLogin: () => {},
   };
 
   constructor(props) {
@@ -114,6 +116,7 @@ export class CreateAccountContainer extends React.Component {
       error,
       onRequestClose,
       labels,
+      showLogin,
     } = this.props;
     return (
       <CreateAccountView
@@ -127,6 +130,7 @@ export class CreateAccountContainer extends React.Component {
         onAlreadyHaveAnAccountClick={this.onAlreadyHaveAnAccountClick}
         onRequestClose={onRequestClose}
         openModal={this.openModal}
+        showLogin={showLogin}
       />
     );
   }

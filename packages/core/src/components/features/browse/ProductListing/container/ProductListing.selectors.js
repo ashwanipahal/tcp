@@ -107,7 +107,8 @@ export const getSpotlightReviewsUrl = () => {
 };
 
 export const getCategoryId = state => {
-  const currentNavigationIds = state.ProductListing.get('currentNavigationIds');
+  const currentNavigationIds =
+    state.ProductListing && state.ProductListing.get('currentNavigationIds');
   return currentNavigationIds && currentNavigationIds[currentNavigationIds.length - 1];
 };
 

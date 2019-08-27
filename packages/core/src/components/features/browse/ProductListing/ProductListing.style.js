@@ -26,4 +26,22 @@ export default css`
       display: flex;
     }
   }
+
+  .render-desktop-view {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+    }
+  }
+
+  .render-mobile-view {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
+
+  .filter-section {
+    margin-top: 50px;
+  }
 `;

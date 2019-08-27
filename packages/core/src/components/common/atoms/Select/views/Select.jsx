@@ -63,7 +63,7 @@ const SelectBox = ({
                 id={option.id || option.get('id')}
                 key={option.id || option.get('id')}
               >
-                { option.displayName || option.get('displayName') }
+                {option.displayName || option.get('displayName')}
               </option>
             );
           })}

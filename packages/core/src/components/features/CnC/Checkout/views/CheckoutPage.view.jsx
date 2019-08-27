@@ -71,9 +71,16 @@ class CheckoutPage extends React.PureComponent {
 
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const isFormLoad = !!(
+      isGuest ||
+      (pickupInitialValues &&
+        pickupInitialValues.pickUpContact &&
+        pickupInitialValues.pickUpContact.firstName)
+    );
+
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && (
+        {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
             isMobile={isMobile}
@@ -105,7 +112,7 @@ class CheckoutPage extends React.PureComponent {
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} />;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop />;
   }
 }
 
@@ -128,7 +135,6 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
-  // onPickupSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
 };
