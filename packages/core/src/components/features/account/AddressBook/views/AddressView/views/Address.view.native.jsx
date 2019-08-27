@@ -23,8 +23,18 @@ export class AddressView extends React.Component {
     super(props);
     this.state = {
       addAddressMount: false,
+      currentForm: 'AddAddress',
     };
   }
+
+  toggleAddressModal = () => {
+    const { currentForm } = this.state;
+    if (currentForm === 'AddAddress') {
+      this.setState({ currentForm: 'VerificationModal' });
+    } else {
+      this.setState({ currentForm: 'AddAddress' });
+    }
+  };
 
   toggleAddAddressModal = () => {
     const { addAddressMount } = this.state;
@@ -40,8 +50,9 @@ export class AddressView extends React.Component {
       onDefaultShippingAddressClick,
       deleteModalMountedState,
       setDeleteModalMountState,
+      addressLabels,
     } = this.props;
-    const { addAddressMount } = this.state;
+    const { addAddressMount, currentForm } = this.state;
     return (
       <View {...this.props}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -101,12 +112,24 @@ export class AddressView extends React.Component {
               setDeleteModalMountState={setDeleteModalMountState}
             />
           )}
+
           {addAddressMount && (
-            <ModalNative isOpen={addAddressMount} onRequestClose={this.toggleAddAddressModal}>
+            <ModalNative
+              isOpen={addAddressMount}
+              onRequestClose={this.toggleAddAddressModal}
+              heading={
+                currentForm === 'VerificationModal'
+                  ? addressLabels.verifyAddress
+                  : addressLabels.addNewAddress
+              }
+            >
               <ModalViewWrapper>
                 <AddEditAddressContainer
                   onCancel={this.toggleAddAddressModal}
+                  addressBookLabels={labels.addressBook}
                   showHeading={false}
+                  currentForm={currentForm}
+                  toggleAddressModal={this.toggleAddressModal}
                 />
               </ModalViewWrapper>
             </ModalNative>
@@ -124,6 +147,10 @@ AddressView.propTypes = {
     ACC_LBL_CREATE_ADDRESS_BOOK_MSG: PropTypes.string,
     ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG: PropTypes.string,
     ACC_LBL_ADD_NEW_ADDRESS_CTA: PropTypes.string,
+  }),
+  addressLabels: PropTypes.shape({
+    verifyAddress: PropTypes.string,
+    addNewAddress: PropTypes.string,
   }),
   onDefaultShippingAddressClick: PropTypes.func,
   deleteModalMountedState: PropTypes.func,
@@ -143,6 +170,10 @@ AddressView.defaultProps = {
   onDefaultShippingAddressClick: () => {},
   deleteModalMountedState: () => {},
   setDeleteModalMountState: () => {},
+  addressLabels: {
+    verifyAddress: '',
+    addNewAddress: '',
+  },
 };
 
 export default withStyles(AddressView, ParentContainer);

@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import Dotdotdot from 'react-dotdotdot';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
@@ -79,9 +80,11 @@ export function ProductTitle(props) {
         to={pdpUrl}
         inheritedStyles="product-title-content"
       >
-        <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
-          {name}
-        </BodyCopy>
+        <Dotdotdot clamp={2}>
+          <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
+            {name}
+          </BodyCopy>
+        </Dotdotdot>
       </Anchor>
       {children}
     </div>

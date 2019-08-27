@@ -41,7 +41,7 @@ class OpenLoginModal extends PureComponent<Props> {
     const { openState, variation, handleContinueAsGuest, handleAfterLogin } = this.props;
     const { currentForm, component } = this.state;
     return (
-      <ModalNative isOpen={openState} onRequestClose={this.onClose}>
+      <ModalNative heading="Login" isOpen={openState} onRequestClose={this.onClose}>
         {component === 'login' ? (
           <LoginPageContainer
             variation={variation}

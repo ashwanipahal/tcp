@@ -37,11 +37,13 @@ const getImageCTA = item => {
                 fontWeightVariation="active"
                 dataLocator={`${dataLocatorTextCta}${index}`}
               >
-                <DamImage
-                  imgData={image}
-                  className={className}
-                  data-locator={`${dataLocatorDivisionImages}${index}`}
-                />
+                {image && (
+                  <DamImage
+                    imgData={image}
+                    className={className}
+                    data-locator={`${dataLocatorDivisionImages}${index}`}
+                  />
+                )}
                 <BodyCopy
                   fontWeight="extrabold"
                   fontSize="fs13"
@@ -131,7 +133,9 @@ const ButtonList = (props: Props) => {
   let compProps = {};
 
   if (buttonListVariation === 'stackedCTAList') {
-    compWrapper = `stacked-button-list-wrapper ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
+    compWrapper = `button-list-wrapper stacked-button-list-wrapper ${
+      buttonsData.length > 5 ? wrappedTextClass : ''
+    }`;
     compProps = {
       ...stackCTAProps,
       fill,
@@ -143,7 +147,7 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'linkCTAList') {
-    compWrapper = 'link-button-list-wrapper';
+    compWrapper = 'button-list-wrapper link-button-list-wrapper';
     compProps = {
       ...linkCTAProps,
       buttonsData,
@@ -154,7 +158,7 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    compWrapper = `scroll-button-list-wrapper ${
+    compWrapper = `button-list-wrapper scroll-button-list-wrapper ${
       buttonsData.length < 3 ? ' no-scrollable-cta' : ''
     } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {
@@ -168,7 +172,7 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'imageCTAList') {
-    compWrapper = `scroll-button-list-wrapper ${
+    compWrapper = `button-list-wrapper scroll-button-list-wrapper ${
       buttonsData.length < 4 ? ' no-scrollable-cta' : ''
     } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {

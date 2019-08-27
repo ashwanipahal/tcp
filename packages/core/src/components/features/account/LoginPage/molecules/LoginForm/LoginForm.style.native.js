@@ -149,6 +149,7 @@ const FloatWrapper = styled.View`
 `;
 
 const ModalHeading = styled.Text`
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;

@@ -15,7 +15,13 @@ export const ProfileInformation = ({
   profileCompletion,
   defaultStore,
   mailingAddress,
+  profileInfoTile,
+  userEmail,
   userBirthday,
+  userFullName,
+  userPhoneNumber,
+  airMiles,
+  myPlaceNumber,
   userSurvey,
   percentageIncrement,
 }) => {
@@ -31,7 +37,17 @@ export const ProfileInformation = ({
         userSurvey={userSurvey}
         percentageIncrement={percentageIncrement}
       />
-      <PersonalInformation labels={labels} handleComponentChange={handleComponentChange} />
+      <PersonalInformation
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+        profileInfoTile={profileInfoTile}
+        userEmail={userEmail}
+        userBirthday={userBirthday}
+        userFullName={userFullName}
+        userPhoneNumber={userPhoneNumber}
+        airMiles={airMiles}
+        myPlaceNumber={myPlaceNumber}
+      />
       <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
       <BirthdaySaving labels={labels} handleComponentChange={handleComponentChange} />
       <StyledAnchorWrapper>
@@ -66,6 +82,12 @@ export const ProfileInformation = ({
 ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
+  profileInfoTile: PropTypes.shape({}),
+  userEmail: PropTypes.string,
+  airMiles: PropTypes.string,
+  myPlaceNumber: PropTypes.string,
+  userFullName: PropTypes.string,
+  userPhoneNumber: PropTypes.number,
   profileCompletion: PropTypes.string,
   mailingAddress: PropTypes.shape({}),
   userBirthday: PropTypes.string,
@@ -77,12 +99,18 @@ ProfileInformation.propTypes = {
 ProfileInformation.defaultProps = {
   labels: {},
   handleComponentChange: () => {},
+  profileInfoTile: {},
+  userBirthday: '',
+  userEmail: '',
+  userFullName: '',
+  userPhoneNumber: '',
+  airMiles: '',
+  myPlaceNumber: '',
   profileCompletion: '',
   mailingAddress: {},
   userSurvey: [],
   percentageIncrement: {},
   defaultStore: '',
-  userBirthday: '',
 };
 
 export default ProfileInformation;

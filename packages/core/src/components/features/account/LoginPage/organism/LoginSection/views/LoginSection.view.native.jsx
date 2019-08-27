@@ -11,14 +11,10 @@ import {
   FormStyle,
   FormStyleView,
   DescriptionStyle,
-  ModalHeading,
   ModalViewWrapper,
-  LineWrapper,
 } from '../../../molecules/LoginForm/LoginForm.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import CreateAccount from '../../../../CreateAccount';
-import LineComp from '../../../../../../common/atoms/Line';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const colorPallete = createThemeColorPalette();
 class LoginSection extends PureComponent<Props> {
@@ -112,18 +108,11 @@ class LoginSection extends PureComponent<Props> {
           />
         </FormStyleView>
         {showModal && (
-          <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-            <ModalHeading>
-              <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="extrabold"
-                fontSize="fs16"
-                text="CREATE ACCOUNT"
-              />
-            </ModalHeading>
-            <LineWrapper>
-              <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-            </LineWrapper>
+          <ModalNative
+            heading="CREATE ACCOUNT"
+            isOpen={showModal}
+            onRequestClose={this.toggleModal}
+          >
             <SafeAreaView>
               <ModalViewWrapper>
                 <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
