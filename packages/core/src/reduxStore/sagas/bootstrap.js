@@ -23,11 +23,10 @@ function* bootstrap(params) {
       modules,
       apiConfig,
       deviceType,
-      locals,
       optimizelyHeadersObject,
     },
   } = params;
-  const { country, currency, language } = locals;
+  const { country, currency, language } = apiConfig;
   const pagesList = [pageName];
   const modulesList = modules;
   try {

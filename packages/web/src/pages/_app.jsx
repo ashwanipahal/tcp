@@ -91,7 +91,6 @@ class TCPWebApp extends App {
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersObject,
-        locals,
       };
       store.dispatch(bootstrapData(payload));
     }
