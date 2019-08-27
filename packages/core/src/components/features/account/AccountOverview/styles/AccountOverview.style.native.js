@@ -7,4 +7,14 @@ const UnderlineStyle = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-export default UnderlineStyle;
+const ImageWrapper = styled.View`
+  position: absolute;
+  right: 0;
+`;
+
+const FavtWrapper = styled.View`
+  width: 32%;
+  position: relative;
+`;
+
+export { UnderlineStyle, ImageWrapper, FavtWrapper };

@@ -64,12 +64,31 @@ exports[`AccountOverview component should render correctly 1`] = `
       width="150px"
     />
   </Styled(View)>
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={true}
-    isVariationTypeLink={true}
-  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontSize="fs13"
+      fontWeight="semibold"
+      mobileFontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      onPress={[Function]}
+      textAlign="left"
+    />
+    <Styled(View)>
+      <Styled(ImageComp)
+        height={18}
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/filled-heart.png",
+          }
+        }
+        width={20}
+      />
+    </Styled(View)>
+  </Styled(View)>
   <Styled(View) />
   <Panel
     handleComponentChange={[Function]}

@@ -7,7 +7,7 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
-import UnderlineStyle from '../styles/AccountOverview.style.native';
+import { UnderlineStyle, ImageWrapper, FavtWrapper } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
 import LineComp from '../../../../common/atoms/Line';
@@ -23,10 +23,12 @@ import {
   LoggedinWrapper,
   LoggedinTextWrapper,
 } from '../../Logout/styles/LoginOut.style.native';
-
+import ImageComp from '../../../../common/atoms/Image';
 import CreateAccount from '../../CreateAccount';
 import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
+
+const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 
 class AccountOverview extends PureComponent<Props> {
   constructor(props) {
@@ -181,9 +183,25 @@ class AccountOverview extends PureComponent<Props> {
                 </SafeAreaView>
               </ModalNative>
             )}
-
-            <Panel title={labels.lbl_overview_myFavoritesHeading} isFavorite isVariationTypeLink />
-
+            <FavtWrapper>
+              <BodyCopy
+                color="gray.900"
+                mobileFontFamily={['primary']}
+                fontSize="fs13"
+                textAlign="left"
+                fontWeight="semibold"
+                text={labels.lbl_overview_myFavoritesHeading}
+                onPress={e =>
+                  this.toggleModal({
+                    e,
+                    getComponentId: { login: true },
+                  })
+                }
+              />
+              <ImageWrapper>
+                <ImageComp source={favIcon} width={20} height={18} />
+              </ImageWrapper>
+            </FavtWrapper>
             <UnderlineStyle />
 
             <Panel
