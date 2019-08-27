@@ -9,6 +9,7 @@ import PayPalButton from '@tcp/core/src/components/common/atoms/PaypalButton';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
+import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 
@@ -97,7 +98,10 @@ const MiniBagBody = ({
           </Row>
         ) : null}
         {cartItemCount ? (
-          <ProductTileWrapper />
+          <>
+            <ProductTileWrapper />
+            <AirmilesBanner />
+          </>
         ) : (
           <EmptyMiniBag labels={labels} userName={userName} />
         )}
