@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const CreditCardContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  height: 750px;
 `;
 
 const CreditCardWrapper = styled.View`
