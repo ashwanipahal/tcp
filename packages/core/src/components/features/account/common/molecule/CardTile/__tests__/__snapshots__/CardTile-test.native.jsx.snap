@@ -422,7 +422,64 @@ exports[`CardTile should render correctly with gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <View />
+  <View>
+    <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      className="visibility-recaptcha"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
+    />
+  </View>
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
@@ -432,7 +489,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
       text=""
       url=""
     />
@@ -552,11 +608,61 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <RecaptchaModal
-      onClose={[Function]}
-      onMessage={[Function]}
-      setRecaptchaModalMountedState={true}
-      toggleRecaptchaModal={[Function]}
+    <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      className="visibility-recaptcha"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
     />
   </View>
   <Styled(View)>
@@ -568,7 +674,6 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
       text=""
       url=""
     />
@@ -850,11 +955,61 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <RecaptchaModal
-      onClose={[Function]}
-      onMessage={[Function]}
-      setRecaptchaModalMountedState={true}
-      toggleRecaptchaModal={[Function]}
+    <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      className="visibility-recaptcha"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
     />
   </View>
   <Styled(View)>
@@ -866,7 +1021,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
-      onPress={[Function]}
       text=""
       url=""
     />
