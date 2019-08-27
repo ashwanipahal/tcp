@@ -12,7 +12,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       color="text.primary"
       component="p"
       fontFamily="primary"
-      fontSize="fs36"
+      fontSize="fs26"
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"

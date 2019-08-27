@@ -46,11 +46,18 @@ const VerifyAddressWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
+const OptionAddressLineWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+`;
+
 export {
   AddressVerificationContainer,
   ButtonWrapper,
   MessageWrapper,
   AddressOptionWrapper,
+  OptionAddressLineWrapper,
   EnteredWrapper,
   SuggestWrapper,
   EnteredSectionWrapper,

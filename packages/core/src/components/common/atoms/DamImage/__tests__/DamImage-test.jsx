@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import DamImage from '../views/DamImage';
+import { DamImageVanilla as DamImage } from '../views/DamImage';
 
 const themeMock = {
   breakpoints: {
@@ -12,6 +12,9 @@ const themeMock = {
 };
 
 const imgDataAltText = 'Dancing Boy';
+
+const srcSetAttribute = 'data-srcset';
+const srcAttribute = 'data-src';
 
 describe('DamImage component', () => {
   it('Should create correct srcset only with imgLocation', () => {
@@ -30,10 +33,10 @@ describe('DamImage component', () => {
     };
     const component = mount(<DamImage theme={themeMock} imgData={imgData} />);
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
     expect(component.find('source').get(2)).toBeFalsy();
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with imgLocation and cloudinary configuration', () => {
@@ -63,9 +66,9 @@ describe('DamImage component', () => {
       />
     );
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with basePath', () => {
@@ -92,9 +95,9 @@ describe('DamImage component', () => {
       />
     );
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with cloudinary presets', () => {
@@ -122,9 +125,9 @@ describe('DamImage component', () => {
       />
     );
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with single img config in array', () => {
@@ -148,9 +151,9 @@ describe('DamImage component', () => {
       />
     );
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with CMS imgData', () => {
@@ -171,9 +174,9 @@ describe('DamImage component', () => {
       <DamImage theme={themeMock} basePath="https://www.tcp.com" imgData={imgData} />
     );
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with mix CMS imgData and prop imgConfigs', () => {
@@ -198,9 +201,9 @@ describe('DamImage component', () => {
       />
     );
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with mix CMS imgData and prop imgConfigs', () => {
@@ -227,8 +230,8 @@ describe('DamImage component', () => {
       />
     );
 
-    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
-    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
-    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+    expect(component.find('source').get(0).props[srcSetAttribute]).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props[srcSetAttribute]).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props[srcAttribute]).toEqual(srcSets[2]);
   });
 });

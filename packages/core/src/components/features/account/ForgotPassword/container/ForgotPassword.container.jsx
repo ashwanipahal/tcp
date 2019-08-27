@@ -31,6 +31,7 @@ class ForgotPasswordContainer extends React.PureComponent {
       resetLoginState,
       showForgotPasswordForm,
       labels,
+      showLogin,
     } = this.props;
     const initialValues = {
       rememberMe: true,
@@ -47,6 +48,7 @@ class ForgotPasswordContainer extends React.PureComponent {
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
         resetLoginState={resetLoginState}
+        showLogin={showLogin}
       />
     );
   }
@@ -61,10 +63,12 @@ ForgotPasswordContainer.propTypes = {
   successFullResetEmail: PropTypes.bool.isRequired,
   showForgotPasswordForm: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  showLogin: PropTypes.func,
 };
 
 ForgotPasswordContainer.defaultProps = {
   resetLoginState: () => {},
+  showLogin: () => {},
 };
 
 const mapDispatchToProps = dispatch => {

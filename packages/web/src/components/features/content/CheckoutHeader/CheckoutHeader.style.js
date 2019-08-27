@@ -24,6 +24,9 @@ export default css`
   .header-stepindicator {
     position: relative;
     text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
   }
 
   .header-topnav__brand-tabs,

@@ -21,7 +21,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       const { expMonth, expYear } = selectedCard;
       this.state = {
         selectedYear: expYear,
-        selectedMonth: expMonth,
+        selectedMonth: expMonth && expMonth.trim(), // expMonth value for few cards coming with extra space. if no expMonth then default will be 1st from the options
       };
     } else {
       this.state = {

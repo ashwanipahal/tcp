@@ -3,7 +3,7 @@
  */
 // TODO: Need fix unused/proptypes eslint error
 
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, delay } from 'redux-saga/effects';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
@@ -22,7 +22,10 @@ export function* removeCartItem({ payload }) {
   try {
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield delay(3000);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
   } catch (err) {
     console.log(err);
   }
@@ -32,7 +35,10 @@ export function* updateCartItemSaga({ payload }) {
   try {
     const res = yield call(updateItem, payload);
     yield put(updateCartItemComplete(res));
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield delay(3000);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
     console.log(err);
   }

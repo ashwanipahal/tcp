@@ -84,6 +84,10 @@ export const getUnbxdId = createSelector(
   products => products && products.get('unbxdId')
 );
 
+export const getProductsFilters = createSelector(
+  getProductListingState,
+  products => products && products.get('filtersMaps')
+);
 export const getLabelsProductListing = state => {
   const {
     PLP: {
@@ -103,7 +107,8 @@ export const getSpotlightReviewsUrl = () => {
 };
 
 export const getCategoryId = state => {
-  const currentNavigationIds = state.ProductListing.get('currentNavigationIds');
+  const currentNavigationIds =
+    state.ProductListing && state.ProductListing.get('currentNavigationIds');
   return currentNavigationIds && currentNavigationIds[currentNavigationIds.length - 1];
 };
 

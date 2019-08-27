@@ -24,7 +24,6 @@ import {
   StateZipCodeContainer,
   Separator,
   SetDefaultShippingWrapper,
-  StyledLabel,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
   AddressSecondWrapper,
@@ -54,10 +53,6 @@ class AddressForm extends React.PureComponent {
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
     this.setState({ dropDownItem: address.state });
-  };
-
-  renderStyledLabel = label => {
-    return <StyledLabel>{label}</StyledLabel>;
   };
 
   render() {
@@ -195,6 +190,7 @@ class AddressForm extends React.PureComponent {
             name="primary"
             component={InputCheckbox}
             dataLocator="addnewaddress-city"
+            isChecked={isMakeDefaultDisabled}
             disabled={isMakeDefaultDisabled}
             rightText={addressFormLabels.setDefaultMsg}
           />
@@ -243,7 +239,7 @@ AddressForm.propTypes = {
     cancel: PropTypes.string,
   }),
   isEdit: PropTypes.bool,
-  isMakeDefaultDisabled: PropTypes.bool,
+  isMakeDefaultDisabled: PropTypes.bool.isRequired,
   onCancel: PropTypes.func,
   handleSubmit: PropTypes.func,
   invalid: PropTypes.func,
@@ -256,7 +252,6 @@ AddressForm.propTypes = {
 
 AddressForm.defaultProps = {
   isEdit: false,
-  isMakeDefaultDisabled: false,
   addressFormLabels: {
     firstName: '',
     lastName: '',

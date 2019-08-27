@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      bodySize="one"
+      color="gray.800"
+      fontFamily="secondary"
+      fontSize="fs10"
+      text="headerText"
+      textAlign="left"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        autoCapitalize="none"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="collectorNumber"
+        id="promoId"
+        label="13131313222"
+        maxLength={11}
+        name="promoId"
+        onBlur={[MockFunction]}
+        type="text"
+        value="13131313222"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        autoCapitalize="none"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="collectorNumber"
+        id="offerCode"
+        label="124e12e"
+        maxLength={55}
+        name="offerCode"
+        onBlur={[MockFunction]}
+        type="text"
+        value="124e12e"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      bodySize="one"
+      color="gray.800"
+      fontFamily="secondary"
+      fontSize="fs10"
+      text="footerText"
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
