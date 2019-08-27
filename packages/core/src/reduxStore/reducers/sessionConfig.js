@@ -13,10 +13,15 @@ const getDefaultState = state => {
   return state;
 };
 
+const mergedSiteDetails = (state, payload) => {
+  const mapPayload = fromJS(payload);
+  return state.get('siteDetails').merge(mapPayload);
+};
+
 const SessionConfigReducer = (state = initialState, action) => {
   switch (action.type) {
     case GLOBAL_CONSTANTS.SET_XAPP_CONFIG:
-      return state.set('siteDetails', action.payload);
+      return state.set('siteDetails', mergedSiteDetails(state, action.payload));
     case GLOBAL_CONSTANTS.SET_COUNTRY:
       return state.setIn(['siteDetails', 'country'], action.payload);
     case GLOBAL_CONSTANTS.SET_CURRENCY:

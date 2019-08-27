@@ -43,11 +43,11 @@ function* bootstrap(params) {
     yield put(loadNavigationData(result.navigation));
     yield put(loadFooterData(result.footer));
     yield put(loadModulesData(result.modules));
-    const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
-    yield put(loadXappConfigData(xappConfig));
     yield put(setCountry(country));
     yield put(setCurrency(currency));
     yield put(setLanguage(language));
+    const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
+    yield put(loadXappConfigData(xappConfig));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
