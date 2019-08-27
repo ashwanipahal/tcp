@@ -430,17 +430,6 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
     }
   }
 };
-/**
- * @function isGymboree
- *
- * @returns get status of gymboree brand selected in mobile app
- */
-export const isGymboree = () => {
-  if (true === 'gymboree') {
-    return true;
-  }
-  return false;
-};
 
 export default {
   getSiteId,
