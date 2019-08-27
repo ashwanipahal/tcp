@@ -247,7 +247,7 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 }
 
 function* loadCheckoutDetail() {
-  const getIsShippingRequired = yield select(getIsOrderHasShipping);
+  const getIsShippingRequired = yield select(getIsOrderHasShipping) || true; // to be fixed
   if (getIsShippingRequired) {
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;
@@ -257,7 +257,7 @@ function* loadCheckoutDetail() {
       shippingAddress.country &&
       shippingAddress.state &&
       shippingAddress.zipCode;
-    const isGuestUser = yield select(isGuest) || true;
+    const isGuestUser = yield select(isGuest) || true; // to be fixed
     // const isMobile = getIsMobile;
     if (isGuestUser || (!hasShipping && !defaultAddress)) {
       // isMobile check is left
