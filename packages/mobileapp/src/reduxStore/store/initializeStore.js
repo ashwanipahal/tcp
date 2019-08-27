@@ -4,7 +4,7 @@ import Reactotron from 'reactotron-react-native';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import { setStoreRef } from '@tcp/core/src/utils/store.utils';
 
-import globalReducers from '../reducers/reducers';
+import globalReducers from '../reducers';
 import rootSaga from '../sagas/sagas';
 
 let store;
