@@ -42,6 +42,13 @@ export function getSetShippingValuesActn(shipping) {
   };
 }
 
+export function getSetBillingValuesActn(shipping) {
+  return {
+    shipping,
+    type: 'CHECKOUT_VALUES_SET_BILLING',
+  };
+}
+
 export function getSetCurrentOrderIdActn(orderId) {
   return {
     orderId,

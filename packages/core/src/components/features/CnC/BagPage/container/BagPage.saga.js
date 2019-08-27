@@ -27,7 +27,13 @@ export function* getOrderDetailSaga() {
 export function* getCartDataSaga(payload) {
   try {
     const {
-      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo },
+      payload: {
+        isRecalculateTaxes,
+        isCheckoutFlow,
+        isCartNotRequired,
+        updateSmsInfo,
+        onCartRes,
+      } = {},
     } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
@@ -41,6 +47,9 @@ export function* getCartDataSaga(payload) {
       isCanada,
       isRadialInvEnabled,
     });
+    if (onCartRes) {
+      yield call(onCartRes, res);
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));

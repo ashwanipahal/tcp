@@ -19,6 +19,7 @@ import {
   getSetPickupValuesActn,
   getSetPickupAltValuesActn,
   getSetShippingValuesActn,
+  getSetBillingValuesActn,
   getSetGiftWrapOptionsActn,
   setIsLoadingShippingMethods,
   setShippingOptions,
@@ -84,6 +85,34 @@ function* loadGiftWrappingOptions() {
 
 let oldHasPOB = {};
 
+function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
+  // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
+
+  const resCheckoutValues = res.payload.res.orderDetails.checkout;
+  const actions = [
+    resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
+    resCheckoutValues.pickUpAlternative &&
+      getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
+    resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
+    // resCheckoutValues.smsInfo && updateSmsInfo &&
+    //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
+    // resCheckoutValues.giftWrap &&
+    //   getSetGiftWrapValuesActn(
+    //     {
+    //       hasGiftWrapping:
+    //       !!resCheckoutValues.giftWrap.optionId,
+    //       ...resCheckoutValues.giftWrap
+    //     }
+    //   ),
+    resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing),
+  ];
+  yield all([...actions].map(action => put(action)));
+  // if (checkoutStoreView.isExpressCheckout(this.store.getState()) && resCheckoutValues.billing && resCheckoutValues.billing.paymentMethod === 'venmo') {
+  //   // We have
+  //   this.store.dispatch(setVenmoPaymentInProgress(true));
+  // }
+}
+
 function* loadUpdatedCheckoutValues(
   isUpdateRewards,
   isTaxCalculation,
@@ -98,6 +127,13 @@ function* loadUpdatedCheckoutValues(
     recalcRewards,
     recalcOrderPointsInterval
   );
+
+  function* onCartRes(res) {
+    yield call(storeUpdatedCheckoutValues, { payload: { res } }, isCartNotRequired, updateSmsInfo);
+    // Load coupons to the store after constructing the coupons structure
+    // getWalletOperator(this.store).getWallet(res.coupons.offers);
+  }
+
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
       isTaxCalculation,
@@ -107,19 +143,9 @@ function* loadUpdatedCheckoutValues(
       recalcOrderPoints,
       isCheckoutFlow: true,
       updateSmsInfo,
+      onCartRes,
     })
   );
-  // const res = yield call(getCartData, {
-  //   isTaxCalculation,
-  //   isCartNotRequired,
-  //   imageGenerator,
-  //   recalcRewards,
-  //   recalcOrderPoints,
-  //   isCheckoutFlow: true,
-  // });
-  // yield call (storeUpdatedCheckoutValues, res.orderDetails, isCartNotRequired, updateSmsInfo);
-  // Load coupons to the store after constructing the coupons structure
-  // getWalletOperator(this.store).getWallet(res.coupons.offers);
 }
 
 function* submitPickupSection(data) {
@@ -174,33 +200,6 @@ function* submitPickupSection(data) {
 //   return updateCartInfo(cartInfo, isSetCartItems);
 // }
 
-function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
-  // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
-
-  const resCheckoutValues = res.payload.res.orderDetails.checkout;
-  const actions = [
-    resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
-    resCheckoutValues.pickUpAlternative &&
-      getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
-    resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
-    // resCheckoutValues.smsInfo && updateSmsInfo &&
-    //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
-    // resCheckoutValues.giftWrap &&
-    //   getSetGiftWrapValuesActn(
-    //     {
-    //       hasGiftWrapping:
-    //       !!resCheckoutValues.giftWrap.optionId,
-    //       ...resCheckoutValues.giftWrap
-    //     }
-    //   ),
-    // resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing)
-  ];
-  yield all([...actions].map(action => put(action)));
-  // if (checkoutStoreView.isExpressCheckout(this.store.getState()) && resCheckoutValues.billing && resCheckoutValues.billing.paymentMethod === 'venmo') {
-  //   // We have
-  //   this.store.dispatch(setVenmoPaymentInProgress(true));
-  // }
-}
 function* loadShipmentMethods(miniAddress, throwError) {
   try {
     const res = yield getShippingMethods(
