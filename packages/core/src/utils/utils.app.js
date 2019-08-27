@@ -9,7 +9,6 @@ import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
 
-let currentBrand = null;
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
 let gymAPIConfig = null;
@@ -356,6 +355,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -380,6 +380,7 @@ const getCurrentAPIConfig = (envConfig, isTCPBrand) => {
     gymAPIConfig = gymAPIConfig || createAPIConfigForApp(envConfig, 'GYM');
     currentAppAPIConfig = gymAPIConfig;
   }
+
   return currentAppAPIConfig;
 };
 
@@ -429,34 +430,16 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
     }
   }
 };
-
 /**
  * @function isGymboree
  *
  * @returns get status of gymboree brand selected in mobile app
  */
 export const isGymboree = () => {
-  if (currentBrand === 'gymboree') {
+  if (true === 'gymboree') {
     return true;
   }
   return false;
-};
-
-/**
- * @function getCurrentBrand
- *
- * @returns current brand selected in mobile app
- */
-export const getCurrentBrand = () => {
-  return currentBrand;
-};
-
-/**
- * @function updateCurrentBrand
- * updates current brand selected in mobile app
- */
-export const updateCurrentBrand = brandName => {
-  currentBrand = brandName;
 };
 
 export default {
