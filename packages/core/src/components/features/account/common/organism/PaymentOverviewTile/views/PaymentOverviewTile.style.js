@@ -15,6 +15,9 @@ const styles = css`
       display: none;
     }
   }
+  .cardExpiryWrapper {
+    color: ${props => props.theme.colorPalette.gray[700]}
+  }
 `;
 
 export default styles;

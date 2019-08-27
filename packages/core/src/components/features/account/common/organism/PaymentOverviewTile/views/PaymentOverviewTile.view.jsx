@@ -92,40 +92,26 @@ export const PaymentOverviewTile = ({
             >
               {creditCardDefault && creditCardDefault.ccType ? (
                 <BodyCopy component="div" className="cardDetailsWrapper">
-                  <BodyCopy component="span" className="imageWrapper">
-                    <Image
-                      className="creditCardDefault__img"
-                      src={getIconPath(cardIconMapping[creditCardDefault.ccBrand])}
-                    />
-                  </BodyCopy>
-                  <BodyCopy component="span" className="cardDescriptionWrapper">
-                    <BodyCopy component="span" className="cardNumberWrapper">
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {labels.lbl_overview_card_ending}
-                      </BodyCopy>
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {creditCardDefault.accountNo.slice(-4)}
-                      </BodyCopy>
+                  <Image
+                    className="elem-mr-XS"
+                    src={getIconPath(cardIconMapping[creditCardDefault.ccBrand])}
+                  />
+                  <BodyCopy component="div" className="cardDescriptionWrapper">
+                    <BodyCopy
+                      fontSize="fs12"
+                      fontFamily="secondary"
+                      fontWeight="extrabold"
+                    >
+                      {labels.lbl_overview_card_ending}
+                      {' '}
+                      {creditCardDefault.accountNo.slice(-4)}
                     </BodyCopy>
-                    <BodyCopy component="span" className="cardExpiryWrapper">
-                      <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-                        {labels.lbl_overview_expires}
-                      </BodyCopy>
-                      <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-                        {creditCardDefault.expMonth}
-                        {'/'}
-                        {creditCardDefault.expYear.slice(-2)}
-                      </BodyCopy>
+                    <BodyCopy fontSize="fs10" fontFamily="secondary">
+                      {labels.lbl_overview_expires}
+                      {' '}
+                      {(`0${creditCardDefault.expMonth}`.slice(-1))}
+                      {'/'}
+                      {creditCardDefault.expYear.slice(-2)}
                     </BodyCopy>
                   </BodyCopy>
                 </BodyCopy>
@@ -247,31 +233,18 @@ export const PaymentOverviewTile = ({
             >
               {giftCardList && giftCardList.ccType ? (
                 <BodyCopy component="div" className="cardDetailsWrapper">
-                  <BodyCopy component="span" className="imageWrapper">
-                    <Image
-                      className="giftCardList_img"
-                      src={getIconPath(cardIconMapping[giftCardList.ccBrand])}
-                    />
-                  </BodyCopy>
-                  <BodyCopy component="span" className="cardDescriptionWrapper">
-                    <BodyCopy component="span" className="cardNumberWrapper">
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {labels.lbl_overview_card_ending}
-                      </BodyCopy>
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {giftCardList.accountNo.slice(-4)}
-                      </BodyCopy>
-                    </BodyCopy>
+                  <Image
+                    className="elem-mr-XS"
+                    src={getIconPath(cardIconMapping[giftCardList.ccBrand])}
+                  />
+                  <BodyCopy
+                    fontSize="fs12"
+                    fontFamily="secondary"
+                    fontWeight="extrabold"
+                  >
+                    {labels.lbl_overview_card_ending}
+                    {' '}
+                    {giftCardList.accountNo.slice(-4)}
                   </BodyCopy>
                 </BodyCopy>
               ) : (
