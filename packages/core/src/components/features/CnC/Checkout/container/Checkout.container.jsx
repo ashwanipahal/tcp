@@ -26,6 +26,7 @@ const {
   getAddressFields,
   getAddressPhoneNo,
   getIsOrderHasPickup,
+  getIsOrderHasShipping,
   getEmailSignUpLabels,
   getShipmentMethods,
   getDefaultShipmentID,
@@ -62,6 +63,7 @@ export class CheckoutContainer extends React.Component<Props> {
       isGuest,
       isExpressCheckoutPage,
       cartOrderItems,
+      orderHasShipping,
     } = this.props;
     return (
       <CheckoutPage
@@ -75,6 +77,7 @@ export class CheckoutContainer extends React.Component<Props> {
         activeStage={activeStage}
         activeStep={activeStep}
         isUsSite={isUsSite}
+        orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -149,6 +152,7 @@ const mapStateToProps = state => {
     isUsSite: selectors.isUsSite(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
+    orderHasShipping: getIsOrderHasShipping(state),
     pickUpLabels: getPickUpContactFormLabels(state),
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),

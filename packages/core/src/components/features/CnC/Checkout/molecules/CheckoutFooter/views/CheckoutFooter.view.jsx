@@ -19,15 +19,17 @@ class CheckoutFooter extends React.PureComponent {
     } = this.props;
     return (
       <div className={className}>
-        <Button
-          disabled={disableBackLink}
-          type="button"
-          className="back-link"
-          onClick={backLinkHandler}
-        >
-          <Image src={carrotLeft} className="back-link-image" />
-          {backLinkText}
-        </Button>
+        {!!backLinkText && (
+          <Button
+            disabled={disableBackLink}
+            type="button"
+            className="back-link"
+            onClick={backLinkHandler}
+          >
+            <Image src={carrotLeft} className="back-link-image" />
+            {backLinkText}
+          </Button>
+        )}
         <Button
           disabled={disableNext}
           type="submit"

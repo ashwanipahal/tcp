@@ -35,16 +35,21 @@ export const getCheckoutValuesState = state => {
   return state[CHECKOUT_REDUCER_KEY].get('values');
 };
 
-function getIsOrderHasShipping() {
-  return true;
-  // return state.CartPageReducer.getIn(['orderDetails', 'orderItems']).findIndex(
-  //   item => !item.getIn(['miscInfo', 'storeId'])
-  // );
-}
+// function getIsOrderHasShipping() {
+//   return true;
+//   // return state.CartPageReducer.getIn(['orderDetails', 'orderItems']).findIndex(
+//   //   item => !item.getIn(['miscInfo', 'storeId'])
+//   // );
+// }
 
 const getIsOrderHasPickup = createSelector(
   BagPageSelector.getOrderItems,
   orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
+);
+
+const getIsOrderHasShipping = createSelector(
+  BagPageSelector.getOrderItems,
+  cartItems => cartItems && cartItems.findIndex(item => !item.getIn(['miscInfo', 'store'])) > -1
 );
 
 export const isGuest = createSelector(

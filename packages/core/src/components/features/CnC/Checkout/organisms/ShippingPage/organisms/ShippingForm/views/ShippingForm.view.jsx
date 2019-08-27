@@ -131,7 +131,7 @@ const ShippingForm = ({
           </div>
         </FormSection>
         <CheckoutFooter
-          nextButtonText={shippingLabels.billingText}
+          nextButtonText={!!orderHasPickUp && shippingLabels.billingText}
           backLinkText={shippingLabels.backLinkText}
         />
       </form>
