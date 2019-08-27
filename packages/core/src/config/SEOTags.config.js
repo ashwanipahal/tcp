@@ -95,7 +95,8 @@ const getMetaSEOTags = ({
   additionalMetaTags: [
     getAdditionalMetaTags(SEO_CONFIG.robots.property, robots),
     getAdditionalMetaTags(SEO_CONFIG.keywords.property, keywords),
-    getAdditionalMetaTags(SEO_CONFIG.viewport.property, SEO_CONFIG.viewport.content),
+    // Viewport has been coded in _document file, as it was not being applied for mobile
+    // getAdditionalMetaTags(SEO_CONFIG.viewport.property, SEO_CONFIG.viewport.content),
   ],
 });
 

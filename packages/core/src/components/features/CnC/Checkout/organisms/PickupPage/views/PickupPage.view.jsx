@@ -201,9 +201,13 @@ class PickUpFormPart extends React.Component {
         </div>
         <form onSubmit={handleSubmit}>
           <CheckoutFooter
-            disableBackLink="true"
+            hideBackLink={false}
             backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
-            nextButtonText={`${pickUpLabels.nextText}: ${pickUpLabels.billingText}`}
+            nextButtonText={
+              isGuest
+                ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
+                : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`
+            }
             disableNext={isEditing}
           />
         </form>

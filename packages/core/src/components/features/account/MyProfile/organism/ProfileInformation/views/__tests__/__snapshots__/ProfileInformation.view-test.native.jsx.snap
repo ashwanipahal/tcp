@@ -23,7 +23,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     userFullName=""
     userPhoneNumber=""
   />
-  <ChangePassword
+  <ChangePasswordInfo
     handleComponentChange={[Function]}
     labels={Object {}}
   />
