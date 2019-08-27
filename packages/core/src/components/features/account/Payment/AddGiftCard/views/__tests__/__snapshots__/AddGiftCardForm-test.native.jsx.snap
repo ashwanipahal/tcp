@@ -40,6 +40,7 @@ exports[`Add gift card form component render error message 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
@@ -84,6 +85,7 @@ exports[`Add gift card form component render error message 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
@@ -138,6 +140,7 @@ exports[`Add gift card form component render error message 1`] = `
               "id": "input",
               "keyboardType": "default",
               "label": "input",
+              "marginBottom": true,
               "meta": Object {
                 "error": "",
                 "touched": "",
@@ -249,6 +252,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
@@ -293,6 +297,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
@@ -347,6 +352,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "id": "input",
               "keyboardType": "default",
               "label": "input",
+              "marginBottom": true,
               "meta": Object {
                 "error": "",
                 "touched": "",
