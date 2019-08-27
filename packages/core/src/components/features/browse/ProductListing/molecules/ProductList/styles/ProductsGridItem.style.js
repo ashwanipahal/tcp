@@ -7,6 +7,10 @@ const styles = css`
     text-align: right;
   }
 
+  .clear-button {
+    border: none;
+    background: transparent;
+  }
   .fav-icon {
     width: 21px;
     height: 18px;
@@ -38,9 +42,10 @@ const styles = css`
 
   .loyalty-text-container {
     height: 28px;
-    font-size: ${props => props.theme.typography.fontSizes.fs10};
-    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-    font-family: ${props => props.theme.typography.fonts.secondary};
+    color: ${props =>
+      props.isPlcc
+        ? props.theme.colorPalette.userTheme.plcc
+        : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -64,8 +69,6 @@ const styles = css`
     }
     .loyalty-text-container {
       height: 32px;
-      font-size: ${props => props.theme.typography.fontSizes.fs12};
-      font-weight: ${props => props.theme.typography.fontWeights.bold};
     }
   }
 
@@ -84,8 +87,6 @@ const styles = css`
     }
     .loyalty-text-container {
       height: 38px;
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
-      font-weight: ${props => props.theme.typography.fontWeights.bold};
     }
 
     &:hover {
