@@ -267,11 +267,14 @@ function evaluateAllSyncRules(
             linkedFieldsValues
           );
       }
-
+      let messagesObject = messages;
+      if (typeof messages === 'function') {
+        messagesObject = messages(props);
+      }
       if (isFieldInvalid && !errors[fieldName]) {
         // we need only first error
         errors[fieldName] = getErrorMessage(
-          messages,
+          messagesObject,
           fieldName,
           ruleName,
           linkedPropsValues,

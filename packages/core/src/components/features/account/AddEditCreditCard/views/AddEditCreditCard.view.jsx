@@ -18,7 +18,7 @@ export const AddEditCreditCard = ({
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
         to="/account?id=payment"
-        data-locator="payment-backlink"
+        dataLocator="payment-backlink"
         asPath="/account/payment"
       >
         {labels.common.lbl_common_backLink}

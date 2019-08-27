@@ -173,7 +173,7 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
         underline
         href="#"
         anchorVariation="primary"
-        data-locator="detailslink"
+        dataLocator="detailslink"
         className="details-link"
         onPress={e => toggleBonusPointsModal(e)}
         text={labels.common.lbl_common_details}

@@ -24,6 +24,10 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.medium} {
     min-height: 250px;
+    height: 100%;
+  }
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    width: 90%;
   }
 `;
 

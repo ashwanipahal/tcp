@@ -53,8 +53,8 @@ AddedToBagContainer.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeCheckoutModalMountState: () => {
-      dispatch(setCheckoutModalMountedState({ state: false }));
+    closeCheckoutModalMountState: payload => {
+      dispatch(setCheckoutModalMountedState(payload));
     },
   };
 };

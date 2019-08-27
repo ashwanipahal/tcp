@@ -4,11 +4,8 @@ export default css`
   padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   margin-bottom: 20px;
-  .padding-top-10 {
-    padding-top: 10px;
-  }
   .padding-left-10 {
-    padding-left: 10px;
+    padding-left: 4px;
   }
   .padding-left-6 {
     padding-left: 6px;
@@ -58,6 +55,8 @@ export default css`
   .logoWrapper {
     position: relative;
     margin-top: 8px;
+    display: flex;
+    justify-content: center;
   }
   .product-attributes {
     display: inline-flex;
@@ -111,8 +110,8 @@ export default css`
       }
 
       .label-responsive {
-        width: 40px;
-        margin-right: 0;
+        width: auto;
+        margin-right: 22px;
       }
 
       .value-responsive {
@@ -123,6 +122,8 @@ export default css`
         padding-top: 0;
         display: flex;
         flex: 1;
+        width: auto;
+        margin-right: 22px;
       }
 
       .responsive-edit-css {
@@ -168,6 +169,12 @@ export default css`
 
     .price-label {
       margin-left: 170px;
+    }
+  }
+
+  .productImgBrand {
+    p {
+      margin-right: 35px;
     }
   }
 

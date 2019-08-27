@@ -11,8 +11,9 @@ const SlotE = dynamic({
     ModuleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
     ModuleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
     ModuleA: () => import('@tcp/core/src/components/common/molecules/ModuleA').then(returnModule),
+    ModuleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
   }),
-  render: (slotProps, { ModuleD, ModuleH, ModuleK, ModuleL, ModuleA }) => {
+  render: (slotProps, { ModuleD, ModuleH, ModuleK, ModuleL, ModuleA, ModuleN }) => {
     const { name } = slotProps;
     switch (name) {
       case 'moduleA':
@@ -25,6 +26,8 @@ const SlotE = dynamic({
         return <ModuleK {...slotProps} />;
       case 'moduleL':
         return <ModuleL {...slotProps} />;
+      case 'moduleN':
+        return <ModuleN {...slotProps} />;
       default:
         return null;
     }

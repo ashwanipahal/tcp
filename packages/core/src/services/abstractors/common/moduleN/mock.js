@@ -158,6 +158,14 @@ export default {
     submodules: {},
     set: [
       {
+        val: 'full',
+        key: 'moduleWidth',
+      },
+      {
+        val: 'bgClass',
+        key: 'bgClass',
+      },
+      {
         key: 'ctaType',
         val: ctaTypes[0],
       },

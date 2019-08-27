@@ -355,6 +355,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -379,6 +380,7 @@ const getCurrentAPIConfig = (envConfig, isTCPBrand) => {
     gymAPIConfig = gymAPIConfig || createAPIConfigForApp(envConfig, 'GYM');
     currentAppAPIConfig = gymAPIConfig;
   }
+
   return currentAppAPIConfig;
 };
 

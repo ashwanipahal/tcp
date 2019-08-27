@@ -1,4 +1,4 @@
-const PRIMARY_FONTS = 'ArianaPro-Book';
+const PRIMARY_FONTS = 'Montserrat';
 const SECONDARY_FONTS = 'Nunito';
 
 export const FONTS = {

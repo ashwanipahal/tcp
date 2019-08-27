@@ -3,11 +3,10 @@ import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
-import moduleNMockData from '../../../../../../../core/src/services/abstractors/common/moduleN/mock';
 
 class HomePageView extends React.Component {
   componentDidMount() {
-    this.refreshData();
+    this.loadBootstrapData();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -18,23 +17,29 @@ class HomePageView extends React.Component {
 
     // refresh page data on navigation refresh
     if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
-      this.refreshData();
+      this.loadBootstrapData();
       navigation.setParams({ refresh: false });
     }
   }
 
   /**
-   * @function refreshData
-   * Refreshes bootstrap data
+   * @function loadBootstrapData
+   * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  refreshData = () => {
+  loadBootstrapData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
     } = this.props;
-    getBootstrapData({ name: 'homepage' }, apiConfig);
+    getBootstrapData(
+      {
+        name: 'homepage',
+        modules: ['labels', 'header'],
+      },
+      apiConfig
+    );
   };
 
   render() {
@@ -43,8 +48,8 @@ class HomePageView extends React.Component {
       slot_2: slotB,
       slot_3: slotC,
       slot_4: slotD,
-      slot_6: slotF,
       slot_5: slotE,
+      slot_6: slotF,
       navigation,
     } = this.props;
     return (
@@ -55,13 +60,7 @@ class HomePageView extends React.Component {
           {slotC && <SlotC {...slotC} navigation={navigation} />}
           {slotD && <SlotD {...slotD} navigation={navigation} />}
           {slotE && <SlotE {...slotE} navigation={navigation} />}
-          <SlotF
-            name="moduleN"
-            set={moduleNMockData.moduleN.set}
-            {...moduleNMockData.moduleN.composites}
-            {...slotF}
-            navigation={navigation}
-          />
+          {slotF && <SlotF {...slotF} navigation={navigation} />}
           <Button
             fullWidth
             buttonVariation="variable-width"
@@ -122,8 +121,8 @@ HomePageView.defaultProps = {
   slot_2: {},
   slot_3: {},
   slot_4: {},
-  slot_6: {},
   slot_5: {},
+  slot_6: {},
   screenProps: {},
 };
 

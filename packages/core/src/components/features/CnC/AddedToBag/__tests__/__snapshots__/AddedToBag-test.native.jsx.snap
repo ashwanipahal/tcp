@@ -47,7 +47,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           customStyle={Object {}}
-          data-locator="addedToBag-continueShopping"
+          dataLocator="addedToBag-continueShopping"
           fontSizeVariation="medium"
           locator=""
           noLink={true}

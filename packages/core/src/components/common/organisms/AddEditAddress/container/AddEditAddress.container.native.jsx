@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
+
 import PropTypes from 'prop-types';
 import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
+
+import { getAddressList } from '../../../../features/account/AddressBook/container/AddressBook.actions';
 import AddAddressComponent from '../views/AddEditAddress.view';
 import {
   getAddressResponse,
@@ -11,7 +15,7 @@ import {
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
-import COUNTRY_US from './AddEditAddress.constants';
+import constants from './AddEditAddress.constants';
 
 export class AddEditAddressContainer extends React.PureComponent<Props> {
   static propTypes = {
@@ -24,6 +28,9 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     address: PropTypes.shape({}),
     labels: PropTypes.shape({}),
     backToAddressBookClick: PropTypes.func,
+    onCancel: PropTypes.func,
+    toggleAddressModal: PropTypes.func,
+    currentForm: PropTypes.string,
   };
 
   static defaultProps = {
@@ -36,6 +43,9 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     address: {},
     labels: {},
     backToAddressBookClick: () => {},
+    onCancel: () => {},
+    toggleAddressModal: () => {},
+    currentForm: '',
   };
 
   constructor(props) {
@@ -43,11 +53,27 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     this.initialValues = null;
   }
 
+  componentDidUpdate() {
+    const { addressResponse, getAddressListAction, onCancel, resetFormState } = this.props;
+    const isSuccess = addressResponse && addressResponse.get('addressId');
+    if (isSuccess) {
+      getAddressListAction();
+      onCancel();
+      resetFormState();
+    }
+  }
+
+  componentWillUnmount() {
+    const { resetFormState, toggleAddressModal, currentForm } = this.props;
+    resetFormState();
+    if (currentForm === 'VerificationModal') toggleAddressModal();
+  }
+
   getInitialValues = (addressList, address) => {
     if (!address) {
       return {
         primary: addressList && addressList.size === 0,
-        country: COUNTRY_US,
+        country: constants.COUNTRY_US,
         addressLine2: '',
       };
     }
@@ -67,11 +93,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   verifyAddress = payload => {
-    const { verifyAddressAction } = this.props;
+    const { verifyAddressAction, toggleAddressModal } = this.props;
     const formattedFormPayload = Object.assign(this.initialValues, payload);
     const formattedPayload = this.formatPayload(formattedFormPayload);
 
     verifyAddressAction(formattedPayload);
+    toggleAddressModal();
   };
 
   submitAddressForm = payloadParam => {
@@ -100,6 +127,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     };
   };
 
+  resetInitialValue = () => {
+    const { onCancel, resetFormState } = this.props;
+    onCancel();
+    resetFormState();
+  };
+
   render() {
     const {
       addressResponse,
@@ -108,30 +141,30 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       labels,
       backToAddressBookClick,
       isEdit,
+      toggleAddressModal,
+      currentForm,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
     const isMakeDefaultDisabled = address ? addressListSize === 1 : addressListSize === 0;
     return (
       <AddAddressComponent
+        onCancel={this.resetInitialValue}
         addressResponse={addressResponse}
         submitAddressFormAction={this.submitAddressForm}
         verifyAddressAction={this.verifyAddress}
         isMakeDefaultDisabled={isMakeDefaultDisabled}
         initialValues={this.initialValues}
         isEdit={isEdit}
+        currentForm={currentForm}
+        toggleAddressModal={toggleAddressModal}
         addressFormLabels={labels.addressFormLabels}
+        addressBookLabels={labels.addressBook}
         backToAddressBookClick={backToAddressBookClick}
       />
     );
   }
 }
-
-AddEditAddressContainer.defaultProps = {
-  addressResponse: {},
-  address: null,
-  backToAddressBookClick: () => {},
-};
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -143,6 +176,12 @@ export const mapDispatchToProps = dispatch => {
     },
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
+    },
+    getAddressListAction: () => {
+      dispatch(getAddressList());
+    },
+    resetFormState: () => {
+      dispatch(reset('AddressForm'));
     },
   };
 };

@@ -26,12 +26,15 @@ import {
   LeftBracket,
   RightBracket,
   CustomAddress,
+  TextWrapper,
+  dropDownStyle,
+  itemStyle,
 } from '../styles/CreditCardForm.native.style';
 
 export class CreditCardForm extends React.PureComponent<Props, State> {
   static propTypes = {
     className: PropTypes.string,
-    labels: PropTypes.shape({}).isRequired,
+    labels: PropTypes.shape({}),
     addressLabels: PropTypes.shape({}).isRequired,
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
@@ -49,16 +52,22 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     isEdit: false,
     dto: {},
     selectedCard: null,
+    labels: {
+      paymentGC: {
+        lbl_payment_billingAddress: '',
+        lbl_payment_ccAdressSelect: '',
+        lbl_payment_addCard: '',
+      },
+      common: { lbl_common_updateCTA: '' },
+    },
   };
 
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap, onFileAddresskey } = props;
+    const { onFileAddresskey } = props;
     this.state = {
       addAddressMount: false,
       selectedAddress: onFileAddresskey,
-      selectedYear: expYearOptionsMap[1].id,
-      selectedMonth: expMonthOptionsMap[0].id,
     };
   }
 
@@ -91,7 +100,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     const defaultAddress = onFileAddresskey
       ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
       : addressList && addressList.find(add => add.primary);
-    dispatch(change(constants.FORM_NAME, 'onFileAddressKey', defaultAddress.addressId));
+    dispatch(change('addEditCreditCard', 'onFileAddressKey', defaultAddress.addressId));
     return defaultAddress;
   };
 
@@ -102,10 +111,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   updateExpiryDate = (month, year) => {
-    this.setState({
-      selectedYear: year,
-      selectedMonth: month,
-    });
+    const { dispatch } = this.props;
+
+    // Setting form value to take dropdown values.
+    dispatch(change('addEditCreditCard', 'expYear', year));
+    dispatch(change('addEditCreditCard', 'expMonth', month));
   };
 
   toggleModal = () => {
@@ -113,19 +123,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     this.setState({
       addAddressMount: !addAddressMount,
     });
-  };
-
-  submitCardInformation = () => {
-    const { selectedYear, selectedMonth } = this.state;
-    const { handleSubmit, dispatch, isEdit, selectedCard } = this.props;
-
-    // Setting form value to take dropdown values.
-    dispatch(change(constants.FORM_NAME, 'expYear', selectedYear));
-    dispatch(change(constants.FORM_NAME, 'expMonth', selectedMonth));
-    if (isEdit && selectedCard) {
-      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
-    }
-    handleSubmit();
   };
 
   render() {
@@ -138,18 +135,18 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       dto,
       selectedCard,
       onFileAddresskey,
+      dispatch,
+      handleSubmit,
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
-    const dropDownStyle = {
-      height: 30,
-      borderBottomWidth: 1,
-      marginTop: 15,
-    };
-    const itemStyle = {
-      height: 100,
-    };
     const addressComponentList = this.getAddressOptions();
     const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
+    if (isEdit && selectedCard) {
+      const { expMonth, expYear } = selectedCard;
+      // Setting form value to take dropdown values.
+      this.updateExpiryDate(expMonth, expYear);
+      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
+    }
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
@@ -169,14 +166,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             fontWeight="black"
             text={labels.paymentGC.lbl_payment_billingAddress}
           />
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            textAlign="left"
-            fontWeight="semibold"
-            marginTop="10"
-            text={labels.paymentGC.lbl_payment_ccAdressSelect}
-          />
+          <TextWrapper>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              textAlign="left"
+              fontWeight="semibold"
+              marginTop="10"
+              text={labels.paymentGC.lbl_payment_ccAdressSelect}
+            />
+          </TextWrapper>
 
           {addressComponentList && (
             <Field
@@ -220,8 +219,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
             }
             style={AddAddressButton}
-            type="submit"
-            onPress={this.submitCardInformation}
+            onPress={handleSubmit}
           />
           <Button
             fill="WHITE"

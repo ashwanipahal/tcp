@@ -11,33 +11,27 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        ariaLabel="input"
         className="TextBox__input"
         data-locator="input-field"
+        dataLocator="input-field"
         enableSuccessCheck={false}
         error="food"
         id="input"
         keyboardType="default"
+        label="input"
+        meta={
+          Object {
+            "error": "food",
+            "touched": "foo",
+          }
+        }
         onBlur={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "food",
-              "touched": "foo",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-          }
-        }
         returnKeyType="next"
         secureTextEntry={false}
+        showErrorIcon={true}
         type="text"
         value="foo"
       />
@@ -83,33 +77,27 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        ariaLabel="input"
         className="TextBox__input"
         data-locator="input-field"
+        dataLocator="input-field"
         enableSuccessCheck={true}
         error=""
         id="input"
         keyboardType="default"
+        label="input"
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": true,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-          }
-        }
         returnKeyType="next"
         secureTextEntry={false}
+        showErrorIcon={true}
         type="text"
         value="foo"
       />
@@ -141,33 +129,27 @@ exports[`Textbox component renders correctly 1`] = `
       </Styled(Text)>
       <Styled(TextInput)
         aria-label="input"
+        ariaLabel="input"
         className="TextBox__input"
         data-locator="input-field"
+        dataLocator="input-field"
         enableSuccessCheck={false}
         error=""
         id="input"
         keyboardType="default"
+        label="input"
+        meta={
+          Object {
+            "error": "",
+            "touched": "",
+          }
+        }
         onBlur={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
-        others={
-          Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-          }
-        }
         returnKeyType="next"
         secureTextEntry={false}
+        showErrorIcon={true}
         type="text"
         value="foo"
       />
@@ -189,33 +171,27 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
         </Styled(Text)>
         <Styled(TextInput)
           aria-label="input"
+          ariaLabel="input"
           className="TextBox__input"
           data-locator="input-field"
+          dataLocator="input-field"
           enableSuccessCheck={false}
           error=""
           id="input"
           keyboardType="default"
+          label="input"
+          meta={
+            Object {
+              "error": "",
+              "touched": "",
+            }
+          }
           onBlur={[Function]}
           onEndEditing={[Function]}
           onFocus={[Function]}
-          others={
-            Object {
-              "ariaLabel": "input",
-              "dataLocator": "input-field",
-              "enableSuccessCheck": false,
-              "id": "input",
-              "keyboardType": "default",
-              "label": "input",
-              "meta": Object {
-                "error": "",
-                "touched": "",
-              },
-              "secureTextEntry": false,
-              "showErrorIcon": true,
-            }
-          }
           returnKeyType="next"
           secureTextEntry={false}
+          showErrorIcon={true}
           type="hidden"
           value="foo"
         />

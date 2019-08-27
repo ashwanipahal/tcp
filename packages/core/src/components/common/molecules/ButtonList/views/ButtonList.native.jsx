@@ -8,7 +8,7 @@ import {
   Container,
   ScrollViewContainer,
   DivImageContainer,
-  TextLiksViewContainer,
+  TextLinksViewContainer,
   ContainerView,
 } from '../ButtonList.styles.native';
 
@@ -134,7 +134,7 @@ const renderItemCTAList = (item, navigation, locator) => {
   } = item;
 
   return (
-    <TextLiksViewContainer>
+    <TextLinksViewContainer>
       <Anchor
         key={index.toString()}
         locator={locator}
@@ -148,7 +148,7 @@ const renderItemCTAList = (item, navigation, locator) => {
         customStyle={style}
         centered
       />
-    </TextLiksViewContainer>
+    </TextLinksViewContainer>
   );
 };
 
@@ -186,7 +186,7 @@ const renderItemImageCTAList = (item, navigation, locator, color) => {
   return (
     <Anchor url={button.url} navigation={navigation} locator={locator}>
       <DivImageContainer>
-        <Image url={image && image.url} height={60} width={60} style={style} />
+        {image && <Image url={image.url} height={60} width={60} style={style} />}
         <BodyCopy
           key={index.toString()}
           accessibilityRole="text"
@@ -240,7 +240,9 @@ const ButtonList = ({ locator, buttonListVariation, navigation, buttonsData, col
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    return <Container>{renderScrollCTAList(buttonsData, navigation, locator, color)}</Container>;
+    return (
+      <ContainerView>{renderScrollCTAList(buttonsData, navigation, locator, color)}</ContainerView>
+    );
   }
 
   if (buttonListVariation === 'linkCTAList') {

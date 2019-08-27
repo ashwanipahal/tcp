@@ -18,6 +18,8 @@ const Header = ({
   openOverlay,
   openTrackOrderOverlay,
   isLoggedIn,
+  cartItemCount,
+  labels,
 }) => {
   return (
     <header className={className}>
@@ -27,6 +29,7 @@ const Header = ({
         promoMessageWrapper={promoMessageWrapper}
         openOverlay={openTrackOrderOverlay}
         isUserLoggedIn={isLoggedIn}
+        labels={labels}
       />
       <HeaderMiddleNav
         openNavigationDrawer={openNavigationDrawer}
@@ -35,6 +38,7 @@ const Header = ({
         userName={userName}
         openOverlay={openOverlay}
         isLoggedIn={isLoggedIn}
+        cartItemCount={cartItemCount}
       />
       <HeaderPromo
         mobileMarkup
@@ -60,6 +64,14 @@ Header.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  cartItemCount: PropTypes.func.isRequired,
+  labels: PropTypes.shape({}),
+};
+
+Header.defaultProps = {
+  labels: {
+    trackOrder: {},
+  },
 };
 
 export default withStyles(Header, style);

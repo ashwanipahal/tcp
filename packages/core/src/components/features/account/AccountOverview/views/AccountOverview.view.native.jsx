@@ -50,10 +50,22 @@ class AccountOverview extends PureComponent<Props> {
             isUserLoggedIn={isUserLoggedIn}
           />
         ) : (
-          <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
+          <CreateAccount
+            showLogin={this.showloginModal}
+            navigation={navigation}
+            onRequestClose={this.toggleModal}
+          />
         )}
       </React.Fragment>
     );
+  };
+
+  showloginModal = () => {
+    this.setState({
+      getComponentId: {
+        login: true,
+      },
+    });
   };
 
   toggleModal = ({ getComponentId }) => {
@@ -79,7 +91,10 @@ class AccountOverview extends PureComponent<Props> {
         {isUserLoggedIn && (
           <React.Fragment>
             <Panel title={labels.lbl_overview_myPlaceRewardsHeading}>
-              <MyPlaceRewardsOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
+              <MyPlaceRewardsOverviewTile
+                labels={labels}
+                handleComponentChange={handleComponentChange}
+              />
             </Panel>
             <Panel title={labels.lbl_overview_myWalletHeading} />
             <Panel title={labels.lbl_overview_earnPointsHeading} />

@@ -14,10 +14,10 @@ const styles = css`
 
   .right-sec {
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.LRG : 0)};
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.MED : 0)};
     }
   }
 `;

@@ -7,7 +7,7 @@ describe('N component', () => {
   let ModuleNComp;
 
   beforeEach(() => {
-    ModuleNComp = shallow(<ModuleN {...mock.moduleN.composites} />);
+    ModuleNComp = shallow(<ModuleN {...mock.moduleN.composites} set={mock.moduleN.set} />);
   });
   it('renders correctly', () => {
     expect(ModuleNComp).toMatchSnapshot();

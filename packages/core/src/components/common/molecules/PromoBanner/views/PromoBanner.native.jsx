@@ -125,6 +125,7 @@ const PromoBanner = (props: Props) => {
     promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
+
   return [
     <ContainerView>
       {textItems && (

@@ -7,203 +7,225 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
   <Styled(Row)
     className="edit-form-css"
   >
-    <div
-      className="select-value-wrapper"
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 10,
+          "small": 10,
+        }
+      }
     >
       <div
-        className="color-selector"
+        className="select-value-wrapper"
       >
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-jTzLTM",
-                "isStatic": true,
-                "rules": Array [
-                  "
+        <div
+          className="color-selector"
+        >
+          <Field
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-jTzLTM",
+                  "isStatic": true,
+                  "rules": Array [
+                    "
   ",
-                  "
+                    "
   width: 87px;
   & img {
     width: 10px;
   }
 ",
-                  ";
+                    ";
 ",
-                ],
-              },
-              "displayName": "Styled(ColorSelectorDropDown)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-jTzLTM",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
+                  ],
+                },
+                "displayName": "Styled(ColorSelectorDropDown)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-jTzLTM",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
             }
-          }
-          dataLocator="addnewaddress-state"
-          id="color"
-          name={
-            Object {
-              "name": "ROSE DUST",
+            dataLocator="addnewaddress-state"
+            id="color"
+            name={
+              Object {
+                "name": "ROSE DUST",
+              }
             }
-          }
-          onChange={[Function]}
-          options={
-            Immutable.List [
-              Object {
-                "content": <span>
-                  <img
-                    alt=""
-                    src="https://test4.childrensplace.comundefined"
-                  />
-                </span>,
-                "title": <span>
-                  <img
-                    alt=""
-                    className="selected-color-image"
-                    src="https://test4.childrensplace.comundefined"
-                  />
-                </span>,
-                "value": undefined,
-              },
-            ]
-          }
-          width={87}
-        />
+            onChange={[Function]}
+            options={
+              Immutable.List [
+                Object {
+                  "content": <span>
+                    <img
+                      alt=""
+                      src="https://test4.childrensplace.comundefined"
+                    />
+                  </span>,
+                  "title": <span>
+                    <img
+                      alt=""
+                      className="selected-color-image"
+                      src="https://test4.childrensplace.comundefined"
+                    />
+                  </span>,
+                  "value": undefined,
+                },
+              ]
+            }
+            width={87}
+          />
+        </div>
+        <div
+          className="size-selector"
+        >
+          <Field
+            className="size-field"
+            component={[Function]}
+            dataLocator="addnewaddress-state"
+            id="size"
+            name="undefined"
+            onChange={[Function]}
+            options={Array []}
+            width={69}
+          />
+        </div>
+        <div
+          className="qty-selector"
+        >
+          <Field
+            component={[Function]}
+            dataLocator="addnewaddress-state"
+            id="quantity"
+            name="Qty"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "displayName": 1,
+                  "id": 1,
+                },
+                Object {
+                  "displayName": 2,
+                  "id": 2,
+                },
+                Object {
+                  "displayName": 3,
+                  "id": 3,
+                },
+                Object {
+                  "displayName": 4,
+                  "id": 4,
+                },
+                Object {
+                  "displayName": 5,
+                  "id": 5,
+                },
+                Object {
+                  "displayName": 6,
+                  "id": 6,
+                },
+                Object {
+                  "displayName": 7,
+                  "id": 7,
+                },
+                Object {
+                  "displayName": 8,
+                  "id": 8,
+                },
+                Object {
+                  "displayName": 9,
+                  "id": 9,
+                },
+                Object {
+                  "displayName": 10,
+                  "id": 10,
+                },
+                Object {
+                  "displayName": 11,
+                  "id": 11,
+                },
+                Object {
+                  "displayName": 12,
+                  "id": 12,
+                },
+                Object {
+                  "displayName": 13,
+                  "id": 13,
+                },
+                Object {
+                  "displayName": 14,
+                  "id": 14,
+                },
+                Object {
+                  "displayName": 15,
+                  "id": 15,
+                },
+              ]
+            }
+            width={32}
+          />
+        </div>
       </div>
-      <div
-        className="size-selector"
-      >
-        <Field
-          component={[Function]}
-          dataLocator="addnewaddress-state"
-          id="size"
-          name="undefined"
-          onChange={[Function]}
-          options={Array []}
-          width={69}
-        />
-      </div>
-      <div
-        className="qty-selector"
-      >
-        <Field
-          component={[Function]}
-          dataLocator="addnewaddress-state"
-          id="quantity"
-          name="Qty"
-          onChange={[Function]}
-          options={
-            Array [
-              Object {
-                "displayName": 1,
-                "id": 1,
-              },
-              Object {
-                "displayName": 2,
-                "id": 2,
-              },
-              Object {
-                "displayName": 3,
-                "id": 3,
-              },
-              Object {
-                "displayName": 4,
-                "id": 4,
-              },
-              Object {
-                "displayName": 5,
-                "id": 5,
-              },
-              Object {
-                "displayName": 6,
-                "id": 6,
-              },
-              Object {
-                "displayName": 7,
-                "id": 7,
-              },
-              Object {
-                "displayName": 8,
-                "id": 8,
-              },
-              Object {
-                "displayName": 9,
-                "id": 9,
-              },
-              Object {
-                "displayName": 10,
-                "id": 10,
-              },
-              Object {
-                "displayName": 11,
-                "id": 11,
-              },
-              Object {
-                "displayName": 12,
-                "id": 12,
-              },
-              Object {
-                "displayName": 13,
-                "id": 13,
-              },
-              Object {
-                "displayName": 14,
-                "id": 14,
-              },
-              Object {
-                "displayName": 15,
-                "id": 15,
-              },
-            ]
-          }
-          width={32}
-        />
-      </div>
-    </div>
-    <div
-      className="button-wrapper"
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 2,
+        }
+      }
     >
-      <Styled(Button)
-        inheritedStyles={
-          Array [
-            "
+      <div
+        className="button-wrapper"
+      >
+        <Styled(Button)
+          inheritedStyles={
+            Array [
+              "
   min-height: unset;
   text-transform: none;
   &:hover {
     background-color: transparent;
   }
 ",
-          ]
-        }
-        onClick={[Function]}
-        type="submit"
-      >
-        <u>
-          Update
-        </u>
-      </Styled(Button)>
-      <Styled(Button)
-        inheritedStyles={
-          Array [
-            "
+            ]
+          }
+          onClick={[Function]}
+          type="submit"
+        >
+          <u>
+            Update
+          </u>
+        </Styled(Button)>
+        <Styled(Button)
+          className="button-cancel"
+          inheritedStyles={
+            Array [
+              "
   min-height: unset;
   text-transform: none;
   &:hover {
     background-color: transparent;
   }
 ",
-          ]
-        }
-        onClick={[Function]}
-      >
-        <u />
-      </Styled(Button)>
-    </div>
+            ]
+          }
+          onClick={[Function]}
+        >
+          <u />
+        </Styled(Button)>
+      </div>
+    </Styled(Col)>
   </Styled(Row)>
 </form>
 `;

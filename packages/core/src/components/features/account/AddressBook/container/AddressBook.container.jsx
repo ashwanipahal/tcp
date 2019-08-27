@@ -15,6 +15,7 @@ import {
   showUpdatedNotificationState,
   deleteModalOpenState,
   showUpdatedNotificationOnModalState,
+  getAddEditAddressLabels,
 } from './AddressBook.selectors';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
@@ -32,6 +33,7 @@ type Props = {
   showUpdatedNotificationOnModal: any,
   clearAddressBookNotification: () => void,
   labels: object,
+  addressLabels: object,
 };
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
@@ -56,6 +58,7 @@ export class AddressBookContainer extends React.Component<Props> {
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
       labels,
+      addressLabels,
     } = this.props;
     if (List.isList(addressList)) {
       return (
@@ -69,6 +72,7 @@ export class AddressBookContainer extends React.Component<Props> {
           deleteModalMountedState={deleteModalMountedState}
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+          addressLabels={addressLabels}
         />
       );
     }
@@ -110,6 +114,7 @@ const mapStateToProps = state => {
     showUpdatedNotification: showUpdatedNotificationState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     deleteModalMountedState: deleteModalOpenState(state),
+    addressLabels: getAddEditAddressLabels(state),
   };
 };
 
