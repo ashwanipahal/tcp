@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SlotB component SlotA component renders correctly 1`] = `
+exports[`SlotB component SlotB component renders correctly 1`] = `
 <loading
   error={null}
   isLoading={true}

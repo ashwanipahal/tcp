@@ -5,7 +5,7 @@ import SlotA from '../SlotA';
 
 describe('SlotA component', () => {
   it('SlotA component renders correctly', () => {
-    const component = shallow(<SlotA {...mock} />);
+    const component = shallow(<SlotA {...mock.moduleA} />);
     expect(component).toMatchSnapshot();
   });
 });
