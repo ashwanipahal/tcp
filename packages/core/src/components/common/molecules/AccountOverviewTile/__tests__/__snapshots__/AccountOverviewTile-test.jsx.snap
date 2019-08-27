@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionList component renders correctly AccountOverviewTile 1`] = `
+<Styled(BodyCopy)
+  className="test"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="container"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="heading"
+      color="text.primary"
+      component="h3"
+      data-locator="accountoverview-test-header"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      test
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="elem-pt-LRG elem-pb-XL content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <Styled(Anchor)
+      anchorVariation="button"
+      asPath="test"
+      buttonVariation="fixed-width"
+      centered={true}
+      className="elem-mb-SM"
+      dataLocator="accountoverview-test-viewallcta"
+      fill="BLUE"
+      fullWidth={true}
+      to=""
+    >
+      test
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
+
+exports[`AccordionList component renders empty correctly AccountOverviewTile 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="container"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="heading"
+      color="text.primary"
+      component="h3"
+      data-locator="accountoverview--header"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      className="elem-pt-LRG elem-pb-XL content"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <Styled(Anchor)
+      anchorVariation="button"
+      asPath=""
+      buttonVariation="fixed-width"
+      centered={true}
+      className="elem-mb-SM"
+      dataLocator="accountoverview--viewallcta"
+      fill="BLUE"
+      fullWidth={true}
+      to=""
+    />
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
