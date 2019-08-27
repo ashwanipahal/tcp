@@ -105,7 +105,7 @@ class CheckoutPage extends React.PureComponent {
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} />;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop />;
   }
 }
 
