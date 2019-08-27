@@ -28,7 +28,6 @@ type Props = {
   disabled?: boolean,
 };
 
-// eslint-disable-next-line complexity
 const SelectBox = ({
   className,
   id,
