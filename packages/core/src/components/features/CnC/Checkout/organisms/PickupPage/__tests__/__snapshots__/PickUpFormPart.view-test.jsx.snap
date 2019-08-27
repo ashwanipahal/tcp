@@ -250,8 +250,8 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
-      disableBackLink="true"
       disableNext={true}
+      hideBackLink={false}
       nextButtonText="undefined: undefined"
     />
   </form>
@@ -319,8 +319,8 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
-      disableBackLink="true"
       disableNext={false}
+      hideBackLink={false}
       nextButtonText="undefined: undefined"
     />
   </form>
@@ -560,8 +560,8 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
   >
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
-      disableBackLink="true"
       disableNext={false}
+      hideBackLink={false}
       nextButtonText="undefined: undefined"
     />
   </form>

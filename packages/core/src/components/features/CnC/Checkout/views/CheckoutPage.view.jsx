@@ -71,9 +71,16 @@ class CheckoutPage extends React.PureComponent {
 
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const isFormLoad = !!(
+      isGuest ||
+      (pickupInitialValues &&
+        pickupInitialValues.pickUpContact &&
+        pickupInitialValues.pickUpContact.firstName)
+    );
+
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && (
+        {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
             isMobile={isMobile}
