@@ -15,6 +15,7 @@ const HomePageView = props => {
     slot_6: slotF,
   } = props;
 
+  console.info(props, '======');
   return (
     <Fragment>
       <SlotA {...slotA} />
