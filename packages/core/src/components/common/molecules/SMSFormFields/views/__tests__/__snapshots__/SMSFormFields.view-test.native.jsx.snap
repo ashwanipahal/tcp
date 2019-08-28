@@ -112,9 +112,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         href="#"
         locator=""
         noLink={true}
-        noUnderline={true}
         target="_blank"
         text=""
+        underline={true}
         visible={false}
       />
     </Styled(View)>
@@ -214,9 +214,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         href="#"
         locator=""
         noLink={true}
-        noUnderline={true}
         target="_blank"
         text=""
+        underline={true}
         visible={false}
       />
     </Styled(View)>
