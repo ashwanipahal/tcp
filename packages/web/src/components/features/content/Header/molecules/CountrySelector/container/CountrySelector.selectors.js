@@ -65,7 +65,11 @@ export const getNoteContent = state => {
 };
 
 export const getModuleXContentId = state => {
-  const { referred = [] } = state.Labels.global.countrySelector;
-  const content = referred.find(label => label.name === 'lbl_global_country_selector_note');
+  const { global: countrySelector } = state.Labels;
+  let content;
+  if (countrySelector) {
+    const { referred = [] } = countrySelector;
+    content = referred.find(label => label.name === 'lbl_global_country_selector_note');
+  }
   return content && content.contentId;
 };
