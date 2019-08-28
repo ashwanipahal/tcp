@@ -6,13 +6,15 @@ import ImageComp from '../../../../../../common/atoms/Image';
 import LineComp from '../../../../../../common/atoms/Line';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
-import favIcon from '../../../../../../../../../mobileapp/src/assets/images/filled-heart.png';
+import favIcon from '../../../../../../../../../mobileapp/src/assets/images/empty-heart.png';
 import {
   SectionStyle,
   HeadingStyle,
   SubHeadingStyle,
   DescriptionStyle,
   ImageWrapper,
+  FavtHeading,
+  FavtSubHeading
 } from '../LoginTopSection.style.native';
 
 /**
@@ -27,13 +29,22 @@ const LoginTopSection = props => {
     <View {...props}>
       {!(variation === 'favorites' || variation === 'checkout') && (
         <React.Fragment>
-          <ImageComp source={TheMarketPlaceLogo} width={186} height={60} style={imgStyle} />
+          <ImageComp
+            source={TheMarketPlaceLogo}
+            width={186}
+            height={60}
+            style={imgStyle}
+          />
 
           <LineComp marginTop={30} marginBottom={17} />
           <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
           <SubHeadingStyle>{labels.login.lbl_login_subHeading}</SubHeadingStyle>
-          <DescriptionStyle>{labels.login.lbl_login_Description_heading_1}</DescriptionStyle>
-          <DescriptionStyle>{labels.login.lbl_login_Description_heading_2}</DescriptionStyle>
+          <DescriptionStyle>
+            {labels.login.lbl_login_Description_heading_1}
+          </DescriptionStyle>
+          <DescriptionStyle>
+            {labels.login.lbl_login_Description_heading_2}
+          </DescriptionStyle>
           <LineComp marginTop={25} marginBottom={0} />
         </React.Fragment>
       )}
@@ -41,22 +52,26 @@ const LoginTopSection = props => {
       {variation === 'favorites' && (
         <>
           <ImageWrapper>
-            <ImageComp source={favIcon} width={20} height={18} />
+            <ImageComp source={favIcon} width={22} height={20} />
           </ImageWrapper>
-          <BodyCopy
-            text={labels.login.lbl_login_favorites_modal_heading}
-            fontSize="fs16"
-            fontWeight="black"
-            mobilefontFamily={['secondary']}
-            textAlign="center"
-          />
-          <BodyCopy
-            component="span"
-            fontSize="fs12"
-            mobilefontFamily={['secondary']}
-            textAlign="center"
-            text={labels.login.lbl_login_favorites_modal_heading_1}
-          />
+          <FavtHeading>
+            <BodyCopy
+              text={labels.login.lbl_login_favorites_modal_heading}
+              fontSize="fs16"
+              fontWeight="black"
+              mobilefontFamily={['secondary']}
+              textAlign="center"
+            />
+          </FavtHeading>
+          <FavtSubHeading>
+            <BodyCopy
+              component="span"
+              fontSize="fs12"
+              mobilefontFamily={['secondary']}
+              textAlign="center"
+              text={labels.login.lbl_login_favorites_modal_heading_1}
+            />
+          </FavtSubHeading>
         </>
       )}
 
