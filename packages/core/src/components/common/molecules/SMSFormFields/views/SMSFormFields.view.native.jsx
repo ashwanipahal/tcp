@@ -74,7 +74,7 @@ class SMSFormFields extends React.PureComponent {
                 text={labels.smsSignupText}
               />
               <Anchor
-                noUnderline
+                underline
                 anchorVariation="primary"
                 fontSizeVariation="small"
                 noLink
