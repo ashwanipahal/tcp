@@ -26,7 +26,6 @@ import {
   SetDefaultShippingWrapper,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
-  AddressSecondWrapper,
 } from './AddressForm.native.style';
 
 class AddressForm extends React.PureComponent {
@@ -99,15 +98,13 @@ class AddressForm extends React.PureComponent {
           />
         </GooglePlaceInputWrapper>
 
-        <AddressSecondWrapper>
-          <Field
-            id="addressLine2"
-            name="addressLine2"
-            label={addressFormLabels.addressLine2}
-            component={TextBox}
-            dataLocator="addnewaddress-addressl2"
-          />
-        </AddressSecondWrapper>
+        <Field
+          id="addressLine2"
+          name="addressLine2"
+          label={addressFormLabels.addressLine2}
+          component={TextBox}
+          dataLocator="addnewaddress-addressl2"
+        />
 
         <Field
           id="city"
