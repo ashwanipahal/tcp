@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking } from 'react-native';
+import { Dimensions, Linking, Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
 
@@ -436,6 +436,8 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
     }
   }
 };
+
+export const isAndroid = () => Platform.OS === 'android';
 
 export default {
   getSiteId,
