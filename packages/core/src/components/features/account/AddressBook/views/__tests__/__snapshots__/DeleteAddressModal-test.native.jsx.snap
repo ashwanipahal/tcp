@@ -29,6 +29,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
         customStyle={Object {}}
         fontWeight="bold"
         showCountry={true}
+        showDefaultText={false}
         showName={true}
         showPhone={true}
       />
