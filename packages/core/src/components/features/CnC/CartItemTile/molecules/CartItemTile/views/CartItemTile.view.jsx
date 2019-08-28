@@ -320,7 +320,10 @@ class CartItemTile extends React.Component {
             {!isEdit ? (
               <React.Fragment>
                 <Row className="product-detail-row padding-top-10 color-map-size-fit">
-                  <Col className="product-detail" colSize={{ small: 10, medium: 10, large: 10 }}>
+                  <Col
+                    className={pageView !== 'myBag' ? 'product-detail' : 'product-detail-bag'}
+                    colSize={{ small: 10, medium: 10, large: 10 }}
+                  >
                     <div>
                       <div className="color-size-fit-label">
                         <BodyCopy

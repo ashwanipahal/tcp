@@ -83,6 +83,12 @@ export default css`
     flex-wrap: wrap;
   }
 
+  .product-detail-bag {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+  }
+
   .product-detail-row {
     width: 100%;
   }

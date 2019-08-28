@@ -97,6 +97,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
     flex-wrap: wrap;
   }
 
+  .product-detail-bag {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+  }
+
   .product-detail-row {
     width: 100%;
   }
