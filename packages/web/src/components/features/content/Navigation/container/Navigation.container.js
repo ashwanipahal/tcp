@@ -45,8 +45,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(hideL2Drawer(id));
       dispatch(removeL1Focus(true));
     },
-    openL3Drawer: id => e => {
-      if (!getViewportInfo().isDesktop) {
+    openL3Drawer: (id, hasL3) => e => {
+      if (!getViewportInfo().isDesktop && hasL3) {
         e.preventDefault();
         e.stopPropagation();
         dispatch(openL3Drawer(id));
