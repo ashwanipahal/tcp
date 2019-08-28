@@ -83,6 +83,7 @@ class PickUpFormPart extends React.Component {
       dispatch,
       handleSubmit,
       navigation,
+      onPickUpSubmit,
     } = this.props;
     const { isEditing, isReset } = this.state;
     return (
@@ -144,7 +145,6 @@ class PickUpFormPart extends React.Component {
                 <CheckBoxWrapper>
                   <CheckBoxColOne>
                     <Field
-                      rightText=""
                       name="emailSignup"
                       component={InputCheckbox}
                       dataLocator="hide-show-checkbox"
@@ -211,7 +211,7 @@ class PickUpFormPart extends React.Component {
           navigation={navigation}
           btnText="NEXT:SHIPPING"
           routeToPage="ShippingPage"
-          onPress={handleSubmit}
+          onPress={handleSubmit(onPickUpSubmit)}
         />
       </ScrollView>
     );
@@ -233,6 +233,7 @@ PickUpFormPart.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  onPickUpSubmit: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {
@@ -248,6 +249,8 @@ PickUpFormPart.defaultProps = {
 
 const validateMethod = createValidateMethod({
   pickUpContact: ContactFormFields.ContactValidationConfig,
+  smsSignUp: SMSFormFields.smsFormFieldsConfig,
+  pickUpAlternate: ContactFormFields.ContactValidationConfig,
 });
 
 export default reduxForm({

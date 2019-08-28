@@ -23,7 +23,6 @@ class PickUpAlternateFormPart extends React.PureComponent {
       <AlternateWrapper dataLocator="alternate-View">
         <FieldWrapper>
           <Field
-            rightText=""
             name="hasAlternatePickup"
             component={InputCheckbox}
             dataLocator="Alternate-checkbox"

@@ -33,7 +33,6 @@ class SMSFormFields extends React.PureComponent {
       <SMSFormFieldsWrapper>
         <StyledCheckbox>
           <Field
-            rightText=""
             name="sendOrderUpdate"
             component={InputCheckbox}
             dataLocator="hide-show-checkbox"

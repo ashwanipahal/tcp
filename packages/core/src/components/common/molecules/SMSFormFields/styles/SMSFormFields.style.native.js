@@ -22,8 +22,6 @@ const StyledCheckbox = styled.View`
 `;
 
 const StyledMsgWrapper = styled.View`
-  position: relative;
-  top: -10;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 

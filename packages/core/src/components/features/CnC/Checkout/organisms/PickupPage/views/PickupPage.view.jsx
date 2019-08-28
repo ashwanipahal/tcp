@@ -82,6 +82,7 @@ class PickUpFormPart extends React.Component {
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
+      orderHasShipping,
     } = this.props;
     const { isEditing, isReset } = this.state;
 
@@ -205,7 +206,7 @@ class PickUpFormPart extends React.Component {
             hideBackLink={false}
             backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
             nextButtonText={
-              isGuest
+              !orderHasShipping
                 ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
                 : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`
             }
@@ -225,6 +226,7 @@ PickUpFormPart.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool,
   isOrderUpdateChecked: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
+  orderHasShipping: PropTypes.isRequired,
   pickupError: PropTypes.string,
   currentPhoneNumber: PropTypes.string,
   pickUpLabels: PropTypes.shape({}).isRequired,

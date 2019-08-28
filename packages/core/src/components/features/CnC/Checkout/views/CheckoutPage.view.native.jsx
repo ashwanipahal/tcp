@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PickupPage from '../organisms/PickupPage';
-// import ShippingPage from '../organisms/ShippingPage';
+import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
@@ -37,6 +37,10 @@ export default class CheckoutPage extends React.PureComponent {
       isSmsUpdatesEnabled,
       currentPhoneNumber,
       navigation,
+      shippingProps,
+      loadShipmentMethods,
+      orderHasPickUp,
+      submitShippingSection,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
@@ -44,21 +48,32 @@ export default class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
     } = this.props;
     return (
-      <PickupPage
-        isGuest={isGuest}
-        isMobile={isMobile}
-        isUsSite={isUsSite}
-        initialValues={pickupInitialValues}
-        onEditModeChange={onEditModeChange}
-        isSmsUpdatesEnabled={isSmsUpdatesEnabled}
-        currentPhoneNumber={currentPhoneNumber}
-        isOrderUpdateChecked={isOrderUpdateChecked}
-        isAlternateUpdateChecked={isAlternateUpdateChecked}
-        pickUpLabels={pickUpLabels}
-        smsSignUpLabels={smsSignUpLabels}
-        onSubmit={this.onPickUpSubmit}
-        navigation={navigation}
-      />
+      <>
+        <PickupPage
+          isGuest={isGuest}
+          isMobile={isMobile}
+          isUsSite={isUsSite}
+          initialValues={pickupInitialValues}
+          onEditModeChange={onEditModeChange}
+          isSmsUpdatesEnabled={isSmsUpdatesEnabled}
+          currentPhoneNumber={currentPhoneNumber}
+          isOrderUpdateChecked={isOrderUpdateChecked}
+          isAlternateUpdateChecked={isAlternateUpdateChecked}
+          pickUpLabels={pickUpLabels}
+          smsSignUpLabels={smsSignUpLabels}
+          onPickUpSubmit={this.onPickUpSubmit}
+          navigation={navigation}
+        />
+        <ShippingPage
+          {...shippingProps}
+          loadShipmentMethods={loadShipmentMethods}
+          navigation={navigation}
+          isGuest={isGuest}
+          isUsSite={isUsSite}
+          orderHasPickUp={orderHasPickUp}
+          handleSubmit={submitShippingSection}
+        />
+      </>
     );
   }
 }
@@ -80,4 +95,7 @@ CheckoutPage.propTypes = {
   initialValues: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
+  loadShipmentMethods: PropTypes.func.isRequired,
+  orderHasPickUp: PropTypes.bool.isRequired,
+  submitShippingSection: PropTypes.func.isRequired,
 };

@@ -9,7 +9,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
       enableSuccessCheck={false}
       name="sendOrderUpdate"
       onChange={[Function]}
-      rightText=""
     />
     <Styled(BodyCopy)
       dataLocator="pickup-email-signUp-heading-lbl"
@@ -30,7 +29,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       enableSuccessCheck={false}
       name="sendOrderUpdate"
       onChange={[Function]}
-      rightText=""
     />
     <Styled(BodyCopy)
       dataLocator="pickup-email-signUp-heading-lbl"
@@ -57,12 +55,15 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 "id": "input",
                 "keyboardType": "default",
                 "label": "input",
+                "marginBottom": true,
                 "meta": Object {
                   "error": "",
                   "touched": "",
                 },
                 "secureTextEntry": false,
                 "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
                 "type": "text",
               },
               "attrs": Array [],
@@ -129,7 +130,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       enableSuccessCheck={false}
       name="sendOrderUpdate"
       onChange={[Function]}
-      rightText=""
     />
     <Styled(BodyCopy)
       dataLocator="pickup-email-signUp-heading-lbl"
@@ -156,12 +156,15 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 "id": "input",
                 "keyboardType": "default",
                 "label": "input",
+                "marginBottom": true,
                 "meta": Object {
                   "error": "",
                   "touched": "",
                 },
                 "secureTextEntry": false,
                 "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
                 "type": "text",
               },
               "attrs": Array [],
