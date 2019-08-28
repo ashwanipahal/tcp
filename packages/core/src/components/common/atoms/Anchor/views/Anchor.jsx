@@ -40,7 +40,7 @@ const Anchor = ({
   const isCompleteUrl = incomingUrl.startsWith('http');
   const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
   const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
-  let AnchorComponent;
+  let AnchorComponent = null;
   if (children || text) {
     AnchorComponent = noLink ? (
       <a
