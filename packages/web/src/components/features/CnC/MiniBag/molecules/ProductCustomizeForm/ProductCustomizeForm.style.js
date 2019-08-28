@@ -59,18 +59,26 @@ const styles = css`
     cursor: pointer;
     .dropdownliBottomBorder {
       width: auto;
+      border-bottom: none;
       div {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        color: ${props => props.theme.colors.WHITE};
       }
     }
     .dropdownActiveClass {
       background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+      div {
+        color: ${props => props.theme.colors.WHITE};
+      }
     }
     .dropdownUlBorder {
       border: none;
+    }
+    .dropdownDivOverFlow {
+      display: block;
+      overflow-y: visible;
+      border: 2px solid ${props => props.theme.colors.PRIMARY.BLUE};
     }
   }
 
