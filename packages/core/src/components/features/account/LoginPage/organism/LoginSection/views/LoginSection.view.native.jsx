@@ -7,6 +7,7 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
 import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
+import ToastView from '../../../../../../../../../mobileapp/src/components/common/atoms/Toast/views/Toast.view';
 import {
   FormStyle,
   FormStyleView,
@@ -65,6 +66,7 @@ class LoginSection extends PureComponent<Props> {
       <View>
         {!resetPassword && (
           <Fragment>
+            <ToastView loginError={loginError} loginErrorMessage={loginErrorMessage} />
             <LoginTopSection variation={variation} labels={labels} />
             <LoginForm
               onSubmit={onSubmit}

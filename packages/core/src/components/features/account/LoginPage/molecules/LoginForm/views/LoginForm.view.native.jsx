@@ -5,7 +5,6 @@ import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import Notification from '../../../../../../common/molecules/Notification/views/Notification.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
@@ -64,18 +63,10 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, handleSubmit, onSubmit, variation, loginErrorMessage, loginError } = this.props;
+    const { labels, handleSubmit, onSubmit, variation } = this.props;
     const { type } = this.state;
     return (
       <Fragment>
-        {loginError && (
-          <Notification
-            status="error"
-            colSize={{ large: 11, medium: 7, small: 6 }}
-            message={loginErrorMessage}
-          />
-        )}
-
         <View {...this.props}>
           <Field
             label={labels.login.lbl_login_email}
