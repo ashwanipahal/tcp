@@ -9,6 +9,7 @@ import AddEditAddressSaga from '@tcp/core/src/components/common/organisms/AddEdi
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
+import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
@@ -41,6 +42,7 @@ export default function* rootSaga() {
     DefaultPaymentSaga(),
     SetDefaultShippingAddressSaga(),
     AddressBookSaga(),
+    DeleteAddressSaga(),
     ProductListingPageSaga(),
     AddedToBagSaga(),
     CreateAccountSaga(),
