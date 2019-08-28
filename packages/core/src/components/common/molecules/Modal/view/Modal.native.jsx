@@ -1,16 +1,15 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
-import BodyCopy from '../../../atoms/BodyCopy';
 import {
   StyledCrossImage,
   StyledTouchableOpacity,
   ModalHeading,
   LineWrapper,
   RowWrapper,
-  ModalHeadingWrapper,
   ImageWrapper,
 } from '../Modal.style.native';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 // How To use this react native modal
 // import this component in your file.
@@ -48,30 +47,33 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingAlign,
     headingFontFamily,
     headerStyle,
+    fontSize,
+    horizontalBar = true,
+    borderColor = 'black',
   } = otherProps;
   return (
     <SafeAreaView>
-      <StatusBar hidden />
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
+        <StatusBar hidden />
         {heading && (
           <RowWrapper>
-            <ModalHeadingWrapper>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={headingFontFamily || 'primary'}
-                  fontWeight="black"
-                  textAlign={headingAlign}
-                  fontSize="fs16"
-                  text={heading}
-                />
-              </ModalHeading>
-            </ModalHeadingWrapper>
+            <ModalHeading>
+              <BodyCopy
+                mobileFontFamily={headingFontFamily || 'primary'}
+                fontWeight="extrabold"
+                textAlign={headingAlign}
+                fontSize={fontSize || 'fs16'}
+                text={heading}
+              />
+            </ModalHeading>
             {getCloseIcon({ onRequestClose, headerStyle })}
           </RowWrapper>
         )}
-        <LineWrapper>
-          <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-        </LineWrapper>
+        {horizontalBar ? (
+          <LineWrapper>
+            <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
+          </LineWrapper>
+        ) : null}
         {children}
       </Modal>
     </SafeAreaView>

@@ -1,10 +1,10 @@
-import ModuleAAbstractor from '../moduleN';
+import ModuleNAbstractor from '../moduleN';
 import mock from '../mock';
 
 jest.mock('../../../../handler/handler');
 
-it('ModuleA Abstractor | ', () => {
-  ModuleAAbstractor.getData('moduleN', {
+it('ModuleN Abstractor | ', () => {
+  ModuleNAbstractor.getData('moduleN', {
     contentId: '73f6a699-79a4-4874-994f-asd234fa34s',
     slot: 'moduleN',
   }).then(data => {
@@ -12,7 +12,11 @@ it('ModuleA Abstractor | ', () => {
   });
 });
 
-it('ModuleA Abstractor | getMock', () => {
-  const data = ModuleAAbstractor.getMock();
+it('ModuleN Abstractor | getMock', () => {
+  const data = ModuleNAbstractor.getMock();
   expect(data).toMatchObject(mock);
+});
+
+it('ModuleN Abstractor | processData', () => {
+  ModuleNAbstractor.processData();
 });

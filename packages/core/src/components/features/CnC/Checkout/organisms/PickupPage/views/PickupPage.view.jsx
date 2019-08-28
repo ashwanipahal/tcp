@@ -82,17 +82,13 @@ class PickUpFormPart extends React.Component {
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
+      orderHasShipping,
     } = this.props;
     const { isEditing, isReset } = this.state;
 
     return (
       <div className={className}>
         <div className="container">
-          <CheckoutSectionTitleDisplay
-            title={pickUpLabels.title}
-            dataLocator="pickup-title"
-            className="summary-title-pick-up"
-          />
           {pickupError && (
             <ErrorMessage
               error={pickupError}
@@ -102,6 +98,12 @@ class PickUpFormPart extends React.Component {
               dataLocator="pickup-error"
             />
           )}
+          <CheckoutSectionTitleDisplay
+            title={pickUpLabels.title}
+            dataLocator="pickup-title"
+            className="summary-title-pick-up"
+          />
+
           <form onSubmit={handleSubmit} className="checkoutPickupForm">
             <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">
@@ -201,9 +203,13 @@ class PickUpFormPart extends React.Component {
         </div>
         <form onSubmit={handleSubmit}>
           <CheckoutFooter
-            disableBackLink="true"
+            hideBackLink={false}
             backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
-            nextButtonText={`${pickUpLabels.nextText}: ${pickUpLabels.billingText}`}
+            nextButtonText={
+              !orderHasShipping
+                ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
+                : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`
+            }
             disableNext={isEditing}
           />
         </form>
@@ -220,6 +226,7 @@ PickUpFormPart.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool,
   isOrderUpdateChecked: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
+  orderHasShipping: PropTypes.isRequired,
   pickupError: PropTypes.string,
   currentPhoneNumber: PropTypes.string,
   pickUpLabels: PropTypes.shape({}).isRequired,

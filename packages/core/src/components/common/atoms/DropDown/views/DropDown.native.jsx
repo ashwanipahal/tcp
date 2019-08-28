@@ -11,8 +11,8 @@ import {
   HeaderContainer,
   DropDownItemContainer,
   Separator,
-  FlatList,
   StyledLabel,
+  FlatList,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -36,6 +36,7 @@ class DropDown extends React.PureComponent<Props> {
     itemStyle: PropTypes.shape({}),
     dropDownStyle: PropTypes.shape({}),
     variation: PropTypes.string,
+    bounces: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -45,6 +46,7 @@ class DropDown extends React.PureComponent<Props> {
     itemStyle: null,
     dropDownStyle: null,
     variation: 'primary',
+    bounces: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -96,8 +98,6 @@ class DropDown extends React.PureComponent<Props> {
       dropDownIsOpen: false,
       selectedLabelState,
       top: 0,
-      flatListTop: 0,
-      flatListBottom: 0,
     };
   }
 
@@ -131,11 +131,6 @@ class DropDown extends React.PureComponent<Props> {
       };
 
       this.setState({ top: topMargin.top });
-      if (showInBottom) {
-        this.setState({ flatListBottom: 300 });
-      } else if (calculateHeight > windowHeight) {
-        this.setState({ flatListTop: 120, flatListBottom: 200 });
-      }
     });
   };
 
@@ -202,8 +197,8 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   render() {
-    const { data, dropDownStyle, heading } = this.props;
-    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
+    const { data, dropDownStyle, heading, bounces } = this.props;
+    const { dropDownIsOpen, selectedLabelState, top } = this.state;
     return (
       <View style={dropDownStyle}>
         {heading && <StyledLabel isFocused>{heading}</StyledLabel>}
@@ -237,7 +232,6 @@ class DropDown extends React.PureComponent<Props> {
               width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
-              marginTop: flatListTop,
             }}
           >
             <OverLayView
@@ -246,7 +240,6 @@ class DropDown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
-                marginBottom: flatListBottom,
               }}
             >
               {dropDownIsOpen && (
@@ -254,7 +247,7 @@ class DropDown extends React.PureComponent<Props> {
                   data={data}
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.key}
-                  bounces={false}
+                  bounces={bounces}
                   ItemSeparatorComponent={() => <Separator />}
                 />
               )}

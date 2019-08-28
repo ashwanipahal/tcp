@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PickUpContactDisplayVanilla } from '../views/PickUpContactDisplay';
+import { PickUpContactDisplayVanilla } from '../views/PickUpContactDisplay.view';
 
 describe('PickUpContactDisplayVanilla component', () => {
   it('should renders correctly when Coupon are not present', () => {

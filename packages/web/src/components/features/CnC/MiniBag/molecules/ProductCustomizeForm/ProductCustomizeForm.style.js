@@ -20,8 +20,8 @@ const styles = css`
       background-repeat: no-repeat;
       background-position: right center;
       height: auto;
-      padding-left: 0px;
       padding-bottom: 2px;
+      padding-left: 0px;
     }
     .customSelectTitle {
       padding-bottom: 2px;
@@ -59,18 +59,27 @@ const styles = css`
     cursor: pointer;
     .dropdownliBottomBorder {
       width: auto;
+      border-bottom: none;
       div {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        color: ${props => props.theme.colors.WHITE};
       }
     }
     .dropdownActiveClass {
       background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+      div {
+        color: ${props => props.theme.colors.WHITE};
+      }
     }
     .dropdownUlBorder {
       border: none;
+    }
+    .dropdownDivOverFlow {
+      display: block;
+      overflow-y: auto;
+      max-height: 150px;
+      border: 2px solid ${props => props.theme.colors.PRIMARY.BLUE};
     }
   }
 

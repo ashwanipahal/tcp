@@ -26,7 +26,6 @@ import {
   SetDefaultShippingWrapper,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
-  AddressSecondWrapper,
 } from './AddressForm.native.style';
 
 class AddressForm extends React.PureComponent {
@@ -92,7 +91,6 @@ class AddressForm extends React.PureComponent {
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
-              dispatch(change('AddressForm', 'addressLine1', data));
               this.handlePlaceSelected(data, inputValue);
             }}
             dataLocator="addnewaddress-addressl1"
@@ -100,15 +98,13 @@ class AddressForm extends React.PureComponent {
           />
         </GooglePlaceInputWrapper>
 
-        <AddressSecondWrapper>
-          <Field
-            id="addressLine2"
-            name="addressLine2"
-            label={addressFormLabels.addressLine2}
-            component={TextBox}
-            dataLocator="addnewaddress-addressl2"
-          />
-        </AddressSecondWrapper>
+        <Field
+          id="addressLine2"
+          name="addressLine2"
+          label={addressFormLabels.addressLine2}
+          component={TextBox}
+          dataLocator="addnewaddress-addressl2"
+        />
 
         <Field
           id="city"
@@ -123,6 +119,7 @@ class AddressForm extends React.PureComponent {
             <Field
               id="state"
               name="state"
+              bounces={false}
               component={DropDown}
               heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"

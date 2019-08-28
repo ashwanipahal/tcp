@@ -23,7 +23,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     userFullName=""
     userPhoneNumber=""
   />
-  <ChangePassword
+  <ChangePasswordInfo
     handleComponentChange={[Function]}
     labels={Object {}}
   />
@@ -33,6 +33,7 @@ exports[`ProfileInformation should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       data-locator="my-rewards-program-details"
@@ -45,6 +46,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     />
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         data-locator="my-rewards-tnc"

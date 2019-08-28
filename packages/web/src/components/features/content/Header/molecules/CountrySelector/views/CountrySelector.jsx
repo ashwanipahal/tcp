@@ -5,7 +5,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
 
 import CountrySelectorModal from './CountrySelectorModal';
-import style from '../styles/CountrySelector.styles';
+import style from '../styles/CountrySelector.style';
 
 /**
  * @class CountrySelector - Invokes a country, language, currency change selector
@@ -130,7 +130,7 @@ class CountrySelector extends React.Component {
               fontFamily="secondary"
               fontSize="fs12"
             >
-              {labelValues.lbl_global_country_selector_header}
+              {labelValues && labelValues.lbl_global_country_selector_header}
             </BodyCopy>
             <CountrySelectorModal
               isModalOpen={isModalOpen}
