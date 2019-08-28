@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-const TrackOrderFormView = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
-`;
-
 const AnchorView = styled.View`
   display: flex;
   align-items: flex-start;
@@ -24,4 +20,4 @@ const CtaView = styled.View`
   width: 100%;
 `;
 
-export { InputField, CtaView, TrackOrderFormView, AnchorView };
+export { InputField, CtaView, AnchorView };

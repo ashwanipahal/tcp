@@ -49,7 +49,8 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingFontFamily,
     headerStyle,
     fontSize,
-    horizontalBar,
+    horizontalBar = true,
+    borderColor = 'black',
   } = otherProps;
   return (
     <SafeAreaView>
@@ -73,7 +74,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
         )}
         {horizontalBar ? (
           <LineWrapper>
-            <LineComp marginTop={5} borderWidth={1} borderColor="black" />
+            <LineComp marginTop={5} borderWidth={1} borderColor={borderColor} />
           </LineWrapper>
         ) : null}
         {children}

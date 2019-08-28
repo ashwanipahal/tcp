@@ -39,6 +39,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           />
         </View>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
           customStyle={Object {}}
@@ -125,6 +126,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           />
         </View>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
           customStyle={Object {}}
@@ -219,6 +221,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           />
         </View>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
           customStyle={Object {}}

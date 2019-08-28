@@ -1,16 +1,12 @@
 import React from 'react';
+import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import {
-  InputField,
-  CtaView,
-  AnchorView,
-  TrackOrderFormView,
-} from '../styles/TrackOrderForm.native.style';
+import { InputField, CtaView, AnchorView } from '../styles/TrackOrderForm.native.style';
 import constants from '../../../TrackOrder.constants';
 
 // @flow
@@ -25,7 +21,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
   render() {
     const { labels, handleSubmit, onChangeForm, invalid } = this.props;
     return (
-      <TrackOrderFormView>
+      <View>
         <InputField>
           <Field
             id="emailAddress"
@@ -74,7 +70,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
             color="white"
           />
         </CtaView>
-      </TrackOrderFormView>
+      </View>
     );
   }
 }
