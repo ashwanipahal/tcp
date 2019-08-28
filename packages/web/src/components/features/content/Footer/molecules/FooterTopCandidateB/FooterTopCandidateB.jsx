@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Button, Col, RichText, Row } from '@tcp/core/src/components/common/atoms';
+import { Button, Col, Row, TextItems } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import SocialMediaLinks from '../SocialMediaLinks';
 
@@ -39,7 +39,8 @@ const FooterTopCandidateB = props => {
             onClick={openEmailSignUpModal}
             dataLocator="footer_email_signup_btn"
           >
-            <RichText richTextHtml={emailSignup.text} />
+            <TextItems textItems={emailSignup.textItems} />
+            {/* <RichText richTextHtml={emailSignup.text} /> */}
           </Button>
         </Col>
         <Col
@@ -60,7 +61,8 @@ const FooterTopCandidateB = props => {
             title={smsSignup.title}
             onClick={openSmsSignUpModal}
           >
-            <RichText richTextHtml={smsSignup.text} />
+            <TextItems textItems={smsSignup.textItems} />
+            {/* <RichText richTextHtml={smsSignup.text} /> */}
           </Button>
         </Col>
         <Col
@@ -76,7 +78,8 @@ const FooterTopCandidateB = props => {
         >
           <span id="extole_zone_global_footer" title={referAFriend.title}>
             <Button customStyle="shadow-button" data-locator={getLocator('refer_friend')}>
-              <RichText richTextHtml={referAFriend.text} />
+              <TextItems textItems={referAFriend.textItems} />
+              {/* <RichText richTextHtml={referAFriend.text} /> */}
             </Button>
           </span>
         </Col>

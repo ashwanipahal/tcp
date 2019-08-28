@@ -9,6 +9,9 @@ export default css`
   .footer_top_candidate_a .candidate_a_inline_container_button {
     text-align: center;
   }
+  .candidate_a_inline_container_button button{
+    white-space: nowrap;
+  }
   .footer_top_candidate_a .candidate_a_inline_container_button button {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
@@ -27,7 +30,6 @@ export default css`
       color: #4b9fdd;
     }
   }
-
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
     font-size: 12px;
     line-height: 2.08;

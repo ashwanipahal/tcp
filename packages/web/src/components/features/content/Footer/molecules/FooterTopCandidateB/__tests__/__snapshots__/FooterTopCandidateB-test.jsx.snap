@@ -25,7 +25,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
         dataLocator="footer_email_signup_btn"
         onClick={[Function]}
       >
-        <Styled(RichText) />
+        <TextItems />
       </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
@@ -49,7 +49,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
         dataLocator="footer_sms_signup_btn"
         onClick={[Function]}
       >
-        <Styled(RichText) />
+        <TextItems />
       </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
@@ -74,7 +74,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           customStyle="shadow-button"
           data-locator="global_referfriend"
         >
-          <Styled(RichText) />
+          <TextItems />
         </Styled(Button)>
       </span>
     </Styled(Col)>
