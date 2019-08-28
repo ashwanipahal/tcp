@@ -31,6 +31,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "blue": Object {
           "100": "#dbebf8",
           "300": "#93c5ea",
+          "400": "#439ad4",
           "50": "#edf5fb",
           "500": "#4b9fdd",
           "600": "#1ba5e0",
@@ -42,6 +43,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "gray": Object {
           "1000": "#6d7278",
           "300": "#f3f3f3",
+          "400": "#cdcdcd",
           "500": "#d8d8d8",
           "600": "#9b9b9b",
           "700": "#575757",
