@@ -129,7 +129,7 @@ export default css`
     }
     .footer-middle.desktop {
       display: flex;
-      padding: 60px 0 64px;
+      padding: 36px 0 64px;
     }
     .divider {
       border-left: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
