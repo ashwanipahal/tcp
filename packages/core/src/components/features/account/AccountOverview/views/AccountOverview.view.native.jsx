@@ -7,26 +7,23 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
-import UnderlineStyle from '../styles/AccountOverview.style.native';
+import { UnderlineStyle, ImageWrapper, FavtWrapper } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
-import LineComp from '../../../../common/atoms/Line';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import {
-  ModalHeading,
-  ModalViewWrapper,
-  LineWrapper,
-} from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
+import { ModalViewWrapper } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 
 import {
   LogoutWrapper,
   LoggedinWrapper,
   LoggedinTextWrapper,
 } from '../../Logout/styles/LoginOut.style.native';
-
+import ImageComp from '../../../../common/atoms/Image';
 import CreateAccount from '../../CreateAccount';
 import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
+
+const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 
 class AccountOverview extends PureComponent<Props> {
   constructor(props) {
@@ -36,6 +33,7 @@ class AccountOverview extends PureComponent<Props> {
       getComponentId: {
         login: '',
         createAccount: '',
+        favorites: '',
       },
     };
   }
@@ -43,17 +41,27 @@ class AccountOverview extends PureComponent<Props> {
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     return (
       <React.Fragment>
-        {getComponentId.login ? (
+        {(getComponentId.login || getComponentId.favorites) && (
           <LoginPageContainer
             onRequestClose={this.toggleModal}
             navigation={navigation}
             isUserLoggedIn={isUserLoggedIn}
+            variation={getComponentId.favorites && 'favorites'}
           />
-        ) : (
+        )}
+        {getComponentId.createAccount && (
           <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
         )}
       </React.Fragment>
     );
+  };
+
+  showloginModal = () => {
+    this.setState({
+      getComponentId: {
+        login: true,
+      },
+    });
   };
 
   toggleModal = ({ getComponentId }) => {
@@ -64,6 +72,7 @@ class AccountOverview extends PureComponent<Props> {
         ? {
             login: getComponentId.login,
             createAccount: getComponentId.createAccount,
+            favorites: getComponentId.favorites,
           }
         : '',
     });
@@ -130,7 +139,11 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: false, createAccount: true },
+                    getComponentId: {
+                      login: false,
+                      createAccount: true,
+                      favorites: false,
+                    },
                   })
                 }
               />
@@ -148,28 +161,26 @@ class AccountOverview extends PureComponent<Props> {
                 onPress={e =>
                   this.toggleModal({
                     e,
-                    getComponentId: { login: true, createAccount: false },
+                    getComponentId: {
+                      login: true,
+                      createAccount: false,
+                      favorites: false,
+                    },
                   })
                 }
               />
             </LoggedinWrapper>
+
             {showModal && (
-              <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-                <ModalHeading>
-                  <BodyCopy
-                    mobileFontFamily={['secondary']}
-                    fontWeight="extrabold"
-                    fontSize="fs16"
-                    text={
-                      getComponentId.login
-                        ? `${labels.lbl_overview_login_text}`
-                        : `${labels.lbl_overview_createAccount}`
-                    }
-                  />
-                </ModalHeading>
-                <LineWrapper>
-                  <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-                </LineWrapper>
+              <ModalNative
+                heading={
+                  ((getComponentId.login || getComponentId.favorites) &&
+                    `${labels.lbl_overview_login_text}`) ||
+                  (getComponentId.createAccount && `${labels.lbl_overview_createAccount}`)
+                }
+                isOpen={showModal}
+                onRequestClose={this.toggleModal}
+              >
                 <SafeAreaView>
                   <ModalViewWrapper>
                     {this.renderComponent({
@@ -181,9 +192,25 @@ class AccountOverview extends PureComponent<Props> {
                 </SafeAreaView>
               </ModalNative>
             )}
-
-            <Panel title={labels.lbl_overview_myFavoritesHeading} isFavorite isVariationTypeLink />
-
+            <FavtWrapper>
+              <BodyCopy
+                color="gray.900"
+                mobileFontFamily={['primary']}
+                fontSize="fs13"
+                textAlign="left"
+                fontWeight="semibold"
+                text={labels.lbl_overview_myFavoritesHeading}
+                onPress={e =>
+                  this.toggleModal({
+                    e,
+                    getComponentId: { favorites: true },
+                  })
+                }
+              />
+              <ImageWrapper>
+                <ImageComp source={favIcon} width={20} height={18} />
+              </ImageWrapper>
+            </FavtWrapper>
             <UnderlineStyle />
 
             <Panel
@@ -215,9 +242,36 @@ class AccountOverview extends PureComponent<Props> {
 }
 
 AccountOverview.propTypes = {
-  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   handleComponentChange: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+};
+
+AccountOverview.defaultProps = {
+  labels: {
+    lbl_overview_messages: '',
+    lbl_overview_help: '',
+    lbl_overview_app_settings: '',
+    lbl_overview_refer_friend: '',
+    lbl_overview_purchase_giftCards: '',
+    lbl_overview_manage_creditCard: '',
+    lbl_overview_apply_today: '',
+    lbl_overview_myFavoritesHeading: '',
+    lbl_overview_createAccount: '',
+    lbl_overview_login_text: '',
+    lbl_overview_join_text: '',
+    lbl_overview_logout_heading_Text_2: '',
+    lbl_overview_logout_heading_Text_1: '',
+    lbl_overview_myPlaceRewardsCardHeading: '',
+    lbl_overview_myPreferencesHeading: '',
+    lbl_overview_paymentHeading: '',
+    lbl_overview_addressBookHeading: '',
+    lbl_overview_profileInformationHeading: '',
+    lbl_overview_ordersHeading: '',
+    lbl_overview_earnPointsHeading: '',
+    lbl_overview_myWalletHeading: '',
+    lbl_overview_myPlaceRewardsHeading: '',
+  },
 };
 
 export default AccountOverview;

@@ -19,7 +19,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     autoFocus={false}
     currentLocation={false}
     currentLocationLabel="Current location"
-    debounce={200}
+    debounce={0}
     editable={true}
     enableEmptySections={true}
     enableHighAccuracyLocation={true}
@@ -45,9 +45,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     query={
       Object {
         "components": "country:undefined",
-        "key": "AIzaSyAd-jljPEQ6kgrLRJuN-ENKypW9K6sbQgc",
-        "language": "en",
-        "types": "(cities)",
+        "key": undefined,
       }
     }
     renderDescription={[Function]}

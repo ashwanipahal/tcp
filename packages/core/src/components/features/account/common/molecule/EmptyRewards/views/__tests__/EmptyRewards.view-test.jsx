@@ -4,7 +4,7 @@ import { EmptyRewards } from '../EmptyRewards.view';
 
 const labels = {
   myPlaceRewards: {
-    ACC_LBL_MY_REWARDS_SHOP_NOW: 'shop now',
+    lbl_my_rewards_shop_now: 'shop now',
     ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: 'msg',
   },
 };
