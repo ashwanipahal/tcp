@@ -16,3 +16,11 @@ it('ModuleA Abstractor | getMock', () => {
   const data = ModuleAAbstractor.getMock();
   expect(data).toMatchObject(mock);
 });
+
+it('ModuleA Abstractor | processData', () => {
+  ModuleAAbstractor.processData();
+});
+
+it('ModuleA Abstractor | handleError', () => {
+  ModuleAAbstractor.handleError();
+});
