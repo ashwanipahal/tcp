@@ -137,14 +137,26 @@ function legacyPasswordValidator(value) {
   return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
 }
 
-function userDateOfBirthValidator (value, param, linkedPropsValues, linkedFieldsValue) {
-  //If either of the selected values is placeholder values, test should fail.
-  //Either none should be placeholder or both should be placeholder values.
-  if ((value !== 'MM' && linkedFieldsValue && linkedFieldsValue[0] === 'YYYY')
-  || (value === 'MM' && linkedFieldsValue && linkedFieldsValue[0] !== 'YYYY')) {
+function userDateOfBirthValidator(value, param, linkedPropsValues, linkedFieldsValue) {
+  if (
+    (value !== 'MM' && linkedFieldsValue && linkedFieldsValue[0] === 'YYYY') ||
+    (value === 'MM' && linkedFieldsValue && linkedFieldsValue[0] !== 'YYYY')
+  ) {
     return false;
   }
   return true;
+}
+
+function alphanumericValidator(value) {
+  return !value ? true : /^[0-9A-Za-z]{12}$/.test(value);
+}
+
+function ssnValidator(value) {
+  return /^[0-9]{4}$/.test(value);
+}
+
+function dobValidator(value) {
+  return ['Mm', 'Dd', 'Yyyy'].indexOf(value) === -1;
 }
 
 const validatorMethods = {
@@ -172,6 +184,9 @@ const validatorMethods = {
   legacyPassword: legacyPasswordValidator,
   email: emailValidator,
   userDateOfBirth: userDateOfBirthValidator,
+  alphanumeric: alphanumericValidator,
+  ssn: ssnValidator,
+  dob: dobValidator,
 };
 
 export default validatorMethods;

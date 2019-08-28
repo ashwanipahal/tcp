@@ -57,6 +57,7 @@ class LoginSection extends PureComponent<Props> {
       resetForgotPasswordErrorResponse,
       navigation,
       variation,
+      loginError,
     } = this.props;
 
     const { resetPassword, showModal } = this.state;
@@ -68,6 +69,7 @@ class LoginSection extends PureComponent<Props> {
             <LoginForm
               onSubmit={onSubmit}
               labels={labels}
+              loginError={loginError}
               loginErrorMessage={loginErrorMessage}
               initialValues={initialValues}
               showRecaptcha={showRecaptcha}

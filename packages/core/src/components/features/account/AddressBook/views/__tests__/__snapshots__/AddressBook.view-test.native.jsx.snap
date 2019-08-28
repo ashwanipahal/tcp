@@ -9,7 +9,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
     }
   }
   addresses={Immutable.List []}
-  deleteModalMountedState={[Function]}
+  deleteModalMountedState={false}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -19,7 +19,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "verifyAddress": "",
         },
         "addresses": Array [],
-        "deleteModalMountedState": [Function],
+        "deleteModalMountedState": false,
         "labels": Object {
           "addressBook": Object {
             "ACC_LBL_ADDRESS_BOOK_HEADING": "",
@@ -80,7 +80,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
       },
     ]
   }
-  deleteModalMountedState={[Function]}
+  deleteModalMountedState={false}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -90,7 +90,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "verifyAddress": "",
         },
         "addresses": Array [],
-        "deleteModalMountedState": [Function],
+        "deleteModalMountedState": false,
         "labels": Object {
           "addressBook": Object {
             "ACC_LBL_ADDRESS_BOOK_HEADING": "",

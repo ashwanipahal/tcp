@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar component NavBar component renders correctly 1`] = `
+<Fragment>
+  <ul
+    className="navigation-bar"
+  >
+    <li
+      className="navigation-level-one"
+    >
+      <Link
+        href="/"
+      >
+        <a>
+          Home
+        </a>
+      </Link>
+    </li>
+    <li
+      className="navigation-level-one"
+    >
+      <Link
+        href="/DeltaSyncSamplePage"
+      >
+        <a>
+          Delta-Sync Sample
+        </a>
+      </Link>
+    </li>
+    <li
+      className="navigation-level-one"
+      key="1"
+    >
+      <Link
+        as="/ProductListingPage"
+        href="/ProductListingPage"
+      >
+        <a>
+          test 1
+        </a>
+      </Link>
+    </li>
+    <li
+      className="navigation-level-one"
+      key="2"
+    >
+      <Link
+        as="/ProductListingPage"
+        href="/ProductListingPage"
+      >
+        <a>
+          test 2
+        </a>
+      </Link>
+    </li>
+  </ul>
+</Fragment>
+`;

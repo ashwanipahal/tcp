@@ -33,10 +33,12 @@ import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOr
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
+import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
 
 import {
   APICONFIG_REDUCER_KEY,
+  APPLY_PLCC_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
   COUNTRY_SELECTOR_REDUCER_KEY,
   HEADER_REDUCER_KEY,
@@ -98,9 +100,15 @@ const filteredProductListingPageReducer = createFilteredReducer(
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+// TODO: filteredSessionConfigReducer should be used, but issue with immutable map to be corrected
+// const filteredSessionConfigReducer = createFilteredReducer(
+//   SessionConfigReducer,
+//   SESSIONCONFIG_REDUCER_KEY
+// );
 
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,

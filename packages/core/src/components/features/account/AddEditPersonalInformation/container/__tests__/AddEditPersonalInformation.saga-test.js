@@ -13,7 +13,8 @@ describe('UpdateProfile saga', () => {
 
     it('should dispatch updateProfileSuccess action for success response', () => {
       const response = 'success';
-      const putDescriptor = gen.next(response).value;
+      gen.next(response);
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(updateProfileSuccess(response)));
     });
 
