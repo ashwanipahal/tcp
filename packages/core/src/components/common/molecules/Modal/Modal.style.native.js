@@ -9,7 +9,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
 `;
 
 const ModalHeading = styled.Text`
-  border-bottom-width: 3px;
+  border-bottom-width: 7px;
   border-bottom-color: ${props => props.theme.colorPalette.black};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING[props.paddingBottom || 'MED']};
 `;
