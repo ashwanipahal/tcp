@@ -216,11 +216,18 @@ export const AddEditPersonalInformationForm = ({
 
 AddEditPersonalInformationForm.propTypes = {
   labels: PropTypes.shape({
-    lbl_changePassword_current_password: PropTypes.string,
-    lbl_changePassword_new_password: PropTypes.string,
-    lbl_changePassword_confirm_password: PropTypes.string,
-    lbl_changePassword_cancelCta: PropTypes.string,
-    lbl_changePassword_saveCta: PropTypes.string,
+    lbl_profile_personal_info_firstName: PropTypes.string,
+    lbl_profile_personal_info_lastName: PropTypes.string,
+    lbl_profile_personal_info_email: PropTypes.string,
+    lbl_profile_personal_info_phoneNumber: PropTypes.string,
+    lbl_profile_personal_info_month: PropTypes.string,
+    lbl_profile_personal_info_year: PropTypes.string,
+    lbl_profile_personal_air_miles: PropTypes.string,
+    lbl_profile_collector_number: PropTypes.string,
+    lbl_profile_personal_info_tcp_employee: PropTypes.string,
+    lbl_profile_personal_info_associate_id: PropTypes.string,
+    lbl_profile_personal_info_cancelCta: PropTypes.string,
+    lbl_profile_personal_info_updateCta: PropTypes.string,
   }),
   birthMonthOptionsMap: PropTypes.shape([]).isRequired,
   birthYearOptionsMap: PropTypes.shape([]).isRequired,
@@ -234,11 +241,18 @@ AddEditPersonalInformationForm.propTypes = {
 AddEditPersonalInformationForm.defaultProps = {
   className: '',
   labels: {
-    lbl_changePassword_current_password: '',
-    lbl_changePassword_new_password: '',
-    lbl_changePassword_confirm_password: '',
-    lbl_changePassword_cancelCta: '',
-    lbl_changePassword_saveCta: '',
+    lbl_profile_personal_info_firstName: '',
+    lbl_profile_personal_info_lastName: '',
+    lbl_profile_personal_info_email: '',
+    lbl_profile_personal_info_phoneNumber: '',
+    lbl_profile_personal_info_month: '',
+    lbl_profile_personal_info_year: '',
+    lbl_profile_personal_air_miles: '',
+    lbl_profile_collector_number: '',
+    lbl_profile_personal_info_tcp_employee: '',
+    lbl_profile_personal_info_associate_id: '',
+    lbl_profile_personal_info_cancelCta: '',
+    lbl_profile_personal_info_updateCta: '',
   },
 };
 

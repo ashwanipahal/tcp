@@ -7,7 +7,7 @@ const initialState = fromJS({
   error: null,
 });
 
-describe('ChangePassword Reducer', () => {
+describe('UpdateProfile Reducer', () => {
   it('should return default state', () => {
     const state = UpdateProfileReducer(undefined, {});
     expect(state.get('success')).toBeNull();
