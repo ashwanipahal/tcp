@@ -4,16 +4,16 @@ import { AddEditPersonalInformationContainer } from '../AddEditPersonalInformati
 import AddEditPersonalInformationForm from '../../views';
 
 describe('AddEditPersonalInformationForm container', () => {
-  let messageSateChangeActionSpy;
+  let messageStateChangeActionSpy;
   let updateProfileActionSpy;
   let component;
   beforeEach(() => {
-    messageSateChangeActionSpy = jest.fn();
+    messageStateChangeActionSpy = jest.fn();
     updateProfileActionSpy = jest.fn();
     const props = {
       successMessage: '',
       errorMessage: '',
-      messageSateChangeAction: messageSateChangeActionSpy,
+      messageStateChangeAction: messageStateChangeActionSpy,
       updateProfileAction: updateProfileActionSpy,
       labels: {},
     };
@@ -36,9 +36,9 @@ describe('AddEditPersonalInformationForm container', () => {
     });
   });
 
-  it('backHandler should call messageSateChangeAction', () => {
-    expect(messageSateChangeActionSpy.mock.calls.length).toBe(0);
+  it('backHandler should call messageStateChangeActionAction', () => {
+    expect(messageStateChangeActionSpy.mock.calls.length).toBe(0);
     component.unmount();
-    expect(messageSateChangeActionSpy.mock.calls.length).toBe(1);
+    expect(messageStateChangeActionSpy.mock.calls.length).toBe(1);
   });
 });

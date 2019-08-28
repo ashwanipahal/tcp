@@ -2,19 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
-import Anchor from '../../../../../../common/atoms/Anchor/views/Anchor';
-import Button from '../../../../../../common/atoms/Button';
-import TextBox from '../../../../../../common/atoms/TextBox';
-import SelectBox from '../../../../../../common/atoms/Select';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Row from '@tcp/core/src/components/common/atoms/Row';
+import Col from '@tcp/core/src/components/common/atoms/Col';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor/views/Anchor';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import SelectBox from '@tcp/core/src/components/common/atoms/Select';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
+import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
+import { isCanada } from '@tcp/core/src/utils';
+import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/AddEditPersonalInformationForm.style';
-import { isCanada } from '../../../../../../../utils';
+import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants'
+import internalEndpoints from '../../../../common/internalEndpoints'
 
 export const AddEditPersonalInformationForm = ({
   className,
@@ -28,7 +30,7 @@ export const AddEditPersonalInformationForm = ({
 }) => {
   return (
     <form
-      name="AddEditPersonalInformationForm"
+      name={AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM}
       className={className}
       onSubmit={handleSubmit}
       noValidate
@@ -37,8 +39,7 @@ export const AddEditPersonalInformationForm = ({
         <Notification
           className="elem-mt-MED"
           status="error"
-          colSize={{ large: 12, medium: 8, small: 6 }}
-          message={labels[`lbl_profile_pofile_info_${errorMessage}`]}
+          message={labels[`lbl_profile_error_${errorMessage}`]}
         />
       )}
       <Row fullBleed className="elem-mt-XXL">
@@ -68,6 +69,7 @@ export const AddEditPersonalInformationForm = ({
             placeholder={labels.lbl_profile_personal_info_email}
             name="Email"
             id="Email"
+            type="email"
             component={TextBox}
             dataLocator="addnewaddress-email"
           />
@@ -130,7 +132,6 @@ export const AddEditPersonalInformationForm = ({
           )}
         </Col>
       </Row>
-
       <Row fullBleed className="elem-mt-LRG">
         <Col
           colSize={{ small: 4, medium: 4, large: 6 }}
@@ -162,54 +163,52 @@ export const AddEditPersonalInformationForm = ({
         </Col>
       </Row>
       )}
-      <BodyCopy component="div" textAlign="center" className="elem-mb-LRG elem-mt-XXL">
-        <Row>
-          <Col
-            className="AddEditPersonalInformationForm_cancel"
-            colSize={{
-              large: 3,
-              medium: 2,
-              small: 6,
-            }}
-            offsetLeft={{
-              large: 3,
-              medium: 1,
-            }}
-          >
-            <Anchor to="/account?id=profile" asPath="/account/profile">
-              <Button
-                type="button"
-                buttonVariation="fixed-width"
-                dataLocator="cancelBtn"
-                fullWidth
-                className="elem-mb-XS"
-              >
-                {labels.lbl_profile_personal_info_cancelCta}
-              </Button>
-            </Anchor>
-          </Col>
-          <Col
-            className="AddEditPersonalInformationForm_update"
-            colSize={{
-              large: 3,
-              medium: 2,
-              small: 6,
-            }}
-          >
+      <Row className="elem-mb-LRG elem-mt-XXL">
+        <Col
+          className="AddEditPersonalInformationForm_cancel"
+          colSize={{
+            large: 3,
+            medium: 2,
+            small: 6,
+          }}
+          offsetLeft={{
+            large: 3,
+            medium: 1,
+          }}
+        >
+          <Anchor to={internalEndpoints.profilePage.link} asPath={internalEndpoints.profilePage.path}>
             <Button
-              fill="BLUE"
-              type="submit"
+              type="button"
               buttonVariation="fixed-width"
-              dataLocator="UpdateBtn"
+              dataLocator="cancelBtn"
               fullWidth
               className="elem-mb-XS"
-              disabled={pristine}
             >
-              {labels.lbl_profile_personal_info_updateCta}
+              {labels.lbl_profile_personal_info_cancelCta}
             </Button>
-          </Col>
-        </Row>
-      </BodyCopy>
+          </Anchor>
+        </Col>
+        <Col
+          className="AddEditPersonalInformationForm_update"
+          colSize={{
+            large: 3,
+            medium: 2,
+            small: 6,
+          }}
+        >
+          <Button
+            fill="BLUE"
+            type="submit"
+            buttonVariation="fixed-width"
+            dataLocator="UpdateBtn"
+            fullWidth
+            className="elem-mb-XS"
+            disabled={pristine}
+          >
+            {labels.lbl_profile_personal_info_updateCta}
+          </Button>
+        </Col>
+      </Row>
     </form>
   );
 };
@@ -269,7 +268,7 @@ const validateMethod = createValidateMethod(
 );
 
 export default reduxForm({
-  form: 'AddEditPersonalInformationForm', // a unique identifier for this form
+  form: AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(AddEditPersonalInformationForm, styles));

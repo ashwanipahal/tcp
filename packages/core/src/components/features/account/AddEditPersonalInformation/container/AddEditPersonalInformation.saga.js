@@ -14,7 +14,7 @@ export function* UpdateProfile({ payload }) {
 }
 
 export function* UpdateProfileSaga() {
-  yield takeLatest(constants.UPDATE_PROFILE, UpdateProfile);
+  yield takeLatest(constants.PROFILE_UPDATE, UpdateProfile);
 }
 
 export default UpdateProfileSaga;

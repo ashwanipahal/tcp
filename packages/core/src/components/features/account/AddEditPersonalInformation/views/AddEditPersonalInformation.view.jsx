@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import AddEditPersonalInformationForm from '../molecules/AddEditPersonalInformationForm';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../common/atoms/Anchor';
 
 export const AddEditPersonalInformation = ({ labels, successMessage, errorMessage, onSubmit,birthMonthOptionsMap , birthYearOptionsMap, initialValues, isEmployee }) => {
   return (

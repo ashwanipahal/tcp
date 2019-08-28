@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import utils, { getBirthDateOptionMap } from '../../../../../utils';
+import utils from '@tcp/core/src/utils';
 import { getError, getSuccess, getIsEmployee, getProfileLabels } from './AddEditPersonalInformation.selectors';
 import AddEditPersonalInformationComponent from '../views';
 import { updateProfile, updateProfileError } from './AddEditPersonalInformation.actions';
+import internalEndpoints from '../../common/internalEndpoints'
 import {
   getUserBirthday,
   getUserName,
@@ -20,14 +21,16 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     successMessage: PropTypes.string.isRequired,
     errorMessage: PropTypes.string.isRequired,
     updateProfileAction: PropTypes.func.isRequired,
-    messageSateChangeAction: PropTypes.func.isRequired,
+    messageStateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
     isEmployee: PropTypes.string.isRequired,
   };
 
   constructor(props) {
     super(props);
-    this.yearOptionsMap = getBirthDateOptionMap();
+    this.yearOptionsMap = utils.getBirthDateOptionMap();
+    const { labels, ...otherProps } = this.props;
+    this.initialValues = this.getInitialValues(otherProps);
   }
 
   componentDidUpdate() {
@@ -38,8 +41,8 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   }
 
   componentWillUnmount() {
-    const { messageSateChangeAction } = this.props;
-    messageSateChangeAction(null);
+    const { messageStateChangeAction } = this.props;
+    messageStateChangeAction(null);
   }
 
   updateProfileInformation = ({
@@ -66,7 +69,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   };
 
   goBackToProfile = () => {
-    utils.routerPush('/account?id=profile', '/account/profile');
+    utils.routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
     return null;
   };
 
@@ -88,8 +91,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels, isEmployee, ...otherProps } = this.props;
-    this.initialValues = this.getInitialValues(otherProps);
+    const { successMessage, errorMessage, labels, isEmployee } = this.props;
     return (
       <AddEditPersonalInformationComponent
         successMessage={successMessage}
@@ -123,7 +125,7 @@ export const mapDispatchToProps = dispatch => ({
   updateProfileAction: payload => {
     dispatch(updateProfile(payload));
   },
-  messageSateChangeAction: payload => {
+  messageStateChangeAction: payload => {
     dispatch(updateProfileError(payload));
   },
 });
