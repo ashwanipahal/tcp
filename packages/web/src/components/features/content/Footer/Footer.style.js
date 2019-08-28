@@ -18,8 +18,10 @@ export default css`
       ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;
   }
-
-  .footer_top_candidate_a .heading_text {
+  .candidate-b_buttons {
+    padding: 11px 48px 0 48px;
+  }
+  .heading_text, .footer_top_candidate_a .heading_text  {
     margin-bottom: 15px;
     text-align: center;
 
@@ -27,7 +29,7 @@ export default css`
       color: #6a6a6a;
     }
     .style2 {
-      color: #4b9fdd;
+      color: ${props => props.theme.colorPalette.primary.main};
     }
   }
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {

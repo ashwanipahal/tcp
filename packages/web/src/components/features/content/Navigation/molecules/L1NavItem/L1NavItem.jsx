@@ -76,7 +76,7 @@ class L1NavItem extends React.PureComponent {
       ...others
     } = this.props;
     const { hovered } = this.state;
-
+    console.log(description);
     let classForHovered = '';
     if (hovered && !removeL1Focus) {
       classForHovered = 'is-open';
