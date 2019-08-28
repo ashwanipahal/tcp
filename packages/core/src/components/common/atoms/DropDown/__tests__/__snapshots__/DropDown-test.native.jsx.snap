@@ -28,6 +28,7 @@ exports[`DropDown Test should render correctly 1`] = `
     }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
+    pointerEvents="auto"
     selectedValue="foo"
     variation="primary"
   >
@@ -108,6 +109,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
+    pointerEvents="auto"
     selectedValue="foo"
     variation="primary"
   >

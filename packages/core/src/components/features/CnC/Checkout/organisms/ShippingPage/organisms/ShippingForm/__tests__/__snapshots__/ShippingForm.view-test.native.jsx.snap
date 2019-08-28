@@ -8,6 +8,7 @@ exports[`Shipping Form should render correctly 1`] = `
     <AddressFields
       addressFormLabels={Object {}}
       addressPhoneNo={null}
+      disableCountry={true}
       formName="checkoutShipping"
       formSection="address"
       showDefaultCheckbox={false}

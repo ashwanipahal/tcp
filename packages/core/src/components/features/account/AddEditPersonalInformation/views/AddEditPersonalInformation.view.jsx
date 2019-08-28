@@ -5,7 +5,16 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import AddEditPersonalInformationForm from '../molecules/AddEditPersonalInformationForm';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
-export const AddEditPersonalInformation = ({ labels, successMessage, errorMessage, onSubmit,birthMonthOptionsMap , birthYearOptionsMap, initialValues, isEmployee }) => {
+export const AddEditPersonalInformation = ({
+  labels,
+  successMessage,
+  errorMessage,
+  onSubmit,
+  birthMonthOptionsMap,
+  birthYearOptionsMap,
+  initialValues,
+  isEmployee,
+}) => {
   return (
     <React.Fragment>
       <BodyCopy className="elem-mb-LRG">
@@ -58,6 +67,6 @@ AddEditPersonalInformation.defaultProps = {
     lbl_profile_personal_info_back: '',
     lbl_profile_heading: '',
   },
-  initialValues:{},
+  initialValues: {},
 };
 export default AddEditPersonalInformation;
