@@ -105,6 +105,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         fontWeight="regular"
       />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         fontSizeVariation="small"
@@ -206,6 +207,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         fontWeight="regular"
       />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         fontSizeVariation="small"
