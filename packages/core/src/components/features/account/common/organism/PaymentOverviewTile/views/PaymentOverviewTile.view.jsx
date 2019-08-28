@@ -32,100 +32,60 @@ export const PaymentOverviewTile = ({
       ctaPath="/account/payment"
     >
       <div className={className}>
-        {/* Credit card list */}
-        <BodyCopy component="div" className="heading">
-          <Row fullBleed>
-            <Col
-              colSize={{
-                small: 5,
-                large: 10,
-                medium: 7,
-              }}
-            >
-              <BodyCopy
-                component="div"
-                fontSize="fs14"
-                fontWeight="extrabold"
-                fontFamily="secondary"
+        <div className="heading">
+          <div className="section-heading">
+            <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
+              {labels.lbl_overview_default_creditCard}
+            </BodyCopy>
+            {creditCardDefault && creditCardDefault.ccType ? (
+              <Anchor
+                fontSizeVariation="large"
+                underline
+                anchorVariation="primary"
+                to="/account?id=payment"
+                asPath="/account/payment"
               >
-                {labels.lbl_overview_default_creditCard}
-              </BodyCopy>
-            </Col>
-            <Col
-              colSize={{
-                small: 1,
-                large: 2,
-                medium: 1,
-              }}
-            >
-              {creditCardDefault && creditCardDefault.ccType ? (
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  to="/account?id=payment"
-                  asPath="/account/payment"
-                >
-                  {labels.lbl_overview_addressBookEdit}
-                </Anchor>
-              ) : (
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  to="/account?id=payment"
-                  asPath="/account/payment"
-                >
-                  {labels.lbl_overview_addressBookAdd}
-                </Anchor>
-              )}
-            </Col>
-          </Row>
-
+                {labels.lbl_overview_addressBookEdit}
+              </Anchor>
+            ) : (
+              <Anchor
+                fontSizeVariation="large"
+                underline
+                anchorVariation="primary"
+                to="/account?id=payment"
+                asPath="/account/payment"
+              >
+                {labels.lbl_overview_addressBookAdd}
+              </Anchor>
+            )}
+          </div>
+          {/* Credit card list */}
           <Row fullBleed className="elem-mb-XL">
             <Col
               colSize={{
-                small: 5,
-                large: 10,
-                medium: 7,
+                small: 6,
+                large: 12,
+                medium: 8,
               }}
             >
               {creditCardDefault && creditCardDefault.ccType ? (
                 <BodyCopy component="div" className="cardDetailsWrapper">
-                  <BodyCopy component="span" className="imageWrapper">
-                    <Image
-                      className="creditCardDefault__img"
-                      src={getIconPath(cardIconMapping[creditCardDefault.ccBrand])}
-                    />
-                  </BodyCopy>
-                  <BodyCopy component="span" className="cardDescriptionWrapper">
-                    <BodyCopy component="span" className="cardNumberWrapper">
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {labels.lbl_overview_card_ending}
-                      </BodyCopy>
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {creditCardDefault.accountNo.slice(-4)}
-                      </BodyCopy>
+                  <Image
+                    className="elem-mr-XS"
+                    src={getIconPath(cardIconMapping[creditCardDefault.ccBrand])}
+                  />
+                  <BodyCopy component="div" className="cardDescriptionWrapper">
+                    <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                      <span>{labels.lbl_overview_card_ending}</span>
+                      <span> </span>
+                      <span>{creditCardDefault.accountNo.slice(-4)}</span>
                     </BodyCopy>
-                    <BodyCopy component="span" className="cardExpiryWrapper">
-                      <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-                        {labels.lbl_overview_expires}
-                      </BodyCopy>
-                      <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-                        {creditCardDefault.expMonth}
-                        {'/'}
-                        {creditCardDefault.expYear.slice(-2)}
-                      </BodyCopy>
+                    <BodyCopy fontSize="fs10" fontFamily="secondary">
+                      <span>{labels.lbl_overview_expires}</span>
+                      <span> </span>
+                      <span>{`0${creditCardDefault.expMonth.trim()}`.slice(-2)}</span>
+                      <span>/</span>
+                      <span>{creditCardDefault.expYear.slice(-2)}</span>
                     </BodyCopy>
                   </BodyCopy>
                 </BodyCopy>
@@ -136,107 +96,87 @@ export const PaymentOverviewTile = ({
               )}
             </Col>
           </Row>
-        </BodyCopy>
-
+        </div>
         {/* Venmo card list */}
         {venmoCardList && venmoCardList.ccBrand && (
-          <BodyCopy component="div" className="elem-mt-LRG venmo-tile">
-            <Row fullBleed>
-              <Col
-                colSize={{
-                  small: 5,
-                  large: 10,
-                  medium: 7,
-                }}
-              >
-                <BodyCopy
-                  component="div"
-                  fontSize="fs14"
-                  fontWeight="extrabold"
-                  fontFamily="secondary"
+          <div className="heading venmo-tile">
+            <BodyCopy component="div" className="elem-mt-LRG">
+              <Row fullBleed>
+                <Col
+                  colSize={{
+                    small: 6,
+                    large: 12,
+                    medium: 8,
+                  }}
+                  className="section-heading"
                 >
-                  {labels.lbl_overview_venmo}
-                </BodyCopy>
-              </Col>
-              <Col
-                colSize={{
-                  small: 1,
-                  large: 2,
-                  medium: 1,
-                }}
-              >
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  to="/account?id=payment"
-                  asPath="/account/payment"
+                  <BodyCopy
+                    component="div"
+                    fontSize="fs14"
+                    fontWeight="extrabold"
+                    fontFamily="secondary"
+                  >
+                    {labels.lbl_overview_venmo}
+                  </BodyCopy>
+                  <Anchor
+                    fontSizeVariation="large"
+                    underline
+                    anchorVariation="primary"
+                    to="/account?id=payment"
+                    asPath="/account/payment"
+                  >
+                    {labels.lbl_overview_addressBookEdit}
+                  </Anchor>
+                </Col>
+              </Row>
+              <Row fullBleed className="elem-mb-XXL">
+                <Col
+                  colSize={{
+                    small: 5,
+                    large: 10,
+                    medium: 7,
+                  }}
                 >
-                  {labels.lbl_overview_addressBookEdit}
-                </Anchor>
-              </Col>
-            </Row>
-            <Row fullBleed className="elem-mb-XXL">
-              <Col
-                colSize={{
-                  small: 5,
-                  large: 10,
-                  medium: 7,
-                }}
-              >
-                <BodyCopy component="div">
-                  <Image
-                    className="venmoCardList_img"
-                    src={getIconPath(cardIconMapping[venmoCardList.ccBrand])}
-                  />
-                </BodyCopy>
-              </Col>
-            </Row>
-          </BodyCopy>
+                  <BodyCopy component="div" className="cardDetailsWrapper">
+                    <Image
+                      className="venmoCardList_img"
+                      src={getIconPath(cardIconMapping[venmoCardList.ccBrand])}
+                    />
+                    <BodyCopy
+                      fontSize="fs12"
+                      fontFamily="secondary"
+                      className="elem-mt-XS elem-ml-SM"
+                      fontWeight="extrabold"
+                    >
+                      {venmoCardList.properties.venmoUserId}
+                    </BodyCopy>
+                  </BodyCopy>
+                </Col>
+              </Row>
+            </BodyCopy>
+          </div>
         )}
 
         {/* Gift card list */}
         <BodyCopy component="div" className="elem-mt-LRG">
-          <Row fullBleed>
-            <Col
-              colSize={{
-                small: 5,
-                large: 10,
-                medium: 7,
-              }}
-            >
-              <BodyCopy
-                component="div"
-                fontSize="fs14"
-                fontWeight="extrabold"
-                fontFamily="secondary"
+          <div className="section-heading">
+            <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
+              {labels.lbl_overview_giftCard}
+            </BodyCopy>
+            {giftCardList && giftCardList.ccType ? (
+              ''
+            ) : (
+              <Anchor
+                fontSizeVariation="large"
+                underline
+                anchorVariation="primary"
+                to="/account?id=payment"
+                asPath="/account/payment"
               >
-                {labels.lbl_overview_giftCard}
-              </BodyCopy>
-            </Col>
-            <Col
-              colSize={{
-                small: 1,
-                large: 2,
-                medium: 1,
-              }}
-            >
-              {giftCardList && giftCardList.ccType ? (
-                ''
-              ) : (
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  to="/account?id=payment"
-                  asPath="/account/payment"
-                >
-                  {labels.lbl_overview_addressBookAdd}
-                </Anchor>
-              )}
-            </Col>
-          </Row>
-
+                {labels.lbl_overview_addressBookAdd}
+              </Anchor>
+            )}
+          </div>
           <Row fullBleed className="elem-mb-XXL">
             <Col
               colSize={{
@@ -247,31 +187,14 @@ export const PaymentOverviewTile = ({
             >
               {giftCardList && giftCardList.ccType ? (
                 <BodyCopy component="div" className="cardDetailsWrapper">
-                  <BodyCopy component="span" className="imageWrapper">
-                    <Image
-                      className="giftCardList_img"
-                      src={getIconPath(cardIconMapping[giftCardList.ccBrand])}
-                    />
-                  </BodyCopy>
-                  <BodyCopy component="span" className="cardDescriptionWrapper">
-                    <BodyCopy component="span" className="cardNumberWrapper">
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {labels.lbl_overview_card_ending}
-                      </BodyCopy>
-                      <BodyCopy
-                        component="span"
-                        fontSize="fs12"
-                        fontFamily="secondary"
-                        fontWeight="extrabold"
-                      >
-                        {giftCardList.accountNo.slice(-4)}
-                      </BodyCopy>
-                    </BodyCopy>
+                  <Image
+                    className="elem-mr-XS"
+                    src={getIconPath(cardIconMapping[giftCardList.ccBrand])}
+                  />
+                  <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                    <span>{labels.lbl_overview_card_ending}</span>
+                    <span> </span>
+                    <span>{giftCardList.accountNo.slice(-4)}</span>
                   </BodyCopy>
                 </BodyCopy>
               ) : (

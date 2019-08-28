@@ -96,17 +96,20 @@ class CartItemTile extends React.Component {
           {productDetail.miscInfo.availability === 'SOLDOUT' && (
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs12"
+              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : ''}
               color="error"
+              fontSize="fs12"
               component="span"
+              dataLocator={getLocator('cart_item_soldOut_remove')}
               onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
             >
-              <u>Remove</u>
+              Remove
             </BodyCopy>
           )}
           {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
             <BodyCopy
               fontFamily="secondary"
+              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : ''}
               color="error"
               fontSize="fs12"
               component="span"
@@ -115,7 +118,7 @@ class CartItemTile extends React.Component {
                 this.handleEditCartItem(pageView, productDetail.productInfo.productPartNumber);
               }}
             >
-              <u>Update</u>
+              Update
             </BodyCopy>
           )}
           {// eslint-disable-next-line
@@ -236,9 +239,6 @@ class CartItemTile extends React.Component {
       <div className={className}>
         {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
           <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />
-        )}
-        {productDetail.miscInfo.availability === 'SOLDOUT' && (
-          <ItemAvailability errorMsg={labels.itemSoldOut} />
         )}
         <div className="crossDeleteIcon">
           <Image

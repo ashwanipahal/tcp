@@ -2,14 +2,24 @@
 
 exports[`Native AddressBook component should renders correctly when addresses are not present 1`] = `
 <StyledNativeComponent
+  addressLabels={
+    Object {
+      "addNewAddress": "",
+      "verifyAddress": "",
+    }
+  }
   addresses={Immutable.List []}
-  deleteModalMountedState={[Function]}
+  deleteModalMountedState={false}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "addressLabels": Object {
+          "addNewAddress": "",
+          "verifyAddress": "",
+        },
         "addresses": Array [],
-        "deleteModalMountedState": [Function],
+        "deleteModalMountedState": false,
         "labels": Object {
           "addressBook": Object {
             "ACC_LBL_ADDRESS_BOOK_HEADING": "",
@@ -28,7 +38,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "
     ",
           "
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 ",
           ";
   ",
@@ -49,6 +59,12 @@ exports[`Native AddressBook component should renders correctly when addresses ar
 
 exports[`Native AddressBook component should renders correctly when addresses are present 1`] = `
 <StyledNativeComponent
+  addressLabels={
+    Object {
+      "addNewAddress": "",
+      "verifyAddress": "",
+    }
+  }
   addresses={
     Immutable.List [
       Object {
@@ -64,13 +80,17 @@ exports[`Native AddressBook component should renders correctly when addresses ar
       },
     ]
   }
-  deleteModalMountedState={[Function]}
+  deleteModalMountedState={false}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "addressLabels": Object {
+          "addNewAddress": "",
+          "verifyAddress": "",
+        },
         "addresses": Array [],
-        "deleteModalMountedState": [Function],
+        "deleteModalMountedState": false,
         "labels": Object {
           "addressBook": Object {
             "ACC_LBL_ADDRESS_BOOK_HEADING": "",
@@ -89,7 +109,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "
     ",
           "
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 ",
           ";
   ",

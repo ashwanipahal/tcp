@@ -42,6 +42,13 @@ export const getAddEditAddressLabels = state => {
     lbl_addEditAddress_cancel: cancel,
     lbl_addEditAddress_internationalShipping: shipInternationally,
   } = state.Labels.global && state.Labels.global.addEditAddress;
+
+  const {
+    ACC_LBL_ADD_ADDRESS_FORM_HEADING: addNewAddress,
+    ACC_LBL_EDIT_ADDRESS_FORM_HEADING: editAddressLbl,
+    ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: verifyAddress,
+  } = state.Labels.account && state.Labels.account.addressBook;
+
   return {
     addressFormLabels: {
       firstName,
@@ -62,6 +69,9 @@ export const getAddEditAddressLabels = state => {
       editAddress,
       addAddressHeading,
       shipInternationally,
+      editAddressLbl,
+      addNewAddress,
+      verifyAddress,
     },
   };
 };

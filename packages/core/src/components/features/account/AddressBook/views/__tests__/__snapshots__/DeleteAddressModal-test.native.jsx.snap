@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete Address Modal should render correctly 1`] = `
+<ModalNative
+  heading=""
+  isOpen={true}
+  onRequestClose={[Function]}
+>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      fontFamily="secondary"
+      fontSize="fs22"
+      fontWeight="semibold"
+      text=""
+      textAlign="center"
+    />
+    <Styled(View)>
+      <Address
+        address={
+          Object {
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "firstName": "test",
+            "lastName": "test",
+          }
+        }
+        customStyle={Object {}}
+        fontWeight="bold"
+        showCountry={true}
+        showDefaultText={false}
+        showName={true}
+        showPhone={true}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="white"
+        customStyle={Object {}}
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text=""
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        customStyle={Object {}}
+        disableButton={false}
+        fill="WHITE"
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text=""
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</ModalNative>
+`;

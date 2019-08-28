@@ -36,6 +36,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         labels={labels}
         onCancel={onCancel}
         showHeading={showHeading}
+        addressBookLabels={labels.addressBook}
       />
     );
   }
