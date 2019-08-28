@@ -20,8 +20,8 @@ const styles = css`
       background-repeat: no-repeat;
       background-position: right center;
       height: auto;
-      padding-left: 0px;
       padding-bottom: 2px;
+      padding-left: 0px;
     }
     .customSelectTitle {
       padding-bottom: 2px;
