@@ -38,15 +38,25 @@ export default class ShippingPage extends React.PureComponent {
     defaultShipmentId: null,
   };
 
-  checkPOBoxAddress = () => {
-    const {
-      address: { addressLine1, addressLine2 },
-      loadShipmentMethods,
-    } = this.props;
-    if (hasPOBox(addressLine1, addressLine2)) {
-      loadShipmentMethods();
+  componentDidUpdate(prevProps) {
+    const { address } = this.props;
+    const { address: prevAddress } = prevProps;
+    if (address && prevAddress) {
+      const {
+        address: { addressLine1, addressLine2 },
+        loadShipmentMethods,
+      } = this.props;
+      const {
+        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
+      } = prevProps;
+      if (
+        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
+        hasPOBox(addressLine1, addressLine2)
+      ) {
+        loadShipmentMethods();
+      }
     }
-  };
+  }
 
   submitShippingData = data => {
     // console.log(data);

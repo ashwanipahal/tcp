@@ -32,7 +32,7 @@ export default class AccordionList extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    (this: any).changeAccordianState = this.changeAccordianState.bind(this);
+    (this: any).changeAccordionState = this.changeAccordionState.bind(this);
     this.state = {
       elementClicked: props.defaultOpenIndex ? props.defaultOpenIndex : -1,
       isExpanded: false,
@@ -40,19 +40,22 @@ export default class AccordionList extends React.Component<Props, State> {
   }
 
   /**
-   * @function changeAccordianState function changes the state of the accordian. It detects the clicked element
+   * @function changeAccordionState function changes the state of the accordian. It detects the clicked element
    * and send the same to the child elements so that they can expand or collapse accordingly.
    * @param {[Object]} e [Event object of click].
    * @return {Void} function does not return anything.
    */
 
-  changeAccordianState(e: SyntheticKeyboardEvent<*>) {
+  changeAccordionState(e: SyntheticKeyboardEvent<*>) {
     // Checking if the click event has happend or a space bar or enter has been pressed.
+    const listItem = e.currentTarget.closest('.list-item');
     if (e.type === 'click' || (e.type === 'keypress' && (e.which === 13 || e.which === 32))) {
       const clickedIndex = e.currentTarget.dataset.index;
       this.setState({
         elementClicked: clickedIndex,
-        isExpanded: !!e.currentTarget.closest('.list-item').getElementsByTagName('a').length,
+        isExpanded:
+          !!listItem.getElementsByTagName('a').length ||
+          !!listItem.getElementsByTagName('span').length,
       });
     }
   }
@@ -69,27 +72,33 @@ export default class AccordionList extends React.Component<Props, State> {
 
     return (
       <div className={`${className} container-accordion`}>
-        {children.map((item, index) => (
-          <div className="list-item">
-            {index.toString() === elementClicked.toString() && !isExpanded ? (
-              <AccordionItem
-                titleText={accordionItems[index].header.text || accordionItems[index].header.title}
-                updateAccordionState={this.changeAccordianState}
-                index={index}
-                activeClass="inactive"
-              >
-                {item}
-              </AccordionItem>
-            ) : (
-              <AccordionItem
-                titleText={accordionItems[index].header.text || accordionItems[index].header.title}
-                updateAccordionState={this.changeAccordianState}
-                index={index}
-                activeClass="active"
-              />
-            )}
-          </div>
-        ))}
+        {children.map((item, index) =>
+          item ? (
+            <div className="list-item">
+              {index.toString() === elementClicked.toString() && !isExpanded ? (
+                <AccordionItem
+                  titleText={
+                    accordionItems[index].header.text || accordionItems[index].header.title
+                  }
+                  updateAccordionState={this.changeAccordionState}
+                  index={index}
+                  activeClass="inactive"
+                >
+                  {item}
+                </AccordionItem>
+              ) : (
+                <AccordionItem
+                  titleText={
+                    accordionItems[index].header.text || accordionItems[index].header.title
+                  }
+                  updateAccordionState={this.changeAccordionState}
+                  index={index}
+                  activeClass="active"
+                />
+              )}
+            </div>
+          ) : null
+        )}
       </div>
     );
   }

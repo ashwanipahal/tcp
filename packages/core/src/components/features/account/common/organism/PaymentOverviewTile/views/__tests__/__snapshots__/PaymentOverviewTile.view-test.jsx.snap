@@ -10,59 +10,31 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
   <div
     className=""
   >
-    <Styled(BodyCopy)
+    <div
       className="heading"
-      color="text.primary"
-      component="div"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
     >
-      <Styled(Row)
-        fullBleed={true}
+      <div
+        className="section-heading"
       >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 10,
-              "medium": 7,
-              "small": 5,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="div"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          />
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 1,
-              "small": 1,
-            }
-          }
-        >
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/account/payment"
-            fontSizeVariation="medium"
-            to="/account?id=payment"
-            underline={true}
-          />
-        </Styled(Col)>
-      </Styled(Row)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          asPath="/account/payment"
+          fontSizeVariation="large"
+          to="/account?id=payment"
+          underline={true}
+        />
+      </div>
       <Styled(Row)
         className="elem-mb-XL"
         fullBleed={true}
@@ -70,9 +42,9 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
         <Styled(Col)
           colSize={
             Object {
-              "large": 10,
-              "medium": 7,
-              "small": 5,
+              "large": 12,
+              "medium": 8,
+              "small": 6,
             }
           }
         >
@@ -89,7 +61,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
           />
         </Styled(Col)>
       </Styled(Row)>
-    </Styled(BodyCopy)>
+    </div>
     <Styled(BodyCopy)
       className="elem-mt-LRG"
       color="text.primary"
@@ -101,48 +73,28 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
-      <Styled(Row)
-        fullBleed={true}
+      <div
+        className="section-heading"
       >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 10,
-              "medium": 7,
-              "small": 5,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="div"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          />
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 1,
-              "small": 1,
-            }
-          }
-        >
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/account/payment"
-            fontSizeVariation="medium"
-            to="/account?id=payment"
-            underline={true}
-          />
-        </Styled(Col)>
-      </Styled(Row)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          asPath="/account/payment"
+          fontSizeVariation="large"
+          to="/account?id=payment"
+          underline={true}
+        />
+      </div>
       <Styled(Row)
         className="elem-mb-XXL"
         fullBleed={true}

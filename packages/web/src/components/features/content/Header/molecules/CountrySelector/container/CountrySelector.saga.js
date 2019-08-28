@@ -41,10 +41,7 @@ export function* fetchCountryListData() {
   const data = res && res.data.countryList;
   const countriesMap = getCountriesMap(data);
   const currenciesMap = getCurrenciesMap(data);
-  yield all([
-    put(storeCountriesMap(countriesMap)),
-    put(storeCurrenciesMap(currenciesMap)),
-  ]);
+  yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
 }
 
 export function* submitCountrySelectionData({ payload: data }) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { routerPush } from '@tcp/core/src/utils';
 import { BrandTabs, CountrySelector, PromotionalArea } from '../..';
@@ -12,6 +12,7 @@ const HeaderTopNav = ({
   promoMessageWrapper,
   openOverlay,
   isUserLoggedIn,
+  labels,
 }) => {
   const onLinkClick = e => {
     e.preventDefault();
@@ -30,18 +31,19 @@ const HeaderTopNav = ({
         </div>
         <div className="header-topnav__track-order">
           <CountrySelector />
-          <BodyCopy
-            component="div"
-            color="gray.900"
-            className="track-order"
+          <Anchor
+            dataLocator="track_order_header"
+            anchorVariation="primary"
             fontFamily="secondary"
-            fontSize="fs12"
+            fontSizeVariation="medium"
+            to="/#"
             id="trackOrder"
             onClick={e => onLinkClick(e)}
-            data-locator="track_order_header"
+            className="track-order"
           >
-            Track Order
-          </BodyCopy>
+            {labels.trackOrder &&
+              labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderHeaderLink}
+          </Anchor>
         </div>
       </div>
     </div>
@@ -54,6 +56,13 @@ HeaderTopNav.propTypes = {
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   openOverlay: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}),
+};
+
+HeaderTopNav.defaultProps = {
+  labels: {
+    trackOrder: {},
+  },
 };
 
 export default withStyles(HeaderTopNav, HeaderTopNavStyle);

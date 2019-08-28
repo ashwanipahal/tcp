@@ -9,6 +9,7 @@ import AddEditAddressSaga from '@tcp/core/src/components/common/organisms/AddEdi
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
+import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
@@ -24,6 +25,7 @@ import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/contain
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
 import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
+import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -40,6 +42,7 @@ export default function* rootSaga() {
     DefaultPaymentSaga(),
     SetDefaultShippingAddressSaga(),
     AddressBookSaga(),
+    DeleteAddressSaga(),
     ProductListingPageSaga(),
     AddedToBagSaga(),
     CreateAccountSaga(),
@@ -54,5 +57,6 @@ export default function* rootSaga() {
     UserSaga(),
     AddGiftCardSaga(),
     CheckoutSaga(),
+    ChangePasswordSaga(),
   ]);
 }
