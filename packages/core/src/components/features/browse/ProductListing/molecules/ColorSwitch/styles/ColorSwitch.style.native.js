@@ -1,31 +1,47 @@
-import { StyleSheet } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  /* eslint-disable */
-  colowSwitchesContainerStyle: {
-    height: 17,
-    marginTop: 8,
-  },
-  itemSeparatorStyle: {
-    width: 8,
-  },
-  imageStyle: {
-    width: 16,
-    height: 16,
-    borderRadius: 16 / 2,
-    resizeMode: 'contain',
-    borderColor: 'rgba(26, 26, 26, 0)',
-    borderWidth: 1,
-  },
-  selectedImageStyle: {
-    width: 16,
-    height: 16,
-    borderRadius: 16 / 2,
-    resizeMode: 'contain',
-    borderColor: '#1a1a1a',
-    borderWidth: 1,
-  },
-  /* eslint-enable */
-});
+const getImageStyle = () => {
+  return `
+    width: 16;
+    height: 16;
+    resize-mode: contain;
+    border-color: rgba(26, 26, 26, 0);
+    border-width: 1;
+    border-radius: 8;
+  `;
+};
+// border-radius: 16 / 2;
+const getSelectedImageStyle = props => {
+  const { theme } = props;
+  const { colorPalette } = theme;
+  const borderColor = colorPalette.gray[900];
+  return `
+    width: 16;
+    height: 16;
+    resize-mode: contain;
+    border-color: ${borderColor};
+    border-width: 1;
+    border-radius: 8;
+  `;
+};
 
-export default styles;
+const ColorSwitchesContainer = styled.View`
+  height: 17;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const ItemSeparatorStyle = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const ImageStyle = styled.Image`
+  ${getImageStyle}
+`;
+
+const SelectedImageStyle = styled.Image`
+  ${getSelectedImageStyle}
+`;
+
+const styles = css``;
+
+export { styles, ColorSwitchesContainer, ItemSeparatorStyle, ImageStyle, SelectedImageStyle };

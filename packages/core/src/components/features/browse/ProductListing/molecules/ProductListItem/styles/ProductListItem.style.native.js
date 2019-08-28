@@ -1,106 +1,123 @@
-import { StyleSheet } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  /* eslint-disable */
-  listContainer: {
-    maxWidth: 164,
-    height: 436,
-  },
-  favoriteIconContainerStyle: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-  },
-  badge1ContainerStyle: {
-    height: 14,
-    marginTop: 10,
-  },
-  badge1Style: {
-    fontSize: 10,
-    color: '#1a1a1a',
-    lineHeight: 12,
-    fontWeight: '600',
-  },
-  badge2ContainerStyle: {
-    height: 14,
-  },
-  badge2Style: {
-    fontSize: 10,
-    color: '#1a1a1a',
-    lineHeight: 12,
-    fontWeight: '900',
-  },
-  pricesSectionStyle: {
-    marginTop: 4,
-  },
-  offerPriceAndBadge3Style: {
-    flexDirection: 'row',
-  },
-  listPriceStyle: {
-    fontSize: 15,
-    color: '#c01f1f',
-    lineHeight: 18,
-    fontWeight: 'bold',
-  },
-  listOfferPrice: {
-    fontSize: 10,
-    color: '#595959',
-    lineHeight: 12,
-    textDecorationLine: 'line-through',
-  },
-  badge3Style: {
-    fontSize: 10,
-    color: '#c01f1f',
-    lineHeight: 12,
-    fontWeight: '600',
-    marginLeft: 8,
-  },
-  titleContainerStyle: {
-    marginTop: 4,
-    height: 32,
-  },
-  titleStyle: {
-    color: '#1a1a1a',
-    fontSize: 12,
-    lineHeight: 14.4,
-  },
-  promotionalMessageContainerStyle: {
-    marginTop: 12,
-    height: 24,
-  },
-  promotionalMessageStyle: {
-    color: '#f76b1f',
-    fontSize: 9,
-    lineHeight: 11,
-  },
-  colorSwitchCircleStyle: {
-    width: 16,
-    height: 16,
-    borderRadius: 16 / 2,
-    backgroundColor: '#ff0000',
-  },
-  colorSwitchCircleSelectedStyle: {
-    width: 16,
-    height: 16,
-    borderRadius: 16 / 2,
-    backgroundColor: '#ff0000',
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  colowSwitchesContainerStyle: {
-    height: 17,
-    borderColor: '#ff0000',
-    borderWidth: 1,
-    marginTop: 8,
-  },
-  addToBagStyle: {
-    marginTop: 12,
-  },
-  customTextStyle: {
-    fontSize: 12,
-    lineHeight: 14.5,
-  },
-  /* eslint-enable */
-});
+const ListContainer = styled.View`
+  max-width: 164;
+  height: 436;
+`;
 
-export default styles;
+const FavoriteIconContainer = styled.View`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+`;
+
+const Badge1Container = styled.View`
+  height: 14;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const Badge1Text = styled.Text`
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  color: ${props => props.theme.colorPalette.gray[900]};
+  line-height: 12;
+  font-weight: ${props => props.theme.typography.fontWeights.semibold};
+`;
+
+const Badge2Container = styled.View`
+  height: 14;
+`;
+
+const Badge2Text = styled.Text`
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  color: ${props => props.theme.colorPalette.gray[900]};
+  line-height: 12;
+  font-weight: ${props => props.theme.typography.fontWeights.black};
+`;
+
+const PricesSection = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
+const OfferPriceAndBadge3Container = styled.View`
+  flex-direction: row;
+`;
+
+// Color is hard code as not in the style guide
+const ListPrice = styled.Text`
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-size: ${props => props.theme.typography.fontSizes.fs15};
+  color: #c01f1f;
+  line-height: 18;
+  font-weight: ${props => props.theme.typography.fontWeights.black};
+`;
+
+const ListOfferPrice = styled.Text`
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  color: ${props => props.theme.colorPalette.gray[800]};
+  line-height: 12;
+  text-decoration-line: line-through;
+`;
+
+// Color is hard code as not in the style guide
+const Badge3Text = styled.Text`
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  color: #c01f1f;
+  line-height: 12;
+  font-weight: ${props => props.theme.typography.fontWeights.semibold};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const TitleContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  height: 32;
+`;
+
+const TitleText = styled.Text`
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  color: ${props => props.theme.colorPalette.gray[900]};
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  line-height: 14.4;
+`;
+
+const PromotionalMessageContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  height: 24;
+`;
+
+// Color is hard code as not in the style guide
+const PromotionalMessage = styled.Text`
+  color: #f76b1f;
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-size: ${props => props.theme.typography.fontSizes.fs9};
+  line-height: 11;
+`;
+
+const AddToBagContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+const styles = css``;
+
+export {
+  styles,
+  ListContainer,
+  FavoriteIconContainer,
+  Badge1Container,
+  Badge1Text,
+  Badge2Container,
+  Badge2Text,
+  PricesSection,
+  OfferPriceAndBadge3Container,
+  ListPrice,
+  ListOfferPrice,
+  Badge3Text,
+  TitleContainer,
+  TitleText,
+  PromotionalMessageContainer,
+  PromotionalMessage,
+  AddToBagContainer,
+};

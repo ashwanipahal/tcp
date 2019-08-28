@@ -1,87 +1,112 @@
-import React from 'react';
-import { FlatList, TouchableOpacity, View, Image } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import styles from '../styles/ColorSwitch.style.native';
+import withStyles from '../../../../../../common/hoc/withStyles.native';
+import {
+  styles,
+  ColorSwitchesContainer,
+  ItemSeparatorStyle,
+  ImageStyle,
+  SelectedImageStyle,
+} from '../styles/ColorSwitch.style.native';
 
-class ColorSwitch extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    const { colorsMap } = props;
-    const { colorProductId } = colorsMap[0];
-    this.state = {
-      selectedColorId: colorProductId,
-    };
-  }
+/**
+ * @param {String} selectedId : Selected color id
+ * @param {Number} index : selected index id
+ * @param {Function} setSelectedColorId : Method to set selected color
+ * @param {Function} setSelectedColorIndex : Method to set image index
+ * @desc This method call when select any color switch
+ */
+const onSelectHandler = (selectedId, index, setSelectedColorId, setSelectedColorIndex) => {
+  setSelectedColorIndex(index);
+  setSelectedColorId(selectedId);
+};
 
-  renderColorItem = ({ item, index }) => {
-    const { color } = item;
-    const imageUrl = color.imagePath;
-    const { colorProductId } = item;
-    const { selectedColorId } = this.state;
-    const { selectedImageStyle, imageStyle } = styles;
-    const selectedStyle = colorProductId === selectedColorId ? selectedImageStyle : imageStyle;
-    return (
-      <TouchableOpacity
-        onPress={() => this.onSelectHandler(colorProductId, index)}
-        accessibilityRole="button"
-      >
-        {this.getImageIcon(imageUrl, selectedStyle)}
-      </TouchableOpacity>
-    );
-  };
+/**
+ * @param {String} imageUrl : Image source
+ * @param {Object} SelectedImage : Styled component
+ * @desc This method paint color image with border
+ */
+const getImageIcon = (imageUrl, SelectedImage) => {
+  return (
+    <SelectedImage
+      source={{
+        uri: imageUrl,
+      }}
+    />
+  );
+};
 
-  onSelectHandler = (selectedId, index) => {
-    const { setImageIndex } = this.props;
-    setImageIndex(index);
-    this.setState({
-      selectedColorId: selectedId,
-    });
-  };
+/**
+ * @desc This is seperator method which used for making gap between color switches
+ */
+const RenderSeparator = () => {
+  return <ItemSeparatorStyle />;
+};
 
-  renderSeparator = () => {
-    const { itemSeparatorStyle } = styles;
-    return <View style={itemSeparatorStyle} />;
-  };
+/**
+ * @param {Object} itemObj : colorsMap item
+ * @param {Number} index : colorsMap item index
+ * @param {String} selectedColorId : Selected Color Id
+ * @param {Function} setSelectedColorId : Method to set selected color
+ * @param {Function} setSelectedColorIndex : Method to set image index
+ * @desc This renderer method of the list which draw color switches
+ */
+const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelectedColorIndex) => {
+  const { item, index } = itemObj;
+  const { color } = item;
+  const imageUrl = color.imagePath;
+  const { colorProductId } = item;
+  const SelectedImage = colorProductId === selectedColorId ? SelectedImageStyle : ImageStyle;
+  return (
+    <TouchableOpacity
+      onPress={() =>
+        onSelectHandler(colorProductId, index, setSelectedColorId, setSelectedColorIndex)
+      }
+      accessibilityRole="button"
+    >
+      {getImageIcon(imageUrl, SelectedImage)}
+    </TouchableOpacity>
+  );
+};
 
-  getImageIcon = (imageUrl, selectedStyle) => {
-    return (
-      <Image
-        source={{
-          uri: imageUrl,
-        }}
-        style={selectedStyle}
+/**
+ * @param {Object} props : props for colorsMap
+ * @desc This method generate color switches
+ */
+const ColorSwitch = props => {
+  const { colorsMap, setSelectedColorIndex } = props;
+  const { colorProductId } = colorsMap[0];
+  const [selectedColorId, setSelectedColorId] = useState(colorProductId);
+  return (
+    <ColorSwitchesContainer>
+      <FlatList
+        listKey={item => item.colorProductId}
+        data={colorsMap}
+        renderItem={item =>
+          RenderColorItem(item, selectedColorId, setSelectedColorId, setSelectedColorIndex)
+        }
+        keyExtractor={item => item.colorProductId}
+        initialNumToRender={8}
+        maxToRenderPerBatch={2}
+        horizontal
+        ItemSeparatorComponent={RenderSeparator}
       />
-    );
-  };
-
-  render() {
-    const { colorsMap } = this.props;
-    const { colowSwitchesContainerStyle } = styles;
-    return (
-      <View style={colowSwitchesContainerStyle}>
-        <FlatList
-          listKey={item => item.colorProductId}
-          data={colorsMap}
-          renderItem={item => this.renderColorItem(item)}
-          keyExtractor={item => item.colorProductId}
-          initialNumToRender={8}
-          maxToRenderPerBatch={2}
-          horizontal
-          ItemSeparatorComponent={this.renderSeparator}
-        />
-      </View>
-    );
-  }
-}
+    </ColorSwitchesContainer>
+  );
+};
 
 ColorSwitch.propTypes = {
+  props: PropTypes.shape({}),
   colorsMap: PropTypes.arrayOf(PropTypes.shape({})),
-  setImageIndex: PropTypes.func,
+  setSelectedColorIndex: PropTypes.func,
 };
 
 ColorSwitch.defaultProps = {
+  props: {},
   colorsMap: [],
-  setImageIndex: () => {},
+  setSelectedColorIndex: () => {},
 };
 
-export default ColorSwitch;
+export default withStyles(ColorSwitch, styles);
+export { ColorSwitch as ColorSwitchVanilla };

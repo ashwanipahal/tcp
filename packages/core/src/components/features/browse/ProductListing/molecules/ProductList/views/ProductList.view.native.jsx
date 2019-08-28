@@ -1,25 +1,17 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
-
-const styles = StyleSheet.create({
-  /* eslint-disable */
-  container: {
-    flex: 1,
-  },
-  listContainer: {
-    marginTop: 20,
-  },
-  columnWrapperStyle: {
-    flex: 1,
-    justifyContent: 'space-around',
-  },
-  /* eslint-enable */
-});
+import withStyles from '../../../../../../common/hoc/withStyles.native';
+import {
+  styles,
+  PageContainer,
+  contentContainerStyle,
+  columnWrapperStyle,
+} from '../styles/ProductList.style.native';
 
 class ProductList extends React.PureComponent {
   constructor(props) {
@@ -39,20 +31,28 @@ class ProductList extends React.PureComponent {
   // eslint-disable-next-line
   onFavorite = item => {};
 
+  /**
+   * @param {Object} itemData : product list item
+   * @desc This is renderer method of the product tile list
+   */
   renderItemList = itemData => {
     const { isMatchingFamily, currencyExchange, isPlcc } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
     const { colorProductId } = colorsMap[0];
+
+    // get default zero index color entry
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
+    // get product color and price info of default zero index item
     const currentColorMiscInfo =
       this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo || {};
-    const { badge1, badge2, badge3, listPrice, offerPrice } = currentColorMiscInfo;
+    const { badge1, badge2 } = currentColorMiscInfo;
+    // get default top badge data
     const topBadge =
       isMatchingFamily && badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
-    const listPriceForColor = listPrice * currencyExchange[0].exchangevalue;
-    const offerPriceForColor = offerPrice * currencyExchange[0].exchangevalue;
+
+    // get default Loyalty message
     const loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
       promotionalMessage,
       promotionalPLCCMessage,
@@ -64,22 +64,22 @@ class ProductList extends React.PureComponent {
         isMatchingFamily={isMatchingFamily}
         badge1={topBadge}
         badge2={badge2}
-        badge3={badge3}
-        listPriceForColor={listPriceForColor}
-        offerPriceForColor={offerPriceForColor}
         loyaltyPromotionMessage={loyaltyPromotionMessage}
         onAddToBag={this.onAddToBag}
         onFavorite={this.onFavorite}
+        currencyExchange={currencyExchange}
       />
     );
   };
 
+  /**
+   * @desc This is render product list
+   */
   renderList = () => {
     const { products } = this.props;
-    const { listContainer, columnWrapperStyle } = styles;
     return (
       <FlatList
-        contentContainerStyle={listContainer}
+        contentContainerStyle={contentContainerStyle}
         data={products}
         renderItem={this.renderItemList}
         keyExtractor={item => item.generalProductId}
@@ -93,12 +93,12 @@ class ProductList extends React.PureComponent {
   };
 
   render() {
-    const { container } = styles;
-    return <View style={container}>{this.renderList()}</View>;
+    return <PageContainer>{this.renderList()}</PageContainer>;
   }
 }
 
 ProductList.propTypes = {
+  // TODO: Disable eslint for the proptypes as some of the values are not being used in the list. This will be cover in kill swithc story.
   /* eslint-disable */
   className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
@@ -155,4 +155,5 @@ ProductList.defaultProps = {
   isPlcc: false,
 };
 
-export default ProductList;
+export default withStyles(ProductList, styles);
+export { ProductList as ProductListVanilla };
