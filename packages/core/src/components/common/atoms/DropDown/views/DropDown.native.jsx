@@ -202,7 +202,7 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   render() {
-    const { data, dropDownStyle, heading } = this.props;
+    const { data, dropDownStyle, heading, disabled } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
     return (
       <View style={dropDownStyle}>
@@ -213,6 +213,7 @@ class DropDown extends React.PureComponent<Props> {
           ref={ref => {
             this.rowMarker = ref;
           }}
+          pointerEvents={disabled ? 'none' : 'auto'}
         >
           <HeaderContainer>
             <BodyCopy
