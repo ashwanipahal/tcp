@@ -291,9 +291,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
-    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
-      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
-    }`,
+    unboxAPIKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}`,
+    unboxSiteKey: `${processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]} `,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,

@@ -10,10 +10,11 @@ import { isClient, isMobileApp } from '../../../utils';
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
-  const {
-    webService: { URI },
-  } = reqObj;
-  const requestUrl = `${apiConfig.unbxd}/${apiConfig.unboxKey}/${URI}`;
+  const { webService } = reqObj;
+  const { URI, unbxdCustom } = webService;
+  const UNBXD_API_KEY_CUSTOM = 'sites';
+  const unboxSiteKey = unbxdCustom ? UNBXD_API_KEY_CUSTOM : apiConfig.unboxAPIKey;
+  const requestUrl = `${apiConfig.unbxd}/${unboxSiteKey}/${apiConfig.unboxAPIKey}/${URI}`;
   const reqHeaders = {};
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {

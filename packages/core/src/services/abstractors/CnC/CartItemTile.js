@@ -2,7 +2,7 @@
 // TODO: Need fix unused/proptypes eslint error
 /* eslint-disable */
 
-import { executeStatefulAPICall } from '../../handler';
+import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import { parseDate, compareDate } from '../../../utils/parseDate';
 import endpoints from '../../endpoints';
 import {
@@ -517,6 +517,7 @@ tomorrowClosingTime
 } = parseStoreOpeningAndClosingTimes(store);*/
 
       const isGiftCard = item.giftItem;
+      console.log('item', item);
       usersOrder.orderItems.push({
         productInfo: {
           generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
@@ -606,7 +607,6 @@ tomorrowClosingTime
       });
     }
   }
-
   if (orderDetailsResponse.giftWrapItem && orderDetailsResponse.giftWrapItem.length) {
     usersOrder.checkout.giftWrap = {
       optionId: orderDetailsResponse.giftWrapItem[0].catentryId.toString(),
@@ -622,6 +622,7 @@ tomorrowClosingTime
   };
   usersOrder.cartTotalAfterPLCCDiscount =
     orderDetailsResponse && orderDetailsResponse.cartTotalAfterPLCCDiscount;
+  console.log('usersOrder', usersOrder);
   return usersOrder;
 };
 
@@ -648,6 +649,30 @@ export const getOrderDetailsData = () => {
       orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
     };
   });
+};
+
+export const getProductInfoForTranslationData = query => {
+  debugger;
+  console.log('in abstarctors...');
+  debugger;
+  console.log('endpoints', endpoints);
+  debugger;
+  executeUnbxdAPICall({
+    body: {
+      rows: 20,
+      variants: true,
+      'variants.count': 100,
+      version: 'V2',
+      'facet.multiselect': true,
+      selectedfacet: true,
+      id: query,
+      promotion: false,
+      pagetype: 'boolean',
+      fields:
+        'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price',
+    },
+    webService: endpoints.getProductInfoForTranslationByPartNumber,
+  }).then(console.log('res------////', res));
 };
 
 export const getCartData = ({
@@ -799,4 +824,5 @@ export default {
   removeItem,
   getCartData,
   getUnqualifiedItems,
+  getProductInfoForTranslationData,
 };
