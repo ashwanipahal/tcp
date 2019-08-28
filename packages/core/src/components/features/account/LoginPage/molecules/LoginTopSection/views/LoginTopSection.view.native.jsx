@@ -14,7 +14,7 @@ import {
   DescriptionStyle,
   ImageWrapper,
   FavtHeading,
-  FavtSubHeading
+  FavtSubHeading,
 } from '../LoginTopSection.style.native';
 
 /**
@@ -29,22 +29,13 @@ const LoginTopSection = props => {
     <View {...props}>
       {!(variation === 'favorites' || variation === 'checkout') && (
         <React.Fragment>
-          <ImageComp
-            source={TheMarketPlaceLogo}
-            width={186}
-            height={60}
-            style={imgStyle}
-          />
+          <ImageComp source={TheMarketPlaceLogo} width={186} height={60} style={imgStyle} />
 
           <LineComp marginTop={30} marginBottom={17} />
           <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
           <SubHeadingStyle>{labels.login.lbl_login_subHeading}</SubHeadingStyle>
-          <DescriptionStyle>
-            {labels.login.lbl_login_Description_heading_1}
-          </DescriptionStyle>
-          <DescriptionStyle>
-            {labels.login.lbl_login_Description_heading_2}
-          </DescriptionStyle>
+          <DescriptionStyle>{labels.login.lbl_login_Description_heading_1}</DescriptionStyle>
+          <DescriptionStyle>{labels.login.lbl_login_Description_heading_2}</DescriptionStyle>
           <LineComp marginTop={25} marginBottom={0} />
         </React.Fragment>
       )}
@@ -101,7 +92,7 @@ const LoginTopSection = props => {
             textAlign="center"
             text={labels.login.lbl_login_checkout_modal_heading_2}
           />
-          <LineComp marginTop={25} marginBottom={0} />
+          <LineComp small marginTop={25} marginBottom={0} />
         </>
       )}
     </View>
