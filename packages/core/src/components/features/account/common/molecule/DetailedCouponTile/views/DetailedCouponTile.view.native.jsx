@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { View } from 'react-native';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import {
@@ -11,7 +12,6 @@ import {
   TileContent,
   TileTopContent,
   TileDesc,
-  DateLbl,
   ButtonWrapper,
 } from '../styles/DetailedCouponTile.native.style';
 import {
@@ -115,7 +115,7 @@ export class DetailedCouponTile extends React.Component {
               />
             </TileTopContent>
             <TileDesc>
-              <DateLbl>
+              <View>
                 <BodyCopy
                   data-locator="accountoverview-myplacerewatdstile-rewarduseby"
                   text={`${
@@ -129,7 +129,7 @@ export class DetailedCouponTile extends React.Component {
                       : `${coupon.expirationDate}`
                   }
                 />
-              </DateLbl>
+              </View>
               <Anchor
                 fontSizeVariation="large"
                 underline

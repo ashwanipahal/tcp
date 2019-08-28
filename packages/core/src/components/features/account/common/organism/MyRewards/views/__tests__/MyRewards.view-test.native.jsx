@@ -5,6 +5,16 @@ import MyRewards from '../MyRewards.view.native';
 import EmptyRewards from '../../../../molecule/EmptyRewards';
 
 describe('MyRewards', () => {
+  it('should render correctly', () => {
+    const labels = {
+      common: {},
+      myPlaceRewards: {},
+    };
+    const coupons = fromJS([]);
+    const tree = shallow(<MyRewards labels={labels} coupons={coupons} />);
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render EmptyRewards component if there is no coupon', () => {
     const labels = {
       common: {},

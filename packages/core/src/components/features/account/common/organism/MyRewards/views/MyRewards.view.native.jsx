@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { View } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
@@ -23,12 +24,12 @@ const MODULE_HEIGHT = 220;
 const MODULE_WIDTH = getScreenWidth() - 30;
 
 /**
- * This Component return the mobile Promo Banner
+ * This Component return the app reawrd tile
  */
-class MyRewards extends React.PureComponent<props> {
+class MyRewards extends PureComponent {
   /**
-   * @desc Returns updated Banner text details with styles.
-   * Content render on the basis of style type .
+   * @desc Returns app reawrd detail tile
+   * Content render on the basis of copoun items.
    */
   renderView = ({ item }) => {
     const {
@@ -96,7 +97,7 @@ class MyRewards extends React.PureComponent<props> {
             }}
             anchorVariation="primary"
             dataLocator="my-rewards-program-details"
-            text={labels.myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS}
+            text={labels.myPlaceRewards.lbl_my_rewards_program_details}
           />
           <AnchorLeftMargin>
             <Anchor
@@ -116,5 +117,29 @@ class MyRewards extends React.PureComponent<props> {
     );
   }
 }
+
+MyRewards.propTypes = {
+  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
+  coupons: PropTypes.shape([]),
+  onViewCouponDetails: PropTypes.func,
+  onApplyCouponToBag: PropTypes.func,
+  onRemove: PropTypes.func,
+  isApplyingOrRemovingCoupon: PropTypes.bool,
+};
+
+MyRewards.defaultProps = {
+  labels: {
+    common: { lbl_common_tnc: '' },
+    myPlaceRewards: {
+      lbl_my_rewards_program_details: '',
+      lbl_my_rewards_heading: '',
+    },
+  },
+  coupons: [],
+  onViewCouponDetails: () => {},
+  onApplyCouponToBag: () => {},
+  onRemove: () => {},
+  isApplyingOrRemovingCoupon: false,
+};
 
 export default MyRewards;

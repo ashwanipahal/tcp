@@ -44,10 +44,6 @@ const TileDesc = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-const DateLbl = styled.View`
-  font-weight: normal;
-`;
-
 const ButtonWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
@@ -59,6 +55,5 @@ export {
   TileContent,
   TileTopContent,
   TileDesc,
-  DateLbl,
   ButtonWrapper,
 };
