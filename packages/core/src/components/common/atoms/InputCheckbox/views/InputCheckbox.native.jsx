@@ -21,7 +21,7 @@ class InputCheckBox extends React.Component {
   };
 
   static defaultProps = {
-    rightText: 'checkbox',
+    rightText: null,
     isChecked: false,
     onClick: () => {},
     id: 'checkbox',
@@ -68,7 +68,7 @@ class InputCheckBox extends React.Component {
   }
 
   render() {
-    const { input, hideCheckboxIcon, meta, disabled, ...otherProps } = this.props;
+    const { input, hideCheckboxIcon, meta, disabled, rightText, ...otherProps } = this.props;
     const { value } = input;
     const { touched, error } = meta;
     const isError = touched && error;
@@ -81,7 +81,7 @@ class InputCheckBox extends React.Component {
         pointerEvents={disabled ? 'none' : 'auto'}
       >
         {!hideCheckboxIcon && this.genCheckedIcon()}
-        {this.renderRight()}
+        {rightText && this.renderRight()}
         <BodyCopy
           className="Checkbox__error"
           color="error"

@@ -67,6 +67,7 @@ class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
       loadShipmentMethods,
       // onPickupSubmit,
+      orderHasShipping,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -93,6 +94,7 @@ class CheckoutPage extends React.PureComponent {
             isAlternateUpdateChecked={isAlternateUpdateChecked}
             pickUpLabels={pickUpLabels}
             smsSignUpLabels={smsSignUpLabels}
+            orderHasShipping={orderHasShipping}
             onSubmit={this.onPickUpSubmit}
             navigation={navigation}
           />
@@ -137,6 +139,7 @@ CheckoutPage.propTypes = {
   loadShipmentMethods: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
+  orderHasShipping: PropTypes.bool.isRequired,
 };
 
 export default withRouter(CheckoutPage);

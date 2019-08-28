@@ -22,8 +22,10 @@ import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/Bo
 import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 
 import {
+  SESSIONCONFIG_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
   LAYOUT_REDUCER_KEY,
@@ -71,6 +73,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 
 const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,

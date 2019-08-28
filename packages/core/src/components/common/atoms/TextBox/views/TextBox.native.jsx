@@ -39,6 +39,7 @@ export class TextBox extends React.Component {
     keyboardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
     secureTextEntry: PropTypes.bool,
+    marginBottom: PropTypes.bool,
     showSuccessCheck: PropTypes.bool,
     successText: PropTypes.string,
   };
@@ -54,6 +55,7 @@ export class TextBox extends React.Component {
     keyboardType: 'default',
     showErrorIcon: true,
     secureTextEntry: false,
+    marginBottom: true,
     showSuccessCheck: false,
     successText: '',
   };
@@ -188,6 +190,7 @@ export class TextBox extends React.Component {
       input,
       meta: { error },
       showErrorIcon,
+      marginBottom,
       ...others
     } = this.props;
     const { isFocused } = this.state;
@@ -203,9 +206,15 @@ export class TextBox extends React.Component {
           <View>
             {this.renderTextBox({ elemValue, isFocused, others })}
             {!this.validateInputSuccess() && (
-              <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
+              <StyledTextBoxWrapper marginBottom={marginBottom}>
+                {this.getErrorMsg()}
+              </StyledTextBoxWrapper>
             )}
-            {!error && <StyledTextBoxWrapper>{this.getSuccessMsg()}</StyledTextBoxWrapper>}
+            {!error && (
+              <StyledTextBoxWrapper marginBottom={marginBottom}>
+                {this.getSuccessMsg()}
+              </StyledTextBoxWrapper>
+            )}
           </View>
         )}
       </View>

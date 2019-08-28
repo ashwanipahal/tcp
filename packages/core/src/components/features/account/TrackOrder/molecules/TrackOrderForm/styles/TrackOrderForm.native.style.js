@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const TrackOrderFormView = styled.View``;
+const TrackOrderFormView = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+`;
 
 const AnchorView = styled.View`
   display: flex;

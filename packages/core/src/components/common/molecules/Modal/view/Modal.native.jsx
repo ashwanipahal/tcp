@@ -61,7 +61,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
               <ModalHeading>
                 <BodyCopy
                   mobileFontFamily={headingFontFamily || 'primary'}
-                  fontWeight="black"
+                  fontWeight="extrabold"
                   textAlign={headingAlign}
                   fontSize={fontSize || 'fs16'}
                   text={heading}

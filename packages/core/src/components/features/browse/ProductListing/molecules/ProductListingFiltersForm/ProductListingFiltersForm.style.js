@@ -11,6 +11,9 @@ export default css`
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+  .item-common.color-filter-chip {
+    margin-bottom: 8px;
+  }
   .color-chip {
     border-radius: 10px;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
