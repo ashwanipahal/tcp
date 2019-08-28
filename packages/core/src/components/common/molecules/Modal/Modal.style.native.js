@@ -19,7 +19,7 @@ const ModalHeading = styled.Text`
 
 const LineWrapper = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 const RowWrapper = styled.View`
