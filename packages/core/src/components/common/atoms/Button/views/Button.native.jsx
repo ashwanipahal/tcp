@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
 
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
@@ -64,9 +65,9 @@ const CustomButton = (props: Props) => {
       onPress={onPress || openUrl}
       testID={getLocator(locator)}
     >
-      <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
+      <StyledText fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
-      </Text>
+      </StyledText>
     </TouchableOpacity>
   );
 };

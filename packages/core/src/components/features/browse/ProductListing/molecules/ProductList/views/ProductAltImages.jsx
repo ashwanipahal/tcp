@@ -220,7 +220,6 @@ class ProductAltImages extends React.PureComponent {
   renderImageContent() {
     const {
       isMobile,
-      keepAlive,
       imageUrls,
       pdpUrl,
       productName,
@@ -239,14 +238,14 @@ class ProductAltImages extends React.PureComponent {
         itemScope
         itemType="http://schema.org/ImageObject"
       >
-        <a
-          className={keepAlive && 'out-of-stock-overlap'}
-          onClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+        <Anchor
+          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+          to={pdpUrl}
           title={productName}
           unbxdattr="product"
           unbxdparam_sku={unbxdData && unbxdData.pId}
           unbxdparam_prank={unbxdData && unbxdData.prank}
-          href={pdpUrl}
+          inheritedStyles={imageAnchorInheritedStyles}
         >
           <img
             // className={productImageCss}
@@ -259,7 +258,7 @@ class ProductAltImages extends React.PureComponent {
             alt={productName}
             itemProp="contentUrl"
           />
-        </a>
+        </Anchor>
       </figure>
     ) : (
       <figure
@@ -283,8 +282,8 @@ class ProductAltImages extends React.PureComponent {
           to={pdpUrl}
           title={productName}
           unbxdattr="product"
-          unbxdparam_sku={unbxdData.pId}
-          unbxdparam_prank={unbxdData.prank}
+          unbxdparam_sku={unbxdData && unbxdData.pId}
+          unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
         >
           <img

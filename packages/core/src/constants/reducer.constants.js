@@ -97,10 +97,14 @@ export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 // device type detection
 export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
 
+// plcc card Page Reducer
+export const APPLY_PLCC_REDUCER_KEY = 'ApplyCardPage';
+export const APPLY_PLCC_ACTION_PATTERN = '@@ApplyCardPage-';
 // optimizely features reducer
 export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 
 export const REDUCER_ACTION_MAPPING = {
+  [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
   [SESSIONCONFIG_REDUCER_KEY]: SESSIONCONFIG_ACTION_PATTERN,
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,

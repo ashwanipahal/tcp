@@ -17,6 +17,7 @@ import Button from '../../../../../../common/atoms/Button';
 import AddressListComponent from '../../AddressList.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
+import DeleteAddressModal from '../../DeleteAddressModal.view';
 
 export class AddressView extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ export class AddressView extends React.Component {
     this.state = {
       addAddressMount: false,
       currentForm: 'AddAddress',
+      selectedAddress: {},
     };
   }
 
@@ -43,16 +45,22 @@ export class AddressView extends React.Component {
     });
   };
 
+  setSelectedAddress = address => {
+    this.setState({ selectedAddress: address });
+  };
+
   render() {
     const {
       addresses,
       labels,
       onDefaultShippingAddressClick,
-      deleteModalMountedState,
       setDeleteModalMountState,
+      deleteModalMountedState,
+      onDeleteAddress,
       addressLabels,
     } = this.props;
-    const { addAddressMount, currentForm } = this.state;
+    const { addAddressMount, currentForm, selectedAddress } = this.state;
+
     return (
       <View {...this.props}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -106,8 +114,7 @@ export class AddressView extends React.Component {
             <AddressListComponent
               addresses={addresses}
               labels={labels}
-              deleteModalMountedState={deleteModalMountedState}
-              setSelectedAddress={() => {}}
+              setSelectedAddress={this.setSelectedAddress}
               onDefaultShippingAddressClick={onDefaultShippingAddressClick}
               setDeleteModalMountState={setDeleteModalMountState}
             />
@@ -134,6 +141,15 @@ export class AddressView extends React.Component {
               </ModalViewWrapper>
             </ModalNative>
           )}
+          {deleteModalMountedState && (
+            <DeleteAddressModal
+              labels={labels}
+              address={selectedAddress}
+              isOpen={deleteModalMountedState}
+              setDeleteModalMountState={setDeleteModalMountState}
+              onDeleteAddress={onDeleteAddress}
+            />
+          )}
         </ScrollView>
       </View>
     );
@@ -153,8 +169,9 @@ AddressView.propTypes = {
     addNewAddress: PropTypes.string,
   }),
   onDefaultShippingAddressClick: PropTypes.func,
-  deleteModalMountedState: PropTypes.func,
   setDeleteModalMountState: PropTypes.func,
+  deleteModalMountedState: PropTypes.bool,
+  onDeleteAddress: PropTypes.func.isRequired,
 };
 
 AddressView.defaultProps = {
@@ -168,12 +185,12 @@ AddressView.defaultProps = {
     },
   },
   onDefaultShippingAddressClick: () => {},
-  deleteModalMountedState: () => {},
   setDeleteModalMountState: () => {},
   addressLabels: {
     verifyAddress: '',
     addNewAddress: '',
   },
+  deleteModalMountedState: false,
 };
 
 export default withStyles(AddressView, ParentContainer);

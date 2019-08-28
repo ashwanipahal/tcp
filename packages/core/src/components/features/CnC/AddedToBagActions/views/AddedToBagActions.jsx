@@ -12,10 +12,15 @@ import { getLocator, routerPush } from '../../../../../utils';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
+    const { orderHasPickup } = this.props;
     if (e) {
       e.preventDefault();
     }
-    routerPush('/checkout', '/checkout');
+    let section = '/shipping';
+    if (orderHasPickup) {
+      section = '/pickup';
+    }
+    routerPush(`/checkout${section}`, `/checkout${section}`);
   };
 
   render() {

@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
+
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
@@ -14,6 +16,7 @@ type Props = {
   customStyle?: Object,
   locator?: string,
   onPress?: Function,
+  accessibilityLabel?: string,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -30,6 +33,7 @@ const Anchor = ({
   customStyle,
   locator,
   onPress,
+  accessibilityLabel,
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
@@ -58,14 +62,14 @@ const Anchor = ({
   return (
     <AnchorView
       accessibilityRole="link"
-      accessibilityLabel={text}
       onPress={onPress || openUrl}
+      accessibilityLabel={accessibilityLabel || text}
       style={customStyle}
       testID={getLocator(locator)}
     >
-      <Text anchorVariation={anchorVariation} {...otherProps}>
+      <StyledText anchorVariation={anchorVariation} {...otherProps}>
         {text}
-      </Text>
+      </StyledText>
       {visible && <AnchorIcon source={Icon} />}
     </AnchorView>
   );
@@ -78,6 +82,7 @@ Anchor.defaultProps = {
   customStyle: {},
   locator: '',
   onPress: null,
+  accessibilityLabel: '',
 };
 
 export default withStyles(Anchor, AnchorStyles);

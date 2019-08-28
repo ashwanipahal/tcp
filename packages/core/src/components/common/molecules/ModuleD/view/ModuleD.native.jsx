@@ -66,6 +66,7 @@ const renderItem = (item, navigation) => {
         visible={anchorEnable}
         url={link.url}
         navigation={navigation}
+        anchorVariation="primary"
       />
     </Tile>
   );

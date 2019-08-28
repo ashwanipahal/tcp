@@ -48,6 +48,9 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingAlign,
     headingFontFamily,
     headerStyle,
+    fontSize,
+    horizontalBar = true,
+    borderColor = 'black',
   } = otherProps;
   return (
     <SafeAreaView>
@@ -59,9 +62,9 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
               <ModalHeading>
                 <BodyCopy
                   mobileFontFamily={headingFontFamily || 'primary'}
-                  fontWeight="black"
+                  fontWeight="extrabold"
                   textAlign={headingAlign}
-                  fontSize="fs16"
+                  fontSize={fontSize || 'fs16'}
                   text={heading}
                 />
               </ModalHeading>
@@ -69,9 +72,11 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
             {getCloseIcon({ onRequestClose, headerStyle })}
           </RowWrapper>
         )}
-        <LineWrapper>
-          <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-        </LineWrapper>
+        {horizontalBar ? (
+          <LineWrapper>
+            <LineComp marginTop={5} borderWidth={1} borderColor={borderColor} />
+          </LineWrapper>
+        ) : null}
         {children}
       </Modal>
     </SafeAreaView>

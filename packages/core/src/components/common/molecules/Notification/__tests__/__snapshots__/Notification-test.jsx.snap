@@ -6,7 +6,7 @@ exports[`Notification Component should render notification component with status
 >
   <img
     alt="error icon"
-    className="elem-mr-MED"
+    className="notification__image elem-mr-MED"
     src="/static/images/circle-error-fill.png"
   />
   <Styled(BodyCopy)
@@ -29,7 +29,7 @@ exports[`Notification Component should render notification component with status
 >
   <img
     alt="success icon"
-    className="elem-mr-MED"
+    className="notification__image elem-mr-MED"
     src="/static/images/circle-check-fill.png"
   />
   <Styled(BodyCopy)
