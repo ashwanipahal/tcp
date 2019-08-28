@@ -1,24 +1,23 @@
-const plpUrl =
-  'https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts';
-const fmt = 'Family Tees';
-const mmt = 'Mom & Me Tees';
+const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
+
 export default {
   moduleN: {
-    contentId: '73f6a699-79a4-4874-994f-ab306dd66dca',
+    contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
     name: 'moduleN',
     type: 'module',
     composites: {
+      bgColor: '#f53d3d',
       headerText: [
         {
           textItems: [
             {
               text: 'ALL CLEARANCE',
               color: 'color2',
-              style: 'style1',
+              style: 'style12',
             },
           ],
           link: {
-            url: '/p/',
+            url: 'plpUrl',
             title: '',
             target: '',
           },
@@ -27,7 +26,7 @@ export default {
       promoBanner: [
         {
           link: {
-            url: '/p/',
+            url: '/c/',
             text: '',
             title: '',
             target: '',
@@ -36,7 +35,7 @@ export default {
           },
           textItems: [
             {
-              text: '50-70%OFF',
+              text: '60-70% OFF',
               style: 'style6',
             },
             {
@@ -46,111 +45,105 @@ export default {
           ],
         },
       ],
-      smallCompImage: [
+      ctaItems: [
         {
-          link: {
-            url: plpUrl,
-            title: fmt,
-            target: '',
-            external: 0,
-          },
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            title: fmt,
-            alt: fmt,
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            alt: 'Girl',
+            title: 'Girl',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/girl',
+            text: 'Girl',
+            title: 'Girl',
+            target: '',
+            external: 0,
           },
         },
         {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
-            target: '',
-            external: 0,
-          },
           image: {
             url:
               'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            title: mmt,
-            alt: mmt,
+            alt: 'Toddler Girl alt',
+            title: 'Toddler Girl title',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
           },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: fmt,
-            title: fmt,
+          button: {
+            url: '/toddler-girl',
+            text: 'Toddler Girl',
+            title: 'Toddler Girl',
             target: '',
             external: 0,
           },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
-            title: fmt,
-            alt: fmt,
-          },
         },
         {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            alt: 'Boy',
+            title: 'Boy',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/boy',
+            text: 'Boy',
+            title: 'Boy',
             target: '',
             external: 0,
           },
+        },
+        {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
-            title: mmt,
-            alt: mmt,
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
+            alt: 'Toddler Boy alt',
+            title: 'Tod Boy title',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/toddler-boy',
+            text: 'Toddler Boy',
+            title: 'Tod Boy',
+            target: '',
+            external: 0,
           },
         },
-      ],
-      singleCTAButton: {
-        url: plpUrl,
-        target: '',
-        text: 'SHOP ALL',
-        title: 'SHOP ALL',
-        external: 0,
-      },
-      stackedCTAButtons: [
         {
-          url: 'https://www.google.com/',
-          title: 'girl',
-          text: 'girl',
-          target: '',
-          external: 0,
-        },
-        {
-          url: '/p/',
-          title: 'toddler girl',
-          text: 'toddler girl',
-          target: '',
-          external: 0,
-        },
-        {
-          url: '/p/',
-          title: 'boy',
-          text: 'boy',
-          target: '',
-          external: 0,
-        },
-        {
-          url: 'https://www.google.com/',
-          title: 'toddler boy',
-          text: 'toddler boy',
-          target: '',
-          external: 0,
-        },
-        {
-          url: '/c/',
-          title: 'baby',
-          text: 'baby',
-          target: '',
-          external: 0,
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            alt: 'Baby Alt',
+            title: 'Baby title',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/toddler-boy',
+            text: 'Baby',
+            title: 'Baby',
+            target: '',
+            external: 0,
+          },
         },
       ],
     },
+    submodules: {},
+    set: [
+      {
+        key: 'ctaType',
+        val: ctaTypes[0],
+      },
+    ],
   },
 };

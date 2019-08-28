@@ -7,7 +7,7 @@ import CouponAndPromos from '../../CouponAndPromos';
 import { ButtonWrapper, CheckoutButton } from '../styles/CnCTemplate.style.native';
 import { navigateToNestedRoute } from '../../../../../../../utils/utils.app';
 
-const CnCCommonTemplate = ({ navigation, btnText, routeToPage }) => {
+const CnCCommonTemplate = ({ navigation, btnText, routeToPage, onPress }) => {
   return (
     <>
       <View>
@@ -17,7 +17,7 @@ const CnCCommonTemplate = ({ navigation, btnText, routeToPage }) => {
         <OrderLedgerContainer />
       </View>
       <ButtonWrapper>
-        <CheckoutButton>
+        <CheckoutButton onPress={onPress}>
           <BodyCopy
             color="white"
             fontWeight="extrabold"
@@ -25,7 +25,7 @@ const CnCCommonTemplate = ({ navigation, btnText, routeToPage }) => {
             fontSize="fs13"
             text={btnText}
             onPress={() => {
-              navigateToNestedRoute(navigation, 'HomeStack', { routeToPage });
+              navigateToNestedRoute(navigation, 'HomeStack', routeToPage);
             }}
           />
         </CheckoutButton>
@@ -37,6 +37,7 @@ CnCCommonTemplate.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   btnText: PropTypes.string.isRequired,
   routeToPage: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default CnCCommonTemplate;

@@ -35,7 +35,7 @@ export default css`
     }
   }
 
-  .style4 {
+  .text_normal {
     font-size: 16px;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
@@ -56,26 +56,26 @@ export default css`
   }
 
   /* Module-A and N % style promo text */
-  .style6 {
+  .percentage_wrapped_large {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: 68px;
+    font-size: 64px;
     line-height: 1;
-    width: 250px;
+    width: 235px;
     text-align: left;
     margin: 0 auto;
     position: relative;
     display: block;
 
-    .style6-1 {
-      font-size: 46px;
+    .percentage_wrapped_large-1 {
+      font-size: 42px;
       position: absolute;
       top: 0;
     }
 
-    .style6-2 {
-      font-size: 20px;
+    .percentage_wrapped_large-2 {
+      font-size: 18px;
       position: absolute;
       bottom: 8px;
     }
@@ -86,9 +86,9 @@ export default css`
       text-align: center;
       margin-left: 10px;
 
-      .style6-0,
-      .style6-1,
-      .style6-2 {
+      .percentage_wrapped_large-0,
+      .percentage_wrapped_large-1,
+      .percentage_wrapped_large-2 {
         font-size: 64px;
         line-height: normal;
         position: static;
@@ -97,8 +97,7 @@ export default css`
     }
   }
 
-  /* Module-A and N % style promo text */
-  .style7 {
+  .percentage_wrapped_extra_large {
     color: ${props => props.theme.colorPalette.pink['400']};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
@@ -109,14 +108,14 @@ export default css`
     margin: 0 auto;
     position: relative;
 
-    .style7-1 {
+    .percentage_wrapped_extra_large-1 {
       font-size: 99px;
       position: absolute;
       top: 0;
       line-height: 1.01;
     }
 
-    .style7-2 {
+    .percentage_wrapped_extra_large-2 {
       font-size: 43px;
       position: absolute;
       bottom: 8px;
@@ -128,9 +127,9 @@ export default css`
       text-align: center;
       line-height: 0.6;
 
-      .style7-0,
-      .style7-1,
-      .style7-2 {
+      .percentage_wrapped_extra_large-0,
+      .percentage_wrapped_extra_large-1,
+      .percentage_wrapped_extra_large-2 {
         font-size: 122px;
         line-height: 0.88;
         position: relative;
@@ -139,16 +138,15 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
-      .style7-0,
-      .style7-1,
-      .style7-2 {
+      .percentage_wrapped_extra_large-0,
+      .percentage_wrapped_extra_large-1,
+      .percentage_wrapped_extra_large-2 {
         font-size: 204px;
       }
     }
   }
 
-  /* Module A promo banner bold text style*/
-  .style8 {
+  .small_text_bold {
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
@@ -168,8 +166,7 @@ export default css`
     }
   }
 
-  /* Module A promo banner normal text style*/
-  .style9 {
+  .small_text_normal {
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
@@ -185,7 +182,7 @@ export default css`
   }
 
   /* Gymboree Ribbon text */
-  .style10 {
+  .ribbon_default_text {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.secondary};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
@@ -201,11 +198,12 @@ export default css`
     }
   }
 
-  .style12 {
+  .gymboree_description {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
     font-size: 16px;
+    display: block;
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 28px;

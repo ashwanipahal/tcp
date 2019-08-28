@@ -16,20 +16,20 @@ const ProfileInformation = ({
   labels,
   profileCompletion,
   mailingAddress,
-  ProfileInfoTile,
-  UserEmail,
+  profileInfoTile,
+  userEmail,
   userBirthday,
-  UserFullName,
-  UserPhoneNumber,
+  userFullName,
+  userPhoneNumber,
   airMiles,
-  MyPlaceNumber,
+  myPlaceNumber,
   userSurvey,
   percentageIncrement,
   defaultStore,
   successMessage,
 }) => {
   return (
-    <div>
+    <div className={className}>
       {successMessage && (
         <Notification
           className="elem-mt-MED"
@@ -38,7 +38,7 @@ const ProfileInformation = ({
           message={labels[`lbl_profile_${successMessage}`]}
         />
       )}
-      <Row fullBleed className={`${className} elem-pt-LRG`}>
+      <Row fullBleed className="elem-pt-LRG">
         <Col
           colSize={{
             small: 6,
@@ -48,7 +48,7 @@ const ProfileInformation = ({
           ignoreGutter={{
             small: true,
           }}
-          className="profileInfoCol elem-mb-XL"
+          className="profileInfoCol"
         >
           <ProfileInfoActions
             labels={labels}
@@ -73,22 +73,22 @@ const ProfileInformation = ({
           ignoreGutter={{
             small: true,
           }}
-          className="profileInformationCol elem-mb-XL"
+          className="profileInfoCol"
         >
           <PersonalInformation
             labels={labels}
-            ProfileInfoTile={ProfileInfoTile}
-            UserEmail={UserEmail}
+            profileInfoTile={profileInfoTile}
+            userEmail={userEmail}
             userBirthday={userBirthday}
-            UserFullName={UserFullName}
-            UserPhoneNumber={UserPhoneNumber}
+            userFullName={userFullName}
+            userPhoneNumber={userPhoneNumber}
             airMiles={airMiles}
-            MyPlaceNumber={MyPlaceNumber}
+            myPlaceNumber={myPlaceNumber}
           />
         </Col>
       </Row>
 
-      <Row fullBleed className={`${className} elem-pt-LRG elem-pb-LRG`}>
+      <Row fullBleed className="hideOnMobile elem-pt-LRG elem-pb-LRG">
         <Col
           colSize={{
             large: 12,
@@ -97,7 +97,7 @@ const ProfileInformation = ({
         />
       </Row>
 
-      <Row fullBleed className={`${className} elem-pt-LRG`}>
+      <Row fullBleed className="elem-pt-LRG">
         <Col
           colSize={{
             small: 6,
@@ -125,7 +125,7 @@ const ProfileInformation = ({
           <BirthdaySaving labels={labels} />
         </Col>
       </Row>
-      <Row fullBleed className={`${className} elem-pb-MED`}>
+      <Row fullBleed className="elem-pb-MED">
         <Col
           colSize={{
             large: 2,
@@ -163,16 +163,15 @@ ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
   profileCompletion: PropTypes.string,
   mailingAddress: PropTypes.shape({}),
-  ProfileInfoTile: PropTypes.shape({}),
+  profileInfoTile: PropTypes.shape({}),
   userBirthday: PropTypes.string,
-  UserEmail: PropTypes.string,
+  userEmail: PropTypes.string,
   airMiles: PropTypes.string,
-  MyPlaceNumber: PropTypes.string,
-  UserFullName: PropTypes.string,
-  UserPhoneNumber: PropTypes.number,
+  myPlaceNumber: PropTypes.string,
+  userFullName: PropTypes.string,
+  userPhoneNumber: PropTypes.number,
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
-
   defaultStore: PropTypes.string,
   successMessage: PropTypes.string,
 };
@@ -182,13 +181,13 @@ ProfileInformation.defaultProps = {
   labels: {},
   profileCompletion: '',
   mailingAddress: {},
-  ProfileInfoTile: {},
+  profileInfoTile: {},
   userBirthday: '',
-  UserEmail: '',
-  UserFullName: '',
-  UserPhoneNumber: '',
+  userEmail: '',
+  userFullName: '',
+  userPhoneNumber: '',
   airMiles: '',
-  MyPlaceNumber: '',
+  myPlaceNumber: '',
   userSurvey: [],
   percentageIncrement: {},
   defaultStore: '',

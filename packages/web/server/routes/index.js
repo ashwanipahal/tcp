@@ -38,27 +38,6 @@ const RoutesMap = [
     path: '/bag',
     resolver: '/Bag',
   },
-  {
-    path: '/pickup',
-    resolver: '/Pickup',
-  },
-  {
-    path: '/shipping',
-    resolver: '/Shipping',
-  },
-  {
-    path: '/billing',
-    resolver: '/billing',
-  },
-  {
-    path: '/review',
-    resolver: '/review',
-  },
-  {
-    path: '/checkout/:subSection?',
-    resolver: '/Pickup',
-    params: ['subSection'],
-  },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
   {
     path: '/gallery',

@@ -21,9 +21,11 @@ const FooterNavLinksList = ({
   openTrackOrder,
   isLoggedIn,
   setLoginModalMountState,
+  closeNavigationDrawer,
 }) => {
   const trackLink = e => {
     e.preventDefault();
+    closeNavigationDrawer();
     if (!isLoggedIn) openTrackOrder({ state: true });
     else routerPush('/account', '/account');
   };
@@ -56,7 +58,7 @@ const FooterNavLinksList = ({
         to={toVal}
         anchorVariation="primary"
         fontSizeVariation="large"
-        data-locator={`col_${colNum}_link_${index}`}
+        dataLocator={`col_${colNum}_link_${index}`}
         target={linkItems.target}
         title={linkItems.title}
         onClick={onClick}
@@ -81,12 +83,14 @@ FooterNavLinksList.propTypes = {
   openTrackOrder: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   setLoginModalMountState: PropTypes.func,
+  closeNavigationDrawer: PropTypes.func,
 };
 
 FooterNavLinksList.defaultProps = {
   openTrackOrder: () => null,
   isLoggedIn: false,
   setLoginModalMountState: () => null,
+  closeNavigationDrawer: () => null,
 };
 
 export default withStyles(FooterNavLinksList, styles);

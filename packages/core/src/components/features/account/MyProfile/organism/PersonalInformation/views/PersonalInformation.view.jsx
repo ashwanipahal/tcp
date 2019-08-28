@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import styles from '../../ProfileInformation/styles/ProfileInformation.style';
 import Address from '../../../../../../common/molecules/Address';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
-const PersonalInformation = ({
+export const PersonalInformation = ({
   labels,
-  ProfileInfoTile,
-  UserEmail,
+  profileInfoTile,
+  userEmail,
   userBirthday,
-  UserFullName,
-  UserPhoneNumber,
+  userFullName,
+  userPhoneNumber,
   airMiles,
-  MyPlaceNumber,
+  myPlaceNumber,
 }) => {
-  const { address } = ProfileInfoTile;
+  const { address } = profileInfoTile;
   return (
     <>
       <MyProfileTile
@@ -25,22 +29,38 @@ const PersonalInformation = ({
       >
         <PersonalInformationDisplay
           labels={labels}
-          UserEmail={UserEmail}
+          userEmail={userEmail}
           userBirthday={userBirthday}
-          UserFullName={UserFullName}
-          UserPhoneNumber={UserPhoneNumber}
+          userFullName={userFullName}
+          userPhoneNumber={userPhoneNumber}
           airMiles={airMiles}
-          MyPlaceNumber={MyPlaceNumber}
+          myPlaceNumber={myPlaceNumber}
         />
       </MyProfileTile>
       {address && address.isComplete && (
-        <MyProfileTile
-          title={labels.lbl_profile_mailing_address}
-          ctaTitle={labels.lbl_profile_edit_mailing_info}
-          dataLocator="profileinfo-editmailingaddress"
-        >
-          <Address address={address} dataLocatorPrefix="profileinfo-editmailing" showName={false} />
-        </MyProfileTile>
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 12,
+            }}
+            className="profileInformationCol"
+          >
+            <MyProfileTile
+              title={labels.lbl_profile_mailing_address}
+              ctaTitle={labels.lbl_profile_edit_mailing_info}
+              dataLocator="profileinfo-editmailingaddress"
+            >
+              <Address
+                address={address}
+                dataLocatorPrefix="profileinfo-editmailing"
+                showName={false}
+                className="profileInformationAddress"
+              />
+            </MyProfileTile>
+          </Col>
+        </Row>
       )}
     </>
   );
@@ -51,13 +71,13 @@ PersonalInformation.propTypes = {
     lbl_profile_personal_information: PropTypes.string,
     lbl_profile_edit_personal_info: PropTypes.string,
   }),
-  ProfileInfoTile: PropTypes.shape({}),
+  profileInfoTile: PropTypes.shape({}),
   userBirthday: PropTypes.string,
-  UserEmail: PropTypes.string,
-  UserFullName: PropTypes.string,
-  UserPhoneNumber: PropTypes.number,
+  userEmail: PropTypes.string,
+  userFullName: PropTypes.string,
+  userPhoneNumber: PropTypes.number,
   airMiles: PropTypes.string,
-  MyPlaceNumber: PropTypes.string,
+  myPlaceNumber: PropTypes.string,
 };
 
 PersonalInformation.defaultProps = {
@@ -65,13 +85,13 @@ PersonalInformation.defaultProps = {
     lbl_profile_personal_information: '',
     lbl_profile_edit_personal_info: '',
   },
-  ProfileInfoTile: {},
+  profileInfoTile: {},
   userBirthday: '',
-  UserEmail: '',
-  UserFullName: '',
-  UserPhoneNumber: '',
+  userEmail: '',
+  userFullName: '',
+  userPhoneNumber: '',
   airMiles: '',
-  MyPlaceNumber: '',
+  myPlaceNumber: '',
 };
 
-export default PersonalInformation;
+export default withStyles(PersonalInformation, styles);

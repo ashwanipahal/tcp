@@ -6,9 +6,7 @@ import Address from '@tcp/core/src/components/common/molecules/Address';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Style,
-  ModalHeading,
   ModalViewWrapper,
-  LineWrapper,
   CardDescription,
   CardDetailWrapper,
   CardDetail,
@@ -19,10 +17,10 @@ import {
   CloseButtonWrapper,
   CardContainer,
   CardExpiry,
+  CustomAddress,
 } from '../DeleteModal.style.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
-import LineComp from '../../../../../../common/atoms/Line';
 import CustomButton from '../../../../../../common/atoms/Button';
 
 const buttonStyle = {
@@ -30,6 +28,8 @@ const buttonStyle = {
   paddingLeft: 5,
   fontWeight: theme.typography.fontWeights.regular,
 };
+
+const redColor = theme.colorPalette.red[300];
 
 class DeleteModal extends React.PureComponent<Props> {
   static propTypes = {
@@ -66,18 +66,11 @@ class DeleteModal extends React.PureComponent<Props> {
 
     return (
       <View>
-        <ModalNative isOpen={setDeleteModalMountedState} onRequestClose={toggleModal}>
-          <ModalHeading>
-            <BodyCopy
-              mobileFontFamily={['secondary']}
-              fontWeight="regular"
-              fontSize="fs16"
-              text={labels.paymentGC.lbl_payment_modalDeleteCard}
-            />
-          </ModalHeading>
-          <LineWrapper>
-            <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-          </LineWrapper>
+        <ModalNative
+          isOpen={setDeleteModalMountedState}
+          onRequestClose={toggleModal}
+          heading={labels.paymentGC.lbl_payment_modalDeleteCard}
+        >
           <SafeAreaView>
             <ModalViewWrapper>
               <CardDescription>
@@ -93,14 +86,29 @@ class DeleteModal extends React.PureComponent<Props> {
                   <ImageStyle source={dto.cardImage} />
                 </ImgWrapper>
                 <CardContainer>
-                  <CardDetail>{cardTitle}</CardDetail>
-                  <CardExpiry>{dto.cardExpiry}</CardExpiry>
+                  <CardDetail>
+                    <BodyCopy
+                      mobileFontFamily={['secondary']}
+                      fontWeight="semibold"
+                      fontSize="fs14"
+                      text={cardTitle}
+                    />
+                  </CardDetail>
+                  <CardExpiry>
+                    <BodyCopy
+                      mobileFontFamily={['secondary']}
+                      fontWeight="regular"
+                      fontSize="fs14"
+                      text={dto.cardExpiry}
+                    />
+                  </CardExpiry>
                   <Address
                     showCountry={false}
                     showPhone={false}
                     showName
                     dataLocatorPrefix="address"
                     address={addressDetails}
+                    customStyle={CustomAddress}
                   />
                 </CardContainer>
               </CardDetailWrapper>
@@ -122,8 +130,7 @@ class DeleteModal extends React.PureComponent<Props> {
                     text={labels.paymentGC.lbl_payment_modalGCCancel}
                     buttonVariation="variable-width"
                     fill="RED"
-                    color="red"
-                    width="162px"
+                    color={redColor}
                     font-size="14"
                     onPress={onClose}
                     style={buttonStyle}

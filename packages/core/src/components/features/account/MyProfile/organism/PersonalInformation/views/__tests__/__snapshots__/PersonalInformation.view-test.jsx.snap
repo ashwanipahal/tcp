@@ -7,10 +7,6 @@ exports[`PersonalInformation component should render correctly 1`] = `
     dataLocator="pi-editpersonalinfo"
   >
     <PersonalInformationDisplay
-      MyPlaceNumber="XXXXXXX"
-      UserEmail="test"
-      UserFullName="test"
-      UserPhoneNumber="test"
       airMiles="XXXXXXX"
       className=""
       labels={
@@ -22,7 +18,11 @@ exports[`PersonalInformation component should render correctly 1`] = `
         }
       }
       mailingAddress={Object {}}
+      myPlaceNumber=""
       userBirthday="feb 2019"
+      userEmail=""
+      userFullName=""
+      userPhoneNumber=""
     />
   </Styled(AccountOverviewTile)>
 </Fragment>
@@ -34,15 +34,15 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
     dataLocator="pi-editpersonalinfo"
   >
     <PersonalInformationDisplay
-      MyPlaceNumber=""
-      UserEmail=""
-      UserFullName=""
-      UserPhoneNumber=""
       airMiles=""
       className=""
       labels={Object {}}
       mailingAddress={Object {}}
+      myPlaceNumber=""
       userBirthday=""
+      userEmail=""
+      userFullName=""
+      userPhoneNumber=""
     />
   </Styled(AccountOverviewTile)>
 </Fragment>

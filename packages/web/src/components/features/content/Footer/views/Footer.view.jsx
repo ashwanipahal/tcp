@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import CountrySelector from '../../Header/molecules/CountrySelector';
 
 import {
   FooterMiddleMobile,
@@ -49,6 +50,7 @@ class Footer extends React.Component {
       loginModalMountedState,
       setLoginModalMountState,
       isLoggedIn,
+      closeNavigationDrawer,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -67,6 +69,7 @@ class Footer extends React.Component {
             navLinkItems={navLinks}
             openTrackOrder={openTrackOrder}
             isLoggedIn={isLoggedIn}
+            closeNavigationDrawer={closeNavigationDrawer}
           />
         </Row>
         <Row className="footer-middle desktop">
@@ -112,7 +115,9 @@ class Footer extends React.Component {
                 medium: 8,
                 small: 6,
               }}
-            />
+            >
+              <CountrySelector showInFooter />
+            </Col>
           </Row>
           <Row fullBleed>
             <Col
@@ -149,6 +154,7 @@ Footer.propTypes = {
   openEmailSignUpModal: PropTypes.func,
   openTrackOrder: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  closeNavigationDrawer: PropTypes.func.isRequired,
 };
 
 Footer.defaultProps = {

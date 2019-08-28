@@ -57,7 +57,7 @@ export const MyPlaceRewardsOverviewTile = ({
               centered
               fill="WHITE"
               to="/home"
-              data-locator="accountoverview-myplacerewardstile-startshopbtn"
+              dataLocator="accountoverview-myplacerewardstile-startshopbtn"
             >
               {labels.lbl_overview_myPlaceRewardsShopNow}
             </Anchor>

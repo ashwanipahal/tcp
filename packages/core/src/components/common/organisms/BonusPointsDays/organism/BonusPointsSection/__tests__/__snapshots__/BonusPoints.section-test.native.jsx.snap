@@ -60,7 +60,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
-          data-locator="detailslink"
+          dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
           locator=""
@@ -183,7 +183,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
-          data-locator="detailslink"
+          dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
           locator=""
@@ -306,7 +306,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
-          data-locator="detailslink"
+          dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
           locator=""
@@ -429,7 +429,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
-          data-locator="detailslink"
+          dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
           locator=""
@@ -529,7 +529,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
-          data-locator="detailslink"
+          dataLocator="detailslink"
           fontSizeVariation="medium"
           href="#"
           locator=""

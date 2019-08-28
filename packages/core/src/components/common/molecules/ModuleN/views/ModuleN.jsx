@@ -7,26 +7,13 @@ import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 import { Row, Col } from '../../../atoms';
+import config from '../ModuleN.config';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
-// TODO: keys will be changed once we get the actual data from CMS
-const ctaTypes = {
-  stackedCTAList: 'stackedCTAList',
-  linkCTAList: 'linkCTAList',
-  scrollCTAList: 'scrollCTAList',
-  imageCTAList: 'imageCTAList',
-};
+const { ctaTypes } = config;
 
 const ModuleN = props => {
-  const {
-    className,
-    ctaItems,
-    headerText,
-    promoBanner,
-    set: [set = {}],
-  } = props;
-
-  const ctaType = ctaTypes[set.val];
+  const { className, ctaItems, headerText, promoBanner, ctaType } = props;
 
   return (
     <Row
@@ -63,7 +50,7 @@ const ModuleN = props => {
           )}
         </div>
         <ButtonList
-          buttonListVariation={ctaType}
+          buttonListVariation={ctaTypes[ctaType]}
           buttonsData={ctaItems}
           fill="RED"
           dataLocatorDivisionImages={getLocator('moduleN_image')}
@@ -79,7 +66,7 @@ ModuleN.defaultProps = {
   ctaItems: [],
   headerText: [],
   promoBanner: [],
-  set: [],
+  ctaType: 'stackedCTAButtons',
 };
 
 ModuleN.propTypes = {
@@ -87,7 +74,7 @@ ModuleN.propTypes = {
   ctaItems: PropTypes.arrayOf(PropTypes.shape({})),
   headerText: PropTypes.arrayOf(PropTypes.shape({})),
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
-  set: PropTypes.arrayOf(PropTypes.shape({})),
+  ctaType: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleN), style);

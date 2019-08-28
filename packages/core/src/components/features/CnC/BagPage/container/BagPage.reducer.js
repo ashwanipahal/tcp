@@ -1,26 +1,70 @@
 import { fromJS, List } from 'immutable';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+// import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 const initialState = fromJS({
   orderDetails: {},
   errors: false,
   moduleXContent: [],
   showConfirmationModal: false,
+  uiFlags: {
+    isPayPalEnabled: false,
+    lastItemUpdatedId: null,
+    isTotalEstimated: true,
+    isClosenessQualifier: false,
+    recentlyRemovedItemsCount: 0,
+    shouldRedirectBackTo: false,
+    cartItemForRecommendations: null,
+    largeProductImagesLoading: false,
+    isCartItemsUpdating: {
+      isItemDeleted: false,
+      isItemUpdated: false,
+    },
+    isPickupStoreUpdating: false,
+    isItemMovedToSflList: false,
+    cartItemLargeImagesViewer: {
+      opened: false,
+      currentIndex: 0,
+      itemId: '',
+      productId: '',
+    },
+    isPayPalModalActionOOS: false,
+  },
 });
 
-function updateItem(state, itemId) {
+function updateItem(state, itemId, status) {
   const indexValue = state
     .getIn(['orderDetails', 'orderItems'])
     .findIndex(item => item.getIn(['itemInfo', 'itemId']) === itemId);
   if (indexValue >= 0) {
     return state.setIn(
       ['orderDetails', 'orderItems', indexValue, 'miscInfo', 'availability'],
-      AVAILABILITY.SOLDOUT
+      status
     );
   }
   return state;
 }
+
+function setCartItemsUpdating(state, isCartItemUpdating) {
+  return state.setIn(['uiFlags', 'isCartItemsUpdating'], isCartItemUpdating);
+}
+
+const returnBagPageReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
+      return state.set('showConfirmationModal', true);
+    case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:
+      return state.set('showConfirmationModal', false);
+    case BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING:
+      return setCartItemsUpdating(state, action.payload);
+    default:
+      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
 
 const BagPageReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -34,16 +78,8 @@ const BagPageReducer = (state = initialState, action) => {
       return state.setIn(['orderDetails', 'orderId'], action.orderId);
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
       return updateItem(state, action.payload);
-    case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
-      return state.set('showConfirmationModal', true);
-    case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:
-      return state.set('showConfirmationModal', false);
     default:
-      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return returnBagPageReducer(state, action);
   }
 };
 

@@ -25,12 +25,16 @@ import {
   DefaultAddress,
   LeftBracket,
   RightBracket,
+  CustomAddress,
+  TextWrapper,
+  dropDownStyle,
+  itemStyle,
 } from '../styles/CreditCardForm.native.style';
 
 export class CreditCardForm extends React.PureComponent<Props, State> {
   static propTypes = {
     className: PropTypes.string,
-    labels: PropTypes.shape({}).isRequired,
+    labels: PropTypes.shape({}),
     addressLabels: PropTypes.shape({}).isRequired,
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
@@ -47,17 +51,23 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     onFileAddressKey: '',
     isEdit: false,
     dto: {},
-    selectedCard: {},
+    selectedCard: null,
+    labels: {
+      paymentGC: {
+        lbl_payment_billingAddress: '',
+        lbl_payment_ccAdressSelect: '',
+        lbl_payment_addCard: '',
+      },
+      common: { lbl_common_updateCTA: '' },
+    },
   };
 
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap, onFileAddresskey } = props;
+    const { onFileAddresskey } = props;
     this.state = {
       addAddressMount: false,
       selectedAddress: onFileAddresskey,
-      selectedYear: expYearOptionsMap[1].id,
-      selectedMonth: expMonthOptionsMap[0].id,
     };
   }
 
@@ -85,10 +95,14 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     return addressOptions.valueSeq().toArray();
   };
 
-  getSelectedAddress = (addressList, onFileAddresskey) =>
-    onFileAddresskey
+  getSelectedAddress = (addressList, onFileAddresskey) => {
+    const { dispatch } = this.props;
+    const defaultAddress = onFileAddresskey
       ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
       : addressList && addressList.find(add => add.primary);
+    dispatch(change('addEditCreditCard', 'onFileAddressKey', defaultAddress.addressId));
+    return defaultAddress;
+  };
 
   handleComponentChange = item => {
     const { dispatch } = this.props;
@@ -97,10 +111,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   updateExpiryDate = (month, year) => {
-    this.setState({
-      selectedYear: year,
-      selectedMonth: month,
-    });
+    const { dispatch } = this.props;
+
+    // Setting form value to take dropdown values.
+    dispatch(change('addEditCreditCard', 'expYear', year));
+    dispatch(change('addEditCreditCard', 'expMonth', month));
   };
 
   toggleModal = () => {
@@ -110,41 +125,28 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     });
   };
 
-  submitCardInformation = () => {
-    const { selectedYear, selectedMonth } = this.state;
-    const { handleSubmit, dispatch, isEdit, selectedCard } = this.props;
-
-    // Setting form value to take dropdown values.
-    dispatch(change(constants.FORM_NAME, 'expYear', selectedYear));
-    dispatch(change(constants.FORM_NAME, 'expMonth', selectedMonth));
-    if (isEdit && selectedCard) {
-      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
-    }
-    handleSubmit();
-  };
-
   render() {
     const {
       labels,
       addressLabels,
       addressList,
       isEdit,
-      invalid,
       onClose,
       dto,
       selectedCard,
       onFileAddresskey,
+      dispatch,
+      handleSubmit,
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
-    const dropDownStyle = {
-      height: 30,
-      borderBottomWidth: 1,
-      marginTop: 15,
-    };
-    const itemStyle = {
-      height: 100,
-    };
     const addressComponentList = this.getAddressOptions();
+    const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
+    if (isEdit && selectedCard) {
+      const { expMonth, expYear } = selectedCard;
+      // Setting form value to take dropdown values.
+      this.updateExpiryDate(expMonth, expYear);
+      dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
+    }
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
@@ -164,13 +166,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             fontWeight="black"
             text={labels.paymentGC.lbl_payment_billingAddress}
           />
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs13"
-            textAlign="left"
-            fontWeight="black"
-            text="Select from Address Book"
-          />
+          <TextWrapper>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              textAlign="left"
+              fontWeight="semibold"
+              marginTop="10"
+              text={labels.paymentGC.lbl_payment_ccAdressSelect}
+            />
+          </TextWrapper>
 
           {addressComponentList && (
             <Field
@@ -195,12 +200,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <DefaultAddress>
               <LeftBracket />
               <Address
-                address={this.getSelectedAddress(addressList, selectedAddress)}
+                address={defaultAddress}
                 showCountry={false}
                 showPhone={false}
                 showName
-                className="CreditCardForm__address"
                 dataLocatorPrefix="address"
+                customStyle={CustomAddress}
               />
               <RightBracket />
             </DefaultAddress>
@@ -209,12 +214,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
         <ActionsWrapper>
           <Button
             fill="BLUE"
-            disabled={invalid}
             buttonVariation="variable-width"
-            text={isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
+            text={
+              isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
+            }
             style={AddAddressButton}
-            onPress={this.submitCardInformation}
-            external
+            onPress={handleSubmit}
           />
           <Button
             fill="WHITE"

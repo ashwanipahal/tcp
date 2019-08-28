@@ -858,6 +858,7 @@ exports[`AddressFields component should render correctly 1`] = `
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {
@@ -2645,6 +2646,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {
@@ -4134,6 +4136,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {
@@ -5623,6 +5626,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.state"
         name="state"
+        onChange={[Function]}
         options={
           Array [
             Object {
@@ -6004,7 +6008,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       <Styled(Anchor)
         anchorVariation="primary"
         className="change-country-link"
-        data-locator="shipping internationally"
+        dataLocator="shipping internationally"
         fontSizeVariation="small"
         href="#"
         noLink={true}

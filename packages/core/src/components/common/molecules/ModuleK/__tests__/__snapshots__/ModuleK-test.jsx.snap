@@ -124,7 +124,7 @@ exports[`ModuleK component renders correctly 1`] = `
   }
 
   /* this style is for Gymboree Header Text \\"Spring is Every Wear\\" */
-  .style11 {
+  .gymboree_title_text {
     color: ",
                 [Function],
                 ";
@@ -140,12 +140,12 @@ exports[`ModuleK component renders correctly 1`] = `
     @media ",
                 [Function],
                 " {
-      font-size: 74px;
+      font-size: 64px;
     }
   }
 
   /* this style is for Module N \\"ALL CLEARANCE\\" header text */
-  .style12 {
+  .spaced_text {
     color: ",
                 [Function],
                 ";
@@ -155,9 +155,9 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 20px;
-    line-height: 1.05;
-    letter-spacing: 2.22px;
+    font-size: 22px;
+    line-height: normal;
+    letter-spacing: 2px;
 
     @media ",
                 [Function],

@@ -54,7 +54,7 @@ export class AddEditCreditCard extends React.PureComponent {
     updateCardList: () => {},
     dto: {},
     isEdit: false,
-    selectedCard: {},
+    selectedCard: null,
   };
 
   constructor(props) {
@@ -189,12 +189,18 @@ export class AddEditCreditCard extends React.PureComponent {
     const isExpirationRequired = this.getExpirationRequiredFlag();
     const { initialValues } = this.state;
     const addressLabels = convertObjectKeysToLowerCase(labels.addressBook);
+    let creditCardType = cardType;
+    if (selectedCard && !cardType) {
+      creditCardType = selectedCard.ccBrand || selectedCard.ccType;
+      creditCardType =
+        (creditCardType && constants.ACCEPTED_CREDIT_CARDS[creditCardType.toUpperCase()]) || null;
+    }
 
     return (
       <AddEditCreditCardComponent
         isEdit={isEdit}
         creditCard={creditCard}
-        cardType={cardType}
+        cardType={creditCardType}
         onFileAddressKey={onFileAddressKey}
         isPLCCEnabled={isPLCCEnabled}
         isExpirationRequired={isExpirationRequired}
