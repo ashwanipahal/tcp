@@ -24,14 +24,14 @@ exports[`Select Item is shown should render select item  1`] = `
   margin-right: ",
           [Function],
           ";
-  width:156px;
+  width: 156px;
   @media ",
           [Function],
           " {
     padding-left: ",
           [Function],
           ";
-    width:auto;
+    width: auto;
   }
   .item-select {
     text-transform: capitalize;
@@ -50,7 +50,7 @@ exports[`Select Item is shown should render select item  1`] = `
           [Function],
           ";
       padding-bottom: 8px;
-      display:flex;
+      display: flex;
     }
   }
 ",
