@@ -10,7 +10,8 @@ export const modalStyles = css`
     font-weight: ${props => props.theme.typography.fontWeights.black};
     border: none;
     display: block;
-    margin: 6px 0 12px;
+    height: auto;
+    margin: 6px 0 10px;
     padding: 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
