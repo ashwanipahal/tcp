@@ -14,19 +14,26 @@ module.exports = withTM({
     ANALYTICS: process.env.RWD_WEB_ANALYTICS,
     ANALYTICS_SCRIPT_URL: process.env.RWD_WEB_ANALYTICS_SCRIPT_URL,
   },
-  webpack(config) {
-    config.module.rules.push({
+  webpack(config, { isServer }) {
+    const newConfig = config;
+    newConfig.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
-    config.module.rules.forEach(rule => {
+    newConfig.module.rules.forEach(rule => {
       const newRule = rule;
       if (newRule.use && newRule.use.loader === 'next-babel-loader') {
         newRule.use.options.configFile = path.resolve('./.babelrc');
       }
       return newRule;
     });
+    if (!isServer) {
+      newConfig.resolve.alias.fs = path.resolve(__dirname, 'lib/fake/method.js');
+    }
+    newConfig.node = {
+      __dirname: false,
+    };
 
-    return config;
+    return newConfig;
   },
 });

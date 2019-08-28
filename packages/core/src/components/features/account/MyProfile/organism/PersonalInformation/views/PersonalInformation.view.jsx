@@ -6,7 +6,7 @@ import Col from '../../../../../../common/atoms/Col';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../../ProfileInformation/styles/ProfileInformation.style';
 import Address from '../../../../../../common/molecules/Address';
-import internalEndpoints from '../../../../common/internalEndpoints'
+import internalEndpoints from '../../../../common/internalEndpoints';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 

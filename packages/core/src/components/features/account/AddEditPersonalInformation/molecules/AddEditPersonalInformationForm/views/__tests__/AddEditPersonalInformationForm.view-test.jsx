@@ -11,7 +11,7 @@ describe('AddEditPersonalInformationForm component', () => {
       errorMessage: '',
       birthMonthOptionsMap: [],
       birthYearOptionsMap: [],
-      isEmployee: false
+      isEmployee: false,
     };
     const component = shallow(<AddEditPersonalInformationForm {...props} />);
     expect(component).toMatchSnapshot();

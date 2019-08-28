@@ -1,16 +1,15 @@
 import { css } from 'styled-components';
 
 const styles = css`
-
-  @media ${props => props.theme.mediaQuery.smallOnly}{
-    .addEditPersonalBirthday{
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED}
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .addEditPersonalBirthday {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
-    .addEditPersonalPhoneNumber{
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    .addEditPersonalPhoneNumber {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
-    .addEditPersonallastName{
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    .addEditPersonallastName {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 

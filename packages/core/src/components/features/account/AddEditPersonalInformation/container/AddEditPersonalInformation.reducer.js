@@ -6,7 +6,7 @@ const initialState = fromJS({
   error: null,
 });
 
-const UpdateProfileReducer = (state = initialState , action) => {
+const UpdateProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.UPDATE_PROFILE_SUCCESS:
       return state.set('error', null).set('success', action.payload);
