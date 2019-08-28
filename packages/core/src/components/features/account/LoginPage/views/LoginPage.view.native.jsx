@@ -104,6 +104,7 @@ LoginView.propTypes = {
   onCreateAccountClick: PropTypes.string.isRequired,
   navigation: PropTypes.shape({}),
   variation: PropTypes.bool.isRequired,
+  loginError: PropTypes.bool.isRequired,
 };
 
 LoginView.defaultProps = {
