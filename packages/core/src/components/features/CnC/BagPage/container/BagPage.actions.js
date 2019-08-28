@@ -93,6 +93,12 @@ const setCartItemsUpdating = payload => {
   };
 };
 
+const routeForCheckout = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -108,4 +114,5 @@ export default {
   setItemOOS,
   setCartItemsUpdating,
   setItemUnavailable,
+  routeForCheckout,
 };

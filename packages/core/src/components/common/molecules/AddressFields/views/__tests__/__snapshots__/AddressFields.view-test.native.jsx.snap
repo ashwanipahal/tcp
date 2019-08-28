@@ -217,6 +217,7 @@ exports[`AddressFields component should render correctly 1`] = `
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,
@@ -645,6 +646,7 @@ exports[`AddressFields component should render correctly 1`] = `
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
           "itemStyle": null,
@@ -692,6 +694,7 @@ exports[`AddressFields component should render correctly 1`] = `
       ]
     }
     dataLocator="addnewaddress-country"
+    disabled={false}
     dropDownStyle={
       Object {
         "border": 1,
@@ -1030,6 +1033,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,
@@ -1458,6 +1462,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
           "itemStyle": null,
@@ -1505,6 +1510,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       ]
     }
     dataLocator="addnewaddress-country"
+    disabled={false}
     dropDownStyle={
       Object {
         "border": 1,
@@ -1843,6 +1849,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,
@@ -2271,6 +2278,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
           "itemStyle": null,
@@ -2318,6 +2326,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       ]
     }
     dataLocator="addnewaddress-country"
+    disabled={false}
     dropDownStyle={
       Object {
         "border": 1,
@@ -2656,6 +2665,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,
@@ -2839,6 +2849,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
           "itemStyle": null,
@@ -2886,6 +2897,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       ]
     }
     dataLocator="addnewaddress-country"
+    disabled={false}
     dropDownStyle={
       Object {
         "border": 1,

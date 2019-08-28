@@ -30,6 +30,9 @@ const ModalStyle = css`
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: ${props => (props.widthConfig ? props.widthConfig.large : '')};
+      min-height: ${props => (props.heightConfig ? props.heightConfig.minHeight : '')};
+      height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
+      max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     }
   }
   .Modal_Heading {

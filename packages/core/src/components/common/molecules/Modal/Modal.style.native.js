@@ -1,45 +1,42 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 
 const StyledCrossImage = styled.Image`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   align-items: flex-end;
+  padding: 0px 0px ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const ModalHeading = styled.Text`
-  border-bottom-width: 7px;
-  border-bottom-color: ${props => props.theme.colorPalette.black};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING[props.paddingBottom || 'MED']};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  width: 80%;
 `;
 
 const LineWrapper = styled.View`
-  margin: ${props => props.theme.spacing.ELEM_SPACING.SM}
-    ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
-    ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 const RowWrapper = styled.View`
-  margin: ${props => props.theme.spacing.ELEM_SPACING.XXXL}
-    ${props => props.theme.spacing.ELEM_SPACING.LRG}
-    ${props => props.theme.spacing.ELEM_SPACING.MED}
+  margin: ${Platform.OS === 'ios'
+      ? props => props.theme.spacing.ELEM_SPACING.XXXL
+      : props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  flex-direction: column;
-`;
-
-const ModalHeadingWrapper = styled.View`
-  flex: 0.9;
+  flex-direction: row;
 `;
 
 const ImageWrapper = styled.View`
-  flex: 0.1;
+  width: 20%;
 `;
 
 export {
   StyledCrossImage,
-  ModalHeadingWrapper,
   ImageWrapper,
   StyledTouchableOpacity,
   ModalHeading,

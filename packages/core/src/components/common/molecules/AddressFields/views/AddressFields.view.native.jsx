@@ -31,10 +31,12 @@ export class AddressFields extends React.PureComponent {
     formName: PropTypes.string.isRequired,
     formSection: PropTypes.string,
     loadShipmentMethods: PropTypes.func.isRequired,
+    disableCountry: PropTypes.bool,
   };
 
   static defaultProps = {
     formSection: '',
+    disableCountry: false,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -75,7 +77,7 @@ export class AddressFields extends React.PureComponent {
   };
 
   render() {
-    const { addressFormLabels, formSection, dispatch, formName } = this.props;
+    const { addressFormLabels, formSection, dispatch, formName, disableCountry } = this.props;
     const { dropDownItem, country } = this.state;
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
@@ -177,6 +179,7 @@ export class AddressFields extends React.PureComponent {
           variation="secondary"
           dropDownStyle={{ ...dropDownStyle }}
           itemStyle={{ ...itemStyle }}
+          disabled={disableCountry}
         />
         <InputFieldPhoneNumber>
           <Field
