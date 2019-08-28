@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChangePassword.view component should renders correctly 1`] = `
+exports[`AddEditPersonalInformation.view component should renders correctly 1`] = `
 <Fragment>
   <Styled(BodyCopy)
     className="elem-mb-LRG"
@@ -25,70 +25,29 @@ exports[`ChangePassword.view component should renders correctly 1`] = `
       >
          
       </span>
-      back to login
+      back to profile
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
     className="margin-none"
     dataLocator="pi-profileinformationheading"
-    heading="Password Chanage"
+    heading="update Profile"
   />
-  <Styled(BodyCopy)
-    className="elem-pt-LRG"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="p"
-          data-locator="passwordInstructionTxt"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        >
-          Your password must be at least 8 characters long
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-  </Styled(BodyCopy)>
   <ReduxForm
+    birthMonthOptionsMap={Array []}
+    birthYearOptionsMap={Array []}
     destroyOnUnmount={true}
     enableReinitialize={true}
     errorMessage="ERROR"
     forceUnregisterOnUnmount={false}
-    form="ChangePasswordForm"
+    form="AddEditPersonalInformationForm"
     getFormState={[Function]}
+    initialValues={Object {}}
     keepDirtyOnReinitialize={false}
     labels={
       Object {
-        "lbl_ResetPassword_requirementTips_1": "requirement tip 1",
-        "lbl_ResetPassword_requirementTips_2": "requirement tip 2",
-        "lbl_ResetPassword_requirementTips_3": "requirement tip 3",
-        "lbl_changePassword_back": "back to login",
-        "lbl_changePassword_heading": "Password Chanage",
-        "lbl_changePassword_password_info": "Your password must be at least 8 characters long",
+        "lbl_profile_heading": "update Profile",
+        "lbl_profile_personal_info_back": "back to profile",
       }
     }
     onSubmit={[Function]}

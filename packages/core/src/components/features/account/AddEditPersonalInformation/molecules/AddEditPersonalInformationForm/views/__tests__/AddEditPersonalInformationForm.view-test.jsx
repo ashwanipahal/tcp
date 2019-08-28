@@ -1,16 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ChangePasswordForm } from '../ChangePasswordForm.view';
+import { AddEditPersonalInformationForm } from '../AddEditPersonalInformationForm.view';
 
-describe('ChangePasswordForm component', () => {
+describe('AddEditPersonalInformationForm component', () => {
   it('should renders correctly in initial state', () => {
     const props = {
       labels: {},
       pristine: false,
       successMessage: '',
       errorMessage: '',
+      birthMonthOptionsMap: [],
+      birthYearOptionsMap: [],
+      isEmployee: false
     };
-    const component = shallow(<ChangePasswordForm {...props} />);
+    const component = shallow(<AddEditPersonalInformationForm {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -21,7 +24,7 @@ describe('ChangePasswordForm component', () => {
       successMessage: 'success',
       errorMessage: 'error',
     };
-    const component = shallow(<ChangePasswordForm {...props} />);
+    const component = shallow(<AddEditPersonalInformationForm {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

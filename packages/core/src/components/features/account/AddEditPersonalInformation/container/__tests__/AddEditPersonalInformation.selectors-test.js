@@ -1,16 +1,16 @@
 import { fromJS } from 'immutable';
-import { CHANGE_PASSWORD_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
+import { UPDATE_PROFILE_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 import { getError, getSuccess } from '../AddEditPersonalInformation.selectors';
 
-describe('#ChangePassword Selectors', () => {
+describe('#UpdateProfile Selectors', () => {
   let state;
   beforeEach(() => {
-    const changePasswordState = fromJS({
+    const updateProfileState = fromJS({
       success: 'success message',
       error: 'error message',
     });
     state = {
-      [CHANGE_PASSWORD_REDUCER_KEY]: changePasswordState,
+      [UPDATE_PROFILE_REDUCER_KEY]: updateProfileState,
     };
   });
 

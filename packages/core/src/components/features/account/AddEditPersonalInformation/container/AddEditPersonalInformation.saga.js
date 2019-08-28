@@ -1,20 +1,20 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import constants from '../AddEditPersonalInformation.constants';
-import { changePasswordError, changePasswordSuccess } from './AddEditPersonalInformation.actions';
+import { updateProfileError, updateProfileSuccess } from './AddEditPersonalInformation.actions';
 
 import { UpdateProfileInfo } from '../../../../../services/abstractors/account';
 
-export function* ChangePassword({ payload }) {
+export function* UpdateProfile({ payload }) {
   try {
     const res = yield call(UpdateProfileInfo, payload);
-    return yield put(changePasswordSuccess(res));
+    return yield put(updateProfileError(res));
   } catch (err) {
-    return yield put(changePasswordError(err));
+    return yield put(updateProfileSuccess(err));
   }
 }
 
-export function* ChangePasswordSaga() {
-  yield takeLatest(constants.CHANGE_PASSWORD, ChangePassword);
+export function* UpdateProfileSaga() {
+  yield takeLatest(constants.UPDATE_PROFILE, UpdateProfile);
 }
 
-export default ChangePasswordSaga;
+export default UpdateProfileSaga;

@@ -24,6 +24,7 @@ export const AddEditPersonalInformationForm = ({
   handleSubmit,
   birthMonthOptionsMap,
   birthYearOptionsMap,
+  isEmployee
 }) => {
   return (
     <form
@@ -37,7 +38,7 @@ export const AddEditPersonalInformationForm = ({
           className="elem-mt-MED"
           status="error"
           colSize={{ large: 12, medium: 8, small: 6 }}
-          message={labels[`lbl_changePassword_${errorMessage}`]}
+          message={labels[`lbl_profile_pofile_info_${errorMessage}`]}
         />
       )}
       <Row fullBleed className="elem-mt-XXL">
@@ -129,6 +130,7 @@ export const AddEditPersonalInformationForm = ({
           )}
         </Col>
       </Row>
+
       <Row fullBleed className="elem-mt-LRG">
         <Col
           colSize={{ small: 4, medium: 4, large: 6 }}
@@ -146,6 +148,7 @@ export const AddEditPersonalInformationForm = ({
           </Field>
         </Col>
       </Row>
+      {isEmployee && (
       <Row fullBleed className="elem-mt-XL">
         <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
@@ -158,6 +161,7 @@ export const AddEditPersonalInformationForm = ({
           />
         </Col>
       </Row>
+      )}
       <BodyCopy component="div" textAlign="center" className="elem-mb-LRG elem-mt-XXL">
         <Row>
           <Col
@@ -224,6 +228,7 @@ AddEditPersonalInformationForm.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
+  isEmployee: PropTypes.string.isRequired,
 };
 
 AddEditPersonalInformationForm.defaultProps = {

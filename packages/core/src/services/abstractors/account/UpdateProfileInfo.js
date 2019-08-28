@@ -22,10 +22,6 @@ export const errorHandler = err => {
  */
 
 export const UpdateProfileInfo = args => {
-  console.log('testing---------------------------');
-  console.log(args);
-  console.log('testing---------------------------');
-
   const {
     firstName,
     lastName,

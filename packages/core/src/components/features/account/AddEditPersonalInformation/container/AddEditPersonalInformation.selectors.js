@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import { formValueSelector } from 'redux-form';
-import { CHANGE_PASSWORD_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import { UPDATE_PROFILE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
-const getState = state => state[CHANGE_PASSWORD_REDUCER_KEY];
+const getState = state => state[UPDATE_PROFILE_REDUCER_KEY];
 
 export const getError = createSelector(
   getState,
@@ -19,7 +19,7 @@ export const getProfileLabels = state => {
 };
 
 
-export const getIAgree = state => {
+export const getIsEmployee = state => {
   const selector = formValueSelector('AddEditPersonalInformationForm');
   return selector(state, 'isEmployee');
 };

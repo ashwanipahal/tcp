@@ -1,16 +1,16 @@
 import constants from '../AddEditPersonalInformation.constants';
 
-export const changePassword = payload => ({
-  type: constants.CHANGE_PASSWORD,
+export const updateProfile = payload => ({
+  type: constants.UPDATE_PROFILE,
   payload,
 });
 
-export const changePasswordSuccess = payload => ({
-  type: constants.CHANGE_PASSWORD_SUCCESS,
+export const updateProfileSuccess = payload => ({
+  type: constants.UPDATE_PROFILE_SUCCESS,
   payload,
 });
 
-export const changePasswordError = payload => ({
-  type: constants.CHANGE_PASSWORD_ERROR,
+export const updateProfileError = payload => ({
+  type: constants.UPDATE_PROFILE_ERROR,
   payload,
 });

@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import utils, { getBirthDateOptionMap } from '../../../../../utils';
-import { getError, getSuccess, getProfileLabels } from './AddEditPersonalInformation.selectors';
+import { getError, getSuccess, getIsEmployee, getProfileLabels } from './AddEditPersonalInformation.selectors';
 import AddEditPersonalInformationComponent from '../views';
-import { changePassword, changePasswordError } from './AddEditPersonalInformation.actions';
+import { updateProfile, updateProfileError } from './AddEditPersonalInformation.actions';
 import {
   getUserBirthday,
   getUserName,
@@ -12,15 +12,17 @@ import {
   getUserEmail,
   getUserPhoneNumber,
   getAssociateId,
+  getAirmilesDetails
 } from '../../User/container/User.selectors';
 
 export class AddEditPersonalInformationContainer extends PureComponent {
   static propTypes = {
     successMessage: PropTypes.string.isRequired,
     errorMessage: PropTypes.string.isRequired,
-    changePasswordAction: PropTypes.func.isRequired,
+    updateProfileAction: PropTypes.func.isRequired,
     messageSateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
+    isEmployee: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -40,26 +42,26 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     messageSateChangeAction(null);
   }
 
-  changePassword = ({
+  updateProfileInformation = ({
     firstName,
     lastName,
     associateId,
-    email,
+    Email,
     phoneNumber,
     userBirthMonth,
     userBirthYear,
-    isEmployee,
+    airMilesAccountNumber,
   }) => {
-    const { changePasswordAction } = this.props;
+    const { updateProfileAction, } = this.props;
     const newUserBirthday = userBirthMonth && userBirthYear ? `${userBirthMonth}|${userBirthYear}` : '';
-    changePasswordAction({
+    updateProfileAction({
       firstName,
       lastName,
-      email,
+      email: Email,
       phone: phoneNumber,
       associateId,
-      isEmployee,
       userBirthday: newUserBirthday,
+      airmiles: airMilesAccountNumber,
     });
   };
 
@@ -69,29 +71,32 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   };
 
   getInitialValues = props => {
-    const { firstName, lastName, email, phoneNumber, associateId, userBirthday } = props;
+    const { firstName, lastName, email, phoneNumber, associateId, userBirthday,airMilesAccountNumber } = props;
     const birthdayArray = userBirthday ? userBirthday.split('|') : [];
 
     return {
       firstName,
       lastName,
-      email,
+      Email: email,
       phoneNumber,
       associateId,
+      airMilesAccountNumber,
+      isEmployee: !!associateId,
       userBirthMonth: birthdayArray[0],
       userBirthYear: birthdayArray[1],
     };
   };
 
   render() {
-    const { successMessage, errorMessage, labels, ...otherProps } = this.props;
+    const { successMessage, errorMessage, labels, isEmployee, ...otherProps } = this.props;
     this.initialValues = this.getInitialValues(otherProps);
     return (
       <AddEditPersonalInformationComponent
         successMessage={successMessage}
         errorMessage={errorMessage}
-        onSubmit={this.changePassword}
+        onSubmit={this.updateProfileInformation}
         labels={labels}
+        isEmployee={isEmployee}
         birthMonthOptionsMap={this.yearOptionsMap.monthsMap}
         birthYearOptionsMap={this.yearOptionsMap.yearsMap}
         initialValues={this.initialValues}
@@ -110,14 +115,16 @@ export const mapStateToProps = state => ({
   phoneNumber: getUserPhoneNumber(state),
   associateId: getAssociateId(state),
   labels: getProfileLabels(state),
+  isEmployee: getIsEmployee(state),
+  airMilesAccountNumber: getAirmilesDetails(state)
 });
 
 export const mapDispatchToProps = dispatch => ({
-  changePasswordAction: payload => {
-    dispatch(changePassword(payload));
+  updateProfileAction: payload => {
+    dispatch(updateProfile(payload));
   },
   messageSateChangeAction: payload => {
-    dispatch(changePasswordError(payload));
+    dispatch(updateProfileError(payload));
   },
 });
 

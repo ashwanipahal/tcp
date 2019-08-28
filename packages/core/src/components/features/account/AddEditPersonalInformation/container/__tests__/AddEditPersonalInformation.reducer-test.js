@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
-import ChangePasswordReducer from '../AddEditPersonalInformation.reducer';
-import { changePasswordSuccess, changePasswordError } from '../AddEditPersonalInformation.actions';
+import UpdateProfileReducer from '../AddEditPersonalInformation.reducer';
+import { updateProfileSuccess, updateProfileError } from '../AddEditPersonalInformation.actions';
 
 const initialState = fromJS({
   success: null,
@@ -9,20 +9,20 @@ const initialState = fromJS({
 
 describe('ChangePassword Reducer', () => {
   it('should return default state', () => {
-    const state = ChangePasswordReducer(undefined, {});
+    const state = UpdateProfileReducer(undefined, {});
     expect(state.get('success')).toBeNull();
     expect(state.get('error')).toBeNull();
   });
 
   it('should return success state', () => {
-    const state = ChangePasswordReducer(initialState, changePasswordSuccess('success'));
+    const state = UpdateProfileReducer(initialState, updateProfileSuccess('success'));
     expect(state.get('success')).toBe('success');
     expect(state.get('error')).toBeNull();
   });
 
   it('should return error state', () => {
-    const state = ChangePasswordReducer(initialState, changePasswordError('error'));
-    expect(state.get('success')).toBeNull();
+    const state = UpdateProfileReducer(initialState, updateProfileError('error'));
+    expect(state.set('success')).toBeNull();
     expect(state.get('error')).toBe('error');
   });
 });

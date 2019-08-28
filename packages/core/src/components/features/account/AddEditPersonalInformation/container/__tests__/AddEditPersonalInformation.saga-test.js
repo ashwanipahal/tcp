@@ -1,34 +1,34 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { ChangePassword, ChangePasswordSaga } from '../AddEditPersonalInformation.saga';
-import { changePasswordSuccess, changePasswordError } from '../AddEditPersonalInformation.actions';
+import { UpdateProfile, UpdateProfileSaga } from '../AddEditPersonalInformation.saga';
+import { updateProfileSuccess, updateProfileError } from '../AddEditPersonalInformation.actions';
 import constants from '../../AddEditPersonalInformation.constants';
 
-describe('ChangePassword saga', () => {
-  describe('ChangePassword', () => {
+describe('UpdateProfile saga', () => {
+  describe('UpdateProfile', () => {
     let gen;
     beforeEach(() => {
-      gen = ChangePassword({});
+      gen = UpdateProfile({});
       gen.next();
     });
 
-    it('should dispatch changePasswordSuccess action for success response', () => {
+    it('should dispatch updateProfileSuccess action for success response', () => {
       const response = 'success';
       const putDescriptor = gen.next(response).value;
-      expect(putDescriptor).toEqual(put(changePasswordSuccess(response)));
+      expect(putDescriptor).toEqual(put(updateProfileSuccess(response)));
     });
 
-    it('should dispatch changePasswordError action if response is error', () => {
+    it('should dispatch updateProfileError action if response is error', () => {
       const response = 'error';
       const putDescriptor = gen.throw(response).value;
-      expect(putDescriptor).toEqual(put(changePasswordError(response)));
+      expect(putDescriptor).toEqual(put(updateProfileError(response)));
     });
   });
 
-  describe('ChangePasswordSaga', () => {
+  describe('UpdateProfileSaga', () => {
     it('should return correct takeLatest effect', () => {
-      const generator = ChangePasswordSaga();
+      const generator = UpdateProfileSaga();
       const takeLatestDescriptor = generator.next().value;
-      const expected = takeLatest(constants.CHANGE_PASSWORD, ChangePassword);
+      const expected = takeLatest(constants.PROFILE_UPDATE, UpdateProfile);
       expect(takeLatestDescriptor).toEqual(expected);
     });
   });

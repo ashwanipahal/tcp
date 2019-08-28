@@ -81,6 +81,10 @@ export const TRACK_ORDER_ACTION_PATTERN = '@@TrackOrder-';
 export const CHANGE_PASSWORD_REDUCER_KEY = 'ChangePassword';
 export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 
+// change password reducer
+export const UPDATE_PROFILE_REDUCER_KEY = 'ChangePassword';
+export const UPDATE_PROFILE_ACTION_PATTERN = '@@ChangePassword-';
+
 // device type detection
 export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
 
@@ -98,6 +102,7 @@ export const REDUCER_ACTION_MAPPING = {
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
   [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
+  [UPDATE_PROFILE_REDUCER_KEY]: UPDATE_PROFILE_ACTION_PATTERN
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

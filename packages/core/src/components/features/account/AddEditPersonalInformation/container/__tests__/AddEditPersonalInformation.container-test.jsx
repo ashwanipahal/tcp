@@ -1,38 +1,38 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { AddEditPersonalInformationContainer } from '../AddEditPersonalInformation.container';
-import ChangePasswordComponent from '../../views';
+import AddEditPersonalInformationForm from '../../views';
 
-describe('ChangePassword container', () => {
+describe('AddEditPersonalInformationForm container', () => {
   let messageSateChangeActionSpy;
-  let changePasswordActionSpy;
+  let updateProfileActionSpy;
   let component;
   beforeEach(() => {
     messageSateChangeActionSpy = jest.fn();
-    changePasswordActionSpy = jest.fn();
+    updateProfileActionSpy = jest.fn();
     const props = {
       successMessage: '',
       errorMessage: '',
       messageSateChangeAction: messageSateChangeActionSpy,
-      changePasswordAction: changePasswordActionSpy,
+      updateProfileAction: updateProfileActionSpy,
       labels: {},
     };
     component = shallow(<AddEditPersonalInformationContainer {...props} />);
   });
-  it('should render ChangePassword component', () => {
-    expect(component.is(ChangePasswordComponent)).toBeTruthy();
+  it('should render AddEditPersonalInformationForm component', () => {
+    expect(component.is(AddEditPersonalInformationForm)).toBeTruthy();
   });
 
-  it('changePassword should call changePasswordAction with correct params', () => {
-    component.instance().changePassword({
-      password: 'test',
-      currentPassword: 'test',
-      confirmPassword: 'test',
+  it('AddEditPersonalInformationForm should call updateProfileAction with correct params', () => {
+    component.instance().updateProfileInformation({
+      firstName: 'test',
+      lastName: 'test',
+      associateId: '25347',
     });
-    expect(changePasswordActionSpy).toBeCalledWith({
-      currentPassword: 'test',
-      newPassword: 'test',
-      newPasswordVerify: 'test',
+    expect(updateProfileActionSpy).toBeCalledWith({
+      firstName: 'test',
+      lastName: 'test',
+      associateId: '25347',
     });
   });
 

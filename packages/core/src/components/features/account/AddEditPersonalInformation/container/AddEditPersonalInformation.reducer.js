@@ -6,11 +6,11 @@ const initialState = fromJS({
   error: null,
 });
 
-const ChangePasswordReducer = (state, action) => {
+const UpdateProfileReducer = (state, action) => {
   switch (action.type) {
-    case constants.CHANGE_PASSWORD_SUCCESS:
+    case constants.UPDATE_PROFILE_SUCCESS:
       return state.set('error', null).set('success', action.payload);
-    case constants.CHANGE_PASSWORD_ERROR:
+    case constants.UPDATE_PROFILE_ERROR:
       return state.set('error', action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
@@ -25,4 +25,4 @@ const ChangePasswordReducer = (state, action) => {
   }
 };
 
-export default ChangePasswordReducer;
+export default UpdateProfileReducer;
