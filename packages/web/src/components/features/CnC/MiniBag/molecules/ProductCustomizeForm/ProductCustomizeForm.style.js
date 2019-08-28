@@ -77,7 +77,8 @@ const styles = css`
     }
     .dropdownDivOverFlow {
       display: block;
-      overflow-y: visible;
+      overflow-y: auto;
+      max-height: 150px;
       border: 2px solid ${props => props.theme.colors.PRIMARY.BLUE};
     }
   }
