@@ -12,9 +12,13 @@ const Abstractor = {
   getData: async module => {
     const xappData = await Abstractor.getDataFromCache();
     if (xappData) {
-      const jsonXappData = JSON.parse(xappData);
-      jsonXappData.IS_DATA_FROM_REDIS = true;
-      return jsonXappData;
+      try {
+        const jsonXappData = JSON.parse(xappData);
+        jsonXappData.IS_DATA_FROM_REDIS = true;
+        return jsonXappData;
+      } catch (e) {
+        console.log('Error parsing xappData from Redis', e);
+      }
     }
     const apiConfig = getAPIConfig();
     const data = {
