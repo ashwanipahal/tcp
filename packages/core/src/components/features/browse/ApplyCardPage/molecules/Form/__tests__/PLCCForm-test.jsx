@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PLCCForm } from '../PLCCForm';
+import PLCCForm from '../PLCCForm';
 
 describe('ContactInformationFormWrapper component', () => {
   const props = {

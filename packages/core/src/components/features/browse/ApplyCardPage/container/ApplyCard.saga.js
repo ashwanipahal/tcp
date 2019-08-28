@@ -2,7 +2,7 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import constants from '../RewardsCard.constants';
 import { setModuleX, obtainInstantCardApplication } from './ApplyCard.actions';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleXComposite';
-import { applyInstantCard } from '../../../../../services/abstractors/account/ApplyInstantCard';
+import applyInstantCard from '../../../../../services/abstractors/common/PLCC';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 
 /*

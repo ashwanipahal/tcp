@@ -16,6 +16,7 @@ import {
 import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import { getSiteId } from '../../../../../../utils/utils.web';
 import StyeldContactInfoFormWrapper from './styles/ContactInformationFormWrapper.style';
+import { getLocator } from '../../../../../../utils';
 
 class ContactInformationFormWrapper extends React.Component {
   static propTypes = {
@@ -78,7 +79,7 @@ class ContactInformationFormWrapper extends React.Component {
                   name="firstName"
                   maxLength="15"
                   id="firstName"
-                  data-locator="plcc_first_name"
+                  data-locator={getLocator('plcc_first_name')}
                 />
               </Col>
               <Col
@@ -93,7 +94,7 @@ class ContactInformationFormWrapper extends React.Component {
                   name="middleNameInitial"
                   maxLength="15"
                   id="middleNameInitial"
-                  data-locator="plcc_middle_name"
+                  data-locator={getLocator('plcc_middle_name')}
                 />
               </Col>
             </Row>
@@ -110,7 +111,7 @@ class ContactInformationFormWrapper extends React.Component {
               name="lastName"
               maxLength="15"
               id="lastName"
-              data-locator="plcc_last_name"
+              data-locator={getLocator('plcc_last_name')}
             />
           </Col>
         </Row>
@@ -127,7 +128,7 @@ class ContactInformationFormWrapper extends React.Component {
               name="addressLine1"
               onPlaceSelected={this.handlePlaceSelected}
               componentRestrictions={Object.assign({}, { country: [this.siteId] })}
-              dataLocator="plcc_address_1"
+              dataLocator={getLocator('plcc_address_1')}
               className="field"
             />
           </Col>
@@ -140,7 +141,7 @@ class ContactInformationFormWrapper extends React.Component {
               name="addressLine2"
               id="addressLine2"
               component={TextBox}
-              dataLocator="plcc_address_2"
+              dataLocator={getLocator('plcc_address_2')}
               className="field"
             />
           </Col>
@@ -157,7 +158,7 @@ class ContactInformationFormWrapper extends React.Component {
               placeholder={labels.plcc_form_city}
               name="city"
               component={TextBox}
-              dataLocator="plcc_city"
+              dataLocator={getLocator('plcc_city')}
               className="field"
             />
           </Col>
@@ -183,7 +184,7 @@ class ContactInformationFormWrapper extends React.Component {
                   component={SelectBox}
                   placeholder={labels.plcc_form_state_placeholder}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
-                  dataLocator="plcc_state"
+                  dataLocator={getLocator('plcc_state')}
                   className="field"
                 />
               </Col>
@@ -198,7 +199,7 @@ class ContactInformationFormWrapper extends React.Component {
                   name="noCountryZip"
                   maxLength={6}
                   component={TextBox}
-                  dataLocator="plcc_zip_code"
+                  dataLocator={getLocator('plcc_zip_code')}
                   className="field"
                 />
               </Col>
@@ -216,7 +217,7 @@ class ContactInformationFormWrapper extends React.Component {
               name="phoneNumber"
               id="phoneNumber"
               component={TextBox}
-              dataLocator="plc_mobile_no"
+              dataLocator={getLocator('plc_mobile_no')}
               type="tel"
               className="field"
             />
@@ -230,7 +231,7 @@ class ContactInformationFormWrapper extends React.Component {
               name="emailAddress"
               id="emailAddress"
               component={TextBox}
-              dataLocator="plcc_email"
+              dataLocator={getLocator('plcc_email')}
               className="field"
             />
           </Col>
@@ -247,7 +248,7 @@ class ContactInformationFormWrapper extends React.Component {
               name="alternatePhone"
               id="alternatePhone"
               component={TextBox}
-              dataLocator="plcc_alt_mobile_no"
+              dataLocator={getLocator('plcc_alt_mobile_no')}
               className="field"
             />
           </Col>
@@ -256,7 +257,6 @@ class ContactInformationFormWrapper extends React.Component {
           className="columnWrapper plcc_min_phone"
           fontSize="fs10"
           fontFamily="secondary"
-          data-locator="plcc_min_phone"
           id="plcc_min_phone"
         >
           {labels.plcc_form_min_phone}

@@ -1,7 +1,7 @@
-import { executeStatefulAPICall } from '../../handler';
-import endpoints from '../../endpoints';
-import { getSiteId } from '../../../utils/utils.web';
-import { API_CONFIG } from '../../config';
+import { executeStatefulAPICall } from '../../../handler';
+import endpoints from '../../../endpoints';
+import { getSiteId } from '../../../../utils/utils.web';
+import { API_CONFIG } from '../../../config';
 
 export const errorHandler = err => {
   if (err.response && err.response.body && err.response.body.errors) {
@@ -15,7 +15,7 @@ export const isCanada = () => {
   return siteId === API_CONFIG.siteIds.ca;
 };
 
-export const applyInstantCard = args => {
+const applyInstantCard = args => {
   const payload = {
     // Overriding 'application/json' - specific to processWIC
     header: {
@@ -63,3 +63,5 @@ export const applyInstantCard = args => {
     })
     .catch(errorHandler);
 };
+
+export default applyInstantCard;

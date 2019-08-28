@@ -3,7 +3,7 @@ import handler from '../../../handler';
 /**
  * Responsible for content fetching using content ID
  */
-export const DataAbstractor = {
+export const ModuleXCompositeDataAbstractor = {
   processData: async modulexData => {
     const result = {};
     const { data } = modulexData;
@@ -30,7 +30,7 @@ export const DataAbstractor = {
  * @param {Array} cids - Content ID
  */
 export const getModuleX = async cids => {
-  const { getData, processData } = DataAbstractor;
+  const { getData, processData } = ModuleXCompositeDataAbstractor;
   let response = {};
 
   try {

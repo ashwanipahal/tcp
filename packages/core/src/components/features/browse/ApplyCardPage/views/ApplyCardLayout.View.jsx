@@ -1,8 +1,7 @@
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import ApplyRewardsCreditCardStyle from '../styles/ApplyCardPage.style';
 import PLCCForm from '../molecules/Form/PLCCForm';
-import PropTypes from 'prop-types';
 import { ApplicationInProgress } from '../molecules';
 import constants from '../RewardsCard.constants';
 
@@ -16,6 +15,13 @@ const ApplyCardLayoutView = ({ applicationStatus, plccData, labels, submitPLCCFo
       )}
     </ApplyRewardsCreditCardStyle>
   );
+};
+
+ApplyCardLayoutView.propTypes = {
+  plccData: PropTypes.shape({}).isRequired,
+  submitPLCCForm: PropTypes.func.isRequired,
+  applicationStatus: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default ApplyCardLayoutView;

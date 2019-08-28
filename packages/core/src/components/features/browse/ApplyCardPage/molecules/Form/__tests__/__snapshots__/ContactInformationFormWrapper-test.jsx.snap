@@ -1865,7 +1865,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     className="columnWrapper plcc_min_phone"
     color="text.primary"
     component="p"
-    data-locator="plcc_min_phone"
     fontFamily="secondary"
     fontSize="fs10"
     fontWeight="regular"

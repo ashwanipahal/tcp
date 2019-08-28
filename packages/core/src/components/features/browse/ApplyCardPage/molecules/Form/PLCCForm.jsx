@@ -20,7 +20,7 @@ import {
 import { backToHome } from '../../utils/DateOfBirthHelper';
 import StyledPLCCFormWrapper from './styles/PLCCForm.style';
 
-export const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
+const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
   return (
     <StyledPLCCFormWrapper>
       <form onSubmit={handleSubmit}>

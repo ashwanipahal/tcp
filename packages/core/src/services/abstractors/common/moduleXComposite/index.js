@@ -1,1 +1,1 @@
-export { DataAbstractor, getModuleX } from './moduleXComposite';
+export { ModuleXCompositeDataAbstractor, getModuleX } from './moduleXComposite';

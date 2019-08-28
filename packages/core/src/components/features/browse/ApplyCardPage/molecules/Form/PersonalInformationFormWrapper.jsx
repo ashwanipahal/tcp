@@ -1,13 +1,11 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { BodyCopy, Col, Row, SelectBox, TextBox } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
-import {
-  calendarDaysMap,
-  MONTH_OPTIONS_MAP_WITH_EMPTY as months,
-  calendarYearsMap,
-} from '../../utils/DateOfBirthHelper';
+import { BodyCopy, Col, Row, SelectBox, TextBox } from '../../../../../common/atoms';
+import { calendarDaysMap, calendarYearsMap } from '../../utils/DateOfBirthHelper';
+import { MONTH_OPTIONS_MAP_WITH_EMPTY as months } from '../../RewardsCard.constants';
 import StyledPersonalFormWrapper from './styles/PersonalInformationFormWrapper.style';
+import { getLocator } from '../../../../../../utils';
 
 export default class PersonalInformationFormWrapper extends React.PureComponent {
   render() {
@@ -43,7 +41,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                   name="month"
                   component={SelectBox}
                   options={months}
-                  dataLocator="plcc_date"
+                  dataLocator={getLocator('plcc_date')}
                   className="field_dob"
                   enableSuccessCheck={false}
                 />
@@ -58,7 +56,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                   name="date"
                   component={SelectBox}
                   options={calendarDaysMap()}
-                  dataLocator="plcc_month"
+                  dataLocator={getLocator('plcc_month')}
                   className="field_dob"
                   enableSuccessCheck={false}
                 />
@@ -73,7 +71,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                   name="year"
                   component={SelectBox}
                   options={calendarYearsMap()}
-                  dataLocator="plcc_year"
+                  dataLocator={getLocator('plcc_year')}
                   className="field_dob"
                   enableSuccessCheck={false}
                 />
@@ -92,7 +90,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
               name="ssNumber"
               maxLength="4"
               id="lastName"
-              data-locator="plcc_SSN"
+              data-locator={getLocator('plcc_SSN')}
             />
           </Col>
         </Row>
