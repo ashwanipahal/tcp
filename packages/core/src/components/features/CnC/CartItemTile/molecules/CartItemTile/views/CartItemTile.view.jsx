@@ -234,7 +234,6 @@ class CartItemTile extends React.Component {
       Qty: productDetail.itemInfo.qty,
     };
 
-    console.log('card item tile 1');
     return (
       <div className={className}>
         {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
