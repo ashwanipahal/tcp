@@ -23,7 +23,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           lineHeight="normal"
           outline="none"
           role="option"
-          tabIndex={-1}
+          tabIndex={0}
           textAlign="center"
         >
           undefined:

@@ -11,6 +11,7 @@ import Heading from './Heading';
 import BodyCopy from './BodyCopy';
 import SelectBox from './Select';
 import LabeledRadioButton from './LabeledRadioButton';
+import InputCheckBox from './InputCheckbox';
 
 export {
   Anchor,
@@ -19,6 +20,7 @@ export {
   DamImage,
   DynamicTag,
   Image,
+  InputCheckBox,
   RichText,
   Row,
   TextBox,

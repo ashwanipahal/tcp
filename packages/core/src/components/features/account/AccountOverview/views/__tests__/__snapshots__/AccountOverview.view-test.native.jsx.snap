@@ -115,6 +115,12 @@ exports[`AccountOverview component should render correctly 1`] = `
     isFavorite={false}
     isVariationTypeLink={true}
   />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
   <Styled(View) />
   <Panel
     handleComponentChange={[Function]}

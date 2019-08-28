@@ -86,6 +86,7 @@ const createLinks = (
             url,
             categoryContent: { id, name, mainCategory },
             subCategories,
+            hasL3,
           } = l2Links;
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
@@ -94,7 +95,7 @@ const createLinks = (
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor to={url} onClick={openL3Drawer(`l3-drawer-${index.toString()}`)}>
+              <Anchor to={url} onClick={openL3Drawer(`l3-drawer-${index.toString()}`, hasL3)}>
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
