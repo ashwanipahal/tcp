@@ -8,7 +8,6 @@ describe('ApplyCardLayoutContainer', () => {
       <ApplyCardLayoutContainer
         applicationStatus="PENDING"
         labels="header"
-        preScreenCodeLink=""
         disclaimersData="header"
         submitPLCCForm={jest.fn()}
       />

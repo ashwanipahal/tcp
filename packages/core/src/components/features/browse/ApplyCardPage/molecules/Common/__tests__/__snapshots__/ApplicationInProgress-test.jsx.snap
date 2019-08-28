@@ -1,17 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ApplicationInProgress component should renders correctly 1`] = `
-<Styled(BodyCopy)
-  className="underprogress_application"
-  color="text.primary"
-  component="div"
-  fontFamily="secondary"
-  fontSize="fs16"
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  textAlign="left"
->
+<styled.div>
   <Styled(BodyCopy)
     className="card-InProgress-header"
     color="text.primary"
@@ -43,7 +33,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     fullBleed={true}
   >
     <Styled(Col)
-      className="underproress_checkout_button"
+      className="underprogress_checkout_button"
       colSize={
         Object {
           "large": 4,
@@ -62,7 +52,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="underproress_checkout_button"
+          className="underprogress_checkout_button"
           data-locator="submit-plcc-btn"
           fill="BLUE"
           type="submit"
@@ -96,7 +86,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="underproress_continue_button"
+          className="underprogress_continue_button"
           data-locator="submit-plcc-btn"
           fill="BLUE"
           type="submit"
@@ -106,5 +96,5 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
-</Styled(BodyCopy)>
+</styled.div>
 `;

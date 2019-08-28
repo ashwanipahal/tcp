@@ -7,12 +7,13 @@ import {
   MONTH_OPTIONS_MAP_WITH_EMPTY as months,
   calendarYearsMap,
 } from '../../utils/DateOfBirthHelper';
+import StyledPersonalFormWrapper from './styles/PersonalInformationFormWrapper.style';
 
 export default class PersonalInformationFormWrapper extends React.PureComponent {
   render() {
     const { labels } = this.props;
     return (
-      <React.Fragment>
+      <StyledPersonalFormWrapper>
         <BodyCopy component="h2" className="title">
           {labels.plcc_form_personal_info}
         </BodyCopy>
@@ -95,7 +96,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
             />
           </Col>
         </Row>
-      </React.Fragment>
+      </StyledPersonalFormWrapper>
     );
   }
 }

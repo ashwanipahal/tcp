@@ -1,9 +1,10 @@
 import React from 'react';
-import { BodyCopy, Col, Row, TextBox } from '@tcp/core/src/components/common/atoms';
-import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
+import { Field } from 'redux-form';
+import { BodyCopy, Col, Row, TextBox } from '../../../../../common/atoms';
+import PreScreenCodeWrapper from './styles/PreScreenCode.style';
 
-export default class PrescreenCode extends React.Component {
+export default class PrescreenCode extends React.PureComponent {
   static propTypes = {
     labels: PropTypes.shape({}).isRequired,
   };
@@ -11,7 +12,7 @@ export default class PrescreenCode extends React.Component {
   state = {
     showPreScreenCode: false,
   };
-  // eslint-disable-next-line
+
   handleClick = () => {
     this.setState({ showPreScreenCode: true });
   };
@@ -20,7 +21,7 @@ export default class PrescreenCode extends React.Component {
     const { labels } = this.props;
     const { showPreScreenCode } = this.state;
     return (
-      <React.Fragment>
+      <PreScreenCodeWrapper>
         {showPreScreenCode ? (
           <Row fullBleed>
             <Col
@@ -41,10 +42,9 @@ export default class PrescreenCode extends React.Component {
             </Col>
           </Row>
         ) : null}
-        <BodyCopy className="prescreen-code">
+        <BodyCopy fontFamily="secondary">
           {labels.plcc_form_prescreencodetext}
           {!showPreScreenCode ? (
-            // eslint-disable-next-line jsx-a11y/anchor-is-valid
             <BodyCopy component="a" onClick={this.handleClick} className="click-here-link">
               {labels.plcc_form_clickHere}
             </BodyCopy>
@@ -54,7 +54,7 @@ export default class PrescreenCode extends React.Component {
             </span>
           )}
         </BodyCopy>
-      </React.Fragment>
+      </PreScreenCodeWrapper>
     );
   }
 }

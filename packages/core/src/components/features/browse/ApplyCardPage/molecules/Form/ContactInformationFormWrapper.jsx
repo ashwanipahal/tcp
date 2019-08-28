@@ -1,13 +1,21 @@
 import React from 'react';
 import { change, Field } from 'redux-form';
-import { BodyCopy, Col, Row, SelectBox, TextBox } from '@tcp/core/src/components/common/atoms';
+import {
+  BodyCopy,
+  Col,
+  Heading,
+  Row,
+  SelectBox,
+  TextBox,
+} from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from '@tcp/core/src/components/common/organisms/AddressForm/CountriesAndStates.constants';
+} from '../../../../../common/organisms/AddressForm/CountriesAndStates.constants';
 import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import { getSiteId } from '../../../../../../utils/utils.web';
+import StyeldContactInfoFormWrapper from './styles/ContactInformationFormWrapper.style';
 
 class ContactInformationFormWrapper extends React.Component {
   static propTypes = {
@@ -17,7 +25,7 @@ class ContactInformationFormWrapper extends React.Component {
 
   constructor(props) {
     super(props);
-    this.siteId = getSiteId() || 'us';
+    this.siteId = getSiteId();
   }
 
   /**
@@ -40,8 +48,17 @@ class ContactInformationFormWrapper extends React.Component {
   render() {
     const { labels } = this.props;
     return (
-      <React.Fragment>
-        <h2 className="title">{labels.plcc_form_contact_info_header}</h2>
+      <StyeldContactInfoFormWrapper>
+        <Heading
+          fontFamily="secondary"
+          fontSize="fs16"
+          variant="h2"
+          color="black"
+          fontWeight="semibold"
+          className="title"
+        >
+          {labels.plcc_form_contact_info_header}
+        </Heading>
         <Row fullBleed>
           <Col
             className="contact_information_form columnWrapper"
@@ -112,7 +129,6 @@ class ContactInformationFormWrapper extends React.Component {
               componentRestrictions={Object.assign({}, { country: [this.siteId] })}
               dataLocator="plcc_address_1"
               className="field"
-              enableSuccessCheck={false}
             />
           </Col>
           <Col
@@ -126,7 +142,6 @@ class ContactInformationFormWrapper extends React.Component {
               component={TextBox}
               dataLocator="plcc_address_2"
               className="field"
-              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -144,7 +159,6 @@ class ContactInformationFormWrapper extends React.Component {
               component={TextBox}
               dataLocator="plcc_city"
               className="field"
-              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }} className="columnWrapper">
@@ -171,7 +185,6 @@ class ContactInformationFormWrapper extends React.Component {
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
                   dataLocator="plcc_state"
                   className="field"
-                  enableSuccessCheck={false}
                 />
               </Col>
               <Col
@@ -187,7 +200,6 @@ class ContactInformationFormWrapper extends React.Component {
                   component={TextBox}
                   dataLocator="plcc_zip_code"
                   className="field"
-                  enableSuccessCheck={false}
                 />
               </Col>
             </Row>
@@ -207,7 +219,6 @@ class ContactInformationFormWrapper extends React.Component {
               dataLocator="plc_mobile_no"
               type="tel"
               className="field"
-              enableSuccessCheck={false}
             />
           </Col>
           <Col
@@ -221,7 +232,6 @@ class ContactInformationFormWrapper extends React.Component {
               component={TextBox}
               dataLocator="plcc_email"
               className="field"
-              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -239,7 +249,6 @@ class ContactInformationFormWrapper extends React.Component {
               component={TextBox}
               dataLocator="plcc_alt_mobile_no"
               className="field"
-              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -252,7 +261,7 @@ class ContactInformationFormWrapper extends React.Component {
         >
           {labels.plcc_form_min_phone}
         </BodyCopy>
-      </React.Fragment>
+      </StyeldContactInfoFormWrapper>
     );
   }
 }

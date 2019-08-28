@@ -4,6 +4,17 @@ import handler from '../../../handler';
  * Responsible for content fetching using content ID
  */
 export const DataAbstractor = {
+  processData: async modulexData => {
+    const result = {};
+    const { data } = modulexData;
+    const responseKeys = Object.keys(data);
+    responseKeys.map(item => {
+      result[item] = data[item].composites.richTextList[0].text;
+      return result[item];
+    });
+    return result;
+  },
+
   getData: async ids => {
     return handler
       .fetchModuleDataFromGraphQL({
@@ -19,11 +30,12 @@ export const DataAbstractor = {
  * @param {Array} cids - Content ID
  */
 export const getModuleX = async cids => {
-  const { getData } = DataAbstractor;
+  const { getData, processData } = DataAbstractor;
   let response = {};
 
   try {
-    response = await getData(cids);
+    const modulexResponse = await getData(cids);
+    response = await processData(modulexResponse);
   } catch (error) {
     response = error;
   }

@@ -1,21 +1,17 @@
-import { fromJS } from 'immutable';
 import constants from '../RewardsCard.constants';
 
-const initialState = fromJS({
+const initialState = {
   contact_information_disclaimer: '',
   pre_screen_code: '',
-});
+};
 
 const ApplyCardReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.SET_MODULEX_CONTENT:
-      return state.set(constants.PLCC_DISCLAIMERS_DATA, action.payload);
-    case constants.RESPONSE_SEND_INSTANT_CARD_APPLICATION:
-      return state.set(constants.APPLICATION_STATUS, action.payload.status);
+      return { ...state, plccData: action.payload };
+    case constants.RESPONSE_INSTANT_CARD_APPLICATION:
+      return { ...state, applicationStatus: action.payload.status };
     default:
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
       return state;
   }
 };

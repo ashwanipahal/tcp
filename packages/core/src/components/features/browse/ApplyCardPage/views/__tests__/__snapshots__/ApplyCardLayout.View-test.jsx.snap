@@ -12,7 +12,6 @@ exports[`ApplyCardLayoutView component should renders correctly considering sele
 <styled.div>
   <ReduxForm
     destroyOnUnmount={true}
-    disclaimersData={Object {}}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="PLCCForm"
@@ -20,7 +19,6 @@ exports[`ApplyCardLayoutView component should renders correctly considering sele
     keepDirtyOnReinitialize={false}
     labels={Object {}}
     persistentSubmitErrors={false}
-    preScreenCodeLink="pre_link"
     pure={true}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}

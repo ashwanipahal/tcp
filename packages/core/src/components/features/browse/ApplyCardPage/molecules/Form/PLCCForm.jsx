@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { BodyCopy, Button, Col, Row } from '@tcp/core/src/components/common/atoms';
-import { Grid } from '@tcp/core/src/components/common/molecules';
-import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import PropTypes from 'prop-types';
+import { BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
+import { Grid } from '../../../../../common/molecules';
+import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import InputCheckBox from '../../../../../common/atoms/InputCheckbox';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
 import {
@@ -12,27 +12,27 @@ import {
   ContactInformationFormWrapper,
   CreditCardPageHeader,
   ElectronicConsent,
+  PrescreenCode,
   PLCCAgreements,
   PersonalInformationFormWrapper,
-  PrescreenCode,
   ReviewCreditCardInformation,
 } from '../index';
 import { backToHome } from '../../utils/DateOfBirthHelper';
+import StyledPLCCFormWrapper from './styles/PLCCForm.style';
 
-export const PLCCForm = ({ dispatch, disclaimersData, handleSubmit, labels }) => {
+export const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
   return (
-    <BodyCopy component="div">
+    <StyledPLCCFormWrapper>
       <form onSubmit={handleSubmit}>
         <Grid>
           <CreditCardPageHeader labels={labels} />
-          <Row fullBleed className="rewards_card_rules">
+          <Row fullBleed>
             <ReviewCreditCardInformation
-              creditCardHeader={disclaimersData && disclaimersData.credit_card_header}
+              creditCardHeader={plccData && plccData.credit_card_header}
             />
           </Row>
           <Row fullBleed>
             <Col
-              className="prescreen_code_link_container"
               key="Prescreen_code_link"
               data-locator="Prescreen_code_link"
               colSize={{ large: 12, medium: 8, small: 6 }}
@@ -42,47 +42,27 @@ export const PLCCForm = ({ dispatch, disclaimersData, handleSubmit, labels }) =>
           </Row>
           <ContactInformationFormWrapper labels={labels} dispatch={dispatch} />
           <Row fullBleed>
-            <Col
-              className="contact_information_container"
-              key="container_contact_info"
-              colSize={{ large: 12, medium: 8, small: 6 }}
-            >
+            <Col key="container_contact_info" colSize={{ large: 12, medium: 8, small: 6 }}>
               <ContactInformation
-                contactInfo={disclaimersData && disclaimersData.contact_information_disclaimer}
+                contactInfo={plccData && plccData.contact_information_disclaimer}
               />
             </Col>
           </Row>
           <PersonalInformationFormWrapper labels={labels} />
           <Row fullBleed>
-            <Col
-              className="account_information_container"
-              key="container_account_info"
-              colSize={{ large: 12, medium: 8, small: 6 }}
-            >
+            <Col key="container_account_info" colSize={{ large: 12, medium: 8, small: 6 }}>
               <AccountInformations
-                classifiedDisclaimer={
-                  disclaimersData && disclaimersData.account_classified_disclaimer
-                }
+                classifiedDisclaimer={plccData && plccData.account_classified_disclaimer}
               />
             </Col>
           </Row>
           <Row fullBleed>
-            <Col
-              className="electronic_consent_container"
-              key="container_electronic_consent"
-              colSize={{ large: 12, medium: 8, small: 6 }}
-            >
-              <ElectronicConsent
-                electronicConsent={disclaimersData && disclaimersData.electronic_consent}
-              />
+            <Col key="container_electronic_consent" colSize={{ large: 12, medium: 8, small: 6 }}>
+              <ElectronicConsent electronicConsent={plccData && plccData.electronic_consent} />
             </Col>
           </Row>
           <Row fullBleed>
-            <Col
-              className="plcc_agreements_container"
-              key="container_plcc_agreement"
-              colSize={{ large: 12, medium: 8, small: 6 }}
-            >
+            <Col key="container_plcc_agreement" colSize={{ large: 12, medium: 8, small: 6 }}>
               <PLCCAgreements labels={labels} />
             </Col>
           </Row>
@@ -148,12 +128,12 @@ export const PLCCForm = ({ dispatch, disclaimersData, handleSubmit, labels }) =>
           </BodyCopy>
         </Grid>
       </form>
-    </BodyCopy>
+    </StyledPLCCFormWrapper>
   );
 };
 
 PLCCForm.propTypes = {
-  disclaimersData: PropTypes.shape({}).isRequired,
+  plccData: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,

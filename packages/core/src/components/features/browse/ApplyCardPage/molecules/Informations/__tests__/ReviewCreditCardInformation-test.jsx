@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ReviewCreditCardInformation from '../ReviewCreditCardInformation';
+import ReviewCreditCardInformation from '../ReviewCreditCardInformation.view';
 
 describe('ReviewCreditCardInformation component', () => {
   it('should renders correctly', () => {

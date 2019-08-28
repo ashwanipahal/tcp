@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
-<Fragment>
+<styled.div>
   <Styled(Col)
     className="rewards_card_logo"
     colSize={
@@ -30,7 +30,7 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
     colSize={
       Object {
         "large": 8,
-        "medium": 6,
+        "medium": 5,
         "small": 6,
       }
     }
@@ -41,11 +41,11 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
       richTextHtml="<h1>Contact Information</h1>"
     />
   </Styled(Col)>
-</Fragment>
+</styled.div>
 `;
 
 exports[`ReviewCreditCardInformation component should renders correctly when no arguments are passed 1`] = `
-<Fragment>
+<styled.div>
   <Styled(Col)
     className="rewards_card_logo"
     colSize={
@@ -74,7 +74,7 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
     colSize={
       Object {
         "large": 8,
-        "medium": 6,
+        "medium": 5,
         "small": 6,
       }
     }
@@ -85,5 +85,5 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
       richTextHtml=""
     />
   </Styled(Col)>
-</Fragment>
+</styled.div>
 `;

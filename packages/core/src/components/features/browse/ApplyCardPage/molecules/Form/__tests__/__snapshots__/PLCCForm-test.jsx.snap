@@ -1,17 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactInformationFormWrapper component should renders correctly 1`] = `
-<Styled(BodyCopy)
-  className={null}
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize={12}
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  textAlign="left"
->
+<styled.div>
   <form>
     <Styled(Grid)>
       <CreditCardPageHeader
@@ -24,18 +14,14 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
       />
       <Styled(Row)
-        className="rewards_card_rules"
         fullBleed={true}
       >
-        <ReviewCreditCardInformation
-          creditCardHeader="header"
-        />
+        <ReviewCreditCardInformation />
       </Styled(Row)>
       <Styled(Row)
         fullBleed={true}
       >
         <Styled(Col)
-          className="prescreen_code_link_container"
           colSize={
             Object {
               "large": 12,
@@ -71,7 +57,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         fullBleed={true}
       >
         <Styled(Col)
-          className="contact_information_container"
           colSize={
             Object {
               "large": 12,
@@ -81,9 +66,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
           key="container_contact_info"
         >
-          <ContactInformation
-            contactInfo="contact info"
-          />
+          <ContactInformation />
         </Styled(Col)>
       </Styled(Row)>
       <PersonalInformationFormWrapper
@@ -99,7 +82,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         fullBleed={true}
       >
         <Styled(Col)
-          className="account_information_container"
           colSize={
             Object {
               "large": 12,
@@ -109,16 +91,13 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
           key="container_account_info"
         >
-          <AccountInformations
-            classifiedDisclaimer="account"
-          />
+          <AccountInformations />
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
         fullBleed={true}
       >
         <Styled(Col)
-          className="electronic_consent_container"
           colSize={
             Object {
               "large": 12,
@@ -129,7 +108,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="container_electronic_consent"
         >
           <ElectronicConsent
-            electronicConsent="consent"
+            electronicConsent=""
           />
         </Styled(Col)>
       </Styled(Row)>
@@ -137,7 +116,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         fullBleed={true}
       >
         <Styled(Col)
-          className="plcc_agreements_container"
           colSize={
             Object {
               "large": 12,
@@ -375,5 +353,5 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       </Styled(BodyCopy)>
     </Styled(Grid)>
   </form>
-</Styled(BodyCopy)>
+</styled.div>
 `;

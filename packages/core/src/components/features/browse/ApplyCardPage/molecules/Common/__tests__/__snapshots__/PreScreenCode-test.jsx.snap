@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PreScreenCode component should renders correctly 1`] = `
-<Fragment>
+<styled.div>
   <Styled(BodyCopy)
-    className="prescreen-code"
+    className={null}
     color="text.primary"
     component="p"
-    fontFamily="primary"
+    fontFamily="secondary"
     fontSize={12}
     fontWeight="regular"
     letterSpacing="normal"
@@ -29,5 +29,5 @@ exports[`PreScreenCode component should renders correctly 1`] = `
       click here
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
-</Fragment>
+</styled.div>
 `;

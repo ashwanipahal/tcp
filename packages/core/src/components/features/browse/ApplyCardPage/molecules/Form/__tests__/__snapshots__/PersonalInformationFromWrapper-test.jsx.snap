@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactInformationFormWrapper component should renders correctly 1`] = `
-<Fragment>
+<styled.div>
   <Styled(BodyCopy)
     className="title"
     color="text.primary"
@@ -1146,5 +1146,5 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       />
     </Styled(Col)>
   </Styled(Row)>
-</Fragment>
+</styled.div>
 `;

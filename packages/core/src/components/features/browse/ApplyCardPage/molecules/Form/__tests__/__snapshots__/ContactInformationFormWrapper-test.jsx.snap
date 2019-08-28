@@ -1,12 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactInformationFormWrapper component should renders correctly 1`] = `
-<Fragment>
-  <h2
+<styled.div>
+  <Styled(Heading)
     className="title"
+    color="black"
+    component={null}
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    textAlign="left"
+    variant="h2"
   >
     contact information
-  </h2>
+  </Styled(Heading)>
   <Styled(Row)
     fullBleed={true}
   >
@@ -572,12 +580,11 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         componentRestrictions={
           Object {
             "country": Array [
-              "us",
+              undefined,
             ],
           }
         }
         dataLocator="plcc_address_1"
-        enableSuccessCheck={false}
         id="addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
@@ -752,7 +759,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         dataLocator="plcc_address_2"
-        enableSuccessCheck={false}
         id="addressLine2"
         name="addressLine2"
         placeholder="Address Line 2"
@@ -932,7 +938,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         dataLocator="plcc_city"
-        enableSuccessCheck={false}
         id="city"
         name="city"
         placeholder="city"
@@ -1074,320 +1079,74 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
               }
             }
             dataLocator="plcc_state"
-            enableSuccessCheck={false}
             id="state"
             name="statewocountry"
             options={
               Array [
                 Object {
-                  "displayName": "AL",
-                  "fullName": "Alabama",
-                  "id": "AL",
+                  "displayName": "BC",
+                  "fullName": "British Columbia",
+                  "id": "BC",
                 },
                 Object {
-                  "displayName": "AK",
-                  "fullName": "Alaska",
-                  "id": "AK",
+                  "displayName": "ON",
+                  "fullName": "Ontario",
+                  "id": "ON",
                 },
                 Object {
-                  "displayName": "AS",
-                  "fullName": "American Samoa",
-                  "id": "AS",
+                  "displayName": "NL",
+                  "fullName": "Newfoundland and Labrador",
+                  "id": "NL",
                 },
                 Object {
-                  "displayName": "AZ",
-                  "fullName": "Arizona",
-                  "id": "AZ",
+                  "displayName": "NS",
+                  "fullName": "Nova Scotia",
+                  "id": "NS",
                 },
                 Object {
-                  "displayName": "AR",
-                  "fullName": "Arkansas",
-                  "id": "AR",
+                  "displayName": "PE",
+                  "fullName": "Prince Edward Island",
+                  "id": "PE",
                 },
                 Object {
-                  "displayName": "AA",
-                  "fullName": "",
-                  "id": "AA",
+                  "displayName": "NB",
+                  "fullName": "New Brunswick",
+                  "id": "NB",
                 },
                 Object {
-                  "displayName": "AE",
-                  "fullName": "",
-                  "id": "AE",
+                  "displayName": "QC",
+                  "fullName": "Quebec",
+                  "id": "QC",
                 },
                 Object {
-                  "displayName": "AP",
-                  "fullName": "",
-                  "id": "AP",
+                  "displayName": "MB",
+                  "fullName": "Manitoba",
+                  "id": "MB",
                 },
                 Object {
-                  "displayName": "CA",
-                  "fullName": "California",
-                  "id": "CA",
+                  "displayName": "SK",
+                  "fullName": "Saskatchewan",
+                  "id": "SK",
                 },
                 Object {
-                  "displayName": "CO",
-                  "fullName": "Colorado",
-                  "id": "CO",
+                  "displayName": "AB",
+                  "fullName": "Alberta",
+                  "id": "AB",
                 },
                 Object {
-                  "displayName": "CT",
-                  "fullName": "Connecticut",
-                  "id": "CT",
+                  "displayName": "NT",
+                  "fullName": "Northwest Territories",
+                  "id": "NT",
                 },
                 Object {
-                  "displayName": "DE",
-                  "fullName": "Delaware",
-                  "id": "DE",
+                  "displayName": "NU",
+                  "fullName": "Nunavut",
+                  "id": "NU",
                 },
                 Object {
-                  "displayName": "DC",
-                  "fullName": "Dist. of Columbia",
-                  "id": "DC",
-                },
-                Object {
-                  "displayName": "FM",
-                  "fullName": "",
-                  "id": "FM",
-                },
-                Object {
-                  "displayName": "FL",
-                  "fullName": "Florida",
-                  "id": "FL",
-                },
-                Object {
-                  "displayName": "GA",
-                  "fullName": "Georgia",
-                  "id": "GA",
-                },
-                Object {
-                  "displayName": "GU",
-                  "fullName": "Guam",
-                  "id": "GU",
-                },
-                Object {
-                  "displayName": "HI",
-                  "fullName": "Hawaii",
-                  "id": "HI",
-                },
-                Object {
-                  "displayName": "ID",
-                  "fullName": "Idaho",
-                  "id": "ID",
-                },
-                Object {
-                  "displayName": "IL",
-                  "fullName": "Illinois",
-                  "id": "IL",
-                },
-                Object {
-                  "displayName": "IN",
-                  "fullName": "Indiana",
-                  "id": "IN",
-                },
-                Object {
-                  "displayName": "IA",
-                  "fullName": "Iowa",
-                  "id": "IA",
-                },
-                Object {
-                  "displayName": "KS",
-                  "fullName": "Kansas",
-                  "id": "KS",
-                },
-                Object {
-                  "displayName": "KY",
-                  "fullName": "Kentucky",
-                  "id": "KY",
-                },
-                Object {
-                  "displayName": "LA",
-                  "fullName": "Louisiana",
-                  "id": "LA",
-                },
-                Object {
-                  "displayName": "ME",
-                  "fullName": "Maine",
-                  "id": "ME",
-                },
-                Object {
-                  "displayName": "MH",
-                  "fullName": "Marshall Islands",
-                  "id": "MH",
-                },
-                Object {
-                  "displayName": "MD",
-                  "fullName": "Maryland",
-                  "id": "MD",
-                },
-                Object {
-                  "displayName": "MA",
-                  "fullName": "Massachusetts",
-                  "id": "MA",
-                },
-                Object {
-                  "displayName": "MI",
-                  "fullName": "Michigan",
-                  "id": "MI",
-                },
-                Object {
-                  "displayName": "MN",
-                  "fullName": "Minnesota",
-                  "id": "MN",
-                },
-                Object {
-                  "displayName": "MS",
-                  "fullName": "Mississippi",
-                  "id": "MS",
-                },
-                Object {
-                  "displayName": "MO",
-                  "fullName": "Missouri",
-                  "id": "MO",
-                },
-                Object {
-                  "displayName": "MT",
-                  "fullName": "Montana",
-                  "id": "MT",
-                },
-                Object {
-                  "displayName": "NE",
-                  "fullName": "Nebraska",
-                  "id": "NE",
-                },
-                Object {
-                  "displayName": "NV",
-                  "fullName": "Nevada",
-                  "id": "NV",
-                },
-                Object {
-                  "displayName": "NH",
-                  "fullName": "New Hampshire",
-                  "id": "NH",
-                },
-                Object {
-                  "displayName": "NJ",
-                  "fullName": "New Jersey",
-                  "id": "NJ",
-                },
-                Object {
-                  "displayName": "NM",
-                  "fullName": "New Mexico",
-                  "id": "NM",
-                },
-                Object {
-                  "displayName": "NY",
-                  "fullName": "New York",
-                  "id": "NY",
-                },
-                Object {
-                  "displayName": "NC",
-                  "fullName": "North Carolina",
-                  "id": "NC",
-                },
-                Object {
-                  "displayName": "ND",
-                  "fullName": "North Dakota",
-                  "id": "ND",
-                },
-                Object {
-                  "displayName": "MP",
-                  "fullName": "Northern Marianas",
-                  "id": "MP",
-                },
-                Object {
-                  "displayName": "OH",
-                  "fullName": "Ohio",
-                  "id": "OH",
-                },
-                Object {
-                  "displayName": "OK",
-                  "fullName": "Oklahoma",
-                  "id": "OK",
-                },
-                Object {
-                  "displayName": "OR",
-                  "fullName": "Oregon",
-                  "id": "OR",
-                },
-                Object {
-                  "displayName": "PW",
-                  "fullName": "Palau",
-                  "id": "PW",
-                },
-                Object {
-                  "displayName": "PA",
-                  "fullName": "Pennsylvania",
-                  "id": "PA",
-                },
-                Object {
-                  "displayName": "PR",
-                  "fullName": "Puerto Rico",
-                  "id": "PR",
-                },
-                Object {
-                  "displayName": "RI",
-                  "fullName": "Rhode Island",
-                  "id": "RI",
-                },
-                Object {
-                  "displayName": "SC",
-                  "fullName": "South Carolina",
-                  "id": "SC",
-                },
-                Object {
-                  "displayName": "SD",
-                  "fullName": "South Dakota",
-                  "id": "SD",
-                },
-                Object {
-                  "displayName": "TN",
-                  "fullName": "Tennessee",
-                  "id": "TN",
-                },
-                Object {
-                  "displayName": "TX",
-                  "fullName": "Texas",
-                  "id": "TX",
-                },
-                Object {
-                  "displayName": "UT",
-                  "fullName": "Utah",
-                  "id": "UT",
-                },
-                Object {
-                  "displayName": "VT",
-                  "fullName": "Vermont",
-                  "id": "VT",
-                },
-                Object {
-                  "displayName": "VI",
-                  "fullName": "Virginia",
-                  "id": "VI",
-                },
-                Object {
-                  "displayName": "VA",
-                  "fullName": "Virgin Islands",
-                  "id": "VA",
-                },
-                Object {
-                  "displayName": "WA",
-                  "fullName": "Washington",
-                  "id": "WA",
-                },
-                Object {
-                  "displayName": "WV",
-                  "fullName": "West Virginia",
-                  "id": "WV",
-                },
-                Object {
-                  "displayName": "WI",
-                  "fullName": "Wisconsin",
-                  "id": "WI",
-                },
-                Object {
-                  "displayName": "WY",
-                  "fullName": "Wyoming",
-                  "id": "WY",
+                  "displayName": "YT",
+                  "fullName": "Yukon",
+                  "id": "YT",
                 },
               ]
             }
@@ -1562,7 +1321,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
               }
             }
             dataLocator="plcc_zip_code"
-            enableSuccessCheck={false}
             id="zipCode"
             maxLength={6}
             name="noCountryZip"
@@ -1744,7 +1502,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         dataLocator="plc_mobile_no"
-        enableSuccessCheck={false}
         id="phoneNumber"
         name="phoneNumber"
         placeholder="mobile phone"
@@ -1919,7 +1676,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         dataLocator="plcc_email"
-        enableSuccessCheck={false}
         id="emailAddress"
         name="emailAddress"
         placeholder="email"
@@ -2099,7 +1855,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         dataLocator="plcc_alt_mobile_no"
-        enableSuccessCheck={false}
         id="alternatePhone"
         name="alternatePhone"
         placeholder="alternate phone"
@@ -2121,5 +1876,5 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   >
     min phone
   </Styled(BodyCopy)>
-</Fragment>
+</styled.div>
 `;

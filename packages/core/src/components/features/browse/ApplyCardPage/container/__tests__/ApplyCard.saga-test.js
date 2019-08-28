@@ -8,7 +8,7 @@ import {
 import constants from '../../RewardsCard.constants';
 
 describe('Apply Instant credit card saga', () => {
-  it('should dispatch addToCartEcomGen action for success resposnse', () => {
+  it('should dispatch fetchModuleX action for success resposnse', () => {
     const payload = [
       {
         name: 'header',
@@ -39,11 +39,11 @@ describe('Apply Instant credit card saga', () => {
     expect(putDescriptor).not.toBe(null);
   });
 
-  it('should dispatch addToCartEcomGen action for success resposnse', () => {
+  it('should dispatch applycard action for success resposnse', () => {
     const applyCardGen = fetchModuleX({});
     applyCardGen.next();
     const putDescriptor = applyCardGen.next().value;
-    expect(putDescriptor).toBe(null);
+    expect(putDescriptor).not.toBe(null);
   });
 
   const payload = {

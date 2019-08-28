@@ -47,6 +47,6 @@ export const submitInstantCardApplication = payload => {
 export const obtainInstantCardApplication = payload => {
   return {
     payload,
-    type: constants.RESPONSE_SEND_INSTANT_CARD_APPLICATION,
+    type: constants.RESPONSE_INSTANT_CARD_APPLICATION,
   };
 };

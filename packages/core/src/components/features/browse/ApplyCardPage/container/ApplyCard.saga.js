@@ -14,16 +14,8 @@ import { validateReduxCache } from '../../../../../utils/cache.util';
 
 export function* fetchModuleX({ payload = '' }) {
   try {
-    const plccContent = {};
     const result = yield call(getModuleX, payload);
-    payload.map(item => {
-      plccContent[item.name] =
-        result.data[item.name] &&
-        result.data[item.name].composites &&
-        result.data[item.name].composites.richTextList[0].text;
-      return true;
-    });
-    yield put(setModuleX(plccContent));
+    yield put(setModuleX(result));
   } catch (err) {
     yield null;
   }

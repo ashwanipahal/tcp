@@ -1,6 +1,7 @@
 import React from 'react';
 import { BodyCopy, Col, RichText } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
+import ReviewCCInformationWrapper from './styles/RewardsCreditCardInformation.style';
 
 /**
  * @const ReviewCreditCardInformation
@@ -10,7 +11,7 @@ import PropTypes from 'prop-types';
  */
 const ReviewCreditCardInformation = ({ creditCardHeader = '' }) => {
   return (
-    <React.Fragment>
+    <ReviewCCInformationWrapper>
       <Col
         className="rewards_card_logo"
         key="container_header_image"
@@ -21,11 +22,11 @@ const ReviewCreditCardInformation = ({ creditCardHeader = '' }) => {
       <Col
         className="rewards_card_instruction"
         key="container_header_text_plcc"
-        colSize={{ large: 8, medium: 6, small: 6 }}
+        colSize={{ large: 8, medium: 5, small: 6 }}
       >
         <RichText richTextHtml={creditCardHeader} dataLocator="creditCardHeader" />
       </Col>
-    </React.Fragment>
+    </ReviewCCInformationWrapper>
   );
 };
 

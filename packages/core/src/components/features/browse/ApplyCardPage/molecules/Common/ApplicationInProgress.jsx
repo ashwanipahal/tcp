@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, BodyCopy, Button, Col, Row } from '@tcp/core/src/components/common/atoms';
+import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../common/atoms';
+import ApplicationInProgressWrapper from './styles/ApplicationInProgress.style';
 
 /**
  * @const ApplicationInProgress
@@ -11,12 +12,7 @@ import { Anchor, BodyCopy, Button, Col, Row } from '@tcp/core/src/components/com
 
 const ApplicationInProgress = ({ labels }) => {
   return (
-    <BodyCopy
-      className="underprogress_application"
-      component="div"
-      fontSize="fs16"
-      fontFamily="secondary"
-    >
+    <ApplicationInProgressWrapper>
       <BodyCopy
         fontSize="fs20"
         className="card-InProgress-header"
@@ -25,21 +21,21 @@ const ApplicationInProgress = ({ labels }) => {
       >
         {labels.plcc_form_status}
       </BodyCopy>
-      <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">
+      <BodyCopy fontSize="fs16" fontFamily="secondary">
         {labels.plcc_form_status_detail}
       </BodyCopy>
       <Row fullBleed className="submit_plcc_form">
         <Col
           ignoreGutter={{ small: true }}
           colSize={{ large: 4, medium: 4, small: 6 }}
-          className="underproress_checkout_button"
+          className="underprogress_checkout_button"
         >
           <Anchor asPath="/bag">
             <Button
               buttonVariation="fixed-width"
               fill="BLUE"
               type="submit"
-              className="underproress_checkout_button"
+              className="underprogress_checkout_button"
               data-locator="submit-plcc-btn"
             >
               {labels.plcc_form_ctc_buttom}
@@ -58,7 +54,7 @@ const ApplicationInProgress = ({ labels }) => {
               buttonVariation="fixed-width"
               fill="BLUE"
               type="submit"
-              className="underproress_continue_button"
+              className="underprogress_continue_button"
               data-locator="submit-plcc-btn"
             >
               {labels.plcc_form_continue_shopping}
@@ -66,7 +62,7 @@ const ApplicationInProgress = ({ labels }) => {
           </Anchor>
         </Col>
       </Row>
-    </BodyCopy>
+    </ApplicationInProgressWrapper>
   );
 };
 

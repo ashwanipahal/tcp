@@ -1,12 +1,13 @@
 import React from 'react';
-import { Anchor, BodyCopy, Col, Row } from '@tcp/core/src/components/common/atoms';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
-import PropTypes from 'prop-types';
+import { Anchor, BodyCopy, Col, Row } from '../../../../../common/atoms';
+import CreditCardPageHeaderWrapper from './styles/CreditCardPageHeader.style';
 
 const CreditCardPageHeader = ({ labels }) => {
   return (
-    <React.Fragment>
+    <CreditCardPageHeaderWrapper>
       <Row fullBleed>
         <Col
           className="back_button_container"
@@ -28,7 +29,6 @@ const CreditCardPageHeader = ({ labels }) => {
         >
           <BodyCopy
             component="h2"
-            fontFamily="primary"
             fontWeight="extrabold"
             className="Apply_Card_Header_Text"
             data-locator={labels.plcc_form_rewardsCardHeading}
@@ -37,7 +37,7 @@ const CreditCardPageHeader = ({ labels }) => {
           </BodyCopy>
         </Col>
       </Row>
-    </React.Fragment>
+    </CreditCardPageHeaderWrapper>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AccountInformations from '../AccountInformations';
+import AccountInformations from '../AccountInformations.view';
 
 describe('AccountInformations component', () => {
   it('should renders correctly', () => {
