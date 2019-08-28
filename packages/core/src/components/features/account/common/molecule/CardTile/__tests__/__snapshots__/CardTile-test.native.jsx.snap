@@ -438,6 +438,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
@@ -624,6 +625,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
@@ -969,6 +971,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",

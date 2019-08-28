@@ -29,6 +29,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
@@ -77,6 +78,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "id": "input",
               "keyboardType": "default",
               "label": "input",
+              "marginBottom": true,
               "meta": Object {
                 "error": "",
                 "touched": "",

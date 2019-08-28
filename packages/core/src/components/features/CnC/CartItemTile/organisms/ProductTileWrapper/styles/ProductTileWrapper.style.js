@@ -9,7 +9,7 @@ export const customStyles = css`
   img {
     height: 13px;
     width: 13px;
-    padding: 4px 7px 0 0;
+    padding: 4px 7px 0 10px;
   }
   span {
     font-weight: bold;
