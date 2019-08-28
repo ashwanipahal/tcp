@@ -31,4 +31,5 @@ export {
   isGymboree,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
 } from './utils';

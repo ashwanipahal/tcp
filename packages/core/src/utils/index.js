@@ -39,4 +39,5 @@ export {
   isCanada,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
 } from './utils';

@@ -205,6 +205,34 @@ export const formatAddress = address => ({
   phone1: address.phoneNumber,
 });
 
+/**
+ *
+ * @param {object} labelState object in which key needs to be searched
+ * @param {string} labelKey string whose value
+ * This function will return label value if labelKey is present in the object
+ * or labelKey itself if its not present in the labelState.
+ */
+export const getLabelValue = (labelState, labelKey) => {
+  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
+    return ''; // for incorrect params return empty string
+  }
+  const keyIndex = labelKey.lastIndexOf('.lbl_'); // label key may itself contain (.) so first try to break the label string into key part and hierarchy
+  let lblArray;
+  if (keyIndex > -1) {
+    lblArray = [...labelKey.substring(0, keyIndex).split('.'), labelKey.substring(keyIndex + 1)];
+  } else {
+    lblArray = labelKey.split('.');
+  }
+  const labelValue = lblArray.reduce((currentLabelState, labelFragment) => {
+    if (typeof currentLabelState === 'object' && currentLabelState[labelFragment]) {
+      return currentLabelState[labelFragment];
+    }
+    return labelKey;
+  }, labelState);
+
+  return typeof labelValue === 'string' ? labelValue : labelKey;
+};
+
 export default {
   getIconPath,
   getFlagIconPath,
@@ -220,4 +248,5 @@ export default {
   isTCP,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
 };
