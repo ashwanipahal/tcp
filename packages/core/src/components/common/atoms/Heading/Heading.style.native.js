@@ -3,7 +3,7 @@ import {
   typography as typographyStyleSystem,
   color as colorStyleSystem,
 } from '@tcp/core/styles/rwdStyleSystem';
-import { androidFontStyles } from '@tcp/core/styles/globalStyles/StyledText';
+import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
 
 function getHeadingStyle(props) {
   const {

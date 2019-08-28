@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { StyledText } from '@tcp/core/styles/globalStyles/StyledText';
+import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
+
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
