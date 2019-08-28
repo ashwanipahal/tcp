@@ -26,13 +26,22 @@ describe('AddEditPersonalInformationForm container', () => {
   it('AddEditPersonalInformationForm should call updateProfileAction with correct params', () => {
     component.instance().updateProfileInformation({
       firstName: 'test',
+      Email: 'test@gmail.com',
       lastName: 'test',
+      phoneNumber: '3427463864',
       associateId: '25347',
+      userBirthMonth: '2',
+      userBirthYear: '1999',
+      airMilesAccountNumber: '4637648'
     });
     expect(updateProfileActionSpy).toBeCalledWith({
       firstName: 'test',
+      email: 'test@gmail.com',
       lastName: 'test',
+      phone: '3427463864',
       associateId: '25347',
+      userBirthday: '2|1999',
+      airmiles: '4637648'
     });
   });
 

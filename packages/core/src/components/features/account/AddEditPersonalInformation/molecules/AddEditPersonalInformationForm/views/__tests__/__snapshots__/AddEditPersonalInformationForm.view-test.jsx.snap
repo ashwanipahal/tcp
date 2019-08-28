@@ -187,6 +187,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addEditPersonallastName"
       colSize={
         Object {
           "large": 6,
@@ -534,6 +535,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         dataLocator="addnewaddress-email"
         id="Email"
         name="Email"
+        type="email"
       />
       <Styled(BodyCopy)
         className={null}
@@ -548,6 +550,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addEditPersonalPhoneNumber"
       colSize={
         Object {
           "large": 6,
@@ -720,7 +723,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mt-XL"
+    className="elem-mt-XL addEditPersonalBirthday"
     fullBleed={true}
   >
     <Styled(Col)
@@ -752,25 +755,37 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
-          "small": 3,
+          "large": 6,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
-      <Field
-        className="field"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
-              "isStatic": false,
-              "rules": Array [
-                "
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Field
+            className="field"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-gzVnrw",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
   ",
-                "
+                    "
   position: relative;
   display: block;
   height: 70px;
@@ -778,46 +793,46 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     border-radius: 0;
     color: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     font-size: ",
-                [Function],
-                "px;
+                    [Function],
+                    "px;
     margin: 0;
     margin-bottom: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     outline: 0;
     padding: ",
-                "26px",
-                " 0 ",
-                [Function],
-                ";
+                    "26px",
+                    " 0 ",
+                    [Function],
+                    ";
     width: 100%;
 
     ",
-                [Function],
-                ";
+                    [Function],
+                    ";
   }
 
   .select__label {
     font-size: ",
-                [Function],
-                "px;
+                    [Function],
+                    "px;
     font-weight: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     padding: 0;
     position: absolute;
     top: 0;
@@ -827,8 +842,8 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     display: flex;
     flex-direction: row;
     padding-bottom: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
   }
 
   .warning-icon {
@@ -841,155 +856,157 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   }
 
   ",
-                [Function],
-                ";
+                    [Function],
+                    ";
 ",
-                ";
+                    ";
 ",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-gzVnrw",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="payment-expmonthdd"
+            enableSuccessCheck={false}
+            id="userBirthMonth"
+            name="userBirthMonth"
+            options={Array []}
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
           }
-        }
-        dataLocator="payment-expmonthdd"
-        enableSuccessCheck={false}
-        id="userBirthMonth"
-        name="userBirthMonth"
-        options={Array []}
-      />
+        >
+          <Field
+            className="field"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-gzVnrw",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
+    border-radius: 0;
+    color: ",
+                    [Function],
+                    ";
+    font-size: ",
+                    [Function],
+                    "px;
+    margin: 0;
+    margin-bottom: ",
+                    [Function],
+                    ";
+    outline: 0;
+    padding: ",
+                    "26px",
+                    " 0 ",
+                    [Function],
+                    ";
+    width: 100%;
+
+    ",
+                    [Function],
+                    ";
+  }
+
+  .select__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    font-weight: ",
+                    [Function],
+                    ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-gzVnrw",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="payment-expyeardd"
+            enableSuccessCheck={false}
+            id="userBirthYear"
+            name="userBirthYear"
+            options={Array []}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
-        component="div"
+        component="p"
         fontFamily="primary"
         fontSize="fs12"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 3,
-        }
-      }
-    >
-      <Field
-        className="field"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  position: relative;
-  display: block;
-  height: 70px;
-
-  .select__input {
-    appearance: none;
-    background: url(",
-                "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
-    border: 0;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-    border-radius: 0;
-    color: ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    margin: 0;
-    margin-bottom: ",
-                [Function],
-                ";
-    outline: 0;
-    padding: ",
-                "26px",
-                " 0 ",
-                [Function],
-                ";
-    width: 100%;
-
-    ",
-                [Function],
-                ";
-  }
-
-  .select__label {
-    font-size: ",
-                [Function],
-                "px;
-    font-weight: ",
-                [Function],
-                ";
-    padding: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  .SelectBox__error {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: ",
-                [Function],
-                ";
-  }
-
-  .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: 14px;
-    width: 16px;
-    margin-right: 7px;
-  }
-
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        dataLocator="payment-expyeardd"
-        enableSuccessCheck={false}
-        id="userBirthYear"
-        name="userBirthYear"
-        options={Array []}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -1012,12 +1029,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         Object {
           "large": 6,
           "medium": 4,
-          "small": 4,
-        }
-      }
-      offsetLeft={
-        Object {
-          "small": 1,
+          "small": 6,
         }
       }
     >
@@ -1127,69 +1139,59 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(BodyCopy)
+  <Styled(Row)
     className="elem-mb-LRG elem-mt-XXL"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="center"
   >
-    <Styled(Row)>
-      <Styled(Col)
-        className="AddEditPersonalInformationForm_cancel"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 2,
-            "small": 6,
-          }
+    <Styled(Col)
+      className="AddEditPersonalInformationForm_cancel"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
         }
-        offsetLeft={
-          Object {
-            "large": 3,
-            "medium": 1,
-          }
+      }
+      offsetLeft={
+        Object {
+          "large": 3,
+          "medium": 1,
         }
-      >
-        <Styled(Anchor)
-          asPath="/account/profile"
-          to="/account?id=profile"
-        >
-          <Styled(Button)
-            buttonVariation="fixed-width"
-            className="elem-mb-XS"
-            dataLocator="cancelBtn"
-            fullWidth={true}
-            type="button"
-          />
-        </Styled(Anchor)>
-      </Styled(Col)>
-      <Styled(Col)
-        className="AddEditPersonalInformationForm_update"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 2,
-            "small": 6,
-          }
-        }
+      }
+    >
+      <Styled(Anchor)
+        asPath="/account/profile"
+        to="/account?id=profile"
       >
         <Styled(Button)
           buttonVariation="fixed-width"
           className="elem-mb-XS"
-          dataLocator="UpdateBtn"
-          disabled={false}
-          fill="BLUE"
+          dataLocator="cancelBtn"
           fullWidth={true}
-          type="submit"
+          type="button"
         />
-      </Styled(Col)>
-    </Styled(Row)>
-  </Styled(BodyCopy)>
+      </Styled(Anchor)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="AddEditPersonalInformationForm_update"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mb-XS"
+        dataLocator="UpdateBtn"
+        disabled={false}
+        fill="BLUE"
+        fullWidth={true}
+        type="submit"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
 </form>
 `;
 
@@ -1201,13 +1203,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
 >
   <Styled(Notification)
     className="elem-mt-MED"
-    colSize={
-      Object {
-        "large": 12,
-        "medium": 8,
-        "small": 6,
-      }
-    }
     status="error"
   />
   <Styled(Row)
@@ -1391,6 +1386,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addEditPersonallastName"
       colSize={
         Object {
           "large": 6,
@@ -1738,6 +1734,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         dataLocator="addnewaddress-email"
         id="Email"
         name="Email"
+        type="email"
       />
       <Styled(BodyCopy)
         className={null}
@@ -1752,6 +1749,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addEditPersonalPhoneNumber"
       colSize={
         Object {
           "large": 6,
@@ -1924,7 +1922,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mt-XL"
+    className="elem-mt-XL addEditPersonalBirthday"
     fullBleed={true}
   >
     <Styled(Col)
@@ -1956,25 +1954,37 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
-          "small": 3,
+          "large": 6,
+          "medium": 4,
+          "small": 6,
         }
       }
     >
-      <Field
-        className="field"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
-              "isStatic": false,
-              "rules": Array [
-                "
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Field
+            className="field"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-gzVnrw",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
   ",
-                "
+                    "
   position: relative;
   display: block;
   height: 70px;
@@ -1982,46 +1992,46 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   .select__input {
     appearance: none;
     background: url(",
-                "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     border-radius: 0;
     color: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     font-size: ",
-                [Function],
-                "px;
+                    [Function],
+                    "px;
     margin: 0;
     margin-bottom: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     outline: 0;
     padding: ",
-                "26px",
-                " 0 ",
-                [Function],
-                ";
+                    "26px",
+                    " 0 ",
+                    [Function],
+                    ";
     width: 100%;
 
     ",
-                [Function],
-                ";
+                    [Function],
+                    ";
   }
 
   .select__label {
     font-size: ",
-                [Function],
-                "px;
+                    [Function],
+                    "px;
     font-weight: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
     padding: 0;
     position: absolute;
     top: 0;
@@ -2031,8 +2041,8 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     display: flex;
     flex-direction: row;
     padding-bottom: ",
-                [Function],
-                ";
+                    [Function],
+                    ";
   }
 
   .warning-icon {
@@ -2045,153 +2055,155 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   }
 
   ",
-                [Function],
-                ";
+                    [Function],
+                    ";
 ",
-                ";
+                    ";
 ",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-gzVnrw",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="payment-expmonthdd"
+            enableSuccessCheck={false}
+            id="userBirthMonth"
+            name="userBirthMonth"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 3,
+            }
           }
-        }
-        dataLocator="payment-expmonthdd"
-        enableSuccessCheck={false}
-        id="userBirthMonth"
-        name="userBirthMonth"
-      />
+        >
+          <Field
+            className="field"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-gzVnrw",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+  ",
+                    "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(",
+                    "/static/images/carrot-small-down.png",
+                    ") no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
+    border-radius: 0;
+    color: ",
+                    [Function],
+                    ";
+    font-size: ",
+                    [Function],
+                    "px;
+    margin: 0;
+    margin-bottom: ",
+                    [Function],
+                    ";
+    outline: 0;
+    padding: ",
+                    "26px",
+                    " 0 ",
+                    [Function],
+                    ";
+    width: 100%;
+
+    ",
+                    [Function],
+                    ";
+  }
+
+  .select__label {
+    font-size: ",
+                    [Function],
+                    "px;
+    font-weight: ",
+                    [Function],
+                    ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                    [Function],
+                    ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
+  ",
+                    [Function],
+                    ";
+",
+                    ";
+",
+                  ],
+                },
+                "displayName": "Styled(SelectBox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-gzVnrw",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            dataLocator="payment-expyeardd"
+            enableSuccessCheck={false}
+            id="userBirthYear"
+            name="userBirthYear"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
-        component="div"
+        component="p"
         fontFamily="primary"
         fontSize="fs12"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 3,
-        }
-      }
-    >
-      <Field
-        className="field"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  position: relative;
-  display: block;
-  height: 70px;
-
-  .select__input {
-    appearance: none;
-    background: url(",
-                "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
-    border: 0;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-    border-radius: 0;
-    color: ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    margin: 0;
-    margin-bottom: ",
-                [Function],
-                ";
-    outline: 0;
-    padding: ",
-                "26px",
-                " 0 ",
-                [Function],
-                ";
-    width: 100%;
-
-    ",
-                [Function],
-                ";
-  }
-
-  .select__label {
-    font-size: ",
-                [Function],
-                "px;
-    font-weight: ",
-                [Function],
-                ";
-    padding: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  .SelectBox__error {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: ",
-                [Function],
-                ";
-  }
-
-  .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
-    background-size: contain;
-    border: none;
-    height: 14px;
-    width: 16px;
-    margin-right: 7px;
-  }
-
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        dataLocator="payment-expyeardd"
-        enableSuccessCheck={false}
-        id="userBirthYear"
-        name="userBirthYear"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -2214,12 +2226,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         Object {
           "large": 6,
           "medium": 4,
-          "small": 4,
-        }
-      }
-      offsetLeft={
-        Object {
-          "small": 1,
+          "small": 6,
         }
       }
     >
@@ -2329,68 +2336,58 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(BodyCopy)
+  <Styled(Row)
     className="elem-mb-LRG elem-mt-XXL"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="center"
   >
-    <Styled(Row)>
-      <Styled(Col)
-        className="AddEditPersonalInformationForm_cancel"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 2,
-            "small": 6,
-          }
+    <Styled(Col)
+      className="AddEditPersonalInformationForm_cancel"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
         }
-        offsetLeft={
-          Object {
-            "large": 3,
-            "medium": 1,
-          }
+      }
+      offsetLeft={
+        Object {
+          "large": 3,
+          "medium": 1,
         }
-      >
-        <Styled(Anchor)
-          asPath="/account/profile"
-          to="/account?id=profile"
-        >
-          <Styled(Button)
-            buttonVariation="fixed-width"
-            className="elem-mb-XS"
-            dataLocator="cancelBtn"
-            fullWidth={true}
-            type="button"
-          />
-        </Styled(Anchor)>
-      </Styled(Col)>
-      <Styled(Col)
-        className="AddEditPersonalInformationForm_update"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 2,
-            "small": 6,
-          }
-        }
+      }
+    >
+      <Styled(Anchor)
+        asPath="/account/profile"
+        to="/account?id=profile"
       >
         <Styled(Button)
           buttonVariation="fixed-width"
           className="elem-mb-XS"
-          dataLocator="UpdateBtn"
-          disabled={false}
-          fill="BLUE"
+          dataLocator="cancelBtn"
           fullWidth={true}
-          type="submit"
+          type="button"
         />
-      </Styled(Col)>
-    </Styled(Row)>
-  </Styled(BodyCopy)>
+      </Styled(Anchor)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="AddEditPersonalInformationForm_update"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mb-XS"
+        dataLocator="UpdateBtn"
+        disabled={false}
+        fill="BLUE"
+        fullWidth={true}
+        type="submit"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
 </form>
 `;

@@ -53,7 +53,7 @@ export const AddEditPersonalInformationForm = ({
             dataLocator="addnewaddress-firstname"
           />
         </Col>
-        <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+        <Col colSize={{ small: 6, medium: 4, large: 6 }} className="addEditPersonallastName">
           <Field
             placeholder={labels.lbl_profile_personal_info_lastName}
             name="lastName"
@@ -75,7 +75,7 @@ export const AddEditPersonalInformationForm = ({
           />
           <BodyCopy fontSize="fs12">{labels.lbl_profile_email_used_login}</BodyCopy>
         </Col>
-        <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+        <Col colSize={{ small: 6, medium: 4, large: 6 }} className="addEditPersonalPhoneNumber">
           <Field
             placeholder={labels.lbl_profile_personal_info_phoneNumber}
             name="phoneNumber"
@@ -86,36 +86,40 @@ export const AddEditPersonalInformationForm = ({
           />
         </Col>
       </Row>
-      <Row fullBleed className="elem-mt-XL">
+      <Row fullBleed className="elem-mt-XL addEditPersonalBirthday">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <BodyCopy component="div" fontWeight="extrabold" fontSize="fs12">{labels.lbl_profile_personal_info_birthday}</BodyCopy>
         </Col>
       </Row>
       <Row fullBleed className="elem-mt-MED">
-        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
-          <Field
-            placeholder={labels.lbl_profile_personal_info_month}
-            name="userBirthMonth"
-            id="userBirthMonth"
-            component={SelectBox}
-            dataLocator="payment-expmonthdd"
-            options={birthMonthOptionsMap}
-            className="field"
-            enableSuccessCheck={false}
-          />
-          <BodyCopy component="div" fontSize="fs12">{labels.lbl_profile_celebration_birthday}</BodyCopy>
-        </Col>
-        <Col colSize={{ small: 3, medium: 2, large: 3 }}>
-          <Field
-            placeholder={labels.lbl_profile_personal_info_year}
-            name="userBirthYear"
-            id="userBirthYear"
-            component={SelectBox}
-            dataLocator="payment-expyeardd"
-            options={birthYearOptionsMap}
-            className="field"
-            enableSuccessCheck={false}
-          />
+        <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+          <Row fullBleed>
+            <Col colSize={{ small: 3, medium: 4, large: 6 }}>
+              <Field
+                placeholder={labels.lbl_profile_personal_info_month}
+                name="userBirthMonth"
+                id="userBirthMonth"
+                component={SelectBox}
+                dataLocator="payment-expmonthdd"
+                options={birthMonthOptionsMap}
+                className="field"
+                enableSuccessCheck={false}
+              />
+            </Col>
+            <Col colSize={{ small: 3, medium: 4, large: 6 }}>
+              <Field
+                placeholder={labels.lbl_profile_personal_info_year}
+                name="userBirthYear"
+                id="userBirthYear"
+                component={SelectBox}
+                dataLocator="payment-expyeardd"
+                options={birthYearOptionsMap}
+                className="field"
+                enableSuccessCheck={false}
+              />
+            </Col>
+          </Row>
+          <BodyCopy fontSize="fs12">{labels.lbl_profile_celebration_birthday}</BodyCopy>
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           {isCanada() && (
@@ -134,8 +138,7 @@ export const AddEditPersonalInformationForm = ({
       </Row>
       <Row fullBleed className="elem-mt-LRG">
         <Col
-          colSize={{ small: 4, medium: 4, large: 6 }}
-          offsetLeft={{ small: 1 }}
+          colSize={{ small: 6, medium: 4, large: 6 }}
           className="dropdown-text"
         >
           <Field

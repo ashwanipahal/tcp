@@ -1,5 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import constants from '../AddEditPersonalInformation.constants';
+import { getUserInfo } from '../../User/container/User.actions';
 import { updateProfileError, updateProfileSuccess } from './AddEditPersonalInformation.actions';
 
 import { UpdateProfileInfo } from '../../../../../services/abstractors/account';
@@ -7,14 +8,15 @@ import { UpdateProfileInfo } from '../../../../../services/abstractors/account';
 export function* UpdateProfile({ payload }) {
   try {
     const res = yield call(UpdateProfileInfo, payload);
-    return yield put(updateProfileError(res));
+      yield put(getUserInfo());
+      return yield put(updateProfileSuccess(res));
   } catch (err) {
-    return yield put(updateProfileSuccess(err));
+    return yield put(updateProfileError(err));
   }
 }
 
 export function* UpdateProfileSaga() {
-  yield takeLatest(constants.PROFILE_UPDATE, UpdateProfile);
+  yield takeLatest(constants.UPDATE_PROFILE, UpdateProfile);
 }
 
 export default UpdateProfileSaga;

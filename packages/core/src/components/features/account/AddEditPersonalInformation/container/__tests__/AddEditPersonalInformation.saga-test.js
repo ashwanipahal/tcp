@@ -28,7 +28,7 @@ describe('UpdateProfile saga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = UpdateProfileSaga();
       const takeLatestDescriptor = generator.next().value;
-      const expected = takeLatest(constants.PROFILE_UPDATE, UpdateProfile);
+      const expected = takeLatest(constants.UPDATE_PROFILE, UpdateProfile);
       expect(takeLatestDescriptor).toEqual(expected);
     });
   });

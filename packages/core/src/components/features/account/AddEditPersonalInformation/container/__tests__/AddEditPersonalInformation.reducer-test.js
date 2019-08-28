@@ -22,7 +22,7 @@ describe('UpdateProfile Reducer', () => {
 
   it('should return error state', () => {
     const state = UpdateProfileReducer(initialState, updateProfileError('error'));
-    expect(state.set('success')).toBeNull();
+    expect(state.get('success')).toBeNull();
     expect(state.get('error')).toBe('error');
   });
 });
