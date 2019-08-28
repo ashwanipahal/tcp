@@ -138,6 +138,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
             className="CreditCardForm__address"
             dataLocatorPrefix="payment"
             showName
+            showDefaultText={item && item.primary}
           />
         ) : (
           <Button
