@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ColorSwitch from '../views/ColorSwitch.view.native';
 
-describe('ProductAltImages component', () => {
+describe('ColorSwitch component', () => {
   const props = {
     colorsMap: [
       {
@@ -32,7 +32,7 @@ describe('ProductAltImages component', () => {
     },
     setImageIndex: () => {},
   };
-  it('should renders ListItem correctly', () => {
+  it('should renders ColorSwitch correctly', () => {
     const component = shallow(<ColorSwitch {...props} />);
     expect(component).toMatchSnapshot();
   });

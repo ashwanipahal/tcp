@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ListItem from '../views/ProductListItem.view.native';
+import ProductListItem from '../views/ProductListItem.view.native';
 
-describe('ProductAltImages component', () => {
+describe('ProductListItem component', () => {
   const props = {
     item: {
       colorsMap: [],
@@ -19,8 +19,8 @@ describe('ProductAltImages component', () => {
     onAddToBag: () => {},
     onFavorite: () => {},
   };
-  it('should renders ListItem correctly', () => {
-    const component = shallow(<ListItem {...props} />);
+  it('should renders ProductListItem correctly', () => {
+    const component = shallow(<ProductListItem {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

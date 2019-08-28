@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductAltImages component should renders ListItem correctly 1`] = `
+exports[`CustomImage component should renders CustomImage correctly 1`] = `
 <StyledNativeComponent
   forwardedComponent={
     Object {

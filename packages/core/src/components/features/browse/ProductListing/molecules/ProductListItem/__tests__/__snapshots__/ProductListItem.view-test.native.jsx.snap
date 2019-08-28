@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductAltImages component should renders ListItem correctly 1`] = `
+exports[`ProductListItem component should renders ProductListItem correctly 1`] = `
 <StyledNativeComponent
   badge1=""
   badge2=""

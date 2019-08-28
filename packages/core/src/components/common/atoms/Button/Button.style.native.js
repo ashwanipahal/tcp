@@ -33,7 +33,7 @@ const style = css`
  font-size: ${props.theme.fonts.fontSize.button.size}px;
  font-weight: ${props.theme.typography.fontWeights.black};
  border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
- padding: 12px 20px;
+ padding: 12px 32px;
  `
       : ''};
 

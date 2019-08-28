@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductAltImages component should renders ListItem correctly 1`] = `
+exports[`ColorSwitch component should renders ColorSwitch correctly 1`] = `
 <StyledNativeComponent
   colorsMap={
     Array [

@@ -65,7 +65,6 @@ const ListItem = props => {
           color="white"
           fill="BLUE"
           type="submit"
-          size={12}
           buttonVariation="variable-width"
           data-locator=""
           text="ADD TO BAG"
