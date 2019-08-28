@@ -65,6 +65,7 @@ export class CheckoutContainer extends React.Component<Props> {
       cartOrderItems,
       orderHasShipping,
     } = this.props;
+
     return (
       <CheckoutPage
         initialValues={initialValues}
