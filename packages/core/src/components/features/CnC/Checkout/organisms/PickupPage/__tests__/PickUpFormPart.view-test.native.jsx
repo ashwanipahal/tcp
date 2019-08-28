@@ -51,7 +51,7 @@ describe('PickUpFormPartVanilla component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should renders correctly props with state update ', () => {
+  it('Native should renders correctly props with state update ', () => {
     const props = {
       initialValues: {},
       pickUpLabels: {},
