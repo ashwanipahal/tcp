@@ -177,7 +177,7 @@ const renderCTAList = (ctxButton, navigation, locator) => {
  */
 const renderItemImageCTAList = (item, navigation, locator, color) => {
   const style = { borderRadius: 60 / 2 };
-  const bodycopyStyle = { marginTop: 20 };
+  const bodycopyStyle = { marginTop: 20, width: 75 };
   const {
     item: { image, button },
     index,
@@ -197,6 +197,7 @@ const renderItemImageCTAList = (item, navigation, locator, color) => {
           fontWeight="extrabold"
           letterSpacing="black"
           text={button.text}
+          textAlign="center"
           style={bodycopyStyle}
         />
       </DivImageContainer>
