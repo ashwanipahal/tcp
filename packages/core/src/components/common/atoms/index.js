@@ -11,6 +11,7 @@ import Heading from './Heading';
 import BodyCopy from './BodyCopy';
 import SelectBox from './Select';
 import LabeledRadioButton from './LabeledRadioButton';
+import TextItems from './TextItems';
 import InputCheckBox from './InputCheckbox';
 
 export {
@@ -28,4 +29,5 @@ export {
   BodyCopy,
   SelectBox,
   LabeledRadioButton,
+  TextItems,
 };

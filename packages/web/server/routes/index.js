@@ -48,7 +48,7 @@ const RoutesMap = [
     resolver: '/gallery',
   },
   {
-    path: '/checkout/:section?',
+    path: '/checkout/:section',
     resolver: '/Checkout',
     params: ['section'],
   },

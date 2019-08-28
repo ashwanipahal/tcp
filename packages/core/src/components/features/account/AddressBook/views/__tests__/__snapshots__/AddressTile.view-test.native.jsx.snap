@@ -38,6 +38,7 @@ exports[`AddressTile component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
@@ -51,6 +52,7 @@ exports[`AddressTile component should renders correctly 1`] = `
       />
     </Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       color="gray.900"
       customStyle={Object {}}

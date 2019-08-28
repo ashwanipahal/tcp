@@ -137,6 +137,16 @@ function legacyPasswordValidator(value) {
   return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
 }
 
+function userDateOfBirthValidator(value, param, linkedPropsValues, linkedFieldsValue) {
+  if (
+    (value !== 'MM' && linkedFieldsValue && linkedFieldsValue[0] === 'YYYY') ||
+    (value === 'MM' && linkedFieldsValue && linkedFieldsValue[0] !== 'YYYY')
+  ) {
+    return false;
+  }
+  return true;
+}
+
 function alphanumericValidator(value) {
   return !value ? true : /^[0-9A-Za-z]{12}$/.test(value);
 }
@@ -173,6 +183,7 @@ const validatorMethods = {
   equalTo: equalToValidator,
   legacyPassword: legacyPasswordValidator,
   email: emailValidator,
+  userDateOfBirth: userDateOfBirthValidator,
   alphanumeric: alphanumericValidator,
   ssn: ssnValidator,
   dob: dobValidator,
