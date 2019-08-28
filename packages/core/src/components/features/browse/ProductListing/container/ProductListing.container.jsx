@@ -14,6 +14,7 @@ import {
   getLabelsProductListing,
   getLongDescription,
 } from './ProductListing.selectors';
+import submitProductListingFiltersForm from './ProductLisingSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -37,6 +38,7 @@ class ProductListingContainer extends React.PureComponent {
       labels,
       labelsFilter,
       categoryId,
+      onSubmit,
       ...otherProps
     } = this.props;
     return (
@@ -53,6 +55,7 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         labelsFilter={labelsFilter}
         labels={labels}
+        onSubmit={onSubmit}
         {...otherProps}
       />
     );
@@ -90,6 +93,7 @@ function mapStateToProps(state) {
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
     isPlcc: isPlccUser(state),
+    onSubmit: submitProductListingFiltersForm,
   };
 }
 

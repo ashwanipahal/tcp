@@ -27,6 +27,7 @@ const ProductListView = ({
   labels,
   labelsFilter,
   categoryId,
+  onSubmit,
   ...otherProps
 }) => {
   return (
@@ -59,6 +60,7 @@ const ProductListView = ({
                 initialValues={initialValues}
                 filtersLength={filtersLength}
                 labels={labelsFilter}
+                onSubmit={onSubmit}
               />
             </div>
           </Col>

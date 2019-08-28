@@ -130,6 +130,7 @@ class ProductListingFiltersForm extends React.Component {
 
   handleSubmitOnChange = () => {
     if (this.props.submitting) return;
+    
     this.filterRef.forEach(filter => {
       if (filter.filterRefType !== 'auxdescription_uFilter') filter.closeMenu();
     });
@@ -298,7 +299,7 @@ class ProductListingFiltersForm extends React.Component {
           </div>
         </form>
         <form>
-          <SortSelector isMobile={false} sortSelectOptions={getSortCustomOptionsMap(config)} />
+          <SortSelector isMobile={false} sortSelectOptions={getSortCustomOptionsMap(config)} onChange={handleSubmit(this.handleSubmitOnChange)} />
         </form>
         <ProductListingMobileFiltersForm
           totalProductsCount={totalProductsCount}
