@@ -9709,6 +9709,11 @@ lodash.ismatch@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.ismatch/-/lodash.ismatch-4.4.0.tgz#756cb5150ca3ba6f11085a78849645f188f85f37"
   integrity sha1-dWy1FQyjum8RCFp4hJZF8Yj4Xzc=
 
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
+
 lodash.merge@4.6.1:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
@@ -10942,6 +10947,11 @@ next-redux-wrapper@^3.0.0-alpha.2:
   version "3.0.0-alpha.2"
   resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-3.0.0-alpha.2.tgz#ccbcd362e9998a9f582abcc8bfad665686d09cc4"
   integrity sha512-mObX94qAq/1Wno2RF5pHGaH9ZnZ6+1nvjyC7KRRCfrD4AE1KtbavVAHZS48UkPXf25VwTZq98XjVC1qP1CYLTA==
+
+next-seo@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-2.0.0.tgz#478ea9ac5a6f7b331b58f9604a577bcccbd4ba43"
+  integrity sha512-VUkgKtnBEugWIjZTHLBRO/EI9LCqPM55qCuYgP1OBvSPwXKReG27g9k5iEHaFymoTjdyhQFMUE8GVHdbAfd2eA==
 
 next-server@8.0.3:
   version "8.0.3"
@@ -12711,6 +12721,13 @@ react-dom@latest:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
+react-dotdotdot@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-dotdotdot/-/react-dotdotdot-1.3.1.tgz#b94324bf66cdb70e4acffe5460e4480a91135e50"
+  integrity sha512-ImqoKTD4ZdyfF/h7jdPCZur01QlZxx3A9/gZSf9mbvseNZwVTvd+dPwi/hg1UTtP+30luy2d5j0KG+XEfdBPLQ==
+  dependencies:
+    object.pick "^1.3.0"
+
 react-error-overlay@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
@@ -13303,6 +13320,13 @@ redux-immutable@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
   integrity sha1-Ohoy32Y2ZGK2NpHw4dw15HK7yfM=
+
+redux-mock-store@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.5.3.tgz#1f10528949b7ce8056c2532624f7cafa98576c6d"
+  integrity sha512-ryhkkb/4D4CUGpAV2ln1GOY/uh51aczjcRz9k2L2bPx/Xja3c5pSGJJPyR25GNVRXtKIExScdAgFdiXp68GmJA==
+  dependencies:
+    lodash.isplainobject "^4.0.6"
 
 redux-persist@^4.5.0:
   version "4.10.2"
