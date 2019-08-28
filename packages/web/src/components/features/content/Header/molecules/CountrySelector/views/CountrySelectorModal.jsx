@@ -44,11 +44,18 @@ class CountrySelectorModal extends React.Component {
   };
 
   toggleDisable = () => {
-    const { updatedCountry, updatedCurrency } = this.props;
+    const {
+      updatedCountry,
+      updatedCurrency,
+      initialValues: { country, currency },
+    } = this.props;
+
     const { us, ca } = sites;
     return (
       (updatedCountry === us.countryCode && updatedCurrency === us.currencyCode) ||
-      (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode)
+      (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode) ||
+      (country === us.countryCode && currency === us.currencyCode) ||
+      (country === ca.countryCode && currency === ca.currencyCode)
     );
   };
 
@@ -187,6 +194,7 @@ CountrySelectorModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
   languages: PropTypes.shape({}).isRequired,
   updateCountry: PropTypes.func.isRequired,
   updateLanguage: PropTypes.func.isRequired,
