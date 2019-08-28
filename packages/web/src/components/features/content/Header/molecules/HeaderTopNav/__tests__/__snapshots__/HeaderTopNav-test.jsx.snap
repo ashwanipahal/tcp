@@ -135,22 +135,21 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
         mobile={false}
       />
     </div>
-    <Styled(BodyCopy)
+    <div
       className="header-topnav__track-order"
-      color="text.primary"
-      component="p"
-      data-locator="track_order_header"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      id="trackOrder"
-      letterSpacing="normal"
-      lineHeight="normal"
-      onClick={[Function]}
-      textAlign="right"
     >
-      Track order
-    </Styled(BodyCopy)>
+      <Connect(Styled(CountrySelector)) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="track-order"
+        dataLocator="track_order_header"
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        id="trackOrder"
+        onClick={[Function]}
+        to="/#"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -290,22 +289,21 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
         mobile={false}
       />
     </div>
-    <Styled(BodyCopy)
+    <div
       className="header-topnav__track-order"
-      color="text.primary"
-      component="p"
-      data-locator="track_order_header"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      id="trackOrder"
-      letterSpacing="normal"
-      lineHeight="normal"
-      onClick={[Function]}
-      textAlign="right"
     >
-      Track order
-    </Styled(BodyCopy)>
+      <Connect(Styled(CountrySelector)) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="track-order"
+        dataLocator="track_order_header"
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        id="trackOrder"
+        onClick={[Function]}
+        to="/#"
+      />
+    </div>
   </div>
 </div>
 `;

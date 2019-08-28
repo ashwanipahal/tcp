@@ -72,7 +72,7 @@ export default function CheckoutReducer(state = initialState, action) {
     // case 'CHECKOUT_VALUES_SET_GIFT_WRAP':
     //   return merge(orderValues, { giftWrap: action.giftWrap });
     case CheckoutConstants.CHECKOUT_VALUES_SET_SMS_UPDATES:
-      return checkout.setIn(['values', 'smsInfo', 'numberForUpdates'], action.phoneNumber);
+      return checkout.setIn(['values', 'smsInfo'], { numberForUpdates: action.phoneNumber });
     // case 'CHECKOUT_VALUES_SET_SMS_MARKETING':
     //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':

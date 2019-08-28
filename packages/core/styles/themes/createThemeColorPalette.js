@@ -22,6 +22,7 @@ function createThemeColorPalette(colors = {}) {
       mpr: orange[800],
       mprLight: orange[100],
       mprPrimary: orange[300],
+      noMprPlcc: gray[1000],
     },
   } = colors;
 

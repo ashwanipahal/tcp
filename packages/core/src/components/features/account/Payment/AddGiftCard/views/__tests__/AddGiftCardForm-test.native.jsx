@@ -9,12 +9,22 @@ describe('Add gift card form component', () => {
       common: {},
     },
     change: jest.fn(),
-    handleSubmit: jest.fn(),
   };
 
   it('should render component correctly', () => {
     const component = shallow(<AddGiftCardFormVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('simulate add gift card button ', () => {
+    const handleSubmit = jest.fn();
+    const component = shallow(<AddGiftCardFormVanilla {...props} handleSubmit={handleSubmit} />);
+
+    component
+      .find('Styled(CustomButton)')
+      .at(0)
+      .simulate('press');
+    expect(handleSubmit).toHaveBeenCalledTimes(1);
   });
 
   it('render error message', () => {

@@ -78,6 +78,20 @@ const getAddessLines = ({ address, customStyle }) => {
     ));
 };
 
+const getNameFromAddress = (address, customStyle, showDefaultText) => {
+  const name = `${address.firstName} ${address.lastName} ${showDefaultText ? '(Default)' : ''}`;
+  return (
+    <BodyCopy
+      fontSize="fs16"
+      mobilefontFamily={['secondary']}
+      fontWeight="semibold"
+      text={name}
+      color="gray.900"
+      {...customStyle}
+    />
+  );
+};
+
 /**
  * @function Address The address component will render an address
  * that is constructed from the address prop passed.
@@ -92,19 +106,11 @@ const Address = ({
   showCountry,
   customStyle,
   showName,
+  showDefaultText,
 }: Props) =>
   address && (
     <View>
-      {showName && (
-        <BodyCopy
-          fontSize="fs16"
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
-          text={`${address.firstName} ${address.lastName}`}
-          color="gray.900"
-          {...customStyle}
-        />
-      )}
+      {showName && getNameFromAddress(address, customStyle, showDefaultText)}
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix, customStyle })
         : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle })}
@@ -146,6 +152,7 @@ Address.defaultProps = {
   showCountry: true,
   showName: true,
   customStyle: {},
+  showDefaultText: false,
 };
 
 export default Address;

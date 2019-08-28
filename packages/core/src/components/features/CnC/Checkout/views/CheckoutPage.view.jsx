@@ -4,8 +4,25 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
+import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
+import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
+  componentDidUpdate() {
+    const { router, cartOrderItems } = this.props;
+    const currentStage = router.query.section;
+
+    const availableStages = CheckoutProgressUtils.getAvailableStages(cartOrderItems);
+
+    let requestedStage = '';
+    if (availableStages.length > 3) {
+      requestedStage = CHECKOUT_STAGES.PICKUP;
+    } else {
+      requestedStage = CHECKOUT_STAGES.SHIPPING;
+    }
+    CheckoutProgressUtils.routeToStage(requestedStage, cartOrderItems, false, currentStage);
+  }
+
   onPickUpSubmit = data => {
     const { onPickupSubmit } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
@@ -50,11 +67,21 @@ class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
       loadShipmentMethods,
       // onPickupSubmit,
+      orderHasShipping,
     } = this.props;
-    const currentSection = router.query.section || router.query.subSection;
+
+    const section = router.query.section || router.query.subSection;
+    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const isFormLoad = !!(
+      isGuest ||
+      (pickupInitialValues &&
+        pickupInitialValues.pickUpContact &&
+        pickupInitialValues.pickUpContact.firstName)
+    );
+
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && (
+        {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
             isMobile={isMobile}
@@ -67,6 +94,7 @@ class CheckoutPage extends React.PureComponent {
             isAlternateUpdateChecked={isAlternateUpdateChecked}
             pickUpLabels={pickUpLabels}
             smsSignUpLabels={smsSignUpLabels}
+            orderHasShipping={orderHasShipping}
             onSubmit={this.onPickUpSubmit}
             navigation={navigation}
           />
@@ -86,7 +114,7 @@ class CheckoutPage extends React.PureComponent {
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} />;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop />;
   }
 }
 
@@ -109,8 +137,9 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
-  // onPickupSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
+  orderHasShipping: PropTypes.bool.isRequired,
 };
 
 export default withRouter(CheckoutPage);

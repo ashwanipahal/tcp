@@ -14,6 +14,8 @@ class CreateAccounPage extends React.Component {
     isIAgreeChecked: PropTypes.bool,
     onRequestClose: PropTypes.func,
     error: PropTypes.string,
+    showForgotPasswordForm: PropTypes.func,
+    showLogin: PropTypes.func,
   };
 
   static defaultProps = {
@@ -21,6 +23,8 @@ class CreateAccounPage extends React.Component {
     labels: PropTypes.shape({}),
     isIAgreeChecked: false,
     onRequestClose: () => {},
+    showForgotPasswordForm: () => {},
+    showLogin: () => {},
     error: {},
   };
 
@@ -46,12 +50,23 @@ class CreateAccounPage extends React.Component {
   }
 
   render() {
-    const { labels, isIAgreeChecked, onRequestClose, error } = this.props;
+    const {
+      labels,
+      isIAgreeChecked,
+      onRequestClose,
+      error,
+      showForgotPasswordForm,
+      showLogin,
+    } = this.props;
     const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
       <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
         <View>
-          <CreateAccountTopSection labels={labels} />
+          <CreateAccountTopSection
+            showForgotPasswordForm={showForgotPasswordForm}
+            labels={labels}
+            showLogin={showLogin}
+          />
           {!!error && (
             <ErrorWrapper>
               <BodyCopy

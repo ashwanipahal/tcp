@@ -23,7 +23,6 @@ const ShippingForm = ({
   shippingLabels,
   smsSignUpLabels,
   selectedShipmentId,
-  checkPOBoxAddress,
   addressPhoneNo,
   emailSignUpLabels,
   isGuest,
@@ -54,7 +53,6 @@ const ShippingForm = ({
               formSection="address"
               variation="secondary"
               dispatch={dispatch}
-              checkPOBoxAddress={checkPOBoxAddress}
               addressPhoneNo={addressPhoneNo}
               loadShipmentMethods={loadShipmentMethods}
             />
@@ -71,6 +69,7 @@ const ShippingForm = ({
               isOrderUpdateChecked={isOrderUpdateChecked}
               dispatch={dispatch}
               borderBottom
+              addressPhoneNo={addressPhoneNo}
             />
           </FormSection>
         )}
@@ -131,8 +130,9 @@ const ShippingForm = ({
           </div>
         </FormSection>
         <CheckoutFooter
-          nextButtonText={`${shippingLabels.nextText}: ${shippingLabels.billingText}`}
-          backLinkText={`${shippingLabels.returnTo} ${shippingLabels.backLinkText}`}
+          hideBackLink={!!orderHasPickUp}
+          nextButtonText={shippingLabels.billingText}
+          backLinkText={shippingLabels.backLinkText}
         />
       </form>
     </>
@@ -148,7 +148,6 @@ ShippingForm.propTypes = {
   shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
-  checkPOBoxAddress: PropTypes.func,
   addressPhoneNo: PropTypes.number,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
@@ -162,7 +161,6 @@ ShippingForm.defaultProps = {
   className: '',
   isOrderUpdateChecked: false,
   selectedShipmentId: null,
-  checkPOBoxAddress: () => {},
   addressPhoneNo: null,
   isGuest: true,
   isUsSite: true,

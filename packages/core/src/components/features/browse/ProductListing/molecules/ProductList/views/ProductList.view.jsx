@@ -39,11 +39,12 @@ const ProductList = props => {
     siblingProperties,
     loadedProductCount,
     labels,
+    isPlcc,
   } = props;
   let gridIndex = 0;
 
   return (
-    <div className={className}>
+    <ul className={className}>
       {products.map((item, index) => {
         const isEvenElement = gridIndex % 2;
         if (typeof item === 'string') {
@@ -73,7 +74,7 @@ const ProductList = props => {
               onProductCardHover={onProductCardHover}
               isBopisEnabledForClearance={isBopisEnabledForClearance}
               isCanada={false}
-              isPlcc={false}
+              isPlcc={isPlcc}
               isPLPShowPickupCTA={false}
               isOnModelImgDisplay={false}
               isBossEnabled
@@ -93,7 +94,7 @@ const ProductList = props => {
           </div>
         );
       })}
-    </div>
+    </ul>
   );
 };
 
@@ -126,6 +127,7 @@ ProductList.propTypes = {
   }),
   loadedProductCount: PropTypes.number.isRequired,
   labels: PropTypes.shape().isRequired,
+  isPlcc: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -148,6 +150,7 @@ ProductList.defaultProps = {
     promotionalMessage: '',
     promotionalPLCCMessage: '',
   },
+  isPlcc: false,
 };
 
 export default withStyles(ProductList, ProductListStyle);

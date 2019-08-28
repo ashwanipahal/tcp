@@ -7,6 +7,13 @@ import CHECKOUT_SELECTORS, {
   getPickupAltValues,
 } from '../container/Checkout.selector';
 
+import { isMobileApp, getViewportInfo } from '../../../../../utils';
+
+jest.mock('../../../../../utils', () => ({
+  isMobileApp: jest.fn(),
+  getViewportInfo: jest.fn(),
+}));
+
 describe('Checkout Selectors', () => {
   it('#isGuest should return boolean', () => {
     const UserState = fromJS({
@@ -87,15 +94,18 @@ describe('Checkout Selectors', () => {
   });
 
   it('#getIsMobile', () => {
+    isMobileApp.mockImplementation(() => false);
+    getViewportInfo.mockImplementation(() => {
+      return {
+        isMobile: false,
+      };
+    });
     expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(false);
   });
 
-  it('#getCurrentSiteId', () => {
-    expect(CHECKOUT_SELECTORS.getCurrentSiteId()).toEqual(undefined);
-  });
-
-  it('#getIsSmsUpdatesEnabled', () => {
-    expect(CHECKOUT_SELECTORS.getIsSmsUpdatesEnabled()).toEqual(true);
+  it('#getIsMobile if isMobileApp true', () => {
+    isMobileApp.mockImplementation(() => true);
+    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(true);
   });
 
   it('#getPickupAltValues', () => {

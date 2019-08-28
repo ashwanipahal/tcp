@@ -28,7 +28,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-jTzLTM",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": true,
                   "rules": Array [
                     "
@@ -46,7 +46,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
                 "displayName": "Styled(ColorSelectorDropDown)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-jTzLTM",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -64,19 +64,21 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             options={
               Immutable.List [
                 Object {
-                  "content": <span>
+                  "content": <React.Fragment>
                     <img
                       alt=""
                       src="https://test4.childrensplace.comundefined"
                     />
-                  </span>,
-                  "title": <span>
+                    <span />
+                  </React.Fragment>,
+                  "title": <React.Fragment>
                     <img
                       alt=""
                       className="selected-color-image"
                       src="https://test4.childrensplace.comundefined"
                     />
-                  </span>,
+                    <span />
+                  </React.Fragment>,
                   "value": undefined,
                 },
               ]

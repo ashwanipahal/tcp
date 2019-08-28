@@ -7,10 +7,10 @@ import endpoints from '../../../endpoints';
  * @returns {object} error object with appropirate error message
  */
 const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw new Error(err.response.body.errors[0].errorMessage);
+  if (err && err.errorResponse && err.errorResponse.errorMessage) {
+    throw new Error(err.errorResponse.errorMessage);
   }
-  throw new Error('Oops... There was an issue, please try again.');
+  throw new Error('genericError');
 };
 
 /**
@@ -23,8 +23,6 @@ export const trackOrderApi = payload => {
     webService: endpoints.orderLookUp,
     header: {
       isRest: true,
-    },
-    body: {
       orderId: payload.orderNumber,
       emailId: payload.emailAddress,
     },

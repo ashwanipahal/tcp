@@ -118,4 +118,67 @@ describe('validator methods', () => {
       expect(validatorMethods.stateRequired('', null, null, ['US'])).toBeFalsy();
     });
   });
+
+  describe('alphanumericValidator', () => {
+    it('should return true if nothing is provided in value', () => {
+      expect(validatorMethods.alphanumeric('')).toBeTruthy();
+    });
+    it('should return false if provided value is more or less than 12', () => {
+      expect(validatorMethods.alphanumeric('12345')).toBeFalsy();
+    });
+    it('should return true if provided value is exact 12', () => {
+      expect(validatorMethods.alphanumeric('123456789123')).toBeTruthy();
+    });
+  });
+
+  describe('ssnValidator', () => {
+    it('should return false if provided value is more or less than 4', () => {
+      expect(validatorMethods.ssn('12345')).toBeFalsy();
+    });
+    it('should return true if provided value is exact 4', () => {
+      expect(validatorMethods.ssn('1234')).toBeTruthy();
+    });
+  });
+
+  describe('dobValidator', () => {
+    it('should return false if the value is not empty', () => {
+      expect(validatorMethods.dob('')).toBeTruthy();
+    });
+    it('should return false value is any of -->  Mm Dd Yyyy', () => {
+      expect(validatorMethods.dob('Mm')).toBeFalsy();
+    });
+    it('should return true value is not amongst Mm Dd Yyyy', () => {
+      expect(validatorMethods.dob('23')).toBeTruthy();
+    });
+  });
+
+  describe('legacyPassword', () => {
+    it('should return true if value is correct password', () => {
+      expect(validatorMethods.legacyPassword('Test@1234')).toBeTruthy();
+    });
+
+    it('should return false if value is incorrect password', () => {
+      expect(validatorMethods.legacyPassword('abc.test.com')).toBeFalsy();
+    });
+  });
+
+  describe('equalTo', () => {
+    it('should return true if value passed is equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.equalTo('test', {}, [], ['test'])).toBeTruthy();
+    });
+
+    it('should return false if value passed is not equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.equalTo('test', {}, [], ['test1'])).toBeFalsy();
+    });
+  });
+
+  describe('password', () => {
+    it('should return true if value passed is correct password', () => {
+      expect(validatorMethods.password('Test@1234')).toBeTruthy();
+    });
+
+    it('should return false if value passed is not equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.password('test1234')).toBeFalsy();
+    });
+  });
 });

@@ -15,7 +15,7 @@ export default class ShippingPage extends React.PureComponent {
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
     selectedShipmentId: PropTypes.string,
-    addressPhoneNo: PropTypes.number,
+    addressPhoneNumber: PropTypes.number,
     emailSignUpLabels: PropTypes.shape({}).isRequired,
     isGuest: PropTypes.bool,
     isUsSite: PropTypes.bool,
@@ -28,7 +28,7 @@ export default class ShippingPage extends React.PureComponent {
 
   static defaultProps = {
     isOrderUpdateChecked: false,
-    addressPhoneNo: null,
+    addressPhoneNumber: null,
     address: null,
     selectedShipmentId: null,
     isGuest: true,
@@ -38,19 +38,29 @@ export default class ShippingPage extends React.PureComponent {
     defaultShipmentId: null,
   };
 
-  checkPOBoxAddress = () => {
-    const {
-      address: { addressLine1, addressLine2 },
-      loadShipmentMethods,
-    } = this.props;
-    if (hasPOBox(addressLine1, addressLine2)) {
-      loadShipmentMethods();
+  componentDidUpdate(prevProps) {
+    const { address } = this.props;
+    const { address: prevAddress } = prevProps;
+    if (address && prevAddress) {
+      const {
+        address: { addressLine1, addressLine2 },
+        loadShipmentMethods,
+      } = this.props;
+      const {
+        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
+      } = prevProps;
+      if (
+        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
+        hasPOBox(addressLine1, addressLine2)
+      ) {
+        loadShipmentMethods();
+      }
     }
-  };
+  }
 
   submitShippingData = data => {
     // console.log(data);
-    const { address, shipmentMethods, smsSignUp } = data;
+    const { address, shipmentMethods, smsSignUp = {} } = data;
 
     // const addAddressData = {
     //   applyToOrder: true,
@@ -103,7 +113,7 @@ export default class ShippingPage extends React.PureComponent {
       isOrderUpdateChecked,
       shippingLabels,
       smsSignUpLabels,
-      addressPhoneNo,
+      addressPhoneNumber,
       selectedShipmentId,
       emailSignUpLabels,
       isGuest,
@@ -127,7 +137,7 @@ export default class ShippingPage extends React.PureComponent {
             }}
             selectedShipmentId={selectedShipmentId}
             checkPOBoxAddress={this.checkPOBoxAddress}
-            addressPhoneNo={addressPhoneNo}
+            addressPhoneNo={addressPhoneNumber}
             onSubmit={this.submitShippingData}
             emailSignUpLabels={emailSignUpLabels}
             isGuest={isGuest}
