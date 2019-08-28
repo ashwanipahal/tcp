@@ -2,6 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import { Style, GovernmentId } from '../styles/ContactFormFields.style.native';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -15,10 +17,10 @@ class ContactFormFields extends React.Component {
   ]);
 
   render() {
-    const { className, showEmailAddress, showPhoneNumber, labels } = this.props;
+    const { showEmailAddress, showPhoneNumber, labels } = this.props;
 
     return (
-      <View className={className}>
+      <View>
         <View className="fieldFirstName">
           <Field
             label={labels.firstName}
@@ -28,12 +30,9 @@ class ContactFormFields extends React.Component {
             component={TextBox}
             dataLocator="pickup-first-name"
           />
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            text={labels.govIdText}
-          />
+          <GovernmentId>
+            <BodyCopy fontFamily="secondary" fontSize="fs12" text={labels.govIdText} />
+          </GovernmentId>
         </View>
         <View className="fieldLastName">
           <Field
@@ -80,16 +79,15 @@ class ContactFormFields extends React.Component {
 }
 
 ContactFormFields.propTypes = {
-  className: PropTypes.string,
   showEmailAddress: PropTypes.bool,
   showPhoneNumber: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
 };
 
 ContactFormFields.defaultProps = {
-  className: '',
   showEmailAddress: false,
   showPhoneNumber: false,
 };
 
-export default ContactFormFields;
+export default withStyles(ContactFormFields, Style);
+export { ContactFormFields as ContactFormFieldsVanilla };

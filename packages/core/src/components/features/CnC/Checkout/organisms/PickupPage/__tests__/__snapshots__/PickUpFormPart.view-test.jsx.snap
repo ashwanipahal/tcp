@@ -7,16 +7,16 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   <div
     className="container"
   >
-    <Styled(CheckoutSectionTitleDisplay)
-      className="summary-title-pick-up"
-      dataLocator="pickup-title"
-    />
     <Styled(ErrorMessage)
       className="pickupError"
       dataLocator="pickup-error"
       error="Error handle"
       fontSize="fs14"
       fontWeight="black"
+    />
+    <Styled(CheckoutSectionTitleDisplay)
+      className="summary-title-pick-up"
+      dataLocator="pickup-title"
     />
     <form
       className="checkoutPickupForm"
@@ -334,16 +334,16 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
   <div
     className="container"
   >
-    <Styled(CheckoutSectionTitleDisplay)
-      className="summary-title-pick-up"
-      dataLocator="pickup-title"
-    />
     <Styled(ErrorMessage)
       className="pickupError"
       dataLocator="pickup-error"
       error="Error handle"
       fontSize="fs14"
       fontWeight="black"
+    />
+    <Styled(CheckoutSectionTitleDisplay)
+      className="summary-title-pick-up"
+      dataLocator="pickup-title"
     />
     <form
       className="checkoutPickupForm"

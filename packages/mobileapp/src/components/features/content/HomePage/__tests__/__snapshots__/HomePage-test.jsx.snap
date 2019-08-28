@@ -2,6 +2,16 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    customStyle={Object {}}
+    disableButton={false}
+    fullWidth={true}
+    locator=""
+    onPress={[Function]}
+    text="CheckOut"
+    url=""
+  />
   <SlotA
     className="moduleD"
     navigation={
