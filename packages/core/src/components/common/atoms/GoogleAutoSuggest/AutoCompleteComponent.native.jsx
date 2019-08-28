@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-// import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import {
   StyledLabel,
   textInput,
@@ -22,10 +22,8 @@ export const GooglePlacesInput = props => {
     setFocussed(true);
   };
 
-  // const apiConfigObj = getAPIConfig();
-  // eslint-disable-next-line
-  const map_api_key = 'AIzaSyAd-jljPEQ6kgrLRJuN-ENKypW9K6sbQgc';
-  // const { map_api_key } = apiConfigObj;
+  const apiConfigObj = getAPIConfig();
+  const { googleApiKey } = apiConfigObj;
   return (
     <Container>
       <StyledLabel isFocused={focussed}>{headerTitle}</StyledLabel>
@@ -35,7 +33,6 @@ export const GooglePlacesInput = props => {
         minLength={2} // minimum length of text to search
         autoFocus={false}
         returnKeyType="search"
-        listViewDisplayed={false}
         fetchDetails
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
@@ -46,9 +43,7 @@ export const GooglePlacesInput = props => {
         }}
         getDefaultValue={() => ''}
         query={{
-          key: map_api_key,
-          language: 'en', // language of the results
-          types: '(cities)', // default: 'geocode'
+          key: googleApiKey,
           components: `country:${componentRestrictions.country[0]}`,
         }}
         textInputProps={{
@@ -65,7 +60,8 @@ export const GooglePlacesInput = props => {
           container,
         }}
         nearbyPlacesAPI="GooglePlacesSearch"
-        debounce={200} // debounce the requests in ms.
+        debounce={0} // debounce the requests in ms.
+        listViewDisplayed={false}
       />
     </Container>
   );

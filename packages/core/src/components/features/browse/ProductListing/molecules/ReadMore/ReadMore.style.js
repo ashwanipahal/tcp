@@ -33,7 +33,7 @@ export default css`
     transition: 0.25s ease;
   }
 
-  .read-more-state:checked ~ .body-copy .read-more-target {
+  &.read-more-expanded .read-more-target {
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
     max-height: 999em;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -7,6 +7,7 @@ import CustomSelect from '../../CustomSelect/views';
 
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import cssClassName from '../../utils/cssClassName';
+import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersForm';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
@@ -108,7 +109,7 @@ class ProductListingFiltersForm extends React.Component {
     // let { isMobile, filtersMaps } = this.props;
 
     const isMobile = false;
-    const { filters: filtersMaps, labels } = this.props;
+    const { filtersMaps, labels } = this.props;
 
     const className = cssClassName(isMobile ? 'size-detail-chips' : 'size-detail');
     return (
@@ -141,7 +142,7 @@ class ProductListingFiltersForm extends React.Component {
    */
   renderColorFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
     const isMobile = false;
-    const { filters: filtersMaps, labels } = this.props;
+    const { filtersMaps, labels } = this.props;
 
     const className = cssClassName(
       isMobile ? 'color-detail-chips' : 'color-filter-chip size-detail'
@@ -173,7 +174,7 @@ class ProductListingFiltersForm extends React.Component {
    * @param none
    */
   renderDesktopFilters() {
-    const { filters: filtersMaps } = this.props;
+    const { filtersMaps } = this.props;
 
     const filterKeys = Object.keys(filtersMaps);
     const isShopByColor = false;
@@ -213,44 +214,59 @@ class ProductListingFiltersForm extends React.Component {
   }
 
   render() {
-    const { className, filters, labels } = this.props;
+    const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
     return (
-      <form>
-        <div className={`${className} desktop-dropdown`}>
-          <div className="filters-only-container">
-            <BodyCopy
-              component="span"
-              role="option"
-              textAlign="center"
-              tabIndex={0}
-              fontSize="fs14"
-              fontFamily="secondary"
-              color="gray.900"
-              outline="none"
-              data-locator={getLocator('plp_filter_label_filterby')}
-            >
-              {`${labels.lbl_filter_by}:`}
-            </BodyCopy>
+      <Fragment>
+        <form className="render-desktop-view">
+          <div className={`${className} desktop-dropdown`}>
+            <div className="filters-only-container">
+              <BodyCopy
+                component="span"
+                role="option"
+                textAlign="center"
+                tabIndex={-1}
+                fontSize="fs14"
+                fontFamily="secondary"
+                color="gray.900"
+                outline="none"
+                data-locator={getLocator('plp_filter_label_filterby')}
+              >
+                {`${labels.lbl_filter_by}:`}
+              </BodyCopy>
 
-            {filters && this.renderDesktopFilters()}
+              {filtersMaps && this.renderDesktopFilters()}
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+        <ProductListingMobileFiltersForm
+          totalProductsCount={totalProductsCount}
+          initialValues={initialValues}
+          filtersMaps={filtersMaps}
+          className="render-mobile-view"
+          labels={labels}
+        />
+      </Fragment>
     );
   }
 }
 
 ProductListingFiltersForm.propTypes = {
-  filters: PropTypes.shape({}),
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   className: PropTypes.string,
+  filtersMaps: PropTypes.shape({}),
+  totalProductsCount: PropTypes.string,
+  initialValues: PropTypes.shape({}),
 };
 
 ProductListingFiltersForm.defaultProps = {
-  filters: {},
+  filtersMaps: {},
   labels: {},
   className: '',
+  totalProductsCount: '0',
+  initialValues: {},
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
 })(withStyles(ProductListingFiltersForm, ProductListingFiltersFormStyle));
+
+export { ProductListingFiltersForm as ProductListingFiltersFormVanilla };

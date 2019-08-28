@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const styles = css `
+const styles = css`
   .generic__error__message {
     display: flex;
   }

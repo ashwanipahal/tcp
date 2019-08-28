@@ -15,9 +15,8 @@ import {
   getMailingAddressState,
   getFavStoreState,
   getUserBirthdayState,
-  getAboutYourselfState
+  getAboutYourselfState,
 } from '../ProfileInfoActions.utils';
-
 
 export const ProfileInfoActions = ({
   labels,

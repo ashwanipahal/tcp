@@ -6,13 +6,21 @@ const selectedIcon = getIconPath('selected-item');
 export default css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  .selected-item {
-    background: url(${selectedIcon}) no-repeat left top;
-    background-size: 20px 20px;
+  width: 156px;
+  @media ${props => props.theme.mediaQuery.large} {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    width: auto;
+  }
+  .item-select {
+    text-transform: capitalize;
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
-    padding-bottom: 8px;
-    display: flex;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      background: url(${selectedIcon}) no-repeat left top;
+      background-size: 20px 20px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
+      padding-bottom: 8px;
+      display: flex;
+    }
   }
 `;
