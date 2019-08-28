@@ -56,11 +56,12 @@ const L3Panel = props => {
             </li>
             {links.map((l3Links, index) => {
               const {
-                categoryContent: { name: l3Name, seoToken },
+                categoryContent: { name: l3Name },
+                url,
               } = l3Links;
               return (
                 <li>
-                  <Anchor to={`/c/${seoToken}`} dataLocator={`l3_link_${index}`}>
+                  <Anchor to={url} dataLocator={`l3_link_${index}`}>
                     <BodyCopy
                       className="l2-nav-link"
                       fontFamily="secondary"
