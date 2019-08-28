@@ -57,7 +57,10 @@ const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelect
   const { color } = item;
   const imageUrl = color.imagePath;
   const { colorProductId } = item;
-  const SelectedImage = colorProductId === selectedColorId ? SelectedImageStyle : ImageStyle;
+  const SelectedImage =
+    (selectedColorId === 'none' && index === 0) || selectedColorId === colorProductId
+      ? SelectedImageStyle
+      : ImageStyle;
   return (
     <TouchableOpacity
       onPress={() =>
@@ -76,8 +79,7 @@ const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelect
  */
 const ColorSwitch = props => {
   const { colorsMap, setSelectedColorIndex } = props;
-  const { colorProductId } = colorsMap[0];
-  const [selectedColorId, setSelectedColorId] = useState(colorProductId);
+  const [selectedColorId, setSelectedColorId] = useState('none');
   return (
     <ColorSwitchesContainer>
       <FlatList
