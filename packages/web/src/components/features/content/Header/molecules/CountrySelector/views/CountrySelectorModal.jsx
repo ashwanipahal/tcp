@@ -54,8 +54,8 @@ class CountrySelectorModal extends React.Component {
     return (
       (updatedCountry === us.countryCode && updatedCurrency === us.currencyCode) ||
       (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode) ||
-      (country === us.countryCode && currency === us.currencyCode) ||
-      (country === ca.countryCode && currency === ca.currencyCode)
+      (!updatedCountry && country === us.countryCode && currency === us.currencyCode) ||
+      (!updatedCountry && country === ca.countryCode && currency === ca.currencyCode)
     );
   };
 
