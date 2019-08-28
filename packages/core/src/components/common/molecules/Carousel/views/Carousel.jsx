@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import Slider from 'react-slick';
-import config from '../config';
+import config from '../Carousel.config';
 import { Image } from '../../../atoms';
 import { getIconPath } from '../../../../../utils';
 import CarouselStyle from '../Carousel.style';
@@ -85,6 +85,16 @@ class Carousel extends React.PureComponent<Props, State> {
     );
   }
 
+  appendDots = dots => {
+    const { carouselConfig, options } = this.props;
+    return (
+      <div>
+        {carouselConfig.autoplay && options.autoplay && this.getPlayButton(carouselConfig)}
+        {options.dots && <ul>{dots}</ul>}
+      </div>
+    );
+  };
+
   /**
    * @function play function enable autoplay for carousel
    * also update component state.
@@ -122,18 +132,10 @@ class Carousel extends React.PureComponent<Props, State> {
   render() {
     const { options, children, carouselConfig, className } = this.props;
     const settings = {
-      appendDots: dots => {
-        return (
-          <div>
-            {carouselConfig.autoplay &&
-              !options.hidePlayPause &&
-              this.getPlayButton(carouselConfig)}
-            <ul>{dots}</ul>
-          </div>
-        );
-      },
+      appendDots: this.appendDots,
       ...defaults,
       ...options,
+      dots: options.dots || options.autoplay,
     };
 
     return (

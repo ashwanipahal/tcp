@@ -20,6 +20,14 @@ type State = {
   next: number,
 };
 
+const carouselConfig = {
+  autoplay: true,
+  dataLocatorPlay: getLocator('moduleK_play_button'),
+  dataLocatorPause: getLocator('moduleK_pause_button'),
+  customArrowLeft: getIconPath('carousel-big-carrot'),
+  customArrowRight: getIconPath('carousel-big-carrot'),
+};
+
 /**
  * @class ModuleK - global reusable component will provide featured content module
  * with a composite background image and 2-6 CTAs
@@ -37,7 +45,8 @@ class ModuleK extends React.PureComponent<Props, State> {
     CAROUSEL_OPTIONS.nextArrow = (
       <button type="button" data-locator="moduleK_right_arrow" className="slick-prev" />
     );
-    CAROUSEL_OPTIONS.hidePlayPause = masonryGrid.length === 1;
+
+    carouselConfig.autoplay = carouselConfig.autoplay && masonryGrid.length > 1;
 
     return (
       <BodyCopy component="div" className={`${className} moduleK`}>
@@ -76,13 +85,7 @@ class ModuleK extends React.PureComponent<Props, State> {
             <Carousel
               options={CAROUSEL_OPTIONS}
               inheritedStyles={Carousel}
-              carouselConfig={{
-                autoplay: true,
-                dataLocatorPlay: getLocator('moduleK_play_button'),
-                dataLocatorPause: getLocator('moduleK_pause_button'),
-                customArrowLeft: getIconPath('carousel-big-carrot'),
-                customArrowRight: getIconPath('carousel-big-carrot'),
-              }}
+              carouselConfig={carouselConfig}
             >
               {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
                 const checkPromo = promoBanner && promoBanner.length;

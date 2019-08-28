@@ -157,7 +157,7 @@ const CarouselStyle = css`
 
   .slick-dots {
     position: absolute;
-    bottom: -25px;
+    bottom: 12px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -167,6 +167,26 @@ const CarouselStyle = css`
     align-items: center;
     justify-content: center;
   }
+  .slick-dots ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .slick-dots li {
+    position: relative;
+    display: inline-block;
+    background: url('/static/images/carousal-dot.svg') no-repeat 0;
+    width: 10px;
+    height: 10px;
+    button,
+    button:before {
+      margin: 0;
+      padding: 0;
+      width: 7px;
+      height: 7px;
+    }
+  }
+
   .slick-dots li button {
     font-size: 0;
     line-height: 0;
@@ -181,6 +201,7 @@ const CarouselStyle = css`
     pointer-events: none;
     background: transparent;
   }
+
   .slick-dots li button:before {
     font-family: Arial;
     font-size: 6px;
@@ -196,6 +217,18 @@ const CarouselStyle = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  .slick-dots li.slick-active {
+    width: 11px;
+    height: 11px;
+    background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
+    button,
+    button:before {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
   .slick-dots li.slick-active button:before {
     opacity: 0.75;
     color: black;
@@ -215,7 +248,10 @@ const CarouselStyle = css`
     padding: 0;
     bottom: 12px;
     cursor: pointer;
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
+  .tcp_carousel__play_pause_button + ul {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .tcp_carousel__play_pause_button_icon {
@@ -225,34 +261,6 @@ const CarouselStyle = css`
     height: 30px;
   }
 
-  &.tcp_carousel_wrapper .slick-dots ul {
-    display: flex;
-    align-items: center;
-  }
-  &.tcp_carousel_wrapper .slick-dots li {
-    position: relative;
-    display: inline-block;
-    background: url('/static/images/carousal-dot.svg') no-repeat 0;
-    width: 10px;
-    height: 10px;
-    button,
-    button:before {
-      margin: 0;
-      padding: 0;
-      width: 7px;
-      height: 7px;
-    }
-    &.slick-active {
-      width: 11px;
-      height: 11px;
-      background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
-      button,
-      button:before {
-        width: 10px;
-        height: 10px;
-      }
-    }
-  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

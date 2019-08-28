@@ -10,10 +10,18 @@ import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 
 import config from '../ModuleA.config';
 
-const bigCarrotIcon = 'carousel-big-carrot';
-
 const { ctaTypes, CAROUSEL_OPTIONS } = config;
 const isGymboreeModuleA = isGymboree();
+const bigCarrotIcon = 'carousel-big-carrot';
+
+const carouselConfig = {
+  autoplay: true,
+  dataLocatorPlay: getLocator('moduleA_play_button'),
+  dataLocatorPause: getLocator('moduleA_pause_button'),
+  customArrowLeft: getIconPath(bigCarrotIcon),
+  customArrowRight: getIconPath(bigCarrotIcon),
+  dataLocatorCarousel: 'carousel_banner',
+};
 
 class ModuleA extends React.Component {
   constructor(props) {
@@ -54,7 +62,7 @@ class ModuleA extends React.Component {
     CAROUSEL_OPTIONS.nextArrow = (
       <button type="button" data-locator="moduleA_right_arrow" className="slick-prev" />
     );
-    CAROUSEL_OPTIONS.hidePlayPause = largeCompImageCarousel.length === 1;
+    carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageCarousel.length > 1;
 
     return (
       <Row
@@ -71,17 +79,7 @@ class ModuleA extends React.Component {
           }}
         >
           <div>
-            <Carousel
-              options={CAROUSEL_OPTIONS}
-              carouselConfig={{
-                autoplay: true,
-                dataLocatorCarousel: getLocator('carousel_banner'),
-                dataLocatorPlay: getLocator('moduleA_play_button'),
-                dataLocatorPause: getLocator('moduleA_pause_button'),
-                customArrowLeft: getIconPath(bigCarrotIcon),
-                customArrowRight: getIconPath(bigCarrotIcon),
-              }}
-            >
+            <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
               {largeCompImageCarousel.map((item, i) => {
                 const {
                   headerText,

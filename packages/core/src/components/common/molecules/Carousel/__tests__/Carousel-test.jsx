@@ -21,6 +21,7 @@ describe('Carousel component', () => {
         accessibility: true,
         autoplaySpeed: 3000,
         dots: false,
+        autoplay: true,
       },
       carouselConfig: {
         autoplay: true,
@@ -33,12 +34,13 @@ describe('Carousel component', () => {
     expect(dotsWrapper.find(playButton)).toHaveLength(1);
   });
 
-  it('show play button if autoplay: true prop is passed', () => {
+  it('hide play button if autoplay: true prop is passed', () => {
     const props = {
       options: {
         accessibility: true,
         autoplaySpeed: 3000,
         dots: false,
+        autoplay: true,
       },
       carouselConfig: {
         autoplay: false,

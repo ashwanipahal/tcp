@@ -40,7 +40,6 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
-            "hidePlayPause": false,
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleA_right_arrow"
@@ -675,7 +674,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
-            "hidePlayPause": false,
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleA_right_arrow"
