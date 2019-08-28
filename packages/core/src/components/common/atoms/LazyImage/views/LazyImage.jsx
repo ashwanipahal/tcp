@@ -23,11 +23,11 @@ export class LazyImage extends React.Component {
 
   // Just render the image with data-src
   render() {
-    const { alt, src, srcset, sizes, ...otherProps } = this.props;
+    const { alt, src, srcset, sizes, className, ...otherProps } = this.props;
     return (
       <img
         alt={alt}
-        className={ELEMENTS_CLASS}
+        className={`${ELEMENTS_CLASS} ${className}`}
         data-src={src}
         data-srcset={srcset}
         data-sizes={sizes}
@@ -41,12 +41,14 @@ LazyImage.propTypes = {
   src: PropTypes.string.isRequired,
   srcset: PropTypes.string,
   sizes: PropTypes.string,
+  className: PropTypes.string,
   alt: PropTypes.string.isRequired,
 };
 
 LazyImage.defaultProps = {
   srcset: '',
   sizes: '',
+  className: '',
 };
 
 export default LazyImage;

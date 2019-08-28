@@ -31,13 +31,22 @@ class CartItemTile extends React.Component {
     toggleEditAllowance();
   };
 
-  handleEditCartItem = (pageView, productNumber) => {
+  handleEditCartItem = (pageView, itemBrand, productNumber) => {
     if (pageView !== 'myBag') {
       const productNum = productNumber.slice(0, productNumber.indexOf('_'));
       this.toggleFormVisibility();
       const { getProductSKUInfo } = this.props;
-      getProductSKUInfo(productNum);
+      getProductSKUInfo({ productNum, itemBrand });
     }
+  };
+
+  callEditMethod = () => {
+    const { productDetail, pageView } = this.props;
+    this.handleEditCartItem(
+      pageView,
+      productDetail.itemInfo.itemBrand,
+      productDetail.productInfo.productPartNumber
+    );
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
@@ -114,9 +123,7 @@ class CartItemTile extends React.Component {
               fontSize="fs12"
               component="span"
               dataLocator={getLocator('cart_item_unavailable_update')}
-              onClick={() => {
-                this.handleEditCartItem(pageView, productDetail.productInfo.productPartNumber);
-              }}
+              onClick={this.callEditMethod}
             >
               Update
             </BodyCopy>
@@ -408,12 +415,7 @@ class CartItemTile extends React.Component {
                       component="div"
                       dataLocator={getLocator('cart_item_edit_link')}
                       className="padding-left-10 responsive-edit-css"
-                      onClick={() => {
-                        this.handleEditCartItem(
-                          pageView,
-                          productDetail.productInfo.productPartNumber
-                        );
-                      }}
+                      onClick={this.callEditMethod}
                     >
                       <u>{labels.edit}</u>
                     </BodyCopy>
