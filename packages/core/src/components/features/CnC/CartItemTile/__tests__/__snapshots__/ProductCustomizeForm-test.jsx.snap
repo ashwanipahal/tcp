@@ -64,19 +64,21 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             options={
               Immutable.List [
                 Object {
-                  "content": <span>
+                  "content": <React.Fragment>
                     <img
                       alt=""
                       src="https://test4.childrensplace.comundefined"
                     />
-                  </span>,
-                  "title": <span>
+                    <span />
+                  </React.Fragment>,
+                  "title": <React.Fragment>
                     <img
                       alt=""
                       className="selected-color-image"
                       src="https://test4.childrensplace.comundefined"
                     />
-                  </span>,
+                    <span />
+                  </React.Fragment>,
                   "value": undefined,
                 },
               ]

@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
 const ONE_COL_WIDTH = '18%';
-const TWO_COL_WIDTH = '26%';
-const THREE_COL_WIDTH = '39.5%';
+const TWO_COL_WIDTH = '390px';
+const THREE_COL_WIDTH = '570px';
 const ONE_COL_OPTION_COUNT = 9;
 const TWO_COL_OPTION_COUNT = 18;
 const THREE_COL_OPTION_COUNT = 27;
@@ -25,6 +25,7 @@ export default css`
   .item-list-wrapper {
     max-height: 430px;
     text-align: center;
+    max-width: 590px;
   }
 
   .item-list-column-wrapper {
@@ -34,8 +35,9 @@ export default css`
     display: flex;
     position: static;
     max-height: 352px;
-    max-width: 570px;
-    overflow: scroll;
+
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .item-list-column {
     flex-flow: column wrap;

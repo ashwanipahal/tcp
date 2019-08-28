@@ -98,6 +98,7 @@ class LoginPageContainer extends React.PureComponent {
         onRequestClose={onRequestClose}
         variation={variation}
         handleContinueAsGuest={handleContinueAsGuest}
+        loginError={loginError}
       />
     );
   }
