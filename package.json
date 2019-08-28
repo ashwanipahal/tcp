@@ -94,7 +94,7 @@
     "*.{js,jsx}": [
       "eslint",
       "stylelint",
-      "yarn test:web",
+      "yarn test:staged",
       "yarn test:app:staged"
     ],
     "*.css": "stylelint"

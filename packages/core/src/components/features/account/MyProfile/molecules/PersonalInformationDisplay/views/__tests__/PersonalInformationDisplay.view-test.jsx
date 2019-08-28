@@ -18,7 +18,6 @@ describe('PersonalInformationDisplay', () => {
       UserPhoneNumber: 'test',
       airMiles: 'XXXXXXX',
       MyPlaceNumber: 'XXXXXXX',
-      isCanada: true,
     };
     const tree = shallow(<PersonalInformationDisplay {...props} />);
     expect(tree).toMatchSnapshot();

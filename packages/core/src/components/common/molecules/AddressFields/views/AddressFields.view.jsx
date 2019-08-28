@@ -30,7 +30,6 @@ export class AddressFields extends React.PureComponent {
     formSection: PropTypes.string,
     className: PropTypes.string,
     variation: PropTypes.string,
-    checkPOBoxAddress: PropTypes.func,
     loadShipmentMethods: PropTypes.func.isRequired,
   };
 
@@ -67,13 +66,6 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
     dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
-  };
-
-  checkHasPoAddress = () => {
-    const { checkPOBoxAddress } = this.props;
-    if (checkPOBoxAddress) {
-      checkPOBoxAddress();
-    }
   };
 
   changeShipmentMethods = () => {
@@ -178,7 +170,6 @@ export class AddressFields extends React.PureComponent {
               dataLocator="addnewaddress-addressl1"
               className="address-field"
               enableSuccessCheck={false}
-              onChange={this.checkHasPoAddress}
             />
           </Col>
           <Col colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}>
@@ -340,7 +331,6 @@ AddressFields.defaultProps = {
   formSection: '',
   className: '',
   variation: 'primary',
-  checkPOBoxAddress: () => {},
 };
 
 export default withStyles(AddressFields, styles);

@@ -39,7 +39,7 @@ const ButtonWrapperStyle = styled.View`
 `;
 
 const ParentContainer = css`
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 `;
 
 const StyledHeading = styled.Text`
