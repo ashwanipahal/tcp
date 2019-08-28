@@ -1,1 +1,1 @@
-export { default, ScriptWithErrorBoundary } from './Script';
+export { default } from './Script';
