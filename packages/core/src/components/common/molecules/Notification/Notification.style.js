@@ -9,5 +9,9 @@ const NotificationStyle = css`
         ? props.theme.colorPalette.green[500]
         : props.theme.colorPalette.red[500]};
   background-color: ${props => props.theme.colorPalette.white};
+
+  .notification__image {
+    height: 24px;
+  }
 `;
 export default NotificationStyle;

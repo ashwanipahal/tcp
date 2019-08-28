@@ -18,7 +18,7 @@ import createValidateMethod from '../../../../../../utils/formValidation/createV
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
 import BodyCopy from '../../../../../common/atoms/BodyCopy';
 
-class AddGiftCardForm extends React.PureComponent {
+export class AddGiftCardForm extends React.PureComponent {
   onMessage = event => {
     const { change } = this.props;
     if (event && event.nativeEvent.data) {
