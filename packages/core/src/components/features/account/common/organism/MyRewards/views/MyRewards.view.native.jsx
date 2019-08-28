@@ -10,6 +10,7 @@ import {
   StyledAnchorWrapper,
   AnchorLeftMargin,
 } from '../styles/MyRewards.style.native';
+import endpoints from '../../../externalEndpoints';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
@@ -93,7 +94,7 @@ class MyRewards extends PureComponent {
             fontSizeVariation="medium"
             underline
             onPress={() => {
-              UrlHandler('https://www.childrensplace.com/us/content/myplace-rewards-page');
+              UrlHandler(endpoints.myPlaceRewardsPage);
             }}
             anchorVariation="primary"
             dataLocator="my-rewards-program-details"
@@ -105,7 +106,7 @@ class MyRewards extends PureComponent {
               underline
               noLink
               onPress={() => {
-                UrlHandler('https://www.childrensplace.com/us/help-center/#termsAndConditionsli');
+                UrlHandler(endpoints.termsAndConditionsPage);
               }}
               anchorVariation="primary"
               dataLocator="my-rewards-tnc"

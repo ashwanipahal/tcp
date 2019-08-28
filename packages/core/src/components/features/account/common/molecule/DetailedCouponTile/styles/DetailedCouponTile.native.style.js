@@ -10,7 +10,6 @@ const Notification = styled.Text`
   background-color: ${props => props.theme.colorPalette.gray[800]};
   color: ${props => props.theme.colorPalette.white};
   position: absolute;
-  flex-direction: row;
   width: 100%;
   top: 0;
   left: 0;
@@ -20,14 +19,12 @@ const Notification = styled.Text`
 const TileContentWrapper = styled.View`
   justify-content: space-between;
   border: 1px solid ${props => props.theme.colorPalette.gray[500]};
-  width: 100%;
 `;
 
 const TileContent = styled.View`
   justify-content: space-between;
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  width: 100%;
 `;
 
 const TileTopContent = styled.View`
@@ -48,6 +45,11 @@ const ButtonWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
+const CouponIconWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
 export {
   TileWrapper,
   TileContentWrapper,
@@ -56,4 +58,5 @@ export {
   TileTopContent,
   TileDesc,
   ButtonWrapper,
+  CouponIconWrapper,
 };

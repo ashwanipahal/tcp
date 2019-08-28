@@ -5,20 +5,22 @@ exports[`DetailedCouponTile should render correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(View)>
-        <CouponIcon
-          coupon={Object {}}
-          labels={
-            Object {
-              "lbl_coupon_applyToBag": "apply",
-              "lbl_coupon_couponUseBy": "use by",
-              "lbl_coupon_couponValid": "valid",
-              "lbl_coupon_detailsLink": "details",
-              "lbl_coupon_expiringSoon": "expiring soon",
-              "lbl_coupon_removeFromBag": "remove from bag",
-              "lbl_coupon_viewPrint": "view & print",
+        <Styled(View)>
+          <CouponIcon
+            coupon={Object {}}
+            labels={
+              Object {
+                "lbl_coupon_applyToBag": "apply",
+                "lbl_coupon_couponUseBy": "use by",
+                "lbl_coupon_couponValid": "valid",
+                "lbl_coupon_detailsLink": "details",
+                "lbl_coupon_expiringSoon": "expiring soon",
+                "lbl_coupon_removeFromBag": "remove from bag",
+                "lbl_coupon_viewPrint": "view & print",
+              }
             }
-          }
-        />
+          />
+        </Styled(View)>
         <Styled(BodyCopy)
           data-locator="accountoverview-myplacerewatdstile-rewardvalue"
           fontFamily="secondary"
@@ -85,24 +87,26 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(View)>
-        <CouponIcon
-          coupon={
-            Object {
-              "status": "applied",
+        <Styled(View)>
+          <CouponIcon
+            coupon={
+              Object {
+                "status": "applied",
+              }
             }
-          }
-          labels={
-            Object {
-              "lbl_coupon_applyToBag": "apply",
-              "lbl_coupon_couponUseBy": "use by",
-              "lbl_coupon_couponValid": "valid",
-              "lbl_coupon_detailsLink": "details",
-              "lbl_coupon_expiringSoon": "expiring soon",
-              "lbl_coupon_removeFromBag": "remove from bag",
-              "lbl_coupon_viewPrint": "view & print",
+            labels={
+              Object {
+                "lbl_coupon_applyToBag": "apply",
+                "lbl_coupon_couponUseBy": "use by",
+                "lbl_coupon_couponValid": "valid",
+                "lbl_coupon_detailsLink": "details",
+                "lbl_coupon_expiringSoon": "expiring soon",
+                "lbl_coupon_removeFromBag": "remove from bag",
+                "lbl_coupon_viewPrint": "view & print",
+              }
             }
-          }
-        />
+          />
+        </Styled(View)>
         <Styled(BodyCopy)
           data-locator="accountoverview-myplacerewatdstile-rewardvalue"
           fontFamily="secondary"
@@ -177,24 +181,26 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     </Styled(Text)>
     <Styled(View)>
       <Styled(View)>
-        <CouponIcon
-          coupon={
-            Object {
-              "isExpiring": true,
+        <Styled(View)>
+          <CouponIcon
+            coupon={
+              Object {
+                "isExpiring": true,
+              }
             }
-          }
-          labels={
-            Object {
-              "lbl_coupon_applyToBag": "apply",
-              "lbl_coupon_couponUseBy": "use by",
-              "lbl_coupon_couponValid": "valid",
-              "lbl_coupon_detailsLink": "details",
-              "lbl_coupon_expiringSoon": "expiring soon",
-              "lbl_coupon_removeFromBag": "remove from bag",
-              "lbl_coupon_viewPrint": "view & print",
+            labels={
+              Object {
+                "lbl_coupon_applyToBag": "apply",
+                "lbl_coupon_couponUseBy": "use by",
+                "lbl_coupon_couponValid": "valid",
+                "lbl_coupon_detailsLink": "details",
+                "lbl_coupon_expiringSoon": "expiring soon",
+                "lbl_coupon_removeFromBag": "remove from bag",
+                "lbl_coupon_viewPrint": "view & print",
+              }
             }
-          }
-        />
+          />
+        </Styled(View)>
         <Styled(BodyCopy)
           data-locator="accountoverview-myplacerewatdstile-rewardvalue"
           fontFamily="secondary"

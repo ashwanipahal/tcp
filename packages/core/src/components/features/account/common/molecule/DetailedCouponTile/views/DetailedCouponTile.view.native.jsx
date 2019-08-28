@@ -13,6 +13,7 @@ import {
   TileTopContent,
   TileDesc,
   ButtonWrapper,
+  CouponIconWrapper,
 } from '../styles/DetailedCouponTile.native.style';
 import {
   COUPON_REDEMPTION_TYPE,
@@ -105,7 +106,9 @@ export class DetailedCouponTile extends React.Component {
           )}
           <TileContent>
             <TileTopContent>
-              <CouponIcon coupon={coupon} labels={labels} />
+              <CouponIconWrapper>
+                <CouponIcon coupon={coupon} labels={labels} />
+              </CouponIconWrapper>
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs16"

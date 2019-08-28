@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import CouponReward from '../styles/CouponIcon.style.native';
+import IconText from '../styles/CouponIcon.style.native';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
 export const CouponIcon = ({ coupon, labels }) => {
@@ -19,7 +19,7 @@ export const CouponIcon = ({ coupon, labels }) => {
   }
 
   return (
-    <CouponReward type={coupon.offerType}>
+    <IconText type={coupon.offerType}>
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs14"
@@ -27,7 +27,7 @@ export const CouponIcon = ({ coupon, labels }) => {
         text={couponTextLabel}
         color="white"
       />
-    </CouponReward>
+    </IconText>
   );
 };
 
