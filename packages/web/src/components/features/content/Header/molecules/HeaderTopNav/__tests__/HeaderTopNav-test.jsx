@@ -9,6 +9,9 @@ describe('Footer component', () => {
       className: 'header-top-nav',
       brandTabs: mockData.dataTopNav.composites.brand_tabs,
       promoMessageWrapper: mockData.dataTopNav.composites.promo_message_wrapper,
+      labels: {
+        lbl_header_trackOrder: 'Track Order',
+      },
     };
     const component = shallow(<HeaderTopNavVanilla {...props} />);
     expect(component).toMatchSnapshot();
@@ -19,6 +22,9 @@ describe('Footer component', () => {
       className: 'header-top-nav',
       brandTabs: mockData.dataTopNav.composites.brand_tabs,
       promoMessageWrapper: mockData.dataTopNav.composites.promo_message_wrapper,
+      labels: {
+        lbl_header_trackOrder: 'Track Order',
+      },
     };
     const component = shallow(<HeaderTopNavVanilla {...props} />);
     expect(component).toMatchSnapshot();

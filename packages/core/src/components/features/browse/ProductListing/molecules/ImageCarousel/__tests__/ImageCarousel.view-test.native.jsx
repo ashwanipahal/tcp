@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ImageComp from '../views/ImageComp.view.native';
+import ImageCarousel from '../views/ImageCarousel.view.native';
 
 describe('ProductAltImages component', () => {
   const props = {
@@ -46,7 +46,7 @@ describe('ProductAltImages component', () => {
     imageIndex: 0,
   };
   it('should renders ListItem correctly', () => {
-    const component = shallow(<ImageComp {...props} />);
+    const component = shallow(<ImageCarousel {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

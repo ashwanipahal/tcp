@@ -25,6 +25,10 @@ const RoutesMap = [
     resolver: '/ProductListingPage',
   },
   {
+    path: '/place-card/application',
+    resolver: '/ApplyCardPage',
+  },
+  {
     path: '/c/:l2?/:l3?',
     resolver: '/ProductListing',
     params: ['l2', 'l3'],
@@ -37,18 +41,6 @@ const RoutesMap = [
   {
     path: '/bag',
     resolver: '/Bag',
-  },
-  {
-    path: '/shipping',
-    resolver: '/Shipping',
-  },
-  {
-    path: '/billing',
-    resolver: '/billing',
-  },
-  {
-    path: '/review',
-    resolver: '/review',
   },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
   {

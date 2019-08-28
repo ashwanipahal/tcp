@@ -64,7 +64,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-VigVT",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -143,6 +143,20 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
                   [Function],
                   ";
   }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",
@@ -151,7 +165,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-VigVT",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -211,7 +225,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
         </div>
       </div>
       <div
-        lassName="pickUpAlternate-container"
+        className="pickUpAlternate-container"
       >
         <FormSection
           name="pickUpAlternate"
@@ -251,6 +265,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
       disableNext={true}
+      hideBackLink={false}
       nextButtonText="undefined: undefined"
     />
   </form>
@@ -296,7 +311,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
         </FormSection>
       </div>
       <div
-        lassName="pickUpAlternate-container"
+        className="pickUpAlternate-container"
       >
         <FormSection
           name="pickUpAlternate"
@@ -319,6 +334,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
       disableNext={false}
+      hideBackLink={false}
       nextButtonText="undefined: undefined"
     />
   </form>
@@ -389,7 +405,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-VigVT",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -468,6 +484,20 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
                   [Function],
                   ";
   }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",
@@ -476,7 +506,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-VigVT",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -536,7 +566,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
         </div>
       </div>
       <div
-        lassName="pickUpAlternate-container"
+        className="pickUpAlternate-container"
       >
         <FormSection
           name="pickUpAlternate"
@@ -559,6 +589,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props with sta
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
       disableNext={false}
+      hideBackLink={false}
       nextButtonText="undefined: undefined"
     />
   </form>

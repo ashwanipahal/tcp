@@ -26,9 +26,14 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     userEmail: PropTypes.string,
     addressList: PropTypes.shape({}),
     address: PropTypes.shape({}),
-    labels: PropTypes.shape({}),
+    labels: PropTypes.shape({
+      addressFormLabels: PropTypes.shape({}),
+      addressBook: PropTypes.shape({}),
+    }),
     backToAddressBookClick: PropTypes.func,
     onCancel: PropTypes.func,
+    toggleAddressModal: PropTypes.func,
+    currentForm: PropTypes.string,
   };
 
   static defaultProps = {
@@ -39,17 +44,19 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     userEmail: '',
     addressList: {},
     address: {},
-    labels: {},
+    labels: {
+      addressFormLabels: {},
+      addressBook: {},
+    },
     backToAddressBookClick: () => {},
     onCancel: () => {},
+    toggleAddressModal: () => {},
+    currentForm: '',
   };
 
   constructor(props) {
     super(props);
     this.initialValues = null;
-    this.state = {
-      currentForm: 'AddAddress',
-    };
   }
 
   componentDidUpdate() {
@@ -62,14 +69,11 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     }
   }
 
-  toggleAddressModal = () => {
-    const { currentForm } = this.state;
-    if (currentForm === 'AddAddress') {
-      this.setState({ currentForm: 'VerificationModal' });
-    } else {
-      this.setState({ currentForm: 'AddAddress' });
-    }
-  };
+  componentWillUnmount() {
+    const { resetFormState, toggleAddressModal, currentForm } = this.props;
+    resetFormState();
+    if (currentForm === 'VerificationModal') toggleAddressModal();
+  }
 
   getInitialValues = (addressList, address) => {
     if (!address) {
@@ -95,12 +99,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   verifyAddress = payload => {
-    const { verifyAddressAction } = this.props;
+    const { verifyAddressAction, toggleAddressModal } = this.props;
     const formattedFormPayload = Object.assign(this.initialValues, payload);
     const formattedPayload = this.formatPayload(formattedFormPayload);
 
     verifyAddressAction(formattedPayload);
-    this.setState({ currentForm: 'VerificationModal' });
+    toggleAddressModal();
   };
 
   submitAddressForm = payloadParam => {
@@ -143,11 +147,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       labels,
       backToAddressBookClick,
       isEdit,
+      toggleAddressModal,
+      currentForm,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
     const isMakeDefaultDisabled = address ? addressListSize === 1 : addressListSize === 0;
-    const { currentForm } = this.state;
     return (
       <AddAddressComponent
         onCancel={this.resetInitialValue}
@@ -158,8 +163,9 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         initialValues={this.initialValues}
         isEdit={isEdit}
         currentForm={currentForm}
-        toggleAddressModal={this.toggleAddressModal}
+        toggleAddressModal={toggleAddressModal}
         addressFormLabels={labels.addressFormLabels}
+        addressBookLabels={labels.addressBook}
         backToAddressBookClick={backToAddressBookClick}
       />
     );

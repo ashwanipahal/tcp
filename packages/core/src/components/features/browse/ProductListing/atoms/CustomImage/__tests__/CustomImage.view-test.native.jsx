@@ -4,7 +4,7 @@ import CustomImage from '../views/CustomImage.view.native';
 
 describe('ProductAltImages component', () => {
   const props = {
-    imageUrl: '',
+    imageSource: '',
   };
   it('should renders ListItem correctly', () => {
     const component = shallow(<CustomImage {...props} />);

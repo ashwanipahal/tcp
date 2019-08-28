@@ -18,6 +18,7 @@ type Props = {
   currencySymbol: any,
   currentPoints: any,
   totalRewards: any,
+  isCartItemsUpdating: any,
 };
 
 const renderMiniBagHeader = (labels, cartItemCount, userName, currentPoints, totalRewards) => {
@@ -41,6 +42,7 @@ const MiniBag = ({
   currencySymbol,
   currentPoints,
   totalRewards,
+  isCartItemsUpdating,
 }: Props) => {
   const cartItemCount = getCartItemCount();
   return (
@@ -65,6 +67,7 @@ const MiniBag = ({
         userName={userName}
         subTotal={subTotal}
         currencySymbol={currencySymbol}
+        isCartItemsUpdating={isCartItemsUpdating}
       />
     </Modal>
   );

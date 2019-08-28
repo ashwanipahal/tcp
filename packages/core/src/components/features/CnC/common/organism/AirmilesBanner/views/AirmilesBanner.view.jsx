@@ -79,7 +79,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                   <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
                 </ReactToolTip>
               </Col>
-              <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 4, small: 3 }}>
                 <Field
                   id="offerCode"
                   placeholder={labels.offerCode}
@@ -105,7 +105,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
             bodySize="one"
             fontFamily="secondary"
             fontSize="fs10"
-            textAlign="left"
+            textAlign="center"
             color="secondary"
           >
             {labels.footerText}
@@ -120,11 +120,13 @@ AirmilesBanner.propTypes = {
   labels: PropTypes.shape({}),
   airmilesBannerData: PropTypes.shape({}),
   onAddAirmilesBanner: PropTypes.func,
+  orderId: PropTypes.string,
 };
 AirmilesBanner.defaultProps = {
   airmilesBannerData: {},
   labels: {},
   onAddAirmilesBanner: () => {},
+  orderId: ' ',
 };
 
 const validateMethod = createValidateMethod({

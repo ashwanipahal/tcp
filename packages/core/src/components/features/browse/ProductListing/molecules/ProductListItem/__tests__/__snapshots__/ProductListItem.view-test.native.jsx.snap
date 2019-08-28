@@ -1,65 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductAltImages component should renders ListItem correctly 1`] = `
-<View
-  style={
+<StyledNativeComponent
+  badge1=""
+  badge2=""
+  badge3=""
+  forwardedComponent={
     Object {
-      "height": 436,
-      "maxWidth": 164,
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "badge1": "",
+        "badge2": "",
+        "item": Object {},
+        "loyaltyPromotionMessage": "",
+        "onAddToBag": [Function],
+        "onFavorite": [Function],
+      },
+      "attrs": Array [],
+      "displayName": "Styled(ListItem)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
     }
   }
->
-  <RenderTopBadge1
-    text=""
-  />
-  <ImageSection
-    imageIndex={0}
-    item={
-      Object {
-        "colorsMap": Array [],
-        "productInfo": Object {
-          "name": "tcp",
-        },
-      }
+  forwardedRef={null}
+  item={
+    Object {
+      "colorsMap": Array [],
+      "productInfo": Object {
+        "name": "tcp",
+      },
     }
-    onFavorite={[Function]}
-  />
-  <RenderBadge2
-    text=""
-  />
-  <RenderPricesSection
-    listPrice={10}
-    noMerchantBadge=""
-    offerPrice={12}
-  />
-  <RenderTitle
-    text="tcp"
-  />
-  <ColorSwitch
-    colorsMap={Array []}
-    setImageIndex={[Function]}
-  />
-  <RenderPromotionalMessage
-    text=""
-  />
-  <Styled(CustomButton)
-    buttonVariation="variable-width"
-    color="white"
-    customStyle={
-      Object {
-        "marginTop": 12,
-      }
-    }
-    data-locator=""
-    disableButton={false}
-    fill="BLUE"
-    fullWidth=""
-    locator=""
-    onPress={[Function]}
-    size={12}
-    text="ADD TO BAG"
-    type="submit"
-    url=""
-  />
-</View>
+  }
+  listPriceForColor={10}
+  loyaltyPromotionMessage=""
+  offerPriceForColor={12}
+  onAddToBag={[Function]}
+  onFavorite={[Function]}
+/>
 `;

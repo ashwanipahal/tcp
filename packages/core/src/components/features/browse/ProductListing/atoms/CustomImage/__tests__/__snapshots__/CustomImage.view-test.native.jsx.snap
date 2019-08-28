@@ -6,7 +6,7 @@ exports[`ProductAltImages component should renders ListItem correctly 1`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
-        "imageUrl": "",
+        "imageSource": "",
       },
       "attrs": Array [],
       "displayName": "Styled(CustomImage)",
@@ -30,6 +30,6 @@ exports[`ProductAltImages component should renders ListItem correctly 1`] = `
     }
   }
   forwardedRef={null}
-  imageUrl=""
+  imageSource=""
 />
 `;

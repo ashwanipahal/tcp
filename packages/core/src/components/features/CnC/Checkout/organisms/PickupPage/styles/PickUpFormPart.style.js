@@ -31,8 +31,8 @@ const styles = css`
   }
   .pick-up-form-container,
   .mail-signup-container,
-  .ickUpAlternate-container {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  .pickUpAlternate-container {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
   .buttonContainer {
     display: flex;

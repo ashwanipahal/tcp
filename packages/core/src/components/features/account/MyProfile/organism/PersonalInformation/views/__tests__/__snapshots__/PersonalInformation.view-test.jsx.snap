@@ -1,157 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PersonalInformation component should render correctly 1`] = `
-<StyledComponent
-  MyPlaceNumber="XXXXXXX"
-  UserEmail="test"
-  UserFullName="test"
-  UserPhoneNumber="test"
-  address={
-    Object {
-      "addressLine": Array [
-        "addressline 1",
-        "addressline 2",
-      ],
-      "city": "test city",
-      "country": "USA",
-      "firstName": "test",
-      "isComplete": true,
-      "lastName": "test",
-      "state": "test state",
-      "zipCode": "111-111",
-    }
-  }
-  airMiles="XXXXXXX"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-EHOje",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .profileInfoCol {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .profileInformationCol {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .profileInfoSeparator {
-    border: 1px solid ",
-          [Function],
-          ";
-  }
-  .hideOnMobile {
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(PersonalInformation)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-EHOje",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={
-    Object {
-      "lbl_profile_edit_mailing_info": "Edit mailing Info",
-      "lbl_profile_edit_personal_info": "Edit personal Info",
-      "lbl_profile_mailing_address": "Mailing Information",
-      "llbl_profile_personal_information": "Personal Information",
-    }
-  }
-  userBirthday="feb 2019"
-/>
+<Fragment>
+  <Styled(AccountOverviewTile)
+    ctaTitle="Edit personal Info"
+    dataLocator="pi-editpersonalinfo"
+  >
+    <PersonalInformationDisplay
+      airMiles="XXXXXXX"
+      className=""
+      labels={
+        Object {
+          "lbl_profile_edit_mailing_info": "Edit mailing Info",
+          "lbl_profile_edit_personal_info": "Edit personal Info",
+          "lbl_profile_mailing_address": "Mailing Information",
+          "llbl_profile_personal_information": "Personal Information",
+        }
+      }
+      mailingAddress={Object {}}
+      myPlaceNumber=""
+      userBirthday="feb 2019"
+      userEmail=""
+      userFullName=""
+      userPhoneNumber=""
+    />
+  </Styled(AccountOverviewTile)>
+</Fragment>
 `;
 
 exports[`PersonalInformation component should render emptyu correctly 1`] = `
-<StyledComponent
-  MyPlaceNumber=""
-  UserEmail=""
-  UserFullName=""
-  UserPhoneNumber=""
-  address={
-    Object {
-      "addressLine": "",
-      "city": "",
-      "country": "",
-      "firstName": "",
-      "isComplete": false,
-      "lastName": "",
-      "state": "",
-      "zipCode": "",
-    }
-  }
-  airMiles=""
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-EHOje",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .profileInfoCol {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .profileInformationCol {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .profileInfoSeparator {
-    border: 1px solid ",
-          [Function],
-          ";
-  }
-  .hideOnMobile {
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(PersonalInformation)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-EHOje",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={Object {}}
-  userBirthday=""
-/>
+<Fragment>
+  <Styled(AccountOverviewTile)
+    dataLocator="pi-editpersonalinfo"
+  >
+    <PersonalInformationDisplay
+      airMiles=""
+      className=""
+      labels={Object {}}
+      mailingAddress={Object {}}
+      myPlaceNumber=""
+      userBirthday=""
+      userEmail=""
+      userFullName=""
+      userPhoneNumber=""
+    />
+  </Styled(AccountOverviewTile)>
+</Fragment>
 `;

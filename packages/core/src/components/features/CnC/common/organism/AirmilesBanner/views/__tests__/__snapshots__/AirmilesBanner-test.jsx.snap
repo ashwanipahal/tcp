@@ -214,6 +214,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
           </Styled(ReactTooltip)>
         </Styled(Col)>
         <Styled(Col)
+          className="airmilesBannerInput"
           colSize={
             Object {
               "large": 6,
@@ -411,7 +412,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-      textAlign="left"
+      textAlign="center"
     >
       footerText
     </Styled(BodyCopy)>

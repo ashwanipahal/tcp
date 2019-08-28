@@ -5,7 +5,6 @@ import {
   setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
-
 import {
   toggleEmailSignupModal,
   submitEmailSignup,
@@ -92,7 +91,9 @@ const mapDispatchToProps = dispatch => {
               const {
                 labels: { validationErrorLabel },
               } = props;
-              const error = { [fieldName]: validationErrorLabel };
+              const error = {
+                [fieldName]: validationErrorLabel,
+              };
               // eslint-disable-next-line prefer-promise-reject-errors
               return Promise.reject({ ...error, _error: error });
             }
@@ -110,7 +111,9 @@ const mapDispatchToProps = dispatch => {
         const {
           labels: { validationErrorLabel },
         } = props;
-        const error = { [fieldName]: validationErrorLabel };
+        const error = {
+          [fieldName]: validationErrorLabel,
+        };
         // eslint-disable-next-line prefer-promise-reject-errors
         return Promise.reject({ ...error, _error: error });
       }

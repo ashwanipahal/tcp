@@ -24,10 +24,11 @@ export function* getOrderDetailSaga() {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
 }
+
 export function* getCartDataSaga(payload) {
   try {
     const {
-      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo },
+      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo } = {},
     } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
@@ -92,7 +93,13 @@ export function* startCartCheckout() {
   // this.store.dispatch(setVenmoPaymentInProgress(false));
   let res = yield call(getUnqualifiedItems);
   res = res || [];
-  yield all(res.map(item => put(BAG_PAGE_ACTIONS.setItemOOS(item))));
+  yield all(
+    res.map(({ orderItemId, isOOS }) =>
+      isOOS
+        ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
+        : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
+    )
+  );
   const oOSModalOpen = yield call(confirmStartCheckout);
   if (!oOSModalOpen) {
     yield call(checkoutCart);

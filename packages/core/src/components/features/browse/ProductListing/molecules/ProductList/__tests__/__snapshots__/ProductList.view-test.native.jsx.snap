@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductList component should renders correctly 1`] = `
+<Styled(View)>
+  <FlatList
+    columnWrapperStyle={
+      Object {
+        "flex": 1,
+        "justifyContent": "space-around",
+      }
+    }
+    contentContainerStyle={
+      Object {
+        "marginTop": 20,
+      }
+    }
+    data={
+      Array [
+        Object {
+          "productInfo": "",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    extraData={null}
+    horizontal={false}
+    initialNumToRender={8}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={2}
+    numColumns={2}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</Styled(View)>
+`;
