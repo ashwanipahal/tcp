@@ -64,12 +64,14 @@ class LoginView extends React.PureComponent {
       onCreateAccountClick,
       navigation,
       variation,
+      loginError,
     } = this.props;
     return (
       <ScrollViewStyle>
         <LoginSection
           onSubmit={this.onSubmitHandler}
           labels={labels}
+          loginError={loginError}
           loginErrorMessage={loginErrorMessage}
           initialValues={initialValues}
           showRecaptcha={showRecaptcha}
