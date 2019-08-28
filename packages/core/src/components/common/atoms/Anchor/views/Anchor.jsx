@@ -62,6 +62,7 @@ const Anchor = ({
           title={title}
           target={targetVal}
           data-locator={dataLocator}
+          {...other}
         >
           {children || text}
         </a>

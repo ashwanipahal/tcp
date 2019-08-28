@@ -138,6 +138,7 @@ exports[`CouponList component should renders available list 1`] = `
         </Styled(Text)>
       </Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator=""
@@ -280,6 +281,7 @@ exports[`CouponList component should renders available list 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator=""
