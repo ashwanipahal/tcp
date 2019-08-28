@@ -35,5 +35,10 @@
   "peerDependencies": {
     "flow-bin": "^0.82.0",
     "flow-typed": "^2.5.1"
+  },
+  "workspaces": {
+    "nohoist": [
+      "**/next**"
+    ]
   }
 }
