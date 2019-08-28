@@ -85,6 +85,7 @@ exports[`PickUpFormPartVanilla component  should renders correctly props with st
               />
             </Styled(View)>
             <Styled(Anchor)
+              accessibilityLabel=""
               anchorVariation="primary"
               customStyle={Object {}}
               fontSizeVariation="small"
@@ -208,6 +209,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
               />
             </Styled(View)>
             <Styled(Anchor)
+              accessibilityLabel=""
               anchorVariation="primary"
               customStyle={Object {}}
               fontSizeVariation="small"
