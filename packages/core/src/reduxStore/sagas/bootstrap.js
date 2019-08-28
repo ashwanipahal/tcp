@@ -1,10 +1,12 @@
 import { call, put, putResolve, takeLatest } from 'redux-saga/effects';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
+import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
 import {
   loadLayoutData,
   loadLabelsData,
   loadModulesData,
   setAPIConfig,
+  loadXappConfigData,
   setDeviceInfo,
   setOptimizelyFeaturesList,
   setCountry,
@@ -44,6 +46,8 @@ function* bootstrap(params) {
     yield put(setCountry(country));
     yield put(setCurrency(currency));
     yield put(setLanguage(language));
+    const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
+    yield put(loadXappConfigData(xappConfig));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);

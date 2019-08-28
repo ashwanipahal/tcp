@@ -14,7 +14,7 @@ import {
   ScrollViewWrapper,
 } from '../styles/BagPage.style.native';
 
-const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
+const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheckout }) => {
   return (
     <>
       <ScrollViewWrapper showAddTobag={showAddTobag}>
@@ -34,7 +34,12 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
           </RowSectionStyle>
         </MainSection>
       </ScrollViewWrapper>
-      <AddedToBagActions labels={labels} showAddTobag={showAddTobag} navigation={navigation} />
+      <AddedToBagActions
+        handleCartCheckout={handleCartCheckout}
+        labels={labels}
+        showAddTobag={showAddTobag}
+        navigation={navigation}
+      />
     </>
   );
 };
@@ -44,6 +49,7 @@ BagPage.propTypes = {
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
 };
 
 export default BagPage;

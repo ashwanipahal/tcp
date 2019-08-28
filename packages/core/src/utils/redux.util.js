@@ -1,11 +1,12 @@
 import { filterActions } from 'redux-ignore';
 import { REDUCER_ACTION_MAPPING } from '../constants/reducer.constants';
 
-/*
-getReducerKeyByAction is used to get the key of reducer in redux-state by name of Action dispatched.
+/**
+@summary getReducerKeyByAction is used to get the key of reducer in redux-state by name of Action dispatched.
 This is being used in cache.util to automatically derive which reducer will be validated for caching.
 arguments:
-actionName - string - Name of the action dispatched
+@param {string} actionName - Name of the action dispatched
+@returns {string} - key of the reducer
 */
 
 export const getReducerKeyByAction = actionName => {
@@ -21,22 +22,24 @@ export const getReducerKeyByAction = actionName => {
   return reducerKey;
 };
 
-/*
-getActionPatternByReducerKey is used to get pattern of action names by the key of reducer in redux-state.
+/**
+@summary getActionPatternByReducerKey is used to get pattern of action names by the key of reducer in redux-state.
 This is being used in createFilteredReducer method to automatically derive what action pattern needs to be filtered out for the provided reducer.
 arguments:
-reducerName - string - key of the reducer in redux-state
+@param {string} reducerName - key of the reducer in redux-state
+@returns {string} - action pattern based on the reducer
 */
 
-const getActionPatternByReducerKey = reducerName => REDUCER_ACTION_MAPPING[reducerName];
+export const getActionPatternByReducerKey = reducerName => REDUCER_ACTION_MAPPING[reducerName];
 
-/*
-getReducerKeyByAction is used to create a Higher order reducer to filter out actions not matching a certain action name pattern.
-This method overrides the redux-ignore library's method to extend it for any reducer.
-arguments:
-reducer - Function - Reducer to be filtered
-reducerKey - String - key of the reducer in redux-state
-*/
+/**
+ * @summary getReducerKeyByAction is used to create a Higher order reducer to filter out actions not matching a certain action name pattern.
+ * This method overrides the redux-ignore library's method to extend it for any reducer.
+ * arguments
+ * @param {string} reducer - Reducer to be filtered
+ * @param {String} reducerKey - key of the reducer in redux-state
+ * @returns {Function} Reducer Function with a Filter
+ */
 
 export const createFilteredReducer = (reducer, reducerKey) => {
   const pattern = getActionPatternByReducerKey(reducerKey);
