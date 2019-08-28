@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
@@ -67,7 +67,7 @@ class LoginForm extends React.PureComponent<Props> {
     const { labels, handleSubmit, onSubmit, variation, loginErrorMessage, loginError } = this.props;
     const { type } = this.state;
     return (
-      <React.Fragment>
+      <Fragment>
         {loginError && (
           <Notification
             status="error"
@@ -151,7 +151,7 @@ class LoginForm extends React.PureComponent<Props> {
           />
           <LineComp marginTop={28} />
         </View>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
