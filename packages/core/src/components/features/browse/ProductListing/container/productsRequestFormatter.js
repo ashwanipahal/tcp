@@ -1,3 +1,4 @@
+/* eslint-disable */
 import queryString from 'query-string';
 import { bindAllClassMethodsToThis } from '../../../../../utils';
 import BucketingBL from './bucketingLogicHelper';
@@ -20,6 +21,7 @@ import {
 } from './ProductListing.util';
 import PAGES from '../../../../../constants/pages.constants';
 import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
+import { getLastLoadedPageNumber } from './ProductListing.selectors';
 
 // Dummy store value till this user info is available
 const userStoreView = {
@@ -241,7 +243,7 @@ export default class ProductsOperator {
       pageNumber,
       location,
       start: this.bucketingConfig.start,
-      productsToFetchPerLoad: this.bucketingConfig.productsToFetchPerLoad,
+      numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
       categoryPathMap,
     });
     // TODO - .then of the this.getProductsListingInfo is removed from here add it back
@@ -453,4 +455,91 @@ export default class ProductsOperator {
         return products;
       });
   }
+
+  getProductsListingMoreProducts(state) {
+    // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
+
+    // const lastLoadedPageNumber = productListingStoreView.getLastLoadedPageNumber(state);
+    // if (lastLoadedPageNumber >= productListingStoreView.getMaxPageNumber(state)) {
+    //   return Promise.resolve(); // nothing more to load
+    // }
+    const lastLoadedPageNumber = getLastLoadedPageNumber(state);
+    console.log('lastLoadedPageNumber', lastLoadedPageNumber);
+
+    // const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
+    // const sort = productListingStoreView.getAppliedSort(state);
+
+    // const appliedFiltersAndSort = { ...appliedFiltersIds, sort, };
+    const appliedFiltersAndSort = {};
+    return this.getProductsListingInfo({
+      state,
+      filtersAndSort: appliedFiltersAndSort,
+      pageNumber: lastLoadedPageNumber + 1,
+    });
+    // return this.getProductsListingInfo({
+    //   state,
+    //   filtersAndSort: appliedFiltersAndSort,
+    //   pageNumber: lastLoadedPageNumber + 1
+    // }
+
+    // ).then((res) => {
+    //   console.log('res', res);
+    //   // this.store.dispatch([getAppendListingProductsPageActn(res.loadedProducts), getSetRenderProductListingFlagActn(true)]);
+    // }).catch((err) => {
+    //   console.log(err);
+    //   // logErrorAndServerThrow(this.store, 'ProductsOperator.getProductsListingMoreProducts', err);
+    // });
+  }
+
+  /**
+   * @funtion getMoreBucketedProducts We have a functionality on PLP page of lazy load and the next set of products are loaded when the user scrolls
+   *          down. Under DTN:6529 , we need to check if the lazy load is happening on the scenario where the bucketing is required. If it does then
+   *          we need to trigger multiple L3 calls on the basis of what all L3's are left in this.bucketingConfig.L3left variable.
+   */
+
+  getMoreBucketedProducts = state => {
+    // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
+    // const state = this.store.getState();
+    // const sort = productListingStoreView.getAppliedSort(state);
+    const sort = [];
+    // If this is not a bucketing scenario and if the sort parameter is applied then we need to follow the original approach.
+    if (this.shouldApplyUnbxdLogic && this.bucketingConfig.bucketingSeqScenario && !sort) {
+      // If no L3 are left to load means we have brought all the products in current L2, then we need to resolve the promise.
+      if (!this.bucketingConfig.L3Left.length) {
+        return Promise.resolve(); // nothing more to load
+      }
+      // const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
+      // const sort = productListingStoreView.getAppliedSort(state);
+      const categoryNameList = [...this.bucketingConfig.currL2NameList];
+      // Pushing the first L3 available in L3left variable
+      categoryNameList.push(this.bucketingConfig.L3Left[0]);
+      const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
+      // Constructing the category path of the L3
+      const categoryPathMap = categoryNameList
+        ? categoryNameList.map(item => item.categoryId).join('>')
+        : '';
+      return this.getProductsListingInfo({
+        state,
+        filtersAndSort: appliedFiltersAndSort,
+        pageNumber: false,
+        location: routingInfoStoreView.getHistory(this.store.getState()).location,
+        start: this.bucketingConfig.start,
+        numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
+        categoryPathMap,
+      });
+      // .then(res => {
+      //   // We need to update the start, products to be fetched, params
+      //   const updatedBucketingConfig = this.bucketingLogic.updateBucketingParamters(
+      //     res,
+      //     this.bucketingConfig
+      //   );
+      //   ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
+      //   // this.store.dispatch([getAppendListingProductsPageActn(res.loadedProducts), getSetRenderProductListingFlagActn(true)]);
+      // })
+      // .catch(err => {
+      //   // logErrorAndServerThrow(this.store, 'ProductsOperator.getProductsListingMoreProducts', err);
+      // });
+    }
+    return this.getProductsListingMoreProducts(state);
+  };
 }

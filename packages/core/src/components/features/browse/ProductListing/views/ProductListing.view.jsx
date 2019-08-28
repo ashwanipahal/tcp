@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
-import ProductList from '../molecules/ProductList/views';
+// import ProductList from '../molecules/ProductList/views';
+import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
@@ -10,7 +11,7 @@ import ProductListingStyle from '../ProductListing.style';
 
 const ProductListView = ({
   className,
-  products,
+  productsBlock,
   currentNavIds,
   navTree,
   breadCrumbs,
@@ -44,12 +45,13 @@ const ProductListView = ({
             <div className="filter-area">FilterArea</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductList
+            <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
+            {/* <ProductList
               products={products}
               className={`${className} product-list`}
               labels={labels}
               {...otherProps}
-            />
+            /> */}
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ReadMore
@@ -66,7 +68,7 @@ const ProductListView = ({
 
 ProductListView.propTypes = {
   className: PropTypes.string,
-  products: PropTypes.arrayOf(PropTypes.shape({})),
+  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   longDescription: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
@@ -77,7 +79,7 @@ ProductListView.propTypes = {
 
 ProductListView.defaultProps = {
   className: '',
-  products: [],
+  productsBlock: [],
   longDescription: [],
   currentNavIds: [],
   navTree: {},

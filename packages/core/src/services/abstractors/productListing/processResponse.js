@@ -163,7 +163,7 @@ const processResponse = (
     appliedSortId: sort,
     currentNavigationIds: processHelpers.getCurrentNavigationIds(res),
     breadCrumbTrail: processHelpers.getBreadCrumbTrail(breadCrumbs),
-    loadedProducts: [],
+    loadedProductsPages: [[]],
     searchResultSuggestions: processHelpers.getSearchResultsSuggestion(res.body.didYouMean),
     unbxdBanners: processHelpers.getUnbxdBanners(res.body.banner),
     entityCategory,
