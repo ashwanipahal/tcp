@@ -36,6 +36,7 @@ const Abstractor = {
   processData: navLinkList => {
     return navLinkList.map(listItem => {
       const subCategories = {};
+      const hasL2 = listItem.subCategories && listItem.subCategories.length;
       listItem.subCategories.map(subCategory => {
         const subCat = subCategory;
         const category = subCat.categoryContent.groupIdentifierName || UNIDENTIFIED_GROUP;
@@ -49,12 +50,13 @@ const Abstractor = {
             items: [],
           };
         }
+        subCat.hasL3 = subCategory.subCategories && subCategory.subCategories.length;
+        subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
         subCat.subCategories.map(subCategoryL3 => {
           const subCatL3 = subCategoryL3;
           subCatL3.url = Abstractor.constructUrl(subCategoryL3.categoryContent);
           return subCatL3;
         });
-        subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
         subCategories[category].items.push(subCat);
         return subCategory;
       });
@@ -66,6 +68,7 @@ const Abstractor = {
       return {
         categoryContent,
         subCategories,
+        hasL2,
         url: Abstractor.constructUrl(listItem.categoryContent),
         categoryId: listItem.categoryContent.catgroupId,
       };

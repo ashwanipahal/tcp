@@ -5,7 +5,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
 
 import CountrySelectorModal from './CountrySelectorModal';
-import style from '../styles/CountrySelector.styles';
+import style from '../styles/CountrySelector.style';
 
 /**
  * @class CountrySelector - Invokes a country, language, currency change selector

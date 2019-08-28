@@ -45,6 +45,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       />
       <Styled(View)>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           customStyle={Object {}}
           dataLocator="addedToBag-continueShopping"

@@ -29,11 +29,7 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
-// @flow
-
-type Props = {};
-
-class CardTile extends React.Component<Props> {
+class CardTile extends React.Component {
   static propTypes = {
     card: PropTypes.shape({}),
     labels: PropTypes.shape({}),

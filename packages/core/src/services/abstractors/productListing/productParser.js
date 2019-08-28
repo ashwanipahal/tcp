@@ -307,7 +307,7 @@ export const parseProductInfo = (
         res.body.response.products,
         colorDetails
       );
-      if (colorDetailsCondition) {
+      if (colorDetailsCondition(colorDetails, product, swatchOfAvailableProduct)) {
         colorsMap.push({
           colorProductId: colorDetails[0],
           imageName: colorDetails[0],
