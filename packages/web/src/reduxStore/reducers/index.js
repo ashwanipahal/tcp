@@ -96,6 +96,11 @@ const filteredProductListingPageReducer = createFilteredReducer(
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+// TODO: filteredSessionConfigReducer should be used, but issue with immutable map to be corrected
+// const filteredSessionConfigReducer = createFilteredReducer(
+//   SessionConfigReducer,
+//   SESSIONCONFIG_REDUCER_KEY
+// );
 
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,

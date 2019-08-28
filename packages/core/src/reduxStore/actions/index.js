@@ -15,6 +15,13 @@ export const loadLabelsData = payload => {
   };
 };
 
+export const loadXappConfigData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_XAPP_CONFIG,
+  };
+};
+
 export const setAPIConfig = payload => {
   return {
     payload,
