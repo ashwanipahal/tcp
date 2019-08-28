@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Slider from 'react-slick';
+
 import { CarouselVanilla } from '../views/Carousel';
 
-const playButton = '.tcp_carousel__play';
+const playButton = '.tcp_carousel__play_pause_button';
 describe('Carousel component', () => {
   const CarouselTest = new CarouselVanilla();
   beforeEach(() => {
@@ -25,7 +27,10 @@ describe('Carousel component', () => {
       },
     };
     const wrapper = shallow(<CarouselVanilla {...props} />);
-    expect(wrapper.find(playButton)).toHaveLength(1);
+    const Dots = wrapper.find(Slider).props().appendDots;
+    const dotsWrapper = shallow(<Dots />);
+
+    expect(dotsWrapper.find(playButton)).toHaveLength(1);
   });
 
   it('show play button if autoplay: true prop is passed', () => {
@@ -40,7 +45,10 @@ describe('Carousel component', () => {
       },
     };
     const wrapper = shallow(<CarouselVanilla {...props} />);
-    expect(wrapper.find(playButton)).toHaveLength(0);
+    const Dots = wrapper.find(Slider).props().appendDots;
+    const dotsWrapper = shallow(<Dots />);
+
+    expect(dotsWrapper.find(playButton)).toHaveLength(0);
   });
 
   it('togglePlay function working properly', () => {

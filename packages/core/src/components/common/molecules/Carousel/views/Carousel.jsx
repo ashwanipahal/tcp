@@ -55,20 +55,33 @@ class Carousel extends React.PureComponent<Props, State> {
    */
   getPlayButton(wrapperConfig: Object) {
     const { autoplay } = this.state;
+    const buttonClass = 'tcp_carousel__play_pause_button';
     return autoplay ? (
-      <Image
-        className="tcp_carousel__play"
+      <button
+        className={buttonClass}
         data-locator={wrapperConfig.dataLocatorPause}
-        src={getIconPath('icon-pause')}
         onClick={this.pause}
-      />
+        aria-label="Pause"
+      >
+        <Image
+          className="tcp_carousel__play_pause_button_icon"
+          aria-hidden="true"
+          src={getIconPath('icon-pause')}
+        />
+      </button>
     ) : (
-      <Image
-        className="tcp_carousel__play"
+      <button
+        className={buttonClass}
         data-locator={wrapperConfig.dataLocatorPlay}
-        src={getIconPath('icon-play')}
         onClick={this.play}
-      />
+        aria-label="Play"
+      >
+        <Image
+          className="tcp_carousel__play_pause_button_icon"
+          aria-hidden="true"
+          src={getIconPath('icon-play')}
+        />
+      </button>
     );
   }
 
@@ -108,7 +121,20 @@ class Carousel extends React.PureComponent<Props, State> {
    */
   render() {
     const { options, children, carouselConfig, className } = this.props;
-    const settings = { ...defaults, ...options };
+    const settings = {
+      appendDots: dots => {
+        return (
+          <div>
+            {carouselConfig.autoplay &&
+              !options.hidePlayPause &&
+              this.getPlayButton(carouselConfig)}
+            <ul>{dots}</ul>
+          </div>
+        );
+      },
+      ...defaults,
+      ...options,
+    };
 
     return (
       <div
@@ -119,7 +145,6 @@ class Carousel extends React.PureComponent<Props, State> {
         <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
           {!children ? null : children}
         </Slider>
-        {carouselConfig.autoplay && !options.hidePlayPause && this.getPlayButton(carouselConfig)}
       </div>
     );
   }
