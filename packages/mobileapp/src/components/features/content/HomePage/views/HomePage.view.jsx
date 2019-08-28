@@ -55,12 +55,6 @@ class HomePageView extends React.Component {
     return (
       <ScrollView>
         <React.Fragment>
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            text="CheckOut"
-            onPress={() => navigation.navigate('Checkout')}
-          />
           {slotA && <SlotA {...slotA} navigation={navigation} />}
           {slotB && <SlotB {...slotB} navigation={navigation} />}
           {slotC && <SlotC {...slotC} navigation={navigation} />}

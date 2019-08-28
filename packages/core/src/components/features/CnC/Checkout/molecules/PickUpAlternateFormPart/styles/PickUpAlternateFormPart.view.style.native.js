@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 const Style = css``;
 
 const AlternateWrapper = styled.View`
-  margin-top: 20px;
+  margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 
 const FieldWrapper = styled.View`
@@ -28,7 +28,7 @@ const TextColTwo = styled.View`
 `;
 
 const AlternateFieldWrapper = styled.View`
-  margin-top: 28px;
+  margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
 `;
 
 export {

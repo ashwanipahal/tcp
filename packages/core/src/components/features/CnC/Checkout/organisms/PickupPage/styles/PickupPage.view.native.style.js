@@ -6,8 +6,8 @@ const FormStyle = css`
 
 const Container = styled.View`
   flex: 1;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const NavigationBar = styled.View`
@@ -17,9 +17,9 @@ const NavigationBar = styled.View`
 const NavTitle = styled.Text``;
 
 const PickUpHeading = styled.Text`
-  font-size: 26px;
+  font-size: ${props => props.theme.typography.fontSizes.fs26};
   font-family: ${props => props.theme.typography.fonts.primary};
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.TEXT.DARK};
 `;
 
 const PickupError = styled.View``;
