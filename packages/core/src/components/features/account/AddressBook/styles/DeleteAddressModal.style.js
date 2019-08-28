@@ -14,8 +14,8 @@ const DeleteAddressModalStyle = css`
     width: 100%;
   }
   .deleteAddressModal_addressToDelete {
-    margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} auto
-      ${props => props.theme.spacing.LAYOUT_SPACING.LRG} auto;
+    margin: ${props => props.theme.spacing.LAYOUT_SPACING.XS} auto
+      ${props => props.theme.spacing.LAYOUT_SPACING.MED} auto;
     display: block;
     width: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
     word-break: break-word;
