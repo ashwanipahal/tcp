@@ -73,6 +73,25 @@ export default css`
     cursor: pointer;
     width: 10px;
     height: 10px;
+    padding-top: 9px;
+  }
+
+  .product-detail {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-detail-row {
+    width: 100%;
+  }
+
+  .unavailable-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .unavailable-error {
+    padding-top: 9px;
   }
 
   .product-tile-wrapper {
