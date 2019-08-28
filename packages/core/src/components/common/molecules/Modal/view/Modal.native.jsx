@@ -8,7 +8,6 @@ import {
   ModalHeading,
   LineWrapper,
   RowWrapper,
-  ModalHeadingWrapper,
   ImageWrapper,
 } from '../Modal.style.native';
 
@@ -54,27 +53,25 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   } = otherProps;
   return (
     <SafeAreaView>
-      <StatusBar hidden />
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
+        <StatusBar hidden />
         {heading && (
           <RowWrapper>
-            <ModalHeadingWrapper>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={headingFontFamily || 'primary'}
-                  fontWeight="extrabold"
-                  textAlign={headingAlign}
-                  fontSize={fontSize || 'fs16'}
-                  text={heading}
-                />
-              </ModalHeading>
-            </ModalHeadingWrapper>
+            <ModalHeading>
+              <BodyCopy
+                mobileFontFamily={headingFontFamily || 'primary'}
+                fontWeight="extrabold"
+                textAlign={headingAlign}
+                fontSize={fontSize || 'fs16'}
+                text={heading}
+              />
+            </ModalHeading>
             {getCloseIcon({ onRequestClose, headerStyle })}
           </RowWrapper>
         )}
         {horizontalBar ? (
           <LineWrapper>
-            <LineComp marginTop={5} borderWidth={1} borderColor={borderColor} />
+            <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
           </LineWrapper>
         ) : null}
         {children}

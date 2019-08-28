@@ -40,7 +40,7 @@ const SetDefaultShippingWrapper = styled.View`
 const AddAddressWrapper = styled.View`
   flex: 1;
   flex-direction: column;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const EmptyView = styled.View`

@@ -218,10 +218,12 @@ exports[`AddressForm component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Field
+        bounces={false}
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,
@@ -651,6 +653,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
           "itemStyle": null,

@@ -92,7 +92,6 @@ class AddressForm extends React.PureComponent {
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
-              dispatch(change('AddressForm', 'addressLine1', data));
               this.handlePlaceSelected(data, inputValue);
             }}
             dataLocator="addnewaddress-addressl1"
@@ -123,6 +122,7 @@ class AddressForm extends React.PureComponent {
             <Field
               id="state"
               name="state"
+              bounces={false}
               component={DropDown}
               heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"
