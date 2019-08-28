@@ -74,9 +74,11 @@ export class TextBox extends React.Component {
   };
 
   handleBlur = () => {
+    const { input } = this.props;
     this.setState({
       isFocused: false,
     });
+    input.onBlur(input.value);
   };
 
   getErrorMsg = () => {
@@ -208,11 +210,7 @@ export class TextBox extends React.Component {
                 {this.getErrorMsg()}
               </StyledTextBoxWrapper>
             )}
-            {!error && (
-              <StyledTextBoxWrapper marginBottom={marginBottom}>
-                {this.getSuccessMsg()}
-              </StyledTextBoxWrapper>
-            )}
+            {!error && <StyledTextBoxWrapper>{this.getSuccessMsg()}</StyledTextBoxWrapper>}
           </View>
         )}
       </View>

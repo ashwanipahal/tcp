@@ -3,6 +3,8 @@ const next = require('next');
 const helmet = require('helmet');
 const device = require('express-device');
 const RoutesMap = require('./routes');
+const redis = require('async-redis');
+
 const {
   settingHelmetConfig,
   settingDeviceConfig,
@@ -16,6 +18,8 @@ const {
   getExpressMiddleware,
 } = require('@tcp/core/src/utils/errorReporter.util');
 const { ENV_DEVELOPMENT } = require('@tcp/core/src/constants/env.config');
+
+const { connectRedis } = require('@tcp/core/src/utils/redis.util');
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
@@ -80,6 +84,12 @@ const setBrandId = (req, res) => {
   }
   res.locals.brandId = brandId;
 };
+
+connectRedis({
+  REDIS_CLIENT: redis,
+  REDIS_HOST: process.env.RWD_REDIS_HOST,
+  REDIS_PORT: process.env.RWD_WEB_REDIS_PORT,
+});
 
 const setHostname = (req, res) => {
   const { hostname } = req;

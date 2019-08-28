@@ -1,5 +1,6 @@
 import React from 'react';
-import { Platform, Animated, Easing } from 'react-native';
+import { Animated, Easing } from 'react-native';
+import { isAndroid } from '@tcp/core/src/utils';
 
 import {
   getSecondAppLogo,
@@ -76,7 +77,7 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
    */
   render() {
     // Shadow not supported in android, so set border for android
-    const borderWidth = Platform.OS === 'android' ? 1 : 0;
+    const borderWidth = isAndroid() ? 1 : 0;
     const shadowColor = getSecondBrandThemeColor();
     const { image, imageContainer } = styles;
 

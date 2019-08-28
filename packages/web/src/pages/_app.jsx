@@ -110,7 +110,7 @@ class TCPWebApp extends App {
             optimizelyHeaderValue = JSON.parse(
               res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
             );
-          } catch {
+          } catch (err) {
             optimizelyHeaderValue = {};
           }
           optimizelyHeadersObject[item] = optimizelyHeaderValue;

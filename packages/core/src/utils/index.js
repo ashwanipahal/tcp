@@ -37,6 +37,7 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
 } from './utils';

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
@@ -33,27 +34,39 @@ class AccountOverview extends PureComponent<Props> {
       getComponentId: {
         login: '',
         createAccount: '',
+        trackOrder: '',
         favorites: '',
       },
     };
   }
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
-    return (
-      <React.Fragment>
-        {(getComponentId.login || getComponentId.favorites) && (
-          <LoginPageContainer
-            onRequestClose={this.toggleModal}
-            navigation={navigation}
-            isUserLoggedIn={isUserLoggedIn}
-            variation={getComponentId.favorites && 'favorites'}
-          />
-        )}
-        {getComponentId.createAccount && (
-          <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
-        )}
-      </React.Fragment>
-    );
+    let componentContainer = null;
+    if (getComponentId.login || getComponentId.favorites) {
+      componentContainer = (
+        <LoginPageContainer
+          onRequestClose={this.toggleModal}
+          navigation={navigation}
+          isUserLoggedIn={isUserLoggedIn}
+          variation={getComponentId.favorites && 'favorites'}
+        />
+      );
+    }
+    if (getComponentId.createAccount) {
+      componentContainer = (
+        <CreateAccount
+          showLogin={this.showloginModal}
+          navigation={navigation}
+          onRequestClose={this.toggleModal}
+        />
+      );
+    }
+    if (getComponentId.trackOrder) {
+      componentContainer = (
+        <TrackOrderContainer navigation={navigation} onRequestClose={this.toggleModal} />
+      );
+    }
+    return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
   showloginModal = () => {
@@ -65,24 +78,41 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   toggleModal = ({ getComponentId }) => {
-    const { showModal } = this.state;
-    this.setState({
-      showModal: !showModal,
+    this.setState(state => ({
+      showModal: !state.showModal,
       getComponentId: getComponentId
         ? {
             login: getComponentId.login,
             createAccount: getComponentId.createAccount,
+            trackOrder: getComponentId.trackOrder,
             favorites: getComponentId.favorites,
           }
         : '',
-    });
+    }));
+  };
+
+  getModalHeader = (getComponentId, labels) => {
+    let header = null;
+    if (getComponentId.login || getComponentId.favorites) {
+      header = labels.lbl_overview_login_text;
+    }
+    if (getComponentId.createAccount) {
+      header = labels.lbl_overview_createAccount;
+    }
+    if (getComponentId.trackOrder) {
+      header = labels.lbl_overview_trackYourOrder;
+    }
+    return header;
   };
 
   render() {
-    const viewContainerStyle = { marginTop: 15 };
-    const colorPallete = createThemeColorPalette();
     const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
     const { showModal, getComponentId } = this.state;
+    const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
+    const viewContainerStyle = { marginTop: 15 };
+    const colorPallete = createThemeColorPalette();
+    const isTrackOrder = getComponentId.trackOrder;
+
     return (
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
@@ -143,6 +173,7 @@ class AccountOverview extends PureComponent<Props> {
                       login: false,
                       createAccount: true,
                       favorites: false,
+                      trackOrder: false,
                     },
                   })
                 }
@@ -165,6 +196,7 @@ class AccountOverview extends PureComponent<Props> {
                       login: true,
                       createAccount: false,
                       favorites: false,
+                      trackOrder: false,
                     },
                   })
                 }
@@ -173,13 +205,13 @@ class AccountOverview extends PureComponent<Props> {
 
             {showModal && (
               <ModalNative
-                heading={
-                  ((getComponentId.login || getComponentId.favorites) &&
-                    `${labels.lbl_overview_login_text}`) ||
-                  (getComponentId.createAccount && `${labels.lbl_overview_createAccount}`)
-                }
                 isOpen={showModal}
                 onRequestClose={this.toggleModal}
+                heading={modalHeaderLbl}
+                horizontalBar={!isTrackOrder}
+                headingAlign={isTrackOrder ? 'center' : ''}
+                headingFontFamily="secondary"
+                fontSize={isTrackOrder ? 'fs22' : 'fs16'}
               >
                 <SafeAreaView>
                   <ModalViewWrapper>
@@ -225,9 +257,22 @@ class AccountOverview extends PureComponent<Props> {
 
             <Panel title={labels.lbl_overview_purchase_giftCards} isVariationTypeLink />
             <Panel title={labels.lbl_overview_refer_friend} isVariationTypeLink />
-
+            <Panel
+              title={labels.lbl_overview_trackYourOrder}
+              isVariationTypeLink
+              handleComponentChange={e =>
+                this.toggleModal({
+                  e,
+                  getComponentId: {
+                    login: false,
+                    createAccount: false,
+                    trackOrder: true,
+                    favorites: false,
+                  },
+                })
+              }
+            />
             <UnderlineStyle />
-
             <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
             <Panel title={labels.lbl_overview_help} isVariationTypeLink />
             <Panel title={labels.lbl_overview_messages} isVariationTypeLink />
