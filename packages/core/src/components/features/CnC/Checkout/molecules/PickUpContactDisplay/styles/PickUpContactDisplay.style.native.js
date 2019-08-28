@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import { css } from 'styled-components/native';
 
 const FormStyle = css`
   width: 100%;
