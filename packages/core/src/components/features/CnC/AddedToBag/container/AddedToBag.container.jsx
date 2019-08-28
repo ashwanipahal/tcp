@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeAddedToBag } from './AddedToBag.actions';
 import { getAddedToBagData, isOpenAddedToBag, getQuantityValue } from './AddedToBag.selectors';
-import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 import AddedToBag from '../views/AddedToBag.view';
 
 // @flow
@@ -12,7 +11,6 @@ type Props = {
   isOpenDialog: boolean,
   labels: any,
   quantity: number,
-  orderHasPickup: boolean,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -28,13 +26,12 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { addedToBagData, isOpenDialog, labels, quantity, orderHasPickup } = this.props;
+    const { addedToBagData, isOpenDialog, labels, quantity } = this.props;
     return (
       <AddedToBag
         openState={isOpenDialog}
         onRequestClose={this.closeModal}
         addedToBagData={addedToBagData}
-        orderHasPickup={orderHasPickup}
         labels={labels}
         quantity={quantity}
         handleContinueShopping={this.closeModal}
@@ -78,7 +75,6 @@ const mapStateToProps = state => {
     },
   } = state.Labels;
   return {
-    orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
     addedToBagData: getAddedToBagData(state),
     isOpenDialog: isOpenAddedToBag(state),
     quantity: getQuantityValue(state),
