@@ -82,4 +82,44 @@ describe('Country Selector Component', () => {
     expect(component.find('.countrySelector__shipTo')).toHaveLength(1);
     expect(component.find(CountrySelectorModal)).toHaveLength(1);
   });
+
+  it('should call getSelectedCurrency', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().getSelectedCurrency();
+  });
+
+  it('should call openModal', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().openModal();
+  });
+
+  it('should call closeModal', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().closeModal();
+  });
+
+  it('should call getCountryListData', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().getCountryListData();
+  });
+
+  it('should call getSelectedCountry', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().getSelectedCountry();
+  });
+
+  it('should call submitForm', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().submitForm();
+  });
+
+  it('should call changeLanguage', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().changeLanguage();
+  });
+
+  it('should call updateCurrency', async () => {
+    const component = shallow(<CountrySelectorVanilla {...props} />);
+    component.instance().updateCurrency();
+  });
 });

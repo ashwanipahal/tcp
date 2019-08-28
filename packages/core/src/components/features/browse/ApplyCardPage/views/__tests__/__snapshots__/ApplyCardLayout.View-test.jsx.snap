@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplyCardLayoutView component should renders correctly 1`] = `
+<styled.div>
+  <ApplicationInProgress
+    labels={Object {}}
+  />
+</styled.div>
+`;
+
+exports[`ApplyCardLayoutView component should renders correctly considering selective arguments are passed 1`] = `
+<styled.div>
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="PLCCForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</styled.div>
+`;

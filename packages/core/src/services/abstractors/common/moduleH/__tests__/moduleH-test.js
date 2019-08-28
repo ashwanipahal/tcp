@@ -16,3 +16,7 @@ it('ModuleH Abstractor | getMock', () => {
   const data = ModuleHAbstractor.getMock();
   expect(data).toMatchObject(mock);
 });
+
+it('ModuleH Abstractor | processData', () => {
+  ModuleHAbstractor.processData();
+});

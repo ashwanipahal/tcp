@@ -27,6 +27,7 @@ const NavBar = props => {
           let categoryLayout = [];
           let sizesRange = [];
           const settings = {};
+
           if (navL1Item.categoryContent.mainCategory) {
             const { mainCategory } = navL1Item.categoryContent;
             const { categoryLayout: catLayout, sizesRange: sizRange, set } = mainCategory;

@@ -70,8 +70,8 @@ export const formValidationMessages = {
     validEmail: 'Email format is invalid',
   },
   emailAddress: {
-    required: `ERROR: Please enter a valid email`,
-    emailPattern: 'ERROR: Email format is invalid',
+    required: `Please enter a valid email`,
+    emailPattern: 'Email format is invalid',
   },
   confirmEmailAddress: {
     required: 'Please confirm your email address',
@@ -95,7 +95,26 @@ export const formValidationMessages = {
     validEmail: 'ERROR: Email format is invalid',
   },
   iAgree: {
-    required: 'Please Select',
+    required: 'You must agree to the Terms and Conditions to submit the form',
+  },
+  preScreenCode: {
+    alphanumeric: 'Please enter a valid pre-screen code',
+  },
+  ssNumber: {
+    ssn: 'Please enter the last 4 digits of your social security number',
+  },
+  birthDate: 'Please enter a valid date of birth',
+  statewocountry: {
+    required: 'Please enter a valid state',
+  },
+  date: {
+    dob: 'Please select a day',
+  },
+  month: {
+    dob: 'Please select a month',
+  },
+  year: {
+    dob: 'Please select a year',
   },
   orderNumber: 'ERROR: Please enter a valid order number.',
 };
@@ -226,6 +245,24 @@ export const formValidationRules = {
   },
   iAgree: {
     required: true,
+  },
+  preScreenCode: {
+    alphanumeric: true,
+  },
+  ssNumber: {
+    ssn: true,
+  },
+  statewocountry: {
+    required: true,
+  },
+  date: {
+    dob: true,
+  },
+  month: {
+    dob: true,
+  },
+  year: {
+    dob: true,
   },
 };
 

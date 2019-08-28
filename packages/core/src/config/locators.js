@@ -171,4 +171,23 @@ export default {
 
   // Track Order Locator
   track_order_click_here: 'track_order_click_here',
+
+  // PLCC Locators
+  plcc_first_name: 'plcc_first_name',
+  plcc_middle_name: 'plcc_middle_name',
+  plcc_last_name: 'plcc_last_name',
+  plcc_address_1: 'plcc_address_1',
+  plcc_address_2: 'plcc_address_2',
+  plcc_city: 'plcc_city',
+  plcc_state: 'plcc_state',
+  plcc_zip_code: 'plcc_zip_code',
+  plc_mobile_no: 'plc_mobile_no',
+  plcc_email: 'plcc_email',
+  plcc_alt_mobile_no: 'plcc_alt_mobile_no',
+  plcc_date: 'plcc_date',
+  plcc_month: 'plcc_month',
+  plcc_year: 'plcc_year',
+  plcc_SSN: 'plcc_SSN',
+  plcc_submit_btn: 'plcc_submit_btn',
+  plcc_back_btn: 'plcc_back_btn',
 };
