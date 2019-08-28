@@ -15,8 +15,8 @@ import { isCanada } from '@tcp/core/src/utils';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/AddEditPersonalInformationForm.style';
-import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants'
-import internalEndpoints from '../../../../common/internalEndpoints'
+import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants';
+import internalEndpoints from '../../../../common/internalEndpoints';
 
 export const AddEditPersonalInformationForm = ({
   className,
@@ -26,7 +26,7 @@ export const AddEditPersonalInformationForm = ({
   handleSubmit,
   birthMonthOptionsMap,
   birthYearOptionsMap,
-  isEmployee
+  isEmployee,
 }) => {
   return (
     <form
@@ -50,7 +50,7 @@ export const AddEditPersonalInformationForm = ({
             id="firstName"
             type="text"
             component={TextBox}
-            dataLocator="addnewaddress-firstname"
+            dataLocator="editPersonalInfo-firstname"
           />
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }} className="addEditPersonallastName">
@@ -59,7 +59,7 @@ export const AddEditPersonalInformationForm = ({
             name="lastName"
             id="lastName"
             component={TextBox}
-            dataLocator="addnewaddress-lastname"
+            dataLocator="editPersonalInfo-lastname"
           />
         </Col>
       </Row>
@@ -71,7 +71,7 @@ export const AddEditPersonalInformationForm = ({
             id="Email"
             type="email"
             component={TextBox}
-            dataLocator="addnewaddress-email"
+            dataLocator="editPersonalInfo-email"
           />
           <BodyCopy fontSize="fs12">{labels.lbl_profile_email_used_login}</BodyCopy>
         </Col>
@@ -81,14 +81,16 @@ export const AddEditPersonalInformationForm = ({
             name="phoneNumber"
             id="phoneNumber"
             component={TextBox}
-            dataLocator="addnewaddress-phnumber"
+            dataLocator="editPersonalInfo-phnumber"
             type="tel"
           />
         </Col>
       </Row>
       <Row fullBleed className="elem-mt-XL addEditPersonalBirthday">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <BodyCopy component="div" fontWeight="extrabold" fontSize="fs12">{labels.lbl_profile_personal_info_birthday}</BodyCopy>
+          <BodyCopy component="div" fontWeight="extrabold" fontSize="fs12">
+            {labels.lbl_profile_personal_info_birthday}
+          </BodyCopy>
         </Col>
       </Row>
       <Row fullBleed className="elem-mt-MED">
@@ -100,7 +102,7 @@ export const AddEditPersonalInformationForm = ({
                 name="userBirthMonth"
                 id="userBirthMonth"
                 component={SelectBox}
-                dataLocator="payment-expmonthdd"
+                dataLocator="editPersonalInfo-userBirthMonth"
                 options={birthMonthOptionsMap}
                 className="field"
                 enableSuccessCheck={false}
@@ -112,7 +114,7 @@ export const AddEditPersonalInformationForm = ({
                 name="userBirthYear"
                 id="userBirthYear"
                 component={SelectBox}
-                dataLocator="payment-expyeardd"
+                dataLocator="editPersonalInfo-userBirthYear"
                 options={birthYearOptionsMap}
                 className="field"
                 enableSuccessCheck={false}
@@ -129,23 +131,21 @@ export const AddEditPersonalInformationForm = ({
                 name="airMilesAccountNumber"
                 id="airMilesAccountNumber"
                 component={TextBox}
-                dataLocator="airMilesAccountNumber"
+                dataLocator="editPersonalInfo-airMiles"
               />
-              <BodyCopy fontSize="fs12" component="div">{labels.lbl_profile_collector_number}</BodyCopy>
+              <BodyCopy fontSize="fs12" component="div">
+                {labels.lbl_profile_collector_number}
+              </BodyCopy>
             </>
           )}
         </Col>
       </Row>
       <Row fullBleed className="elem-mt-LRG">
-        <Col
-          colSize={{ small: 6, medium: 4, large: 6 }}
-          className="dropdown-text"
-        >
+        <Col colSize={{ small: 6, medium: 4, large: 6 }} className="dropdown-text">
           <Field
             name="isEmployee"
             component={InputCheckbox}
-            dataLocator="addnewaddress-setdefaddress"
-            // disabled={isMakeDefaultDisabled}
+            dataLocator="editPersonalInfo-isEmployee"
             className="AddPersonalInfo-isEmployee"
           >
             {labels.lbl_profile_personal_info_tcp_employee}
@@ -153,18 +153,18 @@ export const AddEditPersonalInformationForm = ({
         </Col>
       </Row>
       {isEmployee && (
-      <Row fullBleed className="elem-mt-XL">
-        <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
-          <Field
-            placeholder={labels.lbl_profile_personal_info_associate_id}
-            name="associateId"
-            id="associateId"
-            type="text"
-            component={TextBox}
-            dataLocator="addnewaddress-associateId"
-          />
-        </Col>
-      </Row>
+        <Row fullBleed className="elem-mt-XL">
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
+            <Field
+              placeholder={labels.lbl_profile_personal_info_associate_id}
+              name="associateId"
+              id="associateId"
+              type="text"
+              component={TextBox}
+              dataLocator="editPersonalInfo-associateId"
+            />
+          </Col>
+        </Row>
       )}
       <Row className="elem-mb-LRG elem-mt-XXL">
         <Col
@@ -179,7 +179,10 @@ export const AddEditPersonalInformationForm = ({
             medium: 1,
           }}
         >
-          <Anchor to={internalEndpoints.profilePage.link} asPath={internalEndpoints.profilePage.path}>
+          <Anchor
+            to={internalEndpoints.profilePage.link}
+            asPath={internalEndpoints.profilePage.path}
+          >
             <Button
               type="button"
               buttonVariation="fixed-width"

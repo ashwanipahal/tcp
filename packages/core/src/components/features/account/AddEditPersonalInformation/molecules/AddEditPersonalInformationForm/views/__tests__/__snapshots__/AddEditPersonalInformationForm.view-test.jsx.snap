@@ -180,7 +180,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-firstname"
+        dataLocator="editPersonalInfo-firstname"
         id="firstName"
         name="firstName"
         type="text"
@@ -352,7 +352,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-lastname"
+        dataLocator="editPersonalInfo-lastname"
         id="lastName"
         name="lastName"
       />
@@ -532,7 +532,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-email"
+        dataLocator="editPersonalInfo-email"
         id="Email"
         name="Email"
         type="email"
@@ -715,7 +715,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-phnumber"
+        dataLocator="editPersonalInfo-phnumber"
         id="phoneNumber"
         name="phoneNumber"
         type="tel"
@@ -873,7 +873,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "withComponent": [Function],
               }
             }
-            dataLocator="payment-expmonthdd"
+            dataLocator="editPersonalInfo-userBirthMonth"
             enableSuccessCheck={false}
             id="userBirthMonth"
             name="userBirthMonth"
@@ -989,7 +989,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "withComponent": [Function],
               }
             }
-            dataLocator="payment-expyeardd"
+            dataLocator="editPersonalInfo-userBirthYear"
             enableSuccessCheck={false}
             id="userBirthYear"
             name="userBirthYear"
@@ -1148,7 +1148,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-setdefaddress"
+        dataLocator="editPersonalInfo-isEmployee"
         name="isEmployee"
       />
     </Styled(Col)>
@@ -1393,7 +1393,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-firstname"
+        dataLocator="editPersonalInfo-firstname"
         id="firstName"
         name="firstName"
         type="text"
@@ -1565,7 +1565,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-lastname"
+        dataLocator="editPersonalInfo-lastname"
         id="lastName"
         name="lastName"
       />
@@ -1745,7 +1745,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-email"
+        dataLocator="editPersonalInfo-email"
         id="Email"
         name="Email"
         type="email"
@@ -1928,7 +1928,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-phnumber"
+        dataLocator="editPersonalInfo-phnumber"
         id="phoneNumber"
         name="phoneNumber"
         type="tel"
@@ -2086,7 +2086,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "withComponent": [Function],
               }
             }
-            dataLocator="payment-expmonthdd"
+            dataLocator="editPersonalInfo-userBirthMonth"
             enableSuccessCheck={false}
             id="userBirthMonth"
             name="userBirthMonth"
@@ -2201,7 +2201,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "withComponent": [Function],
               }
             }
-            dataLocator="payment-expyeardd"
+            dataLocator="editPersonalInfo-userBirthYear"
             enableSuccessCheck={false}
             id="userBirthYear"
             name="userBirthYear"
@@ -2359,7 +2359,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "withComponent": [Function],
           }
         }
-        dataLocator="addnewaddress-setdefaddress"
+        dataLocator="editPersonalInfo-isEmployee"
         name="isEmployee"
       />
     </Styled(Col)>
