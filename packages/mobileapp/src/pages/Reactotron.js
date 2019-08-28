@@ -18,7 +18,6 @@ if (__DEV__) {
     .useReactNative()
     .connect();
 
-  console.log = ReactotronConfig.log;
   ReactotronConfig.clear();
 }
 
