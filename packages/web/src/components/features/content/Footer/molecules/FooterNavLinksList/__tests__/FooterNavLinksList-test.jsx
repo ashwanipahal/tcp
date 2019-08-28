@@ -5,6 +5,7 @@ import { FooterNavLinksListVanilla } from '../views/FooterNavLinksList';
 describe('FooterNavLinksList component', () => {
   it('renders default footer correctly', () => {
     const props = {
+      id: {},
       className: 'footer-nav-header1',
       titleText: 'Title',
       ariaLabel: 'ABCD',
@@ -13,14 +14,17 @@ describe('FooterNavLinksList component', () => {
       updateAccordionState: () => {},
       listArray: [
         {
+          title: 'gift card',
           url: '',
           text: '',
         },
         {
+          title: 'gift card',
           url: '',
           text: '',
         },
         {
+          title: 'gift card',
           url: '',
           text: '',
         },

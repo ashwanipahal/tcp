@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 export const ActionsWrapper = styled.View`
   display: flex;
   flex: 1;
-  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export const ButtonWrapper = styled.View`

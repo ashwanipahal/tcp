@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import CREATE_ACCOUNT_CONSTANTS from '../../CreateAccount.constants';
 import { CreateAccountSaga, createsaga } from '../CreateAccount.saga';
-import { getUserInfo } from '../../../LoginPage/container/LoginPage.actions';
+import { getUserInfo } from '../../../User/container/User.actions';
 
 describe('Create Account Saga', () => {
   describe('createAccount', () => {

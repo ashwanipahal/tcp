@@ -137,6 +137,7 @@ describe('NavMenuLevel1', () => {
         navigate: jest.fn(),
       },
       navigationMenuObj: navItems,
+      loadNavigationData: () => {},
     };
     const component = shallow(<NavMenuLevel1View {...props} />);
     expect(component).toMatchSnapshot();
@@ -148,6 +149,7 @@ describe('NavMenuLevel1', () => {
         navigate: jest.fn(),
       },
       navigationMenuObj: navItems,
+      loadNavigationData: () => {},
     };
     const component = shallow(<NavMenuLevel1View {...props} />);
     const item = component.props().renderItem({ item: navItems.data.navigation.nav[0] });
@@ -160,6 +162,7 @@ describe('NavMenuLevel1', () => {
         navigate: jest.fn(),
       },
       navigationMenuObj: navItems,
+      loadNavigationData: () => {},
     };
     const component = shallow(<NavMenuLevel1View {...props} />);
     const keyString = component.props().keyExtractor(1, 12);
@@ -172,6 +175,7 @@ describe('NavMenuLevel1', () => {
         navigate: jest.fn(),
       },
       navigationMenuObj: navItemsNoImage,
+      loadNavigationData: () => {},
     };
     const component = shallow(<NavMenuLevel1View {...props} />);
     const item = component.props().renderItem({ item: navItemsNoImage.data.navigation.nav[0] });
@@ -185,6 +189,7 @@ describe('NavMenuLevel1', () => {
         navigate: jest.fn(),
       },
       navigationMenuObj: navItemWithImageFirst,
+      loadNavigationData: () => {},
     };
     const component = shallow(<NavMenuLevel1View {...props} />);
     const item = shallow(
@@ -200,6 +205,7 @@ describe('NavMenuLevel1', () => {
         navigate: jest.fn(),
       },
       navigationMenuObj: navItemsNoImage,
+      loadNavigationData: () => {},
     };
     const component = shallow(<NavMenuLevel1View {...props} />);
     const item = shallow(

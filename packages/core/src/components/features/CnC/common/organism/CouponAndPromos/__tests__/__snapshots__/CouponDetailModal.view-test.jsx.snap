@@ -51,7 +51,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchor"
-        data-locator="couponDetailModal_applied_printAch"
+        dataLocator="couponDetailModal_applied_printAch"
         fontSize="fs14"
         onClick={[Function]}
         to="/#"
@@ -74,7 +74,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchortext"
-        data-locator="couponDetailModal_applied_tAndC"
+        dataLocator="couponDetailModal_applied_tAndC"
         fontSize="fs14"
         onClick={[Function]}
         underline={true}
@@ -85,7 +85,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchortext"
-        data-locator="couponDetailModal_applied_pp"
+        dataLocator="couponDetailModal_applied_pp"
         fontSize="fs14"
         onClick={[Function]}
         underline={true}

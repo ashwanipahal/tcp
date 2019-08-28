@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import TextBox from '../../../../../common/atoms/TextBox';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
-import RichText from '../../../../../common/atoms/RichText';
+import BodyCopy from '../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../common/atoms/Button';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
@@ -98,10 +98,17 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         <Row fullBleed className="card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 7 }}>
             <div className="card__msgWrapper">
-              <RichText
-                richTextHtml={labels.paymentGC.lbl_payment_giftCardMessage}
-                dataLocator="git-card-messagetext"
-              />
+              <BodyCopy
+                tag="p"
+                fontWeight="bold"
+                className="card__msg--bold elem-mb-XS"
+                dataLocator="git-card-headertext"
+              >
+                {labels.paymentGC.lbl_payment_giftCardMessageHeading}
+              </BodyCopy>
+              <BodyCopy tag="p" className="card__msg" dataLocator="git-card-messagetext">
+                {labels.paymentGC.lbl_payment_giftCardMessageDescription}
+              </BodyCopy>
             </div>
           </Col>
 

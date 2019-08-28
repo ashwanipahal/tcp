@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import FooterNavLinksList from '../../FooterNavLinksList';
 import FooterNavHeader from '../../FooterNavHeader';
 
@@ -10,6 +11,10 @@ const FooterNavLinks = ({
   headerAsImage,
   isSubHeader,
   colNum,
+  openTrackOrder,
+  isLoggedIn,
+  loginModalMountedState,
+  setLoginModalMountState,
 }) => {
   return (
     <div className={`${className} container-nav-link`} key={navLinkItems.id} data-index={colNum}>
@@ -21,7 +26,14 @@ const FooterNavLinks = ({
         isSubHeader={isSubHeader}
         colNum={colNum}
       />
-      <FooterNavLinksList listArray={navLinkItems.links} colNum={colNum} />
+      <FooterNavLinksList
+        listArray={navLinkItems.links}
+        colNum={colNum}
+        isLoggedIn={isLoggedIn}
+        openTrackOrder={openTrackOrder}
+        loginModalMountedState={loginModalMountedState}
+        setLoginModalMountState={setLoginModalMountState}
+      />
     </div>
   );
 };
@@ -33,6 +45,15 @@ FooterNavLinks.propTypes = {
   headerAsImage: PropTypes.bool.isRequired,
   isSubHeader: PropTypes.bool.isRequired,
   colNum: PropTypes.number.isRequired,
+  openTrackOrder: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+  loginModalMountedState: PropTypes.bool.isRequired,
+};
+
+FooterNavLinks.defaultProps = {
+  openTrackOrder: () => null,
+  isLoggedIn: false,
 };
 
 export default FooterNavLinks;

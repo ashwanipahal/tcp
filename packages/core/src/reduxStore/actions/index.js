@@ -43,16 +43,43 @@ export const loadModulesData = payload => {
   };
 };
 
-export const loadUserProfile = () => {
+export const setCountry = payload => {
   return {
-    type: GLOBAL_CONSTANTS.LOAD_USER_DATA,
+    payload,
+    type: GLOBAL_CONSTANTS.SET_COUNTRY,
   };
 };
+
+export const setCurrency = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_CURRENCY,
+  };
+};
+
+export const setLanguage = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_LANGUAGE,
+  };
+};
+
+export const setDeviceInfo = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.SET_DEVICE_INFO,
+});
+
+export const setOptimizelyFeaturesList = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
+});
 
 export default {
   loadLayoutData,
   loadLabelsData,
   bootstrapData,
   loadModulesData,
-  loadUserProfile,
+  setCountry,
+  setCurrency,
+  setLanguage,
 };

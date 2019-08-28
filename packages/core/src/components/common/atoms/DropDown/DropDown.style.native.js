@@ -49,6 +49,18 @@ const FlatList = styled.FlatList`
   flex: 1;
 `;
 
+const StyledLabel = styled.Text`
+  font-size: ${props =>
+    !props.isFocused
+      ? props.theme.typography.fontSizes.fs14
+      : props.theme.typography.fontSizes.fs10};
+  color: ${props => props.theme.colorPalette.gray[900]};
+  font-weight: ${props =>
+    !props.isFocused
+      ? props.theme.typography.fontWeights.regular
+      : props.theme.typography.fontWeights.extrabold};
+`;
+
 export {
   DropDownStyle,
   HeaderContainer,
@@ -57,4 +69,5 @@ export {
   DropDownItemContainer,
   Separator,
   FlatList,
+  StyledLabel,
 };

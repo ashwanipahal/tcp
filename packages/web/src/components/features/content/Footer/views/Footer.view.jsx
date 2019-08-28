@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import CountrySelector from '../../Header/molecules/CountrySelector';
 
 import {
   FooterMiddleMobile,
@@ -45,6 +46,10 @@ class Footer extends React.Component {
       getOrderDetailAction,
       emailSignup,
       smsSignup,
+      openTrackOrder,
+      loginModalMountedState,
+      setLoginModalMountState,
+      isLoggedIn,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -58,10 +63,22 @@ class Footer extends React.Component {
         <EmailSignupModal buttonConfig={emailSignup} />
         <SmsSignupModal buttonConfig={smsSignup} />
         <Row className="footer-middle mobile" fullBleed>
-          <FooterMiddleMobile className={className} navLinkItems={navLinks} />
+          <FooterMiddleMobile
+            className={className}
+            navLinkItems={navLinks}
+            openTrackOrder={openTrackOrder}
+            isLoggedIn={isLoggedIn}
+          />
         </Row>
         <Row className="footer-middle desktop">
-          <FooterMiddleDesktop className={className} navLinks={navLinks} />
+          <FooterMiddleDesktop
+            className={className}
+            navLinks={navLinks}
+            openTrackOrder={openTrackOrder}
+            loginModalMountedState={loginModalMountedState}
+            setLoginModalMountState={setLoginModalMountState}
+            isLoggedIn={isLoggedIn}
+          />
         </Row>
         <div className="footer-bottom">
           <Row className="fullbleed-mobile">
@@ -96,7 +113,9 @@ class Footer extends React.Component {
                 medium: 8,
                 small: 6,
               }}
-            />
+            >
+              <CountrySelector showInFooter />
+            </Col>
           </Row>
           <Row fullBleed>
             <Col
@@ -131,6 +150,8 @@ Footer.propTypes = {
   getUserInfoAction: PropTypes.func.isRequired,
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
+  openTrackOrder: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 Footer.defaultProps = {
@@ -139,6 +160,8 @@ Footer.defaultProps = {
   navLinks: [],
   referenceID: '',
   openEmailSignUpModal: () => {},
+  openTrackOrder: () => null,
+  isLoggedIn: false,
 };
 
 export default withStyles(Footer, style);

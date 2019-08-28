@@ -10,7 +10,7 @@ export const LogoutApplication = () => {
       throw new Error('res body is null');
       // TODO - Set API Helper to filter if error exists in response
     }
-    return res || [];
+    return res;
   });
 };
 

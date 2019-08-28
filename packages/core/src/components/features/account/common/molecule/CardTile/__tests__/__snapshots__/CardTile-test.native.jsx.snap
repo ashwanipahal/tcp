@@ -135,11 +135,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -147,7 +147,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -206,7 +206,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -294,11 +294,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -306,7 +306,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -438,12 +438,15 @@ exports[`CardTile should render correctly with gift card 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -492,7 +495,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcarddeletelink"
+        dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -622,12 +625,15 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -676,7 +682,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcarddeletelink"
+        dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -735,7 +741,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -823,11 +829,11 @@ exports[`CardTile should render correctly with master card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -835,7 +841,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -965,12 +971,15 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -1019,7 +1028,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcarddeletelink"
+        dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -1078,7 +1087,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -1158,11 +1167,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1170,7 +1179,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -1289,7 +1298,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-venmodeletelink"
+        dataLocator="payment-venmodeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
@@ -1348,7 +1357,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       customStyle={Object {}}
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
       onPress={[Function]}
@@ -1436,11 +1445,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1448,7 +1457,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-creditdebitdeletelink"
+        dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}

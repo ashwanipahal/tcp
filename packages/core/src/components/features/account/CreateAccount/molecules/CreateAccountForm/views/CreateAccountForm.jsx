@@ -38,10 +38,10 @@ let CreateAccountForm = ({
   tooltipContent,
 }: Props) => {
   return (
-    <div className={className}>
+    <div className={`${className} elem-pt-MED`}>
       <form onSubmit={handleSubmit}>
         <Row fullBleed className="row-form-wrapper">
-          <Col className="elem-pt-XXL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="First Name"
               name="firstName"
@@ -51,7 +51,7 @@ let CreateAccountForm = ({
               enableSuccessCheck={false}
             />
           </Col>
-          <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Last Name"
               name="lastName"
@@ -61,7 +61,7 @@ let CreateAccountForm = ({
               enableSuccessCheck={false}
             />
           </Col>
-          <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Phone Number"
               name="phoneNumber"
@@ -73,7 +73,7 @@ let CreateAccountForm = ({
               enableSuccessCheck={false}
             />
           </Col>
-          <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Zip Code"
               name="noCountryZip"
@@ -83,7 +83,7 @@ let CreateAccountForm = ({
               enableSuccessCheck={false}
             />
           </Col>
-          <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Email Address"
               name="emailAddress"
@@ -93,7 +93,7 @@ let CreateAccountForm = ({
               enableSuccessCheck={false}
             />
           </Col>
-          <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Confirm Email Address"
               name="confirmEmailAddress"
@@ -103,11 +103,7 @@ let CreateAccountForm = ({
               enableSuccessCheck={false}
             />
           </Col>
-          <Col
-            className="elem-pt-XL position-relative"
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 6 }}
-          >
+          <Col className="position-relative" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Password"
               name="password"
@@ -141,11 +137,7 @@ let CreateAccountForm = ({
               </Col>
             </span>
           </Col>
-          <Col
-            className="elem-pt-XL position-relative"
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 6 }}
-          >
+          <Col className="position-relative" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Confirm Password"
               name="confirmPassword"
@@ -176,7 +168,8 @@ let CreateAccountForm = ({
           </Col>
 
           {/* CHECKBOXES */}
-          <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          {/* TODO: Uncomment when PLCC reg is available
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               name="myPlace"
               component={InputCheckbox}
@@ -186,8 +179,9 @@ let CreateAccountForm = ({
               {labels.registration.lbl_createAccount_saveRewards}
             </Field>
           </Col>
+          */}
           <Col
-            className="elem-pt-XL i-agree-checkbox"
+            className="i-agree-checkbox elem-pb-MED"
             ignoreGutter={{ small: true }}
             colSize={{ small: 6 }}
           >
@@ -201,7 +195,7 @@ let CreateAccountForm = ({
               {labels.registration.lbl_createAccount_termsConditions}
             </Field>
           </Col>
-          <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
+          <Col className="elem-pb-MED" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               name="rememberMe"
               component={InputCheckbox}

@@ -14,6 +14,9 @@ import {
   TouchableView,
   Icon,
   Container,
+  PaginationWrapper,
+  ControlsWrapperLeft,
+  ControlsWrapperRight,
 } from '../Carousel.native.style';
 
 /**
@@ -42,8 +45,10 @@ type Props = {
   variation: String,
   vertical: Boolean,
   showDots?: Boolean,
+  overlap?: Boolean,
   hidePlayStopButton?: Boolean,
   autoplayInterval: Number,
+  buttonPosition: String,
 };
 
 type State = {
@@ -88,7 +93,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}
-        containerStyle={{ paddingVertical: 24, paddingHorizontal: 20 }}
+        containerStyle={{ paddingVertical: 22, paddingHorizontal: 10 }}
         dotContainerStyle={{ marginHorizontal: 4 }}
         dotStyle={{
           width: 10,
@@ -138,6 +143,61 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           testID={getLocator(carouselConfig.dataLocatorPlay)}
         />
       </Touchable>
+    );
+  }
+
+  /**
+   * @function getOverlapComponent This function return the Play Or Pause Button with pagination.
+   * @Component is configurable : leftBottom , rightBottom  and centerBottom .
+   */
+
+  getOverlapComponent(carouselConfig, buttonPosition) {
+    if (buttonPosition === 'right') {
+      return (
+        <View>
+          <ControlsWrapperRight>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {this.getPagination()}
+          </ControlsWrapperRight>
+        </View>
+      );
+    } else if (buttonPosition === 'left') {
+      return (
+        <View>
+          <ControlsWrapperLeft>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {this.getPagination()}
+          </ControlsWrapperLeft>
+        </View>
+      );
+    }
+    return (
+      <View>
+        <ControlsWrapper>
+          {carouselConfig.autoplay && (
+            <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+          )}
+          {this.getPagination()}
+        </ControlsWrapper>
+      </View>
+    );
+  }
+
+  /**
+   * @function getBottomView This function return the Play Or Pause Button.
+   */
+  getBottomView(carouselConfig, showDots) {
+    return (
+      <PaginationWrapper>
+        {carouselConfig.autoplay && (
+          <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+        )}
+        {showDots ? this.getPagination() : null}
+      </PaginationWrapper>
     );
   }
 
@@ -201,6 +261,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       vertical,
       autoplayInterval,
       showDots,
+      overlap,
+      buttonPosition,
     } = this.props;
 
     if (!data) {
@@ -265,12 +327,11 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         />
 
         {data.length > 1 && (
-          <ControlsWrapper>
-            {carouselConfig.autoplay && (
-              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
-            )}
-            {showDots ? this.getPagination() : null}
-          </ControlsWrapper>
+          <View>
+            {showDots && overlap
+              ? this.getOverlapComponent(carouselConfig, buttonPosition)
+              : this.getBottomView(carouselConfig, showDots)}
+          </View>
         )}
       </View>
     );
@@ -281,6 +342,7 @@ SnapCarousel.defaultProps = {
   onSnapToItem: () => {},
   showDots: false,
   hidePlayStopButton: false,
+  overlap: false,
 };
 
 export default withTheme(SnapCarousel);

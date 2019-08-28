@@ -3,20 +3,13 @@ import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CouponTile.style';
+import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+import CouponIconComponent from '../../CouponIcon/views/CouponIcon.view';
 
-export const CouponTile = ({ className, coupon, labels }) => {
+export const CouponTile = ({ className, coupon, labels, commonLabels }) => {
   return (
     <BodyCopy component="li" className={`${className} elem-mb-SM`}>
-      <BodyCopy
-        component="div"
-        className="coupon-reward elem-mr-XS"
-        fontSize="fs13"
-        fontWeight="black"
-        color="white"
-        textAlign="center"
-      >
-        {labels.lbl_overview_myPlaceRewardsCouponType}
-      </BodyCopy>
+      <CouponIconComponent labels={commonLabels} coupon={coupon} className="elem-mr-XS" />
       <BodyCopy component="div" className="elem-pt-XS">
         <BodyCopy
           fontSize="fs12"
@@ -27,9 +20,20 @@ export const CouponTile = ({ className, coupon, labels }) => {
         >
           {coupon.title}
         </BodyCopy>
-        <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
-          {`${labels.lbl_overview_myPlaceRewardsUseBy} ${coupon.expirationDate}`}
-        </BodyCopy>
+
+        {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH && (
+          <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
+            {`${labels.lbl_overview_couponValid} ${coupon.effectiveDate} - ${
+              coupon.expirationDate
+            }`}
+          </BodyCopy>
+        )}
+
+        {coupon.offerType !== COUPON_REDEMPTION_TYPE.PLACECASH && (
+          <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
+            {`${labels.lbl_overview_couponUseBy} ${coupon.expirationDate}`}
+          </BodyCopy>
+        )}
       </BodyCopy>
     </BodyCopy>
   );
@@ -42,6 +46,7 @@ CouponTile.propTypes = {
     lbl_overview_myPlaceRewardsUseBy: PropTypes.string.isRequired,
   }).isRequired,
   className: PropTypes.string,
+  commonLabels: PropTypes.shape({}).isRequired,
 };
 
 CouponTile.defaultProps = {

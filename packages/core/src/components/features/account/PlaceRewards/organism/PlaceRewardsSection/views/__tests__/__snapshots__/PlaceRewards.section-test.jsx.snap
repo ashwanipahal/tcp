@@ -160,7 +160,11 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        <BonusPointsDaysSection />
+        <div
+          className="bonusPointsWrapper"
+        >
+          <BonusPointsDaysSection />
+        </div>
       </Styled(Col)>
       <Styled(Col)
         className="place-rewards-col4"
@@ -178,7 +182,7 @@ exports[`MyRewards should render correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Row)>
-  <Styled(MyRewards)
+  <Connect(MyRewardsContainer)
     labels={
       Object {
         "common": Object {},

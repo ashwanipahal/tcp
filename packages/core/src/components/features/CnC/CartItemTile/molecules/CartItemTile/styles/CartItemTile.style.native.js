@@ -16,6 +16,21 @@ const ProductDescription = styled.View`
   flex-direction: column;
   margin-left: 5px;
 `;
+const SoldOutLabel = styled.View`
+  height: 18px;
+  background-color: ${props => props.theme.colorPalette.red[500]};
+  color: ${props => props.theme.colorPalette.white};
+  position: absolute;
+  z-index: ${props => props.theme.zindex.zOverlay};
+  align-items: center;
+  width: 100px;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  display: flex;
+  justify-content: center;
+`;
+const ImageSoldOutContainer = styled.View`
+  flex: 1;
+`;
 const ImgWrapper = styled.View`
   flex: 1;
   align-items: center;
@@ -67,4 +82,6 @@ export {
   EditButton,
   ImageBrandStyle,
   ImageGymBrandStyle,
+  SoldOutLabel,
+  ImageSoldOutContainer,
 };

@@ -1,11 +1,13 @@
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
+const device = require('express-device');
 const RoutesMap = require('./routes');
 const redis = require('async-redis');
 
 const {
   settingHelmetConfig,
+  settingDeviceConfig,
   sites,
   siteIds,
   setEnvConfig,
@@ -26,7 +28,16 @@ const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
 
-const setSiteId = (req, res) => {
+settingDeviceConfig(server, device);
+
+const getLanguageByDomain = domain => {
+  let langCode = domain.substr(0, 2).toLowerCase();
+
+  // FIXME: backend should return this somehow, if not possible we need to complete this list
+  return langCode === 'es' || langCode === 'en' || langCode === 'fr' ? langCode : 'en';
+};
+
+const setSiteDetails = (req, res) => {
   const { url } = req;
   let siteId = siteIds.us;
   let reqUrl = url.split('/');
@@ -37,6 +48,9 @@ const setSiteId = (req, res) => {
     }
   }
   res.locals.siteId = siteId;
+  res.locals.country = siteId === siteIds.ca ? 'CA' : 'US';
+  res.locals.currency = siteId === siteIds.ca ? 'CAD' : 'USD';
+  res.locals.language = getLanguageByDomain(req.hostname);
 };
 
 // TODO - To be picked from env config file when Gym build process is done....
@@ -72,7 +86,7 @@ app.prepare().then(() => {
       ? route.path
       : sites.map(location => `/${location}${route.path}`);
     server.get(routePaths, (req, res) => {
-      setSiteId(req, res);
+      setSiteDetails(req, res);
       setBrandId(req, res);
       setHostname(req, res);
       // Handling routes without params

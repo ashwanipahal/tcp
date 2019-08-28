@@ -42,6 +42,19 @@ const settingHelmetConfig = (server, helmet) => {
 };
 
 /**
+ * This function configures device type
+ * @param {*} server | Object - Instance of express server
+ * @param {*} device | Object - Instance of device package
+ */
+const settingDeviceConfig = (server, device) => {
+  server.use(
+    device.capture({
+      unknownUserAgentDeviceType: 'desktop',
+    })
+  );
+};
+
+/**
  * This function sets the environment variables for local server run based on ENV_CONFIG_FILE_PATH variable
  * @param {*} dev | boolean - depicts whether environment is local
  */
@@ -62,6 +75,7 @@ module.exports = {
   siteIds,
   brandIds,
   settingHelmetConfig,
+  settingDeviceConfig,
   setEnvConfig,
   HEALTH_CHECK_PATH,
 };

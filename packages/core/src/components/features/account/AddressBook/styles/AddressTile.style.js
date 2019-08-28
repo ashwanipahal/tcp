@@ -35,6 +35,9 @@ const styles = css`
     margin-left: auto;
     background-color: ${props => props.theme.colors.PRIMARY.GRAY};
     border-color: ${props => props.theme.colors.PRIMARY.GRAY};
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 

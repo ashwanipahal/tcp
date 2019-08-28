@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogOutView Page should render correctly 1`] = `
+<Fragment
+  className=""
+>
+  <Styled(BodyCopy)
+    color="gray.900"
+    fontFamily="secondary"
+    fontSize="fs13"
+    fontWeight="regular"
+    onPress={[Function]}
+  />
+</Fragment>
+`;

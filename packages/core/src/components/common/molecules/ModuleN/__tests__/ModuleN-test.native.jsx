@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import mock from '../../../../../services/abstractors/common/moduleN/mock';
+import moduleNMockData from '../../../../../services/abstractors/common/moduleN/mock';
 import { ModuleNVanilla } from '../views/ModuleN.native';
 
 describe('ModuleNVanilla', () => {
@@ -11,15 +11,19 @@ describe('ModuleNVanilla', () => {
 
   beforeEach(() => {
     componentSingleCTAButton = shallow(
-      <ModuleNVanilla {...mock.moduleN.composites.singleCTAButton} />
+      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
     );
     divImageCTACarousel = shallow(
-      <ModuleNVanilla {...mock.moduleN.composites.divImageCTACarousel} />
+      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
     );
 
-    linkList = shallow(<ModuleNVanilla {...mock.moduleN.composites.linkList} />);
+    linkList = shallow(
+      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
+    );
 
-    scrollCTAButtons = shallow(<ModuleNVanilla {...mock.moduleN.composites.linkList} />);
+    scrollCTAButtons = shallow(
+      <ModuleNVanilla set={moduleNMockData.moduleN.set} {...moduleNMockData.moduleN.composites} />
+    );
   });
 
   it('ModuleN should be defined', () => {

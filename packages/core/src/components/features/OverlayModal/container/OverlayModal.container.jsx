@@ -10,7 +10,7 @@ import {
 } from './OverlayModal.selectors';
 import OverlayModalComponent from '../views/OverlayModal.view';
 import { closeOverlayModal } from './OverlayModal.actions';
-import { isPlccUser } from '../../account/LoginPage/container/LoginPage.selectors';
+import { isPlccUser, getUserLoggedInState } from '../../account/User/container/User.selectors';
 
 const propTypes = {
   component: PropTypes.string,
@@ -20,6 +20,7 @@ const propTypes = {
   closeOverlay: PropTypes.func,
   plccUser: PropTypes.bool.isRequired,
   componentProps: PropTypes.shape({}),
+  isLoggedIn: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -29,6 +30,7 @@ const defaultProps = {
   openState: false,
   closeOverlay: () => {},
   componentProps: {},
+  isLoggedIn: false,
 };
 
 export const OverlayModal = ({
@@ -39,6 +41,7 @@ export const OverlayModal = ({
   closeOverlay,
   componentProps,
   plccUser,
+  isLoggedIn,
 }) => {
   return (
     <OverlayModalComponent
@@ -49,6 +52,7 @@ export const OverlayModal = ({
       closeOverlay={closeOverlay}
       componentProps={componentProps}
       plccUser={plccUser}
+      isLoggedIn={isLoggedIn}
     />
   );
 };
@@ -61,6 +65,7 @@ const mapStateToProps = state => {
     openState: getOpenState(state),
     componentProps: getProps(state),
     plccUser: isPlccUser(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 

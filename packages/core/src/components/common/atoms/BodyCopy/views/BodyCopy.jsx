@@ -4,7 +4,20 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../BodyCopy.style';
 
-const BodyCopy = ({ children, className, component: Component, ...others }) => {
+const BodyCopy = props => {
+  const {
+    children,
+    className,
+    fontFamily,
+    component: Component,
+    fontSize,
+    fontWeight,
+    lineHeight,
+    letterSpacing,
+    textAlign,
+    color,
+    ...others
+  } = props;
   return (
     <Component className={className} {...others}>
       {children}

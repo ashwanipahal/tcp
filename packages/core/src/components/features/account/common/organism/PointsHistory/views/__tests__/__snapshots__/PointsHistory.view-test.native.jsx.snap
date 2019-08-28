@@ -7,7 +7,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
       <Styled(BodyCopy)
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="semibold"
         text="08/08/19"
       />
     </Styled(View)>
@@ -15,7 +14,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
       <Styled(BodyCopy)
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="semibold"
         text="Credit"
       />
     </Styled(View)>
@@ -24,7 +22,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         component="p"
         fontFamily="secondary"
         fontSize="fs12"
-        fontWeight="semibold"
         text="5"
       />
     </Styled(View)>
@@ -52,6 +49,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontSize="fs12"
         fontWeight="semibold"
         text={5}
+        textAlign="center"
       />
     </Styled(View)>
   </Styled(View)>

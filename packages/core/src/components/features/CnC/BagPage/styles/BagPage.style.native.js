@@ -4,6 +4,10 @@ export const WrapperStyle = styled.View`
   flex: 1;
 `;
 
+export const ScrollViewWrapper = styled.ScrollView`
+  height: ${props => (props.showAddTobag ? '60%' : '75%')};
+`;
+
 export const HeadingViewStyle = styled.View`
   border-bottom-color: ${props => props.theme.colorPalette.primary.dark};
   border-bottom-width: 2;
@@ -33,4 +37,10 @@ export const MainSection = styled.View`
   margin-bottom: 3px;
 `;
 
-export default { HeadingViewStyle, MainSection, RowSectionStyle, HeadingTextStyle };
+export default {
+  HeadingViewStyle,
+  MainSection,
+  RowSectionStyle,
+  HeadingTextStyle,
+  ScrollViewWrapper,
+};
