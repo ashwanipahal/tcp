@@ -12,7 +12,9 @@ const Abstractor = {
   getData: async module => {
     const xappData = await Abstractor.getDataFromCache();
     if (xappData) {
-      return JSON.parse(xappData);
+      const jsonXappData = JSON.parse(xappData);
+      jsonXappData.IS_DATA_FROM_REDIS = true;
+      return jsonXappData;
     }
     const apiConfig = getAPIConfig();
     const data = {
@@ -41,6 +43,7 @@ const Abstractor = {
         CACHE_EXP_TIME,
       });
     }
+    return data;
   },
   getDataFromCache: () => {
     if (isMobileApp()) {
@@ -58,6 +61,7 @@ const Abstractor = {
     configurationKey.forEach(({ key, value }) => {
       xappConfig[key] = value;
     });
+    xappConfig.IS_DATA_FROM_REDIS = false;
     return xappConfig;
   },
 };

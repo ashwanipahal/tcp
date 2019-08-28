@@ -1,4 +1,4 @@
-const noRedisClient = redisClient => !redisClient.ready;
+const noRedisClient = redisClient => !redisClient || (redisClient && !redisClient.ready);
 
 const getDataFromRedis = CACHE_IDENTIFIER => {
   const { redisClient } = global;
@@ -30,18 +30,21 @@ const redisErrorCallback = err => {
 
 const connectRedis = config => {
   // NOTE: This is a server side file only.
-  // Incase redis needs to be implemented in mobile app, then a global object needs to be defined and used
+  // Incase redis needs to be implemented in mobile app, then a common object needs to be defined and used
+  try {
+    console.log(`Redis(Elasticache) Endpoint: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
+    global.redisClient = config.REDIS_CLIENT.createClient(config.REDIS_PORT, config.REDIS_HOST);
 
-  console.log(`Redis(Elasticache) Endpoint: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
-  global.redisClient = config.REDIS_CLIENT.createClient(config.REDIS_PORT, config.REDIS_HOST);
+    global.redisClient.on('error', err => {
+      redisErrorCallback(err);
+    });
 
-  global.redisClient.on('error', err => {
-    redisErrorCallback(err);
-  });
-
-  global.redisClient.on('connect', () => {
-    redisConnectCallback();
-  });
+    global.redisClient.on('connect', () => {
+      redisConnectCallback();
+    });
+  } catch (e) {
+    console.error('Redis Error - Caught in catch', e);
+  }
 };
 
 module.exports = {
