@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PickUpFormPartVanilla component Native should renders correctly props with state update  1`] = `
+exports[`PickUpFormPartVanilla component  should renders correctly props with state update  1`] = `
 <ScrollViewMock>
   <Styled(View)>
     <Styled(View)>
