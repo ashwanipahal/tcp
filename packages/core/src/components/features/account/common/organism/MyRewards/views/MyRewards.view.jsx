@@ -96,7 +96,7 @@ const MyRewards = ({
             dataLocator="my-rewards-program-details"
             target="_blank"
           >
-            {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS}
+            {labels.myPlaceRewards.lbl_my_rewards_program_details}
           </Anchor>
           <Anchor
             fontSizeVariation="medium"
@@ -131,8 +131,8 @@ MyRewards.defaultProps = {
   labels: {
     common: { lbl_common_tnc: '' },
     myPlaceRewards: {
-      ACC_LBL_MY_REWARDS_PROGRAM_DETAILS: '',
-      ACC_LBL_MY_REWARDS_SHOP_NOW: '',
+      lbl_my_rewards_program_details: '',
+      lbl_my_rewards_shop_now: '',
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
       ACC_LBL_MY_REWARDS_HEADING: '',
     },
