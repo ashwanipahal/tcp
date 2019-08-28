@@ -22,6 +22,7 @@ const mapStateToProps = state => {
     userName: getUserName(state),
     isLoggedIn: getUserLoggedInState(state),
     cartItemCount: getCartItemCount(),
+    labels: state.Labels.global,
   };
 };
 

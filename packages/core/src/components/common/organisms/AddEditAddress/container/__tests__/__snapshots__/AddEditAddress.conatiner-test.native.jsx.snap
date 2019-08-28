@@ -5,7 +5,7 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
   addressFormLabels={Object {}}
   addressResponse=""
   backToAddressBookClick={[Function]}
-  currentForm="AddAddress"
+  currentForm=""
   initialValues={
     Object {
       "addressLine1": "test 1",

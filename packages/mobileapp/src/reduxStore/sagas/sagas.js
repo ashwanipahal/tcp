@@ -24,6 +24,7 @@ import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/contain
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
 import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
+import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -54,5 +55,6 @@ export default function* rootSaga() {
     UserSaga(),
     AddGiftCardSaga(),
     CheckoutSaga(),
+    ChangePasswordSaga(),
   ]);
 }

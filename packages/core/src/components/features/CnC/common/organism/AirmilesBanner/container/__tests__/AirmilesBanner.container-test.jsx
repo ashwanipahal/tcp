@@ -10,9 +10,9 @@ describe('AirmilesBannerContainer', () => {
     getAirmilesBannerLabels: {},
   };
 
-  it('should render AirmilesBanner view section', () => {
+  it('should not render AirmilesBanner view section in US site', () => {
     const tree = shallow(<AirmilesBannerContainer {...props} />);
-    expect(tree.is(AirmilesBannerView)).toBeTruthy();
+    expect(tree.is(AirmilesBannerView)).toBeFalsy();
   });
 
   describe('#mapDispatchToProps', () => {

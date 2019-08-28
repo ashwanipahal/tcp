@@ -12,7 +12,7 @@ export default css`
   }
 
   /* this style is for Gymboree Header Text "Spring is Every Wear" */
-  .style11 {
+  .gymboree_title_text {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
@@ -20,7 +20,7 @@ export default css`
     line-height: 1.05;
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 74px;
+      font-size: 64px;
     }
   }
 
@@ -29,9 +29,9 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: 20px;
-    line-height: 1.05;
-    letter-spacing: 2.22px;
+    font-size: 22px;
+    line-height: normal;
+    letter-spacing: 2px;
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 42px;
