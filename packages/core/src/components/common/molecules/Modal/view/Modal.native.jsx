@@ -1,7 +1,6 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
-import BodyCopy from '../../../atoms/BodyCopy';
 import {
   StyledCrossImage,
   StyledTouchableOpacity,
@@ -10,6 +9,7 @@ import {
   RowWrapper,
   ImageWrapper,
 } from '../Modal.style.native';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 // How To use this react native modal
 // import this component in your file.
