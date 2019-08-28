@@ -119,6 +119,39 @@ describe('validator methods', () => {
     });
   });
 
+  describe('alphanumericValidator', () => {
+    it('should return true if nothing is provided in value', () => {
+      expect(validatorMethods.alphanumeric('')).toBeTruthy();
+    });
+    it('should return false if provided value is more or less than 12', () => {
+      expect(validatorMethods.alphanumeric('12345')).toBeFalsy();
+    });
+    it('should return true if provided value is exact 12', () => {
+      expect(validatorMethods.alphanumeric('123456789123')).toBeTruthy();
+    });
+  });
+
+  describe('ssnValidator', () => {
+    it('should return false if provided value is more or less than 4', () => {
+      expect(validatorMethods.ssn('12345')).toBeFalsy();
+    });
+    it('should return true if provided value is exact 4', () => {
+      expect(validatorMethods.ssn('1234')).toBeTruthy();
+    });
+  });
+
+  describe('dobValidator', () => {
+    it('should return false if the value is not empty', () => {
+      expect(validatorMethods.dob('')).toBeTruthy();
+    });
+    it('should return false value is any of -->  Mm Dd Yyyy', () => {
+      expect(validatorMethods.dob('Mm')).toBeFalsy();
+    });
+    it('should return true value is not amongst Mm Dd Yyyy', () => {
+      expect(validatorMethods.dob('23')).toBeTruthy();
+    });
+  });
+
   describe('legacyPassword', () => {
     it('should return true if value is correct password', () => {
       expect(validatorMethods.legacyPassword('Test@1234')).toBeTruthy();

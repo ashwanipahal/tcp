@@ -47,7 +47,7 @@ export const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state, props) => {
   let formViewConfig = {};
-  if (props.buttonConfig.url === '/EMAIL_SIGNUP_MODAL') {
+  if (props.buttonConfig.link.action === 'open_signup_modal') {
     formViewConfig = {
       ...state.Labels.global.emailSignup,
     };

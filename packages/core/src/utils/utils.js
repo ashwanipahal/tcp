@@ -81,6 +81,12 @@ export const resetApiConfig = () => {
   apiConfig = null;
 };
 
+export const getCacheKeyForRedis = cacheId => {
+  const { brandId, siteId, channelId = 'WEB', envId } = getAPIConfig();
+  const keySep = '_';
+  return `${envId}${keySep}${brandId}${keySep}${siteId}${keySep}${channelId}${keySep}${cacheId}`;
+};
+
 export const getBrand = () => {
   return getAPIConfig().brandId;
 };
@@ -249,4 +255,5 @@ export default {
   getAddressFromPlace,
   formatAddress,
   getLabelValue,
+  getCacheKeyForRedis,
 };

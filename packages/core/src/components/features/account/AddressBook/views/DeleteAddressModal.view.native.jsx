@@ -4,12 +4,15 @@ import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   DeleteAddressBody,
   AddressWrapper,
   CustomButtonWrapper,
 } from '../styles/DeleteAddress.style.native';
 // import Notification from '../../../../common/molecules/Notification';
+
+const colorPallete = createThemeColorPalette();
 
 /**
  * @function DeleteAddressModal The DeleteAddressModal component shows the address to delete.
@@ -123,7 +126,8 @@ class DeleteAddressModal extends PureComponent {
             </CustomButtonWrapper>
             <CustomButtonWrapper>
               <Button
-                fill="WHITE"
+                fill="RED"
+                color={colorPallete.red[300]}
                 onPress={this.onClose}
                 buttonVariation="variable-width"
                 text={labels.common.lbl_common_dontDelete}

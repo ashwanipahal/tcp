@@ -128,7 +128,8 @@ export const ProfileInfoActions = ({
             activityTitle={`+${percentageIncrement.percentageUserBirthday}%`}
             activityCompletionState={getUserBirthdayState(userBirthday, labels)}
             activityDescription={labels.lbl_profile_userBirthdayDescription}
-            redirectTo="/account"
+            redirectTo="/account?id=profile&subSection=edit-personal-info"
+            redirectAsPath="/account/profile"
             dataLocatorPrefix="birthday"
           />
         </Col>
