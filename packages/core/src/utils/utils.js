@@ -72,12 +72,6 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
-export const getCacheKeyForRedis = cacheId => {
-  const { brandId, siteId, channelId = 'WEB', envId } = getAPIConfig();
-  const keySep = '_';
-  return `${envId}${keySep}${brandId}${keySep}${siteId}${keySep}${channelId}${keySep}${cacheId}`;
-};
-
  /**
   * @function resetApiConfig
   * This method resets locally stored api config
@@ -85,7 +79,13 @@ export const getCacheKeyForRedis = cacheId => {
   */
  export const resetApiConfig = () => {
   apiConfig = null;
- }
+ };
+ 
+ export const getCacheKeyForRedis = cacheId => {
+  const { brandId, siteId, channelId = 'WEB', envId } = getAPIConfig();
+  const keySep = '_';
+  return `${envId}${keySep}${brandId}${keySep}${siteId}${keySep}${channelId}${keySep}${cacheId}`;
+};
 
 export const getBrand = () => {
   return getAPIConfig().brandId;
