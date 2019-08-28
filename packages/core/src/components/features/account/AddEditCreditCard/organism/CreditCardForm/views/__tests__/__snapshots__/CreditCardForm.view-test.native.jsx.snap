@@ -398,6 +398,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           }
           dataLocatorPrefix="address"
           showCountry={false}
+          showDefaultText={false}
           showName={true}
           showPhone={false}
         />
@@ -846,6 +847,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           }
           dataLocatorPrefix="address"
           showCountry={false}
+          showDefaultText={false}
           showName={true}
           showPhone={false}
         />
