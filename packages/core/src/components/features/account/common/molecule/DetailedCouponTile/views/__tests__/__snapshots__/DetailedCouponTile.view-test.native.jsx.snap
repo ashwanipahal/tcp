@@ -1,0 +1,263 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailedCouponTile should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <CouponIcon
+            coupon={Object {}}
+            labels={
+              Object {
+                "lbl_coupon_applyToBag": "apply",
+                "lbl_coupon_couponUseBy": "use by",
+                "lbl_coupon_couponValid": "valid",
+                "lbl_coupon_detailsLink": "details",
+                "lbl_coupon_expiringSoon": "expiring soon",
+                "lbl_coupon_removeFromBag": "remove from bag",
+                "lbl_coupon_viewPrint": "view & print",
+              }
+            }
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+          fontFamily="secondary"
+          fontSize="fs16"
+          textAlign="center"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <View>
+          <Styled(BodyCopy)
+            data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            text="use by"
+          />
+          <Styled(BodyCopy)
+            text="undefined"
+          />
+        </View>
+        <Styled(Anchor)
+          anchorVariation="primary"
+          color="gray.900"
+          customStyle={Object {}}
+          data-locator="my-rewards-program-details"
+          fontSizeVariation="large"
+          locator=""
+          onPress={[Function]}
+          text="details"
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(CustomButton)
+          buttonVariation="variable-width"
+          customStyle={Object {}}
+          disableButton={false}
+          fill="WHITE"
+          fullWidth=""
+          locator=""
+          onPress={[Function]}
+          text="view & print"
+          url=""
+        />
+      </Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="#fff"
+        customStyle={Object {}}
+        disableButton={false}
+        disabled={true}
+        fill="BLUE"
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text="apply"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <CouponIcon
+            coupon={
+              Object {
+                "status": "applied",
+              }
+            }
+            labels={
+              Object {
+                "lbl_coupon_applyToBag": "apply",
+                "lbl_coupon_couponUseBy": "use by",
+                "lbl_coupon_couponValid": "valid",
+                "lbl_coupon_detailsLink": "details",
+                "lbl_coupon_expiringSoon": "expiring soon",
+                "lbl_coupon_removeFromBag": "remove from bag",
+                "lbl_coupon_viewPrint": "view & print",
+              }
+            }
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+          fontFamily="secondary"
+          fontSize="fs16"
+          textAlign="center"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <View>
+          <Styled(BodyCopy)
+            data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            text="use by"
+          />
+          <Styled(BodyCopy)
+            text="undefined"
+          />
+        </View>
+        <Styled(Anchor)
+          anchorVariation="primary"
+          color="gray.900"
+          customStyle={Object {}}
+          data-locator="my-rewards-program-details"
+          fontSizeVariation="large"
+          locator=""
+          onPress={[Function]}
+          text="details"
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(CustomButton)
+          buttonVariation="variable-width"
+          customStyle={Object {}}
+          disableButton={false}
+          fill="WHITE"
+          fullWidth=""
+          locator=""
+          onPress={[Function]}
+          text="view & print"
+          url=""
+        />
+      </Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="#fff"
+        customStyle={Object {}}
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text="remove from bag"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`DetailedCouponTile should render expiring soon notification if coupon isExpiring is true 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs12"
+        text="expiring soon"
+        textAlign="center"
+      />
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <CouponIcon
+            coupon={
+              Object {
+                "isExpiring": true,
+              }
+            }
+            labels={
+              Object {
+                "lbl_coupon_applyToBag": "apply",
+                "lbl_coupon_couponUseBy": "use by",
+                "lbl_coupon_couponValid": "valid",
+                "lbl_coupon_detailsLink": "details",
+                "lbl_coupon_expiringSoon": "expiring soon",
+                "lbl_coupon_removeFromBag": "remove from bag",
+                "lbl_coupon_viewPrint": "view & print",
+              }
+            }
+          />
+        </Styled(View)>
+        <Styled(BodyCopy)
+          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+          fontFamily="secondary"
+          fontSize="fs16"
+          textAlign="center"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <View>
+          <Styled(BodyCopy)
+            data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+            text="use by"
+          />
+          <Styled(BodyCopy)
+            text="undefined"
+          />
+        </View>
+        <Styled(Anchor)
+          anchorVariation="primary"
+          color="gray.900"
+          customStyle={Object {}}
+          data-locator="my-rewards-program-details"
+          fontSizeVariation="large"
+          locator=""
+          onPress={[Function]}
+          text="details"
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(CustomButton)
+          buttonVariation="variable-width"
+          customStyle={Object {}}
+          disableButton={false}
+          fill="WHITE"
+          fullWidth=""
+          locator=""
+          onPress={[Function]}
+          text="view & print"
+          url=""
+        />
+      </Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        color="#fff"
+        customStyle={Object {}}
+        disableButton={false}
+        disabled={true}
+        fill="BLUE"
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text="apply"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
