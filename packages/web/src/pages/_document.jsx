@@ -7,12 +7,6 @@ import { ServerStyleSheet } from 'styled-components';
 // ./pages/_document.js
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-// Analytics script injection
-// TODO: We should be using async script injection for this eventually
-function AnalyticsScript() {
-  return <script src={process.env.ANALYTICS_SCRIPT_URL} />;
-}
-
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
@@ -58,8 +52,6 @@ class MyDocument extends Document {
         >
           <Main />
           <NextScript />
-          {/* Inject analytics script if enabled */}
-          {process.env.ANALYTICS && <AnalyticsScript />}
           <div className="dark-overlay" />
         </body>
       </Html>
