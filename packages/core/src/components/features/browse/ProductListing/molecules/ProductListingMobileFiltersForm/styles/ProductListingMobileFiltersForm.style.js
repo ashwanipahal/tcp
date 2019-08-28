@@ -53,6 +53,7 @@ export default css`
     border: 0;
     padding-top: 6px;
     padding-bottom: 0;
+    margin: 0 auto;
 
     .item-list-common {
       max-width: 98%;
@@ -60,13 +61,14 @@ export default css`
 
       @media ${props => props.theme.mediaQuery.medium} {
         max-width: 95%;
-        margin: 0 auto;
       }
     }
 
     .item-list-wrapper {
       max-height: 500px;
       text-align: left;
+      width:99%;
+      margin: 0 auto;
     }
 
     .apply-button {

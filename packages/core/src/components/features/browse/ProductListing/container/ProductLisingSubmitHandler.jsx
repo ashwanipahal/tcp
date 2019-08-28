@@ -1,5 +1,8 @@
-const submitProductListingFiltersForm = () => {
+const submitProductListingFiltersForm = (formData, asdas, getProducts) => {
     console.log("Submit Product Listing Filter Form---------->");
+    console.log("formData", formData);
+
+    getProducts();
 
     // const state = this.store.getState();
 

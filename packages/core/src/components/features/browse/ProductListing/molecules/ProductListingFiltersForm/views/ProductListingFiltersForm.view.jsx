@@ -123,6 +123,7 @@ class ProductListingFiltersForm extends React.Component {
       isOpenFilterSection: !!props.isOpenFilterSection,
     };
     this.handleSubmitOnChange = this.handleSubmitOnChange.bind(this);
+    this.handleImmediateSubmit = this.handleImmediateSubmit.bind(this);
 
     this.handleToggleFilterSection = () =>
       this.setState({ isOpenFilterSection: !this.state.isOpenFilterSection });
@@ -130,24 +131,41 @@ class ProductListingFiltersForm extends React.Component {
 
   handleSubmitOnChange = () => {
     if (this.props.submitting) return;
-    
+
     this.filterRef.forEach(filter => {
       if (filter.filterRefType !== 'auxdescription_uFilter') filter.closeMenu();
     });
 
     // Observe that since submission can occur by capturing the change events in the CustomSelects of the form
     // we need to wait for the next event loop for the value in the redux-store to reflect the ones in the fields
-    setTimeout(() => {
+    // setTimeout(() => {
       // DT-31958
       // Need to get form values from props / redux-store and compare to the previous values
-      const { formValues } = this.props;
-      this.props.onSubmit(formValues, false).then(() => {
-        this.setState({
-          isOpenFilterSection: false,
-        });
+      const { formValues, onSubmit, getProducts } = this.props;
+      onSubmit(formValues, false, getProducts);
+      // .then(() => {
+      //   this.setState({
+      //     isOpenFilterSection: false,
+      //   });
+      // });
+    // });
+  };
+
+  handleImmediateSubmit(formValues) {
+    const {submitting, onSubmit} = this.props;
+    if (submitting) return;
+
+    this.filterRef.forEach((filter) => {
+      if (filter.filterRefType !== "auxdescription_uFilter") filter.closeMenu();
+    });
+
+    return onSubmit(formValues, false).then(() => {
+      this.setState({
+        isOpenFilterSection: false,
       });
     });
-  };
+  }
+
   /**
    * @function renderFilterField
    * @summary This handles to render the color filter fields
@@ -298,7 +316,7 @@ class ProductListingFiltersForm extends React.Component {
             </div>
           </div>
         </form>
-        <form>
+        <form onSubmit={handleSubmit(this.handleImmediateSubmit)}>
           <SortSelector isMobile={false} sortSelectOptions={getSortCustomOptionsMap(config)} onChange={handleSubmit(this.handleSubmitOnChange)} />
         </form>
         <ProductListingMobileFiltersForm

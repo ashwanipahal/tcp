@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { getFormValues } from 'redux-form';
 import ProductListing from '../views';
 import { getPlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs } from './ProductListing.util';
+import config from '../molecules/SortSelector/SortSelector.config'
 import {
   getProductsSelect,
   getNavigationTree,
@@ -39,6 +41,8 @@ class ProductListingContainer extends React.PureComponent {
       labelsFilter,
       categoryId,
       onSubmit,
+      formValues,
+      getProducts,
       ...otherProps
     } = this.props;
     return (
@@ -56,6 +60,8 @@ class ProductListingContainer extends React.PureComponent {
         labelsFilter={labelsFilter}
         labels={labels}
         onSubmit={onSubmit}
+        formValues={formValues}
+        getProducts={getProducts}
         {...otherProps}
       />
     );
@@ -88,12 +94,14 @@ function mapStateToProps(state) {
     filtersLength,
     initialValues: {
       ...state.ProductListing.appliedFiltersIds,
+      sort: state.ProductListing.appliedSortId,
     },
     labelsFilter: state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
     isPlcc: isPlccUser(state),
     onSubmit: submitProductListingFiltersForm,
+    formValues: getFormValues('filter-form')(state),
   };
 }
 

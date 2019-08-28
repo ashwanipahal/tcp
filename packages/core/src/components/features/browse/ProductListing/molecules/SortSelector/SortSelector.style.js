@@ -69,7 +69,7 @@ export default css`
     .sort-dropdown-wrapper {
       margin-left: 8px;
       padding: 9px 0 0;
-      min-width: 162px;
+      width: auto;
     }
     .sort-select-title {
       display: inline-block;
