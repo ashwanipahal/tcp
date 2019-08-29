@@ -11,12 +11,18 @@ export {
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
+  getBirthDateOptionMap,
   getViewportInfo,
   showOverlay,
   closeOverlay,
   bindAllClassMethodsToThis,
   scrollPage,
   createAPIConfig,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
 } from './utils.web';
 
 export {
@@ -28,7 +34,11 @@ export {
   isTCP,
   getBrand,
   getIconPath,
+  getFlagIconPath,
   getLocator,
   getAPIConfig,
   isCanada,
+  getCacheKeyForRedis,
+  getAddressFromPlace,
+  formatAddress,
 } from './utils';

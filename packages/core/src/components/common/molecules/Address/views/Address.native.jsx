@@ -65,7 +65,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
 
 const getAddessLines = ({ address, customStyle }) => {
   return address.addressLine
-    .filter(al => al.trim() !== '')
+    .filter(al => al && al.trim() !== '')
     .map(addressLine => (
       <BodyCopy
         fontSize="fs14"
@@ -76,6 +76,20 @@ const getAddessLines = ({ address, customStyle }) => {
         {...customStyle}
       />
     ));
+};
+
+const getNameFromAddress = (address, customStyle, showDefaultText) => {
+  const name = `${address.firstName} ${address.lastName} ${showDefaultText ? '(Default)' : ''}`;
+  return (
+    <BodyCopy
+      fontSize="fs16"
+      mobilefontFamily={['secondary']}
+      fontWeight="semibold"
+      text={name}
+      color="gray.900"
+      {...customStyle}
+    />
+  );
 };
 
 /**
@@ -92,19 +106,11 @@ const Address = ({
   showCountry,
   customStyle,
   showName,
+  showDefaultText,
 }: Props) =>
   address && (
     <View>
-      {showName && (
-        <BodyCopy
-          fontSize="fs16"
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
-          text={`${address.firstName} ${address.lastName}`}
-          color="gray.900"
-          {...customStyle}
-        />
-      )}
+      {showName && getNameFromAddress(address, customStyle, showDefaultText)}
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix, customStyle })
         : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle })}
@@ -146,6 +152,7 @@ Address.defaultProps = {
   showCountry: true,
   showName: true,
   customStyle: {},
+  showDefaultText: false,
 };
 
 export default Address;

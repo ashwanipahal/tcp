@@ -11,34 +11,12 @@ import ProfileProgress from '../../../molecules/ProfileProgress';
 import styles from '../styles/ProfileInfoActions.style';
 import { getIconPath } from '../../../../../../../utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
-
-export const getMailingAddressState = (mailingAddress, labels) => {
-  if (mailingAddress && mailingAddress.get('isComplete')) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
-
-export const getFavStoreState = (defaultStore, labels) => {
-  if (defaultStore) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
-
-export const getUserBirthdayState = (userBirthday, labels) => {
-  if (userBirthday) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
-
-export const getAboutYourselfState = (userSurvey, labels) => {
-  if (userSurvey && userSurvey.getIn(['0', '0']) && userSurvey.getIn(['1', '0'])) {
-    return labels.lbl_profile_profileActivityCompleted;
-  }
-  return '';
-};
+import {
+  getMailingAddressState,
+  getFavStoreState,
+  getUserBirthdayState,
+  getAboutYourselfState,
+} from '../ProfileInfoActions.utils';
 
 export const ProfileInfoActions = ({
   labels,
@@ -150,7 +128,8 @@ export const ProfileInfoActions = ({
             activityTitle={`+${percentageIncrement.percentageUserBirthday}%`}
             activityCompletionState={getUserBirthdayState(userBirthday, labels)}
             activityDescription={labels.lbl_profile_userBirthdayDescription}
-            redirectTo="/account"
+            redirectTo="/account?id=profile&subSection=edit-personal-info"
+            redirectAsPath="/account/profile"
             dataLocatorPrefix="birthday"
           />
         </Col>

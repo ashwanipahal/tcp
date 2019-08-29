@@ -6,6 +6,7 @@ import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/con
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import ResetPasswordSaga from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.saga';
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
+import UpdateProfileSaga from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.saga';
 import AddEditAddressSaga from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
@@ -30,9 +31,13 @@ import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/contain
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
+import ApplyCreditCardSaga, {
+  SubmitInstantCardApplication,
+} from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
+import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -57,6 +62,7 @@ export default function* rootSaga() {
     GiftCardBalanceSaga(),
     DefaultPaymentSaga(),
     AddEditCreditCardSaga(),
+    SubmitInstantCardApplication(),
     AddGiftCardSaga(),
     AccountSaga(),
     BagPageSaga(),
@@ -67,8 +73,11 @@ export default function* rootSaga() {
     CouponSaga(),
     CheckoutSaga(),
     AccountHeaderSaga(),
+    CountrySelectorSaga(),
     PointsHistorySaga(),
     ResetPasswordSaga(),
+    ApplyCreditCardSaga(),
     ChangePasswordSaga(),
+    UpdateProfileSaga(),
   ]);
 }

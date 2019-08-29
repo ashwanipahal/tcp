@@ -8,6 +8,7 @@ import PaymentReducer from '@tcp/core/src/components/features/account/Payment/co
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
+import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
 import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -30,10 +31,16 @@ import PointsHistoryReducer from '@tcp/core/src/components/features/account/comm
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
+import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
+import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
 
 import {
   APICONFIG_REDUCER_KEY,
+  APPLY_PLCC_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
+  COUNTRY_SELECTOR_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -67,10 +74,12 @@ import {
   POINTS_HISTORY_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   CHANGE_PASSWORD_REDUCER_KEY,
+  UPDATE_PROFILE_REDUCER_KEY,
   USER_REDUCER_KEY,
   CHECKOUT_REDUCER_KEY,
   DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
+  OPTIMIZELY_FEATURES_REDUCER,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -80,6 +89,7 @@ import UserReducer from '@tcp/core/src/components/features/account/User/containe
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
+import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
@@ -90,9 +100,16 @@ const filteredProductListingPageReducer = createFilteredReducer(
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+// TODO: filteredSessionConfigReducer should be used, but issue with immutable map to be corrected
+// const filteredSessionConfigReducer = createFilteredReducer(
+//   SessionConfigReducer,
+//   SESSIONCONFIG_REDUCER_KEY
+// );
 
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
+  [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
@@ -109,6 +126,7 @@ export default combineReducers({
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   form: reduxFormReducer,
   [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
+  [COUNTRY_SELECTOR_REDUCER_KEY]: CountrySelectorReducer,
   [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
@@ -128,7 +146,9 @@ export default combineReducers({
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
+  [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
   [USER_REDUCER_KEY]: UserReducer,
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
+  [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
 });

@@ -7,9 +7,7 @@ import {
   ParentContainer,
   StyledHeading,
   UnderlineStyle,
-  ModalHeading,
   ModalViewWrapper,
-  LineWrapper,
 } from '../PaymentSection.style.native';
 import OffersSection from '../../../molecules/OffersSection';
 import Cards from '../../../molecules/Cards';
@@ -20,7 +18,6 @@ import AddEditPaymentModal from '../../../molecules/AddEditPaymentModal';
 import { getIconCard } from '../../../../../../../utils/index.native';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container';
-import LineComp from '../../../../../../common/atoms/Line';
 
 class PaymentView extends React.Component<Props> {
   static propTypes = {
@@ -110,16 +107,13 @@ class PaymentView extends React.Component<Props> {
       setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
-      recaptchaToken: '',
     };
     this.isEdit = false;
   }
 
   componentWillReceiveProps = nextProps => {
     if (!nextProps.deleteModalMountedState)
-      this.setState({
-        setDeleteModalMountedState: nextProps.deleteModalMountedState,
-      });
+      this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
   };
 
   getCardExpiryText = (labels, selectedCard) => {
@@ -201,14 +195,8 @@ class PaymentView extends React.Component<Props> {
       checkbalanceValueInfo,
       updateCardList,
     } = this.props;
-
-    const {
-      showGiftCardModal,
-      setDeleteModalMountedState,
-      setUpdateModalMountedState,
-      selectedCard,
-      recaptchaToken,
-    } = this.state;
+    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
+    const { showGiftCardModal } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
 
@@ -286,10 +274,8 @@ class PaymentView extends React.Component<Props> {
               checkbalanceValueInfo={checkbalanceValueInfo}
               onGetBalanceCard={onGetBalanceCard}
               toggleModal={this.setDeleteModalMountState}
-              toggleRecaptchaModal={this.setRecaptchaModalMountState}
               setSelectedCard={this.setSelectedCard}
               setCardHandler={this.toggleGiftCardModal}
-              recaptchaToken={recaptchaToken}
             />
           )}
           {setDeleteModalMountedState && (
@@ -304,7 +290,6 @@ class PaymentView extends React.Component<Props> {
               addressDetails={selectedCard.addressDetails}
             />
           )}
-
           {this.getPaymentModal(
             setUpdateModalMountedState,
             dto,
@@ -313,18 +298,11 @@ class PaymentView extends React.Component<Props> {
             selectedCard
           )}
           {showGiftCardModal && (
-            <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={['secondary']}
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  text={labels.paymentGC.lbl_payment_addGiftCard}
-                />
-              </ModalHeading>
-              <LineWrapper>
-                <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-              </LineWrapper>
+            <ModalNative
+              isOpen={showGiftCardModal}
+              onRequestClose={this.toggleGiftCardModal}
+              heading={labels.paymentGC.lbl_payment_addGiftCard}
+            >
               <ModalViewWrapper>
                 <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />
               </ModalViewWrapper>

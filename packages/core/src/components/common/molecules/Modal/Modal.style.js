@@ -8,7 +8,7 @@ const ModalStyle = css`
     right: 0px;
     bottom: 0px;
     background-color: ${props => props.theme.colors.MODAL_OVERLAY};
-    z-index: ${props => props.theme.zindex.zOverlay};
+    z-index: ${props => props.theme.zindex.zModal};
   }
   div.TCPModal__InnerContent {
     background: ${props => props.theme.colors.WHITE};
@@ -30,6 +30,9 @@ const ModalStyle = css`
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: ${props => (props.widthConfig ? props.widthConfig.large : '')};
+      min-height: ${props => (props.heightConfig ? props.heightConfig.minHeight : '')};
+      height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
+      max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     }
   }
   .Modal_Heading {

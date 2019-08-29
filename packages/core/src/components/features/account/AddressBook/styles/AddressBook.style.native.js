@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+import { Platform } from 'react-native';
 
 const HeadingTextStyle = styled.Text`
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
@@ -39,7 +40,7 @@ const ButtonWrapperStyle = styled.View`
 `;
 
 const ParentContainer = css`
-  margin-bottom: 120px;
+  margin-bottom: ${Platform.OS === 'ios' ? '100px' : '50px'};
 `;
 
 const StyledHeading = styled.Text`
@@ -108,6 +109,12 @@ const AddressLabelsPrimary = styled.View`
   margin-left: auto;
 `;
 
+const ModalViewWrapper = styled.View`
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export {
   HeadingTextStyle,
   WrapperStyle,
@@ -129,4 +136,5 @@ export {
   AddressLinkLeftMargin,
   LeftMargin,
   AddressLabelsPrimary,
+  ModalViewWrapper,
 };

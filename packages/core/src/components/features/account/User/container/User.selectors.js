@@ -53,7 +53,10 @@ export const getUserFullName = createSelector(
 
 export const getUserEmail = createSelector(
   getPersonalDataState,
-  state => state && state.getIn(['contactInfo', 'emailAddress']).toLowerCase()
+  state =>
+    state &&
+    state.getIn(['contactInfo', 'emailAddress']) &&
+    state.getIn(['contactInfo', 'emailAddress']).toLowerCase()
 );
 
 export const getUserPhoneNumber = createSelector(
@@ -106,6 +109,11 @@ export const getDefaultStore = createSelector(
   state => state && state.get('hobbies')
 );
 
+export const getAssociateId = createSelector(
+  getPersonalDataState,
+  state => state && state.get('associateId')
+);
+
 export const getAirmilesDetails = createSelector(
   getAirmilesDataState,
   state => state && state.get('accountNumber')
@@ -139,7 +147,9 @@ export const getProfileInfoTileData = createSelector(
     if (personalInformation) {
       firstName = personalInformation.get('firstName');
       lastName = personalInformation.get('lastName');
-      emailAddress = personalInformation.get('emailAddress').toLowerCase();
+      emailAddress =
+        personalInformation.get('emailAddress') &&
+        personalInformation.get('emailAddress').toLowerCase();
     }
     const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
     const addressTemp = mailingAddress ? mailingAddress.get('address') : null;

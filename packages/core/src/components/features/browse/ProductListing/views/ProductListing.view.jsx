@@ -5,9 +5,14 @@ import { Row, Col } from '../../../../common/atoms';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
-import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
-import ReadMore from '../molecules/ReadMore/views';
+
 import ProductListingStyle from '../ProductListing.style';
+
+import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
+
+import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
+import ReadMore from '../molecules/ReadMore/views';
+import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 
 const ProductListView = ({
   className,
@@ -15,8 +20,14 @@ const ProductListView = ({
   currentNavIds,
   navTree,
   breadCrumbs,
+  filters,
+  totalProductsCount,
+  initialValues,
+  filtersLength,
   longDescription,
   labels,
+  labelsFilter,
+  categoryId,
   ...otherProps
 }) => {
   return (
@@ -42,7 +53,15 @@ const ProductListView = ({
             <div className="promo-area">Promo area</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="filter-area">FilterArea</div>
+            <div className="filter-section">
+              <ProductListingFiltersForm
+                filtersMaps={filters}
+                totalProductsCount={totalProductsCount}
+                initialValues={initialValues}
+                filtersLength={filtersLength}
+                labels={labelsFilter}
+              />
+            </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
@@ -53,12 +72,16 @@ const ProductListView = ({
               {...otherProps}
             /> */}
           </Col>
+
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ReadMore
               description={longDescription}
               labels={labels}
               className={`${className} seo-text`}
             />
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <SpotlightContainer categoryId={categoryId} />
           </Col>
         </Col>
       </Row>
@@ -73,8 +96,14 @@ ProductListView.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
+  categoryId: PropTypes.string,
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  filters: PropTypes.shape({}),
+  totalProductsCount: PropTypes.string,
+  initialValues: PropTypes.shape({}),
+  filtersLength: PropTypes.shape({}),
+  labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -84,7 +113,13 @@ ProductListView.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  filters: {},
+  totalProductsCount: '',
+  initialValues: {},
+  filtersLength: {},
+  categoryId: '',
   labels: {},
+  labelsFilter: {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

@@ -20,7 +20,7 @@ import CheckoutFooter from '../../../molecules/CheckoutFooter';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isEditing: props.isGuest, isReset: false };
+    this.state = { isEditing: false, isReset: false };
   }
 
   handleEditModeChange = isEditing => {
@@ -82,17 +82,13 @@ class PickUpFormPart extends React.Component {
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
+      orderHasShipping,
     } = this.props;
     const { isEditing, isReset } = this.state;
 
     return (
       <div className={className}>
         <div className="container">
-          <CheckoutSectionTitleDisplay
-            title={pickUpLabels.title}
-            dataLocator="pickup-title"
-            className="summary-title-pick-up"
-          />
           {pickupError && (
             <ErrorMessage
               error={pickupError}
@@ -102,6 +98,12 @@ class PickUpFormPart extends React.Component {
               dataLocator="pickup-error"
             />
           )}
+          <CheckoutSectionTitleDisplay
+            title={pickUpLabels.title}
+            dataLocator="pickup-title"
+            className="summary-title-pick-up"
+          />
+
           <form onSubmit={handleSubmit} className="checkoutPickupForm">
             <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">
@@ -124,6 +126,7 @@ class PickUpFormPart extends React.Component {
                     labels={pickUpLabels}
                     onSubmit={this.onEditMainContactSubmit}
                     onEditModeChange={this.handleEditModeChange}
+                    onClose={this.handleExitEditModeClick}
                   />
                 )}
               </FormSection>
@@ -183,7 +186,7 @@ class PickUpFormPart extends React.Component {
                 </div>
               </div>
             )}
-            <div lassName="pickUpAlternate-container">
+            <div className="pickUpAlternate-container">
               <FormSection name="pickUpAlternate">
                 <PickUpAlternateFormPart
                   isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -195,13 +198,18 @@ class PickUpFormPart extends React.Component {
                 />
               </FormSection>
             </div>
-            {isEditing && this.SaveAndCancelButton()}
+            {isEditing && !isMobile && this.SaveAndCancelButton()}
           </form>
         </div>
         <form onSubmit={handleSubmit}>
           <CheckoutFooter
+            hideBackLink={false}
             backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
-            nextButtonText={`${pickUpLabels.nextText}: ${pickUpLabels.billingText}`}
+            nextButtonText={
+              !orderHasShipping
+                ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
+                : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`
+            }
             disableNext={isEditing}
           />
         </form>
@@ -218,6 +226,7 @@ PickUpFormPart.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool,
   isOrderUpdateChecked: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
+  orderHasShipping: PropTypes.isRequired,
   pickupError: PropTypes.string,
   currentPhoneNumber: PropTypes.string,
   pickUpLabels: PropTypes.shape({}).isRequired,

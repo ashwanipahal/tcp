@@ -88,7 +88,11 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
             "small": 6,
           }
         }
-      />
+      >
+        <Component
+          showInFooter={true}
+        />
+      </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
       fullBleed={true}
@@ -202,7 +206,11 @@ exports[`Footer component Footer component renders correctly without props 1`] =
             "small": 6,
           }
         }
-      />
+      >
+        <Component
+          showInFooter={true}
+        />
+      </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
       fullBleed={true}

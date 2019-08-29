@@ -2,11 +2,35 @@
 
 exports[`Native AddressBook component should renders correctly when addresses are not present 1`] = `
 <StyledNativeComponent
+  addressLabels={
+    Object {
+      "addNewAddress": "",
+      "verifyAddress": "",
+    }
+  }
   addresses={Immutable.List []}
+  deleteModalMountedState={false}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": undefined,
+      "_foldedDefaultProps": Object {
+        "addressLabels": Object {
+          "addNewAddress": "",
+          "verifyAddress": "",
+        },
+        "addresses": Array [],
+        "deleteModalMountedState": false,
+        "labels": Object {
+          "addressBook": Object {
+            "ACC_LBL_ADDRESS_BOOK_HEADING": "",
+            "ACC_LBL_ADD_NEW_ADDRESS_CTA": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_MSG": "",
+          },
+        },
+        "onDefaultShippingAddressClick": [Function],
+        "setDeleteModalMountState": [Function],
+      },
       "attrs": Array [],
       "displayName": "Styled(AddressView)",
       "inlineStyle": InlineStyle {
@@ -14,7 +38,9 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "
     ",
           "
-  margin-bottom: 120px;
+  margin-bottom: ",
+          "100px",
+          ";
 ",
           ";
   ",
@@ -28,11 +54,19 @@ exports[`Native AddressBook component should renders correctly when addresses ar
   }
   forwardedRef={null}
   labels={Object {}}
+  onDefaultShippingAddressClick={[Function]}
+  setDeleteModalMountState={[Function]}
 />
 `;
 
 exports[`Native AddressBook component should renders correctly when addresses are present 1`] = `
 <StyledNativeComponent
+  addressLabels={
+    Object {
+      "addNewAddress": "",
+      "verifyAddress": "",
+    }
+  }
   addresses={
     Immutable.List [
       Object {
@@ -48,10 +82,28 @@ exports[`Native AddressBook component should renders correctly when addresses ar
       },
     ]
   }
+  deleteModalMountedState={false}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": undefined,
+      "_foldedDefaultProps": Object {
+        "addressLabels": Object {
+          "addNewAddress": "",
+          "verifyAddress": "",
+        },
+        "addresses": Array [],
+        "deleteModalMountedState": false,
+        "labels": Object {
+          "addressBook": Object {
+            "ACC_LBL_ADDRESS_BOOK_HEADING": "",
+            "ACC_LBL_ADD_NEW_ADDRESS_CTA": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_MSG": "",
+          },
+        },
+        "onDefaultShippingAddressClick": [Function],
+        "setDeleteModalMountState": [Function],
+      },
       "attrs": Array [],
       "displayName": "Styled(AddressView)",
       "inlineStyle": InlineStyle {
@@ -59,7 +111,9 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "
     ",
           "
-  margin-bottom: 120px;
+  margin-bottom: ",
+          "100px",
+          ";
 ",
           ";
   ",
@@ -73,5 +127,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
   }
   forwardedRef={null}
   labels={Object {}}
+  onDefaultShippingAddressClick={[Function]}
+  setDeleteModalMountState={[Function]}
 />
 `;

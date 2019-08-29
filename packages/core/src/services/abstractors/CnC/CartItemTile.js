@@ -16,6 +16,7 @@ import {
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
+import { isCanada } from '../../../utils';
 
 const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -773,6 +774,7 @@ export const getUnqualifiedItems = () => {
   let payload = {
     webService: endpoints.getUnqualifiedItems,
   };
+  const isCanadaSite = isCanada();
 
   return executeStatefulAPICall(payload)
     .then((res = { body: {} }) => {
@@ -782,7 +784,10 @@ export const getUnqualifiedItems = () => {
       const {
         body: { orderItemList = [] },
       } = res;
-      return orderItemList.map(item => item.orderItemId.toString());
+      return orderItemList.map(({ orderItemId, isArticleOOSCA, isArticleOOSUS }) => ({
+        orderItemId: orderItemId.toString(),
+        isOOS: isCanadaSite ? isArticleOOSCA : isArticleOOSUS,
+      }));
     })
     .catch(err => {
       throw getFormattedError(err);

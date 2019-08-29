@@ -1,13 +1,15 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import BodyCopy from '../../../atoms/BodyCopy';
+import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import {
   StyledCrossImage,
-  ImageWrapper,
   StyledTouchableOpacity,
-  ModalHeadingWrapper,
+  ModalHeading,
+  LineWrapper,
+  RowWrapper,
+  ImageWrapper,
 } from '../Modal.style.native';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 // How To use this react native modal
 // import this component in your file.
@@ -37,8 +39,6 @@ const getCloseIcon = ({ onRequestClose, headerStyle }: CloseIconProps) => {
   );
 };
 
-const colorPallete = createThemeColorPalette();
-
 const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   const {
     heading,
@@ -47,25 +47,33 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingAlign,
     headingFontFamily,
     headerStyle,
+    fontSize,
+    horizontalBar = true,
+    borderColor = 'black',
   } = otherProps;
   return (
     <SafeAreaView>
-      <StatusBar hidden />
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
-        {getCloseIcon({ onRequestClose, headerStyle })}
+        <StatusBar hidden />
         {heading && (
-          <ModalHeadingWrapper>
-            <BodyCopy
-              fontSize="fs16"
-              mobileFontFamily={headingFontFamily || 'primary'}
-              fontWeight="extrabold"
-              textAlign={headingAlign}
-              text={heading}
-              className="modalHeading"
-              color={colorPallete.black}
-            />
-          </ModalHeadingWrapper>
+          <RowWrapper>
+            <ModalHeading>
+              <BodyCopy
+                mobileFontFamily={headingFontFamily || 'primary'}
+                fontWeight="extrabold"
+                textAlign={headingAlign}
+                fontSize={fontSize || 'fs16'}
+                text={heading}
+              />
+            </ModalHeading>
+            {getCloseIcon({ onRequestClose, headerStyle })}
+          </RowWrapper>
         )}
+        {horizontalBar ? (
+          <LineWrapper>
+            <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
+          </LineWrapper>
+        ) : null}
         {children}
       </Modal>
     </SafeAreaView>

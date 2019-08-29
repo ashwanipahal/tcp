@@ -6,11 +6,10 @@ export default css`
   color: ${props => props.theme.colors.TEXT.DARKERGRAY};
   list-style-type: none;
   margin: 0;
-  padding: 16px 0 0 0;
   border-top: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
   li {
-    padding: 0 0 16px 0;
+    padding: 16px 0;
   }
 
   a {

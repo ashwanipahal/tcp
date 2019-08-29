@@ -40,9 +40,9 @@ class L1NavItem extends React.PureComponent {
    * This function handles if navigation drawer needs to open on current viewport or now
    * @param {*} onClick
    */
-  openNavigationDrawer = e => {
+  openNavigationDrawer = hasL2 => e => {
     const { onClick } = this.props;
-    if (!getViewportInfo().isDesktop) {
+    if (!getViewportInfo().isDesktop && hasL2) {
       e.preventDefault();
       e.stopPropagation();
       this.setState(
@@ -72,9 +72,9 @@ class L1NavItem extends React.PureComponent {
       children,
       // showOnlyOnApp,
       removeL1Focus,
+      hasL2,
       ...others
     } = this.props;
-
     const { hovered } = this.state;
 
     let classForHovered = '';
@@ -110,7 +110,7 @@ class L1NavItem extends React.PureComponent {
           onBlur={this.onMouseLeave}
           {...others}
         >
-          <Anchor to={url} onClick={this.openNavigationDrawer}>
+          <Anchor to={url} onClick={this.openNavigationDrawer(hasL2)}>
             <div className="nav-bar-l1-content" role="button" tabIndex={0}>
               <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
               <span
@@ -140,6 +140,7 @@ L1NavItem.propTypes = {
   // showOnlyOnApp: PropTypes.bool.isRequired,
   removeL1Focus: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
+  hasL2: PropTypes.number.isRequired,
 };
 
 L1NavItem.defaultProps = {

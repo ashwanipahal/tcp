@@ -36,7 +36,7 @@ export const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state, props) => {
   let formViewConfig = {};
-  if (props.buttonConfig.url === '/SMS_SIGNUP_MODAL') {
+  if (props.buttonConfig.link.action === 'open_sms_modal') {
     formViewConfig = {
       ...state.Labels.global.smsSignup,
     };
