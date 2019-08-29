@@ -25,6 +25,10 @@ const RoutesMap = [
     resolver: '/ProductListingPage',
   },
   {
+    path: '/place-card/application',
+    resolver: '/ApplyCardPage',
+  },
+  {
     path: '/c/:l2?/:l3?',
     resolver: '/ProductListing',
     params: ['l2', 'l3'],
@@ -44,7 +48,7 @@ const RoutesMap = [
     resolver: '/gallery',
   },
   {
-    path: '/checkout/:section?',
+    path: '/checkout/:section',
     resolver: '/Checkout',
     params: ['section'],
   },

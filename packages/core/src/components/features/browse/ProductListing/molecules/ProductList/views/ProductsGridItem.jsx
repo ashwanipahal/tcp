@@ -10,7 +10,6 @@ import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
 import Button from '../../../../../../common/atoms/Button';
 import { getLocator } from '../../../../../../../utils';
-
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 
 // import { ProductRating } from './ProductRating';

@@ -20,7 +20,7 @@ const Notification = ({ className, status, message, children }) => {
       <img
         alt={status === 'success' ? 'success icon' : 'error icon'}
         src={status === 'success' ? successIcon : errorIcon}
-        className="elem-mr-MED"
+        className="notification__image elem-mr-MED"
       />
       <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
         {message}

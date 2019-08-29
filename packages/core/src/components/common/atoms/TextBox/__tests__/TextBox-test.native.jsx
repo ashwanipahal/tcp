@@ -48,6 +48,7 @@ describe('Textbox component', () => {
   });
 
   it('check handleBlur', () => {
+    component.setProps({ input: { onBlur: jest.fn(), value: '' } });
     component.setState({ isFocused: true });
     component.instance().handleBlur();
     expect(component.state('isFocused')).toBe(false);

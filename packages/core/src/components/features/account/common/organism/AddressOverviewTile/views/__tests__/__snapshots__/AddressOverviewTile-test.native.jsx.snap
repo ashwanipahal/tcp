@@ -37,6 +37,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
@@ -86,6 +87,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
@@ -159,6 +161,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
@@ -206,6 +209,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
