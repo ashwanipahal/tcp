@@ -98,6 +98,10 @@ class Carousel extends React.PureComponent<Props, State> {
     const { carouselConfig, options } = this.props;
     return (
       <div>
+        {/*
+          carouselConfig.autoplay has been used to show/hide play icon only, the auto slide will
+          still work. However, the options.autoplay has been used to stop the auto sliding of the carousel.
+         */}
         {carouselConfig.autoplay && options.autoplay && this.getPlayButton(carouselConfig)}
         {options.dots && <ul>{dots}</ul>}
       </div>
@@ -144,6 +148,11 @@ class Carousel extends React.PureComponent<Props, State> {
       appendDots: this.appendDots,
       ...defaults,
       ...options,
+      /*
+         The dots will be created on both cases. we need this as we are putting custom play/pause
+         inside the slick-dots container. So, if some cases if dots not required and we will be able
+         render play/pause button or vice-versa. Also check this.getPlayButton()
+        */
       dots: options.dots || options.autoplay,
     };
 
