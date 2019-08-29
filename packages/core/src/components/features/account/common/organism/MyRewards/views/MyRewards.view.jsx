@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
+import Anchor from '../../../../../../common/atoms/Anchor';
 import styles from '../styles/MyRewards.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
@@ -20,6 +21,7 @@ const MyRewards = ({
   isApplyingOrRemovingCoupon,
   isMobile,
   view,
+  showLink,
 }) => {
   const heading =
     view === 'all'
@@ -89,6 +91,40 @@ const MyRewards = ({
             </>
           )}
         </Col>
+        {showLink && (
+          <Col
+            colSize={{
+              small: 6,
+              large: 12,
+              medium: 8,
+            }}
+            className="anchor-wrapper"
+          >
+            <Anchor
+              fontSizeVariation="medium"
+              underline
+              noLink
+              href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+              anchorVariation="primary"
+              dataLocator="my-rewards-program-details"
+              target="_blank"
+            >
+              {labels.myPlaceRewards.lbl_my_rewards_program_details}
+            </Anchor>
+            <Anchor
+              fontSizeVariation="medium"
+              underline
+              noLink
+              href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+              anchorVariation="primary"
+              dataLocator="my-rewards-tnc"
+              className="elem-ml-XXL"
+              target="_self"
+            >
+              {labels.common.lbl_common_tnc}
+            </Anchor>
+          </Col>
+        )}
       </Row>
     </div>
   );
@@ -104,6 +140,7 @@ MyRewards.propTypes = {
   isApplyingOrRemovingCoupon: PropTypes.bool,
   isMobile: PropTypes.bool,
   view: PropTypes.string,
+  showLink: PropTypes.bool,
 };
 
 MyRewards.defaultProps = {
@@ -124,6 +161,7 @@ MyRewards.defaultProps = {
   isApplyingOrRemovingCoupon: false,
   isMobile: true,
   view: '',
+  showLink: false,
 };
 
 export default withStyles(MyRewards, styles);
