@@ -94,7 +94,7 @@ export default css`
         color: ${props => props.theme.colorPalette.gray[900]};
         text-align: center;
         font-weight: 600;
-        z-index: 11;
+        z-index: ${props => props.theme.zindex.zDrawer + 1};
         white-space: nowrap;
       }
     }
