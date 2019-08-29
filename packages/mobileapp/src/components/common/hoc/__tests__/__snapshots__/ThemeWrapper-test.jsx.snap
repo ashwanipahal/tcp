@@ -404,7 +404,6 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
-          "LARGE": "90px",
           "LRG": "64px",
           "MED": "48px",
           "SM": "32px",

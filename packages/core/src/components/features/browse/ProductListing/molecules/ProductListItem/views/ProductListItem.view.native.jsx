@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components/native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -46,15 +48,24 @@ const ListItem = props => {
     onAddToBag,
     onFavorite,
     currencyExchange,
+    theme,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
+  const favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
+  const favoriteIconSize = get(theme, 'typography.fontSizes.fs21', 21);
   return (
     <ListContainer>
       <RenderTopBadge1 text={badge1} />
-      <ImageSection onFavorite={onFavorite} item={item} selectedColorIndex={selectedColorIndex} />
+      <ImageSection
+        onFavorite={onFavorite}
+        item={item}
+        selectedColorIndex={selectedColorIndex}
+        favoriteIconColor={favoriteIconColor}
+        favoriteIconSize={favoriteIconSize}
+      />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection miscInfo={miscInfo} currencyExchange={currencyExchange} />
       <RenderTitle text={name} />
@@ -90,12 +101,23 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({ item, onFavorite, selectedColorIndex }) => {
+const ImageSection = ({
+  item,
+  onFavorite,
+  selectedColorIndex,
+  favoriteIconColor,
+  favoriteIconSize,
+}) => {
   return (
     <View>
       <ImageCarousel item={item} selectedColorIndex={selectedColorIndex} />
       <FavoriteIconContainer>
-        <CustomIcon name={ICON_NAME.favorite} size={21} color="#9b9b9b" onPress={onFavorite} />
+        <CustomIcon
+          name={ICON_NAME.favorite}
+          size={favoriteIconSize}
+          color={favoriteIconColor}
+          onPress={onFavorite}
+        />
       </FavoriteIconContainer>
     </View>
   );
@@ -105,6 +127,8 @@ ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
   onFavorite: PropTypes.func.isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
+  favoriteIconColor: PropTypes.string.isRequired,
+  favoriteIconSize: PropTypes.string.isRequired,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -168,6 +192,7 @@ const RenderPromotionalMessage = ({ text }) => {
 RenderPromotionalMessage.propTypes = TextProps;
 
 ListItem.propTypes = {
+  theme: PropTypes.shape({}),
   item: PropTypes.shape({}),
   badge1: PropTypes.string,
   badge2: PropTypes.string,
@@ -178,6 +203,7 @@ ListItem.propTypes = {
 };
 
 ListItem.defaultProps = {
+  theme: {},
   item: {},
   badge1: '',
   badge2: '',
@@ -186,5 +212,5 @@ ListItem.defaultProps = {
   onFavorite: () => {},
 };
 
-export default withStyles(ListItem, styles);
+export default withStyles(withTheme(ListItem), styles);
 export { ListItem as ListItemVanilla };

@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components/native';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';

@@ -8,16 +8,9 @@ exports[`ProductListItem component should renders ProductListItem correctly 1`] 
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "badge1": "",
-        "badge2": "",
-        "item": Object {},
-        "loyaltyPromotionMessage": "",
-        "onAddToBag": [Function],
-        "onFavorite": [Function],
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
-      "displayName": "Styled(ListItem)",
+      "displayName": "Styled(WithTheme(ListItem))",
       "inlineStyle": InlineStyle {
         "rules": Array [
           "
@@ -28,7 +21,11 @@ exports[`ProductListItem component should renders ProductListItem correctly 1`] 
       },
       "render": [Function],
       "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
+      "target": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "WithTheme(ListItem)",
+        "render": [Function],
+      },
       "withComponent": [Function],
     }
   }

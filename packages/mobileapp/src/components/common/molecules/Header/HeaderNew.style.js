@@ -4,7 +4,7 @@ export const SafeAreaViewStyle = styled.SafeAreaView`
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   background: ${props => props.theme.colorPalette.white};
-  min-height: ${props => props.theme.spacing.LAYOUT_SPACING.LARGE};
+  min-height: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
   border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
   border-bottom-width: 1;
 `;
