@@ -11,6 +11,7 @@ exports[`ElectronicConsent component should renders correctly considering labels
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    tabIndex="0"
     textAlign="left"
   >
     &lt;h1&gt;plcc agreement&lt;/h1&gt;
