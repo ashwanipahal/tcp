@@ -84,7 +84,6 @@ class CountrySelectorModal extends React.Component {
         maxWidth="450px"
         minHeight="643px"
         inheritedStyles={modalStyles}
-        shouldCloseOnEsc={false}
         shouldCloseOnOverlayClick={false}
       >
         <div>
