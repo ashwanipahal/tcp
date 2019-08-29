@@ -62,6 +62,10 @@ const GooglePlaceInputWrapper = styled.View`
   width: 100%;
 `;
 
+const OptionalAdressWrapper = styled.View`
+  height: 72px;
+`;
+
 export {
   EmptyView,
   SaveButtonWrapper,
@@ -75,4 +79,5 @@ export {
   SetDefaultShippingWrapper,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
+  OptionalAdressWrapper,
 };

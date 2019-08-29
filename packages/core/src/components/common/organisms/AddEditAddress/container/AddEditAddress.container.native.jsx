@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reset } from 'redux-form';
+import { Map } from 'immutable';
 
 import PropTypes from 'prop-types';
 import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
@@ -61,7 +62,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
 
   componentDidUpdate() {
     const { addressResponse, getAddressListAction, onCancel, resetFormState } = this.props;
-    const isSuccess = addressResponse && addressResponse.get('addressId');
+    const isSuccess =
+      addressResponse && Map.isMap(addressResponse) && addressResponse.get('addressId');
     if (isSuccess) {
       getAddressListAction();
       onCancel();
@@ -70,9 +72,10 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    const { resetFormState, toggleAddressModal, currentForm } = this.props;
+    const { resetFormState, toggleAddressModal, currentForm, resetAddressLine1 } = this.props;
     resetFormState();
     if (currentForm === 'VerificationModal') toggleAddressModal();
+    resetAddressLine1();
   }
 
   getInitialValues = (addressList, address) => {
@@ -149,6 +152,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       isEdit,
       toggleAddressModal,
       currentForm,
+      addressLine1,
+      setAddressLine1,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -167,6 +172,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         addressFormLabels={labels.addressFormLabels}
         addressBookLabels={labels.addressBook}
         backToAddressBookClick={backToAddressBookClick}
+        addressLine1={addressLine1}
+        setAddressLine1={setAddressLine1}
       />
     );
   }
