@@ -19,16 +19,6 @@ export const modalStyles = css`
       margin-bottom: 12px;
     }
   }
-  .close-modal {
-    background-size: 100% 100%;
-    width: 15px;
-    height: 15px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 20px;
-      height: 20px;
-    }
-  }
 `;
 
 export const selectBoxStyle = css`
@@ -48,7 +38,7 @@ export const selectBoxStyle = css`
 
 const styles = css`
   .shipToModal__divider {
-    background: ${props => props.theme.colorPalette.blue['400']};
+    background: ${props => props.theme.colorPalette.blue['500']};
     border: 0;
     height: 2px;
     width: 143px;
