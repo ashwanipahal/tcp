@@ -218,7 +218,7 @@ const CarouselStyle = css`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .slick-dots li.slick-active {
+  li.slick-active {
     width: 11px;
     height: 11px;
     background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
