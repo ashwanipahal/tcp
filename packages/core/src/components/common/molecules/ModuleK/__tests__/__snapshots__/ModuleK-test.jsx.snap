@@ -218,6 +218,8 @@ exports[`ModuleK component renders correctly 1`] = `
             "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
+            "pauseIconButtonLabel": "Pause",
+            "playIconButtonLabel": "Play",
           }
         }
         inheritedStyles={

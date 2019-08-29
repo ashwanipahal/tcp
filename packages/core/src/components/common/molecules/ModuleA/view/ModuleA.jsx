@@ -51,7 +51,14 @@ class ModuleA extends React.Component {
   };
 
   render() {
-    const { largeCompImageCarousel, ctaItems, ctaType, className } = this.props;
+    const {
+      largeCompImageCarousel,
+      ctaItems,
+      ctaType,
+      className,
+      accessibility: { playIconButton, pauseIconButton } = {},
+    } = this.props;
+
     const buttonListCtaType = ctaTypes[ctaType];
     const { isRibbonLeftAligned } = this.state;
     const isLinkList = buttonListCtaType === 'linkCTAList';
@@ -63,6 +70,8 @@ class ModuleA extends React.Component {
       <button type="button" data-locator="moduleA_right_arrow" className="slick-prev" />
     );
     carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageCarousel.length > 1;
+    carouselConfig.pauseIconButtonLabel = pauseIconButton;
+    carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <Row
@@ -148,6 +157,7 @@ ModuleA.defaultProps = {
   ctaItems: [],
   ctaType: 'stackedCTAList',
   className: '',
+  accessibility: {},
 };
 
 ModuleA.propTypes = {
@@ -155,6 +165,10 @@ ModuleA.propTypes = {
   ctaItems: PropTypes.shape([]),
   ctaType: PropTypes.oneOf(['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
   className: PropTypes.string,
+  accessibility: PropTypes.shape({
+    playIconButton: PropTypes.string,
+    pauseIconButton: PropTypes.string,
+  }),
 };
 
 export default withStyles(errorBoundary(ModuleA), style);

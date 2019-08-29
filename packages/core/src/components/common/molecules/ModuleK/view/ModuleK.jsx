@@ -13,6 +13,7 @@ type Props = {
   headerText: Array<Object>,
   promoTextBanner: Array<Object>,
   masonryGrid: Object,
+  accessibility: Object,
 };
 
 type State = {
@@ -36,7 +37,12 @@ const carouselConfig = {
  */
 class ModuleK extends React.PureComponent<Props, State> {
   render() {
-    const { headerText, masonryGrid, className } = this.props;
+    const {
+      headerText,
+      masonryGrid,
+      className,
+      accessibility: { playIconButton, pauseIconButton } = {},
+    } = this.props;
 
     const { CAROUSEL_OPTIONS } = config;
     CAROUSEL_OPTIONS.prevArrow = (
@@ -47,6 +53,8 @@ class ModuleK extends React.PureComponent<Props, State> {
     );
 
     carouselConfig.autoplay = carouselConfig.autoplay && masonryGrid.length > 1;
+    carouselConfig.pauseIconButtonLabel = pauseIconButton;
+    carouselConfig.playIconButtonLabel = playIconButton;
 
     return (
       <BodyCopy component="div" className={`${className} moduleK`}>
