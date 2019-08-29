@@ -26,6 +26,7 @@ import {
   SetDefaultShippingWrapper,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
+  OptionalAdressWrapper,
 } from './AddressForm.native.style';
 
 class AddressForm extends React.PureComponent {
@@ -39,19 +40,20 @@ class AddressForm extends React.PureComponent {
 
   componentDidMount() {
     const { dispatch, initialValues } = this.props;
-    dispatch(change('AddressForm', 'state', initialValues.state));
+    dispatch(change('AddressForm', 'state', UScountriesStatesTable[0].id));
     dispatch(change('AddressForm', 'country', initialValues.country));
     dispatch(change('AddressForm', 'addressLine1', initialValues.addressLine1));
   }
 
   handlePlaceSelected = (place, inputValue) => {
-    const { dispatch } = this.props;
+    const { dispatch, setAddressLine1 } = this.props;
     const address = getAddressFromPlace(place, inputValue);
     dispatch(change('AddressForm', 'city', address.city));
     dispatch(change('AddressForm', 'zipCode', address.zip));
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
     this.setState({ dropDownItem: address.state });
+    setAddressLine1(address.street);
   };
 
   render() {
@@ -63,6 +65,7 @@ class AddressForm extends React.PureComponent {
       invalid,
       handleSubmit,
       dispatch,
+      addressLine1,
     } = this.props;
     const { dropDownItem, country } = this.state;
     return (
@@ -93,18 +96,21 @@ class AddressForm extends React.PureComponent {
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
+            initialValue={addressLine1}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
           />
         </GooglePlaceInputWrapper>
 
-        <Field
-          id="addressLine2"
-          name="addressLine2"
-          label={addressFormLabels.addressLine2}
-          component={TextBox}
-          dataLocator="addnewaddress-addressl2"
-        />
+        <OptionalAdressWrapper>
+          <Field
+            id="addressLine2"
+            name="addressLine2"
+            label={addressFormLabels.addressLine2}
+            component={TextBox}
+            dataLocator="addnewaddress-addressl2"
+          />
+        </OptionalAdressWrapper>
 
         <Field
           id="city"
@@ -245,6 +251,8 @@ AddressForm.propTypes = {
     country: PropTypes.string,
     addressLine1: PropTypes.string,
   }),
+  setAddressLine1: PropTypes.func,
+  addressLine1: PropTypes.string,
 };
 
 AddressForm.defaultProps = {
@@ -273,6 +281,8 @@ AddressForm.defaultProps = {
     country: '',
     addressLine1: '',
   },
+  setAddressLine1: () => {},
+  addressLine1: '',
 };
 
 const validateMethod = createValidateMethod(

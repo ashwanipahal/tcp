@@ -3,11 +3,13 @@
 exports[`AddEditAddress Native should render correctly 1`] = `
 <View
   addressFormLabels={Object {}}
+  addressLine1=""
   currentForm="AddAddress"
   initialValues={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
+  setAddressLine1={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
@@ -17,6 +19,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
   >
     <ReduxForm
       addressFormLabels={Object {}}
+      addressLine1=""
       currentForm="AddAddress"
       destroyOnUnmount={false}
       enableReinitialize={true}
@@ -31,6 +34,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
+      setAddressLine1={[Function]}
       shouldAsyncValidate={[Function]}
       shouldError={[Function]}
       shouldValidate={[Function]}
@@ -50,11 +54,13 @@ exports[`AddEditAddress Native should render correctly 1`] = `
 exports[`AddEditAddress Native should test with verification modal 1`] = `
 <View
   addressFormLabels={Object {}}
+  addressLine1=""
   currentForm="VerificationModal"
   initialValues={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
+  setAddressLine1={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
