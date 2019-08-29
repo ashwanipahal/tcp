@@ -3,6 +3,13 @@ import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
 import { isClient, isMobileApp } from '../../../utils';
 
+
+
+const modifyUnbxdUrl = (unboxKey) => {
+  const temp = unboxKey.split('/');
+  temp.splice(0,1,"sites");
+  return temp.join('/');
+}
 /**
  * @summary This is to generate and return both the request params and the request URL.
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
@@ -10,11 +17,13 @@ import { isClient, isMobileApp } from '../../../utils';
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
-  const { webService } = reqObj;
-  const { URI, unbxdCustom } = webService;
-  const UNBXD_API_KEY_CUSTOM = 'sites';
-  const unboxSiteKey = unbxdCustom ? UNBXD_API_KEY_CUSTOM : apiConfig.unboxAPIKey;
-  const requestUrl = `${apiConfig.unbxd}/${unboxSiteKey}/${apiConfig.unboxAPIKey}/${URI}`;
+  const {
+    webService: { URI, unbxdCustom },
+  } = reqObj;
+
+  const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey ;
+  const requestUrl = `${apiConfig.unbxd}/${unboxKey}/${URI}`;
+
   const reqHeaders = {};
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {

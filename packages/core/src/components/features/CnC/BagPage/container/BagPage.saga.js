@@ -9,8 +9,8 @@ import {
   removeItem,
   getProductInfoForTranslationData,
 } from '../../../../../services/abstractors/CnC';
-import endpoints from '../../../../../service/endpoint';
-import fetchData from '../../../../../service/API';
+// import endpoints from '../../../../../service/endpoint';
+// import fetchData from '../../../../../service/API';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
 import { checkoutSetCartData } from '../../Checkout/container/Checkout.action';
@@ -46,32 +46,44 @@ const getProductsTypes = orderItems => {
 
 export function* getTranslatedProductInfo(cartInfo) {
   const productypes = getProductsTypes(cartInfo.orderDetails.orderItems);
-  const partNumberList = productypes.gymProducts.concat(productypes.tcpProducts).join();
-  // return yield call(getProductInfoForTranslationData,partNumberList);
-
-  const relURI = `/sites/childrensplace-com702771523455856/products?id=${partNumberList}&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price&uid=uid-1566211834006-42481`;
-
-  try {
-    const { baseURI, method } = endpoints.getProductInfoForTranslationByPartNumber;
-    // need to do this call using abstractor
-    return yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        unbxd: true,
-        q: '2084642_757',
-      },
-      method
-    );
-  } catch (err) {
-    console.log(err);
-    return err;
+  const gymProdpartNumberList = productypes.gymProducts;
+  const tcpProdpartNumberList = productypes.tcpProducts;
+  let tcpProductsResults;
+  let gymProductsResults;
+  if(tcpProdpartNumberList.length) {
+    tcpProductsResults = yield call(getProductInfoForTranslationData,tcpProdpartNumberList.join());
   }
+
+  if(gymProdpartNumberList.length) {
+    gymProductsResults = yield call(getProductInfoForTranslationData,gymProdpartNumberList.join());
+  }
+  gymProductsResults = (gymProductsResults && gymProductsResults.body.response.products) || []
+  tcpProductsResults = (tcpProductsResults && tcpProductsResults.body.response.products) || []
+
+  return [...gymProductsResults,...tcpProductsResults];
+
+  // const relURI = `/sites/childrensplace-com702771523455856/products?id=${partNumberList}&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price&uid=uid-1566211834006-42481`;
+
+  // try {
+  //   const { baseURI, method } = endpoints.getProductInfoForTranslationByPartNumber;
+  //   // need to do this call using abstractor
+  //   return yield call(
+  //     fetchData,
+  //     baseURI,
+  //     relURI,
+  //     {
+  //       unbxd: true,
+  //       q: '2084642_757',
+  //     },
+  //     method
+  //   );
+  // } catch (err) {
+  //   console.log(err);
+  //   return err;
+  // }
 }
 
 function createMatchObject(res, translatedProductInfo) {
-  console.log('adsda');
   res.orderDetails.orderItems.forEach(orderItem => {
     translatedProductInfo.body.response.products.forEach(item => {
       if (orderItem.productInfo.productPartNumber === item.prodpartno) {
@@ -124,8 +136,6 @@ export function* getCartDataSaga(payload) {
     // yield getFinalTranslatedOrderDetails( res.orderDetails.orderItems ,getTranslatedProductInfo.body.response.products);
 
     createMatchObject(res, translatedProductInfo);
-
-    console.log('translated-->', res.orderDetails);
 
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
     if (isCheckoutFlow) {
