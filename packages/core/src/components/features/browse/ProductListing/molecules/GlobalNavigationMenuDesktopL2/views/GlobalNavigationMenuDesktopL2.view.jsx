@@ -6,6 +6,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import Anchor from '../../../../../../common/atoms/Anchor';
+import errorBoundary from '../../../../../../common/hoc/withErrorBoundary';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import GlobalNavL2Style from '../GlobalNavigationMenuDesktopL2.style';
 
 class GlobalNavigationMenuDesktopL2 extends React.Component {
   static propTypes = {
@@ -13,6 +18,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
     navTree: PropTypes.shape({}),
     isTopNav: PropTypes.bool,
     navigationTree: PropTypes.shape({}),
+    className: PropTypes.string,
   };
 
   static defaultProps = {
@@ -20,6 +26,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
     navTree: {},
     isTopNav: false,
     navigationTree: {},
+    className: '',
   };
 
   constructor() {
@@ -39,7 +46,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
       const tempGroups = [];
       if (navigationTree.subCategories && navigationTree.subCategories[subCategoryArr[i]]) {
         tempGroups.push({
-          groupName: subCategoryArr[i].label,
+          groupName: navigationTree.subCategories[subCategoryArr[i]].label,
           menuItems: navigationTree.subCategories[subCategoryArr[i]].items,
         });
       }
@@ -83,6 +90,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
       activeCategoryIds,
       /* navTree, */
       isTopNav,
+      className,
     } = this.props;
 
     const menuGroupingArr = this.menuGroupings();
@@ -93,7 +101,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
 
     return (
       <div
-        className="sub-menu-outer-container"
+        className={`${className} sub-menu-outer-container`}
         role="menu"
         aria-hidden={isTopNav ? 'true' : 'false'}
       >
@@ -114,7 +122,8 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
     );
   }
 }
-export default GlobalNavigationMenuDesktopL2;
+export default withStyles(errorBoundary(GlobalNavigationMenuDesktopL2), GlobalNavL2Style);
+export { GlobalNavigationMenuDesktopL2 as GlobalNavigationMenuDesktopL2Vanilla };
 
 // This is a column
 const NavGroupContainer = props => {
@@ -132,7 +141,16 @@ const NavGroupContainer = props => {
         // let className = `group-title group-index-${index + 1} sub-menu-outliers-group`
         return (
           <div key={`group-${groupName}`} className={className}>
-            <h2>{groupName}</h2>
+            <BodyCopy
+              className="group-heading"
+              component="h2"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              color="text.primary"
+            >
+              {groupName}
+            </BodyCopy>
             <L2 {...{ menuItems, activeCategoryIds, isTopNav }} />
           </div>
         );
@@ -159,7 +177,14 @@ NavGroupContainer.defaultProps = {
 
 function L2({ menuItems, activeCategoryIds, isTopNav }) {
   return (
-    <ol className="sub-menu-category" role="none">
+    <BodyCopy
+      component="ol"
+      className="sub-menu-category"
+      fontFamily="secondary"
+      fontSize="fs14"
+      color="text.primary"
+      role="none"
+    >
       {menuItems.map(item => {
         const isActive = activeCategoryIds && item.categoryContent.id === activeCategoryIds[1];
         // let className = cssClassName('sub-menu-category-item ');
@@ -168,27 +193,34 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
         return (
           <React.Fragment>
             {item.categoryContent.name && (
-              <li
+              <BodyCopy
+                className="sub-category-item"
+                component="li"
+                fontFamily="secondary"
                 key={item.categoryContent.id}
                 id={`list-item-${item.categoryContent.id}`}
                 role="none"
               >
-                <a href={item.url}>{item.categoryContent.name}</a>
+                <Anchor href={item.url}>{item.categoryContent.name}</Anchor>
                 {!isTopNav && isActive && (
                   <L3 menuItems={item.subCategories} activeCategoryIds={activeCategoryIds} />
                 )}
-              </li>
+              </BodyCopy>
             )}
           </React.Fragment>
         );
       })}
-    </ol>
+    </BodyCopy>
   );
 }
 
 function L3({ menuItems, activeCategoryIds }) {
   return (
-    <ol className="sub-menu-category sub-menu-category-level-three" role="none">
+    <BodyCopy
+      component="ol"
+      className="sub-menu-category sub-menu-category-level-three"
+      role="none"
+    >
       {menuItems.map(({ categoryContent: { name, categoryId }, url }) => {
         const isActive = activeCategoryIds && categoryId === activeCategoryIds[2];
         // let className = cssClassName('sub-menu-category-item navigation-level-three-item ');
@@ -196,14 +228,20 @@ function L3({ menuItems, activeCategoryIds }) {
         return (
           <React.Fragment>
             {
-              <li className={isActive} key={categoryId} id={`list-item-${categoryId}`} role="none">
-                <a href={url}>{name}</a>
-              </li>
+              <BodyCopy
+                component="li"
+                className={isActive}
+                key={categoryId}
+                id={`list-item-${categoryId}`}
+                role="none"
+              >
+                <Anchor href={url}>{name}</Anchor>
+              </BodyCopy>
             }
           </React.Fragment>
         );
       })}
-    </ol>
+    </BodyCopy>
   );
 }
 
