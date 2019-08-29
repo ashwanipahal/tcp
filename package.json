@@ -36,8 +36,7 @@
     "stylelint:app": "yarn workspace mobileapp stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*native.js",
     "lint:web": "yarn eslint:web && yarn stylelint:web",
     "lint:app": "yarn eslint:app && yarn stylelint:app",
-    "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
-    "show-esdocs": "./esdocs/index.html"
+    "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.3",
