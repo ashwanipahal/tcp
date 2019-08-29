@@ -48,6 +48,7 @@ exports[`HomePageView should render correctly 1`] = `
   />
   <Styled(CustomButton)
     buttonVariation="variable-width"
+    color=""
     customStyle={Object {}}
     disableButton={false}
     fullWidth={true}

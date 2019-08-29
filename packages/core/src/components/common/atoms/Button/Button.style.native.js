@@ -1,14 +1,15 @@
 /* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable no-shadow */
-import { css } from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 
 const getShape = props => {
   const { theme, shape } = props;
-  const { brand } = theme;
-  if (brand === 'gym' && shape === 'square') {
+  const { isGymboree } = theme;
+  if (isGymboree && shape === 'square') {
     return `border-radius: 0px;`;
   }
-  if (brand === 'gym') {
+  if (isGymboree) {
     return `border-radius: 25px;`;
   }
   return `
@@ -34,6 +35,7 @@ const style = css`
    padding: 4px 20px;
    width: 100%;
    margin : 40px;
+   align-items:center;
    ${getShape(props)}
  `
       : ''};
@@ -50,7 +52,7 @@ const style = css`
  font-size: ${props.theme.fonts.fontSize.button.size}px;
  font-weight: ${props.theme.typography.fontWeights.black};
  border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
- padding: 12px 32px;
+ align-items:center;
  ${getShape(props)}`
       : ''};
 
@@ -87,24 +89,63 @@ const style = css`
      height: ${props.height};
      min-height: 45px;
      background: ${props.fill || props.theme.colorPalette.white};
-     ${props.color === 'red' ? ` color: ${props.theme.colorPalette.secondary.dark}; ` : ''};
-     ${props.color === 'blue' ? ` color: ${props.theme.colorPalette.primary.dark};` : ''};
-     ${props.color === 'gray' ? ` color: ${props.theme.colorPalette.gray[700]};` : ''};
-     font-family: ${props.theme.typography.fonts.secondary};
-     font-size: ${props.theme.fonts.fontSize.button.size}px;
-     font-weight: ${props.theme.typography.fontWeights.extrabold};
      ${
        props.color === 'red'
          ? ` border: 1px solid ${props.theme.colorPalette.secondary.dark}; `
          : ''
      };
-     ${
-       props.color === 'blue' ? ` border: 1px solid ${props.theme.colorPalette.primary.dark};` : ''
-     };
+     ${props.color === 'blue' ? ` border: 1px solid ${props.theme.colorPalette.blue[700]};` : ''};
      ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
-     padding: 12px 32px;
+     align-items:center;
+     justify-content:center;
      ${getShape(props)}
+
      `
+      : ''};
+`;
+
+export const CustomStyleText = styled(StyledText)`
+  ${props =>
+    props.buttonVariation === 'variable-width'
+      ? `
+color: ${props.color || props.theme.colorPalette.black};
+font-family: ${props.theme.typography.fonts.secondary};
+font-size: ${props.theme.fonts.fontSize.button.size}px;
+font-weight: ${props.theme.typography.fontWeights.black};
+padding: 12px 32px;
+`
+      : ''};
+
+  ${props =>
+    props.buttonVariation === 'fixed-width'
+      ? `
+width: 40px;
+height: 100px;
+color: ${props.theme.colorPalette[props.color || 'black']};
+font-size: ${props.theme.fonts.fontSize.button.size}px
+font-family: ${props.theme.typography.fonts.primary};
+font-weight: ${props.theme.typography.fontWeights.semibold};
+border: 1px solid ${props.theme.colorPalette.black};
+padding: 4px 20px;
+width: 100%;
+margin : 40px;
+`
+      : ''};
+
+  ${props =>
+    props.buttonVariation === 'cautionary-button'
+      ? `
+   width: ${props.width};
+   height: ${props.height};
+   ${props.color === 'red' ? ` color: ${props.theme.colorPalette.secondary.dark}; ` : ''};
+   ${props.color === 'blue' ? ` color: ${props.theme.colorPalette.blue[700]};` : ''};
+   ${props.color === 'gray' ? ` color: ${props.theme.colorPalette.gray[700]};` : ''};
+   font-family: ${props.theme.typography.fonts.secondary};
+   font-size: ${props.theme.fonts.fontSize.button.size}px;
+   font-weight: ${props.theme.typography.fontWeights.extrabold};
+   text-align:center;
+   padding: 12px 32px;
+   `
       : ''};
 `;
 
