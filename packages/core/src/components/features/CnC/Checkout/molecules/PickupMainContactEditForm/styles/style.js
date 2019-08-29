@@ -26,6 +26,15 @@ const styles = css`
   .saveUpdateButton {
     margin-top: 42px;
   }
+  .PickupModal,
+  .pick-up-overlay {
+    z-index: 10;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
 `;
 
 export default styles;
