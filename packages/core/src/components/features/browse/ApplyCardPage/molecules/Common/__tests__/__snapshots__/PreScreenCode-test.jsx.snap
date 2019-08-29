@@ -14,20 +14,12 @@ exports[`PreScreenCode component should renders correctly 1`] = `
     textAlign="left"
   >
     Click here to unbox the link
-    <Styled(BodyCopy)
+    <Styled(Anchor)
       className="click-here-link"
-      color="text.primary"
-      component="a"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="normal"
-      letterSpacing="normal"
-      lineHeight="normal"
       onClick={[Function]}
-      textAlign="left"
     >
       click here
-    </Styled(BodyCopy)>
+    </Styled(Anchor)>
   </Styled(BodyCopy)>
 </styled.div>
 `;

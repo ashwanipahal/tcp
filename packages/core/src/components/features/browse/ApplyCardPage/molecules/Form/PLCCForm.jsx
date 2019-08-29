@@ -128,6 +128,7 @@ const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
                   component="div"
                   onClick={backToHome}
                   textAlign="center"
+                  tabIndex="0"
                 >
                   {labels.plcc_form_nothanks}
                 </BodyCopy>
