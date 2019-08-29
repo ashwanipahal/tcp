@@ -7,7 +7,7 @@ import { checkoutModalOpenState } from '../../../account/LoginPage/container/Log
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
 import { routerPush } from '../../../../../utils';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
-import checkoutSelectors from '../../Checkout/container/Checkout.selector';
+import bagPageActions from '../../BagPage/container/BagPage.actions';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -30,19 +30,19 @@ export class AddedToBagContainer extends React.Component<Props> {
       checkoutModalMountedState,
       closeCheckoutModalMountState,
       isUserLoggedIn,
-      orderHasPickup,
+      routeForBagCheckout,
     } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
     };
     return (
       <AddedToBagActionsView
-        orderHasPickup={orderHasPickup}
         onClickViewBag={onClickViewBag}
         handleCartCheckout={handleCartCheckout}
         labels={labels}
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
+        routeForBagCheckout={routeForBagCheckout}
         inheritedStyles={inheritedStyles}
         closeCheckoutModalMountState={closeCheckoutModalMountState}
         checkoutModalMountedState={checkoutModalMountedState}
@@ -56,7 +56,7 @@ export class AddedToBagContainer extends React.Component<Props> {
 AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
-  orderHasPickup: PropTypes.bool.isRequired,
+  routeForBagCheckout: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
@@ -64,12 +64,14 @@ const mapDispatchToProps = dispatch => {
     closeCheckoutModalMountState: payload => {
       dispatch(setCheckoutModalMountedState(payload));
     },
+    routeForBagCheckout: () => {
+      dispatch(bagPageActions.routeForCheckout());
+    },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
     labels: getLabelsAddToActions(state),
     checkoutModalMountedState: checkoutModalOpenState(state),
     isUserLoggedIn: getUserLoggedInState(state),

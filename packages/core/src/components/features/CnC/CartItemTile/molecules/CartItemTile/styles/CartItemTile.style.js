@@ -47,6 +47,9 @@ export default css`
   .responsive-edit-css {
     padding-top: 2px;
     cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15px;
   }
   .imageWrapper {
     position: relative;
@@ -92,6 +95,21 @@ export default css`
 
   .unavailable-error {
     padding-top: 9px;
+  }
+
+  .product-detail {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-detail-bag {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+  }
+
+  .product-detail-row {
+    width: 100%;
   }
 
   .product-tile-wrapper {
@@ -148,6 +166,9 @@ export default css`
       .responsive-edit-css {
         padding-top: 2px;
         cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 15px;
       }
     }
 
@@ -171,6 +192,9 @@ export default css`
         bottom: 0;
         right: 50%;
         cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 15px;
       }
       .bag-product-detail-wrapper {
         position: static;

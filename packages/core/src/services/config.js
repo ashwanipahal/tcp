@@ -27,6 +27,12 @@ export const awsAppSync = {
 export const API_CONFIG = {
   sites: ['us', 'ca'],
   brands: ['tcp', 'gym'],
+  channels: ['Desktop', 'MobileWeb', 'MobileApp'],
+  channelIds: {
+    Desktop: 'Desktop',
+    MobileWeb: 'MobileWeb',
+    MobileApp: 'MobileApp',
+  },
   siteIds: {
     // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)
     us: 'us',

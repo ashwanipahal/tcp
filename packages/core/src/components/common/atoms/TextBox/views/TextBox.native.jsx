@@ -210,11 +210,7 @@ export class TextBox extends React.Component {
                 {this.getErrorMsg()}
               </StyledTextBoxWrapper>
             )}
-            {!error && (
-              <StyledTextBoxWrapper marginBottom={marginBottom}>
-                {this.getSuccessMsg()}
-              </StyledTextBoxWrapper>
-            )}
+            {!error && <StyledTextBoxWrapper>{this.getSuccessMsg()}</StyledTextBoxWrapper>}
           </View>
         )}
       </View>
