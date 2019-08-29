@@ -1,4 +1,5 @@
 import { isMobileApp } from '../../../../../utils';
+
 const getIndex = data => {
   return data && data.some(category => !!category.url) ? data.length : 0;
 };
@@ -157,11 +158,7 @@ export const isSearch = () => {
 export const matchValue = (isSearchPage, location) => {
   const params = isSearchPage ? '/search/' : '/c/';
   const pathname = isMobileApp() ? location : window.location.pathname;
-  const match = matchPath(pathname, params);
-  return match;
-  // return isSearchPage
-  //   ? matchPath(window.location.pathname, '/search/')
-  //   : matchPath(window.location.pathname, '/c/');
+  return matchPath(pathname, params);
 };
 
 export const getCategoryKey = (isSearchPage, match) => {
