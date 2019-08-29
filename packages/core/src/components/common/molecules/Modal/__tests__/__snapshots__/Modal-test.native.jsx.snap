@@ -9,6 +9,11 @@ exports[`Modal Native should render correctly 1`] = `
   />
   <Component
     hardwareAccelerated={false}
+    style={
+      Object {
+        "zIndex": -1,
+      }
+    }
     transparent={false}
     visible={true}
   >

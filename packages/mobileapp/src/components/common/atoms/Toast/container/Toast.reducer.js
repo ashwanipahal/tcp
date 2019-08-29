@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 import TOAST_CONSTANTS from '../Toast.constants';
 
 const initialState = fromJS({
-  toastMessage: '',
+  toastMessage: null,
 });
 
 const ToastMessageReducer = (state = initialState, action) => {

@@ -15,7 +15,7 @@ const styles = {
     borderRadius: 0,
     padding: 20,
     zIndex: 1000,
-    position:'relative'
+    position: 'relative',
   },
 };
 
@@ -23,16 +23,13 @@ class ToastView extends React.PureComponent<Props> {
   constructor() {
     super();
     this.toastRef = React.createRef();
-    debugger;
   }
 
   render() {
-    debugger;
     const { errorMessage, toastMessageReset } = this.props;
-    const isErrorAvailable = errorMessage ? true : false;
     return (
       <Fragment>
-        {isErrorAvailable &&
+        {errorMessage &&
           this.toastRef.current.show(`${errorMessage}`, 500, () => {
             Alert.alert('hello close');
             toastMessageReset();

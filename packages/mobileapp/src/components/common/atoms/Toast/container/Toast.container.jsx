@@ -2,22 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ToastView from '../views/Toast.view';
 import getToastMsgResponse from './Toast.selectors';
-import {resetToastMsg} from './Toast.actions';
+import { resetToastMsg } from './Toast.actions';
 
 class ToastContainer extends React.PureComponent<Props> {
   render() {
-    const { errorMessage , toastMessageReset} = this.props;
+    const { errorMessage, toastMessageReset } = this.props;
     return <ToastView toastMessageReset={toastMessageReset} errorMessage={errorMessage} />;
   }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     errorMessage: getToastMsgResponse(state),
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = dispatch => {
   return {
     toastMessageReset: () => {
       dispatch(resetToastMsg());
@@ -25,5 +25,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(ToastContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ToastContainer);

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Animated Brand Change Icon Native should render correctly 1`] = `
+<Fragment>
+  <Toast
+    fadeInDuration={750}
+    fadeOutDuration={1000}
+    opacity={1}
+    position="top"
+    positionValue={200}
+    style={
+      Object {
+        "backgroundColor": "#000000",
+        "borderRadius": 0,
+        "padding": 20,
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 1000,
+      }
+    }
+    textStyle={
+      Object {
+        "color": "#ffffff",
+      }
+    }
+  />
+</Fragment>
+`;
