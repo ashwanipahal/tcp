@@ -224,13 +224,7 @@ exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
       "fs14",
     ]
   }
-  fontWeight={
-    Array [
-      "extrabold",
-      "semibold",
-      "semibold",
-    ]
-  }
+  fontWeight="extrabold"
   letterSpacing="normal"
   lineHeight="normal"
   textAlign="left"

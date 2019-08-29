@@ -20,7 +20,6 @@ export default styled.div`
   .apply_Card_Header_Text {
     font-family: ${props => props.theme.typography.fonts.primaryFontBlackFamily};
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
-    line-height: 2;
     border-bottom: 3px solid black;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       font-size: ${props => props.theme.typography.fontSizes.fs10};
@@ -31,5 +30,14 @@ export default styled.div`
       margin-bottom: 77px;
       font-size: ${props => props.theme.typography.fontSizes.fs16};
     }
+  }
+
+  .plcc_card_header_title {
+    margin-top: 12px;
+  }
+
+  .credit_card_heading {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    line-height: 2;
   }
 `;

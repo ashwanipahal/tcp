@@ -65,6 +65,7 @@ exports[`DropDown Test should render correctly 1`] = `
         Object {
           "height": 1334,
           "left": 0,
+          "marginTop": 0,
           "width": 0,
         }
       }
@@ -146,6 +147,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         Object {
           "height": 1334,
           "left": 0,
+          "marginTop": 0,
           "width": 0,
         }
       }
@@ -170,6 +172,11 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           }
           keyExtractor={[Function]}
           renderItem={[Function]}
+          style={
+            Object {
+              "height": 0,
+            }
+          }
         />
       </Styled(View)>
     </TouchableOpacity>
