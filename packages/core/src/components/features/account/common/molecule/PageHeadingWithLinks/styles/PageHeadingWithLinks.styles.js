@@ -7,6 +7,9 @@ const styles = css`
   font-family: ${props => props.theme.fonts.primaryFontFamily};
   font-size: ${props => props.theme.typography.fontSizes.fs16};
   font-weight: 800;
+  .anchor-wrapper {
+    text-align: center;
+  }
 `;
 
 export default styles;

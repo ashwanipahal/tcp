@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
 import MyRewards from '../../common/organism/MyRewards';
 
-const WalletView = ({labels}) => {
+const WalletView = ({ labels }) => {
   return (
     <div>
       <PageHeadingWithLinks
-        heading="lbl_profile_heading"
-        programDetailsCta="lbl_profile_terms_condition"
-        termsConditionCta="lbl_profile_program_details"
+        heading={labels.myPlaceRewards.lbl_my_wallet_heading}
+        programDetailsCta={labels.common.lbl_common_tnc}
+        termsConditionCta={labels.myPlaceRewards.lbl_my_rewards_program_details}
       >
         <MyRewards labels={labels} view="all" />
       </PageHeadingWithLinks>

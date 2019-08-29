@@ -4,7 +4,16 @@ import WalletView from '../Wallet.view';
 
 describe('WalletView component', () => {
   it('should render correctly', () => {
-    const component = shallow(<WalletView />);
+    const props = {
+      heading: 'test',
+      programDetailsCta: 'test',
+      termsConditionCta: 'test',
+      labels: {
+        myPlaceRewards: {},
+        common: {},
+      },
+    };
+    const component = shallow(<WalletView {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

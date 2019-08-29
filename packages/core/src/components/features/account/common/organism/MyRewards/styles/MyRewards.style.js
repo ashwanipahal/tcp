@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const styles = css`
   .my-rewards-heading {
-    text-align: ${props => console.log(props)};
+    text-align: ${props => (props.view === 'all' ? 'left' : 'center')};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
@@ -10,7 +10,7 @@ const styles = css`
   }
 
   .no-rewards-msg {
-    text-align: center;
+    text-align: ${props => (props.view === 'all' ? 'left' : 'center')};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
 
