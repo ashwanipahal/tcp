@@ -92,6 +92,7 @@ exports[`PickUpFormPartVanilla component  should renders correctly props with st
               href="#"
               locator=""
               noLink={true}
+              onPress={null}
               target="_blank"
               text=""
               underline={true}
@@ -216,6 +217,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
               href="#"
               locator=""
               noLink={true}
+              onPress={null}
               target="_blank"
               text=""
               underline={true}
