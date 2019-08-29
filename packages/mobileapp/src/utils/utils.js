@@ -24,6 +24,10 @@ export const AppAnimationConfig = {
   PeekABooLogoMaxWidth: 100,
   AnimationDelay: 1000,
   AppSplashMaxWidth: getScreenWidth() / 2,
+  BrandSwitch: {
+    MAX_X: 90,
+    AnimationDuration: 1000,
+  },
 };
 
 /**

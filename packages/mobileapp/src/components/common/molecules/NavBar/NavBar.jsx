@@ -53,6 +53,11 @@ const getTestID = route => {
  * @param {*} props Props passed from BottomTabNavigator react native feature
  */
 class NavBar extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = { animateCompleteLogo: false };
+  }
+
   componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
     const { appType } = nextProps;
@@ -66,22 +71,22 @@ class NavBar extends React.PureComponent<Props> {
     }
   }
 
-  render() {
-    const {
-      renderIcon,
-      getLabelText,
-      onTabPress,
-      onTabLongPress,
-      navigation,
-      labels,
-      screenProps,
-    } = this.props;
+  animationComplete = () => {
+    const { screenProps } = this.props;
     const { toggleBrandAction } = screenProps;
+    if (toggleBrandAction) toggleBrandAction();
+    this.setState({ animateCompleteLogo: false });
+  };
+
+  render() {
+    const { renderIcon, getLabelText, onTabPress, onTabLongPress, navigation, labels } = this.props;
 
     const { routes, index: activeRouteIndex } = navigation.state;
 
     const StyledView = style.container;
     const NavContainer = style.navContainer;
+    const { animateCompleteLogo } = this.state;
+
     return (
       <NavContainer>
         <StyledView>
@@ -113,7 +118,7 @@ class NavBar extends React.PureComponent<Props> {
                 onPress={() => {
                   if (route.key === 'BrandSwitchStack') {
                     // show brands switch as an option in view
-                    if (toggleBrandAction) toggleBrandAction();
+                    this.setState({ animateCompleteLogo: true });
                     return;
                   }
                   onTabPress({ route });
@@ -133,7 +138,10 @@ class NavBar extends React.PureComponent<Props> {
             );
           })}
         </StyledView>
-        <SecondAppPeekABooView />
+        <SecondAppPeekABooView
+          animateCompleteLogo={animateCompleteLogo}
+          animationComplete={this.animationComplete}
+        />
       </NavContainer>
     );
   }
