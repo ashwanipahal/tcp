@@ -6,16 +6,19 @@ import withStyles from '../../../hoc/withStyles.native';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 // Notification component will show error on the top of the page for form level or api error
-const Notification = ({ message }) => {
+const Notification = ({ message, children }) => {
   return (
     <View>
       <NotificationWrapper>
-        <BodyCopy
-          fontSize="fs14"
-          mobilefontFamily={['secondary']}
-          fontWeight="regular"
-          text={message}
-        />
+        {message ? (
+          <BodyCopy
+            fontSize="fs14"
+            mobilefontFamily={['secondary']}
+            fontWeight="regular"
+            text={message}
+          />
+        ) : null}
+        {children || null}
       </NotificationWrapper>
     </View>
   );
@@ -23,6 +26,11 @@ const Notification = ({ message }) => {
 
 Notification.propTypes = {
   message: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+Notification.defaultProps = {
+  children: null,
 };
 
 export default withStyles(Notification, SectionStyle);

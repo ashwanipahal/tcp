@@ -57,6 +57,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -180,6 +181,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -303,6 +305,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -426,6 +429,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -526,6 +530,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
