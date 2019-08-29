@@ -48,9 +48,6 @@ class ProductListingContainer extends React.PureComponent {
       categoryId,
       ...otherProps
     } = this.props;
-    // have to call this method because when come back from L2/L3 none of the component lifecycle method calls.
-    // But this method only making call once.
-    this.makeApiCall();
     return (
       <ProductListing
         products={products}

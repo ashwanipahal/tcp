@@ -48,7 +48,7 @@ const OfferPriceAndBadge3Container = styled.View`
 const ListPrice = styled.Text`
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs15};
-  color: #c01f1f;
+  color: ${props => props.theme.colorPalette.red[500]};
   line-height: 18;
   font-weight: ${props => props.theme.typography.fontWeights.black};
 `;
@@ -90,7 +90,7 @@ const PromotionalMessageContainer = styled.View`
 
 // Color is hard code as not in the style guide
 const PromotionalMessage = styled.Text`
-  color: #f76b1f;
+  color: ${props => props.theme.colorPalette.orange[800]};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs9};
   line-height: 11;

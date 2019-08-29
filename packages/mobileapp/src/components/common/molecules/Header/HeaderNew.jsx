@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
+import get from 'lodash/get';
+import { withTheme } from 'styled-components';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
@@ -52,7 +53,10 @@ class HeaderNew extends React.PureComponent<Props> {
   onBack = () => {
     const { navigation } = this.props;
     const goBackRoute = get(navigation, 'state.params.backTo', false);
-    if (goBackRoute) {
+    const isReset = get(navigation, 'state.params.reset', false);
+    if (isReset) {
+      navigation.pop();
+    } else if (goBackRoute) {
       navigation.navigate(goBackRoute);
     } else {
       navigation.goBack(null);
@@ -60,14 +64,16 @@ class HeaderNew extends React.PureComponent<Props> {
   };
 
   render() {
-    const { title } = this.props;
+    const { title, theme } = this.props;
     const { cartVal } = this.state;
+    const backIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
+    const backIconSize = get(theme, 'typography.fontSizes.fs20', 20);
     return (
       <SafeAreaViewStyle>
         <Container data-locator={getLocator('global_headerpanel')}>
           <LeftSection>
             <TouchableOpacity onPress={this.onBack} accessibilityRole="button">
-              <CustomIcon name={ICON_NAME.chevronLeft} size={20} color="#9b9b9b" />
+              <CustomIcon name={ICON_NAME.chevronLeft} size={backIconSize} color={backIconColor} />
             </TouchableOpacity>
           </LeftSection>
 
@@ -105,4 +111,4 @@ class HeaderNew extends React.PureComponent<Props> {
   }
 }
 
-export default HeaderNew;
+export default withTheme(HeaderNew);

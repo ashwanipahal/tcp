@@ -35,6 +35,7 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
   return navigate('ProductListing', {
     title: name,
     url,
+    reset: true,
     accessibilityLabels,
   });
 };

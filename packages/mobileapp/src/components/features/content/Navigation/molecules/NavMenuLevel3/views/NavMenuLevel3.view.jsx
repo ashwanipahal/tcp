@@ -26,6 +26,7 @@ const renderItem = navigate => listProps => {
     return navigate('ProductListing', {
       url,
       title: name,
+      reset: true,
     });
   };
 
