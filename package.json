@@ -35,7 +35,9 @@
     "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
     "stylelint:app": "yarn workspace mobileapp stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*native.js",
     "lint:web": "yarn eslint:web && yarn stylelint:web",
-    "lint:app": "yarn eslint:app && yarn stylelint:app"
+    "lint:app": "yarn eslint:app && yarn stylelint:app",
+    "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
+    "show-esdocs": "./esdocs/index.html"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.3",
@@ -46,6 +48,9 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "enzyme-to-json": "^3.3.4",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
