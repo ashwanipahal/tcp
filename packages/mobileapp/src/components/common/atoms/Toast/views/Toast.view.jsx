@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { SafeAreaView } from 'react-native';
 import Toast, { DURATION } from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 
@@ -13,6 +14,7 @@ const styles = {
     width: '100%',
     borderRadius: 0,
     padding: 20,
+    zIndex: 1000,
   },
 };
 
@@ -20,24 +22,29 @@ class ToastView extends React.PureComponent<Props> {
   constructor() {
     super();
     this.toastRef = React.createRef();
+    debugger;
   }
 
   render() {
-    const { loginErrorMessage, loginError } = this.props;
+    debugger;
+    const { errorMessage } = this.props;
+    const isErrorAvailable = errorMessage ? true : false;
     return (
-      <Fragment>
-        {loginError && this.toastRef.current.show(`${loginErrorMessage}`, DURATION.LENGTH_LONG)}
-        <Toast
-          ref={this.toastRef}
-          style={styles.ToastStyle}
-          position="top"
-          positionValue={0}
-          fadeInDuration={750}
-          fadeOutDuration={1000}
-          opacity={0.9}
-          textStyle={{ color: colors.WHITE }}
-        />
-      </Fragment>
+      <SafeAreaView>
+        <Fragment>
+          {isErrorAvailable && this.toastRef.current.show(`${errorMessage}`, DURATION.LENGTH_LONG)}
+          <Toast
+            ref={this.toastRef}
+            style={styles.ToastStyle}
+            position="top"
+            positionValue={200}
+            fadeInDuration={750}
+            fadeOutDuration={1000}
+            opacity={1}
+            textStyle={{ color: colors.WHITE }}
+          />
+        </Fragment>
+      </SafeAreaView>
     );
   }
 }

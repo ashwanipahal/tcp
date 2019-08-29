@@ -66,7 +66,7 @@ class LoginSection extends PureComponent<Props> {
       <View>
         {!resetPassword && (
           <Fragment>
-            <ToastView loginError={loginError} loginErrorMessage={loginErrorMessage} />
+            {/* <ToastView isError={loginError} ErrorMessage={loginErrorMessage} /> */}
             <LoginTopSection variation={variation} labels={labels} />
             <LoginForm
               onSubmit={onSubmit}

@@ -22,12 +22,23 @@ import {
   getLabels,
 } from './LoginPage.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import toastMessageInfo from '../../../../../../../mobileapp/src/components/common/atoms/Toast/container/Toast.actions';
 
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay, closeModal, variation } = this.props;
+    const {
+      isUserLoggedIn,
+      closeOverlay,
+      closeModal,
+      variation,
+      toastMessage,
+      loginErrorMessage,
+    } = this.props;
+    if (loginErrorMessage) {
+      toastMessage(loginErrorMessage);
+    }
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       if (variation === 'checkout' || variation === 'favorites') {
         closeModal();
@@ -162,6 +173,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     openOverlay: payload => {
       dispatch(openOverlayModal(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

@@ -51,6 +51,7 @@ import {
   CHANGE_PASSWORD_REDUCER_KEY,
   ADDEDITADDRESS_REDUCER_KEY,
   ADDRESS_VERIFICATION_REDUCER_KEY,
+  TOAST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -60,6 +61,7 @@ import NavigationReducer from '@tcp/core/src/components/features/content/Navigat
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
+import ToastMessageReducer from '../../components/common/atoms/Toast/container/Toast.reducer';
 
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
@@ -71,6 +73,7 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
+  [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
