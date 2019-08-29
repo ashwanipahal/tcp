@@ -17,7 +17,7 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
-        className="elem-mb-MED"
+        className="elem-mb-XXS"
       >
         {shipmentHeader}
       </BodyCopy>
@@ -29,7 +29,7 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
             const title = price > 0 ? `${displayName} - $${price}` : displayName;
             const subtitle = shippingSpeed ? `(${shippingSpeed})` : '';
             return (
-              <Col colSize={{ small: 2, medium: 8, large: 12 }}>
+              <Col colSize={{ small: 2, medium: 8, large: 12 }} className="radio-method">
                 <Field
                   component={LabeledRadioButton}
                   key={id}
@@ -45,24 +45,26 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
             );
           })}
         {selectedShipment && (
-          <>
+          <Col colSize={{ small: 6, medium: 0, large: 0 }}>
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs12"
               fontWeight="semibold"
               className="estimated-shipping-rate elem-mt-LRG"
+              textAlign="center"
             >
               {`${selectedShipment.displayName || ''} - `}
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="semibold"
+                component="span"
+                className="estimated-shipping-speed"
+              >
+                {` ${selectedShipment.shippingSpeed || ''}`}
+              </BodyCopy>
             </BodyCopy>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="semibold"
-              className="estimated-shipping-rate elem-mt-LRG"
-            >
-              {` ${selectedShipment.shippingSpeed || ''}`}
-            </BodyCopy>
-          </>
+          </Col>
         )}
       </Row>
     </>

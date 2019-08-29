@@ -3,7 +3,7 @@
 exports[`Shipping Page should render correctly 1`] = `
 <Fragment>
   <Styled(BodyCopy)
-    className="elem-mb-MED"
+    className="elem-mb-XXS"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -18,6 +18,7 @@ exports[`Shipping Page should render correctly 1`] = `
     fullBleed={true}
   >
     <Styled(Col)
+      className="radio-method"
       colSize={
         Object {
           "large": 12,
@@ -165,6 +166,7 @@ exports[`Shipping Page should render correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
+      className="radio-method"
       colSize={
         Object {
           "large": 12,
@@ -311,32 +313,42 @@ exports[`Shipping Page should render correctly 1`] = `
         variation="secondary"
       />
     </Styled(Col)>
-    <Styled(BodyCopy)
-      className="estimated-shipping-rate elem-mt-LRG"
-      color="text.primary"
-      component="p"
-      fontFamily="secondary"
-      fontSize="fs12"
-      fontWeight="semibold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 6,
+        }
+      }
     >
-      standard - 
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="estimated-shipping-rate elem-mt-LRG"
-      color="text.primary"
-      component="p"
-      fontFamily="secondary"
-      fontSize="fs12"
-      fontWeight="semibold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-       express
-    </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="estimated-shipping-rate elem-mt-LRG"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      >
+        standard - 
+        <Styled(BodyCopy)
+          className="estimated-shipping-speed"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+           express
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
   </Styled(Row)>
 </Fragment>
 `;
