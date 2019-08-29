@@ -84,6 +84,7 @@ class CountrySelectorModal extends React.Component {
         maxWidth="450px"
         minHeight="643px"
         inheritedStyles={modalStyles}
+        shouldCloseOnOverlayClick={false}
       >
         <div>
           <BodyCopy

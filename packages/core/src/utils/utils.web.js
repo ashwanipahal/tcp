@@ -6,6 +6,7 @@ import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import pages from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -280,7 +281,7 @@ export const getModifiedLanguageCode = id => {
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location, '/home', newSiteId);
+    routerPush(window.location.href, pages.home, null, newSiteId);
   }
 };
 
