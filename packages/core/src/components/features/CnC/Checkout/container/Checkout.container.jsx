@@ -62,6 +62,7 @@ export class CheckoutContainer extends React.Component<Props> {
       isGuest,
       isExpressCheckoutPage,
       cartOrderItems,
+      orderHasShipping,
     } = this.props;
     return (
       <CheckoutPage
@@ -87,6 +88,7 @@ export class CheckoutContainer extends React.Component<Props> {
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
         cartOrderItems={cartOrderItems}
+        orderHasShipping={orderHasShipping}
       />
     );
   }
@@ -154,6 +156,7 @@ const mapStateToProps = state => {
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
+    orderHasShipping: selectors.getIsOrderHasShipping(state),
   };
 };
 

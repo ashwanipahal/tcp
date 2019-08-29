@@ -36,7 +36,7 @@ const MiniBagBody = ({
   const { isDeleting, isUpdating } = isCartItemsUpdating;
   return (
     <div className={className}>
-      <BodyCopy component="div" className="viewBagAndProduct">
+      <div className="minibag-viewbag">
         <Row className="mainWrapper">
           <Col className="subHeaderText" colSize={{ small: 6, medium: 8, large: 12 }}>
             {userName ? (
@@ -77,6 +77,8 @@ const MiniBagBody = ({
             )}
           </Col>
         </Row>
+      </div>
+      <BodyCopy component="div" className="viewBagAndProduct">
         {isDeleting || isUpdating ? (
           <Row className="mainWrapper">
             <Col className="deleteMsg" colSize={{ small: 6, medium: 8, large: 12 }}>
