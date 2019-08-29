@@ -33,6 +33,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { isCanada } from '../../../../../utils/utils';
 import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
+import { routerPush, isMobileApp } from '../../../../../utils';
 
 const {
   getRecalcOrderPointsInterval,
@@ -153,21 +154,8 @@ function* loadUpdatedCheckoutValues(
   );
 }
 
-function* submitPickupSection(data) {
-  const { payload } = data;
-  const formData = { ...payload };
-  // let pickupOperator = getPickupOperator(this.store);
-  // let storeState = this.store.getState();
-  // let isEmailSignUpAllowed = true;
-
-  // if ((yield select(isUsSite)) && (yield select(isGuest))) {
-  //   isEmailSignUpAllowed = false;
-  // }
-
-  //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
-  //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
-  //  }
-  yield call(addPickupPerson, {
+function* callPickupSubmitMethod(formData) {
+  return yield call(addPickupPerson, {
     firstName: formData.pickUpContact.firstName,
     lastName: formData.pickUpContact.lastName,
     phoneNumber: formData.pickUpContact.phoneNumber,
@@ -187,6 +175,27 @@ function* submitPickupSection(data) {
         ? formData.pickUpAlternate.lastName
         : '',
   });
+}
+
+function* submitPickupSection(data) {
+  const { payload } = data;
+  const formData = { ...payload };
+  // let pickupOperator = getPickupOperator(this.store);
+  // let storeState = this.store.getState();
+  // let isEmailSignUpAllowed = true;
+
+  // if ((yield select(isUsSite)) && (yield select(isGuest))) {
+  //   isEmailSignUpAllowed = false;
+  // }
+
+  //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
+  //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
+  //  }
+  const result = yield call(callPickupSubmitMethod, formData);
+  if (!isMobileApp() && result.addressId) {
+    routerPush('/checkout/shipping', '/checkout/shipping');
+  }
+
   /* In the future I imagine us sending the SMS to backend for them to
        store so it will be loaded in the below loadUpdatedCheckoutValues function.
        for now we are storing it only on browser so will lose this info on page re-load.

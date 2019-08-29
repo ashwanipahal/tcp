@@ -19,6 +19,10 @@ export default css`
     width: 100%;
   }
 
+  .minibag-viewbag {
+    border-bottom: solid 1px rgba(163, 162, 162, 0.5);
+  }
+
   .deleteMsg {
     border: solid 2px ${props => props.theme.colors.NOTIFICATION.SUCCESS};
     text-align: left;

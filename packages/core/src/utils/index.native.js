@@ -28,6 +28,7 @@ export {
   getAPIConfig,
   isCanada,
   resetApiConfig,
+  getCacheKeyForRedis,
   bindAllClassMethodsToThis,
   isGymboree,
   getAddressFromPlace,
