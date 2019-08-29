@@ -57,6 +57,7 @@ class ContactInformationFormWrapper extends React.Component {
           color="black"
           fontWeight="semibold"
           className="title"
+          tabIndex="0"
         >
           {labels.plcc_form_contact_info_header}
         </Heading>
@@ -255,6 +256,7 @@ class ContactInformationFormWrapper extends React.Component {
         </Row>
         <BodyCopy
           className="columnWrapper plcc_min_phone"
+          tabIndex="0"
           fontSize="fs10"
           fontFamily="secondary"
           id="plcc_min_phone"
