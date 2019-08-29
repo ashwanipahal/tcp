@@ -257,3 +257,9 @@ export const emailSignupStatus = payload => {
     type: 'EMAIL_SUBSCRIPTION_STATUS',
   };
 };
+
+export const routeToPickupPage = () => {
+  return {
+    type: constants.ROUTE_TO_PICKUP_PAGE,
+  };
+};

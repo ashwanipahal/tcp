@@ -713,12 +713,18 @@ function* submitShippingSection({ payload: formData }) {
   }
 }
 
+export function* routeToPickupPage(recalc) {
+  const path = `/checkout/pickup`;
+  return yield call(routerPush, path, path, { recalc });
+}
+
 export function* CheckoutSaga() {
   yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(constants.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
   yield takeLatest(constants.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
+  yield takeLatest(constants.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);
 }
 
 export default CheckoutSaga;

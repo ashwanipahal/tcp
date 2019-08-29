@@ -32,6 +32,7 @@ const ShippingForm = ({
   orderHasPickUp,
   shipmentMethods,
   loadShipmentMethods,
+  routeToPickupPage,
 }) => {
   return (
     <>
@@ -133,6 +134,7 @@ const ShippingForm = ({
         </FormSection>
         <CheckoutFooter
           hideBackLink={!!orderHasPickUp}
+          backLinkHandler={routeToPickupPage}
           nextButtonText={shippingLabels.billingText}
           backLinkText={shippingLabels.backLinkText}
         />
@@ -157,6 +159,7 @@ ShippingForm.propTypes = {
   orderHasPickUp: PropTypes.bool,
   shipmentMethods: PropTypes.shape([]),
   loadShipmentMethods: PropTypes.func.isRequired,
+  routeToPickupPage: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {

@@ -6,6 +6,7 @@ import {
   submitPickupSection,
   onEditModeChangeAction,
   fetchShipmentMethods,
+  routeToPickupPage as routeToPickupPageActn,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -64,6 +65,7 @@ export class CheckoutContainer extends React.Component<Props> {
       isExpressCheckoutPage,
       cartOrderItems,
       orderHasShipping,
+      routeToPickupPage,
     } = this.props;
 
     return (
@@ -91,6 +93,7 @@ export class CheckoutContainer extends React.Component<Props> {
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
         cartOrderItems={cartOrderItems}
+        routeToPickupPage={routeToPickupPage}
       />
     );
   }
@@ -112,6 +115,9 @@ export const mapDispatchToProps = dispatch => {
     },
     loadShipmentMethods: formName => {
       dispatch(fetchShipmentMethods(formName));
+    },
+    routeToPickupPage: () => {
+      dispatch(routeToPickupPageActn());
     },
   };
 };
