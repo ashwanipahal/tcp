@@ -2,9 +2,6 @@
 
 exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
 <div>
-  <div
-    className="back-space"
-  />
   <Styled(Button)
     buttonVariation="variable-width"
     className="footer-button"
