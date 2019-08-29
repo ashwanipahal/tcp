@@ -40,8 +40,9 @@ exports[`PromotionalArea component renders correctly with mobile check false for
         to="/static/promo"
       >
         <Styled(RichText)
+          className="header-topnav__promo-area-content"
           dataLocator="global_promoareaimg"
-          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1."
+          richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1.</span>"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -49,8 +50,9 @@ exports[`PromotionalArea component renders correctly with mobile check false for
         to="/static/promo2"
       >
         <Styled(RichText)
+          className="header-topnav__promo-area-content"
           dataLocator="global_promoareaimg"
-          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2."
+          richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2.</span>"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -58,8 +60,9 @@ exports[`PromotionalArea component renders correctly with mobile check false for
         to="/static/promo3"
       >
         <Styled(RichText)
+          className="header-topnav__promo-area-content"
           dataLocator="global_promoareaimg"
-          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3."
+          richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.</span>"
         />
       </Styled(Anchor)>
     </Styled(Carousel)>
@@ -93,8 +96,9 @@ exports[`PromotionalArea component renders correctly with mobile check true 1`] 
         to="/static/promo"
       >
         <Styled(RichText)
+          className="header-topnav__promo-area-content"
           dataLocator="global_promoareaimg"
-          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1."
+          richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1.</span>"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -102,8 +106,9 @@ exports[`PromotionalArea component renders correctly with mobile check true 1`] 
         to="/static/promo2"
       >
         <Styled(RichText)
+          className="header-topnav__promo-area-content"
           dataLocator="global_promoareaimg"
-          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2."
+          richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2.</span>"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -111,8 +116,9 @@ exports[`PromotionalArea component renders correctly with mobile check true 1`] 
         to="/static/promo3"
       >
         <Styled(RichText)
+          className="header-topnav__promo-area-content"
           dataLocator="global_promoareaimg"
-          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3."
+          richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.</span>"
         />
       </Styled(Anchor)>
     </Styled(Carousel)>

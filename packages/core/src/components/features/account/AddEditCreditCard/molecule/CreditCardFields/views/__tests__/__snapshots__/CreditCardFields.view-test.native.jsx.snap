@@ -33,6 +33,7 @@ exports[`CreditCardFields component should render correctly 1`] = `
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,
@@ -151,6 +152,7 @@ exports[`CreditCardFields component should render correctly 1`] = `
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,

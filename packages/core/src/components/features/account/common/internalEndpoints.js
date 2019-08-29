@@ -1,3 +1,5 @@
+const profilePath = '/account/profile';
+
 const internalEndpoints = {
   myWalletPage: {
     link: '/account?id=wallet',
@@ -9,7 +11,15 @@ const internalEndpoints = {
   },
   changePassowrdPage: {
     link: '/account?id=profile&subSection=change-password',
-    path: '/account/profile',
+    path: profilePath,
+  },
+  editProfileInformationPage: {
+    link: '/account?id=profile&subSection=edit-personal-info',
+    path: profilePath,
+  },
+  profilePage: {
+    link: '/account?id=profile',
+    path: profilePath,
   },
 };
 

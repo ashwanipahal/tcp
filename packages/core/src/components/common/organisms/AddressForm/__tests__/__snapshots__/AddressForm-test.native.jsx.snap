@@ -117,56 +117,54 @@ exports[`AddressForm component should renders correctly 1`] = `
       onValueChange={[Function]}
     />
   </Styled(View)>
-  <Styled(View)>
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
           },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
     ",
-              "
+            "
   ",
-              [Function],
-              ";
+            [Function],
+            ";
 ",
-              ";
+            ";
   ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
       }
-      dataLocator="addnewaddress-addressl2"
-      id="addressLine2"
-      label=""
-      name="addressLine2"
-    />
-  </Styled(View)>
+    }
+    dataLocator="addnewaddress-addressl2"
+    id="addressLine2"
+    label=""
+    name="addressLine2"
+  />
   <Field
     component={
       Object {
@@ -218,10 +216,12 @@ exports[`AddressForm component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Field
+        bounces={false}
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
               "itemStyle": null,
@@ -651,6 +651,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
           "itemStyle": null,
