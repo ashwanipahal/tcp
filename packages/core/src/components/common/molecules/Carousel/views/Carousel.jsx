@@ -15,6 +15,8 @@ type Props = {
   children: any,
   carouselConfig: Object,
   className: String,
+  playButtonLabel: String,
+  pauseButtonLabel: String,
 };
 
 type State = {
@@ -55,13 +57,15 @@ class Carousel extends React.PureComponent<Props, State> {
    */
   getPlayButton(wrapperConfig: Object) {
     const { autoplay } = this.state;
+    const { playButtonLabel, pauseButtonLabel } = this.props;
+
     const buttonClass = 'tcp_carousel__play_pause_button';
     return autoplay ? (
       <button
         className={buttonClass}
         data-locator={wrapperConfig.dataLocatorPause}
         onClick={this.pause}
-        aria-label="Pause"
+        aria-label={playButtonLabel || 'Play'}
       >
         <Image
           className="tcp_carousel__play_pause_button_icon"
@@ -74,7 +78,7 @@ class Carousel extends React.PureComponent<Props, State> {
         className={buttonClass}
         data-locator={wrapperConfig.dataLocatorPlay}
         onClick={this.play}
-        aria-label="Play"
+        aria-label={pauseButtonLabel || 'Pause'}
       >
         <Image
           className="tcp_carousel__play_pause_button_icon"
