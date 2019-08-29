@@ -10,6 +10,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="semibold"
+    tabIndex="0"
     textAlign="left"
     variant="h2"
   >
@@ -1871,6 +1872,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     id="plcc_min_phone"
     letterSpacing="normal"
     lineHeight="normal"
+    tabIndex="0"
     textAlign="left"
   >
     min phone
