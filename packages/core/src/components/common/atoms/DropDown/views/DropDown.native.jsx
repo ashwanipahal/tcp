@@ -142,23 +142,22 @@ class DropDown extends React.PureComponent<Props> {
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
     this.setState({ top: topMargin.top });
+    let listMargin = 0;
+    let listHeight = 0;
+
     if (showInBottom) {
       if (calculateHeight > dH) {
-        this.setState({ flatListTop: 0, flatListHeight: dH - 100 }); // bottom drop down scrolling
+        listHeight = dH - 100;
       } else {
-        this.setState({
-          flatListHeight: calculateHeight - 100,
-          flatListTop: 0,
-        });
+        listHeight = calculateHeight - 100;
       }
     } else if (calculateHeight > windowHeight) {
-      this.setState({
-        flatListTop: 100,
-        flatListHeight: (windowHeight * 3) / 4,
-      });
+      listMargin = 100;
+      listHeight = (windowHeight * 3) / 4;
     } else {
-      this.setState({ flatListHeight: calculateHeight, flatListTop: 0 });
+      listHeight = calculateHeight;
     }
+    this.setState({ flatListHeight: listHeight, flatListTop: listMargin });
   };
 
   /**
