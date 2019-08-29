@@ -73,7 +73,10 @@ describe('Checkout Selectors', () => {
   });
 
   it('#igetIsOrderHasShipping', () => {
-    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping()).toEqual(true);
+    const State = {
+      CartPageReducer: fromJS({}),
+    };
+    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(0);
   });
 
   it('#igetUserContactInfo', () => {
