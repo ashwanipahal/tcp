@@ -45,13 +45,20 @@ export default class PrescreenCode extends React.PureComponent {
         <BodyCopy fontFamily="secondary">
           {labels.plcc_form_prescreencodetext}
           {!showPreScreenCode ? (
-            <BodyCopy component="a" onClick={this.handleClick} className="click-here-link">
+            <BodyCopy
+              fontSize="fs16"
+              fontWeight="normal"
+              fontFamily="secondary"
+              component="a"
+              onClick={this.handleClick}
+              className="click-here-link"
+            >
               {labels.plcc_form_clickHere}
             </BodyCopy>
           ) : (
-            <span role="button" className="prescreen-code">
+            <BodyCopy component="span" role="button" className="prescreen-code">
               {labels.plcc_form_enterHere}
-            </span>
+            </BodyCopy>
           )}
         </BodyCopy>
       </PreScreenCodeWrapper>

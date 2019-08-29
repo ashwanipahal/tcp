@@ -76,11 +76,19 @@ const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
               <Field
                 name="iAgree"
                 component={InputCheckBox}
+                fontSize="fs16"
                 dataLocator="plcc_T&C_checkbox"
                 className="iAgree_terms_conditions"
                 disabled={false}
               >
-                {labels.plcc_form_checkbox_text}
+                <BodyCopy
+                  className="underprogress_application"
+                  fontSize="fs16"
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                >
+                  {labels.plcc_form_checkbox_text}
+                </BodyCopy>
               </Field>
             </Col>
           </Row>

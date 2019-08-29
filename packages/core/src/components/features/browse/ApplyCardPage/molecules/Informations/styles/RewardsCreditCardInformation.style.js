@@ -10,7 +10,7 @@ export default styled.div`
     }
   }
 
-  .header-image {
+    .header-image {
     background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
     background-size: contain;
     border: none;
@@ -18,12 +18,15 @@ export default styled.div`
     height: 135px;
     object-fit: contain;
     margin: auto;
-    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
     @media ${props => props.theme.mediaQuery.medium} and ${props =>
   props.theme.mediaQuery.largeMax} {
         background: transparent url('/static/images/tcp-cc.png') no-repeat 0 0;
-        margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS} ${props =>
-  props.theme.spacing.ELEM_SPACING.XXS} 0 0;
+        padding-bottom: 200px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+        background: transparent url('/static/images/tcp-cc.png') no-repeat 0 0;
+        padding-bottom: 96px;
     }
     }
 
