@@ -24,10 +24,8 @@ import {
   StateZipCodeContainer,
   Separator,
   SetDefaultShippingWrapper,
-  StyledLabel,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
-  AddressSecondWrapper,
 } from './AddressForm.native.style';
 
 class AddressForm extends React.PureComponent {
@@ -54,10 +52,6 @@ class AddressForm extends React.PureComponent {
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
     this.setState({ dropDownItem: address.state });
-  };
-
-  renderStyledLabel = label => {
-    return <StyledLabel>{label}</StyledLabel>;
   };
 
   render() {
@@ -97,7 +91,6 @@ class AddressForm extends React.PureComponent {
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
-              dispatch(change('AddressForm', 'addressLine1', data));
               this.handlePlaceSelected(data, inputValue);
             }}
             dataLocator="addnewaddress-addressl1"
@@ -105,15 +98,13 @@ class AddressForm extends React.PureComponent {
           />
         </GooglePlaceInputWrapper>
 
-        <AddressSecondWrapper>
-          <Field
-            id="addressLine2"
-            name="addressLine2"
-            label={addressFormLabels.addressLine2}
-            component={TextBox}
-            dataLocator="addnewaddress-addressl2"
-          />
-        </AddressSecondWrapper>
+        <Field
+          id="addressLine2"
+          name="addressLine2"
+          label={addressFormLabels.addressLine2}
+          component={TextBox}
+          dataLocator="addnewaddress-addressl2"
+        />
 
         <Field
           id="city"
@@ -128,6 +119,7 @@ class AddressForm extends React.PureComponent {
             <Field
               id="state"
               name="state"
+              bounces={false}
               component={DropDown}
               heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"
@@ -195,6 +187,7 @@ class AddressForm extends React.PureComponent {
             name="primary"
             component={InputCheckbox}
             dataLocator="addnewaddress-city"
+            isChecked={isMakeDefaultDisabled}
             disabled={isMakeDefaultDisabled}
             rightText={addressFormLabels.setDefaultMsg}
           />
@@ -243,7 +236,7 @@ AddressForm.propTypes = {
     cancel: PropTypes.string,
   }),
   isEdit: PropTypes.bool,
-  isMakeDefaultDisabled: PropTypes.bool,
+  isMakeDefaultDisabled: PropTypes.bool.isRequired,
   onCancel: PropTypes.func,
   handleSubmit: PropTypes.func,
   invalid: PropTypes.func,
@@ -256,7 +249,6 @@ AddressForm.propTypes = {
 
 AddressForm.defaultProps = {
   isEdit: false,
-  isMakeDefaultDisabled: false,
   addressFormLabels: {
     firstName: '',
     lastName: '',

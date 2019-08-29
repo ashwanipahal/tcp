@@ -10,6 +10,7 @@ exports[`DropDown Test should render correctly 1`] = `
     foo
   </Styled(Text)>
   <Styled(View)
+    bounces={true}
     data={
       Array [
         Object {
@@ -27,6 +28,7 @@ exports[`DropDown Test should render correctly 1`] = `
     }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
+    pointerEvents="auto"
     selectedValue="foo"
     variation="primary"
   >
@@ -71,7 +73,6 @@ exports[`DropDown Test should render correctly 1`] = `
       <Styled(View)
         style={
           Object {
-            "marginBottom": 0,
             "top": 0,
           }
         }
@@ -91,6 +92,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     foo
   </Styled(Text)>
   <Styled(View)
+    bounces={true}
     data={
       Array [
         Object {
@@ -108,6 +110,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
+    pointerEvents="auto"
     selectedValue="foo"
     variation="primary"
   >
@@ -152,13 +155,13 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       <Styled(View)
         style={
           Object {
-            "marginBottom": 0,
             "top": 0,
           }
         }
       >
         <Styled(FlatList)
           ItemSeparatorComponent={[Function]}
+          bounces={true}
           data={
             Array [
               Object {
@@ -169,6 +172,11 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           }
           keyExtractor={[Function]}
           renderItem={[Function]}
+          style={
+            Object {
+              "height": 0,
+            }
+          }
         />
       </Styled(View)>
     </TouchableOpacity>

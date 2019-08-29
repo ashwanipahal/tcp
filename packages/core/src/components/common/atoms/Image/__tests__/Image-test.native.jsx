@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ImageComp from '../views/Image.native';
+import { ImageCompVanilla } from '../views/Image.native';
 
 describe('ImageCompVanilla', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<ImageComp />);
+    component = shallow(<ImageCompVanilla />);
   });
 
   it('should be defined', () => {
@@ -19,5 +19,10 @@ describe('ImageCompVanilla', () => {
 
   it('should return abc component value one', () => {
     expect(component.find('Styled(ImageComp)')).toHaveLength(0);
+  });
+
+  it('should pass source value', () => {
+    component.setProps({ source: 'foo' });
+    expect(component).toMatchSnapshot();
   });
 });

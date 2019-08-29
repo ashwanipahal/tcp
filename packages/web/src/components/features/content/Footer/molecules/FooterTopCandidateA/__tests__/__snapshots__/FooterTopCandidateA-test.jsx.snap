@@ -6,7 +6,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
 >
   <Styled(Row)>
     <Styled(Col)
-      className=""
+      className="col-md-half-width"
       colSize={
         Object {
           "large": 4,
@@ -20,11 +20,20 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(RichText)
-        className="heading_text"
+      <Styled(BodyCopy)
+        className="heading_text email-sign-up"
+        color="text.primary"
+        component="div"
         dataLocator="email_promo_text"
-        richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
-      />
+        fontFamily="primary"
+        fontSize="fs15"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <TextItems />
+      </Styled(BodyCopy)>
       <ReduxForm
         asyncBlurFields={
           Array [
@@ -99,7 +108,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className=""
+      className="col-md-half-width"
       colSize={
         Object {
           "large": 4,
@@ -113,11 +122,20 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(RichText)
-        className="heading_text"
+      <Styled(BodyCopy)
+        className="heading_text sms_sign_up"
+        color="text.primary"
+        component="div"
         dataLocator="sms_promo_text"
-        richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
-      />
+        fontFamily="primary"
+        fontSize="fs15"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <TextItems />
+      </Styled(BodyCopy)>
       <ReduxForm
         asyncBlurFields={
           Array [
@@ -197,7 +215,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       className="divider hide-in-large-up"
     />
     <Styled(Col)
-      className="refer_a_friend_desktop"
+      className="refer_a_friend_desktop col-md-half-width"
       colSize={
         Object {
           "large": 4,
@@ -217,7 +235,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           fullBleed={true}
         >
           <Styled(Col)
-            className=""
+            className="col-md-half-width"
             colSize={
               Object {
                 "large": 7,
@@ -231,13 +249,22 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               }
             }
           >
-            <Styled(RichText)
-              className="heading_text refer_friend_text"
-              richTextHtml="$10 for a friend, $10 for you!"
-            />
+            <Styled(BodyCopy)
+              className="heading_text refer-a-friend"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize="fs15"
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            >
+              <TextItems />
+            </Styled(BodyCopy)>
           </Styled(Col)>
           <Styled(Col)
-            className="candidate_a_inline_container_button"
+            className="candidate_a_inline_container_button col-md-half-width"
             colSize={
               Object {
                 "large": 5,
@@ -255,9 +282,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               buttonVariation="variable-width"
               data-locator="global_referfriend"
               id="extole_zone_global_footer"
-            >
-              REFER FRIEND
-            </Styled(Button)>
+            />
           </Styled(Col)>
         </Styled(Row)>
         <div
@@ -296,7 +321,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       className="divider hide-in-medium-up"
     />
     <Styled(Col)
-      className="hide-in-large-up refer_a_frient_last_colm"
+      className="hide-in-large-up refer_a_frient_last_colm col-md-half-width"
       colSize={
         Object {
           "large": 0,
@@ -310,7 +335,9 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(SocialMediaLinks) />
+      <Styled(SocialMediaLinks)
+        className="social-media-links"
+      />
     </Styled(Col)>
   </Styled(Row)>
   <div

@@ -35,7 +35,8 @@
     "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
     "stylelint:app": "yarn workspace mobileapp stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*native.js",
     "lint:web": "yarn eslint:web && yarn stylelint:web",
-    "lint:app": "yarn eslint:app && yarn stylelint:app"
+    "lint:app": "yarn eslint:app && yarn stylelint:app",
+    "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.3",
@@ -46,6 +47,9 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "enzyme-to-json": "^3.3.4",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
@@ -114,10 +118,12 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "core-js": "3.2.1",
+    "react-component-lazy-loader": "1.1.2",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "immutable": "^4.0.0-rc.12",
     "little-loader": "^0.2.0",
+    "react-dotdotdot": "^1.3.1",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-slick": "^0.24.0",
@@ -128,6 +134,7 @@
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "vanilla-lazyload": "^12.0.0"
   }
 }

@@ -61,8 +61,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
-    getProductSKUInfo: productNumber => {
-      dispatch(getProductSKUInfo(productNumber));
+    getProductSKUInfo: payload => {
+      dispatch(getProductSKUInfo(payload));
     },
   };
 };

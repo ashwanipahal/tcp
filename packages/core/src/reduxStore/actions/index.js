@@ -15,6 +15,13 @@ export const loadLabelsData = payload => {
   };
 };
 
+export const loadXappConfigData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_XAPP_CONFIG,
+  };
+};
+
 export const setAPIConfig = payload => {
   return {
     payload,
@@ -60,6 +67,11 @@ export const setLanguage = payload => {
 export const setDeviceInfo = payload => ({
   payload,
   type: GLOBAL_CONSTANTS.SET_DEVICE_INFO,
+});
+
+export const setOptimizelyFeaturesList = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
 export default {

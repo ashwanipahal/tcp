@@ -19,6 +19,13 @@ const getLineStyle = props => {
 
 const LineStyle = styled.View`
   ${getLineStyle}
+  ${props =>
+    props.small
+      ? `
+    width:40%; 
+    margin:20px auto;
+                `
+      : ''};
 `;
 
 export default LineStyle;

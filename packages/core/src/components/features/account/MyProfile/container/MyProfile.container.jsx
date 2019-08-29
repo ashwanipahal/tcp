@@ -20,6 +20,7 @@ import {
 
 import { getSuccess } from '../../ChangePassword/container/ChangePassword.selectors';
 import { changePasswordSuccess } from '../../ChangePassword/container/ChangePassword.actions';
+import { updateProfileSuccess } from '../../AddEditPersonalInformation/container/AddEditPersonalInformation.actions';
 
 const getMyProfileInfoLabels = labels => {
   return (labels && labels.profile) || {};
@@ -69,6 +70,7 @@ const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => ({
   messageSateChangeAction: payload => {
     dispatch(changePasswordSuccess(payload));
+    dispatch(updateProfileSuccess(payload));
   },
 });
 

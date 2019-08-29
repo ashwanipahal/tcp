@@ -5,7 +5,6 @@ import {
   setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
-
 import {
   toggleEmailSignupModal,
   submitEmailSignup,
@@ -29,6 +28,7 @@ const mapStateToProps = state => {
       footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
+      referAFriend: referAFriendButtonLabels,
     },
   } = state.Labels;
   const { EmailSignUp = {}, SmsSignUp = {} } = state;
@@ -45,6 +45,7 @@ const mapStateToProps = state => {
     emailSignup: Footer.emailSignupBtn,
     smsSignup: Footer.smsSignupBtn,
     referAFriend: Footer.referFriendBtn,
+    referAFriendButtonLabels,
     copyrightText: Footer.copyrightText,
     referenceID,
     emailSignupLabels,
@@ -92,7 +93,9 @@ const mapDispatchToProps = dispatch => {
               const {
                 labels: { validationErrorLabel },
               } = props;
-              const error = { [fieldName]: validationErrorLabel };
+              const error = {
+                [fieldName]: validationErrorLabel,
+              };
               // eslint-disable-next-line prefer-promise-reject-errors
               return Promise.reject({ ...error, _error: error });
             }
@@ -110,7 +113,9 @@ const mapDispatchToProps = dispatch => {
         const {
           labels: { validationErrorLabel },
         } = props;
-        const error = { [fieldName]: validationErrorLabel };
+        const error = {
+          [fieldName]: validationErrorLabel,
+        };
         // eslint-disable-next-line prefer-promise-reject-errors
         return Promise.reject({ ...error, _error: error });
       }

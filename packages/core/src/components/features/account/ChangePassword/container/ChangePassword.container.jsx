@@ -13,12 +13,33 @@ export class ChangePasswordContainer extends PureComponent {
     changePasswordAction: PropTypes.func.isRequired,
     messageSateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
+    onClose: PropTypes.func,
   };
+
+  static defaultProps = {
+    onClose: () => {},
+  };
+
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(({ isMobileApp }) => {
+        this.hasMobileApp = isMobileApp;
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
 
   componentDidUpdate() {
     const { successMessage } = this.props;
+    const { onClose } = this.props;
     if (successMessage === 'successMessage') {
-      this.goBackToProfile();
+      if (this.hasMobileApp()) {
+        onClose();
+      } else {
+        this.goBackToProfile();
+      }
     }
   }
 
@@ -42,13 +63,14 @@ export class ChangePasswordContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels } = this.props;
+    const { successMessage, errorMessage, labels, onClose } = this.props;
     return (
       <ChangePasswordComponent
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={this.changePassword}
         labels={labels}
+        onClose={onClose}
       />
     );
   }

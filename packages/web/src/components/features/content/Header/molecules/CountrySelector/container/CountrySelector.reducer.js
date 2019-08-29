@@ -59,7 +59,7 @@ const CountrySelectorReducer = (state = initialState, action) => {
     case COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_SITEID:
       return state.set('siteId', action.siteId);
     case GLOBAL_CONSTANT.SET_MODULEX_CONTENT:
-        return state.set('moduleXContent', action.payload);
+      return state.set('moduleXContent', action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

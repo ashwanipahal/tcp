@@ -15,6 +15,7 @@ import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import { routerPush } from '../../../../../utils';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 
 export function* getOrderDetailSaga() {
   try {
@@ -24,10 +25,11 @@ export function* getOrderDetailSaga() {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
 }
+
 export function* getCartDataSaga(payload) {
   try {
     const {
-      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo },
+      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo } = {},
     } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
@@ -61,12 +63,22 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+export function* routeForCartCheckout(recalc) {
+  let section = '/shipping';
+  const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
+  if (orderHasPickup) {
+    section = '/pickup';
+  }
+  const path = `/checkout${section}`;
+  return yield call(routerPush, path, path, { recalc });
+}
+
 export function* checkoutCart(recalc) {
   const isLoggedIn = yield select(getUserLoggedInState);
   if (!isLoggedIn) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
-  return yield call(routerPush, '/checkout', '/checkout', { recalc });
+  return yield call(routeForCartCheckout, recalc);
 }
 
 function* confirmStartCheckout() {
@@ -123,6 +135,7 @@ export function* BagPageSaga() {
     BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
     removeUnqualifiedItemsAndCheckout
   );
+  yield takeLatest(BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT, routeForCartCheckout);
 }
 
 export default BagPageSaga;

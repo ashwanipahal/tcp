@@ -11,6 +11,7 @@ export {
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
+  getBirthDateOptionMap,
   getViewportInfo,
   showOverlay,
   closeOverlay,
@@ -37,6 +38,7 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
 } from './utils';

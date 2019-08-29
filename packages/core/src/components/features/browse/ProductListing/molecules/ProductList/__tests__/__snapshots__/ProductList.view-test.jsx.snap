@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductList component should renders correctly 1`] = `
-<div
+<ul
   className=""
 >
   <div
@@ -46,5 +46,5 @@ exports[`ProductList component should renders correctly 1`] = `
       unbxdId=""
     />
   </div>
-</div>
+</ul>
 `;
