@@ -95,8 +95,8 @@ export const CHANGE_PASSWORD_REDUCER_KEY = 'ChangePassword';
 export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 
 // change password reducer
-export const UPDATE_PROFILE_REDUCER_KEY = 'ChangePassword';
-export const UPDATE_PROFILE_ACTION_PATTERN = '@@ChangePassword-';
+export const UPDATE_PROFILE_REDUCER_KEY = 'UpdateProfile';
+export const UPDATE_PROFILE_ACTION_PATTERN = '@@UpdateProfile-';
 
 // device type detection
 export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
