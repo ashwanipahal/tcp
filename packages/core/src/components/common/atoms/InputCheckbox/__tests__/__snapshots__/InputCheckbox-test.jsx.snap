@@ -6,6 +6,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
     className="sample-class"
   >
     <input
+      aria-describedby="checkbox__error__undefined"
       aria-label=""
       className="CheckBox__input"
       data-locator=""
@@ -41,6 +42,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        id="checkbox__error__undefined"
         letterSpacing="normal"
         lineHeight="normal"
         role="alert"

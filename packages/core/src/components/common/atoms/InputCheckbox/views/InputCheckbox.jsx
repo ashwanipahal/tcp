@@ -26,6 +26,8 @@ const InputCheckbox = ({
   meta,
 }: Props): Node => {
   const { touched, error } = meta;
+  const errorMessagea11yLbl = `checkbox__error__${input.name}`;
+
   return (
     <React.Fragment>
       <label htmlFor={input.name} className={className}>
@@ -38,6 +40,7 @@ const InputCheckbox = ({
           data-locator={dataLocator}
           checked={input.value}
           disabled={disabled}
+          aria-describedby={errorMessagea11yLbl}
         />
         <BodyCopy
           fontSize="fs12"
@@ -58,6 +61,7 @@ const InputCheckbox = ({
             role="alert"
             aria-live="assertive"
             data-locator="errorDataLocator"
+            id={errorMessagea11yLbl}
           >
             {touched && error ? error : ''}
           </BodyCopy>
