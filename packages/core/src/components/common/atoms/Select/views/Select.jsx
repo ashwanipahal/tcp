@@ -63,14 +63,17 @@ const SelectBox = ({
                 id={option.id || option.get('id')}
                 key={option.id || option.get('id')}
               >
-                { option.displayName || option.get('displayName') }
+                {option.displayName || option.get('displayName')}
               </option>
             );
           })}
       </select>
-      <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
-        {placeholder}
-      </BodyCopy>
+      {!placeholder ? (
+        <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
+          {placeholder}
+        </BodyCopy>
+      ) : null}
+
       <div className="SelectBox__error">
         <div className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
         {touched && error && (

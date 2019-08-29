@@ -36,6 +36,7 @@ class DropDown extends React.PureComponent<Props> {
     itemStyle: PropTypes.shape({}),
     dropDownStyle: PropTypes.shape({}),
     variation: PropTypes.string,
+    bounces: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -45,6 +46,7 @@ class DropDown extends React.PureComponent<Props> {
     itemStyle: null,
     dropDownStyle: null,
     variation: 'primary',
+    bounces: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -97,7 +99,7 @@ class DropDown extends React.PureComponent<Props> {
       selectedLabelState,
       top: 0,
       flatListTop: 0,
-      flatListBottom: 0,
+      flatListHeight: 0,
     };
   }
 
@@ -130,13 +132,32 @@ class DropDown extends React.PureComponent<Props> {
         top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
       };
 
-      this.setState({ top: topMargin.top });
-      if (showInBottom) {
-        this.setState({ flatListBottom: 120 });
-      } else if (calculateHeight > windowHeight) {
-        this.setState({ flatListTop: 120, flatListBottom: 200 });
-      }
+      const dH = windowHeight - pageY - height;
+      this.setDropDownPosition(topMargin, dH, showInBottom, calculateHeight, windowHeight);
     });
+  };
+
+  /**
+   * Set drop down position
+   */
+  setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
+    this.setState({ top: topMargin.top });
+    let listMargin = 0;
+    let listHeight = 0;
+
+    if (showInBottom) {
+      if (calculateHeight > dH) {
+        listHeight = dH - 100;
+      } else {
+        listHeight = calculateHeight - 100;
+      }
+    } else if (calculateHeight > windowHeight) {
+      listMargin = 100;
+      listHeight = (windowHeight * 3) / 4;
+    } else {
+      listHeight = calculateHeight;
+    }
+    this.setState({ flatListHeight: listHeight, flatListTop: listMargin });
   };
 
   /**
@@ -202,8 +223,8 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   render() {
-    const { data, dropDownStyle, heading } = this.props;
-    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
+    const { data, dropDownStyle, heading, bounces, disabled } = this.props;
+    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
     return (
       <View style={dropDownStyle}>
         {heading && <StyledLabel isFocused>{heading}</StyledLabel>}
@@ -213,6 +234,7 @@ class DropDown extends React.PureComponent<Props> {
           ref={ref => {
             this.rowMarker = ref;
           }}
+          pointerEvents={disabled ? 'none' : 'auto'}
         >
           <HeaderContainer>
             <BodyCopy
@@ -246,7 +268,6 @@ class DropDown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
-                marginBottom: flatListBottom,
               }}
             >
               {dropDownIsOpen && (
@@ -254,6 +275,8 @@ class DropDown extends React.PureComponent<Props> {
                   data={data}
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.key}
+                  bounces={bounces}
+                  style={{ height: flatListHeight }}
                   ItemSeparatorComponent={() => <Separator />}
                 />
               )}

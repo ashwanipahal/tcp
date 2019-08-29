@@ -86,6 +86,19 @@ const removeUnqualifiedItemsAndCheckout = () => {
   };
 };
 
+const setCartItemsUpdating = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING,
+  };
+};
+
+const routeForCheckout = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -99,5 +112,7 @@ export default {
   removeUnqualifiedItemsAndCheckout,
   openCheckoutConfirmationModal,
   setItemOOS,
+  setCartItemsUpdating,
   setItemUnavailable,
+  routeForCheckout,
 };

@@ -3,13 +3,11 @@ import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
 import { isClient, isMobileApp } from '../../../utils';
 
-
-
-const modifyUnbxdUrl = (unboxKey) => {
+const modifyUnbxdUrl = unboxKey => {
   const temp = unboxKey.split('/');
-  temp.splice(0,1,"sites");
+  temp.splice(0, 1, 'sites');
   return temp.join('/');
-}
+};
 /**
  * @summary This is to generate and return both the request params and the request URL.
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
@@ -21,7 +19,7 @@ const getRequestParams = (apiConfig, reqObj) => {
     webService: { URI, unbxdCustom },
   } = reqObj;
 
-  const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey ;
+  const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey;
   const requestUrl = `${apiConfig.unbxd}/${unboxKey}/${URI}`;
 
   const reqHeaders = {};
@@ -80,7 +78,8 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
         resolve(response);
       })
       .catch(err => {
-        reject(err);
+        // eslint-disable-next-line prefer-promise-reject-errors
+        reject({ err, reqObj });
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.

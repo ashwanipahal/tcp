@@ -44,11 +44,18 @@ class CountrySelectorModal extends React.Component {
   };
 
   toggleDisable = () => {
-    const { updatedCountry, updatedCurrency } = this.props;
+    const {
+      updatedCountry,
+      updatedCurrency,
+      initialValues: { country, currency },
+    } = this.props;
+
     const { us, ca } = sites;
     return (
       (updatedCountry === us.countryCode && updatedCurrency === us.currencyCode) ||
-      (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode)
+      (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode) ||
+      (!updatedCountry && country === us.countryCode && currency === us.currencyCode) ||
+      (!updatedCountry && country === ca.countryCode && currency === ca.currencyCode)
     );
   };
 
@@ -69,7 +76,7 @@ class CountrySelectorModal extends React.Component {
         fixedWidth
         isOpen={isModalOpen}
         onRequestClose={() => closeModal()}
-        heading={labels.lbl_global_country_selector_header}
+        heading={labels && labels.lbl_global_country_selector_header}
         overlayClassName="TCPModal__Overlay"
         className={`${className} TCPModal__Content`}
         dataLocator={getLocator('country_selector_ship_to_modal')}
@@ -77,6 +84,7 @@ class CountrySelectorModal extends React.Component {
         maxWidth="450px"
         minHeight="643px"
         inheritedStyles={modalStyles}
+        shouldCloseOnOverlayClick={false}
       >
         <div>
           <BodyCopy
@@ -87,7 +95,7 @@ class CountrySelectorModal extends React.Component {
             textAlign="center"
             data-locator={getLocator('ship_to_text_2')}
           >
-            {labels.lbl_global_country_selector_subheader}
+            {labels && labels.lbl_global_country_selector_subheader}
           </BodyCopy>
           <hr className="shipToModal__divider" />
           <form className="shipToForm">
@@ -101,7 +109,7 @@ class CountrySelectorModal extends React.Component {
               for="country"
               data-locator={getLocator('country')}
             >
-              <span>{labels.lbl_global_country}</span>
+              <span>{labels && labels.lbl_global_country}</span>
               <Field
                 id="country"
                 name="country"
@@ -121,7 +129,7 @@ class CountrySelectorModal extends React.Component {
               for="language"
               data-locator={getLocator('language')}
             >
-              <span>{labels.lbl_global_language}</span>
+              <span>{labels && labels.lbl_global_language}</span>
               <Field
                 id="language"
                 name="language"
@@ -141,7 +149,7 @@ class CountrySelectorModal extends React.Component {
               for="currency"
               data-locator={getLocator('currency')}
             >
-              <span>{labels.lbl_global_currency}</span>
+              <span>{labels && labels.lbl_global_currency}</span>
               <Field
                 id="currency"
                 name="currency"
@@ -159,7 +167,7 @@ class CountrySelectorModal extends React.Component {
               onClick={handleSubmit}
               data-locator={getLocator('country_selector_save_btn')}
             >
-              {labels.lbl_global_country_selector_cta}
+              {labels && labels.lbl_global_country_selector_cta}
             </Button>
           </form>
           <BodyCopy
@@ -187,6 +195,7 @@ CountrySelectorModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
   languages: PropTypes.shape({}).isRequired,
   updateCountry: PropTypes.func.isRequired,
   updateLanguage: PropTypes.func.isRequired,

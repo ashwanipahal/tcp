@@ -10,7 +10,6 @@ import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
 import Button from '../../../../../../common/atoms/Button';
 import { getLocator } from '../../../../../../../utils';
-
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 
 // import { ProductRating } from './ProductRating';
@@ -281,16 +280,20 @@ class ProductsGridItem extends React.PureComponent {
       //  isBossClearanceProductEnabled,
       //  isBossEnabled,
       item: {
-        // eslint-disable-next-line camelcase
-        productInfo: { generalProductId, name, long_product_title },
-        productInfo: { promotionalMessage, promotionalPLCCMessage },
+        productInfo: {
+          promotionalMessage,
+          promotionalPLCCMessage,
+          generalProductId,
+          name,
+          // eslint-disable-next-line camelcase
+          long_product_title,
+        },
         colorsMap,
         imagesByColor,
       },
       // isGridView,
       // isProductsGridCTAView,
       // isCanada,
-      // isPlcc,
       isOnModelImgDisplay,
       // isInternationalShipping,
       // isPLPShowPickupCTA,

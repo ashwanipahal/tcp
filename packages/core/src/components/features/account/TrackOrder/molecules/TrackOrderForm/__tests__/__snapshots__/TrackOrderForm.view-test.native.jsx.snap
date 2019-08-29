@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderForm component should renders correctly 1`] = `
+<Hoc
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  errorMessage=""
+  forceUnregisterOnUnmount={false}
+  form="TrackOrderForm"
+  forwardedRef={null}
+  getFormState={[Function]}
+  handleSubmit={[MockFunction]}
+  invalid={false}
+  keepDirtyOnReinitialize={false}
+  labels={
+    Object {
+      "trackOrder": Object {},
+    }
+  }
+  onChangeForm={[MockFunction]}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;
+
+exports[`TrackOrderForm component should renders correctly if invalid is true, makes the track order button is disabled 1`] = `
+<Hoc
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  errorMessage=""
+  forceUnregisterOnUnmount={false}
+  form="TrackOrderForm"
+  forwardedRef={null}
+  getFormState={[Function]}
+  handleSubmit={[MockFunction]}
+  invalid={true}
+  keepDirtyOnReinitialize={false}
+  labels={
+    Object {
+      "trackOrder": Object {},
+    }
+  }
+  onChangeForm={[MockFunction]}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;

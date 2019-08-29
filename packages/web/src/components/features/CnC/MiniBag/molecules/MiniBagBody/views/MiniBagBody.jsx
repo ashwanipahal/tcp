@@ -22,6 +22,7 @@ type Props = {
   cartItemCount: any,
   subTotal: any,
   currencySymbol: any,
+  isCartItemsUpdating: any,
 };
 const MiniBagBody = ({
   labels,
@@ -30,11 +31,12 @@ const MiniBagBody = ({
   cartItemCount,
   subTotal,
   currencySymbol,
+  isCartItemsUpdating,
 }: Props) => {
-  const isItemDeleted = false;
+  const { isDeleting, isUpdating } = isCartItemsUpdating;
   return (
     <div className={className}>
-      <BodyCopy component="div" className="viewBagAndProduct">
+      <div className="minibag-viewbag">
         <Row className="mainWrapper">
           <Col className="subHeaderText" colSize={{ small: 6, medium: 8, large: 12 }}>
             {userName ? (
@@ -75,9 +77,18 @@ const MiniBagBody = ({
             )}
           </Col>
         </Row>
-        {isItemDeleted ? (
+      </div>
+      <BodyCopy component="div" className="viewBagAndProduct">
+        {isDeleting || isUpdating ? (
           <Row className="mainWrapper">
             <Col className="deleteMsg" colSize={{ small: 6, medium: 8, large: 12 }}>
+              <Image
+                alt="closeIcon"
+                className="tick-icon-image"
+                src={getIconPath('active_icon')}
+                height={12}
+                width={12}
+              />
               <BodyCopy
                 component="span"
                 fontSize="fs12"
@@ -85,14 +96,8 @@ const MiniBagBody = ({
                 fontFamily="secondary"
                 fontWeight="extrabold"
               >
-                <Image
-                  alt="closeIcon"
-                  className="tick-icon-image"
-                  src={getIconPath('active_icon')}
-                  height={12}
-                  width={12}
-                />
-                {'Your item has been deleted'}
+                {isDeleting ? labels.itemDeleted : null}
+                {isUpdating ? labels.itemUpdated : null}
               </BodyCopy>
             </Col>
           </Row>

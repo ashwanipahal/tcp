@@ -35,12 +35,10 @@ export const getCheckoutValuesState = state => {
   return state[CHECKOUT_REDUCER_KEY].get('values');
 };
 
-function getIsOrderHasShipping() {
-  return true;
-  // return state.CartPageReducer.getIn(['orderDetails', 'orderItems']).findIndex(
-  //   item => !item.getIn(['miscInfo', 'storeId'])
-  // );
-}
+const getIsOrderHasShipping = createSelector(
+  BagPageSelector.getOrderItems,
+  cartItems => cartItems && cartItems.findIndex(item => !item.getIn(['miscInfo', 'store'])) > -1
+);
 
 const getIsOrderHasPickup = createSelector(
   BagPageSelector.getOrderItems,
@@ -331,7 +329,6 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_alternativeGovIdText: alternativeGovIdText,
     lbl_pickup_alternativeLastName: alternativeLastName,
     lbl_pickup_alternativeEmail: alternativeEmail,
-
     lbl_pickup_pickup_contact: pickupContactText,
     lbl_pickup_btn_cancel: btnCancel,
     lbl_pickup_btn_update: btnUpdate,
@@ -340,7 +337,11 @@ export const getPickUpContactFormLabels = state => {
     lbl_pickup_anchor_edit: anchorEdit,
     lbl_pickup_buttonText: pickupText,
     lbl_pickup_billingText: billingText,
+    lbl_pickup_nextText: nextText,
+    lbl_pickup_returnTo: returnTo,
   } = state.Labels.global && state.Labels.checkout.pickup;
+  const { lbl_shipping_header: shippingText } =
+    state.Labels.checkout && state.Labels.checkout.shipping;
   return {
     title,
     firstName,
@@ -357,7 +358,6 @@ export const getPickUpContactFormLabels = state => {
     alternativeGovIdText,
     alternativeLastName,
     alternativeEmail,
-
     pickupContactText,
     btnCancel,
     btnUpdate,
@@ -366,6 +366,9 @@ export const getPickUpContactFormLabels = state => {
     anchorEdit,
     pickupText,
     billingText,
+    nextText,
+    returnTo,
+    shippingText,
   };
 };
 

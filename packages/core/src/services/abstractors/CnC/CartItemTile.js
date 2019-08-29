@@ -794,7 +794,7 @@ export const getUnqualifiedItems = () => {
   };
   const isCanadaSite = isCanada();
 
-  return Promise.resolve()
+  return executeStatefulAPICall(payload)
     .then((res = { body: {} }) => {
       if (responseContainsErrors(res)) {
         throw new ServiceResponseError(res);

@@ -20,11 +20,16 @@ const styles = css`
       background-repeat: no-repeat;
       background-position: right center;
       height: auto;
-      padding-left: 0px;
       padding-bottom: 2px;
+      padding-left: 0px;
     }
     .customSelectTitle {
       padding-bottom: 2px;
+      img {
+        border: solid 0.4px #000000;
+        margin-right: 5px;
+        border-radius: 5px;
+      }
     }
   }
   .button-wrapper {
@@ -48,6 +53,34 @@ const styles = css`
     font-size: 10px;
     margin-top: 12px;
     color: ${props => props.theme.colors.BUTTON.BLUE.NORMAL};
+  }
+
+  .color-selector {
+    cursor: pointer;
+    .dropdownliBottomBorder {
+      width: auto;
+      border-bottom: none;
+      div {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .dropdownActiveClass {
+      background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+      div {
+        color: ${props => props.theme.colors.WHITE};
+      }
+    }
+    .dropdownUlBorder {
+      border: none;
+    }
+    .dropdownDivOverFlow {
+      display: block;
+      overflow-y: auto;
+      max-height: 150px;
+      border: 2px solid ${props => props.theme.colors.PRIMARY.BLUE};
+    }
   }
 
   .size-error {

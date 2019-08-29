@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import Dotdotdot from 'react-dotdotdot';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
@@ -79,9 +80,11 @@ export function ProductTitle(props) {
         to={pdpUrl}
         inheritedStyles="product-title-content"
       >
-        <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
-          {name}
-        </BodyCopy>
+        <Dotdotdot clamp={2}>
+          <BodyCopy fontSize={['fs12', 'fs13', 'fs14']} fontFamily="secondary">
+            {name}
+          </BodyCopy>
+        </Dotdotdot>
       </Anchor>
       {children}
     </div>
@@ -187,12 +190,15 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             </p>
           </div>
         ) : (
-          <Image
-            data-locator={getLocator('global_favorite_button')}
-            alt="Add-to-favorite"
-            className={className}
-            src={getIconPath('add-to-favorite')}
-          />
+          <button class="clear-button">
+            <Image
+              data-locator={getLocator('global_favorite_button')}
+              alt="Add-to-favorite"
+              title="addToFavorite"
+              className={className}
+              src={getIconPath('add-to-favorite')}
+            />
+          </button>
         )}
       </div>
     );
@@ -220,7 +226,10 @@ export function BadgeItem(props) {
 export function PromotionalMessage(props) {
   const { message } = props;
   return (
-    <div
+    <BodyCopy
+      fontSize={['fs10', 'fs12', 'fs14']}
+      fontWeight="extrabold"
+      fontFamily="secondary"
       data-locator={getLocator('global_loyalty_text')}
       className="loyalty-text-container"
       dangerouslySetInnerHTML={{ __html: message }}

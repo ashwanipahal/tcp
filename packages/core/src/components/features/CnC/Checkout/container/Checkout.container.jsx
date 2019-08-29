@@ -62,6 +62,7 @@ export class CheckoutContainer extends React.Component<Props> {
       isGuest,
       isExpressCheckoutPage,
       cartOrderItems,
+      orderHasShipping,
     } = this.props;
     return (
       <CheckoutPage
@@ -87,6 +88,7 @@ export class CheckoutContainer extends React.Component<Props> {
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
         cartOrderItems={cartOrderItems}
+        orderHasShipping={orderHasShipping}
       />
     );
   }
@@ -149,11 +151,12 @@ const mapStateToProps = state => {
     isUsSite: selectors.isUsSite(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
-    pickUpLabels: getPickUpContactFormLabels(state),
+    pickUpLabels: { ...getPickUpContactFormLabels(state), ...getEmailSignUpLabels(state) },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
+    orderHasShipping: selectors.getIsOrderHasShipping(state),
   };
 };
 

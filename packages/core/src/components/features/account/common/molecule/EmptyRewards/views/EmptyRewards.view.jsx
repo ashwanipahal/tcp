@@ -41,7 +41,7 @@ export const EmptyRewards = ({ labels }) => {
           className="shop-now-btn"
           data-locator="my-rewards-shop-now-btn"
         >
-          {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW}
+          {labels.myPlaceRewards.lbl_my_rewards_shop_now}
         </Button>
       </Col>
     </>
@@ -51,7 +51,7 @@ export const EmptyRewards = ({ labels }) => {
 EmptyRewards.propTypes = {
   labels: PropTypes.shape({
     myPlaceRewards: {
-      ACC_LBL_MY_REWARDS_SHOP_NOW: PropTypes.string,
+      lbl_my_rewards_shop_now: PropTypes.string,
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: PropTypes.string,
     },
   }),
@@ -60,7 +60,7 @@ EmptyRewards.propTypes = {
 EmptyRewards.defaultProps = {
   labels: {
     myPlaceRewards: {
-      ACC_LBL_MY_REWARDS_SHOP_NOW: '',
+      lbl_my_rewards_shop_now: '',
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
     },
   },

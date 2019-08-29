@@ -6,6 +6,8 @@ import { setCheckoutModalMountedState } from '../../../account/LoginPage/contain
 import { checkoutModalOpenState } from '../../../account/LoginPage/container/LoginPage.selectors';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
 import { routerPush } from '../../../../../utils';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import bagPageActions from '../../BagPage/container/BagPage.actions';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -27,6 +29,8 @@ export class AddedToBagContainer extends React.Component<Props> {
       handleCartCheckout,
       checkoutModalMountedState,
       closeCheckoutModalMountState,
+      isUserLoggedIn,
+      routeForBagCheckout,
     } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
@@ -38,10 +42,12 @@ export class AddedToBagContainer extends React.Component<Props> {
         labels={labels}
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
+        routeForBagCheckout={routeForBagCheckout}
         inheritedStyles={inheritedStyles}
         closeCheckoutModalMountState={closeCheckoutModalMountState}
         checkoutModalMountedState={checkoutModalMountedState}
         navigation={navigation}
+        isUserLoggedIn={isUserLoggedIn}
       />
     );
   }
@@ -49,12 +55,17 @@ export class AddedToBagContainer extends React.Component<Props> {
 
 AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  routeForBagCheckout: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     closeCheckoutModalMountState: payload => {
       dispatch(setCheckoutModalMountedState(payload));
+    },
+    routeForBagCheckout: () => {
+      dispatch(bagPageActions.routeForCheckout());
     },
   };
 };
@@ -63,6 +74,7 @@ const mapStateToProps = state => {
   return {
     labels: getLabelsAddToActions(state),
     checkoutModalMountedState: checkoutModalOpenState(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 
