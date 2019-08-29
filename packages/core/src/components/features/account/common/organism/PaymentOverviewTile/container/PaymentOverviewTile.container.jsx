@@ -40,7 +40,7 @@ export class PaymentOverviewTile extends React.Component {
   render() {
     const { creditCardDefault, giftCardList, venmoCardList, labels } = this.props;
     const creditCardDefaultValue = creditCardDefault && creditCardDefault.get(0);
-    const giftCardListValue = giftCardList && giftCardList.get(0);
+    const giftCardListValue = giftCardList && giftCardList.get(-1);
     const venmoCardListValue = venmoCardList && venmoCardList.get(0);
     return (
       <PaymentOverviewTileComponent

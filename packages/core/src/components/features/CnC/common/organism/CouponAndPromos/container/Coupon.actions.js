@@ -49,3 +49,9 @@ export const setError = payload => {
     payload,
   };
 };
+
+export const clearCouponTTL = () => {
+  return {
+    type: COUPON_CONSTANTS.CLEAR_COUPON_TTL,
+  };
+};

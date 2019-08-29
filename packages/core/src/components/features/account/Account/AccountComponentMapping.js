@@ -7,6 +7,8 @@ import AddGiftCardContainer from '../Payment/AddGiftCard/container/AddGiftCard.c
 import PlaceRewards from '../PlaceRewards/container/PlaceRewards.container';
 import WalletContainer from '../Wallet/container/Wallet.container';
 import MyProfile from '../MyProfile/container/MyProfile.container';
+import ChangePassword from '../ChangePassword';
+import AddEditPersonalInformationContainer from '../AddEditPersonalInformation';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -20,6 +22,8 @@ const AccountComponentMapping = {
   'place-rewards': PlaceRewards,
   wallet: WalletContainer,
   profile: MyProfile,
+  'change-password': ChangePassword,
+  'edit-personal-info': AddEditPersonalInformationContainer,
 };
 
 export default AccountComponentMapping;

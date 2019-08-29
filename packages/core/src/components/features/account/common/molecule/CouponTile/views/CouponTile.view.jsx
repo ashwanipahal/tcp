@@ -4,37 +4,12 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CouponTile.style';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+import CouponIconComponent from '../../CouponIcon/views/CouponIcon.view';
 
-export const CouponTile = ({ className, coupon, labels }) => {
-  let couponClass = '';
-  let couponTextLabel = '';
-
-  switch (coupon.offerType) {
-    case COUPON_REDEMPTION_TYPE.PLACECASH:
-      couponClass = 'coupon-placecash';
-      couponTextLabel = `${labels.lbl_overview_couponTypePlacecash}`;
-      break;
-    case COUPON_REDEMPTION_TYPE.REWARDS:
-      couponClass = 'coupon-reward';
-      couponTextLabel = `${labels.lbl_overview_couponTypeReward}`;
-      break;
-    default:
-      couponClass = 'coupon-saving';
-      couponTextLabel = `${labels.lbl_overview_couponTypeSaving}`;
-  }
-
+export const CouponTile = ({ className, coupon, labels, commonLabels }) => {
   return (
     <BodyCopy component="li" className={`${className} elem-mb-SM`}>
-      <BodyCopy
-        component="div"
-        className={`coupon ${couponClass} elem-mr-XS`}
-        fontSize="fs13"
-        fontWeight="black"
-        color="white"
-        textAlign="center"
-      >
-        <span>{`${couponTextLabel}`}</span>
-      </BodyCopy>
+      <CouponIconComponent labels={commonLabels} coupon={coupon} className="elem-mr-XS" />
       <BodyCopy component="div" className="elem-pt-XS">
         <BodyCopy
           fontSize="fs12"
@@ -71,6 +46,7 @@ CouponTile.propTypes = {
     lbl_overview_myPlaceRewardsUseBy: PropTypes.string.isRequired,
   }).isRequired,
   className: PropTypes.string,
+  commonLabels: PropTypes.shape({}).isRequired,
 };
 
 CouponTile.defaultProps = {

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, change } from 'redux-form';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import TextBox from '../../atoms/TextBox';
 import SelectBox from '../../atoms/Select';
 import InputCheckbox from '../../atoms/InputCheckbox';
@@ -52,7 +53,7 @@ export class AddressForm extends React.PureComponent {
 
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change('AddressForm', 'city', address.city));
     dispatch(change('AddressForm', 'zipCode', address.zip));
     dispatch(change('AddressForm', 'state', address.state));
@@ -174,7 +175,11 @@ export class AddressForm extends React.PureComponent {
           </Col>
         </Row>
         <Row fullBleed className="elem-mb-XL">
-          <Col colSize={{ small: 4, medium: 4, large: 6 }} offsetLeft={{ small: 1 }}>
+          <Col
+            colSize={{ small: 4, medium: 4, large: 6 }}
+            offsetLeft={{ small: 1 }}
+            className="dropdown-text"
+          >
             <Field
               name="primary"
               component={InputCheckbox}

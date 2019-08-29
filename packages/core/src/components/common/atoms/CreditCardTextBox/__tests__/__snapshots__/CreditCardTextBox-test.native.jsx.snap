@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardTextBox component render enableSuccessCheck on validation fail 1`] = `
+<View>
+  <View>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={false}
+          error="food"
+          id="input"
+          keyboardType="default"
+          maxLength={16}
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "maxLength": 16,
+              "meta": Object {
+                "error": "food",
+                "touched": "foo",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
+          }
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="text"
+          value="foo"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          color="error"
+          fontSize="fs12"
+          fontWeight="semibold"
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          text="food"
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </View>
+</View>
+`;
+
+exports[`CreditCardTextBox component render enableSuccessCheck on validation true 1`] = `
+<View>
+  <View>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={true}
+          error=""
+          id="input"
+          keyboardType="default"
+          maxLength={16}
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": true,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "maxLength": 16,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
+          }
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="text"
+          value="foo"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View) />
+  </View>
+</View>
+`;
+
+exports[`CreditCardTextBox component renders correctly 1`] = `
+<View>
+  <View>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={false}
+          error=""
+          id="input"
+          keyboardType="default"
+          maxLength={16}
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "maxLength": 16,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
+          }
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="text"
+          value="foo"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View) />
+  </View>
+</View>
+`;
+
+exports[`CreditCardTextBox component renders correctly hidden textbox 1`] = `
+<View>
+  <View>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Text)
+          isFocused="foo"
+        >
+          input
+        </Styled(Text)>
+        <Styled(TextInput)
+          aria-label="input"
+          data-locator="input-field"
+          enableSuccessCheck={false}
+          error=""
+          id="input"
+          keyboardType="default"
+          maxLength={16}
+          onBlur={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          others={
+            Object {
+              "ariaLabel": "input",
+              "cardType": "",
+              "customStyle": Object {},
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "maxLength": 16,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+            }
+          }
+          returnKeyType="next"
+          secureTextEntry={false}
+          type="hidden"
+          value="foo"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="30"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/visa-small.png",
+            }
+          }
+          width="40"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View) />
+  </View>
+</View>
+`;

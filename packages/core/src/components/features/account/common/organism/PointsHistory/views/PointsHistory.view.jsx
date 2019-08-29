@@ -95,7 +95,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
       <Row fullbleed className="elem-mt-XXL elem-mt-XXS">
         <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <Anchor
-            data-locator="pointshistorylnk"
+            dataLocator="pointshistorylnk"
             fontSizeVariation="medium"
             underline
             anchorVariation="primary"

@@ -68,7 +68,7 @@ const MiniBagHeader = ({
               alt="Product"
               className="product-image"
               src={getIconPath('fav-icon')}
-              data-locator="addedtobag-fav-icon"
+              dataLocator="addedtobag-fav-icon"
             />
           </Anchor>
           {'  '}

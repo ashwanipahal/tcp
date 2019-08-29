@@ -4,6 +4,7 @@ import { Anchor } from '../../../atoms';
 import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
 
 type Props = {
+  ribbonBanner: Array<Object>,
   promoBanner: Array<Object>,
   bodyCopyStyles: Array<Object>,
 };
@@ -15,6 +16,7 @@ type PercentageStyleProps = {
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
 export const bodyCopyStyles = {
+  // large_text_normal
   style1: props => (
     <BodyCopy
       color="text.primary"
@@ -24,6 +26,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  // large_text_bold
   style2: props => (
     <BodyCopy
       color="text.primary"
@@ -45,7 +48,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style4: props => (
+  text_normal: props => (
     <BodyCopy fontSize="fs16" color="white" fontFamily="primary" textAlign="center" {...props} />
   ),
   style5: props => (
@@ -59,7 +62,49 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  style6: props => <PercentageStyle {...props} />,
+  percentage_wrapped_large: props => <PercentageStyle {...props} />,
+  percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
+  small_text_bold: props => (
+    <BodyCopy
+      fontSize="fs16"
+      fontWeight="black"
+      color="black"
+      fontFamily="primary"
+      textAlign="center"
+      lineHeight="16px"
+      {...props}
+    />
+  ),
+  small_text_normal: props => (
+    <BodyCopy
+      fontSize="fs16"
+      color="gray.900"
+      fontFamily="primary"
+      textAlign="left"
+      lineHeight="16px"
+      {...props}
+    />
+  ),
+  ribbon_default_text: props => (
+    <BodyCopy
+      fontSize="fs14"
+      color="white"
+      fontFamily="secondary"
+      textAlign="center"
+      lineHeight="14px"
+      {...props}
+    />
+  ),
+  gymboree_description: props => (
+    <BodyCopy
+      fontSize="fs16"
+      fontWeight="regular"
+      color="white"
+      fontFamily="primary"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**
@@ -80,10 +125,11 @@ const PromoBanner = (props: Props) => {
     promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
+
   return [
     <ContainerView>
       {textItems && (
-        <Anchor url={link.url} navigation={navigation}>
+        <Anchor url={link ? link.url : ''} navigation={navigation}>
           {textItems.map(({ text, style }, index) => {
             const StyleBodyCopy = bodyCopyStyles[style];
             return (
@@ -101,12 +147,17 @@ const PromoBanner = (props: Props) => {
   ];
 };
 
+/**
+ * This function return the Promobanner Percentage Style
+ * Color is 'White' and Split by the '%' key .
+ */
 const PercentageStyle = (props: PercentageStyleProps) => {
   const { text } = props;
 
-  const strArray = text && text.split('%');
+  const strArray = text && text.split(' ');
   const bodyCopyStyle = { height: 33 };
   const bodyCopyStyle1 = { height: 58, marginTop: 8 };
+
   return (
     <Container>
       <BodyCopy
@@ -125,7 +176,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
           fontWeight="black"
           color="white"
           fontFamily="primary"
-          text="%"
+          text={strArray && strArray[1]}
           lineHeight="42px"
           style={bodyCopyStyle}
         />
@@ -136,7 +187,54 @@ const PercentageStyle = (props: PercentageStyleProps) => {
           fontFamily="primary"
           textAlign="center"
           lineHeight="20px"
+          text={strArray && strArray[2]}
+        />
+      </ContainerView>
+    </Container>
+  );
+};
+
+/**
+ * This function return the Promobanner Percentage Style
+ * Color is 'Pink' and Split by the '%' key .
+ */
+const PercentagePinkStyle = (props: PercentageStyleProps) => {
+  const { text } = props;
+
+  const strArray = text && text.split(' ');
+  const bodyCopyStyle = { height: 85, fontSize: 99 };
+  const bodyCopyStyle1 = { height: 131, marginTop: 8, fontSize: 153 };
+  const bodyCopyStyle2 = { height: 42 };
+
+  return (
+    <Container>
+      <BodyCopy
+        fontWeight="black"
+        color="pink.400"
+        fontFamily="primary"
+        textAlign="center"
+        lineHeight="155px"
+        style={bodyCopyStyle1}
+        text={strArray && strArray[0]}
+      />
+      <ContainerView>
+        <BodyCopy
+          fontWeight="black"
+          color="pink.400"
+          fontFamily="primary"
           text={strArray && strArray[1]}
+          lineHeight="99px"
+          style={bodyCopyStyle}
+        />
+        <BodyCopy
+          fontSize="fs42"
+          fontWeight="black"
+          color="pink.400"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="42px"
+          text={strArray && strArray[2]}
+          style={bodyCopyStyle2}
         />
       </ContainerView>
     </Container>

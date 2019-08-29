@@ -2,7 +2,7 @@
 
 exports[`AddressBook component should renders correctly when errors are present 1`] = `
 <div
-  className=""
+  className=" addEditAddress"
 >
   <Styled(Grid)>
     <Connect(Styled(AddressVerification))
@@ -40,7 +40,7 @@ exports[`AddressBook component should renders correctly when errors are present 
 
 exports[`AddressBook component should renders correctly without any error 1`] = `
 <div
-  className=""
+  className=" addEditAddress"
 >
   <Styled(Grid)>
     <Connect(Styled(AddressVerification))

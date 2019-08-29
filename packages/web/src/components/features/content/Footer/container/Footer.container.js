@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import {
   getUserInfoPOC,
   getOrderDetail,
+  setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
+import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import {
   toggleEmailSignupModal,
   submitEmailSignup,
@@ -13,10 +15,10 @@ import {
   submitSmsSignup,
   clearSmsSignupForm,
 } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
-
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
-
+import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import FooterView from '../views';
 
 const mapStateToProps = state => {
@@ -26,6 +28,7 @@ const mapStateToProps = state => {
       footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
+      referAFriend: referAFriendButtonLabels,
     },
   } = state.Labels;
   const { EmailSignUp = {}, SmsSignUp = {} } = state;
@@ -42,10 +45,13 @@ const mapStateToProps = state => {
     emailSignup: Footer.emailSignupBtn,
     smsSignup: Footer.smsSignupBtn,
     referAFriend: Footer.referFriendBtn,
+    referAFriendButtonLabels,
     copyrightText: Footer.copyrightText,
     referenceID,
     emailSignupLabels,
     smsSignupLabels,
+    loginModalMountedState: loginModalOpenState(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -57,9 +63,15 @@ const mapDispatchToProps = dispatch => {
     getOrderDetailAction: () => {
       dispatch(getOrderDetail());
     },
+
     openEmailSignUpModal: () => {
       dispatch(toggleEmailSignupModal({ isModalOpen: true }));
     },
+
+    setLoginModalMountState: payload => {
+      dispatch(setLoginModalMountedState(payload));
+    },
+
     openSmsSignUpModal: () => {
       dispatch(toggleSmsSignupModal({ isModalOpen: true }));
     },
@@ -81,7 +93,9 @@ const mapDispatchToProps = dispatch => {
               const {
                 labels: { validationErrorLabel },
               } = props;
-              const error = { [fieldName]: validationErrorLabel };
+              const error = {
+                [fieldName]: validationErrorLabel,
+              };
               // eslint-disable-next-line prefer-promise-reject-errors
               return Promise.reject({ ...error, _error: error });
             }
@@ -99,12 +113,15 @@ const mapDispatchToProps = dispatch => {
         const {
           labels: { validationErrorLabel },
         } = props;
-        const error = { [fieldName]: validationErrorLabel };
+        const error = {
+          [fieldName]: validationErrorLabel,
+        };
         // eslint-disable-next-line prefer-promise-reject-errors
         return Promise.reject({ ...error, _error: error });
       }
       return Promise.resolve();
     },
+    openTrackOrder: payload => dispatch(setTrackOrderModalMountedState(payload)),
   };
 };
 

@@ -9,6 +9,7 @@ import PayPalButton from '@tcp/core/src/components/common/atoms/PaypalButton';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
+import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 
@@ -21,6 +22,7 @@ type Props = {
   cartItemCount: any,
   subTotal: any,
   currencySymbol: any,
+  isCartItemsUpdating: any,
 };
 const MiniBagBody = ({
   labels,
@@ -29,11 +31,12 @@ const MiniBagBody = ({
   cartItemCount,
   subTotal,
   currencySymbol,
+  isCartItemsUpdating,
 }: Props) => {
-  const isItemDeleted = false;
+  const { isDeleting, isUpdating } = isCartItemsUpdating;
   return (
     <div className={className}>
-      <BodyCopy component="div" className="viewBagAndProduct">
+      <div className="minibag-viewbag">
         <Row className="mainWrapper">
           <Col className="subHeaderText" colSize={{ small: 6, medium: 8, large: 12 }}>
             {userName ? (
@@ -43,7 +46,7 @@ const MiniBagBody = ({
                   underline
                   anchorVariation="primary"
                   to="/bag"
-                  data-locator="addressbook-makedefault"
+                  dataLocator="addressbook-makedefault"
                 >
                   {`${labels.viewBag}(${cartItemCount})`}
                 </Anchor>
@@ -74,9 +77,18 @@ const MiniBagBody = ({
             )}
           </Col>
         </Row>
-        {isItemDeleted ? (
+      </div>
+      <BodyCopy component="div" className="viewBagAndProduct">
+        {isDeleting || isUpdating ? (
           <Row className="mainWrapper">
             <Col className="deleteMsg" colSize={{ small: 6, medium: 8, large: 12 }}>
+              <Image
+                alt="closeIcon"
+                className="tick-icon-image"
+                src={getIconPath('active_icon')}
+                height={12}
+                width={12}
+              />
               <BodyCopy
                 component="span"
                 fontSize="fs12"
@@ -84,20 +96,17 @@ const MiniBagBody = ({
                 fontFamily="secondary"
                 fontWeight="extrabold"
               >
-                <Image
-                  alt="closeIcon"
-                  className="tick-icon-image"
-                  src={getIconPath('active_icon')}
-                  height={12}
-                  width={12}
-                />
-                {'Your item has been deleted'}
+                {isDeleting ? labels.itemDeleted : null}
+                {isUpdating ? labels.itemUpdated : null}
               </BodyCopy>
             </Col>
           </Row>
         ) : null}
         {cartItemCount ? (
-          <ProductTileWrapper />
+          <>
+            <ProductTileWrapper />
+            <AirmilesBanner />
+          </>
         ) : (
           <EmptyMiniBag labels={labels} userName={userName} />
         )}

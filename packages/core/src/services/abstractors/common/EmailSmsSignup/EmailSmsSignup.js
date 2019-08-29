@@ -26,11 +26,29 @@ const Abstractor = {
   /**
    * @param {String} baseURI Base URL of the API
    * @param {String} relURI API path
-   * @param {Object} params prams to the API
+   * @param {Object} payload payload to the API
    * @param {String} method REST method
    * @return {Object} return promise.
    */
-  subscribeSms: (baseURI, relURI, params = {}, method) => {
+  subscribeSms: (baseURI, relURI, payload = {}, method) => {
+    const { ACQUISITION_ID } = getAPIConfig();
+
+    const params = {
+      payload: JSON.stringify({
+        acquisition_id: ACQUISITION_ID,
+        mobile_phone: {
+          mdn: payload.replace(/\D/g, ''),
+        },
+        custom_fields: {
+          src_cd: '1',
+          sub_src_cd: 'sms_footer',
+        },
+      }),
+      langId: -1,
+      storeId: 10151,
+      catalogId: 10551,
+    };
+
     return fetchData(baseURI, relURI, params, method)
       .then(Abstractor.processSmsSubscriptionData)
       .catch(Abstractor.handleValidationError);

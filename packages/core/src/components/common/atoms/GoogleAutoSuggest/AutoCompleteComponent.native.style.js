@@ -19,9 +19,8 @@ const StyledLabel = styled.Text`
 `;
 
 const Container = styled.View`
-  position: absolute;
   width: 100%;
-  z-index: 99;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const textInput = {
@@ -41,21 +40,30 @@ const description = {
 };
 
 const listView = {
-  zIndex: 3,
   backgroundColor: `${colors.WHITE}`,
-  opacity: 1,
 };
 
 const separator = {
-  padding: 2,
   borderBottomWidth: 1,
   borderBottomColor: `${colors.FOOTER.DIVIDER}`,
 };
 
+const item = {
+  paddingLeft: 6,
+  paddingBottom: 6,
+  paddingRight: 6,
+  paddingTop: 8,
+  height: 35,
+};
+
 const poweredContainer = {
-  display: 'flex',
   justifyContent: 'flex-end',
   flexDirection: 'row',
+  alignItems: 'center',
+};
+
+const container = {
+  flex: 1,
 };
 
 export {
@@ -67,4 +75,6 @@ export {
   listView,
   separator,
   poweredContainer,
+  item,
+  container,
 };

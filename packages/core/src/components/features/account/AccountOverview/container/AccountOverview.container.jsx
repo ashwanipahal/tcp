@@ -7,9 +7,16 @@ const getAccountOverviewLabels = labels => {
   return (labels && labels.accountOverview) || {};
 };
 
+const getAccountCommonLabels = labels => {
+  return (labels && labels.common) || {};
+};
+
 export const AccountOverviewContainer = ({ labels, ...otherProps }) => {
   const overviewLabels = getAccountOverviewLabels(labels);
-  return <AccountOverviewComponent labels={overviewLabels} {...otherProps} />;
+  const commonLabels = getAccountCommonLabels(labels);
+  return (
+    <AccountOverviewComponent labels={overviewLabels} commonLabels={commonLabels} {...otherProps} />
+  );
 };
 
 AccountOverviewContainer.propTypes = {

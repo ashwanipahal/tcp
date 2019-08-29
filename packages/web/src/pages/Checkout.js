@@ -1,1 +1,1 @@
-export { default } from '../components/features/CnC/Cart/index';
+export { default } from '@tcp/core/src/components/features/CnC/Checkout';

@@ -9,8 +9,8 @@ import {
 
 let buttonStyle = {
   fontWeight: theme.typography.fontWeights.regular,
-  marginBottom: theme.spacing.ELEM_SPACING.LRG,
-  fontSize: theme.typography.fontSizes.fs10,
+  marginBottom: 24,
+  fontSize: 10,
   paddingRight: 5,
   paddingLeft: 5,
   paddingBottom: 5,
@@ -19,7 +19,20 @@ let buttonStyle = {
 const graySecondary = theme.colorPalette.gray.secondary;
 const grayPrimary = theme.colorPalette.gray.primary;
 
-const BonusPointsAvailability = ({ bonusPoints }) => {
+const applyBonusPoints = (getBonusDaysData, orderDetails, bonusDayAvailableToday) => {
+  const dto = {
+    bonusDaySelected: bonusDayAvailableToday ? 0 : 1,
+    orderId: orderDetails,
+  };
+  return getBonusDaysData(dto);
+};
+
+const BonusPointsAvailability = ({
+  bonusPoints,
+  getBonusDaysData,
+  orderDetails,
+  bonusDayAvailableToday,
+}) => {
   const bonusPointsLength = bonusPoints && bonusPoints.length;
 
   return (
@@ -27,7 +40,7 @@ const BonusPointsAvailability = ({ bonusPoints }) => {
       {bonusPoints &&
         bonusPoints.map((item, index) => {
           buttonStyle = Object.assign({}, buttonStyle, {
-            color: item.disabled ? { graySecondary } : grayPrimary,
+            color: item.disabled ? graySecondary : grayPrimary,
             paddingTop: bonusPointsLength === 1 ? 14 : 5,
           });
           return (
@@ -41,6 +54,9 @@ const BonusPointsAvailability = ({ bonusPoints }) => {
                 text={item.buttonText}
                 style={buttonStyle}
                 disableButton
+                onPress={() =>
+                  applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
+                }
               />
             </MarginRightWrapper>
           );
@@ -51,10 +67,16 @@ const BonusPointsAvailability = ({ bonusPoints }) => {
 
 BonusPointsAvailability.propTypes = {
   bonusPoints: PropTypes.shape([]),
+  getBonusDaysData: PropTypes.shape({}),
+  orderDetails: PropTypes.shape({}),
+  bonusDayAvailableToday: PropTypes.bool,
 };
 
 BonusPointsAvailability.defaultProps = {
   bonusPoints: [{ disabled: false, buttonText: '' }],
+  getBonusDaysData: {},
+  orderDetails: {},
+  bonusDayAvailableToday: false,
 };
 
 export default BonusPointsAvailability;

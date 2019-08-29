@@ -38,6 +38,21 @@ const NavigationReducer = (state = {}, action) => {
           openDrawer: false,
         },
       };
+    case NAVIGATION_CONSTANTS.HIDE_NAVIGATION_FOOTER:
+      return {
+        ...state,
+        hideNavigationFooter: true,
+      };
+    case NAVIGATION_CONSTANTS.SHOW_NAVIGATION_FOOTER:
+      return {
+        ...state,
+        hideNavigationFooter: false,
+      };
+    case NAVIGATION_CONSTANTS.REMOVE_L1_FOCUS:
+      return {
+        ...state,
+        removeL1Focus: action.payload,
+      };
     default:
       return state;
   }

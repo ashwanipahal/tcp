@@ -7,19 +7,17 @@ import {
   ParentContainer,
   StyledHeading,
   UnderlineStyle,
-  ModalHeading,
   ModalViewWrapper,
-  LineWrapper,
 } from '../PaymentSection.style.native';
 import OffersSection from '../../../molecules/OffersSection';
 import Cards from '../../../molecules/Cards';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import VenmoCards from '../../../molecules/VenmoCards';
 import DeleteModal from '../../../molecules/DeleteModal';
+import AddEditPaymentModal from '../../../molecules/AddEditPaymentModal';
 import { getIconCard } from '../../../../../../../utils/index.native';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container';
-import LineComp from '../../../../../../common/atoms/Line';
 
 class PaymentView extends React.Component<Props> {
   static propTypes = {
@@ -50,8 +48,11 @@ class PaymentView extends React.Component<Props> {
     checkbalanceValueInfo: PropTypes.shape({}),
     onDeleteCard: PropTypes.shape({}),
     setDeleteModalMountState: PropTypes.bool,
+    setUpdateModalMountState: PropTypes.bool,
     setDeleteModalMountedState: PropTypes.bool,
+    setUpdateModalMountedState: PropTypes.bool,
     deleteModalMountedState: PropTypes.bool,
+    updateModalMountedState: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -83,7 +84,10 @@ class PaymentView extends React.Component<Props> {
     onDeleteCard: {},
     setDeleteModalMountState: false,
     setDeleteModalMountedState: false,
+    setUpdateModalMountedState: false,
     deleteModalMountedState: false,
+    updateModalMountedState: false,
+    setUpdateModalMountState: false,
   };
 
   cardIconMapping = {
@@ -100,9 +104,11 @@ class PaymentView extends React.Component<Props> {
     super(props);
     this.state = {
       setDeleteModalMountedState: false,
+      setUpdateModalMountedState: false,
       selectedCard: {},
       showGiftCardModal: false,
     };
+    this.isEdit = false;
   }
 
   componentWillReceiveProps = nextProps => {
@@ -110,7 +116,16 @@ class PaymentView extends React.Component<Props> {
       this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
   };
 
+  getCardExpiryText = (labels, selectedCard) => {
+    return selectedCard && selectedCard.expMonth
+      ? `${labels.paymentGC.lbl_payment_expDate}${selectedCard.expMonth.trim()}/${
+          selectedCard.expYear
+        }`
+      : '';
+  };
+
   setSelectedCard = card => {
+    this.isEdit = true;
     this.setState({
       selectedCard: card,
     });
@@ -123,6 +138,14 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
+  setUpdateModalMountState = (isAdd = true) => {
+    const { setUpdateModalMountedState } = this.state;
+    this.isEdit = !isAdd;
+    this.setState({
+      setUpdateModalMountedState: !setUpdateModalMountedState,
+    });
+  };
+
   onConfirm = () => {
     const { onDeleteCard } = this.props;
     const { selectedCard } = this.state;
@@ -130,7 +153,10 @@ class PaymentView extends React.Component<Props> {
   };
 
   onClose = () => {
-    this.setDeleteModalMountState({ setDeleteModalMountedState: false });
+    this.setDeleteModalMountState({
+      setDeleteModalMountedState: false,
+      setUpdateModalMountedState: false,
+    });
   };
 
   toggleGiftCardModal = () => {
@@ -138,6 +164,23 @@ class PaymentView extends React.Component<Props> {
     this.setState({
       showGiftCardModal: !showGiftCardModal,
     });
+  };
+
+  getPaymentModal = (setUpdateModalMountedState, dto, labels, updateCardList, selectedCard) => {
+    return (
+      setUpdateModalMountedState && (
+        <AddEditPaymentModal
+          dto={this.isEdit ? dto : {}}
+          labels={labels}
+          setSelectedCard={this.setSelectedCard}
+          toggleModal={this.setUpdateModalMountState}
+          setUpdateModalMountedState={setUpdateModalMountedState}
+          updateCardList={updateCardList}
+          isEdit={this.isEdit}
+          selectedCard={this.isEdit ? selectedCard : {}}
+        />
+      )
+    );
   };
 
   render() {
@@ -150,28 +193,35 @@ class PaymentView extends React.Component<Props> {
       venmoCardList,
       onGetBalanceCard,
       checkbalanceValueInfo,
+      updateCardList,
     } = this.props;
+    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
     const { showGiftCardModal } = this.state;
-    const { setDeleteModalMountedState, selectedCard } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
+
     if (selectedCard.ccType === 'GiftCard') {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalGCHeading,
         cardImage: cardImg,
-        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}${selectedCard.accountNo.slice(-4)}`,
+        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}`,
+        accountNo: selectedCard.accountNo,
+        cardExpiry: this.getCardExpiryText(labels, selectedCard),
       };
     } else if (selectedCard.ccType === 'VENMO') {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalVenmoDeleteHeading,
         cardImage: cardImg,
         cardDetail: selectedCard.properties.venmoUserId,
+        cardExpiry: '',
       };
     } else {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalCCHeading,
         cardImage: cardImg,
-        cardDetail: `${labels.paymentGC.lbl_payment_cardNum} ${selectedCard.accountNo}`,
+        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}`,
+        accountNo: selectedCard.accountNo,
+        cardExpiry: this.getCardExpiryText(labels, selectedCard),
       };
     }
     return (
@@ -198,7 +248,9 @@ class PaymentView extends React.Component<Props> {
               cardList={creditCardList}
               setDefaultPaymentMethod={setDefaultPaymentMethod}
               toggleModal={this.setDeleteModalMountState}
+              openUpdateModal={this.setUpdateModalMountState} // Update handler to edit card with edit story
               setSelectedCard={this.setSelectedCard}
+              setCardHandler={this.setUpdateModalMountState}
             />
           )}
           {venmoCardList && venmoCardList.size > 0 && (
@@ -235,21 +287,22 @@ class PaymentView extends React.Component<Props> {
               toggleModal={this.setDeleteModalMountState}
               onConfirm={this.onConfirm}
               onClose={this.onClose}
+              addressDetails={selectedCard.addressDetails}
             />
           )}
+          {this.getPaymentModal(
+            setUpdateModalMountedState,
+            dto,
+            labels,
+            updateCardList,
+            selectedCard
+          )}
           {showGiftCardModal && (
-            <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={['secondary']}
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  text={labels.paymentGC.lbl_payment_addGiftCard}
-                />
-              </ModalHeading>
-              <LineWrapper>
-                <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-              </LineWrapper>
+            <ModalNative
+              isOpen={showGiftCardModal}
+              onRequestClose={this.toggleGiftCardModal}
+              heading={labels.paymentGC.lbl_payment_addGiftCard}
+            >
               <ModalViewWrapper>
                 <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />
               </ModalViewWrapper>

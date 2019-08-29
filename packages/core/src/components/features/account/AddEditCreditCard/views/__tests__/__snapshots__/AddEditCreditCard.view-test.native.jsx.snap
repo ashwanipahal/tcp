@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditCreditCard component should renders correctly 1`] = `
+<SafeAreaView>
+  <ReduxForm
+    destroyOnUnmount={true}
+    dto={Object {}}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    isEdit={false}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
+    onClose={[Function]}
+    onFileAddresskey=""
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedCard={
+      Object {
+        "billingAddressId": 150786,
+      }
+    }
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateCardList={[Function]}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</SafeAreaView>
+`;
+
+exports[`AddEditCreditCard component should renders correctly with error message 1`] = `
+<SafeAreaView>
+  <ReduxForm
+    destroyOnUnmount={true}
+    dto={Object {}}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    isEdit={true}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
+    onClose={[Function]}
+    onFileAddresskey="150786"
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedCard={
+      Object {
+        "billingAddressId": 150786,
+      }
+    }
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateCardList={[Function]}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</SafeAreaView>
+`;

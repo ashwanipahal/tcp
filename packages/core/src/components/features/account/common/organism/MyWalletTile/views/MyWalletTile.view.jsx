@@ -8,7 +8,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/MyWalletTile.style';
 import internalEndpoints from '../../../internalEndpoints';
 
-export const MyWalletTile = ({ className, labels, coupons }) => {
+export const MyWalletTile = ({ className, labels, commonLabels, coupons }) => {
   const couponsCount = coupons.size;
   let walletOverviewInfo = '';
   let walletDataLocator = '';
@@ -63,14 +63,14 @@ export const MyWalletTile = ({ className, labels, coupons }) => {
               fill="WHITE"
               to={internalEndpoints.shopNowPage.link}
               asPath={internalEndpoints.shopNowPage.path}
-              data-locator="accountoverview-mywallettile-startshopbtn"
+              dataLocator="accountoverview-mywallettile-startshopbtn"
             >
               {labels.lbl_overview_myWalletShopCTA}
             </Anchor>
           </div>
         )}
 
-        <CouponList coupons={coupons} sliceCount={5} labels={labels} />
+        <CouponList coupons={coupons} sliceCount={3} labels={labels} commonLabels={commonLabels} />
       </section>
     </AccountOverviewTile>
   );
@@ -85,6 +85,7 @@ MyWalletTile.propTypes = {
     lbl_overview_myWalletStartShop: PropTypes.string.isRequired,
     lbl_overview_myWalletShopCTA: PropTypes.string.isRequired,
   }).isRequired,
+  commonLabels: PropTypes.shape({}).isRequired,
   coupons: PropTypes.shape([]).isRequired,
   className: PropTypes.string,
 };

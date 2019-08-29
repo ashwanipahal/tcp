@@ -71,6 +71,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                 }
                 isDefault={true}
                 showCountry={false}
+                showName={true}
                 showPhone={false}
               />,
               "title": "test test (Default)",
@@ -238,6 +239,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                 }
                 isDefault={true}
                 showCountry={false}
+                showName={true}
                 showPhone={false}
               />,
               "title": "test test (Default)",

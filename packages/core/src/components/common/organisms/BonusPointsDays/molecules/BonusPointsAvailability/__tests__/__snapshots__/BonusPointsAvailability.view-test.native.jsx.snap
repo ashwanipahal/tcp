@@ -13,12 +13,13 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       height="42px"
       id={0}
       locator=""
+      onPress={[Function]}
       style={
         Object {
           "color": undefined,
-          "fontSize": "10px",
+          "fontSize": 10,
           "fontWeight": "400",
-          "marginBottom": "24px",
+          "marginBottom": 24,
           "paddingBottom": 5,
           "paddingLeft": 5,
           "paddingRight": 5,
@@ -41,14 +42,13 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       height="42px"
       id={1}
       locator=""
+      onPress={[Function]}
       style={
         Object {
-          "color": Object {
-            "graySecondary": undefined,
-          },
-          "fontSize": "10px",
+          "color": undefined,
+          "fontSize": 10,
           "fontWeight": "400",
-          "marginBottom": "24px",
+          "marginBottom": 24,
           "paddingBottom": 5,
           "paddingLeft": 5,
           "paddingRight": 5,
@@ -76,12 +76,13 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
       height="42px"
       id={0}
       locator=""
+      onPress={[Function]}
       style={
         Object {
           "color": undefined,
-          "fontSize": "10px",
+          "fontSize": 10,
           "fontWeight": "400",
-          "marginBottom": "24px",
+          "marginBottom": 24,
           "paddingBottom": 5,
           "paddingLeft": 5,
           "paddingRight": 5,

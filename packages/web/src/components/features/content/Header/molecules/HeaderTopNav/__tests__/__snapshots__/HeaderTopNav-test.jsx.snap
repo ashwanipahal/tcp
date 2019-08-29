@@ -138,7 +138,17 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
     <div
       className="header-topnav__track-order"
     >
-      Track order
+      <Connect(Styled(CountrySelector)) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="track-order"
+        dataLocator="track_order_header"
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        id="trackOrder"
+        onClick={[Function]}
+        to="/#"
+      />
     </div>
   </div>
 </div>
@@ -282,7 +292,17 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
     <div
       className="header-topnav__track-order"
     >
-      Track order
+      <Connect(Styled(CountrySelector)) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="track-order"
+        dataLocator="track_order_header"
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        id="trackOrder"
+        onClick={[Function]}
+        to="/#"
+      />
     </div>
   </div>
 </div>

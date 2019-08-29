@@ -1,13 +1,9 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import {
-  StyledHeading,
-  ParentContainer,
-  UnderlineStyle,
-} from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { ParentContainer } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
+import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
 import AddressFormComponent from '../../AddressForm/AddressForm';
 
 const AddressBook = props => {
@@ -17,25 +13,36 @@ const AddressBook = props => {
     isEdit,
     isMakeDefaultDisabled,
     addressFormLabels,
+    onCancel,
+    initialValues,
+    currentForm,
+    toggleAddressModal,
   } = props;
   return (
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <StyledHeading>
-          <BodyCopy
-            fontSize="fs16"
-            fontWeight="extrabold"
-            text={addressFormLabels.addressHeading}
+        {currentForm === 'VerificationModal' && (
+          <AddressVerification
+            onSuccess={submitAddressFormAction}
+            heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
+            onError={submitAddressFormAction}
+            toggleAddressModal={toggleAddressModal}
           />
-        </StyledHeading>
-        <UnderlineStyle />
-        <AddressFormComponent
-          onSubmit={verifyAddressAction}
-          addressFormLabels={addressFormLabels}
-          isEdit={isEdit}
-          isMakeDefaultDisabled={isMakeDefaultDisabled}
-          submitAddressFormAction={submitAddressFormAction}
-        />
+        )}
+
+        {currentForm === 'AddAddress' && (
+          <AddressFormComponent
+            onSubmit={verifyAddressAction}
+            addressFormLabels={addressFormLabels}
+            isEdit={isEdit}
+            toggleAddressModal={toggleAddressModal}
+            isMakeDefaultDisabled={isMakeDefaultDisabled}
+            submitAddressFormAction={submitAddressFormAction}
+            onCancel={onCancel}
+            initialValues={initialValues}
+            currentForm={currentForm}
+          />
+        )}
       </ScrollView>
     </View>
   );
@@ -47,6 +54,10 @@ AddressBook.propTypes = {
   isMakeDefaultDisabled: PropTypes.bool,
   submitAddressFormAction: PropTypes.func,
   verifyAddressAction: PropTypes.func,
+  onCancel: PropTypes.func,
+  initialValues: PropTypes.shape({}),
+  currentForm: PropTypes.string,
+  toggleAddressModal: PropTypes.func,
 };
 
 AddressBook.defaultProps = {
@@ -54,6 +65,10 @@ AddressBook.defaultProps = {
   isMakeDefaultDisabled: false,
   submitAddressFormAction: () => null,
   verifyAddressAction: () => null,
+  toggleAddressModal: () => {},
+  onCancel: () => null,
+  initialValues: {},
+  currentForm: null,
 };
 
 export default withStyles(AddressBook, ParentContainer);

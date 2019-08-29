@@ -18,6 +18,7 @@ type Props = {
   editableProductInfo: any,
   isEditAllowed: any,
   toggleEditAllowance: any,
+  isPlcc: any,
 };
 
 export const CartItemTileContainer = ({
@@ -32,6 +33,7 @@ export const CartItemTileContainer = ({
   isEditAllowed,
   toggleEditAllowance,
   inheritedStyles,
+  isPlcc,
 }) => (
   <CartItemTile
     labels={labels}
@@ -45,6 +47,7 @@ export const CartItemTileContainer = ({
     toggleEditAllowance={toggleEditAllowance}
     isEditAllowed={isEditAllowed}
     inheritedStyles={inheritedStyles}
+    isPlcc={isPlcc}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -58,8 +61,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
-    getProductSKUInfo: productNumber => {
-      dispatch(getProductSKUInfo(productNumber));
+    getProductSKUInfo: payload => {
+      dispatch(getProductSKUInfo(payload));
     },
   };
 };

@@ -2,21 +2,15 @@ import mock from './mock';
 import handler from '../../../handler';
 
 const processFooterTop = footerTop => {
-  try {
-    return {
-      emailSignupBtn: footerTop.composites.buttonList[0],
-      smsSignupBtn: footerTop.composites.buttonList[1],
-      referFriendBtn: footerTop.composites.buttonList[2],
-      socialLinks: footerTop.composites.socialLinks,
-    };
-  } catch (e) {
-    return {
-      emailSignupBtn: {},
-      smsSignupBtn: {},
-      referFriendBtn: {},
-      socialLinks: [],
-    };
-  }
+  return {
+    emailSignupBtn:
+      (footerTop.composites.footerButtons && footerTop.composites.footerButtons[0]) || {},
+    smsSignupBtn:
+      (footerTop.composites.footerButtons && footerTop.composites.footerButtons[1]) || {},
+    referFriendBtn:
+      (footerTop.composites.footerButtons && footerTop.composites.footerButtons[2]) || {},
+    socialLinks: footerTop.composites.socialLinks || [],
+  };
 };
 
 const processFooterMiddle = footerMiddleObj => {

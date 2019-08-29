@@ -2,7 +2,7 @@
 
 exports[`Add gift card component should render component correctly 1`] = `
 <ReduxForm
-  addGiftCardResponse={null}
+  addGiftCardResponse="success"
   destroyOnUnmount={true}
   enableReinitialize={true}
   forceUnregisterOnUnmount={false}

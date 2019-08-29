@@ -40,12 +40,15 @@ exports[`Add gift card form component render error message 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -84,12 +87,15 @@ exports[`Add gift card form component render error message 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -138,12 +144,15 @@ exports[`Add gift card form component render error message 1`] = `
               "id": "input",
               "keyboardType": "default",
               "label": "input",
+              "marginBottom": true,
               "meta": Object {
                 "error": "",
                 "touched": "",
               },
               "secureTextEntry": false,
               "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
               "type": "text",
             },
             "attrs": Array [],
@@ -200,6 +209,7 @@ exports[`Add gift card form component render error message 1`] = `
         fill="BLUE"
         fullWidth=""
         locator=""
+        onPress={null}
         text=""
         url=""
       />
@@ -249,12 +259,15 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -293,12 +306,15 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -347,12 +363,15 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "id": "input",
               "keyboardType": "default",
               "label": "input",
+              "marginBottom": true,
               "meta": Object {
                 "error": "",
                 "touched": "",
               },
               "secureTextEntry": false,
               "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
               "type": "text",
             },
             "attrs": Array [],
@@ -409,6 +428,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         fill="BLUE"
         fullWidth=""
         locator=""
+        onPress={null}
         text=""
         url=""
       />

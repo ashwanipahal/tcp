@@ -15,9 +15,10 @@ const AddEditAddressContainer = ({ labels, isEdit, backToAddressBookClick, class
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
         to="/account?id=address-book"
-        data-locator="addnewaddress-back"
+        dataLocator="addnewaddress-back"
         asPath="/account/address-book"
       >
+        <span className="left-arrow"> </span>
         {labels.common.lbl_common_backLink}
       </Anchor>
       <Heading

@@ -7,9 +7,6 @@ const styles = css`
       min-height: 608px;
     }
   }
-  @media ${props => props.theme.mediaQuery.xlarge} {
-    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
-  }
 `;
 
 export const modalstyles = css`

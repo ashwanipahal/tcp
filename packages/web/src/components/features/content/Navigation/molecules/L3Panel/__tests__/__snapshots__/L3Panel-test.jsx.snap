@@ -80,8 +80,7 @@ exports[`L3 Panel component renders correctly 1`] = `
         </li>
         <li>
           <Styled(Anchor)
-            data-locator="l3_link_0"
-            to="/c/"
+            dataLocator="l3_link_0"
           >
             <Styled(BodyCopy)
               className="l2-nav-link"

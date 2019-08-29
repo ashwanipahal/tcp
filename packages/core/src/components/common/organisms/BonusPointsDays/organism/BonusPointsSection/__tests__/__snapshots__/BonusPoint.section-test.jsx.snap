@@ -78,6 +78,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               }
             >
               <ForwardRef
+                bonusDayAvailableToday={0}
                 bonusPoints={
                   Array [
                     Object {
@@ -88,6 +89,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                   ]
                 }
                 className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
                 labels={
                   Object {
                     "common": Object {
@@ -102,13 +105,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                     },
                   }
                 }
+                orderDetails={Object {}}
               />
             </ForwardRef>
           </ForwardRef>
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -294,6 +298,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         }
       >
         <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -304,6 +309,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             ]
           }
           className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -318,13 +325,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               },
             }
           }
+          orderDetails={Object {}}
         />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -412,6 +420,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               }
             >
               <ForwardRef
+                bonusDayAvailableToday={1}
                 bonusPoints={
                   Array [
                     Object {
@@ -432,6 +441,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                   ]
                 }
                 className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
                 labels={
                   Object {
                     "common": Object {
@@ -446,13 +457,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                     },
                   }
                 }
+                orderDetails={Object {}}
               />
             </ForwardRef>
           </ForwardRef>
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -638,6 +650,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         }
       >
         <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={1}
           bonusPoints={
             Array [
               Object {
@@ -658,6 +671,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             ]
           }
           className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -672,13 +687,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               },
             }
           }
+          orderDetails={Object {}}
         />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -766,6 +782,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               }
             >
               <ForwardRef
+                bonusDayAvailableToday={0}
                 bonusPoints={
                   Array [
                     Object {
@@ -786,6 +803,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                   ]
                 }
                 className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
                 labels={
                   Object {
                     "common": Object {
@@ -800,13 +819,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                     },
                   }
                 }
+                orderDetails={Object {}}
               />
             </ForwardRef>
           </ForwardRef>
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -992,6 +1012,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         }
       >
         <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -1012,6 +1033,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             ]
           }
           className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -1026,13 +1049,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               },
             }
           }
+          orderDetails={Object {}}
         />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -1120,6 +1144,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               }
             >
               <ForwardRef
+                bonusDayAvailableToday={0}
                 bonusPoints={
                   Array [
                     Object {
@@ -1140,6 +1165,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                   ]
                 }
                 className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
                 labels={
                   Object {
                     "common": Object {
@@ -1154,13 +1181,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                     },
                   }
                 }
+                orderDetails={Object {}}
               />
             </ForwardRef>
           </ForwardRef>
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -1346,6 +1374,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         }
       >
         <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -1366,6 +1395,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             ]
           }
           className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -1380,13 +1411,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               },
             }
           }
+          orderDetails={Object {}}
         />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -1450,6 +1482,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
               }
             >
               <ForwardRef
+                bonusDayAvailableToday={0}
                 bonusPoints={
                   Array [
                     Object {
@@ -1460,6 +1493,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                   ]
                 }
                 className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
                 labels={
                   Object {
                     "common": Object {
@@ -1474,13 +1509,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                     },
                   }
                 }
+                orderDetails={Object {}}
               />
             </ForwardRef>
           </ForwardRef>
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="detailslink"
+            dataLocator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -1648,6 +1684,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         }
       >
         <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -1658,6 +1695,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             ]
           }
           className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -1672,13 +1711,14 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
               },
             }
           }
+          orderDetails={Object {}}
         />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="detailslink"
+      dataLocator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}

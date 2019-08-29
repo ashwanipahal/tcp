@@ -20,6 +20,23 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
       }
     }
   >
+    <Connect(ProfileInfoTile) />
+  </Styled(Col)>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
+  >
     <Connect(AddressOverviewTile) />
   </Styled(Col)>
   <Styled(Col)
@@ -33,6 +50,7 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
+        "large": true,
         "small": true,
       }
     }
@@ -50,7 +68,6 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
-        "large": true,
         "small": true,
       }
     }

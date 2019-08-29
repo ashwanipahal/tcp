@@ -4,10 +4,12 @@ import { getUserInfo } from '../../User/container/User.actions';
 import { createAccountErr } from './CreateAccount.actions';
 import { createAccountApi } from '../../../../../services/abstractors/account';
 
-const errorMessage = res => {
+const getErrorMessage = res => {
   let errorMessageRecieved = '';
   errorMessageRecieved = res && res.body && res.body.errors && res.body.errors[0].errorMessage;
-  return errorMessageRecieved;
+  return {
+    errorMessage: errorMessageRecieved,
+  };
 };
 
 export function* createsaga({ payload }) {
@@ -16,15 +18,21 @@ export function* createsaga({ payload }) {
     /* istanbul ignore else */
     if (res.body) {
       if (res.body.errors) {
-        const resErr = errorMessage(res);
+        const resErr = getErrorMessage(res);
         return yield put(createAccountErr(resErr));
       }
       return yield put(getUserInfo());
     }
-    const resErr = errorMessage(res);
+    const resErr = getErrorMessage(res);
     return yield put(createAccountErr(resErr));
   } catch (err) {
-    return yield put(createAccountErr('Internal Server Error'));
+    const { errorCode, errorMessage } = err;
+    return yield put(
+      createAccountErr({
+        errorCode,
+        errorMessage,
+      })
+    );
   }
 }
 

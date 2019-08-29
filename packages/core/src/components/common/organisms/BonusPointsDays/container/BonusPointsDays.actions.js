@@ -6,6 +6,13 @@ export const getBonusDays = () => {
   };
 };
 
+export const applyBonusDays = payload => {
+  return {
+    type: BONUS_POINTS_DAYS_CONSTANTS.APPLY_BONUS_DAYS,
+    payload,
+  };
+};
+
 export const showLoader = () => {
   return {
     type: BONUS_POINTS_DAYS_CONSTANTS.SHOW_LOADER,

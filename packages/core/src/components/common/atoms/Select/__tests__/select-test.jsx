@@ -32,6 +32,28 @@ describe('Selectbox component', () => {
     const component = shallow(<SelectBoxVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
+  it('renders correctly with disabled props', () => {
+    const props = {
+      name: '',
+      placeholder: 'placeholder',
+      Value: 'hi',
+      type: 'text',
+      id: 'abcd',
+      className: 'asdfasdf',
+      options: displayValue,
+      meta: {
+        touched: '',
+        error: '',
+        warning: '',
+      },
+      input: {
+        value: 'hello',
+      },
+      disabled: true,
+    };
+    const component = shallow(<SelectBoxVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
   it('renders correctly with touched and error', () => {
     const valueInfo = 'some string @@LABEL@@';
     const props = {

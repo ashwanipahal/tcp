@@ -1,6 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { validateReduxCache } from '../../../../../../utils/cache.util';
-import { getBonusDaysData, BonusPointsSaga, fetchModuleX } from '../BonusPointsDays.saga';
+import {
+  getBonusDaysData,
+  applyBonusDaysData,
+  BonusPointsSaga,
+  fetchModuleX,
+} from '../BonusPointsDays.saga';
 import { setBonusDaysSuccess, setBonusDaysError, setModuleX } from '../BonusPointsDays.actions';
 import BONUS_POINTS_DAYS_CONSTANTS from '../../BonusPointsDays.constants';
 
@@ -26,6 +31,24 @@ describe('BonusPointsDays saga', () => {
     it('should not dispatch setBonusDaysSuccess action for error', () => {
       const response = {
         error: 'Error in API',
+      };
+      const putDescriptor = bonusDaysGen.throw(response).value;
+      expect(putDescriptor).toEqual(put(setBonusDaysError(response)));
+    });
+  });
+
+  describe('applyBonusDaysData', () => {
+    let bonusDaysGen;
+    beforeEach(() => {
+      bonusDaysGen = applyBonusDaysData();
+      bonusDaysGen.next();
+      bonusDaysGen.next();
+      bonusDaysGen.next();
+    });
+
+    it('should not dispatch applyBonusDaysData action for error', () => {
+      const response = {
+        error: 'Error in API applyBonusDaysData',
       };
       const putDescriptor = bonusDaysGen.throw(response).value;
       expect(putDescriptor).toEqual(put(setBonusDaysError(response)));

@@ -107,10 +107,9 @@ const textboxStyles = css`
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 `;
 

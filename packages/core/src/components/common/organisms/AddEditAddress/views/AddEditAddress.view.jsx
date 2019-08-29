@@ -21,7 +21,7 @@ export const AddEditAddress = ({
   const errorObject = addressResponse && addressResponse.get('errors');
 
   return (
-    <div className={className}>
+    <div className={`${className} addEditAddress`}>
       <Grid>
         {errorObject && (
           <Notification

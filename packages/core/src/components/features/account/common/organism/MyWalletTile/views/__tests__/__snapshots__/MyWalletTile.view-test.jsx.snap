@@ -40,7 +40,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
         asPath="/home"
         buttonVariation="variable-width"
         centered={true}
-        data-locator="accountoverview-mywallettile-startshopbtn"
+        dataLocator="accountoverview-mywallettile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
         to="/home"
@@ -49,7 +49,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
     <CouponList
       coupons={Immutable.List []}
       labels={Object {}}
-      sliceCount={5}
+      sliceCount={3}
     />
   </section>
 </Styled(AccountOverviewTile)>
@@ -88,7 +88,7 @@ exports[`MyWalletTile component should render correctly when coupons are present
           "lbl_overview_myWalletOfferAvailable": "",
         }
       }
-      sliceCount={5}
+      sliceCount={3}
     />
   </section>
 </Styled(AccountOverviewTile)>

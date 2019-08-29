@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PaymentContainer, mapDispatchToProps } from '../Payment.container';
+import { PaymentContainer, mapDispatchToProps } from '../Payment.container.native';
 import PaymentView from '../../views/PaymentView';
 
 describe('Payment & Gift Cards', () => {

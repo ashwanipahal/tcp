@@ -27,6 +27,12 @@ export const awsAppSync = {
 export const API_CONFIG = {
   sites: ['us', 'ca'],
   brands: ['tcp', 'gym'],
+  channels: ['Desktop', 'MobileWeb', 'MobileApp'],
+  channelIds: {
+    Desktop: 'Desktop',
+    MobileWeb: 'MobileWeb',
+    MobileApp: 'MobileApp',
+  },
   siteIds: {
     // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)
     us: 'us',
@@ -58,7 +64,7 @@ export const API_CONFIG = {
     traceIdCount: 0,
     assetHost: '/',
     domain: '/',
-    unbxd: '://search.unbxd.io',
+    unbxd: 'https://search.unbxd.io',
   },
   US_CONFIG_OPTIONS: {
     storeId: '10151',

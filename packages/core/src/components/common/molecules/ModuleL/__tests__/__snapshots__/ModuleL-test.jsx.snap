@@ -120,7 +120,7 @@ exports[`ModuleL component renders correctly 1`] = `
         ]
       }
     />
-    <errorBoundaryComponent
+    <Styled(Carousel)
       carouselConfig={
         Object {
           "autoplay": false,
@@ -279,7 +279,7 @@ exports[`ModuleL component renders correctly 1`] = `
           }
         }
       />
-    </errorBoundaryComponent>
+    </Styled(Carousel)>
     <div
       className="moduleL__mobile-web-container"
     >

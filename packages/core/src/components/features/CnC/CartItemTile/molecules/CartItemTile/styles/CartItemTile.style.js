@@ -3,12 +3,12 @@ import { css } from 'styled-components';
 export default css`
   padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
-  margin-bottom: 20px;
-  .padding-top-10 {
-    padding-top: 10px;
+  /*margin-bottom: 20px;*/
+  .product {
+    padding-top: 6px;
   }
   .padding-left-10 {
-    padding-left: 10px;
+    padding-left: 4px;
   }
   .padding-left-6 {
     padding-left: 6px;
@@ -38,6 +38,7 @@ export default css`
   .align-product-img {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .color-fit-size-separator {
@@ -48,6 +49,10 @@ export default css`
   }
   .responsive-edit-css {
     padding-top: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15px;
   }
   .imageWrapper {
     position: relative;
@@ -55,9 +60,9 @@ export default css`
   }
   .logoWrapper {
     position: relative;
-    width: 100px;
     margin-top: 8px;
-    margin-left: 25%;
+    display: flex;
+    justify-content: center;
   }
   .product-attributes {
     display: inline-flex;
@@ -74,6 +79,40 @@ export default css`
     cursor: pointer;
     width: 10px;
     height: 10px;
+    padding-top: 0px;
+  }
+
+  .product-detail {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-detail-row {
+    width: 100%;
+  }
+
+  .unavailable-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .unavailable-error {
+    padding-top: 0px;
+  }
+
+  .product-detail-bag {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+  }
+
+  .label-responsive {
+    width: fit-content;
+    padding-right: 22px;
+  }
+
+  .label-responsive-price {
+    margin-right: 0px;
   }
 
   .product-tile-wrapper {
@@ -111,8 +150,8 @@ export default css`
       }
 
       .label-responsive {
-        width: 40px;
-        margin-right: 0;
+        width: fit-content;
+        margin-right: 22px;
       }
 
       .value-responsive {
@@ -123,10 +162,16 @@ export default css`
         padding-top: 0;
         display: flex;
         flex: 1;
+        width: auto;
+        margin-right: 22px;
       }
 
       .responsive-edit-css {
         padding-top: 2px;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 15px;
       }
     }
 
@@ -149,6 +194,10 @@ export default css`
         position: absolute;
         bottom: 0;
         right: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 15px;
       }
       .bag-product-detail-wrapper {
         position: static;
@@ -169,6 +218,12 @@ export default css`
     }
   }
 
+  .productImgBrand {
+    p {
+      margin-right: 35px;
+    }
+  }
+
   .soldOutLabel {
     width: 89px;
     height: 18px;
@@ -179,5 +234,23 @@ export default css`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .updateOOSMiniBag {
+    /*margin-left: 56px;*/
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .parent- {
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    bottom: 17px;
+    right: 2px;
+    width: auto;
+  }
+
+  .tile-header {
+    position: relative;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

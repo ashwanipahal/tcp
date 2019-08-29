@@ -38,18 +38,21 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       />
       <AddedToBagActions
         labels={Object {}}
+        showAddTobag={true}
       />
       <Styled(BossBanner)
         labels={Object {}}
       />
       <Styled(View)>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           customStyle={Object {}}
-          data-locator="addedToBag-continueShopping"
+          dataLocator="addedToBag-continueShopping"
           fontSizeVariation="medium"
           locator=""
           noLink={true}
+          onPress={null}
           text=""
           to=""
           underline={true}

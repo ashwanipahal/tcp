@@ -1,17 +1,40 @@
+import { trackError } from '@tcp/core/src/utils/errorReporter.util';
 import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';
 import StatefulAPIClient from './stateful/statefulClient';
-import unbxdAPIClient from './unbxd/unbxdClient';
+import UnbxdAPIClient from './unbxd/unbxdClient';
 import ExternalAPIClient from './external/externalClient';
 
 /**
  * Logs error
  * @param {*} e error object
  */
-const errorHandler = e => {
-  // eslint-disable-next-line no-console
-  console.log(e);
+const errorHandler = ({
+  err,
+  reqObj = {
+    webService: {
+      URI: 'GRAPHQL QUERY || URI_NOT_SENT_IN_ERROR_LOGGING',
+    },
+  },
+  reqHeaders = {
+    'tcp-trace-request-id': 'NO-TRACE-ID',
+    'tcp-trace-session-id': 'NO-TRACE-ID',
+  },
+} = {}) => {
+  trackError({
+    error: err,
+    tags: {
+      component: 'API Handler',
+      endpoint: reqObj.webService.URI,
+      'trace-request-id': reqHeaders['tcp-trace-request-id'],
+      'trace-session-id': reqHeaders['tcp-trace-session-id'],
+    },
+    extraData: {
+      ...reqObj,
+    },
+  });
+  throw err;
 };
 
 /**
@@ -42,7 +65,27 @@ const loadGraphQLInterface = () => {
 export const executeGraphQLQuery = query => {
   return loadGraphQLInterface()
     .then(client => executeQuery(query, client))
-    .catch(errorHandler);
+    .catch(err => {
+      const reqObj = {
+        webService: {
+          URI: 'GRAPHQL QUERY',
+          query,
+        },
+      };
+      errorHandler({
+        err,
+        reqObj,
+      });
+    });
+};
+
+/**
+ * @function resetGraphQLClient
+ * This method resets graphql client
+ *
+ */
+export const resetGraphQLClient = () => {
+  loadGraphQLInterface().then(client => client.resetClient());
 };
 
 /**
@@ -52,7 +95,7 @@ export const executeGraphQLQuery = query => {
  */
 export const fetchModuleDataFromGraphQL = async modules => {
   const query = await QueryBuilder.getQuery(modules);
-  return executeGraphQLQuery(query).catch(errorHandler);
+  return executeGraphQLQuery(query);
 };
 
 /**
@@ -73,7 +116,7 @@ export const executeUnbxdAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
+  return new UnbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
 };
 
 export const executeExternalAPICall = reqObj => {
