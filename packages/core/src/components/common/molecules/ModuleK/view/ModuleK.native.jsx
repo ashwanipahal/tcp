@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getScreenWidth, isGymboree } from '@tcp/core/src/utils';
+import { getScreenWidth } from '@tcp/core/src/utils';
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
 
@@ -54,7 +54,6 @@ class ModuleK extends React.PureComponent {
               testID={`moduleK_button_set_${slideIndex}`}
               url={singleCTAButton.url}
               navigation={navigation}
-              brandName={isGymboree()}
             />
           </WrapperView>
         )}

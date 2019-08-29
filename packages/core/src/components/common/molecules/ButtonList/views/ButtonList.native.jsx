@@ -46,6 +46,7 @@ const renderItem = (item, navigation, showFullWidth, locator, color) => {
       style={showFullWidth ? buttonFullWidth : buttonWidth}
       url={button.url}
       navigation={navigation}
+      shape="square"
     />
   );
 };

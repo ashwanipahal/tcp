@@ -2,6 +2,20 @@
 /* eslint-disable no-shadow */
 import { css } from 'styled-components/native';
 
+const getShape = props => {
+  const { theme, shape } = props;
+  const { brand } = theme;
+  if (brand === 'gym' && shape === 'square') {
+    return `border-radius: 0px;`;
+  }
+  if (brand === 'gym') {
+    return `border-radius: 25px;`;
+  }
+  return `
+  null
+  `;
+};
+
 const style = css`
   text-transform: uppercase;
   text-align: center;
@@ -19,7 +33,7 @@ const style = css`
    padding: 4px 20px;
    width: 100%;
    margin : 40px;
-   ${props.brandName ? ` border-radius: 25px; ` : ''};
+   ${getShape(props)}
  `
       : ''};
 
@@ -36,7 +50,7 @@ const style = css`
  font-weight: ${props.theme.typography.fontWeights.black};
  border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
  padding: 12px 32px;
- ${props.brandName ? ` border-radius: 25px; ` : ''};`
+ ${getShape(props)}`
       : ''};
 
   ${props => (props.fullWidth ? `width: 100% ;` : '')};
@@ -88,7 +102,7 @@ const style = css`
      };
      ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
      padding: 12px 32px;
-     ${props.brandName ? ` border-radius: 25px; ` : ''};
+     ${getShape(props)}
      `
       : ''};
 `;
