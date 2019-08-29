@@ -280,7 +280,7 @@ export const getModifiedLanguageCode = id => {
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location, '/home', newSiteId);
+    routerPush(window.location.href, '/home', null, newSiteId);
   }
 };
 
