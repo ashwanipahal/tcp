@@ -45,6 +45,7 @@ const ShippingForm = ({
           dispatch={dispatch}
           addressPhoneNo={addressPhoneNo}
           loadShipmentMethods={loadShipmentMethods}
+          disableCountry
         />
       </FormSection>
       {!orderHasPickUp && isUsSite && (

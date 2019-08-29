@@ -53,7 +53,8 @@ class PickupMainContactEditForm extends React.Component {
             underline
             anchorVariation="secondary"
             fontSize="fs12"
-            dataLocator=""
+            dataLocator="pickup-pickupContact-edit-anchor"
+            noLink
             onClick={this.handleEnterEditModeClick}
             className="couponModal_print_anchortext"
           >

@@ -31,6 +31,7 @@ import PointsHistoryReducer from '@tcp/core/src/components/features/account/comm
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
@@ -73,6 +74,7 @@ import {
   POINTS_HISTORY_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   CHANGE_PASSWORD_REDUCER_KEY,
+  UPDATE_PROFILE_REDUCER_KEY,
   USER_REDUCER_KEY,
   CHECKOUT_REDUCER_KEY,
   DEVICE_INFO_REDUCER_KEY,
@@ -144,6 +146,7 @@ export default combineReducers({
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
+  [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
   [USER_REDUCER_KEY]: UserReducer,
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,

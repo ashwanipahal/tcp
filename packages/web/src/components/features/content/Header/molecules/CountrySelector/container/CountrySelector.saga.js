@@ -3,7 +3,6 @@ import countrySelectorAbstractor from '@tcp/core/src/services/abstractors/common
 import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
 import {
   getSiteId,
-  isCanada,
   getCountriesMap,
   getCurrenciesMap,
   getModifiedLanguageCode,
@@ -16,10 +15,10 @@ import {
   COUNTRY_SELECTOR_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-
 import GLOBAL_CONSTANT from '@tcp/core/src/reduxStore/constants';
 
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
+import { sites } from '../../../../../../../constants';
 import {
   storeCountriesMap,
   storeCurrenciesMap,
@@ -45,7 +44,9 @@ export function* fetchCountryListData() {
 }
 
 export function* submitCountrySelectionData({ payload: data }) {
-  const siteConfig = isCanada() ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
+  const { ca } = sites;
+  const siteConfig =
+    data.country === ca.countryCode ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const { addShipToStore } = endpoints;
   const { sitesInfo } = API_CONFIG;
   const payload = {

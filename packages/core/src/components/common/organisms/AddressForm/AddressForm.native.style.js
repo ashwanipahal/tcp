@@ -40,7 +40,7 @@ const SetDefaultShippingWrapper = styled.View`
 const AddAddressWrapper = styled.View`
   flex: 1;
   flex-direction: column;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const EmptyView = styled.View`
@@ -62,10 +62,6 @@ const GooglePlaceInputWrapper = styled.View`
   width: 100%;
 `;
 
-const AddressSecondWrapper = styled.View`
-  margin-top: 0;
-`;
-
 export {
   EmptyView,
   SaveButtonWrapper,
@@ -79,5 +75,4 @@ export {
   SetDefaultShippingWrapper,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
-  AddressSecondWrapper,
 };
