@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { SafeAreaView } from 'react-native';
-import Toast, { DURATION } from 'react-native-easy-toast';
+import { Alert } from 'react-native';
+import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 
 /**
@@ -15,6 +15,7 @@ const styles = {
     borderRadius: 0,
     padding: 20,
     zIndex: 1000,
+    position:'relative'
   },
 };
 
@@ -27,24 +28,26 @@ class ToastView extends React.PureComponent<Props> {
 
   render() {
     debugger;
-    const { errorMessage } = this.props;
+    const { errorMessage, toastMessageReset } = this.props;
     const isErrorAvailable = errorMessage ? true : false;
     return (
-      <SafeAreaView>
-        <Fragment>
-          {isErrorAvailable && this.toastRef.current.show(`${errorMessage}`, DURATION.LENGTH_LONG)}
-          <Toast
-            ref={this.toastRef}
-            style={styles.ToastStyle}
-            position="top"
-            positionValue={200}
-            fadeInDuration={750}
-            fadeOutDuration={1000}
-            opacity={1}
-            textStyle={{ color: colors.WHITE }}
-          />
-        </Fragment>
-      </SafeAreaView>
+      <Fragment>
+        {isErrorAvailable &&
+          this.toastRef.current.show(`${errorMessage}`, 500, () => {
+            Alert.alert('hello close');
+            toastMessageReset();
+          })}
+        <Toast
+          ref={this.toastRef}
+          style={styles.ToastStyle}
+          position="top"
+          positionValue={200}
+          fadeInDuration={750}
+          fadeOutDuration={1000}
+          opacity={1}
+          textStyle={{ color: colors.WHITE }}
+        />
+      </Fragment>
     );
   }
 }

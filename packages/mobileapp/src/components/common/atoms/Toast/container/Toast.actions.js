@@ -7,4 +7,11 @@ const toastMessageInfo = payload => {
   };
 };
 
-export default toastMessageInfo;
+const resetToastMsg = payload => {
+  return {
+    type: TOAST_CONSTANTS.TOAST_MESSAGE_RESET,
+    payload,
+  };
+};
+
+export {toastMessageInfo , resetToastMsg};

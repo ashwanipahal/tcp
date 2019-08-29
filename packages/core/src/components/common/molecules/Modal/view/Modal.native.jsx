@@ -52,7 +52,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   return (
     <SafeAreaView>
       <StatusBar hidden />
-      <Modal transparent={false} visible={isOpen} animationType={animationType}>
+      <Modal style={{ zIndex: -1 }} transparent={false} visible={isOpen} animationType={animationType}>
         {heading && (
           <RowWrapper>
             <ModalHeadingWrapper>

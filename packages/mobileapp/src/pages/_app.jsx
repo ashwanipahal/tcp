@@ -15,6 +15,8 @@ import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon.container';
 import { updateBrandName } from '../utils/utils';
+import ToastContainer from '../components/common/atoms/Toast/container/Toast.container';
+
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
@@ -80,6 +82,7 @@ export class App extends React.PureComponent {
     return (
       <Provider store={this.store}>
         <NetworkProvider>
+          <ToastContainer />
           <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
             <View style={styles.container}>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
