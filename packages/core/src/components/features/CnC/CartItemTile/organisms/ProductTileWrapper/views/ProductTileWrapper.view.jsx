@@ -9,7 +9,7 @@ import {
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
-import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
+import productTileCss, { customStyles, miniBagCSS } from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import RemoveSoldOut from '../../../../common/molecules/RemoveSoldOut';
 
@@ -74,6 +74,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     } = this.props;
     let isUnavailable;
     let isSoldOut;
+    const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
     const { isEditAllowed } = this.state;
     if (orderItems && orderItems.size > 0) {
@@ -89,7 +90,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
         }
         return (
           <CartItemTile
-            inheritedStyles={pageView === 'myBag' && productTileCss}
+            inheritedStyles={inheritedStyles}
             labels={labels}
             productDetail={productDetail}
             key={`${getProductName(tile)}`}

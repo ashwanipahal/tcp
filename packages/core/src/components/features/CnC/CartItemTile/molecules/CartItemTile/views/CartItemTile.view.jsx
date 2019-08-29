@@ -100,7 +100,7 @@ class CartItemTile extends React.Component {
   getItemDetails = (removeCartItem, productDetail, labels, pageView) => {
     const { isEdit } = this.state;
     return (
-      <Row className="padding-top-15 padding-bottom-20" fullBleed>
+      <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === 'SOLDOUT' && (
@@ -251,7 +251,7 @@ class CartItemTile extends React.Component {
     };
 
     return (
-      <div className={className}>
+      <div className={`tile-header ${className}`}>
         <div className={this.getUnavailableHeaderClass()}>
           {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
             <ItemAvailability
@@ -469,7 +469,10 @@ class CartItemTile extends React.Component {
               {this.getProductPriceList(productDetail, pageView)}
             </Row>
             <Row className="product-detail-row label-responsive-wrapper">
-              <Col className="label-responsive" colSize={{ large: 3, medium: 3, small: 2 }}>
+              <Col
+                className="label-responsive label-responsive-price"
+                colSize={{ large: 3, medium: 3, small: 2 }}
+              >
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
