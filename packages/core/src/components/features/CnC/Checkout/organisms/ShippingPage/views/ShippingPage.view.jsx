@@ -24,6 +24,7 @@ export default class ShippingPage extends React.PureComponent {
     shipmentMethods: PropTypes.shape([]),
     defaultShipmentId: PropTypes.number,
     loadShipmentMethods: PropTypes.func.isRequired,
+    routeToPickupPage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -122,11 +123,13 @@ export default class ShippingPage extends React.PureComponent {
       shipmentMethods,
       defaultShipmentId,
       loadShipmentMethods,
+      routeToPickupPage,
     } = this.props;
     return (
       <>
         {shipmentMethods.length > 0 && (
           <ShippingForm
+            routeToPickupPage={routeToPickupPage}
             addressLabels={addressLabels}
             isOrderUpdateChecked={isOrderUpdateChecked}
             shippingLabels={shippingLabels}

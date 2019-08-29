@@ -33,7 +33,6 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
                 <Field
                   component={LabeledRadioButton}
                   key={id}
-                  className="radio-method"
                   selectedValue={id}
                   title={title}
                   subtitle={subtitle}
