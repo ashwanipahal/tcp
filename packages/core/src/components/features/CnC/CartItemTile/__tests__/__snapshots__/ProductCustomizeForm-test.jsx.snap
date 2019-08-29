@@ -83,6 +83,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
                 },
               ]
             }
+            selectListTitle="undefined"
             width={87}
           />
         </div>

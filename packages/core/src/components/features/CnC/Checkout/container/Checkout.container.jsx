@@ -149,7 +149,7 @@ const mapStateToProps = state => {
     isUsSite: selectors.isUsSite(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
-    pickUpLabels: getPickUpContactFormLabels(state),
+    pickUpLabels: { ...getPickUpContactFormLabels(state), ...getEmailSignUpLabels(state) },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),

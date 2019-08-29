@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickUpContactDisplayVanilla component should renders correctly when Coupon are not present 1`] = `
+<View>
+  <Styled(BodyCopy)
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    text=" "
+  />
+</View>
+`;
