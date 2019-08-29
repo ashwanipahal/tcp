@@ -200,18 +200,23 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
             type="text"
             value="13131313222"
           />
-          <Styled(ReactTooltip)
-            className="coupon_submit_button"
-            direction="top"
-            id="tool"
-            message="collectorFlyout"
+          <span
+            className="airmileBannerTooltip"
           >
-            <Styled(Image)
-              alt="info"
-              className="circle-info-image"
-              src="/static/images/info-icon.png"
-            />
-          </Styled(ReactTooltip)>
+            <span
+              className="info-icon-img-wrapper"
+            >
+              <Styled(ReactTooltip)
+                aligned="right"
+                message="collectorFlyout"
+              >
+                <Styled(Image)
+                  className="tcp_carousel__play tooltip"
+                  src="/static/images/info-icon.png"
+                />
+              </Styled(ReactTooltip)>
+            </span>
+          </span>
         </Styled(Col)>
         <Styled(Col)
           className="airmilesBannerInput"
@@ -387,18 +392,23 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
             type="text"
             value="124e12e"
           />
-          <Styled(ReactTooltip)
-            className="coupon_submit_button"
-            direction="top"
-            id="tool"
-            message="offerFlyout"
+          <span
+            className="airmileBannerTooltip"
           >
-            <Styled(Image)
-              alt="info"
-              className="circle-info-image"
-              src="/static/images/info-icon.png"
-            />
-          </Styled(ReactTooltip)>
+            <span
+              className="info-icon-img-wrapper"
+            >
+              <Styled(ReactTooltip)
+                aligned="right"
+                message="offerFlyout"
+              >
+                <Styled(Image)
+                  className="tcp_carousel__play tooltip"
+                  src="/static/images/info-icon.png"
+                />
+              </Styled(ReactTooltip)>
+            </span>
+          </span>
         </Styled(Col)>
       </Styled(Row)>
     </form>

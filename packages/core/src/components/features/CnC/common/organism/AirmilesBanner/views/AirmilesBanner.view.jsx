@@ -70,14 +70,16 @@ class AirmilesBanner extends React.PureComponent<Props> {
                   value={airmilesBannerData.collectorNumber}
                   dataLocator="airmile-banner-collectorNumber"
                 />
-                <ReactToolTip
-                  id="tool"
-                  className="coupon_submit_button"
-                  direction="top"
-                  message={labels.collectorFlyout}
-                >
-                  <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
-                </ReactToolTip>
+                <span className="airmileBannerTooltip">
+                  <span className="info-icon-img-wrapper">
+                    <ReactToolTip message={labels.collectorFlyout} aligned="right">
+                      <Image
+                        className="tcp_carousel__play tooltip"
+                        src={getIconPath('info-icon')}
+                      />
+                    </ReactToolTip>
+                  </span>
+                </span>
               </Col>
               <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 4, small: 3 }}>
                 <Field
@@ -90,14 +92,17 @@ class AirmilesBanner extends React.PureComponent<Props> {
                   dataLocator="airmile-banner-offerCode"
                   value={airmilesBannerData.offerCode}
                 />
-                <ReactToolTip
-                  id="tool"
-                  className="coupon_submit_button"
-                  direction="top"
-                  message={labels.offerFlyout}
-                >
-                  <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
-                </ReactToolTip>
+
+                <span className="airmileBannerTooltip">
+                  <span className="info-icon-img-wrapper">
+                    <ReactToolTip message={labels.offerFlyout} aligned="right">
+                      <Image
+                        className="tcp_carousel__play tooltip"
+                        src={getIconPath('info-icon')}
+                      />
+                    </ReactToolTip>
+                  </span>
+                </span>
               </Col>
             </Row>
           </form>

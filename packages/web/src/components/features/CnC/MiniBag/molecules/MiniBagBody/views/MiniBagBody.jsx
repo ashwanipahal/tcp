@@ -103,7 +103,6 @@ const MiniBagBody = ({
         {cartItemCount ? (
           <>
             <ProductTileWrapper />
-            <AirmilesBanner />
           </>
         ) : (
           <EmptyMiniBag labels={labels} userName={userName} />
@@ -129,6 +128,7 @@ const MiniBagBody = ({
               </BodyCopy>
             </Button>
           </Row>
+          <AirmilesBanner />
         </div>
       ) : (
         <div className="miniBagFooter">

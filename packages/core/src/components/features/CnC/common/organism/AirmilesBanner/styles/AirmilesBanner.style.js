@@ -44,6 +44,16 @@ const styles = css`
   .airmilesBannerInput {
     position: relative;
   }
+  .airmileBannerTooltip {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    top: 27px;
+  }
+  .info-icon-img-wrapper {
+    display: inline-block;
+    width: 15px;
+  }
   .coupon_submit_button {
     display: flex;
     position: absolute;
