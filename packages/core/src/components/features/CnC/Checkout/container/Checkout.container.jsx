@@ -110,8 +110,8 @@ export const mapDispatchToProps = dispatch => {
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
     },
-    loadShipmentMethods: () => {
-      dispatch(fetchShipmentMethods());
+    loadShipmentMethods: formName => {
+      dispatch(fetchShipmentMethods(formName));
     },
   };
 };

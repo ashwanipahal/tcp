@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
+import { formValueSelector } from 'redux-form';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import endpoints from '../../../../../service/endpoint';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
@@ -205,12 +206,24 @@ function* submitPickupSection(data) {
 // }
 
 function* loadShipmentMethods(miniAddress, throwError) {
+  let address;
+  if (miniAddress.formName) {
+    const addressSelector = formValueSelector(miniAddress.formName);
+    const addressValues = yield select(addressSelector, 'address');
+    address = {
+      ...addressValues,
+      state: miniAddress.state || addressValues.state,
+    };
+  } else {
+    address = miniAddress;
+  }
+
   try {
     const res = yield getShippingMethods(
-      miniAddress.state,
-      miniAddress.zipCode,
-      miniAddress.addressLine1,
-      miniAddress.addressLine2
+      address.state || '',
+      address.zipCode || '',
+      address.addressLine1 || '',
+      address.addressLine2 || ''
     );
     yield all([setShippingOptions(res), setIsLoadingShippingMethods(false)].map(val => put(val)));
   } catch (err) {
@@ -247,7 +260,8 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 }
 
 function* loadCheckoutDetail() {
-  const getIsShippingRequired = yield select(getIsOrderHasShipping) || true; // to be fixed
+  let getIsShippingRequired = yield select(getIsOrderHasShipping); // to be fixed
+  getIsShippingRequired = getIsShippingRequired || true;
   if (getIsShippingRequired) {
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;

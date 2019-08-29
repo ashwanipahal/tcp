@@ -244,9 +244,10 @@ export function onEditModeChangeAction(isEditingSubform) {
   };
 }
 
-export function fetchShipmentMethods() {
+export function fetchShipmentMethods({ ...params } = {}) {
   return {
     type: constants.CHECKOUT_LOAD_SHIPMENT_METHODS,
+    ...params,
   };
 }
 
