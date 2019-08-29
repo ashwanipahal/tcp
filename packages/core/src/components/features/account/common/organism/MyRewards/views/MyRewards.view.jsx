@@ -19,6 +19,7 @@ const MyRewards = ({
   onRemove,
   isApplyingOrRemovingCoupon,
   isMobile,
+  view,
 }) => {
   const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
   const isApplyingCoupon = !!coupons.find(
@@ -125,6 +126,7 @@ MyRewards.propTypes = {
   onRemove: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
   isMobile: PropTypes.bool,
+  view: PropTypes.string,
 };
 
 MyRewards.defaultProps = {
@@ -144,6 +146,7 @@ MyRewards.defaultProps = {
   onRemove: () => {},
   isApplyingOrRemovingCoupon: false,
   isMobile: true,
+  view: ''
 };
 
 export default withStyles(MyRewards, styles);

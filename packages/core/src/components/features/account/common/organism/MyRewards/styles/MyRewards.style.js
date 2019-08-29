@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const styles = css`
   .my-rewards-heading {
-    text-align: center;
+    text-align: ${props => console.log(props)};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
