@@ -2,10 +2,15 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import utils from '@tcp/core/src/utils';
-import { getError, getSuccess, getIsEmployee, getProfileLabels } from './AddEditPersonalInformation.selectors';
+import {
+  getError,
+  getSuccess,
+  getIsEmployee,
+  getProfileLabels,
+} from './AddEditPersonalInformation.selectors';
 import AddEditPersonalInformationComponent from '../views';
 import { updateProfile, updateProfileError } from './AddEditPersonalInformation.actions';
-import internalEndpoints from '../../common/internalEndpoints'
+import internalEndpoints from '../../common/internalEndpoints';
 import {
   getUserBirthday,
   getUserName,
@@ -13,7 +18,7 @@ import {
   getUserEmail,
   getUserPhoneNumber,
   getAssociateId,
-  getAirmilesDetails
+  getAirmilesDetails,
 } from '../../User/container/User.selectors';
 
 export class AddEditPersonalInformationContainer extends PureComponent {
@@ -55,8 +60,9 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     userBirthYear,
     airMilesAccountNumber,
   }) => {
-    const { updateProfileAction, } = this.props;
-    const newUserBirthday = userBirthMonth && userBirthYear ? `${userBirthMonth}|${userBirthYear}` : '';
+    const { updateProfileAction } = this.props;
+    const newUserBirthday =
+      userBirthMonth && userBirthYear ? `${userBirthMonth}|${userBirthYear}` : '';
     updateProfileAction({
       firstName,
       lastName,
@@ -74,7 +80,15 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   };
 
   getInitialValues = props => {
-    const { firstName, lastName, email, phoneNumber, associateId, userBirthday,airMilesAccountNumber } = props;
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      associateId,
+      userBirthday,
+      airMilesAccountNumber,
+    } = props;
     const birthdayArray = userBirthday ? userBirthday.split('|') : [];
 
     return {
@@ -118,7 +132,7 @@ export const mapStateToProps = state => ({
   associateId: getAssociateId(state),
   labels: getProfileLabels(state),
   isEmployee: getIsEmployee(state),
-  airMilesAccountNumber: getAirmilesDetails(state)
+  airMilesAccountNumber: getAirmilesDetails(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

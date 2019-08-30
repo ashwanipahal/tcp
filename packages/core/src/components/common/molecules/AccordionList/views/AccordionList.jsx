@@ -7,6 +7,7 @@ type Props = {
   className: string,
   children: Object[],
   defaultOpenIndex: number,
+  show: boolean,
 };
 
 type State = {
@@ -40,6 +41,22 @@ export default class AccordionList extends React.Component<Props, State> {
   }
 
   /**
+   * lifecycle @function getDerivedStateFromProps function changes the state of the accordian.
+   * @param {[Object]} nextProps [Props that are passed].
+   * @param {[Object]} prevState [State that are passed].
+   * @return {[Object]}.
+   */
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    if (!nextProps.show && typeof nextProps.show !== 'undefined') {
+      return {
+        ...prevState,
+        isExpanded: true,
+      };
+    }
+    return prevState;
+  }
+
+  /**
    * @function changeAccordionState function changes the state of the accordian. It detects the clicked element
    * and send the same to the child elements so that they can expand or collapse accordingly.
    * @param {[Object]} e [Event object of click].
@@ -68,7 +85,8 @@ export default class AccordionList extends React.Component<Props, State> {
 
   render() {
     const { elementClicked, isExpanded } = this.state;
-    const { accordionItems, className, children } = this.props;
+    // eslint-disable-next-line
+    const { accordionItems, className, children, show } = this.props;
 
     return (
       <div className={`${className} container-accordion`}>

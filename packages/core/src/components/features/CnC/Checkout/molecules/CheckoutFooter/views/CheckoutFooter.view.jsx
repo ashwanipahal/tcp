@@ -16,23 +16,20 @@ class CheckoutFooter extends React.PureComponent {
       disableNext,
       backLinkHandler,
       disableBackLink,
-      hideBackLink,
     } = this.props;
     return (
       <div className={className}>
-        <div className="back-space">
-          {hideBackLink && (
-            <Button
-              disabled={disableBackLink}
-              type="button"
-              className="back-link"
-              onClick={backLinkHandler}
-            >
-              <Image src={carrotLeft} className="back-link-image" />
-              {backLinkText}
-            </Button>
-          )}
-        </div>
+        {!!backLinkText && (
+          <Button
+            disabled={disableBackLink}
+            type="button"
+            className="back-link"
+            onClick={backLinkHandler}
+          >
+            <Image src={carrotLeft} className="back-link-image" />
+            {backLinkText}
+          </Button>
+        )}
         <Button
           disabled={disableNext}
           type="submit"
@@ -56,11 +53,6 @@ CheckoutFooter.propTypes = {
   disableNext: PropTypes.bool.isRequired,
   backLinkHandler: PropTypes.func.isRequired,
   disableBackLink: PropTypes.bool.isRequired,
-  hideBackLink: PropTypes.bool,
-};
-
-CheckoutFooter.defaultProps = {
-  hideBackLink: false,
 };
 
 export default withStyles(CheckoutFooter, style);

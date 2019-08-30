@@ -25,11 +25,13 @@ const PromotionalArea = ({ className, data, mobile }) => {
                 richText: { text, __typename },
                 link: { url, target },
               } = promotion;
+              const htmlTemplate = `<span>${text}</span>`;
               return (
                 <Anchor to={url} target={target}>
                   <RichText
+                    className="header-topnav__promo-area-content"
                     key={__typename}
-                    richTextHtml={text}
+                    richTextHtml={htmlTemplate}
                     dataLocator={getLocator('global_promoareaimg')}
                   />
                 </Anchor>

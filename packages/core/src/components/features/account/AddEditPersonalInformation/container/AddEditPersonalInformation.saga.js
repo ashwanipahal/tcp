@@ -8,8 +8,8 @@ import { UpdateProfileInfo } from '../../../../../services/abstractors/account';
 export function* UpdateProfile({ payload }) {
   try {
     const res = yield call(UpdateProfileInfo, payload);
-      yield put(getUserInfo());
-      return yield put(updateProfileSuccess(res));
+    yield put(getUserInfo());
+    return yield put(updateProfileSuccess(res));
   } catch (err) {
     return yield put(updateProfileError(err));
   }

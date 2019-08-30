@@ -10,11 +10,13 @@ export const modalStyles = css`
     font-weight: ${props => props.theme.typography.fontWeights.black};
     border: none;
     display: block;
-    margin: 6px 0 12px;
+    height: auto;
+    margin: 6px 0 10px;
     padding: 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
       font-size: ${props => props.theme.typography.fontSizes.fs36};
+      margin-bottom: 12px;
     }
   }
 `;
@@ -40,7 +42,11 @@ const styles = css`
     border: 0;
     height: 2px;
     width: 143px;
-    margin: 27px auto 48px;
+    margin: 18px auto 48px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 27px;
+    }
   }
   .shipToForm {
     width: 210px;

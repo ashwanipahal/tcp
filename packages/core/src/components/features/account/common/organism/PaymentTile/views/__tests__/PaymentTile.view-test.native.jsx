@@ -4,7 +4,7 @@ import { PaymentTile } from '../PaymentTile.view.native';
 
 describe('PaymentTile component', () => {
   it('should render correctly', () => {
-    const component = shallow(<PaymentTile />);
+    const component = shallow(<PaymentTile handleComponentChange={jest.fn()} />);
     expect(component).toMatchSnapshot();
   });
 });
