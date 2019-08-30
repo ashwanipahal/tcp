@@ -4,12 +4,10 @@ import styled, { css } from 'styled-components/native';
 import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 
 const getShape = props => {
-  const { theme, shape } = props;
+  const { theme, orverrideGymboree } = props;
   const { isGymboree } = theme;
-  if (isGymboree && shape === 'square') {
-    return `border-radius: 0px;`;
-  }
-  if (isGymboree) {
+
+  if (isGymboree && !orverrideGymboree) {
     return `border-radius: 25px;`;
   }
   return `
@@ -18,19 +16,11 @@ const getShape = props => {
 };
 
 const style = css`
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 0.93px;
-  opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
-   width: 40px;
+   min-width: 40px;
    height: 100px;
-   color: ${props.theme.colorPalette[props.color || 'black']};
-   font-size: ${props.theme.fonts.fontSize.button.size}px
-   font-family: ${props.theme.typography.fonts.primary};
-   font-weight: ${props.theme.typography.fontWeights.semibold};
    border: 1px solid ${props.theme.colorPalette.black};
    padding: 4px 20px;
    width: 100%;
@@ -47,10 +37,6 @@ const style = css`
  height: ${props.height};
  min-width: 64px;
  background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
- color: ${props.color || props.theme.colorPalette.black};
- font-family: ${props.theme.typography.fonts.secondary};
- font-size: ${props.theme.fonts.fontSize.button.size}px;
- font-weight: ${props.theme.typography.fontWeights.black};
  border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
  align-items:center;
  ${getShape(props)}`
@@ -105,6 +91,10 @@ const style = css`
 `;
 
 export const CustomStyleText = styled(StyledText)`
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.93px;
+  opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `

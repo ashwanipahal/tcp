@@ -17,13 +17,12 @@ import {
   DivImageCTAContainer,
   ButtonLinksContainer,
   HeaderWrapper,
-  PromoRibbonWrapperLeft,
-  PromoRibbonWrapperRight,
   MessageContainer,
   RibbonBannerHeight,
   RibbonBannerWidth,
   PromoBannerWrapper,
   HeaderView,
+  PromoRibbonWrapper,
 } from '../ModuleA.style.native';
 import config from '../../ModuleN/ModuleN.config';
 
@@ -44,27 +43,21 @@ const ribbonRightImage = require('../../../../../assets/module-a-ribbon-right.pn
 const { ctaTypes } = config;
 
 const ribbonView = ({ ribbonBanner, navigation, position }) => {
-  let ribbonConfig = {};
-  let Component;
+  let ribbonConfig = {
+    width: RibbonBannerHeight,
+    height: RibbonBannerWidth,
+    source: ribbonRightImage,
+  };
   if (position === 'right') {
     ribbonConfig = {
-      width: RibbonBannerHeight,
-      height: RibbonBannerWidth,
+      ...ribbonConfig,
       source: ribbonLeftImage,
     };
-    Component = PromoRibbonWrapperLeft;
-  } else {
-    ribbonConfig = {
-      width: RibbonBannerHeight,
-      height: RibbonBannerWidth,
-      source: ribbonRightImage,
-    };
-    Component = PromoRibbonWrapperRight;
   }
   return (
     <ContainerView>
       {ribbonBanner && (
-        <Component>
+        <PromoRibbonWrapper viewdirection={position}>
           <Image {...ribbonConfig} />
           <MessageContainer>
             <PromoBanner
@@ -73,7 +66,7 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
               locator="moduleA_promoribbonbanner_text"
             />
           </MessageContainer>
-        </Component>
+        </PromoRibbonWrapper>
       )}
     </ContainerView>
   );
@@ -105,7 +98,7 @@ const renderView = (item, navigation, position) => {
     <ContainerView>
       <Image
         width={MODULE_WIDTH}
-        height={isGymboree() === false ? MODULE_TCP_HEIGHT : MODULE_GYM_HEIGHT}
+        height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
       />
       <HeaderWrapper>
@@ -135,7 +128,7 @@ const renderView = (item, navigation, position) => {
         </PromoBannerComponent>
       </HeaderWrapper>
 
-      {isGymboree() === true && ribbonView({ ribbonBanner, navigation, position })}
+      {isGymboree() && ribbonView({ ribbonBanner, navigation, position })}
     </ContainerView>
   );
 };
