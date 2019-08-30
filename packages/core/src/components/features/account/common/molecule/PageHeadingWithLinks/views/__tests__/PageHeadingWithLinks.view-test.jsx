@@ -6,7 +6,7 @@ describe('PageHeadingWithLinks View', () => {
   it('should render correctly', () => {
     const props = {
       labels: {},
-      heading: 'test',
+      heading: 'test heading',
       programDetailsCta: 'test',
       termsConditionCta: 'test',
     };
