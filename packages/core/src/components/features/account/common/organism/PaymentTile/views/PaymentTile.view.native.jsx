@@ -13,7 +13,7 @@ import {
 
 export class PaymentTile extends React.PureComponent<Props> {
   static propTypes = {
-    cardList: PropTypes.arrayOf({}),
+    cardList: PropTypes.shape([]),
     labels: PropTypes.shape({}),
     handleComponentChange: PropTypes.func.isRequired,
   };
