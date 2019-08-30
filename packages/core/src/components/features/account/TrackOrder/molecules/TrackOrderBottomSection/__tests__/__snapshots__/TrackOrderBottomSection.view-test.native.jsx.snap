@@ -27,6 +27,7 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
       anchorVariation="primary"
       customStyle={Object {}}
       locator="track_order_click_here"
+      onPress={null}
       text=""
       underline={true}
       visible={false}

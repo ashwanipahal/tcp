@@ -41,8 +41,7 @@ export default css`
   }
 
   .track-order {
-    border-right: 1px solid ${props => props.theme.colorPalette.gray['600']};
-    cursor: pointer;
+    border-right: 1px solid ${props => props.theme.colorPalette.gray['500']};
     line-height: 26px;
     padding-right: 12px;
     float: right;
