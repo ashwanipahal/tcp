@@ -21,11 +21,24 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
       }
     >
       <Styled(Button)
+        className="candidate-b_buttons"
         customStyle="shadow-button"
         dataLocator="footer_email_signup_btn"
         onClick={[Function]}
       >
-        <Styled(RichText) />
+        <Styled(BodyCopy)
+          className="heading_text"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize="fs15"
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          <TextItems />
+        </Styled(BodyCopy)>
       </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
@@ -45,11 +58,24 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
       }
     >
       <Styled(Button)
+        className="candidate-b_buttons"
         customStyle="shadow-button"
         dataLocator="footer_sms_signup_btn"
         onClick={[Function]}
       >
-        <Styled(RichText) />
+        <Styled(BodyCopy)
+          className="heading_text"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize="fs15"
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          <TextItems />
+        </Styled(BodyCopy)>
       </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
@@ -71,10 +97,23 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
         id="extole_zone_global_footer"
       >
         <Styled(Button)
+          className="candidate-b_buttons"
           customStyle="shadow-button"
           data-locator="global_referfriend"
         >
-          <Styled(RichText) />
+          <Styled(BodyCopy)
+            className="heading_text"
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize="fs15"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            <TextItems />
+          </Styled(BodyCopy)>
         </Styled(Button)>
       </span>
     </Styled(Col)>
