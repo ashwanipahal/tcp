@@ -12,6 +12,7 @@ export default css`
     padding: 10px 14px 10px;
     ul {
       display: flex;
+      justify-content: space-between;
     }
   }
   .shop-by-size-links li {
@@ -23,7 +24,6 @@ export default css`
     align-items: center;
     justify-content: center;
     display: flex;
-    margin-right: 19px;
     margin-bottom: 16px;
   }
   .shop-by-size-links li:hover {
