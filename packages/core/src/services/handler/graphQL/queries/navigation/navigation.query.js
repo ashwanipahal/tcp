@@ -58,6 +58,7 @@ const buildQuery = ({ brand, country, channel }) => `
         description
         groupIdentifier
         groupIdentifierName
+        longDescription
         name
         id
         longDescription
@@ -75,6 +76,7 @@ const buildQuery = ({ brand, country, channel }) => `
           description
           groupIdentifier
           groupIdentifierName
+          longDescription
           name
           id
           longDescription

@@ -46,57 +46,8 @@ const initialState = fromJS({
   },
 });
 
-export default function CheckoutReducer(state = initialState, action) {
-  let checkout = state;
-  if (checkout instanceof Object) {
-    checkout = fromJS(checkout);
-  }
-  // const orderValues = checkout.get('values');
-  // const orderOptions = checkout.get('options');
-  // const uiFlags = checkout.get('uiFlags');
+function uiFlagReducer(checkout, action) {
   switch (action.type) {
-    case 'CHECKOUT_VALUES_SET_PICKUP':
-      return checkout.setIn(['values', 'pickUpContact'], action.pickUpContact);
-    case 'CHECKOUT_VALUES_SET_PICKUP_ALT':
-      return checkout.setIn(['values', 'pickUpAlternative'], action.pickUpAlternative);
-    // case 'CHECKOUT_VALUES_SET_GIFTCARDS':
-    //   return merge(orderValues, { giftCards: action.giftCards });
-    case 'CHECKOUT_VALUES_SET_SHIPPING':
-      return checkout.setIn(['values', 'shipping'], action.shipping);
-    case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
-      return checkout.setIn(['options', 'giftWrapOptions'], action.giftWrapOptions);
-    // case 'CHECKOUT_VALUES_SET_BILLING':
-    //   return merge(orderValues, { billing: action.billing });
-    // case 'CHECKOUT_VALUES_SET_SHIPPING_METHOD':
-    //   return orderValues.setIn(['shipping', 'method'], action.method);
-    // case 'CHECKOUT_VALUES_SET_GIFT_WRAP':
-    //   return merge(orderValues, { giftWrap: action.giftWrap });
-    case CheckoutConstants.CHECKOUT_VALUES_SET_SMS_UPDATES:
-      return checkout.setIn(['values', 'smsInfo'], { numberForUpdates: action.phoneNumber });
-    // case 'CHECKOUT_VALUES_SET_SMS_MARKETING':
-    //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
-    // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':
-    //   return orderValues.set('selectedShippingPhoneNumber', action.payload);
-    // case 'CHECKOUT_VALUES_SET_VENMO_DATA':
-    //   return merge(orderValues, { venmoData: action.payload }, { deep: true });
-    // case 'CHECKOUT_VALUES_SET_VENMO_CLIENT_TOKEN_DATA':
-    //   return merge(
-    //     orderValues,
-    //     {
-    //       venmoData: {
-    //         venmoClientTokenData: action.payload,
-    //       },
-    //     },
-    //
-    //   );
-    case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING:
-      return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
-    //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT':
-    //   return merge(orderOptions, { paypalPaymentSettings: action.paypalPaymentSettings });
-    // case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
-    //   return merge(orderOptions, { internationalUrl: action.internationalUrl });
     // case 'CHECKOUT_FLAGS_SET_STAGE':
     //   return merge(uiFlags, {
     //     stage: action.stage,
@@ -143,5 +94,61 @@ export default function CheckoutReducer(state = initialState, action) {
     //  }
     default:
       return checkout;
+  }
+}
+
+export default function CheckoutReducer(state = initialState, action) {
+  let checkout = state;
+  if (checkout instanceof Object) {
+    checkout = fromJS(checkout);
+  }
+  // const orderValues = checkout.get('values');
+  // const orderOptions = checkout.get('options');
+  // const uiFlags = checkout.get('uiFlags');
+  switch (action.type) {
+    case 'CHECKOUT_VALUES_SET_PICKUP':
+      return checkout.setIn(['values', 'pickUpContact'], action.pickUpContact);
+    case 'CHECKOUT_VALUES_SET_PICKUP_ALT':
+      return checkout.setIn(['values', 'pickUpAlternative'], action.pickUpAlternative);
+    // case 'CHECKOUT_VALUES_SET_GIFTCARDS':
+    //   return merge(orderValues, { giftCards: action.giftCards });
+    case 'CHECKOUT_VALUES_SET_SHIPPING':
+      return checkout.setIn(['values', 'shipping'], action.shipping);
+    case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
+      return checkout.setIn(['options', 'giftWrapOptions'], action.giftWrapOptions);
+    case 'CHECKOUT_VALUES_SET_BILLING':
+      return checkout.setIn(['options', 'billing'], action.billing);
+    // case 'CHECKOUT_VALUES_SET_SHIPPING_METHOD':
+    //   return orderValues.setIn(['shipping', 'method'], action.method);
+    // case 'CHECKOUT_VALUES_SET_GIFT_WRAP':
+    //   return merge(orderValues, { giftWrap: action.giftWrap });
+    case CheckoutConstants.CHECKOUT_VALUES_SET_SMS_UPDATES:
+      return checkout.setIn(['values', 'smsInfo'], { numberForUpdates: action.phoneNumber });
+    // case 'CHECKOUT_VALUES_SET_SMS_MARKETING':
+    //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
+    // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':
+    //   return orderValues.set('selectedShippingPhoneNumber', action.payload);
+    // case 'CHECKOUT_VALUES_SET_VENMO_DATA':
+    //   return merge(orderValues, { venmoData: action.payload }, { deep: true });
+    // case 'CHECKOUT_VALUES_SET_VENMO_CLIENT_TOKEN_DATA':
+    //   return merge(
+    //     orderValues,
+    //     {
+    //       venmoData: {
+    //         venmoClientTokenData: action.payload,
+    //       },
+    //     },
+    //
+    //   );
+    case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING:
+      return checkout.setIn(['options', 'shippingMethods'], action.shippingMethods);
+    // case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
+    //   return merge(orderOptions, { giftWrapOptions: action.giftWrapOptions });
+    // case 'CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT':
+    //   return merge(orderOptions, { paypalPaymentSettings: action.paypalPaymentSettings });
+    // case 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL':
+    //   return merge(orderOptions, { internationalUrl: action.internationalUrl });
+    default:
+      return uiFlagReducer(checkout, action);
   }
 }

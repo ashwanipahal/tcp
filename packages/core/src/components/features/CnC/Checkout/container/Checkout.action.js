@@ -42,6 +42,13 @@ export function getSetShippingValuesActn(shipping) {
   };
 }
 
+export function getSetBillingValuesActn(shipping) {
+  return {
+    shipping,
+    type: 'CHECKOUT_VALUES_SET_BILLING',
+  };
+}
+
 export function getSetCurrentOrderIdActn(orderId) {
   return {
     orderId,
@@ -237,9 +244,10 @@ export function onEditModeChangeAction(isEditingSubform) {
   };
 }
 
-export function fetchShipmentMethods() {
+export function fetchShipmentMethods({ ...params } = {}) {
   return {
     type: constants.CHECKOUT_LOAD_SHIPMENT_METHODS,
+    ...params,
   };
 }
 
@@ -247,5 +255,11 @@ export const emailSignupStatus = payload => {
   return {
     payload,
     type: 'EMAIL_SUBSCRIPTION_STATUS',
+  };
+};
+
+export const routeToPickupPage = () => {
+  return {
+    type: constants.ROUTE_TO_PICKUP_PAGE,
   };
 };
