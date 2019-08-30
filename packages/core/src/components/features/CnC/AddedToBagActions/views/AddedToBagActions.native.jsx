@@ -25,8 +25,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
       labels,
       showAddTobag,
       checkoutModalMountedState,
-      handleCartCheckout,
-      navigation,
+      // handleCartCheckout,
+      // navigation,
       closeCheckoutModalMountState,
       isUserLoggedIn,
     } = this.props;
