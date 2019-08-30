@@ -8,9 +8,11 @@ import ProductsOperator from './productsRequestFormatter';
 function* fetchPlpProducts({ payload }) {
   try {
     const { url } = payload;
-    const location = {
-      pathname: url,
-    };
+    const location = url
+      ? {
+          pathname: url,
+        }
+      : window.location;
     const state = yield select();
     const instanceProductListing = new Abstractor();
     const operatorInstance = new ProductsOperator();

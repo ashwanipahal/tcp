@@ -13,7 +13,8 @@ export const TrackOrderReducer = (state = initialState, action) => {
     case TRACK_ORDER_CONSTANTS.SET_TRACK_ORDER_MODAL_MOUNTED_STATE:
       return state
         .set('trackOrderMountedState', action.payload.state)
-        .set('showNotificationOnModal', null);
+        .set('showNotificationOnModal', null)
+        .set('trackOrderInfo', null);
     case TRACK_ORDER_CONSTANTS.SET_ORDER_DETAIL_INFO:
       return state.set('trackOrderInfo', fromJS(action.payload));
     case TRACK_ORDER_CONSTANTS.SET_ERROR_INFO:
