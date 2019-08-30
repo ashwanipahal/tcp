@@ -1,29 +1,20 @@
 import { createSelector } from 'reselect';
 import { USER_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import userAddressData from '../utils/utility';
 
 export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
-export const getUserContactInfo = createSelector(
-  getPersonalDataState,
-  state => state && state.get('contactInfo')
-);
+export const getUserContactInfo = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  return personalData && personalData.get('contactInfo');
+};
 
-export const getMailingAddress = createSelector(
-  getPersonalDataState,
-  state => state && state.getIn(['contactInfo', 'profileAddress'])
-);
-
-const userAddressData = addressTemp => {
-  return {
-    addressLine1: addressTemp.get('addressLine1') || '',
-    addressLine2: addressTemp.get('addressLine2') || '',
-    city: addressTemp.get('city') || '',
-    country: addressTemp.get('country') || '',
-    state: addressTemp.get('state') || '',
-    zipCode: addressTemp.get('zipCode'),
-  };
+export const getMailingAddress = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  const contactInfo = personalData && personalData.get('contactInfo');
+  return contactInfo && contactInfo.get('profileAddress');
 };
 
 export const getUserProfileData = createSelector(
@@ -35,11 +26,11 @@ export const getUserProfileData = createSelector(
       let firstName;
       let lastName;
       let emailAddress;
-      let phoneNumber;
+      let phoneNumberWithAlt;
       if (personalInformation) {
         firstName = personalInformation.get('firstName');
         lastName = personalInformation.get('lastName');
-        phoneNumber = personalInformation.get('phoneNumber');
+        phoneNumberWithAlt = personalInformation.get('phoneNumber');
         emailAddress =
           personalInformation.get('emailAddress') &&
           personalInformation.get('emailAddress').toLowerCase();
@@ -57,10 +48,11 @@ export const getUserProfileData = createSelector(
           addressLine2,
           city,
           state,
-          phoneNumber,
+          phoneNumberWithAlt,
           noCountryZip,
         };
       }
+      return null;
     }
     return null;
   }

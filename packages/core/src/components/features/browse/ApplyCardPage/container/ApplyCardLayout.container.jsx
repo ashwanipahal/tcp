@@ -39,7 +39,7 @@ class ApplyCardLayoutContainer extends React.Component {
   render() {
     const { applicationStatus, plccData, labels, plccUser, profileInfo } = this.props;
     if (plccUser) {
-      routerPush('/', '/home');
+      routerPush('/', '/place-card');
     }
     return (
       <ApplyCardLayoutView
