@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
+import { styles, PageContainer } from '../styles/ProductListing.style.native';
 
 const ProductListView = ({ products, breadCrumbs, ...otherProps }) => {
-  return <ProductList products={products} {...otherProps} />;
+  return (
+    <PageContainer>
+      <ProductList products={products} {...otherProps} />
+    </PageContainer>
+  );
 };
 
 ProductListView.propTypes = {
@@ -16,4 +22,4 @@ ProductListView.defaultProps = {
   breadCrumbs: [],
 };
 
-export default ProductListView;
+export default withStyles(ProductListView, styles);

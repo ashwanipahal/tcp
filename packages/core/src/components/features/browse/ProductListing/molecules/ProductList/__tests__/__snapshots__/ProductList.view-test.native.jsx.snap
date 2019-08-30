@@ -3,17 +3,6 @@
 exports[`ProductList component should renders correctly 1`] = `
 <Styled(View)>
   <FlatList
-    columnWrapperStyle={
-      Object {
-        "flex": 1,
-        "justifyContent": "space-around",
-      }
-    }
-    contentContainerStyle={
-      Object {
-        "marginTop": 20,
-      }
-    }
     data={
       Array [
         Object {
@@ -24,7 +13,7 @@ exports[`ProductList component should renders correctly 1`] = `
     disableVirtualization={false}
     extraData={null}
     horizontal={false}
-    initialNumToRender={8}
+    initialNumToRender={4}
     keyExtractor={[Function]}
     maxToRenderPerBatch={2}
     numColumns={2}

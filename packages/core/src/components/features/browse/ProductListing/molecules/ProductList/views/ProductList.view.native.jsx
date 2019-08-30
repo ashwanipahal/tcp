@@ -6,12 +6,7 @@ import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import {
-  styles,
-  PageContainer,
-  contentContainerStyle,
-  columnWrapperStyle,
-} from '../styles/ProductList.style.native';
+import { styles, PageContainer } from '../styles/ProductList.style.native';
 
 class ProductList extends React.PureComponent {
   constructor(props) {
@@ -79,14 +74,12 @@ class ProductList extends React.PureComponent {
     const { products } = this.props;
     return (
       <FlatList
-        contentContainerStyle={contentContainerStyle}
         data={products}
         renderItem={this.renderItemList}
         keyExtractor={item => item.generalProductId}
-        initialNumToRender={8}
+        initialNumToRender={4}
         maxToRenderPerBatch={2}
         numColumns={2}
-        columnWrapperStyle={columnWrapperStyle}
         extraData={this.state}
       />
     );

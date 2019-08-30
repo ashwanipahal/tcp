@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
   max-width: 164;
-  height: 436;
+  height: 428;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const FavoriteIconContainer = styled.View`
@@ -13,7 +14,6 @@ const FavoriteIconContainer = styled.View`
 
 const Badge1Container = styled.View`
   height: 14;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const Badge1Text = styled.Text`
