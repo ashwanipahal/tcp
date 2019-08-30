@@ -34,9 +34,8 @@ describe('CheckoutProgressIndicatorContainer', () => {
   describe('#mapDispatchToProps', () => {
     it('should return an action initialActions which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
-      const dispatchProps = mapDispatchToProps(dispatch);
-      dispatchProps.initialActions();
-      expect(dispatch.mock.calls).toHaveLength(2);
+      mapDispatchToProps(dispatch);
+      expect(dispatch.mock.calls).toEqual([]);
     });
     it('should return an action moveToCheckoutStage which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
