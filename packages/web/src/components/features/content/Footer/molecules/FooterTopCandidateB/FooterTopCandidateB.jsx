@@ -23,7 +23,7 @@ const FooterTopCandidateB = props => {
     <div className="footer-top">
       <Row>
         <Col
-          className="footer-top__slots"
+          className="footer-top__slots col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
@@ -46,7 +46,7 @@ const FooterTopCandidateB = props => {
           </Button>
         </Col>
         <Col
-          className="footer-top__slots"
+          className="footer-top__slots col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
@@ -70,7 +70,7 @@ const FooterTopCandidateB = props => {
           </Button>
         </Col>
         <Col
-          className="footer-top__slots"
+          className="footer-top__slots col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
@@ -93,14 +93,14 @@ const FooterTopCandidateB = props => {
           </span>
         </Col>
         <Col
-          className="footer-top__slot--2"
+          className="footer-top__slot--2 col-md-half-width"
           colSize={{
             large: 3,
             medium: 4,
             small: 6,
           }}
         >
-          <SocialMediaLinks {...socialMediaLinks} />
+          <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
         </Col>
       </Row>
     </div>
