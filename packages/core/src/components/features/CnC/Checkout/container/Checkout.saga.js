@@ -550,7 +550,11 @@ function* initCheckout() {
   //   queryObject[config.QUERY_PARAM.RECALC_REWARDS],
   //   parseBoolean(getLocalStorage(VENMO_INPROGRESS_KEY)),
   // )
-  yield call(loadStartupData);
+  try {
+    yield call(loadStartupData);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 function* saveLocalSmsInfo(smsInfo = {}) {

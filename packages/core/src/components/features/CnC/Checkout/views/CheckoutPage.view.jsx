@@ -5,6 +5,7 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
+import BillingPage from '../organisms/BillingPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
@@ -110,6 +111,7 @@ class CheckoutPage extends React.PureComponent {
             routeToPickupPage={routeToPickupPage}
           />
         )}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && <BillingPage />}
       </div>
     );
   };
