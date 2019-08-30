@@ -109,7 +109,7 @@ class CheckoutPage extends React.PureComponent {
             loadShipmentMethods={loadShipmentMethods}
           />
         )}
-        {currentSection.toLowerCase() === 'billing' && <BillingPage />}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && <BillingPage />}
       </div>
     );
   };

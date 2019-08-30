@@ -18,11 +18,7 @@ class BillingPage extends React.PureComponent {
     const { className } = this.props;
     return (
       <div className={className}>
-        <CheckoutSectionTitleDisplay
-          title="Billing"
-          dataLocator="Billing-title"
-          className="summary-Billing"
-        />
+        <CheckoutSectionTitleDisplay title="Billing" dataLocator="billing-title" />
       </div>
     );
   }
