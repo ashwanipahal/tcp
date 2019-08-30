@@ -46,7 +46,9 @@ export default class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      setCheckoutStage,
     } = this.props;
+    setCheckoutStage('pickup');
     return (
       <>
         <PickupPage
@@ -98,4 +100,5 @@ CheckoutPage.propTypes = {
   loadShipmentMethods: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };

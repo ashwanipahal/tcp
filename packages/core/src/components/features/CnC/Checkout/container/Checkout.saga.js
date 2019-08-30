@@ -27,6 +27,7 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -194,6 +195,8 @@ function* submitPickupSection(data) {
   const result = yield call(callPickupSubmitMethod, formData);
   if (!isMobileApp() && result.addressId) {
     routerPush('/checkout/shipping', '/checkout/shipping');
+  } else {
+    yield put(getSetCheckoutStage('shipping'));
   }
 
   /* In the future I imagine us sending the SMS to backend for them to

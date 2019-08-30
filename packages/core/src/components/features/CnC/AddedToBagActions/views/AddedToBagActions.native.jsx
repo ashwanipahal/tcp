@@ -67,18 +67,21 @@ class AddedToBagActions extends React.PureComponent<Props> {
                 fontFamily="secondary"
                 fontSize="fs13"
                 text={labels.checkout && labels.checkout.toUpperCase()}
-                onPress={handleCartCheckout}
+                // onPress={handleCartCheckout}
+                onPress={() => {
+                  navigateToNestedRoute(navigation, 'HomeStack', 'Checkout');
+                }}
               />
             )}
           </CheckoutButton>
         </ButtonWrapper>
-        <OpenLoginModal
+        {/* <OpenLoginModal
           variation="checkout"
           openState={checkoutModalMountedState}
           setLoginModalMountState={closeCheckoutModalMountState}
           handleContinueAsGuest={this.routeToCheckout}
           handleAfterLogin={this.routeToCheckout}
-        />
+        /> */}
       </ActionsWrapper>
     );
   }

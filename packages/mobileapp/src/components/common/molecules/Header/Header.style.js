@@ -82,6 +82,93 @@ export const Touchable = styled.TouchableOpacity`
   width: 45px;
 `;
 
+export const CheckoutHeaderContainer = styled.View`
+  flex-direction: row;
+  display: flex;
+  background: ${props => props.theme.colorPalette.white};
+`;
+
+export const CheckoutHeaderTextSection = styled.View`
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  border-bottom-color: ${props => props.theme.colorPalette.gray[600]};
+  border-bottom-width: 1;
+`;
+
+export const BackIcon = styled.Image`
+  width: 10px;
+  height: 18px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+export const BackIconTouchable = styled.TouchableOpacity`
+  width: 45px;
+`;
+
+export const StepIndicatorContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding-left: 35px;
+`;
+
+export const ProgressStep = styled.View`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 60px;
+`;
+
+export const ProgressDot = styled.View`
+  background-color: ${props => props.theme.colorPalette.white};
+  width: 20px;
+  height: 20px;
+  border-radius: 10;
+  border-width: 1;
+  margin-top: 14px;
+  margin-bottom: 14px;
+`;
+
+export const ProgressBar = styled.View`
+  background-color: black;
+  flex-grow: 1;
+  height: 2px;
+`;
+
+export const StepIndicatorLabelsContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0 25px;
+`;
+
+export const ProgressStepLabels = styled.View`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+export const ProgressDotIcon = styled.Image`
+  width: 22px;
+  height: 22px;
+`;
+
 export default {
   Container,
   MessageContainer,
@@ -96,4 +183,14 @@ export default {
   ImageColor,
   HeaderPromoContainer,
   Touchable,
+  CheckoutHeaderContainer,
+  CheckoutHeaderTextSection,
+  BackIcon,
+  BackIconTouchable,
+  StepIndicatorContainer,
+  ProgressStep,
+  ProgressDot,
+  ProgressBar,
+  StepIndicatorLabelsContainer,
+  ProgressStepLabels,
 };
