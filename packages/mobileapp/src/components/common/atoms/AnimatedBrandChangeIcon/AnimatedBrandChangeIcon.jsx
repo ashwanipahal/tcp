@@ -61,7 +61,6 @@ class AnimatedBrandChangeIcon extends PureComponent {
         toValue: { x: AppAnimationConfig.BrandSwitch.MAX_X, y: 0 },
         duration: AppAnimationConfig.BrandSwitch.AnimationDuration,
       }),
-      // ]),
     ]).start();
   };
 

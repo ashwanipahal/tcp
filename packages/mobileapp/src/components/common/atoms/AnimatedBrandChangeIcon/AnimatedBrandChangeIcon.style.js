@@ -16,11 +16,10 @@ const brandIconStyles = css`
   border-radius: 100px;
   position: absolute;
   bottom: 0px;
-  left: -40px;
   width: 90px;
   height: 90px;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
 
 const TCPIcon = styled.TouchableOpacity`
@@ -45,6 +44,10 @@ const styles = {
   brandContainer: {
     position: 'absolute',
     bottom: 80,
+    width: 90,
+    height: 90,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 };
 

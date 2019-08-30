@@ -11,8 +11,12 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "bottom": 80,
+          "height": 90,
+          "justifyContent": "center",
           "position": "absolute",
+          "width": 90,
         },
         Object {
           "transform": Array [
@@ -47,8 +51,12 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "bottom": 80,
+          "height": 90,
+          "justifyContent": "center",
           "position": "absolute",
+          "width": 90,
         },
         Object {
           "transform": Array [

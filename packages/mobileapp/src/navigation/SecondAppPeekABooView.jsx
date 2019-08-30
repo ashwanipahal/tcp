@@ -85,7 +85,7 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
   showFullAnimation = () => {
     Animated.sequence([
       Animated.timing(this.transformAnimatedValue, {
-        toValue: { x: 0, y: -90 },
+        toValue: { x: 0, y: -120 },
         duration: AppAnimationConfig.AnimationDelay,
       }),
       Animated.timing(this.transformAnimatedValue, {

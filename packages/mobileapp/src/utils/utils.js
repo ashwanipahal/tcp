@@ -26,7 +26,7 @@ export const AppAnimationConfig = {
   AppSplashMaxWidth: getScreenWidth() / 2,
   BrandSwitch: {
     MAX_X: 90,
-    AnimationDuration: 1000,
+    AnimationDuration: 500,
   },
 };
 
