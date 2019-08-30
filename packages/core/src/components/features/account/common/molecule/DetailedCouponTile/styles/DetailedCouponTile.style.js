@@ -5,13 +5,6 @@ const styles = css`
   height: 100%;
   position: relative;
   width: 100%;
-  ${props =>
-    props.view === 'all'
-      ? `@media ${props.theme.mediaQuery.smallOnly}{
-          width: 70%;
-          margin-left: ${props.theme.spacing.LAYOUT_SPACING.MED};
-        }`
-      : ''};
   .notification {
     background-color: ${props => props.theme.colorPalette.gray[800]};
     color: ${props => props.theme.colorPalette.white};

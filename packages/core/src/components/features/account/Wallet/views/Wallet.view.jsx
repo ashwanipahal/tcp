@@ -5,15 +5,13 @@ import MyRewards from '../../common/organism/MyRewards';
 
 const WalletView = ({ labels }) => {
   return (
-    <div>
-      <PageHeadingWithLinks
-        heading={labels.myPlaceRewards.lbl_my_wallet_heading}
-        programDetailsCta={labels.common.lbl_common_tnc}
-        termsConditionCta={labels.myPlaceRewards.lbl_my_rewards_program_details}
-      >
-        <MyRewards labels={labels} view="all" />
-      </PageHeadingWithLinks>
-    </div>
+    <PageHeadingWithLinks
+      heading={labels.myPlaceRewards.lbl_my_wallet_heading}
+      programDetailsCta={labels.common.lbl_common_tnc}
+      termsConditionCta={labels.myPlaceRewards.lbl_my_rewards_program_details}
+    >
+      <MyRewards labels={labels} view="all" />
+    </PageHeadingWithLinks>
   );
 };
 
