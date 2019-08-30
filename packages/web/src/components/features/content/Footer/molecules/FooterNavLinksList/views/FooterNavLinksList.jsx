@@ -34,6 +34,7 @@ const FooterNavLinksList = ({
 
   const logout = (e, fn) => {
     e.preventDefault();
+    scrollPage();
     footerActions(fn);
   };
 
