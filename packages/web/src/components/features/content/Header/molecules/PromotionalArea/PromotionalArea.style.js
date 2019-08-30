@@ -39,7 +39,7 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 40px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       height: 54px;
