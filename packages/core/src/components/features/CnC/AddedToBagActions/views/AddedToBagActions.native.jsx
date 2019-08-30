@@ -12,11 +12,12 @@ import { navigateToNestedRoute } from '../../../../../utils/utils.app';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
-    const { navigation } = this.props;
+    const { navigation, closeCheckoutModalMountState } = this.props;
     if (e) {
       e.preventDefault();
     }
     navigateToNestedRoute(navigation, 'HomeStack', 'Checkout');
+    closeCheckoutModalMountState({ state: false });
   };
 
   render() {

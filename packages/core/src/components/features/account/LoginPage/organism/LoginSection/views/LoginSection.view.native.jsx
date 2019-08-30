@@ -57,6 +57,7 @@ class LoginSection extends PureComponent<Props> {
       resetForgotPasswordErrorResponse,
       navigation,
       variation,
+      handleContinueAsGuest,
     } = this.props;
 
     const { resetPassword, showModal } = this.state;
@@ -74,6 +75,8 @@ class LoginSection extends PureComponent<Props> {
               showForgotPasswordForm={this.showForgotPassword}
               resetForm={resetForm}
               variation={variation}
+              navigation={navigation}
+              handleContinueAsGuest={handleContinueAsGuest}
             />
           </Fragment>
         )}
