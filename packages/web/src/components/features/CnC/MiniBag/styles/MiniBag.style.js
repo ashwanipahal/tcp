@@ -12,6 +12,7 @@ export const modalStyles = css`
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 0px;
+    overflow: hidden;
   }
   .Modal_Heading {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
@@ -25,6 +26,10 @@ export const modalStyles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
     }
+  }
+  .alignTop.alignTop {
+    /* stylelint-disable-line */
+    top: 25px;
   }
 `;
 const styles = css`

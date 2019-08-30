@@ -24,6 +24,7 @@ describe('Track Order reducer', () => {
       cacheUntil: null,
       showNotificationOnModal: null,
       trackOrderMountedState: true,
+      trackOrderInfo: null,
     });
     expect(state).toEqual(updatedState);
   });
@@ -34,6 +35,7 @@ describe('Track Order reducer', () => {
       cacheUntil: null,
       showNotificationOnModal: null,
       trackOrderMountedState: false,
+      trackOrderInfo: null,
     });
     expect(state).toEqual(updatedState);
   });

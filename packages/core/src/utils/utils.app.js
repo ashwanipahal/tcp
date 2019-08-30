@@ -47,6 +47,7 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
     case 'moduleN':
+      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
     default:
@@ -441,5 +442,4 @@ export const isAndroid = () => Platform.OS === 'android';
 
 export default {
   getSiteId,
-  bindAllClassMethodsToThis,
 };
