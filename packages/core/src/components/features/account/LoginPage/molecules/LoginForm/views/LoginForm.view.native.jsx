@@ -54,6 +54,11 @@ class LoginForm extends React.PureComponent<Props> {
     showForgotPasswordForm();
   };
 
+  handleContinueAsGuest = () => {
+    const { handleContinueAsGuest } = this.props;
+    handleContinueAsGuest();
+  };
+
   changeType = e => {
     e.preventDefault();
     const { type } = this.state;
@@ -127,6 +132,7 @@ class LoginForm extends React.PureComponent<Props> {
               buttonVariation="variable-width"
               customStyle={styles.loginButtonStyle}
               text={labels.login.lbl_login_modal_checkout_as_guest}
+              onPress={this.handleContinueAsGuest}
             />
           )}
 
