@@ -269,7 +269,8 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 }
 
 function* loadCheckoutDetail(defaultShippingMethods) {
-  const getIsShippingRequired = yield select(getIsOrderHasShipping); // to be fixed
+  let getIsShippingRequired = yield select(getIsOrderHasShipping); // to be fixed
+  getIsShippingRequired = getIsShippingRequired || true;
   if (getIsShippingRequired) {
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;
