@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
-// import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
+import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
@@ -20,7 +20,6 @@ import {
   EmailSignupForm,
   PickUpAlternateForm,
   PickupError,
-  PickUpHeading,
   CheckBoxWrapper,
   CheckBoxColOne,
   CheckBoxColTwo,
@@ -99,8 +98,7 @@ class PickUpFormPart extends React.Component {
             />
           </PickupError>
           <PickupContainer>
-            <PickUpHeading>{pickUpLabels.pickupContactText}</PickUpHeading>
-            {/* <CheckoutSectionTitleDisplay title={pickUpLabels.title} dataLocator="pickup-title" /> */}
+            <CheckoutSectionTitleDisplay title={pickUpLabels.title} dataLocator="pickup-title" />
             <PickUpForm>
               <FormSection name="pickUpContact">
                 {!isGuest ? (
