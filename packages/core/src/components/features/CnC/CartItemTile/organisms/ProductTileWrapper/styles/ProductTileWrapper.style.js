@@ -13,13 +13,19 @@ export const customStyles = css`
   }
   span {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
   }
   .removeErrorMessage {
     text-decoration: underline;
     cursor: pointer;
+    padding-bottom: 6px;
   }
 `;
+
+export const miniBagCSS = css`
+  position: relative;
+`;
+
 export default css`
   margin: 15px 0;
   background: #fff;

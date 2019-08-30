@@ -32,6 +32,7 @@ type Props = {
   url?: string,
   disableButton?: boolean,
   locator?: string,
+  onPress?: Function,
 };
 
 const CustomButton = (props: Props) => {
@@ -42,6 +43,7 @@ const CustomButton = (props: Props) => {
     fullWidth,
     customStyle,
     disableButton,
+    onPress,
     ...otherProps
   }: Props = props;
   const textValue = text || '';
@@ -60,7 +62,7 @@ const CustomButton = (props: Props) => {
       accessibilityRole="button"
       style={customStyle}
       disabled={disableButton}
-      onPress={openUrl}
+      onPress={onPress || openUrl}
       testID={getLocator(locator)}
     >
       <StyledText fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
@@ -78,6 +80,7 @@ CustomButton.defaultProps = {
   url: '',
   disableButton: false,
   locator: '',
+  onPress: null,
 };
 
 export default withStyles(CustomButton, style);
