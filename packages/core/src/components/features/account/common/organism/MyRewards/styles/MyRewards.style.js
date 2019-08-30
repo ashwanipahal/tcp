@@ -17,7 +17,7 @@ const styles = css`
   }
 
   .no-rewards-msg {
-    text-align: ${props => (props.view === 'all' ? 'left' : 'center')};
+    text-align: center;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
 

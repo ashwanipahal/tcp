@@ -15,7 +15,6 @@ exports[`EmptyWalletRewards should render correctly 1`] = `
       className={null}
       color="text.primary"
       component="p"
-      data-locator="no_rewards_msg"
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
@@ -27,6 +26,7 @@ exports[`EmptyWalletRewards should render correctly 1`] = `
     </Styled(BodyCopy)>
   </Styled(Col)>
   <Styled(Col)
+    className="elem-mb-XXXL"
     colSize={
       Object {
         "large": 2,

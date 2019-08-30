@@ -14,12 +14,7 @@ export const EmptyWalletRewards = ({ labels }) => {
           medium: 8,
         }}
       >
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          data-locator="no_rewards_msg"
-        >
+        <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="regular">
           {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG}
         </BodyCopy>
       </Col>
@@ -29,6 +24,7 @@ export const EmptyWalletRewards = ({ labels }) => {
           large: 2,
           medium: 3,
         }}
+        className="elem-mb-XXXL"
       >
         <Button
           className="elem-mt-XL"

@@ -5,7 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/PageHeadingWithLinks.styles';
 
 export const PageHeadingWithLinks = ({
