@@ -2,7 +2,7 @@
 // TODO: Need fix unused/proptypes eslint error
 /* eslint-disable */
 
-import { executeStatefulAPICall } from '../../handler';
+import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import { parseDate, compareDate } from '../../../utils/parseDate';
 import endpoints from '../../endpoints';
 import {
@@ -606,7 +606,6 @@ tomorrowClosingTime
       });
     }
   }
-
   if (orderDetailsResponse.giftWrapItem && orderDetailsResponse.giftWrapItem.length) {
     usersOrder.checkout.giftWrap = {
       optionId: orderDetailsResponse.giftWrapItem[0].catentryId.toString(),
@@ -647,6 +646,25 @@ export const getOrderDetailsData = () => {
     return {
       orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
     };
+  });
+};
+
+export const getProductInfoForTranslationData = query => {
+  return executeUnbxdAPICall({
+    body: {
+      rows: 20,
+      variants: true,
+      'variants.count': 100,
+      version: 'V2',
+      'facet.multiselect': true,
+      selectedfacet: true,
+      id: query,
+      promotion: false,
+      pagetype: 'boolean',
+      fields:
+        'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
+    },
+    webService: endpoints.getProductInfoForTranslationByPartNumber,
   });
 };
 
@@ -799,4 +817,5 @@ export default {
   removeItem,
   getCartData,
   getUnqualifiedItems,
+  getProductInfoForTranslationData,
 };

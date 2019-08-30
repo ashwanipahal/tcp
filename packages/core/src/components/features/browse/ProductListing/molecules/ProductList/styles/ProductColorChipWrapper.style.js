@@ -5,7 +5,6 @@ const commonButtonCss = css`
   top: 50%;
   width: 25px;
   height: 34px;
-
   ::before {
     border-left: 2px solid ${props => props.theme.colors.DARK};
     border-top: 2px solid ${props => props.theme.colors.DARK};
@@ -19,27 +18,32 @@ const styles = css`
   position: relative;
   opacity: 1;
   width: 100%;
-
+  .color-swatches-mobile-view {
+    display: flex;
+  }
+  .color-swatches-desktop-view {
+    display: none;
+  }
   .button-next {
     ${buttonNext}
     ${commonButtonCss}
+    width:19px;
   }
 
   .button-prev {
     ${buttonPrev}
     ${commonButtonCss}
+    width:19px;
   }
 
   .content-colors {
     display: flex;
-    width: 100%;
     padding: 0;
     margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0px
       ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .color-swatches-container {
-    margin-left: 15px;
-    width: 100%;
+    margin-left: 19px;
   }
 
   .content-colors-button {
@@ -64,8 +68,11 @@ const styles = css`
       width: 20px;
       height: 20px;
     }
-    .color-swatches-container {
-      margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    .color-swatches-mobile-view {
+      display: none;
+    }
+    .color-swatches-desktop-view {
+      display: flex;
     }
   }
 `;

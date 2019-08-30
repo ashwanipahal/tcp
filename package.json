@@ -128,6 +128,7 @@
     "react-redux": "^6.0.1",
     "react-slick": "^0.24.0",
     "react-ssr-error-boundary": "^1.0.1",
+    "react-swipeable": "^5.4.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.4",
