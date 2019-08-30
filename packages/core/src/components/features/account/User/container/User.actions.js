@@ -22,3 +22,10 @@ export const setUserInfo = payload => {
     payload,
   };
 };
+
+export const setUserPersonalData = payload => {
+  return {
+    type: CONSTANTS.SET_USER_PERSONAL_DATA,
+    payload,
+  };
+};

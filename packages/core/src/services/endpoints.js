@@ -217,5 +217,9 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/checkout/updateShippingMethodSelection',
   },
+  getChildren: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getBirthdaySavings',
+  },
 };
 export default endpoints;

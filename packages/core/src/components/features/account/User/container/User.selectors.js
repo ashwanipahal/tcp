@@ -114,6 +114,11 @@ export const getAssociateId = createSelector(
   state => state && state.get('associateId')
 );
 
+export const getChildren = createSelector(
+  getPersonalDataState,
+  state => state && state.get('children')
+);
+
 export const getAirmilesDetails = createSelector(
   getAirmilesDataState,
   state => state && state.get('accountNumber')

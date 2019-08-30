@@ -211,6 +211,29 @@ export const formatAddress = address => ({
   phone1: address.phoneNumber,
 });
 
+export const calculateAge = (month, year) => {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentYear = currentDate.getFullYear();
+  let age = currentYear - year;
+  if (currentYear.toString() === year && month > currentMonth) {
+    return '0 mo';
+  }
+  if (month > currentMonth && age > 0) {
+    age -= 1;
+  }
+  if (age === 0) {
+    if (month > currentMonth) {
+      age = `${12 - month + currentMonth} mo`;
+    } else {
+      age = `${currentMonth - month} mo`;
+    }
+  } else {
+    age += ' yo';
+  }
+  return age;
+};
+
 export default {
   getIconPath,
   getFlagIconPath,
@@ -227,4 +250,5 @@ export default {
   getAddressFromPlace,
   formatAddress,
   getCacheKeyForRedis,
+  calculateAge,
 };
