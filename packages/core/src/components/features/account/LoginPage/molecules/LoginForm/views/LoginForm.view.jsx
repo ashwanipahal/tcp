@@ -13,6 +13,9 @@ import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import styles from '../styles/LoginForm.styles';
+import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
+import { Image } from '../../../../../../common/atoms';
+import { getIconPath } from '../../../../../../../utils';
 
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
@@ -34,6 +37,7 @@ class LoginForm extends React.PureComponent<Props> {
       pristine,
       variation,
       handleContinueAsGuest,
+      tooltipContent,
     } = this.props;
     return (
       <div className={className}>
@@ -65,7 +69,14 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
+              tooltipContent={tooltipContent}
             />
+
+            <span className="info-icon-img-wrapper">
+              <ReactTooltip message={tooltipContent} aligned="right">
+                <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+              </ReactTooltip>
+            </span>
             <BodyCopy component="div">
               <Field
                 name="rememberMe"
