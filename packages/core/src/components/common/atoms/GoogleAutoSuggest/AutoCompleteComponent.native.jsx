@@ -16,10 +16,15 @@ import {
 } from './AutoCompleteComponent.native.style';
 
 export const GooglePlacesInput = props => {
-  const { headerTitle, componentRestrictions, onValueChange } = props;
+  const { headerTitle, componentRestrictions, onValueChange, initialValue } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
     setFocussed(true);
+  };
+
+  const setValue = value => {
+    if (value) setFocussed(true);
+    return value;
   };
 
   const apiConfigObj = getAPIConfig();
@@ -41,7 +46,7 @@ export const GooglePlacesInput = props => {
           // 'details' is provided when fetchDetails = true
           return [data, details];
         }}
-        getDefaultValue={() => ''}
+        getDefaultValue={() => setValue(initialValue)}
         query={{
           key: googleApiKey,
           components: `country:${componentRestrictions.country[0]}`,
@@ -73,6 +78,7 @@ GooglePlacesInput.propTypes = {
     country: PropTypes.shape([]),
   }),
   onValueChange: PropTypes.func,
+  initialValue: PropTypes.string,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -81,6 +87,7 @@ GooglePlacesInput.defaultProps = {
     country: [],
   },
   onValueChange: () => {},
+  initialValue: '',
 };
 
 export default GooglePlacesInput;
