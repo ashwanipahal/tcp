@@ -46,7 +46,7 @@ exports[`PageHeadingWithLinks View should render correctly 1`] = `
       textAlign="left"
       variant="h6"
     >
-      test heading
+      test
     </Styled(Heading)>
   </Styled(BodyCopy)>
   <Styled(Row)
