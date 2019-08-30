@@ -5,19 +5,20 @@ import HomePageView from '../views';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../../../common/hoc/ThemeWrapper.constants';
 
 const mapStateToProps = state => {
-  const { Header = {}, Layouts = {}, Modules = {} } = state;
-  const headerPromo = Header.promoTextBannerCarousel;
-  const homepageSlots = Layouts.homepage ? Layouts.homepage.slots : [];
+  const headerPromo = state.Header && state.Header.promoTextBannerCarousel;
+  const homepageSlots = state.Layouts.homepage ? state.Layouts.homepage.slots : '';
+  const modules = state.Modules ? state.Modules : '';
+  const moduleSlots = {};
 
+  if (homepageSlots && Object.keys(modules).length) {
+    homepageSlots.forEach(slotItem => {
+      moduleSlots[slotItem.name] = modules[slotItem.contentId];
+      moduleSlots[slotItem.name].name = slotItem.moduleName;
+      return moduleSlots;
+    });
+  }
   return {
-    slots: homepageSlots
-      .map(slot => {
-        return {
-          ...slot,
-          data: Modules[slot.contentId],
-        };
-      })
-      .filter(item => item.data),
+    ...moduleSlots,
     headerPromo,
     appType: state[THEME_WRAPPER_REDUCER_KEY].get('APP_TYPE'),
   };
