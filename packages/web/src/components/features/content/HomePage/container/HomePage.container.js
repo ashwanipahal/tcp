@@ -8,16 +8,15 @@ HomePageView.pageInfo = {
 HomePageView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {
-  const { Layouts, Modules } = state;
-  const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
-
+  const homepageSlots = state.Layouts.homepage.slots;
+  const newObj = {};
+  homepageSlots.forEach(slotItem => {
+    newObj[slotItem.name] = state.Modules[slotItem.contentId];
+    newObj[slotItem.name].name = slotItem.moduleName;
+    return newObj;
+  });
   return {
-    slots: homepageSlots.map(slot => {
-      return {
-        ...slot,
-        data: Modules[slot.contentId],
-      };
-    }),
+    ...newObj,
   };
 };
 

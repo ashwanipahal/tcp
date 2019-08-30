@@ -1,32 +1,79 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 
-const returnModule = mod => mod.default;
+import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
-const HomePageView = dynamic({
-  modules: () => ({
-    moduleD: () => import('@tcp/core/src/components/common/molecules/ModuleD').then(returnModule),
-    moduleH: () => import('@tcp/core/src/components/common/molecules/ModuleH').then(returnModule),
-    moduleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
-    moduleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
-    moduleA: () => import('@tcp/core/src/components/common/molecules/ModuleA').then(returnModule),
-    moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
-  }),
-  render: ({ slots }, modules) => {
-    return [<HomePageSlots slots={slots} modules={modules} />, <GetCandid />];
-  },
-});
+const HomePageView = props => {
+  const {
+    slot_1: slotA,
+    slot_2: slotB,
+    slot_3: slotC,
+    slot_4: slotD,
+    slot_5: slotE,
+    slot_6: slotF,
+  } = props;
 
-HomePageView.defaultProps = {
-  name: null,
+  return (
+    <Fragment>
+      <SlotA {...slotA} />
+      <SlotB {...slotB} />
+      <SlotC {...slotC} />
+      <SlotD {...slotD} />
+      <SlotE {...slotE} />
+      <SlotF {...slotF} />
+      <GetCandid />
+    </Fragment>
+  );
 };
 
 HomePageView.propTypes = {
-  name: PropTypes.string,
+  slot_1: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_2: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_3: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_4: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_5: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_6: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+};
+
+HomePageView.defaultProps = {
+  slot_1: {},
+  slot_2: {},
+  slot_3: {},
+  slot_4: {},
+  slot_5: {},
+  slot_6: {},
 };
 
 export default errorBoundary(HomePageView);
