@@ -100,7 +100,8 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityId="userBirthday"
         activityTitle="+20%"
         dataLocatorPrefix="birthday"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-personal-info"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -269,7 +270,8 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         activityId="userBirthday"
         activityTitle="+20%"
         dataLocatorPrefix="birthday"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-personal-info"
       />
     </Styled(Col)>
     <Styled(Col)

@@ -65,12 +65,14 @@ class LoginView extends React.PureComponent {
       navigation,
       variation,
       handleContinueAsGuest,
+      loginError,
     } = this.props;
     return (
       <ScrollViewStyle>
         <LoginSection
           onSubmit={this.onSubmitHandler}
           labels={labels}
+          loginError={loginError}
           loginErrorMessage={loginErrorMessage}
           initialValues={initialValues}
           showRecaptcha={showRecaptcha}
@@ -105,6 +107,7 @@ LoginView.propTypes = {
   navigation: PropTypes.shape({}),
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  loginError: PropTypes.bool.isRequired,
 };
 
 LoginView.defaultProps = {

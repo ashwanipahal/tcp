@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking } from 'react-native';
+import { Dimensions, Linking, Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
 
@@ -56,6 +56,8 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
 };
 
 export const importGraphQLQueriesDynamically = query => {
+  // TODO - disabling the complexity till we find a better approach for this on Mobile app
+  // eslint-disable-next-line complexity
   return new Promise((resolve, reject) => {
     switch (query) {
       case 'footer':
@@ -84,6 +86,10 @@ export const importGraphQLQueriesDynamically = query => {
         break;
       case 'moduleL':
         resolve(require('../services/handler/graphQL/queries/moduleL'));
+        break;
+      case 'xappConfig':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/xappConfig'));
         break;
       default:
         importMoreGraphQLQueries({ query, resolve, reject });
@@ -430,6 +436,8 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
     }
   }
 };
+
+export const isAndroid = () => Platform.OS === 'android';
 
 export default {
   getSiteId,

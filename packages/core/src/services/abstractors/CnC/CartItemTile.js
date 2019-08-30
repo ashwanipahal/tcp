@@ -688,7 +688,7 @@ export const getCartData = ({
   });
 };
 
-export const flatCurrencyToCents = currency => {
+export const flatCurrencyToCents = (currency = 0) => {
   try {
     return parseFloat(parseFloat(currency.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]).toFixed(2));
   } catch (e) {
@@ -776,7 +776,7 @@ export const getUnqualifiedItems = () => {
   };
   const isCanadaSite = isCanada();
 
-  return Promise.resolve()
+  return executeStatefulAPICall(payload)
     .then((res = { body: {} }) => {
       if (responseContainsErrors(res)) {
         throw new ServiceResponseError(res);

@@ -48,20 +48,18 @@ class AddedToBagActions extends React.PureComponent<Props> {
         )}
         <ButtonWrapper>
           <CheckoutButton>
-            {isUserLoggedIn && (
+            {!isUserLoggedIn && (
               <BodyCopy
                 color="white"
                 fontWeight="extrabold"
                 fontFamily="secondary"
                 fontSize="fs13"
                 text={labels.checkout && labels.checkout.toUpperCase()}
-                onPress={() => {
-                  navigateToNestedRoute(navigation, 'HomeStack', 'Checkout');
-                }}
+                onPress={this.routeToCheckout}
               />
             )}
 
-            {!isUserLoggedIn && (
+            {/* {!isUserLoggedIn && (
               <BodyCopy
                 color="white"
                 fontWeight="extrabold"
@@ -70,7 +68,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                 text={labels.checkout && labels.checkout.toUpperCase()}
                 onPress={handleCartCheckout}
               />
-            )}
+            )} */}
           </CheckoutButton>
         </ButtonWrapper>
         <OpenLoginModal

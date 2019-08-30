@@ -78,20 +78,20 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
       colorFitsSizesMap &&
       colorFitsSizesMap.map(colorItem => ({
         title: (
-          <span>
+          <React.Fragment>
             <img
               alt=""
               className="selected-color-image"
               src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])}
             />
-            {colorItem.getIn(['color', 'name'])}
-          </span>
+            <span>{colorItem.getIn(['color', 'name'])}</span>
+          </React.Fragment>
         ),
         content: (
-          <span>
+          <React.Fragment>
             <img alt="" src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])} />
-            {colorItem.getIn(['color', 'name'])}
-          </span>
+            <span>{colorItem.getIn(['color', 'name'])}</span>
+          </React.Fragment>
         ),
         value: colorItem.getIn(['color', 'name']),
       }))
@@ -188,6 +188,10 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.value}` : `${labels.size}`;
   };
 
+  getColorLabel = (productDetail, labels) => {
+    return productDetail.itemInfo.isGiftItem === true ? `${labels.design}` : `${labels.color}`;
+  };
+
   displayErrorMessage = displayError => {
     this.setState({
       isErrorMessageDisplayed: displayError,
@@ -230,6 +234,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                 <Field
                   width={87}
                   id="color"
+                  selectListTitle={this.getColorLabel(item, labels)}
                   name={selectedColor}
                   component={ColorSelector}
                   options={colorList}

@@ -7,7 +7,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kAzzGY",
+        "componentId": "sc-chPdSV",
         "isStatic": false,
         "rules": Array [
           "
@@ -17,7 +17,10 @@ exports[`CartItemTile common component renders correctly 1`] = `
   border-bottom: 2px solid ",
           [Function],
           ";
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
+  .product {
+    padding-top: 6px;
+  }
   .padding-left-10 {
     padding-left: 4px;
   }
@@ -61,6 +64,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .responsive-edit-css {
     padding-top: 2px;
     cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15px;
   }
   .imageWrapper {
     position: relative;
@@ -87,6 +93,40 @@ exports[`CartItemTile common component renders correctly 1`] = `
     cursor: pointer;
     width: 10px;
     height: 10px;
+    padding-top: 0px;
+  }
+
+  .product-detail {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-detail-row {
+    width: 100%;
+  }
+
+  .unavailable-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .unavailable-error {
+    padding-top: 0px;
+  }
+
+  .product-detail-bag {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+  }
+
+  .label-responsive {
+    width: fit-content;
+    padding-right: 22px;
+  }
+
+  .label-responsive-price {
+    margin-right: 0px;
   }
 
   .product-tile-wrapper {
@@ -128,7 +168,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
 
       .label-responsive {
-        width: auto;
+        width: fit-content;
         margin-right: 22px;
       }
 
@@ -147,6 +187,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
       .responsive-edit-css {
         padding-top: 2px;
         cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 15px;
       }
     }
 
@@ -172,6 +215,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
         bottom: 0;
         right: 50%;
         cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 15px;
       }
       .bag-product-detail-wrapper {
         position: static;
@@ -212,6 +258,24 @@ exports[`CartItemTile common component renders correctly 1`] = `
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .updateOOSMiniBag {
+    /*margin-left: 56px;*/
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .parent- {
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    bottom: 17px;
+    right: 2px;
+    width: auto;
+  }
+
+  .tile-header {
+    position: relative;
+  }
+
   ",
           [Function],
           ";
@@ -223,7 +287,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kAzzGY",
+      "styledComponentId": "sc-chPdSV",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

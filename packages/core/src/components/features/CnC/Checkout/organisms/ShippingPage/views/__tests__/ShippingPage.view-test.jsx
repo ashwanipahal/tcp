@@ -22,7 +22,6 @@ describe('Shipping Page', () => {
       handleSubmit: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
-    tree.instance().checkPOBoxAddress();
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
     expect(tree).toMatchSnapshot();
     expect(ShippingFormVanilla).toHaveLength(1);

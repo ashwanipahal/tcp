@@ -14,6 +14,8 @@ import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 
+const formName = 'checkoutShipping';
+
 const ShippingForm = ({
   addressLabels: { addressFormLabels },
   handleSubmit,
@@ -23,7 +25,6 @@ const ShippingForm = ({
   shippingLabels,
   smsSignUpLabels,
   selectedShipmentId,
-  checkPOBoxAddress,
   addressPhoneNo,
   emailSignUpLabels,
   isGuest,
@@ -31,6 +32,7 @@ const ShippingForm = ({
   orderHasPickUp,
   shipmentMethods,
   loadShipmentMethods,
+  routeToPickupPage,
 }) => {
   return (
     <>
@@ -44,17 +46,16 @@ const ShippingForm = ({
       >
         {shippingLabels.sectionHeader}
       </BodyCopy>
-      <form name="checkoutShipping" className={className} onSubmit={handleSubmit}>
+      <form name={formName} className={className} onSubmit={handleSubmit}>
         <div className="address-form">
           <FormSection name="address">
             <AddressFields
               addressFormLabels={addressFormLabels}
               showDefaultCheckbox={false}
-              formName="checkoutShipping"
+              formName={formName}
               formSection="address"
               variation="secondary"
               dispatch={dispatch}
-              checkPOBoxAddress={checkPOBoxAddress}
               addressPhoneNo={addressPhoneNo}
               loadShipmentMethods={loadShipmentMethods}
             />
@@ -65,12 +66,13 @@ const ShippingForm = ({
             <SMSFormFields
               labels={smsSignUpLabels}
               showDefaultCheckbox={false}
-              formName="checkoutShipping"
+              formName={formName}
               formSection="smsSignUp"
               variation="secondary"
               isOrderUpdateChecked={isOrderUpdateChecked}
               dispatch={dispatch}
               borderBottom
+              addressPhoneNo={addressPhoneNo}
             />
           </FormSection>
         )}
@@ -123,7 +125,7 @@ const ShippingForm = ({
           <div className="shipment-methods-form">
             <ShipmentMethods
               shipmentMethods={shipmentMethods}
-              formName="checkoutShipping"
+              formName={formName}
               formSection="shipmentMethods"
               selectedShipmentId={selectedShipmentId}
               shipmentHeader={shippingLabels.shipmentHeader}
@@ -131,6 +133,8 @@ const ShippingForm = ({
           </div>
         </FormSection>
         <CheckoutFooter
+          hideBackLink={!!orderHasPickUp}
+          backLinkHandler={routeToPickupPage}
           nextButtonText={shippingLabels.billingText}
           backLinkText={shippingLabels.backLinkText}
         />
@@ -148,7 +152,6 @@ ShippingForm.propTypes = {
   shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
-  checkPOBoxAddress: PropTypes.func,
   addressPhoneNo: PropTypes.number,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
@@ -156,13 +159,13 @@ ShippingForm.propTypes = {
   orderHasPickUp: PropTypes.bool,
   shipmentMethods: PropTypes.shape([]),
   loadShipmentMethods: PropTypes.func.isRequired,
+  routeToPickupPage: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {
   className: '',
   isOrderUpdateChecked: false,
   selectedShipmentId: null,
-  checkPOBoxAddress: () => {},
   addressPhoneNo: null,
   isGuest: true,
   isUsSite: true,
@@ -177,7 +180,7 @@ const validateMethod = createValidateMethod({
 });
 
 export default reduxForm({
-  form: 'checkoutShipping', // a unique identifier for this form
+  form: formName, // a unique identifier for this form
   ...validateMethod,
   destroyOnUnmount: false,
 })(withStyles(ShippingForm, styles));

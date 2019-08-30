@@ -39,13 +39,13 @@ class PickupMainContactEditForm extends React.Component {
     const { isEditing, labels } = this.props;
     return isEditing ? (
       <div className="header">
-        <BodyCopy fontSize="fs26" fontFamily="primary" fontWeight="regular">
+        <BodyCopy fontSize="fs28" fontFamily="primary" fontWeight="regular">
           {labels.pickupContactText}
         </BodyCopy>
       </div>
     ) : (
       <div className="header">
-        <BodyCopy fontSize="fs26" fontFamily="primary" fontWeight="regular">
+        <BodyCopy fontSize="fs28" fontFamily="primary" fontWeight="regular">
           {labels.pickupContactText}
         </BodyCopy>
         <div className="EditAnchor">
@@ -53,7 +53,8 @@ class PickupMainContactEditForm extends React.Component {
             underline
             anchorVariation="secondary"
             fontSize="fs12"
-            dataLocator=""
+            dataLocator="pickup-pickupContact-edit-anchor"
+            noLink
             onClick={this.handleEnterEditModeClick}
             className="couponModal_print_anchortext"
           >
@@ -87,6 +88,7 @@ class PickupMainContactEditForm extends React.Component {
               fixedWidth
               closeIconDataLocator="coupondetailmodalcrossicon"
               onRequestClose={onClose}
+              overlayClassName="pick-up-overlay"
             >
               <div className="pickupModalContainer">
                 <div className="pickupModalHeader">{labels.titleEditPickup}</div>

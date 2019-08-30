@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderView component should renders correctly 1`] = `
+<Styled(View)>
+  <TrackOrderTopSection
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="TrackOrderForm"
+    getFormState={[Function]}
+    handleSubmit={[MockFunction]}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    onChangeForm={[MockFunction]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <TrackOrderBottomSection
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    toggleModal={[MockFunction]}
+  />
+</Styled(View)>
+`;
+
+exports[`TrackOrderView component should renders correctly with generic error message 1`] = `
+<Styled(View)>
+  <TrackOrderTopSection
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+  />
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    message={null}
+    status="error"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontSize="fs14"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+      <Styled(View)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          customStyle={Object {}}
+          data-locator="contact_us_form_help"
+          locator=""
+          onPress={null}
+          text=""
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
+      <Styled(BodyCopy)
+        fontSize="fs14"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(View)>
+  </Styled(Notification)>
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="TrackOrderForm"
+    getFormState={[Function]}
+    handleSubmit={[MockFunction]}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    onChangeForm={[MockFunction]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <TrackOrderBottomSection
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    toggleModal={[MockFunction]}
+  />
+</Styled(View)>
+`;
+
+exports[`TrackOrderView component should renders correctly with notification component 1`] = `
+<Styled(View)>
+  <TrackOrderTopSection
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+  />
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    message="Please enter valid values"
+    status="error"
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="TrackOrderForm"
+    getFormState={[Function]}
+    handleSubmit={[MockFunction]}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    onChangeForm={[MockFunction]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+  <TrackOrderBottomSection
+    labels={
+      Object {
+        "trackOrder": Object {},
+      }
+    }
+    toggleModal={[MockFunction]}
+  />
+</Styled(View)>
+`;

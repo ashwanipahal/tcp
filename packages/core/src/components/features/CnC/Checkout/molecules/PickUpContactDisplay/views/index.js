@@ -1,1 +1,1 @@
-export { default } from './PickUpContactDisplay';
+export { default } from './PickUpContactDisplay.view';

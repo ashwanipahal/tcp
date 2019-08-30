@@ -22,6 +22,7 @@ const ModalHeader = ({
   return (
     <Fragment>
       <ModalCloseIcon
+        className="close-modal"
         closeFunc={closeFunc}
         closeIconDataLocator={closeIconDataLocator}
         closeIconLeftAligned={closeIconLeftAligned}

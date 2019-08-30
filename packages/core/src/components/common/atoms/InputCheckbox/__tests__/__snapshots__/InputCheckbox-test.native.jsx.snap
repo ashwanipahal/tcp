@@ -2,13 +2,13 @@
 
 exports[`InputCheckbox component should render correctly 1`] = `
 <Styled(View)
+  fontSize="fs12"
   id="checkbox"
   isChecked={false}
   onChange={[Function]}
   onClick={[MockFunction]}
   onStartShouldSetResponder={[Function]}
   pointerEvents="auto"
-  rightText="checkbox"
   val=""
 >
   <Styled(View)>
@@ -43,13 +43,13 @@ exports[`InputCheckbox component should render correctly 1`] = `
 
 exports[`InputCheckbox component should render correctly with checked state false 1`] = `
 <Styled(View)
+  fontSize="fs12"
   id="checkbox"
   isChecked={false}
   onChange={[Function]}
   onClick={[MockFunction]}
   onStartShouldSetResponder={[Function]}
   pointerEvents="auto"
-  rightText="checkbox"
   val=""
 >
   <Styled(View)>
