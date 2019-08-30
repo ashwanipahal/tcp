@@ -87,8 +87,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "test-prepush"
     }
+  },
+  "test-prepush": {
+    "*.{js,jsx}": [
+      "yarn test:web",
+      "yarn test:app"
+    ]
   },
   "lint-staged": {
     "*.{js,jsx,json,css,md}": [
@@ -97,9 +104,7 @@
     ],
     "*.{js,jsx}": [
       "eslint",
-      "stylelint",
-      "yarn test:staged",
-      "yarn test:app:staged"
+      "stylelint"
     ],
     "*.css": "stylelint"
   },
