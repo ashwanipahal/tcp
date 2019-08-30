@@ -16,14 +16,11 @@ describe('SignupModalAbstractor', () => {
   });
 
   test('Signup modal Abstractor SMS subscription ', () => {
-    return SignupModalAbstractor.subscribeSms(
-      'baseURL',
-      'relURI',
-      { payload: 'mobile_phone' },
-      'post'
-    ).then(data => {
-      expect(data.success).toBeTruthy();
-    });
+    return SignupModalAbstractor.subscribeSms('baseURL', 'relURI', '4083067249', 'post').then(
+      data => {
+        expect(data.success).toBeTruthy();
+      }
+    );
   });
 
   test('Signup modal Abstractor Email Verification ', () => {

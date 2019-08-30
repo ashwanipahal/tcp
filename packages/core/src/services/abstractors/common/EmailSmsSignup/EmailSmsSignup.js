@@ -30,7 +30,7 @@ const Abstractor = {
    * @param {String} method REST method
    * @return {Object} return promise.
    */
-  subscribeSms: (baseURI, relURI, payload = {}, method) => {
+  subscribeSms: (baseURI, relURI, payload = '', method = 'post') => {
     const { ACQUISITION_ID } = getAPIConfig();
 
     const params = {
