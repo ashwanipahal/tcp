@@ -6,7 +6,7 @@ const initialState = fromJS({
   toastMessage: null,
 });
 
-describe('ChangePassword Reducer', () => {
+describe('Toast Reducer', () => {
   it('should return default state', () => {
     const state = ToastMessageReducer(undefined, {});
     expect(state.get('toastMessage')).toBeNull();

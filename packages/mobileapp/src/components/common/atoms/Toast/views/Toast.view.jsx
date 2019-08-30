@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 
@@ -18,20 +19,29 @@ const styles = {
   },
 };
 
-class ToastView extends React.PureComponent<Props> {
+class ToastView extends React.PureComponent {
+  static propTypes = {
+    errorMessage: PropTypes.string.isRequired,
+    toastMessageReset: PropTypes.bool.isRequired,
+  };
+
   constructor() {
     super();
     this.toastRef = React.createRef();
   }
 
-  render() {
+  componentDidUpdate() {
     const { errorMessage, toastMessageReset } = this.props;
+    if (errorMessage) {
+      this.toastRef.current.show(`${errorMessage}`, 500, () => {
+        toastMessageReset();
+      });
+    }
+  }
+
+  render() {
     return (
       <Fragment>
-        {errorMessage &&
-          this.toastRef.current.show(`${errorMessage}`, 500, () => {
-            toastMessageReset();
-          })}
         <Toast
           ref={this.toastRef}
           style={styles.ToastStyle}
@@ -46,9 +56,5 @@ class ToastView extends React.PureComponent<Props> {
     );
   }
 }
-
-ToastView.defaultProps = {
-  text: '',
-};
 
 export default ToastView;

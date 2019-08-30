@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ToastView from '../views/Toast.view';
 import getToastMsgResponse from './Toast.selectors';
 import { resetToastMsg } from './Toast.actions';
 
-class ToastContainer extends React.PureComponent<Props> {
+class ToastContainer extends PureComponent {
+  static propTypes = {
+    errorMessage: PropTypes.string.isRequired,
+    toastMessageReset: PropTypes.bool.isRequired,
+  };
+
   render() {
     const { errorMessage, toastMessageReset } = this.props;
     return <ToastView toastMessageReset={toastMessageReset} errorMessage={errorMessage} />;
