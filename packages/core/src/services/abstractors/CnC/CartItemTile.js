@@ -662,7 +662,7 @@ export const getProductInfoForTranslationData = query => {
       promotion: false,
       pagetype: 'boolean',
       fields:
-        'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price',
+        'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
     },
     webService: endpoints.getProductInfoForTranslationByPartNumber,
   });
@@ -706,7 +706,7 @@ export const getCartData = ({
   });
 };
 
-export const flatCurrencyToCents = currency => {
+export const flatCurrencyToCents = (currency = 0) => {
   try {
     return parseFloat(parseFloat(currency.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]).toFixed(2));
   } catch (e) {

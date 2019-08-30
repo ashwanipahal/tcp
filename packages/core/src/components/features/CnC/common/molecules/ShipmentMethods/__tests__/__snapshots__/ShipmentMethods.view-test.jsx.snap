@@ -28,7 +28,6 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     >
       <Field
-        className="radio-method"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -176,7 +175,6 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     >
       <Field
-        className="radio-method"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
