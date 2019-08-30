@@ -68,10 +68,10 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
   };
 
-  changeShipmentMethods = () => {
-    const { loadShipmentMethods } = this.props;
+  changeShipmentMethods = (e, value) => {
+    const { loadShipmentMethods, formName } = this.props;
     if (loadShipmentMethods) {
-      loadShipmentMethods();
+      loadShipmentMethods({ state: value, formName });
     }
   };
 
