@@ -7,7 +7,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
     fadeOutDuration={1000}
     opacity={1}
     position="top"
-    positionValue={200}
+    positionValue={20}
     style={
       Object {
         "backgroundColor": "#000000",

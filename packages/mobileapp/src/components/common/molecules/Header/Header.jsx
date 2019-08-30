@@ -4,7 +4,6 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import HeaderPromo from '../HeaderPromo/HeaderPromo';
 import { readCookieMobileApp } from '../../../../utils/utils';
-import ToastContainer from '../../atoms/Toast/container/Toast.container';
 
 import {
   Container,
@@ -95,7 +94,6 @@ class Header extends React.PureComponent<Props> {
 
     return (
       <SafeAreaViewStyle>
-        <ToastContainer />
         <Container data-locator={getLocator('global_headerpanel')}>
           <MessageContainer>
             <BodyCopy

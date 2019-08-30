@@ -11,6 +11,7 @@ import {
   ModalHeadingWrapper,
   ImageWrapper,
 } from '../Modal.style.native';
+import ToastContainer from '../../../../../../../mobileapp/src/components/common/atoms/Toast/container/Toast.container';
 
 // How To use this react native modal
 // import this component in your file.
@@ -52,7 +53,8 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   return (
     <SafeAreaView>
       <StatusBar hidden />
-      <Modal style={{ zIndex: -1 }} transparent={false} visible={isOpen} animationType={animationType}>
+      <Modal transparent={false} visible={isOpen} animationType={animationType}>
+        <ToastContainer />
         {heading && (
           <RowWrapper>
             <ModalHeadingWrapper>

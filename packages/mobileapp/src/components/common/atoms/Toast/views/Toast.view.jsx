@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Alert } from 'react-native';
 import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 
@@ -31,14 +30,13 @@ class ToastView extends React.PureComponent<Props> {
       <Fragment>
         {errorMessage &&
           this.toastRef.current.show(`${errorMessage}`, 500, () => {
-            Alert.alert('hello close');
             toastMessageReset();
           })}
         <Toast
           ref={this.toastRef}
           style={styles.ToastStyle}
           position="top"
-          positionValue={200}
+          positionValue={20}
           fadeInDuration={750}
           fadeOutDuration={1000}
           opacity={1}
