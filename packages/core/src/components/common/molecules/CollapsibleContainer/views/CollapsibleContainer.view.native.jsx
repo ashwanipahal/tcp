@@ -20,11 +20,13 @@ class CollapsibleContainer extends React.Component {
     body: PropTypes.node.isRequired,
     className: PropTypes.string,
     defaultOpen: PropTypes.bool,
+    getExpandedState: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
     defaultOpen: false,
+    getExpandedState: null,
   };
 
   constructor(props) {
@@ -36,6 +38,10 @@ class CollapsibleContainer extends React.Component {
 
   toggleCollapseState = () => {
     const { isExpanded } = this.state;
+    const { getExpandedState } = this.props;
+    if (getExpandedState) {
+      getExpandedState(!isExpanded);
+    }
     this.setState({ isExpanded: !isExpanded });
   };
 

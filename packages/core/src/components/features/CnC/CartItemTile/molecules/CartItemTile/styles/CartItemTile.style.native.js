@@ -64,7 +64,7 @@ const ProductSubDetailLabel = styled.View`
 const ProductListPrice = styled.View`
   padding-left: 5px;
 `;
-const EditButton = styled.View`
+const EditButton = styled.TouchableOpacity`
   align-items: flex-end;
   flex: 1;
 `;
