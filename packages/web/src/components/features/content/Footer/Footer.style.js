@@ -9,14 +9,19 @@ export default css`
   .footer_top_candidate_a .candidate_a_inline_container_button {
     text-align: center;
   }
+  .candidate_a_inline_container_button button{
+    white-space: nowrap;
+  }
   .footer_top_candidate_a .candidate_a_inline_container_button button {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
       ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;
   }
-
-  .footer_top_candidate_a .heading_text {
+  .candidate-b_buttons {
+    padding: 11px 48px 0 48px;
+  }
+  .heading_text, .footer_top_candidate_a .heading_text  {
     margin-bottom: 15px;
     text-align: center;
 
@@ -24,10 +29,9 @@ export default css`
       color: #6a6a6a;
     }
     .style2 {
-      color: #4b9fdd;
+      color: ${props => props.theme.colorPalette.primary.main};
     }
   }
-
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
     font-size: 12px;
     line-height: 2.08;
