@@ -52,6 +52,12 @@ const getRouteHref = noSlugPath => {
   return ROUTING_MAP[pathValue] || ROUTING_MAP.home;
 };
 
+/**
+ * @summary This is to return the Page (inside of Pages folder) which is mapped to the route path
+ * for ex: /home will return /index file name.
+ * @param {String || Object} toPath - list of color options
+ * @returns {String || Object} Mapped actual page href path
+ */
 export const getMappedPageHref = (toPath = '') => {
   if (typeof toPath === 'string') {
     if (isCompleteHTTPUrl(toPath)) return toPath;
@@ -68,6 +74,12 @@ export const getMappedPageHref = (toPath = '') => {
   };
 };
 
+/**
+ * @summary This is to return the asPath with additional slug values appended
+ * @param {String} as - asPath
+ * @param {String} siteId - siteId dynamic value to be appended
+ * @returns {String} Path with slug value appended
+ */
 export const getAsPathWithSlug = (as, siteId = getSiteId()) => {
   return isCompleteHTTPUrl(as) ? as : `/${siteId}${as}`;
 };

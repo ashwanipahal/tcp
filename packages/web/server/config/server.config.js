@@ -19,7 +19,7 @@ const envIds = {
   prod: 'prod',
 };
 const HEALTH_CHECK_PATH = '/healthcheck';
-const ERROR_REDIRECT_STATUS = 301;
+const ERROR_REDIRECT_STATUS = 302;
 const BRAND_CONFIG = brandIds.tcp;
 const ENV_CONFIG = envIds.local;
 const ENV_CONFIG_FILE_PATH = BRAND_CONFIG + '_' + ENV_CONFIG; // Set this to change the env file
