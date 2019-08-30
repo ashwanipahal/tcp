@@ -4,10 +4,10 @@ import styled, { css } from 'styled-components/native';
 import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 
 const getShape = props => {
-  const { theme, orverrideGymboree } = props;
+  const { theme, overrideGymboree } = props;
   const { isGymboree } = theme;
 
-  if (isGymboree && !orverrideGymboree) {
+  if (isGymboree && !overrideGymboree) {
     return `border-radius: 25px;`;
   }
   return `
@@ -100,7 +100,7 @@ export const CustomStyleText = styled(StyledText)`
       ? `
 color: ${props.color || props.theme.colorPalette.black};
 font-family: ${props.theme.typography.fonts.secondary};
-font-size: ${props.theme.fonts.fontSize.button.size}px;
+font-size: ${props.theme.typography.fontSizes.fs14};
 font-weight: ${props.theme.typography.fontWeights.black};
 padding: 12px 32px;
 `
@@ -112,7 +112,7 @@ padding: 12px 32px;
 width: 40px;
 height: 100px;
 color: ${props.theme.colorPalette[props.color || 'black']};
-font-size: ${props.theme.fonts.fontSize.button.size}px
+font-size: ${props.theme.typography.fontSizes.fs14};
 font-family: ${props.theme.typography.fonts.primary};
 font-weight: ${props.theme.typography.fontWeights.semibold};
 border: 1px solid ${props.theme.colorPalette.black};
@@ -131,7 +131,7 @@ margin : 40px;
    ${props.color === 'blue' ? ` color: ${props.theme.colorPalette.blue[700]};` : ''};
    ${props.color === 'gray' ? ` color: ${props.theme.colorPalette.gray[700]};` : ''};
    font-family: ${props.theme.typography.fonts.secondary};
-   font-size: ${props.theme.fonts.fontSize.button.size}px;
+   font-size: ${props.theme.typography.fontSizes.fs14};
    font-weight: ${props.theme.typography.fontWeights.extrabold};
    text-align:center;
    padding: 12px 32px;
