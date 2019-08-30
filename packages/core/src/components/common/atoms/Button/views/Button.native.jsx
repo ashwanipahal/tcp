@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
 
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
@@ -31,6 +32,7 @@ type Props = {
   url?: string,
   disableButton?: boolean,
   locator?: string,
+  onPress?: Function,
 };
 
 const CustomButton = (props: Props) => {
@@ -41,6 +43,7 @@ const CustomButton = (props: Props) => {
     fullWidth,
     customStyle,
     disableButton,
+    onPress,
     ...otherProps
   }: Props = props;
   const textValue = text || '';
@@ -59,12 +62,12 @@ const CustomButton = (props: Props) => {
       accessibilityRole="button"
       style={customStyle}
       disabled={disableButton}
-      onPress={openUrl}
+      onPress={onPress || openUrl}
       testID={getLocator(locator)}
     >
-      <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
+      <StyledText fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
-      </Text>
+      </StyledText>
     </TouchableOpacity>
   );
 };
@@ -77,6 +80,7 @@ CustomButton.defaultProps = {
   url: '',
   disableButton: false,
   locator: '',
+  onPress: null,
 };
 
 export default withStyles(CustomButton, style);

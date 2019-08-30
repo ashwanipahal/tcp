@@ -105,15 +105,17 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         fontWeight="regular"
       />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         fontSizeVariation="small"
         href="#"
         locator=""
         noLink={true}
-        noUnderline={true}
+        onPress={null}
         target="_blank"
         text=""
+        underline={true}
         visible={false}
       />
     </Styled(View)>
@@ -206,15 +208,17 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         fontWeight="regular"
       />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         fontSizeVariation="small"
         href="#"
         locator=""
         noLink={true}
-        noUnderline={true}
+        onPress={null}
         target="_blank"
         text=""
+        underline={true}
         visible={false}
       />
     </Styled(View)>

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackOrderBottomSection component should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy) />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel="undefined
+                undefined"
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="track_order_login"
+        locator=""
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+      <Styled(BodyCopy) />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel="undefined
+                undefined"
+      anchorVariation="primary"
+      customStyle={Object {}}
+      locator="track_order_click_here"
+      onPress={null}
+      text=""
+      underline={true}
+      visible={false}
+    />
+    <Styled(BodyCopy) />
+  </Styled(View)>
+</Styled(View)>
+`;

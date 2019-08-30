@@ -5,7 +5,6 @@ import {
   setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
-import { closeNavigationDrawer } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import {
   toggleEmailSignupModal,
   submitEmailSignup,
@@ -29,6 +28,7 @@ const mapStateToProps = state => {
       footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
+      referAFriend: referAFriendButtonLabels,
     },
   } = state.Labels;
   const { EmailSignUp = {}, SmsSignUp = {} } = state;
@@ -45,6 +45,7 @@ const mapStateToProps = state => {
     emailSignup: Footer.emailSignupBtn,
     smsSignup: Footer.smsSignupBtn,
     referAFriend: Footer.referFriendBtn,
+    referAFriendButtonLabels,
     copyrightText: Footer.copyrightText,
     referenceID,
     emailSignupLabels,
@@ -56,9 +57,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeNavigationDrawer: () => {
-      dispatch(closeNavigationDrawer());
-    },
     getUserInfoAction: () => {
       dispatch(getUserInfoPOC());
     },

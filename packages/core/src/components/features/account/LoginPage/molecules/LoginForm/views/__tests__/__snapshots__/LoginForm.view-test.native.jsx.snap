@@ -118,6 +118,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       />
       <Styled(View)>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           customStyle={Object {}}
           dataLocator=""
@@ -159,10 +160,12 @@ exports[`LoginForm component should renders correctly 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={null}
       text=""
       url=""
     />
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="secondary"
       class="underlink"
       customStyle={

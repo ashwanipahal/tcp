@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductListItem component should renders ProductListItem correctly 1`] = `
+<StyledNativeComponent
+  badge1=""
+  badge2=""
+  badge3=""
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": undefined,
+      "attrs": Array [],
+      "displayName": "Styled(WithTheme(ListItem))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "WithTheme(ListItem)",
+        "render": [Function],
+      },
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  item={
+    Object {
+      "colorsMap": Array [],
+      "productInfo": Object {
+        "name": "tcp",
+      },
+    }
+  }
+  listPriceForColor={10}
+  loyaltyPromotionMessage=""
+  offerPriceForColor={12}
+  onAddToBag={[Function]}
+  onFavorite={[Function]}
+/>
+`;

@@ -44,7 +44,7 @@ const ProductList = props => {
   let gridIndex = 0;
 
   return (
-    <div className={className}>
+    <ul className={className}>
       {products.map((item, index) => {
         const isEvenElement = gridIndex % 2;
         if (typeof item === 'string') {
@@ -94,7 +94,7 @@ const ProductList = props => {
           </div>
         );
       })}
-    </div>
+    </ul>
   );
 };
 

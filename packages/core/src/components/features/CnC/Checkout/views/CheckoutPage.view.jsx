@@ -1,27 +1,27 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
+import BillingPage from '../organisms/BillingPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
-import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
+// import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
-  componentDidUpdate() {
-    const { router, cartOrderItems } = this.props;
-    const currentStage = router.query.section;
-
-    const availableStages = CheckoutProgressUtils.getAvailableStages(cartOrderItems);
-
-    let requestedStage = '';
-    if (availableStages.length > 3) {
-      requestedStage = CHECKOUT_STAGES.PICKUP;
-    } else {
-      requestedStage = CHECKOUT_STAGES.SHIPPING;
-    }
-    CheckoutProgressUtils.routeToStage(requestedStage, cartOrderItems, false, currentStage);
-  }
+  // componentDidUpdate() {
+  // const { router, cartOrderItems } = this.props;
+  // const currentStage = router.query.section;
+  // const availableStages = CheckoutProgressUtils.getAvailableStages(cartOrderItems);
+  // let requestedStage = '';
+  // if (availableStages.length > 3) {
+  //   requestedStage = CHECKOUT_STAGES.PICKUP;
+  // } else {
+  //   requestedStage = CHECKOUT_STAGES.SHIPPING;
+  // }
+  // CheckoutProgressUtils.routeToStage(requestedStage, cartOrderItems, false, currentStage);
+  // }
 
   onPickUpSubmit = data => {
     const { onPickupSubmit } = this.props;
@@ -68,6 +68,7 @@ class CheckoutPage extends React.PureComponent {
       loadShipmentMethods,
       // onPickupSubmit,
       orderHasShipping,
+      routeToPickupPage,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -107,8 +108,10 @@ class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             handleSubmit={submitShippingSection}
             loadShipmentMethods={loadShipmentMethods}
+            routeToPickupPage={routeToPickupPage}
           />
         )}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && <BillingPage />}
       </div>
     );
   };
@@ -140,6 +143,7 @@ CheckoutPage.propTypes = {
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
+  routeToPickupPage: PropTypes.func.isRequired,
 };
 
 export default withRouter(CheckoutPage);

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, FormSection, SubmissionError } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
-
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
@@ -84,16 +83,12 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
       orderHasShipping,
     } = this.props;
+
     const { isEditing, isReset } = this.state;
 
     return (
       <div className={className}>
         <div className="container">
-          <CheckoutSectionTitleDisplay
-            title={pickUpLabels.title}
-            dataLocator="pickup-title"
-            className="summary-title-pick-up"
-          />
           {pickupError && (
             <ErrorMessage
               error={pickupError}
@@ -103,6 +98,12 @@ class PickUpFormPart extends React.Component {
               dataLocator="pickup-error"
             />
           )}
+          <CheckoutSectionTitleDisplay
+            title={pickUpLabels.title}
+            dataLocator="pickup-title"
+            className="summary-title-pick-up"
+          />
+
           <form onSubmit={handleSubmit} className="checkoutPickupForm">
             <div className="pickUpContact" dataLocator="pickup-contact">
               <FormSection name="pickUpContact" className="pickUpContact">

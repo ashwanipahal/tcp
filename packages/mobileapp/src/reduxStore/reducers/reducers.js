@@ -5,6 +5,7 @@ import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPag
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
+import ProductListingReducer from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
@@ -16,14 +17,16 @@ import PointsHistoryReducer from '@tcp/core/src/components/features/account/comm
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AirmilesBannerReducer from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.reducer';
-
+import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.reducer';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 
 import {
+  SESSIONCONFIG_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
   LAYOUT_REDUCER_KEY,
@@ -44,6 +47,7 @@ import {
   AIRMILES_BANNER_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY,
   APICONFIG_REDUCER_KEY,
   ADDEDITCREDITCARD_REDUCER_KEY,
   USER_REDUCER_KEY,
@@ -52,6 +56,7 @@ import {
   ADDEDITADDRESS_REDUCER_KEY,
   ADDRESS_VERIFICATION_REDUCER_KEY,
   TOAST_REDUCER_KEY,
+  TRACK_ORDER_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -68,16 +73,23 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
+const filteredProductListingReducer = createFilteredReducer(
+  ProductListingReducer,
+  PRODUCT_LISTING_REDUCER_KEY
+);
+
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
 const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
+  [PRODUCT_LISTING_REDUCER_KEY]: filteredProductListingReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
@@ -101,6 +113,7 @@ const rootReducer = combineReducers({
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
+  [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
 });
 
 export default rootReducer;

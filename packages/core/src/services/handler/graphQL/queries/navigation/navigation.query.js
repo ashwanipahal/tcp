@@ -4,10 +4,10 @@ const buildQuery = ({ brand, country, channel }) => `
       description
       catgroupId
       name
-      longDescription
       id
       seoUrl
       seoToken
+      longDescription
       mainCategory {
         set {
           key
@@ -33,15 +33,17 @@ const buildQuery = ({ brand, country, channel }) => `
                 text
                 title
                 target
-                external
               }
             }
             shopBySize {
               text {
                 text
               }
-              richText {
+              linkList {
+                url
+                title
                 text
+                target
               }
             }
           }
@@ -56,9 +58,10 @@ const buildQuery = ({ brand, country, channel }) => `
         description
         groupIdentifier
         groupIdentifierName
-        name
         longDescription
+        name
         id
+        longDescription
         mainCategory {
           promoBadge {
             text
@@ -73,9 +76,10 @@ const buildQuery = ({ brand, country, channel }) => `
           description
           groupIdentifier
           groupIdentifierName
-          name
           longDescription
+          name
           id
+          longDescription
         }
       }
     }

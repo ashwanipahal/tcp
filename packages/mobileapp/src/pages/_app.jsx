@@ -3,7 +3,7 @@ import { Platform, StatusBar, StyleSheet, View, UIManager } from 'react-native';
 import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
-import { createAPIConfig, switchAPIConfig, resetApiConfig } from '@tcp/core/src/utils';
+import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tcp/core/src/utils';
 import env from 'react-native-config';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
@@ -41,7 +41,7 @@ export class App extends React.PureComponent {
     this.setState({ apiConfig });
 
     // Enable Layout animations for android
-    if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+    if (isAndroid() && UIManager.setLayoutAnimationEnabledExperimental) {
       UIManager.setLayoutAnimationEnabledExperimental(true);
     }
   }

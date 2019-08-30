@@ -16,7 +16,6 @@ export default css`
 
   .header-topnav__promo-area--tablet {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    margin-top: 16px;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       display: none;
@@ -35,5 +34,12 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       color: ${props => props.theme.colors.BLACK};
     }
+  }
+
+  .header-topnav__promo-area-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
   }
 `;

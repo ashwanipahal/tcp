@@ -6,6 +6,7 @@ import {
   getCartData,
   getUnqualifiedItems,
   removeItem,
+  getProductInfoForTranslationData,
 } from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -15,10 +16,69 @@ import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import { routerPush } from '../../../../../utils';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
+
+export const filterProductsBrand = (arr, searchedValue) => {
+  const obj = [];
+  const filterArray = arr.filter(value => {
+    return value.productInfo.itemBrand === searchedValue;
+  });
+  filterArray.forEach(item => {
+    obj.push(item.productInfo.productPartNumber);
+  });
+  return obj;
+};
+
+const getProductsTypes = orderItems => {
+  let tcpProducts = [];
+  let gymProducts = [];
+  if (orderItems) {
+    tcpProducts = filterProductsBrand(orderItems, 'TCP');
+    gymProducts = filterProductsBrand(orderItems, 'GYM');
+  }
+  return {
+    tcpProducts,
+    gymProducts,
+  };
+};
+
+export function* getTranslatedProductInfo(cartInfo) {
+  const productypes = getProductsTypes(cartInfo.orderDetails.orderItems);
+  const gymProdpartNumberList = productypes.gymProducts;
+  const tcpProdpartNumberList = productypes.tcpProducts;
+  let tcpProductsResults;
+  let gymProductsResults;
+  if (tcpProdpartNumberList.length) {
+    tcpProductsResults = yield call(getProductInfoForTranslationData, tcpProdpartNumberList.join());
+  }
+
+  if (gymProdpartNumberList.length) {
+    gymProductsResults = yield call(getProductInfoForTranslationData, gymProdpartNumberList.join());
+  }
+  gymProductsResults = (gymProductsResults && gymProductsResults.body.response.products) || [];
+  tcpProductsResults = (tcpProductsResults && tcpProductsResults.body.response.products) || [];
+
+  return [...gymProductsResults, ...tcpProductsResults];
+}
+
+function createMatchObject(res, translatedProductInfo) {
+  res.orderDetails.orderItems.forEach(orderItemInfo => {
+    const orderItem = orderItemInfo;
+    translatedProductInfo.forEach(item => {
+      if (orderItem.productInfo.productPartNumber === item.prodpartno) {
+        orderItem.productInfo.name = item.product_name;
+        orderItem.productInfo.color.name = item.TCPColor;
+      }
+    });
+  });
+}
 
 export function* getOrderDetailSaga() {
   try {
     const res = yield call(getOrderDetailsData);
+    const translatedProductInfo = yield call(getTranslatedProductInfo, res);
+
+    createMatchObject(res, translatedProductInfo);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
@@ -28,7 +88,13 @@ export function* getOrderDetailSaga() {
 export function* getCartDataSaga(payload) {
   try {
     const {
-      payload: { isRecalculateTaxes, isCheckoutFlow, isCartNotRequired, updateSmsInfo } = {},
+      payload: {
+        isRecalculateTaxes,
+        isCheckoutFlow,
+        isCartNotRequired,
+        updateSmsInfo,
+        onCartRes,
+      } = {},
     } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
@@ -42,6 +108,14 @@ export function* getCartDataSaga(payload) {
       isCanada,
       isRadialInvEnabled,
     });
+    const translatedProductInfo = yield call(getTranslatedProductInfo, res);
+    // yield getFinalTranslatedOrderDetails( res.orderDetails.orderItems ,getTranslatedProductInfo.body.response.products);
+
+    createMatchObject(res, translatedProductInfo);
+
+    if (onCartRes) {
+      yield call(onCartRes, res);
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
@@ -62,12 +136,22 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+export function* routeForCartCheckout(recalc) {
+  let section = '/shipping';
+  const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
+  if (orderHasPickup) {
+    section = '/pickup';
+  }
+  const path = `/checkout${section}`;
+  return yield call(routerPush, path, path, { recalc });
+}
+
 export function* checkoutCart(recalc) {
   const isLoggedIn = yield select(getUserLoggedInState);
   if (!isLoggedIn) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
-  return yield call(routerPush, '/checkout', '/checkout', { recalc });
+  return yield call(routeForCartCheckout, recalc);
 }
 
 function* confirmStartCheckout() {
@@ -124,6 +208,7 @@ export function* BagPageSaga() {
     BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
     removeUnqualifiedItemsAndCheckout
   );
+  yield takeLatest(BAGPAGE_CONSTANTS.ROUTE_FOR_CART_CHECKOUT, routeForCartCheckout);
 }
 
 export default BagPageSaga;

@@ -9,7 +9,8 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
-import { createAPIConfig } from '@tcp/core/src/utils';
+import { createAPIConfig, getAPIConfig, isDevelopment } from '@tcp/core/src/utils';
+import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
@@ -65,6 +66,14 @@ class TCPWebApp extends App {
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
+    const { envId, raygunApiKey, channelId } = getAPIConfig();
+    initErrorReporter({
+      isServer: false,
+      envId,
+      raygunApiKey,
+      channelId,
+      isDevelopment: isDevelopment(),
+    });
   }
 
   componentDidUpdate() {
@@ -101,7 +110,7 @@ class TCPWebApp extends App {
             optimizelyHeaderValue = JSON.parse(
               res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
             );
-          } catch {
+          } catch (err) {
             optimizelyHeaderValue = {};
           }
           optimizelyHeadersObject[item] = optimizelyHeaderValue;

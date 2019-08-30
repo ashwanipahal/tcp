@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
+<Styled(View)
+  dataLocator="alternate-View"
+>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="Alternate-checkbox"
+      enableSuccessCheck={false}
+      name="hasAlternatePickup"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View) />
+    <Styled(View) />
+  </Styled(View)>
+  <Styled(View) />
+</Styled(View)>
+`;
+
+exports[`Coupon component should renders correctly when data is present 1`] = `
+<Styled(View)
+  dataLocator="alternate-View"
+>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="Alternate-checkbox"
+      enableSuccessCheck={false}
+      name="hasAlternatePickup"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View) />
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          fontFamily="primary"
+          fontSize="fs10"
+          fontWeight="regular"
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(ContactFormFields)
+      className="pick-up-alternate-input"
+      isCondensed={false}
+      labels={Object {}}
+      showEmailAddress={true}
+      showPhoneNumber={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
