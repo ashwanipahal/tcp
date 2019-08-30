@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { change, Field, reduxForm } from 'redux-form';
+import { change, Field, reduxForm, reset } from 'redux-form';
 import { BodyCopy, Button, RichText, SelectBox } from '@tcp/core/src/components/common/atoms';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -59,6 +59,15 @@ class CountrySelectorModal extends React.Component {
     );
   };
 
+  closeModal = () => {
+    const { closeModal, dispatch, updateLanguage, updateCountry, updateCurrency } = this.props;
+    closeModal();
+    dispatch(reset('CountrySelectorForm'));
+    updateCountry('');
+    updateCurrency('');
+    updateLanguage('');
+  };
+
   render() {
     const {
       className,
@@ -66,7 +75,6 @@ class CountrySelectorModal extends React.Component {
       currenciesMap,
       handleSubmit,
       isModalOpen,
-      closeModal,
       labels,
       languages,
       noteContent,
@@ -75,7 +83,7 @@ class CountrySelectorModal extends React.Component {
       <Modal
         fixedWidth
         isOpen={isModalOpen}
-        onRequestClose={() => closeModal()}
+        onRequestClose={this.closeModal}
         heading={labels && labels.lbl_global_country_selector_header}
         overlayClassName="TCPModal__Overlay"
         className={`${className} TCPModal__Content`}
@@ -84,6 +92,7 @@ class CountrySelectorModal extends React.Component {
         maxWidth="450px"
         minHeight="643px"
         inheritedStyles={modalStyles}
+        shouldCloseOnOverlayClick={false}
       >
         <div>
           <BodyCopy

@@ -42,6 +42,8 @@ export default css`
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 27px;
+    overflow-y: auto;
+    max-height: 100vh;
 
     @media ${props => props.theme.mediaQuery.medium} {
       width: 80%;

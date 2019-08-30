@@ -6,6 +6,7 @@ import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import pages from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -280,7 +281,7 @@ export const getModifiedLanguageCode = id => {
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location, '/home', newSiteId);
+    routerPush(window.location.href, pages.home, null, newSiteId);
   }
 };
 
@@ -362,6 +363,8 @@ export const createAPIConfig = resLocals => {
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
@@ -372,6 +375,7 @@ export const createAPIConfig = resLocals => {
     ...graphQLConfig,
     ...countryConfig,
     ...brandConfig,
+    catalogId,
     isMobile: false,
     cookie: null,
   };
