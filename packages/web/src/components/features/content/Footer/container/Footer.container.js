@@ -19,6 +19,7 @@ import { getUserLoggedInState } from '@tcp/core/src/components/features/account/
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
+import LinkConfig from '@tcp/core/src/config/footerLinkActionMapping.config';
 import FooterView from '../views';
 
 const mapStateToProps = state => {
@@ -52,26 +53,27 @@ const mapStateToProps = state => {
     smsSignupLabels,
     loginModalMountedState: loginModalOpenState(state),
     isLoggedIn: getUserLoggedInState(state),
+    linkConfig: LinkConfig,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    footerActions: (dispatchFn, payload) => {
+      dispatch(dispatchFn(payload));
+    },
     getUserInfoAction: () => {
       dispatch(getUserInfoPOC());
     },
     getOrderDetailAction: () => {
       dispatch(getOrderDetail());
     },
-
     openEmailSignUpModal: () => {
       dispatch(toggleEmailSignupModal({ isModalOpen: true }));
     },
-
     setLoginModalMountState: payload => {
       dispatch(setLoginModalMountedState(payload));
     },
-
     openSmsSignUpModal: () => {
       dispatch(toggleSmsSignupModal({ isModalOpen: true }));
     },
