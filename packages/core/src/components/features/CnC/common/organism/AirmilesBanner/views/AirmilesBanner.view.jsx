@@ -14,7 +14,38 @@ import styles from '../styles/AirmilesBanner.style';
 // @flow
 
 class AirmilesBanner extends React.PureComponent<Props> {
-  state = { touched: false };
+  state = {
+    touched: false,
+    expanded: false,
+    isValidPromoField: false,
+  };
+
+  componentWillMount() {
+    const { airmilesBannerData } = this.props;
+    if (airmilesBannerData && !!airmilesBannerData.collectorNumber) {
+      this.setState({ expanded: false, isValidPromoField: true });
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { airmilesBannerData } = this.props;
+    const {
+      promoField,
+      syncErrorObj: { syncError },
+    } = nextProps;
+    const isValidPromoField = this.checkIsValidPromoField(promoField, syncError);
+    if (!airmilesBannerData.collectorNumber) {
+      this.setState({
+        isValidPromoField,
+      });
+    }
+
+    if (isValidPromoField) {
+      this.setState({
+        expanded: false,
+      });
+    }
+  }
 
   renderTextBox = ({ input, ...otherParams }) => {
     // eslint-disable-next-line
@@ -22,9 +53,15 @@ class AirmilesBanner extends React.PureComponent<Props> {
     return <TextBox input={input} {...otherParams} />;
   };
 
+  handleEditClick = () => this.setState({ expanded: true });
+
   toggleTouched = () => {
     const { touched } = this.state;
     this.setState({ touched: !touched });
+  };
+
+  checkIsValidPromoField = (promoField, syncError) => {
+    return !!promoField && promoField.length > 2 && !(syncError && syncError.promoId);
   };
 
   handleSubmit = (data: { promoId: string, orderId: string }) => {
@@ -37,7 +74,14 @@ class AirmilesBanner extends React.PureComponent<Props> {
   };
 
   render() {
-    const { className, airmilesBannerData, labels, handleSubmit } = this.props;
+    const {
+      className,
+      airmilesBannerData: { collectorNumber },
+      labels,
+      handleSubmit,
+      promoField,
+    } = this.props;
+    const { expanded, isValidPromoField } = this.state;
 
     return (
       <div className={className}>
@@ -60,16 +104,33 @@ class AirmilesBanner extends React.PureComponent<Props> {
               data-locator={getLocator('order_ledger_item_label')}
             >
               <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 4, small: 3 }}>
-                <Field
-                  id="promoId"
-                  placeholder={labels.collectorNumber}
-                  name="promoId"
-                  type="text"
-                  component={TextBox}
-                  maxLength={11}
-                  value={airmilesBannerData.collectorNumber}
-                  dataLocator="airmile-banner-collectorNumber"
-                />
+                {!!isValidPromoField && !expanded ? (
+                  <div>
+                    {!!collectorNumber && !!promoField && promoField === collectorNumber
+                      ? collectorNumber
+                      : promoField}
+                    <BodyCopy
+                      bodySize="one"
+                      fontFamily="secondary"
+                      fontSize="fs10"
+                      textAlign="left"
+                      color="secondary"
+                      onClick={this.handleEditClick}
+                    >
+                      Edit
+                    </BodyCopy>
+                  </div>
+                ) : (
+                  <Field
+                    id="promoId"
+                    placeholder={labels.collectorNumber}
+                    name="promoId"
+                    type="text"
+                    component={TextBox}
+                    maxLength={11}
+                    dataLocator="airmile-banner-collectorNumber"
+                  />
+                )}
                 <span className="airmileBannerTooltip">
                   <span className="info-icon-img-wrapper">
                     <ReactToolTip message={labels.collectorFlyout} aligned="right">
@@ -90,7 +151,6 @@ class AirmilesBanner extends React.PureComponent<Props> {
                   component={TextBox}
                   maxLength={50}
                   dataLocator="airmile-banner-offerCode"
-                  value={airmilesBannerData.offerCode}
                 />
 
                 <span className="airmileBannerTooltip">
