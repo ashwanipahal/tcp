@@ -6,6 +6,7 @@ import {
   getShowNotificationState,
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
+  getForgotPasswordErrorMessage
 } from './ForgotPassword.selectors';
 import { resetUserInfo } from '../../User/container/User.actions';
 import {
@@ -32,6 +33,7 @@ class ForgotPasswordContainer extends React.PureComponent {
       showForgotPasswordForm,
       labels,
       showLogin,
+      loginErrorMessage
     } = this.props;
     const initialValues = {
       rememberMe: true,
@@ -49,6 +51,7 @@ class ForgotPasswordContainer extends React.PureComponent {
         successFullResetEmail={successFullResetEmail}
         resetLoginState={resetLoginState}
         showLogin={showLogin}
+        loginErrorMessage={loginErrorMessage}
       />
     );
   }
@@ -98,7 +101,7 @@ const mapStateToProps = state => {
     successFullResetEmail: toggleSuccessfulEmailSection(state),
     isUserLoggedIn: getUserLoggedInState(state),
     loginError: getLoginError(state),
-    loginErrorMessage: getLoginErrorMessage(state),
+    loginErrorMessage: getForgotPasswordErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
   };
 };

@@ -25,14 +25,17 @@ export function* ForgotPassword(action) {
       yield put(getResetPasswordSuccess({ state: true }));
     }
   } catch (err) {
+    const { errorCode, errorMessage, errorResponse } = err.response.body;
     let error = {};
     /* istanbul ignore else */
     if (err instanceof Error) {
       error = err.response;
+      console.log('error--------------------', error)
     }
     /* istanbul ignore else */
-    if (error && error.errors) {
-      yield put(userNotAvailable(error));
+    if (error) {
+      debugger
+      return yield put(userNotAvailable(error.body.errors[0]));
     }
     yield put(getResetPasswordFail({ state: true }));
   }

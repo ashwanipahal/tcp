@@ -19,7 +19,10 @@ export const forgotPassword = args => {
       // TODO - Set API Helper to filter if error exists in response
     }
     return res.body.contact || [];
-  });
+  })
+  .catch(err => {
+      throw err;
+    });
 };
 
 export default {
