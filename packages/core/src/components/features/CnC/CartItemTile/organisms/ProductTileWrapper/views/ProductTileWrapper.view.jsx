@@ -52,12 +52,12 @@ class ProductTileWrapper extends React.PureComponent<props> {
         fontSize="fs12"
         component="span"
         className="removeErrorMessage"
-        fontWeight="normal"
         onClick={() => removeCartItem(getUnavailableOOSItems)}
       >
         <u>remove</u>
       </BodyCopy>
     );
+
     remove.splice(1, 0, newRemove);
     return remove;
   };
