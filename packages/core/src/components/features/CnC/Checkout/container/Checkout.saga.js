@@ -268,7 +268,7 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
-function* loadCheckoutDetail() {
+function* loadCheckoutDetail(defaultShippingMethods) {
   const getIsShippingRequired = yield select(getIsOrderHasShipping); // to be fixed
   if (getIsShippingRequired) {
     let shippingAddress = yield select(getShippingDestinationValues);
@@ -281,7 +281,7 @@ function* loadCheckoutDetail() {
       shippingAddress.zipCode;
     const isGuestUser = yield select(isGuest);
     // const isMobile = getIsMobile;
-    if (isGuestUser || (!hasShipping && !defaultAddress)) {
+    if (defaultShippingMethods || isGuestUser || (!hasShipping && !defaultAddress)) {
       // isMobile check is left
 
       // if some data is missing request defaults (new user would have preselected
@@ -295,7 +295,7 @@ function* loadCheckoutDetail() {
   }
 }
 
-function* loadCartAndCheckoutDetails(isRecalcRewards) {
+function* loadCartAndCheckoutDetails(isRecalcRewards, isInitialLoad) {
   yield call(
     loadUpdatedCheckoutValues,
     null,
@@ -303,7 +303,7 @@ function* loadCartAndCheckoutDetails(isRecalcRewards) {
     null,
     isRecalcRewards,
     undefined,
-    loadCheckoutDetail
+    loadCheckoutDetail.bind(null, isInitialLoad)
   );
 }
 
@@ -329,7 +329,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   // let pendingPromises = [
   yield call(loadGiftWrappingOptions);
   // ];
-  yield call(loadCartAndCheckoutDetails, isRecalcRewards);
+  yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
   //   let loadCartAndCheckoutDetails = () => {
   //     return this.loadUpdatedCheckoutValues(null, null, null, isRecalcRewards)
   //     .then(loadSelectedOrDefaultShippingMethods);
