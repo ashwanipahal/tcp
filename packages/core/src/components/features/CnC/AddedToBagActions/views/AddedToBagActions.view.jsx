@@ -9,6 +9,7 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
+import BagConfirmationModal from '../../BagPage/views/BagConfirmationModal.view';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
@@ -17,6 +18,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
       e.preventDefault();
     }
     routeForBagCheckout();
+  };
+
+  closeModalAndHandleCheckout = () => {
+    const { closeCheckoutConfirmationModal, handleCartCheckout } = this.props;
+    closeCheckoutConfirmationModal();
+    return handleCartCheckout();
   };
 
   render() {
@@ -28,7 +35,15 @@ class AddedToBagActions extends React.PureComponent<Props> {
       checkoutModalMountedState,
       handleCartCheckout,
       closeCheckoutModalMountState,
+      modalInfo,
+      closeCheckoutConfirmationModal,
+      removeUnqualifiedItemsAndCheckout,
+      isEditingItem,
     } = this.props;
+    const { showModal, isEditingItem: modalEditingItem } = modalInfo;
+    if (modalEditingItem) {
+      labels.confirmationText = labels.editConfirmationText;
+    }
     return (
       <div className={className}>
         {showAddTobag && (
@@ -57,7 +72,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           <Button
             data-locator={getLocator('addedtobag_btncheckout')}
             className="checkout"
-            onClick={handleCartCheckout}
+            onClick={() => handleCartCheckout(isEditingItem)}
           >
             <BodyCopy
               component="span"
@@ -76,6 +91,14 @@ class AddedToBagActions extends React.PureComponent<Props> {
           setLoginModalMountState={closeCheckoutModalMountState}
           handleContinueAsGuest={this.routeToCheckout}
           handleAfterLogin={this.routeToCheckout}
+        />
+        <BagConfirmationModal
+          labels={labels}
+          isOpen={showModal}
+          closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
+          removeUnqualifiedItemsAndCheckout={
+            modalEditingItem ? this.closeModalAndHandleCheckout : removeUnqualifiedItemsAndCheckout
+          }
         />
       </div>
     );

@@ -7,6 +7,7 @@ const initialState = fromJS({
   errors: false,
   moduleXContent: [],
   showConfirmationModal: false,
+  isEditingItem: false,
   uiFlags: {
     isPayPalEnabled: false,
     lastItemUpdatedId: null,
@@ -52,9 +53,9 @@ function setCartItemsUpdating(state, isCartItemUpdating) {
 const returnBagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
-      return state.set('showConfirmationModal', true);
+      return state.set('showConfirmationModal', true).set('isEditingItem', action.payload);
     case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:
-      return state.set('showConfirmationModal', false);
+      return state.set('showConfirmationModal', false).set('isEditingItem', false);
     case BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING:
       return setCartItemsUpdating(state, action.payload);
     default:

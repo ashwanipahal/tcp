@@ -173,20 +173,24 @@ function* confirmStartCheckout() {
   return false;
 }
 
-export function* startCartCheckout() {
-  // this.store.dispatch(setVenmoPaymentInProgress(false));
-  let res = yield call(getUnqualifiedItems);
-  res = res || [];
-  yield all(
-    res.map(({ orderItemId, isOOS }) =>
-      isOOS
-        ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
-        : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
-    )
-  );
-  const oOSModalOpen = yield call(confirmStartCheckout);
-  if (!oOSModalOpen) {
-    yield call(checkoutCart);
+export function* startCartCheckout(payload) {
+  if (payload.isEditingItem) {
+    yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(payload.isEditingItem));
+  } else {
+    // this.store.dispatch(setVenmoPaymentInProgress(false));
+    let res = yield call(getUnqualifiedItems);
+    res = res || [];
+    yield all(
+      res.map(({ orderItemId, isOOS }) =>
+        isOOS
+          ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
+          : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
+      )
+    );
+    const oOSModalOpen = yield call(confirmStartCheckout);
+    if (!oOSModalOpen) {
+      yield call(checkoutCart);
+    }
   }
 }
 
