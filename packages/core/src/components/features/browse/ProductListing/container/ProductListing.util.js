@@ -1,9 +1,11 @@
 const getIndex = data => {
-  return data && data.some(category => !!category.url) ? data.length : 0;
+  return data && data.some(category => !!(category.categoryContent && category.categoryContent.url))
+    ? data.length
+    : 0;
 };
 
 // TODO - add the required information from the commented lines
-const getRequiredCategoryData = data => {
+export const getRequiredCategoryData = data => {
   return {
     categoryId: data.categoryContent.id,
     title: data.categoryContent.name,
@@ -23,11 +25,11 @@ export const extractCategory = category => {
     let categoryId;
     if (Number.isInteger(category)) {
       categoryId = category;
-    } else if (category.lastIndexOf('/') === category.length - 1) {
-      categoryId = category.split('/');
+    } else if (category && category.lastIndexOf('/') === category.length - 1) {
+      categoryId = category && category.split('/');
       categoryId = categoryId.length > 1 ? categoryId[categoryId.length - 2] : categoryId[0];
     } else {
-      categoryId = category.split('/').pop();
+      categoryId = category && category.split('/').pop();
     }
     return categoryId;
   } catch (error) {
@@ -41,30 +43,35 @@ export const findCategoryIdandName = (data, category) => {
   const index = getIndex(data);
   let iterator = 0;
   let categoryFound = [];
-  const categoryId = extractCategory(category);
+  const categoryId = (category && extractCategory(category)) || '';
+
   while (iterator < index) {
-    const navUrl = extractCategory(data[iterator].url);
+    const subCategoryArr =
+      (data[iterator].subCategories && Object.keys(data[iterator].subCategories)) || [];
+    let newCatArr = [];
     if (
-      data[iterator].categoryId === categoryId ||
-      navUrl.toLowerCase() === categoryId.toLowerCase()
+      data[iterator] &&
+      data[iterator].subCategories &&
+      !data[iterator].subCategories.length &&
+      subCategoryArr.length
+    ) {
+      for (let groupCount = 0; groupCount < subCategoryArr.length; groupCount += 1) {
+        newCatArr = newCatArr.concat(
+          data[iterator].subCategories[subCategoryArr[groupCount]].items
+        );
+      }
+    } else if (data[iterator].subCategories) {
+      newCatArr = newCatArr.concat(data[iterator].subCategories);
+    }
+
+    const navUrl = extractCategory(data[iterator].categoryContent.url);
+    if (
+      data[iterator].categoryContent.categoryId === categoryId ||
+      (navUrl && navUrl.toLowerCase()) === (categoryId && categoryId.toLowerCase())
     ) {
       categoryFound.push(getRequiredCategoryData(data[iterator]));
-    } else if (
-      // TODO - only looking for items in Categories. Should look for all the groups
-      data[iterator].subCategories &&
-      data[iterator].subCategories.Categories &&
-      data[iterator].subCategories.Categories.items &&
-      data[iterator].subCategories.Categories.items.length
-    ) {
-      categoryFound = findCategoryIdandName(
-        data[iterator].subCategories.Categories.items,
-        category
-      );
-      if (categoryFound.length) {
-        categoryFound.push(getRequiredCategoryData(data[iterator]));
-      }
-    } else if (data[iterator].subCategories && data[iterator].subCategories.length) {
-      categoryFound = findCategoryIdandName(data[iterator].subCategories, category);
+    } else if (newCatArr && newCatArr.length) {
+      categoryFound = findCategoryIdandName(newCatArr, category);
       if (categoryFound.length) {
         categoryFound.push(getRequiredCategoryData(data[iterator]));
       }
@@ -170,7 +177,9 @@ export const getCatId = categoryNameList => {
 
 export const getDesiredL3 = (catNameL3, bucketingConfig) => {
   return !catNameL3 && bucketingConfig.L3Left.length
-    ? bucketingConfig.L3Left[0] && bucketingConfig.L3Left[0].name
+    ? bucketingConfig.L3Left[0] &&
+        bucketingConfig.L3Left[0].categoryContent &&
+        bucketingConfig.L3Left[0].categoryContent.name
     : catNameL3;
 };
 

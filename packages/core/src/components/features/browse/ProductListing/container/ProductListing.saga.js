@@ -15,10 +15,13 @@ const operatorInstance = new ProductsOperator();
 function* fetchPlpProducts() {
   try {
     const state = yield select();
-    const reqObj = operatorInstance.getProductListingBucketedData(state);
-    const res = yield call(instanceProductListing.getProducts, reqObj);
-    const reqObj1 = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
-    const plpProducts = yield call(instanceProductListing.getProducts, reqObj1);
+    let reqObj = operatorInstance.getProductListingBucketedData(state);
+    if (reqObj.isFetchFiltersAndCountReq) {
+      const res = yield call(instanceProductListing.getProducts, reqObj);
+      reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
+    }
+    const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
+    operatorInstance.updateBucketingConfig(plpProducts);
     yield put(setListingFirstProductsPage({ ...plpProducts }));
     yield put(setPlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
@@ -32,6 +35,7 @@ function* fetchMoreProducts() {
     yield put(setPlpLoadingState({ isLoadingMore: true }));
     const reqObj = operatorInstance.getMoreBucketedProducts(state);
     const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
+    operatorInstance.updateBucketingConfig(plpProducts);
     yield put(setPlpProducts({ ...plpProducts }));
     yield put(setPlpLoadingState({ isLoadingMore: false }));
   } catch (err) {

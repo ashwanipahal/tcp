@@ -19,7 +19,8 @@ const Abstractor = {
         seoToken.startsWith('content-')
           ? seoToken.replace(new RegExp('content-', 'g'), 'content/')
           : `c/${seoToken || catgroupId}`
-      }`
+      }` ||
+      ''
     );
   },
   getData: (module, data) => {
@@ -52,9 +53,13 @@ const Abstractor = {
         }
         subCat.hasL3 = subCategory.subCategories && subCategory.subCategories.length;
         subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
+        subCat.categoryContent.url = Abstractor.constructUrl(subCategory.categoryContent);
+        subCat.categoryContent.categoryId = subCategory.categoryContent.catgroupId;
         subCat.subCategories.map(subCategoryL3 => {
           const subCatL3 = subCategoryL3;
           subCatL3.url = Abstractor.constructUrl(subCategoryL3.categoryContent);
+          subCatL3.categoryContent.url = Abstractor.constructUrl(subCategoryL3.categoryContent);
+          subCatL3.categoryContent.categoryId = subCategoryL3.categoryContent.catgroupId;
           return subCatL3;
         });
         subCategories[category].items.push(subCat);

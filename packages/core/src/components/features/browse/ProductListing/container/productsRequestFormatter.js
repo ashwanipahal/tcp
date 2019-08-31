@@ -18,10 +18,12 @@ import {
   getDesiredL3,
   isRequiredL2L1,
   getBreadCrumb,
+  getRequiredCategoryData,
 } from './ProductListing.util';
 import PAGES from '../../../../../constants/pages.constants';
 import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
 import { getLastLoadedPageNumber } from './ProductListing.selectors';
+import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
 
 // Dummy store value till this user info is available
 const userStoreView = {
@@ -49,7 +51,7 @@ export default class ProductsOperator {
   constructor(store) {
     this.bucketingConfig = {
       start: 0,
-      productsToFetchPerLoad: 20,
+      productsToFetchPerLoad: PRODUCTS_PER_LOAD,
       L3Left: [],
       currL2NameList: [],
       bucketingSeqScenario: false,
@@ -157,6 +159,7 @@ export default class ProductsOperator {
       hasShortImage: false,
       categoryNameList,
       location,
+      isFetchFiltersAndCountReq: true,
     };
     // isHideBundleProduct);
   };
@@ -211,18 +214,18 @@ export default class ProductsOperator {
     );
     this.bucketingConfig.availableL3 = [...updatedAvailableL3];
     this.bucketingConfig.L3Left = [...updatedAvailableL3];
-    // const l2currentNavigationIds = res.currentNavigationIds;
+    const l2currentNavigationIds = res.currentNavigationIds;
 
     // We check if there is any L3 category available to make unbxd call else resolving promise
-    // if (!this.bucketingConfig.L3Left.length) {
-    //   return Promise.resolve();
-    // }
+    if (!this.bucketingConfig.L3Left.length) {
+      return Promise.resolve();
+    }
 
     // We are checking if the scroll point is available or not. If yes then this is the case of browser back and we need to do achoring operation.
     // if(parseInt(getSessionStorage('SCROLL_POINT'), 10) || 0) {
     //   return this.fetchProductsCachedCount(categoryNameList, l2currentNavigationIds);
     // }
-    categoryNameList.push(this.bucketingConfig.L3Left[0]);
+    categoryNameList.push(getRequiredCategoryData(this.bucketingConfig.L3Left[0]));
     // Making the category path of the L3 according to the sequence which is there in L3left.
     const categoryPathMap = categoryNameList
       ? categoryNameList.map(item => item && (item.categoryId || item.categoryContent.id)).join('>')
@@ -422,7 +425,17 @@ export default class ProductsOperator {
       extraParams: '',
       shouldApplyUnbxdLogic: this.shouldApplyUnbxdLogic,
       hasShortImage,
+      categoryNameList,
     };
+  };
+
+  updateBucketingConfig = res => {
+    const updatedBucketingConfig = this.bucketingLogic.updateBucketingParamters(
+      res,
+      this.bucketingConfig
+    );
+    ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
+    // res.currentNavigationIds = l2currentNavigationIds;
   };
 
   addCustomUserInfoToProducts(products) {
@@ -501,7 +514,7 @@ export default class ProductsOperator {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     // const state = this.store.getState();
     // const sort = productListingStoreView.getAppliedSort(state);
-    const sort = [];
+    const sort = null;
     // If this is not a bucketing scenario and if the sort parameter is applied then we need to follow the original approach.
     if (this.shouldApplyUnbxdLogic && this.bucketingConfig.bucketingSeqScenario && !sort) {
       // If no L3 are left to load means we have brought all the products in current L2, then we need to resolve the promise.
@@ -510,9 +523,11 @@ export default class ProductsOperator {
       }
       // const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
       // const sort = productListingStoreView.getAppliedSort(state);
+      const sort = null;
+      const appliedFiltersIds = null;
       const categoryNameList = [...this.bucketingConfig.currL2NameList];
       // Pushing the first L3 available in L3left variable
-      categoryNameList.push(this.bucketingConfig.L3Left[0]);
+      categoryNameList.push(getRequiredCategoryData(this.bucketingConfig.L3Left[0]));
       const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
       // Constructing the category path of the L3
       const categoryPathMap = categoryNameList
@@ -522,8 +537,9 @@ export default class ProductsOperator {
         state,
         filtersAndSort: appliedFiltersAndSort,
         pageNumber: false,
-        location: routingInfoStoreView.getHistory(this.store.getState()).location,
-        start: this.bucketingConfig.start,
+        // location: routingInfoStoreView.getHistory(this.store.getState()).location,
+        location: window.location,
+        startProductCount: this.bucketingConfig.start,
         numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
         categoryPathMap,
       });

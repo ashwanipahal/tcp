@@ -349,7 +349,7 @@ const getCatMap = (product, bucketingSeqConfig) => {
 const getRequiredL3 = (shouldApplyUnbxdLogic, bucketingSeqConfig, idx) => {
   return shouldApplyUnbxdLogic
     ? bucketingSeqConfig.desiredL3
-    : bucketingSeqConfig.requiredChildren[idx].name;
+    : bucketingSeqConfig.requiredChildren[idx].categoryContent.name;
 };
 const getListPriceResponse = product => {
   return product.min_list_price === product.min_offer_price

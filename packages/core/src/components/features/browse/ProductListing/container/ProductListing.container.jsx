@@ -21,11 +21,23 @@ import {
 import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
+function getIsShowCategoryGrouping(state) {
+  const isL2Category = state.ProductListing.get('breadCrumbTrail').length === 2;
+  // const isNotAppliedSort = !state.productListing.appliedSortId;
+  const isNotAppliedSort = !null;
+  const appliedFilters = state.ProductListing.appliedFiltersIds;
+  const isNotAppliedFilter =
+    (appliedFilters && appliedFilters.length > 0 && !sumValues(appliedFilters)) || true;
+
+  return isL2Category && isNotAppliedSort && isNotAppliedFilter;
+}
+
 function getProductsAndTitleBlocks(state) {
   const productBlocks = getLoadedProductsPages(state);
   // const injectionHandler = injectProductGridItem(state);
   const productsAndTitleBlocks = [];
   let lastProductsAndTitleBlock;
+  let lastCategoryName = null;
 
   productBlocks &&
     productBlocks.forEach((block, blockIndex) => {
@@ -44,7 +56,11 @@ function getProductsAndTitleBlocks(state) {
 
           // push: If we should group and we hit a new category name push on array
           // injectionHandler.seperator(productsAndTitleBlock, categoryName);
-
+          const shouldGroup = getIsShowCategoryGrouping(state);
+          if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
+            productsAndTitleBlock.push(categoryName);
+            lastCategoryName = categoryName;
+          }
           // push: product onto block
           productsAndTitleBlock.push(product);
         });
@@ -68,6 +84,7 @@ class ProductListingContainer extends React.PureComponent {
   render() {
     const {
       productsBlock,
+      products,
       currentNavIds,
       navTree,
       breadCrumbs,
@@ -124,10 +141,12 @@ function mapStateToProps(state) {
     currentNavIds: state.ProductListing.currentNavigationIds,
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
-    currentNavIds: getCategoryId(state),
+    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
+    breadCrumbs: processBreadCrumbs(
+      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
+    ),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     totalProductsCount: state.ProductListing.totalProductsCount,

@@ -38,11 +38,11 @@ class BucketingBL {
   updateBucketingParamters = (res, bucketingConfig) => {
     const temp = { ...bucketingConfig };
     const { productsToFetchPerLoad } = temp;
-    let { start } = temp;
+    const { start } = temp;
     const productsFecthedTillNow = start + productsToFetchPerLoad;
     const productsLeft = res.productsInCurrCategory - productsFecthedTillNow;
     // The start for the next call will be the products which have been fetched till now.
-    start = productsFecthedTillNow;
+    temp.start = productsFecthedTillNow;
     // If the products be fetched are less than what are left , then we will fetch the remaining products in the next L3 call.
     if (productsToFetchPerLoad > productsLeft) {
       temp.productsToFetchPerLoad = productsLeft;

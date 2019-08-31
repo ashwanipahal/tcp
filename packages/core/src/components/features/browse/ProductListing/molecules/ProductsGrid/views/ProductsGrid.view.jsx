@@ -227,7 +227,7 @@ class ProductsGrid extends React.Component {
                     return (
                       <ProductList
                         isPerfectBlock={isPerfectBlock}
-                        products={block}
+                        productsBlock={block}
                         className={`${className} product-list`}
                         labels={labels}
                         {...otherProps}
