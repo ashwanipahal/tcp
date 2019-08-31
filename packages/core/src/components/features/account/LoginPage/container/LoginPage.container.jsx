@@ -22,7 +22,7 @@ import {
   getLabels,
 } from './LoginPage.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
-import {toastMessageInfo} from '../../../../../../../mobileapp/src/components/common/atoms/Toast/container/Toast.actions';
+import { toastMessageInfo } from '../../../../../../../mobileapp/src/components/common/atoms/Toast/container/Toast.actions';
 
 import LoginView from '../views';
 
@@ -35,8 +35,9 @@ class LoginPageContainer extends React.PureComponent {
       variation,
       toastMessage,
       loginErrorMessage,
+      loginError,
     } = this.props;
-    if (loginErrorMessage) {
+    if (!prevProps.loginError && loginError) {
       toastMessage(loginErrorMessage);
     }
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
@@ -138,7 +139,7 @@ LoginPageContainer.propTypes = {
   closeModal: PropTypes.bool.isRequired,
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func,
-  toastMessage:PropTypes.string.isRequired
+  toastMessage: PropTypes.string.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
