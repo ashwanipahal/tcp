@@ -34,6 +34,7 @@ import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 
+const formName = 'checkoutPickup';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
@@ -85,6 +86,7 @@ class PickUpFormPart extends React.Component {
       onPickUpSubmit,
     } = this.props;
     const { isEditing, isReset } = this.state;
+
     return (
       <ScrollView>
         <Container>
@@ -101,8 +103,9 @@ class PickUpFormPart extends React.Component {
             <CheckoutSectionTitleDisplay title={pickUpLabels.title} dataLocator="pickup-title" />
             <PickUpForm>
               <FormSection name="pickUpContact">
-                {!isGuest ? (
+                {isGuest ? (
                   <ContactFormFields
+                    formName={formName}
                     className="pickup-contact-guest-form"
                     showEmailAddress
                     showPhoneNumber
@@ -110,6 +113,7 @@ class PickUpFormPart extends React.Component {
                   />
                 ) : (
                   <PickupMainContactEditForm
+                    formName={formName}
                     dispatch={dispatch}
                     isMobile={isMobile}
                     isEditing={isEditing}
@@ -130,8 +134,9 @@ class PickUpFormPart extends React.Component {
                 <FormSection name="smsSignUp">
                   <SMSFormFields
                     isOrderUpdateChecked={isOrderUpdateChecked}
-                    formName="checkoutPickup"
+                    formName={formName}
                     formSection="smsSignUp"
+                    dispatch={dispatch}
                     altInitValue={currentPhoneNumber}
                     labels={smsSignUpLabels}
                   />
@@ -196,7 +201,7 @@ class PickUpFormPart extends React.Component {
                 <PickUpAlternateFormPart
                   isAlternateUpdateChecked={isAlternateUpdateChecked}
                   showNoteOnToggle
-                  formName="checkoutPickup"
+                  formName={formName}
                   formSection="pickUpAlternate"
                   labels={pickUpLabels}
                   isEditing={isEditing}
@@ -252,7 +257,7 @@ const validateMethod = createValidateMethod({
 });
 
 export default reduxForm({
-  form: 'checkoutPickup', // a unique identifier for this form
+  form: formName, // a unique identifier for this form
   ...validateMethod,
   destroyOnUnmount: false,
 })(withStyles(PickUpFormPart, FormStyle));

@@ -99,7 +99,7 @@ class PickUpFormPart extends React.Component {
             />
           )}
           <CheckoutSectionTitleDisplay
-            title={pickUpLabels.title}
+            title={pickUpLabels.title.toUpperCase()}
             dataLocator="pickup-title"
             className="summary-title-pick-up"
           />

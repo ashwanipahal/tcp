@@ -67,7 +67,7 @@ export class CheckoutContainer extends React.Component<Props> {
       orderHasShipping,
       routeToPickupPage,
     } = this.props;
-
+    console.log('isGuest', isGuest, initialValues, isUsSite);
     return (
       <CheckoutPage
         initialValues={initialValues}
