@@ -1,6 +1,6 @@
 import { fromJS, List } from 'immutable';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-// import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 const initialState = fromJS({
   orderDetails: {},
@@ -78,7 +78,9 @@ const BagPageReducer = (state = initialState, action) => {
     case 'CART_SUMMARY_SET_ORDER_ID':
       return state.setIn(['orderDetails', 'orderId'], action.orderId);
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
-      return updateItem(state, action.payload);
+      return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
+    case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
+      return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
     default:
       return returnBagPageReducer(state, action);
   }
