@@ -29,17 +29,13 @@ describe('HomePageView', () => {
   });
 
   it('should refresh data on navigation refresh', () => {
-    const setParams = jest.fn();
-
     component.setProps({
       navigation: {
         getParam: () => true,
-        setParams,
       },
       getBootstrapData,
     });
 
     expect(getBootstrapData).toHaveBeenCalled();
-    expect(setParams).toHaveBeenCalled();
   });
 });

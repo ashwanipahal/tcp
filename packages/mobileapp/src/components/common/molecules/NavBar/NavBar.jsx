@@ -66,8 +66,7 @@ class NavBar extends React.PureComponent<Props> {
       // navigate to home page of home stack when app type is changed
       const { navigation } = this.props;
       resetNavigationStack(navigation);
-      const refresh = navigation.getParam('refresh', false);
-      navigateToNestedRoute(navigation, 'HomeStack', 'Home', { refresh: !refresh });
+      navigateToNestedRoute(navigation, 'HomeStack', 'Home');
     }
   }
 

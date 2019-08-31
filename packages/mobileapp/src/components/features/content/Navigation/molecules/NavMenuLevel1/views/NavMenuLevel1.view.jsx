@@ -19,9 +19,29 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  */
 class NavMenuLevel1 extends React.PureComponent {
   componentDidMount() {
+    this.loadData();
+    this.addDidFocusListener();
+  }
+
+  componentWillUnmount() {
+    // Remove the listener when you are done
+    this.didBlurSubscription.remove();
+  }
+
+  addDidFocusListener = () => {
+    const { accessibilityLabels, navigation } = this.props;
+    if (!navigation.addListener) return;
+    this.didBlurSubscription = navigation.addListener('didFocus', () => {
+      if (navigation.isFocused() && !Object.keys(accessibilityLabels).length) {
+        this.loadData();
+      }
+    });
+  };
+
+  loadData = () => {
     const { loadNavigationData } = this.props;
     loadNavigationData();
-  }
+  };
 
   /**
    * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked

@@ -4,23 +4,26 @@ import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
-class HomePageView extends React.Component {
+class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
-    this.loadBootstrapData();
+    this.loadData();
+    this.addDidFocusListener();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { navigation: prevNav } = this.props;
-    const { navigation } = nextProps;
-    const prevShouldRefresh = prevNav.getParam('refresh', false);
-    const shouldRefresh = navigation.getParam('refresh', false);
-
-    // refresh page data on navigation refresh
-    if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
-      this.loadBootstrapData();
-      navigation.setParams({ refresh: false });
-    }
+  componentWillUnmount() {
+    // Remove the listener when you are done
+    this.didBlurSubscription.remove();
   }
+
+  addDidFocusListener = () => {
+    const { slot_1: slotA, navigation } = this.props;
+    if (!navigation.addListener) return;
+    this.didBlurSubscription = navigation.addListener('didFocus', () => {
+      if (navigation.isFocused() && !Object.keys(slotA).length) {
+        this.loadData();
+      }
+    });
+  };
 
   /**
    * @function loadBootstrapData
@@ -28,7 +31,7 @@ class HomePageView extends React.Component {
    *
    * @memberof HomePageView
    */
-  loadBootstrapData = () => {
+  loadData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
