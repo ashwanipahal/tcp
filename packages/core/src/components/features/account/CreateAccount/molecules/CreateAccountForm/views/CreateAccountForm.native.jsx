@@ -155,6 +155,7 @@ class CreateAccountForm extends PureComponent<Props> {
 
           {/* CHECKBOXES */}
           <Field
+            variation="textbelow"
             name="saveMyPlaceRewards"
             component={InputCheckbox}
             dataLocator="saveMyPlaceRewards"
@@ -164,6 +165,7 @@ class CreateAccountForm extends PureComponent<Props> {
           />
           <Field
             name="iAgree"
+            variation="textbelow"
             component={InputCheckbox}
             dataLocator="iAgree"
             disabled={false}
