@@ -71,8 +71,8 @@ export class CreateAccountContainer extends React.Component {
       if (this.hasMobileApp()) {
         onRequestClose({ getComponentId: { login: '', createAccount: '' } });
       } else {
-        closeOverlay();
         routerPush('/', '/home');
+        setTimeout(() => closeOverlay(), 5000);
       }
     }
   }
@@ -117,6 +117,7 @@ export class CreateAccountContainer extends React.Component {
       onRequestClose,
       labels,
       showLogin,
+      isUserLoggedIn,
     } = this.props;
     return (
       <CreateAccountView
@@ -131,6 +132,7 @@ export class CreateAccountContainer extends React.Component {
         onRequestClose={onRequestClose}
         openModal={this.openModal}
         showLogin={showLogin}
+        isUserLoggedIn={isUserLoggedIn}
       />
     );
   }
