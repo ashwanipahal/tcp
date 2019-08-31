@@ -1,13 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Heading from '../../../../../../common/atoms/Heading';
+import Heading from '@tcp/core/src/components/common/atoms/Heading';
 
-export const FormPageHeading = ({ heading }) => {
-  return <Heading text={heading} />;
+export const PageHeadingWithLinks = ({
+  className,
+  programDetailsCta,
+  termsConditionCta,
+  children,
+  labels,
+  heading,
+  ...otherProps
+}) => {
+  return (
+    <Heading text={heading} {...otherProps} />
+  );
 };
 
-FormPageHeading.propTypes = {
+PageHeadingWithLinks.propTypes = {
+  className: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
+  programDetailsCta: PropTypes.string.isRequired,
+  termsConditionCta: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}),
+  children: PropTypes.string.isRequired,
 };
 
-export default FormPageHeading;
+PageHeadingWithLinks.defaultProps = {
+  labels: {},
+};
+
+export default PageHeadingWithLinks;

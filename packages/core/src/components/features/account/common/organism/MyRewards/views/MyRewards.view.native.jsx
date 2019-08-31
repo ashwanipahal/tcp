@@ -4,6 +4,7 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { View } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth } from '@tcp/core/src/utils';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
   CouponHeading,
@@ -15,6 +16,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+
 
 /**
  * Module height and width.
@@ -63,16 +65,18 @@ class MyRewards extends PureComponent {
     const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
     return (
       <View>
-        <CouponHeading>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="extrabold"
-            className="my-rewards-heading"
-            data-locator="my-rewards-heading"
-            text={heading}
-          />
-        </CouponHeading>
+        <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-LRG">
+          <CouponHeading>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              className="my-rewards-heading"
+              data-locator="my-rewards-heading"
+              text={heading}
+            />
+          </CouponHeading>
+        </ViewWithSpacing>
         {coupons.size > 0 ? (
           <View>
             <Carousel
