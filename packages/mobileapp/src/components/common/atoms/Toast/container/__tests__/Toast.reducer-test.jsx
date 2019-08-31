@@ -18,7 +18,7 @@ describe('Toast Reducer', () => {
   });
 
   it('should return error state', () => {
-    const state = ToastMessageReducer(initialState, resetToastMsg('toastMessage'));
+    const state = ToastMessageReducer(initialState, resetToastMsg());
     expect(state.get('toastMessage')).toBeNull();
   });
 });

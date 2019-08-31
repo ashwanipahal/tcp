@@ -8,7 +8,7 @@ import { resetToastMsg } from './Toast.actions';
 class ToastContainer extends PureComponent {
   static propTypes = {
     errorMessage: PropTypes.string.isRequired,
-    toastMessageReset: PropTypes.bool.isRequired,
+    toastMessageReset: PropTypes.func.isRequired,
   };
 
   render() {

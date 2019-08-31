@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Animated Brand Change Icon Native should render correctly 1`] = `
+exports[`Toast msg view render should render correctly 1`] = `
 <Fragment>
   <Toast
     fadeInDuration={750}

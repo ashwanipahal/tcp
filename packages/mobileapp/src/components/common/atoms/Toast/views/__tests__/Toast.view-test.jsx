@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ToastView from '../Toast.view';
 
-describe('Animated Brand Change Icon Native', () => {
+describe('Toast msg view render', () => {
   let component;
   beforeEach(() => {
     component = shallow(<ToastView />);

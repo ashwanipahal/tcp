@@ -4,7 +4,6 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
 import HeaderPromo from '../HeaderPromo/HeaderPromo';
 import { readCookieMobileApp } from '../../../../utils/utils';
-
 import {
   Container,
   MessageContainer,
