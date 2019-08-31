@@ -9,18 +9,25 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import Modal from '../../../../../../common/molecules/Modal';
 import Button from '../../../../../../common/atoms/Button';
-import styles from '../styles/style';
+import styles from '../styles/PickupMainContactEditForm.style';
 
 class PickupMainContactEditForm extends React.Component {
   static defaultValidation = getStandardConfig(['firstName', 'lastName', 'phoneNumber']);
 
+  pickupEditSubmit = value => {
+    const { onEditModeChange } = this.props;
+    const { pickUpContact } = value;
+    onEditModeChange(false, pickUpContact);
+  };
+
   SaveButton = () => {
-    const { labels } = this.props;
+    const { labels, handleSubmit } = this.props;
     return (
       <Button
+        onClick={handleSubmit(this.pickupEditSubmit)}
         className="saveUpdateButton"
         fill="BLUE"
-        type="submit"
+        type="button"
         buttonVariation="fixed-width"
         data-locator="pickup-modal-save-btn"
       >
@@ -66,7 +73,15 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   render() {
-    const { className, isMobile, formData, isEditing, labels, isReset, onClose } = this.props;
+    const {
+      className,
+      isMobile,
+      formData,
+      isEditing,
+      labels,
+      isReset,
+      handleExitEditModeClick,
+    } = this.props;
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
@@ -87,7 +102,7 @@ class PickupMainContactEditForm extends React.Component {
               minHeight="540px"
               fixedWidth
               closeIconDataLocator="coupondetailmodalcrossicon"
-              onRequestClose={onClose}
+              onRequestClose={handleExitEditModeClick}
               overlayClassName="pick-up-overlay"
             >
               <div className="pickupModalContainer">

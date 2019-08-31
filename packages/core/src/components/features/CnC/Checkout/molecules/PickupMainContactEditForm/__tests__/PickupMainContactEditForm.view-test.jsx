@@ -5,20 +5,19 @@ import { PickupMainContactEditFormVanilla } from '../views/PickupMainContactEdit
 describe('Coupon component', () => {
   it('should renders correctly when Coupon are not present', () => {
     const props = {
+      dispatch: jest.fn(),
       labels: {},
-      className: '',
-      isCondensed: false,
-      showNoteOnToggle: false,
-      isAlternateUpdateChecked: false,
+      handleSubmit: jest.fn(),
       isMobile: true,
-      formData: {},
       isEditing: false,
-      isReset: false,
-      onClose: jest.fn(),
+      className: '',
+      showPhoneNumber: false,
+      formData: {},
+      onEditModeChange: jest.fn(),
+      handleExitEditModeClick: jest.fn(),
     };
     const component = shallow(<PickupMainContactEditFormVanilla {...props} />);
     component.instance().renderSectionTitle();
-    component.instance().SaveButton();
     expect(component).toMatchSnapshot();
   });
 });

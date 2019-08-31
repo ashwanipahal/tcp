@@ -14,16 +14,16 @@ class PickUpContactDisplay extends React.PureComponent {
         <Row className="contactBody" fullBleed>
           <Col colSize={{ small: 6, medium: 8, large: 6 }}>
             <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-              {`${formData.pickUpContact.firstName} ${formData.pickUpContact.lastName}`}
+              {`${formData.firstName} ${formData.lastName}`}
             </BodyCopy>
-            {formData.pickUpContact.phoneNumber && (
+            {formData.phoneNumber && (
               <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-                {formData.pickUpContact.phoneNumber}
+                {formData.phoneNumber}
               </BodyCopy>
             )}
-            {formData.pickUpContact.emailAddress && (
+            {formData.emailAddress && (
               <BodyCopy fontSize="fs16" dataLocator="" fontFamily="secondary" fontWeight="regular">
-                {formData.pickUpContact.emailAddress}
+                {formData.emailAddress}
               </BodyCopy>
             )}
           </Col>
