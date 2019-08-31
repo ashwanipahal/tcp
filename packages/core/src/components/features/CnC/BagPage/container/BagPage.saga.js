@@ -113,14 +113,14 @@ export function* getCartDataSaga(payload) {
 
     createMatchObject(res, translatedProductInfo);
 
-    if (onCartRes) {
-      yield call(onCartRes, res);
-    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
     }
     yield put(BAG_PAGE_ACTIONS.setCouponsData(res.coupons));
+    if (onCartRes) {
+      yield call(onCartRes, res);
+    }
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
