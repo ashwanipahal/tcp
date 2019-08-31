@@ -1,7 +1,5 @@
 const getIndex = data => {
-  return data && data.some(category => !!(category.categoryContent && category.categoryContent.url))
-    ? data.length
-    : 0;
+  return data && data.some(category => !!(category && category.url)) ? data.length : 0;
 };
 
 // TODO - add the required information from the commented lines
@@ -64,7 +62,7 @@ export const findCategoryIdandName = (data, category) => {
       newCatArr = newCatArr.concat(data[iterator].subCategories);
     }
 
-    const navUrl = extractCategory(data[iterator].categoryContent.url);
+    const navUrl = extractCategory(data[iterator].url);
     if (
       data[iterator].categoryContent.categoryId === categoryId ||
       (navUrl && navUrl.toLowerCase()) === (categoryId && categoryId.toLowerCase())

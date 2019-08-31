@@ -179,7 +179,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
                 id={`list-item-${item.categoryContent.id}`}
                 role="none"
               >
-                <Anchor to={item.categoryContent.url}>{item.categoryContent.name}</Anchor>
+                <Anchor to={item.url}>{item.categoryContent.name}</Anchor>
                 {!isTopNav && isActive && (
                   <L3
                     menuItems={item.subCategories}
