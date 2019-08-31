@@ -256,18 +256,6 @@ exports[`LoginForm component should renders correctly 1`] = `
         name="password"
         showSuccessCheck={false}
       />
-      <span
-        className="info-icon-img-wrapper"
-      >
-        <Styled(ReactTooltip)
-          aligned="right"
-        >
-          <Styled(Image)
-            className="tcp_carousel__play tooltip"
-            src="/static/images/info-icon.png"
-          />
-        </Styled(ReactTooltip)>
-      </span>
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
@@ -716,18 +704,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         name="password"
         showSuccessCheck={false}
       />
-      <span
-        className="info-icon-img-wrapper"
-      >
-        <Styled(ReactTooltip)
-          aligned="right"
-        >
-          <Styled(Image)
-            className="tcp_carousel__play tooltip"
-            src="/static/images/info-icon.png"
-          />
-        </Styled(ReactTooltip)>
-      </span>
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
