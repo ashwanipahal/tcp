@@ -12,13 +12,6 @@ import {
   CheckoutHeaderTextSection,
   BackIcon,
   BackIconTouchable,
-  StepIndicatorContainer,
-  ProgressStep,
-  ProgressDot,
-  ProgressBar,
-  ProgressStepLabels,
-  StepIndicatorLabelsContainer,
-  ProgressDotIcon,
 } from './Header.style';
 
 // @flow
@@ -33,8 +26,6 @@ type Props = {
  */
 
 const leftIcon = require('../../../../assets/images/carrot-large-left.png');
-const completedStage = require('../../../../assets/images/checkout-tick.png');
-const currentStage = require('../../../../assets/images/checkout-white-dot.png');
 
 /**
  * This component creates Mobile Header.
@@ -45,9 +36,7 @@ const currentStage = require('../../../../assets/images/checkout-white-dot.png')
  */
 class CheckoutHeader extends React.PureComponent<Props> {
   render() {
-    const { navigation, activeStage } = this.props;
-
-    console.log('activeStage', activeStage);
+    const { navigation } = this.props;
 
     return (
       <SafeAreaViewStyle>
@@ -56,7 +45,7 @@ class CheckoutHeader extends React.PureComponent<Props> {
             <StoreContainer>
               <BackIconTouchable
                 onPress={() => {
-                  navigation.goBack();
+                  navigation.pop();
                 }}
               >
                 <BackIcon
@@ -72,44 +61,6 @@ class CheckoutHeader extends React.PureComponent<Props> {
             <Text className="product-name">CHECKOUT</Text>
           </CheckoutHeaderTextSection>
         </CheckoutHeaderContainer>
-        <StepIndicatorContainer>
-          <ProgressStep>
-            <ProgressDotIcon
-              source={completedStage}
-              data-locator={getLocator('global_headerpanelbagicon')}
-            />
-            <ProgressBar />
-          </ProgressStep>
-          <ProgressStep>
-            <ProgressDotIcon
-              source={currentStage}
-              data-locator={getLocator('global_headerpanelbagicon')}
-            />
-            <ProgressBar />
-          </ProgressStep>
-          <ProgressStep>
-            <ProgressDot />
-            <ProgressBar />
-          </ProgressStep>
-          <ProgressStep>
-            <ProgressDot />
-          </ProgressStep>
-        </StepIndicatorContainer>
-
-        <StepIndicatorLabelsContainer>
-          <ProgressStepLabels>
-            <Text className="product-name">pickup</Text>
-          </ProgressStepLabels>
-          <ProgressStepLabels>
-            <Text className="product-name">shippin</Text>
-          </ProgressStepLabels>
-          <ProgressStepLabels>
-            <Text className="product-name">billing</Text>
-          </ProgressStepLabels>
-          <ProgressStepLabels>
-            <Text className="product-name">review</Text>
-          </ProgressStepLabels>
-        </StepIndicatorLabelsContainer>
       </SafeAreaViewStyle>
     );
   }

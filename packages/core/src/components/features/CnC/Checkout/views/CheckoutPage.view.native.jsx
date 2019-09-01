@@ -5,9 +5,18 @@ import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
-    const { onPickupSubmit } = this.props;
+    const {
+      onPickupSubmit,
+      isGuest,
+      isUsSite,
+      shippingProps,
+      loadShipmentMethods,
+      orderHasPickUp,
+      submitShippingSection,
+    } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
+    const { navigation } = this.props;
     const params = {
       pickUpContact: {
         firstName,
@@ -26,6 +35,15 @@ export default class CheckoutPage extends React.PureComponent {
       },
     };
     onPickupSubmit(params);
+    navigation.navigate('ShippingPage', {
+      ...shippingProps,
+      loadShipmentMethods,
+      navigation,
+      isGuest,
+      isUsSite,
+      orderHasPickUp,
+      handleSubmit: { submitShippingSection },
+    });
   };
 
   render() {
@@ -48,33 +66,41 @@ export default class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
       setCheckoutStage,
     } = this.props;
-    setCheckoutStage('pickup');
+
+    const { nextToRoot } = navigation.state.params;
+    if (nextToRoot === 'pickupPage') {
+      setCheckoutStage('pickup');
+    }
     return (
       <>
-        <PickupPage
-          isGuest={isGuest}
-          isMobile={isMobile}
-          isUsSite={isUsSite}
-          initialValues={pickupInitialValues}
-          onEditModeChange={onEditModeChange}
-          isSmsUpdatesEnabled={isSmsUpdatesEnabled}
-          currentPhoneNumber={currentPhoneNumber}
-          isOrderUpdateChecked={isOrderUpdateChecked}
-          isAlternateUpdateChecked={isAlternateUpdateChecked}
-          pickUpLabels={pickUpLabels}
-          smsSignUpLabels={smsSignUpLabels}
-          onPickUpSubmit={this.onPickUpSubmit}
-          navigation={navigation}
-        />
-        <ShippingPage
-          {...shippingProps}
-          loadShipmentMethods={loadShipmentMethods}
-          navigation={navigation}
-          isGuest={isGuest}
-          isUsSite={isUsSite}
-          orderHasPickUp={orderHasPickUp}
-          handleSubmit={submitShippingSection}
-        />
+        {nextToRoot === 'pickupPage' && (
+          <PickupPage
+            isGuest={isGuest}
+            isMobile={isMobile}
+            isUsSite={isUsSite}
+            initialValues={pickupInitialValues}
+            onEditModeChange={onEditModeChange}
+            isSmsUpdatesEnabled={isSmsUpdatesEnabled}
+            currentPhoneNumber={currentPhoneNumber}
+            isOrderUpdateChecked={isOrderUpdateChecked}
+            isAlternateUpdateChecked={isAlternateUpdateChecked}
+            pickUpLabels={pickUpLabels}
+            smsSignUpLabels={smsSignUpLabels}
+            onPickUpSubmit={this.onPickUpSubmit}
+            navigation={navigation}
+          />
+        )}
+        {nextToRoot === 'shippingPage' && (
+          <ShippingPage
+            {...shippingProps}
+            loadShipmentMethods={loadShipmentMethods}
+            navigation={navigation}
+            isGuest={isGuest}
+            isUsSite={isUsSite}
+            orderHasPickUp={orderHasPickUp}
+            handleSubmit={submitShippingSection}
+          />
+        )}
       </>
     );
   }
