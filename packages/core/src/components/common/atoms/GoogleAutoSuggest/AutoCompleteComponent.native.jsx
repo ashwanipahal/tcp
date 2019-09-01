@@ -16,7 +16,15 @@ import {
 } from './AutoCompleteComponent.native.style';
 
 export const GooglePlacesInput = props => {
-  const { headerTitle, componentRestrictions, onValueChange, initialValue } = props;
+  const {
+    headerTitle,
+    componentRestrictions,
+    onValueChange,
+    initialValue,
+    onSubmitEditing,
+    onEndEditing,
+    refs,
+  } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
     setFocussed(true);
@@ -37,6 +45,7 @@ export const GooglePlacesInput = props => {
         suppressDefaultStyles
         minLength={2} // minimum length of text to search
         autoFocus={false}
+        ref={instance => refs(instance)}
         returnKeyType="search"
         fetchDetails
         renderDescription={row => row.description}
@@ -53,6 +62,12 @@ export const GooglePlacesInput = props => {
         }}
         textInputProps={{
           onFocus,
+          onSubmitEditing: text => {
+            onSubmitEditing(text.nativeEvent.text);
+          },
+          onEndEditing: text => {
+            onEndEditing(text.nativeEvent.text);
+          },
         }}
         styles={{
           textInputContainer,
@@ -79,6 +94,9 @@ GooglePlacesInput.propTypes = {
   }),
   onValueChange: PropTypes.func,
   initialValue: PropTypes.string,
+  onSubmitEditing: PropTypes.func,
+  onEndEditing: PropTypes.func,
+  refs: PropTypes.func,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -88,6 +106,9 @@ GooglePlacesInput.defaultProps = {
   },
   onValueChange: () => {},
   initialValue: '',
+  onSubmitEditing: () => {},
+  onEndEditing: () => {},
+  refs: () => {},
 };
 
 export default GooglePlacesInput;

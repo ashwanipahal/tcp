@@ -34,7 +34,6 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
-      setAddressLine1={[Function]}
       shouldAsyncValidate={[Function]}
       shouldError={[Function]}
       shouldValidate={[Function]}

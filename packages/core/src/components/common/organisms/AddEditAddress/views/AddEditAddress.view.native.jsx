@@ -18,7 +18,6 @@ const AddressBook = props => {
     currentForm,
     toggleAddressModal,
     addressLine1,
-    setAddressLine1,
   } = props;
   return (
     <View {...props}>
@@ -44,7 +43,6 @@ const AddressBook = props => {
             initialValues={initialValues}
             currentForm={currentForm}
             addressLine1={addressLine1}
-            setAddressLine1={setAddressLine1}
           />
         )}
       </ScrollView>
