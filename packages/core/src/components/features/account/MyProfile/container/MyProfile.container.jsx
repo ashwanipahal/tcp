@@ -18,9 +18,8 @@ import {
   getProfileInfoTileData,
 } from '../../User/container/User.selectors';
 
-import { getSuccess } from '../../ChangePassword/container/ChangePassword.selectors';
-import { changePasswordSuccess } from '../../ChangePassword/container/ChangePassword.actions';
-import { updateProfileSuccess } from '../../AddEditPersonalInformation/container/AddEditPersonalInformation.actions';
+import { getSuccess } from './MyProfile.selectors';
+import { myProfileSuccess } from './MyProfile.actions';
 
 const getMyProfileInfoLabels = labels => {
   return (labels && labels.profile) || {};
@@ -69,8 +68,7 @@ const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => ({
   messageSateChangeAction: payload => {
-    dispatch(changePasswordSuccess(payload));
-    dispatch(updateProfileSuccess(payload));
+    dispatch(myProfileSuccess(payload));
   },
 });
 

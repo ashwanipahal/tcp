@@ -1,13 +1,14 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import constants from '../ChangePassword.constants';
-import { changePasswordError, changePasswordSuccess } from './ChangePassword.actions';
+import { changePasswordError } from './ChangePassword.actions';
+import { myProfileSuccess } from '../../MyProfile/container/MyProfile.actions';
 
 import { UpdateProfileInfo } from '../../../../../services/abstractors/account';
 
 export function* ChangePassword({ payload }) {
   try {
     const res = yield call(UpdateProfileInfo, payload);
-    return yield put(changePasswordSuccess(res));
+    return yield put(myProfileSuccess(res));
   } catch (err) {
     return yield put(changePasswordError(err));
   }

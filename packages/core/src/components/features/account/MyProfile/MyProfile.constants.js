@@ -1,0 +1,6 @@
+import { MY_PROFILE_ACTION_PATTERN } from '../../../../constants/reducer.constants';
+
+export default {
+  MY_PROFILE_SUCCESS: `${MY_PROFILE_ACTION_PATTERN}MY_PROFILE_SUCCESS`,
+  MY_PROFILE_ERROR: `${MY_PROFILE_ACTION_PATTERN}MY_PROFILE_ERROR`,
+};
