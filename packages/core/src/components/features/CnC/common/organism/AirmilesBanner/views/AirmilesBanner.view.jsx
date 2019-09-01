@@ -100,26 +100,31 @@ class AirmilesBanner extends React.PureComponent<Props> {
             className="coupon_submit_form"
           >
             <Row
-              className="items-total rowMargin"
-              data-locator={getLocator('order_ledger_item_label')}
+              className="airmilesRow"
+              data-locator={getLocator('airnmileBannerinput_item_label')}
             >
-              <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 4, small: 3 }}>
+              <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 8, small: 3 }}>
                 {!!isValidPromoField && !expanded ? (
-                  <div>
-                    {!!collectorNumber && !!promoField && promoField === collectorNumber
-                      ? collectorNumber
-                      : promoField}
-                    <BodyCopy
-                      bodySize="one"
-                      fontFamily="secondary"
-                      fontSize="fs10"
-                      textAlign="left"
-                      color="secondary"
-                      onClick={this.handleEditClick}
-                    >
-                      Edit
-                    </BodyCopy>
-                  </div>
+                  <Row className="editButton">
+                    <Col colSize={{ large: 10, medium: 6, small: 4 }}>
+                      {!!collectorNumber && !!promoField && promoField === collectorNumber
+                        ? collectorNumber
+                        : promoField}
+                    </Col>
+                    <Col colSize={{ large: 2, medium: 2, small: 2 }}>
+                      <BodyCopy
+                        bodySize="one"
+                        fontFamily="secondary"
+                        fontSize="fs10"
+                        textAlign="left"
+                        color="secondary"
+                        onClick={this.handleEditClick}
+                        className="editCursor"
+                      >
+                        Edit
+                      </BodyCopy>
+                    </Col>
+                  </Row>
                 ) : (
                   <Field
                     id="promoId"
@@ -129,6 +134,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                     component={TextBox}
                     maxLength={11}
                     dataLocator="airmile-banner-collectorNumber"
+                    enableSuccessCheck={false}
                   />
                 )}
                 <span className="airmileBannerTooltip">
@@ -142,7 +148,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                   </span>
                 </span>
               </Col>
-              <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 4, small: 3 }}>
+              <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 8, small: 3 }}>
                 <Field
                   id="offerCode"
                   placeholder={labels.offerCode}
@@ -151,6 +157,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                   component={TextBox}
                   maxLength={50}
                   dataLocator="airmile-banner-offerCode"
+                  enableSuccessCheck={false}
                 />
 
                 <span className="airmileBannerTooltip">

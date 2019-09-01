@@ -23,36 +23,56 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
       className="coupon_submit_form"
     >
       <Styled(Row)
-        className="items-total rowMargin"
-        data-locator="orderLedgerItemLbl"
+        className="airmilesRow"
       >
         <Styled(Col)
           className="airmilesBannerInput"
           colSize={
             Object {
               "large": 6,
-              "medium": 4,
+              "medium": 8,
               "small": 3,
             }
           }
         >
-          <div>
-            <Styled(BodyCopy)
-              bodySize="one"
-              className={null}
-              color="secondary"
-              component="p"
-              fontFamily="secondary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              onClick={[Function]}
-              textAlign="left"
+          <Styled(Row)
+            className="editButton"
+          >
+            <Styled(Col)
+              colSize={
+                Object {
+                  "large": 10,
+                  "medium": 6,
+                  "small": 4,
+                }
+              }
+            />
+            <Styled(Col)
+              colSize={
+                Object {
+                  "large": 2,
+                  "medium": 2,
+                  "small": 2,
+                }
+              }
             >
-              Edit
-            </Styled(BodyCopy)>
-          </div>
+              <Styled(BodyCopy)
+                bodySize="one"
+                className="editCursor"
+                color="secondary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs10"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                Edit
+              </Styled(BodyCopy)>
+            </Styled(Col)>
+          </Styled(Row)>
           <span
             className="airmileBannerTooltip"
           >
@@ -76,7 +96,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
           colSize={
             Object {
               "large": 6,
-              "medium": 4,
+              "medium": 8,
               "small": 3,
             }
           }
@@ -238,6 +258,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
               }
             }
             dataLocator="airmile-banner-offerCode"
+            enableSuccessCheck={false}
             id="offerCode"
             maxLength={50}
             name="offerCode"
