@@ -21,6 +21,24 @@ export default css`
   }
   .pointer {
     cursor: pointer;
-    margin-bottom: 1px;
+    margin: -11px 0 1px 32px;
+  }
+  .bagTileItem {
+    margin: -11px 0 0 32px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: 14px;
+      padding-left: 6px;
+    }
+  }
+  .bagTilePointer {
+    cursor: pointer;
+    margin: -11px 0 1px 32px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: 14px;
+      padding-left: 6px;
+      span {
+        font-size: 14px;
+      }
+    }
   }
 `;
