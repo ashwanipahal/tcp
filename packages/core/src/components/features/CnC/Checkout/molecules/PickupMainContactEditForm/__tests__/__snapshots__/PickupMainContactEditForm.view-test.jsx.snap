@@ -23,10 +23,10 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     >
       <Styled(Anchor)
         anchorVariation="secondary"
-        className="couponModal_print_anchortext"
+        className="anchorStyle"
         dataLocator="pickup-pickupContact-edit-anchor"
+        fontFamily="secondary"
         fontSize="fs12"
-        noLink={true}
         onClick={[Function]}
         underline={true}
       />

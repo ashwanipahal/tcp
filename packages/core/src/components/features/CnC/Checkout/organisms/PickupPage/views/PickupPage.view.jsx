@@ -155,7 +155,6 @@ class PickUpFormPart extends React.Component {
     } = this.props;
 
     const { isEditing, pickUpContact } = this.state;
-
     return (
       <div className={className}>
         <div className="container">
@@ -208,6 +207,10 @@ class PickUpFormPart extends React.Component {
                   formSection="smsSignUp"
                   altInitValue={currentPhoneNumber}
                   labels={smsSignUpLabels}
+                  showDefaultCheckbox={false}
+                  variation="secondary"
+                  dispatch={dispatch}
+                  addressPhoneNo={currentPhoneNumber}
                 />
               </FormSection>
             </div>
