@@ -6,7 +6,7 @@ const styles = css`
   .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: ${props => (props.tooltipContent ? '8px' : '25px')};
+    top: ${props => (props.tooltipContent ? props.theme.spacing.ELEM_SPACING.XS : '25px')};
     width: 30px;
 
     a {
