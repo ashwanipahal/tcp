@@ -2,11 +2,18 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import MyRewards from '../../common/organism/MyRewards';
+import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
 
-export const WalletView = ({labels}) => {
+export const WalletView = ({ labels }) => {
   return (
     <View>
-      <MyRewards labels={labels} view="all" />
+      <PageHeadingWithLinks
+        heading={labels.myPlaceRewards.lbl_my_wallet_heading}
+        programDetailsCta={labels.myPlaceRewards.lbl_my_rewards_program_details}
+        termsConditionCta={labels.common.lbl_common_tnc}
+      >
+        <MyRewards labels={labels} view="all" />
+      </PageHeadingWithLinks>
     </View>
   );
 };

@@ -17,7 +17,6 @@ import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
-
 /**
  * Module height and width.
  * Height is fixed for mobile
@@ -61,7 +60,7 @@ class MyRewards extends PureComponent {
   };
 
   render() {
-    const { labels, coupons } = this.props;
+    const { labels, showLink, coupons } = this.props;
     const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
     return (
       <View>
@@ -93,31 +92,33 @@ class MyRewards extends PureComponent {
         ) : (
           <EmptyRewards labels={labels} />
         )}
-        <StyledAnchorWrapper>
-          <Anchor
-            fontSizeVariation="medium"
-            underline
-            onPress={() => {
-              UrlHandler(endpoints.myPlaceRewardsPage);
-            }}
-            anchorVariation="primary"
-            dataLocator="my-rewards-program-details"
-            text={labels.myPlaceRewards.lbl_my_rewards_program_details}
-          />
-          <AnchorLeftMargin>
+        {showLink && (
+          <StyledAnchorWrapper>
             <Anchor
               fontSizeVariation="medium"
               underline
-              noLink
               onPress={() => {
-                UrlHandler(endpoints.termsAndConditionsPage);
+                UrlHandler(endpoints.myPlaceRewardsPage);
               }}
               anchorVariation="primary"
-              dataLocator="my-rewards-tnc"
-              text={labels.common.lbl_common_tnc}
+              dataLocator="my-rewards-program-details"
+              text={labels.myPlaceRewards.lbl_my_rewards_program_details}
             />
-          </AnchorLeftMargin>
-        </StyledAnchorWrapper>
+            <AnchorLeftMargin>
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                noLink
+                onPress={() => {
+                  UrlHandler(endpoints.termsAndConditionsPage);
+                }}
+                anchorVariation="primary"
+                dataLocator="my-rewards-tnc"
+                text={labels.common.lbl_common_tnc}
+              />
+            </AnchorLeftMargin>
+          </StyledAnchorWrapper>
+        )}
       </View>
     );
   }
@@ -130,6 +131,7 @@ MyRewards.propTypes = {
   onApplyCouponToBag: PropTypes.func,
   onRemove: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
+  showLink: PropTypes.bool,
 };
 
 MyRewards.defaultProps = {
@@ -145,6 +147,7 @@ MyRewards.defaultProps = {
   onApplyCouponToBag: () => {},
   onRemove: () => {},
   isApplyingOrRemovingCoupon: false,
+  showLink: false,
 };
 
 export default MyRewards;
