@@ -7,6 +7,9 @@ const styles = css`
   .remember-me-text {
     display: block;
   }
+  .richTextColor a {
+    color: ${props => props.theme.colorPalette.red[500]};
+  }
 `;
 
 export default styles;
