@@ -37,4 +37,4 @@ export const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps)(BirthdaySavings);
+export default connect(mapStateToProps, mapDispatchToProps)(BirthdaySavings);

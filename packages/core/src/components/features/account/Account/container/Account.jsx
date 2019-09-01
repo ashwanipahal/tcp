@@ -68,15 +68,18 @@ export class Account extends React.PureComponent {
     if (accountNavigation) {
       navData = accountNavigation.accountNav;
     }
-    return (
-      <MyAccountLayout
-        mainContent={AccountComponentMapping[componentToLoad]}
-        active={activeComponent}
-        navData={navData}
-        router={router}
-        labels={labels}
-      />
-    );
+    if(AccountComponentMapping[componentToLoad]) {
+      return (
+        <MyAccountLayout
+          mainContent={AccountComponentMapping[componentToLoad]}
+          active={activeComponent}
+          navData={navData}
+          router={router}
+          labels={labels}
+        />
+      );
+    }
+    return null;
   }
 }
 

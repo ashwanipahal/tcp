@@ -54,4 +54,6 @@ export default {
   'smiley-icon': '/static/images/smiley-icon.png',
   'carrot-left': '/static/images/carrot-left.png',
   'add-to-favorite': '/static/images/add-to-favorite.svg',
+  'girl-icon': '/static/images/girl-icon.png',
+  'boy-icon': '/static/images/boy-icon.png',
 };

@@ -12,6 +12,8 @@ const BirthdaySaving = ({ labels }) => {
       title={labels.lbl_profile_birthday_savings}
       ctaTitle={labels.lbl_profile_add_birthday_info}
       dataLocator="pi-addbirthdayinfo"
+      ctaPath="/account/profile"
+      ctaLink="/account?id=profile&subSection=birthday-savings"
     >
       <BodyCopy component="div">
         <Row fullBleed>
@@ -22,9 +24,6 @@ const BirthdaySaving = ({ labels }) => {
               large: 12,
             }}
           >
-            <BodyCopy fontSize="fs14" dataLocator="pi-addbirthdayinfo" fontFamily="secondary">
-              {labels.lbl_profile_birthday_saving_info}
-            </BodyCopy>
             <BirthdaySavingsList view="read" />
           </Col>
         </Row>
