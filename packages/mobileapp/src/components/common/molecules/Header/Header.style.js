@@ -96,7 +96,6 @@ export const CheckoutHeaderTextSection = styled.View`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   border-bottom-color: ${props => props.theme.colorPalette.gray[600]};
   border-bottom-width: 1;
 `;
@@ -105,7 +104,7 @@ export const BackIcon = styled.Image`
   width: 10px;
   height: 18px;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export const BackIconTouchable = styled.TouchableOpacity`
