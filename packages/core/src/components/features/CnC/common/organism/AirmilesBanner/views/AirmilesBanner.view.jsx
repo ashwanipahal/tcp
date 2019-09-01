@@ -78,7 +78,6 @@ class AirmilesBanner extends React.PureComponent<Props> {
       className,
       airmilesBannerData: { collectorNumber },
       labels,
-      handleSubmit,
       promoField,
     } = this.props;
     const { expanded, isValidPromoField } = this.state;
@@ -95,10 +94,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
           >
             {labels.headerText}
           </BodyCopy>
-          <form
-            onSubmit={handleSubmit(this.handleSubmit.bind(this))}
-            className="coupon_submit_form"
-          >
+          <form onSubmit={this.handleSubmit.bind(this)} className="coupon_submit_form">
             <Row
               className="airmilesRow"
               data-locator={getLocator('airnmileBannerinput_item_label')}
@@ -135,6 +131,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                     maxLength={11}
                     dataLocator="airmile-banner-collectorNumber"
                     enableSuccessCheck={false}
+                    onBlur={this.handleSubmit}
                   />
                 )}
                 <span className="airmileBannerTooltip">
@@ -158,6 +155,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                   maxLength={50}
                   dataLocator="airmile-banner-offerCode"
                   enableSuccessCheck={false}
+                  onBlur={this.handleSubmit}
                 />
 
                 <span className="airmileBannerTooltip">

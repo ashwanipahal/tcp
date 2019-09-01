@@ -21,6 +21,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
     </Styled(BodyCopy)>
     <form
       className="coupon_submit_form"
+      onSubmit={[Function]}
     >
       <Styled(Row)
         className="airmilesRow"
@@ -262,6 +263,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
             id="offerCode"
             maxLength={50}
             name="offerCode"
+            onBlur={[Function]}
             placeholder="124e12e"
             type="text"
           />
