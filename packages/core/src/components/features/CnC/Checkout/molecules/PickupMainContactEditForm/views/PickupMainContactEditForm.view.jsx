@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { propTypes as reduxFormPropTypes, resetSection } from 'redux-form';
+import { propTypes as reduxFormPropTypes } from 'redux-form';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import PickUpContactDisplay from '../../PickUpContactDisplay';
 import ContactFormFields from '../../ContactFormFields';
@@ -37,8 +37,8 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   handleEnterEditModeClick = event => {
-    const { onEditModeChange } = this.props;
     event.preventDefault();
+    const { onEditModeChange } = this.props;
     onEditModeChange(true);
   };
 
@@ -79,13 +79,9 @@ class PickupMainContactEditForm extends React.Component {
       formData,
       isEditing,
       labels,
-      isReset,
       handleExitEditModeClick,
     } = this.props;
-    if (isReset) {
-      const { dispatch } = this.props;
-      dispatch(resetSection('checkoutPickup', 'pickUpContact'));
-    }
+
     return (
       <div className={className}>
         {this.renderSectionTitle()}
