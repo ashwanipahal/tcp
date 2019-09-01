@@ -157,6 +157,9 @@ export const getLabelsCartItemTile = state => {
         lbl_minibag_errorSize: errorSize,
         lbl_minibag_errorUpdateUnavailable: updateUnavailable,
         lbl_minibag_errorRemoveSoldoutHeader: removeSoldoutHeader,
+        lbl_cartTile_update: update,
+        lbl_cartTile_remove: removeItem,
+        lbl_cartTile_delete: deleteItem,
       },
     },
   } = state.Labels;
@@ -193,6 +196,9 @@ export const getLabelsCartItemTile = state => {
     errorSize,
     updateUnavailable,
     removeSoldoutHeader,
+    update,
+    removeItem,
+    deleteItem,
   };
 };
 

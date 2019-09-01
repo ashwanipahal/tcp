@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-// import { SwipeItem, SwipeButtonsContainer } from 'react-native-swipe-item';
-import Swipeable from 'react-native-swipeable';
+import { Text, View } from 'react-native';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
+import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import withStyles from '../../../../../../common/hoc/withStyles.native';
 import endpoints from '../../../../../../../service/endpoint';
 import {
   ProductName,
@@ -20,11 +18,14 @@ import {
   EditButton,
   ImageBrandStyle,
   ImageGymBrandStyle,
-  ImageSoldOutContainer,
   SoldOutLabel,
+  MainWrapper,
+  BtnWrapper,
+  MarginLeft,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
@@ -33,245 +34,247 @@ const getItemStatus = (productDetail, labels) => {
   return <ItemAvailability errorMsg={labels.itemUnavailable} />;
 };
 
-const styles = {
-  button: {
-    padding: 10,
-    backgroundColor: '#1d87e5',
-  },
-};
-
 class ProductInformation extends React.Component {
   constructor(props) {
     super(props);
     this.swipeable = React.createRef();
   }
 
-  onContainerPress = () => {
-    this.swipeItemRef.close();
-  };
-
-  leftButton = () => {
-    const { removeCartItem, productDetail } = this.props;
+  rightButton = () => {
+    const { removeCartItem, productDetail, labels } = this.props;
     return (
-      <>
-        <TouchableOpacity onPress={() => console.log('left button clicked')}>
-          <ImageGymBrandStyle
-            data-locator={getLocator('cart_item_brand_logo')}
-            source={gymboreeImage}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            marginLeft: 10,
-          }}
-          onPress={() => removeCartItem(productDetail.itemInfo.itemId)}
-        >
-          <ImageBrandStyle data-locator={getLocator('cart_item_brand_logo')} source={tcpImage} />
-        </TouchableOpacity>
-      </>
+      <BtnWrapper>
+        <Text>{labels.edit}</Text>
+        <MarginLeft onPress={() => removeCartItem(productDetail.itemInfo.itemId)}>
+          <Text>{labels.deleteItem}</Text>
+        </MarginLeft>
+      </BtnWrapper>
     );
   };
 
+  getEditLinkLbl = () => {
+    const { labels, productDetail } = this.props;
+    let editLinkLbl = labels.edit;
+    if (productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
+      editLinkLbl = labels.removeItem;
+    } else if (
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
+    ) {
+      editLinkLbl = labels.update;
+    }
+    return editLinkLbl;
+  };
+
   render() {
-    const { productDetail, labels, itemIndex } = this.props;
+    const { productDetail, labels, itemIndex, openedTile, setSelectedProductTile } = this.props;
+    const editLinkLbl = this.getEditLinkLbl();
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
-        // ref={this.swipeable}
-        rightButtons={[this.leftButton()]}
+        rightButtons={[this.rightButton()]}
+        rightButtonWidth={200}
+        leftButtons={[null]}
       >
-        <OuterContainer onPress={this.onContainerPress}>
-          <BodyCopy
-            fontSize="fs10"
-            textAlign="center"
-            text={getItemStatus(productDetail, labels)}
-          />
-
-          <ImgWrapper>
-            <ImageSoldOutContainer>
-              <ImageStyle
-                data-locator={getLocator('cart_item_image')}
-                source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
-              />
-              {productDetail.miscInfo.availability === 'SOLDOUT' && (
-                <SoldOutLabel>
+        <MainWrapper>
+          <OuterContainer>
+            <BodyCopy
+              fontSize="fs10"
+              textAlign="center"
+              text={getItemStatus(productDetail, labels)}
+            />
+            <ImgWrapper>
+              <View>
+                <ImageStyle
+                  data-locator={getLocator('cart_item_image')}
+                  source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
+                />
+                {productDetail.miscInfo.availability ===
+                  CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
+                  <SoldOutLabel>
+                    <BodyCopy
+                      fontFamily="secondary"
+                      textAlign="center"
+                      fontSize="fs12"
+                      color="white"
+                      text={labels.soldOut}
+                    />
+                  </SoldOutLabel>
+                )}
+              </View>
+              {!productDetail.itemInfo.isGiftItem &&
+                (productDetail.itemInfo.isGiftItem === 'TCP' ? (
+                  <ImageBrandStyle
+                    data-locator={getLocator('cart_item_brand_logo')}
+                    source={tcpImage}
+                  />
+                ) : (
+                  <ImageGymBrandStyle
+                    data-locator={getLocator('cart_item_brand_logo')}
+                    source={gymboreeImage}
+                  />
+                ))}
+            </ImgWrapper>
+            <ProductDescription>
+              {!!productDetail.miscInfo.badge && (
+                <BodyCopy
+                  fontWeight={['semibold']}
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  text={productDetail.miscInfo.badge}
+                />
+              )}
+              <ProductName>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs14"
+                  dataLocator={getLocator('cart_item_title')}
+                  fontWeight={['semibold']}
+                  text={productDetail.itemInfo.name}
+                />
+              </ProductName>
+              <ProductSubDetails>
+                <ProductDesc>
+                  <ProductSubDetailLabel>
+                    <BodyCopy
+                      fontSize="fs13"
+                      fontWeight={['semibold']}
+                      textAlign="left"
+                      text={
+                        productDetail.itemInfo.isGiftItem === true
+                          ? `${labels.design}: `
+                          : `${labels.color}: `
+                      }
+                    />
+                  </ProductSubDetailLabel>
                   <BodyCopy
                     fontFamily="secondary"
-                    textAlign="center"
-                    fontSize="fs12"
-                    color="white"
-                    text={labels.soldOut}
-                  />
-                </SoldOutLabel>
-              )}
-            </ImageSoldOutContainer>
-            {!productDetail.itemInfo.isGiftItem &&
-              (productDetail.itemInfo.isGiftItem === 'TCP' ? (
-                <ImageBrandStyle
-                  data-locator={getLocator('cart_item_brand_logo')}
-                  source={tcpImage}
-                />
-              ) : (
-                <ImageGymBrandStyle
-                  data-locator={getLocator('cart_item_brand_logo')}
-                  source={gymboreeImage}
-                />
-              ))}
-          </ImgWrapper>
-          <ProductDescription>
-            {!!productDetail.miscInfo.badge && (
-              <BodyCopy
-                fontWeight={['semibold']}
-                fontFamily="secondary"
-                fontSize="fs12"
-                text={productDetail.miscInfo.badge}
-              />
-            )}
-            <ProductName>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                dataLocator={getLocator('cart_item_title')}
-                fontWeight={['semibold']}
-                text={productDetail.itemInfo.name}
-              />
-            </ProductName>
-            <ProductSubDetails>
-              <ProductDesc>
-                <ProductSubDetailLabel>
-                  <BodyCopy
+                    color="gray.800"
                     fontSize="fs13"
-                    fontWeight={['semibold']}
-                    textAlign="left"
-                    text={
-                      productDetail.itemInfo.isGiftItem === true
-                        ? `${labels.design}: `
-                        : `${labels.color}: `
-                    }
+                    dataLocator={getLocator('cart_item_color')}
+                    text={productDetail.itemInfo.color}
                   />
-                </ProductSubDetailLabel>
-                <BodyCopy
-                  fontFamily="secondary"
-                  color="gray.800"
-                  fontSize="fs13"
-                  dataLocator={getLocator('cart_item_color')}
-                  text={productDetail.itemInfo.color}
-                />
-              </ProductDesc>
-              <ProductDesc>
-                <ProductSubDetailLabel>
-                  <BodyCopy
-                    fontSize="fs13"
-                    fontWeight={['semibold']}
-                    textAlign="left"
-                    text={
-                      productDetail.itemInfo.isGiftItem === true
-                        ? `${labels.giftValue}: `
-                        : `${labels.size}: `
-                    }
-                  />
-                </ProductSubDetailLabel>
-                <BodyCopy
-                  color="gray.800"
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  dataLocator={getLocator('cart_item_size')}
-                  text={`${productDetail.itemInfo.size} `}
-                />
-                <BodyCopy
-                  fontSize="fs13"
-                  color="gray.800"
-                  fontFamily="secondary"
-                  text={
-                    !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'Regular'
-                      ? ' '
-                      : productDetail.itemInfo.fit
-                  }
-                />
-              </ProductDesc>
-              <ProductDesc>
-                <ProductSubDetailLabel>
-                  <BodyCopy
-                    fontSize="fs13"
-                    fontWeight={['semibold']}
-                    textAlign="left"
-                    text={`${labels.qty}: `}
-                  />
-                </ProductSubDetailLabel>
-                <BodyCopy
-                  color="gray.800"
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  text={productDetail.itemInfo.qty}
-                />
-              </ProductDesc>
-              <ProductDesc>
-                <ProductSubDetailLabel>
-                  <BodyCopy
-                    fontSize="fs13"
-                    fontWeight={['semibold']}
-                    textAlign="left"
-                    text={`${labels.price}: `}
-                  />
-                </ProductSubDetailLabel>
-                <BodyCopy
-                  fontSize="fs13"
-                  fontWeight={['semibold']}
-                  textAlign="left"
-                  dataLocator={getLocator('cart_item_price')}
-                  text={`$${productDetail.itemInfo.price}`}
-                />
-                <ProductListPrice>
+                </ProductDesc>
+                <ProductDesc>
+                  <ProductSubDetailLabel>
+                    <BodyCopy
+                      fontSize="fs13"
+                      fontWeight={['semibold']}
+                      textAlign="left"
+                      text={
+                        productDetail.itemInfo.isGiftItem === true
+                          ? `${labels.value}: `
+                          : `${labels.size}: `
+                      }
+                    />
+                  </ProductSubDetailLabel>
                   <BodyCopy
                     color="gray.800"
                     fontFamily="secondary"
                     fontSize="fs13"
+                    dataLocator={getLocator('cart_item_size')}
+                    text={`${productDetail.itemInfo.size} `}
+                  />
+                  <BodyCopy
+                    fontSize="fs13"
+                    color="gray.800"
+                    fontFamily="secondary"
                     text={
-                      productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                        ? `$${productDetail.itemInfo.itemPrice}`
-                        : ''
+                      !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'Regular'
+                        ? ' '
+                        : productDetail.itemInfo.fit
                     }
                   />
-                </ProductListPrice>
-              </ProductDesc>
-              <ProductDesc>
-                <ProductSubDetailLabel>
+                </ProductDesc>
+                <ProductDesc>
+                  <ProductSubDetailLabel>
+                    <BodyCopy
+                      fontSize="fs13"
+                      fontWeight={['semibold']}
+                      textAlign="left"
+                      text={`${labels.qty}: `}
+                    />
+                  </ProductSubDetailLabel>
+                  <BodyCopy
+                    color="gray.800"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    text={productDetail.itemInfo.qty}
+                  />
+                </ProductDesc>
+                <ProductDesc>
+                  <ProductSubDetailLabel>
+                    <BodyCopy
+                      fontSize="fs13"
+                      fontWeight={['semibold']}
+                      textAlign="left"
+                      text={`${labels.price}: `}
+                    />
+                  </ProductSubDetailLabel>
                   <BodyCopy
                     fontSize="fs13"
                     fontWeight={['semibold']}
                     textAlign="left"
-                    text={`${labels.points}: `}
+                    dataLocator={getLocator('cart_item_price')}
+                    text={`$${productDetail.itemInfo.price}`}
                   />
-                </ProductSubDetailLabel>
-                <BodyCopy
-                  color="orange.800"
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  dataLocator={getLocator('cart_item_points')}
-                  text={productDetail.itemInfo.myPlacePoints}
-                />
-                <EditButton
-                  onPress={() => {
-                    console.log(this.swipeable);
-                    return this.swipeable.toggle('left');
-                  }}
-                >
+                  <ProductListPrice>
+                    <BodyCopy
+                      color="gray.800"
+                      fontFamily="secondary"
+                      fontSize="fs13"
+                      text={
+                        productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
+                          ? `$${productDetail.itemInfo.itemPrice}`
+                          : ''
+                      }
+                    />
+                  </ProductListPrice>
+                </ProductDesc>
+                <ProductDesc>
+                  <ProductSubDetailLabel>
+                    <BodyCopy
+                      fontSize="fs13"
+                      fontWeight={['semibold']}
+                      textAlign="left"
+                      text={`${labels.points}: `}
+                    />
+                  </ProductSubDetailLabel>
                   <BodyCopy
-                    color="gray.900"
+                    color="orange.800"
                     fontFamily="secondary"
-                    fontSize="fs12"
-                    dataLocator={getLocator('cart_item_edit_link')}
-                    textDecorationLine="underline"
-                    text={labels.edit}
+                    fontSize="fs13"
+                    dataLocator={getLocator('cart_item_points')}
+                    text={productDetail.itemInfo.myPlacePoints}
                   />
-                </EditButton>
-              </ProductDesc>
-            </ProductSubDetails>
-          </ProductDescription>
-        </OuterContainer>
-        <CartItemRadioButtons productDetail={productDetail} labels={labels} index={itemIndex} />
+                </ProductDesc>
+              </ProductSubDetails>
+              <EditButton
+                onPress={() => {
+                  return this.swipeable.toggle('right');
+                }}
+              >
+                <BodyCopy
+                  color="gray.700"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  dataLocator={getLocator('cart_item_edit_link')}
+                  textDecorationLine="underline"
+                  text={editLinkLbl}
+                />
+              </EditButton>
+            </ProductDescription>
+          </OuterContainer>
+          <CartItemRadioButtons
+            productDetail={productDetail}
+            labels={labels}
+            index={itemIndex}
+            openedTile={openedTile}
+            setSelectedProductTile={setSelectedProductTile}
+          />
+        </MainWrapper>
       </Swipeable>
     );
   }
@@ -280,10 +283,15 @@ class ProductInformation extends React.Component {
 ProductInformation.propTypes = {
   productDetail: PropTypes.shape,
   labels: PropTypes.shape,
+  removeCartItem: PropTypes.func.isRequired,
+  itemIndex: PropTypes.number,
+  openedTile: PropTypes.number,
+  setSelectedProductTile: PropTypes.func.isRequired,
 };
 ProductInformation.defaultProps = {
   productDetail: {},
   labels: {},
+  itemIndex: 0,
+  openedTile: 0,
 };
-export default withStyles(ProductInformation);
-export { ProductInformation as ProductInformationVanilla };
+export default ProductInformation;

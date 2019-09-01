@@ -1,9 +1,14 @@
 import styled from 'styled-components/native';
 
+const MainWrapper = styled.View`
+  background-color: ${props => props.theme.colorPalette.white};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
 const OuterContainer = styled.View`
   flex-direction: row;
-  flex: 1;
   padding: 10px;
+  background-color: ${props => props.theme.colorPalette.white};
 `;
 const ProductName = styled.View``;
 const ProductDesc = styled.View`
@@ -11,10 +16,10 @@ const ProductDesc = styled.View`
   flex-wrap: wrap;
 `;
 const ProductDescription = styled.View`
-  flex: 2;
   flex-wrap: wrap;
   flex-direction: column;
   margin-left: 5px;
+  width: 70%;
 `;
 const SoldOutLabel = styled.View`
   height: 18px;
@@ -28,17 +33,13 @@ const SoldOutLabel = styled.View`
   display: flex;
   justify-content: center;
 `;
-const ImageSoldOutContainer = styled.View`
-  flex: 1;
-`;
 const ImgWrapper = styled.View`
-  flex: 1;
+  width: 30%;
   align-items: center;
 `;
 
 const ProductSubDetails = styled.View`
   padding-top: 15px;
-  flex: 1;
 `;
 
 const ImageStyle = styled.Image`
@@ -65,8 +66,21 @@ const ProductListPrice = styled.View`
   padding-left: 5px;
 `;
 const EditButton = styled.TouchableOpacity`
-  align-items: flex-end;
-  flex: 1;
+  align-self: flex-end;
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  border-bottom-color: ${props => props.theme.colorPalette.gray[700]};
+  border-bottom-width: 1px;
+`;
+
+const BtnWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const MarginLeft = styled.TouchableOpacity`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export {
@@ -83,5 +97,7 @@ export {
   ImageBrandStyle,
   ImageGymBrandStyle,
   SoldOutLabel,
-  ImageSoldOutContainer,
+  MainWrapper,
+  BtnWrapper,
+  MarginLeft,
 };

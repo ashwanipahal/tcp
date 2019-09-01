@@ -9,6 +9,9 @@ import {
   StyledLabeledRadioBtn,
   StyledText,
   StyledHeaderBtnWrapper,
+  StyledStoreText,
+  StyledStoreTextWrapper,
+  StyledBopisBorder,
 } from '../styles/CartItemRadioButtons.style.native';
 
 const colorPallete = createThemeColorPalette();
@@ -22,14 +25,19 @@ class CartItemRadioButtons extends React.Component {
     } else if (props.productDetail.miscInfo.orderItemType === 'BOSS') {
       this.selectedOrder = 'BOSS';
     }
+    const { index } = props;
     this.state = {
       selectedOrder: this.selectedOrder,
-      expandedState: false,
+      expandedState: index === 0,
     };
   }
 
-  getExpandedState = state => {
+  getExpandedState = ({ state, index }) => {
+    const { setSelectedProductTile } = this.props;
     this.setState({ expandedState: state });
+    if (setSelectedProductTile && state) {
+      setSelectedProductTile({ index });
+    }
   };
 
   handleToggle = (e, orderType) => {
@@ -38,7 +46,8 @@ class CartItemRadioButtons extends React.Component {
 
   renderRadioButton = ({ key, label }) => {
     const { selectedOrder } = this.state;
-    return (
+    const { productDetail } = this.props;
+    return key !== 'BOPIS' ? (
       <StyledLabeledRadioBtn>
         <LabeledRadioButton
           obj={{
@@ -48,8 +57,31 @@ class CartItemRadioButtons extends React.Component {
           index={0}
           onPress={e => this.handleToggle(e, key)}
           checked={selectedOrder === key}
+          disabled={key !== 'ECOM'}
         />
       </StyledLabeledRadioBtn>
+    ) : (
+      <StyledBopisBorder>
+        <RadioButtonInput
+          isSelected={selectedOrder === key}
+          borderWidth={1}
+          buttonInnerColor={colorPallete.black}
+          buttonOuterColor={colorPallete.black}
+          buttonSize={10}
+          buttonOuterSize={20}
+          onPress={e => this.handleToggle(e, key)}
+          buttonStyle={{}}
+          obj={{
+            value: selectedOrder,
+          }}
+        />
+        <StyledText>{`${label}:`}</StyledText>
+        {key === 'BOPIS' && productDetail.miscInfo.store && (
+          <StyledStoreTextWrapper>
+            <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
+          </StyledStoreTextWrapper>
+        )}
+      </StyledBopisBorder>
     );
   };
 
@@ -65,8 +97,9 @@ class CartItemRadioButtons extends React.Component {
 
   renderHeader = ({ key, label }) => {
     const { selectedOrder } = this.state;
+    const { productDetail } = this.props;
     return (
-      <StyledHeaderBtnWrapper>
+      <StyledHeaderBtnWrapper pointerEvents={key !== 'ECOM' ? 'none' : 'auto'}>
         <RadioButtonInput
           isSelected={selectedOrder === key}
           borderWidth={1}
@@ -74,9 +107,18 @@ class CartItemRadioButtons extends React.Component {
           buttonOuterColor={colorPallete.black}
           buttonSize={10}
           buttonOuterSize={20}
+          onPress={e => this.handleToggle(e, key)}
           buttonStyle={{}}
+          obj={{
+            value: selectedOrder,
+          }}
         />
-        <StyledText>{label}</StyledText>
+        <StyledText>{key === 'BOPIS' ? `${label}:` : label}</StyledText>
+        {key === 'BOPIS' && productDetail.miscInfo.store && (
+          <StyledStoreTextWrapper>
+            <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
+          </StyledStoreTextWrapper>
+        )}
       </StyledHeaderBtnWrapper>
     );
   };
@@ -100,13 +142,17 @@ class CartItemRadioButtons extends React.Component {
 
   render() {
     const header = this.header();
+    const { index, openedTile } = this.props;
     return (
       <StyledWrapper>
         <CollapsibleContainer
           header={header}
           body={this.renderRadioButtons()}
           getExpandedState={this.getExpandedState}
-          style={{ width: '100%' }}
+          defaultOpen={index === openedTile}
+          index={index}
+          height="50px"
+          openedTile={openedTile}
         />
       </StyledWrapper>
     );
@@ -118,6 +164,14 @@ CartItemRadioButtons.propTypes = {
     miscInfo: {},
   }).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  index: PropTypes.number,
+  openedTile: PropTypes.number,
+  setSelectedProductTile: PropTypes.func.isRequired,
+};
+
+CartItemRadioButtons.defaultProps = {
+  index: 0,
+  openedTile: 0,
 };
 
 export default CartItemRadioButtons;

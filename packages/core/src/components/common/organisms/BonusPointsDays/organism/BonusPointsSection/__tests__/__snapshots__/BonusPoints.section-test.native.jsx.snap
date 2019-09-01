@@ -72,8 +72,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -109,7 +109,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
   />
 </View>
 `;
@@ -196,8 +198,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -233,7 +235,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
   />
 </View>
 `;
@@ -320,8 +324,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -357,7 +361,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
   />
 </View>
 `;
@@ -444,8 +450,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -481,7 +487,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
   />
 </View>
 `;
@@ -545,8 +553,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -582,7 +590,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
   />
 </View>
 `;
