@@ -4,6 +4,7 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -192,7 +193,9 @@ let CreateAccountForm = ({
               disabled={isMakeDefaultDisabled}
               alignCheckbox="top"
             >
-              {labels.registration.lbl_createAccount_termsConditions}
+              <BodyCopy fontFamily="secondary" className={className} fontSize="fs10">
+                {labels.registration.lbl_createAccount_termsConditions}
+              </BodyCopy>
             </Field>
           </Col>
           <Col className="elem-pb-MED" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
@@ -202,10 +205,13 @@ let CreateAccountForm = ({
               dataLocator="remember-me-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              <span className="remember-me-text">
+              <BodyCopy fontFamily="secondary" className="remember-me-text" fontSize="fs10">
                 {labels.registration.lbl_createAccount_rememberMe}
-              </span>
-              <span>{labels.registration.lbl_createAccount_rememberMeHelpText}</span>
+              </BodyCopy>
+
+              <BodyCopy fontFamily="secondary" fontSize="fs10">
+                {labels.registration.lbl_createAccount_rememberMeHelpText}
+              </BodyCopy>
             </Field>
           </Col>
           <Col
@@ -227,7 +233,7 @@ let CreateAccountForm = ({
             colSize={{ small: 6 }}
             className="already-account align-center"
           >
-            <Anchor onClick={onAlreadyHaveAnAccountClick}>
+            <Anchor fontSizeVariation="large" onClick={onAlreadyHaveAnAccountClick}>
               {labels.registration.lbl_createAccount_alreadyAccount}
             </Anchor>
           </Col>
