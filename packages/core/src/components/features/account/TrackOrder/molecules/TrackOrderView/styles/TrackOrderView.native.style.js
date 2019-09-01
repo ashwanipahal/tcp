@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 const TrackOrderViewNative = styled.View`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
-    ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const GenericErrorView = styled.View`

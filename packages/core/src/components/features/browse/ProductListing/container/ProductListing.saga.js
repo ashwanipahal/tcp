@@ -5,12 +5,18 @@ import { validateReduxCache } from '../../../../../utils/cache.util';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
 
-function* fetchPlpProducts() {
+function* fetchPlpProducts({ payload }) {
   try {
+    const { url } = payload;
+    const location = url
+      ? {
+          pathname: url,
+        }
+      : window.location;
     const state = yield select();
     const instanceProductListing = new Abstractor();
     const operatorInstance = new ProductsOperator();
-    const reqObj = operatorInstance.getProductListingBucketedData(state);
+    const reqObj = operatorInstance.getProductListingBucketedData(state, location);
     const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
     yield put(setPlpProducts({ ...plpProducts }));
   } catch (err) {
@@ -18,9 +24,9 @@ function* fetchPlpProducts() {
   }
 }
 
-function* ProductListingPageSaga() {
+function* ProductListingSaga() {
   const cachedFetchProducts = validateReduxCache(fetchPlpProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.FETCH_PRODUCTS, cachedFetchProducts);
 }
 
-export default ProductListingPageSaga;
+export default ProductListingSaga;
