@@ -102,12 +102,13 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   verifyAddress = payload => {
-    const { verifyAddressAction, toggleAddressModal } = this.props;
+    const { verifyAddressAction, toggleAddressModal, setAddressLine1 } = this.props;
     const formattedFormPayload = Object.assign(this.initialValues, payload);
     const formattedPayload = this.formatPayload(formattedFormPayload);
 
     verifyAddressAction(formattedPayload);
     toggleAddressModal();
+    setAddressLine1(formattedPayload.address1);
   };
 
   submitAddressForm = payloadParam => {
@@ -153,7 +154,6 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       toggleAddressModal,
       currentForm,
       addressLine1,
-      setAddressLine1,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -173,7 +173,6 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         addressBookLabels={labels.addressBook}
         backToAddressBookClick={backToAddressBookClick}
         addressLine1={addressLine1}
-        setAddressLine1={setAddressLine1}
       />
     );
   }

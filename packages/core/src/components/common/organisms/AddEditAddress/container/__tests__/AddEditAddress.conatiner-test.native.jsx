@@ -123,10 +123,12 @@ describe('AddEditAddressContainer', () => {
     let verifyAddressSpy;
     let submitEditAddressFormActionSpy;
     let submitNewAddressFormActionSpy;
+    let setAddressLine1;
     beforeEach(() => {
       verifyAddressSpy = jest.fn();
       submitEditAddressFormActionSpy = jest.fn();
       submitNewAddressFormActionSpy = jest.fn();
+      setAddressLine1 = jest.fn();
       const component = shallow(
         <AddEditAddressContainer
           submitEditAddressFormAction={submitEditAddressFormActionSpy}
@@ -135,6 +137,7 @@ describe('AddEditAddressContainer', () => {
           addressList={List()}
           address={address}
           labels={labels}
+          setAddressLine1={setAddressLine1}
         />
       );
       instance = component.instance();

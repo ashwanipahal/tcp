@@ -112,10 +112,61 @@ exports[`AddressForm component should renders correctly 1`] = `
       }
       dataLocator="addnewaddress-addressl1"
       headerTitle=""
-      id="addressLine1"
       initialValue=""
-      name="addressLine1"
+      onEndEditing={[Function]}
       onValueChange={[Function]}
+      refs={[Function]}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine1"
+      label=""
+      name="addressLine1"
+      title=""
+      type="hidden"
     />
   </Styled(View)>
   <Styled(View)>
@@ -261,6 +312,11 @@ exports[`AddressForm component should renders correctly 1`] = `
         }
         data={
           Array [
+            Object {
+              "displayName": "Select",
+              "fullName": "",
+              "id": "",
+            },
             Object {
               "displayName": "AL",
               "fullName": "Alabama",
@@ -580,7 +636,6 @@ exports[`AddressForm component should renders correctly 1`] = `
             "height": 41,
           }
         }
-        id="state"
         itemStyle={
           Object {
             "color": "black",
@@ -588,11 +643,61 @@ exports[`AddressForm component should renders correctly 1`] = `
             "paddingLeft": 6,
           }
         }
-        name="state"
         onValueChange={[Function]}
         selectedValue="AL"
         variation="secondary"
       />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="state"
+          label=""
+          name="state"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View) />
     <Styled(View)
@@ -649,110 +754,34 @@ exports[`AddressForm component should renders correctly 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "bounces": true,
-          "data": Array [],
-          "dropDownStyle": null,
-          "itemStyle": null,
-          "onValueChange": null,
-          "selectedValue": null,
-          "variation": "primary",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(DropDown)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  height: ",
-            [Function],
-            "px;
-  ",
-            [Function],
-            ";
-  background-color: ",
-            [Function],
-            ";
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    data={
-      Array [
-        Object {
-          "displayName": "United States",
-          "id": "US",
-        },
-        Object {
-          "displayName": "Canada",
-          "id": "CA",
-        },
-      ]
-    }
-    dataLocator="addnewaddress-country"
-    dropDownStyle={
-      Object {
-        "border": 1,
-        "height": 41,
-      }
-    }
-    heading=""
-    id="country"
-    itemStyle={
-      Object {
-        "color": "black",
-        "height": 41,
-        "paddingLeft": 6,
-      }
-    }
-    name="country"
-    onValueChange={[Function]}
-    selectedValue="United States"
-    variation="secondary"
-  />
   <Styled(View)>
     <Field
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
+            "bounces": true,
+            "data": Array [],
+            "dropDownStyle": null,
+            "itemStyle": null,
+            "onValueChange": null,
+            "selectedValue": null,
+            "variation": "primary",
           },
           "attrs": Array [],
-          "displayName": "Styled(TextBox)",
+          "displayName": "Styled(DropDown)",
           "inlineStyle": InlineStyle {
             "rules": Array [
               "
     ",
               "
+  height: ",
+              [Function],
+              "px;
   ",
+              [Function],
+              ";
+  background-color: ",
               [Function],
               ";
 ",
@@ -766,13 +795,89 @@ exports[`AddressForm component should renders correctly 1`] = `
           "withComponent": [Function],
         }
       }
-      dataLocator="addnewaddress-phnumber"
-      id="phoneNumber"
-      label=""
-      name="phoneNumber"
-      type="tel"
+      data={
+        Array [
+          Object {
+            "displayName": "United States",
+            "id": "US",
+          },
+          Object {
+            "displayName": "Canada",
+            "id": "CA",
+          },
+        ]
+      }
+      dataLocator="addnewaddress-country"
+      dropDownStyle={
+        Object {
+          "border": 1,
+          "height": 41,
+        }
+      }
+      heading=""
+      id="country"
+      itemStyle={
+        Object {
+          "color": "black",
+          "height": 41,
+          "paddingLeft": 6,
+        }
+      }
+      name="country"
+      onValueChange={[Function]}
+      selectedValue="United States"
+      variation="secondary"
     />
   </Styled(View)>
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="addnewaddress-phnumber"
+    id="phoneNumber"
+    label=""
+    name="phoneNumber"
+    type="tel"
+  />
   <Styled(View)>
     <Field
       component={[Function]}
