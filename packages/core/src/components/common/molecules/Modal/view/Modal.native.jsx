@@ -9,6 +9,7 @@ import {
   RowWrapper,
   ImageWrapper,
 } from '../Modal.style.native';
+import ToastContainer from '../../../../../../../mobileapp/src/components/common/atoms/Toast/container/Toast.container';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 // How To use this react native modal
@@ -54,6 +55,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   return (
     <SafeAreaView>
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
+        <ToastContainer />
         <StatusBar hidden />
         {heading && (
           <RowWrapper>
