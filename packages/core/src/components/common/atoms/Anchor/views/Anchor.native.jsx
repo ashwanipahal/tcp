@@ -15,6 +15,7 @@ type Props = {
   children?: Object,
   customStyle?: Object,
   locator?: string,
+  onPress?: Function,
   accessibilityLabel?: string,
 };
 
@@ -31,6 +32,7 @@ const Anchor = ({
   children,
   customStyle,
   locator,
+  onPress,
   accessibilityLabel,
   ...otherProps
 }: Props) => {
@@ -48,7 +50,7 @@ const Anchor = ({
     return (
       <TouchableOpacity
         accessibilityRole="link"
-        onPress={openUrl}
+        onPress={onPress || openUrl}
         {...otherProps}
         style={customStyle}
         testID={getLocator(locator)}
@@ -60,8 +62,8 @@ const Anchor = ({
   return (
     <AnchorView
       accessibilityRole="link"
+      onPress={onPress || openUrl}
       accessibilityLabel={accessibilityLabel || text}
-      onPress={openUrl}
       style={customStyle}
       testID={getLocator(locator)}
     >
@@ -79,6 +81,7 @@ Anchor.defaultProps = {
   children: null,
   customStyle: {},
   locator: '',
+  onPress: null,
   accessibilityLabel: '',
 };
 

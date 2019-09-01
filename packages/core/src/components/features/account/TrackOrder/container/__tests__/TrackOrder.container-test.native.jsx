@@ -36,5 +36,11 @@ describe('Track Order Modal', () => {
       dispatchProps.onChangeForm();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
+    it('should return an action resetModalData which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.resetModalData({ state: true });
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
   });
 });

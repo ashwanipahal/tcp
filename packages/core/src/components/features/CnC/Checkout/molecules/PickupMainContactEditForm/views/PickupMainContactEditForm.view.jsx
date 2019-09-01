@@ -88,6 +88,7 @@ class PickupMainContactEditForm extends React.Component {
               fixedWidth
               closeIconDataLocator="coupondetailmodalcrossicon"
               onRequestClose={onClose}
+              overlayClassName="pick-up-overlay"
             >
               <div className="pickupModalContainer">
                 <div className="pickupModalHeader">{labels.titleEditPickup}</div>

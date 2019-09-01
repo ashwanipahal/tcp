@@ -10,6 +10,11 @@ const OuterContainer = styled.View`
   padding: 10px;
   background-color: ${props => props.theme.colorPalette.white};
 `;
+const UnavailableView = styled.View`
+  display: flex;
+  padding: 5px 2px 2px 14px;
+  flex-direction: row;
+`;
 const ProductName = styled.View``;
 const ProductDesc = styled.View`
   flex-direction: row;
@@ -100,4 +105,5 @@ export {
   MainWrapper,
   BtnWrapper,
   MarginLeft,
+  UnavailableView,
 };

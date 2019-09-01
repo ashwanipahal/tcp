@@ -70,6 +70,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       </ForwardRef>
     }
     height="50px"
+    inCenter={true}
     index={0}
     openedTile={0}
   />
@@ -146,6 +147,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       </ForwardRef>
     }
     height="50px"
+    inCenter={true}
     index={0}
     openedTile={0}
   />
@@ -234,6 +236,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       </ForwardRef>
     }
     height="50px"
+    inCenter={true}
     index={0}
     openedTile={0}
   />
@@ -310,6 +313,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       </ForwardRef>
     }
     height="50px"
+    inCenter={true}
     index={0}
     openedTile={0}
   />

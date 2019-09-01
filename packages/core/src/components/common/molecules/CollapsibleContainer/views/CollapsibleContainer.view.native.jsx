@@ -23,6 +23,7 @@ class CollapsibleContainer extends React.Component {
     getExpandedState: PropTypes.func,
     index: PropTypes.number,
     height: PropTypes.number,
+    inCenter: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -30,6 +31,7 @@ class CollapsibleContainer extends React.Component {
     getExpandedState: null,
     index: null,
     height: null,
+    inCenter: false,
   };
 
   constructor(props) {
@@ -64,7 +66,7 @@ class CollapsibleContainer extends React.Component {
   };
 
   render() {
-    const { header, body, height } = this.props;
+    const { header, body, height, inCenter } = this.props;
     const { isExpanded } = this.state;
     return (
       <StyledWrapper>
@@ -74,7 +76,7 @@ class CollapsibleContainer extends React.Component {
           accessibilityRole="button"
           height={height}
         >
-          <StyledImageWrapper>
+          <StyledImageWrapper inCenter={inCenter}>
             <Image source={isExpanded ? upIcon : downIcon} height={6} width={10} />
           </StyledImageWrapper>
           <View>{header}</View>

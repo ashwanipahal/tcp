@@ -22,6 +22,7 @@ import {
   MainWrapper,
   BtnWrapper,
   MarginLeft,
+  UnavailableView,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -31,7 +32,46 @@ const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 
 const getItemStatus = (productDetail, labels) => {
-  return <ItemAvailability errorMsg={labels.itemUnavailable} />;
+  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
+    return <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />;
+  }
+  return <></>;
+};
+const getEditError = (productDetail, labels) => {
+  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
+    return (
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs12"
+        dataLocator={getLocator('cart_item_edit_link')}
+        textDecorationLine="underline"
+        text={labels.update}
+        color="error"
+      />
+    );
+  }
+  if (productDetail.miscInfo.availability === 'SOLDOUT') {
+    return (
+      <BodyCopy
+        color="error"
+        fontFamily="secondary"
+        fontSize="fs12"
+        dataLocator={getLocator('cart_item_edit_link')}
+        textDecorationLine="underline"
+        text={labels.removeEdit}
+      />
+    );
+  }
+  return (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs12"
+      dataLocator={getLocator('cart_item_edit_link')}
+      textDecorationLine="underline"
+      text={labels.edit}
+    />
+  );
 };
 
 class ProductInformation extends React.Component {
@@ -52,22 +92,8 @@ class ProductInformation extends React.Component {
     );
   };
 
-  getEditLinkLbl = () => {
-    const { labels, productDetail } = this.props;
-    let editLinkLbl = labels.edit;
-    if (productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
-      editLinkLbl = labels.removeItem;
-    } else if (
-      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
-    ) {
-      editLinkLbl = labels.update;
-    }
-    return editLinkLbl;
-  };
-
   render() {
     const { productDetail, labels, itemIndex, openedTile, setSelectedProductTile } = this.props;
-    const editLinkLbl = this.getEditLinkLbl();
 
     return (
       <Swipeable
@@ -79,12 +105,8 @@ class ProductInformation extends React.Component {
         leftButtons={[null]}
       >
         <MainWrapper>
+          <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
           <OuterContainer>
-            <BodyCopy
-              fontSize="fs10"
-              textAlign="center"
-              text={getItemStatus(productDetail, labels)}
-            />
             <ImgWrapper>
               <View>
                 <ImageStyle
@@ -256,14 +278,7 @@ class ProductInformation extends React.Component {
                   return this.swipeable.toggle('right');
                 }}
               >
-                <BodyCopy
-                  color="gray.700"
-                  fontFamily="secondary"
-                  fontSize="fs12"
-                  dataLocator={getLocator('cart_item_edit_link')}
-                  textDecorationLine="underline"
-                  text={editLinkLbl}
-                />
+                {getEditError(productDetail, labels)}
               </EditButton>
             </ProductDescription>
           </OuterContainer>

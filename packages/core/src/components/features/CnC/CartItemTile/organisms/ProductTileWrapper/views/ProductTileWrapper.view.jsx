@@ -9,7 +9,11 @@ import {
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
-import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
+import productTileCss, {
+  customStyles,
+  miniBagCSS,
+  bagTileCSS,
+} from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import RemoveSoldOut from '../../../../common/molecules/RemoveSoldOut';
 
@@ -29,7 +33,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
     });
   };
 
-  getHeaderError = (labels, orderItems) => {
+  getHeaderError = (labels, orderItems, pageView) => {
+    const styles = pageView === 'myBag' ? bagTileCSS : customStyles;
     if (orderItems && orderItems.size > 0) {
       const showError = orderItems.find(tile => {
         const productDetail = getProductDetails(tile);
@@ -38,9 +43,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         );
       });
-      return (
-        showError && <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
-      );
+      return showError && <ErrorMessage customClass={styles} error={labels.problemWithOrder} />;
     }
     return false;
   };
@@ -53,12 +56,12 @@ class ProductTileWrapper extends React.PureComponent<props> {
         fontSize="fs12"
         component="span"
         className="removeErrorMessage"
-        fontWeight="extrabold"
         onClick={() => removeCartItem(getUnavailableOOSItems)}
       >
-        remove
+        <u>remove</u>
       </BodyCopy>
     );
+
     remove.splice(1, 0, newRemove);
     return remove;
   };
@@ -79,6 +82,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     } = this.props;
     let isUnavailable;
     let isSoldOut;
+    const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
     const { isEditAllowed, openedTile } = this.state;
     if (orderItems && orderItems.size > 0) {
@@ -94,7 +98,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
         }
         return (
           <CartItemTile
-            inheritedStyles={pageView === 'myBag' && productTileCss}
+            inheritedStyles={inheritedStyles}
             labels={labels}
             productDetail={productDetail}
             key={`${getProductName(tile)}`}

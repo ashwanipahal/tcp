@@ -153,6 +153,7 @@ class CartItemRadioButtons extends React.Component {
           index={index}
           height="50px"
           openedTile={openedTile}
+          inCenter
         />
       </StyledWrapper>
     );

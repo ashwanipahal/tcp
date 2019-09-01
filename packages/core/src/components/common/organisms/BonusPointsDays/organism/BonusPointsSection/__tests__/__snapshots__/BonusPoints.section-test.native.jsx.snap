@@ -111,6 +111,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
     }
     height={null}
     iconLocator="arrowicon"
+    inCenter={false}
     index={null}
   />
 </View>
@@ -237,6 +238,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
     }
     height={null}
     iconLocator="arrowicon"
+    inCenter={false}
     index={null}
   />
 </View>
@@ -363,6 +365,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
     }
     height={null}
     iconLocator="arrowicon"
+    inCenter={false}
     index={null}
   />
 </View>
@@ -489,6 +492,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
     }
     height={null}
     iconLocator="arrowicon"
+    inCenter={false}
     index={null}
   />
 </View>
@@ -592,6 +596,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
     }
     height={null}
     iconLocator="arrowicon"
+    inCenter={false}
     index={null}
   />
 </View>

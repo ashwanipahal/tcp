@@ -79,16 +79,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View) />
     <Styled(View)>
-      <Styled(BodyCopy)
-        fontSize="fs10"
-        text={
-          <ItemAvailability
-            error=""
-          />
-        }
-        textAlign="center"
-      />
       <Styled(View)>
         <View>
           <Styled(Image)
@@ -242,7 +234,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
           onPress={[Function]}
         >
           <Styled(BodyCopy)
-            color="gray.700"
+            color="gray.900"
             dataLocator="cartItemEditLink"
             fontFamily="secondary"
             fontSize="fs12"
