@@ -13,9 +13,7 @@ exports[`Toast msg view render should render correctly 1`] = `
         "backgroundColor": "#000000",
         "borderRadius": 0,
         "padding": 20,
-        "position": "relative",
         "width": "100%",
-        "zIndex": 1000,
       }
     }
     textStyle={

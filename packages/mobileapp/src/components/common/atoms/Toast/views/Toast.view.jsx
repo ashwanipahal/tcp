@@ -14,8 +14,6 @@ const styles = {
     width: '100%',
     borderRadius: 0,
     padding: 20,
-    zIndex: 1000,
-    position: 'relative',
   },
 };
 
