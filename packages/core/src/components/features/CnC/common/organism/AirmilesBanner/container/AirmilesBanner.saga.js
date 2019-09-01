@@ -6,16 +6,9 @@ import { addAirmilesBannerFailure } from './AirmilesBanner.actions';
 import addAirmilesBannerApi from '../../../../../../../services/abstractors/CnC/AirmilesBanner';
 
 // eslint-disable-next-line consistent-return
-export function* addAirmilesBanner({
-  payload,
-}: {
-  payload: { giftCardNumber: string, cardPin: string, recaptchaToken: string },
-}): Saga<void> {
+export function* addAirmilesBanner({ payload }) {
   try {
-    const response = yield call(addAirmilesBannerApi, payload);
-    if (!response) {
-      return yield put(addAirmilesBannerFailure());
-    }
+    yield call(addAirmilesBannerApi, payload);
   } catch (err) {
     return yield put(addAirmilesBannerFailure(err.message));
   }

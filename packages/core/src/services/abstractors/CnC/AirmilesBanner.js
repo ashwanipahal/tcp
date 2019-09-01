@@ -9,6 +9,8 @@ const errorHandler = err => {
 };
 
 export default function addAirmilesBannerApi(payload) {
+  console.log('abstractor', payload);
+
   const payloadArgs = {
     webService: endpoints.addAirmilesBanner,
     header: {

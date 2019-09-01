@@ -43,6 +43,9 @@ const styles = css`
     margin-top: 2px;
     cursor: pointer;
   }
+  .disabledText {
+    text-align: left;
+  }
   .input-fields-wrapper {
     flex: 1;
 

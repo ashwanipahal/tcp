@@ -21,7 +21,6 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
     </Styled(BodyCopy)>
     <form
       className="coupon_submit_form"
-      onSubmit={[Function]}
     >
       <Styled(Row)
         className="airmilesRow"
@@ -40,6 +39,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
             className="editButton"
           >
             <Styled(Col)
+              className="disabledText"
               colSize={
                 Object {
                   "large": 10,
@@ -85,7 +85,6 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 message="collectorFlyout"
               >
                 <Styled(Image)
-                  className="tcp_carousel__play tooltip"
                   src="/static/images/info-icon.png"
                 />
               </Styled(ReactTooltip)>
@@ -271,14 +270,13 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
             className="airmileBannerTooltip"
           >
             <span
-              className="info-icon-img-wrapper"
+              className="info-icon-img-wrapper offerCodeTooltip"
             >
               <Styled(ReactTooltip)
                 aligned="right"
                 message="offerFlyout"
               >
                 <Styled(Image)
-                  className="tcp_carousel__play tooltip"
                   src="/static/images/info-icon.png"
                 />
               </Styled(ReactTooltip)>

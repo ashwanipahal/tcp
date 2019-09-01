@@ -41,6 +41,9 @@ class AirmilesBanner extends React.PureComponent<Props> {
     }
 
     if (isValidPromoField) {
+      const { onAddAirmilesBanner } = this.props;
+
+      onAddAirmilesBanner({ promoId: promoField });
       this.setState({
         expanded: false,
       });
@@ -64,13 +67,13 @@ class AirmilesBanner extends React.PureComponent<Props> {
     return !!promoField && promoField.length > 2 && !(syncError && syncError.promoId);
   };
 
-  handleSubmit = (data: { promoId: string, orderId: string }) => {
+  handleSubmit = event => {
     const { onAddAirmilesBanner } = this.props;
     const { touched } = this.state;
     if (touched) {
       this.toggleTouched();
     }
-    onAddAirmilesBanner(data);
+    onAddAirmilesBanner({ offerCode: event.target.defaultValue });
   };
 
   render() {
@@ -79,6 +82,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
       airmilesBannerData: { collectorNumber },
       labels,
       promoField,
+      handleSubmit,
     } = this.props;
     const { expanded, isValidPromoField } = this.state;
 
@@ -94,7 +98,10 @@ class AirmilesBanner extends React.PureComponent<Props> {
           >
             {labels.headerText}
           </BodyCopy>
-          <form onSubmit={this.handleSubmit.bind(this)} className="coupon_submit_form">
+          <form
+            onSubmit={handleSubmit(this.handleSubmit.bind(this))}
+            className="coupon_submit_form"
+          >
             <Row
               className="airmilesRow"
               data-locator={getLocator('airnmileBannerinput_item_label')}
@@ -102,7 +109,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
               <Col className="airmilesBannerInput" colSize={{ large: 6, medium: 8, small: 3 }}>
                 {!!isValidPromoField && !expanded ? (
                   <Row className="editButton">
-                    <Col colSize={{ large: 10, medium: 6, small: 4 }}>
+                    <Col className="disabledText" colSize={{ large: 10, medium: 6, small: 4 }}>
                       {!!collectorNumber && !!promoField && promoField === collectorNumber
                         ? collectorNumber
                         : promoField}
@@ -137,10 +144,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                 <span className="airmileBannerTooltip">
                   <span className="info-icon-img-wrapper">
                     <ReactToolTip message={labels.collectorFlyout} aligned="right">
-                      <Image
-                        className="tcp_carousel__play tooltip"
-                        src={getIconPath('info-icon')}
-                      />
+                      <Image src={getIconPath('info-icon')} />
                     </ReactToolTip>
                   </span>
                 </span>
@@ -159,12 +163,9 @@ class AirmilesBanner extends React.PureComponent<Props> {
                 />
 
                 <span className="airmileBannerTooltip">
-                  <span className="info-icon-img-wrapper">
+                  <span className="info-icon-img-wrapper offerCodeTooltip">
                     <ReactToolTip message={labels.offerFlyout} aligned="right">
-                      <Image
-                        className="tcp_carousel__play tooltip"
-                        src={getIconPath('info-icon')}
-                      />
+                      <Image src={getIconPath('info-icon')} />
                     </ReactToolTip>
                   </span>
                 </span>
@@ -191,12 +192,14 @@ AirmilesBanner.propTypes = {
   airmilesBannerData: PropTypes.shape({}),
   onAddAirmilesBanner: PropTypes.func,
   orderId: PropTypes.string,
+  handleSubmit: PropTypes.func,
 };
 AirmilesBanner.defaultProps = {
   airmilesBannerData: {},
   labels: {},
   onAddAirmilesBanner: () => {},
   orderId: ' ',
+  handleSubmit: () => {},
 };
 
 const validateMethod = createValidateMethod({
@@ -218,6 +221,7 @@ export default reduxForm({
   form: 'AirmilesBanner',
   ...validateMethod,
   enableReinitialize: true,
+  asyncBlurFields: ['promoId', 'offerCode'],
 })(withStyles(AirmilesBanner, styles));
 
 export { AirmilesBanner };
