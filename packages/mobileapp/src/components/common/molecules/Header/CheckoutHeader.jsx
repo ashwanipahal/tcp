@@ -2,7 +2,6 @@ import React from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { getLocator } from '@tcp/core/src/utils';
-import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import {
   MessageContainer,
   StoreContainer,
@@ -17,7 +16,6 @@ import {
 // @flow
 type Props = {
   navigation: object,
-  activeStage: string,
 };
 
 /**
@@ -69,7 +67,6 @@ class CheckoutHeader extends React.PureComponent<Props> {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
-    activeStage: state.Checkout.getIn(['uiFlags', 'stage']),
   };
 };
 

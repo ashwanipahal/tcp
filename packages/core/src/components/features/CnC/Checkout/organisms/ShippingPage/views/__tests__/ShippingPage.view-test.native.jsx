@@ -18,6 +18,20 @@ describe('Shipping Page', () => {
         sectionHeader: '',
       },
       handleSubmit: mockedhandleSubmit,
+      navigation: {
+        state: {
+          params: {
+            shippingLabels: {},
+            shipmentMethods: jest.fn(),
+            defaultShipmentId: '',
+            selectedShipmentId: '',
+            addressLabels: {},
+            emailSignUpLabels: {},
+            loadShipmentMethods: jest.fn(),
+            handleSubmit: mockedhandleSubmit,
+          },
+        },
+      },
     };
     const prevProps = {
       address,
@@ -38,6 +52,20 @@ describe('Shipping Page', () => {
       loadShipmentMethods: mockedloadShipmentMethods,
       shippingLabels: {
         sectionHeader: '',
+      },
+      navigation: {
+        state: {
+          params: {
+            shippingLabels: {},
+            shipmentMethods: jest.fn(),
+            defaultShipmentId: '',
+            selectedShipmentId: '',
+            addressLabels: {},
+            emailSignUpLabels: {},
+            loadShipmentMethods: jest.fn(),
+            handleSubmit: jest.fn(),
+          },
+        },
       },
     };
     const prevProps = {
