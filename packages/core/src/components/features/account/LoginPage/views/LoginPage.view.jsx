@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoginSection from '../organism/LoginSection';
+import PasswordRequirement from '../../ResetPassword/molecules/PasswordRequirement';
 
 const LoginView = ({
   onSubmit,
@@ -40,6 +41,7 @@ const LoginView = ({
       setLoginModalMountState={setLoginModalMountState}
       variation={variation}
       handleContinueAsGuest={handleContinueAsGuest}
+      tooltipContent={<PasswordRequirement labels={labels.password} />}
     />
   );
 };
