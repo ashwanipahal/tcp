@@ -115,16 +115,16 @@ class ProductInformation extends React.Component {
     );
   };
 
+  onSwipeComplete = swipe => {
+    const { swipedElement, setSwipedElement } = this.props;
+    if (swipedElement && swipedElement !== swipe) {
+      swipedElement.recenter();
+    }
+    setSwipedElement(swipe);
+  };
+
   render() {
-    const {
-      productDetail,
-      labels,
-      itemIndex,
-      openedTile,
-      setSelectedProductTile,
-      swipedElement,
-      setSwipedElement,
-    } = this.props;
+    const { productDetail, labels, itemIndex, openedTile, setSelectedProductTile } = this.props;
     return (
       <Swipeable
         onRef={ref => {
@@ -134,10 +134,7 @@ class ProductInformation extends React.Component {
         rightButtonWidth={200}
         leftButtons={[null]}
         onSwipeComplete={(event, gestureState, swipe) => {
-          if (swipedElement && swipedElement !== swipe) {
-            swipedElement.recenter();
-          }
-          setSwipedElement(swipe);
+          this.onSwipeComplete(swipe);
         }}
       >
         <MainWrapper>
@@ -311,10 +308,7 @@ class ProductInformation extends React.Component {
               </ProductSubDetails>
               <EditButton
                 onPress={() => {
-                  if (swipedElement && swipedElement !== this.swipeable) {
-                    swipedElement.recenter();
-                  }
-                  setSwipedElement(this.swipeable);
+                  this.onSwipeComplete(this.swipeable);
                   return this.swipeable.toggle('right');
                 }}
               >
