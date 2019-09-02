@@ -9,7 +9,7 @@ exports[`CollapsibleContainer should render correctly 1`] = `
     onPress={[Function]}
   >
     <Styled(View)
-      inCenter={false}
+      arrowPos={null}
     >
       <Styled(ImageComp)
         height={6}
@@ -41,7 +41,7 @@ exports[`CollapsibleContainer should render correctly with getExpandedState and 
     onPress={[Function]}
   >
     <Styled(View)
-      inCenter={false}
+      arrowPos={null}
     >
       <Styled(ImageComp)
         height={6}

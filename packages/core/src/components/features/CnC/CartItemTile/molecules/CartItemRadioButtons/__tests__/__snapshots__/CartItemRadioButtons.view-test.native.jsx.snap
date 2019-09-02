@@ -3,6 +3,7 @@
 exports[`CartItemRadioButtons native Component CartItemRadioButtons native should render correctly 1`] = `
 <Styled(View)>
   <CollapsibleContainer
+    arrowPos="20px"
     body={
       <React.Fragment>
         <ForwardRef>
@@ -22,9 +23,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
             }
             onPress={[Function]}
           />
-          <ForwardRef>
-            undefined:
-          </ForwardRef>
+          <ForwardRef />
         </ForwardRef>
         <ForwardRef>
           <LabeledRadioButton
@@ -70,8 +69,8 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       </ForwardRef>
     }
     height="50px"
-    inCenter={true}
     index={0}
+    isBag={true}
     openedTile={0}
   />
 </Styled(View)>
@@ -80,6 +79,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
 exports[`CartItemRadioButtons native Component CartItemRadioButtons native should render correctly with orderItemType as BOSS 1`] = `
 <Styled(View)>
   <CollapsibleContainer
+    arrowPos="20px"
     body={
       <React.Fragment>
         <ForwardRef>
@@ -99,9 +99,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
             }
             onPress={[Function]}
           />
-          <ForwardRef>
-            undefined:
-          </ForwardRef>
+          <ForwardRef />
         </ForwardRef>
         <ForwardRef>
           <LabeledRadioButton
@@ -147,8 +145,8 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       </ForwardRef>
     }
     height="50px"
-    inCenter={true}
     index={0}
+    isBag={true}
     openedTile={0}
   />
 </Styled(View)>
@@ -157,6 +155,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
 exports[`CartItemRadioButtons native Component CartItemRadioButtons native should render correctly with orderItemType as Bopis 1`] = `
 <Styled(View)>
   <CollapsibleContainer
+    arrowPos="20px"
     body={
       <React.Fragment>
         <ForwardRef>
@@ -217,7 +216,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           buttonSize={10}
           buttonStyle={Object {}}
           disabled={false}
-          isSelected={true}
+          isSelected={false}
           obj={
             Object {
               "value": "BOPIS",
@@ -225,19 +224,12 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           }
           onPress={[Function]}
         />
-        <ForwardRef>
-          undefined:
-        </ForwardRef>
-        <ForwardRef>
-          <ForwardRef>
-             New port center
-          </ForwardRef>
-        </ForwardRef>
+        <ForwardRef />
       </ForwardRef>
     }
     height="50px"
-    inCenter={true}
     index={0}
+    isBag={true}
     openedTile={0}
   />
 </Styled(View)>
@@ -246,6 +238,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
 exports[`CartItemRadioButtons native Component CartItemRadioButtons native should render correctly with orderItemType as ECOM 1`] = `
 <Styled(View)>
   <CollapsibleContainer
+    arrowPos="20px"
     body={
       <React.Fragment>
         <ForwardRef>
@@ -265,9 +258,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
             }
             onPress={[Function]}
           />
-          <ForwardRef>
-            undefined:
-          </ForwardRef>
+          <ForwardRef />
         </ForwardRef>
         <ForwardRef>
           <LabeledRadioButton
@@ -291,7 +282,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
     getExpandedState={[Function]}
     header={
       <ForwardRef
-        pointerEvents="auto"
+        pointerEvents="none"
       >
         <RadioButtonInput
           borderWidth={1}
@@ -301,7 +292,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           buttonSize={10}
           buttonStyle={Object {}}
           disabled={false}
-          isSelected={true}
+          isSelected={false}
           obj={
             Object {
               "value": "ECOM",
@@ -313,8 +304,8 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
       </ForwardRef>
     }
     height="50px"
-    inCenter={true}
     index={0}
+    isBag={true}
     openedTile={0}
   />
 </Styled(View)>

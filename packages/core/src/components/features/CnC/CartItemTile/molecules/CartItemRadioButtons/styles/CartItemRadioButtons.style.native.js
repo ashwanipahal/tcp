@@ -29,6 +29,7 @@ const StyledBopisBorder = styled.View`
   justify-content: flex-start;
   align-items: center;
   padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  height: 50px;
 `;
 
 const StyledText = styled.Text`

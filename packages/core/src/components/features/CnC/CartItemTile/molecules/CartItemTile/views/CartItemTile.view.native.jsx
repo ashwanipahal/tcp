@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import endpoints from '../../../../../../../service/endpoint';
+import Image from '../../../../../../common/atoms/Image';
 import {
   ProductName,
   ProductDesc,
@@ -23,6 +24,10 @@ import {
   BtnWrapper,
   MarginLeft,
   UnavailableView,
+  IconHeight,
+  IconWidth,
+  IconTextDelete,
+  IconTextEdit,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -30,6 +35,8 @@ import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
+const editIcon = require('../../../../../../../assets/edit-icon.png');
+const deleteIcon = require('../../../../../../../assets/delete.png');
 
 const getItemStatus = (productDetail, labels) => {
   if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
@@ -84,9 +91,25 @@ class ProductInformation extends React.Component {
     const { removeCartItem, productDetail, labels } = this.props;
     return (
       <BtnWrapper>
-        <Text>{labels.edit}</Text>
+        {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
+          <View>
+            <Image
+              data-locator={getLocator('cart_item_edit_link')}
+              source={editIcon}
+              height={IconHeight}
+              width={IconWidth}
+            />
+            <IconTextEdit>{labels.edit}</IconTextEdit>
+          </View>
+        )}
         <MarginLeft onPress={() => removeCartItem(productDetail.itemInfo.itemId)}>
-          <Text>{labels.deleteItem}</Text>
+          <Image
+            data-locator={getLocator('cart_item_edit_link')}
+            source={deleteIcon}
+            height={IconHeight}
+            width={IconWidth}
+          />
+          <IconTextDelete>{labels.deleteItem}</IconTextDelete>
         </MarginLeft>
       </BtnWrapper>
     );

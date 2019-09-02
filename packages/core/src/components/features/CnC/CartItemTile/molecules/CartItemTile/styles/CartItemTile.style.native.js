@@ -78,6 +78,7 @@ const EditButton = styled.TouchableOpacity`
 `;
 
 const BtnWrapper = styled.View`
+  flex: 1;
   flex-direction: row;
   align-items: center;
   text-align: center;
@@ -85,8 +86,27 @@ const BtnWrapper = styled.View`
 `;
 
 const MarginLeft = styled.TouchableOpacity`
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
+
+const IconTextEdit = styled.Text`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  color: ${props => props.theme.colorPalette.gray[800]};
+  font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
+`;
+
+const IconTextDelete = styled.Text`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  color: ${props => props.theme.colorPalette.red[500]};
+  font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
+`;
+
+const IconHeight = '58px';
+const IconWidth = '58px';
 
 export {
   OuterContainer,
@@ -106,4 +126,8 @@ export {
   BtnWrapper,
   MarginLeft,
   UnavailableView,
+  IconHeight,
+  IconWidth,
+  IconTextDelete,
+  IconTextEdit,
 };

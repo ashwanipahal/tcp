@@ -3,6 +3,7 @@
 exports[`BonusPointsAvailabilityVanilla should render correctly available_today 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -111,8 +112,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
     }
     height={null}
     iconLocator="arrowicon"
-    inCenter={false}
     index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -120,6 +121,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
 exports[`BonusPointsAvailabilityVanilla should render correctly with applied to bag bonus point days 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -238,8 +240,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
     }
     height={null}
     iconLocator="arrowicon"
-    inCenter={false}
     index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -247,6 +249,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
 exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -365,8 +368,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
     }
     height={null}
     iconLocator="arrowicon"
-    inCenter={false}
     index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -374,6 +377,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
 exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisabled 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -492,8 +496,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
     }
     height={null}
     iconLocator="arrowicon"
-    inCenter={false}
     index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -501,6 +505,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
 exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <ForwardRef>
@@ -596,8 +601,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
     }
     height={null}
     iconLocator="arrowicon"
-    inCenter={false}
     index={null}
+    isBag={false}
   />
 </View>
 `;

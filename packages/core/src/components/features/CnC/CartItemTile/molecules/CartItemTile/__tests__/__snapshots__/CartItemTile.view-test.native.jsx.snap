@@ -50,11 +50,33 @@ exports[`CartItemTile common component renders correctly 1`] = `
   rightButtons={
     Array [
       <ForwardRef>
-        <Text />
+        <View>
+          <ForwardRef
+            data-locator="cartItemEditLink"
+            height="58px"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/edit-icon.png",
+              }
+            }
+            width="58px"
+          />
+          <ForwardRef />
+        </View>
         <ForwardRef
           onPress={[Function]}
         >
-          <Text />
+          <ForwardRef
+            data-locator="cartItemEditLink"
+            height="58px"
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/delete.png",
+              }
+            }
+            width="58px"
+          />
+          <ForwardRef />
         </ForwardRef>
       </ForwardRef>,
     ]

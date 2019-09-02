@@ -13,28 +13,28 @@ import {
   StyledStoreTextWrapper,
   StyledBopisBorder,
 } from '../styles/CartItemRadioButtons.style.native';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 const colorPallete = createThemeColorPalette();
 
 class CartItemRadioButtons extends React.Component {
   constructor(props) {
     super(props);
-    this.selectedOrder = 'ECOM';
-    if (props.productDetail.miscInfo.orderItemType === 'BOPIS') {
-      this.selectedOrder = 'BOPIS';
-    } else if (props.productDetail.miscInfo.orderItemType === 'BOSS') {
-      this.selectedOrder = 'BOSS';
+    this.selectedOrder = CARTPAGE_CONSTANTS.ECOM;
+    if (props.productDetail.miscInfo.orderItemType === CARTPAGE_CONSTANTS.BOPIS) {
+      this.selectedOrder = CARTPAGE_CONSTANTS.BOPIS;
+    } else if (props.productDetail.miscInfo.orderItemType === CARTPAGE_CONSTANTS.BOSS) {
+      this.selectedOrder = CARTPAGE_CONSTANTS.BOSS;
     }
-    const { index } = props;
     this.state = {
       selectedOrder: this.selectedOrder,
-      expandedState: index === 0,
+      currentExpandedState: true,
     };
   }
 
   getExpandedState = ({ state, index }) => {
     const { setSelectedProductTile } = this.props;
-    this.setState({ expandedState: state });
+    this.setState({ currentExpandedState: state });
     if (setSelectedProductTile && state) {
       setSelectedProductTile({ index });
     }
@@ -44,10 +44,29 @@ class CartItemRadioButtons extends React.Component {
     this.setState({ selectedOrder: orderType });
   };
 
+  renderRadioButtonInput = ({ key }) => {
+    const { selectedOrder } = this.state;
+    return (
+      <RadioButtonInput
+        isSelected={selectedOrder === key}
+        borderWidth={1}
+        buttonInnerColor={colorPallete.black}
+        buttonOuterColor={colorPallete.black}
+        buttonSize={10}
+        buttonOuterSize={20}
+        onPress={e => this.handleToggle(e, key)}
+        buttonStyle={{}}
+        obj={{
+          value: selectedOrder,
+        }}
+      />
+    );
+  };
+
   renderRadioButton = ({ key, label }) => {
     const { selectedOrder } = this.state;
     const { productDetail } = this.props;
-    return key !== 'BOPIS' ? (
+    return key !== CARTPAGE_CONSTANTS.BOPIS ? (
       <StyledLabeledRadioBtn>
         <LabeledRadioButton
           obj={{
@@ -57,26 +76,14 @@ class CartItemRadioButtons extends React.Component {
           index={0}
           onPress={e => this.handleToggle(e, key)}
           checked={selectedOrder === key}
-          disabled={key !== 'ECOM'}
+          disabled={key !== CARTPAGE_CONSTANTS.ECOM}
         />
       </StyledLabeledRadioBtn>
     ) : (
       <StyledBopisBorder>
-        <RadioButtonInput
-          isSelected={selectedOrder === key}
-          borderWidth={1}
-          buttonInnerColor={colorPallete.black}
-          buttonOuterColor={colorPallete.black}
-          buttonSize={10}
-          buttonOuterSize={20}
-          onPress={e => this.handleToggle(e, key)}
-          buttonStyle={{}}
-          obj={{
-            value: selectedOrder,
-          }}
-        />
-        <StyledText>{`${label}:`}</StyledText>
-        {key === 'BOPIS' && productDetail.miscInfo.store && (
+        {this.renderRadioButtonInput({ key, label })}
+        <StyledText>{productDetail.miscInfo.store ? `${label}:` : label}</StyledText>
+        {productDetail.miscInfo.store && (
           <StyledStoreTextWrapper>
             <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
           </StyledStoreTextWrapper>
@@ -89,32 +96,19 @@ class CartItemRadioButtons extends React.Component {
     const { labels } = this.props;
     return (
       <>
-        {this.renderRadioButton({ key: 'BOPIS', label: labels.bopisPickUp })}
-        {this.renderRadioButton({ key: 'ECOM', label: labels.ecomShipping })}
+        {this.renderRadioButton({ key: CARTPAGE_CONSTANTS.BOPIS, label: labels.bopisPickUp })}
+        {this.renderRadioButton({ key: CARTPAGE_CONSTANTS.ECOM, label: labels.ecomShipping })}
       </>
     );
   };
 
   renderHeader = ({ key, label }) => {
-    const { selectedOrder } = this.state;
     const { productDetail } = this.props;
     return (
-      <StyledHeaderBtnWrapper pointerEvents={key !== 'ECOM' ? 'none' : 'auto'}>
-        <RadioButtonInput
-          isSelected={selectedOrder === key}
-          borderWidth={1}
-          buttonInnerColor={colorPallete.black}
-          buttonOuterColor={colorPallete.black}
-          buttonSize={10}
-          buttonOuterSize={20}
-          onPress={e => this.handleToggle(e, key)}
-          buttonStyle={{}}
-          obj={{
-            value: selectedOrder,
-          }}
-        />
-        <StyledText>{key === 'BOPIS' ? `${label}:` : label}</StyledText>
-        {key === 'BOPIS' && productDetail.miscInfo.store && (
+      <StyledHeaderBtnWrapper pointerEvents={key !== CARTPAGE_CONSTANTS.ECOM ? 'none' : 'auto'}>
+        {this.renderRadioButtonInput({ key, label })}
+        <StyledText>{key === CARTPAGE_CONSTANTS.BOPIS ? `${label}:` : label}</StyledText>
+        {key === CARTPAGE_CONSTANTS.BOPIS && productDetail.miscInfo.store && (
           <StyledStoreTextWrapper>
             <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
           </StyledStoreTextWrapper>
@@ -124,20 +118,20 @@ class CartItemRadioButtons extends React.Component {
   };
 
   header = () => {
-    const { selectedOrder, expandedState } = this.state;
-    const { labels } = this.props;
-    if (!expandedState) {
+    const { selectedOrder, currentExpandedState } = this.state;
+    const { labels, openedTile, index } = this.props;
+    if (index !== openedTile || !currentExpandedState) {
       switch (selectedOrder) {
-        case 'BOSS':
-          return this.renderHeader({ key: 'BOSS', label: labels.bossPickUp });
-        case 'BOPIS':
-          return this.renderHeader({ key: 'BOPIS', label: labels.bopisPickUp });
-        case 'ECOM':
-          return this.renderHeader({ key: 'ECOM', label: labels.ecomShipping });
+        case CARTPAGE_CONSTANTS.BOSS:
+          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
+        case CARTPAGE_CONSTANTS.BOPIS:
+          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOPIS, label: labels.bopisPickUp });
+        case CARTPAGE_CONSTANTS.ECOM:
+          return this.renderHeader({ key: CARTPAGE_CONSTANTS.ECOM, label: labels.ecomShipping });
         default:
-          return this.renderHeader({ key: 'BOSS', label: labels.bossPickUp });
+          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
       }
-    } else return this.renderHeader({ key: 'BOSS', label: labels.bossPickUp });
+    } else return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
   };
 
   render() {
@@ -153,7 +147,8 @@ class CartItemRadioButtons extends React.Component {
           index={index}
           height="50px"
           openedTile={openedTile}
-          inCenter
+          arrowPos="20px"
+          isBag
         />
       </StyledWrapper>
     );

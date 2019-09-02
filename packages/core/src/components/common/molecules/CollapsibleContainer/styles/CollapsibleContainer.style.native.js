@@ -10,7 +10,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
 const StyledImageWrapper = styled.View`
   position: absolute;
   right: 10px;
-  top: ${props => (props.inCenter ? '20px' : '12px')};
+  top: ${props => (props.arrowPos ? props.arrowPos : '12px')};
 `;
 
 const StyledWrapper = styled.View`
