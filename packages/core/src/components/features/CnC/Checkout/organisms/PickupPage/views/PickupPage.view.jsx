@@ -162,13 +162,13 @@ class PickUpFormPart extends React.Component {
             />
           )}
           <CheckoutSectionTitleDisplay
-            title={pickUpLabels.title.toUpperCase()}
+            title={pickUpLabels.title}
             dataLocator="pickup-title"
             className="summary-title-pick-up"
           />
 
           <div className="pickUpContact" dataLocator="pickup-contact">
-            <FormSection name="pickUpContact" className="pickUpContact">
+            <FormSection name="pickUpContact">
               {isGuest ? (
                 <ContactFormFields
                   className="pickup-contact-guest-form"
