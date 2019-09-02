@@ -106,7 +106,7 @@ class CartItemTile extends React.Component {
           {productDetail.miscInfo.availability === 'SOLDOUT' && (
             <BodyCopy
               fontFamily="secondary"
-              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : ''}
+              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
               color="error"
               fontSize="fs12"
               component="span"
@@ -119,7 +119,7 @@ class CartItemTile extends React.Component {
           {productDetail.miscInfo.availability === 'UNAVAILABLE' && !isEdit && (
             <BodyCopy
               fontFamily="secondary"
-              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : ''}
+              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
               color="error"
               fontSize="fs12"
               component="span"
@@ -160,12 +160,12 @@ class CartItemTile extends React.Component {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.value}:` : `${labels.size}:`;
   };
 
-  getPointsColor = pageView => {
+  getPointsColor = () => {
     const { isPlcc } = this.props;
-    if (isPlcc && pageView === 'myBag') {
+    if (isPlcc) {
       return 'blue.800';
     }
-    return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
+    return 'orange.800';
   };
 
   getProductItemUpcNumber = (productDetail, pageView) => {
@@ -251,7 +251,7 @@ class CartItemTile extends React.Component {
     };
 
     return (
-      <div className={`tile-header ${className}`}>
+      <div className={`${className} tile-header`}>
         <div className={this.getUnavailableHeaderClass()}>
           {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
             <ItemAvailability
@@ -260,7 +260,7 @@ class CartItemTile extends React.Component {
               chooseDiff={labels.chooseDiff}
             />
           )}
-          <div className="crossDeleteIcon">
+          <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
             <Image
               alt="closeIcon"
               className="close-icon-image"
@@ -488,7 +488,7 @@ class CartItemTile extends React.Component {
                   component="span"
                   fontSize="fs12"
                   fontWeight={['extrabold']}
-                  color={this.getPointsColor(pageView)}
+                  color={this.getPointsColor()}
                   dataLocator={getLocator('cart_item_points')}
                 >
                   {productDetail.itemInfo.myPlacePoints}

@@ -159,6 +159,14 @@ function dobValidator(value) {
   return ['Mm', 'Dd', 'Yyyy'].indexOf(value) === -1;
 }
 
+function eitherRequiredValidator(value, param, linkedPropsValues, linkedFieldsValues) {
+  return (value || linkedFieldsValues[0] || '').length > 0;
+}
+
+function notEqualToValidator(value, linkedFieldsValues) {
+  return value !== linkedFieldsValues[0];
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -187,6 +195,8 @@ const validatorMethods = {
   alphanumeric: alphanumericValidator,
   ssn: ssnValidator,
   dob: dobValidator,
+  eitherRequired: eitherRequiredValidator,
+  notEqualTo: notEqualToValidator,
 };
 
 export default validatorMethods;
