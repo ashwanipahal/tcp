@@ -94,7 +94,7 @@ export default class AddressVerification extends React.PureComponent {
               CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] ===
               CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR
                 ? 'error'
-                : 'text.primary'
+                : 'black'
             }
             mobilefontFamily={['secondary']}
             text={verifyAddressLabels[verificationResult]}
