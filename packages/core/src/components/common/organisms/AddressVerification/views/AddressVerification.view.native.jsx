@@ -84,22 +84,25 @@ export default class AddressVerification extends React.PureComponent {
     const {
       labels: { verifyAddressLabels },
     } = this.props;
-    return (
-      <MessageWrapper>
-        <BodyCopy
-          fontSize="fs14"
-          textAlign="center"
-          color={
-            CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] ===
-            CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR
-              ? 'error'
-              : 'text.primary'
-          }
-          mobilefontFamily={['secondary']}
-          text={verifyAddressLabels[verificationResult]}
-        />
-      </MessageWrapper>
-    );
+    if (verifyAddressLabels[verificationResult]) {
+      return (
+        <MessageWrapper>
+          <BodyCopy
+            fontSize="fs14"
+            textAlign="center"
+            color={
+              CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] ===
+              CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR
+                ? 'error'
+                : 'text.primary'
+            }
+            mobilefontFamily={['secondary']}
+            text={verifyAddressLabels[verificationResult]}
+          />
+        </MessageWrapper>
+      );
+    }
+    return <MessageWrapper />;
   };
 
   handleUserAddress = () => {
