@@ -6,12 +6,24 @@ export default css`
     height: 31px;
     padding-right: 0;
     padding-left: 0;
+    justify-content: center;
   }
   .subHeaderText {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .subHeaderTextIcon {
+    padding-left: 23px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
   }
   .pointsRewards {
     color: ${props => props.theme.colorPalette.orange['800']};
+    padding-left: 6px;
   }
   .cartCount {
     background: ${props => props.theme.colorPalette.blue['800']};

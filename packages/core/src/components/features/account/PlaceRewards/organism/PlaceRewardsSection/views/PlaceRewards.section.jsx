@@ -147,7 +147,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           </Col>
         </Row>
       </Row>
-      {!isCA && <MyRewards labels={labels} />}
+      {!isCA && <MyRewards labels={labels} showLink />}
     </div>
   );
 };
