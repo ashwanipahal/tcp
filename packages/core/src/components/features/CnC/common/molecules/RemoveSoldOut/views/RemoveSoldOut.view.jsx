@@ -8,12 +8,13 @@ import style from '../styles/RemoveSoldOut.style';
 class RemoveSoldOut extends React.PureComponent {
   render() {
     const { labels, className, labelForRemove, pageView } = this.props;
+    const styleClass = pageView === 'myBag' ? 'bagTileItem' : 'removeItem';
     return (
       <>
         <div className={className}>
           {labels && (
             <BodyCopy
-              className={`${pageView === 'myBag' ? 'bagTileItem' : 'removeItem'}`}
+              className={styleClass}
               component="span"
               fontFamily="secondary"
               fontSize="fs12"
@@ -23,7 +24,7 @@ class RemoveSoldOut extends React.PureComponent {
           )}
           {labelForRemove && (
             <BodyCopy
-              className={`${pageView === 'myBag' ? 'bagTilePointer' : 'pointer'}`}
+              className={`${styleClass} pointer`}
               component="span"
               fontFamily="secondary"
               fontSize="fs12"

@@ -26,18 +26,10 @@ export default css`
   .bagTileItem {
     margin: -11px 0 0 32px;
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: 14px;
-      padding-left: 6px;
-    }
-  }
-  .bagTilePointer {
-    cursor: pointer;
-    margin: -11px 0 1px 32px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      font-size: 14px;
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
       padding-left: 6px;
       span {
-        font-size: 14px;
+        font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
       }
     }
   }
