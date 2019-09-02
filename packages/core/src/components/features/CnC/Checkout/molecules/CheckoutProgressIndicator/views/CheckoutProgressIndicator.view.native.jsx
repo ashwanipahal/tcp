@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getLocator } from '@tcp/core/src/utils';
+import CheckoutConstants from '../../../Checkout.constants';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 import {
@@ -13,16 +14,22 @@ import {
   ProgressDotIcon,
   StyledDisableLabels,
   CheckoutProgressBar,
+  ProgressDotActive,
 } from '../styles/CheckoutProgressIndicator.style.native';
 
 const completedStage = require('../../../../../../../assets/checkout-tick.png');
-const currentStage = require('../../../../../../../assets/checkout-white-dot.png');
 
 export class CheckoutProgressIndicator extends React.PureComponent {
+  routeToPickup = () => {
+    const { navigation } = this.props;
+    navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.CHECKOUT, {
+      nextToRoot: CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP,
+    });
+  };
+
   render() {
-    const { activeStage, navigation } = this.props;
-    const pickupPage = 'pickupPage';
-    const availableStages = ['pickup', 'shipping', 'billing', 'review']; // taking these hardcoded as of now, these will come dynamic and will be taken care as part of standard checkout ticket.
+    const { activeStage } = this.props;
+    const availableStages = CheckoutConstants.CHECKOUT_STAGES.STAGES_ARRAY; // taking these hardcoded as of now, these will come dynamic and will be taken care as part of standard checkout ticket.
     let hasSeenActive = false;
     let hasSeenActiveLabel = false;
     return (
@@ -33,10 +40,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
               hasSeenActive = true;
               return (
                 <ProgressStep>
-                  <ProgressDotIcon
-                    source={currentStage}
-                    data-locator={getLocator('global_headerpanelbagicon')}
-                  />
+                  <ProgressDotActive />
                   <ProgressBar />
                 </ProgressStep>
               );
@@ -71,9 +75,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                     fontFamily="secondary"
                     anchorVariation="primary"
                     fontWeightVariation="active"
-                    onPress={() => {
-                      navigation.navigate('Checkout', { nextToRoot: pickupPage });
-                    }}
+                    onPress={this.routeToPickup}
                     // noLink
                     to="/#"
                     dataLocator=""
@@ -96,9 +98,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                   fontFamily="secondary"
                   anchorVariation="primary"
                   fontWeightVariation="active"
-                  onPress={() => {
-                    navigation.navigate('Checkout', { nextToRoot: pickupPage });
-                  }}
+                  onPress={this.routeToPickup}
                   // noLink
                   to="/#"
                   dataLocator=""

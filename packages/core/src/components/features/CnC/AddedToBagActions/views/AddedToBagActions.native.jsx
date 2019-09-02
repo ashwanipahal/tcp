@@ -8,6 +8,7 @@ import {
   ViewBagButton,
   CheckoutButton,
 } from '../styles/AddedToBagActions.style.native';
+import CheckoutConstants from '../../Checkout/Checkout.constants';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
@@ -15,7 +16,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
     if (e) {
       e.preventDefault();
     }
-    navigation.navigate('Checkout', { nextToRoot: 'pickupPage' });
+    navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.CHECKOUT, {
+      nextToRoot: CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP,
+    });
     closeCheckoutModalMountState({ state: false });
   };
 

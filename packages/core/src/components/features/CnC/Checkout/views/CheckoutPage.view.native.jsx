@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 
@@ -35,7 +36,7 @@ export default class CheckoutPage extends React.PureComponent {
       },
     };
     onPickupSubmit(params);
-    navigation.navigate('ShippingPage', {
+    navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING, {
       ...shippingProps,
       loadShipmentMethods,
       navigation,
@@ -70,7 +71,7 @@ export default class CheckoutPage extends React.PureComponent {
     const { nextToRoot } = navigation.state.params;
     return (
       <>
-        {nextToRoot === 'pickupPage' && (
+        {nextToRoot === CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP && (
           <PickupPage
             isGuest={isGuest}
             isMobile={isMobile}
@@ -87,7 +88,7 @@ export default class CheckoutPage extends React.PureComponent {
             navigation={navigation}
           />
         )}
-        {nextToRoot === 'shippingPage' && (
+        {nextToRoot === CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
             loadShipmentMethods={loadShipmentMethods}
