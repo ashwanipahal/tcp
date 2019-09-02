@@ -11,7 +11,6 @@ import AddAddressComponent from '../views/AddEditAddress.view';
 import {
   getAddressResponse,
   getUserEmail,
-  getAddressById,
   getAddEditAddressLabels,
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
@@ -108,7 +107,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
 
     verifyAddressAction(formattedPayload);
     toggleAddressModal();
-    setAddressLine1(formattedPayload.address1);
+    setAddressLine1(formattedPayload.address1, formattedPayload.state);
   };
 
   submitAddressForm = payloadParam => {
@@ -154,6 +153,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       toggleAddressModal,
       currentForm,
       addressLine1,
+      countryState,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -173,6 +173,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         addressBookLabels={labels.addressBook}
         backToAddressBookClick={backToAddressBookClick}
         addressLine1={addressLine1}
+        countryState={countryState}
       />
     );
   }
@@ -198,12 +199,11 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     addressResponse: getAddressResponse(state),
     userEmail: getUserEmail(state),
     addressList: getAddressListState(state),
-    address: getAddressById(state, ownProps),
     labels: getAddEditAddressLabels(state),
   };
 };

@@ -6,6 +6,7 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
   addressLine1=""
   addressResponse=""
   backToAddressBookClick={[Function]}
+  countryState=""
   currentForm=""
   initialValues={
     Object {

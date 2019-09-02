@@ -48,7 +48,7 @@ class AddressForm extends React.PureComponent {
 
     this.state = {
       country: 'US',
-      dropDownItem: this.UScountriesStates[0].displayName,
+      dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
     };
 
     this.locationRef = null;
@@ -56,7 +56,6 @@ class AddressForm extends React.PureComponent {
 
   componentDidMount() {
     const { dispatch, initialValues } = this.props;
-    dispatch(change('AddressForm', 'state', this.UScountriesStates[0].id));
     dispatch(change('AddressForm', 'country', initialValues.country));
     dispatch(change('AddressForm', 'addressLine1', initialValues.addressLine1));
   }
@@ -111,7 +110,9 @@ class AddressForm extends React.PureComponent {
               this.handlePlaceSelected(data, inputValue);
             }}
             onEndEditing={text => {
-              dispatch(change('AddressForm', 'addressLine1', text));
+              setTimeout(() => {
+                dispatch(change('AddressForm', 'addressLine1', text));
+              }, 1000);
             }}
             refs={instance => {
               this.locationRef = instance;
@@ -285,6 +286,7 @@ AddressForm.propTypes = {
     addressLine1: PropTypes.string,
   }),
   addressLine1: PropTypes.string,
+  countryState: PropTypes.string,
 };
 
 AddressForm.defaultProps = {
@@ -314,6 +316,7 @@ AddressForm.defaultProps = {
     addressLine1: '',
   },
   addressLine1: '',
+  countryState: '',
 };
 
 const validateMethod = createValidateMethod(

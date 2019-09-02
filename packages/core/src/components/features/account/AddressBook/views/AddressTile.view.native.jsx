@@ -50,6 +50,9 @@ class AddressBookTile extends React.Component<Props> {
 
   onEditAddressClick = e => {
     e.preventDefault();
+    const { address, setSelectedAddress, toggleAddAddressModal } = this.props;
+    setSelectedAddress(address);
+    toggleAddAddressModal();
   };
 
   render() {

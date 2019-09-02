@@ -18,6 +18,7 @@ const AddressBook = props => {
     currentForm,
     toggleAddressModal,
     addressLine1,
+    countryState,
   } = props;
   return (
     <View {...props}>
@@ -43,6 +44,7 @@ const AddressBook = props => {
             initialValues={initialValues}
             currentForm={currentForm}
             addressLine1={addressLine1}
+            countryState={countryState}
           />
         )}
       </ScrollView>
@@ -62,6 +64,7 @@ AddressBook.propTypes = {
   toggleAddressModal: PropTypes.func,
   addressLine1: PropTypes.string,
   setAddressLine1: PropTypes.func,
+  countryState: PropTypes.string,
 };
 
 AddressBook.defaultProps = {
@@ -75,6 +78,7 @@ AddressBook.defaultProps = {
   currentForm: null,
   addressLine1: '',
   setAddressLine1: () => {},
+  countryState: '',
 };
 
 export default withStyles(AddressBook, ParentContainer);
