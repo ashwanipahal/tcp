@@ -10,7 +10,7 @@ const Abstractor = {
     const payload = {
       webService: {
         method: API_METHODS.GET,
-        URI: `http://${CANDID_API_URL}/stream/page/?`
+        URI: `http://${CANDID_API_URL}/stream/page/?`,
       },
       body: {
         id: CANDID_API_KEY,
@@ -22,11 +22,10 @@ const Abstractor = {
         page: 0,
       },
     };
-    return executeExternalAPICall(payload)
-    .then(res => {
+    return executeExternalAPICall(payload).then(res => {
       const response = res.body;
       if (!response) {
-        throw new Error('Respnse has errors!');
+        throw new Error('Response has errors!');
       }
       return response;
     });

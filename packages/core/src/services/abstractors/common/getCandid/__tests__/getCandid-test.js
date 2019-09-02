@@ -4,59 +4,60 @@ import * as handler from '../../../../handler/handler';
 jest.mock('../../../../../service/API');
 jest.mock('../../../../handler/handler');
 
-handler.default.executeGraphQLQuery = jest.fn();
-handler.default.executeGraphQLQuery.mockImplementation(() => {
-  return Promise.resolve({
-    countryList: [
-      {
-        country: {
-          id: 'AF',
-          displayName: 'Afghanistan',
-        },
-        currency: {
-          id: 'USD',
-          displayName: 'US Dollar',
-        },
-        exchangeRate: {
-          value: '1.2200000000',
-          merchantMagin: '1.2000000000',
-        },
-      },
-      {
-        country: {
-          id: 'AL',
-          displayName: 'Albania',
-        },
-        currency: {
-          id: 'USD',
-          displayName: 'US Dollar',
-        },
-        exchangeRate: {
-          value: '1.1000000000',
-          merchantMargin: '1.2100000000',
-        },
-      },
-    ],
-  });
-});
-
-handler.executeStatefulAPICall = jest.fn();
-handler.executeStatefulAPICall.mockImplementation(() => {
+handler.executeExternalAPICall = jest.fn();
+handler.executeExternalAPICall.mockImplementation(() => {
   return Promise.resolve({
     body: {
-      cc: 'US',
-      ccd: 'USD',
-      er: '1.0000000000',
-      mm: '1.2000000000',
-      flag: 'US',
+      Views: [
+        {
+          Media: {
+            Images: {
+              Thumbnail: {
+                Width: 0,
+                Height: 0,
+                Url:
+                  'https://api.getcandid.com/image/s/candid.azureedge.net%2fstream-media%2f070167ca-8287-4d41-a9bb-6b3850cae9b1_17900969359357824_thumbnail.jpg',
+              },
+            },
+            Likes: 4,
+            Comments: 2,
+            Retweets: 0,
+            ShadowType: 2,
+            ViewCount: 468,
+            LikesDisplay: '4',
+          },
+        },
+        {
+          Media: {
+            Images: {
+              Thumbnail: {
+                Width: 0,
+                Height: 0,
+                Url:
+                  'https://api.getcandid.com/image/s/candid.azureedge.net%2fstream-media%2f070167ca-8287-4d41-a9bb-6b3850cae9b1_17882020951396721_thumbnail.jpg',
+              },
+            },
+            Likes: 41,
+            Comments: 2,
+            Retweets: 0,
+            ShadowType: 2,
+            ViewCount: 884,
+            LikesDisplay: '41',
+          },
+        },
+      ],
     },
   });
 });
 
-describe('CountrySelectorAbstractor', () => {
-  test('Country Selector fetch countries list', () => {
-    return GetCandidAbstractor.getData().then(data => {
-      expect(data.countryList.length).toBeGreaterThan(1);
+describe('GetCandidAbstractor', () => {
+  test('Fetch candid data', () => {
+    const payload = {
+      CANDID_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
+      CANDID_API_URL: 'api.getcandid.com',
+    };
+    return GetCandidAbstractor.getData(payload).then(data => {
+      expect(data.Views.length).toBeGreaterThan(1);
     });
   });
 });
