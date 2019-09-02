@@ -40,6 +40,7 @@ const onAddToBagHandler = (onAddToBag, data) => {
   }
 };
 
+// to get loyalty text in desired format
 const getFormatedText = text => {
   return text
     .replace(/<[^>]*>/g, '')
