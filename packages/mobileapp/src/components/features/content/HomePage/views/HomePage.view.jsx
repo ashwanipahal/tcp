@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
+import { GetCandid } from '@tcp/core/src/components/common/molecules';
 import PropTypes from 'prop-types';
 import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
@@ -61,6 +62,7 @@ class HomePageView extends React.Component {
           {slotD && <SlotD {...slotD} navigation={navigation} />}
           {slotE && <SlotE {...slotE} navigation={navigation} />}
           {slotF && <SlotF {...slotF} navigation={navigation} />}
+          <GetCandid />
           <Button
             fullWidth
             buttonVariation="variable-width"

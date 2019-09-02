@@ -23,6 +23,7 @@ import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/cont
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
+import GetCandidReducer from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -54,6 +55,7 @@ import {
   ADDEDITADDRESS_REDUCER_KEY,
   ADDRESS_VERIFICATION_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
+  GET_CANDID_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -103,6 +105,7 @@ const rootReducer = combineReducers({
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
+  [GET_CANDID_REDUCER_KEY]: GetCandidReducer,
 });
 
 export default rootReducer;

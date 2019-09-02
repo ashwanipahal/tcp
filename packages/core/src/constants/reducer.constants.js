@@ -70,6 +70,10 @@ export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 export const COUNTRY_SELECTOR_REDUCER_KEY = 'CountrySelector';
 export const COUNTRY_SELECTOR_ACTION_PATTERN = '@@CountrySelector-';
 
+// Get Candid reducer
+export const GET_CANDID_REDUCER_KEY = 'GetCandid';
+export const GET_CANDID_ACTION_PATTERN = '@@GetCandid-';
+
 // Coupon reducer
 export const COUPON_REDUCER_KEY = 'CouponsAndPromos';
 export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
@@ -125,6 +129,7 @@ export const REDUCER_ACTION_MAPPING = {
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
   [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
   [UPDATE_PROFILE_REDUCER_KEY]: UPDATE_PROFILE_ACTION_PATTERN,
+  [GET_CANDID_REDUCER_KEY]: GET_CANDID_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

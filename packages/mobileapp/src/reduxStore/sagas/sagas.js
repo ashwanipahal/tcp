@@ -27,6 +27,7 @@ import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payme
 import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
+import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -60,5 +61,6 @@ export default function* rootSaga() {
     CheckoutSaga(),
     TrackOrderSaga(),
     ChangePasswordSaga(),
+    GetCandidSaga(),
   ]);
 }
