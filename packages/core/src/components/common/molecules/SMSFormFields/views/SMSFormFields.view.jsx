@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, change } from 'redux-form';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/style';
+import styles from '../styles/SMSFormFields.style';
 import TextBox from '../../../atoms/TextBox';
 import InputCheckbox from '../../../atoms/InputCheckbox';
 import Row from '../../../atoms/Row';

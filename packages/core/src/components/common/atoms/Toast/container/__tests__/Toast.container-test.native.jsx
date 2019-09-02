@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ToastContainer, { mapDispatchToProps } from '../Toast.container';
+import ToastContainer, { mapDispatchToProps } from '../Toast.container.native';
 
 describe('Toast render', () => {
   it('should render correctly', () => {

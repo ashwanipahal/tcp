@@ -19,11 +19,11 @@ const styles = css`
   }
   .phone-prefix {
     position: absolute;
-    top: 23px;
+    top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
     z-index: 1;
   }
   .phone-field {
-    left: 30px;
+    left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   }
 `;
 

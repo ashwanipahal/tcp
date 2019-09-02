@@ -199,17 +199,17 @@ function isSmsUpdatesEnabled() {
   return isUsSite() && getIsSmsUpdatesEnabled();
 }
 
-function getCurrentPickupFormNumber(state) {
-  let phoneNumber = '';
+// function getCurrentPickupFormNumber(state) {
+//   let phoneNumber = '';
 
-  try {
-    phoneNumber = state.form.getIn(['checkoutPickup', 'values', 'pickUpContact', 'phoneNumber']);
-  } catch (error) {
-    // Gobble...Gobble.
-  }
+//   try {
+//     phoneNumber = state.form.getIn(['checkoutPickup', 'values', 'pickUpContact', 'phoneNumber']);
+//   } catch (error) {
+//     // Gobble...Gobble.
+//   }
 
-  return phoneNumber;
-}
+//   return phoneNumber;
+// }
 
 const getShippingSmsSignUpFields = state => {
   const selector = formValueSelector('checkoutShipping');
@@ -219,6 +219,11 @@ const getShippingSmsSignUpFields = state => {
 const getShipmentMethodsFields = state => {
   const selector = formValueSelector('checkoutShipping');
   return selector(state, 'shipmentMethods');
+};
+
+const getShippingPickupFields = state => {
+  const selector = formValueSelector('checkoutPickup');
+  return selector(state, 'pickUpContact');
 };
 
 const getSelectedShipmentId = createSelector(
@@ -239,6 +244,11 @@ const getAddressFields = state => {
 const getAddressPhoneNo = createSelector(
   getAddressFields,
   addressFields => addressFields && addressFields.phoneNumber
+);
+
+const getCurrentPickupFormNumber = createSelector(
+  getShippingPickupFields,
+  pickUpContact => pickUpContact && pickUpContact.phoneNumber
 );
 
 const getShippingLabels = state => {
@@ -343,7 +353,7 @@ export const getPickUpContactFormLabels = state => {
   const { lbl_shipping_header: shippingText } =
     state.Labels.checkout && state.Labels.checkout.shipping;
   return {
-    title,
+    title: title.toUpperCase(),
     firstName,
     govIdText,
     lastName,

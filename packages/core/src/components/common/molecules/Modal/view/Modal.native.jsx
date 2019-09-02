@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   StyledCrossImage,
   StyledTouchableOpacity,
@@ -9,7 +10,6 @@ import {
   RowWrapper,
   ImageWrapper,
 } from '../Modal.style.native';
-import ToastContainer from '../../../../../../../mobileapp/src/components/common/atoms/Toast/container/Toast.container';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 // How To use this react native modal
