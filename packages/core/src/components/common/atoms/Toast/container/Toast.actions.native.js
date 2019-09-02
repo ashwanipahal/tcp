@@ -14,4 +14,4 @@ const resetToastMsg = payload => {
   };
 };
 
-export {toastMessageInfo , resetToastMsg};
+export { toastMessageInfo, resetToastMsg };
