@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
-import { navigateToNestedRoute } from '../../../../../utils/index.native';
 
 export default class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
-    const { onPickupSubmit } = this.props;
+    const {
+      onPickupSubmit,
+      isGuest,
+      isUsSite,
+      shippingProps,
+      loadShipmentMethods,
+      orderHasPickUp,
+      submitShippingSection,
+    } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
     const { navigation } = this.props;
@@ -28,8 +36,14 @@ export default class CheckoutPage extends React.PureComponent {
       },
     };
     onPickupSubmit(params);
-    navigateToNestedRoute(navigation, 'HomeStack', 'Checkout', {
-      nextToRoot: 'shippingPage',
+    navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING, {
+      ...shippingProps,
+      loadShipmentMethods,
+      navigation,
+      isGuest,
+      isUsSite,
+      orderHasPickUp,
+      handleSubmit: { submitShippingSection },
     });
   };
 
@@ -51,12 +65,13 @@ export default class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      // setCheckoutStage,
     } = this.props;
 
     const { nextToRoot } = navigation.state.params;
     return (
       <>
-        {nextToRoot === 'pickupPage' && (
+        {nextToRoot === CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP && (
           <PickupPage
             isGuest={isGuest}
             isMobile={isMobile}
@@ -73,7 +88,7 @@ export default class CheckoutPage extends React.PureComponent {
             navigation={navigation}
           />
         )}
-        {nextToRoot === 'shippingPage' && (
+        {nextToRoot === CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
             loadShipmentMethods={loadShipmentMethods}
@@ -109,4 +124,5 @@ CheckoutPage.propTypes = {
   loadShipmentMethods: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };

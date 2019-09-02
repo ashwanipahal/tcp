@@ -35,6 +35,13 @@ export function getSetPickupAltValuesActn(pickup) {
   };
 }
 
+export function getSetCheckoutStage(payload) {
+  return {
+    payload,
+    type: 'CHECKOUT_UIFLAGS_SET_STAGE',
+  };
+}
+
 export function getSetShippingValuesActn(shipping) {
   return {
     shipping,
