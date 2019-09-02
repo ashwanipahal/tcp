@@ -41,6 +41,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
       </Styled(View)>
       <Styled(CustomButton)
         buttonVariation="variable-width"
+        color=""
         customStyle={
           Object {
             "height": 42,
