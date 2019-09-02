@@ -261,6 +261,79 @@ export function setShippingMethodAndAddressId(
     });
 }
 
+export function addGiftCardPaymentToOrder(args) {
+  const paymentInstruction = {
+    billing_address_id: (args.billingAddressId || '').toString(),
+    piAmount: (args.orderGrandTotal || '').toString(),
+    payMethodId: 'GiftCard',
+    cc_brand: 'GC',
+    account: (args.cardNumber || '').toString(),
+    account_pin: (args.cardPin || '').toString(),
+    balance: args.balance ? args.balance : null,
+  };
+
+  const headerValue = {
+    isRest: 'true',
+    identifier: 'true',
+    savePayment: args.saveToAccount ? 'true' : 'false', // save to account for registered users
+    nickName: args.nickName || `${'Billing_'}${new Date().getTime().toString()}`,
+  };
+
+  if (args.creditCardId) {
+    paymentInstruction.creditCardId = (args.creditCardId || '').toString();
+  }
+
+  const payload = {
+    header: headerValue,
+    body: {
+      paymentInstruction: [paymentInstruction],
+    },
+    webService: endpoints.addPaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      } else if (res.body && res.body.OosCartItems === 'TRUE') {
+        throw new ServiceResponseError({
+          body: {
+            errorCode: 'API_CART_OOS_ITEM',
+          },
+        });
+      } else {
+        return {
+          success: true,
+          paymentIds: res.body.paymentInstruction,
+        };
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function removeGiftCard(paymentId) {
+  const payload = {
+    body: {
+      piIds: paymentId,
+    },
+    webService: endpoints.deletePaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      } else {
+        return res.body;
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
@@ -268,4 +341,6 @@ export default {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  addGiftCardPaymentToOrder,
+  removeGiftCard,
 };

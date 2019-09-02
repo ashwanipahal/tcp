@@ -4,6 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 
 import styles from '../styles/BillingPage.style';
+import GiftCardsContainer from '../../GiftCardsSection';
 
 class BillingPage extends React.PureComponent {
   static propTypes = {
@@ -19,6 +20,7 @@ class BillingPage extends React.PureComponent {
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title="Billing" dataLocator="billing-title" />
+        <GiftCardsContainer />
       </div>
     );
   }
