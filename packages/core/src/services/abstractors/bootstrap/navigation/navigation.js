@@ -53,7 +53,6 @@ const Abstractor = {
         }
         subCat.hasL3 = subCategory.subCategories && subCategory.subCategories.length;
         subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
-        subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
         subCat.categoryContent.categoryId = subCategory.categoryContent.catgroupId;
         subCat.subCategories.map(subCategoryL3 => {
           const subCatL3 = subCategoryL3;

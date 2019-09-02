@@ -22,6 +22,7 @@ class OpenLoginModal extends React.Component<Props> {
   onClose = () => {
     const { setLoginModalMountState } = this.props;
     setLoginModalMountState({ state: false });
+    this.setState({ component: 'login' });
   };
 
   openForgotPasswordModal = params => {

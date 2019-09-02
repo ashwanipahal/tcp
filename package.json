@@ -22,6 +22,7 @@
     "test:app:staged": "yarn test:app --bail --findRelatedTests",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test",
+    "test:prepush": "yarn test:web && yarn test:app",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
     "flow": "flow",
     "flow:web": "yarn eslint:web",
@@ -87,7 +88,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test:prepush"
     }
   },
   "lint-staged": {
@@ -97,9 +99,7 @@
     ],
     "*.{js,jsx}": [
       "eslint",
-      "stylelint",
-      "yarn test:staged",
-      "yarn test:app:staged"
+      "stylelint"
     ],
     "*.css": "stylelint"
   },
@@ -128,6 +128,7 @@
     "react-redux": "^6.0.1",
     "react-slick": "^0.24.0",
     "react-ssr-error-boundary": "^1.0.1",
+    "react-swipeable": "^5.4.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.4",

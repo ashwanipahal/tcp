@@ -5,7 +5,6 @@ const styles = css`
   height: 100%;
   position: relative;
   width: 100%;
-
   .notification {
     background-color: ${props => props.theme.colorPalette.gray[800]};
     color: ${props => props.theme.colorPalette.white};

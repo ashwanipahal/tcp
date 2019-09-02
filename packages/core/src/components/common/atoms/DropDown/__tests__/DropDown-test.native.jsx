@@ -97,4 +97,24 @@ describe('DropDown Test', () => {
     const result = DropDownVanilla.getDerivedStateFromProps(props, state);
     expect(result).toEqual({ selectedLabelState: 'foo' });
   });
+
+  it('test setDropDownPosition func', () => {
+    const position = { top: 100 };
+    const windowHeight = 1087;
+    const deviceRemainingHeight = 300;
+
+    const instance = component.instance();
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, true, 200, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(100);
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, true, 400, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(200);
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, false, 1400, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(815.25);
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, false, 200, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(200);
+  });
 });

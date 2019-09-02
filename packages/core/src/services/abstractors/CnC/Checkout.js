@@ -164,14 +164,14 @@ const shippingMethodResponseHandler = res => {
   return resFiltered;
 };
 
-export const getShippingMethods = (state, zipCode, addressLine1, addressLine2) => {
+export const getShippingMethods = (state, zipCode, addressField1, addressField2) => {
   // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
   // if (this.activeGetShippingMethodsRequest && this.activeGetShippingMethodsRequest.abort) {
   //   this.activeGetShippingMethodsRequest.abort();
   // }
 
   // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
-  const dynamicHeader = { state, zipCode, addressLine1, addressLine2 };
+  const dynamicHeader = { state, zipCode, addressField1, addressField2 };
   Object.keys(dynamicHeader).forEach(key => {
     if (!dynamicHeader[key]) {
       delete dynamicHeader[key];

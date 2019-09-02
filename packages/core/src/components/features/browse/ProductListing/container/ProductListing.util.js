@@ -1,3 +1,5 @@
+import { isMobileApp } from '../../../../../utils';
+
 const getIndex = data => {
   return data && data.some(category => !!(category && category.url)) ? data.length : 0;
 };
@@ -21,6 +23,9 @@ export const extractCategory = category => {
   // Extracting category id or path from the URL
   try {
     let categoryId;
+    // if (category && category.indexOf('/') === -1) {
+    //   return category;
+    // }
     if (Number.isInteger(category)) {
       categoryId = category;
     } else if (category && category.lastIndexOf('/') === category.length - 1) {
@@ -155,10 +160,10 @@ export const isSearch = () => {
   return false;
 };
 
-export const matchValue = isSearchPage => {
-  return isSearchPage
-    ? matchPath(window.location.pathname, '/search/')
-    : matchPath(window.location.pathname, '/c/');
+export const matchValue = (isSearchPage, location) => {
+  const params = isSearchPage ? '/search/' : '/c/';
+  const pathname = isMobileApp() ? location : window.location.pathname;
+  return matchPath(pathname, params);
 };
 
 export const getCategoryKey = (isSearchPage, match) => {

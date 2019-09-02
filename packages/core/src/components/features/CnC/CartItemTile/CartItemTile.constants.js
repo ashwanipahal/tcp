@@ -12,7 +12,10 @@ const CARTPAGE_CONSTANTS = {
   AVAILABILITY_OK: 'OK',
   AVAILABILITY_SOLDOUT: 'SOLDOUT',
   AVAILABILITY_UNAVAILABLE: 'UNAVAILABLE',
-  AVAILABILITY_SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+  AVAILABILITY_SUGGESTED: 'SUGGESTED',
+  BOSS: 'BOSS',
+  BOPIS: 'BOPIS',
+  ECOM: 'ECOM', // REVIEW: we need it to control an state to favorite's item (favorites' page).
 };
 
 export default CARTPAGE_CONSTANTS;

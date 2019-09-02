@@ -12,10 +12,16 @@ import ProductsOperator from './productsRequestFormatter';
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
-function* fetchPlpProducts() {
+function* fetchPlpProducts({ payload }) {
   try {
+    const { url } = payload;
+    const location = url
+      ? {
+          pathname: url,
+        }
+      : window.location;
     const state = yield select();
-    let reqObj = operatorInstance.getProductListingBucketedData(state);
+    let reqObj = operatorInstance.getProductListingBucketedData(state, location);
     if (reqObj.isFetchFiltersAndCountReq) {
       const res = yield call(instanceProductListing.getProducts, reqObj);
       reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
@@ -43,11 +49,11 @@ function* fetchMoreProducts() {
   }
 }
 
-function* ProductListingPageSaga() {
+function* ProductListingSaga() {
   // const cachedFetchProducts = validateReduxCache(fetchPlpProducts);
   // const cachedFetchMoreProducts = validateReduxCache(fetchMoreProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.FETCH_PRODUCTS, fetchPlpProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.GET_MORE_PRODUCTS, fetchMoreProducts);
 }
 
-export default ProductListingPageSaga;
+export default ProductListingSaga;
