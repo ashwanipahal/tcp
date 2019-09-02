@@ -50,16 +50,16 @@ class AddedToBagActions extends React.PureComponent<Props> {
         )}
         <ButtonWrapper>
           <CheckoutButton>
-            {!isUserLoggedIn && (
-              <BodyCopy
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs13"
-                text={labels.checkout && labels.checkout.toUpperCase()}
-                onPress={this.routeToCheckout}
-              />
-            )}
+            {/* {!isUserLoggedIn && ( */}
+            <BodyCopy
+              color="white"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              fontSize="fs13"
+              text={labels.checkout && labels.checkout.toUpperCase()}
+              onPress={this.routeToCheckout}
+            />
+            {/* )} */}
 
             {/* {!isUserLoggedIn && (
               <BodyCopy

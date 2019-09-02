@@ -91,7 +91,7 @@ class InputCheckBox extends React.Component {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
-          <StyledText>{rightText && this.renderRight()}</StyledText>
+          {rightText && <StyledText>{this.renderRight()}</StyledText>}
         </StyledCheckBox>
         <Fragment>
           {isError ? (
