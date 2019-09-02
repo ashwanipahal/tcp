@@ -1,38 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header component renders correctly 1`] = `
+exports[`AirmilesBanner form component should render component correctly 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ibxdXY",
-        "isStatic": false,
+        "componentId": "sc-VigVT",
+        "isStatic": true,
         "rules": Array [
           "
   ",
           "
-  margin-bottom: 8px;
-
-  @media ",
-          [Function],
-          " {
-    margin-bottom: 24px;
+  .airmileBannerTooltip {
+    position: absolute;
+    right: -10px;
+    width: 30px;
+    top: 27px;
   }
-
-  .checkout-pages & {
-    display: none;
+  .info-icon-img-wrapper {
+    display: inline-block;
+    width: 15px;
   }
 ",
           ";
 ",
         ],
       },
-      "displayName": "Styled(Header)",
+      "displayName": "Styled(AirmilesToolTip)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ibxdXY",
+      "styledComponentId": "sc-VigVT",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -40,17 +39,6 @@ exports[`Header component renders correctly 1`] = `
     }
   }
   forwardedRef={null}
-  headerPromoArea={
-    Object {
-      "composites": Object {
-        "promoTextBanner": Object {},
-      },
-    }
-  }
-  headerTopNav={
-    Object {
-      "composites": Object {},
-    }
-  }
+  toolTipText="lables flyout"
 />
 `;
