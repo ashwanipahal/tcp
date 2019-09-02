@@ -200,6 +200,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
         display: flex;
         flex: 1;
         padding-right: 0px;
+        /* stylelint-disable */
+        span:not(.list-price) {
+          font-size: ",
+          [Function],
+          "px;
+        }
+        /* stylelint-enable */
       }
 
       .responsive-edit-css {

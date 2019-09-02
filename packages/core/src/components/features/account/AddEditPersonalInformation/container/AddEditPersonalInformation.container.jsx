@@ -2,12 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import utils from '@tcp/core/src/utils';
-import {
-  getError,
-  getSuccess,
-  getIsEmployee,
-  getProfileLabels,
-} from './AddEditPersonalInformation.selectors';
+import { getError, getIsEmployee, getProfileLabels } from './AddEditPersonalInformation.selectors';
+import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import AddEditPersonalInformationComponent from '../views';
 import { updateProfile, updateProfileError } from './AddEditPersonalInformation.actions';
 import internalEndpoints from '../../common/internalEndpoints';

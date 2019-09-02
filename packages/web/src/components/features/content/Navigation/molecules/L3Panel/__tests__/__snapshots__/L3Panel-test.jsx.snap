@@ -31,6 +31,7 @@ exports[`L3 Panel component renders correctly 1`] = `
       className="l3-panel-header"
     >
       <span
+        aria-label="Previous"
         className="icon-back"
         onClick={[Function]}
         onKeyDown={[Function]}
