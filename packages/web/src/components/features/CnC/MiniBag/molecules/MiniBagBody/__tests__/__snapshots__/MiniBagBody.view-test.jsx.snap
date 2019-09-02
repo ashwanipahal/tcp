@@ -8,7 +8,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-hMqMXs",
+        "componentId": "sc-Rmtcm",
         "isStatic": false,
         "rules": Array [
           "
@@ -126,7 +126,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "displayName": "Styled(MiniBagBody)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-hMqMXs",
+      "styledComponentId": "sc-Rmtcm",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

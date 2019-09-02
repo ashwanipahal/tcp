@@ -22,11 +22,16 @@ class ProductTileWrapper extends React.PureComponent<props> {
     super(props);
     this.state = {
       isEditAllowed: true,
+      openedTile: 0,
     };
   }
 
   toggleEditAllowance = () => {
     const { isEditAllowed } = this.state;
+    const { onItemEdit } = this.props;
+    if (onItemEdit) {
+      onItemEdit(isEditAllowed);
+    }
     this.setState({
       isEditAllowed: !isEditAllowed,
     });
@@ -65,6 +70,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
     return remove;
   };
 
+  setSelectedProductTile = ({ index }) => {
+    this.setState({ openedTile: index });
+  };
+
   render() {
     const {
       orderItems,
@@ -79,9 +88,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
     let isSoldOut;
     const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
-    const { isEditAllowed } = this.state;
+    const { isEditAllowed, openedTile } = this.state;
     if (orderItems && orderItems.size > 0) {
-      const orderItemsView = orderItems.map(tile => {
+      const orderItemsView = orderItems.map((tile, index) => {
         const productDetail = getProductDetails(tile);
         if (productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
           getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
@@ -106,6 +115,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
                 : isEditAllowed
             }
             isPlcc={isPlcc}
+            itemIndex={index}
+            openedTile={openedTile}
+            setSelectedProductTile={this.setSelectedProductTile}
           />
         );
       });

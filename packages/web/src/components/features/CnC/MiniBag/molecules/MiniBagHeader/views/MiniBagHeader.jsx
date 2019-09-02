@@ -47,22 +47,31 @@ const MiniBagHeader = ({
             </BodyCopy>
           ) : (
             <>
-              <BodyCopy component="span" fontSize="fs16" fontWeight="semibold" textAlign="left">
-                {`${labels.hi} ${userName} `}
+              <BodyCopy
+                component="span"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                textAlign="left"
+                fontFamily="secondary"
+              >
+                {`${labels.hi}, ${userName} `}
               </BodyCopy>
               <BodyCopy
                 className="pointsRewards"
                 component="span"
-                fontSize="fs14"
+                fontSize="fs15"
+                fontFamily="secondary"
                 fontWeight="semibold"
                 textAlign="left"
               >
-                {`(${currentPoints} ${labels.points}, $${totalRewards} ${labels.inRewards} )`}
+                {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
+                  labels.inRewards
+                } )`}
               </BodyCopy>
             </>
           )}
         </Col>
-        <Col className="subHeaderText" colSize={{ small: 2, medium: 2, large: 3 }}>
+        <Col className="subHeaderTextIcon" colSize={{ small: 2, medium: 2, large: 3 }}>
           <Anchor className="favIcon" fontSizeVariation="small" anchorVariation="primary" noLink>
             <Image
               alt="Product"

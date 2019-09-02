@@ -34,6 +34,9 @@ export const CartItemTileContainer = ({
   toggleEditAllowance,
   inheritedStyles,
   isPlcc,
+  itemIndex,
+  openedTile,
+  setSelectedProductTile,
 }) => (
   <CartItemTile
     labels={labels}
@@ -48,6 +51,9 @@ export const CartItemTileContainer = ({
     isEditAllowed={isEditAllowed}
     inheritedStyles={inheritedStyles}
     isPlcc={isPlcc}
+    itemIndex={itemIndex}
+    openedTile={openedTile}
+    setSelectedProductTile={setSelectedProductTile}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {

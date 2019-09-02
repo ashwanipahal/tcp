@@ -16,11 +16,6 @@ describe('CheckoutPageVanilla component', () => {
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
-    component.instance().onPickUpSubmit({
-      pickUpContact: {},
-      pickUpAlternate: {},
-      smsSignUp: { sendOrderUpdate: false },
-    });
     expect(component).toMatchSnapshot();
   });
 
@@ -37,11 +32,6 @@ describe('CheckoutPageVanilla component', () => {
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
-    component.instance().onPickUpSubmit({
-      pickUpContact: {},
-      pickUpAlternate: {},
-      smsSignUp: { sendOrderUpdate: false },
-    });
     expect(component).toMatchSnapshot();
   });
 });

@@ -1,14 +1,21 @@
 import styled from 'styled-components/native';
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
-  height: 30px;
+  height: ${props => (props.height ? props.height : '30px')};
   width: 100%;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 const StyledImageWrapper = styled.View`
   position: absolute;
-  right: 0;
-  top: 5px;
+  right: 10px;
+  top: ${props => (props.arrowPos ? props.arrowPos : '12px')};
 `;
 
-export { StyledTouchableOpacity, StyledImageWrapper };
+const StyledWrapper = styled.View`
+  width: 100%;
+  justify-content: center;
+`;
+
+export { StyledTouchableOpacity, StyledImageWrapper, StyledWrapper };
