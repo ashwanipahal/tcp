@@ -63,9 +63,14 @@ class NavBar extends React.PureComponent<Props> {
     const { appType } = nextProps;
 
     if (appType !== prevAppType && prevAppType) {
-      // navigate to home page of home stack when app type is changed
       const { navigation } = this.props;
-      resetNavigationStack(navigation);
+      // reset home stack
+      if (navigation.state.index === 0) resetNavigationStack(navigation);
+      // On brand switch, Reset all stacks and navigate to home page of each stack
+      // navigate to home page of Home Stack at the end
+      navigateToNestedRoute(navigation, 'PlpStack', 'Navigation');
+      navigateToNestedRoute(navigation, 'AccountStack', 'Account');
+      navigateToNestedRoute(navigation, 'WalletStack', 'walletPage');
       navigateToNestedRoute(navigation, 'HomeStack', 'Home');
     }
   }
@@ -120,6 +125,7 @@ class NavBar extends React.PureComponent<Props> {
                     this.setState({ animateCompleteLogo: true });
                     return;
                   }
+
                   onTabPress({ route });
                 }}
                 onLongPress={() => {

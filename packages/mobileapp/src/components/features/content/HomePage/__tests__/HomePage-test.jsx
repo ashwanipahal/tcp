@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import HomePageView from '../views/HomePage.view';
+import { HomePageView } from '../views/HomePage.view';
 
 describe('HomePageView', () => {
   let component;
@@ -18,6 +18,7 @@ describe('HomePageView', () => {
       },
     };
     component = shallow(<HomePageView {...props} />);
+    component.instance().getInitialProps();
   });
 
   it('should be defined', () => {

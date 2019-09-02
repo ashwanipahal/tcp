@@ -34,6 +34,7 @@ export const BONUS_POINTS_DAYS = '@@Bonus-';
 export const BONUS_POINTS_DAYS_REDUCER_KEY = 'BonusPointsDaysReducer';
 export const USER_ACTION_PATTERN = '@@User-';
 export const USER_REDUCER_KEY = 'User';
+export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -125,6 +126,7 @@ export const REDUCER_ACTION_MAPPING = {
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
   [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
   [UPDATE_PROFILE_REDUCER_KEY]: UPDATE_PROFILE_ACTION_PATTERN,
+  [NAVIGATION_REDUCER_KEY]: NAVIGATION_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

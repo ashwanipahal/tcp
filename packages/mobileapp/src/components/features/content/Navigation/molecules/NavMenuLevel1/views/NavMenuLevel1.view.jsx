@@ -8,6 +8,7 @@ import {
   ContainerList,
   L1TouchableOpacityNoImage,
 } from '../NavMenuLevel1.style';
+import InitialPropsHOC from '../../../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 const imageWidth = getScreenWidth() / 2;
 const keyExtractor = (_, index) => index.toString();
@@ -18,27 +19,7 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  * @param {object} props Props passed from Stack navigator screen
  */
 class NavMenuLevel1 extends React.PureComponent {
-  componentDidMount() {
-    this.loadData();
-    this.addDidFocusListener();
-  }
-
-  componentWillUnmount() {
-    // Remove the listener when you are done
-    this.didBlurSubscription.remove();
-  }
-
-  addDidFocusListener = () => {
-    const { accessibilityLabels, navigation } = this.props;
-    if (!navigation.addListener) return;
-    this.didBlurSubscription = navigation.addListener('didFocus', () => {
-      if (navigation.isFocused() && !Object.keys(accessibilityLabels).length) {
-        this.loadData();
-      }
-    });
-  };
-
-  loadData = () => {
+  getInitialProps = () => {
     const { loadNavigationData } = this.props;
     loadNavigationData();
   };
@@ -188,4 +169,5 @@ NavMenuLevel1.defaultProps = {
   accessibilityLabels: {},
 };
 
-export default NavMenuLevel1;
+export { NavMenuLevel1 as NavMenuLevel1View };
+export default InitialPropsHOC(NavMenuLevel1);

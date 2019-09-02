@@ -3,35 +3,16 @@ import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
+import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 class HomePageView extends React.PureComponent<Props> {
-  componentDidMount() {
-    this.loadData();
-    this.addDidFocusListener();
-  }
-
-  componentWillUnmount() {
-    // Remove the listener when you are done
-    this.didBlurSubscription.remove();
-  }
-
-  addDidFocusListener = () => {
-    const { slot_1: slotA, navigation } = this.props;
-    if (!navigation.addListener) return;
-    this.didBlurSubscription = navigation.addListener('didFocus', () => {
-      if (navigation.isFocused() && !Object.keys(slotA).length) {
-        this.loadData();
-      }
-    });
-  };
-
   /**
-   * @function loadBootstrapData
+   * @function getInitialProps
    * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  loadData = () => {
+  getInitialProps = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
@@ -129,4 +110,6 @@ HomePageView.defaultProps = {
   screenProps: {},
 };
 
-export default HomePageView;
+export { HomePageView };
+
+export default InitialPropsHOC(HomePageView);
