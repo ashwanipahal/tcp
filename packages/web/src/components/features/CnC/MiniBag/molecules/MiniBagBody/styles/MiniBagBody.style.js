@@ -5,7 +5,7 @@ export default css`
   height: calc(100% - 70px);
 
   .viewBagAndProduct {
-    height: calc(100% - 146px);
+    height: calc(100% - 120px);
     overflow-y: auto;
     border-top: 2px solid ${props => props.theme.colorPalette.gray[300]};
   }
@@ -47,7 +47,7 @@ export default css`
     line-height: 28px;
   }
   .miniBagFooter {
-    height: 146px;
+    height: 137px;
     text-align: center;
     background-color: ${props => props.theme.colorPalette.gray['300']};
     padding-right: 0;
