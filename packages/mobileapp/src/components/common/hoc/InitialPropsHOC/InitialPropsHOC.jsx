@@ -18,7 +18,17 @@ const InitialPropsHOC = Component => {
      *
      */
     componentDidMount() {
+      this.refreshOnNextRender = true;
       this.addDidFocusListener();
+    }
+
+    componentWillReceiveProps(nextProps) {
+      const { appType } = nextProps;
+      const { appType: prevAppType } = this.props;
+
+      if (appType && appType !== prevAppType) {
+        this.refreshOnNextRender = true;
+      }
     }
 
     componentWillUnmount() {
@@ -29,14 +39,20 @@ const InitialPropsHOC = Component => {
     /**
      * @function addDidFocusListener
      * Adds didFocus listener to view which is called every time view is displayed
-     * It calls getInitialProps method of wrapped component if brand is switched
+     * It calls componentDidMount method of wrapped component if brand is switched
+     * getInitialProps is called every time when component is focused and visible
      *
      */
     addDidFocusListener = () => {
       const { navigation } = this.props;
       if (!navigation.addListener) return;
       this.didFocusSubscription = navigation.addListener('didFocus', () => {
+        if (this.refreshOnNextRender && this.component && this.component.componentDidMount) {
+          this.component.componentDidMount();
+        }
+
         if (this.component && this.component.getInitialProps) this.component.getInitialProps();
+        this.refreshOnNextRender = false;
       });
     };
 

@@ -18,7 +18,6 @@ describe('HomePageView', () => {
       },
     };
     component = shallow(<HomePageView {...props} />);
-    component.instance().getInitialProps();
   });
 
   it('should be defined', () => {

@@ -19,7 +19,11 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  * @param {object} props Props passed from Stack navigator screen
  */
 class NavMenuLevel1 extends React.PureComponent {
-  getInitialProps = () => {
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = () => {
     const { loadNavigationData } = this.props;
     loadNavigationData();
   };

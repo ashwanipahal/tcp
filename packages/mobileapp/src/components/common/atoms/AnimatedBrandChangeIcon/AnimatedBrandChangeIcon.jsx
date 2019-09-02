@@ -7,7 +7,11 @@ import { isGymboree } from '@tcp/core/src/utils';
 import { Container, TCPIcon, GymIcon, styles } from './AnimatedBrandChangeIcon.style';
 import { APP_TYPE } from '../../hoc/ThemeWrapper.constants';
 import icons from '../../../../utils/icons';
-import { AppAnimationConfig } from '../../../../utils/utils';
+
+const BrandSwitchConfig = {
+  MAX_X: 90,
+  AnimationDuration: 500,
+};
 
 /**
  * kindly use this component only for the bottom tab at the center of the tab
@@ -54,12 +58,12 @@ class AnimatedBrandChangeIcon extends PureComponent {
   showBrands = () => {
     Animated.parallel([
       Animated.timing(this.brandTCPAnimatedValue, {
-        toValue: { x: -AppAnimationConfig.BrandSwitch.MAX_X, y: 0 },
-        duration: AppAnimationConfig.BrandSwitch.AnimationDuration,
+        toValue: { x: -BrandSwitchConfig.MAX_X, y: 0 },
+        duration: BrandSwitchConfig.AnimationDuration,
       }),
       Animated.timing(this.brandGymAnimatedValue, {
-        toValue: { x: AppAnimationConfig.BrandSwitch.MAX_X, y: 0 },
-        duration: AppAnimationConfig.BrandSwitch.AnimationDuration,
+        toValue: { x: BrandSwitchConfig.MAX_X, y: 0 },
+        duration: BrandSwitchConfig.AnimationDuration,
       }),
     ]).start();
   };

@@ -144,7 +144,9 @@
       "**/reactotron-core-client",
       "**/reactotron-core-client/**",
       "**/react-native-easy-toast",
-      "**/react-native-easy-toast/**"
+      "**/react-native-easy-toast/**",
+      "**/little-loader",
+      "**/little-loader/**"
     ]
   }
 }

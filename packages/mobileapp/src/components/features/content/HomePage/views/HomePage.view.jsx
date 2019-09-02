@@ -6,13 +6,17 @@ import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 class HomePageView extends React.PureComponent<Props> {
+  componentDidMount() {
+    this.loadData();
+  }
+
   /**
-   * @function getInitialProps
+   * @function loadData
    * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  getInitialProps = () => {
+  loadData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },

@@ -138,7 +138,6 @@ describe('NavMenuLevel1', () => {
       loadNavigationData: () => {},
     };
     component = shallow(<NavMenuLevel1View {...props} />);
-    component.instance().getInitialProps();
   });
 
   it('should render correctly', () => {
