@@ -42,7 +42,7 @@ export const PageHeadingWithLinks = ({
             className="anchor-wrapper"
           >
             <Anchor
-              fontSizeVariation="medium"
+              fontSizeVariation="large"
               underline
               to="/#"
               asPath
@@ -54,7 +54,7 @@ export const PageHeadingWithLinks = ({
               {termsConditionCta}
             </Anchor>
             <Anchor
-              fontSizeVariation="medium"
+              fontSizeVariation="large"
               underline
               to="/#"
               asPath
