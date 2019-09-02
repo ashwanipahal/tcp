@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
 
 const StyledCheckBox = styled.View`
   display: flex;
@@ -11,6 +12,7 @@ const StyledImage = styled.View`
 `;
 
 const StyledText = styled.Text`
+  ${androidFontStyles}
   width: 90%;
 `;
 
