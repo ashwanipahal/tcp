@@ -193,7 +193,7 @@ let CreateAccountForm = ({
               disabled={isMakeDefaultDisabled}
               alignCheckbox="top"
             >
-              <BodyCopy fontFamily="secondary" className={className} fontSize="fs10">
+              <BodyCopy fontFamily="secondary" fontSize="fs10">
                 {labels.registration.lbl_createAccount_termsConditions}
               </BodyCopy>
             </Field>
