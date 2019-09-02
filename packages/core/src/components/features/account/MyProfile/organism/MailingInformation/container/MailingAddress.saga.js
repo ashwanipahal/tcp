@@ -6,6 +6,8 @@ import {
   clearGetAddressListTTL,
 } from '../../../../AddressBook/container/AddressBook.actions';
 import { getUserInfo } from '../../../../User/container/User.actions';
+import { updateProfileSuccess } from '../../../container/MyProfile.actions';
+
 import { updateAddress } from '../../../../../../../services/abstractors/account';
 
 export function* updateMailingAddressPut({ payload }) {
@@ -19,6 +21,7 @@ export function* updateMailingAddressPut({ payload }) {
       );
       yield put(clearGetAddressListTTL());
       yield put(getUserInfo());
+      yield put(updateProfileSuccess('successMessage'));
       return yield put(addMailingAddressSuccess(res.body));
     }
     return yield put(addMailingAddressFail(res.body));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddEditCreditCardComponent from '../../../../AddEditCreditCard/views/AddEditCreditCard.view';
@@ -14,7 +14,7 @@ import { routerPush, isCanada } from '../../../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import { getOnFileAddressKey } from '../../../../AddEditCreditCard/container/AddEditCreditCard.selectors';
 
-export class MailingInformationContainer extends React.PureComponent<Props> {
+export class MailingInformationContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.initialValues = null;
@@ -63,8 +63,7 @@ export class MailingInformationContainer extends React.PureComponent<Props> {
   };
 
   submitAddressForm = payloadParam => {
-    const { submitNewAddressFormAction } = this.props;
-    const { address } = this.props;
+    const { submitNewAddressFormAction, address } = this.props;
     const payload = Object.assign(payloadParam, {
       email: address.emailAddress,
       phoneNumber: address.phoneNumber,
@@ -81,19 +80,6 @@ export class MailingInformationContainer extends React.PureComponent<Props> {
       ...{
         address1: addressLine ? addressLine[0] : addressLine1,
         address2: addressLine ? addressLine[1] : addressLine2,
-        zip: zipCode,
-        primary: primary ? 'true' : 'false',
-      },
-    };
-  };
-
-  formatSelectedPayload = payload => {
-    const { addressLine, zipCode, primary, ...otherPayload } = payload;
-    return {
-      ...otherPayload,
-      ...{
-        address1: addressLine[0],
-        address2: addressLine[1],
         zip: zipCode,
         primary: primary ? 'true' : 'false',
       },
