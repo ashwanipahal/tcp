@@ -22,7 +22,7 @@ export function* addAirmilesBanner() {
   }
 }
 
-function* AddAirmilesBannerSaga(): Saga<void> {
+export function* AddAirmilesBannerSaga(): Saga<void> {
   yield takeLatest(AIRMILES_BANNER_CONSTANTS.ADD_AIRMILES_BANNER_REQUEST, addAirmilesBanner);
 }
 

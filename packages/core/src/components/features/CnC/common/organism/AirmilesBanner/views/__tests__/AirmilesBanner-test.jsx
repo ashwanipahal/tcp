@@ -23,4 +23,12 @@ describe('AirmilesBanner form component', () => {
     const component = shallow(<AirmilesBanner {...props} />);
     expect(component).toMatchSnapshot();
   });
+  it('simulate submit ', () => {
+    const component = shallow(<AirmilesBanner {...props} />);
+    component.instance().handleSubmit({
+      promoId: '12323421111',
+      orderId: '123414',
+    });
+    expect(props.handleSubmit).toHaveBeenCalledTimes(0);
+  });
 });
