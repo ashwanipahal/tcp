@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
-import { Button } from '@tcp/core/src/components/common/atoms';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
@@ -33,16 +32,6 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheck
           <RowSectionStyle>
             <CouponAndPromos />
           </RowSectionStyle>
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            text="Pickup"
-            onPress={() =>
-              navigation.navigate('Checkout', {
-                nextToRoot: 'pickupPage',
-              })
-            }
-          />
         </MainSection>
       </ScrollViewWrapper>
 
