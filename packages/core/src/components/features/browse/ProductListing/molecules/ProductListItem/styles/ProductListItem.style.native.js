@@ -90,7 +90,10 @@ const PromotionalMessageContainer = styled.View`
 
 // Color is hard code as not in the style guide
 const PromotionalMessage = styled.Text`
-  color: ${props => props.theme.colorPalette.orange[800]};
+  color: ${props =>
+    props.isPlcc
+      ? props.theme.colorPalette.userTheme.plcc
+      : props.theme.colorPalette.userTheme.mpr};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs9};
   line-height: 11;
