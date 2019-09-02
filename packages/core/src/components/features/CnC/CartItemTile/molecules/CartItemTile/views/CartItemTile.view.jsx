@@ -160,12 +160,12 @@ class CartItemTile extends React.Component {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.value}:` : `${labels.size}:`;
   };
 
-  getPointsColor = pageView => {
+  getPointsColor = () => {
     const { isPlcc } = this.props;
-    if (isPlcc && pageView === 'myBag') {
+    if (isPlcc) {
       return 'blue.800';
     }
-    return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
+    return 'orange.800';
   };
 
   getProductItemUpcNumber = (productDetail, pageView) => {
@@ -488,7 +488,7 @@ class CartItemTile extends React.Component {
                   component="span"
                   fontSize="fs12"
                   fontWeight={['extrabold']}
-                  color={this.getPointsColor(pageView)}
+                  color={this.getPointsColor()}
                   dataLocator={getLocator('cart_item_points')}
                 >
                   {productDetail.itemInfo.myPlacePoints}
