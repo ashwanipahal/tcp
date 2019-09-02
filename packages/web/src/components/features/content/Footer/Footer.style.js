@@ -193,6 +193,10 @@ export default css`
       line-height: 1.67;
     }
   }
+  
+  .checkout-pages &{
+    display: none;
+  }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {
     .hide-in-medium-down {

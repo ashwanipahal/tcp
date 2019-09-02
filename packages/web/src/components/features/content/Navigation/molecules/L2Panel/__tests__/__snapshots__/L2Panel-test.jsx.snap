@@ -10,6 +10,7 @@ exports[`L2 Panel component renders correctly 1`] = `
       className="sizes-range-background"
     >
       <span
+        aria-label="Previous"
         className="icon-back"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -117,6 +118,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-0"
                 links={
                   Array [
@@ -350,6 +356,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-2"
                 links={
                   Array [
@@ -424,6 +435,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-3"
                 links={
                   Array [
@@ -482,6 +498,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-4"
                 links={
                   Array [
@@ -635,6 +656,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-6"
                 links={
                   Array [
@@ -757,6 +783,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-7"
                 links={
                   Array [
@@ -917,6 +948,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-2"
                 links={
                   Array [
@@ -1053,6 +1089,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-5"
                 links={
                   Array [
@@ -1127,6 +1168,11 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
+                accessibilityLabels={
+                  Object {
+                    "previousButton": "Previous",
+                  }
+                }
                 id="l3-drawer-6"
                 links={
                   Array [

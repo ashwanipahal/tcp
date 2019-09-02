@@ -27,6 +27,7 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -193,7 +194,12 @@ function* submitPickupSection(data) {
   //  }
   const result = yield call(callPickupSubmitMethod, formData);
   if (!isMobileApp() && result.addressId) {
-    routerPush('/checkout/shipping', '/checkout/shipping');
+    routerPush(
+      `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${constants.CHECKOUT_STAGES.SHIPPING}`,
+      `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.SHIPPING}`
+    );
+  } else {
+    yield put(getSetCheckoutStage(constants.CHECKOUT_STAGES.SHIPPING));
   }
 
   /* In the future I imagine us sending the SMS to backend for them to
@@ -269,8 +275,7 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 }
 
 function* loadCheckoutDetail(defaultShippingMethods) {
-  let getIsShippingRequired = yield select(getIsOrderHasShipping); // to be fixed
-  getIsShippingRequired = getIsShippingRequired || true;
+  const getIsShippingRequired = yield select(getIsOrderHasShipping); // to be fixed
   if (getIsShippingRequired) {
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;
@@ -719,8 +724,11 @@ function* submitShippingSection({ payload: formData }) {
 }
 
 export function* routeToPickupPage(recalc) {
-  const path = `/checkout/pickup`;
-  return yield call(routerPush, path, path, { recalc });
+  const path = `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.PICKUP}`;
+  const href = `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${
+    constants.CHECKOUT_STAGES.PICKUP
+  }`;
+  yield call(routerPush, href, path, { recalc });
 }
 
 export function* CheckoutSaga() {

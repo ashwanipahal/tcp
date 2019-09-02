@@ -13,6 +13,7 @@ const data = {
   name: navData[0].categoryContent,
   hideL2Drawer: () => {},
   hideL3Drawer: () => {},
+  accessibilityLabels: { previousButton: 'Previous' },
   className: 'nav-bar-l2',
   openL3Drawer: () => {},
 };

@@ -180,10 +180,15 @@ export default css`
         display: flex;
         flex: 1;
         padding-right: 0px;
+        /* stylelint-disable */
+        span:not(.list-price) {
+          font-size: ${props => props.theme.fonts.fontSize.listmenu.small}px;
+        }
+        /* stylelint-enable */
       }
 
       .responsive-edit-css {
-        padding-top: 2px;
+        padding-top: 4px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;

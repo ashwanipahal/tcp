@@ -20,9 +20,10 @@ const getOrderDetailsComplete = payload => {
   };
 };
 
-const startCheckout = () => {
+const startCheckout = isEditingItem => {
   return {
     type: BAGPAGE_CONSTANTS.START_BAG_CHECKOUT,
+    isEditingItem,
   };
 };
 
@@ -47,9 +48,10 @@ const setItemUnavailable = payload => {
   };
 };
 
-const openCheckoutConfirmationModal = () => {
+const openCheckoutConfirmationModal = (payload = false) => {
   return {
     type: BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL,
+    payload,
   };
 };
 
