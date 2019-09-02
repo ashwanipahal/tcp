@@ -23,6 +23,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     this.state = {
       isEditAllowed: true,
       openedTile: 0,
+      swipedElement: null,
     };
   }
 
@@ -35,6 +36,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
     this.setState({
       isEditAllowed: !isEditAllowed,
     });
+  };
+
+  setSwipedElement = elem => {
+    this.setState({ swipedElement: elem });
   };
 
   getHeaderError = (labels, orderItems, pageView) => {
@@ -88,7 +93,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     let isSoldOut;
     const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
-    const { isEditAllowed, openedTile } = this.state;
+    const { isEditAllowed, openedTile, swipedElement } = this.state;
     if (orderItems && orderItems.size > 0) {
       const orderItemsView = orderItems.map((tile, index) => {
         const productDetail = getProductDetails(tile);
@@ -118,6 +123,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
             itemIndex={index}
             openedTile={openedTile}
             setSelectedProductTile={this.setSelectedProductTile}
+            setSwipedElement={this.setSwipedElement}
+            swipedElement={swipedElement}
           />
         );
       });
