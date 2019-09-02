@@ -27,6 +27,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
 
   toggleEditAllowance = () => {
     const { isEditAllowed } = this.state;
+    const { onItemEdit } = this.props;
+    if (onItemEdit) {
+      onItemEdit(isEditAllowed);
+    }
     this.setState({
       isEditAllowed: !isEditAllowed,
     });
