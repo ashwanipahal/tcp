@@ -12,6 +12,7 @@ import {
   getErrorMessage,
 } from './CreateAccount.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import { API_CONFIG } from '../../../../../services/config';
 import {
   closeOverlayModal,
   openOverlayModal,
@@ -71,8 +72,8 @@ export class CreateAccountContainer extends React.Component {
       if (this.hasMobileApp()) {
         onRequestClose({ getComponentId: { login: '', createAccount: '' } });
       } else {
+        setTimeout(() => closeOverlay(), API_CONFIG.overlayTimeout);
         routerPush('/', '/home');
-        setTimeout(() => closeOverlay(), 5000);
       }
     }
   }
