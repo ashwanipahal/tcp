@@ -9,7 +9,11 @@ import {
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
-import productTileCss, { customStyles, miniBagCSS } from '../styles/ProductTileWrapper.style';
+import productTileCss, {
+  customStyles,
+  miniBagCSS,
+  bagTileCSS,
+} from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import RemoveSoldOut from '../../../../common/molecules/RemoveSoldOut';
 
@@ -23,12 +27,17 @@ class ProductTileWrapper extends React.PureComponent<props> {
 
   toggleEditAllowance = () => {
     const { isEditAllowed } = this.state;
+    const { onItemEdit } = this.props;
+    if (onItemEdit) {
+      onItemEdit(isEditAllowed);
+    }
     this.setState({
       isEditAllowed: !isEditAllowed,
     });
   };
 
-  getHeaderError = (labels, orderItems) => {
+  getHeaderError = (labels, orderItems, pageView) => {
+    const styles = pageView === 'myBag' ? bagTileCSS : customStyles;
     if (orderItems && orderItems.size > 0) {
       const showError = orderItems.find(tile => {
         const productDetail = getProductDetails(tile);
@@ -37,9 +46,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         );
       });
-      return (
-        showError && <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
-      );
+      return showError && <ErrorMessage customClass={styles} error={labels.problemWithOrder} />;
     }
     return false;
   };
@@ -52,12 +59,12 @@ class ProductTileWrapper extends React.PureComponent<props> {
         fontSize="fs12"
         component="span"
         className="removeErrorMessage"
-        fontWeight="normal"
         onClick={() => removeCartItem(getUnavailableOOSItems)}
       >
         <u>remove</u>
       </BodyCopy>
     );
+
     remove.splice(1, 0, newRemove);
     return remove;
   };

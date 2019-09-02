@@ -13121,6 +13121,13 @@ react-native-cookies@^3.3.0:
   dependencies:
     invariant "^2.1.0"
 
+react-native-easy-toast@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-easy-toast/-/react-native-easy-toast-1.2.0.tgz#0f70bcb99e3306cda4800c244bfb4a67d42276ed"
+  integrity sha512-UtpxnRn1ME+035Uey4VR+9K0P4aVoTcWNOx5QkioWBe3LBKMPb/kZjrQ1LtvWzOyeGP4TeTUTtMX3IOPWv5MtA==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-gesture-handler@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.3.0.tgz#d0386f565928ccc1849537f03f2e37fd5f6ad43f"
@@ -13340,6 +13347,13 @@ react-ssr-error-boundary@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-ssr-error-boundary/-/react-ssr-error-boundary-1.0.1.tgz#4c52c84fee77662d850b998dbeac59aef696d31d"
   integrity sha512-KSPBVlGr3ltsTAZGPvQTm+AMD97BvDZXt5wLyxfwVVwN21kNnbXKlhkRTkLT8Oo/bZblodfa2N7RkwJYEhjFLA==
+
+react-swipeable@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-5.4.0.tgz#3c2421296a993b8fc6cb05051b9bf025cb6af9e4"
+  integrity sha512-TUbldupF3cxMF+pBWfz24TlQa23K4CecqQ8EA+onxEiAg+UEPSJ5IousOjMm0IVBYz62KX1klHL8p7SGSR3CiQ==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-test-renderer@16.8.3:
   version "16.8.3"

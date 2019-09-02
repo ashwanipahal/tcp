@@ -1,13 +1,10 @@
 import styled from 'styled-components/native';
 
-export const ErrorView = styled.View`
-  display: flex;
-  padding: 6px 15px 13px 14px;
-  flex-direction: row;
-  background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+export const MainSection = styled.View`
+  flex: 1;
+  padding-bottom: 1px;
+  margin-bottom: 3px;
 `;
-
-export const ErrorText = {
-  flexWrap: 'wrap',
-  flex: 1,
-};
+export const RowSectionStyle = styled.View`
+  width: 100%;
+`;

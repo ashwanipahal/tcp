@@ -1,20 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '../../../../../../common/atoms';
-import { RemoveSoldOutView } from '../styles/RemoveSoldOut.style.native';
+import { RemoveSoldOutView, RowSectionStyle } from '../styles/RemoveSoldOut.style.native';
 
 class RemoveSoldOut extends React.PureComponent {
   render() {
-    const { labels } = this.props;
+    const { labels, labelForRemove } = this.props;
     return (
       <RemoveSoldOutView>
-        <BodyCopy
-          color="error"
-          fontFamily="secondary"
-          fontSize="fs10"
-          fontWeight="regular"
-          text={labels.removeSoldOut}
-        />
+        {labels && (
+          <RowSectionStyle>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="regular"
+              text={labels.removeSoldoutHeader}
+            />
+          </RowSectionStyle>
+        )}
+        {labelForRemove && (
+          <RowSectionStyle>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="regular"
+              text={labelForRemove}
+            />
+          </RowSectionStyle>
+        )}
       </RemoveSoldOutView>
     );
   }
@@ -22,10 +35,12 @@ class RemoveSoldOut extends React.PureComponent {
 
 RemoveSoldOut.propTypes = {
   labels: PropTypes.string,
+  labelForRemove: PropTypes.string,
 };
 
 RemoveSoldOut.defaultProps = {
   labels: '',
+  labelForRemove: '',
 };
 
 export default RemoveSoldOut;

@@ -87,6 +87,7 @@ class CreateAccounPage extends React.Component {
             confirmHideShowPwd={confirmHideShowPwd}
             isIAgreeChecked={isIAgreeChecked}
             onRequestClose={onRequestClose}
+            showLogin={showLogin}
           />
         </View>
       </ScrollView>

@@ -68,6 +68,7 @@ class LoginSection extends React.PureComponent<Props> {
       currentForm,
       variation,
       handleContinueAsGuest,
+      tooltipContent,
     } = this.props;
     return (
       <Row className={className}>
@@ -101,6 +102,7 @@ class LoginSection extends React.PureComponent<Props> {
                 onCreateAccountClick={this.showCreateAccountForm}
                 variation={variation}
                 handleContinueAsGuest={handleContinueAsGuest}
+                tooltipContent={tooltipContent}
               />
             </React.Fragment>
           )}
