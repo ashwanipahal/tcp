@@ -26,7 +26,7 @@ import {
   CheckBoxTextWrapper,
   CheckBoxSubWrapper,
   TextWrapper,
-} from '../styles/PickupPage.view.native.style';
+} from '../styles/PickupPage.style.native';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import ContactFormFields from '../../../molecules/ContactFormFields';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';

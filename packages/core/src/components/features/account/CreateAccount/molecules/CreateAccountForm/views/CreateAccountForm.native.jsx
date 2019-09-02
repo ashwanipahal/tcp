@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
@@ -20,188 +20,197 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
-const onSaveMyPlaceRewards = value => {
-  console.log('onSaveMyPlaceRewards: ', value);
-};
-const onUseTouchID = value => {
-  console.log('onUseTouchID: ', value);
-};
-const onUseFaceID = value => {
-  console.log('onUseFaceID: ', value);
-};
+class CreateAccountForm extends PureComponent<Props> {
+  onSaveMyPlaceRewards = value => {
+    console.log('onSaveMyPlaceRewards: ', value);
+  };
 
-const CreateAccountForm = props => {
-  const {
-    labels,
-    handleSubmit,
-    handleSubmitForm,
-    onPwdHideShowClick,
-    hideShowPwd,
-    onConfirmPwdHideShowClick,
-    confirmHideShowPwd,
-    onRequestClose,
-  } = props;
-  return (
-    <View {...props}>
-      <ParentView>
-        <Field
-          label={labels.registration.lbl_createAccount_firstName}
-          name="firstName"
-          id="firstName"
-          type="text"
-          component={TextBox}
-          dataLocator="firstName"
-        />
-        <Field
-          label={labels.registration.lbl_createAccount_lastName}
-          name="lastName"
-          id="lastName"
-          type="text"
-          component={TextBox}
-          dataLocator="lastName"
-        />
-        <Field
-          label={labels.registration.lbl_createAccount_phoneNumber}
-          name="phoneNumber"
-          id="phoneNumber"
-          type="text"
-          component={TextBox}
-          dataLocator="phoneNumber"
-        />
-        <Field
-          label={labels.registration.lbl_createAccount_zipCode}
-          name="noCountryZip"
-          id="ZipCode"
-          type="text"
-          component={TextBox}
-          dataLocator="Zip-Code"
-        />
-        <Field
-          label={labels.registration.lbl_createAccount_emailAddress}
-          name="emailAddress"
-          id="emailAddress"
-          type="text"
-          component={TextBox}
-          dataLocator="emailAddress"
-        />
-        <Field
-          label={labels.registration.lbl_createAccount_confirmEmail}
-          name="confirmEmailAddress"
-          id="confirmEmailAddress"
-          type="text"
-          component={TextBox}
-          dataLocator="confirmEmailAddress"
-        />
-        <PasswordWrapper>
+  onUseTouchID = value => {
+    console.log('onUseTouchID: ', value);
+  };
+
+  onUseFaceID = value => {
+    console.log('onUseFaceID: ', value);
+  };
+
+  showLoginSection = () => {
+    const { showLogin } = this.props;
+    showLogin();
+  };
+
+  render() {
+    const {
+      labels,
+      handleSubmit,
+      handleSubmitForm,
+      onPwdHideShowClick,
+      hideShowPwd,
+      onConfirmPwdHideShowClick,
+      confirmHideShowPwd,
+    } = this.props;
+    return (
+      <View {...this.props}>
+        <ParentView>
           <Field
-            label={labels.registration.lbl_createAccount_password}
-            name="password"
-            id="password"
+            label={labels.registration.lbl_createAccount_firstName}
+            name="firstName"
+            id="firstName"
             type="text"
             component={TextBox}
-            dataLocator="password"
-            secureTextEntry={!hideShowPwd}
+            dataLocator="firstName"
           />
-
-          <HideShowField>
-            <Field
-              name="hide-show-pwd"
-              component={InputCheckbox}
-              dataLocator="hide-show-pwd"
-              disabled={false}
-              rightText={
-                hideShowPwd
-                  ? labels.registration.lbl_createAccount_hide
-                  : labels.registration.lbl_createAccount_show
-              }
-              onClick={onPwdHideShowClick}
-              hideCheckboxIcon
-            />
-          </HideShowField>
-        </PasswordWrapper>
-        <ConfirmPasswordWrapper>
           <Field
-            label={labels.registration.lbl_createAccount_confirmPassword}
-            name="confirmPassword"
-            id="confirmPassword"
+            label={labels.registration.lbl_createAccount_lastName}
+            name="lastName"
+            id="lastName"
             type="text"
             component={TextBox}
-            dataLocator="confirmPassword"
-            secureTextEntry={!confirmHideShowPwd}
+            dataLocator="lastName"
           />
-          <ConfirmHideShowField>
+          <Field
+            label={labels.registration.lbl_createAccount_phoneNumber}
+            name="phoneNumber"
+            id="phoneNumber"
+            type="text"
+            component={TextBox}
+            dataLocator="phoneNumber"
+          />
+          <Field
+            label={labels.registration.lbl_createAccount_zipCode}
+            name="noCountryZip"
+            id="ZipCode"
+            type="text"
+            component={TextBox}
+            dataLocator="Zip-Code"
+          />
+          <Field
+            label={labels.registration.lbl_createAccount_emailAddress}
+            name="emailAddress"
+            id="emailAddress"
+            type="text"
+            component={TextBox}
+            dataLocator="emailAddress"
+          />
+          <Field
+            label={labels.registration.lbl_createAccount_confirmEmail}
+            name="confirmEmailAddress"
+            id="confirmEmailAddress"
+            type="text"
+            component={TextBox}
+            dataLocator="confirmEmailAddress"
+          />
+          <PasswordWrapper>
             <Field
-              name="hide-show-confirm-pwd"
-              component={InputCheckbox}
-              dataLocator="hide-show-confirm-pwd"
-              disabled={false}
-              rightText={
-                confirmHideShowPwd
-                  ? labels.registration.lbl_createAccount_hide
-                  : labels.registration.lbl_createAccount_show
-              }
-              onClick={onConfirmPwdHideShowClick}
-              hideCheckboxIcon
+              label={labels.registration.lbl_createAccount_password}
+              name="password"
+              id="password"
+              type="text"
+              component={TextBox}
+              dataLocator="password"
+              secureTextEntry={!hideShowPwd}
             />
-          </ConfirmHideShowField>
-        </ConfirmPasswordWrapper>
 
-        {/* CHECKBOXES */}
-        <Field
-          name="saveMyPlaceRewards"
-          component={InputCheckbox}
-          dataLocator="saveMyPlaceRewards"
-          disabled={false}
-          rightText={labels.registration.lbl_createAccount_saveRewards}
-          onClick={onSaveMyPlaceRewards}
-        />
-        <Field
-          name="iAgree"
-          component={InputCheckbox}
-          dataLocator="iAgree"
-          disabled={false}
-          rightText={labels.registration.lbl_createAccount_termsConditions}
-          marginTop={13}
-        />
-        <Field
-          name="useTouchID"
-          component={InputCheckbox}
-          dataLocator="useTouchID"
-          disabled={false}
-          rightText={labels.registration.lbl_createAccount_useTouchId}
-          onClick={onUseTouchID}
-        />
-        <Field
-          name="useFaceID"
-          component={InputCheckbox}
-          dataLocator="useFaceID"
-          disabled={false}
-          rightText={labels.registration.lbl_createAccount_useFaceId}
-          marginTop={13}
-          onClick={onUseFaceID}
-        />
-        <ButtonWrapper>
-          <CustomButton
-            text={labels.registration.lbl_createAccount_createAccount}
-            buttonVariation="variable-width"
-            onPress={handleSubmit(handleSubmitForm)}
-            fill="BLUE"
-            color="white"
+            <HideShowField>
+              <Field
+                name="hide-show-pwd"
+                component={InputCheckbox}
+                dataLocator="hide-show-pwd"
+                disabled={false}
+                rightText={
+                  hideShowPwd
+                    ? labels.registration.lbl_createAccount_hide
+                    : labels.registration.lbl_createAccount_show
+                }
+                onClick={onPwdHideShowClick}
+                hideCheckboxIcon
+              />
+            </HideShowField>
+          </PasswordWrapper>
+          <ConfirmPasswordWrapper>
+            <Field
+              label={labels.registration.lbl_createAccount_confirmPassword}
+              name="confirmPassword"
+              id="confirmPassword"
+              type="text"
+              component={TextBox}
+              dataLocator="confirmPassword"
+              secureTextEntry={!confirmHideShowPwd}
+            />
+            <ConfirmHideShowField>
+              <Field
+                name="hide-show-confirm-pwd"
+                component={InputCheckbox}
+                dataLocator="hide-show-confirm-pwd"
+                disabled={false}
+                rightText={
+                  confirmHideShowPwd
+                    ? labels.registration.lbl_createAccount_hide
+                    : labels.registration.lbl_createAccount_show
+                }
+                onClick={onConfirmPwdHideShowClick}
+                hideCheckboxIcon
+              />
+            </ConfirmHideShowField>
+          </ConfirmPasswordWrapper>
+
+          {/* CHECKBOXES */}
+          <Field
+            name="saveMyPlaceRewards"
+            component={InputCheckbox}
+            dataLocator="saveMyPlaceRewards"
+            disabled={false}
+            rightText={labels.registration.lbl_createAccount_saveRewards}
+            onClick={this.onSaveMyPlaceRewards}
           />
-        </ButtonWrapper>
-        <AlreadyAccountWrapper>
-          <Anchor
-            fontSizeVariation="xlarge"
-            anchorVariation="secondary"
-            text={labels.registration.lbl_createAccount_alreadyAccount}
-            onPress={onRequestClose}
-            underline
+          <Field
+            name="iAgree"
+            component={InputCheckbox}
+            dataLocator="iAgree"
+            disabled={false}
+            rightText={labels.registration.lbl_createAccount_termsConditions}
+            marginTop={13}
           />
-        </AlreadyAccountWrapper>
-      </ParentView>
-    </View>
-  );
-};
+          <Field
+            name="useTouchID"
+            component={InputCheckbox}
+            dataLocator="useTouchID"
+            disabled={false}
+            marginTop={13}
+            rightText={labels.registration.lbl_createAccount_useTouchId}
+            onClick={this.onUseTouchID}
+          />
+          <Field
+            name="useFaceID"
+            component={InputCheckbox}
+            dataLocator="useFaceID"
+            disabled={false}
+            rightText={labels.registration.lbl_createAccount_useFaceId}
+            marginTop={13}
+            onClick={this.onUseFaceID}
+          />
+          <ButtonWrapper>
+            <CustomButton
+              text={labels.registration.lbl_createAccount_createAccount}
+              buttonVariation="variable-width"
+              onPress={handleSubmit(handleSubmitForm)}
+              fill="BLUE"
+              color="white"
+            />
+          </ButtonWrapper>
+          <AlreadyAccountWrapper>
+            <Anchor
+              fontSizeVariation="xlarge"
+              anchorVariation="secondary"
+              text={labels.registration.lbl_createAccount_alreadyAccount}
+              onPress={this.showLoginSection}
+              underlineBlue
+            />
+          </AlreadyAccountWrapper>
+        </ParentView>
+      </View>
+    );
+  }
+}
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
