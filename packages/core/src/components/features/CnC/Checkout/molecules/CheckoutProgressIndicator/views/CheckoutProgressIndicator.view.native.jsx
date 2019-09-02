@@ -21,7 +21,8 @@ const currentStage = require('../../../../../../../assets/checkout-white-dot.png
 export class CheckoutProgressIndicator extends React.PureComponent {
   render() {
     const { activeStage, navigation } = this.props;
-    const availableStages = ['pickup', 'shipping', 'billing', 'review'];
+    const pickupPage = 'pickupPage';
+    const availableStages = ['pickup', 'shipping', 'billing', 'review']; // taking these hardcoded as of now, these will come dynamic and will be taken care as part of standard checkout ticket.
     let hasSeenActive = false;
     let hasSeenActiveLabel = false;
     return (
@@ -71,7 +72,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                     anchorVariation="primary"
                     fontWeightVariation="active"
                     onPress={() => {
-                      navigation.navigate('Checkout', { nextToRoot: 'pickupPage' });
+                      navigation.navigate('Checkout', { nextToRoot: pickupPage });
                     }}
                     // noLink
                     to="/#"
@@ -96,7 +97,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                   anchorVariation="primary"
                   fontWeightVariation="active"
                   onPress={() => {
-                    navigation.navigate('Checkout', { nextToRoot: 'pickupPage' });
+                    navigation.navigate('Checkout', { nextToRoot: pickupPage });
                   }}
                   // noLink
                   to="/#"

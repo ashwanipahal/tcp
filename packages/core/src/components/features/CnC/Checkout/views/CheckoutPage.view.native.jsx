@@ -64,13 +64,10 @@ export default class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
-      setCheckoutStage,
+      // setCheckoutStage,
     } = this.props;
 
     const { nextToRoot } = navigation.state.params;
-    if (nextToRoot === 'pickupPage') {
-      setCheckoutStage('pickup');
-    }
     return (
       <>
         {nextToRoot === 'pickupPage' && (

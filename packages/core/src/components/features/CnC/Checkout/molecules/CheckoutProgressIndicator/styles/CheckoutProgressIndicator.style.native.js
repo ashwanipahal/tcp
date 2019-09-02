@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const CheckoutProgressBar = styled.View`
-  padding-bottom: 10px;
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export const StepIndicatorContainer = styled.View`
@@ -28,12 +28,12 @@ export const ProgressDot = styled.View`
   height: 20px;
   border-radius: 10;
   border-width: 1;
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const ProgressBar = styled.View`
-  background-color: black;
+  background-color: ${props => props.theme.colorPalette.black};
   flex-grow: 1;
   height: 1px;
 `;
