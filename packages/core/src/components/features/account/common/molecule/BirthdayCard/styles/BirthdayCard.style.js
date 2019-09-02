@@ -1,11 +1,12 @@
 import { css } from 'styled-components';
+import constants from '../../../organism/BirthdaySavingsList/BirthdaySavingsList.constants';
 
 const styles = css`
-  border: 1px solid ${props => props.theme.colorPalette.gray[500]};
+  border: 1px solid ${props => props.theme.colorPalette.gray[900]};
   box-sizing: border-box;
   position: relative;
   padding: 6px 8px 8px;
-  height: 66px;
+  height: ${constants.BIRTHDAY_CARD_HEIGHT};
 
   .closeIcon {
     position: absolute;

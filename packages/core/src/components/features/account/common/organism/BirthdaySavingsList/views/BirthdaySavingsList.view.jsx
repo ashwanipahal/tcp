@@ -5,39 +5,50 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
+import constants from '../BirthdaySavingsList.constants';
+
+export const getColumnClasses = (isEditMode, i) => {
+  return !isEditMode && i < 2 ? 'elem-mb-LRG' : 'elem-mb-MED';
+};
 
 export const BirthdaySavingsList = ({ labels, childrenBirthdays, view }) => {
   if (childrenBirthdays && childrenBirthdays.size > 0) {
-    const birthdays = childrenBirthdays.setSize(4);
+    const birthdays = childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS);
+    const isEditMode = view === 'edit';
     return (
       <Row fullBleed>
-        {birthdays.map((birthday, i) => (
-          <Col
-            colSize={{
-              small: 3,
-              medium: 4,
-              large: (view === 'edit' ? 3 : 6),
-            }}
-            ignoreGutter={{
-              large: i === 1
-            }}
-            className="elem-mb-LRG"
-          >
-            {
-            birthday ? (
-              <BirthdayCardComponent
-                name={birthday.get('name')}
-                birthYear={birthday.get('birthYear')}
-                birthMonth={birthday.get('birthMonth')}
-                gender={birthday.get('gender')}
-                childId={birthday.get('childId')}
-                view={view}
-              />
-              ) : <EmptyBirthdayCard labels={labels} view={view} />
-            }
-
-          </Col>
-        ))}
+        {birthdays.map((birthday, i) => {
+          const isRightCol = (i + 1) % 2;
+          return (
+            <Col
+              key={`card_${birthday ? birthday.childId : i}`}
+              colSize={{
+                small: 3,
+                medium: 4,
+                large: isEditMode ? 3 : 6,
+              }}
+              ignoreGutter={{
+                large: isEditMode ? (i + 1) % 4 === 0 : isRightCol,
+                medium: isRightCol,
+                small: isRightCol,
+              }}
+              className={getColumnClasses()}
+            >
+              {birthday ? (
+                <BirthdayCardComponent
+                  name={birthday.get('name')}
+                  birthYear={birthday.get('birthYear')}
+                  birthMonth={birthday.get('birthMonth')}
+                  gender={birthday.get('gender')}
+                  childId={birthday.get('childId')}
+                  view={view}
+                />
+              ) : (
+                <EmptyBirthdayCard labels={labels} view={view} />
+              )}
+            </Col>
+          );
+        })}
       </Row>
     );
   }
@@ -51,12 +62,11 @@ export const BirthdaySavingsList = ({ labels, childrenBirthdays, view }) => {
 BirthdaySavingsList.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   childrenBirthdays: PropTypes.shape([]).isRequired,
-  view: PropTypes.oneOf(['read', 'edit']),
+  view: PropTypes.oneOf([constants.VIEW.READ, constants.VIEW.EDIT]),
 };
 
 BirthdaySavingsList.defaultProps = {
-  view: 'edit',
+  view: constants.VIEW.EDIT,
 };
-
 
 export default BirthdaySavingsList;

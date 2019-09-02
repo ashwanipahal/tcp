@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getChildren } from '../../../../User/container/User.selectors';
-import { getChildrenAction } from './BirthdaySavingsList.actions';
+import { getChildrenAction, removeChildrenAction } from './BirthdaySavingsList.actions';
 import { getLabels } from './BirthdaySavingsList.selectors';
 import BirthdaySavingsComponent from '../views';
 
@@ -35,6 +35,12 @@ export const mapDispatchToProps = dispatch => ({
   getChildrenBirthdays: () => {
     dispatch(getChildrenAction());
   },
+  removeBirthday: childId => {
+    dispatch(removeChildrenAction(childId));
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BirthdaySavings);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BirthdaySavings);
