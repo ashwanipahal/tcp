@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, FormSection, SubmissionError, change } from 'redux-form';
+import { Field, reduxForm, FormSection, change } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
@@ -73,12 +73,6 @@ class PickUpFormPart extends React.Component {
     dispatch(change('checkoutPickup', `pickUpContact.phoneNumber`, pickUpContact.phoneNumber));
     dispatch(change('checkoutPickup', `pickUpContact.emailAddress`, pickUpContact.emailAddress));
     this.setState({ isEditing: false });
-  };
-
-  submit = () => {
-    const { handleSubmit } = this.props;
-    SubmissionError({ username: 'User does not exist', _error: 'Login failed!' });
-    handleSubmit();
   };
 
   SaveAndCancelButton = () => {

@@ -7,6 +7,167 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   <div
     className="container"
   >
+    <Styled(ErrorMessage)
+      className="pickupError"
+      dataLocator="pickup-error"
+      error="Error"
+      fontSize="fs14"
+      fontWeight="black"
+    />
+    <Styled(CheckoutSectionTitleDisplay)
+      className="summary-title-pick-up"
+      dataLocator="pickup-title"
+    />
+    <div
+      className="pickUpContact"
+      dataLocator="pickup-contact"
+    >
+      <FormSection
+        className="pickUpContact"
+        name="pickUpContact"
+      >
+        <Styled(PickupMainContactEditForm)
+          className="pickup-contact-guest-form"
+          dispatch={[MockFunction]}
+          formData={
+            Object {
+              "emailAddress": "",
+              "firstName": "",
+              "lastName": "",
+              "phoneNumber": "",
+            }
+          }
+          handleExitEditModeClick={[Function]}
+          handleSubmit={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  [Function],
+                ],
+                Array [
+                  [Function],
+                ],
+                Array [
+                  [Function],
+                ],
+                Array [
+                  [Function],
+                ],
+                Array [
+                  [Function],
+                ],
+                Array [
+                  [Function],
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          isEditing={true}
+          isMobile={false}
+          labels={Object {}}
+          onEditModeChange={[Function]}
+          showPhoneNumber={true}
+        />
+      </FormSection>
+    </div>
+    <div
+      className="pick-up-form-container"
+      dataLocator="pickup-sms"
+    >
+      <FormSection
+        name="smsSignUp"
+      >
+        <Styled(SMSFormFields)
+          addressPhoneNo=""
+          altInitValue=""
+          dispatch={[MockFunction]}
+          formName="checkoutPickup"
+          formSection="smsSignUp"
+          isOrderUpdateChecked={false}
+          labels={Object {}}
+          showDefaultCheckbox={false}
+          variation="secondary"
+        />
+      </FormSection>
+    </div>
+    <div
+      className="pickUpAlternate-container"
+    >
+      <FormSection
+        name="pickUpAlternate"
+      >
+        <Styled(PickUpAlternateFormPart)
+          formName="checkoutPickup"
+          formSection="pickUpAlternate"
+          isAlternateUpdateChecked={false}
+          isEditing={true}
+          labels={Object {}}
+          showNoteOnToggle={true}
+        />
+      </FormSection>
+    </div>
+    <div
+      className="buttonContainer"
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        data-locator="pickup-cancelbtn"
+        onClick={[Function]}
+        type="button"
+      />
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="updateButton"
+        data-locator="pickup-addcardbtn"
+        fill="BLUE"
+        type="button"
+      />
+    </div>
+  </div>
+  <form>
+    <Styled(CheckoutFooter)
+      backLinkText="undefined undefined"
+      disableNext={true}
+      hideBackLink={false}
+      nextButtonText="undefined: undefined"
+    />
+  </form>
+</div>
+`;
+
+exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `
+<div
+  className=""
+>
+  <div
+    className="container"
+  >
     <Styled(CheckoutSectionTitleDisplay)
       className="summary-title-pick-up"
       dataLocator="pickup-title"
@@ -216,81 +377,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
           target="_blank"
         />
       </div>
-    </div>
-    <div
-      className="pickUpAlternate-container"
-    >
-      <FormSection
-        name="pickUpAlternate"
-      >
-        <Styled(PickUpAlternateFormPart)
-          formName="checkoutPickup"
-          formSection="pickUpAlternate"
-          isAlternateUpdateChecked={false}
-          isEditing={true}
-          labels={Object {}}
-          showNoteOnToggle={true}
-        />
-      </FormSection>
-    </div>
-  </div>
-  <form>
-    <Styled(CheckoutFooter)
-      backLinkText="undefined undefined"
-      disableNext={true}
-      hideBackLink={false}
-      nextButtonText="undefined: undefined"
-    />
-  </form>
-</div>
-`;
-
-exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `
-<div
-  className=""
->
-  <div
-    className="container"
-  >
-    <Styled(CheckoutSectionTitleDisplay)
-      className="summary-title-pick-up"
-      dataLocator="pickup-title"
-    />
-    <div
-      className="pickUpContact"
-      dataLocator="pickup-contact"
-    >
-      <FormSection
-        className="pickUpContact"
-        name="pickUpContact"
-      >
-        <Styled(ContactFormFields)
-          className="pickup-contact-guest-form"
-          labels={Object {}}
-          showEmailAddress={true}
-          showPhoneNumber={true}
-        />
-      </FormSection>
-    </div>
-    <div
-      className="pick-up-form-container"
-      dataLocator="pickup-sms"
-    >
-      <FormSection
-        name="smsSignUp"
-      >
-        <Styled(SMSFormFields)
-          addressPhoneNo=""
-          altInitValue=""
-          dispatch={[MockFunction]}
-          formName="checkoutPickup"
-          formSection="smsSignUp"
-          isOrderUpdateChecked={false}
-          labels={Object {}}
-          showDefaultCheckbox={false}
-          variation="secondary"
-        />
-      </FormSection>
     </div>
     <div
       className="pickUpAlternate-container"
