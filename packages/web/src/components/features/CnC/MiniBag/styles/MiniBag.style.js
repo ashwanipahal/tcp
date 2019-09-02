@@ -13,6 +13,7 @@ export const modalStyles = css`
     padding-right: 0px;
     padding-top: 0px;
     overflow: hidden;
+    height: 100%;
   }
   .Modal_Heading {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
