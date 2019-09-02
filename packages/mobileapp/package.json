@@ -47,6 +47,7 @@
     "styled-components": "^4.2.1",
     "superagent": "^5.0.8",
     "superagent-jsonp": "^0.2.1",
+    "react-native-swipeable": "^0.6.0",
     "react-native-easy-toast": "1.2.0"
   },
   "devDependencies": {
@@ -143,6 +144,8 @@
       "**/reactotron-redux/**",
       "**/reactotron-core-client",
       "**/reactotron-core-client/**",
+      "**/react-native-swipeable",
+      "**/react-native-swipeable/**",
       "**/react-native-easy-toast",
       "**/react-native-easy-toast/**"
     ]
