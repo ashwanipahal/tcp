@@ -128,7 +128,7 @@ const renderView = (item, navigation, position) => {
         </PromoBannerComponent>
       </HeaderWrapper>
 
-      {isGymboree() && ribbonView({ ribbonBanner, navigation, position })}
+      {ribbonView({ ribbonBanner, navigation, position })}
     </ContainerView>
   );
 };
@@ -213,7 +213,7 @@ const ModuleA = (props: Props) => {
       {ctaType === 'stackedCTAList' && (
         <ContainerView>
           <Border background="gray" />
-          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'gray')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
           <Border background="gray" />
         </ContainerView>
       )}

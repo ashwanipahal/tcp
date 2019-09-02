@@ -13,6 +13,7 @@ exports[`CustomButton should render correctly 1`] = `
     buttonVariation="fixed-width"
     color=""
     disableButton={false}
+    fill=""
     fullWidth=""
   />
 </TouchableOpacity>

@@ -47,13 +47,19 @@ exports[`HomePageView should render correctly 1`] = `
     }
   />
   <Styled(CustomButton)
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color=""
     customStyle={Object {}}
     disableButton={false}
-    fullWidth={true}
+    fill=""
+    fullWidth=""
     locator=""
     onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
     text="PLP Page"
     url=""
   />

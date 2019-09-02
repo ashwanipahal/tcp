@@ -33,6 +33,7 @@ type Props = {
   locator?: string,
   color?: string,
   onPress?: Function,
+  fill?: string,
 };
 
 const CustomButton = (props: Props) => {
@@ -44,6 +45,7 @@ const CustomButton = (props: Props) => {
     customStyle,
     disableButton,
     color,
+    fill,
     onPress,
     ...otherProps
   }: Props = props;
@@ -71,6 +73,7 @@ const CustomButton = (props: Props) => {
         fullWidth={fullWidth}
         buttonVariation={buttonVariation}
         color={color}
+        fill={fill}
         disableButton={disableButton}
       >
         {textValue}
@@ -89,6 +92,7 @@ CustomButton.defaultProps = {
   locator: '',
   color: '',
   onPress: null,
+  fill: '',
 };
 
 export default withStyles(CustomButton, style);

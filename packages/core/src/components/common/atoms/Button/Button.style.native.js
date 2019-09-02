@@ -16,48 +16,33 @@ const getShape = props => {
 };
 
 const style = css`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   min-height: 42px;
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
-  ${props =>
-    props.buttonVariation === 'fixed-width'
-      ? `
- ${getShape(props)}
-  `
-      : ''};
-
+  background: ${props => props.theme.colorPalette.white};
+  ${props => getShape(props)};
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
    width: ${props.width};
    height: ${props.height};
-   ${props.fill === 'RED' ? `  background: ${props.theme.colorPalette.secondary.dark};  ` : ''};
-   ${props.fill === 'BLUE' ? ` background: ${props.theme.colorPalette.blue[700]};` : ''};
-   ${props.fill === 'BLACK' ? ` background: ${props.theme.colorPalette.gray[700]};` : ''};
-
-   ${
-     props.fill === 'RED' ? `  border: 1px solid ${props.theme.colorPalette.secondary.dark};  ` : ''
-   };
-   ${props.fill === 'BLUE' ? ` border: 1px solid ${props.theme.colorPalette.blue[700]};` : ''};
-   ${props.fill === 'BLACK' ? ` border: 1px solid ${props.theme.colorPalette.gray[600]};` : ''};
-   ${getShape(props)}
    `
       : ''};
-
   ${props =>
-    props.buttonVariation === 'cautionary-button'
-      ? `
-     background: ${props.fill || props.theme.colorPalette.white};
-     ${
-       props.color === 'red'
-         ? ` border: 1px solid ${props.theme.colorPalette.secondary.dark}; `
-         : ''
-     };
-     ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
-     ${getShape(props)} `
+    props.fill === 'BLUE'
+      ? ` background: ${props.theme.colorPalette.blue[700]}; border: 1px solid ${
+          props.theme.colorPalette.blue[700]
+        }; `
+      : ''};
+  ${props =>
+    props.fill === 'DARK'
+      ? ` background: ${props.theme.colorPalette.gray[700]}; border: 1px solid ${
+          props.theme.colorPalette.gray[600]
+        }; `
+      : ''};
+  ${props =>
+    props.buttonVariation === 'cautionary'
+      ? `border: 1px solid ${props.theme.colorPalette.secondary.dark};`
       : ''};
 `;
 
@@ -69,28 +54,23 @@ export const CustomStyleText = styled(StyledText)`
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  color: ${props => props.color || props.theme.colorPalette.gray[700]};
+  padding: 12px 20px;
+
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-  color: ${props.color || props.theme.colorPalette.gray[700]};
   padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
   `
       : ''};
 
-  ${props =>
-    props.buttonVariation === 'fixed-width'
-      ? `
-  color: ${props.color || props.theme.colorPalette.gray[700]};
-  padding: 12px 20px;
-  `
-      : ''};
+  ${props => (props.fill === 'BLUE' ? ` color: ${props.theme.colorPalette.white}; ` : '')};
+  ${props => (props.fill === 'DARK' ? ` color: ${props.theme.colorPalette.white}; ` : '')};
 
   ${props =>
-    props.buttonVariation === 'cautionary-button'
+    props.buttonVariation === 'cautionary'
       ? `
-   ${props.color === 'red' ? ` color: ${props.theme.colorPalette.secondary.dark}; ` : ''};
-   ${props.color === 'gray' ? ` color: ${props.theme.colorPalette.gray[700]};` : ''};
-   padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
+   color: ${props.theme.colorPalette.secondary.dark};
    `
       : ''};
 `;

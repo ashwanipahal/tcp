@@ -4,6 +4,8 @@ import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
+const buttonMargin = { margin: 30 };
+
 class HomePageView extends React.Component {
   componentDidMount() {
     this.loadBootstrapData();
@@ -62,10 +64,9 @@ class HomePageView extends React.Component {
           {slotE && <SlotE {...slotE} navigation={navigation} />}
           {slotF && <SlotF {...slotF} navigation={navigation} />}
           <Button
-            fullWidth
-            buttonVariation="variable-width"
             text="PLP Page"
             onPress={() => navigation.navigate('ProductListingPageContainer')}
+            style={buttonMargin}
           />
         </React.Fragment>
       </ScrollView>
