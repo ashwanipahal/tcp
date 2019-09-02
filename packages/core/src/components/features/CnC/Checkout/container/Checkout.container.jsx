@@ -6,6 +6,8 @@ import {
   submitPickupSection,
   onEditModeChangeAction,
   fetchShipmentMethods,
+  routeToPickupPage as routeToPickupPageActn,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -26,6 +28,7 @@ const {
   getAddressFields,
   getAddressPhoneNo,
   getIsOrderHasPickup,
+  getIsOrderHasShipping,
   getEmailSignUpLabels,
   getShipmentMethods,
   getDefaultShipmentID,
@@ -63,7 +66,10 @@ export class CheckoutContainer extends React.Component<Props> {
       isExpressCheckoutPage,
       cartOrderItems,
       orderHasShipping,
+      routeToPickupPage,
+      setCheckoutStage,
     } = this.props;
+
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -76,6 +82,7 @@ export class CheckoutContainer extends React.Component<Props> {
         activeStage={activeStage}
         activeStep={activeStep}
         isUsSite={isUsSite}
+        orderHasShipping={orderHasShipping}
         pickupInitialValues={pickupInitialValues}
         isOrderUpdateChecked={isOrderUpdateChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
@@ -88,7 +95,8 @@ export class CheckoutContainer extends React.Component<Props> {
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
         cartOrderItems={cartOrderItems}
-        orderHasShipping={orderHasShipping}
+        routeToPickupPage={routeToPickupPage}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }
@@ -108,8 +116,14 @@ export const mapDispatchToProps = dispatch => {
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
     },
-    loadShipmentMethods: () => {
-      dispatch(fetchShipmentMethods());
+    loadShipmentMethods: formName => {
+      dispatch(fetchShipmentMethods(formName));
+    },
+    routeToPickupPage: () => {
+      dispatch(routeToPickupPageActn());
+    },
+    setCheckoutStage: payload => {
+      dispatch(getSetCheckoutStage(payload));
     },
   };
 };
@@ -151,12 +165,12 @@ const mapStateToProps = state => {
     isUsSite: selectors.isUsSite(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
+    orderHasShipping: getIsOrderHasShipping(state),
     pickUpLabels: { ...getPickUpContactFormLabels(state), ...getEmailSignUpLabels(state) },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
-    orderHasShipping: selectors.getIsOrderHasShipping(state),
   };
 };
 

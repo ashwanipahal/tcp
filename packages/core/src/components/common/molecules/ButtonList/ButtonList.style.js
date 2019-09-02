@@ -135,6 +135,12 @@ export default css`
     font-size: 13px;
   }
 
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .stacked-cta-wrapper-class {
+      border-radius: 0;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     padding-bottom: 16px;
     > div:first-child {

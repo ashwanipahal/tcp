@@ -163,6 +163,12 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
     unbxd: true,
   },
+  getProductInfoForTranslationByPartNumber: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS,
+    unbxd: true,
+    unbxdCustom: true,
+  },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
     URI: 'v2/account/deleteCreditCardDetails',

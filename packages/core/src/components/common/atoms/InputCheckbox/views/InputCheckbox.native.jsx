@@ -1,11 +1,20 @@
-import React from 'React';
+import React, { Fragment } from 'React';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../BodyCopy';
-import { StyledCheckBox, StyledImage } from '../InputCheckbox.style.native';
+import {
+  StyledCheckBox,
+  StyledImage,
+  StyledText,
+  StyledErrorIcon,
+} from '../InputCheckbox.style.native';
+
+import { StyledErrorWrapper } from '../../TextBox/TextBox.style.native';
+
 import Image from '../../Image';
 
 const uncheckedIcon = require('../../../../../assets/store-locator-check.png');
 const checkedIcon = require('../../../../../assets/store-locator-checked.png');
+const errorIcon = require('../../../../../assets/alert-triangle.png');
 
 class InputCheckBox extends React.Component {
   static propTypes = {
@@ -73,23 +82,36 @@ class InputCheckBox extends React.Component {
     const { touched, error } = meta;
     const isError = touched && error;
     return (
-      <StyledCheckBox
-        onStartShouldSetResponder={this.onClick}
-        {...input}
-        {...otherProps}
-        value={value}
-        pointerEvents={disabled ? 'none' : 'auto'}
-      >
-        {!hideCheckboxIcon && this.genCheckedIcon()}
-        {rightText && this.renderRight()}
-        <BodyCopy
-          className="Checkbox__error"
-          color="error"
-          fontSize="fs12"
-          mobilefontFamily={['secondary']}
-          text={isError ? error : ''}
-        />
-      </StyledCheckBox>
+      <>
+        <StyledCheckBox
+          onStartShouldSetResponder={this.onClick}
+          {...input}
+          {...otherProps}
+          value={value}
+          pointerEvents={disabled ? 'none' : 'auto'}
+        >
+          {!hideCheckboxIcon && this.genCheckedIcon()}
+          <StyledText>{rightText && this.renderRight()}</StyledText>
+        </StyledCheckBox>
+        <Fragment>
+          {isError ? (
+            <StyledErrorWrapper>
+              <StyledErrorIcon>
+                <Image source={errorIcon} width="15px" height="15px" />
+              </StyledErrorIcon>
+
+              <BodyCopy
+                className="Checkbox__error"
+                fontWeight="semibold"
+                color="error"
+                fontSize="fs12"
+                mobilefontFamily={['secondary']}
+                text={isError ? error : null}
+              />
+            </StyledErrorWrapper>
+          ) : null}
+        </Fragment>
+      </>
     );
   }
 }

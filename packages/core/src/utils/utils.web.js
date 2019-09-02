@@ -363,6 +363,8 @@ export const createAPIConfig = resLocals => {
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
@@ -373,6 +375,7 @@ export const createAPIConfig = resLocals => {
     ...graphQLConfig,
     ...countryConfig,
     ...brandConfig,
+    catalogId,
     isMobile: false,
     cookie: null,
   };

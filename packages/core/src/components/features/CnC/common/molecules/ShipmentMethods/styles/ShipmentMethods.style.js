@@ -7,6 +7,10 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 0;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: calc(33.33% - 6px);
+      margin-right: 6px;
+    }
   }
   .estimated-shipping-rate {
     @media ${props => props.theme.mediaQuery.medium} {
