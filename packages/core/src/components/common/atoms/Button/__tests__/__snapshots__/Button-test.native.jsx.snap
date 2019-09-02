@@ -12,6 +12,7 @@ exports[`CustomButton should render correctly 1`] = `
   <Styled(Styled(Text))
     buttonVariation="fixed-width"
     color=""
+    disableButton={false}
     fullWidth=""
   />
 </TouchableOpacity>

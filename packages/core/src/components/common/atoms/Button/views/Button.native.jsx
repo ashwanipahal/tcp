@@ -67,7 +67,12 @@ const CustomButton = (props: Props) => {
       testID={getLocator(locator)}
       {...otherProps}
     >
-      <CustomStyleText fullWidth={fullWidth} buttonVariation={buttonVariation} color={color}>
+      <CustomStyleText
+        fullWidth={fullWidth}
+        buttonVariation={buttonVariation}
+        color={color}
+        disableButton={disableButton}
+      >
         {textValue}
       </CustomStyleText>
     </TouchableOpacity>

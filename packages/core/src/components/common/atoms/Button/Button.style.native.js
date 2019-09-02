@@ -21,6 +21,7 @@ const style = css`
   justify-content: center;
   min-height: 42px;
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
+  opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
@@ -55,7 +56,6 @@ const style = css`
          ? ` border: 1px solid ${props.theme.colorPalette.secondary.dark}; `
          : ''
      };
-     ${props.color === 'blue' ? ` border: 1px solid ${props.theme.colorPalette.blue[700]};` : ''};
      ${props.color === 'gray' ? ` border: 1px solid ${props.theme.colorPalette.gray[700]};` : ''};
      ${getShape(props)} `
       : ''};
@@ -69,12 +69,11 @@ export const CustomStyleText = styled(StyledText)`
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
   color: ${props.color || props.theme.colorPalette.gray[700]};
-  padding: 12px 32px;
+  padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
   `
       : ''};
 
@@ -82,7 +81,7 @@ export const CustomStyleText = styled(StyledText)`
     props.buttonVariation === 'fixed-width'
       ? `
   color: ${props.color || props.theme.colorPalette.gray[700]};
-  padding: 4px 20px;
+  padding: 12px 20px;
   `
       : ''};
 
@@ -90,9 +89,8 @@ export const CustomStyleText = styled(StyledText)`
     props.buttonVariation === 'cautionary-button'
       ? `
    ${props.color === 'red' ? ` color: ${props.theme.colorPalette.secondary.dark}; ` : ''};
-   ${props.color === 'blue' ? ` color: ${props.theme.colorPalette.blue[700]};` : ''};
    ${props.color === 'gray' ? ` color: ${props.theme.colorPalette.gray[700]};` : ''};
-   padding: 12px 32px;
+   padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
    `
       : ''};
 `;
