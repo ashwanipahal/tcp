@@ -5,6 +5,11 @@ const OuterContainer = styled.View`
   flex: 1;
   padding: 10px;
 `;
+const UnavailableView = styled.View`
+  display: flex;
+  padding: 5px 2px 2px 14px;
+  flex-direction: row;
+`;
 const ProductName = styled.View``;
 const ProductDesc = styled.View`
   flex-direction: row;
@@ -84,4 +89,5 @@ export {
   ImageGymBrandStyle,
   SoldOutLabel,
   ImageSoldOutContainer,
+  UnavailableView,
 };
