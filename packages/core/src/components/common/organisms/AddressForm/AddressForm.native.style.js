@@ -67,7 +67,6 @@ const itemStyle = {
 // https://github.com/FaridSafi/react-native-google-places-autocomplete/issues/379#issuecomment-457845834
 const GooglePlaceInputWrapper = styled.View`
   width: 100%;
-  height: 72px;
 `;
 
 const HiddenAddressLineWrapper = styled.View`
