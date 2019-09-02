@@ -2,9 +2,13 @@ import styled from 'styled-components/native';
 
 export const RemoveSoldOutView = styled.Text`
   display: flex;
-  padding: 6px 15px 13px 14px;
+  margin: 0px 2px 5px 30px;
   flex-direction: row;
   background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+`;
+export const RowSectionStyle = styled.Text`
+  width: 100%;
+  margin: 5px 0;
 `;
 export const RemoveSoldOutViewSubHeader = styled.View`
   display: flex;
