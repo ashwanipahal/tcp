@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
-import ToastMessageReducer from '../Toast.reducer';
-import { toastMessageInfo, resetToastMsg } from '../Toast.actions';
+import ToastMessageReducer from '../Toast.reducer.native';
+import { toastMessageInfo, resetToastMsg } from '../Toast.actions.native';
 
 const initialState = fromJS({
   toastMessage: null,
