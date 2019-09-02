@@ -1,23 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import AddEditCreditCardComponent from '../../../../AddEditCreditCard/views/AddEditCreditCard.view'
+import AddEditCreditCardComponent from '../../../../AddEditCreditCard/views/AddEditCreditCard.view';
 import { addMailingAddress } from './MailingAddress.actions';
-import { getAddressResponse, getUserEmail, getAddressById } from './MailingAddress.selectors';
+import { getAddressResponse } from './MailingAddress.selectors';
 import { verifyAddress } from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
-import { getAddressListState } from '../../../../AddressBook/container/AddressBook.selectors';
-import { getUserName, getUserLastName } from '../../../../User/container/User.selectors';
+import {
+  getAddressListState,
+  showUpdatedNotificationState,
+} from '../../../../AddressBook/container/AddressBook.selectors';
+import { getProfileInfoTileData } from '../../../../User/container/User.selectors';
 import { routerPush, isCanada } from '../../../../../../../utils';
-
-// @flow
-type Props = {
-  submitNewAddressFormAction: ({}) => void,
-  verifyAddressAction: ({}) => void,
-  addressResponse?: object,
-  userEmail: string,
-  addressList: List<{}>,
-  address?: object,
-  labels: object,
-};
+import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import { getOnFileAddressKey } from '../../../../AddEditCreditCard/container/AddEditCreditCard.selectors';
 
 export class MailingInformationContainer extends React.PureComponent<Props> {
   constructor(props) {
@@ -36,57 +31,69 @@ export class MailingInformationContainer extends React.PureComponent<Props> {
   getInitialValues = (addressList, address) => {
     if (!address) {
       return {
+        address: {
+          firstName: '',
+          lastName: '',
+        },
         primary: addressList && addressList.size === 0,
         country: isCanada() ? 'CA' : 'US',
         addressLine2: '',
       };
     }
     return {
-      firstName: address.firstName,
-      lastName: address.lastName,
-      addressLine1: address.addressLine[0],
-      addressLine2: address.addressLine[1],
-      city: address.city,
-      state: address.state,
-      zipCode: address.zipCode,
-      country: address.country,
-      phoneNumber: address.phone1,
-      primary: address.primary === 'true',
-      nickName: address.nickName,
+      address: {
+        ...address.address,
+        firstName: address.firstName,
+        lastName: address.lastName,
+      },
     };
   };
 
   verifyAddress = payload => {
-    const { verifyAddressAction } = this.props;
-    const data = {
-      ...payload.address,
-      addressLine2: payload.addressLine2
+    const { verifyAddressAction, addressList } = this.props;
+    if (!payload.onFileAddressKey) {
+      verifyAddressAction(this.formatPayload(payload.address));
     }
-    const formattedFormPayload = Object.assign(this.initialValues, data);
-    const formattedPayload = this.formatPayload(formattedFormPayload);
-
-    verifyAddressAction(formattedPayload);
+    if (payload.onFileAddressKey) {
+      const selectedAddressPayload = addressList.find(
+        add => add.addressId === payload.onFileAddressKey
+      );
+      verifyAddressAction(this.formatPayload(selectedAddressPayload));
+    }
   };
 
   submitAddressForm = payloadParam => {
     const { submitNewAddressFormAction } = this.props;
-    const { userEmail } = this.props;
+    const { address } = this.props;
     const payload = Object.assign(payloadParam, {
-      email: userEmail,
-      phoneNumber: '9898989898',
-      nickName: 'sb_2019-08-20 03:10:04.492',
+      email: address.emailAddress,
+      phoneNumber: address.phoneNumber,
+      nickName: address.emailAddress.toUpperCase(),
+      primary: address.primary ? 'true' : 'false',
     });
-
     submitNewAddressFormAction(payload);
   };
 
   formatPayload = payload => {
-    const { addressLine1, addressLine2, zipCode, primary, ...otherPayload } = payload;
+    const { addressLine, addressLine1, addressLine2, zipCode, primary, ...otherPayload } = payload;
     return {
       ...otherPayload,
       ...{
-        address1: addressLine1,
-        address2: addressLine2,
+        address1: addressLine ? addressLine[0] : addressLine1,
+        address2: addressLine ? addressLine[1] : addressLine2,
+        zip: zipCode,
+        primary: primary ? 'true' : 'false',
+      },
+    };
+  };
+
+  formatSelectedPayload = payload => {
+    const { addressLine, zipCode, primary, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine[0],
+        address2: addressLine[1],
         zip: zipCode,
         primary: primary ? 'true' : 'false',
       },
@@ -94,18 +101,15 @@ export class MailingInformationContainer extends React.PureComponent<Props> {
   };
 
   backToAddressBookClick = () => {
-    routerPush('/account?id=address-book', '/account/address-book');
+    routerPush('/account?id=profile', '/account/profile');
   };
 
   render() {
-    const { addressResponse, addressList, address, labels, firstName, lastName } = this.props;
+    const { addressResponse, addressList, address, labels, addressLabels, addressKey } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const errorObject = addressResponse && addressResponse.get('errors');
-    const errorMessage = errorObject && errorObject.getIn(['0', 'errorKey'])
-    const userName = {
-      firstName,
-      lastName,
-    }
+    const errorMessage = errorObject && errorObject.getIn(['0', 'errorKey']);
+
     return (
       <AddEditCreditCardComponent
         addressResponse={addressResponse}
@@ -115,27 +119,28 @@ export class MailingInformationContainer extends React.PureComponent<Props> {
         backToAddressBookClick={this.backToAddressBookClick}
         isEdit={!!address}
         labels={labels}
-        addressLabels={labels}
-        mailingAddress={true}
+        addressFormLabels={addressLabels.addressFormLabels}
+        onFileAddressKey={addressKey}
+        mailingAddress
         errorMessage={errorMessage}
         addressList={addressList}
-        userName={userName}
       />
     );
   }
 }
 
 MailingInformationContainer.defaultProps = {
-  addressResponse: {},
+  addressLabels: {},
   address: null,
+  addressKey: '',
 };
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
-    submitNewAddressFormAction: (payload: {}) => {
+    submitNewAddressFormAction: payload => {
       dispatch(addMailingAddress(payload));
     },
-    verifyAddressAction: (payload: {}) => {
+    verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
     },
   };
@@ -144,41 +149,27 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     addressResponse: getAddressResponse(state),
-    userEmail: getUserEmail(state),
     addressList: getAddressListState(state),
-    address: getAddressById(state, ownProps),
-    firstName: getUserName(state),
-    lastName: getUserLastName(state),
+    address: getProfileInfoTileData(state),
+    addressLabels: getAddEditAddressLabels(state),
+    addressKey: getOnFileAddressKey(state, ownProps),
+    showUpdatedNotification: showUpdatedNotificationState(state),
   };
+};
+
+MailingInformationContainer.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  addressList: PropTypes.shape({}).isRequired,
+  addressResponse: PropTypes.shape({}).isRequired,
+  address: PropTypes.shape({}),
+  addressLabels: PropTypes.shape({}),
+  addressFormLabels: PropTypes.shape({}).isRequired,
+  submitNewAddressFormAction: PropTypes.func.isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  addressKey: PropTypes.string,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(MailingInformationContainer);
-
-// const getMyProfileInfoLabels = labels => {
-//   return (labels) || {};
-// };
-
-// export const MailingInformationContainer = ({ labels, ...otherProps }) => {
-//   const profileInfoLabels = getMyProfileInfoLabels(labels);
-//   const initialValues = {
-//     onFileAddressKey: false,
-//   }
-//   return <AddEditCreditCardComponent labels={profileInfoLabels} mailingAddress={true} {...otherProps} onFileAddressKey={false} initialValues={initialValues} addressLabels={labels} />;
-// };
-
-// MailingInformationContainer.propTypes = {
-//   labels: PropTypes.shape({}),
-//   mailingAddress: PropTypes.bool,
-// };
-
-// MailingInformationContainer.defaultProps = {
-//   labels: {},
-//   mailingAddress: true,
-// };
-
-// const mapStateToProps = () => ({});
-
-// export default connect(mapStateToProps)(MailingInformationContainer);

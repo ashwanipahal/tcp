@@ -7,6 +7,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 import ProfileInfoActionTile from '../../../molecules/ProfileInfoActionTile';
 import ProfileProgress from '../../../molecules/ProfileProgress';
+import internalEndpoints from '../../../../common/internalEndpoints';
 
 import styles from '../styles/ProfileInfoActions.style';
 import { getIconPath } from '../../../../../../../utils';
@@ -110,7 +111,8 @@ export const ProfileInfoActions = ({
             activityTitle={`+${percentageIncrement.percentageFavStore}%`}
             activityCompletionState={getFavStoreState(defaultStore, labels)}
             activityDescription={labels.lbl_profile_favStoreDescription}
-            redirectTo="/account"
+            redirectTo={internalEndpoints.mailingAddressPage.link}
+            redirectAsPath={internalEndpoints.mailingAddressPage.path}
             dataLocatorPrefix="favStore"
           />
         </Col>

@@ -1,11 +1,12 @@
 import React from 'react';
-import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import PropTypes from 'prop-types';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '../../../../common/atoms/Anchor';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
 import CreditCardForm from '../organism/CreditCardForm';
 import Notification from '../../../../common/molecules/Notification';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
+import internalEndpoints from '../../common/internalEndpoints';
 
 export const AddEditCreditCard = ({
   labels,
@@ -17,27 +18,40 @@ export const AddEditCreditCard = ({
   backToAddressBookClick,
   verifyAddressAction,
   initialValues,
-  userName,
-  ...otherProps }) => {
+  onFileAddresskey,
+  ...otherProps
+}) => {
+  const backLink = mailingAddress
+    ? internalEndpoints.profilePage.link
+    : internalEndpoints.paymentPage.link;
+  const backLinkPath = mailingAddress
+    ? internalEndpoints.profilePage.path
+    : internalEndpoints.paymentPage.path;
   return (
     <React.Fragment>
-      <Anchor
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        to="/account?id=payment"
-        dataLocator="payment-backlink"
-        asPath="/account/payment"
-      >
-        {labels.common.lbl_common_backLink}
-      </Anchor>
-      <FormPageHeading
-        heading={
-          isEdit
-            ? labels.paymentGC.lbl_payment_editCCHeading
-            : labels.paymentGC.lbl_payment_addCCHeading
-        }
-        data-locator="payment-addcreditordebitcardheader"
-      />
+      <BodyCopy className="elem-mb-LRG">
+        <Anchor
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          to={backLink}
+          dataLocator="payment-backlink"
+          asPath={backLinkPath}
+        >
+          <span className="left-arrow"> </span>
+          {labels.common.lbl_common_backLink}
+        </Anchor>
+      </BodyCopy>
+      {mailingAddress && <FormPageHeading heading={labels.profile.lbl_profile_heading} />}
+      {!mailingAddress && (
+        <FormPageHeading
+          heading={
+            isEdit
+              ? labels.paymentGC.lbl_payment_editCCHeading
+              : labels.paymentGC.lbl_payment_addCCHeading
+          }
+          data-locator="payment-addcreditordebitcardheader"
+        />
+      )}
       {errorMessage && (
         <Notification
           status="error"
@@ -45,6 +59,7 @@ export const AddEditCreditCard = ({
           message={errorMessage}
         />
       )}
+
       {mailingAddress && (
         <div>
           <AddressVerification
@@ -57,7 +72,6 @@ export const AddEditCreditCard = ({
             labels={labels}
             onError={submitAddressFormAction}
           />
-
           <CreditCardForm
             labels={labels}
             onSubmit={verifyAddressAction}
@@ -65,13 +79,20 @@ export const AddEditCreditCard = ({
             isEdit={isEdit}
             backToPaymentClick={backToAddressBookClick}
             mailingAddress={mailingAddress}
-            userName={userName}
+            addressFormLabels={addressFormLabels}
             {...otherProps}
           />
         </div>
-        )
-      }
-      {!mailingAddress && (<CreditCardForm labels={labels} isEdit={isEdit} initialValues={initialValues} {...otherProps} />)}
+      )}
+      {!mailingAddress && (
+        <CreditCardForm
+          labels={labels}
+          isEdit={isEdit}
+          initialValues={initialValues}
+          addressFormLabels={addressFormLabels}
+          {...otherProps}
+        />
+      )}
     </React.Fragment>
   );
 };
@@ -81,11 +102,23 @@ AddEditCreditCard.propTypes = {
   isEdit: PropTypes.bool,
   errorMessage: PropTypes.string,
   addressFormLabels: PropTypes.shape({}).isRequired,
+  mailingAddress: PropTypes.bool,
+  submitAddressFormAction: PropTypes.func,
+  backToAddressBookClick: PropTypes.func,
+  verifyAddressAction: PropTypes.func,
+  initialValues: PropTypes.shape({}),
+  onFileAddresskey: PropTypes.string,
 };
 
 AddEditCreditCard.defaultProps = {
   errorMessage: null,
   isEdit: false,
+  mailingAddress: false,
+  submitAddressFormAction: PropTypes.func,
+  backToAddressBookClick: PropTypes.func,
+  verifyAddressAction: PropTypes.func,
+  initialValues: {},
+  onFileAddresskey: '',
 };
 
 export default AddEditCreditCard;

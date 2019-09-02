@@ -25,8 +25,10 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       Object {
         "common": Object {},
         "paymentGC": Object {},
+        "profile": Object {},
       }
     }
+    mailingAddress={false}
     onFileAddressKey=""
     onFileAddresskey="12345"
   />
@@ -110,6 +112,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         formName="addEditCreditCard"
         formSection="address"
         labels={Object {}}
+        mailingAddress={false}
         showDefaultCheckbox={false}
         showPhoneNumber={false}
       />
@@ -193,8 +196,10 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       Object {
         "common": Object {},
         "paymentGC": Object {},
+        "profile": Object {},
       }
     }
+    mailingAddress={false}
     onFileAddressKey=""
     pristine={true}
   />
@@ -278,6 +283,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         formName="addEditCreditCard"
         formSection="address"
         labels={Object {}}
+        mailingAddress={false}
         showDefaultCheckbox={false}
         showPhoneNumber={false}
       />
