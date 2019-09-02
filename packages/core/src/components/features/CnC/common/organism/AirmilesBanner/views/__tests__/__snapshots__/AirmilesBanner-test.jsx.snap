@@ -74,22 +74,9 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
               </Styled(BodyCopy)>
             </Styled(Col)>
           </Styled(Row)>
-          <span
-            className="airmileBannerTooltip"
-          >
-            <span
-              className="info-icon-img-wrapper"
-            >
-              <Styled(ReactTooltip)
-                aligned="right"
-                message="collectorFlyout"
-              >
-                <Styled(Image)
-                  src="/static/images/info-icon.png"
-                />
-              </Styled(ReactTooltip)>
-            </span>
-          </span>
+          <Styled(AirmilesToolTip)
+            toolTipText="collectorFlyout"
+          />
         </Styled(Col)>
         <Styled(Col)
           className="airmilesBannerInput"
@@ -107,7 +94,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-htoDjs",
+                  "componentId": "sc-gzVnrw",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -250,7 +237,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 "displayName": "Styled(TextBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-htoDjs",
+                "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -266,22 +253,9 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
             placeholder="124e12e"
             type="text"
           />
-          <span
-            className="airmileBannerTooltip"
-          >
-            <span
-              className="info-icon-img-wrapper offerCodeTooltip"
-            >
-              <Styled(ReactTooltip)
-                aligned="right"
-                message="offerFlyout"
-              >
-                <Styled(Image)
-                  src="/static/images/info-icon.png"
-                />
-              </Styled(ReactTooltip)>
-            </span>
-          </span>
+          <Styled(AirmilesToolTip)
+            toolTipText="offerFlyout"
+          />
         </Styled(Col)>
       </Styled(Row)>
     </form>

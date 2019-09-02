@@ -26,11 +26,14 @@ export const getSyncError = state => {
   };
 };
 
-export const getPromoFields = state => {
+export const getFormAirmilesNumber = state => {
   const selector = formValueSelector('AirmilesBanner');
   return selector(state, 'promoId');
 };
-
+export const getFormAirmilesOfferCode = state => {
+  const selector = formValueSelector('AirmilesBanner');
+  return selector(state, 'offerCode');
+};
 export const getAirmilesBannerLabels = state => {
   const {
     global: {

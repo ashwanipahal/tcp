@@ -9,8 +9,6 @@ const errorHandler = err => {
 };
 
 export default function addAirmilesBannerApi(payload) {
-  console.log('abstractor', payload);
-
   const payloadArgs = {
     webService: endpoints.addAirmilesBanner,
     header: {
@@ -18,8 +16,8 @@ export default function addAirmilesBannerApi(payload) {
     },
     body: {
       orderId: payload.orderId,
-      promoId: payload.promoId || '',
-      cardNumber: payload.cardNumber || '',
+      promoId: payload.offerCode || '',
+      cardNumber: payload.promoId || '',
     },
   };
   return executeStatefulAPICall(payloadArgs, errorHandler).then(res => {

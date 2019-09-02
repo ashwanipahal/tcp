@@ -6,7 +6,7 @@ import {
   getAirmilesBannerData,
   getAirmilesBannerLabels,
   getSyncError,
-  getPromoFields,
+  getFormAirmilesNumber,
 } from './AirmilesBanner.selector';
 import { addAirmilesBannerRequest } from './AirmilesBanner.actions';
 import { isCanada } from '../../../../../../../utils';
@@ -30,6 +30,7 @@ export const AirmilesBannerContainer = ({
   addAirmilesBanner,
   syncErrorObj,
   promoField,
+  offerField,
 }: Props) => {
   return (
     isCanada() && (
@@ -45,6 +46,7 @@ export const AirmilesBannerContainer = ({
         addAirmilesBanner={addAirmilesBanner}
         syncErrorObj={syncErrorObj}
         promoField={promoField}
+        offerField={offerField}
       />
     )
   );
@@ -52,8 +54,8 @@ export const AirmilesBannerContainer = ({
 
 export const mapDispatchToProps = dispatch => {
   return {
-    onAddAirmilesBanner: payload => {
-      dispatch(addAirmilesBannerRequest(payload));
+    onAddAirmilesBanner: () => {
+      dispatch(addAirmilesBannerRequest());
     },
   };
 };
@@ -64,7 +66,7 @@ function mapStateToProps(state) {
     airmilesBannerData: getAirmilesBannerData(state),
     labels: getAirmilesBannerLabels(state),
     syncErrorObj: getSyncError(state),
-    promoField: getPromoFields(state),
+    promoField: getFormAirmilesNumber(state),
   };
 }
 
