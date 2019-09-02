@@ -26,7 +26,8 @@ export class AddressView extends React.Component {
       addAddressMount: false,
       currentForm: 'AddAddress',
       addressLine1: '',
-      selectedAddress: {},
+      countryState: '',
+      selectedAddress: null,
     };
   }
 
@@ -50,12 +51,12 @@ export class AddressView extends React.Component {
     this.setState({ selectedAddress: address });
   };
 
-  setAddressLine1 = address => {
-    this.setState({ addressLine1: address });
+  setAddressLine1 = (address, countryState) => {
+    this.setState({ addressLine1: address, countryState });
   };
 
   resetAddressLine1 = () => {
-    this.setState({ addressLine1: '' });
+    this.setState({ addressLine1: '', countryState: '' });
   };
 
   render() {
@@ -68,7 +69,13 @@ export class AddressView extends React.Component {
       onDeleteAddress,
       addressLabels,
     } = this.props;
-    const { addAddressMount, currentForm, selectedAddress, addressLine1 } = this.state;
+    const {
+      addAddressMount,
+      currentForm,
+      selectedAddress,
+      addressLine1,
+      countryState,
+    } = this.state;
 
     return (
       <View {...this.props}>
@@ -126,6 +133,7 @@ export class AddressView extends React.Component {
               setSelectedAddress={this.setSelectedAddress}
               onDefaultShippingAddressClick={onDefaultShippingAddressClick}
               setDeleteModalMountState={setDeleteModalMountState}
+              toggleAddAddressModal={this.toggleAddAddressModal}
             />
           )}
 
@@ -147,8 +155,10 @@ export class AddressView extends React.Component {
                   currentForm={currentForm}
                   toggleAddressModal={this.toggleAddressModal}
                   addressLine1={addressLine1}
+                  countryState={countryState}
                   setAddressLine1={this.setAddressLine1}
                   resetAddressLine1={this.resetAddressLine1}
+                  address={selectedAddress}
                 />
               </ModalViewWrapper>
             </ModalNative>

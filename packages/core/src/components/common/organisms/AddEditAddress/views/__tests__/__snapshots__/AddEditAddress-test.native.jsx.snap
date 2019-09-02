@@ -4,6 +4,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
 <View
   addressFormLabels={Object {}}
   addressLine1=""
+  countryState=""
   currentForm="AddAddress"
   initialValues={Object {}}
   isEdit={false}
@@ -20,6 +21,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
     <ReduxForm
       addressFormLabels={Object {}}
       addressLine1=""
+      countryState=""
       currentForm="AddAddress"
       destroyOnUnmount={false}
       enableReinitialize={true}
@@ -54,6 +56,7 @@ exports[`AddEditAddress Native should test with verification modal 1`] = `
 <View
   addressFormLabels={Object {}}
   addressLine1=""
+  countryState=""
   currentForm="VerificationModal"
   initialValues={Object {}}
   isEdit={false}
