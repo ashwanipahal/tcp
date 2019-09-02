@@ -34,7 +34,7 @@ export class MyProfileContainer extends PureComponent {
   render() {
     const { labels, ...otherProps } = this.props;
     const profileInfoLabels = getMyProfileInfoLabels(labels);
-    return <MyProfile labels={profileInfoLabels} {...otherProps} />;
+    return <MyProfile labelsObj={labels} labels={profileInfoLabels} {...otherProps} />;
   }
 }
 

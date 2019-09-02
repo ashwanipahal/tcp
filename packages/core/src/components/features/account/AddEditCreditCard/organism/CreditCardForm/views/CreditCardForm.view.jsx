@@ -23,6 +23,7 @@ export class CreditCardForm extends React.PureComponent {
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
     isEdit: PropTypes.bool,
+    mailingAddress: PropTypes.bool,
     backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     invalid: PropTypes.bool.isRequired,
@@ -36,6 +37,7 @@ export class CreditCardForm extends React.PureComponent {
     className: '',
     onFileAddressKey: '',
     isEdit: false,
+    mailingAddress: false,
   };
 
   getAddressOptions = () => {
@@ -72,6 +74,12 @@ export class CreditCardForm extends React.PureComponent {
     return addressList.find(add => add.addressId === onFileAddresskey);
   };
 
+  getSubHeading = (mailingAddress, labels) => {
+    return mailingAddress
+      ? labels.profile.lbl_profile_mailing_address
+      : labels.paymentGC.lbl_payment_billingAddress;
+  };
+
   render() {
     const {
       className,
@@ -87,10 +95,11 @@ export class CreditCardForm extends React.PureComponent {
       dispatch,
       initialValues,
       addressFormLabels,
-      userName,
       mailingAddress,
     } = this.props;
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
+    const subHeading = this.getSubHeading(mailingAddress, labels);
+
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
         {!mailingAddress && <CreditCardFields {...this.props} />}
@@ -100,7 +109,7 @@ export class CreditCardForm extends React.PureComponent {
           className="addressDropdownHeading"
           dataLocator="payment-bilingaddresslabel"
         >
-          {labels.paymentGC.lbl_payment_billingAddress}
+          {subHeading}
         </Heading>
         {addressList && addressList.size > 0 && (
           <Row fullBleed className="elem-mb-XL">
@@ -153,7 +162,6 @@ export class CreditCardForm extends React.PureComponent {
                 dispatch={dispatch}
                 addressFormLabels={addressFormLabels}
                 mailingAddress={mailingAddress}
-                userName={userName}
               />
             </FormSection>
           </div>
@@ -185,7 +193,8 @@ export class CreditCardForm extends React.PureComponent {
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"
             >
-              {!mailingAddress && (isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA)}
+              {!mailingAddress &&
+                (isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA)}
               {mailingAddress && labels.common.lbl_common_saveCTA}
             </Button>
           </Col>

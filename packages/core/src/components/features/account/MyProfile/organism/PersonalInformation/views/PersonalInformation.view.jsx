@@ -54,8 +54,8 @@ export const PersonalInformation = ({
               title={labels.lbl_profile_mailing_address}
               ctaTitle={labels.lbl_profile_edit_mailing_info}
               dataLocator="profileinfo-editmailingaddress"
-              ctaLink="/account?id=profile&subSection=edit-mailing-address"
-              ctaPath="/account/profile/edit-mailing-address"
+              ctaLink={internalEndpoints.mailingAddressPage.link}
+              ctaPath={internalEndpoints.mailingAddressPage.path}
             >
               <Address
                 address={address}

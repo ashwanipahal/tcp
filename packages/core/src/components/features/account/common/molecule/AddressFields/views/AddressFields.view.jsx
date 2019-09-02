@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Field, change } from 'redux-form';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import SelectBox from '../../../../../../common/atoms/Select';
@@ -14,7 +13,6 @@ import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from '../../../../../../common/organisms/AddressForm/CountriesAndStates.constants';
-import styles from '../styles/AddressFields.style';
 
 export class AddressFields extends React.PureComponent {
   static propTypes = {
@@ -26,6 +24,7 @@ export class AddressFields extends React.PureComponent {
     showPhoneNumber: PropTypes.bool,
     formSection: PropTypes.string,
     className: PropTypes.string,
+    mailingAddress: PropTypes.bool,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -69,16 +68,12 @@ export class AddressFields extends React.PureComponent {
       showDefaultCheckbox,
       showPhoneNumber,
       className,
-      userName,
       mailingAddress,
-      initialValues,
     } = this.props;
     const { country } = this.state;
-    const firstName = userName && userName.firstName;
-    const lastName = userName && userName.lastName;
     return (
       <div className={className}>
-        <Row fullBleed className={mailingAddress && "hidd"}>
+        <Row fullBleed className={mailingAddress}>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               placeholder={labels.addressBook.ACC_LBL_FIRST_NAME}
@@ -229,6 +224,7 @@ AddressFields.defaultProps = {
   showPhoneNumber: true,
   formSection: '',
   className: '',
+  mailingAddress: false,
 };
 
-export default withStyles(AddressFields, styles);
+export default AddressFields;

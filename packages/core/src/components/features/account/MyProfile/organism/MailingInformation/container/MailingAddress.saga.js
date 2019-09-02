@@ -5,6 +5,7 @@ import {
   setAddressBookNotification,
   clearGetAddressListTTL,
 } from '../../../../AddressBook/container/AddressBook.actions';
+import { getUserInfo } from '../../../../User/container/User.actions';
 import { updateAddress } from '../../../../../../../services/abstractors/account';
 
 export function* updateMailingAddressPut({ payload }) {
@@ -17,6 +18,7 @@ export function* updateMailingAddressPut({ payload }) {
         })
       );
       yield put(clearGetAddressListTTL());
+      yield put(getUserInfo());
       return yield put(addMailingAddressSuccess(res.body));
     }
     return yield put(addMailingAddressFail(res.body));
