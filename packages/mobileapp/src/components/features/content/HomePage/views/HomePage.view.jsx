@@ -22,6 +22,8 @@ const modulesMap = {
   moduleA: ModuleA,
 };
 
+const buttonMargin = { margin: 30 };
+
 class HomePageView extends React.Component {
   componentDidMount() {
     this.loadBootstrapData();
@@ -72,6 +74,7 @@ class HomePageView extends React.Component {
           buttonVariation="variable-width"
           text="PLP Page"
           onPress={() => navigation.navigate('ProductListingPageContainer')}
+          style={buttonMargin}
         />
       </ScrollView>
     );

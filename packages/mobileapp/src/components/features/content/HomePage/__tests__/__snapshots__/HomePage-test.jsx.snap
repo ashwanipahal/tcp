@@ -22,11 +22,18 @@ exports[`HomePageView should render correctly 1`] = `
   <ModuleA />
   <Styled(CustomButton)
     buttonVariation="variable-width"
+    color=""
     customStyle={Object {}}
     disableButton={false}
+    fill=""
     fullWidth={true}
     locator=""
     onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
     text="PLP Page"
     url=""
   />

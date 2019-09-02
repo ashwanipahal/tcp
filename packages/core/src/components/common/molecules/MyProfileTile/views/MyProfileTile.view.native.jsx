@@ -27,7 +27,6 @@ export const MyProfileTile = ({ title, ctaTitle, ctaLink, children, handleCompon
           fill="BLUE"
           buttonVariation="variable-width"
           text={ctaTitle}
-          color="white"
           onPress={() => {
             handleComponentChange(ctaLink);
           }}
