@@ -19,7 +19,7 @@ import {
 } from '../../User/container/User.selectors';
 
 import { getSuccess } from './MyProfile.selectors';
-import { myProfileSuccess } from './MyProfile.actions';
+import { updateProfileSuccess } from './MyProfile.actions';
 
 const getMyProfileInfoLabels = labels => {
   return (labels && labels.profile) || {};
@@ -68,7 +68,7 @@ const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => ({
   messageSateChangeAction: payload => {
-    dispatch(myProfileSuccess(payload));
+    dispatch(updateProfileSuccess(payload));
   },
 });
 
