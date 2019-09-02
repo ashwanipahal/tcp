@@ -9,7 +9,11 @@ import {
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
-import productTileCss, { customStyles, miniBagCSS } from '../styles/ProductTileWrapper.style';
+import productTileCss, {
+  customStyles,
+  miniBagCSS,
+  bagTileCSS,
+} from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import RemoveSoldOut from '../../../../common/molecules/RemoveSoldOut';
 
@@ -18,17 +22,23 @@ class ProductTileWrapper extends React.PureComponent<props> {
     super(props);
     this.state = {
       isEditAllowed: true,
+      openedTile: 0,
     };
   }
 
   toggleEditAllowance = () => {
     const { isEditAllowed } = this.state;
+    const { onItemEdit } = this.props;
+    if (onItemEdit) {
+      onItemEdit(isEditAllowed);
+    }
     this.setState({
       isEditAllowed: !isEditAllowed,
     });
   };
 
-  getHeaderError = (labels, orderItems) => {
+  getHeaderError = (labels, orderItems, pageView) => {
+    const styles = pageView === 'myBag' ? bagTileCSS : customStyles;
     if (orderItems && orderItems.size > 0) {
       const showError = orderItems.find(tile => {
         const productDetail = getProductDetails(tile);
@@ -37,9 +47,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
         );
       });
-      return (
-        showError && <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
-      );
+      return showError && <ErrorMessage customClass={styles} error={labels.problemWithOrder} />;
     }
     return false;
   };
@@ -52,14 +60,18 @@ class ProductTileWrapper extends React.PureComponent<props> {
         fontSize="fs12"
         component="span"
         className="removeErrorMessage"
-        fontWeight="normal"
         onClick={() => removeCartItem(getUnavailableOOSItems)}
       >
         <u>remove</u>
       </BodyCopy>
     );
+
     remove.splice(1, 0, newRemove);
     return remove;
+  };
+
+  setSelectedProductTile = ({ index }) => {
+    this.setState({ openedTile: index });
   };
 
   render() {
@@ -76,9 +88,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
     let isSoldOut;
     const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
-    const { isEditAllowed } = this.state;
+    const { isEditAllowed, openedTile } = this.state;
     if (orderItems && orderItems.size > 0) {
-      const orderItemsView = orderItems.map(tile => {
+      const orderItemsView = orderItems.map((tile, index) => {
         const productDetail = getProductDetails(tile);
         if (productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
           getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
@@ -103,6 +115,9 @@ class ProductTileWrapper extends React.PureComponent<props> {
                 : isEditAllowed
             }
             isPlcc={isPlcc}
+            itemIndex={index}
+            openedTile={openedTile}
+            setSelectedProductTile={this.setSelectedProductTile}
           />
         );
       });

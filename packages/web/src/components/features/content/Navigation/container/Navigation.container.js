@@ -25,6 +25,8 @@ const mapStateToProps = state => {
     hideNavigationFooter: state.Navigation.hideNavigationFooter,
     showDesktopOverlay: state.Navigation.showDesktopOverlay,
     removeL1Focus: state.Navigation.removeL1Focus,
+    accessibilityLabels:
+      (state.Labels && state.Labels.global && state.Labels.global.accessibility) || {},
   };
 };
 

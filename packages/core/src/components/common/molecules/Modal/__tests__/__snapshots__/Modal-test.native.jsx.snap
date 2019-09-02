@@ -7,6 +7,7 @@ exports[`Modal Native should render correctly 1`] = `
     transparent={false}
     visible={true}
   >
+    <Connect(ToastContainer) />
     <StatusBar
       animated={false}
       hidden={true}

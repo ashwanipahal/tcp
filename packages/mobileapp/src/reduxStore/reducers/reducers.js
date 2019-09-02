@@ -5,6 +5,7 @@ import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPag
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
+import ProductListingReducer from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
@@ -47,6 +48,7 @@ import {
   AIRMILES_BANNER_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY,
   APICONFIG_REDUCER_KEY,
   ADDEDITCREDITCARD_REDUCER_KEY,
   USER_REDUCER_KEY,
@@ -56,6 +58,7 @@ import {
   ADDRESS_VERIFICATION_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
   GET_CANDID_REDUCER_KEY,
+  TOAST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -63,6 +66,7 @@ import AddGiftCardReducer from '@tcp/core/src/components/features/account/Paymen
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
+import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
 
@@ -71,16 +75,23 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
+const filteredProductListingReducer = createFilteredReducer(
+  ProductListingReducer,
+  PRODUCT_LISTING_REDUCER_KEY
+);
+
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
 const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
+  [PRODUCT_LISTING_REDUCER_KEY]: filteredProductListingReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,

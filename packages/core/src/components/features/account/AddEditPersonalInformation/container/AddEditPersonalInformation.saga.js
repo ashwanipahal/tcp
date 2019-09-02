@@ -1,7 +1,8 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import constants from '../AddEditPersonalInformation.constants';
 import { getUserInfo } from '../../User/container/User.actions';
-import { updateProfileError, updateProfileSuccess } from './AddEditPersonalInformation.actions';
+import { updateProfileError } from './AddEditPersonalInformation.actions';
+import { updateProfileSuccess } from '../../MyProfile/container/MyProfile.actions';
 
 import { UpdateProfileInfo } from '../../../../../services/abstractors/account';
 
