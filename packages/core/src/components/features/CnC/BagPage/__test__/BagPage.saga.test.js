@@ -111,7 +111,7 @@ describe('removeUnqualifiedItemsAndCheckout Saga', () => {
 
 describe('startCartCheckout Saga', () => {
   it('startCartCheckout effect', () => {
-    const generator = startCartCheckout();
+    const generator = startCartCheckout({});
 
     let takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;

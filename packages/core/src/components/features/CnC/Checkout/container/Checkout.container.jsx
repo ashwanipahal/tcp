@@ -7,6 +7,7 @@ import {
   onEditModeChangeAction,
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -66,6 +67,7 @@ export class CheckoutContainer extends React.Component<Props> {
       cartOrderItems,
       orderHasShipping,
       routeToPickupPage,
+      setCheckoutStage,
     } = this.props;
     console.log('isGuest', isGuest, initialValues, isUsSite);
     return (
@@ -94,6 +96,7 @@ export class CheckoutContainer extends React.Component<Props> {
         loadShipmentMethods={loadShipmentMethods}
         cartOrderItems={cartOrderItems}
         routeToPickupPage={routeToPickupPage}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }
@@ -118,6 +121,9 @@ export const mapDispatchToProps = dispatch => {
     },
     routeToPickupPage: () => {
       dispatch(routeToPickupPageActn());
+    },
+    setCheckoutStage: payload => {
+      dispatch(getSetCheckoutStage(payload));
     },
   };
 };

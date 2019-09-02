@@ -2,33 +2,31 @@
 
 exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
 <View>
-  <View
-    className="header"
-  >
+  <Styled(View)>
     <Styled(BodyCopy)
+      color="gray.900"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
     />
-    <View
-      className="EditAnchor"
-    >
+    <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
-        anchorVariation="secondary"
+        anchorVariation="primary"
+        color="gray.900"
         customStyle={Object {}}
         fontSize="fs12"
         href="#"
         locator=""
         noLink={true}
-        noUnderline={true}
         onPress={[Function]}
         target="_blank"
         text=""
+        underline={true}
         visible={false}
       />
-    </View>
-  </View>
+    </Styled(View)>
+  </Styled(View)>
   <Styled(PickUpContactDisplay)
     formData={Object {}}
   />
