@@ -1,8 +1,134 @@
 /* eslint-disable */
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { isClient } from '../../../utils';
-import { parseBoolean } from './productParser';
+import { parseBoolean, isBopisProduct, isBossProduct } from './productParser';
+import processHelpers from './processHelpers';
+import { extractExtraImages } from './productListing.utils';
+import { extractAttributeValue, extractPrioritizedBadge } from '../../../utils/badge.util';
+import utils from '../../../utils';
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.findindex
+if (!Array.prototype.findIndex) {
+  Object.defineProperty(Array.prototype, 'findIndex', {
+    value: function(predicate) {
+      // 1. Let O be ? ToObject(this value).
+      if (this == null) {
+        throw new TypeError('"this" is null or not defined');
+      }
+
+      var o = Object(this);
+
+      // 2. Let len be ? ToLength(? Get(O, "length")).
+      var len = o.length >>> 0;
+
+      // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+      if (typeof predicate !== 'function') {
+        throw new TypeError('predicate must be a function');
+      }
+
+      // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+      var thisArg = arguments[1];
+
+      // 5. Let k be 0.
+      var k = 0;
+
+      // 6. Repeat, while k < len
+      while (k < len) {
+        // a. Let Pk be ! ToString(k).
+        // b. Let kValue be ? Get(O, Pk).
+        // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+        // d. If testResult is true, return k.
+        var kValue = o[k];
+        if (predicate.call(thisArg, kValue, k, o)) {
+          return k;
+        }
+        // e. Increase k by 1.
+        k++;
+      }
+
+      // 7. Return -1.
+      return -1;
+    },
+    configurable: true,
+    writable: true,
+  });
+}
+
+const apiHelper = {
+  configOptions: {
+    isUSStore: true,
+    siteId: utils.getSiteId(),
+  },
+  responseContainsErrors: () => {
+    return false;
+  },
+};
+
+function convertMultipleSizeSkusToAlternatives(sizes) {
+  const uniqueSizesMap = Object.create(null);
+  const result = [];
+
+  if (sizes) {
+    sizes.forEach((sizeVal, index) => {
+      const size = sizeVal;
+      let existingSizeForName = uniqueSizesMap[size.sizeName];
+      let alternativeSkuIds;
+
+      size.position = index;
+
+      if (!existingSizeForName) {
+        // Add current size to uniqueSizesMap if current size  not exist in uniqueSizesMap
+        uniqueSizesMap[size.sizeName] = size;
+        result.push(size);
+      } else if (size.maxAvailable > existingSizeForName.maxAvailable) {
+        alternativeSkuIds = existingSizeForName.skuId;
+        uniqueSizesMap[size.sizeName] = size;
+        result[existingSizeForName.position] = size;
+        existingSizeForName = uniqueSizesMap[size.sizeName];
+      } else {
+        alternativeSkuIds = size.skuId;
+        if (!existingSizeForName.alternativeSkuIds) {
+          // Check if alternativeSkuIds already exist or not, if not, then intialize alternativeSkuIds with empty array
+          existingSizeForName.alternativeSkuIds = [];
+        }
+        // store the skuId of duplicate size with less quantity as an alternative
+        existingSizeForName.alternativeSkuIds.push(alternativeSkuIds);
+        uniqueSizesMap[size.sizeName] = existingSizeForName;
+        result[existingSizeForName.position] = existingSizeForName;
+      }
+    });
+  }
+  return result.filter(size => size);
+}
+const sumBy = (arr, iteratee) => {
+  const func = typeof iteratee === 'function' ? iteratee : item => item[iteratee];
+
+  return arr.reduce((acc, item) => acc + func(item), 0);
+};
+
+function getFirstVariant(product) {
+  try {
+    return product.variants[0] || {};
+  } catch (ex) {
+    return {};
+  }
+}
+
+const validateQuantityAvailable = sizes => {
+  // const index = findIndex(sizes, function (size) { return size.maxAvailable !== 0; });
+  const index = 0;
+  return index > -1 ? Number.MAX_VALUE : 0;
+};
+
+function getProductColorName(isGiftCard, product) {
+  return isGiftCard
+    ? product.product_name
+    : getFirstVariant(product).auxdescription || product.TCPColor || product.imagename;
+}
+
+const getTotalQtyAvailable = sizes => sumBy(sizes, 'v_qty');
+
+const getTotalQtyAvailableBoss = sizes => sumBy(sizes, 'v_qty_boss');
 
 const getSize = sizeName => {
   const size = sizeName && sizeName.split('_');
@@ -19,7 +145,7 @@ const getCategoryColorId = itemColor => {
 };
 
 const getCategoryEntity = (categoryColorId, breadCrumbs) => {
-  return categoryColorId && parseCategoryEntity(categoryColorId, breadCrumbs);
+  return categoryColorId && processHelpers.parseCategoryEntity(categoryColorId, breadCrumbs);
 };
 
 const getImagesByColor = (itemColor, colorName, getImgPath, isGiftCard, imagesByColor) => {
@@ -48,13 +174,19 @@ const getMaxAvailableBoss = itemColor => {
   return getTotalQtyAvailableBoss(itemColor.variants) || 0;
 };
 
-const getColorfitsSizesMap = (
+const getColorfitsSizesMap = ({
   productVariants,
   isGiftCard,
   breadCrumbs,
   getImgPath,
-  imagesByColor
-) => {
+  images,
+  hasFit,
+  isBundleProduct,
+  colorsFitsMap,
+  excludeBage,
+  productAttributes,
+}) => {
+  let imagesByColor = images;
   return productVariants.map(itemColor => {
     const { productImages, colorSwatch } = getImgPath(itemColor.imagename);
     const colorName = getProductColorName(isGiftCard, itemColor);
@@ -63,9 +195,15 @@ const getColorfitsSizesMap = (
     const categoryEntity = getCategoryEntity(categoryColorId, breadCrumbs);
     const bossDisabledFlags = {
       bossProductDisabled:
-        extractAttributeValue(itemColor, getProductAttributes().bossProductDisabled) || 0,
+        extractAttributeValue(
+          itemColor,
+          processHelpers.getProductAttributes().bossProductDisabled
+        ) || 0,
       bossCategoryDisabled:
-        extractAttributeValue(itemColor, getProductAttributes().bossCategoryDisabled) || 0,
+        extractAttributeValue(
+          itemColor,
+          processHelpers.getProductAttributes().bossCategoryDisabled
+        ) || 0,
     };
     imagesByColor = getImagesByColor(itemColor, colorName, getImgPath, isGiftCard, imagesByColor);
 
@@ -93,10 +231,13 @@ const getColorfitsSizesMap = (
           ? extractPrioritizedBadge(itemColor, productAttributes, '', excludeBage)
           : extractPrioritizedBadge(getFirstVariant(itemColor), productAttributes, '', excludeBage),
         badge2: extractAttributeValue(itemColor, productAttributes.merchant),
-        isClearance: extractAttributeValue(itemColor, getProductAttributes().clearance),
+        isClearance: extractAttributeValue(
+          itemColor,
+          processHelpers.getProductAttributes().clearance
+        ),
         hasOnModelAltImages: extractAttributeValue(
           itemColor,
-          getProductAttributes().onModelAltImages
+          processHelpers.getProductAttributes().onModelAltImages
         ),
         videoUrl: extractAttributeValue(itemColor, productAttributes.videoUrl),
         keepAlive: parseBoolean(extractAttributeValue(itemColor, productAttributes.keepAlive)),
@@ -107,7 +248,7 @@ const getColorfitsSizesMap = (
         parseFloat(getFirstVariant(itemColor).v_offerprice) ||
         0,
       offerPrice: parseFloat(getFirstVariant(itemColor).v_offerprice) || 0,
-      unbxdId: getUnbxdId(),
+      // TODO - fix this - unbxdId: getUnbxdId(),
     };
   });
 };
@@ -172,6 +313,21 @@ const getReviewsCount = (isGiftCard, reviewsCount) => {
   return isGiftCard ? 0 : reviewsCount;
 };
 
+const parseCategoryId = (pathMap, breadCrumbs) => {
+  const L2Category = breadCrumbs.slice(0, 2);
+  const breadCategory =
+    L2Category.length > 1 ? L2Category.map(value => value.categoryId).join('>') : '';
+  let categoryName;
+
+  if (L2Category.length <= 1) {
+    const categoryEntity = this.getParticularCategory(pathMap, L2Category);
+    const entities = categoryEntity && categoryEntity.split('|');
+    categoryName = entities && entities[0].split('>');
+  }
+
+  return categoryName ? categoryName.join('>') : breadCategory;
+};
+
 const processResponse = ({
   baseProduct,
   categoryPathMap,
@@ -208,7 +364,7 @@ const processResponse = ({
     lowOfferPrice: getLowOfferPrice(baseProduct),
     ratings: getRating(isGiftCard, baseProduct),
     reviewsCount: getReviewsCount(isGiftCard, reviewsCount),
-    unbxdId: getUnbxdId(),
+    // unbxdId: getUnbxdId(),
     unbxdProdId: baseProduct.uniqueId,
     alternateSizes,
     productId: baseProduct.uniqueId,
@@ -276,7 +432,7 @@ const getAlternateSizes = (defaultColorAlternateSizes, otherColorAlternateSizes)
 };
 
 const getSortedKeys = (currentColorFitsSizesMap, sortOptions) => {
-  Object.keys(currentColorFitsSizesMap).sort(
+  return Object.keys(currentColorFitsSizesMap).sort(
     (a, b) =>
       (sortOptions[a.toLowerCase()] || sortOptions.other) -
       (sortOptions[b.toLowerCase()] || sortOptions.other)
@@ -303,29 +459,6 @@ const getIsAdditionalStyles = (hasAdditionalStyles, colorVariant) => {
   return !hasAdditionalStyles && colorVariant.additional_styles;
 };
 
-const getColorVariants = (colorVariant, currentColorFitsSizesMap) => {
-  for (let sizeVariant of colorVariant.variants) {
-    fitName = getFitName(sizeVariant);
-    if (!currentColorFitsSizesMap[fitName]) {
-      currentColorFitsSizesMap[fitName] = [];
-    }
-    if (!hasInventory) {
-      hasInventory = getInventoryStatus(sizeVariant);
-    }
-    currentColorFitsSizesMap[fitName].push({
-      sizeName: getSizeName(sizeVariant),
-      skuId: sizeVariant.v_item_catentry_id,
-      listPrice: getListPriceProduct(sizeVariant),
-      offerPrice: getOfferPriceProduct(sizeVariant),
-      maxAvailable: sizeVariant.v_qty,
-      maxAvailableBoss: sizeVariant.v_qty_boss,
-      variantId: sizeVariant.variantId,
-      variantNo: sizeVariant.v_variant,
-    });
-  }
-  return currentColorFitsSizesMap;
-};
-
 const parseProductFromAPI = (
   product,
   colorIdOrSeoKeyword,
@@ -337,50 +470,70 @@ const parseProductFromAPI = (
 ) => {
   const baseProduct = getBaseProduct(product); // Getting multiple products as color variants
   const productVariants = getProductVariants(product);
-  const isGiftCard = isGiftCard(baseProduct); // TBD: backend to confirm whether partNumber will always be giftCardBundle for gift cards.
-  const productAttributes = getProductAttributes();
-  const hasFit = false;
-  const hasInventory = false;
+  const isGiftCard = processHelpers.isGiftCard(baseProduct); // TBD: backend to confirm whether partNumber will always be giftCardBundle for gift cards.
+  const productAttributes = processHelpers.getProductAttributes();
+  let hasFit = false;
+  let hasInventory = false;
   let alternateSizes;
   let defaultColorAlternateSizes;
   let otherColorAlternateSizes;
 
-  const hasAdditionalStyles = false;
+  let hasAdditionalStyles = false;
   const imagesByColor = {};
-  //const imagesByColor = extractExtraImages(rawColors, baseProduct.alt_img, getImgPath);
+  // const imagesByColor = extractExtraImages(rawColors, baseProduct.alt_img, getImgPath);
 
   // This color map is used as an intermediary step to help consolidate all sizes under fits
   const colorsFitsMap = {};
+  // eslint-disable-next-line
   for (let colorVariant of productVariants) {
     const color = getProductColorName(isGiftCard, colorVariant);
     const currentColorFitsSizesMap = {};
 
-    const fitName = '';
+    let fitName = '';
     if (isColorVariant) {
-      currentColorFitsSizesMap = getColorVariants(colorVariant, currentColorFitsSizesMap);
+      // eslint-disable-next-line
+      for (let sizeVariant of colorVariant.variants) {
+        fitName = getFitName(sizeVariant);
+        if (!currentColorFitsSizesMap[fitName]) {
+          currentColorFitsSizesMap[fitName] = [];
+        }
+        if (!hasInventory) {
+          hasInventory = getInventoryStatus(sizeVariant);
+        }
+        currentColorFitsSizesMap[fitName].push({
+          sizeName: getSizeName(sizeVariant),
+          skuId: sizeVariant.v_item_catentry_id,
+          listPrice: getListPriceProduct(sizeVariant),
+          offerPrice: getOfferPriceProduct(sizeVariant),
+          maxAvailable: sizeVariant.v_qty,
+          maxAvailableBoss: sizeVariant.v_qty_boss,
+          variantId: sizeVariant.variantId,
+          variantNo: sizeVariant.v_variant,
+        });
+      }
     }
 
-    if (fitName) {
-      hasFit = true;
-    }
-    const hasDefaultFit = false;
-    let sortOptions = {
+    hasFit = !!fitName;
+
+    let hasDefaultFit = false;
+    const sortOptions = {
       regular: 1,
       slim: 2,
       plus: 3,
       husky: 4,
       other: 5,
     };
-    let sortedKeys = getSortedKeys(currentColorFitsSizesMap, sortOptions);
-    colorsFitsMap[color] = sortedKeys.map(fitName => {
-      let isDefaultFit = fitName.toLowerCase() === 'regular';
+    const sortedKeys = getSortedKeys(currentColorFitsSizesMap, sortOptions);
+    // eslint-disable-next-line
+    colorsFitsMap[color] = sortedKeys.map(fitNameVal => {
+      const isDefaultFit = fitNameVal.toLowerCase() === 'regular';
       hasDefaultFit = getHasDefaultFit(hasDefaultFit, isDefaultFit);
 
       return {
-        fitName,
+        fitNameVal,
         isDefault: isDefaultFit,
-        maxAvailable: validateQuantityAvailable(currentColorFitsSizesMap[fitName]),
-        sizes: convertMultipleSizeSkusToAlternatives(currentColorFitsSizesMap[fitName]),
+        maxAvailable: validateQuantityAvailable(currentColorFitsSizesMap[fitNameVal]),
+        sizes: convertMultipleSizeSkusToAlternatives(currentColorFitsSizesMap[fitNameVal]),
       };
     });
 
@@ -406,13 +559,18 @@ const parseProductFromAPI = (
 
   // Generate the colorFitsSizeMap needed for mapping colors to fits/sizes
 
-  const colorFitsSizesMap = getColorfitsSizesMap(
+  const colorFitsSizesMap = getColorfitsSizesMap({
     productVariants,
     isGiftCard,
     breadCrumbs,
     getImgPath,
-    imagesByColor
-  );
+    imagesByColor,
+    hasFit,
+    isBundleProduct,
+    colorsFitsMap,
+    excludeBage,
+    productAttributes,
+  });
 
   const reviewsCount = getReviewsCountProduct(baseProduct);
   const categoryPathMap = getCategoryPathMap(baseProduct);
@@ -433,6 +591,184 @@ const parseProductFromAPI = (
   });
 };
 
+const loadProduct = (productKey, justLoadProduct) => {
+  const breadCrumb = breadCrumbFactory(this.store.getState());
+  const navigationTree = generalStoreView.getHeaderNavigationTree(this.store.getState());
+  const categoryId = breadCrumb[breadCrumb.length - 1].categoryId;
+  const excludeBage = categoryId
+    ? getNavAttributes(navigationTree, categoryId, 'excludeAttribute')
+    : '';
+  const isRadialInvEnabled = generalStoreView.getIsRadialInventoryEnabled(this.store.getState());
+  const location = routingInfoStoreView.getHistory(this.store.getState()).location;
+  const isBundleProduct = matchPath(location.pathname, { path: PAGES.productBundle.pathPattern });
+  return this.productsAbstractor
+    .getProductInfoById(
+      productKey,
+      this.getImgPath,
+      breadCrumb,
+      excludeBage,
+      isRadialInvEnabled,
+      isBundleProduct
+    )
+    .then(res => {
+      const currentColorProduct =
+        res.product.generalProductId !== 'gift_cards'
+          ? res.product.colorFitsSizesMap.filter(
+              item => item.colorDisplayId === res.product.generalProductId
+            )
+          : res.product.generalProductId;
+
+      if (!justLoadProduct) {
+        this.store.dispatch([
+          getSetCurrentProductActn(res.product),
+          currentColorProduct.length &&
+            getSetCurrentColorProductIdActn(currentColorProduct[0].colorProductId),
+          getSetCurrentProductBreadCrumbsActn(breadCrumb),
+        ]);
+      }
+      return res.product;
+    })
+    .catch(err => {
+      logErrorAndServerThrow(this.store, 'ProductsOperator.loadProduct', err);
+    });
+};
+
+const productDetailsInitStore = payload => {
+  // const match = matchPath(window.location.pathname, {path: PAGES.productDetails.pathPattern});
+  const match = {
+    params: {
+      productKey: 'Girls-Uniform-Short-Sleeve-Ruffle-Pique-Polo-2044391-10',
+    },
+  };
+  const id = decodeURI(match.params.productKey).split('-');
+  let productId =
+    id && id.length > 1 ? id[id.length - 2] + '_' + id[id.length - 1] : match.params.productKey;
+  if (
+    (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
+    (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
+  ) {
+    productId = 'gift';
+  }
+  loadProduct(productId);
+
+  // productsOperator.setActiveProductColor(productDetailsStoreView.getCurrentColorProductId(storeState));
+
+  // we need the additional product info to load after the session loaded
+  // (as we should only load for registered user)
+  // there's a caveat tho, on local this causes an additional loading phase
+  // custom user info should not be blocking
+  // Promise.all([sessionPromise, loadProductPromise]).then(() => {
+  //   const storeState = store.getState();
+  //   // this piece loads optional user-specific information about the product
+  //   // (for instance, whether it's favorited or not) so we're not blocking the load on them
+
+  //   // DT-32196 this piece of code to pass information to PDP page to get the wish list based on color.
+  //   productsOperator.loadProductUserCustomInfo(productDetailsStoreView.getProductAllColorIds(storeState))
+  //     .catch((err) => { logErrorAndServerThrow(store, 'loadProductUserCustomInfo', err); });
+  // });
+
+  return payload;
+};
+
+// const setActiveProductColor = (colorProductId) => {
+//   return Promise.resolve().then(() => {
+//     const currentProduct = productDetailsStoreView.getCurrentProduct(this.store.getState());
+//     const colorOptionsMapEntry = getMapSliceForColorProductId(currentProduct.colorFitsSizesMap, colorProductId);
+
+//     urbanAirShipBrowseEvent(currentProduct);
+//     if (!colorOptionsMapEntry) throw new Error(`ProductsOperator.setActiveProductColor: colorFitsSizesMap missing entry for colorProductId='${colorProductId}'`);
+
+//     this.loadProductRecommendations(RECOMMENDATIONS_SECTIONS.PDP, colorOptionsMapEntry.colorDisplayId, colorOptionsMapEntry.categoryEntity);
+//     this.loadOutfitRecommendations(colorOptionsMapEntry.colorDisplayId);
+
+//     return this.getUpdatedOptionsInventoryForColor(colorOptionsMapEntry)
+//       .then((newColorOptionsMap) => {
+//         this.store.dispatch([
+//           getSetCurrentColorProductIdActn(colorProductId),
+//           getSetProductOptionsForColorActn(colorProductId, newColorOptionsMap),
+//           getSetIsInventoryLoadedActn(true)
+//         ]);
+//       }).catch((err) => {
+//         logErrorAndServerThrow(this.store, 'ProductsOperator.setActiveProductColor', err);
+//       });
+//   });
+// }
+
+// const productDetailsInitStore = (payload) => {
+//   const match = matchPath(window.location.pathname, {path: PAGES.productDetails.pathPattern});
+//   const id = decodeURI(match.params.productKey).split('-');
+//   let productId = (id && id.length > 1) ? id[id.length - 2] + '_' + id[id.length - 1] : match.params.productKey;
+//   if ((id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) && (id.indexOf('Card') > -1 || id.indexOf('card') > -1)) {
+//     productId = 'gift';
+//   }
+//   loadProductPromise = productsOperator.loadProduct(productId);
+
+//   loadProductPromise.then(() => {
+//     const storeState = store.getState();
+
+//     /*
+//      * Removed setActiveProductColor from pendingPromises because we don't
+//      * need to wait for the inventory to load before rendering the page
+//      */
+//     productsOperator.setActiveProductColor(productDetailsStoreView.getCurrentColorProductId(storeState));
+//   });
+
+//   pendingPromises.push(sessionPromise.then(() => {
+//     // We need PDP to refresh on login because of BV integration. This is done inside the .then to prevent an infinite
+//     // loop of refreshes as the user always comes flagged as guest from the server
+//     observeStore(
+//       store,
+//       state => userStoreView.isGuest(state),
+//       (oldIsGuest, newIsGuest) => !newIsGuest && document.location.reload(true),
+//       true      // do not trigger now, as it will cause an infinite loop if the user is already logged in
+//     );
+//   }));
+
+//   // we need the additional product info to load after the session loaded
+//   // (as we should only load for registered user)
+//   // there's a caveat tho, on local this causes an additional loading phase
+//   // custom user info should not be blocking
+//   Promise.all([sessionPromise, loadProductPromise]).then(() => {
+//     const storeState = store.getState();
+//     // this piece loads optional user-specific information about the product
+//     // (for instance, whether it's favorited or not) so we're not blocking the load on them
+
+//     // DT-32196 this piece of code to pass information to PDP page to get the wish list based on color.
+//     productsOperator.loadProductUserCustomInfo(productDetailsStoreView.getProductAllColorIds(storeState))
+//       .catch((err) => { logErrorAndServerThrow(store, 'loadProductUserCustomInfo', err); });
+//   });
+
+//   return payload;
+// }
+
+// const loadProduct = (productKey, justLoadProduct) => {
+//   const breadCrumb = breadCrumbFactory(this.store.getState());
+//   const navigationTree = generalStoreView.getHeaderNavigationTree(this.store.getState());
+//   const categoryId = breadCrumb[breadCrumb.length - 1].categoryId;
+//   const excludeBage = categoryId ? getNavAttributes(navigationTree, categoryId, 'excludeAttribute') : '';
+//   const isRadialInvEnabled = generalStoreView.getIsRadialInventoryEnabled(this.store.getState());
+//   const location = routingInfoStoreView.getHistory(this.store.getState()).location;
+//   const isBundleProduct = matchPath(location.pathname, { path: PAGES.productBundle.pathPattern });
+//   return this.productsAbstractor.getProductInfoById(productKey, this.getImgPath, breadCrumb, excludeBage, isRadialInvEnabled, isBundleProduct).then((res) => {
+
+//     const currentColorProduct = res.product.generalProductId !== 'gift_cards'
+//       ? res.product.colorFitsSizesMap.filter(item => item.colorDisplayId === res.product.generalProductId)
+//       : res.product.generalProductId;
+
+//     if (!justLoadProduct) {
+//       this.store.dispatch([
+//         getSetCurrentProductActn(res.product),
+//         currentColorProduct.length && getSetCurrentColorProductIdActn(currentColorProduct[0].colorProductId),
+//         getSetCurrentProductBreadCrumbsActn(breadCrumb)
+
+//       ]);
+//     }
+//     return res.product;
+//   }).catch((err) => {
+//     logErrorAndServerThrow(this.store, 'ProductsOperator.loadProduct', err);
+//   });
+// }
+
 /**
  * @function getProductInfoById
  * @summary This will get product info and all color/sizes for that product
@@ -445,6 +781,8 @@ const getProductInfoById = (
   isRadialInvEnabled,
   isBundleProduct
 ) => {
+  productColorId = '2036238';
+  console.log('comes here ');
   const productId =
     productColorId.indexOf('-') > -1
       ? productColorId.split('-')[0]
@@ -490,28 +828,39 @@ const getProductInfoById = (
     payload.body.filter = `prodpartno:"${productId}"`;
   }
 
-  return apiHelper
-    .webServiceCall(payload)
+  return executeUnbxdAPICall(payload)
     .then(res => {
-      if (apiHelper.responseContainsErrors(res)) {
-        // Fix this - throw new ServiceResponseError(res);
-      }
-      return parseProductFromAPI(
-        res.body.response.products,
-        productColorId,
-        false,
-        getImgPath,
-        breadCrumbs,
-        excludeBage,
-        isBundleProduct
-      );
+      console.log(res);
     })
     .catch(err => {
-      if (err && ((err.status >= 400 && err.status <= 404) || err.status === 500) && isClient()) {
-        // TODO - fix this - window.location.href = getErrorPagePath(this.apiHelper._configOptions.siteId);
-      }
-      throw apiHelper.getFormattedError(err);
+      // if (err && ((err.status >= 400 && err.status <= 404) || err.status === 500) && isClient()) {
+      // TODO - handle it - window.location.href = getErrorPagePath(this.apiHelper._configOptions.siteId);
+      // }
+      console.log(err);
+      // TODO - handle it - throw this.apiHelper.getFormattedError(err);
     });
+  // return apiHelper
+  //   .webServiceCall(payload)
+  //   .then(res => {
+  //     if (apiHelper.responseContainsErrors(res)) {
+  //       // Fix this - throw new ServiceResponseError(res);
+  //     }
+  //     return parseProductFromAPI(
+  //       res.body.response.products,
+  //       productColorId,
+  //       false,
+  //       getImgPath,
+  //       breadCrumbs,
+  //       excludeBage,
+  //       isBundleProduct
+  //     );
+  //   })
+  //   .catch(err => {
+  //     // if (err && ((err.status >= 400 && err.status <= 404) || err.status === 500) && isClient()) {
+  //     // TODO - fix this - window.location.href = getErrorPagePath(this.apiHelper._configOptions.siteId);
+  //     // }
+  //     console.log(err); // Fix this - throw apiHelper.getFormattedError(err);
+  //   });
 };
 
 export default getProductInfoById;

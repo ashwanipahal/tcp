@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
+import { getProductDetails } from './ProductDetail.actions';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
-    const { getProducts } = this.props;
-    getProducts();
+    console.log('comes here 1 ');
+    const { getDetails } = this.props;
+    getDetails();
   }
 
   render() {
@@ -24,20 +26,20 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getProducts: payload => {
-      console.log('here', payload, dispatch);
+    getDetails: payload => {
+      console.log('comes here 2 ');
+      dispatch(getProductDetails(payload));
     },
   };
 }
 
 ProductListingContainer.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})),
-  getProducts: PropTypes.func,
+  getDetails: PropTypes.func.isRequired,
 };
 
 ProductListingContainer.defaultProps = {
   products: [],
-  getProducts: () => {},
 };
 
 export default connect(
