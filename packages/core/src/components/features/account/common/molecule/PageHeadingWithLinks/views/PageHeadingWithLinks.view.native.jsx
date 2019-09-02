@@ -18,7 +18,12 @@ export const PageHeadingWithLinks = ({
   return (
     <View>
       <StyledHeading>
-        <BodyCopy fontSize="fs16" fontWeight="extrabold" text={heading} />
+        <BodyCopy
+          fontSize="fs16"
+          fontWeight="extrabold"
+          dataLocator="Page_Heading_link_header"
+          text={heading}
+        />
       </StyledHeading>
       <LineComp marginBottom={28} borderWidth={1} borderColor="black" />
       {children}
