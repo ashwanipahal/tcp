@@ -25,6 +25,10 @@ const RoutesMap = [
     resolver: '/ProductListingPage',
   },
   {
+    path: '/place-card',
+    resolver: '/WebInstantCredit',
+  },
+  {
     path: '/place-card/application',
     resolver: '/ApplyCardPage',
   },
