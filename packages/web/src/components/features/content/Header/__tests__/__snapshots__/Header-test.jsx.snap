@@ -20,6 +20,10 @@ exports[`Header component renders correctly 1`] = `
           " {
     margin-bottom: 24px;
   }
+
+  .checkout-pages & {
+    display: none;
+  }
 ",
           ";
 ",
