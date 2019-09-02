@@ -1,15 +1,6 @@
 import processHelpers from './processHelpers';
 import { extractExtraImages } from './productListing.utils';
 
-const apiHelper = {
-  configOptions: {
-    isUSStore: true,
-    siteId: '/us',
-  },
-  responseContainsErrors: () => {
-    return false;
-  },
-};
 export function parseBoolean(bool) {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 }
@@ -367,7 +358,7 @@ export const parseProductInfo = (
     productInfo: {
       generalProductId: product.prodpartno,
       name: product.product_name,
-      pdpUrl: `/${apiHelper.configOptions.siteId}/p/${product.seo_token || uniqueId}`,
+      pdpUrl: `/p/${product.seo_token || uniqueId}`,
       shortDescription: product.product_short_description,
       longDescription: product.product_short_description,
       // Meeting with Varun for alignment of this value.

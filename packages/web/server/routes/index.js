@@ -34,6 +34,11 @@ const RoutesMap = [
     params: ['l2', 'l3'],
   },
   {
+    path: '/p/:pid?',
+    resolver: '/ProductDetail',
+    params: ['pid'],
+  },
+  {
     path: '/test',
     resolver: '/test',
     withoutCountryCode: true,
