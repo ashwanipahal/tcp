@@ -58,7 +58,7 @@ class CheckoutPage extends React.PureComponent {
 
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
             isMobile={isMobile}
@@ -76,7 +76,7 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
           />
         )}
-        {currentSection.toLowerCase() === 'shipping' && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
             isGuest={isGuest}
