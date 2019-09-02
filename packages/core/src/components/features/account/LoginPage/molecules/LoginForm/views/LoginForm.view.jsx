@@ -35,6 +35,7 @@ class LoginForm extends React.PureComponent<Props> {
       pristine,
       variation,
       handleContinueAsGuest,
+      tooltipContent,
     } = this.props;
     return (
       <div className={className}>
@@ -66,6 +67,7 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
+              tooltipContent={tooltipContent}
             />
             <BodyCopy component="div">
               <Field

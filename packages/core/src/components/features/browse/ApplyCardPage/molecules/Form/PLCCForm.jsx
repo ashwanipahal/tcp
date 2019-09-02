@@ -152,7 +152,6 @@ const validateMethod = createValidateMethod(
   getStandardConfig([
     'firstName',
     'lastName',
-    'phoneNumber',
     'addressLine1',
     'addressLine2',
     'city',
@@ -168,6 +167,8 @@ const validateMethod = createValidateMethod(
     'password',
     'confirmPassword',
     'iAgree',
+    'phoneNumberWithAlt',
+    'altPhoneNumber',
   ])
 );
 
