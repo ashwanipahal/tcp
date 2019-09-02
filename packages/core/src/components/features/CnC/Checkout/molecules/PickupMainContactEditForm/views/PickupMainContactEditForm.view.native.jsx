@@ -49,7 +49,7 @@ class PickupMainContactEditForm extends React.Component {
       <PickupEditHeader>
         <BodyCopy
           fontFamily="primary"
-          fontSize="fs26"
+          fontSize="fs24"
           fontWeight="regular"
           color="gray.900"
           text={labels.pickupContactText}

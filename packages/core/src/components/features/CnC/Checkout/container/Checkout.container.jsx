@@ -69,7 +69,6 @@ export class CheckoutContainer extends React.Component<Props> {
       routeToPickupPage,
       setCheckoutStage,
     } = this.props;
-    console.log('isGuest', isGuest, initialValues, isUsSite);
     return (
       <CheckoutPage
         initialValues={initialValues}
