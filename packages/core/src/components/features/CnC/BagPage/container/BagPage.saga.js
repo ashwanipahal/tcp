@@ -85,7 +85,7 @@ export function* getOrderDetailSaga() {
   }
 }
 
-export function* getCartDataSaga(payload) {
+export function* getCartDataSaga(payload = {}) {
   try {
     const {
       payload: {
@@ -200,6 +200,7 @@ export function* removeUnqualifiedItemsAndCheckout() {
     yield call(removeItem, unqualifiedItemsIds);
     yield call(getCartDataSaga);
   }
+  yield put(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
   yield call(checkoutCart, true);
 }
 
