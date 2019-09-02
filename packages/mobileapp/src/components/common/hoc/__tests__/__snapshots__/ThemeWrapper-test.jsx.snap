@@ -433,7 +433,6 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fs20": "20px",
           "fs22": "22px",
           "fs24": "24px",
-          "fs26": "26px",
           "fs28": "28px",
           "fs32": "32px",
           "fs36": "36px",
