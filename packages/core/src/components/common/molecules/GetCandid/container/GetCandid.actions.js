@@ -1,7 +1,8 @@
 import GET_CANDID_CONSTANTS from './GetCandid.constants';
 
-export const fetchCandidData = () => {
+export const fetchCandidData = payload => {
   return {
+    payload,
     type: GET_CANDID_CONSTANTS.FETCH_DATA,
   };
 };

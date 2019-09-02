@@ -1,16 +1,17 @@
 import { executeExternalAPICall } from '../../../handler';
-import { getAPIConfig } from '../../../../utils';
+import { API_METHODS } from '../../../api.constants';
 
 /**
  * Abstractor layer for loading Get Candid data
  */
 const Abstractor = {
-  getData: () => {
-    const { CANDID_API_KEY, CANDID_API_URL } = getAPIConfig();
-    console.log('CANDID_API_KEY', CANDID_API_KEY);
-    console.log('CANDID_API_URL', CANDID_API_URL);
+  getData: apiConfig => {
+    const { CANDID_API_KEY, CANDID_API_URL } = apiConfig;
     const payload = {
-      webService: `http://${CANDID_API_URL}/stream/page/`,
+      webService: {
+        method: API_METHODS.GET,
+        URI: `http://${CANDID_API_URL}/stream/page/?`
+      },
       body: {
         id: CANDID_API_KEY,
         tag: 'gallery',
@@ -22,11 +23,14 @@ const Abstractor = {
       },
     };
     return executeExternalAPICall(payload)
-      .then(Abstractor.processData)
-      .catch(Abstractor.handleError);
+    .then(res => {
+      const response = res.body;
+      if (!response) {
+        throw new Error('Respnse has errors!');
+      }
+      return response;
+    });
   },
-  processData: data => data,
-  // eslint-disable-next-line no-console
-  handleError: e => console.log(e),
 };
+
 export default Abstractor;

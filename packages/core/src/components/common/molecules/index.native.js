@@ -8,7 +8,6 @@ import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 import PromoBanner from './PromoBanner';
 import ModuleA from './ModuleA';
-import GetCandid from './GetCandid';
 
 export {
   Carousel,
@@ -21,5 +20,4 @@ export {
   ImageGrid,
   PromoBanner,
   ModuleA,
-  GetCandid,
 };

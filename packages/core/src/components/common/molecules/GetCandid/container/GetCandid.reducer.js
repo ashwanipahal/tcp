@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
-import GET_CANDID_CONSTANTS from './GetCandid.constants';
+import CONSTANTS from './GetCandid.constants';
 
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
@@ -10,8 +10,10 @@ const initialState = fromJS({
 
 const GetCandidReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_CANDID_CONSTANTS.SET_DATA:
-      return state.set('candidData', action.payload);
+    case CONSTANTS.SET_DATA:
+      return state
+        .set('candidData', action.payload)
+        .set(setCacheTTL(DEFAULT_REDUCER_KEY, CONSTANTS.GET_CANDID_DATA_TTL));
     default:
       if (state instanceof Object) {
         return fromJS(state);
