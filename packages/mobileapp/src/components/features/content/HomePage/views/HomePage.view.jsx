@@ -10,6 +10,7 @@ import {
   ModuleL,
   ModuleN,
   ModuleA,
+  ModuleJ,
 } from '@tcp/core/src/components/common/molecules';
 
 const modulesMap = {
@@ -65,6 +66,7 @@ class HomePageView extends React.Component {
     return (
       <ScrollView>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <ModuleJ />
         <Button
           fullWidth
           buttonVariation="variable-width"
