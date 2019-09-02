@@ -80,12 +80,14 @@ import {
   DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
   OPTIMIZELY_FEATURES_REDUCER,
+  TOAST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
+import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
@@ -111,6 +113,7 @@ export default combineReducers({
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
+  [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
