@@ -88,7 +88,8 @@ export const ProfileInfoActions = ({
             activityTitle={`+${percentageIncrement.percentageMailingAddress}%`}
             activityCompletionState={getMailingAddressState(mailingAddress, labels)}
             activityDescription={labels.lbl_profile_mailingAddressDescription}
-            redirectTo="/account"
+            redirectTo={internalEndpoints.mailingAddressPage.link}
+            redirectAsPath={internalEndpoints.mailingAddressPage.path}
             dataLocatorPrefix="email"
           />
         </Col>
@@ -111,8 +112,7 @@ export const ProfileInfoActions = ({
             activityTitle={`+${percentageIncrement.percentageFavStore}%`}
             activityCompletionState={getFavStoreState(defaultStore, labels)}
             activityDescription={labels.lbl_profile_favStoreDescription}
-            redirectTo={internalEndpoints.mailingAddressPage.link}
-            redirectAsPath={internalEndpoints.mailingAddressPage.path}
+            redirectTo="/account"
             dataLocatorPrefix="favStore"
           />
         </Col>
