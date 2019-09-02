@@ -11,7 +11,7 @@ const StyledImage = styled.View`
 `;
 
 const StyledText = styled.Text`
-  ${props => (props.variation === 'textbelow' ? 'width :90%' : '')};
+  width: 90%;
 `;
 
 const StyledErrorIcon = styled.View`
