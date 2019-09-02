@@ -4,10 +4,10 @@ import styled, { css } from 'styled-components/native';
 import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 
 const getShape = props => {
-  const { theme, noShape } = props;
+  const { theme, noCurve } = props;
   const { isGymboree } = theme;
 
-  if (isGymboree && !noShape) {
+  if (isGymboree && !noCurve) {
     return `border-radius: 25.5px;`;
   }
   return `
