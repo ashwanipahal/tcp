@@ -17,7 +17,7 @@ const NavigationBar = styled.View`
 const NavTitle = styled.Text``;
 
 const PickUpHeading = styled.Text`
-  font-size: ${props => props.theme.typography.fontSizes.fs20};
+  font-size: ${props => props.theme.typography.fontSizes.fs28};
   font-family: ${props => props.theme.typography.fonts.primary};
   color: ${props => props.theme.colors.TEXT.DARK};
 `;

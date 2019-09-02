@@ -169,7 +169,7 @@ class PickUpFormPart extends React.Component {
           />
 
           <div className="pickUpContact" dataLocator="pickup-contact">
-            <FormSection name="pickUpContact" className="pickUpContact">
+            <FormSection name="pickUpContact">
               {isGuest ? (
                 <ContactFormFields
                   className="pickup-contact-guest-form"
