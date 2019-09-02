@@ -30,19 +30,6 @@ class PickUpFormPart extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { initialValues } = this.props;
-    if (initialValues && initialValues.pickUpContact) {
-      const pickUpContact = {
-        firstName: initialValues.pickUpContact.firstName,
-        lastName: initialValues.pickUpContact.lastName,
-        phoneNumber: initialValues.pickUpContact.phoneNumber,
-        emailAddress: initialValues.pickUpContact.emailAddress,
-      };
-      this.setState({ pickUpContact });
-    }
-  }
-
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -130,6 +117,28 @@ class PickUpFormPart extends React.Component {
     onPickupSubmit(params);
   };
 
+  updatePickupForm() {
+    const { initialValues } = this.props;
+    const { pickUpContact } = this.state;
+
+    console.log('updatePickupForm', initialValues, pickUpContact);
+    if (
+      initialValues &&
+      initialValues.pickUpContact &&
+      (initialValues.pickUpContact.firstName !== pickUpContact.firstName ||
+        initialValues.pickUpContact.lastName !== pickUpContact.lastName ||
+        initialValues.pickUpContact.phoneNumber !== pickUpContact.phoneNumber)
+    ) {
+      const pickUpContactUpdate = {
+        firstName: initialValues.pickUpContact.firstName,
+        lastName: initialValues.pickUpContact.lastName,
+        phoneNumber: initialValues.pickUpContact.phoneNumber,
+        emailAddress: initialValues.pickUpContact.emailAddress,
+      };
+      this.setState({ pickUpContact: pickUpContactUpdate });
+    }
+  }
+
   render() {
     const {
       className,
@@ -149,6 +158,7 @@ class PickUpFormPart extends React.Component {
     } = this.props;
 
     const { isEditing, pickUpContact } = this.state;
+    this.updatePickupForm();
     return (
       <div className={className}>
         <div className="container">

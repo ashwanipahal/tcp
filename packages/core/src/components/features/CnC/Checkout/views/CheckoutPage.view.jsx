@@ -55,7 +55,7 @@ class CheckoutPage extends React.PureComponent {
         pickupInitialValues.pickUpContact &&
         pickupInitialValues.pickUpContact.firstName)
     );
-
+    console.log('pickupInitialValues', pickupInitialValues);
     return (
       <div>
         {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
