@@ -27,7 +27,7 @@ export class AddressFields extends React.PureComponent {
     formName: PropTypes.string.isRequired,
     showDefaultCheckbox: PropTypes.bool,
     showPhoneNumber: PropTypes.bool,
-    mailingAddress: PropTypes.bool,
+    showUserName: PropTypes.bool,
     formSection: PropTypes.string,
     className: PropTypes.string,
     variation: PropTypes.string,
@@ -215,12 +215,12 @@ export class AddressFields extends React.PureComponent {
       className,
       addressFormLabels,
       variation,
-      mailingAddress,
       formSection,
+      showUserName,
     } = this.props;
     return (
       <div className={className}>
-        {!mailingAddress && (
+        {showUserName && (
           <Row fullBleed>
             <Col
               ignoreGutter={{ small: true }}
@@ -332,7 +332,7 @@ AddressFields.defaultProps = {
   isMakeDefaultDisabled: false,
   showDefaultCheckbox: true,
   showPhoneNumber: true,
-  mailingAddress: false,
+  showUserName: true,
   formSection: '',
   className: '',
   variation: 'primary',

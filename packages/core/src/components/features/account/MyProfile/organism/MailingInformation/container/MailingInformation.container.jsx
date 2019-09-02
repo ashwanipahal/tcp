@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddEditCreditCardComponent from '../../../../AddEditCreditCard/views/AddEditCreditCard.view';
 import { addMailingAddress } from './MailingAddress.actions';
-import { getAddressResponse } from './MailingAddress.selectors';
+import getAddressResponse from './MailingAddress.selectors';
 import { verifyAddress } from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import {
   getAddressListState,
@@ -13,6 +13,7 @@ import { getProfileInfoTileData } from '../../../../User/container/User.selector
 import { routerPush, isCanada } from '../../../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import { getOnFileAddressKey } from '../../../../AddEditCreditCard/container/AddEditCreditCard.selectors';
+import internalEndpoints from '../../../../common/internalEndpoints';
 
 export class MailingInformationContainer extends PureComponent {
   constructor(props) {
@@ -108,8 +109,14 @@ export class MailingInformationContainer extends PureComponent {
         addressFormLabels={addressLabels.addressFormLabels}
         onFileAddressKey={addressKey}
         mailingAddress
+        pageBackLink={internalEndpoints.profilePage.link}
+        pageBackLinkPath={internalEndpoints.profilePage.path}
         errorMessage={errorMessage}
         addressList={addressList}
+        pageheading={labels.profile.lbl_profile_heading}
+        showCreditCardFields={false}
+        showUserName={false}
+        subHeading={labels.profile.lbl_profile_mailing_address}
       />
     );
   }
