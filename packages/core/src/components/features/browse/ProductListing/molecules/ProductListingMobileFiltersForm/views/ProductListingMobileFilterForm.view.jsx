@@ -194,6 +194,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     const filterKeys = Object.keys(filtersMaps);
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const accordionItems = [];
+    const { show } = this.state;
 
     filterKeys.map(key => {
       if (this.isUnbxdFacetKey(key)) {
@@ -216,7 +217,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         }}
         ignoreGutter={{ small: true, medium: true }}
       >
-        <AccordionList accordionItems={accordionItems} className={className}>
+        <AccordionList accordionItems={accordionItems} className={className} show={show}>
           {/* eslint-disable */}
           {filterKeys.map(key => {
             if (key.toLowerCase() === FACETS_FIELD_KEY.color) {

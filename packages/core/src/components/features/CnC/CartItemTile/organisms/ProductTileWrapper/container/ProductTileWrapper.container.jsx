@@ -11,7 +11,6 @@ import {
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { removeCartItem, updateCartItem } from '../../../container/CartItemTile.actions';
-
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export class ProductTileWrapperContainer extends React.Component {

@@ -8,14 +8,16 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-eNQAEJ",
+        "componentId": "sc-bRBYWo",
         "isStatic": false,
         "rules": Array [
           "
   ",
           "
   box-sizing: border-box;
-  height: calc(100% - 70px);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 69px);
 
   .viewBagAndProduct {
     height: calc(100% - 120px);
@@ -23,6 +25,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     border-top: 2px solid ",
           [Function],
           ";
+    flex-grow: 1;
   }
   .mainWrapper {
     text-align: center;
@@ -34,6 +37,11 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     padding-left: 0;
     margin: 0;
     width: 100%;
+  }
+
+  .minibag-viewbag {
+    border-bottom: solid 1px rgba(163, 162, 162, 0.5);
+    flex-grow: 0;
   }
 
   .deleteMsg {
@@ -64,7 +72,6 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     line-height: 28px;
   }
   .miniBagFooter {
-    height: 137px;
     text-align: center;
     background-color: ",
           [Function],
@@ -76,6 +83,8 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
           ";
     bottom: 0px;
     margin-bottom: 0px;
+    height: auto;
+    flex-grow: 0;
   }
   .subTotal {
     text-align: center;
@@ -117,7 +126,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "displayName": "Styled(MiniBagBody)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-eNQAEJ",
+      "styledComponentId": "sc-bRBYWo",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

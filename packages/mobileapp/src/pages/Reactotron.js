@@ -18,7 +18,8 @@ if (__DEV__) {
     .useReactNative()
     .connect();
 
-  console.log = ReactotronConfig.log;
+  // This will not block normal console.log. This can be use like console.tron.log('tcp')
+  console.tron = ReactotronConfig;
   ReactotronConfig.clear();
 }
 

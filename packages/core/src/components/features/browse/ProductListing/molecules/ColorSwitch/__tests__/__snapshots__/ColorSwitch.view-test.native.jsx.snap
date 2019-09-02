@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorSwitch component should renders ColorSwitch correctly 1`] = `
+<StyledNativeComponent
+  colorsMap={
+    Array [
+      Object {
+        "color": Object {
+          "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/3000785_10.jpg",
+          "name": "WHITE",
+        },
+        "colorProductId": "3000785_10",
+        "imageName": "3000785_10",
+        "miscInfo": Object {
+          "badge1": Object {},
+          "badge2": "Extended Sizes",
+          "badge3": "50% OFF",
+          "hasOnModelAltImages": false,
+          "isBopisEligible": true,
+          "isBossEligible": true,
+          "isClearance": "",
+          "keepAlive": false,
+          "listPrice": 16.95,
+          "offerPrice": 8.48,
+          "videoUrl": "",
+        },
+      },
+    ]
+  }
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "colorsMap": Array [],
+        "props": Object {},
+        "setSelectedColorIndex": [Function],
+      },
+      "attrs": Array [],
+      "displayName": "Styled(ColorSwitch)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  productInfo={
+    Object {
+      "name": "tcp",
+    }
+  }
+  props={Object {}}
+  setImageIndex={[Function]}
+  setSelectedColorIndex={[Function]}
+/>
+`;

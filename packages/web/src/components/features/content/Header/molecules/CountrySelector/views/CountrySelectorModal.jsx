@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { change, Field, reduxForm } from 'redux-form';
+import { change, Field, reduxForm, reset } from 'redux-form';
 import { BodyCopy, Button, RichText, SelectBox } from '@tcp/core/src/components/common/atoms';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -44,12 +44,28 @@ class CountrySelectorModal extends React.Component {
   };
 
   toggleDisable = () => {
-    const { updatedCountry, updatedCurrency } = this.props;
+    const {
+      updatedCountry,
+      updatedCurrency,
+      initialValues: { country, currency },
+    } = this.props;
+
     const { us, ca } = sites;
     return (
       (updatedCountry === us.countryCode && updatedCurrency === us.currencyCode) ||
-      (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode)
+      (updatedCountry === ca.countryCode && updatedCurrency === ca.currencyCode) ||
+      (!updatedCountry && country === us.countryCode && currency === us.currencyCode) ||
+      (!updatedCountry && country === ca.countryCode && currency === ca.currencyCode)
     );
+  };
+
+  closeModal = () => {
+    const { closeModal, dispatch, updateLanguage, updateCountry, updateCurrency } = this.props;
+    closeModal();
+    dispatch(reset('CountrySelectorForm'));
+    updateCountry('');
+    updateCurrency('');
+    updateLanguage('');
   };
 
   render() {
@@ -59,7 +75,6 @@ class CountrySelectorModal extends React.Component {
       currenciesMap,
       handleSubmit,
       isModalOpen,
-      closeModal,
       labels,
       languages,
       noteContent,
@@ -68,7 +83,7 @@ class CountrySelectorModal extends React.Component {
       <Modal
         fixedWidth
         isOpen={isModalOpen}
-        onRequestClose={() => closeModal()}
+        onRequestClose={this.closeModal}
         heading={labels && labels.lbl_global_country_selector_header}
         overlayClassName="TCPModal__Overlay"
         className={`${className} TCPModal__Content`}
@@ -77,6 +92,7 @@ class CountrySelectorModal extends React.Component {
         maxWidth="450px"
         minHeight="643px"
         inheritedStyles={modalStyles}
+        shouldCloseOnOverlayClick={false}
       >
         <div>
           <BodyCopy
@@ -187,6 +203,7 @@ CountrySelectorModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}).isRequired,
   languages: PropTypes.shape({}).isRequired,
   updateCountry: PropTypes.func.isRequired,
   updateLanguage: PropTypes.func.isRequired,

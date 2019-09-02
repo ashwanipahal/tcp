@@ -102,7 +102,6 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
             text={labels.lbl_overview_myPlaceRewardsCTA}
             buttonVariation="variable-width"
             fill="BLUE"
-            color="white"
             onPress={() => handleComponentChange('myPlaceRewardsMobile')}
           />
         </ButtonWrapperStyle>

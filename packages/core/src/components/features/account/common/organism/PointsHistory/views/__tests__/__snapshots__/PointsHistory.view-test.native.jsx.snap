@@ -60,6 +60,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
       customStyle={Object {}}
       fontSizeVariation="medium"
       locator=""
+      onPress={null}
       text="Points History"
       underline={true}
       visible={false}

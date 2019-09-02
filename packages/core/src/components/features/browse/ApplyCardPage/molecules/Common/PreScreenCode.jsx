@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { BodyCopy, Col, Row, TextBox } from '../../../../../common/atoms';
+import { Anchor, BodyCopy, Col, Row, TextBox } from '../../../../../common/atoms';
 import PreScreenCodeWrapper from './styles/PreScreenCode.style';
 
 export default class PrescreenCode extends React.PureComponent {
@@ -13,7 +13,9 @@ export default class PrescreenCode extends React.PureComponent {
     showPreScreenCode: false,
   };
 
-  handleClick = () => {
+  handleClick = e => {
+    /* eslint-disable no-unused-expressions */
+    e && e.preventDefault();
     this.setState({ showPreScreenCode: true });
   };
 
@@ -37,7 +39,6 @@ export default class PrescreenCode extends React.PureComponent {
                 component={TextBox}
                 dataLocator="Prescreen_codelink"
                 className="field"
-                enableSuccessCheck={false}
               />
             </Col>
           </Row>
@@ -45,13 +46,13 @@ export default class PrescreenCode extends React.PureComponent {
         <BodyCopy fontFamily="secondary">
           {labels.plcc_form_prescreencodetext}
           {!showPreScreenCode ? (
-            <BodyCopy component="a" onClick={this.handleClick} className="click-here-link">
+            <Anchor onClick={this.handleClick} className="click-here-link">
               {labels.plcc_form_clickHere}
-            </BodyCopy>
+            </Anchor>
           ) : (
-            <span role="button" className="prescreen-code">
+            <BodyCopy component="span" role="button" className="prescreen-code">
               {labels.plcc_form_enterHere}
-            </span>
+            </BodyCopy>
           )}
         </BodyCopy>
       </PreScreenCodeWrapper>

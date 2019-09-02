@@ -16,7 +16,7 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
   />
   <Styled(CustomButton)
     buttonVariation="variable-width"
-    color="white"
+    color=""
     customStyle={Object {}}
     disableButton={false}
     fill="BLUE"

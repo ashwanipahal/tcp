@@ -6,6 +6,9 @@ const data = {
   id: 'test',
   open: true,
   close: false,
+  accessibilityLabels: {
+    previousButton: 'Previous',
+  },
   hideL3Drawer: () => () => {},
   name: 'testing',
   links: [

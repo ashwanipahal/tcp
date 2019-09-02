@@ -7,11 +7,12 @@ const logoutButtonStyle = props => {
   flex-wrap: wrap;
   justify-content: space-between;
   font-size: ${props.theme.typography.fontSizes.fs12};
+  padding-top: ${props.theme.spacing.ELEM_SPACING.SM};
   `;
 };
 
 const LogoutWrapper = styled.View`
-  ${logoutButtonStyle}
+  ${logoutButtonStyle};
 `;
 
 const logggedInStyle = props => {
