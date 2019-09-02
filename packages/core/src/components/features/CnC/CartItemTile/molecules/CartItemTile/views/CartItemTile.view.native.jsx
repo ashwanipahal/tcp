@@ -116,8 +116,15 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex, openedTile, setSelectedProductTile } = this.props;
-
+    const {
+      productDetail,
+      labels,
+      itemIndex,
+      openedTile,
+      setSelectedProductTile,
+      swipedElement,
+      setSwipedElement,
+    } = this.props;
     return (
       <Swipeable
         onRef={ref => {
@@ -126,6 +133,12 @@ class ProductInformation extends React.Component {
         rightButtons={[this.rightButton()]}
         rightButtonWidth={200}
         leftButtons={[null]}
+        onSwipeComplete={(event, gestureState, swipe) => {
+          if (swipedElement && swipedElement !== swipe) {
+            swipedElement.recenter();
+          }
+          setSwipedElement(swipe);
+        }}
       >
         <MainWrapper>
           <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
@@ -298,6 +311,10 @@ class ProductInformation extends React.Component {
               </ProductSubDetails>
               <EditButton
                 onPress={() => {
+                  if (swipedElement && swipedElement !== this.swipeable) {
+                    swipedElement.recenter();
+                  }
+                  setSwipedElement(this.swipeable);
                   return this.swipeable.toggle('right');
                 }}
               >
@@ -325,11 +342,14 @@ ProductInformation.propTypes = {
   itemIndex: PropTypes.number,
   openedTile: PropTypes.number,
   setSelectedProductTile: PropTypes.func.isRequired,
+  swipedElement: PropTypes.shape({}),
+  setSwipedElement: PropTypes.func.isRequired,
 };
 ProductInformation.defaultProps = {
   productDetail: {},
   labels: {},
   itemIndex: 0,
   openedTile: 0,
+  swipedElement: null,
 };
 export default ProductInformation;
