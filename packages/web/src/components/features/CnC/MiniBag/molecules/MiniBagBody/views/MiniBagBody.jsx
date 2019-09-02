@@ -43,11 +43,11 @@ class MiniBagBody extends React.PureComponent {
                     underline
                     anchorVariation="primary"
                     to="/bag"
+                    as="/Bag"
                     dataLocator="addressbook-makedefault"
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
-                  {` `}
                   {/* <Anchor
                   fontSizeVariation="medium"
                   underline
