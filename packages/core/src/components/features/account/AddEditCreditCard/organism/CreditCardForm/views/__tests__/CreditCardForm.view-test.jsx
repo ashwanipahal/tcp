@@ -46,7 +46,7 @@ describe('CreditCardForm component', () => {
       ]),
       onFileAddresskey: '12345',
       initialValues: {},
-      mailingAddress: true,
+      showCreditCardFields: false,
     };
     const component = shallow(<CreditCardForm {...props} />);
     expect(component.find(CreditCardFields)).toHaveLength(0);

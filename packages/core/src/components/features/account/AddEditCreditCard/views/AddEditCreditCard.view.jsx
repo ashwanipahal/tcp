@@ -13,20 +13,30 @@ export const AddEditCreditCard = ({
   isEdit,
   errorMessage,
   addressFormLabels,
-  mailingAddress,
   submitAddressFormAction,
   backToAddressBookClick,
   verifyAddressAction,
   initialValues,
   onFileAddresskey,
+  pageBackLink,
+  pageBackPath,
+  pageheading,
+  mailingAddress,
+  showUserName,
+  showCreditCardFields,
   ...otherProps
 }) => {
-  const backLink = mailingAddress
-    ? internalEndpoints.profilePage.link
-    : internalEndpoints.paymentPage.link;
-  const backLinkPath = mailingAddress
-    ? internalEndpoints.profilePage.path
-    : internalEndpoints.paymentPage.path;
+  const backLink = pageBackLink || internalEndpoints.paymentPage.link;
+  const backLinkPath = pageBackPath || internalEndpoints.paymentPage.path;
+  const pageHeading = heading => {
+    let headingStr = isEdit
+      ? labels.paymentGC.lbl_payment_editCCHeading
+      : labels.paymentGC.lbl_payment_addCCHeading;
+    if (heading) {
+      headingStr = heading;
+    }
+    return headingStr;
+  };
   return (
     <React.Fragment>
       <BodyCopy className="elem-mb-LRG">
@@ -41,17 +51,10 @@ export const AddEditCreditCard = ({
           {labels.common.lbl_common_backLink}
         </Anchor>
       </BodyCopy>
-      {mailingAddress && <FormPageHeading heading={labels.profile.lbl_profile_heading} />}
-      {!mailingAddress && (
-        <FormPageHeading
-          heading={
-            isEdit
-              ? labels.paymentGC.lbl_payment_editCCHeading
-              : labels.paymentGC.lbl_payment_addCCHeading
-          }
-          data-locator="payment-addcreditordebitcardheader"
-        />
-      )}
+      <FormPageHeading
+        heading={pageHeading(pageheading)}
+        data-locator="payment-addcreditordebitcardheader"
+      />
       {errorMessage && (
         <Notification
           status="error"
@@ -59,8 +62,7 @@ export const AddEditCreditCard = ({
           message={errorMessage}
         />
       )}
-
-      {mailingAddress && (
+      {!showCreditCardFields && (
         <div>
           <AddressVerification
             onSuccess={submitAddressFormAction}
@@ -78,13 +80,14 @@ export const AddEditCreditCard = ({
             initialValues={initialValues}
             isEdit={isEdit}
             backToPaymentClick={backToAddressBookClick}
-            mailingAddress={mailingAddress}
+            showUserName={showUserName}
+            showCreditCardFields={showCreditCardFields}
             addressFormLabels={addressFormLabels}
             {...otherProps}
           />
         </div>
       )}
-      {!mailingAddress && (
+      {showCreditCardFields && (
         <CreditCardForm
           labels={labels}
           isEdit={isEdit}
@@ -103,22 +106,32 @@ AddEditCreditCard.propTypes = {
   errorMessage: PropTypes.string,
   addressFormLabels: PropTypes.shape({}).isRequired,
   mailingAddress: PropTypes.bool,
+  showCreditCardFields: PropTypes.bool,
+  showUserName: PropTypes.bool,
   submitAddressFormAction: PropTypes.func,
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: PropTypes.shape({}),
   onFileAddresskey: PropTypes.string,
+  pageBackLink: PropTypes.string,
+  pageBackPath: PropTypes.string,
+  pageheading: PropTypes.string,
 };
 
 AddEditCreditCard.defaultProps = {
   errorMessage: null,
   isEdit: false,
-  mailingAddress: false,
+  showCreditCardFields: true,
+  showUserName: true,
   submitAddressFormAction: PropTypes.func,
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: {},
   onFileAddresskey: '',
+  mailingAddress: false,
+  pageBackLink: null,
+  pageBackPath: null,
+  pageheading: null,
 };
 
 export default AddEditCreditCard;

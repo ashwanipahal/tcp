@@ -49,6 +49,7 @@ const formPayload = {
 };
 const labels = {
   addressFormLabels: {},
+  profile: {},
 };
 
 const props = {
@@ -68,10 +69,14 @@ const props = {
     phoneNumber: '7448946033',
   },
   mailingAddress: true,
-  labels: {},
   initialValues: {},
   onFileAddressKey: '',
   addressFormLabels: {},
+  showCreditCardFields: false,
+  showUserName: false,
+  labels: {
+    profile: {},
+  },
 };
 
 describe('MailingAddressContainer', () => {
@@ -109,7 +114,7 @@ describe('MailingAddressContainer', () => {
       instance.verifyAddress(formPayload);
       expect(verifyAddressSpy).toBeCalled();
     });
-    it('#submitAddressForm should call submitNewAddressFormAction prop in add new address mode', () => {
+    it('#submitAddressForm should call submitNewAddressFormAction prop in mailing address mode', () => {
       instance.submitAddressForm(address);
       expect(submitNewAddressFormActionSpy).toBeCalled();
     });

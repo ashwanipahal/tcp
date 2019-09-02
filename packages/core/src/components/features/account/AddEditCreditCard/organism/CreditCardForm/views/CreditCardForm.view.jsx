@@ -31,6 +31,9 @@ export class CreditCardForm extends React.PureComponent {
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
     addressFormLabels: PropTypes.shape({}).isRequired,
+    showCreditCardFields: PropTypes.bool,
+    showUserName: PropTypes.bool,
+    subHeading: PropTypes.string,
   };
 
   static defaultProps = {
@@ -38,6 +41,9 @@ export class CreditCardForm extends React.PureComponent {
     onFileAddressKey: '',
     isEdit: false,
     mailingAddress: false,
+    showCreditCardFields: true,
+    showUserName: true,
+    subHeading: null,
   };
 
   getAddressOptions = () => {
@@ -74,12 +80,6 @@ export class CreditCardForm extends React.PureComponent {
     return addressList.find(add => add.addressId === onFileAddresskey);
   };
 
-  getSubHeading = (mailingAddress, labels) => {
-    return mailingAddress
-      ? labels.profile.lbl_profile_mailing_address
-      : labels.paymentGC.lbl_payment_billingAddress;
-  };
-
   render() {
     const {
       className,
@@ -96,20 +96,30 @@ export class CreditCardForm extends React.PureComponent {
       initialValues,
       addressFormLabels,
       mailingAddress,
+      showUserName,
+      showCreditCardFields,
+      subHeading,
     } = this.props;
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
-    const subHeading = this.getSubHeading(mailingAddress, labels);
+
+    const getSubHeading = pagesubHeading => {
+      let subheading = labels.paymentGC.lbl_payment_billingAddress;
+      if (pagesubHeading) {
+        subheading = pagesubHeading;
+      }
+      return subheading;
+    };
 
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
-        {!mailingAddress && <CreditCardFields {...this.props} />}
+        {showCreditCardFields && <CreditCardFields {...this.props} />}
         <Heading
           component="h3"
           variant="listMenu"
           className="addressDropdownHeading"
           dataLocator="payment-bilingaddresslabel"
         >
-          {subHeading}
+          {getSubHeading(subHeading)}
         </Heading>
         {addressList && addressList.size > 0 && (
           <Row fullBleed className="elem-mb-XL">
@@ -161,7 +171,7 @@ export class CreditCardForm extends React.PureComponent {
                 formSection="address"
                 dispatch={dispatch}
                 addressFormLabels={addressFormLabels}
-                mailingAddress={mailingAddress}
+                showUserName={showUserName}
               />
             </FormSection>
           </div>
