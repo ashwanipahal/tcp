@@ -279,12 +279,8 @@ export default css`
     margin: 0px;
     position: absolute;
     bottom: 17px;
-
-    .save-for-later-label {
-      right: 73px;
-      position: absolute;
-      bottom: 0px;
-    }
+    right: 2px;
+    width: auto;
   }
 
   .tile-header {
