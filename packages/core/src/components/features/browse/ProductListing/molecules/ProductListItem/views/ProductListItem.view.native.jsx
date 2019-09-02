@@ -22,6 +22,7 @@ import {
   PromotionalMessageContainer,
   PromotionalMessage,
   AddToBagContainer,
+  PromotionalMessagePostfix,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -43,7 +44,8 @@ const getFormatedText = text => {
   return text
     .replace(/<[^>]*>/g, '')
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()
+    .split('on');
 };
 
 const ListItem = props => {
@@ -196,7 +198,10 @@ const RenderPromotionalMessage = ({ text, isPlcc }) => {
         accessibilityLabel={text}
         numberOfLines={2}
       >
-        {getFormatedText(text)}
+        {text && getFormatedText(text)[0]}
+        {text && (
+          <PromotionalMessagePostfix>{` on${getFormatedText(text)[1]}`}</PromotionalMessagePostfix>
+        )}
       </PromotionalMessage>
     </PromotionalMessageContainer>
   );

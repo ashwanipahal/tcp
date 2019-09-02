@@ -99,6 +99,10 @@ const PromotionalMessage = styled.Text`
   line-height: 11;
 `;
 
+const PromotionalMessagePostfix = styled.Text`
+  color: ${props => props.theme.colorPalette.gray[900]};
+`;
+
 const AddToBagContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
@@ -123,4 +127,5 @@ export {
   PromotionalMessageContainer,
   PromotionalMessage,
   AddToBagContainer,
+  PromotionalMessagePostfix,
 };
