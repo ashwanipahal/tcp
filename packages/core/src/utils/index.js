@@ -23,6 +23,8 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  getAsPathWithSlug,
+  getMappedPageHref,
 } from './utils.web';
 
 export {
@@ -42,4 +44,5 @@ export {
   getAddressFromPlace,
   formatAddress,
   calculateAge,
+  getLabelValue,
 } from './utils';

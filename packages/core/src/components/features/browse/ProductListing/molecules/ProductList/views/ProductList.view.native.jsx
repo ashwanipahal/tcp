@@ -31,7 +31,7 @@ class ProductList extends React.PureComponent {
    * @desc This is renderer method of the product tile list
    */
   renderItemList = itemData => {
-    const { isMatchingFamily, currencyExchange, isPlcc } = this.props;
+    const { isMatchingFamily, currencyExchange, currencySymbol, isPlcc } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
@@ -64,6 +64,7 @@ class ProductList extends React.PureComponent {
         onAddToBag={this.onAddToBag}
         onFavorite={this.onFavorite}
         currencyExchange={currencyExchange}
+        currencySymbol={currencySymbol}
       />
     );
   };
@@ -99,7 +100,7 @@ ProductList.propTypes = {
   /** the generalProductId of the product (if any) requesting quickView to show */
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
-  // currencySymbol: ProductsGridItem.propTypes.currencySymbol,
+  currencySymbol: PropTypes.string,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
   /** callback for clicks on wishlist CTAs. Accepts: colorProductId. */
   onAddItemToFavorites: PropTypes.func,
@@ -147,6 +148,7 @@ ProductList.defaultProps = {
   },
   isMatchingFamily: true,
   isPlcc: false,
+  currencySymbol: '$',
 };
 
 export default withStyles(ProductList, styles);

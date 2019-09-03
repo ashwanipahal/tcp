@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
-  max-width: 164;
+  width: 50%;
   height: 428;
-  margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  background: white;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const FavoriteIconContainer = styled.View`

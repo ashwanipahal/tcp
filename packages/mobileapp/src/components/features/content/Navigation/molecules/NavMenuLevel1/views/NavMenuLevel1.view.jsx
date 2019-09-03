@@ -8,6 +8,7 @@ import {
   ContainerList,
   L1TouchableOpacityNoImage,
 } from '../NavMenuLevel1.style';
+import InitialPropsHOC from '../../../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 const imageWidth = getScreenWidth() / 2;
 const keyExtractor = (_, index) => index.toString();
@@ -19,9 +20,13 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  */
 class NavMenuLevel1 extends React.PureComponent {
   componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = () => {
     const { loadNavigationData } = this.props;
     loadNavigationData();
-  }
+  };
 
   /**
    * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
@@ -168,4 +173,5 @@ NavMenuLevel1.defaultProps = {
   accessibilityLabels: {},
 };
 
-export default NavMenuLevel1;
+export { NavMenuLevel1 as NavMenuLevel1View };
+export default InitialPropsHOC(NavMenuLevel1);

@@ -21,6 +21,10 @@ const styles = css`
     box-sizing: border-box;
   }
 
+  .couponDetailsFont {
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+  }
+
   .top-content {
     display: flex;
     flex-direction: column;

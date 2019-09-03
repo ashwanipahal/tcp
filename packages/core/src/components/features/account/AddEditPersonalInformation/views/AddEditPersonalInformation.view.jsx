@@ -14,6 +14,7 @@ export const AddEditPersonalInformation = ({
   birthYearOptionsMap,
   initialValues,
   isEmployee,
+  formErrorMessage,
 }) => {
   return (
     <React.Fragment>
@@ -43,6 +44,7 @@ export const AddEditPersonalInformation = ({
         birthYearOptionsMap={birthYearOptionsMap}
         initialValues={initialValues}
         isEmployee={isEmployee}
+        formErrorMessage={formErrorMessage}
       />
     </React.Fragment>
   );
@@ -60,6 +62,7 @@ AddEditPersonalInformation.propTypes = {
   birthYearOptionsMap: PropTypes.shape([]).isRequired,
   initialValues: PropTypes.shape({}),
   isEmployee: PropTypes.string.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 AddEditPersonalInformation.defaultProps = {

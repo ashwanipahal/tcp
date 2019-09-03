@@ -348,6 +348,12 @@ exports[`LoginForm component should renders correctly 1`] = `
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
   & .disabled {
     opacity: ",
                   [Function],
@@ -797,6 +803,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
 
   & .CheckBox__text {
     width: calc(100% - 25px);
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {

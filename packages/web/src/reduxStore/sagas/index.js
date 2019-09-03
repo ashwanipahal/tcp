@@ -22,6 +22,7 @@ import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -44,6 +45,7 @@ import CountrySelectorSaga from '../../components/features/content/Header/molecu
 
 export default function* rootSaga() {
   yield all([
+    LabelsSaga(),
     BootstrapSaga(),
     HomePageSaga(),
     ProductListingPageSaga(),

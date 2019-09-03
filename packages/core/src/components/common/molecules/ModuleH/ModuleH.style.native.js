@@ -6,16 +6,9 @@ export const Wrapper = styled.View`
 
 export const HeaderWrapper = styled.View`
   position: absolute;
-  top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   z-index: ${props => props.theme.zindex.zOverlay};
-`;
-
-export const Header = styled.Text`
-  color: ${props => props.theme.colors.WHITE};
-  font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
-  font-weight: bold;
-  line-height: 34px;
 `;
 
 export const LinksWrapper = styled.View`
@@ -26,7 +19,6 @@ export const LinksWrapper = styled.View`
 `;
 
 export default {
-  Header,
   HeaderWrapper,
   LinksWrapper,
   Wrapper,

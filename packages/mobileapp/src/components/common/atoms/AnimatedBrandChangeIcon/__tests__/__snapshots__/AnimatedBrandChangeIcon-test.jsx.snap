@@ -3,62 +3,89 @@
 exports[`Animated Brand Change Icon Native should render correctly 1`] = `
 <Styled(TouchableOpacity)
   accessibilityComponentType="none"
+  accessibilityLabel="switchBrand"
   accessibilityTraits="none"
   onPress={[Function]}
 >
-  <TouchableOpacity
-    accessibilityComponentType="none"
-    accessibilityTraits="none"
-    activeOpacity={0.2}
-    onPress={[Function]}
+  <AnimatedComponent
     style={
-      Object {
-        "bottom": 90,
-        "right": 20,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "bottom": 80,
+          "height": 90,
+          "justifyContent": "center",
+          "position": "absolute",
+          "width": 90,
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+            Object {
+              "translateY": 0,
+            },
+          ],
+        },
+      ]
     }
   >
-    <Styled(ImageComp)
-      source={
-        Object {
-          "testUri": "../../../src/brand_config/main/config/tcp.png",
+    <Styled(TouchableOpacity)
+      accessibilityComponentType="none"
+      accessibilityLabel="tcpBrand"
+      accessibilityTraits="none"
+      name="tcpBrand"
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/tcp/tcpPeekABoo.png",
+          }
         }
-      }
-      style={
-        Object {
-          "borderRadius": 35,
-          "height": 66,
-          "width": 66,
-        }
-      }
-    />
-  </TouchableOpacity>
-  <TouchableOpacity
-    accessibilityComponentType="none"
-    accessibilityTraits="none"
-    activeOpacity={0.2}
-    onPress={[Function]}
+      />
+    </Styled(TouchableOpacity)>
+  </AnimatedComponent>
+  <AnimatedComponent
     style={
-      Object {
-        "bottom": 90,
-        "left": 20,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "bottom": 80,
+          "height": 90,
+          "justifyContent": "center",
+          "position": "absolute",
+          "width": 90,
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+            Object {
+              "translateY": 0,
+            },
+          ],
+        },
+      ]
     }
   >
-    <Styled(ImageComp)
-      source={
-        Object {
-          "testUri": "../../../src/brand_config/gymboree/config/gymboree.png",
+    <Styled(TouchableOpacity)
+      accessibilityComponentType="none"
+      accessibilityLabel="gymboreeBrand"
+      accessibilityTraits="none"
+      name="gymboreeBrand"
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
+          }
         }
-      }
-      style={
-        Object {
-          "borderRadius": 35,
-          "height": 66,
-          "width": 66,
-        }
-      }
-    />
-  </TouchableOpacity>
+      />
+    </Styled(TouchableOpacity)>
+  </AnimatedComponent>
 </Styled(TouchableOpacity)>
 `;

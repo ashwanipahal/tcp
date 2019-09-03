@@ -234,6 +234,34 @@ export const calculateAge = (month, year) => {
   return age;
 };
 
+/**
+ *
+ * @param {object} labelState object in which key needs to be searched
+ * @param {string} labelKey string whose value
+ * @param {string} subCategory label subCategory
+ * @param {string} category label category
+ * This function will return label value if labelKey is present in the object
+ * or labelKey itself if its not present in the labelState.
+ */
+export const getLabelValue = (labelState, labelKey, subCategory, category) => {
+  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
+    return ''; // for incorrect params return empty string
+  }
+  let labelValue = '';
+  // if category is passed, then subCategory should also be present for ex. getLabelValue(labels, 'lbl_success_message', 'payment', 'account'), where labels = [reduxStore].Labels
+  if (category) {
+    labelValue = labelState[category][subCategory][labelKey];
+  } else if (subCategory) {
+    // in case label object contain category, then only subCategory is needed for ex. get getLabelValue(labels, 'lbl_success_message', 'payment') where labels = [reduxStore].Labels.account
+    labelValue = labelState[subCategory][labelKey];
+  } else {
+    // in case label object contain category & subCategory both, for ex. get getLabelValue(labels, 'lbl_success_message') where labels = [reduxStore].Labels.account.payment
+    labelValue = labelState[labelKey];
+  }
+
+  return typeof labelValue === 'string' ? labelValue : labelKey;
+};
+
 export default {
   getIconPath,
   getFlagIconPath,
@@ -249,6 +277,7 @@ export default {
   isTCP,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
   getCacheKeyForRedis,
   calculateAge,
 };

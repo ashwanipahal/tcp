@@ -9,7 +9,6 @@ import {
   Header,
   FlexRow,
   ApplyButton,
-  ApplyButtonText,
   FormContainer,
   CouponFormContainer,
   NeedHelpText,
@@ -71,9 +70,8 @@ export class CouponForm extends React.PureComponent<Props, State> {
               external
               onPress={handleSubmit}
               buttonVariation="variable-width"
-              customStyle={ApplyButton}
+              style={ApplyButton}
               text={labels.submitButtonLabel}
-              style={ApplyButtonText}
               disabled={isFetching}
               data-locator={dataLocators.submitButton}
             />
