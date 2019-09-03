@@ -112,6 +112,8 @@ export const APPLY_PLCC_ACTION_PATTERN = '@@ApplyCardPage-';
 // optimizely features reducer
 export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 
+export const MAILING_ADDRESS_REDUCER_KEY = 'AddMailingAddressReducer';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
