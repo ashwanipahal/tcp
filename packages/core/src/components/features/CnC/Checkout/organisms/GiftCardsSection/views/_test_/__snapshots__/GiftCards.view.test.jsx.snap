@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftCardsVanilla should render gift card tile 1`] = `
+<Styled(Grid)
+  className="test"
+>
+  <Styled(Row)
+    className="gift-section-container elem-mb-LRG"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="primary"
+        fontSize="fs24"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        undefined undefined
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] = `
+<Styled(Grid)
+  className="test"
+>
+  <Styled(Row)
+    className="gift-section-container elem-mb-LRG"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="primary"
+        fontSize="fs24"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        undefined undefined
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`] = `
+<Styled(Grid)
+  className="test"
+>
+  <Styled(Row)
+    className="gift-section-container elem-mb-LRG"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="primary"
+        fontSize="fs24"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        undefined undefined
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-XS elem-mt-XXL"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
