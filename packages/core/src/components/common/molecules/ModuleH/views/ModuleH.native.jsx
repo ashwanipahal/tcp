@@ -34,7 +34,6 @@ const MODULE_DIRECTION = true;
 const linkStyle = {
   color: colors.white,
   fontSize: fonts.fontSize.body.bodytext.copy6,
-  lineHeight: 20,
   marginTop: 28,
 };
 
@@ -120,7 +119,6 @@ class ModuleH extends React.PureComponent<Props, State> {
 
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
-    const headingStyle = { height: 38 };
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -137,7 +135,6 @@ class ModuleH extends React.PureComponent<Props, State> {
                     fontWeight="black"
                     text={textLine.text}
                     testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                    style={headingStyle}
                   />
                 </Anchor>
               ) : (
@@ -150,7 +147,6 @@ class ModuleH extends React.PureComponent<Props, State> {
                   fontWeight="black"
                   text={textLine.text}
                   testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                  style={headingStyle}
                 />
               );
             })}
