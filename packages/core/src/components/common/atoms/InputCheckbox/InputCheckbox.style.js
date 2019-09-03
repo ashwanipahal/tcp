@@ -52,7 +52,7 @@ const styles = css`
   }
 
   & .CheckBox__text a {
-    color: black;
+    color: ${props => props.theme.colorPalette.black};
   }
 
   & .disabled {
