@@ -13,6 +13,7 @@ import {
 import MyRewards from '../views';
 
 export class MyRewardsContainer extends PureComponent {
+
   static propTypes = {
     fetchCoupons: PropTypes.func.isRequired,
     view: PropTypes.string,
