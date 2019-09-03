@@ -21,6 +21,7 @@ class PickUpFormPart extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
+      dataUpdated: false,
       pickUpContact: {
         firstName: '',
         lastName: '',
@@ -90,6 +91,9 @@ class PickUpFormPart extends React.Component {
 
   pickupEditSubmit = value => {
     const { pickUpContact } = value;
+    this.setState({
+      dataUpdated: true,
+    });
     this.handleEditModeChange(false, pickUpContact);
   };
 
@@ -118,23 +122,22 @@ class PickUpFormPart extends React.Component {
   };
 
   updatePickupForm() {
-    const { initialValues } = this.props;
+    const { pickupInitialValues } = this.props;
     const { pickUpContact } = this.state;
-
-    console.log('updatePickupForm', initialValues, pickUpContact);
     if (
-      initialValues &&
-      initialValues.pickUpContact &&
-      (initialValues.pickUpContact.firstName !== pickUpContact.firstName ||
-        initialValues.pickUpContact.lastName !== pickUpContact.lastName ||
-        initialValues.pickUpContact.phoneNumber !== pickUpContact.phoneNumber)
+      pickupInitialValues &&
+      pickupInitialValues.pickUpContact &&
+      (pickupInitialValues.pickUpContact.firstName !== pickUpContact.firstName ||
+        pickupInitialValues.pickUpContact.lastName !== pickUpContact.lastName ||
+        pickupInitialValues.pickUpContact.phoneNumber !== pickUpContact.phoneNumber)
     ) {
       const pickUpContactUpdate = {
-        firstName: initialValues.pickUpContact.firstName,
-        lastName: initialValues.pickUpContact.lastName,
-        phoneNumber: initialValues.pickUpContact.phoneNumber,
-        emailAddress: initialValues.pickUpContact.emailAddress,
+        firstName: pickupInitialValues.pickUpContact.firstName,
+        lastName: pickupInitialValues.pickUpContact.lastName,
+        phoneNumber: pickupInitialValues.pickUpContact.phoneNumber,
+        emailAddress: pickupInitialValues.pickUpContact.emailAddress,
       };
+
       this.setState({ pickUpContact: pickUpContactUpdate });
     }
   }
@@ -156,9 +159,11 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
       orderHasShipping,
     } = this.props;
+    const { isEditing, pickUpContact, dataUpdated } = this.state;
+    if (!dataUpdated) {
+      this.updatePickupForm();
+    }
 
-    const { isEditing, pickUpContact } = this.state;
-    this.updatePickupForm();
     return (
       <div className={className}>
         <div className="container">
@@ -305,7 +310,7 @@ PickUpFormPart.propTypes = {
   currentPhoneNumber: PropTypes.string,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
-  initialValues: PropTypes.shape({}).isRequired,
+  pickupInitialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
