@@ -17,10 +17,11 @@ import { loadHeaderData } from '../../components/common/organisms/Header/contain
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS from '../constants';
+import { isMobileApp } from '../../utils';
+
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.3 - Uncomment these references
 // import GLOBAL_CONSTANTS, { LABELS } from '../constants';
 // import { loadLayoutData, loadLabelsData, setLabelsData, loadModulesData, setAPIConfig } from '../actions';
-import { isMobileApp } from '../../utils/utils.app';
 
 function* bootstrap(params) {
   const {

@@ -29,7 +29,7 @@ const mapStateToProps = state => {
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
       referAFriend: referAFriendButtonLabels,
-    },
+    } = {},
   } = state.Labels;
   const { EmailSignUp = {}, SmsSignUp = {} } = state;
 

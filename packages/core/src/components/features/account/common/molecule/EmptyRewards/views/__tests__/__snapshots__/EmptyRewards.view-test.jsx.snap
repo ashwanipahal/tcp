@@ -56,6 +56,7 @@ exports[`EmptyRewards should render correctly 1`] = `
       color="white"
       data-locator="my-rewards-shop-now-btn"
       fill="BLUE"
+      onClick={[Function]}
     >
       shop now
     </Styled(Button)>

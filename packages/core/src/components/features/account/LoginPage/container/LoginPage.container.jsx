@@ -84,6 +84,8 @@ class LoginPageContainer extends React.PureComponent {
       onRequestClose,
       variation,
       handleContinueAsGuest,
+      showCheckoutModal,
+      showLogin,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -111,6 +113,8 @@ class LoginPageContainer extends React.PureComponent {
         variation={variation}
         handleContinueAsGuest={handleContinueAsGuest}
         loginError={loginError}
+        showCheckoutModal={showCheckoutModal}
+        showLogin={showLogin}
       />
     );
   }
@@ -140,6 +144,8 @@ LoginPageContainer.propTypes = {
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func,
   toastMessage: PropTypes.string.isRequired,
+  showCheckoutModal: PropTypes.func.isRequired,
+  showLogin: PropTypes.func.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
