@@ -22,6 +22,7 @@ import {
   PromotionalMessageContainer,
   PromotionalMessage,
   AddToBagContainer,
+  PromotionalMessagePostfix,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -39,6 +40,15 @@ const onAddToBagHandler = (onAddToBag, data) => {
   }
 };
 
+// to get loyalty text in desired format
+const getFormatedText = text => {
+  return text
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split('on');
+};
+
 const ListItem = props => {
   const {
     item,
@@ -49,6 +59,7 @@ const ListItem = props => {
     onFavorite,
     currencyExchange,
     theme,
+    isPlcc,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
@@ -70,7 +81,7 @@ const ListItem = props => {
       <RenderPricesSection miscInfo={miscInfo} currencyExchange={currencyExchange} />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      <RenderPromotionalMessage text={loyaltyPromotionMessage} />
+      <RenderPromotionalMessage isPlcc={isPlcc} text={loyaltyPromotionMessage} />
       <AddToBagContainer>
         <CustomButton
           fill="BLUE"
@@ -178,17 +189,25 @@ const RenderTitle = ({ text }) => {
 
 RenderTitle.propTypes = TextProps;
 
-const RenderPromotionalMessage = ({ text }) => {
+const RenderPromotionalMessage = ({ text, isPlcc }) => {
   return (
     <PromotionalMessageContainer>
-      <PromotionalMessage accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
-        {text}
+      <PromotionalMessage
+        isPlcc={isPlcc}
+        accessibilityRole="text"
+        accessibilityLabel={text}
+        numberOfLines={2}
+      >
+        {text && getFormatedText(text)[0]}
+        {text && (
+          <PromotionalMessagePostfix>{` on${getFormatedText(text)[1]}`}</PromotionalMessagePostfix>
+        )}
       </PromotionalMessage>
     </PromotionalMessageContainer>
   );
 };
 
-RenderPromotionalMessage.propTypes = TextProps;
+RenderPromotionalMessage.propTypes = { ...TextProps, isPlcc: PropTypes.bool };
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
@@ -198,6 +217,7 @@ ListItem.propTypes = {
   loyaltyPromotionMessage: PropTypes.string,
   onAddToBag: PropTypes.func,
   onFavorite: PropTypes.func,
+  isPlcc: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
@@ -209,6 +229,11 @@ ListItem.defaultProps = {
   loyaltyPromotionMessage: '',
   onAddToBag: () => {},
   onFavorite: () => {},
+  isPlcc: false,
+};
+
+RenderPromotionalMessage.defaultProps = {
+  isPlcc: false,
 };
 
 export default withStyles(withTheme(ListItem), styles);
