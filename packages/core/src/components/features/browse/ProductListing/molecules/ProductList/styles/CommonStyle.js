@@ -44,6 +44,15 @@ export const buttonNext = css`
   }
 `;
 
+export const arrowWrapper = css`
+  display: flex;
+  position: absolute;
+  align-items: center;
+  height: 15px;
+  width: 19px;
+  top: 0;
+`;
+
 export const imageAnchorInheritedStyles = css`
   display: block;
 `;
