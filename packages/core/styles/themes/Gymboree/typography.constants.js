@@ -1,9 +1,15 @@
-const PRIMARY_FONTS = 'ArianaPro-Book';
+const PRIMARY_FONTS = 'Montserrat';
 const SECONDARY_FONTS = 'Nunito';
 
 export const FONTS = {
   primary: PRIMARY_FONTS,
   secondary: SECONDARY_FONTS,
+};
+
+// Fonts in android read font file name
+export const ANDROID_FONTS = {
+  primary: 'montserrat',
+  secondary: 'nunito',
 };
 
 export const LETTER_SPACINGS = {

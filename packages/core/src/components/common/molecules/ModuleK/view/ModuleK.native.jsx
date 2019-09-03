@@ -48,7 +48,6 @@ class ModuleK extends React.PureComponent {
           <WrapperView width={getScreenWidth()}>
             <Button
               width="225px"
-              height="42px"
               buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
               testID={`moduleK_button_set_${slideIndex}`}

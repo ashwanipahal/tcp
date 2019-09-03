@@ -7,6 +7,7 @@ import DeleteAddressSaga from '@tcp/core/src/components/features/account/Address
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
+import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import BootstrapSaga from './bootstrap';
@@ -23,6 +24,7 @@ export {
   DeleteAddressSaga,
   SetDefaultShippingAddressSaga,
   CouponSaga,
+  CheckoutSaga,
   BootstrapSaga,
   LabelsSaga,
 };
@@ -38,6 +40,7 @@ export default {
   DeleteAddressSaga,
   SetDefaultShippingAddressSaga,
   CouponSaga,
+  CheckoutSaga,
   BootstrapSaga,
   LabelsSaga,
 };

@@ -12,7 +12,12 @@ export {
   setValueInAsyncStorage,
   validateExternalUrl,
   resetNavigationStack,
+  createAPIConfig,
+  switchAPIConfig,
+  isAndroid,
 } from './utils.app';
+
+export { default, getSiteId } from './utils.app';
 
 export {
   isServer,
@@ -22,5 +27,10 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
-  createAPIConfig,
+  resetApiConfig,
+  getCacheKeyForRedis,
+  bindAllClassMethodsToThis,
+  isGymboree,
+  getAddressFromPlace,
+  formatAddress,
 } from './utils';

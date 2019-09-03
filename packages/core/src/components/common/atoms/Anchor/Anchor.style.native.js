@@ -71,8 +71,16 @@ export const AnchorStyles = css`
     props.underline
       ? `
                       text-decoration: underline;
+                     
                         `
       : 'text-decoration: none;'};
+  ${props =>
+    props.underlineBlue
+      ? `             text-decoration: underline;
+                      text-decoration-color: ${props.theme.colors.ANCHOR.SECONDARY};
+                     
+                        `
+      : ''};
 
   ${props =>
     props.withCaret

@@ -36,6 +36,9 @@ export default css`
   .tcp-drawer {
     display: none;
   }
+  .is-hidden {
+    display: none;
+  }
   .tcp-drawer__isOpen {
     display: block;
     position: absolute;

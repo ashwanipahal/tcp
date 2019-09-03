@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoginSection from '../organism/LoginSection';
+import PasswordRequirement from '../../ResetPassword/molecules/PasswordRequirement';
 
 const LoginView = ({
   onSubmit,
@@ -17,6 +18,9 @@ const LoginView = ({
   openModal,
   currentForm,
   queryParams,
+  setLoginModalMountState,
+  variation,
+  handleContinueAsGuest,
 }) => {
   return (
     <LoginSection
@@ -34,6 +38,10 @@ const LoginView = ({
       openModal={openModal}
       currentForm={currentForm}
       queryParams={queryParams}
+      setLoginModalMountState={setLoginModalMountState}
+      variation={variation}
+      handleContinueAsGuest={handleContinueAsGuest}
+      tooltipContent={<PasswordRequirement labels={labels.password} />}
     />
   );
 };
@@ -53,6 +61,9 @@ LoginView.propTypes = {
   openModal: PropTypes.func,
   currentForm: PropTypes.string.isRequired,
   queryParams: PropTypes.shape({}).isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+  variation: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func.isRequired,
 };
 
 LoginView.defaultProps = {

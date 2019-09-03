@@ -224,7 +224,7 @@ const config = {
       '*.childrensplace.com',
       '*.facebook.com',
       '*.melissadata.net',
-      `search.unbxd.io`,
+      'search.unbxd.io',
       '*.paypal.com',
       'dpm.demdex.net',
       '*.stylitics.com',

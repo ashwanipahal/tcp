@@ -1,87 +1,77 @@
-import { css } from 'styled-components/native';
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint-disable no-shadow */
+import styled, { css } from 'styled-components/native';
+import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
+
+const getShape = props => {
+  const { theme, noCurve } = props;
+  const { isGymboree } = theme;
+
+  if (isGymboree && !noCurve) {
+    return `border-radius: 25.5px;`;
+  }
+  return `
+  null
+  `;
+};
 
 const style = css`
+  min-height: 42px;
+  border: 1px solid ${props => props.theme.colorPalette.gray[600]};
+  opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
+  background: ${props => props.theme.colorPalette.white};
+  ${props => getShape(props)};
+  ${props =>
+    props.buttonVariation === 'variable-width'
+      ? `
+   width: ${props.width};
+   height: ${props.height};
+   `
+      : ''};
+  ${props =>
+    props.fill === 'BLUE'
+      ? ` background: ${props.theme.colorPalette.blue[700]}; border: 1px solid ${
+          props.theme.colorPalette.blue[700]
+        }; `
+      : ''};
+  ${props =>
+    props.fill === 'DARK'
+      ? ` background: ${props.theme.colorPalette.gray[700]}; border: 1px solid ${
+          props.theme.colorPalette.gray[600]
+        }; `
+      : ''};
+  ${props =>
+    props.buttonVariation === 'cautionary'
+      ? `border: 1px solid ${props.theme.colorPalette.secondary.dark};`
+      : ''};
+`;
+
+export const CustomStyleText = styled(StyledText)`
   text-transform: uppercase;
   text-align: center;
-  ${props =>
-    props.buttonVariation === 'fixed-width'
-      ? `
-   width: 40px;
-   height: 100px;
-   color: ${props.theme.colorPalette.black};
-   font-size: ${props.theme.fonts.fontSize.button.size}px
-   font-family: ${props.theme.typography.fonts.primary};
-   font-weight: ${props.theme.typography.fontWeights.semibold};
-   border: 1px solid ${props.theme.colorPalette.black};
-   padding: 4px 20px;
-   width: 100%;
-   margin : 40px
- `
-      : ''};
+  letter-spacing: 0.93px;
+  opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
+  font-size: ${props => props.theme.typography.fontSizes.fs13};
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  color: ${props => props.color || props.theme.colorPalette.gray[700]};
+  padding: 12px 20px;
 
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
- width: ${props.width};
- height: ${props.height};
- min-width: 64px;
- background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
- color: ${props.color || props.theme.colorPalette.black};
- font-family: ${props.theme.typography.fonts.secondary};
- font-size: ${props.theme.fonts.fontSize.button.size}px;
- font-weight: ${props.theme.typography.fontWeights.black};
- border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
- padding: 12px 32px;
- `
+  padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
+  `
       : ''};
 
-  ${props => (props.fullWidth ? `width: 100% ;` : '')};
+  ${props => (props.fill === 'BLUE' ? ` color: ${props.theme.colorPalette.white}; ` : '')};
+  ${props => (props.fill === 'DARK' ? ` color: ${props.theme.colorPalette.white}; ` : '')};
 
   ${props =>
-    props.customStyle === 'shadow-button'
+    props.buttonVariation === 'cautionary'
       ? `
-     background: ${props.theme.colors.PRIMARY.PALEGRAY};
-     border-radius: 10px;
-     padding: 4px 0;
-     border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
-     width: 100%;
-     &:hover, &:focus {
-       background: ${props.theme.colors.PRIMARY.COLOR1};
-       box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.COLOR1};
-       border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
-     }
-     @media ${props.theme.mediaQuery.large} {
-       padding: 11px 0;
-       box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.PALEGRAY};
-       width: calc(100% - 12px);
-       &:hover, &:focus {
-         box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.COLOR1};
-       }
-     }
+   color: ${props.theme.colorPalette.secondary.dark};
    `
-      : ''};
-
-  ${props =>
-    props.buttonVariation === 'cautionary-button'
-      ? `
-     width: ${props.width};
-     height: ${props.height};
-     background: ${props.fill || props.theme.colorPalette.white};
-     color: ${
-       props.color === 'red'
-         ? props.theme.colorPalette.secondary.dark
-         : props.theme.colorPalette.primary.dark
-     };
-     font-family: ${props.theme.typography.fonts.secondary};
-     font-size: ${props.theme.fonts.fontSize.button.size}px;
-     font-weight: ${props.theme.typography.fontWeights.extrabold};
-     border: 1px solid ${
-       props.color === 'red'
-         ? props.theme.colorPalette.secondary.dark
-         : props.theme.colorPalette.primary.dark
-     };
-     padding: 12px 32px;
-     `
       : ''};
 `;
 

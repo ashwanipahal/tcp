@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ElectronicConsent component should renders correctly considering labels being passed 1`] = `
+<styled.div>
+  <Styled(BodyCopy)
+    className="title"
+    color="text.primary"
+    component="h2"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    tabIndex="0"
+    textAlign="left"
+  >
+    &lt;h1&gt;plcc agreement&lt;/h1&gt;
+  </Styled(BodyCopy)>
+  <iframe
+    className="financial-terms-disclosures"
+    src="https://comenity.net/childrensplace/common/Legal/disclosures.xhtml"
+    title="<h1>plcc agreement</h1>"
+  />
+</styled.div>
+`;

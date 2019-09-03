@@ -93,7 +93,9 @@ exports[`LoginForm component should renders correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -149,15 +151,17 @@ exports[`LoginForm component should renders correctly 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 ",
                 ";
@@ -188,7 +192,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -238,7 +242,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -270,7 +274,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -349,6 +353,20 @@ exports[`LoginForm component should renders correctly 1`] = `
                   [Function],
                   ";
   }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",
@@ -357,7 +375,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -410,6 +428,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
+        underline={true}
       />
     </Styled(BodyCopy)>
   </form>
@@ -437,7 +456,10 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
-      test errror
+      <Styled(RichText)
+        className="richTextColor"
+        richTextHtml="test errror"
+      />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="elem-mb-LRG"
@@ -522,7 +544,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -578,15 +602,17 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    margin-top: 2px;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 ",
                 ";
@@ -617,7 +643,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -667,7 +693,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -699,7 +725,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -778,6 +804,20 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                   [Function],
                   ";
   }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",
@@ -786,7 +826,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -839,6 +879,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
+        underline={true}
       />
     </Styled(BodyCopy)>
   </form>

@@ -6,6 +6,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import TextBox from '../../../../../../common/atoms/TextBox';
+import RichText from '../../../../../../common/atoms/RichText';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -32,13 +33,16 @@ class LoginForm extends React.PureComponent<Props> {
       change,
       showSavePlcc,
       pristine,
+      variation,
+      handleContinueAsGuest,
+      tooltipContent,
     } = this.props;
     return (
       <div className={className}>
         <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
           {loginErrorMessage && (
             <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
-              {loginErrorMessage}
+              <RichText className="richTextColor" richTextHtml={loginErrorMessage} />
             </BodyCopy>
           )}
           <BodyCopy component="div" className="elem-mb-LRG">
@@ -63,6 +67,7 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
+              tooltipContent={tooltipContent}
             />
             <BodyCopy component="div">
               <Field
@@ -115,7 +120,21 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {labels.login.lbl_login_loginCTA}
             </Button>
+            {variation === 'checkout' && (
+              <Button
+                fill="WHITE"
+                type="button"
+                buttonVariation="fixed-width"
+                dataLocator="login-logincta"
+                fullWidth
+                className="elem-mb-XS"
+                onClick={handleContinueAsGuest}
+              >
+                {labels.login.lbl_login_modal_checkout_as_guest}
+              </Button>
+            )}
             <Anchor
+              underline
               fontSizeVariation="xlarge"
               anchorVariation="secondary"
               dataLocator="login-forgotpasswordlnk"
@@ -139,6 +158,7 @@ LoginForm.propTypes = {
   change: PropTypes.func,
   showSavePlcc: PropTypes.bool,
   pristine: PropTypes.bool,
+  handleContinueAsGuest: PropTypes.func.isRequired,
 };
 
 LoginForm.defaultProps = {

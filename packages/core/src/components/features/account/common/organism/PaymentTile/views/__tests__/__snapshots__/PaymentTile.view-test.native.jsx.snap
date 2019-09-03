@@ -14,6 +14,7 @@ exports[`PaymentTile component should render correctly 1`] = `
     forceUnregisterOnUnmount={false}
     form="PaymentItemForm"
     getFormState={[Function]}
+    handleComponentChange={[MockFunction]}
     isGiftCard={false}
     keepDirtyOnReinitialize={false}
     labels={Object {}}
@@ -46,6 +47,7 @@ exports[`PaymentTile component should render correctly 1`] = `
     forceUnregisterOnUnmount={false}
     form="PaymentItemForm"
     getFormState={[Function]}
+    handleComponentChange={[MockFunction]}
     isGiftCard={true}
     keepDirtyOnReinitialize={false}
     labels={Object {}}
@@ -73,7 +75,7 @@ exports[`PaymentTile component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
-      color="white"
+      color=""
       customStyle={Object {}}
       disableButton={false}
       fill="BLUE"

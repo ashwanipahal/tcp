@@ -1,12 +1,12 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import ACCOUNT_CONSTANTS from '../Account.constants';
 import { validateReduxCache } from '../../../../../utils/cache.util';
-import utils from '../../../../../utils';
+import { getSiteId } from '../../../../../utils';
 import { setAccountNavigationList, showLoader } from './Account.actions';
 import accountNavigationAbstractor from '../../../../../services/abstractors/account/AccountNavigation/index';
 
 export function* getAccountNavigationList() {
-  const siteId = utils.getSiteId();
+  const siteId = getSiteId();
   let queryParams = '';
   if (siteId === ACCOUNT_CONSTANTS.ACCOUNT_SITE_US) {
     queryParams = {

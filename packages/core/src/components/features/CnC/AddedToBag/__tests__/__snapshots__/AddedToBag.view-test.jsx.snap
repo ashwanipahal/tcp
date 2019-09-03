@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Added to Bag View should render Added to Bag view  1`] = `
+<Styled(Modal)
+  aria={
+    Object {
+      "describedby": "Added To Bag Modal",
+      "labelledby": "Added To Bag",
+    }
+  }
+  className="TCPModal__Content, test"
+  closeIconDataLocator="added-to-bg-close"
+  data-locator="addedToBag-modal"
+  fixedWidth={true}
+  heading="ADDED TO BAG"
+  inheritedStyles={
+    Array [
+      "
+  div.TCPModal__InnerContent {
+    right: 0;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    transform: none;
+    box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
+    padding: 7px 20px 20px;
+    width: 350px;
+    @media ",
+      [Function],
+      " {
+      width: 375px;
+    }
+  }
+  .Modal_Heading {
+    font-size: 16px;
+    font-family: ",
+      [Function],
+      ";
+    font-weight: normal;
+    line-height: 43px;
+    border: none;
+    margin-bottom: 0;
+    padding: 0;
+    @media ",
+      [Function],
+      " {
+      display: block;
+    }
+  }
+",
+    ]
+  }
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div
+    className="addedToBagWrapper"
+  >
+    <ProductInformation
+      data={Object {}}
+      labels={Object {}}
+      quantity={1}
+    />
+    <Connect(AddedToBagViewPointsContainer)
+      className="added-to-bag-points"
+      labels={Object {}}
+    />
+    <Connect(AddedToBagContainer)
+      handleCartCheckout={[MockFunction]}
+      labels={Object {}}
+    />
+    <BOSSBanner
+      labels={Object {}}
+    />
+    <div
+      className="continue-shopping"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="addedToBag-continueShopping"
+        fontSizeVariation="medium"
+        handleLinkClick={[MockFunction]}
+        noLink={true}
+        to=""
+        underline={true}
+      />
+    </div>
+  </div>
+</Styled(Modal)>
+`;

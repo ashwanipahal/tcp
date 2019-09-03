@@ -8,7 +8,9 @@ describe('ColorSelectorDropDown component', () => {
     const props = {
       className: 'checkout',
       options: [],
-      input: '',
+      input: {
+        name: {},
+      },
     };
     const component = shallow(<ColorSelectorDropDown {...props} />);
     expect(component).toMatchSnapshot();
@@ -17,7 +19,9 @@ describe('ColorSelectorDropDown component', () => {
     const props = {
       className: 'checkout',
       options: [],
-      input: '',
+      input: {
+        name: {},
+      },
     };
     const tree = shallow(<ColorSelectorDropDownVanilla {...props} />);
     expect(tree.find(CustomSelect)).toBeTruthy();

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRewards should render carousel if coupons are avalable 1`] = `
+<View>
+  <Styled(View)
+    spacingStyles="margin-bottom-LRG margin-top-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        className="my-rewards-heading"
+        data-locator="my-rewards-heading"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        text="undefined (2)"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <View>
+    <WithTheme(SnapCarousel)
+      autoplay={false}
+      darkArrow={true}
+      data={
+        Array [
+          Immutable.Map {
+            "id": "1234",
+          },
+          Immutable.Map {
+            "id": "4321",
+          },
+        ]
+      }
+      height={220}
+      renderItem={[Function]}
+      showDots={true}
+      variation="show-arrow"
+      width={720}
+    />
+  </View>
+</View>
+`;
+
+exports[`MyRewards should render correctly 1`] = `
+<View>
+  <Styled(View)
+    spacingStyles="margin-bottom-LRG margin-top-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        className="my-rewards-heading"
+        data-locator="my-rewards-heading"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        text="undefined (0)"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <EmptyRewards
+    labels={
+      Object {
+        "common": Object {},
+        "myPlaceRewards": Object {},
+      }
+    }
+  />
+</View>
+`;

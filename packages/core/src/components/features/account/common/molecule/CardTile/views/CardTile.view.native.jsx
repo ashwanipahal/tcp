@@ -29,7 +29,7 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
-class CardTile extends React.Component<Props> {
+class CardTile extends React.Component {
   static propTypes = {
     card: PropTypes.shape({}),
     labels: PropTypes.shape({}),
@@ -38,7 +38,9 @@ class CardTile extends React.Component<Props> {
     change: PropTypes.func,
     handleSubmit: PropTypes.func,
     toggleModal: PropTypes.func,
+    openUpdateModal: PropTypes.func,
     setSelectedCard: PropTypes.func,
+    checkbalanceValueInfo: PropTypes.instanceOf(Map),
   };
 
   static defaultProps = {
@@ -49,7 +51,9 @@ class CardTile extends React.Component<Props> {
     change: () => {},
     handleSubmit: () => {},
     toggleModal: () => {},
+    openUpdateModal: () => {},
     setSelectedCard: () => {},
+    checkbalanceValueInfo: new Map(),
   };
 
   cardIconMapping = {
@@ -118,7 +122,7 @@ class CardTile extends React.Component<Props> {
         underline
         to="/#"
         anchorVariation="primary"
-        data-locator="payment-makedefault"
+        dataLocator="payment-makedefault"
         onPress={e => this.handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
         text={labels.common.lbl_common_makeDefault}
       />
@@ -187,6 +191,13 @@ class CardTile extends React.Component<Props> {
     toggleModal({ state: true });
   };
 
+  onUpdateCardClick = e => {
+    e.preventDefault();
+    const { card, openUpdateModal, setSelectedCard } = this.props;
+    setSelectedCard(card);
+    openUpdateModal(false);
+  };
+
   getCtaRow = (
     isGiftCard,
     isVenmo,
@@ -227,10 +238,10 @@ class CardTile extends React.Component<Props> {
             <Anchor
               fontSizeVariation="large"
               underline
-              to="/#"
               anchorVariation="primary"
-              data-locator={`payment-${dataLocatorPrefix}editlink`}
+              dataLocator={`payment-${dataLocatorPrefix}editlink`}
               text={labels.common.lbl_common_edit}
+              onPress={e => this.onUpdateCardClick(e)}
             />
           )}
           <CardCtaLinkMargin />
@@ -238,7 +249,7 @@ class CardTile extends React.Component<Props> {
             fontSizeVariation="large"
             underline
             anchorVariation="primary"
-            data-locator={`payment-${dataLocatorPrefix}deletelink`}
+            dataLocator={`payment-${dataLocatorPrefix}deletelink`}
             text={labels.common.lbl_common_delete}
             onPress={e => this.onDeleteCardClick(e)}
           />

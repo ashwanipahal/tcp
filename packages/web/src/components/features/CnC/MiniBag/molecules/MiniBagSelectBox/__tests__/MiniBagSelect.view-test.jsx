@@ -4,7 +4,12 @@ import MiniBagSelectBox from '../MiniBagSelectBox';
 
 describe('MiniBagSelectBox component', () => {
   it('MiniBagSelectBox component renders correctly', () => {
-    const component = shallow(<MiniBagSelectBox />);
+    const props = {
+      input: {
+        name: '',
+      },
+    };
+    const component = shallow(<MiniBagSelectBox {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

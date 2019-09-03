@@ -12,4 +12,6 @@ export const ICON_NAME = {
   arrowUp: 'arrow-up',
   arrowDown: 'arrow-down',
   Facebook: 'facebook',
+  checkmark: 'check',
+  favorite: 'heart-o',
 };

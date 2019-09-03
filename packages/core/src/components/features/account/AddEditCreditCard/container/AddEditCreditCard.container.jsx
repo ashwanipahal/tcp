@@ -17,6 +17,7 @@ import { getAddressListState } from '../../AddressBook/container/AddressBook.sel
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -32,6 +33,7 @@ export class AddEditCreditCard extends React.PureComponent {
     editCreditCardAction: PropTypes.func.isRequired,
     showSuccessNotification: PropTypes.func.isRequired,
     labels: PropTypes.shape({}),
+    addressLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -43,6 +45,7 @@ export class AddEditCreditCard extends React.PureComponent {
     addEditCreditCardError: null,
     creditCard: null,
     labels: {},
+    addressLabels: { addressFormLabels: {} },
   };
 
   constructor(props) {
@@ -166,6 +169,7 @@ export class AddEditCreditCard extends React.PureComponent {
       isPLCCEnabled,
       addEditCreditCardError,
       labels,
+      addressLabels,
     } = this.props;
 
     if (addressList === null) {
@@ -192,6 +196,7 @@ export class AddEditCreditCard extends React.PureComponent {
         backToPaymentClick={this.backToPaymentClick}
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}
+        addressFormLabels={addressLabels.addressFormLabels}
       />
     );
   }
@@ -206,6 +211,7 @@ const mapStateToProps = (state, ownProps) => {
     isPLCCEnabled: true,
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
+    addressLabels: getAddEditAddressLabels(state),
   };
 };
 

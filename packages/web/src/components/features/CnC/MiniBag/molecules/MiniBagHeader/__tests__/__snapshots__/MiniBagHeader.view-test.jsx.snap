@@ -8,7 +8,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gZMcBi",
+        "componentId": "sc-gqjmRU",
         "isStatic": false,
         "rules": Array [
           "
@@ -19,14 +19,26 @@ exports[`MiniBagHeader component renders correctly 1`] = `
     height: 31px;
     padding-right: 0;
     padding-left: 0;
+    justify-content: center;
   }
   .subHeaderText {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .subHeaderTextIcon {
+    padding-left: 23px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
   }
   .pointsRewards {
     color: ",
           [Function],
           ";
+    padding-left: 6px;
   }
   .cartCount {
     background: ",
@@ -64,7 +76,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       "displayName": "Styled(MiniBagHeader)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gZMcBi",
+      "styledComponentId": "sc-gqjmRU",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

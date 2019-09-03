@@ -2,22 +2,37 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
-  <ModuleN />
-  <SlotA
-    className="moduleD"
+  <HomePageSlots
+    modules={
+      Object {
+        "moduleA": [Function],
+        "moduleD": [Function],
+        "moduleH": [Function],
+        "moduleK": [Function],
+        "moduleL": [Function],
+        "moduleN": [Function],
+      }
+    }
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
   />
-  <SlotB
-    className="moduleH"
-  />
-  <SlotC />
-  <SlotD />
   <Styled(CustomButton)
     buttonVariation="variable-width"
+    color=""
     customStyle={Object {}}
     disableButton={false}
+    fill=""
     fullWidth={true}
     locator=""
     onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
     text="PLP Page"
     url=""
   />

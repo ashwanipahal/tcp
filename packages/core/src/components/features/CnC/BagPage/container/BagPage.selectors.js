@@ -1,3 +1,5 @@
+import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
   const filterArray = arr.filter(value => {
@@ -44,6 +46,12 @@ const getTotalItems = state => {
 const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
+const getConfirmationModalFlag = state => {
+  return {
+    showModal: state.CartPageReducer.get('showConfirmationModal'),
+    isEditingItem: state.CartPageReducer.get('isEditingItem'),
+  };
+};
 
 const getProductsTypes = state => {
   const orderItems = getOrderItems(state);
@@ -65,10 +73,30 @@ const getNeedHelpContentId = state => {
   return content && content.contentId;
 };
 
+const getFilteredItems = (state, filter) =>
+  getOrderItems(state).filter(item => filter(item.getIn(['miscInfo', 'availability'])));
+
+const getUnqualifiedItems = state => getFilteredItems(state, type => type !== AVAILABILITY.OK);
+
+const getUnqualifiedCount = state => getUnqualifiedItems(state).size;
+const getUnqualifiedItemsIds = state =>
+  getUnqualifiedItems(state).map(item => item.getIn(['itemInfo', 'itemId']));
+
+const getUnavailableCount = state =>
+  getFilteredItems(state, type => type === AVAILABILITY.UNAVAILABLE).size;
+
+const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
+
 export default {
   getBagPageLabels,
   getTotalItems,
   getOrderItems,
   getProductsTypes,
   getNeedHelpContentId,
+  getUnqualifiedCount,
+  getUnqualifiedItemsIds,
+  getUnavailableCount,
+  getOOSCount,
+  getConfirmationModalFlag,
+  getFilteredItems,
 };

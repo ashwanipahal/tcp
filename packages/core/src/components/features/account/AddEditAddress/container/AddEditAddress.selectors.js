@@ -1,13 +1,8 @@
 import { createSelector } from 'reselect';
-import { LOGINPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {
   return state.AddEditAddressReducer;
-};
-
-export const getUserEmail = state => {
-  return state[LOGINPAGE_REDUCER_KEY] && state[LOGINPAGE_REDUCER_KEY].get('email1');
 };
 
 export const getAddressId = (state, props) => {

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponList Component should render correctly 1`] = `
+<View>
+  <CouponTile
+    coupon={Object {}}
+    labels={Object {}}
+  />
+</View>
+`;

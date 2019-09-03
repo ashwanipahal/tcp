@@ -1,5 +1,7 @@
 const validStreetAddress = 'Please enter a valid street address';
 const validExpirationDate = 'Please enter a valid expiration date';
+const enterPhoneNumber = 'Please enter your phone number';
+const validPhoneNumber = 'Please enter a valid phone number';
 
 export const formValidationMessages = {
   addressLine1: {
@@ -35,8 +37,8 @@ export const formValidationMessages = {
     maxLength: 'Please enter a valid last name',
   },
   phoneNumber: {
-    required: 'Please enter your phone number',
-    phone: 'Please enter a valid phone number',
+    required: enterPhoneNumber,
+    phone: validPhoneNumber,
   },
   zipCode: {
     required: 'Please enter your zip code',
@@ -81,16 +83,56 @@ export const formValidationMessages = {
     required: 'Please enter your password',
     password: 'Please enter a valid password',
   },
+  currentPassword: {
+    required: 'Please enter your password',
+    password: 'Your current password is incorrect. Please try again.',
+  },
   confirmPassword: {
     required: 'Please enter a valid password',
     equalTo: 'Passwords must match',
   },
   emailAddressNoAsync: {
-    required: `Please enter a valid email`,
-    email: 'Email format is invalid.',
+    required: `ERROR: Please enter a valid email`,
+    email: 'ERROR: Email format is invalid.',
+    validEmail: 'ERROR: Email format is invalid',
   },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: 'Please enter a valid birth date',
+  },
+  airMilesAccountNumber: 'Please enter a valid 11 digit Air Miles ID',
+  associateId: 'The Associate ID you entered does not exist. Please try again',
   iAgree: {
-    required: 'Please Select',
+    required: 'You must agree to the Terms and Conditions to submit the form',
+  },
+  preScreenCode: {
+    alphanumeric: 'Please enter a valid pre-screen code',
+  },
+  ssNumber: {
+    ssn: 'Please enter the last 4 digits of your social security number',
+  },
+  birthDate: 'Please enter a valid date of birth',
+  statewocountry: {
+    required: 'Please enter a valid state',
+  },
+  date: {
+    dob: 'Please select a day',
+  },
+  month: {
+    dob: 'Please select a month',
+  },
+  year: {
+    dob: 'Please select a year',
+  },
+  orderNumber: 'ERROR: Please enter a valid order number.',
+  phoneNumberWithAlt: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    required: validPhoneNumber,
+  },
+  altPhoneNumber: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    notEqualTo: 'Phone numbers must not match',
   },
 };
 
@@ -184,6 +226,7 @@ export const formValidationRules = {
   emailAddress: {
     required: true,
     emailPattern: 'isValid',
+    validEmail: true,
   },
   confirmEmailAddress: {
     required: true,
@@ -192,6 +235,10 @@ export const formValidationRules = {
     },
   },
   password: {
+    required: true,
+    password: true,
+  },
+  currentPassword: {
     required: true,
     password: true,
   },
@@ -208,8 +255,57 @@ export const formValidationRules = {
   legacyPassword: {
     required: true,
   },
+  orderNumber: {
+    required: true,
+    minLength: 6,
+    number: true,
+  },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: { linkedFields: ['userBirthYear'] },
+  },
+  airMilesAccountNumber: {
+    number: true,
+    exactLength: 11,
+  },
+  associateId: {
+    required: true,
+    number: true,
+  },
   iAgree: {
     required: true,
+  },
+  preScreenCode: {
+    alphanumeric: true,
+  },
+  ssNumber: {
+    ssn: true,
+  },
+  statewocountry: {
+    required: true,
+  },
+  date: {
+    dob: true,
+  },
+  month: {
+    dob: true,
+  },
+  year: {
+    dob: true,
+  },
+  phoneNumberWithAlt: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['altPhoneNumber'],
+    },
+  },
+  altPhoneNumber: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
+    notEqualTo: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
   },
 };
 

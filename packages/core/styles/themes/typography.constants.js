@@ -6,6 +6,12 @@ export const FONTS = {
   secondary: SECONDARY_FONTS,
 };
 
+// Fonts in android read font file name
+export const ANDROID_FONTS = {
+  primary: 'montserrat',
+  secondary: 'nunito',
+};
+
 export const LETTER_SPACINGS = {
   ls400: '4px',
   ls317: '3.17px',
@@ -46,4 +52,5 @@ export const FONT_SIZES = {
   fs13: '13px',
   fs12: '12px',
   fs10: '10px',
+  fs9: '9px',
 };

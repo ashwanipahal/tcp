@@ -7,6 +7,11 @@ import PromoBadge from '../PromoBadge';
 import L3Panel from '../L3Panel';
 import style from './L2Panel.style';
 
+const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
+const MAX_ITEMS_IN_COL = 8;
+const FOUR_COL = 4;
+const TWO_COL = 2;
+
 const createShopByLinks = (links, column) => {
   return (
     <ul>
@@ -19,7 +24,7 @@ const createShopByLinks = (links, column) => {
               to={url}
               title={title}
               target={target}
-              data-locator={`l2_size_btn_${currentIndex}`}
+              dataLocator={`l2_size_btn_${currentIndex}`}
             >
               <BodyCopy className="l2-circle-link">{text}</BodyCopy>
             </Anchor>
@@ -52,7 +57,15 @@ const renderPromoBadge = (promoBadge, currentIndex) => {
   );
 };
 
-const renderL3Panel = (hasSubCategories, index, l3Drawer, hideL3Drawer, name, subCategories) => {
+const renderL3Panel = (
+  hasSubCategories,
+  index,
+  l3Drawer,
+  hideL3Drawer,
+  name,
+  subCategories,
+  accessibilityLabels
+) => {
   return (
     hasSubCategories && (
       <L3Panel
@@ -62,6 +75,7 @@ const renderL3Panel = (hasSubCategories, index, l3Drawer, hideL3Drawer, name, su
         hideL3Drawer={hideL3Drawer(`l3-drawer-${index.toString()}`)}
         name={name}
         links={subCategories}
+        accessibilityLabels={accessibilityLabels}
       />
     )
   );
@@ -71,24 +85,29 @@ const createLinks = (
   links,
   column,
   categoryIndex,
-  { openL3Drawer, hideL3Drawer, l3Drawer, className }
+  { openL3Drawer, hideL3Drawer, l3Drawer, className, accessibilityLabels }
 ) => {
   if (links.length) {
     return (
       <ul className={className}>
         {links.map((l2Links, index) => {
           const {
-            categoryContent: { id, name, seoToken, mainCategory },
+            url,
+            categoryContent: { id, name, mainCategory },
             subCategories,
+            hasL3,
           } = l2Links;
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
-          const currentIndex = column > 1 ? index + 7 : index;
+          const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor to={`/c/${seoToken}`} onClick={openL3Drawer(`l3-drawer-${index.toString()}`)}>
+              <Anchor
+                to={url}
+                onClick={openL3Drawer(`l3-drawer-${currentIndex.toString()}`, hasL3)}
+              >
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -101,7 +120,15 @@ const createLinks = (
                   {renderArrowIcon(hasSubCategories)}
                 </BodyCopy>
               </Anchor>
-              {renderL3Panel(hasSubCategories, index, l3Drawer, hideL3Drawer, name, subCategories)}
+              {renderL3Panel(
+                hasSubCategories,
+                currentIndex,
+                l3Drawer,
+                hideL3Drawer,
+                name,
+                subCategories,
+                accessibilityLabels
+              )}
             </li>
           );
         })}
@@ -116,21 +143,22 @@ const L2Panel = props => {
     className,
     panelData,
     categoryLayout,
-    order,
     name,
     hideL2Drawer,
     l1Index,
     openL3Drawer,
     hideL3Drawer,
     l3Drawer,
+    accessibilityLabels,
   } = props;
-
+  const { previousButton } = accessibilityLabels;
   return (
     <React.Fragment>
       <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel`}>
         <div className="sizes-range-background">
           <span
             role="button"
+            aria-label={previousButton}
             tabIndex={0}
             className="icon-back"
             onClick={hideL2Drawer}
@@ -146,50 +174,61 @@ const L2Panel = props => {
             medium: true,
           }}
         >
-          {order.map((category, categoryIndex) => {
-            const colSize = {
-              small: 6,
-              medium: 8,
-              large: panelData[category].length > 7 ? 4 : 2,
-            };
-            const firstCol = panelData[category].slice(0, 7);
-            const secondCol = panelData[category].slice(7);
-            let columnClass = '';
-            if (firstCol.length && secondCol.length) {
-              columnClass = 'half-width';
-            }
-            const hideOnMobileClass = category === 'Lorem Ipsum' ? 's-display-none' : '';
-            return (
-              <React.Fragment>
-                <Col colSize={colSize} className="l2-nav-category">
-                  <div className="l2-nav-category-header">
-                    <Heading
-                      variant="h6"
-                      className={`l2-nav-category-heading ${hideOnMobileClass}`}
-                      dataLocator={`l2_col_heading_${categoryIndex}`}
-                    >
-                      {category}
-                    </Heading>
-                    <span className="l2-nav-category-divider" />
-                  </div>
-                  <div className="l2-nav-category-links">
-                    {createLinks(firstCol, 1, categoryIndex, {
-                      openL3Drawer,
-                      hideL3Drawer,
-                      l3Drawer,
-                      className: { columnClass },
-                    })}
-                    {createLinks(secondCol, 2, categoryIndex, {
-                      openL3Drawer,
-                      hideL3Drawer,
-                      l3Drawer,
-                      className: { columnClass },
-                    })}
-                  </div>
-                </Col>
-              </React.Fragment>
-            );
-          })}
+          {Object.keys(panelData)
+            .sort((prevGroup, curGroup) => {
+              return parseInt(prevGroup.order, 10) - parseInt(curGroup.order, 10);
+            })
+            .map((category, categoryIndex) => {
+              const { items, label } = panelData[category];
+              const colSize = {
+                small: 6,
+                medium: 8,
+                large: items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL,
+              };
+              const firstCol = items.slice(0, MAX_ITEMS_IN_COL);
+              const secondCol = items.slice(MAX_ITEMS_IN_COL);
+              let columnClass = '';
+              if (firstCol.length && secondCol.length) {
+                columnClass = 'half-width';
+              }
+              const hideOnMobileClass = category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
+              return (
+                <React.Fragment>
+                  <Col colSize={colSize} className="l2-nav-category">
+                    {label ? (
+                      <div className="l2-nav-category-header">
+                        <Heading
+                          variant="h6"
+                          className={`l2-nav-category-heading ${hideOnMobileClass}`}
+                          dataLocator={`l2_col_heading_${categoryIndex}`}
+                        >
+                          {label}
+                        </Heading>
+                        <span className="l2-nav-category-divider" />
+                      </div>
+                    ) : (
+                      <div className="l2-nav-category-empty-header" />
+                    )}
+                    <div className="l2-nav-category-links">
+                      {createLinks(firstCol, 1, categoryIndex, {
+                        openL3Drawer,
+                        hideL3Drawer,
+                        l3Drawer,
+                        className: { columnClass },
+                        accessibilityLabels,
+                      })}
+                      {createLinks(secondCol, 2, categoryIndex, {
+                        openL3Drawer,
+                        hideL3Drawer,
+                        l3Drawer,
+                        className: { columnClass },
+                        accessibilityLabels,
+                      })}
+                    </div>
+                  </Col>
+                </React.Fragment>
+              );
+            })}
           {categoryLayout &&
             categoryLayout.map(({ columns }) =>
               columns.map(({ imageBanner, shopBySize }) => {
@@ -237,7 +276,7 @@ const L2Panel = props => {
                               className="l2-image-banner-link"
                               to={link.url}
                               title={link.title}
-                              data-locator={`overlay_img_link_${l1Index}`}
+                              dataLocator={`overlay_img_link_${l1Index}`}
                               target={link.target}
                             >
                               <Image
@@ -274,7 +313,6 @@ const L2Panel = props => {
 L2Panel.propTypes = {
   className: PropTypes.string.isRequired,
   panelData: PropTypes.shape([]).isRequired,
-  order: PropTypes.shape([]).isRequired,
   categoryLayout: PropTypes.shape([]),
   name: PropTypes.string.isRequired,
   hideL2Drawer: PropTypes.func.isRequired,
@@ -282,6 +320,7 @@ L2Panel.propTypes = {
   openL3Drawer: PropTypes.func.isRequired,
   hideL3Drawer: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
+  accessibilityLabels: PropTypes.shape({}).isRequired,
 };
 
 L2Panel.defaultProps = {

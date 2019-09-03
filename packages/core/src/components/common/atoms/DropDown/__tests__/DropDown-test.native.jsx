@@ -10,6 +10,10 @@ describe('DropDown Test', () => {
     selectedValue: 'foo',
     onValueChange: jest.fn(),
     variation: 'primary',
+    itemStyle: {
+      color: 'foo',
+    },
+    heading: 'foo',
   };
 
   beforeEach(() => {
@@ -75,5 +79,42 @@ describe('DropDown Test', () => {
     const flatList = component.find('Styled(FlatList)');
     expect(flatList).toHaveLength(1);
     expect(flatList.props().ItemSeparatorComponent()).not.toBeNull();
+  });
+
+  it('test getDerivedStateFromProps', () => {
+    const state = {
+      selectedLabelState: 'abc',
+    };
+    const result = DropDownVanilla.getDerivedStateFromProps(props, state);
+    expect(result).toEqual({ selectedLabelState: 'foo' });
+  });
+
+  it('test getDerivedStateFromProps with id as value', () => {
+    const state = {
+      selectedLabelState: 'abc',
+    };
+    props.data = [{ displayName: 'foo', id: 'foo' }];
+    const result = DropDownVanilla.getDerivedStateFromProps(props, state);
+    expect(result).toEqual({ selectedLabelState: 'foo' });
+  });
+
+  it('test setDropDownPosition func', () => {
+    const position = { top: 100 };
+    const windowHeight = 1087;
+    const deviceRemainingHeight = 300;
+
+    const instance = component.instance();
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, true, 200, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(100);
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, true, 400, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(200);
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, false, 1400, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(815.25);
+
+    instance.setDropDownPosition(position, deviceRemainingHeight, false, 200, windowHeight);
+    expect(component.state('flatListHeight')).toEqual(200);
   });
 });

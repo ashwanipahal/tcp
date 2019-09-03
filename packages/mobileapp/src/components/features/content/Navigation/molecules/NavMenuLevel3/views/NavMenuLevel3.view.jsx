@@ -19,17 +19,31 @@ const renderItem = navigate => listProps => {
   const maxWidthItem = getScreenWidth() - 60;
 
   const { item, index } = listProps;
+  const { url, categoryContent } = item;
+  const { name } = categoryContent;
+
+  const navigateToNextScreen = () => {
+    return navigate('ProductListing', {
+      url,
+      title: name,
+      reset: true,
+    });
+  };
 
   return (
     <ItemViewWithHeading
       accessibilityRole="link"
       accessibilityLabel={item.categoryContent.name}
       testID={`L3_text_links_${index}`}
-      onPress={() => navigate('ProductListingPage')}
+      onPress={() => navigateToNextScreen()}
     >
       <MenuItem
         navigate={navigate}
-        route={() => navigate('ProductListingPage')}
+        route={() =>
+          navigate('ProductListingPage', {
+            url,
+          })
+        }
         maxWidthItem={maxWidthItem}
         item={item}
         hasBadge={false}

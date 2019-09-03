@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditAddressContainer should render correctly 1`] = `
+<Styled(AddEditAddress)
+  addressFormLabels={Object {}}
+  addressResponse={Object {}}
+  backToAddressBookClick={[Function]}
+  initialValues={
+    Object {
+      "addressLine2": "",
+      "country": "US",
+      "primary": true,
+    }
+  }
+  isMakeDefaultDisabled={true}
+  submitAddressFormAction={[Function]}
+  verifyAddressAction={[Function]}
+/>
+`;

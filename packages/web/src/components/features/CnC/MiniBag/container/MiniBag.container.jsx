@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import {
   getGrandTotal,
   getCurrencySymbol,
-} from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger/container/orderLedger.selector';
+} from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import MiniBagView from '../views/MiniBag.view';
-import { getLabelsMiniBag, getTotalItemCount } from './MiniBag.selectors';
+import { getLabelsMiniBag, getTotalItemCount, getIsCartItemsUpdating } from './MiniBag.selectors';
+import {
+  getCurrentPointsState,
+  getTotalRewardsState,
+} from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
 
 // @flow
 type Props = {
@@ -16,6 +20,9 @@ type Props = {
   userName: any,
   subTotal: any,
   currencySymbol: any,
+  currentPoints: any,
+  totalRewards: any,
+  isCartItemsUpdating: any,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -30,7 +37,17 @@ export class MiniBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, totalItems, isOpen, userName, subTotal, currencySymbol } = this.props;
+    const {
+      labels,
+      totalItems,
+      isOpen,
+      userName,
+      subTotal,
+      currencySymbol,
+      currentPoints,
+      totalRewards,
+      isCartItemsUpdating,
+    } = this.props;
     return (
       <MiniBagView
         openState={isOpen}
@@ -40,6 +57,9 @@ export class MiniBagContainer extends React.Component<Props> {
         userName={userName}
         subTotal={subTotal}
         currencySymbol={currencySymbol}
+        currentPoints={currentPoints}
+        totalRewards={totalRewards}
+        isCartItemsUpdating={isCartItemsUpdating}
       />
     );
   }
@@ -50,6 +70,9 @@ const mapStateToProps = state => {
     totalItems: getTotalItemCount(state),
     subTotal: getGrandTotal(state),
     currencySymbol: getCurrencySymbol(state),
+    currentPoints: getCurrentPointsState(state),
+    totalRewards: getTotalRewardsState(state),
+    isCartItemsUpdating: getIsCartItemsUpdating(state),
   };
 };
 export default connect(mapStateToProps)(MiniBagContainer);

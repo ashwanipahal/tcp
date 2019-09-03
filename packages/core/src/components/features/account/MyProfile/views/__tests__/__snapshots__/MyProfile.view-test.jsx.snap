@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyProfile component should render correctly 1`] = `
+<div>
+  <Styled(FormPageHeading)
+    className="margin-none"
+  />
+  <Styled(ProfileInformation)
+    labels={Object {}}
+  />
+</div>
+`;

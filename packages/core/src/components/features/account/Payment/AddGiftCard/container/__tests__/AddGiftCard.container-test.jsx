@@ -1,18 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddGiftCardContainer, mapDispatchToProps } from '../AddGiftCard.container';
+import { AddGiftCardContainerVanilla, mapDispatchToProps } from '../AddGiftCard.container';
 import AddGiftCardComponent from '../../views/AddGiftCard.view';
 
 describe('Add Gift Card Container', () => {
+  const props = {
+    onAddGiftCardClick: jest.fn(),
+    addGiftCardResponse: 'foo',
+    getAddGiftCardErr: 'foo',
+    labels: {},
+    toggleModal: jest.fn(),
+    getCardListAction: jest.fn(),
+  };
+
   it('should render gift card view section', () => {
-    const tree = shallow(
-      <AddGiftCardContainer
-        onAddGiftCardClick={jest.fn()}
-        labels={{ paymentGC: {}, commmon: {} }}
-        addGiftCardResponse={jest.fn()}
-        getCardListAction={jest.fn()}
-      />
-    );
+    const tree = shallow(<AddGiftCardContainerVanilla {...props} />);
     expect(tree.is(AddGiftCardComponent)).toBeTruthy();
   });
 

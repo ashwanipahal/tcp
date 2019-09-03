@@ -31,6 +31,7 @@ exports[`L3 Panel component renders correctly 1`] = `
       className="l3-panel-header"
     >
       <span
+        aria-label="Previous"
         className="icon-back"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -80,8 +81,7 @@ exports[`L3 Panel component renders correctly 1`] = `
         </li>
         <li>
           <Styled(Anchor)
-            data-locator="l3_link_0"
-            to="/c/"
+            dataLocator="l3_link_0"
           >
             <Styled(BodyCopy)
               className="l2-nav-link"

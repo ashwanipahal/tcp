@@ -2,8 +2,12 @@ const buildQuery = ({ brand, country, channel }) => `
   navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
     categoryContent {
       description
+      catgroupId
       name
       id
+      seoUrl
+      seoToken
+      longDescription
       mainCategory {
         set {
           key
@@ -11,15 +15,6 @@ const buildQuery = ({ brand, country, channel }) => `
         }
         sizesRange {
           text
-        }
-        categoryImage {
-          url
-          alt
-          title
-          crop_d
-          crop_m
-          crop_t
-          position
         }
         categoryLayout {
           name
@@ -38,28 +33,17 @@ const buildQuery = ({ brand, country, channel }) => `
                 text
                 title
                 target
-                external
-              }
-            }
-            textBanner {
-              link {
-                url
-                text
-                target
-                title
-                external
-              }
-              textItems {
-                style
-                text
               }
             }
             shopBySize {
               text {
                 text
               }
-              richText {
+              linkList {
+                url
+                title
                 text
+                target
               }
             }
           }
@@ -69,15 +53,15 @@ const buildQuery = ({ brand, country, channel }) => `
     subCategories {
       categoryContent {
         seoToken
+        seoUrl
         groupIdentifierSequence
-        isShortImage
-        isUnique
-        productCount
         description
         groupIdentifier
         groupIdentifierName
+        longDescription
         name
         id
+        longDescription
         mainCategory {
           promoBadge {
             text
@@ -87,15 +71,15 @@ const buildQuery = ({ brand, country, channel }) => `
       subCategories {
         categoryContent {
           seoToken
+          seoUrl
           groupIdentifierSequence
-          isShortImage
-          isUnique
-          productCount
           description
           groupIdentifier
           groupIdentifierName
+          longDescription
           name
           id
+          longDescription
         }
       }
     }

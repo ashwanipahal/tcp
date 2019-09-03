@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shipping Page should render correctly 1`] = `
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="shipping"
+    navigation={
+      Object {
+        "state": Object {
+          "params": Object {
+            "addressLabels": Object {},
+            "defaultShipmentId": "",
+            "emailSignUpLabels": Object {},
+            "handleSubmit": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "method": Object {
+                      "shippingMethodId": undefined,
+                    },
+                    "shipTo": Object {
+                      "address": Object {
+                        "addressLine1": "pob",
+                        "addressLine2": "",
+                        "city": undefined,
+                        "country": undefined,
+                        "firstName": undefined,
+                        "isCommercialAddress": false,
+                        "lastName": undefined,
+                        "state": undefined,
+                        "zipCode": undefined,
+                      },
+                      "addressId": undefined,
+                      "emailAddress": undefined,
+                      "emailSignup": true,
+                      "onFileAddressKey": undefined,
+                      "phoneNumber": undefined,
+                      "saveToAccount": true,
+                      "setAsDefault": true,
+                    },
+                    "smsInfo": Object {
+                      "smsUpdateNumber": undefined,
+                      "wantsSmsOrderUpdates": undefined,
+                    },
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            },
+            "loadShipmentMethods": [MockFunction],
+            "selectedShipmentId": "",
+            "shipmentMethods": [MockFunction],
+            "shippingLabels": Object {},
+          },
+        },
+      }
+    }
+  />
+  <ScrollViewMock>
+    <CheckoutSectionTitleDisplay />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="black"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        textAlign="left"
+      />
+    </Styled(View)>
+  </ScrollViewMock>
+</Fragment>
+`;

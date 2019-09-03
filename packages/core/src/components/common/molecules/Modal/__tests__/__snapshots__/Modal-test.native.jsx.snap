@@ -2,37 +2,46 @@
 
 exports[`Modal Native should render correctly 1`] = `
 <SafeAreaView>
-  <StatusBar
-    animated={false}
-    hidden={true}
-    showHideTransition="fade"
-  />
   <Component
     hardwareAccelerated={false}
     transparent={false}
     visible={true}
   >
+    <Connect(ToastContainer) />
+    <StatusBar
+      animated={false}
+      hidden={true}
+      showHideTransition="fade"
+    />
     <Styled(View)>
-      <Styled(TouchableOpacity)
-        onPress={[MockFunction]}
-      >
-        <Styled(Image)
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/close.png",
-            }
-          }
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          fontSize="fs16"
+          fontWeight="extrabold"
+          mobileFontFamily="primary"
+          text="Modal Heading"
         />
-      </Styled(TouchableOpacity)>
+      </Styled(Text)>
+      <Styled(View)>
+        <Styled(TouchableOpacity)
+          onPress={[MockFunction]}
+        >
+          <Styled(Image)
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/close.png",
+              }
+            }
+          />
+        </Styled(TouchableOpacity)>
+      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(BodyCopy)
-        className="modalHeading"
-        color="#000"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        mobileFontFamily="primary"
-        text="Modal Heading"
+      <Styled(LineComp)
+        borderColor="black"
+        borderWidth={2}
+        marginBottom={0}
+        marginTop={5}
       />
     </Styled(View)>
   </Component>

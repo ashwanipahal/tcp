@@ -16,13 +16,17 @@ type Props = {
   cartItemCount: any,
   className: string,
   userName: any,
+  currentPoints: any,
+  totalRewards: any,
 };
-const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) => {
-  const data = {
-    points: 0,
-    rewardsPoints: 0,
-  };
-
+const MiniBagHeader = ({
+  labels,
+  cartItemCount,
+  className,
+  userName,
+  currentPoints,
+  totalRewards,
+}: Props) => {
   return (
     <div className={className}>
       <Row className="mainWrapper">
@@ -43,42 +47,56 @@ const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) =>
             </BodyCopy>
           ) : (
             <>
-              <BodyCopy component="span" fontSize="fs16" fontWeight="semibold" textAlign="left">
-                {`${labels.hi} ${userName} `}
+              <BodyCopy
+                component="span"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                textAlign="left"
+                fontFamily="secondary"
+              >
+                {`${labels.hi}, ${userName} `}
               </BodyCopy>
               <BodyCopy
                 className="pointsRewards"
                 component="span"
-                fontSize="fs14"
+                fontSize="fs15"
+                fontFamily="secondary"
                 fontWeight="semibold"
                 textAlign="left"
               >
-                {`(${data.points} ${labels.points}, $${data.rewardsPoints} ${labels.inRewards} )`}
+                {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
+                  labels.inRewards
+                } )`}
               </BodyCopy>
             </>
           )}
         </Col>
-        <Col className="subHeaderText" colSize={{ small: 2, medium: 2, large: 3 }}>
+        <Col className="subHeaderTextIcon" colSize={{ small: 2, medium: 2, large: 3 }}>
           <Anchor className="favIcon" fontSizeVariation="small" anchorVariation="primary" noLink>
             <Image
               alt="Product"
               className="product-image"
               src={getIconPath('fav-icon')}
-              data-locator="addedtobag-fav-icon"
+              dataLocator="addedtobag-fav-icon"
             />
           </Anchor>
           {'  '}
-          <Anchor fontSizeVariation="small" anchorVariation="primary" noLink>
-            <Image
-              alt="Product"
-              className="product-image"
-              src={getIconPath('cart-icon')}
-              data-locator="addedtobag-bag-icon"
-            />
-            <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
-              {cartItemCount || 0}
-            </BodyCopy>
-          </Anchor>
+
+          <Image
+            alt="Product"
+            className="product-image"
+            src={getIconPath('cart-icon')}
+            data-locator="addedtobag-bag-icon"
+          />
+          <BodyCopy
+            className="cartCount"
+            component="span"
+            fontWeight="semibold"
+            fontSize="fs10"
+            dataLocator="miniBagCount"
+          >
+            {cartItemCount || 0}
+          </BodyCopy>
         </Col>
       </Row>
     </div>

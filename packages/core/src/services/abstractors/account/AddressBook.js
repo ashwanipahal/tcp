@@ -1,12 +1,12 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import CHECKOUT_PAGE from '../../../constants/pages.constants';
+import PAGES from '../../../constants/pages.constants';
 
 export const getAddressListData = () => {
   const payload = {
     webService: endpoints.getAddressList,
     header: {
-      fromPage: CHECKOUT_PAGE,
+      fromPage: PAGES.CHECKOUT_PAGE,
     },
   };
   return executeStatefulAPICall(payload).then(res => {
