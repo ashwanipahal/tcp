@@ -28,7 +28,7 @@ const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards) => 
         <Col
           colSize={{
             small: 4,
-            medium: 2,
+            medium: 4,
             large: 3,
           }}
         >
