@@ -11,6 +11,7 @@ const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
 const MAX_ITEMS_IN_COL = 8;
 const FOUR_COL = 4;
 const TWO_COL = 2;
+const toCat = id => `/c?cid=${id}`;
 
 const createShopByLinks = (links, column) => {
   return (
@@ -105,7 +106,8 @@ const createLinks = (
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
               <Anchor
-                to={url}
+                asPath={url}
+                to={toCat(id)}
                 onClick={openL3Drawer(`l3-drawer-${currentIndex.toString()}`, hasL3)}
               >
                 <BodyCopy
