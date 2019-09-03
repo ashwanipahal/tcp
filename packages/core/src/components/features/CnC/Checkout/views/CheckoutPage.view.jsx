@@ -55,7 +55,6 @@ class CheckoutPage extends React.PureComponent {
         pickupInitialValues.pickUpContact &&
         pickupInitialValues.pickUpContact.firstName)
     );
-
     return (
       <div>
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
@@ -64,6 +63,7 @@ class CheckoutPage extends React.PureComponent {
             isMobile={isMobile}
             isUsSite={isUsSite}
             initialValues={pickupInitialValues}
+            pickupInitialValues={pickupInitialValues}
             onEditModeChange={onEditModeChange}
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}

@@ -7,6 +7,7 @@ const LoginView = ({
   onSubmit,
   labels,
   loginErrorMessage,
+  formErrorMessage,
   initialValues,
   showRecaptcha,
   resetLoginState,
@@ -26,6 +27,7 @@ const LoginView = ({
     <LoginSection
       onSubmit={onSubmit}
       labels={labels}
+      formErrorMessage={formErrorMessage}
       loginErrorMessage={loginErrorMessage}
       initialValues={initialValues}
       showRecaptcha={showRecaptcha}
@@ -64,6 +66,7 @@ LoginView.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 LoginView.defaultProps = {

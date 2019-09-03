@@ -1046,7 +1046,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -1068,6 +1068,8 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -1111,7 +1113,20 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
@@ -1123,13 +1138,20 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -2257,7 +2279,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -2279,6 +2301,8 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -2322,7 +2346,20 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
@@ -2334,13 +2371,20 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
     margin-right: 4px;
     margin-top: 2px;
   }

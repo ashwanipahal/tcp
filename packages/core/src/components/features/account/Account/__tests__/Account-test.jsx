@@ -9,7 +9,9 @@ describe('Account View', () => {
         id: 'accountOverview',
       },
     };
-    const tree = shallow(<Account router={router} getAccountNavigationAction={() => {}} />);
+    const tree = shallow(
+      <Account router={router} getAccountNavigationAction={() => {}} labels={{}} />
+    );
     expect(tree).toMatchSnapshot();
   });
   it('should render Account container Correctly', () => {
@@ -18,7 +20,9 @@ describe('Account View', () => {
         id: 'accountOverview',
       },
     };
-    const tree = shallow(<Account router={router} getAccountNavigationAction={() => {}} />);
+    const tree = shallow(
+      <Account router={router} getAccountNavigationAction={() => {}} labels={{}} />
+    );
     tree.setProps({ router: { query: { id: 'addressBook' } } });
     expect(tree).toMatchSnapshot();
   });
