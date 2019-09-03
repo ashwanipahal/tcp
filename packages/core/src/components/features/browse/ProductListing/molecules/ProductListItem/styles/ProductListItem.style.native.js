@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
-  max-width: 164;
+  width: 50%;
   height: 428;
-  margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  background: white;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const FavoriteIconContainer = styled.View`
@@ -90,10 +91,17 @@ const PromotionalMessageContainer = styled.View`
 
 // Color is hard code as not in the style guide
 const PromotionalMessage = styled.Text`
-  color: ${props => props.theme.colorPalette.orange[800]};
+  color: ${props =>
+    props.isPlcc
+      ? props.theme.colorPalette.userTheme.plcc
+      : props.theme.colorPalette.userTheme.mpr};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs9};
   line-height: 11;
+`;
+
+const PromotionalMessagePostfix = styled.Text`
+  color: ${props => props.theme.colorPalette.gray[900]};
 `;
 
 const AddToBagContainer = styled.View`
@@ -120,4 +128,5 @@ export {
   PromotionalMessageContainer,
   PromotionalMessage,
   AddToBagContainer,
+  PromotionalMessagePostfix,
 };

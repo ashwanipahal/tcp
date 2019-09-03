@@ -73,7 +73,7 @@ const ModuleN = (props: Props) => {
             navigation={navigation}
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
-            color="red"
+            buttonVariation="cautionary"
           />
           <Border background="red" />
         </ContainerView>

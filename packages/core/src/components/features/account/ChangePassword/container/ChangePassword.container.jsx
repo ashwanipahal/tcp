@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import utils from '../../../../../utils';
-import { getError, getSuccess, getChangePasswordLabels } from './ChangePassword.selectors';
+import { getError, getChangePasswordLabels } from './ChangePassword.selectors';
+import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import ChangePasswordComponent from '../views';
 import { changePassword, changePasswordError } from './ChangePassword.actions';
 

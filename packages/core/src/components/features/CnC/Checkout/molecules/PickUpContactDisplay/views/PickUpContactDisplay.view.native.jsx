@@ -13,14 +13,14 @@ class PickUpContactDisplay extends React.PureComponent {
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs16"
-          fontWeight="regular"
+          color="gray.900"
           text={`${formData.pickUpContact.firstName} ${formData.pickUpContact.lastName}`}
         />
         {formData.pickUpContact.phoneNumber && (
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs16"
-            fontWeight="regular"
+            color="gray.900"
             text={formData.pickUpContact.phoneNumber}
           />
         )}
@@ -28,7 +28,7 @@ class PickUpContactDisplay extends React.PureComponent {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs16"
-            fontWeight="regular"
+            color="gray.900"
             text={formData.pickUpContact.emailAddress}
           />
         )}
