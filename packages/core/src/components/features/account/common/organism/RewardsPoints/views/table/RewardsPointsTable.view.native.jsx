@@ -25,9 +25,9 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
             fontSize="fs18"
             fontWeight="black"
             color="gray.900"
-            text={`${labels.lbl_common_currency ? labels.lbl_common_currency : ''}${Math.round(
-              totalRewards || 0
-            )}`}
+            text={`${
+              labels.lbl_rewardPoints_currency ? labels.lbl_rewardPoints_currency : ''
+            }${Math.round(totalRewards || 0)}`}
           />
           <TextWrapper>
             <BodyCopy
@@ -36,7 +36,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
               fontWeight="regular"
               textAlign="center"
               color="black"
-              text={labels.lbl_common_heading}
+              text={labels.lbl_rewardPoints_heading}
             />
           </TextWrapper>
         </MyRewardsWrapper>
@@ -56,7 +56,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
               fontWeight="regular"
               textAlign="center"
               color="black"
-              text={labels.lbl_common_current_points}
+              text={labels.lbl_rewardPoints_currentPoints}
             />
           </TextWrapper>
         </CurrentPointsWrapper>
@@ -76,7 +76,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
               fontWeight="regular"
               textAlign="center"
               color="black"
-              text={labels.lbl_common_next_reward_points}
+              text={labels.lbl_rewardPoints_nextReward_points}
             />
           </TextWrapper>
         </NextRewardsWrapper>
@@ -97,10 +97,10 @@ RewardsPointsTable.defaultProps = {
   currentPoints: 0,
   totalRewards: 0,
   labels: {
-    lbl_common_currency: '',
-    lbl_common_heading: '',
-    lbl_common_current_points: '',
-    lbl_common_next_reward_points: '',
+    lbl_rewardPoints_currency: '',
+    lbl_rewardPoints_heading: '',
+    lbl_rewardPoints_currentPoints: '',
+    lbl_rewardPoints_nextReward_points: '',
   },
 };
 

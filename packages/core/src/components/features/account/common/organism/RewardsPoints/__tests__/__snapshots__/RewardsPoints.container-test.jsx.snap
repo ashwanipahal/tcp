@@ -5,10 +5,10 @@ exports[`Rewards Points Container View should render Rewards Points Container Co
   currentPoints=""
   labels={
     Object {
-      "lbl_common_currency": "",
-      "lbl_common_current_points": "",
-      "lbl_common_heading": "",
-      "lbl_common_next_reward": "",
+      "lbl_rewardPoints_currency": "",
+      "lbl_rewardPoints_currentPoints": "",
+      "lbl_rewardPoints_heading": "",
+      "lbl_rewardPoints_nextReward": "",
     }
   }
   plccUser={false}

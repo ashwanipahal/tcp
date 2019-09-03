@@ -27,7 +27,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         lineHeight="normal"
         textAlign="left"
       >
-        Current Points: 
+        undefined: 
         <Styled(BodyCopy)
           className={null}
           color="text.primary"
@@ -64,7 +64,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         lineHeight="normal"
         textAlign="left"
       >
-        My rewards: 
+        undefined: 
         <Styled(BodyCopy)
           className={null}
           color="text.primary"
@@ -76,9 +76,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="left"
-        >
-          $
-        </Styled(BodyCopy)>
+        />
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
@@ -129,7 +127,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         lineHeight="normal"
         textAlign="left"
       >
-        Next Rewards: 
+        undefined: 
         <Styled(BodyCopy)
           className={null}
           color="text.primary"
