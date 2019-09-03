@@ -112,13 +112,15 @@ LoginView.propTypes = {
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
   loginError: PropTypes.bool.isRequired,
-  showCheckoutModal: PropTypes.func.isRequired,
-  showLogin: PropTypes.func.isRequired,
+  showCheckoutModal: PropTypes.func,
+  showLogin: PropTypes.func,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   navigation: {},
+  showCheckoutModal: () => {},
+  showLogin: () => {},
 };
 
 export default LoginView;
