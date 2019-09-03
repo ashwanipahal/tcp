@@ -192,7 +192,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -242,7 +242,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -274,7 +274,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -348,6 +348,12 @@ exports[`LoginForm component should renders correctly 1`] = `
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
   & .disabled {
     opacity: ",
                   [Function],
@@ -375,7 +381,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -456,7 +462,10 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
-      test errror
+      <Styled(RichText)
+        className="richTextColor"
+        richTextHtml="test errror"
+      />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="elem-mb-LRG"
@@ -640,7 +649,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -690,7 +699,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -722,7 +731,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -796,6 +805,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
   & .disabled {
     opacity: ",
                   [Function],
@@ -823,7 +838,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

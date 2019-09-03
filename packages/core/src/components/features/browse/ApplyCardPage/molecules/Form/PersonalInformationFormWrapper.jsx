@@ -12,7 +12,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
     const { labels } = this.props;
     return (
       <StyledPersonalFormWrapper>
-        <BodyCopy component="h2" className="title">
+        <BodyCopy component="h2" className="title" tabIndex="0">
           {labels.plcc_form_personal_info}
         </BodyCopy>
         <Row fullBleed>

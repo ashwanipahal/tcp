@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { trackOrder, setErrorInfoNull } from './TrackOrder.actions';
+import { trackOrder, setErrorInfoNull, setTrackOrderModalMountedState } from './TrackOrder.actions';
 import TrackOrderView from '../molecules/TrackOrderView';
 import {
   getLabels,
@@ -12,7 +12,7 @@ import {
 } from './TrackOrder.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { routerPush } from '../../../../../utils';
-import ROUTE_PATH from '../../../../../config/route.config';
+import { ROUTE_PATH } from '../../../../../config/route.config';
 import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/index.native';
 
 // @flow
@@ -28,9 +28,15 @@ type Props = {
   onChangeForm: Function,
   onRequestClose: Function,
   navigation: Object,
+  resetModalData: Function,
 };
 
 export class TrackOrderContainer extends React.PureComponent<Props> {
+  componentDidMount() {
+    const { resetModalData } = this.props;
+    resetModalData({ state: true });
+  }
+
   componentDidUpdate() {
     const { orderDetailResponse, isUserLoggedIn, onRequestClose } = this.props;
     const isSuccess = orderDetailResponse && orderDetailResponse.get('success');
@@ -115,6 +121,9 @@ export const mapDispatchToProps = dispatch => {
     },
     onChangeForm: () => {
       dispatch(setErrorInfoNull());
+    },
+    resetModalData: payload => {
+      dispatch(setTrackOrderModalMountedState(payload));
     },
   };
 };

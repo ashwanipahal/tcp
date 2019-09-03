@@ -117,7 +117,6 @@ class PaymentItem extends React.Component<Props> {
             {isGiftCard && (
               <CheckBalanceContainer>
                 <CustomButton
-                  color="white"
                   fill="BLUE"
                   text={labels.lbl_overview_check_balance}
                   buttonVariation="variable-width"

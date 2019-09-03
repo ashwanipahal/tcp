@@ -5,7 +5,6 @@ import { ProductColorChipWrapperVanilla } from '../views/ProductColorChipWrapper
 const props = {
   onChipClick: jest.fn(),
   selectedColorId: 123,
-  maxVisibleItems: 1,
   isPLPredesign: false,
   showColorEvenOne: true,
   className: '',
@@ -39,14 +38,13 @@ describe('ProductColorChipWrapperVanilla component', () => {
 
   it('ProductColorChipWrapper should call handleNextClick', () => {
     const component = shallow(<ProductColorChipWrapperVanilla {...props} />);
-    component.setState({ firstItemIndex: 2 });
+    component.setState({ firstItemIndex: 2, maxVisibleItems: 2 });
     component.setProps({
       isPLPredesign: false,
       colorsMap: [
         { color: { name: '' }, colorProductId: '' },
         { color: { name: '' }, colorProductId: '' },
       ],
-      maxVisibleItems: 2,
     });
     component.instance().handleNextClick();
     expect(component.state('firstItemIndex')).toEqual(0);

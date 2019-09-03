@@ -171,15 +171,15 @@ class TCPWebApp extends App {
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
-            <Grid>
+            <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
               {this.getSEOTags(Component.pageId)}
-              {isNonCheckoutPage && <Header />}
-              {!isNonCheckoutPage && <CheckoutHeader />}
+              <Header />
+              <CheckoutHeader />
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />
-                {isNonCheckoutPage && <Footer />}
+                <Footer />
               </div>
             </Grid>
           </Provider>

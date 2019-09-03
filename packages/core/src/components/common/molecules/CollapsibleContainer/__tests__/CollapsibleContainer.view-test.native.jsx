@@ -22,4 +22,14 @@ describe('CollapsibleContainer', () => {
     tree.find('Styled(TouchableOpacity)').simulate('press');
     expect(tree.state('isExpanded')).toBe(true);
   });
+  it('should render correctly with getExpandedState and bag page', () => {
+    const tree = shallow(
+      <CollapsibleContainer header={header} body={body} getExpandedState={jest.fn()} />
+    );
+    tree.setState({ isExpanded: false, isBag: false });
+    tree.setProps({ index: 0, openedTile: 0 });
+    expect(tree).toMatchSnapshot();
+    tree.find('Styled(TouchableOpacity)').simulate('press');
+    expect(tree.state('isExpanded')).toBe(true);
+  });
 });

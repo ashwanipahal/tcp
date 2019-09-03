@@ -11,7 +11,7 @@ const getFormattedError = err => {
 };
 
 export const errorHandler = err => {
-  throw err.response && err.response.body !== null ? getFormattedError(err) : err.errorCode;
+  throw err.response && err.response.body !== null ? getFormattedError(err) : 'genericError';
 };
 
 /**

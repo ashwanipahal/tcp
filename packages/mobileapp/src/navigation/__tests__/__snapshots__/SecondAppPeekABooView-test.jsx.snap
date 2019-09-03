@@ -20,6 +20,7 @@ exports[`SecondAppPeekABooView component test cases should match snapshot 1`] = 
         "width": 100,
         "zIndex": -1,
       },
+      null,
       Object {
         "borderColor": "#f7971f",
         "borderWidth": 0,

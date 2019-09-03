@@ -10,6 +10,9 @@ export default styled.div`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
+  /*
+   * With reference to changing placeholder (Very specific to plcc form requirements  and to avoid global changes. )
+   */
   .contact_information_form {
     > label {
       > p {

@@ -64,7 +64,10 @@ class LoginView extends React.PureComponent {
       onCreateAccountClick,
       navigation,
       variation,
+      handleContinueAsGuest,
       loginError,
+      showCheckoutModal,
+      showLogin,
     } = this.props;
     return (
       <ScrollViewStyle>
@@ -84,6 +87,9 @@ class LoginView extends React.PureComponent {
           onCreateAccountClick={onCreateAccountClick}
           navigation={navigation}
           variation={variation}
+          handleContinueAsGuest={handleContinueAsGuest}
+          showCheckoutModal={showCheckoutModal}
+          showLogin={showLogin}
         />
       </ScrollViewStyle>
     );
@@ -104,12 +110,17 @@ LoginView.propTypes = {
   onCreateAccountClick: PropTypes.string.isRequired,
   navigation: PropTypes.shape({}),
   variation: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func.isRequired,
   loginError: PropTypes.bool.isRequired,
+  showCheckoutModal: PropTypes.func,
+  showLogin: PropTypes.func,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   navigation: {},
+  showCheckoutModal: () => {},
+  showLogin: () => {},
 };
 
 export default LoginView;

@@ -31,7 +31,13 @@ export class MyRewardsContainer extends PureComponent {
 
   render() {
     const { coupons, rewardCoupons, view, ...otherProps } = this.props;
-    return <MyRewards coupons={view === 'reward' ? rewardCoupons : coupons} {...otherProps} />;
+    return (
+      <MyRewards
+        coupons={view === 'reward' ? rewardCoupons : coupons}
+        view={view}
+        {...otherProps}
+      />
+    );
   }
 }
 

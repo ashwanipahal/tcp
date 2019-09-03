@@ -73,6 +73,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 ]
               }
               className=""
+              show={false}
             >
               <Field
                 allowMultipleSelections={true}

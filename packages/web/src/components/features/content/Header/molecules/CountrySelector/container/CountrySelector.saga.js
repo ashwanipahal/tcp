@@ -3,7 +3,6 @@ import countrySelectorAbstractor from '@tcp/core/src/services/abstractors/common
 import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
 import {
   getSiteId,
-  isCanada,
   getCountriesMap,
   getCurrenciesMap,
   getModifiedLanguageCode,
@@ -16,10 +15,11 @@ import {
   COUNTRY_SELECTOR_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-
 import GLOBAL_CONSTANT from '@tcp/core/src/reduxStore/constants';
+import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
 
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
+import { sites } from '../../../../../../../constants';
 import {
   storeCountriesMap,
   storeCurrenciesMap,
@@ -37,57 +37,69 @@ export function* fetchModuleX({ payload = '' }) {
 }
 
 export function* fetchCountryListData() {
-  const res = yield call(countrySelectorAbstractor.getData);
-  const data = res && res.data.countryList;
-  const countriesMap = getCountriesMap(data);
-  const currenciesMap = getCurrenciesMap(data);
-  yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
+  try {
+    const res = yield call(countrySelectorAbstractor.getData);
+    const data = res && res.data.countryList;
+    const countriesMap = getCountriesMap(data);
+    const currenciesMap = getCurrenciesMap(data);
+    yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
+  } catch (error) {
+    yield null;
+  }
 }
 
 export function* submitCountrySelectionData({ payload: data }) {
-  const siteConfig = isCanada() ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
-  const { addShipToStore } = endpoints;
-  const { sitesInfo } = API_CONFIG;
-  const payload = {
-    body: {
-      storeId: siteConfig.storeId,
-      catalogId: siteConfig.catalogId,
-      langId: sitesInfo.langId,
-      ccd: data.country,
-      languageTCP: getModifiedLanguageCode(data.language),
-      curr: data.currency,
-      cc: data.savedCountry,
-      selLanguage: getModifiedLanguageCode(data.savedLanguage),
-      er: data.value || '1.0',
-      mm: data.merchantMargin || '1.0',
-      orderId: '.',
-      USA: 'USD',
-      CA: 'CAD',
-      URL: 'http://www.childrensplace.com/',
-    },
-    webService: addShipToStore,
-  };
-  const { submitData } = countrySelectorAbstractor;
-  const res = yield call(submitData, payload);
-  if (!res) console.log('Error occurered!');
-  const { country: newCountry, language: newLanguage } = data;
-  const oldCountry = yield select(state =>
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
-  );
-  const oldLanguage = yield select(state =>
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'language'])
-  );
-  const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
-  const oldSiteId = getSiteId();
-  yield put(udpateSiteId(newSiteId));
+  try {
+    const { ca } = sites;
+    const siteConfig =
+      data.country === ca.countryCode ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
+    const { addShipToStore } = endpoints;
+    const { sitesInfo } = API_CONFIG;
+    const payload = {
+      body: {
+        storeId: siteConfig.storeId,
+        catalogId: siteConfig.catalogId,
+        langId: sitesInfo.langId,
+        ccd: data.country,
+        languageTCP: getModifiedLanguageCode(data.language),
+        curr: data.currency,
+        cc: data.savedCountry,
+        selLanguage: getModifiedLanguageCode(data.savedLanguage),
+        er: data.value || '1.0',
+        mm: data.merchantMargin || '1.0',
+        orderId: '.',
+        USA: 'USD',
+        CA: 'CAD',
+        URL: 'http://www.childrensplace.com/',
+      },
+      webService: addShipToStore,
+    };
+    const { submitData } = countrySelectorAbstractor;
+    const res = yield call(submitData, payload);
+    if (!res) console.log('Error occurered!');
+    const { country: newCountry, language: newLanguage } = data;
+    const oldCountry = yield select(state =>
+      state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
+    );
+    const oldLanguage = yield select(state =>
+      state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'language'])
+    );
+    const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
+    const oldSiteId = getSiteId();
+    yield put(udpateSiteId(newSiteId));
 
-  siteRedirect(newCountry, oldCountry, newSiteId, oldSiteId);
-  languageRedirect(newLanguage, oldLanguage);
+    siteRedirect(newCountry, oldCountry, newSiteId, oldSiteId);
+    languageRedirect(newLanguage, oldLanguage);
+  } catch (error) {
+    yield null;
+  }
 }
 
 function* CountrySelectorSaga() {
-  yield takeLatest(GLOBAL_CONSTANT.GET_MODULEX_CONTENT, fetchModuleX);
-  yield takeLatest(COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_GET_DATA, fetchCountryListData);
+  const cachedCountryListData = validateReduxCache(fetchCountryListData);
+  const cachedModuleX = validateReduxCache(fetchModuleX);
+  yield takeLatest(GLOBAL_CONSTANT.GET_MODULEX_CONTENT, cachedModuleX);
+  yield takeLatest(COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_GET_DATA, cachedCountryListData);
   yield takeLatest(
     COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SUBMIT_DATA,
     submitCountrySelectionData

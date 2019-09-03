@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
+import { getFormValidationErrorMessages } from '../../../../features/account/Account/container/Account.selectors';
 import AddAddressComponent from '../views/AddEditAddress.view';
 import {
   getAddressResponse,
@@ -25,6 +26,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     address: PropTypes.shape({}),
     labels: PropTypes.shape({}),
     backToAddressBookClick: PropTypes.func,
+    formErrorMessage: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -37,6 +39,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     address: {},
     labels: {},
     backToAddressBookClick: () => {},
+    formErrorMessage: {},
   };
 
   constructor(props) {
@@ -109,6 +112,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       labels,
       backToAddressBookClick,
       isEdit,
+      formErrorMessage,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -123,6 +127,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         isEdit={isEdit}
         addressFormLabels={labels.addressFormLabels}
         backToAddressBookClick={backToAddressBookClick}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -155,6 +160,7 @@ const mapStateToProps = (state, ownProps) => {
     addressList: getAddressListState(state),
     address: getAddressById(state, ownProps),
     labels: getAddEditAddressLabels(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 

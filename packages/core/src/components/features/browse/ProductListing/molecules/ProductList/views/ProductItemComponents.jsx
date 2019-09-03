@@ -228,7 +228,7 @@ export function PromotionalMessage(props) {
   return (
     <BodyCopy
       fontSize={['fs10', 'fs12', 'fs14']}
-      fontWeight={['extrabold', 'semibold', 'semibold']}
+      fontWeight="extrabold"
       fontFamily="secondary"
       data-locator={getLocator('global_loyalty_text')}
       className="loyalty-text-container"
