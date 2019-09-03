@@ -44,6 +44,12 @@ const ResetWrapper = styled.View`
   padding-top: 10px;
 `;
 
+const ResetPassword = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: ${'center'};
+`;
+
 export {
   SectionStyle,
   CenterAlignWrapper,
@@ -53,4 +59,5 @@ export {
   PointsWrapper,
   ResetWrapper,
   ViewAlignCenter,
+  ResetPassword,
 };

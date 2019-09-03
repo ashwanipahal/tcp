@@ -43,4 +43,5 @@ export {
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
 } from './utils';

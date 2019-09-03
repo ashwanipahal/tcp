@@ -24,6 +24,7 @@ export const AddEditCreditCard = ({
   mailingAddress,
   showUserName,
   showCreditCardFields,
+  formErrorMessage,
   ...otherProps
 }) => {
   const backLink = pageBackLink || internalEndpoints.paymentPage.link;
@@ -83,6 +84,7 @@ export const AddEditCreditCard = ({
             showUserName={showUserName}
             showCreditCardFields={showCreditCardFields}
             addressFormLabels={addressFormLabels}
+            formErrorMessage={formErrorMessage}
             {...otherProps}
           />
         </div>
@@ -93,6 +95,7 @@ export const AddEditCreditCard = ({
           isEdit={isEdit}
           initialValues={initialValues}
           addressFormLabels={addressFormLabels}
+          formErrorMessage={formErrorMessage}
           {...otherProps}
         />
       )}
@@ -116,6 +119,7 @@ AddEditCreditCard.propTypes = {
   pageBackLink: PropTypes.string,
   pageBackPath: PropTypes.string,
   pageheading: PropTypes.string,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 AddEditCreditCard.defaultProps = {
