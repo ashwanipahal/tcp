@@ -7,9 +7,10 @@ import { setCandidData } from './GetCandid.actions';
 export function* fetchCandidData({ payload }) {
   try {
     const res = yield call(getCandidAbstractor.getData, payload);
-    yield put(setCandidData(res));
+    const candidData = res && res.Views;
+    yield put(setCandidData(candidData));
   } catch (error) {
-    console.log(error);
+    yield null;
   }
 }
 

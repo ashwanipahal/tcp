@@ -16,4 +16,5 @@ export const setCandidData = payload => {
 
 export default {
   fetchCandidData,
+  setCandidData,
 };

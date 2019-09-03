@@ -28,40 +28,53 @@ class GetCandid extends React.PureComponent {
 
   renderItem = item => {
     const {
-      item: { Media: { Images: { LowResolution } } },
+      item: {
+        Media: {
+          Images: { LowResolution },
+        },
+      },
       index,
     } = item;
     const image = LowResolution;
     return (
       <Touchable accessibilityRole="image">
-        <ImageGridItem
-          key={index.toString()}
-          url={image.Url}
-          height="103px"
-          width="103px"
-        />
+        <ImageGridItem key={index.toString()} url={image.Url} height="103px" width="103px" />
       </Touchable>
     );
-  }
+  };
 
   render() {
     const { candidData } = this.props;
-    const data = candidData && candidData.Views;
 
     return (
-      <Wrapper>
-        { data  && (
+      candidData && (
+        <Wrapper>
           <FlatList
             numColumns={3}
-            data={data}
+            data={candidData}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />
-        )}
-      </Wrapper>
+        </Wrapper>
+      )
     );
   }
 }
+
+GetCandid.defaultProps = {
+  apiConfig: {},
+  candidData: {
+    Settings: {},
+    Views: [],
+  },
+  fetchCandidData: () => {},
+};
+
+GetCandid.propTypes = {
+  apiConfig: PropTypes.shape({}),
+  candidData: PropTypes.shape({}),
+  fetchCandidData: PropTypes.func,
+};
 
 export default GetCandid;
 export { GetCandid as GetCandidVanilla };

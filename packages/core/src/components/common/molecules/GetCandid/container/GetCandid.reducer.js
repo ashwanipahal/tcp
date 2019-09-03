@@ -11,9 +11,7 @@ const initialState = fromJS({
 const GetCandidReducer = (state = initialState, action) => {
   switch (action.type) {
     case CONSTANTS.SET_DATA:
-      return state
-        .set('candidData', action.payload)
-        .set(setCacheTTL(DEFAULT_REDUCER_KEY, CONSTANTS.GET_CANDID_DATA_TTL));
+      return state.set('candidData', action.payload).set(DEFAULT_REDUCER_KEY, setCacheTTL());
     default:
       if (state instanceof Object) {
         return fromJS(state);

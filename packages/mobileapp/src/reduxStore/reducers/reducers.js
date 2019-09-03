@@ -82,6 +82,8 @@ const filteredProductListingReducer = createFilteredReducer(
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
+const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
+
 const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
@@ -107,7 +109,6 @@ const rootReducer = combineReducers({
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [COUPON_REDUCER_KEY]: CouponReducer,
   [AIRMILES_BANNER_REDUCER_KEY]: AirmilesBannerReducer,
-
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
@@ -116,7 +117,7 @@ const rootReducer = combineReducers({
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
-  [GET_CANDID_REDUCER_KEY]: GetCandidReducer,
+  [GET_CANDID_REDUCER_KEY]: filteredGetCandidReducer,
 });
 
 export default rootReducer;
