@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WalletView component should render correctly 1`] = `
+<Styled(PageHeadingWithLinks)>
+  <Connect(MyRewardsContainer)
+    labels={
+      Object {
+        "common": Object {},
+        "myPlaceRewards": Object {},
+      }
+    }
+    view="all"
+  />
+</Styled(PageHeadingWithLinks)>
+`;

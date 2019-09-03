@@ -1323,7 +1323,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             }
             dataLocator="plcc_zip_code"
             id="zipCode"
-            maxLength={6}
+            maxLength={5}
             name="noCountryZip"
             placeholder="zipcode"
           />
@@ -1504,7 +1504,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
         dataLocator="plc_mobile_no"
         id="phoneNumber"
-        name="phoneNumber"
+        name="phoneNumberWithAlt"
         placeholder="mobile phone"
         type="tel"
       />
@@ -1857,7 +1857,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
         dataLocator="plcc_alt_mobile_no"
         id="alternatePhone"
-        name="alternatePhone"
+        name="altPhoneNumber"
         placeholder="alternate phone"
       />
     </Styled(Col)>

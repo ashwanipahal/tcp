@@ -19,7 +19,7 @@ export default css`
     min-height: 42px;
   }
   .candidate-b_buttons {
-    padding: 11px 48px 0 48px;
+    padding: 11px 0 0 0;
   }
   .heading_text, .footer_top_candidate_a .heading_text  {
     margin-bottom: 15px;
@@ -31,6 +31,9 @@ export default css`
     .style2 {
       color: ${props => props.theme.colorPalette.primary.main};
     }
+  }
+  .candidate-b_buttons .heading_text {
+    font-size: 10px;
   }
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
     font-size: 12px;
@@ -131,6 +134,7 @@ export default css`
     }
     &.navigation-footer .col-md-half-width {
       width: 100%;
+      margin-right: 0;
     }
     &.navigation-footer .hide-in-medium-up {
       display: block;
@@ -144,6 +148,12 @@ export default css`
     .footer-top {
       padding-bottom: 44px;
       border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    }
+    .candidate-b_buttons {
+      padding: 11px 38px 0 38px;
+    }
+    .candidate-b_buttons .heading_text{
+      font-size: 15px;
     }
     .footer-bottom {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
@@ -182,6 +192,10 @@ export default css`
       font-size: 15px;
       line-height: 1.67;
     }
+  }
+  
+  .checkout-pages &{
+    display: none;
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {

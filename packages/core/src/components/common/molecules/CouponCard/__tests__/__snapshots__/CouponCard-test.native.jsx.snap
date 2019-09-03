@@ -64,11 +64,11 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
           <Styled(View)>
             <Styled(CustomButton)
               buttonVariation="variable-width"
-              color="#fff"
+              color=""
               customStyle={Object {}}
               data-locator=""
               disableButton={false}
-              fill="BLACK"
+              fill="DARK"
               fullWidth=""
               locator=""
               onPress={[Function]}

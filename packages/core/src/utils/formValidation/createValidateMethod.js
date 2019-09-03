@@ -2,6 +2,8 @@ import invariant from 'invariant';
 import validatorDefaultMessages from './validatorDefaultMessages';
 import validatorMethods from './validatorMethods';
 
+import formErrorCMSMessage from './formErrorCMSMessage';
+
 export const GENERAL_ERROR_FIELD_NAME = '_error';
 
 // The configuration object passed to createValidateMethod can contain the following keys:
@@ -267,6 +269,7 @@ function evaluateAllSyncRules(
             linkedFieldsValues
           );
       }
+
       let messagesObject = messages;
       if (typeof messages === 'function') {
         messagesObject = messages(props);
@@ -286,9 +289,25 @@ function evaluateAllSyncRules(
   return errors;
 }
 
+/**
+ * @summary This method set the error message either from props coming from CMS or hard coded messages
+ * @param {Object} errors  - { 'message':{}, 'rule':{}}
+ * @param {Object} props - { 'props.formErrorMessage': {}}
+ */
+function getErrorMessageLabels(errors, props) {
+  Object.keys(errors).forEach(key => {
+    // check error message is on props, if not get from hard coded error object
+    errors[key] = props.formErrorMessage
+      ? props.formErrorMessage[errors[key]]
+      : formErrorCMSMessage[errors[key]];
+  });
+  return errors;
+}
+
 function validateSection(sectionConfig, values, props) {
   const { rules, messages, asyncValidators, options, ...subSections } = sectionConfig; // eslint-disable-line no-unused-vars
 
+  //const labeldMessage = getMessageLabels(messages,props.labels.formValidation);
   const errors = evaluateAllSyncRules(rules, messages, options, values, props); // get errors for this section
   if (values) {
     Object.keys(subSections).forEach(sectionName => {
@@ -303,7 +322,8 @@ function validateSection(sectionConfig, values, props) {
       );
     });
   }
-  return errors;
+
+  return getErrorMessageLabels(errors, props);
 }
 
 export default function createValidateMethod(config) {

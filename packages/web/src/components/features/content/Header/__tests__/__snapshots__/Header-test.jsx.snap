@@ -7,7 +7,7 @@ exports[`Header component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kIPQKe",
+        "componentId": "sc-RefOD",
         "isStatic": false,
         "rules": Array [
           "
@@ -20,6 +20,10 @@ exports[`Header component renders correctly 1`] = `
           " {
     margin-bottom: 24px;
   }
+
+  .checkout-pages & {
+    display: none;
+  }
 ",
           ";
 ",
@@ -28,7 +32,7 @@ exports[`Header component renders correctly 1`] = `
       "displayName": "Styled(Header)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kIPQKe",
+      "styledComponentId": "sc-RefOD",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

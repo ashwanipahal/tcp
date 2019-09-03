@@ -14,7 +14,7 @@ import {
   TextColOne,
   TextColTwo,
   AlternateFieldWrapper,
-} from '../styles/PickUpAlternateFormPart.view.style.native';
+} from '../styles/PickUpAlternateFormPart.style.native';
 
 class PickUpAlternateFormPart extends React.PureComponent {
   render() {

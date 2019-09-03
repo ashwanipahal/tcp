@@ -144,12 +144,12 @@ export const getProfileInfoTileData = createSelector(
     let firstName;
     let lastName;
     let emailAddress;
+    let phoneNumber;
     if (personalInformation) {
       firstName = personalInformation.get('firstName');
       lastName = personalInformation.get('lastName');
-      emailAddress =
-        personalInformation.get('emailAddress') &&
-        personalInformation.get('emailAddress').toLowerCase();
+      phoneNumber = personalInformation.get('phoneNumber');
+      emailAddress = personalInformation.get('emailAddress');
     }
     const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
     const addressTemp = mailingAddress ? mailingAddress.get('address') : null;
@@ -157,6 +157,7 @@ export const getProfileInfoTileData = createSelector(
     return {
       firstName,
       lastName,
+      phoneNumber,
       emailAddress,
       rewardsAccountNumber,
       address,

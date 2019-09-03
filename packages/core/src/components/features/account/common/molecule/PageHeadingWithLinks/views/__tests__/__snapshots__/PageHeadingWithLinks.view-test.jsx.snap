@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageHeadingWithLinks View should empty render correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="elem-mb-XXL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Heading)
+      className={null}
+      color="text.primary"
+      component="h2"
+      dataLocator=""
+      textAlign="left"
+      variant="h6"
+    />
+  </Styled(BodyCopy)>
+</Fragment>
+`;
+
+exports[`PageHeadingWithLinks View should render correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="elem-mb-XXL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Heading)
+      className={null}
+      color="text.primary"
+      component="h2"
+      dataLocator=""
+      textAlign="left"
+      variant="h6"
+    >
+      test
+    </Styled(Heading)>
+  </Styled(BodyCopy)>
+  <Styled(Row)
+    className="elem-pb-MED"
+  >
+    <Styled(Col)
+      className="anchor-wrapper"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 4,
+          "medium": 2,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="elem-ml-MED"
+        dataLocator="terms_condition_cta"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+        noLink={true}
+        target="_blank"
+        underline={true}
+      >
+        test
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="elem-ml-LRG"
+        dataLocator="program_details_cta"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+        noLink={true}
+        underline={true}
+      >
+        test
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;

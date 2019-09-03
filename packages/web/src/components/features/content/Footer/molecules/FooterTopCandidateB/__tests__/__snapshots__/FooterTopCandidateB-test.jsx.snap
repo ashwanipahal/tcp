@@ -6,7 +6,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
 >
   <Styled(Row)>
     <Styled(Col)
-      className="footer-top__slots"
+      className="footer-top__slots col-md-half-width"
       colSize={
         Object {
           "large": 3,
@@ -42,7 +42,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
       </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
-      className="footer-top__slots"
+      className="footer-top__slots col-md-half-width"
       colSize={
         Object {
           "large": 3,
@@ -79,7 +79,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
       </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
-      className="footer-top__slots"
+      className="footer-top__slots col-md-half-width"
       colSize={
         Object {
           "large": 3,
@@ -118,7 +118,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
       </span>
     </Styled(Col)>
     <Styled(Col)
-      className="footer-top__slot--2"
+      className="footer-top__slot--2 col-md-half-width"
       colSize={
         Object {
           "large": 3,
@@ -127,7 +127,9 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(SocialMediaLinks) />
+      <Styled(SocialMediaLinks)
+        className="social-media-links"
+      />
     </Styled(Col)>
   </Styled(Row)>
 </div>

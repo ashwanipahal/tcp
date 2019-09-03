@@ -5,7 +5,6 @@ const styles = css`
   height: 100%;
   position: relative;
   width: 100%;
-
   .notification {
     background-color: ${props => props.theme.colorPalette.gray[800]};
     color: ${props => props.theme.colorPalette.white};
@@ -20,6 +19,10 @@ const styles = css`
     justify-content: space-between;
     height: 100%;
     box-sizing: border-box;
+  }
+
+  .couponDetailsFont {
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
   }
 
   .top-content {
