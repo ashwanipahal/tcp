@@ -15,6 +15,7 @@ import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 import {
   getLoginError,
   shouldShowRecaptcha,
@@ -84,6 +85,7 @@ class LoginPageContainer extends React.PureComponent {
       onRequestClose,
       variation,
       handleContinueAsGuest,
+      formErrorMessage,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -111,6 +113,7 @@ class LoginPageContainer extends React.PureComponent {
         variation={variation}
         handleContinueAsGuest={handleContinueAsGuest}
         loginError={loginError}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -140,6 +143,7 @@ LoginPageContainer.propTypes = {
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func,
   toastMessage: PropTypes.string.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -192,6 +196,7 @@ const mapStateToProps = state => {
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
     labels: getLabels(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 
