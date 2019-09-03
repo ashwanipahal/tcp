@@ -293,9 +293,7 @@ export function addGiftCardPaymentToOrder(args) {
 
   return executeStatefulAPICall(payload)
     .then(res => {
-      if (responseContainsErrors(res)) {
-        throw new ServiceResponseError(res);
-      } else if (res.body && res.body.OosCartItems === 'TRUE') {
+      if (res.body && res.body.OosCartItems === 'TRUE') {
         throw new ServiceResponseError({
           body: {
             errorCode: 'API_CART_OOS_ITEM',
@@ -309,7 +307,7 @@ export function addGiftCardPaymentToOrder(args) {
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      return err;
     });
 }
 

@@ -20,9 +20,13 @@ const styles = css`
     font-size: ${props => props.theme.typography.fontSizes.fs12};
   }
 
+  .error_box {
+    background-color: ${props => props.theme.colors.WHITE};
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     .gift_card_number_detail {
-      padding: 16px 0;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     }
   }
 `;

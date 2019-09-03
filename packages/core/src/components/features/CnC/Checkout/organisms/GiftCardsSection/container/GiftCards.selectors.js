@@ -45,9 +45,14 @@ const getGiftCardsTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'giftCardsTotal']) || 0;
 };
 
+const getGiftCardErrors = state => {
+  return state.Giftcards && state.Giftcards.get('giftCardError');
+};
+
 export default {
   getGrandTotal,
   getAppliedGiftCards,
   getGiftCardsTotal,
   getGiftSectionLabels,
+  getGiftCardErrors,
 };

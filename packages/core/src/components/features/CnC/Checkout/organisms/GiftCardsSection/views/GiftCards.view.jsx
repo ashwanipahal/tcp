@@ -20,12 +20,43 @@ const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
     </BodyCopy>
   );
 };
+
+const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards) => {
+  if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size <= 5) {
+    return (
+      <Row className="elem-mt-LRG elem-mb-LRG">
+        <Col
+          colSize={{
+            small: 4,
+            medium: 2,
+            large: 3,
+          }}
+        >
+          <Button
+            onClick={() => {}}
+            className="new_gift_card_button"
+            buttonVariation="variable-width"
+            type="submit"
+            data-locator="gift_apply_button"
+            fullWidth="true"
+            disabled={false}
+          >
+            {labels.newGiftCard}
+          </Button>
+        </Col>
+      </Row>
+    );
+  }
+  return null;
+};
 export const GiftCards = ({
   giftCardList,
   appliedGiftCards,
   applyExistingGiftCardToOrder,
   handleRemoveGiftCard,
   labels,
+  giftCardErrors,
+  orderBalanceTotal,
   className,
 }) => {
   return (
@@ -66,6 +97,7 @@ export const GiftCards = ({
                 handleRemoveGiftCard={handleRemoveGiftCard}
                 labels={labels}
                 isGiftCardApplied
+                giftCardErrors={giftCardErrors}
               />
             ))}
 
@@ -87,31 +119,13 @@ export const GiftCards = ({
                 cardData={cardData}
                 applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
                 labels={labels}
+                giftCardErrors={giftCardErrors}
+                orderBalanceTotal={orderBalanceTotal}
               />
             ))}
         </Col>
       </Row>
-      <Row className="elem-mt-LRG elem-mb-LRG">
-        <Col
-          colSize={{
-            small: 4,
-            medium: 2,
-            large: 3,
-          }}
-        >
-          <Button
-            onClick={() => {}}
-            className="new_gift_card_button"
-            buttonVariation="variable-width"
-            type="submit"
-            data-locator="gift_apply_button"
-            fullWidth="true"
-            disabled={false}
-          >
-            {labels.newGiftCard}
-          </Button>
-        </Col>
-      </Row>
+      {renderAddNewGiftButton(labels, orderBalanceTotal, appliedGiftCards)}
     </Grid>
   );
 };
@@ -123,6 +137,8 @@ GiftCards.propTypes = {
   applyExistingGiftCardToOrder: PropTypes.func.isRequired,
   handleRemoveGiftCard: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  giftCardErrors: PropTypes.shape({}),
+  orderBalanceTotal: PropTypes.number,
 };
 
 GiftCards.defaultProps = {
@@ -130,6 +146,8 @@ GiftCards.defaultProps = {
   giftCardList: {},
   appliedGiftCards: {},
   labels: {},
+  giftCardErrors: {},
+  orderBalanceTotal: 0,
 };
 
 export default withStyles(GiftCards, styles);

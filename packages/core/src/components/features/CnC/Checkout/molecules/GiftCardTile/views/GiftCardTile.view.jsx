@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/GiftCardTile.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class GiftCardTile extends React.PureComponent {
   static propTypes = {
@@ -13,6 +14,8 @@ class GiftCardTile extends React.PureComponent {
     labels: PropTypes.shape({}),
     applyExistingGiftCardToOrder: PropTypes.func.isRequired,
     handleRemoveGiftCard: PropTypes.func.isRequired,
+    giftCardErrors: PropTypes.shape({}),
+    orderBalanceTotal: PropTypes.number,
   };
 
   static defaultProps = {
@@ -20,6 +23,8 @@ class GiftCardTile extends React.PureComponent {
     isGiftCardApplied: false,
     cardData: {},
     labels: {},
+    giftCardErrors: {},
+    orderBalanceTotal: 0,
   };
 
   renderApplyRemoveBtn() {
@@ -29,6 +34,7 @@ class GiftCardTile extends React.PureComponent {
       cardData,
       handleRemoveGiftCard,
       labels,
+      orderBalanceTotal,
     } = this.props;
 
     if (isGiftCardApplied) {
@@ -59,11 +65,31 @@ class GiftCardTile extends React.PureComponent {
         type="submit"
         data-locator="gift_apply_button"
         fullWidth="true"
-        disabled={false}
+        disabled={!orderBalanceTotal}
       >
         {labels.apply}
       </Button>
     );
+  }
+
+  renderGiftCardError() {
+    const { giftCardErrors, cardData } = this.props;
+    if (giftCardErrors && giftCardErrors[cardData.creditCardId]) {
+      return (
+        <Row>
+          <Col
+            colSize={{
+              small: 3,
+              medium: 5,
+              large: 9,
+            }}
+          >
+            <ErrorMessage className="error_box" error={giftCardErrors[cardData.creditCardId]} />
+          </Col>
+        </Row>
+      );
+    }
+    return null;
   }
 
   render() {
@@ -78,6 +104,8 @@ class GiftCardTile extends React.PureComponent {
     return (
       <div className={className}>
         <div className="gift_card_box elem-mb-XS elem-mt-MED">
+          {this.renderGiftCardError()}
+
           <Row>
             <Col
               colSize={{

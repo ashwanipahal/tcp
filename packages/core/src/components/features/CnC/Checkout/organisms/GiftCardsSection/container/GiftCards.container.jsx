@@ -27,7 +27,15 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { giftCardList, appliedGiftCards, handleRemoveGiftCard, labels } = this.props;
+    const {
+      giftCardList,
+      appliedGiftCards,
+      handleRemoveGiftCard,
+      labels,
+      giftCardErrors,
+      itemOrderGrandTotal,
+      itemsGiftCardTotal,
+    } = this.props;
 
     let availableGiftCards = [];
     if (giftCardList && appliedGiftCards) {
@@ -40,6 +48,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       });
     }
 
+    const orderBalanceTotal = itemOrderGrandTotal - itemsGiftCardTotal;
+
     return (
       <GiftCard
         giftCardList={availableGiftCards}
@@ -47,6 +57,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         applyExistingGiftCardToOrder={this.applyExistingGiftCardToOrder}
         handleRemoveGiftCard={handleRemoveGiftCard}
         labels={labels}
+        giftCardErrors={giftCardErrors}
+        orderBalanceTotal={orderBalanceTotal}
       />
     );
   }
@@ -73,6 +85,7 @@ const mapStateToProps = state => {
     itemOrderGrandTotal: GiftCardSelector.getGrandTotal(state),
     itemsGiftCardTotal: GiftCardSelector.getGiftCardsTotal(state),
     labels: GiftCardSelector.getGiftSectionLabels(state),
+    giftCardErrors: GiftCardSelector.getGiftCardErrors(state),
   };
 };
 

@@ -80,11 +80,13 @@ import {
   DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
   OPTIMIZELY_FEATURES_REDUCER,
+  GIFTCARDS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
+import GiftCardsReducer from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
@@ -151,4 +153,5 @@ export default combineReducers({
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
+  [GIFTCARDS_REDUCER_KEY]: GiftCardsReducer,
 });

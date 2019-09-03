@@ -14,7 +14,22 @@ const removeGiftCard = piId => {
   };
 };
 
+const setGiftCardError = payload => {
+  return {
+    type: GIFTCARD_CONSTANTS.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
+
+const resetGiftCardError = () => {
+  return {
+    type: GIFTCARD_CONSTANTS.RESET_GIFTCARD_ERROR,
+  };
+};
+
 export default {
   applyGiftCard,
   removeGiftCard,
+  setGiftCardError,
+  resetGiftCardError,
 };
