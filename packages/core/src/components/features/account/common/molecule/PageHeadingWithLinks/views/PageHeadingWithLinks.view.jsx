@@ -42,10 +42,10 @@ export const PageHeadingWithLinks = ({
             className="anchor-wrapper"
           >
             <Anchor
-              fontSizeVariation="medium"
+              fontSizeVariation="large"
               underline
-              to="/#"
-              asPath
+              noLink
+              href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
               anchorVariation="primary"
               dataLocator="terms_condition_cta"
               target="_blank"
@@ -54,10 +54,10 @@ export const PageHeadingWithLinks = ({
               {termsConditionCta}
             </Anchor>
             <Anchor
-              fontSizeVariation="medium"
+              fontSizeVariation="large"
               underline
-              to="/#"
-              asPath
+              noLink
+              href="https://www.childrensplace.com/us/content/myplace-rewards-page"
               anchorVariation="primary"
               dataLocator="program_details_cta"
               className="elem-ml-LRG"
