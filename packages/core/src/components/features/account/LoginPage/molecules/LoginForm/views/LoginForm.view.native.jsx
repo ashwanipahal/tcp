@@ -90,12 +90,12 @@ class LoginForm extends React.PureComponent<Props> {
               component={TextBox}
               dataLocator="password"
               secureTextEntry={type === 'password'}
+              rightText={type === 'password' ? 'show' : 'hide'}
             />
             <HideShowFieldWrapper>
               <Anchor
-                fontSizeVariation="small"
+                fontSizeVariation="medium"
                 fontFamily="secondary"
-                underline
                 anchorVariation="primary"
                 onPress={this.changeType}
                 noLink
