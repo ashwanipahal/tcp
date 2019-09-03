@@ -77,7 +77,6 @@ class AddressForm extends React.PureComponent {
       isEdit,
       isMakeDefaultDisabled,
       onCancel,
-      invalid,
       handleSubmit,
       dispatch,
       addressLine1,
@@ -251,7 +250,6 @@ class AddressForm extends React.PureComponent {
             fill="BLUE"
             type="submit"
             color="white"
-            disabled={invalid}
             onPress={handleSubmit}
             buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
@@ -292,7 +290,6 @@ AddressForm.propTypes = {
   isMakeDefaultDisabled: PropTypes.bool.isRequired,
   onCancel: PropTypes.func,
   handleSubmit: PropTypes.func,
-  invalid: PropTypes.func,
   initialValues: PropTypes.shape({
     state: PropTypes.string,
     country: PropTypes.string,
@@ -321,7 +318,6 @@ AddressForm.defaultProps = {
   },
   dispatch: () => {},
   onCancel: () => {},
-  invalid: () => {},
   handleSubmit: () => {},
   initialValues: {
     state: '',
