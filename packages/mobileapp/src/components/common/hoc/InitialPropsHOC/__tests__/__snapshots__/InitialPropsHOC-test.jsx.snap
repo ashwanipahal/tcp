@@ -21,11 +21,5 @@ exports[`InitialPropsHOC testcases should render correctly 1`] = `
     }
   }
   screenProps={Object {}}
-  slot_1={Object {}}
-  slot_2={Object {}}
-  slot_3={Object {}}
-  slot_4={Object {}}
-  slot_5={Object {}}
-  slot_6={Object {}}
 />
 `;
