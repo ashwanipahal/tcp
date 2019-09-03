@@ -252,6 +252,21 @@ const getCurrentPickupFormNumber = createSelector(
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
 );
 
+const getBillingLabels = state => {
+  const {
+    lbl_billing_title: header,
+    lbl_billing_backLinkPickup: backLinkPickup,
+    lbl_billing_backLinkShipping: backLinkShipping,
+    lbl_billing_nextSubmit: nextSubmitText,
+  } = state.Labels.checkout && state.Labels.checkout.billing;
+  return {
+    header,
+    backLinkPickup,
+    backLinkShipping,
+    nextSubmitText,
+  };
+};
+
 const getShippingLabels = state => {
   const {
     lbl_shipping_header: header,
@@ -468,4 +483,5 @@ export default {
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getUserEmail,
+  getBillingLabels,
 };
