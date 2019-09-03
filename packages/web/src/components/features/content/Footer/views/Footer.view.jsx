@@ -154,6 +154,12 @@ Footer.propTypes = {
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
 };
 

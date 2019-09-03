@@ -44,7 +44,12 @@ FooterNavLinks.propTypes = {
   isSubHeader: PropTypes.bool.isRequired,
   colNum: PropTypes.number.isRequired,
   isLoggedIn: PropTypes.bool,
-  linkConfig: PropTypes.shape({}).isRequired,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
 };
 

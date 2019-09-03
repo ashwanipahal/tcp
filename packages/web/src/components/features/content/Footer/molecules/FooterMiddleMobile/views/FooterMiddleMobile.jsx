@@ -39,7 +39,12 @@ FooterMiddleMobile.propTypes = {
   className: PropTypes.string.isRequired,
   navLinkItems: PropTypes.shape([]).isRequired,
   isLoggedIn: PropTypes.bool,
-  linkConfig: PropTypes.shape({}).isRequired,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
 };
 

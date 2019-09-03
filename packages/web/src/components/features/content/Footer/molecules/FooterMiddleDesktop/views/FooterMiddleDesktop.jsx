@@ -150,7 +150,12 @@ FooterMiddleDesktop.propTypes = {
   loginModalMountedState: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   setLoginModalMountState: PropTypes.func.isRequired,
-  linkConfig: PropTypes.shape({}).isRequired,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
 };
 
