@@ -17,6 +17,8 @@ const AddressBook = props => {
     initialValues,
     currentForm,
     toggleAddressModal,
+    addressLine1,
+    countryState,
   } = props;
   return (
     <View {...props}>
@@ -41,6 +43,8 @@ const AddressBook = props => {
             onCancel={onCancel}
             initialValues={initialValues}
             currentForm={currentForm}
+            addressLine1={addressLine1}
+            countryState={countryState}
           />
         )}
       </ScrollView>
@@ -58,6 +62,9 @@ AddressBook.propTypes = {
   initialValues: PropTypes.shape({}),
   currentForm: PropTypes.string,
   toggleAddressModal: PropTypes.func,
+  addressLine1: PropTypes.string,
+  setAddressLine1: PropTypes.func,
+  countryState: PropTypes.string,
 };
 
 AddressBook.defaultProps = {
@@ -69,6 +76,9 @@ AddressBook.defaultProps = {
   onCancel: () => null,
   initialValues: {},
   currentForm: null,
+  addressLine1: '',
+  setAddressLine1: () => {},
+  countryState: '',
 };
 
 export default withStyles(AddressBook, ParentContainer);

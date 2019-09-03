@@ -8,7 +8,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     fullBleed={true}
   >
     <Styled(Col)
-      className="fieldFirstName"
+      className="pickupField fieldFirstName"
       colSize={
         Object {
           "large": 6,
@@ -191,7 +191,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       />
     </Styled(Col)>
     <Styled(Col)
-      className="fieldLastName"
+      className="pickupField fieldLastName"
       colSize={
         Object {
           "large": 6,

@@ -6,4 +6,8 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     margin-bottom: 24px;
   }
+
+  .checkout-pages & {
+    display: none;
+  }
 `;

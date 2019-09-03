@@ -41,10 +41,22 @@ export const getLabelsAddToActions = state => {
     bag: {
       addedToBag: { lbl_cta_viewBag: viewBag, lbl_cta_checkout: checkout },
     },
+    global: {
+      checkoutConfirmation: {
+        lbl_checkoutmodal_confirmation: confirmationText,
+        lbl_checkoutmodal_editConfirmation: editConfirmationText,
+        lbl_checkoutmodal_backToBag: backToBag,
+        lbl_checkoutmodal_continueCheckout: continueCheckout,
+      },
+    },
   } = state.Labels;
   return {
     viewBag,
     checkout,
+    continueCheckout,
+    confirmationText,
+    editConfirmationText,
+    backToBag,
   };
 };
 

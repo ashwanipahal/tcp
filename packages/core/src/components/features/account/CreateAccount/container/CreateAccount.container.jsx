@@ -12,6 +12,7 @@ import {
   getErrorMessage,
 } from './CreateAccount.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import { API_CONFIG } from '../../../../../services/config';
 import {
   closeOverlayModal,
   openOverlayModal,
@@ -33,7 +34,7 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: PropTypes.func,
     navigation: PropTypes.shape({}),
     setLoginModalMountState: PropTypes.bool.isRequired,
-    showLogin: PropTypes.func,
+    showLogin: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -50,7 +51,6 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: () => {},
     isUserLoggedIn: false,
     navigation: {},
-    showLogin: () => {},
   };
 
   constructor(props) {
@@ -71,7 +71,7 @@ export class CreateAccountContainer extends React.Component {
       if (this.hasMobileApp()) {
         onRequestClose({ getComponentId: { login: '', createAccount: '' } });
       } else {
-        closeOverlay();
+        setTimeout(() => closeOverlay(), API_CONFIG.overlayTimeout);
         routerPush('/', '/home');
       }
     }
@@ -117,6 +117,7 @@ export class CreateAccountContainer extends React.Component {
       onRequestClose,
       labels,
       showLogin,
+      isUserLoggedIn,
     } = this.props;
     return (
       <CreateAccountView
@@ -131,6 +132,7 @@ export class CreateAccountContainer extends React.Component {
         onRequestClose={onRequestClose}
         openModal={this.openModal}
         showLogin={showLogin}
+        isUserLoggedIn={isUserLoggedIn}
       />
     );
   }

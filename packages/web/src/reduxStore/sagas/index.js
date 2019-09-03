@@ -21,6 +21,7 @@ import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPoin
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -31,9 +32,11 @@ import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/contain
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
+import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
@@ -41,6 +44,7 @@ import CountrySelectorSaga from '../../components/features/content/Header/molecu
 
 export default function* rootSaga() {
   yield all([
+    LabelsSaga(),
     BootstrapSaga(),
     HomePageSaga(),
     ProductListingPageSaga(),
@@ -79,5 +83,7 @@ export default function* rootSaga() {
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
     UpdateProfileSaga(),
+    AddAirmilesBannerSaga(),
+    MailingAddressSaga(),
   ]);
 }

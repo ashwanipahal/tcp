@@ -54,6 +54,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     <Styled(Button)
       className="checkout"
       data-locator="addedtobag-btncheckout"
+      onClick={[Function]}
     >
       <Styled(BodyCopy)
         className={null}
@@ -68,6 +69,9 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       />
     </Styled(Button)>
   </Styled(Row)>
+  <Styled(BagConfirmationModal)
+    labels={Object {}}
+  />
   <OpenLoginModal
     handleAfterLogin={[Function]}
     handleContinueAsGuest={[Function]}

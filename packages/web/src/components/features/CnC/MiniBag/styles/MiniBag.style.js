@@ -29,7 +29,7 @@ export const modalStyles = css`
   }
   .alignTop.alignTop {
     /* stylelint-disable-line */
-    top: 25px;
+    top: 28px;
   }
 `;
 const styles = css`
