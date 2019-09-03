@@ -18,6 +18,8 @@ import {
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
 
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
+
 export class CreateAccountContainer extends React.Component {
   static propTypes = {
     className: PropTypes.string,
@@ -35,6 +37,7 @@ export class CreateAccountContainer extends React.Component {
     navigation: PropTypes.shape({}),
     setLoginModalMountState: PropTypes.bool.isRequired,
     showLogin: PropTypes.func.isRequired,
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -118,6 +121,7 @@ export class CreateAccountContainer extends React.Component {
       labels,
       showLogin,
       isUserLoggedIn,
+      formErrorMessage,
     } = this.props;
     return (
       <CreateAccountView
@@ -133,6 +137,7 @@ export class CreateAccountContainer extends React.Component {
         openModal={this.openModal}
         showLogin={showLogin}
         isUserLoggedIn={isUserLoggedIn}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -146,6 +151,7 @@ export const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     error: getErrorMessage(state),
     labels: getLabels(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 
