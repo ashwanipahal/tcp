@@ -43,6 +43,7 @@ class CreateAccount extends React.Component<Props> {
       error,
       onAlreadyHaveAnAccountClick,
       onRequestClose,
+      isUserLoggedIn,
     } = this.props;
     return (
       <div className={className}>
@@ -57,6 +58,7 @@ class CreateAccount extends React.Component<Props> {
           onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
           onRequestClose={onRequestClose}
           showForgotPasswordForm={this.showForgotPasswordForm}
+          isUserLoggedIn={isUserLoggedIn}
         />
       </div>
     );

@@ -52,6 +52,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
           variation="primary"
           dropDownStyle={{ ...dropDownStyle }}
           itemStyle={{ ...itemStyle }}
+          bounces={false}
         />
       </View>
     );

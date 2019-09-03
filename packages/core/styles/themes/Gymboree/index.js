@@ -15,8 +15,8 @@ import fonts from '../TCP/fonts';
 const colorPalette = createThemeColorPalette({
   primary: {
     light: orange[300],
-    main: orange[500],
-    dark: orange[700],
+    main: orange[800],
+    dark: orange[900],
   },
 });
 

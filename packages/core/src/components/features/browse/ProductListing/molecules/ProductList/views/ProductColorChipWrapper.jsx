@@ -5,6 +5,8 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { Swipeable } from 'react-swipeable';
+import { breakpoints } from '../../../../../../../../styles/themes/TCP/mediaQuery';
 import { COLOR_PROP_TYPE } from '../propTypes/productsAndItemsPropTypes';
 import ProductColorChip from './ProductColorChip';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -19,7 +21,6 @@ class ProductColorChipWrapper extends React.Component {
     onChipClick: PropTypes.func.isRequired,
     /** the color name of the currently selected chip */
     selectedColorId: PropTypes.string.isRequired,
-    maxVisibleItems: PropTypes.number.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
     showColorEvenOne: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
@@ -38,21 +39,35 @@ class ProductColorChipWrapper extends React.Component {
       firstItemIndex: 0,
       // activeItem: 0,
       isArrEnd: false,
+      maxVisibleItems: 5,
     };
 
     this.captureContainerRef = this.captureContainerRef.bind(this);
 
     this.handleNextClick = this.handleNextClick.bind(this);
     this.handlePreviousClick = this.handlePreviousClick.bind(this);
+    this.swipeConfig = {
+      delta: 10, // min distance(px) before a swipe starts
+      preventDefaultTouchmoveEvent: false, // preventDefault on touchmove, *See Details*
+      trackTouch: true, // track touch input
+      trackMouse: false, // track mouse input
+      rotationAngle: 0,
+    };
   }
+
+  componentDidMount = () => {
+    const divWidth = this.containerRef && this.containerRef.clientWidth - 38;
+    const colorSwatchWidth = window.screen.width >= breakpoints.values.lg ? 34 : 21;
+    this.setState({ maxVisibleItems: Math.floor(divWidth / colorSwatchWidth) || 5 });
+  };
 
   captureContainerRef = ref => {
     this.containerRef = ref;
   };
 
   handleNextClick = () => {
-    const { isPLPredesign, colorsMap, maxVisibleItems } = this.props;
-    const { firstItemIndex } = this.state;
+    const { isPLPredesign, colorsMap } = this.props;
+    const { maxVisibleItems, firstItemIndex } = this.state;
     const stepSize = maxVisibleItems;
     const nextStartIndex = firstItemIndex + 1;
     const maxViewableIndex = isPLPredesign
@@ -83,7 +98,8 @@ class ProductColorChipWrapper extends React.Component {
   };
 
   getColors = () => {
-    const { colorsMap, maxVisibleItems, isPLPredesign } = this.props;
+    const { colorsMap, isPLPredesign } = this.props;
+    const { maxVisibleItems } = this.state;
     const stepSize = maxVisibleItems;
     const { isArrEnd, firstItemIndex } = this.state;
 
@@ -97,17 +113,21 @@ class ProductColorChipWrapper extends React.Component {
     return colorsMap.slice(sliceIni > 0 ? sliceIni : 0, colorsMap.length);
   };
 
+  getColorSwatches = () => {
+    const { onChipClick, selectedColorId } = this.props;
+    return this.getColors().map(colorEntry => (
+      <ProductColorChip
+        key={colorEntry.colorProductId}
+        colorEntry={colorEntry}
+        isActive={selectedColorId === colorEntry.color.name}
+        onChipClick={onChipClick}
+      />
+    ));
+  };
+
   render() {
-    const {
-      onChipClick,
-      selectedColorId,
-      colorsMap,
-      maxVisibleItems,
-      showColorEvenOne,
-      isPLPredesign,
-      className,
-    } = this.props;
-    const { firstItemIndex } = this.state;
+    const { colorsMap, showColorEvenOne, isPLPredesign, className } = this.props;
+    const { maxVisibleItems, firstItemIndex } = this.state;
     const isDisplayPrevious = isPLPredesign
       ? false
       : colorsMap.length > maxVisibleItems && firstItemIndex !== 0;
@@ -117,8 +137,9 @@ class ProductColorChipWrapper extends React.Component {
     if (showColorEvenOne ? colorsMap.length <= 0 : colorsMap.length <= 1) {
       return null;
     }
+
     return (
-      <div className={className}>
+      <div ref={this.captureContainerRef} className={className}>
         {isDisplayPrevious && (
           <button className="button-prev" title="Previous" onClick={this.handlePreviousClick} />
         )}
@@ -127,16 +148,16 @@ class ProductColorChipWrapper extends React.Component {
           className={['content-colors', isDisplayPrevious ? 'color-swatches-container' : ''].join(
             ' '
           )}
-          ref={this.captureContainerRef}
         >
-          {this.getColors().map(colorEntry => (
-            <ProductColorChip
-              key={colorEntry.colorProductId}
-              colorEntry={colorEntry}
-              isActive={selectedColorId === colorEntry.color.name}
-              onChipClick={onChipClick}
-            />
-          ))}
+          <Swipeable
+            {...this.swipeConfig}
+            className="color-swatches-mobile-view"
+            onSwipedRight={this.handlePreviousClick}
+            onSwipedLeft={this.handleNextClick}
+          >
+            {this.getColorSwatches()}
+          </Swipeable>
+          <div className="color-swatches-desktop-view">{this.getColorSwatches()}</div>
         </ol>
 
         {isDisplayNext && (

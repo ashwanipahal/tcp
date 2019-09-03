@@ -7,7 +7,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import styles from '../styles/style';
+import styles from '../styles/PickUpAlternateFormPart.style';
 
 class PickUpAlternateFormPart extends React.Component {
   sumbit = () => {};

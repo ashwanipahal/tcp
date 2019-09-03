@@ -63,7 +63,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
           <Button
             fill="BLUE"
             type="submit"
-            onPress={handleSubmit}
+            onPress={!invalid ? handleSubmit : null}
             buttonVariation="variable-width"
             disableButton={invalid}
             text={labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderBtn}
