@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
 
 import { productListTabsDataReq } from './ProductListTabs.actions';
-import ProductListTabs from '../views';
+import ProductListTabsView from '../views';
 
-export const mapStateToProps = () => {
-  return {};
+export const mapStateToProps = state => {
+  const { ProductListTabs } = state;
+
+  return {
+    productListTabs: ProductListTabs,
+  };
 };
 
 export const mapDispatchToProps = dispatch => {
@@ -18,4 +22,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductListTabs);
+)(ProductListTabsView);

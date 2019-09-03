@@ -19,6 +19,8 @@ class ProductListTabs extends React.PureComponent {
       categoryList: [item = {}],
     } = this.props;
     const { catId } = item;
+
+    // Intro animation being jerky without it and the REST is failing. Need to check why.
     setTimeout(() => {
       this.updateCategoryId(catId);
     }, 4000);
@@ -30,10 +32,12 @@ class ProductListTabs extends React.PureComponent {
 
   updateCategoryId(catId) {
     if (catId) {
-      const { getProductListTabsData, onProductTabChange } = this.props;
+      const { productListTabs, getProductListTabsData, onProductTabChange } = this.props;
       this.setState({ selectedCategoryId: catId });
-      getProductListTabsData({ categoryId: catId });
       onProductTabChange(catId);
+      if (!productListTabs[catId]) {
+        getProductListTabsData({ categoryId: catId });
+      }
     }
   }
 
@@ -60,6 +64,7 @@ class ProductListTabs extends React.PureComponent {
 ProductListTabs.defaultProps = {
   getProductListTabsData: () => {},
   categoryList: [],
+  productListTabs: {},
   onProductTabChange: () => {},
 };
 
@@ -71,6 +76,7 @@ ProductListTabs.propTypes = {
       id: PropTypes.string,
     })
   ),
+  productListTabs: PropTypes.shape({}),
   onProductTabChange: PropTypes.func,
 };
 

@@ -9,8 +9,8 @@ import { BodyCopy } from '../../../atoms';
 const categoryListMock = [
   { text: 'GIRL', catId: '49007' },
   { text: 'TODDLER GIRL', catId: '49008' },
-  /*   { text: 'BOY', catId: '49009' },
-  { text: 'TODDLER BOY', catId: '49010' }, */
+  { text: 'BOY', catId: '49009' },
+  { text: 'TODDLER BOY', catId: '49010' },
 ];
 
 class ModuleJ extends React.PureComponent {
@@ -39,7 +39,9 @@ class ModuleJ extends React.PureComponent {
           categoryList={categoryListMock}
         />
         <ResponseContainer>
-          <BodyCopy text={`Selected Category id: ${catId}`} />
+          <BodyCopy text={`Module J | Tab Module | Selected Category id: ${catId}`} />
+        </ResponseContainer>
+        <ResponseContainer>
           <BodyCopy text={productListDetailStr} />
         </ResponseContainer>
       </Container>

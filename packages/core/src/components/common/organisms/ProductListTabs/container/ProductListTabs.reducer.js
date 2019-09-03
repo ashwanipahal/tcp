@@ -7,11 +7,11 @@ const ProductListTabsReducer = (state = initialState, action = {}) => {
 
   switch (type) {
     case constants.PRODUCT_LIST_TAB_REQ:
-      return { loading: true };
+      return { ...state, loading: true };
     case constants.PRODUCT_LIST_TAB_SUCCESS:
-      return { loading: false, ...payload };
+      return { ...state, ...payload, loading: false };
     case constants.PRODUCT_LIST_TAB_FAIL:
-      return { loading: false, ...payload };
+      return { ...state, ...payload, loading: false };
     default:
       return state;
   }
