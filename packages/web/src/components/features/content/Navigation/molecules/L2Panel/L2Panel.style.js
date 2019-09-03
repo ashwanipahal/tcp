@@ -55,7 +55,7 @@ export default css`
   .l2-nav-link {
     display: flex;
     align-items: center;
-    padding: 18px 14px 17px 14px;
+    padding: 18px 14px 17px 28px;
     line-height: 1.15;
     &.highlighted {
       color: ${props => props.theme.colorPalette.secondary.main};
