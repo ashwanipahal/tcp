@@ -55,8 +55,8 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
-        fontFamily="primary"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -126,7 +126,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         </Styled(BodyCopy)>
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
-          fontSizeVariation="xlarge"
+          fontSizeVariation="large"
           underline={true}
         >
           details
@@ -145,7 +145,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="elem-mb-SM"
+          className="elem-mb-SM couponDetailsFont"
           data-locator="myrewards-view&printbtn"
           fill="WHITE"
           fullWidth={true}
@@ -228,8 +228,8 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
-        fontFamily="primary"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -328,7 +328,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         </Styled(BodyCopy)>
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
-          fontSizeVariation="xlarge"
+          fontSizeVariation="large"
           underline={true}
         >
           details
@@ -347,7 +347,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="elem-mb-SM"
+          className="elem-mb-SM couponDetailsFont"
           data-locator="myrewards-view&printbtn"
           fill="WHITE"
           fullWidth={true}
@@ -443,8 +443,8 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
-        fontFamily="primary"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -543,7 +543,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         </Styled(BodyCopy)>
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
-          fontSizeVariation="xlarge"
+          fontSizeVariation="large"
           underline={true}
         >
           details
@@ -562,7 +562,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="elem-mb-SM"
+          className="elem-mb-SM couponDetailsFont"
           data-locator="myrewards-view&printbtn"
           fill="WHITE"
           fullWidth={true}
