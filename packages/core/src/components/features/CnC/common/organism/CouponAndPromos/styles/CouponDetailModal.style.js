@@ -33,7 +33,7 @@ const CouponDetailModalStyle = css`
     text-align: center;
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    font-size: ${props => props.theme.typography.fontSizes.fs42};
+    font-size: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0;
       text-align: center;
@@ -52,9 +52,12 @@ const CouponDetailModalStyle = css`
   .couponModal_modalbarcode {
     color: ${props => props.theme.colors.BLACK};
     border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     text-align: center;
+    width: 100%;
+    svg {
+      width: 50%;
+    }
   }
   .couponModal_print {
     text-align: center;

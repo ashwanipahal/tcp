@@ -9,6 +9,7 @@ import {
 import {
   getAllCoupons,
   getAllRewardsCoupons,
+  getCouponsLabels,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
@@ -19,6 +20,7 @@ export class MyRewardsContainer extends PureComponent {
     view: PropTypes.string,
     coupons: PropTypes.shape([]).isRequired,
     rewardCoupons: PropTypes.shape([]).isRequired,
+    couponsLabels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -48,12 +50,9 @@ export class MyRewardsContainer extends PureComponent {
 
 
   render() {
-    const { coupons, rewardCoupons, view, ...otherProps } = this.props;
+    const { coupons, rewardCoupons, couponsLabels, view, ...otherProps } = this.props;
     const { detailStatus, selectedCoupon } = this.state;
 
-    console.log("furkan----------------------");
-    console.log(detailStatus, selectedCoupon);
-    console.log("furkan----------------------");
     return (
       <>
         <MyRewards
@@ -64,6 +63,7 @@ export class MyRewardsContainer extends PureComponent {
         />
         { selectedCoupon && (
         <CouponDetailModal
+          labels={couponsLabels}
           openState={detailStatus}
           coupon={selectedCoupon}
           onRequestClose={() => {
@@ -81,6 +81,7 @@ export class MyRewardsContainer extends PureComponent {
 const mapStateToProps = state => ({
   coupons: getAllCoupons(state),
   rewardCoupons: getAllRewardsCoupons(state),
+  couponsLabels: getCouponsLabels(state),
 });
 
 const mapDispatchToProps = dispatch => ({
