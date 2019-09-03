@@ -61,7 +61,7 @@ class AwsAppSyncClient extends AWSAppSync {
    * @memberof AwsAppSyncClient
    */
   static resetClient() {
-    this[singleton] = null;
+    this[singleton] = new AwsAppSyncClient(singletonEnforcer, AwsAppSyncClient.clientOptions());
   }
 
   /**

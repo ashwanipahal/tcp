@@ -63,7 +63,7 @@ export class Account extends React.PureComponent<Props, State> {
       case 'profileInformationMobile':
         return 'profile';
       case 'myWalletPageMobile':
-          return 'myWalletPageMobile';
+        return 'myWalletPageMobile';
       default:
         return 'addressBookMobile';
     }

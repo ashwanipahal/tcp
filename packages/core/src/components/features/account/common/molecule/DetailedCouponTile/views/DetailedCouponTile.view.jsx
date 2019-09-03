@@ -101,7 +101,8 @@ export class DetailedCouponTile extends React.Component {
           <BodyCopy component="div" textAlign="center" className="top-content">
             <CouponIcon coupon={coupon} labels={labels} className="elem-mb-XS" />
             <BodyCopy
-              fontSize="fs14"
+              fontSize="fs16"
+              fontFamily="secondary"
               fontWeight="extrabold"
               title={coupon.title}
               className="elem-mb-SM"
@@ -133,7 +134,7 @@ export class DetailedCouponTile extends React.Component {
                     : `${coupon.expirationDate}`}
                 </BodyCopy>
               </BodyCopy>
-              <Anchor fontSizeVariation="xlarge" underline data-locator="myrewards-detailslink">
+              <Anchor fontSizeVariation="large" underline data-locator="myrewards-detailslink">
                 {labels.lbl_coupon_detailsLink}
               </Anchor>
             </BodyCopy>
@@ -143,7 +144,7 @@ export class DetailedCouponTile extends React.Component {
                 fullWidth
                 fill="WHITE"
                 onClick={this.handleViewCouponDetails}
-                className="elem-mb-SM"
+                className="elem-mb-SM couponDetailsFont"
                 data-locator="myrewards-view&printbtn"
               >
                 {labels.lbl_coupon_viewPrint}
