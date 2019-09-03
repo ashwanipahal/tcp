@@ -28,8 +28,9 @@ export class CheckoutProgressIndicator extends React.PureComponent {
   };
 
   render() {
-    const { activeStage } = this.props;
-    const availableStages = CheckoutConstants.CHECKOUT_STAGES.STAGES_ARRAY; // taking these hardcoded as of now, these will come dynamic and will be taken care as part of standard checkout ticket.
+    const { activeStage, availableStages } = this.props;
+    console.log("availableStages-->", availableStages);
+    // const availableStages = CheckoutConstants.CHECKOUT_STAGES.STAGES_ARRAY; // taking these hardcoded as of now, these will come dynamic and will be taken care as part of standard checkout ticket.
     let hasSeenActive = false;
     let hasSeenActiveLabel = false;
     return (

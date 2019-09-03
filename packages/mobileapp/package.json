@@ -147,7 +147,9 @@
       "**/react-native-swipeable",
       "**/react-native-swipeable/**",
       "**/react-native-easy-toast",
-      "**/react-native-easy-toast/**"
+      "**/react-native-easy-toast/**",
+      "**/little-loader",
+     "**/little-loader/**"
     ]
   }
 }

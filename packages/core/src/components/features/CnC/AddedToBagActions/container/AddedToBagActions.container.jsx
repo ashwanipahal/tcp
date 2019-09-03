@@ -9,6 +9,7 @@ import { routerPush } from '../../../../../utils';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import bagPageSelector from '../../BagPage/container/BagPage.selectors';
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -36,6 +37,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       modalInfo,
       isEditingItem,
       removeUnqualifiedItemsAndCheckout,
+      orderHasPickup,
     } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
@@ -57,6 +59,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         modalInfo={modalInfo}
         isEditingItem={isEditingItem}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
+        orderHasPickup={orderHasPickup}
       />
     );
   }
@@ -98,6 +101,7 @@ const mapStateToProps = state => {
     checkoutModalMountedState: checkoutModalOpenState(state),
     isUserLoggedIn: getUserLoggedInState(state),
     modalInfo: bagPageSelector.getConfirmationModalFlag(state),
+    orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
   };
 };
 
