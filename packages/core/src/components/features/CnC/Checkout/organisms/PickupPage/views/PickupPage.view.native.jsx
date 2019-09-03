@@ -35,6 +35,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 
+const formName = 'checkoutPickup';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
@@ -86,6 +87,7 @@ class PickUpFormPart extends React.Component {
       onPickUpSubmit,
     } = this.props;
     const { isEditing, isReset } = this.state;
+
     return (
       <>
         <CheckoutProgressIndicator activeStage="pickup" navigation={navigation} />
@@ -256,7 +258,7 @@ const validateMethod = createValidateMethod({
 });
 
 export default reduxForm({
-  form: 'checkoutPickup', // a unique identifier for this form
+  form: formName, // a unique identifier for this form
   ...validateMethod,
   destroyOnUnmount: false,
 })(withStyles(PickUpFormPart, FormStyle));

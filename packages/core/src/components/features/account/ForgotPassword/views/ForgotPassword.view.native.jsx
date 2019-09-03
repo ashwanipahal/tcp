@@ -89,7 +89,6 @@ class ForgotPasswordView extends React.Component<Props> {
           {labels.password.lbl_forgotPassword_subHeading}
         </SubHeadingSectionStyle>
         <CustomButton
-          color={colorPallete.white}
           fill="BLUE"
           text={labels.password.lbl_forgotPassword_returnLogin}
           buttonVariation="variable-width"

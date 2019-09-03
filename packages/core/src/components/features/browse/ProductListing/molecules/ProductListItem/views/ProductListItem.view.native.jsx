@@ -73,7 +73,6 @@ const ListItem = props => {
       <RenderPromotionalMessage text={loyaltyPromotionMessage} />
       <AddToBagContainer>
         <CustomButton
-          color="white"
           fill="BLUE"
           type="submit"
           buttonVariation="variable-width"

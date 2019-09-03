@@ -25,7 +25,9 @@ export class AddressView extends React.Component {
     this.state = {
       addAddressMount: false,
       currentForm: 'AddAddress',
-      selectedAddress: {},
+      addressLine1: '',
+      countryState: '',
+      selectedAddress: null,
     };
   }
 
@@ -49,6 +51,14 @@ export class AddressView extends React.Component {
     this.setState({ selectedAddress: address });
   };
 
+  setAddressLine1 = (address, countryState) => {
+    this.setState({ addressLine1: address, countryState });
+  };
+
+  resetAddressLine1 = () => {
+    this.setState({ addressLine1: '', countryState: '' });
+  };
+
   render() {
     const {
       addresses,
@@ -59,7 +69,13 @@ export class AddressView extends React.Component {
       onDeleteAddress,
       addressLabels,
     } = this.props;
-    const { addAddressMount, currentForm, selectedAddress } = this.state;
+    const {
+      addAddressMount,
+      currentForm,
+      selectedAddress,
+      addressLine1,
+      countryState,
+    } = this.state;
 
     return (
       <View {...this.props}>
@@ -117,6 +133,7 @@ export class AddressView extends React.Component {
               setSelectedAddress={this.setSelectedAddress}
               onDefaultShippingAddressClick={onDefaultShippingAddressClick}
               setDeleteModalMountState={setDeleteModalMountState}
+              toggleAddAddressModal={this.toggleAddAddressModal}
             />
           )}
 
@@ -137,6 +154,11 @@ export class AddressView extends React.Component {
                   showHeading={false}
                   currentForm={currentForm}
                   toggleAddressModal={this.toggleAddressModal}
+                  addressLine1={addressLine1}
+                  countryState={countryState}
+                  setAddressLine1={this.setAddressLine1}
+                  resetAddressLine1={this.resetAddressLine1}
+                  address={selectedAddress}
                 />
               </ModalViewWrapper>
             </ModalNative>
