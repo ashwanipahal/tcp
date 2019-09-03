@@ -893,7 +893,6 @@ exports[`AddressForm component should renders correctly 1`] = `
       color="white"
       customStyle={Object {}}
       disableButton={false}
-      disabled={[Function]}
       fill="BLUE"
       fullWidth=""
       locator=""
