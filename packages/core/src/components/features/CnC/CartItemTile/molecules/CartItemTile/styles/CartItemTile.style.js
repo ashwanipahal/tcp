@@ -275,15 +275,11 @@ export default css`
   }
 
   .parent- {
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    bottom: 17px;
-
+    padding-bottom: 0px;
     .save-for-later-label {
-      right: 73px;
+      right: -57px;
       position: absolute;
-      bottom: 0px;
+      bottom: 17px;
     }
   }
 
