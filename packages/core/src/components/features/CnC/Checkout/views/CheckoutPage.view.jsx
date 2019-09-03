@@ -45,6 +45,7 @@ class CheckoutPage extends React.PureComponent {
       onPickupSubmit,
       orderHasShipping,
       routeToPickupPage,
+      billingProps,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -87,7 +88,9 @@ class CheckoutPage extends React.PureComponent {
             routeToPickupPage={routeToPickupPage}
           />
         )}
-        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && <BillingPage />}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
+          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} />
+        )}
       </div>
     );
   };
@@ -105,6 +108,7 @@ CheckoutPage.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
+  billingProps: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
