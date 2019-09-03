@@ -100,7 +100,7 @@ class AccountOverview extends PureComponent<Props> {
       header = labels.lbl_overview_createAccount;
     }
     if (getComponentId.trackOrder) {
-      header = labels.lbl_overview_trackYourOrder;
+      header = null;
     }
     return header;
   };
@@ -210,6 +210,7 @@ class AccountOverview extends PureComponent<Props> {
                 headingAlign={isTrackOrder ? 'center' : ''}
                 headingFontFamily="secondary"
                 fontSize={isTrackOrder ? 'fs22' : 'fs16'}
+                headerStyle={isTrackOrder ? { width: '100%' } : {}}
               >
                 <SafeAreaView>
                   <ModalViewWrapper>

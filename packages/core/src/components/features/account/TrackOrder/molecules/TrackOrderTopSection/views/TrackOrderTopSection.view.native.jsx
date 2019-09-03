@@ -1,6 +1,6 @@
 import React from 'react';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import { TrackOrderTopSectionView } from '../styles/TrackOrderTopSection.native.style';
+import { TrackOrderTopSectionView, ModalHeader } from '../styles/TrackOrderTopSection.native.style';
 
 // @flow
 type Props = {
@@ -15,6 +15,13 @@ type Props = {
 const TrackOrderTopSection = ({ labels }: Props) => {
   return (
     <TrackOrderTopSectionView>
+      <ModalHeader>
+        <BodyCopy
+          data-locator="trackordermodal-overlayheading"
+          id="trackorder__modal__heading"
+          text={labels.trackOrder.lbl_header_trackOrderOverlay_header}
+        />
+      </ModalHeader>
       <BodyCopy
         data-locator="trackordermodal-overlaysubheading"
         id="trackorder__modal__subheading"
