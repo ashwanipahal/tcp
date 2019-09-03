@@ -541,7 +541,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         className={null}
         color="text.primary"
         component="p"
-        fontFamily="primary"
+        fontFamily="secondary"
         fontSize="fs12"
         fontWeight="regular"
         letterSpacing="normal"
@@ -1001,7 +1001,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         className={null}
         color="text.primary"
         component="p"
-        fontFamily="primary"
+        fontFamily="secondary"
         fontSize="fs12"
         fontWeight="regular"
         letterSpacing="normal"
@@ -1754,7 +1754,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         className={null}
         color="text.primary"
         component="p"
-        fontFamily="primary"
+        fontFamily="secondary"
         fontSize="fs12"
         fontWeight="regular"
         letterSpacing="normal"
@@ -2212,7 +2212,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         className={null}
         color="text.primary"
         component="p"
-        fontFamily="primary"
+        fontFamily="secondary"
         fontSize="fs12"
         fontWeight="regular"
         letterSpacing="normal"

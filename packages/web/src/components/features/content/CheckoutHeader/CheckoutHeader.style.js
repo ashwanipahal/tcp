@@ -83,4 +83,8 @@ export default css`
       display: none;
     }
   }
+
+  .non-checkout-pages & {
+    display: none;
+  }
 `;

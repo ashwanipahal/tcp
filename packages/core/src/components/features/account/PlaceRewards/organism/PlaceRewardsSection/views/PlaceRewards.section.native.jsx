@@ -51,7 +51,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
         <StyledViewLargeMargin>
           <Text>FPO</Text>
         </StyledViewLargeMargin>
-        <MyRewards labels={labels} />
+        <MyRewards labels={labels} showLink />
       </ScrollView>
     </View>
   );

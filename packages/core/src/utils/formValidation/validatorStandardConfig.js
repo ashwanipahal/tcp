@@ -1,5 +1,7 @@
 const validStreetAddress = 'Please enter a valid street address';
 const validExpirationDate = 'Please enter a valid expiration date';
+const enterPhoneNumber = 'Please enter your phone number';
+const validPhoneNumber = 'Please enter a valid phone number';
 
 export const formValidationMessages = {
   addressLine1: {
@@ -35,8 +37,8 @@ export const formValidationMessages = {
     maxLength: 'Please enter a valid last name',
   },
   phoneNumber: {
-    required: 'Please enter your phone number',
-    phone: 'Please enter a valid phone number',
+    required: enterPhoneNumber,
+    phone: validPhoneNumber,
   },
   zipCode: {
     required: 'Please enter your zip code',
@@ -122,6 +124,16 @@ export const formValidationMessages = {
     dob: 'Please select a year',
   },
   orderNumber: 'ERROR: Please enter a valid order number.',
+  phoneNumberWithAlt: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    required: validPhoneNumber,
+  },
+  altPhoneNumber: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    notEqualTo: 'Phone numbers must not match',
+  },
 };
 
 export const formValidationRules = {
@@ -279,6 +291,21 @@ export const formValidationRules = {
   },
   year: {
     dob: true,
+  },
+  phoneNumberWithAlt: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['altPhoneNumber'],
+    },
+  },
+  altPhoneNumber: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
+    notEqualTo: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
   },
 };
 

@@ -17,6 +17,12 @@ const styles = {
     width: 90,
     height: 70,
   },
+  fullAnimationImageStyle: {
+    width: 90,
+    height: 90,
+    marginLeft: 10,
+    justifyContent: 'center',
+  },
 };
 
 export default styles;

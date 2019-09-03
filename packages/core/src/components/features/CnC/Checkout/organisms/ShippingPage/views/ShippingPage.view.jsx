@@ -54,7 +54,7 @@ export default class ShippingPage extends React.PureComponent {
         (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
         hasPOBox(addressLine1, addressLine2)
       ) {
-        loadShipmentMethods();
+        loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
   }

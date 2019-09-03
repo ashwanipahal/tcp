@@ -50,6 +50,16 @@ const ROUTES_LIST = [
     params: ['l2', 'l3'],
   },
   {
+    noSlugPath: 'place-card',
+    path: '/place-card',
+    resolver: '/WebInstantCredit',
+  },
+  {
+    noSlugPath: 'place-card-application',
+    path: '/place-card/application',
+    resolver: '/ApplyCardPage',
+  },
+  {
     noSlugPath: 'test',
     path: '/test',
     resolver: '/test',

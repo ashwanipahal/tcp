@@ -1,32 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import OpenLoginModal from '../../../account/LoginPage/views/LoginModal.native';
+// import OpenLoginModal from '../../../account/LoginPage/views/LoginModal.native';
 import {
   ButtonWrapper,
   ActionsWrapper,
   ViewBagButton,
   CheckoutButton,
 } from '../styles/AddedToBagActions.style.native';
-import { navigateToNestedRoute } from '../../../../../utils/utils.app';
+import CheckoutConstants from '../../Checkout/Checkout.constants';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
-    const { navigation } = this.props;
+    const { navigation, closeCheckoutModalMountState } = this.props;
     if (e) {
       e.preventDefault();
     }
-    navigateToNestedRoute(navigation, 'HomeStack', 'Checkout');
+    navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.CHECKOUT, {
+      nextToRoot: CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP,
+    });
+    closeCheckoutModalMountState({ state: false });
   };
 
   render() {
     const {
       labels,
       showAddTobag,
-      checkoutModalMountedState,
-      handleCartCheckout,
-      navigation,
-      closeCheckoutModalMountState,
+      // checkoutModalMountedState,
+      // handleCartCheckout,
+      // navigation,
+      // closeCheckoutModalMountState,
       isUserLoggedIn,
     } = this.props;
     return (
@@ -47,19 +50,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
         )}
         <ButtonWrapper>
           <CheckoutButton>
-            {isUserLoggedIn && (
-              <BodyCopy
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs13"
-                text={labels.checkout && labels.checkout.toUpperCase()}
-                onPress={() => {
-                  navigateToNestedRoute(navigation, 'HomeStack', 'Checkout');
-                }}
-              />
-            )}
-
             {!isUserLoggedIn && (
               <BodyCopy
                 color="white"
@@ -67,18 +57,32 @@ class AddedToBagActions extends React.PureComponent<Props> {
                 fontFamily="secondary"
                 fontSize="fs13"
                 text={labels.checkout && labels.checkout.toUpperCase()}
-                onPress={handleCartCheckout}
+                onPress={this.routeToCheckout}
               />
             )}
+
+            {/* {!isUserLoggedIn && (
+              <BodyCopy
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs13"
+                text={labels.checkout && labels.checkout.toUpperCase()}
+                // onPress={handleCartCheckout}
+                onPress={() => {
+                  navigateToNestedRoute(navigation, 'HomeStack', 'Checkout');
+                }}
+              />
+            )} */}
           </CheckoutButton>
         </ButtonWrapper>
-        <OpenLoginModal
+        {/* <OpenLoginModal
           variation="checkout"
           openState={checkoutModalMountedState}
           setLoginModalMountState={closeCheckoutModalMountState}
           handleContinueAsGuest={this.routeToCheckout}
           handleAfterLogin={this.routeToCheckout}
-        />
+        /> */}
       </ActionsWrapper>
     );
   }
