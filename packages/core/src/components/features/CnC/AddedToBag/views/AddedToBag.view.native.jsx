@@ -11,7 +11,7 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
-import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.native';
+import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.view';
 import Anchor from '../../../../common/atoms/Anchor';
 
 const AddedToBag = ({
