@@ -28,7 +28,16 @@ import constants from '../constants';
 
 // Script injection component
 // This is lazy-loaded so we inject it after SSR
-const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr: false });
+const Script = dynamic(() => import('../components/common/atoms/Script'), {
+  ssr: false,
+  loading: () => null,
+});
+
+// Route tracker analytics component
+const RouteTracker = dynamic(() => import('../components/common/atoms/RouteTracker'), {
+  ssr: false,
+  loading: () => null,
+});
 
 // Analytics script injection
 function AnalyticsScript() {
@@ -184,8 +193,13 @@ class TCPWebApp extends App {
             </Grid>
           </Provider>
         </ThemeProvider>
-        {/* Inject analytics script if enabled */}
-        {process.env.ANALYTICS && <AnalyticsScript />}
+        {/* Inject analytics logic if enabled */}
+        {process.env.ANALYTICS && (
+          <>
+            <AnalyticsScript />
+            <RouteTracker />
+          </>
+        )}
       </Container>
     );
   }
