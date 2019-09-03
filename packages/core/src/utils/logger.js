@@ -115,7 +115,7 @@ if (process.browser) {
      */
     initializeLogger({ loggerName = DEFAULT_LOGGER } = {}) {
       const { customLogStream } = this;
-      const level = process.env.LOG_LEVEL || DEFAULT_LOG_LEVEL;
+      const level = process.env.RWD_WEB_LOG_LEVEL || DEFAULT_LOG_LEVEL;
       return bunyan.createLogger({
         name: loggerName,
         level,

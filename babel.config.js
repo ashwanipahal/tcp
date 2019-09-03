@@ -27,6 +27,8 @@ module.exports = api => {
     env: {
       build: {
         ignore: ['**/*.story.tsx', '__snapshots__', '__tests__', '__stories__'],
+      },
+      production: {
         plugins: ['transform-remove-console'],
       },
     },
