@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import {
@@ -50,11 +51,16 @@ class HomePageView extends React.PureComponent<Props> {
   };
 
   render() {
-    const { slots, navigation } = this.props;
+    const {
+      slots,
+      navigation,
+      screenProps: { apiConfig },
+    } = this.props;
 
     return (
       <ScrollView>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <GetCandid apiConfig={apiConfig} />
         <Button
           fullWidth
           buttonVariation="variable-width"
