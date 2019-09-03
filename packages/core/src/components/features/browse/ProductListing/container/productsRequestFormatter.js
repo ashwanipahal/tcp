@@ -165,12 +165,15 @@ export default class ProductsOperator {
   };
 
   getCurrentItems = currItm => {
-    return (
-      currItm.subCategories.Categories &&
-      currItm.subCategories.Categories.items &&
-      currItm.subCategories.Categories.items.length &&
-      currItm.subCategories.Categories.items
-    );
+    const listOfGroups = Object.keys(currItm.subCategories);
+    listOfGroups.forEach(groupName => {
+      return (
+        currItm.subCategories[groupName] &&
+        currItm.subCategories[groupName].items &&
+        currItm.subCategories[groupName].items.length &&
+        currItm.subCategories[groupName].items
+      );
+    });
   };
 
   /** @function This function return the L3 items of the requested category id of L2.
@@ -186,21 +189,30 @@ export default class ProductsOperator {
       const currItm = navTree[idx];
       // Check if the category of the navigation bieng looped on matches with desired L2 category ID.
       if (currItm.categoryId === targetId || currItm.categoryContent.id === targetId) {
+        // If subCategories has length, it means it doesn't have grouping
+        // else it has grouping -> check groups and return current item
         newTrgtChildItm = currItm.subCategories.length
           ? currItm.subCategories
           : this.getCurrentItems(currItm);
         return newTrgtChildItm;
       }
-      if (currItm.subCategories.Categories && currItm.subCategories.Categories.items.length) {
-        // If the category ID does not matches up then recursively call the same function to search depe down the tree.
-        newTrgtChildItm = this.shouldBucktSeq(
-          currItm.subCategories.Categories.items.length
-            ? currItm.subCategories.Categories.items
-            : currItm.subCategories.Categories,
-          targetId,
-          newTrgtChildItm
-        );
-      }
+      const listOfGroups = Object.keys(currItm.subCategories);
+      listOfGroups.forEach(groupName => {
+        if (
+          currItm.subCategories[groupName] &&
+          currItm.subCategories[groupName].items &&
+          currItm.subCategories[groupName].items.length
+        ) {
+          // If the category ID does not matches up then recursively call the same function to search depe down the tree.
+          newTrgtChildItm = this.shouldBucktSeq(
+            currItm.subCategories[groupName].items.length
+              ? currItm.subCategories[groupName].items
+              : currItm.subCategories[groupName],
+            targetId,
+            newTrgtChildItm
+          );
+        }
+      });
     }
     return newTrgtChildItm;
   }
@@ -478,11 +490,10 @@ export default class ProductsOperator {
       return null; // nothing more to load
     }
 
-    // const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
-    // const sort = productListingStoreView.getAppliedSort(state);
+    const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
+    const sort = productListingStoreView.getAppliedSort(state);
 
-    // const appliedFiltersAndSort = { ...appliedFiltersIds, sort, };
-    const appliedFiltersAndSort = {};
+    const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
     return this.getProductsListingInfo({
       state,
       filtersAndSort: appliedFiltersAndSort,

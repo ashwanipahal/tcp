@@ -121,24 +121,27 @@ export const generateGroups = level1 => {
     let level2Groups = [];
     const groupings = {};
 
+    const listOfGroups = Object.keys(level1.subCategories);
     // for each L2 parse and place in proper group
-    if (level1.subCategories.Categories && level1.subCategories.Categories.items) {
-      level1.subCategories.Categories.items.forEach(L2 => {
-        const groupName = 'Categories';
-        const groupOrder = 1;
+    listOfGroups.forEach(grp => {
+      if (level1.subCategories[grp] && level1.subCategories[grp].items) {
+        level1.subCategories[grp].items.forEach(L2 => {
+          const groupName = grp;
+          const groupOrder = level1.subCategories[grp].order;
 
-        // if new grouping initalize array
-        if (!groupings[groupName]) {
-          groupings[groupName] = {
-            order: groupOrder,
-            menuItems: [],
-          };
-        }
+          // if new grouping initalize array
+          if (!groupings[groupName]) {
+            groupings[groupName] = {
+              order: groupOrder,
+              menuItems: [],
+            };
+          }
 
-        // Push L2 in this bucket
-        groupings[groupName].menuItems.push(L2);
-      });
-    }
+          // Push L2 in this bucket
+          groupings[groupName].menuItems.push(L2);
+        });
+      }
+    });
 
     // Now get all groups and generate array of object, this is not to bad as there are at most 3-4 groups
     level2Groups = Object.keys(groupings).map(group => ({
