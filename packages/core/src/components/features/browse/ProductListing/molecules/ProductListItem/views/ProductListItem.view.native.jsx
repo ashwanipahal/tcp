@@ -59,6 +59,7 @@ const ListItem = props => {
     onFavorite,
     currencyExchange,
     theme,
+    currencySymbol,
     isPlcc,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -78,7 +79,11 @@ const ListItem = props => {
         favoriteIconSize={favoriteIconSize}
       />
       <RenderBadge2 text={badge2} />
-      <RenderPricesSection miscInfo={miscInfo} currencyExchange={currencyExchange} />
+      <RenderPricesSection
+        miscInfo={miscInfo}
+        currencyExchange={currencyExchange}
+        currencySymbol={currencySymbol}
+      />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
       <RenderPromotionalMessage isPlcc={isPlcc} text={loyaltyPromotionMessage} />
@@ -154,12 +159,12 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
-  const { miscInfo, currencyExchange } = values;
+  const { miscInfo, currencyExchange, currencySymbol } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
-  const listPriceForColor = listPrice * currencyExchange[0].exchangevalue;
+  const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
   // calculate default offer price
-  const offerPriceForColor = offerPrice * currencyExchange[0].exchangevalue;
+  const offerPriceForColor = `${currencySymbol}${offerPrice * currencyExchange[0].exchangevalue}`;
   return (
     <PricesSection>
       <ListPrice accessibilityRole="text" accessibilityLabel={listPriceForColor}>
@@ -219,6 +224,7 @@ ListItem.propTypes = {
   onFavorite: PropTypes.func,
   isPlcc: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 ListItem.defaultProps = {
