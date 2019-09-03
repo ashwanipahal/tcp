@@ -483,7 +483,7 @@
     "errorMessage": "Sorry, this item is no longer available in the color, size, or fit selected."
   },
   "_ERR_INSUFFICIENT_FUND": {
-    "errorMessage": "There is no balance for the account provided.",
+    "errorMessage": "There is no balance for the account provided. ",
     "formFieldName": ""
   }
 }
