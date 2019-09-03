@@ -45,7 +45,7 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'c',
-    path: '/c/:cid?',
+    path: '/c/:cid',
     resolver: '/ProductListing',
     params: ['cid'],
   },
