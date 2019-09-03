@@ -275,12 +275,12 @@ export default css`
   }
 
   .parent- {
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    bottom: 17px;
-    right: 2px;
-    width: auto;
+    padding-bottom: 0px;
+    .save-for-later-label {
+      right: -57px;
+      position: absolute;
+      bottom: 17px;
+    }
   }
 
   .tile-header {
