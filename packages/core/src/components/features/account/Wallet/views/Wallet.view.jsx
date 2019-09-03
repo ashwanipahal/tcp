@@ -7,8 +7,8 @@ const WalletView = ({ labels }) => {
   return (
     <PageHeadingWithLinks
       heading={labels.myPlaceRewards.lbl_my_wallet_heading}
-      programDetailsCta={labels.common.lbl_common_tnc}
-      termsConditionCta={labels.myPlaceRewards.lbl_my_rewards_program_details}
+      programDetailsCta={labels.myPlaceRewards.lbl_my_rewards_program_details}
+      termsConditionCta={labels.common.lbl_common_tnc}
     >
       <MyRewards labels={labels} view="all" />
     </PageHeadingWithLinks>

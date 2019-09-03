@@ -3,6 +3,7 @@ import AccountOverview from '../AccountOverview/container/AccountOverview.contai
 import AddEditAddress from '../AddEditAddress/container/AddEditAddress.container';
 import Payment from '../Payment/container/Payment.container';
 import AddEditCreditCardContainer from '../AddEditCreditCard/container/AddEditCreditCard.container';
+import MailingInformationContainer from '../MyProfile/organism/MailingInformation';
 import AddGiftCardContainer from '../Payment/AddGiftCard/container/AddGiftCard.container'; //eslint-disable-line
 import PlaceRewards from '../PlaceRewards/container/PlaceRewards.container';
 import Wallet from '../Wallet/container/Wallet.container';
@@ -26,6 +27,7 @@ const AccountComponentMapping = {
   'change-password': ChangePassword,
   'edit-personal-info': AddEditPersonalInformationContainer,
   'birthday-savings': BirthdaySavingsPage,
+  'edit-mailing-address': MailingInformationContainer,
 };
 
 export default AccountComponentMapping;

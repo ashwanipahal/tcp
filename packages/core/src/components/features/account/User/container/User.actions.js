@@ -10,6 +10,12 @@ export const resetUserInfo = () => {
   };
 };
 
+export const clearUserInfo = () => {
+  return {
+    type: CONSTANTS.CLEAR_USER_INFO_TTL,
+  };
+};
+
 export const getUserInfo = () => {
   return {
     type: CONSTANTS.GET_USER_INFO,

@@ -24,7 +24,7 @@ export const EmptyWalletRewards = ({ labels }) => {
           large: 2,
           medium: 3,
         }}
-        className="elem-mb-XXXL"
+        className="layout-mb-XXL"
       >
         <Button
           className="elem-mt-XL"

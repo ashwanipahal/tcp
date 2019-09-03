@@ -55,7 +55,8 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityId="mailingAddress"
         activityTitle="+20%"
         dataLocatorPrefix="email"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-mailing-address"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -227,7 +228,8 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         activityId="mailingAddress"
         activityTitle="+20%"
         dataLocatorPrefix="email"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-mailing-address"
       />
     </Styled(Col)>
     <Styled(Col)

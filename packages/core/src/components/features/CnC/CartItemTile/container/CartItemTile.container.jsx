@@ -37,6 +37,8 @@ export const CartItemTileContainer = ({
   itemIndex,
   openedTile,
   setSelectedProductTile,
+  setSwipedElement,
+  swipedElement,
 }) => (
   <CartItemTile
     labels={labels}
@@ -54,6 +56,8 @@ export const CartItemTileContainer = ({
     itemIndex={itemIndex}
     openedTile={openedTile}
     setSelectedProductTile={setSelectedProductTile}
+    setSwipedElement={setSwipedElement}
+    swipedElement={swipedElement}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {

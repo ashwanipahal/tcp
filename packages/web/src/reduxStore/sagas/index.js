@@ -32,9 +32,11 @@ import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/contain
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
+import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
@@ -81,5 +83,7 @@ export default function* rootSaga() {
     ChangePasswordSaga(),
     UpdateProfileSaga(),
     BirthdaySavingsSaga(),
+    AddAirmilesBannerSaga(),
+    MailingAddressSaga(),
   ]);
 }

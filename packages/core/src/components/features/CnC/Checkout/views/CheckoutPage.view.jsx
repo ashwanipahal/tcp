@@ -58,7 +58,7 @@ class CheckoutPage extends React.PureComponent {
 
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
             isMobile={isMobile}
@@ -76,7 +76,7 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
           />
         )}
-        {currentSection.toLowerCase() === 'shipping' && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
             isGuest={isGuest}
@@ -93,7 +93,7 @@ class CheckoutPage extends React.PureComponent {
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} marginTop />;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isCheckoutView />;
   }
 }
 

@@ -443,7 +443,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
           },
         ]
       }
-      color="gray"
+      color="fixed-width"
       locator="stacked_cta_list"
     />
     <Styled(View)
