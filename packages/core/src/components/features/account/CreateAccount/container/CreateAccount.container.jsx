@@ -36,7 +36,7 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: PropTypes.func,
     navigation: PropTypes.shape({}),
     setLoginModalMountState: PropTypes.bool.isRequired,
-    showLogin: PropTypes.func,
+    showLogin: PropTypes.func.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
@@ -54,7 +54,6 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: () => {},
     isUserLoggedIn: false,
     navigation: {},
-    showLogin: () => {},
   };
 
   constructor(props) {

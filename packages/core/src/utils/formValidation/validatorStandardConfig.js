@@ -96,7 +96,7 @@ export const formValidationMessages = {
   emailAddressNoAsync: {
     required: `lbl_err_email_req`,
     email: 'lbl_err_email',
-    validEmail: 'ERROR: Email format is invalid',
+    validEmail: 'lbl_err_emailaddressnoasync',
   },
   dateOfBirthBothRequired: {
     userDateOfBirth: 'lbl_err_dob_required',
@@ -134,7 +134,7 @@ export const formValidationMessages = {
   altPhoneNumber: {
     eitherRequired: enterPhoneNumber,
     phone: validPhoneNumber,
-    notEqualTo: 'Phone numbers must not match',
+    notEqualTo: 'lbl_err_altphonenumber_notequalto',
   },
 };
 

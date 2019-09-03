@@ -48,6 +48,8 @@ const formErrorCMSMessage = {
   lbl_err_email_validemail: 'Email format is invalid',
   lbl_err_state_staterequired_us: 'Please select a state',
   lbl_err_state_staterequired_nonus: 'Please select a province',
+  lbl_err_altphonenumber_notequalto: 'Phone numbers must not match',
+  lbl_err_emailaddressnoasync: 'ERROR: Email format is invalid',
 };
 
 export default formErrorCMSMessage;

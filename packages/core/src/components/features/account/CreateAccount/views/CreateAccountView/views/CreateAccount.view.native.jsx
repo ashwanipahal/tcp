@@ -20,7 +20,7 @@ class CreateAccount extends React.Component<Props> {
     error: {},
     onAlreadyHaveAnAccountClick: PropTypes.func,
     onRequestClose: PropTypes.func,
-    showLogin: PropTypes.func,
+    showLogin: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -33,7 +33,6 @@ class CreateAccount extends React.Component<Props> {
     error: {},
     onAlreadyHaveAnAccountClick: () => {},
     onRequestClose: () => {},
-    showLogin: () => {},
   };
 
   constructor(props) {
