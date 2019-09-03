@@ -18,5 +18,5 @@ export const Touchable = styled.TouchableOpacity``;
 export default {
   ImageGridItem,
   Wrapper,
-  Touchable
+  Touchable,
 };

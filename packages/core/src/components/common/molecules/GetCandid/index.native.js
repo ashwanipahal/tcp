@@ -1,1 +1,1 @@
-export { default } from './container/GetCandid.container'
+export { default } from './container/GetCandid.container';
