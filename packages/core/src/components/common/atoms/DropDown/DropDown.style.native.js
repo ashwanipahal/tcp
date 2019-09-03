@@ -18,7 +18,7 @@ const HeaderContainer = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-const Row = styled.View`
+const Row = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   ${props =>
