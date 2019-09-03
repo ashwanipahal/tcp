@@ -62,10 +62,7 @@ const settingDeviceConfig = (server, device) => {
  */
 const setEnvConfig = dev => {
   if (dev) {
-    logger.info(
-      '************* Using Env Config File Of ' + ENV_CONFIG_FILE_PATH,
-      '  *************'
-    );
+    logger.info('Using Env Config File Of ' + ENV_CONFIG_FILE_PATH);
     dotenv.config({
       path: path.resolve(__dirname, `..${path.sep}env${path.sep}${ENV_CONFIG_FILE_PATH}.env`),
     });
