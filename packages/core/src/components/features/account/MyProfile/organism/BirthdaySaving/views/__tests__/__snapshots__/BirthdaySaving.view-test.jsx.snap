@@ -2,9 +2,11 @@
 
 exports[`BirthdaySaving component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
-  ctaTitle="ADD BIRTHDAY INFO"
+  ctaLink="/account?id=profile&subSection=birthday-savings"
+  ctaPath="/account/profile"
+  ctaTitle=""
   dataLocator="pi-addbirthdayinfo"
-  title="Birthday Savings"
+  title=""
 >
   <Styled(BodyCopy)
     className={null}
@@ -29,17 +31,8 @@ exports[`BirthdaySaving component should render correctly 1`] = `
           }
         }
       >
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="p"
-          dataLocator="pi-addbirthdayinfo"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
+        <Connect(BirthdaySavings)
+          view="read"
         />
       </Styled(Col)>
     </Styled(Row)>

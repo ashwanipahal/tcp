@@ -7,7 +7,11 @@ export function* getChildrenSaga() {
   try {
     const response = yield call(getChildren);
 
-    yield put(setUserPersonalData(response));
+    yield put(
+      setUserPersonalData({
+        children: response,
+      })
+    );
   } catch (err) {
     console.log('Error: error in fetching user profile information');
   }

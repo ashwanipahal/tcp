@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BirthdaySavingsPage component should renders correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      asPath="/account/profile"
+      fontSizeVariation="xlarge"
+      to="/account?id=profile"
+    >
+      <span
+        className="left-arrow"
+      />
+      back
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
+  <Styled(FormPageHeading)
+    className="elem-mb-LRG"
+    heading="Birthday Savings"
+  />
+  <Styled(BodyCopy)
+    className="elem-mb-XXL"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!
+  </Styled(BodyCopy)>
+  <Connect(BirthdaySavings)
+    view="edit"
+  />
+</Fragment>
+`;

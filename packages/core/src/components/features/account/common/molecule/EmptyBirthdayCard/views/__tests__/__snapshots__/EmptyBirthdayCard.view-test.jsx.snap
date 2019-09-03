@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
+<Styled(BodyCopy)
+  className="test"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="center"
+>
+  <div>
+    <Styled(BodyCopy)
+      className="elem-mr-XXS"
+      color="text.primary"
+      component="span"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      +
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      fontSizeVariation="large"
+      underline={true}
+    />
+  </div>
+</Styled(BodyCopy)>
+`;
+
+exports[`EmptyBirthdayCard should render correctly for read view as well 1`] = `
+<Styled(BodyCopy)
+  className="test"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="center"
+/>
+`;
