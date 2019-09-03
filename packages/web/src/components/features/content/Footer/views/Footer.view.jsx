@@ -50,7 +50,7 @@ class Footer extends React.Component {
       setLoginModalMountState,
       isLoggedIn,
       linkConfig,
-      footerActions,
+      footerActionCreator,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -69,7 +69,7 @@ class Footer extends React.Component {
             navLinkItems={navLinks}
             isLoggedIn={isLoggedIn}
             linkConfig={linkConfig}
-            footerActions={footerActions}
+            footerActionCreator={footerActionCreator}
           />
         </Row>
         <Row className="footer-middle desktop">
@@ -80,7 +80,7 @@ class Footer extends React.Component {
             setLoginModalMountState={setLoginModalMountState}
             isLoggedIn={isLoggedIn}
             linkConfig={linkConfig}
-            footerActions={footerActions}
+            footerActionCreator={footerActionCreator}
           />
         </Row>
         <div className="footer-bottom">
@@ -154,6 +154,7 @@ Footer.propTypes = {
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 Footer.defaultProps = {

@@ -11,7 +11,7 @@ const FooterMiddleDesktop = ({
   loginModalMountedState,
   setLoginModalMountState,
   linkConfig,
-  footerActions,
+  footerActionCreator,
 }) => {
   let numberOfNavLinkCols = navLinks.length;
 
@@ -39,7 +39,7 @@ const FooterMiddleDesktop = ({
             }}
             colNum={i}
             linkConfig={linkConfig}
-            footerActions={footerActions}
+            footerActionCreator={footerActionCreator}
           />
           <FooterNavLinks
             className={className}
@@ -50,7 +50,7 @@ const FooterMiddleDesktop = ({
             }}
             colNum={i + 1}
             linkConfig={linkConfig}
-            footerActions={footerActions}
+            footerActionCreator={footerActionCreator}
           />
         </Col>
       );
@@ -73,7 +73,7 @@ const FooterMiddleDesktop = ({
             colNum={i}
             isLoggedIn={isLoggedIn}
             linkConfig={linkConfig}
-            footerActions={footerActions}
+            footerActionCreator={footerActionCreator}
           />
         </Col>
       );
@@ -98,7 +98,7 @@ const FooterMiddleDesktop = ({
           }}
           colNum={0}
           linkConfig={linkConfig}
-          footerActions={footerActions}
+          footerActionCreator={footerActionCreator}
         />
       </Col>
       <Col
@@ -117,7 +117,7 @@ const FooterMiddleDesktop = ({
           }}
           colNum={1}
           linkConfig={linkConfig}
-          footerActions={footerActions}
+          footerActionCreator={footerActionCreator}
         />
       </Col>
       {numberOfNavLinkCols <= 5 ? (
@@ -151,7 +151,7 @@ FooterMiddleDesktop.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   setLoginModalMountState: PropTypes.func.isRequired,
   linkConfig: PropTypes.shape({}).isRequired,
-  footerActions: PropTypes.func.isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 export default FooterMiddleDesktop;

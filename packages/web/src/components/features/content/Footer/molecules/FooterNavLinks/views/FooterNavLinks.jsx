@@ -13,7 +13,7 @@ const FooterNavLinks = ({
   colNum,
   isLoggedIn,
   linkConfig,
-  footerActions,
+  footerActionCreator,
 }) => {
   return (
     <div className={`${className} container-nav-link`} key={navLinkItems.id} data-index={colNum}>
@@ -30,7 +30,7 @@ const FooterNavLinks = ({
         colNum={colNum}
         isLoggedIn={isLoggedIn}
         linkConfig={linkConfig}
-        footerActions={footerActions}
+        footerActionCreator={footerActionCreator}
       />
     </div>
   );
@@ -45,7 +45,7 @@ FooterNavLinks.propTypes = {
   colNum: PropTypes.number.isRequired,
   isLoggedIn: PropTypes.bool,
   linkConfig: PropTypes.shape({}).isRequired,
-  footerActions: PropTypes.func.isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 FooterNavLinks.defaultProps = {

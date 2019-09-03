@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    footerActions: (dispatchFn, payload) => {
+    footerActionCreator: (dispatchFn, payload) => {
       dispatch(dispatchFn(payload));
     },
     getUserInfoAction: () => {

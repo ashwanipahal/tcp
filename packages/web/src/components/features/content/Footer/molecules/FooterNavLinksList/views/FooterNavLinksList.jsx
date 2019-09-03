@@ -19,43 +19,50 @@ const FooterNavLinksList = ({
   colNum,
   isLoggedIn,
   linkConfig,
-  footerActions,
+  footerActionCreator,
 }) => {
-  const trackLink = (e, fn) => {
+  const trackOrderLink = (e, handler) => {
     e.preventDefault();
-    if (!isLoggedIn) footerActions(fn, { state: true });
+    if (!isLoggedIn) footerActionCreator(handler, { state: true });
     else routerPush('/account', '/account');
   };
 
-  const loginModalOpenClick = (e, fn) => {
+  const loginModalOpenClick = (e, handler) => {
     e.preventDefault();
-    footerActions(fn, { state: true });
+    footerActionCreator(handler, { state: true });
   };
 
-  const logout = (e, fn) => {
+  const logout = (e, handler) => {
     e.preventDefault();
-    scrollPage();
-    footerActions(fn);
+    footerActionCreator(handler);
   };
 
-  const myAccountLogin = (e, fn) => {
+  const myAccountLogin = (e, handler) => {
     e.preventDefault();
+    // TO-DO : When the header is fixed at top, we can remove the scroll page call.
     scrollPage();
-    footerActions(fn, {
+    footerActionCreator(handler, {
       component: 'login',
       variation: 'primary',
     });
   };
+  /**
+   * Callback for redux action mapped to link action type
+   * @callback dispatchFn
+   * @param {Object} payload
+   */
 
-  const getOnClickAction = (
-    { isTrackOrderLink, isLoginLink, isLogoutLink, isMyAccountLink },
-    dispatchFn
-  ) => {
+  /**
+   * @function getOnClickAction
+   * @param {string} action - link action type
+   * @param {dispatchFn} dispatchFn -  redux action mapped to link action type
+   */
+  const getOnClickAction = (action, dispatchFn) => {
     let onClick = null;
-    if (isTrackOrderLink) onClick = e => trackLink(e, dispatchFn);
-    if (isLoginLink) onClick = e => loginModalOpenClick(e, dispatchFn);
-    if (isLogoutLink) onClick = e => logout(e, dispatchFn);
-    if (isMyAccountLink) onClick = e => myAccountLogin(e, dispatchFn);
+    if (action === 'track-order') onClick = e => trackOrderLink(e, dispatchFn);
+    if (action === 'favorites') onClick = e => loginModalOpenClick(e, dispatchFn);
+    if (action === 'log-out') onClick = e => logout(e, dispatchFn);
+    if (action === 'my-account') onClick = e => myAccountLogin(e, dispatchFn);
 
     return onClick;
   };
@@ -67,23 +74,26 @@ const FooterNavLinksList = ({
    * @returns JSX of the link.
    */
   const createNavListItem = (linkItems, index) => {
+    const linkAction = linkItems.action;
+    const dispatchFn = linkAction ? linkConfig[linkAction] : null;
     /*
-      if linkItems.url have any keyword, on which we need an action event getting fired,
-      then we need to check for its index, if found, we set a function to dispatch the action.
-      else, it will set the linkItems.url to the component directly for default behaviour.
+      hideLogoutMyActLink - true - if linkAction is my-account and user is logged in.
+      hideLogoutMyActLink - true - if linkAction is log-out and user is  not logged in.
+       hideLogoutMyActLink - false - other wise false, to show the other links.
+      This condition is to satisfy the use case, to toggle between My Account and logout
+      footer links.
+      Use Case - When user is logged in, only Logout link should be visible to user.
+                When user is not logged in, only My Account link should be visible to user.
+      Problem Scenario - As the footer links are statically configured in CMS, if this condition
+              is not put, user will be seeing both the links all the time.
     */
-    const isTrackOrderLink = linkItems.action === 'track-order';
-    const isLoginLink = linkItems.action === 'favorites';
-    const isLogoutLink = linkItems.action === 'log-out';
-    const isMyAccountLink = linkItems.action === 'my-account';
-    const dispatchFn = linkItems.action ? linkConfig[linkItems.action] : null;
-    const hideLink = (isLoggedIn && isMyAccountLink) || (!isLoggedIn && isLogoutLink) || false;
-    const onClick = getOnClickAction(
-      { isTrackOrderLink, isLoginLink, isLogoutLink, isMyAccountLink },
-      dispatchFn
-    );
+    const hideLogoutMyActLink =
+      (isLoggedIn && linkAction === 'my-account') ||
+      (!isLoggedIn && linkAction === 'log-out') ||
+      false;
+    const onClick = linkAction ? getOnClickAction(linkAction, dispatchFn) : null;
 
-    return !hideLink ? (
+    return !hideLogoutMyActLink ? (
       <li>
         <Anchor
           className={className}
@@ -115,7 +125,7 @@ FooterNavLinksList.propTypes = {
   colNum: PropTypes.number.isRequired,
   isLoggedIn: PropTypes.bool,
   linkConfig: PropTypes.shape({}).isRequired,
-  footerActions: PropTypes.func.isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 FooterNavLinksList.defaultProps = {
