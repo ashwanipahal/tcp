@@ -129,7 +129,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         lineHeight="normal"
         textAlign="left"
       >
-        undefined: 
+        Next Rewards: 
         <Styled(BodyCopy)
           className={null}
           color="text.primary"

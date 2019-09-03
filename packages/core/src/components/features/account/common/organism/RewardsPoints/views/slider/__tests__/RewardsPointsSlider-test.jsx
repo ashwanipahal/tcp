@@ -11,7 +11,7 @@ describe('RewardsPoints Slider View', () => {
       labels: {
         lbl_rewardPoints_currentPoints: 'Current Points',
         lbl_rewardPoints_heading: 'My rewards',
-        lbl_common_next_reward: 'Next Rewards',
+        lbl_rewardPoints_nextReward: 'Next Rewards',
         lbl_rewardPoints_currency: '$',
       },
     };

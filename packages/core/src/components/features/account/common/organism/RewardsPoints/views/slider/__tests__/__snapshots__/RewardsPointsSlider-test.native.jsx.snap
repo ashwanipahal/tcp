@@ -37,7 +37,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
       <Styled(BodyCopy)
         fontFamily="secondary"
         fontSize="fs14"
-        text="undefined: "
+        text="Next Rewards: "
       />
       <Styled(BodyCopy)
         fontFamily="secondary"
