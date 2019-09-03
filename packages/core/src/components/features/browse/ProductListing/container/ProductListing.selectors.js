@@ -68,6 +68,16 @@ export const getProductsSelect = createSelector(
   products => products && products.get('loadedProducts')
 );
 
+export const getTotalProductsCount = createSelector(
+  getProductListingState,
+  products => products && products.get('totalProductsCount')
+);
+
+export const getAppliedFilters = createSelector(
+  getProductListingState,
+  products => products && products.get('appliedFiltersIds')
+);
+
 export const getLoadedProductsCount = createSelector(
   getProductListingState,
   products => {

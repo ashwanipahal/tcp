@@ -1,6 +1,9 @@
+// eslint-disable-next-line import/no-unresolved
+import Router from 'next/router';
 import processHelpers from './processHelpers';
-import { isClient } from '../../../utils';
+import { isClient, routerPush, getSiteId } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
+import { FACETS_FIELD_KEY } from './productListing.utils';
 
 const getAvailableL3List = facets => {
   return facets && facets.multilevel && facets.multilevel.bucket;
@@ -67,6 +70,65 @@ const getFiltersAfterProcessing = (
   }
   return filters;
 };
+const getPlpUrlQueryValues = filtersAndSort => {
+  const { sort } = filtersAndSort;
+  // const { ...otherParams } = queryString.parse(urlQueryString);
+
+  // NOTE: these are parameters on query string we don't handle (nor we need to)
+  // just pass them to the abstractor
+  const urlQueryValues = {};
+  let routeURL = '?';
+
+  if (filtersAndSort) {
+    Object.keys(filtersAndSort).forEach(key => {
+      if (filtersAndSort[key].length > 0) {
+        if (key.toLowerCase() === FACETS_FIELD_KEY.sort) {
+          // this also covers the fake sort describing the default server sort (which we give a falsy value like 0)
+          urlQueryValues.sort = sort;
+        } else {
+          urlQueryValues[key] = filtersAndSort[key].join(',');
+        }
+      }
+    });
+
+    Object.keys(filtersAndSort).forEach(key => {
+      if (
+        (key.toLowerCase() === FACETS_FIELD_KEY.sort &&
+          urlQueryValues.sort &&
+          filtersAndSort.sort === '') ||
+        (urlQueryValues[key] && filtersAndSort[key].length < 1)
+      ) {
+        // If sort has no value or recommended then no need to pass key in url and api
+        delete urlQueryValues[key];
+      }
+    });
+  }
+
+  const displayPath = Router.asPath;
+  const country = getSiteId();
+  let urlPath = displayPath.replace(`/${country}`, '');
+  urlPath = urlPath.split('?');
+  urlPath = [...urlPath].shift();
+
+  // TODO- To get query from getInitialProps.
+  let urlPathCID = urlPath.split('/');
+  urlPathCID = urlPathCID[urlPathCID.length - 1];
+  urlPathCID = urlPathCID.split('?');
+  urlPathCID = [...urlPathCID].shift();
+
+  Object.keys(urlQueryValues).forEach(key => {
+    routeURL = `${routeURL}${key}=${urlQueryValues[key]}&`;
+  });
+
+  routeURL = `${urlPath}${routeURL}`;
+
+  routeURL = routeURL.substring(0, routeURL.length - 1);
+
+  routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
+
+  return true;
+};
+
 const processResponse = (
   res,
   {
@@ -95,6 +157,9 @@ const processResponse = (
   if (res.body.redirect && window) {
     window.location.href = res.body.redirect.value;
   }
+
+  getPlpUrlQueryValues(filtersAndSort);
+
   const pendingPromises = [];
   // flags if we are oin an L1 plp. Such plp's have no products, and only show espots and recommendations.
   const isDepartment = isDepartmentPage(isSearch, breadCrumbs);

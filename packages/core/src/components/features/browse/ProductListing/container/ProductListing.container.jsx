@@ -13,7 +13,10 @@ import {
   getCategoryId,
   getLabelsProductListing,
   getLongDescription,
+  getTotalProductsCount,
+  getAppliedFilters,
 } from './ProductListing.selectors';
+import submitProductListingFiltersForm from './ProductListingSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -41,6 +44,8 @@ class ProductListingContainer extends React.PureComponent {
       labels,
       labelsFilter,
       categoryId,
+      getProducts,
+      onSubmit,
       ...otherProps
     } = this.props;
     return (
@@ -57,6 +62,8 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         labelsFilter={labelsFilter}
         labels={labels}
+        getProducts={getProducts}
+        onSubmit={onSubmit}
         {...otherProps}
       />
     );
@@ -64,7 +71,7 @@ class ProductListingContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const appliedFilters = state.ProductListing.appliedFiltersIds;
+  const appliedFilters = getAppliedFilters(state);
 
   // eslint-disable-next-line
   let filtersLength = {};
@@ -85,14 +92,16 @@ function mapStateToProps(state) {
     breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
-    totalProductsCount: state.ProductListing.totalProductsCount,
+    totalProductsCount: getTotalProductsCount(state),
     filtersLength,
     initialValues: {
-      ...state.ProductListing.appliedFiltersIds,
+      ...getAppliedFilters(state),
+      sort: '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    onSubmit: submitProductListingFiltersForm,
     isPlcc: isPlccUser(state),
   };
 }
@@ -122,6 +131,7 @@ ProductListingContainer.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  onSubmit: PropTypes.func.isRequired,
 };
 
 ProductListingContainer.defaultProps = {

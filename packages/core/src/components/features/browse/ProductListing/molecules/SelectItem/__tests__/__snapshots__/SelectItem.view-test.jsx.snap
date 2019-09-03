@@ -33,19 +33,22 @@ exports[`Select Item is shown should render select item  1`] = `
           ";
     width: auto;
   }
-  .item-select {
+  .selected-items {
     text-transform: capitalize;
     padding-left: ",
           [Function],
           ";
+    text-align: left;
+  }
 
+  .item-select {
     @media ",
           [Function],
           " {
       background: url(",
           "/static/images/selected-item.svg",
           ") no-repeat left top;
-      background-size: 20px 20px;
+      background-size: 18px 18px;
       margin-bottom: ",
           [Function],
           ";

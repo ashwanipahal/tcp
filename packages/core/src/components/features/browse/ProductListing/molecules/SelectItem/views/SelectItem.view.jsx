@@ -120,7 +120,7 @@ class SelectItem extends React.PureComponent {
           data-title={title}
           data-query={query}
           ref={this.handleRef}
-          className="item-select"
+          className={`${className} selected-items`}
           onMouseDown={this.handleClick}
           onKeyPress={this.handleClick}
           role="option"

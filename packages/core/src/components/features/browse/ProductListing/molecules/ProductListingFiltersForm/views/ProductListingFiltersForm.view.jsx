@@ -10,6 +10,7 @@ import cssClassName from '../../utils/cssClassName';
 import ProductListingMobileFiltersForm from '../../ProductListingMobileFiltersForm';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
+import AppliedFiltersList from '../../AppliedFiltersList';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
 
 /**
@@ -91,10 +92,107 @@ function getFilterOptionsMap(optionsMap, filterName) {
 }
 
 class ProductListingFiltersForm extends React.Component {
-  // TODO Fix this - would be used while add apply button functionality
-  // constructor(props) {
-  //   super(props);
-  // }
+  /**
+   * @constructor for this class
+   * @param {object} props props to the constructor
+   */
+  constructor(props) {
+    super(props);
+    this.filterRef = [];
+    this.state = {
+      isOpenFilterSection: false,
+    };
+
+    this.captureFilterRef = ref => {
+      if (!ref) return;
+      const typeRef = ref && ref.getRenderedComponent();
+      typeRef.filterRefType = ref.props.name;
+      this.filterRef.push(typeRef);
+    };
+
+    this.handleRemoveFilter = this.handleRemoveFilter.bind(this);
+    this.handleRemoveAllFilters = this.handleRemoveAllFilters.bind(this);
+    this.handleImmediateSubmit = this.handleImmediateSubmit.bind(this);
+  }
+
+  /**
+   * @function getAppliedFiltersCount This handles to get applied filter count.
+   */
+  getAppliedFiltersCount() {
+    const { initialValues } = this.props;
+    let count = 0;
+
+    // eslint-disable-next-line
+    for (let key in initialValues) {
+      count += key.toLowerCase() !== FACETS_FIELD_KEY.sort ? initialValues[key].length : 0;
+    }
+    return count;
+  }
+
+  /**
+   * @function handleSubmitOnChange This handles to submit remove filters call.
+   */
+  handleSubmitOnChange() {
+    const { submitting, onSubmit, getProducts } = this.props;
+    if (submitting) return;
+
+    this.filterRef.forEach(filter => {
+      if (filter.filterRefType !== 'auxdescription_uFilter') filter.closeMenu();
+    });
+
+    // Observe that since submission can occur by capturing the change events in the CustomSelects of the form
+    // we need to wait for the next event loop for the value in the redux-store to reflect the ones in the fields
+    setTimeout(() => {
+      // DT-31958
+      // Need to get form values from props / redux-store and compare to the previous values
+      // eslint-disable-next-line react/prop-types
+      const { formValues } = this.props;
+      return onSubmit(formValues, false, getProducts);
+    });
+  }
+
+  /**
+   * @function handleRemoveFilter remove single filter
+   * @param {String} fieldName - field name to be removed
+   * @param {number} filterId - id to be removed
+   */
+  handleRemoveFilter(fieldName, filterId) {
+    const { change, initialValues, handleSubmit } = this.props;
+    change(fieldName, initialValues[fieldName].filter(entryId => entryId !== filterId));
+    handleSubmit(this.handleSubmitOnChange);
+  }
+
+  /**
+   * @function handleRemoveAllFilters remove all filters
+   * @param void
+   */
+  handleRemoveAllFilters() {
+    const { change, initialValues } = this.props;
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in initialValues) {
+      if (key !== 'sort') {
+        change(key, []);
+      }
+    }
+    this.handleSubmitOnChange();
+    return true;
+  }
+
+  /**
+   * @function handleImmediateSubmit submit filter call
+   * @param {Object} formValues - form value for filter to be applied
+   */
+  handleImmediateSubmit(formValues) {
+    const { submitting, onSubmit, getProducts } = this.props;
+    if (submitting) return;
+
+    this.filterRef.forEach(filter => {
+      if (filter.filterRefType !== 'auxdescription_uFilter') filter.closeMenu();
+    });
+
+    // eslint-disable-next-line consistent-return
+    return onSubmit(formValues, false, getProducts);
+  }
 
   /**
    * @function renderFilterField
@@ -105,13 +203,8 @@ class ProductListingFiltersForm extends React.Component {
    * @param {String} facetName - filter names "category, color etc"
    */
   renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
-    // TODO fix this
-    // let { isMobile, filtersMaps } = this.props;
-
-    const isMobile = false;
     const { filtersMaps, labels } = this.props;
 
-    const className = cssClassName(isMobile ? 'size-detail-chips' : 'size-detail');
     return (
       <Field
         name={facetName}
@@ -119,15 +212,15 @@ class ProductListingFiltersForm extends React.Component {
         facetName={facetName}
         component={CustomSelect}
         optionsMap={getFilterOptionsMap(filtersMaps[facetName], filterName)}
-        title={isMobile ? filterName : ''}
+        title=""
         placeholder={filterName}
         allowMultipleSelections
-        className={className}
-        expanded={isMobile}
-        disableExpandStateChanges={isMobile}
+        className="size-detail-chips"
+        expanded={false}
+        disableExpandStateChanges={false}
         ref={this.captureFilterRef}
         withRef
-        onBlur={this.handleFilterFieldBlur}
+        forwardRef
         labels={labels}
       />
     );
@@ -162,36 +255,87 @@ class ProductListingFiltersForm extends React.Component {
         disableExpandStateChanges={isMobile}
         ref={this.captureFilterRef}
         withRef
-        onBlur={this.handleFilterFieldBlur}
+        forwardRef
         labels={labels}
       />
     );
   }
 
   /**
-   * @function renderColorFilterField
+   * @function renderDesktop renders the filter view for desktop
+   * @param {Object} appliedFilters - filters if already applied
+   */
+  renderDesktop(appliedFilters) {
+    const {
+      filtersMaps,
+      totalProductsCount,
+      handleSubmit,
+      colorSeqMap,
+      labels,
+      className,
+    } = this.props;
+    const filterKeys = Object.keys(filtersMaps);
+    return (
+      <div className="filter-and-sort-form-container">
+        {/* {totalProductsCount > 0 && <ProductListingCount currentSearchTerm={currentSearchTerm} isMobile={false} totalProductsCount={totalProductsCount} isShowAllEnabled={false} />} NOTE: FPO isShowAllEnabled */}
+        <form className="render-desktop-view" onSubmit={handleSubmit(this.handleImmediateSubmit)}>
+          {totalProductsCount > 0 && (
+            <div className={`${className} desktop-dropdown`}>
+              <div className="filters-only-container">
+                <BodyCopy
+                  component="span"
+                  role="option"
+                  textAlign="center"
+                  tabIndex={0}
+                  fontSize="fs14"
+                  fontFamily="secondary"
+                  color="gray.900"
+                  outline="none"
+                  data-locator={getLocator('plp_filter_label_filterby')}
+                >
+                  {`${labels.lbl_filter_by}:`}
+                </BodyCopy>
+
+                {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
+              </div>
+            </div>
+          )}
+          {this.getAppliedFiltersCount() > 0 && (
+            <AppliedFiltersList
+              auxColorMap={colorSeqMap}
+              onRemoveFilter={this.handleRemoveFilter}
+              appliedFilters={appliedFilters}
+              removeAllFilters={this.handleRemoveAllFilters}
+              className={className}
+              labels={labels}
+            />
+          )}
+        </form>
+        {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
+      </div>
+    );
+  }
+
+  /**
+   * @function renderDesktopFilters
    * @summary This handles to render the desktop filter fields
    * @param none
    */
-  renderDesktopFilters() {
-    const { filtersMaps } = this.props;
-
-    const filterKeys = Object.keys(filtersMaps);
-    const isShopByColor = false;
-    const filtersLength = {};
+  renderDesktopFilters(filterKeys, appliedFilters) {
+    const { filtersMaps, filtersLength } = this.props;
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
-    const appliedFilterAvailable = 0;
+    const appliedFilterAvailable = this.getAppliedFiltersCount();
     let filterList = {};
     return filterKeys.map(key => {
       if (
         key.toLowerCase() !== FACETS_FIELD_KEY.unbxdDisplayName &&
         key.toLowerCase() !== FACETS_FIELD_KEY.l1category
       ) {
-        if (!isShopByColor && key.toLowerCase() === FACETS_FIELD_KEY.color) {
+        if (key.toLowerCase() === FACETS_FIELD_KEY.color) {
           filterList =
             filtersMaps[key].length > 0 &&
             this.renderColorFilterField(
-              appliedFilterAvailable,
+              appliedFilterAvailable && appliedFilters[key],
               filtersLength[`${key}Filters`],
               unbxdKeyMapping[key],
               key
@@ -200,7 +344,7 @@ class ProductListingFiltersForm extends React.Component {
           filterList =
             filtersMaps[key].length > 0 &&
             this.renderFilterField(
-              appliedFilterAvailable,
+              appliedFilterAvailable && appliedFilters[key],
               filtersLength[`${key}Filters`],
               unbxdKeyMapping[key],
               key
@@ -208,41 +352,33 @@ class ProductListingFiltersForm extends React.Component {
         }
         return filterList;
       }
-
       return false;
     });
   }
 
   render() {
     const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
+
+    const appliedFilters = [];
+
+    // eslint-disable-next-line
+    for (let key in initialValues) {
+      const selectedFacet = filtersMaps[key]
+        ? initialValues[key].map(filterId =>
+            filtersMaps[key].find(filter => filterId === filter.id)
+          )
+        : [];
+      appliedFilters.push(selectedFacet);
+    }
+
     return (
       <Fragment>
-        <form className="render-desktop-view">
-          <div className={`${className} desktop-dropdown`}>
-            <div className="filters-only-container">
-              <BodyCopy
-                component="span"
-                role="option"
-                textAlign="center"
-                tabIndex={0}
-                fontSize="fs14"
-                fontFamily="secondary"
-                color="gray.900"
-                outline="none"
-                data-locator={getLocator('plp_filter_label_filterby')}
-              >
-                {`${labels.lbl_filter_by}:`}
-              </BodyCopy>
-
-              {filtersMaps && this.renderDesktopFilters()}
-            </div>
-          </div>
-        </form>
+        {this.renderDesktop(appliedFilters)}
         <ProductListingMobileFiltersForm
           totalProductsCount={totalProductsCount}
           initialValues={initialValues}
           filtersMaps={filtersMaps}
-          className="render-mobile-view"
+          className={`${className} render-mobile-view`}
           labels={labels}
         />
       </Fragment>
@@ -256,6 +392,13 @@ ProductListingFiltersForm.propTypes = {
   filtersMaps: PropTypes.shape({}),
   totalProductsCount: PropTypes.string,
   initialValues: PropTypes.shape({}),
+  filtersLength: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number])),
+  handleSubmit: PropTypes.func.isRequired,
+  colorSeqMap: PropTypes.shape({}),
+  submitting: PropTypes.bool,
+  onSubmit: PropTypes.func.isRequired,
+  getProducts: PropTypes.func.isRequired,
+  change: PropTypes.func,
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -264,6 +407,10 @@ ProductListingFiltersForm.defaultProps = {
   className: '',
   totalProductsCount: '0',
   initialValues: {},
+  filtersLength: {},
+  colorSeqMap: {},
+  submitting: false,
+  change: () => null,
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

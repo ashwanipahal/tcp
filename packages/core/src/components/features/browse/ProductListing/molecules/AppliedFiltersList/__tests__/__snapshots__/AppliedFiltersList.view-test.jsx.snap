@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Select is shown should render Applied Filter Lists  1`] = `
+<div
+  className=" applied-filters-sorting-container"
+>
+  <span
+    className="filtering-title"
+  >
+    filtering By
+    :
+  </span>
+  <ul
+    className="applied-filter-list"
+  >
+    categoryPath2_uFilter
+    <AppliedFilterChip
+      onRemoveClick={[MockFunction]}
+    />
+    <AppliedFilterChip
+      onRemoveClick={[MockFunction]}
+    />
+    unbxd_price_range_uFilter
+    <button
+      className="applied-filter-clear-all"
+      onClick={[MockFunction]}
+      type="button"
+    >
+      <span
+        className="applied-filter-remove-button"
+      >
+         
+      </span>
+      Clear All
+    </button>
+  </ul>
+</div>
+`;

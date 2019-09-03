@@ -7,6 +7,7 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import invariant from 'invariant';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import DropdownListStyle from '../DropdownList.style';
 import Button from '../../../../../../common/atoms/Button';
@@ -112,8 +113,11 @@ class DropdownList extends React.Component {
         // look for last enabled item in optionsMap
         return DropdownList.getFirstEnabledIndex(optionsMap, optionsMap.length - 1, -1);
       default:
-        // TODO Fix this invariant(true, `${this.displayName}: unknown destination of highlited option ${direction}`);
-        return true; // eslint-disable-line no-useless-return
+        invariant(
+          true,
+          `${this.displayName}: unknown destination of highlited option ${direction}`
+        );
+        return true;
     }
   }
   // --------------- end of static methods --------------- //
@@ -187,7 +191,7 @@ class DropdownList extends React.Component {
     } = this.props;
     if (optionsMap.length < 0) return null;
 
-    const selectedClassStr = ` item-selected ${classNamePrefix}-selected`;
+    const selectedClassStr = ` item-select ${classNamePrefix}-selected`;
     const highlightedClassStr = ` item-highlighted ${classNamePrefix}-highlighted`;
     const disabledClassStr = ` item-disabledOption ${classNamePrefix}-disabledOption`;
     const isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
