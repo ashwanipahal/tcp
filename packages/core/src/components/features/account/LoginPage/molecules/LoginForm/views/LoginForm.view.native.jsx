@@ -111,6 +111,7 @@ class LoginForm extends React.PureComponent<Props> {
               component={InputCheckbox}
               dataLocator="rememberMe"
               disabled={false}
+              marginBottom={13}
               rightText={labels.login.lbl_login_touch_id}
             />
           </View>
