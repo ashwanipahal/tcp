@@ -73,7 +73,6 @@ export const getLoadedProductsCount = createSelector(
     const allProducts = products && products.get('loadedProductsPages');
     const totalProductCount =
       (allProducts && allProducts.reduce((sum, item) => item.length + sum, 0)) || 0;
-    console.log('totalProductCount', totalProductCount);
     return totalProductCount || 0;
   }
 );
@@ -134,4 +133,9 @@ const getPageSize = () => {
 export const getLastLoadedPageNumber = state => {
   // note that we do not assume all pages have the same size, to protect against BE returning less products then requested.
   return Math.ceil(getLoadedProductsCount(state) / getPageSize());
+};
+
+export const getMaxPageNumber = state => {
+  // We no longer need to divide by page size because UNBXD start parameter matches the direct number of results.
+  return Math.ceil(state.ProductListing.get('totalProductsCount') / getPageSize());
 };

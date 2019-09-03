@@ -120,14 +120,6 @@ class ProductsGrid extends React.Component {
 
       if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
         this.props.getMoreProducts();
-
-        // this.props.onLoadMoreProducts().then(() => {
-        //   this.setState({
-        //     isLoadingMore: false
-        //   });
-        // }).catch(() => this.setState({
-        //   isLoadingMore: false
-        // }));
       }
     }
   }

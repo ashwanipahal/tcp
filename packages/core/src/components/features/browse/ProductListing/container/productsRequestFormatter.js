@@ -22,7 +22,7 @@ import {
 } from './ProductListing.util';
 import PAGES from '../../../../../constants/pages.constants';
 import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
-import { getLastLoadedPageNumber } from './ProductListing.selectors';
+import { getLastLoadedPageNumber, getMaxPageNumber } from './ProductListing.selectors';
 import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
 
 // Dummy store value till this user info is available
@@ -218,7 +218,7 @@ export default class ProductsOperator {
 
     // We check if there is any L3 category available to make unbxd call else resolving promise
     if (!this.bucketingConfig.L3Left.length) {
-      return Promise.resolve();
+      return null;
     }
 
     // We are checking if the scroll point is available or not. If yes then this is the case of browser back and we need to do achoring operation.
@@ -240,12 +240,14 @@ export default class ProductsOperator {
     //   productsToFetchPerLoad: this.bucketingConfig.productsToFetchPerLoad,
     //   categoryPathMap,
     // }
+
+    console.log('this.bucketingConfig', this.bucketingConfig);
     return this.getProductsListingInfo({
       state,
       filtersAndSort,
       pageNumber,
       location,
-      start: this.bucketingConfig.start,
+      startProductCount: this.bucketingConfig.start,
       numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
       categoryPathMap,
     });
@@ -471,13 +473,10 @@ export default class ProductsOperator {
 
   getProductsListingMoreProducts(state) {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
-
-    // const lastLoadedPageNumber = productListingStoreView.getLastLoadedPageNumber(state);
-    // if (lastLoadedPageNumber >= productListingStoreView.getMaxPageNumber(state)) {
-    //   return Promise.resolve(); // nothing more to load
-    // }
     const lastLoadedPageNumber = getLastLoadedPageNumber(state);
-    console.log('lastLoadedPageNumber', lastLoadedPageNumber);
+    if (lastLoadedPageNumber >= getMaxPageNumber(state)) {
+      return null; // nothing more to load
+    }
 
     // const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
     // const sort = productListingStoreView.getAppliedSort(state);
@@ -519,7 +518,7 @@ export default class ProductsOperator {
     if (this.shouldApplyUnbxdLogic && this.bucketingConfig.bucketingSeqScenario && !sort) {
       // If no L3 are left to load means we have brought all the products in current L2, then we need to resolve the promise.
       if (!this.bucketingConfig.L3Left.length) {
-        return Promise.resolve(); // nothing more to load
+        return null; // nothing more to load
       }
       // const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
       // const sort = productListingStoreView.getAppliedSort(state);

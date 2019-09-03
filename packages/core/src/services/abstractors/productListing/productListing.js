@@ -21,8 +21,7 @@ const isOutfit = (isSearch, searchTerm) => {
 };
 
 const getStart = (startProductCount, pageNumber) => {
-  // return startProductCount !== undefined ? startProductCount : (pageNumber - 1) * PRODUCTS_PER_LOAD;
-  return startProductCount !== undefined ? startProductCount : pageNumber * PRODUCTS_PER_LOAD;
+  return startProductCount !== undefined ? startProductCount : (pageNumber - 1) * PRODUCTS_PER_LOAD;
 };
 
 const isNoUnbxdLogic = (shouldApplyUnbxdLogic, isUnbxdSequencing) => {
@@ -219,7 +218,6 @@ class ProductsDynamicAbstractor {
     const { sort = null } = filtersAndSort;
     const facetsPayload = this.extractFilters(filtersAndSort);
     const isOutfitPage = isOutfit(isSearch, searchTerm);
-
     // We will be sending the rows to getCategoryListingPage function in the bucketing scenario and we need to send that in UNBXD api.
     // Falsy check has not been placed as i need to send row 0 in L2 call in case of bucketing sequence.
     const row = numberOfProducts !== undefined ? numberOfProducts : this.getSetAPIProductsCount();
