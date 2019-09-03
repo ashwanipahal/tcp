@@ -35,6 +35,7 @@ import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
@@ -81,5 +82,6 @@ export default function* rootSaga() {
     ChangePasswordSaga(),
     UpdateProfileSaga(),
     AddAirmilesBannerSaga(),
+    MailingAddressSaga(),
   ]);
 }

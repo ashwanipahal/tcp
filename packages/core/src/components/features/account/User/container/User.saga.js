@@ -6,6 +6,7 @@ import { getProfile } from '../../../../../services/abstractors/account';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import { getSiteId, routerPush } from '../../../../../utils';
 import { API_CONFIG } from '../../../../../services/config';
+import { setAddressList } from '../../AddressBook/container/AddressBook.actions';
 
 export function* getUserInfoSaga() {
   try {
@@ -17,6 +18,7 @@ export function* getUserInfoSaga() {
 
     yield all([
       put(setUserInfo(response)),
+      put(setAddressList(response.contactList)),
       put(setCountry(response.country)),
       put(setCurrency(response.currency)),
       put(setLanguage(response.language)),
