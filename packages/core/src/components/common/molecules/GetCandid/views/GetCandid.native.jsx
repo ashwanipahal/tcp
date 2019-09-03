@@ -45,13 +45,13 @@ class GetCandid extends React.PureComponent {
 
   render() {
     const { candidData } = this.props;
-
+    const data = candidData && candidData.Views;
     return (
-      candidData && (
+      data && (
         <Wrapper>
           <FlatList
             numColumns={3}
-            data={candidData}
+            data={data}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />

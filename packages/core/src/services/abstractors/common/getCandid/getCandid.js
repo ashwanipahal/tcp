@@ -15,11 +15,12 @@ const Abstractor = {
       body: {
         id: CANDID_API_KEY,
         tag: 'gallery',
-        pageSize: 9,
+        pageSize: 20,
         approvalFilter: 'Approved',
         sort: 'Date',
         cache: true,
         page: 0,
+        includeTags: true,
       },
     };
     return executeExternalAPICall(payload).then(res => {
