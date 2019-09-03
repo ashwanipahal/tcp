@@ -34,7 +34,7 @@ export function* applyGiftCard(payloadData) {
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     yield put(BAG_PAGE_ACTIONS.getCartData());
   } catch (err) {
-    console.log(err);
+    yield put(GIFT_CARD_ACTIONS.setGiftCardError(err));
   }
 }
 
