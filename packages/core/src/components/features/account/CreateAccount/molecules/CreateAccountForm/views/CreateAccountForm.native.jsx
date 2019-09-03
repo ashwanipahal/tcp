@@ -169,8 +169,8 @@ class CreateAccountForm extends PureComponent<Props> {
             component={InputCheckbox}
             dataLocator="iAgree"
             disabled={false}
-            rightText={`${labels.registration.lbl_createAccount_termsConditions} ${
-              labels.registration.lbl_createAccount_termsConditions_1
+            rightText={`${labels.registration.lbl_createAccount_termsConditions_app} ${
+              labels.registration.lbl_createAccount_termsConditions_1_app
             }`}
             marginTop={13}
           />

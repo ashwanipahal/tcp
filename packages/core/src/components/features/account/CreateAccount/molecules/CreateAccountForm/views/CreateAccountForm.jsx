@@ -7,6 +7,7 @@ import Button from '../../../../../../common/atoms/Button';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import RichText from '../../../../../../common/atoms/RichText';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
@@ -194,9 +195,11 @@ let CreateAccountForm = ({
               alignCheckbox="top"
             >
               <BodyCopy fontFamily="secondary" fontSize="fs10">
-                {`${labels.registration.lbl_createAccount_termsConditions} ${
-                  labels.registration.lbl_createAccount_termsConditions_1
-                }`}
+                <RichText
+                  richTextHtml={`${labels.registration.lbl_createAccount_termsConditions} ${
+                    labels.registration.lbl_createAccount_termsConditions_1
+                  }`}
+                />
               </BodyCopy>
             </Field>
           </Col>
