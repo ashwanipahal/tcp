@@ -11,6 +11,7 @@ import {
   getAllRewardsCoupons,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyRewards from '../views';
+import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
 
 export class MyRewardsContainer extends PureComponent {
   static propTypes = {
@@ -24,19 +25,55 @@ export class MyRewardsContainer extends PureComponent {
     view: 'reward',
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailStatus: false,
+    };
+  }
+
   componentDidMount() {
     const { fetchCoupons } = this.props;
     fetchCoupons();
   }
 
+
+  onViewCouponDetails = coupon => {
+    this.setState({
+      detailStatus: true,
+      selectedCoupon: coupon,
+    });
+  };
+
+
+
   render() {
     const { coupons, rewardCoupons, view, ...otherProps } = this.props;
+    const { detailStatus, selectedCoupon } = this.state;
+
+    console.log("furkan----------------------");
+    console.log(detailStatus, selectedCoupon);
+    console.log("furkan----------------------");
     return (
-      <MyRewards
-        coupons={view === 'reward' ? rewardCoupons : coupons}
-        view={view}
-        {...otherProps}
-      />
+      <>
+        <MyRewards
+          coupons={view === 'reward' ? rewardCoupons : coupons}
+          view={view}
+          onViewCouponDetails={this.onViewCouponDetails}
+          {...otherProps}
+        />
+        { selectedCoupon && (
+        <CouponDetailModal
+          openState={detailStatus}
+          coupon={selectedCoupon}
+          onRequestClose={() => {
+            this.setState({
+              detailStatus: false,
+            });
+          }}
+        />
+        )}
+      </>
     );
   }
 }
