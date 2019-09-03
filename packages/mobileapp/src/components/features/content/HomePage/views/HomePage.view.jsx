@@ -11,6 +11,7 @@ import {
   ModuleN,
   ModuleA,
 } from '@tcp/core/src/components/common/molecules';
+import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -23,31 +24,18 @@ const modulesMap = {
 
 const buttonMargin = { margin: 30 };
 
-class HomePageView extends React.Component {
+class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
-    this.loadBootstrapData();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { navigation: prevNav } = this.props;
-    const { navigation } = nextProps;
-    const prevShouldRefresh = prevNav.getParam('refresh', false);
-    const shouldRefresh = navigation.getParam('refresh', false);
-
-    // refresh page data on navigation refresh
-    if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
-      this.loadBootstrapData();
-      navigation.setParams({ refresh: false });
-    }
+    this.loadData();
   }
 
   /**
-   * @function loadBootstrapData
+   * @function loadData
    * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  loadBootstrapData = () => {
+  loadData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
@@ -97,4 +85,6 @@ HomePageView.defaultProps = {
   screenProps: {},
 };
 
-export default HomePageView;
+export { HomePageView };
+
+export default InitialPropsHOC(HomePageView);
