@@ -256,10 +256,9 @@ class DropDown extends React.PureComponent<Props> {
             onPress={this.closeDropDown}
             activeOpacity={1}
             style={{
-              width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
-              marginTop: flatListTop,
+              paddingTop: flatListTop,
             }}
           >
             <OverLayView
@@ -268,6 +267,7 @@ class DropDown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
+                width: this.rowFrame.width,
               }}
             >
               {dropDownIsOpen && (

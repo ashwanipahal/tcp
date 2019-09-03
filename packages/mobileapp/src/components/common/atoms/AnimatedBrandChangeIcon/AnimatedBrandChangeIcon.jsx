@@ -1,11 +1,17 @@
 import React, { PureComponent } from 'react';
-import { LayoutAnimation, TouchableOpacity } from 'react-native';
+import { Animated } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { styles, Container } from './AnimatedBrandChangeIcon.style';
-import tcpLogo from '../../../../brand_config/main/config/tcp.png';
-import gymboreeLogo from '../../../../brand_config/gymboree/config/gymboree.png';
+import { isGymboree } from '@tcp/core/src/utils';
+
+import { Container, TCPIcon, GymIcon, styles } from './AnimatedBrandChangeIcon.style';
 import { APP_TYPE } from '../../hoc/ThemeWrapper.constants';
+import icons from '../../../../utils/icons';
+
+const BrandSwitchConfig = {
+  MAX_X: 90,
+  AnimationDuration: 500,
+};
 
 /**
  * kindly use this component only for the bottom tab at the center of the tab
@@ -14,7 +20,11 @@ import { APP_TYPE } from '../../hoc/ThemeWrapper.constants';
 class AnimatedBrandChangeIcon extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { openSwitch: false };
+    this.state = { openSwitch: true };
+    this.brandTCPAnimatedValue = new Animated.ValueXY();
+    this.brandGymAnimatedValue = new Animated.ValueXY();
+
+    this.showBrands();
   }
 
   /**
@@ -22,19 +32,59 @@ class AnimatedBrandChangeIcon extends PureComponent {
    * after the animation it behaves like a toggle.
    */
   changePosition = () => {
-    LayoutAnimation.easeInEaseOut();
     const { openSwitch } = this.state;
-
     this.setState(
       {
         openSwitch: !openSwitch,
       },
       () => {
-        // remove brands from view
-        const { toggleBrandAction } = this.props;
-        if (toggleBrandAction) toggleBrandAction();
+        if (!openSwitch) {
+          this.showBrands();
+        } else {
+          this.hideBrands();
+          const { toggleBrandAction } = this.props;
+          if (toggleBrandAction) toggleBrandAction();
+        }
       }
     );
+  };
+
+  /**
+   * @function showBrands
+   * This method shows brands animatedly
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  showBrands = () => {
+    Animated.parallel([
+      Animated.timing(this.brandTCPAnimatedValue, {
+        toValue: { x: -BrandSwitchConfig.MAX_X, y: 0 },
+        duration: BrandSwitchConfig.AnimationDuration,
+      }),
+      Animated.timing(this.brandGymAnimatedValue, {
+        toValue: { x: BrandSwitchConfig.MAX_X, y: 0 },
+        duration: BrandSwitchConfig.AnimationDuration,
+      }),
+    ]).start();
+  };
+
+  /**
+   * @function hideBrands
+   * This method hides brands and sends them to their original position
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  hideBrands = () => {
+    Animated.parallel([
+      Animated.timing(this.brandTCPAnimatedValue, {
+        toValue: { x: 0, y: 0 },
+        duration: 0,
+      }),
+      Animated.timing(this.brandGymAnimatedValue, {
+        toValue: { x: 0, y: 0 },
+        duration: 0,
+      }),
+    ]).start();
   };
 
   /**
@@ -71,46 +121,119 @@ class AnimatedBrandChangeIcon extends PureComponent {
   };
 
   /**
-   * It renders two logo based on state of openSwitch.
+   * @function renderTCPBrand
+   * returns view for tcp brand switch
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  renderTCPBrand = () => {
+    const { brandContainer } = styles;
+    return (
+      <Animated.View
+        style={[
+          brandContainer,
+          {
+            transform: this.brandTCPAnimatedValue.getTranslateTransform(),
+          },
+        ]}
+      >
+        <TCPIcon
+          accessibilityLabel="tcpBrand"
+          accessibilityTraits="none"
+          accessibilityComponentType="none"
+          onPress={this.switchToTCP}
+          name="tcpBrand"
+        >
+          <Image source={icons.tcp.peekABoo} />
+        </TCPIcon>
+      </Animated.View>
+    );
+  };
+
+  /**
+   * @function renderGymboreeBrand
+   * returns view for gymboree brand switch
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  renderGymboreeBrand = () => {
+    const { brandContainer } = styles;
+    return (
+      <Animated.View
+        style={[
+          brandContainer,
+          {
+            transform: this.brandGymAnimatedValue.getTranslateTransform(),
+          },
+        ]}
+      >
+        <GymIcon
+          accessibilityLabel="gymboreeBrand"
+          accessibilityTraits="none"
+          accessibilityComponentType="none"
+          onPress={this.switchToGymboree}
+          name="gymboreeBrand"
+        >
+          <Image source={icons.gymboree.peekABoo} />
+        </GymIcon>
+      </Animated.View>
+    );
+  };
+
+  /**
+   * @function renderFirstBrand
+   * returns first brand as tcp for gymboree app type and vice-versa
+   * this brand appears above second brand
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  renderFirstBrand = () => {
+    if (isGymboree()) return this.renderGymboreeBrand();
+    return this.renderTCPBrand();
+  };
+
+  /**
+   * @function renderSecondBrand
+   * returns first brand as tcp for gymboree app type and vice-versa
+   * this brand appears below first brand
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  renderSecondBrand = () => {
+    if (isGymboree()) return this.renderTCPBrand();
+    return this.renderGymboreeBrand();
+  };
+
+  /**
+   * render
+   * renders main view
+   *
+   * @returns
+   * @memberof AnimatedBrandChangeIcon
    */
   render() {
-    const { logo, firstIconFinalState, secondIconFinalState } = styles;
     return (
       <Container
         onPress={this.changePosition}
         accessibilityTraits="none"
         accessibilityComponentType="none"
+        accessibilityLabel="switchBrand"
       >
-        <TouchableOpacity
-          accessibilityTraits="none"
-          accessibilityComponentType="none"
-          onPress={this.switchToTCP}
-          style={firstIconFinalState}
-        >
-          {/* first icon for brand 1 */}
-          <Image source={tcpLogo} style={logo} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          accessibilityTraits="none"
-          accessibilityComponentType="none"
-          onPress={this.switchToGymboree}
-          style={secondIconFinalState}
-        >
-          {/* second icon for brand 2 which remains hidden in initial state */}
-          <Image source={gymboreeLogo} style={logo} />
-        </TouchableOpacity>
+        {this.renderFirstBrand()}
+        {this.renderSecondBrand()}
       </Container>
     );
   }
 }
 
+/* Prop types declaration */
 AnimatedBrandChangeIcon.propTypes = {
   updateAppTypeHandler: PropTypes.func,
   toggleBrandAction: PropTypes.func,
 };
 
 AnimatedBrandChangeIcon.defaultProps = {
-  updateAppTypeHandler: () => {},
+  updateAppTypeHandler: null,
   toggleBrandAction: null,
 };
 

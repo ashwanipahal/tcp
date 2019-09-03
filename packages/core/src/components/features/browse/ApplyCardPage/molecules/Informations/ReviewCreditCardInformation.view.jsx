@@ -17,7 +17,7 @@ const ReviewCreditCardInformation = ({ creditCardHeader = '' }) => {
         key="container_header_image"
         colSize={{ large: 2, medium: 2, small: 6 }}
       >
-        <BodyCopy component="div" className="header-image" />
+        <BodyCopy component="div" className="header-image" tabIndex="0" />
       </Col>
       <Col
         className="rewards_card_instruction"

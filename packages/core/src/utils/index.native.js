@@ -28,8 +28,10 @@ export {
   getAPIConfig,
   isCanada,
   resetApiConfig,
+  getCacheKeyForRedis,
   bindAllClassMethodsToThis,
   isGymboree,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
 } from './utils';

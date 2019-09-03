@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { View } from 'react-native';
@@ -13,7 +14,7 @@ import {
   TileTopContent,
   TileDesc,
   ButtonWrapper,
-  CouponIconWrapper,
+  SpaceWrapper,
 } from '../styles/DetailedCouponTile.native.style';
 import {
   COUPON_REDEMPTION_TYPE,
@@ -106,9 +107,9 @@ export class DetailedCouponTile extends React.Component {
           )}
           <TileContent>
             <TileTopContent>
-              <CouponIconWrapper>
+              <SpaceWrapper>
                 <CouponIcon coupon={coupon} labels={labels} />
-              </CouponIconWrapper>
+              </SpaceWrapper>
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs16"
@@ -117,6 +118,9 @@ export class DetailedCouponTile extends React.Component {
                 text={coupon.title}
               />
             </TileTopContent>
+            <SpaceWrapper>
+              <Barcode value={coupon.id} height="50" />
+            </SpaceWrapper>
             <TileDesc>
               <View>
                 <BodyCopy

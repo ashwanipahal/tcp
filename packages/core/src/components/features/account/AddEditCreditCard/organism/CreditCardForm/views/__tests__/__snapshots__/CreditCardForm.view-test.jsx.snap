@@ -25,10 +25,15 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       Object {
         "common": Object {},
         "paymentGC": Object {},
+        "profile": Object {},
       }
     }
+    mailingAddress={false}
     onFileAddressKey=""
     onFileAddresskey="12345"
+    showCreditCardFields={true}
+    showUserName={true}
+    subHeading={null}
   />
   <Styled(Heading)
     className="addressDropdownHeading"
@@ -112,6 +117,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         labels={Object {}}
         showDefaultCheckbox={false}
         showPhoneNumber={false}
+        showUserName={true}
       />
     </FormSection>
   </div>
@@ -193,10 +199,15 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       Object {
         "common": Object {},
         "paymentGC": Object {},
+        "profile": Object {},
       }
     }
+    mailingAddress={false}
     onFileAddressKey=""
     pristine={true}
+    showCreditCardFields={true}
+    showUserName={true}
+    subHeading={null}
   />
   <Styled(Heading)
     className="addressDropdownHeading"
@@ -280,6 +291,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         labels={Object {}}
         showDefaultCheckbox={false}
         showPhoneNumber={false}
+        showUserName={true}
       />
     </FormSection>
   </div>

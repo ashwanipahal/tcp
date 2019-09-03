@@ -52,6 +52,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
           fontSizeVariation="medium"
           locator=""
           noLink={true}
+          onPress={null}
           text=""
           to=""
           underline={true}

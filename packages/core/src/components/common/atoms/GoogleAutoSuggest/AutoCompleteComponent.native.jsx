@@ -16,10 +16,23 @@ import {
 } from './AutoCompleteComponent.native.style';
 
 export const GooglePlacesInput = props => {
-  const { headerTitle, componentRestrictions, onValueChange } = props;
+  const {
+    headerTitle,
+    componentRestrictions,
+    onValueChange,
+    initialValue,
+    onSubmitEditing,
+    onEndEditing,
+    refs,
+  } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
     setFocussed(true);
+  };
+
+  const setValue = value => {
+    if (value) setFocussed(true);
+    return value;
   };
 
   const apiConfigObj = getAPIConfig();
@@ -32,6 +45,7 @@ export const GooglePlacesInput = props => {
         suppressDefaultStyles
         minLength={2} // minimum length of text to search
         autoFocus={false}
+        ref={instance => refs(instance)}
         returnKeyType="search"
         fetchDetails
         renderDescription={row => row.description}
@@ -41,13 +55,19 @@ export const GooglePlacesInput = props => {
           // 'details' is provided when fetchDetails = true
           return [data, details];
         }}
-        getDefaultValue={() => ''}
+        getDefaultValue={() => setValue(initialValue)}
         query={{
           key: googleApiKey,
           components: `country:${componentRestrictions.country[0]}`,
         }}
         textInputProps={{
           onFocus,
+          onSubmitEditing: text => {
+            onSubmitEditing(text.nativeEvent.text);
+          },
+          onEndEditing: text => {
+            onEndEditing(text.nativeEvent.text);
+          },
         }}
         styles={{
           textInputContainer,
@@ -73,6 +93,10 @@ GooglePlacesInput.propTypes = {
     country: PropTypes.shape([]),
   }),
   onValueChange: PropTypes.func,
+  initialValue: PropTypes.string,
+  onSubmitEditing: PropTypes.func,
+  onEndEditing: PropTypes.func,
+  refs: PropTypes.func,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -81,6 +105,10 @@ GooglePlacesInput.defaultProps = {
     country: [],
   },
   onValueChange: () => {},
+  initialValue: '',
+  onSubmitEditing: () => {},
+  onEndEditing: () => {},
+  refs: () => {},
 };
 
 export default GooglePlacesInput;

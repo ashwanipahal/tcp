@@ -5,6 +5,7 @@ export default css`
   flex: 1;
   padding-top: 6px;
   padding-bottom: 13px;
+  font-size: 10px;
   background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   img {
     height: 13px;
@@ -20,6 +21,16 @@ export default css`
   }
   .pointer {
     cursor: pointer;
-    margin-bottom: 1px;
+    margin: -11px 0 1px 32px;
+  }
+  .bagTileItem {
+    margin: -11px 0 0 32px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
+      padding-left: 6px;
+      span {
+        font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
+      }
+    }
   }
 `;

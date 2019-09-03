@@ -16,6 +16,7 @@ exports[`AddressBook component should renders correctly when errors are present 
       enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="AddressForm"
+      formErrorMessage={Object {}}
       getFormState={[Function]}
       initialValues={Object {}}
       isEdit={false}
@@ -54,6 +55,7 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
       enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="AddressForm"
+      formErrorMessage={Object {}}
       getFormState={[Function]}
       initialValues={Object {}}
       isEdit={false}

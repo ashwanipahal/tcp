@@ -18,10 +18,14 @@ import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
+    this.makeApiCall();
+  }
+
+  makeApiCall = () => {
     const { getProducts, navigation } = this.props;
     const url = navigation && navigation.getParam('url');
-    getProducts({ URI: 'category', url });
-  }
+    getProducts({ URI: 'category', url, ignoreCache: true });
+  };
 
   render() {
     const {

@@ -136,6 +136,8 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_points: points,
         lbl_cartTile_cancel: cancel,
         lbl_cartTile_edit: edit,
+        lbl_cartTile_update: update,
+        lbl_cartTile_remove: removeEdit,
         lbl_cartTile_saveForLater: saveForLater,
         lbl_cartTile_productBrandAlt: productBandAlt,
         lbl_cartTile_productImageAlt: productImageAlt,
@@ -157,6 +159,7 @@ export const getLabelsCartItemTile = state => {
         lbl_minibag_errorSize: errorSize,
         lbl_minibag_errorUpdateUnavailable: updateUnavailable,
         lbl_minibag_errorRemoveSoldoutHeader: removeSoldoutHeader,
+        lbl_cartTile_delete: deleteItem,
       },
     },
   } = state.Labels;
@@ -172,6 +175,8 @@ export const getLabelsCartItemTile = state => {
     points,
     cancel,
     edit,
+    update,
+    removeEdit,
     saveForLater,
     productBandAlt,
     productImageAlt,
@@ -193,6 +198,7 @@ export const getLabelsCartItemTile = state => {
     errorSize,
     updateUnavailable,
     removeSoldoutHeader,
+    deleteItem,
   };
 };
 
