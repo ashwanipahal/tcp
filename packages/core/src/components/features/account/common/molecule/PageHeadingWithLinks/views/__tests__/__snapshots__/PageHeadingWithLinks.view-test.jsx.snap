@@ -71,23 +71,23 @@ exports[`PageHeadingWithLinks View should render correctly 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        asPath={true}
         className="elem-ml-MED"
         dataLocator="terms_condition_cta"
-        fontSizeVariation="medium"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+        noLink={true}
         target="_blank"
-        to="/#"
         underline={true}
       >
         test
       </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
-        asPath={true}
         className="elem-ml-LRG"
         dataLocator="program_details_cta"
-        fontSizeVariation="medium"
-        to="/#"
+        fontSizeVariation="large"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+        noLink={true}
         underline={true}
       >
         test
