@@ -14,6 +14,19 @@ export const loadLabelsData = payload => {
     type: GLOBAL_CONSTANTS.LOAD_LABELS_DATA,
   };
 };
+export const setLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_LABELS_DATA,
+  };
+};
+
+export const loadComponentLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_COMPONENT_LABELS_DATA,
+  };
+};
 
 export const loadXappConfigData = payload => {
   return {
@@ -77,6 +90,8 @@ export const setOptimizelyFeaturesList = payload => ({
 export default {
   loadLayoutData,
   loadLabelsData,
+  setLabelsData,
+  loadComponentLabelsData,
   bootstrapData,
   loadModulesData,
   setCountry,

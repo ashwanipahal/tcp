@@ -11,6 +11,7 @@ import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/contain
 
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import BootstrapSaga from './bootstrap';
+import LabelsSaga from './labels';
 
 export {
   ProductListingPageSaga,
@@ -25,6 +26,7 @@ export {
   CouponSaga,
   CheckoutSaga,
   BootstrapSaga,
+  LabelsSaga,
 };
 
 export default {
@@ -40,4 +42,5 @@ export default {
   CouponSaga,
   CheckoutSaga,
   BootstrapSaga,
+  LabelsSaga,
 };
