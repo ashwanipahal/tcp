@@ -23,6 +23,8 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  getAsPathWithSlug,
+  getMappedPageHref,
 } from './utils.web';
 
 export {
