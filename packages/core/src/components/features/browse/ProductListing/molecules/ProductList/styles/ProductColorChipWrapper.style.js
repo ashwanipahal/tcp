@@ -67,12 +67,6 @@ const styles = css`
     .color-swatches-desktop-view {
       display: flex;
     }
-    .arrowRightWrapper {
-      height: 20px;
-    }
-    .arrowLeftWrapper {
-      height: 20px;
-    }
   }
 `;
 

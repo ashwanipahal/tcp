@@ -51,6 +51,10 @@ export const arrowWrapper = css`
   height: 15px;
   width: 19px;
   top: 0;
+
+  @media ${props => props.theme.mediaQuery.large} {
+    height: 20px;
+  }
 `;
 
 export const imageAnchorInheritedStyles = css`
