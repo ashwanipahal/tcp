@@ -20,6 +20,7 @@ import selectors, {
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import { isMobileApp } from '../../../../../utils';
 
 const {
   getShippingLabels,
@@ -45,6 +46,7 @@ export class CheckoutContainer extends React.Component<Props> {
   render() {
     const {
       initialValues,
+      router,
       pickupInitialValues,
       onEditModeChange,
       isSmsUpdatesEnabled,
@@ -99,6 +101,7 @@ export class CheckoutContainer extends React.Component<Props> {
         cartOrderItems={cartOrderItems}
         routeToPickupPage={routeToPickupPage}
         setCheckoutStage={setCheckoutStage}
+        router={router}
       />
     );
   }
@@ -179,7 +182,18 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CheckoutContainer);
+const addWithRouer = WrappedComponent => {
+  if (!isMobileApp()) {
+    // eslint-disable-next-line
+    const { withRouter } = require('next/router');
+    return withRouter(WrappedComponent);
+  }
+  return WrappedComponent;
+};
+
+export default addWithRouer(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CheckoutContainer)
+);
