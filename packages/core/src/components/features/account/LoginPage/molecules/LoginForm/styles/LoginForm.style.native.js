@@ -53,10 +53,12 @@ const HideShowField = props =>
   `
   width:${props.theme.spacing.ELEM_SPACING.XL};
   background: ${props.theme.colorPalette.white};
-  height:${props.theme.spacing.APP_LAYOUT_SPACING.XS};
+  height:${props.theme.spacing.ELEM_SPACING.MED};
   position: absolute;
   right: 0;
-  top: ${props.theme.spacing.ELEM_SPACING.MED};
+  top: 20px;
+  border-bottom-width: 1px;
+  border-bottom-color: black;
   `;
 
 const DescriptionStyle = styled.Text`
