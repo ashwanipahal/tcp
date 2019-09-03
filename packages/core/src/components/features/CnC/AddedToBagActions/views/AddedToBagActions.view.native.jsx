@@ -18,13 +18,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
       e.preventDefault();
     }
     if (orderHasPickup) {
-      navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.CHECKOUT, {
-        nextToRoot: CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP,
-      });
+      navigation.navigate('CheckoutPickup');
     } else {
-      navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.CHECKOUT, {
-        nextToRoot: CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING,
-      });
+      navigation.navigate('CheckoutShipping');
     }
     closeCheckoutModalMountState({ state: false });
   };

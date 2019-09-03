@@ -180,7 +180,8 @@ function* callPickupSubmitMethod(formData) {
 
 function* submitPickupSection(data) {
   const { payload } = data;
-  const formData = { ...payload };
+  const formData = { ...payload.formData };
+  const { navigation } = payload;
   // let pickupOperator = getPickupOperator(this.store);
   // let storeState = this.store.getState();
   // let isEmailSignUpAllowed = true;
@@ -193,10 +194,15 @@ function* submitPickupSection(data) {
   //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
   //  }
   const result = yield call(callPickupSubmitMethod, formData);
-  if (!isMobileApp() && result.addressId) {
-    routerPush('/checkout/shipping', '/checkout/shipping');
-  } else {
-    yield put(getSetCheckoutStage('shipping'));
+  if (result.addressId) {
+    if (!isMobileApp()) {
+      routerPush('/checkout/shipping', '/checkout/shipping');
+    } else {
+      console.log('---->', navigation, payload);
+      if (navigation) {
+        navigation.navigate('CheckoutShipping');
+      }
+    }
   }
 
   /* In the future I imagine us sending the SMS to backend for them to

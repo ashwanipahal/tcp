@@ -8,9 +8,18 @@ import Header from '../components/common/molecules/Header/CheckoutHeader';
 
 const CheckoutStack = createStackNavigator(
   {
-    Checkout,
-    PickupPage,
-    ShippingPage,
+    CheckoutPickup: {
+      screen: Checkout,
+      params: {
+        routeTo: 'PickupPage',
+      },
+    },
+    CheckoutShipping: {
+      screen: Checkout,
+      params: {
+        routeTo: 'ShippingPage',
+      },
+    },
   },
   {
     defaultNavigationOptions: {

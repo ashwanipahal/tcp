@@ -26,5 +26,19 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    variation="checkout"
+  />
+  <BagConfirmationModal
+    isOpen={true}
+    labels={
+      Object {
+        "checkout": "",
+        "viewBag": "",
+      }
+    }
+  />
 </Styled(View)>
 `;

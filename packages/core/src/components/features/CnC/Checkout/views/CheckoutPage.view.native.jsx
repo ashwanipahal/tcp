@@ -6,45 +6,40 @@ import ShippingPage from '../organisms/ShippingPage';
 
 export default class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
-    const {
-      onPickupSubmit,
-      isGuest,
-      isUsSite,
-      shippingProps,
-      loadShipmentMethods,
-      orderHasPickUp,
-      submitShippingSection,
-    } = this.props;
+    const { onPickupSubmit } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
     const { navigation } = this.props;
     const params = {
-      pickUpContact: {
-        firstName,
-        lastName,
-        phoneNumber,
-        emailAddress,
-        smsInfo: {
-          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+      formData: {
+        pickUpContact: {
+          firstName,
+          lastName,
+          phoneNumber,
+          emailAddress,
+          smsInfo: {
+            wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+          },
+        },
+        hasAlternatePickup,
+        pickUpAlternate: {
+          firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
+          lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
+          emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
         },
       },
-      hasAlternatePickup,
-      pickUpAlternate: {
-        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-      },
+      navigation,
     };
     onPickupSubmit(params);
-    navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING, {
-      ...shippingProps,
-      loadShipmentMethods,
-      navigation,
-      isGuest,
-      isUsSite,
-      orderHasPickUp,
-      handleSubmit: { submitShippingSection },
-    });
+    // navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING, {
+    //   ...shippingProps,
+    //   loadShipmentMethods,
+    //   navigation,
+    //   isGuest,
+    //   isUsSite,
+    //   orderHasPickUp,
+    //   handleSubmit: { submitShippingSection },
+    // });
   };
 
   render() {
@@ -65,13 +60,14 @@ export default class CheckoutPage extends React.PureComponent {
       pickUpLabels,
       smsSignUpLabels,
       pickupInitialValues,
+      availableStages,
       // setCheckoutStage,
     } = this.props;
 
-    const { nextToRoot } = navigation.state.params;
+    const { routeTo } = navigation.state.params;
     return (
       <>
-        {nextToRoot === CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP && (
+        {routeTo === CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP && (
           <PickupPage
             isGuest={isGuest}
             isMobile={isMobile}
@@ -86,9 +82,10 @@ export default class CheckoutPage extends React.PureComponent {
             smsSignUpLabels={smsSignUpLabels}
             onPickUpSubmit={this.onPickUpSubmit}
             navigation={navigation}
+            availableStages={availableStages}
           />
         )}
-        {nextToRoot === CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING && (
+        {routeTo === CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
             loadShipmentMethods={loadShipmentMethods}
@@ -97,6 +94,7 @@ export default class CheckoutPage extends React.PureComponent {
             isUsSite={isUsSite}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={submitShippingSection}
+            availableStages={availableStages}
           />
         )}
       </>
@@ -125,4 +123,5 @@ CheckoutPage.propTypes = {
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  availableStages: PropTypes.shape([]).isRequired,
 };

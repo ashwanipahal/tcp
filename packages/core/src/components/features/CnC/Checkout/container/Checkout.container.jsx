@@ -72,6 +72,7 @@ export class CheckoutContainer extends React.Component<Props> {
       setCheckoutStage,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(cartOrderItems);
+    console.log('availableStages', availableStages);
     return (
       <CheckoutPage
         initialValues={initialValues}

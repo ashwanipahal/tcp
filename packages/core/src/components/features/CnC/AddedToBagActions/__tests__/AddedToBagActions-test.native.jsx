@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AddedToBagActionsVanilla from '../views/AddedToBagActions.native';
+import AddedToBagActions from '../views/AddedToBagActions.view';
 
 describe('AddedToBagActions native component', () => {
   it('AddedToBagActions native component renders correctly', () => {
@@ -9,8 +9,11 @@ describe('AddedToBagActions native component', () => {
         viewBag: '',
         checkout: '',
       },
+      modalInfo: {
+        showModal: true,
+      },
     };
-    const component = shallow(<AddedToBagActionsVanilla {...props} />);
+    const component = shallow(<AddedToBagActions {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
