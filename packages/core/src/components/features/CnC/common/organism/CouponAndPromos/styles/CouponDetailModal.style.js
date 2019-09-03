@@ -58,6 +58,11 @@ const CouponDetailModalStyle = css`
     svg {
       width: 50%;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      svg {
+        height: 100px;
+      }
+    }
   }
   .couponModal_print {
     text-align: center;

@@ -14,6 +14,9 @@ const CloseButtonStyle = css`
   height: 15px;
   &.alignRight {
     right: 46px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      right: 16px;
+    }
   }
   &.alignLeft {
     left: 15px;
