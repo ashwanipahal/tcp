@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const device = require('express-device');
 const RoutesMap = require('./routes');
 const redis = require('async-redis');
+const logger = require('@tcp/core/src/utils/loggerInstance');
 
 const {
   settingHelmetConfig,
@@ -135,7 +136,6 @@ app.prepare().then(() => {
 
   server.listen(port, err => {
     if (err) throw err;
-    // eslint-disable-next-line no-console
-    console.log(`> Ready on http://localhost:${port}`);
+    logger.info(`> Ready on http://localhost:${port}`);
   });
 });

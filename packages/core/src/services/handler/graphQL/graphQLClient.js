@@ -1,5 +1,6 @@
 import AWSAppSync from 'aws-appsync';
 import fetch from 'node-fetch';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { getAPIConfig } from '../../../utils/utils';
 
 // TODO - use util's isServer Method
@@ -40,8 +41,7 @@ class AwsAppSyncClient extends AWSAppSync {
    */
   static clientOptions() {
     const apiConfigObj = getAPIConfig();
-    // eslint-disable-next-line no-console
-    console.log('GraphQL Endpoint ------------ ', apiConfigObj.graphql_endpoint_url);
+    logger.info('GraphQL Endpoint ------------ ', apiConfigObj.graphql_endpoint_url);
     return {
       url: apiConfigObj.graphql_endpoint_url,
       region: apiConfigObj.graphql_reqion,
