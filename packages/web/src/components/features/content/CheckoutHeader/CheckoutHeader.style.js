@@ -68,6 +68,8 @@ export default css`
     position: absolute;
     top: 16px;
     left: 20px;
+    border: none;
+    background: transparent;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: none;

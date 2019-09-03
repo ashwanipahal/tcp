@@ -164,3 +164,129 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
   </div>
 </div>
 `;
+
+exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
+<div
+  className="test"
+>
+  <div
+    className="gift_card_box elem-mb-XS elem-mt-MED"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 9,
+            "medium": 5,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(ErrorMessage)
+          className="error_box"
+          error="some error message"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 9,
+            "medium": 5,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="gift_card_number_detail"
+          color="text.secondary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          undefined  
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="variable-width"
+          className="gift_apply_button"
+          data-locator="gift_apply_button"
+          disabled={true}
+          fullWidth="true"
+          onClick={[Function]}
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;
+
+exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied 1`] = `
+<div
+  className="test"
+>
+  <div
+    className="gift_card_box elem-mb-XS elem-mt-MED"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 9,
+            "medium": 5,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="gift_card_number_detail"
+          color="text.secondary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          undefined undefined  | undefined : undefined
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 3,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="variable-width"
+          className="gift_remove_button"
+          data-locator="gift_apply_button"
+          disabled={false}
+          fullWidth="true"
+          onClick={[Function]}
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;
