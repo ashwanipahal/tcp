@@ -1,13 +1,13 @@
 import mock from './mock';
-// import { executeUnbxdAPICall } from '../../../handler';
-// import endpoints from '../../../endpoints';
+import { executeUnbxdAPICall } from '../../../handler';
+import endpoints from '../../../endpoints';
 
 /**
  * Abstractor layer for loading Product List Tabs data
  */
 const Abstractor = {
   getData: ({ categoryId }) => {
-    /* const payload = {
+    const payload = {
       body: {
         start: 0,
         rows: 15,
@@ -19,22 +19,17 @@ const Abstractor = {
         fields: 'alt_img',
       },
       webService: endpoints.getProductviewbyCategory,
-    }; */
+    };
 
-    return Promise.resolve(Abstractor.processData(mock)).then(data => {
-      return {
-        [categoryId.replace(/\W/g, '_')]: data,
-      };
-    });
-    // return executeUnbxdAPICall(payload)
-    //   .then(Abstractor.processData)
-    //   .catch(Abstractor.handleError);
+    return executeUnbxdAPICall(payload)
+      .then(Abstractor.processData)
+      .catch(Abstractor.handleError);
   },
   getMock: () => {
     return mock;
   },
-  processData: data => {
-    return data.response.products;
+  processData: res => {
+    return res.body.response.products;
   },
   // eslint-disable-next-line no-console
   handleError: e => console.log(e),

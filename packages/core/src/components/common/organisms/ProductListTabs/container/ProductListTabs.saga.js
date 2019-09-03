@@ -8,7 +8,8 @@ export function* fetchProductListTabsData({ payload }) {
   try {
     const res = yield call(productListTabs.getData, payload);
     if (res) {
-      return yield put(productListTabsDataSuccess(res));
+      const { categoryId } = payload;
+      return yield put(productListTabsDataSuccess({ [categoryId]: res }));
     }
     throw new Error('Something went wrong while making request!');
   } catch (err) {

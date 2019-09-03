@@ -1,7 +1,6 @@
-// import { fromJS } from 'immutable';
 import constants from './ProductListTabs.constants';
 
-const initialState = {}; // fromJS(\null);
+const initialState = {};
 
 const ProductListTabsReducer = (state = initialState, action = {}) => {
   const { type, payload } = action;
@@ -11,7 +10,6 @@ const ProductListTabsReducer = (state = initialState, action = {}) => {
       return { loading: true };
     case constants.PRODUCT_LIST_TAB_SUCCESS:
       return { loading: false, ...payload };
-    // return fromJS(payload);
     case constants.PRODUCT_LIST_TAB_FAIL:
       return { loading: false, ...payload };
     default:

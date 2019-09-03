@@ -67,8 +67,8 @@ class HomePageView extends React.Component {
 
     return (
       <ScrollView>
-        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleJ />
+        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <Button
           fullWidth
           buttonVariation="variable-width"
