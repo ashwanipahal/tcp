@@ -33,7 +33,7 @@ const CouponDetailModalStyle = css`
     text-align: center;
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    font-size: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    font-size: ${props => props.theme.typography.fontSizes.fs40};
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0;
       text-align: center;
