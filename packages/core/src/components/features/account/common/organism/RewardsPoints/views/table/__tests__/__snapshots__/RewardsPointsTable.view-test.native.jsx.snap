@@ -8,7 +8,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      text="0"
+      text="$0"
     />
     <Styled(View)>
       <Styled(BodyCopy)
@@ -16,6 +16,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        text="My Rewards"
         textAlign="center"
       />
     </Styled(View)>
@@ -35,6 +36,7 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        text="Current Points"
         textAlign="center"
       />
     </Styled(View)>
@@ -96,6 +98,7 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        text="Current Points"
         textAlign="center"
       />
     </Styled(View)>
