@@ -8,6 +8,8 @@ export default {
     },
   },
 
+  CHECKOUT: 'checkout',
+
   ADDREESS_TYPE: {
     SHIPPING: 'Shipping',
     BILLING: 'Billing',
@@ -23,9 +25,9 @@ export default {
   },
 
   CHECKOUT_PAGES_NAMES: {
-    CHECKOUT: 'Checkout',
-    PICKUP: 'PickupPage',
-    SHIPPING: 'ShippingPage',
+    CHECKOUT: 'checkout',
+    PICKUP: 'pickupPage',
+    SHIPPING: 'shippingPage',
   },
   CHECKOUT_FLAGS_SET_LOAD_METHODS: 'CHECKOUT_FLAGS_SET_LOAD_METHODS',
   CHECKOUT_ORDER_OPTIONS_SET_SHIPPING: 'CHECKOUT_ORDER_OPTIONS_SET_SHIPPING',

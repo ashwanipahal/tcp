@@ -10,7 +10,6 @@ import {
   ButtonWrapper,
   AlreadyAccountWrapper,
   PasswordWrapper,
-  HideShowField,
   ConfirmPasswordWrapper,
   ConfirmHideShowField,
 } from '../styles/CreateAccountForm.style.native';
@@ -110,7 +109,7 @@ class CreateAccountForm extends PureComponent<Props> {
               secureTextEntry={!hideShowPwd}
             />
 
-            <HideShowField>
+            <ConfirmHideShowField>
               <Field
                 name="hide-show-pwd"
                 component={InputCheckbox}
@@ -124,7 +123,7 @@ class CreateAccountForm extends PureComponent<Props> {
                 onClick={onPwdHideShowClick}
                 hideCheckboxIcon
               />
-            </HideShowField>
+            </ConfirmHideShowField>
           </PasswordWrapper>
           <ConfirmPasswordWrapper>
             <Field
@@ -194,7 +193,6 @@ class CreateAccountForm extends PureComponent<Props> {
               buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
-              color="white"
             />
           </ButtonWrapper>
           <AlreadyAccountWrapper>

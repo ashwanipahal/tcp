@@ -15,6 +15,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
+import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -168,7 +169,7 @@ class PickUpFormPart extends React.Component {
           />
 
           <div className="pickUpContact" dataLocator="pickup-contact">
-            <FormSection name="pickUpContact" className="pickUpContact">
+            <FormSection name="pickUpContact">
               {isGuest ? (
                 <ContactFormFields
                   className="pickup-contact-guest-form"
@@ -265,6 +266,7 @@ class PickUpFormPart extends React.Component {
           </div>
           {isEditing && !isMobile && this.SaveAndCancelButton()}
         </div>
+        <CheckoutOrderInfo />
         <form onSubmit={handleSubmit(this.pickupSubmit)}>
           <CheckoutFooter
             hideBackLink={false}

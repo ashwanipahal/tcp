@@ -8,7 +8,7 @@ export const PromoAndArrowContainer = styled.TouchableOpacity`
 
 export const PromoContainer = styled.View`
   background: ${props => props.theme.colorPalette.primary.main};
-  border-radius: 5px;
+  border-radius: ${props => (props.theme.isGymboree ? `20px` : `5px`)};
   width: 150px;
   height: 30px;
   align-items: center;
