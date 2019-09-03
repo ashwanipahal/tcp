@@ -145,6 +145,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         component={[Function]}
         dataLocator="rememberMe"
         disabled={false}
+        marginBottom={13}
         name="userTouchId"
       />
     </View>

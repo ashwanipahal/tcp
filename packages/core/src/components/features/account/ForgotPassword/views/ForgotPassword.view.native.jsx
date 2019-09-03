@@ -43,7 +43,8 @@ class ForgotPasswordView extends React.Component<Props> {
 
   // onclick back button user will redirect to the login page
   onBackClick = () => {
-    const { showLogin } = this.props;
+    const { showForgotPasswordForm, showLogin } = this.props;
+    showForgotPasswordForm();
     showLogin();
   };
 
