@@ -40,6 +40,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
     fullBleed={true}
   >
     <Styled(Col)
+      aria-label="rewards"
       className="apply_Card_Header_Text"
       colSize={
         Object {
@@ -51,7 +52,8 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
       key="rewards"
     >
       <Styled(BodyCopy)
-        className="Apply_Card_Header_Text"
+        aria-label="rewards"
+        className="credit_card_heading"
         color="text.primary"
         component="h2"
         data-locator="rewards"
@@ -60,6 +62,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        tabIndex="0"
         textAlign="left"
       >
         rewards

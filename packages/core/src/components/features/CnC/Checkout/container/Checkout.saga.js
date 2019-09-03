@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
+import { formValueSelector } from 'redux-form';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import endpoints from '../../../../../service/endpoint';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
@@ -19,18 +20,21 @@ import {
   getSetPickupValuesActn,
   getSetPickupAltValuesActn,
   getSetShippingValuesActn,
+  getSetBillingValuesActn,
   getSetGiftWrapOptionsActn,
   setIsLoadingShippingMethods,
   setShippingOptions,
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
 import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
+import { routerPush, isMobileApp } from '../../../../../utils';
 
 const {
   getRecalcOrderPointsInterval,
@@ -84,96 +88,6 @@ function* loadGiftWrappingOptions() {
 
 let oldHasPOB = {};
 
-function* loadUpdatedCheckoutValues(
-  isUpdateRewards,
-  isTaxCalculation,
-  isCartNotRequired,
-  recalcRewards,
-  updateSmsInfo
-) {
-  const imageGenerator = getImgPath;
-  const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
-  const recalcOrderPoints = yield call(
-    getOrderPointsRecalcFlag,
-    recalcRewards,
-    recalcOrderPointsInterval
-  );
-  yield put(
-    BAG_PAGE_ACTIONS.getCartData({
-      isTaxCalculation,
-      isCartNotRequired,
-      imageGenerator,
-      recalcRewards,
-      recalcOrderPoints,
-      isCheckoutFlow: true,
-      updateSmsInfo,
-    })
-  );
-  // const res = yield call(getCartData, {
-  //   isTaxCalculation,
-  //   isCartNotRequired,
-  //   imageGenerator,
-  //   recalcRewards,
-  //   recalcOrderPoints,
-  //   isCheckoutFlow: true,
-  // });
-  // yield call (storeUpdatedCheckoutValues, res.orderDetails, isCartNotRequired, updateSmsInfo);
-  // Load coupons to the store after constructing the coupons structure
-  // getWalletOperator(this.store).getWallet(res.coupons.offers);
-}
-
-function* submitPickupSection(data) {
-  const { payload } = data;
-  const formData = { ...payload };
-  // let pickupOperator = getPickupOperator(this.store);
-  // let storeState = this.store.getState();
-  // let isEmailSignUpAllowed = true;
-
-  // if ((yield select(isUsSite)) && (yield select(isGuest))) {
-  //   isEmailSignUpAllowed = false;
-  // }
-
-  //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
-  //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
-  //  }
-  yield call(addPickupPerson, {
-    firstName: formData.pickUpContact.firstName,
-    lastName: formData.pickUpContact.lastName,
-    phoneNumber: formData.pickUpContact.phoneNumber,
-    emailAddress:
-      formData.pickUpContact.emailAddress ||
-      (yield select(isGuest) ? yield select(getUserEmail) : ''),
-    alternateEmail:
-      formData.hasAlternatePickup && formData.pickUpAlternate
-        ? formData.pickUpAlternate.emailAddress
-        : '',
-    alternateFirstName:
-      formData.hasAlternatePickup && formData.pickUpAlternate
-        ? formData.pickUpAlternate.firstName
-        : '',
-    alternateLastName:
-      formData.hasAlternatePickup && formData.pickUpAlternate
-        ? formData.pickUpAlternate.lastName
-        : '',
-  });
-  /* In the future I imagine us sending the SMS to backend for them to
-       store so it will be loaded in the below loadUpdatedCheckoutValues function.
-       for now we are storing it only on browser so will lose this info on page re-load.
-    */
-  // eslint-disable-next-line no-unused-expressions
-  // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
-  const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
-  yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
-  // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
-  // }).catch((err) => {
-  //   throw getSubmissionError(this.store, 'submitPickupSection', err);
-  // });
-}
-
-// function setCartInfo(cartInfo, isSetCartItems) {
-//   return updateCartInfo(cartInfo, isSetCartItems);
-// }
-
 function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
   // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
 
@@ -193,7 +107,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
     //       ...resCheckoutValues.giftWrap
     //     }
     //   ),
-    // resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing)
+    resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing),
   ];
   yield all([...actions].map(action => put(action)));
   // if (checkoutStoreView.isExpressCheckout(this.store.getState()) && resCheckoutValues.billing && resCheckoutValues.billing.paymentMethod === 'venmo') {
@@ -201,13 +115,130 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   //   this.store.dispatch(setVenmoPaymentInProgress(true));
   // }
 }
+
+function* loadUpdatedCheckoutValues(
+  isUpdateRewards,
+  isTaxCalculation,
+  isCartNotRequired,
+  recalcRewards,
+  updateSmsInfo,
+  handleCartRes
+) {
+  const imageGenerator = getImgPath;
+  const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
+  const recalcOrderPoints = yield call(
+    getOrderPointsRecalcFlag,
+    recalcRewards,
+    recalcOrderPointsInterval
+  );
+
+  function* onCartRes(res) {
+    yield call(storeUpdatedCheckoutValues, { payload: { res } }, isCartNotRequired, updateSmsInfo);
+    // Load coupons to the store after constructing the coupons structure
+    // getWalletOperator(this.store).getWallet(res.coupons.offers);
+    if (handleCartRes) {
+      yield call(handleCartRes);
+    }
+  }
+
+  yield put(
+    BAG_PAGE_ACTIONS.getCartData({
+      isTaxCalculation,
+      isCartNotRequired,
+      imageGenerator,
+      recalcRewards,
+      recalcOrderPoints,
+      isCheckoutFlow: true,
+      updateSmsInfo,
+      onCartRes,
+    })
+  );
+}
+
+function* callPickupSubmitMethod(formData) {
+  return yield call(addPickupPerson, {
+    firstName: formData.pickUpContact.firstName,
+    lastName: formData.pickUpContact.lastName,
+    phoneNumber: formData.pickUpContact.phoneNumber,
+    emailAddress:
+      formData.pickUpContact.emailAddress ||
+      (yield select(isGuest) ? yield select(getUserEmail) : ''),
+    alternateEmail:
+      formData.hasAlternatePickup && formData.pickUpAlternate
+        ? formData.pickUpAlternate.emailAddress
+        : '',
+    alternateFirstName:
+      formData.hasAlternatePickup && formData.pickUpAlternate
+        ? formData.pickUpAlternate.firstName
+        : '',
+    alternateLastName:
+      formData.hasAlternatePickup && formData.pickUpAlternate
+        ? formData.pickUpAlternate.lastName
+        : '',
+  });
+}
+
+function* submitPickupSection(data) {
+  const { payload } = data;
+  const formData = { ...payload };
+  // let pickupOperator = getPickupOperator(this.store);
+  // let storeState = this.store.getState();
+  // let isEmailSignUpAllowed = true;
+
+  // if ((yield select(isUsSite)) && (yield select(isGuest))) {
+  //   isEmailSignUpAllowed = false;
+  // }
+
+  //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
+  //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
+  //  }
+  const result = yield call(callPickupSubmitMethod, formData);
+  if (!isMobileApp() && result.addressId) {
+    routerPush(
+      `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${constants.CHECKOUT_STAGES.SHIPPING}`,
+      `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.SHIPPING}`
+    );
+  } else {
+    yield put(getSetCheckoutStage(constants.CHECKOUT_STAGES.SHIPPING));
+  }
+
+  /* In the future I imagine us sending the SMS to backend for them to
+       store so it will be loaded in the below loadUpdatedCheckoutValues function.
+       for now we are storing it only on browser so will lose this info on page re-load.
+    */
+  // eslint-disable-next-line no-unused-expressions
+  // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
+  const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
+  yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
+  // }).catch((err) => {
+  //   throw getSubmissionError(this.store, 'submitPickupSection', err);
+  // });
+}
+
+// function setCartInfo(cartInfo, isSetCartItems) {
+//   return updateCartInfo(cartInfo, isSetCartItems);
+// }
+
 function* loadShipmentMethods(miniAddress, throwError) {
+  let address;
+  if (miniAddress.formName) {
+    const addressSelector = formValueSelector(miniAddress.formName);
+    const addressValues = yield select(addressSelector, 'address');
+    address = {
+      ...addressValues,
+      state: miniAddress.state || addressValues.state,
+    };
+  } else {
+    address = miniAddress;
+  }
+
   try {
     const res = yield getShippingMethods(
-      miniAddress.state,
-      miniAddress.zipCode,
-      miniAddress.addressLine1,
-      miniAddress.addressLine2
+      address.state || '',
+      address.zipCode || '',
+      address.addressLine1 || '',
+      address.addressLine2 || ''
     );
     yield all([setShippingOptions(res), setIsLoadingShippingMethods(false)].map(val => put(val)));
   } catch (err) {
@@ -243,21 +274,20 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
-function* loadCartAndCheckoutDetails(isRecalcRewards) {
-  yield call(loadUpdatedCheckoutValues, null, null, null, isRecalcRewards);
-  const getIsShippingRequired = yield select(getIsOrderHasShipping);
+function* loadCheckoutDetail(defaultShippingMethods) {
+  const getIsShippingRequired = yield select(getIsOrderHasShipping); // to be fixed
   if (getIsShippingRequired) {
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;
     const defaultAddress = yield select(getDefaultAddress);
     const hasShipping =
       shippingAddress &&
-      shippingAddress.get('country') &&
-      shippingAddress.get('state') &&
-      shippingAddress.get('zipCode');
+      shippingAddress.country &&
+      shippingAddress.state &&
+      shippingAddress.zipCode;
     const isGuestUser = yield select(isGuest);
     // const isMobile = getIsMobile;
-    if (isGuestUser || (!hasShipping && !defaultAddress)) {
+    if (defaultShippingMethods || isGuestUser || (!hasShipping && !defaultAddress)) {
       // isMobile check is left
 
       // if some data is missing request defaults (new user would have preselected
@@ -269,6 +299,18 @@ function* loadCartAndCheckoutDetails(isRecalcRewards) {
       );
     }
   }
+}
+
+function* loadCartAndCheckoutDetails(isRecalcRewards, isInitialLoad) {
+  yield call(
+    loadUpdatedCheckoutValues,
+    null,
+    null,
+    null,
+    isRecalcRewards,
+    undefined,
+    loadCheckoutDetail.bind(null, isInitialLoad)
+  );
 }
 
 function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
@@ -293,7 +335,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   // let pendingPromises = [
   yield call(loadGiftWrappingOptions);
   // ];
-  yield call(loadCartAndCheckoutDetails, isRecalcRewards);
+  yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
   //   let loadCartAndCheckoutDetails = () => {
   //     return this.loadUpdatedCheckoutValues(null, null, null, isRecalcRewards)
   //     .then(loadSelectedOrDefaultShippingMethods);
@@ -514,7 +556,11 @@ function* initCheckout() {
   //   queryObject[config.QUERY_PARAM.RECALC_REWARDS],
   //   parseBoolean(getLocalStorage(VENMO_INPROGRESS_KEY)),
   // )
-  yield call(loadStartupData);
+  try {
+    yield call(loadStartupData);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 function* saveLocalSmsInfo(smsInfo = {}) {
@@ -677,12 +723,21 @@ function* submitShippingSection({ payload: formData }) {
   }
 }
 
+export function* routeToPickupPage(recalc) {
+  const path = `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.PICKUP}`;
+  const href = `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${
+    constants.CHECKOUT_STAGES.PICKUP
+  }`;
+  yield call(routerPush, href, path, { recalc });
+}
+
 export function* CheckoutSaga() {
   yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(constants.SUBMIT_SHIPPING_SECTION, submitShippingSection);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
   yield takeLatest(constants.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
+  yield takeLatest(constants.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);
 }
 
 export default CheckoutSaga;

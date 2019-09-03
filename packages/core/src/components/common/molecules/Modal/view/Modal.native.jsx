@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   StyledCrossImage,
   StyledTouchableOpacity,
@@ -54,6 +55,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   return (
     <SafeAreaView>
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
+        <ToastContainer />
         <StatusBar hidden />
         {heading && (
           <RowWrapper>

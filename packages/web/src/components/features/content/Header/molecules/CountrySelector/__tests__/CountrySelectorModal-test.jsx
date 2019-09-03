@@ -35,6 +35,11 @@ describe('Country Selector Modal Component', () => {
     updateLanguage: jest.fn(),
     dispatch: jest.fn(),
     updateCountry: jest.fn(),
+    initialValues: {
+      country: 'US',
+      currency: 'USD',
+      language: 'en',
+    },
   };
 
   it('renders correctly', () => {

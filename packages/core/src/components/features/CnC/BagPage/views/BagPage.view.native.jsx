@@ -34,6 +34,7 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheck
           </RowSectionStyle>
         </MainSection>
       </ScrollViewWrapper>
+
       <AddedToBagActions
         handleCartCheckout={handleCartCheckout}
         labels={labels}

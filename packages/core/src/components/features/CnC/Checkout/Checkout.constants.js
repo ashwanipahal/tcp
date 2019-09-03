@@ -8,6 +8,8 @@ export default {
     },
   },
 
+  CHECKOUT: 'checkout',
+
   ADDREESS_TYPE: {
     SHIPPING: 'Shipping',
     BILLING: 'Billing',
@@ -19,7 +21,13 @@ export default {
     SHIPPING: 'shipping',
     BILLING: 'billing',
     REVIEW: 'review',
-    CONFIRMATION: 'confirmation',
+    STAGES_ARRAY: ['pickup', 'shipping', 'billing', 'review'],
+  },
+
+  CHECKOUT_PAGES_NAMES: {
+    CHECKOUT: 'Checkout',
+    PICKUP: 'PickupPage',
+    SHIPPING: 'ShippingPage',
   },
   CHECKOUT_FLAGS_SET_LOAD_METHODS: 'CHECKOUT_FLAGS_SET_LOAD_METHODS',
   CHECKOUT_ORDER_OPTIONS_SET_SHIPPING: 'CHECKOUT_ORDER_OPTIONS_SET_SHIPPING',
@@ -27,4 +35,5 @@ export default {
   CHECKOUT_LOAD_SHIPMENT_METHODS: 'CHECKOUT_LOAD_SHIPMENT_METHODS',
   CHECKOUT_FLAGS_SET_ADDRESS_ERROR: 'CHECKOUT_FLAGS_SET_ADDRESS_ERROR',
   CHECKOUT_VALUES_SET_SMS_UPDATES: 'CHECKOUT_VALUES_SET_SMS_UPDATES',
+  ROUTE_TO_PICKUP_PAGE: 'ROUTE_TO_PICKUP_PAGE',
 };

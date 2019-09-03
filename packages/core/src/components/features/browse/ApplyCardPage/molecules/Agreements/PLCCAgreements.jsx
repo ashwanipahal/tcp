@@ -11,7 +11,13 @@ import PLCCAgreementsWrapper from './styles/PLCCAgreements.style';
 const PLCCAgreements = ({ labels }) => {
   return (
     <PLCCAgreementsWrapper>
-      <BodyCopy component="h2" className="title" fontSize="fs16" fontFamily="secondary">
+      <BodyCopy
+        component="h2"
+        className="title"
+        fontSize="fs16"
+        fontFamily="secondary"
+        tabIndex="0"
+      >
         {labels.plcc_form_financial_terms}
       </BodyCopy>
       <iframe

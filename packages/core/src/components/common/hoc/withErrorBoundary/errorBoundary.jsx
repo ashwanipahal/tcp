@@ -64,7 +64,7 @@ const renderClientSafeComponent = (renderComponent, componentName) => {
  * Generate error safe functional component
  * @param {*} WrappedComponent
  */
-const functionalSafeComponent = WrappedComponent => {
+export const functionalSafeComponent = WrappedComponent => {
   const renderComponent = (passedProps, passedState) => {
     try {
       const { hasError, error } = passedState;
@@ -122,16 +122,22 @@ const wrapMethod = (methodName, WrappedComponent) => {
 };
 
 /**
- * Generate error safe component
+ * Generate error safe non functional component
  * @param {*} WrappedComponent
  */
-const SafeComponent = WrappedComponent => {
-  if (!WrappedComponent.prototype.render) {
-    return functionalSafeComponent(WrappedComponent);
-  }
+export const nonFunctionalSafeComponent = WrappedComponent => {
   LIFECYCLE_METHODS.forEach(method => wrapMethod(method, WrappedComponent));
   const renderComponent = passedProps => <WrappedComponent {...passedProps} />;
   return renderClientSafeComponent(renderComponent, WrappedComponent.name);
 };
+
+/**
+ * Generate error safe component
+ * @param {*} WrappedComponent
+ */
+const SafeComponent = WrappedComponent =>
+  !WrappedComponent.prototype.render
+    ? functionalSafeComponent(WrappedComponent)
+    : nonFunctionalSafeComponent(WrappedComponent);
 
 export default SafeComponent;

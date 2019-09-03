@@ -16,6 +16,29 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
   if (!isCanada) {
     subDescKeys = Object.keys(labels.login).filter(lbl => /lbl_login_subDescription_/.test(lbl));
   }
+  const renderFavt = () => {
+    return (
+      <React.Fragment>
+        {variation === 'favorites' && (
+          <>
+            <BodyCopy fontSize="fs16" fontWeight="black" fontFamily="secondary" textAlign="center">
+              {labels.login.lbl_login_favorites_modal_heading}
+            </BodyCopy>
+
+            <BodyCopy
+              component="span"
+              fontSize="fs12"
+              fontWeight="black"
+              fontFamily="secondary"
+              textAlign="center"
+            >
+              {labels.login.lbl_login_favorites_modal_heading_1}
+            </BodyCopy>
+          </>
+        )}
+      </React.Fragment>
+    );
+  };
   return (
     <BodyCopy component="div" textAlign="center" className={className}>
       {!isCanada && !(variation === 'favorites' || variation === 'checkout') && (
@@ -33,6 +56,12 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
             <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary" textAlign="center">
               {labels.login.lbl_login_heading}
             </BodyCopy>
+
+            {isCanada && (
+              <BodyCopy fontSize="fs12" fontFamily="secondary" textAlign="center">
+                {labels.login.lbl_login_heading_2}
+              </BodyCopy>
+            )}
             {subDescKeys.length > 0 &&
               subDescKeys.map(key => (
                 <BodyCopy fontFamily="secondary" textAlign="center" fontSize="fs12">
@@ -62,23 +91,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
           </BodyCopy>
         </>
       )}
-      {variation === 'favorites' && (
-        <>
-          <BodyCopy fontSize="fs16" fontWeight="black" fontFamily="secondary" textAlign="center">
-            {labels.login.lbl_login_favorites_modal_heading}
-          </BodyCopy>
-
-          <BodyCopy
-            component="span"
-            fontSize="fs12"
-            fontWeight="black"
-            fontFamily="secondary"
-            textAlign="center"
-          >
-            {labels.login.lbl_login_favorites_modal_heading_1}
-          </BodyCopy>
-        </>
-      )}
+      {renderFavt()}
     </BodyCopy>
   );
 };

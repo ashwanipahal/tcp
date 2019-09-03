@@ -20,11 +20,9 @@ class CountrySelector extends React.Component {
   }
 
   openModal = () => {
-    const { countriesMap, toggleModal } = this.props;
+    const { toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
-    if (!countriesMap.length) {
-      this.getCountryListData();
-    }
+    this.getCountryListData();
   };
 
   closeModal = () => {
@@ -79,11 +77,13 @@ class CountrySelector extends React.Component {
 
   changeCountry = selectedCountry => {
     const { updateCountry, updateSiteId } = this.props;
-    const { siteId } = this.getSelectedCountry(selectedCountry);
-    const currencyCode = this.getCurrencyMap(selectedCountry);
-    this.updateCurrency(currencyCode);
+    if (selectedCountry) {
+      const { siteId } = this.getSelectedCountry(selectedCountry);
+      const currencyCode = this.getCurrencyMap(selectedCountry);
+      this.updateCurrency(currencyCode);
+      updateSiteId(siteId);
+    }
     updateCountry(selectedCountry);
-    updateSiteId(siteId);
   };
 
   changeLanguage = selectedLanguage => {
