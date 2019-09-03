@@ -29,7 +29,9 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
         labels={Object {}}
       />
       <AddedToBagActions
+        closeModal={[Function]}
         labels={Object {}}
+        navigation={null}
         showAddTobag={true}
       />
       <Styled(BossBanner)
