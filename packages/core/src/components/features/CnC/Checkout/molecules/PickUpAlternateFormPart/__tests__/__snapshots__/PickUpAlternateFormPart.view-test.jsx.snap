@@ -97,6 +97,12 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
   & .disabled {
     opacity: ",
                 [Function],
@@ -247,6 +253,12 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
 
   & .CheckBox__text {
     width: calc(100% - 25px);
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {

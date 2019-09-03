@@ -29,6 +29,7 @@ const {
   getAddressPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
+  getBillingLabels,
   getEmailSignUpLabels,
   getShipmentMethods,
   getDefaultShipmentID,
@@ -68,8 +69,8 @@ export class CheckoutContainer extends React.Component<Props> {
       orderHasShipping,
       routeToPickupPage,
       setCheckoutStage,
+      billingProps,
     } = this.props;
-
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -77,6 +78,7 @@ export class CheckoutContainer extends React.Component<Props> {
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
+        billingProps={billingProps}
         isMobile={isMobile}
         isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
@@ -149,6 +151,9 @@ const mapStateToProps = state => {
       emailSignUpLabels: getEmailSignUpLabels(state),
       shipmentMethods: getShipmentMethods(state),
       defaultShipmentId: getDefaultShipmentID(state),
+    },
+    billingProps: {
+      labels: getBillingLabels(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

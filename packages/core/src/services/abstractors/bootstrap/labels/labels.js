@@ -8,7 +8,9 @@ const Abstractor = {
   getData: (module, data) => {
     return handler
       .fetchModuleDataFromGraphQL({ name: module, data })
-      .then(response => response.data)
+      .then(response => {
+        return response.data.labels;
+      })
       .then(Abstractor.processData);
   },
   getMock: () => {

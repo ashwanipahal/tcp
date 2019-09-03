@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
@@ -26,8 +25,6 @@ import CustomButton from '../../../atoms/Button';
 import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage';
 
 import { COUPON_REDEMPTION_TYPE } from '../../../../../services/abstractors/CnC/CartItemTile';
-
-const colorPallete = createThemeColorPalette();
 
 export class CouponCard extends React.Component<Props> {
   RenderCardSavingHeader = (type, dataLocator) => {
@@ -152,8 +149,7 @@ export class CouponCard extends React.Component<Props> {
     const { coupon, onApply, isFetching } = this.props;
     return (
       <CustomButton
-        fill="BLACK"
-        color={colorPallete.white}
+        fill="DARK"
         type="submit"
         buttonVariation="variable-width"
         data-locator=""

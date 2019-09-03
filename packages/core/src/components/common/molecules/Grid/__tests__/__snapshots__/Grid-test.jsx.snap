@@ -2,7 +2,7 @@
 
 exports[`Grid component renders correctly 1`] = `
 <div
-  className="sample-grid"
+  className="sample-grid "
 >
   ABCD
 </div>

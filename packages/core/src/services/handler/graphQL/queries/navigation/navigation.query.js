@@ -63,6 +63,7 @@ const buildQuery = ({ brand, country, channel }) => `
         id
         catgroupId
         longDescription
+        catgroupId
         mainCategory {
           promoBadge {
             text
@@ -82,6 +83,7 @@ const buildQuery = ({ brand, country, channel }) => `
           id
           catgroupId
           longDescription
+          catgroupId
         }
       }
     }

@@ -10,7 +10,6 @@ import {
   ButtonWrapper,
   AlreadyAccountWrapper,
   PasswordWrapper,
-  HideShowField,
   ConfirmPasswordWrapper,
   ConfirmHideShowField,
 } from '../styles/CreateAccountForm.style.native';
@@ -110,7 +109,7 @@ class CreateAccountForm extends PureComponent<Props> {
               secureTextEntry={!hideShowPwd}
             />
 
-            <HideShowField>
+            <ConfirmHideShowField>
               <Field
                 name="hide-show-pwd"
                 component={InputCheckbox}
@@ -124,7 +123,7 @@ class CreateAccountForm extends PureComponent<Props> {
                 onClick={onPwdHideShowClick}
                 hideCheckboxIcon
               />
-            </HideShowField>
+            </ConfirmHideShowField>
           </PasswordWrapper>
           <ConfirmPasswordWrapper>
             <Field
@@ -155,6 +154,7 @@ class CreateAccountForm extends PureComponent<Props> {
 
           {/* CHECKBOXES */}
           <Field
+            inputVariation="inputVariation-1"
             name="saveMyPlaceRewards"
             component={InputCheckbox}
             dataLocator="saveMyPlaceRewards"
@@ -163,11 +163,14 @@ class CreateAccountForm extends PureComponent<Props> {
             onClick={this.onSaveMyPlaceRewards}
           />
           <Field
+            inputVariation="inputVariation-1"
             name="iAgree"
             component={InputCheckbox}
             dataLocator="iAgree"
             disabled={false}
-            rightText={labels.registration.lbl_createAccount_termsConditions}
+            rightText={`${labels.registration.lbl_createAccount_termsConditions_app} ${
+              labels.registration.lbl_createAccount_termsConditions_1_app
+            }`}
             marginTop={13}
           />
           <Field
@@ -194,7 +197,6 @@ class CreateAccountForm extends PureComponent<Props> {
               buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
-              color="white"
             />
           </ButtonWrapper>
           <AlreadyAccountWrapper>
