@@ -194,7 +194,9 @@ let CreateAccountForm = ({
               alignCheckbox="top"
             >
               <BodyCopy fontFamily="secondary" fontSize="fs10">
-                {labels.registration.lbl_createAccount_termsConditions}
+                {`${labels.registration.lbl_createAccount_termsConditions} ${
+                  labels.registration.lbl_createAccount_termsConditions_1
+                }`}
               </BodyCopy>
             </Field>
           </Col>
