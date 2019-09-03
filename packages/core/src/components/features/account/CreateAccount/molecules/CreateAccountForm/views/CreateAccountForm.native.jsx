@@ -194,7 +194,6 @@ class CreateAccountForm extends PureComponent<Props> {
               buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
-              color="white"
             />
           </ButtonWrapper>
           <AlreadyAccountWrapper>

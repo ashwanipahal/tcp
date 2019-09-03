@@ -59,6 +59,7 @@ class ProductList extends React.PureComponent {
         isMatchingFamily={isMatchingFamily}
         badge1={topBadge}
         badge2={badge2}
+        isPlcc={isPlcc}
         loyaltyPromotionMessage={loyaltyPromotionMessage}
         onAddToBag={this.onAddToBag}
         onFavorite={this.onFavorite}

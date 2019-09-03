@@ -3,6 +3,7 @@
 exports[`BonusPointsAvailabilityVanilla should render correctly available_today 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -72,8 +73,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -109,7 +110,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -117,6 +121,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
 exports[`BonusPointsAvailabilityVanilla should render correctly with applied to bag bonus point days 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -196,8 +201,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -233,7 +238,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -241,6 +249,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
 exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -320,8 +329,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -357,7 +366,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -365,6 +377,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
 exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisabled 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <React.Fragment>
@@ -444,8 +457,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -481,7 +494,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -489,6 +505,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
 exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
       <React.Fragment>
         <ForwardRef>
@@ -545,8 +562,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         />
       </React.Fragment>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -582,7 +599,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;

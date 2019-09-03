@@ -8,6 +8,13 @@ const InputFieldPhoneNumber = styled.View`
 const StateZipCodeContainer = styled.View`
   flex: 1;
   flex-direction: row;
+  height: 72px;
+`;
+
+const CountryContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  height: 72px;
 `;
 
 const InputFieldHalf = styled.View`
@@ -62,6 +69,19 @@ const GooglePlaceInputWrapper = styled.View`
   width: 100%;
 `;
 
+const HiddenAddressLineWrapper = styled.View`
+  margin-top: -${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+const HiddenStateWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+const OptionalAdressWrapper = styled.View`
+  height: 72px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
+
 export {
   EmptyView,
   SaveButtonWrapper,
@@ -73,6 +93,10 @@ export {
   StateZipCodeContainer,
   Separator,
   SetDefaultShippingWrapper,
+  CountryContainer,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
+  OptionalAdressWrapper,
+  HiddenAddressLineWrapper,
+  HiddenStateWrapper,
 };
