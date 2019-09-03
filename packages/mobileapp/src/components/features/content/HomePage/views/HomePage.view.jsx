@@ -67,7 +67,6 @@ class HomePageView extends React.Component {
 
     return (
       <ScrollView>
-        <ModuleJ />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <Button
           fullWidth
@@ -76,6 +75,7 @@ class HomePageView extends React.Component {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
+        <ModuleJ />
       </ScrollView>
     );
   }
