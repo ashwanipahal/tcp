@@ -159,7 +159,6 @@ class AccountOverview extends PureComponent<Props> {
               <CustomButton
                 className="classBtn"
                 color={colorPallete.text.secondary}
-                fill="WHITE"
                 id="createAccount"
                 type="submit"
                 width="150px"
@@ -180,7 +179,6 @@ class AccountOverview extends PureComponent<Props> {
               />
 
               <CustomButton
-                color={colorPallete.white}
                 className="classBtn"
                 fill="BLUE"
                 id="login"

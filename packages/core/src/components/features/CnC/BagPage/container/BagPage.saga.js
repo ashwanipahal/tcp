@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import CHECKOUT_CONSTANTS from '../../Checkout/Checkout.constants';
 import {
   getOrderDetailsData,
   getCartData,
@@ -137,13 +138,15 @@ export function* fetchModuleX({ payload = [] }) {
 }
 
 export function* routeForCartCheckout(recalc) {
-  let section = '/shipping';
+  let section = CHECKOUT_CONSTANTS.CHECKOUT_STAGES.SHIPPING;
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   if (orderHasPickup) {
-    section = '/pickup';
+    section = CHECKOUT_CONSTANTS.CHECKOUT_STAGES.PICKUP;
   }
-  const path = `/checkout${section}`;
-  return yield call(routerPush, path, path, { recalc });
+  const path = `/${CHECKOUT_CONSTANTS.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${section}`;
+  const asPath = `/${CHECKOUT_CONSTANTS.CHECKOUT}/${section}`;
+  routerPush(path, asPath, { recalc });
+  // return yield call(routerPush, path, asPath, { recalc });
 }
 
 export function* checkoutCart(recalc) {

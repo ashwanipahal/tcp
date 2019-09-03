@@ -8,6 +8,8 @@ export default {
     },
   },
 
+  CHECKOUT: 'checkout',
+
   ADDREESS_TYPE: {
     SHIPPING: 'Shipping',
     BILLING: 'Billing',

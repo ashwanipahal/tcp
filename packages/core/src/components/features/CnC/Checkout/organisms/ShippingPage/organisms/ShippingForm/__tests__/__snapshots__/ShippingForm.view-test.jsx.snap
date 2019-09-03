@@ -63,6 +63,7 @@ exports[`Shipping Form should render correctly 1`] = `
         />
       </div>
     </FormSection>
+    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       hideBackLink={false}
     />

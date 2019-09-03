@@ -117,7 +117,6 @@ class LoginForm extends React.PureComponent<Props> {
           </View>
 
           <CustomButton
-            color={colorPallete.white}
             fill="BLUE"
             text={labels.login.lbl_login_loginCTA}
             buttonVariation="variable-width"

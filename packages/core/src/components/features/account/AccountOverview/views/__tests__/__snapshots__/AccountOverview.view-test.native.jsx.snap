@@ -36,7 +36,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       customStyle={Object {}}
       data-locator=""
       disableButton={false}
-      fill="WHITE"
+      fill=""
       fullWidth=""
       id="createAccount"
       locator=""
@@ -49,7 +49,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     <Styled(CustomButton)
       buttonVariation="variable-width"
       className="classBtn"
-      color="#fff"
+      color=""
       customStyle={Object {}}
       data-locator=""
       disableButton={false}
