@@ -61,11 +61,12 @@ export class PaymentView extends React.Component<Props> {
     const isVenmo = selectedCard.ccType === 'VENMO';
     let cardHeading = '';
     if (isCreditCard) {
-      cardHeading = getLabelValue(labels, 'paymentGC.lbl_payment_modalDeleteCard');
+      cardHeading = getLabelValue(labels, 'lbl_payment_modalDeleteCard', 'paymentGC');
     } else {
       cardHeading = getLabelValue(
         labels,
-        isVenmo ? 'paymentGC.lbl_payment_modalVenmoDelete' : 'paymentGC.lbl_payment_modalGCHeading'
+        isVenmo ? 'lbl_payment_modalVenmoDelete' : 'lbl_payment_modalGCHeading',
+        'paymentGC'
       );
     }
     return (
@@ -75,22 +76,22 @@ export class PaymentView extends React.Component<Props> {
           heading: cardHeading,
           subHeading:
             selectedCard.ccType === 'VENMO'
-              ? getLabelValue(labels, 'paymentGC.lbl_payment_modalVenmoDeleteHeading')
+              ? getLabelValue(labels, 'lbl_payment_modalVenmoDeleteHeading', 'paymentGC')
               : '',
           description: selectedCard,
           buttons: {
-            cancel: getLabelValue(labels, 'paymentGC.lbl_payment_modalVenmoDeleteHeading'),
-            confirm: getLabelValue(labels, 'paymentGC.lbl_payment_modalGCConfirm'),
+            cancel: getLabelValue(labels, 'lbl_payment_modalVenmoDeleteHeading', 'paymentGC'),
+            confirm: getLabelValue(labels, 'lbl_payment_modalGCConfirm', 'paymentGC'),
           },
           cardText: {
             cardEnd:
               selectedCard.ccType === 'VENMO'
                 ? ''
-                : getLabelValue(labels, 'paymentGC.lbl_payment_modalGCCardEnd'),
+                : getLabelValue(labels, 'lbl_payment_modalGCCardEnd', 'paymentGC'),
             expire:
               selectedCard.ccType === 'VENMO'
                 ? ''
-                : getLabelValue(labels, 'paymentGC.lbl_payment_gcExpire'),
+                : getLabelValue(labels, 'lbl_payment_gcExpire', 'paymentGC'),
           },
         }}
         labels={labels}
@@ -136,8 +137,9 @@ export class PaymentView extends React.Component<Props> {
                 message={getLabelValue(
                   labels,
                   showNotification === 'success'
-                    ? 'paymentGC.lbl_payment_successMsg'
-                    : 'paymentGC.lbl_payment_errorMsg'
+                    ? 'lbl_payment_successMsg'
+                    : 'lbl_payment_errorMsg',
+                  'paymentGC'
                 )}
               />
             </Col>
@@ -159,7 +161,7 @@ export class PaymentView extends React.Component<Props> {
               className="payment__heading"
               data-locator="payment-payment&gcheader"
             >
-              {getLabelValue(labels, 'paymentGC.lbl_payment_heading')}
+              {getLabelValue(labels, 'lbl_payment_heading', 'paymentGC')}
             </BodyCopy>
           </Col>
         </Row>
