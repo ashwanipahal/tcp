@@ -26,6 +26,7 @@ import {
   CheckBoxTextWrapper,
   CheckBoxSubWrapper,
   TextWrapper,
+  PickUpHeading,
 } from '../styles/PickupPage.style.native';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import ContactFormFields from '../../../molecules/ContactFormFields';
@@ -103,7 +104,13 @@ class PickUpFormPart extends React.Component {
               />
             </PickupError>
             <PickupContainer>
-              <CheckoutSectionTitleDisplay title={pickUpLabels.title} dataLocator="pickup-title" />
+              {isGuest && <PickUpHeading>{pickUpLabels.pickupContactText}</PickUpHeading>}
+              {!isGuest && (
+                <CheckoutSectionTitleDisplay
+                  title={pickUpLabels.title}
+                  dataLocator="pickup-title"
+                />
+              )}
               <PickUpForm>
                 <FormSection name="pickUpContact">
                   {isGuest ? (
@@ -139,6 +146,10 @@ class PickUpFormPart extends React.Component {
                       formSection="smsSignUp"
                       altInitValue={currentPhoneNumber}
                       labels={smsSignUpLabels}
+                      showDefaultCheckbox={false}
+                      variation="secondary"
+                      dispatch={dispatch}
+                      addressPhoneNo={currentPhoneNumber}
                     />
                   </FormSection>
                 </SmsSignUpForm>

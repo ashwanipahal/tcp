@@ -25,7 +25,7 @@ const PickUpHeading = styled.Text`
 const PickupError = styled.View``;
 
 const PickupContainer = styled.View`
-  margin: 0px;
+  margin-top: 24px;
 `;
 
 const PickUpForm = styled.View`
