@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
+import ModuleB from '@tcp/core/src/components/common/molecules/ModuleB';
 
 import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
 
@@ -24,6 +25,7 @@ const HomePageView = props => {
       <SlotE {...slotE} />
       <SlotF {...slotF} />
       <GetCandid />
+      <ModuleB />
     </Fragment>
   );
 };

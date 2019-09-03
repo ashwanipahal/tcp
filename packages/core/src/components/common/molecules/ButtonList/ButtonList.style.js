@@ -135,6 +135,10 @@ export default css`
     font-size: 13px;
   }
 
+  &.hide-on-small-viewport {
+    display: none;
+  }
+
   @media ${props => props.theme.mediaQuery.smallMax} {
     .stacked-cta-wrapper-class {
       border-radius: 0;
@@ -240,6 +244,14 @@ export default css`
       white-space: normal;
       width: 62px;
     }
+
+    &.hide-on-small-viewport {
+      display: block;
+    }
+
+    &.button-list-wrapper.is-tablet-hidden {
+      display: none;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -283,6 +295,10 @@ export default css`
     &.wrapped-button-text .stacked-button,
     &.wrapped-button-text .scroll-button {
       margin: 0 15px;
+    }
+
+    &.button-list-wrapper.is-tablet-hidden {
+      display: none;
     }
   }
 
