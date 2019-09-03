@@ -1,4 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
 import { setPlpProducts } from './ProductListing.actions';
 import { validateReduxCache } from '../../../../../utils/cache.util';
@@ -20,7 +21,7 @@ function* fetchPlpProducts({ payload }) {
     const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
     yield put(setPlpProducts({ ...plpProducts }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 

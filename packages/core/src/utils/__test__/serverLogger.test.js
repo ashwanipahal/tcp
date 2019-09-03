@@ -1,4 +1,4 @@
-import LogHandler from '../logger';
+import LogHandler from '../logger/serverLogger';
 
 describe('LogHandler', () => {
   test('default', () => {

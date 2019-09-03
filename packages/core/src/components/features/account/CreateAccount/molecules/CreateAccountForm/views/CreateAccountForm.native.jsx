@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -21,15 +22,15 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 
 class CreateAccountForm extends PureComponent<Props> {
   onSaveMyPlaceRewards = value => {
-    console.log('onSaveMyPlaceRewards: ', value);
+    logger.info('onSaveMyPlaceRewards: ', value);
   };
 
   onUseTouchID = value => {
-    console.log('onUseTouchID: ', value);
+    logger.info('onUseTouchID: ', value);
   };
 
   onUseFaceID = value => {
-    console.log('onUseFaceID: ', value);
+    logger.info('onUseFaceID: ', value);
   };
 
   showLoginSection = () => {

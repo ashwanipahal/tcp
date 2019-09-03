@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
 import handler, { executeStatefulAPICall } from '../../../handler';
 import countryListQuery from '../../../handler/graphQL/queries/countrySelector';
@@ -25,7 +26,6 @@ const Abstractor = {
     return mock;
   },
   processData: data => data,
-  // eslint-disable-next-line no-console
-  handleError: e => console.log(e),
+  handleError: e => logger.error(e),
 };
 export default Abstractor;

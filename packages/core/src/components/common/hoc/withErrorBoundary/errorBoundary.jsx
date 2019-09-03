@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { trackError } from '@tcp/core/src/utils/errorReporter.util';
 import FallbackErrorComponent from './ErrorFallbackComponent';
 import { DEFAULT_CLASS_NAME, LIFECYCLE_METHODS } from './config';
@@ -49,8 +50,7 @@ const renderClientSafeComponent = (renderComponent, componentName) => {
     }
 
     componentDidCatch(error, errorInfo) {
-      // eslint-disable-next-line no-console
-      console.log(error, errorInfo);
+      logger.error(error, errorInfo);
       logError({ error, errorInfo });
     }
 

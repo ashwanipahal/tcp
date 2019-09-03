@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { routerPush } from '../../../../../utils';
 import CreateAccountView from '../views/CreateAccountView';
 import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
@@ -61,7 +62,7 @@ export class CreateAccountContainer extends React.Component {
         this.hasNavigateToNestedRoute = navigateToNestedRoute;
       })
       .catch(error => {
-        console.log('error: ', error);
+        logger.error('error: ', error);
       });
   }
 

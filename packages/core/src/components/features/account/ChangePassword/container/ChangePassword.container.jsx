@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import utils from '../../../../../utils';
 import { getError, getChangePasswordLabels } from './ChangePassword.selectors';
 import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
@@ -28,7 +29,7 @@ export class ChangePasswordContainer extends PureComponent {
         this.hasMobileApp = isMobileApp;
       })
       .catch(error => {
-        console.log('error: ', error);
+        logger.error('error: ', error);
       });
   }
 

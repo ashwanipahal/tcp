@@ -1,4 +1,5 @@
 import { all, call, takeLatest, put } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { setCountry, setCurrency, setLanguage } from '../../../../../reduxStore/actions';
 import CONSTANTS from '../User.constants';
 import { setUserInfo } from './User.actions';
@@ -28,7 +29,7 @@ export function* getUserInfoSaga() {
       routerPush(window.location, '/home', null, siteId);
     }
   } catch (err) {
-    console.log('Error: error in fetching user profile information');
+    logger.error('Error: error in fetching user profile information');
   }
 }
 
