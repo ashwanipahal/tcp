@@ -1,20 +1,20 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import TextBox from '../../../../../../common/atoms/TextBox';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
-import Button from '../../../../../../common/atoms/Button';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import Anchor from '../../../../../../common/atoms/Anchor';
-import RichText from '../../../../../../common/atoms/RichText';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import Row from '@tcp/core/src/components/common/atoms/Row';
+import Col from '@tcp/core/src/components/common/atoms/Col';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { Image } from '@tcp/core/src/components/common/atoms';
+import ReactTooltip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { Image } from '../../../../../../common/atoms';
 import { getIconPath } from '../../../../../../../utils';
-import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 
 // @flow
 type Props = {
