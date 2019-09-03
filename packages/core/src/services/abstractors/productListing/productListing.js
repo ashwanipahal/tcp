@@ -11,9 +11,6 @@ const apiHelper = {
     isUSStore: true,
     siteId: utils.getSiteId(),
   },
-  responseContainsErrors: () => {
-    return false;
-  },
 };
 
 const isOutfit = (isSearch, searchTerm) => {

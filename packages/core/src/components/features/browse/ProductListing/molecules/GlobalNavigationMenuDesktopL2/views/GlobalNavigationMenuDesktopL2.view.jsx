@@ -108,7 +108,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
             {menuGroupingArr.map((groups, index) => {
               return (
                 <NavGroupContainer
-                  key={`column-${groups.groupName}`}
+                  key={`column-${groups[0].groupName}`}
                   isLastGroup={index === menuGroupingArr.length - 1}
                   {...{ groups, activeCategoryIds, isTopNav, className }}
                 />

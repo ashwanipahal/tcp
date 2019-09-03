@@ -1,10 +1,9 @@
-/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
-import { processBreadCrumbs } from './ProductListing.util';
+import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
   getProductsSelect,
   getNavigationTree,
@@ -14,66 +13,12 @@ import {
   getCategoryId,
   getLabelsProductListing,
   getLongDescription,
-  getLoadedProductsPages,
   getIsLoadingMore,
   getLastLoadedPageNumber,
+  getLoadedProductsPages,
 } from './ProductListing.selectors';
-import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
-function getIsShowCategoryGrouping(state) {
-  const isL2Category = state.ProductListing.get('breadCrumbTrail').length === 2;
-  // const isNotAppliedSort = !state.productListing.appliedSortId;
-  const isNotAppliedSort = !null;
-  const appliedFilters = state.ProductListing.appliedFiltersIds;
-  const isNotAppliedFilter =
-    (appliedFilters && appliedFilters.length > 0 && !sumValues(appliedFilters)) || true;
-
-  return isL2Category && isNotAppliedSort && isNotAppliedFilter;
-}
-
-function getProductsAndTitleBlocks(state) {
-  const productBlocks = getLoadedProductsPages(state);
-  // const injectionHandler = injectProductGridItem(state);
-  const productsAndTitleBlocks = [];
-  let lastProductsAndTitleBlock;
-  let lastCategoryName = null;
-
-  productBlocks &&
-    productBlocks.forEach((block, blockIndex) => {
-      const productsAndTitleBlock = [];
-      lastProductsAndTitleBlock = productsAndTitleBlock;
-
-      // For each product in this block try to extract the category name if new
-      block &&
-        block.forEach((product, productIndex) => {
-          const currentProductIndex =
-            parseInt(productIndex) + 1 + parseInt(blockIndex) * PRODUCTS_PER_LOAD;
-          const { categoryName } = product.miscInfo;
-
-          // This is to inject Dynamic Marketing Espots into our product Grid
-          // injectionHandler.marketing(productsAndTitleBlock, currentProductIndex, categoryName);
-
-          // push: If we should group and we hit a new category name push on array
-          // injectionHandler.seperator(productsAndTitleBlock, categoryName);
-          const shouldGroup = getIsShowCategoryGrouping(state);
-          if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
-            productsAndTitleBlock.push(categoryName);
-            lastCategoryName = categoryName;
-          }
-          // push: product onto block
-          productsAndTitleBlock.push(product);
-        });
-
-      // push: product block onto matrix
-      productsAndTitleBlocks.push(productsAndTitleBlock);
-    });
-  // if (lastProductsAndTitleBlock) {
-  //   injectionHandler.marketingLast(lastProductsAndTitleBlock);
-  // }
-
-  return productsAndTitleBlocks;
-}
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
     this.makeApiCall();
@@ -129,6 +74,7 @@ class ProductListingContainer extends React.PureComponent {
 
 function mapStateToProps(state) {
   const appliedFilters = state.ProductListing.appliedFiltersIds;
+  const productBlocks = getLoadedProductsPages(state);
 
   // eslint-disable-next-line
   let filtersLength = {};
@@ -141,8 +87,7 @@ function mapStateToProps(state) {
   }
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state),
-    currentNavIds: state.ProductListing.currentNavigationIds,
+    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
@@ -197,9 +142,12 @@ ProductListingContainer.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isLoadingMore: PropTypes.bool,
+  lastLoadedPageNumber: PropTypes.number,
 };
 
 ProductListingContainer.defaultProps = {
+  products: [],
   productsBlock: [],
   currentNavIds: [],
   navTree: {},
@@ -211,6 +159,8 @@ ProductListingContainer.defaultProps = {
   longDescription: '',
   labels: {},
   labelsFilter: {},
+  isLoadingMore: false,
+  lastLoadedPageNumber: 0,
 };
 
 export default connect(

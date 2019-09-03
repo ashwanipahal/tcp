@@ -253,7 +253,6 @@ export default class ProductsOperator {
     //   categoryPathMap,
     // }
 
-    console.log('this.bucketingConfig', this.bucketingConfig);
     return this.getProductsListingInfo({
       state,
       filtersAndSort,
@@ -490,8 +489,9 @@ export default class ProductsOperator {
       return null; // nothing more to load
     }
 
-    const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
-    const sort = productListingStoreView.getAppliedSort(state);
+    const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
+    // TODO - take the fallback from sort array once sort functionality is merged
+    const sort = (state.productListing && state.productListing.get('appliedSortId')) || '';
 
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
     return this.getProductsListingInfo({
@@ -523,18 +523,17 @@ export default class ProductsOperator {
   getMoreBucketedProducts = state => {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     // const state = this.store.getState();
-    // const sort = productListingStoreView.getAppliedSort(state);
-    const sort = null;
+    const sort = (state.productListing && state.productListing.get('appliedSortId')) || '';
     // If this is not a bucketing scenario and if the sort parameter is applied then we need to follow the original approach.
     if (this.shouldApplyUnbxdLogic && this.bucketingConfig.bucketingSeqScenario && !sort) {
       // If no L3 are left to load means we have brought all the products in current L2, then we need to resolve the promise.
       if (!this.bucketingConfig.L3Left.length) {
         return null; // nothing more to load
       }
-      // const appliedFiltersIds = productListingStoreView.getAppliedFilterIds(state);
-      // const sort = productListingStoreView.getAppliedSort(state);
-      const sort = null;
-      const appliedFiltersIds = null;
+      const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
+      // TODO - take the fallback from sort array once sort functionality is merged
+      const sort = (state.productListing && state.productListing.get('appliedSortId')) || '';
+
       const categoryNameList = [...this.bucketingConfig.currL2NameList];
       // Pushing the first L3 available in L3left variable
       categoryNameList.push(getRequiredCategoryData(this.bucketingConfig.L3Left[0]));

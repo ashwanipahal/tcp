@@ -187,7 +187,9 @@ const processResponse = (
       })
     );
   }
-  return Promise.all(pendingPromises).then(() => response);
+  return Promise.all(pendingPromises).then(() => {
+    return response;
+  });
 };
 
 export default processResponse;

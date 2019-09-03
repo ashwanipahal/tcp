@@ -64,13 +64,20 @@ const ProductListView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="count-section">
+              {totalProductsCount > 0 && (
+                <span className="items-count-content">
+                  Showing
+                  <span className="items-count-content-number">
+                    {totalProductsCount > 0 ? totalProductsCount : 0}
+                  </span>
+                  {totalProductsCount > 1 ? 'Items' : 'Item'}
+                </span>
+              )}
+            </div>
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
-            {/* <ProductList
-              products={products}
-              className={`${className} product-list`}
-              labels={labels}
-              {...otherProps}
-            /> */}
           </Col>
 
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>

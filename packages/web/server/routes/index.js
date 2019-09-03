@@ -33,9 +33,9 @@ const RoutesMap = [
     resolver: '/ApplyCardPage',
   },
   {
-    path: '/c/:l2?/:l3?',
+    path: '/c/:cid',
     resolver: '/ProductListing',
-    params: ['l2', 'l3'],
+    params: ['cid'],
   },
   {
     path: '/test',
