@@ -33,8 +33,8 @@ export const getCouponsLabels = state => {
         lbl_couponlist_REWARDS_TEXT: REWARDS_TEXT = 'REWARDS',
         lbl_couponlist_SAVINGS_TEXT: SAVINGS_TEXT = 'SAVINGS',
         lbl_couponlist_EXPIRING_SOON: EXPIRING_SOON = 'EXPIRING SOON!',
-      },
-    },
+      } = {},
+    } = {},
   } = state.Labels;
 
   return {

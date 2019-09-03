@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import utils from '@tcp/core/src/utils';
+import internalEndpoints from '../../../internalEndpoints';
+
+const goToHomePage = () => {
+  utils.routerPush(internalEndpoints.shopNowPage.link, internalEndpoints.shopNowPage.path);
+  return null;
+};
 
 export const EmptyWalletRewards = ({ labels }) => {
   return (
@@ -31,6 +38,7 @@ export const EmptyWalletRewards = ({ labels }) => {
           buttonVariation="fixed-width"
           fill="BLUE"
           color="white"
+          onClick={goToHomePage}
           data-locator="my-rewards-shop-now-btn"
         >
           {labels.myPlaceRewards.lbl_my_rewards_shop_now}

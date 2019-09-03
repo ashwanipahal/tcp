@@ -51,6 +51,10 @@ const styles = css`
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: black;
+  }
+
   & .disabled {
     opacity: ${props => props.theme.opacity.opacity.medium};
   }

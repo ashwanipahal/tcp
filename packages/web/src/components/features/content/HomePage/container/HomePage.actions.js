@@ -1,3 +1,7 @@
+// TODO - GLOBAL-LABEL-CHANGE -  STEP 2.1 - Uncomment these reference
+// import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+// import { LABELS } from '@tcp/core/src/reduxStore/constants';
+
 import HOMEPAGE_CONSTANTS from '../HomePage.constants';
 
 export const getHeaderlinks = payload => {
@@ -22,3 +26,9 @@ export const getEspots = payload => {
 };
 
 export const initActions = [];
+
+// TODO - GLOBAL-LABEL-CHANGE -  STEP 2.2 - sample code provided for reference - Remove it if not required
+// export const initActions = [
+//   loadComponentLabelsData({ category: LABELS.modules
+// })
+// ];

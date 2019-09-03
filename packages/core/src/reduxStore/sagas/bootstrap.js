@@ -17,7 +17,11 @@ import { loadHeaderData } from '../../components/common/organisms/Header/contain
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS from '../constants';
-import { isMobileApp } from '../../utils/utils.app';
+import { isMobileApp } from '../../utils';
+
+// TODO - GLOBAL-LABEL-CHANGE - STEP 1.3 - Uncomment these references
+// import GLOBAL_CONSTANTS, { LABELS } from '../constants';
+// import { loadLayoutData, loadLabelsData, setLabelsData, loadModulesData, setAPIConfig } from '../actions';
 
 function* bootstrap(params) {
   const {
@@ -40,6 +44,9 @@ function* bootstrap(params) {
     const result = yield call(bootstrapAbstractor, pagesList, modulesList);
     yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
     yield put(loadLabelsData(result.labels));
+    // TODO - GLOBAL-LABEL-CHANGE - STEP 1.4 - Remove loadLabelsData and uncomment this new code
+    //  yield put(setLabelsData({ category:LABELS.global, data:result.labels
+    // }));
     yield put(loadHeaderData(result.header));
     if (!isMobileApp()) yield put(loadNavigationData(result.navigation));
 

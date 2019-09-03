@@ -24,9 +24,9 @@ export const getLabelsMiniBag = state => {
         lbl_miniBag_createOne: createOne,
         lbl_minibag_itemUpdated: itemUpdated,
         lbl_minibag_itemDeleted: itemDeleted,
-      },
-      addedToBag: { lbl_footer_continueShopping: continueShopping },
-    },
+      } = {},
+      addedToBag: { lbl_footer_continueShopping: continueShopping } = {},
+    } = {},
   } = state.Labels;
   return {
     createAccount,
