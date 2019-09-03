@@ -81,6 +81,7 @@ class AddressForm extends React.PureComponent {
       handleSubmit,
       dispatch,
       addressLine1,
+      initialValues,
     } = this.props;
     const { dropDownItem, country } = this.state;
     return (
@@ -222,15 +223,27 @@ class AddressForm extends React.PureComponent {
         />
 
         <SetDefaultShippingWrapper>
-          <Field
-            id="primary"
-            name="primary"
-            component={InputCheckbox}
-            dataLocator="addnewaddress-city"
-            isChecked={isMakeDefaultDisabled}
-            disabled={isMakeDefaultDisabled}
-            rightText={addressFormLabels.setDefaultMsg}
-          />
+          {isMakeDefaultDisabled && (
+            <Field
+              id="primary"
+              name="primary"
+              component={InputCheckbox}
+              dataLocator="addnewaddress-city"
+              isChecked={isMakeDefaultDisabled}
+              disabled={isMakeDefaultDisabled}
+              rightText={addressFormLabels.setDefaultMsg}
+            />
+          )}
+          {!isMakeDefaultDisabled && (
+            <Field
+              id="primary"
+              name="primary"
+              component={InputCheckbox}
+              isChecked={initialValues.primary}
+              dataLocator="addnewaddress-city"
+              rightText={addressFormLabels.setDefaultMsg}
+            />
+          )}
         </SetDefaultShippingWrapper>
 
         <SaveButtonWrapper>
