@@ -76,7 +76,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
               fontWeight="regular"
               textAlign="center"
               color="black"
-              text={labels.lbl_rewardPoints_nextReward_points}
+              text={labels.lbl_rewardPoints_nextReward}
             />
           </TextWrapper>
         </NextRewardsWrapper>
