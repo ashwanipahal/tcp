@@ -1,9 +1,8 @@
-/* eslint-disable react/no-unused-prop-types */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Barcode from 'react-native-barcode-builder';
-import BodyCopy from '../../../atoms/BodyCopy';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 
 class BarcodeView extends PureComponent {
   render() {
