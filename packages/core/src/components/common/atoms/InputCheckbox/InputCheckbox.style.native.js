@@ -13,6 +13,7 @@ const StyledImage = styled.View`
 
 const StyledText = styled.Text`
   ${androidFontStyles}
+  ${props => (props.inputVariation === 'inputVariation-1' ? ' width:90%' : '')};
 `;
 
 const StyledErrorIcon = styled.View`
