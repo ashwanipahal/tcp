@@ -137,7 +137,8 @@ class ForgotPasswordView extends React.Component<Props, State> {
             <React.Fragment>
               <BodyCopy
                 fontSize="fs16"
-                fontWeight="extrabold"
+                fontWeight="black"
+                color="gray.700"
                 fontFamily="secondary"
                 textAlign="center"
               >
@@ -148,6 +149,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontWeight="semibold"
                 fontFamily="secondary"
                 textAlign="center"
+                color="gray.700"
                 className="elem-mb-SM"
                 fontSize="fs12"
               >
