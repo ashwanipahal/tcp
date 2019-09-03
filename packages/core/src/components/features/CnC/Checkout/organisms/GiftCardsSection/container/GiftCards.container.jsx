@@ -31,13 +31,14 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
 
     let availableGiftCards = [];
     if (giftCardList && appliedGiftCards) {
+      const appliedGiftCardsIds = appliedGiftCards.map(item => {
+        return parseInt(item.get('onFileCardId'), 10);
+      });
+
       availableGiftCards = giftCardList.filter(availableGiftCard => {
-        return !appliedGiftCards.find(
-          appliedGiftCard => availableGiftCard.creditCardId === appliedGiftCard.get('onFileCardId')
-        );
+        return appliedGiftCardsIds.indexOf(availableGiftCard.creditCardId) === -1;
       });
     }
-    console.log(availableGiftCards);
 
     return (
       <GiftCard
