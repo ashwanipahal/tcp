@@ -2,6 +2,7 @@ import { SubmissionError } from 'redux-form'; // ES6
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getFormattedError, getDynamicCodeErrorMessage } from '../../../utils/errorMessage.util';
+import { constructCouponStructure } from './CartItemTile';
 
 export const applyCouponToCart = ({ couponCode = '' }) => {
   const payload = {
@@ -47,7 +48,20 @@ export const removeCouponOrPromo = ({ couponCode = '' }) => {
   });
 };
 
+export const getAllCoupons = () => {
+  const payload = {
+    webService: endpoints.getAllOffers,
+  };
+  return executeStatefulAPICall(payload).then(res => {
+    if (res.body && res.body.offers) {
+      return constructCouponStructure(res.body.offers);
+    }
+    throw new Error('There is some error in fetching all coupons');
+  });
+};
+
 export default {
   applyCouponToCart,
   removeCouponOrPromo,
+  getAllCoupons,
 };

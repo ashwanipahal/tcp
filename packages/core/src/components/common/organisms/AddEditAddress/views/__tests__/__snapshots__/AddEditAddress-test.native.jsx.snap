@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditAddress Native should render correctly 1`] = `
+<View
+  addressFormLabels={Object {}}
+  addressLine1=""
+  countryState=""
+  currentForm="AddAddress"
+  initialValues={Object {}}
+  isEdit={false}
+  isMakeDefaultDisabled={false}
+  onCancel={[Function]}
+  setAddressLine1={[Function]}
+  submitAddressFormAction={[Function]}
+  toggleAddressModal={[Function]}
+  verifyAddressAction={[Function]}
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
+  >
+    <ReduxForm
+      addressFormLabels={Object {}}
+      addressLine1=""
+      countryState=""
+      currentForm="AddAddress"
+      destroyOnUnmount={false}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="AddressForm"
+      getFormState={[Function]}
+      initialValues={Object {}}
+      isEdit={false}
+      isMakeDefaultDisabled={false}
+      keepDirtyOnReinitialize={true}
+      onCancel={[Function]}
+      onSubmit={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAddressFormAction={[Function]}
+      submitAsSideEffect={false}
+      toggleAddressModal={[Function]}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+      validate={[Function]}
+    />
+  </ScrollViewMock>
+</View>
+`;
+
+exports[`AddEditAddress Native should test with verification modal 1`] = `
+<View
+  addressFormLabels={Object {}}
+  addressLine1=""
+  countryState=""
+  currentForm="VerificationModal"
+  initialValues={Object {}}
+  isEdit={false}
+  isMakeDefaultDisabled={false}
+  onCancel={[Function]}
+  setAddressLine1={[Function]}
+  submitAddressFormAction={[Function]}
+  toggleAddressModal={[Function]}
+  verifyAddressAction={[Function]}
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
+  >
+    <Connect(AddressVerification)
+      onError={[Function]}
+      onSuccess={[Function]}
+      toggleAddressModal={[Function]}
+    />
+  </ScrollViewMock>
+</View>
+`;

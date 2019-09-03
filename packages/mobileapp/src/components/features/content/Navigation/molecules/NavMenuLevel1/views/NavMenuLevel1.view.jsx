@@ -8,6 +8,7 @@ import {
   ContainerList,
   L1TouchableOpacityNoImage,
 } from '../NavMenuLevel1.style';
+import InitialPropsHOC from '../../../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 const imageWidth = getScreenWidth() / 2;
 const keyExtractor = (_, index) => index.toString();
@@ -17,17 +18,25 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  * @function NavMenuLevel1 The Navigation menu level1 is created by this component
  * @param {object} props Props passed from Stack navigator screen
  */
-const NavMenuLevel1 = props => {
-  const { navigationMenuObj, accessibilityLabels } = props;
+class NavMenuLevel1 extends React.PureComponent {
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = () => {
+    const { loadNavigationData } = this.props;
+    loadNavigationData();
+  };
 
   /**
    * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
    * @param {object} item Details of the L1 menu item that has been clicked
    */
-  const ShowL2Navigation = (item, name) => {
+  showL2Navigation = (item, name) => {
     const {
       navigation: { navigate },
-    } = props;
+      accessibilityLabels,
+    } = this.props;
 
     return navigate('NavMenuLevel2', {
       navigationObj: item,
@@ -40,7 +49,7 @@ const NavMenuLevel1 = props => {
    * @function renderTextBlock populates the L1 menu content
    * @param {object} item Details of the L1 menu item that has been clicked
    */
-  const renderTextBlock = (catName, catSize) => {
+  renderTextBlock = (catName, catSize) => {
     return (
       <L1TextView>
         <BodyCopy
@@ -67,7 +76,7 @@ const NavMenuLevel1 = props => {
    * @function renderItem populates the L1 menu item from the data passed to it
    * @param {object} item Details of the L1 menu item passed from the loop
    */
-  const renderItem = item => {
+  renderItem = item => {
     const {
       item: {
         categoryContent: { name, description },
@@ -93,7 +102,7 @@ const NavMenuLevel1 = props => {
         <L1TouchableOpacityNoImage
           accessibilityRole="button"
           accessibilityLabel={name}
-          onPress={() => ShowL2Navigation(item, name)}
+          onPress={() => this.showL2Navigation(item, name)}
         >
           <BodyCopy
             fontFamily="primary"
@@ -119,11 +128,11 @@ const NavMenuLevel1 = props => {
       <L1TouchableOpacity
         accessibilityRole="button"
         accessibilityLabel={name}
-        onPress={() => ShowL2Navigation(item, name)}
+        onPress={() => this.showL2Navigation(item, name)}
       >
         {categoryImage[0].position &&
           categoryImage[0].position === 'right' &&
-          renderTextBlock(name, description)}
+          this.renderTextBlock(name, description)}
         <Image
           alt={categoryImage && categoryImage[0].alt}
           source={{
@@ -133,14 +142,23 @@ const NavMenuLevel1 = props => {
           height={132}
         />
         {(!categoryImage[0].position || categoryImage[0].position === 'left') &&
-          renderTextBlock(name, description)}
+          this.renderTextBlock(name, description)}
       </L1TouchableOpacity>
     );
   };
-  return (
-    <ContainerList data={navigationMenuObj} keyExtractor={keyExtractor} renderItem={renderItem} />
-  );
-};
+
+  render() {
+    const { navigationMenuObj } = this.props;
+
+    return (
+      <ContainerList
+        data={navigationMenuObj}
+        keyExtractor={keyExtractor}
+        renderItem={this.renderItem}
+      />
+    );
+  }
+}
 
 NavMenuLevel1.propTypes = {
   navigation: PropTypes.shape({
@@ -148,10 +166,12 @@ NavMenuLevel1.propTypes = {
   }).isRequired,
   accessibilityLabels: PropTypes.shape({}),
   navigationMenuObj: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  loadNavigationData: PropTypes.func.isRequired,
 };
 
 NavMenuLevel1.defaultProps = {
   accessibilityLabels: {},
 };
 
-export default NavMenuLevel1;
+export { NavMenuLevel1 as NavMenuLevel1View };
+export default InitialPropsHOC(NavMenuLevel1);

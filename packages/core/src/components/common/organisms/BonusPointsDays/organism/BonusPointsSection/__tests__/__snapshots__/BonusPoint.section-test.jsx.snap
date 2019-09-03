@@ -1,0 +1,1729 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BonusPointsAvailabilityVanilla should render correctly available_today 1`] = `
+<div
+  className=""
+>
+  <Styled(Col)
+    className="hide-in-large-up"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
+          <ForwardRef
+            fullBleed={true}
+          >
+            <ForwardRef
+              colSize={
+                Object {
+                  "large": 12,
+                  "medium": 8,
+                  "small": 6,
+                }
+              }
+            >
+              <ForwardRef
+                bonusDayAvailableToday={0}
+                bonusPoints={
+                  Array [
+                    Object {
+                      "buttonText": undefined,
+                      "dataLocator": "availabletodaybtn",
+                      "disabled": false,
+                    },
+                  ]
+                }
+                className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
+                labels={
+                  Object {
+                    "common": Object {
+                      "lbl_common_details": "",
+                    },
+                    "myPlaceRewards": Object {
+                      "lbl_bonus_points_apply_any_day": "",
+                      "lbl_bonus_points_msg": "",
+                      "lbl_place_rewards_bonus": "",
+                      "lbl_place_rewards_day": "",
+                      "lbl_place_rewards_points": "",
+                    },
+                  }
+                }
+                orderDetails={Object {}}
+              />
+            </ForwardRef>
+          </ForwardRef>
+          <ForwardRef
+            anchorVariation="primary"
+            className="details-link"
+            dataLocator="detailslink"
+            fontSizeVariation="medium"
+            href="#"
+            onClick={[Function]}
+            underline={true}
+          >
+            
+          </ForwardRef>
+        </React.Fragment>
+      }
+      className=""
+      header={
+        <div
+          className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
+        >
+          <ForwardRef
+            className="elem-mr-XS"
+            color="orange.800"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className="elem-mr-XS"
+            color="primary.main"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className={null}
+            color="pink.500"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+    />
+  </Styled(Col)>
+  <div
+    className="hide-in-medium-down"
+  >
+    <div
+      className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
+    >
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="orange.800"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="primary.main"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="pink.500"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </div>
+    <Styled(BodyCopy)
+      className="apply-any-day-msg"
+      color="text.primary"
+      component="p"
+      data-locator="msgtextinbold"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs14",
+          "fs10",
+          "fs16",
+        ]
+      }
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      className="availability-msg"
+      color="text.primary"
+      component="p"
+      data-locator="infomsg"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs12",
+          "fs16",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
+                "disabled": false,
+              },
+            ]
+          }
+          className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+          orderDetails={Object {}}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="details-link"
+      dataLocator="detailslink"
+      fontSizeVariation="medium"
+      href="#"
+      onClick={[Function]}
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with applied to bag bonus point days 1`] = `
+<div
+  className=""
+>
+  <Styled(Col)
+    className="hide-in-large-up"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
+          <ForwardRef
+            fullBleed={true}
+          >
+            <ForwardRef
+              colSize={
+                Object {
+                  "large": 12,
+                  "medium": 8,
+                  "small": 6,
+                }
+              }
+            >
+              <ForwardRef
+                bonusDayAvailableToday={1}
+                bonusPoints={
+                  Array [
+                    Object {
+                      "buttonText": "undefined ",
+                      "dataLocator": "usedonbtn",
+                      "disabled": true,
+                    },
+                    Object {
+                      "buttonText": undefined,
+                      "dataLocator": "appliedtoorderbtn",
+                      "disabled": false,
+                    },
+                    Object {
+                      "buttonText": undefined,
+                      "dataLocator": "availableforfutureusebtn",
+                      "disabled": true,
+                    },
+                  ]
+                }
+                className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
+                labels={
+                  Object {
+                    "common": Object {
+                      "lbl_common_details": "",
+                    },
+                    "myPlaceRewards": Object {
+                      "lbl_bonus_points_apply_any_day": "",
+                      "lbl_bonus_points_msg": "",
+                      "lbl_place_rewards_bonus": "",
+                      "lbl_place_rewards_day": "",
+                      "lbl_place_rewards_points": "",
+                    },
+                  }
+                }
+                orderDetails={Object {}}
+              />
+            </ForwardRef>
+          </ForwardRef>
+          <ForwardRef
+            anchorVariation="primary"
+            className="details-link"
+            dataLocator="detailslink"
+            fontSizeVariation="medium"
+            href="#"
+            onClick={[Function]}
+            underline={true}
+          >
+            
+          </ForwardRef>
+        </React.Fragment>
+      }
+      className=""
+      header={
+        <div
+          className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
+        >
+          <ForwardRef
+            className="elem-mr-XS"
+            color="orange.800"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className="elem-mr-XS"
+            color="primary.main"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className={null}
+            color="pink.500"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+    />
+  </Styled(Col)>
+  <div
+    className="hide-in-medium-down"
+  >
+    <div
+      className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
+    >
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="orange.800"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="primary.main"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="pink.500"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </div>
+    <Styled(BodyCopy)
+      className="apply-any-day-msg"
+      color="text.primary"
+      component="p"
+      data-locator="msgtextinbold"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs14",
+          "fs10",
+          "fs16",
+        ]
+      }
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      className="availability-msg"
+      color="text.primary"
+      component="p"
+      data-locator="infomsg"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs12",
+          "fs16",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={1}
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "appliedtoorderbtn",
+                "disabled": false,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+          orderDetails={Object {}}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="details-link"
+      dataLocator="detailslink"
+      fontSizeVariation="medium"
+      href="#"
+      onClick={[Function]}
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 1`] = `
+<div
+  className=""
+>
+  <Styled(Col)
+    className="hide-in-large-up"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
+          <ForwardRef
+            fullBleed={true}
+          >
+            <ForwardRef
+              colSize={
+                Object {
+                  "large": 12,
+                  "medium": 8,
+                  "small": 6,
+                }
+              }
+            >
+              <ForwardRef
+                bonusDayAvailableToday={0}
+                bonusPoints={
+                  Array [
+                    Object {
+                      "buttonText": "undefined ",
+                      "dataLocator": "usedonbtn",
+                      "disabled": true,
+                    },
+                    Object {
+                      "buttonText": undefined,
+                      "dataLocator": "availabletodaybtn",
+                      "disabled": false,
+                    },
+                    Object {
+                      "buttonText": undefined,
+                      "dataLocator": "availableforfutureusebtn",
+                      "disabled": true,
+                    },
+                  ]
+                }
+                className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
+                labels={
+                  Object {
+                    "common": Object {
+                      "lbl_common_details": "",
+                    },
+                    "myPlaceRewards": Object {
+                      "lbl_bonus_points_apply_any_day": "",
+                      "lbl_bonus_points_msg": "",
+                      "lbl_place_rewards_bonus": "",
+                      "lbl_place_rewards_day": "",
+                      "lbl_place_rewards_points": "",
+                    },
+                  }
+                }
+                orderDetails={Object {}}
+              />
+            </ForwardRef>
+          </ForwardRef>
+          <ForwardRef
+            anchorVariation="primary"
+            className="details-link"
+            dataLocator="detailslink"
+            fontSizeVariation="medium"
+            href="#"
+            onClick={[Function]}
+            underline={true}
+          >
+            
+          </ForwardRef>
+        </React.Fragment>
+      }
+      className=""
+      header={
+        <div
+          className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
+        >
+          <ForwardRef
+            className="elem-mr-XS"
+            color="orange.800"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className="elem-mr-XS"
+            color="primary.main"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className={null}
+            color="pink.500"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+    />
+  </Styled(Col)>
+  <div
+    className="hide-in-medium-down"
+  >
+    <div
+      className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
+    >
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="orange.800"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="primary.main"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="pink.500"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </div>
+    <Styled(BodyCopy)
+      className="apply-any-day-msg"
+      color="text.primary"
+      component="p"
+      data-locator="msgtextinbold"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs14",
+          "fs10",
+          "fs16",
+        ]
+      }
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      className="availability-msg"
+      color="text.primary"
+      component="p"
+      data-locator="infomsg"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs12",
+          "fs16",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
+                "disabled": false,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+          orderDetails={Object {}}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="details-link"
+      dataLocator="detailslink"
+      fontSizeVariation="medium"
+      href="#"
+      onClick={[Function]}
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisabled 1`] = `
+<div
+  className=""
+>
+  <Styled(Col)
+    className="hide-in-large-up"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
+          <ForwardRef
+            fullBleed={true}
+          >
+            <ForwardRef
+              colSize={
+                Object {
+                  "large": 12,
+                  "medium": 8,
+                  "small": 6,
+                }
+              }
+            >
+              <ForwardRef
+                bonusDayAvailableToday={0}
+                bonusPoints={
+                  Array [
+                    Object {
+                      "buttonText": "undefined 15/7",
+                      "dataLocator": "usedonbtn",
+                      "disabled": true,
+                    },
+                    Object {
+                      "buttonText": undefined,
+                      "dataLocator": "availabletodaybtn",
+                      "disabled": false,
+                    },
+                    Object {
+                      "buttonText": undefined,
+                      "dataLocator": "availableforfutureusebtn",
+                      "disabled": true,
+                    },
+                  ]
+                }
+                className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
+                labels={
+                  Object {
+                    "common": Object {
+                      "lbl_common_details": "",
+                    },
+                    "myPlaceRewards": Object {
+                      "lbl_bonus_points_apply_any_day": "",
+                      "lbl_bonus_points_msg": "",
+                      "lbl_place_rewards_bonus": "",
+                      "lbl_place_rewards_day": "",
+                      "lbl_place_rewards_points": "",
+                    },
+                  }
+                }
+                orderDetails={Object {}}
+              />
+            </ForwardRef>
+          </ForwardRef>
+          <ForwardRef
+            anchorVariation="primary"
+            className="details-link"
+            dataLocator="detailslink"
+            fontSizeVariation="medium"
+            href="#"
+            onClick={[Function]}
+            underline={true}
+          >
+            
+          </ForwardRef>
+        </React.Fragment>
+      }
+      className=""
+      header={
+        <div
+          className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
+        >
+          <ForwardRef
+            className="elem-mr-XS"
+            color="orange.800"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className="elem-mr-XS"
+            color="primary.main"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className={null}
+            color="pink.500"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+    />
+  </Styled(Col)>
+  <div
+    className="hide-in-medium-down"
+  >
+    <div
+      className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
+    >
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="orange.800"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="primary.main"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="pink.500"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </div>
+    <Styled(BodyCopy)
+      className="apply-any-day-msg"
+      color="text.primary"
+      component="p"
+      data-locator="msgtextinbold"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs14",
+          "fs10",
+          "fs16",
+        ]
+      }
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      className="availability-msg"
+      color="text.primary"
+      component="p"
+      data-locator="infomsg"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs12",
+          "fs16",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined 15/7",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
+                "disabled": false,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+          orderDetails={Object {}}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="details-link"
+      dataLocator="detailslink"
+      fontSizeVariation="medium"
+      href="#"
+      onClick={[Function]}
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] = `
+<div
+  className=""
+>
+  <Styled(Col)
+    className="hide-in-large-up"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <ForwardRef
+            className="availability-msg"
+            color="text.primary"
+            component="p"
+            data-locator="infomsg"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs12",
+                "fs12",
+                "fs16",
+              ]
+            }
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          />
+          <ForwardRef
+            fullBleed={true}
+          >
+            <ForwardRef
+              colSize={
+                Object {
+                  "large": 12,
+                  "medium": 8,
+                  "small": 6,
+                }
+              }
+            >
+              <ForwardRef
+                bonusDayAvailableToday={0}
+                bonusPoints={
+                  Array [
+                    Object {
+                      "buttonText": "undefined ",
+                      "dataLocator": "usedonbtn",
+                      "disabled": true,
+                    },
+                  ]
+                }
+                className="availability-msg"
+                enableApplyCta={false}
+                getBonusDaysData={[Function]}
+                labels={
+                  Object {
+                    "common": Object {
+                      "lbl_common_details": "",
+                    },
+                    "myPlaceRewards": Object {
+                      "lbl_bonus_points_apply_any_day": "",
+                      "lbl_bonus_points_msg": "",
+                      "lbl_place_rewards_bonus": "",
+                      "lbl_place_rewards_day": "",
+                      "lbl_place_rewards_points": "",
+                    },
+                  }
+                }
+                orderDetails={Object {}}
+              />
+            </ForwardRef>
+          </ForwardRef>
+          <ForwardRef
+            anchorVariation="primary"
+            className="details-link"
+            dataLocator="detailslink"
+            fontSizeVariation="medium"
+            href="#"
+            onClick={[Function]}
+            underline={true}
+          >
+            
+          </ForwardRef>
+        </React.Fragment>
+      }
+      className=""
+      header={
+        <div
+          className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
+        >
+          <ForwardRef
+            className="elem-mr-XS"
+            color="orange.800"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className="elem-mr-XS"
+            color="primary.main"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+          <ForwardRef
+            className={null}
+            color="pink.500"
+            component="span"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs16",
+                "fs13",
+                "fs18",
+              ]
+            }
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+    />
+  </Styled(Col)>
+  <div
+    className="hide-in-medium-down"
+  >
+    <div
+      className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
+    >
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="orange.800"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="elem-mr-XS"
+        color="primary.main"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="pink.500"
+        component="span"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs13",
+            "fs18",
+          ]
+        }
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </div>
+    <Styled(BodyCopy)
+      className="availability-msg"
+      color="text.primary"
+      component="p"
+      data-locator="infomsg"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs12",
+          "fs16",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BonusPointsAvailability)
+          bonusDayAvailableToday={0}
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+          orderDetails={Object {}}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="details-link"
+      dataLocator="detailslink"
+      fontSizeVariation="medium"
+      href="#"
+      onClick={[Function]}
+      underline={true}
+    />
+  </div>
+</div>
+`;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Platform, Animated, Easing } from 'react-native';
+import { Animated, Easing } from 'react-native';
+import { isAndroid } from '@tcp/core/src/utils';
 
 import {
   getSecondAppLogo,
@@ -22,6 +23,14 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
     this.transformAnimatedValue = new Animated.ValueXY();
     this.imageTransformAnimatedValue = new Animated.Value(0);
     this.peekABooAnimation();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { animateCompleteLogo } = nextProps;
+    const { animateCompleteLogo: prevAnimateCompleteLogo } = this.props;
+    // show full image animation when animateCompleteLogo is true in props
+    if (animateCompleteLogo && animateCompleteLogo !== prevAnimateCompleteLogo)
+      this.showFullAnimation();
   }
 
   /**
@@ -68,6 +77,28 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
   };
 
   /**
+   * @function showFullAnimation
+   * This method animates complete second app logo above navigation bar
+   *
+   * @memberof SecondAppPeekABooView
+   */
+  showFullAnimation = () => {
+    Animated.sequence([
+      Animated.timing(this.transformAnimatedValue, {
+        toValue: { x: 0, y: -120 },
+        duration: AppAnimationConfig.AnimationDelay,
+      }),
+      Animated.timing(this.transformAnimatedValue, {
+        toValue: { x: 0, y: 0 },
+        duration: 0,
+      }),
+    ]).start(() => {
+      const { animationComplete } = this.props;
+      if (animationComplete) animationComplete();
+    });
+  };
+
+  /**
    * @function render
    * This method renders SecondAppPeekABooView view on screen
    *
@@ -76,14 +107,17 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
    */
   render() {
     // Shadow not supported in android, so set border for android
-    const borderWidth = Platform.OS === 'android' ? 1 : 0;
-    const shadowColor = getSecondBrandThemeColor();
-    const { image, imageContainer } = styles;
+    const { animateCompleteLogo } = this.props;
 
+    const borderWidth = isAndroid() || animateCompleteLogo ? 2 : 0;
+    const shadowColor = getSecondBrandThemeColor();
+    const { image, imageContainer, fullAnimationImageStyle } = styles;
+    const fullAnimationStyle = animateCompleteLogo ? fullAnimationImageStyle : null;
     return (
       <Animated.View
         style={[
           imageContainer,
+          fullAnimationStyle,
           {
             transform: this.transformAnimatedValue.getTranslateTransform(),
             shadowColor,

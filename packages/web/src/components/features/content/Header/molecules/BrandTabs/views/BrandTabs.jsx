@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import { isGymboree, isTCP, getIconPath, getLocator } from '@tcp/core/src/utils';
 import style from '../BrandTabs.style';
 
@@ -47,5 +48,5 @@ BrandTabs.propTypes = {
   ).isRequired,
 };
 
-export default withStyles(BrandTabs, style);
+export default withStyles(errorBoundary(BrandTabs), style);
 export { BrandTabs as BrandTabsVanilla };

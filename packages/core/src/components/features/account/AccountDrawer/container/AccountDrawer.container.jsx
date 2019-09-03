@@ -7,7 +7,7 @@ import {
   openOverlayModal,
   closeOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
-import { getUserFullName, isPlccUser } from '../../LoginPage/container/LoginPage.selectors';
+import { getUserFullName, isPlccUser } from '../../User/container/User.selectors';
 
 export const AccountDrawerContainer = ({ className, plccUser, userName, closedOverlay }) => {
   return (

@@ -1,22 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
+import { getCardList } from '../../container/Payment.actions';
 import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
-import Router from 'next/router'; //eslint-disable-line
-import utils from '../../../../../../utils';
+import utils, { isMobileApp } from '../../../../../../utils';
 
-// @flow
+class AddGiftCardContainer extends React.Component {
+  componentDidUpdate() {
+    const { addGiftCardResponse, toggleModal, getCardListAction } = this.props;
+    if (addGiftCardResponse === 'success') {
+      if (isMobileApp()) {
+        toggleModal();
+        getCardListAction();
+      } else this.goBackToPayment();
+    }
+  }
 
-type Props = {
-  onAddGiftCardClick: Function,
-  addGiftCardResponse: String,
-  getAddGiftCardErr: String,
-  resetNotificationStateAction: Function,
-  labels: object,
-};
-
-export class AddGiftCardContainer extends React.Component<Props> {
   componentWillUnmount() {
     const { getAddGiftCardErr } = this.props;
     if (getAddGiftCardErr) {
@@ -31,29 +32,29 @@ export class AddGiftCardContainer extends React.Component<Props> {
   };
 
   render() {
-    const { onAddGiftCardClick, addGiftCardResponse, getAddGiftCardErr, labels } = this.props;
-
-    if (addGiftCardResponse === 'success') {
-      return this.goBackToPayment();
-    }
+    const { onAddGiftCardClick, getAddGiftCardErr, labels, toggleModal } = this.props;
     return (
       <AddGiftCardComponent
         onAddGiftCardClick={onAddGiftCardClick}
         labels={labels}
         addGiftCardResponse={getAddGiftCardErr}
         goBackToPayment={this.goBackToPayment}
+        toggleModal={toggleModal}
       />
     );
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
-    onAddGiftCardClick: (payload: {}) => {
+    onAddGiftCardClick: payload => {
       dispatch(addGiftCardRequest(payload));
     },
     resetNotificationStateAction: () => {
       dispatch(resetShowNotification());
+    },
+    getCardListAction: () => {
+      dispatch(getCardList());
     },
   };
 };
@@ -65,7 +66,28 @@ const mapStateToProps = state => {
   };
 };
 
+AddGiftCardContainer.propTypes = {
+  onAddGiftCardClick: PropTypes.func,
+  getAddGiftCardErr: PropTypes.string,
+  labels: PropTypes.shape({}),
+  addGiftCardResponse: PropTypes.string,
+  toggleModal: PropTypes.func,
+  resetNotificationStateAction: PropTypes.func,
+  getCardListAction: PropTypes.func,
+};
+
+AddGiftCardContainer.defaultProps = {
+  onAddGiftCardClick: () => {},
+  getAddGiftCardErr: null,
+  labels: {},
+  addGiftCardResponse: null,
+  toggleModal: () => {},
+  resetNotificationStateAction: () => {},
+  getCardListAction: () => {},
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AddGiftCardContainer);
+export { AddGiftCardContainer as AddGiftCardContainerVanilla };

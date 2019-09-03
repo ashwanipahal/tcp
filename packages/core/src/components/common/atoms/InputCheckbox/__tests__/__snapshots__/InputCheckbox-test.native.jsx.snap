@@ -1,81 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputCheckbox component should render correctly 1`] = `
-<Styled(View)
-  id="checkbox"
-  isChecked={false}
-  onChange={[Function]}
-  onClick={[MockFunction]}
-  onStartShouldSetResponder={[Function]}
-  rightText="checkbox"
-  val=""
->
-  <Styled(View)>
-    <Styled(ImageComp)
-      height="25px"
-      source={
-        Object {
-          "testUri": "../../../../core/src/assets/store-locator-checked.png",
+<Fragment>
+  <Styled(View)
+    fontSize="fs12"
+    id="checkbox"
+    isChecked={false}
+    onChange={[Function]}
+    onClick={[MockFunction]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="auto"
+    val=""
+  >
+    <Styled(View)>
+      <Styled(ImageComp)
+        height="25px"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/store-locator-checked.png",
+          }
         }
-      }
-      width="25px"
-    />
+        width="25px"
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        mobileFontFamily="secondary"
+        text="checkbox"
+      />
+    </Styled(Text)>
   </Styled(View)>
-  <Styled(BodyCopy)
-    fontSize="fs12"
-    mobileFontFamily="secondary"
-    text="checkbox"
-  />
-  <Styled(BodyCopy)
-    aria-live="assertive"
-    className="Checkbox__error"
-    color="error"
-    component="div"
-    data-locator="errorDataLocator"
-    fontFamily="secondary"
-    fontSize="fs12"
-    role="alert"
-    text=""
-  />
-</Styled(View)>
+</Fragment>
 `;
 
 exports[`InputCheckbox component should render correctly with checked state false 1`] = `
-<Styled(View)
-  id="checkbox"
-  isChecked={false}
-  onChange={[Function]}
-  onClick={[MockFunction]}
-  onStartShouldSetResponder={[Function]}
-  rightText="checkbox"
-  val=""
->
-  <Styled(View)>
-    <Styled(ImageComp)
-      height="25px"
-      source={
-        Object {
-          "testUri": "../../../../core/src/assets/store-locator-check.png",
+<Fragment>
+  <Styled(View)
+    fontSize="fs12"
+    id="checkbox"
+    isChecked={false}
+    onChange={[Function]}
+    onClick={[MockFunction]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="auto"
+    val=""
+  >
+    <Styled(View)>
+      <Styled(ImageComp)
+        height="25px"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/store-locator-check.png",
+          }
         }
-      }
-      width="25px"
-    />
+        width="25px"
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        mobileFontFamily="secondary"
+        text="checkbox"
+      />
+    </Styled(Text)>
   </Styled(View)>
-  <Styled(BodyCopy)
-    fontSize="fs12"
-    mobileFontFamily="secondary"
-    text="checkbox"
-  />
-  <Styled(BodyCopy)
-    aria-live="assertive"
-    className="Checkbox__error"
-    color="error"
-    component="div"
-    data-locator="errorDataLocator"
-    fontFamily="secondary"
-    fontSize="fs12"
-    role="alert"
-    text=""
-  />
-</Styled(View)>
+</Fragment>
 `;

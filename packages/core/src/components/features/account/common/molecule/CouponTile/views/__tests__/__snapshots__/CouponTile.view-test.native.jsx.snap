@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponTile Component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="white"
+        fontSize="fs13"
+        fontWeight="black"
+        text=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+        fontSize="fs12"
+        fontWeight="semibold"
+      />
+      <Styled(BodyCopy)
+        data-locator="accountoverview-myplacerewatdstile-rewarduseby"
+        fontSize="fs10"
+        text=" undefined"
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutPageVanilla component should renders correctly pickup 1`] = `
+<Styled(CnCTemplate)
+  isCheckoutView={true}
+  leftSection={[Function]}
+  marginTop={true}
+/>
+`;
+
+exports[`CheckoutPageVanilla component should renders correctly with shipping 1`] = `
+<Styled(CnCTemplate)
+  isCheckoutView={true}
+  leftSection={[Function]}
+  marginTop={true}
+/>
+`;

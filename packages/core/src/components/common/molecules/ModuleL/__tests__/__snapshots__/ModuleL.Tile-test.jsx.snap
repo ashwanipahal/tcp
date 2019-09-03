@@ -73,7 +73,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
         <Styled(Anchor)
           class=""
           className="moduleL__tile-link"
-          data-locator="moduleL_link_NaN"
+          dataLocator="moduleL_link_NaN"
           external={0}
           target=""
           text="Shop Unicorns & Friends"

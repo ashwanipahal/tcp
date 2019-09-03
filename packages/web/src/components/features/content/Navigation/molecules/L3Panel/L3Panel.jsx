@@ -7,7 +7,16 @@ import Drawer from '../Drawer';
 import mock from './mock';
 
 const L3Panel = props => {
-  const { id, hideL3Drawer, name, className, links, open, close } = props;
+  const {
+    id,
+    hideL3Drawer,
+    name,
+    className,
+    links,
+    open,
+    close,
+    accessibilityLabels: { previousButton },
+  } = props;
 
   return (
     <Drawer
@@ -32,6 +41,7 @@ const L3Panel = props => {
         <div className="l3-panel-header">
           <span
             role="button"
+            aria-label={previousButton}
             tabIndex={0}
             className="icon-back"
             onClick={hideL3Drawer}
@@ -56,11 +66,12 @@ const L3Panel = props => {
             </li>
             {links.map((l3Links, index) => {
               const {
-                categoryContent: { name: l3Name, seoToken },
+                categoryContent: { name: l3Name },
+                url,
               } = l3Links;
               return (
                 <li>
-                  <Anchor to={`/c/${seoToken}`} data-locator={`l3_link_${index}`}>
+                  <Anchor to={url} dataLocator={`l3_link_${index}`}>
                     <BodyCopy
                       className="l2-nav-link"
                       fontFamily="secondary"
@@ -87,6 +98,7 @@ L3Panel.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   links: PropTypes.shape([]).isRequired,
+  accessibilityLabels: PropTypes.shape({}).isRequired,
   open: PropTypes.bool.isRequired,
   close: PropTypes.bool.isRequired,
 };

@@ -4,11 +4,15 @@ export const getCartOrderList = state => {
 };
 export const getEditableProductInfo = state => {
   // needs to do it with get method.
-  return state.CartItemTileReducer.get('editableItemData');
+  return state.CartItemTileReducer.getIn(['editableItemData', 'colorFitsSizesMap']);
 };
 
 export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');
+};
+
+export const getCartOrderId = state => {
+  return getCartOrderDetails(state).get('orderId');
 };
 
 export const getProductName = product => {
@@ -51,12 +55,20 @@ export const getProductImage = product => {
   return product.getIn(['productInfo', 'imagePath']);
 };
 
+export const getOrderItemId = product => {
+  return product.getIn(['itemInfo', 'itemId']);
+};
+
 export const getProductPartNumber = product => {
   return product.getIn(['productInfo', 'productPartNumber']);
 };
 
 export const getProductItemPartNumber = product => {
   return product.getIn(['productInfo', 'itemPartNumber']);
+};
+
+export const getVariantNumber = product => {
+  return product.getIn(['productInfo', 'variantNo']);
 };
 
 export const getProductBadge = product => {
@@ -124,6 +136,8 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_points: points,
         lbl_cartTile_cancel: cancel,
         lbl_cartTile_edit: edit,
+        lbl_cartTile_update: update,
+        lbl_cartTile_remove: removeEdit,
         lbl_cartTile_saveForLater: saveForLater,
         lbl_cartTile_productBrandAlt: productBandAlt,
         lbl_cartTile_productImageAlt: productImageAlt,
@@ -134,16 +148,20 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_shipToHome: ecomShipping,
         lbl_cartTile_extra: extra,
         lbl_cartTile_off: off,
-        lbl_error_problemWithOrder: problemWithOrder,
+        lbl_miniBag_problemWithOrder: problemWithOrder,
         lbl_error_please: pleaseText,
         lbl_error_remove: remove,
-        lbl_error_removeSoldOut: removeSoldOut,
-        lbl_error_itemUnavailable: itemUnavailable,
-        lbl_error_itemSoldOut: itemSoldOut,
-        lbl_error_chooseDiff: chooseDiff,
-        lbl_error_soldOut: soldOut,
-      } = {},
-    } = {},
+        lbl_miniBag_error: removeSoldOut,
+        lbl_miniBag_itemUnavailable: itemUnavailable,
+        lbl_miniBag_itemSoldOut: itemSoldOut,
+        lbl_miniBag_chooseDiff: chooseDiff,
+        lbl_miniBag_soldOut: soldOut,
+        lbl_minibag_errorSize: errorSize,
+        lbl_minibag_errorUpdateUnavailable: updateUnavailable,
+        lbl_minibag_errorRemoveSoldoutHeader: removeSoldoutHeader,
+        lbl_cartTile_delete: deleteItem,
+      },
+    },
   } = state.Labels;
 
   return {
@@ -157,6 +175,8 @@ export const getLabelsCartItemTile = state => {
     points,
     cancel,
     edit,
+    update,
+    removeEdit,
     saveForLater,
     productBandAlt,
     productImageAlt,
@@ -175,6 +195,10 @@ export const getLabelsCartItemTile = state => {
     itemSoldOut,
     chooseDiff,
     soldOut,
+    errorSize,
+    updateUnavailable,
+    removeSoldoutHeader,
+    deleteItem,
   };
 };
 
@@ -191,14 +215,15 @@ export const getProductDetails = tile => {
       myPlacePoints: getProductPoints(tile),
       itemBrand: getProductBrand(tile),
       imagePath: getProductImage(tile),
+      itemId: getOrderItemId(tile),
       itemPrice: getProductItemPrice(tile),
-      itemId: getProductItemId(tile),
       unitOfferPrice: getProductItemUnitOfferPrice(tile),
       itemUnitPrice: getProductItemUnitPrice(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),
       itemPartNumber: getProductItemPartNumber(tile),
+      variantNo: getVariantNumber(tile),
       upc: getProductItemUpcNumber(tile),
     },
     miscInfo: {

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutSectionTitleDisplay should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      data-locator="pickup-title"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      mobileFontFamily="primary"
+      text="hello"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

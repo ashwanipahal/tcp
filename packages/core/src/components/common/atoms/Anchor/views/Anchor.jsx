@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import utils, { buildUrl } from '../../../../../utils';
+import { buildUrl, getSiteId } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
@@ -33,32 +33,43 @@ const Anchor = ({
   dataLocator,
   ...other
 }) => {
-  const siteId = utils.getSiteId();
+  const targetVal = target || '_self';
+  const siteId = getSiteId();
 
   const incomingUrl = to || url;
   const isCompleteUrl = incomingUrl.startsWith('http');
   const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
   const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
-
-  return noLink ? (
-    <a
-      href={buildUrl(linkUrl)}
-      className={className}
-      onClick={handleLinkClick}
-      title={title}
-      target={target}
-      data-locator={dataLocator}
-      {...other}
-    >
-      {children}
-    </a>
-  ) : (
-    <Link href={linkUrl} as={asLinkPath} shallow={shallow} scroll={scroll}>
-      <a className={className} title={title} target={target} {...other}>
-        {children || text}
+  let AnchorComponent = null;
+  if (children || text) {
+    AnchorComponent = noLink ? (
+      <a
+        href={buildUrl(linkUrl)}
+        className={className}
+        onClick={handleLinkClick}
+        title={title}
+        target={targetVal}
+        data-locator={dataLocator}
+        {...other}
+      >
+        {children}
       </a>
-    </Link>
-  );
+    ) : (
+      <Link href={linkUrl} as={asLinkPath} shallow={shallow} scroll={scroll}>
+        <a
+          className={className}
+          href={linkUrl}
+          title={title}
+          target={targetVal}
+          data-locator={dataLocator}
+          {...other}
+        >
+          {children || text}
+        </a>
+      </Link>
+    );
+  }
+  return AnchorComponent;
 };
 
 Anchor.propTypes = {

@@ -15,7 +15,11 @@ export const getOrderItems = state => {
 
 export const filterItemObject = (arr, searchedValue) => {
   const filteredValue = arr.filter(value => {
-    return value.getIn(['itemInfo', 'itemId']).toString() === searchedValue.orderItemId.toString();
+    return (
+      value.getIn(['itemInfo', 'itemId']) &&
+      searchedValue.orderItemId &&
+      value.getIn(['itemInfo', 'itemId']).toString() === searchedValue.orderItemId.toString()
+    );
   });
   return filteredValue.get(0);
 };
@@ -26,7 +30,7 @@ export const getQuantityValue = state => {
   const lastAddedToBag = getAddedToBagData(state);
   if (orderItems && lastAddedToBag) {
     const lastAddedItem = filterItemObject(orderItems, lastAddedToBag);
-    quantity = lastAddedItem.getIn(['itemInfo', 'quantity']);
+    quantity = lastAddedItem && lastAddedItem.getIn(['itemInfo', 'quantity']);
   }
 
   return quantity;
@@ -37,10 +41,22 @@ export const getLabelsAddToActions = state => {
     bag: {
       addedToBag: { lbl_cta_viewBag: viewBag, lbl_cta_checkout: checkout },
     },
+    global: {
+      checkoutConfirmation: {
+        lbl_checkoutmodal_confirmation: confirmationText,
+        lbl_checkoutmodal_editConfirmation: editConfirmationText,
+        lbl_checkoutmodal_backToBag: backToBag,
+        lbl_checkoutmodal_continueCheckout: continueCheckout,
+      },
+    },
   } = state.Labels;
   return {
     viewBag,
     checkout,
+    continueCheckout,
+    confirmationText,
+    editConfirmationText,
+    backToBag,
   };
 };
 

@@ -20,6 +20,7 @@ class LogOutView extends React.Component {
       <React.Fragment className={className}>
         <Anchor
           onClick={this.logoutApp}
+          noLink
           className="elem-pb-SM"
           fontSizeVariation="large"
           anchorVariation="primary"

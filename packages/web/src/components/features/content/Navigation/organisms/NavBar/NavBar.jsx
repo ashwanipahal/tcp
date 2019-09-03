@@ -17,6 +17,8 @@ const NavBar = props => {
     openL3Drawer,
     hideL3Drawer,
     l3Drawer,
+    removeL1Focus,
+    accessibilityLabels,
   } = props;
 
   return (
@@ -25,13 +27,19 @@ const NavBar = props => {
         {navigationData.map((navL1Item, index) => {
           let categoryLayout = [];
           let sizesRange = [];
+          const settings = {};
+
           if (navL1Item.categoryContent.mainCategory) {
             const { mainCategory } = navL1Item.categoryContent;
-            const { categoryLayout: catLayout, sizesRange: sizRange } = mainCategory;
+            const { categoryLayout: catLayout, sizesRange: sizRange, set } = mainCategory;
             categoryLayout = catLayout;
             sizesRange = sizRange;
+            if (set) {
+              set.forEach(({ key, value }) => {
+                settings[key] = value;
+              });
+            }
           }
-
           return (
             <L1NavItem
               dataLocator={`l1menu_link_${index}`}
@@ -39,6 +47,8 @@ const NavBar = props => {
               key={`l1menu_link_${index.toString()}`}
               sizesRange={sizesRange}
               onClick={openL2Drawer(`l2-drawer-${index.toString()}`)}
+              // showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
+              removeL1Focus={removeL1Focus}
               {...navL1Item}
             >
               <Drawer
@@ -60,7 +70,6 @@ const NavBar = props => {
               >
                 <L2Panel
                   categoryLayout={categoryLayout}
-                  order={Object.keys(navL1Item.subCategories)}
                   panelData={navL1Item.subCategories}
                   name={navL1Item.categoryContent.name}
                   hideL2Drawer={hideL2Drawer(`l2-drawer-${index.toString()}`)}
@@ -69,6 +78,7 @@ const NavBar = props => {
                   openL3Drawer={openL3Drawer}
                   hideL3Drawer={hideL3Drawer}
                   l3Drawer={l3Drawer}
+                  accessibilityLabels={accessibilityLabels}
                 />
               </Drawer>
             </L1NavItem>
@@ -83,6 +93,7 @@ NavBar.propTypes = {
   nav: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
   mainCategory: PropTypes.shape({}),
+  accessibilityLabels: PropTypes.shape({}).isRequired,
   openL2Drawer: PropTypes.func.isRequired,
   hideL2Drawer: PropTypes.func.isRequired,
   openDrawer: PropTypes.string.isRequired,
@@ -90,6 +101,7 @@ NavBar.propTypes = {
   openL3Drawer: PropTypes.func.isRequired,
   hideL3Drawer: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
+  removeL1Focus: PropTypes.bool.isRequired,
 };
 
 NavBar.defaultProps = {

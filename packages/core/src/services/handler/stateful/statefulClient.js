@@ -107,12 +107,17 @@ const StatefulAPIClient = (apiConfig, reqObj) => {
       .then(response => {
         const errorObject = verifyErrorResponseHandler(response);
         if (errorObject.errorCode) {
-          throw new ErrorConstructor({ ...errorObject, errorMsg: API_ERROR_MESSAGE });
+          throw new ErrorConstructor({
+            ...errorObject,
+            errorMsg: API_ERROR_MESSAGE,
+            errorResponse: response.body,
+          });
         }
         resolve(response);
       })
       .catch(err => {
-        reject(err);
+        // eslint-disable-next-line prefer-promise-reject-errors
+        reject({ err, reqObj, reqHeaders });
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.

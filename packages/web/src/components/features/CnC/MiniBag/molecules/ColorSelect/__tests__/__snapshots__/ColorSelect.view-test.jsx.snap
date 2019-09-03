@@ -34,7 +34,11 @@ exports[`ColorSelectorDropDown component ColorSelectorDropDown component renders
     }
   }
   forwardedRef={null}
-  input=""
+  input={
+    Object {
+      "name": Object {},
+    }
+  }
   options={Array []}
 />
 `;

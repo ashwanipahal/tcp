@@ -16,40 +16,36 @@ import {
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
 import {
-  getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
   getLabels,
 } from './LoginPage.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
-  hasMobileApp;
-
-  hasNavigateToNestedRoute;
-
-  constructor(props) {
-    super(props);
-    import('../../../../../utils')
-      .then(({ isMobileApp, navigateToNestedRoute }) => {
-        this.hasMobileApp = isMobileApp;
-        this.hasNavigateToNestedRoute = navigateToNestedRoute;
-      })
-      .catch(error => {
-        console.log('error: ', error);
-      });
-  }
-
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay } = this.props;
+    const {
+      isUserLoggedIn,
+      closeOverlay,
+      closeModal,
+      variation,
+      toastMessage,
+      loginErrorMessage,
+      loginError,
+    } = this.props;
+    if (!prevProps.loginError && loginError) {
+      toastMessage(loginErrorMessage);
+    }
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (this.hasMobileApp()) {
-        const { navigation } = this.props;
-        this.hasNavigateToNestedRoute(navigation, 'HomeStack', 'home');
-      } else {
-        closeOverlay();
+      if (variation === 'checkout' || variation === 'favorites') {
+        closeModal();
       }
+
+      closeOverlay();
     }
   }
 
@@ -61,8 +57,12 @@ class LoginPageContainer extends React.PureComponent {
   }
 
   openModal = params => {
-    const { openOverlay } = this.props;
-    openOverlay(params);
+    const { openOverlay, setLoginModalMountState } = this.props;
+    if (setLoginModalMountState) {
+      setLoginModalMountState(params);
+    } else {
+      openOverlay(params);
+    }
   };
 
   render() {
@@ -80,8 +80,12 @@ class LoginPageContainer extends React.PureComponent {
       successFullResetEmail,
       currentForm,
       queryParams,
+      setLoginModalMountState,
+      onRequestClose,
+      variation,
+      handleContinueAsGuest,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
+    const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -102,6 +106,11 @@ class LoginPageContainer extends React.PureComponent {
         successFullResetEmail={successFullResetEmail}
         currentForm={currentForm}
         queryParams={queryParams}
+        setLoginModalMountState={setLoginModalMountState}
+        onRequestClose={onRequestClose}
+        variation={variation}
+        handleContinueAsGuest={handleContinueAsGuest}
+        loginError={loginError}
       />
     );
   }
@@ -125,6 +134,12 @@ LoginPageContainer.propTypes = {
   successFullResetEmail: PropTypes.bool.isRequired,
   currentForm: PropTypes.string,
   queryParams: PropTypes.shape({}),
+  onRequestClose: PropTypes.shape({}).isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+  closeModal: PropTypes.bool.isRequired,
+  variation: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func,
+  toastMessage: PropTypes.string.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -134,16 +149,17 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
+  handleContinueAsGuest: () => {},
   isUserLoggedIn: false,
   navigation: {},
   currentForm: '',
   queryParams: {},
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: payload => {
-      dispatch(login(payload));
+      dispatch(login(payload, props.handleAfterLogin));
     },
     resetForm: payload => {
       dispatch(resetLoginForgotPasswordState(payload));
@@ -159,6 +175,9 @@ const mapDispatchToProps = dispatch => {
     },
     openOverlay: payload => {
       dispatch(openOverlayModal(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

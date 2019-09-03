@@ -2,9 +2,11 @@
 
 exports[`LinkText component renders correctly 1`] = `
 <Styled(Anchor)
+  accessibilityLabel=""
   anchorVariation=""
   customStyle={Object {}}
   locator=""
+  onPress={null}
   text=""
   url="http://example.com3367"
   visible={false}
@@ -26,6 +28,16 @@ exports[`LinkText component renders correctly 1`] = `
             "
   ",
             [Function],
+            "
+  ",
+            "
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+",
             "
 ",
             ";

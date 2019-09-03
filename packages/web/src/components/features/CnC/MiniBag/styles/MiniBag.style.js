@@ -9,7 +9,10 @@ export const modalStyles = css`
     transform: none;
     box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
     width: 480px;
-    padding: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    overflow: hidden;
   }
   .Modal_Heading {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
@@ -23,6 +26,10 @@ export const modalStyles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
     }
+  }
+  .alignTop.alignTop {
+    /* stylelint-disable-line */
+    top: 28px;
   }
 `;
 const styles = css`

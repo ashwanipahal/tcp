@@ -43,9 +43,8 @@ class ForgotPasswordView extends React.Component<Props> {
 
   // onclick back button user will redirect to the login page
   onBackClick = () => {
-    const { showForgotPasswordForm, resetLoginState } = this.props;
-    resetLoginState();
-    showForgotPasswordForm();
+    const { showLogin } = this.props;
+    showLogin();
   };
 
   // inital state of forgot password reset email form
@@ -90,7 +89,6 @@ class ForgotPasswordView extends React.Component<Props> {
           {labels.password.lbl_forgotPassword_subHeading}
         </SubHeadingSectionStyle>
         <CustomButton
-          color={colorPallete.white}
           fill="BLUE"
           text={labels.password.lbl_forgotPassword_returnLogin}
           buttonVariation="variable-width"
@@ -145,10 +143,8 @@ class ForgotPasswordView extends React.Component<Props> {
 ForgotPasswordView.propTypes = {
   SubmitForgot: PropTypes.string.isRequired,
   showNotification: PropTypes.string.isRequired,
-  showForgotPasswordForm: PropTypes.string.isRequired,
   resetForgotPasswordErrorResponse: PropTypes.string.isRequired,
   labels: PropTypes.string.isRequired,
-  resetLoginState: PropTypes.string.isRequired,
   successFullResetEmail: PropTypes.string.isRequired,
   handleSubmit: PropTypes.string.isRequired,
 };

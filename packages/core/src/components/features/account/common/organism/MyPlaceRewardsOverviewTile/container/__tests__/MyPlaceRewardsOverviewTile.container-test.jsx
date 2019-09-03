@@ -5,7 +5,9 @@ import MyPlaceRewardsOverviewTileComponent from '../../views/MyPlaceRewardsOverv
 
 describe('MyPlaceRewardsOverviewTile container', () => {
   it('should render MyPlaceRewardsOverviewTile component', () => {
-    const component = shallow(<MyPlaceRewardsOverviewTile labels={{ accountOverview: {} }} />);
+    const component = shallow(
+      <MyPlaceRewardsOverviewTile labels={{ accountOverview: {} }} fetchCoupons={() => {}} />
+    );
     expect(component.is(MyPlaceRewardsOverviewTileComponent)).toBeTruthy();
   });
 });

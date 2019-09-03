@@ -10,12 +10,13 @@ class ServiceError extends ExtendableError {
    * @param {object} errorCode A object that contains - errorCode,
    *                       errorMessage, networkStatusCode, misc and errorMsg
    */
-  constructor({ errorCode, errorMessage, networkStatusCode, misc, errorMsg }) {
+  constructor({ errorCode, errorMessage, networkStatusCode, misc, errorMsg, errorResponse }) {
     super(errorMsg);
 
     this.errorCode = errorCode;
     this.errorMessage = errorMessage;
     this.networkStatusCode = networkStatusCode;
+    this.errorResponse = errorResponse;
     this.misc = misc;
   }
 }

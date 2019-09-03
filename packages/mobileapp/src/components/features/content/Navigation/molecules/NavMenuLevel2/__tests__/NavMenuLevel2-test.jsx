@@ -60,7 +60,8 @@ describe('NavMenuLevel2', () => {
       },
     };
     const component = shallow(<NavMenuLevel2View {...props} />);
-    const item = component.props().renderItem({
+    const sectionList = component.find('SectionList');
+    const item = sectionList.props().renderItem({
       section: {
         title: LoremIpsum,
       },
@@ -107,7 +108,9 @@ describe('NavMenuLevel2', () => {
       },
     };
     const component = shallow(<NavMenuLevel2View {...props} />);
-    const item = component.props().renderItem({
+    const sectionList = component.find('SectionList');
+
+    const item = sectionList.props().renderItem({
       section: {
         title: 'Categories',
       },
@@ -138,7 +141,8 @@ describe('NavMenuLevel2', () => {
       },
     };
     const component = shallow(<NavMenuLevel2View {...props} />);
-    const item = component.props().renderSectionHeader({
+    const sectionList = component.find('SectionList');
+    const item = sectionList.props().renderSectionHeader({
       section: {
         title: LoremIpsum,
       },
@@ -169,7 +173,8 @@ describe('NavMenuLevel2', () => {
       },
     };
     const component = shallow(<NavMenuLevel2View {...props} />);
-    const item = component.props().renderSectionHeader({
+    const sectionList = component.find('SectionList');
+    const item = sectionList.props().renderSectionHeader({
       section: {
         title: 'Categories',
       },

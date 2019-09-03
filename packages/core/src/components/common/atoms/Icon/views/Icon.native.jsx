@@ -53,6 +53,8 @@ const CustomIcon = (props: PropTypes.Object) => {
         backgroundColor={backgroundColor}
         borderRadius={borderRadius}
         iconStyle={iconStyle}
+        accessibilityRole="image"
+        accessibilityLabel="icon"
       >
         {children}
       </IconClass.Button>

@@ -8,6 +8,7 @@ import style from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
 import { getAPIConfig } from '../../../../../utils';
 import { PDP_PAGE_ID } from '../config';
+import withLazyLoad from '../../../hoc/withLazyLoad';
 
 class GetCandid extends React.PureComponent {
   static propTypes = {
@@ -166,9 +167,9 @@ class GetCandid extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
-    labels: (state.Labels.modules && state.Labels.modules.getCandid) || {},
+    labels: state.Labels.modules && state.Labels.modules.getCandid,
   };
 };
 
-export default connect(mapStateToProps)(withStyles(GetCandid, style));
+export default connect(mapStateToProps)(withStyles(withLazyLoad(GetCandid), style));
 export { GetCandid as GetCandidVanilla };

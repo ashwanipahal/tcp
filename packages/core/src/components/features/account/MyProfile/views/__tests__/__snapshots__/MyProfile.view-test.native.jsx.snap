@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Myprofile should render correctly 1`] = `
+<View>
+  <Styled(Text) />
+  <Styled(LineComp)
+    borderColor="black"
+    borderWidth={1}
+    marginBottom={28}
+    marginTop={0}
+  />
+  <ProfileInformation
+    airMiles=""
+    defaultStore=""
+    handleComponentChange={[Function]}
+    labels={Object {}}
+    mailingAddress={Object {}}
+    myPlaceNumber=""
+    percentageIncrement={Object {}}
+    profileCompletion=""
+    profileInfoTile={Object {}}
+    userBirthday=""
+    userEmail=""
+    userFullName=""
+    userPhoneNumber=""
+    userSurvey={Array []}
+  />
+</View>
+`;

@@ -9,7 +9,7 @@ const GlobalCss = css`
     background: ${props => props.theme.colors.TEXT.DARKERBLUE};
     border: 10px;
     display: block;
-    margin-top: 26px;
+    margin-top: 14px;
   }
   &.img-link {
     ::after {

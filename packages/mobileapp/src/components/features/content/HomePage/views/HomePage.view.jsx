@@ -1,72 +1,96 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import PropTypes from 'prop-types';
-import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN/views/ModuleN.native';
-import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
+import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import {
+  ModuleD,
+  ModuleH,
+  ModuleK,
+  ModuleL,
+  ModuleN,
+  ModuleA,
+} from '@tcp/core/src/components/common/molecules';
+import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
-class HomePageView extends React.Component {
+const modulesMap = {
+  moduleD: ModuleD,
+  moduleH: ModuleH,
+  moduleK: ModuleK,
+  moduleL: ModuleL,
+  moduleN: ModuleN,
+  moduleA: ModuleA,
+};
+
+const buttonMargin = { margin: 30 };
+
+class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
-    const { getBootstrapData } = this.props;
-    getBootstrapData({ name: 'homepage' });
+    this.loadData();
   }
 
+  /**
+   * @function loadData
+   * Loads bootstrap data
+   *
+   * @memberof HomePageView
+   */
+  loadData = () => {
+    const {
+      getBootstrapData,
+      screenProps: { apiConfig },
+    } = this.props;
+    getBootstrapData(
+      {
+        name: 'homepage',
+        modules: ['labels', 'header'],
+      },
+      apiConfig
+    );
+  };
+
   render() {
-    const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, navigation } = this.props;
+    const {
+      slots,
+      navigation,
+      screenProps: { apiConfig },
+    } = this.props;
+
     return (
       <ScrollView>
-        <React.Fragment>
-          <ModuleN navigation={navigation} />
-          {slotA && <SlotA {...slotA} navigation={navigation} />}
-          {slotB && <SlotB {...slotB} navigation={navigation} />}
-          {slotC && <SlotC {...slotC} navigation={navigation} />}
-          {slotD && <SlotD {...slotD} navigation={navigation} />}
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            text="PLP Page"
-            onPress={() => navigation.navigate('ProductListingPageContainer')}
-          />
-        </React.Fragment>
+        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <GetCandid apiConfig={apiConfig} />
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="PLP Page"
+          onPress={() => navigation.navigate('ProductListingPageContainer')}
+          style={buttonMargin}
+        />
       </ScrollView>
     );
   }
 }
 
 HomePageView.propTypes = {
-  slot_1: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_2: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_3: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_4: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
+  slots: PropTypes.arrayOf(
+    PropTypes.shape({
+      contentId: PropTypes.string,
+      data: PropTypes.shape({}),
+      moduleName: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
+  screenProps: PropTypes.shape({}),
 };
 
 HomePageView.defaultProps = {
-  slot_1: {},
-  slot_2: {},
-  slot_3: {},
-  slot_4: {},
+  screenProps: {},
 };
 
-export default HomePageView;
+export { HomePageView };
+
+export default InitialPropsHOC(HomePageView);

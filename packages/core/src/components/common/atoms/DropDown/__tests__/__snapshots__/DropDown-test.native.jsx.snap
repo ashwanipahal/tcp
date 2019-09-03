@@ -4,7 +4,13 @@ exports[`DropDown Test should render correctly 1`] = `
 <View
   style={null}
 >
+  <Styled(Text)
+    isFocused={true}
+  >
+    foo
+  </Styled(Text)>
   <Styled(View)
+    bounces={true}
     data={
       Array [
         Object {
@@ -14,18 +20,24 @@ exports[`DropDown Test should render correctly 1`] = `
       ]
     }
     dropDownStyle={null}
-    itemStyle={null}
+    heading="foo"
+    itemStyle={
+      Object {
+        "color": "foo",
+      }
+    }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
+    pointerEvents="auto"
     selectedValue="foo"
     variation="primary"
   >
     <Styled(View)>
       <Styled(BodyCopy)
         color="gray.800"
-        fontFamily="secondary"
         fontSize="fs13"
-        fontWeight="black"
+        fontWeight="semibold"
+        mobileFontFamily="secondary"
         text="foo"
         textAlign="center"
       />
@@ -53,7 +65,7 @@ exports[`DropDown Test should render correctly 1`] = `
         Object {
           "height": 1334,
           "left": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
@@ -61,6 +73,7 @@ exports[`DropDown Test should render correctly 1`] = `
         style={
           Object {
             "top": 0,
+            "width": 0,
           }
         }
       />
@@ -73,7 +86,13 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
 <View
   style={null}
 >
+  <Styled(Text)
+    isFocused={true}
+  >
+    foo
+  </Styled(Text)>
   <Styled(View)
+    bounces={true}
     data={
       Array [
         Object {
@@ -83,18 +102,24 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       ]
     }
     dropDownStyle={null}
-    itemStyle={null}
+    heading="foo"
+    itemStyle={
+      Object {
+        "color": "foo",
+      }
+    }
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
+    pointerEvents="auto"
     selectedValue="foo"
     variation="primary"
   >
     <Styled(View)>
       <Styled(BodyCopy)
         color="gray.800"
-        fontFamily="secondary"
         fontSize="fs13"
-        fontWeight="black"
+        fontWeight="semibold"
+        mobileFontFamily="secondary"
         text="foo"
         textAlign="center"
       />
@@ -122,7 +147,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         Object {
           "height": 1334,
           "left": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
@@ -130,11 +155,13 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         style={
           Object {
             "top": 0,
+            "width": 0,
           }
         }
       >
         <Styled(FlatList)
           ItemSeparatorComponent={[Function]}
+          bounces={true}
           data={
             Array [
               Object {
@@ -147,7 +174,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           renderItem={[Function]}
           style={
             Object {
-              "height": 667,
+              "height": 0,
             }
           }
         />
