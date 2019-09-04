@@ -20,7 +20,7 @@ import {
  * This component will be coming on homepage just before footer
  *
  * @param {candidData} candidData the list of data to display images
- * @param {labels} candidData the list of data to display images, links and images for component
+ * @param {labels} labels label data for get candid module
  * @param {navigation} navigation object containing navigate method
  */
 class GetCandid extends React.PureComponent {
