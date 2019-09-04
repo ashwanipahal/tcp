@@ -157,7 +157,11 @@
       "**/react-test-renderer",
       "**/react-test-renderer/**",
       "**/bunyan",
-      "**/bunyan/**"
+      "**/bunyan/**",
+      "**/os",
+      "**/os/**",
+      "**/fs",
+      "**/fs/**"
     ]
   }
 }
