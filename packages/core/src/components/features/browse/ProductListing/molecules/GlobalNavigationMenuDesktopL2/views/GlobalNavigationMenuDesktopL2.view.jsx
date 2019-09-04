@@ -179,7 +179,9 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
                 id={`list-item-${item.categoryContent.id}`}
                 role="none"
               >
-                <Anchor to={item.url}>{item.categoryContent.name}</Anchor>
+                <Anchor to={`/c?cid=${item.categoryContent.id}`} asPath={item.url}>
+                  {item.categoryContent.name}
+                </Anchor>
                 {!isTopNav && isActive && (
                   <L3
                     menuItems={item.subCategories}
@@ -212,7 +214,9 @@ function L3({ menuItems, activeCategoryIds, className }) {
                 id={`list-item-${categoryId}`}
                 role="none"
               >
-                <Anchor to={url}>{name}</Anchor>
+                <Anchor to={`/c?cid=${categoryId}`} asPath={url}>
+                  {name}
+                </Anchor>
               </li>
             }
           </React.Fragment>

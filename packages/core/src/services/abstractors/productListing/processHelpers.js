@@ -6,19 +6,20 @@ const apiHelper = {
     isUSStore: true,
     siteId: utils.getSiteId(),
   },
-  responseContainsErrors: () => {
-    return false;
-  },
 };
 /** @function This function return that category map from the catrgory path of the product bieng iterated on.
  * @param catPath {Array} It is the array of the category path with which the product can be accessed.
  * @return catMap {Object} Map of the category path which with the product can be accessed.
  */
 const getCategoryMap = (catPath, l1) => {
+  console.log('catPath', catPath);
   const { length } = catPath;
   const catMap = {};
   for (let idx = 0; idx < length; idx += 1) {
     const temp = catPath[idx].split('>');
+    console.log('temp --> ', temp);
+    console.log('catMap --> ', catMap);
+    console.log('catMap[temp[1]]', catMap[temp[1]]);
     catMap[temp[1]] = catMap[temp[1]] ? catMap[temp[1]] : [];
     if (temp[0] && l1 && temp[0] === l1) {
       catMap[temp[1]].push(temp[2]);

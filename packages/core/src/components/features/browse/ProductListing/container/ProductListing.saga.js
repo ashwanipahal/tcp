@@ -26,7 +26,7 @@ function* fetchPlpProducts({ payload }) {
       const res = yield call(instanceProductListing.getProducts, reqObj);
       reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
     }
-    if (reqObj.categoryId) {
+    if (reqObj && reqObj.categoryId) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
       if (
         plpProducts &&

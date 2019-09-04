@@ -1,7 +1,7 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import utils, { isClient, bindAllClassMethodsToThis } from '../../../utils';
-import { parseBoolean } from './productParser';
+import utils, { bindAllClassMethodsToThis } from '../../../utils';
 import processHelpers from './processHelpers';
 import { PRODUCTS_PER_LOAD } from '../../../components/features/browse/ProductListing/container/ProductListing.constants';
 import processResponse from './processResponse';
@@ -60,36 +60,17 @@ class ProductsDynamicAbstractor {
    * @summary This will set the UNBXD id we get from reponse headers in  UNBXD call.
    */
 
-  setUnbxdId = id => {
-    this.unbxdId = id;
-    return this.unbxdId;
-  };
+  // setUnbxdId = id => {
+  //   this.unbxdId = id;
+  //   return this.unbxdId;
+  // };
 
   /**
    * @function getUnbxdId
    * @summary This will get the UNBXD id that we got from reponse headers in  UNBXD call.
    */
 
-  getUnbxdId = () => this.unbxdId;
-
-  /*
-   * @function isBOPISProduct
-   * @summary This BOPIS logic is to validate if product/color variant is eligible for BOPIS
-   * product is a color variant object of a product.
-   */
-  isBOPISProduct(product) {
-    const { isUSStore } = this.apiHelper.configOptions;
-    let isOnlineOnly;
-    if (isUSStore) {
-      isOnlineOnly =
-        (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false; // validate if product is online only so it is not BOPIS eligible
-    } else {
-      isOnlineOnly =
-        (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
-        false;
-    }
-    return !isOnlineOnly;
-  }
+  // getUnbxdId = () => this.unbxdId;
 
   /**
    * @function extractFilters
@@ -120,29 +101,30 @@ class ProductsDynamicAbstractor {
   // PLP to PDP then again back to PLP, maintainig autoscroll position by managing state with products count
   getSetAPIProductsCount = () => {
     // if totalProducts are greater than PRODUCTS_PER_LOAD limit it to PRODUCTS_PER_LOAD and update sessionStorage for auto scroll
-    let unbxdCount = PRODUCTS_PER_LOAD;
-    if (isClient()) {
-      const MAX_PRODUCT_PER_CALL = 100;
-      let loadedProductCount = PRODUCTS_PER_LOAD;
-      const totalProducts = sessionStorage.getItem('LOADED_PRODUCT_COUNT');
-      if (totalProducts && totalProducts >= MAX_PRODUCT_PER_CALL) {
-        unbxdCount = MAX_PRODUCT_PER_CALL;
-        loadedProductCount = totalProducts - MAX_PRODUCT_PER_CALL;
-      } else if (
-        totalProducts &&
-        totalProducts >= PRODUCTS_PER_LOAD &&
-        totalProducts <= MAX_PRODUCT_PER_CALL
-      ) {
-        unbxdCount = totalProducts;
-        loadedProductCount = PRODUCTS_PER_LOAD;
-      }
-      sessionStorage.setItem('LOADED_PRODUCT_COUNT', loadedProductCount);
+    // eslint-disable-next-line
+    const unbxdCount = PRODUCTS_PER_LOAD;
+    // if (isClient()) {
+    //   const MAX_PRODUCT_PER_CALL = 100;
+    //   let loadedProductCount = PRODUCTS_PER_LOAD;
+    //   const totalProducts = sessionStorage.getItem('LOADED_PRODUCT_COUNT');
+    //   if (totalProducts && totalProducts >= MAX_PRODUCT_PER_CALL) {
+    //     unbxdCount = MAX_PRODUCT_PER_CALL;
+    //     loadedProductCount = totalProducts - MAX_PRODUCT_PER_CALL;
+    //   } else if (
+    //     totalProducts &&
+    //     totalProducts >= PRODUCTS_PER_LOAD &&
+    //     totalProducts <= MAX_PRODUCT_PER_CALL
+    //   ) {
+    //     unbxdCount = totalProducts;
+    //     loadedProductCount = PRODUCTS_PER_LOAD;
+    //   }
+    //   sessionStorage.setItem('LOADED_PRODUCT_COUNT', loadedProductCount);
 
-      const scrollPoint = window.sessionStorage.getItem('SCROLL_POINT') || 0;
-      if (scrollPoint > 0 && totalProducts <= PRODUCTS_PER_LOAD) {
-        sessionStorage.setItem('RESET_SCROLL_CONDITIONS', 1); // Don't auto scroll if items less than standard call
-      }
-    }
+    //   const scrollPoint = window.sessionStorage.getItem('SCROLL_POINT') || 0;
+    //   if (scrollPoint > 0 && totalProducts <= PRODUCTS_PER_LOAD) {
+    //     sessionStorage.setItem('RESET_SCROLL_CONDITIONS', 1); // Don't auto scroll if items less than standard call
+    //   }
+    // }
     return unbxdCount;
   };
 
@@ -154,40 +136,20 @@ class ProductsDynamicAbstractor {
    * @return {Number} the number of products in an L2.
    */
 
-  cacheFiltersAndCount = (filters, availableL3InFilter) => {
-    this.cachedFilters = filters;
-    let count = 0;
-    // We need to add up the count coming in each L3 to show up the number of products in the L2 at the top of the listing.
-    availableL3InFilter.map(item => {
-      count += item.count;
-      return count;
-    });
-    this.cachedCount = count;
-    return count;
-  };
+  // cacheFiltersAndCount = (filters, availableL3InFilter) => {
+  //   this.cachedFilters = filters;
+  //   let count = 0;
+  //   // We need to add up the count coming in each L3 to show up the number of products in the L2 at the top of the listing.
+  //   availableL3InFilter.map(item => {
+  //     count += item.count;
+  //     return count;
+  //   });
+  //   this.cachedCount = count;
+  //   return count;
+  // };
 
   handleValidationError = e => {
     console.log(e);
-  };
-
-  /**
-   * @function fetchCachedFilterAndCount This is the scenario when the subsequent L3 calls made in bucekting case. In this scenario we need to send back
-   *           the filter and count, we cached from the response of page L2 call.
-   * @returns {Object} the cached filters and count.
-   */
-
-  fetchCachedFilterAndCount = () => {
-    const temp = {
-      filters: [],
-      totalProductsCount: 0,
-    };
-    if (this.cachedFilters) {
-      temp.filters = this.cachedFilters;
-    }
-    if (this.cachedCount) {
-      temp.totalProductsCount = this.cachedCount;
-    }
-    return temp;
   };
 
   getProducts = reqObj => {

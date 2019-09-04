@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { isMobileApp } from '../../../../../utils';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
@@ -22,6 +23,22 @@ import { isPlccUser } from '../../../account/User/container/User.selectors';
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
     this.makeApiCall();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      router: {
+        query: { cid },
+      },
+    } = prevProps;
+    const {
+      router: {
+        query: { cid: currentCid },
+      },
+    } = this.props;
+    if (cid !== currentCid) {
+      this.makeApiCall();
+    }
   }
 
   makeApiCall = () => {
@@ -144,6 +161,7 @@ ProductListingContainer.propTypes = {
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoadingMore: PropTypes.bool,
   lastLoadedPageNumber: PropTypes.number,
+  router: PropTypes.shape({}).isRequired,
 };
 
 ProductListingContainer.defaultProps = {
@@ -163,7 +181,18 @@ ProductListingContainer.defaultProps = {
   lastLoadedPageNumber: 0,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductListingContainer);
+const addWithRouter = WrappedComponent => {
+  if (isMobileApp()) {
+    return WrappedComponent;
+  }
+  // eslint-disable-next-line
+  const { withRouter } = require('next/router');
+  return withRouter(WrappedComponent);
+};
+
+export default addWithRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProductListingContainer)
+);

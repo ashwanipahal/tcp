@@ -1,6 +1,5 @@
 const ignorePsuedoCodeDir = [
   '/ProductListing/',
-  '/services/abstractors/productListing/',
   '/ProductListingPage/',
   '/AddressForm/',
   '/plpDeltaSync/',
@@ -28,7 +27,7 @@ module.exports = {
     },
   },
   setupFiles: ['<rootDir>/config/jest.setup.js'],
-  collectCoverage: true,
+  collectCoverage: false,
   coverageDirectory: 'reports/web/coverage',
   collectCoverageFrom: [
     '**/*.js',
