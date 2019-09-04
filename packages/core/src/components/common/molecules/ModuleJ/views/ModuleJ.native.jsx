@@ -5,13 +5,7 @@ import { Container, ResponseContainer } from '../ModuleJ.style.native';
 
 import ProductListTabs from '../../../organisms/ProductListTabs';
 import { BodyCopy } from '../../../atoms';
-
-const categoryListMock = [
-  { text: 'GIRL', catId: '49007' },
-  { text: 'TODDLER GIRL', catId: '49008' },
-  { text: 'BOY', catId: '49009' },
-  { text: 'TODDLER BOY', catId: '49010' },
-];
+import categoryListMock from './categoryListMock';
 
 class ModuleJ extends React.PureComponent {
   constructor(props) {

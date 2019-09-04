@@ -4,10 +4,10 @@ import styled, { css } from 'styled-components/native';
 import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 
 const getShape = props => {
-  const { theme, noCurve } = props;
+  const { theme, noCurve, buttonVariation } = props;
   const { isGymboree } = theme;
 
-  if (isGymboree && !noCurve) {
+  if (isGymboree && !noCurve && buttonVariation !== 'mini-nav') {
     return `border-radius: 25.5px;`;
   }
   return `
