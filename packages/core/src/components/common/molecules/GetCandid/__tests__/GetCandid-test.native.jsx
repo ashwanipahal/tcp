@@ -33,6 +33,9 @@ describe('GetCandidGallery component', () => {
       titleDescription: 'Title Description',
       btnSeeMore: 'See More',
     },
+    navigation: {
+      dispatch: jest.fn(),
+    },
   };
 
   it('renders correctly', () => {
