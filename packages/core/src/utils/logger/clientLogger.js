@@ -1,3 +1,6 @@
+const DEFAULT_LOG_METHOD = 'log';
+const AVAILABLE_LOG_OPTIONS_LIST = ['log', 'warn', 'info', 'error', 'debug', 'trace', 'fatal'];
+
 class ClientLogger {
   /**
    * Configuring logger at client side
@@ -13,16 +16,15 @@ class ClientLogger {
         message = '';
       }
       // eslint-disable-next-line no-console
-      console[type](message);
+      console[console[type] ? type : DEFAULT_LOG_METHOD](message);
     };
+    const availableLogOptions = {};
+    AVAILABLE_LOG_OPTIONS_LIST.forEach(item => {
+      availableLogOptions[item] = (...msg) => formatMessage(msg);
+    });
+
     return {
-      log: (...msg) => formatMessage(msg, 'log'),
-      warn: (...msg) => formatMessage(msg, 'warn'),
-      info: (...msg) => formatMessage(msg, 'info'),
-      error: (...msg) => formatMessage(msg, 'error'),
-      debug: (...msg) => formatMessage(msg, 'log'),
-      trace: (...msg) => formatMessage(msg, 'log'),
-      fatal: (...msg) => formatMessage(msg, 'log'),
+      ...availableLogOptions,
     };
   }
 }
