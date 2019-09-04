@@ -146,6 +146,7 @@ class Dropdown extends React.PureComponent {
   render() {
     const { dropDownExpand, navState } = this.state;
     const { className, options } = this.props;
+
     return (
       <BodyCopy component="div" className={`${className} drop_down`}>
         <BodyCopy
