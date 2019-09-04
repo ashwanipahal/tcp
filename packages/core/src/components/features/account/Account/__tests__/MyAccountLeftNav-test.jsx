@@ -59,7 +59,7 @@ describe('My Account Left Nav', () => {
         ],
       },
     ];
-    const tree = shallow(<MyAccountLeftNavVanilla navData={data} active="myWalletPage" />);
+    const tree = shallow(<MyAccountLeftNavVanilla navData={data} active="myPlaceRewards" />);
     expect(tree.find('li')).toHaveLength(4);
     tree.find('li a').map((node, index) => expect(node.text()).toEqual(data[index].displayName));
     expect(tree).toMatchSnapshot();
