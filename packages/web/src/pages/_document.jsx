@@ -6,7 +6,6 @@ import { ServerStyleSheet } from 'styled-components';
 
 // ./pages/_document.js
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import StaticScripts from '../config/scripts';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -53,7 +52,6 @@ class MyDocument extends Document {
         >
           <Main />
           <NextScript />
-          <StaticScripts />
           <div className="dark-overlay" />
         </body>
       </Html>

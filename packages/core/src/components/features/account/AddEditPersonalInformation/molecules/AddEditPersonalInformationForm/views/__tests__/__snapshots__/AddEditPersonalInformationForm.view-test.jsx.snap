@@ -1114,6 +1114,12 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
   & .disabled {
     opacity: ",
                 [Function],
@@ -2323,6 +2329,12 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
 
   & .CheckBox__text {
     width: calc(100% - 25px);
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {

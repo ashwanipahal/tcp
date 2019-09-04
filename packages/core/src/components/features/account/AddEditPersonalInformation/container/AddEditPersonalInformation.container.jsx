@@ -17,6 +17,8 @@ import {
   getAirmilesDetails,
 } from '../../User/container/User.selectors';
 
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
+
 export class AddEditPersonalInformationContainer extends PureComponent {
   static propTypes = {
     successMessage: PropTypes.string.isRequired,
@@ -25,6 +27,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     messageStateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
     isEmployee: PropTypes.string.isRequired,
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   constructor(props) {
@@ -101,7 +104,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels, isEmployee } = this.props;
+    const { successMessage, errorMessage, labels, isEmployee, formErrorMessage } = this.props;
     return (
       <AddEditPersonalInformationComponent
         successMessage={successMessage}
@@ -112,6 +115,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         birthMonthOptionsMap={this.yearOptionsMap.monthsMap}
         birthYearOptionsMap={this.yearOptionsMap.yearsMap}
         initialValues={this.initialValues}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -129,6 +133,7 @@ export const mapStateToProps = state => ({
   labels: getProfileLabels(state),
   isEmployee: getIsEmployee(state),
   airMilesAccountNumber: getAirmilesDetails(state),
+  formErrorMessage: getFormValidationErrorMessages(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

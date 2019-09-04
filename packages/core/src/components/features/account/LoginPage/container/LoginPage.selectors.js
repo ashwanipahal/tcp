@@ -38,7 +38,10 @@ export const getLoginErrorMessage = createSelector(
     if (errorCode && labels[`lbl_login_error_${errorCode}`]) {
       return labels[`lbl_login_error_${errorCode}`];
     }
-    return (loginState && loginState.getIn(['errorMessage', '_error'])) || labels.lbl_login_error;
+    return (
+      (loginState && loginState.getIn(['errorMessage', '_error'])) ||
+      (labels && labels.lbl_login_error)
+    );
   }
 );
 

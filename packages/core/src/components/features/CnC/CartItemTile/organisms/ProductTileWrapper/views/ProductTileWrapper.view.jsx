@@ -115,7 +115,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
             toggleEditAllowance={this.toggleEditAllowance}
             isEditAllowed={
               productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE ||
-              productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT
+              productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
+              productDetail.miscInfo.orderItemType === CARTPAGE_CONSTANTS.BOPIS
                 ? false
                 : isEditAllowed
             }

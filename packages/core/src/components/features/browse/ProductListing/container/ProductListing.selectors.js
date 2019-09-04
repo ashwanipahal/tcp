@@ -24,15 +24,17 @@ const getOrganizedHeaderNavigationTree = state => {
   //   return cachedOrganizedNavTree;
   // }
 
-  const organizedNav = unorganizedTree.map(L1 => {
-    return {
-      ...L1,
-      menuGroupings: generateGroups(L1),
-    };
-  });
+  const organizedNav =
+    unorganizedTree &&
+    unorganizedTree.map(L1 => {
+      return {
+        ...L1,
+        menuGroupings: generateGroups(L1),
+      };
+    });
 
   // only on browser so we dont need to keep deriving this
-  if (/* isClient() && */ organizedNav.length) {
+  if (/* isClient() && */ organizedNav && organizedNav.length) {
     // TODO - fix this - cachedOrganizedNavTree = organizedNav;
   }
 
@@ -51,6 +53,7 @@ export const getNavigationTree = state => {
   return (
     currentListingIds &&
     currentListingIds[0] &&
+    navTree &&
     navTree.find(L1 => L1.categoryId === currentListingIds[0])
   );
 };
@@ -89,12 +92,19 @@ export const getProductsFilters = createSelector(
   products => products && products.get('filtersMaps')
 );
 export const getLabelsProductListing = state => {
+  if (!state.Labels || !state.Labels.PLP)
+    return {
+      addToBag: {},
+      readMore: {},
+      readLess: {},
+    };
   const {
     PLP: {
       plpTiles: { lbl_add_to_bag: addToBag },
       seoText: { lbl_read_more: readMore, lbl_read_less: readLess },
     },
   } = state.Labels;
+
   return {
     addToBag,
     readMore,
