@@ -57,9 +57,19 @@ class ProductColorChipWrapper extends React.Component {
   }
 
   componentDidMount = () => {
-    const divWidth = this.containerRef && this.containerRef.clientWidth - 19;
-    const colorSwatchWidth = window.screen.width >= breakpoints.values.lg ? 34 : 21;
-    this.setState({ maxVisibleItems: Math.round(divWidth / colorSwatchWidth) || 5 });
+    const availableNextColorArrowWidth = 19;
+    const colorSwatchWidthForDesktop = 34;
+    const colorSwatchWidthForTabMobile = 21;
+    const defaultMaxVisibleItems = 5;
+    const divWidth =
+      this.containerRef && this.containerRef.clientWidth - availableNextColorArrowWidth;
+    const colorSwatchWidth =
+      window.screen.width >= breakpoints.values.lg
+        ? colorSwatchWidthForDesktop
+        : colorSwatchWidthForTabMobile;
+    this.setState({
+      maxVisibleItems: Math.round(divWidth / colorSwatchWidth) || defaultMaxVisibleItems,
+    });
   };
 
   captureContainerRef = ref => {
