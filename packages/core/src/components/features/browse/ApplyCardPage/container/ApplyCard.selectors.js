@@ -1,9 +1,16 @@
 import { createSelector } from 'reselect';
-import { USER_REDUCER_KEY } from '../../../../../constants/reducer.constants';
-import userAddressData from '../utils/utility';
+import {
+  USER_REDUCER_KEY,
+  ADDRESSBOOK_REDUCER_KEY,
+} from '../../../../../constants/reducer.constants';
+import { fetchBillingOrShippingAddress } from '../utils/utility';
 
 export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
+};
+
+export const getAddressListState = state => {
+  return state[ADDRESSBOOK_REDUCER_KEY];
 };
 
 export const getUserContactInfo = state => {
@@ -11,48 +18,59 @@ export const getUserContactInfo = state => {
   return personalData && personalData.get('contactInfo');
 };
 
-export const getMailingAddress = state => {
-  const personalData = state[USER_REDUCER_KEY].get('personalData');
-  const contactInfo = personalData && personalData.get('contactInfo');
-  return contactInfo && contactInfo.get('profileAddress');
-};
-
 export const getUserProfileData = createSelector(
   getUserContactInfo,
   getPersonalDataState,
-  getMailingAddress,
+  getAddressListState,
   (personalInformation, userTypeInformation, mailingAddress) => {
     if (userTypeInformation && !userTypeInformation.get('isGuest')) {
-      let firstName;
-      let lastName;
-      let emailAddress;
-      let phoneNumberWithAlt;
-      if (personalInformation) {
-        firstName = personalInformation.get('firstName');
-        lastName = personalInformation.get('lastName');
-        phoneNumberWithAlt = personalInformation.get('phoneNumber');
-        emailAddress =
-          personalInformation.get('emailAddress') &&
-          personalInformation.get('emailAddress').toLowerCase();
+      const add = mailingAddress.get('list');
+      const address = [];
+      let i = 0;
 
-        const addressTemp = mailingAddress ? mailingAddress.get('address') : null;
-        const address = addressTemp ? userAddressData(addressTemp) : null;
-        const { addressLine1, addressLine2, city, state, zipCode } = address;
-        const noCountryZip = zipCode;
-        return {
-          firstName,
-          lastName,
-          emailAddress,
-          address,
-          addressLine1,
-          addressLine2,
-          city,
-          state,
-          phoneNumberWithAlt,
-          noCountryZip,
-        };
+      if (add && add.size) {
+        while (i < add.size) {
+          address.push(add.get(i));
+          i += 1;
+        }
+
+        if (address.length) {
+          const plccAddress = fetchBillingOrShippingAddress(address);
+
+          const {
+            addressLine,
+            city,
+            email1,
+            firstName,
+            lastName,
+            phone1,
+            state,
+            zipCode,
+          } = plccAddress;
+          const noCountryZip = zipCode;
+          const addressLine1 = addressLine && addressLine[0];
+          const addressLine2 = addressLine && addressLine[1];
+          const emailAddress = email1;
+          const phoneNumberWithAlt = phone1;
+          const statewocountry = state;
+          return {
+            firstName,
+            lastName,
+            emailAddress,
+            address,
+            addressLine1,
+            addressLine2,
+            city,
+            statewocountry,
+            phoneNumberWithAlt,
+            noCountryZip,
+          };
+        }
       }
-      return null;
+      const emailAddress =
+        personalInformation.get('emailAddress') &&
+        personalInformation.get('emailAddress').toLowerCase();
+      return { emailAddress };
     }
     return null;
   }
