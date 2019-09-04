@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MiniBagHeader from '../views/MiniBagHeader';
+import { MiniBagHeaderVanilla } from '../views/MiniBagHeader';
 
 describe('MiniBagHeader component', () => {
   it('renders correctly', () => {
@@ -16,7 +16,23 @@ describe('MiniBagHeader component', () => {
       cartItemCount: '12',
       subTotal: '122',
     };
-    const component = shallow(<MiniBagHeader {...props} />);
+    const component = shallow(<MiniBagHeaderVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+  it('renders correctly without username', () => {
+    const props = {
+      labels: {
+        viewBag: 'view Bag content',
+        viewSaveForLater: 'save for later',
+        subTotal: 'total',
+        points: 'points',
+        inRewards: 'rewards',
+      },
+
+      cartItemCount: '12',
+      subTotal: '122',
+    };
+    const component = shallow(<MiniBagHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
