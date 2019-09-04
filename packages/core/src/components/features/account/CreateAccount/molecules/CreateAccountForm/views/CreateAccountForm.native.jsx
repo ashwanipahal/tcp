@@ -46,6 +46,7 @@ class CreateAccountForm extends PureComponent<Props> {
       hideShowPwd,
       onConfirmPwdHideShowClick,
       confirmHideShowPwd,
+      getTouchStatus,
     } = this.props;
     return (
       <View {...this.props}>
@@ -173,24 +174,29 @@ class CreateAccountForm extends PureComponent<Props> {
             }`}
             marginTop={13}
           />
-          <Field
-            name="useTouchID"
-            component={InputCheckbox}
-            dataLocator="useTouchID"
-            disabled={false}
-            marginTop={13}
-            rightText={labels.registration.lbl_createAccount_useTouchId}
-            onClick={this.onUseTouchID}
-          />
-          <Field
-            name="useFaceID"
-            component={InputCheckbox}
-            dataLocator="useFaceID"
-            disabled={false}
-            rightText={labels.registration.lbl_createAccount_useFaceId}
-            marginTop={13}
-            onClick={this.onUseFaceID}
-          />
+          {getTouchStatus === 'TouchID' ||
+            (getTouchStatus && (
+              <Field
+                name="useTouchID"
+                component={InputCheckbox}
+                dataLocator="useTouchID"
+                disabled={false}
+                marginTop={13}
+                rightText={labels.registration.lbl_createAccount_useTouchId}
+                onClick={this.onUseTouchID}
+              />
+            ))}
+          {getTouchStatus === 'FaceID' && (
+            <Field
+              name="useFaceID"
+              component={InputCheckbox}
+              dataLocator="useFaceID"
+              disabled={false}
+              rightText={labels.registration.lbl_createAccount_useFaceId}
+              marginTop={13}
+              onClick={this.onUseFaceID}
+            />
+          )}
           <ButtonWrapper>
             <CustomButton
               text={labels.registration.lbl_createAccount_createAccount}
