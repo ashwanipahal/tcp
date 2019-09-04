@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/GiftCards.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
@@ -16,7 +17,10 @@ const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
       data-locator="gift-cards"
       className="elem-mb-XS elem-mt-XXL"
     >
-      {isGiftCardApplied ? labels.appliedCardsTitle : labels.availableGiftCards}
+      {getLabelValue(
+        labels,
+        isGiftCardApplied ? 'lbl_giftcard_appliedCards' : 'lbl_giftcard_availableCards'
+      )}
     </BodyCopy>
   );
 };
@@ -41,7 +45,7 @@ const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards) => 
             fullWidth="true"
             disabled={false}
           >
-            {labels.newGiftCard}
+            {getLabelValue(labels, 'lbl_giftcard_newGiftCard')}
           </Button>
         </Col>
       </Row>
@@ -76,7 +80,7 @@ export const GiftCards = ({
             data-locator="gift-cards"
             className="elem-mb-XS elem-mt-XXL"
           >
-            {labels.giftCardTitle}
+            {getLabelValue(labels, 'lbl_giftcard_title')}
           </BodyCopy>
           <BodyCopy
             fontFamily="secondary"
@@ -85,7 +89,7 @@ export const GiftCards = ({
             data-locator="gift-cards"
             className="elem-mb-XS elem-mt-MED"
           >
-            {labels.addUpToMsg}
+            {getLabelValue(labels, 'lbl_giftcard_addUptoMsg')}
           </BodyCopy>
           {GiftCardSectionHeading(labels, true)}
 
@@ -108,7 +112,10 @@ export const GiftCards = ({
             data-locator="gift-cards"
             className="elem-mb-XS elem-mt-MED"
           >
-            {`${labels.headsUp} ${labels.headsUpMsg}`}
+            {`${getLabelValue(labels, 'lbl_giftcard_headsUpTitle')} ${getLabelValue(
+              labels,
+              'lbl_giftcard_headsUpMsg'
+            )}`}
           </BodyCopy>
 
           {GiftCardSectionHeading(labels)}

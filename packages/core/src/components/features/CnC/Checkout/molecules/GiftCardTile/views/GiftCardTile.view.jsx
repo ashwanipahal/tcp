@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/GiftCardTile.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
@@ -50,7 +51,7 @@ class GiftCardTile extends React.PureComponent {
           fullWidth="true"
           disabled={false}
         >
-          {labels.remove}
+          {getLabelValue(labels, 'lbl_giftcard_removeBtn')}
         </Button>
       );
     }
@@ -67,7 +68,7 @@ class GiftCardTile extends React.PureComponent {
         fullWidth="true"
         disabled={!orderBalanceTotal}
       >
-        {labels.apply}
+        {getLabelValue(labels, 'lbl_giftcard_applyBtn')}
       </Button>
     );
   }
@@ -99,7 +100,9 @@ class GiftCardTile extends React.PureComponent {
     let remainingBalance = '';
     if (isGiftCardApplied) {
       cardEndingIn = cardData.get('endingNumbers');
-      remainingBalance = ` | ${labels.remainingBalance} : ${cardData.get('remainingBalance')}`;
+      remainingBalance = ` | ${getLabelValue(labels, 'lbl_giftcard_remainingBal')} : ${cardData.get(
+        'remainingBalance'
+      )}`;
     }
     return (
       <div className={className}>
@@ -120,7 +123,10 @@ class GiftCardTile extends React.PureComponent {
                 color="text.secondary"
                 className="gift_card_number_detail"
               >
-                {`${labels.endingIn} ${cardEndingIn} ${remainingBalance}`}
+                {`${getLabelValue(
+                  labels,
+                  'lbl_giftcard_endingIn'
+                )} ${cardEndingIn} ${remainingBalance}`}
               </BodyCopy>
             </Col>
             <Col

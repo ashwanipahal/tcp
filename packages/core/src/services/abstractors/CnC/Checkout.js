@@ -262,25 +262,35 @@ export function setShippingMethodAndAddressId(
 }
 
 export function addGiftCardPaymentToOrder(args) {
+  const {
+    billingAddressId,
+    orderGrandTotal,
+    cardNumber,
+    cardPin,
+    balance,
+    saveToAccount,
+    nickName,
+    creditCardId,
+  } = args;
   const paymentInstruction = {
-    billing_address_id: (args.billingAddressId || '').toString(),
-    piAmount: (args.orderGrandTotal || '').toString(),
+    billing_address_id: (billingAddressId || '').toString(),
+    piAmount: (orderGrandTotal || '').toString(),
     payMethodId: 'GiftCard',
     cc_brand: 'GC',
-    account: (args.cardNumber || '').toString(),
-    account_pin: (args.cardPin || '').toString(),
-    balance: args.balance ? args.balance : null,
+    account: (cardNumber || '').toString(),
+    account_pin: (cardPin || '').toString(),
+    balance: balance || null,
   };
 
   const headerValue = {
     isRest: 'true',
     identifier: 'true',
-    savePayment: args.saveToAccount ? 'true' : 'false', // save to account for registered users
-    nickName: args.nickName || `${'Billing_'}${new Date().getTime().toString()}`,
+    savePayment: saveToAccount ? 'true' : 'false', // save to account for registered users
+    nickName: nickName || `${'Billing_'}${new Date().getTime().toString()}`,
   };
 
-  if (args.creditCardId) {
-    paymentInstruction.creditCardId = (args.creditCardId || '').toString();
+  if (creditCardId) {
+    paymentInstruction.creditCardId = (creditCardId || '').toString();
   }
 
   const payload = {

@@ -23,7 +23,7 @@ describe('#Added to bag Selectors', () => {
 
   it('#getGiftSectionLabels should return lables', () => {
     expect(GIFTCARD_SELECTORS.getGiftSectionLabels(state)).toEqual({
-      giftCardTitle: 'Gift Cards',
+      lbl_giftcard_title: 'Gift Cards',
     });
   });
 

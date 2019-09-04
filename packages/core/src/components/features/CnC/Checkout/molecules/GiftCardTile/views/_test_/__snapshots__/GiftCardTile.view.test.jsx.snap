@@ -28,7 +28,7 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
           lineHeight="normal"
           textAlign="left"
         >
-          undefined  
+          lbl_giftcard_endingIn  
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -48,7 +48,9 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
           fullWidth="true"
           onClick={[Function]}
           type="submit"
-        />
+        >
+          lbl_giftcard_applyBtn
+        </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
   </div>
@@ -83,7 +85,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
           lineHeight="normal"
           textAlign="left"
         >
-          undefined  
+          lbl_giftcard_endingIn  
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -103,7 +105,9 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
           fullWidth="true"
           onClick={[Function]}
           type="submit"
-        />
+        >
+          lbl_giftcard_applyBtn
+        </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
   </div>
@@ -138,7 +142,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
           lineHeight="normal"
           textAlign="left"
         >
-          undefined  
+          lbl_giftcard_endingIn  
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -158,7 +162,9 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
           fullWidth="true"
           onClick={[Function]}
           type="submit"
-        />
+        >
+          lbl_giftcard_applyBtn
+        </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
   </div>
@@ -209,7 +215,7 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
           lineHeight="normal"
           textAlign="left"
         >
-          undefined  
+          lbl_giftcard_endingIn  
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -229,7 +235,9 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
           fullWidth="true"
           onClick={[Function]}
           type="submit"
-        />
+        >
+          lbl_giftcard_applyBtn
+        </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
   </div>
@@ -264,7 +272,7 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
           lineHeight="normal"
           textAlign="left"
         >
-          undefined undefined  | undefined : undefined
+          lbl_giftcard_endingIn undefined  | lbl_giftcard_remainingBal : undefined
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -284,7 +292,9 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
           fullWidth="true"
           onClick={[Function]}
           type="submit"
-        />
+        >
+          lbl_giftcard_removeBtn
+        </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
   </div>
