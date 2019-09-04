@@ -4,7 +4,7 @@ export const TrackOrderTopSectionView = styled.View`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export const ModalHeader = styled.Text`

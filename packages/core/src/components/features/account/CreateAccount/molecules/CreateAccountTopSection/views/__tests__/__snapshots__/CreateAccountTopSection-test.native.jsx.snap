@@ -1,7 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm component should renders correctly 1`] = `
-<View
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "labels": [Function],
+      },
+      "attrs": Array [],
+      "displayName": "Styled(CreateAccountTopSection)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  ",
+          [Function],
+          "
+",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
   labels={
     Object {
       "description": "Signed up in store?
@@ -19,87 +47,5 @@ An online account has been created with your email! Click here to reset your pas
       "subHeading": "Log in to earn points for MY PLACE REWARDS ",
     }
   }
->
-  <Styled(View)>
-    <Styled(View)>
-      <Styled(ImageComp)
-        height={60}
-        source={
-          Object {
-            "testUri": "../../../../core/src/assets/my-place-rewards.png",
-          }
-        }
-        width={186}
-      />
-    </Styled(View)>
-    <Styled(LineComp)
-      borderColor={null}
-      borderWidth={0.65}
-      marginBottom={0}
-      marginTop={28}
-    />
-    <Styled(View)
-      className="labels-wrapper"
-    >
-      <Styled(BodyCopy)
-        component="span"
-        fontSize="fs13"
-        text="Create a My Place Rewards account to earn"
-        textAlign="center"
-      />
-      <Styled(View)>
-        <Styled(BodyCopy)
-          color="gray.800"
-          fontSize="fs14"
-          fontWeight="black"
-          text="points on every purchase"
-          textAlign="center"
-        />
-        <Styled(BodyCopy)
-          color="gray.800"
-          fontSize="fs14"
-          fontWeight="black"
-          text="$1 Spent = 1 POINT"
-          textAlign="center"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Styled(BodyCopy)
-          fontSize="fs12"
-          text="Signed up in Store?"
-          textAlign="center"
-        />
-        <Styled(BodyCopy)
-          fontSize="fs12"
-          text="An online account has been created"
-          textAlign="center"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Styled(Anchor)
-          accessibilityLabel=""
-          anchorVariation=""
-          class="clickhere"
-          customStyle={Object {}}
-          fontSizeVariation="medium"
-          locator=""
-          onPress={[Function]}
-          text="Click here"
-          underline={true}
-          visible={false}
-        />
-        <Styled(BodyCopy)
-          component="span"
-          fontSize="fs12"
-        />
-      </Styled(View)>
-    </Styled(View)>
-    <Styled(LineComp)
-      borderColor={null}
-      borderWidth={0.65}
-      marginBottom={0}
-      marginTop={28}
-    />
-  </Styled(View)>
-</View>
+/>
 `;

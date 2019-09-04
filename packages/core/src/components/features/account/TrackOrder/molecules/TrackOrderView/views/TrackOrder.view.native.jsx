@@ -47,7 +47,8 @@ type Props = {
   onSubmit: Function,
   showNotification: string,
   onChangeForm: Function,
-  onRequestClose: Function,
+  handleToggle: Function,
+  setModalMountState: Function,
 };
 export const TrackOrderView = ({
   labels,
@@ -55,7 +56,8 @@ export const TrackOrderView = ({
   onSubmit,
   showNotification,
   onChangeForm,
-  onRequestClose,
+  handleToggle,
+  setModalMountState,
 }: Props) => {
   return (
     <TrackOrderViewNative>
@@ -70,7 +72,11 @@ export const TrackOrderView = ({
         </Notification>
       ) : null}
       <TrackOrderForm labels={labels} handleSubmit={onSubmit} onChangeForm={onChangeForm} />
-      <TrackOrderBottomSection labels={labels} toggleModal={onRequestClose} />
+      <TrackOrderBottomSection
+        labels={labels}
+        toggleModal={handleToggle}
+        setModalMountState={setModalMountState}
+      />
     </TrackOrderViewNative>
   );
 };

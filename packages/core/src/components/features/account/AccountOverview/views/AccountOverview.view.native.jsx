@@ -34,7 +34,6 @@ class AccountOverview extends PureComponent<Props> {
       getComponentId: {
         login: '',
         createAccount: '',
-        trackOrder: '',
         favorites: '',
       },
     };
@@ -64,11 +63,6 @@ class AccountOverview extends PureComponent<Props> {
         />
       );
     }
-    if (getComponentId.trackOrder) {
-      componentContainer = (
-        <TrackOrderContainer navigation={navigation} onRequestClose={this.toggleModal} />
-      );
-    }
     return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
@@ -95,11 +89,15 @@ class AccountOverview extends PureComponent<Props> {
         ? {
             login: getComponentId.login,
             createAccount: getComponentId.createAccount,
-            trackOrder: getComponentId.trackOrder,
             favorites: getComponentId.favorites,
           }
         : '',
     }));
+  };
+
+  showTrackOrderModal = () => {
+    const { openTrackOrder } = this.props;
+    openTrackOrder({ state: true });
   };
 
   getModalHeader = (getComponentId, labels) => {
@@ -110,9 +108,6 @@ class AccountOverview extends PureComponent<Props> {
     if (getComponentId.createAccount) {
       header = labels.lbl_overview_createAccount;
     }
-    if (getComponentId.trackOrder) {
-      header = null;
-    }
     return header;
   };
 
@@ -122,7 +117,6 @@ class AccountOverview extends PureComponent<Props> {
     const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
-    const isTrackOrder = getComponentId.trackOrder;
 
     return (
       <View style={viewContainerStyle}>
@@ -183,7 +177,6 @@ class AccountOverview extends PureComponent<Props> {
                       login: false,
                       createAccount: true,
                       favorites: false,
-                      trackOrder: false,
                     },
                   })
                 }
@@ -205,7 +198,6 @@ class AccountOverview extends PureComponent<Props> {
                       login: true,
                       createAccount: false,
                       favorites: false,
-                      trackOrder: false,
                     },
                   })
                 }
@@ -217,11 +209,8 @@ class AccountOverview extends PureComponent<Props> {
                 isOpen={showModal}
                 onRequestClose={this.toggleModal}
                 heading={modalHeaderLbl}
-                horizontalBar={!isTrackOrder}
-                headingAlign={isTrackOrder ? 'center' : ''}
                 headingFontFamily="secondary"
-                fontSize={isTrackOrder ? 'fs22' : 'fs16'}
-                headerStyle={isTrackOrder ? { width: '100%' } : {}}
+                fontSize="fs16"
               >
                 <SafeAreaView>
                   <ModalViewWrapper>
@@ -270,17 +259,7 @@ class AccountOverview extends PureComponent<Props> {
             <Panel
               title={labels.lbl_overview_trackYourOrder}
               isVariationTypeLink
-              handleComponentChange={e =>
-                this.toggleModal({
-                  e,
-                  getComponentId: {
-                    login: false,
-                    createAccount: false,
-                    trackOrder: true,
-                    favorites: false,
-                  },
-                })
-              }
+              handleComponentChange={this.showTrackOrderModal}
             />
             <UnderlineStyle />
             <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
@@ -290,6 +269,7 @@ class AccountOverview extends PureComponent<Props> {
         )}
 
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
+        <TrackOrderContainer handleToggle={this.toggleModal} navigation={navigation} />
         <UnderlineStyle />
       </View>
     );

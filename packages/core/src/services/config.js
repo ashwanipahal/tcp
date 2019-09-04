@@ -82,6 +82,7 @@ export const API_CONFIG = {
     countryKey: '_US',
     siteId: 'us',
     siteIdCMS: 'USA',
+    catalogId: '',
   },
   CA_CONFIG_OPTIONS: {
     storeId: '10152',
@@ -89,6 +90,7 @@ export const API_CONFIG = {
     countryKey: '_CA',
     siteId: 'ca',
     siteIdCMS: 'Canada',
+    catalogId: '',
   },
   /* --------- UNBXD ------- */
   version: 'V2',

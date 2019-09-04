@@ -12,7 +12,6 @@ const InputField = styled.View`
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  z-index: 1;
 `;
 
 const CtaView = styled.View`

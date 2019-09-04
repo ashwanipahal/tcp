@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
-import { DetailedCouponTile } from '../DetailedCouponTile.view';
+// eslint-disable-next-line import/no-named-as-default
+import DetailedCouponTile from '../DetailedCouponTile.view';
 
 import { COUPON_STATUS } from '../../../../../../../../services/abstractors/CnC/CartItemTile';
 

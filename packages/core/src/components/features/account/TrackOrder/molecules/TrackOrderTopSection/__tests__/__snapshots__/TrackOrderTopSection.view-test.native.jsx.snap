@@ -2,6 +2,12 @@
 
 exports[`TrackOrderTopSection component should renders correctly 1`] = `
 <Styled(View)>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      data-locator="trackordermodal-overlayheading"
+      id="trackorder__modal__heading"
+    />
+  </Styled(Text)>
   <Styled(BodyCopy)
     data-locator="trackordermodal-overlaysubheading"
     id="trackorder__modal__subheading"

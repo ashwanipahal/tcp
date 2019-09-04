@@ -11,6 +11,7 @@ import {
 type Props = {
   labels: object,
   toggleModal: Function,
+  setModalMountState: Function,
 };
 
 /**
@@ -21,7 +22,7 @@ type Props = {
 class TrackOrderBottomSection extends React.Component<Props> {
   handleDefaultLinkClick(e) {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, setModalMountState } = this.props;
     const comp = {
       getComponentId: {
         login: true,
@@ -29,7 +30,7 @@ class TrackOrderBottomSection extends React.Component<Props> {
         trackOrder: false,
       },
     };
-    toggleModal({});
+    setModalMountState({ state: false });
     toggleModal(comp);
   }
 

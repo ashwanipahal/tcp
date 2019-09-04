@@ -15,6 +15,7 @@ import {
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { routerPush } from '../../../../../utils';
 import { ROUTE_PATH } from '../../../../../config/route.config';
+import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/index.native';
 
 // @flow
 type Props = {
@@ -30,6 +31,8 @@ type Props = {
   setTrackOrderModalMountState: Function,
   showNotification: string,
   onChangeForm: Function,
+  handleToggle: Function,
+  navigation: Object,
 };
 export class TrackOrderContainer extends React.PureComponent<Props> {
   componentDidUpdate() {
@@ -51,10 +54,18 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
    * @param {boolean} isGuest - check if it is guest login or signed in user.
    */
   trackOrderDetail = (orderId = '', encryptedEmailAddress = '', isUserLoggedIn = false) => {
-    if (!isUserLoggedIn)
-      routerPush(
-        ROUTE_PATH.guestOrderDetails({ pathSuffix: `${orderId}/${encryptedEmailAddress}` })
-      );
+    const { navigation, setTrackOrderModalMountState } = this.props;
+    const hasMobile = isMobileApp();
+    const pathToNavigate = ROUTE_PATH.guestOrderDetails({
+      pathSuffix: `${orderId}/${encryptedEmailAddress}`,
+    });
+    if (!isUserLoggedIn) {
+      setTrackOrderModalMountState({ state: false });
+      if (hasMobile) {
+        // TO DO - This has to be implemented when the track order page is available
+        navigateToNestedRoute(navigation, 'AccountStack', 'Account');
+      } else routerPush(pathToNavigate);
+    }
   };
 
   handleSubmit(e) {
@@ -77,6 +88,7 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
       setTrackOrderModalMountState,
       showNotification,
       onChangeForm,
+      handleToggle,
     } = this.props;
     return (
       <TrackOrderView
@@ -90,6 +102,7 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
         className="TrackOrder__Modal"
         showNotification={showNotification}
         onChangeForm={onChangeForm}
+        handleToggle={handleToggle}
       />
     );
   }
