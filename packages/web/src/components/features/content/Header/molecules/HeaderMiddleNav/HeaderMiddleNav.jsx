@@ -63,7 +63,7 @@ class HeaderMiddleNav extends React.PureComponent {
   };
 
   toggleMiniBagModal = ({ e, isOpen }) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     if (window.innerWidth <= 1024) {
       routerPush('/bag', '/bag');
     } else {
