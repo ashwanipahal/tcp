@@ -15,7 +15,6 @@ import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
 
 export class MyRewardsContainer extends PureComponent {
-
   static propTypes = {
     fetchCoupons: PropTypes.func.isRequired,
     view: PropTypes.string,

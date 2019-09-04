@@ -5,9 +5,8 @@ import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWra
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { StyledBodyCopy } from '../styles/EmptyRewards.style.native';
 import Button from '../../../../../../common/atoms/Button';
-import { navigateToNestedRoute } from '../../../../../../../utils/index.native';
 
-const EmptyRewards = ({ labels, navigation }) => {
+const EmptyRewards = ({ labels }) => {
   return (
     <View>
       <StyledBodyCopy>
@@ -33,9 +32,6 @@ const EmptyRewards = ({ labels, navigation }) => {
           color="white"
           data-locator="my-rewards-shop-now-btn"
           text={labels.myPlaceRewards.lbl_my_rewards_shop_now}
-          onPress={() => {
-            navigateToNestedRoute(navigation, 'HomeStack', 'home');
-          }}
         />
       </ViewWithSpacing>
     </View>
@@ -44,7 +40,6 @@ const EmptyRewards = ({ labels, navigation }) => {
 
 EmptyRewards.propTypes = {
   labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
-  navigation: PropTypes.shape({}).isRequired,
 };
 
 EmptyRewards.defaultProps = {

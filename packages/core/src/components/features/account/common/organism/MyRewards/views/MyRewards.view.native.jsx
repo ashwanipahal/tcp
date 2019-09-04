@@ -60,7 +60,7 @@ class MyRewards extends PureComponent {
   };
 
   render() {
-    const { labels, showLink, navigation, coupons } = this.props;
+    const { labels, showLink, coupons } = this.props;
     const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
     return (
       <View>
@@ -90,7 +90,7 @@ class MyRewards extends PureComponent {
             />
           </View>
         ) : (
-          <EmptyRewards labels={labels} navigation={navigation} />
+          <EmptyRewards labels={labels} />
         )}
         {showLink && (
           <StyledAnchorWrapper>
@@ -132,7 +132,6 @@ MyRewards.propTypes = {
   onRemove: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
   showLink: PropTypes.bool,
-  navigation: PropTypes.shape({}).isRequired,
 };
 
 MyRewards.defaultProps = {
