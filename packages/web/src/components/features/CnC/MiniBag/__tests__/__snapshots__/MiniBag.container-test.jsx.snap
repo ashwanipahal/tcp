@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MiniBagContainer should render correctly 1`] = `
-<Styled(MiniBag)
+<withRouter(Styled(MiniBag))
   onRequestClose={[Function]}
 />
 `;
