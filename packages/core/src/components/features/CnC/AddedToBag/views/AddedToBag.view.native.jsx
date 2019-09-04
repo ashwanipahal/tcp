@@ -39,7 +39,7 @@ const AddedToBag = ({
       }}
     >
       <StyledWrapper>
-        {/* Below are place holders for different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
+        {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
         <AddedToBagWrapper>
           <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
           <AddedToBagViewPoints labels={labels} />
