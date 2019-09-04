@@ -18,27 +18,21 @@ class Dropdown extends React.PureComponent {
     this.dropDown = null;
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.active !== state.active) {
-      return {
-        navState:{
-          component: props.active
-        },
-      };
-    }
-    return null;
-  }
-
   componentDidMount() {
     this.dropDown = document.querySelector('.drop_down');
     window.addEventListener('click', this.closeDropdownIfClickOutside);
+    const { options, active } = this.props;
+    this.calNavState(options, {
+      component: active,
+    });
   }
 
   componentDidUpdate(prevProps) {
-    const { options } = this.props;
-    const { navState } = this.state;
-    if (options !== prevProps.options) {
-      this.calNavState(options, navState);
+    const { options = [], active } = this.props;
+    if (active !== prevProps.active || options.length !== prevProps.options.length) {
+      this.calNavState(options, {
+        component: active,
+      });
     }
   }
 
@@ -152,16 +146,6 @@ class Dropdown extends React.PureComponent {
   render() {
     const { dropDownExpand, navState } = this.state;
     const { className, options } = this.props;
-
-
-    console.log("furkan------------------");
-    console.log(navState);
-    console.log("furkan------------------");
-
-    console.log("ali------------------");
-    console.log(options);
-    console.log("ali------------------");
-
     return (
       <BodyCopy component="div" className={`${className} drop_down`}>
         <BodyCopy
