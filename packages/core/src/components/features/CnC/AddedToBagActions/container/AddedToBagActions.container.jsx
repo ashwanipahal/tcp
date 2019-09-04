@@ -16,6 +16,11 @@ export class AddedToBagContainer extends React.Component<Props> {
     this.handleContinueShopping = this.handleContinueShopping.bind(this);
   }
 
+  componentWillUnmount() {
+    const { closeCheckoutModalMountState } = this.props;
+    closeCheckoutModalMountState({ state: false });
+  }
+
   handleContinueShopping() {
     const { closeAddedToBag } = this.props;
     closeAddedToBag();
