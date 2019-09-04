@@ -9,10 +9,10 @@ describe('RewardsPoints Slider View', () => {
       currentPoints: '',
       totalRewards: '',
       labels: {
-        lbl_common_current_points: 'Current Points',
-        lbl_common_heading: 'My rewards',
-        lbl_common_next_reward: 'Next Rewards',
-        lbl_common_currency: '$',
+        lbl_rewardPoints_currentPoints: 'Current Points',
+        lbl_rewardPoints_heading: 'My rewards',
+        lbl_rewardPoints_nextReward: 'Next Rewards',
+        lbl_rewardPoints_currency: '$',
       },
     };
     const tree = shallow(<RewardsPointsSliderVanilla {...props} />);

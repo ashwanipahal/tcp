@@ -27,4 +27,5 @@ export const LABELS = {
   labels: 'labels',
   global: 'global',
   modules: 'modules',
+  account: 'account',
 };

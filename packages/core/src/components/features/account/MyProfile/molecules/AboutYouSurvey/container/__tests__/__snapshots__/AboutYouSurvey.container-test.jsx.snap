@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouSurveyContainer should render correctly 1`] = `
+<div
+  className=""
+>
+  <AboutYouSurvey
+    clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+    className=""
+    labels={Object {}}
+    onSubmit={[MockFunction]}
+    saveSurveyData={[Function]}
+    setSurveyAnswersAction={[MockFunction]}
+    setSurveyQuestionsAction={[MockFunction]}
+    toggleModalState={[MockFunction]}
+    userFirstName=""
+    userSurvey={null}
+    userSurveyQuestions={
+      Array [
+        Object {
+          "answers": Array [],
+          "id": "answer1",
+          "multiSelect": false,
+          "options": Array [
+            Object {
+              "id": "shopper1",
+              "selected": false,
+              "value": undefined,
+            },
+            Object {
+              "id": "shopper2",
+              "selected": false,
+              "value": undefined,
+            },
+            Object {
+              "id": "shopper3",
+              "selected": false,
+              "value": undefined,
+            },
+            Object {
+              "id": "shopper4",
+              "selected": false,
+              "value": undefined,
+            },
+          ],
+          "optionsMap": Object {
+            "shopper1": undefined,
+            "shopper2": undefined,
+            "shopper3": undefined,
+            "shopper4": undefined,
+          },
+          "statement": undefined,
+        },
+        Object {
+          "answers": Array [],
+          "id": "answer2",
+          "multiSelect": true,
+          "options": Array [
+            Object {
+              "id": "shopper1",
+              "selected": false,
+              "value": undefined,
+            },
+            Object {
+              "id": "shopper2",
+              "selected": false,
+              "value": undefined,
+            },
+            Object {
+              "id": "shopper3",
+              "selected": false,
+              "value": undefined,
+            },
+            Object {
+              "id": "shopper4",
+              "selected": false,
+              "value": undefined,
+            },
+            Object {
+              "id": "shopper5",
+              "selected": false,
+              "value": undefined,
+            },
+          ],
+          "optionsMap": Object {
+            "shopper1": undefined,
+            "shopper2": undefined,
+            "shopper3": undefined,
+            "shopper4": undefined,
+            "shopper5": undefined,
+          },
+          "statement": undefined,
+        },
+      ]
+    }
+  />
+</div>
+`;

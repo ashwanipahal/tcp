@@ -18,7 +18,6 @@ exports[`FooterNavLinks component renders default footer correctly 1`] = `
   <Styled(FooterNavLinksList)
     isLoggedIn={false}
     listArray={Array []}
-    openTrackOrder={[Function]}
   />
 </div>
 `;

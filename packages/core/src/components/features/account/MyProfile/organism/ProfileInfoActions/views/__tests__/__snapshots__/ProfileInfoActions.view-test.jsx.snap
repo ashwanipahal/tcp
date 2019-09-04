@@ -128,10 +128,20 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityId="aboutYourself"
         activityTitle="+20%"
         dataLocatorPrefix="survey"
-        redirectTo="/account"
+        noLink={true}
+        onClick={[Function]}
+        redirectAsPath=""
+        redirectTo=""
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(AboutYouSurveyModal)
+    className=""
+    labels={Object {}}
+    openState={false}
+    toggleModalState={[Function]}
+    userSurvey={Immutable.List []}
+  />
 </Styled(AccountOverviewTile)>
 `;
 
@@ -298,9 +308,28 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         activityId="aboutYourself"
         activityTitle="+20%"
         dataLocatorPrefix="survey"
-        redirectTo="/account"
+        noLink={true}
+        onClick={[Function]}
+        redirectAsPath=""
+        redirectTo=""
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(AboutYouSurveyModal)
+    className=""
+    labels={Object {}}
+    openState={false}
+    toggleModalState={[Function]}
+    userSurvey={
+      Immutable.List [
+        Immutable.List [
+          "test",
+        ],
+        Immutable.List [
+          "test",
+        ],
+      ]
+    }
+  />
 </Styled(AccountOverviewTile)>
 `;
