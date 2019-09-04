@@ -1,7 +1,6 @@
 import React from 'react';
 import fetchData from '@tcp/core/src/service/API';
 import HTML from 'react-native-render-html';
-import logger from '@tcp/core/src/utils/loggerInstance';
 
 export default class EspotContainer extends React.Component {
   constructor(props) {
@@ -39,8 +38,10 @@ export default class EspotContainer extends React.Component {
         });
       })
       .catch(err => {
-        logger.error('Error in API');
-        logger.error(err);
+        // eslint-disable-next-line no-console
+        console.error('Error in API');
+        // eslint-disable-next-line no-console
+        console.error(err);
       });
   };
 
