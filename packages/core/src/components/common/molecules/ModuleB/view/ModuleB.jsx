@@ -8,7 +8,7 @@ const { ctaTypes } = config;
 const { ctaItems } = mock.moduleB.composites;
 
 const ModuleB = () => {
-  const buttonListCtaType = ctaTypes.stackedCTAList;
+  const buttonListCtaType = ctaTypes.CTAButtonCarousel;
   return (
     <div>
       <ButtonList
@@ -17,7 +17,7 @@ const ModuleB = () => {
         dataLocatorDivisionImages={getLocator('moduleA_cta_image')}
         dataLocatorTextCta={getLocator('moduleA_cta_links')}
         dualVariation={{
-          name: 'dropdownCategoryButton',
+          name: 'dropdownButtonCTA',
           displayProps: {
             small: false,
             medium: true,

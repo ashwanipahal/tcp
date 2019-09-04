@@ -17,7 +17,7 @@ const ButtonCTA = props => {
     uniqueKey,
     className,
     dataLocator,
-    ctaProps: { className: ctaClassName, ctaVariation, link },
+    ctaInfo: { className: ctaClassName, ctaVariation, link },
     ...otherProps
   } = props;
 
@@ -41,7 +41,7 @@ ButtonCTA.propTypes = {
   uniqueKey: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
-  ctaProps: PropTypes.shape({
+  ctaInfo: PropTypes.shape({
     ctaVariation: PropTypes.string.isRequired,
     className: PropTypes.string.isRequired,
     link: PropTypes.shape({

@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
 
 export default css`
-  &.dropdown-category-button-wrapper {
+  &.dropdown-button-wrapper {
     text-align: center;
   }
-  .dropdown-category-button {
+  .dropdown-button-container {
     position: relative;
   }
   .dropdown-icon {
@@ -21,7 +21,7 @@ export default css`
   }
   .button-panel {
     position: absolute;
-    z-index: 1;
+    z-index: ${props => props.theme.zindex.zOverlay};
     display: none;
   }
   .button-panel.is-open {
@@ -42,18 +42,18 @@ export default css`
     background: ${props => props.theme.colorPalette.blue[50]};
   }
   @media ${props => props.theme.mediaQuery.medium} {
-    .dropdown-category-button {
+    .dropdown-button-container {
       display: inline-block;
       button {
-        width: 188px;
+        min-width: 188px;
         height: 42px;
       }
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
-    .dropdown-category-button {
+    .dropdown-button-container {
       button {
-        width: 210px;
+        min-width: 210px;
         height: 51px;
       }
     }

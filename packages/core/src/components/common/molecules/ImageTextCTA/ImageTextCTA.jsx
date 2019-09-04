@@ -4,15 +4,15 @@ import { Anchor, DamImage, BodyCopy } from '../../atoms';
 
 /**
  * This component uses Anchor and DamImage atoms to render button list
- * ImageCTAList: Buttons are wrapped inside an anchor which makes image clickable.
+ * ImageTextCTA: Buttons are wrapped inside an anchor which makes image clickable.
  * The image and a text for that image comes as a button list.
  */
-const ImageCTA = props => {
+const ImageTextCTA = props => {
   const {
     uniqueKey,
     className,
     dataLocator,
-    ctaProps: { link, className: ctaClassName },
+    ctaInfo: { link, className: ctaClassName },
     image,
     fontWeight,
     fontSize,
@@ -57,11 +57,11 @@ const ImageCTA = props => {
   );
 };
 
-ImageCTA.propTypes = {
+ImageTextCTA.propTypes = {
   uniqueKey: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.shape({}).isRequired,
-  ctaProps: PropTypes.shape({
+  ctaInfo: PropTypes.shape({
     link: PropTypes.shape({
       url: PropTypes.string.isRequired,
       target: PropTypes.string.isRequired,
@@ -76,4 +76,4 @@ ImageCTA.propTypes = {
   textAlign: PropTypes.shape({}).isRequired,
 };
 
-export default ImageCTA;
+export default ImageTextCTA;

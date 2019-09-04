@@ -249,7 +249,7 @@ export default css`
       display: block;
     }
 
-    &.button-list-wrapper.is-tablet-hidden {
+    &.is-tablet-hidden {
       display: none;
     }
   }
@@ -297,7 +297,7 @@ export default css`
       margin: 0 15px;
     }
 
-    &.button-list-wrapper.is-tablet-hidden {
+    &.is-tablet-hidden {
       display: none;
     }
   }

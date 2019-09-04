@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import withStyles from '../../hoc/withStyles';
 import Button from '../../atoms/Button';
 import ButtonCTA from '../ButtonCTA';
-import style from './DropDownCategoryButton.style';
+import style from './DropDownButton.style';
+import { generateUniqueKeyUsingLabel } from '../../../../utils/utils';
 
-class DropDownCategoryButton extends React.Component {
+class DropDownButton extends React.Component {
   state = {
     open: false,
   };
 
-  openPanel = () => {
+  togglePanel = () => {
     const { open } = this.state;
     this.setState({
       open: !open,
@@ -21,7 +22,7 @@ class DropDownCategoryButton extends React.Component {
     const { className, buttonsData, dropdownLabel } = this.props;
 
     const compProps = {
-      ctaProps: {
+      ctaInfo: {
         ctaVariation: 'fixed-width',
       },
     };
@@ -30,12 +31,12 @@ class DropDownCategoryButton extends React.Component {
     const classToOpen = open ? 'is-open' : '';
 
     return (
-      <div className={`${className} dropdown-category-button-wrapper`}>
-        <div className="dropdown-category-button">
+      <div className={`${className} dropdown-button-wrapper`}>
+        <div className="dropdown-button-container">
           <Button
             className="dropdown-button"
             buttonVariation="fixed-width"
-            onClick={this.openPanel}
+            onClick={this.togglePanel}
           >
             {dropdownLabel}
             <span className={`dropdown-icon ${classToOpen}`} />
@@ -43,8 +44,9 @@ class DropDownCategoryButton extends React.Component {
           <div className={`button-panel ${classToOpen}`}>
             {buttonsData.map(data => {
               const { button = {} } = data;
-              const key = button.title && button.title.replace(/\s/g, '_');
-              compProps.ctaProps.link = button;
+              // Code to generate unique key
+              const key = button.title && generateUniqueKeyUsingLabel(button.title);
+              compProps.ctaInfo.link = button;
 
               return <ButtonCTA className="dropdown-items" uniqueKey={key} {...compProps} />;
             })}
@@ -55,10 +57,10 @@ class DropDownCategoryButton extends React.Component {
   }
 }
 
-DropDownCategoryButton.propTypes = {
+DropDownButton.propTypes = {
   className: PropTypes.string.isRequired,
   buttonsData: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
   dropdownLabel: PropTypes.string.isRequired,
 };
 
-export default withStyles(DropDownCategoryButton, style);
+export default withStyles(DropDownButton, style);

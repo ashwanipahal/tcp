@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ImageCTA from '../ImageCTA';
+import ImageTextCTA from '../ImageTextCTA';
 
-describe('Image CTA component', () => {
+describe('Image Text CTA component', () => {
   it('renders correctly', () => {
     const compProps = {
       compClassName: 'scroll-cta-wrapper',
@@ -24,7 +24,7 @@ describe('Image CTA component', () => {
       compWrapper: `scroll-button-list-wrapper`,
     };
     const component = shallow(
-      <ImageCTA
+      <ImageTextCTA
         className="dropdown-items"
         uniqueKey="test_key"
         {...compProps}
