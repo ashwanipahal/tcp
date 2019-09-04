@@ -11,12 +11,13 @@ export default css`
   }
   .candidate_a_inline_container_button button{
     white-space: nowrap;
-  }
-  .footer_top_candidate_a .candidate_a_inline_container_button button {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-      ${props => props.theme.spacing.ELEM_SPACING.XL};
+    padding: 12px 28px;
     min-height: 42px;
+
+    &.candidate_a_form_button {
+      margin-top: 8px;
+    }
   }
   .candidate-b_buttons {
     padding: 11px 0 0 0;
@@ -131,6 +132,7 @@ export default css`
     .footer_top_candidate_a .refer-a-friend {
       font-size: 12px;
       line-height: 1.67;
+      margin-bottom: 0;
     }
     &.navigation-footer .col-md-half-width {
       width: 100%;

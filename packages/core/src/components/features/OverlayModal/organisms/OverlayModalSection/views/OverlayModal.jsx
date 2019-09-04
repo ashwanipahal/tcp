@@ -122,12 +122,14 @@ class OverlayModal extends React.Component {
   }
 
   render() {
-    const { className, ModalContent, color, componentProps } = this.props;
+    const { className, ModalContent, color, componentProps, component } = this.props;
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
         <div id="dialogContent" className="dialog__content">
           <button
-            className="modal__closeIcon hide-on-tablet hide-on-desktop"
+            className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
+              component === 'accountDrawer' ? 'hide-on-mobile' : ''
+            }`}
             onClick={this.closeModal}
           />
           <div className="modal__triangle hide-on-mobile " id="modalTriangle" />

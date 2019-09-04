@@ -6,6 +6,7 @@ import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 import styles from '../styles/BillingPage.style';
+import GiftCardsContainer from '../../GiftCardsSection';
 
 class BillingPage extends React.PureComponent {
   static propTypes = {
@@ -24,6 +25,7 @@ class BillingPage extends React.PureComponent {
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
+        <GiftCardsContainer />
         <CheckoutOrderInfo />
         <CheckoutFooter
           hideBackLink
