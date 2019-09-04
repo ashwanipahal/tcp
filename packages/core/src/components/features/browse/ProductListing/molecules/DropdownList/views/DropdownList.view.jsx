@@ -158,7 +158,7 @@ class DropdownList extends React.Component {
     this.highlightedRef = ref;
   }
 
-  // called to scroll this.itemsListRef to bring this.itemsListRef into view (i.e. to show the highlited item)
+  // called to scroll this.itemsListRef to bring this.itemsListRef into view (i.e. to show the highlighted item)
   scrollToHighlighted() {
     if (this.highlightedRef) {
       const itemsListRect = this.itemsListRef.getBoundingClientRect();
@@ -226,6 +226,21 @@ class DropdownList extends React.Component {
                 facetName={facetName}
                 value={item.title}
                 isAutosuggestAnalytics={autosuggestAnalytics}
+                dataLocator={
+                  index === selectedIndex || (isMultipleSElections && selectedIndex[index])
+                    ? `${getLocator(
+                        `plp_filter_${dataLocator
+                          .toLowerCase()
+                          .split(' ')
+                          .join('_')}_option_`
+                      )}${item.value}_selected`
+                    : `${getLocator(
+                        `plp_filter_${dataLocator
+                          .toLowerCase()
+                          .split(' ')
+                          .join('_')}_option_`
+                      )}${item.value}_unselected`
+                }
                 className={cssClassName(
                   'item-common ',
                   classNamePrefix,

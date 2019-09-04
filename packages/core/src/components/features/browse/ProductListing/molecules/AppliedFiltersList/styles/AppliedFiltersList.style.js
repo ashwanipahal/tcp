@@ -13,9 +13,9 @@ export default css`
     position: relative;
 
     .filtering-title {
-      width: 75px;
+      width: 90px;
       margin-top: 7px;
-      font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
+      font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
       letter-spacing: 0;
       line-height: 1.42;
       display: inline-block;
@@ -24,7 +24,7 @@ export default css`
 
     .applied-filter-list {
       position: relative;
-      width: calc(100% - 75px);
+      width: calc(100% - 90px);
       padding: 0;
       border-bottom: 0;
     }
@@ -47,7 +47,7 @@ export default css`
       border-radius: 50%;
       vertical-align: middle;
       overflow: hidden;
-      border: 1px solid;
+      border: 1px solid ${props => props.theme.colors.PRIMARY.DARK};
     }
 
     .applied-filter-title {
@@ -67,6 +67,7 @@ export default css`
       vertical-align: middle;
       font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
       line-height: 1.07;
+      margin-bottom: 4px;
 
       .applied-filter-remove-button {
         display: inline-block;

@@ -70,13 +70,35 @@ const getFiltersAfterProcessing = (
   }
   return filters;
 };
+const getQueryString = (keyValuePairs = {}) => {
+  const params = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key of Object.keys(keyValuePairs)) {
+    if (keyValuePairs[key] === null) {
+      params.push(encodeURIComponent(key));
+    } else {
+      // eslint-disable-next-line no-lonely-if
+      if (Array.isArray(keyValuePairs[key])) {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const value of keyValuePairs[key]) {
+          params.push([encodeURIComponent(key), '[]=', encodeURIComponent(value)].join(''));
+        }
+      } else {
+        params.push(
+          [encodeURIComponent(key), '=', encodeURIComponent(keyValuePairs[key])].join('')
+        );
+      }
+    }
+  }
+  return params.join('&');
+};
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const getPlpUrlQueryValues = filtersAndSort => {
   const { sort } = filtersAndSort;
-  // const { ...otherParams } = queryString.parse(urlQueryString);
 
   // NOTE: these are parameters on query string we don't handle (nor we need to)
   // just pass them to the abstractor
-  const urlQueryValues = {};
+  let urlQueryValues = {};
   let routeURL = '?';
 
   if (filtersAndSort) {
@@ -104,6 +126,8 @@ const getPlpUrlQueryValues = filtersAndSort => {
     });
   }
 
+  urlQueryValues = getQueryString(urlQueryValues);
+
   const displayPath = Router.asPath;
   const country = getSiteId();
   let urlPath = displayPath.replace(`/${country}`, '');
@@ -116,13 +140,11 @@ const getPlpUrlQueryValues = filtersAndSort => {
   urlPathCID = urlPathCID.split('?');
   urlPathCID = [...urlPathCID].shift();
 
-  Object.keys(urlQueryValues).forEach(key => {
-    routeURL = `${routeURL}${key}=${urlQueryValues[key]}&`;
-  });
+  routeURL = `${routeURL}${urlQueryValues}`;
 
   routeURL = `${urlPath}${routeURL}`;
 
-  routeURL = routeURL.substring(0, routeURL.length - 1);
+  routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
 
   routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
 

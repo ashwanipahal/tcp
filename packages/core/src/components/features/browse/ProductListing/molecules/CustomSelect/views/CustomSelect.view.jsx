@@ -291,7 +291,7 @@ class CustomSelect extends React.Component {
   /** opens the dropdown */
   expandMenu() {
     const { expanded } = this.state;
-    const { disableExpandStateChanges, optionsMap, input, onExpandCallback } = this.props;
+    const { disableExpandStateChanges, optionsMap, input } = this.props;
     if (expanded || disableExpandStateChanges) return;
     let highlightedIndex = getIndexOrIndicesOfValue(optionsMap, input.value);
     if (Array.isArray(highlightedIndex)) {
@@ -299,9 +299,6 @@ class CustomSelect extends React.Component {
     }
     this.setHighlightedIndex(highlightedIndex);
     this.setState({ expanded: true });
-    if (!expanded && onExpandCallback) {
-      onExpandCallback();
-    }
   }
 
   captureContainerDivRef(ref) {
@@ -483,12 +480,9 @@ class CustomSelect extends React.Component {
   /** closes the dropdown */
   closeMenu() {
     const { expanded } = this.state;
-    const { disableExpandStateChanges, onCloseCallback } = this.props;
+    const { disableExpandStateChanges } = this.props;
     if (!expanded || disableExpandStateChanges) return;
     this.setState({ expanded: false });
-    if (expanded && onCloseCallback) {
-      onCloseCallback();
-    }
   }
 
   render() {

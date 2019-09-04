@@ -12,6 +12,7 @@ import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
 import AppliedFiltersList from '../../AppliedFiltersList';
 import { FACETS_FIELD_KEY } from '../../../../../../../services/abstractors/productListing/productListing.utils';
+import { DESCRIPTION_FILTER } from '../../../container/ProductListing.constants';
 
 /**
  * @function getColorFilterOptionsMap This handles to render the desktop filter fields of color
@@ -46,7 +47,6 @@ function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
             color="gray.900"
             className="color-name"
             outline="none"
-            data-locator={`${getLocator(`plp_filter_color_option_`)}${color.displayName}`}
           >
             {color.displayName}
           </BodyCopy>
@@ -63,7 +63,7 @@ function getColorFilterOptionsMap(colorOptionsMap, filterName, isMobile) {
  * @param {String} filterName - filter names "categoryPath2_uFilter, age_group_uFilter etc"
  * @param {Boolean} isMobile - check for mobile view
  */
-function getFilterOptionsMap(optionsMap, filterName) {
+function getFilterOptionsMap(optionsMap) {
   return optionsMap.map(option => ({
     value: option.id,
     title: option.displayName,
@@ -78,12 +78,6 @@ function getFilterOptionsMap(optionsMap, filterName) {
         color="gray.900"
         className="size-title"
         outline="none"
-        data-locator={`${getLocator(
-          `plp_filter_${filterName
-            .toLowerCase()
-            .split(' ')
-            .join('_')}_option_`
-        )}${option.displayName}`}
       >
         {option.displayName}
       </BodyCopy>
@@ -103,13 +97,6 @@ class ProductListingFiltersForm extends React.Component {
       isOpenFilterSection: false,
     };
 
-    this.captureFilterRef = ref => {
-      if (!ref) return;
-      const typeRef = ref && ref.getRenderedComponent();
-      typeRef.filterRefType = ref.props.name;
-      this.filterRef.push(typeRef);
-    };
-
     this.handleRemoveFilter = this.handleRemoveFilter.bind(this);
     this.handleRemoveAllFilters = this.handleRemoveAllFilters.bind(this);
     this.handleImmediateSubmit = this.handleImmediateSubmit.bind(this);
@@ -122,12 +109,20 @@ class ProductListingFiltersForm extends React.Component {
     const { initialValues } = this.props;
     let count = 0;
 
+    // returns count for the applied filters.
     // eslint-disable-next-line
     for (let key in initialValues) {
       count += key.toLowerCase() !== FACETS_FIELD_KEY.sort ? initialValues[key].length : 0;
     }
     return count;
   }
+
+  captureFilterRef = ref => {
+    if (!ref) return;
+    const typeRef = ref && ref.getRenderedComponent();
+    typeRef.filterRefType = ref.props.name;
+    this.filterRef.push(typeRef);
+  };
 
   /**
    * @function handleSubmitOnChange This handles to submit remove filters call.
@@ -137,7 +132,7 @@ class ProductListingFiltersForm extends React.Component {
     if (submitting) return;
 
     this.filterRef.forEach(filter => {
-      if (filter.filterRefType !== 'auxdescription_uFilter') filter.closeMenu();
+      if (filter.filterRefType !== DESCRIPTION_FILTER) filter.closeMenu();
     });
 
     // Observe that since submission can occur by capturing the change events in the CustomSelects of the form
@@ -187,7 +182,7 @@ class ProductListingFiltersForm extends React.Component {
     if (submitting) return;
 
     this.filterRef.forEach(filter => {
-      if (filter.filterRefType !== 'auxdescription_uFilter') filter.closeMenu();
+      if (filter.filterRefType !== DESCRIPTION_FILTER) filter.closeMenu();
     });
 
     // eslint-disable-next-line consistent-return
@@ -211,7 +206,7 @@ class ProductListingFiltersForm extends React.Component {
         appliedFilterVal={appliedFilterVal}
         facetName={facetName}
         component={CustomSelect}
-        optionsMap={getFilterOptionsMap(filtersMaps[facetName], filterName)}
+        optionsMap={getFilterOptionsMap(filtersMaps[facetName])}
         title=""
         placeholder={filterName}
         allowMultipleSelections
@@ -414,6 +409,7 @@ ProductListingFiltersForm.defaultProps = {
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
+  enableReinitialize: true,
 })(withStyles(ProductListingFiltersForm, ProductListingFiltersFormStyle));
 
 export { ProductListingFiltersForm as ProductListingFiltersFormVanilla };

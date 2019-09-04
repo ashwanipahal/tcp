@@ -6,6 +6,7 @@ exports[`Custom Select is shown should render Applied Filter Lists  1`] = `
 >
   <span
     className="filtering-title"
+    data-locator="plp_filter_filtering_by"
   >
     filtering By
     :
@@ -23,13 +24,14 @@ exports[`Custom Select is shown should render Applied Filter Lists  1`] = `
     unbxd_price_range_uFilter
     <button
       className="applied-filter-clear-all"
+      data-locator="plp_filter_applied_filter_clear_all"
       onClick={[MockFunction]}
       type="button"
     >
       <span
         className="applied-filter-remove-button"
       >
-         
+         Clear All 
       </span>
       Clear All
     </button>

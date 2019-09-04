@@ -30,8 +30,12 @@ class AppliedFilterChip extends React.Component {
 
     return (
       <div className={`${className} applied-filter-item`}>
-        <button className="applied-filter-remove-button" onClick={this.handleRemoveClick}>
-          {' '}
+        <button
+          className="applied-filter-remove-button"
+          onClick={this.handleRemoveClick}
+          data-locator={`plp_filter_applied_filter_${displayName}_cancel`}
+        >
+          Clear
         </button>
         <span className="applied-filter-title">{displayName}</span>
       </div>

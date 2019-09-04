@@ -1,5 +1,6 @@
-import { executeStatefulAPICall } from '../../handler';
-import endpoints from '../../endpoints';
+import endpoints from '@tcp/core/src/services/endpoints';
+import { getAPIConfig } from '@tcp/core/src/utils/utils';
+import { executeStatefulAPICall } from '@tcp/core/src/services/handler';
 
 const getFormattedError = err => {
   if (err.response && err.response.body) {
@@ -61,4 +62,36 @@ export const UpdateProfileInfo = args => {
   });
 };
 
-export default UpdateProfileInfo;
+/**
+ * This is a service method to post survey data.
+ * @param {object} args - request payload containing answer1, answer2 values to submit in the backend.
+ */
+export const submitUserSurvey = args => {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    body: {
+      ...args.payload,
+      langId: apiConfig.langId,
+      catalogId: apiConfig.catalogId,
+      storeId: apiConfig.storeId,
+    },
+    webService: endpoints.updateUserSurvey,
+  };
+
+  return executeStatefulAPICall(payload, errorHandler)
+    .then(res => {
+      const resObj = res.body;
+      const answers = [];
+      answers[0] = resObj.answer1 ? resObj.answer1.split('|') : [];
+      answers[1] = resObj.answer2 ? resObj.answer2.split('|') : [];
+      return {
+        success: true,
+        ...answers,
+      };
+    })
+    .catch(err => {
+      throw err;
+    });
+};
+
+export default { UpdateProfileInfo, submitUserSurvey };

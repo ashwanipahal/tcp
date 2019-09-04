@@ -15,12 +15,14 @@ type Props = {
 class AppliedFiltersList extends React.PureComponent<Props> {
   render() {
     const { appliedFilters, onRemoveFilter, removeAllFilters, className, labels } = this.props;
-    let chipsCnt = 0;
+    let chipsCount = 0;
 
     return (
       <div className={`${className} applied-filters-sorting-container`}>
-        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-        {<span className="filtering-title">{labels.lbl_filtering_by}:</span>}
+        <span className="filtering-title" data-locator="plp_filter_filtering_by">
+          {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+          {labels.lbl_filtering_by}:
+        </span>
 
         <ul className="applied-filter-list">
           {appliedFilters.map(
@@ -30,7 +32,7 @@ class AppliedFiltersList extends React.PureComponent<Props> {
                 const name = data.displayName;
 
                 // eslint-disable-next-line no-plusplus
-                chipsCnt++;
+                chipsCount++;
                 return (
                   <AppliedFilterChip
                     id={data.id}
@@ -42,9 +44,14 @@ class AppliedFiltersList extends React.PureComponent<Props> {
                 );
               })
           )}
-          {removeAllFilters && chipsCnt > 1 && (
-            <button type="button" className="applied-filter-clear-all" onClick={removeAllFilters}>
-              <span className="applied-filter-remove-button"> </span>
+          {removeAllFilters && chipsCount > 1 && (
+            <button
+              type="button"
+              className="applied-filter-clear-all"
+              onClick={removeAllFilters}
+              data-locator="plp_filter_applied_filter_clear_all"
+            >
+              <span className="applied-filter-remove-button"> Clear All </span>
               {labels.lbl_clear}
             </button>
           )}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts } from './ProductListing.actions';
@@ -16,7 +17,7 @@ import {
   getTotalProductsCount,
   getAppliedFilters,
 } from './ProductListing.selectors';
-import submitProductListingFiltersForm from './ProductListingSubmitHandler';
+import submitProductListingFiltersForm from './productListingSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -102,6 +103,8 @@ function mapStateToProps(state) {
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
     onSubmit: submitProductListingFiltersForm,
+    // Need to pass form values in as prop so we can compare current values to previous values
+    formValues: getFormValues('filter-form')(state),
     isPlcc: isPlccUser(state),
   };
 }
