@@ -26,6 +26,9 @@ type Props = {
  */
 const MyAccountLayoutView = (props: Props) => {
   const { navData, mainContent: MainContent, active, className, router, labels } = props;
+    console.log("my account layout-------");
+    console.log(active);
+    console.log("my account layout-------");
   return (
     <div className={className}>
       <Row className="elem-mb-XL">
