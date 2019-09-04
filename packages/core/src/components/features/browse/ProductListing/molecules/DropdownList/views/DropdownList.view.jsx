@@ -27,7 +27,7 @@ const PROP_TYPES = {
    * <code>'-highlighted'</code>: the CSS class to use for a highlighted
    * <code>'-disabledOption'</code>: the CSS class to use for a disabled option
    *
-   * Please note that the classes for selected, highlited and disabled elements will be added (instead of replace), as needed, to the item class
+   * Please note that the classes for selected, highlighted and disabled elements will be added (instead of replace), as needed, to the item class
    */
   classNamePrefix: PropTypes.string.isRequired,
 
@@ -115,7 +115,7 @@ class DropdownList extends React.Component {
       default:
         invariant(
           true,
-          `${this.displayName}: unknown destination of highlited option ${direction}`
+          `${this.displayName}: unknown destination of highlighted option ${direction}`
         );
         return true;
     }
