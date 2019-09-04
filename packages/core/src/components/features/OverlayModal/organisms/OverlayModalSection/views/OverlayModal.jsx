@@ -66,9 +66,14 @@ class OverlayModal extends React.Component {
     }
   }
 
+  /**
+   * Set Left position of modal triangle
+   * @param {*} comp
+   */
+
   styleModalTriangle = ({ comp }) => {
     const compRectBoundingX = comp.getBoundingClientRect().x;
-    const compWidth = comp.getBoundingClientRect().width;
+    const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
     const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
     const modalTriangle = document.getElementById('modalTriangle');
@@ -77,7 +82,7 @@ class OverlayModal extends React.Component {
     modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 60}px`;
     /* istanbul ignore else */
     if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
-      modalTriangle.style.left = `${compRectBoundingX - modalRectBoundingX + compWidth - 20}px`;
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
     }
   };
 
