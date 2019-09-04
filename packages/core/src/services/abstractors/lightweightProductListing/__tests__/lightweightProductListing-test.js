@@ -2,9 +2,6 @@ import productListTabsAbstractor from '../lightweightProductListing';
 import * as handler from '../../../handler/handler';
 import mock from '../mock';
 
-jest.mock('../../../../../service/API');
-jest.mock('../../../../handler/handler');
-
 const mockResponse = mock.body.response.products;
 
 describe('ProductListTabsAbstractor', () => {
