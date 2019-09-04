@@ -8,7 +8,7 @@ export const PromoAndArrowContainer = styled.TouchableOpacity`
 
 export const PromoContainer = styled.View`
   background: ${props => props.theme.colorPalette.primary.main};
-  border-radius: 5px;
+  border-radius: ${props => (props.theme.isGymboree ? `20px` : `5px`)};
   width: 150px;
   height: 30px;
   align-items: center;
@@ -20,4 +20,10 @@ export const ArrowIcon = styled.Image`
   height: 10px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
+export const ItemView = styled.View`
+  align-items: center;
+  justify-content: center;
+  max-width: ${props => props.maxWidth};
 `;

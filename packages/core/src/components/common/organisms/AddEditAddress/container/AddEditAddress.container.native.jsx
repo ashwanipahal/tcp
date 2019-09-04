@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reset } from 'redux-form';
+import { Map } from 'immutable';
 
 import PropTypes from 'prop-types';
 import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
@@ -10,7 +11,6 @@ import AddAddressComponent from '../views/AddEditAddress.view';
 import {
   getAddressResponse,
   getUserEmail,
-  getAddressById,
   getAddEditAddressLabels,
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
@@ -61,7 +61,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
 
   componentDidUpdate() {
     const { addressResponse, getAddressListAction, onCancel, resetFormState } = this.props;
-    const isSuccess = addressResponse && addressResponse.get('addressId');
+    const isSuccess =
+      addressResponse && Map.isMap(addressResponse) && addressResponse.get('addressId');
     if (isSuccess) {
       getAddressListAction();
       onCancel();
@@ -70,9 +71,10 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    const { resetFormState, toggleAddressModal, currentForm } = this.props;
+    const { resetFormState, toggleAddressModal, currentForm, resetAddressLine1 } = this.props;
     resetFormState();
     if (currentForm === 'VerificationModal') toggleAddressModal();
+    resetAddressLine1();
   }
 
   getInitialValues = (addressList, address) => {
@@ -99,12 +101,13 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   verifyAddress = payload => {
-    const { verifyAddressAction, toggleAddressModal } = this.props;
+    const { verifyAddressAction, toggleAddressModal, setAddressLine1 } = this.props;
     const formattedFormPayload = Object.assign(this.initialValues, payload);
     const formattedPayload = this.formatPayload(formattedFormPayload);
 
     verifyAddressAction(formattedPayload);
     toggleAddressModal();
+    setAddressLine1(formattedPayload.address1, formattedPayload.state);
   };
 
   submitAddressForm = payloadParam => {
@@ -149,6 +152,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       isEdit,
       toggleAddressModal,
       currentForm,
+      addressLine1,
+      countryState,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -167,6 +172,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         addressFormLabels={labels.addressFormLabels}
         addressBookLabels={labels.addressBook}
         backToAddressBookClick={backToAddressBookClick}
+        addressLine1={addressLine1}
+        countryState={countryState}
       />
     );
   }
@@ -192,12 +199,11 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     addressResponse: getAddressResponse(state),
     userEmail: getUserEmail(state),
     addressList: getAddressListState(state),
-    address: getAddressById(state, ownProps),
     labels: getAddEditAddressLabels(state),
   };
 };

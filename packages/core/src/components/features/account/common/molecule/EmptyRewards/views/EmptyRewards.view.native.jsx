@@ -7,19 +7,8 @@ import { StyledBodyCopy } from '../styles/EmptyRewards.style.native';
 import Button from '../../../../../../common/atoms/Button';
 
 const EmptyRewards = ({ labels }) => {
-  const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (0)`;
-
   return (
     <View>
-      <StyledBodyCopy>
-        <BodyCopy
-          mobileFontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="semibold"
-          data-locator="my-rewards-heading"
-          text={heading}
-        />
-      </StyledBodyCopy>
       <StyledBodyCopy>
         <BodyCopy
           mobileFontFamily="secondary"

@@ -2,6 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import NavigationAbstractor from '../../../../../services/abstractors/bootstrap/navigation';
 import { loadNavigationData } from './Navigation.actions';
 import { FETCH_NAVIGATION_DATA } from './Navigation.constants';
+import { validateReduxCache } from '../../../../../utils/cache.util';
 
 function* fetchNavigationData() {
   const result = yield call(NavigationAbstractor.getData, 'navigation');
@@ -9,7 +10,8 @@ function* fetchNavigationData() {
 }
 
 function* NavigationSaga() {
-  yield takeLatest(FETCH_NAVIGATION_DATA, fetchNavigationData);
+  const cachedFetchNavigation = validateReduxCache(fetchNavigationData);
+  yield takeLatest(FETCH_NAVIGATION_DATA, cachedFetchNavigation);
 }
 
 export default NavigationSaga;

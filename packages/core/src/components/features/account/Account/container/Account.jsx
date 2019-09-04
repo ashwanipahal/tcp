@@ -6,7 +6,7 @@ import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import utils from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
-import { getAccountNavigationList } from './Account.actions';
+import { getAccountNavigationList, initActions } from './Account.actions';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -68,17 +68,28 @@ export class Account extends React.PureComponent {
     if (accountNavigation) {
       navData = accountNavigation.accountNav;
     }
-    return (
-      <MyAccountLayout
-        mainContent={AccountComponentMapping[componentToLoad]}
-        active={activeComponent}
-        navData={navData}
-        router={router}
-        labels={labels}
-      />
-    );
+
+    // TODO: currently our views are breaking if account labels are not present
+    // so rendering MyAccountLayout only when labels are present
+    // later on we can either need to add loader or we can prevent rendering from
+    // _app.jsx itself.
+    if (typeof labels === 'object') {
+      return (
+        <MyAccountLayout
+          mainContent={AccountComponentMapping[componentToLoad]}
+          active={activeComponent}
+          navData={navData}
+          router={router}
+          labels={labels}
+        />
+      );
+    }
+
+    return null;
   }
 }
+
+Account.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {

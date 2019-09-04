@@ -149,6 +149,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
       />
     </div>
   </div>
+  <Styled(CheckoutOrderInfo) />
   <form>
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
@@ -290,6 +291,12 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
   & .disabled {
     opacity: ",
                 [Function],
@@ -393,6 +400,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
       </FormSection>
     </div>
   </div>
+  <Styled(CheckoutOrderInfo) />
   <form>
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouInfo should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaLink="/account/profile"
+  ctaPath="/account/profile"
+  ctaTitle="UPDATE INFO"
+  dataLocator="moreaboutyou"
+  title="More About You"
+>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          data-locator="moreaboutyou-describetext"
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          I describe myself as: 
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      />
+    </Styled(Row)>
+  </Styled(BodyCopy)>
+</Styled(AccountOverviewTile)>
+`;

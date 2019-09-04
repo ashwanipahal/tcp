@@ -23,6 +23,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     this.state = {
       isEditAllowed: true,
       openedTile: 0,
+      swipedElement: null,
     };
   }
 
@@ -35,6 +36,10 @@ class ProductTileWrapper extends React.PureComponent<props> {
     this.setState({
       isEditAllowed: !isEditAllowed,
     });
+  };
+
+  setSwipedElement = elem => {
+    this.setState({ swipedElement: elem });
   };
 
   getHeaderError = (labels, orderItems, pageView) => {
@@ -88,7 +93,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     let isSoldOut;
     const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
-    const { isEditAllowed, openedTile } = this.state;
+    const { isEditAllowed, openedTile, swipedElement } = this.state;
     if (orderItems && orderItems.size > 0) {
       const orderItemsView = orderItems.map((tile, index) => {
         const productDetail = getProductDetails(tile);
@@ -110,7 +115,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
             toggleEditAllowance={this.toggleEditAllowance}
             isEditAllowed={
               productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE ||
-              productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT
+              productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
+              productDetail.miscInfo.orderItemType === CARTPAGE_CONSTANTS.BOPIS
                 ? false
                 : isEditAllowed
             }
@@ -118,18 +124,21 @@ class ProductTileWrapper extends React.PureComponent<props> {
             itemIndex={index}
             openedTile={openedTile}
             setSelectedProductTile={this.setSelectedProductTile}
+            setSwipedElement={this.setSwipedElement}
+            swipedElement={swipedElement}
           />
         );
       });
       return (
         <>
-          {this.getHeaderError(labels, orderItems)}
+          {this.getHeaderError(labels, orderItems, pageView)}
           {isSoldOut && (
             <RemoveSoldOut
+              pageView={pageView}
               labelForRemove={this.getRemoveString(labels, removeCartItem, getUnavailableOOSItems)}
             />
           )}
-          {isUnavailable && <RemoveSoldOut labels={labels} />}
+          {isUnavailable && <RemoveSoldOut pageView={pageView} labels={labels} />}
 
           {orderItemsView}
         </>

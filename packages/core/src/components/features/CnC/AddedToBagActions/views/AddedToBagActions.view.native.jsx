@@ -9,6 +9,7 @@ import {
   CheckoutButton,
 } from '../styles/AddedToBagActions.style.native';
 import CheckoutConstants from '../../Checkout/Checkout.constants';
+import ADDEDTOBAG_CONSTANTS from '../../AddedToBag/AddedToBag.constants';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
@@ -28,15 +29,23 @@ class AddedToBagActions extends React.PureComponent<Props> {
       showAddTobag,
       // checkoutModalMountedState,
       // handleCartCheckout,
-      // navigation,
+      navigation,
       // closeCheckoutModalMountState,
       isUserLoggedIn,
+      closeModal,
     } = this.props;
     return (
       <ActionsWrapper>
         {showAddTobag && (
           <ButtonWrapper>
-            <ViewBagButton>
+            <ViewBagButton
+              onPress={() => {
+                navigation.navigate(ADDEDTOBAG_CONSTANTS.BAG_PAGE);
+                if (closeModal) {
+                  closeModal();
+                }
+              }}
+            >
               <BodyCopy
                 textTransform="uppercase"
                 color="white"
@@ -92,10 +101,12 @@ AddedToBagActions.propTypes = {
   labels: PropTypes.shape.isRequired,
   showAddTobag: PropTypes.shape,
   navigation: PropTypes.shape({}).isRequired,
+  closeModal: PropTypes.func,
 };
 
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
+  closeModal: () => {},
 };
 
 export default AddedToBagActions;

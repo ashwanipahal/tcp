@@ -74,7 +74,7 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   render() {
-    const { isMobile, formData, isEditing, labels, isReset, onClose } = this.props;
+    const { isMobile, formData, isEditing, labels, isReset, handleExitEditModeClick } = this.props;
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
@@ -86,7 +86,7 @@ class PickupMainContactEditForm extends React.Component {
         {isEditing && isMobile && (
           <Modal
             isOpen={isEditing}
-            onRequestClose={onClose}
+            onRequestClose={handleExitEditModeClick}
             heading={labels.titleEditPickup}
             horizontalBar={false}
           >

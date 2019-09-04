@@ -13,6 +13,7 @@ type Props = {
   addGiftCardResponse: String,
   goBackToPayment: Function,
   labels: Object,
+  formErrorMessage: Object,
 };
 
 class AddGiftCard extends React.PureComponent<Props> {
@@ -23,6 +24,7 @@ class AddGiftCard extends React.PureComponent<Props> {
       addGiftCardResponse,
       labels,
       goBackToPayment,
+      formErrorMessage,
     } = this.props;
     return (
       <div className={className}>
@@ -55,6 +57,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           onAddGiftCardClick={onAddGiftCardClick}
           labels={labels}
           goBackToPayment={goBackToPayment}
+          formErrorMessage={formErrorMessage}
         />
       </div>
     );

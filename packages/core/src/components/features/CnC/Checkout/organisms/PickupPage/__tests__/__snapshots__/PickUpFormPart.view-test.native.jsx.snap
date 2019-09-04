@@ -280,6 +280,14 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
             <Styled(PickupMainContactEditForm)
               className="pickup-contact-guest-form"
               dispatch={[MockFunction]}
+              formData={
+                Object {
+                  "emailAddress": "",
+                  "firstName": "",
+                  "lastName": "",
+                  "phoneNumber": "",
+                }
+              }
               handleExitEditModeClick={[Function]}
               handleSubmit={
                 [MockFunction] {
@@ -287,8 +295,15 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
                     Array [
                       undefined,
                     ],
+                    Array [
+                      [Function],
+                    ],
                   ],
                   "results": Array [
+                    Object {
+                      "type": "return",
+                      "value": undefined,
+                    },
                     Object {
                       "type": "return",
                       "value": undefined,

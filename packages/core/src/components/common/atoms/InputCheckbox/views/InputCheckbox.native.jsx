@@ -27,6 +27,7 @@ class InputCheckBox extends React.Component {
     meta: PropTypes.func,
     fontSize: PropTypes.string,
     disabled: PropTypes.bool,
+    inputVariation: PropTypes.string,
   };
 
   static defaultProps = {
@@ -39,6 +40,7 @@ class InputCheckBox extends React.Component {
     meta: {},
     fontSize: 'fs12',
     disabled: false,
+    inputVariation: 'inputVariation',
   };
 
   constructor(props) {
@@ -77,7 +79,15 @@ class InputCheckBox extends React.Component {
   }
 
   render() {
-    const { input, hideCheckboxIcon, meta, disabled, rightText, ...otherProps } = this.props;
+    const {
+      input,
+      hideCheckboxIcon,
+      meta,
+      disabled,
+      rightText,
+      inputVariation,
+      ...otherProps
+    } = this.props;
     const { value } = input;
     const { touched, error } = meta;
     const isError = touched && error;
@@ -91,7 +101,9 @@ class InputCheckBox extends React.Component {
           pointerEvents={disabled ? 'none' : 'auto'}
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
-          {rightText && <StyledText>{this.renderRight()}</StyledText>}
+          {rightText && (
+            <StyledText inputVariation={inputVariation}>{this.renderRight()}</StyledText>
+          )}
         </StyledCheckBox>
         <Fragment>
           {isError ? (
