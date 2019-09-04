@@ -1,8 +1,8 @@
 import {
   createAppContainer,
+  createStackNavigator,
   createSwitchNavigator,
   createBottomTabNavigator,
-  createStackNavigator,
 } from 'react-navigation';
 import React from 'react';
 import NavBar from '../components/common/molecules/NavBar';

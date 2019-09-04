@@ -9,7 +9,6 @@ import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 import Navigation from '../components/features/content/Navigation';
 import ProductLanding from '../components/features/browse/ProductLanding/ProductLanding';
-// import CheckoutStack from './checkout';
 
 const HomeStack = createStackNavigator(
   {
