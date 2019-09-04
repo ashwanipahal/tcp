@@ -207,6 +207,7 @@ const BonusPointsSection = ({
   enableApplyCta,
   getBonusDaysData,
   orderDetails,
+  showAccordian,
 }) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
   const header = getHeader({ labels });
@@ -228,7 +229,7 @@ const BonusPointsSection = ({
           small: 6,
         }}
         ignoreGutter={{ small: true, medium: true }}
-        className="hide-in-large-up"
+        className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
       >
         <CollapsibleContainer
           className={className}
@@ -237,7 +238,7 @@ const BonusPointsSection = ({
           iconLocator="arrowicon"
         />
       </Col>
-      <div className="hide-in-medium-down">
+      <div className={showAccordian ? 'hide-in-medium-down' : ''}>
         {header}
         {body}
       </div>
@@ -253,6 +254,7 @@ BonusPointsSection.propTypes = {
   enableApplyCta: PropTypes.bool,
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
+  showAccordian: PropTypes.bool.isRequired,
 };
 
 BonusPointsSection.defaultProps = {

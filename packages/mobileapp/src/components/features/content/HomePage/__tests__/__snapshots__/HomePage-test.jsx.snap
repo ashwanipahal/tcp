@@ -19,6 +19,7 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
+  <Connect(GetCandid) />
   <Styled(CustomButton)
     active={false}
     buttonVariation="variable-width"

@@ -74,7 +74,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_0"
             >
               <Styled(Anchor)
-                to="/c/girls-clothing-school-uniforms"
+                asPath="/c/girls-clothing-school-uniforms"
+                to="/c?cid=49007"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -295,7 +296,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_1"
             >
               <Styled(Anchor)
-                to="/c/girl-americana-shop"
+                asPath="/c/girl-americana-shop"
+                to="/c?cid=452001"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -326,7 +328,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_2"
             >
               <Styled(Anchor)
-                to="/c/girls-dresses"
+                asPath="/c/girls-dresses"
+                to="/c?cid=49005"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -405,7 +408,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_3"
             >
               <Styled(Anchor)
-                to="/c/girl-t-shirts"
+                asPath="/c/girl-t-shirts"
+                to="/c?cid=419525"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -468,7 +472,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_4"
             >
               <Styled(Anchor)
-                to="/c/girls-kids-shorts"
+                asPath="/c/girls-kids-shorts"
+                to="/c?cid=433014"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -595,7 +600,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_5"
             >
               <Styled(Anchor)
-                to="/c/girls-matching-clothes"
+                asPath="/c/girls-matching-clothes"
+                to="/c?cid=415529"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -626,7 +632,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_6"
             >
               <Styled(Anchor)
-                to="/c/girls-tops-girls-shirts"
+                asPath="/c/girls-tops-girls-shirts"
+                to="/c?cid=49012"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -753,7 +760,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_7"
             >
               <Styled(Anchor)
-                to="/c/girls-bottoms-girls-pants"
+                asPath="/c/girls-bottoms-girls-pants"
+                to="/c?cid=49004"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -853,10 +861,11 @@ exports[`L2 Panel component renders correctly 1`] = `
             }
           >
             <li
-              data-locator="l2_col_0_link_7"
+              data-locator="l2_col_0_link_8"
             >
               <Styled(Anchor)
-                to="/c/girls-denim-bottoms"
+                asPath="/c/girls-denim-bottoms"
+                to="/c?cid=420015"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -884,10 +893,11 @@ exports[`L2 Panel component renders correctly 1`] = `
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_0_link_8"
+              data-locator="l2_col_0_link_9"
             >
               <Styled(Anchor)
-                to="/c/girls-leggings"
+                asPath="/c/girls-leggings"
+                to="/c?cid=435501"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -915,10 +925,11 @@ exports[`L2 Panel component renders correctly 1`] = `
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_0_link_9"
+              data-locator="l2_col_0_link_10"
             >
               <Styled(Anchor)
-                to="/c/girls-swimwear"
+                asPath="/c/girls-swimwear"
+                to="/c?cid=49011"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -953,7 +964,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     "previousButton": "Previous",
                   }
                 }
-                id="l3-drawer-2"
+                id="l3-drawer-10"
                 links={
                   Array [
                     Object {
@@ -994,10 +1005,11 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_0_link_10"
+              data-locator="l2_col_0_link_11"
             >
               <Styled(Anchor)
-                to="/c/girls-outerwear-girls-jackets-girls-blazers"
+                asPath="/c/girls-outerwear-girls-jackets-girls-blazers"
+                to="/c?cid=78501"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1025,10 +1037,11 @@ exports[`L2 Panel component renders correctly 1`] = `
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_0_link_11"
+              data-locator="l2_col_0_link_12"
             >
               <Styled(Anchor)
-                to="/c/girls-clothing-sleepwear"
+                asPath="/c/girls-clothing-sleepwear"
+                to="/c?cid=49009"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1056,10 +1069,11 @@ exports[`L2 Panel component renders correctly 1`] = `
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_0_link_12"
+              data-locator="l2_col_0_link_13"
             >
               <Styled(Anchor)
-                to="/c/girls-shoes"
+                asPath="/c/girls-shoes"
+                to="/c?cid=49008"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1094,7 +1108,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     "previousButton": "Previous",
                   }
                 }
-                id="l3-drawer-5"
+                id="l3-drawer-13"
                 links={
                   Array [
                     Object {
@@ -1135,10 +1149,11 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_0_link_13"
+              data-locator="l2_col_0_link_14"
             >
               <Styled(Anchor)
-                to="/c/girl-accessories"
+                asPath="/c/girl-accessories"
+                to="/c?cid=49003"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1173,7 +1188,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     "previousButton": "Previous",
                   }
                 }
-                id="l3-drawer-6"
+                id="l3-drawer-14"
                 links={
                   Array [
                     Object {
@@ -1337,7 +1352,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_0"
             >
               <Styled(Anchor)
-                to="/c/girl-unicorn-shop"
+                asPath="/c/girl-unicorn-shop"
+                to="/c?cid=464014"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1368,7 +1384,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_1"
             >
               <Styled(Anchor)
-                to="/c/girl-flip-sequins-shop"
+                asPath="/c/girl-flip-sequins-shop"
+                to="/c?cid=464017"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1399,7 +1416,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_2"
             >
               <Styled(Anchor)
-                to="/c/girl-emoji-shop"
+                asPath="/c/girl-emoji-shop"
+                to="/c?cid=476046"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1456,7 +1474,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_0"
             >
               <Styled(Anchor)
-                to="/c/girls-new-arrivals"
+                asPath="/c/girls-new-arrivals"
+                to="/c?cid=447016"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1487,7 +1506,8 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_1"
             >
               <Styled(Anchor)
-                to="/c/girls-plus-sizes"
+                asPath="/c/girls-plus-sizes"
+                to="/c?cid=474034"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"

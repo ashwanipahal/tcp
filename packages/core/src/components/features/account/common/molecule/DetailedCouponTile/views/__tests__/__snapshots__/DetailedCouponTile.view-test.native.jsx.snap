@@ -29,6 +29,12 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         />
       </Styled(View)>
       <Styled(View)>
+        <BarcodeView
+          format="CODE128"
+          height="50"
+        />
+      </Styled(View)>
+      <Styled(View)>
         <View>
           <Styled(BodyCopy)
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
@@ -116,6 +122,12 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           fontFamily="secondary"
           fontSize="fs16"
           textAlign="center"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <BarcodeView
+          format="CODE128"
+          height="50"
         />
       </Styled(View)>
       <Styled(View)>
@@ -214,6 +226,12 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           fontFamily="secondary"
           fontSize="fs16"
           textAlign="center"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <BarcodeView
+          format="CODE128"
+          height="50"
         />
       </Styled(View)>
       <Styled(View)>

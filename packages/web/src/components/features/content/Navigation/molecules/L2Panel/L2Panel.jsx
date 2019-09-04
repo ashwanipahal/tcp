@@ -11,6 +11,7 @@ const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
 const MAX_ITEMS_IN_COL = 8;
 const FOUR_COL = 4;
 const TWO_COL = 2;
+const toCat = id => `/c?cid=${id}`;
 
 const createShopByLinks = (links, column) => {
   return (
@@ -99,12 +100,16 @@ const createLinks = (
           } = l2Links;
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
-          const currentIndex = column > 1 ? index + 7 : index;
+          const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor to={url} onClick={openL3Drawer(`l3-drawer-${index.toString()}`, hasL3)}>
+              <Anchor
+                asPath={url}
+                to={toCat(id)}
+                onClick={openL3Drawer(`l3-drawer-${currentIndex.toString()}`, hasL3)}
+              >
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -119,7 +124,7 @@ const createLinks = (
               </Anchor>
               {renderL3Panel(
                 hasSubCategories,
-                index,
+                currentIndex,
                 l3Drawer,
                 hideL3Drawer,
                 name,

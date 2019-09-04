@@ -23,7 +23,9 @@ exports[`InputCheckbox component should render correctly 1`] = `
         width="25px"
       />
     </Styled(View)>
-    <Styled(Text)>
+    <Styled(Text)
+      inputVariation="inputVariation"
+    >
       <Styled(BodyCopy)
         fontSize="fs12"
         mobileFontFamily="secondary"
@@ -57,7 +59,9 @@ exports[`InputCheckbox component should render correctly with checked state fals
         width="25px"
       />
     </Styled(View)>
-    <Styled(Text)>
+    <Styled(Text)
+      inputVariation="inputVariation"
+    >
       <Styled(BodyCopy)
         fontSize="fs12"
         mobileFontFamily="secondary"

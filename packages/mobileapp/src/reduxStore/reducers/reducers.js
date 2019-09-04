@@ -24,6 +24,7 @@ import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/cont
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
+import GetCandidReducer from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -56,6 +57,7 @@ import {
   ADDEDITADDRESS_REDUCER_KEY,
   ADDRESS_VERIFICATION_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
+  GET_CANDID_REDUCER_KEY,
   TOAST_REDUCER_KEY,
   PRODUCT_LIST_TABS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -83,6 +85,8 @@ const filteredProductListingReducer = createFilteredReducer(
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
+const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
+
 const rootReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
@@ -108,7 +112,6 @@ const rootReducer = combineReducers({
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [COUPON_REDUCER_KEY]: CouponReducer,
   [AIRMILES_BANNER_REDUCER_KEY]: AirmilesBannerReducer,
-
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
@@ -118,6 +121,7 @@ const rootReducer = combineReducers({
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [PRODUCT_LIST_TABS_REDUCER_KEY]: ProductListTabsReducer,
+  [GET_CANDID_REDUCER_KEY]: filteredGetCandidReducer,
 });
 
 export default rootReducer;

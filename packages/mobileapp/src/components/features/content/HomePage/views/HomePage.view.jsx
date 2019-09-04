@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import {
@@ -12,6 +13,7 @@ import {
   ModuleA,
   ModuleJ,
 } from '@tcp/core/src/components/common/molecules';
+import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -24,31 +26,18 @@ const modulesMap = {
 
 const buttonMargin = { margin: 30 };
 
-class HomePageView extends React.Component {
+class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
-    this.loadBootstrapData();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { navigation: prevNav } = this.props;
-    const { navigation } = nextProps;
-    const prevShouldRefresh = prevNav.getParam('refresh', false);
-    const shouldRefresh = navigation.getParam('refresh', false);
-
-    // refresh page data on navigation refresh
-    if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
-      this.loadBootstrapData();
-      navigation.setParams({ refresh: false });
-    }
+    this.loadData();
   }
 
   /**
-   * @function loadBootstrapData
+   * @function loadData
    * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  loadBootstrapData = () => {
+  loadData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
@@ -63,11 +52,16 @@ class HomePageView extends React.Component {
   };
 
   render() {
-    const { slots, navigation } = this.props;
+    const {
+      slots,
+      navigation,
+      screenProps: { apiConfig },
+    } = this.props;
 
     return (
       <ScrollView>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <GetCandid apiConfig={apiConfig} />
         <Button
           fullWidth
           buttonVariation="variable-width"
@@ -99,4 +93,6 @@ HomePageView.defaultProps = {
   screenProps: {},
 };
 
-export default HomePageView;
+export { HomePageView };
+
+export default InitialPropsHOC(HomePageView);

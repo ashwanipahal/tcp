@@ -43,12 +43,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         active={false}
         buttonVariation="variable-width"
         color=""
-        customStyle={
-          Object {
-            "height": 42,
-            "width": 102,
-          }
-        }
+        customStyle={Object {}}
         data-locator="coupon_submit_btn"
         disableButton={false}
         external={true}
@@ -58,8 +53,8 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         onPress={[Function]}
         style={
           Object {
-            "fontWeight": "normal",
-            "opacity": 0.5,
+            "height": 42,
+            "width": 104,
           }
         }
         text="Apply"

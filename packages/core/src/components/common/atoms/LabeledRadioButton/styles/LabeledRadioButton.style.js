@@ -28,7 +28,9 @@ ${props =>
   props.variation === 'secondary'
     ? `padding-left: 0;
       @media ${props.theme.mediaQuery.smallOnly}{
-        height: 30px;
+        /*height: 30px;*/
+        height: auto;
+        padding: 8px 0px;
         text-align: center;
         border-radius: 6px;
         border: solid 1px ${props.theme.colorPalette.gray[600]};
@@ -120,8 +122,9 @@ ${props =>
   ${props =>
     props.variation === 'secondary'
       ? `@media ${props.theme.mediaQuery.smallOnly}{
-            vertical-align: -webkit-baseline-middle;
+            vertical-align: middle;
             font-size:10px;
+            text-transform: uppercase;
       }`
       : ''};
   }
