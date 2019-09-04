@@ -10,6 +10,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner';
 import AddedToBagActions from '@tcp/core/src/components/features/CnC/AddedToBagActions';
+import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 
@@ -42,8 +43,8 @@ class MiniBagBody extends React.PureComponent {
                     fontSizeVariation="medium"
                     underline
                     anchorVariation="primary"
-                    to="/bag"
-                    asPath="/Bag"
+                    asPath={CHECKOUT_ROUTES.bagPage.asPath}
+                    to={CHECKOUT_ROUTES.bagPage.to}
                     dataLocator="addressbook-makedefault"
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
@@ -64,8 +65,8 @@ class MiniBagBody extends React.PureComponent {
                     fontSizeVariation="medium"
                     underline
                     anchorVariation="primary"
-                    noLink
-                    to="/bag"
+                    asPath={CHECKOUT_ROUTES.bagPage.asPath}
+                    to={CHECKOUT_ROUTES.bagPage.to}
                     data-locator="addressbook-makedefault"
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
