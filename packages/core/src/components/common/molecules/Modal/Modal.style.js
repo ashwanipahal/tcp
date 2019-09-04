@@ -33,7 +33,6 @@ const ModalStyle = css`
       min-height: ${props => (props.heightConfig ? props.heightConfig.minHeight : '')};
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
-      display: table;
     }
   }
   .Modal_Heading {

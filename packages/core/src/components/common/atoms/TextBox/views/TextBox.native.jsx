@@ -109,9 +109,9 @@ export class TextBox extends React.Component {
 
   validateInputSuccess = () => {
     const {
-      meta: { invalid, pristine, asyncValidating, active },
+      meta: { invalid, asyncValidating, active },
     } = this.props;
-    return !active && !pristine && !invalid && !asyncValidating;
+    return !active && !invalid && !asyncValidating;
   };
 
   getSuccessMsg = () => {
