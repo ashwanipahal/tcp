@@ -62,7 +62,7 @@ class Header extends React.PureComponent<Props> {
 
     cartValuePromise.then(res => {
       this.setState({
-        cartVal: parseInt(res, 10),
+        cartVal: parseInt(res || 0, 10),
       });
     });
   }

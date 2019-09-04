@@ -481,5 +481,9 @@
   },
   "ERR_MOVE_TO_BAG_SFL_ITEM": {
     "errorMessage": "Sorry, this item is no longer available in the color, size, or fit selected."
+  },
+  "_ERR_INSUFFICIENT_FUND": {
+    "errorMessage": "There is no balance for the account provided. ",
+    "formFieldName": ""
   }
 }
