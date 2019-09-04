@@ -46,6 +46,14 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/addAddress',
   },
+  addPaymentInstruction: {
+    method: 'POST',
+    URI: 'v2/checkout/addPaymentInstruction',
+  },
+  deletePaymentInstruction: {
+    method: 'POST',
+    URI: 'v2/checkout/deletePaymentInstruction',
+  },
   updateAddress: {
     method: 'put',
     URI: 'v2/wallet/updateAddress',
