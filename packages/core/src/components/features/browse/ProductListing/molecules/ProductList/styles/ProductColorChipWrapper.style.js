@@ -38,6 +38,11 @@ const styles = css`
     margin-left: 19px;
   }
 
+  .product-color-chip-image {
+    height: 100%;
+    width: 100%;
+  }
+
   .content-colors-button {
     margin-right: 6px;
     font-size: 0;
