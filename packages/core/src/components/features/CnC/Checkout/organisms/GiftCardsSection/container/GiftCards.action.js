@@ -7,29 +7,14 @@ const applyGiftCard = payload => {
   };
 };
 
-const removeGiftCard = piId => {
+const removeGiftCard = payload => {
   return {
     type: GIFTCARD_CONSTANTS.REMOVE_GIFT_CARD,
-    piId,
-  };
-};
-
-const setGiftCardError = payload => {
-  return {
-    type: GIFTCARD_CONSTANTS.SET_GIFTCARD_ERROR,
     payload,
-  };
-};
-
-const resetGiftCardError = () => {
-  return {
-    type: GIFTCARD_CONSTANTS.RESET_GIFTCARD_ERROR,
   };
 };
 
 export default {
   applyGiftCard,
   removeGiftCard,
-  setGiftCardError,
-  resetGiftCardError,
 };

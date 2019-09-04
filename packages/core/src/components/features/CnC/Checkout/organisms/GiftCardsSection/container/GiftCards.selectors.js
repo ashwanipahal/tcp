@@ -46,7 +46,7 @@ const getGiftCardsTotal = state => {
 };
 
 const getGiftCardErrors = state => {
-  return state.Giftcards && state.Giftcards.get('giftCardError');
+  return state.Checkout.getIn(['values', 'giftCardError']);
 };
 
 export default {

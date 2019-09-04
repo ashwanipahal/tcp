@@ -6,7 +6,7 @@ import {
   removeGiftCard,
 } from '../../../../../../../services/abstractors/CnC';
 import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
-import GIFT_CARD_ACTIONS from './GiftCards.action';
+import { setGiftCardError, resetGiftCardError } from '../../../container/Checkout.action';
 
 const getErrorMessage = res => {
   let errorMessageRecieved = '';
@@ -21,29 +21,26 @@ const getErrorMessage = res => {
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
   try {
-    yield put(GIFT_CARD_ACTIONS.resetGiftCardError());
     const res = yield call(addGiftCardPaymentToOrder, payload);
     if (res.errorResponse && res.errorResponse.errors) {
       const resErr = getErrorMessage(res);
       const errorObject = {
         [payload.creditCardId]: resErr,
       };
-      yield put(GIFT_CARD_ACTIONS.setGiftCardError(errorObject));
+      yield put(setGiftCardError(errorObject));
     }
 
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-    yield put(BAG_PAGE_ACTIONS.getCartData());
   } catch (err) {
-    yield put(GIFT_CARD_ACTIONS.setGiftCardError(err));
+    yield put(setGiftCardError(err));
   }
 }
 
 export function* removeGiftCardFromOrder(payload) {
   try {
-    yield put(GIFT_CARD_ACTIONS.resetGiftCardError());
+    yield put(resetGiftCardError());
     yield call(removeGiftCard, payload.piId);
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-    yield put(BAG_PAGE_ACTIONS.getCartData());
   } catch (err) {
     console.log(err);
   }
