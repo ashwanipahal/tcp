@@ -9,7 +9,7 @@ import {
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
-import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.view';
+import AddedToBagActions from '../../AddedToBagActions';
 import Anchor from '../../../../common/atoms/Anchor';
 
 const AddedToBag = ({
@@ -43,7 +43,12 @@ const AddedToBag = ({
         <AddedToBagWrapper>
           <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
           <AddedToBagViewPoints labels={labels} />
-          <AddedToBagActions labels={labels} navigation={navigation} closeModal={onRequestClose} />
+          <AddedToBagActions
+            labels={labels}
+            navigation={navigation}
+            closeModal={onRequestClose}
+            showAddTobag
+          />
           <BossBanner labels={labels} />
           <StyledAnchorWrapper>
             <Anchor

@@ -17,10 +17,10 @@ export default {
     MAILING: 'Mailing',
   },
   CHECKOUT_STAGES: {
-    PICKUP: 'pickup',
-    SHIPPING: 'shipping',
-    BILLING: 'billing',
-    REVIEW: 'review',
+    PICKUP: 'Pickup',
+    SHIPPING: 'Shipping',
+    BILLING: 'Billing',
+    REVIEW: 'Review',
   },
 
   CHECKOUT_PAGES_NAMES: {

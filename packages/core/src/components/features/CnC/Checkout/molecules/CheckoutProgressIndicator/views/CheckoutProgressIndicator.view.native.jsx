@@ -33,7 +33,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
       <CheckoutProgressBar>
         <StepIndicatorContainer>
           {availableStages.map((stage, index) => {
-            if (availableStages[index] === activeStage) {
+            if (availableStages[index].toLowerCase() === activeStage.toLowerCase()) {
               hasSeenActive = true;
               return (
                 <ProgressStep>
@@ -63,7 +63,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
         </StepIndicatorContainer>
         <StepIndicatorLabelsContainer>
           {availableStages.map((stage, index) => {
-            if (availableStages[index] === activeStage) {
+            if (availableStages[index].toLowerCase() === activeStage.toLowerCase()) {
               hasSeenActiveLabel = true;
               return (
                 <ProgressStepLabels>
