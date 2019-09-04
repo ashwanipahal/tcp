@@ -85,6 +85,7 @@ class CheckoutPage extends React.PureComponent {
             handleSubmit={submitShippingSection}
             loadShipmentMethods={loadShipmentMethods}
             routeToPickupPage={routeToPickupPage}
+            isMobile={isMobile}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && <BillingPage />}

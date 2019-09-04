@@ -150,8 +150,8 @@ function getShippingDestinationValues(state) {
 
 function getDefaultAddress(/* state, country, noBillingAddresses */) {
   return false;
-  // let countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
-  // let defaultAddress = countryFilteredAddresses.find(
+  // const countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
+  // const defaultAddress = countryFilteredAddresses.find(
   //   addressEntry => addressEntry.get && addressEntry.get('primary')
   // );
 
@@ -160,6 +160,7 @@ function getDefaultAddress(/* state, country, noBillingAddresses */) {
   // } else {
   //   return defaultAddress;
   // }
+
 }
 
 export const getPickupValues = createSelector(
@@ -236,6 +237,17 @@ const getShippingSendOrderUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
 
+const getSaveToAddressBook = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'saveToAddressBook');
+};
+
+const getOnFileAddressKey = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'onFileAddressKey');
+};
+
+
 const getAddressFields = state => {
   const selector = formValueSelector('checkoutShipping');
   return selector(state, 'address');
@@ -307,7 +319,7 @@ const getShipmentMethods = state => {
 const getDefaultShipmentID = createSelector(
   getShipmentMethods,
   shipmentMethods => {
-    const defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+    const defaultMethod = shipmentMethods.find((method, index) => method.isDefault === true || index === 0);
     return defaultMethod && defaultMethod.id;
   }
 );
@@ -467,4 +479,6 @@ export default {
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getUserEmail,
+  getSaveToAddressBook,
+  getOnFileAddressKey
 };

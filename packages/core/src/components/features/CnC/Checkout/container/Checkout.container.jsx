@@ -20,6 +20,8 @@ import selectors, {
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+import { getUserPhoneNumber } from '../../../account/User/container/User.selectors';
 
 const {
   getShippingLabels,
@@ -33,6 +35,8 @@ const {
   getShipmentMethods,
   getDefaultShipmentID,
   getShippingSendOrderUpdate,
+  getSaveToAddressBook,
+  getOnFileAddressKey
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -148,6 +152,10 @@ const mapStateToProps = state => {
       emailSignUpLabels: getEmailSignUpLabels(state),
       shipmentMethods: getShipmentMethods(state),
       defaultShipmentId: getDefaultShipmentID(state),
+      isSaveToAddressBookChecked: getSaveToAddressBook(state),
+      userAddresses: getAddressListState(state),
+      onFileAddressKey: getOnFileAddressKey(state),
+      newUserPhoneNo: getUserPhoneNumber(state)
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

@@ -215,6 +215,7 @@ export class AddressFields extends React.PureComponent {
       addressFormLabels,
       variation,
       formSection,
+      isGuest
     } = this.props;
     return (
       <div className={className}>
@@ -307,16 +308,18 @@ export class AddressFields extends React.PureComponent {
                 enableSuccessCheck={false}
               />
             </Col>
-            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <Field
-                placeholder="Email (For Order Updates)"
-                name="emailAddress"
-                id={`${formSection}.emailAddress`}
-                component={TextBox}
-                dataLocator="email-address-field"
-                enableSuccessCheck={false}
-              />
-            </Col>
+            {isGuest && (
+              <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+                <Field
+                  placeholder="Email (For Order Updates)"
+                  name="emailAddress"
+                  id={`${formSection}.emailAddress`}
+                  component={TextBox}
+                  dataLocator="email-address-field"
+                  enableSuccessCheck={false}
+                />
+              </Col>
+            )}
           </Row>
         ) : null}
       </div>

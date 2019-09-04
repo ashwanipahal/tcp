@@ -57,11 +57,12 @@ export default class ShippingPage extends React.PureComponent {
         loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
+
   }
 
   submitShippingData = data => {
     // console.log(data);
-    const { address, shipmentMethods, smsSignUp = {} } = data;
+    const { address, shipmentMethods, onFileAddressKey, defaultShipping, saveToAddressBook, smsSignUp = {} } = data;
 
     // const addAddressData = {
     //   applyToOrder: true,
@@ -96,10 +97,10 @@ export default class ShippingPage extends React.PureComponent {
         emailAddress: address.emailAddress,
 
         emailSignup: true,
-        onFileAddressKey: undefined,
+        onFileAddressKey,
         phoneNumber: address.phoneNumber,
-        saveToAccount: address.saveToAccount || true,
-        setAsDefault: address.isDefault || true,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: defaultShipping || true,
       },
       smsInfo: {
         smsUpdateNumber: smsSignUp.phoneNumber,
@@ -124,7 +125,17 @@ export default class ShippingPage extends React.PureComponent {
       defaultShipmentId,
       loadShipmentMethods,
       routeToPickupPage,
+      isSaveToAddressBookChecked,
+      userAddresses,
+      onFileAddressKey,
+      isMobile,
+      newUserPhoneNo
     } = this.props;
+    let defaultAddressId = null;
+    if (userAddresses) {
+      const defaultAddress = userAddresses.filter(address => address.primary === 'true')
+      defaultAddressId = defaultAddress.size > 0 ? defaultAddress.get(0).addressId : '';
+    }
     return (
       <>
         {shipmentMethods.length > 0 && (
@@ -137,6 +148,8 @@ export default class ShippingPage extends React.PureComponent {
             initialValues={{
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
+              saveToAddressBook: !isGuest && !defaultAddressId,
+              onFileAddressKey: defaultAddressId
             }}
             selectedShipmentId={selectedShipmentId}
             checkPOBoxAddress={this.checkPOBoxAddress}
@@ -148,6 +161,13 @@ export default class ShippingPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             shipmentMethods={shipmentMethods}
             loadShipmentMethods={loadShipmentMethods}
+            defaultShipmentId={defaultShipmentId}
+            isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+            userAddresses={userAddresses}
+            onFileAddressKey={onFileAddressKey}
+            isMobile={isMobile}
+            newUserPhoneNo={newUserPhoneNo}
+            defaultAddressId={defaultAddressId}
           />
         )}
       </>

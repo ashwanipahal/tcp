@@ -33,6 +33,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
 import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
+import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { routerPush, isMobileApp } from '../../../../../utils';
 
@@ -95,7 +96,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   const actions = [
     resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
     resCheckoutValues.pickUpAlternative &&
-      getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
+    getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
     //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
@@ -426,6 +427,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   //       }
   //     }));
   //   pendingPromises.push(getAddressesOperator(this.store).loadAddressesOnAccount());
+  yield call(getAddressList);
   // }
 
   // yield all(pendingPromises);
@@ -580,6 +582,43 @@ function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailA
   }
 }
 
+
+function* addRegisteredUserAddress({ onFileAddressKey, address, phoneNumber, emailAddress, setAsDefault, saveToAccount }) {
+  console.log('in addRegisteredUserAddress')
+
+  //   if (onFileAddressKey) {
+  //   let selectedAddressBookEntry = yield select(getAddressByKey(onFileAddressKey));
+  //   addOrEditAddressPromise = new Promise(resolve =>
+  //     resolve({ addressId: selectedAddressBookEntry && selectedAddressBookEntry.addressId })
+  //   );
+  // } else {
+  // const oldShippingDestination = yield select(getShippingDestinationValues);
+  // let oldSelectedAddressBookEntry = yield select(
+  //   getAddressByKey(store.getState(), oldShippingDestination.onFileAddressKey)
+  // );
+  // onFileAddressKey = !oldSelectedAddressBookEntry
+  //   ? oldShippingDestination.onFileAddressKey
+  //   : null;
+  return yield call(
+    addAddressGet,
+    {
+      payload: {
+        ...address,
+        address1: address.addressLine1,
+        address2: address.addressLine2,
+        zip: address.zipCode,
+        phoneNumber,
+        emailAddress,
+        primary: `${setAsDefault}`,
+        // phone1Publish: `${saveToAccount}`,
+        fromPage: '',
+      },
+    },
+    true // add to address book inside redux-store
+  );
+  // }
+}
+
 function* submitShippingSection({ payload: formData }) {
   // console.log('>>>', { formData });
   const {
@@ -587,7 +626,7 @@ function* submitShippingSection({ payload: formData }) {
     method,
     smsInfo,
     shipTo: {
-      // onFileAddressKey,
+      onFileAddressKey,
       address,
       setAsDefault,
       phoneNumber,
@@ -666,27 +705,9 @@ function* submitShippingSection({ payload: formData }) {
     //   false
     // );
     // }
-  } // else {
-  // if (onFileAddressKey) {
-  //   let selectedAddressBookEntry = yield select(getAddressByKey(onFileAddressKey));
-  //   addOrEditAddressPromise = new Promise(resolve =>
-  //     resolve({ addressId: selectedAddressBookEntry && selectedAddressBookEntry.addressId })
-  //   );
-  // } else {
-  //   let oldShippingDestination = yield select(getShippingDestinationValues);
-  //   let oldSelectedAddressBookEntry = yield select(
-  //     getAddressByKey(store.getState(), oldShippingDestination.onFileAddressKey)
-  //   );
-  //   onFileAddressKey = !oldSelectedAddressBookEntry
-  //     ? oldShippingDestination.onFileAddressKey
-  //     : null;
-  //   addOrEditAddressPromise = addressesOperator.addAddress(
-  //     { address, phoneNumber, emailAddress, addressKey: onFileAddressKey },
-  //     { isDefault: setAsDefault, saveToAccount: saveToAccount },
-  //     true // add to address book inside redux-store
-  //   );
-  // }
-  // }
+  } else {
+    addOrEditAddressRes = yield addRegisteredUserAddress({ onFileAddressKey, address, phoneNumber, emailAddress, setAsDefault, saveToAccount })
+  }
 
   // Retrieve phone number info for sms updates
   const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
