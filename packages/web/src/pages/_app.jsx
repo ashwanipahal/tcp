@@ -22,6 +22,7 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
+import Perf from '../components/common/atoms/Perf';
 
 // constants
 import constants from '../constants';
@@ -34,7 +35,6 @@ const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr:
 function AnalyticsScript() {
   return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
 }
-
 class TCPWebApp extends App {
   constructor(props) {
     super(props);
@@ -44,9 +44,11 @@ class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
+    const { isServer } = ctx;
 
     return {
       pageProps,
+      isServer,
     };
   }
 
@@ -157,7 +159,7 @@ class TCPWebApp extends App {
   };
 
   render() {
-    const { Component, pageProps, store, router } = this.props;
+    const { Component, pageProps, store, router, isServer } = this.props;
     let isNonCheckoutPage = true;
     const { PICKUP, SHIPPING, BILLING, REVIEW } = CHECKOUT_STAGES;
     const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW];
@@ -186,6 +188,7 @@ class TCPWebApp extends App {
         </ThemeProvider>
         {/* Inject analytics script if enabled */}
         {process.env.ANALYTICS && <AnalyticsScript />}
+        {isServer && <Perf.mark value="App render" />}
       </Container>
     );
   }
