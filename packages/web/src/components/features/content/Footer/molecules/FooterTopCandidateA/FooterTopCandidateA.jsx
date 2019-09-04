@@ -96,11 +96,12 @@ class FooterTopCandidateA extends React.PureComponent {
               fieldName={emailSignupFieldName}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
               <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
             </BodyCopy>
-            <div className="divider hide-in-medium-up" />
+            <div>
+              <div className="divider hide-in-medium-up" />
+            </div>
           </Col>
 
           {/* ---------- Email Signup ends here ---------- */}
@@ -143,8 +144,7 @@ class FooterTopCandidateA extends React.PureComponent {
               }}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
               <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
             </BodyCopy>
           </Col>
