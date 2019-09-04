@@ -300,12 +300,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
                 ";
   }
 
-  & .CheckBox__text a {
-    color: ",
-                [Function],
-                ";
-  }
-
   & .disabled {
     opacity: ",
                 [Function],

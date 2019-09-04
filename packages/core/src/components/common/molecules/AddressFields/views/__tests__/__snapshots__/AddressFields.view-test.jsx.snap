@@ -1768,12 +1768,6 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
   }
 
-  & .CheckBox__text a {
-    color: ",
-                [Function],
-                ";
-  }
-
   & .disabled {
     opacity: ",
                 [Function],

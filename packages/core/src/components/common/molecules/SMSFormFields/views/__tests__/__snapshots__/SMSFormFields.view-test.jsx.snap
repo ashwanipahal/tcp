@@ -105,12 +105,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
                 ";
   }
 
-  & .CheckBox__text a {
-    color: ",
-                [Function],
-                ";
-  }
-
   & .disabled {
     opacity: ",
                 [Function],
@@ -277,12 +271,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                [Function],
-                ";
   }
 
   & .CheckBox__text a {
@@ -666,12 +654,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
-  }
-
-  & .CheckBox__text a {
-    color: ",
-                [Function],
-                ";
   }
 
   & .CheckBox__text a {
