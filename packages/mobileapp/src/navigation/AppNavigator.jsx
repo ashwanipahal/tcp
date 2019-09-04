@@ -30,7 +30,7 @@ const TabNavigator = createBottomTabNavigator(
 
 const RootStack = createStackNavigator(
   {
-    Main: {
+    Home: {
       screen: TabNavigator,
     },
     Checkout: {
