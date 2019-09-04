@@ -54,6 +54,7 @@ class LoginSection extends PureComponent<Props> {
       handleContinueAsGuest,
       loginError,
       showLogin,
+      setEmailid,
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -63,6 +64,7 @@ class LoginSection extends PureComponent<Props> {
           <Fragment>
             <LoginTopSection variation={variation} labels={labels} />
             <LoginForm
+              setEmailid={setEmailid}
               onSubmit={onSubmit}
               labels={labels}
               loginError={loginError}
