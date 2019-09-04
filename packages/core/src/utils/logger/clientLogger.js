@@ -21,6 +21,8 @@ class ClientLogger {
       info: (...msg) => formatMessage(msg, 'info'),
       error: (...msg) => formatMessage(msg, 'error'),
       debug: (...msg) => formatMessage(msg, 'log'),
+      trace: (...msg) => formatMessage(msg, 'log'),
+      fatal: (...msg) => formatMessage(msg, 'log'),
     };
   }
 }
