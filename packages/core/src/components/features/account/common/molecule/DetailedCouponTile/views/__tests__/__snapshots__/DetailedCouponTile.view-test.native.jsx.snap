@@ -54,6 +54,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color=""
           customStyle={Object {}}
@@ -67,6 +68,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         />
       </Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#fff"
         customStyle={Object {}}
@@ -142,6 +144,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color=""
           customStyle={Object {}}
@@ -155,6 +158,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         />
       </Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#fff"
         customStyle={Object {}}
@@ -238,6 +242,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       </Styled(View)>
       <Styled(View)>
         <Styled(CustomButton)
+          active={false}
           buttonVariation="variable-width"
           color=""
           customStyle={Object {}}
@@ -251,6 +256,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         />
       </Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="#fff"
         customStyle={Object {}}

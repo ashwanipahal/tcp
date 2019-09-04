@@ -63,6 +63,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
           </Styled(View)>
           <Styled(View)>
             <Styled(CustomButton)
+              active={false}
               buttonVariation="variable-width"
               color=""
               customStyle={Object {}}

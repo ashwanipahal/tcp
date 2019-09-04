@@ -889,6 +889,7 @@ exports[`AddressForm component should renders correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
@@ -905,6 +906,7 @@ exports[`AddressForm component should renders correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
