@@ -407,6 +407,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
@@ -427,6 +428,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         url=""
       />
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
@@ -859,6 +861,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
@@ -879,6 +882,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         url=""
       />
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color=""
         customStyle={Object {}}
