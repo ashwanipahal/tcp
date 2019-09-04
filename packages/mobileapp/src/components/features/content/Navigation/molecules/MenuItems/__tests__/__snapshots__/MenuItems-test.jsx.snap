@@ -2,7 +2,7 @@
 
 exports[`MenuItems should render correctly 1`] = `
 <Fragment>
-  <View
+  <Styled(View)
     maxWidth=""
   >
     <Styled(BodyCopy)
@@ -12,8 +12,9 @@ exports[`MenuItems should render correctly 1`] = `
       fontWeight="regular"
       numberOfLines={1}
       text="abcd"
+      textAlign="left"
     />
-  </View>
+  </Styled(View)>
   <Styled(TouchableOpacity)
     onPress={[Function]}
   />
@@ -22,7 +23,7 @@ exports[`MenuItems should render correctly 1`] = `
 
 exports[`MenuItems should render correctly with badges and submenu 1`] = `
 <Fragment>
-  <View
+  <Styled(View)
     maxWidth=""
   >
     <Styled(BodyCopy)
@@ -32,8 +33,9 @@ exports[`MenuItems should render correctly with badges and submenu 1`] = `
       fontWeight="regular"
       numberOfLines={1}
       text="abcd"
+      textAlign="left"
     />
-  </View>
+  </Styled(View)>
   <Styled(TouchableOpacity)
     onPress={[Function]}
   >
@@ -62,7 +64,7 @@ exports[`MenuItems should render correctly with badges and submenu 1`] = `
 
 exports[`MenuItems should trigger the press event with l3 1`] = `
 <Fragment>
-  <View
+  <Styled(View)
     maxWidth=""
   >
     <Styled(BodyCopy)
@@ -72,8 +74,9 @@ exports[`MenuItems should trigger the press event with l3 1`] = `
       fontWeight="regular"
       numberOfLines={1}
       text="abcd"
+      textAlign="left"
     />
-  </View>
+  </Styled(View)>
   <Styled(TouchableOpacity)
     onPress={[Function]}
   >
@@ -102,7 +105,7 @@ exports[`MenuItems should trigger the press event with l3 1`] = `
 
 exports[`MenuItems should trigger the press event without l3 1`] = `
 <Fragment>
-  <View
+  <Styled(View)
     maxWidth=""
   >
     <Styled(BodyCopy)
@@ -112,8 +115,9 @@ exports[`MenuItems should trigger the press event without l3 1`] = `
       fontWeight="regular"
       numberOfLines={1}
       text="abcd"
+      textAlign="left"
     />
-  </View>
+  </Styled(View)>
   <Styled(TouchableOpacity)
     onPress={[Function]}
   >
