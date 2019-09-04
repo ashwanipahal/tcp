@@ -58,10 +58,6 @@ const styles = css`
     color: ${props => props.theme.colorPalette.black};
   }
 
-  & .CheckBox__text a {
-    color: ${props => props.theme.colorPalette.black};
-  }
-
   & .disabled {
     opacity: ${props => props.theme.opacity.opacity.medium};
   }
