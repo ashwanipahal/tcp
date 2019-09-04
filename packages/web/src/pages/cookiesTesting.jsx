@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
@@ -12,7 +11,7 @@ const TEMP_CART_ITEM_COUNT = 'tempcartItemsCount';
 class CookiesTestView extends React.Component {
   constructor(props) {
     super(props);
-    logger.info('constrcter called');
+    console.log('constrcter called');
     this.state = {
       payload: '',
       targetDomain: 'test1.gymboree.com',
@@ -112,7 +111,7 @@ class CookiesTestView extends React.Component {
       payload: JSON.stringify(payload),
     });
 
-    logger.info(
+    console.log(
       '== Super Agent used HITTING URL : ',
       'https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR'
     );
@@ -130,14 +129,14 @@ class CookiesTestView extends React.Component {
       .send(JSON.stringify(payload))
       .withCredentials()
       .then(res => {
-        logger.info(res);
+        console.log(res);
         if (res.status === 200) {
-          logger.info(`on XHR Success Nagivation`);
+          console.log(`on XHR Success Nagivation`);
         }
       })
       .catch(err => {
         // err.message, err.response
-        logger.error(err);
+        console.log(err);
       });
   }
 
@@ -178,7 +177,7 @@ class CookiesTestView extends React.Component {
       payload: JSON.stringify(payload),
     });
 
-    logger.info(
+    console.log(
       '== Super Agent used HITTING URL : ',
       'https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR'
     );
@@ -194,11 +193,11 @@ class CookiesTestView extends React.Component {
     })
       .then(response => response.json())
       .then(res => {
-        logger.info(res);
+        console.log(res);
       })
       .catch(err => {
         // err.message, err.response
-        logger.error(err);
+        console.log(err);
       });
   }
 
