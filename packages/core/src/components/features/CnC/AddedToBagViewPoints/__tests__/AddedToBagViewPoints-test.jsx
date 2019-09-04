@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AddedToBagViewPoints from '../views/AddedToBagViewPoints.view';
+import { AddedToBagViewPointsVanilla } from '../views/AddedToBagViewPoints.view';
 
 describe('AddedToBagViewPoints component', () => {
   it('renders correctly', () => {
@@ -14,8 +14,9 @@ describe('AddedToBagViewPoints component', () => {
         pointsToNextReward: 12,
         totalItems: 3,
       },
+      labels: { bagSubTotal: '' },
     };
-    const component = shallow(<AddedToBagViewPoints {...props} />);
+    const component = shallow(<AddedToBagViewPointsVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

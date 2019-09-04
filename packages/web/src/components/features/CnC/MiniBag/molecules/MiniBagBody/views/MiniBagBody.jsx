@@ -136,3 +136,4 @@ MiniBagBody.propTypes = {
 };
 
 export default withStyles(MiniBagBody, styles);
+export { MiniBagBody as MiniBagBodyVanilla };
