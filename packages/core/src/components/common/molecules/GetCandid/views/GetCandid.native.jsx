@@ -130,7 +130,7 @@ GetCandid.propTypes = {
   candidData: PropTypes.shape({}),
   fetchCandidData: PropTypes.func,
   labels: PropTypes.shape({}),
-  navigation: PropTypes.shap({}),
+  navigation: PropTypes.shape({}),
 };
 
 export default GetCandid;
