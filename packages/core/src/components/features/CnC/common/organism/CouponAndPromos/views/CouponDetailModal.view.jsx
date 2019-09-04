@@ -75,7 +75,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
           className="couponModal_modalLongDesc"
           data-locator={`couponDetailModal_${coupon.status}_LongDesc`}
         >
-          {`${labels.MODAL_LONG_DESCRIPTION}`}
+          {coupon.legalText}
         </BodyCopy>
         <BodyCopy
           fontFamily="secondaryFontFamily"

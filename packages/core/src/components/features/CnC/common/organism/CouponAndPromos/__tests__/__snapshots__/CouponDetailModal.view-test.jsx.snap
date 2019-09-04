@@ -80,7 +80,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       data-locator="couponDetailModal_applied_LongDesc"
       fontFamily="secondaryFontFamily"
     >
-      undefined
+      $10 OFF On $50
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
       className="couponModal_modalShortDesc"
