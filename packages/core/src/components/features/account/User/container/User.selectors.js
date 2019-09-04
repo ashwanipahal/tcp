@@ -165,6 +165,11 @@ export const getProfileInfoTileData = createSelector(
   }
 );
 
+export const getQuestionsList = createSelector(
+  getSurveyState,
+  state => state && state.get('questions')
+);
+
 export const getPercentageIncrement = () => ({
   percentageMailingAddress: 20,
   percentageUserSurvey: 20,
