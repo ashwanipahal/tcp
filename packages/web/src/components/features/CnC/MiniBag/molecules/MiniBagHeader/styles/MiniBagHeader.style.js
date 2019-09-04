@@ -24,10 +24,8 @@ export default css`
     }
   }
   .subHeaderTextLogin {
-    text-decoration: none;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    margin: 6px -20px 1px 0px;
   }
   .subHeaderTextIcon {
     width: auto;

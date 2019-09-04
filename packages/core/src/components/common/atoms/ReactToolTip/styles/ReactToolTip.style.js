@@ -47,6 +47,12 @@ const tooltipStyle = css`
     }
   }
 
+  .tool-tip-button {
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
   .tooltip-message {
     background: ${props => props.theme.colors.WHITE};
     border-radius: 3px;

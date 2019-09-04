@@ -63,7 +63,12 @@ class AirmilesBanner extends React.PureComponent<Props> {
   };
 
   checkIsValidPromoField = (promoField, syncError) => {
-    return !!promoField && promoField.length > 2 && !(syncError && syncError.promoId);
+    return (
+      !!promoField &&
+      promoField.length > 10 &&
+      promoField.match(/^[0-9]+$/) &&
+      !(syncError && syncError.promoId)
+    );
   };
 
   handleSubmit = () => {
