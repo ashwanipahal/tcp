@@ -10,7 +10,7 @@ import { DEFAULT_CLASS_NAME, LIFECYCLE_METHODS } from './config';
  * @param {object} error
  * @param {string} componentName
  */
-const renderErrorComponent = (error, componentName) => {
+export const renderErrorComponent = (error, componentName) => {
   return React.createElement(
     'div',
     {
@@ -20,7 +20,7 @@ const renderErrorComponent = (error, componentName) => {
   );
 };
 
-const logError = ({ error, errorInfo }) => {
+export const logError = ({ error, errorInfo }) => {
   trackError({
     error,
     extraData: {
@@ -30,6 +30,7 @@ const logError = ({ error, errorInfo }) => {
       component: 'ERROR_BOUNDARY',
     },
   });
+  return true;
 };
 
 /**
@@ -37,7 +38,7 @@ const logError = ({ error, errorInfo }) => {
  * @param {function} renderComponent generate component render
  * @param {string} componentName
  */
-const renderClientSafeComponent = (renderComponent, componentName) => {
+export const renderClientSafeComponent = (renderComponent, componentName) => {
   return class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
@@ -84,7 +85,7 @@ export const functionalSafeComponent = WrappedComponent => {
  * @param {string} methodName
  * @param {*} WrappedComponent
  */
-const wrapMethod = (methodName, WrappedComponent) => {
+export const wrapMethod = (methodName, WrappedComponent) => {
   const originalMethod = WrappedComponent.prototype[methodName];
   if (!originalMethod) {
     return;
