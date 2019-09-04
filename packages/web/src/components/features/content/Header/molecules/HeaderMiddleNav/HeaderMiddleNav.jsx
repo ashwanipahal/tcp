@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
@@ -20,17 +21,23 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
   return isOpen ? closeNavigationDrawer('l1_drawer') : openNavigationDrawer('l1_drawer');
 };
 
-class HeaderMiddleNav extends React.PureComponent<Props> {
+class HeaderMiddleNav extends React.PureComponent {
   constructor(props) {
     super(props);
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
       isOpenMiniBagModal: false,
+      isSearchOpen: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
+      showProduct: false,
     };
+    this.searchInput = React.createRef();
+    this.openSearchBar = this.openSearchBar.bind(this);
+    this.closeSearchBar = this.closeSearchBar.bind(this);
+    this.changeSearchText = this.changeSearchText.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -69,6 +76,28 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     }
   };
 
+  openSearchBar = e => {
+    e.preventDefault();
+    if (window.innerWidth <= 1024) {
+      routerPush('/search', '/search');
+    } else {
+      this.setState({ isSearchOpen: true }, () => {
+        this.searchInput.current.focus();
+      });
+    }
+  };
+
+  closeSearchBar = e => {
+    e.preventDefault();
+    this.setState({ isSearchOpen: false });
+  };
+
+  changeSearchText = e => {
+    e.preventDefault();
+    const searchText = this.searchInput.current.value;
+    this.setState({ showProduct: Boolean(searchText.length) });
+  };
+
   render() {
     const {
       className,
@@ -84,6 +113,8 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       userNameClick,
       triggerLoginCreateAccount,
       cartItemCount,
+      isSearchOpen,
+      showProduct,
     } = this.state;
 
     return (
@@ -132,7 +163,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
               medium: 8,
               small: 6,
             }}
-            className="textRight"
+            className={`textRight ${isSearchOpen && 'flexbox'}`}
           >
             {userName ? (
               <React.Fragment>
@@ -146,31 +177,42 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 </BodyCopy>
               </React.Fragment>
             ) : (
-              <React.Fragment>
-                <Anchor
-                  href="#"
-                  noLink
-                  id="createAccount"
-                  className="leftLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                  fontSizeVariation="large"
-                  anchorVariation="primary"
-                >
-                  Create Account
-                </Anchor>
-                <Anchor
-                  href="#"
-                  noLink
-                  id="login"
-                  className="rightLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                  fontSizeVariation="large"
-                  anchorVariation="primary"
-                >
-                  Login
-                </Anchor>
-              </React.Fragment>
+              !isSearchOpen && (
+                <React.Fragment>
+                  <Anchor
+                    href="#"
+                    noLink
+                    id="createAccount"
+                    className="leftLink"
+                    onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
+                    fontSizeVariation="large"
+                    anchorVariation="primary"
+                  >
+                    Create Account
+                  </Anchor>
+                  <Anchor
+                    href="#"
+                    noLink
+                    id="login"
+                    className="rightLink"
+                    onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
+                    fontSizeVariation="large"
+                    anchorVariation="primary"
+                  >
+                    Login
+                  </Anchor>
+                </React.Fragment>
+              )
             )}
+            <SearchBar
+              className={!isSearchOpen && 'rightLink'}
+              openSearchBar={this.openSearchBar}
+              changeSearchText={this.changeSearchText}
+              closeSearchBar={this.closeSearchBar}
+              isOpen={isSearchOpen}
+              showProduct={showProduct}
+              searchRef={this.searchInput}
+            />
             <Anchor
               to=""
               id="cartIcon"
