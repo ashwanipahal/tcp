@@ -11,7 +11,6 @@ export const AboutYouInformation = ({
   errorMessage,
   onSubmit,
   initialValues,
-  formErrorMessage,
 }) => {
   return (
     <React.Fragment>
@@ -38,7 +37,6 @@ export const AboutYouInformation = ({
         errorMessage={errorMessage}
         onSubmit={onSubmit}
         initialValues={initialValues}
-        formErrorMessage={formErrorMessage}
       />
     </React.Fragment>
   );
