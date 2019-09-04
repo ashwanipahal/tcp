@@ -13,7 +13,6 @@ import Button from '../../../../../../common/atoms/Button';
 import {
   Style,
   ModalContainer,
-  ModalHeading,
   PickupEditHeader,
   EditAnchor,
 } from '../styles/PickupMainContactEditForm.style.native';
@@ -21,19 +20,22 @@ import {
 class PickupMainContactEditForm extends React.Component {
   static defaultValidation = getStandardConfig(['firstName', 'lastName', 'phoneNumber']);
 
+  pickupEditSubmit = value => {
+    const { onEditModeChange } = this.props;
+    const { pickUpContact } = value;
+    onEditModeChange(false, pickUpContact);
+  };
+
   SaveButton = () => {
-    const { labels, onClose } = this.props;
+    const { labels, handleSubmit } = this.props;
     return (
-      <View>
-        <Button buttonVariation="variable-width" text="Close" onPress={onClose} />
-        <Button
-          fill="BLUE"
-          color="white"
-          buttonVariation="variable-width"
-          text={labels.btnSaveUpdate}
-          onPress={() => {}}
-        />
-      </View>
+      <Button
+        fill="BLUE"
+        color="white"
+        buttonVariation="variable-width"
+        text={labels.btnSaveUpdate}
+        onPress={handleSubmit(this.pickupEditSubmit)}
+      />
     );
   };
 
@@ -49,7 +51,7 @@ class PickupMainContactEditForm extends React.Component {
       <PickupEditHeader>
         <BodyCopy
           fontFamily="primary"
-          fontSize="fs24"
+          fontSize="fs28"
           fontWeight="regular"
           color="gray.900"
           text={labels.pickupContactText}
@@ -82,17 +84,13 @@ class PickupMainContactEditForm extends React.Component {
         {this.renderSectionTitle()}
         {!isEditing && <PickUpContactDisplay formData={formData} />}
         {isEditing && isMobile && (
-          <Modal isOpen={isEditing} onRequestClose={onClose}>
+          <Modal
+            isOpen={isEditing}
+            onRequestClose={onClose}
+            heading={labels.titleEditPickup}
+            horizontalBar={false}
+          >
             <ModalContainer>
-              <ModalHeading>
-                <BodyCopy
-                  fontFamily="primary"
-                  fontSize="fs12"
-                  fontWeight="regular"
-                  color="gray.900"
-                  text={labels.titleEditPickup}
-                />
-              </ModalHeading>
               <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
               {this.SaveButton()}
             </ModalContainer>

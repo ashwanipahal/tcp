@@ -40,11 +40,11 @@ const formName = 'checkoutPickup';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isEditing: false, isReset: false };
+    this.state = { isEditing: false };
   }
 
   handleEditModeChange = isEditing => {
-    this.setState({ isEditing, isReset: false });
+    this.setState({ isEditing });
   };
 
   onEditMainContactSubmit = () => {
@@ -52,7 +52,7 @@ class PickUpFormPart extends React.Component {
   };
 
   handleExitEditModeClick = () => {
-    this.setState({ isEditing: false, isReset: true });
+    this.setState({ isEditing: false });
   };
 
   SaveAndCancelButton = () => {
@@ -80,14 +80,13 @@ class PickUpFormPart extends React.Component {
       currentPhoneNumber,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
-      initialValues,
       isSmsUpdatesEnabled,
       dispatch,
       handleSubmit,
       navigation,
       onPickUpSubmit,
     } = this.props;
-    const { isEditing, isReset } = this.state;
+    const { isEditing, pickUpContact } = this.state;
 
     return (
       <>
@@ -123,16 +122,15 @@ class PickUpFormPart extends React.Component {
                   ) : (
                     <PickupMainContactEditForm
                       dispatch={dispatch}
+                      labels={pickUpLabels}
+                      handleSubmit={handleSubmit}
                       isMobile={isMobile}
                       isEditing={isEditing}
                       className="pickup-contact-guest-form"
                       showPhoneNumber
-                      formData={initialValues}
-                      isReset={isReset}
-                      labels={pickUpLabels}
-                      onSubmit={this.onEditMainContactSubmit}
+                      formData={pickUpContact}
                       onEditModeChange={this.handleEditModeChange}
-                      onClose={this.handleExitEditModeClick}
+                      handleExitEditModeClick={this.handleExitEditModeClick}
                     />
                   )}
                 </FormSection>
@@ -154,57 +152,59 @@ class PickUpFormPart extends React.Component {
                   </FormSection>
                 </SmsSignUpForm>
               )}
-              <EmailSignupForm>
-                <CheckBoxWrapper>
-                  <CheckBoxColOne>
-                    <Field
-                      name="emailSignup"
-                      component={InputCheckbox}
-                      dataLocator="hide-show-checkbox"
-                      enableSuccessCheck={false}
-                    />
-                  </CheckBoxColOne>
-                  <CheckBoxColTwo>
-                    <CheckBoxTextWrapper>
-                      <BodyCopy
-                        dataLocator="pickup-email-signUp-heading-lbl"
-                        fontSize="fs14"
-                        mobileFontFamily="secondary"
-                        fontWeight="regular"
-                        text={pickUpLabels.emailSignupHeading}
+              {isGuest && !isUsSite && (
+                <EmailSignupForm>
+                  <CheckBoxWrapper>
+                    <CheckBoxColOne>
+                      <Field
+                        name="emailSignup"
+                        component={InputCheckbox}
+                        dataLocator="hide-show-checkbox"
+                        enableSuccessCheck={false}
                       />
-                    </CheckBoxTextWrapper>
-                  </CheckBoxColTwo>
-                </CheckBoxWrapper>
-                <CheckBoxSubWrapper>
-                  <CheckBoxColOne />
-                  <CheckBoxColTwo>
-                    <BodyCopy
-                      fontSize="fs10"
-                      fontFamily="primary"
-                      fontWeight="regular"
-                      text={pickUpLabels.emailSignupSubHeading}
-                    />
-                    <TextWrapper>
+                    </CheckBoxColOne>
+                    <CheckBoxColTwo>
+                      <CheckBoxTextWrapper>
+                        <BodyCopy
+                          dataLocator="pickup-email-signUp-heading-lbl"
+                          fontSize="fs14"
+                          mobileFontFamily="secondary"
+                          fontWeight="regular"
+                          text={pickUpLabels.emailSignupHeading}
+                        />
+                      </CheckBoxTextWrapper>
+                    </CheckBoxColTwo>
+                  </CheckBoxWrapper>
+                  <CheckBoxSubWrapper>
+                    <CheckBoxColOne />
+                    <CheckBoxColTwo>
                       <BodyCopy
                         fontSize="fs10"
                         fontFamily="primary"
                         fontWeight="regular"
-                        text={pickUpLabels.emailSignupSubSubHeading}
+                        text={pickUpLabels.emailSignupSubHeading}
                       />
-                    </TextWrapper>
-                    <Anchor
-                      underline
-                      anchorVariation="primary"
-                      fontSizeVariation="small"
-                      noLink
-                      href="#"
-                      target="_blank"
-                      text={pickUpLabels.emailSignupContact}
-                    />
-                  </CheckBoxColTwo>
-                </CheckBoxSubWrapper>
-              </EmailSignupForm>
+                      <TextWrapper>
+                        <BodyCopy
+                          fontSize="fs10"
+                          fontFamily="primary"
+                          fontWeight="regular"
+                          text={pickUpLabels.emailSignupSubSubHeading}
+                        />
+                      </TextWrapper>
+                      <Anchor
+                        underline
+                        anchorVariation="primary"
+                        fontSizeVariation="small"
+                        noLink
+                        href="#"
+                        target="_blank"
+                        text={pickUpLabels.emailSignupContact}
+                      />
+                    </CheckBoxColTwo>
+                  </CheckBoxSubWrapper>
+                </EmailSignupForm>
+              )}
 
               <PickUpAlternateForm>
                 <FormSection name="pickUpAlternate">
