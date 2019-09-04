@@ -1,8 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { View } from 'react-native';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { PromoAndArrowContainer, PromoContainer, ArrowIcon } from '../MenuItems.style';
+import { PromoAndArrowContainer, PromoContainer, ArrowIcon, ItemView } from '../MenuItems.style';
 
 const Icon = require('../../../../../../../../../core/src/assets/carrot-large-right.png');
 
@@ -13,7 +12,7 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-large-ri
 const MenuItems = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, hasL3, route }) => {
   return (
     <React.Fragment>
-      <View maxWidth={maxWidthItem}>
+      <ItemView maxWidth={maxWidthItem}>
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs16"
@@ -21,8 +20,9 @@ const MenuItems = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, 
           text={item.categoryContent.name}
           color="text.primary"
           numberOfLines={1}
+          textAlign="left"
         />
-      </View>
+      </ItemView>
       <PromoAndArrowContainer onPress={() => route(navigate, item.subCategories, item.name, hasL3)}>
         {hasBadge && (
           <PromoContainer marginRight={promoBannerMargin}>
