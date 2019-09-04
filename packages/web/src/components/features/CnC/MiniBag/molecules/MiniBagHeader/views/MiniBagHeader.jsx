@@ -107,3 +107,4 @@ const MiniBagHeader = ({
   );
 };
 export default withStyles(MiniBagHeader, styles);
+export { MiniBagHeader as MiniBagHeaderVanilla };

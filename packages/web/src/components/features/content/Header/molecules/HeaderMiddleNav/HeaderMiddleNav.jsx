@@ -34,9 +34,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { isLoggedIn: prevLoggedInState } = prevState;
-    const { isLoggedIn: nextLoggedInState } = nextProps;
-    if (prevLoggedInState !== nextLoggedInState) {
+    const { isLoggedIn: prevLoggedInState, cartItemCount } = prevState;
+    const { isLoggedIn: nextLoggedInState, totalItems } = nextProps;
+    if (prevLoggedInState !== nextLoggedInState || totalItems !== cartItemCount) {
       return { cartItemCount: getCartItemCount() };
     }
     return null;
@@ -56,7 +56,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
   };
 
   toggleMiniBagModal = ({ e, isOpen }) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     if (window.innerWidth <= 1024) {
       routerPush('/bag', '/bag');
     } else {
