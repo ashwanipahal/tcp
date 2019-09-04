@@ -58,7 +58,7 @@ export default class CheckoutPage extends React.PureComponent {
     const { routeTo } = navigation.state.params;
     return (
       <>
-        {routeTo === CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP && (
+        {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP.toLowerCase() && (
           <PickupPage
             isGuest={isGuest}
             isMobile={isMobile}
@@ -76,7 +76,8 @@ export default class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
           />
         )}
-        {routeTo === CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING && (
+        {routeTo.toLowerCase() ===
+          CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING.toLowerCase() && (
           <ShippingPage
             {...shippingProps}
             loadShipmentMethods={loadShipmentMethods}

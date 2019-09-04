@@ -24,6 +24,7 @@ import {
   getSetAirmilesPromoIdActn,
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
+import { routerPush } from '../../../../../utils';
 
 import CheckoutConstants from '../Checkout.constants';
 
@@ -106,7 +107,10 @@ const isOrderHasPickup = cartItems => {
 };
 
 const getAvailableStages = cartItems => {
-  const result = [CheckoutConstants.CHECKOUT_STAGES.BILLING, CheckoutConstants.CHECKOUT_STAGES.REVIEW];
+  const result = [
+    CheckoutConstants.CHECKOUT_STAGES.BILLING,
+    CheckoutConstants.CHECKOUT_STAGES.REVIEW,
+  ];
   if (isOrderHasShipping(cartItems)) {
     result.unshift(CheckoutConstants.CHECKOUT_STAGES.SHIPPING);
   }
@@ -116,7 +120,10 @@ const getAvailableStages = cartItems => {
   return result;
 };
 
-
+const routeToPage = (dataObj, ...others) => {
+  const { to, asPath } = dataObj;
+  routerPush(to, asPath, ...others);
+};
 
 export default {
   getOrderPointsRecalcFlag,
@@ -124,4 +131,5 @@ export default {
   hasPOBox,
   isOrderHasPickup,
   getAvailableStages,
+  routeToPage,
 };

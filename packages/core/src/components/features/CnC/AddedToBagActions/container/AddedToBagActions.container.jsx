@@ -5,7 +5,8 @@ import AddedToBagActionsView from '../views/AddedToBagActions.view';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 import { checkoutModalOpenState } from '../../../account/LoginPage/container/LoginPage.selectors';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
-import { routerPush } from '../../../../../utils';
+import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
+import utility from '../../Checkout/util/utility';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import bagPageSelector from '../../BagPage/container/BagPage.selectors';
@@ -15,6 +16,11 @@ export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.handleContinueShopping = this.handleContinueShopping.bind(this);
+  }
+
+  componentWillUnmount() {
+    const { closeCheckoutModalMountState } = this.props;
+    closeCheckoutModalMountState({ state: false });
   }
 
   handleContinueShopping() {
@@ -41,7 +47,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       closeModal,
     } = this.props;
     const onClickViewBag = () => {
-      routerPush('/cart', '/bag');
+      utility.routeToPage(CHECKOUT_ROUTES.bagPage);
     };
     return (
       <AddedToBagActionsView

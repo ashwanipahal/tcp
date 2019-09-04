@@ -1,4 +1,4 @@
-export default {
+const CONSTANTS = {
   INIT_CHECKOUT: 'INIT_CHECKOUT',
   ROUTING_CONST: {
     siteIds: {
@@ -16,17 +16,19 @@ export default {
     SHIPPINGANDBILLING: 'ShippingAndBilling',
     MAILING: 'Mailing',
   },
+  BAGPAGE: 'bag',
   CHECKOUT_STAGES: {
-    PICKUP: 'Pickup',
-    SHIPPING: 'Shipping',
-    BILLING: 'Billing',
-    REVIEW: 'Review',
+    PICKUP: 'pickup',
+    SHIPPING: 'shipping',
+    BILLING: 'billing',
+    REVIEW: 'review',
+    STAGES_ARRAY: ['pickup', 'shipping', 'billing', 'review'],
   },
 
   CHECKOUT_PAGES_NAMES: {
-    CHECKOUT: 'Checkout',
-    PICKUP: 'PickupPage',
-    SHIPPING: 'ShippingPage',
+    CHECKOUT: 'checkout',
+    PICKUP: 'pickupPage',
+    SHIPPING: 'shippingPage',
   },
 
   CHECKOUT_ROUTES_NAMES: {
@@ -41,4 +43,40 @@ export default {
   CHECKOUT_FLAGS_SET_ADDRESS_ERROR: 'CHECKOUT_FLAGS_SET_ADDRESS_ERROR',
   CHECKOUT_VALUES_SET_SMS_UPDATES: 'CHECKOUT_VALUES_SET_SMS_UPDATES',
   ROUTE_TO_PICKUP_PAGE: 'ROUTE_TO_PICKUP_PAGE',
+  SET_GIFTCARD_ERROR: 'SET_GIFTCARD_ERROR',
+  RESET_GIFTCARD_ERROR: 'RESET_GIFTCARD_ERROR',
 };
+
+const {
+  CHECKOUT_PAGES_NAMES: { CHECKOUT },
+  CHECKOUT_STAGES: { SHIPPING },
+  CHECKOUT_STAGES: { PICKUP },
+  CHECKOUT_STAGES: { BILLING },
+  CHECKOUT_STAGES: { REVIEW },
+  BAGPAGE,
+} = CONSTANTS;
+
+export const CHECKOUT_ROUTES = {
+  bagPage: {
+    to: `/${BAGPAGE}`,
+    asPath: `/${BAGPAGE}`,
+  },
+  pickupPage: {
+    to: `/${CHECKOUT}?section=${PICKUP}`,
+    asPath: `/${CHECKOUT}/${PICKUP}`,
+  },
+  shippingPage: {
+    to: `/${CHECKOUT}?section=${SHIPPING}`,
+    asPath: `/${CHECKOUT}/${SHIPPING}`,
+  },
+  billingPage: {
+    to: `/${CHECKOUT}?section=${BILLING}`,
+    asPath: `/${CHECKOUT}/${BILLING}`,
+  },
+  reviewPage: {
+    to: `/${CHECKOUT}?section=${REVIEW}`,
+    asPath: `/${CHECKOUT}/${REVIEW}`,
+  },
+};
+
+export default CONSTANTS;
