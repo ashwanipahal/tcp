@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { Dimensions } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 
 export const screenWidth = Dimensions.get('window').width;
 export const screenHeight = Dimensions.get('window').height;
@@ -46,4 +46,12 @@ export function relativeSize(unit) {
  */
 export function relativeSizeHeight(unit) {
   return (unit / baseDesignHeight) * screenHeight;
+}
+
+/**
+ * Utility for check if device has display notch.
+ */
+export function isDisplayWithNotch() {
+  // It returns true on iOS if its iPhone X screen size. Currently there is no other way to check for notch except of using react-native-device-info library
+  return Platform.OS === 'ios' && (screenHeight === 812 || screenWidth === 812);
 }

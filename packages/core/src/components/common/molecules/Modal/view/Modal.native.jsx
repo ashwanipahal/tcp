@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   StyledCrossImage,
   StyledTouchableOpacity,
@@ -47,6 +48,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingAlign,
     headingFontFamily,
     headerStyle,
+    headingFontWeight,
     fontSize,
     horizontalBar = true,
     borderColor = 'black',
@@ -54,13 +56,14 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   return (
     <SafeAreaView>
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
+        <ToastContainer />
         <StatusBar hidden />
         {heading && (
           <RowWrapper>
             <ModalHeading>
               <BodyCopy
                 mobileFontFamily={headingFontFamily || 'primary'}
-                fontWeight="extrabold"
+                fontWeight={headingFontWeight || 'extrabold'}
                 textAlign={headingAlign}
                 fontSize={fontSize || 'fs16'}
                 text={heading}

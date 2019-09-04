@@ -88,11 +88,19 @@ exports[`CartItemTile common component renders correctly 1`] = `
     display: inline-block;
   }
 
-  .crossDeleteIcon {
+  .crossDeleteIconMiniBag {
     float: right;
     cursor: pointer;
     width: 10px;
     height: 10px;
+    padding-top: 0px;
+  }
+
+  .crossDeleteIconBag {
+    float: right;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
     padding-top: 0px;
   }
 
@@ -115,9 +123,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
 
   .product-detail-bag {
-    display: flex;
-    flex-wrap: wrap;
-    width: fit-content;
+    display: inline-block;
   }
 
   .label-responsive {
@@ -129,7 +135,18 @@ exports[`CartItemTile common component renders correctly 1`] = `
     margin-right: 0px;
   }
 
+  @media ",
+          [Function],
+          " {
+    .product-detail-bag {
+      display: flex;
+      flex-wrap: wrap;
+      width: fit-content;
+    }
+  }
+
   .product-tile-wrapper {
+    font-size: 13px;
     flex-wrap: nowrap;
     @media ",
           [Function],
@@ -156,8 +173,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
 
     .color-size-fit-label {
-      width: 40px;
-      display: inline-block;
+      width: 49px;
     }
 
     .bag-product-detail-wrapper {
@@ -168,29 +184,49 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
 
       .label-responsive {
-        width: fit-content;
-        margin-right: 22px;
+        width: 49px;
+        margin-right: 0px;
+        padding-right: 0px;
       }
 
       .value-responsive {
         flex: 1;
-        padding-left: 10px;
+        padding-left: 4px;
+        width: 49px;
+        margin-right: 0px;
       }
       .label-responsive-wrapper {
-        padding-top: 0;
+        padding-top: 2px;
         display: flex;
         flex: 1;
-        width: auto;
-        margin-right: 22px;
+        padding-right: 0px;
+        /* stylelint-disable */
+        span:not(.list-price) {
+          font-size: ",
+          [Function],
+          "px;
+        }
+        /* stylelint-enable */
       }
 
       .responsive-edit-css {
-        padding-top: 2px;
+        padding-top: 4px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
         padding-left: 15px;
+        left: 155px;
+        bottom: 4px;
       }
+
+      /* stylelint-disable */
+      .product-detail-bag {
+        padding-top: 4px;
+        span {
+          font-size: 13px;
+        }
+      }
+      /* stylelint-enable */
     }
 
     @media ",
@@ -203,21 +239,18 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
       .save-for-later-label {
         position: absolute;
-        bottom: 0px;
-        left: 0;
+        bottom: 4px;
+        left: 170px;
         width: 100%;
       }
       .color-map-size-fit {
-        display: block;
+        display: inline-grid;
       }
       .responsive-edit-css {
         position: absolute;
         bottom: 0;
         right: 50%;
         cursor: pointer;
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 15px;
       }
       .bag-product-detail-wrapper {
         position: static;
@@ -236,7 +269,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
 
     .price-label {
-      margin-left: 170px;
+      margin-left: 122px;
     }
   }
 
@@ -263,13 +296,19 @@ exports[`CartItemTile common component renders correctly 1`] = `
     cursor: pointer;
     text-decoration: underline;
   }
+
+  .updateOOSBag {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
   .parent- {
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    bottom: 17px;
-    right: 2px;
-    width: auto;
+    padding-bottom: 0px;
+    .save-for-later-label {
+      right: -57px;
+      position: absolute;
+      bottom: 17px;
+    }
   }
 
   .tile-header {

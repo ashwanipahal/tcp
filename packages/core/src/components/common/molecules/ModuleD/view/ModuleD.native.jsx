@@ -5,7 +5,6 @@ import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
-import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 import LinkText from '../../LinkText';
 
@@ -86,7 +85,7 @@ const renderItem = (item, navigation) => {
 
 const ModuleD = (props: Props) => {
   const { smallCompImage, headerText, promoBanner, singleCTAButton, navigation } = props;
-  const buttonWidth = { width: 225 };
+
   return (
     <Wrapper>
       {headerText && (
@@ -120,10 +119,9 @@ const ModuleD = (props: Props) => {
 
       <ButtonWrapper>
         <Button
-          color={colors.BUTTON.WHITE.TEXT}
+          width="225px"
           accessibilityLabel={singleCTAButton.title}
           buttonVariation="variable-width"
-          style={buttonWidth}
           text={singleCTAButton.text}
           testID={getLocator('moduleD_button')}
           url={singleCTAButton.url}

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AirmilesBanner form component should render component correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-VigVT",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  .airmileBannerTooltip {
+    position: absolute;
+    right: -10px;
+    width: 30px;
+    top: 27px;
+  }
+  .info-icon-img-wrapper {
+    display: inline-block;
+    width: 15px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(AirmilesToolTip)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-VigVT",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  toolTipText="lables flyout"
+/>
+`;

@@ -20,6 +20,7 @@ export function* addToCartEcom({ payload }) {
       storeId,
       langId,
     };
+
     const params = {
       ...apiConfigParams,
       orderId: '.',

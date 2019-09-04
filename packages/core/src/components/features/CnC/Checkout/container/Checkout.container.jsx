@@ -7,6 +7,7 @@ import {
   onEditModeChangeAction,
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -28,6 +29,7 @@ const {
   getAddressPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
+  getBillingLabels,
   getEmailSignUpLabels,
   getShipmentMethods,
   getDefaultShipmentID,
@@ -66,8 +68,9 @@ export class CheckoutContainer extends React.Component<Props> {
       cartOrderItems,
       orderHasShipping,
       routeToPickupPage,
+      setCheckoutStage,
+      billingProps,
     } = this.props;
-
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -75,6 +78,7 @@ export class CheckoutContainer extends React.Component<Props> {
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
+        billingProps={billingProps}
         isMobile={isMobile}
         isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
@@ -94,6 +98,7 @@ export class CheckoutContainer extends React.Component<Props> {
         loadShipmentMethods={loadShipmentMethods}
         cartOrderItems={cartOrderItems}
         routeToPickupPage={routeToPickupPage}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }
@@ -119,6 +124,9 @@ export const mapDispatchToProps = dispatch => {
     routeToPickupPage: () => {
       dispatch(routeToPickupPageActn());
     },
+    setCheckoutStage: payload => {
+      dispatch(getSetCheckoutStage(payload));
+    },
   };
 };
 
@@ -143,6 +151,9 @@ const mapStateToProps = state => {
       emailSignUpLabels: getEmailSignUpLabels(state),
       shipmentMethods: getShipmentMethods(state),
       defaultShipmentId: getDefaultShipmentID(state),
+    },
+    billingProps: {
+      labels: getBillingLabels(state),
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

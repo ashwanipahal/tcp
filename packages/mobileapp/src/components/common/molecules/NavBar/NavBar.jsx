@@ -53,35 +53,44 @@ const getTestID = route => {
  * @param {*} props Props passed from BottomTabNavigator react native feature
  */
 class NavBar extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = { animateCompleteLogo: false };
+  }
+
   componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
     const { appType } = nextProps;
 
     if (appType !== prevAppType && prevAppType) {
-      // navigate to home page of home stack when app type is changed
       const { navigation } = this.props;
+      // reset home stack
       resetNavigationStack(navigation);
-      const refresh = navigation.getParam('refresh', false);
-      navigateToNestedRoute(navigation, 'HomeStack', 'Home', { refresh: !refresh });
+      // On brand switch, Reset all stacks and navigate to home page of each stack
+      // navigate to home page of Home Stack at the end
+      navigateToNestedRoute(navigation, 'PlpStack', 'Navigation');
+      navigateToNestedRoute(navigation, 'AccountStack', 'Account');
+      navigateToNestedRoute(navigation, 'WalletStack', 'walletPage');
+      navigateToNestedRoute(navigation, 'HomeStack', 'Home');
     }
   }
 
-  render() {
-    const {
-      renderIcon,
-      getLabelText,
-      onTabPress,
-      onTabLongPress,
-      navigation,
-      labels,
-      screenProps,
-    } = this.props;
+  animationComplete = () => {
+    const { screenProps } = this.props;
     const { toggleBrandAction } = screenProps;
+    if (toggleBrandAction) toggleBrandAction();
+    this.setState({ animateCompleteLogo: false });
+  };
+
+  render() {
+    const { renderIcon, getLabelText, onTabPress, onTabLongPress, navigation, labels } = this.props;
 
     const { routes, index: activeRouteIndex } = navigation.state;
 
     const StyledView = style.container;
     const NavContainer = style.navContainer;
+    const { animateCompleteLogo } = this.state;
+
     return (
       <NavContainer>
         <StyledView>
@@ -113,9 +122,10 @@ class NavBar extends React.PureComponent<Props> {
                 onPress={() => {
                   if (route.key === 'BrandSwitchStack') {
                     // show brands switch as an option in view
-                    if (toggleBrandAction) toggleBrandAction();
+                    this.setState({ animateCompleteLogo: true });
                     return;
                   }
+
                   onTabPress({ route });
                 }}
                 onLongPress={() => {
@@ -133,7 +143,10 @@ class NavBar extends React.PureComponent<Props> {
             );
           })}
         </StyledView>
-        <SecondAppPeekABooView />
+        <SecondAppPeekABooView
+          animateCompleteLogo={animateCompleteLogo}
+          animationComplete={this.animationComplete}
+        />
       </NavContainer>
     );
   }

@@ -17,6 +17,7 @@ export const AddEditAddress = ({
   submitAddressFormAction,
   addressFormLabels,
   isMakeDefaultDisabled,
+  formErrorMessage,
 }) => {
   const errorObject = addressResponse && addressResponse.get('errors');
 
@@ -42,6 +43,7 @@ export const AddEditAddress = ({
           initialValues={initialValues}
           isEdit={isEdit}
           isMakeDefaultDisabled={isMakeDefaultDisabled}
+          formErrorMessage={formErrorMessage}
         />
       </Grid>
     </div>
@@ -58,6 +60,7 @@ AddEditAddress.propTypes = {
   isEdit: PropTypes.bool,
   isMakeDefaultDisabled: PropTypes.bool,
   addressFormLabels: {},
+  formErrorMessage: PropTypes.shape({}),
 };
 
 AddEditAddress.defaultProps = {
@@ -70,6 +73,7 @@ AddEditAddress.defaultProps = {
   isEdit: false,
   isMakeDefaultDisabled: false,
   addressFormLabels: { editAddress: '', addAddressHeading: '' },
+  formErrorMessage: {},
 };
 
 export default withStyles(AddEditAddress, styles);

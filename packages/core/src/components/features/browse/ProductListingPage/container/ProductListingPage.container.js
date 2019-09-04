@@ -15,13 +15,14 @@ class ProductListingPageContainer extends React.Component {
   }
 
   render() {
-    const { addToCartEcom, addItemToCartBopis, giftCardProducts } = this.props;
+    const { addToCartEcom, addItemToCartBopis, giftCardProducts, navigation } = this.props;
     return (
       <ProductListView
         data={this.props.products}
         giftCardProducts={giftCardProducts}
         addToCartEcom={addToCartEcom}
         addItemToCartBopis={addItemToCartBopis}
+        navigation={navigation}
       />
     );
   }

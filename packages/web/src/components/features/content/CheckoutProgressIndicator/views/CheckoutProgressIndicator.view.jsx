@@ -51,34 +51,35 @@ export class CheckoutProgressIndicator extends React.Component {
       <div className={className}>
         <div className="checkout-progress-indicator">
           <ul className={checkoutProgressClass}>
-            {availableStages.map((stage, index) => {
-              if (availableStages[index] === activeStage) {
-                hasSeenActive = true;
+            {availableStages.length >= 3 &&
+              availableStages.map((stage, index) => {
+                if (availableStages[index] === activeStage) {
+                  hasSeenActive = true;
+                  return (
+                    <StepIndicator
+                      isActive
+                      key={stage}
+                      name={CheckoutProgressIndicator.stageNamesTable[stage]}
+                    />
+                  );
+                }
+                if (hasSeenActive) {
+                  return (
+                    <StepIndicator
+                      key={stage}
+                      name={CheckoutProgressIndicator.stageNamesTable[stage]}
+                    />
+                  );
+                }
                 return (
                   <StepIndicator
-                    isActive
-                    key={stage}
+                    isComplete
+                    stage={stage}
+                    onClick={this.moveToCallbackTable[stage]}
                     name={CheckoutProgressIndicator.stageNamesTable[stage]}
                   />
                 );
-              }
-              if (hasSeenActive) {
-                return (
-                  <StepIndicator
-                    key={stage}
-                    name={CheckoutProgressIndicator.stageNamesTable[stage]}
-                  />
-                );
-              }
-              return (
-                <StepIndicator
-                  isComplete
-                  stage={stage}
-                  onClick={this.moveToCallbackTable[stage]}
-                  name={CheckoutProgressIndicator.stageNamesTable[stage]}
-                />
-              );
-            })}
+              })}
           </ul>
         </div>
       </div>

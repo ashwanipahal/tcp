@@ -1,6 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { UpdateProfile, UpdateProfileSaga } from '../AddEditPersonalInformation.saga';
-import { updateProfileSuccess, updateProfileError } from '../AddEditPersonalInformation.actions';
+import { updateProfileError } from '../AddEditPersonalInformation.actions';
+import { updateProfileSuccess } from '../../../MyProfile/container/MyProfile.actions';
 import constants from '../../AddEditPersonalInformation.constants';
 
 describe('UpdateProfile saga', () => {

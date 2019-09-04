@@ -31,9 +31,10 @@ export const getCheckoutUiFlagState = state => {
   return state[CHECKOUT_REDUCER_KEY].get('uiFlags');
 };
 
-export const getCheckoutValuesState = state => {
-  return state[CHECKOUT_REDUCER_KEY].get('values');
-};
+export const getCheckoutValuesState = createSelector(
+  getCheckoutState,
+  state => state && state.get('values')
+);
 
 const getIsOrderHasShipping = createSelector(
   BagPageSelector.getOrderItems,
@@ -199,17 +200,17 @@ function isSmsUpdatesEnabled() {
   return isUsSite() && getIsSmsUpdatesEnabled();
 }
 
-function getCurrentPickupFormNumber(state) {
-  let phoneNumber = '';
+// function getCurrentPickupFormNumber(state) {
+//   let phoneNumber = '';
 
-  try {
-    phoneNumber = state.form.getIn(['checkoutPickup', 'values', 'pickUpContact', 'phoneNumber']);
-  } catch (error) {
-    // Gobble...Gobble.
-  }
+//   try {
+//     phoneNumber = state.form.getIn(['checkoutPickup', 'values', 'pickUpContact', 'phoneNumber']);
+//   } catch (error) {
+//     // Gobble...Gobble.
+//   }
 
-  return phoneNumber;
-}
+//   return phoneNumber;
+// }
 
 const getShippingSmsSignUpFields = state => {
   const selector = formValueSelector('checkoutShipping');
@@ -219,6 +220,11 @@ const getShippingSmsSignUpFields = state => {
 const getShipmentMethodsFields = state => {
   const selector = formValueSelector('checkoutShipping');
   return selector(state, 'shipmentMethods');
+};
+
+const getShippingPickupFields = state => {
+  const selector = formValueSelector('checkoutPickup');
+  return selector(state, 'pickUpContact');
 };
 
 const getSelectedShipmentId = createSelector(
@@ -240,6 +246,26 @@ const getAddressPhoneNo = createSelector(
   getAddressFields,
   addressFields => addressFields && addressFields.phoneNumber
 );
+
+const getCurrentPickupFormNumber = createSelector(
+  getShippingPickupFields,
+  pickUpContact => pickUpContact && pickUpContact.phoneNumber
+);
+
+const getBillingLabels = state => {
+  const {
+    lbl_billing_title: header,
+    lbl_billing_backLinkPickup: backLinkPickup,
+    lbl_billing_backLinkShipping: backLinkShipping,
+    lbl_billing_nextSubmit: nextSubmitText,
+  } = state.Labels.checkout && state.Labels.checkout.billing;
+  return {
+    header,
+    backLinkPickup,
+    backLinkShipping,
+    nextSubmitText,
+  };
+};
 
 const getShippingLabels = state => {
   const {
@@ -343,7 +369,7 @@ export const getPickUpContactFormLabels = state => {
   const { lbl_shipping_header: shippingText } =
     state.Labels.checkout && state.Labels.checkout.shipping;
   return {
-    title,
+    title: title.toUpperCase(),
     firstName,
     govIdText,
     lastName,
@@ -410,14 +436,14 @@ function getPickupInitialPickupSectionValues(state) {
 
   return {
     pickUpContact: {
-      firstName: pickupValues.firstName || getUserName(state),
-      lastName: pickupValues.lastName || getUserLastName(state),
-      emailAddress: pickupValues.emailAddress || getUserEmail(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+      firstName: pickupValues.get('firstName') || getUserName(state),
+      lastName: pickupValues.get('lastName') || getUserLastName(state),
+      emailAddress: pickupValues.get('emailAddress') || getUserEmail(state),
+      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
     },
     smsSignUp: {
       sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
     },
     hasAlternatePickup: isPickupAlt(state),
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
@@ -457,4 +483,5 @@ export default {
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getUserEmail,
+  getBillingLabels,
 };

@@ -14,7 +14,7 @@ import {
 } from './TrackOrder.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { routerPush } from '../../../../../utils';
-import ROUTE_PATH from '../../../../../config/route.config';
+import { ROUTE_PATH } from '../../../../../config/route.config';
 
 // @flow
 type Props = {

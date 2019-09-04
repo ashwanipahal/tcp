@@ -74,18 +74,24 @@ An online account has been created with your email! Click here to reset your pas
           text="An online account has been created"
           textAlign="center"
         />
-        <Styled(View)>
-          <Styled(Anchor)
-            accessibilityLabel=""
-            anchorVariation=""
-            customStyle={Object {}}
-            fontSizeVariation="medium"
-            locator=""
-            onPress={[Function]}
-            text=""
-            visible={false}
-          />
-        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation=""
+          class="clickhere"
+          customStyle={Object {}}
+          fontSizeVariation="medium"
+          locator=""
+          onPress={[Function]}
+          text="Click here"
+          underline={true}
+          visible={false}
+        />
+        <Styled(BodyCopy)
+          component="span"
+          fontSize="fs12"
+        />
       </Styled(View)>
     </Styled(View)>
     <Styled(LineComp)

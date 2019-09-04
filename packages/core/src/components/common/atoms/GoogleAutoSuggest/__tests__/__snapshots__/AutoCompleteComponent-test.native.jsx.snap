@@ -78,7 +78,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
           "borderBottomWidth": 1,
         },
         "textInput": Object {
-          "borderBottomColor": "#c3c3c3",
+          "borderBottomColor": "#000000",
           "borderBottomWidth": 1,
           "height": 40,
           "paddingBottom": 0,
@@ -93,7 +93,9 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     textInputHide={false}
     textInputProps={
       Object {
+        "onEndEditing": [Function],
         "onFocus": [Function],
+        "onSubmitEditing": [Function],
       }
     }
     timeout={20000}
