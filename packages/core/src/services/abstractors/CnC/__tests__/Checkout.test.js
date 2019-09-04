@@ -4,6 +4,8 @@ import {
   getGiftWrappingOptions,
   getCurrentOrderAndCouponsDetails,
   getShippingMethods,
+  addGiftCardPaymentToOrder,
+  removeGiftCard,
 } from '../Checkout';
 
 jest.mock('../../../handler/handler', () => ({
@@ -142,6 +144,42 @@ describe('Checkout', () => {
         logger.info(val);
         return expect(val).toMatchObject(result.body);
       });
+    });
+  });
+  it('addGiftCardPaymentToOrder', () => {
+    const args = {
+      cardNumber: '******1234',
+      cardPin: undefined,
+      balance: undefined,
+      creditCardId: 12344,
+      orderGrandTotal: 900,
+      billingAddressId: null,
+    };
+    const result = {
+      body: {
+        orderDetails: {
+          orderDetailsResponse: {},
+        },
+        OosCartItems: 'FALSE',
+        orderId: '3000319653',
+        paymentInstruction: [{ piId: '123' }, { piId: '345' }],
+      },
+    };
+    executeStatefulAPICall.mockImplementation(() => Promise.resolve(result));
+    addGiftCardPaymentToOrder(args).then(data => {
+      expect(data.body).toMatchObject(result.body);
+    });
+  });
+  it('removeGiftCard', () => {
+    const paymentId = '1234';
+    const result = {
+      body: {
+        orderId: ['3000319653'],
+      },
+    };
+    executeStatefulAPICall.mockImplementation(() => Promise.resolve(result));
+    removeGiftCard(paymentId).then(data => {
+      expect(data.body).toMatchObject(result.body);
     });
   });
 });
