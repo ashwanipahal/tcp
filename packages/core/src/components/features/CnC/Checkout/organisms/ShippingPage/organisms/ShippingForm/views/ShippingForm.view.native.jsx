@@ -35,92 +35,94 @@ const ShippingForm = ({
   submitShippingForm,
 }) => {
   return (
-    <ShippingFormWrapper>
-      <FormSection name="address">
-        <AddressFields
-          addressFormLabels={addressFormLabels}
-          showDefaultCheckbox={false}
-          formName="checkoutShipping"
-          formSection="address"
-          dispatch={dispatch}
-          addressPhoneNo={addressPhoneNo}
-          loadShipmentMethods={loadShipmentMethods}
-          disableCountry
-        />
-      </FormSection>
-      {!orderHasPickUp && isUsSite && (
-        <FormSection name="smsSignUp">
-          <SMSFormFields
-            labels={smsSignUpLabels}
+    <>
+      <ShippingFormWrapper>
+        <FormSection name="address">
+          <AddressFields
+            addressFormLabels={addressFormLabels}
             showDefaultCheckbox={false}
             formName="checkoutShipping"
-            formSection="smsSignUp"
-            isOrderUpdateChecked={isOrderUpdateChecked}
+            formSection="address"
             dispatch={dispatch}
             addressPhoneNo={addressPhoneNo}
+            loadShipmentMethods={loadShipmentMethods}
+            disableCountry
           />
         </FormSection>
-      )}
-      {!orderHasPickUp && isGuest && !isUsSite && (
-        <FormSection name="emailSignUp">
-          <EmailSignUpForm>
-            <EmailSignUpWrapper>
-              <Field
-                dataLocator="signUp-checkbox-field"
-                name="sendEmailSignup"
-                component={InputCheckbox}
-              />
+        {!orderHasPickUp && isUsSite && (
+          <FormSection name="smsSignUp">
+            <SMSFormFields
+              labels={smsSignUpLabels}
+              showDefaultCheckbox={false}
+              formName="checkoutShipping"
+              formSection="smsSignUp"
+              isOrderUpdateChecked={isOrderUpdateChecked}
+              dispatch={dispatch}
+              addressPhoneNo={addressPhoneNo}
+            />
+          </FormSection>
+        )}
+        {!orderHasPickUp && isGuest && !isUsSite && (
+          <FormSection name="emailSignUp">
+            <EmailSignUpForm>
+              <EmailSignUpWrapper>
+                <Field
+                  dataLocator="signUp-checkbox-field"
+                  name="sendEmailSignup"
+                  component={InputCheckbox}
+                />
+                <BodyCopy
+                  dataLocator="shipping-email-signUp-heading-lbl"
+                  fontSize="fs14"
+                  mobileFontFamily="secondary"
+                  fontWeight="regular"
+                  text={emailSignUpLabels.emailSignupHeading}
+                />
+              </EmailSignUpWrapper>
               <BodyCopy
-                dataLocator="shipping-email-signUp-heading-lbl"
-                fontSize="fs14"
+                dataLocator="shipping-email-signUp-sub-heading-text"
+                fontSize="fs12"
                 mobileFontFamily="secondary"
                 fontWeight="regular"
-                text={emailSignUpLabels.emailSignupHeading}
+                text={emailSignUpLabels.emailSignupSubHeading}
               />
-            </EmailSignUpWrapper>
-            <BodyCopy
-              dataLocator="shipping-email-signUp-sub-heading-text"
-              fontSize="fs12"
-              mobileFontFamily="secondary"
-              fontWeight="regular"
-              text={emailSignUpLabels.emailSignupSubHeading}
-            />
-            <BodyCopy
-              fontSize="fs12"
-              mobileFontFamily="secondary"
-              fontWeight="regular"
-              text={emailSignUpLabels.emailSignupSubSubHeading}
-            />
-            <Anchor
-              noUnderline
-              anchorVariation="primary"
-              fontSizeVariation="small"
-              noLink
-              href="#"
-              target="_blank"
-              dataLocator="shipping-email-signUp-contact-anchor"
-              text={emailSignUpLabels.emailSignupContact}
-            />
-          </EmailSignUpForm>
+              <BodyCopy
+                fontSize="fs12"
+                mobileFontFamily="secondary"
+                fontWeight="regular"
+                text={emailSignUpLabels.emailSignupSubSubHeading}
+              />
+              <Anchor
+                noUnderline
+                anchorVariation="primary"
+                fontSizeVariation="small"
+                noLink
+                href="#"
+                target="_blank"
+                dataLocator="shipping-email-signUp-contact-anchor"
+                text={emailSignUpLabels.emailSignupContact}
+              />
+            </EmailSignUpForm>
+          </FormSection>
+        )}
+        <FormSection name="shipmentMethods">
+          <ShipmentMethods
+            shipmentMethods={shipmentMethods}
+            formName="checkoutShipping"
+            formSection="shipmentMethods"
+            shipmentHeader={shippingLabels.shipmentHeader}
+            selectedShipmentId={selectedShipmentId}
+            dispatch={dispatch}
+          />
         </FormSection>
-      )}
-      <FormSection name="shipmentMethods">
-        <ShipmentMethods
-          shipmentMethods={shipmentMethods}
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          shipmentHeader={shippingLabels.shipmentHeader}
-          selectedShipmentId={selectedShipmentId}
-          dispatch={dispatch}
-        />
-      </FormSection>
+      </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
         btnText="NEXT:BILLING"
         routeToPage=""
         onPress={handleSubmit(submitShippingForm)}
       />
-    </ShippingFormWrapper>
+    </>
   );
 };
 
