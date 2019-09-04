@@ -21,6 +21,7 @@ const initialState = fromJS({
       supportedByBrowser: true,
     },
     giftCardError: null,
+    orderBalanceTotal: 0,
   },
   options: {
     shippingMethods: [],
@@ -78,6 +79,8 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'giftCardError'], action.payload);
     case CheckoutConstants.RESET_GIFTCARD_ERROR:
       return checkout.setIn(['values', 'giftCardError'], null);
+    case CheckoutConstants.SET_ORDER_TOTAL:
+      return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
     //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':

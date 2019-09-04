@@ -1,16 +1,23 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import checkout from '@tcp/core/src/components/features/CnC/Checkout';
-import pickupPage from '@tcp/core/src/components/features/CnC/Checkout/organisms/PickupPage';
-import shippingPage from '@tcp/core/src/components/features/CnC/Checkout/organisms/ShippingPage';
+import Checkout from '@tcp/core/src/components/features/CnC/Checkout';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header/CheckoutHeader';
 
 const CheckoutStack = createStackNavigator(
   {
-    checkout,
-    pickupPage,
-    shippingPage,
+    CheckoutPickup: {
+      screen: Checkout,
+      params: {
+        routeTo: 'PickupPage',
+      },
+    },
+    CheckoutShipping: {
+      screen: Checkout,
+      params: {
+        routeTo: 'ShippingPage',
+      },
+    },
   },
   {
     defaultNavigationOptions: {

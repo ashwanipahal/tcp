@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import CheckoutProgressUtils from '@tcp/web/src/components/features/content/CheckoutProgressIndicator/utils/utils'
 import {
   initCheckoutAction,
   submitShippingSection,
@@ -18,6 +19,7 @@ import selectors, {
   getSendOrderUpdate,
   getCheckoutStage,
 } from './Checkout.selector';
+import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 
@@ -45,7 +47,6 @@ export class CheckoutContainer extends React.Component<Props> {
   render() {
     const {
       initialValues,
-      router,
       pickupInitialValues,
       onEditModeChange,
       isSmsUpdatesEnabled,
@@ -71,7 +72,9 @@ export class CheckoutContainer extends React.Component<Props> {
       routeToPickupPage,
       setCheckoutStage,
       billingProps,
+      router,
     } = this.props;
+    const availableStages = checkoutUtil.getAvailableStages(cartOrderItems);
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -100,6 +103,7 @@ export class CheckoutContainer extends React.Component<Props> {
         cartOrderItems={cartOrderItems}
         routeToPickupPage={routeToPickupPage}
         setCheckoutStage={setCheckoutStage}
+        availableStages={availableStages}
         router={router}
       />
     );
