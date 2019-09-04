@@ -18,6 +18,7 @@ import AddressListComponent from '../../AddressList.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import DeleteAddressModal from '../../DeleteAddressModal.view';
+import ADDRESS_BOOK_CONSTANTS from '../../../AddressBook.constants';
 
 export class AddressView extends React.Component {
   constructor(props) {
@@ -34,10 +35,10 @@ export class AddressView extends React.Component {
 
   toggleAddressModal = () => {
     const { currentForm } = this.state;
-    if (currentForm === 'AddAddress') {
-      this.setState({ currentForm: 'VerificationModal' });
+    if (currentForm === ADDRESS_BOOK_CONSTANTS.ADD_ADDRESS_MODAL) {
+      this.setState({ currentForm: ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL });
     } else {
-      this.setState({ currentForm: 'AddAddress' });
+      this.setState({ currentForm: ADDRESS_BOOK_CONSTANTS.ADD_ADDRESS_MODAL });
     }
   };
 
@@ -72,12 +73,12 @@ export class AddressView extends React.Component {
     const { currentForm, selectedAddress } = this.state;
 
     if (selectedAddress) {
-      return currentForm === 'VerificationModal'
+      return currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
         ? addressLabels.editAddress
         : addressLabels.editAddressLbl;
     }
 
-    return currentForm === 'VerificationModal'
+    return currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
       ? addressLabels.editAddress
       : addressLabels.addNewAddress;
   };
