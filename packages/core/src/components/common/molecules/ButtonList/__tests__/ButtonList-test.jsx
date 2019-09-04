@@ -46,6 +46,27 @@ describe('ButtonList component', () => {
     expect(ButtonListComp.find('.scroll-button-list-wrapper')).toHaveLength(1);
     expect(ButtonListComp).toMatchSnapshot();
   });
+  it('renders correctly for Dual Variation', () => {
+    ButtonListComp = shallow(
+      <VanillaButtonList
+        buttonsData={mock.moduleN.composites.ctaItems}
+        buttonListVariation="stackedCTAList"
+        dataLocatorDivisionImages="moduleB_image_"
+        dataLocatorTextCta="moduleB_cta_links_"
+        dualVariation={{
+          name: 'dropdownButtonCTA',
+          displayProps: {
+            small: false,
+            medium: true,
+            large: true,
+          },
+        }}
+        dropdownLabel="Shop Now"
+      />
+    );
+    expect(ButtonListComp.find('.additional-button-list')).toHaveLength(1);
+    expect(ButtonListComp).toMatchSnapshot();
+  });
 
   it('renders correctly', () => {
     ButtonListComp = shallow(
