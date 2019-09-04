@@ -163,7 +163,7 @@ class CartItemTile extends React.Component {
   getPointsColor = () => {
     const { isPlcc } = this.props;
     if (isPlcc) {
-      return 'blue.800';
+      return 'blue.B100';
     }
     return 'orange.800';
   };
