@@ -50,6 +50,10 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
+    case 'moduleB':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleB'));
+      break;
     default:
       reject();
       break;
@@ -300,6 +304,7 @@ export const resetNavigationStack = navigation => {
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
+  // eslint-disable-next-line no-console
   console.log(
     'unboxKey',
     `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
