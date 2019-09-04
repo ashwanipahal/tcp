@@ -24,10 +24,8 @@ export default css`
     }
   }
   .subHeaderTextLogin {
-    width: auto;
-    position: absolute;
-    left: 76px;
-    top: 23px;
+    display: flex;
+    margin: 6px -20px 1px 0px;
   }
   .subHeaderTextIcon {
     width: auto;
