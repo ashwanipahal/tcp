@@ -50,11 +50,21 @@ class Header extends React.PureComponent<Props> {
    */
   constructor(props) {
     super(props);
-    const CART_ITEM_COUNTER = 'cartItemsCount';
     this.state = {
       isDownIcon: false,
-      cartVal: parseInt(readCookieMobileApp(CART_ITEM_COUNTER) || 0, 10),
+      cartVal: 0,
     };
+  }
+
+  componentDidMount() {
+    const CART_ITEM_COUNTER = 'cartItemsCount';
+    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
+
+    cartValuePromise.then(res => {
+      this.setState({
+        cartVal: parseInt(res, 10),
+      });
+    });
   }
 
   /**

@@ -77,7 +77,7 @@ export default css`
       background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0.99),
-        ${props => props.theme.colors.NAVIGATION.L1_BACKGROUND}
+        ${props => props.theme.colorPalette.gray[300]}
       );
       color: ${props => props.theme.colorPalette.text.primary};
       border-bottom-color: ${props => props.theme.colorPalette.primary.main};
