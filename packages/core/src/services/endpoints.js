@@ -227,5 +227,9 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getBirthdaySavings',
   },
+  updateUserSurvey: {
+    method: 'PUT',
+    URI: 'v2/account/saveUserSurvey',
+  },
 };
 export default endpoints;

@@ -56,4 +56,7 @@ export default {
   'add-to-favorite': '/static/images/add-to-favorite.svg',
   'girl-icon': '/static/images/girl-icon.png',
   'boy-icon': '/static/images/boy-icon.png',
+  star: '/static/images/star.svg',
+  'star-filled': '/static/images/star-filled.svg',
+  'circle-check': '/static/images/circle-check.svg',
 };

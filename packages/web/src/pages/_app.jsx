@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -24,6 +25,15 @@ import CHECKOUT_STAGES from './App.constants';
 
 // constants
 import constants from '../constants';
+
+// Script injection component
+// This is lazy-loaded so we inject it after SSR
+const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr: false });
+
+// Analytics script injection
+function AnalyticsScript() {
+  return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
+}
 
 class TCPWebApp extends App {
   constructor(props) {
@@ -174,6 +184,8 @@ class TCPWebApp extends App {
             </Grid>
           </Provider>
         </ThemeProvider>
+        {/* Inject analytics script if enabled */}
+        {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>
     );
   }

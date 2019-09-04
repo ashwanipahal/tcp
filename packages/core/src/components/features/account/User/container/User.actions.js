@@ -1,7 +1,3 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
 import CONSTANTS from '../User.constants';
 
 export const resetUserInfo = () => {
@@ -32,6 +28,20 @@ export const setUserInfo = payload => {
 export const setUserPersonalData = payload => {
   return {
     type: CONSTANTS.SET_USER_PERSONAL_DATA,
+    payload,
+  };
+};
+
+export const setSurveyQuestions = payload => {
+  return {
+    type: CONSTANTS.SET_SURVEY_QUESTIONS,
+    payload,
+  };
+};
+
+export const setSurveyAnswers = payload => {
+  return {
+    type: CONSTANTS.SET_SURVEY_ANSWERS,
     payload,
   };
 };
