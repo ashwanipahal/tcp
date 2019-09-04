@@ -1,3 +1,6 @@
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
+
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 const getOrderDetails = () => {
@@ -101,6 +104,8 @@ const routeForCheckout = () => {
   };
 };
 
+const initActions = [loadComponentLabelsData({ category: LABELS.bagPage })];
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -117,4 +122,5 @@ export default {
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,
+  initActions,
 };
