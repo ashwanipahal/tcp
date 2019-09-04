@@ -16,7 +16,6 @@ import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/produ
 
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProductsGridItem.style';
-
 import {
   getPromotionalMessage,
   // validateBossEligibility,
