@@ -72,8 +72,8 @@ export const mapDispatchToProps = dispatch => {
     handleApplyGiftCard: giftCardData => {
       dispatch(GIFT_CARD_ACTIONS.applyGiftCard(giftCardData));
     },
-    handleRemoveGiftCard: piId => {
-      dispatch(GIFT_CARD_ACTIONS.removeGiftCard(piId));
+    handleRemoveGiftCard: payload => {
+      dispatch(GIFT_CARD_ACTIONS.removeGiftCard(payload));
     },
   };
 };

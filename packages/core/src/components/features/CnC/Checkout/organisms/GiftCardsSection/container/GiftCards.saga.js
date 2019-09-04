@@ -21,6 +21,7 @@ const getErrorMessage = res => {
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
   try {
+    yield put(resetGiftCardError());
     const res = yield call(addGiftCardPaymentToOrder, payload);
     if (res.errorResponse && res.errorResponse.errors) {
       const resErr = getErrorMessage(res);
@@ -36,10 +37,11 @@ export function* applyGiftCard(payloadData) {
   }
 }
 
-export function* removeGiftCardFromOrder(payload) {
+export function* removeGiftCardFromOrder(payloadData) {
   try {
+    const { payload } = payloadData;
     yield put(resetGiftCardError());
-    yield call(removeGiftCard, payload.piId);
+    yield call(removeGiftCard, payload);
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     console.log(err);
