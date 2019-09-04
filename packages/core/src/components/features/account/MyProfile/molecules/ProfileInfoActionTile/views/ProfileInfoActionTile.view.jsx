@@ -23,6 +23,7 @@ export const ProfileInfoActionTile = ({
   redirectTo,
   redirectAsPath,
   dataLocatorPrefix,
+  noLink,
 }) => {
   const titleToShow = activityCompletionState || activityTitle;
 
@@ -33,6 +34,7 @@ export const ProfileInfoActionTile = ({
       asPath={activityCompletionState ? '' : redirectAsPath}
       className={className}
       centered
+      noLink={noLink}
     >
       {activityCompletionState && (
         <Image
@@ -86,6 +88,7 @@ ProfileInfoActionTile.propTypes = {
   redirectAsPath: PropTypes.string,
   className: PropTypes.string,
   dataLocatorPrefix: PropTypes.string,
+  noLink: PropTypes.bool,
 };
 
 ProfileInfoActionTile.defaultProps = {
@@ -98,6 +101,7 @@ ProfileInfoActionTile.defaultProps = {
   redirectAsPath: '',
   className: '',
   dataLocatorPrefix: '',
+  noLink: false,
 };
 
 export default withStyles(ProfileInfoActionTile, styles);

@@ -14,7 +14,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
     },
   };
   const mockedToggleBonusPointsModal = jest.fn();
-
+  const showAccordian = true;
   it('should render correctly available_today', () => {
     const bonusData = {
       totalBonusPointDays: 1,
@@ -28,6 +28,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -45,6 +46,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -62,6 +64,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -79,6 +82,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();
@@ -96,6 +100,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
         labels={labels}
         bonusData={bonusData}
         toggleBonusPointsModal={mockedToggleBonusPointsModal}
+        showAccordian={showAccordian}
       />
     );
     expect(tree).toMatchSnapshot();

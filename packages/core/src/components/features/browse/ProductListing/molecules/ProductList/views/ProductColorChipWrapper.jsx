@@ -151,8 +151,14 @@ class ProductColorChipWrapper extends React.Component {
             role="button"
             title="Previous"
             className="arrowLeftWrapper"
+            data-locator="color_swatch_arrow"
           >
-            <img src={arrowLeft} alt="left-arrow" className="arrowImg" />
+            <img
+              data-locator="color_swatch_arrow"
+              src={arrowLeft}
+              alt="left-arrow"
+              className="arrowImg"
+            />
           </BodyCopy>
         )}
 
@@ -178,6 +184,7 @@ class ProductColorChipWrapper extends React.Component {
             title="Next"
             role="button"
             onClick={this.handleNextClick}
+            data-locator="color_swatch_arrow"
             className="arrowRightWrapper"
           >
             <img src={arrowLeft} alt="right-arrow" className="arrowImg" />
