@@ -21,6 +21,8 @@ import {
 
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
+const noop = () => {};
+
 export class CreateAccountContainer extends React.Component {
   static propTypes = {
     className: PropTypes.string,
@@ -43,16 +45,16 @@ export class CreateAccountContainer extends React.Component {
 
   static defaultProps = {
     className: '',
-    createAccountAction: () => {},
+    createAccountAction: noop,
     hideShowPwd: false,
     confirmHideShowPwd: false,
     error: {},
-    openOverlay: () => {},
-    onRequestClose: () => {},
+    openOverlay: noop,
+    onRequestClose: noop,
     isIAgreeChecked: false,
-    resetAccountError: () => {},
+    resetAccountError: noop,
     labels: {},
-    closeOverlay: () => {},
+    closeOverlay: noop,
     isUserLoggedIn: false,
     navigation: {},
   };
