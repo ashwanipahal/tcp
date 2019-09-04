@@ -36,7 +36,7 @@ const CnCTemplate = ({
             <OrderLedgerContainer />
             {BagActions && <BagActions />}
             <div className="bonusPointsDaysWrapper">
-              <BonusPointsDays enableApplyCta />
+              <BonusPointsDays showAccordian={false} enableApplyCta />
             </div>
             <AirmilesBanner />
             <CouponAndPromos />

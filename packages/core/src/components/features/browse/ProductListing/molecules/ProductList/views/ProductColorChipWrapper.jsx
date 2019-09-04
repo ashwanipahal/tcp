@@ -6,10 +6,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Swipeable } from 'react-swipeable';
+import { getIconPath } from '../../../../../../../utils';
 import { breakpoints } from '../../../../../../../../styles/themes/TCP/mediaQuery';
 import { COLOR_PROP_TYPE } from '../propTypes/productsAndItemsPropTypes';
 import ProductColorChip from './ProductColorChip';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import { BodyCopy } from '../../../../../../common/atoms';
 import styles from '../styles/ProductColorChipWrapper.style';
 
 class ProductColorChipWrapper extends React.Component {
@@ -138,10 +140,26 @@ class ProductColorChipWrapper extends React.Component {
       return null;
     }
 
+    const arrowLeft = getIconPath('icon-carrot-black-small');
+
     return (
       <div ref={this.captureContainerRef} className={className}>
         {isDisplayPrevious && (
-          <button className="button-prev" title="Previous" onClick={this.handlePreviousClick} />
+          <BodyCopy
+            component="div"
+            onClick={this.handlePreviousClick}
+            role="button"
+            title="Previous"
+            className="arrowLeftWrapper"
+            data-locator="color_swatch_arrow"
+          >
+            <img
+              data-locator="color_swatch_arrow"
+              src={arrowLeft}
+              alt="left-arrow"
+              className="arrowImg"
+            />
+          </BodyCopy>
         )}
 
         <ol
@@ -161,7 +179,20 @@ class ProductColorChipWrapper extends React.Component {
         </ol>
 
         {isDisplayNext && (
-          <button className="button-next" title="Next" onClick={this.handleNextClick} />
+          <BodyCopy
+            component="div"
+            title="Next"
+            role="button"
+            onClick={this.handleNextClick}
+            className="arrowRightWrapper"
+          >
+            <img
+              src={arrowLeft}
+              data-locator="color_swatch_arrow"
+              alt="right-arrow"
+              className="arrowImg"
+            />
+          </BodyCopy>
         )}
       </div>
     );

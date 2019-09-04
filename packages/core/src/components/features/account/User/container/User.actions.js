@@ -28,3 +28,17 @@ export const setUserInfo = payload => {
     payload,
   };
 };
+
+export const setSurveyQuestions = payload => {
+  return {
+    type: CONSTANTS.SET_SURVEY_QUESTIONS,
+    payload,
+  };
+};
+
+export const setSurveyAnswers = payload => {
+  return {
+    type: CONSTANTS.SET_SURVEY_ANSWERS,
+    payload,
+  };
+};
