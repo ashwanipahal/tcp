@@ -2,29 +2,32 @@ import React from 'react';
 import Safe from 'react-safe';
 import { string } from 'prop-types';
 
-function mark({ name }) {
+export function Mark({ name }) {
   return <Safe.script>{`performance.mark("${name}")`}</Safe.script>;
 }
 
-mark.propTypes = {
+Mark.propTypes = {
   name: string.isRequired,
 };
 
-function measure({ name, start, end }) {
+export function Measure({ name, start, end }) {
   const startMark = start ? `"${start}"` : undefined;
   const endMark = end ? `"${end}"` : undefined;
   return <Safe.script>{`performance.measure("${name}", ${startMark}, ${endMark})`}</Safe.script>;
 }
 
-measure.propTypes = {
+Measure.propTypes = {
   name: string.isRequired,
   start: string,
   end: string,
 };
 
-measure.defaultProps = {
+Measure.defaultProps = {
   start: '',
   end: '',
 };
 
-export default { mark, measure };
+export default {
+  Mark,
+  Measure,
+};

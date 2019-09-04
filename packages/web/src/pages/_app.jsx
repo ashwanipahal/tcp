@@ -22,8 +22,7 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
-import ServerOnly from '../components/common/atoms/ServerOnly';
-import Perf from '../components/common/atoms/Perf';
+import RenderPerf from '../components/common/molecules/RenderPerf';
 
 // constants
 import constants from '../constants';
@@ -169,9 +168,8 @@ class TCPWebApp extends App {
     }
     return (
       <Container>
-        <ServerOnly>
-          <Perf.mark name="App render start" />
-        </ServerOnly>
+        {/* TODO: Remove, this is for testing only */}
+        <RenderPerf.Mark name="app_render_start" />
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
@@ -190,12 +188,8 @@ class TCPWebApp extends App {
         </ThemeProvider>
         {/* Inject analytics script if enabled */}
         {process.env.ANALYTICS && <AnalyticsScript />}
-        {/* Render performance marker scripts if enabled */}
-        {process.env.PERF_TIMING && (
-          <ServerOnly>
-            <Perf.measure name="App render" />
-          </ServerOnly>
-        )}
+        {/* TODO: Remove, this is for testing only */}
+        <RenderPerf.Measure name="app_render" start="app_render_start" />
       </Container>
     );
   }
