@@ -209,3 +209,11 @@ export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap)
   }
   return defaultFitName;
 };
+
+export const getFormattedLoyaltyText = text => {
+  return text
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split('on');
+};

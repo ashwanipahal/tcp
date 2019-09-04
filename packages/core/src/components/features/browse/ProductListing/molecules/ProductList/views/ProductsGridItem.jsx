@@ -191,7 +191,7 @@ class ProductsGridItem extends React.PureComponent {
       !isCanada &&
       !isInternationalShipping && (
         <PromotionalMessage
-          message={getPromotionalMessage(isPlcc, {
+          text={getPromotionalMessage(isPlcc, {
             promotionalMessage,
             promotionalPLCCMessage,
           })}
