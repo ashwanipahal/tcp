@@ -74,14 +74,17 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </ButtonWrapper>
         )}
         <ButtonWrapper>
-          <CheckoutButton>
+          <CheckoutButton
+            onPress={() => {
+              handleCartCheckout(isEditingItem);
+            }}
+          >
             <BodyCopy
               color="white"
               fontWeight="extrabold"
               fontFamily="secondary"
               fontSize="fs13"
               text={labels.checkout && labels.checkout.toUpperCase()}
-              onPress={() => handleCartCheckout(isEditingItem)}
             />
           </CheckoutButton>
         </ButtonWrapper>

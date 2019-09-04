@@ -38,6 +38,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isEditingItem,
       removeUnqualifiedItemsAndCheckout,
       orderHasPickup,
+      closeModal,
     } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
@@ -60,6 +61,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isEditingItem={isEditingItem}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         orderHasPickup={orderHasPickup}
+        closeModal={closeModal}
       />
     );
   }
