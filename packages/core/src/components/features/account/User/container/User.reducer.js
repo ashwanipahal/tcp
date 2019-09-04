@@ -64,6 +64,15 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
+    case USER_CONSTANTS.SET_SURVEY_QUESTIONS:
+      return state.set(
+        'survey',
+        fromJS({
+          questions: payload,
+          answers: [],
+        })
+      );
+
     default:
       if (state instanceof Object) {
         return fromJS(state);
