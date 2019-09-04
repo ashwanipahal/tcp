@@ -1,0 +1,62 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import { GetCandidVanilla } from '../views/GetCandid.native';
+
+describe('GetCandidGallery component', () => {
+  const props = {
+    candidData: {
+      Views: [
+        {
+          Media: {
+            Images: {
+              StandardResolution: {
+                Url:
+                  'https://api.getcandid.com/image/s/candid.azureedge.net%2fstream-media%2f070167ca-8287-4d41-a9bb-6b3850cae9b1_17900969359357824_standard.jpg',
+              },
+            },
+          },
+        },
+        {
+          Media: {
+            Images: {
+              StandardResolution: {
+                Url:
+                  'https://api.getcandid.com/image/s/candid.azureedge.net%2fstream-media%2f070167ca-8287-4d41-a9bb-6b3850cae9b1_17881783609395879_standard.jpg',
+              },
+            },
+          },
+        },
+      ],
+    },
+    labels: {
+      title: '#MyStylePlace',
+      titleDescription: 'Title Description',
+      btnSeeMore: 'See More',
+    },
+  };
+
+  it('renders correctly', () => {
+    const component = shallow(<GetCandidVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should call getSize func', () => {
+    const component = shallow(<GetCandidVanilla {...props} />);
+    component.instance().getSize();
+  });
+
+  it('should call keyExtractor func', () => {
+    const component = shallow(<GetCandidVanilla {...props} />);
+    component.instance().keyExtractor('', 1);
+  });
+
+  it('should call navigateToPage func', () => {
+    const component = shallow(<GetCandidVanilla {...props} />);
+    component.instance().navigateToPage();
+  });
+
+  it('should call renderItem func', () => {
+    const component = shallow(<GetCandidVanilla {...props} />);
+    component.instance().renderItem({ item: props.candidData.Views[0], index: 1 });
+  });
+});

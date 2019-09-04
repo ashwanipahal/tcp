@@ -5,6 +5,7 @@ import { FlatList } from 'react-native';
 import Anchor from '../../../atoms/Anchor';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getScreenWidth } from '../../../../../utils/index.native';
+import { navigateToNestedRoute } from '../../../../../utils/utils.app';
 import {
   ImageGridItem,
   ImageWrapper,
@@ -14,21 +15,6 @@ import {
 } from '../styles/GetCandid.style.native';
 
 class GetCandid extends React.PureComponent {
-  static propTypes = {
-    apiConfig: PropTypes.shape({}),
-    candidData: PropTypes.shape({}),
-    fetchCandidData: PropTypes.func,
-  };
-
-  static defaultProps = {
-    apiConfig: {},
-    candidData: {
-      Settings: {},
-      Views: [],
-    },
-    fetchCandidData: () => {},
-  };
-
   componentDidMount() {
     const { apiConfig, fetchCandidData } = this.props;
     fetchCandidData(apiConfig);
@@ -36,29 +22,36 @@ class GetCandid extends React.PureComponent {
 
   keyExtractor = (_, index) => index.toString();
 
-  getSize = () => parseInt((getScreenWidth() - 66) / 3);
+  getSize = () => parseInt((getScreenWidth() - 66) / 3, 10);
 
   renderItem = item => {
     const {
       item: {
         Media: {
-          Images: { LowResolution },
+          Images: { StandardResolution },
         },
       },
       index,
     } = item;
-    const image = LowResolution;
+    const image = StandardResolution;
     return (
       <Touchable accessibilityRole="image">
-        <ImageGridItem
-          key={index.toString()}
-          index={index}
-          url={image.Url}
-          height={this.getSize()}
-          width={this.getSize()}
-        />
+        <Anchor onPress={this.navigateToPage}>
+          <ImageGridItem
+            key={index.toString()}
+            index={index}
+            url={image.Url}
+            height={this.getSize()}
+            width={this.getSize()}
+          />
+        </Anchor>
       </Touchable>
     );
+  };
+
+  navigateToPage = () => {
+    const { navigation } = this.props;
+    navigateToNestedRoute(navigation, 'HomeStack', 'GetCandidGallery');
   };
 
   render() {
@@ -108,6 +101,7 @@ class GetCandid extends React.PureComponent {
             dataLocator=""
             text={labels.btnSeeMore}
             visible
+            onPress={this.navigateToPage}
           />
         )}
       </Wrapper>
@@ -124,10 +118,11 @@ GetCandid.defaultProps = {
   },
   labels: {
     title: 'title',
-    titleDescripton: 'titleDescripton',
+    titleDescription: 'titleDescription',
     btnSeeMore: 'btnSeeMore',
   },
   fetchCandidData: () => {},
+  navigation: {},
 };
 
 GetCandid.propTypes = {
@@ -135,6 +130,7 @@ GetCandid.propTypes = {
   candidData: PropTypes.shape({}),
   fetchCandidData: PropTypes.func,
   labels: PropTypes.shape({}),
+  navigation: PropTypes.shap({}),
 };
 
 export default GetCandid;

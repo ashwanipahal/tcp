@@ -19,7 +19,13 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Connect(GetCandid) />
+  <Connect(GetCandid)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
   <Styled(CustomButton)
     buttonVariation="variable-width"
     color=""
