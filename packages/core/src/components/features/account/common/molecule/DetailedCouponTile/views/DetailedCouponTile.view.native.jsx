@@ -22,7 +22,7 @@ import {
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import CouponIcon from '../../CouponIcon';
 
-export class DetailedCouponTile extends React.PureComponent {
+export class DetailedCouponTile extends React.Component {
   static propTypes = {
     coupon: PropTypes.shape({}).isRequired,
     labels: PropTypes.shape({

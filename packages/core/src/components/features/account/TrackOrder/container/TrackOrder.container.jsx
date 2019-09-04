@@ -15,7 +15,6 @@ import {
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { routerPush } from '../../../../../utils';
 import { ROUTE_PATH } from '../../../../../config/route.config';
-import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/index.native';
 
 // @flow
 type Props = {
@@ -35,6 +34,18 @@ type Props = {
   navigation: Object,
 };
 export class TrackOrderContainer extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(({ isMobileApp, navigateToNestedRoute }) => {
+        this.hasMobileApp = isMobileApp;
+        this.hasNavigateToNestedRoute = navigateToNestedRoute;
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
+
   componentDidUpdate() {
     const { orderDetailResponse, isUserLoggedIn } = this.props;
     const isSuccess = orderDetailResponse && orderDetailResponse.get('success');
@@ -55,15 +66,14 @@ export class TrackOrderContainer extends React.PureComponent<Props> {
    */
   trackOrderDetail = (orderId = '', encryptedEmailAddress = '', isUserLoggedIn = false) => {
     const { navigation, setTrackOrderModalMountState } = this.props;
-    const hasMobile = isMobileApp();
     const pathToNavigate = ROUTE_PATH.guestOrderDetails({
       pathSuffix: `${orderId}/${encryptedEmailAddress}`,
     });
     if (!isUserLoggedIn) {
       setTrackOrderModalMountState({ state: false });
-      if (hasMobile) {
+      if (this.hasMobileApp()) {
         // TO DO - This has to be implemented when the track order page is available
-        navigateToNestedRoute(navigation, 'AccountStack', 'Account');
+        this.hasNavigateToNestedRoute(navigation, 'AccountStack', 'Account');
       } else routerPush(pathToNavigate);
     }
   };
