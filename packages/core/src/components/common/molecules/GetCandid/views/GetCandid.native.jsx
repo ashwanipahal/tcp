@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 
 import Anchor from '../../../atoms/Anchor';
 import BodyCopy from '../../../atoms/BodyCopy';
+import { getScreenWidth } from '../../../../../utils/index.native';
 import {
   ImageGridItem,
   ImageWrapper,
@@ -35,6 +36,8 @@ class GetCandid extends React.PureComponent {
 
   keyExtractor = (_, index) => index.toString();
 
+  getSize = () => parseInt((getScreenWidth() - 66) / 3);
+
   renderItem = item => {
     const {
       item: {
@@ -51,8 +54,8 @@ class GetCandid extends React.PureComponent {
           key={index.toString()}
           index={index}
           url={image.Url}
-          height="103px"
-          width="103px"
+          height={this.getSize()}
+          width={this.getSize()}
         />
       </Touchable>
     );
