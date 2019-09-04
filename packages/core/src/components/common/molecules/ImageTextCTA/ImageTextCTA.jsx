@@ -10,9 +10,9 @@ import { Anchor, DamImage, BodyCopy } from '../../atoms';
 const ImageTextCTA = props => {
   const {
     uniqueKey,
-    className,
+    className: ctaClassName,
     dataLocator,
-    ctaInfo: { link, className: ctaClassName },
+    ctaInfo: { link, className },
     image,
     fontWeight,
     fontSize,

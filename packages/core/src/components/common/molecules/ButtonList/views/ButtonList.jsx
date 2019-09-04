@@ -44,6 +44,7 @@ const getImageCTAConfig = length => {
   imageCTAConfig.compWrapper = `scroll-button-list-wrapper ${
     length < imageCTAConfig.MIN_NO_OF_BUTTONS_TO_SCROLL ? ' no-scrollable-cta' : ''
   } ${length > imageCTAConfig.MAX_NUM_OF_BUTTONS_IN_A_ROW ? wrappedTextClass : ''}`;
+  return imageCTAConfig;
 };
 
 /**

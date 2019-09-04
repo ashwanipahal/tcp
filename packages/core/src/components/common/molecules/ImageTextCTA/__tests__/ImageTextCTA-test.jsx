@@ -6,7 +6,7 @@ describe('Image Text CTA component', () => {
   it('renders correctly', () => {
     const compProps = {
       compClassName: 'scroll-cta-wrapper',
-      ctaProps: {
+      ctaInfo: {
         className: 'image-cta',
         link: {
           url: '/test',

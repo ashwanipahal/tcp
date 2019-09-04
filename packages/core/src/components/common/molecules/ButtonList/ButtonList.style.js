@@ -147,10 +147,6 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.medium} {
     padding-bottom: 16px;
-    > div:first-child {
-      margin: 0 auto;
-    }
-
     .stacked-button {
       width: 100%;
       margin-left: 9px;

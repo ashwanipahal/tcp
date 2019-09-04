@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Image CTA component renders correctly 1`] = `
+exports[`Image Text CTA component renders correctly 1`] = `
 <div
   className="img-wrapper"
 >
   <div>
     <Styled(Anchor)
-      className="image-cta"
+      className="dropdown-items"
       fontSizeVariation="large"
       fontWeightVariation="active"
       href="/test"
@@ -14,7 +14,7 @@ exports[`Image CTA component renders correctly 1`] = `
       title="title"
     >
       <WithTheme(DamImage)
-        className="dropdown-items"
+        className="image-cta"
         imgData={
           Object {
             "alt": "test",

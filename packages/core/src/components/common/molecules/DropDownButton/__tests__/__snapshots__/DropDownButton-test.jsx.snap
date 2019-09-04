@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DropDownCategoryButton component renders correctly 1`] = `
+exports[`DropDownButton component renders correctly 1`] = `
 <StyledComponent
   buttonsData={
     Array [
@@ -104,10 +104,10 @@ exports[`DropDownCategoryButton component renders correctly 1`] = `
           "
   ",
           "
-  &.dropdown-category-button-wrapper {
+  &.dropdown-button-wrapper {
     text-align: center;
   }
-  .dropdown-category-button {
+  .dropdown-button-container {
     position: relative;
   }
   .dropdown-icon {
@@ -124,7 +124,9 @@ exports[`DropDownCategoryButton component renders correctly 1`] = `
   }
   .button-panel {
     position: absolute;
-    z-index: 1;
+    z-index: ",
+          [Function],
+          ";
     display: none;
   }
   .button-panel.is-open {
@@ -153,10 +155,10 @@ exports[`DropDownCategoryButton component renders correctly 1`] = `
   @media ",
           [Function],
           " {
-    .dropdown-category-button {
+    .dropdown-button-container {
       display: inline-block;
       button {
-        width: 188px;
+        min-width: 188px;
         height: 42px;
       }
     }
@@ -164,9 +166,9 @@ exports[`DropDownCategoryButton component renders correctly 1`] = `
   @media ",
           [Function],
           " {
-    .dropdown-category-button {
+    .dropdown-button-container {
       button {
-        width: 210px;
+        min-width: 210px;
         height: 51px;
       }
     }
@@ -176,7 +178,7 @@ exports[`DropDownCategoryButton component renders correctly 1`] = `
 ",
         ],
       },
-      "displayName": "Styled(DropDownCategoryButton)",
+      "displayName": "Styled(DropDownButton)",
       "foldedComponentIds": Array [],
       "render": [Function],
       "styledComponentId": "sc-gqjmRU",

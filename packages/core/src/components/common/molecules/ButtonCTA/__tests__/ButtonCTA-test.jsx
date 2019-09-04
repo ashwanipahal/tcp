@@ -5,7 +5,7 @@ import ButtonCTA from '../ButtonCTA';
 describe('Button CTA component', () => {
   it('renders correctly', () => {
     const compProps = {
-      ctaProps: {
+      ctaInfo: {
         className: 'ctaClassName',
         ctaVariation: 'fixed-width',
         link: {

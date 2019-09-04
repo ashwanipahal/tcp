@@ -54,7 +54,7 @@ describe('ButtonList component', () => {
         dataLocatorDivisionImages="moduleB_image_"
         dataLocatorTextCta="moduleB_cta_links_"
         dualVariation={{
-          name: 'dropdownCategoryButton',
+          name: 'dropdownButtonCTA',
           displayProps: {
             small: false,
             medium: true,
