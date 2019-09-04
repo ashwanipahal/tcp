@@ -33,6 +33,7 @@ function* fetchTaxonomy() {
 
 function* fetchEspot({ payload }) {
   // TODO:  move it to common ??
+  // eslint-disable-next-line no-console
   console.log('fetchEspot');
   try {
     const { baseURI, relURI, method } = endpoints.getEspots;
@@ -61,8 +62,10 @@ function* fetchEspot({ payload }) {
     const espotData = res.body.List || [];
     yield put(setEspots(espotData));
   } catch (err) {
-    console.error('Error in API');
-    console.error(err);
+    // eslint-disable-next-line no-console
+    console.log('Error in API');
+    // eslint-disable-next-line no-console
+    console.log(err);
   }
 }
 

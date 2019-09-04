@@ -39,9 +39,9 @@ export default class EspotContainer extends React.Component {
       })
       .catch(err => {
         // eslint-disable-next-line no-console
-        console.error('Error in API');
+        console.log('Error in API');
         // eslint-disable-next-line no-console
-        console.error(err);
+        console.log(err);
       });
   };
 
