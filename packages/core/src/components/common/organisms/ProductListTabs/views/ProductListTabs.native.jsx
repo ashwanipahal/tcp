@@ -20,7 +20,7 @@ class ProductListTabs extends React.PureComponent {
     } = this.props;
     const { catId } = item;
 
-    // Intro animation being jerky without it and the REST is failing. Need to check why.
+    // Intro animation is being jerky without it and the REST is failing. Need to check why.
     setTimeout(() => {
       this.updateCategoryId(catId);
     }, 4000);
