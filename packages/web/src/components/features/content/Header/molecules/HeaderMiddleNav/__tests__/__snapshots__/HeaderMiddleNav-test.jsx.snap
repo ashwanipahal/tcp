@@ -39,7 +39,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="textRight"
+      className="textRight false"
       colSize={
         Object {
           "large": 4,
@@ -70,6 +70,19 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       >
         Login
       </Styled(Anchor)>
+      <Styled(SearchBar)
+        changeSearchText={[Function]}
+        className="rightLink"
+        closeSearchBar={[Function]}
+        isOpen={false}
+        openSearchBar={[Function]}
+        searchRef={
+          Object {
+            "current": null,
+          }
+        }
+        showProduct={false}
+      />
       <Styled(Anchor)
         anchorVariation="primary"
         className="rightLink"
@@ -172,7 +185,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
       />
     </Styled(Col)>
     <Styled(Col)
-      className="textRight"
+      className="textRight false"
       colSize={
         Object {
           "large": 4,
@@ -203,6 +216,19 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
       >
         Login
       </Styled(Anchor)>
+      <Styled(SearchBar)
+        changeSearchText={[Function]}
+        className="rightLink"
+        closeSearchBar={[Function]}
+        isOpen={false}
+        openSearchBar={[Function]}
+        searchRef={
+          Object {
+            "current": null,
+          }
+        }
+        showProduct={false}
+      />
       <Styled(Anchor)
         anchorVariation="primary"
         className="rightLink"
