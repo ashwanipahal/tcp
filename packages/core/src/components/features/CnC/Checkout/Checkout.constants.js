@@ -24,9 +24,9 @@ export default {
   },
 
   CHECKOUT_PAGES_NAMES: {
-    CHECKOUT: 'checkout',
-    PICKUP: 'pickupPage',
-    SHIPPING: 'shippingPage',
+    CHECKOUT: 'Checkout',
+    PICKUP: 'PickupPage',
+    SHIPPING: 'ShippingPage',
   },
 
   CHECKOUT_ROUTES_NAMES: {

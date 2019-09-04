@@ -24,6 +24,7 @@ const BagConfirmationModal = ({
       heading="  "
       headingAlign="left"
       headingFontFamily="secondary"
+      horizontalBar={false}
     >
       <StyledViewWrapper>
         <StyledText>
@@ -33,12 +34,12 @@ const BagConfirmationModal = ({
             fontWeight="regular"
             data-locator={getLocator(`couponDetailModal__NameLbl`)}
             text={confirmationText}
-            textAlign='center'
+            textAlign="center"
           />
         </StyledText>
         <ButtonWrapper>
           <Button
-            fill="BLACK"
+            fill="DARK"
             type="submit"
             color="white"
             onPress={closeCheckoutConfirmationModal}
