@@ -367,6 +367,8 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
 
   return {
     ...basicConfig,
@@ -375,6 +377,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     ...brandConfig,
     isMobile: false,
     cookie: null,
+    catalogId,
   };
 };
 
