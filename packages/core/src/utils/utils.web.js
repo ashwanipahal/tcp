@@ -61,7 +61,7 @@ const getRouteHref = noSlugPath => {
 export const getMappedPageHref = (toPath = '') => {
   if (typeof toPath === 'string') {
     if (isCompleteHTTPUrl(toPath)) return toPath;
-    const [noSlugPath = '/', query = ''] = toPath.replace(/\?/, '-').split('-');
+    const [noSlugPath = '/', query = ''] = toPath.split('?');
     const mappedToHref = getRouteHref(noSlugPath);
     return query ? `${mappedToHref}?${query}` : mappedToHref;
   }
