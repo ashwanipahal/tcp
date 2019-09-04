@@ -29,6 +29,10 @@ const internalEndpoints = {
     link: '/account?id=profile&subSection=edit-mailing-address',
     path: profilePath,
   },
+  birthdaySavingsPage: {
+    link: '/account?id=profile&subSection=birthday-savings',
+    path: profilePath,
+  },
 };
 
 export default internalEndpoints;

@@ -5,15 +5,16 @@ import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 import BirthdaySavingsList from '../../../../common/organism/BirthdaySavingsList';
+import internalEndPoints from '../../../../common/internalEndpoints';
 
 const BirthdaySaving = ({ labels }) => {
   return (
     <MyProfileTile
       title={labels.lbl_profile_birthday_savings}
       ctaTitle={labels.lbl_profile_add_birthday_info}
-      dataLocator="pi-addbirthdayinfo"
-      ctaPath="/account/profile"
-      ctaLink="/account?id=profile&subSection=birthday-savings"
+      dataLocator="birthdaySaving"
+      ctaPath={internalEndPoints.birthdaySavingsPage.path}
+      ctaLink={internalEndPoints.birthdaySavingsPage.link}
     >
       <BodyCopy component="div">
         <Row fullBleed>

@@ -74,13 +74,15 @@ export const getChildren = () => {
   return executeStatefulAPICall(payload)
     .then(res => {
       // We are doing parseInt(child.childBirthdayMonth).toString() beacuse we use this value to index a table and backend can send it with a leading Zero like 02
-      return res.body.childBirthdayInfo.map(child => ({
-        name: child.childName,
-        birthYear: child.childBirthdayYear,
-        birthMonth: parseInt(child.childBirthdayMonth, 10).toString(),
-        gender: child.childGender,
-        childId: child.childId,
-      }));
+      return res.body.childBirthdayInfo.map(
+        ({ childName, childBirthdayYear, childBirthdayMonth, childGender, childId }) => ({
+          name: childName,
+          birthYear: childBirthdayYear,
+          birthMonth: parseInt(childBirthdayMonth, 10).toString(),
+          gender: childGender,
+          childId,
+        })
+      );
     })
     .catch(err => {
       throw err;

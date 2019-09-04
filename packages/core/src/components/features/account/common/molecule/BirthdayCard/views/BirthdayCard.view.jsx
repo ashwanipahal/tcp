@@ -39,6 +39,7 @@ export const BirthdayCard = ({
           src={getIconPath('close-icon')}
           onClick={() => removeBirthday(childId)}
           className="closeIcon"
+          data-locator="crossIconInTile"
         />
       )}
       <BodyCopy
@@ -46,19 +47,32 @@ export const BirthdayCard = ({
         fontWeight="semibold"
         className="elem-mb-XXXS"
         fontFamily="secondary"
+        data-locator="nameOfChildInTile"
       >
         {name}
       </BodyCopy>
       <div className="cardInfo">
-        <BodyCopy fontFamily="secondary" fontWeight="semibold" fontSize="fs12">
+        <BodyCopy
+          fontFamily="secondary"
+          fontWeight="semibold"
+          fontSize="fs12"
+          data-locator="childAgeInTile"
+        >
           {age}
         </BodyCopy>
         <Image
           alt="userIcon"
           className="genderIcon"
           src={getIconPath(gender === constants.CHILD_GENDER_MAP.FEMALE ? 'girl-icon' : 'boy-icon')}
+          data-locator="childImg"
         />
-        <BodyCopy fontFamily="secondary" fontSize="fs12" fontWeight="semibold" textAlign="right">
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="semibold"
+          textAlign="right"
+          data-locator="childBirthYearInTile"
+        >
           {birthYear}
         </BodyCopy>
       </div>

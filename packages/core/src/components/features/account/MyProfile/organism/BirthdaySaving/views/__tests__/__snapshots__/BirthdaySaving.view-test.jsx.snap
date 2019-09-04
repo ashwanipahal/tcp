@@ -5,7 +5,7 @@ exports[`BirthdaySaving component should render correctly 1`] = `
   ctaLink="/account?id=profile&subSection=birthday-savings"
   ctaPath="/account/profile"
   ctaTitle=""
-  dataLocator="pi-addbirthdayinfo"
+  dataLocator="birthdaySaving"
   title=""
 >
   <Styled(BodyCopy)
@@ -32,6 +32,13 @@ exports[`BirthdaySaving component should render correctly 1`] = `
         }
       >
         <Connect(BirthdaySavings)
+          labels={
+            Object {
+              "lbl_profile_add_birthday_info": "",
+              "lbl_profile_birthday_saving_info": "",
+              "lbl_profile_birthday_savings": "",
+            }
+          }
           view="read"
         />
       </Styled(Col)>

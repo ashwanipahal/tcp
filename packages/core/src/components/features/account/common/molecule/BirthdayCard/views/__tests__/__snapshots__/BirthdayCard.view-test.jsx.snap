@@ -7,6 +7,7 @@ exports[`BirthdayCard should render correctly 1`] = `
   <Styled(Image)
     alt="closeIcon"
     className="closeIcon"
+    data-locator="crossIconInTile"
     onClick={[Function]}
     src="/static/images/close.png"
   />
@@ -14,6 +15,7 @@ exports[`BirthdayCard should render correctly 1`] = `
     className="elem-mb-XXXS"
     color="text.primary"
     component="p"
+    data-locator="nameOfChildInTile"
     fontFamily="secondary"
     fontSize={12}
     fontWeight="semibold"
@@ -30,6 +32,7 @@ exports[`BirthdayCard should render correctly 1`] = `
       className={null}
       color="text.primary"
       component="p"
+      data-locator="childAgeInTile"
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="semibold"
@@ -42,12 +45,14 @@ exports[`BirthdayCard should render correctly 1`] = `
     <Styled(Image)
       alt="userIcon"
       className="genderIcon"
+      data-locator="childImg"
       src="/static/images/girl-icon.png"
     />
     <Styled(BodyCopy)
       className={null}
       color="text.primary"
       component="p"
+      data-locator="childBirthYearInTile"
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="semibold"

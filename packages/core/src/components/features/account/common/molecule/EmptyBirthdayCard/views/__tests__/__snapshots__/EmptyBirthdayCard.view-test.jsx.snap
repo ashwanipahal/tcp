@@ -27,6 +27,7 @@ exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
       +
     </Styled(BodyCopy)>
     <Styled(Anchor)
+      data-locator="addAChildLnk"
       fontSizeVariation="large"
       underline={true}
     />

@@ -20,7 +20,7 @@ export const EmptyBirthdayCard = ({ className, view, labels }) => {
           <BodyCopy component="span" fontSize="fs14" className="elem-mr-XXS">
             +
           </BodyCopy>
-          <Anchor underline fontSizeVariation="large">
+          <Anchor underline fontSizeVariation="large" data-locator="addAChildLnk">
             {labels.lbl_profile_addChildBirthdayCta}
           </Anchor>
         </div>

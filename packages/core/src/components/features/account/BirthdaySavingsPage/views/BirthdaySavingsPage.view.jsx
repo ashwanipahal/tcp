@@ -19,13 +19,23 @@ export const BirthdaySavings = ({ labels }) => {
           asPath={internalEndpoints.profilePage.path}
           fontSizeVariation="xlarge"
           anchorVariation="secondary"
+          data-locator="backLink"
         >
           <span className="left-arrow" />
           {labels.lbl_profile_personal_info_back}
         </Anchor>
       </BodyCopy>
-      <FormPageHeading className="elem-mb-LRG" heading={labels.lbl_profile_birthday_savings} />
-      <BodyCopy fontSize="fs14" fontFamily="secondary" className="elem-mb-XXL">
+      <FormPageHeading
+        className="elem-mb-LRG"
+        heading={labels.lbl_profile_birthday_savings}
+        data-locator="birthdaySavingsLbl"
+      />
+      <BodyCopy
+        fontSize="fs14"
+        fontFamily="secondary"
+        className="elem-mb-XXL"
+        data-locator="instrText"
+      >
         {labels.lbl_profile_birthday_saving_info}
       </BodyCopy>
       <BirthdaySavingsList view="edit" labels={labels} />
