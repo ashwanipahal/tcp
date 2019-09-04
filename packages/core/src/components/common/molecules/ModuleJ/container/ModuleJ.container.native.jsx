@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import ModuleJ from '../views';
 
 export const mapStateToProps = state => {
-  const { ProductListTabs } = state;
+  const { ProductTabList } = state;
 
   return {
-    productListTabs: ProductListTabs,
+    productTabList: ProductTabList,
   };
 };
 

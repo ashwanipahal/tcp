@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductListTabs from '../views';
+import ProductTabList from '../views';
 
 function getTimer(time) {
   jest.useFakeTimers();
@@ -10,32 +10,32 @@ function getTimer(time) {
   });
 }
 
-describe('ProductListTabs', () => {
+describe('ProductTabList', () => {
   it('Should call dispatch function if product list category data is not available ', () => {
-    const getProductListTabsData = jest.fn();
+    const getProductTabListData = jest.fn();
     shallow(
-      <ProductListTabs
+      <ProductTabList
         categoryList={[
           {
             text: 'test',
             catId: '2',
           },
         ]}
-        getProductListTabsData={getProductListTabsData}
+        getProductTabListData={getProductTabListData}
       />
     );
 
     // 4002 because currently 4000 delay is being added componentDidMount to fetch data
     return getTimer(4002).then(() => {
-      expect(getProductListTabsData).toBeCalledTimes(1);
+      expect(getProductTabListData).toBeCalledTimes(1);
     });
   });
 
   it('Should NOT call dispatch function if product list category data is  available ', () => {
-    const getProductListTabsData = jest.fn();
+    const getProductTabListData = jest.fn();
     shallow(
-      <ProductListTabs
-        productListTabs={{
+      <ProductTabList
+        productTabList={{
           '2': {},
         }}
         categoryList={[
@@ -44,32 +44,32 @@ describe('ProductListTabs', () => {
             catId: '2',
           },
         ]}
-        getProductListTabsData={getProductListTabsData}
+        getProductTabListData={getProductTabListData}
       />
     );
 
     // 4002 because currently 4000 delay is being added componentDidMount to fetch data
     return getTimer(4002).then(() => {
-      expect(getProductListTabsData).toBeCalledTimes(0);
+      expect(getProductTabListData).toBeCalledTimes(0);
     });
   });
 
   it('Should NOT call dispatch function if category data is not available ', () => {
-    const getProductListTabsData = jest.fn();
+    const getProductTabListData = jest.fn();
     shallow(
-      <ProductListTabs
+      <ProductTabList
         categoryList={[
           {
             text: 'test',
           },
         ]}
-        getProductListTabsData={getProductListTabsData}
+        getProductTabListData={getProductTabListData}
       />
     );
 
     // 4002 because currently 4000 delay is being added componentDidMount to fetch data
     return getTimer(4004).then(() => {
-      expect(getProductListTabsData).toBeCalledTimes(0);
+      expect(getProductTabListData).toBeCalledTimes(0);
     });
   });
 });

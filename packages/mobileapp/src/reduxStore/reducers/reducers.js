@@ -59,7 +59,7 @@ import {
   TRACK_ORDER_REDUCER_KEY,
   GET_CANDID_REDUCER_KEY,
   TOAST_REDUCER_KEY,
-  PRODUCT_LIST_TABS_REDUCER_KEY,
+  PRODUCT_TAB_LIST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -68,7 +68,7 @@ import AddressBookReducer from '@tcp/core/src/components/features/account/Addres
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
-import ProductListTabsReducer from '@tcp/core/src/components/common/organisms/ProductListTabs/container/ProductListTabs.reducer';
+import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
@@ -81,6 +81,11 @@ const filteredProductListingPageReducer = createFilteredReducer(
 const filteredProductListingReducer = createFilteredReducer(
   ProductListingReducer,
   PRODUCT_LISTING_REDUCER_KEY
+);
+
+const filteredProductTabListReducer = createFilteredReducer(
+  ProductTabListReducer,
+  PRODUCT_TAB_LIST_REDUCER_KEY
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
@@ -120,7 +125,7 @@ const rootReducer = combineReducers({
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
-  [PRODUCT_LIST_TABS_REDUCER_KEY]: ProductListTabsReducer,
+  [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
   [GET_CANDID_REDUCER_KEY]: filteredGetCandidReducer,
 });
 

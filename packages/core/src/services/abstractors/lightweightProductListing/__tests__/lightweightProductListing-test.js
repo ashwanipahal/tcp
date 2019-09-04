@@ -1,5 +1,5 @@
-import productListTabsAbstractor from '../productListTabs';
-import * as handler from '../../../../handler/handler';
+import productListTabsAbstractor from '../lightweightProductListing';
+import * as handler from '../../../handler/handler';
 import mock from '../mock';
 
 jest.mock('../../../../../service/API');

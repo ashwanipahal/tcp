@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 
 import { Container } from '../ModuleJ.style.native';
 
-import ProductListTabs from '../../../organisms/ProductListTabs';
+import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
 
 class ModuleJ extends React.PureComponent {
   render() {
     return (
       <Container>
-        <ProductListTabs
+        <ProductTabList
           onProductTabChange={this.onProductTabChange}
           categoryList={categoryListMock}
         />
@@ -21,11 +21,11 @@ class ModuleJ extends React.PureComponent {
 }
 
 ModuleJ.defaultProps = {
-  productListTabs: {},
+  productTabList: {},
 };
 
 ModuleJ.propTypes = {
-  productListTabs: PropTypes.shape({}),
+  productTabList: PropTypes.shape({}),
 };
 
 export default ModuleJ;

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import ButtonTabs from '../../../molecules/ButtonTabs';
 
-import { Wrapper } from '../ProductListTabs.style.native';
+import { Wrapper } from '../ProductTabList.style.native';
 
-class ProductListTabs extends React.PureComponent {
+class ProductTabList extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,7 @@ class ProductListTabs extends React.PureComponent {
     } = this.props;
     const { catId } = item;
 
-    // Intro animation is being jerky without it and the REST is failing. Need to check why.
+    // TODO: Intro animation is being jerky without it and the REST is failing. Need to check why.
     setTimeout(() => {
       this.updateCategoryId(catId);
     }, 4000);
@@ -32,11 +32,11 @@ class ProductListTabs extends React.PureComponent {
 
   updateCategoryId(catId) {
     if (catId) {
-      const { productListTabs, getProductListTabsData, onProductTabChange } = this.props;
+      const { productTabList, getProductTabListData, onProductTabChange } = this.props;
       this.setState({ selectedCategoryId: catId });
       onProductTabChange(catId);
-      if (!productListTabs[catId]) {
-        getProductListTabsData({ categoryId: catId });
+      if (!productTabList[catId]) {
+        getProductTabListData({ categoryId: catId });
       }
     }
   }
@@ -61,23 +61,23 @@ class ProductListTabs extends React.PureComponent {
   }
 }
 
-ProductListTabs.defaultProps = {
-  getProductListTabsData: () => {},
+ProductTabList.defaultProps = {
+  getProductTabListData: () => {},
   categoryList: [],
-  productListTabs: {},
+  productTabList: {},
   onProductTabChange: () => {},
 };
 
-ProductListTabs.propTypes = {
-  getProductListTabsData: PropTypes.func,
+ProductTabList.propTypes = {
+  getProductTabListData: PropTypes.func,
   categoryList: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
       id: PropTypes.string,
     })
   ),
-  productListTabs: PropTypes.shape({}),
+  productTabList: PropTypes.shape({}),
   onProductTabChange: PropTypes.func,
 };
 
-export default ProductListTabs;
+export default ProductTabList;

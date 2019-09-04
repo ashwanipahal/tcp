@@ -1,22 +1,22 @@
 import mock from './mock';
-import { executeUnbxdAPICall } from '../../../handler';
-import endpoints from '../../../endpoints';
+import { executeUnbxdAPICall } from '../../handler';
+import endpoints from '../../endpoints';
 
 /**
  * Abstractor layer for loading Product List Tabs data
  */
 const Abstractor = {
-  getData: ({ categoryId }) => {
+  getData: ({ categoryId, rows = 15, fields = 'imageUrl' }) => {
     const payload = {
       body: {
         start: 0,
-        rows: 15,
+        rows,
         variants: true,
         'variants.count': 0,
         version: 'V2',
         pagetype: 'boolean',
         'p-id': `categoryPathId:"${categoryId}"`,
-        fields: 'alt_img',
+        fields,
       },
       webService: endpoints.getProductviewbyCategory,
     };
