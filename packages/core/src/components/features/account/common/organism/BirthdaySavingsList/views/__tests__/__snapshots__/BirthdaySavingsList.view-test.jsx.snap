@@ -25,15 +25,15 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     colSize={
       Object {
         "large": 3,
-        "medium": 4,
+        "medium": 2,
         "small": 3,
       }
     }
     ignoreGutter={
       Object {
         "large": false,
-        "medium": 1,
-        "small": 1,
+        "medium": false,
+        "small": false,
       }
     }
     key="card_undefined"
@@ -48,15 +48,15 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     colSize={
       Object {
         "large": 3,
-        "medium": 4,
+        "medium": 2,
         "small": 3,
       }
     }
     ignoreGutter={
       Object {
         "large": false,
-        "medium": 0,
-        "small": 0,
+        "medium": false,
+        "small": true,
       }
     }
     key="card_1"
@@ -77,15 +77,15 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     colSize={
       Object {
         "large": 3,
-        "medium": 4,
+        "medium": 2,
         "small": 3,
       }
     }
     ignoreGutter={
       Object {
         "large": false,
-        "medium": 1,
-        "small": 1,
+        "medium": false,
+        "small": false,
       }
     }
     key="card_2"
@@ -106,15 +106,15 @@ exports[`BirthdaySavingsList component should renders correctly when childrenBir
     colSize={
       Object {
         "large": 3,
-        "medium": 4,
+        "medium": 2,
         "small": 3,
       }
     }
     ignoreGutter={
       Object {
         "large": true,
-        "medium": 0,
-        "small": 0,
+        "medium": true,
+        "small": true,
       }
     }
     key="card_3"

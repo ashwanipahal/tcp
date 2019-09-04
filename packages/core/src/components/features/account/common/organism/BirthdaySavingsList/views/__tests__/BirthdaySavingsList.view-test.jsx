@@ -1,7 +1,12 @@
 import React from 'react';
 import { fromJS } from 'immutable';
 import { shallow } from 'enzyme';
-import { BirthdaySavingsList } from '../BirthdaySavingsList.view';
+import {
+  BirthdaySavingsList,
+  getColumnClasses,
+  getColumnSize,
+  getIgnoreGutter,
+} from '../BirthdaySavingsList.view';
 import EmptyBirthdayCard from '../../../../molecule/EmptyBirthdayCard';
 
 const labels = {
@@ -37,5 +42,51 @@ describe('BirthdaySavingsList component', () => {
     };
     const component = shallow(<BirthdaySavingsList {...props} />);
     expect(component.find(EmptyBirthdayCard)).toHaveLength(3);
+  });
+});
+
+describe('getColumnClasses', () => {
+  it('should return elem-mb-LRG for read view and index less than 2', () => {
+    expect(getColumnClasses(false, 1)).toBe('elem-mb-LRG');
+  });
+
+  it('should return elem-mb-MED for edit view', () => {
+    expect(getColumnClasses(true, 3)).toBe('elem-mb-MED');
+  });
+});
+
+describe('getColumnSize', () => {
+  it('should return correct colSize for edit view', () => {
+    expect(getColumnSize(true)).toStrictEqual({
+      small: 3,
+      medium: 2,
+      large: 3,
+    });
+  });
+
+  it('should return correct colSize for read view', () => {
+    expect(getColumnSize(false)).toStrictEqual({
+      small: 3,
+      medium: 4,
+      large: 6,
+    });
+  });
+});
+
+describe('getIgnoreGutter', () => {
+  it('should return correct ignoreGutter for edit view', () => {
+    expect(getIgnoreGutter(true, 3)).toStrictEqual({
+      small: true,
+      medium: true,
+      large: true,
+    });
+  });
+
+  it('should return correct ignoreGutter for read view', () => {
+    expect(getIgnoreGutter(false, 3)).toStrictEqual({
+      small: true,
+      medium: true,
+      large: true,
+    });
   });
 });

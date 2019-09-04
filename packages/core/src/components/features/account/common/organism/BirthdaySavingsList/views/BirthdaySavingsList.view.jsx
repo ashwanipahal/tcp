@@ -19,6 +19,34 @@ export const getColumnClasses = (isEditMode, index) => {
 };
 
 /**
+ * @function getColumnSize
+ * @description This function will return colSize based on the whether list needs to be shown in page or in My profile tile.
+ * @param {boolean} isEditMode If list is opened in edit view i.e. BirthdaySavings Page or in My Profile Tile
+ */
+export const getColumnSize = isEditMode => {
+  return {
+    small: 3, // in small viewport, both birthday Saving page and tile will show 2 Birthday saving card
+    medium: isEditMode ? 2 : 4, // in tablet, tile will show 2 Birthday saving card and page will show 4 Birthday saving card
+    large: isEditMode ? 3 : 6, // in desktop, tile will show 2 Birthday saving card and page will show 4 Birthday saving card
+  };
+};
+
+/**
+ * @function getIgnoreGutter
+ * @description This function will return ignoreGutter based on the whether list needs to be shown in page or in My profile tile.
+ * @param {boolean} isEditMode If list is opened in edit view i.e. BirthdaySavings Page or in My Profile Tile
+ * @param {number} index index of the current card
+ */
+export const getIgnoreGutter = (isEditMode, index) => {
+  const isRightCol = (index + 1) % 2 === 0;
+  return {
+    large: isEditMode ? (index + 1) % 4 === 0 : isRightCol,
+    medium: isEditMode ? (index + 1) % 4 === 0 : isRightCol,
+    small: isRightCol,
+  };
+};
+
+/**
  * @function BirthdaySavingsList
  * @description This component will render the BirthdaySavings Card list based on the view provided.
  * In case of view="edit", Add new Birthday Card will be rendered otherwise Empty space will be present.
@@ -29,22 +57,13 @@ export const BirthdaySavingsList = ({ labels, childrenBirthdays, view }) => {
     const isEditMode = view === 'edit';
     return (
       <Row fullBleed>
-        {birthdays.map((birthday, i) => {
-          const isRightCol = (i + 1) % 2;
+        {birthdays.map((birthday, index) => {
           return (
             <Col
-              key={`card_${birthday ? birthday.childId : i}`}
-              colSize={{
-                small: 3,
-                medium: 4,
-                large: isEditMode ? 3 : 6,
-              }}
-              ignoreGutter={{
-                large: isEditMode ? (i + 1) % 4 === 0 : isRightCol,
-                medium: isRightCol,
-                small: isRightCol,
-              }}
-              className={getColumnClasses()}
+              key={`card_${birthday ? birthday.childId : index}`}
+              colSize={getColumnSize(isEditMode)}
+              ignoreGutter={getIgnoreGutter(isEditMode, index)}
+              className={getColumnClasses(isEditMode, index)}
             >
               {birthday ? (
                 <BirthdayCardComponent
