@@ -1,39 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Create Account Page should render correctly 1`] = `
-<StyledComponent
-  createAccountAction={[MockFunction]}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-cSHVUG",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .forgotPasswordWrapper {
-    padding: ",
-          [Function],
-          ";
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(CreateAccount)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-cSHVUG",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-/>
+<div
+  className=""
+>
+  <Styled(CreateAccounPage)
+    className=""
+    createAccountAction={[MockFunction]}
+    showForgotPasswordForm={[Function]}
+  />
+</div>
 `;

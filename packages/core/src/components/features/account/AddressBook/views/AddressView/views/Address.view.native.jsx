@@ -18,6 +18,7 @@ import AddressListComponent from '../../AddressList.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import DeleteAddressModal from '../../DeleteAddressModal.view';
+import ADDRESS_BOOK_CONSTANTS from '../../../AddressBook.constants';
 
 export class AddressView extends React.Component {
   constructor(props) {
@@ -29,26 +30,34 @@ export class AddressView extends React.Component {
       countryState: '',
       selectedAddress: null,
     };
+    this.addressHeadline = null;
   }
 
   toggleAddressModal = () => {
     const { currentForm } = this.state;
-    if (currentForm === 'AddAddress') {
-      this.setState({ currentForm: 'VerificationModal' });
+    if (currentForm === ADDRESS_BOOK_CONSTANTS.ADD_ADDRESS_MODAL) {
+      this.setState({ currentForm: ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL });
     } else {
-      this.setState({ currentForm: 'AddAddress' });
+      this.setState({ currentForm: ADDRESS_BOOK_CONSTANTS.ADD_ADDRESS_MODAL });
     }
   };
 
-  toggleAddAddressModal = () => {
+  toggleAddAddressModal = type => {
     const { addAddressMount } = this.state;
     this.setState({
       addAddressMount: !addAddressMount,
     });
+    if (type !== 'edit') {
+      this.setState({ selectedAddress: '' });
+    }
   };
 
   setSelectedAddress = address => {
-    this.setState({ selectedAddress: address });
+    this.setState({
+      selectedAddress: address,
+      addressLine1: address.addressLine[0],
+      countryState: address.state,
+    });
   };
 
   setAddressLine1 = (address, countryState) => {
@@ -56,7 +65,22 @@ export class AddressView extends React.Component {
   };
 
   resetAddressLine1 = () => {
-    this.setState({ addressLine1: '', countryState: '' });
+    this.setState({ addressLine1: '', countryState: '', selectedAddress: '' });
+  };
+
+  getAddressHeadline = () => {
+    const { addressLabels } = this.props;
+    const { currentForm, selectedAddress } = this.state;
+
+    if (selectedAddress) {
+      return currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
+        ? addressLabels.editAddress
+        : addressLabels.editAddressLbl;
+    }
+
+    return currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
+      ? addressLabels.editAddress
+      : addressLabels.addNewAddress;
   };
 
   render() {
@@ -67,7 +91,6 @@ export class AddressView extends React.Component {
       setDeleteModalMountState,
       deleteModalMountedState,
       onDeleteAddress,
-      addressLabels,
     } = this.props;
     const {
       addAddressMount,
@@ -141,11 +164,7 @@ export class AddressView extends React.Component {
             <ModalNative
               isOpen={addAddressMount}
               onRequestClose={this.toggleAddAddressModal}
-              heading={
-                currentForm === 'VerificationModal'
-                  ? addressLabels.verifyAddress
-                  : addressLabels.addNewAddress
-              }
+              heading={this.getAddressHeadline()}
             >
               <ModalViewWrapper>
                 <AddEditAddressContainer

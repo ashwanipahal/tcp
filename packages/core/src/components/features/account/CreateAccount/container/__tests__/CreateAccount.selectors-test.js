@@ -1,7 +1,55 @@
 import { fromJS } from 'immutable';
-import { getLabels, getErrorMessage } from '../CreateAccount.selectors';
+import {
+  getLabels,
+  getErrorMessage,
+  getIAgree,
+  getHideShowPwd,
+  getConfirmHideShowPwd,
+} from '../CreateAccount.selectors';
 
 describe('#CreateAccount selector', () => {
+  it('#getIAgree should return labels', () => {
+    const state = {
+      form: {
+        CreateAccountForm: {
+          values: {
+            iAgree: true,
+          },
+        },
+      },
+    };
+    const returnedLabels = true;
+    expect(getIAgree(state)).toBe(returnedLabels);
+  });
+
+  it('#getHideShowPwd should return labels', () => {
+    const state = {
+      form: {
+        CreateAccountForm: {
+          values: {
+            hideShowPwd: true,
+          },
+        },
+      },
+    };
+    const returnedLabels = true;
+    expect(getHideShowPwd(state)).toBe(returnedLabels);
+  });
+
+  it('#getConfirmHideShowPwd should return labels', () => {
+    const state = {
+      form: {
+        CreateAccountForm: {
+          values: {
+            confirmHideShowPwd: true,
+          },
+        },
+      },
+    };
+    const returnedLabels = true;
+    expect(getConfirmHideShowPwd(state)).toBe(returnedLabels);
+  });
+
   it('#getLabels should return labels', () => {
     const state = {
       Labels: {
