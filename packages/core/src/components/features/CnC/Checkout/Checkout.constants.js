@@ -19,7 +19,6 @@ export default {
     SHIPPING: 'shipping',
     BILLING: 'billing',
     REVIEW: 'review',
-    STAGES_ARRAY: ['pickup', 'shipping', 'billing', 'review'],
   },
 
   CHECKOUT_PAGES_NAMES: {
@@ -27,6 +26,12 @@ export default {
     PICKUP: 'PickupPage',
     SHIPPING: 'ShippingPage',
   },
+
+  CHECKOUT_ROUTES_NAMES: {
+    CHECKOUT_PICKUP: 'CheckoutPickup',
+    CHECKOUT_SHIPPING: 'CheckoutShipping',
+  },
+
   CHECKOUT_FLAGS_SET_LOAD_METHODS: 'CHECKOUT_FLAGS_SET_LOAD_METHODS',
   CHECKOUT_ORDER_OPTIONS_SET_SHIPPING: 'CHECKOUT_ORDER_OPTIONS_SET_SHIPPING',
   SUBMIT_SHIPPING_SECTION: 'SUBMIT_SHIPPING_SECTION',

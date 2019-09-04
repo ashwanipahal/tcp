@@ -22,7 +22,7 @@ const completedStage = require('../../../../../../../assets/checkout-tick.png');
 export class CheckoutProgressIndicator extends React.PureComponent {
   routeToPickup = () => {
     const { navigation } = this.props;
-    navigation.navigate('CheckoutPickup');
+    navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
   };
 
   render() {

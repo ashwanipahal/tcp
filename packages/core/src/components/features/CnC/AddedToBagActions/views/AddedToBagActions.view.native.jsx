@@ -18,9 +18,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
       e.preventDefault();
     }
     if (orderHasPickup) {
-      navigation.navigate('CheckoutPickup');
+      navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
     } else {
-      navigation.navigate('CheckoutShipping');
+      navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
     closeCheckoutModalMountState({ state: false });
   };

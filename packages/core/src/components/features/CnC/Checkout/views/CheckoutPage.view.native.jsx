@@ -31,15 +31,6 @@ export default class CheckoutPage extends React.PureComponent {
       navigation,
     };
     onPickupSubmit(params);
-    // navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.SHIPPING, {
-    //   ...shippingProps,
-    //   loadShipmentMethods,
-    //   navigation,
-    //   isGuest,
-    //   isUsSite,
-    //   orderHasPickUp,
-    //   handleSubmit: { submitShippingSection },
-    // });
   };
 
   render() {

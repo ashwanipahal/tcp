@@ -27,7 +27,6 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
-  getSetCheckoutStage,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -197,11 +196,8 @@ function* submitPickupSection(data) {
   if (result.addressId) {
     if (!isMobileApp()) {
       routerPush('/checkout/shipping', '/checkout/shipping');
-    } else {
-      console.log('---->', navigation, payload);
-      if (navigation) {
-        navigation.navigate('CheckoutShipping');
-      }
+    } else if (navigation) {
+      navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
   }
 
