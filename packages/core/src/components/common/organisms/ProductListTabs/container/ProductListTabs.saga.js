@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { call, put, takeLatest } from 'redux-saga/effects';
 import productListTabs from '@tcp/core/src/services/abstractors/common/productListTabs';
 
