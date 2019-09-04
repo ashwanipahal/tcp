@@ -18,8 +18,8 @@ export default css`
   .shop-by-size-links li {
     cursor: pointer;
     border: 1px solid ${props => props.theme.colors.NAVIGATION.CIRCULAR_BORDER};
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 20px 20px;
     align-items: center;
     justify-content: center;
@@ -95,7 +95,7 @@ export default css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     display: none;
-    top: 76px;
+    top: 64px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
 
     .s-display-none {
@@ -124,6 +124,7 @@ export default css`
     .l2-nav-category-heading {
       padding: 0 0 15px 0;
       background: none;
+      text-transform: uppercase;
     }
     .l2-nav-category-divider {
       display: inline-block;
@@ -155,7 +156,7 @@ export default css`
         display: block;
       }
       li {
-        margin-right: 32px;
+        margin-right: 30px;
       }
     }
     .l2-image-banner {
