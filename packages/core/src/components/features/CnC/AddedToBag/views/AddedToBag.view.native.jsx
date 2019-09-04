@@ -19,6 +19,7 @@ const AddedToBag = ({
   labels,
   quantity,
   handleContinueShopping,
+  navigation,
 }) => {
   return (
     <Modal
@@ -42,7 +43,7 @@ const AddedToBag = ({
         <AddedToBagWrapper>
           <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
           <AddedToBagViewPoints labels={labels} />
-          <AddedToBagActions labels={labels} />
+          <AddedToBagActions labels={labels} navigation={navigation} closeModal={onRequestClose} />
           <BossBanner labels={labels} />
           <StyledAnchorWrapper>
             <Anchor
@@ -69,6 +70,11 @@ AddedToBag.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   quantity: PropTypes.string.isRequired,
   handleContinueShopping: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
+};
+
+AddedToBag.defaultProps = {
+  navigation: null,
 };
 
 export default AddedToBag;

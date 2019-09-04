@@ -100,10 +100,7 @@ class MiniBagBody extends React.PureComponent {
             </Row>
           ) : null}
           {cartItemCount ? (
-            <>
-              <ProductTileWrapper onItemEdit={this.handleItemEdit} />
-              <AirmilesBanner />
-            </>
+            <ProductTileWrapper onItemEdit={this.handleItemEdit} />
           ) : (
             <EmptyMiniBag labels={labels} userName={userName} />
           )}
@@ -114,6 +111,7 @@ class MiniBagBody extends React.PureComponent {
               {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
             </BodyCopy>
             <AddedToBagActions showAddTobag={false} isEditingItem={this.isEditing} />
+            <AirmilesBanner />
           </div>
         ) : (
           <div className="miniBagFooter">
