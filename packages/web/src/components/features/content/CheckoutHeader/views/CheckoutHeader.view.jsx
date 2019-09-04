@@ -25,7 +25,7 @@ const CheckoutHeader = ({ className, brandTabs, labels }) => {
           className="header-topnav__brand-tabs"
           colSize={{
             small: 4,
-            medium: 2,
+            medium: 4,
             large: 3,
           }}
         >
@@ -35,7 +35,7 @@ const CheckoutHeader = ({ className, brandTabs, labels }) => {
           className="header-topnav__promo-area"
           colSize={{
             small: 1,
-            medium: 4,
+            medium: 3,
             large: 6,
           }}
         >
@@ -48,7 +48,7 @@ const CheckoutHeader = ({ className, brandTabs, labels }) => {
           className="header-topnav__track-order"
           colSize={{
             small: 1,
-            medium: 2,
+            medium: 1,
             large: 3,
           }}
         >

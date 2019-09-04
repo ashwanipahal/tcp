@@ -39,13 +39,14 @@ export default css`
   .header-topnav__brand-tabs {
     @media ${props => props.theme.mediaQuery.mediumMax} {
       padding-top: 0;
+      text-align: center;
     }
   }
 
   .header-topnav__promo-area {
     text-align: center;
 
-    @media ${props => props.theme.mediaQuery.smallMax} {
+    @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
     }
   }
