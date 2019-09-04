@@ -53,7 +53,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         style={
           Object {
             "height": 42,
-            "width": 104,
+            "width": 114,
           }
         }
         text="Apply"

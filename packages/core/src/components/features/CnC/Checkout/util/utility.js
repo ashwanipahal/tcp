@@ -24,6 +24,7 @@ import {
   getSetAirmilesPromoIdActn,
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
+import { routerPush } from '../../../../../utils';
 
 const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
@@ -99,9 +100,15 @@ const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
 
+const routeToPage = (dataObj, ...others) => {
+  const { to, asPath } = dataObj;
+  routerPush(to, asPath, ...others);
+};
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
   hasPOBox,
   isOrderHasPickup,
+  routeToPage,
 };
