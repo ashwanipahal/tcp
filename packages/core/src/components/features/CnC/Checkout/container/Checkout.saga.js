@@ -27,7 +27,6 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
-  getSetCheckoutStage,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -180,7 +179,8 @@ function* callPickupSubmitMethod(formData) {
 
 function* submitPickupSection(data) {
   const { payload } = data;
-  const formData = { ...payload };
+  const formData = { ...payload.formData };
+  const { navigation } = payload;
   // let pickupOperator = getPickupOperator(this.store);
   // let storeState = this.store.getState();
   // let isEmailSignUpAllowed = true;
@@ -193,10 +193,12 @@ function* submitPickupSection(data) {
   //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
   //  }
   const result = yield call(callPickupSubmitMethod, formData);
-  if (!isMobileApp() && result.addressId) {
-    utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-  } else {
-    yield put(getSetCheckoutStage(CONSTANTS.CHECKOUT_STAGES.SHIPPING));
+  if (result.addressId) {
+    if (!isMobileApp()) {
+      utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+    } else if (navigation) {
+      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+    }
   }
 
   /* In the future I imagine us sending the SMS to backend for them to
