@@ -65,7 +65,7 @@ class NavBar extends React.PureComponent<Props> {
     if (appType !== prevAppType && prevAppType) {
       const { navigation } = this.props;
       // reset home stack
-      if (navigation.state.index === 0) resetNavigationStack(navigation);
+      resetNavigationStack(navigation);
       // On brand switch, Reset all stacks and navigate to home page of each stack
       // navigate to home page of Home Stack at the end
       navigateToNestedRoute(navigation, 'PlpStack', 'Navigation');

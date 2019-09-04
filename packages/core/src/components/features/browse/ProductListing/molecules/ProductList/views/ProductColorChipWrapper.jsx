@@ -141,7 +141,12 @@ class ProductColorChipWrapper extends React.Component {
     return (
       <div ref={this.captureContainerRef} className={className}>
         {isDisplayPrevious && (
-          <button className="button-prev" title="Previous" onClick={this.handlePreviousClick} />
+          <button
+            data-locator="color_swatch_arrow"
+            className="button-prev"
+            title="Previous"
+            onClick={this.handlePreviousClick}
+          />
         )}
 
         <ol
@@ -161,7 +166,12 @@ class ProductColorChipWrapper extends React.Component {
         </ol>
 
         {isDisplayNext && (
-          <button className="button-next" title="Next" onClick={this.handleNextClick} />
+          <button
+            data-locator="color_swatch_arrow"
+            className="button-next"
+            title="Next"
+            onClick={this.handleNextClick}
+          />
         )}
       </div>
     );

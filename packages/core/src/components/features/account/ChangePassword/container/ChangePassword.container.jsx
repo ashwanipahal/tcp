@@ -7,6 +7,7 @@ import { getError, getChangePasswordLabels } from './ChangePassword.selectors';
 import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import ChangePasswordComponent from '../views';
 import { changePassword, changePasswordError } from './ChangePassword.actions';
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
 export class ChangePasswordContainer extends PureComponent {
   static propTypes = {
@@ -16,6 +17,7 @@ export class ChangePasswordContainer extends PureComponent {
     messageSateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
     onClose: PropTypes.func,
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -65,7 +67,7 @@ export class ChangePasswordContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels, onClose } = this.props;
+    const { successMessage, errorMessage, labels, onClose, formErrorMessage } = this.props;
     return (
       <ChangePasswordComponent
         successMessage={successMessage}
@@ -73,6 +75,7 @@ export class ChangePasswordContainer extends PureComponent {
         onSubmit={this.changePassword}
         labels={labels}
         onClose={onClose}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -82,6 +85,7 @@ export const mapStateToProps = state => ({
   successMessage: getSuccess(state),
   errorMessage: getError(state),
   labels: getChangePasswordLabels(state),
+  formErrorMessage: getFormValidationErrorMessages(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

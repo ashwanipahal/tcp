@@ -7,7 +7,13 @@ import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../common/atoms/Anchor';
 
-export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit }) => {
+export const ChangePassword = ({
+  labels,
+  successMessage,
+  errorMessage,
+  onSubmit,
+  formErrorMessage,
+}) => {
   return (
     <React.Fragment>
       <BodyCopy className="elem-mb-LRG">
@@ -47,6 +53,7 @@ export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit 
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={onSubmit}
+        formErrorMessage={formErrorMessage}
       />
     </React.Fragment>
   );
@@ -61,6 +68,7 @@ ChangePassword.propTypes = {
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 ChangePassword.defaultProps = {
