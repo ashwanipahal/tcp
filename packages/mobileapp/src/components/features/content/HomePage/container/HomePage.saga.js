@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import endpoints from '@tcp/core/src/service/endpoint';
 import fetchData from '@tcp/core/src/service/API';
 import { HOMEPAGE_CONSTANTS } from '../HomePage.constants';
@@ -7,7 +6,8 @@ import { setHeaderlinks, setEspots } from './HomePage.actions';
 
 // TODO: Move it to _APP.js SAGA
 function* fetchTaxonomy() {
-  logger.info('fetchTaxonomy');
+  // eslint-disable-next-line no-console
+  console.log('fetchTaxonomy');
   try {
     const { baseURI, relURI, method } = endpoints.getTaxonomy;
     const res = yield call(
@@ -24,14 +24,16 @@ function* fetchTaxonomy() {
     const payload = yield res.body.taxonomy[0].children;
     yield put(setHeaderlinks(payload));
   } catch (err) {
-    logger.error('Error in API');
-    logger.error(err);
+    // eslint-disable-next-line no-console
+    console.log('Error in API');
+    // eslint-disable-next-line no-console
+    console.log(err);
   }
 }
 
 function* fetchEspot({ payload }) {
   // TODO:  move it to common ??
-  logger.info('fetchEspot');
+  console.log('fetchEspot');
   try {
     const { baseURI, relURI, method } = endpoints.getEspots;
 
@@ -59,8 +61,8 @@ function* fetchEspot({ payload }) {
     const espotData = res.body.List || [];
     yield put(setEspots(espotData));
   } catch (err) {
-    logger.error('Error in API');
-    logger.error(err);
+    console.error('Error in API');
+    console.error(err);
   }
 }
 
