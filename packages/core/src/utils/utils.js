@@ -269,6 +269,10 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
   return typeof labelValue === 'string' ? labelValue : labelKey;
 };
 
+export const generateUniqueKeyUsingLabel = label => {
+  return label.replace(/\s/g, '_');
+};
+
 export default {
   getIconPath,
   getFlagIconPath,
@@ -287,4 +291,5 @@ export default {
   getLabelValue,
   getCacheKeyForRedis,
   calculateAge,
+  generateUniqueKeyUsingLabel,
 };
