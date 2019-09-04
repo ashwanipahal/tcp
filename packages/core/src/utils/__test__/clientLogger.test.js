@@ -9,5 +9,8 @@ describe('LogHandler', () => {
     logger.info({ test: 'mock' });
     logger.debug('mock log');
     logger.log('mock log');
+    logger.trace('mock log');
+    logger.fatal('mock log');
+    expect(typeof logger).toBe('object');
   });
 });
