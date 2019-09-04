@@ -22,7 +22,7 @@ export default css`
       background: url(${selectedIcon}) no-repeat left top;
       background-size: 18px 18px;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
-      padding-bottom: 8px;
+      padding-bottom: 4px;
       display: flex;
     }
   }

@@ -389,7 +389,7 @@ ProductListingFiltersForm.propTypes = {
   initialValues: PropTypes.shape({}),
   filtersLength: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number])),
   handleSubmit: PropTypes.func.isRequired,
-  colorSeqMap: PropTypes.shape({}),
+  colorSeqMap: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   submitting: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,

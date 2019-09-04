@@ -48,6 +48,7 @@ export default css`
       vertical-align: middle;
       overflow: hidden;
       border: 1px solid ${props => props.theme.colors.PRIMARY.DARK};
+      cursor: pointer;
     }
 
     .applied-filter-title {

@@ -1,7 +1,5 @@
-// eslint-disable-next-line import/no-unresolved
-import Router from 'next/router';
 import processHelpers from './processHelpers';
-import { isClient, routerPush, getSiteId } from '../../../utils';
+import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
 import { FACETS_FIELD_KEY } from './productListing.utils';
 
@@ -128,7 +126,9 @@ const getPlpUrlQueryValues = filtersAndSort => {
 
   urlQueryValues = getQueryString(urlQueryValues);
 
-  const displayPath = Router.asPath;
+  let displayPath = window.location.pathname;
+  const searchName = window.location.search;
+  displayPath = `${displayPath}${searchName}`;
   const country = getSiteId();
   let urlPath = displayPath.replace(`/${country}`, '');
   urlPath = urlPath.split('?');
@@ -151,6 +151,7 @@ const getPlpUrlQueryValues = filtersAndSort => {
   return true;
 };
 
+// eslint-disable-next-line complexity
 const processResponse = (
   res,
   {
@@ -180,7 +181,9 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  getPlpUrlQueryValues(filtersAndSort);
+  if (!isMobileApp) {
+    getPlpUrlQueryValues(filtersAndSort);
+  }
 
   const pendingPromises = [];
   // flags if we are oin an L1 plp. Such plp's have no products, and only show espots and recommendations.
