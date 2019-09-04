@@ -20,18 +20,6 @@ const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
 
 /**
- * @function getUrlWithCrop : Return updated image URL.
- * @desc Returns updated image URL with crop details.
- *
- * @param {String} url : Image URL received from CMS.
- * @return {String} function returns updated image URL as a string.
- */
-const getUrlWithCrop = url => {
-  const dimension = imageSize;
-  return url.replace('h_650,w_650', `h_${dimension},w_${dimension}`);
-};
-
-/**
  * @function renderItem : Render method for Flatlist.
  * @desc This method is rendering Module D items.
  *
@@ -51,7 +39,8 @@ const renderItem = (item, navigation) => {
         <Image
           alt={image.alt}
           testID={`${getLocator('moduleD_image')}${index + 1}`}
-          source={{ uri: getUrlWithCrop(image.url) }}
+          url={image.url}
+          crop={image.crop_m}
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
