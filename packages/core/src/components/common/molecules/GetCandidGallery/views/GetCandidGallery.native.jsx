@@ -4,6 +4,11 @@ import { Text } from 'react-native';
 
 import Anchor from '../../../atoms/Anchor';
 
+/**
+ * @class GetCandidGallery - display get candid image gallery page
+ *
+ * @param {navigation} navigation object containing navigate method
+ */
 class GetCandidGallery extends React.PureComponent {
   render() {
     const { navigation } = this.props;

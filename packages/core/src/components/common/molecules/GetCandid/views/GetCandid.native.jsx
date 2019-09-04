@@ -14,16 +14,40 @@ import {
   Wrapper,
 } from '../styles/GetCandid.style.native';
 
+/**
+ * @class GetCandid - display images shared by customers on Home Page
+ * To promote popular products and encourage more customers to buy them
+ * This component will be coming on homepage just before footer
+ *
+ * @param {candidData} candidData the list of data to display images
+ * @param {labels} candidData the list of data to display images, links and images for component
+ * @param {navigation} navigation object containing navigate method
+ */
 class GetCandid extends React.PureComponent {
   componentDidMount() {
     const { apiConfig, fetchCandidData } = this.props;
     fetchCandidData(apiConfig);
   }
 
+  /**
+   * @function keyExtractor function to get unique key
+   * for FlatList component.
+   */
   keyExtractor = (_, index) => index.toString();
 
+  /**
+   * @function getSize function to calculate size of
+   * image dynamically as per screen size.
+   */
   getSize = () => parseInt((getScreenWidth() - 66) / 3, 10);
 
+  /**
+   * @function renderItem : Render method for Flatlist.
+   * @desc This method is rendering GetCandid image items.
+   *
+   * @param {Object} item : Single object to render inside Flatlist.
+   * @return {node} function returns Image element element.
+   */
   renderItem = item => {
     const {
       item: {
@@ -49,6 +73,10 @@ class GetCandid extends React.PureComponent {
     );
   };
 
+  /**
+   * @function navigateToPage function to navigate to
+   * Get Candid Gallery page.
+   */
   navigateToPage = () => {
     const { navigation } = this.props;
     navigateToNestedRoute(navigation, 'HomeStack', 'GetCandidGallery');
