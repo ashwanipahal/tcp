@@ -9,7 +9,6 @@ const ProductListTabsReducer = (state = initialState, action = {}) => {
     case constants.PRODUCT_LIST_TAB_REQ:
       return { ...state, loading: true };
     case constants.PRODUCT_LIST_TAB_SUCCESS:
-      return { ...state, ...payload, loading: false };
     case constants.PRODUCT_LIST_TAB_FAIL:
       return { ...state, ...payload, loading: false };
     default:

@@ -8,8 +8,8 @@ function ButtonTabs(props) {
 
   return (
     <Wrapper>
-      {tabs.map(({ label, id }, i) => (
-        <ButtonWrapper key={id} noRightBorder={i === tabs.length - 1}>
+      {tabs.map(({ label, id }, index) => (
+        <ButtonWrapper key={id} noRightBorder={index === tabs.length - 1}>
           <Button
             active={id === selectedTabId}
             text={label}
