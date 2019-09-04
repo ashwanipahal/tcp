@@ -57,6 +57,8 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         labelsFilter={labelsFilter}
         labels={labels}
+        // onPressFilter={this.onPressFilter}
+        // onPressSort={this.onPressSort}
         {...otherProps}
       />
     );

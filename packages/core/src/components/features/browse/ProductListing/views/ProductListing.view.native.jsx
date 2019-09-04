@@ -4,12 +4,20 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
 import { styles, PageContainer } from '../styles/ProductListing.style.native';
-import FilterButtons from '../molecules/FilterButtons';
+import FilterModal from '../molecules/FilterModal';
 
-const ProductListView = ({ products, labelsFilter, breadCrumbs, ...otherProps }) => {
+const ProductListView = ({
+  products,
+  filters,
+  labelsFilter,
+  breadCrumbs,
+  onPressFilter,
+  onPressSort,
+  ...otherProps
+}) => {
   return (
     <PageContainer>
-      <FilterButtons labelsFilter={labelsFilter} />
+      <FilterModal filters={filters} labelsFilter={labelsFilter} />
       <ProductList products={products} {...otherProps} />
     </PageContainer>
   );
@@ -17,12 +25,16 @@ const ProductListView = ({ products, labelsFilter, breadCrumbs, ...otherProps })
 
 ProductListView.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})),
+  filters: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   labelsFilter: PropTypes.shape({}),
+  onPressFilter: PropTypes.func.isRequired,
+  onPressSort: PropTypes.func.isRequired,
 };
 
 ProductListView.defaultProps = {
   products: [],
+  filters: {},
   breadCrumbs: [],
   labelsFilter: {},
 };
