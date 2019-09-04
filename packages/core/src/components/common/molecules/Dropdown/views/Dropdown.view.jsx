@@ -52,6 +52,7 @@ class Dropdown extends React.PureComponent {
   calNavState = (options, navState) => {
     for (let j = 0; j < options.length; j += 1) {
       const nav = options[j];
+
       if (nav.subSections && nav.subSections.length) {
         for (let i = 0; i < nav.subSections.length; i += 1) {
           if (navState.component === nav.subSections[i].component) {
