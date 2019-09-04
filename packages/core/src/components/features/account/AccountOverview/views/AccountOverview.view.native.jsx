@@ -49,12 +49,15 @@ class AccountOverview extends PureComponent<Props> {
           navigation={navigation}
           isUserLoggedIn={isUserLoggedIn}
           variation={getComponentId.favorites && 'favorites'}
+          showLogin={this.showloginModal}
+          showCheckoutModal={this.showCheckoutModal}
         />
       );
     }
     if (getComponentId.createAccount) {
       componentContainer = (
         <CreateAccount
+          showCheckoutModal={this.showCheckoutModal}
           showLogin={this.showloginModal}
           navigation={navigation}
           onRequestClose={this.toggleModal}
@@ -73,6 +76,14 @@ class AccountOverview extends PureComponent<Props> {
     this.setState({
       getComponentId: {
         login: true,
+      },
+    });
+  };
+
+  showCheckoutModal = () => {
+    this.setState({
+      getComponentId: {
+        createAccount: true,
       },
     });
   };
@@ -159,7 +170,6 @@ class AccountOverview extends PureComponent<Props> {
               <CustomButton
                 className="classBtn"
                 color={colorPallete.text.secondary}
-                fill="WHITE"
                 id="createAccount"
                 type="submit"
                 width="150px"
@@ -180,7 +190,6 @@ class AccountOverview extends PureComponent<Props> {
               />
 
               <CustomButton
-                color={colorPallete.white}
                 className="classBtn"
                 fill="BLUE"
                 id="login"

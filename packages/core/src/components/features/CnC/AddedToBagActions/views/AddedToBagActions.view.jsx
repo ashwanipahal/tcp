@@ -85,13 +85,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </BodyCopy>
           </Button>
         </Row>
-        <OpenLoginModal
-          variation="checkout"
-          openState={checkoutModalMountedState}
-          setLoginModalMountState={closeCheckoutModalMountState}
-          handleContinueAsGuest={this.routeToCheckout}
-          handleAfterLogin={this.routeToCheckout}
-        />
         <BagConfirmationModal
           labels={labels}
           isOpen={showModal}
@@ -99,6 +92,13 @@ class AddedToBagActions extends React.PureComponent<Props> {
           removeUnqualifiedItemsAndCheckout={
             modalEditingItem ? this.closeModalAndHandleCheckout : removeUnqualifiedItemsAndCheckout
           }
+        />
+        <OpenLoginModal
+          variation="checkout"
+          openState={checkoutModalMountedState}
+          setLoginModalMountState={closeCheckoutModalMountState}
+          handleContinueAsGuest={this.routeToCheckout}
+          handleAfterLogin={this.routeToCheckout}
         />
       </div>
     );

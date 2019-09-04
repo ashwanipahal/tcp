@@ -43,7 +43,7 @@ export const bagTileCSS = css`
     padding-bottom: 6px;
   }
 
-  @media ${props => props.theme.mediaQuery.smallOnly} {
+  @media ${props => props.theme.mediaQuery.smallMax} {
     img {
       height: 13px;
       width: 13px;

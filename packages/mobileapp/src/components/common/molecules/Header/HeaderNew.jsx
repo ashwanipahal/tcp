@@ -9,16 +9,14 @@ import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import {
   Container,
-  RoundView,
   SafeAreaViewStyle,
-  TextStyle,
-  BackgroundView,
   CartIconView,
   Touchable,
   LeftSection,
   MiddleSection,
   RightSection,
   TitleText,
+  CartCountContainer,
 } from './HeaderNew.style';
 
 const cartIcon = require('../../../../assets/images/empty-bag.png');
@@ -93,16 +91,15 @@ class HeaderNew extends React.PureComponent<Props> {
                 source={cartIcon}
                 data-locator={getLocator('global_headerpanelbagicon')}
               />
-              <BackgroundView />
-              <RoundView />
-              <BodyCopy
-                text={cartVal}
-                color="white"
-                style={TextStyle}
-                fontSize="fs10"
-                data-locator={getLocator('global_headerpanelbagitemtext')}
-                accessibilityText="Mini bag with count"
-              />
+              <CartCountContainer>
+                <BodyCopy
+                  text={cartVal}
+                  color="white"
+                  fontSize="fs10"
+                  data-locator={getLocator('global_headerpanelbagitemtext')}
+                  accessibilityText="Mini bag with count"
+                />
+              </CartCountContainer>
             </Touchable>
           </RightSection>
         </Container>

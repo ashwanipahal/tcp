@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wallet should render correctly 1`] = `
+<View>
+  <PageHeadingWithLinks
+    labels={Object {}}
+  >
+    <Connect(MyRewardsContainer)
+      labels={
+        Object {
+          "common": Object {},
+          "myPlaceRewards": Object {},
+        }
+      }
+      view="all"
+    />
+  </PageHeadingWithLinks>
+</View>
+`;

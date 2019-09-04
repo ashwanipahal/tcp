@@ -59,6 +59,7 @@ class LoginSection extends React.PureComponent<Props> {
     const {
       onSubmit,
       labels,
+      formErrorMessage,
       loginErrorMessage,
       initialValues,
       showRecaptcha,
@@ -93,6 +94,7 @@ class LoginSection extends React.PureComponent<Props> {
               <LoginForm
                 onSubmit={onSubmit}
                 labels={labels}
+                formErrorMessage={formErrorMessage}
                 loginErrorMessage={loginErrorMessage}
                 initialValues={initialValues}
                 showRecaptcha={showRecaptcha}
@@ -148,6 +150,7 @@ LoginSection.propTypes = {
   queryParams: PropTypes.shape({}).isRequired,
   currentForm: PropTypes.string,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {

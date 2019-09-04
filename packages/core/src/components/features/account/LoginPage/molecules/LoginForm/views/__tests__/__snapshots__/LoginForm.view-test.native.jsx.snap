@@ -113,6 +113,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         dataLocator="password"
         id="password"
         name="password"
+        rightText="show"
         secureTextEntry={true}
         type="password"
       />
@@ -123,13 +124,12 @@ exports[`LoginForm component should renders correctly 1`] = `
           customStyle={Object {}}
           dataLocator=""
           fontFamily="secondary"
-          fontSizeVariation="small"
+          fontSizeVariation="medium"
           locator=""
           noLink={true}
           onPress={[Function]}
           text="show"
           to="/#"
-          underline={true}
           visible={false}
         />
       </Styled(View)>
@@ -145,12 +145,13 @@ exports[`LoginForm component should renders correctly 1`] = `
         component={[Function]}
         dataLocator="rememberMe"
         disabled={false}
+        marginBottom={13}
         name="userTouchId"
       />
     </View>
     <Styled(CustomButton)
       buttonVariation="variable-width"
-      color="#fff"
+      color=""
       customStyle={
         Object {
           "marginTop": 30,

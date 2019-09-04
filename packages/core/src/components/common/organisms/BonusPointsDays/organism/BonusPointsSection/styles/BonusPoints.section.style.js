@@ -23,9 +23,15 @@ const styles = css`
     .hide-in-large-up {
       display: none;
     }
+    .hideAccordian {
+      display: none;
+    }
   }
   @media ${props => props.theme.mediaQuery.smallMax} {
     .hide-in-medium-down {
+      display: none;
+    }
+    .hideAccordian {
       display: none;
     }
   }

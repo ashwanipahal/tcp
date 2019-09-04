@@ -195,7 +195,10 @@ function* submitPickupSection(data) {
   const result = yield call(callPickupSubmitMethod, formData);
   if (result.addressId) {
     if (!isMobileApp()) {
-      routerPush('/checkout/shipping', '/checkout/shipping');
+      routerPush(
+        `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${constants.CHECKOUT_STAGES.SHIPPING}`,
+        `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.SHIPPING}`
+      );
     } else if (navigation) {
       navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
@@ -723,8 +726,11 @@ function* submitShippingSection({ payload: formData }) {
 }
 
 export function* routeToPickupPage(recalc) {
-  const path = `/checkout/pickup`;
-  return yield call(routerPush, path, path, { recalc });
+  const path = `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.PICKUP}`;
+  const href = `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${
+    constants.CHECKOUT_STAGES.PICKUP
+  }`;
+  yield call(routerPush, href, path, { recalc });
 }
 
 export function* CheckoutSaga() {

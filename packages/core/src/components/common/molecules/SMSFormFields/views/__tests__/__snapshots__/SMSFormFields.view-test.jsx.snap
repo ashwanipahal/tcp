@@ -96,6 +96,12 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
   & .disabled {
     opacity: ",
                 [Function],
@@ -254,6 +260,12 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
   & .disabled {
     opacity: ",
                 [Function],
@@ -313,7 +325,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       className="phone-field-wrapper"
       colSize={
@@ -494,11 +508,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         type="tel"
       />
     </Styled(Col)>
-    <Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
       <Styled(Col)
         colSize={
           Object {
-            "large": 5,
+            "large": 7,
             "medium": 8,
             "small": 6,
           }
@@ -514,14 +530,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="small"
-          href="#"
-          noLink={true}
-          noUnderline={true}
-          target="_blank"
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -625,6 +633,12 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     width: calc(100% - 25px);
   }
 
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
   & .disabled {
     opacity: ",
                 [Function],
@@ -684,7 +698,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       className="phone-field-wrapper"
       colSize={
@@ -865,11 +881,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         type="tel"
       />
     </Styled(Col)>
-    <Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
       <Styled(Col)
         colSize={
           Object {
-            "large": 5,
+            "large": 7,
             "medium": 8,
             "small": 6,
           }
@@ -885,14 +903,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="small"
-          href="#"
-          noLink={true}
-          noUnderline={true}
-          target="_blank"
         />
       </Styled(Col)>
     </Styled(Row)>

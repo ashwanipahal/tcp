@@ -16,8 +16,8 @@ export default function addAirmilesBannerApi(payload) {
     },
     body: {
       orderId: payload.orderId,
-      promoId: payload.promoId || '',
-      cardNumber: payload.cardNumber || '',
+      promoId: payload.offerCode || '',
+      cardNumber: payload.promoId || '',
     },
   };
   return executeStatefulAPICall(payloadArgs, errorHandler).then(res => {

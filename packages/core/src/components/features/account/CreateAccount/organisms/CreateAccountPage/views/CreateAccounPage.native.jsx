@@ -15,7 +15,7 @@ class CreateAccounPage extends React.Component {
     onRequestClose: PropTypes.func,
     error: PropTypes.string,
     showForgotPasswordForm: PropTypes.func,
-    showLogin: PropTypes.func,
+    showLogin: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -24,7 +24,6 @@ class CreateAccounPage extends React.Component {
     isIAgreeChecked: false,
     onRequestClose: () => {},
     showForgotPasswordForm: () => {},
-    showLogin: () => {},
     error: {},
   };
 

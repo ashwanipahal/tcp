@@ -23,6 +23,13 @@ const styles = css`
       margin-bottom: 0;
     }
   }
+
+  .hide-mobile {
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: block;
+    }
+  }
 `;
 
 export default styles;
