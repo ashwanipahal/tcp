@@ -1,17 +1,5 @@
 import { css } from 'styled-components';
-import { buttonPrev, buttonNext } from './CommonStyle';
-
-const commonButtonCss = css`
-  top: 50%;
-  width: 25px;
-  height: 34px;
-  ::before {
-    border-left: 2px solid ${props => props.theme.colors.DARK};
-    border-top: 2px solid ${props => props.theme.colors.DARK};
-    height: 7px;
-    width: 7px;
-  }
-`;
+import { arrowWrapper } from './CommonStyle';
 
 const styles = css`
   vertical-align: top;
@@ -24,16 +12,20 @@ const styles = css`
   .color-swatches-desktop-view {
     display: none;
   }
-  .button-next {
-    ${buttonNext}
-    ${commonButtonCss}
-    width:19px;
+
+  .arrowRightWrapper {
+    ${arrowWrapper}
+    transform: rotate(180deg);
+    right: 0;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
-  .button-prev {
-    ${buttonPrev}
-    ${commonButtonCss}
-    width:19px;
+  .arrowImg {
+    transform: rotate(180deg);
+    height: 10px;
+    width: 6px;
   }
 
   .content-colors {
@@ -60,6 +52,9 @@ const styles = css`
 
     &.active {
       border: 1px solid ${props => props.theme.colors.DARK};
+    }
+    &:hover {
+      cursor: pointer;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {

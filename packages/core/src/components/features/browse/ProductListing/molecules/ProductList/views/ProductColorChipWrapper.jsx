@@ -6,10 +6,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Swipeable } from 'react-swipeable';
+import { getIconPath } from '../../../../../../../utils';
 import { breakpoints } from '../../../../../../../../styles/themes/TCP/mediaQuery';
 import { COLOR_PROP_TYPE } from '../propTypes/productsAndItemsPropTypes';
 import ProductColorChip from './ProductColorChip';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import { BodyCopy } from '../../../../../../common/atoms';
 import styles from '../styles/ProductColorChipWrapper.style';
 
 class ProductColorChipWrapper extends React.Component {
@@ -124,9 +126,11 @@ class ProductColorChipWrapper extends React.Component {
       return null;
     }
 
+    const arrowLeft = getIconPath('icon-carrot-black-small');
+
     return (
       <div ref={this.captureContainerRef} className={className}>
-        <ol className={['content-colors'].join(' ')}>
+        <ol className="content-colors">
           <Swipeable
             {...this.swipeConfig}
             className="color-swatches-mobile-view"
@@ -138,12 +142,20 @@ class ProductColorChipWrapper extends React.Component {
         </ol>
 
         {isDisplayNext && (
-          <button
-            data-locator="color_swatch_arrow"
-            className="button-next"
+          <BodyCopy
+            component="div"
             title="Next"
+            role="button"
             onClick={this.handleNextClick}
-          />
+            className="arrowRightWrapper"
+          >
+            <img
+              src={arrowLeft}
+              data-locator="color_swatch_arrow"
+              alt="right-arrow"
+              className="arrowImg"
+            />
+          </BodyCopy>
         )}
       </div>
     );

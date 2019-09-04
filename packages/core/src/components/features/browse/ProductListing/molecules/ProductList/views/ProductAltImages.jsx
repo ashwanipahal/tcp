@@ -28,7 +28,6 @@ class ProductAltImages extends React.PureComponent {
     isMobile: PropTypes.bool.isRequired,
     loadedProductCount: PropTypes.number.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
-    keepAlive: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
   };
 
@@ -65,7 +64,7 @@ class ProductAltImages extends React.PureComponent {
     }
   }
 
-  onVideoError = () => this.setState({ videoError: true });
+  // onVideoError = () => this.setState({ videoError: true });
 
   productLink = (loadedProductCount, pdpUrl, event) => {
     event.preventDefault();
@@ -118,6 +117,7 @@ class ProductAltImages extends React.PureComponent {
     if (onImageChange) onImageChange(idx);
   }
 
+  // For now we are not showing videos on Product Tile
   renderVideoContent() {
     const {
       isMobile,
@@ -157,7 +157,7 @@ class ProductAltImages extends React.PureComponent {
             playsInline
             width="100%"
             height={videoHeight}
-            onError={this.onVideoError}
+            // onError={this.onVideoError}
           />
         </a>
       </figure>
@@ -191,7 +191,7 @@ class ProductAltImages extends React.PureComponent {
                 playsInline
                 width="100%"
                 height={videoHeight}
-                onError={this.onVideoError}
+                // onError={this.onVideoError}
               />
             </React.Fragment>
           ) : (
@@ -219,20 +219,17 @@ class ProductAltImages extends React.PureComponent {
 
   renderImageContent() {
     const {
-      isMobile,
       imageUrls,
       pdpUrl,
       productName,
       loadedProductCount,
       analyticsData,
-      isPLPredesign,
       className,
     } = this.props;
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
-    // const productImageCss = cssClassName('product-image-content', ' img-item');
 
-    return isMobile || imageUrls.length < 2 ? (
+    return imageUrls.length < 2 ? (
       <figure
         className="product-image-container"
         itemScope
@@ -247,17 +244,7 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
         >
-          <img
-            // className={productImageCss}
-            src={imageUrls[0]}
-            srcSet={
-              isPLPredesign
-                ? `${imageUrls[0]}?w=200 1x, ${imageUrls[0]}?w=300 1.5x, ${imageUrls[0]}?w=400 2x`
-                : ''
-            }
-            alt={productName}
-            itemProp="contentUrl"
-          />
+          <img src={imageUrls[0]} alt={productName} itemProp="contentUrl" />
         </Anchor>
       </figure>
     ) : (
@@ -287,16 +274,8 @@ class ProductAltImages extends React.PureComponent {
           inheritedStyles={imageAnchorInheritedStyles}
         >
           <img
-            //  className={productImageCss}
             src={imageUrls[currentIndex]}
             data-locator={getLocator('global_productimg_imagelink')}
-            srcSet={
-              isPLPredesign
-                ? `${imageUrls[currentIndex]}?w=200 1x, ${imageUrls[currentIndex]}?w=300 1.5x, ${
-                    imageUrls[currentIndex]
-                  }?w=400 2x`
-                : ''
-            }
             alt={productName}
             itemProp="contentUrl"
           />
@@ -313,12 +292,9 @@ class ProductAltImages extends React.PureComponent {
     );
   }
 
+  // We are rendering only Images content
   render() {
-    const { videoUrl, isShowVideoOnPlp, keepAlive } = this.props;
-    const { videoError } = this.state;
-    return isShowVideoOnPlp && videoUrl && !videoError && !keepAlive
-      ? this.renderVideoContent()
-      : this.renderImageContent();
+    return this.renderImageContent();
   }
 }
 
