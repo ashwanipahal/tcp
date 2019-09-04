@@ -26,7 +26,7 @@ export default css`
     text-align: center;
 
     .style1 {
-      color: #6a6a6a;
+      color: ${props => props.theme.colorPalette.gray[800]};
     }
     .style2 {
       color: ${props => props.theme.colorPalette.primary.main};
