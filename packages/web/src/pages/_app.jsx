@@ -22,6 +22,7 @@ import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
+import ServerOnly from '../components/common/atoms/ServerOnly';
 import Perf from '../components/common/atoms/Perf';
 
 // constants
@@ -44,11 +45,9 @@ class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
-    const { isServer } = ctx;
 
     return {
       pageProps,
-      isServer,
     };
   }
 
@@ -159,7 +158,7 @@ class TCPWebApp extends App {
   };
 
   render() {
-    const { Component, pageProps, store, router, isServer } = this.props;
+    const { Component, pageProps, store, router } = this.props;
     let isNonCheckoutPage = true;
     const { PICKUP, SHIPPING, BILLING, REVIEW } = CHECKOUT_STAGES;
     const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW];
@@ -170,6 +169,9 @@ class TCPWebApp extends App {
     }
     return (
       <Container>
+        <ServerOnly>
+          <Perf.mark name="App render start" />
+        </ServerOnly>
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
@@ -188,7 +190,12 @@ class TCPWebApp extends App {
         </ThemeProvider>
         {/* Inject analytics script if enabled */}
         {process.env.ANALYTICS && <AnalyticsScript />}
-        {isServer && <Perf.mark value="App render" />}
+        {/* Render performance marker scripts if enabled */}
+        {process.env.PERF_TIMING && (
+          <ServerOnly>
+            <Perf.measure name="App render" />
+          </ServerOnly>
+        )}
       </Container>
     );
   }

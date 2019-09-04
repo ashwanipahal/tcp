@@ -13,6 +13,7 @@ module.exports = withTM({
   env: {
     ANALYTICS: process.env.RWD_WEB_ANALYTICS,
     ANALYTICS_SCRIPT_URL: process.env.RWD_WEB_ANALYTICS_SCRIPT_URL,
+    PERF_TIMING: process.env.RWD_WEB_PERF_TIMING,
   },
   webpack(config, { isServer }) {
     const newConfig = config;
