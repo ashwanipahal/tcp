@@ -30,7 +30,7 @@ export class MyRewardsContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      detailStatus: false,
+      selectedCoupon: null,
     };
   }
 
@@ -39,19 +39,20 @@ export class MyRewardsContainer extends PureComponent {
     fetchCoupons();
   }
 
-
+  /**
+   * This function use for view coupon details for popup modal
+   * can be passed in the component.
+   * @param coupon - this is coupon data used for show coupon details
+   */
   onViewCouponDetails = coupon => {
     this.setState({
-      detailStatus: true,
       selectedCoupon: coupon,
     });
   };
 
-
-
   render() {
     const { coupons, rewardCoupons, couponsLabels, view, ...otherProps } = this.props;
-    const { detailStatus, selectedCoupon } = this.state;
+    const { selectedCoupon } = this.state;
 
     return (
       <>
@@ -61,17 +62,17 @@ export class MyRewardsContainer extends PureComponent {
           onViewCouponDetails={this.onViewCouponDetails}
           {...otherProps}
         />
-        { selectedCoupon && (
-        <CouponDetailModal
-          labels={couponsLabels}
-          openState={detailStatus}
-          coupon={selectedCoupon}
-          onRequestClose={() => {
-            this.setState({
-              detailStatus: false,
-            });
-          }}
-        />
+        {selectedCoupon && (
+          <CouponDetailModal
+            labels={couponsLabels}
+            openState={selectedCoupon}
+            coupon={selectedCoupon}
+            onRequestClose={() => {
+              this.setState({
+                selectedCoupon: null,
+              });
+            }}
+          />
         )}
       </>
     );

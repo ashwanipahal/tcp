@@ -13,16 +13,13 @@ const CloseButtonStyle = css`
   width: 15px;
   height: 15px;
   &.alignRight {
-    right: 46px;
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      right: 16px;
-    }
+    right: 15px;
   }
   &.alignLeft {
     left: 15px;
   }
   &.alignTop {
-    top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+    top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
 `;
 
