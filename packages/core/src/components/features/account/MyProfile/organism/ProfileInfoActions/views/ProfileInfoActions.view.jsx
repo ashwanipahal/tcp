@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import AboutYouSurveyModal from '@tcp/core/src/components/features/account/MyProfile/molecules/AboutYouSurveyModal';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -28,6 +29,8 @@ export const ProfileInfoActions = ({
   userBirthday,
   userSurvey,
   percentageIncrement,
+  mountSurveyModal,
+  toggleModalState,
 }) => {
   return (
     <MyProfileTile className={className}>
@@ -154,11 +157,21 @@ export const ProfileInfoActions = ({
             activityTitle={`+${percentageIncrement.percentageUserSurvey}%`}
             activityCompletionState={getAboutYourselfState(userSurvey, labels)}
             activityDescription={labels.lbl_profile_aboutYourselfDescription}
-            redirectTo="/account"
+            redirectTo=""
+            redirectAsPath=""
             dataLocatorPrefix="survey"
+            onClick={toggleModalState}
+            noLink
           />
         </Col>
       </Row>
+      <AboutYouSurveyModal
+        openState={mountSurveyModal}
+        labels={labels}
+        toggleModalState={toggleModalState}
+        userSurvey={userSurvey}
+        className={className}
+      />
     </MyProfileTile>
   );
 };
@@ -172,6 +185,8 @@ ProfileInfoActions.propTypes = {
   userBirthday: PropTypes.string,
   userSurvey: PropTypes.shape([]),
   percentageIncrement: PropTypes.shape({}),
+  mountSurveyModal: PropTypes.bool,
+  toggleModalState: PropTypes.func,
 };
 
 ProfileInfoActions.defaultProps = {
@@ -188,6 +203,8 @@ ProfileInfoActions.defaultProps = {
     percentageUserBirthday: '20',
     percentageUserSurvey: '20',
   },
+  mountSurveyModal: false,
+  toggleModalState: () => {},
 };
 
 export default withStyles(ProfileInfoActions, styles);
