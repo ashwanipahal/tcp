@@ -152,7 +152,9 @@
       "**/react-native-easy-toast",
       "**/react-native-easy-toast/**",
       "**/little-loader",
-      "**/little-loader/**"
+      "**/little-loader/**",
+      "**/react-test-renderer",
+      "**/react-test-renderer/**"
     ]
   }
 }
