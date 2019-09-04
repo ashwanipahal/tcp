@@ -2,10 +2,12 @@
 
 exports[`ReactTooltip Component ReactTooltip should render correctly 1`] = `
 <span>
-  <span
+  <button
+    className="tool-tip-button"
     onClick={[Function]}
+    onKeyDown={[Function]}
   >
     <Component />
-  </span>
+  </button>
 </span>
 `;
