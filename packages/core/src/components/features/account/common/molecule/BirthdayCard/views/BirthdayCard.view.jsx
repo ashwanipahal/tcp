@@ -7,6 +7,18 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import constants from '../../../organism/BirthdaySavingsList/BirthdaySavingsList.constants';
 import styles from '../styles/BirthdayCard.style';
 
+/**
+ * This component will render the BirthdayCard based on the view and birthday information
+ * @param {object} props
+ * @param { string } props.className
+ * @param { string } props.name Name of the children
+ * @param { string } props.birthYear year of birth
+ * @param { string } props.birthMonth month of birth
+ * @param { string } props.gender gender of the children
+ * @param { string } props.childId unique Id of the children
+ * @param { Function } props.removeBirthday will handle removal of Birthday Card
+ * @param { string } props.view view of the BirthdayCard, in read mode, remove action wont be available.
+ */
 export const BirthdayCard = ({
   className,
   name,

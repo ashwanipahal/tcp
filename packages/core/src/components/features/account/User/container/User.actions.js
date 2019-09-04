@@ -25,6 +25,11 @@ export const setUserInfo = payload => {
   };
 };
 
+/**
+ * @function setUserPersonalData
+ * @param { object } payload
+ * Action creator for setting user personal data
+ */
 export const setUserPersonalData = payload => {
   return {
     type: CONSTANTS.SET_USER_PERSONAL_DATA,

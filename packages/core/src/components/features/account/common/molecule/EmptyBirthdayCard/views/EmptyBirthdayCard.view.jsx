@@ -5,6 +5,13 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/EmptyBirthdayCard.style';
 
+/**
+ * This component will render Empty Birthday Card
+ * @param {object} props for EmptyBirthdayCard component
+ * @param { string } props.className
+ * @param { string } props.view
+ * @param { object } props.labels
+ */
 export const EmptyBirthdayCard = ({ className, view, labels }) => {
   return (
     <BodyCopy component="div" className={className} textAlign="center">

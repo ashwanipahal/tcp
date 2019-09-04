@@ -6,6 +6,10 @@ import FormPageHeading from '../../common/molecule/FormPageHeading';
 import BirthdaySavingsList from '../../common/organism/BirthdaySavingsList';
 import internalEndpoints from '../../common/internalEndpoints';
 
+/**
+ * This component will render BirthdaySavingsPage component
+ * @param { object } labels
+ */
 export const BirthdaySavings = ({ labels }) => {
   return (
     <>
@@ -24,7 +28,7 @@ export const BirthdaySavings = ({ labels }) => {
       <BodyCopy fontSize="fs14" fontFamily="secondary" className="elem-mb-XXL">
         {labels.lbl_profile_birthday_saving_info}
       </BodyCopy>
-      <BirthdaySavingsList view="edit" />
+      <BirthdaySavingsList view="edit" labels={labels} />
     </>
   );
 };

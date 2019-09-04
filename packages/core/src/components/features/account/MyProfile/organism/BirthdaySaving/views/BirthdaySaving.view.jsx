@@ -24,7 +24,7 @@ const BirthdaySaving = ({ labels }) => {
               large: 12,
             }}
           >
-            <BirthdaySavingsList view="read" />
+            <BirthdaySavingsList view="read" labels={labels} />
           </Col>
         </Row>
       </BodyCopy>

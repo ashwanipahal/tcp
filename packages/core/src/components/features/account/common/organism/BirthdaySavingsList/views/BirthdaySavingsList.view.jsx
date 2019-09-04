@@ -7,10 +7,22 @@ import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
 
-export const getColumnClasses = (isEditMode, i) => {
-  return !isEditMode && i < 2 ? 'elem-mb-LRG' : 'elem-mb-MED';
+/**
+ * @function getColumnClasses
+ * @description This function will return margin classes to be applied on the birthday columns.
+ * As per the design, last row columns should have MED margin
+ * @param {boolean} isEditMode If list is opened in edit view i.e. BirthdaySavings Page
+ * @param {number} index index of the column
+ */
+export const getColumnClasses = (isEditMode, index) => {
+  return !isEditMode && index < 2 ? 'elem-mb-LRG' : 'elem-mb-MED';
 };
 
+/**
+ * @function BirthdaySavingsList
+ * @description This component will render the BirthdaySavings Card list based on the view provided.
+ * In case of view="edit", Add new Birthday Card will be rendered otherwise Empty space will be present.
+ */
 export const BirthdaySavingsList = ({ labels, childrenBirthdays, view }) => {
   if (childrenBirthdays && childrenBirthdays.size > 0) {
     const birthdays = childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS);

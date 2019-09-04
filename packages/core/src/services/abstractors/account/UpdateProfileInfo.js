@@ -62,6 +62,10 @@ export const UpdateProfileInfo = args => {
   });
 };
 
+/**
+ * @function getChildren
+ * @summary this function will make an API call to fetch children's birthday information
+ */
 export const getChildren = () => {
   const payload = {
     webService: endpoints.getChildren,

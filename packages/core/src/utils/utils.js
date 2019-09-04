@@ -211,6 +211,13 @@ export const formatAddress = address => ({
   phone1: address.phoneNumber,
 });
 
+/**
+ * @function calculateAge
+ * @param { string } month
+ * @param { string } year
+ * This function will calculate the age based on the month and year of birth and will add 'mo' or 'yo' based on age in months or years
+ *
+ */
 export const calculateAge = (month, year) => {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
