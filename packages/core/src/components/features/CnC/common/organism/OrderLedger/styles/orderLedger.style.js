@@ -21,6 +21,16 @@ const LedgerStyle = css`
     left: 5px;
     top: 2px;
   }
+  .tooltip-bubble {
+    left: 100%;
+    ::after {
+      right: 42%;
+    }
+
+    ::before {
+      right: 39%;
+    }
+  }
 `;
 
 export default LedgerStyle;
