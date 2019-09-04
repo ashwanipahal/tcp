@@ -87,7 +87,7 @@ const ProductList = props => {
               siblingProperties={siblingProperties}
               isEvenElement={isEvenElement}
               gridIndex={gridIndex}
-              isPLPredesign={false}
+              isPLPredesign // isPLPredesign should always be true
               isKeepAliveKillSwitch={false}
               labels={labels}
             />
