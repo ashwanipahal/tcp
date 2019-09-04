@@ -38,6 +38,7 @@ export const FONT_SIZES = {
   fs52: '52px',
   fs48: '48px',
   fs42: '42px',
+  fs40: '40px',
   fs38: '38px',
   fs36: '36px',
   fs32: '32px',
