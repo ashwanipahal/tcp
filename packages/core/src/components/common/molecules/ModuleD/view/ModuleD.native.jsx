@@ -7,6 +7,7 @@ import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 import LinkText from '../../LinkText';
+import config from '../config';
 
 type Props = {
   headerText: Object[],
@@ -44,6 +45,7 @@ const renderItem = (item, navigation) => {
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
+          imgConfigs={config.IMG_DATA_2.imgConfig[0]}
         />
       </Anchor>
 
