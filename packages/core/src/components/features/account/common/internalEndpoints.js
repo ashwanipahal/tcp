@@ -17,6 +17,10 @@ const internalEndpoints = {
     link: '/account?id=profile&subSection=edit-personal-info',
     path: profilePath,
   },
+  editAboutYouInfoPage: {
+    link: '/account?id=profile&subSection=edit-aboutyou-info',
+    path: profilePath,
+  },
   profilePage: {
     link: '/account?id=profile',
     path: profilePath,

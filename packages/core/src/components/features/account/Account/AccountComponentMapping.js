@@ -10,6 +10,7 @@ import Wallet from '../Wallet/container/Wallet.container';
 import MyProfile from '../MyProfile/container/MyProfile.container';
 import ChangePassword from '../ChangePassword';
 import AddEditPersonalInformationContainer from '../AddEditPersonalInformation';
+import AboutYouInformationContainer from '../AboutYouInformation';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -26,6 +27,7 @@ const AccountComponentMapping = {
   'change-password': ChangePassword,
   'edit-personal-info': AddEditPersonalInformationContainer,
   'edit-mailing-address': MailingInformationContainer,
+  'edit-aboutyou-info': AboutYouInformationContainer,
 };
 
 export default AccountComponentMapping;
