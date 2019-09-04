@@ -9,6 +9,9 @@ describe('AddedToBagActions native component', () => {
         viewBag: '',
         checkout: '',
       },
+      modalInfo: {
+        showModal: true,
+      },
     };
     const component = shallow(<AddedToBagActions {...props} />);
     expect(component).toMatchSnapshot();

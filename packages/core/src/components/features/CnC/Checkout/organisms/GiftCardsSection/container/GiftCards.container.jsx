@@ -5,11 +5,17 @@ import { getGiftCards } from '../../../../../account/Payment/container/Payment.s
 import GiftCard from '../views/GiftCards.view';
 import GiftCardSelector from './GiftCards.selectors';
 import GIFT_CARD_ACTIONS from './GiftCards.action';
+import { setOrderBalanceTotal } from '../../../container/Checkout.action';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   componentWillMount() {
     const { getCardListAction } = this.props;
     getCardListAction();
+  }
+
+  componentDidUpdate() {
+    const { handleSetOrderBalanceTotal, itemOrderGrandTotal, itemsGiftCardTotal } = this.props;
+    handleSetOrderBalanceTotal(itemOrderGrandTotal - itemsGiftCardTotal);
   }
 
   applyExistingGiftCardToOrder = giftCard => {
@@ -74,6 +80,9 @@ export const mapDispatchToProps = dispatch => {
     },
     handleRemoveGiftCard: payload => {
       dispatch(GIFT_CARD_ACTIONS.removeGiftCard(payload));
+    },
+    handleSetOrderBalanceTotal: payload => {
+      dispatch(setOrderBalanceTotal(payload));
     },
   };
 };

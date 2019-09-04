@@ -89,8 +89,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontFamily="secondary"
         fontSize={
           Array [
-            "fs10",
-            "fs10",
+            "fs9",
+            "fs9",
             "fs12",
           ]
         }
@@ -103,9 +103,11 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
         />
       </Styled(BodyCopy)>
-      <div
-        className="divider hide-in-medium-up"
-      />
+      <div>
+        <div
+          className="divider hide-in-medium-up"
+        />
+      </div>
     </Styled(Col)>
     <Styled(Col)
       className="col-md-half-width"
@@ -196,8 +198,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         fontFamily="secondary"
         fontSize={
           Array [
-            "fs10",
-            "fs10",
+            "fs9",
+            "fs9",
             "fs12",
           ]
         }
