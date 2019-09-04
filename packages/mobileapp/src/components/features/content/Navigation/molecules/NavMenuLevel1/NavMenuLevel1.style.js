@@ -20,6 +20,10 @@ export const L1TextView = styled.View`
   flex-direction: column;
   justify-content: center;
   background-color: ${props => props.theme.colorPalette.gray[300]};
+  align-items: center;
+  width: 50%;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export const ContainerList = styled.FlatList`
