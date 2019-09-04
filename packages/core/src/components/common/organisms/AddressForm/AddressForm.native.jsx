@@ -77,12 +77,19 @@ class AddressForm extends React.PureComponent {
       isEdit,
       isMakeDefaultDisabled,
       onCancel,
-      invalid,
       handleSubmit,
       dispatch,
       addressLine1,
+      initialValues,
     } = this.props;
     const { dropDownItem, country } = this.state;
+    const disabledProps = {
+      isChecked: initialValues.primary,
+    };
+    if (isMakeDefaultDisabled) {
+      disabledProps.isChecked = true;
+      disabledProps.disabled = true;
+    }
     return (
       <AddAddressWrapper>
         <Field
@@ -227,8 +234,7 @@ class AddressForm extends React.PureComponent {
             name="primary"
             component={InputCheckbox}
             dataLocator="addnewaddress-city"
-            isChecked={isMakeDefaultDisabled}
-            disabled={isMakeDefaultDisabled}
+            {...disabledProps}
             rightText={addressFormLabels.setDefaultMsg}
           />
         </SetDefaultShippingWrapper>
@@ -238,7 +244,6 @@ class AddressForm extends React.PureComponent {
             fill="BLUE"
             type="submit"
             color="white"
-            disabled={invalid}
             onPress={handleSubmit}
             buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
@@ -279,7 +284,6 @@ AddressForm.propTypes = {
   isMakeDefaultDisabled: PropTypes.bool.isRequired,
   onCancel: PropTypes.func,
   handleSubmit: PropTypes.func,
-  invalid: PropTypes.func,
   initialValues: PropTypes.shape({
     state: PropTypes.string,
     country: PropTypes.string,
@@ -308,7 +312,6 @@ AddressForm.defaultProps = {
   },
   dispatch: () => {},
   onCancel: () => {},
-  invalid: () => {},
   handleSubmit: () => {},
   initialValues: {
     state: '',

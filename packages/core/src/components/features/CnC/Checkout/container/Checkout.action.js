@@ -270,3 +270,16 @@ export const routeToPickupPage = () => {
     type: constants.ROUTE_TO_PICKUP_PAGE,
   };
 };
+
+export const setGiftCardError = payload => {
+  return {
+    type: constants.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
+
+export const resetGiftCardError = () => {
+  return {
+    type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
