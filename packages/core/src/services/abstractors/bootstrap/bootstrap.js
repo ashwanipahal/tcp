@@ -1,14 +1,15 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
-import { getAPIConfig } from '../../../utils';
+import { getAPIConfig, isMobileApp } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
 // import { LABELS, CACHED_KEYS } from '../../../reduxStore/constants';
 import { CACHED_KEYS } from '../../../reduxStore/constants';
-import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
+import { defaultBrand, defaultChannel, defaultCountry, MobileChannel } from '../../api.constants';
 import { setDataInRedis } from '../../../utils/redis.util';
 
 /**
@@ -92,7 +93,8 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }, mo
  * Generate base bootstrap parameters
  */
 const createBootstrapParams = () => {
-  const apiConfig = typeof getAPIConfig === 'function' ? getAPIConfig() : '';
+  const apiConfig = getAPIConfig();
+  const channelName = isMobileApp() ? MobileChannel : defaultChannel;
   return {
     labels: {
       // TODO - GLOBAL-LABEL-CHANGE - STEP 1.2 -  Uncomment this line for only global data
@@ -100,7 +102,7 @@ const createBootstrapParams = () => {
       // category: LABELS.global,
     },
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
-    channel: defaultChannel,
+    channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
   };
 };
@@ -112,16 +114,15 @@ const createBootstrapParams = () => {
 const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   const cachedKeyData = cachedData[key];
   if (cachedKeyData) {
-    console.log('CACHE HIT');
+    logger.info('CACHE HIT');
     try {
-      console.log(JSON.parse(cachedKeyData), typeof JSON.parse(cachedKeyData));
       return JSON.parse(cachedKeyData);
-    } catch(err) {
-      console.log(err);
+    } catch (err) {
+      logger.error(err);
     }
   }
 
-  console.log('CACHE MISS');
+  logger.info('CACHE MISS');
   Object.keys(CACHED_KEYS).forEach(async item => {
     if (CACHED_KEYS[item] === key) {
       const globalRedisClient = global.redisClient;
@@ -159,14 +160,24 @@ const bootstrap = async (pages, modules, cachedData) => {
 
     const fetchCachedDataParams = { bootstrapData, cachedData };
     response.modules =
-      bootstrapData.homepage && (await layoutAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'homepage' })));
-    response.header = headerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'header' }));
-    response.footer = bootstrapData.footer && footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
-    response.labels = labelsAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' }));
-    response.navigation = navigationAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' }));
+      bootstrapData.homepage &&
+      (await layoutAbstractor.processData(
+        retrieveCachedData({ ...fetchCachedDataParams, key: 'homepage' })
+      ));
+    response.header = headerAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
+    );
+    response.footer =
+      bootstrapData.footer &&
+      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
+    response.labels = labelsAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
+    );
+    response.navigation = navigationAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
+    );
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
+    logger.error(error);
   }
   return response;
 };

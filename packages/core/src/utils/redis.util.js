@@ -1,3 +1,5 @@
+const logger = require('@tcp/core/src/utils/loggerInstance');
+
 const DEFAULT_CACHE_TIME = 7200;
 const DEFAULT_CACHE_EXP_MODIFIER = 'EX';
 
@@ -9,7 +11,12 @@ const getDataFromRedis = CACHE_IDENTIFIER => {
   return redisClient.get(CACHE_IDENTIFIER);
 };
 
-const setDataInRedis = ({ data, CACHE_IDENTIFIER, CACHE_EXP_MODIFIER = DEFAULT_CACHE_EXP_MODIFIER, CACHE_EXP_TIME = DEFAULT_CACHE_TIME}) => {
+const setDataInRedis = ({
+  data,
+  CACHE_IDENTIFIER,
+  CACHE_EXP_MODIFIER = DEFAULT_CACHE_EXP_MODIFIER,
+  CACHE_EXP_TIME = DEFAULT_CACHE_TIME,
+}) => {
   const { redisClient } = global;
   if (noRedisClient(redisClient)) return null;
   const cacheExpiryTime = process.env.CACHE_EXP_TIME || CACHE_EXP_TIME;
@@ -17,17 +24,17 @@ const setDataInRedis = ({ data, CACHE_IDENTIFIER, CACHE_EXP_MODIFIER = DEFAULT_C
     CACHE_IDENTIFIER,
     JSON.stringify(data),
     CACHE_EXP_MODIFIER,
-    cacheExpiryTime,
+    cacheExpiryTime
   );
 };
 
 const redisConnectCallback = () => {
-  console.log('Successfully connected to Redis(Elasticache)');
+  logger.info('Successfully connected to Redis(Elasticache)');
   // TODO - Raygun Success handling here
 };
 
 const redisErrorCallback = err => {
-  console.error('Redis client NOT connected', err);
+  logger.info('Redis client NOT connected', err);
   global.redisClient.quit();
   // TODO - Raygun Error handling here
 };
@@ -36,7 +43,7 @@ const connectRedis = config => {
   // NOTE: This is a server side file only.
   // Incase redis needs to be implemented in mobile app, then a common object needs to be defined and used
   try {
-    console.log(`Redis(Elasticache) Endpoint: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
+    logger.info(`Redis(Elasticache) Endpoint: ${config.REDIS_HOST}:${config.REDIS_PORT}`);
     global.redisClient = config.REDIS_CLIENT.createClient(config.REDIS_PORT, config.REDIS_HOST);
 
     global.redisClient.on('error', err => {
@@ -47,7 +54,7 @@ const connectRedis = config => {
       redisConnectCallback();
     });
   } catch (e) {
-    console.error('Redis Error - Caught in catch', e);
+    logger.error('Redis Error - Caught in catch', e);
   }
 };
 

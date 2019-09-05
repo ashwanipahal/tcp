@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { awsAppSync as config } from '../../../config';
 import ModuleDMock from '../../../abstractors/common/moduleD/mock';
 
@@ -59,8 +60,7 @@ class AwsAppSyncClientMock {
   }
 
   errorHandler(e) {
-    // eslint-disable-next-line no-console
-    console.log(this, e);
+    logger.error(this, e);
   }
 }
 

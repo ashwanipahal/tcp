@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { List } from 'immutable';
 import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
@@ -52,9 +53,11 @@ export const getIgnoreGutter = (isEditMode, index) => {
  * In case of view="edit", Add new Birthday Card will be rendered otherwise Empty space will be present.
  */
 export const BirthdaySavingsList = ({ labels, childrenBirthdays, view }) => {
-  if (childrenBirthdays && childrenBirthdays.size > 0) {
-    const birthdays = childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS);
-    const isEditMode = view === 'edit';
+  const isEditMode = view === 'edit';
+  if (isEditMode || (childrenBirthdays && childrenBirthdays.size > 0)) {
+    const birthdays = childrenBirthdays
+      ? childrenBirthdays.setSize(constants.MAX_BIRTHDAY_CARDS)
+      : List().setSize(constants.MAX_BIRTHDAY_CARDS);
     return (
       <Row fullBleed>
         {birthdays.map((birthday, index) => {
@@ -84,7 +87,7 @@ export const BirthdaySavingsList = ({ labels, childrenBirthdays, view }) => {
     );
   }
   return (
-    <BodyCopy fontSize="fs14" fontFamily="secondary">
+    <BodyCopy fontSize="fs14" fontFamily="secondary" data-locator="pi-addbirthdayinfo">
       {labels.lbl_profile_birthday_saving_info}
     </BodyCopy>
   );

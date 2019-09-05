@@ -2,6 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform } from 'react-native';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
 
@@ -304,8 +305,7 @@ export const resetNavigationStack = navigation => {
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
-  // eslint-disable-next-line no-console
-  console.log(
+  logger.info(
     'unboxKey',
     `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
       envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]

@@ -1,4 +1,5 @@
 import { call, put, putResolve, takeLatest } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
 import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
 import {
@@ -40,11 +41,11 @@ function* bootstrap(params) {
   const cachedData = {};
   let modulesList = modules;
 
-  Object.keys(CACHED_KEYS).forEach(async (item) => {
+  Object.keys(CACHED_KEYS).forEach(async item => {
     const globalRedisClient = global.redisClient;
     if (globalRedisClient && globalRedisClient.connected) {
       const cachedLabels = await getDataFromRedis(item);
-      if(cachedLabels) {
+      if (cachedLabels) {
         modulesList = modules && modules.filter(key => key !== 'labels');
         cachedData.labels = cachedLabels;
       }
@@ -73,8 +74,7 @@ function* bootstrap(params) {
     const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
     yield put(loadXappConfigData(xappConfig));
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log(err);
+    logger.error(err);
   }
 }
 

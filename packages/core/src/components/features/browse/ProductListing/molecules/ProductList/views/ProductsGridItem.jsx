@@ -16,7 +16,6 @@ import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/produ
 
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProductsGridItem.style';
-
 import {
   getPromotionalMessage,
   // validateBossEligibility,
@@ -171,36 +170,27 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { currencySymbol, isPLPredesign } = this.props;
+    const { currencySymbol } = this.props;
     return (
-      !isPLPredesign && (
-        <ProductPricesSection
-          currencySymbol={currencySymbol || '$'}
-          listPrice={listPriceForColor}
-          offerPrice={offerPriceForColor}
-          noMerchantBadge={badge3}
-          merchantTag={isShowBadges ? badge3 : null}
-          hidePrefixListPrice
-        />
-      )
+      <ProductPricesSection
+        currencySymbol={currencySymbol || '$'}
+        listPrice={listPriceForColor}
+        offerPrice={offerPriceForColor}
+        noMerchantBadge={badge3}
+        merchantTag={isShowBadges ? badge3 : null}
+        hidePrefixListPrice
+      />
     );
   };
 
   /* function to return promotional message component */
   getPromotionalMessageComponent = (promotionalMessage, promotionalPLCCMessage) => {
-    const {
-      isCanada,
-      isPlcc,
-      isInternationalShipping,
-
-      isPLPredesign,
-    } = this.props;
+    const { isCanada, isPlcc, isInternationalShipping } = this.props;
     return (
-      !isPLPredesign &&
       !isCanada &&
       !isInternationalShipping && (
         <PromotionalMessage
-          message={getPromotionalMessage(isPlcc, {
+          text={getPromotionalMessage(isPlcc, {
             promotionalMessage,
             promotionalPLCCMessage,
           })}
@@ -550,7 +540,7 @@ ProductsGridItem.defaultProps = {
   onQuickBopisOpenClick: () => {},
   onAddItemToFavorites: () => {},
   isInternationalShipping: false,
-  isPLPredesign: false,
+  isPLPredesign: true,
   siblingProperties: false,
   isShowVideoOnPlp: false,
   isMatchingFamily: false,
