@@ -25,10 +25,11 @@ export default css`
   }
   .subHeaderTextLogin {
     display: flex;
-    margin: 6px -20px 1px 0px;
+    margin: 6px -36px 1px 0px;
   }
   .subHeaderTextIcon {
     width: auto;
+    margin-right: 16px;
   }
   .pointsRewards {
     color: ${props => props.theme.colorPalette.orange['800']};
