@@ -24,7 +24,7 @@ import {
   HeaderView,
   PromoRibbonWrapper,
 } from '../ModuleA.style.native';
-import config from '../../ModuleN/ModuleN.config';
+import config from '../ModuleA.config';
 
 /**
  * Module height and width.
@@ -100,6 +100,9 @@ const renderView = (item, navigation, position) => {
         width={MODULE_WIDTH}
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
+        crop={image.crop_m}
+        imageConfigs={config.IMG_DATA.crops[0]}
+        alt={image.alt}
       />
       <HeaderWrapper>
         <HeaderComponent>

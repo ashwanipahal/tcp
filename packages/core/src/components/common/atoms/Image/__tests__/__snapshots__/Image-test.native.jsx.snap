@@ -13,7 +13,7 @@ exports[`ImageCompVanilla should render correctly 1`] = `
   accessibilityRole="image"
   source={
     Object {
-      "uri": "/upload//",
+      "uri": "",
     }
   }
 />

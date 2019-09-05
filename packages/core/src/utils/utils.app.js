@@ -233,7 +233,10 @@ export const cropImageUrl = (url, crop, imgConfigsVal) => {
   if (urlPath && crop) {
     return `${imgPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
   }
-  return `${imgPath}/upload/${imgConfigsVal}/${urlData.replace(/^\//, '')}`;
+  if (imgConfigsVal) {
+    return `${imgPath}/upload/${imgConfigsVal}/${urlData.replace(/^\//, '')}`;
+  }
+  return url;
 };
 
 /**
