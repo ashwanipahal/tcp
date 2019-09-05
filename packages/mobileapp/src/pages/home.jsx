@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation';
 import ProductListingPageContainer from '@tcp/core/src/components/features/browse/ProductListingPage';
 import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
+import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -19,6 +20,7 @@ const HomeStack = createStackNavigator(
     ProductListingPageContainer,
     BagPage,
     LoginPageContainer,
+    GetCandidGallery,
   },
   {
     defaultNavigationOptions: {

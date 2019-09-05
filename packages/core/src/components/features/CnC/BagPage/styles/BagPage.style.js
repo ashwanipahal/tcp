@@ -7,7 +7,9 @@ const styles = css`
     background: #fff;
   }
   .order-summary {
-    margin: 16px 0;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 16px 0;
+    }
   }
 
   .checkout-button {

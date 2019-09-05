@@ -90,6 +90,7 @@ class LoginSection extends React.PureComponent<Props> {
                 labels={labels}
                 className="elem-mb-LRG"
                 isCanada={this.isCanada}
+                showForgotPasswordForm={this.showForgotPasswordForm}
               />
               <LoginForm
                 onSubmit={onSubmit}

@@ -103,7 +103,7 @@ export class AddressView extends React.PureComponent<Props> {
             </Button>
           </Col>
         </Row>
-        {showUpdatedNotification !== null && (
+        {showUpdatedNotification && (
           <Notification
             status={showUpdatedNotification}
             colSize={{ large: 12, medium: 8, small: 6 }}

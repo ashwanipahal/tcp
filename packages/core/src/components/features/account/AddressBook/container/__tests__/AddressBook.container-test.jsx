@@ -67,13 +67,6 @@ describe('AddressList container', () => {
       expect(dispatch.mock.calls).toHaveLength(1);
     });
 
-    it('should return an action getUserInfo which will call dispatch function on execution', () => {
-      const dispatch = jest.fn();
-      const dispatchProps = mapDispatchToProps(dispatch);
-      dispatchProps.getUserInfoAction();
-      expect(dispatch.mock.calls).toHaveLength(1);
-    });
-
     it('should return an action clearAddressBookNotification which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
