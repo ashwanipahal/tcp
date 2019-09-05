@@ -1,6 +1,6 @@
 const validatorDefaultMessages = {
   genericError: 'Please enter a valid value',
-  required: 'lbl_err_req',
+  required: 'This field is required',
 };
 
 export default validatorDefaultMessages;

@@ -34,6 +34,7 @@ const getHeadingStyle = props => {
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
   align-self: ${'center'};
+  padding-bottom: ${props.theme.spacing.ELEM_SPACING.XS};
   `;
 };
 
@@ -82,6 +83,12 @@ const FavtSubHeadingStyle = () => {
   `;
 };
 
+const ResetPassword = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: ${'center'};
+`;
+
 const FavtSubHeading = styled.Text`
   ${FavtSubHeadingStyle}
 `;
@@ -112,4 +119,5 @@ export {
   ImageWrapper,
   FavtHeading,
   FavtSubHeading,
+  ResetPassword,
 };

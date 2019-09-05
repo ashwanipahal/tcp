@@ -10,16 +10,16 @@ const MyAccountNavLinkStyles = css`
       ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   }
   .nav-link-wrapper {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0 0;
   }
 
   .nav-sub-section {
     padding-left: 0;
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     border: none;
     li {
-      padding-bottom: 0;
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0
+        ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 `;

@@ -16,6 +16,7 @@
     "apollo-client": "^2.6.2",
     "aws-appsync": "^1.8.0",
     "aws-appsync-react": "^1.2.8",
+    "bunyan": "^1.8.12",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",
     "immutable": "^4.0.0-rc.12",
@@ -154,7 +155,9 @@
       "**/little-loader",
       "**/little-loader/**",
       "**/react-test-renderer",
-      "**/react-test-renderer/**"
+      "**/react-test-renderer/**",
+      "**/bunyan",
+      "**/bunyan/**"
     ]
   }
 }

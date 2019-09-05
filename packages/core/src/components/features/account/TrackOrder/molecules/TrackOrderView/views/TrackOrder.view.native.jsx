@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Notification from '../../../../../../common/molecules/Notification';
@@ -40,23 +41,15 @@ const getGenericErrorMessage = labels => (
   </GenericErrorView>
 );
 
-// @flow
-type Props = {
-  labels: object,
-  errorMessage: string,
-  onSubmit: Function,
-  showNotification: string,
-  onChangeForm: Function,
-  onRequestClose: Function,
-};
 export const TrackOrderView = ({
   labels,
   errorMessage,
   onSubmit,
   showNotification,
   onChangeForm,
-  onRequestClose,
-}: Props) => {
+  handleToggle,
+  setModalMountState,
+}) => {
   return (
     <TrackOrderViewNative>
       <TrackOrderTopSection labels={labels} />
@@ -70,9 +63,25 @@ export const TrackOrderView = ({
         </Notification>
       ) : null}
       <TrackOrderForm labels={labels} handleSubmit={onSubmit} onChangeForm={onChangeForm} />
-      <TrackOrderBottomSection labels={labels} toggleModal={onRequestClose} />
+      <TrackOrderBottomSection
+        labels={labels}
+        toggleModal={handleToggle}
+        setModalMountState={setModalMountState}
+      />
     </TrackOrderViewNative>
   );
+};
+
+TrackOrderView.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
 };
 
 export default TrackOrderView;

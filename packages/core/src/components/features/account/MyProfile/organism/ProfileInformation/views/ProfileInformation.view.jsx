@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { fromJS } from 'immutable';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -45,6 +46,7 @@ class ProfileInformation extends React.PureComponent {
       percentageIncrement,
       defaultStore,
       successMessage,
+      childrenBirthdays,
       ...otherProps
     } = this.props;
 
@@ -160,7 +162,7 @@ class ProfileInformation extends React.PureComponent {
             }}
             className="profileInfoCol elem-mb-XL"
           >
-            <BirthdaySaving labels={labels} />
+            <BirthdaySaving labels={labels} childrenBirthdays={childrenBirthdays} />
           </Col>
         </Row>
         <Row fullBleed className="elem-pb-MED">
@@ -213,6 +215,7 @@ ProfileInformation.propTypes = {
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
   successMessage: PropTypes.string,
+  childrenBirthdays: PropTypes.shape({}),
 };
 
 ProfileInformation.defaultProps = {
@@ -231,6 +234,7 @@ ProfileInformation.defaultProps = {
   percentageIncrement: {},
   defaultStore: '',
   successMessage: '',
+  childrenBirthdays: fromJS([]),
 };
 
 export default withStyles(ProfileInformation, styles);

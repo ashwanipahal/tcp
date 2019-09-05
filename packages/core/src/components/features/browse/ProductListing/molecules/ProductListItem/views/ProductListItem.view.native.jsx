@@ -25,6 +25,7 @@ import {
   PromotionalMessagePostfix,
   OfferPriceAndFavoriteIconContainer,
 } from '../styles/ProductListItem.style.native';
+import { getFormattedLoyaltyText } from '../../ProductList/utils/productsCommonUtils';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
@@ -39,15 +40,6 @@ const onAddToBagHandler = (onAddToBag, data) => {
   if (onAddToBag) {
     onAddToBag(data);
   }
-};
-
-// to get loyalty text in desired format
-const getFormatedText = text => {
-  return text
-    .replace(/<[^>]*>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .split('on');
 };
 
 const ListItem = props => {
@@ -201,9 +193,11 @@ const RenderPromotionalMessage = ({ text, isPlcc }) => {
         accessibilityLabel={text}
         numberOfLines={2}
       >
-        {text && getFormatedText(text)[0]}
+        {text && getFormattedLoyaltyText(text)[0]}
         {text && (
-          <PromotionalMessagePostfix>{` on${getFormatedText(text)[1]}`}</PromotionalMessagePostfix>
+          <PromotionalMessagePostfix>
+            {` on${getFormattedLoyaltyText(text)[1]}`}
+          </PromotionalMessagePostfix>
         )}
       </PromotionalMessage>
     </PromotionalMessageContainer>
