@@ -48,6 +48,7 @@ class CheckoutPage extends React.PureComponent {
       updateShippingAddressData,
       addNewShippingAddressData,
       billingProps,
+      labels,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -92,6 +93,7 @@ class CheckoutPage extends React.PureComponent {
             updateShippingMethodSelection={updateShippingMethodSelection}
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
+            labels={labels}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -120,6 +122,7 @@ CheckoutPage.propTypes = {
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,

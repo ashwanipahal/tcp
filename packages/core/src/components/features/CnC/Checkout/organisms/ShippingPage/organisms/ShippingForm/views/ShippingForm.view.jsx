@@ -14,6 +14,7 @@ import getStandardConfig from '../../../../../../../../../utils/formValidation/v
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
 import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
+import { getLabelValue } from '../../../../../../../../../utils';
 
 import styles from '../styles/ShippingForm.styles';
 
@@ -27,6 +28,7 @@ class ShippingForm extends React.Component {
       modalType: null,
       modalState: false,
       isEditingMode: false,
+      isEditingMobileMode: false,
     };
     this.isAddressModalEmptied = false;
   }
@@ -57,14 +59,15 @@ class ShippingForm extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { isEditing, modalType, modalState, isEditingMode } = prevState;
+    const { isEditing, modalType, modalState, isEditingMode, isEditingMobileMode } = prevState;
     const { onFileAddressKey, dispatch, userAddresses, isMobile } = nextProps;
     if (
       (isEditing || (modalType === 'edit' && modalState)) &&
       onFileAddressKey &&
       userAddresses &&
       userAddresses.size > 0 &&
-      !isEditingMode
+      !isEditingMode &&
+      !isEditingMobileMode
     ) {
       const address = userAddresses.find(add => add.addressId === onFileAddressKey);
       const isDefaultAddress = address.primary === 'true';
@@ -80,6 +83,7 @@ class ShippingForm extends React.Component {
       if (!isMobile) {
         return { isEditingMode: true };
       }
+      return { isEditingMobileMode: true };
     }
     return null;
   }
@@ -122,15 +126,18 @@ class ShippingForm extends React.Component {
   toggleAddEditModal = ({ type, e }) => {
     if (e) e.preventDefault();
     const { defaultAddressId, dispatch } = this.props;
-    const { modalState } = this.state;
+    const { modalState, isEditingMobileMode } = this.state;
     this.setState({ modalType: type, modalState: !modalState });
-    if (modalState) {
+    if (modalState && type === 'add') {
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
+    }
+    if (isEditingMobileMode) {
+      this.setState({ isEditingMobileMode: !isEditingMobileMode });
     }
   };
 
   renderEmailSignUp = () => {
-    const { emailSignUpLabels, orderHasPickUp, isGuest, isUsSite } = this.props;
+    const { orderHasPickUp, isGuest, isUsSite, labels } = this.props;
     return (
       !orderHasPickUp &&
       isGuest &&
@@ -149,7 +156,7 @@ class ShippingForm extends React.Component {
                 fontFamily="secondary"
                 fontWeight="regular"
               >
-                {emailSignUpLabels.emailSignupHeading}
+                {getLabelValue(labels, 'lbl_pickup_emailSignupHeading', 'pickup', 'checkout')}
               </BodyCopy>
             </Field>
             <div className="email-signup-text">
@@ -159,10 +166,10 @@ class ShippingForm extends React.Component {
                 fontFamily="secondary"
                 fontWeight="regular"
               >
-                {emailSignUpLabels.emailSignupSubHeading}
+                {getLabelValue(labels, 'lbl_pickup_emailSignupSubHeading', 'pickup', 'checkout')}
               </BodyCopy>
               <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                {emailSignUpLabels.emailSignupSubSubHeading}
+                {getLabelValue(labels, 'lbl_pickup_emailSignupSubSubHeading', 'pickup', 'checkout')}
               </BodyCopy>
               <Anchor
                 noUnderline
@@ -173,7 +180,7 @@ class ShippingForm extends React.Component {
                 target="_blank"
                 dataLocator="shipping-email-signUp-contact-anchor"
               >
-                {emailSignUpLabels.emailSignupContact}
+                {getLabelValue(labels, 'lbl_pickup_emailSignupContact', 'pickup', 'checkout')}
               </Anchor>
             </div>
           </div>
@@ -189,7 +196,6 @@ class ShippingForm extends React.Component {
       className,
       dispatch,
       isOrderUpdateChecked,
-      shippingLabels,
       smsSignUpLabels,
       selectedShipmentId,
       addressPhoneNo,
@@ -206,11 +212,14 @@ class ShippingForm extends React.Component {
       isAddNewAddress,
       updateShippingAddress,
       addNewShippingAddress,
+      labels,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
     return (
       <>
-        <CheckoutSectionTitleDisplay title={shippingLabels.header} />
+        <CheckoutSectionTitleDisplay
+          title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
+        />
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"
@@ -220,7 +229,7 @@ class ShippingForm extends React.Component {
             userAddresses && userAddresses.size !== 0 ? 'hide-on-desktop hide-on-tablet' : ''
           }`}
         >
-          {shippingLabels.sectionHeader}
+          {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
         </BodyCopy>
         <form name={formName} className={className} onSubmit={handleSubmit} isEditing={isEditing}>
           {!isGuest && (
@@ -238,6 +247,7 @@ class ShippingForm extends React.Component {
               shippingAddressId={shippingAddressId}
               updateShippingAddress={updateShippingAddress}
               addNewShippingAddress={addNewShippingAddress}
+              labels={labels}
             />
           )}
           {isGuest && (
@@ -279,7 +289,12 @@ class ShippingForm extends React.Component {
                 formName={formName}
                 formSection="shipmentMethods"
                 selectedShipmentId={selectedShipmentId}
-                shipmentHeader={shippingLabels.shipmentHeader}
+                shipmentHeader={getLabelValue(
+                  labels,
+                  'lbl_shipping_shipmentHeader',
+                  'shipping',
+                  'checkout'
+                )}
               />
             </div>
           </FormSection>
@@ -287,8 +302,18 @@ class ShippingForm extends React.Component {
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}
-            nextButtonText={shippingLabels.billingText}
-            backLinkText={shippingLabels.backLinkText}
+            nextButtonText={getLabelValue(
+              labels,
+              'lbl_shipping_billingText',
+              'shipping',
+              'checkout'
+            )}
+            backLinkText={getLabelValue(
+              labels,
+              'lbl_shipping_backLinkText',
+              'shipping',
+              'checkout'
+            )}
             disableNext={isEditing}
           />
         </form>
@@ -303,7 +328,6 @@ ShippingForm.propTypes = {
   className: PropTypes.string,
   dispatch: PropTypes.func.isRequired,
   isOrderUpdateChecked: PropTypes.bool,
-  shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   selectedShipmentId: PropTypes.string,
   addressPhoneNo: PropTypes.number,
@@ -331,6 +355,7 @@ ShippingForm.propTypes = {
   addNewShippingAddress: PropTypes.func.isRequired,
   defaultAddressId: PropTypes.string,
   defaultShipmentId: PropTypes.number,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 ShippingForm.defaultProps = {

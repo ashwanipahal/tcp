@@ -13,6 +13,7 @@ import AddressDropdown from '../../../../../../../account/AddEditCreditCard/mole
 import Address from '../../../../../../../../common/molecules/Address';
 import Button from '../../../../../../../../common/atoms/Button';
 import AddEditShippingAddressModal from '../../../../../molecules/AddEditShippingAddressModal';
+import { getLabelValue } from '../../../../../../../../../utils';
 
 const formName = 'checkoutShipping';
 class RegisteredShippingForm extends React.Component {
@@ -24,7 +25,7 @@ class RegisteredShippingForm extends React.Component {
   }
 
   getAddressOptions = () => {
-    const { userAddresses, shippingAddressId } = this.props;
+    const { userAddresses, shippingAddressId, labels } = this.props;
     let addressOptions = userAddresses.map(address => {
       let defaultId = address.primary === 'true';
       if (shippingAddressId) {
@@ -50,7 +51,7 @@ class RegisteredShippingForm extends React.Component {
           className="add-address"
           onClick={this.toggleAddNewAddressMode}
         >
-          + Add New Address
+          {getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout')}
         </BodyCopy>
       ),
     });
@@ -126,7 +127,7 @@ class RegisteredShippingForm extends React.Component {
   };
 
   renderDefaultAddress = () => {
-    const { onFileAddressKey, userAddresses, isEditing, toggleAddEditModal } = this.props;
+    const { onFileAddressKey, userAddresses, isEditing, toggleAddEditModal, labels } = this.props;
     return (
       <Row fullBleed>
         {onFileAddressKey && !isEditing && (
@@ -149,7 +150,7 @@ class RegisteredShippingForm extends React.Component {
             dataLocator="edit-shipping-address"
             onClick={e => toggleAddEditModal({ type: 'edit', e })}
           >
-            Edit
+            {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
           </Anchor>
         </Col>
       </Row>
@@ -157,7 +158,7 @@ class RegisteredShippingForm extends React.Component {
   };
 
   renderAddressForm = () => {
-    const { userAddresses, shippingLabels, isGuest, isEditing, isAddNewAddress } = this.props;
+    const { userAddresses, isGuest, isEditing, isAddNewAddress, labels } = this.props;
     const showEditLink = !isEditing && !isAddNewAddress;
     return userAddresses && userAddresses.size > 0 ? (
       <>
@@ -188,7 +189,7 @@ class RegisteredShippingForm extends React.Component {
                 data-locator="shipping-details"
                 className="elem-mb-XS"
               >
-                {shippingLabels.sectionHeader}
+                {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
               </BodyCopy>
             </Col>
             {showEditLink && (
@@ -201,7 +202,7 @@ class RegisteredShippingForm extends React.Component {
                   dataLocator="edit-shipping-address"
                   onClick={this.toggleEditingMode}
                 >
-                  Edit
+                  {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
                 </Anchor>
               </Col>
             )}
@@ -222,7 +223,7 @@ class RegisteredShippingForm extends React.Component {
       modalState,
       modalType,
     } = this.props;
-    let defaultShippingDisabled = !isEditing;
+    let defaultShippingDisabled = !isEditing && !(modalState && modalType === 'edit');
     if (isAddNewAddress) {
       if (!isSaveToAddressBookChecked) {
         defaultShippingDisabled = true;
@@ -236,7 +237,7 @@ class RegisteredShippingForm extends React.Component {
   };
 
   renderDefaultOptions = () => {
-    const { isAddNewAddress, userAddresses, isEditing, modalState, modalType } = this.props;
+    const { isAddNewAddress, userAddresses, isEditing, modalState, modalType, labels } = this.props;
     const showSaveToAddressBook =
       isAddNewAddress ||
       (modalState && modalType === 'add') ||
@@ -249,7 +250,7 @@ class RegisteredShippingForm extends React.Component {
           <Col colSize={{ small: 6, medium: 8, large: 12 }} className="elem-mb-LRG">
             <Field showDefaultCheckbox={false} component={InputCheckbox} name="saveToAddressBook">
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                Save to my address book
+                {getLabelValue(labels, 'lbl_shipping_saveToAccount', 'shipping', 'checkout')}
               </BodyCopy>
             </Field>
           </Col>
@@ -267,7 +268,7 @@ class RegisteredShippingForm extends React.Component {
               disabled={defaultShippingDisabled}
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                Set as default shipping address
+                {getLabelValue(labels, 'lbl_shipping_defaultShipping', 'shipping', 'checkout')}
               </BodyCopy>
             </Field>
           </Col>
@@ -293,7 +294,7 @@ class RegisteredShippingForm extends React.Component {
   };
 
   renderActionButtons = () => {
-    const { modalState } = this.props;
+    const { modalState, labels } = this.props;
     return (
       <>
         <Row
@@ -309,7 +310,9 @@ class RegisteredShippingForm extends React.Component {
               onClick={modalState ? this.onSaveBtnClick : this.toggleEditingMode}
               className={modalState ? 'elem-mb-MED' : ''}
             >
-              Cancel
+              {modalState
+                ? getLabelValue(labels, 'lbl_shipping_selectShipAdd', 'shipping', 'checkout')
+                : getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}
             </Button>
           </Col>
           <Col colSize={{ small: 6, medium: 2, large: 3 }}>
@@ -320,7 +323,9 @@ class RegisteredShippingForm extends React.Component {
               data-locator="edit-shipping-save-btn"
               onClick={modalState ? this.toggleEditingMode : this.onSaveBtnClick}
             >
-              Save
+              {modalState
+                ? getLabelValue(labels, 'lbl_shipping_cancelCaps', 'shipping', 'checkout')
+                : getLabelValue(labels, 'lbl_shipping_save', 'shipping', 'checkout')}
             </Button>
           </Col>
         </Row>
@@ -329,12 +334,16 @@ class RegisteredShippingForm extends React.Component {
   };
 
   render() {
-    const { isEditing, className, modalState, modalType, toggleAddEditModal } = this.props;
+    const { isEditing, className, modalState, modalType, toggleAddEditModal, labels } = this.props;
     return (
       <div className={className} isEditing={isEditing}>
-        {this.renderAddressForm()}
-        {this.renderDefaultOptions()}
-        {isEditing && this.renderActionButtons()}
+        {!modalState && (
+          <>
+            {this.renderAddressForm()}
+            {this.renderDefaultOptions()}
+            {isEditing && this.renderActionButtons()}
+          </>
+        )}
         <AddEditShippingAddressModal
           modalState={modalState}
           addressFields={this.renderAddressFields}
@@ -342,6 +351,7 @@ class RegisteredShippingForm extends React.Component {
           defaultOptions={this.renderDefaultOptions}
           toggleAddEditModal={toggleAddEditModal}
           actionButtons={this.renderActionButtons}
+          labels={labels}
         />
       </div>
     );
@@ -351,7 +361,6 @@ class RegisteredShippingForm extends React.Component {
 RegisteredShippingForm.propTypes = {
   addressLabels: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
-  shippingLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   addressPhoneNo: PropTypes.number,
   emailSignUpLabels: PropTypes.shape({}).isRequired,
@@ -373,6 +382,7 @@ RegisteredShippingForm.propTypes = {
   isAddNewAddress: PropTypes.bool,
   toggleAddNewAddress: PropTypes.func.isRequired,
   toggleIsEditing: PropTypes.func.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 RegisteredShippingForm.defaultProps = {

@@ -293,27 +293,6 @@ const getBillingLabels = state => {
   };
 };
 
-const getShippingLabels = state => {
-  const {
-    lbl_shipping_header: header,
-    lbl_shipping_sectionHeader: sectionHeader,
-    lbl_shipping_shipmentHeader: shipmentHeader,
-    lbl_shipping_returnTo: returnTo,
-    lbl_shipping_nextText: nextText,
-    lbl_shipping_backLinkText: backLinkText,
-    lbl_shipping_billingText: billingText,
-  } = state.Labels.checkout && state.Labels.checkout.shipping;
-  return {
-    header,
-    sectionHeader,
-    shipmentHeader,
-    returnTo,
-    nextText,
-    billingText,
-    backLinkText,
-  };
-};
-
 const getSmsSignUpLabels = state => {
   const {
     lbl_smsSignup_smsSignupText: smsSignupText,
@@ -374,6 +353,8 @@ const isPickupAlt = createSelector(
   getAlternateFormFields,
   pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
 );
+
+const getLabels = state => state.Labels;
 
 export const getPickUpContactFormLabels = state => {
   const {
@@ -508,7 +489,6 @@ export default {
   getSendOrderUpdate,
   getAddressFields,
   getAddressPhoneNo,
-  getShippingLabels,
   getSmsSignUpLabels,
   getIsOrderHasPickup,
   getEmailSignUpLabels,
@@ -527,4 +507,5 @@ export default {
   getDefaultShipping,
   getAddEditResponseAddressId,
   getBillingLabels,
+  getLabels,
 };

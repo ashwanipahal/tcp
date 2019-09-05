@@ -2,7 +2,9 @@
 
 exports[`Shipping Form should render correctly 1`] = `
 <Fragment>
-  <Styled(CheckoutSectionTitleDisplay) />
+  <Styled(CheckoutSectionTitleDisplay)
+    title=""
+  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -77,14 +79,17 @@ exports[`Shipping Form should render correctly 1`] = `
           formName="checkoutShipping"
           formSection="shipmentMethods"
           selectedShipmentId={null}
+          shipmentHeader=""
           shipmentMethods={null}
         />
       </div>
     </FormSection>
     <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
+      backLinkText=""
       disableNext={false}
       hideBackLink={false}
+      nextButtonText=""
     />
   </form>
 </Fragment>
@@ -92,7 +97,9 @@ exports[`Shipping Form should render correctly 1`] = `
 
 exports[`Shipping Form should render correctly with logged in user 1`] = `
 <Fragment>
-  <Styled(CheckoutSectionTitleDisplay) />
+  <Styled(CheckoutSectionTitleDisplay)
+    title=""
+  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -327,14 +334,17 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
           formName="checkoutShipping"
           formSection="shipmentMethods"
           selectedShipmentId={null}
+          shipmentHeader=""
           shipmentMethods={null}
         />
       </div>
     </FormSection>
     <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
+      backLinkText=""
       disableNext={false}
       hideBackLink={false}
+      nextButtonText=""
     />
   </form>
 </Fragment>
@@ -342,7 +352,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
 
 exports[`Shipping Form should render correctly with logged in user having addresses 1`] = `
 <Fragment>
-  <Styled(CheckoutSectionTitleDisplay) />
+  <Styled(CheckoutSectionTitleDisplay)
+    title=""
+  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -372,114 +384,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
           dispatch={
             [MockFunction] {
               "calls": Array [
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.firstName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.lastName",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.city",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "test city",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.zipCode",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.state",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine1",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 1 hhhhh",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine2",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 2 mmmmmmmm",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.phoneNumber",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "1234567890",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": true,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
                 Array [
                   Object {
                     "meta": Object {
@@ -642,42 +546,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   "type": "return",
                   "value": undefined,
                 },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
               ],
             }
           }
@@ -889,6 +757,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
           formName="checkoutShipping"
           formSection="shipmentMethods"
           selectedShipmentId={null}
+          shipmentHeader=""
           shipmentMethods={
             Array [
               Object {
@@ -901,8 +770,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
     </FormSection>
     <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
+      backLinkText=""
       disableNext={false}
       hideBackLink={false}
+      nextButtonText=""
     />
   </form>
 </Fragment>
@@ -910,7 +781,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
 
 exports[`Shipping Form should render correctly with logged in user having addresses with isAddressModalEmptied false 1`] = `
 <Fragment>
-  <Styled(CheckoutSectionTitleDisplay) />
+  <Styled(CheckoutSectionTitleDisplay)
+    title=""
+  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -1360,6 +1233,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
           formName="checkoutShipping"
           formSection="shipmentMethods"
           selectedShipmentId={null}
+          shipmentHeader=""
           shipmentMethods={
             Array [
               Object {
@@ -1372,8 +1246,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
     </FormSection>
     <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
+      backLinkText=""
       disableNext={true}
       hideBackLink={false}
+      nextButtonText=""
     />
   </form>
 </Fragment>
@@ -1381,7 +1257,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
 
 exports[`Shipping Form should render correctly with logged in user having addresses with modalType add and state true 1`] = `
 <Fragment>
-  <Styled(CheckoutSectionTitleDisplay) />
+  <Styled(CheckoutSectionTitleDisplay)
+    title=""
+  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -1655,6 +1533,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
           formName="checkoutShipping"
           formSection="shipmentMethods"
           selectedShipmentId={null}
+          shipmentHeader=""
           shipmentMethods={
             Array [
               Object {},
@@ -1665,8 +1544,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
     </FormSection>
     <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
+      backLinkText=""
       disableNext={false}
       hideBackLink={false}
+      nextButtonText=""
     />
   </form>
 </Fragment>

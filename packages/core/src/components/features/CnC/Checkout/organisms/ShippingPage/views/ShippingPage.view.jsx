@@ -11,7 +11,6 @@ export default class ShippingPage extends React.PureComponent {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
     isOrderUpdateChecked: PropTypes.bool,
-    shippingLabels: PropTypes.shape({}).isRequired,
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
     selectedShipmentId: PropTypes.string,
@@ -36,6 +35,7 @@ export default class ShippingPage extends React.PureComponent {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -214,7 +214,6 @@ export default class ShippingPage extends React.PureComponent {
     const {
       addressLabels,
       isOrderUpdateChecked,
-      shippingLabels,
       smsSignUpLabels,
       addressPhoneNumber,
       selectedShipmentId,
@@ -233,6 +232,7 @@ export default class ShippingPage extends React.PureComponent {
       newUserPhoneNo,
       shippingAddressId,
       setAsDefaultShipping,
+      labels,
     } = this.props;
 
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -243,12 +243,11 @@ export default class ShippingPage extends React.PureComponent {
             routeToPickupPage={routeToPickupPage}
             addressLabels={addressLabels}
             isOrderUpdateChecked={isOrderUpdateChecked}
-            shippingLabels={shippingLabels}
             smsSignUpLabels={smsSignUpLabels}
             initialValues={{
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
-              saveToAddressBook: !isGuest && !defaultAddressId,
+              saveToAddressBook: !isGuest && userAddresses && userAddresses.size > 0,
               onFileAddressKey: defaultAddressId,
             }}
             selectedShipmentId={selectedShipmentId}
@@ -275,6 +274,7 @@ export default class ShippingPage extends React.PureComponent {
             updateShippingAddress={this.updateShippingAddress}
             setAsDefaultShipping={setAsDefaultShipping}
             addNewShippingAddress={this.addNewShippingAddress}
+            labels={labels}
           />
         )}
       </>

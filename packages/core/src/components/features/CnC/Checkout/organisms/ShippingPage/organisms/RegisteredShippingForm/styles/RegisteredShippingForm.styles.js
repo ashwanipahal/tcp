@@ -74,6 +74,10 @@ const styles = css`
   .add-address {
     cursor: default;
   }
+
+  .Modal_Heading {
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  }
 `;
 
 export default styles;

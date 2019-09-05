@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../../../../../../common/molecules/Modal';
+import { getLabelValue } from '../../../../../../../utils';
 
 const AddEditShippingAddress = ({
   modalState,
@@ -9,6 +10,7 @@ const AddEditShippingAddress = ({
   modalType,
   toggleAddEditModal,
   actionButtons,
+  labels,
 }) => {
   return (
     <Modal
@@ -18,7 +20,11 @@ const AddEditShippingAddress = ({
       className="TCPModal__Content"
       fixedWidth
       closeIconDataLocator={`close${modalType}modal`}
-      heading={modalType === 'add' ? 'ADD NEW ADDRESS' : 'EDIT ADDRESS'}
+      heading={
+        modalType === 'add'
+          ? getLabelValue(labels, 'lbl_shipping_addHeading', 'shipping', 'checkout')
+          : getLabelValue(labels, 'lbl_shipping_editHeading', 'shipping', 'checkout')
+      }
     >
       {addressFields()}
       {defaultOptions()}
@@ -34,6 +40,7 @@ AddEditShippingAddress.propTypes = {
   modalType: PropTypes.string,
   toggleAddEditModal: PropTypes.func,
   actionButtons: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 AddEditShippingAddress.defaultProps = {

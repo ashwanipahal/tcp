@@ -29,7 +29,6 @@ import { getAddressListState } from '../../../account/AddressBook/container/Addr
 import { getUserPhoneNumber } from '../../../account/User/container/User.selectors';
 
 const {
-  getShippingLabels,
   getSmsSignUpLabels,
   getSelectedShipmentId,
   getAddressFields,
@@ -86,6 +85,7 @@ export class CheckoutContainer extends React.Component<Props> {
       updateShippingMethodSelection,
       updateShippingAddressData,
       addNewShippingAddressData,
+      labels,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(cartOrderItems);
     return (
@@ -121,6 +121,7 @@ export class CheckoutContainer extends React.Component<Props> {
         updateShippingMethodSelection={updateShippingMethodSelection}
         updateShippingAddressData={updateShippingAddressData}
         addNewShippingAddressData={addNewShippingAddressData}
+        labels={labels}
       />
     );
   }
@@ -174,7 +175,6 @@ const mapStateToProps = state => {
     shippingProps: {
       addressLabels: getAddEditAddressLabels(state),
       isOrderUpdateChecked: getShippingSendOrderUpdate(state),
-      shippingLabels: getShippingLabels(state),
       smsSignUpLabels: getSmsSignUpLabels(state),
       selectedShipmentId: getSelectedShipmentId(state), // selected shipment radio button
       address: getAddressFields(state), // address for fields data
@@ -214,6 +214,7 @@ const mapStateToProps = state => {
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
+    labels: selectors.getLabels(state),
   };
 };
 
