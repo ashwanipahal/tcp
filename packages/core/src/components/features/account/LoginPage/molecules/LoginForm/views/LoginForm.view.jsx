@@ -58,6 +58,7 @@ class LoginForm extends React.PureComponent<Props> {
               className="elem-mb-SM"
             />
             <Field
+              labels={labels}
               id="password"
               placeholder={labels.login.lbl_login_password}
               name="password"
