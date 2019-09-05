@@ -7,7 +7,7 @@ import ProductsOperator from './productsRequestFormatter';
 
 function* fetchPlpProducts({ payload }) {
   try {
-    const { url } = payload;
+    const { url, formData, sortBySelected } = payload;
     const location = url
       ? {
           pathname: url,
@@ -16,7 +16,13 @@ function* fetchPlpProducts({ payload }) {
     const state = yield select();
     const instanceProductListing = new Abstractor();
     const operatorInstance = new ProductsOperator();
-    const reqObj = operatorInstance.getProductListingBucketedData(state, location);
+    const reqObj = operatorInstance.getProductListingBucketedData(
+      state,
+      location,
+      sortBySelected,
+      formData,
+      1
+    );
     const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
     yield put(setPlpProducts({ ...plpProducts }));
   } catch (err) {

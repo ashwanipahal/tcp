@@ -9,7 +9,6 @@ export const getIsCartItemsUpdating = state => {
 export const getLabelsMiniBag = state => {
   const {
     global: {
-      addedToBagModal: { lbl_footer_continueShopping: continueShopping },
       minibag: {
         lbl_miniBag_createAccount: createAccount,
         lbl_miniBag_logIn: logIn,
@@ -25,7 +24,8 @@ export const getLabelsMiniBag = state => {
         lbl_miniBag_createOne: createOne,
         lbl_minibag_itemUpdated: itemUpdated,
         lbl_minibag_itemDeleted: itemDeleted,
-      } = {},
+      },
+      addedToBagModal: { lbl_footer_continueShopping: continueShopping },
     },
   } = state.Labels;
   return {

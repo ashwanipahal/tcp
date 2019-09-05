@@ -274,3 +274,23 @@ export const routeToPickupPage = () => {
 };
 
 export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
+export const setGiftCardError = payload => {
+  return {
+    type: constants.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
+
+export const resetGiftCardError = () => {
+  return {
+    type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setOrderBalanceTotal = payload => {
+  return {
+    type: constants.SET_ORDER_TOTAL,
+    payload,
+  };
+};

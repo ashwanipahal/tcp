@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
-const radioBtnStyle = ({ backgroundColor, borderColor }) => {
+const radioBtnStyle = ({ backgroundColor, borderColor, top = '13px' }) => {
   return `position: absolute;
-  top: 13px;
+  top: ${top};
   left: 10px;
   height: 16px;
   width: 16px;
@@ -85,6 +85,14 @@ ${props =>
         borderColor: props.theme.colorPalette.gray[600],
       })}
     }
+    @media ${props => props.theme.mediaQuery.smallOnly}{
+      ${props =>
+        radioBtnStyle({
+          backgroundColor: props.theme.colorPalette.white,
+          borderColor: props.theme.colorPalette.gray[600],
+          top: 0,
+        })}
+      }
   }
 
   .radio-button-checked:after {

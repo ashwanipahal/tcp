@@ -21,7 +21,8 @@ export const BonusPointsReadSection = ({
   usedBonusPointDays,
   isPlcc,
 }) => {
-  if (!availableBonusPointDays) {
+  // availableBonusPointDays can be zero, but for null value, no need to render.
+  if (availableBonusPointDays === null) {
     return null;
   }
   const availableDaysArray = Array(availableBonusPointDays).fill('');
