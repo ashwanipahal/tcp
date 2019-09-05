@@ -119,7 +119,7 @@ export default function CheckoutReducer(state = initialState, action) {
     case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
       return checkout.setIn(['options', 'giftWrapOptions'], action.giftWrapOptions);
     case 'CHECKOUT_VALUES_SET_BILLING':
-      return checkout.setIn(['options', 'billing'], action.billing);
+      return checkout.setIn(['values', 'billing'], action.billing);
     // case 'CHECKOUT_VALUES_SET_SHIPPING_METHOD':
     //   return orderValues.setIn(['shipping', 'method'], action.method);
     // case 'CHECKOUT_VALUES_SET_GIFT_WRAP':

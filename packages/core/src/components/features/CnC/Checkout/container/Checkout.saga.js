@@ -12,9 +12,14 @@ import {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  addPaymentToOrder,
+  updatePaymentOnOrder,
 } from '../../../../../services/abstractors/CnC/index';
+import { updateAddress } from '../../../../../services/abstractors/account';
+
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
+import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import utility from '../util/utility';
 import {
   getSetPickupValuesActn,
@@ -28,6 +33,7 @@ import {
   setSmsNumberForUpdates,
   emailSignupStatus,
   getSetCheckoutStage,
+  getSetIsBillingVisitedActn,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -41,15 +47,50 @@ const {
   getIsOrderHasShipping,
   getShippingDestinationValues,
   getDefaultAddress,
+  getIsPaymentDisabled,
   // isUsSite,
   // getIsOrderHasShipping  ,
   // getShippingDestinationValues,
   // getDefaultAddress,
   // isGuest,
   // getIsMobile,
+  getBillingValues,
 } = selectors;
 
 const { getOrderPointsRecalcFlag, hasPOBox } = utility;
+
+export const CREDIT_CARDS_BIN_RANGES = {
+  'PLACE CARD': [{ from: 578097, to: 578097 }],
+  VISA: [{ from: 400000, to: 499999 }],
+  AMEX: [{ from: 340000, to: 349999 }, { from: 370000, to: 379999 }],
+  MC: [{ from: 510000, to: 559999 }, { from: 222100, to: 272099 }],
+  DISC: [
+    { from: 601100, to: 601109 },
+    { from: 601120, to: 601149 },
+    { from: 601174, to: 601199 },
+    { from: 644000, to: 659999 },
+    { from: 352800, to: 358999 },
+    { from: 300000, to: 309999 },
+    { from: 352000, to: 369999 },
+    { from: 380000, to: 399999 },
+    { from: 940000, to: 959999 },
+    { from: 389000, to: 389999 },
+    { from: 900000, to: 999999 },
+    { from: 622126, to: 622925 },
+    { from: 624000, to: 626999 },
+    { from: 628200, to: 628899 },
+  ],
+};
+
+export const ACCEPTED_CREDIT_CARDS = {
+  'PLACE CARD': 'PLACE CARD',
+  VISA: 'VISA',
+  AMEX: 'AMEX',
+  MC: 'MC',
+  DISC: 'DISC',
+  PAYPAL: 'PAYPAL',
+  VENMO: 'VENMO',
+};
 
 export function* subscribeEmailAddress(emailObj, status) {
   try {
@@ -90,7 +131,7 @@ let oldHasPOB = {};
 
 function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
   // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
-
+  console.log('storeUpdatedCheckoutValues>>', JSON.stringify({ res }));
   const resCheckoutValues = res.payload.res.orderDetails.checkout;
   const actions = [
     resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
@@ -109,7 +150,8 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
     //   ),
     resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing),
   ];
-  yield all([...actions].map(action => put(action)));
+  console.log({ actions });
+  yield all(actions.map(action => put(action)));
   // if (checkoutStoreView.isExpressCheckout(this.store.getState()) && resCheckoutValues.billing && resCheckoutValues.billing.paymentMethod === 'venmo') {
   //   // We have
   //   this.store.dispatch(setVenmoPaymentInProgress(true));
@@ -718,6 +760,12 @@ function* submitShippingSection({ payload: formData }) {
       recalcFlag,
       !(isOrderHasPickup && smsNumberForOrderUpdates)
     );
+    if (!isMobileApp()) {
+      routerPush(
+        `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${constants.CHECKOUT_STAGES.BILLING}`,
+        `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.BILLING}`
+      );
+    }
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
@@ -731,10 +779,196 @@ export function* routeToPickupPage(recalc) {
   yield call(routerPush, href, path, { recalc });
 }
 
+function getCreditCardType(cc) {
+  if (!cc || (cc.cardNumber || '').length === 0) {
+    return null;
+  }
+
+  // look up based on cardNumber
+  for (let type in CREDIT_CARDS_BIN_RANGES) {
+    for (
+      let currentRange = 0, rangesCount = CREDIT_CARDS_BIN_RANGES[type].length;
+      currentRange < rangesCount;
+      currentRange++
+    ) {
+      let from = CREDIT_CARDS_BIN_RANGES[type][currentRange].from;
+      let to = CREDIT_CARDS_BIN_RANGES[type][currentRange].to;
+      const prefixLength = from.toString().length;
+      let prefix = (cc.cardNumber || '').substr(0, prefixLength);
+
+      if (prefix >= from && prefix <= to) {
+        return ACCEPTED_CREDIT_CARDS[type];
+      }
+    }
+  }
+
+  if (cc.cardType && cc.cardNumber.substr(0, 1) === '*') {
+    // if not editing
+    return cc.cardType.toUpperCase();
+  }
+}
+
+export function* submitBillingSectionSuccess(payload = {}) {
+  try {
+    let { payload: formData = {} } = payload;
+    formData = {
+      address: { country: '', sameAsShipping: true },
+      cardNumber: '4111111111111111',
+      cvv: '661',
+      expMonth: 1,
+      expYear: 2022,
+      onFileCardId: '',
+      paymentMethod: 'creditCard',
+      saveToAccount: true,
+    };
+    yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
+    const isPaymentDisabled = yield select(getIsPaymentDisabled);
+    if (isPaymentDisabled) {
+      return;
+    }
+    const isGuestUser = yield select(isGuest);
+    if (formData.address.sameAsShipping) {
+      const shippingDetails = yield select(getShippingDestinationValues);
+
+      yield call(updateAddress, {
+        addressKey: shippingDetails.onFileAddressKey,
+        addressId: shippingDetails.onFileAddressId,
+      });
+    }
+    // } else if (formData.onFileCardId) {
+    //   const cardDetails = paymentCardsStoreView.getDetailedCreditCardById(
+    //     storeState,
+    //     formData.onFileCardId
+    //   );
+
+    //   yield call(updateAddress, {
+    //     addressKey: cardDetails.addressKey,
+    //     addressId: cardDetails.addressId || cardDetails.billingAddressId,
+    //   });
+    // } else if (formData.address.onFileAddressKey && !isGuestUser) {
+    //   // return submitPaymentInformation({addressId: formData.address.onFileAddressKey});
+    //   const existingAddress = addressesStoreView.getAddressByKey(
+    //     storeState,
+    //     formData.address.onFileAddressKey
+    //   );
+    //   const shippingDetails = yield select(getShippingDestinationValues);
+    //   const addressId = existingAddress
+    //     ? existingAddress.addressId
+    //     : shippingDetails.onFileAddressId;
+    //   yield call(updateAddress, {
+    //     addressKey: formData.address.onFileAddressKey,
+    //     addressId,
+    //   });
+    // } else if (formData.address.onFileAddressKey && isGuestUser) {
+    //   // send update
+    //   const existingAddress = addressesStoreView.getAddressByKey(
+    //     storeState,
+    //     formData.address.onFileAddressKey
+    //   );
+    //   const shippingDetails = yield select(getShippingDestinationValues);
+    //   const addressId = existingAddress
+    //     ? existingAddress.addressId
+    //     : shippingDetails.onFileAddressId;
+
+    //   yield updateAddressPut({
+    //     payload: {
+    //       address: formData.address,
+    //       phoneNumber: formData.phoneNumber,
+    //       addressKey: formData.address.onFileAddressKey,
+    //       addressId,
+    //       isDefault: formData.isDefault,
+    //       saveToAccount: false,
+    //       applyToOrder: true,
+    //     },
+    //   });
+    // } else {
+    //   return addAddressGet(
+    //     {
+    //       address: formData.address,
+    //       phoneNumber: formData.phoneNumber,
+    //       isDefault: formData.isDefault,
+    //       saveToAccount: !userStoreView.isGuest(storeState) && formData.saveToAccount,
+    //       applyToOrder: true,
+    //     },
+    //     false
+    //   );
+    // }
+
+    if (formData.onFileCardId) {
+      // const cardDetails = paymentCardsStoreView.getDetailedCreditCardById(
+      //   store.getState(),
+      //   formData.onFileCardId
+      // );
+      // const requestData = {
+      //   onFileCardId: formData.onFileCardId,
+      //   cardNumber: cardDetails.cardNumber,
+      //   billingAddressId: cardDetails.billingAddressId,
+      //   cardType: cardDetails.cardType,
+      //   cvv: formData.cvv,
+      //   monthExpire: cardDetails.expMonth,
+      //   yearExpire: cardDetails.expYear,
+      //   orderGrandTotal: cartStoreView.getGrandTotal(store.getState()),
+      //   setAsDefault: formData.setAsDefault || cardDetails.isDefault,
+      //   saveToAccount: !userStoreView.isGuest(store.getState()), // it's already on the account? why is this needed?
+      //   applyToOrder: true,
+      // };
+      // // FIXME: we need to store the details of the selected card and selected
+      // // address book entry, but like this it is pretty ugly. needs major cleanup
+      // yield call(addPaymentToOrder, requestData);
+      // const isCardNotUpdated = checkoutStoreView.isCardNotUpdated(
+      //   store.getState(),
+      //   requestData.onFileCardId
+      // );
+      // updatePaymentToActiveOnSubmitBilling(store);
+      // getUserOperator(store).setRewardPointsData();
+      // yield call(loadUpdatedCheckoutValues, false, true, isCardNotUpdated, false, false);
+    } else {
+      const cardType = getCreditCardType(formData);
+      const checkoutDetails = yield select(getBillingValues);
+      const editingCardType = checkoutDetails.billing
+        ? getCreditCardType(checkoutDetails.billing)
+        : '';
+      const grandTotal = yield select(getGrandTotal);
+      const requestData = {
+        cardNumber: formData.cardNumber,
+        billingAddressId: res.addressId,
+        cardType: cardType || editingCardType,
+        cvv: formData.cvv,
+        monthExpire: formData.expMonth,
+        yearExpire: formData.expYear,
+        orderGrandTotal: grandTotal,
+        setAsDefault: formData.setAsDefault,
+        saveToAccount: !isGuestUser && formData.saveToAccount,
+        applyToOrder: true,
+      };
+
+      let addOrEditPaymentToOrder = addPaymentToOrder;
+
+      // if it's a new card (no '*' in it) then we still need to call the addPayment instead of updatePayment service
+      if (
+        checkoutDetails.paymentId &&
+        formData.cardNumber &&
+        formData.cardNumber.substr(0, 1) === '*'
+      ) {
+        requestData.paymentId = checkoutDetails.paymentId;
+        addOrEditPaymentToOrder = updatePaymentOnOrder;
+      }
+
+      yield call(addOrEditPaymentToOrder, requestData);
+      // updatePaymentToActiveOnSubmitBilling(store);
+      // getUserOperator(store).setRewardPointsData();
+      yield call(loadUpdatedCheckoutValues, false, true, true, false, false);
+    }
+  } catch (e) {
+    // submitBillingError(store, e);
+  }
+}
+
 export function* CheckoutSaga() {
   yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(constants.SUBMIT_SHIPPING_SECTION, submitShippingSection);
+  yield takeLatest(constants.SUBMIT_BILLING_SECTION, submitBillingSectionSuccess);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
   yield takeLatest(constants.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
   yield takeLatest(constants.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);

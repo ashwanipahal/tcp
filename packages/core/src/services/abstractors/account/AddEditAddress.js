@@ -55,9 +55,12 @@ export const addAddress = args => {
     .catch(errorHandler);
 };
 
-export const updateAddress = args => {
+export const updateAddress = (args, profileUpdate) => {
   const apiConfig = getAPIConfig();
-
+  const profileUpdateHeader = {};
+  if (profileUpdate) {
+    profileUpdateHeader.profileUpdate = profileUpdate;
+  }
   let body = {
     addressLine: [args.address1, args.address2, ''],
     attributes: [
@@ -95,6 +98,7 @@ export const updateAddress = args => {
       'X-Cookie': apiConfig.cookie,
       isRest: true,
       nickName: args.nickName,
+      ...profileUpdate,
     },
     body,
   };

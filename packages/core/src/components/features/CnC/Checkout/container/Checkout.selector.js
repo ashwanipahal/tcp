@@ -449,6 +449,20 @@ function getPickupInitialPickupSectionValues(state) {
   };
 }
 
+function getIsPaymentDisabled(state) {
+  const orderDetails = state.CartPageReducer.get('orderDetails');
+  if (orderDetails) {
+    const grandTotal = orderDetails.get('grandTotal');
+    const giftCardsTotal = orderDetails.get('giftCardsTotal');
+    return grandTotal <= giftCardsTotal;
+  }
+  return false;
+}
+
+function getBillingValues(state) {
+  return state.Checkout.getIn(['values', 'billing']);
+}
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -483,4 +497,6 @@ export default {
   getPickUpContactFormLabels,
   getUserEmail,
   getBillingLabels,
+  getIsPaymentDisabled,
+  getBillingValues,
 };
