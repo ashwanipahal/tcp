@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-// import FallbackErrorComponent from '../withErrorBoundary/ErrorFallbackComponent';
 
 const SafeComponent = jest.requireActual('../withErrorBoundary/errorBoundary');
 
