@@ -82,6 +82,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     this.getPlayButton = this.getPlayButton.bind(this);
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
+    this.carouselRef = this.updateRef.bind(this, 'carousel');
   }
 
   getPagination() {
@@ -225,6 +226,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     onSnapToItem(index);
   };
 
+  updateRef(name, ref) {
+    this[name] = ref;
+  }
+
   /**
    * @function play function enable autoplay for carousel
    * also update component state.
@@ -266,9 +271,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       showDots,
       overlap,
       buttonPosition,
-      autoplay,
       darkArrow,
     } = this.props;
+
+    const { autoplay } = this.state;
 
     if (!data) {
       return null;
@@ -303,9 +309,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               slideStyle={slideStyle}
               autoplay={autoplay}
               autoplayInterval={autoplayInterval}
-              ref={c => {
-                this.carousel = c;
-              }}
+              ref={this.carouselRef}
             />
             <TouchableView
               accessibilityRole="button"
