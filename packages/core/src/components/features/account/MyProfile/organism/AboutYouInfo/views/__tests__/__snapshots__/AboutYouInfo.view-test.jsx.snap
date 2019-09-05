@@ -2,8 +2,7 @@
 
 exports[`AboutYouInfo should render correctly 1`] = `
 <Styled(AccountOverviewTile)
-  className=""
-  ctaLink="/account/profile"
+  ctaLink="/account?id=profile&subSection=edit-aboutyou-info"
   ctaPath="/account/profile"
   ctaTitle="UPDATE INFO"
   dataLocator="moreaboutyou"
@@ -45,7 +44,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
           lineHeight="normal"
           textAlign="left"
         >
-          I describe myself as: 
+          I describe myself as:
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>

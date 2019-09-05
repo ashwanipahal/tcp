@@ -14,6 +14,7 @@ type Props = {
   input?: any,
   dataLocator?: string,
   meta?: { touched: any, error: any, warning: any },
+  checked?: boolean,
 };
 
 const InputCheckbox = ({
@@ -24,6 +25,7 @@ const InputCheckbox = ({
   disabled,
   dataLocator,
   meta,
+  checked,
 }: Props): Node => {
   const { touched, error } = meta;
   return (
@@ -36,7 +38,7 @@ const InputCheckbox = ({
           className="CheckBox__input"
           type="checkbox"
           data-locator={dataLocator}
-          checked={input.value}
+          checked={input.value || checked}
           disabled={disabled}
         />
         <BodyCopy
@@ -72,6 +74,7 @@ InputCheckbox.defaultProps = {
   dataLocator: '',
   input: {},
   meta: {},
+  checked: false,
 };
 
 export default withStyles(InputCheckbox, styles);
