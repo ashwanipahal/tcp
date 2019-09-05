@@ -17,7 +17,7 @@ import {
   getTotalProductsCount,
   getAppliedFilters,
 } from './ProductListing.selectors';
-import submitProductListingFiltersForm from './productListingSubmitHandler';
+import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
