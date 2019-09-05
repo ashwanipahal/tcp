@@ -20,6 +20,7 @@ import DeleteAddressSaga from '@tcp/core/src/components/features/account/Address
 import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
+import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
@@ -84,6 +85,7 @@ export default function* rootSaga() {
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
     UpdateProfileSaga(),
+    BirthdaySavingsSaga(),
     GiftCardsSaga(),
     AddAirmilesBannerSaga(),
     MailingAddressSaga(),

@@ -30,6 +30,7 @@ exports[`AccountOverview component should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
@@ -47,6 +48,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       width="150px"
     />
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
       color=""
