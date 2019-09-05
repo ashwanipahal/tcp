@@ -30,9 +30,32 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     marginTop={30}
   />
   <Styled(Text) />
-  <Styled(Text) />
-  <Styled(Text) />
-  <Styled(Text) />
+  <Styled(BodyCopy)
+    fontSize="fs12"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    fontSize="fs12"
+    textAlign="center"
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      class="clickhere"
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      locator=""
+      onPress={[Function]}
+      text=""
+      underline={true}
+      visible={false}
+    />
+    <Styled(BodyCopy)
+      component="span"
+      fontSize="fs12"
+    />
+  </Styled(View)>
   <Styled(LineComp)
     borderColor={null}
     borderWidth={0.65}
