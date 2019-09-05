@@ -9,6 +9,8 @@ import {
   getUserName,
   getUserLoggedInState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import BAGPAGE_SELECTORS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
+
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import HeaderView from '../views';
 
@@ -22,6 +24,8 @@ const mapStateToProps = state => {
     userName: getUserName(state),
     isLoggedIn: getUserLoggedInState(state),
     cartItemCount: getCartItemCount(),
+    totalItems: BAGPAGE_SELECTORS.getTotalItems(state),
+    labels: state.Labels.global,
   };
 };
 

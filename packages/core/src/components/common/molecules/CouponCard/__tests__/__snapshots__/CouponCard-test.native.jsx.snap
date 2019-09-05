@@ -45,9 +45,10 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
             </View>
             <Styled(View)>
               <Styled(Anchor)
+                accessibilityLabel=""
                 anchorVariation="primary"
                 customStyle={Object {}}
-                data-locator=""
+                dataLocator=""
                 fontFamily="secondary"
                 fontSizeVariation="small"
                 locator=""
@@ -62,12 +63,13 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
           </Styled(View)>
           <Styled(View)>
             <Styled(CustomButton)
+              active={false}
               buttonVariation="variable-width"
-              color="#fff"
+              color=""
               customStyle={Object {}}
               data-locator=""
               disableButton={false}
-              fill="BLACK"
+              fill="DARK"
               fullWidth=""
               locator=""
               onPress={[Function]}

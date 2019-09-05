@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -10,16 +11,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import styles from '../styles/TrackOrderForm.style';
 import constants from '../../../TrackOrder.constants';
 
-// @flow
-type Props = {
-  className: String,
-  labels: object,
-  handleSubmit: Function,
-  onChangeForm: Function,
-  invalid: Boolean,
-};
-
-class TrackOrderForm extends React.PureComponent<Props> {
+class TrackOrderForm extends React.PureComponent {
   render() {
     const { className, labels, handleSubmit, onChangeForm, invalid } = this.props;
     return (
@@ -56,9 +48,11 @@ class TrackOrderForm extends React.PureComponent<Props> {
             <Anchor
               fontSizeVariation="medium"
               anchorVariation="primary"
+              fontWeight="semiBold"
               underline
-              data-locator="track_order_need_help"
+              dataLocator="track_order_need_help"
               to={labels.trackOrder.lbl_header_trackOrderOverlay_needHelpLink}
+              target="_blank"
             >
               {labels.trackOrder.lbl_header_trackOrderOverlay_needHelp}
             </Anchor>
@@ -81,6 +75,16 @@ class TrackOrderForm extends React.PureComponent<Props> {
     );
   }
 }
+
+TrackOrderForm.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
+  invalid: PropTypes.bool.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, 'orderNumber'])

@@ -115,7 +115,7 @@ const ModuleD = (props: Props) => {
                       to={item.link.url}
                       target={item.link.target}
                       title={item.link.title}
-                      data-locator={`${getLocator('moduleD_textlink')}${index + 1}`}
+                      dataLocator={`${getLocator('moduleD_textlink')}${index + 1}`}
                     >
                       {item.link.text}
                     </Anchor>
@@ -129,7 +129,7 @@ const ModuleD = (props: Props) => {
         <Row centered>
           <Anchor href={singleCTAButton.url} target={singleCTAButton.target}>
             <Button
-              buttonVariation="variable-width"
+              buttonVariation="fixed-width"
               className="moduleD_button"
               data-locator={getLocator('moduleD_button')}
             >

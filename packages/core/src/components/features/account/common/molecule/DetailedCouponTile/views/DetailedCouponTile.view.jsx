@@ -85,9 +85,15 @@ export class DetailedCouponTile extends React.Component {
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
 
     return (
-      <BodyCopy component="div" className={className}>
+      <BodyCopy component="div" className={className} data-locator="myrewards-tile">
         {coupon.isExpiring && (
-          <BodyCopy fontSize="fs10" fontWeight="black" className="notification" textAlign="center">
+          <BodyCopy
+            fontSize="fs10"
+            fontWeight="black"
+            className="notification"
+            textAlign="center"
+            data-locator="myrewards-expiringsoonheader"
+          >
             {labels.lbl_coupon_expiringSoon}
           </BodyCopy>
         )}
@@ -95,17 +101,22 @@ export class DetailedCouponTile extends React.Component {
           <BodyCopy component="div" textAlign="center" className="top-content">
             <CouponIcon coupon={coupon} labels={labels} className="elem-mb-XS" />
             <BodyCopy
-              fontSize="fs14"
+              fontSize="fs16"
+              fontFamily="secondary"
               fontWeight="extrabold"
               title={coupon.title}
               className="elem-mb-SM"
               textAlign="center"
-              data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+              data-locator="myrewards-details"
             >
               {coupon.title}
             </BodyCopy>
             {isMobile && (
-              <BodyCopy component="div" className="barcode-content hide-on-desktop hide-on-tablet">
+              <BodyCopy
+                component="div"
+                data-locator="myrewards-barcode"
+                className="barcode-content hide-on-desktop hide-on-tablet"
+              >
                 <Barcode value={coupon.id} barcodeId={coupon.id} />
               </BodyCopy>
             )}
@@ -113,12 +124,8 @@ export class DetailedCouponTile extends React.Component {
 
           <BodyCopy component="div" className="bottom-content">
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
-              <BodyCopy component="div">
-                <BodyCopy
-                  fontSize="fs14"
-                  data-locator="accountoverview-myplacerewatdstile-rewarduseby"
-                  fontFamily="secondary"
-                >
+              <BodyCopy component="div" data-locator="myrewards-usebylabel">
+                <BodyCopy fontSize="fs14" fontFamily="secondary">
                   {`${isPlaceCash ? labels.lbl_coupon_couponValid : labels.lbl_coupon_couponUseBy}`}
                 </BodyCopy>
                 <BodyCopy fontSize="fs14" fontFamily="secondary">
@@ -127,7 +134,7 @@ export class DetailedCouponTile extends React.Component {
                     : `${coupon.expirationDate}`}
                 </BodyCopy>
               </BodyCopy>
-              <Anchor fontSizeVariation="xlarge" underline>
+              <Anchor fontSizeVariation="large" underline data-locator="myrewards-detailslink">
                 {labels.lbl_coupon_detailsLink}
               </Anchor>
             </BodyCopy>
@@ -137,7 +144,8 @@ export class DetailedCouponTile extends React.Component {
                 fullWidth
                 fill="WHITE"
                 onClick={this.handleViewCouponDetails}
-                className="elem-mb-SM"
+                className="elem-mb-SM couponDetailsFont"
+                data-locator="myrewards-view&printbtn"
               >
                 {labels.lbl_coupon_viewPrint}
               </Button>
@@ -148,6 +156,7 @@ export class DetailedCouponTile extends React.Component {
                   fullWidth
                   fill="BLUE"
                   onClick={this.handleRemove}
+                  data-locator="myrewards-removefrombagbtn"
                 >
                   {labels.lbl_coupon_removeFromBag}
                 </Button>
@@ -158,6 +167,7 @@ export class DetailedCouponTile extends React.Component {
                   fill="BLUE"
                   disabled={isApplyButtonDisabled}
                   onClick={this.handleApplyToBag}
+                  data-locator="myrewards-applytobagbtn"
                 >
                   {addToBagCTALabel}
                 </Button>

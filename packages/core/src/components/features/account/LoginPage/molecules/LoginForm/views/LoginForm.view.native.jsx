@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
-import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import { PropTypes } from 'prop-types';
-import { noop, get } from 'lodash';
+import { noop } from 'lodash';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
@@ -46,57 +45,22 @@ class LoginForm extends React.PureComponent<Props> {
     super(props);
     this.state = {
       type: 'password',
-      setRecaptchaModalMountedState: false,
     };
   }
 
-  setRecaptchaModalMountState = () => {
-    const { setRecaptchaModalMountedState } = this.state;
-    this.setState({
-      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
-    });
-  };
-
-  onMessage = event => {
-    const { handleSubmit, onSubmit, change } = this.props;
-    if (event && event.nativeEvent.data) {
-      const value = get(event, 'nativeEvent.data', '');
-      change('recaptchaToken', value);
-      handleSubmit(data => {
-        const { emailAddress, password, rememberMe, savePlcc, userTouchId } = data;
-        const LoginData = {
-          emailAddress,
-          password,
-          rememberMe,
-          savePlcc,
-          userTouchId,
-          recaptchaToken: value,
-        };
-        onSubmit(LoginData);
-      })();
-
-      this.setRecaptchaModalMountState();
-    }
-  };
-
-  onClose = () => {
-    this.setRecaptchaModalMountState();
-  };
-
-  handleLoginClick = e => {
-    const { handleSubmit, invalid, showRecaptcha } = this.props;
-    e.preventDefault();
-    if (!invalid && showRecaptcha) {
-      this.setRecaptchaModalMountState();
-    } else {
-      handleSubmit();
-    }
-  };
+  componentDidUpdate() {
+    const { change, setEmailid } = this.props;
+    change('emailAddress', setEmailid);
+  }
 
   showForgotPassword = () => {
-    const { showForgotPasswordForm, resetForm } = this.props;
-    resetForm();
+    const { showForgotPasswordForm } = this.props;
     showForgotPasswordForm();
+  };
+
+  handleContinueAsGuest = () => {
+    const { handleContinueAsGuest } = this.props;
+    handleContinueAsGuest();
   };
 
   changeType = e => {
@@ -108,84 +72,87 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, showRecaptcha } = this.props;
-    const { type, setRecaptchaModalMountedState } = this.state;
+    const { labels, handleSubmit, onSubmit, variation } = this.props;
+    const { type } = this.state;
     return (
-      <View {...this.props}>
-        <Field
-          label={labels.login.lbl_login_email}
-          name="emailAddress"
-          id="emailAddress"
-          type="text"
-          autoCapitalize="none"
-          component={TextBox}
-          dataLocator="emailAddress"
-        />
-        <ShowHideWrapper>
+      <Fragment>
+        <View {...this.props}>
           <Field
-            label={labels.login.lbl_login_password}
-            name="password"
-            id="password"
-            type={type}
+            label={labels.login.lbl_login_email}
+            name="emailAddress"
+            id="emailAddress"
+            type="text"
+            autoCapitalize="none"
             component={TextBox}
-            dataLocator="password"
-            secureTextEntry={type === 'password'}
+            dataLocator="emailAddress"
           />
-          <HideShowFieldWrapper>
-            <Anchor
-              fontSizeVariation="small"
-              fontFamily="secondary"
-              underline
-              anchorVariation="primary"
-              onPress={this.changeType}
-              noLink
-              to="/#"
-              data-locator=""
-              text={type === 'password' ? 'show' : 'hide'}
+          <ShowHideWrapper>
+            <Field
+              label={labels.login.lbl_login_password}
+              name="password"
+              id="password"
+              type={type}
+              component={TextBox}
+              dataLocator="password"
+              secureTextEntry={type === 'password'}
+              rightText={type === 'password' ? 'show' : 'hide'}
             />
-          </HideShowFieldWrapper>
-        </ShowHideWrapper>
-        <View style={styles.inputCheckBoxStyle}>
-          <Field
-            name="userTouchId"
-            component={InputCheckbox}
-            dataLocator="rememberMe"
-            disabled={false}
-            rightText={labels.login.lbl_login_touch_id}
-          />
-        </View>
+            <HideShowFieldWrapper>
+              <Anchor
+                fontSizeVariation="medium"
+                fontFamily="secondary"
+                anchorVariation="primary"
+                onPress={this.changeType}
+                noLink
+                to="/#"
+                dataLocator=""
+                text={type === 'password' ? 'show' : 'hide'}
+              />
+            </HideShowFieldWrapper>
+          </ShowHideWrapper>
+          <View style={styles.inputCheckBoxStyle}>
+            <Field
+              name="userTouchId"
+              component={InputCheckbox}
+              dataLocator="rememberMe"
+              disabled={false}
+              marginBottom={13}
+              rightText={labels.login.lbl_login_touch_id}
+            />
+          </View>
 
-        <React.Fragment>
-          {setRecaptchaModalMountedState && showRecaptcha && (
-            <RecaptchaModal
-              onMessage={this.onMessage}
-              setRecaptchaModalMountedState={setRecaptchaModalMountedState}
-              toggleRecaptchaModal={this.setRecaptchaModalMountState}
-              onClose={this.onClose}
+          <CustomButton
+            fill="BLUE"
+            text={labels.login.lbl_login_loginCTA}
+            buttonVariation="variable-width"
+            customStyle={styles.loginButtonStyle}
+            onPress={handleSubmit(onSubmit)}
+          />
+
+          {variation === 'checkout' && (
+            <CustomButton
+              color={colorPallete.black}
+              fill="WHITE"
+              buttonVariation="variable-width"
+              customStyle={styles.loginButtonStyle}
+              text={labels.login.lbl_login_modal_checkout_as_guest}
+              onPress={this.handleContinueAsGuest}
             />
           )}
-        </React.Fragment>
-        <CustomButton
-          color={colorPallete.white}
-          fill="BLUE"
-          text={labels.login.lbl_login_loginCTA}
-          buttonVariation="variable-width"
-          customStyle={styles.loginButtonStyle}
-          onPress={this.handleLoginClick}
-        />
 
-        <Anchor
-          style={styles.underline}
-          class="underlink"
-          underlineBlue
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.login.lbl_login_forgetPasswordCTA}
-          customStyle={styles.forgotPasswordStyle}
-          onPress={this.showForgotPassword}
-        />
-        <LineComp marginTop={28} />
-      </View>
+          <Anchor
+            style={styles.underline}
+            class="underlink"
+            underlineBlue
+            fontSizeVariation="xlarge"
+            anchorVariation="secondary"
+            text={labels.login.lbl_login_forgetPasswordCTA}
+            customStyle={styles.forgotPasswordStyle}
+            onPress={this.showForgotPassword}
+          />
+          <LineComp marginTop={28} />
+        </View>
+      </Fragment>
     );
   }
 }
@@ -226,7 +193,11 @@ LoginForm.defaultProps = {
 };
 
 const validateMethod = createValidateMethod(
-  getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, { password: 'legacyPassword' }])
+  getStandardConfig([
+    { emailAddress: 'emailAddressNoAsync' },
+    { password: 'legacyPassword' },
+    'recaptchaToken',
+  ])
 );
 
 export default reduxForm({

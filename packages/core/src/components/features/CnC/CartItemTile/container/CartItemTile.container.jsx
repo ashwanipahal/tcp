@@ -34,6 +34,11 @@ export const CartItemTileContainer = ({
   toggleEditAllowance,
   inheritedStyles,
   isPlcc,
+  itemIndex,
+  openedTile,
+  setSelectedProductTile,
+  setSwipedElement,
+  swipedElement,
 }) => (
   <CartItemTile
     labels={labels}
@@ -48,6 +53,11 @@ export const CartItemTileContainer = ({
     isEditAllowed={isEditAllowed}
     inheritedStyles={inheritedStyles}
     isPlcc={isPlcc}
+    itemIndex={itemIndex}
+    openedTile={openedTile}
+    setSelectedProductTile={setSelectedProductTile}
+    setSwipedElement={setSwipedElement}
+    swipedElement={swipedElement}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -61,8 +71,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
-    getProductSKUInfo: productNumber => {
-      dispatch(getProductSKUInfo(productNumber));
+    getProductSKUInfo: payload => {
+      dispatch(getProductSKUInfo(payload));
     },
   };
 };

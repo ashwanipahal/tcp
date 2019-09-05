@@ -18,6 +18,7 @@ const NavBar = props => {
     hideL3Drawer,
     l3Drawer,
     removeL1Focus,
+    accessibilityLabels,
   } = props;
 
   return (
@@ -27,6 +28,7 @@ const NavBar = props => {
           let categoryLayout = [];
           let sizesRange = [];
           const settings = {};
+
           if (navL1Item.categoryContent.mainCategory) {
             const { mainCategory } = navL1Item.categoryContent;
             const { categoryLayout: catLayout, sizesRange: sizRange, set } = mainCategory;
@@ -76,6 +78,7 @@ const NavBar = props => {
                   openL3Drawer={openL3Drawer}
                   hideL3Drawer={hideL3Drawer}
                   l3Drawer={l3Drawer}
+                  accessibilityLabels={accessibilityLabels}
                 />
               </Drawer>
             </L1NavItem>
@@ -90,6 +93,7 @@ NavBar.propTypes = {
   nav: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
   mainCategory: PropTypes.shape({}),
+  accessibilityLabels: PropTypes.shape({}).isRequired,
   openL2Drawer: PropTypes.func.isRequired,
   hideL2Drawer: PropTypes.func.isRequired,
   openDrawer: PropTypes.string.isRequired,

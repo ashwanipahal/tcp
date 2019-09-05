@@ -11,7 +11,6 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
     legalLinks={Array []}
     navLinks={Array []}
     openEmailSignUpModal={[Function]}
-    openTrackOrder={[Function]}
     referenceID=""
   />
   <Connect(Styled(ReduxForm)) />
@@ -24,7 +23,6 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
       className="footer-class"
       isLoggedIn={false}
       navLinkItems={Array []}
-      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <Styled(Row)
@@ -34,7 +32,6 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
       className="footer-class"
       isLoggedIn={false}
       navLinks={Array []}
-      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <div
@@ -88,7 +85,11 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
             "small": 6,
           }
         }
-      />
+      >
+        <Component
+          showInFooter={true}
+        />
+      </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
       fullBleed={true}
@@ -127,7 +128,6 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     legalLinks={Array []}
     navLinks={Array []}
     openEmailSignUpModal={[Function]}
-    openTrackOrder={[Function]}
     referenceID=""
   />
   <Connect(Styled(ReduxForm)) />
@@ -139,7 +139,6 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     <FooterMiddleMobile
       isLoggedIn={false}
       navLinkItems={Array []}
-      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <Styled(Row)
@@ -148,7 +147,6 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     <FooterMiddleDesktop
       isLoggedIn={false}
       navLinks={Array []}
-      openTrackOrder={[Function]}
     />
   </Styled(Row)>
   <div
@@ -202,7 +200,11 @@ exports[`Footer component Footer component renders correctly without props 1`] =
             "small": 6,
           }
         }
-      />
+      >
+        <Component
+          showInFooter={true}
+        />
+      </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
       fullBleed={true}

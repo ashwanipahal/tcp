@@ -15,8 +15,8 @@ import fonts from '../TCP/fonts';
 const colorPalette = createThemeColorPalette({
   primary: {
     light: orange[300],
-    main: orange[500],
-    dark: orange[700],
+    main: orange[800],
+    dark: orange[900],
   },
 });
 
@@ -27,6 +27,7 @@ const typography = createThemeTypography({
 const themeGymboree = {
   colorPalette: { ...colorPalette, green, blue },
   brand: 'gym',
+  isGymboree: true,
   /* colors object has been deprecated and, will be removed in the future release.
    Please use colorPalette instead */
   colors,

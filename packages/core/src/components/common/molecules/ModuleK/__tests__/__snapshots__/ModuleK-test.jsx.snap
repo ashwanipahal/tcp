@@ -99,7 +99,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-hMqMXs",
+              "componentId": "sc-kkGfuU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -124,7 +124,7 @@ exports[`ModuleK component renders correctly 1`] = `
   }
 
   /* this style is for Gymboree Header Text \\"Spring is Every Wear\\" */
-  .style11 {
+  .gymboree_title_text {
     color: ",
                 [Function],
                 ";
@@ -140,7 +140,7 @@ exports[`ModuleK component renders correctly 1`] = `
     @media ",
                 [Function],
                 " {
-      font-size: 74px;
+      font-size: 64px;
     }
   }
 
@@ -155,9 +155,9 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 20px;
-    line-height: 1.05;
-    letter-spacing: 2.22px;
+    font-size: 22px;
+    line-height: normal;
+    letter-spacing: 2px;
 
     @media ",
                 [Function],
@@ -180,10 +180,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-kpOJdX",
+              "sc-ckVGcZ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-hMqMXs",
+            "styledComponentId": "sc-kkGfuU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -225,7 +225,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-eNQAEJ",
+              "componentId": "sc-kEYyzF",
               "isStatic": false,
               "rules": Array [
                 "
@@ -507,10 +507,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-VigVT",
+              "sc-fjdhpX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-eNQAEJ",
+            "styledComponentId": "sc-kEYyzF",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

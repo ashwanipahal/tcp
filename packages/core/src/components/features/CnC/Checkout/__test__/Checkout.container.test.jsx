@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CheckoutContainer, mapDispatchToProps } from '../container/Checkout.container';
+import { CheckoutContainer, mapDispatchToProps } from '../container/CheckoutCommonContainer';
 import CheckoutPage from '../views/CheckoutPage.view';
 
 describe('CheckoutPage Container', () => {
@@ -39,6 +39,27 @@ describe('CheckoutPage Container', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.initCheckout();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action submitShipping which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.submitShipping();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action onPickupSubmit which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.onPickupSubmit();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action onEditModeChange which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.onEditModeChange();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });

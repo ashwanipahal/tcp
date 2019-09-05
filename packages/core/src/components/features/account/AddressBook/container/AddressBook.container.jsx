@@ -7,7 +7,6 @@ import {
   setDeleteModalMountedState,
   setAddressBookNotification,
 } from './AddressBook.actions';
-import { getUserInfo } from '../../User/container/User.actions';
 import AddressView from '../views/AddressView';
 import {
   getAddressListState,
@@ -15,13 +14,13 @@ import {
   showUpdatedNotificationState,
   deleteModalOpenState,
   showUpdatedNotificationOnModalState,
+  getAddEditAddressLabels,
 } from './AddressBook.selectors';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
 // @flow
 type Props = {
   getAddressListAction: () => void,
-  getUserInfoAction: () => void,
   addressList: List<any>,
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
@@ -32,11 +31,11 @@ type Props = {
   showUpdatedNotificationOnModal: any,
   clearAddressBookNotification: () => void,
   labels: object,
+  addressLabels: object,
 };
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getAddressListAction, getUserInfoAction } = this.props;
-    getUserInfoAction();
+    const { getAddressListAction } = this.props;
     getAddressListAction();
   }
 
@@ -56,6 +55,7 @@ export class AddressBookContainer extends React.Component<Props> {
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
       labels,
+      addressLabels,
     } = this.props;
     if (List.isList(addressList)) {
       return (
@@ -69,6 +69,7 @@ export class AddressBookContainer extends React.Component<Props> {
           deleteModalMountedState={deleteModalMountedState}
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+          addressLabels={addressLabels}
         />
       );
     }
@@ -90,9 +91,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     setDeleteModalMountState: payload => {
       dispatch(setDeleteModalMountedState(payload));
     },
-    getUserInfoAction: () => {
-      dispatch(getUserInfo());
-    },
     clearAddressBookNotification: () => {
       dispatch(
         setAddressBookNotification({
@@ -110,6 +108,7 @@ const mapStateToProps = state => {
     showUpdatedNotification: showUpdatedNotificationState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     deleteModalMountedState: deleteModalOpenState(state),
+    addressLabels: getAddEditAddressLabels(state),
   };
 };
 

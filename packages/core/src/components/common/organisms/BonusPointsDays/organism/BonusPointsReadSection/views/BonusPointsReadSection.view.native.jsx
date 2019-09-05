@@ -10,6 +10,7 @@ import {
   BonusDayWrapper,
   DotActive,
   DotInactive,
+  DotActivePlcc,
 } from '../styles/BonusPointsReadSection.style.native';
 
 /* BonusPointsReadSection component is to show number of bonus days applied and left in dots representation */
@@ -18,8 +19,10 @@ export const BonusPointsReadSection = ({
   labels,
   availableBonusPointDays,
   usedBonusPointDays,
+  isPlcc,
 }) => {
-  if (!availableBonusPointDays) {
+  // availableBonusPointDays can be zero, but for null value, no need to render.
+  if (availableBonusPointDays === null) {
     return null;
   }
   const availableDaysArray = Array(availableBonusPointDays).fill('');
@@ -42,7 +45,7 @@ export const BonusPointsReadSection = ({
             anchorVariation="primary"
             fontSizeVariation="large"
             onPress={toggleBonusPointsModal}
-            data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
+            dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
             text={labels.lbl_bonus_points_detailLink}
           />
         </RightHeaderContainer>
@@ -51,7 +54,8 @@ export const BonusPointsReadSection = ({
       <BonusDayWrapper>
         <BodyCopy fontSize="fs14" fontWeight="regular" color="black" text={message} />
         {usedDaysArray.length > 0 && usedDaysArray.map(() => <DotInactive />)}
-        {availableDaysArray.length > 0 && availableDaysArray.map(() => <DotActive />)}
+        {availableDaysArray.length > 0 &&
+          availableDaysArray.map(() => (isPlcc ? <DotActivePlcc /> : <DotActive />))}
       </BonusDayWrapper>
     </BonusDayReadSection>
   );
@@ -66,6 +70,7 @@ BonusPointsReadSection.propTypes = {
     lbl_bonus_points_bonusPointsDay: PropTypes.string,
     lbl_bonus_points_detailLink: PropTypes.string,
   }),
+  isPlcc: PropTypes.bool.isRequired,
 };
 
 BonusPointsReadSection.defaultProps = {

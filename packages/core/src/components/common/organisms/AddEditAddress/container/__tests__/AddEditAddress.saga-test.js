@@ -12,6 +12,7 @@ describe('addAddressGet saga', () => {
     beforeEach(() => {
       addAddressGetGeneration = addAddressGet({ payload });
       addAddressGetGeneration.next();
+      addAddressGetGeneration.next();
     });
 
     it('should dispatch addAddressSuccess action for success resposnse', () => {
@@ -44,6 +45,7 @@ describe('addAddressGet saga', () => {
     let updateAddressGetGeneration;
     beforeEach(() => {
       updateAddressGetGeneration = updateAddressPut({ payload });
+      updateAddressGetGeneration.next();
       updateAddressGetGeneration.next();
     });
 

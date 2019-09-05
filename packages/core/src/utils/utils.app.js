@@ -1,7 +1,8 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking } from 'react-native';
+import { Dimensions, Linking, Platform } from 'react-native';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
 
@@ -9,7 +10,6 @@ import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
 
-let currentBrand = null;
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
 let gymAPIConfig = null;
@@ -48,7 +48,12 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
     case 'moduleN':
+      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleN'));
+      break;
+    case 'moduleB':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleB'));
       break;
     default:
       reject();
@@ -57,6 +62,8 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
 };
 
 export const importGraphQLQueriesDynamically = query => {
+  // TODO - disabling the complexity till we find a better approach for this on Mobile app
+  // eslint-disable-next-line complexity
   return new Promise((resolve, reject) => {
     switch (query) {
       case 'footer':
@@ -85,6 +92,10 @@ export const importGraphQLQueriesDynamically = query => {
         break;
       case 'moduleL':
         resolve(require('../services/handler/graphQL/queries/moduleL'));
+        break;
+      case 'xappConfig':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/xappConfig'));
         break;
       default:
         importMoreGraphQLQueries({ query, resolve, reject });
@@ -294,7 +305,7 @@ export const resetNavigationStack = navigation => {
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
-  console.log(
+  logger.info(
     'unboxKey',
     `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
       envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
@@ -356,6 +367,9 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
+
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -363,6 +377,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     ...brandConfig,
     isMobile: false,
     cookie: null,
+    catalogId,
   };
 };
 
@@ -380,6 +395,7 @@ const getCurrentAPIConfig = (envConfig, isTCPBrand) => {
     gymAPIConfig = gymAPIConfig || createAPIConfigForApp(envConfig, 'GYM');
     currentAppAPIConfig = gymAPIConfig;
   }
+
   return currentAppAPIConfig;
 };
 
@@ -430,24 +446,8 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
   }
 };
 
-/**
- * @function getCurrentBrand
- *
- * @returns current brand selected in mobile app
- */
-export const getCurrentBrand = () => {
-  return currentBrand;
-};
-
-/**
- * @function updateCurrentBrand
- * updates current brand selected in mobile app
- */
-export const updateCurrentBrand = brandName => {
-  currentBrand = brandName;
-};
+export const isAndroid = () => Platform.OS === 'android';
 
 export default {
   getSiteId,
-  bindAllClassMethodsToThis,
 };

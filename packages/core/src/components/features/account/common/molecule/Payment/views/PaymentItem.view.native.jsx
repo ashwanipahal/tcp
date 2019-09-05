@@ -94,7 +94,7 @@ class PaymentItem extends React.Component<Props> {
             underline
             fontSizeVariation="large"
             noLink
-            data-locator="payment-overview-editlink"
+            dataLocator="payment-overview-editlink"
             color="gray.900"
             lineHeight="10"
           />
@@ -117,7 +117,6 @@ class PaymentItem extends React.Component<Props> {
             {isGiftCard && (
               <CheckBalanceContainer>
                 <CustomButton
-                  color="white"
                   fill="BLUE"
                   text={labels.lbl_overview_check_balance}
                   buttonVariation="variable-width"

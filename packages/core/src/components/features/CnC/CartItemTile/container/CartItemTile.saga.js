@@ -3,7 +3,8 @@
  */
 // TODO: Need fix unused/proptypes eslint error
 
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, delay } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
@@ -22,9 +23,12 @@ export function* removeCartItem({ payload }) {
   try {
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield delay(3000);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
@@ -32,9 +36,12 @@ export function* updateCartItemSaga({ payload }) {
   try {
     const res = yield call(updateItem, payload);
     yield put(updateCartItemComplete(res));
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield delay(3000);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
@@ -42,8 +49,17 @@ export function* getProductSKUInfoSaga(payload) {
   // const res = yield call(getProductSkuInfoByUnbxd, payload);
   // yield put(updateCartItemComplete(res));
 
-  const productId = payload.payload;
-  const relURI = `/8eb8cb308b493ec0a6d92bff22ef8df3/qa1-childrensplace-com702771542012808/search?variants=true&variants.count=100&version=V2&rows=20&pagetype=boolean&q=${productId}&promotion=false&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant,%20low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price,long_product_title&uid=uid-1562746344280-64813`;
+  const productId = payload.payload.productNum;
+  const { itemBrand } = payload.payload;
+  let unbxdkey;
+  if (itemBrand === 'GYM') {
+    unbxdkey = '4c26a092be20e0a237b91e51087453fa/dev1-gymboree-com800681562072113';
+  } else {
+    unbxdkey = '8eb8cb308b493ec0a6d92bff22ef8df3/qa1-childrensplace-com702771542012808';
+  }
+
+  const relURI = `/${unbxdkey}/search?variants=true&variants.count=100&version=V2&rows=20&pagetype=boolean&q=${productId}&promotion=false&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant,%20low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price,long_product_title&uid=uid-1562746344280-64813`;
+
   try {
     const { baseURI, method } = endpoints.getProductSkuInfo;
     // need to do this call using abstractor
@@ -68,7 +84,7 @@ export function* getProductSKUInfoSaga(payload) {
     );
     yield put(getProductSKUInfoSuccess(formattedInfo));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 

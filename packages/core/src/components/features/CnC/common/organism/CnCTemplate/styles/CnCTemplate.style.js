@@ -13,11 +13,21 @@ const styles = css`
   }
 
   .right-sec {
+    margin-bottom: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.MED : 0)};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.LRG : 0)};
+      margin-bottom: 0;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.MED : 0)};
+      margin-bottom: 0;
+    }
+  }
+
+  .hide-mobile {
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: block;
     }
   }
 `;

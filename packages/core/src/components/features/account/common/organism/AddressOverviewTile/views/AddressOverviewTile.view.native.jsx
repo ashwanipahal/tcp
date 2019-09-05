@@ -76,7 +76,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
               underline
               fontSizeVariation="large"
               noLink
-              data-locator="addressbook-overview-edit"
+              dataLocator="addressbook-overview-edit"
               color="gray.900"
             />
           </View>
@@ -147,7 +147,6 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             text={labels.lbl_overview_addressBookCTA}
             buttonVariation="variable-width"
             fill="BLUE"
-            color="white"
             onPress={() => handleComponentChange('addressBookMobile')}
           />
         </ButtonWrapperStyle>

@@ -22,10 +22,11 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
           customStyle={Object {}}
-          data-locator="personalInfo-overview-edit"
+          dataLocator="personalInfo-overview-edit"
           fontSizeVariation="large"
           locator=""
           noLink={true}
@@ -86,10 +87,11 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
           customStyle={Object {}}
-          data-locator="mailingAddress-overview-edit"
+          dataLocator="mailingAddress-overview-edit"
           fontSizeVariation="large"
           locator=""
           noLink={true}
@@ -112,6 +114,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       }
       customStyle={Object {}}
       showCountry={false}
+      showDefaultText={false}
       showName={false}
       showPhone={false}
     />
@@ -130,10 +133,11 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <Styled(Anchor)
+          accessibilityLabel=""
           anchorVariation="primary"
           color="gray.900"
           customStyle={Object {}}
-          data-locator="password-overview-edit"
+          dataLocator="password-overview-edit"
           fontSizeVariation="large"
           locator=""
           noLink={true}
@@ -154,8 +158,9 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
-      color="white"
+      color=""
       customStyle={Object {}}
       disableButton={false}
       fill="BLUE"

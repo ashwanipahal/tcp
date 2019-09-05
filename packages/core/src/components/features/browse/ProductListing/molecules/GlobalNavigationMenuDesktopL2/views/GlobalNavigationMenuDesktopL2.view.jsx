@@ -7,10 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../common/atoms/Anchor';
+import { Anchor } from '../../../../../../common/atoms';
 import errorBoundary from '../../../../../../common/hoc/withErrorBoundary';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import GlobalNavL2Style from '../GlobalNavigationMenuDesktopL2.style';
+import GlobalNavigationMenuDesktopL2Styles from '../styles/GlobalNavigationMenuDesktopL2.style';
 
 class GlobalNavigationMenuDesktopL2 extends React.Component {
   static propTypes = {
@@ -110,9 +110,9 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
             {menuGroupingArr.map((groups, index) => {
               return (
                 <NavGroupContainer
-                  key={`column-${groups.groupName}`}
+                  key={`column-${groups[0].groupName}`}
                   isLastGroup={index === menuGroupingArr.length - 1}
-                  {...{ groups, activeCategoryIds, isTopNav }}
+                  {...{ groups, activeCategoryIds, isTopNav, className }}
                 />
               );
             })}
@@ -122,8 +122,10 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
     );
   }
 }
-export default withStyles(errorBoundary(GlobalNavigationMenuDesktopL2), GlobalNavL2Style);
-export { GlobalNavigationMenuDesktopL2 as GlobalNavigationMenuDesktopL2Vanilla };
+export default withStyles(
+  errorBoundary(GlobalNavigationMenuDesktopL2),
+  GlobalNavigationMenuDesktopL2Styles
+);
 
 // This is a column
 const NavGroupContainer = props => {
@@ -151,7 +153,7 @@ const NavGroupContainer = props => {
             >
               {groupName}
             </BodyCopy>
-            <L2 {...{ menuItems, activeCategoryIds, isTopNav }} />
+            <L2 {...{ menuItems, activeCategoryIds, isTopNav, className }} />
           </div>
         );
       })}
@@ -175,7 +177,7 @@ NavGroupContainer.defaultProps = {
   className: '',
 };
 
-function L2({ menuItems, activeCategoryIds, isTopNav }) {
+function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
   return (
     <BodyCopy
       component="ol"
@@ -201,9 +203,15 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
                 id={`list-item-${item.categoryContent.id}`}
                 role="none"
               >
-                <Anchor href={item.url}>{item.categoryContent.name}</Anchor>
+                <Anchor to={`/c?cid=${item.categoryContent.id}`} asPath={item.url}>
+                  {item.categoryContent.name}
+                </Anchor>
                 {!isTopNav && isActive && (
-                  <L3 menuItems={item.subCategories} activeCategoryIds={activeCategoryIds} />
+                  <L3
+                    menuItems={item.subCategories}
+                    activeCategoryIds={activeCategoryIds}
+                    className={className}
+                  />
                 )}
               </BodyCopy>
             )}
@@ -214,14 +222,14 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
   );
 }
 
-function L3({ menuItems, activeCategoryIds }) {
+function L3({ menuItems, activeCategoryIds, className }) {
   return (
     <BodyCopy
       component="ol"
       className="sub-menu-category sub-menu-category-level-three"
       role="none"
     >
-      {menuItems.map(({ categoryContent: { name, categoryId }, url }) => {
+      {menuItems.map(({ categoryContent: { name, categoryId, url } }) => {
         const isActive = activeCategoryIds && categoryId === activeCategoryIds[2];
         // let className = cssClassName('sub-menu-category-item navigation-level-three-item ');
 
@@ -230,12 +238,14 @@ function L3({ menuItems, activeCategoryIds }) {
             {
               <BodyCopy
                 component="li"
-                className={isActive}
+                className={isActive ? `${className} active` : `${className} inactive`}
                 key={categoryId}
                 id={`list-item-${categoryId}`}
                 role="none"
               >
-                <Anchor href={url}>{name}</Anchor>
+                <Anchor to={`/c?cid=${categoryId}`} asPath={url}>
+                  {name}
+                </Anchor>
               </BodyCopy>
             }
           </React.Fragment>
@@ -249,20 +259,24 @@ L2.propTypes = {
   menuItems: PropTypes.arrayOf(PropTypes.shape({})),
   activeCategoryIds: PropTypes.arrayOf(PropTypes.shape({})),
   isTopNav: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 L2.defaultProps = {
   menuItems: [],
   activeCategoryIds: [],
   isTopNav: false,
+  className: '',
 };
 
 L3.propTypes = {
   menuItems: PropTypes.arrayOf(PropTypes.shape({})),
   activeCategoryIds: PropTypes.arrayOf(PropTypes.shape({})),
+  className: PropTypes.string,
 };
 
 L3.defaultProps = {
   menuItems: [],
   activeCategoryIds: [],
+  className: '',
 };

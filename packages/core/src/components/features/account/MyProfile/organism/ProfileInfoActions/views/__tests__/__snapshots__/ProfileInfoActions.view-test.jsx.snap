@@ -55,7 +55,8 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityId="mailingAddress"
         activityTitle="+20%"
         dataLocatorPrefix="email"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-mailing-address"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -100,7 +101,8 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityId="userBirthday"
         activityTitle="+20%"
         dataLocatorPrefix="birthday"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-personal-info"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -126,10 +128,20 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         activityId="aboutYourself"
         activityTitle="+20%"
         dataLocatorPrefix="survey"
-        redirectTo="/account"
+        noLink={true}
+        onClick={[Function]}
+        redirectAsPath=""
+        redirectTo=""
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(AboutYouSurveyModal)
+    className=""
+    labels={Object {}}
+    openState={false}
+    toggleModalState={[Function]}
+    userSurvey={Immutable.List []}
+  />
 </Styled(AccountOverviewTile)>
 `;
 
@@ -190,7 +202,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         textAlign="left"
       >
         <Styled(Anchor)
-          data-locator="hereLink"
+          dataLocator="hereLink"
           fontSizeVariation="xlarge"
           to="/account"
           underline={true}
@@ -226,7 +238,8 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         activityId="mailingAddress"
         activityTitle="+20%"
         dataLocatorPrefix="email"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-mailing-address"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -269,7 +282,8 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         activityId="userBirthday"
         activityTitle="+20%"
         dataLocatorPrefix="birthday"
-        redirectTo="/account"
+        redirectAsPath="/account/profile"
+        redirectTo="/account?id=profile&subSection=edit-personal-info"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -294,9 +308,28 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         activityId="aboutYourself"
         activityTitle="+20%"
         dataLocatorPrefix="survey"
-        redirectTo="/account"
+        noLink={true}
+        onClick={[Function]}
+        redirectAsPath=""
+        redirectTo=""
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(AboutYouSurveyModal)
+    className=""
+    labels={Object {}}
+    openState={false}
+    toggleModalState={[Function]}
+    userSurvey={
+      Immutable.List [
+        Immutable.List [
+          "test",
+        ],
+        Immutable.List [
+          "test",
+        ],
+      ]
+    }
+  />
 </Styled(AccountOverviewTile)>
 `;

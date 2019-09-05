@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Item is shown should render select item  1`] = `
+<StyledComponent
+  className="Test"
+  clickHandler={[MockFunction]}
+  content={Object {}}
+  docType=""
+  facetName="categoryPath2_uFilter"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  margin-bottom: ",
+          [Function],
+          ";
+  margin-right: ",
+          [Function],
+          ";
+  width: 156px;
+  @media ",
+          [Function],
+          " {
+    padding-left: ",
+          [Function],
+          ";
+    width: auto;
+  }
+  .selected-items {
+    text-transform: capitalize;
+    padding-left: ",
+          [Function],
+          ";
+    text-align: left;
+  }
+
+  .item-select {
+    @media ",
+          [Function],
+          " {
+      background: url(",
+          "/static/images/selected-item.svg",
+          ") no-repeat left top;
+      background-size: 18px 18px;
+      margin-bottom: ",
+          [Function],
+          ";
+      padding-bottom: 4px;
+      display: flex;
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(SelectItem)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  highlighted={false}
+  highlightedRefCapturer={[MockFunction]}
+  index={0}
+  isAutosuggestAnalytics="PropTypes.string.isRequired"
+  query="Sample Query"
+  title="Sample Title"
+  value="Sample Value"
+/>
+`;

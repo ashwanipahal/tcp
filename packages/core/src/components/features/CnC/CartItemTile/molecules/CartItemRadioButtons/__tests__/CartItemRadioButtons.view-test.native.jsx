@@ -25,6 +25,55 @@ describe('CartItemRadioButtons native Component', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('CartItemRadioButtons native should render correctly with orderItemType as Bopis', () => {
+    const props1 = {
+      productDetail: {
+        miscInfo: {
+          orderItemType: 'BOPIS',
+          store: 'New port center',
+        },
+        itemInfo: '',
+      },
+      className: '',
+      labels: {},
+    };
+    component = shallow(<CartItemRadioButtonsVanilla {...props1} />);
+    component.setState({ expandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly with orderItemType as BOSS', () => {
+    const props1 = {
+      productDetail: {
+        miscInfo: {
+          orderItemType: 'BOSS',
+        },
+        itemInfo: '',
+      },
+      className: '',
+      labels: {},
+    };
+    component = shallow(<CartItemRadioButtonsVanilla {...props1} />);
+    component.setState({ expandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly with orderItemType as ECOM', () => {
+    const props1 = {
+      productDetail: {
+        miscInfo: {
+          orderItemType: 'ECOM',
+        },
+        itemInfo: '',
+      },
+      className: '',
+      labels: {},
+    };
+    component = shallow(<CartItemRadioButtonsVanilla {...props1} />);
+    component.setState({ expandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
   it('CartItemRadioButtons native should call handle toggle', () => {
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
 

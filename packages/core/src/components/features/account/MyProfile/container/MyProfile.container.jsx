@@ -16,10 +16,11 @@ import {
   getAirmilesDetails,
   getMyPlaceNumber,
   getProfileInfoTileData,
+  getChildren,
 } from '../../User/container/User.selectors';
 
-import { getSuccess } from '../../ChangePassword/container/ChangePassword.selectors';
-import { changePasswordSuccess } from '../../ChangePassword/container/ChangePassword.actions';
+import { getSuccess } from './MyProfile.selectors';
+import { updateProfileSuccess } from './MyProfile.actions';
 
 const getMyProfileInfoLabels = labels => {
   return (labels && labels.profile) || {};
@@ -34,7 +35,7 @@ export class MyProfileContainer extends PureComponent {
   render() {
     const { labels, ...otherProps } = this.props;
     const profileInfoLabels = getMyProfileInfoLabels(labels);
-    return <MyProfile labels={profileInfoLabels} {...otherProps} />;
+    return <MyProfile labelsObj={labels} labels={profileInfoLabels} {...otherProps} />;
   }
 }
 
@@ -63,12 +64,13 @@ const mapStateToProps = state => {
     airMiles: getAirmilesDetails(state),
     myPlaceNumber: getMyPlaceNumber(state),
     profileInfoTile: getProfileInfoTileData(state),
+    childrenBirthdays: getChildren(state),
   };
 };
 
 export const mapDispatchToProps = dispatch => ({
   messageSateChangeAction: payload => {
-    dispatch(changePasswordSuccess(payload));
+    dispatch(updateProfileSuccess(payload));
   },
 });
 

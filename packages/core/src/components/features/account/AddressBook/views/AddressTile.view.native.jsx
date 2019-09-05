@@ -50,6 +50,9 @@ class AddressBookTile extends React.Component<Props> {
 
   onEditAddressClick = e => {
     e.preventDefault();
+    const { address, setSelectedAddress, toggleAddAddressModal } = this.props;
+    setSelectedAddress(address);
+    toggleAddAddressModal('edit');
   };
 
   render() {
@@ -95,7 +98,7 @@ class AddressBookTile extends React.Component<Props> {
                   onPress={this.handleDefaultLinkClick}
                   noLink
                   to="/#"
-                  data-locator="addressbook-makedefault"
+                  dataLocator="addressbook-makedefault"
                   text={labels.common.lbl_common_makeDefault}
                   color="gray.900"
                 />
@@ -109,6 +112,7 @@ class AddressBookTile extends React.Component<Props> {
               fontSizeVariation="large"
               underline
               to="/#"
+              onPress={this.onEditAddressClick}
               anchorVariation="primary"
               text={labels.common.lbl_common_edit}
               color="gray.900"
@@ -118,6 +122,7 @@ class AddressBookTile extends React.Component<Props> {
             fontSizeVariation="large"
             underline
             to="/#"
+            onPress={this.onDeleteAddressClick}
             anchorVariation="primary"
             text={labels.common.lbl_common_delete}
             color="gray.900"

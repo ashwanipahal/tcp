@@ -11,10 +11,9 @@ const FooterNavLinks = ({
   headerAsImage,
   isSubHeader,
   colNum,
-  openTrackOrder,
-  isUserLoggedIn,
-  loginModalMountedState,
-  setLoginModalMountState,
+  isLoggedIn,
+  linkConfig,
+  footerActionCreator,
 }) => {
   return (
     <div className={`${className} container-nav-link`} key={navLinkItems.id} data-index={colNum}>
@@ -29,10 +28,9 @@ const FooterNavLinks = ({
       <FooterNavLinksList
         listArray={navLinkItems.links}
         colNum={colNum}
-        isUserLoggedIn={isUserLoggedIn}
-        openTrackOrder={openTrackOrder}
-        loginModalMountedState={loginModalMountedState}
-        setLoginModalMountState={setLoginModalMountState}
+        isLoggedIn={isLoggedIn}
+        linkConfig={linkConfig}
+        footerActionCreator={footerActionCreator}
       />
     </div>
   );
@@ -45,15 +43,18 @@ FooterNavLinks.propTypes = {
   headerAsImage: PropTypes.bool.isRequired,
   isSubHeader: PropTypes.bool.isRequired,
   colNum: PropTypes.number.isRequired,
-  openTrackOrder: PropTypes.func,
-  isUserLoggedIn: PropTypes.bool,
-  setLoginModalMountState: PropTypes.bool.isRequired,
-  loginModalMountedState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 FooterNavLinks.defaultProps = {
-  openTrackOrder: () => null,
-  isUserLoggedIn: false,
+  isLoggedIn: false,
 };
 
 export default FooterNavLinks;

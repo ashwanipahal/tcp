@@ -14,8 +14,7 @@ export {
   resetNavigationStack,
   createAPIConfig,
   switchAPIConfig,
-  updateCurrentBrand,
-  getCurrentBrand,
+  isAndroid,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -29,5 +28,10 @@ export {
   getAPIConfig,
   isCanada,
   resetApiConfig,
+  getCacheKeyForRedis,
   bindAllClassMethodsToThis,
+  isGymboree,
+  getAddressFromPlace,
+  formatAddress,
+  getLabelValue,
 } from './utils';

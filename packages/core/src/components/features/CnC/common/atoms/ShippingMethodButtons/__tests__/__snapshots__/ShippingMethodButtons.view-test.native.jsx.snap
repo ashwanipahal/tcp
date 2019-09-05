@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shipping Page should render correctly 1`] = `
+<Styled(TouchableOpacity)
+  checked={true}
+  index={null}
+  onPress={[Function]}
+>
+  <Styled(BodyCopy)
+    checked={true}
+    color="white"
+    fontSize="fs10"
+    fontWeight="black"
+    mobileFontFamily="secondary"
+    text=""
+    textAlign="center"
+  />
+</Styled(TouchableOpacity)>
+`;

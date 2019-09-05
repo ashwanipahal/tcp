@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductColorChipWrapperVanilla component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <ol
+    className="content-colors"
+  >
+    <Swipeable
+      className="color-swatches-mobile-view"
+      delta={10}
+      onSwipedLeft={[Function]}
+      preventDefaultTouchmoveEvent={false}
+      rotationAngle={0}
+      trackMouse={false}
+      trackTouch={true}
+    >
+      <ProductColorChip
+        colorEntry={
+          Object {
+            "color": Object {
+              "name": "",
+            },
+            "colorProductId": 123,
+          }
+        }
+        isActive={false}
+        key="123"
+        onChipClick={[MockFunction]}
+      />
+      <ProductColorChip
+        colorEntry={
+          Object {
+            "color": Object {
+              "name": "",
+            },
+            "colorProductId": 123,
+          }
+        }
+        isActive={false}
+        key="123"
+        onChipClick={[MockFunction]}
+      />
+    </Swipeable>
+    <div
+      className="color-swatches-desktop-view"
+    >
+      <ProductColorChip
+        colorEntry={
+          Object {
+            "color": Object {
+              "name": "",
+            },
+            "colorProductId": 123,
+          }
+        }
+        isActive={false}
+        key="123"
+        onChipClick={[MockFunction]}
+      />
+      <ProductColorChip
+        colorEntry={
+          Object {
+            "color": Object {
+              "name": "",
+            },
+            "colorProductId": 123,
+          }
+        }
+        isActive={false}
+        key="123"
+        onChipClick={[MockFunction]}
+      />
+    </div>
+  </ol>
+</div>
+`;
+
+exports[`ProductColorChipWrapperVanilla component should renders null 1`] = `""`;

@@ -39,7 +39,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
     </Styled(BodyCopy)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
+      dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
       fontSizeVariation="large"
       onClick={[Function]}
       underline={true}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Notification from '../../../../../../common/molecules/Notification';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CreateAccounPage.style';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
@@ -18,6 +19,8 @@ class CreateAccounPage extends React.Component {
     error: PropTypes.string,
     onAlreadyHaveAnAccountClick: PropTypes.func,
     showForgotPasswordForm: PropTypes.func,
+    isUserLoggedIn: PropTypes.bool.isRequired,
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -54,6 +57,8 @@ class CreateAccounPage extends React.Component {
       error,
       onAlreadyHaveAnAccountClick,
       showForgotPasswordForm,
+      isUserLoggedIn,
+      formErrorMessage,
     } = this.props;
     return (
       <div className={className}>
@@ -62,7 +67,7 @@ class CreateAccounPage extends React.Component {
             labels={labels}
             showForgotPasswordForm={showForgotPasswordForm}
           />
-          {error && (
+          {error && !isUserLoggedIn && (
             <div className="elem-pl-LRG elem-pr-LRG elem-pt-LRG">
               <BodyCopy
                 fontFamily={['secondary']}
@@ -74,6 +79,17 @@ class CreateAccounPage extends React.Component {
               </BodyCopy>
             </div>
           )}
+
+          {isUserLoggedIn && (
+            <div className="elem-pl-LRG elem-pr-LRG elem-pt-LRG">
+              <Notification
+                status="success"
+                colSize={{ large: 12, medium: 8, small: 6 }}
+                message={labels.registration.lbl_createAccount_succcessMsg}
+              />
+            </div>
+          )}
+
           <CreateAccountForm
             className={className}
             labels={labels}
@@ -84,6 +100,7 @@ class CreateAccounPage extends React.Component {
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
             tooltipContent={<PasswordRequirement labels={labels.password} />}
+            formErrorMessage={formErrorMessage}
           />
         </div>
       </div>

@@ -16,6 +16,7 @@ export const graphQLClient = 'graphQL';
 export const defaultCountry = 'USA';
 export const defaultBrand = 'TCP';
 export const defaultChannel = 'Desktop';
+export const MobileChannel = 'Mobile';
 
 export default {
   API_METHODS,
@@ -23,4 +24,5 @@ export default {
   defaultCountry,
   defaultBrand,
   defaultChannel,
+  MobileChannel,
 };

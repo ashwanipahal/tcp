@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
+import AirmilesBanner from '../../common/organism/AirmilesBanner';
+
 import AddedToBagActions from '../../AddedToBagActions';
 import {
   HeadingViewStyle,
@@ -12,7 +14,7 @@ import {
   ScrollViewWrapper,
 } from '../styles/BagPage.style.native';
 
-const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
+const BagPage = ({ labels, totalCount, showAddTobag, navigation, handleCartCheckout }) => {
   return (
     <>
       <ScrollViewWrapper showAddTobag={showAddTobag}>
@@ -25,11 +27,20 @@ const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
             <OrderLedgerContainer />
           </RowSectionStyle>
           <RowSectionStyle>
+            <AirmilesBanner />
+          </RowSectionStyle>
+          <RowSectionStyle>
             <CouponAndPromos />
           </RowSectionStyle>
         </MainSection>
       </ScrollViewWrapper>
-      <AddedToBagActions labels={labels} showAddTobag={showAddTobag} navigation={navigation} />
+
+      <AddedToBagActions
+        handleCartCheckout={handleCartCheckout}
+        labels={labels}
+        showAddTobag={showAddTobag}
+        navigation={navigation}
+      />
     </>
   );
 };
@@ -39,6 +50,7 @@ BagPage.propTypes = {
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
 };
 
 export default BagPage;

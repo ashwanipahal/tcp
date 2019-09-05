@@ -1,21 +1,42 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Notification from '../../../../../../common/molecules/Notification';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import Anchor from '../../../../../../common/atoms/Anchor';
 import TrackOrderForm from '../../TrackOrderForm';
 import TrackOrderTopSection from '../../TrackOrderTopSection';
 import TrackOrderBottomSection from '../../TrackOrderBottomSection';
 import styles from '../styles/TrackOrderView.style';
 
-// @flow
-type Props = {
-  labels: object,
-  errorMessage: string,
-  onSubmit: Function,
-  openLoginOverlay: Function,
-  setModalMountState: Function,
-  showNotification: string,
-  onChangeForm: Function,
-};
+const getGenericErrorMessage = labels => (
+  <BodyCopy
+    component="div"
+    className="generic__error__message"
+    fontSize="fs14"
+    fontFamily="secondary"
+  >
+    <BodyCopy fontFamily="secondary">
+      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError1}
+    </BodyCopy>
+    <Anchor
+      data-locator="contact_us_form_help"
+      underline
+      anchorVariation="primary"
+      fontFamily="secondary"
+      to={labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLinkHref}
+      className="trackorder__modal__contactus"
+      aria-label=""
+      target="_blank"
+    >
+      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericErrorLink}
+    </Anchor>
+    <BodyCopy fontFamily="secondary">
+      {labels.trackOrder && labels.trackOrder.lbl_header_trackOrderOverlay_genericError2}
+    </BodyCopy>
+  </BodyCopy>
+);
+
 export const TrackOrderView = ({
   labels,
   errorMessage,
@@ -24,16 +45,19 @@ export const TrackOrderView = ({
   setModalMountState,
   showNotification,
   onChangeForm,
-}: Props) => {
+  className,
+}) => {
   return (
-    <React.Fragment>
+    <BodyCopy component="div" className={className}>
       <TrackOrderTopSection labels={labels} className="trackorder__modal__topsection" />
       {errorMessage ? (
         <Notification
           status={showNotification}
           colSize={{ large: 12, medium: 8, small: 6 }}
-          message={errorMessage}
-        />
+          message={errorMessage !== 'genericError' ? errorMessage : null}
+        >
+          {errorMessage === 'genericError' ? getGenericErrorMessage(labels) : null}
+        </Notification>
       ) : null}
 
       <TrackOrderForm
@@ -48,8 +72,21 @@ export const TrackOrderView = ({
         openLoginOverlay={openLoginOverlay}
         setModalMountState={setModalMountState}
       />
-    </React.Fragment>
+    </BodyCopy>
   );
+};
+
+TrackOrderView.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  className: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  openLoginOverlay: PropTypes.func.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
 };
 
 export default withStyles(TrackOrderView, styles);

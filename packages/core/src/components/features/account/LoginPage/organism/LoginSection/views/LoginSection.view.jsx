@@ -59,6 +59,7 @@ class LoginSection extends React.PureComponent<Props> {
     const {
       onSubmit,
       labels,
+      formErrorMessage,
       loginErrorMessage,
       initialValues,
       showRecaptcha,
@@ -68,6 +69,7 @@ class LoginSection extends React.PureComponent<Props> {
       currentForm,
       variation,
       handleContinueAsGuest,
+      tooltipContent,
     } = this.props;
     return (
       <Row className={className}>
@@ -77,7 +79,9 @@ class LoginSection extends React.PureComponent<Props> {
             medium: 8,
             large: 12,
           }}
-          className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
+          className={`elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+            variation === 'checkout' ? 'checkoutForm' : 'loginForm'
+          }`}
         >
           {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
             <React.Fragment>
@@ -90,6 +94,7 @@ class LoginSection extends React.PureComponent<Props> {
               <LoginForm
                 onSubmit={onSubmit}
                 labels={labels}
+                formErrorMessage={formErrorMessage}
                 loginErrorMessage={loginErrorMessage}
                 initialValues={initialValues}
                 showRecaptcha={showRecaptcha}
@@ -99,6 +104,7 @@ class LoginSection extends React.PureComponent<Props> {
                 onCreateAccountClick={this.showCreateAccountForm}
                 variation={variation}
                 handleContinueAsGuest={handleContinueAsGuest}
+                tooltipContent={tooltipContent}
               />
             </React.Fragment>
           )}
@@ -144,6 +150,7 @@ LoginSection.propTypes = {
   queryParams: PropTypes.shape({}).isRequired,
   currentForm: PropTypes.string,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {

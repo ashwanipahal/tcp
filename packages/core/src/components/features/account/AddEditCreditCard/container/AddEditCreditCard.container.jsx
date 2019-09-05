@@ -18,6 +18,7 @@ import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -34,6 +35,7 @@ export class AddEditCreditCard extends React.PureComponent {
     showSuccessNotification: PropTypes.func.isRequired,
     labels: PropTypes.shape({}),
     addressLabels: PropTypes.shape({}),
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -170,6 +172,7 @@ export class AddEditCreditCard extends React.PureComponent {
       addEditCreditCardError,
       labels,
       addressLabels,
+      formErrorMessage,
     } = this.props;
 
     if (addressList === null) {
@@ -197,6 +200,7 @@ export class AddEditCreditCard extends React.PureComponent {
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}
         addressFormLabels={addressLabels.addressFormLabels}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -212,6 +216,7 @@ const mapStateToProps = (state, ownProps) => {
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
     addressLabels: getAddEditAddressLabels(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 

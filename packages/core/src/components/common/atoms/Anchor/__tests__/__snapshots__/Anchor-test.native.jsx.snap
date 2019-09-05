@@ -7,9 +7,10 @@ exports[`Anchor Native should render correctly 1`] = `
   onPress={[Function]}
   style={Object {}}
 >
-  <Text
+  <Styled(Text)
     anchorVariation=""
     internal={true}
+    name="Anchor"
     navigation={
       Object {
         "navigate": [MockFunction],
@@ -18,6 +19,6 @@ exports[`Anchor Native should render correctly 1`] = `
     url="/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
   >
     click Me
-  </Text>
+  </Styled(Text)>
 </Styled(TouchableOpacity)>
 `;

@@ -1,58 +1,62 @@
-const validStreetAddress = 'Please enter a valid street address';
-const validExpirationDate = 'Please enter a valid expiration date';
+const enterPhoneNumber = 'lbl_err_phonenumber_required';
+const validPhoneNumber = 'lbl_err_phonenumber_phone';
+const validStreetAddress = 'lbl_err_validstreetaddress';
+const validExpirationDate = 'lbl_err_validexpirationedate';
 
 export const formValidationMessages = {
   addressLine1: {
     required: validStreetAddress,
-    address: 'The value entered in the street address has special character',
+    address: 'lbl_err_addressline1_address',
     minLength: validStreetAddress,
-    maxLength: 'Please shorten the street address',
+    maxLength: 'lbl_err_addressline1_maxlength',
   },
   addressLine2: {
-    address: 'The value entered in the street address has special character',
+    address: 'lbl_err_addressline2_address',
     maxLength: validStreetAddress,
   },
   city: {
-    nonEmpty: 'Please enter a valid city',
-    city: 'The value entered in the city has special character',
-    maxLength: 'Please enter a valid city',
+    nonEmpty: 'lbl_err_city_nonempty',
+    city: 'lbl_err_city_city',
+    maxLength: 'lbl_err_city_nonempty',
   },
   country: {
-    required: 'Please select a country',
+    required: 'lbl_err_country_required',
   },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
-      linkedFieldsValues[0] === 'US' ? 'Please select a state' : 'Please select a province',
+      linkedFieldsValues[0] === 'US'
+        ? 'lbl_err_state_staterequired_us'
+        : 'lbl_err_state_staterequired_nonus',
   },
   firstName: {
-    nonEmpty: 'Please enter a first name',
-    name: 'First name field should not contain any special characters',
-    maxLength: 'Please enter a valid first name',
+    nonEmpty: 'lbl_err_firstname_nonempty',
+    name: 'lbl_err_firstname_name',
+    maxLength: 'lbl_err_firstname_maxlength',
   },
   lastName: {
-    nonEmpty: 'Please enter a last name',
-    name: 'Last name field should not contain any special characters',
-    maxLength: 'Please enter a valid last name',
+    nonEmpty: 'lbl_err_lastname_nonempty',
+    name: 'lbl_err_lastname_name',
+    maxLength: 'lbl_err_lastname_maxlength',
   },
   phoneNumber: {
-    required: 'Please enter your phone number',
-    phone: 'Please enter a valid phone number',
+    required: enterPhoneNumber,
+    phone: validPhoneNumber,
   },
   zipCode: {
-    required: 'Please enter your zip code',
-    zipcode: 'Please enter a valid zip code',
+    required: 'lbl_err_zipcode_required',
+    zipcode: 'lbl_err_zipcode_zipcode',
   },
   noCountryZip: {
-    required: 'Please enter your zip code',
-    noCountryZip: 'Please enter a valid zip code',
+    required: 'lbl_err_zipcode_required',
+    noCountryZip: 'lbl_err_zipcode_zipcode',
   },
   recaptchaToken: {
-    required: 'Please check the recaptcha value',
+    required: 'lbl_err_recaptchatoken_required',
   },
   cardNumber: {
-    required: 'Please enter a valid credit card number',
-    cardNumberForType: 'Please enter a valid credit card number',
-    plccEnabled: 'This card can only be used when shopping the US store',
+    required: 'lbl_err_cardnumber_required',
+    cardNumberForType: 'lbl_err_cardnumber_type',
+    plccEnabled: 'lbl_err_cardnumber_plccenabled',
   },
   expYear: {
     required: validExpirationDate,
@@ -62,42 +66,76 @@ export const formValidationMessages = {
     required: validExpirationDate,
     expiration: validExpirationDate,
   },
-  giftCardNumber: 'Please enter a valid gift card number',
-  cardPin: 'Please enter your gift card pin number',
+  giftCardNumber: 'lbl_err_giftcardnumber',
+  cardPin: 'lbl_err_cardpin',
 
   Email: {
-    required: `Please enter a valid email`,
-    validEmail: 'Email format is invalid',
+    required: `lbl_err_email_req`,
+    validEmail: 'lbl_err_email_validemail',
   },
   emailAddress: {
-    required: `ERROR: Please enter a valid email`,
-    emailPattern: 'ERROR: Email format is invalid',
+    required: `lbl_err_email_req`,
+    emailPattern: 'lbl_err_email',
   },
   confirmEmailAddress: {
-    required: 'Please confirm your email address',
-    matchEmail: 'Email addresses must match',
+    required: 'lbl_err_confirmemailaddress_required',
+    matchEmail: 'lbl_err_confirmemailaddress_matchemail',
   },
   password: {
-    required: 'Please enter your password',
-    password: 'Please enter a valid password',
+    required: 'lbl_err_password_required',
+    password: 'lbl_err_password_password',
   },
   currentPassword: {
-    required: 'Please enter your password',
-    password: 'Your current password is incorrect. Please try again.',
+    required: 'lbl_err_password_required',
+    password: 'lbl_err_currentpassword_password',
   },
   confirmPassword: {
-    required: 'Please enter a valid password',
-    equalTo: 'Passwords must match',
+    required: 'lbl_err_password_password',
+    equalTo: 'lbl_err_currentpassword_equalto',
   },
   emailAddressNoAsync: {
-    required: `ERROR: Please enter a valid email`,
-    email: 'ERROR: Email format is invalid.',
-    validEmail: 'ERROR: Email format is invalid',
+    required: `lbl_err_email_req`,
+    email: 'lbl_err_email',
+    validEmail: 'lbl_err_emailaddressnoasync',
   },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: 'lbl_err_dob_required',
+  },
+  airMilesAccountNumber: 'lbl_err_airmilesaccountnumber',
+  associateId: 'lbl_err_associateid',
   iAgree: {
-    required: 'Please Select',
+    required: 'lbl_err_iagree',
   },
-  orderNumber: 'ERROR: Please enter a valid order number.',
+  preScreenCode: {
+    alphanumeric: 'lbl_err_prescreencode',
+  },
+  ssNumber: {
+    ssn: 'lbl_err_ssnumber_ssn',
+  },
+  birthDate: 'lbl_err_birthdate',
+  statewocountry: {
+    required: 'lbl_err_statewocountry_required',
+  },
+  date: {
+    dob: 'lbl_err_date_dob',
+  },
+  month: {
+    dob: 'lbl_err_month_dob',
+  },
+  year: {
+    dob: 'lbl_err_year_dob',
+  },
+  orderNumber: 'lbl_err_ordernumber',
+  phoneNumberWithAlt: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    required: validPhoneNumber,
+  },
+  altPhoneNumber: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    notEqualTo: 'lbl_err_altphonenumber_notequalto',
+  },
 };
 
 export const formValidationRules = {
@@ -224,8 +262,52 @@ export const formValidationRules = {
     minLength: 6,
     number: true,
   },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: { linkedFields: ['userBirthYear'] },
+  },
+  airMilesAccountNumber: {
+    number: true,
+    exactLength: 11,
+  },
+  associateId: {
+    required: true,
+    number: true,
+  },
   iAgree: {
     required: true,
+  },
+  preScreenCode: {
+    alphanumeric: true,
+  },
+  ssNumber: {
+    ssn: true,
+  },
+  statewocountry: {
+    required: true,
+  },
+  date: {
+    dob: true,
+  },
+  month: {
+    dob: true,
+  },
+  year: {
+    dob: true,
+  },
+  phoneNumberWithAlt: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['altPhoneNumber'],
+    },
+  },
+  altPhoneNumber: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
+    notEqualTo: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
   },
 };
 

@@ -73,8 +73,14 @@ export default css`
     margin-left: 16px;
   }
 
+  .scroll-button:nth-last-child(1) {
+    padding-right: 16px;
+  }
+
+  &.no-scrollable-cta .scroll-button:nth-last-child(1),
   &.no-scrollable-cta .scroll-button:nth-child(1) {
     margin-left: 0;
+    padding-right: 0;
   }
 
   .img-wrapper {
@@ -82,6 +88,14 @@ export default css`
     margin: 0 19px;
     min-width: 62px;
     text-align: center;
+  }
+
+  .img-wrapper:nth-child(1) {
+    margin-left: 38px;
+  }
+
+  &.no-scrollable-cta .img-wrapper:nth-child(1) {
+    margin-left: 19px;
   }
 
   .image-cta {
@@ -93,6 +107,7 @@ export default css`
   .image-comp {
     color: white;
     text-align: center;
+    width: 64px;
   }
 
   &.scroll-button-list-wrapper {
@@ -109,10 +124,6 @@ export default css`
       display: block;
       scrollbar-width: auto;
       padding-top: 8px;
-
-      .image-comp {
-        white-space: nowrap;
-      }
     }
   }
 
@@ -124,12 +135,18 @@ export default css`
     font-size: 13px;
   }
 
+  &.hide-on-small-viewport {
+    display: none;
+  }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .stacked-cta-wrapper-class {
+      border-radius: 0;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     padding-bottom: 16px;
-    > div:first-child {
-      margin: 0 auto;
-    }
-
     .stacked-button {
       width: 100%;
       margin-left: 9px;
@@ -161,6 +178,10 @@ export default css`
       margin-left: 0;
     }
 
+    .scroll-button:nth-last-child(1) {
+      padding-right: 0;
+    }
+
     .stacked-cta-wrapper {
       display: flex;
       flex-wrap: nowrap;
@@ -169,6 +190,10 @@ export default css`
 
     .img-wrapper {
       margin: 0 26px;
+    }
+
+    .img-wrapper:nth-child(1) {
+      margin-left: 26px;
     }
 
     &.scroll-button-list-wrapper {
@@ -215,6 +240,14 @@ export default css`
       white-space: normal;
       width: 62px;
     }
+
+    &.hide-on-small-viewport {
+      display: block;
+    }
+
+    &.is-tablet-hidden {
+      display: none;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -223,7 +256,7 @@ export default css`
     .stacked-button,
     .scroll-button {
       min-width: 210px;
-      margin: 0 8px;
+      margin: 0 15px;
     }
 
     .stacked-button {
@@ -253,6 +286,15 @@ export default css`
       button {
         width: 210px;
       }
+    }
+
+    &.wrapped-button-text .stacked-button,
+    &.wrapped-button-text .scroll-button {
+      margin: 0 15px;
+    }
+
+    &.is-tablet-hidden {
+      display: none;
     }
   }
 

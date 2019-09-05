@@ -1,69 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm component should renders correctly 1`] = `
-<View
-  handleSubmit={[Function]}
-  labels={
-    Object {
-      "handleSubmit": [Function],
-      "login": Object {},
-      "loginErrorMessage": "",
-      "onSubmit": [Function],
-      "resetForm": [Function],
-      "showForgotPasswordForm": [Function],
-    }
-  }
-  loginErrorMessage=""
-  onSubmit={[Function]}
->
-  <Field
-    autoCapitalize="none"
-    component={
+<Fragment>
+  <View
+    handleSubmit={[Function]}
+    labels={
       Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "ariaLabel": "input",
-          "dataLocator": "input-field",
-          "enableSuccessCheck": false,
-          "id": "input",
-          "keyboardType": "default",
-          "label": "input",
-          "meta": Object {
-            "error": "",
-            "touched": "",
-          },
-          "secureTextEntry": false,
-          "showErrorIcon": true,
-          "type": "text",
-        },
-        "attrs": Array [],
-        "displayName": "Styled(TextBox)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  ",
-            [Function],
-            ";
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
+        "handleSubmit": [Function],
+        "login": Object {},
+        "loginErrorMessage": "",
+        "onSubmit": [Function],
+        "resetForm": [Function],
+        "showForgotPasswordForm": [Function],
       }
     }
-    dataLocator="emailAddress"
-    id="emailAddress"
-    name="emailAddress"
-    type="text"
-  />
-  <Styled(View)>
+    loginErrorMessage=""
+    onSubmit={[Function]}
+  >
     <Field
+      autoCapitalize="none"
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -74,12 +29,15 @@ exports[`LoginForm component should renders correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -103,79 +61,133 @@ exports[`LoginForm component should renders correctly 1`] = `
           "withComponent": [Function],
         }
       }
-      dataLocator="password"
-      id="password"
-      name="password"
-      secureTextEntry={true}
-      type="password"
+      dataLocator="emailAddress"
+      id="emailAddress"
+      name="emailAddress"
+      type="text"
     />
     <Styled(View)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        customStyle={Object {}}
-        data-locator=""
-        fontFamily="secondary"
-        fontSizeVariation="small"
-        locator=""
-        noLink={true}
-        onPress={[Function]}
-        text="show"
-        to="/#"
-        underline={true}
-        visible={false}
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="password"
+        id="password"
+        name="password"
+        rightText="show"
+        secureTextEntry={true}
+        type="password"
       />
+      <Styled(View)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          customStyle={Object {}}
+          dataLocator=""
+          fontFamily="secondary"
+          fontSizeVariation="medium"
+          locator=""
+          noLink={true}
+          onPress={[Function]}
+          text="show"
+          to="/#"
+          visible={false}
+        />
+      </Styled(View)>
     </Styled(View)>
-  </Styled(View)>
-  <View
-    style={
-      Object {
-        "width": "90%",
+    <View
+      style={
+        Object {
+          "width": "90%",
+        }
       }
-    }
-  >
-    <Field
-      component={[Function]}
-      dataLocator="rememberMe"
-      disabled={false}
-      name="userTouchId"
+    >
+      <Field
+        component={[Function]}
+        dataLocator="rememberMe"
+        disabled={false}
+        marginBottom={13}
+        name="userTouchId"
+      />
+    </View>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color=""
+      customStyle={
+        Object {
+          "marginTop": 30,
+        }
+      }
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      locator=""
+      onPress={null}
+      text=""
+      url=""
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="secondary"
+      class="underlink"
+      customStyle={
+        Object {
+          "marginTop": 10,
+        }
+      }
+      fontSizeVariation="xlarge"
+      locator=""
+      onPress={[Function]}
+      text=""
+      underlineBlue={true}
+      visible={false}
+    />
+    <Styled(LineComp)
+      borderColor={null}
+      borderWidth={0.65}
+      marginBottom={0}
+      marginTop={28}
     />
   </View>
-  <Styled(CustomButton)
-    buttonVariation="variable-width"
-    color="#fff"
-    customStyle={
-      Object {
-        "marginTop": 30,
-      }
-    }
-    disableButton={false}
-    fill="BLUE"
-    fullWidth=""
-    locator=""
-    onPress={[Function]}
-    text=""
-    url=""
-  />
-  <Styled(Anchor)
-    anchorVariation="secondary"
-    class="underlink"
-    customStyle={
-      Object {
-        "marginTop": 10,
-      }
-    }
-    fontSizeVariation="xlarge"
-    locator=""
-    onPress={[Function]}
-    text=""
-    underlineBlue={true}
-    visible={false}
-  />
-  <Styled(LineComp)
-    borderColor={null}
-    borderWidth={0.65}
-    marginBottom={0}
-    marginTop={28}
-  />
-</View>
+</Fragment>
 `;

@@ -27,6 +27,12 @@ export const awsAppSync = {
 export const API_CONFIG = {
   sites: ['us', 'ca'],
   brands: ['tcp', 'gym'],
+  channels: ['Desktop', 'MobileWeb', 'MobileApp'],
+  channelIds: {
+    Desktop: 'Desktop',
+    MobileWeb: 'MobileWeb',
+    MobileApp: 'MobileApp',
+  },
   siteIds: {
     // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)
     us: 'us',
@@ -48,6 +54,16 @@ export const API_CONFIG = {
     brandId: 'gym',
     brandIdCMS: 'Gymboree',
   },
+  CATALOGID_CONFIG: {
+    TCP: {
+      USA: '10551',
+      Canada: '10552',
+    },
+    Gymboree: {
+      USA: '10555',
+      Canada: '10556',
+    },
+  },
   sitesInfo: {
     port: 8081,
     proto: 'https',
@@ -62,7 +78,6 @@ export const API_CONFIG = {
   },
   US_CONFIG_OPTIONS: {
     storeId: '10151',
-    catalogId: '10551',
     isUSStore: true,
     countryKey: '_US',
     siteId: 'us',
@@ -70,7 +85,6 @@ export const API_CONFIG = {
   },
   CA_CONFIG_OPTIONS: {
     storeId: '10152',
-    catalogId: '10552',
     isUSStore: false,
     countryKey: '_CA',
     siteId: 'ca',
@@ -84,6 +98,7 @@ export const API_CONFIG = {
     response: 30000,
     deadline: 40000,
   },
+  overlayTimeout: 5000,
   sessionCookieKey: 'QuantumMetricSessionID',
   apiContentType: 'application/json',
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
-import MiniBagBody from '../views/MiniBagBody';
+import { MiniBagBodyVanilla } from '../views/MiniBagBody';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 
 describe('MiniBagBody component', () => {
@@ -16,8 +16,9 @@ describe('MiniBagBody component', () => {
       userName: 'Christine',
       cartItemCount: 1,
       subTotal: 112,
+      isCartItemsUpdating: { isDeleting: true, isUpdating: false },
     };
-    const component = shallow(<MiniBagBody {...props} />);
+    const component = shallow(<MiniBagBodyVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
   it('renders EmptyMiniBag correctly', () => {
@@ -31,8 +32,9 @@ describe('MiniBagBody component', () => {
       userName: 'User1',
       cartItemCount: 12,
       subTotal: 23,
+      isCartItemsUpdating: { isDeleting: false, isUpdating: true },
     };
-    const tree = shallow(<MiniBagBody {...props} />);
+    const tree = shallow(<MiniBagBodyVanilla {...props} />);
     expect(tree.find(ProductTileWrapper)).toBeTruthy();
   });
   it('renders correctly', () => {
@@ -46,8 +48,9 @@ describe('MiniBagBody component', () => {
       userName: 'User1',
       cartItemCount: 12,
       subTotal: 23,
+      isCartItemsUpdating: {},
     };
-    const tree = shallow(<MiniBagBody {...props} />);
+    const tree = shallow(<MiniBagBodyVanilla {...props} />);
     expect(tree.find(EmptyMiniBag)).toBeTruthy();
   });
 });

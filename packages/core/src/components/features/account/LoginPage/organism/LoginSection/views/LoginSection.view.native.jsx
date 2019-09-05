@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, SafeAreaView } from 'react-native';
+import { View, Text } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -11,14 +11,7 @@ import {
   FormStyle,
   FormStyleView,
   DescriptionStyle,
-  ModalHeading,
-  ModalViewWrapper,
-  LineWrapper,
 } from '../../../molecules/LoginForm/LoginForm.style.native';
-import ModalNative from '../../../../../../common/molecules/Modal';
-import CreateAccount from '../../../../CreateAccount';
-import LineComp from '../../../../../../common/atoms/Line';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const colorPallete = createThemeColorPalette();
 class LoginSection extends PureComponent<Props> {
@@ -26,15 +19,12 @@ class LoginSection extends PureComponent<Props> {
     super(props);
     this.state = {
       resetPassword: false,
-      showModal: false,
     };
   }
 
-  toggleModal = () => {
-    const { showModal } = this.state;
-    this.setState({
-      showModal: !showModal,
-    });
+  toggleCheckoutModal = () => {
+    const { showCheckoutModal } = this.props;
+    showCheckoutModal();
   };
 
   showForgotPassword = () => {
@@ -60,22 +50,32 @@ class LoginSection extends PureComponent<Props> {
       resetForm,
       resetForgotPasswordErrorResponse,
       navigation,
+      variation,
+      handleContinueAsGuest,
+      loginError,
+      showLogin,
+      setEmailid,
     } = this.props;
 
-    const { resetPassword, showModal } = this.state;
+    const { resetPassword } = this.state;
     return (
       <View>
         {!resetPassword && (
           <Fragment>
-            <LoginTopSection labels={labels} />
+            <LoginTopSection variation={variation} labels={labels} />
             <LoginForm
+              setEmailid={setEmailid}
               onSubmit={onSubmit}
               labels={labels}
+              loginError={loginError}
               loginErrorMessage={loginErrorMessage}
               initialValues={initialValues}
               showRecaptcha={showRecaptcha}
               showForgotPasswordForm={this.showForgotPassword}
               resetForm={resetForm}
+              variation={variation}
+              navigation={navigation}
+              handleContinueAsGuest={handleContinueAsGuest}
             />
           </Fragment>
         )}
@@ -92,6 +92,7 @@ class LoginSection extends PureComponent<Props> {
             resetPassword={resetPassword}
             resetLoginState={resetLoginState}
             successFullResetEmail={successFullResetEmail}
+            showLogin={showLogin}
           />
         )}
         <FormStyleView>
@@ -106,29 +107,9 @@ class LoginSection extends PureComponent<Props> {
             buttonVariation="variable-width"
             data-locator=""
             text={labels.login.lbl_login_createAccountCTA}
-            onPress={this.toggleModal}
+            onPress={this.toggleCheckoutModal}
           />
         </FormStyleView>
-        {showModal && (
-          <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-            <ModalHeading>
-              <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="extrabold"
-                fontSize="fs16"
-                text="CREATE ACCOUNT"
-              />
-            </ModalHeading>
-            <LineWrapper>
-              <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-            </LineWrapper>
-            <SafeAreaView>
-              <ModalViewWrapper>
-                <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
-              </ModalViewWrapper>
-            </SafeAreaView>
-          </ModalNative>
-        )}
       </View>
     );
   }

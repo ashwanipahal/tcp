@@ -7,7 +7,11 @@ describe('AddressOverviewTile container', () => {
   it('should render AddressOverviewTile component', () => {
     const addressList = {};
     const component = shallow(
-      <AddressOverviewTile labels={{ accountOverview: {} }} addressList={addressList} />
+      <AddressOverviewTile
+        labels={{ accountOverview: {} }}
+        addressList={addressList}
+        getAddressListAction={() => {}}
+      />
     );
     expect(component.is(AddressOverviewTileComponent)).toBeTruthy();
   });

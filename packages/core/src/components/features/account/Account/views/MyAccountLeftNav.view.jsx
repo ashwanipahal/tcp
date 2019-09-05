@@ -73,7 +73,10 @@ const MyAccountLeftNav = ({ navData, active, className }: Props) => {
             return (
               <li id={nav.id} key={nav.id} className="nav-link-wrapper">
                 {getNavLink({ nav, hasSubSections: nav.subSections, active })}
-                {nav.subSections && renderSubSections({ nav })}
+                {active === nav.component &&
+                  nav.subSections &&
+                  nav.subSections.length !== 0 &&
+                  renderSubSections({ nav })}
               </li>
             );
           })}

@@ -21,7 +21,9 @@ export const ProfileInfoActionTile = ({
   activityCompletionState,
   onClick,
   redirectTo,
+  redirectAsPath,
   dataLocatorPrefix,
+  noLink,
 }) => {
   const titleToShow = activityCompletionState || activityTitle;
 
@@ -29,8 +31,10 @@ export const ProfileInfoActionTile = ({
     <Anchor
       onClick={activityCompletionState ? noop : onClick}
       to={activityCompletionState ? '' : redirectTo}
+      asPath={activityCompletionState ? '' : redirectAsPath}
       className={className}
       centered
+      noLink={noLink}
     >
       {activityCompletionState && (
         <Image
@@ -81,8 +85,10 @@ ProfileInfoActionTile.propTypes = {
   activityCompletionState: PropTypes.string,
   onClick: PropTypes.func,
   redirectTo: PropTypes.string,
+  redirectAsPath: PropTypes.string,
   className: PropTypes.string,
   dataLocatorPrefix: PropTypes.string,
+  noLink: PropTypes.bool,
 };
 
 ProfileInfoActionTile.defaultProps = {
@@ -92,8 +98,10 @@ ProfileInfoActionTile.defaultProps = {
   activityCompletionState: '',
   onClick: () => {},
   redirectTo: '',
+  redirectAsPath: '',
   className: '',
   dataLocatorPrefix: '',
+  noLink: false,
 };
 
 export default withStyles(ProfileInfoActionTile, styles);

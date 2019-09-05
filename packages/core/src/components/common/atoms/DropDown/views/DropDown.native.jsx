@@ -12,6 +12,7 @@ import {
   DropDownItemContainer,
   Separator,
   FlatList,
+  StyledLabel,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -35,6 +36,7 @@ class DropDown extends React.PureComponent<Props> {
     itemStyle: PropTypes.shape({}),
     dropDownStyle: PropTypes.shape({}),
     variation: PropTypes.string,
+    bounces: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -44,7 +46,24 @@ class DropDown extends React.PureComponent<Props> {
     itemStyle: null,
     dropDownStyle: null,
     variation: 'primary',
+    bounces: true,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    const { selectedLabelState } = state;
+    if (props.selectedValue !== selectedLabelState) {
+      const result = props.data.find(item => {
+        if (item.value) return item.value === props.selectedValue;
+        return item.id === props.selectedValue;
+      });
+
+      if (result) {
+        if (result.label) return { selectedLabelState: result.label };
+        return { selectedLabelState: result.displayName };
+      }
+    }
+    return null;
+  }
 
   constructor(props) {
     super(props);
@@ -63,22 +82,24 @@ class DropDown extends React.PureComponent<Props> {
     };
 
     const { data, selectedValue } = this.props;
-    const selectedObject = data.filter(item => {
+    const selectedObject = data.find(item => {
       return item.value === selectedValue;
     });
 
     let selectedLabelState;
     if (selectedValue) {
-      if (selectedObject[0]) selectedLabelState = selectedObject[0].label;
+      if (selectedObject) selectedLabelState = selectedObject.label;
       else selectedLabelState = selectedValue;
     } else {
-      selectedLabelState = data[0].label;
+      selectedLabelState = data.label;
     }
 
     this.state = {
       dropDownIsOpen: false,
       selectedLabelState,
       top: 0,
+      flatListTop: 0,
+      flatListHeight: 0,
     };
   }
 
@@ -110,8 +131,33 @@ class DropDown extends React.PureComponent<Props> {
       const topMargin = {
         top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
       };
-      this.setState({ top: topMargin.top });
+
+      const dH = windowHeight - pageY - height;
+      this.setDropDownPosition(topMargin, dH, showInBottom, calculateHeight, windowHeight);
     });
+  };
+
+  /**
+   * Set drop down position
+   */
+  setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
+    this.setState({ top: topMargin.top });
+    let listMargin = 0;
+    let listHeight = 0;
+
+    if (showInBottom) {
+      if (calculateHeight > dH) {
+        listHeight = dH - 100;
+      } else {
+        listHeight = calculateHeight - 100;
+      }
+    } else if (calculateHeight > windowHeight) {
+      listMargin = 100;
+      listHeight = (windowHeight * 3) / 4;
+    } else {
+      listHeight = calculateHeight;
+    }
+    this.setState({ flatListHeight: listHeight, flatListTop: listMargin });
   };
 
   /**
@@ -119,22 +165,19 @@ class DropDown extends React.PureComponent<Props> {
    */
   dropDownLayout = ({ item }) => {
     const { variation, itemStyle } = this.props;
-    const { displayName, fullName } = item;
+    const { displayName } = item;
     let { label } = item;
     if (!label) {
-      if (fullName) label = fullName;
-      else {
-        label = displayName;
-      }
+      label = displayName;
     }
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         <BodyCopy
-          fontFamily="secondary"
+          mobileFontFamily="secondary"
           fontSize="fs13"
           textAlign={variation === 'primary' ? 'center' : ''}
-          color="gray.800"
-          fontWeight="black"
+          color={itemStyle.color}
+          fontWeight="semibold"
           text={label}
         />
       </DropDownItemContainer>
@@ -155,10 +198,9 @@ class DropDown extends React.PureComponent<Props> {
    */
   onDropDownItemClick = item => {
     let { label, value } = item;
-    const { id, displayName, fullName } = item;
+    const { id, displayName } = item;
     if (!label) {
-      if (fullName) label = fullName;
-      else label = displayName;
+      label = displayName;
     }
     if (!value) value = id;
     this.setState({
@@ -181,24 +223,26 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   render() {
-    const { data, dropDownStyle } = this.props;
-    const { dropDownIsOpen, selectedLabelState, top } = this.state;
+    const { data, dropDownStyle, heading, bounces, disabled } = this.props;
+    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
     return (
       <View style={dropDownStyle}>
+        {heading && <StyledLabel isFocused>{heading}</StyledLabel>}
         <Row
           {...this.props}
           onStartShouldSetResponder={this.openDropDown}
           ref={ref => {
             this.rowMarker = ref;
           }}
+          pointerEvents={disabled ? 'none' : 'auto'}
         >
           <HeaderContainer>
             <BodyCopy
-              fontFamily="secondary"
+              mobileFontFamily="secondary"
               fontSize="fs13"
               textAlign="center"
               color="gray.800"
-              fontWeight="black"
+              fontWeight="semibold"
               text={selectedLabelState}
             />
           </HeaderContainer>
@@ -212,9 +256,9 @@ class DropDown extends React.PureComponent<Props> {
             onPress={this.closeDropDown}
             activeOpacity={1}
             style={{
-              width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
+              paddingTop: flatListTop,
             }}
           >
             <OverLayView
@@ -223,6 +267,7 @@ class DropDown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
+                width: this.rowFrame.width,
               }}
             >
               {dropDownIsOpen && (
@@ -230,8 +275,9 @@ class DropDown extends React.PureComponent<Props> {
                   data={data}
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.key}
+                  bounces={bounces}
+                  style={{ height: flatListHeight }}
                   ItemSeparatorComponent={() => <Separator />}
-                  style={{ height: getScreenHeight() / 2 }}
                 />
               )}
             </OverLayView>

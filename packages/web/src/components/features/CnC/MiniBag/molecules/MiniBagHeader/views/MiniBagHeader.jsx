@@ -30,7 +30,10 @@ const MiniBagHeader = ({
   return (
     <div className={className}>
       <Row className="mainWrapper">
-        <Col className="subHeaderText" colSize={{ small: 4, medium: 6, large: 9 }}>
+        <Col
+          className={!userName ? 'subHeaderTextLogin' : 'subHeaderText'}
+          colSize={{ small: 4, medium: 6, large: 9 }}
+        >
           {!userName ? (
             <BodyCopy component="span" fontSize="fs12" textAlign="left">
               <Anchor fontSizeVariation="large" anchorVariation="primary" noLink to="">
@@ -47,28 +50,38 @@ const MiniBagHeader = ({
             </BodyCopy>
           ) : (
             <>
-              <BodyCopy component="span" fontSize="fs16" fontWeight="semibold" textAlign="left">
-                {`${labels.hi} ${userName} `}
+              <BodyCopy
+                className="userName"
+                component="span"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                textAlign="left"
+                fontFamily="secondary"
+              >
+                {`${labels.hi}, ${userName} `}
               </BodyCopy>
               <BodyCopy
                 className="pointsRewards"
                 component="span"
-                fontSize="fs14"
+                fontSize="fs15"
+                fontFamily="secondary"
                 fontWeight="semibold"
                 textAlign="left"
               >
-                {`(${currentPoints} ${labels.points}, $${totalRewards} ${labels.inRewards} )`}
+                {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
+                  labels.inRewards
+                })`}
               </BodyCopy>
             </>
           )}
         </Col>
-        <Col className="subHeaderText" colSize={{ small: 2, medium: 2, large: 3 }}>
+        <Col className="subHeaderTextIcon" colSize={{ small: 2, medium: 2, large: 3 }}>
           <Anchor className="favIcon" fontSizeVariation="small" anchorVariation="primary" noLink>
             <Image
               alt="Product"
               className="product-image"
               src={getIconPath('fav-icon')}
-              data-locator="addedtobag-fav-icon"
+              dataLocator="addedtobag-fav-icon"
             />
           </Anchor>
           {'  '}
@@ -94,3 +107,4 @@ const MiniBagHeader = ({
   );
 };
 export default withStyles(MiniBagHeader, styles);
+export { MiniBagHeader as MiniBagHeaderVanilla };

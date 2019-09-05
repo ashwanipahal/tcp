@@ -14,6 +14,26 @@ export const loadLabelsData = payload => {
     type: GLOBAL_CONSTANTS.LOAD_LABELS_DATA,
   };
 };
+export const setLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_LABELS_DATA,
+  };
+};
+
+export const loadComponentLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_COMPONENT_LABELS_DATA,
+  };
+};
+
+export const loadXappConfigData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_XAPP_CONFIG,
+  };
+};
 
 export const setAPIConfig = payload => {
   return {
@@ -36,14 +56,45 @@ export const loadModulesData = payload => {
   };
 };
 
+export const setCountry = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_COUNTRY,
+  };
+};
+
+export const setCurrency = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_CURRENCY,
+  };
+};
+
+export const setLanguage = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_LANGUAGE,
+  };
+};
+
 export const setDeviceInfo = payload => ({
   payload,
   type: GLOBAL_CONSTANTS.SET_DEVICE_INFO,
 });
 
+export const setOptimizelyFeaturesList = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
+});
+
 export default {
   loadLayoutData,
   loadLabelsData,
+  setLabelsData,
+  loadComponentLabelsData,
   bootstrapData,
   loadModulesData,
+  setCountry,
+  setCurrency,
+  setLanguage,
 };

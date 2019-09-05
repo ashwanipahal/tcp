@@ -35,10 +35,24 @@ export function getSetPickupAltValuesActn(pickup) {
   };
 }
 
+export function getSetCheckoutStage(payload) {
+  return {
+    payload,
+    type: 'CHECKOUT_UIFLAGS_SET_STAGE',
+  };
+}
+
 export function getSetShippingValuesActn(shipping) {
   return {
     shipping,
     type: 'CHECKOUT_VALUES_SET_SHIPPING',
+  };
+}
+
+export function getSetBillingValuesActn(shipping) {
+  return {
+    shipping,
+    type: 'CHECKOUT_VALUES_SET_BILLING',
   };
 }
 
@@ -195,9 +209,84 @@ export function setItemsCount(itemsCount) {
   };
 }
 
+export function setIsLoadingShippingMethods(isLoading) {
+  return {
+    isLoading,
+    type: constants.CHECKOUT_FLAGS_SET_LOAD_METHODS,
+  };
+}
+
+export function setShippingOptions(shippingMethods) {
+  return {
+    shippingMethods,
+    type: constants.CHECKOUT_ORDER_OPTIONS_SET_SHIPPING,
+  };
+}
+
+export function submitShippingSection(payload) {
+  return {
+    type: constants.SUBMIT_SHIPPING_SECTION,
+    payload,
+  };
+}
+
+export function setAddressError(addressError) {
+  return {
+    addressError,
+    type: constants.CHECKOUT_FLAGS_SET_ADDRESS_ERROR,
+  };
+}
+
+export function setSmsNumberForUpdates(phoneNumber) {
+  return {
+    phoneNumber,
+    type: constants.CHECKOUT_VALUES_SET_SMS_UPDATES,
+  };
+}
+
 export function onEditModeChangeAction(isEditingSubform) {
   return {
     isEditingSubform,
     type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
   };
 }
+
+export function fetchShipmentMethods({ ...params } = {}) {
+  return {
+    type: constants.CHECKOUT_LOAD_SHIPMENT_METHODS,
+    ...params,
+  };
+}
+
+export const emailSignupStatus = payload => {
+  return {
+    payload,
+    type: 'EMAIL_SUBSCRIPTION_STATUS',
+  };
+};
+
+export const routeToPickupPage = () => {
+  return {
+    type: constants.ROUTE_TO_PICKUP_PAGE,
+  };
+};
+
+export const setGiftCardError = payload => {
+  return {
+    type: constants.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
+
+export const resetGiftCardError = () => {
+  return {
+    type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setOrderBalanceTotal = payload => {
+  return {
+    type: constants.SET_ORDER_TOTAL,
+    payload,
+  };
+};

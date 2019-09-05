@@ -5,28 +5,24 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import OrderLedgerContainer from '../../OrderLedger';
 import CouponAndPromos from '../../CouponAndPromos';
 import { ButtonWrapper, CheckoutButton } from '../styles/CnCTemplate.style.native';
-import { navigateToNestedRoute } from '../../../../../../../utils/utils.app';
 
-const CnCCommonTemplate = ({ navigation, btnText, routeToPage }) => {
+const CnCCommonTemplate = ({ btnText, onPress }) => {
   return (
     <>
       <View>
-        <CouponAndPromos />
+        <CouponAndPromos isCheckout />
       </View>
       <View>
         <OrderLedgerContainer />
       </View>
       <ButtonWrapper>
-        <CheckoutButton>
+        <CheckoutButton onPress={onPress}>
           <BodyCopy
             color="white"
             fontWeight="extrabold"
             fontFamily="secondary"
             fontSize="fs13"
             text={btnText}
-            onPress={() => {
-              navigateToNestedRoute(navigation, 'HomeStack', routeToPage);
-            }}
           />
         </CheckoutButton>
       </ButtonWrapper>
@@ -36,7 +32,7 @@ const CnCCommonTemplate = ({ navigation, btnText, routeToPage }) => {
 CnCCommonTemplate.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   btnText: PropTypes.string.isRequired,
-  routeToPage: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default CnCCommonTemplate;

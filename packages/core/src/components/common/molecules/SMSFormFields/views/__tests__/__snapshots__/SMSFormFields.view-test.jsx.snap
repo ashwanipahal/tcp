@@ -28,7 +28,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -50,6 +50,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -93,13 +95,41 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
     opacity: ",
                 [Function],
                 ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
   }
 ",
                 ";
@@ -172,7 +202,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -194,6 +224,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -237,13 +269,41 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
     opacity: ",
                 [Function],
                 ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
   }
 ",
                 ";
@@ -285,7 +345,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       className="phone-field-wrapper"
       colSize={
@@ -466,11 +528,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         type="tel"
       />
     </Styled(Col)>
-    <Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
       <Styled(Col)
         colSize={
           Object {
-            "large": 5,
+            "large": 7,
             "medium": 8,
             "small": 6,
           }
@@ -486,14 +550,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="small"
-          href="#"
-          noLink={true}
-          noUnderline={true}
-          target="_blank"
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -529,7 +585,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -551,6 +607,8 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -594,13 +652,41 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
     opacity: ",
                 [Function],
                 ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
   }
 ",
                 ";
@@ -642,7 +728,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       className="phone-field-wrapper"
       colSize={
@@ -823,11 +911,13 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         type="tel"
       />
     </Styled(Col)>
-    <Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
       <Styled(Col)
         colSize={
           Object {
-            "large": 5,
+            "large": 7,
             "medium": 8,
             "small": 6,
           }
@@ -843,14 +933,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="small"
-          href="#"
-          noLink={true}
-          noUnderline={true}
-          target="_blank"
         />
       </Styled(Col)>
     </Styled(Row)>

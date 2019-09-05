@@ -1,24 +1,46 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import setCookie from 'set-cookie-parser';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
-import { createAPIConfig } from '@tcp/core/src/utils';
+import { createAPIConfig, getAPIConfig, isDevelopment } from '@tcp/core/src/utils';
+import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
+import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { Header, Footer } from '../components/features/content';
+import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 
+// constants
+import constants from '../constants';
+
+// Script injection component
+// This is lazy-loaded so we inject it after SSR
+const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr: false });
+
+// Analytics script injection
+function AnalyticsScript() {
+  return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
+}
+
 class TCPWebApp extends App {
+  constructor(props) {
+    super(props);
+    this.theme = getCurrentTheme();
+  }
+
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
@@ -54,6 +76,14 @@ class TCPWebApp extends App {
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
+    const { envId, raygunApiKey, channelId } = getAPIConfig();
+    initErrorReporter({
+      isServer: false,
+      envId,
+      raygunApiKey,
+      channelId,
+      isDevelopment: isDevelopment(),
+    });
   }
 
   componentDidUpdate() {
@@ -67,10 +97,41 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
+
+      // optimizely headers
+      const optimizelyHeadersObject = {};
+      const setCookieHeaderList = setCookie.parse(res).map(({ name, value }) => {
+        let itemValue;
+        try {
+          itemValue = JSON.parse(value);
+        } catch (err) {
+          itemValue = {};
+        }
+        return {
+          [name]: itemValue,
+        };
+      });
+
+      const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
+      if (optimizelyHeader) {
+        optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
+          let optimizelyHeaderValue;
+          try {
+            optimizelyHeaderValue = JSON.parse(
+              res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
+            );
+          } catch (err) {
+            optimizelyHeaderValue = {};
+          }
+          optimizelyHeadersObject[item] = optimizelyHeaderValue;
+        });
+      }
+
       const payload = {
         ...Component.pageInfo,
         apiConfig,
         deviceType: device.type,
+        optimizelyHeadersObject,
       };
       store.dispatch(bootstrapData(payload));
     }
@@ -90,6 +151,11 @@ class TCPWebApp extends App {
     return Object.assign(pageProps, compProps);
   }
 
+  getSEOTags = pageId => {
+    const seoConfig = deriveSEOTags(pageId);
+    return <SEOTags seoConfig={seoConfig} />;
+  };
+
   render() {
     const { Component, pageProps, store, router } = this.props;
     let isNonCheckoutPage = true;
@@ -100,24 +166,26 @@ class TCPWebApp extends App {
         isNonCheckoutPage = false;
       }
     }
-    const theme = getCurrentTheme();
     return (
       <Container>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
-            <Grid>
-              {isNonCheckoutPage && <Header />}
-              {!isNonCheckoutPage && <CheckoutHeader />}
+            <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
+              {this.getSEOTags(Component.pageId)}
+              <Header />
+              <CheckoutHeader />
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />
-                {isNonCheckoutPage && <Footer />}
+                <Footer />
               </div>
             </Grid>
           </Provider>
         </ThemeProvider>
+        {/* Inject analytics script if enabled */}
+        {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>
     );
   }

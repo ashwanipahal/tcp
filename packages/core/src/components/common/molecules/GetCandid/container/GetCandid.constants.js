@@ -1,0 +1,9 @@
+import { GET_CANDID_ACTION_PATTERN } from '../../../../../constants/reducer.constants';
+
+const GET_CANDID_CONSTANTS = {
+  FETCH_DATA: `${GET_CANDID_ACTION_PATTERN}FETCH_DATA`,
+  SET_DATA: `${GET_CANDID_ACTION_PATTERN}SET_DATA`,
+  GET_CANDID_DATA_TTL: 30 * 1000,
+};
+
+export default GET_CANDID_CONSTANTS;

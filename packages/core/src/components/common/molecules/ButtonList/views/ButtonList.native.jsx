@@ -18,6 +18,7 @@ type Props = {
   buttonListVariation: string,
   locator: string,
   color: string,
+  buttonVariation: string,
 };
 
 /**
@@ -32,7 +33,7 @@ const keyExtractor = (_, index) => index.toString();
 /**
  * This function is used to render button either full-width or half
  */
-const renderItem = (item, navigation, showFullWidth, locator, color) => {
+const renderItem = (item, navigation, showFullWidth, locator, buttonVariation) => {
   const { button } = item;
 
   return (
@@ -40,12 +41,12 @@ const renderItem = (item, navigation, showFullWidth, locator, color) => {
       locator={locator}
       accessibilityRole="button"
       accessibilityLabel={button.text}
-      buttonVariation="cautionary-button"
+      buttonVariation={buttonVariation}
       text={button.text}
-      color={color}
       style={showFullWidth ? buttonFullWidth : buttonWidth}
       url={button.url}
       navigation={navigation}
+      noCurve
     />
   );
 };
@@ -53,13 +54,13 @@ const renderItem = (item, navigation, showFullWidth, locator, color) => {
 /**
  * This function is used to render Even number of Buttons into Grid
  */
-const renderEvenButtonGrid = (updatedCtxButton, navigation, locator, color) => {
+const renderEvenButtonGrid = (updatedCtxButton, navigation, locator, buttonVariation) => {
   return (
     <FlatList
       numColumns={2}
       keyExtractor={keyExtractor}
       data={updatedCtxButton}
-      renderItem={({ item }) => renderItem(item, navigation, false, locator, color)}
+      renderItem={({ item }) => renderItem(item, navigation, false, locator, buttonVariation)}
     />
   );
 };
@@ -177,7 +178,7 @@ const renderCTAList = (ctxButton, navigation, locator) => {
  */
 const renderItemImageCTAList = (item, navigation, locator, color) => {
   const style = { borderRadius: 60 / 2 };
-  const bodycopyStyle = { marginTop: 20 };
+  const bodycopyStyle = { marginTop: 20, width: 75 };
   const {
     item: { image, button },
     index,
@@ -197,6 +198,7 @@ const renderItemImageCTAList = (item, navigation, locator, color) => {
           fontWeight="extrabold"
           letterSpacing="black"
           text={button.text}
+          textAlign="center"
           style={bodycopyStyle}
         />
       </DivImageContainer>
@@ -228,19 +230,30 @@ const renderImageCTAList = (ctxButton, navigation, locator, color) => {
  * buttonsData: Takes the list of linktext, tackedCTAButton, scrollCTAButton and divImageCTA button .
  */
 
-const ButtonList = ({ locator, buttonListVariation, navigation, buttonsData, color }: Props) => {
+const ButtonList = ({
+  locator,
+  buttonListVariation,
+  navigation,
+  buttonsData,
+  color,
+  buttonVariation,
+}: Props) => {
   if (buttonListVariation === 'stackedCTAList') {
     const isEvenButtonGrid = buttonsData.length % 2 === 0;
     return (
       <Container>
-        {isEvenButtonGrid && renderEvenButtonGrid(buttonsData, navigation, locator, color)}
-        {!isEvenButtonGrid && renderOddButtonGrid(buttonsData, navigation, locator, color)}
+        {isEvenButtonGrid &&
+          renderEvenButtonGrid(buttonsData, navigation, locator, buttonVariation)}
+        {!isEvenButtonGrid &&
+          renderOddButtonGrid(buttonsData, navigation, locator, buttonVariation)}
       </Container>
     );
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    return <Container>{renderScrollCTAList(buttonsData, navigation, locator, color)}</Container>;
+    return (
+      <ContainerView>{renderScrollCTAList(buttonsData, navigation, locator, color)}</ContainerView>
+    );
   }
 
   if (buttonListVariation === 'linkCTAList') {

@@ -6,6 +6,12 @@ import { Styles, ErrorWrapper } from '../styles/CreateAccounPage.style.native';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import {
+  setUserLoginDetails,
+  resetTouchPassword,
+  touchIDCheck,
+  isSupportedTouch,
+} from '../../../../LoginPage/container/loginUtils/keychain.utils.native';
 
 class CreateAccounPage extends React.Component {
   static propTypes = {
@@ -14,6 +20,8 @@ class CreateAccounPage extends React.Component {
     isIAgreeChecked: PropTypes.bool,
     onRequestClose: PropTypes.func,
     error: PropTypes.string,
+    showForgotPasswordForm: PropTypes.func,
+    showLogin: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -21,6 +29,7 @@ class CreateAccounPage extends React.Component {
     labels: PropTypes.shape({}),
     isIAgreeChecked: false,
     onRequestClose: () => {},
+    showForgotPasswordForm: () => {},
     error: {},
   };
 
@@ -40,18 +49,37 @@ class CreateAccounPage extends React.Component {
     this.setState({ confirmHideShowPwd: value });
   };
 
+  // when account is cceate handle submit will submit the form
   handleSubmitForm(payload) {
     const { createAccountAction } = this.props;
     createAccountAction(payload);
+    resetTouchPassword();
+    setUserLoginDetails(payload.emailAddress, payload.password);
+    isSupportedTouch().then(biometryType => {
+      if ((biometryType && payload.useTouchID) || payload.useFaceID) {
+        touchIDCheck();
+      }
+    });
   }
 
   render() {
-    const { labels, isIAgreeChecked, onRequestClose, error } = this.props;
+    const {
+      labels,
+      isIAgreeChecked,
+      onRequestClose,
+      error,
+      showForgotPasswordForm,
+      showLogin,
+    } = this.props;
     const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
       <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
         <View>
-          <CreateAccountTopSection labels={labels} />
+          <CreateAccountTopSection
+            showForgotPasswordForm={showForgotPasswordForm}
+            labels={labels}
+            showLogin={showLogin}
+          />
           {!!error && (
             <ErrorWrapper>
               <BodyCopy
@@ -72,6 +100,7 @@ class CreateAccounPage extends React.Component {
             confirmHideShowPwd={confirmHideShowPwd}
             isIAgreeChecked={isIAgreeChecked}
             onRequestClose={onRequestClose}
+            showLogin={showLogin}
           />
         </View>
       </ScrollView>

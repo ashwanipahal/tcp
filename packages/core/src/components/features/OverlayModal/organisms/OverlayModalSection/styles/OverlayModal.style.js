@@ -13,12 +13,15 @@ const StyledModal = css`
   right: ${props => (props.variation === 'primary' ? '0' : '')};
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
   z-index: 999;
-  @media ${props => props.theme.mediaQuery.smallOnly} {
+  ${props =>
+    props.component !== 'accountDrawer'
+      ? `@media ${props.theme.mediaQuery.smallOnly} {
     position: fixed;
     top: 0 !important;
     height: 100%;
     width: 100%;
-  }
+  }`
+      : ''}
   .dialog__content {
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
@@ -33,7 +36,8 @@ const StyledModal = css`
     position: absolute;
     height: 8px;
     width: 100%;
-    background-color: ${mprplcce};
+    background-color: ${props =>
+      !props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce};
     z-index: 99;
   }
   .modal__triangle {
@@ -41,7 +45,8 @@ const StyledModal = css`
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid ${mprplcce};
+    border-bottom: 10px solid
+      ${props => (!props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce)};
     position: absolute;
     top: -10px;
     z-index: 99;

@@ -1,99 +1,147 @@
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
-import { PropTypes } from 'prop-types';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { PropTypes } from 'prop-types';
 import TextBox from '../../atoms/TextBox';
 import DropDown from '../../atoms/DropDown/views/DropDown.native';
 import InputCheckbox from '../../atoms/InputCheckbox';
 import Button from '../../atoms/Button';
 import createValidateMethod from '../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../utils/formValidation/validatorStandardConfig';
-import { AutoCompleteComponent } from '../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
 import {
-  InputField,
-  AddressFormView,
-  AddAddressButton,
-  CancelButton,
-  EmptyView,
-  CtaView,
+  SaveButtonWrapper,
+  CancelButtonWrapper,
   dropDownStyle,
   itemStyle,
   InputFieldHalf,
+  StateZipCodeContainer,
+  Separator,
+  SetDefaultShippingWrapper,
+  AddAddressWrapper,
+  GooglePlaceInputWrapper,
+  OptionalAdressWrapper,
+  HiddenAddressLineWrapper,
+  CountryContainer,
+  HiddenStateWrapper,
 } from './AddressForm.native.style';
 
-export class AddressForm extends React.PureComponent<Props, State> {
+class AddressForm extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    const selectArray = [
+      {
+        id: ``,
+        fullName: '',
+        displayName: 'Select',
+      },
+    ];
+
+    this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
+    this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
+
     this.state = {
       country: 'US',
-      dropDownItem: UScountriesStatesTable[0].displayName,
+      dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
     };
+
+    this.locationRef = null;
   }
 
-  StateCountryChange = e => {
-    this.setState({
-      country: e.target.value ? e.target.value : '',
-    });
-  };
+  componentDidMount() {
+    const { dispatch, initialValues } = this.props;
+    dispatch(change('AddressForm', 'country', initialValues.country));
+    dispatch(change('AddressForm', 'addressLine1', initialValues.addressLine1));
+  }
 
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change('AddressForm', 'city', address.city));
     dispatch(change('AddressForm', 'zipCode', address.zip));
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
+    this.setState({ dropDownItem: address.state });
+    this.locationRef.setAddressText(address.street);
   };
 
   render() {
     const {
-      handleSubmit,
-      invalid,
       addressFormLabels,
       isEdit,
       isMakeDefaultDisabled,
-      submitAddressFormAction,
       onCancel,
+      handleSubmit,
+      dispatch,
+      addressLine1,
+      initialValues,
     } = this.props;
-    const { country, dropDownItem } = this.state;
+    const { dropDownItem, country } = this.state;
+    const disabledProps = {
+      isChecked: initialValues.primary,
+    };
+    if (isMakeDefaultDisabled) {
+      disabledProps.isChecked = true;
+      disabledProps.disabled = true;
+    }
     return (
-      <AddressFormView>
-        <InputField>
+      <AddAddressWrapper>
+        <Field
+          name="firstName"
+          id="firstName"
+          label={addressFormLabels.firstName}
+          type="text"
+          component={TextBox}
+          maxLength={50}
+          dataLocator="addnewaddress-firstname"
+        />
+        <Field
+          id="lastName"
+          name="lastName"
+          label={addressFormLabels.lastName}
+          component={TextBox}
+          dataLocator="addnewaddress-lastname"
+        />
+
+        <GooglePlaceInputWrapper>
           <Field
-            name="firstName"
-            id="firstName"
-            label={addressFormLabels.firstName}
-            type="text"
-            component={TextBox}
-            maxLength={50}
-            dataLocator="addnewaddress-firstname"
-          />
-        </InputField>
-        <InputField>
-          <Field
-            id="lastName"
-            name="lastName"
-            label={addressFormLabels.lastName}
-            component={TextBox}
-            dataLocator="addnewaddress-lastname"
-          />
-        </InputField>
-        <InputField>
-          <Field
-            id="addressLine1"
-            name="addressLine1"
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
+            onValueChange={(data, inputValue) => {
+              this.handlePlaceSelected(data, inputValue);
+            }}
+            onEndEditing={text => {
+              setTimeout(() => {
+                dispatch(change('AddressForm', 'addressLine1', text));
+              }, 1000);
+            }}
+            refs={instance => {
+              this.locationRef = instance;
+            }}
+            initialValue={addressLine1}
             dataLocator="addnewaddress-addressl1"
+            componentRestrictions={{ ...{ country: [country] } }}
           />
-        </InputField>
+        </GooglePlaceInputWrapper>
 
-        <InputField>
+        <HiddenAddressLineWrapper>
+          <Field
+            label=""
+            component={TextBox}
+            title=""
+            type="hidden"
+            id="addressLine1"
+            name="addressLine1"
+          />
+        </HiddenAddressLineWrapper>
+
+        <OptionalAdressWrapper>
           <Field
             id="addressLine2"
             name="addressLine2"
@@ -101,122 +149,177 @@ export class AddressForm extends React.PureComponent<Props, State> {
             component={TextBox}
             dataLocator="addnewaddress-addressl2"
           />
-        </InputField>
-        <InputFieldHalf>
-          <Field
-            id="city"
-            name="city"
-            label={addressFormLabels.city}
-            component={TextBox}
-            dataLocator="addnewaddress-city"
-          />
-        </InputFieldHalf>
-        <InputFieldHalf>
-          <Field
-            id="state"
-            name="state"
-            component={DropDown}
-            dataLocator="addnewaddress-city"
-            selectedValue={dropDownItem}
-            data={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
-            onValueChange={itemValue => {
-              this.setState({ dropDownItem: itemValue });
-            }}
-            variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
-          />
-        </InputFieldHalf>
-        <InputField>
-          <Field
-            id="zipCode"
-            name="zipCode"
-            label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
-            maxLength={country === 'CA' ? 6 : 5}
-            component={TextBox}
-            dataLocator="addnewaddress-zipcode"
-          />
-        </InputField>
-        <InputField>
+        </OptionalAdressWrapper>
+
+        <Field
+          id="city"
+          name="city"
+          label={addressFormLabels.city}
+          component={TextBox}
+          dataLocator="addnewaddress-city"
+        />
+
+        <StateZipCodeContainer>
+          <InputFieldHalf>
+            <Field
+              bounces={false}
+              component={DropDown}
+              heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
+              dataLocator="addnewaddress-city"
+              selectedValue={dropDownItem}
+              data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
+              onValueChange={itemValue => {
+                dispatch(change('AddressForm', 'state', itemValue));
+                this.setState({ dropDownItem: itemValue });
+              }}
+              variation="secondary"
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+            />
+
+            <HiddenStateWrapper>
+              <Field label="" component={TextBox} title="" type="hidden" id="state" name="state" />
+            </HiddenStateWrapper>
+          </InputFieldHalf>
+
+          <Separator />
+
+          <InputFieldHalf zipCode>
+            <Field
+              id="zipCode"
+              name="zipCode"
+              label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
+              maxLength={country === 'CA' ? 6 : 5}
+              component={TextBox}
+              dataLocator="addnewaddress-zipcode"
+            />
+          </InputFieldHalf>
+        </StateZipCodeContainer>
+
+        <CountryContainer>
           <Field
             id="country"
             name="country"
             component={DropDown}
-            selectedValue={country}
+            heading={addressFormLabels.country}
+            selectedValue={
+              country === 'US'
+                ? countriesOptionsMap[0].displayName
+                : countriesOptionsMap[1].displayName
+            }
             data={countriesOptionsMap}
             dataLocator="addnewaddress-country"
             onValueChange={itemValue => {
+              dispatch(change('AddressForm', 'country', itemValue));
               this.setState({ country: itemValue });
             }}
             variation="secondary"
             dropDownStyle={{ ...dropDownStyle }}
             itemStyle={{ ...itemStyle }}
           />
-        </InputField>
-        <InputField>
-          <Field
-            id="phoneNumber"
-            name="phoneNumber"
-            label={addressFormLabels.phoneNumber}
-            component={TextBox}
-            dataLocator="addnewaddress-phnumber"
-            type="tel"
-          />
-        </InputField>
-        <InputField>
+        </CountryContainer>
+
+        <Field
+          id="phoneNumber"
+          name="phoneNumber"
+          label={addressFormLabels.phoneNumber}
+          component={TextBox}
+          dataLocator="addnewaddress-phnumber"
+          type="tel"
+        />
+
+        <SetDefaultShippingWrapper>
           <Field
             id="primary"
             name="primary"
             component={InputCheckbox}
             dataLocator="addnewaddress-city"
-            disabled={isMakeDefaultDisabled}
+            {...disabledProps}
             rightText={addressFormLabels.setDefaultMsg}
           />
-        </InputField>
-        <CtaView>
+        </SetDefaultShippingWrapper>
+
+        <SaveButtonWrapper>
           <Button
             fill="BLUE"
             type="submit"
-            disabled={invalid}
-            onPress={handleSubmit(submitAddressFormAction)}
+            color="white"
+            onPress={handleSubmit}
             buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
-            style={AddAddressButton}
           />
-          <EmptyView />
+        </SaveButtonWrapper>
+
+        <CancelButtonWrapper>
           <Button
             fill="WHITE"
             onPress={onCancel}
             buttonVariation="variable-width"
             text={addressFormLabels.cancel}
-            style={CancelButton}
           />
-        </CtaView>
-      </AddressFormView>
+        </CancelButtonWrapper>
+      </AddAddressWrapper>
     );
   }
 }
 
 AddressForm.propTypes = {
-  handleSubmit: PropTypes.func,
-  invalid: PropTypes.bool,
   dispatch: PropTypes.func,
-  submitAddressFormAction: PropTypes.func,
-  addressFormLabels: PropTypes.shape({}),
+  addressFormLabels: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    addressLine1: PropTypes.string,
+    addressLine2: PropTypes.string,
+    city: PropTypes.string,
+    postalCode: PropTypes.string,
+    zipCode: PropTypes.string,
+    country: PropTypes.string,
+    phoneNumber: PropTypes.string,
+    setDefaultMsg: PropTypes.string,
+    update: PropTypes.string,
+    addAddress: PropTypes.string,
+    cancel: PropTypes.string,
+  }),
   isEdit: PropTypes.bool,
-  isMakeDefaultDisabled: PropTypes.bool,
+  isMakeDefaultDisabled: PropTypes.bool.isRequired,
   onCancel: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  initialValues: PropTypes.shape({
+    state: PropTypes.string,
+    country: PropTypes.string,
+    addressLine1: PropTypes.string,
+  }),
+  addressLine1: PropTypes.string,
+  countryState: PropTypes.string,
 };
 
 AddressForm.defaultProps = {
   isEdit: false,
-  isMakeDefaultDisabled: false,
-  invalid: false,
-  handleSubmit: () => {},
-  addressFormLabels: {},
+  addressFormLabels: {
+    firstName: '',
+    lastName: '',
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    postalCode: '',
+    zipCode: '',
+    country: '',
+    phoneNumber: '',
+    setDefaultMsg: '',
+    update: '',
+    addAddress: '',
+    cancel: '',
+  },
   dispatch: () => {},
   onCancel: () => {},
-  submitAddressFormAction: () => {},
+  handleSubmit: () => {},
+  initialValues: {
+    state: '',
+    country: '',
+    addressLine1: '',
+  },
+  addressLine1: '',
+  countryState: '',
 };
 
 const validateMethod = createValidateMethod(
@@ -227,14 +330,18 @@ const validateMethod = createValidateMethod(
     'addressLine2',
     'city',
     'state',
-    'zipCode',
     'country',
     'phoneNumber',
+    'zipCode',
   ])
 );
 
 export default reduxForm({
   form: 'AddressForm', // a unique identifier for this form
   enableReinitialize: true,
+  destroyOnUnmount: false,
+  keepDirtyOnReinitialize: true,
   ...validateMethod,
 })(AddressForm);
+
+export { AddressForm as AddressFormVanilla };

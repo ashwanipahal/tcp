@@ -27,9 +27,11 @@ export class AddressFields extends React.PureComponent {
     formName: PropTypes.string.isRequired,
     showDefaultCheckbox: PropTypes.bool,
     showPhoneNumber: PropTypes.bool,
+    showUserName: PropTypes.bool,
     formSection: PropTypes.string,
     className: PropTypes.string,
     variation: PropTypes.string,
+    loadShipmentMethods: PropTypes.func.isRequired,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -67,6 +69,13 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
   };
 
+  changeShipmentMethods = (e, value) => {
+    const { loadShipmentMethods, formName } = this.props;
+    if (loadShipmentMethods) {
+      loadShipmentMethods({ state: value, formName });
+    }
+  };
+
   renderCountrySelector = () => {
     const { addressFormLabels, formSection } = this.props;
     return (
@@ -93,7 +102,7 @@ export class AddressFields extends React.PureComponent {
             noLink
             href="#"
             anchorVariation="primary"
-            data-locator="shipping internationally"
+            dataLocator="shipping internationally"
             target="_self"
             className="change-country-link"
           >
@@ -120,6 +129,7 @@ export class AddressFields extends React.PureComponent {
             dataLocator="addnewaddress-state"
             className="address-field"
             enableSuccessCheck={false}
+            onChange={this.changeShipmentMethods}
           />
         </Col>
         <Col
@@ -206,37 +216,40 @@ export class AddressFields extends React.PureComponent {
       addressFormLabels,
       variation,
       formSection,
+      showUserName,
     } = this.props;
     return (
       <div className={className}>
-        <Row fullBleed>
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}
-          >
-            <Field
-              placeholder={addressFormLabels.firstName}
-              name="firstName"
-              id={`${formSection}.firstName`}
-              type="text"
-              component={TextBox}
-              dataLocator="addnewaddress-firstname"
-              className="address-field"
-              enableSuccessCheck={false}
-            />
-          </Col>
-          <Col colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}>
-            <Field
-              placeholder={addressFormLabels.lastName}
-              name="lastName"
-              id={`${formSection}.lastName`}
-              component={TextBox}
-              dataLocator="addnewaddress-lastname"
-              className="address-field"
-              enableSuccessCheck={false}
-            />
-          </Col>
-        </Row>
+        {showUserName && (
+          <Row fullBleed>
+            <Col
+              ignoreGutter={{ small: true }}
+              colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}
+            >
+              <Field
+                placeholder={addressFormLabels.firstName}
+                name="firstName"
+                id={`${formSection}.firstName`}
+                type="text"
+                component={TextBox}
+                dataLocator="addnewaddress-firstname"
+                className="address-field"
+                enableSuccessCheck={false}
+              />
+            </Col>
+            <Col colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}>
+              <Field
+                placeholder={addressFormLabels.lastName}
+                name="lastName"
+                id={`${formSection}.lastName`}
+                component={TextBox}
+                dataLocator="addnewaddress-lastname"
+                className="address-field"
+                enableSuccessCheck={false}
+              />
+            </Col>
+          </Row>
+        )}
         {this.renderAddressFields()}
         {variation === 'primary' ? (
           <Row fullBleed>
@@ -319,6 +332,7 @@ AddressFields.defaultProps = {
   isMakeDefaultDisabled: false,
   showDefaultCheckbox: true,
   showPhoneNumber: true,
+  showUserName: true,
   formSection: '',
   className: '',
   variation: 'primary',

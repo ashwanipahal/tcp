@@ -1,6 +1,6 @@
 import moment from 'moment';
 import CookieManager from 'react-native-cookies';
-import { getAPIConfig, updateCurrentBrand } from '@tcp/core/src/utils';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   setValueInAsyncStorage,
@@ -113,7 +113,6 @@ export const getSecondBrandThemeColor = () => {
  */
 export const updateBrandName = appType => {
   brandName = appType;
-  updateCurrentBrand(appType);
 };
 
 /**
@@ -155,6 +154,11 @@ export default {
  */
 export const readCookieMobileApp = key => {
   const apiConfigObj = getAPIConfig();
-  const res = apiConfigObj.domain ? CookieManager.get(apiConfigObj.domain) : null;
-  return res && res[key];
+  return new Promise((resolve, reject) => {
+    CookieManager.get(apiConfigObj.domain)
+      .then(response => {
+        return resolve(response[key]);
+      })
+      .catch(e => reject(e));
+  });
 };

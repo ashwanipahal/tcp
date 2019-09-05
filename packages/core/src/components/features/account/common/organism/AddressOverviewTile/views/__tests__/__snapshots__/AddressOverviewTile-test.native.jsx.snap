@@ -37,10 +37,11 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
-        data-locator="addressbook-overview-edit"
+        dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
         locator=""
         noLink={true}
@@ -86,6 +87,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
@@ -109,8 +111,9 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
-      color="white"
+      color=""
       customStyle={Object {}}
       disableButton={false}
       fill="BLUE"
@@ -159,10 +162,11 @@ exports[`AddressOverviewTile render empty address component should render correc
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
-        data-locator="addressbook-overview-edit"
+        dataLocator="addressbook-overview-edit"
         fontSizeVariation="large"
         locator=""
         noLink={true}
@@ -206,6 +210,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       }
     >
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         color="gray.900"
         customStyle={Object {}}
@@ -228,8 +233,9 @@ exports[`AddressOverviewTile render empty address component should render correc
   />
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
-      color="white"
+      color=""
       customStyle={Object {}}
       disableButton={false}
       fill="BLUE"

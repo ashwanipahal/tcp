@@ -6,9 +6,7 @@ import Address from '@tcp/core/src/components/common/molecules/Address';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Style,
-  ModalHeading,
   ModalViewWrapper,
-  LineWrapper,
   CardDescription,
   CardDetailWrapper,
   CardDetail,
@@ -23,7 +21,6 @@ import {
 } from '../DeleteModal.style.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
-import LineComp from '../../../../../../common/atoms/Line';
 import CustomButton from '../../../../../../common/atoms/Button';
 
 const buttonStyle = {
@@ -69,18 +66,11 @@ class DeleteModal extends React.PureComponent<Props> {
 
     return (
       <View>
-        <ModalNative isOpen={setDeleteModalMountedState} onRequestClose={toggleModal}>
-          <ModalHeading>
-            <BodyCopy
-              mobileFontFamily={['secondary']}
-              fontWeight="extrabold"
-              fontSize="fs16"
-              text={labels.paymentGC.lbl_payment_modalDeleteCard}
-            />
-          </ModalHeading>
-          <LineWrapper>
-            <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-          </LineWrapper>
+        <ModalNative
+          isOpen={setDeleteModalMountedState}
+          onRequestClose={toggleModal}
+          heading={labels.paymentGC.lbl_payment_modalDeleteCard}
+        >
           <SafeAreaView>
             <ModalViewWrapper>
               <CardDescription>
@@ -128,7 +118,6 @@ class DeleteModal extends React.PureComponent<Props> {
                     text={labels.paymentGC.lbl_payment_modalGCConfirm}
                     buttonVariation="variable-width"
                     fill="BLUE"
-                    color="white"
                     width="162px"
                     font-size="14"
                     onPress={onConfirm}
@@ -138,8 +127,7 @@ class DeleteModal extends React.PureComponent<Props> {
                 <CloseButtonWrapper>
                   <CustomButton
                     text={labels.paymentGC.lbl_payment_modalGCCancel}
-                    buttonVariation="variable-width"
-                    fill="RED"
+                    buttonVariation="cautionary"
                     color={redColor}
                     font-size="14"
                     onPress={onClose}

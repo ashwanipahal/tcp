@@ -192,7 +192,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -242,7 +242,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -274,13 +274,13 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -302,6 +302,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -345,13 +347,41 @@ exports[`LoginForm component should renders correctly 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
     opacity: ",
                   [Function],
                   ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
   }
 ",
                   ";
@@ -361,7 +391,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -442,7 +472,10 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
-      test errror
+      <Styled(RichText)
+        className="richTextColor"
+        richTextHtml="test errror"
+      />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="elem-mb-LRG"
@@ -626,7 +659,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -676,7 +709,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -708,13 +741,13 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ifAKCX",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -736,6 +769,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -779,13 +814,41 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
     opacity: ",
                   [Function],
                   ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
   }
 ",
                   ";
@@ -795,7 +858,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ifAKCX",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

@@ -16,6 +16,11 @@ const address = {
   nickName: '123',
 };
 
+const initialValue = {
+  addressLine2: 'foo',
+  primary: false,
+  country: 'US',
+};
 const formPayload = {
   firstName: 'test',
   lastName: 'test',
@@ -39,6 +44,7 @@ describe('AddEditAddressContainer', () => {
         submitAddAddressFormAction={() => {}}
         addressList={List()}
         labels={labels}
+        address={address}
       />
     );
     expect(component).toMatchSnapshot();
@@ -49,8 +55,9 @@ describe('AddEditAddressContainer', () => {
       const component = shallow(
         <AddEditAddressContainer
           submitAddAddressFormAction={() => {}}
-          addressList={List()}
+          addressList={List([{}])}
           labels={labels}
+          address={address}
         />
       );
       expect(component.prop('isMakeDefaultDisabled')).toBeTruthy();
@@ -60,8 +67,9 @@ describe('AddEditAddressContainer', () => {
       const component = shallow(
         <AddEditAddressContainer
           submitAddAddressFormAction={() => {}}
-          addressList={List([{}])}
+          addressList={List([])}
           labels={labels}
+          address={address}
         />
       );
       expect(component.prop('isMakeDefaultDisabled')).toBeFalsy();
@@ -95,11 +103,12 @@ describe('AddEditAddressContainer', () => {
     });
 
     it('with initialValues in add new address mode', () => {
-      const addressList = List([address]);
+      const addressList = List([initialValue]);
       const component = shallow(
         <AddEditAddressContainer
           submitAddAddressFormAction={() => {}}
           addressList={addressList}
+          address={null}
           labels={labels}
         />
       );
@@ -114,17 +123,21 @@ describe('AddEditAddressContainer', () => {
     let verifyAddressSpy;
     let submitEditAddressFormActionSpy;
     let submitNewAddressFormActionSpy;
+    let setAddressLine1;
     beforeEach(() => {
       verifyAddressSpy = jest.fn();
       submitEditAddressFormActionSpy = jest.fn();
       submitNewAddressFormActionSpy = jest.fn();
+      setAddressLine1 = jest.fn();
       const component = shallow(
         <AddEditAddressContainer
           submitEditAddressFormAction={submitEditAddressFormActionSpy}
           submitNewAddressFormAction={submitNewAddressFormActionSpy}
           verifyAddressAction={verifyAddressSpy}
           addressList={List()}
+          address={address}
           labels={labels}
+          setAddressLine1={setAddressLine1}
         />
       );
       instance = component.instance();
@@ -134,21 +147,22 @@ describe('AddEditAddressContainer', () => {
       expect(verifyAddressSpy).toBeCalled();
     });
     it('#submitAddressForm should call submitNewAddressFormAction prop in add new address mode', () => {
-      instance.submitAddressForm(address);
-      expect(submitNewAddressFormActionSpy).toBeCalled();
-    });
-    it('#submitAddressForm should call submitEditAddressFormAction prop in edit mode', () => {
-      const component = shallow(
+      const wrapper = shallow(
         <AddEditAddressContainer
           submitEditAddressFormAction={submitEditAddressFormActionSpy}
           submitNewAddressFormAction={submitNewAddressFormActionSpy}
           verifyAddressAction={verifyAddressSpy}
-          addressList={List([address])}
-          address={address}
+          addressList={List()}
+          address={null}
           labels={labels}
         />
       );
-      instance = component.instance();
+      const componentInstance = wrapper.instance();
+
+      componentInstance.submitAddressForm(address);
+      expect(submitNewAddressFormActionSpy).toBeCalled();
+    });
+    it('#submitAddressForm should call submitEditAddressFormAction prop in edit mode', () => {
       instance.submitAddressForm(address);
       expect(submitEditAddressFormActionSpy).toBeCalled();
     });
@@ -173,6 +187,20 @@ describe('AddEditAddressContainer', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.verifyAddressAction();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action getAddressListAction which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.getAddressListAction();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action resetFormState which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.resetFormState();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });

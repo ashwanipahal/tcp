@@ -21,7 +21,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       colSize={
         Object {
           "large": 3,
-          "medium": 2,
+          "medium": 4,
           "small": 4,
         }
       }
@@ -33,7 +33,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       colSize={
         Object {
           "large": 6,
-          "medium": 4,
+          "medium": 3,
           "small": 1,
         }
       }
@@ -55,7 +55,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       colSize={
         Object {
           "large": 3,
-          "medium": 2,
+          "medium": 1,
           "small": 1,
         }
       }
@@ -73,7 +73,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          data-locator="checkout-header-returnToBag"
+          dataLocator="checkout-header-returnToBag"
           fontSizeVariation="medium"
           to="/bag"
           underline={true}

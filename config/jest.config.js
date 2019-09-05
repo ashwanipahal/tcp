@@ -2,13 +2,14 @@ const ignorePsuedoCodeDir = [
   '/ProductListing/',
   '/services/abstractors/productListing/',
   '/ProductListingPage/',
-  '/services/abstractors/CnC/AddedToBag.js',
+  '/AddressForm/',
   '/plpDeltaSync/',
   '/LoginPage/',
   '/server/',
   '/service/',
   '/FPO/',
   '/services/abstractors/CnC/Checkout.js',
+  '/GoogleAutoSuggest/',
 ];
 
 module.exports = {

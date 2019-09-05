@@ -20,16 +20,20 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     lineHeight="normal"
     textAlign="left"
   >
-    <span
-      className="style1"
-    >
-      UNICORNS
-    </span>
-    <span
-      className="style2"
-    >
-       , DINOS & MORE!
-    </span>
+    <TextItems
+      textItems={
+        Array [
+          Object {
+            "style": "style1",
+            "text": "UNICORNS",
+          },
+          Object {
+            "style": "style2",
+            "text": ", DINOS & MORE!",
+          },
+        ]
+      }
+    />
   </Styled(BodyCopy)>
 </Styled(Anchor)>
 `;

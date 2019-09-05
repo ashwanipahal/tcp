@@ -6,12 +6,35 @@ export default css`
     height: 31px;
     padding-right: 0;
     padding-left: 0;
+    justify-content: flex-end;
   }
   .subHeaderText {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+
+    .userName {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 108px;
+      text-align: right;
+    }
+  }
+  .subHeaderTextLogin {
+    display: flex;
+    margin: 6px -20px 1px 0px;
+  }
+  .subHeaderTextIcon {
+    width: auto;
   }
   .pointsRewards {
     color: ${props => props.theme.colorPalette.orange['800']};
+    padding-left: 6px;
+    white-space: nowrap;
+    width: auto;
   }
   .cartCount {
     background: ${props => props.theme.colorPalette.blue['800']};

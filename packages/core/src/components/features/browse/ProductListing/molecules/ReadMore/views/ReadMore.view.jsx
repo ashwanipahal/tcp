@@ -6,13 +6,24 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import style from '../ReadMore.style';
 
-const ReadMore = props => {
-  const { description, className, labels } = props;
+class ReadMore extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isExpanded: false,
+    };
+  }
 
-  return (
-    <BodyCopy component="div" className={className}>
-      <label htmlFor="categoryDescription" className="read-more-trigger">
-        <input type="checkbox" className="read-more-state" id="categoryDescription" />
+  handleReadMoreView = e => {
+    this.setState({ isExpanded: e.target.checked });
+  };
+
+  render() {
+    const { description, className, labels } = this.props;
+    const { isExpanded } = this.state;
+
+    return (
+      <BodyCopy component="div" className={`${className} ${isExpanded && 'read-more-expanded'}`}>
         <BodyCopy
           className="body-copy"
           fontSize="fs14"
@@ -25,7 +36,13 @@ const ReadMore = props => {
           data-locator={getLocator('plp_seo_module')}
         />
         {description && description.includes('read-more-target') && (
-          <React.Fragment>
+          <label htmlFor="categoryDescription" className="read-more-trigger">
+            <input
+              type="checkbox"
+              className="read-more-state"
+              id="categoryDescription"
+              onChange={this.handleReadMoreView}
+            />
             <BodyCopy
               className="read-more"
               component="p"
@@ -34,7 +51,7 @@ const ReadMore = props => {
               textAlign="center"
               data-locator={getLocator('plp_seo_readmore')}
             >
-              {labels.lbl_read_more}
+              {labels.readMore}
             </BodyCopy>
             <BodyCopy
               className="read-less"
@@ -44,14 +61,14 @@ const ReadMore = props => {
               textAlign="center"
               data-locator={getLocator('plp_seo_readless')}
             >
-              {labels.lbl_read_less}
+              {labels.readLess}
             </BodyCopy>
-          </React.Fragment>
+          </label>
         )}
-      </label>
-    </BodyCopy>
-  );
-};
+      </BodyCopy>
+    );
+  }
+}
 
 ReadMore.propTypes = {
   description: PropTypes.string,
