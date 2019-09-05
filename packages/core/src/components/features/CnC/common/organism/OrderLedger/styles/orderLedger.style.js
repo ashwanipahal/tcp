@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const LedgerStyle = css`
   background-color: ${props => props.theme.colors.WHITE};
-  padding: 23px 1px 32px;
+  padding: 23px 1px 21px;
 
   .rowMargin {
     margin-bottom: 8px;

@@ -90,6 +90,13 @@ export default css`
     padding-top: 0px;
   }
 
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .crossDeleteIconBag {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
   .product-detail {
     display: flex;
     flex-wrap: wrap;
