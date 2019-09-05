@@ -15,6 +15,7 @@ import {
   DivImageCTAContainer,
   HeaderWrapper,
   SeparatorView,
+  MainContainerView,
 } from '../ModuleB.style.native';
 import config from '../ModuleB.config';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
@@ -24,8 +25,10 @@ import mock from '../../../../../services/abstractors/common/moduleB/mock';
  * Height is fixed for mobile : TCP & Gymb
  * Width can vary as per device width.
  */
-const MODULE_HEIGHT = 300;
-const MODULE_WIDTH = getScreenWidth();
+const MODULE_HEIGHT_WITHOUT_OVERLAY = 295;
+const MODULE_HEIGHT_WITH_OVERLAY = 413;
+const MARGIN = 12;
+const MODULE_WIDTH = getScreenWidth() - MARGIN * 2;
 
 // TODO: keys will be changed once we get the actual data from CMS
 const { ctaTypes, bannerPositionTypes } = config;
@@ -97,9 +100,11 @@ const renderImageComponent = (item, navigation) => {
 
   // set module height as same as screen width to make it a square for bannerPosition as overlay
   const moduleHeight =
-    bannerPosition === bannerPositionTypes.overlay ? getScreenWidth() : MODULE_HEIGHT;
+    bannerPosition === bannerPositionTypes.overlay
+      ? MODULE_HEIGHT_WITH_OVERLAY
+      : MODULE_HEIGHT_WITHOUT_OVERLAY;
   return (
-    <ContainerView>
+    <MainContainerView>
       {bannerPosition === bannerPositionTypes.top || bannerPosition === bannerPositionTypes.overlay
         ? renderHeaderAndBanner(item, navigation)
         : null}
@@ -107,7 +112,7 @@ const renderImageComponent = (item, navigation) => {
       {bannerPosition === bannerPositionTypes.bottom
         ? renderHeaderAndBanner(item, navigation)
         : null}
-    </ContainerView>
+    </MainContainerView>
   );
 };
 
@@ -150,7 +155,7 @@ const ModuleB = (props: Props) => {
 
   const ctaType = ctaTypes[findKeyInSet(set, 'ctaType')];
   const bannerPosition = findKeyInSet(set, 'bannerPostition');
-
+  console.log('ctaItems=====', ctaItems);
   return (
     <Container>
       {renderImageComponent({ item: largeCompImage[0], bannerPosition }, navigation)}

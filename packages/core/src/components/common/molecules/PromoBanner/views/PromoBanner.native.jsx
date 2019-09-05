@@ -121,6 +121,7 @@ export const bodyCopyStyles = {
       fontWeight="black"
       textAlign="center"
       lineHeight="20px"
+      letterSpacing="ls1"
       {...props}
     />
   ),
@@ -132,6 +133,7 @@ export const bodyCopyStyles = {
       fontWeight="semibold"
       textAlign="center"
       lineHeight="20px"
+      letterSpacing="ls2"
       {...props}
     />
   ),

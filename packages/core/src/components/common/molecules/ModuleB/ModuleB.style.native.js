@@ -26,6 +26,12 @@ export const ButtonContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
+export const MainContainerView = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export const ContainerView = styled.View`
   justify-content: center;
   align-items: center;
@@ -55,4 +61,5 @@ export default {
   ContainerView,
   DivImageCTAContainer,
   SeparatorView,
+  MainContainerView,
 };
