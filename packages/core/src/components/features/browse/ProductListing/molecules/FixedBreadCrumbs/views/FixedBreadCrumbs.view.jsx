@@ -50,7 +50,8 @@ const FixedBreadCrumbs = ({ crumbs, separationChar }) => {
             ) : (
               <Anchor
                 className={itemClassName}
-                to={`/${destination}/${pathSuffix}`}
+                to={`/c?cid=${pathSuffix}`}
+                asPath={`/${destination}/${pathSuffix}`}
                 {...otherHyperLinkProps}
               >
                 {displayName}

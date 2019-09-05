@@ -3,48 +3,5 @@
 exports[`ProductList component should renders correctly 1`] = `
 <ul
   className=""
->
-  <div
-    className="product-tile"
-  >
-    <Styled(ProductsGridItem)
-      currencyExchange={Array []}
-      currencySymbol=""
-      gridIndex={1}
-      isBopisEnabled={false}
-      isBopisEnabledForClearance={false}
-      isBossClearanceProductEnabled={true}
-      isBossEnabled={true}
-      isCanada={false}
-      isEvenElement={0}
-      isGridView={true}
-      isInternationalShipping={false}
-      isKeepAliveKillSwitch={false}
-      isMatchingFamily={false}
-      isMobile={false}
-      isOnModelImgDisplay={false}
-      isPLPShowPickupCTA={false}
-      isPLPredesign={true}
-      isPlcc={false}
-      isProductsGridCTAView={true}
-      isShowQuickView={false}
-      isShowVideoOnPlp={false}
-      item={
-        Object {
-          "productInfo": "",
-        }
-      }
-      loadedProductCount={12}
-      onAddItemToFavorites={[MockFunction]}
-      onColorChange={[MockFunction]}
-      onPickUpOpenClick={[MockFunction]}
-      onProductCardHover={[MockFunction]}
-      onQuickBopisOpenClick={[MockFunction]}
-      onQuickViewOpenClick={[MockFunction]}
-      siblingProperties=""
-      sqnNmbr={1}
-      unbxdId=""
-    />
-  </div>
-</ul>
+/>
 `;

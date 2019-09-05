@@ -11,6 +11,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
   setAddressLine1={[Function]}
+  setModalHeading={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
@@ -36,6 +37,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
+      setModalHeading={[Function]}
       shouldAsyncValidate={[Function]}
       shouldError={[Function]}
       shouldValidate={[Function]}
@@ -63,6 +65,7 @@ exports[`AddEditAddress Native should test with verification modal 1`] = `
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
   setAddressLine1={[Function]}
+  setModalHeading={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
@@ -73,6 +76,7 @@ exports[`AddEditAddress Native should test with verification modal 1`] = `
     <Connect(AddressVerification)
       onError={[Function]}
       onSuccess={[Function]}
+      setModalHeading={[Function]}
       toggleAddressModal={[Function]}
     />
   </ScrollViewMock>
