@@ -323,7 +323,7 @@ function validateSection(sectionConfig, values, props) {
     });
   }
 
-  return getErrorMessageLabels(errors, props);
+  return errors;
 }
 
 export default function createValidateMethod(config) {
