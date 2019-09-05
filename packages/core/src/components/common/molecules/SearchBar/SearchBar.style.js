@@ -13,8 +13,8 @@ export default css`
   .searchbar {
     display: inline-block;
     line-height: 40px;
-    background-color: #f2f2f2;
-    border-radius: 21px;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+    border-radius: 20px;
     width: 100%;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -24,7 +24,7 @@ export default css`
   .searchbar .icon-small {
     vertical-align: middle;
     height: 16px;
-    padding: 0px 3px;
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XXS};
     width: 20px;
     cursor: pointer;
   }
@@ -35,15 +35,15 @@ export default css`
   }
 
   .searchbar input {
-    width: calc(100% - 74px);
+    width: calc(100% - 80px);
     height: 25px;
     outline: none;
     font-size: 18px;
-    background-color: #f2f2f2;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border: 0px;
-    padding: 0px 10px;
-    border-radius: 14px;
-    color: #1a1a1a;
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
+    border-radius: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    color: ${props => props.theme.colors.TEXTBOX.COLOR};
     vertical-align: middle;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -54,12 +54,12 @@ export default css`
   .matchBox {
     width: 100%;
     display: block;
-    border: 1px solid #f2f2f2;
+    border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border-top: 0px;
     box-sizing: border-box;
     z-index: 100000;
     position: relative;
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.WHITE};
   }
 
   .trendingBox .trendingBoxHead,
@@ -67,16 +67,16 @@ export default css`
   .matchLinkBox .matchLinkBoxHead,
   .matchProductBox .matchProductHead {
     height: 52px;
-    background-color: #f7f7f7;
+    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
     line-height: 52px;
-    padding: 0px 10px;
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .trendingBox .trendingBoxBody,
   .recentBox .recentBoxBody,
   .matchLinkBox .matchLinkBoxBody,
   .matchProductBox .matchProductBody {
-    padding: 6px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .trendingBox .trendingBoxBody ul li {
@@ -89,8 +89,8 @@ export default css`
     font-family: Nunito;
     font-size: 15px;
     text-align: center;
-    color: #1a1a1a;
-    border: 1px solid #439ad4;
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    border: 1px solid ${props => props.theme.colors.TEXT.DARKERBLUE};
     border-radius: 20px;
     padding: 0px 10px;
     margin: 6px;
@@ -101,9 +101,9 @@ export default css`
     line-height: 39px;
     font-family: Nunito;
     font-size: 15px;
-    color: #1a1a1a;
-    padding: 0px 10px;
-    margin: 6px;
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .matchLinkBox .matchLinkBoxBody ul li.linkName {
@@ -111,17 +111,17 @@ export default css`
     line-height: 39px;
     font-family: Nunito;
     font-size: 15px;
-    color: #1a1a1a;
-    padding: 0px 10px;
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin: 6px;
   }
 
   .matchProductBox .matchProductBody ul li.productBox {
     width: 81px;
     height: 81px;
-    border: solid 1px #bababa;
-    background-color: #aeaeae;
-    margin: 5px;
+    border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
+    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     display: inline-block;
   }
 `;

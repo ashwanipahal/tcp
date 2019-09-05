@@ -28,7 +28,7 @@ export default css`
     box-sizing: border-box;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    min-width: 50px;
+    min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
   .cartCount {
     background: ${props => props.theme.colorPalette.blue['800']};
