@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Notification from '../../../../../../common/molecules/Notification';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -36,17 +37,6 @@ const getGenericErrorMessage = labels => (
   </BodyCopy>
 );
 
-// @flow
-type Props = {
-  labels: object,
-  errorMessage: string,
-  onSubmit: Function,
-  openLoginOverlay: Function,
-  setModalMountState: Function,
-  showNotification: string,
-  onChangeForm: Function,
-  className: string,
-};
 export const TrackOrderView = ({
   labels,
   errorMessage,
@@ -56,7 +46,7 @@ export const TrackOrderView = ({
   showNotification,
   onChangeForm,
   className,
-}: Props) => {
+}) => {
   return (
     <BodyCopy component="div" className={className}>
       <TrackOrderTopSection labels={labels} className="trackorder__modal__topsection" />
@@ -84,6 +74,19 @@ export const TrackOrderView = ({
       />
     </BodyCopy>
   );
+};
+
+TrackOrderView.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  className: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  openLoginOverlay: PropTypes.func.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
 };
 
 export default withStyles(TrackOrderView, styles);

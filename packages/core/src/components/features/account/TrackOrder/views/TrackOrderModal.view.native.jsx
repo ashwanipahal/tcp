@@ -1,16 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import withStyles from '../../../../common/hoc/withStyles';
-import Modal from '../../../../common/molecules/Modal';
+import { SafeAreaView } from 'react-native';
+import ModalNative from '../../../../common/molecules/Modal';
 import TrackOrderViewTemplate from '../molecules/TrackOrderView';
-import styles from '../styles/TrackOrderModal.style';
 
 /**
  * @function TrackOrderModal The TrackOrderModal component shows the Track Order Modal.
  * This component includes the Track order form view and track order button.
  * @param {props} props object with details to render in modal
  */
-class TrackOrderModal extends React.Component {
+export class TrackOrderModal extends React.PureComponent {
   /**
    * @function onCloseModal  Used to close the modal
    */
@@ -29,35 +28,39 @@ class TrackOrderModal extends React.Component {
       openState,
       setModalMountState,
       labels,
-      openLoginOverlay,
       onSubmit,
       errorMessage,
       showNotification,
       onChangeForm,
+      isUserLoggedIn,
+      handleToggle,
     } = this.props;
+    const fullWidth = {
+      width: '100%',
+    };
     return (
-      <Modal
-        fixedWidth
+      <ModalNative
         isOpen={openState}
         onRequestClose={this.onClose}
-        overlayClassName="TCPModal__Overlay"
-        className="TCPModal__Content TrackOrder__Modal__content"
-        maxWidth="450px"
-        minHeight="576px"
-        data-locator="track_order_modal"
-        ariaLabelledby="trackorder__modal__heading"
-        ariaDescribedby="trackorder__modal__subheading"
+        horizontalBar={false}
+        headingAlign="center"
+        headingFontFamily="secondary"
+        fontSize="fs22"
+        headerStyle={fullWidth}
       >
-        <TrackOrderViewTemplate
-          labels={labels}
-          errorMessage={errorMessage}
-          onSubmit={onSubmit}
-          openLoginOverlay={openLoginOverlay}
-          setModalMountState={setModalMountState}
-          showNotification={showNotification}
-          onChangeForm={onChangeForm}
-        />
-      </Modal>
+        <SafeAreaView>
+          <TrackOrderViewTemplate
+            labels={labels}
+            errorMessage={errorMessage}
+            isGuestUser={isUserLoggedIn}
+            onSubmit={onSubmit}
+            showNotification={showNotification}
+            onChangeForm={onChangeForm}
+            handleToggle={handleToggle}
+            setModalMountState={setModalMountState}
+          />
+        </SafeAreaView>
+      </ModalNative>
     );
   }
 }
@@ -68,12 +71,12 @@ TrackOrderModal.propTypes = {
   labels: PropTypes.shape({
     trackOrder: PropTypes.shape({}),
   }).isRequired,
-  openLoginOverlay: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onChangeForm: PropTypes.func.isRequired,
   showNotification: PropTypes.string.isRequired,
+  handleToggle: PropTypes.func.isRequired,
 };
 
-export default withStyles(TrackOrderModal, styles);
-export { TrackOrderModal as TrackOrderModalVanilla };
+export default TrackOrderModal;
