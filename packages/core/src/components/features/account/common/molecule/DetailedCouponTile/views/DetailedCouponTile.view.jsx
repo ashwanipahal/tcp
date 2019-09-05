@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/DetailedCouponTile.style';
 import {
@@ -9,7 +9,9 @@ import {
   COUPON_STATUS,
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import { Anchor, Button } from '../../../../../../common/atoms';
+import ErrorMessage from '../../../../../CnC/common/molecules/ErrorMessage';
 import CouponIcon from '../../CouponIcon';
+import { getIconPath } from '../../../../../../../utils';
 
 export class DetailedCouponTile extends React.Component {
   static propTypes = {
@@ -55,16 +57,25 @@ export class DetailedCouponTile extends React.Component {
     },
   };
 
+  componentDidUpdate() {
+    const { coupon, handleErrorCoupon } = this.props;
+    if (coupon.error) {
+      handleErrorCoupon(coupon);
+    }
+  }
+
   handleApplyToBag = () => {
-    const { onApplyCouponToBag, coupon } = this.props;
-    onApplyCouponToBag({
+    const { onApplyCouponToBagFromList, coupon } = this.props;
+    onApplyCouponToBagFromList({
       couponCode: coupon.id,
+      id: coupon.id,
+      coupon: coupon.id
     });
   };
 
   handleRemove = () => {
     const { onRemove, coupon } = this.props;
-    onRemove({ couponCode: coupon.id });
+    onRemove({ id: coupon.id });
   };
 
   handleViewCouponDetails = () => {
@@ -78,14 +89,50 @@ export class DetailedCouponTile extends React.Component {
       : labels.lbl_coupon_applyToBag;
   };
 
+  isOverlayVisible = (status, isMobile) => {
+    return (status === COUPON_STATUS.APPLIED) && isMobile;
+  }
+
+  overlapClass = (status, isMobile) => {
+    return (status === COUPON_STATUS.APPLIED) && isMobile ? 'overlap':'';
+  }
+
+
   render() {
-    const { className, coupon, labels, isMobile, isDisabled } = this.props;
+    const { className, coupon, labels, isMobile, isDisabled} = this.props;
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
+    const bagIcon = getIconPath('cart-icon');
 
+    console.log(labels);
+
+
+   const overlapCls = this.overlapClass(coupon.status, isMobile);
+   const showOverlow = this.isOverlayVisible(coupon.status, isMobile);
     return (
       <BodyCopy component="div" className={className} data-locator="myrewards-tile">
+        {showOverlow && (
+          <BodyCopy
+            component="div"
+            data-locator=""
+            className="overlay hide-on-desktop hide-on-tablet"
+          >
+            <Image src={bagIcon} />
+            <BodyCopy
+              component="p"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              color="white"
+              data-locator=""
+              className="elem-mt-XXL"
+            >
+              {labels.lbl_common_applied_to_order}
+            </BodyCopy>
+          </BodyCopy>
+        )}
+        <ErrorMessage className="notification" error={coupon.error} />
         {coupon.isExpiring && (
           <BodyCopy
             fontSize="fs10"
@@ -99,13 +146,13 @@ export class DetailedCouponTile extends React.Component {
         )}
         <BodyCopy component="div" className="content elem-pl-SM elem-pr-SM elem-pt-XL">
           <BodyCopy component="div" textAlign="center" className="top-content">
-            <CouponIcon coupon={coupon} labels={labels} className="elem-mb-XS" />
+            <CouponIcon coupon={coupon} labels={labels} className={`elem-mb-XS ${overlapCls}`} />
             <BodyCopy
               fontSize="fs16"
               fontFamily="secondary"
               fontWeight="extrabold"
               title={coupon.title}
-              className="elem-mb-SM"
+              className={`elem-mb-SM ${overlapCls}`}
               textAlign="center"
               data-locator="myrewards-details"
             >
@@ -154,8 +201,9 @@ export class DetailedCouponTile extends React.Component {
                 <Button
                   buttonVariation="fixed-width"
                   fullWidth
-                  fill="BLUE"
+                  fill="WHITE"
                   onClick={this.handleRemove}
+                  className={`couponDetailsFont ${overlapCls}`}
                   data-locator="myrewards-removefrombagbtn"
                 >
                   {labels.lbl_coupon_removeFromBag}

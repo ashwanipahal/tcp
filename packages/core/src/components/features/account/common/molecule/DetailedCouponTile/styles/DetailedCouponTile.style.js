@@ -21,6 +21,22 @@ const styles = css`
     box-sizing: border-box;
   }
 
+  .overlap {
+    z-index: 9;
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .overlay {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background-color: #000;
+      opacity: 0.8;
+      z-index: 1;
+      justify-content: center;
+    }
+  }
+
   .couponDetailsFont {
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
   }

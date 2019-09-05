@@ -5,11 +5,14 @@ import {
   getCouponList,
   applyCoupon,
   removeCoupon,
+  setError
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
+
 import {
   getAllCoupons,
   getAllRewardsCoupons,
   getCouponsLabels,
+  getCouponFetchingState
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
@@ -83,18 +86,41 @@ const mapStateToProps = state => ({
   coupons: getAllCoupons(state),
   rewardCoupons: getAllRewardsCoupons(state),
   couponsLabels: getCouponsLabels(state),
+  isApplyingOrRemovingCoupon: getCouponFetchingState(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchCoupons: () => {
     dispatch(getCouponList());
   },
-  onApplyCouponToBag: payload => {
-    dispatch(applyCoupon(payload));
+
+  onApplyCouponToBagFromList: coupon => {
+    return new Promise((resolve, reject) => {
+      dispatch(
+        applyCoupon({
+          formData: { couponCode: coupon.id },
+          formPromise: { resolve, reject },
+          coupon,
+        })
+      );
+    });
   },
-  onRemove: payload => {
-    dispatch(removeCoupon(payload));
+  onRemove: coupon => {
+    return new Promise((resolve, reject) => {
+      dispatch(removeCoupon({ coupon, formPromise: { resolve, reject } }));
+    });
   },
+  onApplyCouponToBag: (formData, _, props) =>
+    new Promise((resolve, reject) => {
+      dispatch(
+        applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
+      );
+    }),
+    handleErrorCoupon: coupon => {
+      setTimeout(() => {
+        dispatch(setError({ msg: null, couponCode: coupon.id }));
+      }, 5000);
+    },
 });
 
 export default connect(
