@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; // eslint-disable-line
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
@@ -23,22 +22,6 @@ import { isPlccUser } from '../../../account/User/container/User.selectors';
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
     this.makeApiCall();
-  }
-
-  componentDidUpdate(prevProps) {
-    const {
-      router: {
-        query: { cid },
-      },
-    } = prevProps;
-    const {
-      router: {
-        query: { cid: currentCid },
-      },
-    } = this.props;
-    if (cid !== currentCid) {
-      this.makeApiCall();
-    }
   }
 
   makeApiCall = () => {
@@ -181,9 +164,7 @@ ProductListingContainer.defaultProps = {
   lastLoadedPageNumber: 0,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProductListingContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductListingContainer);

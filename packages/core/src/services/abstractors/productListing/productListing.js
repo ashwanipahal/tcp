@@ -1,4 +1,3 @@
-/* eslint-disable extra-rules/no-commented-out-code */
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import utils, { bindAllClassMethodsToThis } from '../../../utils';
@@ -56,23 +55,6 @@ class ProductsDynamicAbstractor {
   }
 
   /**
-   * @function setUnbxdId
-   * @summary This will set the UNBXD id we get from reponse headers in  UNBXD call.
-   */
-
-  // setUnbxdId = id => {
-  //   this.unbxdId = id;
-  //   return this.unbxdId;
-  // };
-
-  /**
-   * @function getUnbxdId
-   * @summary This will get the UNBXD id that we got from reponse headers in  UNBXD call.
-   */
-
-  // getUnbxdId = () => this.unbxdId;
-
-  /**
    * @function extractFilters
    * @summary To create UNBXD facets api query string from all selected facets
    * @param {object} filtersAndSort - selected filters and values object
@@ -101,31 +83,8 @@ class ProductsDynamicAbstractor {
   // PLP to PDP then again back to PLP, maintainig autoscroll position by managing state with products count
   getSetAPIProductsCount = () => {
     // if totalProducts are greater than PRODUCTS_PER_LOAD limit it to PRODUCTS_PER_LOAD and update sessionStorage for auto scroll
-    // eslint-disable-next-line
-    const unbxdCount = PRODUCTS_PER_LOAD;
-    // if (isClient()) {
-    //   const MAX_PRODUCT_PER_CALL = 100;
-    //   let loadedProductCount = PRODUCTS_PER_LOAD;
-    //   const totalProducts = sessionStorage.getItem('LOADED_PRODUCT_COUNT');
-    //   if (totalProducts && totalProducts >= MAX_PRODUCT_PER_CALL) {
-    //     unbxdCount = MAX_PRODUCT_PER_CALL;
-    //     loadedProductCount = totalProducts - MAX_PRODUCT_PER_CALL;
-    //   } else if (
-    //     totalProducts &&
-    //     totalProducts >= PRODUCTS_PER_LOAD &&
-    //     totalProducts <= MAX_PRODUCT_PER_CALL
-    //   ) {
-    //     unbxdCount = totalProducts;
-    //     loadedProductCount = PRODUCTS_PER_LOAD;
-    //   }
-    //   sessionStorage.setItem('LOADED_PRODUCT_COUNT', loadedProductCount);
-
-    //   const scrollPoint = window.sessionStorage.getItem('SCROLL_POINT') || 0;
-    //   if (scrollPoint > 0 && totalProducts <= PRODUCTS_PER_LOAD) {
-    //     sessionStorage.setItem('RESET_SCROLL_CONDITIONS', 1); // Don't auto scroll if items less than standard call
-    //   }
-    // }
-    return unbxdCount;
+    return PRODUCTS_PER_LOAD;
+    // TODO - fix this function when caching is required for navigating back from PDP
   };
 
   /**
@@ -136,17 +95,9 @@ class ProductsDynamicAbstractor {
    * @return {Number} the number of products in an L2.
    */
 
-  // cacheFiltersAndCount = (filters, availableL3InFilter) => {
-  //   this.cachedFilters = filters;
-  //   let count = 0;
-  //   // We need to add up the count coming in each L3 to show up the number of products in the L2 at the top of the listing.
-  //   availableL3InFilter.map(item => {
-  //     count += item.count;
-  //     return count;
-  //   });
-  //   this.cachedCount = count;
-  //   return count;
-  // };
+  cacheFiltersAndCount = () => {
+    // TODO - fix this function when required to navigate back from PDP
+  };
 
   handleValidationError = e => {
     console.log(e);

@@ -1,5 +1,4 @@
-/* eslint-disable */
-import queryString from 'query-string';
+/* eslint-disable extra-rules/no-commented-out-code */
 import { bindAllClassMethodsToThis } from '../../../../../utils';
 import BucketingBL from './bucketingLogicHelper';
 import {
@@ -19,36 +18,14 @@ import {
   isRequiredL2L1,
   getBreadCrumb,
   getRequiredCategoryData,
+  getPlpCutomizersFromUrlQueryString,
 } from './ProductListing.util';
 import PAGES from '../../../../../constants/pages.constants';
-import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
 import { getLastLoadedPageNumber, getMaxPageNumber } from './ProductListing.selectors';
-import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
-
-// Dummy store value till this user info is available
-const userStoreView = {
-  isGuest: () => true,
-  isRemembered: () => false,
-};
-
-const routingInfoStoreView = {
-  getOriginImgHostSetting: () => {
-    return 'https://www.childrensplace.com';
-  },
-};
-
-export function getPlpCutomizersFromUrlQueryString(urlQueryString) {
-  const queryParams = queryString.parse(urlQueryString);
-  Object.keys(queryParams).forEach(key => {
-    const value = decodeURIComponent(queryParams[key]);
-    queryParams[key] =
-      key && (key.toLowerCase() === FACETS_FIELD_KEY.sort ? value : value.split(','));
-  }); // Fetching Facets and sort key from the URL query string
-  return queryParams;
-}
+import { PRODUCTS_PER_LOAD, routingInfoStoreView } from './ProductListing.constants';
 
 export default class ProductsOperator {
-  constructor(store) {
+  constructor() {
     this.bucketingConfig = {
       start: 0,
       productsToFetchPerLoad: PRODUCTS_PER_LOAD,
@@ -57,7 +34,6 @@ export default class ProductsOperator {
       bucketingSeqScenario: false,
       availableL3: [],
     };
-    this.store = store;
     this.shouldApplyUnbxdLogic = true; // TODO - this is the prod code - store && store.getState().session.siteDetails.shouldApplyUnbxdLogic;
 
     bindAllClassMethodsToThis(this);
@@ -74,6 +50,27 @@ export default class ProductsOperator {
       productImages: this.getProductImgPath(id, excludeExtension),
     };
   }
+
+  getNextChildItem = (listOfGroups, currItm, trgtChildItm, targetId) => {
+    let newTrgtChildItm = trgtChildItm;
+    listOfGroups.forEach(groupName => {
+      if (
+        currItm.subCategories[groupName] &&
+        currItm.subCategories[groupName].items &&
+        currItm.subCategories[groupName].items.length
+      ) {
+        // If the category ID does not matches up then recursively call the same function to search depe down the tree.
+        newTrgtChildItm = this.shouldBucktSeq(
+          currItm.subCategories[groupName].items.length
+            ? currItm.subCategories[groupName].items
+            : currItm.subCategories[groupName],
+          targetId,
+          newTrgtChildItm
+        );
+      }
+    });
+    return newTrgtChildItm;
+  };
 
   getSwatchImgPath = (id, excludeExtension) => {
     const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
@@ -188,7 +185,10 @@ export default class ProductsOperator {
     for (let idx = 0; idx < navTreeLength; idx += +1) {
       const currItm = navTree[idx];
       // Check if the category of the navigation bieng looped on matches with desired L2 category ID.
-      if (currItm.categoryId === targetId || currItm.categoryContent.id === targetId) {
+      if (
+        currItm.categoryId === targetId ||
+        (currItm.categoryContent && currItm.categoryContent.id === targetId)
+      ) {
         // If subCategories has length, it means it doesn't have grouping
         // else it has grouping -> check groups and return current item
         newTrgtChildItm = currItm.subCategories.length
@@ -196,23 +196,8 @@ export default class ProductsOperator {
           : this.getCurrentItems(currItm);
         return newTrgtChildItm;
       }
-      const listOfGroups = Object.keys(currItm.subCategories);
-      listOfGroups.forEach(groupName => {
-        if (
-          currItm.subCategories[groupName] &&
-          currItm.subCategories[groupName].items &&
-          currItm.subCategories[groupName].items.length
-        ) {
-          // If the category ID does not matches up then recursively call the same function to search depe down the tree.
-          newTrgtChildItm = this.shouldBucktSeq(
-            currItm.subCategories[groupName].items.length
-              ? currItm.subCategories[groupName].items
-              : currItm.subCategories[groupName],
-            targetId,
-            newTrgtChildItm
-          );
-        }
-      });
+      const listOfGroups = (currItm.subCategories && Object.keys(currItm.subCategories)) || [];
+      newTrgtChildItm = this.getNextChildItem(listOfGroups, currItm, newTrgtChildItm, targetId);
     }
     return newTrgtChildItm;
   }
@@ -226,7 +211,7 @@ export default class ProductsOperator {
     );
     this.bucketingConfig.availableL3 = [...updatedAvailableL3];
     this.bucketingConfig.L3Left = [...updatedAvailableL3];
-    const l2currentNavigationIds = res.currentNavigationIds;
+    // const l2currentNavigationIds = res.currentNavigationIds;
 
     // We check if there is any L3 category available to make unbxd call else resolving promise
     if (!this.bucketingConfig.L3Left.length) {
@@ -451,37 +436,6 @@ export default class ProductsOperator {
     // res.currentNavigationIds = l2currentNavigationIds;
   };
 
-  addCustomUserInfoToProducts(products) {
-    // DT-31015 - no customer information for guest / remembered
-    const isGuest = userStoreView.isGuest();
-    const isRemembered = userStoreView.isRemembered();
-    if (isGuest || isRemembered) {
-      return Promise.resolve(products);
-    }
-
-    const generalProductIdsList = products.map(product => product.productInfo.generalProductId);
-    return this.productsAbstractor
-      .getProductsUserCustomInfo(generalProductIdsList)
-      .then(extraProductsInfo =>
-        products.map(product => {
-          const { miscInfo, ...otherAttributes } = product;
-          const extraProductInfo = extraProductsInfo[product.productInfo.generalProductId];
-          return {
-            ...otherAttributes,
-            miscInfo: {
-              ...miscInfo,
-              isInDefaultWishlist: !!extraProductInfo && extraProductInfo.isInDefaultWishlist,
-            },
-          };
-        })
-      )
-      .catch(err => {
-        // if failed, log error and simply do not add any extra info to products
-        console.log('ProductsOperator.addCustomUserInfoToProducts', err);
-        return products;
-      });
-  }
-
   getProductsListingMoreProducts(state) {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     const lastLoadedPageNumber = getLastLoadedPageNumber(state);
@@ -531,8 +485,6 @@ export default class ProductsOperator {
         return null; // nothing more to load
       }
       const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
-      // TODO - take the fallback from sort array once sort functionality is merged
-      const sort = (state.productListing && state.productListing.get('appliedSortId')) || '';
 
       const categoryNameList = [...this.bucketingConfig.currL2NameList];
       // Pushing the first L3 available in L3left variable

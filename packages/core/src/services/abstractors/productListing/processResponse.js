@@ -85,7 +85,6 @@ const processResponse = (
     sort,
   }
 ) => {
-  console.log('res.body', res.body);
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
   if (scrollPoint) {
     sessionStorage.setItem('SCROLL_EVENT', 1);
@@ -173,7 +172,6 @@ const processResponse = (
   if (res.body.response) {
     // TODO - fix this - let isUSStore = this.apiHelper.configOptions.isUSStore;
     const isUSStore = true;
-    console.log('res.body.response.products', res.body.response.products.length);
     res.body.response.products.forEach(product =>
       parseProductInfo(product, {
         isUSStore,

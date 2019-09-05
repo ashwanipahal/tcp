@@ -7,6 +7,12 @@ const SET_FIRST_PRODUCTS_PAGE = `${PRODUCTLISTINGPAGE_ACTION_PATTERN}SET_FIRST_P
 const SET_PLP_LOADING_STATE = `${PRODUCTLISTINGPAGE_ACTION_PATTERN}SET_PLP_LOADING_STATE`;
 export const PRODUCTS_PER_LOAD = 20; // TODO - change this to config value. the number of products to load on each call to BE (as the user scrolls)
 
+export const routingInfoStoreView = {
+  getOriginImgHostSetting: () => {
+    return 'https://www.childrensplace.com';
+  },
+};
+
 const PRODUCTLISTING_CONSTANTS = {
   SET_PRODUCTS,
   FETCH_PRODUCTS,

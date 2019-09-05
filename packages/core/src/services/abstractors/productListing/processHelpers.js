@@ -12,14 +12,10 @@ const apiHelper = {
  * @return catMap {Object} Map of the category path which with the product can be accessed.
  */
 const getCategoryMap = (catPath, l1) => {
-  console.log('catPath', catPath);
   const { length } = catPath;
   const catMap = {};
   for (let idx = 0; idx < length; idx += 1) {
     const temp = catPath[idx].split('>');
-    console.log('temp --> ', temp);
-    console.log('catMap --> ', catMap);
-    console.log('catMap[temp[1]]', catMap[temp[1]]);
     catMap[temp[1]] = catMap[temp[1]] ? catMap[temp[1]] : [];
     if (temp[0] && l1 && temp[0] === l1) {
       catMap[temp[1]].push(temp[2]);
@@ -169,7 +165,7 @@ const getDisplayName = (keyValue, data, index) => {
 /**
  * @function getFacetsMappingFromAPIData
  * @param {Object} filterMap - UNBXD API Response for individual facet
- * @param {Function} getFacetSwatchImgPath - Get Color swatch image for the facet option
+ * @param {Function} getFacetsMappingFromAPIData - Get Color swatch image for the facet option
  */
 const getFacetsMappingFromAPIData = (
   filterMap,

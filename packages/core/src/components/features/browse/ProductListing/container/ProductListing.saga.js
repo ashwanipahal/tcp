@@ -5,14 +5,13 @@ import {
   setListingFirstProductsPage,
   setPlpLoadingState,
 } from './ProductListing.actions';
-// import { validateReduxCache } from '../../../../../utils/cache.util';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
-function* fetchPlpProducts({ payload }) {
+export function* fetchPlpProducts({ payload }) {
   try {
     const { url } = payload;
     const location = url
@@ -44,7 +43,7 @@ function* fetchPlpProducts({ payload }) {
   }
 }
 
-function* fetchMoreProducts() {
+export function* fetchMoreProducts() {
   try {
     const state = yield select();
     yield put(setPlpLoadingState({ isLoadingMore: true }));
@@ -68,8 +67,6 @@ function* fetchMoreProducts() {
 }
 
 function* ProductListingSaga() {
-  // const cachedFetchProducts = validateReduxCache(fetchPlpProducts);
-  // const cachedFetchMoreProducts = validateReduxCache(fetchMoreProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.FETCH_PRODUCTS, fetchPlpProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.GET_MORE_PRODUCTS, fetchMoreProducts);
 }

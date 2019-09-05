@@ -91,6 +91,20 @@ const sumBy = (arr, iteratee) => {
 const apiHelper = {
   configOptions: { siteId: '' },
 };
+const unbxdId = null;
+/**
+ * @function setUnbxdId
+ * @summary This will set the UNBXD id we get from reponse headers in  UNBXD call.
+ */
+
+//setUnbxdId = id => (unbxdId = id);
+
+/**
+ * @function getUnbxdId
+ * @summary This will get the UNBXD id that we got from reponse headers in  UNBXD call.
+ */
+
+const getUnbxdId = () => 'unbxdId';
 
 /**
    * @function getInventoryAndFavoritsCount

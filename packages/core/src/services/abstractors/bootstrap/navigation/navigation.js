@@ -66,6 +66,7 @@ const Abstractor = {
       });
 
       const { categoryContent } = listItem;
+      categoryContent.url = Abstractor.constructUrl(listItem.categoryContent);
 
       return {
         categoryContent,

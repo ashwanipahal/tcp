@@ -271,3 +271,8 @@ export function getProductsAndTitleBlocks(state, productBlocks = []) {
 
   return productsAndTitleBlocks;
 }
+
+export const getPlpCutomizersFromUrlQueryString = () => {
+  // TODO - this should be fixed in the filters PR - check and update
+  return '';
+};
