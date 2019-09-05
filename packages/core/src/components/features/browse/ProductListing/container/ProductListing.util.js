@@ -97,7 +97,10 @@ export const matchPath = (url, param) => {
       searchTerm: url,
     };
   }
-  if (param === '/c?cid=' && url.indexOf(param) !== -1) {
+  if (
+    (param === '/c?cid=' && url.indexOf(param) !== -1) ||
+    (param === '/c/' && url.indexOf(param) !== -1)
+  ) {
     const urlWithCat = url.split(param)[1];
     return {
       listingKey: urlWithCat,
@@ -166,7 +169,8 @@ export const isSearch = () => {
 };
 
 export const matchValue = (isSearchPage, location) => {
-  const params = isSearchPage ? '/search/' : '/c?cid=';
+  const categoryParam = isMobileApp() ? '/c?cid=' : '/c/';
+  const params = isSearchPage ? '/search/' : categoryParam;
   const pathname = isMobileApp() ? location : window.location.pathname;
   return matchPath(pathname, params);
 };
