@@ -123,4 +123,5 @@ export default {
     CIRCULAR_BORDER: '#6b6b6b',
     L1_BACKGROUND: '#f6f6f6',
   },
+  REWARDS_OVERLAY: 'rgba(25, 25, 25, 0.7)',
 };
