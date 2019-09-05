@@ -718,6 +718,7 @@ exports[`PromoTextBanner native component renders all style correctly 13`] = `
     }
   }
   forwardedRef={null}
+  letterSpacing="ls1"
   lineHeight="20px"
   textAlign="center"
 />
@@ -774,6 +775,7 @@ exports[`PromoTextBanner native component renders all style correctly 14`] = `
     }
   }
   forwardedRef={null}
+  letterSpacing="ls2"
   lineHeight="20px"
   textAlign="center"
 />

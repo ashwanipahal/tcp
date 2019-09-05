@@ -85,9 +85,9 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
       </Styled(View)>
     </Styled(View)>
     <Styled(ImageComp)
-      height={750}
+      height={413}
       url="https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg"
-      width={750}
+      width={726}
     />
   </Styled(View)>
   <Styled(View)>

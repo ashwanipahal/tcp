@@ -527,7 +527,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "lineHeight": "normal",
         },
         "letterSpacings": Object {
+          "ls1": "1px",
           "ls167": "1.67px",
+          "ls2": "2px",
           "ls222": "2.22px",
           "ls257": "2.57px",
           "ls271": "2.71px",
