@@ -7,7 +7,13 @@ const images = [
   'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
   'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
 ];
-const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
+const ctaTypes = [
+  'stackedCTAButtons',
+  'stackedCTAButtonsExpandable',
+  'CTAButtonCarousel',
+  'CTAButtonCarouselExpandable',
+  'divImageCTACarousel',
+];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
   /*   const gymboreeHeaderTextItems = [
@@ -26,12 +32,35 @@ for (let i = 1; i <= totalImageSlides; i++) {
   ]; */
 
   // eslint-disable-next-line no-unused-vars
-  const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
+  const tcpHeaderTextItems = [
+    {
+      text: 'NEW WASHES',
+      style: 'style1',
+    },
+    {
+      text: 'MORE FITS',
+      style: 'style1',
+    },
+    {
+      text: 'SLIM, PLUS & HUSKY',
+      style: 'style2',
+    },
+    {
+      text: 'SIZES UPTO 18!',
+      style: 'style1',
+    },
+  ];
+
   // eslint-disable-next-line no-unused-vars
   const tcpPromoTextItems = [
-    { text: '60 % OFF', style: 'percentage_wrapped_extra_large' },
-    { text: '50 % Off', style: 'small_text_bold' },
-    { text: ' All Shoes & Select Accessories', style: 'small_text_normal' },
+    {
+      text: 'ALL BASIC DENIM',
+      style: 'small_text_black',
+    },
+    {
+      text: '$ 7 80 &UP',
+      style: 'currency_up_style',
+    },
   ];
 
   imageSlides.push({
@@ -79,15 +108,6 @@ for (let i = 1; i <= totalImageSlides; i++) {
         },
       },
     ],
-    ribbonBanner: [
-      {
-        ribbonPlacement: 'right',
-        textItems: [
-          { text: 'Order By XX/XX', style: 'ribbon_default_text' },
-          { text: 'For Easter Delivery!', style: 'ribbon_default_text' },
-        ],
-      },
-    ],
   });
 }
 
@@ -97,7 +117,7 @@ export default {
     name: 'moduleB',
     type: 'moduleB',
     composites: {
-      largeCompImageCarousel: imageSlides,
+      largeCompImage: imageSlides,
       ctaItems: [
         {
           image: {
@@ -196,6 +216,10 @@ export default {
       {
         key: 'ctaType',
         val: ctaTypes[0],
+      },
+      {
+        key: 'bannerPostition',
+        val: 'overlay',
       },
     ],
   },
