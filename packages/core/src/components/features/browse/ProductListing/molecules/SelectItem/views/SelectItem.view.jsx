@@ -52,6 +52,7 @@ class SelectItem extends React.PureComponent {
     isAutosuggestAnalytics: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     query: PropTypes.string.isRequired,
+    dataLocator: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -105,6 +106,7 @@ class SelectItem extends React.PureComponent {
       title,
       content,
       query,
+      dataLocator,
     } = this.props;
     return (
       <li
@@ -120,12 +122,13 @@ class SelectItem extends React.PureComponent {
           data-title={title}
           data-query={query}
           ref={this.handleRef}
-          className="item-select"
+          className={`${className} selected-items`}
           onMouseDown={this.handleClick}
           onKeyPress={this.handleClick}
           role="option"
           tabIndex="0"
           aria-selected="false"
+          dataLocator={dataLocator}
         >
           {content}
         </div>

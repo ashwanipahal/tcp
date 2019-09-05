@@ -5,13 +5,12 @@ exports[`ProductColorChipWrapperVanilla component should renders correctly 1`] =
   className=""
 >
   <ol
-    className="content-colors "
+    className="content-colors"
   >
     <Swipeable
       className="color-swatches-mobile-view"
       delta={10}
       onSwipedLeft={[Function]}
-      onSwipedRight={[Function]}
       preventDefaultTouchmoveEvent={false}
       rotationAngle={0}
       trackMouse={false}

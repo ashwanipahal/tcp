@@ -55,7 +55,6 @@ async function fetchData(baseURL, relURL, params = {}, method) {
         resolve(response);
       })
       .catch(e => {
-        // eslint-disable-next-line no-console
         reject(e);
       });
   });
