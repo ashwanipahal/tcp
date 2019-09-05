@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
+import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
@@ -128,7 +129,11 @@ class AccountOverview extends PureComponent<Props> {
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={labels.lbl_overview_myWalletHeading} />
+            <Panel title={labels.lbl_overview_myWalletHeading}>
+              <MyWalletTile
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
             <Panel title={labels.lbl_overview_earnPointsHeading} />
             <Panel title={labels.lbl_overview_ordersHeading} />
             <Panel title={labels.lbl_overview_profileInformationHeading}>
