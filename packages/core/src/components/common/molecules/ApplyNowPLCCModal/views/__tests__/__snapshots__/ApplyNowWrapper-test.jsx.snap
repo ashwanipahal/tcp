@@ -17,7 +17,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     anchorVariation="primary"
     fontSizeVariation="medium"
     onClick={[Function]}
-    text="Apply Now"
     underline={true}
   />
 </div>

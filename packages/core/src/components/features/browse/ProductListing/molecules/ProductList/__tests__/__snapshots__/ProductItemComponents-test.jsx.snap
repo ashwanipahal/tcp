@@ -4,7 +4,7 @@ exports[`ProductItemComponents component BadgeItem render Text 1`] = `
 <div
   className=""
 >
-  <ForwardRef
+  <ForwardRef(Styled(BodyCopy))
     className={null}
     color="text.primary"
     component="p"
@@ -23,7 +23,7 @@ exports[`ProductItemComponents component BadgeItem render Text 1`] = `
     textAlign="left"
   >
     
-  </ForwardRef>
+  </ForwardRef(Styled(BodyCopy))>
 </div>
 `;
 
@@ -54,7 +54,7 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
 <div
   className="container-price"
 >
-  <ForwardRef
+  <ForwardRef(Styled(BodyCopy))
     className={null}
     color="red.500"
     component="p"
@@ -73,8 +73,8 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
     textAlign="left"
   >
     12.00
-  </ForwardRef>
-  <ForwardRef
+  </ForwardRef(Styled(BodyCopy))>
+  <ForwardRef(Styled(BodyCopy))
     className="merchant-tag"
     color="red.500"
     component="span"
@@ -92,7 +92,7 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
     textAlign="left"
   >
     Badge2
-  </ForwardRef>
+  </ForwardRef(Styled(BodyCopy))>
 </div>
 `;
 
@@ -126,7 +126,7 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
 <div
   className="product-title-container"
 >
-  <ForwardRef
+  <ForwardRef(Styled(Anchor))
     handleLinkClick={[Function]}
     inheritedStyles="product-title-content"
     to=""
@@ -137,7 +137,7 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
       truncationChar="…"
       useNativeClamp={false}
     >
-      <ForwardRef
+      <ForwardRef(Styled(BodyCopy))
         className={null}
         color="text.primary"
         component="p"
@@ -155,9 +155,9 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
         textAlign="left"
       >
         
-      </ForwardRef>
+      </ForwardRef(Styled(BodyCopy))>
     </Dotdotdot>
-  </ForwardRef>
+  </ForwardRef(Styled(Anchor))>
   Object {}
 </div>
 `;
@@ -206,7 +206,7 @@ exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
 `;
 
 exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
-<ForwardRef
+<ForwardRef(Styled(BodyCopy))
   className="loyalty-text-container"
   color="text.primary"
   component="p"
