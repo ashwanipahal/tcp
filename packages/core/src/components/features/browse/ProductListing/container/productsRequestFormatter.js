@@ -1,4 +1,5 @@
 import queryString from 'query-string';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { bindAllClassMethodsToThis } from '../../../../../utils';
 import BucketingBL from './bucketingLogicHelper';
 import {
@@ -390,7 +391,7 @@ export default class ProductsOperator {
       )
       .catch(err => {
         // if failed, log error and simply do not add any extra info to products
-        console.log('ProductsOperator.addCustomUserInfoToProducts', err);
+        logger.error('ProductsOperator.addCustomUserInfoToProducts', err);
         return products;
       });
   }

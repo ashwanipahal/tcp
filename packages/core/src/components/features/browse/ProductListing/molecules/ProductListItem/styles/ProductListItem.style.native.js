@@ -4,7 +4,7 @@ const ListContainer = styled.View`
   width: 50%;
   height: 428;
   background: white;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const FavoriteIconContainer = styled.View`

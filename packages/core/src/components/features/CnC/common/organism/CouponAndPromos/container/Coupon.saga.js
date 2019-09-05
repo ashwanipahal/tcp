@@ -1,4 +1,5 @@
 import { call, takeLatest, put, delay } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import COUPON_CONSTANTS from '../Coupon.constants';
 import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
 import BagPageAction from '../../../../BagPage/container/BagPage.actions';
@@ -93,7 +94,7 @@ export function* getAllCoupons() {
     const coupons = yield call(getAllCouponsAbstractor);
     yield put(setCouponList(coupons));
   } catch (e) {
-    console.log('getAllCoupons error', e);
+    logger.error('getAllCoupons error', e);
   }
 }
 

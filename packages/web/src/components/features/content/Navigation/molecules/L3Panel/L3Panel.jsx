@@ -68,10 +68,11 @@ const L3Panel = props => {
               const {
                 categoryContent: { name: l3Name },
                 url,
+                asPath,
               } = l3Links;
               return (
                 <li>
-                  <Anchor to={url} dataLocator={`l3_link_${index}`}>
+                  <Anchor to={url} asPath={asPath} dataLocator={`l3_link_${index}`}>
                     <BodyCopy
                       className="l2-nav-link"
                       fontFamily="secondary"

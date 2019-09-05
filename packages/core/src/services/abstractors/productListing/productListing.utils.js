@@ -1,3 +1,5 @@
+const logger = require('@tcp/core/src/utils/loggerInstance');
+
 function altImageArray(imagename, altImg) {
   try {
     const altImges = JSON.parse(altImg);
@@ -95,7 +97,7 @@ export function extractExtraImages(
       };
     }
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
   return colorsImageMap;
 }

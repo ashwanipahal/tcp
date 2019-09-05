@@ -75,7 +75,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-clothing-school-uniforms"
-                to="/c?cid=49007"
+                to="/c?cid=girls-clothing-school-uniforms"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -128,6 +128,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-school-uniform-polo-shirts",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -141,9 +142,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-polo-shirts",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-school-uniform-polo-shirts",
+                      "url": "/c?cid=girls-school-uniform-polo-shirts",
                     },
                     Object {
+                      "asPath": "/c/girls-clothing-school-uniforms-tops",
                       "categoryContent": Object {
                         "description": "tops",
                         "groupIdentifier": "",
@@ -157,9 +159,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-tops",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-clothing-school-uniforms-tops",
+                      "url": "/c?cid=girls-clothing-school-uniforms-tops",
                     },
                     Object {
+                      "asPath": "/c/girls-school-uniform-chino-pants",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -173,9 +176,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-chino-pants",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-school-uniform-chino-pants",
+                      "url": "/c?cid=girls-school-uniform-chino-pants",
                     },
                     Object {
+                      "asPath": "/c/girls-school-uniform-shorts",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -189,9 +193,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-shorts",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-school-uniform-shorts",
+                      "url": "/c?cid=girls-school-uniform-shorts",
                     },
                     Object {
+                      "asPath": "/c/girls-school-uniform-leggings",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -205,9 +210,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-leggings",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-school-uniform-leggings",
+                      "url": "/c?cid=girls-school-uniform-leggings",
                     },
                     Object {
+                      "asPath": "/c/girls-school-uniform-active",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -221,9 +227,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-school-uniform-active",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-school-uniform-active",
+                      "url": "/c?cid=girls-school-uniform-active",
                     },
                     Object {
+                      "asPath": "/c/girls-clothing-school-uniforms-dresses-and-jumpers",
                       "categoryContent": Object {
                         "description": "dresses & jumpers",
                         "groupIdentifier": "",
@@ -237,9 +244,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-dresses-and-jumpers",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-clothing-school-uniforms-dresses-and-jumpers",
+                      "url": "/c?cid=girls-clothing-school-uniforms-dresses-and-jumpers",
                     },
                     Object {
+                      "asPath": "/c/girls-clothing-school-uniforms-jackets-and-vests",
                       "categoryContent": Object {
                         "description": "outerwear",
                         "groupIdentifier": "",
@@ -253,9 +261,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-jackets-and-vests",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-clothing-school-uniforms-jackets-and-vests",
+                      "url": "/c?cid=girls-clothing-school-uniforms-jackets-and-vests",
                     },
                     Object {
+                      "asPath": "/c/girls-clothing-school-uniforms-backpacks-and-essentials",
                       "categoryContent": Object {
                         "description": "backpacks & accessories",
                         "groupIdentifier": "",
@@ -269,9 +278,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-clothing-school-uniforms-backpacks-and-essentials",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-clothing-school-uniforms-backpacks-and-essentials",
+                      "url": "/c?cid=girls-clothing-school-uniforms-backpacks-and-essentials",
                     },
                     Object {
+                      "asPath": "/c/girls-plus-slim-size-school-uniforms",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -285,7 +295,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-plus-slim-size-school-uniforms",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-plus-slim-size-school-uniforms",
+                      "url": "/c?cid=girls-plus-slim-size-school-uniforms",
                     },
                   ]
                 }
@@ -297,7 +307,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girl-americana-shop"
-                to="/c?cid=452001"
+                to="/c?cid=girl-americana-shop"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -329,7 +339,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-dresses"
-                to="/c?cid=49005"
+                to="/c?cid=girls-dresses"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -368,6 +378,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-dresses-casual",
                       "categoryContent": Object {
                         "description": "dresses",
                         "groupIdentifier": "",
@@ -381,9 +392,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-dresses-casual",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-dresses-casual",
+                      "url": "/c?cid=girls-dresses-casual",
                     },
                     Object {
+                      "asPath": "/c/girls-dresses-rompers",
                       "categoryContent": Object {
                         "description": "rompers",
                         "groupIdentifier": "",
@@ -397,7 +409,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-dresses-rompers",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-dresses-rompers",
+                      "url": "/c?cid=girls-dresses-rompers",
                     },
                   ]
                 }
@@ -409,7 +421,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girl-t-shirts"
-                to="/c?cid=419525"
+                to="/c?cid=girl-t-shirts"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -448,6 +460,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-tops-shirts-graphic-tees",
                       "categoryContent": Object {
                         "description": "Short Sleeve",
                         "groupIdentifier": "",
@@ -461,7 +474,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-shirts-graphic-tees",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-tops-shirts-graphic-tees",
+                      "url": "/c?cid=girls-tops-shirts-graphic-tees",
                     },
                   ]
                 }
@@ -473,7 +486,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-kids-shorts"
-                to="/c?cid=433014"
+                to="/c?cid=girls-kids-shorts"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -512,6 +525,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-shorts-skimmer",
                       "categoryContent": Object {
                         "description": "skimmer",
                         "groupIdentifier": "",
@@ -525,9 +539,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shorts-skimmer",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-shorts-skimmer",
+                      "url": "/c?cid=girls-shorts-skimmer",
                     },
                     Object {
+                      "asPath": "/c/girls-shorts-midi",
                       "categoryContent": Object {
                         "description": "midi",
                         "groupIdentifier": "",
@@ -541,9 +556,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shorts-midi",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-shorts-midi",
+                      "url": "/c?cid=girls-shorts-midi",
                     },
                     Object {
+                      "asPath": "/c/girls-shorts-short",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -557,9 +573,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shorts-short",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-shorts-short",
+                      "url": "/c?cid=girls-shorts-short",
                     },
                     Object {
+                      "asPath": "/c/girls-pull-on",
                       "categoryContent": Object {
                         "description": "pull-on",
                         "groupIdentifier": "",
@@ -573,9 +590,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-pull-on",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-pull-on",
+                      "url": "/c?cid=girls-pull-on",
                     },
                     Object {
+                      "asPath": "/c/girls-plus-slim-size-shorts",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -589,7 +607,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-plus-slim-size-shorts",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-plus-slim-size-shorts",
+                      "url": "/c?cid=girls-plus-slim-size-shorts",
                     },
                   ]
                 }
@@ -601,7 +619,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-matching-clothes"
-                to="/c?cid=415529"
+                to="/c?cid=girls-matching-clothes"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -633,7 +651,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-tops-girls-shirts"
-                to="/c?cid=49012"
+                to="/c?cid=girls-tops-girls-shirts"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -672,6 +690,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-tops-shirts-short-sleeve-tops",
                       "categoryContent": Object {
                         "description": "short sleeve",
                         "groupIdentifier": "",
@@ -685,9 +704,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-shirts-short-sleeve-tops",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-tops-shirts-short-sleeve-tops",
+                      "url": "/c?cid=girls-tops-shirts-short-sleeve-tops",
                     },
                     Object {
+                      "asPath": "/c/girls-tops-girls-shirts-tanks-and-camis",
                       "categoryContent": Object {
                         "description": "tanks & camis",
                         "groupIdentifier": "",
@@ -701,9 +721,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-girls-shirts-tanks-and-camis",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-tops-girls-shirts-tanks-and-camis",
+                      "url": "/c?cid=girls-tops-girls-shirts-tanks-and-camis",
                     },
                     Object {
+                      "asPath": "/c/girls-polo-shirts",
                       "categoryContent": Object {
                         "description": "polo shirts",
                         "groupIdentifier": "",
@@ -717,9 +738,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-polo-shirts",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-polo-shirts",
+                      "url": "/c?cid=girls-polo-shirts",
                     },
                     Object {
+                      "asPath": "/c/girls-tops-girls-shirts-long-sleeve-tops",
                       "categoryContent": Object {
                         "description": "long sleeve",
                         "groupIdentifier": "",
@@ -733,9 +755,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-girls-shirts-long-sleeve-tops",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-tops-girls-shirts-long-sleeve-tops",
+                      "url": "/c?cid=girls-tops-girls-shirts-long-sleeve-tops",
                     },
                     Object {
+                      "asPath": "/c/girls-tops-girls-shirts-sweaters",
                       "categoryContent": Object {
                         "description": "sweaters",
                         "groupIdentifier": "",
@@ -749,7 +772,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-tops-girls-shirts-sweaters",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-tops-girls-shirts-sweaters",
+                      "url": "/c?cid=girls-tops-girls-shirts-sweaters",
                     },
                   ]
                 }
@@ -761,7 +784,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-bottoms-girls-pants"
-                to="/c?cid=49004"
+                to="/c?cid=girls-bottoms-girls-pants"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -800,6 +823,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-bottoms-girls-pants-jeggings",
                       "categoryContent": Object {
                         "description": "jeggings",
                         "groupIdentifier": "",
@@ -813,9 +837,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-bottoms-girls-pants-jeggings",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-bottoms-girls-pants-jeggings",
+                      "url": "/c?cid=girls-bottoms-girls-pants-jeggings",
                     },
                     Object {
+                      "asPath": "/c/girls-bottoms-girls-pants-leggings",
                       "categoryContent": Object {
                         "description": "leggings",
                         "groupIdentifier": "",
@@ -829,9 +854,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-bottoms-girls-pants-leggings",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-bottoms-girls-pants-leggings",
+                      "url": "/c?cid=girls-bottoms-girls-pants-leggings",
                     },
                     Object {
+                      "asPath": "/c/girls-bottoms-girls-pants-woven-pants",
                       "categoryContent": Object {
                         "description": "pants",
                         "groupIdentifier": "",
@@ -845,7 +871,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-bottoms-girls-pants-woven-pants",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-bottoms-girls-pants-woven-pants",
+                      "url": "/c?cid=girls-bottoms-girls-pants-woven-pants",
                     },
                   ]
                 }
@@ -865,7 +891,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-denim-bottoms"
-                to="/c?cid=420015"
+                to="/c?cid=girls-denim-bottoms"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -897,7 +923,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-leggings"
-                to="/c?cid=435501"
+                to="/c?cid=girls-leggings"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -929,7 +955,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-swimwear"
-                to="/c?cid=49011"
+                to="/c?cid=girls-swimwear"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -968,6 +994,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-swimsuits-all",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -981,9 +1008,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-swimsuits-all",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-swimsuits-all",
+                      "url": "/c?cid=girls-swimsuits-all",
                     },
                     Object {
+                      "asPath": "/c/undefined",
                       "categoryContent": Object {
                         "description": "",
                         "groupIdentifier": "",
@@ -997,7 +1025,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "",
                         "seoUrl": null,
                       },
-                      "url": "/c/undefined",
+                      "url": "/c?cid=undefined",
                     },
                   ]
                 }
@@ -1009,7 +1037,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-outerwear-girls-jackets-girls-blazers"
-                to="/c?cid=78501"
+                to="/c?cid=girls-outerwear-girls-jackets-girls-blazers"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1041,7 +1069,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-clothing-sleepwear"
-                to="/c?cid=49009"
+                to="/c?cid=girls-clothing-sleepwear"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1073,7 +1101,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-shoes"
-                to="/c?cid=49008"
+                to="/c?cid=girls-shoes"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1112,6 +1140,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girls-slides",
                       "categoryContent": Object {
                         "description": "Slides",
                         "groupIdentifier": "",
@@ -1125,9 +1154,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-slides",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-slides",
+                      "url": "/c?cid=girls-slides",
                     },
                     Object {
+                      "asPath": "/c/girls-shoes-ballet-flats",
                       "categoryContent": Object {
                         "description": "ballet flats",
                         "groupIdentifier": "",
@@ -1141,7 +1171,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girls-shoes-ballet-flats",
                         "seoUrl": null,
                       },
-                      "url": "/c/girls-shoes-ballet-flats",
+                      "url": "/c?cid=girls-shoes-ballet-flats",
                     },
                   ]
                 }
@@ -1153,7 +1183,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girl-accessories"
-                to="/c?cid=49003"
+                to="/c?cid=girl-accessories"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1192,6 +1222,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 links={
                   Array [
                     Object {
+                      "asPath": "/c/girl-accessories-backpacks-and-essentials",
                       "categoryContent": Object {
                         "description": "backpacks & essentials",
                         "groupIdentifier": "",
@@ -1205,9 +1236,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-backpacks-and-essentials",
                         "seoUrl": null,
                       },
-                      "url": "/c/girl-accessories-backpacks-and-essentials",
+                      "url": "/c?cid=girl-accessories-backpacks-and-essentials",
                     },
                     Object {
+                      "asPath": "/c/girl-accessories-bags",
                       "categoryContent": Object {
                         "description": "fashion bags",
                         "groupIdentifier": "",
@@ -1221,9 +1253,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-bags",
                         "seoUrl": null,
                       },
-                      "url": "/c/girl-accessories-bags",
+                      "url": "/c?cid=girl-accessories-bags",
                     },
                     Object {
+                      "asPath": "/c/girl-accessories-hair",
                       "categoryContent": Object {
                         "description": "hair",
                         "groupIdentifier": "",
@@ -1237,9 +1270,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-hair",
                         "seoUrl": null,
                       },
-                      "url": "/c/girl-accessories-hair",
+                      "url": "/c?cid=girl-accessories-hair",
                     },
                     Object {
+                      "asPath": "/c/girl-accessories-hats",
                       "categoryContent": Object {
                         "description": "hats",
                         "groupIdentifier": "",
@@ -1253,9 +1287,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-hats",
                         "seoUrl": null,
                       },
-                      "url": "/c/girl-accessories-hats",
+                      "url": "/c?cid=girl-accessories-hats",
                     },
                     Object {
+                      "asPath": "/c/girl-accessories-sunglasses",
                       "categoryContent": Object {
                         "description": "sunglasses",
                         "groupIdentifier": "",
@@ -1269,9 +1304,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-sunglasses",
                         "seoUrl": null,
                       },
-                      "url": "/c/girl-accessories-sunglasses",
+                      "url": "/c?cid=girl-accessories-sunglasses",
                     },
                     Object {
+                      "asPath": "/c/girl-accessories-belts",
                       "categoryContent": Object {
                         "description": "belts",
                         "groupIdentifier": "",
@@ -1285,9 +1321,10 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-belts",
                         "seoUrl": null,
                       },
-                      "url": "/c/girl-accessories-belts",
+                      "url": "/c?cid=girl-accessories-belts",
                     },
                     Object {
+                      "asPath": "/c/girl-accessories-necklaces-and-sets",
                       "categoryContent": Object {
                         "description": "jewelry & watches",
                         "groupIdentifier": "",
@@ -1301,7 +1338,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoToken": "girl-accessories-necklaces-and-sets",
                         "seoUrl": null,
                       },
-                      "url": "/c/girl-accessories-necklaces-and-sets",
+                      "url": "/c?cid=girl-accessories-necklaces-and-sets",
                     },
                   ]
                 }
@@ -1353,7 +1390,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girl-unicorn-shop"
-                to="/c?cid=464014"
+                to="/c?cid=girl-unicorn-shop"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1385,7 +1422,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girl-flip-sequins-shop"
-                to="/c?cid=464017"
+                to="/c?cid=girl-flip-sequins-shop"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1417,7 +1454,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girl-emoji-shop"
-                to="/c?cid=476046"
+                to="/c?cid=girl-emoji-shop"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1475,7 +1512,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-new-arrivals"
-                to="/c?cid=447016"
+                to="/c?cid=girls-new-arrivals"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1507,7 +1544,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             >
               <Styled(Anchor)
                 asPath="/c/girls-plus-sizes"
-                to="/c?cid=474034"
+                to="/c?cid=girls-plus-sizes"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
