@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Image } from 'react-native';
 import BodyCopy from '../../../atoms/BodyCopy';
+import { Image } from '../../../atoms';
 
 export const Wrapper = styled.View`
   display: flex;
