@@ -70,11 +70,11 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "overlay_banner_header",
+                    "style": "small_text_black",
                     "text": "ALL BASIC DENIM",
                   },
                   Object {
-                    "style": "overlay_promo_banner_style",
+                    "style": "currency_up_style",
                     "text": "$ 7 80 &UP",
                   },
                 ],
