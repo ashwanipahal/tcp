@@ -55,6 +55,8 @@ export default {
   'carrot-left': '/static/images/carrot-left.png',
   'add-to-favorite': '/static/images/add-to-favorite.svg',
   'cross-icon': '/static/images/small.png',
+  'girl-icon': '/static/images/girl-icon.png',
+  'boy-icon': '/static/images/boy-icon.png',
   star: '/static/images/star.svg',
   'star-filled': '/static/images/star-filled.svg',
   'circle-check': '/static/images/circle-check.svg',
