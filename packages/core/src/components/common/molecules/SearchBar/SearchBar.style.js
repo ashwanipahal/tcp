@@ -79,44 +79,35 @@ export default css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
-  .trendingBox .trendingBoxBody ul li {
+  .trendingBoxBody ul li {
     display: inline-block;
   }
 
-  .trendingBox .trendingBoxBody ul li.tagName {
+  li.tagName {
     height: 39px;
-    line-height: 39px;
-    font-family: Nunito;
-    font-size: 15px;
-    text-align: center;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
     border: 1px solid ${props => props.theme.colors.TEXT.DARKERBLUE};
     border-radius: 20px;
     padding: 0px 10px;
+    text-align: center;
     margin: 6px;
   }
 
-  .recentBox .recentBoxBody ul li.recentTag {
+  li.recentTag {
     height: 39px;
-    line-height: 39px;
-    font-family: Nunito;
-    font-size: 15px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
-  .matchLinkBox .matchLinkBoxBody ul li.linkName {
+  li.linkName {
     height: 39px;
-    line-height: 39px;
-    font-family: Nunito;
-    font-size: 15px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin: 6px;
   }
 
-  .matchProductBox .matchProductBody ul li.productBox {
+  li.productBox {
     width: 81px;
     height: 81px;
     border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};

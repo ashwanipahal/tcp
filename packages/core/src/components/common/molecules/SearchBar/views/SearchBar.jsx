@@ -29,8 +29,8 @@ const SearchBar = props => {
     <React.Fragment>
       <BodyCopy className={className}>
         {isOpen ? (
-          <BodyCopy class="searchWrapper">
-            <BodyCopy className="searchbar">
+          <div className="searchWrapper">
+            <div className="searchbar">
               <input
                 ref={searchRef}
                 onChange={changeSearchText}
@@ -55,10 +55,15 @@ const SearchBar = props => {
               />
 
               {!showProduct ? (
-                <BodyCopy className="suggestionBox">
-                  <BodyCopy className="trendingBox">
+                <div className="suggestionBox">
+                  <div className="trendingBox">
                     <BodyCopy className="trendingBoxHead">WHAT&apos;S TRENDING</BodyCopy>
-                    <BodyCopy className="trendingBoxBody">
+                    <BodyCopy
+                      className="trendingBoxBody"
+                      fontFamily="Nunito"
+                      fontSize="15px"
+                      lineHeight="39px"
+                    >
                       <ul>
                         <li className="tagName">EASTER</li>
                         <li className="tagName">EASTER</li>
@@ -66,10 +71,15 @@ const SearchBar = props => {
                         <li className="tagName">EASTER</li>
                       </ul>
                     </BodyCopy>
-                  </BodyCopy>
-                  <BodyCopy className="recentBox">
+                  </div>
+                  <div className="recentBox">
                     <BodyCopy className="recentBoxHead">YOUR RECENT SEARCH</BodyCopy>
-                    <BodyCopy className="recentBoxBody">
+                    <BodyCopy
+                      className="recentBoxBody"
+                      fontFamily="Nunito"
+                      fontSize="15px"
+                      lineHeight="39px"
+                    >
                       <ul>
                         <li className="recentTag">DRESS</li>
                         <li className="recentTag">GIRL</li>
@@ -77,13 +87,18 @@ const SearchBar = props => {
                         <li className="recentTag">GIRL</li>
                       </ul>
                     </BodyCopy>
-                  </BodyCopy>
-                </BodyCopy>
+                  </div>
+                </div>
               ) : (
-                <BodyCopy className="matchBox">
-                  <BodyCopy className="matchLinkBox">
+                <div className="matchBox">
+                  <div className="matchLinkBox">
                     <BodyCopy className="matchLinkBoxHead">I&apos;M Looking For</BodyCopy>
-                    <BodyCopy className="matchLinkBoxBody">
+                    <BodyCopy
+                      className="matchLinkBoxBody"
+                      fontFamily="Nunito"
+                      fontSize="15px"
+                      lineHeight="39px"
+                    >
                       <ul>
                         <li className="linkName">Pants</li>
                         <li className="linkName">Jeans</li>
@@ -91,10 +106,15 @@ const SearchBar = props => {
                         <li className="linkName">Jeans set</li>
                       </ul>
                     </BodyCopy>
-                  </BodyCopy>
-                  <BodyCopy className="matchProductBox">
+                  </div>
+                  <div className="matchProductBox">
                     <BodyCopy className="matchProductHead">YOUR RECENT SEARCH</BodyCopy>
-                    <BodyCopy className="matchProductBody">
+                    <BodyCopy
+                      className="matchProductBody"
+                      fontFamily="Nunito"
+                      fontSize="15px"
+                      lineHeight="39px"
+                    >
                       <ul>
                         <li className="productBox" />
                         <li className="productBox" />
@@ -102,11 +122,11 @@ const SearchBar = props => {
                         <li className="productBox" />
                       </ul>
                     </BodyCopy>
-                  </BodyCopy>
-                </BodyCopy>
+                  </div>
+                </div>
               )}
-            </BodyCopy>
-          </BodyCopy>
+            </div>
+          </div>
         ) : (
           <Image
             alt="close"
