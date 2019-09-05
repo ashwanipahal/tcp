@@ -18,8 +18,9 @@ import styles from '../styles/LoginForm.styles';
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
     e.preventDefault();
-    const { showForgotPasswordForm, resetForm } = this.props;
+    const { showForgotPasswordForm, resetForm, resetLoginState } = this.props;
     resetForm();
+    resetLoginState();
     showForgotPasswordForm();
   };
 
