@@ -51,13 +51,6 @@ describe('MyRewards container', () => {
     expect(component.find(CouponDetailModal)).toHaveLength(0);
   });
 
-  it('should return an action onApplyCouponToBag which will call dispatch function on execution', () => {
-    const dispatch = jest.fn();
-    const dispatchProps = mapDispatchToProps(dispatch);
-    dispatchProps.onApplyCouponToBag();
-    expect(dispatch.mock.calls).toHaveLength(1);
-  });
-
   it('should return an action onRemove which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
     const dispatchProps = mapDispatchToProps(dispatch);

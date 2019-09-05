@@ -50,7 +50,7 @@ describe('Detail Coupon Modal', () => {
         expirationDateTimeStamp: '2019-08-10T18:29:00.001Z',
       },
       onRequestClose: mockedCloseModal,
-      onApplyCouponToBag: mockedhandleApplyToBag,
+      onApplyCouponToBagFromList: mockedhandleApplyToBag,
     };
     const tree = shallow(<CouponDetailModalVanilla {...dataTwo} />);
     tree

@@ -89,7 +89,7 @@ describe('DetailedCouponTile', () => {
       componentInstance = component.instance();
     });
 
-    it('#handleApplyToBag should call onApplyCouponToBag prop', () => {
+    it('#handleApplyToBag should call onApplyCouponToBagFromList prop', () => {
       componentInstance.handleApplyToBag();
       expect(onApplyCouponToBagFromList).toBeCalled();
     });
