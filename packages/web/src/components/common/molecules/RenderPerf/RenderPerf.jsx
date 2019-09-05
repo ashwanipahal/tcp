@@ -4,7 +4,7 @@ import { string } from 'prop-types';
 import ServerOnly from '../../atoms/ServerOnly';
 
 export function Mark({ name }) {
-  return process.env.RWD_WEB_PERF_TIMING ? (
+  return process.env.PERF_TIMING ? (
     <ServerOnly>
       <Safe.script>{`performance.mark("${name}")`}</Safe.script>
     </ServerOnly>
@@ -18,7 +18,7 @@ Mark.propTypes = {
 export function Measure({ name, start, end }) {
   const startMark = start ? `"${start}"` : undefined;
   const endMark = end ? `"${end}"` : undefined;
-  return process.env.RWD_WEB_PERF_TIMING ? (
+  return process.env.PERF_TIMING ? (
     <ServerOnly>
       <Safe.script>{`performance.measure("${name}", ${startMark}, ${endMark})`}</Safe.script>
     </ServerOnly>
