@@ -49,6 +49,7 @@ class CreateAccounPage extends React.Component {
     this.setState({ confirmHideShowPwd: value });
   };
 
+  // when account is cceate handle submit will submit the form
   handleSubmitForm(payload) {
     const { createAccountAction } = this.props;
     createAccountAction(payload);
