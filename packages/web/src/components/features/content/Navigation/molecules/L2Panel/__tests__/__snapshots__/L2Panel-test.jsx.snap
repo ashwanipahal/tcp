@@ -144,7 +144,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-school-uniform-polo-shirts",
                       },
-                      "url": "/c?cid=girls-school-uniform-polo-shirts",
+                      "url": "/c/girls-school-uniform-polo-shirts",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-tops",
@@ -163,7 +163,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-clothing-school-uniforms-tops",
                       },
-                      "url": "/c?cid=girls-clothing-school-uniforms-tops",
+                      "url": "/c/girls-clothing-school-uniforms-tops",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-chino-pants",
@@ -182,7 +182,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-school-uniform-chino-pants",
                       },
-                      "url": "/c?cid=girls-school-uniform-chino-pants",
+                      "url": "/c/girls-school-uniform-chino-pants",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-shorts",
@@ -201,7 +201,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-school-uniform-shorts",
                       },
-                      "url": "/c?cid=girls-school-uniform-shorts",
+                      "url": "/c/girls-school-uniform-shorts",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-leggings",
@@ -220,7 +220,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-school-uniform-leggings",
                       },
-                      "url": "/c?cid=girls-school-uniform-leggings",
+                      "url": "/c/girls-school-uniform-leggings",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-active",
@@ -239,7 +239,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-school-uniform-active",
                       },
-                      "url": "/c?cid=girls-school-uniform-active",
+                      "url": "/c/girls-school-uniform-active",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-dresses-and-jumpers",
@@ -258,7 +258,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-clothing-school-uniforms-dresses-and-jumpers",
                       },
-                      "url": "/c?cid=girls-clothing-school-uniforms-dresses-and-jumpers",
+                      "url": "/c/girls-clothing-school-uniforms-dresses-and-jumpers",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-jackets-and-vests",
@@ -277,7 +277,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-clothing-school-uniforms-jackets-and-vests",
                       },
-                      "url": "/c?cid=girls-clothing-school-uniforms-jackets-and-vests",
+                      "url": "/c/girls-clothing-school-uniforms-jackets-and-vests",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-backpacks-and-essentials",
@@ -296,7 +296,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-clothing-school-uniforms-backpacks-and-essentials",
                       },
-                      "url": "/c?cid=girls-clothing-school-uniforms-backpacks-and-essentials",
+                      "url": "/c/girls-clothing-school-uniforms-backpacks-and-essentials",
                     },
                     Object {
                       "asPath": "/c/girls-plus-slim-size-school-uniforms",
@@ -315,7 +315,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-plus-slim-size-school-uniforms",
                       },
-                      "url": "/c?cid=girls-plus-slim-size-school-uniforms",
+                      "url": "/c/girls-plus-slim-size-school-uniforms",
                     },
                   ]
                 }
@@ -414,7 +414,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-dresses-casual",
                       },
-                      "url": "/c?cid=girls-dresses-casual",
+                      "url": "/c/girls-dresses-casual",
                     },
                     Object {
                       "asPath": "/c/girls-dresses-rompers",
@@ -433,7 +433,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-dresses-rompers",
                       },
-                      "url": "/c?cid=girls-dresses-rompers",
+                      "url": "/c/girls-dresses-rompers",
                     },
                   ]
                 }
@@ -500,7 +500,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-tops-shirts-graphic-tees",
                       },
-                      "url": "/c?cid=girls-tops-shirts-graphic-tees",
+                      "url": "/c/girls-tops-shirts-graphic-tees",
                     },
                   ]
                 }
@@ -567,7 +567,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-shorts-skimmer",
                       },
-                      "url": "/c?cid=girls-shorts-skimmer",
+                      "url": "/c/girls-shorts-skimmer",
                     },
                     Object {
                       "asPath": "/c/girls-shorts-midi",
@@ -586,7 +586,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-shorts-midi",
                       },
-                      "url": "/c?cid=girls-shorts-midi",
+                      "url": "/c/girls-shorts-midi",
                     },
                     Object {
                       "asPath": "/c/girls-shorts-short",
@@ -605,7 +605,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-shorts-short",
                       },
-                      "url": "/c?cid=girls-shorts-short",
+                      "url": "/c/girls-shorts-short",
                     },
                     Object {
                       "asPath": "/c/girls-pull-on",
@@ -624,7 +624,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-pull-on",
                       },
-                      "url": "/c?cid=girls-pull-on",
+                      "url": "/c/girls-pull-on",
                     },
                     Object {
                       "asPath": "/c/girls-plus-slim-size-shorts",
@@ -643,7 +643,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-plus-slim-size-shorts",
                       },
-                      "url": "/c?cid=girls-plus-slim-size-shorts",
+                      "url": "/c/girls-plus-slim-size-shorts",
                     },
                   ]
                 }
@@ -742,7 +742,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-tops-shirts-short-sleeve-tops",
                       },
-                      "url": "/c?cid=girls-tops-shirts-short-sleeve-tops",
+                      "url": "/c/girls-tops-shirts-short-sleeve-tops",
                     },
                     Object {
                       "asPath": "/c/girls-tops-girls-shirts-tanks-and-camis",
@@ -761,7 +761,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-tops-girls-shirts-tanks-and-camis",
                       },
-                      "url": "/c?cid=girls-tops-girls-shirts-tanks-and-camis",
+                      "url": "/c/girls-tops-girls-shirts-tanks-and-camis",
                     },
                     Object {
                       "asPath": "/c/girls-polo-shirts",
@@ -780,7 +780,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-polo-shirts",
                       },
-                      "url": "/c?cid=girls-polo-shirts",
+                      "url": "/c/girls-polo-shirts",
                     },
                     Object {
                       "asPath": "/c/girls-tops-girls-shirts-long-sleeve-tops",
@@ -799,7 +799,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-tops-girls-shirts-long-sleeve-tops",
                       },
-                      "url": "/c?cid=girls-tops-girls-shirts-long-sleeve-tops",
+                      "url": "/c/girls-tops-girls-shirts-long-sleeve-tops",
                     },
                     Object {
                       "asPath": "/c/girls-tops-girls-shirts-sweaters",
@@ -818,7 +818,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-tops-girls-shirts-sweaters",
                       },
-                      "url": "/c?cid=girls-tops-girls-shirts-sweaters",
+                      "url": "/c/girls-tops-girls-shirts-sweaters",
                     },
                   ]
                 }
@@ -885,7 +885,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-bottoms-girls-pants-jeggings",
                       },
-                      "url": "/c?cid=girls-bottoms-girls-pants-jeggings",
+                      "url": "/c/girls-bottoms-girls-pants-jeggings",
                     },
                     Object {
                       "asPath": "/c/girls-bottoms-girls-pants-leggings",
@@ -904,7 +904,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-bottoms-girls-pants-leggings",
                       },
-                      "url": "/c?cid=girls-bottoms-girls-pants-leggings",
+                      "url": "/c/girls-bottoms-girls-pants-leggings",
                     },
                     Object {
                       "asPath": "/c/girls-bottoms-girls-pants-woven-pants",
@@ -923,7 +923,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-bottoms-girls-pants-woven-pants",
                       },
-                      "url": "/c?cid=girls-bottoms-girls-pants-woven-pants",
+                      "url": "/c/girls-bottoms-girls-pants-woven-pants",
                     },
                   ]
                 }
@@ -1062,7 +1062,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-swimsuits-all",
                       },
-                      "url": "/c?cid=girls-swimsuits-all",
+                      "url": "/c/girls-swimsuits-all",
                     },
                     Object {
                       "asPath": "/c/undefined",
@@ -1081,7 +1081,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/undefined",
                       },
-                      "url": "/c?cid=undefined",
+                      "url": "/c/undefined",
                     },
                   ]
                 }
@@ -1212,7 +1212,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-slides",
                       },
-                      "url": "/c?cid=girls-slides",
+                      "url": "/c/girls-slides",
                     },
                     Object {
                       "asPath": "/c/girls-shoes-ballet-flats",
@@ -1231,7 +1231,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girls-shoes-ballet-flats",
                       },
-                      "url": "/c?cid=girls-shoes-ballet-flats",
+                      "url": "/c/girls-shoes-ballet-flats",
                     },
                   ]
                 }
@@ -1298,7 +1298,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girl-accessories-backpacks-and-essentials",
                       },
-                      "url": "/c?cid=girl-accessories-backpacks-and-essentials",
+                      "url": "/c/girl-accessories-backpacks-and-essentials",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-bags",
@@ -1317,7 +1317,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girl-accessories-bags",
                       },
-                      "url": "/c?cid=girl-accessories-bags",
+                      "url": "/c/girl-accessories-bags",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-hair",
@@ -1336,7 +1336,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girl-accessories-hair",
                       },
-                      "url": "/c?cid=girl-accessories-hair",
+                      "url": "/c/girl-accessories-hair",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-hats",
@@ -1355,7 +1355,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girl-accessories-hats",
                       },
-                      "url": "/c?cid=girl-accessories-hats",
+                      "url": "/c/girl-accessories-hats",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-sunglasses",
@@ -1374,7 +1374,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girl-accessories-sunglasses",
                       },
-                      "url": "/c?cid=girl-accessories-sunglasses",
+                      "url": "/c/girl-accessories-sunglasses",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-belts",
@@ -1393,7 +1393,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girl-accessories-belts",
                       },
-                      "url": "/c?cid=girl-accessories-belts",
+                      "url": "/c/girl-accessories-belts",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-necklaces-and-sets",
@@ -1412,7 +1412,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "seoUrl": null,
                         "url": "/c/girl-accessories-necklaces-and-sets",
                       },
-                      "url": "/c?cid=girl-accessories-necklaces-and-sets",
+                      "url": "/c/girl-accessories-necklaces-and-sets",
                     },
                   ]
                 }
