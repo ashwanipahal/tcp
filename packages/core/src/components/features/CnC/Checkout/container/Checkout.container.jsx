@@ -8,6 +8,7 @@ import {
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
   getSetCheckoutStage,
+  initActions,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -103,6 +104,8 @@ export class CheckoutContainer extends React.Component<Props> {
     );
   }
 }
+
+CheckoutContainer.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {

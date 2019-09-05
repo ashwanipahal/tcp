@@ -1,3 +1,5 @@
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 
 export const initCheckoutAction = () => ({
@@ -270,3 +272,5 @@ export const routeToPickupPage = () => {
     type: constants.ROUTE_TO_PICKUP_PAGE,
   };
 };
+
+export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];

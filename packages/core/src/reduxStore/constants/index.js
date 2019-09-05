@@ -29,4 +29,5 @@ export const LABELS = {
   modules: 'modules',
   account: 'account',
   bagPage: 'bag',
+  checkout: 'checkout',
 };
