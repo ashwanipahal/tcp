@@ -24,7 +24,7 @@ const modulesMap = {
   moduleL: ModuleL,
   moduleN: ModuleN,
   moduleA: ModuleA,
-  // moduleB: ModuleB,
+  moduleB: ModuleB,
 };
 
 const buttonMargin = { margin: 30 };

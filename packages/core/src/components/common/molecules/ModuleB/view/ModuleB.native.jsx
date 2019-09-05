@@ -17,7 +17,8 @@ import {
   SeparatorView,
 } from '../ModuleB.style.native';
 import config from '../ModuleB.config';
-import mock from '../mock';
+// import mock from '../mock';
+import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**
  * Module height and width.
