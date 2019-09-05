@@ -6,6 +6,7 @@ const GET_MORE_PRODUCTS = `${PRODUCTLISTINGPAGE_ACTION_PATTERN}GET_MORE_PRODUCTS
 const SET_FIRST_PRODUCTS_PAGE = `${PRODUCTLISTINGPAGE_ACTION_PATTERN}SET_FIRST_PRODUCTS_PAGE`;
 const SET_PLP_LOADING_STATE = `${PRODUCTLISTINGPAGE_ACTION_PATTERN}SET_PLP_LOADING_STATE`;
 export const PRODUCTS_PER_LOAD = 20; // TODO - change this to config value. the number of products to load on each call to BE (as the user scrolls)
+export const DESCRIPTION_FILTER = 'auxdescription_uFilter';
 
 export const routingInfoStoreView = {
   getOriginImgHostSetting: () => {

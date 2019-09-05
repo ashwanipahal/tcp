@@ -13,14 +13,20 @@ const operatorInstance = new ProductsOperator();
 
 export function* fetchPlpProducts({ payload }) {
   try {
-    const { url } = payload;
+    const { url, formData, sortBySelected } = payload;
     const location = url
       ? {
           pathname: url,
         }
       : window.location;
     const state = yield select();
-    let reqObj = operatorInstance.getProductListingBucketedData(state, location);
+    let reqObj = operatorInstance.getProductListingBucketedData(
+      state,
+      location,
+      sortBySelected,
+      formData,
+      1
+    );
     if (reqObj.isFetchFiltersAndCountReq) {
       const res = yield call(instanceProductListing.getProducts, reqObj);
       reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);

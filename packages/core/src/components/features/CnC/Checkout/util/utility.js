@@ -26,6 +26,8 @@ import {
 } from '../container/Checkout.action';
 import { routerPush } from '../../../../../utils';
 
+import CheckoutConstants from '../Checkout.constants';
+
 const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
   // if(recalcOrderPointsInterval && !recalcRewards) {
@@ -96,8 +98,26 @@ const hasPOBox = (addressLine1 = '', addressLine2 = '') => {
   );
 };
 
+const isOrderHasShipping = cartItems => {
+  return cartItems && cartItems.filter(item => !item.getIn(['miscInfo', 'store'])).size;
+};
+
 const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
+};
+
+const getAvailableStages = cartItems => {
+  const result = [
+    CheckoutConstants.CHECKOUT_STAGES.BILLING,
+    CheckoutConstants.CHECKOUT_STAGES.REVIEW,
+  ];
+  if (isOrderHasShipping(cartItems)) {
+    result.unshift(CheckoutConstants.CHECKOUT_STAGES.SHIPPING);
+  }
+  if (isOrderHasPickup(cartItems)) {
+    result.unshift(CheckoutConstants.CHECKOUT_STAGES.PICKUP);
+  }
+  return result;
 };
 
 const routeToPage = (dataObj, ...others) => {
@@ -110,5 +130,6 @@ export default {
   updateCartInfo,
   hasPOBox,
   isOrderHasPickup,
+  getAvailableStages,
   routeToPage,
 };

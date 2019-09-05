@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; // eslint-disable-line
+import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
@@ -17,7 +18,10 @@ import {
   getIsLoadingMore,
   getLastLoadedPageNumber,
   getLoadedProductsPages,
+  getTotalProductsCount,
+  getAppliedFilters,
 } from './ProductListing.selectors';
+import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -64,6 +68,8 @@ class ProductListingContainer extends React.PureComponent {
       lastLoadedPageNumber,
       labelsFilter,
       categoryId,
+      getProducts,
+      onSubmit,
       ...otherProps
     } = this.props;
     return (
@@ -83,6 +89,8 @@ class ProductListingContainer extends React.PureComponent {
         labels={labels}
         isLoadingMore={isLoadingMore}
         lastLoadedPageNumber={lastLoadedPageNumber}
+        getProducts={getProducts}
+        onSubmit={onSubmit}
         {...otherProps}
       />
     );
@@ -90,8 +98,8 @@ class ProductListingContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const appliedFilters = state.ProductListing.appliedFiltersIds;
   const productBlocks = getLoadedProductsPages(state);
+  const appliedFilters = getAppliedFilters(state);
 
   // eslint-disable-next-line
   let filtersLength = {};
@@ -115,16 +123,20 @@ function mapStateToProps(state) {
     ),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
-    totalProductsCount: state.ProductListing.totalProductsCount,
+    totalProductsCount: getTotalProductsCount(state),
     filtersLength,
     initialValues: {
-      ...state.ProductListing.appliedFiltersIds,
+      ...getAppliedFilters(state),
+      sort: '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
+    onSubmit: submitProductListingFiltersForm,
+    // Need to pass form values in as prop so we can compare current values to previous values
+    formValues: getFormValues('filter-form')(state),
     isPlcc: isPlccUser(state),
   };
 }
@@ -162,6 +174,7 @@ ProductListingContainer.propTypes = {
   isLoadingMore: PropTypes.bool,
   lastLoadedPageNumber: PropTypes.number,
   router: PropTypes.shape({}).isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 ProductListingContainer.defaultProps = {

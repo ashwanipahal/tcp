@@ -34,9 +34,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { isLoggedIn: prevLoggedInState } = prevState;
-    const { isLoggedIn: nextLoggedInState } = nextProps;
-    if (prevLoggedInState !== nextLoggedInState) {
+    const { isLoggedIn: prevLoggedInState, cartItemCount } = prevState;
+    const { isLoggedIn: nextLoggedInState, totalItems } = nextProps;
+    if (prevLoggedInState !== nextLoggedInState || totalItems !== cartItemCount) {
       return { cartItemCount: getCartItemCount() };
     }
     return null;
