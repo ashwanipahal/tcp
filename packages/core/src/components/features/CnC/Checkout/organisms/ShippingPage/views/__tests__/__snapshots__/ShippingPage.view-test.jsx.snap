@@ -139,11 +139,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {
           "addressId": "123",
           "addressLine": Array [
-            "addressline 1 hhh",
-            "addressline 2 mmm",
+            "addressline 1",
+            "addressline 2",
           ],
           "city": "test city",
-          "country": "test country hhh",
+          "country": "test country",
           "firstName": "test",
           "lastName": "test",
           "phone1": "1234567890",
@@ -233,11 +233,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {
           "addressId": "123",
           "addressLine": Array [
-            "addressline 1 hhh",
-            "addressline 2 mmm",
+            "addressline 1",
+            "addressline 2",
           ],
           "city": "test city",
-          "country": "test country hhh",
+          "country": "test country",
           "firstName": "test",
           "lastName": "test",
           "phone1": "1234567890",

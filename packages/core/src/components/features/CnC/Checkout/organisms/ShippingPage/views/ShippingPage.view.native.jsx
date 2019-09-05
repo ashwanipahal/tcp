@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
-import { StyledHeader, Container } from '../styles/ShippingPage.style.native';
+import { StyledHeader } from '../styles/ShippingPage.style.native';
 import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -120,40 +120,38 @@ export default class ShippingPage extends React.Component {
       <>
         <CheckoutProgressIndicator activeStage="shipping" navigation={navigation} />
         <ScrollView>
-          <Container>
-            <CheckoutSectionTitleDisplay title={shippingLabels.header} />
-            <StyledHeader>
-              <BodyCopy
-                color="black"
-                fontWeight="regular"
-                fontFamily="primary"
-                fontSize="fs28"
-                text={shippingLabels.sectionHeader}
-                textAlign="left"
-              />
-            </StyledHeader>
-            {shipmentMethods && shipmentMethods.length > 0 && (
-              <ShippingForm
-                shippingLabels={shippingLabels}
-                shipmentMethods={shipmentMethods}
-                initialValues={{
-                  shipmentMethods: { shippingMethodId: defaultShipmentId },
-                }}
-                selectedShipmentId={selectedShipmentId}
-                isGuest={isGuest}
-                isUsSite={isUsSite}
-                orderHasPickUp={orderHasPickUp}
-                smsSignUpLabels={smsSignUpLabels}
-                isOrderUpdateChecked={isOrderUpdateChecked}
-                emailSignUpLabels={emailSignUpLabels}
-                addressPhoneNo={addressPhoneNumber}
-                addressLabels={addressLabels}
-                loadShipmentMethods={loadShipmentMethods}
-                navigation={navigation}
-                submitShippingForm={this.submitShippingForm}
-              />
-            )}
-          </Container>
+          <CheckoutSectionTitleDisplay title={shippingLabels.header} />
+          <StyledHeader>
+            <BodyCopy
+              color="black"
+              fontWeight="regular"
+              fontFamily="primary"
+              fontSize="fs28"
+              text={shippingLabels.sectionHeader}
+              textAlign="left"
+            />
+          </StyledHeader>
+          {shipmentMethods && shipmentMethods.length > 0 && (
+            <ShippingForm
+              shippingLabels={shippingLabels}
+              shipmentMethods={shipmentMethods}
+              initialValues={{
+                shipmentMethods: { shippingMethodId: defaultShipmentId },
+              }}
+              selectedShipmentId={selectedShipmentId}
+              isGuest={isGuest}
+              isUsSite={isUsSite}
+              orderHasPickUp={orderHasPickUp}
+              smsSignUpLabels={smsSignUpLabels}
+              isOrderUpdateChecked={isOrderUpdateChecked}
+              emailSignUpLabels={emailSignUpLabels}
+              addressPhoneNo={addressPhoneNumber}
+              addressLabels={addressLabels}
+              loadShipmentMethods={loadShipmentMethods}
+              navigation={navigation}
+              submitShippingForm={this.submitShippingForm}
+            />
+          )}
         </ScrollView>
       </>
     );

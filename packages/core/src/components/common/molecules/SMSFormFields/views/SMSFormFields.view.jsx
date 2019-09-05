@@ -26,7 +26,7 @@ class SMSFormFields extends React.PureComponent {
     return (
       <div className={className}>
         <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 8, large: 7 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 5 }}>
             <Field
               name="sendOrderUpdate"
               component={InputCheckbox}
@@ -96,7 +96,7 @@ SMSFormFields.propTypes = {
 SMSFormFields.defaultProps = {
   className: '',
   isOrderUpdateChecked: false,
-  dispatch: () => { },
+  dispatch: () => {},
   addressPhoneNo: null,
   formName: '',
   formSection: '',

@@ -54,7 +54,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
             },
             Object {
               "content": <ForwardRef
-                className={null}
+                className="add-address"
                 color="text.primary"
                 component="p"
                 fontFamily="secondary"
@@ -215,7 +215,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
             },
             Object {
               "content": <ForwardRef
-                className={null}
+                className="add-address"
                 color="text.primary"
                 component="p"
                 fontFamily="secondary"
@@ -714,7 +714,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
             },
             Object {
               "content": <ForwardRef
-                className={null}
+                className="add-address"
                 color="text.primary"
                 component="p"
                 fontFamily="secondary"
@@ -815,7 +815,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
         isDefault={false}
         showCountry={true}
         showName={true}
-        showPhone={false}
+        showPhone={true}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -1103,7 +1103,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
             },
             Object {
               "content": <ForwardRef
-                className={null}
+                className="add-address"
                 color="text.primary"
                 component="p"
                 fontFamily="secondary"
@@ -1406,6 +1406,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     >
       <Styled(Button)
         buttonVariation="fixed-width"
+        className=""
         data-locator="edit-shipping-cancel-btn"
         fill="WHITE"
         onClick={[Function]}
@@ -1498,7 +1499,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             },
             Object {
               "content": <ForwardRef
-                className={null}
+                className="add-address"
                 color="text.primary"
                 component="p"
                 fontFamily="secondary"
@@ -1976,7 +1977,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             },
             Object {
               "content": <ForwardRef
-                className={null}
+                className="add-address"
                 color="text.primary"
                 component="p"
                 fontFamily="secondary"
@@ -2454,7 +2455,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
             },
             Object {
               "content": <ForwardRef
-                className={null}
+                className="add-address"
                 color="text.primary"
                 component="p"
                 fontFamily="secondary"
@@ -2741,6 +2742,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     >
       <Styled(Button)
         buttonVariation="fixed-width"
+        className=""
         data-locator="edit-shipping-cancel-btn"
         fill="WHITE"
         onClick={[Function]}

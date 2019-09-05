@@ -52,6 +52,7 @@ describe('Shipping Form', () => {
       onFileAddressKey: '123',
       shipmentMethods: [{}],
       defaultShipmentId: '90113',
+      isMobile: true,
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     tree.setState({
@@ -108,7 +109,7 @@ describe('Shipping Form', () => {
     const e = { preventDefault: jest.fn() };
     tree.instance().toggleAddEditModal({ type: 'add', e });
     expect(tree.state('modalType')).toBe('add');
-    expect(tree.state('modalState')).toBe(false);
+    expect(tree.state('modalState')).toBe(true);
 
     expect(tree).toMatchSnapshot();
   });
