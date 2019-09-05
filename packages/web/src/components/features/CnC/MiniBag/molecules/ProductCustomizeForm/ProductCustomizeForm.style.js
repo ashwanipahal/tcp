@@ -26,7 +26,7 @@ const styles = css`
     .customSelectTitle {
       padding-bottom: 2px;
       img {
-        border: solid 0.4px #000000;
+        border: solid 0.4px ${props => props.theme.colors.BLACK};
         margin-right: 5px;
         border-radius: 5px;
       }
@@ -61,7 +61,7 @@ const styles = css`
       display: inline-block;
       overflow-y: auto;
       max-height: 150px;
-      border: 2px solid #1a1a1a;
+      border: 2px solid ${props => props.theme.colors.PRIMARY.DARK};
       .dropdownUlBorder {
         border: none;
       }
