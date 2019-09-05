@@ -48,6 +48,11 @@ class LoginForm extends React.PureComponent<Props> {
     };
   }
 
+  componentDidUpdate() {
+    const { change, setEmailid } = this.props;
+    change('emailAddress', setEmailid);
+  }
+
   showForgotPassword = () => {
     const { showForgotPasswordForm } = this.props;
     showForgotPasswordForm();
@@ -90,7 +95,11 @@ class LoginForm extends React.PureComponent<Props> {
               component={TextBox}
               dataLocator="password"
               secureTextEntry={type === 'password'}
-              rightText={type === 'password' ? 'show' : 'hide'}
+              rightText={
+                type === 'password'
+                  ? labels.registration.lbl_createAccount_show
+                  : labels.registration.lbl_createAccount_hide
+              }
             />
             <HideShowFieldWrapper>
               <Anchor

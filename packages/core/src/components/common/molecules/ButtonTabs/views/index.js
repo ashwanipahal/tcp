@@ -1,1 +1,1 @@
-export { default } from './ButtonTabs.native';
+export { default } from './ButtonTabs';
