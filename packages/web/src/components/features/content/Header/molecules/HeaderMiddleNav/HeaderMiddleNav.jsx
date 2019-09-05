@@ -132,7 +132,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
               medium: 8,
               small: 6,
             }}
-            className="textRight"
+            className="textRight header-middle-login-section"
           >
             {userName ? (
               <React.Fragment>
