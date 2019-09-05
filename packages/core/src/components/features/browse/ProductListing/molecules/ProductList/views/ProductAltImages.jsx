@@ -132,6 +132,7 @@ class ProductAltImages extends React.PureComponent {
     } = this.props;
     const { currentIndex, videoHeight } = this.state;
     const unbxdData = analyticsData || {};
+
     return isMobile ? (
       <figure
         // eslint-disable-next-line no-return-assign
