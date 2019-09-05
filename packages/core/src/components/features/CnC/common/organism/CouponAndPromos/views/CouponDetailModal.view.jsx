@@ -8,6 +8,13 @@ import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
 import styles from '../styles/CouponDetailModal.style';
 
 class CouponDetailModal extends React.PureComponent<Props> {
+  componentDidUpdate() {
+    const { coupon, handleErrorCoupon } = this.props;
+    if (coupon.error) {
+      handleErrorCoupon(coupon);
+    }
+  }
+
   printClick = event => {
     window.print();
     event.preventDefault();
@@ -17,8 +24,18 @@ class CouponDetailModal extends React.PureComponent<Props> {
     event.preventDefault();
   };
 
+  handleApplyToBag = () => {
+    const { onApplyCouponToBag, coupon, onRequestClose } = this.props;
+    onApplyCouponToBag({
+      couponCode: coupon.id,
+      id: coupon.id,
+      coupon: coupon.id,
+    });
+    onRequestClose();
+  };
+
   renderModal = () => {
-    const { labels, coupon, className, applyToBag, onRequestClose } = this.props;
+    const { labels, coupon, className } = this.props;
     return (
       <div className={className}>
         <BodyCopy
@@ -47,10 +64,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
-            onClick={() => {
-              onRequestClose();
-              applyToBag(coupon);
-            }}
+            onClick={this.handleApplyToBag}
             className="couponModal_applyToBag couponModal_btn"
             data-locator={`couponDetailModal_${coupon.status}_AddToBagBtn`}
           >

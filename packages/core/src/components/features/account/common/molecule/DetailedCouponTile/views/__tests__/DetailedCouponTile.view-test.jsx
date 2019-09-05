@@ -60,7 +60,7 @@ describe('DetailedCouponTile', () => {
   });
 
   describe('#instances', () => {
-    const onApplyCouponToBag = jest.fn();
+    const onApplyCouponToBagFromList = jest.fn();
     const onRemove = jest.fn();
     const onViewCouponDetails = jest.fn();
     let componentInstance;
@@ -68,7 +68,7 @@ describe('DetailedCouponTile', () => {
       const props = {
         labels: {},
         coupon: {},
-        onApplyCouponToBag,
+        onApplyCouponToBagFromList,
         onRemove,
         onViewCouponDetails,
       };
@@ -78,7 +78,7 @@ describe('DetailedCouponTile', () => {
 
     it('#handleApplyToBag should call onApplyCouponToBag prop', () => {
       componentInstance.handleApplyToBag();
-      expect(onApplyCouponToBag).toBeCalled();
+      expect(onApplyCouponToBagFromList).toBeCalled();
     });
 
     it('#handleRemove should call onRemove prop', () => {
