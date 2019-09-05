@@ -41,7 +41,7 @@ export const Border = styled.View`
 
 export const DivImageCTAContainer = styled.View``;
 export const SeparatorView = styled.View`
-  margin: 0px 20px 15px;
+  margin: -10px 20px 10px;
   height: 1px;
   width: 150px;
   background: ${props => props.theme.colorPalette.black};

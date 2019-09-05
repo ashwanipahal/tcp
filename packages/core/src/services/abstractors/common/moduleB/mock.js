@@ -55,11 +55,11 @@ for (let i = 1; i <= totalImageSlides; i++) {
   const tcpPromoTextItems = [
     {
       text: 'ALL BASIC DENIM',
-      style: 'overlay_banner_header',
+      style: 'small_text_black',
     },
     {
       text: '$ 7 80 &UP',
-      style: 'overlay_promo_banner_style',
+      style: 'currency_up_style',
     },
   ];
 

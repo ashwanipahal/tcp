@@ -71,7 +71,7 @@ export const bodyCopyStyles = {
   ),
   percentage_wrapped_large: props => <PercentageStyle {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
-  overlay_promo_banner_style: props => <OverlayPromoBannerStyle {...props} />,
+  currency_up_style: props => <OverlayPromoBannerStyle {...props} />,
   small_text_bold: props => (
     <BodyCopy
       fontSize="fs16"
@@ -113,22 +113,28 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  overlay_banner_header: props => {
-    // eslint-disable-next-line react/prop-types
-    const { bannerPosition } = props || {};
-    const fontWeight = bannerPosition === 'overlay' ? 'black' : 'semibold';
-    return (
-      <BodyCopy
-        color="text.primary"
-        fontFamily="primary"
-        fontSize="fs20"
-        fontWeight={fontWeight}
-        textAlign="center"
-        lineHeight="20px"
-        {...props}
-      />
-    );
-  },
+  small_text_black: props => (
+    <BodyCopy
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="black"
+      textAlign="center"
+      lineHeight="20px"
+      {...props}
+    />
+  ),
+  small_text_semibold: props => (
+    <BodyCopy
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="semibold"
+      textAlign="center"
+      lineHeight="20px"
+      {...props}
+    />
+  ),
 };
 
 /**
@@ -161,7 +167,6 @@ const PromoBanner = (props: Props) => {
               <StyleBodyCopy
                 text={index ? `${text}` : text}
                 locator={locator}
-                bannerPosition={bannerPosition}
                 {...otherProps}
                 key={index.toString()}
               />
