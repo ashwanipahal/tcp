@@ -68,7 +68,14 @@ ProductTabList.propTypes = {
       id: PropTypes.string,
     })
   ),
-  productTabList: PropTypes.shape({}),
+  productTabList: PropTypes.shape({
+    [PropTypes.string]: PropTypes.arrayOf(
+      PropTypes.shape({
+        uniqueId: PropTypes.string,
+        imageUrl: PropTypes.string,
+      })
+    ),
+  }),
   onProductTabChange: PropTypes.func,
 };
 

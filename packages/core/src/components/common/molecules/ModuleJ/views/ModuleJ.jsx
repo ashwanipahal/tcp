@@ -13,10 +13,7 @@ class ModuleJ extends React.PureComponent {
     const { className } = this.props;
     return (
       <div className={className}>
-        <ProductTabList
-          onProductTabChange={this.onProductTabChange}
-          categoryList={categoryListMock}
-        />
+        <ProductTabList categoryList={categoryListMock} />
       </div>
     );
   }
