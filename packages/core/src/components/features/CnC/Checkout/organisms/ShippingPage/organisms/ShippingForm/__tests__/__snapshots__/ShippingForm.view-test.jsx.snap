@@ -81,6 +81,7 @@ exports[`Shipping Form should render correctly 1`] = `
         />
       </div>
     </FormSection>
+    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       disableNext={false}
       hideBackLink={false}
@@ -144,7 +145,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -166,6 +167,8 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -209,7 +212,14 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
@@ -221,13 +231,20 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -690,7 +707,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -712,6 +729,8 @@ exports[`Shipping Form should render correctly with logged in user having addres
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -755,7 +774,14 @@ exports[`Shipping Form should render correctly with logged in user having addres
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
@@ -767,13 +793,20 @@ exports[`Shipping Form should render correctly with logged in user having addres
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -866,6 +899,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </div>
     </FormSection>
+    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       disableNext={false}
       hideBackLink={false}
@@ -1144,7 +1178,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -1166,6 +1200,8 @@ exports[`Shipping Form should render correctly with logged in user having addres
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -1209,7 +1245,14 @@ exports[`Shipping Form should render correctly with logged in user having addres
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
@@ -1221,13 +1264,20 @@ exports[`Shipping Form should render correctly with logged in user having addres
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -1320,6 +1370,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </div>
     </FormSection>
+    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       disableNext={true}
       hideBackLink={false}
@@ -1422,7 +1473,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   "
   ",
                   "
-  display: inline-flex;
+  display: block;
   align-items: ",
                   [Function],
                   ";
@@ -1444,6 +1495,8 @@ exports[`Shipping Form should render correctly with logged in user having addres
     margin-right: ",
                   [Function],
                   ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -1487,7 +1540,14 @@ exports[`Shipping Form should render correctly with logged in user having addres
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
   }
 
   & .disabled {
@@ -1499,13 +1559,20 @@ exports[`Shipping Form should render correctly with logged in user having addres
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -1596,6 +1663,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </div>
     </FormSection>
+    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       disableNext={false}
       hideBackLink={false}
