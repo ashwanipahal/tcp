@@ -13,8 +13,7 @@ export default css`
   }
   .username {
     cursor: pointer;
-    float: left;
-    margin-left: 59%;
+    display: inline-block;
   }
 
   .rightLink {

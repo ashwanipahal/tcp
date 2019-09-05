@@ -52,7 +52,7 @@ class AddressBookTile extends React.Component<Props> {
     e.preventDefault();
     const { address, setSelectedAddress, toggleAddAddressModal } = this.props;
     setSelectedAddress(address);
-    toggleAddAddressModal();
+    toggleAddAddressModal('edit');
   };
 
   render() {

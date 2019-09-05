@@ -2,7 +2,7 @@
 
 exports[`AboutYouInfo should render correctly 1`] = `
 <Styled(AccountOverviewTile)
-  ctaLink="/account/profile"
+  ctaLink="/account?id=profile&subSection=edit-aboutyou-info"
   ctaPath="/account/profile"
   ctaTitle="UPDATE INFO"
   dataLocator="moreaboutyou"
