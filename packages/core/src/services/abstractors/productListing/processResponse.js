@@ -181,7 +181,7 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp) {
+  if (!isMobileApp()) {
     getPlpUrlQueryValues(filtersAndSort);
   }
 

@@ -748,3 +748,63 @@ exports[`PromoTextBanner native component renders correctly 1`] = `
   </Styled(Anchor)>
 </Styled(View)>
 `;
+
+exports[`PromoTextBanner native component should render overlay banner style 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    color="black"
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="34px"
+    style={
+      Object {
+        "fontSize": 28,
+      }
+    }
+    text=""
+    textAlign="center"
+  />
+  <Styled(Styled(BodyCopy))
+    color="black"
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="86px"
+    style={
+      Object {
+        "fontSize": 86,
+      }
+    }
+    text=""
+    textAlign="center"
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      color="black"
+      fontFamily="primary"
+      fontWeight="black"
+      lineHeight="50px"
+      style={
+        Object {
+          "fontSize": 48,
+          "height": 45,
+        }
+      }
+      text=""
+    />
+    <Styled(Styled(BodyCopy))
+      color="black"
+      fontFamily="primary"
+      fontSize="fs42"
+      fontWeight="black"
+      lineHeight="28px"
+      style={
+        Object {
+          "fontSize": 28,
+        }
+      }
+      text=""
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

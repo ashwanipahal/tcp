@@ -139,13 +139,14 @@ const findKeyInSet = (set, key) => {
  * featured content module with 1 background color tiles ,links and a CTA Button list.
  */
 
-const ModuleB = () => {
+const ModuleB = (props: Props) => {
   // TODO: All items need to be derived from props once cms integration is done
   const {
-    navigation,
     set = [],
     composites: { ctaItems, largeCompImage },
   } = mock.moduleB;
+
+  const { navigation } = props;
 
   const ctaType = ctaTypes[findKeyInSet(set, 'ctaType')];
   const bannerPosition = findKeyInSet(set, 'bannerPostition');

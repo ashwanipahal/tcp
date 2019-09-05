@@ -3,17 +3,60 @@
 exports[`ModuleNVanilla should match snapshot 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(ImageComp)
-      height={300}
-      url="https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg"
-      width={750}
-    />
     <Styled(View)
-      bannerPosition="bottom"
+      bannerPosition="overlay"
     >
       <Styled(View)>
+        <LinkText
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "NEW WASHES",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "MORE FITS",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "SLIM, PLUS & HUSKY",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "SIZES UPTO 18!",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleB_header_text"
+          renderComponentInNewLine={true}
+          textAlign="center"
+          type="heading"
+          useStyle={true}
+        />
+        <Styled(View) />
+      </Styled(View)>
+      <Styled(View)>
         <PromoBanner
-          bannerPosition="bottom"
+          bannerPosition="overlay"
           locator="moduleB_promobanner_text"
           promoBanner={
             Array [
@@ -41,6 +84,11 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
         />
       </Styled(View)>
     </Styled(View)>
+    <Styled(ImageComp)
+      height={750}
+      url="https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg"
+      width={750}
+    />
   </Styled(View)>
   <Styled(View)>
     <Styled(View)

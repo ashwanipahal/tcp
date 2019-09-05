@@ -219,7 +219,7 @@ export default {
       },
       {
         key: 'bannerPostition',
-        val: 'bottom',
+        val: 'overlay',
       },
     ],
   },
