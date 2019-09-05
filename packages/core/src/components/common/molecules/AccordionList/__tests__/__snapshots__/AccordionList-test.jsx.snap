@@ -9,6 +9,7 @@ exports[`AccordionList component renders correctly with 1 accordion open 1`] = `
   >
     <Styled(AccordionItem)
       activeClass="active"
+      className="accordion-list1"
       index={0}
       titleText="list item 11"
       updateAccordionState={[Function]}
@@ -19,6 +20,7 @@ exports[`AccordionList component renders correctly with 1 accordion open 1`] = `
   >
     <Styled(AccordionItem)
       activeClass="inactive"
+      className="accordion-list1"
       index={1}
       titleText="list item 1"
       updateAccordionState={[Function]}
@@ -38,6 +40,7 @@ exports[`AccordionList component renders correctly with no accordion open 1`] = 
   >
     <Styled(AccordionItem)
       activeClass="active"
+      className="accordion-list2"
       index={0}
       titleText="list item 12"
       updateAccordionState={[Function]}
@@ -48,6 +51,7 @@ exports[`AccordionList component renders correctly with no accordion open 1`] = 
   >
     <Styled(AccordionItem)
       activeClass="active"
+      className="accordion-list2"
       index={1}
       titleText="list item 23"
       updateAccordionState={[Function]}

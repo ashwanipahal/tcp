@@ -150,9 +150,13 @@ const ButtonStyles = css`
 
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
-      props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 16px 20px;' : ''};
+      props.buttonVariation === 'fixed-width'
+        ? 'min-height: 51px; padding: 16px 20px !important;'
+        : ''};
     ${props =>
-      props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 16px 32px;' : ''};
+      props.buttonVariation === 'variable-width'
+        ? 'min-height: 45px; padding: 16px 32px !important;'
+        : ''};
   }
   ${props =>
     props.theme.isGymboree

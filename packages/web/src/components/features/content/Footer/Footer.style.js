@@ -16,7 +16,13 @@ export default css`
     min-height: 42px;
 
     &.candidate_a_form_button {
-      margin-top: 8px;
+      ${props =>
+        props.theme.gridDimensions.gridBreakPointsKeys.map(
+          key => `
+          @media ${props.theme.mediaQuery[key]} {
+            margin-top: 8px;
+          }`
+        )}
     }
   }
   .candidate-b_buttons {
@@ -70,7 +76,10 @@ export default css`
     order: 1;
   }
   .footer-bottom__slot--1 {
-    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    background-color: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.primary.main
+        : props.theme.colors.BRAND.PRIMARY};
   }
   .fullbleed-mobile {
     flex-direction: column-reverse;
@@ -84,7 +93,10 @@ export default css`
     display: none;
   }
   .reference-id {
-    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    background-color: ${props =>
+      !props.theme.isGymboree
+        ? props.theme.colors.BRAND.PRIMARY
+        : props.theme.colorPalette.primary.main};
     font-size: ${props => props.theme.fonts.fontSize.body.small.tertiary}px;
     padding: 0 15px 24px;
     margin: 0;
@@ -102,9 +114,6 @@ export default css`
   }
 
   &.navigation-footer {
-    .reference-id {
-      display: none;
-    }
     .social-media-links, .social-media-label {
       display: block;
     }
@@ -204,5 +213,8 @@ export default css`
     .hide-in-medium-down {
       display: none;
     }
+  }
+  .footer__navHeader {
+    text-transform: capitalize;
   }
 `;

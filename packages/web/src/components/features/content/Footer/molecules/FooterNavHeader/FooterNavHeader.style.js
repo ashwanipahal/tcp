@@ -6,7 +6,10 @@ const GlobalCss = css`
     content: '';
     height: 1px;
     width: 80px;
-    background: ${props => props.theme.colors.TEXT.DARKERBLUE};
+    background: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.primary.main
+        : props.theme.colors.TEXT.DARKERBLUE};
     border: 10px;
     display: block;
     margin-top: 14px;
@@ -21,6 +24,9 @@ const GlobalCss = css`
   }
   &.subHeader {
     margin-top: 24px;
+  }
+  @media ${props => props.theme.mediaQuery.mediumOnly || props.theme.mediaQuery.smallOnly} {
+    text-transform: capitalize;
   }
 `;
 
