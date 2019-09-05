@@ -43,6 +43,16 @@ describe('BirthdaySavingsList component', () => {
     const component = shallow(<BirthdaySavingsList {...props} />);
     expect(component.find(EmptyBirthdayCard)).toHaveLength(3);
   });
+
+  it('should render 4 tiles in edit mode if no birthdays are present', () => {
+    const props = {
+      labels,
+      childrenBirthdays: null,
+      view: 'edit',
+    };
+    const component = shallow(<BirthdaySavingsList {...props} />);
+    expect(component.find(EmptyBirthdayCard)).toHaveLength(4);
+  });
 });
 
 describe('getColumnClasses', () => {
