@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { isMobileApp } from '../../../../../utils';
 
 const getIndex = data => {
@@ -36,7 +37,7 @@ export const extractCategory = category => {
     }
     return categoryId;
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
   return category;
 };
@@ -146,7 +147,7 @@ export const generateGroups = level1 => {
       return prevGroup.order - curGroup.order;
     });
   } catch (error) {
-    console.error('getHeaderNavigationTree:generateGroups', error);
+    logger.error('getHeaderNavigationTree:generateGroups', error);
     return [];
   }
 };

@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import superagent from 'superagent';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
@@ -72,7 +73,7 @@ export const addPickupPerson = args => {
       return { addressId: res.body.addressId };
     })
     .catch(err => {
-      console.log(err);
+      logger.error(err);
     });
 };
 
