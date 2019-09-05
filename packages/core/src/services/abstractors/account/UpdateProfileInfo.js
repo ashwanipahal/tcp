@@ -63,6 +63,33 @@ export const UpdateProfileInfo = args => {
 };
 
 /**
+ * @function getChildren
+ * @summary this function will make an API call to fetch children's birthday information
+ */
+export const getChildren = () => {
+  const payload = {
+    webService: endpoints.getChildren,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      // We are doing parseInt(child.childBirthdayMonth).toString() beacuse we use this value to index a table and backend can send it with a leading Zero like 02
+      return res.body.childBirthdayInfo.map(
+        ({ childName, childBirthdayYear, childBirthdayMonth, childGender, childId }) => ({
+          name: childName,
+          birthYear: childBirthdayYear,
+          birthMonth: parseInt(childBirthdayMonth, 10).toString(),
+          gender: childGender,
+          childId,
+        })
+      );
+    })
+    .catch(err => {
+      throw err;
+    });
+};
+
+/**
  * This is a service method to post survey data.
  * @param {object} args - request payload containing answer1, answer2 values to submit in the backend.
  */

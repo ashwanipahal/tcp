@@ -10,7 +10,7 @@ const CnCCommonTemplate = ({ btnText, onPress }) => {
   return (
     <>
       <View>
-        <CouponAndPromos />
+        <CouponAndPromos isCheckout />
       </View>
       <View>
         <OrderLedgerContainer />
