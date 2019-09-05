@@ -21,7 +21,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
     display: block;
   }
   .i-agree-checkbox {
-    padding-top:10px;
+    padding-top: 10px;
   }
   .tooltip-bubble {
     li {
