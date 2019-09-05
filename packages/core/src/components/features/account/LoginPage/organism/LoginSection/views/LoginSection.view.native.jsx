@@ -61,7 +61,11 @@ class LoginSection extends PureComponent<Props> {
       <View>
         {!resetPassword && (
           <Fragment>
-            <LoginTopSection variation={variation} labels={labels} />
+            <LoginTopSection
+              showForgotPasswordForm={this.showForgotPassword}
+              variation={variation}
+              labels={labels}
+            />
             <LoginForm
               onSubmit={onSubmit}
               labels={labels}
