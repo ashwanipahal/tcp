@@ -59,6 +59,19 @@ describe('DetailedCouponTile', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('should display overlay', () => {
+    const props = {
+      labels,
+      coupon: {
+        status: COUPON_STATUS.APPLIED,
+      },
+    };
+
+    const component = shallow(<DetailedCouponTile {...props} />);
+    expect(component).toMatchSnapshot();
+    expect(component.find('.overlay')).toHaveLength(1);
+  });
+
   describe('#instances', () => {
     const onApplyCouponToBagFromList = jest.fn();
     const onRemove = jest.fn();

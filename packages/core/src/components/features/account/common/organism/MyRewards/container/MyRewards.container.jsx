@@ -24,13 +24,13 @@ export class MyRewardsContainer extends PureComponent {
     coupons: PropTypes.shape([]).isRequired,
     rewardCoupons: PropTypes.shape([]).isRequired,
     couponsLabels: PropTypes.shape({}).isRequired,
-    onApplyCouponToBag: PropTypes.func,
+    onApplyCouponToBagFromList: PropTypes.func,
     handleErrorCoupon: PropTypes.func,
   };
 
   static defaultProps = {
     view: 'reward',
-    onApplyCouponToBag: () => {},
+    onApplyCouponToBagFromList: () => {},
     handleErrorCoupon: () => {},
   };
 
@@ -63,8 +63,8 @@ export class MyRewardsContainer extends PureComponent {
       rewardCoupons,
       couponsLabels,
       view,
-      onApplyCouponToBag,
       handleErrorCoupon,
+      onApplyCouponToBagFromList,
       ...otherProps
     } = this.props;
     const { selectedCoupon } = this.state;
@@ -75,6 +75,8 @@ export class MyRewardsContainer extends PureComponent {
           coupons={view === 'reward' ? rewardCoupons : coupons}
           view={view}
           onViewCouponDetails={this.onViewCouponDetails}
+          onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+          handleErrorCoupon={handleErrorCoupon}
           {...otherProps}
         />
         {selectedCoupon && (
@@ -82,12 +84,13 @@ export class MyRewardsContainer extends PureComponent {
             labels={couponsLabels}
             openState={selectedCoupon}
             coupon={selectedCoupon}
+            handleErrorCoupon={handleErrorCoupon}
             onRequestClose={() => {
               this.setState({
                 selectedCoupon: null,
               });
             }}
-            onApplyCouponToBag={onApplyCouponToBag}
+            onApplyCouponToBagFromList={onApplyCouponToBagFromList}
           />
         )}
       </>
@@ -106,7 +109,6 @@ export const mapDispatchToProps = dispatch => ({
   fetchCoupons: () => {
     dispatch(getCouponList());
   },
-
   onApplyCouponToBagFromList: coupon => {
     return new Promise((resolve, reject) => {
       dispatch(
@@ -123,12 +125,6 @@ export const mapDispatchToProps = dispatch => ({
       dispatch(removeCoupon({ coupon, formPromise: { resolve, reject } }));
     });
   },
-  onApplyCouponToBag: (formData, _, props) =>
-    new Promise((resolve, reject) => {
-      dispatch(
-        applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
-      );
-    }),
   handleErrorCoupon: coupon => {
     setTimeout(() => {
       dispatch(setError({ msg: null, couponCode: coupon.id }));

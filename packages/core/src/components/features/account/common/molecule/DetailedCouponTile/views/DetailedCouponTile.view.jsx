@@ -66,6 +66,10 @@ export class DetailedCouponTile extends React.Component {
     }
   }
 
+  /**
+   * This function is used for apply to bag coupon
+   * can be passed in the component.
+   */
   handleApplyToBag = () => {
     const { onApplyCouponToBagFromList, coupon } = this.props;
     onApplyCouponToBagFromList({
@@ -75,26 +79,54 @@ export class DetailedCouponTile extends React.Component {
     });
   };
 
+  /**
+   * This function is used for remove coupon
+   * can be passed in the component.
+   */
   handleRemove = () => {
     const { onRemove, coupon } = this.props;
     onRemove({ id: coupon.id });
   };
 
+  /**
+   * This function is used for view coupon deatils
+   * can be passed in the component.
+   */
   handleViewCouponDetails = () => {
     const { onViewCouponDetails, coupon } = this.props;
     onViewCouponDetails(coupon);
   };
 
+  /**
+   * This function is to get cta label
+   * can be passed in the component.
+   * @param {obj} - labels
+   * @param {boolean} - isStarted
+   * @param {boolean} - isPlaceCash
+   * @return {String} - cta label
+   */
   getAddToBagCtaLabel = (labels, isStarted, isPlaceCash) => {
     return !isStarted && isPlaceCash
       ? labels.lbl_coupon_seeRedeemDates
       : labels.lbl_coupon_applyToBag;
   };
 
+  /**
+   * This function is to get overlap class to increase the z-index of elemnts
+   * can be passed in the component.
+   * @param {obj} - status
+   * @return {String} - css classname
+   */
   overlapClass = status => {
     return status === COUPON_STATUS.APPLIED ? 'overlap' : '';
   };
 
+  /**
+   * This function is to get overlay class
+   * can be passed in the component.
+   * @param {obj} - status
+   * @return {String} css classname
+   */
   overlapTxtClass = status => {
     return status === COUPON_STATUS.APPLIED ? 'overlap-text' : '';
   };

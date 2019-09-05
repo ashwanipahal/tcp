@@ -24,9 +24,13 @@ class CouponDetailModal extends React.PureComponent<Props> {
     event.preventDefault();
   };
 
+  /**
+   * This function is used for apply to bag coupon
+   * can be passed in the component.
+   */
   handleApplyToBag = () => {
-    const { onApplyCouponToBag, coupon, onRequestClose } = this.props;
-    onApplyCouponToBag({
+    const { onApplyCouponToBagFromList, coupon, onRequestClose } = this.props;
+    onApplyCouponToBagFromList({
       couponCode: coupon.id,
       id: coupon.id,
       coupon: coupon.id,
