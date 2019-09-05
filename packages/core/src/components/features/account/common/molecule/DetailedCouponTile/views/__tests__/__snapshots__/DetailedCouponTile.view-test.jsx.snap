@@ -36,7 +36,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       textAlign="center"
     >
       <Styled(CouponIcon)
-        className="elem-mb-XS"
+        className="elem-mb-XS "
         coupon={Object {}}
         labels={
           Object {
@@ -51,7 +51,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-SM"
+        className="elem-mb-SM  "
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
@@ -164,6 +164,9 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           apply
         </Styled(Button)>
       </Styled(BodyCopy)>
+      <Styled(ErrorMessage)
+        className="error-notification"
+      />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
@@ -182,6 +185,47 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
   lineHeight="normal"
   textAlign="left"
 >
+  <Styled(BodyCopy)
+    className="overlay hide-on-desktop hide-on-tablet"
+    color="text.primary"
+    component="div"
+    data-locator=""
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="overlay__content"
+      color="white"
+      component="div"
+      data-locator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(Image)
+        src="/static/images/bag.png"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="p"
+        data-locator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className="content elem-pl-SM elem-pr-SM elem-pt-XL"
     color="text.primary"
@@ -205,7 +249,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       textAlign="center"
     >
       <Styled(CouponIcon)
-        className="elem-mb-XS"
+        className="elem-mb-XS overlap"
         coupon={
           Object {
             "status": "applied",
@@ -224,7 +268,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-SM"
+        className="elem-mb-SM overlap overlap-text"
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
@@ -357,14 +401,18 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         </Styled(Button)>
         <Styled(Button)
           buttonVariation="fixed-width"
+          className="couponDetailsFont overlap"
           data-locator="myrewards-removefrombagbtn"
-          fill="BLUE"
+          fill="WHITE"
           fullWidth={true}
           onClick={[Function]}
         >
           remove from bag
         </Styled(Button)>
       </Styled(BodyCopy)>
+      <Styled(ErrorMessage)
+        className="error-notification"
+      />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
@@ -420,7 +468,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       textAlign="center"
     >
       <Styled(CouponIcon)
-        className="elem-mb-XS"
+        className="elem-mb-XS "
         coupon={
           Object {
             "isExpiring": true,
@@ -439,7 +487,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         }
       />
       <Styled(BodyCopy)
-        className="elem-mb-SM"
+        className="elem-mb-SM  "
         color="text.primary"
         component="p"
         data-locator="myrewards-details"
@@ -581,6 +629,9 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           apply
         </Styled(Button)>
       </Styled(BodyCopy)>
+      <Styled(ErrorMessage)
+        className="error-notification"
+      />
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>

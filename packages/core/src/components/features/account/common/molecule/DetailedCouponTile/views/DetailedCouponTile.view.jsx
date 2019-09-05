@@ -31,7 +31,8 @@ export class DetailedCouponTile extends React.Component {
     className: PropTypes.string,
     isMobile: PropTypes.bool,
     isDisabled: PropTypes.bool,
-    onApplyCouponToBag: PropTypes.func,
+    onApplyCouponToBagFromList: PropTypes.func,
+    handleErrorCoupon: PropTypes.func,
     onRemove: PropTypes.func,
     onViewCouponDetails: PropTypes.func,
   };
@@ -40,9 +41,10 @@ export class DetailedCouponTile extends React.Component {
     className: '',
     isMobile: true,
     isDisabled: false,
-    onApplyCouponToBag: () => {},
     onRemove: () => {},
     onViewCouponDetails: () => {},
+    handleErrorCoupon: () => {},
+    onApplyCouponToBagFromList: () => {},
     labels: {
       lbl_coupon_expiringSoon: '',
       lbl_coupon_couponValid: '',
@@ -69,7 +71,7 @@ export class DetailedCouponTile extends React.Component {
     onApplyCouponToBagFromList({
       couponCode: coupon.id,
       id: coupon.id,
-      coupon: coupon.id
+      coupon: coupon.id,
     });
   };
 
@@ -89,50 +91,55 @@ export class DetailedCouponTile extends React.Component {
       : labels.lbl_coupon_applyToBag;
   };
 
-  isOverlayVisible = (status, isMobile) => {
-    return (status === COUPON_STATUS.APPLIED) && isMobile;
-  }
+  overlapClass = status => {
+    return status === COUPON_STATUS.APPLIED ? 'overlap' : '';
+  };
 
-  overlapClass = (status, isMobile) => {
-    return (status === COUPON_STATUS.APPLIED) && isMobile ? 'overlap':'';
-  }
-
+  overlapTxtClass = status => {
+    return status === COUPON_STATUS.APPLIED ? 'overlap-text' : '';
+  };
 
   render() {
-    const { className, coupon, labels, isMobile, isDisabled} = this.props;
+    const { className, coupon, labels, isMobile, isDisabled } = this.props;
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
     const bagIcon = getIconPath('cart-icon');
-
-    console.log(labels);
-
-
-   const overlapCls = this.overlapClass(coupon.status, isMobile);
-   const showOverlow = this.isOverlayVisible(coupon.status, isMobile);
+    const showOverlow = coupon.status === COUPON_STATUS.APPLIED;
+    const overlapCls = this.overlapClass(coupon.status);
+    const overlapTxtCls = this.overlapTxtClass(coupon.status);
     return (
       <BodyCopy component="div" className={className} data-locator="myrewards-tile">
         {showOverlow && (
           <BodyCopy
             component="div"
-            data-locator=""
+            data-locator="coupon-overlay"
             className="overlay hide-on-desktop hide-on-tablet"
           >
-            <Image src={bagIcon} />
             <BodyCopy
-              component="p"
+              component="div"
               fontSize="fs16"
               fontWeight="extrabold"
               fontFamily="secondary"
               color="white"
-              data-locator=""
-              className="elem-mt-XXL"
+              data-locator="coupon-overlay-icon"
+              className="overlay__content"
             >
-              {labels.lbl_common_applied_to_order}
+              <Image src={bagIcon} />
+              <BodyCopy
+                component="p"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                textAlign="center"
+                color="white"
+                data-locator="coupon-overlay-info"
+              >
+                {labels.lbl_common_applied_to_bag}
+              </BodyCopy>
             </BodyCopy>
           </BodyCopy>
         )}
-        <ErrorMessage className="notification" error={coupon.error} />
         {coupon.isExpiring && (
           <BodyCopy
             fontSize="fs10"
@@ -152,7 +159,7 @@ export class DetailedCouponTile extends React.Component {
               fontFamily="secondary"
               fontWeight="extrabold"
               title={coupon.title}
-              className={`elem-mb-SM ${overlapCls}`}
+              className={`elem-mb-SM ${overlapCls} ${overlapTxtCls}`}
               textAlign="center"
               data-locator="myrewards-details"
             >
@@ -221,6 +228,7 @@ export class DetailedCouponTile extends React.Component {
                 </Button>
               )}
             </BodyCopy>
+            <ErrorMessage className="error-notification" error={coupon.error} />
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>

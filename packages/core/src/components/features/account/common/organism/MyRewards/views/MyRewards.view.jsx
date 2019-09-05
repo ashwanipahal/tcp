@@ -4,7 +4,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/MyRewards.style';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
@@ -17,7 +16,6 @@ const MyRewards = ({
   className,
   coupons,
   onViewCouponDetails,
-  onApplyCouponToBag,
   onApplyCouponToBagFromList,
   onRemove,
   isApplyingOrRemovingCoupon,
@@ -34,26 +32,8 @@ const MyRewards = ({
     coupon => coupon.status === COUPON_STATUS.APPLYING || coupon.status === COUPON_STATUS.REMOVING
   );
 
-
-  function checkErr(coupon) {
-    if (coupon.error !== "" || coupon.error !== null)
-    {
-      return coupon.error;
-    }
-    return null;
-  }
-
-  const errormsg = coupons.map(checkErr);
-
   return (
     <div className={className}>
-      {errormsg && (
-        <Notification
-          status="error"
-          colSize={{ large: 12, medium: 8, small: 6 }}
-          message={errormsg}
-        />
-      )}
       <Row fullBleed>
         <Col
           colSize={{
@@ -94,7 +74,6 @@ const MyRewards = ({
                     coupon={coupon}
                     onViewCouponDetails={onViewCouponDetails}
                     onApplyCouponToBagFromList={onApplyCouponToBagFromList}
-                    onApplyCouponToBag={onApplyCouponToBag}
                     onRemove={onRemove}
                     handleErrorCoupon={handleErrorCoupon}
                     isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
@@ -159,7 +138,6 @@ MyRewards.propTypes = {
   className: PropTypes.string,
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
-  onApplyCouponToBag: PropTypes.func,
   onRemove: PropTypes.func,
   onApplyCouponToBagFromList: PropTypes.func,
   handleErrorCoupon: PropTypes.func,
@@ -182,7 +160,6 @@ MyRewards.defaultProps = {
   className: '',
   coupons: [],
   onViewCouponDetails: () => {},
-  onApplyCouponToBag: () => {},
   onRemove: () => {},
   onApplyCouponToBagFromList: () => {},
   handleErrorCoupon: () => {},

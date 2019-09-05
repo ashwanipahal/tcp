@@ -25,16 +25,21 @@ const styles = css`
     z-index: 9;
   }
 
-  @media ${props => props.theme.mediaQuery.smallOnly} {
-    .overlay {
-      display: flex;
-      align-items: center;
-      color: #fff;
-      background-color: #000;
-      opacity: 0.8;
-      z-index: 1;
-      justify-content: center;
-    }
+  .overlay {
+    display: flex;
+    align-items: center;
+    color: ${props => props.theme.colorPalette.white};
+    background-color: ${props => props.theme.colors.REWARDS_OVERLAY};
+    z-index: 1;
+    justify-content: center;
+  }
+  .overlay__content {
+    flex: none;
+    width: 100%;
+    text-align: center;
+  }
+  .overlap-text {
+    color: ${props => props.theme.colorPalette.white};
   }
 
   .couponDetailsFont {

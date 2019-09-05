@@ -5,14 +5,14 @@ import {
   getCouponList,
   applyCoupon,
   removeCoupon,
-  setError
+  setError,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 
 import {
   getAllCoupons,
   getAllRewardsCoupons,
   getCouponsLabels,
-  getCouponFetchingState
+  getCouponFetchingState,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
@@ -24,10 +24,14 @@ export class MyRewardsContainer extends PureComponent {
     coupons: PropTypes.shape([]).isRequired,
     rewardCoupons: PropTypes.shape([]).isRequired,
     couponsLabels: PropTypes.shape({}).isRequired,
+    onApplyCouponToBag: PropTypes.func,
+    handleErrorCoupon: PropTypes.func,
   };
 
   static defaultProps = {
     view: 'reward',
+    onApplyCouponToBag: () => {},
+    handleErrorCoupon: () => {},
   };
 
   constructor(props) {
@@ -54,7 +58,15 @@ export class MyRewardsContainer extends PureComponent {
   };
 
   render() {
-    const { coupons, rewardCoupons, couponsLabels, view, ...otherProps } = this.props;
+    const {
+      coupons,
+      rewardCoupons,
+      couponsLabels,
+      view,
+      onApplyCouponToBag,
+      handleErrorCoupon,
+      ...otherProps
+    } = this.props;
     const { selectedCoupon } = this.state;
 
     return (
@@ -75,6 +87,7 @@ export class MyRewardsContainer extends PureComponent {
                 selectedCoupon: null,
               });
             }}
+            onApplyCouponToBag={onApplyCouponToBag}
           />
         )}
       </>
@@ -89,7 +102,7 @@ const mapStateToProps = state => ({
   isApplyingOrRemovingCoupon: getCouponFetchingState(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   fetchCoupons: () => {
     dispatch(getCouponList());
   },
@@ -116,11 +129,11 @@ const mapDispatchToProps = dispatch => ({
         applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
       );
     }),
-    handleErrorCoupon: coupon => {
-      setTimeout(() => {
-        dispatch(setError({ msg: null, couponCode: coupon.id }));
-      }, 5000);
-    },
+  handleErrorCoupon: coupon => {
+    setTimeout(() => {
+      dispatch(setError({ msg: null, couponCode: coupon.id }));
+    }, 5000);
+  },
 });
 
 export default connect(
