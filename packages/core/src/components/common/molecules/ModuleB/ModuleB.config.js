@@ -1,10 +1,10 @@
 export default {
   ctaTypes: {
-    stackedCTAButtons: 'stackedCTAButtons',
-    stackedCTAButtonsExpandable: 'stackedCTAButtonsExpandable',
-    CTAButtonCarousel: 'CTAButtonCarousel',
-    CTAButtonCarouselExpandable: 'CTAButtonCarouselExpandable',
-    divImageCTACarousel: 'divImageCTACarousel',
+    stackedCTAButtons: 'stackedCTAList',
+    stackedCTAButtonsExpandable: 'stackedCTAList',
+    divImageCTACarousel: 'imageCTAList',
+    CTAButtonCarousel: 'scrollCTAList',
+    CTAButtonCarouselExpandable: 'scrollCTAList',
   },
   bannerPositionTypes: {
     top: 'top',

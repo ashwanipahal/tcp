@@ -17,7 +17,6 @@ import {
   SeparatorView,
 } from '../ModuleB.style.native';
 import config from '../ModuleB.config';
-// import mock from '../mock';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**
@@ -151,41 +150,27 @@ const ModuleB = () => {
   const ctaType = ctaTypes[findKeyInSet(set, 'ctaType')];
   const bannerPosition = findKeyInSet(set, 'bannerPostition');
 
-  const {
-    stackedCTAButtons,
-    stackedCTAButtonsExpandable,
-    CTAButtonCarousel,
-    CTAButtonCarouselExpandable,
-    divImageCTACarousel,
-  } = ctaTypes;
-
   return (
     <Container>
       {renderImageComponent({ item: largeCompImage[0], bannerPosition }, navigation)}
 
-      {ctaType === divImageCTACarousel && (
+      {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
-          {renderButtonList('imageCTAList', navigation, ctaItems, 'moduleB_cta_links', 'black')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'moduleB_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
-      {(ctaType === stackedCTAButtons || ctaType === stackedCTAButtonsExpandable) && (
+      {ctaType === 'stackedCTAList' && (
         <ContainerView>
           <Border background="gray" />
-          {renderButtonList(
-            'stackedCTAList',
-            navigation,
-            ctaItems,
-            'stacked_cta_list',
-            'fixed-width'
-          )}
+          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
           <Border background="gray" />
         </ContainerView>
       )}
 
-      {(ctaType === CTAButtonCarousel || ctaType === CTAButtonCarouselExpandable) && (
+      {ctaType === 'scrollCTAList' && (
         <ButtonContainer>
-          {renderButtonList('scrollCTAList', navigation, ctaItems, 'scroll_cta_list', 'gray')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>
       )}
     </Container>
