@@ -59,7 +59,6 @@ export function extractAttributeValue(item, attribute) {
       /* item.list_of_attributes comes as Array on PLP but on PDP it comes as a string when this function is called. On PLP we have a wrapper funtion where
       we do the modifcation and pass the data to this function but on PDP we do not have a wrapper function in this module hence handeling the PDP at this
       place only. */
-      // console.log('from 1', currItm);
       const itm = Array.isArray(currItm) ? currItm : attributeListMaker(currItm);
       return itm.find(att => att.identifier === attribute).value;
     }
@@ -268,7 +267,6 @@ export const parseProductInfo = (
 ) => {
   const product = productArr;
   // Make product list transformation
-  // console.log('from 2', product.list_of_attributes);
   product.list_of_attributes = attributeListMaker(product.list_of_attributes);
   const defaultColor = processHelpers.getDefaultColor(product);
   const { uniqueId } = product;
