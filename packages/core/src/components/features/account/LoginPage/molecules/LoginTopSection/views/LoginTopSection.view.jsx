@@ -137,12 +137,13 @@ LoginTopSection.propTypes = {
   className: PropTypes.string.isRequired,
   isCanada: PropTypes.bool,
   variation: PropTypes.bool.isRequired,
-  showForgotPasswordForm: PropTypes.func.isRequired,
+  showForgotPasswordForm: PropTypes.func,
 };
 
 LoginTopSection.defaultProps = {
   labels: {},
   isCanada: false,
+  showForgotPasswordForm: () => {},
 };
 
 export default withStyles(LoginTopSection, styles);
