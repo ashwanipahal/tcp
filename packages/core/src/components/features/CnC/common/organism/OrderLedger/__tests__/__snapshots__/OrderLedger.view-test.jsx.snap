@@ -17,7 +17,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
   background-color: ",
           [Function],
           ";
-  padding: 23px 1px 32px;
+  padding: 23px 1px 21px;
 
   .rowMargin {
     margin-bottom: 8px;
