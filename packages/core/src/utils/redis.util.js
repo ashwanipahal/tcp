@@ -19,7 +19,7 @@ const setDataInRedis = ({
 }) => {
   const { redisClient } = global;
   if (noRedisClient(redisClient)) return null;
-  const cacheExpiryTime = process.env.CACHE_EXP_TIME || CACHE_EXP_TIME;
+  const cacheExpiryTime = process.env.RWD_WEB_CACHE_EXP_TIME || CACHE_EXP_TIME;
   return redisClient.set(
     CACHE_IDENTIFIER,
     JSON.stringify(data),
