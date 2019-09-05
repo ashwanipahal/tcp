@@ -35,7 +35,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       " {
       padding: 0px ",
       [Function],
-      ";;
+      ";
     }
   }
 
