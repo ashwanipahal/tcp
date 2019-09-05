@@ -4,10 +4,12 @@ import BAGPAGE_SELECTORS from '../container/BagPage.selectors';
 describe('#Added to bag Selectors', () => {
   const BagPageState = {
     bag: {
-      addedToBag: { lbl_header_addedToBag: 'AddedToBag', lbl_cta_checkout: 'Checkout' },
       bagOverview: { lbl_header_bag: 'bagHeading' },
     },
-    global: { checkoutConfirmation: {} },
+    global: {
+      addedToBagModal: { lbl_header_addedToBag: 'AddedToBag', lbl_cta_checkout: 'Checkout' },
+      checkoutConfirmation: {},
+    },
   };
   const CartPageReducer = fromJS({
     orderDetails: {

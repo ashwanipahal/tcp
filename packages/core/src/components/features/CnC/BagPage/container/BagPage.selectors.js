@@ -14,7 +14,6 @@ export const filterProductsBrand = (arr, searchedValue) => {
 const getBagPageLabels = state => {
   const {
     bag: {
-      addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
       bagOverview: {
         lbl_header_bag: bagHeading,
         lbl_emptyBag_loggedInMsg: loggedInMsg,
@@ -24,6 +23,9 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
       } = {},
+    } = {},
+    global: {
+      addedToBagModal: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
     } = {},
   } = state.Labels;
   return {
@@ -68,7 +70,7 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = state.Labels.bag.addedToBag;
+  const { referred = [] } = state.Labels.global.addedToBagModal;
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
 };

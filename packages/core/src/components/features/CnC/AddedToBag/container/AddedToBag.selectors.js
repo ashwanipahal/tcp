@@ -38,10 +38,8 @@ export const getQuantityValue = state => {
 
 export const getLabelsAddToActions = state => {
   const {
-    bag: {
-      addedToBag: { lbl_cta_viewBag: viewBag, lbl_cta_checkout: checkout },
-    },
     global: {
+      addedToBagModal: { lbl_cta_viewBag: viewBag, lbl_cta_checkout: checkout },
       checkoutConfirmation: {
         lbl_checkoutmodal_confirmation: confirmationText,
         lbl_checkoutmodal_editConfirmation: editConfirmationText,
