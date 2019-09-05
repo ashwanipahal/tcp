@@ -7,6 +7,7 @@ const buildQuery = ({ brand, country, channel }) => `
       id
       seoUrl
       seoToken
+      longDescription
       mainCategory {
         set {
           key
@@ -57,8 +58,11 @@ const buildQuery = ({ brand, country, channel }) => `
         description
         groupIdentifier
         groupIdentifierName
+        longDescription
         name
         id
+        catgroupId
+        longDescription
         catgroupId
         mainCategory {
           promoBadge {
@@ -74,8 +78,11 @@ const buildQuery = ({ brand, country, channel }) => `
           description
           groupIdentifier
           groupIdentifierName
+          longDescription
           name
           id
+          catgroupId
+          longDescription
           catgroupId
         }
       }

@@ -1,3 +1,6 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
+import { isMobileApp } from '../../../../../utils';
+
 const getIndex = data => {
   return data && data.some(category => !!(category && category.url)) ? data.length : 0;
 };
@@ -21,6 +24,9 @@ export const extractCategory = category => {
   // Extracting category id or path from the URL
   try {
     let categoryId;
+    // if (category && category.indexOf('/') === -1) {
+    //   return category;
+    // }
     if (Number.isInteger(category)) {
       categoryId = category;
     } else if (category && category.lastIndexOf('/') === category.length - 1) {
@@ -31,7 +37,7 @@ export const extractCategory = category => {
     }
     return categoryId;
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
   return category;
 };
@@ -62,7 +68,7 @@ export const findCategoryIdandName = (data, category) => {
       newCatArr = newCatArr.concat(data[iterator].subCategories);
     }
 
-    const navUrl = extractCategory(data[iterator].url);
+    const navUrl = extractCategory(data[iterator].url && data[iterator].url.replace('/c?cid=', ''));
     if (
       data[iterator].categoryContent.categoryId === categoryId ||
       (navUrl && navUrl.toLowerCase()) === (categoryId && categoryId.toLowerCase())
@@ -116,24 +122,27 @@ export const generateGroups = level1 => {
     let level2Groups = [];
     const groupings = {};
 
+    const listOfGroups = Object.keys(level1.subCategories);
     // for each L2 parse and place in proper group
-    if (level1.subCategories.Categories && level1.subCategories.Categories.items) {
-      level1.subCategories.Categories.items.forEach(L2 => {
-        const groupName = 'Categories';
-        const groupOrder = 1;
+    listOfGroups.forEach(grp => {
+      if (level1.subCategories[grp] && level1.subCategories[grp].items) {
+        level1.subCategories[grp].items.forEach(L2 => {
+          const groupName = grp;
+          const groupOrder = level1.subCategories[grp].order;
 
-        // if new grouping initalize array
-        if (!groupings[groupName]) {
-          groupings[groupName] = {
-            order: groupOrder,
-            menuItems: [],
-          };
-        }
+          // if new grouping initalize array
+          if (!groupings[groupName]) {
+            groupings[groupName] = {
+              order: groupOrder,
+              menuItems: [],
+            };
+          }
 
-        // Push L2 in this bucket
-        groupings[groupName].menuItems.push(L2);
-      });
-    }
+          // Push L2 in this bucket
+          groupings[groupName].menuItems.push(L2);
+        });
+      }
+    });
 
     // Now get all groups and generate array of object, this is not to bad as there are at most 3-4 groups
     level2Groups = Object.keys(groupings).map(group => ({
@@ -146,7 +155,7 @@ export const generateGroups = level1 => {
       return prevGroup.order - curGroup.order;
     });
   } catch (error) {
-    console.error('getHeaderNavigationTree:generateGroups', error);
+    logger.error('getHeaderNavigationTree:generateGroups', error);
     return [];
   }
 };
@@ -155,10 +164,10 @@ export const isSearch = () => {
   return false;
 };
 
-export const matchValue = isSearchPage => {
-  return isSearchPage
-    ? matchPath(window.location.pathname, '/search/')
-    : matchPath(window.location.pathname, '/c/');
+export const matchValue = (isSearchPage, location) => {
+  const params = isSearchPage ? '/search/' : '/c/';
+  const pathname = isMobileApp() ? location : window.location.pathname;
+  return matchPath(pathname, params);
 };
 
 export const getCategoryKey = (isSearchPage, match) => {
@@ -217,4 +226,54 @@ export const getBreadCrumb = categoryNameList => {
         longDescription: crumb.longDescription,
       }))
     : [];
+};
+
+// Inline function to get sum of object array element
+const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+
+function getIsShowCategoryGrouping(state) {
+  const isL2Category = state.ProductListing.get('breadCrumbTrail').length === 2;
+  // const isNotAppliedSort = !state.productListing.appliedSortId;
+  const isNotAppliedSort = !null;
+  const appliedFilters = state.ProductListing.appliedFiltersIds;
+  const isNotAppliedFilter =
+    (appliedFilters && appliedFilters.length > 0 && !sumValues(appliedFilters)) || true;
+
+  return isL2Category && isNotAppliedSort && isNotAppliedFilter;
+}
+
+export function getProductsAndTitleBlocks(state, productBlocks = []) {
+  const productsAndTitleBlocks = [];
+  let lastCategoryName = null;
+
+  productBlocks.forEach(block => {
+    const productsAndTitleBlock = [];
+    // For each product in this block try to extract the category name if new
+    block.forEach(product => {
+      const { categoryName } = product.miscInfo;
+
+      // This is to inject Dynamic Marketing Espots into our product Grid
+      // Use this for promo tiles if required later - injectionHandler.marketing(productsAndTitleBlock, currentProductIndex, categoryName);
+
+      // push: If we should group and we hit a new category name push on array
+      // Add separator if required in the RWD design - injectionHandler.seperator(productsAndTitleBlock, categoryName);
+      const shouldGroup = getIsShowCategoryGrouping(state);
+      if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
+        productsAndTitleBlock.push(categoryName);
+        lastCategoryName = categoryName;
+      }
+      // push: product onto block
+      productsAndTitleBlock.push(product);
+    });
+
+    // push: product block onto matrix
+    productsAndTitleBlocks.push(productsAndTitleBlock);
+  });
+
+  return productsAndTitleBlocks;
+}
+
+export const getPlpCutomizersFromUrlQueryString = () => {
+  // TODO - this should be fixed in the filters PR - check and update
+  return '';
 };

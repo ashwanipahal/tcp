@@ -9,7 +9,7 @@ exports[`DropDown Test should render correctly 1`] = `
   >
     foo
   </Styled(Text)>
-  <Styled(View)
+  <Styled(TouchableOpacity)
     bounces={true}
     data={
       Array [
@@ -26,7 +26,7 @@ exports[`DropDown Test should render correctly 1`] = `
         "color": "foo",
       }
     }
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
     selectedValue="foo"
@@ -49,7 +49,7 @@ exports[`DropDown Test should render correctly 1`] = `
         }
       }
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Component
     hardwareAccelerated={false}
     transparent={true}
@@ -65,7 +65,7 @@ exports[`DropDown Test should render correctly 1`] = `
         Object {
           "height": 1334,
           "left": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
@@ -73,6 +73,7 @@ exports[`DropDown Test should render correctly 1`] = `
         style={
           Object {
             "top": 0,
+            "width": 0,
           }
         }
       />
@@ -90,7 +91,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
   >
     foo
   </Styled(Text)>
-  <Styled(View)
+  <Styled(TouchableOpacity)
     bounces={true}
     data={
       Array [
@@ -107,7 +108,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         "color": "foo",
       }
     }
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
     selectedValue="foo"
@@ -130,7 +131,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         }
       }
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Component
     hardwareAccelerated={false}
     transparent={true}
@@ -146,7 +147,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         Object {
           "height": 1334,
           "left": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
@@ -154,6 +155,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         style={
           Object {
             "top": 0,
+            "width": 0,
           }
         }
       >
@@ -170,6 +172,11 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           }
           keyExtractor={[Function]}
           renderItem={[Function]}
+          style={
+            Object {
+              "height": 0,
+            }
+          }
         />
       </Styled(View)>
     </TouchableOpacity>

@@ -32,12 +32,20 @@ const ConfirmPasswordWrapper = styled.View`
   position: relative;
 `;
 
-const ConfirmHideShowField = styled.View`
+const HideShowFieldStyle = props =>
+  `
+  width:${props.theme.spacing.ELEM_SPACING.XL};
+  background: ${props.theme.colorPalette.white};
+  height:18px; /* 18px not available in spacing variable*/
   position: absolute;
   right: 0;
-  top: 16px;
+  top:18px; /* 18px not available in spacing variable */
   border-bottom-width: 1px;
   border-bottom-color: black;
+  `;
+
+const ConfirmHideShowField = styled.View`
+  ${HideShowFieldStyle}
 `;
 
 export {

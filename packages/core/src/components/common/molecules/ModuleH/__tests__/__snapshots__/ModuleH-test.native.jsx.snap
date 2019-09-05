@@ -9,6 +9,7 @@ exports[`ModuleH component renders correctly 1`] = `
       customStyle={Object {}}
       key="0"
       locator=""
+      onPress={null}
       text=""
       url="/toddler"
       visible={false}
@@ -20,11 +21,6 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        style={
-          Object {
-            "height": 38,
-          }
-        }
         testID="moduleH_header_text_1"
         text="New arrivals"
         textAlign="left"
@@ -36,6 +32,7 @@ exports[`ModuleH component renders correctly 1`] = `
       customStyle={Object {}}
       key="1"
       locator=""
+      onPress={null}
       text=""
       url="/toddler"
       visible={false}
@@ -47,11 +44,6 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        style={
-          Object {
-            "height": 38,
-          }
-        }
         testID="moduleH_header_text_2"
         text="New adventures"
         textAlign="left"
@@ -172,6 +164,7 @@ exports[`ModuleH component renders correctly 1`] = `
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/toddler"
       visible={false}
@@ -187,7 +180,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -201,6 +193,7 @@ exports[`ModuleH component renders correctly 1`] = `
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/girl"
       visible={false}
@@ -216,7 +209,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -230,6 +222,7 @@ exports[`ModuleH component renders correctly 1`] = `
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/toddler-boy"
       visible={false}
@@ -245,7 +238,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -259,6 +251,7 @@ exports[`ModuleH component renders correctly 1`] = `
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/boy"
       visible={false}
@@ -274,7 +267,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -288,6 +280,7 @@ exports[`ModuleH component renders correctly 1`] = `
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/baby"
       visible={false}
@@ -303,7 +296,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }

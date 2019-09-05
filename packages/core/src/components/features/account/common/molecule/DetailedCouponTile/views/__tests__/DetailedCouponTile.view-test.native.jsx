@@ -1,5 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
+// eslint-disable-next-line import/no-named-as-default
 import { DetailedCouponTile } from '../DetailedCouponTile.view';
 
 import { COUPON_STATUS } from '../../../../../../../../services/abstractors/CnC/CartItemTile';
@@ -47,5 +49,14 @@ describe('DetailedCouponTile', () => {
 
     const tree = shallow(<DetailedCouponTile {...props} />);
     expect(tree).toMatchSnapshot();
+  });
+
+  it('should render Barcode component for available coupon', () => {
+    const props = {
+      labels,
+      coupon: {},
+    };
+    const component = shallow(<DetailedCouponTile {...props} />);
+    expect(component.find(Barcode)).toHaveLength(1);
   });
 });

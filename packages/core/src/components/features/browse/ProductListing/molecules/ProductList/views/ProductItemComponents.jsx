@@ -10,6 +10,7 @@ import Dotdotdot from 'react-dotdotdot';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
+import { getFormattedLoyaltyText } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
 import { Image, BodyCopy, Anchor } from '../../../../../../common/atoms';
 
@@ -224,15 +225,25 @@ export function BadgeItem(props) {
 }
 
 export function PromotionalMessage(props) {
-  const { message } = props;
+  const { text } = props;
   return (
     <BodyCopy
       fontSize={['fs10', 'fs12', 'fs14']}
-      fontWeight={['extrabold', 'semibold', 'semibold']}
+      fontWeight="extrabold"
       fontFamily="secondary"
       data-locator={getLocator('global_loyalty_text')}
       className="loyalty-text-container"
-      dangerouslySetInnerHTML={{ __html: message }}
-    />
+    >
+      {text && getFormattedLoyaltyText(text)[0]}
+      {text && (
+        <BodyCopy
+          fontSize={['fs10', 'fs12', 'fs14']}
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          component="span"
+          color="gray.900"
+        >{` on${getFormattedLoyaltyText(text)[1]}`}</BodyCopy>
+      )}
+    </BodyCopy>
   );
 }

@@ -29,6 +29,7 @@ exports[`Custom Select is shown should render Custom Select  1`] = `
     padding-right: ",
           [Function],
           ";
+    cursor: pointer;
 
     &:after {
       content: '';

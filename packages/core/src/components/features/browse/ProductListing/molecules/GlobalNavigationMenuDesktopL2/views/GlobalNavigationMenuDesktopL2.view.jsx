@@ -108,7 +108,7 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
             {menuGroupingArr.map((groups, index) => {
               return (
                 <NavGroupContainer
-                  key={`column-${groups.groupName}`}
+                  key={`column-${groups[0].groupName}`}
                   isLastGroup={index === menuGroupingArr.length - 1}
                   {...{ groups, activeCategoryIds, isTopNav, className }}
                 />
@@ -179,7 +179,9 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
                 id={`list-item-${item.categoryContent.id}`}
                 role="none"
               >
-                <Anchor to={item.url}>{item.categoryContent.name}</Anchor>
+                <Anchor to={`/c?cid=${item.categoryContent.id}`} asPath={item.url}>
+                  {item.categoryContent.name}
+                </Anchor>
                 {!isTopNav && isActive && (
                   <L3
                     menuItems={item.subCategories}
@@ -212,7 +214,9 @@ function L3({ menuItems, activeCategoryIds, className }) {
                 id={`list-item-${categoryId}`}
                 role="none"
               >
-                <Anchor to={url}>{name}</Anchor>
+                <Anchor to={`/c?cid=${categoryId}`} asPath={url}>
+                  {name}
+                </Anchor>
               </li>
             }
           </React.Fragment>

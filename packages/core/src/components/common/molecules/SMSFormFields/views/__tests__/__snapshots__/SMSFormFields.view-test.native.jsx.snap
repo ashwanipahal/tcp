@@ -60,6 +60,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                   "error": "",
                   "touched": "",
                 },
+                "onChangeText": [Function],
                 "secureTextEntry": false,
                 "showErrorIcon": true,
                 "showSuccessCheck": false,
@@ -112,6 +113,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         href="#"
         locator=""
         noLink={true}
+        onPress={null}
         target="_blank"
         text=""
         underline={true}
@@ -162,6 +164,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                   "error": "",
                   "touched": "",
                 },
+                "onChangeText": [Function],
                 "secureTextEntry": false,
                 "showErrorIcon": true,
                 "showSuccessCheck": false,
@@ -214,6 +217,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         href="#"
         locator=""
         noLink={true}
+        onPress={null}
         target="_blank"
         text=""
         underline={true}

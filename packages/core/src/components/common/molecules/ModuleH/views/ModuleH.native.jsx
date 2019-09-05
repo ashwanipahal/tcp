@@ -34,7 +34,6 @@ const MODULE_DIRECTION = true;
 const linkStyle = {
   color: colors.white,
   fontSize: fonts.fontSize.body.bodytext.copy6,
-  lineHeight: 20,
   marginTop: 28,
 };
 
@@ -50,20 +49,10 @@ class ModuleH extends React.PureComponent<Props, State> {
     this.state = {
       currentIndex: 0,
     };
-    this.getUrlWithCrop = this.getUrlWithCrop.bind(this);
     this.renderItem = this.renderItem.bind(this);
     this.renderLinks = this.renderLinks.bind(this);
     this.updateCurrentIndex = this.updateCurrentIndex.bind(this);
   }
-
-  /**
-   * @function getUrlWithCrop : prepare image src with crop details.
-   * @param {String} url : Image url.
-   * @return {String} function returns updated image url.
-   */
-  getUrlWithCrop = (url: String) => {
-    return url.replace('upload/', `upload/c_fill,g_center,h_425,w_${getScreenWidth()}/`);
-  };
 
   /**
    * @function renderItem : renders module H Images.
@@ -75,8 +64,8 @@ class ModuleH extends React.PureComponent<Props, State> {
     return (
       <Image
         key={index.toString()}
-        alt={image.alt}
-        source={{ uri: this.getUrlWithCrop(image.url) }}
+        crop={image.crop_m}
+        url={image.url}
         testID={`${getLocator('moduleH_composite_image')}${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
@@ -120,7 +109,6 @@ class ModuleH extends React.PureComponent<Props, State> {
 
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
-    const headingStyle = { height: 38 };
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -137,7 +125,6 @@ class ModuleH extends React.PureComponent<Props, State> {
                     fontWeight="black"
                     text={textLine.text}
                     testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                    style={headingStyle}
                   />
                 </Anchor>
               ) : (
@@ -150,7 +137,6 @@ class ModuleH extends React.PureComponent<Props, State> {
                   fontWeight="black"
                   text={textLine.text}
                   testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                  style={headingStyle}
                 />
               );
             })}

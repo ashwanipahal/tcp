@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default styled.div`
   .title {
-    margin: 34px 0px 19px 0px;
+    margin: 34px 0px 27px 0px;
   }
 
   .financial-terms-disclosures {

@@ -2,6 +2,7 @@ import { all, put } from 'redux-saga/effects';
 import { getUserInfoSaga } from '../User.saga';
 import { setUserInfo } from '../User.actions';
 import { setCountry, setCurrency, setLanguage } from '../../../../../../reduxStore/actions';
+import { setAddressList } from '../../../AddressBook/container/AddressBook.actions';
 
 describe('User saga', () => {
   describe('getUserInfoSaga', () => {
@@ -22,6 +23,7 @@ describe('User saga', () => {
       expect(putDescriptor).toEqual(
         all([
           put(setUserInfo(response)),
+          put(setAddressList(response.contactList)),
           put(setCountry(response.country)),
           put(setCurrency(response.currency)),
           put(setLanguage(response.language)),

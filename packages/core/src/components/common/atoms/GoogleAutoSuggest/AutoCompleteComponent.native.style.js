@@ -25,7 +25,7 @@ const Container = styled.View`
 
 const textInput = {
   borderBottomWidth: 1,
-  borderBottomColor: `${colors.FOOTER.DIVIDER}`,
+  borderBottomColor: `${colors.BLACK}`,
   height: 40,
   paddingTop: 16,
   paddingBottom: 0,

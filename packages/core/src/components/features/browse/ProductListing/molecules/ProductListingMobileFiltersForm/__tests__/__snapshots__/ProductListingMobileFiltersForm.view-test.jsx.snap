@@ -73,6 +73,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 ]
               }
               className=""
+              show={false}
             >
               <Field
                 allowMultipleSelections={true}
@@ -95,6 +96,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -447,6 +449,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -958,6 +961,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1238,6 +1242,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1347,6 +1352,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1447,6 +1453,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1556,6 +1563,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';

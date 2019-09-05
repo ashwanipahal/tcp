@@ -10,6 +10,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         "login": Object {},
         "loginErrorMessage": "",
         "onSubmit": [Function],
+        "registration": Object {},
         "resetForm": [Function],
         "showForgotPasswordForm": [Function],
       }
@@ -34,6 +35,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -83,6 +85,7 @@ exports[`LoginForm component should renders correctly 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -123,13 +126,12 @@ exports[`LoginForm component should renders correctly 1`] = `
           customStyle={Object {}}
           dataLocator=""
           fontFamily="secondary"
-          fontSizeVariation="small"
+          fontSizeVariation="medium"
           locator=""
           noLink={true}
           onPress={[Function]}
           text="show"
           to="/#"
-          underline={true}
           visible={false}
         />
       </Styled(View)>
@@ -145,12 +147,14 @@ exports[`LoginForm component should renders correctly 1`] = `
         component={[Function]}
         dataLocator="rememberMe"
         disabled={false}
+        marginBottom={13}
         name="userTouchId"
       />
     </View>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
-      color="#fff"
+      color=""
       customStyle={
         Object {
           "marginTop": 30,
@@ -160,6 +164,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={null}
       text=""
       url=""
     />

@@ -19,39 +19,48 @@ const RewardsPointsSlider = ({
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ large: 5, medium: 3, small: 2 }} className="current-points">
-          <BodyCopy data-locator="slidercurrentpointslbl" fontFamily="secondary" fontSize="fs14">
-            {`${labels.lbl_common_current_points}: `}
-            <BodyCopy
-              data-locator="slidercurrentpointsvalue"
-              component="span"
-              fontWeight="black"
-              fontFamily="secondary"
-              fontSize="fs14"
-            >
-              {currentPoints}
-            </BodyCopy>
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 7, medium: 5, small: 4 }} className="my-rewards">
-          <BodyCopy
-            data-locator="slidermyrewardslbl"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs14"
-          >
-            {`${labels.lbl_common_heading}: `}
-            <BodyCopy
-              data-locator="slidermyrewardsvalue"
-              component="span"
-              fontWeight="black"
-              fontFamily="secondary"
-              fontSize="fs14"
-            >
-              {labels.lbl_common_currency}
-              {totalRewards && Math.trunc(totalRewards)}
-            </BodyCopy>
-          </BodyCopy>
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+          <div className="current-points">
+            <span>
+              <BodyCopy
+                component="span"
+                data-locator="slidercurrentpointslbl"
+                fontFamily="secondary"
+                fontSize="fs13"
+              >
+                {`${labels.lbl_rewardPoints_currentPoints}: `}
+                <BodyCopy
+                  data-locator="slidercurrentpointsvalue"
+                  component="span"
+                  fontWeight="black"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                >
+                  {currentPoints}
+                </BodyCopy>
+              </BodyCopy>
+            </span>
+            <span className="my-rewards">
+              <BodyCopy
+                data-locator="slidermyrewardslbl"
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs13"
+              >
+                {`${labels.lbl_rewardPoints_heading}: `}
+                <BodyCopy
+                  data-locator="slidermyrewardsvalue"
+                  component="span"
+                  fontWeight="black"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                >
+                  {labels.lbl_rewardPoints_currency}
+                  {totalRewards && Math.trunc(totalRewards)}
+                </BodyCopy>
+              </BodyCopy>
+            </span>
+          </div>
         </Col>
       </Row>
       <Row>
@@ -76,15 +85,15 @@ const RewardsPointsSlider = ({
           <BodyCopy
             data-locator="slidernextrewardspointslbl"
             fontFamily="secondary"
-            fontSize="fs14"
+            fontSize="fs13"
           >
-            {`${labels.lbl_common_next_reward}: `}
+            {`${labels.lbl_rewardPoints_nextReward}: `}
             <BodyCopy
               data-locator="slidernextrewardspointsvalue"
               component="span"
               fontWeight="black"
               fontFamily="secondary"
-              fontSize="fs14"
+              fontSize="fs13"
             >
               {pointsToNextReward}
             </BodyCopy>
@@ -102,10 +111,10 @@ RewardsPointsSlider.propTypes = {
   totalRewards: PropTypes.number,
   plccUser: PropTypes.bool,
   labels: PropTypes.shape({
-    lbl_common_current_points: PropTypes.string,
-    lbl_common_heading: PropTypes.string,
-    lbl_common_next_reward: PropTypes.string,
-    lbl_common_currency: PropTypes.string,
+    lbl_rewardPoints_currentPoints: PropTypes.string,
+    lbl_rewardPoints_heading: PropTypes.string,
+    lbl_rewardPoints_nextReward: PropTypes.string,
+    lbl_rewardPoints_currency: PropTypes.string,
   }),
 };
 
@@ -116,10 +125,10 @@ RewardsPointsSlider.defaultProps = {
   totalRewards: '',
   plccUser: false,
   labels: {
-    lbl_common_current_points: '',
-    lbl_common_heading: '',
-    lbl_common_next_reward: '',
-    lbl_common_currency: '',
+    lbl_rewardPoints_currentPoints: '',
+    lbl_rewardPoints_heading: '',
+    lbl_rewardPoints_nextReward: '',
+    lbl_rewardPoints_currency: '',
   },
 };
 

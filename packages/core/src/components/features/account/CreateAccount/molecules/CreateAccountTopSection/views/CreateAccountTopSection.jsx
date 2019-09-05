@@ -40,7 +40,7 @@ const CreateAccountTopSection = props => {
       </BodyCopy>
 
       {!isCanada() && (
-        <BodyCopy component="div" className="elem-pb-XS spend-points">
+        <>
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs14"
@@ -57,7 +57,7 @@ const CreateAccountTopSection = props => {
           >
             {labels.registration.lbl_createAccount_pointReward}
           </BodyCopy>
-        </BodyCopy>
+        </>
       )}
 
       <BodyCopy component="div" className="bordered elem-pb-MED signed-up-in-store">
@@ -65,9 +65,10 @@ const CreateAccountTopSection = props => {
           <p>{labels.registration.lbl_createAccount_signedUp}</p>
           <p>{labels.registration.lbl_createAccount_onlineAccCreated}</p>
           <BodyCopy component="div" fontFamily="secondary" fontSize="fs12" textAlign="center">
-            <Anchor className="reset-password" onClick={showForgotPasswordFormFn}>
-              {labels.registration.lbl_createAccount_resetPassword}
+            <Anchor underline className="reset-password" onClick={showForgotPasswordFormFn}>
+              {labels.registration.lbl_createAccount_clickhere}
             </Anchor>
+            {labels.registration.lbl_createAccount_resetPassword}
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>

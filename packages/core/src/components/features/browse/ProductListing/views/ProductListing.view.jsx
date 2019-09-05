@@ -28,6 +28,8 @@ const ProductListView = ({
   labels,
   labelsFilter,
   categoryId,
+  getProducts,
+  onSubmit,
   ...otherProps
 }) => {
   return (
@@ -60,17 +62,26 @@ const ProductListView = ({
                 initialValues={initialValues}
                 filtersLength={filtersLength}
                 labels={labelsFilter}
+                onSubmit={onSubmit}
+                getProducts={getProducts}
               />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="count-section">
+              {totalProductsCount > 0 && (
+                <span className="items-count-content">
+                  Showing
+                  <span className="items-count-content-number">
+                    {totalProductsCount > 0 ? totalProductsCount : 0}
+                  </span>
+                  {totalProductsCount > 1 ? 'Items' : 'Item'}
+                </span>
+              )}
+            </div>
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
-            {/* <ProductList
-              products={products}
-              className={`${className} product-list`}
-              labels={labels}
-              {...otherProps}
-            /> */}
           </Col>
 
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -104,6 +115,8 @@ ProductListView.propTypes = {
   initialValues: PropTypes.shape({}),
   filtersLength: PropTypes.shape({}),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  getProducts: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 ProductListView.defaultProps = {

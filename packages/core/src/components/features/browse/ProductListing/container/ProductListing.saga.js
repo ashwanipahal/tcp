@@ -1,53 +1,81 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
 import {
   setPlpProducts,
   setListingFirstProductsPage,
   setPlpLoadingState,
 } from './ProductListing.actions';
-// import { validateReduxCache } from '../../../../../utils/cache.util';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
-function* fetchPlpProducts() {
+export function* fetchPlpProducts({ payload }) {
   try {
+    const { url, formData, sortBySelected } = payload;
+    const location = url
+      ? {
+          pathname: url,
+        }
+      : window.location;
     const state = yield select();
-    let reqObj = operatorInstance.getProductListingBucketedData(state);
+    let reqObj = operatorInstance.getProductListingBucketedData(
+      state,
+      location,
+      sortBySelected,
+      formData,
+      1
+    );
     if (reqObj.isFetchFiltersAndCountReq) {
       const res = yield call(instanceProductListing.getProducts, reqObj);
       reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
     }
-    const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
-    operatorInstance.updateBucketingConfig(plpProducts);
-    yield put(setListingFirstProductsPage({ ...plpProducts }));
+    if (reqObj && reqObj.categoryId) {
+      const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
+      if (
+        plpProducts &&
+        plpProducts.loadedProductsPages &&
+        plpProducts.loadedProductsPages[0] &&
+        plpProducts.loadedProductsPages[0].length
+      ) {
+        operatorInstance.updateBucketingConfig(plpProducts);
+        yield put(setListingFirstProductsPage({ ...plpProducts }));
+      }
+    }
     yield put(setPlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
     console.log(err);
   }
 }
 
-function* fetchMoreProducts() {
+export function* fetchMoreProducts() {
   try {
     const state = yield select();
     yield put(setPlpLoadingState({ isLoadingMore: true }));
     const reqObj = operatorInstance.getMoreBucketedProducts(state);
-    const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
-    operatorInstance.updateBucketingConfig(plpProducts);
-    yield put(setPlpProducts({ ...plpProducts }));
+    if (reqObj && reqObj.categoryId) {
+      const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
+      if (
+        plpProducts &&
+        plpProducts.loadedProductsPages &&
+        plpProducts.loadedProductsPages[0] &&
+        plpProducts.loadedProductsPages[0].length
+      ) {
+        operatorInstance.updateBucketingConfig(plpProducts);
+        yield put(setPlpProducts({ ...plpProducts }));
+      }
+    }
     yield put(setPlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
-function* ProductListingPageSaga() {
-  // const cachedFetchProducts = validateReduxCache(fetchPlpProducts);
-  // const cachedFetchMoreProducts = validateReduxCache(fetchMoreProducts);
+function* ProductListingSaga() {
   yield takeLatest(PRODUCTLISTING_CONSTANTS.FETCH_PRODUCTS, fetchPlpProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.GET_MORE_PRODUCTS, fetchMoreProducts);
 }
 
-export default ProductListingPageSaga;
+export default ProductListingSaga;

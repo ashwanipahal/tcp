@@ -18,6 +18,7 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
         id="input"
         keyboardType="default"
         onBlur={[Function]}
+        onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
         others={
@@ -28,6 +29,7 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showSuccessCheck": false,
             "successText": "",
@@ -61,6 +63,7 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
         id="input"
         keyboardType="default"
         onBlur={[Function]}
+        onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
         others={
@@ -71,6 +74,7 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showSuccessCheck": false,
             "successText": "",
@@ -93,7 +97,9 @@ exports[`Textbox component render enableSuccessCheck on validation true 1`] = `
         />
       </Styled(View)>
     </View>
-    <Styled(View) />
+    <Styled(View)
+      marginBottom={true}
+    />
   </View>
 </View>
 `;
@@ -116,6 +122,7 @@ exports[`Textbox component renders correctly 1`] = `
         id="input"
         keyboardType="default"
         onBlur={[Function]}
+        onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
         others={
@@ -126,6 +133,7 @@ exports[`Textbox component renders correctly 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showSuccessCheck": false,
             "successText": "",
@@ -137,7 +145,9 @@ exports[`Textbox component renders correctly 1`] = `
         value="foo"
       />
     </View>
-    <Styled(View) />
+    <Styled(View)
+      marginBottom={true}
+    />
   </View>
 </View>
 `;
@@ -164,6 +174,7 @@ exports[`Textbox component renders correctly hidden textbox 1`] = `
           keyboardType="default"
           label="input"
           onBlur={[Function]}
+          onChangeText={[Function]}
           onEndEditing={[Function]}
           onFocus={[Function]}
           returnKeyType="next"

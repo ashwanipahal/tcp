@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { propTypes as reduxFormPropTypes, resetSection } from 'redux-form';
+import { propTypes as reduxFormPropTypes } from 'redux-form';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import PickUpContactDisplay from '../../PickUpContactDisplay';
 import ContactFormFields from '../../ContactFormFields';
@@ -9,18 +9,25 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import Modal from '../../../../../../common/molecules/Modal';
 import Button from '../../../../../../common/atoms/Button';
-import styles from '../styles/style';
+import styles from '../styles/PickupMainContactEditForm.style';
 
 class PickupMainContactEditForm extends React.Component {
   static defaultValidation = getStandardConfig(['firstName', 'lastName', 'phoneNumber']);
 
+  pickupEditSubmit = value => {
+    const { onEditModeChange } = this.props;
+    const { pickUpContact } = value;
+    onEditModeChange(false, pickUpContact);
+  };
+
   SaveButton = () => {
-    const { labels } = this.props;
+    const { labels, handleSubmit } = this.props;
     return (
       <Button
+        onClick={handleSubmit(this.pickupEditSubmit)}
         className="saveUpdateButton"
         fill="BLUE"
-        type="submit"
+        type="button"
         buttonVariation="fixed-width"
         data-locator="pickup-modal-save-btn"
       >
@@ -30,8 +37,8 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   handleEnterEditModeClick = event => {
-    const { onEditModeChange } = this.props;
     event.preventDefault();
+    const { onEditModeChange } = this.props;
     onEditModeChange(true);
   };
 
@@ -39,13 +46,13 @@ class PickupMainContactEditForm extends React.Component {
     const { isEditing, labels } = this.props;
     return isEditing ? (
       <div className="header">
-        <BodyCopy fontSize="fs28" fontFamily="primary" fontWeight="regular">
+        <BodyCopy fontSize="fs26" fontFamily="primary" fontWeight="regular">
           {labels.pickupContactText}
         </BodyCopy>
       </div>
     ) : (
       <div className="header">
-        <BodyCopy fontSize="fs28" fontFamily="primary" fontWeight="regular">
+        <BodyCopy fontSize="fs26" fontFamily="primary" fontWeight="regular">
           {labels.pickupContactText}
         </BodyCopy>
         <div className="EditAnchor">
@@ -53,10 +60,10 @@ class PickupMainContactEditForm extends React.Component {
             underline
             anchorVariation="secondary"
             fontSize="fs12"
+            fontFamily="secondary"
             dataLocator="pickup-pickupContact-edit-anchor"
-            noLink
             onClick={this.handleEnterEditModeClick}
-            className="couponModal_print_anchortext"
+            className="anchorStyle"
           >
             {labels.anchorEdit}
           </Anchor>
@@ -66,11 +73,15 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   render() {
-    const { className, isMobile, formData, isEditing, labels, isReset, onClose } = this.props;
-    if (isReset) {
-      const { dispatch } = this.props;
-      dispatch(resetSection('checkoutPickup', 'pickUpContact'));
-    }
+    const {
+      className,
+      isMobile,
+      formData,
+      isEditing,
+      labels,
+      handleExitEditModeClick,
+    } = this.props;
+
     return (
       <div className={className}>
         {this.renderSectionTitle()}
@@ -87,7 +98,8 @@ class PickupMainContactEditForm extends React.Component {
               minHeight="540px"
               fixedWidth
               closeIconDataLocator="coupondetailmodalcrossicon"
-              onRequestClose={onClose}
+              onRequestClose={handleExitEditModeClick}
+              overlayClassName="pick-up-overlay"
             >
               <div className="pickupModalContainer">
                 <div className="pickupModalHeader">{labels.titleEditPickup}</div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import Button from '../../../../../../common/atoms/Button';
@@ -9,15 +10,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import { InputField, CtaView, AnchorView } from '../styles/TrackOrderForm.native.style';
 import constants from '../../../TrackOrder.constants';
 
-// @flow
-type Props = {
-  labels: object,
-  handleSubmit: Function,
-  onChangeForm: Function,
-  invalid: Boolean,
-};
-
-class TrackOrderForm extends React.PureComponent<Props> {
+class TrackOrderForm extends React.PureComponent {
   render() {
     const { labels, handleSubmit, onChangeForm, invalid } = this.props;
     return (
@@ -63,7 +56,7 @@ class TrackOrderForm extends React.PureComponent<Props> {
           <Button
             fill="BLUE"
             type="submit"
-            onPress={handleSubmit}
+            onPress={!invalid ? handleSubmit : null}
             buttonVariation="variable-width"
             disableButton={invalid}
             text={labels.trackOrder.lbl_header_trackOrderOverlay_trackOrderBtn}
@@ -74,6 +67,15 @@ class TrackOrderForm extends React.PureComponent<Props> {
     );
   }
 }
+
+TrackOrderForm.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
+  invalid: PropTypes.bool.isRequired,
+};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([{ emailAddress: 'emailAddressNoAsync' }, 'orderNumber'])

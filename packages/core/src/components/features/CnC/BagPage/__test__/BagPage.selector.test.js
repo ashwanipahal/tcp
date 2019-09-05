@@ -53,6 +53,9 @@ describe('#Added to bag Selectors', () => {
   });
 
   it('#getConfirmationModalFlag', () => {
-    expect(BAGPAGE_SELECTORS.getConfirmationModalFlag(state)).toEqual(undefined);
+    expect(BAGPAGE_SELECTORS.getConfirmationModalFlag(state)).toEqual({
+      isEditingItem: undefined,
+      showModal: undefined,
+    });
   });
 });

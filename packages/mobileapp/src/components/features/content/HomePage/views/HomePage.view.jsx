@@ -1,34 +1,43 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import PropTypes from 'prop-types';
-import { SlotA, SlotB, SlotC, SlotD, SlotE, SlotF } from '../molecules';
+import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import {
+  ModuleD,
+  ModuleH,
+  ModuleK,
+  ModuleL,
+  ModuleN,
+  ModuleA,
+  ModuleJ,
+} from '@tcp/core/src/components/common/molecules';
+import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
-class HomePageView extends React.Component {
+const modulesMap = {
+  moduleD: ModuleD,
+  moduleH: ModuleH,
+  moduleK: ModuleK,
+  moduleL: ModuleL,
+  moduleN: ModuleN,
+  moduleA: ModuleA,
+};
+
+const buttonMargin = { margin: 30 };
+
+class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
-    this.loadBootstrapData();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { navigation: prevNav } = this.props;
-    const { navigation } = nextProps;
-    const prevShouldRefresh = prevNav.getParam('refresh', false);
-    const shouldRefresh = navigation.getParam('refresh', false);
-
-    // refresh page data on navigation refresh
-    if (shouldRefresh && prevShouldRefresh !== shouldRefresh) {
-      this.loadBootstrapData();
-      navigation.setParams({ refresh: false });
-    }
+    this.loadData();
   }
 
   /**
-   * @function loadBootstrapData
+   * @function loadData
    * Loads bootstrap data
    *
    * @memberof HomePageView
    */
-  loadBootstrapData = () => {
+  loadData = () => {
     const {
       getBootstrapData,
       screenProps: { apiConfig },
@@ -44,86 +53,46 @@ class HomePageView extends React.Component {
 
   render() {
     const {
-      slot_1: slotA,
-      slot_2: slotB,
-      slot_3: slotC,
-      slot_4: slotD,
-      slot_5: slotE,
-      slot_6: slotF,
+      slots,
       navigation,
+      screenProps: { apiConfig },
     } = this.props;
+
     return (
       <ScrollView>
-        <React.Fragment>
-          {slotA && <SlotA {...slotA} navigation={navigation} />}
-          {slotB && <SlotB {...slotB} navigation={navigation} />}
-          {slotC && <SlotC {...slotC} navigation={navigation} />}
-          {slotD && <SlotD {...slotD} navigation={navigation} />}
-          {slotE && <SlotE {...slotE} navigation={navigation} />}
-          {slotF && <SlotF {...slotF} navigation={navigation} />}
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            text="PLP Page"
-            onPress={() => navigation.navigate('ProductListingPageContainer')}
-          />
-        </React.Fragment>
+        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <GetCandid apiConfig={apiConfig} navigation={navigation} />
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="PLP Page"
+          onPress={() => navigation.navigate('ProductListingPageContainer')}
+          style={buttonMargin}
+        />
+        <ModuleJ />
       </ScrollView>
     );
   }
 }
 
 HomePageView.propTypes = {
-  slot_1: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_2: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_3: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_4: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_6: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
-  slot_5: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
+  slots: PropTypes.arrayOf(
+    PropTypes.shape({
+      contentId: PropTypes.string,
+      data: PropTypes.shape({}),
+      moduleName: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
-  appType: PropTypes.string.isRequired,
   screenProps: PropTypes.shape({}),
 };
 
 HomePageView.defaultProps = {
-  slot_1: {},
-  slot_2: {},
-  slot_3: {},
-  slot_4: {},
-  slot_5: {},
-  slot_6: {},
   screenProps: {},
 };
 
-export default HomePageView;
+export { HomePageView };
+
+export default InitialPropsHOC(HomePageView);

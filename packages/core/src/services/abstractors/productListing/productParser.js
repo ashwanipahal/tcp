@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import processHelpers from './processHelpers';
 import { extractExtraImages } from './productListing.utils';
 

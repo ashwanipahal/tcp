@@ -66,9 +66,14 @@ class OverlayModal extends React.Component {
     }
   }
 
+  /**
+   * Set Left position of modal triangle
+   * @param {*} comp
+   */
+
   styleModalTriangle = ({ comp }) => {
     const compRectBoundingX = comp.getBoundingClientRect().x;
-    const compWidth = comp.getBoundingClientRect().width;
+    const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
     const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
     const modalTriangle = document.getElementById('modalTriangle');
@@ -77,7 +82,7 @@ class OverlayModal extends React.Component {
     modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 60}px`;
     /* istanbul ignore else */
     if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
-      modalTriangle.style.left = `${compRectBoundingX - modalRectBoundingX + compWidth - 20}px`;
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
     }
   };
 
@@ -117,12 +122,14 @@ class OverlayModal extends React.Component {
   }
 
   render() {
-    const { className, ModalContent, color, componentProps } = this.props;
+    const { className, ModalContent, color, componentProps, component } = this.props;
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
         <div id="dialogContent" className="dialog__content">
           <button
-            className="modal__closeIcon hide-on-tablet hide-on-desktop"
+            className={`modal__closeIcon hide-on-tablet hide-on-desktop ${
+              component === 'accountDrawer' ? 'hide-on-mobile' : ''
+            }`}
             onClick={this.closeModal}
           />
           <div className="modal__triangle hide-on-mobile " id="modalTriangle" />

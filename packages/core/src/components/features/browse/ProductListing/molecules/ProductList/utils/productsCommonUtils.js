@@ -4,6 +4,7 @@
  * @author Ben
  */
 import { isEmpty } from 'lodash';
+import logger from '@tcp/core/src/utils/loggerInstance';
 // import { getClearanceString } from 'service/WebAPIServiceAbstractors/parsers/productsParser';
 
 /* Below functions are used to check whether to show/hide clearance/New Arrivals/Online Only badges in both en and translated sites.
@@ -176,7 +177,7 @@ export const getImagesToDisplay = args => {
       ? imagesToDisplay.map(imgData => imgData.regularSizeImageUrl)
       : [];
   } catch (error) {
-    console.error(
+    logger.error(
       'ProductsGridItem: Backend sent us a bad color name so we dont know what image set to map to, see auxdescription in API call'
     );
   }
@@ -208,4 +209,12 @@ export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap)
     return fitName;
   }
   return defaultFitName;
+};
+
+export const getFormattedLoyaltyText = text => {
+  return text
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split('on');
 };

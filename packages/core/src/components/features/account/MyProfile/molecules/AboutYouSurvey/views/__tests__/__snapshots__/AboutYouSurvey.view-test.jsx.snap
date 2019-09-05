@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="questions-container"
+  >
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs20"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        undefined, TCP
+      </Styled(BodyCopy)>
+    </Styled(Row)>
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(Col)
+        className="sub-header"
+        colSize={
+          Object {
+            "large": 8,
+            "medium": 6,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="title-text"
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(Col)
+        className="stage-wrapper"
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(Image)
+          alt="Survey Stage"
+          className="star-image"
+          onClick={[Function]}
+          role="presentation"
+          src="/static/images/star-filled.svg"
+          title="survey completion stage"
+        />
+        <hr
+          className="stage-line"
+        />
+        <Styled(Image)
+          alt="Survey Stage"
+          className="star-image"
+          src="/static/images/star.svg"
+          title="survey completion stage"
+        />
+        <hr
+          className="stage-line"
+        />
+        <Styled(Image)
+          alt="Survey Stage"
+          className="star-image"
+          src="/static/images/circle-check.svg"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(SurveyQuestion)
+          className=""
+          labels={
+            Object {
+              "lbl_profile_survey_describe_yourself": "Yourself?",
+              "lbl_profile_survey_header": "",
+              "lbl_profile_survey_save": "SAVE",
+              "lbl_profile_survey_select_one": "SELECT ONE",
+            }
+          }
+          onSelection={[Function]}
+          options={
+            Array [
+              Object {
+                "id": "shopper1",
+                "selected": false,
+                "value": "Parent",
+              },
+              Object {
+                "id": "shopper2",
+                "selected": false,
+                "value": "Grandparent",
+              },
+            ]
+          }
+          question="Describe yourself?"
+          questionId="question1"
+        />
+      </Styled(Row)>
+      <Styled(Row)
+        centered={true}
+      />
+    </Styled(Row)>
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(Col)
+        className="survey-submit-wrapper"
+        colSize={
+          Object {
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="survey-submit__cta"
+          disabled={true}
+          fill="BLUE"
+          onClick={[Function]}
+          type="button"
+        >
+          SAVE
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;
+
+exports[`AboutYouSurvey should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="questions-container"
+  >
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs20"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        undefined, TCP
+      </Styled(BodyCopy)>
+    </Styled(Row)>
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(Col)
+        className="sub-header"
+        colSize={
+          Object {
+            "large": 8,
+            "medium": 6,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="title-text"
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(Col)
+        className="stage-wrapper"
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(Image)
+          alt="Survey Stage"
+          className="star-image"
+          onClick={[Function]}
+          role="presentation"
+          src="/static/images/star-filled.svg"
+          title="survey completion stage"
+        />
+        <hr
+          className="stage-line"
+        />
+        <Styled(Image)
+          alt="Survey Stage"
+          className="star-image"
+          src="/static/images/star.svg"
+          title="survey completion stage"
+        />
+        <hr
+          className="stage-line"
+        />
+        <Styled(Image)
+          alt="Survey Stage"
+          className="star-image"
+          src="/static/images/circle-check.svg"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(SurveyQuestion)
+          className=""
+          labels={
+            Object {
+              "lbl_profile_survey_describe_yourself": "Yourself?",
+              "lbl_profile_survey_header": "",
+              "lbl_profile_survey_save": "SAVE",
+              "lbl_profile_survey_select_one": "SELECT ONE",
+            }
+          }
+          onSelection={[Function]}
+          options={
+            Array [
+              Object {
+                "id": "shopper1",
+                "selected": false,
+                "value": "Parent",
+              },
+              Object {
+                "id": "shopper2",
+                "selected": false,
+                "value": "Grandparent",
+              },
+            ]
+          }
+          question="Describe yourself?"
+          questionId="question1"
+        />
+      </Styled(Row)>
+      <Styled(Row)
+        centered={true}
+      />
+    </Styled(Row)>
+    <Styled(Row)
+      centered={true}
+    >
+      <Styled(Col)
+        className="survey-submit-wrapper"
+        colSize={
+          Object {
+            "small": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="survey-submit__cta"
+          disabled={true}
+          fill="BLUE"
+          onClick={[Function]}
+          type="button"
+        >
+          SAVE
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;
