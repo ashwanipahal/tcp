@@ -294,7 +294,7 @@ function evaluateAllSyncRules(
  * @param {Object} errors  - { 'message':{}, 'rule':{}}
  * @param {Object} props - { 'props.formErrorMessage': {}}
  */
-function getErrorMessageLabels(errors, props) {
+export function getErrorMessageLabels(errors, props) {
   Object.keys(errors).forEach(key => {
     // check error message is on props, if not get from hard coded error object
     errors[key] = props.formErrorMessage
