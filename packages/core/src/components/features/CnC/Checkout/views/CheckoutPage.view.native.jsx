@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
+import BillingPage from '../organisms/BillingPage';
 
 export default class CheckoutPage extends React.PureComponent {
   onPickUpSubmit = data => {
@@ -33,6 +34,11 @@ export default class CheckoutPage extends React.PureComponent {
     onPickupSubmit(params);
   };
 
+  submitShippingSection = data => {
+    const { submitShippingSection, navigation } = this.props;
+    submitShippingSection({ ...data, navigation });
+  };
+
   render() {
     const {
       isGuest,
@@ -43,9 +49,10 @@ export default class CheckoutPage extends React.PureComponent {
       currentPhoneNumber,
       navigation,
       shippingProps,
+      billingProps,
+      orderHasShipping,
       loadShipmentMethods,
       orderHasPickUp,
-      submitShippingSection,
       isOrderUpdateChecked,
       isAlternateUpdateChecked,
       pickUpLabels,
@@ -85,7 +92,17 @@ export default class CheckoutPage extends React.PureComponent {
             isGuest={isGuest}
             isUsSite={isUsSite}
             orderHasPickUp={orderHasPickUp}
-            handleSubmit={submitShippingSection}
+            handleSubmit={this.submitShippingSection}
+            availableStages={availableStages}
+          />
+        )}
+        {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.BILLING.toLowerCase() && (
+          <BillingPage
+            {...billingProps}
+            orderHasShipping={orderHasShipping}
+            navigation={navigation}
+            isGuest={isGuest}
+            isUsSite={isUsSite}
             availableStages={availableStages}
           />
         )}
@@ -102,6 +119,8 @@ CheckoutPage.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
+  billingProps: PropTypes.shape({}).isRequired,
+  orderHasShipping: PropTypes.bool.isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,

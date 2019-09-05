@@ -118,8 +118,10 @@ class AddressForm extends React.PureComponent {
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
-            onEndEditing={text => {
-              dispatch(change('AddressForm', 'addressLine1', text));
+            onChangeText={text => {
+              setTimeout(() => {
+                dispatch(change('AddressForm', 'addressLine1', text));
+              });
             }}
             refs={instance => {
               this.locationRef = instance;
