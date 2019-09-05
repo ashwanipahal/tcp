@@ -115,7 +115,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       dataLocator="addnewaddress-addressl1"
       headerTitle=""
       initialValue=""
-      onEndEditing={[Function]}
+      onChangeText={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
     />
@@ -1046,7 +1046,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       dataLocator="addnewaddress-addressl1"
       headerTitle=""
       initialValue=""
-      onEndEditing={[Function]}
+      onChangeText={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
     />
