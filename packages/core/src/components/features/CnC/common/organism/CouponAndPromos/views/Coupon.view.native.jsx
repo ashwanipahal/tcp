@@ -38,19 +38,22 @@ class CouponView extends React.PureComponent {
       availableCouponList,
       handleRemoveCoupon,
       handleErrorCoupon,
+      isCheckout,
     } = this.props;
 
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
 
     return (
       <WrapperStyle>
-        <CouponForm
-          onSubmit={handleApplyCoupon}
-          isFetching={isFetching}
-          source="form"
-          labels={labels}
-          onNeedHelpTextClick={this.toggleNeedHelpModal}
-        />
+        {!isCheckout && (
+          <CouponForm
+            onSubmit={handleApplyCoupon}
+            isFetching={isFetching}
+            source="form"
+            labels={labels}
+            onNeedHelpTextClick={this.toggleNeedHelpModal}
+          />
+        )}
         <CouponListContainer>
           {appliedCouponList && (
             <CouponListSection
@@ -81,6 +84,15 @@ class CouponView extends React.PureComponent {
             />
           )}
         </CouponListContainer>
+        {isCheckout && (
+          <CouponForm
+            onSubmit={handleApplyCoupon}
+            isFetching={isFetching}
+            source="form"
+            labels={labels}
+            onNeedHelpTextClick={this.toggleNeedHelpModal}
+          />
+        )}
         <CouponDetailModal
           labels={labels}
           openState={detailStatus}
@@ -103,6 +115,7 @@ class CouponView extends React.PureComponent {
 
 CouponView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isCheckout: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleApplyCoupon: PropTypes.func.isRequired,
   handleApplyCouponFromList: PropTypes.func.isRequired,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import {
@@ -7,21 +8,15 @@ import {
   ModalBottomView,
 } from '../styles/TrackOrderBottomSection.native.style';
 
-// @flow
-type Props = {
-  labels: object,
-  toggleModal: Function,
-};
-
 /**
  * @function TrackOrderBottomSection The TrackOrderBottomSection component shows the Track Order Modal bottom section.
  * This component includes the Track order bottom view with all the required.
  * @param {props} props object with details to render in modal
  */
-class TrackOrderBottomSection extends React.Component<Props> {
+class TrackOrderBottomSection extends React.Component {
   handleDefaultLinkClick(e) {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, setModalMountState } = this.props;
     const comp = {
       getComponentId: {
         login: true,
@@ -29,7 +24,7 @@ class TrackOrderBottomSection extends React.Component<Props> {
         trackOrder: false,
       },
     };
-    toggleModal({});
+    setModalMountState({ state: false });
     toggleModal(comp);
   }
 
@@ -68,5 +63,13 @@ class TrackOrderBottomSection extends React.Component<Props> {
     );
   }
 }
+
+TrackOrderBottomSection.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+};
 
 export default TrackOrderBottomSection;

@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import UserReducer from '../User.reducer';
 import { DEFAULT_REDUCER_KEY } from '../../../../../../utils/cache.util';
-import { setUserInfo } from '../User.actions';
+import { setUserInfo, setUserPersonalData } from '../User.actions';
 
 describe('User reducer', () => {
   const initialState = fromJS({
@@ -52,6 +52,16 @@ describe('User reducer', () => {
 
     it('setting survey correctly', () => {
       expect(state.getIn(['survey', 'answers'])).toEqual(fromJS(payload.surveyAnswers));
+    });
+
+    it('should handle SET_USER_PERSONAL_DATA correctly', () => {
+      const updatedState = UserReducer(
+        initialState,
+        setUserPersonalData({
+          children: [{ childId: '12345' }],
+        })
+      );
+      expect(updatedState.getIn(['personalData', 'children', '0', 'childId'])).toEqual('12345');
     });
   });
 });

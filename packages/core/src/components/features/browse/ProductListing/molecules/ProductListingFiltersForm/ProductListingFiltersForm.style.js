@@ -13,6 +13,7 @@ export default css`
   }
   .item-common.color-filter-chip {
     margin-bottom: 8px;
+    padding-bottom: 0;
   }
   .color-chip {
     border-radius: 10px;
@@ -32,6 +33,7 @@ export default css`
     width: 124px;
     text-align: left;
     display: inline-block;
+    cursor: pointer;
   }
   .color-name {
     vertical-align: top;

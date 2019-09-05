@@ -19,8 +19,15 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Connect(GetCandid) />
+  <Connect(GetCandid)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
   <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
     color=""
     customStyle={Object {}}
@@ -37,5 +44,6 @@ exports[`HomePageView should render correctly 1`] = `
     text="PLP Page"
     url=""
   />
+  <Connect(ModuleJ) />
 </ScrollViewMock>
 `;

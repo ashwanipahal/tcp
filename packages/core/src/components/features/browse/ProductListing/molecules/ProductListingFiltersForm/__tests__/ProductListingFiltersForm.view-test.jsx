@@ -413,10 +413,38 @@ describe('ProductListingFiltersForm is shown', () => {
       l1category: 'Toddler Girl',
     },
     labels: {},
-    totalProductsCount: '0',
+    totalProductsCount: '34',
+    handleSubmit: jest.fn(),
+    initialValues: {
+      sort: '',
+      categoryPath2_uFilter: ['Shoes & Accessories'],
+    },
+    className: '',
+    filtersLength: {
+      categoryPath2_uFilterFilters: 1,
+    },
+    getProducts: jest.fn(),
+    onSubmit: jest.fn(),
   };
   it('should render ProductListingFiltersForm', () => {
     const component = shallow(<ProductListingFiltersFormVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should call handleImmediateSubmit', () => {
+    const component = shallow(<ProductListingFiltersFormVanilla {...props} />);
+    const formValues = {
+      categoryPath2_uFilter: ['Essentials Shop', 'Shoes & Accessories'],
+    };
+    const fieldName = 'categoryPath2_uFilter';
+    const filterId = 'Essentials Shop';
+    const mockhandleImmediateSubmit = component.instance().handleImmediateSubmit(formValues);
+    expect(props.onSubmit).toHaveBeenCalled();
+
+    const mockhandleRemoveAllFilters = component.instance().handleRemoveAllFilters();
+    expect(mockhandleRemoveAllFilters).toBe(true);
+
+    const mockhandleRemoveFilter = component.instance().handleRemoveFilter(fieldName, filterId);
+    expect(props.handleSubmit).toHaveBeenCalled();
   });
 });

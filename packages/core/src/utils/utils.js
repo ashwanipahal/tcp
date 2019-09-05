@@ -212,6 +212,36 @@ export const formatAddress = address => ({
 });
 
 /**
+ * @function calculateAge
+ * @param { string } month
+ * @param { string } year
+ * This function will calculate the age based on the month and year of birth and will add 'mo' or 'yo' based on age in months or years
+ *
+ */
+export const calculateAge = (month, year) => {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentYear = currentDate.getFullYear();
+  let age = currentYear - year;
+  if (currentYear.toString() === year && month > currentMonth) {
+    return '0 mo';
+  }
+  if (month > currentMonth && age > 0) {
+    age -= 1;
+  }
+  if (age === 0) {
+    if (month > currentMonth) {
+      age = `${12 - month + currentMonth} mo`;
+    } else {
+      age = `${currentMonth - month} mo`;
+    }
+  } else {
+    age += ' yo';
+  }
+  return age;
+};
+
+/**
  *
  * @param {object} labelState object in which key needs to be searched
  * @param {string} labelKey string whose value
@@ -239,6 +269,10 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
   return typeof labelValue === 'string' ? labelValue : labelKey;
 };
 
+export const generateUniqueKeyUsingLabel = label => {
+  return label.replace(/\s/g, '_');
+};
+
 export default {
   getIconPath,
   getFlagIconPath,
@@ -256,4 +290,6 @@ export default {
   formatAddress,
   getLabelValue,
   getCacheKeyForRedis,
+  calculateAge,
+  generateUniqueKeyUsingLabel,
 };

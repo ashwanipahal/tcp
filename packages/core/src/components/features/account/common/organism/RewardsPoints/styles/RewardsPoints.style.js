@@ -7,6 +7,7 @@ const RewardsPointsStyles = css`
     background-color: ${props => props.theme.colorPalette.userTheme.mprPrimary};
     width: 100%;
     overflow: hidden;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
   }
 
   .progressbar-rewards {
@@ -54,6 +55,9 @@ const RewardsPointsStyles = css`
 
   .current-points {
     white-space: nowrap;
+  }
+  .my-rewards {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
   .my-rewards p {

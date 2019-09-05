@@ -19,39 +19,48 @@ const RewardsPointsSlider = ({
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ large: 5, medium: 3, small: 2 }} className="current-points">
-          <BodyCopy data-locator="slidercurrentpointslbl" fontFamily="secondary" fontSize="fs14">
-            {`${labels.lbl_rewardPoints_currentPoints}: `}
-            <BodyCopy
-              data-locator="slidercurrentpointsvalue"
-              component="span"
-              fontWeight="black"
-              fontFamily="secondary"
-              fontSize="fs14"
-            >
-              {currentPoints}
-            </BodyCopy>
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 7, medium: 5, small: 4 }} className="my-rewards">
-          <BodyCopy
-            data-locator="slidermyrewardslbl"
-            component="p"
-            fontFamily="secondary"
-            fontSize="fs14"
-          >
-            {`${labels.lbl_rewardPoints_heading}: `}
-            <BodyCopy
-              data-locator="slidermyrewardsvalue"
-              component="span"
-              fontWeight="black"
-              fontFamily="secondary"
-              fontSize="fs14"
-            >
-              {labels.lbl_rewardPoints_currency}
-              {totalRewards && Math.trunc(totalRewards)}
-            </BodyCopy>
-          </BodyCopy>
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+          <div className="current-points">
+            <span>
+              <BodyCopy
+                component="span"
+                data-locator="slidercurrentpointslbl"
+                fontFamily="secondary"
+                fontSize="fs13"
+              >
+                {`${labels.lbl_rewardPoints_currentPoints}: `}
+                <BodyCopy
+                  data-locator="slidercurrentpointsvalue"
+                  component="span"
+                  fontWeight="black"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                >
+                  {currentPoints}
+                </BodyCopy>
+              </BodyCopy>
+            </span>
+            <span className="my-rewards">
+              <BodyCopy
+                data-locator="slidermyrewardslbl"
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs13"
+              >
+                {`${labels.lbl_rewardPoints_heading}: `}
+                <BodyCopy
+                  data-locator="slidermyrewardsvalue"
+                  component="span"
+                  fontWeight="black"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                >
+                  {labels.lbl_rewardPoints_currency}
+                  {totalRewards && Math.trunc(totalRewards)}
+                </BodyCopy>
+              </BodyCopy>
+            </span>
+          </div>
         </Col>
       </Row>
       <Row>
@@ -76,7 +85,7 @@ const RewardsPointsSlider = ({
           <BodyCopy
             data-locator="slidernextrewardspointslbl"
             fontFamily="secondary"
-            fontSize="fs14"
+            fontSize="fs13"
           >
             {`${labels.lbl_rewardPoints_nextReward}: `}
             <BodyCopy
@@ -84,7 +93,7 @@ const RewardsPointsSlider = ({
               component="span"
               fontWeight="black"
               fontFamily="secondary"
-              fontSize="fs14"
+              fontSize="fs13"
             >
               {pointsToNextReward}
             </BodyCopy>

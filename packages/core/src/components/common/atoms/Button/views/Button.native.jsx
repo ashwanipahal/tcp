@@ -34,6 +34,7 @@ type Props = {
   color?: string,
   onPress?: Function,
   fill?: string,
+  active?: boolean,
 };
 
 const CustomButton = (props: Props) => {
@@ -47,6 +48,7 @@ const CustomButton = (props: Props) => {
     color,
     fill,
     onPress,
+    active,
     ...otherProps
   }: Props = props;
   const textValue = text || '';
@@ -75,6 +77,7 @@ const CustomButton = (props: Props) => {
         color={color}
         fill={fill}
         disableButton={disableButton}
+        active={active}
       >
         {textValue}
       </CustomStyleText>
@@ -93,6 +96,7 @@ CustomButton.defaultProps = {
   color: '',
   onPress: null,
   fill: '',
+  active: false,
 };
 
 export default withStyles(CustomButton, style);

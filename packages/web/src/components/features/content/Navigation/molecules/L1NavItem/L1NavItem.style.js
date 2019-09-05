@@ -57,7 +57,7 @@ export default css`
       display: block;
       cursor: pointer;
       position: relative;
-      padding: 38px 20px 12px 20px;
+      padding: 38px 20px 0 20px;
     }
     .nav-bar-item-label {
       width: 100%;
@@ -66,7 +66,7 @@ export default css`
     &.l1-overlay.is-open {
       background: ${props => props.theme.colorPalette.gray[900]};
       position: absolute;
-      top: 75px;
+      top: 63px;
       z-index: 1;
       opacity: 0.6;
       width: 200%;
@@ -77,7 +77,7 @@ export default css`
       background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0.99),
-        ${props => props.theme.colors.NAVIGATION.L1_BACKGROUND}
+        ${props => props.theme.colorPalette.gray[300]}
       );
       color: ${props => props.theme.colorPalette.text.primary};
       border-bottom-color: ${props => props.theme.colorPalette.primary.main};
@@ -88,7 +88,7 @@ export default css`
         cursor: default;
         position: absolute;
         display: block;
-        top: 88px;
+        top: 74px;
         left: 0;
         width: 100%;
         color: ${props => props.theme.colorPalette.gray[900]};

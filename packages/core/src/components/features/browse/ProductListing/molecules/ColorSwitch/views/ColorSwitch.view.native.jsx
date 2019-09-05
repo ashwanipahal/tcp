@@ -93,6 +93,7 @@ const ColorSwitch = props => {
         maxToRenderPerBatch={2}
         horizontal
         ItemSeparatorComponent={RenderSeparator}
+        showsHorizontalScrollIndicator={false}
       />
     </ColorSwitchesContainer>
   );

@@ -158,6 +158,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
