@@ -40,6 +40,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
         showPhoneNumber={true}
       />
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
         customStyle={Object {}}

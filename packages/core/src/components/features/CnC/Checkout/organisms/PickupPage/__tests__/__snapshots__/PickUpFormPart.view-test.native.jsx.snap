@@ -293,7 +293,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
                 [MockFunction] {
                   "calls": Array [
                     Array [
-                      undefined,
+                      [Function],
                     ],
                     Array [
                       [Function],
