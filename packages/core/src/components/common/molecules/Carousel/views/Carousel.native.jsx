@@ -226,8 +226,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     onSnapToItem(index);
   };
 
-  updateRef(name, ref) {
-    this[name] = ref;
+  updateRef(ref, name) {
+    this[ref] = name;
   }
 
   /**
