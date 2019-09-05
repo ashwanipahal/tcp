@@ -23,6 +23,7 @@ import {
   PromotionalMessage,
   AddToBagContainer,
   PromotionalMessagePostfix,
+  OfferPriceAndFavoriteIconContainer,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -71,15 +72,12 @@ const ListItem = props => {
   return (
     <ListContainer>
       <RenderTopBadge1 text={badge1} />
-      <ImageSection
-        onFavorite={onFavorite}
-        item={item}
-        selectedColorIndex={selectedColorIndex}
-        favoriteIconColor={favoriteIconColor}
-        favoriteIconSize={favoriteIconSize}
-      />
+      <ImageSection item={item} selectedColorIndex={selectedColorIndex} />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
+        onFavorite={onFavorite}
+        favoriteIconColor={favoriteIconColor}
+        favoriteIconSize={favoriteIconSize}
         miscInfo={miscInfo}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
@@ -116,34 +114,17 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({
-  item,
-  onFavorite,
-  selectedColorIndex,
-  favoriteIconColor,
-  favoriteIconSize,
-}) => {
+const ImageSection = ({ item, selectedColorIndex }) => {
   return (
     <View>
       <ImageCarousel item={item} selectedColorIndex={selectedColorIndex} />
-      <FavoriteIconContainer>
-        <CustomIcon
-          name={ICON_NAME.favorite}
-          size={favoriteIconSize}
-          color={favoriteIconColor}
-          onPress={onFavorite}
-        />
-      </FavoriteIconContainer>
     </View>
   );
 };
 
 ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
-  onFavorite: PropTypes.func.isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
-  favoriteIconColor: PropTypes.string.isRequired,
-  favoriteIconSize: PropTypes.string.isRequired,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -159,7 +140,14 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
-  const { miscInfo, currencyExchange, currencySymbol } = values;
+  const {
+    miscInfo,
+    currencyExchange,
+    currencySymbol,
+    onFavorite,
+    favoriteIconColor,
+    favoriteIconSize,
+  } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
   const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
@@ -167,9 +155,19 @@ const RenderPricesSection = values => {
   const offerPriceForColor = `${currencySymbol}${offerPrice * currencyExchange[0].exchangevalue}`;
   return (
     <PricesSection>
-      <ListPrice accessibilityRole="text" accessibilityLabel={listPriceForColor}>
-        {listPriceForColor}
-      </ListPrice>
+      <OfferPriceAndFavoriteIconContainer>
+        <ListPrice accessibilityRole="text" accessibilityLabel={listPriceForColor}>
+          {listPriceForColor}
+        </ListPrice>
+        <FavoriteIconContainer>
+          <CustomIcon
+            name={ICON_NAME.favorite}
+            size={favoriteIconSize}
+            color={favoriteIconColor}
+            onPress={onFavorite}
+          />
+        </FavoriteIconContainer>
+      </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
         <ListOfferPrice accessibilityRole="text" accessibilityLabel={offerPriceForColor}>
           {offerPriceForColor}
