@@ -171,7 +171,7 @@ class PickUpFormPart extends React.Component {
       dispatch,
       handleSubmit,
       navigation,
-      onPickUpSubmit,
+      availableStages,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!isGuest && !dataUpdated) {
@@ -180,7 +180,11 @@ class PickUpFormPart extends React.Component {
 
     return (
       <>
-        <CheckoutProgressIndicator activeStage="pickup" navigation={navigation} />
+        <CheckoutProgressIndicator
+          activeStage="pickup"
+          navigation={navigation}
+          availableStages={availableStages}
+        />
         <ScrollView>
           <Container>
             <PickupError>
@@ -314,7 +318,7 @@ class PickUpFormPart extends React.Component {
             navigation={navigation}
             btnText="NEXT:SHIPPING"
             routeToPage="ShippingPage"
-            onPress={handleSubmit(onPickUpSubmit)}
+            onPress={handleSubmit(this.pickupSubmit)}
           />
         </ScrollView>
       </>
@@ -336,8 +340,9 @@ PickUpFormPart.propTypes = {
   pickupInitialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  onPickupSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
-  onPickUpSubmit: PropTypes.func.isRequired,
+  availableStages: PropTypes.shape([]).isRequired,
 };
 
 PickUpFormPart.defaultProps = {

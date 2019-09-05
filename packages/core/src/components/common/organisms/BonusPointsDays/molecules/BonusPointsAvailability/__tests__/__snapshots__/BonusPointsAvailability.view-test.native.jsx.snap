@@ -6,6 +6,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
     bonusPointsLength={2}
   >
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
@@ -37,6 +38,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
     bonusPointsLength={2}
   >
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
@@ -73,6 +75,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
     bonusPointsLength={1}
   >
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}

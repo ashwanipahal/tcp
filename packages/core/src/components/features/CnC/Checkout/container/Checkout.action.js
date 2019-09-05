@@ -283,3 +283,10 @@ export const resetGiftCardError = () => {
     type: constants.RESET_GIFTCARD_ERROR,
   };
 };
+
+export const setOrderBalanceTotal = payload => {
+  return {
+    type: constants.SET_ORDER_TOTAL,
+    payload,
+  };
+};
