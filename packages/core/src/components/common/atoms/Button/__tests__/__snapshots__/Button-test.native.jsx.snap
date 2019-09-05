@@ -10,6 +10,7 @@ exports[`CustomButton should render correctly 1`] = `
   url=""
 >
   <Styled(Styled(Text))
+    active={false}
     buttonVariation="fixed-width"
     color=""
     disableButton={false}
