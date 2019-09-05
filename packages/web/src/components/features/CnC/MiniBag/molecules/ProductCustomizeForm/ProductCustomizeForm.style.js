@@ -52,34 +52,19 @@ const styles = css`
   .button-cancel {
     font-size: 10px;
     margin-top: 12px;
-    color: ${props => props.theme.colors.BUTTON.BLUE.NORMAL};
+    color: ${props => props.theme.colors.BUTTON.RED.TEXT};
   }
 
   .color-selector {
     cursor: pointer;
-    .dropdownliBottomBorder {
-      width: auto;
-      border-bottom: none;
-      div {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-    }
-    .dropdownActiveClass {
-      background-color: ${props => props.theme.colors.PRIMARY.BLUE};
-      div {
-        color: ${props => props.theme.colors.WHITE};
-      }
-    }
-    .dropdownUlBorder {
-      border: none;
-    }
     .dropdownDivOverFlow {
-      display: block;
+      display: inline-block;
       overflow-y: auto;
       max-height: 150px;
-      border: 2px solid ${props => props.theme.colors.PRIMARY.BLUE};
+      border: 2px solid #1a1a1a;
+      .dropdownUlBorder {
+        border: none;
+      }
     }
   }
 
@@ -108,6 +93,7 @@ const styles = css`
 
 export const buttonCustomStyles = css`
   min-height: unset;
+  font-family: ${props => props.theme.fonts.secondaryFontFamily};
   text-transform: none;
   &:hover {
     background-color: transparent;
