@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
+<Styled(Modal)
+  className="demo TCPModal__Content"
+  dataLocator="plcc_apply_now_modal"
+  dataLocatorHeader="plcc_apply_now_close_btn"
+  fixedWidth={true}
+  inheritedStyles={
+    Array [
+      "
+  .close-modal {
+    margin-right: 5px;
+
+  }
+
+  .TCPModal__InnerContent {
+    text-align: center;
+  }
+
+  .Modal__Content__Wrapper {
+    @media ",
+      [Function],
+      " {
+      padding: 0px 26px;
+    }
+  }
+
+  .Modal_Heading {
+    font-family: ",
+      [Function],
+      ";
+    font-weight: ",
+      [Function],
+      ";
+    font-size: 40px;
+    border: none;
+    margin-bottom: 10px;
+    display: block;
+    height: auto;
+    padding: 0;
+    margin-top: 47px;
+
+    @media ",
+      [Function],
+      " {
+      margin: 6px 0 10px;
+      margin-bottom: 6px;
+      font-size: ",
+      [Function],
+      "px;
+      margin-top: 22px;
+    }
+  }
+
+  .learn_more_link {
+    font-size: ",
+      [Function],
+      "px;
+    color: ",
+      [Function],
+      ";
+    text-align: center;
+    padding: 14px 0px 28px 0px;
+    text-underline-position: under;
+    text-decoration: underline;
+  }
+
+  .learn_more_link_wrapper {
+    justify-content: space-around;
+  }
+
+  .ApplyNow__link__Wrapper {
+    margin-top: 15px;
+  }
+
+  .ApplyNow__link {
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    font-weight: ",
+      [Function],
+      ";
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .header__greeting {
+    margin: 9px 9px;
+    width: 353px;
+  }
+
+  .header-image {
+    display: flex;
+    justify-content: center;
+    background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    width: 211px;
+    height: 135px;
+    object-fit: contain;
+    margin: auto;
+    }
+
+  .offer_info_icon {
+    display: flex;
+    justify-content: center;
+    background: transparent url('/static/images/PLCC_lockup_2_points.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    width: 344px;
+    height: 66px;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  .linkIconSeperator {
+    font-size: ",
+      [Function],
+      "px;
+    font-family: ",
+      [Function],
+      ";
+    text-underline-position: under;
+    text-decoration: underline;
+    margin-left: 10px;
+  }
+
+  .rewards__benefits {
+    margin: 21px 0 0 21px;
+    > li {
+      font-size: 13px;
+      width: 355px;
+      text-align: left;
+      ::before {
+        content: url('/static/images/confirmation_check.svg');
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        margin-right: 15px;
+        padding-top: 9px;
+        vertical-align: -25%
+      }
+    }
+  }
+
+  .footerLinks {
+    display: flex;
+    margin-top: 38px;
+    >span {
+      padding-left: 67px;
+    }
+  }
+  
+  .footerLink {
+    font-size: ",
+      [Function],
+      "px;
+    font-family: ",
+      [Function],
+      ";
+    margin-left: 28px;
+    text-underline-position: under;
+    text-decoration: underline; 
+  }
+",
+    ]
+  }
+  isOpen={true}
+  maxWidth="458px"
+  minHeight="788px"
+  overlayClassName="TCPModal__Overlay"
+  shouldCloseOnOverlayClick={false}
+>
+  <div
+    className="Modal__Content__Wrapper"
+  >
+    <Styled(Row)
+      className="submit_plcc_form"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="submit_button_plcc_form_container"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <div
+          class="header-image"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="submit_plcc_form"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="submit_button_plcc_form_container"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="header__greeting"
+          color="gray.900"
+          component="div"
+          data-locator="ship_to_text_2"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="ApplyNow__link__Wrapper"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="ApplyNow__link"
+          data-locator="plcc_apply_btn"
+          fill="BLUE"
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="learn_more_link_wrapper"
+    >
+      <Styled(Col)
+        aria-label="learn_more_link"
+        className="learn_more_link"
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(Anchor) />
+      </Styled(Col)>
+    </Styled(Row)>
+    <div
+      className="offer_info_icon"
+    />
+    <Styled(BodyCopy)
+      className={null}
+      color="text.secondary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <ul
+      className="rewards__benefits"
+    >
+      <li>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        />
+      </li>
+      <li>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        />
+      </li>
+      <li>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        />
+      </li>
+      <li>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        />
+      </li>
+      <li>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        />
+      </li>
+    </ul>
+    <div
+      className="footerLinks"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(Anchor)
+        className="linkIconSeperator"
+      />
+      <Styled(Anchor)
+        className="footerLink"
+      />
+      <Styled(Anchor)
+        className="footerLink"
+      />
+    </div>
+  </div>
+</Styled(Modal)>
+`;

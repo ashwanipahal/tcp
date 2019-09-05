@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
+<div
+  className="demo"
+>
+  <Styled(StyledApplyNowModal)
+    closeModal={[Function]}
+    isModalOpen={true}
+    labels={
+      Object {
+        "plcc_form_contact_info_header": "contact information",
+      }
+    }
+  />
+  <Styled(Anchor)
+    anchorVariation="primary"
+    fontSizeVariation="medium"
+    onClick={[Function]}
+    text="Apply Now"
+    underline={true}
+  />
+</div>
+`;
