@@ -184,6 +184,10 @@ NavGroupContainer.defaultProps = {
   className: '',
 };
 
+function asPathConstructor(url) {
+  return url.replace('?cid=', '/');
+}
+
 function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
   return (
     <BodyCopy
@@ -213,7 +217,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
                 <Anchor
                   className={activeClassName}
                   to={`/c?cid=${item.categoryContent.id}`}
-                  asPath={item.url}
+                  asPath={asPathConstructor(item.url)}
                 >
                   {item.categoryContent.name}
                 </Anchor>
@@ -260,7 +264,7 @@ function L3({ menuItems, activeCategoryIds, className }) {
                 id={`list-item-${categoryId}`}
                 role="none"
               >
-                <Anchor to={`/c?cid=${categoryId}`} asPath={url}>
+                <Anchor to={url} asPath={asPathConstructor(url)}>
                   {name}
                 </Anchor>
               </BodyCopy>

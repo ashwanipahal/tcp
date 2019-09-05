@@ -26,6 +26,10 @@ import errorBoundary from '../../../../../../common/hoc/withErrorBoundary';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import FixedBreadCrumbsStyles from '../styles/FixedBreadCrumbs.styles';
 
+const asPathConstructor = url => {
+  return url.replace('?cid=', '/');
+};
+
 const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {
   return (
     <div className={`${className} breadcrum-container`}>
@@ -54,7 +58,7 @@ const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {
               <Anchor
                 className={itemClassName}
                 to={`/c?cid=${pathSuffix}`}
-                asPath={`/${destination}/${pathSuffix}`}
+                asPath={`/${asPathConstructor(pathSuffix)}`}
                 {...otherHyperLinkProps}
               >
                 {displayName}
