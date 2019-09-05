@@ -1,9 +1,11 @@
 import { css } from 'styled-components';
 
 export default css`
-  .group-heading {
-    border-bottom: 2px solid ${props => props.theme.colorPalette.primary.main};
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  .group-nav {
+    background-color: ${props => props.theme.colorPalette.primary.main};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    height: 2px;
+    width: 40px;
   }
 
   .sub-menu-category {

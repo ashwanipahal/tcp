@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { Anchor } from '../../../../../../common/atoms';
+import cssClassName from '../../utils/cssClassName';
 import errorBoundary from '../../../../../../common/hoc/withErrorBoundary';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import GlobalNavigationMenuDesktopL2Styles from '../styles/GlobalNavigationMenuDesktopL2.style';
@@ -131,27 +132,33 @@ export default withStyles(
 const NavGroupContainer = props => {
   const { groups, activeCategoryIds, isTopNav, isLastGroup, className } = props;
 
-  /* let className = cssClassName({
+  const subMenuClassName = cssClassName({
     'sub-menu-group ': true,
     'navigation-level-two-item ': true,
-    'last-group ': isLastGroup
-  }); */
+    'last-group ': isLastGroup,
+  });
 
   return (
-    <div className={`${isLastGroup}${className}`}>
-      {groups.map(({ menuItems, groupName } /* , index */) => {
-        // let className = `group-title group-index-${index + 1} sub-menu-outliers-group`
+    <div className={`${className} ${subMenuClassName}`}>
+      {groups.map(({ menuItems, groupName }, index) => {
+        const subMenuOutlinersclassName = cssClassName(
+          'group-title ',
+          `group-index-${index + 1} `,
+          {
+            'sub-menu-outliers-group ': groupName === '',
+          }
+        );
         return (
-          <div key={`group-${groupName}`} className={className}>
+          <div key={`group-${groupName}`} className={`${className} ${subMenuOutlinersclassName}`}>
             <BodyCopy
-              className="group-heading"
               component="h2"
               fontFamily="secondary"
-              fontSize="fs14"
+              fontSize="fs16"
               fontWeight="extrabold"
               color="text.primary"
             >
               {groupName}
+              {groupName && <p className="group-nav" />}
             </BodyCopy>
             <L2 {...{ menuItems, activeCategoryIds, isTopNav, className }} />
           </div>
@@ -181,7 +188,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
   return (
     <BodyCopy
       component="ol"
-      className="sub-menu-category"
+      className="sub-menu-category sub-menu-wrapper"
       fontFamily="secondary"
       fontSize="fs14"
       color="text.primary"
@@ -190,7 +197,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
       {menuItems.map(item => {
         const isActive = activeCategoryIds && item.categoryContent.id === activeCategoryIds[1];
         // let className = cssClassName('sub-menu-category-item ');
-        // let activeClassName = cssClassName('navigation-level-two-link ', { 'active': isActive });
+        const activeClassName = cssClassName('navigation-level-two-link ', { active: isActive });
 
         return (
           <React.Fragment>
@@ -203,7 +210,11 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
                 id={`list-item-${item.categoryContent.id}`}
                 role="none"
               >
-                <Anchor to={`/c?cid=${item.categoryContent.id}`} asPath={item.url}>
+                <Anchor
+                  className={activeClassName}
+                  to={`/c?cid=${item.categoryContent.id}`}
+                  asPath={item.url}
+                >
                   {item.categoryContent.name}
                 </Anchor>
                 {!isTopNav && isActive && (
@@ -226,19 +237,25 @@ function L3({ menuItems, activeCategoryIds, className }) {
   return (
     <BodyCopy
       component="ol"
-      className="sub-menu-category sub-menu-category-level-three"
+      className={`${className} sub-menu-category sub-menu-category-level-three`}
       role="none"
     >
       {menuItems.map(({ categoryContent: { name, categoryId, url } }) => {
         const isActive = activeCategoryIds && categoryId === activeCategoryIds[2];
-        // let className = cssClassName('sub-menu-category-item navigation-level-three-item ');
+        const navLevelThreeclassName = cssClassName(
+          'sub-menu-category-item navigation-level-three-item '
+        );
 
         return (
           <React.Fragment>
             {
               <BodyCopy
                 component="li"
-                className={isActive ? `${className} active` : `${className} inactive`}
+                className={
+                  isActive
+                    ? `${className} ${navLevelThreeclassName} active`
+                    : `${className} ${navLevelThreeclassName} inactive`
+                }
                 key={categoryId}
                 id={`list-item-${categoryId}`}
                 role="none"

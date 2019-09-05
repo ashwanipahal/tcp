@@ -6,7 +6,7 @@ export default css`
   .filter-area,
   .product-list {
     background: #d8d8d8;
-    padding: 20px 0;
+    padding: 20px 0 17px;
     margin: 5px 0;
   }
   .bread-crumb,
