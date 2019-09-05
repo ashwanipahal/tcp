@@ -20,6 +20,8 @@ const initialState = fromJS({
       deviceData: '',
       supportedByBrowser: true,
     },
+    giftCardError: null,
+    orderBalanceTotal: 0,
   },
   options: {
     shippingMethods: [],
@@ -73,6 +75,12 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':
       return checkout.setIn(['uiFlags', 'stage'], action.payload);
+    case CheckoutConstants.SET_GIFTCARD_ERROR:
+      return checkout.setIn(['values', 'giftCardError'], action.payload);
+    case CheckoutConstants.RESET_GIFTCARD_ERROR:
+      return checkout.setIn(['values', 'giftCardError'], null);
+    case CheckoutConstants.SET_ORDER_TOTAL:
+      return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
     //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':

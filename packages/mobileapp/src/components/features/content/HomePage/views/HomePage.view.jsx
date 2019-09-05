@@ -13,6 +13,7 @@ import {
   ModuleN,
   ModuleA,
   ModuleB,
+  ModuleJ,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
@@ -71,6 +72,7 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
+        <ModuleJ />
       </ScrollView>
     );
   }

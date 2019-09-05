@@ -1,6 +1,7 @@
 import processHelpers from './processHelpers';
-import { isClient } from '../../../utils';
+import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
+import { FACETS_FIELD_KEY } from './productListing.utils';
 
 const getAvailableL3List = facets => {
   return facets && facets.multilevel && facets.multilevel.bucket;
@@ -67,6 +68,90 @@ const getFiltersAfterProcessing = (
   }
   return filters;
 };
+const getQueryString = (keyValuePairs = {}) => {
+  const params = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key of Object.keys(keyValuePairs)) {
+    if (keyValuePairs[key] === null) {
+      params.push(encodeURIComponent(key));
+    } else {
+      // eslint-disable-next-line no-lonely-if
+      if (Array.isArray(keyValuePairs[key])) {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const value of keyValuePairs[key]) {
+          params.push([encodeURIComponent(key), '[]=', encodeURIComponent(value)].join(''));
+        }
+      } else {
+        params.push(
+          [encodeURIComponent(key), '=', encodeURIComponent(keyValuePairs[key])].join('')
+        );
+      }
+    }
+  }
+  return params.join('&');
+};
+// eslint-disable-next-line sonarjs/cognitive-complexity
+const getPlpUrlQueryValues = filtersAndSort => {
+  const { sort } = filtersAndSort;
+
+  // NOTE: these are parameters on query string we don't handle (nor we need to)
+  // just pass them to the abstractor
+  let urlQueryValues = {};
+  let routeURL = '?';
+
+  if (filtersAndSort) {
+    Object.keys(filtersAndSort).forEach(key => {
+      if (filtersAndSort[key].length > 0) {
+        if (key.toLowerCase() === FACETS_FIELD_KEY.sort) {
+          // this also covers the fake sort describing the default server sort (which we give a falsy value like 0)
+          urlQueryValues.sort = sort;
+        } else {
+          urlQueryValues[key] = filtersAndSort[key].join(',');
+        }
+      }
+    });
+
+    Object.keys(filtersAndSort).forEach(key => {
+      if (
+        (key.toLowerCase() === FACETS_FIELD_KEY.sort &&
+          urlQueryValues.sort &&
+          filtersAndSort.sort === '') ||
+        (urlQueryValues[key] && filtersAndSort[key].length < 1)
+      ) {
+        // If sort has no value or recommended then no need to pass key in url and api
+        delete urlQueryValues[key];
+      }
+    });
+  }
+
+  urlQueryValues = getQueryString(urlQueryValues);
+
+  let displayPath = window.location.pathname;
+  const searchName = window.location.search;
+  displayPath = `${displayPath}${searchName}`;
+  const country = getSiteId();
+  let urlPath = displayPath.replace(`/${country}`, '');
+  urlPath = urlPath.split('?');
+  urlPath = [...urlPath].shift();
+
+  // TODO- To get query from getInitialProps.
+  let urlPathCID = urlPath.split('/');
+  urlPathCID = urlPathCID[urlPathCID.length - 1];
+  urlPathCID = urlPathCID.split('?');
+  urlPathCID = [...urlPathCID].shift();
+
+  routeURL = `${routeURL}${urlQueryValues}`;
+
+  routeURL = `${urlPath}${routeURL}`;
+
+  routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
+
+  routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
+
+  return true;
+};
+
+// eslint-disable-next-line complexity
 const processResponse = (
   res,
   {
@@ -95,6 +180,11 @@ const processResponse = (
   if (res.body.redirect && window) {
     window.location.href = res.body.redirect.value;
   }
+
+  if (!isMobileApp) {
+    getPlpUrlQueryValues(filtersAndSort);
+  }
+
   const pendingPromises = [];
   // flags if we are oin an L1 plp. Such plp's have no products, and only show espots and recommendations.
   const isDepartment = isDepartmentPage(isSearch, breadCrumbs);

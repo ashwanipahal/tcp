@@ -10,6 +10,7 @@ describe('CheckoutProgressIndicator component', () => {
       navigation: {
         navigate: jest.fn(),
       },
+      availableStages: ['pickup', 'shipping'],
     };
     const component = shallow(<CheckoutProgressIndicator {...props} />);
     expect(component.find(Anchor)).not.toHaveLength(5);

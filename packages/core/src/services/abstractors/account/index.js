@@ -14,4 +14,4 @@ export { deleteAddressApi } from './DeleteAddress';
 export { addAddress, updateAddress } from './AddEditAddress';
 export { forgotPassword } from './ForgotPassword';
 export { resetPassword } from './ResetPassword';
-export { UpdateProfileInfo } from './UpdateProfileInfo';
+export { UpdateProfileInfo, getChildren } from './UpdateProfileInfo';

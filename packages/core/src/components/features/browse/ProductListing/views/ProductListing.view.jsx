@@ -27,6 +27,8 @@ const ProductListView = ({
   labels,
   labelsFilter,
   categoryId,
+  getProducts,
+  onSubmit,
   ...otherProps
 }) => {
   return (
@@ -59,6 +61,8 @@ const ProductListView = ({
                 initialValues={initialValues}
                 filtersLength={filtersLength}
                 labels={labelsFilter}
+                onSubmit={onSubmit}
+                getProducts={getProducts}
               />
             </div>
           </Col>
@@ -102,6 +106,8 @@ ProductListView.propTypes = {
   initialValues: PropTypes.shape({}),
   filtersLength: PropTypes.shape({}),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  getProducts: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 ProductListView.defaultProps = {

@@ -36,10 +36,10 @@ const HideShowFieldStyle = props =>
   `
   width:${props.theme.spacing.ELEM_SPACING.XL};
   background: ${props.theme.colorPalette.white};
-  height:${props.theme.spacing.ELEM_SPACING.MED};
+  height:18px; /* 18px not available in spacing variable*/
   position: absolute;
   right: 0;
-  top:${props.theme.spacing.ELEM_SPACING.MED};
+  top:18px; /* 18px not available in spacing variable */
   border-bottom-width: 1px;
   border-bottom-color: black;
   `;

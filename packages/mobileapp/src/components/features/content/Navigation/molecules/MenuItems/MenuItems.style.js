@@ -21,3 +21,9 @@ export const ArrowIcon = styled.Image`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
+
+export const ItemView = styled.View`
+  align-items: center;
+  justify-content: center;
+  max-width: ${props => props.maxWidth};
+`;

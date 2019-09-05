@@ -67,7 +67,7 @@ class CreateAccounPage extends React.Component {
             labels={labels}
             showForgotPasswordForm={showForgotPasswordForm}
           />
-          {error && (
+          {error && !isUserLoggedIn && (
             <div className="elem-pl-LRG elem-pr-LRG elem-pt-LRG">
               <BodyCopy
                 fontFamily={['secondary']}

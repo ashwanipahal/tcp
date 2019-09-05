@@ -1,65 +1,224 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddedToBagViewPoints component renders correctly 1`] = `
-<StyledComponent
+<Styled(BodyCopy)
   className="abcd"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-bxivhb",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  margin-top: 10px;
-  font-size: 12px;
-  .text-value {
-    text-align: right;
-  }
-  .row-padding {
-    padding-bottom: 9px;
-  }
-  .divided-line {
-    height: 1px;
-    background-color: ",
-          [Function],
-          ";
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-  .promo-color {
-    color: ",
-          [Function],
-          ";
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(AddedToBagViewPoints)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-bxivhb",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  pointsSummary={
-    Object {
-      "itemPoints": 23,
-      "itemPrice": 12,
-      "pointsToNextReward": 12,
-      "subTotal": 34,
-      "totalItems": 3,
-      "userPoints": 60,
-    }
-  }
-/>
+  color="black"
+  component="div"
+  fontFamily="secondary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(Row)
+    className="row-padding"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+    />
+    <Styled(Col)
+      className="text-value"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+      data-locator="addedtobag-productprice"
+    >
+      $12
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={12}
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="text-value"
+        color="orange.800"
+        component="p"
+        data-locator="addedtobag-pointsonitem"
+        fontFamily="secondary"
+        fontSize={12}
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        23
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="divided-line"
+  />
+  <Styled(Row)
+    className="row-padding"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<span></span>",
+          }
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="text-value"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+      data-locator="addedtobag-bagsubtotal"
+    >
+      $0
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="row-padding"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={12}
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="text-value"
+        color="orange.800"
+        component="p"
+        data-locator="addedtobag-totalrewardpoints"
+        fontFamily="secondary"
+        fontSize={12}
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        60
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="row-padding"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={12}
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="text-value"
+        color="orange.800"
+        component="p"
+        data-locator="addedtobag-totalpointsnextreward"
+        fontFamily="secondary"
+        fontSize={12}
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        12
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(BodyCopy)>
 `;

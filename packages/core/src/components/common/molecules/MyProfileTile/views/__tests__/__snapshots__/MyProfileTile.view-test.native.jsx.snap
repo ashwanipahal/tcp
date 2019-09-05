@@ -15,6 +15,7 @@ exports[`MyProfileTile should render correctly when all props are present 1`] = 
     spacingStyles="margin-bottom-XXXL"
   />
   <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
     color=""
     customStyle={Object {}}
