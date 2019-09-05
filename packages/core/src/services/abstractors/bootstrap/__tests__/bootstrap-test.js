@@ -1,4 +1,4 @@
-import bootstrap from '../bootstrap';
+import bootstrap, { retrieveCachedData } from '../bootstrap';
 import labelsMock from '../labels/mock';
 import headerMock from '../header/mock';
 import footerMock from '../footer/mock';
@@ -10,7 +10,7 @@ jest.mock('../layout/layout');
 jest.mock('../../../handler/handler');
 
 it('abstractor - bootstrap', () => {
-  return bootstrap(['homepage']).then(data => {
+  return bootstrap(['homepage'], null, {}).then(data => {
     expect(data.homepage.items[0].layout.slots[0]).toHaveProperty(
       'name',
       'moduleName',
@@ -26,5 +26,18 @@ it('abstractor - bootstrap', () => {
     expect(data.labels).toMatchObject(LabelsAbstractor.processData(labelsMock));
     expect(data.header).toMatchObject(HeaderAbstractor.processData(headerMock));
     expect(data.footer).toMatchObject(FooterAbstractor.processData(footerMock));
+  });
+});
+
+describe('retrieveCachedData', () => {
+  it('retrieveCachedData - cachedData', () => {
+    const cachedData = {
+      test: 'val',
+    };
+    const key = 'test';
+    const bootstrapData = {
+      ...cachedData,
+    };
+    expect(bootstrapData[key]).toEqual(retrieveCachedData({ cachedData, key, bootstrapData }));
   });
 });

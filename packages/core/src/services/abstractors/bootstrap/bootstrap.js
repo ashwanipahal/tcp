@@ -7,8 +7,8 @@ import navigationAbstractor from './navigation';
 import handler from '../../handler';
 import { getAPIConfig, isMobileApp } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
-// import { LABELS, CACHED_KEYS } from '../../../reduxStore/constants';
-import { CACHED_KEYS } from '../../../reduxStore/constants';
+// import { LABELS } from '../../../reduxStore/constants';
+import CACHED_KEYS from '../../../constants/cache.config';
 import { defaultBrand, defaultChannel, defaultCountry, MobileChannel } from '../../api.constants';
 import { setDataInRedis } from '../../../utils/redis.util';
 
@@ -111,7 +111,7 @@ const createBootstrapParams = () => {
  * Get cached Data
  * @param {Array} pages
  */
-const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
+export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   const cachedKeyData = cachedData[key];
   if (cachedKeyData) {
     logger.info('CACHE HIT');
@@ -151,7 +151,6 @@ const bootstrap = async (pages, modules, cachedData) => {
 
   try {
     const bootstrapData = await fetchBootstrapData(bootstrapParams, modules);
-
     for (let i = 0; i < pages.length; i += 1) {
       const page = pages[i];
       // eslint-disable-next-line no-await-in-loop
