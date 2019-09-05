@@ -133,6 +133,14 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
   );
 };
 
+/**
+ * @function findKeyInSet
+ * finds and returns value of key from set
+ *
+ * @param {*} set
+ * @param {*} key
+ * @returns
+ */
 const findKeyInSet = (set, key) => {
   const variationSet = set.filter(s => s.key === key);
   return variationSet && variationSet.length > 0 && variationSet[0].val;
@@ -155,7 +163,6 @@ const ModuleB = (props: Props) => {
 
   const ctaType = ctaTypes[findKeyInSet(set, 'ctaType')];
   const bannerPosition = findKeyInSet(set, 'bannerPostition');
-  console.log('ctaItems=====', ctaItems);
   return (
     <Container>
       {renderImageComponent({ item: largeCompImage[0], bannerPosition }, navigation)}

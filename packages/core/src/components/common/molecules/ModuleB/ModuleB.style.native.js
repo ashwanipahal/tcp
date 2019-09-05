@@ -32,10 +32,7 @@ export const MainContainerView = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-export const ContainerView = styled.View`
-  justify-content: center;
-  align-items: center;
-`;
+export const ContainerView = styled.View``;
 
 export const Border = styled.View`
   height: 1px;
