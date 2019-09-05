@@ -29,3 +29,7 @@ export const LABELS = {
   modules: 'modules',
   account: 'account',
 };
+
+export const CACHED_KEYS = {
+  [`${LABELS.labels}:${LABELS.global}`]: LABELS.labels
+}

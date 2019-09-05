@@ -1,3 +1,6 @@
+const DEFAULT_CACHE_TIME = 7200;
+const DEFAULT_CACHE_EXP_MODIFIER = 'EX';
+
 const noRedisClient = redisClient => !redisClient || (redisClient && !redisClient.ready);
 
 const getDataFromRedis = CACHE_IDENTIFIER => {
@@ -6,14 +9,15 @@ const getDataFromRedis = CACHE_IDENTIFIER => {
   return redisClient.get(CACHE_IDENTIFIER);
 };
 
-const setDataInRedis = ({ data, CACHE_IDENTIFIER, CACHE_EXP_MODIFIER, CACHE_EXP_TIME }) => {
+const setDataInRedis = ({ data, CACHE_IDENTIFIER, CACHE_EXP_MODIFIER = DEFAULT_CACHE_EXP_MODIFIER, CACHE_EXP_TIME = DEFAULT_CACHE_TIME}) => {
   const { redisClient } = global;
   if (noRedisClient(redisClient)) return null;
+  const cacheExpiryTime = process.env.CACHE_EXP_TIME || CACHE_EXP_TIME;
   return redisClient.set(
     CACHE_IDENTIFIER,
     JSON.stringify(data),
     CACHE_EXP_MODIFIER,
-    CACHE_EXP_TIME
+    cacheExpiryTime,
   );
 };
 
