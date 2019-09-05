@@ -16,6 +16,7 @@ import {
   getAirmilesDetails,
   getMyPlaceNumber,
   getProfileInfoTileData,
+  getChildren,
 } from '../../User/container/User.selectors';
 
 import { getSuccess } from './MyProfile.selectors';
@@ -34,7 +35,7 @@ export class MyProfileContainer extends PureComponent {
   render() {
     const { labels, ...otherProps } = this.props;
     const profileInfoLabels = getMyProfileInfoLabels(labels);
-    return <MyProfile labels={profileInfoLabels} {...otherProps} />;
+    return <MyProfile labelsObj={labels} labels={profileInfoLabels} {...otherProps} />;
   }
 }
 
@@ -63,6 +64,7 @@ const mapStateToProps = state => {
     airMiles: getAirmilesDetails(state),
     myPlaceNumber: getMyPlaceNumber(state),
     profileInfoTile: getProfileInfoTileData(state),
+    childrenBirthdays: getChildren(state),
   };
 };
 

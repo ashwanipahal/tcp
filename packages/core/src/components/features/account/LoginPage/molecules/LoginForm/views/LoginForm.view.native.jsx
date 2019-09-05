@@ -48,9 +48,13 @@ class LoginForm extends React.PureComponent<Props> {
     };
   }
 
+  componentDidUpdate() {
+    const { change, setEmailid } = this.props;
+    change('emailAddress', setEmailid);
+  }
+
   showForgotPassword = () => {
-    const { showForgotPasswordForm, resetForm } = this.props;
-    resetForm();
+    const { showForgotPasswordForm } = this.props;
     showForgotPasswordForm();
   };
 
@@ -91,12 +95,16 @@ class LoginForm extends React.PureComponent<Props> {
               component={TextBox}
               dataLocator="password"
               secureTextEntry={type === 'password'}
+              rightText={
+                type === 'password'
+                  ? labels.registration.lbl_createAccount_show
+                  : labels.registration.lbl_createAccount_hide
+              }
             />
             <HideShowFieldWrapper>
               <Anchor
-                fontSizeVariation="small"
+                fontSizeVariation="medium"
                 fontFamily="secondary"
-                underline
                 anchorVariation="primary"
                 onPress={this.changeType}
                 noLink
@@ -112,12 +120,12 @@ class LoginForm extends React.PureComponent<Props> {
               component={InputCheckbox}
               dataLocator="rememberMe"
               disabled={false}
+              marginBottom={13}
               rightText={labels.login.lbl_login_touch_id}
             />
           </View>
 
           <CustomButton
-            color={colorPallete.white}
             fill="BLUE"
             text={labels.login.lbl_login_loginCTA}
             buttonVariation="variable-width"

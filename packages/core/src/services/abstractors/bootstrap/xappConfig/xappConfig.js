@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
 import handler from '../../../handler';
 import { getAPIConfig, isMobileApp, getCacheKeyForRedis } from '../../../../utils';
@@ -17,7 +18,7 @@ const Abstractor = {
         jsonXappData.IS_DATA_FROM_REDIS = true;
         return jsonXappData;
       } catch (e) {
-        console.log('Error parsing xappData from Redis', e);
+        logger.error('Error parsing xappData from Redis', e);
       }
     }
     const apiConfig = getAPIConfig();

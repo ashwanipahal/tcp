@@ -11,12 +11,6 @@ import {
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { setOnFileAddressKey } from './Checkout.action';
-import { routerPush } from '../../../../../utils';
-
-export function* routeToPickupPage(recalc) {
-  const path = `/checkout/pickup`;
-  return yield call(routerPush, path, path, { recalc });
-}
 
 export function* addRegisteredUserAddress({
   address,

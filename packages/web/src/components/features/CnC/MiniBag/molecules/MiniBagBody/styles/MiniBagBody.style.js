@@ -2,12 +2,14 @@ import { css } from 'styled-components';
 
 export default css`
   box-sizing: border-box;
-  height: calc(100% - 70px);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 69px);
 
   .viewBagAndProduct {
     height: calc(100% - 120px);
     overflow-y: auto;
-    border-top: 2px solid ${props => props.theme.colorPalette.gray[300]};
+    flex-grow: 1;
   }
   .mainWrapper {
     text-align: center;
@@ -20,7 +22,7 @@ export default css`
   }
 
   .minibag-viewbag {
-    border-bottom: solid 1px rgba(163, 162, 162, 0.5);
+    flex-grow: 0;
   }
 
   .deleteMsg {
@@ -44,10 +46,9 @@ export default css`
   .subHeaderText {
     text-decoration: underline;
     vertical-align: middle;
-    line-height: 28px;
+    line-height: 42px;
   }
   .miniBagFooter {
-    height: 137px;
     text-align: center;
     background-color: ${props => props.theme.colorPalette.gray['300']};
     padding-right: 0;
@@ -55,6 +56,8 @@ export default css`
     border-bottom: ${props => props.theme.colorPalette.gray['600']};
     bottom: 0px;
     margin-bottom: 0px;
+    height: auto;
+    flex-grow: 0;
   }
   .subTotal {
     text-align: center;

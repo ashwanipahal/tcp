@@ -1,6 +1,8 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
+import utility from '../../Checkout/util/utility';
 import {
   getOrderDetailsData,
   getCartData,
@@ -13,7 +15,6 @@ import BAG_PAGE_ACTIONS from './BagPage.actions';
 import { checkoutSetCartData } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
-import { routerPush } from '../../../../../utils';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 import checkoutSelectors from '../../Checkout/container/Checkout.selector';
@@ -137,13 +138,12 @@ export function* fetchModuleX({ payload = [] }) {
 }
 
 export function* routeForCartCheckout(recalc) {
-  let section = '/shipping';
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   if (orderHasPickup) {
-    section = '/pickup';
+    utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+  } else {
+    utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
   }
-  const path = `/checkout${section}`;
-  return yield call(routerPush, path, path, { recalc });
 }
 
 export function* checkoutCart(recalc) {

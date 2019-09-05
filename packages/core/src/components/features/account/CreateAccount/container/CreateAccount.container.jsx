@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { routerPush } from '../../../../../utils';
 import CreateAccountView from '../views/CreateAccountView';
 import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
@@ -18,6 +19,10 @@ import {
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
 
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
+
+const noop = () => {};
+
 export class CreateAccountContainer extends React.Component {
   static propTypes = {
     className: PropTypes.string,
@@ -34,24 +39,24 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: PropTypes.func,
     navigation: PropTypes.shape({}),
     setLoginModalMountState: PropTypes.bool.isRequired,
-    showLogin: PropTypes.func,
+    showLogin: PropTypes.func.isRequired,
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
     className: '',
-    createAccountAction: () => {},
+    createAccountAction: noop,
     hideShowPwd: false,
     confirmHideShowPwd: false,
     error: {},
-    openOverlay: () => {},
-    onRequestClose: () => {},
+    openOverlay: noop,
+    onRequestClose: noop,
     isIAgreeChecked: false,
-    resetAccountError: () => {},
+    resetAccountError: noop,
     labels: {},
-    closeOverlay: () => {},
+    closeOverlay: noop,
     isUserLoggedIn: false,
     navigation: {},
-    showLogin: () => {},
   };
 
   constructor(props) {
@@ -62,7 +67,7 @@ export class CreateAccountContainer extends React.Component {
         this.hasNavigateToNestedRoute = navigateToNestedRoute;
       })
       .catch(error => {
-        console.log('error: ', error);
+        logger.error('error: ', error);
       });
   }
 
@@ -119,6 +124,7 @@ export class CreateAccountContainer extends React.Component {
       labels,
       showLogin,
       isUserLoggedIn,
+      formErrorMessage,
     } = this.props;
     return (
       <CreateAccountView
@@ -134,6 +140,7 @@ export class CreateAccountContainer extends React.Component {
         openModal={this.openModal}
         showLogin={showLogin}
         isUserLoggedIn={isUserLoggedIn}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -147,6 +154,7 @@ export const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     error: getErrorMessage(state),
     labels: getLabels(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 

@@ -19,15 +19,31 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
+  <Connect(GetCandid)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
   <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
+    color=""
     customStyle={Object {}}
     disableButton={false}
+    fill=""
     fullWidth={true}
     locator=""
     onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
     text="PLP Page"
     url=""
   />
+  <Connect(ModuleJ) />
 </ScrollViewMock>
 `;

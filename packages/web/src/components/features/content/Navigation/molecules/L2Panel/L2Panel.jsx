@@ -93,18 +93,23 @@ const createLinks = (
         {links.map((l2Links, index) => {
           const {
             url,
+            asPath,
             categoryContent: { id, name, mainCategory },
             subCategories,
             hasL3,
           } = l2Links;
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
-          const currentIndex = column > 1 ? index + 7 : index;
+          const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor to={url} onClick={openL3Drawer(`l3-drawer-${index.toString()}`, hasL3)}>
+              <Anchor
+                asPath={asPath}
+                to={url}
+                onClick={openL3Drawer(`l3-drawer-${currentIndex.toString()}`, hasL3)}
+              >
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -119,7 +124,7 @@ const createLinks = (
               </Anchor>
               {renderL3Panel(
                 hasSubCategories,
-                index,
+                currentIndex,
                 l3Drawer,
                 hideL3Drawer,
                 name,

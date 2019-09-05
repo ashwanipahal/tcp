@@ -314,6 +314,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
         />
       </div>
     </FormSection>
+    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       disableNext={false}
       hideBackLink={false}

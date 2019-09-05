@@ -30,12 +30,16 @@ const MiniBagHeader = ({
   return (
     <div className={className}>
       <Row className="mainWrapper">
-        <Col className="subHeaderText" colSize={{ small: 4, medium: 6, large: 9 }}>
+        <Col
+          className={!userName ? 'subHeaderTextLogin' : 'subHeaderText'}
+          colSize={{ small: 4, medium: 6, large: 9 }}
+        >
           {!userName ? (
             <BodyCopy component="span" fontSize="fs12" textAlign="left">
               <Anchor fontSizeVariation="large" anchorVariation="primary" noLink to="">
                 {labels.createAccount}
               </Anchor>
+              <BodyCopy component="span" fontSize="fs10" className="separator" />
               <Anchor
                 className="rightLink"
                 fontSizeVariation="large"
@@ -48,6 +52,7 @@ const MiniBagHeader = ({
           ) : (
             <>
               <BodyCopy
+                className="userName"
                 component="span"
                 fontSize="fs16"
                 fontWeight="extrabold"
@@ -66,7 +71,7 @@ const MiniBagHeader = ({
               >
                 {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
                   labels.inRewards
-                } )`}
+                })`}
               </BodyCopy>
             </>
           )}
@@ -103,3 +108,4 @@ const MiniBagHeader = ({
   );
 };
 export default withStyles(MiniBagHeader, styles);
+export { MiniBagHeader as MiniBagHeaderVanilla };

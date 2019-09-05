@@ -1,15 +1,17 @@
 import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
-  max-width: 164;
-  height: 428;
-  margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  width: 50%;
+  height: 432;
+  background: white;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-const FavoriteIconContainer = styled.View`
-  position: absolute;
-  bottom: 0;
-  right: 0;
+const FavoriteIconContainer = styled.View``;
+
+const OfferPriceAndFavoriteIconContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Badge1Container = styled.View`
@@ -49,7 +51,7 @@ const ListPrice = styled.Text`
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs15};
   color: ${props => props.theme.colorPalette.red[500]};
-  line-height: 18;
+  line-height: 22;
   font-weight: ${props => props.theme.typography.fontWeights.black};
 `;
 
@@ -90,10 +92,17 @@ const PromotionalMessageContainer = styled.View`
 
 // Color is hard code as not in the style guide
 const PromotionalMessage = styled.Text`
-  color: ${props => props.theme.colorPalette.orange[800]};
+  color: ${props =>
+    props.isPlcc
+      ? props.theme.colorPalette.userTheme.plcc
+      : props.theme.colorPalette.userTheme.mpr};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs9};
   line-height: 11;
+`;
+
+const PromotionalMessagePostfix = styled.Text`
+  color: ${props => props.theme.colorPalette.gray[900]};
 `;
 
 const AddToBagContainer = styled.View`
@@ -120,4 +129,6 @@ export {
   PromotionalMessageContainer,
   PromotionalMessage,
   AddToBagContainer,
+  PromotionalMessagePostfix,
+  OfferPriceAndFavoriteIconContainer,
 };

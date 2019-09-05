@@ -6,7 +6,6 @@ import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import SMSFormFields from '../../../../../../../../common/molecules/SMSFormFields';
 import createValidateMethod from '../../../../../../../../../utils/formValidation/createValidateMethod';
-import styles from '../styles/ShippingForm.styles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 import CheckoutFooter from '../../../../../molecules/CheckoutFooter';
@@ -14,6 +13,9 @@ import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
+import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
+
+import styles from '../styles/ShippingForm.styles';
 
 const formName = 'checkoutShipping';
 
@@ -281,6 +283,7 @@ class ShippingForm extends React.Component {
               />
             </div>
           </FormSection>
+          <CheckoutOrderInfo />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}

@@ -29,6 +29,7 @@ export class BonusPointsDays extends React.Component {
     enableApplyCta: PropTypes.bool,
     getAvailableBonusDaysData: PropTypes.func,
     orderId: PropTypes.string,
+    showAccordian: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -44,6 +45,7 @@ export class BonusPointsDays extends React.Component {
     enableApplyCta: false,
     getAvailableBonusDaysData: () => {},
     orderId: '',
+    showAccordian: true,
   };
 
   componentDidMount() {
@@ -66,6 +68,7 @@ export class BonusPointsDays extends React.Component {
       enableApplyCta,
       getAvailableBonusDaysData,
       orderId,
+      showAccordian,
     } = this.props;
     return (
       !isCanada() &&
@@ -79,6 +82,7 @@ export class BonusPointsDays extends React.Component {
           enableApplyCta={enableApplyCta}
           getBonusDaysData={getAvailableBonusDaysData}
           orderDetails={orderId}
+          showAccordian={showAccordian}
         />
       )
     );

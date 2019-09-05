@@ -13,12 +13,18 @@ const StyledModal = css`
   right: ${props => (props.variation === 'primary' ? '0' : '')};
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
   z-index: 999;
-  @media ${props => props.theme.mediaQuery.smallOnly} {
+  ${props =>
+    props.component !== 'accountDrawer'
+      ? `@media ${props.theme.mediaQuery.smallOnly} {
     position: fixed;
     top: 0 !important;
     height: 100%;
     width: 100%;
-  }
+  }`
+      : `@media ${props.theme.mediaQuery.smallOnly} {
+          height: 100%;
+          width: 100%;
+      }`}
   .dialog__content {
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);

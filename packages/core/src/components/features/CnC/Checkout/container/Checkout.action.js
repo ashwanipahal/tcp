@@ -282,6 +282,12 @@ export const updateShippingAddress = payload => {
     payload,
   };
 };
+export const setGiftCardError = payload => {
+  return {
+    type: constants.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
 
 export const addNewShippingAddress = payload => {
   return {
@@ -294,6 +300,18 @@ export const setOnFileAddressKey = payload => {
   // when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
   return {
     type: constants.SET_ON_FILE_ADDRESS_KEY,
+    payload,
+  };
+};
+export const resetGiftCardError = () => {
+  return {
+    type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setOrderBalanceTotal = payload => {
+  return {
+    type: constants.SET_ORDER_TOTAL,
     payload,
   };
 };

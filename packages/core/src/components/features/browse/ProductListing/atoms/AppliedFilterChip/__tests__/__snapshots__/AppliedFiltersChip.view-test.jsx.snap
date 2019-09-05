@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Select is shown should render Applied Filter Lists  1`] = `
+<div
+  className=" applied-filter-item"
+>
+  <button
+    className="applied-filter-remove-button"
+    data-locator="plp_filter_applied_filter_Category_cancel"
+    onClick={[Function]}
+  >
+    Clear
+  </button>
+  <span
+    className="applied-filter-title"
+  >
+    Category
+  </span>
+</div>
+`;

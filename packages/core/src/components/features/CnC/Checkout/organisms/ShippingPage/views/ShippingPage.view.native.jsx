@@ -11,45 +11,45 @@ import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndica
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
   static propTypes = {
-    // addressLabels: PropTypes.shape({}).isRequired,
-    // isOrderUpdateChecked: PropTypes.bool,
+    addressLabels: PropTypes.shape({}).isRequired,
+    isOrderUpdateChecked: PropTypes.bool,
     shippingLabels: PropTypes.shape({}).isRequired,
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
-    // selectedShipmentId: PropTypes.string,
-    // addressPhoneNumber: PropTypes.number,
-    // emailSignUpLabels: PropTypes.shape({}).isRequired,
-    // isGuest: PropTypes.bool,
-    // isUsSite: PropTypes.bool,
-    // orderHasPickUp: PropTypes.bool,
-    // shipmentMethods: PropTypes.shape([]),
-    // defaultShipmentId: PropTypes.number,
-    // loadShipmentMethods: PropTypes.func.isRequired,
+    selectedShipmentId: PropTypes.string,
+    addressPhoneNumber: PropTypes.number,
+    emailSignUpLabels: PropTypes.shape({}).isRequired,
+    isGuest: PropTypes.bool,
+    isUsSite: PropTypes.bool,
+    orderHasPickUp: PropTypes.bool,
+    shipmentMethods: PropTypes.shape([]),
+    defaultShipmentId: PropTypes.number,
+    loadShipmentMethods: PropTypes.func.isRequired,
     navigation: PropTypes.shape({}).isRequired,
-    // handleSubmit: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    availableStages: PropTypes.shape([]).isRequired,
   };
 
   static defaultProps = {
-    // isOrderUpdateChecked: false,
-    // addressPhoneNumber: null,
+    isOrderUpdateChecked: false,
+    addressPhoneNumber: null,
     address: null,
-    // selectedShipmentId: null,
-    // isGuest: true,
-    // isUsSite: true,
-    // orderHasPickUp: false,
-    // shipmentMethods: null,
-    // defaultShipmentId: null,
+    selectedShipmentId: null,
+    isGuest: true,
+    isUsSite: true,
+    orderHasPickUp: false,
+    shipmentMethods: null,
+    defaultShipmentId: null,
   };
 
   componentDidUpdate(prevProps) {
-    const { navigation } = this.props;
-    const { address } = navigation.state.params;
+    const { address } = this.props;
     const { address: prevAddress } = prevProps;
     if (address && prevAddress) {
       const {
         address: { addressLine1, addressLine2 },
         loadShipmentMethods,
-      } = navigation.state.params;
+      } = this.props;
       const {
         address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
       } = prevProps;
@@ -64,8 +64,7 @@ export default class ShippingPage extends React.Component {
 
   submitShippingForm = data => {
     const { address, shipmentMethods, smsSignUp } = data;
-    const { navigation } = this.props;
-    const { handleSubmit } = navigation.state.params;
+    const { handleSubmit } = this.props;
     handleSubmit({
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -99,7 +98,6 @@ export default class ShippingPage extends React.Component {
   };
 
   render() {
-    const { navigation } = this.props;
     const {
       shippingLabels,
       shipmentMethods,
@@ -114,11 +112,17 @@ export default class ShippingPage extends React.Component {
       addressLabels,
       emailSignUpLabels,
       loadShipmentMethods,
-    } = navigation.state.params;
+      navigation,
+      availableStages,
+    } = this.props;
 
     return (
       <>
-        <CheckoutProgressIndicator activeStage="shipping" navigation={navigation} />
+        <CheckoutProgressIndicator
+          activeStage="shipping"
+          navigation={navigation}
+          availableStages={availableStages}
+        />
         <ScrollView>
           <CheckoutSectionTitleDisplay title={shippingLabels.header} />
           <StyledHeader>

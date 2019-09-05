@@ -12,23 +12,23 @@ export default css`
     padding: 10px 14px 10px;
     ul {
       display: flex;
+      justify-content: space-between;
     }
   }
   .shop-by-size-links li {
     cursor: pointer;
-    border: 1px solid ${props => props.theme.colors.NAVIGATION.CIRCULAR_BORDER};
-    width: 40px;
-    height: 40px;
+    border: 1px solid ${props => props.theme.colorPalette.gray[800]};
+    width: 38px;
+    height: 38px;
     border-radius: 20px 20px;
     align-items: center;
     justify-content: center;
     display: flex;
-    margin-right: 19px;
     margin-bottom: 16px;
   }
   .shop-by-size-links li:hover {
-    border: solid 1px ${props => props.theme.colors.TEXT.blue};
-    background-color: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
+    border: solid 1px ${props => props.theme.colorPalette.blue[800]};
+    background-color: ${props => props.theme.colorPalette.blue[100]};
   }
   .l2-image-banner {
     display: none;
@@ -55,7 +55,7 @@ export default css`
   .l2-nav-link {
     display: flex;
     align-items: center;
-    padding: 18px 14px 17px 14px;
+    padding: 18px 14px 17px 28px;
     line-height: 1.15;
     &.highlighted {
       color: ${props => props.theme.colorPalette.secondary.main};
@@ -65,7 +65,7 @@ export default css`
   .l2-nav-category-heading {
     margin: 0;
     padding: 18px 14px 17px 14px;
-    background-color: ${props => props.theme.colors.PRIMARY.PALEBLUE};
+    background-color: ${props => props.theme.colorPalette.blue[50]};
   }
 
   .s-display-none {
@@ -95,7 +95,7 @@ export default css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     display: none;
-    top: 76px;
+    top: 64px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
 
     .s-display-none {
@@ -108,7 +108,7 @@ export default css`
     }
     .l2-nav-category {
       box-sizing: border-box;
-      border-right: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+      border-right: 1px solid ${props => props.theme.colorPalette.gray[500]};
       margin-top: 36px;
       margin-bottom: 36px;
     }
@@ -131,7 +131,7 @@ export default css`
       width: 88px;
       height: 1px;
       border-radius: 0.5px;
-      background-color: ${props => props.theme.colors.TEXT.DARKERBLUE};
+      background-color: ${props => props.theme.colorPalette.blue[500]};
     }
     .l2-nav-category-links {
       display: flex;
@@ -155,7 +155,7 @@ export default css`
         display: block;
       }
       li {
-        margin-right: 32px;
+        margin-right: 30px;
       }
     }
     .l2-image-banner {

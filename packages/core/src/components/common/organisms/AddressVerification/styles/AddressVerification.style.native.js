@@ -43,7 +43,7 @@ const SuggestSectionWrapper = styled.View`
 `;
 
 const VerifyAddressWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const OptionAddressLineWrapper = styled.View`

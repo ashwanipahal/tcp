@@ -16,6 +16,7 @@ class CreateAccount extends React.Component<Props> {
     onAlreadyHaveAnAccountClick: PropTypes.func.isRequired,
     onRequestClose: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -44,6 +45,7 @@ class CreateAccount extends React.Component<Props> {
       onAlreadyHaveAnAccountClick,
       onRequestClose,
       isUserLoggedIn,
+      formErrorMessage,
     } = this.props;
     return (
       <div className={className}>
@@ -59,6 +61,7 @@ class CreateAccount extends React.Component<Props> {
           onRequestClose={onRequestClose}
           showForgotPasswordForm={this.showForgotPasswordForm}
           isUserLoggedIn={isUserLoggedIn}
+          formErrorMessage={formErrorMessage}
         />
       </div>
     );

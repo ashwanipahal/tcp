@@ -21,6 +21,8 @@ const initialState = fromJS({
       supportedByBrowser: true,
     },
     addEditResponseAddressId: null,
+    giftCardError: null,
+    orderBalanceTotal: 0,
   },
   options: {
     shippingMethods: [],
@@ -74,7 +76,12 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':
       return checkout.setIn(['uiFlags', 'stage'], action.payload);
-
+    case CheckoutConstants.SET_GIFTCARD_ERROR:
+      return checkout.setIn(['values', 'giftCardError'], action.payload);
+    case CheckoutConstants.RESET_GIFTCARD_ERROR:
+      return checkout.setIn(['values', 'giftCardError'], null);
+    case CheckoutConstants.SET_ORDER_TOTAL:
+      return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
     //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
@@ -111,7 +118,7 @@ export default function CheckoutReducer(state = initialState, action) {
   // const uiFlags = checkout.get('uiFlags');
   switch (action.type) {
     case 'CHECKOUT_VALUES_SET_PICKUP':
-      return checkout.setIn(['values', 'pickUpContact'], action.pickUpContact);
+      return checkout.setIn(['values', 'pickUpContact'], fromJS(action.pickUpContact));
     case 'CHECKOUT_VALUES_SET_PICKUP_ALT':
       return checkout.setIn(['values', 'pickUpAlternative'], action.pickUpAlternative);
     // case 'CHECKOUT_VALUES_SET_GIFTCARDS':

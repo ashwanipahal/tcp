@@ -1,7 +1,7 @@
-const validStreetAddress = 'Please enter a valid street address';
-const validExpirationDate = 'Please enter a valid expiration date';
 const enterPhoneNumber = 'Please enter your phone number';
 const validPhoneNumber = 'Please enter a valid phone number';
+const validStreetAddress = 'Please enter a valid street address';
+const validExpirationDate = 'Please enter a valid expiration date';
 
 export const formValidationMessages = {
   addressLine1: {
@@ -34,19 +34,19 @@ export const formValidationMessages = {
   lastName: {
     nonEmpty: 'Please enter a last name',
     name: 'Last name field should not contain any special characters',
-    maxLength: 'Please enter a valid last name',
+    maxLength: 'Please enter a valid last Name',
   },
   phoneNumber: {
     required: enterPhoneNumber,
     phone: validPhoneNumber,
   },
   zipCode: {
-    required: 'Please enter your zip code',
-    zipcode: 'Please enter a valid zip code',
+    required: 'Please enter your zip code.',
+    zipcode: 'Please enter a valid zip code.',
   },
   noCountryZip: {
-    required: 'Please enter your zip code',
-    noCountryZip: 'Please enter a valid zip code',
+    required: 'Please enter your zip code.',
+    noCountryZip: 'Please enter a valid zip code.',
   },
   recaptchaToken: {
     required: 'Please check the recaptcha value',
@@ -73,7 +73,7 @@ export const formValidationMessages = {
   },
   emailAddress: {
     required: `Please enter a valid email`,
-    emailPattern: 'Email format is invalid',
+    emailPattern: 'Please Enter Valid Email Id',
   },
   confirmEmailAddress: {
     required: 'Please confirm your email address',
@@ -92,8 +92,8 @@ export const formValidationMessages = {
     equalTo: 'Passwords must match',
   },
   emailAddressNoAsync: {
-    required: `ERROR: Please enter a valid email`,
-    email: 'ERROR: Email format is invalid.',
+    required: `Please enter a valid email`,
+    email: 'Please Enter Valid Email Id',
     validEmail: 'ERROR: Email format is invalid',
   },
   dateOfBirthBothRequired: {

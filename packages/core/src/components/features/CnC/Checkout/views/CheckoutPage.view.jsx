@@ -1,7 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -48,6 +47,7 @@ class CheckoutPage extends React.PureComponent {
       updateShippingMethodSelection,
       updateShippingAddressData,
       addNewShippingAddressData,
+      billingProps,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -58,15 +58,15 @@ class CheckoutPage extends React.PureComponent {
         pickupInitialValues.pickUpContact &&
         pickupInitialValues.pickUpContact.firstName)
     );
-
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
             initialValues={pickupInitialValues}
+            pickupInitialValues={pickupInitialValues}
             onEditModeChange={onEditModeChange}
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
@@ -79,7 +79,7 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
           />
         )}
-        {currentSection.toLowerCase() === 'shipping' && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
             isGuest={isGuest}
@@ -94,13 +94,15 @@ class CheckoutPage extends React.PureComponent {
             addNewShippingAddressData={addNewShippingAddressData}
           />
         )}
-        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && <BillingPage />}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
+          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} />
+        )}
       </div>
     );
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} marginTop />;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isCheckoutView />;
   }
 }
 
@@ -112,6 +114,7 @@ CheckoutPage.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
+  billingProps: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
@@ -132,5 +135,5 @@ CheckoutPage.propTypes = {
   addNewShippingAddressData: PropTypes.func.isRequired,
 };
 
-export default withRouter(CheckoutPage);
+export default CheckoutPage;
 export { CheckoutPage as CheckoutPageVanilla };

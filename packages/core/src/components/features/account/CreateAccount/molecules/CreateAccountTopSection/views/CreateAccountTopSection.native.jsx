@@ -10,7 +10,7 @@ import {
   SectionStyle,
   CenterAlignWrapper,
   LabelsWrapper,
-  ViewAlignCenter,
+  ResetPassword,
   TopSectionWrapper,
   PointsWrapper,
   ResetWrapper,
@@ -76,15 +76,21 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 textAlign="center"
                 text={labels.registration.lbl_createAccount_onlineAccCreated}
               />
-
-              <ViewAlignCenter>
-                <Anchor
-                  fontSizeVariation="medium"
-                  text={labels.registration.lbl_createAccount_resetPassword}
-                  onPress={this.showForgotPassword}
-                />
-              </ViewAlignCenter>
             </ResetWrapper>
+            <ResetPassword>
+              <Anchor
+                class="clickhere"
+                fontSizeVariation="medium"
+                text="Click here"
+                underline
+                onPress={this.showForgotPassword}
+              />
+              <BodyCopy
+                component="span"
+                fontSize="fs12"
+                text={labels.registration.lbl_createAccount_resetPassword}
+              />
+            </ResetPassword>
           </LabelsWrapper>
           <LineComp marginTop={28} />
         </TopSectionWrapper>

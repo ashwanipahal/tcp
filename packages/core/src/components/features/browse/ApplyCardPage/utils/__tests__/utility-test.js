@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import userAddressData from '../utility';
+import { userAddressData } from '../utility';
 
 let address = {
   addressLine1: 'Address Line 1',

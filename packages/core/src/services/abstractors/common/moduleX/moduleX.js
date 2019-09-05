@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import handler from '../../../handler';
 
 /**
@@ -36,8 +37,7 @@ export const getModuleX = async cid => {
     const data = await getData(cid);
     response = await processData(data);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
+    logger.error(error);
   }
   return response;
 };

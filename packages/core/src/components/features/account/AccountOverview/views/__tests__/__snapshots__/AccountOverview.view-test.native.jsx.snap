@@ -30,13 +30,14 @@ exports[`AccountOverview component should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
       customStyle={Object {}}
       data-locator=""
       disableButton={false}
-      fill="WHITE"
+      fill=""
       fullWidth=""
       id="createAccount"
       locator=""
@@ -47,9 +48,10 @@ exports[`AccountOverview component should render correctly 1`] = `
       width="150px"
     />
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
-      color="#fff"
+      color=""
       customStyle={Object {}}
       data-locator=""
       disableButton={false}
@@ -141,6 +143,9 @@ exports[`AccountOverview component should render correctly 1`] = `
     isVariationTypeLink={true}
   />
   <Styled(View) />
+  <Connect(TrackOrderContainer)
+    handleToggle={[Function]}
+  />
   <Styled(View) />
 </View>
 `;

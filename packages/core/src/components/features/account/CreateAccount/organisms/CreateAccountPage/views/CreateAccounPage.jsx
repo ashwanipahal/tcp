@@ -20,6 +20,7 @@ class CreateAccounPage extends React.Component {
     onAlreadyHaveAnAccountClick: PropTypes.func,
     showForgotPasswordForm: PropTypes.func,
     isUserLoggedIn: PropTypes.bool.isRequired,
+    formErrorMessage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -57,6 +58,7 @@ class CreateAccounPage extends React.Component {
       onAlreadyHaveAnAccountClick,
       showForgotPasswordForm,
       isUserLoggedIn,
+      formErrorMessage,
     } = this.props;
     return (
       <div className={className}>
@@ -65,7 +67,7 @@ class CreateAccounPage extends React.Component {
             labels={labels}
             showForgotPasswordForm={showForgotPasswordForm}
           />
-          {error && (
+          {error && !isUserLoggedIn && (
             <div className="elem-pl-LRG elem-pr-LRG elem-pt-LRG">
               <BodyCopy
                 fontFamily={['secondary']}
@@ -98,6 +100,7 @@ class CreateAccounPage extends React.Component {
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
             tooltipContent={<PasswordRequirement labels={labels.password} />}
+            formErrorMessage={formErrorMessage}
           />
         </div>
       </div>

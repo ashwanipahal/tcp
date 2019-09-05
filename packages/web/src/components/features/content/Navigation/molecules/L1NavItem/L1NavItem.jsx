@@ -65,7 +65,7 @@ class L1NavItem extends React.PureComponent {
 
   render() {
     const {
-      categoryContent: { id, name, description, mainCategory, url },
+      categoryContent: { id, name, description, mainCategory, url, asPath },
       className,
       dataLocator,
       index,
@@ -110,7 +110,7 @@ class L1NavItem extends React.PureComponent {
           onBlur={this.onMouseLeave}
           {...others}
         >
-          <Anchor to={url} onClick={this.openNavigationDrawer(hasL2)}>
+          <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
             <div className="nav-bar-l1-content" role="button" tabIndex={0}>
               <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
               <span

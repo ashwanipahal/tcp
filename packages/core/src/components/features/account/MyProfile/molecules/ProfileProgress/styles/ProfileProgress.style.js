@@ -22,6 +22,7 @@ const styles = css`
   width: 100px;
   height: 100px;
   position: relative;
+  z-index: 0;
 
   .hold {
     position: absolute;
@@ -86,7 +87,7 @@ const styles = css`
 
   .outer-shadow {
     background: black;
-    z-index: 4;
+    z-index: 1;
   }
 
   .inner-shadow {
@@ -98,7 +99,7 @@ const styles = css`
     margin-top: -40px;
     border-radius: 100%;
     background-color: ${props => props.theme.colorPalette.white};
-    z-index: 5;
+    z-index: 2;
   }
 
   .fill {
@@ -111,17 +112,17 @@ const styles = css`
   }
 
   .left .fill {
-    z-index: 4;
+    z-index: 1;
     animation: left 1s linear both;
   }
 
   .right {
-    z-index: 4;
+    z-index: 1;
     transform: rotate(180deg);
   }
 
   .right .fill {
-    z-index: 4;
+    z-index: 1;
     animation: right 1s linear both;
     animation-delay: 1s;
   }
@@ -137,7 +138,7 @@ const styles = css`
     top: 40%;
     left: 90%;
     margin: -10px;
-    z-index: 6;
+    z-index: 3;
     background: ${props => props.theme.colorPalette.white};
     line-height: 25px;
   }
