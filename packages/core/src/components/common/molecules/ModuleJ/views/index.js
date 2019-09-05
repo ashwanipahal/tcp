@@ -1,1 +1,1 @@
-export { default } from './ModuleJ.native';
+export { default } from './ModuleJ';
