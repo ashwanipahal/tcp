@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '../styles/AboutYouInfo.style';
 
 /**
  * This is a functional component for read view of survey information.
  * @param {obejct} labels - account profile labels
  * @param {object} userSurvey - saved user survey state from the backend.
  */
-const AboutYouInfo = ({ labels, userSurvey }) => {
+export const AboutYouInfo = ({ labels, userSurvey, className }) => {
   const answer1 = (userSurvey && userSurvey.size && userSurvey.getIn([0, 0])) || '';
   const answer2Array = userSurvey && userSurvey.size && userSurvey.get(1);
   const answer2 = answer2Array && answer2Array.size ? answer2Array.join(', ') : '';
@@ -20,6 +22,7 @@ const AboutYouInfo = ({ labels, userSurvey }) => {
       ctaPath="/account/profile"
       ctaLink="/account/profile"
       dataLocator="moreaboutyou"
+      className={className}
     >
       <BodyCopy component="div">
         <Row fullBleed>
@@ -29,10 +32,11 @@ const AboutYouInfo = ({ labels, userSurvey }) => {
               medium: 8,
               large: 12,
             }}
+            className="aboutyou-text"
           >
             <BodyCopy
               data-locator="moreaboutyou-describetext"
-              fontSize="fs13"
+              fontSize="fs14"
               fontFamily="secondary"
             >
               {`${labels.lbl_profile_about_you_describe}: ${answer1}`}
@@ -46,11 +50,12 @@ const AboutYouInfo = ({ labels, userSurvey }) => {
               medium: 8,
               large: 12,
             }}
+            className="aboutyou-text"
           >
             {answer2 && (
               <BodyCopy
                 data-locator="moreaboutyou-shoppingfortext"
-                fontSize="fs13"
+                fontSize="fs14"
                 fontFamily="secondary"
               >
                 {`${labels.lbl_profile_about_you_shopping}: ${answer2}`}
@@ -71,6 +76,7 @@ AboutYouInfo.propTypes = {
     lbl_profile_update_info: PropTypes.string,
   }),
   userSurvey: PropTypes.shape([]).isRequired,
+  className: PropTypes.string,
 };
 
 AboutYouInfo.defaultProps = {
@@ -80,6 +86,7 @@ AboutYouInfo.defaultProps = {
     lbl_profile_about_you_shopping: '',
     lbl_profile_update_info: '',
   },
+  className: '',
 };
 
-export default AboutYouInfo;
+export default withStyles(AboutYouInfo, styles);
