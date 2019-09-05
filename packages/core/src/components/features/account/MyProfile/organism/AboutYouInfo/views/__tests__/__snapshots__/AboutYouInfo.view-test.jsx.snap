@@ -1,47 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AboutYouInfo should render correctly 1`] = `
-<StyledComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .aboutyou-text {
-    margin: ",
-          [Function],
-          " 0;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(AboutYouInfo)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-VigVT",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={
-    Object {
-      "lbl_profile_about_you_describe": "I describe myself as",
-      "lbl_profile_about_you_shopping": "Shopping for",
-      "lbl_profile_about_you_title": "More About You",
-      "lbl_profile_update_info": "UPDATE INFO",
-    }
-  }
-  userSurvey={null}
-/>
+<Styled(AccountOverviewTile)
+  className=""
+  ctaLink="/account/profile"
+  ctaPath="/account/profile"
+  ctaTitle="UPDATE INFO"
+  dataLocator="moreaboutyou"
+  title="More About You"
+>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="aboutyou-text"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          data-locator="moreaboutyou-describetext"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          I describe myself as: 
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="aboutyou-text"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      />
+    </Styled(Row)>
+  </Styled(BodyCopy)>
+</Styled(AccountOverviewTile)>
 `;
