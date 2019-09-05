@@ -5,17 +5,17 @@ import utils from '@tcp/core/src/utils';
 import { setSurveyAnswers } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getAboutYouSurvey } from '@tcp/core/src/components/features/account/MyProfile/molecules/AboutYouSurvey/container/AboutYouSurvey';
 import { getProfileLabels } from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.selectors';
-import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
+import { getSuccess } from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.selectors';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+import { getAnswersList } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import AboutYouInformation from '../views';
-import internalEndpoints from '../../common/internalEndpoints';
-import { getAnswersList } from '../../User/container/User.selectors';
 
 export class AboutYouInformationContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     const { labels } = this.props;
-    this.survey = this.setFirstOptions(getAboutYouSurvey(labels));
-    this.setInitialValues(this.survey);
+    this.survey = this.setInitialOptions(getAboutYouSurvey(labels));
+    this.setInitialValues();
   }
 
   componentDidUpdate() {
@@ -25,6 +25,10 @@ export class AboutYouInformationContainer extends React.PureComponent {
     }
   }
 
+  /**
+   * This function is to submit the survey selection to the api.
+   * @param {string} data - selected options as request payload
+   */
   updateAboutYouInformation = data => {
     const { setSurveyAnswersAction } = this.props;
     setSurveyAnswersAction(data);
@@ -34,52 +38,53 @@ export class AboutYouInformationContainer extends React.PureComponent {
    * This fucntion is for setting the current state and retain the current saved state
    * @param {object} survey - set of saved questions data from the json
    */
-  setFirstOptions = survey => {
+  setInitialOptions = survey => {
     const updatedSurvey = survey.questions;
     const { userSurvey } = this.props;
     const answer1 = userSurvey && userSurvey.getIn(['0', '0']);
-    const question = updatedSurvey[0];
     if (answer1) {
-      question.options = question.options.map(option => {
+      updatedSurvey[0].options = updatedSurvey[0].options.map(option => {
         const updatedOption = option;
         if (option.value === answer1) {
           updatedOption.selected = true;
         }
         return updatedOption;
       });
-      updatedSurvey[0] = question;
     }
     const answer2List = userSurvey && userSurvey.get(1);
-    const question2 = updatedSurvey[1];
     if (answer2List && answer2List.get(0)) {
-      question2.options = question2.options.map(option => {
+      updatedSurvey[1].options = updatedSurvey[1].options.map(option => {
         const updatedOption = option;
         if (answer2List.find(item => item === option.value)) {
           updatedOption.selected = true;
         }
         return updatedOption;
       });
-      updatedSurvey[1] = question2;
     }
     return updatedSurvey;
   };
 
+  /**
+   * This function is to move back to the profile info page
+   */
   goBackToProfile = () => {
     utils.routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
     return null;
   };
 
+  /**
+   * This function is to set initial values for the form
+   */
   setInitialValues = () => {
-    const { labels } = this.props;
-    const survey = this.setFirstOptions(getAboutYouSurvey(labels));
+    // This is to set static values from the saved json file
     this.initialValues = {
-      options1: survey[0].options,
-      options2: survey[1].options,
+      options1: this.survey[0].options,
+      options2: this.survey[1].options,
     };
   };
 
   render() {
-    const { successMessage, errorMessage, labels, formErrorMessage } = this.props;
+    const { successMessage, errorMessage, labels } = this.props;
     return (
       <AboutYouInformation
         successMessage={successMessage}
@@ -87,7 +92,6 @@ export class AboutYouInformationContainer extends React.PureComponent {
         onSubmit={this.updateAboutYouInformation}
         labels={labels}
         initialValues={this.initialValues}
-        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -97,7 +101,6 @@ AboutYouInformationContainer.propTypes = {
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
-  formErrorMessage: PropTypes.shape({}).isRequired,
   setSurveyAnswersAction: PropTypes.func.isRequired,
   userSurvey: PropTypes.shape({}).isRequired,
 };

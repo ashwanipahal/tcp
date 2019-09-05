@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import {
   Anchor,
   BodyCopy,
@@ -12,9 +11,9 @@ import {
 } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
 import styles from '../styles/AboutYouInformationForm.style';
 import AboutYouInformationConstants from '../../../container/AboutYouInformation.constants';
-import internalEndpoints from '../../../../common/internalEndpoints';
 
 export class AboutYouInformationForm extends React.PureComponent {
   constructor(props) {
@@ -26,19 +25,23 @@ export class AboutYouInformationForm extends React.PureComponent {
     };
   }
 
-  onSelectOption = (questionId, value) => {
+  /**
+   * This function is to update the selected option state.
+   * @param {bool} isFirstQuestion - to uniquely identify the question selected
+   * @param {string} value - selcted option value
+   */
+  onSelectOption = (isFirstQuestion, value) => {
     const { options1, options2 } = this.state;
-    const updateOptions = questionId === 'question1' ? options1 : options2;
-    const newOptions = updateOptions.map(option => {
+    const newOptions = (isFirstQuestion ? options1 : options2).map(option => {
       const updatedOption = option;
-      if (questionId === 'question1') {
+      if (isFirstQuestion) {
         updatedOption.selected = option.value === value;
-      } else if (questionId === 'question2' && option.value === value) {
+      } else if (!isFirstQuestion && option.value === value) {
         updatedOption.selected = !updatedOption.selected;
       }
       return updatedOption;
     });
-    if (questionId === 'question1') {
+    if (isFirstQuestion) {
       this.setState({
         options1: newOptions,
       });
@@ -49,6 +52,9 @@ export class AboutYouInformationForm extends React.PureComponent {
     }
   };
 
+  /**
+   * This function is to construct the request payload to submit to the container
+   */
   onUpdate = () => {
     const { options1, options2 } = this.state;
     const { onSubmit } = this.props;
@@ -59,36 +65,27 @@ export class AboutYouInformationForm extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, pristine, errorMessage, handleSubmit } = this.props;
+    const { className, labels, pristine } = this.props;
     const { options1, options2 } = this.state;
     return (
-      <form
-        name={AboutYouInformationConstants.ABOUT_YOU_INFORMATION_FORM}
-        className={className}
-        onSubmit={handleSubmit}
-        noValidate
-      >
-        {errorMessage && (
-          <Notification
-            className="elem-mt-MED"
-            status="error"
-            message={labels[`lbl_profile_error_${errorMessage}`]}
-          />
-        )}
+      <div className={className}>
         <Row fullBleed className="elem-mt-XXL">
-          <BodyCopy>{labels.lbl_profile_survey_question1}</BodyCopy>
+          <BodyCopy dataLocator="moreaboutyou-edit-q1text">
+            {labels.lbl_profile_survey_question1}
+          </BodyCopy>
         </Row>
         <Row fullBleed className="elem-mt-XXL">
-          {options1.map(option => {
+          {options1.map((option, index) => {
             return (
               <Col colSize={{ small: 3, medium: 4, large: 3 }}>
                 <Field
                   component={LabeledRadioButton}
-                  key="shippingMethodId"
+                  key="question1"
                   selectedValue={option.selected}
-                  name="shippingMethodId"
+                  name="question1"
                   checked={option.selected}
-                  onClick={() => this.onSelectOption('question1', option.value)}
+                  dataLocator={`moreaboutyou-radiooption-${index}`}
+                  onClick={() => this.onSelectOption(true, option.value)}
                 >
                   <BodyCopy>{option.value}</BodyCopy>
                 </Field>
@@ -98,7 +95,9 @@ export class AboutYouInformationForm extends React.PureComponent {
         </Row>
 
         <Row fullBleed className="elem-mt-XXL">
-          <BodyCopy>{labels.lbl_profile_survey_question2}</BodyCopy>
+          <BodyCopy dataLocator="moreaboutyou-edit-q2text">
+            {labels.lbl_profile_survey_question2}
+          </BodyCopy>
         </Row>
 
         <Row fullBleed className="elem-mt-XXL">
@@ -108,10 +107,9 @@ export class AboutYouInformationForm extends React.PureComponent {
                 <Field
                   name={`question2-option-${index}`}
                   component={InputCheckbox}
-                  dataLocator="editPersonalInfo-isEmployee"
-                  className="AddPersonalInfo-isEmployee"
+                  dataLocator={`moreaboutyou-checkboxoption-${index}`}
                   checked={option.selected}
-                  onChange={() => this.onSelectOption('question2', option.value)}
+                  onChange={() => this.onSelectOption(false, option.value)}
                 >
                   {option.value}
                 </Field>
@@ -122,7 +120,7 @@ export class AboutYouInformationForm extends React.PureComponent {
 
         <Row className="elem-mb-LRG elem-mt-XXL">
           <Col
-            className="AddEditPersonalInformationForm_cancel"
+            className="aboutyou_cancel"
             colSize={{
               large: 3,
               medium: 2,
@@ -140,7 +138,7 @@ export class AboutYouInformationForm extends React.PureComponent {
               <Button
                 type="button"
                 buttonVariation="fixed-width"
-                dataLocator="cancelBtn"
+                dataLocator="moreaboutyou-cancelbtn"
                 fullWidth
                 className="elem-mb-XS"
               >
@@ -149,7 +147,7 @@ export class AboutYouInformationForm extends React.PureComponent {
             </Anchor>
           </Col>
           <Col
-            className="AddEditPersonalInformationForm_update"
+            className="aboutyou_save"
             colSize={{
               large: 3,
               medium: 2,
@@ -159,17 +157,17 @@ export class AboutYouInformationForm extends React.PureComponent {
             <Button
               fill="BLUE"
               buttonVariation="fixed-width"
-              dataLocator="UpdateBtn"
+              dataLocator="moreaboutyou-savebtn"
               fullWidth
               className="elem-mb-XS"
               disabled={pristine}
               onClick={this.onUpdate}
             >
-              {labels.lbl_profile_personal_info_updateCta}
+              {labels.lbl_profile_survey_save}
             </Button>
           </Col>
         </Row>
-      </form>
+      </div>
     );
   }
 }
@@ -180,8 +178,6 @@ AboutYouInformationForm.propTypes = {
     lbl_profile_personal_info_updateCta: PropTypes.string,
   }),
   pristine: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -194,8 +190,6 @@ AboutYouInformationForm.defaultProps = {
     lbl_profile_personal_info_updateCta: '',
   },
 };
-
-// const validateMethod = createValidateMethod(getStandardConfig([]));
 
 export default reduxForm({
   form: AboutYouInformationConstants.ABOUT_YOU_INFORMATION_FORM, // a unique identifier for this form

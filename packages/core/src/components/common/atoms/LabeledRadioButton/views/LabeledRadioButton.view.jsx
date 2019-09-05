@@ -82,7 +82,7 @@ class LabeledRadioButton extends React.Component {
             checked={isChecked}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            name={input.name}
+            name={inputName}
           />
         </div>
         {children && <div>{children}</div>}

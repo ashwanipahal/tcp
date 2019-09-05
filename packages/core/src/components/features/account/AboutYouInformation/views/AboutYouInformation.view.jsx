@@ -27,9 +27,9 @@ export const AboutYouInformation = ({
         </Anchor>
       </BodyCopy>
       <FormPageHeadingComponent
-        heading={labels.lbl_profile_heading}
+        heading={labels.lbl_profile_about_you_title}
         className="margin-none"
-        dataLocator="pi-profileinformationheading"
+        dataLocator="moreaboutyou-header"
       />
       <AboutYouInformationForm
         labels={labels}
@@ -51,7 +51,6 @@ AboutYouInformation.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.shape({}),
-  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 AboutYouInformation.defaultProps = {
