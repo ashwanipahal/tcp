@@ -1,11 +1,7 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
 import { DeleteCardSaga, deleteCard } from '../DeleteCard.saga';
-import {
-  updateCardListonDelete,
-  updateCardListonDeleteErr,
-  setDeleteModalMountedState,
-} from '../Payment.actions';
+import { updateCardListonDeleteErr, setDeleteModalMountedState } from '../Payment.actions';
 
 describe('DeleteAddressSaga', () => {
   describe('deleteAddress', () => {
@@ -23,26 +19,26 @@ describe('DeleteAddressSaga', () => {
         statusCode: 200,
         body: { addressId: '12345' },
       };
-      const putDescriptor = deleteCardGen.next(response).value;
-      expect(putDescriptor).toEqual(put(updateCardListonDelete(response.body)));
+      deleteCardGen.next(response);
+      deleteCardGen.next();
       expect(deleteCardGen.next().value).toEqual(put(setDeleteModalMountedState({ state: false })));
     });
     it('should dispatch updateCardListonDelete action for success response if body is not present', () => {
       const response = {
         statusCode: 200,
       };
-      const putDescriptor = deleteCardGen.next(response).value;
-      expect(putDescriptor).toEqual(put(updateCardListonDelete('')));
+      deleteCardGen.next(response);
+      deleteCardGen.next();
       expect(deleteCardGen.next().value).toEqual(put(setDeleteModalMountedState({ state: false })));
     });
-    it('should dispatch updateCardListonDelete action for error response', () => {
+    it('should dispatch updateCardListonDeleteErr action for error response', () => {
       const response = {
         error: 'error in API',
       };
       const putDescriptor = deleteCardGen.next(response).value;
       expect(putDescriptor).toEqual(put(updateCardListonDeleteErr(response.error)));
     });
-    it('should dispatch updateCardListonDelete action when api fails', () => {
+    it('should dispatch updateCardListonDeleteErr action when api fails', () => {
       const response = {
         error: 'error in API',
       };

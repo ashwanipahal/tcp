@@ -15,10 +15,10 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
       key="myWallet"
     >
       <Styled(Anchor)
-        anchorVariation="primary"
+        anchorVariation="grayed"
         asPath="/myWalletPage"
         fontSizeVariation="large"
-        fontWeightVariation="active"
+        fontWeightVariation={false}
       >
         My Wallet
       </Styled(Anchor)>
@@ -43,10 +43,10 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
       key="myPlaceRewards"
     >
       <Styled(Anchor)
-        anchorVariation="grayed"
+        anchorVariation="primary"
         asPath="/account/place-rewards"
         fontSizeVariation="large"
-        fontWeightVariation={false}
+        fontWeightVariation="active"
         to="/account?id=myPlaceRewards"
       >
         My Place Rewards
