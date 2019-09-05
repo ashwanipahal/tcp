@@ -16,6 +16,7 @@ import {
   getAirmilesDetails,
   getMyPlaceNumber,
   getProfileInfoTileData,
+  getChildren,
 } from '../../User/container/User.selectors';
 
 import { getSuccess } from './MyProfile.selectors';
@@ -63,6 +64,7 @@ const mapStateToProps = state => {
     airMiles: getAirmilesDetails(state),
     myPlaceNumber: getMyPlaceNumber(state),
     profileInfoTile: getProfileInfoTileData(state),
+    childrenBirthdays: getChildren(state),
   };
 };
 

@@ -1,7 +1,3 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
 import CONSTANTS from '../User.constants';
 
 export const resetUserInfo = () => {
@@ -25,6 +21,18 @@ export const getUserInfo = () => {
 export const setUserInfo = payload => {
   return {
     type: CONSTANTS.SET_USER_INFO,
+    payload,
+  };
+};
+
+/**
+ * @function setUserPersonalData
+ * @param { object } payload
+ * Action creator for setting user personal data
+ */
+export const setUserPersonalData = payload => {
+  return {
+    type: CONSTANTS.SET_USER_PERSONAL_DATA,
     payload,
   };
 };
