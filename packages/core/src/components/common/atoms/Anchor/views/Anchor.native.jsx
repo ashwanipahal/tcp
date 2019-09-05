@@ -59,20 +59,25 @@ const Anchor = ({
       </TouchableOpacity>
     );
   }
-  return (
-    <AnchorView
-      accessibilityRole="link"
-      onPress={onPress || openUrl}
-      accessibilityLabel={accessibilityLabel || text}
-      style={customStyle}
-      testID={getLocator(locator)}
-    >
-      <StyledText anchorVariation={anchorVariation} {...otherProps}>
-        {text}
-      </StyledText>
-      {visible && <AnchorIcon source={Icon} />}
-    </AnchorView>
-  );
+
+  if (text) {
+    return (
+      <AnchorView
+        accessibilityRole="link"
+        onPress={onPress || openUrl}
+        accessibilityLabel={accessibilityLabel || text}
+        style={customStyle}
+        testID={getLocator(locator)}
+      >
+        <StyledText anchorVariation={anchorVariation} {...otherProps}>
+          {text}
+        </StyledText>
+        {visible && <AnchorIcon source={Icon} />}
+      </AnchorView>
+    );
+  }
+
+  return null;
 };
 Anchor.defaultProps = {
   anchorVariation: '',
