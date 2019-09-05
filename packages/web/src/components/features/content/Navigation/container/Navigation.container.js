@@ -40,9 +40,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(removeL1Focus(false));
       dispatch(openL2Drawer(id));
     },
-    hideL2Drawer: id => e => {
-      e.preventDefault();
-      e.stopPropagation();
+    hideL2Drawer: id => (e, isPropagate) => {
+      if (!isPropagate) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       dispatch(showNavigationFooter());
       dispatch(hideL2Drawer(id));
       dispatch(removeL1Focus(true));
