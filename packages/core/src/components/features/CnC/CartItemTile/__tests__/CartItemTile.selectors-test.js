@@ -102,7 +102,7 @@ describe('#CartItemTile selector', () => {
   });
 
   it('#getLabelsCartItemTile should return labels', () => {
-    const addedToBag = {
+    const addedToBagModal = {
       lbl_info_color: 'Color',
       lbl_info_size: 'Size',
       lbl_info_Qty: 'Qty',
@@ -113,7 +113,6 @@ describe('#CartItemTile selector', () => {
     const productState = {
       Labels: {
         bag: {
-          addedToBag,
           bagOverview: {
             lbl_cartTile_fit: 'Fit',
             lbl_cartTile_points: 'Points',
@@ -123,6 +122,9 @@ describe('#CartItemTile selector', () => {
             lbl_cartTile_productBrandAlt: 'Brand',
             lbl_cartTile_productImageAlt: 'Product',
           },
+        },
+        global: {
+          addedToBagModal,
         },
       },
     };

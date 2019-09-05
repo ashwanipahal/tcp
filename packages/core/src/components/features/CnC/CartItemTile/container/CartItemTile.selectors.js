@@ -117,8 +117,8 @@ export const getProductItemUnitPrice = product => {
 
 export const getLabelsCartItemTile = state => {
   const {
-    bag: {
-      addedToBag: {
+    global: {
+      addedToBagModal: {
         lbl_info_color: color,
         lbl_info_size: size,
         lbl_info_Qty: qty,
