@@ -1,4 +1,3 @@
-/* eslint-disable extra-rules/no-commented-out-code */
 import { bindAllClassMethodsToThis } from '../../../../../utils';
 import BucketingBL from './bucketingLogicHelper';
 import {
@@ -433,7 +432,6 @@ export default class ProductsOperator {
       this.bucketingConfig
     );
     ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
-    // res.currentNavigationIds = l2currentNavigationIds;
   };
 
   getProductsListingMoreProducts(state) {
@@ -453,19 +451,6 @@ export default class ProductsOperator {
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
     });
-    // return this.getProductsListingInfo({
-    //   state,
-    //   filtersAndSort: appliedFiltersAndSort,
-    //   pageNumber: lastLoadedPageNumber + 1
-    // }
-
-    // ).then((res) => {
-    //   console.log('res', res);
-    //   // this.store.dispatch([getAppendListingProductsPageActn(res.loadedProducts), getSetRenderProductListingFlagActn(true)]);
-    // }).catch((err) => {
-    //   console.log(err);
-    //   // logErrorAndServerThrow(this.store, 'ProductsOperator.getProductsListingMoreProducts', err);
-    // });
   }
 
   /**
@@ -504,18 +489,6 @@ export default class ProductsOperator {
         numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
         categoryPathMap,
       });
-      // .then(res => {
-      //   // We need to update the start, products to be fetched, params
-      //   const updatedBucketingConfig = this.bucketingLogic.updateBucketingParamters(
-      //     res,
-      //     this.bucketingConfig
-      //   );
-      //   ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
-      //   // this.store.dispatch([getAppendListingProductsPageActn(res.loadedProducts), getSetRenderProductListingFlagActn(true)]);
-      // })
-      // .catch(err => {
-      //   // logErrorAndServerThrow(this.store, 'ProductsOperator.getProductsListingMoreProducts', err);
-      // });
     }
     return this.getProductsListingMoreProducts(state);
   };

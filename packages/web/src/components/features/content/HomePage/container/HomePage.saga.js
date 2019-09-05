@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import fetchData from '@tcp/core/src/service/API';
 import endpoints from '@tcp/core/src/service/endpoint';
 import HOMEPAGE_CONSTANTS from '../HomePage.constants';
@@ -21,10 +22,8 @@ function* fetchTaxonomy() {
     const payload = yield res.body.taxonomy[0].children;
     yield put(setHeaderlinks(payload));
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log('Error in fetchTaxonomy API');
-    // eslint-disable-next-line no-console
-    console.log(err);
+    logger.error('Error in fetchTaxonomy API');
+    logger.error(err);
   }
 }
 

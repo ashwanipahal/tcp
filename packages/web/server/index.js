@@ -9,6 +9,7 @@ const {
   preRouteSlugs,
 } = require('@tcp/core/src/config/route.config');
 const redis = require('async-redis');
+const logger = require('@tcp/core/src/utils/loggerInstance');
 
 const {
   settingHelmetConfig,
@@ -161,7 +162,6 @@ app.prepare().then(() => {
 
   server.listen(port, err => {
     if (err) throw err;
-    // eslint-disable-next-line no-console
-    console.log(`> Ready on http://localhost:${port}`);
+    logger.info(`> Ready on http://localhost:${port}`);
   });
 });

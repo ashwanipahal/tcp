@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import utils, { bindAllClassMethodsToThis } from '../../../utils';
@@ -100,7 +101,7 @@ class ProductsDynamicAbstractor {
   };
 
   handleValidationError = e => {
-    console.log(e);
+    logger.error(e);
   };
 
   getProducts = reqObj => {

@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { executeStatefulAPICall } from '../../../handler/handler';
 import {
   getGiftWrappingOptions,
@@ -140,7 +141,7 @@ describe('Checkout', () => {
       const addressLine2 = '123';
       executeStatefulAPICall.mockImplementation(() => Promise.resolve(res));
       return getShippingMethods(state, zipCode, addressLine1, addressLine2).then(val => {
-        console.log(val);
+        logger.info(val);
         return expect(val).toMatchObject(result.body);
       });
     });

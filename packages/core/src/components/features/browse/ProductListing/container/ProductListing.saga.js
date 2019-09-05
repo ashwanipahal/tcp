@@ -1,4 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
 import {
   setPlpProducts,
@@ -68,7 +69,7 @@ export function* fetchMoreProducts() {
     }
     yield put(setPlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
