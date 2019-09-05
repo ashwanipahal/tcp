@@ -270,3 +270,10 @@ export const routeToPickupPage = () => {
     type: constants.ROUTE_TO_PICKUP_PAGE,
   };
 };
+
+export function getSetIsBillingVisitedActn(isBillingVisited) {
+  return {
+    isBillingVisited,
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_VISITED,
+  };
+}

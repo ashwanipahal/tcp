@@ -73,8 +73,8 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':
       return checkout.setIn(['uiFlags', 'stage'], action.payload);
-    // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
-    //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_BILLING_VISITED:
+      return checkout.setIn(['uiFlags', 'isBillingVisited'], action.isBillingVisited);
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':

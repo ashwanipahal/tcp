@@ -57,6 +57,38 @@ export const addAddress = args => {
 
 export const updateAddress = args => {
   const apiConfig = getAPIConfig();
+
+  let body = {
+    addressLine: [args.address1, args.address2, ''],
+    attributes: [
+      {
+        key: 'addressField3',
+        value: args.zip,
+      },
+    ],
+    addressType: 'ShippingAndBilling',
+    city: args.city,
+    country: args.country,
+    firstName: args.firstName,
+    lastName: args.lastName,
+    phone1: args.phoneNumber,
+    phone1Publish: args.saveToAccount || 'false',
+    primary: args.primary,
+    state: args.state,
+    zipCode: args.zip,
+    xcont_addressField2: args.isCommercialAddress ? '2' : '1',
+    email1: args.email,
+    xcont_addressField3: args.zip,
+    fromPage: args.applyToOrder ? 'checkout' : '',
+  };
+
+  if (args.addressId) {
+    body = {
+      addressId: args.addressId,
+      fromPage: 'checkout',
+    };
+  }
+
   const payload = {
     webService: endpoints.updateAddress,
     header: {
@@ -64,29 +96,7 @@ export const updateAddress = args => {
       isRest: true,
       nickName: args.nickName,
     },
-    body: {
-      addressLine: [args.address1, args.address2, ''],
-      attributes: [
-        {
-          key: 'addressField3',
-          value: args.zip,
-        },
-      ],
-      addressType: 'ShippingAndBilling',
-      city: args.city,
-      country: args.country,
-      firstName: args.firstName,
-      lastName: args.lastName,
-      phone1: args.phoneNumber,
-      phone1Publish: args.saveToAccount || 'false',
-      primary: args.primary,
-      state: args.state,
-      zipCode: args.zip,
-      xcont_addressField2: args.isCommercialAddress ? '2' : '1',
-      email1: args.email,
-      xcont_addressField3: args.zip,
-      fromPage: args.applyToOrder ? 'checkout' : '',
-    },
+    body,
   };
   return executeStatefulAPICall(payload)
     .then(res => {
