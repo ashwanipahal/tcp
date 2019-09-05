@@ -29,7 +29,7 @@ exports[`AboutYouInformation should render SurveyQuestion correctly 1`] = `
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
     className="margin-none"
-    dataLocator="moreaboutyou-header"
+    data-locator="moreaboutyou-header"
   />
   <ReduxForm
     destroyOnUnmount={true}
@@ -93,7 +93,7 @@ exports[`AboutYouInformation should render correctly 1`] = `
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
     className="margin-none"
-    dataLocator="moreaboutyou-header"
+    data-locator="moreaboutyou-header"
   />
   <ReduxForm
     destroyOnUnmount={true}

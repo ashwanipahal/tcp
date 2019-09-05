@@ -70,24 +70,30 @@ export class AboutYouInformationForm extends React.PureComponent {
     return (
       <div className={className}>
         <Row fullBleed className="elem-mt-XXL">
-          <BodyCopy dataLocator="moreaboutyou-edit-q1text">
+          <BodyCopy fontSize="fs14" fontFamily="secondary" data-locator="moreaboutyou-edit-q1text">
             {labels.lbl_profile_survey_question1}
           </BodyCopy>
         </Row>
         <Row fullBleed className="elem-mt-XXL">
           {options1.map((option, index) => {
             return (
-              <Col colSize={{ small: 3, medium: 4, large: 3 }}>
+              <Col
+                ignoreGutter={{ small: true, medium: true }}
+                colSize={{ small: 3, medium: 4, large: 3 }}
+                className="aboutyou-radio"
+              >
                 <Field
                   component={LabeledRadioButton}
                   key="question1"
                   selectedValue={option.selected}
                   name="question1"
                   checked={option.selected}
-                  dataLocator={`moreaboutyou-radiooption-${index}`}
+                  data-locator={`moreaboutyou-radiooption-${index}`}
                   onClick={() => this.onSelectOption(true, option.value)}
                 >
-                  <BodyCopy>{option.value}</BodyCopy>
+                  <BodyCopy fontSize="fs12" fontFamily="secondary">
+                    {option.value}
+                  </BodyCopy>
                 </Field>
               </Col>
             );
@@ -95,7 +101,7 @@ export class AboutYouInformationForm extends React.PureComponent {
         </Row>
 
         <Row fullBleed className="elem-mt-XXL">
-          <BodyCopy dataLocator="moreaboutyou-edit-q2text">
+          <BodyCopy fontSize="fs14" fontFamily="secondary" data-locator="moreaboutyou-edit-q2text">
             {labels.lbl_profile_survey_question2}
           </BodyCopy>
         </Row>
@@ -103,16 +109,22 @@ export class AboutYouInformationForm extends React.PureComponent {
         <Row fullBleed className="elem-mt-XXL">
           {options2.map((option, index) => {
             return (
-              <Col colSize={{ small: 3, medium: 4, large: 2 }}>
+              <Col
+                ignoreGutter={{ small: true, medium: true }}
+                colSize={{ small: 3, medium: 4, large: 2 }}
+                className="aboutyou-radio"
+              >
                 <Field
                   name={`question2-option-${index}`}
                   component={InputCheckbox}
-                  dataLocator={`moreaboutyou-checkboxoption-${index}`}
+                  data-locator={`moreaboutyou-checkboxoption-${index}`}
                   checked={option.selected}
                   onChange={() => this.onSelectOption(false, option.value)}
                   className="aboutyou-checkbox"
                 >
-                  {option.value}
+                  <BodyCopy fontSize="fs12" fontFamily="secondary">
+                    {option.value}
+                  </BodyCopy>
                 </Field>
               </Col>
             );
@@ -139,7 +151,7 @@ export class AboutYouInformationForm extends React.PureComponent {
               <Button
                 type="button"
                 buttonVariation="fixed-width"
-                dataLocator="moreaboutyou-cancelbtn"
+                data-locator="moreaboutyou-cancelbtn"
                 fullWidth
                 className="elem-mb-XS"
               >
@@ -158,7 +170,7 @@ export class AboutYouInformationForm extends React.PureComponent {
             <Button
               fill="BLUE"
               buttonVariation="fixed-width"
-              dataLocator="moreaboutyou-savebtn"
+              data-locator="moreaboutyou-savebtn"
               fullWidth
               className="elem-mb-XS"
               disabled={pristine}

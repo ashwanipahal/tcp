@@ -10,6 +10,10 @@ const styles = css`
       order: 1;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
+
+    .aboutyou-radio {
+      padding: 6px 0;
+    }
   }
 `;
 export default styles;

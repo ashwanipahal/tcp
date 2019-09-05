@@ -29,7 +29,7 @@ export const AboutYouInformation = ({
       <FormPageHeadingComponent
         heading={labels.lbl_profile_about_you_title}
         className="margin-none"
-        dataLocator="moreaboutyou-header"
+        data-locator="moreaboutyou-header"
       />
       <AboutYouInformationForm
         labels={labels}

@@ -14,6 +14,7 @@ exports[`CartItemRadioButtons Component LabeledRadioButton should render correct
       className={null}
       disabled={false}
       id="_2"
+      name=""
       type="radio"
     />
   </div>
