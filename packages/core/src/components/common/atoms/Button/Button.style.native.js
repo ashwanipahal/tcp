@@ -4,10 +4,10 @@ import styled, { css } from 'styled-components/native';
 import { StyledText } from '../../../../../styles/globalStyles/StyledText.style';
 
 const getShape = props => {
-  const { theme, noCurve } = props;
+  const { theme, noCurve, buttonVariation } = props;
   const { isGymboree } = theme;
 
-  if (isGymboree && !noCurve) {
+  if (isGymboree && !noCurve && buttonVariation !== 'mini-nav') {
     return `border-radius: 25.5px;`;
   }
   return `
@@ -44,6 +44,21 @@ const style = css`
     props.buttonVariation === 'cautionary'
       ? `border: 1px solid ${props.theme.colorPalette.secondary.dark};`
       : ''};
+
+  ${props =>
+    props.buttonVariation === 'mini-nav'
+      ? `
+        border: 0;
+        border-bottom-width: 2px;
+        border-bottom-color: ${
+          props.active ? props.theme.colorPalette.primary.main : 'transparent'
+        };
+        padding: 3px 5px;
+        min-height: auto;
+        align-self: flex-start;
+        background-color: transparent;
+         `
+      : ''}
 `;
 
 export const CustomStyleText = styled(StyledText)`
@@ -73,6 +88,20 @@ export const CustomStyleText = styled(StyledText)`
    color: ${props.theme.colorPalette.secondary.dark};
    `
       : ''};
+
+  ${props =>
+    props.buttonVariation === 'mini-nav'
+      ? `
+        padding: 0;
+        font-size: ${props.theme.typography.fontSizes.fs14};
+        font-weight: ${
+          props.active
+            ? props.theme.typography.fontWeights.extrabold
+            : props.theme.typography.fontWeights.regular
+        };
+        letter-spacing: 0.3px;
+         `
+      : ''}
 `;
 
 export default style;

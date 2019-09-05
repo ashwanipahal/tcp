@@ -47,6 +47,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   />
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
@@ -116,6 +117,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   />
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}

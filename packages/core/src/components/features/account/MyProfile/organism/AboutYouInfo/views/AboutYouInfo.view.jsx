@@ -18,7 +18,7 @@ const AboutYouInfo = ({ labels, userSurvey }) => {
       title={labels.lbl_profile_about_you_title}
       ctaTitle={labels.lbl_profile_update_info}
       ctaPath="/account/profile"
-      ctaLink="/account/profile"
+      ctaLink="/account?id=profile&subSection=edit-aboutyou-info"
       dataLocator="moreaboutyou"
     >
       <BodyCopy component="div">
