@@ -27,6 +27,7 @@ class TrackOrderForm extends React.PureComponent {
             onChange={onChangeForm}
             showSuccessCheck={false}
             enableSuccessCheck={false}
+            marginBottom={false}
           />
         </InputField>
         <InputField>
@@ -41,6 +42,7 @@ class TrackOrderForm extends React.PureComponent {
             onChange={onChangeForm}
             showSuccessCheck={false}
             enableSuccessCheck={false}
+            marginBottom={false}
           />
         </InputField>
         <AnchorView>
