@@ -68,7 +68,7 @@ export const findCategoryIdandName = (data, category) => {
       newCatArr = newCatArr.concat(data[iterator].subCategories);
     }
 
-    const navUrl = extractCategory(data[iterator].url);
+    const navUrl = extractCategory(data[iterator].url && data[iterator].url.replace('/c?cid=', ''));
     if (
       data[iterator].categoryContent.categoryId === categoryId ||
       (navUrl && navUrl.toLowerCase()) === (categoryId && categoryId.toLowerCase())
