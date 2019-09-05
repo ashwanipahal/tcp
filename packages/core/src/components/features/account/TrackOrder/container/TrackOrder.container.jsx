@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import { trackOrder, setTrackOrderModalMountedState, setErrorInfoNull } from './TrackOrder.actions';
@@ -16,24 +17,7 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { routerPush } from '../../../../../utils';
 import { ROUTE_PATH } from '../../../../../config/route.config';
 
-// @flow
-type Props = {
-  onSubmit: Function,
-  emailId: String,
-  orderId: String,
-  orderDetailResponse: Object,
-  isUserLoggedIn: Boolean,
-  errorMessage: String,
-  labels: Object,
-  openLoginOverlay: Function,
-  trackOrderMountedState: Function,
-  setTrackOrderModalMountState: Function,
-  showNotification: string,
-  onChangeForm: Function,
-  handleToggle: Function,
-  navigation: Object,
-};
-export class TrackOrderContainer extends React.PureComponent<Props> {
+export class TrackOrderContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     import('../../../../../utils')
@@ -146,6 +130,30 @@ export const mapDispatchToProps = dispatch => {
       dispatch(setTrackOrderModalMountedState(payload));
     },
   };
+};
+
+TrackOrderContainer.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  emailId: PropTypes.string.isRequired,
+  orderId: PropTypes.string.isRequired,
+  orderDetailResponse: PropTypes.shape({}).isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  openLoginOverlay: PropTypes.func.isRequired,
+  trackOrderMountedState: PropTypes.func.isRequired,
+  setTrackOrderModalMountState: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
+  handleToggle: PropTypes.func,
+  navigation: PropTypes.shape({}),
+};
+
+TrackOrderContainer.defaultProps = {
+  handleToggle: () => null,
+  navigation: {},
 };
 
 export default connect(

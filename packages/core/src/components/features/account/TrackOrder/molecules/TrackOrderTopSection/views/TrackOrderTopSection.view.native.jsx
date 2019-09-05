@@ -1,18 +1,14 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { TrackOrderTopSectionView } from '../styles/TrackOrderTopSection.native.style';
-
-// @flow
-type Props = {
-  labels: object,
-};
 
 /**
  * @function TrackOrderTopSection - renders the top section for track order modal.
  * This component includes the top header view of track header modal.
  * @param {labels} labels object with labels of the header module
  */
-const TrackOrderTopSection = ({ labels }: Props) => {
+const TrackOrderTopSection = ({ labels }) => {
   return (
     <TrackOrderTopSectionView>
       <BodyCopy
@@ -30,6 +26,12 @@ const TrackOrderTopSection = ({ labels }: Props) => {
       />
     </TrackOrderTopSectionView>
   );
+};
+
+TrackOrderTopSection.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
 };
 
 export default TrackOrderTopSection;

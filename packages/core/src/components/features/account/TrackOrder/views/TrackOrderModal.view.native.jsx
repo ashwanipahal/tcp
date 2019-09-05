@@ -1,27 +1,15 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { SafeAreaView } from 'react-native';
 import ModalNative from '../../../../common/molecules/Modal';
 import TrackOrderViewTemplate from '../molecules/TrackOrderView';
-
-// @flow
-type Props = {
-  openState: boolean,
-  setModalMountState: Function,
-  isUserLoggedIn: Boolean,
-  labels: object,
-  onSubmit: Function,
-  errorMessage: string,
-  onChangeForm: Function,
-  showNotification: string,
-  handleToggle: Function,
-};
 
 /**
  * @function TrackOrderModal The TrackOrderModal component shows the Track Order Modal.
  * This component includes the Track order form view and track order button.
  * @param {props} props object with details to render in modal
  */
-export class TrackOrderModal extends React.PureComponent<Props> {
+export class TrackOrderModal extends React.PureComponent {
   /**
    * @function onCloseModal  Used to close the modal
    */
@@ -76,5 +64,19 @@ export class TrackOrderModal extends React.PureComponent<Props> {
     );
   }
 }
+
+TrackOrderModal.propTypes = {
+  openState: PropTypes.bool.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+};
 
 export default TrackOrderModal;
