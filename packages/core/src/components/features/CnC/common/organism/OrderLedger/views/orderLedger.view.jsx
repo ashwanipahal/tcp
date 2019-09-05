@@ -288,7 +288,6 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                   direction="top"
                   message={labels.tooltipText}
                   minWidth={toolTipMinWidth}
-                  showOn="hover"
                 >
                   <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
                 </ReactToolTip>
