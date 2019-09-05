@@ -100,7 +100,7 @@ class StyledApplyNowModal extends React.Component {
         dataLocator={getLocator('plcc_apply_now_modal')}
         dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
         maxWidth="458px"
-        minHeight="788px"
+        minHeight="746px"
         inheritedStyles={modalStyles}
         shouldCloseOnOverlayClick={false}
       >
@@ -151,13 +151,16 @@ class StyledApplyNowModal extends React.Component {
             <Col
               ignoreGutter={{ small: true }}
               colSize={{ large: 10, medium: 8, small: 6 }}
+              data-locator="plcc_modal_learn_more_link"
               aria-label="learn_more_link"
               className="learn_more_link"
             >
-              <Anchor url={labels.learn_more_link}>{labels.apply_now_learn_more}</Anchor>
+              <Anchor url={labels.learn_more_link} target="_blank">
+                {labels.apply_now_learn_more}
+              </Anchor>
             </Col>
           </Row>
-          <div className="offer_info_icon" />
+          <div className="offer_info_icon" data-locator="plcc_modal_logo" />
           <BodyCopy
             fontFamily="primary"
             fontSize="fs28"
@@ -172,13 +175,23 @@ class StyledApplyNowModal extends React.Component {
             <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
               {labels.apply_now_links_text}
             </BodyCopy>
-            <Anchor className="linkIconSeperator" url={labels.details_link}>
+            <Anchor className="linkIconSeperator" url={labels.details_link} target="_blank">
               {labels.apply_now_details}
             </Anchor>
-            <Anchor className="footerLink" url={labels.faq_link}>
+            <Anchor
+              className="footerLink"
+              url={labels.faq_link}
+              target="_blank"
+              data-locator="plcc_faq"
+            >
               {labels.apply_now_faq}
             </Anchor>
-            <Anchor className="footerLink" url={labels.rewards_program_link}>
+            <Anchor
+              className="footerLink"
+              url={labels.rewards_program_link}
+              target="_blank"
+              data-locator="plcc_rewards_terms"
+            >
               {labels.apply_now_rewardTerms}
             </Anchor>
           </div>

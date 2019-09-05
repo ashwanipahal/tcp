@@ -16,9 +16,12 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
+        "large": false,
+        "medium": false,
         "small": true,
       }
     }
+    key="profileInfoTile"
   >
     <Connect(ProfileInfoTile) />
   </Styled(Col)>
@@ -33,9 +36,12 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
+        "large": false,
+        "medium": true,
         "small": true,
       }
     }
+    key="addressOverviewTile"
   >
     <Connect(AddressOverviewTile) />
   </Styled(Col)>
@@ -51,9 +57,11 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     ignoreGutter={
       Object {
         "large": true,
+        "medium": false,
         "small": true,
       }
     }
+    key="paymentOverviewTile"
   >
     <Connect(PaymentOverviewTile) />
   </Styled(Col)>
@@ -68,9 +76,12 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
+        "large": false,
+        "medium": true,
         "small": true,
       }
     }
+    key="myPlaceRewardsOverviewTile"
   >
     <Connect(MyPlaceRewardsOverviewTile) />
   </Styled(Col)>
@@ -85,9 +96,12 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
+        "large": false,
+        "medium": false,
         "small": true,
       }
     }
+    key="myWalletTile"
   >
     <Connect(MyWalletTile) />
   </Styled(Col)>

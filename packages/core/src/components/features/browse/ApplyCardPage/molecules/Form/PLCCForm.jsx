@@ -143,20 +143,20 @@ const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
 
 PLCCForm.propTypes = {
   plccData: PropTypes.shape({
-    credit_card_header: PropTypes.string,
-    contact_information_disclaimer: PropTypes.string,
-    account_classified_disclaimer: PropTypes.string,
-    electronic_consent: PropTypes.string,
-    plcc_form_checkbox_text: PropTypes.string,
-    plcc_form_submit_button: PropTypes.string,
-    plcc_form_nothanks: PropTypes.string,
+    credit_card_header: PropTypes.string.isRequired,
+    contact_information_disclaimer: PropTypes.string.isRequired,
+    account_classified_disclaimer: PropTypes.string.isRequired,
+    electronic_consent: PropTypes.string.isRequired,
+    plcc_form_checkbox_text: PropTypes.string.isRequired,
+    plcc_form_submit_button: PropTypes.string.isRequired,
+    plcc_form_nothanks: PropTypes.string.isRequired,
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.shape({
-    plcc_form_checkbox_text: PropTypes.string,
-    plcc_form_submit_button: PropTypes.string,
-    plcc_form_nothanks: PropTypes.string,
+    plcc_form_checkbox_text: PropTypes.string.isRequired,
+    plcc_form_submit_button: PropTypes.string.isRequired,
+    plcc_form_nothanks: PropTypes.string.isRequired,
   }).isRequired,
 };
 

@@ -25,6 +25,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
     orderBalanceTotal,
     totalOrderSavings,
   } = ledgerSummaryData;
+  const toolTipMinWidth = '205px';
   return (
     <React.Fragment>
       <Grid className={className} data-locator={getLocator('order_ledger_section_label')}>
@@ -282,7 +283,12 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 fontSize="fs13"
               >
                 {`${labels.totalSavingsLabel}`}
-                <ReactToolTip id="tool" direction="top" message={labels.tooltipText}>
+                <ReactToolTip
+                  id="tool"
+                  direction="top"
+                  message={labels.tooltipText}
+                  minWidth={toolTipMinWidth}
+                >
                   <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
                 </ReactToolTip>
               </BodyCopy>

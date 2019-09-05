@@ -1,7 +1,8 @@
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 
-export const getAddressList = () => ({
+export const getAddressList = payload => ({
   type: ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST,
+  payload,
 });
 
 export const setAddressList = addressList => ({

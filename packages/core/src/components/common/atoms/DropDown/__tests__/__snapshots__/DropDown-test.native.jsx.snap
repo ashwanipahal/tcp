@@ -9,7 +9,7 @@ exports[`DropDown Test should render correctly 1`] = `
   >
     foo
   </Styled(Text)>
-  <Styled(View)
+  <Styled(TouchableOpacity)
     bounces={true}
     data={
       Array [
@@ -26,7 +26,7 @@ exports[`DropDown Test should render correctly 1`] = `
         "color": "foo",
       }
     }
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
     selectedValue="foo"
@@ -49,7 +49,7 @@ exports[`DropDown Test should render correctly 1`] = `
         }
       }
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Component
     hardwareAccelerated={false}
     transparent={true}
@@ -91,7 +91,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
   >
     foo
   </Styled(Text)>
-  <Styled(View)
+  <Styled(TouchableOpacity)
     bounces={true}
     data={
       Array [
@@ -108,7 +108,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         "color": "foo",
       }
     }
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
     selectedValue="foo"
@@ -131,7 +131,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         }
       }
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Component
     hardwareAccelerated={false}
     transparent={true}

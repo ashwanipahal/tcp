@@ -36,6 +36,7 @@ exports[`CardList Component should render correctly 1`] = `
   <Styled(Text) />
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
@@ -104,6 +105,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
   <Styled(Text) />
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}

@@ -86,7 +86,7 @@ DamImage.defaultProps = {
     crop_t: '',
     crop_m: '',
   },
-  basePath: 'https://res.cloudinary.com/tcp-dam-test/image/upload',
+  basePath: 'https://test1.theplace.com/image/upload',
   imgPathSplitter: '/upload',
 };
 

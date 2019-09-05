@@ -5,6 +5,7 @@ import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   PRODUCT_LISTING_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
+import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
 
 const getReducer = state => state[PRODUCTLISTINGPAGE_REDUCER_KEY];
 
@@ -65,14 +66,26 @@ export const getBreadCrumbTrail = createSelector(
 
 export const getProductsSelect = createSelector(
   getProductListingState,
-  products => products && products.get('loadedProducts')
+  products =>
+    products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
+);
+
+export const getTotalProductsCount = createSelector(
+  getProductListingState,
+  products => products && products.get('totalProductsCount')
+);
+
+export const getAppliedFilters = createSelector(
+  getProductListingState,
+  products => products && products.get('appliedFiltersIds')
 );
 
 export const getLoadedProductsCount = createSelector(
   getProductListingState,
   products => {
-    const allProducts = products && products.get('loadedProducts');
-    const totalProductCount = (allProducts && allProducts.length) || 0;
+    const allProducts = products && products.get('loadedProductsPages');
+    const totalProductCount =
+      (allProducts && allProducts.reduce((sum, item) => item.length + sum, 0)) || 0;
     return totalProductCount || 0;
   }
 );
@@ -85,6 +98,11 @@ export const getLongDescription = createSelector(
 export const getUnbxdId = createSelector(
   getProductListingState,
   products => products && products.get('unbxdId')
+);
+
+export const getLoadedProductsPages = createSelector(
+  getProductListingState,
+  products => products && products.get('loadedProductsPages')
 );
 
 export const getProductsFilters = createSelector(
@@ -112,6 +130,10 @@ export const getLabelsProductListing = state => {
   };
 };
 
+export const getIsLoadingMore = state => {
+  return state.ProductListing.get('isLoadingMore');
+};
+
 export const getSpotlightReviewsUrl = () => {
   return getAPIConfig().BAZAARVOICE_SPOTLIGHT;
 };
@@ -123,3 +145,17 @@ export const getCategoryId = state => {
 };
 
 export default getPlpProducts;
+
+const getPageSize = () => {
+  return PRODUCTS_PER_LOAD;
+};
+
+export const getLastLoadedPageNumber = state => {
+  // note that we do not assume all pages have the same size, to protect against BE returning less products then requested.
+  return Math.ceil(getLoadedProductsCount(state) / getPageSize());
+};
+
+export const getMaxPageNumber = state => {
+  // We no longer need to divide by page size because UNBXD start parameter matches the direct number of results.
+  return Math.ceil(state.ProductListing.get('totalProductsCount') / getPageSize());
+};

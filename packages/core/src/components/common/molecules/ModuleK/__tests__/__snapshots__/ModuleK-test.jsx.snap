@@ -11,18 +11,6 @@ exports[`ModuleK component renders correctly 1`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "children": null,
-        "className": null,
-        "color": "text.primary",
-        "component": "p",
-        "fontFamily": "primary",
-        "fontSize": 12,
-        "fontWeight": "regular",
-        "letterSpacing": "normal",
-        "lineHeight": "normal",
-        "textAlign": "left",
-      },
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-bZQynM",
@@ -41,6 +29,18 @@ exports[`ModuleK component renders correctly 1`] = `
           ";
 ",
         ],
+      },
+      "defaultProps": Object {
+        "children": null,
+        "className": null,
+        "color": "text.primary",
+        "component": "p",
+        "fontFamily": "primary",
+        "fontSize": 12,
+        "fontWeight": "regular",
+        "letterSpacing": "normal",
+        "lineHeight": "normal",
+        "textAlign": "left",
       },
       "displayName": "Styled(BodyCopy)",
       "foldedComponentIds": Array [],
@@ -99,7 +99,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kEYyzF",
+              "componentId": "sc-kkGfuU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -180,10 +180,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-dxgOiQ",
+              "sc-ckVGcZ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kEYyzF",
+            "styledComponentId": "sc-kkGfuU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -225,7 +225,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-hMqMXs",
+              "componentId": "sc-kEYyzF",
               "isStatic": false,
               "rules": Array [
                 "
@@ -507,10 +507,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-jTzLTM",
+              "sc-fjdhpX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-hMqMXs",
+            "styledComponentId": "sc-kEYyzF",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

@@ -11,6 +11,7 @@ import {
   ModuleL,
   ModuleN,
   ModuleA,
+  ModuleJ,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
@@ -60,7 +61,7 @@ class HomePageView extends React.PureComponent<Props> {
     return (
       <ScrollView>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <GetCandid apiConfig={apiConfig} />
+        <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth
           buttonVariation="variable-width"
@@ -68,6 +69,7 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
+        <ModuleJ />
       </ScrollView>
     );
   }

@@ -13,16 +13,15 @@ export const modalStyles = css`
         display: inline-block;
         height: 10px;
         width: 10px;
-        vertical-align: 149%;
-        font-size: 16px;
-        padding-top: 9px;
+        vertical-align: top;
+        font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
       }
     }
   }
 
   .Modal__Content__Wrapper {
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: 0px 26px;
+      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
@@ -33,14 +32,13 @@ export const modalStyles = css`
     margin-bottom: 10px;
     display: block;
     height: auto;
-    font-size: 39px;
+    font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
     padding: 0;
     margin-top: 47px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 6px 0 10px;
       margin-bottom: 6px;
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy12}px;
       margin-top: 22px;
     }
   }
@@ -50,7 +48,6 @@ export const modalStyles = css`
     color: ${props => props.theme.colors.PRIMARY.BLUE};
     text-align: center;
     padding: 14px 0px 28px 0px;
-    text-underline-position: under;
     text-decoration: underline;
   }
 
@@ -82,8 +79,8 @@ export const modalStyles = css`
     background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
     background-size: contain;
     border: none;
-    width: 211px;
-    height: 135px;
+    width: 175px;
+    height: 112px;
     object-fit: contain;
     margin: auto;
   }
@@ -103,7 +100,6 @@ export const modalStyles = css`
   .linkIconSeperator {
     font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    text-underline-position: under;
     text-decoration: underline;
     margin-left: 10px;
   }
@@ -111,7 +107,7 @@ export const modalStyles = css`
   .rewards__benefits {
     margin: 21px 0 0 21px;
     > li {
-      font-size: 13px;
+      font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
       width: 355px;
       text-align: left;
       ::before {
@@ -142,7 +138,6 @@ export const modalStyles = css`
     font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     margin-left: 28px;
-    text-underline-position: under;
     text-decoration: underline;
   }
 `;

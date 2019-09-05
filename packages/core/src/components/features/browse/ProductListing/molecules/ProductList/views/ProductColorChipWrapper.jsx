@@ -6,10 +6,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Swipeable } from 'react-swipeable';
+import { getIconPath } from '../../../../../../../utils';
 import { breakpoints } from '../../../../../../../../styles/themes/TCP/mediaQuery';
 import { COLOR_PROP_TYPE } from '../propTypes/productsAndItemsPropTypes';
 import ProductColorChip from './ProductColorChip';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import { BodyCopy } from '../../../../../../common/atoms';
 import styles from '../styles/ProductColorChipWrapper.style';
 
 class ProductColorChipWrapper extends React.Component {
@@ -45,7 +47,6 @@ class ProductColorChipWrapper extends React.Component {
     this.captureContainerRef = this.captureContainerRef.bind(this);
 
     this.handleNextClick = this.handleNextClick.bind(this);
-    this.handlePreviousClick = this.handlePreviousClick.bind(this);
     this.swipeConfig = {
       delta: 10, // min distance(px) before a swipe starts
       preventDefaultTouchmoveEvent: false, // preventDefault on touchmove, *See Details*
@@ -56,9 +57,19 @@ class ProductColorChipWrapper extends React.Component {
   }
 
   componentDidMount = () => {
-    const divWidth = this.containerRef && this.containerRef.clientWidth - 38;
-    const colorSwatchWidth = window.screen.width >= breakpoints.values.lg ? 34 : 21;
-    this.setState({ maxVisibleItems: Math.floor(divWidth / colorSwatchWidth) || 5 });
+    const availableNextColorArrowWidth = 19;
+    const colorSwatchWidthForDesktop = 34;
+    const colorSwatchWidthForTabMobile = 21;
+    const defaultMaxVisibleItems = 5;
+    const divWidth =
+      this.containerRef && this.containerRef.clientWidth - availableNextColorArrowWidth;
+    const colorSwatchWidth =
+      window.screen.width >= breakpoints.values.lg
+        ? colorSwatchWidthForDesktop
+        : colorSwatchWidthForTabMobile;
+    this.setState({
+      maxVisibleItems: Math.round(divWidth / colorSwatchWidth) || defaultMaxVisibleItems,
+    });
   };
 
   captureContainerRef = ref => {
@@ -86,15 +97,6 @@ class ProductColorChipWrapper extends React.Component {
       firstItemIndex: firstItemIndexVar,
       isArrEnd: isEndBounded,
     });
-  };
-
-  handlePreviousClick = () => {
-    const { firstItemIndex } = this.state;
-    const nextStartIndex = firstItemIndex - 1;
-    const maxViewableIndex = 0;
-    const isEndBounded = nextStartIndex <= maxViewableIndex;
-    const firstItemIndexVar = isEndBounded ? maxViewableIndex : nextStartIndex;
-    this.setState({ firstItemIndex: firstItemIndexVar });
   };
 
   getColors = () => {
@@ -126,38 +128,22 @@ class ProductColorChipWrapper extends React.Component {
   };
 
   render() {
-    const { colorsMap, showColorEvenOne, isPLPredesign, className } = this.props;
-    const { maxVisibleItems, firstItemIndex } = this.state;
-    const isDisplayPrevious = isPLPredesign
-      ? false
-      : colorsMap.length > maxVisibleItems && firstItemIndex !== 0;
-    const isDisplayNext = isPLPredesign
-      ? colorsMap.length > maxVisibleItems
-      : colorsMap.length > maxVisibleItems && firstItemIndex + maxVisibleItems < colorsMap.length;
+    const { colorsMap, showColorEvenOne, className } = this.props;
+    const { maxVisibleItems } = this.state;
+    const isDisplayNext = colorsMap.length > maxVisibleItems;
+
     if (showColorEvenOne ? colorsMap.length <= 0 : colorsMap.length <= 1) {
       return null;
     }
 
+    const arrowLeft = getIconPath('icon-carrot-black-small');
+
     return (
       <div ref={this.captureContainerRef} className={className}>
-        {isDisplayPrevious && (
-          <button
-            data-locator="color_swatch_arrow"
-            className="button-prev"
-            title="Previous"
-            onClick={this.handlePreviousClick}
-          />
-        )}
-
-        <ol
-          className={['content-colors', isDisplayPrevious ? 'color-swatches-container' : ''].join(
-            ' '
-          )}
-        >
+        <ol className="content-colors">
           <Swipeable
             {...this.swipeConfig}
             className="color-swatches-mobile-view"
-            onSwipedRight={this.handlePreviousClick}
             onSwipedLeft={this.handleNextClick}
           >
             {this.getColorSwatches()}
@@ -166,12 +152,20 @@ class ProductColorChipWrapper extends React.Component {
         </ol>
 
         {isDisplayNext && (
-          <button
-            data-locator="color_swatch_arrow"
-            className="button-next"
+          <BodyCopy
+            component="div"
             title="Next"
+            role="button"
             onClick={this.handleNextClick}
-          />
+            className="arrowRightWrapper"
+          >
+            <img
+              src={arrowLeft}
+              data-locator="color_swatch_arrow"
+              alt="right-arrow"
+              className="arrowImg"
+            />
+          </BodyCopy>
         )}
       </div>
     );

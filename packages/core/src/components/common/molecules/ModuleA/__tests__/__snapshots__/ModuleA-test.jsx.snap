@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModuleA component should render Gymboree variant correctly 1`] = `
-<ForwardRef(Styled(Row))
+<ForwardRef
   className="   moduleA"
   fullBleed={
     Object {
@@ -11,7 +11,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
     }
   }
 >
-  <ForwardRef(Styled(Col))
+  <ForwardRef
     colSize={
       Object {
         "large": 12,
@@ -21,7 +21,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
     }
   >
     <div>
-      <ForwardRef(Styled(Styled(Carousel)))
+      <ForwardRef
         carouselConfig={
           Object {
             "autoplay": true,
@@ -91,7 +91,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_0"
@@ -121,7 +121,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_0"
               fontSize="fs48"
@@ -157,7 +157,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_0"
               fontSize="fs48"
@@ -208,7 +208,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_1"
@@ -238,7 +238,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_1"
               fontSize="fs48"
@@ -274,7 +274,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_1"
               fontSize="fs48"
@@ -325,7 +325,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_2"
@@ -355,7 +355,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_2"
               fontSize="fs48"
@@ -391,7 +391,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_2"
               fontSize="fs48"
@@ -442,7 +442,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_3"
@@ -472,7 +472,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_3"
               fontSize="fs48"
@@ -508,7 +508,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_3"
               fontSize="fs48"
@@ -532,11 +532,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
             />
           </div>
         </div>
-      </ForwardRef(Styled(Styled(Carousel)))>
+      </ForwardRef>
       <div
         className="button-list-container undefined"
       >
-        <ForwardRef(Styled(ButtonList))
+        <ForwardRef
           buttonsData={
             Array [
               Object {
@@ -631,12 +631,12 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
         />
       </div>
     </div>
-  </ForwardRef(Styled(Col))>
-</ForwardRef(Styled(Row))>
+  </ForwardRef>
+</ForwardRef>
 `;
 
 exports[`ModuleA component should render TCP or default variant correctly 1`] = `
-<ForwardRef(Styled(Row))
+<ForwardRef
   className="   moduleA"
   fullBleed={
     Object {
@@ -646,7 +646,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
     }
   }
 >
-  <ForwardRef(Styled(Col))
+  <ForwardRef
     colSize={
       Object {
         "large": 12,
@@ -656,7 +656,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
     }
   >
     <div>
-      <ForwardRef(Styled(Styled(Carousel)))
+      <ForwardRef
         carouselConfig={
           Object {
             "autoplay": true,
@@ -726,7 +726,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_0"
@@ -756,7 +756,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_0"
               fontSize="fs48"
@@ -792,7 +792,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_0"
               fontSize="fs48"
@@ -843,7 +843,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_1"
@@ -873,7 +873,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_1"
               fontSize="fs48"
@@ -909,7 +909,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_1"
               fontSize="fs48"
@@ -960,7 +960,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_2"
@@ -990,7 +990,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_2"
               fontSize="fs48"
@@ -1026,7 +1026,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_2"
               fontSize="fs48"
@@ -1077,7 +1077,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="banner-content"
           >
-            <ForwardRef(Styled(Styled(LinkText)))
+            <ForwardRef
               className="link-text-wrapper"
               component="h2"
               dataLocator="moduleA_header_text_3"
@@ -1107,7 +1107,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               }
               type="heading"
             />
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__promoBanner"
               data-locator="moduleA_promobanner_text_3"
               fontSize="fs48"
@@ -1143,7 +1143,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           <div
             className="ribbon-container"
           >
-            <ForwardRef(Styled(PromoBanner))
+            <ForwardRef
               className="moduleA__ribbonBanner"
               data-locator="moduleA_ribbon_promobanner_text_3"
               fontSize="fs48"
@@ -1167,11 +1167,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
             />
           </div>
         </div>
-      </ForwardRef(Styled(Styled(Carousel)))>
+      </ForwardRef>
       <div
         className="button-list-container undefined"
       >
-        <ForwardRef(Styled(ButtonList))
+        <ForwardRef
           buttonsData={
             Array [
               Object {
@@ -1266,6 +1266,6 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
         />
       </div>
     </div>
-  </ForwardRef(Styled(Col))>
-</ForwardRef(Styled(Row))>
+  </ForwardRef>
+</ForwardRef>
 `;

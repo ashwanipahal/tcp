@@ -19,11 +19,15 @@ describe('ApplyNowModalWrapper component', () => {
 
   it('should call openModal', async () => {
     const component = shallow(<ApplyNowModalWrapperVanilla {...props} />);
+    const spyOpenModal = jest.spyOn(component.instance(), 'openModal');
     component.instance().openModal({ preventDefault: jest.fn() });
+    expect(spyOpenModal).toHaveBeenCalled();
   });
 
   it('should call closeModal', async () => {
     const component = shallow(<ApplyNowModalWrapperVanilla {...props} />);
+    const spyCloseModal = jest.spyOn(component.instance(), 'closeModal');
     component.instance().closeModal();
+    expect(spyCloseModal).toHaveBeenCalled();
   });
 });

@@ -13,3 +13,24 @@ export const getPlpProducts = payload => {
     payload,
   };
 };
+
+export const getMorePlpProducts = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.GET_MORE_PRODUCTS,
+    payload,
+  };
+};
+
+export function setListingFirstProductsPage(productsPage) {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.SET_FIRST_PRODUCTS_PAGE,
+    productsPage,
+  };
+}
+
+export const setPlpLoadingState = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.SET_PLP_LOADING_STATE,
+    payload,
+  };
+};
