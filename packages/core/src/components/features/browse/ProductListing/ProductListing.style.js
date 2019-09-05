@@ -47,4 +47,21 @@ export default css`
   .filter-section {
     margin-top: 50px;
   }
+
+  .count-section {
+    position: relative;
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+  }
+
+  .items-count-content-number {
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
+
+  .items-count-content {
+    position: absolute;
+    right: 0;
+  }
 `;
