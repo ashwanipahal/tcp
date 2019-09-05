@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
@@ -125,8 +126,7 @@ const bootstrap = async (pages, modules) => {
     response.labels = labelsAbstractor.processData(bootstrapData.labels);
     response.navigation = navigationAbstractor.processData(bootstrapData.navigation);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
+    logger.error(error);
   }
   return response;
 };
