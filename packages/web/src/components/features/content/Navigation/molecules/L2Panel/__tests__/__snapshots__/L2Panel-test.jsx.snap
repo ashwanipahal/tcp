@@ -130,6 +130,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-school-uniform-polo-shirts",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -141,12 +142,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 77,
                         "seoToken": "girls-school-uniform-polo-shirts",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-school-uniform-polo-shirts",
                       },
                       "url": "/c?cid=girls-school-uniform-polo-shirts",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-tops",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "tops",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -158,12 +161,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 35,
                         "seoToken": "girls-clothing-school-uniforms-tops",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-clothing-school-uniforms-tops",
                       },
                       "url": "/c?cid=girls-clothing-school-uniforms-tops",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-chino-pants",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -175,12 +180,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 14,
                         "seoToken": "girls-school-uniform-chino-pants",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-school-uniform-chino-pants",
                       },
                       "url": "/c?cid=girls-school-uniform-chino-pants",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-shorts",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -192,12 +199,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 27,
                         "seoToken": "girls-school-uniform-shorts",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-school-uniform-shorts",
                       },
                       "url": "/c?cid=girls-school-uniform-shorts",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-leggings",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -209,12 +218,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 20,
                         "seoToken": "girls-school-uniform-leggings",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-school-uniform-leggings",
                       },
                       "url": "/c?cid=girls-school-uniform-leggings",
                     },
                     Object {
                       "asPath": "/c/girls-school-uniform-active",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -226,12 +237,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 25,
                         "seoToken": "girls-school-uniform-active",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-school-uniform-active",
                       },
                       "url": "/c?cid=girls-school-uniform-active",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-dresses-and-jumpers",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "dresses & jumpers",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -243,12 +256,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 22,
                         "seoToken": "girls-clothing-school-uniforms-dresses-and-jumpers",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-clothing-school-uniforms-dresses-and-jumpers",
                       },
                       "url": "/c?cid=girls-clothing-school-uniforms-dresses-and-jumpers",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-jackets-and-vests",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "outerwear",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -260,12 +275,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 5,
                         "seoToken": "girls-clothing-school-uniforms-jackets-and-vests",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-clothing-school-uniforms-jackets-and-vests",
                       },
                       "url": "/c?cid=girls-clothing-school-uniforms-jackets-and-vests",
                     },
                     Object {
                       "asPath": "/c/girls-clothing-school-uniforms-backpacks-and-essentials",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "backpacks & accessories",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -277,12 +294,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 34,
                         "seoToken": "girls-clothing-school-uniforms-backpacks-and-essentials",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-clothing-school-uniforms-backpacks-and-essentials",
                       },
                       "url": "/c?cid=girls-clothing-school-uniforms-backpacks-and-essentials",
                     },
                     Object {
                       "asPath": "/c/girls-plus-slim-size-school-uniforms",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -294,6 +313,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 64,
                         "seoToken": "girls-plus-slim-size-school-uniforms",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-plus-slim-size-school-uniforms",
                       },
                       "url": "/c?cid=girls-plus-slim-size-school-uniforms",
                     },
@@ -380,6 +400,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-dresses-casual",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "dresses",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -391,12 +412,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 65,
                         "seoToken": "girls-dresses-casual",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-dresses-casual",
                       },
                       "url": "/c?cid=girls-dresses-casual",
                     },
                     Object {
                       "asPath": "/c/girls-dresses-rompers",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "rompers",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -408,6 +431,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 24,
                         "seoToken": "girls-dresses-rompers",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-dresses-rompers",
                       },
                       "url": "/c?cid=girls-dresses-rompers",
                     },
@@ -462,6 +486,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-tops-shirts-graphic-tees",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "Short Sleeve",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -473,6 +498,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 164,
                         "seoToken": "girls-tops-shirts-graphic-tees",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-tops-shirts-graphic-tees",
                       },
                       "url": "/c?cid=girls-tops-shirts-graphic-tees",
                     },
@@ -527,6 +553,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-shorts-skimmer",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "skimmer",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -538,12 +565,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 33,
                         "seoToken": "girls-shorts-skimmer",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-shorts-skimmer",
                       },
                       "url": "/c?cid=girls-shorts-skimmer",
                     },
                     Object {
                       "asPath": "/c/girls-shorts-midi",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "midi",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -555,12 +584,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "girls-shorts-midi",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-shorts-midi",
                       },
                       "url": "/c?cid=girls-shorts-midi",
                     },
                     Object {
                       "asPath": "/c/girls-shorts-short",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -572,12 +603,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 32,
                         "seoToken": "girls-shorts-short",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-shorts-short",
                       },
                       "url": "/c?cid=girls-shorts-short",
                     },
                     Object {
                       "asPath": "/c/girls-pull-on",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "pull-on",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -589,12 +622,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 37,
                         "seoToken": "girls-pull-on",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-pull-on",
                       },
                       "url": "/c?cid=girls-pull-on",
                     },
                     Object {
                       "asPath": "/c/girls-plus-slim-size-shorts",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -606,6 +641,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 79,
                         "seoToken": "girls-plus-slim-size-shorts",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-plus-slim-size-shorts",
                       },
                       "url": "/c?cid=girls-plus-slim-size-shorts",
                     },
@@ -692,6 +728,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-tops-shirts-short-sleeve-tops",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "short sleeve",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -703,12 +740,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 110,
                         "seoToken": "girls-tops-shirts-short-sleeve-tops",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-tops-shirts-short-sleeve-tops",
                       },
                       "url": "/c?cid=girls-tops-shirts-short-sleeve-tops",
                     },
                     Object {
                       "asPath": "/c/girls-tops-girls-shirts-tanks-and-camis",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "tanks & camis",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -720,12 +759,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 72,
                         "seoToken": "girls-tops-girls-shirts-tanks-and-camis",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-tops-girls-shirts-tanks-and-camis",
                       },
                       "url": "/c?cid=girls-tops-girls-shirts-tanks-and-camis",
                     },
                     Object {
                       "asPath": "/c/girls-polo-shirts",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "polo shirts",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -737,12 +778,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 77,
                         "seoToken": "girls-polo-shirts",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-polo-shirts",
                       },
                       "url": "/c?cid=girls-polo-shirts",
                     },
                     Object {
                       "asPath": "/c/girls-tops-girls-shirts-long-sleeve-tops",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "long sleeve",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -754,12 +797,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 8,
                         "seoToken": "girls-tops-girls-shirts-long-sleeve-tops",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-tops-girls-shirts-long-sleeve-tops",
                       },
                       "url": "/c?cid=girls-tops-girls-shirts-long-sleeve-tops",
                     },
                     Object {
                       "asPath": "/c/girls-tops-girls-shirts-sweaters",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "sweaters",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -771,6 +816,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 12,
                         "seoToken": "girls-tops-girls-shirts-sweaters",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-tops-girls-shirts-sweaters",
                       },
                       "url": "/c?cid=girls-tops-girls-shirts-sweaters",
                     },
@@ -825,6 +871,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-bottoms-girls-pants-jeggings",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "jeggings",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -836,12 +883,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 13,
                         "seoToken": "girls-bottoms-girls-pants-jeggings",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-bottoms-girls-pants-jeggings",
                       },
                       "url": "/c?cid=girls-bottoms-girls-pants-jeggings",
                     },
                     Object {
                       "asPath": "/c/girls-bottoms-girls-pants-leggings",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "leggings",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -853,12 +902,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 43,
                         "seoToken": "girls-bottoms-girls-pants-leggings",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-bottoms-girls-pants-leggings",
                       },
                       "url": "/c?cid=girls-bottoms-girls-pants-leggings",
                     },
                     Object {
                       "asPath": "/c/girls-bottoms-girls-pants-woven-pants",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "pants",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -870,6 +921,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 12,
                         "seoToken": "girls-bottoms-girls-pants-woven-pants",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-bottoms-girls-pants-woven-pants",
                       },
                       "url": "/c?cid=girls-bottoms-girls-pants-woven-pants",
                     },
@@ -996,6 +1048,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-swimsuits-all",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1007,12 +1060,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 16,
                         "seoToken": "girls-swimsuits-all",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-swimsuits-all",
                       },
                       "url": "/c?cid=girls-swimsuits-all",
                     },
                     Object {
                       "asPath": "/c/undefined",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1024,6 +1079,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 41,
                         "seoToken": "",
                         "seoUrl": null,
+                        "url": "/c?cid=undefined",
                       },
                       "url": "/c?cid=undefined",
                     },
@@ -1142,6 +1198,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girls-slides",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "Slides",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1153,12 +1210,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 14,
                         "seoToken": "girls-slides",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-slides",
                       },
                       "url": "/c?cid=girls-slides",
                     },
                     Object {
                       "asPath": "/c/girls-shoes-ballet-flats",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "ballet flats",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1170,6 +1229,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 11,
                         "seoToken": "girls-shoes-ballet-flats",
                         "seoUrl": null,
+                        "url": "/c?cid=girls-shoes-ballet-flats",
                       },
                       "url": "/c?cid=girls-shoes-ballet-flats",
                     },
@@ -1224,6 +1284,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     Object {
                       "asPath": "/c/girl-accessories-backpacks-and-essentials",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "backpacks & essentials",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1235,12 +1296,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 34,
                         "seoToken": "girl-accessories-backpacks-and-essentials",
                         "seoUrl": null,
+                        "url": "/c?cid=girl-accessories-backpacks-and-essentials",
                       },
                       "url": "/c?cid=girl-accessories-backpacks-and-essentials",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-bags",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "fashion bags",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1252,12 +1315,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 12,
                         "seoToken": "girl-accessories-bags",
                         "seoUrl": null,
+                        "url": "/c?cid=girl-accessories-bags",
                       },
                       "url": "/c?cid=girl-accessories-bags",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-hair",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "hair",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1269,12 +1334,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 67,
                         "seoToken": "girl-accessories-hair",
                         "seoUrl": null,
+                        "url": "/c?cid=girl-accessories-hair",
                       },
                       "url": "/c?cid=girl-accessories-hair",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-hats",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "hats",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1286,12 +1353,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 3,
                         "seoToken": "girl-accessories-hats",
                         "seoUrl": null,
+                        "url": "/c?cid=girl-accessories-hats",
                       },
                       "url": "/c?cid=girl-accessories-hats",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-sunglasses",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "sunglasses",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1303,12 +1372,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 41,
                         "seoToken": "girl-accessories-sunglasses",
                         "seoUrl": null,
+                        "url": "/c?cid=girl-accessories-sunglasses",
                       },
                       "url": "/c?cid=girl-accessories-sunglasses",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-belts",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "belts",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1320,12 +1391,14 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 5,
                         "seoToken": "girl-accessories-belts",
                         "seoUrl": null,
+                        "url": "/c?cid=girl-accessories-belts",
                       },
                       "url": "/c?cid=girl-accessories-belts",
                     },
                     Object {
                       "asPath": "/c/girl-accessories-necklaces-and-sets",
                       "categoryContent": Object {
+                        "categoryId": undefined,
                         "description": "jewelry & watches",
                         "groupIdentifier": "",
                         "groupIdentifierName": null,
@@ -1337,6 +1410,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 62,
                         "seoToken": "girl-accessories-necklaces-and-sets",
                         "seoUrl": null,
+                        "url": "/c?cid=girl-accessories-necklaces-and-sets",
                       },
                       "url": "/c?cid=girl-accessories-necklaces-and-sets",
                     },

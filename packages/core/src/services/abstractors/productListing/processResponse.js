@@ -253,7 +253,7 @@ const processResponse = (
     appliedSortId: sort,
     currentNavigationIds: processHelpers.getCurrentNavigationIds(res),
     breadCrumbTrail: processHelpers.getBreadCrumbTrail(breadCrumbs),
-    loadedProducts: [],
+    loadedProductsPages: [[]],
     searchResultSuggestions: processHelpers.getSearchResultsSuggestion(res.body.didYouMean),
     unbxdBanners: processHelpers.getUnbxdBanners(res.body.banner),
     entityCategory,
@@ -277,7 +277,9 @@ const processResponse = (
       })
     );
   }
-  return Promise.all(pendingPromises).then(() => response);
+  return Promise.all(pendingPromises).then(() => {
+    return response;
+  });
 };
 
 export default processResponse;
