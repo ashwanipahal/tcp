@@ -45,12 +45,12 @@ describe('GetCandidGallery component', () => {
 
   it('should call getSize func', () => {
     const component = shallow(<GetCandidVanilla {...props} />);
-    component.instance().getSize();
+    component.instance().getImageSize();
   });
 
   it('should call keyExtractor func', () => {
     const component = shallow(<GetCandidVanilla {...props} />);
-    component.instance().keyExtractor('', 1);
+    expect(component.instance().keyExtractor('', 1)).toBe('1');
   });
 
   it('should call navigateToPage func', () => {

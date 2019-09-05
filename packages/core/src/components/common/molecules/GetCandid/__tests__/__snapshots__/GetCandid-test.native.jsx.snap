@@ -46,7 +46,7 @@ exports[`GetCandidGallery component renders correctly 1`] = `
       }
       disableVirtualization={false}
       horizontal={false}
-      initialNumToRender={10}
+      initialNumToRender={6}
       keyExtractor={[Function]}
       maxToRenderPerBatch={10}
       numColumns={3}

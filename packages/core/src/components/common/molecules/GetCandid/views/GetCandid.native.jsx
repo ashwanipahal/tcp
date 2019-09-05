@@ -23,7 +23,7 @@ import {
  * @param {labels} labels label data for get candid module
  * @param {navigation} navigation object containing navigate method
  */
-class GetCandid extends React.PureComponent {
+class GetCandid extends React.Component {
   componentDidMount() {
     const { apiConfig, fetchCandidData } = this.props;
     fetchCandidData(apiConfig);
@@ -36,10 +36,10 @@ class GetCandid extends React.PureComponent {
   keyExtractor = (_, index) => index.toString();
 
   /**
-   * @function getSize function to calculate size of
+   * @function getImageSize function to calculate size of
    * image dynamically as per screen size.
    */
-  getSize = () => parseInt((getScreenWidth() - 66) / 3, 10);
+  getImageSize = () => parseInt((getScreenWidth() - 66) / 3, 10);
 
   /**
    * @function renderItem : Render method for Flatlist.
@@ -65,8 +65,8 @@ class GetCandid extends React.PureComponent {
             key={index.toString()}
             index={index}
             url={image.Url}
-            height={this.getSize()}
-            width={this.getSize()}
+            height={this.getImageSize()}
+            width={this.getImageSize()}
           />
         </Anchor>
       </Touchable>
@@ -85,10 +85,9 @@ class GetCandid extends React.PureComponent {
   render() {
     const { candidData, labels } = this.props;
     const data = candidData && candidData.Views;
-
     return (
       <Wrapper>
-        {labels && (
+        {labels.title && (
           <>
             <Title
               mobileFontFamily="primary"
@@ -108,29 +107,28 @@ class GetCandid extends React.PureComponent {
               text={labels.titleDescription}
               textAlign="center"
             />
-          </>
-        )}
-        {data && (
-          <ImageWrapper>
-            <FlatList
-              numColumns={3}
-              data={data.slice(0, 9)}
-              keyExtractor={this.keyExtractor}
-              renderItem={this.renderItem}
+            {data && (
+              <ImageWrapper>
+                <FlatList
+                  numColumns={3}
+                  data={data.slice(0, 9)}
+                  keyExtractor={this.keyExtractor}
+                  renderItem={this.renderItem}
+                  initialNumToRender={6}
+                />
+              </ImageWrapper>
+            )}
+            <Anchor
+              fontFamily="secondary"
+              color="gray.900"
+              anchorVariation="primary"
+              noLink
+              dataLocator=""
+              text={labels.btnSeeMore}
+              visible
+              onPress={this.navigateToPage}
             />
-          </ImageWrapper>
-        )}
-        {labels && (
-          <Anchor
-            fontFamily="secondary"
-            color="gray.900"
-            anchorVariation="primary"
-            noLink
-            dataLocator=""
-            text={labels.btnSeeMore}
-            visible
-            onPress={this.navigateToPage}
-          />
+          </>
         )}
       </Wrapper>
     );
@@ -144,11 +142,7 @@ GetCandid.defaultProps = {
     Views: [],
     Tags: [],
   },
-  labels: {
-    title: 'title',
-    titleDescription: 'titleDescription',
-    btnSeeMore: 'btnSeeMore',
-  },
+  labels: {},
   fetchCandidData: () => {},
   navigation: {},
 };
