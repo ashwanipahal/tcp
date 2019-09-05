@@ -8,6 +8,9 @@ import {
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
   getSetCheckoutStage,
+  updateShipmentMethodSelection,
+  updateShippingAddress,
+  addNewShippingAddress,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -36,7 +39,10 @@ const {
   getDefaultShipmentID,
   getShippingSendOrderUpdate,
   getSaveToAddressBook,
-  getOnFileAddressKey
+  getOnFileAddressKey,
+  getShippingAddress,
+  getDefaultShipping,
+  getAddEditResponseAddressId,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -72,6 +78,9 @@ export class CheckoutContainer extends React.Component<Props> {
       orderHasShipping,
       routeToPickupPage,
       setCheckoutStage,
+      updateShippingMethodSelection,
+      updateShippingAddressData,
+      addNewShippingAddressData,
     } = this.props;
     return (
       <CheckoutPage
@@ -100,6 +109,9 @@ export class CheckoutContainer extends React.Component<Props> {
         cartOrderItems={cartOrderItems}
         routeToPickupPage={routeToPickupPage}
         setCheckoutStage={setCheckoutStage}
+        updateShippingMethodSelection={updateShippingMethodSelection}
+        updateShippingAddressData={updateShippingAddressData}
+        addNewShippingAddressData={addNewShippingAddressData}
       />
     );
   }
@@ -128,6 +140,15 @@ export const mapDispatchToProps = dispatch => {
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
     },
+    updateShippingMethodSelection: payload => {
+      dispatch(updateShipmentMethodSelection(payload));
+    },
+    updateShippingAddressData: payload => {
+      dispatch(updateShippingAddress(payload));
+    },
+    addNewShippingAddressData: payload => {
+      dispatch(addNewShippingAddress(payload));
+    },
   };
 };
 
@@ -146,16 +167,19 @@ const mapStateToProps = state => {
       isOrderUpdateChecked: getShippingSendOrderUpdate(state),
       shippingLabels: getShippingLabels(state),
       smsSignUpLabels: getSmsSignUpLabels(state),
-      selectedShipmentId: getSelectedShipmentId(state),
-      address: getAddressFields(state),
-      addressPhoneNumber: getAddressPhoneNo(state),
+      selectedShipmentId: getSelectedShipmentId(state), // selected shipment radio button
+      address: getAddressFields(state), // address for fields data
+      addressPhoneNumber: getAddressPhoneNo(state), // phone field inside address for section
       emailSignUpLabels: getEmailSignUpLabels(state),
-      shipmentMethods: getShipmentMethods(state),
-      defaultShipmentId: getDefaultShipmentID(state),
+      shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
+      defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
       isSaveToAddressBookChecked: getSaveToAddressBook(state),
       userAddresses: getAddressListState(state),
-      onFileAddressKey: getOnFileAddressKey(state),
-      newUserPhoneNo: getUserPhoneNumber(state)
+      onFileAddressKey: getOnFileAddressKey(state), // selected address Id in dropdown
+      newUserPhoneNo: getUserPhoneNumber(state), // newly added user phone number to be shown as default in mobile number field in address form
+      shippingAddressId: getShippingAddress(state), // address user has selected should be shown as selected in dropdown, not the default address
+      setAsDefaultShipping: getDefaultShipping(state),
+      addEditResponseAddressId: getAddEditResponseAddressId(state), //  when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
     },
     // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
     // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,

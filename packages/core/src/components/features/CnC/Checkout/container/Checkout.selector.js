@@ -100,7 +100,7 @@ export const getUserContactInfo = createSelector(
 );
 
 function getShippingDestinationValues(state) {
-  const { method, emailAddress, ...result } = JSON.parse(
+  const { emailAddress, ...result } = JSON.parse(
     JSON.stringify(state.Checkout.getIn(['values', 'shipping']))
   );
   // For shipping address when user logged-in, override email address that of user.
@@ -111,6 +111,17 @@ function getShippingDestinationValues(state) {
     ...result,
   };
 }
+
+const getShippingAddress = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { onFileAddressId } = shippingDestinationValues;
+    return onFileAddressId;
+  }
+);
+
+const getAddEditResponseAddressId = state =>
+  state.Checkout.getIn(['values', 'addEditResponseAddressId']);
 
 // function getAddressBook(state, country, noBillingAddresses) {
 //   let addresses = [];
@@ -160,7 +171,6 @@ function getDefaultAddress(/* state, country, noBillingAddresses */) {
   // } else {
   //   return defaultAddress;
   // }
-
 }
 
 export const getPickupValues = createSelector(
@@ -247,7 +257,6 @@ const getOnFileAddressKey = state => {
   return selector(state, 'onFileAddressKey');
 };
 
-
 const getAddressFields = state => {
   const selector = formValueSelector('checkoutShipping');
   return selector(state, 'address');
@@ -257,6 +266,11 @@ const getAddressPhoneNo = createSelector(
   getAddressFields,
   addressFields => addressFields && addressFields.phoneNumber
 );
+
+const getDefaultShipping = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'defaultShipping');
+};
 
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
@@ -317,9 +331,20 @@ const getShipmentMethods = state => {
 };
 
 const getDefaultShipmentID = createSelector(
-  getShipmentMethods,
-  shipmentMethods => {
-    const defaultMethod = shipmentMethods.find((method, index) => method.isDefault === true || index === 0);
+  [getShipmentMethods, getShippingDestinationValues],
+  (shipmentMethods, shippingDestinationValues) => {
+    if (shippingDestinationValues && shippingDestinationValues.method) {
+      const {
+        method: { shippingMethodId },
+      } = shippingDestinationValues;
+      if (shippingMethodId) {
+        const defaultShipment = shipmentMethods.find(method => method.id === shippingMethodId);
+        return defaultShipment && defaultShipment.id;
+      }
+    }
+    const defaultMethod = shipmentMethods.find(
+      (method, index) => method.isDefault === true || index === 0
+    );
     return defaultMethod && defaultMethod.id;
   }
 );
@@ -480,5 +505,9 @@ export default {
   getPickUpContactFormLabels,
   getUserEmail,
   getSaveToAddressBook,
-  getOnFileAddressKey
+  getOnFileAddressKey,
+  getShippingSmsSignUpFields,
+  getShippingAddress,
+  getDefaultShipping,
+  getAddEditResponseAddressId,
 };

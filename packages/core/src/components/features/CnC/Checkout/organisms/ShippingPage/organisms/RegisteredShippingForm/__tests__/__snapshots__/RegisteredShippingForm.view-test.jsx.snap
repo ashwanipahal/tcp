@@ -1,0 +1,4237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={[Function]}
+        dataLocator="shipping-address"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressLine": Array [
+                      "addressline 1",
+                      "addressline 2",
+                    ],
+                    "city": "test city",
+                    "country": "test country",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "phone1": "1234567890",
+                    "primary": "true",
+                  }
+                }
+                className="address"
+                isDefault={true}
+                showCountry={true}
+                showName={true}
+                showPhone={true}
+              />,
+              "title": "test test (Default)",
+              "value": undefined,
+            },
+            Object {
+              "content": <ForwardRef
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="black"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                + Add New Address
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  />
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={[Function]}
+        dataLocator="shipping-address"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressLine": Array [
+                      "addressline 1ooo",
+                      "addressline 2aaa",
+                    ],
+                    "city": "test city",
+                    "country": "test country bbbb",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "phone1": "1234567890",
+                  }
+                }
+                className="address"
+                isDefault={false}
+                showCountry={true}
+                showName={true}
+                showPhone={true}
+              />,
+              "title": "test test ",
+              "value": undefined,
+            },
+            Object {
+              "content": <ForwardRef
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="black"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                + Add New Address
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "address.phoneNumber",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": "",
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-LRG"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="saveToAddressBook"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Save to my address book
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={false}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={true}
+    modalType="add"
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={[Function]}
+        dataLocator="shipping-address"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressId": "123",
+                    "addressLine": Array [
+                      "addressline 1 hhh",
+                      "addressline 2 mmm",
+                    ],
+                    "city": "test city",
+                    "country": "test country hhh",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "phone1": "1234567890",
+                  }
+                }
+                className="address"
+                isDefault={false}
+                showCountry={true}
+                showName={true}
+                showPhone={true}
+              />,
+              "title": "test test ",
+              "value": "123",
+            },
+            Object {
+              "content": <ForwardRef
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="black"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                + Add New Address
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 5,
+        }
+      }
+    >
+      <Address
+        address={
+          Object {
+            "addressId": "123",
+            "addressLine": Array [
+              "addressline 1 hhh",
+              "addressline 2 mmm",
+            ],
+            "city": "test city",
+            "country": "test country hhh",
+            "firstName": "test",
+            "lastName": "test",
+            "phone1": "1234567890",
+          }
+        }
+        className="shipping__address"
+        dataLocatorPrefix="address"
+        isDefault={false}
+        showCountry={true}
+        showName={true}
+        showPhone={false}
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "address.phoneNumber",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": "",
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={true}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={true}
+    modalType="edit"
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDownChange 1`] = `
+<div
+  className=""
+  isEditing={true}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={true}
+    >
+      <Field
+        component={[Function]}
+        dataLocator="shipping-address"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressId": "123",
+                    "addressLine": Array [
+                      "addressline 1 hhh",
+                      "addressline 2 mmm",
+                    ],
+                    "city": "test city",
+                    "country": "test country hhh",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "phone1": "1234567890",
+                  }
+                }
+                className="address"
+                isDefault={false}
+                showCountry={true}
+                showName={true}
+                showPhone={true}
+              />,
+              "title": "test test ",
+              "value": "123",
+            },
+            Object {
+              "content": <ForwardRef
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="black"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                + Add New Address
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "address.phoneNumber",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": "",
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "saveToAddressBook",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": false,
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={true}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={false}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-XL edit-cta "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="edit-shipping-cancel-btn"
+        fill="WHITE"
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="edit-shipping-save-btn"
+        fill="BLUE"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddress true 1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={[Function]}
+        dataLocator="shipping-address"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressLine": Array [
+                      "addressline 1ttt",
+                      "addressline 2bbb",
+                    ],
+                    "city": "test city",
+                    "country": "test country abc",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "phone1": "1234567890",
+                  }
+                }
+                className="address"
+                isDefault={false}
+                showCountry={true}
+                showName={true}
+                showPhone={true}
+              />,
+              "title": "test test ",
+              "value": undefined,
+            },
+            Object {
+              "content": <ForwardRef
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="black"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                + Add New Address
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "address.phoneNumber",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": "",
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-LRG"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="saveToAddressBook"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Save to my address book
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={true}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddress true and isSaveToAddressBookChecked true 1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={[Function]}
+        dataLocator="shipping-address"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressLine": Array [
+                      "addressline 1ttt",
+                      "addressline 2bbb",
+                    ],
+                    "city": "test city",
+                    "country": "test country abc",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "phone1": "1234567890",
+                  }
+                }
+                className="address"
+                isDefault={false}
+                showCountry={true}
+                showName={true}
+                showPhone={true}
+              />,
+              "title": "test test ",
+              "value": undefined,
+            },
+            Object {
+              "content": <ForwardRef
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="black"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                + Add New Address
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "address.phoneNumber",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": "",
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-LRG"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="saveToAddressBook"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Save to my address book
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={false}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly with isEditing true 1`] = `
+<div
+  className=""
+  isEditing={true}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={true}
+    >
+      <Field
+        component={[Function]}
+        dataLocator="shipping-address"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressLine": Array [
+                      "addressline 1tttttt",
+                      "addressline 2bbbbbbb",
+                    ],
+                    "city": "test city",
+                    "country": "test country abcccc",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "phone1": "1234567890",
+                  }
+                }
+                className="address"
+                isDefault={false}
+                showCountry={true}
+                showName={true}
+                showPhone={true}
+              />,
+              "title": "test test ",
+              "value": undefined,
+            },
+            Object {
+              "content": <ForwardRef
+                className={null}
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="black"
+                letterSpacing="normal"
+                lineHeight="normal"
+                onClick={[Function]}
+                textAlign="left"
+              >
+                + Add New Address
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "address.phoneNumber",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": "",
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="small"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        Edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={true}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={false}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-XL edit-cta "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="edit-shipping-cancel-btn"
+        fill="WHITE"
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="edit-shipping-save-btn"
+        fill="BLUE"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddEditModal 1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <div
+      className="address-form"
+    >
+      <FormSection
+        name="address"
+      >
+        <Styled(AddressFields)
+          addressPhoneNo={null}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.phoneNumber",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutShipping"
+          formSection="address"
+          isGuest={false}
+          showDefaultCheckbox={false}
+          variation="secondary"
+        />
+      </FormSection>
+    </div>
+  </Styled(Col)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-LRG"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="saveToAddressBook"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Save to my address book
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={true}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "type": "edit",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddEditModal 2`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <div
+      className="address-form"
+    >
+      <FormSection
+        name="address"
+      >
+        <Styled(AddressFields)
+          addressPhoneNo={null}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.phoneNumber",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutShipping"
+          formSection="address"
+          isGuest={false}
+          showDefaultCheckbox={false}
+          variation="secondary"
+        />
+      </FormSection>
+    </div>
+  </Styled(Col)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-LRG"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="saveToAddressBook"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Save to my address book
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={true}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "type": "add",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddNewAddress 1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <div
+      className="address-form"
+    >
+      <FormSection
+        name="address"
+      >
+        <Styled(AddressFields)
+          addressPhoneNo={null}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.phoneNumber",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutShipping"
+          formSection="address"
+          isGuest={false}
+          showDefaultCheckbox={false}
+          variation="secondary"
+        />
+      </FormSection>
+    </div>
+  </Styled(Col)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-LRG"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="saveToAddressBook"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Save to my address book
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={true}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleIsEditing 1`] = `
+<div
+  className=""
+  isEditing={null}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <div
+      className="address-form"
+    >
+      <FormSection
+        name="address"
+      >
+        <Styled(AddressFields)
+          addressPhoneNo={null}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.phoneNumber",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          formName="checkoutShipping"
+          formSection="address"
+          isGuest={false}
+          showDefaultCheckbox={false}
+          variation="secondary"
+        />
+      </FormSection>
+    </div>
+  </Styled(Col)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="elem-mb-LRG"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="saveToAddressBook"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Save to my address book
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="default-shipping"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      isEditing={null}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bxivhb",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: inline-flex;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bxivhb",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        disabled={true}
+        name="defaultShipping"
+        showDefaultCheckbox={false}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Set as default shipping address
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <AddEditShippingAddress
+    actionButtons={[Function]}
+    addressFields={[Function]}
+    defaultOptions={[Function]}
+    modalState={false}
+    modalType={null}
+    toggleAddEditModal={[Function]}
+  />
+</div>
+`;

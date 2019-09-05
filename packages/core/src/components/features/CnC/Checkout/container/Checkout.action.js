@@ -14,6 +14,11 @@ export const checkoutSetCartData = payload => ({
   payload,
 });
 
+export const updateShipmentMethodSelection = payload => ({
+  type: constants.CHECKOUT_UPDATE_SHIPMENT_METHOD_SELECTION,
+  payload,
+});
+
 export function getSetGiftWrapOptionsActn(giftWrapOptions) {
   return {
     giftWrapOptions,
@@ -268,5 +273,27 @@ export const emailSignupStatus = payload => {
 export const routeToPickupPage = () => {
   return {
     type: constants.ROUTE_TO_PICKUP_PAGE,
+  };
+};
+
+export const updateShippingAddress = payload => {
+  return {
+    type: constants.UPDATE_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+
+export const addNewShippingAddress = payload => {
+  return {
+    type: constants.ADD_NEW_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+
+export const setOnFileAddressKey = payload => {
+  // when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
+  return {
+    type: constants.SET_ON_FILE_ADDRESS_KEY,
+    payload,
   };
 };

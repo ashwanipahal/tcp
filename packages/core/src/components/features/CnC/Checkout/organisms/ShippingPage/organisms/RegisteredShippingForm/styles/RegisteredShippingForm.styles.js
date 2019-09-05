@@ -6,7 +6,7 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
-    pointer-events: ${props => props.isEditing ? 'none' : 'auto'};
+    pointer-events: ${props => (props.isEditing ? 'none' : 'auto')};
   }
   .dropdownActiveClass {
     background-color: ${props => props.theme.colorPalette.gray[900]};
@@ -43,10 +43,11 @@ const styles = css`
   }
 
   .default-shipping {
-    margin-bottom:0;
+    margin-bottom: 0;
     @media ${props => props.theme.mediaQuery.medium} {
-      padding-bottom: ${props => !props.isEditing ? props.theme.spacing.ELEM_SPACING.XL : 0};
-      border-bottom: ${props => !props.isEditing ? `1px solid ${props.theme.colorPalette.gray[500]}` : 'none'};
+      padding-bottom: ${props => (!props.isEditing ? props.theme.spacing.ELEM_SPACING.XL : 0)};
+      border-bottom: ${props =>
+        !props.isEditing ? `1px solid ${props.theme.colorPalette.gray[500]}` : 'none'};
     }
   }
 
@@ -61,6 +62,18 @@ const styles = css`
     }
   }
 
+  .top-border {
+    padding-top: ${props => props.theme.spacing.MED};
+    border-top: 1px solid ${props => props.theme.colorPalette.gray[300]};
+  }
+
+  input {
+    background-color: ${props => (props.modalState ? props.theme.colorPalette.white : '')};
+  }
+
+  .add-address {
+    cursor: default;
+  }
 `;
 
 export default styles;

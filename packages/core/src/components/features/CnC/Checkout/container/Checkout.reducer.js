@@ -20,6 +20,7 @@ const initialState = fromJS({
       deviceData: '',
       supportedByBrowser: true,
     },
+    addEditResponseAddressId: null,
   },
   options: {
     shippingMethods: [],
@@ -73,6 +74,7 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':
       return checkout.setIn(['uiFlags', 'stage'], action.payload);
+
     // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
     //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
@@ -126,6 +128,8 @@ export default function CheckoutReducer(state = initialState, action) {
     //   return merge(orderValues, { giftWrap: action.giftWrap });
     case CheckoutConstants.CHECKOUT_VALUES_SET_SMS_UPDATES:
       return checkout.setIn(['values', 'smsInfo'], { numberForUpdates: action.phoneNumber });
+    case CheckoutConstants.SET_ON_FILE_ADDRESS_KEY:
+      return checkout.setIn(['values', 'addEditResponseAddressId'], action.payload.addressId);
     // case 'CHECKOUT_VALUES_SET_SMS_MARKETING':
     //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':

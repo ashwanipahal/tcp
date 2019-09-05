@@ -1,5 +1,4 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import { formValueSelector } from 'redux-form';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
@@ -36,6 +35,13 @@ import { addAddressGet } from '../../../../common/organisms/AddEditAddress/conta
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { routerPush, isMobileApp } from '../../../../../utils';
+import {
+  updateShipmentMethodSelection,
+  updateShippingAddress,
+  addNewShippingAddress,
+  routeToPickupPage,
+  addRegisteredUserAddress,
+} from './Checkout.saga.util';
 
 const {
   getRecalcOrderPointsInterval,
@@ -96,7 +102,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   const actions = [
     resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
     resCheckoutValues.pickUpAlternative &&
-    getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
+      getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
     //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
@@ -185,11 +191,9 @@ function* submitPickupSection(data) {
   // let pickupOperator = getPickupOperator(this.store);
   // let storeState = this.store.getState();
   // let isEmailSignUpAllowed = true;
-
   // if ((yield select(isUsSite)) && (yield select(isGuest))) {
   //   isEmailSignUpAllowed = false;
   // }
-
   //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
   //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
   //  }
@@ -199,7 +203,6 @@ function* submitPickupSection(data) {
   } else {
     yield put(getSetCheckoutStage('shipping'));
   }
-
   /* In the future I imagine us sending the SMS to backend for them to
        store so it will be loaded in the below loadUpdatedCheckoutValues function.
        for now we are storing it only on browser so will lose this info on page re-load.
@@ -213,11 +216,9 @@ function* submitPickupSection(data) {
   //   throw getSubmissionError(this.store, 'submitPickupSection', err);
   // });
 }
-
 // function setCartInfo(cartInfo, isSetCartItems) {
 //   return updateCartInfo(cartInfo, isSetCartItems);
 // }
-
 function* loadShipmentMethods(miniAddress, throwError) {
   let address;
   if (miniAddress.formName) {
@@ -230,7 +231,6 @@ function* loadShipmentMethods(miniAddress, throwError) {
   } else {
     address = miniAddress;
   }
-
   try {
     const res = yield getShippingMethods(
       address.state || '',
@@ -246,7 +246,6 @@ function* loadShipmentMethods(miniAddress, throwError) {
     }
   }
 }
-
 function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError) {
   // Note: this convoluted logic is due to BE. If address lines do not contain a pobox
   // then in the US we should only respond to state changes, and in Canada only to
@@ -267,7 +266,6 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
     return yield;
   }
   oldHasPOB = newHasPOB;
-
   yield put(setIsLoadingShippingMethods(true));
   return yield loadShipmentMethods(miniAddress, throwError);
 }
@@ -287,7 +285,6 @@ function* loadCheckoutDetail(defaultShippingMethods) {
     // const isMobile = getIsMobile;
     if (defaultShippingMethods || isGuestUser || (!hasShipping && !defaultAddress)) {
       // isMobile check is left
-
       // if some data is missing request defaults (new user would have preselected
       //  country and zipcode, but not state but service needs all 3 of them)
       yield validDateAndLoadShipmentMethods(
@@ -582,43 +579,6 @@ function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailA
   }
 }
 
-
-function* addRegisteredUserAddress({ onFileAddressKey, address, phoneNumber, emailAddress, setAsDefault, saveToAccount }) {
-  console.log('in addRegisteredUserAddress')
-
-  //   if (onFileAddressKey) {
-  //   let selectedAddressBookEntry = yield select(getAddressByKey(onFileAddressKey));
-  //   addOrEditAddressPromise = new Promise(resolve =>
-  //     resolve({ addressId: selectedAddressBookEntry && selectedAddressBookEntry.addressId })
-  //   );
-  // } else {
-  // const oldShippingDestination = yield select(getShippingDestinationValues);
-  // let oldSelectedAddressBookEntry = yield select(
-  //   getAddressByKey(store.getState(), oldShippingDestination.onFileAddressKey)
-  // );
-  // onFileAddressKey = !oldSelectedAddressBookEntry
-  //   ? oldShippingDestination.onFileAddressKey
-  //   : null;
-  return yield call(
-    addAddressGet,
-    {
-      payload: {
-        ...address,
-        address1: address.addressLine1,
-        address2: address.addressLine2,
-        zip: address.zipCode,
-        phoneNumber,
-        emailAddress,
-        primary: `${setAsDefault}`,
-        // phone1Publish: `${saveToAccount}`,
-        fromPage: '',
-      },
-    },
-    true // add to address book inside redux-store
-  );
-  // }
-}
-
 function* submitShippingSection({ payload: formData }) {
   // console.log('>>>', { formData });
   const {
@@ -662,9 +622,7 @@ function* submitShippingSection({ payload: formData }) {
   // ) {
   //   recalcFlag = true;
   // }
-
   yield put(setAddressError(null));
-
   const pendingPromises = [
     // add the requested gift wrap options
     // giftWrap.hasGiftWrapping && call(addGiftWrappingOption, giftWrap.message, giftWrap.optionId),
@@ -706,9 +664,18 @@ function* submitShippingSection({ payload: formData }) {
     // );
     // }
   } else {
-    addOrEditAddressRes = yield addRegisteredUserAddress({ onFileAddressKey, address, phoneNumber, emailAddress, setAsDefault, saveToAccount })
+    addOrEditAddressRes = yield addRegisteredUserAddress({
+      onFileAddressKey,
+      address,
+      phoneNumber,
+      emailAddress,
+      setAsDefault,
+      saveToAccount,
+    });
   }
-
+  const {
+    payload: { addressId },
+  } = addOrEditAddressRes;
   // Retrieve phone number info for sms updates
   const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
   // eslint-disable-next-line no-unused-expressions
@@ -718,7 +685,7 @@ function* submitShippingSection({ payload: formData }) {
     yield call(
       setShippingMethodAndAddressId,
       method.shippingMethodId,
-      addOrEditAddressRes.addressId,
+      addressId,
       false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
       transVibesSmsPhoneNo,
       addOrEditAddressRes.addressKey
@@ -740,12 +707,6 @@ function* submitShippingSection({ payload: formData }) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
-
-export function* routeToPickupPage(recalc) {
-  const path = `/checkout/pickup`;
-  return yield call(routerPush, path, path, { recalc });
-}
-
 export function* CheckoutSaga() {
   yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
@@ -753,6 +714,11 @@ export function* CheckoutSaga() {
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
   yield takeLatest(constants.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
   yield takeLatest(constants.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);
+  yield takeLatest(
+    constants.CHECKOUT_UPDATE_SHIPMENT_METHOD_SELECTION,
+    updateShipmentMethodSelection
+  );
+  yield takeLatest(constants.UPDATE_SHIPPING_ADDRESS, updateShippingAddress);
+  yield takeLatest(constants.ADD_NEW_SHIPPING_ADDRESS, addNewShippingAddress);
 }
-
 export default CheckoutSaga;

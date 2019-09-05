@@ -31,6 +31,7 @@ export class AddressFields extends React.PureComponent {
     className: PropTypes.string,
     variation: PropTypes.string,
     loadShipmentMethods: PropTypes.func.isRequired,
+    isGuest: PropTypes.bool,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -215,7 +216,7 @@ export class AddressFields extends React.PureComponent {
       addressFormLabels,
       variation,
       formSection,
-      isGuest
+      isGuest,
     } = this.props;
     return (
       <div className={className}>
@@ -334,6 +335,7 @@ AddressFields.defaultProps = {
   formSection: '',
   className: '',
   variation: 'primary',
+  isGuest: true,
 };
 
 export default withStyles(AddressFields, styles);

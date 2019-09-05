@@ -25,6 +25,17 @@ export default class ShippingPage extends React.PureComponent {
     defaultShipmentId: PropTypes.number,
     loadShipmentMethods: PropTypes.func.isRequired,
     routeToPickupPage: PropTypes.func.isRequired,
+    isSaveToAddressBookChecked: PropTypes.bool,
+    userAddresses: PropTypes.shape([]),
+    onFileAddressKey: PropTypes.string,
+    isMobile: PropTypes.bool,
+    newUserPhoneNo: PropTypes.number,
+    shippingAddressId: PropTypes.string,
+    setAsDefaultShipping: PropTypes.bool,
+    addNewShippingAddressData: PropTypes.func.isRequired,
+    updateShippingMethodSelection: PropTypes.func.isRequired,
+    saveToAddressBook: PropTypes.bool,
+    updateShippingAddressData: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -37,11 +48,27 @@ export default class ShippingPage extends React.PureComponent {
     orderHasPickUp: false,
     shipmentMethods: null,
     defaultShipmentId: null,
+    isSaveToAddressBookChecked: false,
+    userAddresses: [],
+    onFileAddressKey: null,
+    isMobile: false,
+    newUserPhoneNo: null,
+    shippingAddressId: null,
+    setAsDefaultShipping: false,
+    saveToAddressBook: false,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAddNewAddress: false,
+      defaultAddressId: null,
+    };
+  }
+
   componentDidUpdate(prevProps) {
-    const { address } = this.props;
-    const { address: prevAddress } = prevProps;
+    const { address, selectedShipmentId, updateShippingMethodSelection } = this.props;
+    const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
     if (address && prevAddress) {
       const {
         address: { addressLine1, addressLine2 },
@@ -57,12 +84,53 @@ export default class ShippingPage extends React.PureComponent {
         loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
-
+    if (selectedShipmentId !== prevSelectedShipmentId) {
+      updateShippingMethodSelection({ id: selectedShipmentId });
+    }
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { defaultAddress: prevDefaultAddress } = prevState;
+    const { userAddresses, addEditResponseAddressId } = nextProps;
+    if (
+      userAddresses &&
+      (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
+    ) {
+      const defaultAddress = userAddresses.filter(item => item.primary === 'true');
+      return { defaultAddressId: defaultAddress.size > 0 ? defaultAddress.get(0).addressId : '' };
+    }
+    if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
+      return { defaultAddressId: addEditResponseAddressId };
+    }
+    return null;
+  }
+
+  toggleAddNewAddress = () => {
+    const { isAddNewAddress } = this.state;
+    this.setState({ isAddNewAddress: !isAddNewAddress });
+  };
+
   submitShippingData = data => {
-    // console.log(data);
-    const { address, shipmentMethods, onFileAddressKey, defaultShipping, saveToAddressBook, smsSignUp = {} } = data;
+    const {
+      address,
+      shipmentMethods,
+      onFileAddressKey,
+      defaultShipping,
+      saveToAddressBook,
+      smsSignUp = {},
+    } = data;
+    const { isGuest, userAddresses } = this.props;
+    const { isAddNewAddress } = this.state;
+    let shipAddress = address;
+    if (!isGuest && userAddresses && userAddresses.size > 0 && !isAddNewAddress) {
+      shipAddress = userAddresses.find(item => item.addressId === onFileAddressKey);
+      if (shipAddress) {
+        const { addressLine } = shipAddress;
+        const [addressLine1, addressLine2] = addressLine;
+        shipAddress.addressLine1 = addressLine1;
+        shipAddress.addressLine2 = addressLine2;
+      }
+    }
 
     // const addAddressData = {
     //   applyToOrder: true,
@@ -82,29 +150,62 @@ export default class ShippingPage extends React.PureComponent {
         shippingMethodId: shipmentMethods.shippingMethodId,
       },
       shipTo: {
-        address: {
-          addressLine1: address.addressLine1,
-          addressLine2: address.addressLine2,
-          city: address.city,
-          country: address.country,
-          firstName: address.firstName,
-          lastName: address.lastName,
-          isCommercialAddress: false,
-          state: address.state,
-          zipCode: address.zipCode,
-        },
-        addressId: undefined,
-        emailAddress: address.emailAddress,
-
+        address: shipAddress,
+        addressId: shipAddress.addressId,
+        emailAddress: shipAddress.emailAddress,
         emailSignup: true,
         onFileAddressKey,
-        phoneNumber: address.phoneNumber,
+        phoneNumber: shipAddress.phoneNumber,
         saveToAccount: saveToAddressBook,
-        setAsDefault: defaultShipping || true,
+        setAsDefault: defaultShipping || shipAddress.primary === 'true',
       },
       smsInfo: {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
+      },
+    });
+  };
+
+  updateShippingAddress = () => {
+    const {
+      address,
+      onFileAddressKey,
+      setAsDefaultShipping,
+      saveToAddressBook,
+      updateShippingAddressData,
+    } = this.props;
+    updateShippingAddressData({
+      shipTo: {
+        address,
+        addressId: address.addressId,
+        emailAddress: address.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: address.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: setAsDefaultShipping,
+      },
+    });
+  };
+
+  addNewShippingAddress = () => {
+    const {
+      address,
+      onFileAddressKey,
+      setAsDefaultShipping,
+      saveToAddressBook,
+      addNewShippingAddressData,
+    } = this.props;
+    addNewShippingAddressData({
+      shipTo: {
+        address,
+        addressId: address.addressId,
+        emailAddress: address.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: address.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: setAsDefaultShipping,
       },
     });
   };
@@ -129,13 +230,12 @@ export default class ShippingPage extends React.PureComponent {
       userAddresses,
       onFileAddressKey,
       isMobile,
-      newUserPhoneNo
+      newUserPhoneNo,
+      shippingAddressId,
+      setAsDefaultShipping,
     } = this.props;
-    let defaultAddressId = null;
-    if (userAddresses) {
-      const defaultAddress = userAddresses.filter(address => address.primary === 'true')
-      defaultAddressId = defaultAddress.size > 0 ? defaultAddress.get(0).addressId : '';
-    }
+
+    const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     return (
       <>
         {shipmentMethods.length > 0 && (
@@ -149,7 +249,7 @@ export default class ShippingPage extends React.PureComponent {
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
               saveToAddressBook: !isGuest && !defaultAddressId,
-              onFileAddressKey: defaultAddressId
+              onFileAddressKey: defaultAddressId,
             }}
             selectedShipmentId={selectedShipmentId}
             checkPOBoxAddress={this.checkPOBoxAddress}
@@ -168,6 +268,13 @@ export default class ShippingPage extends React.PureComponent {
             isMobile={isMobile}
             newUserPhoneNo={newUserPhoneNo}
             defaultAddressId={defaultAddressId}
+            shippingAddressId={shippingAddressId}
+            isAddNewAddress={isAddNewAddress}
+            isEditing={isEditing}
+            toggleAddNewAddress={this.toggleAddNewAddress}
+            updateShippingAddress={this.updateShippingAddress}
+            setAsDefaultShipping={setAsDefaultShipping}
+            addNewShippingAddress={this.addNewShippingAddress}
           />
         )}
       </>
