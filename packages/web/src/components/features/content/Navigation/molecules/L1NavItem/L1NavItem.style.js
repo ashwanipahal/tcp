@@ -96,7 +96,6 @@ export default css`
         font-weight: 600;
         z-index: ${props => props.theme.zindex.zDrawer + 1};
         white-space: nowrap;
-        text-transform: uppercase;
       }
     }
   }

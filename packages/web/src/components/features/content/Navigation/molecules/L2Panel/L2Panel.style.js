@@ -124,7 +124,6 @@ export default css`
     .l2-nav-category-heading {
       padding: 0 0 15px 0;
       background: none;
-      text-transform: uppercase;
     }
     .l2-nav-category-divider {
       display: inline-block;
