@@ -93,7 +93,7 @@ const ProductList = props => {
               siblingProperties={siblingProperties}
               isEvenElement={isEvenElement}
               gridIndex={gridIndex}
-              isPLPredesign={false}
+              isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
               isKeepAliveKillSwitch={false}
               labels={labels}
             />

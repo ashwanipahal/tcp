@@ -61,7 +61,7 @@ class HomePageView extends React.PureComponent<Props> {
     return (
       <ScrollView>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <GetCandid apiConfig={apiConfig} />
+        <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth
           buttonVariation="variable-width"

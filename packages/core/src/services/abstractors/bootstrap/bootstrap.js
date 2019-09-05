@@ -5,10 +5,10 @@ import headerAbstractor from './header';
 import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
-import { getAPIConfig } from '../../../utils';
+import { getAPIConfig, isMobileApp } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
 // import { LABELS } from '../../../reduxStore/constants';
-import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
+import { defaultBrand, defaultChannel, defaultCountry, MobileChannel } from '../../api.constants';
 
 /**
  * Asynchronous function to fetch data from service for given array of moduleIds
@@ -97,7 +97,8 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }, mo
  */
 const bootstrap = async (pages, modules) => {
   const response = {};
-  const apiConfig = typeof getAPIConfig === 'function' ? getAPIConfig() : '';
+  const apiConfig = getAPIConfig();
+  const channelName = isMobileApp() ? MobileChannel : defaultChannel;
   const bootstrapParams = {
     pages,
     labels: {
@@ -106,7 +107,7 @@ const bootstrap = async (pages, modules) => {
       // category: LABELS.global,
     },
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
-    channel: defaultChannel,
+    channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
   };
 

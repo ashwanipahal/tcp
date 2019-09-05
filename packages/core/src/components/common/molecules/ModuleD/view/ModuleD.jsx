@@ -129,7 +129,7 @@ const ModuleD = (props: Props) => {
         <Row centered>
           <Anchor href={singleCTAButton.url} target={singleCTAButton.target}>
             <Button
-              buttonVariation="variable-width"
+              buttonVariation="fixed-width"
               className="moduleD_button"
               data-locator={getLocator('moduleD_button')}
             >
