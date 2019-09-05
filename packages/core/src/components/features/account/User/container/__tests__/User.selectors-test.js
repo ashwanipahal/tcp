@@ -16,6 +16,7 @@ import {
   getAnswersList,
   getDefaultStore,
   getProfileInfoTileData,
+  getChildren,
 } from '../User.selectors';
 import { USER_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
@@ -31,6 +32,7 @@ describe('#User selector', () => {
           isComplete: true,
         },
       },
+      children: [{ childId: '12345' }],
       isGuest: false,
       isPlcc: 'false',
       userBirthday: 'aug-8',
@@ -146,5 +148,9 @@ describe('#User selector', () => {
 
   it('#getProfileInfoTileData should return profile information data', () => {
     expect(getProfileInfoTileData(state).firstName).toBe('first');
+  });
+
+  it('#getChildren should return childrens', () => {
+    expect(getChildren(state).getIn(['0', 'childId'])).toBe('12345');
   });
 });

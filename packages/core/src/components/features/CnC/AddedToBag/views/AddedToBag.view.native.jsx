@@ -9,7 +9,7 @@ import {
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
-import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.view';
+import AddedToBagActions from '../../AddedToBagActions';
 import Anchor from '../../../../common/atoms/Anchor';
 
 const AddedToBag = ({
@@ -19,6 +19,7 @@ const AddedToBag = ({
   labels,
   quantity,
   handleContinueShopping,
+  navigation,
 }) => {
   return (
     <Modal
@@ -38,11 +39,16 @@ const AddedToBag = ({
       }}
     >
       <StyledWrapper>
-        {/* Below are place holders for different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
+        {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
         <AddedToBagWrapper>
           <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
           <AddedToBagViewPoints labels={labels} />
-          <AddedToBagActions labels={labels} />
+          <AddedToBagActions
+            labels={labels}
+            navigation={navigation}
+            closeModal={onRequestClose}
+            showAddTobag
+          />
           <BossBanner labels={labels} />
           <StyledAnchorWrapper>
             <Anchor
@@ -69,6 +75,11 @@ AddedToBag.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   quantity: PropTypes.string.isRequired,
   handleContinueShopping: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
+};
+
+AddedToBag.defaultProps = {
+  navigation: null,
 };
 
 export default AddedToBag;

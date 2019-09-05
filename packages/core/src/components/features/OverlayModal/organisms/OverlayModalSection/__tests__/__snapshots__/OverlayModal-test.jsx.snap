@@ -11,7 +11,7 @@ exports[`OverlayModal should render correctly 1`] = `
     id="dialogContent"
   >
     <button
-      className="modal__closeIcon hide-on-tablet hide-on-desktop"
+      className="modal__closeIcon hide-on-tablet hide-on-desktop "
       onClick={[Function]}
     />
     <div

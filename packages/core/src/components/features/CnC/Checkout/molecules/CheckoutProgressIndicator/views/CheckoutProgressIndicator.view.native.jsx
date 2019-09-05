@@ -22,21 +22,18 @@ const completedStage = require('../../../../../../../assets/checkout-tick.png');
 export class CheckoutProgressIndicator extends React.PureComponent {
   routeToPickup = () => {
     const { navigation } = this.props;
-    navigation.navigate(CheckoutConstants.CHECKOUT_PAGES_NAMES.CHECKOUT, {
-      nextToRoot: CheckoutConstants.CHECKOUT_PAGES_NAMES.PICKUP,
-    });
+    navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
   };
 
   render() {
-    const { activeStage } = this.props;
-    const availableStages = CheckoutConstants.CHECKOUT_STAGES.STAGES_ARRAY; // taking these hardcoded as of now, these will come dynamic and will be taken care as part of standard checkout ticket.
+    const { activeStage, availableStages } = this.props;
     let hasSeenActive = false;
     let hasSeenActiveLabel = false;
     return (
       <CheckoutProgressBar>
         <StepIndicatorContainer>
           {availableStages.map((stage, index) => {
-            if (availableStages[index] === activeStage) {
+            if (availableStages[index].toLowerCase() === activeStage.toLowerCase()) {
               hasSeenActive = true;
               return (
                 <ProgressStep>
@@ -66,7 +63,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
         </StepIndicatorContainer>
         <StepIndicatorLabelsContainer>
           {availableStages.map((stage, index) => {
-            if (availableStages[index] === activeStage) {
+            if (availableStages[index].toLowerCase() === activeStage.toLowerCase()) {
               hasSeenActiveLabel = true;
               return (
                 <ProgressStepLabels>
@@ -115,6 +112,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
 CheckoutProgressIndicator.propTypes = {
   activeStage: PropTypes.string.isRequired,
   navigation: PropTypes.shape({}),
+  availableStages: PropTypes.shape([]).isRequired,
 };
 CheckoutProgressIndicator.defaultProps = {
   navigation: null,

@@ -37,8 +37,11 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
 }
 
 export function* updateAddressPut({ payload }) {
+  const userEmail = yield select(getUserEmail);
+  const updatedPayload = { ...payload, ...{ email: userEmail } };
+
   try {
-    const res = yield call(updateAddress, payload);
+    const res = yield call(updateAddress, updatedPayload);
     if (res) {
       yield put(
         setAddressBookNotification({
