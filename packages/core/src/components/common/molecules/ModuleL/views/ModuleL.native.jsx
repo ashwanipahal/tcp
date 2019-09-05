@@ -13,6 +13,7 @@ import {
   LinkContainer,
   ListContainer,
 } from '../ModuleL.styles.native';
+import config from '../config';
 
 type Props = {
   imageGrid: Array<Object>,
@@ -57,6 +58,8 @@ const renderItem = (item, navigation) => {
           height={127}
           crop={image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
+          imageConfigs={config.IMG_DATA.crops[0]}
+          alt={image.alt}
         />
         <MessageContainer>
           <BodyCopyContainer width={width}>

@@ -69,6 +69,8 @@ class ModuleH extends React.PureComponent<Props, State> {
         testID={`${getLocator('moduleH_composite_image')}${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
+        alt={image.alt}
+        imageConfigs={config.IMG_DATA.imgConfig[0]}
       />
     );
   };

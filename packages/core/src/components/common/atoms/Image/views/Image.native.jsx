@@ -10,10 +10,11 @@ type Props = {
   url: string,
   crop: string,
   imgConfigs: string,
+  alt: string,
 };
 
 const ImageComp = (props: Props) => {
-  const { url, crop, source, imgConfigs, ...otherProps } = props;
+  const { url, crop, source, imgConfigs, alt, ...otherProps } = props;
   const cropVal = crop || '';
   const urlVal = url || '';
   const sourceVal = source || '';
@@ -23,6 +24,7 @@ const ImageComp = (props: Props) => {
       <Image
         {...otherProps}
         accessibilityRole="image"
+        accessibilityLabel={alt || ''}
         source={{ uri: cropImageUrl(urlVal, cropVal, imgConfigsVal) }}
       />
     );

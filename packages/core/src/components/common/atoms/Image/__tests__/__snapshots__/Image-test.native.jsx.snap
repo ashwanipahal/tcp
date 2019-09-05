@@ -9,10 +9,11 @@ exports[`ImageCompVanilla should pass source value 1`] = `
 
 exports[`ImageCompVanilla should render correctly 1`] = `
 <Image
+  accessibilityLabel=""
   accessibilityRole="image"
   source={
     Object {
-      "uri": "",
+      "uri": "/upload//",
     }
   }
 />

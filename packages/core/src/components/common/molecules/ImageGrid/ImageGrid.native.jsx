@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../atoms';
 import { Wrapper, ImageGridContainer, ImageGridItem } from './ImageGrid.style.native';
+import config from './config';
 
 const ImageGrid = props => {
   const { mediaList, imgWidth, column, gutter, imgHeight, dataLocator, navigation } = props;
@@ -20,6 +21,7 @@ const ImageGrid = props => {
                   gutter={gutter}
                   url={image.url}
                   alt={image.alt || image.title}
+                  imgConfigs={config.IMG_DATA.imgConfig[0]}
                 />
               </Anchor>
             );
