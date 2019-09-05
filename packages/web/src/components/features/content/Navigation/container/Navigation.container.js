@@ -42,6 +42,7 @@ const mapDispatchToProps = dispatch => {
     },
     hideL2Drawer: id => (e, isPropagate) => {
       if (!isPropagate) {
+        // stop default propagation
         e.preventDefault();
         e.stopPropagation();
       }
