@@ -60,4 +60,5 @@ AboutYouInformation.defaultProps = {
   },
   initialValues: {},
 };
+
 export default AboutYouInformation;

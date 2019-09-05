@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouInformation should render SurveyQuestion correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      asPath="/account/profile"
+      className="elem-mb-LRG"
+      fontSizeVariation="xlarge"
+      to="/account?id=profile"
+    >
+      <span
+        className="left-arrow"
+      >
+         
+      </span>
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
+  <Styled(FormPageHeading)
+    className="margin-none"
+    dataLocator="moreaboutyou-header"
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="AboutYouInformationForm"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "options1": Array [],
+        "options2": Array [],
+      }
+    }
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "lbl_profile_survey_header": "",
+        "lbl_profile_survey_save": "SAVE",
+      }
+    }
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+  />
+</Fragment>
+`;
+
+exports[`AboutYouInformation should render correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="elem-mb-LRG"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      asPath="/account/profile"
+      className="elem-mb-LRG"
+      fontSizeVariation="xlarge"
+      to="/account?id=profile"
+    >
+      <span
+        className="left-arrow"
+      >
+         
+      </span>
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
+  <Styled(FormPageHeading)
+    className="margin-none"
+    dataLocator="moreaboutyou-header"
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="AboutYouInformationForm"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "options1": Array [],
+        "options2": Array [],
+      }
+    }
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "lbl_profile_survey_header": "",
+        "lbl_profile_survey_save": "SAVE",
+      }
+    }
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+  />
+</Fragment>
+`;

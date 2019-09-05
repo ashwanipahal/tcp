@@ -110,6 +110,7 @@ export class AboutYouInformationForm extends React.PureComponent {
                   dataLocator={`moreaboutyou-checkboxoption-${index}`}
                   checked={option.selected}
                   onChange={() => this.onSelectOption(false, option.value)}
+                  className="aboutyou-checkbox"
                 >
                   {option.value}
                 </Field>
@@ -194,3 +195,4 @@ AboutYouInformationForm.defaultProps = {
 export default reduxForm({
   form: AboutYouInformationConstants.ABOUT_YOU_INFORMATION_FORM, // a unique identifier for this form
 })(withStyles(AboutYouInformationForm, styles));
+export { AboutYouInformationForm as AboutYouInformationFormVanilla };
