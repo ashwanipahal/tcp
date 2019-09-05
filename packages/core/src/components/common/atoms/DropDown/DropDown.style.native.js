@@ -6,7 +6,7 @@ const DropDownStyle = css`
     props.variation === 'primary'
       ? `border: ${props.dropDownStyle.border}px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
       : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
-          props.theme.colors.BUTTON.WHITE.BORDER
+          props.theme.colors.BLACK
         }`};
   background-color: ${props =>
     props.variation === 'primary'
@@ -54,7 +54,7 @@ const StyledLabel = styled.Text`
     !props.isFocused
       ? props.theme.typography.fontSizes.fs14
       : props.theme.typography.fontSizes.fs10};
-  color: ${props => props.theme.colorPalette.gray[900]};
+  color: ${props => props.theme.colors.BLACK};
   font-weight: ${props =>
     !props.isFocused
       ? props.theme.typography.fontWeights.regular
