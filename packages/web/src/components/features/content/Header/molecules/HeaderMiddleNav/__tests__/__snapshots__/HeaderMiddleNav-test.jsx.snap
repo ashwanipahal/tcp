@@ -39,7 +39,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="textRight false"
+      className="textRight header-middle-login-section false"
       colSize={
         Object {
           "large": 4,
@@ -185,7 +185,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
       />
     </Styled(Col)>
     <Styled(Col)
-      className="textRight false"
+      className="textRight header-middle-login-section false"
       colSize={
         Object {
           "large": 4,

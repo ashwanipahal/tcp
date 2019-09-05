@@ -163,7 +163,7 @@ class HeaderMiddleNav extends React.PureComponent {
               medium: 8,
               small: 6,
             }}
-            className={`textRight ${isSearchOpen && 'flexbox'}`}
+            className={`textRight header-middle-login-section ${isSearchOpen && 'flexbox'}`}
           >
             {userName ? (
               <React.Fragment>

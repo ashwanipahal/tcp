@@ -12,9 +12,10 @@ export const clearUserInfo = () => {
   };
 };
 
-export const getUserInfo = () => {
+export const getUserInfo = payload => {
   return {
     type: CONSTANTS.GET_USER_INFO,
+    payload,
   };
 };
 

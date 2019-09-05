@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
-import ProductList from '../molecules/ProductList/views';
+// import ProductList from '../molecules/ProductList/views';
+import ProductsGrid from '../molecules/ProductsGrid/views';
+import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
 
 import ProductListingStyle from '../ProductListing.style';
-import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 
@@ -15,7 +16,7 @@ import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.conta
 
 const ProductListView = ({
   className,
-  products,
+  productsBlock,
   currentNavIds,
   navTree,
   breadCrumbs,
@@ -67,12 +68,20 @@ const ProductListView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductList
-              products={products}
-              className={`${className} product-list`}
-              labels={labels}
-              {...otherProps}
-            />
+            <div className="count-section">
+              {totalProductsCount > 0 && (
+                <span className="items-count-content">
+                  Showing
+                  <span className="items-count-content-number">
+                    {totalProductsCount > 0 ? totalProductsCount : 0}
+                  </span>
+                  {totalProductsCount > 1 ? 'Items' : 'Item'}
+                </span>
+              )}
+            </div>
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
           </Col>
 
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -93,7 +102,7 @@ const ProductListView = ({
 
 ProductListView.propTypes = {
   className: PropTypes.string,
-  products: PropTypes.arrayOf(PropTypes.shape({})),
+  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   longDescription: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   /* eslint-disable */
@@ -112,7 +121,7 @@ ProductListView.propTypes = {
 
 ProductListView.defaultProps = {
   className: '',
-  products: [],
+  productsBlock: [],
   longDescription: [],
   currentNavIds: [],
   navTree: {},

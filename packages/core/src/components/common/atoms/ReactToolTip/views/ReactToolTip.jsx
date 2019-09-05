@@ -11,7 +11,6 @@ type Props = {
   direction: string,
   message: string,
   className: string,
-  showOn: string,
 };
 
 class ReactTooltip extends React.Component<Props> {
@@ -71,7 +70,7 @@ class ReactTooltip extends React.Component<Props> {
    * @function render - Function that renders and retunrs the tooltip component.
    */
   render() {
-    const { id, children, direction, message, className, showOn } = this.props;
+    const { id, children, direction, message, className } = this.props;
     const { displayTooltip } = this.state;
     return (
       <span className={className} ref={this.node}>
@@ -83,23 +82,7 @@ class ReactTooltip extends React.Component<Props> {
           </div>
         )}
         {/* eslint-disable-next-line */}
-        {showOn === 'hover' ? (
-          <span
-            onMouseOver={this.showHideTooltip}
-            onFocus={this.showHideTooltip}
-            onMouseLeave={this.showHideTooltip}
-          >
-            {children}
-          </span>
-        ) : (
-          <button
-            className="tool-tip-button"
-            onClick={this.showHideTooltip}
-            onKeyDown={this.handleClick}
-          >
-            {children}
-          </button>
-        )}
+        <span onClick={this.showHideTooltip}>{children}</span>
       </span>
     );
   }
