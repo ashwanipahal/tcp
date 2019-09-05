@@ -29,11 +29,13 @@ const CONSTANTS = {
     CHECKOUT: 'checkout',
     PICKUP: 'pickupPage',
     SHIPPING: 'shippingPage',
+    BILLING: 'billingPage',
   },
 
   CHECKOUT_ROUTES_NAMES: {
     CHECKOUT_PICKUP: 'CheckoutPickup',
     CHECKOUT_SHIPPING: 'CheckoutShipping',
+    CHECKOUT_BILLING: 'CheckoutBilling',
   },
 
   CHECKOUT_FLAGS_SET_LOAD_METHODS: 'CHECKOUT_FLAGS_SET_LOAD_METHODS',

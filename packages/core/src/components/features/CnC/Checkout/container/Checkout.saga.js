@@ -562,6 +562,14 @@ function* initCheckout() {
   }
 }
 
+function redirectToBilling(navigation) {
+  if (!isMobileApp()) {
+    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+  } else if (navigation) {
+    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+  }
+}
+
 function* saveLocalSmsInfo(smsInfo = {}) {
   let returnVal;
   const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
@@ -582,7 +590,7 @@ function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailA
   }
 }
 
-function* submitShippingSection({ payload: formData }) {
+function* submitShippingSection({ payload: { navigation, ...formData } }) {
   // console.log('>>>', { formData });
   const {
     // giftWrap,
@@ -695,6 +703,7 @@ function* submitShippingSection({ payload: formData }) {
   // eslint-disable-next-line no-unused-expressions
   yield saveLocalSmsInfo(smsInfo);
   yield all(pendingPromises);
+  redirectToBilling(navigation);
   try {
     yield call(
       setShippingMethodAndAddressId,
