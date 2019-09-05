@@ -19,6 +19,13 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
+  <ModuleB
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
   <Connect(GetCandid) />
   <Styled(CustomButton)
     buttonVariation="variable-width"

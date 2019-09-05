@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleNVanilla should match snapshot 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)
+      bannerPosition="overlay"
+    >
+      <Styled(View)>
+        <LinkText
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/tees",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "NEW WASHES",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "MORE FITS",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "SLIM, PLUS & HUSKY",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "SIZES UPTO 18!",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleB_header_text"
+          renderComponentInNewLine={true}
+          textAlign="center"
+          type="heading"
+          useStyle={true}
+        />
+        <Styled(View) />
+      </Styled(View)>
+      <Styled(View)>
+        <PromoBanner
+          bannerPosition="overlay"
+          locator="moduleB_promobanner_text"
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "overlay_banner_header",
+                    "text": "ALL BASIC DENIM",
+                  },
+                  Object {
+                    "style": "overlay_promo_banner_style",
+                    "text": "$ 7 80 &UP",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(ImageComp)
+      height={750}
+      url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+      width={750}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <ButtonList
+      buttonListVariation="imageCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "button": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Girl",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+            "image": Object {
+              "alt": "Graphic Tees",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Graphic Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Toddler Girl",
+              "title": "Toddler Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+            "image": Object {
+              "alt": "Graphic Tees",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Graphic Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Boy",
+              "title": "Boy",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+            "image": Object {
+              "alt": "Graphic Tees",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Graphic Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Toddler Boy",
+              "title": "Toddler Boy",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+            "image": Object {
+              "alt": "Graphic Tees",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Graphic Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Baby",
+              "title": "Baby",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+            "image": Object {
+              "alt": "Graphic Tees",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Graphic Tees",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+        ]
+      }
+      color="black"
+      locator="moduleB_cta_links"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
