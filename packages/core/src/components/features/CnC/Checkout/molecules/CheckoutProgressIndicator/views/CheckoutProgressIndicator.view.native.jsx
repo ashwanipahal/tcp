@@ -46,8 +46,6 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                       anchorVariation="primary"
                       fontWeightVariation="active"
                       onPress={this.routeToPickup}
-                      // noLink
-                      to="/#"
                       dataLocator=""
                       text={stage}
                     />
@@ -87,8 +85,6 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                     anchorVariation="primary"
                     fontWeightVariation="active"
                     onPress={this.routeToPickup}
-                    // noLink
-                    to="/#"
                     dataLocator=""
                     text={stage}
                   />

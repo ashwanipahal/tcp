@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 export const CheckoutProgressBar = styled.View`
   justify-content: center;
   align-items: center;
-  padding: ${props => props.theme.spacing.LAYOUT_SPACING.XS} 15%;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 15%
+    ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export const StepIndicatorContainer = styled.View`

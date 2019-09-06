@@ -25,7 +25,6 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
           locator=""
           onPress={[Function]}
           text="pickup"
-          to="/#"
           visible={false}
         />
       </Styled(View)>
@@ -52,7 +51,6 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
           locator=""
           onPress={[Function]}
           text="shipping"
-          to="/#"
           visible={false}
         />
       </Styled(View)>
