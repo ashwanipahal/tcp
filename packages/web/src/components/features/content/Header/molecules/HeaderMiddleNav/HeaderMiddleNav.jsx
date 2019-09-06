@@ -215,6 +215,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
             <Navigation
               openNavigationDrawer={navigationDrawer.open}
               closeNavigationDrawer={!navigationDrawer.open}
+              closeNav={closeNavigationDrawer}
             />
           </Col>
         </Row>

@@ -19,6 +19,7 @@ const NavBar = props => {
     l3Drawer,
     removeL1Focus,
     accessibilityLabels,
+    closeNav,
   } = props;
 
   return (
@@ -79,6 +80,7 @@ const NavBar = props => {
                   hideL3Drawer={hideL3Drawer}
                   l3Drawer={l3Drawer}
                   accessibilityLabels={accessibilityLabels}
+                  closeNav={closeNav}
                 />
               </Drawer>
             </L1NavItem>
@@ -96,6 +98,7 @@ NavBar.propTypes = {
   accessibilityLabels: PropTypes.shape({}).isRequired,
   openL2Drawer: PropTypes.func.isRequired,
   hideL2Drawer: PropTypes.func.isRequired,
+  closeNav: PropTypes.func.isRequired,
   openDrawer: PropTypes.string.isRequired,
   closeDrawer: PropTypes.bool.isRequired,
   openL3Drawer: PropTypes.func.isRequired,

@@ -1,5 +1,7 @@
+import queryString from 'query-string';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { isMobileApp } from '../../../../../utils';
+import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
 
 const getIndex = data => {
   return data && data.some(category => !!(category && category.url)) ? data.length : 0;
@@ -70,7 +72,8 @@ export const findCategoryIdandName = (data, category) => {
 
     const navUrl = extractCategory(data[iterator].url && data[iterator].url.replace('/c?cid=', ''));
     if (
-      data[iterator].categoryContent.categoryId === categoryId ||
+      (data[iterator].categoryContent &&
+        data[iterator].categoryContent.categoryId === categoryId) ||
       (navUrl && navUrl.toLowerCase()) === (categoryId && categoryId.toLowerCase())
     ) {
       categoryFound.push(getRequiredCategoryData(data[iterator]));
@@ -91,12 +94,15 @@ export const findCategoryIdandName = (data, category) => {
 
 // TODO - refactor this function - this is random and dummy
 export const matchPath = (url, param) => {
-  if (param === '/search/' && url.indexOf(param) !== -1) {
+  if (param === '/search' && url.indexOf(param) !== -1) {
     return {
       searchTerm: url,
     };
   }
-  if (param === '/c/' && url.indexOf(param) !== -1) {
+  if (
+    (param === '/c?cid=' && url.indexOf(param) !== -1) ||
+    (param === '/c/' && url.indexOf(param) !== -1)
+  ) {
     const urlWithCat = url.split(param)[1];
     return {
       listingKey: urlWithCat,
@@ -165,7 +171,8 @@ export const isSearch = () => {
 };
 
 export const matchValue = (isSearchPage, location) => {
-  const params = isSearchPage ? '/search/' : '/c/';
+  const categoryParam = isMobileApp() ? '/c?cid=' : '/c/';
+  const params = isSearchPage ? '/search/' : categoryParam;
   const pathname = isMobileApp() ? location : window.location.pathname;
   return matchPath(pathname, params);
 };
@@ -273,7 +280,12 @@ export function getProductsAndTitleBlocks(state, productBlocks = []) {
   return productsAndTitleBlocks;
 }
 
-export const getPlpCutomizersFromUrlQueryString = () => {
-  // TODO - this should be fixed in the filters PR - check and update
-  return '';
+export const getPlpCutomizersFromUrlQueryString = urlQueryString => {
+  const queryParams = queryString.parse(urlQueryString);
+  Object.keys(queryParams).forEach(key => {
+    const value = decodeURIComponent(queryParams[key]);
+    queryParams[key] =
+      key && (key.toLowerCase() === FACETS_FIELD_KEY.sort ? value : value.split(','));
+  }); // Fetching Facets and sort key from the URL query string
+  return queryParams;
 };
