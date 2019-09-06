@@ -19,21 +19,22 @@ export const AddEditAddress = ({
   isMakeDefaultDisabled,
   formErrorMessage,
 }) => {
-  const errorObject = addressResponse && addressResponse.get('errors');
-
   return (
     <div className={`${className} addEditAddress`}>
       <Grid>
-        {errorObject && (
-          <Notification
-            status="error"
-            colSize={{ large: 12, medium: 8, small: 6 }}
-            message={errorObject.getIn(['0', 'errorKey'])}
-          />
-        )}
+        <Notification
+          status="error"
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={'hello'}
+        />
+
         <AddressVerification
           onSuccess={submitAddressFormAction}
-          heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
+          heading={
+            isEdit
+              ? addressFormLabels.editAddress
+              : addressFormLabels.addAddressHeading
+          }
           onError={submitAddressFormAction}
         />
         <AddressFormComponent

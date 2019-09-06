@@ -32,18 +32,18 @@ export const addAddress = args => {
           city: args.city,
           country: args.country,
           firstName: args.firstName,
-          lastName: args.lastName,
-          nickName: addressKey,
-          phone1: args.phoneNumber,
-          phone1Publish: args.phone1Publish || 'false',
-          phone2: args.alternatePhoneNumber,
-          primary: args.primary,
-          state: args.state,
-          zipCode: args.zip || args.zipCode,
-          xcont_addressField2: args.isCommercialAddress ? '2' : '1',
-          email1: args.email || args.emailAddress,
-          xcont_addressField3: args.zip || args.zipCode,
-          fromPage: args.fromPage || '',
+          // lastName: args.lastName,
+          // nickName: addressKey,
+          // phone1: args.phoneNumber,
+          // phone1Publish: args.phone1Publish || 'false',
+          // phone2: args.alternatePhoneNumber,
+          // primary: args.primary,
+          // state: args.state,
+          // zipCode: args.zip || args.zipCode,
+          // xcont_addressField2: args.isCommercialAddress ? '2' : '1',
+          // email1: args.email || args.emailAddress,
+          // xcont_addressField3: args.zip || args.zipCode,
+          // fromPage: args.fromPage || '',
         },
       ],
     },
@@ -52,7 +52,9 @@ export const addAddress = args => {
     .then(res => {
       return res;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };
 
 export const updateAddress = args => {

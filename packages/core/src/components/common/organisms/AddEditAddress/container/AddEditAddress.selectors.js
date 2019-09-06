@@ -21,6 +21,29 @@ export const getAddressById = createSelector(
   }
 );
 
+export const getLabels = state => state.Labels.global;
+
+export const getAddEditErrorResponse = state => {
+  return state[LOGINPAGE_REDUCER_KEY].get('error');
+};
+
+export const getAddEditLabels = createSelector(
+  getLabels,
+  labels => labels && labels.login
+);
+
+export const getAddEditErrorMessage = createSelector(
+  [getAddEditErrorResponse, getAddEditLabels],
+  (loginState, labels) => {
+    const errorCode = loginState && loginState.get('errorCode');
+    if (errorCode && labels[`lbl_forgotpassword_error_${errorCode}`]) {
+      return labels[`lbl_forgotpassword_error_${errorCode}`];
+    }
+    return (loginState && loginState.getIn(['errorMessage', '_error'])) || labels.lbl_login_error;
+  }
+);
+
+
 export const getAddEditAddressLabels = state => {
   const {
     lbl_addEditAddress_editAddress: editAddress,

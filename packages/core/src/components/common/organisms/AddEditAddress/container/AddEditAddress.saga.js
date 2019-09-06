@@ -28,11 +28,16 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
     }
     return yield put(addAddressFail(res.body));
   } catch (err) {
+    debugger
+   
     let error = {};
+    /* istanbul ignore else */
     if (err instanceof Error) {
-      error = err.message;
+      error = err.response;
+      console.log('error add address--------------------', error);
     }
-    return yield put(addAddressFail(error));
+
+    return yield put(addAddressFail(error.body.errors[0]));
   }
 }
 
