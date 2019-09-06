@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonList from '../../ButtonList';
-import mock from '../../../../../services/abstractors/common/moduleB/mock';
 import { Row, Col, DamImage, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
@@ -119,6 +118,7 @@ const loadImageBannerVariation = ({ bannerPosition, promoBanner, linkedImage }) 
  */
 const ModuleB = props => {
   const {
+    className,
     composites: {
       ctaItems,
       largeCompImage: [{ headerText, promoBanner, linkedImage }],
@@ -127,9 +127,7 @@ const ModuleB = props => {
     ctaType,
     bannerPosition,
     expandableTitle,
-  } = mock;
-
-  const { className } = props;
+  } = props;
 
   const buttonListCtaType = getButtonListVariation(ctaType);
   const buttonListProps = getButtonListVariationProps(ctaType);
@@ -169,6 +167,12 @@ const ModuleB = props => {
 
 ModuleB.propTypes = {
   className: PropTypes.string.isRequired,
+  composites: PropTypes.shape({}).isRequired,
+  moduleWidth: PropTypes.string.isRequired,
+  ctaType: PropTypes.string.isRequired,
+  bannerPosition: PropTypes.string.isRequired,
+  expandableTitle: PropTypes.string.isRequired,
 };
 
+export { ModuleB as ModuleBVanilla };
 export default withStyles(ModuleB, style);

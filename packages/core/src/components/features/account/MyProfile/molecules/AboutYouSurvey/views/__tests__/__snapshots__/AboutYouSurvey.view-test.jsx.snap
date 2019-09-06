@@ -143,6 +143,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         <Styled(Button)
           buttonVariation="fixed-width"
           className="survey-submit__cta"
+          disabled={true}
           fill="BLUE"
           onClick={[Function]}
           type="button"
@@ -298,6 +299,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         <Styled(Button)
           buttonVariation="fixed-width"
           className="survey-submit__cta"
+          disabled={true}
           fill="BLUE"
           onClick={[Function]}
           type="button"

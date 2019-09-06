@@ -45,6 +45,7 @@ exports[`Add gift card form component render error message 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -92,6 +93,7 @@ exports[`Add gift card form component render error message 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -149,6 +151,7 @@ exports[`Add gift card form component render error message 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -201,6 +204,7 @@ exports[`Add gift card form component render error message 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
         customStyle={Object {}}
@@ -216,6 +220,7 @@ exports[`Add gift card form component render error message 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="black"
         customStyle={Object {}}
@@ -265,6 +270,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -312,6 +318,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -369,6 +376,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -421,6 +429,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
         customStyle={Object {}}
@@ -436,6 +445,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="black"
         customStyle={Object {}}

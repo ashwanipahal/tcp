@@ -1,3 +1,5 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
+
 async function fetchData(baseURL, relURL, params = {}) {
   return new Promise((resolve, reject) => {
     let result = {};
@@ -23,7 +25,7 @@ async function fetchData(baseURL, relURL, params = {}) {
       resolve(result);
     } catch (e) {
       reject();
-      console.log('catch', e);
+      logger.error('catch', e);
     }
   });
   // result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.

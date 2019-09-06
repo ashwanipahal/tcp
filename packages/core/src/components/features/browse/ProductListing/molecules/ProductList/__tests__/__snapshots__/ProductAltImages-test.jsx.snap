@@ -2,10 +2,17 @@
 
 exports[`ProductAltImages component should renders renderVideoContent correctly 1`] = `
 <figure
-  className="product-image-container"
   itemScope={true}
   itemType="http://schema.org/ImageObject"
 >
+  <button
+    className="button-prev"
+    data-locator="global-imagecursors-arrows"
+    onClick={[Function]}
+    type="button"
+  >
+    prev
+  </button>
   <Styled(Anchor)
     handleLinkClick={[Function]}
     inheritedStyles={
@@ -23,10 +30,18 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
   >
     <img
       alt=""
+      data-locator="global-productimg-imagelink"
       itemProp="contentUrl"
       src={1}
-      srcSet=""
     />
   </Styled(Anchor)>
+  <button
+    className="button-next"
+    data-locator="global-imagecursors-arrows"
+    onClick={[Function]}
+    type="button"
+  >
+    next
+  </button>
 </figure>
 `;

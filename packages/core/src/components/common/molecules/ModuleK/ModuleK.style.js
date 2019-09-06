@@ -37,6 +37,7 @@ const StyledModuleK = css`
   .moduleK__promoBanner,
   .moduleK__header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-right: 0;
   }
   .carousal-cta {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};

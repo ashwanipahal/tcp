@@ -70,6 +70,7 @@ class LoginSection extends React.PureComponent<Props> {
       variation,
       handleContinueAsGuest,
       tooltipContent,
+      resetLoginState,
     } = this.props;
     return (
       <Row className={className}>
@@ -90,6 +91,7 @@ class LoginSection extends React.PureComponent<Props> {
                 labels={labels}
                 className="elem-mb-LRG"
                 isCanada={this.isCanada}
+                showForgotPasswordForm={this.showForgotPasswordForm}
               />
               <LoginForm
                 onSubmit={onSubmit}
@@ -105,6 +107,7 @@ class LoginSection extends React.PureComponent<Props> {
                 variation={variation}
                 handleContinueAsGuest={handleContinueAsGuest}
                 tooltipContent={tooltipContent}
+                resetLoginState={resetLoginState}
               />
             </React.Fragment>
           )}

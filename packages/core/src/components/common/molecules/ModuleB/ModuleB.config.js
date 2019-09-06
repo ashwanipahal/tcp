@@ -29,6 +29,12 @@ export const ctaTypeProps = {
   },
 };
 
+export const bannerPositionTypes = {
+  top: 'top',
+  bottom: 'bottom',
+  overlay: 'overlay',
+};
+
 export default {
   ctaIdentifiers: {
     STACK_CTA: 'stackedCTAButtons',

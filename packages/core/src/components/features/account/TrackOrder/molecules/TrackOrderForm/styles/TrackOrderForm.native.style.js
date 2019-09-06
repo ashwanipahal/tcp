@@ -3,17 +3,13 @@ import styled from 'styled-components';
 const AnchorView = styled.View`
   display: flex;
   align-items: flex-start;
-  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0
-    ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.SM} 0
+    ${props => props.theme.spacing.ELEM_SPACING.XXL};
   text-decoration: underline;
 `;
 
 const InputField = styled.View`
-  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  width: ${props => props.theme.spacing.LAYOUT_SPACING.XXXL};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  z-index: 1;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 const CtaView = styled.View`

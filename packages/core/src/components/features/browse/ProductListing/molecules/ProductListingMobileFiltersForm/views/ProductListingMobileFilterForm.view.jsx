@@ -98,6 +98,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   hideModal = () => {
     this.setState({ show: false });
+    document.body.style.overflow = 'unset';
+    document.body.style.position = 'static';
   };
 
   /**
@@ -107,6 +109,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   showModal = () => {
     this.setState({ show: true });
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
   };
 
   /**

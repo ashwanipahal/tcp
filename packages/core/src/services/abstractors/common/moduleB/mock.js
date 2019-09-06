@@ -213,6 +213,10 @@ export default {
           crop_m: '',
         },
       },
+      {
+        key: 'bannerPostition',
+        val: 'overlay',
+      },
     ],
   },
   submodules: {},
