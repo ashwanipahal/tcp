@@ -9,7 +9,7 @@ describe('CurrencyUpPromoBanner native component test cases', () => {
 
   beforeEach(() => {
     component = shallow(
-      <CurrencyUpPromoBanner promoBanner={mock.moduleB.composites.largeCompImage[0].promoBanner} />
+      <CurrencyUpPromoBanner promoBanner={mock.composites.largeCompImage[0].promoBanner} />
     );
   });
 
