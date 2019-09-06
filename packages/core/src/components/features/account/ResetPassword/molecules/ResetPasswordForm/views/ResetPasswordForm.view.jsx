@@ -10,6 +10,10 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ResetPasswordForm.style';
 
+const handleClick = handleSubmit => {
+  handleSubmit();
+};
+
 export const ResetPasswordForm = ({
   className,
   labels,
@@ -17,7 +21,6 @@ export const ResetPasswordForm = ({
   successMessage,
   errorMessage,
   handleSubmit,
-  onBack,
 }) => {
   return (
     <form
@@ -25,8 +28,7 @@ export const ResetPasswordForm = ({
       noValidate
       onSubmit={e => {
         e.preventDefault();
-        handleSubmit();
-        onBack(e);
+        handleClick(handleSubmit);
       }}
       className={className}
     >
@@ -87,7 +89,6 @@ ResetPasswordForm.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   className: PropTypes.string,
-  onBack: PropTypes.func.isRequired,
 };
 
 ResetPasswordForm.defaultProps = {
