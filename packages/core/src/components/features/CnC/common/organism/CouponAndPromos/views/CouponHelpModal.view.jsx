@@ -13,6 +13,7 @@ class CouponHelpModal extends React.PureComponent<Props> {
         className="TCPModal__Content"
         maxWidth="500px"
         minHeight="90%"
+        heightConfig={{ height: '90%' }}
         closeIconDataLocator="helpmodalcrossicon"
         fixedWidth
       >
