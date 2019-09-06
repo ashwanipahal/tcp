@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import { LOGINPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import { LOGINPAGE_REDUCER_KEY , ADDRESSBOOK_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {
-  return state.AddEditAddressReducer;
+  return state[ADDRESSBOOK_REDUCER_KEY]
 };
 
 export const getUserEmail = state => {
@@ -23,23 +23,27 @@ export const getAddressById = createSelector(
 
 export const getLabels = state => state.Labels.global;
 
-export const getAddEditErrorResponse = state => {
-  return state[LOGINPAGE_REDUCER_KEY].get('error');
-};
+
+export const getAddEditErrorResponse = createSelector(
+  getAddressResponse,
+  resp => resp && resp.get('error')
+);
+
 
 export const getAddEditLabels = createSelector(
   getLabels,
-  labels => labels && labels.login
+  labels => labels && labels.addEditAddress
 );
 
 export const getAddEditErrorMessage = createSelector(
   [getAddEditErrorResponse, getAddEditLabels],
   (loginState, labels) => {
-    const errorCode = loginState && loginState.get('errorCode');
-    if (errorCode && labels[`lbl_forgotpassword_error_${errorCode}`]) {
-      return labels[`lbl_forgotpassword_error_${errorCode}`];
+    debugger
+    const errorParameters = loginState && loginState.get('errorParameters');
+    if (errorParameters && labels[`lbl_address_book_error_${errorParameters}`]) {
+      return labels[`lbl_address_book_error_${errorParameters}`];
     }
-    return (loginState && loginState.getIn(['errorMessage', '_error'])) || labels.lbl_login_error;
+    return (loginState && loginState.getIn(['errorMessage', '_error'])) || 'hello';
   }
 );
 

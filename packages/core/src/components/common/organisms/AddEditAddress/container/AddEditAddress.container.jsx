@@ -10,6 +10,7 @@ import {
   getUserEmail,
   getAddressById,
   getAddEditAddressLabels,
+  getAddEditErrorMessage,
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
@@ -113,6 +114,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       backToAddressBookClick,
       isEdit,
       formErrorMessage,
+      addEditErrorMessage
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -128,6 +130,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         addressFormLabels={labels.addressFormLabels}
         backToAddressBookClick={backToAddressBookClick}
         formErrorMessage={formErrorMessage}
+        addEditErrorMessage={addEditErrorMessage}
+        labels={labels}
       />
     );
   }
@@ -161,6 +165,7 @@ const mapStateToProps = (state, ownProps) => {
     address: getAddressById(state, ownProps),
     labels: getAddEditAddressLabels(state),
     formErrorMessage: getFormValidationErrorMessages(state),
+    addEditErrorMessage : getAddEditErrorMessage(state)
   };
 };
 

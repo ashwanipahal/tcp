@@ -18,15 +18,18 @@ export const AddEditAddress = ({
   addressFormLabels,
   isMakeDefaultDisabled,
   formErrorMessage,
+  addEditErrorMessage,
 }) => {
   return (
     <div className={`${className} addEditAddress`}>
       <Grid>
-        <Notification
-          status="error"
-          colSize={{ large: 12, medium: 8, small: 6 }}
-          message={'hello'}
-        />
+        {addEditErrorMessage && (
+          <Notification
+            status="error"
+            colSize={{ large: 12, medium: 8, small: 6 }}
+            message={addEditErrorMessage}
+          />
+        )}
 
         <AddressVerification
           onSuccess={submitAddressFormAction}
