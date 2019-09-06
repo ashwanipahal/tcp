@@ -8,7 +8,7 @@ export const breakpoints = {
   xlarge: '1440px',
   maxWidth: 1440,
   keys: ['xs', 'sm', 'lg'],
-  values: { xs: 0, sm: 768, lg: 1024 },
+  values: { xs: 0, sm: 768, lg: 1200 },
 };
 
 export const mediaQuery = {
