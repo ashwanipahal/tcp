@@ -66,6 +66,9 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
   .item-list-row {
     flex-flow: row wrap;
   }
+  .item-column {
+    flex-flow: column;
+  }
   .apply-button {
     width: 210px;
     margin-top: ",
