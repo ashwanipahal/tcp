@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 
-export const ProfileInfoActionTileWrapper = styled.View`
+export const ProfileInfoActionTileWrapper = styled.TouchableOpacity`
   border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
   flex-basis: 48%;
   align-items: center;

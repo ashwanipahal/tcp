@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SurveyQuestion should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      text=""
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      text="SELECT ONE"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <TileOption
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Parent"
+        optionValue="shopper1"
+        questionId="question1"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <TileOption
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Grandparent"
+        optionValue="shopper2"
+        questionId="question1"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <TileOption
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Gifting for others"
+        optionValue="shopper3"
+        questionId="question1"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <TileOption
+        clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+        className=""
+        isSelected={false}
+        onSelection={[Function]}
+        optionText="Prefer not to answer"
+        optionValue="shopper4"
+        questionId="question1"
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;

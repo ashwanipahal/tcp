@@ -18,7 +18,7 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.small} {
     .aboutyou_cancel {
       order: 2;
-      margin-left: 0;
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
 
     .aboutyou_save {
