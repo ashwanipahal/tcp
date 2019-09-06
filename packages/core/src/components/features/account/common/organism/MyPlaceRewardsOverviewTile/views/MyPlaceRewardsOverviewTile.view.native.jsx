@@ -23,7 +23,14 @@ MyPlaceRewardsOverviewTile component is used in AccountOverview screen on app
 */
 export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
   render() {
-    const { labels, coupons, isBrierleyEnabled, handleComponentChange, navigation } = this.props;
+    const {
+      labels,
+      commonLabels,
+      coupons,
+      isBrierleyEnabled,
+      handleComponentChange,
+      navigation,
+    } = this.props;
     const rewardCouponsCount = coupons && coupons.size;
     let walletOverviewInfo = '';
     let rewardDataLocator = '';
@@ -61,7 +68,12 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
               />
             </View>
             <CouponListWrapper>
-              <CouponList coupons={coupons} sliceCount={2} labels={labels} />
+              <CouponList
+                coupons={coupons}
+                commonLabels={commonLabels}
+                sliceCount={2}
+                labels={labels}
+              />
             </CouponListWrapper>
           </CouponWrapper>
         )}
@@ -120,6 +132,7 @@ MyPlaceRewardsOverviewTile.propTypes = {
   }),
   coupons: PropTypes.shape([]).isRequired,
   isBrierleyEnabled: PropTypes.bool,
+  commonLabels: PropTypes.shape({}).isRequired,
 };
 
 MyPlaceRewardsOverviewTile.defaultProps = {

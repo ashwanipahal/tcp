@@ -113,7 +113,7 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   render() {
-    const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
+    const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
     const { showModal, getComponentId } = this.state;
     const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
@@ -126,12 +126,14 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={labels.lbl_overview_myPlaceRewardsHeading}>
               <MyPlaceRewardsOverviewTile
                 labels={labels}
+                commonLabels={commonLabels}
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
             <Panel title={labels.lbl_overview_myWalletHeading}>
               <MyWalletTile
                 labels={labels}
+                commonLabels={commonLabels}
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
@@ -286,6 +288,7 @@ AccountOverview.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   handleComponentChange: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  commonLabels: PropTypes.shape({}),
 };
 
 AccountOverview.defaultProps = {
@@ -313,6 +316,7 @@ AccountOverview.defaultProps = {
     lbl_overview_myWalletHeading: '',
     lbl_overview_myPlaceRewardsHeading: '',
   },
+  commonLabels: {},
 };
 
 export default AccountOverview;

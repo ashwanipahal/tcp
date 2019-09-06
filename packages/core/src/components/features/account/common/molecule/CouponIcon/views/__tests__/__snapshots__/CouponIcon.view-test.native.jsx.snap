@@ -8,7 +8,7 @@ exports[`CouponIcon should render correctly 1`] = `
     color="white"
     fontFamily="secondary"
     fontSize="fs14"
-    fontWeight="extrabold"
+    fontWeight="black"
     text="reward"
   />
 </Styled(View)>

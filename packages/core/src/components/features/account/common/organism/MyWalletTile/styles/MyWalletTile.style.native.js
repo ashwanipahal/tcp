@@ -14,7 +14,7 @@ const PlaceRewardsTileContainer = styled.View`
 `;
 
 const ButtonWrapperStyle = styled.View`
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 

@@ -1,35 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import {
-  CouponTileSection,
-  CouponWrapper,
-  CouponInfo,
-  CouponReward,
-} from '../styles/CouponTile.style.native';
+import CouponIcon from '@tcp/core/src/components/features/account/common/molecule/CouponIcon';
+import { CouponTileSection, CouponWrapper, CouponInfo } from '../styles/CouponTile.style.native';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
-export const CouponTile = ({ coupon, labels }) => {
-  let couponTextLabel = '';
-
-  switch (coupon.offerType) {
-    case COUPON_REDEMPTION_TYPE.PLACECASH:
-      couponTextLabel = `${labels.lbl_overview_couponTypePlacecash}`;
-      break;
-    case COUPON_REDEMPTION_TYPE.REWARDS:
-      couponTextLabel = `${labels.lbl_overview_couponTypeReward}`;
-      break;
-    default:
-      couponTextLabel = `${labels.lbl_overview_couponTypeSaving}`;
-  }
-
+export const CouponTile = ({ coupon, commonLabels, labels }) => {
   return (
     <CouponTileSection>
       <CouponWrapper>
-        <CouponReward>
-          <BodyCopy fontSize="fs13" fontWeight="black" color="white" text={couponTextLabel} />
-        </CouponReward>
-
+        <CouponIcon coupon={coupon} labels={commonLabels} />
         <CouponInfo>
           <BodyCopy
             fontSize="fs12"
@@ -78,6 +58,7 @@ CouponTile.propTypes = {
     lbl_overview_couponValid: PropTypes.string,
     lbl_overview_couponUseBy: PropTypes.string,
   }),
+  commonLabels: PropTypes.shape({}),
 };
 
 CouponTile.defaultProps = {
@@ -90,6 +71,7 @@ CouponTile.defaultProps = {
     lbl_overview_couponValid: '',
     lbl_overview_couponUseBy: '',
   }),
+  commonLabels: {},
 };
 
 export default CouponTile;
