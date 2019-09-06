@@ -80,7 +80,7 @@ class LoginView extends React.PureComponent {
     } = this.props;
     const { setEmailid } = this.state;
     return (
-      <ScrollViewStyle>
+      <ScrollViewStyle keyboardShouldPersistTaps="handled">
         <LoginSection
           setEmailid={setEmailid}
           onSubmit={this.onSubmitHandler}

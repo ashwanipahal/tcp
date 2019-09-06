@@ -73,7 +73,11 @@ class CreateAccounPage extends React.Component {
     } = this.props;
     const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
-      <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        {...this.props}
+        keyboardShouldPersistTaps="handled"
+      >
         <View>
           <CreateAccountTopSection
             showForgotPasswordForm={showForgotPasswordForm}

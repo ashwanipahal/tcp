@@ -17,7 +17,7 @@ import {
   SeparatorView,
   MainContainerView,
 } from '../ModuleB.style.native';
-import config from '../ModuleB.config';
+import { ctaTypes, bannerPositionTypes } from '../ModuleB.config';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
 /**
@@ -29,9 +29,6 @@ const MODULE_HEIGHT_WITHOUT_OVERLAY = 295;
 const MODULE_HEIGHT_WITH_OVERLAY = 413;
 const MARGIN = 12;
 const MODULE_WIDTH = getScreenWidth() - MARGIN * 2;
-
-// TODO: keys will be changed once we get the actual data from CMS
-const { ctaTypes, bannerPositionTypes } = config;
 
 /**
  * @function renderHeaderAndBanner
@@ -157,7 +154,7 @@ const ModuleB = (props: Props) => {
   const {
     set = [],
     composites: { ctaItems, largeCompImage },
-  } = mock.moduleB;
+  } = mock;
 
   const { navigation } = props;
 

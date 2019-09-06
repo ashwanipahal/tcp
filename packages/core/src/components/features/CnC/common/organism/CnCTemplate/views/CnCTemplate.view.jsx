@@ -17,6 +17,7 @@ const CnCTemplate = ({
   className,
   header: Header,
   isCheckoutView,
+  isUserLoggedIn,
 }) => {
   return (
     <section className={className}>
@@ -35,9 +36,11 @@ const CnCTemplate = ({
           >
             <OrderLedgerContainer />
             {BagActions && <BagActions />}
-            <div className="bonusPointsDaysWrapper elem-mb-MED">
-              <BonusPointsDays showAccordian={false} enableApplyCta />
-            </div>
+            {isUserLoggedIn && (
+              <div className="bonusPointsDaysWrapper elem-mb-MED">
+                <BonusPointsDays showAccordian={false} enableApplyCta />
+              </div>
+            )}
             <AirmilesBanner />
             <CouponAndPromos />
           </Col>
@@ -55,6 +58,7 @@ CnCTemplate.propTypes = {
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 CnCTemplate.defaultProps = {

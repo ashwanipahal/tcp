@@ -241,7 +241,11 @@ export default class AddressVerification extends React.PureComponent {
     if (this.showVerifyModal) {
       setModalHeading();
       return (
-        <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          {...this.props}
+          keyboardShouldPersistTaps="handled"
+        >
           <VerifyAddressWrapper>
             <BodyCopy
               mobilefontFamily={['secondary']}
