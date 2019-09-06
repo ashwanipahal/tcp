@@ -10,10 +10,6 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ResetPasswordForm.style';
 
-const handleClick = handleSubmit => {
-  handleSubmit();
-};
-
 export const ResetPasswordForm = ({
   className,
   labels,
@@ -29,7 +25,7 @@ export const ResetPasswordForm = ({
       noValidate
       onSubmit={e => {
         e.preventDefault();
-        handleClick(handleSubmit);
+        handleSubmit();
         onBack(e);
       }}
       className={className}
