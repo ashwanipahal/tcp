@@ -1,7 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -56,7 +55,6 @@ class CheckoutPage extends React.PureComponent {
         pickupInitialValues.pickUpContact &&
         pickupInitialValues.pickUpContact.firstName)
     );
-
     return (
       <div>
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
@@ -65,6 +63,7 @@ class CheckoutPage extends React.PureComponent {
             isMobile={isMobile}
             isUsSite={isUsSite}
             initialValues={pickupInitialValues}
+            pickupInitialValues={pickupInitialValues}
             onEditModeChange={onEditModeChange}
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
@@ -126,5 +125,5 @@ CheckoutPage.propTypes = {
   routeToPickupPage: PropTypes.func.isRequired,
 };
 
-export default withRouter(CheckoutPage);
+export default CheckoutPage;
 export { CheckoutPage as CheckoutPageVanilla };

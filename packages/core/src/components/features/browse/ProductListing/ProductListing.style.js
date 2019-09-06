@@ -36,6 +36,9 @@ export default css`
   }
 
   .render-mobile-view {
+    width: auto;
+    padding: 0;
+
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
     }

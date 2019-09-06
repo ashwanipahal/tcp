@@ -45,7 +45,7 @@ class SMSFormFields extends React.PureComponent {
           </Col>
         </Row>
         {isOrderUpdateChecked && (
-          <Row>
+          <Row fullBleed>
             <Col colSize={{ small: 5, medium: 8, large: 5 }} className="phone-field-wrapper">
               <span className="phone-prefix"> +1 </span>
               <Field
@@ -59,21 +59,23 @@ class SMSFormFields extends React.PureComponent {
                 className="phone-field"
               />
             </Col>
-            <Row>
-              <Col colSize={{ small: 6, medium: 8, large: 5 }}>
+            <Row fullBleed>
+              <Col colSize={{ small: 6, medium: 8, large: 7 }}>
                 <BodyCopy fontSize="fs10" fontFamily="primary" fontWeight="regular">
                   {labels.smsSignupText}
+                  {labels.privacyPolicy && (
+                    <Anchor
+                      underline
+                      anchorVariation="primary"
+                      fontSizeVariation="small"
+                      noLink
+                      href="#"
+                      target="_blank"
+                    >
+                      {labels.privacyPolicy}
+                    </Anchor>
+                  )}
                 </BodyCopy>
-                <Anchor
-                  noUnderline
-                  anchorVariation="primary"
-                  fontSizeVariation="small"
-                  noLink
-                  href="#"
-                  target="_blank"
-                >
-                  {labels.privacyPolicy}
-                </Anchor>
               </Col>
             </Row>
           </Row>

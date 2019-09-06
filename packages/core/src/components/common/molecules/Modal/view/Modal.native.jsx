@@ -48,6 +48,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingAlign,
     headingFontFamily,
     headerStyle,
+    headingFontWeight,
     fontSize,
     horizontalBar = true,
     borderColor = 'black',
@@ -57,20 +58,20 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
         <ToastContainer />
         <StatusBar hidden />
-        {heading && (
-          <RowWrapper>
+        <RowWrapper>
+          {heading && (
             <ModalHeading>
               <BodyCopy
                 mobileFontFamily={headingFontFamily || 'primary'}
-                fontWeight="extrabold"
+                fontWeight={headingFontWeight || 'extrabold'}
                 textAlign={headingAlign}
                 fontSize={fontSize || 'fs16'}
                 text={heading}
               />
             </ModalHeading>
-            {getCloseIcon({ onRequestClose, headerStyle })}
-          </RowWrapper>
-        )}
+          )}
+          {getCloseIcon({ onRequestClose, headerStyle })}
+        </RowWrapper>
         {horizontalBar ? (
           <LineWrapper>
             <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />

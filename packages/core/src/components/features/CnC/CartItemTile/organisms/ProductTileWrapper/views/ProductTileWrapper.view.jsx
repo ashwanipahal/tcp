@@ -79,6 +79,18 @@ class ProductTileWrapper extends React.PureComponent<props> {
     this.setState({ openedTile: index });
   };
 
+  isEditAllowed = (productDetail, pageView) => {
+    const { isEditAllowed } = this.state;
+    if (
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE ||
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
+      (pageView !== 'myBag' && productDetail.miscInfo.orderItemType === CARTPAGE_CONSTANTS.BOPIS)
+    ) {
+      return false;
+    }
+    return isEditAllowed;
+  };
+
   render() {
     const {
       orderItems,
@@ -93,7 +105,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     let isSoldOut;
     const inheritedStyles = pageView === 'myBag' ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
-    const { isEditAllowed, openedTile, swipedElement } = this.state;
+    const { openedTile, swipedElement } = this.state;
     if (orderItems && orderItems.size > 0) {
       const orderItemsView = orderItems.map((tile, index) => {
         const productDetail = getProductDetails(tile);
@@ -113,12 +125,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
             key={`${getProductName(tile)}`}
             pageView={pageView}
             toggleEditAllowance={this.toggleEditAllowance}
-            isEditAllowed={
-              productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE ||
-              productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT
-                ? false
-                : isEditAllowed
-            }
+            isEditAllowed={this.isEditAllowed(productDetail, pageView)}
             isPlcc={isPlcc}
             itemIndex={index}
             openedTile={openedTile}

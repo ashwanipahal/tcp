@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import superagent from 'superagent';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
@@ -80,7 +81,7 @@ export const addPickupPerson = args => {
       return { addressId: res.body.addressId };
     })
     .catch(err => {
-      console.log(err);
+      logger.error(err);
     });
 };
 
@@ -269,6 +270,87 @@ export function setShippingMethodAndAddressId(
     });
 }
 
+export function addGiftCardPaymentToOrder(args) {
+  const {
+    billingAddressId,
+    orderGrandTotal,
+    cardNumber,
+    cardPin,
+    balance,
+    saveToAccount,
+    nickName,
+    creditCardId,
+  } = args;
+  const paymentInstruction = {
+    billing_address_id: (billingAddressId || '').toString(),
+    piAmount: (orderGrandTotal || '').toString(),
+    payMethodId: 'GiftCard',
+    cc_brand: 'GC',
+    account: (cardNumber || '').toString(),
+    account_pin: (cardPin || '').toString(),
+    balance: balance || null,
+  };
+
+  const headerValue = {
+    isRest: 'true',
+    identifier: 'true',
+    savePayment: saveToAccount ? 'true' : 'false', // save to account for registered users
+    nickName: nickName || `${'Billing_'}${new Date().getTime().toString()}`,
+  };
+
+  if (creditCardId) {
+    paymentInstruction.creditCardId = (creditCardId || '').toString();
+  }
+
+  const payload = {
+    header: headerValue,
+    body: {
+      paymentInstruction: [paymentInstruction],
+    },
+    webService: endpoints.addPaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (res.body && res.body.OosCartItems === 'TRUE') {
+        throw new ServiceResponseError({
+          body: {
+            errorCode: 'API_CART_OOS_ITEM',
+          },
+        });
+      } else {
+        return {
+          success: true,
+          paymentIds: res.body.paymentInstruction,
+        };
+      }
+    })
+    .catch(err => {
+      return err;
+    });
+}
+
+export function removeGiftCard(paymentId) {
+  const payload = {
+    body: {
+      piIds: paymentId,
+    },
+    webService: endpoints.deletePaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      } else {
+        return res.body;
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export function addPaymentToOrder({
   billingAddressId = '',
   orderGrandTotal = '',
@@ -416,6 +498,8 @@ export default {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  addGiftCardPaymentToOrder,
+  removeGiftCard,
   addPaymentToOrder,
   updatePaymentOnOrder,
 };

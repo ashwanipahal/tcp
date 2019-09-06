@@ -1,11 +1,12 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import endpoints from '../../../../../service/endpoint';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
-import constants from '../Checkout.constants';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
   getShippingMethods,
@@ -40,7 +41,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { isCanada } from '../../../../../utils/utils';
 import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
-import { routerPush, isMobileApp } from '../../../../../utils';
+import { isMobileApp } from '../../../../../utils';
 
 const {
   getRecalcOrderPointsInterval,
@@ -112,7 +113,7 @@ export function* subscribeEmailAddress(emailObj, status) {
     const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
     yield put(emailSignupStatus({ subscription: res }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
@@ -123,7 +124,7 @@ function* loadGiftWrappingOptions() {
   } catch (e) {
     // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
     // throw e;
-    console.log(e);
+    logger.error(e);
   }
 }
 
@@ -222,7 +223,8 @@ function* callPickupSubmitMethod(formData) {
 
 function* submitPickupSection(data) {
   const { payload } = data;
-  const formData = { ...payload };
+  const formData = { ...payload.formData };
+  const { navigation } = payload;
   // let pickupOperator = getPickupOperator(this.store);
   // let storeState = this.store.getState();
   // let isEmailSignUpAllowed = true;
@@ -235,13 +237,12 @@ function* submitPickupSection(data) {
   //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
   //  }
   const result = yield call(callPickupSubmitMethod, formData);
-  if (!isMobileApp() && result.addressId) {
-    routerPush(
-      `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${constants.CHECKOUT_STAGES.SHIPPING}`,
-      `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.SHIPPING}`
-    );
-  } else {
-    yield put(getSetCheckoutStage(constants.CHECKOUT_STAGES.SHIPPING));
+  if (result.addressId) {
+    if (!isMobileApp()) {
+      utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+    } else if (navigation) {
+      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+    }
   }
 
   /* In the future I imagine us sending the SMS to backend for them to
@@ -601,7 +602,15 @@ function* initCheckout() {
   try {
     yield call(loadStartupData);
   } catch (e) {
-    console.log(e);
+    logger.error(e);
+  }
+}
+
+function redirectToBilling(navigation) {
+  if (!isMobileApp()) {
+    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+  } else if (navigation) {
+    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
   }
 }
 
@@ -625,7 +634,7 @@ function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailA
   }
 }
 
-function* submitShippingSection({ payload: formData }) {
+function* submitShippingSection({ payload: { navigation, ...formData } }) {
   // console.log('>>>', { formData });
   const {
     // giftWrap,
@@ -738,6 +747,7 @@ function* submitShippingSection({ payload: formData }) {
   // eslint-disable-next-line no-unused-expressions
   yield saveLocalSmsInfo(smsInfo);
   yield all(pendingPromises);
+  redirectToBilling(navigation);
   try {
     yield call(
       setShippingMethodAndAddressId,
@@ -761,10 +771,7 @@ function* submitShippingSection({ payload: formData }) {
       !(isOrderHasPickup && smsNumberForOrderUpdates)
     );
     if (!isMobileApp()) {
-      routerPush(
-        `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${constants.CHECKOUT_STAGES.BILLING}`,
-        `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.BILLING}`
-      );
+      utility.routeToPage(CHECKOUT_ROUTES.billingPage);
     }
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
@@ -772,11 +779,8 @@ function* submitShippingSection({ payload: formData }) {
 }
 
 export function* routeToPickupPage(recalc) {
-  const path = `/${constants.CHECKOUT}/${constants.CHECKOUT_STAGES.PICKUP}`;
-  const href = `/${constants.CHECKOUT_PAGES_NAMES.CHECKOUT}?section=${
-    constants.CHECKOUT_STAGES.PICKUP
-  }`;
-  yield call(routerPush, href, path, { recalc });
+  utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
+  yield;
 }
 
 function getCreditCardType(cc) {
@@ -965,13 +969,13 @@ export function* submitBillingSectionSuccess(payload = {}) {
 }
 
 export function* CheckoutSaga() {
-  yield takeLatest(constants.INIT_CHECKOUT, initCheckout);
+  yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
-  yield takeLatest(constants.SUBMIT_SHIPPING_SECTION, submitShippingSection);
-  yield takeLatest(constants.SUBMIT_BILLING_SECTION, submitBillingSectionSuccess);
+  yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);
+  yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSectionSuccess);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
-  yield takeLatest(constants.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
-  yield takeLatest(constants.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);
+  yield takeLatest(CONSTANTS.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
+  yield takeLatest(CONSTANTS.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);
 }
 
 export default CheckoutSaga;

@@ -31,9 +31,10 @@ export const getCheckoutUiFlagState = state => {
   return state[CHECKOUT_REDUCER_KEY].get('uiFlags');
 };
 
-export const getCheckoutValuesState = state => {
-  return state[CHECKOUT_REDUCER_KEY].get('values');
-};
+export const getCheckoutValuesState = createSelector(
+  getCheckoutState,
+  state => state && state.get('values')
+);
 
 const getIsOrderHasShipping = createSelector(
   BagPageSelector.getOrderItems,
@@ -435,14 +436,14 @@ function getPickupInitialPickupSectionValues(state) {
 
   return {
     pickUpContact: {
-      firstName: pickupValues.firstName || getUserName(state),
-      lastName: pickupValues.lastName || getUserLastName(state),
-      emailAddress: pickupValues.emailAddress || getUserEmail(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+      firstName: pickupValues.get('firstName') || getUserName(state),
+      lastName: pickupValues.get('lastName') || getUserLastName(state),
+      emailAddress: pickupValues.get('emailAddress') || getUserEmail(state),
+      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
     },
     smsSignUp: {
       sendOrderUpdate: !!getSmsNumberForOrderUpdates(state),
-      phoneNumber: pickupValues.phoneNumber || getUserPhoneNumber(state),
+      phoneNumber: pickupValues.get('phoneNumber') || getUserPhoneNumber(state),
     },
     hasAlternatePickup: isPickupAlt(state),
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},

@@ -93,6 +93,7 @@ const createLinks = (
         {links.map((l2Links, index) => {
           const {
             url,
+            asPath,
             categoryContent: { id, name, mainCategory },
             subCategories,
             hasL3,
@@ -105,6 +106,7 @@ const createLinks = (
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
               <Anchor
+                asPath={asPath}
                 to={url}
                 onClick={openL3Drawer(`l3-drawer-${currentIndex.toString()}`, hasL3)}
               >

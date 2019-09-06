@@ -52,6 +52,13 @@ const styles = css`
       width: 100%;
     }
   }
+  .my-place-reward-section {
+    width: 100%;
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 67%;
+    }
+  }
+
   .bonusPointsWrapper {
     @media ${props => props.theme.mediaQuery.xlarge} {
       padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXL};

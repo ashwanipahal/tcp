@@ -6,7 +6,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import Image from '../../../../../../common/atoms/Image';
-import { getIconPath } from '../../../../../../../utils';
+import { getIconPath, getLabelValue } from '../../../../../../../utils';
 import styles from '../styles/PasswordField.style';
 
 export class PasswordField extends React.PureComponent {
@@ -15,13 +15,15 @@ export class PasswordField extends React.PureComponent {
     hideText: PropTypes.string,
     showText: PropTypes.string,
     tooltipContent: PropTypes.node,
+    labels: PropTypes.shape([]),
   };
 
   static defaultProps = {
     className: '',
-    hideText: 'hide',
-    showText: 'show',
+    hideText: 'Hide',
+    showText: 'Show',
     tooltipContent: '',
+    labels: {},
   };
 
   constructor(props) {
@@ -40,7 +42,7 @@ export class PasswordField extends React.PureComponent {
   };
 
   render() {
-    const { className, showText, hideText, tooltipContent, ...otherProps } = this.props;
+    const { className, showText, hideText, tooltipContent, labels, ...otherProps } = this.props;
     const { type } = this.state;
     return (
       <BodyCopy component="div" className={className}>
@@ -64,7 +66,11 @@ export class PasswordField extends React.PureComponent {
             underline
             dataLocator={type === 'password' ? 'login-showlnk' : 'login-hidelnk'}
           >
-            {type === 'password' ? showText : hideText}
+            {getLabelValue(
+              labels,
+              type === 'password' ? 'lbl_createAccount_show' : 'lbl_createAccount_hide',
+              'registration'
+            )}
           </Anchor>
         </BodyCopy>
       </BodyCopy>

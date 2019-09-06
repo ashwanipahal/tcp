@@ -1,4 +1,5 @@
 const raygun = require('raygun');
+const logger = require('@tcp/core/src/utils/loggerInstance');
 
 /**
  * Creates the error logger for the application
@@ -31,7 +32,7 @@ const initServerErrorReporter = (envId, raygunApiKey) => {
   raygunInst.setVersion(envId);
   setRaygunInstance(raygunInst);
   const message = `Initializing  ErrorReporter Raygun on Node Server: release = ${envId}`;
-  console.log(message);
+  logger.error(message);
 };
 
 const initWebClientErrorReporter = (envId, raygunApiKey, channelId) => {
@@ -43,7 +44,7 @@ const initWebClientErrorReporter = (envId, raygunApiKey, channelId) => {
     rg4js('withCustomData', { channel: channelId });
     setRaygunInstance(rg4js);
     const message = `Initializing  ErrorReporter Raygun on Web Client: release = ${envId} - channelId = ${channelId}`;
-    console.log(message);
+    logger.error(message);
   });
 };
 

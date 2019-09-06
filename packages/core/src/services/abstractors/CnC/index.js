@@ -19,4 +19,6 @@ export {
   addPickupPerson,
   addPaymentToOrder,
   updatePaymentOnOrder,
+  addGiftCardPaymentToOrder,
+  removeGiftCard,
 } from './Checkout';

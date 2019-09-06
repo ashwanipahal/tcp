@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const CHECKBOX_SIZE = '25px';
 
 const styles = css`
-  display: inline-flex;
+  display: block;
   align-items: ${props => (props.alignCheckbox ? props.alignCheckbox : 'center')};
 
   & .CheckBox__input {
@@ -17,6 +17,8 @@ const styles = css`
     width: ${CHECKBOX_SIZE};
     margin: 0;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -48,7 +50,12 @@ const styles = css`
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ${props => props.theme.colorPalette.black};
   }
 
   & .disabled {
@@ -58,13 +65,14 @@ const styles = css`
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   & .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
-    height: 15px;
-    width: 15px;
+    height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     margin-right: 4px;
     margin-top: 2px;
   }

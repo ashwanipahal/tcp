@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { subscribeEmailAddress } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
@@ -13,7 +14,7 @@ export function* verifyEmail({ payload }) {
     const emailValidationState = yield call(emailSignupAbstractor.verifyEmail, payload);
     yield put(setEmailValidationStatus({ validEmail: emailValidationState }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 

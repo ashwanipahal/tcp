@@ -90,6 +90,13 @@ export default css`
     padding-top: 0px;
   }
 
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .crossDeleteIconBag {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
   .product-detail {
     display: flex;
     flex-wrap: wrap;
@@ -275,12 +282,12 @@ export default css`
   }
 
   .parent- {
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    bottom: 17px;
-    right: 2px;
-    width: auto;
+    padding-bottom: 0px;
+    .save-for-later-label {
+      right: -57px;
+      position: absolute;
+      bottom: 17px;
+    }
   }
 
   .tile-header {
