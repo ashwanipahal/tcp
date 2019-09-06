@@ -113,6 +113,12 @@ export default css`
 
   .unavailable-error {
     padding-top: 0px;
+    div {
+      margin-right: 0px;
+      margin-left: 0px;
+      display: inline;
+      width: 100%;
+    }
   }
 
   .product-detail-bag {
