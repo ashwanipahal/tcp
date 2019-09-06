@@ -45,6 +45,7 @@ const AddedToBag = ({
       }}
       data-locator="addedToBag-modal"
       inheritedStyles={modalStyles}
+      innerContentClassName="atb-innerContent"
     >
       <div className="addedToBagWrapper">
         <ProductInformationView data={addedToBagData} labels={labels} quantity={quantity} />

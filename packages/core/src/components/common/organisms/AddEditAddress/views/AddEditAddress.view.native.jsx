@@ -23,7 +23,7 @@ const AddressBook = props => {
   } = props;
   return (
     <View {...props}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         {currentForm === 'VerificationModal' && (
           <AddressVerification
             onSuccess={submitAddressFormAction}

@@ -48,11 +48,6 @@ class LoginForm extends React.PureComponent<Props> {
     };
   }
 
-  componentDidUpdate() {
-    const { change, setEmailid } = this.props;
-    change('emailAddress', setEmailid);
-  }
-
   showForgotPassword = () => {
     const { showForgotPasswordForm } = this.props;
     showForgotPasswordForm();

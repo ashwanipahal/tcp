@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PickUpFormPartVanilla component  should renders correctly props with state update  1`] = `
+exports[`PickUpFormPart component  should renders correctly props with state update  1`] = `
 <Fragment>
   <CheckoutProgressIndicator
     activeStage="pickup"
@@ -18,24 +18,15 @@ exports[`PickUpFormPartVanilla component  should renders correctly props with st
         />
       </Styled(View)>
       <Styled(View)>
-        <CheckoutSectionTitleDisplay
-          dataLocator="pickup-title"
-        />
+        <Styled(Text) />
         <Styled(View)>
           <FormSection
             name="pickUpContact"
           >
-            <Styled(PickupMainContactEditForm)
+            <Styled(ContactFormFields)
               className="pickup-contact-guest-form"
-              dispatch={[MockFunction]}
-              formData={Object {}}
-              isEditing={false}
-              isMobile={true}
-              isReset={false}
               labels={Object {}}
-              onClose={[Function]}
-              onEditModeChange={[Function]}
-              onSubmit={[Function]}
+              showEmailAddress={true}
               showPhoneNumber={true}
             />
           </FormSection>
@@ -45,13 +36,15 @@ exports[`PickUpFormPartVanilla component  should renders correctly props with st
             name="smsSignUp"
           >
             <SMSFormFields
-              addressPhoneNo={null}
+              addressPhoneNo=""
               altInitValue=""
-              dispatch={[Function]}
+              dispatch={[MockFunction]}
               formName="checkoutPickup"
               formSection="smsSignUp"
               isOrderUpdateChecked={false}
               labels={Object {}}
+              showDefaultCheckbox={false}
+              variation="secondary"
             />
           </FormSection>
         </Styled(View)>
@@ -133,7 +126,7 @@ exports[`PickUpFormPartVanilla component  should renders correctly props with st
 </Fragment>
 `;
 
-exports[`PickUpFormPartVanilla component should renders correctly props  present  1`] = `
+exports[`PickUpFormPart component should renders correctly props  present  1`] = `
 <Fragment>
   <CheckoutProgressIndicator
     activeStage="pickup"
@@ -151,24 +144,15 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
         />
       </Styled(View)>
       <Styled(View)>
-        <CheckoutSectionTitleDisplay
-          dataLocator="pickup-title"
-        />
+        <Styled(Text) />
         <Styled(View)>
           <FormSection
             name="pickUpContact"
           >
-            <Styled(PickupMainContactEditForm)
+            <Styled(ContactFormFields)
               className="pickup-contact-guest-form"
-              dispatch={[MockFunction]}
-              formData={Object {}}
-              isEditing={true}
-              isMobile={false}
-              isReset={false}
               labels={Object {}}
-              onClose={[Function]}
-              onEditModeChange={[Function]}
-              onSubmit={[Function]}
+              showEmailAddress={true}
               showPhoneNumber={true}
             />
           </FormSection>
@@ -178,13 +162,15 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
             name="smsSignUp"
           >
             <SMSFormFields
-              addressPhoneNo={null}
+              addressPhoneNo=""
               altInitValue=""
-              dispatch={[Function]}
+              dispatch={[MockFunction]}
               formName="checkoutPickup"
               formSection="smsSignUp"
               isOrderUpdateChecked={false}
               labels={Object {}}
+              showDefaultCheckbox={false}
+              variation="secondary"
             />
           </FormSection>
         </Styled(View)>
@@ -266,7 +252,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
 </Fragment>
 `;
 
-exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `
+exports[`PickUpFormPart component should renders correctly props not present 1`] = `
 <Fragment>
   <CheckoutProgressIndicator
     activeStage="pickup"
@@ -291,10 +277,44 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
           <FormSection
             name="pickUpContact"
           >
-            <Styled(ContactFormFields)
+            <Styled(PickupMainContactEditForm)
               className="pickup-contact-guest-form"
+              dispatch={[MockFunction]}
+              formData={
+                Object {
+                  "emailAddress": "",
+                  "firstName": "",
+                  "lastName": "",
+                  "phoneNumber": "",
+                }
+              }
+              handleExitEditModeClick={[Function]}
+              handleSubmit={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                    Object {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
+              isEditing={false}
+              isMobile={false}
               labels={Object {}}
-              showEmailAddress={true}
+              onEditModeChange={[Function]}
               showPhoneNumber={true}
             />
           </FormSection>

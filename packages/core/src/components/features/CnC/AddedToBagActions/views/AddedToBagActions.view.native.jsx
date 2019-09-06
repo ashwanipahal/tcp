@@ -27,9 +27,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
   };
 
   closeModalAndHandleCheckout = () => {
-    const { closeCheckoutConfirmationModal, handleCartCheckout } = this.props;
+    const { closeCheckoutConfirmationModal, handleCartCheckout, navigation } = this.props;
     closeCheckoutConfirmationModal();
-    return handleCartCheckout();
+    return handleCartCheckout({ navigation });
   };
 
   render() {
@@ -76,7 +76,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
         <ButtonWrapper>
           <CheckoutButton
             onPress={() => {
-              handleCartCheckout(isEditingItem);
+              handleCartCheckout({ isEditingItem, navigation });
             }}
           >
             <BodyCopy

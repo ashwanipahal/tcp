@@ -48,7 +48,7 @@ export function* fetchPlpProducts({ payload }) {
     }
     yield put(setPlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
