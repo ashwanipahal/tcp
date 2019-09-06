@@ -38,6 +38,7 @@ export default css`
     }
   }
   .banner-bottom-variation {
+    padding-bottom: 4px;
     .moduleB_promo-banner {
       padding-top: 8px;
     }
@@ -87,7 +88,6 @@ export default css`
       }
     }
     .banner-top-alt-variation {
-      padding-bottom: 16px;
       .small_text_semibold,
       .small_text_black {
         display: block;
@@ -99,6 +99,7 @@ export default css`
       }
     }
     .banner-bottom-variation {
+      padding-bottom: 40px;
       .moduleB_promo-banner {
         padding-top: 24px;
       }

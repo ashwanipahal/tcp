@@ -213,10 +213,6 @@ export default {
           crop_m: '',
         },
       },
-      {
-        key: 'bannerPostition',
-        val: 'overlay',
-      },
     ],
   },
   submodules: {},
@@ -239,7 +235,7 @@ export default {
     },
   ],
   moduleWidth: 'half',
-  ctaType: ctaTypes[2],
+  ctaType: ctaTypes[1],
   bannerPosition: bannerPosition[3],
   expandableTitle: 'Shop Now',
 };

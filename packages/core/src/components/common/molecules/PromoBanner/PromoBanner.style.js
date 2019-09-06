@@ -110,7 +110,7 @@ export default css`
         line-height: 1.3;
       }
       .currency_up_style-1 {
-        line-height: 0.85;
+        line-height: 0.8;
         font-size: 118px;
         font-weight: ${props => props.theme.typography.fontWeights.black};
       }

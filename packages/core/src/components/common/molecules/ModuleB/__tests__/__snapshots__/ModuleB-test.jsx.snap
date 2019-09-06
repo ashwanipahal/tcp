@@ -12,43 +12,33 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
       }
     }
   >
-    <div
-      className="banner-overlay-variation"
-    >
-      <div
-        className="moduleB_image-container"
-        data-locator="moduleB_image_01"
-      >
-        <Styled(Anchor)
-          action=""
-          className="moduleB_image-link"
-          external={0}
-          target=""
-          text="Graphic Tees"
-          title="Graphic Tees"
-          url="/node/product/<uuid>"
-        >
-          <WithTheme(DamImage)
-            className="moduleB_image"
-            imgData={
-              Object {
-                "alt": "Graphic Tees",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_690,h_577",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_347,h_295",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_354,h_295",
-                "title": "Graphic Tees",
-                "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,h_474,w_1410/ecom/assets/content/gym/us/home/modA/ecom_assets_content_Group02_FebDressy_4913_3x_ztpimi_hacrzj.png",
-              }
-            }
-          />
-        </Styled(Anchor)>
-      </div>
-      <Styled(PromoBanner)
-        className="moduleB_promo-banner"
-        data-locator="moduleB_promo_banner"
-        dataLocatorHeader="moduleB_header_text"
-        headerText={
-          Array [
+    <ImageBanner
+      bannerPosition="overlay"
+      linkedImage={
+        Array [
+          Object {
+            "image": Object {
+              "alt": "Graphic Tees",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_690,h_577",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_347,h_295",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_354,h_295",
+              "title": "Graphic Tees",
+              "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,h_474,w_1410/ecom/assets/content/gym/us/home/modA/ecom_assets_content_Group02_FebDressy_4913_3x_ztpimi_hacrzj.png",
+            },
+            "link": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Graphic Tees",
+              "title": "Graphic Tees",
+              "url": "/node/product/<uuid>",
+            },
+          },
+        ]
+      }
+      promoBanner={
+        Object {
+          "headerText": Array [
             Object {
               "icon": Object {
                 "icon": "",
@@ -81,10 +71,8 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
                 },
               ],
             },
-          ]
-        }
-        promoBanner={
-          Array [
+          ],
+          "promoBanner": Array [
             Object {
               "link": Object {
                 "action": "",
@@ -105,11 +93,10 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
                 },
               ],
             },
-          ]
+          ],
         }
-        variation="header_and_promo"
-      />
-    </div>
+      }
+    />
     <Styled(ButtonList)
       buttonListVariation="scrollCTAList"
       buttonsData={
