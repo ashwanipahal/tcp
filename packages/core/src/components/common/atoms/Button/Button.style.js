@@ -5,7 +5,7 @@ const ButtonStyles = css`
   border-radius: 0;
   background: none;
   position: relative;
-  cursor: ${props => (props.disabled ? 'none' : 'pointer')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
   text-transform: uppercase;
   min-height: 42px;
@@ -78,14 +78,14 @@ const ButtonStyles = css`
   &:focus {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
   }
-  &:hover:not([disabled]) {
+  &:hover:not[disabled] {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
   }
 
   ${props =>
     props.buttonVariation === 'category-links-light'
       ? `
-      &:hover:not([disabled]){
+      &:hover {
         background: none;
         font-weight: ${props.theme.typography.fontWeights.black};
         border-color: ${props.theme.colorPalette.orange[800]};
@@ -102,7 +102,7 @@ const ButtonStyles = css`
   ${props =>
     props.buttonVariation === 'category-links-dark'
       ? `
-      &:hover:not([disabled]), &:focus {
+      &:hover, &:focus {
         background: none;
         font-weight: ${props.theme.typography.fontWeights.black};
         border-color: ${props.theme.colorPalette.orange[800]};
@@ -160,16 +160,13 @@ const ButtonStyles = css`
             ? props.theme.typography.fontWeights.extrabold
             : props.theme.typography.fontWeights.regular
         };
-        letter-spacing: 0.3px;
-        border: 0;
         border-bottom: 2px solid ${
           props.active ? props.theme.colorPalette.primary.main : 'transparent'
         };
         padding: 0 5px;
         min-height: 24px;
-        background-color: transparent;
 
-        &:hover:not([disabled]), &:focus, &:active {
+        &:hover, &:focus, &:active {
           background-color: transparent;
         }
 
