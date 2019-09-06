@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-
+import { getLabelValue } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -106,14 +106,14 @@ const isOrderHasPickup = cartItems => {
 
 const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
   const result = [
-    checkoutProgressBarLabels.billingLabel || 'Billing',
-    checkoutProgressBarLabels.reviewLabel || 'Review',
+    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
+    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
   ];
   if (isOrderHasShipping(cartItems)) {
-    result.unshift(checkoutProgressBarLabels.shippingLabel || 'Shipping');
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
   }
   if (isOrderHasPickup(cartItems)) {
-    result.unshift(checkoutProgressBarLabels.pickupLabel || 'Pickup');
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
   }
   return result;
 };

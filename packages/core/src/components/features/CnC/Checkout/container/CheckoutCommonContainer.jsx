@@ -74,10 +74,11 @@ export class CheckoutContainer extends React.Component<Props> {
       setCheckoutStage,
       billingProps,
       router,
+      checkoutProgressBarLabels,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
-      getCheckoutProgressBarLabels
+      checkoutProgressBarLabels
     );
     return (
       <CheckoutPage
