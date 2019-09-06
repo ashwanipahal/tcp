@@ -5,7 +5,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
   <Styled(View)>
     <Styled(ImageComp)
       height={295}
-      url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,h_474,w_1410/ecom/assets/content/gym/us/home/modA/ecom_assets_content_Group02_FebDressy_4913_3x_ztpimi_hacrzj.png"
+      url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png"
       width={726}
     />
   </Styled(View)>
@@ -124,10 +124,6 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
               "title": "Girl",
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
-          },
-          Object {
-            "key": "bannerPostition",
-            "val": "overlay",
           },
         ]
       }

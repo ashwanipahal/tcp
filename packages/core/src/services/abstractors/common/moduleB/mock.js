@@ -78,7 +78,7 @@ export default {
           {
             image: {
               url:
-                'https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,h_474,w_1410/ecom/assets/content/gym/us/home/modA/ecom_assets_content_Group02_FebDressy_4913_3x_ztpimi_hacrzj.png',
+                'https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png',
               alt: 'Graphic Tees',
               title: 'Graphic Tees',
               crop_d: 'c_crop,g_face:center,q_auto:best,w_690,h_577',
