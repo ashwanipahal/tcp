@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { Anchor } from '../../../../../../common/atoms';
 import cssClassName from '../../utils/cssClassName';
+import { getLocator } from '../../../../../../../utils/utils';
 import errorBoundary from '../../../../../../common/hoc/withErrorBoundary';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import GlobalNavigationMenuDesktopL2Styles from '../styles/GlobalNavigationMenuDesktopL2.style';
@@ -156,6 +157,7 @@ const NavGroupContainer = props => {
               fontSize="fs16"
               fontWeight="extrabold"
               color="text.primary"
+              data-locator={`${getLocator('plp_left_Nav_header')}`}
             >
               {groupName}
               {groupName && <p className="group-nav" />}
@@ -218,6 +220,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
                   className={activeClassName}
                   to={`/c?cid=${item.categoryContent.id}`}
                   asPath={asPathConstructor(item.url)}
+                  data-locator={`${getLocator('plp_left_Nav_L2')}`}
                 >
                   {item.categoryContent.name}
                 </Anchor>
@@ -264,7 +267,11 @@ function L3({ menuItems, activeCategoryIds, className }) {
                 id={`list-item-${categoryId}`}
                 role="none"
               >
-                <Anchor to={url} asPath={asPathConstructor(url)}>
+                <Anchor
+                  to={url}
+                  asPath={asPathConstructor(url)}
+                  data-locator={`${getLocator('plp_left_Nav_L3')}`}
+                >
                   {name}
                 </Anchor>
               </BodyCopy>

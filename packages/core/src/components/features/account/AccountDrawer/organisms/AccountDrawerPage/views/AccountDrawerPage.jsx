@@ -5,7 +5,6 @@ import styles from '../styles/AccountDrawerPage.style';
 import AccountDrawerHeading from '../../../molecules/AccountDrawerHeading';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import ExtraPointsTeaser from '../../../molecules/ExtraPointsTeaser';
-import MyRewardsAndOffers from '../../../molecules/MyRewardsAndOffers';
 import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLinks';
 import { isCanada } from '../../../../../../../utils';
 
@@ -21,7 +20,6 @@ const AccountDrawerPage = props => {
           <ExtraPointsTeaser plccUser={plccUser} />
         </>
       )}
-      <MyRewardsAndOffers />
       <AccountDrawerBottomLinks />
     </div>
   );

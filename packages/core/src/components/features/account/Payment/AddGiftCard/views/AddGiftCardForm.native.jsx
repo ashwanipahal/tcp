@@ -36,7 +36,11 @@ export class AddGiftCardForm extends React.PureComponent {
       addGiftCardResponse,
     } = this.props;
     return (
-      <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        {...this.props}
+        keyboardShouldPersistTaps="handled"
+      >
         <View>
           {addGiftCardResponse && (
             <ErrorWrapper>

@@ -6,6 +6,8 @@ exports[`BonusPointsView should render correctly 1`] = `
 >
   <BonusPointsSection
     bonusData={Object {}}
+    enableApplyCta={false}
+    getBonusDaysData={[Function]}
     labels={
       Object {
         "myPlaceRewards": Object {
@@ -14,6 +16,7 @@ exports[`BonusPointsView should render correctly 1`] = `
         },
       }
     }
+    orderDetails={Object {}}
     toggleBonusPointsModal={[Function]}
   />
   <ModalNative
