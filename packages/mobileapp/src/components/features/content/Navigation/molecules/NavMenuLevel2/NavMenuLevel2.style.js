@@ -1,7 +1,12 @@
 import styled from 'styled-components/native';
 import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
 
-const managePadding = props => {
+/**
+ * getPromoBadgePadding
+ * This method returns the padding according to devices ( Android & ISO) .
+ * To manage the different device pixel for xxxhdpi , xhdpi , xxhdpi.
+ */
+const getPromoBadgePadding = props => {
   const { theme } = props;
   if (getPixelRatio() === 'xxxhdpi' || getPixelRatio() === 'xhdpi') {
     return ` padding: ${theme.spacing.ELEM_SPACING.MED} 0
@@ -34,7 +39,7 @@ export const ItemViewWithHeading = styled.TouchableOpacity`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  ${props => managePadding(props)};
+  ${props => getPromoBadgePadding(props)};
 `;
 
 export const HeadingContainer = styled.View`

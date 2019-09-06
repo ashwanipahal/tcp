@@ -1,9 +1,12 @@
 import styled from 'styled-components/native';
 import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
 
+/**
+ * @function managePromoConatinerView to manage the view according to the device PixelRatio.
+ */
 const managePromoConatinerView = marginRight => {
   if (getPixelRatio() === 'xxxhdpi' || getPixelRatio() === 'xhdpi') {
-    return `width: 140px; margin-right:${marginRight - 15};`;
+    return `width: 140px; margin-right:${marginRight - 20};`;
   }
   return `
   width: 150px;

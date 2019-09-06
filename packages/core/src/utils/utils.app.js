@@ -448,29 +448,35 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 
 export const isAndroid = () => Platform.OS === 'android';
 
+/**
+ * getPixelRatio
+ * This method returns the PixelRatio for different devices ( Android & ISO)
+ */
 export const getPixelRatio = () => {
+  // for android iPhone iPhone 6 Plus, 7 Plus, 8 Plus , X, XS, XS Max ,Pixel, Pixel 2 devices. (Note: PixelRatio = 3 ).
+  let devicepixel = 'xxhdpi';
+
   if (PixelRatio.get() === 1) {
-    // for condition 1 in android devices mdpi
-    return 'mdpi';
+    // for android devices mdpi.
+    devicepixel = 'mdpi';
+    return devicepixel;
   }
   if (PixelRatio.get() === 1.5) {
-    // for condition 2 in android devices hdpi
-    return 'hdpi';
+    // for android devices hdpi
+    devicepixel = 'hdpi';
+    return devicepixel;
   }
   if (PixelRatio.get() === 2) {
-    // for condition 3 in android devices iPhone 4, 4S ,iPhone 5, 5C, 5S ,iPhone 6, 7, 8 ,iPhone XR
-    return 'xhdpi';
-  }
-  if (PixelRatio.get() === 3) {
-    // for condition 4 in android devices iPhone iPhone 6 Plus, 7 Plus, 8 Plus , X, XS, XS Max ,Pixel, Pixel 2
-    return 'xxhdpi';
+    // for android & iPhone 4, 4S ,iPhone 5, 5C, 5S ,iPhone 6, 7, 8 ,iPhone XR devices .
+    devicepixel = 'xhdpi';
+    return devicepixel;
   }
   if (PixelRatio.get() > 3.5) {
-    // for condition 5 in android devices  Nexus 6 , samsung7 , Pixel XL, Pixel 2 XL, xxxhdpi Android devices.
-    return 'xxxhdpi';
+    // for android devices, Nexus 6 , Samsung7 , Pixel XL, Pixel 2 XL, xxxhdpi Android devices.
+    devicepixel = 'xxxhdpi';
+    return devicepixel;
   }
-
-  return 'xxhdpi';
+  return devicepixel;
 };
 
 export default {

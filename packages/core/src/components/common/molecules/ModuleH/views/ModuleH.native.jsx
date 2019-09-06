@@ -37,7 +37,10 @@ const linkStyle = {
   marginTop: 28,
 };
 
-const specificDevice = getPixelRatio();
+/**
+ * TODO: To manage the PixelRatio .
+ */
+const devicePixelRatio = getPixelRatio();
 
 /**
  * @class ModuleH - global reusable component will provide featured content module
@@ -109,10 +112,13 @@ class ModuleH extends React.PureComponent<Props, State> {
     this.setState({ currentIndex: index });
   };
 
+  /**
+   * @function render : renders module H .
+   */
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
     let HeadingFontSize = 'fs36';
-    if (specificDevice === 'xxxhdpi' || specificDevice === 'xhdpi') {
+    if (devicePixelRatio === 'xxxhdpi' || devicePixelRatio === 'xhdpi') {
       HeadingFontSize = 'fs32';
     }
     return (
