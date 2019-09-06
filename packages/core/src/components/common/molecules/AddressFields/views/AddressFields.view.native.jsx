@@ -72,7 +72,7 @@ export class AddressFields extends React.PureComponent {
     this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
 
     this.state = {
-      country: 'US',
+      country: API_CONFIG.siteIds.us.toUpperCase(),
       dropDownItem: this.UScountriesStates[0].displayName,
     };
 
