@@ -159,6 +159,18 @@ function dobValidator(value) {
   return ['Mm', 'Dd', 'Yyyy'].indexOf(value) === -1;
 }
 
+function onlyDigitsValidator(value) {
+  return /^\d+$/.test(value);
+}
+
+function cvvLengthThreeValidator(value, param, linkedProps) {
+  return linkedProps[0] !== 'AMEX' ? (value || '').length === 3 : true;
+}
+
+function cvvLengthFourValidator(value, param, linkedProps) {
+  return linkedProps[0] === 'AMEX' ? (value || '').length === 4 : true;
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -187,6 +199,9 @@ const validatorMethods = {
   alphanumeric: alphanumericValidator,
   ssn: ssnValidator,
   dob: dobValidator,
+  cvvNumber: onlyDigitsValidator,
+  cvvLengthThree: cvvLengthThreeValidator,
+  cvvLengthFour: cvvLengthFourValidator,
 };
 
 export default validatorMethods;

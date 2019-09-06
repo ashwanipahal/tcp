@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
+import BillingPaymentForm from '../../BillingPaymentForm';
 
 import styles from '../styles/BillingPage.style';
 
@@ -19,6 +20,7 @@ class BillingPage extends React.PureComponent {
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title="Billing" dataLocator="billing-title" />
+        <BillingPaymentForm />
       </div>
     );
   }

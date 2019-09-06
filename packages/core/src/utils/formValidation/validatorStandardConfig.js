@@ -122,6 +122,12 @@ export const formValidationMessages = {
     dob: 'Please select a year',
   },
   orderNumber: 'ERROR: Please enter a valid order number.',
+  cvvCode: {
+    required: 'Please enter a valid security code',
+    cvvNumber: 'Please enter a valid security code',
+    cvvLengthThree: 'Security code must be a 3-digit number without any spaces',
+    cvvLengthFour: 'Security code must be a 4-digit number without any spaces',
+  },
 };
 
 export const formValidationRules = {
@@ -279,6 +285,12 @@ export const formValidationRules = {
   },
   year: {
     dob: true,
+  },
+  cvvCode: {
+    required: true,
+    cvvNumber: true,
+    cvvLengthThree: true,
+    cvvLengthFour: true,
   },
 };
 
