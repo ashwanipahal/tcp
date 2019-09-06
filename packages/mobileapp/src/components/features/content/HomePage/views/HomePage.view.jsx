@@ -62,6 +62,13 @@ class HomePageView extends React.PureComponent<Props> {
     } = this.props;
     return (
       <ScrollView>
+        <Button
+          fullWidth
+          buttonVariation="variable-width"
+          text="PLP Page"
+          onPress={() => navigation.navigate('CheckoutPickup')}
+          style={buttonMargin}
+        />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
