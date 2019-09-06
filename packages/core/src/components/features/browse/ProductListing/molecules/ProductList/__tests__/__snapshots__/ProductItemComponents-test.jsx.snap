@@ -27,29 +27,6 @@ exports[`ProductItemComponents component BadgeItem render Text 1`] = `
 </div>
 `;
 
-exports[`ProductItemComponents component ProductMainImage called correctly 1`] = `
-<figure
-  className="product-image-container"
-  itemScope={true}
-  itemType="http://schema.org/ImageObject"
->
-  <a
-    className=""
-    href=""
-    onClick={[Function]}
-    title=""
-    unbxdattr="product"
-  >
-    <img
-      alt=""
-      className="product-image-content img-item"
-      itemProp="contentUrl"
-      src=""
-    />
-  </a>
-</figure>
-`;
-
 exports[`ProductItemComponents component ProductPricesSection called correctly 1`] = `
 <div
   className="container-price"
@@ -127,9 +104,10 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
   className="product-title-container"
 >
   <ForwardRef
+    asPath=""
     handleLinkClick={[Function]}
     inheritedStyles="product-title-content"
-    to=""
+    to="/p?pid=undefined"
   >
     <Dotdotdot
       clamp={2}
