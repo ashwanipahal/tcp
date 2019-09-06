@@ -7,6 +7,10 @@ export default css`
     .filter-row {
       margin-bottom: 7px;
     }
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin: 14px 14px 0;
+    }
   }
 
   .open-filter-button {
@@ -34,7 +38,7 @@ export default css`
   }
 
   .item-common {
-    margin-bottom: 18px;
+    margin-bottom: 8px;
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 120px;
@@ -53,6 +57,7 @@ export default css`
     border: 0;
     padding-top: 6px;
     padding-bottom: 0;
+    margin: auto;
 
     .item-list-common {
       max-width: 98%;

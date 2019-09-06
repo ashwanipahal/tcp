@@ -45,6 +45,9 @@ export default css`
   .item-list-row {
     flex-flow: row wrap;
   }
+  .item-column {
+    flex-flow: column;
+  }
   .apply-button {
     width: 210px;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};

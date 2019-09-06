@@ -16,6 +16,9 @@ const getAppliedL3Filters = availableL3List => {
 const isUnbxdLogicApplied = (shouldApplyUnbxdLogic, bucketingSeqConfig) => {
   return shouldApplyUnbxdLogic && bucketingSeqConfig.bucketingRequired;
 };
+const isCachedFilterAndCount = (shouldApplyUnbxdLogic, cacheFiltersAndCount) => {
+  return shouldApplyUnbxdLogic && cacheFiltersAndCount;
+};
 const getCurrentListingId = breadCrumbs => {
   return breadCrumbs && breadCrumbs.length ? breadCrumbs[breadCrumbs.length - 1].urlPathSuffix : '';
 };
@@ -149,6 +152,14 @@ const getPlpUrlQueryValues = filtersAndSort => {
   return true;
 };
 
+const cacheFiltersAndCounts = (filters, availableL3InFilter) => {
+  let count = 0;
+  // We need to add up the count coming in each L3 to show up the number of products in the L2 at the top of the listing.
+  // eslint-disable-next-line no-return-assign
+  availableL3InFilter.map(item => (count += item.count));
+  return count;
+};
+
 // eslint-disable-next-line complexity
 const processResponse = (
   res,
@@ -157,6 +168,7 @@ const processResponse = (
     isSearch,
     breadCrumbs,
     shouldApplyUnbxdLogic,
+    cacheFiltersAndCount,
     getFacetSwatchImgPath,
     filtersAndSort,
     bucketingSeqConfig,
@@ -211,6 +223,12 @@ const processResponse = (
     filters = productListingFilters || {};
     totalProductsCount = productListingTotalCount || 0;
   }
+
+  // This is the case when we need to cache the filter and the count of the number of products in L2. This is a bucketing scenario.
+  if (isCachedFilterAndCount(shouldApplyUnbxdLogic, cacheFiltersAndCount)) {
+    totalProductsCount = cacheFiltersAndCounts(filters, availableL3InFilter);
+  }
+
   // WHY DO WE NEED THIS??
   const unbxdId = res.headers && res.headers['unbxd-request-id'];
   // TODO - fix this - this.setUnbxdId(unbxdId);
