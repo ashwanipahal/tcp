@@ -16,6 +16,7 @@ import {
   Separator,
   GooglePlaceInputWrapper,
   AddressSecondWrapper,
+  HiddenAddressLineWrapper,
 } from '../styles/AddressFields.style.native';
 import {
   countriesOptionsMap,
@@ -58,6 +59,24 @@ export class AddressFields extends React.PureComponent {
       country: API_CONFIG.siteIds.us.toUpperCase(),
       dropDownItem: UScountriesStatesTable[0].displayName,
     };
+
+    const selectArray = [
+      {
+        id: ``,
+        fullName: '',
+        displayName: 'Select',
+      },
+    ];
+
+    this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
+    this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
+
+    this.state = {
+      country: 'US',
+      dropDownItem: this.UScountriesStates[0].displayName,
+    };
+
+    this.locationRef = null;
   }
 
   handlePlaceSelected = (place, inputValue) => {
@@ -98,20 +117,38 @@ export class AddressFields extends React.PureComponent {
           component={TextBox}
           dataLocator="addnewaddress-lastname"
         />
+
         <GooglePlaceInputWrapper>
           <Field
-            id="addressLine1"
-            name="addressLine1"
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
-              dispatch(change(formName, `${formSection}.addressLine1`, inputValue));
               this.handlePlaceSelected(data, inputValue);
             }}
+            onChangeText={text => {
+              setTimeout(() => {
+                dispatch(change(formName, `${formSection}.addressLine1`, text));
+              });
+            }}
+            refs={instance => {
+              this.locationRef = instance;
+            }}
+            // initialValue={addressLine1}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
           />
         </GooglePlaceInputWrapper>
+
+        <HiddenAddressLineWrapper>
+          <Field
+            label=""
+            component={TextBox}
+            title=""
+            type="hidden"
+            id="addressLine1"
+            name="addressLine1"
+          />
+        </HiddenAddressLineWrapper>
         <AddressSecondWrapper>
           <Field
             id="addressLine2"
