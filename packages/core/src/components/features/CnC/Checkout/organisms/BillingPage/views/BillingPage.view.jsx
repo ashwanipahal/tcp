@@ -13,6 +13,7 @@ class BillingPage extends React.PureComponent {
     className: PropTypes.string,
     labels: PropTypes.shape({}).isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
+    submitBilling: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -20,7 +21,7 @@ class BillingPage extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, orderHasShipping } = this.props;
+    const { className, labels, orderHasShipping, submitBilling } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
       <div className={className}>
@@ -30,6 +31,7 @@ class BillingPage extends React.PureComponent {
         <CheckoutFooter
           hideBackLink
           // backLinkHandler={routeToPickupPage}
+          nextHandler={submitBilling}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
         />

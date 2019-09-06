@@ -9,6 +9,7 @@ import {
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
   getSetCheckoutStage,
+  submitBillingSection,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -73,6 +74,7 @@ export class CheckoutContainer extends React.Component<Props> {
       setCheckoutStage,
       billingProps,
       router,
+      submitBilling,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(cartOrderItems);
     return (
@@ -105,6 +107,7 @@ export class CheckoutContainer extends React.Component<Props> {
         setCheckoutStage={setCheckoutStage}
         availableStages={availableStages}
         router={router}
+        submitBilling={submitBilling}
       />
     );
   }
@@ -132,6 +135,9 @@ export const mapDispatchToProps = dispatch => {
     },
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
+    },
+    submitBilling: payload => {
+      dispatch(submitBillingSection(payload));
     },
   };
 };

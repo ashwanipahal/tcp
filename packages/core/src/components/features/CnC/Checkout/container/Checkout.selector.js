@@ -16,6 +16,8 @@ import {
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
 function getRecalcOrderPointsInterval() {
@@ -460,8 +462,26 @@ function getIsPaymentDisabled(state) {
   return false;
 }
 
+function getAddressByKey(state, onFileAddressKey) {
+  const addressList = getAddressListState(state);
+  if (addressList) {
+    return addressList.find(address => address.nickName === onFileAddressKey);
+  }
+  return false;
+}
+
 function getBillingValues(state) {
   return state.Checkout.getIn(['values', 'billing']);
+}
+
+function getDetailedCreditCardById(state, id) {
+  return JSON.parse(JSON.stringify(state.PaymentReducer.get('cardList'))).find(
+    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id
+  );
+}
+
+function isCardNotUpdated(state, cardId) {
+  return getBillingValues(state).onFileCardId === cardId;
 }
 
 export default {
@@ -500,4 +520,7 @@ export default {
   getBillingLabels,
   getIsPaymentDisabled,
   getBillingValues,
+  getAddressByKey,
+  isCardNotUpdated,
+  getDetailedCreditCardById,
 };

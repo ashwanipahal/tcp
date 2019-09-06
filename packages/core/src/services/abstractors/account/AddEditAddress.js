@@ -57,9 +57,9 @@ export const addAddress = args => {
 
 export const updateAddress = (args, profileUpdate) => {
   const apiConfig = getAPIConfig();
-  const profileUpdateHeader = {};
-  if (profileUpdate) {
-    profileUpdateHeader.profileUpdate = profileUpdate;
+  const additionalHeaders = {};
+  if (profileUpdate !== undefined) {
+    additionalHeaders.profileUpdate = profileUpdate;
   }
   let body = {
     addressLine: [args.address1, args.address2, ''],
@@ -85,7 +85,7 @@ export const updateAddress = (args, profileUpdate) => {
     fromPage: args.applyToOrder ? 'checkout' : '',
   };
 
-  if (args.addressId) {
+  if (args.checkoutUpdateOnly) {
     body = {
       addressId: args.addressId,
       fromPage: 'checkout',
@@ -98,7 +98,7 @@ export const updateAddress = (args, profileUpdate) => {
       'X-Cookie': apiConfig.cookie,
       isRest: true,
       nickName: args.nickName,
-      ...profileUpdate,
+      ...additionalHeaders,
     },
     body,
   };

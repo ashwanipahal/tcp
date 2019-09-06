@@ -284,6 +284,7 @@ export function submitBillingSection(payload) {
     type: constants.SUBMIT_BILLING_SECTION,
   };
 }
+
 export const setGiftCardError = payload => {
   return {
     type: constants.SET_GIFTCARD_ERROR,

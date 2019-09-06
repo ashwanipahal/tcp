@@ -374,13 +374,12 @@ export function addPaymentToOrder({
     expire_year: yearExpire.toString(), // PLCC doesn't require exp
     isDefault: (!!setAsDefault).toString(),
   };
+  const apiConfig = getAPIConfig();
   const header = {
     isRest: 'true',
     identifier: 'true',
     savePayment: saveToAccount ? 'true' : 'false', // save to account for registered users
-    nickName:
-      nickName ||
-      `Billing_${this.apiHelper.configOptions.storeId}_${new Date().getTime().toString()}`,
+    nickName: nickName || `Billing_${apiConfig.storeId}_${new Date().getTime().toString()}`,
   };
 
   if (onFileCardId) {
@@ -430,27 +429,22 @@ export function addPaymentToOrder({
     },
     webService: endpoints.addPaymentInstruction,
   };
-
-  return this.apiHelper
-    .webServiceCall(payload)
-    .then(res => {
-      if (this.apiHelper.responseContainsErrors(res)) {
-        throw new ServiceResponseError(res);
-      }
-      if (res.body && res.body.OosCartItems === 'TRUE') {
-        throw new ServiceResponseError({
-          body: {
-            errorCode: 'API_CART_OOS_ITEM',
-          },
-        });
-      }
-      return {
-        paymentIds: res.body.paymentInstruction,
-      };
-    })
-    .catch(err => {
-      throw this.apiHelper.getFormattedError(err);
-    });
+  console.log({ payload });
+  return executeStatefulAPICall(payload).then(res => {
+    if (responseContainsErrors(res)) {
+      throw new ServiceResponseError(res);
+    }
+    if (res.body && res.body.OosCartItems === 'TRUE') {
+      throw new ServiceResponseError({
+        body: {
+          errorCode: 'API_CART_OOS_ITEM',
+        },
+      });
+    }
+    return {
+      paymentIds: res.body.paymentInstruction,
+    };
+  });
 }
 
 export function updatePaymentOnOrder(args) {
@@ -478,17 +472,12 @@ export function updatePaymentOnOrder(args) {
     webService: endpoints.updatePaymentInstruction,
   };
 
-  return this.apiHelper
-    .webServiceCall(payload)
-    .then(res => {
-      if (this.apiHelper.responseContainsErrors(res)) {
-        throw new ServiceResponseError(res);
-      }
-      return { paymentId: res.body.paymentInstruction[0].piId };
-    })
-    .catch(err => {
-      throw this.apiHelper.getFormattedError(err);
-    });
+  return executeStatefulAPICall(payload).then(res => {
+    if (responseContainsErrors(res)) {
+      throw new ServiceResponseError(res);
+    }
+    return { paymentId: res.body.paymentInstruction[0].piId };
+  });
 }
 
 export default {

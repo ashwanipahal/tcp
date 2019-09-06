@@ -239,5 +239,9 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/account/saveUserSurvey',
   },
+  updatePaymentInstruction: {
+    method: 'PUT',
+    URI: 'v2/checkout/updatePaymentInstruction',
+  },
 };
 export default endpoints;
