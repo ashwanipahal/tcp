@@ -10,7 +10,7 @@ import Dotdotdot from 'react-dotdotdot';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
-import { getFormattedLoyaltyText } from '../utils/productsCommonUtils';
+import { getFormattedLoyaltyText, getProductListToPath } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
 import { Image, BodyCopy, Anchor } from '../../../../../../common/atoms';
 
@@ -24,31 +24,6 @@ export function productLink(loadedProductCount, pdpUrl, event) {
     window.sessionStorage.setItem('SCROLL_POINT', window.scrollY);
     window.location = pdpUrl;
   }
-}
-
-export function ProductMainImage(props) {
-  // eslint-disable-next-line
-  const { imageUrl, productName, pdpUrl, loadedProductCount, analyticsData, keepAlive } = props;
-  return (
-    <figure className="product-image-container" itemScope itemType="http://schema.org/ImageObject">
-      <a
-        className={keepAlive && 'out-of-stock-overlap'}
-        onClick={e => productLink(loadedProductCount, pdpUrl, e)}
-        title={productName}
-        unbxdattr="product"
-        unbxdparam_sku={analyticsData && analyticsData.pId}
-        unbxdparam_prank={analyticsData && analyticsData.prank}
-        href={pdpUrl}
-      >
-        <img
-          className="product-image-content img-item"
-          src={imageUrl}
-          alt={productName}
-          itemProp="contentUrl"
-        />
-      </a>
-    </figure>
-  );
 }
 
 export function ProductSKUInfo(props) {
@@ -73,12 +48,14 @@ export function ProductSKUInfo(props) {
 export function ProductTitle(props) {
   // eslint-disable-next-line
   const { name, pdpUrl, loadedProductCount, children } = props;
+  const pdpToPath = getProductListToPath(pdpUrl);
   // eslint-disable-next-line
   return (
     <div className="product-title-container">
       <Anchor
         handleLinkClick={e => productLink(loadedProductCount, pdpUrl, e)}
-        to={pdpUrl}
+        to={pdpToPath}
+        asPath={pdpUrl}
         inheritedStyles="product-title-content"
       >
         <Dotdotdot clamp={2}>

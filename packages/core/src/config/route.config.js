@@ -50,6 +50,12 @@ const ROUTES_LIST = [
     params: ['cid'],
   },
   {
+    noSlugPath: 'p',
+    path: '/p/:pid',
+    resolver: '/ProductListingPage',
+    params: ['pid'],
+  },
+  {
     noSlugPath: 'place-card',
     path: '/place-card',
     resolver: '/WebInstantCredit',
