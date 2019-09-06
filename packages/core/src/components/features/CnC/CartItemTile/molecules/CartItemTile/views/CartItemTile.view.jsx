@@ -502,7 +502,11 @@ class CartItemTile extends React.Component {
         </Row>
         {pageView === 'myBag' && (
           <Row fullBleed>
-            <CartItemRadioButtons productDetail={productDetail} labels={labels} />
+            <CartItemRadioButtons
+              className="cart-item-radio-buttons"
+              productDetail={productDetail}
+              labels={labels}
+            />
           </Row>
         )}
       </div>
