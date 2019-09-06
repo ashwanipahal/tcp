@@ -20,7 +20,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "small": "375px",
         "smallMax": "767px",
         "values": Object {
-          "lg": 1024,
+          "lg": 1200,
           "sm": 768,
           "xs": 0,
         },
