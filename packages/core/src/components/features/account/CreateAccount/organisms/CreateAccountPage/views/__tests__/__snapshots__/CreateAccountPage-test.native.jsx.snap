@@ -6,6 +6,7 @@ exports[`Create Account Page should render correctly 1`] = `
   createAccountAction={[MockFunction]}
   error={Object {}}
   isIAgreeChecked={false}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "lbl_createAccount_hide": "hide",
