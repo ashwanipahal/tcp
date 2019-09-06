@@ -190,4 +190,14 @@ export default {
   plcc_SSN: 'plcc_SSN',
   plcc_submit_btn: 'plcc_submit_btn',
   plcc_back_btn: 'plcc_back_btn',
+
+  // BreadCrumbs Locators
+  breadCrumb_L1_Category: 'breadcrumb-L1-link',
+  breadCrumb_L2_Category: 'breadcrumb-L2-link',
+  breadCrumb_L3_Category: 'breadcrumb-L3-link',
+
+  // CLP Navigation Locators
+  plp_left_Nav_L2: 'leftnav-L2-Link',
+  plp_left_Nav_L3: 'leftnav-L3-link',
+  plp_left_Nav_header: 'products-header-txt',
 };
