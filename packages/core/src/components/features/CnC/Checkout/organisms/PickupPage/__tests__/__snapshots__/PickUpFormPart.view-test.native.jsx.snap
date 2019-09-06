@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PickUpFormPartVanilla component  should renders correctly props with state update  1`] = `
+exports[`PickUpFormPart component  should renders correctly props with state update  1`] = `
 <Fragment>
   <CheckoutProgressIndicator
     activeStage="pickup"
@@ -126,7 +126,7 @@ exports[`PickUpFormPartVanilla component  should renders correctly props with st
 </Fragment>
 `;
 
-exports[`PickUpFormPartVanilla component should renders correctly props  present  1`] = `
+exports[`PickUpFormPart component should renders correctly props  present  1`] = `
 <Fragment>
   <CheckoutProgressIndicator
     activeStage="pickup"
@@ -252,7 +252,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
 </Fragment>
 `;
 
-exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `
+exports[`PickUpFormPart component should renders correctly props not present 1`] = `
 <Fragment>
   <CheckoutProgressIndicator
     activeStage="pickup"
