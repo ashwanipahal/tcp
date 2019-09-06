@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
 
 export const CheckoutProgressBar = styled.View`
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+  justify-content: center;
+  align-items: center;
+  padding: ${props => props.theme.spacing.LAYOUT_SPACING.XS} 15%;
 `;
 
 export const StepIndicatorContainer = styled.View`
@@ -11,16 +12,14 @@ export const StepIndicatorContainer = styled.View`
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  padding: 13px 0 0 35px;
 `;
 
 export const ProgressStep = styled.View`
-  flex-grow: 1;
   display: flex;
+  flex: 1;
   flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
-  width: 60px;
+  position: relative;
 `;
 
 export const ProgressDot = styled.View`
@@ -35,8 +34,9 @@ export const ProgressDot = styled.View`
 
 export const ProgressBar = styled.View`
   background-color: ${props => props.theme.colorPalette.black};
-  flex-grow: 1;
+  flex: 1;
   height: 1px;
+  width: 40px;
 `;
 
 export const StepIndicatorLabelsContainer = styled.View`
@@ -46,15 +46,21 @@ export const StepIndicatorLabelsContainer = styled.View`
   align-items: center;
   width: 100%;
   margin: 0;
-  padding: 0 25px 6px;
+`;
+
+export const StyledAnchor = styled.View`
+  top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  position: absolute;
+  width: 70px;
+  left: -${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const ProgressStepLabels = styled.View`
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: left;
   font-size: ${props => props.theme.typography.fontSizes.fs10};
 `;
 
@@ -65,6 +71,10 @@ export const ProgressDotIcon = styled.Image`
 
 export const StyledDisableLabels = styled.Text`
   color: ${props => props.theme.colors.TEXT.DARK};
+  position: absolute;
+  top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+  width: 70px;
 `;
 
 export const ProgressDotActive = styled.View`
@@ -77,6 +87,13 @@ export const ProgressDotActive = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
+export const StyledAnchorCompleted = styled.View`
+  position: absolute;
+  top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  width: 70px;
+  left: -${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export default {
   StepIndicatorContainer,
   ProgressStep,
@@ -87,4 +104,6 @@ export default {
   ProgressStepLabels,
   StyledDisableLabels,
   CheckoutProgressBar,
+  StyledAnchor,
+  StyledAnchorCompleted,
 };

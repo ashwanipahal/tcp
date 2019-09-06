@@ -26,8 +26,6 @@ import {
 } from '../container/Checkout.action';
 import { routerPush } from '../../../../../utils';
 
-import CheckoutConstants from '../Checkout.constants';
-
 const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
   // if(recalcOrderPointsInterval && !recalcRewards) {
@@ -106,16 +104,16 @@ const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
 
-const getAvailableStages = cartItems => {
+const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
   const result = [
-    CheckoutConstants.CHECKOUT_STAGES.BILLING,
-    CheckoutConstants.CHECKOUT_STAGES.REVIEW,
+    checkoutProgressBarLabels.billingLabel || 'Billing',
+    checkoutProgressBarLabels.reviewLabel || 'Review',
   ];
   if (isOrderHasShipping(cartItems)) {
-    result.unshift(CheckoutConstants.CHECKOUT_STAGES.SHIPPING);
+    result.unshift(checkoutProgressBarLabels.shippingLabel || 'Shipping');
   }
   if (isOrderHasPickup(cartItems)) {
-    result.unshift(CheckoutConstants.CHECKOUT_STAGES.PICKUP);
+    result.unshift(checkoutProgressBarLabels.pickupLabel || 'Pickup');
   }
   return result;
 };
