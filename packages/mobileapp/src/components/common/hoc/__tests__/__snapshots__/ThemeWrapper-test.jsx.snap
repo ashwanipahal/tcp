@@ -43,6 +43,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "gray": Object {
           "1000": "#6d7278",
           "300": "#f3f3f3",
+          "400": "#4a4a4a",
           "500": "#d8d8d8",
           "600": "#9b9b9b",
           "700": "#575757",
@@ -528,6 +529,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "lineHeight": "normal",
         },
         "letterSpacings": Object {
+          "ls071": "0.71px",
           "ls1": "1px",
           "ls167": "1.67px",
           "ls2": "2px",

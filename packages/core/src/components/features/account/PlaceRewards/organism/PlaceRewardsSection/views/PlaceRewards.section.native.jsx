@@ -18,7 +18,7 @@ import PointsHistory from '../../../../common/organism/PointsHistory';
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
     <View className={className}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         <StyledHeading>
           <BodyCopy
             fontSize="fs16"

@@ -35,6 +35,7 @@ export default css`
   }
   .candidate-b_buttons .heading_text {
     font-size: 10px;
+    padding-top: 3px;
   }
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
     font-size: 12px;
@@ -57,12 +58,7 @@ export default css`
   .poc-hide {
     display: none;
   }
-  .footer-top {
-    > div {
-      border-top: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-      padding-top: 32px;
-    }
-  }
+
   .footer-top__slots {
     padding-bottom: 16px;
   }
@@ -102,6 +98,20 @@ export default css`
   }
 
   &.navigation-footer {
+    padding-top: 0;
+
+    .footer-top, .footer_top_candidate_a {
+      > div {
+        border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+        padding-top: 32px;
+      }
+
+      .refer-a-friend {
+        margin-bottom: 12px;
+        font-size: 15px;
+      }
+    }
+
     .reference-id {
       display: none;
     }
@@ -109,10 +119,18 @@ export default css`
       display: block;
     }
     .social-media-links {
-      padding: 0;
+      padding: 0 0 32px;
     }
     .email-sign-up-form button, .footer_top__signup_form button{
       padding: 0;
+    }
+
+    .footer-bottom__slot--1 {
+      width: 100%;
+
+      > div {
+        padding: 24px 0;
+      }
     }
   }
 
@@ -120,9 +138,7 @@ export default css`
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
-    .footer-top {
-      padding-bottom: 20px;
-    }
+
     .hide-in-medium-up {
       display: none;
     }
@@ -149,7 +165,7 @@ export default css`
     }
     .footer-top {
       padding-bottom: 44px;
-      border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     }
     .candidate-b_buttons {
       padding: 11px 38px 0 38px;
