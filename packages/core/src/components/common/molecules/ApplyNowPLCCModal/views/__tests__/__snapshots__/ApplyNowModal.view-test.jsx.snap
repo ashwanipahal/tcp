@@ -66,15 +66,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .learn_more_link {
-    font-size: ",
-      [Function],
-      "px;
-    color: ",
-      [Function],
-      ";
-    text-align: center;
     padding: 14px 0px 28px 0px;
-    text-decoration: underline;
   }
 
   .learn_more_link_wrapper {
@@ -116,7 +108,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   .offer_info_icon {
     display: flex;
     justify-content: center;
-    background: transparent url('/static/images/PLCC_lockup_2_points.svg') no-repeat 0 0;
+    background: ",
+      [Function],
+      ";
+
     background-size: contain;
     border: none;
     width: 344px;
@@ -126,13 +121,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .linkIconSeperator {
-    font-size: ",
-      [Function],
-      "px;
-    font-family: ",
-      [Function],
-      ";
-    text-decoration: underline;
     margin-left: 10px;
   }
 
@@ -171,14 +159,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .footerLink {
-    font-size: ",
-      [Function],
-      "px;
-    font-family: ",
-      [Function],
-      ";
     margin-left: 28px;
-    text-decoration: underline;
   }
 ",
     ]
@@ -297,7 +278,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         }
       >
         <Styled(Anchor)
+          anchorVariation="secondary"
+          fontSizeVariation="large"
           target="_blank"
+          underline={true}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -330,7 +314,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="center"
-        />
+        >
+          abc
+        </Styled(BodyCopy)>
+        abc
       </li>
       <li>
         <Styled(BodyCopy)
@@ -343,7 +330,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="center"
-        />
+        >
+          abc
+        </Styled(BodyCopy)>
+        abc
       </li>
       <li>
         <Styled(BodyCopy)
@@ -356,7 +346,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="center"
-        />
+        >
+          abc
+        </Styled(BodyCopy)>
+        abc
       </li>
       <li>
         <Styled(BodyCopy)
@@ -369,7 +362,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="center"
-        />
+        >
+          abc
+        </Styled(BodyCopy)>
+        abc
       </li>
       <li>
         <Styled(BodyCopy)
@@ -382,7 +378,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="center"
-        />
+        >
+          abc
+        </Styled(BodyCopy)>
+        abc
       </li>
     </ul>
     <div
@@ -400,18 +399,27 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         textAlign="left"
       />
       <Styled(Anchor)
+        anchorVariation="primary"
         className="linkIconSeperator"
+        fontSizeVariation="large"
         target="_blank"
+        underline={true}
       />
       <Styled(Anchor)
+        anchorVariation="primary"
         className="footerLink"
         data-locator="plcc_faq"
+        fontSizeVariation="large"
         target="_blank"
+        underline={true}
       />
       <Styled(Anchor)
+        anchorVariation="primary"
         className="footerLink"
         data-locator="plcc_rewards_terms"
+        fontSizeVariation="large"
         target="_blank"
+        underline={true}
       />
     </div>
   </div>

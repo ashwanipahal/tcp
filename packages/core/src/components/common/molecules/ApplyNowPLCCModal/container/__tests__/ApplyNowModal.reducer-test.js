@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import ApplyNowModalPLCCReducer from '../ApplyNowModal.reducer';
-import constants from '../ApplyNow.constants';
+import constants from '../ApplyNowModal.constants';
 
 const initialState = fromJS({
   isModalOpen: false,

@@ -16,7 +16,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     lineHeight="normal"
     textAlign="left"
   />
-  <Connect(Styled(ApplyNowModalWrapper)) />
+  <Connect(ApplyNowModalWrapper) />
   <div
     className="element-spacing"
   >

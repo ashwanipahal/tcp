@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ApplyNowModalWrapper, { mapDispatchToProps } from '../ApplyNow.container';
+import ApplyNowModalWrapper, { mapDispatchToProps } from '../ApplyNowModal.container';
 
 describe('ApplyNowModalWrapper', () => {
   it('should render apply card layout view section', () => {

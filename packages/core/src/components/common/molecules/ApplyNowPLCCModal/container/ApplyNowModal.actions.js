@@ -1,4 +1,4 @@
-import APPLY_NOW_MODAL_CONSTANTS from './ApplyNow.constants';
+import APPLY_NOW_MODAL_CONSTANTS from './ApplyNowModal.constants';
 
 export const toggleApplyNowModal = payload => {
   return {

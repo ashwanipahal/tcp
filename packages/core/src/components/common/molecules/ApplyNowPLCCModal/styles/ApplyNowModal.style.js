@@ -44,11 +44,7 @@ export const modalStyles = css`
   }
 
   .learn_more_link {
-    font-size: ${props => props.theme.fonts.fontSize.nav}px;
-    color: ${props => props.theme.colors.PRIMARY.BLUE};
-    text-align: center;
     padding: 14px 0px 28px 0px;
-    text-decoration: underline;
   }
 
   .learn_more_link_wrapper {
@@ -88,7 +84,11 @@ export const modalStyles = css`
   .offer_info_icon {
     display: flex;
     justify-content: center;
-    background: transparent url('/static/images/PLCC_lockup_2_points.svg') no-repeat 0 0;
+    background: ${props =>
+      props.offerType
+        ? `transparent url('/static/images/PLCC_lockup_1_points.svg') no-repeat 0 0;`
+        : `transparent url('/static/images/PLCC_lockup_2_points.svg') no-repeat 0 0;`};
+
     background-size: contain;
     border: none;
     width: 344px;
@@ -98,9 +98,6 @@ export const modalStyles = css`
   }
 
   .linkIconSeperator {
-    font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    text-decoration: underline;
     margin-left: 10px;
   }
 
@@ -135,10 +132,7 @@ export const modalStyles = css`
   }
 
   .footerLink {
-    font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     margin-left: 28px;
-    text-decoration: underline;
   }
 `;
 

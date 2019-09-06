@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import APPLY_NOW_MODAL_CONSTANTS from './ApplyNow.constants';
+import APPLY_NOW_MODAL_CONSTANTS from './ApplyNowModal.constants';
 
 const initialState = fromJS({
   isModalOpen: false,

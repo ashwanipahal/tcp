@@ -1,24 +1,33 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { StyledApplyNowModalVanilla } from '../ApplyNowModal.view';
+import { StyledApplyNowModalVanilla, renderBenefitsList } from '../ApplyNowModal.view';
 
 describe('ApplyNowModalWrapper component', () => {
   const props = {
     labels: {
-      plcc_form_contact_info_header: 'contact information',
+      apply_now_double: 'abc',
+      apply_now_double_subtext: 'abc',
+      apply_now_discount_30: 'abc',
+      apply_now_discount_30_subtext: 'abc',
+      apply_now_discount_25: 'abc',
+      apply_now_discount_25_subtext: 'abc',
+      apply_now_discount_20: 'abc',
+      apply_now_discount_20_subtext: 'abc',
+      apply_now_discount_standard: 'abc',
+      apply_now_discount_standard_subtext: 'abc',
     },
     toggleModal: jest.fn(),
     className: 'demo',
     isModalOpen: true,
   };
 
+  const component = shallow(<StyledApplyNowModalVanilla {...props} />);
+
   it('should renders correctly', () => {
-    const component = shallow(<StyledApplyNowModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
   it('should call renderBenefitsList', async () => {
-    const component = shallow(<StyledApplyNowModalVanilla {...props} />);
-    component.instance().renderBenefitsList(props.labels);
+    renderBenefitsList(props.labels);
   });
 });

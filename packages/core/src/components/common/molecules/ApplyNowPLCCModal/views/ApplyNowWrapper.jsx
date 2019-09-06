@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '@tcp/core/src/components/common/atoms';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 
 import StyledApplyNowModal from './ApplyNowModal.view';
-import style from '../styles/ApplyNowView.style';
 
 /**
  * @class ApplyNowModalWrapper - Invokes apply plccc node application
@@ -54,5 +52,4 @@ ApplyNowModalWrapper.propTypes = {
   toggleModal: PropTypes.func.isRequired,
 };
 
-export default withStyles(ApplyNowModalWrapper, style);
-export { ApplyNowModalWrapper as ApplyNowModalWrapperVanilla };
+export default ApplyNowModalWrapper;
