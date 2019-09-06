@@ -1,5 +1,7 @@
+import queryString from 'query-string';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { isMobileApp } from '../../../../../utils';
+import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
 
 const getIndex = data => {
   return data && data.some(category => !!(category && category.url)) ? data.length : 0;
@@ -278,7 +280,12 @@ export function getProductsAndTitleBlocks(state, productBlocks = []) {
   return productsAndTitleBlocks;
 }
 
-export const getPlpCutomizersFromUrlQueryString = () => {
-  // TODO - this should be fixed in the filters PR - check and update
-  return '';
+export const getPlpCutomizersFromUrlQueryString = urlQueryString => {
+  const queryParams = queryString.parse(urlQueryString);
+  Object.keys(queryParams).forEach(key => {
+    const value = decodeURIComponent(queryParams[key]);
+    queryParams[key] =
+      key && (key.toLowerCase() === FACETS_FIELD_KEY.sort ? value : value.split(','));
+  }); // Fetching Facets and sort key from the URL query string
+  return queryParams;
 };
