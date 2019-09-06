@@ -7,7 +7,10 @@ exports[`Wallet should render correctly 1`] = `
       tableView={true}
     />
     <PageHeadingWithLinks
+      heading="lbl_my_wallet_heading"
       labels={Object {}}
+      programDetailsCta="lbl_my_rewards_program_details"
+      termsConditionCta="lbl_common_tnc"
     >
       <Connect(MyRewardsContainer)
         labels={

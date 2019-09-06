@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import RewardsPoints from '@tcp/core/src/components/features/account/common/organism/RewardsPoints';
+import { getLabelValue } from '@tcp/core/src/utils';
 import WalletLayout from '../styles/Wallet.style.native';
 import MyRewards from '../../common/organism/MyRewards';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
@@ -12,9 +13,13 @@ export const WalletView = ({ labels }) => {
       <WalletLayout>
         <RewardsPoints tableView />
         <PageHeadingWithLinks
-          heading={labels.myPlaceRewards.lbl_my_wallet_heading}
-          programDetailsCta={labels.myPlaceRewards.lbl_my_rewards_program_details}
-          termsConditionCta={labels.common.lbl_common_tnc}
+          heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'myPlaceRewards')}
+          programDetailsCta={getLabelValue(
+            labels,
+            'lbl_my_rewards_program_details',
+            'myPlaceRewards'
+          )}
+          termsConditionCta={getLabelValue(labels, 'lbl_common_tnc', 'common')}
         >
           <MyRewards labels={labels} view="all" />
         </PageHeadingWithLinks>

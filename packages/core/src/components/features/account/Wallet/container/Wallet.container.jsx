@@ -8,7 +8,7 @@ export const WalletContainer = ({ labels }) => {
   return <WalletView labels={labels} />;
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     labels: getLabels(state),
   };
