@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
-import { Field, reduxForm, FormSection, change } from 'redux-form';
+import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
 import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -136,7 +136,7 @@ class PickUpFormPart extends React.Component {
   };
 
   updatePickupForm() {
-    const { pickupInitialValues } = this.props;
+    const { pickupInitialValues, dispatch } = this.props;
     const { pickUpContact } = this.state;
     if (
       pickupInitialValues &&
@@ -151,7 +151,7 @@ class PickUpFormPart extends React.Component {
         phoneNumber: pickupInitialValues.pickUpContact.phoneNumber,
         emailAddress: pickupInitialValues.pickUpContact.emailAddress,
       };
-
+      dispatch(initialize('checkoutPickup', pickupInitialValues));
       this.setState({ pickUpContact: pickUpContactUpdate });
     }
   }
@@ -174,7 +174,7 @@ class PickUpFormPart extends React.Component {
       availableStages,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
-    if (!isGuest && !dataUpdated) {
+    if (!dataUpdated) {
       this.updatePickupForm();
     }
 
@@ -365,7 +365,6 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
-  // enableReinitialize: true,
   destroyOnUnmount: false,
 })(withStyles(PickUpFormPart, FormStyle));
 export { PickUpFormPart as PickUpFormPartVanilla };
