@@ -48,7 +48,7 @@ const getIsOrderHasPickup = createSelector(
 
 export const isGuest = createSelector(
   getPersonalDataState,
-  state => state && state.get('isGuest')
+  state => (state == null ? true : !!state.get('isGuest'))
 );
 
 function getIsMobile() {
