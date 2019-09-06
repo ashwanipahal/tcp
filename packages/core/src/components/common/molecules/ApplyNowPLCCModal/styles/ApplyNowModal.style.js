@@ -122,7 +122,7 @@ export const modalStyles = css`
   /* This css is for list coming from module X */
   .benefit_list {
     font-size: ${props => props.theme.typography.fontSizes.fs14};
-    font-weight: ${props => props.theme.colorPalette.gray[600]};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
   }
 
   .footerLinks {

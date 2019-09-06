@@ -11,7 +11,9 @@ import StyledApplyNowModal from './ApplyNowModal.view';
 class ApplyNowModalWrapper extends React.Component {
   componentDidMount() {
     const { labels, fetchModuleXContent } = this.props;
-    fetchModuleXContent(labels && labels.referred);
+    if (labels && labels.referred) {
+      fetchModuleXContent(labels.referred);
+    }
   }
 
   closeModal = () => {
