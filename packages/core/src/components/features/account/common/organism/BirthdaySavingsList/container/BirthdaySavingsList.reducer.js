@@ -9,9 +9,11 @@ const initialState = fromJS({
 const BirthdaySavingsListReducer = (state, action) => {
   switch (action.type) {
     case constants.BIRTHDAY_SAVING_UPDATE_SUCCESS:
-      return state.set('error', null).set('success', action.payload);
+      return state.set('error', null).set('success', fromJS(action.payload));
     case constants.BIRTHDAY_SAVING_UPDATE_ERROR:
-      return state.set('error', action.payload).set('success', null);
+      return state.set('error', fromJS(action.payload)).set('success', null);
+    case constants.RESET_BIRTHDAY_SAVING_MESSAGE:
+      return state.set('error', null).set('success', null);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

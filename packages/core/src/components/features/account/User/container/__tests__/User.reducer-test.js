@@ -63,5 +63,22 @@ describe('User reducer', () => {
       );
       expect(updatedState.getIn(['personalData', 'children', '0', 'childId'])).toEqual('12345');
     });
+
+    it('should handle SET_USER_PERSONAL_DATA correctly if personalData is already present', () => {
+      const currentState = fromJS({
+        [DEFAULT_REDUCER_KEY]: null,
+        personalData: {},
+        airmiles: null,
+        rewards: null,
+        survey: null,
+      });
+      const updatedState = UserReducer(
+        currentState,
+        setUserPersonalData({
+          children: [{ childId: '12345' }],
+        })
+      );
+      expect(updatedState.getIn(['personalData', 'children', '0', 'childId'])).toEqual('12345');
+    });
   });
 });

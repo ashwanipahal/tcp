@@ -2,7 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getChildren } from '../../../../User/container/User.selectors';
-import { getChildrenAction, removeChildAction } from './BirthdaySavingsList.actions';
+import {
+  getChildrenAction,
+  removeChildAction,
+  resetBirthdaySavingMessageAction,
+} from './BirthdaySavingsList.actions';
+import { getStatus, getMessageKey } from './BirthdaySavingsList.selectors';
 import BirthdaySavingsComponent from '../views';
 
 /**
@@ -13,6 +18,7 @@ export class BirthdaySavings extends PureComponent {
   static propTypes = {
     childrenBirthdays: PropTypes.shape([]).isRequired,
     getChildrenBirthdays: PropTypes.func.isRequired,
+    resetBirthdaySavingMessage: PropTypes.func.isRequired,
   };
 
   /**
@@ -23,6 +29,11 @@ export class BirthdaySavings extends PureComponent {
     if (!childrenBirthdays) {
       getChildrenBirthdays();
     }
+  }
+
+  componentWillUnmount() {
+    const { resetBirthdaySavingMessage } = this.props;
+    resetBirthdaySavingMessage();
   }
 
   /**
@@ -41,6 +52,8 @@ export class BirthdaySavings extends PureComponent {
 export const mapStateToProps = state => {
   return {
     childrenBirthdays: getChildren(state),
+    status: getStatus(state),
+    messageKey: getMessageKey(state),
   };
 };
 
@@ -55,6 +68,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   removeBirthday: childId => {
     dispatch(removeChildAction(childId));
+  },
+  resetBirthdaySavingMessage: () => {
+    dispatch(resetBirthdaySavingMessageAction());
   },
 });
 

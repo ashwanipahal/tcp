@@ -21,7 +21,7 @@ export const removeChildAction = payload => ({
 /**
  * @function updateBirthdaySavingSuccess
  * @param { object } payload
- * action creator for type: REMOVE_CHILDREN
+ * action creator for type: BIRTHDAY_SAVING_UPDATE_SUCCESS
  */
 export const updateBirthdaySavingSuccess = payload => ({
   type: constants.BIRTHDAY_SAVING_UPDATE_SUCCESS,
@@ -31,11 +31,19 @@ export const updateBirthdaySavingSuccess = payload => ({
 /**
  * @function updateBirthdaySavingError
  * @param { object } payload
- * action creator for type: REMOVE_CHILDREN
+ * action creator for type: BIRTHDAY_SAVING_UPDATE_ERROR
  */
 export const updateBirthdaySavingError = payload => ({
   type: constants.BIRTHDAY_SAVING_UPDATE_ERROR,
   payload,
+});
+
+/**
+ * @function resetBirthdaySavingMessage
+ * action creator for type: RESET_BIRTHDAY_SAVING_MESSAGE
+ */
+export const resetBirthdaySavingMessageAction = () => ({
+  type: constants.RESET_BIRTHDAY_SAVING_MESSAGE,
 });
 
 export default getChildrenAction;

@@ -61,9 +61,15 @@ const UserReducer = (state = initialState, { type, payload }) => {
         )
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(USER_CONSTANTS.GET_USER_INFO_TTL));
     case USER_CONSTANTS.SET_USER_PERSONAL_DATA:
-      return state.merge({
-        personalData: fromJS(payload),
-      });
+      if (state.get('personalData')) {
+        return state.setIn(['personalData', 'children'], fromJS(payload.children));
+      }
+      return state.set(
+        'personalData',
+        fromJS({
+          children: payload.children,
+        })
+      );
     case USER_CONSTANTS.RESET_USER_INFO:
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:
