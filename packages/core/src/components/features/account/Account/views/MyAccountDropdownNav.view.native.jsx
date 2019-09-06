@@ -9,7 +9,7 @@ type Props = {
   navData: Array<Object>,
   handleComponentChange: Function,
   className: string,
-  navigation: Array<Object>,
+  navigation: Object,
 };
 
 type State = {
