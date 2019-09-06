@@ -1,12 +1,13 @@
 import styled from 'styled-components/native';
 import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
 
-const managePromoConatinerView = () => {
+const managePromoConatinerView = marginRight => {
   if (getPixelRatio() === 'xxxhdpi' || getPixelRatio() === 'xhdpi') {
-    return `width: 130px;`;
+    return `width: 140px; margin-right:${marginRight - 15};`;
   }
   return `
   width: 150px;
+  margin-right:${marginRight};
   `;
 };
 
@@ -22,7 +23,7 @@ export const PromoContainer = styled.View`
   height: 30px;
   align-items: center;
   justify-content: center;
-  ${managePromoConatinerView()}
+  ${props => managePromoConatinerView(props.marginRight)}
 `;
 
 export const ArrowIcon = styled.Image`
