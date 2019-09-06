@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { PickUpFormPartVanilla } from '../views/PickupPage.view.native';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
-describe('PickUpFormPartVanilla component', () => {
+describe('PickUpFormPart component', () => {
   it('should renders correctly props not present', () => {
     const props = {
       initialValues: {},

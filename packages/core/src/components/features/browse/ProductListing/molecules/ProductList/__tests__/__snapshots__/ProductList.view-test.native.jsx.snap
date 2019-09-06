@@ -11,7 +11,32 @@ exports[`ProductList component should renders correctly 1`] = `
       ]
     }
     disableVirtualization={false}
-    extraData={null}
+    extraData={
+      Object {
+        "className": "",
+        "currencyExchange": Array [],
+        "currencySymbol": "",
+        "isBopisEnabled": false,
+        "isBopisEnabledForClearance": false,
+        "isMatchingFamily": true,
+        "isPlcc": false,
+        "loadedProductCount": 12,
+        "onAddItemToFavorites": [MockFunction],
+        "onColorChange": [MockFunction],
+        "onPickUpOpenClick": [MockFunction],
+        "onProductCardHover": [MockFunction],
+        "onQuickBopisOpenClick": [MockFunction],
+        "onQuickViewOpenClick": [MockFunction],
+        "products": Array [
+          Object {
+            "productInfo": "",
+          },
+        ],
+        "showQuickViewForProductId": "",
+        "siblingProperties": "",
+        "unbxdId": "",
+      }
+    }
     horizontal={false}
     initialNumToRender={4}
     keyExtractor={[Function]}

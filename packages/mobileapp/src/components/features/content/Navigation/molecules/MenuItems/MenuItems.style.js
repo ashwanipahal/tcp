@@ -6,11 +6,10 @@ import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
  */
 const managePromoConatinerView = marginRight => {
   if (getPixelRatio() === 'xxxhdpi' || getPixelRatio() === 'xhdpi') {
-    return `width: 140px; margin-right:${marginRight - 20};`;
+    return `margin-right:${marginRight - 20};`;
   }
   return `
-  width: 150px;
-  margin-right:${marginRight};
+  margin-right:${marginRight - 10};
   `;
 };
 
@@ -26,6 +25,7 @@ export const PromoContainer = styled.View`
   height: 30px;
   align-items: center;
   justify-content: center;
+  width: 140px;
   ${props => managePromoConatinerView(props.marginRight)}
 `;
 

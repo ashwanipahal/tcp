@@ -2,7 +2,7 @@
 // @flow
 import React from 'react';
 import ButtonList from '../../ButtonList';
-import { Image } from '../../../atoms';
+import { Image, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { getScreenWidth } from '../../../../../utils/index.native';
@@ -90,7 +90,7 @@ const renderHeaderAndBanner = (item, navigation) => {
 const renderImageComponent = (item, navigation) => {
   const {
     item: {
-      linkedImage: [{ image }],
+      linkedImage: [{ image, link }],
     },
     bannerPosition,
   } = item;
@@ -105,7 +105,9 @@ const renderImageComponent = (item, navigation) => {
       {bannerPosition === bannerPositionTypes.top || bannerPosition === bannerPositionTypes.overlay
         ? renderHeaderAndBanner(item, navigation)
         : null}
-      <Image width={MODULE_WIDTH} height={moduleHeight} url={image.url} />
+      <Anchor url={link.url} navigation={navigation}>
+        <Image width={MODULE_WIDTH} height={moduleHeight} url={image.url} />
+      </Anchor>
       {bannerPosition === bannerPositionTypes.bottom
         ? renderHeaderAndBanner(item, navigation)
         : null}
@@ -131,19 +133,6 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
 };
 
 /**
- * @function findKeyInSet
- * finds and returns value of key from set
- *
- * @param {*} set
- * @param {*} key
- * @returns
- */
-const findKeyInSet = (set, key) => {
-  const variationSet = set.filter(s => s.key === key);
-  return variationSet && variationSet.length > 0 && variationSet[0].val;
-};
-
-/**
  * @param {object} props : Props for Module B multi type of banner list, button list, header text.
  * @desc This is Module B global component. It has capability to display
  * featured content module with 1 background color tiles ,links and a CTA Button list.
@@ -152,14 +141,15 @@ const findKeyInSet = (set, key) => {
 const ModuleB = (props: Props) => {
   // TODO: All items need to be derived from props once cms integration is done
   const {
-    set = [],
     composites: { ctaItems, largeCompImage },
+    ctaType: ctaItemsType,
+    bannerPosition,
   } = mock;
 
   const { navigation } = props;
 
-  const ctaType = ctaTypes[findKeyInSet(set, 'ctaType')];
-  const bannerPosition = findKeyInSet(set, 'bannerPostition');
+  const ctaType = ctaTypes[ctaItemsType];
+
   return (
     <Container>
       {renderImageComponent({ item: largeCompImage[0], bannerPosition }, navigation)}
