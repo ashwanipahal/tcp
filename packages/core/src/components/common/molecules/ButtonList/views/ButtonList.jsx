@@ -130,15 +130,6 @@ const ButtonList = props => {
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
   const { compClassName, ctaInfo, compWrapper } = buttonListConfig;
 
-  const compProps = {
-    className: '',
-    ctaInfo: {},
-    image: {},
-  };
-  compProps.ctaInfo = ctaInfo;
-  compProps.fill = fill;
-  compProps.className = `${compClassName}-class`;
-
   let Component = ButtonCTA;
   if (buttonListVariation === 'imageCTAList') {
     Component = ImageTextCTA;
@@ -154,10 +145,18 @@ const ButtonList = props => {
       <div className={`${className} button-list-wrapper ${compWrapper} ${hideOnDesktopClassname}`}>
         {buttonsData.map((item, index) => {
           const { button = {}, image } = item;
+          const compProps = {
+            className: `${compClassName}-class`,
+            ctaInfo: {
+              ...ctaInfo,
+              link: button,
+            },
+            fill,
+            image,
+          };
+
           // Code to generate unique key
           const key = button.title && generateUniqueKeyUsingLabel(button.title);
-          compProps.ctaInfo.link = button;
-          compProps.image = image;
 
           return (
             <Component

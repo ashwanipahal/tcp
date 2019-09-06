@@ -1,4 +1,5 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
 import { getUserInfo } from '../../User/container/User.actions';
@@ -63,8 +64,8 @@ function* getUserInfoPOCSaga() {
     );
     yield put(setLoginInfo(res.body));
   } catch (err) {
-    console.log(errorLabel);
-    console.log(err);
+    logger.info(errorLabel);
+    logger.info(err);
   }
 }
 
@@ -91,8 +92,8 @@ function* getOrderDetailSaga() {
     );
     yield put(setLoginInfo(res.body));
   } catch (err) {
-    console.log(errorLabel);
-    console.log(err);
+    logger.error(errorLabel);
+    logger.error(err);
   }
 }
 

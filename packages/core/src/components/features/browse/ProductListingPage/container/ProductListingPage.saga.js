@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { call, put, takeLatest } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { PRODUCTLISTINGPAGE_CONSTANTS } from '../ProductListingPage.constants';
 import { setPlpProducts, setGiftCardProducts } from './ProductListingPage.actions';
 import fetchData from '../../../../../service/API';
@@ -15,8 +16,8 @@ function* fetchProducts(action) {
     const products = yield call(getPlpProducts);
     yield put(setPlpProducts(products));
   } catch (err) {
-    console.log('Error in API');
-    console.log(err);
+    logger.error('Error in API');
+    logger.error(err);
   }
 }
 
@@ -25,8 +26,8 @@ function* fetchGiftProducts(action) {
     const products = yield call(getGiftCardProducts);
     yield put(setGiftCardProducts(products));
   } catch (err) {
-    console.log('Error in API');
-    console.log(err);
+    logger.error('Error in API');
+    logger.error(err);
   }
 }
 

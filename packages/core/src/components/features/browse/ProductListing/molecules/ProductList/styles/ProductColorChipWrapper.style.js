@@ -12,15 +12,14 @@ const styles = css`
   .color-swatches-desktop-view {
     display: none;
   }
-  .arrowLeftWrapper {
-    ${arrowWrapper}
-    left: 0;
-  }
 
   .arrowRightWrapper {
     ${arrowWrapper}
     transform: rotate(180deg);
     right: 0;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .arrowImg {
@@ -39,6 +38,11 @@ const styles = css`
     margin-left: 19px;
   }
 
+  .product-color-chip-image {
+    height: 100%;
+    width: 100%;
+  }
+
   .content-colors-button {
     margin-right: 6px;
     font-size: 0;
@@ -53,6 +57,9 @@ const styles = css`
 
     &.active {
       border: 1px solid ${props => props.theme.colors.DARK};
+    }
+    &:hover {
+      cursor: pointer;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {

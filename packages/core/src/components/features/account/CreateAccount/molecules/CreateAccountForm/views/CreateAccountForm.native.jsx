@@ -155,15 +155,6 @@ class CreateAccountForm extends PureComponent<Props> {
           {/* CHECKBOXES */}
           <Field
             inputVariation="inputVariation-1"
-            name="saveMyPlaceRewards"
-            component={InputCheckbox}
-            dataLocator="saveMyPlaceRewards"
-            disabled={false}
-            rightText={labels.registration.lbl_createAccount_saveRewards}
-            onClick={this.onSaveMyPlaceRewards}
-          />
-          <Field
-            inputVariation="inputVariation-1"
             name="iAgree"
             component={InputCheckbox}
             dataLocator="iAgree"

@@ -148,6 +148,42 @@ const ButtonStyles = css`
     `
       : ''};
 
+  ${props =>
+    props.buttonVariation === 'mini-nav'
+      ? `
+        color: ${props.theme.colorPalette.gray['900']};
+        padding: 0;
+        font-family: ${props.theme.fonts.secondaryFontFamily};
+        font-size: ${props.theme.typography.fontSizes.fs14};
+        font-weight: ${
+          props.active
+            ? props.theme.typography.fontWeights.extrabold
+            : props.theme.typography.fontWeights.regular
+        };
+        letter-spacing: 0.3px;
+        border: 0;
+        border-bottom: 2px solid ${
+          props.active ? props.theme.colorPalette.primary.main : 'transparent'
+        };
+        padding: 0 5px;
+        min-height: 24px;
+        background-color: transparent;
+
+        &:hover:not([disabled]), &:focus, &:active {
+          background-color: transparent;
+        }
+
+        @media ${props.theme.mediaQuery.large} {
+          font-size: ${props.theme.typography.fontSizes.fs20};
+          font-weight: ${
+            props.active
+              ? props.theme.typography.fontWeights.extrabold
+              : props.theme.typography.fontWeights.semibold
+          };
+        }
+      `
+      : ''}
+
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
       props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 16px 20px;' : ''};
@@ -155,7 +191,7 @@ const ButtonStyles = css`
       props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 16px 32px;' : ''};
   }
   ${props =>
-    props.theme.isGymboree
+    props.theme.isGymboree && props.buttonVariation !== 'mini-nav'
       ? `
     border-radius: 25px;
   `

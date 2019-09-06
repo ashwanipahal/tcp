@@ -40,9 +40,19 @@ const mapDispatchToProps = dispatch => {
       dispatch(removeL1Focus(false));
       dispatch(openL2Drawer(id));
     },
-    hideL2Drawer: id => e => {
-      e.preventDefault();
-      e.stopPropagation();
+
+    /**
+     *  @fatarrow - hideL2Drawer
+     * @params - @param - id - Navigation category id.
+     *           @param - e - Event object of click
+     *           @param - isPropagate - A boolean value for handling default event execution.
+     */
+
+    hideL2Drawer: id => (e, isPropagate) => {
+      if (!isPropagate) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       dispatch(showNavigationFooter());
       dispatch(hideL2Drawer(id));
       dispatch(removeL1Focus(true));
