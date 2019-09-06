@@ -102,10 +102,10 @@
             "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
         }, {
             "name": "RWD_APP_ASSETHOST_GYM",
-            "value": "https://test1.gymboree.com"
+            "value": "https://test5.gymboree.com"
         }, {
             "name": "RWD_APP_API_DOMAIN_GYM",
-            "value": "https://test1.gymboree.com"
+            "value": "https://test5.gymboree.com"
         }, {
             "name": "RWD_APP_API_IDENTIFIER_GYM",
             "value": "api"
@@ -120,7 +120,7 @@
             "value": "us-east-2"
         }, {
             "name": "RWD_APP_GRAPHQL_API_ENDPOINT_GYM",
-            "value": "https://test1.gymboree.com"
+            "value": "https://test5.gymboree.com"
         }, {
             "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_GYM",
             "value": "API_KEY"
