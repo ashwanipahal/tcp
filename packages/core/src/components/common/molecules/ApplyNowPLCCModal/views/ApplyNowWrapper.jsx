@@ -9,15 +9,26 @@ import StyledApplyNowModal from './ApplyNowModal.view';
  * A Modal will be opened by clicking apply now button
  */
 class ApplyNowModalWrapper extends React.Component {
-  openModal = e => {
-    e.preventDefault();
-    const { toggleModal } = this.props;
-    toggleModal({ isModalOpen: true });
-  };
+  componentDidMount() {
+    const { labels, fetchModuleXContent } = this.props;
+    fetchModuleXContent(labels && labels.referred);
+  }
 
   closeModal = () => {
     const { toggleModal } = this.props;
     toggleModal({ isModalOpen: false });
+  };
+
+  closePLCCModal = () => {
+    const { togglePLCCFormModal, resetPLCCApplicationStatus } = this.props;
+    togglePLCCFormModal({ isPLCCModalOpen: false });
+    resetPLCCApplicationStatus({ status: null });
+  };
+
+  openModal = e => {
+    e.preventDefault();
+    const { toggleModal } = this.props;
+    toggleModal({ isModalOpen: true });
   };
 
   openPLCCModal = e => {
@@ -27,14 +38,8 @@ class ApplyNowModalWrapper extends React.Component {
     togglePLCCFormModal({ isPLCCModalOpen: true });
   };
 
-  closePLCCModal = () => {
-    const { togglePLCCFormModal, resetPLCCApplicationStatus } = this.props;
-    togglePLCCFormModal({ isPLCCModalOpen: false });
-    resetPLCCApplicationStatus({ status: null });
-  };
-
   render() {
-    const { className, labels, isModalOpen, isPLCCModalOpen } = this.props;
+    const { className, labels, isModalOpen, isPLCCModalOpen, plccBenefitsList } = this.props;
     return (
       <div className={className}>
         <React.Fragment>
@@ -45,6 +50,7 @@ class ApplyNowModalWrapper extends React.Component {
             closePLCCModal={this.closePLCCModal}
             closeModal={this.closeModal}
             labels={labels}
+            plccBenefitsList={plccBenefitsList}
           />
         </React.Fragment>
         <Anchor
@@ -69,6 +75,8 @@ ApplyNowModalWrapper.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   togglePLCCFormModal: PropTypes.func.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  fetchModuleXContent: PropTypes.func.isRequired,
+  plccBenefitsList: PropTypes.string.isRequired,
 };
 
 export default ApplyNowModalWrapper;

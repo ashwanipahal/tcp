@@ -10,6 +10,7 @@ describe('ApplyNowModalWrapper component', () => {
     toggleModal: jest.fn(),
     className: 'demo',
     isModalOpen: true,
+    fetchModuleXContent: jest.fn(),
   };
 
   it('should renders correctly', () => {

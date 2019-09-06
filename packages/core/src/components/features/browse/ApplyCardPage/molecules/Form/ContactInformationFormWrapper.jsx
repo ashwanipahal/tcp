@@ -170,7 +170,7 @@ class ContactInformationFormWrapper extends React.Component {
                 fontSize="fs12"
                 fontFamily="secondary"
                 fontWeight="extrabold"
-                className="free_dropdown_label"
+                className="free_dropdown_label columnWrapper"
               >
                 {labels.plcc_form_state}
               </BodyCopy>

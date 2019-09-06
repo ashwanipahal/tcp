@@ -156,7 +156,7 @@ function ssnValidator(value) {
 }
 
 function dobValidator(value) {
-  return ['Mm', 'Dd', 'Yyyy'].indexOf(value) === -1;
+  return ['Mm', 'Dd', 'Yyyy', ''].indexOf(value) === -1;
 }
 
 function eitherRequiredValidator(value, param, linkedPropsValues, linkedFieldsValues) {

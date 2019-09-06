@@ -958,7 +958,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         fullBleed={true}
       >
         <Styled(BodyCopy)
-          className="free_dropdown_label"
+          className="free_dropdown_label columnWrapper"
           color="text.primary"
           component="span"
           fontFamily="secondary"

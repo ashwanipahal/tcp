@@ -142,7 +142,7 @@ describe('validator methods', () => {
 
   describe('dobValidator', () => {
     it('should return false if the value is not empty', () => {
-      expect(validatorMethods.dob('')).toBeTruthy();
+      expect(validatorMethods.dob('')).toBeFalsy();
     });
     it('should return false value is any of -->  Mm Dd Yyyy', () => {
       expect(validatorMethods.dob('Mm')).toBeFalsy();

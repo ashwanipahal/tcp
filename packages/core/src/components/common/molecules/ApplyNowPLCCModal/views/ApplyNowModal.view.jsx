@@ -1,50 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, BodyCopy, Button, Row, Col } from '../../../atoms';
+import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../atoms';
 import Modal from '../../Modal';
 import withStyles from '../../../hoc/withStyles';
 import { getLocator } from '../../../../../utils';
 import styles, { modalStyles } from '../styles/ApplyNowModal.style';
 import ApplyNowPLCCModal from './ApplyNowPLCCModal';
-
-/**
- * @description - getBenefitsListItems - renders per list item.
- */
-export const getBenefitsListItems = (text, subtext) => {
-  return (
-    <li>
-      <BodyCopy
-        fontFamily="primary"
-        fontSize="fs14"
-        component="span"
-        fontWeight="semibold"
-        textAlign="center"
-        color="text.primary"
-      >
-        {text}
-      </BodyCopy>
-      {subtext}
-    </li>
-  );
-};
-
-/**
- * @description - renderBenefitsList - function to return list of benefits
- */
-export const renderBenefitsList = labels => {
-  return (
-    <ul className="rewards__benefits">
-      {getBenefitsListItems(labels.apply_now_double, labels.apply_now_double_subtext)}
-      {getBenefitsListItems(labels.apply_now_discount_30, labels.apply_now_discount_30_subtext)}
-      {getBenefitsListItems(labels.apply_now_discount_25, labels.apply_now_discount_25_subtext)}
-      {getBenefitsListItems(labels.apply_now_discount_20, labels.apply_now_discount_20_subtext)}
-      {getBenefitsListItems(
-        labels.apply_now_discount_standard,
-        labels.apply_now_discount_standard_subtext
-      )}
-    </ul>
-  );
-};
 
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.
@@ -57,6 +18,7 @@ const StyledApplyNowModal = ({
   openPLCCModal,
   closeModal,
   labels,
+  plccBenefitsList,
 }) => {
   return !isPLCCModalOpen ? (
     <Modal
@@ -150,7 +112,7 @@ const StyledApplyNowModal = ({
         >
           {labels.apply_now_benefits_header}
         </BodyCopy>
-        {renderBenefitsList(labels)}
+        <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
         <div className="footerLinks">
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
             {labels.apply_now_links_text}
@@ -206,6 +168,7 @@ StyledApplyNowModal.propTypes = {
   openPLCCModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
+  plccBenefitsList: PropTypes.string.isRequired,
   labels: PropTypes.shape({
     apply_now_header: PropTypes.string.isRequired,
     apply_now_subheader: PropTypes.string.isRequired,
