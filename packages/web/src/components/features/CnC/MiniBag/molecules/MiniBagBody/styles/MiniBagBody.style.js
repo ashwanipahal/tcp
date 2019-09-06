@@ -9,7 +9,6 @@ export default css`
   .viewBagAndProduct {
     height: calc(100% - 120px);
     overflow-y: auto;
-    border-top: 2px solid ${props => props.theme.colorPalette.gray[300]};
     flex-grow: 1;
   }
   .mainWrapper {
@@ -23,7 +22,6 @@ export default css`
   }
 
   .minibag-viewbag {
-    border-bottom: solid 1px rgba(163, 162, 162, 0.5);
     flex-grow: 0;
   }
 
@@ -48,7 +46,7 @@ export default css`
   .subHeaderText {
     text-decoration: underline;
     vertical-align: middle;
-    line-height: 28px;
+    line-height: 42px;
   }
   .miniBagFooter {
     text-align: center;

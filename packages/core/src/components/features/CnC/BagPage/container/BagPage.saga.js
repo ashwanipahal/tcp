@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import {
   getOrderDetailsData,
@@ -18,6 +18,7 @@ import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 import checkoutSelectors from '../../Checkout/container/Checkout.selector';
+import { isMobileApp } from '../../../../../utils';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -137,21 +138,27 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-export function* routeForCartCheckout(recalc) {
+export function* routeForCartCheckout(recalc, navigation) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
-  if (orderHasPickup) {
+  if (isMobileApp()) {
+    if (orderHasPickup) {
+      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+    } else {
+      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+    }
+  } else if (orderHasPickup) {
     utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
   } else {
     utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
   }
 }
 
-export function* checkoutCart(recalc) {
+export function* checkoutCart(recalc, navigation) {
   const isLoggedIn = yield select(getUserLoggedInState);
   if (!isLoggedIn) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
-  return yield call(routeForCartCheckout, recalc);
+  return yield call(routeForCartCheckout, recalc, navigation);
 }
 
 function* confirmStartCheckout() {
@@ -173,9 +180,9 @@ function* confirmStartCheckout() {
   return false;
 }
 
-export function* startCartCheckout(payload) {
-  if (payload.isEditingItem) {
-    yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(payload.isEditingItem));
+export function* startCartCheckout({ payload: { isEditingItem, navigation } = {} } = {}) {
+  if (isEditingItem) {
+    yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
   } else {
     // this.store.dispatch(setVenmoPaymentInProgress(false));
     let res = yield call(getUnqualifiedItems);
@@ -189,19 +196,19 @@ export function* startCartCheckout(payload) {
     );
     const oOSModalOpen = yield call(confirmStartCheckout);
     if (!oOSModalOpen) {
-      yield call(checkoutCart);
+      yield call(checkoutCart, false, navigation);
     }
   }
 }
 
-export function* removeUnqualifiedItemsAndCheckout() {
+export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
   if (unqualifiedItemsIds && unqualifiedItemsIds.size > 0) {
     yield call(removeItem, unqualifiedItemsIds);
     yield call(getCartDataSaga);
   }
   yield put(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
-  yield call(checkoutCart, true);
+  yield call(checkoutCart, true, navigation);
 }
 
 export function* BagPageSaga() {

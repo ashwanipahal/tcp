@@ -190,6 +190,9 @@ export default {
   plcc_SSN: 'plcc_SSN',
   plcc_submit_btn: 'plcc_submit_btn',
   plcc_back_btn: 'plcc_back_btn',
+  plcc_apply_now_close_btn: 'plcc_apply_now_close_btn',
+  plcc_apply_btn: 'plcc_apply_btn',
+  plcc_apply_now_modal: 'plcc_apply_now_modal',
 
   // BreadCrumbs Locators
   breadCrumb_L1_Category: 'breadcrumb-L1-link',

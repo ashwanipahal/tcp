@@ -95,7 +95,7 @@ export default css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     display: none;
-    top: 64px;
+    top: 67px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
 
     .s-display-none {

@@ -1,9 +1,7 @@
 import React from 'react';
-import { get } from 'lodash';
 import PropTypes from 'prop-types';
-import withStyles from '../../../../../../common/hoc/withStyles.native';
+import { FlatList } from 'react-native';
 import CustomImage from '../../../atoms/CustomImage';
-import styles from '../styles/ImageCarousel.style.native';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -20,8 +18,21 @@ class ImageCarousel extends React.PureComponent {
       curentColorEntry,
       isAbTestActive: true,
     });
-    const imageUrl = get(imageUrls, '[0]', {});
-    return <CustomImage imageSource={imageUrl} />;
+    return (
+      <FlatList
+        initialNumToRender={1}
+        initialScrollIndex={0}
+        refreshing={false}
+        data={imageUrls}
+        pagingEnabled
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        listKey={(_, index) => index.toString()}
+        renderItem={imageItem => {
+          return <CustomImage imageSource={imageItem.item} />;
+        }}
+      />
+    );
   }
 }
 
@@ -35,5 +46,5 @@ ImageCarousel.defaultProps = {
   selectedColorIndex: 0,
 };
 
-export default withStyles(ImageCarousel, styles);
+export default ImageCarousel;
 export { ImageCarousel as ImageCarouselVanilla };

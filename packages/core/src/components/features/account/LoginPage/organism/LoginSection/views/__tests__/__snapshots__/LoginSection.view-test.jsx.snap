@@ -20,6 +20,7 @@ exports[`LoginSection component should renders correctly 1`] = `
           "login": Object {},
         }
       }
+      showForgotPasswordForm={[Function]}
     />
     <ReduxForm
       className="elem-mb-LRG"
