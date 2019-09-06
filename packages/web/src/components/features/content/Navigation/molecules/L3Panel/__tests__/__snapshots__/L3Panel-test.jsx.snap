@@ -82,6 +82,7 @@ exports[`L3 Panel component renders correctly 1`] = `
         <li>
           <Styled(Anchor)
             dataLocator="l3_link_0"
+            onClick={[Function]}
           >
             <Styled(BodyCopy)
               className="l2-nav-link"

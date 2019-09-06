@@ -10,6 +10,8 @@ const L3Panel = props => {
   const {
     id,
     hideL3Drawer,
+    hideL2Drawer,
+    closeNav,
     name,
     className,
     links,
@@ -72,7 +74,16 @@ const L3Panel = props => {
               } = l3Links;
               return (
                 <li>
-                  <Anchor to={url} asPath={asPath} dataLocator={`l3_link_${index}`}>
+                  <Anchor
+                    to={url}
+                    asPath={asPath}
+                    onClick={e => {
+                      hideL3Drawer(e);
+                      hideL2Drawer(e, true);
+                      closeNav();
+                    }}
+                    dataLocator={`l3_link_${index}`}
+                  >
                     <BodyCopy
                       className="l2-nav-link"
                       fontFamily="secondary"
@@ -96,6 +107,8 @@ const L3Panel = props => {
 L3Panel.propTypes = {
   id: PropTypes.string.isRequired,
   hideL3Drawer: PropTypes.func.isRequired,
+  hideL2Drawer: PropTypes.func.isRequired,
+  closeNav: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   links: PropTypes.shape([]).isRequired,
