@@ -504,7 +504,11 @@ class CartItemTile extends React.Component {
         {pageView === 'myBag' &&
           productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
             <Row fullBleed>
-              <CartItemRadioButtons productDetail={productDetail} labels={labels} />
+              <CartItemRadioButtons
+                className="cart-item-radio-buttons"
+                productDetail={productDetail}
+                labels={labels}
+              />
             </Row>
           )}
       </div>
