@@ -14,8 +14,8 @@ export function* addAirmilesBanner() {
   try {
     const promoId = yield select(getFormAirmilesNumber);
     const offerCode = yield select(getFormAirmilesOfferCode);
-    const orderId = yield select(getCartOrderId);
-
+    const orderIdNum = yield select(getCartOrderId);
+    const orderId = orderIdNum.toString();
     yield call(addAirmilesBannerApi, { orderId, promoId, offerCode });
   } catch (err) {
     yield put(addAirmilesBannerFailure(err.message));

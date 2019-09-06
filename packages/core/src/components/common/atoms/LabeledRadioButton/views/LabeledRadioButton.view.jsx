@@ -28,6 +28,7 @@ class LabeledRadioButton extends React.Component {
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
     input: PropTypes.shape({}),
+    topPosition: PropTypes.string,
   };
 
   static defaultProps = {
@@ -40,6 +41,7 @@ class LabeledRadioButton extends React.Component {
     checked: false,
     disabled: false,
     input: null,
+    topPosition: '0',
   };
 
   static labeledRadioButtonCounter = 0;
@@ -63,6 +65,7 @@ class LabeledRadioButton extends React.Component {
       checked,
       name,
       variation,
+      topPosition,
       ...otherProps // all the extra props passed to this component (or the wrapping Field component when using redux-form)
     } = this.props;
     const inputName = input && input.name ? input.name : name;

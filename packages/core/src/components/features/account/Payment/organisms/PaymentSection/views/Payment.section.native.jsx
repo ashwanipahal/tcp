@@ -226,7 +226,7 @@ class PaymentView extends React.Component<Props> {
     }
     return (
       <View {...this.props}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledHeading>
             <BodyCopy
               fontSize="fs16"
