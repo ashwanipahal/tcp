@@ -5,7 +5,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
   <CollapsibleContainer
     arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -29,7 +31,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -40,7 +42,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -71,7 +74,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
     defaultOpen={false}
     getExpandedState={null}
@@ -123,7 +126,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
   <CollapsibleContainer
     arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -147,7 +152,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={1}
           bonusPoints={
             Array [
               Object {
@@ -168,7 +173,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -199,7 +205,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
     defaultOpen={false}
     getExpandedState={null}
@@ -251,7 +257,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
   <CollapsibleContainer
     arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -275,7 +283,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -296,7 +304,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -327,7 +336,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
     defaultOpen={false}
     getExpandedState={null}
@@ -379,7 +388,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
   <CollapsibleContainer
     arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -403,7 +414,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           </ForwardRef>
         </React.Fragment>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -424,7 +435,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -455,7 +467,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
     defaultOpen={false}
     getExpandedState={null}
@@ -507,7 +519,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
   <CollapsibleContainer
     arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <ForwardRef>
           <ForwardRef
             data-locator="infomsg"
@@ -518,7 +532,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           />
         </ForwardRef>
         <BonusPointsAvailability
-          bonusDayAvailableToday={false}
+          bonusDayAvailableToday={0}
           bonusPoints={
             Array [
               Object {
@@ -529,7 +543,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             ]
           }
           className="availability-msg"
-          getBonusDaysData={Object {}}
+          enableApplyCta={false}
+          getBonusDaysData={[Function]}
           labels={
             Object {
               "common": Object {
@@ -560,7 +575,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
     defaultOpen={false}
     getExpandedState={null}
