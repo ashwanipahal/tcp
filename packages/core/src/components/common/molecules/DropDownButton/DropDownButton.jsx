@@ -19,14 +19,7 @@ class DropDownButton extends React.Component {
   };
 
   render() {
-    const { className, buttonsData, dropdownLabel } = this.props;
-
-    const compProps = {
-      ctaInfo: {
-        ctaVariation: 'fixed-width',
-      },
-    };
-
+    const { className, buttonsData, dropdownLabel, dataLocator } = this.props;
     const { open } = this.state;
     const classToOpen = open ? 'is-open' : '';
 
@@ -36,6 +29,7 @@ class DropDownButton extends React.Component {
           <Button
             className="dropdown-button"
             buttonVariation="fixed-width"
+            data-locator={dataLocator}
             onClick={this.togglePanel}
           >
             {dropdownLabel}
@@ -44,9 +38,14 @@ class DropDownButton extends React.Component {
           <div className={`button-panel ${classToOpen}`}>
             {buttonsData.map(data => {
               const { button = {} } = data;
+              const compProps = {
+                ctaInfo: {
+                  ctaVariation: 'fixed-width',
+                  link: button,
+                },
+              };
               // Code to generate unique key
               const key = button.title && generateUniqueKeyUsingLabel(button.title);
-              compProps.ctaInfo.link = button;
 
               return <ButtonCTA className="dropdown-items" uniqueKey={key} {...compProps} />;
             })}
@@ -61,6 +60,11 @@ DropDownButton.propTypes = {
   className: PropTypes.string.isRequired,
   buttonsData: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
   dropdownLabel: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string,
+};
+
+DropDownButton.defaultProps = {
+  dataLocator: '',
 };
 
 export default withStyles(DropDownButton, style);
