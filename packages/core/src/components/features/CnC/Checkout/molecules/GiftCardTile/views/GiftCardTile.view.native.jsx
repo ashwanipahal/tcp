@@ -81,7 +81,8 @@ export default class GiftCardTile extends React.PureComponent {
   render() {
     const { cardData, isGiftCardApplied, labels } = this.props;
 
-    let cardEndingIn = cardData.accountNo !== undefined ? cardData.accountNo.substr(-4) : '';
+    let cardEndingIn =
+      typeof cardData.accountNo !== 'undefined' ? cardData.accountNo.substr(-4) : '';
     let remainingBalance = '';
     if (isGiftCardApplied) {
       cardEndingIn = cardData.get('endingNumbers');
