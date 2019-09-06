@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import Anchor from '../../../../../atoms/Anchor';
 import BonusPointsAvailability from '../../../molecules/BonusPointsAvailability';
@@ -119,15 +120,25 @@ const getHeader = ({ labels }) => {
   );
 };
 
-const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) => {
+const getContent = ({
+  labels,
+  toggleBonusPointsModal,
+  bonusPoints,
+  bonusData,
+  enableApplyCta,
+  getBonusDaysData,
+  orderDetails,
+}) => {
   let allUsed = false;
+  let valueOfbonusDayAvailableToday = 0;
   if (bonusData) {
-    const { totalBonusPointDays, usedBonusPointDays } = bonusData;
+    const { totalBonusPointDays, usedBonusPointDays, appliedToBagBonusPointDays } = bonusData;
     allUsed = totalBonusPointDays === usedBonusPointDays;
+    valueOfbonusDayAvailableToday = appliedToBagBonusPointDays;
   }
 
   return (
-    <React.Fragment>
+    <ViewWithSpacing spacingStyles="padding-top-SM">
       {!allUsed ? (
         <React.Fragment>
           <ApplyAnyDayWrapper>
@@ -167,6 +178,10 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
         labels={labels}
         bonusPoints={bonusPoints}
         className="availability-msg"
+        enableApplyCta={enableApplyCta}
+        getBonusDaysData={getBonusDaysData}
+        orderDetails={orderDetails}
+        bonusDayAvailableToday={valueOfbonusDayAvailableToday}
       />
       <Anchor
         fontSizeVariation="medium"
@@ -178,14 +193,29 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) 
         onPress={e => toggleBonusPointsModal(e)}
         text={labels.common.lbl_common_details}
       />
-    </React.Fragment>
+    </ViewWithSpacing>
   );
 };
 
-const BonusPointsSection = ({ labels, bonusData, toggleBonusPointsModal }) => {
+const BonusPointsSection = ({
+  labels,
+  bonusData,
+  toggleBonusPointsModal,
+  enableApplyCta,
+  getBonusDaysData,
+  orderDetails,
+}) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
   const header = getHeader({ labels });
-  const body = getContent({ labels, toggleBonusPointsModal, bonusPoints, bonusData });
+  const body = getContent({
+    labels,
+    toggleBonusPointsModal,
+    bonusPoints,
+    bonusData,
+    enableApplyCta,
+    getBonusDaysData,
+    orderDetails,
+  });
   return (
     <View>
       <CollapsibleContainer header={header} body={body} iconLocator="arrowicon" />
@@ -197,12 +227,18 @@ BonusPointsSection.propTypes = {
   labels: PropTypes.shape({ myPlaceRewards: {} }),
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
+  getBonusDaysData: PropTypes.func,
+  orderDetails: PropTypes.shape({}),
+  enableApplyCta: PropTypes.bool,
 };
 
 BonusPointsSection.defaultProps = {
   labels: { myPlaceRewards: { lbl_bonus_points_msg: '' } },
   bonusData: {},
   toggleBonusPointsModal: () => {},
+  getBonusDaysData: () => {},
+  orderDetails: {},
+  enableApplyCta: false,
 };
 
 getContent.propTypes = {
@@ -210,6 +246,9 @@ getContent.propTypes = {
   toggleBonusPointsModal: PropTypes.func,
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
+  enableApplyCta: PropTypes.bool,
+  getBonusDaysData: PropTypes.func,
+  orderDetails: PropTypes.shape({}),
 };
 
 getContent.defaultProps = {
@@ -220,10 +259,14 @@ getContent.defaultProps = {
   bonusPoints: [],
   toggleBonusPointsModal: () => {},
   bonusData: {},
+  enableApplyCta: false,
+  getBonusDaysData: () => {},
+  orderDetails: {},
 };
 
 getHeader.propTypes = {
   labels: PropTypes.shape({ myPlaceRewards: {} }),
+  orderDetails: PropTypes.shape({}),
 };
 
 getHeader.defaultProps = {
@@ -234,6 +277,7 @@ getHeader.defaultProps = {
       lbl_place_rewards_day: '',
     },
   },
+  orderDetails: {},
 };
 
 export default BonusPointsSection;
