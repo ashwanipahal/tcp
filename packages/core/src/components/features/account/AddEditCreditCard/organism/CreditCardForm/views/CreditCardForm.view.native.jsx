@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, change } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -20,7 +20,6 @@ import {
   AddAddressButton,
   CancelButton,
   CreditCardContainer,
-  ModalHeading,
   ModalViewWrapper,
   DefaultAddress,
   LeftBracket,
@@ -100,7 +99,13 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     const defaultAddress = onFileAddresskey
       ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
       : addressList && addressList.find(add => add.primary);
-    dispatch(change('addEditCreditCard', 'onFileAddressKey', defaultAddress.addressId));
+    dispatch(
+      change(
+        'addEditCreditCard',
+        'onFileAddressKey',
+        (defaultAddress && defaultAddress.addressId) || ''
+      )
+    );
     return defaultAddress;
   };
 
@@ -148,109 +153,113 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
     return (
-      <CreditCardContainer>
-        <CreditCardWrapper>
-          <CreditCardFields
-            {...this.props}
-            updateExpiryDate={this.updateExpiryDate}
-            dto={dto}
-            selectedCard={selectedCard}
-          />
-        </CreditCardWrapper>
-        <AddressWrapper>
-          <Heading
-            fontFamily="secondary"
-            fontSize="fs14"
-            letterSpacing="ls167"
-            textAlign="left"
-            fontWeight="black"
-            text={labels.paymentGC.lbl_payment_billingAddress}
-          />
-          <TextWrapper>
-            <BodyCopy
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        {...this.props}
+        keyboardShouldPersistTaps="handled"
+      >
+        <CreditCardContainer>
+          <CreditCardWrapper>
+            <CreditCardFields
+              {...this.props}
+              updateExpiryDate={this.updateExpiryDate}
+              dto={dto}
+              selectedCard={selectedCard}
+            />
+          </CreditCardWrapper>
+          <AddressWrapper>
+            <Heading
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs14"
+              letterSpacing="ls167"
               textAlign="left"
-              fontWeight="semibold"
-              marginTop="10"
-              text={labels.paymentGC.lbl_payment_ccAdressSelect}
+              fontWeight="black"
+              text={labels.paymentGC.lbl_payment_billingAddress}
             />
-          </TextWrapper>
-
-          {addressComponentList && (
-            <Field
-              selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
-              name="onFileAddressKey"
-              id="onFileAddressKey"
-              component={AddressDropdown}
-              dataLocator="payment-billingaddressdd"
-              data={addressComponentList}
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-              addAddress={this.toggleModal}
-              onValueChange={itemValue => {
-                this.handleComponentChange(itemValue);
-              }}
-              labels={labels}
-              selectedValue={onFileAddresskey}
-            />
-          )}
-          {addressComponentList && addressComponentList.length > 1 && (
-            <DefaultAddress>
-              <LeftBracket />
-              <Address
-                address={defaultAddress}
-                showCountry={false}
-                showPhone={false}
-                showName
-                dataLocatorPrefix="address"
-                customStyle={CustomAddress}
-              />
-              <RightBracket />
-            </DefaultAddress>
-          )}
-        </AddressWrapper>
-        <ActionsWrapper>
-          <Button
-            fill="BLUE"
-            buttonVariation="variable-width"
-            text={
-              isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
-            }
-            style={AddAddressButton}
-            onPress={handleSubmit}
-          />
-          <Button
-            fill="WHITE"
-            onPress={onClose}
-            buttonVariation="variable-width"
-            text={labels.common.lbl_common_cancelCTA}
-            style={CancelButton}
-          />
-        </ActionsWrapper>
-        {addAddressMount && (
-          <ModalNative isOpen={addAddressMount} onRequestClose={this.toggleModal}>
-            <ModalHeading>
+            <TextWrapper>
               <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="extrabold"
-                fontSize="fs16"
-                text={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
+                fontFamily="secondary"
+                fontSize="fs12"
+                textAlign="left"
+                fontWeight="semibold"
+                marginTop="10"
+                text={labels.paymentGC.lbl_payment_ccAdressSelect}
               />
-            </ModalHeading>
-            <SafeAreaView>
-              <ModalViewWrapper>
-                <AddEditAddressContainer
-                  labels={addressLabels}
-                  onCancel={this.toggleModal}
-                  showHeading={false}
+            </TextWrapper>
+
+            {addressComponentList && (
+              <Field
+                selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
+                name="onFileAddressKey"
+                id="onFileAddressKey"
+                component={AddressDropdown}
+                dataLocator="payment-billingaddressdd"
+                data={addressComponentList}
+                variation="secondary"
+                dropDownStyle={{ ...dropDownStyle }}
+                itemStyle={{ ...itemStyle }}
+                addAddress={this.toggleModal}
+                onValueChange={itemValue => {
+                  this.handleComponentChange(itemValue);
+                }}
+                labels={labels}
+                selectedValue={onFileAddresskey}
+              />
+            )}
+            {addressComponentList && addressComponentList.length > 1 && (
+              <DefaultAddress>
+                <LeftBracket />
+                <Address
+                  address={defaultAddress}
+                  showCountry={false}
+                  showPhone={false}
+                  showName
+                  dataLocatorPrefix="address"
+                  customStyle={CustomAddress}
                 />
-              </ModalViewWrapper>
-            </SafeAreaView>
-          </ModalNative>
-        )}
-      </CreditCardContainer>
+                <RightBracket />
+              </DefaultAddress>
+            )}
+          </AddressWrapper>
+          <ActionsWrapper>
+            <Button
+              fill="BLUE"
+              buttonVariation="variable-width"
+              text={
+                isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
+              }
+              style={AddAddressButton}
+              onPress={handleSubmit}
+            />
+            <Button
+              fill="WHITE"
+              onPress={onClose}
+              buttonVariation="variable-width"
+              text={labels.common.lbl_common_cancelCTA}
+              style={CancelButton}
+            />
+          </ActionsWrapper>
+          {addAddressMount && (
+            <ModalNative
+              isOpen={addAddressMount}
+              onRequestClose={this.toggleModal}
+              heading={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
+            >
+              <SafeAreaView>
+                <ModalViewWrapper>
+                  <AddEditAddressContainer
+                    onCancel={this.toggleModal}
+                    addressBookLabels={addressLabels}
+                    showHeading={false}
+                    currentForm="AddAddress"
+                    toggleAddressModal={this.toggleModal}
+                  />
+                </ModalViewWrapper>
+              </SafeAreaView>
+            </ModalNative>
+          )}
+        </CreditCardContainer>
+      </ScrollView>
     );
   }
 }

@@ -52,7 +52,6 @@ const Cards = props => {
           text={cardList.size === 0 ? emptyBtnLabel : addBtnLabel}
           buttonVariation="variable-width"
           fill="BLUE"
-          color="white"
           onPress={setCardHandler}
         />
       </ButtonWrapperStyle>

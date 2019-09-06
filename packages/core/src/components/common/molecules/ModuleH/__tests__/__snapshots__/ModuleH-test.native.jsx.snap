@@ -4,10 +4,12 @@ exports[`ModuleH component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       key="0"
       locator=""
+      onPress={null}
       text=""
       url="/toddler"
       visible={false}
@@ -15,25 +17,22 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(Heading)
         color="white"
         fontFamily="primary"
-        fontSize="fs36"
+        fontSize="fs32"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        style={
-          Object {
-            "height": 38,
-          }
-        }
         testID="moduleH_header_text_1"
         text="New arrivals"
         textAlign="left"
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       key="1"
       locator=""
+      onPress={null}
       text=""
       url="/toddler"
       visible={false}
@@ -41,15 +40,10 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(Heading)
         color="white"
         fontFamily="primary"
-        fontSize="fs36"
+        fontSize="fs32"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        style={
-          Object {
-            "height": 38,
-          }
-        }
         testID="moduleH_header_text_2"
         text="New adventures"
         textAlign="left"
@@ -166,9 +160,11 @@ exports[`ModuleH component renders correctly 1`] = `
   />
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/toddler"
       visible={false}
@@ -184,7 +180,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -194,9 +189,11 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/girl"
       visible={false}
@@ -212,7 +209,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -222,9 +218,11 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/toddler-boy"
       visible={false}
@@ -240,7 +238,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -250,9 +247,11 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/boy"
       visible={false}
@@ -268,7 +267,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -278,9 +276,11 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </Styled(Anchor)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation=""
       customStyle={Object {}}
       locator=""
+      onPress={null}
       text=""
       url="/baby"
       visible={false}
@@ -296,7 +296,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }

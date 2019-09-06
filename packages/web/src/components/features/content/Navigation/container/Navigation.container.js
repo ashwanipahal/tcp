@@ -25,6 +25,8 @@ const mapStateToProps = state => {
     hideNavigationFooter: state.Navigation.hideNavigationFooter,
     showDesktopOverlay: state.Navigation.showDesktopOverlay,
     removeL1Focus: state.Navigation.removeL1Focus,
+    accessibilityLabels:
+      (state.Labels && state.Labels.global && state.Labels.global.accessibility) || {},
   };
 };
 
@@ -38,15 +40,25 @@ const mapDispatchToProps = dispatch => {
       dispatch(removeL1Focus(false));
       dispatch(openL2Drawer(id));
     },
-    hideL2Drawer: id => e => {
-      e.preventDefault();
-      e.stopPropagation();
+
+    /**
+     *  @fatarrow - hideL2Drawer
+     * @params - @param - id - Navigation category id.
+     *           @param - e - Event object of click
+     *           @param - isPropagate - A boolean value for handling default event execution.
+     */
+
+    hideL2Drawer: id => (e, isPropagate) => {
+      if (!isPropagate) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       dispatch(showNavigationFooter());
       dispatch(hideL2Drawer(id));
       dispatch(removeL1Focus(true));
     },
-    openL3Drawer: id => e => {
-      if (!getViewportInfo().isDesktop) {
+    openL3Drawer: (id, hasL3) => e => {
+      if (!getViewportInfo().isDesktop && hasL3) {
         e.preventDefault();
         e.stopPropagation();
         dispatch(openL3Drawer(id));

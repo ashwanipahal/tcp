@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, change } from 'redux-form';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/style';
+import styles from '../styles/SMSFormFields.style';
 import TextBox from '../../../atoms/TextBox';
 import InputCheckbox from '../../../atoms/InputCheckbox';
 import Row from '../../../atoms/Row';
@@ -16,7 +16,6 @@ class SMSFormFields extends React.PureComponent {
 
   handleChange = () => {
     const { dispatch, addressPhoneNo, formName, formSection } = this.props;
-    /* istanbul ignore else */
     if (dispatch) {
       dispatch(change(formName, `${formSection}.phoneNumber`, addressPhoneNo));
     }
@@ -46,7 +45,7 @@ class SMSFormFields extends React.PureComponent {
           </Col>
         </Row>
         {isOrderUpdateChecked && (
-          <Row>
+          <Row fullBleed>
             <Col colSize={{ small: 5, medium: 8, large: 5 }} className="phone-field-wrapper">
               <span className="phone-prefix"> +1 </span>
               <Field
@@ -60,21 +59,23 @@ class SMSFormFields extends React.PureComponent {
                 className="phone-field"
               />
             </Col>
-            <Row>
-              <Col colSize={{ small: 6, medium: 8, large: 5 }}>
+            <Row fullBleed>
+              <Col colSize={{ small: 6, medium: 8, large: 7 }}>
                 <BodyCopy fontSize="fs10" fontFamily="primary" fontWeight="regular">
                   {labels.smsSignupText}
+                  {labels.privacyPolicy && (
+                    <Anchor
+                      underline
+                      anchorVariation="primary"
+                      fontSizeVariation="small"
+                      noLink
+                      href="#"
+                      target="_blank"
+                    >
+                      {labels.privacyPolicy}
+                    </Anchor>
+                  )}
                 </BodyCopy>
-                <Anchor
-                  noUnderline
-                  anchorVariation="primary"
-                  fontSizeVariation="small"
-                  noLink
-                  href="#"
-                  target="_blank"
-                >
-                  {labels.privacyPolicy}
-                </Anchor>
               </Col>
             </Row>
           </Row>

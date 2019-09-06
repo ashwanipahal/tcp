@@ -4,36 +4,133 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import ImageComp from '../../../../../../common/atoms/Image';
 import LineComp from '../../../../../../common/atoms/Line';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
+import favIcon from '../../../../../../../../../mobileapp/src/assets/images/empty-heart.png';
 import {
   SectionStyle,
   HeadingStyle,
-  SubHeadingStyle,
-  DescriptionStyle,
+  ResetPassword,
+  ImageWrapper,
+  FavtHeading,
+  FavtSubHeading,
 } from '../LoginTopSection.style.native';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
 /**
  * @param {string} props : props for CustomIcon
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
+const showForgotPassword = props => {
+  const { showForgotPasswordForm } = props;
+  showForgotPasswordForm();
+};
+
 const LoginTopSection = props => {
-  const { labels } = props;
+  const { labels, variation } = props;
   const imgStyle = { alignSelf: 'center', marginTop: 20 };
   return (
     <View {...props}>
-      <ImageComp source={TheMarketPlaceLogo} width={186} height={60} style={imgStyle} />
-      <LineComp marginTop={30} marginBottom={17} />
-      <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
-      <SubHeadingStyle>{labels.login.lbl_login_subHeading}</SubHeadingStyle>
-      <DescriptionStyle>{labels.login.lbl_login_Description_heading_1}</DescriptionStyle>
-      <DescriptionStyle>{labels.login.lbl_login_Description_heading_2}</DescriptionStyle>
-      <LineComp marginTop={25} marginBottom={0} />
+      {!(variation === 'favorites' || variation === 'checkout') && (
+        <React.Fragment>
+          <ImageComp source={TheMarketPlaceLogo} width={186} height={60} style={imgStyle} />
+
+          <LineComp marginTop={30} marginBottom={17} />
+          <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
+
+          <BodyCopy
+            fontSize="fs12"
+            textAlign="center"
+            text={labels.login.lbl_login_subDescription_heading_1}
+          />
+
+          <BodyCopy
+            fontSize="fs12"
+            textAlign="center"
+            text={labels.login.lbl_login_Description_heading_2}
+          />
+          <ResetPassword>
+            <Anchor
+              class="clickhere"
+              fontSizeVariation="medium"
+              text={labels.login.lbl_login_Description_clickhere}
+              underline
+              onPress={() => {
+                showForgotPassword(props);
+              }}
+            />
+            <BodyCopy
+              component="span"
+              fontSize="fs12"
+              text={labels.login.lbl_login_Description_heading_3}
+            />
+          </ResetPassword>
+          <LineComp marginTop={25} marginBottom={0} />
+        </React.Fragment>
+      )}
+
+      {variation === 'favorites' && (
+        <>
+          <ImageWrapper>
+            <ImageComp source={favIcon} width={22} height={20} />
+          </ImageWrapper>
+          <FavtHeading>
+            <BodyCopy
+              text={labels.login.lbl_login_favorites_modal_heading}
+              fontSize="fs16"
+              fontWeight="black"
+              mobilefontFamily={['secondary']}
+              textAlign="center"
+            />
+          </FavtHeading>
+          <FavtSubHeading>
+            <BodyCopy
+              component="span"
+              fontSize="fs12"
+              mobilefontFamily={['secondary']}
+              textAlign="center"
+              text={labels.login.lbl_login_favorites_modal_heading_1}
+            />
+          </FavtSubHeading>
+        </>
+      )}
+
+      {variation === 'checkout' && (
+        <>
+          <BodyCopy
+            fontSize="fs28"
+            fontWeight="black"
+            mobilefontFamily={['primary']}
+            textAlign="center"
+            text={labels.login.lbl_login_checkout_modal_heading}
+          />
+
+          <BodyCopy
+            component="span"
+            fontSize="fs18"
+            mobilefontFamily={['secondary']}
+            textAlign="center"
+            text={labels.login.lbl_login_checkout_modal_heading_1}
+          />
+
+          <BodyCopy
+            component="span"
+            fontSize="fs18"
+            fontWeight="black"
+            mobilefontFamily={['secondary']}
+            textAlign="center"
+            text={labels.login.lbl_login_checkout_modal_heading_2}
+          />
+          <LineComp small marginTop={25} marginBottom={0} />
+        </>
+      )}
     </View>
   );
 };
 
 LoginTopSection.propTypes = {
+  variation: PropTypes.bool.isRequired,
   labels: PropTypes.shape({
     login: {
       lbl_login_heading: PropTypes.string,
@@ -51,6 +148,11 @@ LoginTopSection.defaultProps = {
       lbl_login_subDescription_heading_1: 'Signed up in store?\n',
       lbl_login_subDescription_heading_2:
         'An online account has been created with your email! Click here to reset your password.',
+      lbl_login_favorites_modal_heading: '',
+      lbl_login_favorites_modal_heading_1: '',
+      lbl_login_checkout_modal_heading: '',
+      lbl_login_checkout_modal_heading_1: '',
+      lbl_login_checkout_modal_heading_2: '',
     },
   },
 };

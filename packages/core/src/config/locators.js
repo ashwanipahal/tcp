@@ -49,6 +49,13 @@ export default {
   moduleA_cta_links: 'moduleA_cta_links_',
   moduleA_cta_image: 'moduleA_cta_image_',
   carousel_banner: 'carousel_banner',
+  // Module B
+  moduleB_header_text: 'moduleB_header_text',
+  moduleB_promo_banner_text: 'moduleB_promo_banner',
+  moduleB_image: 'moduleB_image_01',
+  moduleB_cta_image: 'moduleB_cta_image_',
+  moduleB_cta_links: 'moduleB_cta_links_',
+  moduleB_dropdown: 'moduleB_shop_now_dropdown',
   // Module L
   moduleL_header_text: 'moduleL_header_text',
   moduleL_title: 'moduleL_title_',
@@ -168,4 +175,39 @@ export default {
   plp_seo_module: 'plp_seo_module',
   plp_seo_readmore: 'plp_seo_module_readmore',
   plp_seo_readless: 'plp_seo_module_readless',
+
+  // Track Order Locator
+  track_order_click_here: 'track_order_click_here',
+
+  // PLCC Locators
+  plcc_first_name: 'plcc_first_name',
+  plcc_middle_name: 'plcc_middle_name',
+  plcc_last_name: 'plcc_last_name',
+  plcc_address_1: 'plcc_address_1',
+  plcc_address_2: 'plcc_address_2',
+  plcc_city: 'plcc_city',
+  plcc_state: 'plcc_state',
+  plcc_zip_code: 'plcc_zip_code',
+  plc_mobile_no: 'plc_mobile_no',
+  plcc_email: 'plcc_email',
+  plcc_alt_mobile_no: 'plcc_alt_mobile_no',
+  plcc_date: 'plcc_date',
+  plcc_month: 'plcc_month',
+  plcc_year: 'plcc_year',
+  plcc_SSN: 'plcc_SSN',
+  plcc_submit_btn: 'plcc_submit_btn',
+  plcc_back_btn: 'plcc_back_btn',
+  plcc_apply_now_close_btn: 'plcc_apply_now_close_btn',
+  plcc_apply_btn: 'plcc_apply_btn',
+  plcc_apply_now_modal: 'plcc_apply_now_modal',
+
+  // BreadCrumbs Locators
+  breadCrumb_L1_Category: 'breadcrumb-L1-link',
+  breadCrumb_L2_Category: 'breadcrumb-L2-link',
+  breadCrumb_L3_Category: 'breadcrumb-L3-link',
+
+  // CLP Navigation Locators
+  plp_left_Nav_L2: 'leftnav-L2-Link',
+  plp_left_Nav_L3: 'leftnav-L3-link',
+  plp_left_Nav_header: 'products-header-txt',
 };

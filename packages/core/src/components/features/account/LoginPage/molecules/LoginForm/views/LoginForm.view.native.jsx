@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
@@ -48,10 +48,19 @@ class LoginForm extends React.PureComponent<Props> {
     };
   }
 
+  componentDidUpdate() {
+    const { change, setEmailid } = this.props;
+    change('emailAddress', setEmailid);
+  }
+
   showForgotPassword = () => {
-    const { showForgotPasswordForm, resetForm } = this.props;
-    resetForm();
+    const { showForgotPasswordForm } = this.props;
     showForgotPasswordForm();
+  };
+
+  handleContinueAsGuest = () => {
+    const { handleContinueAsGuest } = this.props;
+    handleContinueAsGuest();
   };
 
   changeType = e => {
@@ -63,73 +72,91 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, handleSubmit, onSubmit } = this.props;
+    const { labels, handleSubmit, onSubmit, variation } = this.props;
     const { type } = this.state;
     return (
-      <View {...this.props}>
-        <Field
-          label={labels.login.lbl_login_email}
-          name="emailAddress"
-          id="emailAddress"
-          type="text"
-          autoCapitalize="none"
-          component={TextBox}
-          dataLocator="emailAddress"
-        />
-        <ShowHideWrapper>
+      <Fragment>
+        <View {...this.props}>
           <Field
-            label={labels.login.lbl_login_password}
-            name="password"
-            id="password"
-            type={type}
+            label={labels.login.lbl_login_email}
+            name="emailAddress"
+            id="emailAddress"
+            type="text"
+            autoCapitalize="none"
             component={TextBox}
-            dataLocator="password"
-            secureTextEntry={type === 'password'}
+            dataLocator="emailAddress"
           />
-          <HideShowFieldWrapper>
-            <Anchor
-              fontSizeVariation="small"
-              fontFamily="secondary"
-              underline
-              anchorVariation="primary"
-              onPress={this.changeType}
-              noLink
-              to="/#"
-              dataLocator=""
-              text={type === 'password' ? 'show' : 'hide'}
+          <ShowHideWrapper>
+            <Field
+              label={labels.login.lbl_login_password}
+              name="password"
+              id="password"
+              type={type}
+              component={TextBox}
+              dataLocator="password"
+              secureTextEntry={type === 'password'}
+              rightText={
+                type === 'password'
+                  ? labels.registration.lbl_createAccount_show
+                  : labels.registration.lbl_createAccount_hide
+              }
             />
-          </HideShowFieldWrapper>
-        </ShowHideWrapper>
-        <View style={styles.inputCheckBoxStyle}>
-          <Field
-            name="userTouchId"
-            component={InputCheckbox}
-            dataLocator="rememberMe"
-            disabled={false}
-            rightText={labels.login.lbl_login_touch_id}
-          />
-        </View>
+            <HideShowFieldWrapper>
+              <Anchor
+                fontSizeVariation="medium"
+                fontFamily="secondary"
+                anchorVariation="primary"
+                onPress={this.changeType}
+                noLink
+                to="/#"
+                dataLocator=""
+                text={type === 'password' ? 'show' : 'hide'}
+              />
+            </HideShowFieldWrapper>
+          </ShowHideWrapper>
+          <View style={styles.inputCheckBoxStyle}>
+            <Field
+              name="userTouchId"
+              component={InputCheckbox}
+              dataLocator="rememberMe"
+              disabled={false}
+              marginBottom={13}
+              rightText={labels.login.lbl_login_touch_id}
+            />
+          </View>
 
-        <CustomButton
-          color={colorPallete.white}
-          fill="BLUE"
-          text={labels.login.lbl_login_loginCTA}
-          buttonVariation="variable-width"
-          customStyle={styles.loginButtonStyle}
-          onPress={handleSubmit(onSubmit)}
-        />
-        <Anchor
-          style={styles.underline}
-          class="underlink"
-          underlineBlue
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.login.lbl_login_forgetPasswordCTA}
-          customStyle={styles.forgotPasswordStyle}
-          onPress={this.showForgotPassword}
-        />
-        <LineComp marginTop={28} />
-      </View>
+          <CustomButton
+            fill="BLUE"
+            text={labels.login.lbl_login_loginCTA}
+            buttonVariation="variable-width"
+            customStyle={styles.loginButtonStyle}
+            onPress={handleSubmit(onSubmit)}
+          />
+
+          {variation === 'checkout' && (
+            <CustomButton
+              color={colorPallete.black}
+              fill="WHITE"
+              buttonVariation="variable-width"
+              customStyle={styles.loginButtonStyle}
+              text={labels.login.lbl_login_modal_checkout_as_guest}
+              onPress={this.handleContinueAsGuest}
+            />
+          )}
+
+          <Anchor
+            style={styles.underline}
+            class="underlink"
+            underlineBlue
+            fontSizeVariation="xlarge"
+            anchorVariation="secondary"
+            text={labels.login.lbl_login_forgetPasswordCTA}
+            customStyle={styles.forgotPasswordStyle}
+            onPress={this.showForgotPassword}
+          />
+          <LineComp marginTop={28} />
+        </View>
+      </Fragment>
     );
   }
 }

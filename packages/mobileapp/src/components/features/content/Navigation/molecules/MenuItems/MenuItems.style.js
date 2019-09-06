@@ -1,4 +1,18 @@
 import styled from 'styled-components/native';
+import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
+
+/**
+ * @function managePromoConatinerView to manage the view according to the device PixelRatio.
+ */
+const managePromoConatinerView = marginRight => {
+  if (getPixelRatio() === 'xxxhdpi' || getPixelRatio() === 'xhdpi') {
+    return `width: 140px; margin-right:${marginRight - 20};`;
+  }
+  return `
+  width: 150px;
+  margin-right:${marginRight};
+  `;
+};
 
 export const PromoAndArrowContainer = styled.TouchableOpacity`
   align-items: center;
@@ -8,11 +22,11 @@ export const PromoAndArrowContainer = styled.TouchableOpacity`
 
 export const PromoContainer = styled.View`
   background: ${props => props.theme.colorPalette.primary.main};
-  border-radius: 5px;
-  width: 150px;
+  border-radius: ${props => (props.theme.isGymboree ? `20px` : `5px`)};
   height: 30px;
   align-items: center;
   justify-content: center;
+  ${props => managePromoConatinerView(props.marginRight)}
 `;
 
 export const ArrowIcon = styled.Image`
@@ -20,4 +34,10 @@ export const ArrowIcon = styled.Image`
   height: 10px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
+export const ItemView = styled.View`
+  align-items: center;
+  justify-content: center;
+  max-width: ${props => props.maxWidth};
 `;

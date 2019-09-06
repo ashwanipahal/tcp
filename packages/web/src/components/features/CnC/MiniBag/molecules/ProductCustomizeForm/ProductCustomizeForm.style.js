@@ -20,13 +20,13 @@ const styles = css`
       background-repeat: no-repeat;
       background-position: right center;
       height: auto;
-      padding-left: 0px;
       padding-bottom: 2px;
+      padding-left: 0px;
     }
     .customSelectTitle {
       padding-bottom: 2px;
       img {
-        border: solid 0.4px #000000;
+        border: solid 0.4px ${props => props.theme.colors.BLACK};
         margin-right: 5px;
         border-radius: 5px;
       }
@@ -52,25 +52,19 @@ const styles = css`
   .button-cancel {
     font-size: 10px;
     margin-top: 12px;
-    color: ${props => props.theme.colors.BUTTON.BLUE.NORMAL};
+    color: ${props => props.theme.colors.BUTTON.RED.TEXT};
   }
 
   .color-selector {
     cursor: pointer;
-    .dropdownliBottomBorder {
-      width: auto;
-      div {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        color: ${props => props.theme.colors.WHITE};
+    .dropdownDivOverFlow {
+      display: inline-block;
+      overflow-y: auto;
+      max-height: 150px;
+      border: 2px solid ${props => props.theme.colors.PRIMARY.DARK};
+      .dropdownUlBorder {
+        border: none;
       }
-    }
-    .dropdownActiveClass {
-      background-color: ${props => props.theme.colors.PRIMARY.BLUE};
-    }
-    .dropdownUlBorder {
-      border: none;
     }
   }
 
@@ -99,6 +93,7 @@ const styles = css`
 
 export const buttonCustomStyles = css`
   min-height: unset;
+  font-family: ${props => props.theme.fonts.secondaryFontFamily};
   text-transform: none;
   &:hover {
     background-color: transparent;

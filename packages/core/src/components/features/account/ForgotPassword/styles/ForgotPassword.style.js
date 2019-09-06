@@ -4,8 +4,11 @@ const styles = css`
   &.forgot-password-form {
     margin: 30px 0;
 
-    .heading-link a {
-      color: ${props => props.theme.colorPalette.black};
+    .heading-link {
+      margin: 10px 0;
+      a {
+        color: ${props => props.theme.colorPalette.black};
+      }
     }
 
     .forgot-password-text {

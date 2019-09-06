@@ -7,13 +7,31 @@ import style from '../styles/RemoveSoldOut.style';
 
 class RemoveSoldOut extends React.PureComponent {
   render() {
-    const { labels, className } = this.props;
+    const { labels, className, labelForRemove, pageView } = this.props;
+    const styleClass = pageView === 'myBag' ? 'bagTileItem' : 'removeItem';
     return (
       <>
         <div className={className}>
-          <BodyCopy className="removeItem" component="span" fontFamily="secondary" fontSize="fs12">
-            {labels.removeSoldOut}
-          </BodyCopy>
+          {labels && (
+            <BodyCopy
+              className={styleClass}
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+            >
+              {labels.removeSoldoutHeader}
+            </BodyCopy>
+          )}
+          {labelForRemove && (
+            <BodyCopy
+              className={`${styleClass} pointer`}
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs12"
+            >
+              {labelForRemove}
+            </BodyCopy>
+          )}
         </div>
       </>
     );
@@ -22,12 +40,16 @@ class RemoveSoldOut extends React.PureComponent {
 
 RemoveSoldOut.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labelForRemove: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   className: PropTypes.string,
+  pageView: PropTypes.string,
 };
 
 RemoveSoldOut.defaultProps = {
   labels: '',
   className: '',
+  labelForRemove: '',
+  pageView: '',
 };
 
 export default withStyles(RemoveSoldOut, style);

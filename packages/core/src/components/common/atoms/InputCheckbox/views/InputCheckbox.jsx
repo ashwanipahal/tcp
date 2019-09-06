@@ -14,6 +14,7 @@ type Props = {
   input?: any,
   dataLocator?: string,
   meta?: { touched: any, error: any, warning: any },
+  checked?: boolean,
 };
 
 const InputCheckbox = ({
@@ -24,8 +25,11 @@ const InputCheckbox = ({
   disabled,
   dataLocator,
   meta,
+  checked,
 }: Props): Node => {
   const { touched, error } = meta;
+  const errorMessagea11yLbl = `checkbox__error__${input.name}`;
+
   return (
     <React.Fragment>
       <label htmlFor={input.name} className={className}>
@@ -36,8 +40,9 @@ const InputCheckbox = ({
           className="CheckBox__input"
           type="checkbox"
           data-locator={dataLocator}
-          checked={input.value}
+          checked={input.value || checked}
           disabled={disabled}
+          aria-describedby={errorMessagea11yLbl}
         />
         <BodyCopy
           fontSize="fs12"
@@ -46,19 +51,24 @@ const InputCheckbox = ({
         >
           {children}
         </BodyCopy>
+
+        <div className="Checkbox__error" component="div">
+          <span className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
+          <BodyCopy
+            color="error"
+            component="div"
+            fontSize="fs12"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            role="alert"
+            aria-live="assertive"
+            data-locator="errorDataLocator"
+            id={errorMessagea11yLbl}
+          >
+            {touched && error ? error : ''}
+          </BodyCopy>
+        </div>
       </label>
-      <BodyCopy
-        className="Checkbox__error"
-        color="error"
-        component="div"
-        fontSize="fs12"
-        fontFamily="secondary"
-        role="alert"
-        aria-live="assertive"
-        data-locator="errorDataLocator"
-      >
-        {touched && error ? error : ''}
-      </BodyCopy>
     </React.Fragment>
   );
 };
@@ -68,6 +78,7 @@ InputCheckbox.defaultProps = {
   dataLocator: '',
   input: {},
   meta: {},
+  checked: false,
 };
 
 export default withStyles(InputCheckbox, styles);

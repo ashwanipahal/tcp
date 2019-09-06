@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponIcon should render correctly 1`] = `
+<Styled(View)
+  type="rewards"
+>
+  <Styled(BodyCopy)
+    color="white"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    text="reward"
+  />
+</Styled(View)>
+`;

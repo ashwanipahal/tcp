@@ -11,6 +11,10 @@ export default css`
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+  .item-common.color-filter-chip {
+    margin-bottom: 8px;
+    padding-bottom: 0;
+  }
   .color-chip {
     border-radius: 10px;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -29,9 +33,24 @@ export default css`
     width: 124px;
     text-align: left;
     display: inline-block;
+    cursor: pointer;
   }
   .color-name {
     vertical-align: top;
     width: 86px;
+  }
+
+  .filters-only-container {
+    display: inline-block;
+  }
+  .desktop-dropdown {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sort-selector-wrapper {
+    .custom-select-common {
+      display: flex;
+      border-bottom: none;
+    }
   }
 `;

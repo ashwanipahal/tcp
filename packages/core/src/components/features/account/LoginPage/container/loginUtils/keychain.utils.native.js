@@ -27,7 +27,10 @@ export const touchIDCheck = () => {
 
 export const isSupportedTouch = () => {
   return TouchID.isSupported()
-    .then(() => {
+    .then(biometryType => {
+      if (biometryType === 'FaceID' || biometryType === 'TouchID') {
+        return biometryType;
+      }
       return true;
     })
     .catch(() => {

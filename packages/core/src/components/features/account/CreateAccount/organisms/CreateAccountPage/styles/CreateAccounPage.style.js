@@ -12,7 +12,7 @@ const styles = css`
     padding: 40px 28px 60px;
   }
   .img-parent {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.BLUE};
   }
   .my-rewards-img-wrapper {
     width: 192px;
@@ -32,7 +32,7 @@ const styles = css`
   }
 
   .signed-up-in-store {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.BLUE};
   }
 
   .info-icon-img-wrapper {
@@ -56,7 +56,7 @@ const styles = css`
   .checkbox-hide-show {
     label {
       height: auto;
-      text-decoration: underline;
+      border-bottom: 1px solid;
     }
     input {
       display: none;

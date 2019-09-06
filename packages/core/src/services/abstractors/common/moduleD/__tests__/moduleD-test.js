@@ -12,7 +12,15 @@ it('ModuleD Abstractor | ', () => {
   });
 });
 
-it('ModuleH Abstractor | getMock', () => {
+it('ModuleD Abstractor | getMock', () => {
   const data = ModuleDAbstractor.getMock();
   expect(data).toMatchObject(mock);
+});
+
+it('ModuleA Abstractor | processData', () => {
+  ModuleDAbstractor.processData();
+});
+
+it('ModuleA Abstractor | handleError', () => {
+  ModuleDAbstractor.handleError();
 });

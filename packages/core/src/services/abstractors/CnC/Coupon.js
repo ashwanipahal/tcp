@@ -12,7 +12,7 @@ export const applyCouponToCart = ({ couponCode = '' }) => {
     },
   };
 
-  return executeStatefulAPICall(payload, err => {
+  return executeStatefulAPICall(payload, ({ err }) => {
     const error = getFormattedError(err);
     getDynamicCodeErrorMessage(error, couponCode);
     const placeCash = 'PC';

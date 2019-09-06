@@ -8,12 +8,18 @@ const buildQuery = ({ type, brand, country, channel }) => `
     submodules {
       footerTop {
         composites {
-          buttonList {
-            url
-            text
-            title
-            external
-            target
+          footerButtons {
+            textItems {
+              text
+              style
+            }
+            link {
+              url
+              text
+              title
+              target
+              action
+            }
           }
           socialLinks {
             url
@@ -35,6 +41,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
               text
               external
               class
+              action
             }
             linkList {
               url
@@ -42,6 +49,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
               title
               text
               external
+              action
             }
           }
           linkColumns {
@@ -54,6 +62,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
               title
               text
               external
+              action
             }
           }
         }
@@ -66,6 +75,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
             title
             text
             external
+            action
           }
           richTextList {
             text

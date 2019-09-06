@@ -4,19 +4,26 @@ import { getIconPath } from '../../../../../../utils';
 const selectedIcon = getIconPath('selected-item');
 
 export default css`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   width: 156px;
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  .selected-item {
-    background: url(${selectedIcon}) no-repeat left top;
-    background-size: 20px 20px;
+  @media ${props => props.theme.mediaQuery.large} {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    width: auto;
+  }
+  .selected-items {
+    text-transform: capitalize;
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
-    padding-bottom: 8px;
+    text-align: left;
   }
 
   .item-select {
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.large} {
+      background: url(${selectedIcon}) no-repeat left top;
+      background-size: 18px 18px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
+      padding-bottom: 4px;
+      display: flex;
+    }
   }
 `;

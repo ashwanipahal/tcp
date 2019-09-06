@@ -21,8 +21,8 @@ const styles = css`
   .availability-btn-active,
   .availability-btn-active:hover {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
-    color: ${props => props.theme.colorPalette.white};
-    background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+    color: ${props => props.theme.colorPalette.black};
+    background-color: ${props => props.theme.colorPalette.white};
     min-height: 42px;
     padding: 0px;
   }

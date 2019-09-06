@@ -133,6 +133,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -145,6 +146,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -204,6 +206,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -292,6 +295,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -304,6 +308,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -438,12 +443,16 @@ exports[`CardTile should render correctly with gift card 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -477,6 +486,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
   </View>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
@@ -484,12 +494,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={null}
       text=""
       url=""
     />
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
@@ -622,12 +634,16 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -661,6 +677,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   </View>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
@@ -668,12 +685,14 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={null}
       text=""
       url=""
     />
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
@@ -733,6 +752,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -821,6 +841,7 @@ exports[`CardTile should render correctly with master card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -833,6 +854,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -965,12 +987,16 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
             "id": "input",
             "keyboardType": "default",
             "label": "input",
+            "marginBottom": true,
             "meta": Object {
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
             "type": "text",
           },
           "attrs": Array [],
@@ -1004,6 +1030,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   </View>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
@@ -1011,12 +1038,14 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={null}
       text=""
       url=""
     />
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-giftcarddeletelink"
@@ -1076,6 +1105,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -1156,6 +1186,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -1168,6 +1199,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"
@@ -1287,6 +1319,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     <Styled(View)>
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-venmodeletelink"
@@ -1346,6 +1379,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       />
     </Styled(Text)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       dataLocator="payment-makedefault"
@@ -1434,6 +1468,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
@@ -1446,6 +1481,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       />
       <Styled(View) />
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         dataLocator="payment-creditdebitdeletelink"

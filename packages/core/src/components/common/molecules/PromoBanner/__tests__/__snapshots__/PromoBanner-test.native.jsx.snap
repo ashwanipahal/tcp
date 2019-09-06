@@ -3,9 +3,11 @@
 exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `
 <Styled(View)>
   <Styled(Anchor)
+    accessibilityLabel=""
     anchorVariation=""
     customStyle={Object {}}
     locator=""
+    onPress={null}
     text=""
     url="http://example.com235"
     visible={false}
@@ -44,6 +46,16 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
           "
   ",
           [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
           "
 ",
           ";
@@ -87,6 +99,16 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
           "
   ",
           [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
           "
 ",
           ";
@@ -134,6 +156,16 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
   ",
           [Function],
           "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
+          "
 ",
           ";
   ",
@@ -179,6 +211,16 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
   ",
           [Function],
           "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
+          "
 ",
           ";
   ",
@@ -223,6 +265,16 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
           "
   ",
           [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
           "
 ",
           ";
@@ -335,6 +387,66 @@ exports[`PromoTextBanner native component renders all style correctly 7`] = `
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 8`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    color="black"
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="34px"
+    style={
+      Object {
+        "fontSize": 28,
+      }
+    }
+    text=""
+    textAlign="center"
+  />
+  <Styled(Styled(BodyCopy))
+    color="black"
+    fontFamily="primary"
+    fontWeight="black"
+    lineHeight="86px"
+    style={
+      Object {
+        "fontSize": 86,
+      }
+    }
+    text=""
+    textAlign="center"
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      color="black"
+      fontFamily="primary"
+      fontWeight="black"
+      lineHeight="50px"
+      style={
+        Object {
+          "fontSize": 48,
+          "height": 45,
+        }
+      }
+      text=""
+    />
+    <Styled(Styled(BodyCopy))
+      color="black"
+      fontFamily="primary"
+      fontSize="fs42"
+      fontWeight="black"
+      lineHeight="28px"
+      style={
+        Object {
+          "fontSize": 28,
+        }
+      }
+      text=""
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 9`] = `
 <StyledNativeComponent
   color="black"
   fontFamily="primary"
@@ -356,6 +468,16 @@ exports[`PromoTextBanner native component renders all style correctly 8`] = `
           "
   ",
           [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
           "
 ",
           ";
@@ -380,7 +502,7 @@ exports[`PromoTextBanner native component renders all style correctly 8`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 9`] = `
+exports[`PromoTextBanner native component renders all style correctly 10`] = `
 <StyledNativeComponent
   color="gray.900"
   fontFamily="primary"
@@ -401,6 +523,16 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
           "
   ",
           [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
           "
 ",
           ";
@@ -425,7 +557,7 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 10`] = `
+exports[`PromoTextBanner native component renders all style correctly 11`] = `
 <StyledNativeComponent
   color="white"
   fontFamily="secondary"
@@ -446,6 +578,16 @@ exports[`PromoTextBanner native component renders all style correctly 10`] = `
           "
   ",
           [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
           "
 ",
           ";
@@ -470,7 +612,7 @@ exports[`PromoTextBanner native component renders all style correctly 10`] = `
 />
 `;
 
-exports[`PromoTextBanner native component renders all style correctly 11`] = `
+exports[`PromoTextBanner native component renders all style correctly 12`] = `
 <StyledNativeComponent
   color="white"
   fontFamily="primary"
@@ -492,6 +634,16 @@ exports[`PromoTextBanner native component renders all style correctly 11`] = `
           "
   ",
           [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
           "
 ",
           ";
@@ -515,12 +667,128 @@ exports[`PromoTextBanner native component renders all style correctly 11`] = `
 />
 `;
 
+exports[`PromoTextBanner native component renders all style correctly 13`] = `
+<StyledNativeComponent
+  color="text.primary"
+  fontFamily="primary"
+  fontSize="fs20"
+  fontWeight="black"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": undefined,
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  ",
+          [Function],
+          "
+  ",
+          [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
+          "
+",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  letterSpacing="ls1"
+  lineHeight="20px"
+  textAlign="center"
+/>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 14`] = `
+<StyledNativeComponent
+  color="text.primary"
+  fontFamily="primary"
+  fontSize="fs20"
+  fontWeight="semibold"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": undefined,
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  ",
+          [Function],
+          "
+  ",
+          [Function],
+          "
+  ",
+          "
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
+          "
+",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  letterSpacing="ls2"
+  lineHeight="20px"
+  textAlign="center"
+/>
+`;
+
 exports[`PromoTextBanner native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(Anchor)
+    accessibilityLabel=""
     anchorVariation=""
     customStyle={Object {}}
     locator=""
+    onPress={null}
     text=""
     url="http://example.com235"
     visible={false}

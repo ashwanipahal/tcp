@@ -30,13 +30,14 @@ exports[`AccountOverview component should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
       customStyle={Object {}}
       data-locator=""
       disableButton={false}
-      fill="WHITE"
+      fill=""
       fullWidth=""
       id="createAccount"
       locator=""
@@ -47,9 +48,10 @@ exports[`AccountOverview component should render correctly 1`] = `
       width="150px"
     />
     <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
       className="classBtn"
-      color="#fff"
+      color=""
       customStyle={Object {}}
       data-locator=""
       disableButton={false}
@@ -64,12 +66,31 @@ exports[`AccountOverview component should render correctly 1`] = `
       width="150px"
     />
   </Styled(View)>
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={true}
-    isVariationTypeLink={true}
-  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontSize="fs13"
+      fontWeight="semibold"
+      mobileFontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      onPress={[Function]}
+      textAlign="left"
+    />
+    <Styled(View)>
+      <Styled(ImageComp)
+        height={18}
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/filled-heart.png",
+          }
+        }
+        width={20}
+      />
+    </Styled(View)>
+  </Styled(View)>
   <Styled(View) />
   <Panel
     handleComponentChange={[Function]}
@@ -96,19 +117,6 @@ exports[`AccountOverview component should render correctly 1`] = `
     isFavorite={false}
     isVariationTypeLink={true}
   />
-  <Styled(View) />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-  />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
@@ -116,6 +124,28 @@ exports[`AccountOverview component should render correctly 1`] = `
     isVariationTypeLink={true}
   />
   <Styled(View) />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Styled(View) />
+  <Connect(TrackOrderContainer)
+    handleToggle={[Function]}
+  />
   <Styled(View) />
 </View>
 `;

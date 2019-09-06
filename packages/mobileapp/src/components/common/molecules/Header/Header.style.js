@@ -82,6 +82,35 @@ export const Touchable = styled.TouchableOpacity`
   width: 45px;
 `;
 
+export const CheckoutHeaderContainer = styled.View`
+  flex-direction: row;
+  display: flex;
+  background: ${props => props.theme.colorPalette.white};
+`;
+
+export const CheckoutHeaderTextSection = styled.View`
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
+  border-bottom-width: 1;
+`;
+
+export const BackIcon = styled.Image`
+  width: 10px;
+  height: 18px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+export const BackIconTouchable = styled.TouchableOpacity`
+  width: 45px;
+`;
+
 export default {
   Container,
   MessageContainer,
@@ -96,4 +125,8 @@ export default {
   ImageColor,
   HeaderPromoContainer,
   Touchable,
+  CheckoutHeaderContainer,
+  CheckoutHeaderTextSection,
+  BackIcon,
+  BackIconTouchable,
 };

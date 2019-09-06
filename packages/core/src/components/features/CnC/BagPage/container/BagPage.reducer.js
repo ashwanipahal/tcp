@@ -1,12 +1,13 @@
 import { fromJS, List } from 'immutable';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-// import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 const initialState = fromJS({
   orderDetails: {},
   errors: false,
   moduleXContent: [],
   showConfirmationModal: false,
+  isEditingItem: false,
   uiFlags: {
     isPayPalEnabled: false,
     lastItemUpdatedId: null,
@@ -52,9 +53,9 @@ function setCartItemsUpdating(state, isCartItemUpdating) {
 const returnBagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
-      return state.set('showConfirmationModal', true);
+      return state.set('showConfirmationModal', true).set('isEditingItem', action.payload);
     case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:
-      return state.set('showConfirmationModal', false);
+      return state.set('showConfirmationModal', false).set('isEditingItem', false);
     case BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING:
       return setCartItemsUpdating(state, action.payload);
     default:
@@ -77,7 +78,9 @@ const BagPageReducer = (state = initialState, action) => {
     case 'CART_SUMMARY_SET_ORDER_ID':
       return state.setIn(['orderDetails', 'orderId'], action.orderId);
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
-      return updateItem(state, action.payload);
+      return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
+    case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
+      return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
     default:
       return returnBagPageReducer(state, action);
   }

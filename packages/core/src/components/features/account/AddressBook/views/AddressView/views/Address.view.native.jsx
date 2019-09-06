@@ -17,30 +17,77 @@ import Button from '../../../../../../common/atoms/Button';
 import AddressListComponent from '../../AddressList.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
+import DeleteAddressModal from '../../DeleteAddressModal.view';
+import ADDRESS_BOOK_CONSTANTS from '../../../AddressBook.constants';
 
 export class AddressView extends React.Component {
   constructor(props) {
     super(props);
+    const { addressLabels } = this.props;
     this.state = {
       addAddressMount: false,
       currentForm: 'AddAddress',
+      addressLine1: '',
+      countryState: '',
+      selectedAddress: null,
+      modalHeading: addressLabels.addNewAddress,
     };
+    this.addressHeadline = null;
   }
 
   toggleAddressModal = () => {
     const { currentForm } = this.state;
-    if (currentForm === 'AddAddress') {
-      this.setState({ currentForm: 'VerificationModal' });
+    if (currentForm === ADDRESS_BOOK_CONSTANTS.ADD_ADDRESS_MODAL) {
+      this.setState({ currentForm: ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL });
     } else {
-      this.setState({ currentForm: 'AddAddress' });
+      this.setState({ currentForm: ADDRESS_BOOK_CONSTANTS.ADD_ADDRESS_MODAL });
     }
   };
 
-  toggleAddAddressModal = () => {
+  toggleAddAddressModal = type => {
     const { addAddressMount } = this.state;
     this.setState({
       addAddressMount: !addAddressMount,
     });
+    if (type !== 'edit') {
+      this.setState({ selectedAddress: '' });
+      this.resetAddressLine1();
+    }
+  };
+
+  setSelectedAddress = address => {
+    this.setState({
+      selectedAddress: address,
+      addressLine1: address.addressLine[0],
+      countryState: address.state,
+    });
+  };
+
+  setAddressLine1 = (address, countryState) => {
+    this.setState({ addressLine1: address, countryState });
+  };
+
+  resetAddressLine1 = () => {
+    this.setState({ addressLine1: '', countryState: '', selectedAddress: '' });
+  };
+
+  setModalHeading = () => {
+    const { addressLabels } = this.props;
+    const { currentForm, selectedAddress } = this.state;
+    let label = '';
+    if (selectedAddress) {
+      label =
+        currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
+          ? addressLabels.editAddress
+          : addressLabels.editAddressLbl;
+      this.setState({ modalHeading: label });
+    } else {
+      label =
+        currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
+          ? addressLabels.editAddress
+          : addressLabels.addNewAddress;
+    }
+    this.setState({ modalHeading: label });
   };
 
   render() {
@@ -48,14 +95,22 @@ export class AddressView extends React.Component {
       addresses,
       labels,
       onDefaultShippingAddressClick,
-      deleteModalMountedState,
       setDeleteModalMountState,
-      addressLabels,
+      deleteModalMountedState,
+      onDeleteAddress,
     } = this.props;
-    const { addAddressMount, currentForm } = this.state;
+    const {
+      addAddressMount,
+      currentForm,
+      selectedAddress,
+      addressLine1,
+      countryState,
+      modalHeading,
+    } = this.state;
+
     return (
       <View {...this.props}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledHeading>
             {labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING && (
               <BodyCopy
@@ -106,10 +161,10 @@ export class AddressView extends React.Component {
             <AddressListComponent
               addresses={addresses}
               labels={labels}
-              deleteModalMountedState={deleteModalMountedState}
-              setSelectedAddress={() => {}}
+              setSelectedAddress={this.setSelectedAddress}
               onDefaultShippingAddressClick={onDefaultShippingAddressClick}
               setDeleteModalMountState={setDeleteModalMountState}
+              toggleAddAddressModal={this.toggleAddAddressModal}
             />
           )}
 
@@ -117,11 +172,7 @@ export class AddressView extends React.Component {
             <ModalNative
               isOpen={addAddressMount}
               onRequestClose={this.toggleAddAddressModal}
-              heading={
-                currentForm === 'VerificationModal'
-                  ? addressLabels.verifyAddress
-                  : addressLabels.addNewAddress
-              }
+              heading={modalHeading}
             >
               <ModalViewWrapper>
                 <AddEditAddressContainer
@@ -130,9 +181,25 @@ export class AddressView extends React.Component {
                   showHeading={false}
                   currentForm={currentForm}
                   toggleAddressModal={this.toggleAddressModal}
+                  addressLine1={addressLine1}
+                  countryState={countryState}
+                  setAddressLine1={this.setAddressLine1}
+                  resetAddressLine1={this.resetAddressLine1}
+                  address={selectedAddress}
+                  setModalHeading={this.setModalHeading}
+                  isEdit={!!selectedAddress}
                 />
               </ModalViewWrapper>
             </ModalNative>
+          )}
+          {deleteModalMountedState && (
+            <DeleteAddressModal
+              labels={labels}
+              address={selectedAddress}
+              isOpen={deleteModalMountedState}
+              setDeleteModalMountState={setDeleteModalMountState}
+              onDeleteAddress={onDeleteAddress}
+            />
           )}
         </ScrollView>
       </View>
@@ -153,8 +220,9 @@ AddressView.propTypes = {
     addNewAddress: PropTypes.string,
   }),
   onDefaultShippingAddressClick: PropTypes.func,
-  deleteModalMountedState: PropTypes.func,
   setDeleteModalMountState: PropTypes.func,
+  deleteModalMountedState: PropTypes.bool,
+  onDeleteAddress: PropTypes.func.isRequired,
 };
 
 AddressView.defaultProps = {
@@ -168,12 +236,12 @@ AddressView.defaultProps = {
     },
   },
   onDefaultShippingAddressClick: () => {},
-  deleteModalMountedState: () => {},
   setDeleteModalMountState: () => {},
   addressLabels: {
     verifyAddress: '',
     addNewAddress: '',
   },
+  deleteModalMountedState: false,
 };
 
 export default withStyles(AddressView, ParentContainer);

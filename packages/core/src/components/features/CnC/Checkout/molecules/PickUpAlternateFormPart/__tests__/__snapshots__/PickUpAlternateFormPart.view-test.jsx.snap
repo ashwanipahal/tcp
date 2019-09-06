@@ -29,7 +29,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -51,6 +51,8 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -94,13 +96,41 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
     opacity: ",
                 [Function],
                 ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
   }
 ",
                 ";
@@ -167,7 +197,7 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
                 "
   ",
                 "
-  display: inline-flex;
+  display: block;
   align-items: ",
                 [Function],
                 ";
@@ -189,6 +219,8 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
     margin-right: ",
                 [Function],
                 ";
+    display: inline-block;
+    vertical-align: top;
   }
 
   & .CheckBox__input:before {
@@ -232,13 +264,41 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
   }
 
   & .CheckBox__text {
-    width: calc(100% - 25px);
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
   }
 
   & .disabled {
     opacity: ",
                 [Function],
                 ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
   }
 ",
                 ";

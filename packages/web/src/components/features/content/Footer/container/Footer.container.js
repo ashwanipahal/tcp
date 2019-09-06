@@ -5,7 +5,6 @@ import {
   setLoginModalMountedState,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { loginModalOpenState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
-import { closeNavigationDrawer } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import {
   toggleEmailSignupModal,
   submitEmailSignup,
@@ -20,16 +19,18 @@ import { getUserLoggedInState } from '@tcp/core/src/components/features/account/
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
+import LinkConfig from '../../../../../config/footerLinkActionMapping.config';
 import FooterView from '../views';
 
 const mapStateToProps = state => {
   const { Footer } = state;
   const {
     global: {
-      footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
+      footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID } = {},
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
-    },
+      referAFriend: referAFriendButtonLabels,
+    } = {},
   } = state.Labels;
   const { EmailSignUp = {}, SmsSignUp = {} } = state;
 
@@ -45,19 +46,21 @@ const mapStateToProps = state => {
     emailSignup: Footer.emailSignupBtn,
     smsSignup: Footer.smsSignupBtn,
     referAFriend: Footer.referFriendBtn,
+    referAFriendButtonLabels,
     copyrightText: Footer.copyrightText,
     referenceID,
     emailSignupLabels,
     smsSignupLabels,
     loginModalMountedState: loginModalOpenState(state),
     isLoggedIn: getUserLoggedInState(state),
+    linkConfig: LinkConfig,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeNavigationDrawer: () => {
-      dispatch(closeNavigationDrawer());
+    footerActionCreator: (dispatchFn, payload) => {
+      dispatch(dispatchFn(payload));
     },
     getUserInfoAction: () => {
       dispatch(getUserInfoPOC());
@@ -65,15 +68,12 @@ const mapDispatchToProps = dispatch => {
     getOrderDetailAction: () => {
       dispatch(getOrderDetail());
     },
-
     openEmailSignUpModal: () => {
       dispatch(toggleEmailSignupModal({ isModalOpen: true }));
     },
-
     setLoginModalMountState: payload => {
       dispatch(setLoginModalMountedState(payload));
     },
-
     openSmsSignUpModal: () => {
       dispatch(toggleSmsSignupModal({ isModalOpen: true }));
     },

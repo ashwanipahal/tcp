@@ -28,7 +28,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-jTzLTM",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": true,
                   "rules": Array [
                     "
@@ -46,7 +46,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
                 "displayName": "Styled(ColorSelectorDropDown)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-jTzLTM",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -83,6 +83,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
                 },
               ]
             }
+            selectListTitle="undefined"
             width={87}
           />
         </div>
@@ -97,7 +98,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             name="undefined"
             onChange={[Function]}
             options={Array []}
-            width={69}
+            width={49}
           />
         </div>
         <div
@@ -195,6 +196,9 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             Array [
               "
   min-height: unset;
+  font-family: ",
+              [Function],
+              ";
   text-transform: none;
   &:hover {
     background-color: transparent;
@@ -215,6 +219,9 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             Array [
               "
   min-height: unset;
+  font-family: ",
+              [Function],
+              ";
   text-transform: none;
   &:hover {
     background-color: transparent;

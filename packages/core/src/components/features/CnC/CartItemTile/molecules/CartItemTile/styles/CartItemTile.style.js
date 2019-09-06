@@ -3,7 +3,10 @@ import { css } from 'styled-components';
 export default css`
   padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
+  .product {
+    padding-top: 6px;
+  }
   .padding-left-10 {
     padding-left: 4px;
   }
@@ -47,6 +50,9 @@ export default css`
   .responsive-edit-css {
     padding-top: 2px;
     cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15px;
   }
   .imageWrapper {
     position: relative;
@@ -68,14 +74,70 @@ export default css`
     display: inline-block;
   }
 
-  .crossDeleteIcon {
+  .crossDeleteIconMiniBag {
     float: right;
     cursor: pointer;
     width: 10px;
     height: 10px;
+    padding-top: 0px;
+  }
+
+  .crossDeleteIconBag {
+    float: right;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    padding-top: 0px;
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .crossDeleteIconBag {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .product-detail {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-detail-row {
+    width: 100%;
+  }
+
+  .unavailable-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .unavailable-error {
+    padding-top: 0px;
+  }
+
+  .product-detail-bag {
+    display: inline-block;
+  }
+
+  .label-responsive {
+    width: fit-content;
+    padding-right: 22px;
+  }
+
+  .label-responsive-price {
+    margin-right: 0px;
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .product-detail-bag {
+      display: flex;
+      flex-wrap: wrap;
+      width: fit-content;
+    }
   }
 
   .product-tile-wrapper {
+    font-size: 13px;
     flex-wrap: nowrap;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       position: relative;
@@ -98,8 +160,7 @@ export default css`
     }
 
     .color-size-fit-label {
-      width: 40px;
-      display: inline-block;
+      width: 49px;
     }
 
     .bag-product-detail-wrapper {
@@ -110,26 +171,47 @@ export default css`
       }
 
       .label-responsive {
-        width: auto;
-        margin-right: 22px;
+        width: 49px;
+        margin-right: 0px;
+        padding-right: 0px;
       }
 
       .value-responsive {
         flex: 1;
-        padding-left: 10px;
+        padding-left: 4px;
+        width: 49px;
+        margin-right: 0px;
       }
       .label-responsive-wrapper {
-        padding-top: 0;
+        padding-top: 2px;
         display: flex;
         flex: 1;
-        width: auto;
-        margin-right: 22px;
+        padding-right: 0px;
+        /* stylelint-disable */
+        span:not(.list-price) {
+          font-size: ${props => props.theme.fonts.fontSize.listmenu.small}px;
+        }
+        /* stylelint-enable */
       }
 
       .responsive-edit-css {
-        padding-top: 2px;
+        padding-top: 4px;
         cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 15px;
+        left: 155px;
+        bottom: 4px;
       }
+
+      /* stylelint-disable */
+      .product-detail-bag {
+        padding-top: 4px;
+        span {
+          font-size: 13px;
+        }
+      }
+      /* stylelint-enable */
     }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
@@ -140,12 +222,12 @@ export default css`
       }
       .save-for-later-label {
         position: absolute;
-        bottom: 0px;
-        left: 0;
+        bottom: 4px;
+        left: 170px;
         width: 100%;
       }
       .color-map-size-fit {
-        display: block;
+        display: inline-grid;
       }
       .responsive-edit-css {
         position: absolute;
@@ -168,7 +250,7 @@ export default css`
     }
 
     .price-label {
-      margin-left: 170px;
+      margin-left: 122px;
     }
   }
 
@@ -188,5 +270,29 @@ export default css`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .updateOOSMiniBag {
+    /*margin-left: 56px;*/
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .updateOOSBag {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .parent- {
+    padding-bottom: 0px;
+    .save-for-later-label {
+      right: -57px;
+      position: absolute;
+      bottom: 17px;
+    }
+  }
+
+  .tile-header {
+    position: relative;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

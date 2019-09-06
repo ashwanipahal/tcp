@@ -19,28 +19,43 @@ import {
   CancelButtonWrapper,
   dropDownStyle,
   itemStyle,
-  InputFieldPhoneNumber,
   InputFieldHalf,
   StateZipCodeContainer,
   Separator,
   SetDefaultShippingWrapper,
   AddAddressWrapper,
   GooglePlaceInputWrapper,
-  AddressSecondWrapper,
+  OptionalAdressWrapper,
+  HiddenAddressLineWrapper,
+  CountryContainer,
+  HiddenStateWrapper,
 } from './AddressForm.native.style';
 
 class AddressForm extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    const selectArray = [
+      {
+        id: ``,
+        fullName: '',
+        displayName: 'Select',
+      },
+    ];
+
+    this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
+    this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
+
     this.state = {
       country: 'US',
-      dropDownItem: UScountriesStatesTable[0].displayName,
+      dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
     };
+
+    this.locationRef = null;
   }
 
   componentDidMount() {
     const { dispatch, initialValues } = this.props;
-    dispatch(change('AddressForm', 'state', initialValues.state));
     dispatch(change('AddressForm', 'country', initialValues.country));
     dispatch(change('AddressForm', 'addressLine1', initialValues.addressLine1));
   }
@@ -53,6 +68,7 @@ class AddressForm extends React.PureComponent {
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
     this.setState({ dropDownItem: address.state });
+    this.locationRef.setAddressText(address.street);
   };
 
   render() {
@@ -61,11 +77,21 @@ class AddressForm extends React.PureComponent {
       isEdit,
       isMakeDefaultDisabled,
       onCancel,
-      invalid,
       handleSubmit,
       dispatch,
+      addressLine1,
+      initialValues,
+      setModalHeading,
     } = this.props;
     const { dropDownItem, country } = this.state;
+    const disabledProps = {
+      isChecked: initialValues.primary,
+    };
+    if (isMakeDefaultDisabled) {
+      disabledProps.isChecked = true;
+      disabledProps.disabled = true;
+    }
+    setModalHeading(); // set modal heading
     return (
       <AddAddressWrapper>
         <Field
@@ -87,20 +113,37 @@ class AddressForm extends React.PureComponent {
 
         <GooglePlaceInputWrapper>
           <Field
-            id="addressLine1"
-            name="addressLine1"
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
-              dispatch(change('AddressForm', 'addressLine1', data));
               this.handlePlaceSelected(data, inputValue);
             }}
+            onChangeText={text => {
+              setTimeout(() => {
+                dispatch(change('AddressForm', 'addressLine1', text));
+              });
+            }}
+            refs={instance => {
+              this.locationRef = instance;
+            }}
+            initialValue={addressLine1}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
           />
         </GooglePlaceInputWrapper>
 
-        <AddressSecondWrapper>
+        <HiddenAddressLineWrapper>
+          <Field
+            label=""
+            component={TextBox}
+            title=""
+            type="hidden"
+            id="addressLine1"
+            name="addressLine1"
+          />
+        </HiddenAddressLineWrapper>
+
+        <OptionalAdressWrapper>
           <Field
             id="addressLine2"
             name="addressLine2"
@@ -108,7 +151,7 @@ class AddressForm extends React.PureComponent {
             component={TextBox}
             dataLocator="addnewaddress-addressl2"
           />
-        </AddressSecondWrapper>
+        </OptionalAdressWrapper>
 
         <Field
           id="city"
@@ -121,13 +164,12 @@ class AddressForm extends React.PureComponent {
         <StateZipCodeContainer>
           <InputFieldHalf>
             <Field
-              id="state"
-              name="state"
+              bounces={false}
               component={DropDown}
               heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"
               selectedValue={dropDownItem}
-              data={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
+              data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
               onValueChange={itemValue => {
                 dispatch(change('AddressForm', 'state', itemValue));
                 this.setState({ dropDownItem: itemValue });
@@ -136,6 +178,10 @@ class AddressForm extends React.PureComponent {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
+
+            <HiddenStateWrapper>
+              <Field label="" component={TextBox} title="" type="hidden" id="state" name="state" />
+            </HiddenStateWrapper>
           </InputFieldHalf>
 
           <Separator />
@@ -152,37 +198,37 @@ class AddressForm extends React.PureComponent {
           </InputFieldHalf>
         </StateZipCodeContainer>
 
-        <Field
-          id="country"
-          name="country"
-          component={DropDown}
-          heading={addressFormLabels.country}
-          selectedValue={
-            country === 'US'
-              ? countriesOptionsMap[0].displayName
-              : countriesOptionsMap[1].displayName
-          }
-          data={countriesOptionsMap}
-          dataLocator="addnewaddress-country"
-          onValueChange={itemValue => {
-            dispatch(change('AddressForm', 'country', itemValue));
-            this.setState({ country: itemValue });
-          }}
-          variation="secondary"
-          dropDownStyle={{ ...dropDownStyle }}
-          itemStyle={{ ...itemStyle }}
-        />
-
-        <InputFieldPhoneNumber>
+        <CountryContainer>
           <Field
-            id="phoneNumber"
-            name="phoneNumber"
-            label={addressFormLabels.phoneNumber}
-            component={TextBox}
-            dataLocator="addnewaddress-phnumber"
-            type="tel"
+            id="country"
+            name="country"
+            component={DropDown}
+            heading={addressFormLabels.country}
+            selectedValue={
+              country === 'US'
+                ? countriesOptionsMap[0].displayName
+                : countriesOptionsMap[1].displayName
+            }
+            data={countriesOptionsMap}
+            dataLocator="addnewaddress-country"
+            onValueChange={itemValue => {
+              dispatch(change('AddressForm', 'country', itemValue));
+              this.setState({ country: itemValue });
+            }}
+            variation="secondary"
+            dropDownStyle={{ ...dropDownStyle }}
+            itemStyle={{ ...itemStyle }}
           />
-        </InputFieldPhoneNumber>
+        </CountryContainer>
+
+        <Field
+          id="phoneNumber"
+          name="phoneNumber"
+          label={addressFormLabels.phoneNumber}
+          component={TextBox}
+          dataLocator="addnewaddress-phnumber"
+          type="tel"
+        />
 
         <SetDefaultShippingWrapper>
           <Field
@@ -190,8 +236,7 @@ class AddressForm extends React.PureComponent {
             name="primary"
             component={InputCheckbox}
             dataLocator="addnewaddress-city"
-            isChecked={isMakeDefaultDisabled}
-            disabled={isMakeDefaultDisabled}
+            {...disabledProps}
             rightText={addressFormLabels.setDefaultMsg}
           />
         </SetDefaultShippingWrapper>
@@ -201,7 +246,6 @@ class AddressForm extends React.PureComponent {
             fill="BLUE"
             type="submit"
             color="white"
-            disabled={invalid}
             onPress={handleSubmit}
             buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
@@ -242,12 +286,14 @@ AddressForm.propTypes = {
   isMakeDefaultDisabled: PropTypes.bool.isRequired,
   onCancel: PropTypes.func,
   handleSubmit: PropTypes.func,
-  invalid: PropTypes.func,
   initialValues: PropTypes.shape({
     state: PropTypes.string,
     country: PropTypes.string,
     addressLine1: PropTypes.string,
   }),
+  addressLine1: PropTypes.string,
+  countryState: PropTypes.string,
+  setModalHeading: PropTypes.func,
 };
 
 AddressForm.defaultProps = {
@@ -269,19 +315,22 @@ AddressForm.defaultProps = {
   },
   dispatch: () => {},
   onCancel: () => {},
-  invalid: () => {},
   handleSubmit: () => {},
   initialValues: {
     state: '',
     country: '',
     addressLine1: '',
   },
+  addressLine1: '',
+  countryState: '',
+  setModalHeading: () => {},
 };
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
     'firstName',
     'lastName',
+    'addressLine1',
     'addressLine2',
     'city',
     'state',

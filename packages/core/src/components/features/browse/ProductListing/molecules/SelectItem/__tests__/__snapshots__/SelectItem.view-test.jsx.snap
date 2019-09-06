@@ -25,27 +25,36 @@ exports[`Select Item is shown should render select item  1`] = `
           [Function],
           ";
   width: 156px;
-  padding-left: ",
+  @media ",
           [Function],
-          ";
-  .selected-item {
-    background: url(",
-          "/static/images/selected-item.svg",
-          ") no-repeat left top;
-    background-size: 20px 20px;
+          " {
     padding-left: ",
           [Function],
           ";
-    margin-bottom: ",
+    width: auto;
+  }
+  .selected-items {
+    text-transform: capitalize;
+    padding-left: ",
           [Function],
           ";
-    padding-bottom: 8px;
+    text-align: left;
   }
 
   .item-select {
-    padding-left: ",
+    @media ",
+          [Function],
+          " {
+      background: url(",
+          "/static/images/selected-item.svg",
+          ") no-repeat left top;
+      background-size: 18px 18px;
+      margin-bottom: ",
           [Function],
           ";
+      padding-bottom: 4px;
+      display: flex;
+    }
   }
 ",
           ";

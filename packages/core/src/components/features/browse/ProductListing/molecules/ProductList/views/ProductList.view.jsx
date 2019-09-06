@@ -23,7 +23,7 @@ const isGridItem = item => {
 const ProductList = props => {
   const {
     className,
-    products,
+    productsBlock,
     showQuickViewForProductId,
     currencySymbol,
     onAddItemToFavorites,
@@ -44,8 +44,8 @@ const ProductList = props => {
   let gridIndex = 0;
 
   return (
-    <div className={className}>
-      {products.map((item, index) => {
+    <ul className={className}>
+      {productsBlock.map((item, index) => {
         const isEvenElement = gridIndex % 2;
         if (typeof item === 'string') {
           gridIndex = 0;
@@ -53,7 +53,13 @@ const ProductList = props => {
           gridIndex += 1;
         }
         window.gridIndex = gridIndex;
-        return (
+        return typeof item === 'string' ? (
+          /* id={isShowPLPId && (categoryNameTop +`-`+item).replace(/ /g, '-')} */
+
+          <h2 key={item} className="item-title">
+            {item}
+          </h2>
+        ) : (
           <div className="product-tile">
             <ProductsGridItem
               isMobile={isMobileApp()}
@@ -87,20 +93,20 @@ const ProductList = props => {
               siblingProperties={siblingProperties}
               isEvenElement={isEvenElement}
               gridIndex={gridIndex}
-              isPLPredesign={false}
+              isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
               isKeepAliveKillSwitch={false}
               labels={labels}
             />
           </div>
         );
       })}
-    </div>
+    </ul>
   );
 };
 
 ProductList.propTypes = {
   className: PropTypes.string,
-  products: PropTypes.arrayOf(PropTypes.shape({})),
+  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   /** the generalProductId of the product (if any) requesting quickView to show */
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
@@ -132,7 +138,7 @@ ProductList.propTypes = {
 
 ProductList.defaultProps = {
   className: '',
-  products: [],
+  productsBlock: [],
   showQuickViewForProductId: '',
   currencySymbol: '',
   onAddItemToFavorites: () => {},

@@ -1,9 +1,14 @@
 import NAVIGATION_CONSTANTS from './Navigation.constants';
+import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
-const NavigationReducer = (state = {}, action) => {
+const initialState = {
+  [DEFAULT_REDUCER_KEY]: null,
+};
+
+const NavigationReducer = (state = initialState, action) => {
   switch (action.type) {
     case NAVIGATION_CONSTANTS.LOAD_NAVIGATION_DATA:
-      return { ...state, navigationData: action.payload };
+      return { ...state, navigationData: action.payload, [DEFAULT_REDUCER_KEY]: setCacheTTL() };
     case NAVIGATION_CONSTANTS.OPEN_L2_PANEL:
       return {
         ...state,

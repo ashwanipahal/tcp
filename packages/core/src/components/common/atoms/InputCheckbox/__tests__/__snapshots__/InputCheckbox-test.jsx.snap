@@ -6,7 +6,9 @@ exports[`InputCheckbox component should render correctly 1`] = `
     className="sample-class"
   >
     <input
+      aria-describedby="checkbox__error__undefined"
       aria-label=""
+      checked={false}
       className="CheckBox__input"
       data-locator=""
       type="checkbox"
@@ -24,20 +26,30 @@ exports[`InputCheckbox component should render correctly 1`] = `
     >
       This is sample checkbox
     </Styled(BodyCopy)>
+    <div
+      className="Checkbox__error"
+      component="div"
+    >
+      <span
+        aria-disabled="true"
+        className=""
+      />
+      <Styled(BodyCopy)
+        aria-live="assertive"
+        className={null}
+        color="error"
+        component="div"
+        data-locator="errorDataLocator"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        id="checkbox__error__undefined"
+        letterSpacing="normal"
+        lineHeight="normal"
+        role="alert"
+        textAlign="left"
+      />
+    </div>
   </label>
-  <Styled(BodyCopy)
-    aria-live="assertive"
-    className="Checkbox__error"
-    color="error"
-    component="div"
-    data-locator="errorDataLocator"
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    role="alert"
-    textAlign="left"
-  />
 </Fragment>
 `;

@@ -7,10 +7,11 @@ import FooterNavLinks from '../../FooterNavLinks';
 const FooterMiddleDesktop = ({
   navLinks,
   className,
-  setLoginModalMountState,
-  loginModalMountedState,
-  openTrackOrder,
   isLoggedIn,
+  loginModalMountedState,
+  setLoginModalMountState,
+  linkConfig,
+  footerActionCreator,
 }) => {
   let numberOfNavLinkCols = navLinks.length;
 
@@ -37,8 +38,8 @@ const FooterMiddleDesktop = ({
               links: navLinks[i].links,
             }}
             colNum={i}
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
+            linkConfig={linkConfig}
+            footerActionCreator={footerActionCreator}
           />
           <FooterNavLinks
             className={className}
@@ -48,8 +49,8 @@ const FooterMiddleDesktop = ({
               links: navLinks[i + 1].links,
             }}
             colNum={i + 1}
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
+            linkConfig={linkConfig}
+            footerActionCreator={footerActionCreator}
           />
         </Col>
       );
@@ -71,9 +72,8 @@ const FooterMiddleDesktop = ({
             }}
             colNum={i}
             isLoggedIn={isLoggedIn}
-            openTrackOrder={openTrackOrder}
-            loginModalMountedState={loginModalMountedState}
-            setLoginModalMountState={setLoginModalMountState}
+            linkConfig={linkConfig}
+            footerActionCreator={footerActionCreator}
           />
         </Col>
       );
@@ -97,8 +97,8 @@ const FooterMiddleDesktop = ({
             links: navLinks[0].links,
           }}
           colNum={0}
-          loginModalMountedState={loginModalMountedState}
-          setLoginModalMountState={setLoginModalMountState}
+          linkConfig={linkConfig}
+          footerActionCreator={footerActionCreator}
         />
       </Col>
       <Col
@@ -116,8 +116,8 @@ const FooterMiddleDesktop = ({
             links: navLinks[1].links,
           }}
           colNum={1}
-          loginModalMountedState={loginModalMountedState}
-          setLoginModalMountState={setLoginModalMountState}
+          linkConfig={linkConfig}
+          footerActionCreator={footerActionCreator}
         />
       </Col>
       {numberOfNavLinkCols <= 5 ? (
@@ -147,14 +147,16 @@ const FooterMiddleDesktop = ({
 FooterMiddleDesktop.propTypes = {
   navLinks: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
-  openTrackOrder: PropTypes.func,
-  setLoginModalMountState: PropTypes.bool.isRequired,
   loginModalMountedState: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-};
-
-FooterMiddleDesktop.defaultProps = {
-  openTrackOrder: () => null,
+  setLoginModalMountState: PropTypes.func.isRequired,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 export default FooterMiddleDesktop;

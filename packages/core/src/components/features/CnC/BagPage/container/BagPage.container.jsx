@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -28,16 +29,7 @@ export class BagPageContainer extends React.Component<Props> {
   };
 
   render() {
-    const {
-      labels,
-      totalCount,
-      orderItemsCount,
-      navigation,
-      handleCartCheckout,
-      showConfirmationModal,
-      closeCheckoutConfirmationModal,
-      removeUnqualifiedItemsAndCheckout,
-    } = this.props;
+    const { labels, totalCount, orderItemsCount, navigation, isUserLoggedIn } = this.props;
     const showAddTobag = false;
     return (
       <BagPage
@@ -45,11 +37,8 @@ export class BagPageContainer extends React.Component<Props> {
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
         showAddTobag={showAddTobag}
-        handleCartCheckout={handleCartCheckout}
-        showConfirmationModal={showConfirmationModal}
-        closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
-        removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
         navigation={navigation}
+        isUserLoggedIn={isUserLoggedIn}
       />
     );
   }
@@ -63,15 +52,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
-    handleCartCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.startCheckout());
-    },
-    closeCheckoutConfirmationModal: () => {
-      dispatch(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
-    },
-    removeUnqualifiedItemsAndCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.removeUnqualifiedItemsAndCheckout());
-    },
   };
 };
 
@@ -83,7 +63,7 @@ const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
-    showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 

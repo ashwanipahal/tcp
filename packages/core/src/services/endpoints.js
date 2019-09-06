@@ -34,6 +34,10 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/addCreditCardDetails',
   },
+  instantCreditApplication: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processWIC',
+  },
   updateCreditCard: {
     method: API_METHODS.POST,
     URI: 'v2/account/modifyCreditCardDetails',
@@ -41,6 +45,14 @@ const endpoints = {
   addAddress: {
     method: API_METHODS.POST,
     URI: 'v2/account/addAddress',
+  },
+  addPaymentInstruction: {
+    method: 'POST',
+    URI: 'v2/checkout/addPaymentInstruction',
+  },
+  deletePaymentInstruction: {
+    method: 'POST',
+    URI: 'v2/checkout/deletePaymentInstruction',
   },
   updateAddress: {
     method: 'put',
@@ -159,6 +171,12 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
     unbxd: true,
   },
+  getProductInfoForTranslationByPartNumber: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS,
+    unbxd: true,
+    unbxdCustom: true,
+  },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
     URI: 'v2/account/deleteCreditCardDetails',
@@ -212,6 +230,14 @@ const endpoints = {
   updateShippingMethodSelection: {
     method: 'PUT',
     URI: 'v2/checkout/updateShippingMethodSelection',
+  },
+  getChildren: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getBirthdaySavings',
+  },
+  updateUserSurvey: {
+    method: 'PUT',
+    URI: 'v2/account/saveUserSurvey',
   },
 };
 export default endpoints;

@@ -1,17 +1,19 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import PAYMENT_CONSTANTS from '../Payment.constants';
 import {
-  updateCardListonDelete,
+  getCardList,
   updateCardListonDeleteErr,
   setDeleteModalMountedState,
 } from './Payment.actions';
+import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import { deleteCardApi } from '../../../../../services/abstractors/account';
 
 export function* deleteCard({ payload }) {
   try {
     const res = yield call(deleteCardApi, payload);
     if (res.statusCode === 200) {
-      yield put(updateCardListonDelete(res.body || ''));
+      yield put(getCardList({ ignoreCache: true }));
+      yield put(getAddressList({ ignoreCache: true }));
       yield put(setDeleteModalMountedState({ state: false }));
     } else {
       yield put(updateCardListonDeleteErr(res.error));

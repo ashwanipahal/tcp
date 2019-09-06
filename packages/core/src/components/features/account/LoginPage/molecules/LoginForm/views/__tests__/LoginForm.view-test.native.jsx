@@ -12,6 +12,7 @@ describe('LoginForm component', () => {
         loginErrorMessage: '',
         showForgotPasswordForm: () => {},
         resetForm: () => {},
+        registration: {},
       },
       handleSubmit: () => {},
       onSubmit: () => {},

@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
+import logger from '@tcp/core/src/utils/loggerInstance';
+import { trackError } from '@tcp/core/src/utils/errorReporter.util';
 import FallbackErrorComponent from './ErrorFallbackComponent';
 import { DEFAULT_CLASS_NAME, LIFECYCLE_METHODS } from './config';
 
@@ -8,7 +10,7 @@ import { DEFAULT_CLASS_NAME, LIFECYCLE_METHODS } from './config';
  * @param {object} error
  * @param {string} componentName
  */
-const renderErrorComponent = (error, componentName) => {
+export const renderErrorComponent = (error, componentName) => {
   return React.createElement(
     'div',
     {
@@ -18,12 +20,25 @@ const renderErrorComponent = (error, componentName) => {
   );
 };
 
+export const logError = ({ error, errorInfo }) => {
+  trackError({
+    error,
+    extraData: {
+      errorInfo,
+    },
+    tags: {
+      component: 'ERROR_BOUNDARY',
+    },
+  });
+  return true;
+};
+
 /**
  * Generate error safe client component
  * @param {function} renderComponent generate component render
  * @param {string} componentName
  */
-const renderClientSafeComponent = (renderComponent, componentName) => {
+export const renderClientSafeComponent = (renderComponent, componentName) => {
   return class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
@@ -36,8 +51,8 @@ const renderClientSafeComponent = (renderComponent, componentName) => {
     }
 
     componentDidCatch(error, errorInfo) {
-      // eslint-disable-next-line no-console
-      console.log(error, errorInfo);
+      logger.error(error, errorInfo);
+      logError({ error, errorInfo });
     }
 
     render() {
@@ -50,7 +65,7 @@ const renderClientSafeComponent = (renderComponent, componentName) => {
  * Generate error safe functional component
  * @param {*} WrappedComponent
  */
-const functionalSafeComponent = WrappedComponent => {
+export const functionalSafeComponent = WrappedComponent => {
   const renderComponent = (passedProps, passedState) => {
     try {
       const { hasError, error } = passedState;
@@ -58,6 +73,7 @@ const functionalSafeComponent = WrappedComponent => {
         ? renderErrorComponent(error, WrappedComponent.name)
         : WrappedComponent(passedProps);
     } catch (err) {
+      logError({ error: err, errorInfo: WrappedComponent.name });
       return renderErrorComponent(err, WrappedComponent.name);
     }
   };
@@ -69,7 +85,7 @@ const functionalSafeComponent = WrappedComponent => {
  * @param {string} methodName
  * @param {*} WrappedComponent
  */
-const wrapMethod = (methodName, WrappedComponent) => {
+export const wrapMethod = (methodName, WrappedComponent) => {
   const originalMethod = WrappedComponent.prototype[methodName];
   if (!originalMethod) {
     return;
@@ -94,6 +110,7 @@ const wrapMethod = (methodName, WrappedComponent) => {
       // eslint-disable-next-line prefer-rest-params
       return originalMethod.apply(this, arguments);
     } catch (err) {
+      logError({ error: err, errorInfo: WrappedComponent.name });
       if (methodName === 'render') {
         return renderErrorComponent(err, WrappedComponent.name);
       }
@@ -106,16 +123,22 @@ const wrapMethod = (methodName, WrappedComponent) => {
 };
 
 /**
- * Generate error safe component
+ * Generate error safe non functional component
  * @param {*} WrappedComponent
  */
-const SafeComponent = WrappedComponent => {
-  if (!WrappedComponent.prototype.render) {
-    return functionalSafeComponent(WrappedComponent);
-  }
+export const nonFunctionalSafeComponent = WrappedComponent => {
   LIFECYCLE_METHODS.forEach(method => wrapMethod(method, WrappedComponent));
   const renderComponent = passedProps => <WrappedComponent {...passedProps} />;
   return renderClientSafeComponent(renderComponent, WrappedComponent.name);
 };
+
+/**
+ * Generate error safe component
+ * @param {*} WrappedComponent
+ */
+const SafeComponent = WrappedComponent =>
+  !WrappedComponent.prototype.render
+    ? functionalSafeComponent(WrappedComponent)
+    : nonFunctionalSafeComponent(WrappedComponent);
 
 export default SafeComponent;

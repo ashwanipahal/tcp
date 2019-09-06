@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddGiftCardForm from './AddGiftCardForm.native';
+import AddGiftCardFormView from './AddGiftCardForm.native';
 
 const AddGiftCardComponent = props => {
   const { onAddGiftCardClick, addGiftCardResponse, labels, toggleModal } = props;
   return (
-    <AddGiftCardForm
+    <AddGiftCardFormView
       onAddGiftCardClick={onAddGiftCardClick}
       labels={labels}
       toggleModal={toggleModal}

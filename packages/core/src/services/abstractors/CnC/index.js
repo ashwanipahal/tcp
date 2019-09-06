@@ -6,6 +6,7 @@ export {
   updateItem,
   getCartData,
   getUnqualifiedItems,
+  getProductInfoForTranslationData,
 } from './CartItemTile';
 
 export { applyCouponToCart, removeCouponOrPromo, getAllCoupons } from './Coupon';
@@ -16,4 +17,6 @@ export {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
+  addGiftCardPaymentToOrder,
+  removeGiftCard,
 } from './Checkout';

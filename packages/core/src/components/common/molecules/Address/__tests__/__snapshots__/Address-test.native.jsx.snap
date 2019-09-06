@@ -11,7 +11,7 @@ exports[`Address component should renders correctly 1`] = `
         "secondary",
       ]
     }
-    text="test test"
+    text="test test "
   />
   <Styled(BodyCopy)
     color="gray.900"
@@ -82,7 +82,7 @@ exports[`Address component should renders correctly when address Line 1 and 2 ar
         "secondary",
       ]
     }
-    text="test test"
+    text="test test "
   />
   <Styled(BodyCopy)
     color="gray.900"
@@ -131,7 +131,7 @@ exports[`Address component should renders correctly when city & state are not pr
         "secondary",
       ]
     }
-    text="test test"
+    text="test test "
   />
   <Styled(BodyCopy)
     color="gray.900"
@@ -202,7 +202,7 @@ exports[`Address component should renders correctly when city is not present 1`]
         "secondary",
       ]
     }
-    text="test test"
+    text="test test "
   />
   <Styled(BodyCopy)
     color="gray.900"
@@ -273,7 +273,7 @@ exports[`Address component should renders correctly when optional fields are not
         "secondary",
       ]
     }
-    text="test test"
+    text="test test "
   />
   <Styled(BodyCopy)
     color="gray.900"

@@ -28,7 +28,6 @@ exports[`Shipping Form should render correctly 1`] = `
         <Styled(AddressFields)
           addressFormLabels={Object {}}
           addressPhoneNo={null}
-          checkPOBoxAddress={[Function]}
           formName="checkoutShipping"
           formSection="address"
           showDefaultCheckbox={false}
@@ -40,6 +39,7 @@ exports[`Shipping Form should render correctly 1`] = `
       name="smsSignUp"
     >
       <Styled(SMSFormFields)
+        addressPhoneNo={null}
         borderBottom={true}
         formName="checkoutShipping"
         formSection="smsSignUp"
@@ -63,7 +63,10 @@ exports[`Shipping Form should render correctly 1`] = `
         />
       </div>
     </FormSection>
-    <Styled(CheckoutFooter) />
+    <Styled(CheckoutOrderInfo) />
+    <Styled(CheckoutFooter)
+      hideBackLink={false}
+    />
   </form>
 </Fragment>
 `;

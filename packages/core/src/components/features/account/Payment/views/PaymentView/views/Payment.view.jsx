@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Row from '../../../../../../common/atoms/Row';
@@ -60,11 +61,13 @@ export class PaymentView extends React.Component<Props> {
     const isVenmo = selectedCard.ccType === 'VENMO';
     let cardHeading = '';
     if (isCreditCard) {
-      cardHeading = labels.paymentGC.lbl_payment_modalDeleteCard;
+      cardHeading = getLabelValue(labels, 'lbl_payment_modalDeleteCard', 'paymentGC');
     } else {
-      cardHeading = isVenmo
-        ? labels.paymentGC.lbl_payment_modalVenmoDelete
-        : labels.paymentGC.lbl_payment_modalGCHeading;
+      cardHeading = getLabelValue(
+        labels,
+        isVenmo ? 'lbl_payment_modalVenmoDelete' : 'lbl_payment_modalGCHeading',
+        'paymentGC'
+      );
     }
     return (
       <DeleteCardModal
@@ -73,17 +76,22 @@ export class PaymentView extends React.Component<Props> {
           heading: cardHeading,
           subHeading:
             selectedCard.ccType === 'VENMO'
-              ? labels.paymentGC.lbl_payment_modalVenmoDeleteHeading
+              ? getLabelValue(labels, 'lbl_payment_modalVenmoDeleteHeading', 'paymentGC')
               : '',
           description: selectedCard,
           buttons: {
-            cancel: labels.paymentGC.lbl_payment_modalGCCancel,
-            confirm: labels.paymentGC.lbl_payment_modalGCConfirm,
+            cancel: getLabelValue(labels, 'lbl_payment_modalGCCancel', 'paymentGC'),
+            confirm: getLabelValue(labels, 'lbl_payment_modalGCConfirm', 'paymentGC'),
           },
           cardText: {
             cardEnd:
-              selectedCard.ccType === 'VENMO' ? '' : labels.paymentGC.lbl_payment_modalGCCardEnd,
-            expire: selectedCard.ccType === 'VENMO' ? '' : labels.paymentGC.lbl_payment_gcExpire,
+              selectedCard.ccType === 'VENMO'
+                ? ''
+                : getLabelValue(labels, 'lbl_payment_modalGCCardEnd', 'paymentGC'),
+            expire:
+              selectedCard.ccType === 'VENMO'
+                ? ''
+                : getLabelValue(labels, 'lbl_payment_gcExpire', 'paymentGC'),
           },
         }}
         labels={labels}
@@ -126,11 +134,13 @@ export class PaymentView extends React.Component<Props> {
               <Notification
                 status={showNotification}
                 colSize={{ large: 12, medium: 8, small: 6 }}
-                message={
+                message={getLabelValue(
+                  labels,
                   showNotification === 'success'
-                    ? labels.paymentGC.lbl_payment_successMsg
-                    : labels.paymentGC.lbl_payment_errorMsg
-                }
+                    ? 'lbl_payment_successMsg'
+                    : 'lbl_payment_errorMsg',
+                  'paymentGC'
+                )}
               />
             </Col>
           </Row>
@@ -151,7 +161,7 @@ export class PaymentView extends React.Component<Props> {
               className="payment__heading"
               data-locator="payment-payment&gcheader"
             >
-              {labels.paymentGC.lbl_payment_heading}
+              {getLabelValue(labels, 'lbl_payment_heading', 'paymentGC')}
             </BodyCopy>
           </Col>
         </Row>

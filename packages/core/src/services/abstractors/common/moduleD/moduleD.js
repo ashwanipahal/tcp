@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
 import handler from '../../../handler';
 
@@ -16,7 +17,6 @@ const Abstractor = {
     return mock;
   },
   processData: data => data,
-  // eslint-disable-next-line no-console
-  handleError: e => console.log(e),
+  handleError: e => logger.error(e),
 };
 export default Abstractor;

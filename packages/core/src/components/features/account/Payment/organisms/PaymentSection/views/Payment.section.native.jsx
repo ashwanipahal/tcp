@@ -7,9 +7,7 @@ import {
   ParentContainer,
   StyledHeading,
   UnderlineStyle,
-  ModalHeading,
   ModalViewWrapper,
-  LineWrapper,
 } from '../PaymentSection.style.native';
 import OffersSection from '../../../molecules/OffersSection';
 import Cards from '../../../molecules/Cards';
@@ -20,7 +18,6 @@ import AddEditPaymentModal from '../../../molecules/AddEditPaymentModal';
 import { getIconCard } from '../../../../../../../utils/index.native';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container';
-import LineComp from '../../../../../../common/atoms/Line';
 
 class PaymentView extends React.Component<Props> {
   static propTypes = {
@@ -229,7 +226,7 @@ class PaymentView extends React.Component<Props> {
     }
     return (
       <View {...this.props}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledHeading>
             <BodyCopy
               fontSize="fs16"
@@ -301,18 +298,11 @@ class PaymentView extends React.Component<Props> {
             selectedCard
           )}
           {showGiftCardModal && (
-            <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={['secondary']}
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  text={labels.paymentGC.lbl_payment_addGiftCard}
-                />
-              </ModalHeading>
-              <LineWrapper>
-                <LineComp marginTop={5} borderWidth={1} borderColor="black" />
-              </LineWrapper>
+            <ModalNative
+              isOpen={showGiftCardModal}
+              onRequestClose={this.toggleGiftCardModal}
+              heading={labels.paymentGC.lbl_payment_addGiftCard}
+            >
               <ModalViewWrapper>
                 <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />
               </ModalViewWrapper>

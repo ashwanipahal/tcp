@@ -37,6 +37,7 @@ function getSortCustomOptionsMap(sortOptionsMap) {
         {sortOption.displayName}
       </BodyCopy>
     ),
+    dataLocator: sortOption.displayName,
     content: (
       <BodyCopy component="span" className="sort-title" fontSize="fs14" fontFamily="secondary">
         {sortOption.displayName}
@@ -122,6 +123,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   hideModal = () => {
     this.setState({ show: false });
+    document.body.style.overflow = 'unset';
+    document.body.style.position = 'static';
   };
 
   /**
@@ -131,6 +134,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   showModal = () => {
     this.setState({ show: true, isSortOpenModal: false });
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
   };
 
   showSortModal = () => {
@@ -216,11 +221,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
           <div className="filters-sorting-container">{this.renderMobileFilters()}</div>
         )}
         {isSortOpenModal && (
-          <SortSelector
-            expanded
-            sortSelectOptions={getSortCustomOptionsMap(config)}
-            hideTitle
-          />
+          <SortSelector expanded sortSelectOptions={getSortCustomOptionsMap(config)} hideTitle />
         )}
       </div>
     );
@@ -236,6 +237,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     const filterKeys = Object.keys(filtersMaps);
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const accordionItems = [];
+    const { show } = this.state;
 
     filterKeys.map(key => {
       if (this.isUnbxdFacetKey(key)) {
@@ -258,7 +260,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         }}
         ignoreGutter={{ small: true, medium: true }}
       >
-        <AccordionList accordionItems={accordionItems} className={className}>
+        <AccordionList accordionItems={accordionItems} className={className} show={show}>
           {/* eslint-disable */}
           {filterKeys.map(key => {
             if (key.toLowerCase() === FACETS_FIELD_KEY.color) {

@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import processHelpers from './processHelpers';
 import { extractExtraImages } from './productListing.utils';
 
@@ -5,9 +6,6 @@ const apiHelper = {
   configOptions: {
     isUSStore: true,
     siteId: '/us',
-  },
-  responseContainsErrors: () => {
-    return false;
   },
 };
 export function parseBoolean(bool) {
@@ -307,7 +305,7 @@ export const parseProductInfo = (
         res.body.response.products,
         colorDetails
       );
-      if (colorDetailsCondition) {
+      if (colorDetailsCondition(colorDetails, product, swatchOfAvailableProduct)) {
         colorsMap.push({
           colorProductId: colorDetails[0],
           imageName: colorDetails[0],
@@ -363,7 +361,7 @@ export const parseProductInfo = (
       }
     }
   }
-  response.loadedProducts.push({
+  response.loadedProductsPages[0].push({
     productInfo: {
       generalProductId: product.prodpartno,
       name: product.product_name,

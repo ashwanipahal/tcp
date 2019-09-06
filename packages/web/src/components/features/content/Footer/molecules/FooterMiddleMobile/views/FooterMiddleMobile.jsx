@@ -7,9 +7,9 @@ import FooterNavLinksList from '../../FooterNavLinksList';
 const FooterMiddleMobile = ({
   className,
   navLinkItems,
-  openTrackOrder,
   isLoggedIn,
-  closeNavigationDrawer,
+  linkConfig,
+  footerActionCreator,
 }) => {
   return (
     <Col
@@ -26,8 +26,8 @@ const FooterMiddleMobile = ({
             insideAcccordion
             listArray={item.links}
             isLoggedIn={isLoggedIn}
-            openTrackOrder={openTrackOrder}
-            closeNavigationDrawer={closeNavigationDrawer}
+            linkConfig={linkConfig}
+            footerActionCreator={footerActionCreator}
           />
         ))}
       </AccordionList>
@@ -38,13 +38,17 @@ const FooterMiddleMobile = ({
 FooterMiddleMobile.propTypes = {
   className: PropTypes.string.isRequired,
   navLinkItems: PropTypes.shape([]).isRequired,
-  openTrackOrder: PropTypes.func,
   isLoggedIn: PropTypes.bool,
-  closeNavigationDrawer: PropTypes.func.isRequired,
+  linkConfig: PropTypes.shape({
+    'track-order': PropTypes.func,
+    favorites: PropTypes.func,
+    'log-out': PropTypes.func,
+    'my-account': PropTypes.func,
+  }).isRequired,
+  footerActionCreator: PropTypes.func.isRequired,
 };
 
 FooterMiddleMobile.defaultProps = {
-  openTrackOrder: () => null,
   isLoggedIn: false,
 };
 

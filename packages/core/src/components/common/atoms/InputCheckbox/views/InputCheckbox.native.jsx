@@ -1,11 +1,20 @@
-import React from 'React';
+import React, { Fragment } from 'React';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../BodyCopy';
-import { StyledCheckBox, StyledImage } from '../InputCheckbox.style.native';
+import {
+  StyledCheckBox,
+  StyledImage,
+  StyledText,
+  StyledErrorIcon,
+} from '../InputCheckbox.style.native';
+
+import { StyledErrorWrapper } from '../../TextBox/TextBox.style.native';
+
 import Image from '../../Image';
 
 const uncheckedIcon = require('../../../../../assets/store-locator-check.png');
 const checkedIcon = require('../../../../../assets/store-locator-checked.png');
+const errorIcon = require('../../../../../assets/alert-triangle.png');
 
 class InputCheckBox extends React.Component {
   static propTypes = {
@@ -16,18 +25,22 @@ class InputCheckBox extends React.Component {
     input: PropTypes.shape({}),
     hideCheckboxIcon: PropTypes.bool,
     meta: PropTypes.func,
+    fontSize: PropTypes.string,
     disabled: PropTypes.bool,
+    inputVariation: PropTypes.string,
   };
 
   static defaultProps = {
-    rightText: 'checkbox',
+    rightText: null,
     isChecked: false,
     onClick: () => {},
     id: 'checkbox',
     input: { val: '' },
     hideCheckboxIcon: false,
     meta: {},
+    fontSize: 'fs12',
     disabled: false,
+    inputVariation: 'inputVariation',
   };
 
   constructor(props) {
@@ -61,33 +74,54 @@ class InputCheckBox extends React.Component {
   }
 
   renderRight() {
-    const { rightText } = this.props;
-    return <BodyCopy mobileFontFamily="secondary" fontSize="fs12" text={rightText} />;
+    const { rightText, fontSize } = this.props;
+    return <BodyCopy mobileFontFamily="secondary" fontSize={fontSize || 'fs12'} text={rightText} />;
   }
 
   render() {
-    const { input, hideCheckboxIcon, meta, disabled, ...otherProps } = this.props;
+    const {
+      input,
+      hideCheckboxIcon,
+      meta,
+      disabled,
+      rightText,
+      inputVariation,
+      ...otherProps
+    } = this.props;
     const { value } = input;
     const { touched, error } = meta;
     const isError = touched && error;
     return (
-      <StyledCheckBox
-        onStartShouldSetResponder={this.onClick}
-        {...input}
-        {...otherProps}
-        value={value}
-        pointerEvents={disabled ? 'none' : 'auto'}
-      >
-        {!hideCheckboxIcon && this.genCheckedIcon()}
-        {this.renderRight()}
-        <BodyCopy
-          className="Checkbox__error"
-          color="error"
-          fontSize="fs12"
-          mobilefontFamily={['secondary']}
-          text={isError ? error : ''}
-        />
-      </StyledCheckBox>
+      <>
+        <StyledCheckBox
+          onStartShouldSetResponder={this.onClick}
+          {...input}
+          {...otherProps}
+          value={value}
+          pointerEvents={disabled ? 'none' : 'auto'}
+        >
+          {!hideCheckboxIcon && this.genCheckedIcon()}
+          <StyledText inputVariation={inputVariation}>{rightText && this.renderRight()}</StyledText>
+        </StyledCheckBox>
+        <Fragment>
+          {isError ? (
+            <StyledErrorWrapper>
+              <StyledErrorIcon>
+                <Image source={errorIcon} width="15px" height="15px" />
+              </StyledErrorIcon>
+
+              <BodyCopy
+                className="Checkbox__error"
+                fontWeight="semibold"
+                color="error"
+                fontSize="fs12"
+                mobilefontFamily={['secondary']}
+                text={isError ? error : null}
+              />
+            </StyledErrorWrapper>
+          ) : null}
+        </Fragment>
+      </>
     );
   }
 }

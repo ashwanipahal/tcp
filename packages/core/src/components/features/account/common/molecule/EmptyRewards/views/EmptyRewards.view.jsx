@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import utils from '@tcp/core/src/utils';
+import internalEndpoints from '../../../internalEndpoints';
+
+const goToHomePage = () => {
+  utils.routerPush(internalEndpoints.shopNowPage.link, internalEndpoints.shopNowPage.path);
+  return null;
+};
 
 export const EmptyRewards = ({ labels }) => {
   return (
@@ -39,9 +46,10 @@ export const EmptyRewards = ({ labels }) => {
           fill="BLUE"
           color="white"
           className="shop-now-btn"
+          onClick={goToHomePage}
           data-locator="my-rewards-shop-now-btn"
         >
-          {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW}
+          {labels.myPlaceRewards.lbl_my_rewards_shop_now}
         </Button>
       </Col>
     </>
@@ -51,7 +59,7 @@ export const EmptyRewards = ({ labels }) => {
 EmptyRewards.propTypes = {
   labels: PropTypes.shape({
     myPlaceRewards: {
-      ACC_LBL_MY_REWARDS_SHOP_NOW: PropTypes.string,
+      lbl_my_rewards_shop_now: PropTypes.string,
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: PropTypes.string,
     },
   }),
@@ -60,7 +68,7 @@ EmptyRewards.propTypes = {
 EmptyRewards.defaultProps = {
   labels: {
     myPlaceRewards: {
-      ACC_LBL_MY_REWARDS_SHOP_NOW: '',
+      lbl_my_rewards_shop_now: '',
       ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
     },
   },

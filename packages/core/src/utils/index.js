@@ -11,6 +11,7 @@ export {
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
+  getBirthDateOptionMap,
   getViewportInfo,
   showOverlay,
   closeOverlay,
@@ -22,6 +23,8 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  getAsPathWithSlug,
+  getMappedPageHref,
 } from './utils.web';
 
 export {
@@ -37,6 +40,9 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  calculateAge,
+  getLabelValue,
 } from './utils';

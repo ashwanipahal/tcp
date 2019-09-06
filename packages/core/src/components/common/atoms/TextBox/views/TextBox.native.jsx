@@ -13,11 +13,13 @@ import {
   StyledTextBoxWrapper,
   StyledSuccessIcon,
   HiddenView,
+  StyledSuccessCheck,
 } from '../TextBox.style.native';
 import Image from '../../Image';
 
 const errorIcon = require('../../../../../assets/alert-triangle.png');
 const successIcon = require('../../../../../assets/success-icon.png');
+const successCircleIcon = require('../../../../../assets/circle-check-fill.png');
 
 export class TextBox extends React.Component {
   static propTypes = {
@@ -37,6 +39,10 @@ export class TextBox extends React.Component {
     keyboardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
     secureTextEntry: PropTypes.bool,
+    marginBottom: PropTypes.bool,
+    showSuccessCheck: PropTypes.bool,
+    successText: PropTypes.string,
+    onChangeText: PropTypes.func,
   };
 
   static defaultProps = {
@@ -50,6 +56,10 @@ export class TextBox extends React.Component {
     keyboardType: 'default',
     showErrorIcon: true,
     secureTextEntry: false,
+    marginBottom: true,
+    showSuccessCheck: false,
+    successText: '',
+    onChangeText: () => {},
   };
 
   constructor(props) {
@@ -66,9 +76,11 @@ export class TextBox extends React.Component {
   };
 
   handleBlur = () => {
+    const { input } = this.props;
     this.setState({
       isFocused: false,
     });
+    if (input.onBlur !== undefined) input.onBlur(input.value);
   };
 
   getErrorMsg = () => {
@@ -97,6 +109,35 @@ export class TextBox extends React.Component {
     return null;
   };
 
+  validateInputSuccess = () => {
+    const {
+      meta: { invalid, asyncValidating, active },
+    } = this.props;
+    return !active && !invalid && !asyncValidating;
+  };
+
+  getSuccessMsg = () => {
+    const { showSuccessCheck, successText } = this.props;
+
+    if (showSuccessCheck && this.validateInputSuccess()) {
+      return (
+        <StyledErrorWrapper>
+          <StyledSuccessCheck>
+            <Image source={successCircleIcon} width="18px" height="18px" />
+          </StyledSuccessCheck>
+          <BodyCopy
+            mobilefontFamily={['secondary']}
+            fontWeight="semibold"
+            fontSize="fs12"
+            text={successText}
+            color="success"
+          />
+        </StyledErrorWrapper>
+      );
+    }
+    return null;
+  };
+
   renderTextBox = ({ elemValue, isFocused, ...others }) => {
     const {
       id,
@@ -111,13 +152,14 @@ export class TextBox extends React.Component {
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
+      onChangeText,
     } = this.props;
     return (
       <View>
         <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
         <StyledTextBox
-          {...others}
           {...input}
+          {...others}
           id={id}
           aria-label={ariaLabel}
           className="TextBox__input"
@@ -135,6 +177,7 @@ export class TextBox extends React.Component {
           error={error}
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
+          onChangeText={onChangeText}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>
@@ -146,7 +189,14 @@ export class TextBox extends React.Component {
   };
 
   render() {
-    const { type, input, ...others } = this.props;
+    const {
+      type,
+      input,
+      meta: { error },
+      showErrorIcon,
+      marginBottom,
+      ...others
+    } = this.props;
     const { isFocused } = this.state;
     const elemValue = input.value;
     return (
@@ -158,8 +208,17 @@ export class TextBox extends React.Component {
           </View>
         ) : (
           <View>
-            {this.renderTextBox({ elemValue, isFocused, ...others })}
-            <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
+            {this.renderTextBox({ elemValue, isFocused, others })}
+            {!this.validateInputSuccess() && (
+              <StyledTextBoxWrapper marginBottom={marginBottom}>
+                {this.getErrorMsg()}
+              </StyledTextBoxWrapper>
+            )}
+            {!error && (
+              <StyledTextBoxWrapper marginBottom={marginBottom}>
+                {this.getSuccessMsg()}
+              </StyledTextBoxWrapper>
+            )}
           </View>
         )}
       </View>
