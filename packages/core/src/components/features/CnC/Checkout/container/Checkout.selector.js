@@ -50,7 +50,7 @@ const getIsOrderHasPickup = createSelector(
 
 export const isGuest = createSelector(
   getPersonalDataState,
-  state => state && state.get('isGuest')
+  state => (state == null ? true : !!state.get('isGuest'))
 );
 
 function getIsMobile() {
@@ -318,6 +318,21 @@ const getEmailSignUpLabels = state => {
   };
 };
 
+const getCheckoutProgressBarLabels = state => {
+  const {
+    lbl_checkoutheader_pickup: pickupLabel,
+    lbl_checkoutHeader_shipping: shippingLabel,
+    lbl_checkoutHeader_billing: billingLabel,
+    lbl_checkoutHeader_review: reviewLabel,
+  } = state.Labels.checkout && state.Labels.checkout.checkoutHeader;
+  return {
+    pickupLabel,
+    shippingLabel,
+    billingLabel,
+    reviewLabel,
+  };
+};
+
 const getShipmentMethods = state => {
   return state.Checkout.getIn(['options', 'shippingMethods']);
 };
@@ -523,4 +538,5 @@ export default {
   getAddressByKey,
   isCardNotUpdated,
   getDetailedCreditCardById,
+  getCheckoutProgressBarLabels,
 };

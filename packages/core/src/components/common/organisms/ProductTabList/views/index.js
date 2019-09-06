@@ -1,1 +1,1 @@
-export { default } from './ProductTabList.native';
+export { default } from './ProductTabList';

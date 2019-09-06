@@ -14,24 +14,20 @@ class PickUpContactDisplay extends React.PureComponent {
           fontFamily="secondary"
           fontSize="fs16"
           color="gray.900"
-          text={`${formData.pickUpContact.firstName} ${formData.pickUpContact.lastName}`}
+          text={`${formData.firstName} ${formData.lastName}`}
         />
-        {formData.pickUpContact.phoneNumber && (
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            color="gray.900"
-            text={formData.pickUpContact.phoneNumber}
-          />
-        )}
-        {formData.pickUpContact.emailAddress && (
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            color="gray.900"
-            text={formData.pickUpContact.emailAddress}
-          />
-        )}
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          color="gray.900"
+          text={formData.phoneNumber}
+        />
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          color="gray.900"
+          text={formData.emailAddress}
+        />
       </View>
     );
   }

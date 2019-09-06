@@ -1,10 +1,11 @@
 import { getFormSyncErrors, formValueSelector } from 'redux-form';
 
 export const getCollectorNumber = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'estimatedAirMiles']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'airmiles', 'accountNumber']) || '';
 };
+
 export const getOfferCode = state => {
-  return state.User.getIn(['airmiles', 'promoOffer']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'airmiles', 'promoId']) || '';
 };
 export const getCartOrderDetails = state => {
   return state.CartPageReducer.get('orderDetails');

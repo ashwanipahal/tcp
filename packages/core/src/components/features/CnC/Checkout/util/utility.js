@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-
+import { getLabelValue } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -25,8 +25,6 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import { routerPush } from '../../../../../utils';
-
-import CheckoutConstants from '../Checkout.constants';
 
 const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
@@ -106,16 +104,16 @@ const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
 
-const getAvailableStages = cartItems => {
+const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
   const result = [
-    CheckoutConstants.CHECKOUT_STAGES.BILLING,
-    CheckoutConstants.CHECKOUT_STAGES.REVIEW,
+    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
+    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
   ];
   if (isOrderHasShipping(cartItems)) {
-    result.unshift(CheckoutConstants.CHECKOUT_STAGES.SHIPPING);
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
   }
   if (isOrderHasPickup(cartItems)) {
-    result.unshift(CheckoutConstants.CHECKOUT_STAGES.PICKUP);
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
   }
   return result;
 };
