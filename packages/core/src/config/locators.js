@@ -49,6 +49,13 @@ export default {
   moduleA_cta_links: 'moduleA_cta_links_',
   moduleA_cta_image: 'moduleA_cta_image_',
   carousel_banner: 'carousel_banner',
+  // Module B
+  moduleB_header_text: 'moduleB_header_text',
+  moduleB_promo_banner_text: 'moduleB_promo_banner',
+  moduleB_image: 'moduleB_image_01',
+  moduleB_cta_image: 'moduleB_cta_image_',
+  moduleB_cta_links: 'moduleB_cta_links_',
+  moduleB_dropdown: 'moduleB_shop_now_dropdown',
   // Module L
   moduleL_header_text: 'moduleL_header_text',
   moduleL_title: 'moduleL_title_',

@@ -19,7 +19,7 @@ class DropDownButton extends React.Component {
   };
 
   render() {
-    const { className, buttonsData, dropdownLabel } = this.props;
+    const { className, buttonsData, dropdownLabel, dataLocator } = this.props;
 
     const compProps = {
       ctaInfo: {
@@ -36,6 +36,7 @@ class DropDownButton extends React.Component {
           <Button
             className="dropdown-button"
             buttonVariation="fixed-width"
+            data-locator={dataLocator}
             onClick={this.togglePanel}
           >
             {dropdownLabel}
@@ -61,6 +62,11 @@ DropDownButton.propTypes = {
   className: PropTypes.string.isRequired,
   buttonsData: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
   dropdownLabel: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string,
+};
+
+DropDownButton.defaultProps = {
+  dataLocator: '',
 };
 
 export default withStyles(DropDownButton, style);

@@ -35,6 +35,129 @@ export default css`
     }
   }
 
+  .promo-banner-header {
+    display: block;
+    border-bottom: 1px solid #1a1a1a;
+    margin: 8px 18px;
+    .link-text {
+      margin: 0;
+      padding-bottom: 5px;
+    }
+    .style1,
+    .style2 {
+      font-size: 12px;
+      display: block;
+    }
+    .style2 {
+      font-weight: 800;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+      border-bottom: 1px solid #1a1a1a;
+      margin: 12px 38px 15px 38px;
+      .link-text {
+        margin: 0;
+        padding-bottom: 7px;
+      }
+      .style1,
+      .style2 {
+        font-size: 16px;
+        display: block;
+      }
+      .style2 {
+        font-weight: 800;
+      }
+    }
+  }
+
+  .currency_up_style {
+    display: inline-flex;
+    justify-content: center;
+
+    .col-1,
+    .col-2 {
+      display: flex;
+    }
+    .col-2 {
+      flex-direction: column;
+    }
+    .currency_up_style-0 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+    .currency_up_style-1 {
+      line-height: 0.85;
+      font-size: 86px;
+      font-weight: 900;
+    }
+    .currency_up_style-2 {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .currency_up_style-3 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 0.6;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      .col-1,
+      .col-2 {
+        display: flex;
+      }
+      .col-2 {
+        flex-direction: column;
+      }
+      .currency_up_style-0 {
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 1.3;
+      }
+      .currency_up_style-1 {
+        line-height: 0.85;
+        font-size: 118px;
+        font-weight: 900;
+      }
+      .currency_up_style-2 {
+        font-size: 66px;
+        font-weight: 900;
+        line-height: 1;
+      }
+      .currency_up_style-3 {
+        font-size: 40px;
+        font-weight: 900;
+        line-height: 0.6;
+      }
+    }
+  }
+
+  .small_text_semibold {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+      font-weight: ${props => props.theme.typography.fontWeights.semibold};
+      letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    }
+  }
+
+  .small_text_black {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+      font-weight: ${props => props.theme.typography.fontWeights.black};
+      letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    }
+  }
+
   .text_normal {
     font-size: 16px;
     font-family: ${props => props.theme.typography.fonts.primary};

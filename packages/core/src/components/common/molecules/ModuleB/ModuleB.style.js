@@ -1,0 +1,127 @@
+import { css } from 'styled-components';
+
+export default css`
+  padding: 32px 0;
+
+  .moduleB_image-container {
+    position: relative;
+    background: ${props => props.theme.colorPalette.gray[500]};
+    overflow: hidden;
+
+    .moduleB_image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+
+  .moduleB_promo-banner {
+    background: ${props => props.theme.colorPalette.white};
+  }
+
+  .moduleB_button-list {
+    margin-top: 16px;
+  }
+
+  .banner-top-variation,
+  .banner-top-alt-variation,
+  .banner-bottom-variation {
+    .moduleB_image-container {
+      height: 295px;
+    }
+  }
+  .banner-top-variation,
+  .banner-top-alt-variation {
+    .moduleB_promo-banner {
+      padding-bottom: 15px;
+    }
+  }
+  .banner-bottom-variation {
+    .moduleB_promo-banner {
+      padding-top: 8px;
+    }
+  }
+  .banner-overlay-variation {
+    position: relative;
+    .moduleB_image-container {
+      height: 413px;
+    }
+    .moduleB_promo-banner {
+      width: 186px;
+      padding-bottom: 5px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+    .small_text_semibold,
+    .small_text_black {
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .banner-top-variation,
+    .banner-top-alt-variation,
+    .banner-bottom-variation {
+      .moduleB_image-container {
+        height: 295px;
+      }
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    padding: 48px 0;
+
+    .banner-top-variation,
+    .banner-bottom-variation {
+      .promo-text-link {
+        display: flex;
+        justify-content: center;
+      }
+      .small_text_semibold,
+      .small_text_black {
+        margin: 32px 10px 0 0;
+      }
+    }
+    .banner-top-alt-variation {
+      padding-bottom: 16px;
+      .small_text_semibold,
+      .small_text_black {
+        display: block;
+      }
+    }
+    .banner-top-variation {
+      .moduleB_promo-banner {
+        padding-bottom: 24px;
+      }
+    }
+    .banner-bottom-variation {
+      .moduleB_promo-banner {
+        padding-top: 24px;
+      }
+    }
+    .banner-top-variation,
+    .banner-top-alt-variation,
+    .banner-bottom-variation {
+      .moduleB_image-container {
+        height: 577px;
+      }
+    }
+    .banner-overlay-variation {
+      .moduleB_promo-banner {
+        width: 270px;
+      }
+      .moduleB_image-container {
+        height: 735px;
+      }
+      .small_text_semibold,
+      .small_text_black {
+        line-height: 1;
+        letter-spacing: 1px;
+      }
+    }
+  }
+`;

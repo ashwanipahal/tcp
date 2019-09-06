@@ -5,7 +5,7 @@ import ImageTextCTA from '../../ImageTextCTA';
 import withStyles from '../../../hoc/withStyles';
 import config from '../ButtonList.config';
 import ButtonListStyle from '../ButtonList.style';
-import DropDownCategoryButton from '../../DropDownButton';
+import DropDownButton from '../../DropDownButton';
 import { generateUniqueKeyUsingLabel } from '../../../../../utils/utils';
 
 // Class to wrap button text
@@ -60,13 +60,14 @@ const getLinkCTAConfig = () => {
  * @param {*} parentClass Class passed from parent component
  */
 const renderDropDownButton = (properties, parentClass) => {
-  const { className, buttonsData, dropdownLabel } = properties;
+  const { className, buttonsData, dropdownLabel, dataLocatorDropDown } = properties;
 
   return (
-    <DropDownCategoryButton
+    <DropDownButton
       className={`${className} ${parentClass}`}
       buttonsData={buttonsData}
       dropdownLabel={dropdownLabel}
+      dataLocator={dataLocatorDropDown}
     />
   );
 };
