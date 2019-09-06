@@ -222,6 +222,10 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
+          Object {
+            "key": "bannerPostition",
+            "val": "overlay",
+          },
         ]
       }
       className="moduleB_button-list"
@@ -465,6 +469,10 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
               "title": "Girl",
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
+          },
+          Object {
+            "key": "bannerPostition",
+            "val": "overlay",
           },
         ]
       }
@@ -710,6 +718,10 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
+          Object {
+            "key": "bannerPostition",
+            "val": "overlay",
+          },
         ]
       }
       className="moduleB_button-list"
@@ -954,6 +966,10 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
+          Object {
+            "key": "bannerPostition",
+            "val": "overlay",
+          },
         ]
       }
       className="moduleB_button-list"
@@ -1197,6 +1213,10 @@ exports[`ModuleB component should render banner top variation 1`] = `
               "title": "Girl",
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
+          },
+          Object {
+            "key": "bannerPostition",
+            "val": "overlay",
           },
         ]
       }
