@@ -6,7 +6,14 @@ import { withTheme } from 'styled-components/native';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { styles, Container, ModalContainer } from '../FilterModal.style.native';
+import {
+  styles,
+  Container,
+  SafeAreaViewStyle,
+  ModalOverlay,
+  ModalContent,
+  ModalOutsideTouchable,
+} from '../FilterModal.style.native';
 import FilterButtons from '../../FilterButtons';
 
 class FilterModal extends React.PureComponent {
@@ -39,6 +46,13 @@ class FilterModal extends React.PureComponent {
     });
   };
 
+  onPressOut = () => {
+    console.tron.log('onPressOut');
+    this.setState({
+      showModal: false,
+    });
+  };
+
   onPressFilter = () => {
     console.tron.log('onPressFilter');
     this.setState({
@@ -60,13 +74,23 @@ class FilterModal extends React.PureComponent {
           onPressFilter={this.onPressFilter}
           onPressSort={this.onPressSort}
         />
+
         <Modal visible={showModal} transparent>
-          <ModalContainer>
-            <TouchableOpacity onPress={this.onCloseModal} accessibilityRole="button">
-              <CustomIcon name={ICON_NAME.close} size={closeIconSize} color={closeIconColor} />
-            </TouchableOpacity>
-            <Text>This is Filter modal</Text>
-          </ModalContainer>
+          <SafeAreaViewStyle>
+            <ModalOutsideTouchable
+              accessibilityRole="button"
+              activeOpacity={1}
+              onPressOut={this.onPressOut}
+            >
+              <ModalOverlay />
+            </ModalOutsideTouchable>
+            <ModalContent>
+              <TouchableOpacity onPress={this.onCloseModal} accessibilityRole="button">
+                <CustomIcon name={ICON_NAME.close} size={closeIconSize} color={closeIconColor} />
+              </TouchableOpacity>
+              <Text>This is Filter modal</Text>
+            </ModalContent>
+          </SafeAreaViewStyle>
         </Modal>
       </Container>
     );
