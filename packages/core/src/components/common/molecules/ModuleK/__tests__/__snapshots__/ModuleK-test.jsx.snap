@@ -538,7 +538,7 @@ exports[`ModuleK component renders correctly 1`] = `
             />,
             "responsive": Array [
               Object {
-                "breakpoint": 1024,
+                "breakpoint": 1200,
                 "settings": Object {
                   "arrows": false,
                 },

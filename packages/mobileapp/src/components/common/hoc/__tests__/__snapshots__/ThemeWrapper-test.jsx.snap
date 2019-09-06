@@ -12,11 +12,11 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "sm",
           "lg",
         ],
-        "large": "1024px",
+        "large": "1200px",
         "largeMax": "1439px",
         "maxWidth": 1440,
         "medium": "768px",
-        "mediumMax": "1023px",
+        "mediumMax": "1199px",
         "small": "375px",
         "smallMax": "767px",
         "values": Object {
@@ -358,19 +358,19 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "isGymboree": false,
       "mediaQuery": Object {
-        "large": "(min-width: 1024px)",
+        "large": "(min-width: 1200px)",
         "largeMax": "(max-width: 1439px)",
         "largeOnly": "
-    (min-width: 1024px)
+    (min-width: 1200px)
     and
     (max-width: 1439px)
   ",
         "medium": "(min-width: 768px)",
-        "mediumMax": "(max-width: 1023px)",
+        "mediumMax": "(max-width: 1199px)",
         "mediumOnly": "
     (min-width: 768px)
     and
-    (max-width: 1023px)
+    (max-width: 1199px)
   ",
         "small": "(min-width: 375px)",
         "smallMax": "(max-width: 767px)",
