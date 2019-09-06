@@ -14,7 +14,7 @@ export default css`
   .style1 {
     color: ${props => props.theme.colorPalette.gray['900']};
     font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: 42px;
+    font-size: ${props => props.theme.typography.fontSizes.fs42};
 
     @media ${props => props.theme.mediaQuery.medium} {
       font-size: 70px;
@@ -35,8 +35,125 @@ export default css`
     }
   }
 
+  .promo-banner-header {
+    display: block;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[900]};
+    margin: 8px 18px;
+    .link-text {
+      margin: 0;
+      padding-bottom: 5px;
+    }
+    .style1,
+    .style2 {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      display: block;
+    }
+    .style2 {
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin: 12px 38px 15px 38px;
+      .link-text {
+        padding-bottom: 7px;
+      }
+      .style1,
+      .style2 {
+        font-size: ${props => props.theme.typography.fontSizes.fs16};
+      }
+    }
+  }
+
+  .currency_up_style {
+    display: inline-flex;
+    justify-content: center;
+
+    .col-1,
+    .col-2 {
+      display: flex;
+    }
+    .col-2 {
+      flex-direction: column;
+    }
+    .currency_up_style-0 {
+      font-size: ${props => props.theme.typography.fontSizes.fs28};
+      font-weight: ${props => props.theme.typography.fontWeights.black};
+      line-height: 1.3;
+    }
+    .currency_up_style-1 {
+      line-height: 0.85;
+      font-size: 86px;
+      font-weight: 900;
+    }
+    .currency_up_style-2 {
+      font-size: 48px;
+      font-weight: ${props => props.theme.typography.fontWeights.black};
+      line-height: 1;
+    }
+    .currency_up_style-3 {
+      font-size: ${props => props.theme.typography.fontSizes.fs28};
+      font-weight: ${props => props.theme.typography.fontWeights.black};
+      line-height: 0.6;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      .col-1,
+      .col-2 {
+        display: flex;
+      }
+      .col-2 {
+        flex-direction: column;
+      }
+      .currency_up_style-0 {
+        font-size: ${props => props.theme.typography.fontSizes.fs38};
+        font-weight: ${props => props.theme.typography.fontWeights.black};
+        line-height: 1.3;
+      }
+      .currency_up_style-1 {
+        line-height: 0.8;
+        font-size: 118px;
+        font-weight: ${props => props.theme.typography.fontWeights.black};
+      }
+      .currency_up_style-2 {
+        font-size: 66px;
+        font-weight: ${props => props.theme.typography.fontWeights.black};
+        line-height: 1;
+      }
+      .currency_up_style-3 {
+        font-size: ${props => props.theme.typography.fontSizes.fs40};
+        font-weight: ${props => props.theme.typography.fontWeights.black};
+        line-height: 0.6;
+      }
+    }
+  }
+
+  .small_text_semibold {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+      font-weight: ${props => props.theme.typography.fontWeights.semibold};
+      letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    }
+  }
+
+  .small_text_black {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+      font-weight: ${props => props.theme.typography.fontWeights.black};
+      letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    }
+  }
+
   .text_normal {
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
     text-align: center;
@@ -45,7 +162,7 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       display: inline-block;
-      font-size: 26px;
+      font-size: ${props => props.theme.typography.fontSizes.fs26};
       width: 136px;
       text-align: left;
       margin-left: 10px;
@@ -60,7 +177,7 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: 64px;
+    font-size: ${props => props.theme.typography.fontSizes.fs64};
     line-height: 1;
     width: 235px;
     text-align: left;
@@ -69,13 +186,13 @@ export default css`
     display: block;
 
     .percentage_wrapped_large-1 {
-      font-size: 42px;
+      font-size: ${props => props.theme.typography.fontSizes.fs42};
       position: absolute;
       top: 0;
     }
 
     .percentage_wrapped_large-2 {
-      font-size: 18px;
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
       position: absolute;
       bottom: 8px;
     }
@@ -89,7 +206,7 @@ export default css`
       .percentage_wrapped_large-0,
       .percentage_wrapped_large-1,
       .percentage_wrapped_large-2 {
-        font-size: 64px;
+        font-size: ${props => props.theme.typography.fontSizes.fs64};
         line-height: normal;
         position: static;
         vertical-align: middle;
@@ -150,18 +267,18 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     line-height: normal;
     display: inline;
     vertical-align: top;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: 16px;
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
       line-height: normal;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 20px;
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
       line-height: normal;
     }
   }
@@ -170,13 +287,13 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     line-height: normal;
     display: inline;
     vertical-align: top;
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 20px;
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
       line-height: normal;
     }
   }
@@ -186,15 +303,15 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.secondary};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-    font-size: 14px;
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
     display: block;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: 16px;
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 20px;
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
     }
   }
 
@@ -202,11 +319,11 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     display: block;
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 28px;
+      font-size: ${props => props.theme.typography.fontSizes.fs28};
     }
   }
 `;

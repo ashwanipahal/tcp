@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, BodyCopy, Heading, Anchor } from '../../../atoms';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
+import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
@@ -36,6 +36,11 @@ const linkStyle = {
   fontSize: fonts.fontSize.body.bodytext.copy6,
   marginTop: 28,
 };
+
+/**
+ * TODO: To manage the PixelRatio .
+ */
+const devicePixelRatio = getPixelRatio();
 
 /**
  * @class ModuleH - global reusable component will provide featured content module
@@ -107,8 +112,15 @@ class ModuleH extends React.PureComponent<Props, State> {
     this.setState({ currentIndex: index });
   };
 
+  /**
+   * @function render : renders module H .
+   */
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
+    let HeadingFontSize = 'fs36';
+    if (devicePixelRatio === 'xxxhdpi' || devicePixelRatio === 'xhdpi') {
+      HeadingFontSize = 'fs32';
+    }
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -118,7 +130,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                 <Anchor key={index.toString()} url={link.url} navigation={navigation}>
                   <Heading
                     fontFamily="primary"
-                    fontSize="fs36"
+                    fontSize={HeadingFontSize}
                     letterSpacing="ls167"
                     textAlign="left"
                     color="white"
@@ -130,7 +142,7 @@ class ModuleH extends React.PureComponent<Props, State> {
               ) : (
                 <Heading
                   fontFamily="primary"
-                  fontSize="fs36"
+                  fontSize={HeadingFontSize}
                   letterSpacing="ls167"
                   textAlign="left"
                   color="white"

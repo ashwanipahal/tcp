@@ -5,7 +5,7 @@ import ImageTextCTA from '../../ImageTextCTA';
 import withStyles from '../../../hoc/withStyles';
 import config from '../ButtonList.config';
 import ButtonListStyle from '../ButtonList.style';
-import DropDownCategoryButton from '../../DropDownButton';
+import DropDownButton from '../../DropDownButton';
 import { generateUniqueKeyUsingLabel } from '../../../../../utils/utils';
 
 // Class to wrap button text
@@ -60,13 +60,14 @@ const getLinkCTAConfig = () => {
  * @param {*} parentClass Class passed from parent component
  */
 const renderDropDownButton = (properties, parentClass) => {
-  const { className, buttonsData, dropdownLabel } = properties;
+  const { className, buttonsData, dropdownLabel, dataLocatorDropDown } = properties;
 
   return (
-    <DropDownCategoryButton
+    <DropDownButton
       className={`${className} ${parentClass}`}
       buttonsData={buttonsData}
       dropdownLabel={dropdownLabel}
+      dataLocator={dataLocatorDropDown}
     />
   );
 };
@@ -130,15 +131,6 @@ const ButtonList = props => {
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
   const { compClassName, ctaInfo, compWrapper } = buttonListConfig;
 
-  const compProps = {
-    className: '',
-    ctaInfo: {},
-    image: {},
-  };
-  compProps.ctaInfo = ctaInfo;
-  compProps.fill = fill;
-  compProps.className = `${compClassName}-class`;
-
   let Component = ButtonCTA;
   if (buttonListVariation === 'imageCTAList') {
     Component = ImageTextCTA;
@@ -154,10 +146,18 @@ const ButtonList = props => {
       <div className={`${className} button-list-wrapper ${compWrapper} ${hideOnDesktopClassname}`}>
         {buttonsData.map((item, index) => {
           const { button = {}, image } = item;
+          const compProps = {
+            className: `${compClassName}-class`,
+            ctaInfo: {
+              ...ctaInfo,
+              link: button,
+            },
+            fill,
+            image,
+          };
+
           // Code to generate unique key
           const key = button.title && generateUniqueKeyUsingLabel(button.title);
-          compProps.ctaInfo.link = button;
-          compProps.image = image;
 
           return (
             <Component

@@ -83,7 +83,7 @@ AddedToBagContainer.propTypes = {
   modalInfo: PropTypes.shape({}).isRequired,
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     closeCheckoutModalMountState: payload => {
       dispatch(setCheckoutModalMountedState(payload));
@@ -91,14 +91,14 @@ const mapDispatchToProps = dispatch => {
     routeForBagCheckout: () => {
       dispatch(bagPageActions.routeForCheckout());
     },
-    handleCartCheckout: isEditingItem => {
-      dispatch(bagPageActions.startCheckout(isEditingItem));
+    handleCartCheckout: payload => {
+      dispatch(bagPageActions.startCheckout(payload));
     },
     closeCheckoutConfirmationModal: () => {
       dispatch(bagPageActions.closeCheckoutConfirmationModal());
     },
     removeUnqualifiedItemsAndCheckout: () => {
-      dispatch(bagPageActions.removeUnqualifiedItemsAndCheckout());
+      dispatch(bagPageActions.removeUnqualifiedItemsAndCheckout(ownProps.navigation));
     },
   };
 };
