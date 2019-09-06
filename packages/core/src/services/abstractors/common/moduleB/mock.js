@@ -39,7 +39,7 @@ export default {
               },
             ],
             link: {
-              url: '/tees',
+              url: '/c/tees',
               text: '',
               title: '',
               target: '',
@@ -55,7 +55,7 @@ export default {
         promoBanner: [
           {
             link: {
-              url: '/banner/url',
+              url: '/c/banner/url',
               text: '',
               title: '',
               target: '',
@@ -86,7 +86,7 @@ export default {
               crop_m: 'c_crop,g_face:center,q_auto:best,w_347,h_295',
             },
             link: {
-              url: '/node/product/<uuid>',
+              url: '/c/node/product/<uuid>',
               text: 'Graphic Tees',
               title: 'Graphic Tees',
               target: '',
@@ -100,7 +100,7 @@ export default {
     ctaItems: [
       {
         button: {
-          url: '/girl',
+          url: '/c/girl',
           text: 'Girl',
           title: 'Girl',
           target: '',
@@ -120,7 +120,7 @@ export default {
 
       {
         button: {
-          url: '/girl',
+          url: '/c/girl',
           text: 'Girl',
           title: 'Girl',
           target: '',
@@ -139,7 +139,7 @@ export default {
       },
       {
         button: {
-          url: '/toddler-girl',
+          url: '/c/toddler-girl',
           text: 'Toddler Girl',
           title: 'Toddler Girl',
           target: '',
@@ -158,7 +158,7 @@ export default {
       },
       {
         button: {
-          url: '/boy',
+          url: '/c/boy',
           text: 'Boy',
           title: 'Boy',
           target: '',
@@ -177,7 +177,7 @@ export default {
       },
       {
         button: {
-          url: '/toddler-boy',
+          url: '/c/toddler-boy',
           text: 'Toddler Boy',
           title: 'Toddler Boy',
           target: '',
@@ -196,7 +196,7 @@ export default {
       },
       {
         button: {
-          url: '/baby',
+          url: '/c/baby',
           text: 'Baby',
           title: 'Baby',
           target: '',
