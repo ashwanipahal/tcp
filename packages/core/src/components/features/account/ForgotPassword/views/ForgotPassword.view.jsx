@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
@@ -11,25 +12,24 @@ import createValidateMethod from '../../../../../utils/formValidation/createVali
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
 import Notification from '../../../../common/molecules/Notification';
 
-// @flow
-type Props = {
-  pristine: any,
-  className: any,
-  SubmitForgot: Object => void,
-  showNotification: any,
-  showForgotPasswordForm: any,
-  resetForgotPasswordErrorResponse: any,
-  labels: any,
-  resetLoginState: any,
-  successFullResetEmail: any,
-  handleSubmit: string,
-};
-
-type State = {
-  country: string,
-};
 class ForgotPasswordView extends React.Component<Props, State> {
-  constructor(props: Props) {
+  static propTypes = {
+    className: PropTypes.string,
+    pristine: PropTypes.bool.isRequired,
+    SubmitForgot: PropTypes.shape({}).isRequired,
+    showNotification: PropTypes.func.isRequired,
+    showForgotPasswordForm: PropTypes.string.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    resetLoginState: PropTypes.bool.isRequired,
+    successFullResetEmail: PropTypes.bool.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    className: '',
+  };
+
+  constructor(props) {
     super(props);
     this.state = {
       email: '',
@@ -84,7 +84,9 @@ class ForgotPasswordView extends React.Component<Props, State> {
             <Notification
               status="error"
               colSize={{ large: 11, medium: 7, small: 6 }}
-              message={forgotPasswordErrorMessage}
+              message={
+                <RichText className="richTextColor" richTextHtml={forgotPasswordErrorMessage} />
+              }
             />
           )}
 
