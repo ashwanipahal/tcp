@@ -167,6 +167,18 @@ function notEqualToValidator(value, linkedFieldsValues) {
   return value !== linkedFieldsValues[0];
 }
 
+function nonSequentialNumberValidator(value) {
+  if (!value) {
+    return true;
+  }
+
+  const isInvalid =
+    /^([0-9])(\1\1\1)$/gi.test(value) ||
+    '0123456789012'.indexOf(value) > -1 ||
+    '9876543210987'.indexOf(value) > -1;
+  return !isInvalid;
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -197,6 +209,7 @@ const validatorMethods = {
   dob: dobValidator,
   eitherRequired: eitherRequiredValidator,
   notEqualTo: notEqualToValidator,
+  nonSequentialNumber: nonSequentialNumberValidator,
 };
 
 export default validatorMethods;

@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { getIsModalOpen, getLabels } from '../ApplyNowModal.selectors';
+import { getIsModalOpen, getLabels, getIsPLCCModalOpen } from '../ApplyNowModal.selectors';
 import { APPLY_NOW_MODAL_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
 describe('#getIsModalOpen selector', () => {
@@ -12,6 +12,19 @@ describe('#getIsModalOpen selector', () => {
 
   it('#getUserContactInfo should retun contact infomation data', () => {
     expect(getIsModalOpen(state)).toEqual(fromJS(stateObject).get('isModalOpen'));
+  });
+});
+
+describe('#getIsPLCCModalOpen selector', () => {
+  const stateObject = {
+    isPLCCModalOpen: true,
+  };
+  const state = {
+    [APPLY_NOW_MODAL_REDUCER_KEY]: fromJS(stateObject),
+  };
+
+  it('#getUserContactInfo should retun contact infomation data', () => {
+    expect(getIsPLCCModalOpen(state)).toEqual(fromJS(stateObject).get('isPLCCModalOpen'));
   });
 });
 

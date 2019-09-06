@@ -5,6 +5,7 @@ import Modal from '../../Modal';
 import withStyles from '../../../hoc/withStyles';
 import { getLocator } from '../../../../../utils';
 import styles, { modalStyles } from '../styles/ApplyNowModal.style';
+import ApplyNowPLCCModal from './ApplyNowPLCCModal';
 
 /**
  * @description - getBenefitsListItems - renders per list item.
@@ -48,8 +49,16 @@ export const renderBenefitsList = labels => {
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.
  */
-const StyledApplyNowModal = ({ className, isModalOpen, closeModal, labels }) => {
-  return (
+const StyledApplyNowModal = ({
+  className,
+  isModalOpen,
+  closePLCCModal,
+  isPLCCModalOpen,
+  openPLCCModal,
+  closeModal,
+  labels,
+}) => {
+  return !isPLCCModalOpen ? (
     <Modal
       fixedWidth
       isOpen={isModalOpen}
@@ -101,6 +110,7 @@ const StyledApplyNowModal = ({ className, isModalOpen, closeModal, labels }) => 
               fill="BLUE"
               type="submit"
               className="ApplyNow__link"
+              onClick={openPLCCModal}
               data-locator={getLocator('plcc_apply_btn')}
             >
               {labels.applynow_cta}
@@ -180,11 +190,20 @@ const StyledApplyNowModal = ({ className, isModalOpen, closeModal, labels }) => 
         </div>
       </div>
     </Modal>
+  ) : (
+    <ApplyNowPLCCModal
+      className={className}
+      isPLCCModalOpen={isPLCCModalOpen}
+      closePLCCModal={closePLCCModal}
+    />
   );
 };
 
 StyledApplyNowModal.propTypes = {
   className: PropTypes.string.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
+  isPLCCModalOpen: PropTypes.bool.isRequired,
+  openPLCCModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   labels: PropTypes.shape({

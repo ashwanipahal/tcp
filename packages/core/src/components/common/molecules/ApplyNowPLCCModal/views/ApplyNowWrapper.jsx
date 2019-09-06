@@ -20,13 +20,29 @@ class ApplyNowModalWrapper extends React.Component {
     toggleModal({ isModalOpen: false });
   };
 
+  openPLCCModal = e => {
+    e.preventDefault();
+    const { toggleModal, togglePLCCFormModal } = this.props;
+    toggleModal({ isModalOpen: false });
+    togglePLCCFormModal({ isPLCCModalOpen: true });
+  };
+
+  closePLCCModal = () => {
+    const { togglePLCCFormModal, resetPLCCApplicationStatus } = this.props;
+    togglePLCCFormModal({ isPLCCModalOpen: false });
+    resetPLCCApplicationStatus({ status: null });
+  };
+
   render() {
-    const { className, labels, isModalOpen } = this.props;
+    const { className, labels, isModalOpen, isPLCCModalOpen } = this.props;
     return (
       <div className={className}>
         <React.Fragment>
           <StyledApplyNowModal
             isModalOpen={isModalOpen}
+            isPLCCModalOpen={isPLCCModalOpen}
+            openPLCCModal={this.openPLCCModal}
+            closePLCCModal={this.closePLCCModal}
             closeModal={this.closeModal}
             labels={labels}
           />
@@ -46,10 +62,13 @@ class ApplyNowModalWrapper extends React.Component {
 ApplyNowModalWrapper.propTypes = {
   className: PropTypes.string.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
+  isPLCCModalOpen: PropTypes.bool.isRequired,
   labels: PropTypes.shape({
     apply_now_link_modal: PropTypes.string,
   }).isRequired,
   toggleModal: PropTypes.func.isRequired,
+  togglePLCCFormModal: PropTypes.func.isRequired,
+  resetPLCCApplicationStatus: PropTypes.func.isRequired,
 };
 
 export default ApplyNowModalWrapper;

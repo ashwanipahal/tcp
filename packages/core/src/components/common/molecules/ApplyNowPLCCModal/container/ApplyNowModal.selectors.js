@@ -8,6 +8,10 @@ export const getIsModalOpen = state => {
   return getApplyNowModalState(state).get('isModalOpen');
 };
 
+export const getIsPLCCModalOpen = state => {
+  return getApplyNowModalState(state).get('isPLCCModalOpen');
+};
+
 export const getLabels = state => {
   return state.Labels.PLCC && state.Labels.PLCC.plccForm;
 };
