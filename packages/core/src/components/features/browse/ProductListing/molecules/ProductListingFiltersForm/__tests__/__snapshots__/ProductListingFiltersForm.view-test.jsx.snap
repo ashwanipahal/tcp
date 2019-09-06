@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductListingFiltersForm is shown should render ProductListingFiltersForm 1`] = `
-<Fragment>
+<div
+  className=" filter-sort-wrapper"
+>
   <div
     className="filter-and-sort-form-container"
   >
@@ -2287,6 +2289,197 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             withRef={true}
           />
         </div>
+        <div
+          className="sort-selector-wrapper"
+        >
+          <Styled(SortSelector)
+            isMobile={false}
+            sortSelectOptions={
+              Array [
+                Object {
+                  "content": <ForwardRef
+                    className="sort-title"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                    fontWeight="regular"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Recommended
+                  </ForwardRef>,
+                  "dataLocator": "Recommended",
+                  "title": <ForwardRef
+                    className="sort-item-selected"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Recommended
+                  </ForwardRef>,
+                  "value": "",
+                },
+                Object {
+                  "content": <ForwardRef
+                    className="sort-title"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                    fontWeight="regular"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Price: High to Low
+                  </ForwardRef>,
+                  "dataLocator": "Price: High to Low",
+                  "title": <ForwardRef
+                    className="sort-item-selected"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Price: High to Low
+                  </ForwardRef>,
+                  "value": "min_offer_price desc",
+                },
+                Object {
+                  "content": <ForwardRef
+                    className="sort-title"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                    fontWeight="regular"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Price: Low to High
+                  </ForwardRef>,
+                  "dataLocator": "Price: Low to High",
+                  "title": <ForwardRef
+                    className="sort-item-selected"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Price: Low to High
+                  </ForwardRef>,
+                  "value": "min_offer_price asc",
+                },
+                Object {
+                  "content": <ForwardRef
+                    className="sort-title"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                    fontWeight="regular"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Newest
+                  </ForwardRef>,
+                  "dataLocator": "Newest",
+                  "title": <ForwardRef
+                    className="sort-item-selected"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Newest
+                  </ForwardRef>,
+                  "value": "newest_score desc",
+                },
+                Object {
+                  "content": <ForwardRef
+                    className="sort-title"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                    fontWeight="regular"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Most Favorited
+                  </ForwardRef>,
+                  "dataLocator": "Most Favorited",
+                  "title": <ForwardRef
+                    className="sort-item-selected"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Most Favorited
+                  </ForwardRef>,
+                  "value": "favoritedcount desc",
+                },
+                Object {
+                  "content": <ForwardRef
+                    className="sort-title"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                    fontWeight="regular"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Top Rated
+                  </ForwardRef>,
+                  "dataLocator": "Top Rated",
+                  "title": <ForwardRef
+                    className="sort-item-selected"
+                    color="text.primary"
+                    component="span"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    textAlign="left"
+                  >
+                    Top Rated
+                  </ForwardRef>,
+                  "value": "TCPBazaarVoiceRating desc",
+                },
+              ]
+            }
+          />
+        </div>
       </div>
       <Styled(AppliedFiltersList)
         appliedFilters={
@@ -2734,5 +2927,5 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     touchOnChange={false}
     updateUnregisteredFields={false}
   />
-</Fragment>
+</div>
 `;
