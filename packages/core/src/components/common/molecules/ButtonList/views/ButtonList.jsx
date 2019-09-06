@@ -158,7 +158,6 @@ const ButtonList = props => {
 
           // Code to generate unique key
           const key = button.title && generateUniqueKeyUsingLabel(button.title);
-          console.log('buttons data', compProps.ctaInfo.link);
 
           return (
             <Component
