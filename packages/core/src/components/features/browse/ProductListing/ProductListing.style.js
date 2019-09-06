@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 export default css`
   .bread-crumb,
-  .promo-area,
   .filter-area,
   .product-list {
     background: #d8d8d8;
