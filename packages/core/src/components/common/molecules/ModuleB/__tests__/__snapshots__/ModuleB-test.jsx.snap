@@ -3,7 +3,7 @@
 exports[`ModuleB component should render TCP or default variant correctly 1`] = `
 <Styled(Row)>
   <Styled(Col)
-    className="undefined moduleB-wrapper"
+    className="undefined parent-wrapper"
     colSize={
       Object {
         "large": 6,
@@ -211,7 +211,7 @@ exports[`ModuleB component should render TCP or default variant correctly 1`] = 
           },
         ]
       }
-      className="moduleB_button-list"
+      className="button-list"
       dataLocatorDivisionImages="moduleB_cta_image_"
       dataLocatorDropDown="moduleB_shop_now_dropdown"
       dataLocatorTextCta="moduleB_cta_links_"
@@ -236,12 +236,12 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
   className="banner-bottom-variation"
 >
   <div
-    className="moduleB_image-container"
+    className="image-container"
     data-locator="moduleB_image_01"
   >
     <Styled(Anchor)
       action=""
-      className="moduleB_image-link"
+      className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
@@ -249,7 +249,7 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
       url="/node/product/<uuid>"
     >
       <WithTheme(DamImage)
-        className="moduleB_image"
+        className="image"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -264,7 +264,7 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
     </Styled(Anchor)>
   </div>
   <Styled(PromoBanner)
-    className="moduleB_promo-banner"
+    className="promo-banner"
     data-locator="moduleB_promo_banner"
     dataLocatorHeader="moduleB_header_text"
     headerText={
@@ -337,12 +337,12 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
   className="banner-overlay-variation"
 >
   <div
-    className="moduleB_image-container"
+    className="image-container"
     data-locator="moduleB_image_01"
   >
     <Styled(Anchor)
       action=""
-      className="moduleB_image-link"
+      className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
@@ -350,7 +350,7 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
       url="/node/product/<uuid>"
     >
       <WithTheme(DamImage)
-        className="moduleB_image"
+        className="image"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -365,7 +365,7 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
     </Styled(Anchor)>
   </div>
   <Styled(PromoBanner)
-    className="moduleB_promo-banner"
+    className="promo-banner"
     data-locator="moduleB_promo_banner"
     dataLocatorHeader="moduleB_header_text"
     headerText={
@@ -438,7 +438,7 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
   className="banner-top-alt-variation"
 >
   <Styled(PromoBanner)
-    className="moduleB_promo-banner"
+    className="promo-banner"
     data-locator="moduleB_promo_banner"
     dataLocatorHeader="moduleB_header_text"
     headerText={
@@ -504,12 +504,12 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
     variation="header_and_promo"
   />
   <div
-    className="moduleB_image-container"
+    className="image-container"
     data-locator="moduleB_image_01"
   >
     <Styled(Anchor)
       action=""
-      className="moduleB_image-link"
+      className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
@@ -517,7 +517,7 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
       url="/node/product/<uuid>"
     >
       <WithTheme(DamImage)
-        className="moduleB_image"
+        className="image"
         imgData={
           Object {
             "alt": "Graphic Tees",
@@ -539,7 +539,7 @@ exports[`ModuleB component should render banner top variation 1`] = `
   className="banner-top-variation"
 >
   <Styled(PromoBanner)
-    className="moduleB_promo-banner"
+    className="promo-banner"
     data-locator="moduleB_promo_banner"
     dataLocatorHeader="moduleB_header_text"
     headerText={
@@ -605,12 +605,12 @@ exports[`ModuleB component should render banner top variation 1`] = `
     variation="header_and_promo"
   />
   <div
-    className="moduleB_image-container"
+    className="image-container"
     data-locator="moduleB_image_01"
   >
     <Styled(Anchor)
       action=""
-      className="moduleB_image-link"
+      className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
@@ -618,7 +618,7 @@ exports[`ModuleB component should render banner top variation 1`] = `
       url="/node/product/<uuid>"
     >
       <WithTheme(DamImage)
-        className="moduleB_image"
+        className="image"
         imgData={
           Object {
             "alt": "Graphic Tees",
