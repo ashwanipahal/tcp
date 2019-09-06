@@ -100,7 +100,6 @@ const renderImageComponent = (item, navigation) => {
     bannerPosition === bannerPositionTypes.overlay
       ? MODULE_HEIGHT_WITH_OVERLAY
       : MODULE_HEIGHT_WITHOUT_OVERLAY;
-  console.log('bannerPosition=====', bannerPosition);
   return (
     <MainContainerView>
       {bannerPosition === bannerPositionTypes.top || bannerPosition === bannerPositionTypes.overlay
