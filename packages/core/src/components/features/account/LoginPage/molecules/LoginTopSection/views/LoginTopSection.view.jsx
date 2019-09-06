@@ -5,20 +5,42 @@ import ImageComp from '../../../../../../common/atoms/Image';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { getIconPath } from '../../../../../../../utils';
 import styles from '../styles/LoginTopSection.styles';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
 /**
  * @param {string} props : props for CustomIcon
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-const LoginTopSection = ({ labels, className, isCanada, variation }) => {
-  let subDescKeys = [];
-  if (!isCanada) {
-    subDescKeys = Object.keys(labels.login).filter(lbl => /lbl_login_subDescription_/.test(lbl));
-  }
-  const renderFavt = () => {
+const showForgotPassword = showForgotPasswordForm => {
+  showForgotPasswordForm();
+};
+
+const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPasswordForm }) => {
+  const renderFavtandCheckout = () => {
     return (
       <React.Fragment>
+        {variation === 'checkout' && (
+          <>
+            <BodyCopy fontSize="fs36" fontWeight="black" fontFamily="secondary" textAlign="center">
+              {labels.login.lbl_login_checkout_modal_heading}
+            </BodyCopy>
+
+            <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
+              {labels.login.lbl_login_checkout_modal_heading_1}
+            </BodyCopy>
+            <BodyCopy
+              component="span"
+              fontSize="fs18"
+              fontWeight="black"
+              fontFamily="secondary"
+              textAlign="center"
+            >
+              {labels.login.lbl_login_checkout_modal_heading_2}
+            </BodyCopy>
+          </>
+        )}
+
         {variation === 'favorites' && (
           <>
             <BodyCopy fontSize="fs16" fontWeight="black" fontFamily="secondary" textAlign="center">
@@ -57,41 +79,51 @@ const LoginTopSection = ({ labels, className, isCanada, variation }) => {
               {labels.login.lbl_login_heading}
             </BodyCopy>
 
+            {!isCanada && (
+              <BodyCopy
+                fontSize="fs13"
+                fontFamily="secondary"
+                textAlign="center"
+                className="signuptext"
+              >
+                {labels.login.lbl_login_subHeading}
+              </BodyCopy>
+            )}
             {isCanada && (
               <BodyCopy fontSize="fs12" fontFamily="secondary" textAlign="center">
                 {labels.login.lbl_login_heading_2}
               </BodyCopy>
             )}
-            {subDescKeys.length > 0 &&
-              subDescKeys.map(key => (
-                <BodyCopy fontFamily="secondary" textAlign="center" fontSize="fs12">
-                  {labels.login[key]}
-                </BodyCopy>
-              ))}
-          </BodyCopy>
-        </>
-      )}
-      {variation === 'checkout' && (
-        <>
-          <BodyCopy fontSize="fs36" fontWeight="black" fontFamily="secondary" textAlign="center">
-            {labels.login.lbl_login_checkout_modal_heading}
-          </BodyCopy>
+            <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
+              {labels.login.lbl_login_Description_heading_1}
+            </BodyCopy>
 
-          <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
-            {labels.login.lbl_login_checkout_modal_heading_1}
-          </BodyCopy>
-          <BodyCopy
-            component="span"
-            fontSize="fs18"
-            fontWeight="black"
-            fontFamily="secondary"
-            textAlign="center"
-          >
-            {labels.login.lbl_login_checkout_modal_heading_2}
+            <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
+              {labels.login.lbl_login_Description_heading_2}
+            </BodyCopy>
+            <BodyCopy component="div" textAlign="center">
+              <Anchor
+                fontSizeVariation="medium"
+                anchorVariation="primary"
+                underline
+                textAlign="center"
+                noLink
+                onClick={e => {
+                  e.preventDefault();
+                  showForgotPassword(showForgotPasswordForm);
+                }}
+              >
+                {labels.login.lbl_login_Description_clickhere}
+              </Anchor>
+              <BodyCopy fontFamily="secondary" component="span" textAlign="center" fontSize="fs12">
+                {labels.login.lbl_login_Description_heading_3}
+              </BodyCopy>
+            </BodyCopy>
           </BodyCopy>
         </>
       )}
-      {renderFavt()}
+
+      {renderFavtandCheckout()}
     </BodyCopy>
   );
 };
@@ -105,11 +137,13 @@ LoginTopSection.propTypes = {
   className: PropTypes.string.isRequired,
   isCanada: PropTypes.bool,
   variation: PropTypes.bool.isRequired,
+  showForgotPasswordForm: PropTypes.func,
 };
 
 LoginTopSection.defaultProps = {
   labels: {},
   isCanada: false,
+  showForgotPasswordForm: () => {},
 };
 
 export default withStyles(LoginTopSection, styles);

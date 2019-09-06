@@ -93,6 +93,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     textInputHide={false}
     textInputProps={
       Object {
+        "onChangeText": [Function],
         "onEndEditing": [Function],
         "onFocus": [Function],
         "onSubmitEditing": [Function],

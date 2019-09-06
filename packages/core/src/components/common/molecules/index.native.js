@@ -8,6 +8,7 @@ import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 import PromoBanner from './PromoBanner';
 import ModuleA from './ModuleA';
+import ModuleB from './ModuleB';
 import ModuleJ from './ModuleJ';
 import ButtonTabs from './ButtonTabs';
 
@@ -22,6 +23,7 @@ export {
   ImageGrid,
   PromoBanner,
   ModuleA,
+  ModuleB,
   ModuleJ,
   ButtonTabs,
 };

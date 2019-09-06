@@ -7,7 +7,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
-import BonusPointsDays from '@tcp/core/src/components/common/organisms/BonusPointsDays';
 import {
   UnderlineStyle,
   PlaceRewardsTileContainer,
@@ -21,23 +20,21 @@ import CouponList from '../../../molecule/CouponList';
 /*
 MyWalletTile component is used in AccountOverview screen on app
 */
-export class MyWalletTile extends React.PureComponent{
-  render() {
-    const { labels, coupons, isBrierleyEnabled, handleComponentChange, navigation } = this.props;
-    const rewardCouponsCount = coupons && coupons.size;
-    let walletOverviewInfo = '';
-    let rewardDataLocator = '';
+export const MyWalletTile = ({ labels, commonLabels, coupons, navigation, handleComponentChange }) => {
+  const couponsCount = coupons && coupons.size;
+  let walletOverviewInfo = '';
+  let walletDataLocator = '';
+  let myWalletCTA = '';
 
-    if (rewardCouponsCount) {
-      walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(
-        /\{0\}/,
-        rewardCouponsCount
-      );
-      rewardDataLocator = 'accountoverview-myplacerewatdstile-youhaverewardtext';
-    } else {
-      walletOverviewInfo = labels.lbl_overview_myPlaceRewardsDesc;
-      rewardDataLocator = 'accountoverview-myplacerewatdstile-startshoptext';
-    }
+  if (couponsCount) {
+    walletOverviewInfo = labels.lbl_overview_myWalletOfferAvailable.replace(/\{0\}/, couponsCount);
+    walletDataLocator = 'accountoverview-mywallettile-youhaverewardtext';
+    myWalletCTA = labels.lbl_overview_walletViewAllCTA;
+  } else {
+    walletOverviewInfo = labels.lbl_overview_myWalletNoOfferAvailable;
+    walletDataLocator = 'accountoverview-mywallettile-startshoptext';
+    myWalletCTA = labels.lbl_overview_viewMyWalletCTA;
+  }
 
     return (
       <PlaceRewardsTileContainer>
@@ -50,23 +47,23 @@ export class MyWalletTile extends React.PureComponent{
 
         <LineComp {...UnderlineStyle} />
 
-        {rewardCouponsCount > 0 && (
+        {couponsCount > 0 && (
           <CouponWrapper>
             <View>
               <BodyCopy
                 fontSize="fs14"
                 fontWeight="semibold"
-                data-locator={rewardDataLocator}
+                data-locator={walletDataLocator}
                 text={walletOverviewInfo}
               />
             </View>
             <CouponListWrapper>
-              <CouponList coupons={coupons} sliceCount={3} labels={labels} />
+              <CouponList coupons={coupons} sliceCount={3} labels={labels} commonLabels={commonLabels} />
             </CouponListWrapper>
           </CouponWrapper>
         )}
 
-        {!rewardCouponsCount && (
+        {!couponsCount && (
           <View>
             <BodyCopy
               fontFamily="secondary"
@@ -95,7 +92,7 @@ export class MyWalletTile extends React.PureComponent{
 
         <ButtonWrapperStyle>
           <CustomButton
-            text={labels.lbl_overview_myPlaceRewardsCTA}
+            text={myWalletCTA}
             buttonVariation="variable-width"
             fill="BLUE"
             onPress={() => handleComponentChange('myPlaceRewardsMobile')}
@@ -104,31 +101,26 @@ export class MyWalletTile extends React.PureComponent{
       </PlaceRewardsTileContainer>
     );
   }
-}
 
 MyWalletTile.propTypes = {
   labels: PropTypes.shape({
-    lbl_overview_myPlaceRewardsHeading: PropTypes.string,
-    lbl_overview_myPlaceRewardsCTA: PropTypes.string,
-    lbl_overview_myPlaceRewardsAvailable: PropTypes.string,
-    lbl_overview_myPlaceRewardsDesc: PropTypes.string,
-    lbl_overview_myPlaceRewardsShopNow: PropTypes.string,
-  }),
+    lbl_overview_myWalletHeading: PropTypes.string.isRequired,
+    lbl_overview_myWalletCTA: PropTypes.string.isRequired,
+    lbl_overview_myWalletOfferAvailable: PropTypes.string.isRequired,
+    lbl_overview_myWalletNoOfferAvailable: PropTypes.string.isRequired,
+    lbl_overview_myWalletStartShop: PropTypes.string.isRequired,
+    lbl_overview_myWalletShopCTA: PropTypes.string.isRequired,
+  }).isRequired,
+  commonLabels: PropTypes.shape({}).isRequired,
   coupons: PropTypes.shape([]).isRequired,
-  isBrierleyEnabled: PropTypes.bool,
+  className: PropTypes.string,
   handleComponentChange: PropTypes.func.isRequired,
-  navigation: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({})
 };
 
 MyWalletTile.defaultProps = {
-  isBrierleyEnabled: true,
-  labels: PropTypes.shape({
-    lbl_overview_myPlaceRewardsHeading: '',
-    lbl_overview_myPlaceRewardsCTA: '',
-    lbl_overview_myPlaceRewardsAvailable: '',
-    lbl_overview_myPlaceRewardsDesc: '',
-    lbl_overview_myPlaceRewardsShopNow: '',
-  }),
+  className: '',
+  navigation: {}
 };
 
 export default withNavigation(MyWalletTile);

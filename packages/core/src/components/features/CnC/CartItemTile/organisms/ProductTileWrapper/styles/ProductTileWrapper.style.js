@@ -5,6 +5,7 @@ export const customStyles = css`
   flex: 1;
   padding-top: 11px;
   padding-bottom: 6px;
+  border-top: solid 1px rgba(163, 162, 162, 0.5);
   background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   img {
     height: 13px;

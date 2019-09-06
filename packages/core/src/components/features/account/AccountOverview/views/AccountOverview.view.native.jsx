@@ -131,6 +131,7 @@ class AccountOverview extends PureComponent<Props> {
             </Panel>
             <Panel title={labels.lbl_overview_myWalletHeading}>
               <MyWalletTile
+                labels={labels}
                 handleComponentChange={handleComponentChange}
               />
             </Panel>

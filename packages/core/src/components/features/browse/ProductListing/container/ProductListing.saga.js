@@ -20,7 +20,7 @@ export function* fetchPlpProducts({ payload }) {
           pathname: url,
         }
       : window.location;
-    const state = yield select();
+    let state = yield select();
     let reqObj = operatorInstance.getProductListingBucketedData(
       state,
       location,
@@ -29,11 +29,13 @@ export function* fetchPlpProducts({ payload }) {
       1
     );
     if (reqObj.isFetchFiltersAndCountReq) {
-      const res = yield call(instanceProductListing.getProducts, reqObj);
+      const res = yield call(instanceProductListing.getProducts, reqObj, state);
+      yield put(setListingFirstProductsPage({ ...res }));
+      state = yield select();
       reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
     }
     if (reqObj && reqObj.categoryId) {
-      const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
+      const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (
         plpProducts &&
         plpProducts.loadedProductsPages &&

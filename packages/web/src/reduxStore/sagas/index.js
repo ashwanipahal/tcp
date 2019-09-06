@@ -39,6 +39,7 @@ import ApplyCreditCardSaga, {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
+import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
@@ -89,5 +90,6 @@ export default function* rootSaga() {
     GiftCardsSaga(),
     AddAirmilesBannerSaga(),
     MailingAddressSaga(),
+    ProductTabListSaga(),
   ]);
 }

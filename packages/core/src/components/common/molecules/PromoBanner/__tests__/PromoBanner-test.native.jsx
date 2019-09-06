@@ -1,7 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleK/mock';
-import { PromoBannerVanilla, bodyCopyStyles } from '../views/PromoBanner.native';
+import {
+  PromoBannerVanilla,
+  bodyCopyStyles,
+  OverlayPromoBannerStyleVanilla,
+} from '../views/PromoBanner.native';
 
 describe('PromoTextBanner native component', () => {
   let component;
@@ -43,5 +47,14 @@ describe('PromoTextBanner native component', () => {
       const wrapper = shallow(bodyCopyStyles[key]());
       expect(wrapper).toMatchSnapshot();
     });
+  });
+
+  it('should render overlay banner style', () => {
+    const banner = shallow(
+      <OverlayPromoBannerStyleVanilla
+        promoBanner={mock.moduleK.composites.masonryGrid[0].promoBanner}
+      />
+    );
+    expect(banner).toMatchSnapshot();
   });
 });
