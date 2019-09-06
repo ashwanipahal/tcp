@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
@@ -447,6 +447,31 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 };
 
 export const isAndroid = () => Platform.OS === 'android';
+
+export const getPixelRatio = () => {
+  if (PixelRatio.get() === 1) {
+    // for condition 1 in android devices mdpi
+    return 'mdpi';
+  }
+  if (PixelRatio.get() === 1.5) {
+    // for condition 2 in android devices hdpi
+    return 'hdpi';
+  }
+  if (PixelRatio.get() === 2) {
+    // for condition 3 in android devices iPhone 4, 4S ,iPhone 5, 5C, 5S ,iPhone 6, 7, 8 ,iPhone XR
+    return 'xhdpi';
+  }
+  if (PixelRatio.get() === 3) {
+    // for condition 4 in android devices iPhone iPhone 6 Plus, 7 Plus, 8 Plus , X, XS, XS Max ,Pixel, Pixel 2
+    return 'xxhdpi';
+  }
+  if (PixelRatio.get() > 3.5) {
+    // for condition 5 in android devices  Nexus 6 , samsung7 , Pixel XL, Pixel 2 XL, xxxhdpi Android devices.
+    return 'xxxhdpi';
+  }
+
+  return 'xxhdpi';
+};
 
 export default {
   getSiteId,

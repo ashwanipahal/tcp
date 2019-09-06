@@ -1,29 +1,11 @@
 import React from 'react';
-import { PixelRatio } from 'react-native';
 import { Image, BodyCopy, Heading, Anchor } from '../../../atoms';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
+import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
 import fonts from '../../../../../../styles/themes/TCP/fonts';
 import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
-
-const getPixelRatio = () => {
-  if (PixelRatio.get() > 1 && PixelRatio.get() <= 1.5) {
-    // for condition 1 in android devices mdpi and hdpi
-    return 'samlldevices';
-  }
-  if (PixelRatio.get() > 1.5 && PixelRatio.get() >= 2 && PixelRatio.get() < 3) {
-    // for condition 2 in android devices iPhone 4, 4S ,iPhone 5, 5C, 5S ,iPhone 6, 7, 8 ,iPhone XR
-    return 'mediumdevices';
-  }
-  if (PixelRatio.get() >= 3) {
-    // for condition 2 in android devices  Nexus 6 , Pixel XL, Pixel 2 XL, xxxhdpi Android devices.
-    return 'mediumdevices';
-  }
-
-  return 'mediumdevices';
-};
 
 // @flow
 type Props = {
@@ -54,6 +36,8 @@ const linkStyle = {
   fontSize: fonts.fontSize.body.bodytext.copy6,
   marginTop: 28,
 };
+
+const specificDevice = getPixelRatio();
 
 /**
  * @class ModuleH - global reusable component will provide featured content module
@@ -127,7 +111,10 @@ class ModuleH extends React.PureComponent<Props, State> {
 
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
-    console.info('getPixel-----', getPixelRatio());
+    let HeadingFontSize = 'fs36';
+    if (specificDevice === 'xxxhdpi' || specificDevice === 'xhdpi') {
+      HeadingFontSize = 'fs32';
+    }
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -137,7 +124,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                 <Anchor key={index.toString()} url={link.url} navigation={navigation}>
                   <Heading
                     fontFamily="primary"
-                    fontSize="fs36"
+                    fontSize={HeadingFontSize}
                     letterSpacing="ls167"
                     textAlign="left"
                     color="white"
@@ -149,7 +136,7 @@ class ModuleH extends React.PureComponent<Props, State> {
               ) : (
                 <Heading
                   fontFamily="primary"
-                  fontSize="fs36"
+                  fontSize={HeadingFontSize}
                   letterSpacing="ls167"
                   textAlign="left"
                   color="white"

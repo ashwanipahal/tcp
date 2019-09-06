@@ -1,4 +1,14 @@
 import styled from 'styled-components/native';
+import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
+
+const managePromoConatinerView = () => {
+  if (getPixelRatio() === 'xxxhdpi' || getPixelRatio() === 'xhdpi') {
+    return `width: 130px;`;
+  }
+  return `
+  width: 150px;
+  `;
+};
 
 export const PromoAndArrowContainer = styled.TouchableOpacity`
   align-items: center;
@@ -9,10 +19,10 @@ export const PromoAndArrowContainer = styled.TouchableOpacity`
 export const PromoContainer = styled.View`
   background: ${props => props.theme.colorPalette.primary.main};
   border-radius: ${props => (props.theme.isGymboree ? `20px` : `5px`)};
-  width: 150px;
   height: 30px;
   align-items: center;
   justify-content: center;
+  ${managePromoConatinerView()}
 `;
 
 export const ArrowIcon = styled.Image`
