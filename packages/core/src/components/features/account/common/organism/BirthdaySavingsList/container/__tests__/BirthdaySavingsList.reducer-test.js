@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 import BirthdaySavingsListReducer from '../BirthdaySavingsList.reducer';
 import {
+  getChildrenAction,
   updateBirthdaySavingSuccess,
   updateBirthdaySavingError,
   resetBirthdaySavingMessageAction,
@@ -30,13 +31,24 @@ describe('BirthdaySavingsListReducer', () => {
     expect(state.get('error')).toBe('error');
   });
 
-  it('should reset state', () => {
+  it('should reset state on resetBirthdaySavingMessageAction', () => {
     const state = BirthdaySavingsListReducer(
       fromJS({
         success: 'success message',
         error: null,
       }),
       resetBirthdaySavingMessageAction()
+    );
+    expect(state.get('success')).toBeNull();
+  });
+
+  it('should reset state on getChildrenAction', () => {
+    const state = BirthdaySavingsListReducer(
+      fromJS({
+        success: 'success message',
+        error: null,
+      }),
+      getChildrenAction()
     );
     expect(state.get('success')).toBeNull();
   });

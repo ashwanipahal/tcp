@@ -157,7 +157,12 @@ export class BirthdaySavingsList extends PureComponent {
           </Row>
           {removeModal && (
             <div>
-              <BodyCopy fontSize="fs14" fontFamily="secondary" className="elem-mb-XXXL">
+              <BodyCopy
+                fontSize="fs14"
+                fontFamily="secondary"
+                className="elem-mb-XXXL"
+                data-locator="warningMsgToRemove"
+              >
                 {getLabelValue(labels, 'lbl_profile_removeInfoText').replace(
                   /\$childName\$/,
                   activeChild.childName
@@ -169,6 +174,7 @@ export class BirthdaySavingsList extends PureComponent {
                     buttonVariation="fixed-width"
                     fill="BLUE"
                     onClick={() => this.removeBirthdayHandler(activeChild)}
+                    data-locator="yesRemoveBtn"
                   >
                     {getLabelValue(labels, 'lbl_profile_removeCTA')}
                   </Button>
@@ -182,6 +188,7 @@ export class BirthdaySavingsList extends PureComponent {
                     buttonVariation="fixed-width"
                     fill="WHITE"
                     onClick={this.closeRemoveModal}
+                    data-locator="noBtnInBirthdaySavings"
                   >
                     {getLabelValue(labels, 'lbl_profile_removeCancelCTA')}
                   </Button>

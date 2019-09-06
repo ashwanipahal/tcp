@@ -8,6 +8,8 @@ const initialState = fromJS({
 
 const BirthdaySavingsListReducer = (state, action) => {
   switch (action.type) {
+    case constants.GET_CHILDREN:
+      return state.set('error', null).set('success', null);
     case constants.BIRTHDAY_SAVING_UPDATE_SUCCESS:
       return state.set('error', null).set('success', fromJS(action.payload));
     case constants.BIRTHDAY_SAVING_UPDATE_ERROR:
