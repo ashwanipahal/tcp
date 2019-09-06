@@ -10,7 +10,8 @@ import moduleJStyle from '../ModuleJ.style';
 
 class ModuleJ extends React.PureComponent {
   render() {
-    const { className } = this.props;
+    const { className, productTabList } = this.props;
+    console.log(productTabList);
     return (
       <div className={className}>
         <ProductTabList categoryList={categoryListMock} />
