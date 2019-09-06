@@ -154,7 +154,7 @@ const ModuleB = (props: Props) => {
   const {
     set = [],
     composites: { ctaItems, largeCompImage },
-  } = mock.moduleB;
+  } = mock;
 
   const { navigation } = props;
 
