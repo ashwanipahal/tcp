@@ -25,7 +25,7 @@ const PickUpHeading = styled.Text`
 const PickupError = styled.View``;
 
 const PickupContainer = styled.View`
-  margin-top: 24px;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 const PickUpForm = styled.View`
