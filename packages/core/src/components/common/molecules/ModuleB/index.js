@@ -1,1 +1,1 @@
-export { default } from './view/ModuleB';
+export { default } from './view';

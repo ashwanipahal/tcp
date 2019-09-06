@@ -104,7 +104,7 @@ class ProductsDynamicAbstractor {
     logger.error(e);
   };
 
-  getProducts = reqObj => {
+  getProducts = (reqObj, state) => {
     const {
       seoKeywordOrCategoryIdOrSearchTerm,
       isSearch,
@@ -179,7 +179,7 @@ class ProductsDynamicAbstractor {
 
     return executeUnbxdAPICall(payload)
       .then(res =>
-        processResponse(res, {
+        processResponse(res, state, {
           isSearch,
           breadCrumbs,
           shouldApplyUnbxdLogic,

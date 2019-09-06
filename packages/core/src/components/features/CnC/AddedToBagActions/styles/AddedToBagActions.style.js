@@ -17,6 +17,10 @@ const CtaStyle = css`
     height: 48px;
   }
 
+  .checkout-button {
+    padding-top: 10px;
+  }
+
   .checkout {
     &:hover {
       background: ${props => props.theme.colors.PRIMARY.BLUE};

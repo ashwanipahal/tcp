@@ -90,7 +90,8 @@ ${props =>
         radioBtnStyle({
           backgroundColor: props.theme.colorPalette.white,
           borderColor: props.theme.colorPalette.gray[600],
-          top: 0,
+          top: props.topPosition ? props.topPosition : '13px',
+          /* For few components in mobile web absolute position is not matching, making it props based on component  */
         })}
       }
   }
