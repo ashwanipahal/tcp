@@ -36,11 +36,27 @@ class GiftServices extends React.PureComponent {
               dataLocator="hide-show-checkbox"
               enableSuccessCheck={false}
               onChange={this.handleChange}
+              className="giftServicesField"
             >
-              <BodyCopy fontSize="fs16" fontFamily="secondary" fontWeight="regular">
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                className="elem-mb-XXS"
+              >
                 Gift Services
               </BodyCopy>
             </Field>
+
+            <BodyCopy
+              fontSize="fs12"
+              fontFamily="secondary"
+              className="giftServicesDetailsLink"
+              component="span"
+              fontWeight="semibold"
+            >
+              Details
+            </BodyCopy>
           </Col>
         </Row>
         {!isGiftServicesChecked && (
