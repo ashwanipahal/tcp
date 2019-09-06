@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { CreditCardForm } from '../CreditCardForm.view';
+import CreditCardFields from '../../../../molecule/CreditCardFields';
 
 describe('CreditCardForm component', () => {
   it('should renders correctly with address dropdown', () => {
@@ -9,6 +10,7 @@ describe('CreditCardForm component', () => {
       labels: {
         paymentGC: {},
         common: {},
+        profile: {},
       },
       addressLabels: {},
       addressList: List([
@@ -26,11 +28,36 @@ describe('CreditCardForm component', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should not renders creditcard fields if it is mailingaddress form', () => {
+    const props = {
+      labels: {
+        paymentGC: {},
+        common: {},
+        profile: {},
+      },
+      addressLabels: {},
+      addressList: List([
+        {
+          addressId: '12345',
+          firstName: 'test',
+          lastName: 'test',
+          primary: 'true',
+        },
+      ]),
+      onFileAddresskey: '12345',
+      initialValues: {},
+      showCreditCardFields: false,
+    };
+    const component = shallow(<CreditCardForm {...props} />);
+    expect(component.find(CreditCardFields)).toHaveLength(0);
+  });
+
   it('should renders correctly with addressForm', () => {
     const props = {
       labels: {
         paymentGC: {},
         common: {},
+        profile: {},
       },
       addressLabels: {},
       addressList: List([

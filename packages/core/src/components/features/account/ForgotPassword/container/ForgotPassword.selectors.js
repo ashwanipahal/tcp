@@ -12,7 +12,6 @@ export const getForgotpasswordLabels = createSelector(
   labels => labels && labels.login
 );
 
-
 export const getShowNotificationState = createSelector(
   getResetEmailResponse,
   resp => resp && resp.get('showNotification')
@@ -24,12 +23,12 @@ export const toggleSuccessfulEmailSection = createSelector(
 );
 
 export const getForgotPasswordErrorMessage = createSelector(
-  [getResetEmailResponse , getForgotpasswordLabels],
+  [getResetEmailResponse, getForgotpasswordLabels],
   (loginState, labels) => {
-    debugger
+    debugger;
     const errorCode = loginState && loginState.get('errorCode');
-    if (errorCode && labels[`lbl_login_error_${errorCode}`]) {
-      return labels[`lbl_login_error_${errorCode}`];
+    if (errorCode && labels[`lbl_forgotpassword_error_${errorCode}`]) {
+      return labels[`lbl_forgotpassword_error_${errorCode}`];
     }
     return (loginState && loginState.getIn(['errorMessage', '_error'])) || labels.lbl_login_error;
   }

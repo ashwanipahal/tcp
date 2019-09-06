@@ -53,7 +53,7 @@ function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
     : optionsMap.findIndex(item => item.value === valueOrValues);
 }
 
-function getButtonText({ selectedIndex, selectTextOverride, optionsMap, placeholder }) {
+function getButtonText(selectedIndex, { selectTextOverride, optionsMap, placeholder }) {
   return selectedIndex >= 0 ? selectTextOverride || optionsMap[selectedIndex].title : placeholder;
 }
 
@@ -221,8 +221,6 @@ class CustomSelect extends React.Component {
   constructor(props) {
     super(props);
 
-    // TODO - Fix this - this.verifyPropsConsistency(props);
-
     this.containerDivRef = null; // the HTML DOM element of the containing div element of this component
     this.state = {
       expanded: !!props.expanded, // true if this component is expanded, false if closed;
@@ -240,7 +238,6 @@ class CustomSelect extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // TODO Fix This this.verifyPropsConsistency(nextProps);
     const { expanded, optionsMap } = this.props;
     const { highlightedIndex } = this.state;
 
@@ -261,6 +258,11 @@ class CustomSelect extends React.Component {
 
   setHighlightedIndex(index) {
     this.setState({ highlightedIndex: index });
+  }
+
+  getTabIndex() {
+    const { disabled, tabIndex } = this.props;
+    return disabled ? -1 : tabIndex || 0;
   }
 
   // select the item with the given value
@@ -286,40 +288,18 @@ class CustomSelect extends React.Component {
     }
   }
 
-  /** closes the dropdown */
-  closeMenu() {
-    const { expanded } = this.state;
-    const { disableExpandStateChanges, onCloseCallback } = this.props;
-    if (!expanded || disableExpandStateChanges) return;
-    this.setState({ expanded: false });
-    if (expanded && onCloseCallback) onCloseCallback();
-  }
-
   /** opens the dropdown */
   expandMenu() {
-    // if (this.state.expanded || this.props.disableExpandStateChanges) return;
-    // let highlightedIndex = this.getIndexOrIndicesOfValue(this.props.optionsMap, this.props.input.value);
-    // if (Array.isArray(highlightedIndex)) {
-    //   highlightedIndex = highlightedIndex.findIndex((isSelected) => isSelected);
-    // }
-    // TODO Fix This this.setHighlightedIndex(highlightedIndex);
-
+    const { expanded } = this.state;
+    const { disableExpandStateChanges, optionsMap, input } = this.props;
+    if (expanded || disableExpandStateChanges) return;
+    let highlightedIndex = getIndexOrIndicesOfValue(optionsMap, input.value);
+    if (Array.isArray(highlightedIndex)) {
+      highlightedIndex = highlightedIndex.findIndex(isSelected => isSelected);
+    }
+    this.setHighlightedIndex(highlightedIndex);
     this.setState({ expanded: true });
-
-    // TODO Fix This if (!this.state.expanded && this.props.onExpandCallback) this.props.onExpandCallback();
   }
-
-  // ------------------------ protected methods ------------------- //
-
-  // TODO Fix This verifyPropsConsistency(props) {
-  //   let {
-  //     placeholder,
-  //     allowMultipleSelections,
-  //     input: { value },
-  //   } = props;
-  // TODO Fix This  warning(placeholder || !allowMultipleSelections, "CustomSelect: 'placeholder' prop must be provided if 'allowMultipleSelections' prop is true.");
-  // TODO Fix This  warning(!allowMultipleSelections || Array.isArray(value), "CustomSelect: input.value prop must be an array if 'allowMultipleSelections' prop is true.");
-  //  }
 
   captureContainerDivRef(ref) {
     this.containerDivRef = ref;
@@ -351,7 +331,6 @@ class CustomSelect extends React.Component {
     } = this.props;
 
     if (event.button !== 0) return; // ignore clicks not on the main (left) mouse button
-    // TODO Fix This  event.preventDefault();
     if (!optionsMap[clickedItemIndex].disabled) {
       // ignore clicks on disabled items
       this.setHighlightedIndex(clickedItemIndex); // make the clicked item highlighted
@@ -498,12 +477,19 @@ class CustomSelect extends React.Component {
     }
   }
 
+  /** closes the dropdown */
+  closeMenu() {
+    const { expanded } = this.state;
+    const { disableExpandStateChanges } = this.props;
+    if (!expanded || disableExpandStateChanges) return;
+    this.setState({ expanded: false });
+  }
+
   render() {
     const {
       title,
       buttonIconExpanded,
       buttonIconClosed,
-      placeholder,
       tabIndex,
       showErrorIfUntouched,
       showWarningIfUntouched,
@@ -515,42 +501,24 @@ class CustomSelect extends React.Component {
       facetName,
       appliedFilterVal,
       input: { value },
-      selectTextOverride,
-      /* we do not want the props in the next line to be part of otherProps */
-      // meta,
-      // TODO Fix This expanded,
       selectOnHighlight,
       onCloseCallback,
-      onExpandCallback, // eslint-disable-line no-unused-vars
+      onExpandCallback,
       labels,
       ...otherProps
     } = this.props;
 
     const { expanded, highlightedIndex } = this.state;
 
-    // TODO Fix This meta = meta || {}; // meta may be undefined if this component is not wrapped with a redux-form Field HOC
-    // let {touched, error, warning} = meta;
-
-    const showError = false; // TODO Fix This error && (touched || showErrorIfUntouched);
-    const showWarning = false; // TODO Fix This !showError && warning && (touched || showWarningIfUntouched);
-    // If there is an error then show it; otherwise, if there is a warning then show it
-
-    // TODO Fix This let errorMessage = showError ? error : (showWarning ? warning : null);
-
-    // TODO Fix This const  messageClassName = cssClassName('inline-', {
-    //   'error-message': showError,
-    //   'warning-message': showWarning,
-    // });
-    const dataAttributes = 0;
-    // TODO Fix This showError || showWarning ? { [ERROR_FORM_NAME_DATA_ATTRIBUTE]: meta.form || '' } : {};
+    const dataAttributes = {};
 
     const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
-    const buttonText = getButtonText(this.props);
+    const buttonText = getButtonText(selectedIndex, this.props);
+    const buttonIconText = expanded ? buttonIconExpanded : buttonIconClosed;
     const dataLocatorSuffix = buttonText
       .toLowerCase()
       .split(' ')
       .join('_');
-    const buttonIconText = expanded ? buttonIconExpanded : buttonIconClosed; // || '+';
     const buttonClassName = cssClassName(
       'custom-select-button ',
       className,
@@ -558,13 +526,12 @@ class CustomSelect extends React.Component {
       { '-closed': !expanded },
       { ' custom-select-button-placeholder': selectedIndex < 0 }
     );
-    const appliedTabIndex = 0; // TODO Fix This disabled ? -1 : tabIndex || 0;
+    const appliedTabIndex = this.getTabIndex();
     const containingClassName = cssClassName(
       `custom-select-common ${className} `,
       className,
       { '-closed': !expanded },
-      { '-disabled': disabled },
-      (showError || showWarning) && ' label-error'
+      { '-disabled': disabled }
     );
     const uniqueId = `custom-select_${this.customSelectCounter}`;
     const errorUniqueId = `error_${uniqueId}`; // Unique Id to connect the error input with its error message. Both needs to be the same. Accessibility requirement. DT-30852
@@ -595,7 +562,7 @@ class CustomSelect extends React.Component {
               component="span"
               textAlign="center"
               tabIndex={-1}
-              fontSize="fs14"
+              fontSize="fs13"
               fontFamily="secondary"
               color="gray.900"
               fontWeight={expanded ? 'extrabold' : 'regular'}
@@ -634,10 +601,10 @@ CustomSelect.defaultProps = {
   placeholder: '',
   buttonIconClosed: '',
   buttonIconExpanded: '',
-  onExpandCallback: {},
+  onExpandCallback: () => null,
   tabIndex: 0,
   expanded: false,
-  onCloseCallback: {},
+  onCloseCallback: () => null,
   disableExpandStateChanges: false,
   selectOnHighlight: false,
   showErrorIfUntouched: false,

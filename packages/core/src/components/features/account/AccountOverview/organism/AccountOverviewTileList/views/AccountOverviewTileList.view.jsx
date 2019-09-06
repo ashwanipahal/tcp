@@ -11,78 +11,54 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountOverviewTileList.style';
 import { isCanada } from '../../../../../../../utils';
 
+const componentMap = {
+  profileInfoTile: ProfileInfoTile,
+  addressOverviewTile: AddressOverviewTile,
+  paymentOverviewTile: PaymentOverviewTile,
+  myPlaceRewardsOverviewTile: MyPlaceRewardsOverviewTile,
+  myWalletTile: MyWalletTile,
+};
+
+export const COMPONENTS_US = [
+  'profileInfoTile',
+  'addressOverviewTile',
+  'paymentOverviewTile',
+  'myPlaceRewardsOverviewTile',
+  'myWalletTile',
+];
+export const COMPONENTS_CA = [
+  'profileInfoTile',
+  'addressOverviewTile',
+  'paymentOverviewTile',
+  'myWalletTile',
+];
+
 export const AccountOverviewTileList = ({ className, ...otherProps }) => {
-  const isCA = isCanada();
+  const componentList = isCanada() ? COMPONENTS_CA : COMPONENTS_US;
+
   return (
     <Row fullBleed className={`${className} elem-pt-LRG`}>
-      <Col
-        colSize={{
-          small: 6,
-          medium: 4,
-          large: 4,
-        }}
-        ignoreGutter={{
-          small: true,
-        }}
-        className="overviewCol elem-mb-XL"
-      >
-        <ProfileInfoTile {...otherProps} />
-      </Col>
-      <Col
-        colSize={{
-          small: 6,
-          medium: 4,
-          large: 4,
-        }}
-        ignoreGutter={{
-          small: true,
-        }}
-        className="overviewCol elem-mb-XL"
-      >
-        <AddressOverviewTile {...otherProps} />
-      </Col>
-      <Col
-        colSize={{
-          small: 6,
-          medium: 4,
-          large: 4,
-        }}
-        ignoreGutter={{
-          large: true,
-          small: true,
-        }}
-        className="overviewCol elem-mb-XL"
-      >
-        <PaymentOverviewTile {...otherProps} />
-      </Col>
-      {!isCA && (
-        <Col
-          colSize={{
-            small: 6,
-            medium: 4,
-            large: 4,
-          }}
-          ignoreGutter={{
-            small: true,
-          }}
-          className="overviewCol elem-mb-XL"
-        >
-          <MyPlaceRewardsOverviewTile {...otherProps} />
-        </Col>
-      )}
-      <Col
-        colSize={{
-          small: 6,
-          medium: 4,
-          large: 4,
-        }}
-        ignoreGutter={{
-          small: true,
-        }}
-        className="overviewCol elem-mb-XL"
-      >
-        <MyWalletTile {...otherProps} />
-      </Col>
+      {componentList.map((componentName, index) => {
+        const Component = componentMap[componentName];
+        return (
+          <Col
+            key={componentName}
+            colSize={{
+              small: 6,
+              medium: 4,
+              large: 4,
+            }}
+            ignoreGutter={{
+              small: true,
+              medium: (index + 1) % 2 === 0,
+              large: (index + 1) % 3 === 0,
+            }}
+            className="overviewCol elem-mb-XL"
+          >
+            <Component {...otherProps} />
+          </Col>
+        );
+      })}
     </Row>
   );
 };

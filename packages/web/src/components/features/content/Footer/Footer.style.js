@@ -9,25 +9,33 @@ export default css`
   .footer_top_candidate_a .candidate_a_inline_container_button {
     text-align: center;
   }
-  .footer_top_candidate_a .candidate_a_inline_container_button button {
+  .candidate_a_inline_container_button button{
+    white-space: nowrap;
     font-size: ${props => props.theme.typography.fontSizes.fs13};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-      ${props => props.theme.spacing.ELEM_SPACING.XL};
+    padding: 12px 28px;
     min-height: 42px;
-  }
 
-  .footer_top_candidate_a .heading_text {
+    &.candidate_a_form_button {
+      margin-top: 8px;
+    }
+  }
+  .candidate-b_buttons {
+    padding: 11px 0 0 0;
+  }
+  .heading_text, .footer_top_candidate_a .heading_text  {
     margin-bottom: 15px;
     text-align: center;
 
     .style1 {
-      color: #6a6a6a;
+      color: ${props => props.theme.colorPalette.gray[800]};
     }
     .style2 {
-      color: #4b9fdd;
+      color: ${props => props.theme.colorPalette.primary.main};
     }
   }
-
+  .candidate-b_buttons .heading_text {
+    font-size: 10px;
+  }
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
     font-size: 12px;
     line-height: 2.08;
@@ -124,22 +132,30 @@ export default css`
     .footer_top_candidate_a .refer-a-friend {
       font-size: 12px;
       line-height: 1.67;
+      margin-bottom: 0;
     }
     &.navigation-footer .col-md-half-width {
       width: 100%;
+      margin-right: 0;
     }
     &.navigation-footer .hide-in-medium-up {
       display: block;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
-    padding-top: 12px;
+    padding-top: 64px;
     .hide-in-large-up {
       display: none;
     }
     .footer-top {
       padding-bottom: 44px;
       border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    }
+    .candidate-b_buttons {
+      padding: 11px 38px 0 38px;
+    }
+    .candidate-b_buttons .heading_text{
+      font-size: 15px;
     }
     .footer-bottom {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
@@ -178,6 +194,10 @@ export default css`
       font-size: 15px;
       line-height: 1.67;
     }
+  }
+
+  .checkout-pages &{
+    display: none;
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {

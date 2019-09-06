@@ -2,44 +2,32 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
-  <SlotA
-    className="moduleD"
+  <HomePageSlots
+    modules={
+      Object {
+        "moduleA": [Function],
+        "moduleB": [Function],
+        "moduleD": [Function],
+        "moduleH": [Function],
+        "moduleK": [Function],
+        "moduleL": [Function],
+        "moduleN": [Function],
+      }
+    }
     navigation={
       Object {
         "getParam": [Function],
       }
     }
   />
-  <SlotB
-    className="moduleH"
+  <ModuleB
     navigation={
       Object {
         "getParam": [Function],
       }
     }
   />
-  <SlotC
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <SlotD
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <SlotE
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <SlotF
+  <Connect(GetCandid)
     navigation={
       Object {
         "getParam": [Function],
@@ -47,14 +35,23 @@ exports[`HomePageView should render correctly 1`] = `
     }
   />
   <Styled(CustomButton)
+    active={false}
     buttonVariation="variable-width"
+    color=""
     customStyle={Object {}}
     disableButton={false}
+    fill=""
     fullWidth={true}
     locator=""
     onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
     text="PLP Page"
     url=""
   />
+  <Connect(ModuleJ) />
 </ScrollViewMock>
 `;

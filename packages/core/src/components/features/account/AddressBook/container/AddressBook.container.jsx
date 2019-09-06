@@ -7,7 +7,6 @@ import {
   setDeleteModalMountedState,
   setAddressBookNotification,
 } from './AddressBook.actions';
-import { getUserInfo } from '../../User/container/User.actions';
 import AddressView from '../views/AddressView';
 import {
   getAddressListState,
@@ -22,7 +21,6 @@ import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actio
 // @flow
 type Props = {
   getAddressListAction: () => void,
-  getUserInfoAction: () => void,
   addressList: List<any>,
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
@@ -37,8 +35,7 @@ type Props = {
 };
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getAddressListAction, getUserInfoAction } = this.props;
-    getUserInfoAction();
+    const { getAddressListAction } = this.props;
     getAddressListAction();
   }
 
@@ -93,9 +90,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     setDeleteModalMountState: payload => {
       dispatch(setDeleteModalMountedState(payload));
-    },
-    getUserInfoAction: () => {
-      dispatch(getUserInfo());
     },
     clearAddressBookNotification: () => {
       dispatch(

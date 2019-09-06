@@ -1,10 +1,10 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
+import BillingPage from '../organisms/BillingPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
@@ -21,30 +21,6 @@ class CheckoutPage extends React.PureComponent {
   // }
   // CheckoutProgressUtils.routeToStage(requestedStage, cartOrderItems, false, currentStage);
   // }
-
-  onPickUpSubmit = data => {
-    const { onPickupSubmit } = this.props;
-    const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
-    const { hasAlternatePickup } = data.pickUpAlternate;
-    const params = {
-      pickUpContact: {
-        firstName,
-        lastName,
-        phoneNumber,
-        emailAddress,
-        smsInfo: {
-          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
-        },
-      },
-      hasAlternatePickup,
-      pickUpAlternate: {
-        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-      },
-    };
-    onPickupSubmit(params);
-  };
 
   renderLeftSection = () => {
     const {
@@ -65,8 +41,10 @@ class CheckoutPage extends React.PureComponent {
       smsSignUpLabels,
       pickupInitialValues,
       loadShipmentMethods,
-      // onPickupSubmit,
+      onPickupSubmit,
       orderHasShipping,
+      routeToPickupPage,
+      billingProps,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -77,15 +55,15 @@ class CheckoutPage extends React.PureComponent {
         pickupInitialValues.pickUpContact &&
         pickupInitialValues.pickUpContact.firstName)
     );
-
     return (
       <div>
-        {currentSection.toLowerCase() === 'pickup' && isFormLoad && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
             initialValues={pickupInitialValues}
+            pickupInitialValues={pickupInitialValues}
             onEditModeChange={onEditModeChange}
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
@@ -94,11 +72,11 @@ class CheckoutPage extends React.PureComponent {
             pickUpLabels={pickUpLabels}
             smsSignUpLabels={smsSignUpLabels}
             orderHasShipping={orderHasShipping}
-            onSubmit={this.onPickUpSubmit}
+            onPickupSubmit={onPickupSubmit}
             navigation={navigation}
           />
         )}
-        {currentSection.toLowerCase() === 'shipping' && (
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
             isGuest={isGuest}
@@ -106,14 +84,18 @@ class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             handleSubmit={submitShippingSection}
             loadShipmentMethods={loadShipmentMethods}
+            routeToPickupPage={routeToPickupPage}
           />
+        )}
+        {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
+          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} />
         )}
       </div>
     );
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} marginTop />;
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isCheckoutView />;
   }
 }
 
@@ -125,6 +107,7 @@ CheckoutPage.propTypes = {
   isSmsUpdatesEnabled: PropTypes.bool.isRequired,
   currentPhoneNumber: PropTypes.number.isRequired,
   shippingProps: PropTypes.shape({}).isRequired,
+  billingProps: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
@@ -139,7 +122,8 @@ CheckoutPage.propTypes = {
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
+  routeToPickupPage: PropTypes.func.isRequired,
 };
 
-export default withRouter(CheckoutPage);
+export default CheckoutPage;
 export { CheckoutPage as CheckoutPageVanilla };

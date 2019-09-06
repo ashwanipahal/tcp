@@ -2,6 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform } from 'react-native';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
 
@@ -47,7 +48,12 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
     case 'moduleN':
+      // eslint-disable-next-line global-require
       resolve(require('../services/handler/graphQL/queries/moduleN'));
+      break;
+    case 'moduleB':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleB'));
       break;
     default:
       reject();
@@ -299,7 +305,7 @@ export const resetNavigationStack = navigation => {
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
-  console.log(
+  logger.info(
     'unboxKey',
     `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
       envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
@@ -361,6 +367,8 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
 
   return {
     ...basicConfig,
@@ -369,6 +377,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     ...brandConfig,
     isMobile: false,
     cookie: null,
+    catalogId,
   };
 };
 
@@ -441,5 +450,4 @@ export const isAndroid = () => Platform.OS === 'android';
 
 export default {
   getSiteId,
-  bindAllClassMethodsToThis,
 };

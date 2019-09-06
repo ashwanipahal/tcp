@@ -15,6 +15,13 @@ import {
 } from '../container/loginUtils/keychain.utils.native';
 
 class LoginView extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      setEmailid: '',
+    };
+  }
+
   componentDidMount() {
     const { onSubmit } = this.props;
     getUserLoginDetails().then(credentials => {
@@ -22,6 +29,7 @@ class LoginView extends React.PureComponent {
         emailAddress: credentials.username,
         password: credentials.password,
       };
+      this.setState({ setEmailid: credentials.username });
       if (credentials) {
         isSupportedTouch().then(techAvailable => {
           if (techAvailable) {
@@ -40,10 +48,11 @@ class LoginView extends React.PureComponent {
     const { onSubmit } = this.props;
     resetTouchPassword();
     setUserLoginDetails(formdata.emailAddress, formdata.password);
+
     onSubmit(formdata);
 
-    isSupportedTouch().then(touchAvailable => {
-      if (touchAvailable && formdata.userTouchId) {
+    isSupportedTouch().then(biometryType => {
+      if (biometryType && formdata.userTouchId) {
         touchIDCheck();
       }
     });
@@ -64,11 +73,16 @@ class LoginView extends React.PureComponent {
       onCreateAccountClick,
       navigation,
       variation,
+      handleContinueAsGuest,
       loginError,
+      showCheckoutModal,
+      showLogin,
     } = this.props;
+    const { setEmailid } = this.state;
     return (
       <ScrollViewStyle>
         <LoginSection
+          setEmailid={setEmailid}
           onSubmit={this.onSubmitHandler}
           labels={labels}
           loginError={loginError}
@@ -84,6 +98,9 @@ class LoginView extends React.PureComponent {
           onCreateAccountClick={onCreateAccountClick}
           navigation={navigation}
           variation={variation}
+          handleContinueAsGuest={handleContinueAsGuest}
+          showCheckoutModal={showCheckoutModal}
+          showLogin={showLogin}
         />
       </ScrollViewStyle>
     );
@@ -104,12 +121,17 @@ LoginView.propTypes = {
   onCreateAccountClick: PropTypes.string.isRequired,
   navigation: PropTypes.shape({}),
   variation: PropTypes.bool.isRequired,
+  handleContinueAsGuest: PropTypes.func.isRequired,
   loginError: PropTypes.bool.isRequired,
+  showCheckoutModal: PropTypes.func,
+  showLogin: PropTypes.func,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   navigation: {},
+  showCheckoutModal: () => {},
+  showLogin: () => {},
 };
 
 export default LoginView;

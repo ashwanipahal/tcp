@@ -17,7 +17,8 @@ export const LETTER_SPACINGS = {
   ls167: '1.67px',
   ls317: '3.17px',
   ls4: '4px',
-
+  ls1: '1px',
+  ls2: '2px',
   normal: 'normal',
 };
 
@@ -36,10 +37,12 @@ export const FONT_SIZES = {
   fs64: '64px',
   fs48: '48px',
   fs42: '42px',
+  fs40: '40px',
   fs38: '38px',
   fs36: '36px',
   fs32: '32px',
   fs28: '28px',
+  fs26: '26px',
   fs24: '24px',
   fs22: '22px',
   fs20: '20px',

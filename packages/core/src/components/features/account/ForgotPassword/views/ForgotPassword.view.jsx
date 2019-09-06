@@ -55,13 +55,11 @@ class ForgotPasswordView extends React.Component<Props, State> {
       pristine,
       className,
       showNotification,
-      resetForgotPasswordErrorResponse,
       labels,
       successFullResetEmail,
       handleSubmit,
+      forgotPasswordErrorMessage,
     } = this.props;
-    const errorObject =
-      resetForgotPasswordErrorResponse && resetForgotPasswordErrorResponse.get('errors');
     const { email } = this.state;
     return (
       <React.Fragment className={className}>
@@ -82,15 +80,11 @@ class ForgotPasswordView extends React.Component<Props, State> {
           onSubmit={handleSubmit(this.onFormSubmit)}
           className={`${className} forgot-password-form`}
         >
-          {showNotification && (
+          {showNotification && forgotPasswordErrorMessage && (
             <Notification
               status="error"
               colSize={{ large: 11, medium: 7, small: 6 }}
-              message={
-                errorObject
-                  ? labels.password.lbl_forgotPassword_userNotAvailable
-                  : labels.password.lbl_forgotPassword_apiError
-              }
+              message={forgotPasswordErrorMessage}
             />
           )}
 
@@ -137,7 +131,8 @@ class ForgotPasswordView extends React.Component<Props, State> {
             <React.Fragment>
               <BodyCopy
                 fontSize="fs16"
-                fontWeight="extrabold"
+                fontWeight="black"
+                color="gray.700"
                 fontFamily="secondary"
                 textAlign="center"
               >
@@ -148,6 +143,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontWeight="semibold"
                 fontFamily="secondary"
                 textAlign="center"
+                color="gray.700"
                 className="elem-mb-SM"
                 fontSize="fs12"
               >

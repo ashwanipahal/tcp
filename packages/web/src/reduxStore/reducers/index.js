@@ -31,10 +31,13 @@ import PointsHistoryReducer from '@tcp/core/src/components/features/account/comm
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
+import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
 import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
 import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
+import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
+import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -75,17 +78,22 @@ import {
   RESET_PASSWORD_REDUCER_KEY,
   CHANGE_PASSWORD_REDUCER_KEY,
   UPDATE_PROFILE_REDUCER_KEY,
+  MY_PROFILE_REDUCER_KEY,
   USER_REDUCER_KEY,
   CHECKOUT_REDUCER_KEY,
   DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
   OPTIMIZELY_FEATURES_REDUCER,
+  TOAST_REDUCER_KEY,
+  MAILING_ADDRESS_REDUCER_KEY,
+  PRODUCT_TAB_LIST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
+import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
@@ -106,11 +114,17 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 //   SESSIONCONFIG_REDUCER_KEY
 // );
 
+const filteredProductTabListReducer = createFilteredReducer(
+  ProductTabListReducer,
+  PRODUCT_TAB_LIST_REDUCER_KEY
+);
+
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
+  [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
@@ -147,8 +161,11 @@ export default combineReducers({
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
+  [MY_PROFILE_REDUCER_KEY]: MyProfileReducer,
   [USER_REDUCER_KEY]: UserReducer,
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
+  [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
+  [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
 });

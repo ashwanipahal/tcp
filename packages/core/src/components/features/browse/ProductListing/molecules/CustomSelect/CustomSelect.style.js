@@ -6,6 +6,7 @@ export default css`
     position: relative;
     display: inline-block;
     padding-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    cursor: pointer;
 
     &:after {
       content: '';

@@ -125,7 +125,6 @@ export class PaymentTile extends React.PureComponent<Props> {
             text={labels.lbl_overview_view_payments}
             buttonVariation="variable-width"
             fill="BLUE"
-            color="white"
             onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}
           />
         </ButtonWrapperStyle>

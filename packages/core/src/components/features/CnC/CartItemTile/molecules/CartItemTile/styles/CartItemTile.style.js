@@ -74,12 +74,27 @@ export default css`
     display: inline-block;
   }
 
-  .crossDeleteIcon {
+  .crossDeleteIconMiniBag {
     float: right;
     cursor: pointer;
     width: 10px;
     height: 10px;
     padding-top: 0px;
+  }
+
+  .crossDeleteIconBag {
+    float: right;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    padding-top: 0px;
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .crossDeleteIconBag {
+      width: 10px;
+      height: 10px;
+    }
   }
 
   .product-detail {
@@ -101,9 +116,7 @@ export default css`
   }
 
   .product-detail-bag {
-    display: flex;
-    flex-wrap: wrap;
-    width: fit-content;
+    display: inline-block;
   }
 
   .label-responsive {
@@ -115,7 +128,16 @@ export default css`
     margin-right: 0px;
   }
 
+  @media ${props => props.theme.mediaQuery.large} {
+    .product-detail-bag {
+      display: flex;
+      flex-wrap: wrap;
+      width: fit-content;
+    }
+  }
+
   .product-tile-wrapper {
+    font-size: 13px;
     flex-wrap: nowrap;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       position: relative;
@@ -138,8 +160,7 @@ export default css`
     }
 
     .color-size-fit-label {
-      width: 40px;
-      display: inline-block;
+      width: 49px;
     }
 
     .bag-product-detail-wrapper {
@@ -150,29 +171,47 @@ export default css`
       }
 
       .label-responsive {
-        width: fit-content;
-        margin-right: 22px;
+        width: 49px;
+        margin-right: 0px;
+        padding-right: 0px;
       }
 
       .value-responsive {
         flex: 1;
-        padding-left: 10px;
+        padding-left: 4px;
+        width: 49px;
+        margin-right: 0px;
       }
       .label-responsive-wrapper {
-        padding-top: 0;
+        padding-top: 2px;
         display: flex;
         flex: 1;
-        width: auto;
-        margin-right: 22px;
+        padding-right: 0px;
+        /* stylelint-disable */
+        span:not(.list-price) {
+          font-size: ${props => props.theme.fonts.fontSize.listmenu.small}px;
+        }
+        /* stylelint-enable */
       }
 
       .responsive-edit-css {
-        padding-top: 2px;
+        padding-top: 4px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
         padding-left: 15px;
+        left: 155px;
+        bottom: 4px;
       }
+
+      /* stylelint-disable */
+      .product-detail-bag {
+        padding-top: 4px;
+        span {
+          font-size: 13px;
+        }
+      }
+      /* stylelint-enable */
     }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
@@ -183,21 +222,18 @@ export default css`
       }
       .save-for-later-label {
         position: absolute;
-        bottom: 0px;
-        left: 0;
+        bottom: 4px;
+        left: 170px;
         width: 100%;
       }
       .color-map-size-fit {
-        display: block;
+        display: inline-grid;
       }
       .responsive-edit-css {
         position: absolute;
         bottom: 0;
         right: 50%;
         cursor: pointer;
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 15px;
       }
       .bag-product-detail-wrapper {
         position: static;
@@ -214,7 +250,7 @@ export default css`
     }
 
     .price-label {
-      margin-left: 170px;
+      margin-left: 122px;
     }
   }
 
@@ -239,13 +275,19 @@ export default css`
     cursor: pointer;
     text-decoration: underline;
   }
+
+  .updateOOSBag {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
   .parent- {
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    bottom: 17px;
-    right: 2px;
-    width: auto;
+    padding-bottom: 0px;
+    .save-for-later-label {
+      right: -57px;
+      position: absolute;
+      bottom: 17px;
+    }
   }
 
   .tile-header {

@@ -17,6 +17,9 @@ const AddressBook = props => {
     initialValues,
     currentForm,
     toggleAddressModal,
+    addressLine1,
+    countryState,
+    setModalHeading,
   } = props;
   return (
     <View {...props}>
@@ -27,6 +30,7 @@ const AddressBook = props => {
             heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
             onError={submitAddressFormAction}
             toggleAddressModal={toggleAddressModal}
+            setModalHeading={setModalHeading}
           />
         )}
 
@@ -41,6 +45,9 @@ const AddressBook = props => {
             onCancel={onCancel}
             initialValues={initialValues}
             currentForm={currentForm}
+            addressLine1={addressLine1}
+            countryState={countryState}
+            setModalHeading={setModalHeading}
           />
         )}
       </ScrollView>
@@ -58,6 +65,10 @@ AddressBook.propTypes = {
   initialValues: PropTypes.shape({}),
   currentForm: PropTypes.string,
   toggleAddressModal: PropTypes.func,
+  addressLine1: PropTypes.string,
+  setAddressLine1: PropTypes.func,
+  countryState: PropTypes.string,
+  setModalHeading: PropTypes.func,
 };
 
 AddressBook.defaultProps = {
@@ -69,6 +80,10 @@ AddressBook.defaultProps = {
   onCancel: () => null,
   initialValues: {},
   currentForm: null,
+  addressLine1: '',
+  setAddressLine1: () => {},
+  countryState: '',
+  setModalHeading: PropTypes.func,
 };
 
 export default withStyles(AddressBook, ParentContainer);

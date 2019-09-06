@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
 const TileWrapper = styled.View`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  padding-bottom: 0;
+  padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XL}
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
   align-items: center;
 `;
 
@@ -45,7 +45,7 @@ const ButtonWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-const CouponIconWrapper = styled.View`
+const SpaceWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
@@ -58,5 +58,5 @@ export {
   TileTopContent,
   TileDesc,
   ButtonWrapper,
-  CouponIconWrapper,
+  SpaceWrapper,
 };

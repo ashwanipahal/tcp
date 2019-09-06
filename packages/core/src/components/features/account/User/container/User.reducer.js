@@ -60,10 +60,23 @@ const UserReducer = (state = initialState, { type, payload }) => {
           })
         )
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(USER_CONSTANTS.GET_USER_INFO_TTL));
+    case USER_CONSTANTS.SET_USER_PERSONAL_DATA:
+      return state.mergeDeep({
+        personalData: fromJS(payload),
+      });
     case USER_CONSTANTS.RESET_USER_INFO:
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
+    case USER_CONSTANTS.SET_SURVEY_QUESTIONS:
+      return state.set(
+        'survey',
+        fromJS({
+          questions: payload,
+          answers: [],
+        })
+      );
+
     default:
       if (state instanceof Object) {
         return fromJS(state);

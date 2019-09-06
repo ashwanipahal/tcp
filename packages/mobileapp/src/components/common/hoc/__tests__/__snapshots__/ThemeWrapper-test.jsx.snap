@@ -37,6 +37,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "B100": "#00A7E0",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -202,6 +203,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "RED": "#ED0505",
           "YELLOW": "#F6D343",
         },
+        "REWARDS_OVERLAY": "rgba(25, 25, 25, 0.7)",
         "TEXT": Object {
           "BLUE": "#2e6a91",
           "DARK": "#1a1a1a",
@@ -433,14 +435,17 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fs20": "20px",
           "fs22": "22px",
           "fs24": "24px",
+          "fs26": "26px",
           "fs28": "28px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
+          "fs40": "40px",
           "fs42": "42px",
           "fs48": "48px",
           "fs52": "52px",
           "fs64": "64px",
+          "fs9": "9px",
         },
         "fontWeights": Object {
           "black": "900",
@@ -523,7 +528,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "lineHeight": "normal",
         },
         "letterSpacings": Object {
+          "ls1": "1px",
           "ls167": "1.67px",
+          "ls2": "2px",
           "ls222": "2.22px",
           "ls257": "2.57px",
           "ls271": "2.71px",

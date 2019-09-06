@@ -1,301 +1,325 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PickUpFormPartVanilla component  should renders correctly props with state update  1`] = `
-<ScrollViewMock>
-  <Styled(View)>
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="pickup"
+    navigation={null}
+  />
+  <ScrollViewMock>
     <Styled(View)>
-      <ErrorMessage
-        className="pickupError"
-        dataLocator="pickup-error"
-        error="Error handle"
-        fontSize="fs14"
-        fontWeight="black"
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Text) />
       <Styled(View)>
-        <FormSection
-          name="pickUpContact"
-        >
-          <Styled(PickupMainContactEditForm)
-            className="pickup-contact-guest-form"
-            dispatch={[MockFunction]}
-            formData={Object {}}
-            isEditing={false}
-            isMobile={true}
-            isReset={false}
-            labels={Object {}}
-            onClose={[Function]}
-            onEditModeChange={[Function]}
-            onSubmit={[Function]}
-            showPhoneNumber={true}
-          />
-        </FormSection>
+        <ErrorMessage
+          className="pickupError"
+          dataLocator="pickup-error"
+          error="Error handle"
+          fontSize="fs14"
+          fontWeight="black"
+        />
       </Styled(View)>
       <Styled(View)>
-        <FormSection
-          name="smsSignUp"
-        >
-          <SMSFormFields
-            addressPhoneNo={null}
-            altInitValue=""
-            dispatch={[Function]}
-            formName="checkoutPickup"
-            formSection="smsSignUp"
-            isOrderUpdateChecked={false}
-            labels={Object {}}
-          />
-        </FormSection>
-      </Styled(View)>
-      <Styled(View)>
+        <CheckoutSectionTitleDisplay
+          dataLocator="pickup-title"
+        />
         <Styled(View)>
-          <Styled(View)>
-            <Field
-              component={[Function]}
-              dataLocator="hide-show-checkbox"
-              enableSuccessCheck={false}
-              name="emailSignup"
+          <FormSection
+            name="pickUpContact"
+          >
+            <Styled(PickupMainContactEditForm)
+              className="pickup-contact-guest-form"
+              dispatch={[MockFunction]}
+              formData={Object {}}
+              isEditing={false}
+              isMobile={true}
+              isReset={false}
+              labels={Object {}}
+              onClose={[Function]}
+              onEditModeChange={[Function]}
+              onSubmit={[Function]}
+              showPhoneNumber={true}
             />
-          </Styled(View)>
-          <Styled(View)>
-            <Styled(View)>
-              <Styled(BodyCopy)
-                dataLocator="pickup-email-signUp-heading-lbl"
-                fontSize="fs14"
-                fontWeight="regular"
-                mobileFontFamily="secondary"
-              />
-            </Styled(View)>
-          </Styled(View)>
+          </FormSection>
         </Styled(View)>
         <Styled(View)>
-          <Styled(View) />
-          <Styled(View)>
-            <Styled(BodyCopy)
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
+          <FormSection
+            name="smsSignUp"
+          >
+            <SMSFormFields
+              addressPhoneNo={null}
+              altInitValue=""
+              dispatch={[Function]}
+              formName="checkoutPickup"
+              formSection="smsSignUp"
+              isOrderUpdateChecked={false}
+              labels={Object {}}
             />
+          </FormSection>
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Field
+                component={[Function]}
+                dataLocator="hide-show-checkbox"
+                enableSuccessCheck={false}
+                name="emailSignup"
+              />
+            </Styled(View)>
+            <Styled(View)>
+              <Styled(View)>
+                <Styled(BodyCopy)
+                  dataLocator="pickup-email-signUp-heading-lbl"
+                  fontSize="fs14"
+                  fontWeight="regular"
+                  mobileFontFamily="secondary"
+                />
+              </Styled(View)>
+            </Styled(View)>
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View) />
             <Styled(View)>
               <Styled(BodyCopy)
                 fontFamily="primary"
                 fontSize="fs10"
                 fontWeight="regular"
               />
+              <Styled(View)>
+                <Styled(BodyCopy)
+                  fontFamily="primary"
+                  fontSize="fs10"
+                  fontWeight="regular"
+                />
+              </Styled(View)>
+              <Styled(Anchor)
+                accessibilityLabel=""
+                anchorVariation="primary"
+                customStyle={Object {}}
+                fontSizeVariation="small"
+                href="#"
+                locator=""
+                noLink={true}
+                onPress={null}
+                target="_blank"
+                text=""
+                underline={true}
+                visible={false}
+              />
             </Styled(View)>
-            <Styled(Anchor)
-              accessibilityLabel=""
-              anchorVariation="primary"
-              customStyle={Object {}}
-              fontSizeVariation="small"
-              href="#"
-              locator=""
-              noLink={true}
-              onPress={null}
-              target="_blank"
-              text=""
-              underline={true}
-              visible={false}
-            />
           </Styled(View)>
         </Styled(View)>
-      </Styled(View)>
-      <Styled(View)>
-        <FormSection
-          name="pickUpAlternate"
-        >
-          <Styled(PickUpAlternateFormPart)
-            formName="checkoutPickup"
-            formSection="pickUpAlternate"
-            isAlternateUpdateChecked={false}
-            isCondensed={false}
-            isEditing={false}
-            labels={Object {}}
-            showNoteOnToggle={true}
-          />
-        </FormSection>
+        <Styled(View)>
+          <FormSection
+            name="pickUpAlternate"
+          >
+            <Styled(PickUpAlternateFormPart)
+              formName="checkoutPickup"
+              formSection="pickUpAlternate"
+              isAlternateUpdateChecked={false}
+              isCondensed={false}
+              isEditing={false}
+              labels={Object {}}
+              showNoteOnToggle={true}
+            />
+          </FormSection>
+        </Styled(View)>
       </Styled(View)>
     </Styled(View)>
-  </Styled(View)>
-  <CnCCommonTemplate
-    btnText="NEXT:SHIPPING"
-    routeToPage="ShippingPage"
-  />
-</ScrollViewMock>
+    <CnCCommonTemplate
+      btnText="NEXT:SHIPPING"
+      routeToPage="ShippingPage"
+    />
+  </ScrollViewMock>
+</Fragment>
 `;
 
 exports[`PickUpFormPartVanilla component should renders correctly props  present  1`] = `
-<ScrollViewMock>
-  <Styled(View)>
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="pickup"
+    navigation={null}
+  />
+  <ScrollViewMock>
     <Styled(View)>
-      <ErrorMessage
-        className="pickupError"
-        dataLocator="pickup-error"
-        error="Error handle"
-        fontSize="fs14"
-        fontWeight="black"
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Text) />
       <Styled(View)>
-        <FormSection
-          name="pickUpContact"
-        >
-          <Styled(PickupMainContactEditForm)
-            className="pickup-contact-guest-form"
-            dispatch={[MockFunction]}
-            formData={Object {}}
-            isEditing={true}
-            isMobile={false}
-            isReset={false}
-            labels={Object {}}
-            onClose={[Function]}
-            onEditModeChange={[Function]}
-            onSubmit={[Function]}
-            showPhoneNumber={true}
-          />
-        </FormSection>
+        <ErrorMessage
+          className="pickupError"
+          dataLocator="pickup-error"
+          error="Error handle"
+          fontSize="fs14"
+          fontWeight="black"
+        />
       </Styled(View)>
       <Styled(View)>
-        <FormSection
-          name="smsSignUp"
-        >
-          <SMSFormFields
-            addressPhoneNo={null}
-            altInitValue=""
-            dispatch={[Function]}
-            formName="checkoutPickup"
-            formSection="smsSignUp"
-            isOrderUpdateChecked={false}
-            labels={Object {}}
-          />
-        </FormSection>
-      </Styled(View)>
-      <Styled(View)>
+        <CheckoutSectionTitleDisplay
+          dataLocator="pickup-title"
+        />
         <Styled(View)>
-          <Styled(View)>
-            <Field
-              component={[Function]}
-              dataLocator="hide-show-checkbox"
-              enableSuccessCheck={false}
-              name="emailSignup"
+          <FormSection
+            name="pickUpContact"
+          >
+            <Styled(PickupMainContactEditForm)
+              className="pickup-contact-guest-form"
+              dispatch={[MockFunction]}
+              formData={Object {}}
+              isEditing={true}
+              isMobile={false}
+              isReset={false}
+              labels={Object {}}
+              onClose={[Function]}
+              onEditModeChange={[Function]}
+              onSubmit={[Function]}
+              showPhoneNumber={true}
             />
-          </Styled(View)>
-          <Styled(View)>
-            <Styled(View)>
-              <Styled(BodyCopy)
-                dataLocator="pickup-email-signUp-heading-lbl"
-                fontSize="fs14"
-                fontWeight="regular"
-                mobileFontFamily="secondary"
-              />
-            </Styled(View)>
-          </Styled(View)>
+          </FormSection>
         </Styled(View)>
         <Styled(View)>
-          <Styled(View) />
-          <Styled(View)>
-            <Styled(BodyCopy)
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
+          <FormSection
+            name="smsSignUp"
+          >
+            <SMSFormFields
+              addressPhoneNo={null}
+              altInitValue=""
+              dispatch={[Function]}
+              formName="checkoutPickup"
+              formSection="smsSignUp"
+              isOrderUpdateChecked={false}
+              labels={Object {}}
             />
+          </FormSection>
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Field
+                component={[Function]}
+                dataLocator="hide-show-checkbox"
+                enableSuccessCheck={false}
+                name="emailSignup"
+              />
+            </Styled(View)>
+            <Styled(View)>
+              <Styled(View)>
+                <Styled(BodyCopy)
+                  dataLocator="pickup-email-signUp-heading-lbl"
+                  fontSize="fs14"
+                  fontWeight="regular"
+                  mobileFontFamily="secondary"
+                />
+              </Styled(View)>
+            </Styled(View)>
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View) />
             <Styled(View)>
               <Styled(BodyCopy)
                 fontFamily="primary"
                 fontSize="fs10"
                 fontWeight="regular"
               />
+              <Styled(View)>
+                <Styled(BodyCopy)
+                  fontFamily="primary"
+                  fontSize="fs10"
+                  fontWeight="regular"
+                />
+              </Styled(View)>
+              <Styled(Anchor)
+                accessibilityLabel=""
+                anchorVariation="primary"
+                customStyle={Object {}}
+                fontSizeVariation="small"
+                href="#"
+                locator=""
+                noLink={true}
+                onPress={null}
+                target="_blank"
+                text=""
+                underline={true}
+                visible={false}
+              />
             </Styled(View)>
-            <Styled(Anchor)
-              accessibilityLabel=""
-              anchorVariation="primary"
-              customStyle={Object {}}
-              fontSizeVariation="small"
-              href="#"
-              locator=""
-              noLink={true}
-              onPress={null}
-              target="_blank"
-              text=""
-              underline={true}
-              visible={false}
-            />
           </Styled(View)>
         </Styled(View)>
-      </Styled(View)>
-      <Styled(View)>
-        <FormSection
-          name="pickUpAlternate"
-        >
-          <Styled(PickUpAlternateFormPart)
-            formName="checkoutPickup"
-            formSection="pickUpAlternate"
-            isAlternateUpdateChecked={false}
-            isCondensed={false}
-            isEditing={true}
-            labels={Object {}}
-            showNoteOnToggle={true}
-          />
-        </FormSection>
+        <Styled(View)>
+          <FormSection
+            name="pickUpAlternate"
+          >
+            <Styled(PickUpAlternateFormPart)
+              formName="checkoutPickup"
+              formSection="pickUpAlternate"
+              isAlternateUpdateChecked={false}
+              isCondensed={false}
+              isEditing={true}
+              labels={Object {}}
+              showNoteOnToggle={true}
+            />
+          </FormSection>
+        </Styled(View)>
       </Styled(View)>
     </Styled(View)>
-  </Styled(View)>
-  <CnCCommonTemplate
-    btnText="NEXT:SHIPPING"
-    routeToPage="ShippingPage"
-  />
-</ScrollViewMock>
+    <CnCCommonTemplate
+      btnText="NEXT:SHIPPING"
+      routeToPage="ShippingPage"
+    />
+  </ScrollViewMock>
+</Fragment>
 `;
 
 exports[`PickUpFormPartVanilla component should renders correctly props not present 1`] = `
-<ScrollViewMock>
-  <Styled(View)>
-    <Styled(View)>
-      <ErrorMessage
-        className="pickupError"
-        dataLocator="pickup-error"
-        error=""
-        fontSize="fs14"
-        fontWeight="black"
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Text) />
-      <Styled(View)>
-        <FormSection
-          name="pickUpContact"
-        >
-          <Styled(ContactFormFields)
-            className="pickup-contact-guest-form"
-            labels={Object {}}
-            showEmailAddress={true}
-            showPhoneNumber={true}
-          />
-        </FormSection>
-      </Styled(View)>
-      <Styled(View)>
-        <FormSection
-          name="pickUpAlternate"
-        >
-          <Styled(PickUpAlternateFormPart)
-            formName="checkoutPickup"
-            formSection="pickUpAlternate"
-            isAlternateUpdateChecked={false}
-            isCondensed={false}
-            isEditing={false}
-            labels={Object {}}
-            showNoteOnToggle={true}
-          />
-        </FormSection>
-      </Styled(View)>
-    </Styled(View)>
-  </Styled(View)>
-  <CnCCommonTemplate
-    btnText="NEXT:SHIPPING"
-    routeToPage="ShippingPage"
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="pickup"
+    navigation={null}
   />
-</ScrollViewMock>
+  <ScrollViewMock>
+    <Styled(View)>
+      <Styled(View)>
+        <ErrorMessage
+          className="pickupError"
+          dataLocator="pickup-error"
+          error=""
+          fontSize="fs14"
+          fontWeight="black"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <CheckoutSectionTitleDisplay
+          dataLocator="pickup-title"
+        />
+        <Styled(View)>
+          <FormSection
+            name="pickUpContact"
+          >
+            <Styled(ContactFormFields)
+              className="pickup-contact-guest-form"
+              labels={Object {}}
+              showEmailAddress={true}
+              showPhoneNumber={true}
+            />
+          </FormSection>
+        </Styled(View)>
+        <Styled(View)>
+          <FormSection
+            name="pickUpAlternate"
+          >
+            <Styled(PickUpAlternateFormPart)
+              formName="checkoutPickup"
+              formSection="pickUpAlternate"
+              isAlternateUpdateChecked={false}
+              isCondensed={false}
+              isEditing={false}
+              labels={Object {}}
+              showNoteOnToggle={true}
+            />
+          </FormSection>
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+    <CnCCommonTemplate
+      btnText="NEXT:SHIPPING"
+      routeToPage="ShippingPage"
+    />
+  </ScrollViewMock>
+</Fragment>
 `;

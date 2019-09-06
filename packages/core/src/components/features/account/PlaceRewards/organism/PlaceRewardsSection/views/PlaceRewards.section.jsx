@@ -76,7 +76,9 @@ const PlaceRewardsSection = ({ labels, className }) => {
                   }}
                   className="reward-points-section"
                 >
-                  <RewardsPoints labels={labels.common} />
+                  <div className="my-place-reward-section">
+                    <RewardsPoints labels={labels.common} />
+                  </div>
                 </Col>
               </Row>
             </Col>
@@ -147,7 +149,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           </Col>
         </Row>
       </Row>
-      {!isCA && <MyRewards labels={labels} />}
+      {!isCA && <MyRewards labels={labels} showLink />}
     </div>
   );
 };

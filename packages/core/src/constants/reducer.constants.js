@@ -8,6 +8,7 @@ export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const FORM_REDUCER_KEY = 'form';
 export const LOADER_REDUCER_KEY = 'PageLoader';
+export const TOAST_REDUCER_KEY = 'Toast';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -34,6 +35,8 @@ export const BONUS_POINTS_DAYS = '@@Bonus-';
 export const BONUS_POINTS_DAYS_REDUCER_KEY = 'BonusPointsDaysReducer';
 export const USER_ACTION_PATTERN = '@@User-';
 export const USER_REDUCER_KEY = 'User';
+export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
+export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -70,6 +73,10 @@ export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 export const COUNTRY_SELECTOR_REDUCER_KEY = 'CountrySelector';
 export const COUNTRY_SELECTOR_ACTION_PATTERN = '@@CountrySelector-';
 
+// Get Candid reducer
+export const GET_CANDID_REDUCER_KEY = 'GetCandid';
+export const GET_CANDID_ACTION_PATTERN = '@@GetCandid-';
+
 // Coupon reducer
 export const COUPON_REDUCER_KEY = 'CouponsAndPromos';
 export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
@@ -94,9 +101,13 @@ export const TRACK_ORDER_ACTION_PATTERN = '@@TrackOrder-';
 export const CHANGE_PASSWORD_REDUCER_KEY = 'ChangePassword';
 export const CHANGE_PASSWORD_ACTION_PATTERN = '@@ChangePassword-';
 
-// change password reducer
+// Update Profile reducer
 export const UPDATE_PROFILE_REDUCER_KEY = 'UpdateProfile';
 export const UPDATE_PROFILE_ACTION_PATTERN = '@@UpdateProfile-';
+
+// My Profile reducer
+export const MY_PROFILE_REDUCER_KEY = 'MyProfile';
+export const MY_PROFILE_ACTION_PATTERN = '@@MyProfile-';
 
 // device type detection
 export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
@@ -106,6 +117,11 @@ export const APPLY_PLCC_REDUCER_KEY = 'ApplyCardPage';
 export const APPLY_PLCC_ACTION_PATTERN = '@@ApplyCardPage-';
 // optimizely features reducer
 export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
+
+// ProductTabList reducer
+export const PRODUCT_TAB_LIST_REDUCER_KEY = 'ProductTabList';
+export const PRODUCT_TAB_LIST_ACTION_PATTERN = '@@ProductTabList-';
+export const MAILING_ADDRESS_REDUCER_KEY = 'AddMailingAddressReducer';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -125,6 +141,10 @@ export const REDUCER_ACTION_MAPPING = {
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
   [CHANGE_PASSWORD_REDUCER_KEY]: CHANGE_PASSWORD_ACTION_PATTERN,
   [UPDATE_PROFILE_REDUCER_KEY]: UPDATE_PROFILE_ACTION_PATTERN,
+  [GET_CANDID_REDUCER_KEY]: GET_CANDID_ACTION_PATTERN,
+  [MY_PROFILE_REDUCER_KEY]: MY_PROFILE_ACTION_PATTERN,
+  [PRODUCT_TAB_LIST_REDUCER_KEY]: PRODUCT_TAB_LIST_ACTION_PATTERN,
+  [NAVIGATION_REDUCER_KEY]: NAVIGATION_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

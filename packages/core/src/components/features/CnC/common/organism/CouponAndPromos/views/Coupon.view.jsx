@@ -54,7 +54,7 @@ class CouponView extends React.PureComponent<Props> {
           onNeedHelpTextClick={this.toggleNeedHelpModal}
         />
         <div className="coupon_list">
-          {appliedCouponList && (
+          {appliedCouponList && appliedCouponList.size > 0 && (
             <CouponListSection
               labels={labels}
               isFetching={isFetching}

@@ -138,8 +138,8 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 fontSizeVariation="large"
                 underline
                 anchorVariation="primary"
-                to="/account?id=profile"
-                asPath="/account/profile"
+                to={internalEndpoints.mailingAddressPage.link}
+                asPath={internalEndpoints.mailingAddressPage.path}
                 dataLocator="mailingAddressEditLnk"
               >
                 {labels.lbl_overview_profileInfoEditCTA}
