@@ -5,27 +5,35 @@ import { ModuleBVanilla as ModuleB } from '../view/ModuleB';
 
 describe('ModuleB component', () => {
   it('should render TCP or default variant correctly', () => {
-    const wrapper = shallow(<ModuleB {...mock} />).get(0);
+    const wrapper = shallow(<ModuleB {...mock} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render banner top variation', () => {
-    const wrapper = shallow(<ModuleB {...mock} />).get(0);
+    mock.bannerPosition = 'top';
+    const wrapper = shallow(<ModuleB {...mock} />);
+    expect(wrapper.find('.banner-top-variation')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render banner top alt variation', () => {
-    const wrapper = shallow(<ModuleB {...mock} />).get(0);
+    mock.bannerPosition = 'topAlt';
+    const wrapper = shallow(<ModuleB {...mock} />);
+    expect(wrapper.find('.banner-top-alt-variation')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render banner bottom variation', () => {
-    const wrapper = shallow(<ModuleB {...mock} />).get(0);
+    mock.bannerPosition = 'bottom';
+    const wrapper = shallow(<ModuleB {...mock} />);
+    expect(wrapper.find('.banner-bottom-variation')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render banner overlay variation', () => {
-    const wrapper = shallow(<ModuleB {...mock} />).get(0);
+    mock.bannerPosition = 'overlay';
+    const wrapper = shallow(<ModuleB {...mock} />);
+    expect(wrapper.find('.banner-overlay-variation')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 });
