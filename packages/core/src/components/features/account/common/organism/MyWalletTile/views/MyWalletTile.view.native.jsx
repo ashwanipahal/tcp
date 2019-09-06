@@ -3,12 +3,7 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
-import {
-  BodyCopy,
-  Anchor,
-  CustomButton,
-  LineComp,
-} from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { BodyCopy, Anchor, Button } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 
 import {
@@ -54,9 +49,7 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
         text={getLabelValue(labels, 'lbl_overview_myWalletHeading')}
         color="black"
       />
-
-      <LineComp {...UnderlineStyle} />
-
+      <UnderlineStyle />
       {couponsCount > 0 && (
         <CouponWrapper>
           <View>
@@ -101,7 +94,7 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
       )}
 
       <ButtonWrapperStyle>
-        <CustomButton
+        <Button
           text={myWalletCTA}
           buttonVariation="variable-width"
           fill="BLUE"
@@ -123,13 +116,10 @@ MyWalletTile.propTypes = {
   }),
   commonLabels: PropTypes.shape({}),
   coupons: PropTypes.shape([]).isRequired,
-  className: PropTypes.string,
-  handleComponentChange: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
 };
 
 MyWalletTile.defaultProps = {
-  className: '',
   navigation: {},
   labels: {
     lbl_overview_myWalletHeading: '',

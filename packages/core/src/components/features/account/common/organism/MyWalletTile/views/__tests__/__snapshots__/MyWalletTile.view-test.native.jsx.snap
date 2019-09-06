@@ -2,48 +2,22 @@
 
 exports[`MyWalletTile component should render correctly when coupons are not present 1`] = `
 <Styled(View)>
-  <Component
+  <Styled(BodyCopy)
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
     text="lbl_overview_myWalletHeading"
   />
-  <Component
-    $$typeof={Symbol(react.forward_ref)}
-    attrs={Array []}
-    displayName="Styled(View)"
-    inlineStyle={
-      InlineStyle {
-        "rules": Array [
-          "
-  height: 1px;
-  background-color: ",
-          [Function],
-          ";
-  margin-bottom: ",
-          [Function],
-          ";
-  margin-top: ",
-          [Function],
-          ";
-",
-        ],
-      }
-    }
-    render={[Function]}
-    styledComponentId="StyledNativeComponent"
-    target={[Function]}
-    withComponent={[Function]}
-  />
+  <Styled(View) />
   <View>
-    <Component
+    <Styled(BodyCopy)
       color="black"
       fontFamily="secondary"
       fontSize="fs13"
       text="lbl_overview_myWalletNoOfferAvailable lbl_overview_myWalletStartShop"
     />
     <Styled(View)>
-      <Component
+      <Styled(Anchor)
         accessibilityLabel="lbl_overview_myWalletShopCTA"
         accessibilityRole="link"
         anchorVariation="button"
@@ -51,20 +25,30 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
         borderWidth="1"
         buttonVariation="variable-width"
         centered={true}
+        customStyle={Object {}}
         dataLocator="accountoverview-myWallettile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
+        locator=""
         onPress={[Function]}
         text="lbl_overview_myWalletShopCTA"
+        visible={false}
       />
     </Styled(View)>
   </View>
   <Styled(View)>
-    <Component
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      locator=""
       onPress={[Function]}
       text="lbl_overview_viewMyWalletCTA"
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -72,42 +56,16 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
 
 exports[`MyWalletTile component should render correctly when coupons are present 1`] = `
 <Styled(View)>
-  <Component
+  <Styled(BodyCopy)
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
     text="lbl_overview_myWalletHeading"
   />
-  <Component
-    $$typeof={Symbol(react.forward_ref)}
-    attrs={Array []}
-    displayName="Styled(View)"
-    inlineStyle={
-      InlineStyle {
-        "rules": Array [
-          "
-  height: 1px;
-  background-color: ",
-          [Function],
-          ";
-  margin-bottom: ",
-          [Function],
-          ";
-  margin-top: ",
-          [Function],
-          ";
-",
-        ],
-      }
-    }
-    render={[Function]}
-    styledComponentId="StyledNativeComponent"
-    target={[Function]}
-    withComponent={[Function]}
-  />
+  <Styled(View) />
   <Styled(View)>
     <View>
-      <Component
+      <Styled(BodyCopy)
         data-locator="accountoverview-mywallettile-youhavewallettext"
         fontSize="fs14"
         fontWeight="semibold"
@@ -132,11 +90,18 @@ exports[`MyWalletTile component should render correctly when coupons are present
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Component
+    <Styled(CustomButton)
+      active={false}
       buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      disableButton={false}
       fill="BLUE"
+      fullWidth=""
+      locator=""
       onPress={[Function]}
       text="lbl_overview_walletViewAllCTA"
+      url=""
     />
   </Styled(View)>
 </Styled(View)>
