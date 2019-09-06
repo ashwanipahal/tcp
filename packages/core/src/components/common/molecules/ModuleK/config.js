@@ -10,7 +10,7 @@ export default {
     swipe: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           arrows: false,
         },
