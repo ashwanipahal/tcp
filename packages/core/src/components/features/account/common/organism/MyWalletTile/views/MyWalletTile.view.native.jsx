@@ -3,10 +3,14 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import CustomButton from '@tcp/core/src/components/common/atoms/Button';
-import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import {
+  BodyCopy,
+  Anchor,
+  CustomButton,
+  LineComp,
+} from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { getLabelValue } from '@tcp/core/src/utils';
+
 import {
   UnderlineStyle,
   PlaceRewardsTileContainer,
@@ -24,18 +28,22 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
   let walletOverviewInfo = '';
   let walletDataLocator = '';
   let myWalletCTA = '';
-  const myWalletStartShop = `${labels.lbl_overview_myWalletNoOfferAvailable} ${
-    labels.lbl_overview_myWalletStartShop
-  }`;
+  const myWalletStartShop = `${getLabelValue(
+    labels,
+    'lbl_overview_myWalletNoOfferAvailable'
+  )} ${getLabelValue(labels, 'lbl_overview_myWalletStartShop')}`;
 
   if (couponsCount) {
-    walletOverviewInfo = labels.lbl_overview_myWalletOfferAvailable.replace(/\{0\}/, couponsCount);
-    walletDataLocator = 'accountoverview-mywallettile-youhaverewardtext';
-    myWalletCTA = labels.lbl_overview_walletViewAllCTA;
+    walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myWalletOfferAvailable').replace(
+      /\{0\}/,
+      couponsCount
+    );
+    walletDataLocator = 'accountoverview-mywallettile-youhavewallettext';
+    myWalletCTA = getLabelValue(labels, 'lbl_overview_walletViewAllCTA');
   } else {
-    walletOverviewInfo = labels.lbl_overview_myWalletNoOfferAvailable;
+    walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myWalletNoOfferAvailable');
     walletDataLocator = 'accountoverview-mywallettile-startshoptext';
-    myWalletCTA = labels.lbl_overview_viewMyWalletCTA;
+    myWalletCTA = getLabelValue(labels, 'lbl_overview_viewMyWalletCTA');
   }
 
   return (
@@ -43,7 +51,7 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs16"
-        text={labels.lbl_overview_myWalletHeading}
+        text={getLabelValue(labels, 'lbl_overview_myWalletHeading')}
         color="black"
       />
 
@@ -82,8 +90,8 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
               fill="WHITE"
               dataLocator="accountoverview-myWallettile-startshopbtn"
               accessibilityRole="link"
-              accessibilityLabel={labels.lbl_overview_myWalletShopCTA}
-              text={labels.lbl_overview_myWalletShopCTA}
+              accessibilityLabel={getLabelValue(labels, 'lbl_overview_myWalletShopCTA')}
+              text={getLabelValue(labels, 'lbl_overview_myWalletShopCTA')}
               borderWidth="1"
               borderColor="black"
               onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
@@ -106,14 +114,14 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
 
 MyWalletTile.propTypes = {
   labels: PropTypes.shape({
-    lbl_overview_myWalletHeading: PropTypes.string.isRequired,
-    lbl_overview_myWalletCTA: PropTypes.string.isRequired,
-    lbl_overview_myWalletOfferAvailable: PropTypes.string.isRequired,
-    lbl_overview_myWalletNoOfferAvailable: PropTypes.string.isRequired,
-    lbl_overview_myWalletStartShop: PropTypes.string.isRequired,
-    lbl_overview_myWalletShopCTA: PropTypes.string.isRequired,
-  }).isRequired,
-  commonLabels: PropTypes.shape({}).isRequired,
+    lbl_overview_myWalletHeading: PropTypes.string,
+    lbl_overview_myWalletCTA: PropTypes.string,
+    lbl_overview_myWalletOfferAvailable: PropTypes.string,
+    lbl_overview_myWalletNoOfferAvailable: PropTypes.string,
+    lbl_overview_myWalletStartShop: PropTypes.string,
+    lbl_overview_myWalletShopCTA: PropTypes.string,
+  }),
+  commonLabels: PropTypes.shape({}),
   coupons: PropTypes.shape([]).isRequired,
   className: PropTypes.string,
   handleComponentChange: PropTypes.func.isRequired,
@@ -123,6 +131,15 @@ MyWalletTile.propTypes = {
 MyWalletTile.defaultProps = {
   className: '',
   navigation: {},
+  labels: {
+    lbl_overview_myWalletHeading: '',
+    lbl_overview_myWalletCTA: '',
+    lbl_overview_myWalletOfferAvailable: '',
+    lbl_overview_myWalletNoOfferAvailable: '',
+    lbl_overview_myWalletStartShop: '',
+    lbl_overview_myWalletShopCTA: '',
+  },
+  commonLabels: {},
 };
 
 export default withNavigation(MyWalletTile);
