@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getChildren } from '../../../../User/container/User.selectors';
-import { getChildrenAction, removeChildrenAction } from './BirthdaySavingsList.actions';
+import { getChildrenAction, removeChildAction } from './BirthdaySavingsList.actions';
 import BirthdaySavingsComponent from '../views';
 
 /**
@@ -54,7 +54,7 @@ export const mapDispatchToProps = dispatch => ({
     dispatch(getChildrenAction());
   },
   removeBirthday: childId => {
-    dispatch(removeChildrenAction(childId));
+    dispatch(removeChildAction(childId));
   },
 });
 

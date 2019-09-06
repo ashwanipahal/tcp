@@ -122,6 +122,7 @@ export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 export const PRODUCT_TAB_LIST_REDUCER_KEY = 'ProductTabList';
 export const PRODUCT_TAB_LIST_ACTION_PATTERN = '@@ProductTabList-';
 export const MAILING_ADDRESS_REDUCER_KEY = 'AddMailingAddressReducer';
+export const BIRTHDAY_SAVING_LIST_REDUCER_KEY = 'BirthdaySavingsList';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
