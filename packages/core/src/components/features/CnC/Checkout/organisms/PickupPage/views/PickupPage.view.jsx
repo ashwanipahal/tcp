@@ -340,7 +340,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: 'checkoutPickup', // a unique identifier for this form
   ...validateMethod,
-  enableReinitialize: true,
+  // enableReinitialize: true,
   destroyOnUnmount: false,
 })(withStyles(PickUpFormPart, styles));
 export { PickUpFormPart as PickUpFormPartVanilla };

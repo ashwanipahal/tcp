@@ -365,7 +365,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
-  enableReinitialize: true,
+  // enableReinitialize: true,
   destroyOnUnmount: false,
 })(withStyles(PickUpFormPart, FormStyle));
 export { PickUpFormPart as PickUpFormPartVanilla };
