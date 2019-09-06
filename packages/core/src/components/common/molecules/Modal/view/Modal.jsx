@@ -15,6 +15,7 @@ import styles from '../Modal.style';
 import Config from '../Modal.config';
 import withStyles from '../../../hoc/withStyles';
 // import errorBoundary from '../../../hoc/errorBoundary';
+
 function getParent() {
   // eslint-disable-next-line no-extra-boolean-cast
   return !!document.querySelector('.checkout-pages')
