@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImageBanner from './ModuleB-imageBanner';
 import ButtonList from '../../ButtonList';
-import { Row, Col, DamImage, Anchor } from '../../../atoms';
-import PromoBanner from '../../PromoBanner';
+import { Row, Col } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
-import { ctaTypes, ctaTypeProps } from '../ModuleB.config';
+import { ctaTypes, ctaTypeProps, MODULE_WIDTH_HALF } from '../ModuleB.config';
 import withStyles from '../../../hoc/withStyles';
 import style from '../ModuleB.style';
 
@@ -34,83 +34,12 @@ const getColSize = moduleWidth => {
     medium: 8,
     large: 12,
   };
-  if (moduleWidth === 'half') {
+  if (moduleWidth === MODULE_WIDTH_HALF) {
     colSize.medium = 4;
     colSize.large = 6;
   }
 
   return colSize;
-};
-
-/**
- * This function renders Promo Banner and Header Text
- * @param {*} param0
- */
-const renderPromoBanner = promoBanner => {
-  return (
-    promoBanner.promoBanner && (
-      <PromoBanner
-        className="moduleB_promo-banner"
-        dataLocatorHeader={getLocator('moduleB_header_text')}
-        data-locator={getLocator('moduleB_promo_banner_text')}
-        variation="header_and_promo"
-        {...promoBanner}
-      />
-    )
-  );
-};
-
-/**
- * This function renders Linked Image component
- * @param {*} param0
- */
-const renderImage = ([{ image, link }]) => {
-  return (
-    <div className="moduleB_image-container" data-locator={getLocator('moduleB_image')}>
-      <Anchor {...link} className="moduleB_image-link">
-        <DamImage imgData={image} className="moduleB_image" />
-      </Anchor>
-    </div>
-  );
-};
-
-/**
- * Identifies variation to load on the basis of banner position
- * @param {*} bannerPosition
- */
-const loadImageBannerVariation = ({ bannerPosition, promoBanner, linkedImage }) => {
-  switch (bannerPosition) {
-    case 'top':
-      return (
-        <div className="banner-top-variation">
-          {renderPromoBanner(promoBanner)}
-          {renderImage(linkedImage)}
-        </div>
-      );
-    case 'topAlt':
-      return (
-        <div className="banner-top-alt-variation">
-          {renderPromoBanner(promoBanner)}
-          {renderImage(linkedImage)}
-        </div>
-      );
-    case 'overlay':
-      return (
-        <div className="banner-overlay-variation">
-          {renderImage(linkedImage)}
-          {renderPromoBanner(promoBanner)}
-        </div>
-      );
-    case 'bottom':
-      return (
-        <div className="banner-bottom-variation">
-          {renderImage(linkedImage)}
-          {renderPromoBanner(promoBanner)}
-        </div>
-      );
-    default:
-      return false;
-  }
 };
 
 /**
@@ -149,7 +78,7 @@ const ModuleB = props => {
   return (
     <Row>
       <Col className={`${className} moduleB-wrapper`} colSize={colSize}>
-        {loadImageBannerVariation(imageBannerProps)}
+        <ImageBanner {...imageBannerProps} />
         <ButtonList
           className="moduleB_button-list"
           buttonsData={ctaItems}

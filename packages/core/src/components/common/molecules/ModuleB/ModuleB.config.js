@@ -31,9 +31,12 @@ export const ctaTypeProps = {
 
 export const bannerPositionTypes = {
   top: 'top',
+  topAlt: 'topAlt',
   bottom: 'bottom',
   overlay: 'overlay',
 };
+
+export const MODULE_WIDTH_HALF = 'half';
 
 export default {
   ctaIdentifiers: {
