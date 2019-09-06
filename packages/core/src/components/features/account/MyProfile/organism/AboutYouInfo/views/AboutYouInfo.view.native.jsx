@@ -25,7 +25,7 @@ export const AboutYouInfo = ({ labels, userSurvey, handleComponentChange }) => {
         text={`${getLabelValue(labels, 'lbl_profile_about_you_describe')}: ${answer1}`}
       />
       <View marginTop={20}>
-        {answer2 && (
+        {answer2 !== '' && (
           <BodyCopyWithSpacing
             data-locator="moreaboutyou-shoppingfortext"
             fontSize="fs13"
