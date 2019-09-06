@@ -28,7 +28,7 @@ const styles = css`
 
   .bag-header {
     margin: 0;
-    padding: 40px 0 20px;
+    padding: 20px 0 20px;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       text-align: center;
       border-bottom: 2px solid ${props => props.theme.colors.TEXT.DARKERGRAY};

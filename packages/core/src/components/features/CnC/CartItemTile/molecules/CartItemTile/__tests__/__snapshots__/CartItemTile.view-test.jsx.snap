@@ -129,6 +129,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
   .unavailable-error {
     padding-top: 0px;
+    div {
+      margin-right: 0px;
+      margin-left: 0px;
+      display: inline;
+      width: 100%;
+    }
   }
 
   .product-detail-bag {
@@ -320,8 +326,30 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
   }
 
+  .parent-myBag {
+    @media ",
+          [Function],
+          " {
+      padding-bottom: 0px;
+    }
+  }
+
   .tile-header {
     position: relative;
+  }
+
+  .cart-item-radio-buttons {
+    margin-top: 23px;
+    @media ",
+          [Function],
+          " {
+      margin-top: 19px;
+    }
+    @media ",
+          [Function],
+          " {
+      margin-top: 27px;
+    }
   }
 
   ",
