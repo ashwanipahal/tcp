@@ -17,7 +17,10 @@ import withStyles from '../../../hoc/withStyles';
 // import errorBoundary from '../../../hoc/errorBoundary';
 
 function getParent() {
-  return document.querySelector('.TCPModal__Wrapper');
+  // eslint-disable-next-line no-extra-boolean-cast
+  return !!document.querySelector('.checkout-pages')
+    ? document.querySelector('#overlayWrapper .TCPModal__Wrapper')
+    : document.querySelector('.TCPModal__Wrapper');
 }
 
 class Modal extends React.PureComponent {
