@@ -1,11 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, BodyCopy, Row, Col, Image } from '@tcp/core/src/components/common/atoms';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { Button, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import SurveyQuestion from '@tcp/core/src/components/features/account/MyProfile/molecules/SurveyQuestion';
-import { getIconPath } from '@tcp/core/src/utils';
-import styles from '../styles/AboutYouSurvey.style';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
+import {
+  StageWrapper,
+  ActionsWrapper,
+  SurveyWrapper,
+  Title,
+  StageLine,
+  TouchableWrapper,
+  TextStyle,
+} from '../styles/AboutYouSurvey.style.native';
 import { Constants } from '../container/AboutYouSurvey.utils';
+
+const starIcon = require('../../../../../../../../../mobileapp/src/assets/images/star.png');
+const starFilledIcon = require('../../../../../../../../../mobileapp/src/assets/images/star-filled.png');
+const circleCheck = require('../../../../../../../../../mobileapp/src/assets/images/circle-check.png');
 
 export class AboutYouSurvey extends React.Component {
   constructor(props) {
@@ -108,90 +119,73 @@ export class AboutYouSurvey extends React.Component {
     }
 
     return (
-      <div className={className}>
-        <div className="questions-container">
-          <Row centered>
-            <BodyCopy fontSize="fs20" fontWeight="black" fontFamily="secondary">
-              {`${labels.lbl_profile_survey_hi}, ${userFirstName}`}
-            </BodyCopy>
-          </Row>
-          <Row centered>
-            <Col colSize={{ small: 6, medium: 6, large: 8 }} className="sub-header">
-              <BodyCopy
-                fontSize="fs14"
-                fontWeight="regular"
-                fontFamily="secondary"
-                component="div"
-                className="title-text"
-              >
-                {labels.lbl_profile_survey_header}
-              </BodyCopy>
-            </Col>
-          </Row>
-          <Row centered>
-            <Col colSize={{ small: 4, medium: 8, large: 10 }} className="stage-wrapper">
-              <Image
-                alt="Survey Stage"
-                className="star-image"
-                title="survey completion stage"
-                src={getIconPath('star-filled')}
-                onClick={this.selectFirstStage}
-                role="presentation"
-              />
-              <hr className="stage-line" />
-              <Image
-                alt="Survey Stage"
-                className="star-image"
-                title="survey completion stage"
-                src={getIconPath(question1Stage !== Constants.Stage.Saved ? 'star' : 'star-filled')}
-              />
-              <hr className="stage-line" />
-              <Image alt="Survey Stage" className="star-image" src={getIconPath('circle-check')} />
-            </Col>
-          </Row>
-
-          <Row fullBleed>
-            <Row fullBleed>
-              {question1Stage !== Constants.Stage.Saved && (
-                <SurveyQuestion
-                  labels={labels}
-                  className={className}
-                  options={updatedQuestion1.options}
-                  question={updatedQuestion1.statement}
-                  onSelection={this.onSelection}
-                  questionId="question1"
-                />
-              )}
-            </Row>
-            <Row centered>
-              {question1Stage === Constants.Stage.Saved && (
-                <SurveyQuestion
-                  labels={labels}
-                  className={className}
-                  options={question2.options}
-                  question={question2.statement}
-                  onSelection={this.onSelection}
-                  questionId="question2"
-                />
-              )}
-            </Row>
-          </Row>
-          <Row centered>
-            <Col colSize={{ small: 3 }} className="survey-submit-wrapper">
-              <Button
-                onClick={() => this.updateSurvey(question1Stage !== Constants.Stage.Saved)}
-                buttonVariation="fixed-width"
-                type="button"
-                fill="BLUE"
-                className="survey-submit__cta"
-                disabled={this.submitDisabled}
-              >
-                {labels.lbl_profile_survey_save}
-              </Button>
-            </Col>
-          </Row>
-        </div>
-      </div>
+      <SurveyWrapper>
+        <Title>
+          <BodyCopy
+            fontSize="fs20"
+            fontWeight="black"
+            fontFamily="secondary"
+            text={`${getLabelValue(labels, 'lbl_profile_survey_hi')}, ${userFirstName}`}
+          />
+          <BodyCopy
+            fontSize="fs14"
+            fontWeight="regular"
+            fontFamily="secondary"
+            text={getLabelValue(labels, 'lbl_profile_survey_header')}
+            style={TextStyle}
+          />
+        </Title>
+        <StageWrapper>
+          <TouchableWrapper onPress={() => this.selectFirstStage()}>
+            <Image
+              alt="Survey Stage"
+              source={starFilledIcon}
+              height="26px"
+              width="26px"
+              onClick={this.selectFirstStage}
+            />
+          </TouchableWrapper>
+          <StageLine />
+          <Image
+            alt="Survey Stage"
+            height="26px"
+            width="26px"
+            source={question1Stage !== Constants.Stage.Saved ? starIcon : starFilledIcon}
+          />
+          <StageLine />
+          <Image alt="Survey Stage" height="26px" width="26px" source={circleCheck} />
+        </StageWrapper>
+        {question1Stage !== Constants.Stage.Saved && (
+          <SurveyQuestion
+            labels={labels}
+            className={className}
+            options={updatedQuestion1.options}
+            question={updatedQuestion1.statement}
+            onSelection={this.onSelection}
+            questionId="question1"
+          />
+        )}
+        {question1Stage === Constants.Stage.Saved && (
+          <SurveyQuestion
+            labels={labels}
+            className={className}
+            options={question2.options}
+            question={question2.statement}
+            onSelection={this.onSelection}
+            questionId="question2"
+          />
+        )}
+        <ActionsWrapper>
+          <Button
+            onPress={() => this.updateSurvey(question1Stage !== Constants.Stage.Saved)}
+            buttonVariation="variable-width"
+            type="button"
+            fill="BLUE"
+            disabled={this.submitDisabled}
+            text={getLabelValue(labels, 'lbl_profile_survey_save')}
+          />
+        </ActionsWrapper>
+      </SurveyWrapper>
     );
   }
 }
@@ -224,5 +218,4 @@ AboutYouSurvey.defaultProps = {
   userSurvey: [],
 };
 
-export default withStyles(AboutYouSurvey, styles);
-export { AboutYouSurvey as AboutYouSurveyVanilla };
+export default AboutYouSurvey;

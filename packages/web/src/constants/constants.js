@@ -14,6 +14,11 @@ export const sites = {
   },
 };
 
+export const keyboard = {
+  KEY_ENTER: 13,
+  KEY_SPACE: 32,
+};
+
 export const defaultDeviceType = 'desktop';
 
 const OPTIMIZELY_DECISION_LABEL = 'optimizely_decision';
