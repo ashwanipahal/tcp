@@ -77,10 +77,10 @@ const ModuleB = props => {
 
   return (
     <Row>
-      <Col className={`${className} moduleB-wrapper`} colSize={colSize}>
+      <Col className={`${className} parent-wrapper`} colSize={colSize}>
         <ImageBanner {...imageBannerProps} />
         <ButtonList
-          className="moduleB_button-list"
+          className="button-list"
           buttonsData={ctaItems}
           buttonListVariation={buttonListCtaType}
           dataLocatorDropDown={getLocator('moduleB_dropdown')}

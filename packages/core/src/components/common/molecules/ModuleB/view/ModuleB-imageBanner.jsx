@@ -13,7 +13,7 @@ const renderPromoBanner = promoBanner => {
   return (
     promoBanner.promoBanner && (
       <PromoBanner
-        className="moduleB_promo-banner"
+        className="promo-banner"
         dataLocatorHeader={getLocator('moduleB_header_text')}
         data-locator={getLocator('moduleB_promo_banner_text')}
         variation="header_and_promo"
@@ -29,9 +29,9 @@ const renderPromoBanner = promoBanner => {
  */
 const renderImage = ([{ image, link }]) => {
   return (
-    <div className="moduleB_image-container" data-locator={getLocator('moduleB_image')}>
-      <Anchor {...link} className="moduleB_image-link">
-        <DamImage imgData={image} className="moduleB_image" />
+    <div className="image-container" data-locator={getLocator('moduleB_image')}>
+      <Anchor {...link} className="image-link">
+        <DamImage imgData={image} className="image" />
       </Anchor>
     </div>
   );

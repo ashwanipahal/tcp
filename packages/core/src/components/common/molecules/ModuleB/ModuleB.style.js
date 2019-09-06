@@ -3,12 +3,12 @@ import { css } from 'styled-components';
 export default css`
   padding: 32px 0;
 
-  .moduleB_image-container {
+  .image-container {
     position: relative;
     background: ${props => props.theme.colorPalette.gray[500]};
     overflow: hidden;
 
-    .moduleB_image {
+    .image {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -16,39 +16,39 @@ export default css`
     }
   }
 
-  .moduleB_promo-banner {
+  .promo-banner {
     background: ${props => props.theme.colorPalette.white};
   }
 
-  .moduleB_button-list {
+  .button-list {
     margin-top: 16px;
   }
 
   .banner-top-variation,
   .banner-top-alt-variation,
   .banner-bottom-variation {
-    .moduleB_image-container {
+    .image-container {
       height: 295px;
     }
   }
   .banner-top-variation,
   .banner-top-alt-variation {
-    .moduleB_promo-banner {
+    .promo-banner {
       padding-bottom: 15px;
     }
   }
   .banner-bottom-variation {
     padding-bottom: 4px;
-    .moduleB_promo-banner {
+    .promo-banner {
       padding-top: 8px;
     }
   }
   .banner-overlay-variation {
     position: relative;
-    .moduleB_image-container {
+    .image-container {
       height: 413px;
     }
-    .moduleB_promo-banner {
+    .promo-banner {
       width: 186px;
       padding-bottom: 5px;
       position: absolute;
@@ -67,7 +67,7 @@ export default css`
     .banner-top-variation,
     .banner-top-alt-variation,
     .banner-bottom-variation {
-      .moduleB_image-container {
+      .image-container {
         height: 295px;
       }
     }
@@ -94,28 +94,28 @@ export default css`
       }
     }
     .banner-top-variation {
-      .moduleB_promo-banner {
+      .promo-banner {
         padding-bottom: 24px;
       }
     }
     .banner-bottom-variation {
       padding-bottom: 40px;
-      .moduleB_promo-banner {
+      .promo-banner {
         padding-top: 24px;
       }
     }
     .banner-top-variation,
     .banner-top-alt-variation,
     .banner-bottom-variation {
-      .moduleB_image-container {
+      .image-container {
         height: 577px;
       }
     }
     .banner-overlay-variation {
-      .moduleB_promo-banner {
+      .promo-banner {
         width: 270px;
       }
-      .moduleB_image-container {
+      .image-container {
         height: 735px;
       }
       .small_text_semibold,
