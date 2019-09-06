@@ -130,9 +130,9 @@ const ButtonStyles = css`
       padding: 4px 0;
 
       border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
-      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEBLUE};
+      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
       width: calc(100% - 6px);
-      &:hover, &:focus {
+      &:hover, &:focus, &:hover:not([disabled]) {
         background: ${props.theme.colors.PRIMARY.COLOR1};
         box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.COLOR1};
         border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
@@ -141,7 +141,7 @@ const ButtonStyles = css`
         padding: 11px 0;
         box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.PALEGRAY};
         width: calc(100% - 12px);
-        &:hover, &:focus {
+        &:hover, &:focus, &:hover:not([disabled]) {
           box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.COLOR1};
         }
       }
