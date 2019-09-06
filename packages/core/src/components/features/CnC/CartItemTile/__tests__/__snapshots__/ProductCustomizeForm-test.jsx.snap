@@ -98,7 +98,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             name="undefined"
             onChange={[Function]}
             options={Array []}
-            width={69}
+            width={49}
           />
         </div>
         <div
@@ -196,6 +196,9 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             Array [
               "
   min-height: unset;
+  font-family: ",
+              [Function],
+              ";
   text-transform: none;
   &:hover {
     background-color: transparent;
@@ -216,6 +219,9 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
             Array [
               "
   min-height: unset;
+  font-family: ",
+              [Function],
+              ";
   text-transform: none;
   &:hover {
     background-color: transparent;

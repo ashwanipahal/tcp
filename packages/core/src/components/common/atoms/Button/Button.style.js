@@ -5,7 +5,7 @@ const ButtonStyles = css`
   border-radius: 0;
   background: none;
   position: relative;
-  cursor: ${props => (props.disabled ? 'none' : 'pointer')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
   text-transform: uppercase;
   min-height: 42px;
@@ -78,14 +78,14 @@ const ButtonStyles = css`
   &:focus {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
   }
-  &:hover:not([disabled]) {
+  &:hover:not[disabled] {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
   }
 
   ${props =>
     props.buttonVariation === 'category-links-light'
       ? `
-      &:hover:not([disabled]){
+      &:hover {
         background: none;
         font-weight: ${props.theme.typography.fontWeights.black};
         border-color: ${props.theme.colorPalette.orange[800]};
@@ -102,7 +102,7 @@ const ButtonStyles = css`
   ${props =>
     props.buttonVariation === 'category-links-dark'
       ? `
-      &:hover:not([disabled]), &:focus {
+      &:hover, &:focus {
         background: none;
         font-weight: ${props.theme.typography.fontWeights.black};
         border-color: ${props.theme.colorPalette.orange[800]};
@@ -130,9 +130,9 @@ const ButtonStyles = css`
       padding: 4px 0;
 
       border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
-      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEBLUE};
+      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
       width: calc(100% - 6px);
-      &:hover, &:focus {
+      &:hover, &:focus, &:hover:not([disabled]) {
         background: ${props.theme.colors.PRIMARY.COLOR1};
         box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.COLOR1};
         border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
@@ -141,12 +141,45 @@ const ButtonStyles = css`
         padding: 11px 0;
         box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.PALEGRAY};
         width: calc(100% - 12px);
-        &:hover, &:focus {
+        &:hover, &:focus, &:hover:not([disabled]) {
           box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.COLOR1};
         }
       }
     `
       : ''};
+
+  ${props =>
+    props.buttonVariation === 'mini-nav'
+      ? `
+        color: ${props.theme.colorPalette.gray['900']};
+        padding: 0;
+        font-family: ${props.theme.fonts.secondaryFontFamily};
+        font-size: ${props.theme.typography.fontSizes.fs14};
+        font-weight: ${
+          props.active
+            ? props.theme.typography.fontWeights.extrabold
+            : props.theme.typography.fontWeights.regular
+        };
+        border-bottom: 2px solid ${
+          props.active ? props.theme.colorPalette.primary.main : 'transparent'
+        };
+        padding: 0 5px;
+        min-height: 24px;
+
+        &:hover, &:focus, &:active {
+          background-color: transparent;
+        }
+
+        @media ${props.theme.mediaQuery.large} {
+          font-size: ${props.theme.typography.fontSizes.fs20};
+          font-weight: ${
+            props.active
+              ? props.theme.typography.fontWeights.extrabold
+              : props.theme.typography.fontWeights.semibold
+          };
+        }
+      `
+      : ''}
 
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
@@ -159,7 +192,7 @@ const ButtonStyles = css`
         : ''};
   }
   ${props =>
-    props.theme.isGymboree
+    props.theme.isGymboree && props.buttonVariation !== 'mini-nav'
       ? `
     border-radius: 25px;
   `

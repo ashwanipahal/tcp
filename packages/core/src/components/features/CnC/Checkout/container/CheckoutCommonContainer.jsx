@@ -36,6 +36,7 @@ const {
   getShipmentMethods,
   getDefaultShipmentID,
   getShippingSendOrderUpdate,
+  getCheckoutProgressBarLabels,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -73,8 +74,12 @@ export class CheckoutContainer extends React.Component<Props> {
       setCheckoutStage,
       billingProps,
       router,
+      checkoutProgressBarLabels,
     } = this.props;
-    const availableStages = checkoutUtil.getAvailableStages(cartOrderItems);
+    const availableStages = checkoutUtil.getAvailableStages(
+      cartOrderItems,
+      checkoutProgressBarLabels
+    );
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -182,6 +187,7 @@ const mapStateToProps = state => {
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
+    checkoutProgressBarLabels: getCheckoutProgressBarLabels(state),
   };
 };
 

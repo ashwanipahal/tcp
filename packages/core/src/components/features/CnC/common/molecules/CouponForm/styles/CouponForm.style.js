@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
 export default css`
-  margin-top: 15px;
   .coupon_form_container {
     padding: 18px 16px 12px 14px;
     box-sizing: border-box;

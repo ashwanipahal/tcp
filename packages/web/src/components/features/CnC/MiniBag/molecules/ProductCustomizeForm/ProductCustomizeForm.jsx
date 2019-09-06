@@ -257,7 +257,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               )}
               <div className="size-selector">
                 <Field
-                  width={69}
+                  width={49}
                   className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
                   id="size"
                   name={this.getSizeLabel(item, labels)}

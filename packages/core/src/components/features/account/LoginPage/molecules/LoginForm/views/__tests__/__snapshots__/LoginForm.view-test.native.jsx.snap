@@ -10,6 +10,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         "login": Object {},
         "loginErrorMessage": "",
         "onSubmit": [Function],
+        "registration": Object {},
         "resetForm": [Function],
         "showForgotPasswordForm": [Function],
       }
@@ -115,7 +116,6 @@ exports[`LoginForm component should renders correctly 1`] = `
         dataLocator="password"
         id="password"
         name="password"
-        rightText="show"
         secureTextEntry={true}
         type="password"
       />
