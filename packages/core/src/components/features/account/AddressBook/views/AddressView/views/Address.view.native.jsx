@@ -110,7 +110,7 @@ export class AddressView extends React.Component {
 
     return (
       <View {...this.props}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledHeading>
             {labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING && (
               <BodyCopy
