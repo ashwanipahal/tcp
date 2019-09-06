@@ -69,7 +69,7 @@ export class ProfileInformation extends React.PureComponent {
           airMiles={airMiles}
           myPlaceNumber={myPlaceNumber}
         />
-        {userSurvey && userSurvey.getIn(['0', '0']) && (
+        {userSurvey !== null && userSurvey.getIn(['0', '0']) !== '' && (
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
         )}
         <ChangePasswordInfo labels={labels} handleComponentChange={handleComponentChange} />
