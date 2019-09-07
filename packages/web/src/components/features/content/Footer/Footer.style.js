@@ -71,10 +71,7 @@ export default css`
     order: 1;
   }
   .footer-bottom__slot--1 {
-    background-color: ${props =>
-      props.theme.isGymboree
-        ? props.theme.colorPalette.primary.main
-        : props.theme.colors.BRAND.PRIMARY};
+    background-color: ${props => props.theme.colorPalette.primary.main};
   }
   .fullbleed-mobile {
     flex-direction: column-reverse;

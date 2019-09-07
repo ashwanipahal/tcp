@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const linkDark = 'category-links-dark';
+const darkLinkCategory = 'category-links-dark';
 
 const ButtonStyles = css`
   border: none;
@@ -61,7 +61,7 @@ const ButtonStyles = css`
       : ''};
 
   ${props =>
-    props.buttonVariation === linkDark
+    props.buttonVariation === darkLinkCategory
       ? `
       min-height: auto;
       color: ${props.theme.colorPalette.white};
@@ -102,7 +102,7 @@ const ButtonStyles = css`
       : ''};
 
   ${props =>
-    props.buttonVariation === linkDark
+    props.buttonVariation === darkLinkCategory
       ? `
       &:hover, &:focus {
         background: none;
@@ -192,7 +192,7 @@ const ButtonStyles = css`
   ${props =>
     props.theme.isGymboree &&
     props.buttonVariation !== 'mini-nav' &&
-    props.buttonVariation !== linkDark
+    props.buttonVariation !== darkLinkCategory
       ? `
     border-radius: 25px;
   `

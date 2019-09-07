@@ -216,20 +216,6 @@ const style = css`
       left: 0;
     }
   }
-
-  .moduleA__category__links {
-    margin: 0;
-    padding-bottom: 6px;
-    color: ${props => props.theme.colors.WHITE};
-    border-bottom: 2px solid ${props => props.theme.colors.WHITE};
-
-    &:not(:last-child) {
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    }
-    .link__bold {
-      font-weight: ${props => props.theme.fonts.fontWeight.bold};
-    }
-  }
 `;
 
 export { StyledLinkText as LinkText, StyledCarousel as Carousel, style };
