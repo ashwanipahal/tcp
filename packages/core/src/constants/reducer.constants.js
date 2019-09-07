@@ -35,6 +35,7 @@ export const BONUS_POINTS_DAYS = '@@Bonus-';
 export const BONUS_POINTS_DAYS_REDUCER_KEY = 'BonusPointsDaysReducer';
 export const USER_ACTION_PATTERN = '@@User-';
 export const USER_REDUCER_KEY = 'User';
+export const BILLING_PAYMENT_REDUCER_KEY = 'BillingPaymentReducer';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';

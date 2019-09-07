@@ -34,6 +34,7 @@ import PointsHistorySaga from '@tcp/core/src/components/features/account/common/
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
@@ -79,5 +80,6 @@ export default function* rootSaga() {
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
     UpdateProfileSaga(),
+    BillingPaymentSaga(),
   ]);
 }

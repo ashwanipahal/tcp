@@ -4,7 +4,7 @@ import { getCardList } from '../../../../../account/Payment/container/Payment.ac
 import { getCardListState } from '../../../../../account/Payment/container/Payment.selectors';
 import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
-// import GIFT_CARD_ACTIONS from './GiftCards.action';
+import { fetchModuleX } from './CreditCard.action';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   constructor(props) {
@@ -38,7 +38,19 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { cardList, labels, onFileCardKey, isMobile } = this.props;
+    const {
+      cardList,
+      labels,
+      onFileCardKey,
+      isMobile,
+      paymentMethodId,
+      getCVVCodeInfo,
+      cvvCodeInfoContentId,
+      cvvCodeRichText,
+    } = this.props;
+    if (cvvCodeInfoContentId) {
+      getCVVCodeInfo(cvvCodeInfoContentId);
+    }
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
       <BillingPaymentForm
@@ -47,6 +59,10 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         onFileCardKey={onFileCardKey}
         isMobile={isMobile}
         initialValues={this.initialValues}
+        paymentMethodId={paymentMethodId}
+        getCVVCodeInfo={getCVVCodeInfo}
+        cvvCodeInfoContentId={cvvCodeInfoContentId}
+        cvvCodeRichText={cvvCodeRichText}
       />
     );
   }
@@ -57,6 +73,9 @@ export const mapDispatchToProps = dispatch => {
     getCardListAction: () => {
       dispatch(getCardList());
     },
+    getCVVCodeInfo: cid => {
+      dispatch(fetchModuleX(cid));
+    },
   };
 };
 
@@ -66,6 +85,9 @@ const mapStateToProps = (state, ownProps) => {
     labels: CreditCardSelector.getCreditCardLabels(state),
     onFileCardKey: CreditCardSelector.getOnFileCardKey(state, ownProps),
     isMobile: CreditCardSelector.getIsMobile(),
+    paymentMethodId: CreditCardSelector.getPaymentMethodId(state, ownProps),
+    cvvCodeInfoContentId: CreditCardSelector.getCVVCodeInfoContentId(state),
+    cvvCodeRichText: CreditCardSelector.getCVVCodeRichTextSelector(state),
   };
 };
 

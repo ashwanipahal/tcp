@@ -35,7 +35,7 @@ import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddE
 import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
-
+import BillingPaymentReducer from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.reducer';
 import {
   APICONFIG_REDUCER_KEY,
   APPLY_PLCC_REDUCER_KEY,
@@ -80,6 +80,7 @@ import {
   DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
   OPTIMIZELY_FEATURES_REDUCER,
+  BILLING_PAYMENT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -151,4 +152,5 @@ export default combineReducers({
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
+  [BILLING_PAYMENT_REDUCER_KEY]: BillingPaymentReducer,
 });

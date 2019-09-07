@@ -31,6 +31,9 @@ export default css`
     border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
     background-color: ${props => props.theme.colors.WHITE};
   }
+  .default-payment {
+    padding-top: 14px;
+  }
   .cardImage-wrapper {
     display: flex;
   }
@@ -65,5 +68,11 @@ export default css`
   }
   .billing-payment-subHeading {
     padding-bottom: 14px;
+  }
+  .cvv-code-info {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+  }
+  .tooltip-bubble {
+    min-width: 238px !important;
   }
 `;

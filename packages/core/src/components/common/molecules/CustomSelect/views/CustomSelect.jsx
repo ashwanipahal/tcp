@@ -5,6 +5,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CustomSelect.style';
 import withStyles from '../../../hoc/withStyles';
 import CustomSelectConst from './CustomSelect.constants';
+import Modal from '../../Modal';
 
 class CustomSelect extends React.Component<Props> {
   constructor(props) {
@@ -58,6 +59,10 @@ class CustomSelect extends React.Component<Props> {
     });
   };
 
+  onClose = () => {
+    this.toggleHandler();
+  };
+
   onClickHandler = (e, value, title) => {
     e.stopPropagation();
     const { clickHandler } = this.props;
@@ -83,20 +88,35 @@ class CustomSelect extends React.Component<Props> {
         optionsMap={options}
         clickHandler={this.onClickHandler}
         activeValue={activeValue}
+        className="custom-select-dropDownList"
       />
     );
   };
 
   render() {
     const { toggle, activeTitle } = this.state;
-    const { className, selectListTitle } = this.props;
+    const { className, selectListTitle, showModal, modalHeading } = this.props;
     return (
       <BodyCopy component="div" className={`${className} custom-select`}>
         {selectListTitle && <span>{`${selectListTitle}:`}</span>}
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
-        {toggle && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
+        {toggle && !showModal && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
+        {showModal && (
+          <Modal
+            heading={modalHeading}
+            overlayClassName="TCPModal__Overlay"
+            className="TCPModal__Content_Modal"
+            isOpen={toggle}
+            onRequestClose={this.onClose}
+            maxWidth="450px"
+            minHeight="643px"
+            shouldCloseOnOverlayClick={false}
+          >
+            <BodyCopy>{this.getDropDownList()}</BodyCopy>
+          </Modal>
+        )}
       </BodyCopy>
     );
   }
@@ -109,6 +129,8 @@ CustomSelect.propTypes = {
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
+  showModal: PropTypes.bool,
+  modalHeading: PropTypes.string,
 };
 
 CustomSelect.defaultProps = {
@@ -117,6 +139,8 @@ CustomSelect.defaultProps = {
   activeTitle: '',
   activeValue: '',
   clickHandler: () => {},
+  showModal: false,
+  modalHeading: '',
 };
 
 export default withStyles(CustomSelect, styles);

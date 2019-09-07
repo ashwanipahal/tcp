@@ -9,7 +9,7 @@ import styles from '../styles/PaymentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import { getIconPath } from '../../../../../../../utils';
 
-const PaymentMethods = ({ className, paymentHeader, isMobile }) => {
+const PaymentMethods = ({ className, paymentHeader, isMobile, labels }) => {
   return (
     <>
       <BodyCopy
@@ -22,14 +22,14 @@ const PaymentMethods = ({ className, paymentHeader, isMobile }) => {
       </BodyCopy>
       <Row fullBleed className={className}>
         <Col
-          colSize={{ small: 2, medium: 6, large: 6 }}
+          colSize={{ small: 2, medium: 4, large: 6 }}
           className="radio-method payment-method-box credit-card"
         >
           <Field
             component={LabeledRadioButton}
             key="Credit Card"
             selectedValue="creditCard"
-            title="Credit Card"
+            title={labels.lbl_billing_creditCard}
             subtitle=""
             name="paymentMethodId"
             hideSubtitleOnMobile
@@ -37,7 +37,7 @@ const PaymentMethods = ({ className, paymentHeader, isMobile }) => {
           />
         </Col>
         <Col
-          colSize={{ small: 2, medium: 6, large: 6 }}
+          colSize={{ small: 2, medium: 4, large: 6 }}
           className="radio-method payment-method-box"
         >
           <Field
@@ -59,7 +59,7 @@ const PaymentMethods = ({ className, paymentHeader, isMobile }) => {
         </Col>
         {isMobile && (
           <Col
-            colSize={{ small: 2, medium: 6, large: 6 }}
+            colSize={{ small: 2, medium: 4, large: 6 }}
             className="radio-method payment-method-box"
           >
             <Field
@@ -88,6 +88,7 @@ PaymentMethods.propTypes = {
   className: PropTypes.string,
   paymentHeader: PropTypes.string,
   isMobile: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 PaymentMethods.defaultProps = {
   className: '',

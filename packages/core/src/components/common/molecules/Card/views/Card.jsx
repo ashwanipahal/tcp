@@ -5,6 +5,8 @@ import Badge from '../../../atoms/Badge';
 import CardImage from './CardImage';
 import withStyles from '../../../hoc/withStyles';
 import CardStyle from '../Card.style';
+import Anchor from '../../../atoms/Anchor';
+import Button from '../../../atoms/Button';
 
 /**
  * @function Card The card component will render an card
@@ -48,6 +50,19 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
     </React.Fragment>
   );
 };
+
+const getSelectWrapper = (isMobile, isDefault) => {
+  return (
+    isMobile &&
+    !isDefault && (
+      <BodyCopy component="div" textAlign="right" fontFamily="secondary">
+        <Button buttonVariation="variable-width" fill="BLACK">
+          SELECT
+        </Button>
+      </BodyCopy>
+    )
+  );
+};
 const Card = ({
   card,
   className,
@@ -56,6 +71,8 @@ const Card = ({
   isDefault,
   cardNumber,
   showAddress,
+  labels,
+  isMobile,
 }) =>
   card && (
     <BodyCopy component="div" fontSize="fs16" color="text.primary" className={className}>
@@ -87,12 +104,27 @@ const Card = ({
       ) : (
         <BodyCopy component="div" fontFamily="secondary">
           <CardImage card={card} cardNumber={cardNumber} />
+          {getSelectWrapper(isMobile, isDefault)}
         </BodyCopy>
       )}
       {showAddress && getFormattedAddress(card.addressDetails, dataLocatorPrefix)}
       {showAddress && card.addressDetails.country && (
         <BodyCopy component="p" fontFamily="secondary">
           {card.addressDetails.country}
+        </BodyCopy>
+      )}
+      {isMobile && (
+        <BodyCopy component="div" textAlign="right">
+          <Anchor
+            fontSizeVariation="medium"
+            underline
+            to="/#"
+            anchorVariation="primary"
+            className="billing-payment-edit"
+            dataLocator="billing-payment-edit"
+          >
+            {labels.lbl_billing_editBtn}
+          </Anchor>
         </BodyCopy>
       )}
     </BodyCopy>
@@ -106,12 +138,15 @@ Card.propTypes = {
   isDefault: PropTypes.bool,
   cardNumber: PropTypes.string,
   showAddress: PropTypes.bool,
+  labels: PropTypes.shape({}).isRequired,
+  isMobile: PropTypes.bool,
 };
 
 Card.defaultProps = {
   isDefault: false,
   cardNumber: '',
   showAddress: false,
+  isMobile: false,
 };
 
 export default withStyles(Card, CardStyle);

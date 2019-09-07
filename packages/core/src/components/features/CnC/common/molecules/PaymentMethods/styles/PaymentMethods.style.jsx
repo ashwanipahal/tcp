@@ -15,36 +15,39 @@ const styles = css`
     }
   }
   .payment-method-box .radio-button-checked {
-    top: 10px;
+    top: 8px;
   }
   .payment-method-box .radio-button {
     top: 7px;
   }
   .payment-method-box > label {
     padding-top: 5px;
-
     z-index: 1;
-    @media ${props => props.theme.mediaQuery.smallMax} {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      background-color: transparent;
+      height: auto;
+      border-radius: 0px;
+      border: 0px;
       text-align: center;
     }
   }
   .payment-method-box .input-radio-title {
-    color: transparent;
+    color: transparent !important;
   }
-  .credit-card .input-radio-title {
-    @media ${props => props.theme.mediaQuery.smallMax} {
+  & .credit-card .input-radio-title {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 800 !important;
       text-transform: uppercase;
     }
-    color: black;
+    color: black !important;
   }
   .payment-mothod-paypal-img {
     transform: scale(2);
     left: 21px;
     position: relative;
     top: -26px;
-    @media ${props => props.theme.mediaQuery.large} {
+    @media ${props => props.theme.mediaQuery.medium} {
       left: 51px;
     }
   }
@@ -53,7 +56,7 @@ const styles = css`
     left: 21px;
     position: relative;
     top: -26px;
-    @media ${props => props.theme.mediaQuery.large} {
+    @media ${props => props.theme.mediaQuery.medium} {
       left: 51px;
     }
   }

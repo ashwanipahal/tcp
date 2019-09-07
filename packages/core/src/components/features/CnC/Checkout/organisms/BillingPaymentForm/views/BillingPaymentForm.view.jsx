@@ -20,6 +20,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import CardImage from '../../../../../../common/molecules/Card/views/CardImage';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import { getIconPath } from '../../../../../../../utils';
+import RichText from '../../../../../../common/atoms/RichText';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = {
@@ -29,39 +30,43 @@ export class BillingPaymentForm extends React.PureComponent {
     onFileCardKey: PropTypes.string,
     isMobile: PropTypes.bool,
     initialValues: PropTypes.shape({}).isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    cvvCodeRichText: PropTypes.string,
+    paymentMethodId: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
     className: '',
     onFileCardKey: '',
     isMobile: false,
+    cvvCodeRichText: null,
   };
 
   handleEditClick = () => {};
 
-  getCardOptions = (cardList, labels) => {
-    const lbltitle = '+ Add a new credit card';
+  getCardOptions = (cardList, labels, isMobile) => {
     let cardOptions = cardList.map(card => ({
       value: card.creditCardId,
       title: `${card.addressDetails.firstName} ${card.addressDetails.lastName} ${
-        card.defaultInd ? '(Default)' : ''
+        card.defaultInd ? `(${labels.lbl_billing_default})` : ''
       }`,
       content: (
         <Card
           card={card}
           isDefault={card.defaultInd}
-          cardNumber={`${'ending in '}${card.accountNo.slice(-4)}`}
+          cardNumber={`${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)}`}
           labels={labels}
+          isMobile={isMobile}
         />
       ),
     }));
 
     cardOptions = cardOptions.push({
       value: '',
-      title: lbltitle,
+      title: labels.lbl_billing_addCreditHeading,
       content: (
         <Button fullWidth buttonVariation="variable-width" fill="BLACK">
-          {lbltitle}
+          {labels.lbl_billing_addCreditBtn}
         </Button>
       ),
     });
@@ -78,12 +83,20 @@ export class BillingPaymentForm extends React.PureComponent {
     cardList.size > 0 &&
     cardList.filter(card => card.ccType !== 'GiftCard' && card.ccType !== 'VENMO');
 
+  // eslint-disable-next-line complexity
   render() {
-    const { className, handleSubmit, cardList, onFileCardKey, isMobile } = this.props;
+    const {
+      className,
+      handleSubmit,
+      cardList,
+      onFileCardKey,
+      isMobile,
+      labels,
+      cvvCodeRichText,
+      paymentMethodId,
+    } = this.props;
     const creditCardList = this.getCreditCardList(cardList);
     const selectedCard = onFileCardKey ? this.getSelectedCard(cardList, onFileCardKey) : '';
-    const tooltipContent =
-      "For your safety and security, The Children's Place requires that you enter your card's verification code.    ";
 
     return (
       <form name={constants.FORM_NAME} noValidate className={className} onSubmit={handleSubmit}>
@@ -94,157 +107,180 @@ export class BillingPaymentForm extends React.PureComponent {
           data-locator="billing-details"
           className="elem-mb-XS elem-mt-MED"
         >
-          {'Payment Method'}
+          {labels.lbl_billing_paymentMethodTitle}
         </BodyCopy>
-        <PaymentMethods isMobile={isMobile} />
-        <Heading
-          component="h3"
-          variant="listMenu"
-          className="cardDropdownHeading"
-          dataLocator="billing-payment-bilingcreditcardlabel"
-        >
-          Select from card on file
-        </Heading>
-        {creditCardList && creditCardList.size > 0 && (
+        <PaymentMethods isMobile={isMobile} labels={labels} />
+        {paymentMethodId === 'creditCard' ? (
           <>
-            <Row fullBleed className="elem-mb-XL">
-              <Col
-                colSize={{
-                  large: 6,
-                  small: 6,
-                  medium: 4,
-                }}
-                className="creditCardForm__addressBook"
-              >
-                <Field
-                  selectListTitle=""
-                  name="onFileCardKey"
-                  id="onFileCardKey"
-                  component={AddressDropdown}
-                  dataLocator="payment-billingaddressdd"
-                  options={this.getCardOptions(creditCardList)}
-                />
-              </Col>
-            </Row>
-            <BodyCopy component="div" fontFamily="secondary" className="billing-payment-details">
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs28"
-                fontWeight="regular"
-                data-locator="billing-payment-details"
-                className="elem-mb-XS"
-              >
-                {'Card Details'}
-              </BodyCopy>
-              <Anchor
-                fontSizeVariation="medium"
-                underline
-                to="/#"
-                anchorVariation="primary"
-                className="billing-payment-edit"
-                dataLocator="billing-payment-edit"
-                onClick={this.handleEditClick}
-              >
-                Edit
-              </Anchor>
-            </BodyCopy>
             <Heading
-              component="h2"
+              component="h3"
               variant="listMenu"
-              className="paymentMethodHeading"
-              dataLocator="billing-payment-method"
+              className="cardDropdownHeading"
+              dataLocator="billing-payment-bilingcreditcardlabel"
             >
-              Payment Method
+              {labels.lbl_billing_selectFromCard}
             </Heading>
-            <Row fullBleed>
-              {selectedCard && (
-                <Col
-                  colSize={{
-                    large: 3,
-                    small: 4,
-                    medium: 4,
-                  }}
-                  className="billing-payment-card-info"
-                >
-                  <CardImage
-                    card={selectedCard}
-                    cardNumber={`${'ending in '}${selectedCard.accountNo.slice(-4)}`}
-                  />
-                </Col>
-              )}
-              {selectedCard && selectedCard.ccType !== 'PLACE CARD' && (
-                <Col
-                  colSize={{
-                    large: 3,
-                    small: 2,
-                    medium: 4,
-                  }}
-                  className="position-relative cvvCode"
-                >
-                  <Field
-                    placeholder="CVV Code"
-                    name="cvvCode"
-                    id="cvvCode"
-                    component={TextBox}
-                    dataLocator="billing-payment-cvvCode"
-                    className="field"
-                    showSuccessCheck={false}
-                    enableSuccessCheck={false}
-                  />
-                  <span className="hide-show show-hide-icons">
-                    <span className="info-icon-img-wrapper">
-                      <ReactTooltip message={tooltipContent} aligned="middle">
-                        <Image
-                          className="tcp_carousel__play tooltip"
-                          src={getIconPath('info-icon')}
-                        />
-                      </ReactTooltip>
-                    </span>
-                  </span>
-                </Col>
-              )}
-            </Row>
-            {selectedCard && !selectedCard.defaultInd && (
-              <Row fullBleed className="billing-payment-subHeading">
-                <Field
-                  dataLocator="billing-payment-checkbox-field"
-                  name="defaultPaymentMethod"
-                  component={InputCheckbox}
-                  className="default-payment"
+            {creditCardList && creditCardList.size > 0 && (
+              <>
+                <Row fullBleed className="elem-mb-XL">
+                  <Col
+                    colSize={{
+                      large: 6,
+                      small: 6,
+                      medium: 10,
+                    }}
+                    className="creditCardForm__addressBook"
+                  >
+                    <Field
+                      selectListTitle=""
+                      name="onFileCardKey"
+                      id="onFileCardKey"
+                      component={AddressDropdown}
+                      dataLocator="payment-billingaddressdd"
+                      options={this.getCardOptions(creditCardList, labels, isMobile)}
+                      showModal={isMobile}
+                      modalHeading="SELECT CARD"
+                    />
+                  </Col>
+                </Row>
+                <BodyCopy
+                  component="div"
+                  fontFamily="secondary"
+                  className="billing-payment-details"
                 >
                   <BodyCopy
-                    dataLocator="billing-payment-default-payment-heading-lbl"
-                    fontSize="fs16"
-                    fontFamily="secondary"
+                    fontFamily="primary"
+                    fontSize="fs28"
                     fontWeight="regular"
+                    data-locator="billing-payment-details"
+                    className="elem-mb-XS"
                   >
-                    Set as default payment method
+                    {labels.lbl_billing_cardDetailsTitle}
                   </BodyCopy>
-                </Field>
-              </Row>
+                  <Anchor
+                    fontSizeVariation="medium"
+                    underline
+                    to="/#"
+                    anchorVariation="primary"
+                    className="billing-payment-edit"
+                    dataLocator="billing-payment-edit"
+                    onClick={this.handleEditClick}
+                  >
+                    {labels.lbl_billing_editBtn}
+                  </Anchor>
+                </BodyCopy>
+                <Heading
+                  component="h2"
+                  variant="listMenu"
+                  className="paymentMethodHeading"
+                  dataLocator="billing-payment-method"
+                >
+                  {labels.lbl_billing_paymentMethodTitle}
+                </Heading>
+                <Row fullBleed>
+                  {selectedCard && (
+                    <Col
+                      colSize={{
+                        large: 3,
+                        small: 4,
+                        medium: 4,
+                      }}
+                      className="billing-payment-card-info"
+                    >
+                      <CardImage
+                        card={selectedCard}
+                        cardNumber={`${
+                          labels.lbl_billing_creditCardEnd
+                        }${selectedCard.accountNo.slice(-4)}`}
+                      />
+                    </Col>
+                  )}
+                  {selectedCard && selectedCard.ccType !== 'PLACE CARD' && (
+                    <Col
+                      colSize={{
+                        large: 3,
+                        small: 2,
+                        medium: 4,
+                      }}
+                      className="position-relative cvvCode"
+                    >
+                      <Field
+                        placeholder={labels.lbl_billing_cvvCode}
+                        name="cvvCode"
+                        id="cvvCode"
+                        component={TextBox}
+                        dataLocator="billing-payment-cvvCode"
+                        className="field"
+                        showSuccessCheck={false}
+                        enableSuccessCheck={false}
+                      />
+                      <span className="hide-show show-hide-icons">
+                        <span className="info-icon-img-wrapper">
+                          <ReactTooltip
+                            fontFamily="secondary"
+                            message={
+                              // eslint-disable-next-line react/jsx-wrap-multilines
+                              <RichText
+                                richTextHtml={cvvCodeRichText}
+                                className="cvv-code-info"
+                                dataLocator="bonus-points-details"
+                              />
+                            }
+                            aligned="right"
+                          >
+                            <Image
+                              className="tcp_carousel__play tooltip"
+                              src={getIconPath('info-icon')}
+                            />
+                          </ReactTooltip>
+                        </span>
+                      </span>
+                    </Col>
+                  )}
+                </Row>
+                {selectedCard && !selectedCard.defaultInd && (
+                  <Row fullBleed className="billing-payment-subHeading default-payment">
+                    <Field
+                      dataLocator="billing-payment-checkbox-field"
+                      name="defaultPaymentMethod"
+                      component={InputCheckbox}
+                      className="default-payment"
+                    >
+                      <BodyCopy
+                        dataLocator="billing-payment-default-payment-heading-lbl"
+                        fontSize="fs16"
+                        fontFamily="secondary"
+                        fontWeight="regular"
+                      >
+                        {labels.lbl_billing_defaultPayment}
+                      </BodyCopy>
+                    </Field>
+                  </Row>
+                )}
+                <Row fullBleed className="billing-payment-subHeading">
+                  <Heading
+                    component="h2"
+                    variant="listMenu"
+                    className="paymentMethodHeading"
+                    dataLocator="billing-payment-billingAddress"
+                  >
+                    {labels.lbl_billing_billingAddress}
+                  </Heading>
+                </Row>
+                <Row fullBleed className="elem-mb-XL">
+                  {onFileCardKey && (
+                    <Card
+                      card={selectedCard}
+                      className="CreditCardForm__address"
+                      dataLocatorPrefix="billing-payment-card-detail"
+                      showAddress
+                    />
+                  )}
+                </Row>
+              </>
             )}
-            <Row fullBleed className="billing-payment-subHeading">
-              <Heading
-                component="h2"
-                variant="listMenu"
-                className="paymentMethodHeading"
-                dataLocator="billing-payment-billingAddress"
-              >
-                Billing Address
-              </Heading>
-            </Row>
-            <Row fullBleed className="elem-mb-XL">
-              {onFileCardKey && (
-                <Card
-                  card={selectedCard}
-                  className="CreditCardForm__address"
-                  dataLocatorPrefix="billing-payment-card-detail"
-                  showAddress
-                />
-              )}
-            </Row>
           </>
-        )}
+        ) : null}
       </form>
     );
   }
