@@ -30,6 +30,7 @@ import {
   emailSignupStatus,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
 import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
@@ -232,11 +233,13 @@ function* loadShipmentMethods(miniAddress, throwError) {
   }
 
   try {
+    const labels = yield select(BagPageSelectors.getErrorMapping);
     const res = yield getShippingMethods(
       address.state || '',
       address.zipCode || '',
       address.addressLine1 || '',
-      address.addressLine2 || ''
+      address.addressLine2 || '',
+      labels
     );
     yield all([setShippingOptions(res), setIsLoadingShippingMethods(false)].map(val => put(val)));
   } catch (err) {
@@ -693,13 +696,15 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
     yield saveLocalSmsInfo(smsInfo);
     yield all(pendingPromises);
+    const labels = yield select(BagPageSelectors.getErrorMapping);
     yield call(
       setShippingMethodAndAddressId,
       method.shippingMethodId,
       addOrEditAddressRes.addressId,
       false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
       transVibesSmsPhoneNo,
-      addOrEditAddressRes.addressKey
+      addOrEditAddressRes.addressKey,
+      labels
     );
     // return getPlccOperator(store)
     //   .optionalPlccOfferModal(res.plccEligible, res.prescreenCode)

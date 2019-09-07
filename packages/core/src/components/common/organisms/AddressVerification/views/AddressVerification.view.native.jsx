@@ -48,6 +48,18 @@ export default class AddressVerification extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    const { resetVerifyAddressAction } = this.props;
+    const { optionalAddressLine } = this.state;
+    if (optionalAddressLine) {
+      this.setState({
+        optionalAddressLine: '',
+      });
+    }
+
+    resetVerifyAddressAction();
+  }
+
   onConfirm = () => {
     const { selectAddress, optionalAddressLine } = this.state;
     const { onSuccess, userAddress, suggestedAddress } = this.props;
@@ -64,20 +76,8 @@ export default class AddressVerification extends React.PureComponent {
     if (optionalAddressLine) {
       addressPayload.address2 = optionalAddressLine;
     }
+
     onSuccess(addressPayload);
-    this.onCloseModal();
-  };
-
-  onCloseModal = () => {
-    const { resetVerifyAddressAction } = this.props;
-    const { optionalAddressLine } = this.state;
-    if (optionalAddressLine) {
-      this.setState({
-        optionalAddressLine: '',
-      });
-    }
-
-    resetVerifyAddressAction();
   };
 
   getMessage = verificationResult => {

@@ -138,13 +138,16 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-export function* routeForCartCheckout(recalc, navigation) {
+export function* routeForCartCheckout(recalc, navigation, closeModal) {
   const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
   if (isMobileApp()) {
     if (orderHasPickup) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
     } else {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+    }
+    if (closeModal) {
+      closeModal();
     }
   } else if (orderHasPickup) {
     utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
@@ -153,12 +156,12 @@ export function* routeForCartCheckout(recalc, navigation) {
   }
 }
 
-export function* checkoutCart(recalc, navigation) {
+export function* checkoutCart(recalc, navigation, closeModal) {
   const isLoggedIn = yield select(getUserLoggedInState);
   if (!isLoggedIn) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
-  return yield call(routeForCartCheckout, recalc, navigation);
+  return yield call(routeForCartCheckout, recalc, navigation, closeModal);
 }
 
 function* confirmStartCheckout() {
@@ -180,7 +183,9 @@ function* confirmStartCheckout() {
   return false;
 }
 
-export function* startCartCheckout({ payload: { isEditingItem, navigation } = {} } = {}) {
+export function* startCartCheckout({
+  payload: { isEditingItem, navigation, closeModal } = {},
+} = {}) {
   if (isEditingItem) {
     yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
   } else {
@@ -196,7 +201,7 @@ export function* startCartCheckout({ payload: { isEditingItem, navigation } = {}
     );
     const oOSModalOpen = yield call(confirmStartCheckout);
     if (!oOSModalOpen) {
-      yield call(checkoutCart, false, navigation);
+      yield call(checkoutCart, false, navigation, closeModal);
     }
   }
 }
