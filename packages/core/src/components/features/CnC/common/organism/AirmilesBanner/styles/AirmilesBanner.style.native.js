@@ -26,9 +26,20 @@ const Header = styled.View`
 `;
 
 const InputField = styled.View`
-  display: flex;
   flex: 1;
-  padding-right: 8px;
+  flex-direction: row;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-export { AirmilesBannerFormContainer, FlexRow, Header, InputField };
+const InputContainer = styled.View`
+  flex: 1;
+`;
+
+const IconContainer = styled.View`
+  position: absolute;
+  right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+export { AirmilesBannerFormContainer, FlexRow, Header, InputField, IconContainer, InputContainer };

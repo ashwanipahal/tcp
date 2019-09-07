@@ -28,6 +28,13 @@ const styles = {
     width: elementWidth,
     height: elementHeight,
   }),
+  shadowColor: {
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 10,
+  },
 };
 class ReactTooltip extends React.PureComponent {
   state = {
@@ -132,9 +139,11 @@ class ReactTooltip extends React.PureComponent {
         >
           {children}
         </View>
-        {withPointer && this.renderPointer(tooltipStyle.top)}
-        <View style={tooltipStyle} testID="tooltipPopoverContainer">
-          {popover}
+        <View style={styles.shadowColor}>
+          {withPointer && this.renderPointer(tooltipStyle.top)}
+          <View style={tooltipStyle} testID="tooltipPopoverContainer">
+            {popover}
+          </View>
         </View>
       </View>
     );
