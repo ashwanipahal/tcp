@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
   CouponHeading,
@@ -38,7 +39,8 @@ class MyRewards extends PureComponent {
       labels,
       coupons,
       onViewCouponDetails,
-      onApplyCouponToBag,
+      onApplyCouponToBagFromList,
+      toastMessage,
       onRemove,
       isApplyingOrRemovingCoupon,
     } = this.props;
@@ -51,7 +53,8 @@ class MyRewards extends PureComponent {
         labels={labels.common}
         coupon={item}
         onViewCouponDetails={onViewCouponDetails}
-        onApplyCouponToBag={onApplyCouponToBag}
+        onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+        toastMessage={toastMessage}
         onRemove={onRemove}
         isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
         className="elem-mb-LRG"
@@ -64,6 +67,7 @@ class MyRewards extends PureComponent {
     const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
     return (
       <View>
+        <ToastContainer />
         <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-LRG">
           <CouponHeading>
             <BodyCopy
@@ -128,8 +132,9 @@ MyRewards.propTypes = {
   labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
-  onApplyCouponToBag: PropTypes.func,
+  onApplyCouponToBagFromList: PropTypes.func,
   onRemove: PropTypes.func,
+  toastMessage: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
   showLink: PropTypes.bool,
 };
@@ -144,8 +149,9 @@ MyRewards.defaultProps = {
   },
   coupons: [],
   onViewCouponDetails: () => {},
-  onApplyCouponToBag: () => {},
+  onApplyCouponToBagFromList: () => {},
   onRemove: () => {},
+  toastMessage: () => {},
   isApplyingOrRemovingCoupon: false,
   showLink: false,
 };

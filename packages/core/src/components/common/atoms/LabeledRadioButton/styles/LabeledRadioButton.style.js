@@ -87,6 +87,7 @@ ${props =>
     }
     @media ${props => props.theme.mediaQuery.smallOnly}{
       ${props =>
+        props.variation !== 'secondary' &&
         radioBtnStyle({
           backgroundColor: props.theme.colorPalette.white,
           borderColor: props.theme.colorPalette.gray[600],
