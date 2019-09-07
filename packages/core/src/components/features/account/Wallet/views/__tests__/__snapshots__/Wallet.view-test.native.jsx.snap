@@ -2,26 +2,31 @@
 
 exports[`Wallet should render correctly 1`] = `
 <View>
-  <Styled(View)>
-    <Connect(RewardsPointsContainer)
-      tableView={true}
-    />
-    <PageHeadingWithLinks
-      heading="lbl_my_wallet_heading"
-      labels={Object {}}
-      programDetailsCta="lbl_my_rewards_program_details"
-      termsConditionCta="lbl_common_tnc"
-    >
-      <Connect(MyRewardsContainer)
-        labels={
-          Object {
-            "common": Object {},
-            "myPlaceRewards": Object {},
-          }
-        }
-        view="all"
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(View)>
+      <Connect(RewardsPointsContainer)
+        tableView={true}
       />
-    </PageHeadingWithLinks>
-  </Styled(View)>
+      <PageHeadingWithLinks
+        heading="lbl_my_wallet_heading"
+        labels={Object {}}
+        programDetailsCta="lbl_my_rewards_program_details"
+        termsConditionCta="lbl_common_tnc"
+      >
+        <Connect(MyRewardsContainer)
+          labels={
+            Object {
+              "common": Object {},
+              "myPlaceRewards": Object {},
+            }
+          }
+          view="all"
+        />
+      </PageHeadingWithLinks>
+    </Styled(View)>
+  </ScrollViewMock>
 </View>
 `;
