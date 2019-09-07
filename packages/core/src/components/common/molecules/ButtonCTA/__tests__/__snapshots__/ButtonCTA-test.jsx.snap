@@ -2,6 +2,7 @@
 
 exports[`Button CTA component renders correctly 1`] = `
 <Styled(Anchor)
+  asPath="/test"
   className="ctaClassName"
   key="test_key"
   title="title"
