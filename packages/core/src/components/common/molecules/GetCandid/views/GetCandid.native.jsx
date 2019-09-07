@@ -85,6 +85,7 @@ class GetCandid extends React.Component {
   render() {
     const { candidData, labels } = this.props;
     const data = candidData && candidData.Views;
+    console.log('hi');
     return (
       <Wrapper>
         {labels.title && (
