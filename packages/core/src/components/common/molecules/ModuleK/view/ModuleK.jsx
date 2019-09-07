@@ -103,7 +103,6 @@ class ModuleK extends React.PureComponent<Props, State> {
                       dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
                       dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
                       promo={checkPromo}
-                      useDamImage
                     />
                     <Col
                       colSize={{
