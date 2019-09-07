@@ -13,6 +13,10 @@ export default css`
     }
   }
 
+  .accordion-class {
+    width: 100%;
+  }
+
   .open-filter-button {
     background: url('/static/images/carrot-small-up.png') no-repeat;
     background-position: 95% 18px;

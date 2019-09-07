@@ -18,6 +18,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           className="filters-sorting-container"
         >
           <Styled(Col)
+            className="accordion-class"
             colSize={
               Object {
                 "large": 12,
