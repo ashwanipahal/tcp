@@ -127,6 +127,7 @@ exports[`PickUpFormPartVanilla component  should renders correctly props with st
     </Styled(View)>
     <CnCCommonTemplate
       btnText="NEXT:SHIPPING"
+      isGuest={true}
       routeToPage="ShippingPage"
     />
   </ScrollViewMock>
@@ -260,6 +261,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
     </Styled(View)>
     <CnCCommonTemplate
       btnText="NEXT:SHIPPING"
+      isGuest={true}
       routeToPage="ShippingPage"
     />
   </ScrollViewMock>
@@ -318,6 +320,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
     </Styled(View)>
     <CnCCommonTemplate
       btnText="NEXT:SHIPPING"
+      isGuest={false}
       routeToPage="ShippingPage"
     />
   </ScrollViewMock>
