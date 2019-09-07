@@ -150,7 +150,7 @@ export class AboutYouInformationForm extends React.PureComponent {
 AboutYouInformationForm.propTypes = {
   labels: PropTypes.shape({
     lbl_profile_personal_info_cancelCta: PropTypes.string,
-    lbl_profile_personal_info_updateCta: PropTypes.string,
+    lbl_profile_survey_save: PropTypes.string,
     lbl_profile_survey_question1: PropTypes.string,
     lbl_profile_survey_question2: PropTypes.string,
   }),
@@ -163,7 +163,7 @@ AboutYouInformationForm.propTypes = {
 AboutYouInformationForm.defaultProps = {
   labels: {
     lbl_profile_personal_info_cancelCta: '',
-    lbl_profile_personal_info_updateCta: '',
+    lbl_profile_survey_save: '',
     lbl_profile_survey_question1: '',
     lbl_profile_survey_question2: '',
   },
