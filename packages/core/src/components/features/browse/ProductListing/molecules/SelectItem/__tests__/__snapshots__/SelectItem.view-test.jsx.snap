@@ -52,6 +52,12 @@ exports[`Select Item is shown should render select item  1`] = `
     padding-bottom: 4px;
     display: flex;
 
+    span {
+      font-weight: ",
+          [Function],
+          ";
+    }
+
     @media ",
           [Function],
           " {

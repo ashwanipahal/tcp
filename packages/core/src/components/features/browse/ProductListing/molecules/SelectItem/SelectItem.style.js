@@ -25,6 +25,10 @@ export default css`
     padding-bottom: 4px;
     display: flex;
 
+    span {
+      font-weight: ${props => props.theme.fonts.fontWeight.bold};
+    }
+
     @media ${props => props.theme.mediaQuery.large} {
       background: url(${selectedIcon}) no-repeat left top;
       background-size: 18px 18px;
