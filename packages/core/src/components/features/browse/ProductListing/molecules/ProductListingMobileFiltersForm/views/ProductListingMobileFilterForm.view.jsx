@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, Field } from 'redux-form';
+import { Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
@@ -98,13 +98,42 @@ const getFilterOptionsMap = optionsMap => {
 class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-
+    this.filterRef = [];
     this.state = {
       isOpenFilterSection: false,
       show: false,
       isSortOpenModal: false,
     };
   }
+
+  getAppliedFiltersCount() {
+    const { initialValues } = this.props;
+    let count = 0;
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in initialValues) {
+      if (Object.prototype.hasOwnProperty.call(initialValues, key)) {
+        count +=
+          key !== FACETS_FIELD_KEY.sort && key !== FACETS_FIELD_KEY.aux_color_unbxd
+            ? initialValues[key].length
+            : 0;
+      }
+    }
+    return count;
+  }
+
+  getSelectedFiltersCount() {
+    const { filtersLength } = this.props;
+    return (filtersLength && Object.keys(filtersLength) > 0 && this.sumValues(filtersLength)) || 0;
+  }
+
+  sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+
+  captureFilterRef = ref => {
+    if (!ref) return;
+    const typeRef = ref && ref.getRenderedComponent();
+    typeRef.filterRefType = ref.props.name;
+    this.filterRef.push(typeRef);
+  };
 
   /**
    * @function isUnbxdFacetKey
@@ -141,12 +170,12 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   showSortModal = () => {
     this.setState({ show: true, isSortOpenModal: true });
   };
-
   /**
    * @function toggleFilterIcon
    * @summary This handles to render the desktop filter fields
    * @param none
    */
+
   toggleFilterIcon = () => {
     const { isOpenFilterSection } = this.state;
     this.setState({ isOpenFilterSection: !isOpenFilterSection });
@@ -174,6 +203,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         allowMultipleSelections
         className={className}
         expanded
+        ref={this.captureFilterRef}
+        withRef
+        forwardRef
         disableExpandStateChanges
       />
     );
@@ -202,6 +234,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         disableExpandStateChanges
         ref={this.captureFilterRef}
         withRef
+        forwardRef
         onBlur={this.handleFilterFieldBlur}
         labels={labels}
       />
@@ -215,13 +248,23 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   renderMobilePlpFilterForm() {
     const { isSortOpenModal } = this.state;
+    const { handleSubmit, handleSubmitOnChange } = this.props;
     return (
       <div>
         {!isSortOpenModal && (
           <div className="filters-sorting-container">{this.renderMobileFilters()}</div>
         )}
         {isSortOpenModal && (
-          <SortSelector expanded sortSelectOptions={getSortCustomOptionsMap(config)} hideTitle />
+          <SortSelector
+            expanded
+            sortSelectOptions={getSortCustomOptionsMap(config)}
+            hideTitle
+            isSortOpenModal
+            onChange={handleSubmit(formValues => {
+              this.hideModal(true);
+              handleSubmitOnChange(formValues);
+            })}
+          />
         )}
       </div>
     );
@@ -283,9 +326,19 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
   }
 
   render() {
-    const { initialValues, filtersMaps, className, labels } = this.props;
+    const {
+      totalProductsCount,
+      initialValues,
+      filtersMaps,
+      className,
+      handleSubmit,
+      handleFilterSubmit,
+      labels,
+      handleImmediateSubmit,
+    } = this.props;
     const { isOpenFilterSection, show } = this.state;
-    // const selectedFiltersCount = this.getSelectedFiltersCount();
+    let appliedFiltersCount = this.getAppliedFiltersCount();
+    let selectedFiltersCount = this.getSelectedFiltersCount();
     const appliedFilters = [];
 
     const classNames = cssClassName(
@@ -304,21 +357,25 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       }
     }
     const { isSortOpenModal } = this.state;
+
     return (
       <React.Fragment>
-        <FilterModal
-          show={show}
-          handleClose={this.hideModal}
-          classNames={classNames}
-          labels={labels}
-          isSortOpenModal={isSortOpenModal}
+        <form
+          className="available-filters-sorting-container"
+          onSubmit={handleSubmit(handleImmediateSubmit)}
         >
-          <div className={`${className} new-filter-and-sort-form-container`}>
-            <form className="available-filters-sorting-container">
+          <FilterModal
+            show={show}
+            handleClose={this.hideModal}
+            classNames={classNames}
+            labels={labels}
+            isSortOpenModal={isSortOpenModal}
+          >
+            <div className={`${className} new-filter-and-sort-form-container`}>
               {this.renderMobilePlpFilterForm()}
-            </form>
-          </div>
-        </FilterModal>
+            </div>
+          </FilterModal>
+        </form>
         <Row centered className={`filter-row ${className}`}>
           <Col
             colSize={{
@@ -367,14 +424,15 @@ ProductListingMobileFiltersForm.propTypes = {
   labels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
+  handleSubmit: PropTypes.func.isRequired,
+  handleSubmitOnChange: PropTypes.func,
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
   filtersMaps: {},
   labels: {},
+  handleSubmitOnChange: () => null,
 };
-export default reduxForm({
-  form: 'filter-form', // a unique identifier for this form
-})(withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle));
+export default withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle);
 
 export { ProductListingMobileFiltersForm as ProductListingMobileFiltersFormVanilla };

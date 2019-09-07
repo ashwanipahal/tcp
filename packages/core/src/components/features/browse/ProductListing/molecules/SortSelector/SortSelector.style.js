@@ -23,13 +23,13 @@ export default css`
     width: 95%;
   }
 
-  .item-selected {
+  .item-select {
     background: ${props => props.theme.colors.ACCORDION.INACTIVE_HEADER} url(${selectedIcon})
-      no-repeat right;
-    background-size: 20px 20px;
+      no-repeat right ${props => props.theme.spacing.ELEM_SPACING.MED};
+    background-size: 25px 25px;
     .sort-title {
       font-size: ${props => props.theme.typography.fontSizes.fs13};
-      font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     }
   }
 
@@ -53,6 +53,7 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
+    padding-left: 0;
     .sort-dropdown-wrapper {
       padding: 9px 0 0;
       width: auto;
@@ -61,12 +62,14 @@ export default css`
     }
     .custom-sort-dropdown {
       border-bottom: 1px solid ${props => props.theme.colorPalette.gray[600]};
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
     .sort-select-title {
       display: inline-block;
     }
     .sort-selected-item {
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
     .sort-filter-label {
       display: inline-block;
@@ -76,6 +79,11 @@ export default css`
         font-size: ${props => props.theme.typography.fontSizes.fs13};
         font-weight: ${props => props.theme.typography.fontWeights.extrabold};
       }
+    }
+    .item-highlighted {
+      background: url(${selectedIcon}) no-repeat left top;
+      background-size: 25px 25px;
+      padding-bottom: 0;
     }
   }
 `;

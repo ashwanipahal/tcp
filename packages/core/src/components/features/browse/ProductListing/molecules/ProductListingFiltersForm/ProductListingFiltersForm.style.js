@@ -43,11 +43,12 @@ export default css`
   .filters-only-container {
     display: inline-block;
   }
-  .desktop-dropdown {
+  &.desktop-dropdown {
     display: flex;
     justify-content: space-between;
   }
   .sort-selector-wrapper {
+    display: inline-block;
     .custom-select-common {
       display: flex;
       border-bottom: none;

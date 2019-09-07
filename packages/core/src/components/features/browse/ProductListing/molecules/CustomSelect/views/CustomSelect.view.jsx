@@ -228,6 +228,7 @@ class CustomSelect extends React.Component {
     appliedFilterVal: PropTypes.number,
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
     type: PropTypes.string,
+    isSortOpenModal: PropTypes.bool,
   };
 
   static customSelectCounter = 0;
@@ -492,9 +493,11 @@ class CustomSelect extends React.Component {
   /** closes the dropdown */
   closeMenu() {
     const { expanded } = this.state;
-    const { disableExpandStateChanges } = this.props;
-    if (!expanded || disableExpandStateChanges) return;
-    this.setState({ expanded: false });
+    const { disableExpandStateChanges, isSortOpenModal } = this.props;
+    if (!isSortOpenModal) {
+      if (!expanded || disableExpandStateChanges) return;
+      this.setState({ expanded: false });
+    }
   }
 
   render() {
@@ -518,6 +521,7 @@ class CustomSelect extends React.Component {
       onExpandCallback,
       labels,
       type,
+      isSortOpenModal,
       ...otherProps
     } = this.props;
 
@@ -637,5 +641,6 @@ CustomSelect.defaultProps = {
   appliedFilterVal: 0,
   labels: {},
   type: '',
+  isSortOpenModal: false,
 };
 export default withStyles(CustomSelect, CustomSelectStyle);

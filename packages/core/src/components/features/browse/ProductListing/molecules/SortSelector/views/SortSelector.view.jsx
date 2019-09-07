@@ -31,6 +31,7 @@ class SortSelector extends React.PureComponent<Props> {
       onExpandCallback,
       expanded,
       hideTitle,
+      isSortOpenModal,
     } = this.props;
 
     return (
@@ -47,6 +48,7 @@ class SortSelector extends React.PureComponent<Props> {
         expanded={expanded}
         selectTextOverride={selectTextOverride}
         type={FACETS_FIELD_KEY.sort}
+        isSortOpenModal={isSortOpenModal}
       />
     );
   }

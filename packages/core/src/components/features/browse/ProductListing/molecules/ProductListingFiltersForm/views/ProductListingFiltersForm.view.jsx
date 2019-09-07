@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -287,7 +287,7 @@ class ProductListingFiltersForm extends React.Component {
    * @function renderDesktop renders the filter view for desktop
    * @param {Object} appliedFilters - filters if already applied
    */
-  renderDesktop(appliedFilters) {
+  renderDesktopAndMobile(appliedFilters) {
     const {
       filtersMaps,
       totalProductsCount,
@@ -295,6 +295,8 @@ class ProductListingFiltersForm extends React.Component {
       colorSeqMap,
       labels,
       className,
+      initialValues,
+      onSubmit,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
     return (
@@ -340,6 +342,20 @@ class ProductListingFiltersForm extends React.Component {
             />
           )}
         </form>
+        <div className="render-mobile-view">
+          <ProductListingMobileFiltersForm
+            totalProductsCount={totalProductsCount}
+            initialValues={initialValues}
+            filtersMaps={filtersMaps}
+            className={className}
+            labels={labels}
+            onSubmit={onSubmit}
+            handleSubmit={handleSubmit}
+            handleImmediateSubmit={this.handleImmediateSubmit}
+            removeAllFilters={this.handleRemoveAllFilters}
+            handleSubmitOnChange={this.handleSubmitOnChange}
+          />
+        </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
       </div>
     );
@@ -386,7 +402,7 @@ class ProductListingFiltersForm extends React.Component {
   }
 
   render() {
-    const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
+    const { initialValues, filtersMaps } = this.props;
 
     const appliedFilters = [];
 
@@ -400,18 +416,7 @@ class ProductListingFiltersForm extends React.Component {
       appliedFilters.push(selectedFacet);
     }
 
-    return (
-      <div className={`${className} filter-sort-wrapper`}>
-        {this.renderDesktop(appliedFilters)}
-        <ProductListingMobileFiltersForm
-          totalProductsCount={totalProductsCount}
-          initialValues={initialValues}
-          filtersMaps={filtersMaps}
-          className={`${className} render-mobile-view`}
-          labels={labels}
-        />
-      </div>
-    );
+    return <Fragment>{this.renderDesktopAndMobile(appliedFilters)}</Fragment>;
   }
 }
 
