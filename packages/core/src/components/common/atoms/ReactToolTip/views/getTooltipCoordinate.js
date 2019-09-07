@@ -57,7 +57,7 @@ type Coord = {
   Since they are squares we only need two.
 */
 
-const getTooltipCoordinate = ({
+const getTooltipCoordinate = (
   x,
   y,
   width,
@@ -66,8 +66,9 @@ const getTooltipCoordinate = ({
   ScreenHeight,
   tooltipWidth,
   tooltipHeight,
-  withPointer,
-}) => {
+  withPointer
+  // eslint-disable-next-line max-params
+) => {
   // The following are point coordinates: [x, y]
   const center = [x + getElementVisibleWidth(width, x, ScreenWidth) / 2, y + height / 2];
   const pOne = [center[0], 0];

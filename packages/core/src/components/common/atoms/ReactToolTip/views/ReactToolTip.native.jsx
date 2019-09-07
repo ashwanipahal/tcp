@@ -14,12 +14,12 @@ const styles = {
     backgroundColor: withOverlay ? overlayColor : 'transparent',
     flex: 1,
   }),
-  renderPointer: (pastMiddleLine, yOffset, elementHeight, xOffset, elementWidth) => ({
+  Pointer: (pastMiddleLine, yOffset, elementHeight, xOffset, elementWidth) => ({
     position: 'absolute',
     top: pastMiddleLine ? yOffset - 13 : yOffset + elementHeight - 2,
     left: xOffset + getElementVisibleWidth(elementWidth, xOffset, ScreenWidth) / 2 - 7.5,
   }),
-  renderContent: (yOffset, xOffset, highlightColor, elementWidth, elementHeight) => ({
+  contentStyle: (yOffset, xOffset, highlightColor, elementWidth, elementHeight) => ({
     position: 'absolute',
     top: yOffset,
     left: xOffset,
@@ -28,15 +28,7 @@ const styles = {
     width: elementWidth,
     height: elementHeight,
   }),
-  contentShadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 10,
-  },
 };
-
 class ReactTooltip extends React.PureComponent {
   state = {
     isVisible: false,
@@ -68,9 +60,9 @@ class ReactTooltip extends React.PureComponent {
   wrapWithPress = (toggleOnPress, children) => {
     if (toggleOnPress) {
       return (
-        <View onPress={this.toggleTooltip} activeOpacity={1}>
+        <TouchableOpacity accessibilityRole="link" onPress={this.toggleTooltip} activeOpacity={1}>
           {children}
-        </View>
+        </TouchableOpacity>
       );
     }
 
@@ -81,7 +73,7 @@ class ReactTooltip extends React.PureComponent {
     const { yOffset, xOffset, elementHeight, elementWidth } = this.state;
     const { height, backgroundColor, width, withPointer } = this.props;
 
-    const { x, y } = getTooltipCoordinate({
+    const { x, y } = getTooltipCoordinate(
       xOffset,
       yOffset,
       elementWidth,
@@ -90,8 +82,8 @@ class ReactTooltip extends React.PureComponent {
       ScreenHeight,
       width,
       height,
-      withPointer,
-    });
+      withPointer
+    );
 
     return {
       position: 'absolute',
@@ -104,10 +96,8 @@ class ReactTooltip extends React.PureComponent {
       alignItems: 'center',
       justifyContent: 'center',
       flex: 1,
-      paddingTop: 19,
-      paddingRight: 21,
-      paddingLeft: 21,
-      paddingBottom: 19,
+      borderRadius: 10,
+      padding: 10,
     };
   };
 
@@ -117,9 +107,7 @@ class ReactTooltip extends React.PureComponent {
     const pastMiddleLine = yOffset > tooltipY;
 
     return (
-      <View
-        style={styles.renderPointer(pastMiddleLine, yOffset, elementHeight, xOffset, elementWidth)}
-      >
+      <View style={styles.Pointer(pastMiddleLine, yOffset, elementHeight, xOffset, elementWidth)}>
         <Triangle
           style={{ borderBottomColor: pointerColor || backgroundColor }}
           isDown={pastMiddleLine}
@@ -140,21 +128,13 @@ class ReactTooltip extends React.PureComponent {
     return (
       <View>
         <View
-          style={styles.renderContent(
-            yOffset,
-            xOffset,
-            highlightColor,
-            elementWidth,
-            elementHeight
-          )}
+          style={styles.contentStyle(yOffset, xOffset, highlightColor, elementWidth, elementHeight)}
         >
           {children}
         </View>
-        <View style={styles.contentShadow}>
-          {withPointer && this.renderPointer(tooltipStyle.top)}
-          <View style={tooltipStyle} testID="tooltipPopoverContainer">
-            {popover}
-          </View>
+        {withPointer && this.renderPointer(tooltipStyle.top)}
+        <View style={tooltipStyle} testID="tooltipPopoverContainer">
+          {popover}
         </View>
       </View>
     );
