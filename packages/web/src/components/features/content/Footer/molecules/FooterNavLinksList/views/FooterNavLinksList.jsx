@@ -97,13 +97,7 @@ const FooterNavLinksList = ({
     return !hideLogoutMyActLink ? (
       <li>
         {linkAction ? (
-          <Button
-            type="button"
-            buttonVariation="category-links-light"
-            className="navlink__list__button"
-            data-locator={`col_${colNum}_link_${index}`}
-            onClick={onClick}
-          >
+          <Button type="button" data-locator={`col_${colNum}_link_${index}`} onClick={onClick} link>
             {linkItems.text}
           </Button>
         ) : (
@@ -116,7 +110,6 @@ const FooterNavLinksList = ({
             dataLocator={`col_${colNum}_link_${index}`}
             target={linkItems.target}
             title={linkItems.title}
-            onClick={onClick}
           >
             {linkItems.text}
           </Anchor>
