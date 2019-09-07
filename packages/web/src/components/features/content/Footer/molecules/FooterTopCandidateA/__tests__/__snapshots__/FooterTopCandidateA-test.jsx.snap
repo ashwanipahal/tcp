@@ -240,7 +240,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             className="col-md-half-width"
             colSize={
               Object {
-                "large": 7,
+                "large": 6,
                 "medium": 4,
                 "small": 7,
               }
@@ -269,7 +269,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             className="candidate_a_inline_container_button col-md-half-width"
             colSize={
               Object {
-                "large": 5,
+                "large": 6,
                 "medium": 4,
                 "small": 6,
               }
