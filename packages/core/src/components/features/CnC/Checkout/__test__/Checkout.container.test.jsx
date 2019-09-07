@@ -9,7 +9,6 @@ describe('CheckoutPage Container', () => {
       section: '',
     },
   };
-
   const props = {
     router,
     initialValues: {},
@@ -25,6 +24,7 @@ describe('CheckoutPage Container', () => {
     initCheckout: jest.fn(),
     fetchNeedHelpContent: jest.fn(),
   };
+
   it('should render CheckoutPage view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);
     expect(tree.is(CheckoutPage)).toBeTruthy();
