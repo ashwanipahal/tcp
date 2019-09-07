@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, Col, Row } from '../../../atoms';
+import { Anchor, Button, Col, Image, Row } from '../../../atoms';
 import { Carousel, Grid } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
@@ -11,7 +11,7 @@ import moduleJStyle from '../styles/ModuleJ.style';
 import { getIconPath } from '../../../../../utils';
 import config from '../moduleJ.config';
 
-class ModuleJ extends React.PureComponent {
+class ModuleJ extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,8 +28,7 @@ class ModuleJ extends React.PureComponent {
     const { className, productTabList } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS } = config;
-    console.log(productTabList, currentCatId);
-    console.log(productTabList[currentCatId]);
+    const data = productTabList ? productTabList[currentCatId] : productTabList;
     return (
       <Grid className={className}>
         <ProductTabList onProductTabChange={this.onTabChange} categoryList={categoryListMock} />
@@ -46,8 +45,13 @@ class ModuleJ extends React.PureComponent {
               medium: 0,
               large: 1,
             }}
+            offsetRight={{
+              small: 0,
+              medium: 0,
+              large: 1,
+            }}
           >
-            {Object.keys(productTabList).length && (
+            {data ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
@@ -57,11 +61,22 @@ class ModuleJ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {productTabList[currentCatId].map(item => (
-                  <img alt="" src={item.imageUrl} />
-                ))}
+                {data.map(({ uniqueId, imageUrl }, index) => {
+                  return (
+                    <div key={index.toString()}>
+                      <Anchor
+                        className="moduleJ-image-link"
+                        // TODO: This will be enabled when PDP page will be ready
+                        // in new app untill redirecting to Prod PDP page.
+                        to={`https://www.childrensplace.com/us/p/${uniqueId}`}
+                      >
+                        <Image src={imageUrl[0]} />
+                      </Anchor>
+                    </div>
+                  );
+                })}
               </Carousel>
-            )}
+            ) : null}
           </Col>
         </Row>
         <Row centered>

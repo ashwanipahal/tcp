@@ -90,12 +90,6 @@ export const routerPush = (href, as, query, siteId = getSiteId()) => {
   return Router.push(relHref, asPath, { query });
 };
 
-export const identifyBrand = () => {
-  const url = 'http://www.thechildrensplace.com/';
-
-  return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
-};
-
 /**
  * This common function works for finding key in an object.
  * Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
@@ -345,7 +339,6 @@ export default {
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  identifyBrand,
   getObjectValue,
   createUrlSearchParams,
   buildUrl,
