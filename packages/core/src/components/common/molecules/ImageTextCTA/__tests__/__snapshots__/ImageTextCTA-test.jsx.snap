@@ -6,12 +6,15 @@ exports[`Image Text CTA component renders correctly 1`] = `
 >
   <div>
     <Styled(Anchor)
+      asPath="/test"
       className="dropdown-items"
       fontSizeVariation="large"
       fontWeightVariation="active"
-      href="/test"
       key="test_key"
+      text="text"
       title="title"
+      to="/test"
+      url="/test"
     >
       <WithTheme(DamImage)
         className="image-cta"

@@ -119,7 +119,7 @@ export const getAssociateId = createSelector(
  * This function will return the children information from the redux store
  */
 export const getChildren = createSelector(
-  getPersonalDataState,
+  getUserState,
   state => state && state.get('children')
 );
 

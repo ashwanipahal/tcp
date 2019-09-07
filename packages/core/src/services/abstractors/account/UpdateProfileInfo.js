@@ -90,6 +90,39 @@ export const getChildren = () => {
 };
 
 /**
+ * @function deleteChild
+ * @summary
+ * @param {type} paramName -
+ * @return TDB
+ */
+export const deleteChild = args => {
+  const d = new Date();
+  const payload = {
+    body: {
+      firstName: args.parentFirstName,
+      lastName: args.parentLastName,
+      timestamp: `${d.getFullYear()}-${d.getMonth()}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`,
+      childDetails: [
+        {
+          childId: args.childId,
+          childName: args.childName,
+          birthMonth: args.birthMonth,
+          birthYear: args.birthYear,
+          gender: args.gender,
+        },
+      ],
+    },
+    webService: endpoints.deleteChild,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => res.body)
+    .catch(err => {
+      throw err;
+    });
+};
+
+/**
  * This is a service method to post survey data.
  * @param {object} args - request payload containing answer1, answer2 values to submit in the backend.
  */

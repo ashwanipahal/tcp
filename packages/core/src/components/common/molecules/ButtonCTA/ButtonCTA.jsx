@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'core-js/stable/string/includes';
+import { configurePlpNavigationFromCMSUrl } from '../../../../utils';
 import { Anchor, Button } from '../../atoms';
 
 /**
@@ -21,10 +23,22 @@ const ButtonCTA = props => {
     ...otherProps
   } = props;
 
-  const { url, target, title, text } = link;
+  const { url, target, title, text, actualUrl } = link;
+
+  let to = actualUrl;
+  if (!actualUrl) {
+    to = configurePlpNavigationFromCMSUrl(url);
+  }
 
   return (
-    <Anchor key={uniqueKey} className={ctaClassName} href={url} target={target} title={title}>
+    <Anchor
+      key={uniqueKey}
+      className={ctaClassName}
+      to={to}
+      asPath={url}
+      target={target}
+      title={title}
+    >
       <Button
         className={className}
         buttonVariation={ctaVariation}

@@ -21,8 +21,8 @@ const HomePageView = dynamic({
   render: ({ slots }, modules) => {
     return [
       <HomePageSlots slots={slots} modules={modules} />,
-      <GetCandid />,
       <ModuleB {...mock} />,
+      <GetCandid />,
     ];
   },
 });

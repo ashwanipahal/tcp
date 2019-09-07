@@ -10,8 +10,8 @@ const styles = css`
 
   .closeIcon {
     position: absolute;
-    right: 6px;
-    top: 6px;
+    right: 12px;
+    top: 12px;
   }
 
   .genderIcon {

@@ -4,12 +4,23 @@ import withStyles from '../../hoc/withStyles';
 import Button from '../../atoms/Button';
 import ButtonCTA from '../ButtonCTA';
 import style from './DropDownButton.style';
-import { generateUniqueKeyUsingLabel } from '../../../../utils/utils';
+import { generateUniqueKeyUsingLabel } from '../../../../utils';
 
 class DropDownButton extends React.Component {
   state = {
     open: false,
   };
+
+  componentDidMount() {
+    document.getElementsByTagName('body')[0].addEventListener('click', e => {
+      if (e.target.classList.contains('dropdown-button')) {
+        return false;
+      }
+      return this.setState({
+        open: false,
+      });
+    });
+  }
 
   togglePanel = () => {
     const { open } = this.state;
@@ -19,7 +30,13 @@ class DropDownButton extends React.Component {
   };
 
   render() {
-    const { className, buttonsData, dropdownLabel, dataLocator } = this.props;
+    const {
+      className,
+      buttonsData,
+      dropdownLabel,
+      dataLocator,
+      dataLocatorItemPrefix,
+    } = this.props;
     const { open } = this.state;
     const classToOpen = open ? 'is-open' : '';
 
@@ -36,12 +53,15 @@ class DropDownButton extends React.Component {
             <span className={`dropdown-icon ${classToOpen}`} />
           </Button>
           <div className={`button-panel ${classToOpen}`}>
-            {buttonsData.map(data => {
+            {buttonsData.map((data, index) => {
               const { button = {} } = data;
               const compProps = {
                 ctaInfo: {
                   ctaVariation: 'fixed-width',
                   link: button,
+                },
+                dataLocator: {
+                  cta: `${dataLocatorItemPrefix}${index}`,
                 },
               };
               // Code to generate unique key
@@ -60,11 +80,8 @@ DropDownButton.propTypes = {
   className: PropTypes.string.isRequired,
   buttonsData: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
   dropdownLabel: PropTypes.string.isRequired,
-  dataLocator: PropTypes.string,
-};
-
-DropDownButton.defaultProps = {
-  dataLocator: '',
+  dataLocator: PropTypes.string.isRequired,
+  dataLocatorItemPrefix: PropTypes.string.isRequired,
 };
 
 export default withStyles(DropDownButton, style);
