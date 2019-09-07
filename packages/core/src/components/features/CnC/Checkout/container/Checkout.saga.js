@@ -1,5 +1,4 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
@@ -13,14 +12,10 @@ import {
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
-  addPaymentToOrder,
-  updatePaymentOnOrder,
 } from '../../../../../services/abstractors/CnC/index';
-import { updateAddress } from '../../../../../services/abstractors/account';
 
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
-import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import utility from '../util/utility';
 import {
   getSetPickupValuesActn,
@@ -33,71 +28,29 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   emailSignupStatus,
-  getSetCheckoutStage,
-  getSetIsBillingVisitedActn,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
-import {
-  addAddressGet,
-  updateAddressPut,
-} from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
+import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { isMobileApp } from '../../../../../utils';
+import submitBilling from './CheckoutBilling.saga';
 
 const {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
   getShippingDestinationValues,
   getDefaultAddress,
-  getIsPaymentDisabled,
   // isUsSite,
   // getIsOrderHasShipping  ,
   // getShippingDestinationValues,
   // getDefaultAddress,
   // isGuest,
   // getIsMobile,
-  getBillingValues,
-  getAddressByKey,
-  isCardNotUpdated,
-  getDetailedCreditCardById,
 } = selectors;
-
-const { getOrderPointsRecalcFlag, hasPOBox } = utility;
-
-export const CREDIT_CARDS_BIN_RANGES = {
-  'PLACE CARD': [{ from: 578097, to: 578097 }],
-  VISA: [{ from: 400000, to: 499999 }],
-  AMEX: [{ from: 340000, to: 349999 }, { from: 370000, to: 379999 }],
-  MC: [{ from: 510000, to: 559999 }, { from: 222100, to: 272099 }],
-  DISC: [
-    { from: 601100, to: 601109 },
-    { from: 601120, to: 601149 },
-    { from: 601174, to: 601199 },
-    { from: 644000, to: 659999 },
-    { from: 352800, to: 358999 },
-    { from: 300000, to: 309999 },
-    { from: 352000, to: 369999 },
-    { from: 380000, to: 399999 },
-    { from: 940000, to: 959999 },
-    { from: 389000, to: 389999 },
-    { from: 900000, to: 999999 },
-    { from: 622126, to: 622925 },
-    { from: 624000, to: 626999 },
-    { from: 628200, to: 628899 },
-  ],
-};
-
-export const ACCEPTED_CREDIT_CARDS = {
-  'PLACE CARD': 'PLACE CARD',
-  VISA: 'VISA',
-  AMEX: 'AMEX',
-  MC: 'MC',
-  DISC: 'DISC',
-  PAYPAL: 'PAYPAL',
-  VENMO: 'VENMO',
-};
+const { getOrderPointsRecalcFlag, hasPOBox, redirectToBilling } = utility;
+let oldHasPOB = {};
 
 export function* subscribeEmailAddress(emailObj, status) {
   try {
@@ -134,8 +87,6 @@ function* loadGiftWrappingOptions() {
   }
 }
 
-let oldHasPOB = {};
-
 function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
   // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
   const resCheckoutValues = res.payload.res.orderDetails.checkout;
@@ -163,7 +114,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   // }
 }
 
-function* loadUpdatedCheckoutValues(
+export function* loadUpdatedCheckoutValues(
   isUpdateRewards,
   isTaxCalculation,
   isCartNotRequired,
@@ -610,14 +561,6 @@ function* initCheckout() {
   }
 }
 
-function redirectToBilling(navigation) {
-  if (!isMobileApp()) {
-    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
-  } else if (navigation) {
-    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
-  }
-}
-
 function* saveLocalSmsInfo(smsInfo = {}) {
   let returnVal;
   const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
@@ -639,7 +582,6 @@ function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailA
 }
 
 function* submitShippingSection({ payload: { navigation, ...formData } }) {
-  // console.log('>>>', { formData });
   const {
     // giftWrap,
     method,
@@ -747,12 +689,10 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   // }
 
   // Retrieve phone number info for sms updates
-  const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
-  // eslint-disable-next-line no-unused-expressions
-  yield saveLocalSmsInfo(smsInfo);
-  yield all(pendingPromises);
-  redirectToBilling(navigation);
   try {
+    const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
+    yield saveLocalSmsInfo(smsInfo);
+    yield all(pendingPromises);
     yield call(
       setShippingMethodAndAddressId,
       method.shippingMethodId,
@@ -774,315 +714,25 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       recalcFlag,
       !(isOrderHasPickup && smsNumberForOrderUpdates)
     );
-    if (!isMobileApp()) {
-      utility.routeToPage(CHECKOUT_ROUTES.billingPage);
-    }
+    redirectToBilling(navigation);
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
 
 export function* routeToPickupPage(recalc) {
-  utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
-  yield;
+  yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 
-function getCreditCardType(cc) {
-  if (!cc || (cc.cardNumber || '').length === 0) {
-    return null;
-  }
-
-  // look up based on cardNumber
-  for (let type in CREDIT_CARDS_BIN_RANGES) {
-    for (
-      let currentRange = 0, rangesCount = CREDIT_CARDS_BIN_RANGES[type].length;
-      currentRange < rangesCount;
-      currentRange++
-    ) {
-      let from = CREDIT_CARDS_BIN_RANGES[type][currentRange].from;
-      let to = CREDIT_CARDS_BIN_RANGES[type][currentRange].to;
-      const prefixLength = from.toString().length;
-      let prefix = (cc.cardNumber || '').substr(0, prefixLength);
-
-      if (prefix >= from && prefix <= to) {
-        return ACCEPTED_CREDIT_CARDS[type];
-      }
-    }
-  }
-
-  if (cc.cardType && cc.cardNumber.substr(0, 1) === '*') {
-    // if not editing
-    return cc.cardType.toUpperCase();
-  }
-}
-
-export function* submitBillingSectionSuccess(payload = {}) {
-  try {
-    let res;
-    let { payload: formData = {} } = payload;
-    // formData = { // same as shipping
-    //   address: {
-    //     addressLine1: 'Coho, Gurgaon',
-    //     addressLine2: 'Sector - 48',
-    //     city: 'Gurugram',
-    //     country: 'US',
-    //     firstName: 'Mohit',
-    //     lastName: 'Jain',
-    //     sameAsShipping: true,
-    //     state: 'AL',
-    //     zipCode: '12200',
-    //   },
-    //   cardNumber: '4111111111111111',
-    //   cvv: '611',
-    //   expMonth: 1,
-    //   expYear: 2021,
-    //   onFileCardId: '',
-    //   paymentMethod: 'creditCard',
-    //   saveToAccount: true,
-    // };
-    // formData = {
-    //   address: {
-    //     addressLine1: 'Coho, Gurgaon',
-    //     addressLine2: 'Sector - 48',
-    //     city: 'Gurugram',
-    //     country: 'US',
-    //     firstName: 'Mohit',
-    //     lastName: 'Jain',
-    //     onFileAddressId: '184769',
-    //     onFileAddressKey: 'sb_2019-09-06 07:46:25.909',
-    //     sameAsShipping: false,
-    //     state: 'AL',
-    //     zipCode: '12200',
-    //   },
-    //   cardNumber: '************1111',
-    //   cardType: 'VISA',
-    //   cvv: '123',
-    //   expMonth: 1,
-    //   expYear: 2021,
-    //   isCVVRequired: true,
-    //   isExpirationRequired: true,
-    //   onFileCardId: '',
-    //   paymentMethod: 'creditCard',
-    //   saveToAccount: true,
-    // };
-    // formData = {
-    //   address: {
-    //     addressLine1: 'Coho, Gurgaon',
-    //     addressLine2: 'Sector - 48',
-    //     city: 'Gurugram',
-    //     country: 'US',
-    //     firstName: 'Mohit',
-    //     lastName: 'Jain',
-    //     onFileAddressId: '185153',
-    //     onFileAddressKey: 'sb_2019-09-06 07:35:35.626',
-    //     sameAsShipping: true,
-    //     state: 'AK',
-    //     zipCode: '12200',
-    //   },
-    //   billing: {
-    //     cardNumber: '************1111',
-    //     cardType: 'VISA',
-    //     cvv: '',
-    //     expMonth: 1,
-    //     expYear: 2021,
-    //     isCVVRequired: true,
-    //     isExpirationRequired: true,
-    //   },
-    //   cardNumber: '************1111',
-    //   cardType: 'VISA',
-    //   cvv: '123',
-    //   emailAddress: 'TEST1122HJKHJKHKJKKJ@YOPMAIL.COM',
-    //   expMonth: 1,
-    //   expYear: 2021,
-    //   isCVVRequired: true,
-    //   isExpirationRequired: true,
-    //   paymentId: '136002',
-    //   paymentMethod: 'creditCard',
-    //   phoneNumber: undefined,
-    //   saveToAccount: true,
-    // };
-
-    // formData = {
-    //   address: {
-    //     addressLine1: 'Coho, Gurgaon',
-    //     addressLine2: 'Sector - 48',
-    //     city: 'Gurugram',
-    //     country: 'US',
-    //     firstName: 'Mohit',
-    //     lastName: 'Jain',
-    //     onFileAddressId: '185153',
-    //     onFileAddressKey: 'sb_2019-09-06 07:35:35.626',
-    //     sameAsShipping: true,
-    //     state: 'AK',
-    //     zipCode: '12200',
-    //   },
-    //   cvv: '123',
-    //   expMonth: '',
-    //   expYear: '',
-    //   onFileCardId: '94032',
-    //   paymentMethod: 'creditCard',
-    //   saveToAccount: true,
-    // };
-    if (!formData.phoneNumber) {
-      formData.phoneNumber = '';
-    }
-    const {
-      addressLine1: address1,
-      addressLine2: address2,
-      city,
-      country,
-      firstName,
-      lastName,
-      state,
-      zipCode: zip,
-    } = formData.address;
-    const address = { address1, address2, city, country, firstName, lastName, state, zip };
-    yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
-    const isPaymentDisabled = yield select(getIsPaymentDisabled);
-    if (isPaymentDisabled) {
-      return;
-    }
-    const isGuestUser = yield select(isGuest);
-    if (formData.address.sameAsShipping) {
-      const shippingDetails = yield select(getShippingDestinationValues);
-
-      res = yield call(updateAddress, {
-        checkoutUpdateOnly: true,
-        addressKey: shippingDetails.onFileAddressKey,
-        addressId: shippingDetails.onFileAddressId,
-      });
-      res = res.body;
-    } else if (formData.onFileCardId) {
-      const cardDetails = yield select(getDetailedCreditCardById, formData.onFileCardId);
-      // console.log({ cardDetails });
-      res = yield call(updateAddress, {
-        checkoutUpdateOnly: true,
-        addressKey: cardDetails.addressKey,
-        addressId: cardDetails.addressId || cardDetails.billingAddressId,
-      });
-      res = res.body;
-    } else if (formData.address.onFileAddressKey && !isGuestUser) {
-      // return submitPaymentInformation({addressId: formData.address.onFileAddressKey});
-      const existingAddress = yield select(getAddressByKey, formData.address.onFileAddressKey);
-      const shippingDetails = yield select(getShippingDestinationValues);
-      const addressId = existingAddress
-        ? existingAddress.addressId
-        : shippingDetails.onFileAddressId;
-      res = yield call(updateAddress, {
-        checkoutUpdateOnly: true,
-        addressKey: formData.address.onFileAddressKey,
-        addressId,
-      });
-      res = res.body;
-    } else if (formData.address.onFileAddressKey && isGuestUser) {
-      // send update
-      const existingAddress = yield select(getAddressByKey, formData.address.onFileAddressKey);
-      const shippingDetails = yield select(getShippingDestinationValues);
-      const addressId = existingAddress
-        ? existingAddress.addressId
-        : shippingDetails.onFileAddressId;
-
-      res = yield updateAddressPut(
-        {
-          payload: {
-            ...address,
-            phoneNumber: formData.phoneNumber,
-            addressKey: formData.address.onFileAddressKey,
-            nickName: formData.address.onFileAddressKey,
-            addressId,
-            isDefault: formData.isDefault,
-            saveToAccount: false,
-            applyToOrder: true,
-          },
-        },
-        { profileUpdate: false }
-      );
-      res = res.payload;
-    } else {
-      return addAddressGet(
-        {
-          payload: {
-            ...address,
-            nickName: formData.address.onFileAddressKey,
-            phoneNumber: formData.phoneNumber,
-            isDefault: formData.isDefault,
-            saveToAccount: !isGuestUser && formData.saveToAccount,
-            applyToOrder: true,
-          },
-        },
-        false
-      );
-    }
-
-    if (formData.onFileCardId) {
-      const cardDetails = yield select(getDetailedCreditCardById, formData.onFileCardId);
-      // console.log({ cardDetails });
-      const grandTotal = yield select(getGrandTotal);
-      const requestData = {
-        onFileCardId: formData.onFileCardId,
-        cardNumber: cardDetails.accountNo,
-        billingAddressId: cardDetails.billingAddressId,
-        cardType: cardDetails.ccBrand && cardDetails.ccBrand.toUpperCase(),
-        cvv: formData.cvv,
-        monthExpire: cardDetails.expMonth,
-        yearExpire: cardDetails.expYear,
-        orderGrandTotal: grandTotal,
-        setAsDefault: formData.setAsDefault || cardDetails.defaultInd,
-        saveToAccount: !isGuestUser, // it's already on the account? why is this needed?
-        applyToOrder: true,
-      };
-      // FIXME: we need to store the details of the selected card and selected
-      // address book entry, but like this it is pretty ugly. needs major cleanup
-      yield call(addPaymentToOrder, requestData);
-      const cardNotUpdated = yield select(isCardNotUpdated, requestData.onFileCardId);
-      // updatePaymentToActiveOnSubmitBilling(store);
-      // getUserOperator(store).setRewardPointsData();
-      yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
-    } else {
-      const cardType = getCreditCardType(formData);
-      const checkoutDetails = yield select(getBillingValues);
-      const editingCardType = checkoutDetails.billing
-        ? getCreditCardType(checkoutDetails.billing)
-        : '';
-      const grandTotal = yield select(getGrandTotal);
-      const requestData = {
-        cardNumber: formData.cardNumber,
-        billingAddressId: res.addressId,
-        cardType: cardType || editingCardType,
-        cvv: formData.cvv,
-        monthExpire: formData.expMonth,
-        yearExpire: formData.expYear,
-        orderGrandTotal: grandTotal,
-        setAsDefault: formData.setAsDefault,
-        saveToAccount: !isGuestUser && formData.saveToAccount,
-        applyToOrder: true,
-      };
-      let addOrEditPaymentToOrder = addPaymentToOrder;
-      // if it's a new card (no '*' in it) then we still need to call the addPayment instead of updatePayment service
-      if (
-        checkoutDetails.paymentId &&
-        formData.cardNumber &&
-        formData.cardNumber.substr(0, 1) === '*'
-      ) {
-        requestData.paymentId = checkoutDetails.paymentId;
-        addOrEditPaymentToOrder = updatePaymentOnOrder;
-      }
-      yield call(addOrEditPaymentToOrder, requestData);
-      // updatePaymentToActiveOnSubmitBilling(store);
-      // getUserOperator(store).setRewardPointsData();
-      yield call(loadUpdatedCheckoutValues, false, true, true, false, false);
-    }
-  } catch (e) {
-    console.log({ e });
-    // submitBillingError(store, e);
-  }
+export function* submitBillingSection(payload) {
+  yield call(submitBilling, payload, loadUpdatedCheckoutValues);
 }
 
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);
-  yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSectionSuccess);
+  yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSection);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
   yield takeLatest(CONSTANTS.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
   yield takeLatest(CONSTANTS.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);
