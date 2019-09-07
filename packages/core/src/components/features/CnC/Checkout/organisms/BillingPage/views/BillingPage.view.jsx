@@ -30,10 +30,11 @@ class BillingPage extends React.PureComponent {
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
         <GiftCardsContainer />
+        <div className="payment-container" />
         <CheckoutOrderInfo isGuest={isGuest} />
         <CheckoutFooter
           hideBackLink
-          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shipping)}
+          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
           nextHandler={submitBilling}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
