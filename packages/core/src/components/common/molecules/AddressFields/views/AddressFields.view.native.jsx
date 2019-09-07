@@ -55,10 +55,6 @@ export class AddressFields extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      country: API_CONFIG.siteIds.us.toUpperCase(),
-      dropDownItem: UScountriesStatesTable[0].displayName,
-    };
 
     const selectArray = [
       {
@@ -70,9 +66,11 @@ export class AddressFields extends React.PureComponent {
 
     this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
     this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
-
+    const {
+      siteIds: { us },
+    } = API_CONFIG;
     this.state = {
-      country: API_CONFIG.siteIds.us.toUpperCase(),
+      country: us.toUpperCase(),
       dropDownItem: this.UScountriesStates[0].displayName,
     };
 
