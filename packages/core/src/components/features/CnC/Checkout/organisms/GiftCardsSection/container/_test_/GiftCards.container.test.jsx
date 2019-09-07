@@ -21,6 +21,25 @@ describe('Gift Cards Container', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('applyExistingGiftCardToOrder to be called', () => {
+    const giftCard = {
+      creditCardId: 123,
+      billingAddressId: '34',
+      accountNo: '*********4454',
+      cardPin: '',
+      balance: null,
+    };
+    const component = shallow(<GiftCardsContainer {...props} />);
+    component.instance().applyExistingGiftCardToOrder(giftCard);
+    expect(component).toBeDefined();
+  });
+
+  it('componentDidUpdate to be called', () => {
+    const component = shallow(<GiftCardsContainer {...props} />);
+    component.instance().componentDidUpdate();
+    expect(component).toBeDefined();
+  });
+
   describe('#mapDispatchToProps', () => {
     it('should call gift card list', () => {
       const dispatch = jest.fn();
@@ -32,6 +51,12 @@ describe('Gift Cards Container', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.handleApplyGiftCard();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('#handleRemoveGiftCard', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.handleRemoveGiftCard();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
     it('#handleSetOrderBalanceTotal', () => {
