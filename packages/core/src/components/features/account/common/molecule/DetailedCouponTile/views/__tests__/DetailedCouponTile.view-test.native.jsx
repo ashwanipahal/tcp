@@ -1,10 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
-// eslint-disable-next-line import/no-named-as-default
 import { DetailedCouponTile } from '../DetailedCouponTile.view';
 import { Overlay, OverlapElement } from '../../styles/DetailedCouponTile.native.style';
-
 import { COUPON_STATUS } from '../../../../../../../../services/abstractors/CnC/CartItemTile';
 
 const labels = {
@@ -86,6 +84,7 @@ describe('DetailedCouponTile', () => {
   describe('#instances', () => {
     const onApplyCouponToBagFromList = jest.fn();
     const onRemove = jest.fn();
+    const toastMessage = jest.fn();
     let componentInstance;
     beforeEach(() => {
       const props = {
@@ -106,6 +105,16 @@ describe('DetailedCouponTile', () => {
     it('#handleRemove should call onRemove prop', () => {
       componentInstance.handleRemove();
       expect(onRemove).toBeCalled();
+    });
+
+    test('When coupon is returned with error toastmessage should be called with error message', () => {
+      const coupon = {
+        status: COUPON_STATUS.APPLIED,
+        id: '1121',
+        error: 'error message',
+      };
+      toastMessage(coupon.error);
+      expect(toastMessage).toHaveBeenCalledWith('error message');
     });
   });
 });

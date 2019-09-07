@@ -81,6 +81,10 @@ export class DetailedCouponTile extends React.Component {
     }
   }
 
+  /**
+   * This function is used for apply to bag coupon
+   * can be passed in the component.
+   */
   handleApplyToBag = () => {
     const { onApplyCouponToBagFromList, coupon } = this.props;
     onApplyCouponToBagFromList({
@@ -90,22 +94,42 @@ export class DetailedCouponTile extends React.Component {
     });
   };
 
+  /**
+   * This function is used for remove coupon
+   * can be passed in the component.
+   */
   handleRemove = () => {
     const { onRemove, coupon } = this.props;
     onRemove({ id: coupon.id });
   };
 
+  /**
+   * This function is used for view coupon deatils
+   * can be passed in the component.
+   */
   handleViewCouponDetails = () => {
     const { onViewCouponDetails, coupon } = this.props;
     onViewCouponDetails(coupon);
   };
 
+  /**
+   * This function is to get cta label
+   * can be passed in the component.
+   * @param {obj} - labels
+   * @param {boolean} - isStarted
+   * @param {boolean} - isPlaceCash
+   * @return {String} - cta label
+   */
   getAddToBagCtaLabel = (labels, isStarted, isPlaceCash) => {
     return !isStarted && isPlaceCash
       ? labels.lbl_coupon_seeRedeemDates
       : labels.lbl_coupon_applyToBag;
   };
 
+  /**
+   * This function is used for create overlay element
+   * can be passed in the component.
+   */
   showOverlay = () => {
     const { coupon, labels } = this.props;
     if (coupon.status === COUPON_STATUS.APPLIED) {
@@ -133,6 +157,10 @@ export class DetailedCouponTile extends React.Component {
     return null;
   };
 
+  /**
+   * This function is used for create overlap element
+   * can be passed in the component.
+   */
   showOverlap = () => {
     const { coupon } = this.props;
     if (coupon.status === COUPON_STATUS.APPLIED) {
