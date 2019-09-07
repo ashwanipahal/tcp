@@ -5,7 +5,7 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleB from '@tcp/core/src/components/common/molecules/ModuleB';
-import ModuleJ from '@tcp/core/src/components/common/molecules/ModuleJ';
+import mock from '@tcp/core/src/services/abstractors/common/moduleB/mock';
 
 const returnModule = mod => mod.default;
 
@@ -22,8 +22,7 @@ const HomePageView = dynamic({
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       <GetCandid />,
-      <ModuleB />,
-      <ModuleJ />,
+      <ModuleB {...mock} />,
     ];
   },
 });

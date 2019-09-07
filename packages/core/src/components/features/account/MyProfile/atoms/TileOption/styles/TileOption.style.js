@@ -2,12 +2,13 @@ import { css } from 'styled-components';
 
 const styles = css`
   .tile-container {
+    display: flex;
     align-items: center;
+    justify-content: center;
     flex: 50%;
     width: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
     height: 51px;
     border-radius: 6px;
-    text-align: center;
     border: solid 2px ${props => props.theme.colors.BORDER.BLUE};
   }
 
@@ -16,9 +17,7 @@ const styles = css`
   }
 
   .tile-text {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    text-align: center;
-    display: inline-block;
+    margin: 0;
   }
 
   @media ${props => props.theme.mediaQuery.smallMax} {

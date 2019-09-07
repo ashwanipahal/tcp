@@ -17,6 +17,7 @@ class CheckoutFooter extends React.PureComponent {
       backLinkHandler,
       disableBackLink,
       hideBackLink,
+      nextHandler,
     } = this.props;
     return (
       <div className={className}>
@@ -41,6 +42,7 @@ class CheckoutFooter extends React.PureComponent {
           fontWeight="extrabold"
           buttonVariation="variable-width"
           fill="BLUE"
+          onClick={nextHandler}
         >
           {nextButtonText}
         </Button>
@@ -55,6 +57,7 @@ CheckoutFooter.propTypes = {
   nextButtonText: PropTypes.string.isRequired,
   disableNext: PropTypes.bool.isRequired,
   backLinkHandler: PropTypes.func.isRequired,
+  nextHandler: PropTypes.oneOf([PropTypes.func, undefined]).isRequired,
   disableBackLink: PropTypes.bool.isRequired,
   hideBackLink: PropTypes.bool,
 };

@@ -11,7 +11,7 @@ import moduleJStyle from '../styles/ModuleJ.style';
 import { getIconPath } from '../../../../../utils';
 import config from '../moduleJ.config';
 
-class ModuleJ extends React.Component {
+class ModuleJ extends React.PureComponent {
   constructor(props) {
     super(props);
 

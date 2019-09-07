@@ -11,6 +11,7 @@ import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -260,14 +261,16 @@ class CartItemTile extends React.Component {
               chooseDiff={labels.chooseDiff}
             />
           )}
-          <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
-            <Image
-              alt="closeIcon"
-              className="close-icon-image"
-              src={getIconPath('close-icon')}
-              onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
-            />
-          </div>
+          {!isEdit && (
+            <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
+              <Image
+                alt="closeIcon"
+                className="close-icon-image"
+                src={getIconPath('close-icon')}
+                onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+              />
+            </div>
+          )}
         </div>
         <Row
           fullBleed
@@ -500,11 +503,16 @@ class CartItemTile extends React.Component {
             {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
           </Col>
         </Row>
-        {pageView === 'myBag' && (
-          <Row fullBleed>
-            <CartItemRadioButtons productDetail={productDetail} labels={labels} />
-          </Row>
-        )}
+        {pageView === 'myBag' &&
+          productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
+            <Row fullBleed>
+              <CartItemRadioButtons
+                className="cart-item-radio-buttons"
+                productDetail={productDetail}
+                labels={labels}
+              />
+            </Row>
+          )}
       </div>
     );
   }

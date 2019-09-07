@@ -19,20 +19,21 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
                   "placement": "",
                 },
                 "link": Object {
+                  "action": "",
                   "external": 0,
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/c/",
+                  "url": "/c/tees",
                 },
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "NEW WASHES",
+                    "text": "NEW WASHES.",
                   },
                   Object {
                     "style": "style1",
-                    "text": "MORE FITS",
+                    "text": "MORE FITS.",
                   },
                   Object {
                     "style": "style2",
@@ -40,7 +41,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
                   },
                   Object {
                     "style": "style1",
-                    "text": "SIZES UPTO 18!",
+                    "text": "SIZES UP TO 18!",
                   },
                 ],
               },
@@ -62,11 +63,12 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
             Array [
               Object {
                 "link": Object {
+                  "action": "",
                   "external": 0,
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/c/",
+                  "url": "/c/banner/url",
                 },
                 "textItems": Array [
                   Object {
@@ -75,7 +77,7 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
                   },
                   Object {
                     "style": "currency_up_style",
-                    "text": "$ 7 80 &UP",
+                    "text": "$ 7 80 & UP",
                   },
                 ],
               },
@@ -84,11 +86,22 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
         />
       </Styled(View)>
     </Styled(View)>
-    <Styled(ImageComp)
-      height={413}
-      url="https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg"
-      width={726}
-    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      customStyle={Object {}}
+      locator=""
+      onPress={null}
+      text=""
+      url="/c/node/product/<uuid>"
+      visible={false}
+    >
+      <Styled(ImageComp)
+        height={413}
+        url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png"
+        width={726}
+      />
+    </Styled(Anchor)>
   </Styled(View)>
   <Styled(View)>
     <Styled(View)
@@ -100,11 +113,12 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
         Array [
           Object {
             "button": Object {
+              "action": "",
               "external": 0,
               "target": "",
               "text": "Girl",
               "title": "Girl",
-              "url": "/c/",
+              "url": "/c/girl",
             },
             "image": Object {
               "alt": "Girl",
@@ -117,70 +131,92 @@ exports[`ModuleNVanilla should match snapshot 1`] = `
           },
           Object {
             "button": Object {
+              "action": "",
               "external": 0,
               "target": "",
-              "text": "Toddler Girl",
-              "title": "Toddler Girl",
-              "url": "/c/",
+              "text": "Girl",
+              "title": "Girl",
+              "url": "/c/girl",
             },
             "image": Object {
-              "alt": "Toddler Girl alt",
+              "alt": "Girl",
               "crop_d": "",
               "crop_m": "",
               "crop_t": "",
-              "title": "Toddler Girl title",
+              "title": "Girl",
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
             "button": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Toddler Girl",
+              "title": "Toddler Girl",
+              "url": "/c/toddler-girl",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "action": "",
               "external": 0,
               "target": "",
               "text": "Boy",
               "title": "Boy",
-              "url": "/c/",
+              "url": "/c/boy",
             },
             "image": Object {
-              "alt": "Boy",
+              "alt": "Girl",
               "crop_d": "",
               "crop_m": "",
               "crop_t": "",
-              "title": "Boy",
-              "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
             "button": Object {
+              "action": "",
               "external": 0,
               "target": "",
               "text": "Toddler Boy",
               "title": "Toddler Boy",
-              "url": "/c/",
+              "url": "/c/toddler-boy",
             },
             "image": Object {
-              "alt": "Toddler Boy alt",
+              "alt": "Girl",
               "crop_d": "",
               "crop_m": "",
               "crop_t": "",
-              "title": "Toddler Boy title",
-              "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
           Object {
             "button": Object {
+              "action": "",
               "external": 0,
               "target": "",
               "text": "Baby",
               "title": "Baby",
-              "url": "/c/",
+              "url": "/c/baby",
             },
             "image": Object {
-              "alt": "Baby",
+              "alt": "Girl",
               "crop_d": "",
               "crop_m": "",
               "crop_t": "",
-              "title": "Baby",
-              "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             },
           },
         ]

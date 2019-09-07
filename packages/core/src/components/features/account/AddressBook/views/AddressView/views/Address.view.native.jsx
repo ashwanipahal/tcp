@@ -72,18 +72,18 @@ export class AddressView extends React.Component {
   };
 
   setModalHeading = () => {
-    const { addressLabels } = this.props;
+    const { addressLabels, verificationResult } = this.props;
     const { currentForm, selectedAddress } = this.state;
     let label = '';
     if (selectedAddress) {
       label =
-        currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
+        currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL && !!verificationResult
           ? addressLabels.editAddress
           : addressLabels.editAddressLbl;
       this.setState({ modalHeading: label });
     } else {
       label =
-        currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL
+        currentForm === ADDRESS_BOOK_CONSTANTS.VERIFICATION_MODAL && !!verificationResult
           ? addressLabels.editAddress
           : addressLabels.addNewAddress;
     }
@@ -110,7 +110,7 @@ export class AddressView extends React.Component {
 
     return (
       <View {...this.props}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledHeading>
             {labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING && (
               <BodyCopy
@@ -223,6 +223,7 @@ AddressView.propTypes = {
   setDeleteModalMountState: PropTypes.func,
   deleteModalMountedState: PropTypes.bool,
   onDeleteAddress: PropTypes.func.isRequired,
+  verificationResult: PropTypes.string,
 };
 
 AddressView.defaultProps = {
@@ -242,6 +243,7 @@ AddressView.defaultProps = {
     addNewAddress: '',
   },
   deleteModalMountedState: false,
+  verificationResult: '',
 };
 
 export default withStyles(AddressView, ParentContainer);

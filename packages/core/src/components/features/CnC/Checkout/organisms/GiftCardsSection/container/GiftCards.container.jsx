@@ -6,6 +6,7 @@ import GiftCard from '../views/GiftCards.view';
 import GiftCardSelector from './GiftCards.selectors';
 import GIFT_CARD_ACTIONS from './GiftCards.action';
 import { setOrderBalanceTotal } from '../../../container/Checkout.action';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   componentWillMount() {
@@ -41,6 +42,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       giftCardErrors,
       itemOrderGrandTotal,
       itemsGiftCardTotal,
+      toastMessage,
     } = this.props;
 
     let availableGiftCards = [];
@@ -65,6 +67,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         labels={labels}
         giftCardErrors={giftCardErrors}
         orderBalanceTotal={orderBalanceTotal}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -83,6 +86,9 @@ export const mapDispatchToProps = dispatch => {
     },
     handleSetOrderBalanceTotal: payload => {
       dispatch(setOrderBalanceTotal(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };
