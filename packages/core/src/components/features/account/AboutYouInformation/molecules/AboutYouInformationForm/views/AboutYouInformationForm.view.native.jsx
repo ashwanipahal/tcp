@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { BodyCopy, Button, LabeledRadioButton } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   AboutYouWrapper,
   OptionsWrapper,
@@ -72,9 +73,9 @@ export class AboutYouInformationForm extends React.PureComponent {
           fontSize="fs14"
           fontFamily="secondary"
           data-locator="moreaboutyou-edit-q1text"
-          text={labels.lbl_profile_survey_question1}
+          text={getLabelValue(labels, 'lbl_profile_survey_question1')}
         />
-        <OptionsWrapper className="aboutyou-wrapper">
+        <OptionsWrapper>
           {options1.map((option, index) => {
             return (
               <Options>
@@ -99,11 +100,11 @@ export class AboutYouInformationForm extends React.PureComponent {
             fontSize="fs14"
             fontFamily="secondary"
             data-locator="moreaboutyou-edit-q2text"
-            text={labels.lbl_profile_survey_question2}
+            text={getLabelValue(labels, 'lbl_profile_survey_question2')}
           />
         </View>
 
-        <OptionsWrapper className="aboutyou-wrapper">
+        <OptionsWrapper>
           {options2.map((option, index) => {
             return (
               <Options>
@@ -129,14 +130,14 @@ export class AboutYouInformationForm extends React.PureComponent {
               data-locator="moreaboutyou-savebtn"
               disabled={pristine}
               onPress={this.onUpdate}
-              text={labels.lbl_profile_survey_save}
+              text={getLabelValue(labels, 'lbl_profile_survey_save')}
             />
           </ActionsWrapper>
           <ActionsWrapper>
             <Button
               buttonVariation="variable-width"
               data-locator="moreaboutyou-cancelbtn"
-              text={labels.lbl_profile_personal_info_cancelCta}
+              text={getLabelValue(labels, 'lbl_profile_personal_info_cancelCta')}
               onPress={onClose}
             />
           </ActionsWrapper>
@@ -150,6 +151,8 @@ AboutYouInformationForm.propTypes = {
   labels: PropTypes.shape({
     lbl_profile_personal_info_cancelCta: PropTypes.string,
     lbl_profile_personal_info_updateCta: PropTypes.string,
+    lbl_profile_survey_question1: PropTypes.string,
+    lbl_profile_survey_question2: PropTypes.string,
   }),
   pristine: PropTypes.bool.isRequired,
   initialValues: PropTypes.shape({}).isRequired,
@@ -161,6 +164,8 @@ AboutYouInformationForm.defaultProps = {
   labels: {
     lbl_profile_personal_info_cancelCta: '',
     lbl_profile_personal_info_updateCta: '',
+    lbl_profile_survey_question1: '',
+    lbl_profile_survey_question2: '',
   },
 };
 
