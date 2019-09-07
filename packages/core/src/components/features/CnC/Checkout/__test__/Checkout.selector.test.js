@@ -5,9 +5,6 @@ import CHECKOUT_SELECTORS, {
   getUserContactInfo,
   getCheckoutStage,
   getPickupAltValues,
-  getIsPaymentDisabled,
-  getIsOrderHasPickup,
-  isCardNotUpdated,
 } from '../container/Checkout.selector';
 
 import { isMobileApp, getViewportInfo } from '../../../../../utils';
@@ -96,7 +93,7 @@ describe('Checkout Selectors', () => {
     const State = {
       Checkout: fromJS({ values: { billing: {} } }),
     };
-    expect(isCardNotUpdated(State)).toEqual(true);
+    expect(CHECKOUT_SELECTORS.isCardNotUpdated(State)).toEqual(true);
   });
 
   it('#getBillingValues', () => {
@@ -268,7 +265,7 @@ describe('Checkout Selectors', () => {
       }),
     };
 
-    expect(getIsPaymentDisabled(State)).toEqual(true);
+    expect(CHECKOUT_SELECTORS.getIsPaymentDisabled(State)).toEqual(true);
   });
 
   it('#getIsOrderHasPickup', () => {
@@ -278,7 +275,7 @@ describe('Checkout Selectors', () => {
       }),
     };
 
-    expect(getIsOrderHasPickup(State)).toEqual(0);
+    expect(CHECKOUT_SELECTORS.getIsOrderHasPickup(State)).toEqual(0);
   });
 
   it('#getInitialPickupSectionValues should return boolean', () => {

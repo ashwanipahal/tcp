@@ -16,7 +16,6 @@ import selectors, {
   isGuest as isGuestUser,
   isExpressCheckout,
   getAlternateFormUpdate,
-  getPickUpContactFormLabels,
   getSendOrderUpdate,
   getCheckoutStage,
 } from './Checkout.selector';
@@ -193,7 +192,10 @@ const mapStateToProps = state => {
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
     orderHasShipping: getIsOrderHasShipping(state),
-    pickUpLabels: { ...getPickUpContactFormLabels(state), ...getEmailSignUpLabels(state) },
+    pickUpLabels: {
+      ...selectors.getPickUpContactFormLabels(state),
+      ...getEmailSignUpLabels(state),
+    },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
