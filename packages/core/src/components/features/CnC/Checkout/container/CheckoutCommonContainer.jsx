@@ -22,6 +22,7 @@ import selectors, {
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
   getShippingLabels,
@@ -41,8 +42,9 @@ const {
 
 export class CheckoutContainer extends React.Component<Props> {
   componentDidMount() {
-    const { initCheckout } = this.props;
+    const { initCheckout, needHelpContentId, fetchNeedHelpContent } = this.props;
     initCheckout();
+    fetchNeedHelpContent([needHelpContentId]);
   }
 
   render() {
@@ -138,6 +140,9 @@ export const mapDispatchToProps = dispatch => {
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
     },
+    fetchNeedHelpContent: contentIds => {
+      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
+    },
   };
 };
 
@@ -188,6 +193,7 @@ const mapStateToProps = state => {
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
     checkoutProgressBarLabels: getCheckoutProgressBarLabels(state),
+    needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
   };
 };
 

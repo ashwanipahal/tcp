@@ -7,10 +7,17 @@ exports[`ProfileInformation should render correctly 1`] = `
     handleComponentChange={[Function]}
     labels={Object {}}
     mailingAddress={Object {}}
+    mountSurveyModal={false}
     percentageIncrement={Object {}}
     profileCompletion=""
+    toggleModalState={[Function]}
     userBirthday=""
-    userSurvey={Array []}
+    userSurvey={
+      Immutable.Map {
+        "answers1": Immutable.List [],
+        "answers2": Immutable.List [],
+      }
+    }
   />
   <PersonalInformation
     airMiles=""

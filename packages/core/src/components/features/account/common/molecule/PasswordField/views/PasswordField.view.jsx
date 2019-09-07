@@ -6,7 +6,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import Image from '../../../../../../common/atoms/Image';
-import { getIconPath, getLabelValue } from '../../../../../../../utils';
+import { getIconPath } from '../../../../../../../utils';
 import styles from '../styles/PasswordField.style';
 
 export class PasswordField extends React.PureComponent {
@@ -66,11 +66,7 @@ export class PasswordField extends React.PureComponent {
             underline
             dataLocator={type === 'password' ? 'login-showlnk' : 'login-hidelnk'}
           >
-            {getLabelValue(
-              labels,
-              type === 'password' ? 'lbl_createAccount_show' : 'lbl_createAccount_hide',
-              'registration'
-            )}
+            {type === 'password' ? showText : hideText}
           </Anchor>
         </BodyCopy>
       </BodyCopy>
