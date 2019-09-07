@@ -50,10 +50,6 @@ describe('AddressVerification component', () => {
     it('should call onSuccess prop with user address', () => {
       expect(onSuccessSpy.mock.calls[0][0]).toEqual(userAddress);
     });
-
-    it('should call resetVerifyAddressAction props', () => {
-      expect(resetVerifyAddressActionSpy).toBeCalled();
-    });
   });
 
   describe('for invalid address', () => {

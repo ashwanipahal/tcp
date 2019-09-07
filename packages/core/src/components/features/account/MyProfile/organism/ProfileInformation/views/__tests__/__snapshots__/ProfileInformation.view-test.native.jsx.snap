@@ -30,6 +30,15 @@ exports[`ProfileInformation should render correctly 1`] = `
     userFullName=""
     userPhoneNumber=""
   />
+  <AboutYouInfo
+    labels={Object {}}
+    userSurvey={
+      Immutable.Map {
+        "answers1": Immutable.List [],
+        "answers2": Immutable.List [],
+      }
+    }
+  />
   <ChangePasswordInfo
     handleComponentChange={[Function]}
     labels={Object {}}

@@ -134,7 +134,7 @@ const ShippingForm = ({
             />
           </div>
         </FormSection>
-        <CheckoutOrderInfo />
+        <CheckoutOrderInfo isGuest={isGuest} />
         <CheckoutFooter
           hideBackLink={!!orderHasPickUp}
           backLinkHandler={routeToPickupPage}

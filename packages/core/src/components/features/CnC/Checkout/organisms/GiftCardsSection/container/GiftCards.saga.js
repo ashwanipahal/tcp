@@ -1,11 +1,12 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import GIFTCARD_CONSTANTS from '../GiftCards.constants';
 import {
   addGiftCardPaymentToOrder,
   removeGiftCard,
 } from '../../../../../../../services/abstractors/CnC';
 import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
+import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import { setGiftCardError, resetGiftCardError } from '../../../container/Checkout.action';
 
 const getErrorMessage = res => {
@@ -41,7 +42,8 @@ export function* removeGiftCardFromOrder(payloadData) {
   try {
     const { payload } = payloadData;
     yield put(resetGiftCardError());
-    yield call(removeGiftCard, payload);
+    const labels = yield select(BagPageSelectors.getErrorMapping);
+    yield call(removeGiftCard, payload, labels);
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     console.log(err);

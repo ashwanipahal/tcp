@@ -10,14 +10,16 @@ import style from '../styles/CheckoutOrderInfoMobile.style';
 
 class CheckoutOrderInfo extends React.PureComponent {
   render() {
-    const { className } = this.props;
+    const { className, isGuest } = this.props;
     return (
       <div className={className}>
         <CouponAndPromos />
         <OrderLedgerContainer />
-        <div className="bonusPointsDaysWrapper">
-          <BonusPointsDays enableApplyCta />
-        </div>
+        {!isGuest && (
+          <div className="bonusPointsDaysWrapper">
+            <BonusPointsDays showAccordian={false} enableApplyCta />
+          </div>
+        )}
         <AirmilesBanner />
       </div>
     );
@@ -26,6 +28,7 @@ class CheckoutOrderInfo extends React.PureComponent {
 
 CheckoutOrderInfo.propTypes = {
   className: PropTypes.string.isRequired,
+  isGuest: PropTypes.bool.isRequired,
 };
 
 export default withStyles(CheckoutOrderInfo, style);

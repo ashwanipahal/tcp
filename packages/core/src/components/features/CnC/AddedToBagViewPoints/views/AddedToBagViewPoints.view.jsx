@@ -15,12 +15,8 @@ const getModifiedString = (labels, totalItems) => {
   );
 };
 
-const showUserPoints = userPoints => {
+const showPoints = userPoints => {
   return userPoints !== 0 && !isCanada();
-};
-
-const showItemPoints = itemPoints => {
-  return itemPoints !== 0 && !isCanada();
 };
 
 const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
@@ -44,7 +40,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${itemPrice || 0}`}
         </Col>
       </Row>
-      {showItemPoints(itemPoints) && (
+      {showPoints(userPoints) && (
         <Row>
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
@@ -77,7 +73,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${bagSubTotal || 0}`}
         </Col>
       </Row>
-      {showUserPoints(userPoints) && (
+      {showPoints(userPoints) && (
         <Row className="row-padding">
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
