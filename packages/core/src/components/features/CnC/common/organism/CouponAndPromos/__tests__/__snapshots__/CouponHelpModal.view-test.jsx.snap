@@ -5,6 +5,11 @@ exports[`Help Coupon Modal should call correctly 1`] = `
   className="TCPModal__Content"
   closeIconDataLocator="helpmodalcrossicon"
   fixedWidth={true}
+  heightConfig={
+    Object {
+      "height": "90%",
+    }
+  }
   isOpen={false}
   maxWidth="500px"
   minHeight="90%"

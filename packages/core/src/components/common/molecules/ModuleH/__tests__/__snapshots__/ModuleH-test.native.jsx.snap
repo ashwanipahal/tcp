@@ -17,7 +17,7 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(Heading)
         color="white"
         fontFamily="primary"
-        fontSize="fs36"
+        fontSize="fs32"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
@@ -40,7 +40,7 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(Heading)
         color="white"
         fontFamily="primary"
-        fontSize="fs36"
+        fontSize="fs32"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""

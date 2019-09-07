@@ -1,23 +1,16 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import styles from '../styles/TrackOrderBottomSection.style';
-
-// @flow
-type Props = {
-  labels: object,
-  className: string,
-  setModalMountState: Function,
-  openLoginOverlay: Function,
-};
 
 /**
  * @function TrackOrderBottomSection The TrackOrderBottomSection component shows the Track Order Modal bottom section.
  * This component includes the Track order bottom view with all the required.
  * @param {props} props object with details to render in modal
  */
-class TrackOrderBottomSection extends React.Component<Props> {
+class TrackOrderBottomSection extends React.Component {
   handleDefaultLinkClick(e) {
     const { openLoginOverlay, setModalMountState } = this.props;
     e.preventDefault();
@@ -94,6 +87,15 @@ class TrackOrderBottomSection extends React.Component<Props> {
     );
   }
 }
+
+TrackOrderBottomSection.propTypes = {
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  openLoginOverlay: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+};
 
 export default withStyles(TrackOrderBottomSection, styles);
 export { TrackOrderBottomSection as TrackOrderBottomSectionVanilla };

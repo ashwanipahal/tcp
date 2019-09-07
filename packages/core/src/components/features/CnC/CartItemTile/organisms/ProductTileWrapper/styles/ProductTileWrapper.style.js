@@ -5,6 +5,7 @@ export const customStyles = css`
   flex: 1;
   padding-top: 11px;
   padding-bottom: 6px;
+  border-top: solid 1px rgba(163, 162, 162, 0.5);
   background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   img {
     height: 13px;
@@ -47,9 +48,24 @@ export const bagTileCSS = css`
     img {
       height: 13px;
       width: 13px;
+      padding-left: 0px;
+      padding-right: 8px;
     }
     span {
       font-size: 14px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    img {
+      padding-left: 0px;
+      padding-right: 14px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    img {
+      padding-right: 18px;
     }
   }
 `;

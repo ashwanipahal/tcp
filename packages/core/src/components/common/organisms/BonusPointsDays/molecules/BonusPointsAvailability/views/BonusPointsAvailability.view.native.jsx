@@ -1,23 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import theme from '@tcp/core/styles/themes/TCP';
-import Button from '../../../../../atoms/Button';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import {
   BtnWrapper,
-  MarginRightWrapper,
+  StyledTouchableOpacity,
+  StyledView,
 } from '../styles/BonusPointsAvailability.view.style.native';
 
-let buttonStyle = {
-  fontWeight: theme.typography.fontWeights.regular,
-  marginBottom: 24,
-  fontSize: 10,
-  paddingRight: 5,
-  paddingLeft: 5,
-  paddingBottom: 5,
-};
-
-const graySecondary = theme.colorPalette.gray.secondary;
-const grayPrimary = theme.colorPalette.gray.primary;
+const colorPalette = createThemeColorPalette();
 
 const applyBonusPoints = (getBonusDaysData, orderDetails, bonusDayAvailableToday) => {
   const dto = {
@@ -33,32 +24,29 @@ const BonusPointsAvailability = ({
   orderDetails,
   bonusDayAvailableToday,
 }) => {
-  const bonusPointsLength = bonusPoints && bonusPoints.length;
-
   return (
     <BtnWrapper>
       {bonusPoints &&
         bonusPoints.map((item, index) => {
-          buttonStyle = Object.assign({}, buttonStyle, {
-            color: item.disabled ? graySecondary : grayPrimary,
-            paddingTop: bonusPointsLength === 1 ? 14 : 5,
-          });
+          const Component = item.disabled ? StyledView : StyledTouchableOpacity;
+          const componentProps = item.disabled
+            ? {}
+            : {
+                onPress: () =>
+                  applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday),
+              };
           return (
-            <MarginRightWrapper bonusPointsLength={bonusPointsLength}>
-              <Button
-                buttonVariation="variable-width"
-                width={bonusPointsLength === 1 ? '225px' : '103px'}
-                height="42px"
-                id={index}
-                data-locator={item.dataLocator}
+            <Component {...componentProps} key={item.id} index={index}>
+              <BodyCopy
+                fontSize="fs10"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                letterSpacing="ls071"
+                color={colorPalette.gray[400]}
                 text={item.buttonText}
-                style={buttonStyle}
-                disableButton
-                onPress={() =>
-                  applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
-                }
+                textAlign="center"
               />
-            </MarginRightWrapper>
+            </Component>
           );
         })}
     </BtnWrapper>
@@ -67,14 +55,14 @@ const BonusPointsAvailability = ({
 
 BonusPointsAvailability.propTypes = {
   bonusPoints: PropTypes.shape([]),
-  getBonusDaysData: PropTypes.shape({}),
+  getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   bonusDayAvailableToday: PropTypes.bool,
 };
 
 BonusPointsAvailability.defaultProps = {
   bonusPoints: [{ disabled: false, buttonText: '' }],
-  getBonusDaysData: {},
+  getBonusDaysData: () => {},
   orderDetails: {},
   bonusDayAvailableToday: false,
 };

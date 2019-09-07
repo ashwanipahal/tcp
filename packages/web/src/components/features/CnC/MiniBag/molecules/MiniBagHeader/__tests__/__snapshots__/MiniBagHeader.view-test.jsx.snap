@@ -123,6 +123,17 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           noLink={true}
           to=""
         />
+        <Styled(BodyCopy)
+          className="separator"
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
         <Styled(Anchor)
           anchorVariation="primary"
           className="rightLink"

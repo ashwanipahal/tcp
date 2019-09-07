@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import DropDownButton from '../DropDownButton';
 import mock from '../../../../../services/abstractors/common/moduleB/mock';
 
-const { ctaItems } = mock.moduleB.composites;
+const { ctaItems } = mock.composites;
 
 describe('DropDownButton component', () => {
   it('renders correctly', () => {

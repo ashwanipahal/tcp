@@ -52,6 +52,7 @@ const LinkText = (props: Props) => {
     Component = BodyCopy;
     compProps = {
       component,
+      'data-locator': dataLocator,
       ...otherProps,
     };
   }

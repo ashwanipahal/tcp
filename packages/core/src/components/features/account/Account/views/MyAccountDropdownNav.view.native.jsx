@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
+import { navigateToNestedRoute } from '../../../../../utils/index.native';
 import withStyles from '../../../../common/hoc/withStyles';
 import StyledWrapper from '../styles/MyAccountDropDown.style.native';
 // @flow
@@ -8,6 +9,7 @@ type Props = {
   navData: Array<Object>,
   handleComponentChange: Function,
   className: string,
+  navigation: Object,
 };
 
 type State = {
@@ -30,7 +32,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
   }
 
   render() {
-    const { navData, handleComponentChange, className } = this.props;
+    const { navData, handleComponentChange, className, navigation } = this.props;
     const { dropDownItem } = this.state;
     const dropDownStyle = {
       height: 49,
@@ -47,7 +49,11 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
           data={navData}
           onValueChange={itemValue => {
             this.setState({ dropDownItem: itemValue });
-            handleComponentChange(itemValue);
+            if (itemValue === 'myWalletPageMobile') {
+              navigateToNestedRoute(navigation, 'WalletStack', 'walletPage');
+            } else {
+              handleComponentChange(itemValue);
+            }
           }}
           variation="primary"
           dropDownStyle={{ ...dropDownStyle }}

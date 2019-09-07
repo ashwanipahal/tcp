@@ -5,6 +5,7 @@ exports[`Textbox component renders correctly 1`] = `
   className="asdfasdf input-fields-wrapper textbox_validation_success"
 >
   <input
+    aria-describedby="textbox__error__undefined"
     aria-label=""
     aria-required={false}
     className="TextBox__input"
@@ -42,6 +43,7 @@ exports[`Textbox component renders correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="extrabold"
+      id="textbox__error__undefined"
       letterSpacing="normal"
       lineHeight="normal"
       role="alert"

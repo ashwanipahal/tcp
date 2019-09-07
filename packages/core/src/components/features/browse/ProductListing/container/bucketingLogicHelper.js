@@ -23,7 +23,7 @@ class BucketingBL {
       // and then replcae it with cached L3 left and available L3. We are doing this beacuse, yes it is true that we need to make calls for all those
       // L3 which we recevied in L2 response but we need to make in the sequence which is there in Taxanomy.
       for (let idx = 0; idx < l3ReturnedByL2.length; idx += 1) {
-        if (itm.categoryId === l3ReturnedByL2[idx].id) {
+        if (itm.categoryContent.id === l3ReturnedByL2[idx].id) {
           itm.count = l3ReturnedByL2[idx].count;
           updatedAvailableL3.push(itm);
         }
@@ -39,11 +39,11 @@ class BucketingBL {
   updateBucketingParamters = (res, bucketingConfig) => {
     const temp = { ...bucketingConfig };
     const { productsToFetchPerLoad } = temp;
-    let { start } = temp;
+    const { start } = temp;
     const productsFecthedTillNow = start + productsToFetchPerLoad;
     const productsLeft = res.productsInCurrCategory - productsFecthedTillNow;
     // The start for the next call will be the products which have been fetched till now.
-    start = productsFecthedTillNow;
+    temp.start = productsFecthedTillNow;
     // If the products be fetched are less than what are left , then we will fetch the remaining products in the next L3 call.
     if (productsToFetchPerLoad > productsLeft) {
       temp.productsToFetchPerLoad = productsLeft;
@@ -63,7 +63,8 @@ class BucketingBL {
    */
 
   getMatchPath = (isSearchPage, location) => {
-    const params = isSearchPage ? '/search/' : '/c/';
+    const categoryParam = isMobileApp() ? '/c?cid=' : '/c/';
+    const params = isSearchPage ? '/search/' : categoryParam;
     const pathname = isMobileApp() ? location.pathname : window.location.pathname;
     return matchPath(pathname, params);
   };

@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import endpoints from '../../../../../service/endpoint';
@@ -70,7 +71,7 @@ export function* subscribeEmailAddress(emailObj, status) {
     const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
     yield put(emailSignupStatus({ subscription: res }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
@@ -81,7 +82,7 @@ function* loadGiftWrappingOptions() {
   } catch (e) {
     // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
     // throw e;
-    console.log(e);
+    logger.error(e);
   }
 }
 
@@ -558,7 +559,7 @@ function* initCheckout() {
   try {
     yield call(loadStartupData);
   } catch (e) {
-    console.log(e);
+    logger.error(e);
   }
 }
 

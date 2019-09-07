@@ -52,12 +52,12 @@ exports[`LinkText component renders correctly 1`] = `
     }
     text={
       Array [
-        <Text>
+        <ForwardRef>
           UNICORNS
-        </Text>,
-        <Text>
+        </ForwardRef>,
+        <ForwardRef>
            , DINOS & MORE!
-        </Text>,
+        </ForwardRef>,
       ]
     }
   />

@@ -1,19 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are not present 1`] = `
-<Styled(BodyCopy)
-  className={null}
-  color="text.primary"
-  component="p"
-  fontFamily="secondary"
-  fontSize="fs14"
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  textAlign="left"
+<Styled(Row)
+  fullBleed={true}
 >
-  Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!
-</Styled(BodyCopy)>
+  <Styled(Col)
+    className="elem-mb-MED"
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 2,
+        "small": 3,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": false,
+        "medium": false,
+        "small": false,
+      }
+    }
+    key="card_0"
+  >
+    <Styled(EmptyBirthdayCard)
+      labels={
+        Object {
+          "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+          "lbl_profile_birthday_savings": "Birthday Savings",
+          "lbl_profile_personal_info_back": "back",
+        }
+      }
+      view="edit"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="elem-mb-MED"
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 2,
+        "small": 3,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": false,
+        "medium": false,
+        "small": true,
+      }
+    }
+    key="card_1"
+  >
+    <Styled(EmptyBirthdayCard)
+      labels={
+        Object {
+          "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+          "lbl_profile_birthday_savings": "Birthday Savings",
+          "lbl_profile_personal_info_back": "back",
+        }
+      }
+      view="edit"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="elem-mb-MED"
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 2,
+        "small": 3,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": false,
+        "medium": false,
+        "small": false,
+      }
+    }
+    key="card_2"
+  >
+    <Styled(EmptyBirthdayCard)
+      labels={
+        Object {
+          "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+          "lbl_profile_birthday_savings": "Birthday Savings",
+          "lbl_profile_personal_info_back": "back",
+        }
+      }
+      view="edit"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="elem-mb-MED"
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 2,
+        "small": 3,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": true,
+        "medium": true,
+        "small": true,
+      }
+    }
+    key="card_3"
+  >
+    <Styled(EmptyBirthdayCard)
+      labels={
+        Object {
+          "lbl_profile_birthday_saving_info": "Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!",
+          "lbl_profile_birthday_savings": "Birthday Savings",
+          "lbl_profile_personal_info_back": "back",
+        }
+      }
+      view="edit"
+    />
+  </Styled(Col)>
+</Styled(Row)>
 `;
 
 exports[`BirthdaySavingsList component should renders correctly when childrenBirthdays are present 1`] = `

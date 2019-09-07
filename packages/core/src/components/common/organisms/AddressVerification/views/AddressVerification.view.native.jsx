@@ -235,12 +235,17 @@ export default class AddressVerification extends React.PureComponent {
       suggestedAddress,
       toggleAddressModal,
       labels: { verifyAddressLabels },
+      setModalHeading,
     } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
-
     if (this.showVerifyModal) {
+      setModalHeading();
       return (
-        <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          {...this.props}
+          keyboardShouldPersistTaps="handled"
+        >
           <VerifyAddressWrapper>
             <BodyCopy
               mobilefontFamily={['secondary']}
@@ -296,6 +301,7 @@ AddressVerification.propTypes = {
   onSuccess: PropTypes.func,
   resetVerifyAddressAction: PropTypes.func,
   toggleAddressModal: PropTypes.func,
+  setModalHeading: PropTypes.func,
 };
 
 AddressVerification.defaultProps = {
@@ -313,6 +319,7 @@ AddressVerification.defaultProps = {
   onSuccess: () => {},
   resetVerifyAddressAction: () => {},
   toggleAddressModal: () => {},
+  setModalHeading: () => {},
 };
 
 export { AddressVerification as AddressVerificationVanilla };
