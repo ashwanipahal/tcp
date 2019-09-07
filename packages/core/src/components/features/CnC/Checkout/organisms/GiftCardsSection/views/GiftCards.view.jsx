@@ -26,7 +26,7 @@ const GiftCardSectionHeading = (labels, isGiftCardApplied = false) => {
 };
 
 const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards) => {
-  if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size <= 5) {
+  if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
     return (
       <Row className="elem-mt-LRG elem-mb-LRG">
         <Col

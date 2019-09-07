@@ -1,10 +1,8 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
-
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo } from '@tcp/core/src/utils';
-
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
 import {
@@ -108,9 +106,8 @@ function getShippingDestinationValues(state) {
   );
   // For shipping address when user logged-in, override email address that of user.
   // When user is guest, keep the address he specified in shipping section.
-  const email = getUserEmail(state) || emailAddress;
   return {
-    emailAddress: email,
+    emailAddress: getUserEmail(state) || emailAddress,
     ...result,
   };
 }
@@ -338,9 +335,20 @@ const getShipmentMethods = state => {
 };
 
 const getDefaultShipmentID = createSelector(
-  getShipmentMethods,
-  shipmentMethods => {
-    const defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+  [getShipmentMethods, getShippingDestinationValues],
+  (shipmentMethods, shippingDestinationValues) => {
+    if (shippingDestinationValues && shippingDestinationValues.method) {
+      const {
+        method: { shippingMethodId },
+      } = shippingDestinationValues;
+      if (shippingMethodId) {
+        const defaultShipment = shipmentMethods.find(method => method.id === shippingMethodId);
+        return defaultShipment && defaultShipment.id;
+      }
+    }
+    const defaultMethod = shipmentMethods.find(
+      (method, index) => method.isDefault === true || index === 0
+    );
     return defaultMethod && defaultMethod.id;
   }
 );
@@ -450,7 +458,6 @@ function getPickupInitialPickupSectionValues(state) {
     ...{ hasAlternatePickup: isPickupAlt(state) },
     ...getPickupAltValues(state),
   };
-
   return {
     pickUpContact: {
       firstName: pickupValues.get('firstName') || getUserName(state),
@@ -470,9 +477,7 @@ function getPickupInitialPickupSectionValues(state) {
 function getIsPaymentDisabled(state) {
   const orderDetails = state.CartPageReducer.get('orderDetails');
   if (orderDetails) {
-    const grandTotal = orderDetails.get('grandTotal');
-    const giftCardsTotal = orderDetails.get('giftCardsTotal');
-    return grandTotal <= giftCardsTotal;
+    return orderDetails.get('grandTotal') <= orderDetails.get('giftCardsTotal');
   }
   return false;
 }
