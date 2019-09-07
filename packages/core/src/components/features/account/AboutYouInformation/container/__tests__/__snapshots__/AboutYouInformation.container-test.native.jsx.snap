@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouInformationContainer calling setInitialOptions method 1`] = `
+<AboutYouInformation
+  clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+  initialValues={
+    Object {
+      "options1": Array [
+        Object {
+          "id": "shopper1",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper2",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper3",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper4",
+          "selected": false,
+          "value": undefined,
+        },
+      ],
+      "options2": Array [
+        Object {
+          "id": "shopper1",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper2",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper3",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper4",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper5",
+          "selected": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  labels={Object {}}
+  onClose={[Function]}
+  onSubmit={[Function]}
+  setSurveyAnswersAction={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "answer1": "Parent",
+            "answer2": "Girl",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  successMessage="Success"
+/>
+`;
+
+exports[`AboutYouInformationContainer should render correctly 1`] = `
+<AboutYouInformation
+  clasName="sc-cIShpX dVDvCi sc-fYxtnH fCCVQb sc-gGBfsJ RixGJ sc-bbmXgH kaiKft"
+  initialValues={
+    Object {
+      "options1": Array [
+        Object {
+          "id": "shopper1",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper2",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper3",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper4",
+          "selected": false,
+          "value": undefined,
+        },
+      ],
+      "options2": Array [
+        Object {
+          "id": "shopper1",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper2",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper3",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper4",
+          "selected": false,
+          "value": undefined,
+        },
+        Object {
+          "id": "shopper5",
+          "selected": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  labels={Object {}}
+  onClose={[Function]}
+  onSubmit={[Function]}
+  setSurveyAnswersAction={[MockFunction]}
+  successMessage="Success"
+/>
+`;
