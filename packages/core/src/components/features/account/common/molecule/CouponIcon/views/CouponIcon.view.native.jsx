@@ -23,7 +23,7 @@ export const CouponIcon = ({ coupon, labels }) => {
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="extrabold"
+        fontWeight="black"
         text={couponTextLabel}
         color="white"
       />

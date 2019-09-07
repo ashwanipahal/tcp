@@ -2,6 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { getLocator } from '@tcp/core/src/utils';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   MessageContainer,
   StoreContainer,
@@ -38,6 +39,7 @@ class CheckoutHeader extends React.PureComponent<Props> {
 
     return (
       <SafeAreaViewStyle>
+        <ToastContainer />
         <CheckoutHeaderContainer data-locator={getLocator('global_headerpanel')}>
           <MessageContainer>
             <StoreContainer>

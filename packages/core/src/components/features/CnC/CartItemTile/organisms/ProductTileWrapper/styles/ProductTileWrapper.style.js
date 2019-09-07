@@ -48,9 +48,24 @@ export const bagTileCSS = css`
     img {
       height: 13px;
       width: 13px;
+      padding-left: 0px;
+      padding-right: 8px;
     }
     span {
       font-size: 14px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    img {
+      padding-left: 0px;
+      padding-right: 14px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    img {
+      padding-right: 18px;
     }
   }
 `;
