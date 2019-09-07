@@ -8,6 +8,7 @@ const initialState = fromJS({
   airmiles: null,
   rewards: null,
   survey: null,
+  children: null,
 });
 
 const UserReducer = (state = initialState, { type, payload }) => {
@@ -60,16 +61,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
           })
         )
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(USER_CONSTANTS.GET_USER_INFO_TTL));
-    case USER_CONSTANTS.SET_USER_PERSONAL_DATA:
-      if (state.get('personalData')) {
-        return state.setIn(['personalData', 'children'], fromJS(payload.children));
-      }
-      return state.set(
-        'personalData',
-        fromJS({
-          children: payload.children,
-        })
-      );
+    case USER_CONSTANTS.SET_CHILDREN:
+      return state.set('children', fromJS(payload.children));
     case USER_CONSTANTS.RESET_USER_INFO:
       return initialState;
     case USER_CONSTANTS.CLEAR_USER_INFO_TTL:

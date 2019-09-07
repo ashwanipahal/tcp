@@ -1,6 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import CONSTANTS from '../BirthdaySavingsList.constants';
-import { setUserPersonalData } from '../../../../User/container/User.actions';
+import { setUserChildren } from '../../../../User/container/User.actions';
 import { getChildren, deleteChild } from '../../../../../../../services/abstractors/account';
 import {
   getChildrenAction,
@@ -16,7 +16,7 @@ export function* getChildrenSaga() {
   try {
     const response = yield call(getChildren);
     yield put(
-      setUserPersonalData({
+      setUserChildren({
         children: response,
       })
     );

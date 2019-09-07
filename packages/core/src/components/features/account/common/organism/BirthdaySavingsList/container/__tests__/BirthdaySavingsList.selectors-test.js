@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { BIRTHDAY_SAVING_LIST_REDUCER_KEY } from '../../../../../../../../constants/reducer.constants';
-import { getStatus, getMessageKey } from '../BirthdaySavingsList.selectors';
+import { getStatus, getMessage } from '../BirthdaySavingsList.selectors';
 
 describe('#BirthdaySavingsList Selectors', () => {
   let state;
@@ -13,6 +13,11 @@ describe('#BirthdaySavingsList Selectors', () => {
       });
       state = {
         [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: birthdaySavingListState,
+        Labels: {
+          account: {
+            profile: {},
+          },
+        },
       };
     });
 
@@ -37,7 +42,7 @@ describe('#BirthdaySavingsList Selectors', () => {
     });
 
     it('should return empty string if no success or error', () => {
-      expect(getMessageKey(state)).toBe('');
+      expect(getMessage(state)).toBe('');
     });
 
     it('should return correct message key', () => {
@@ -45,7 +50,7 @@ describe('#BirthdaySavingsList Selectors', () => {
         'success',
         { childId: '1234' }
       );
-      expect(getMessageKey(state)).toBe('lbl_profile_removeBirthdaySuccess');
+      expect(getMessage(state)).toBe('lbl_profile_removeBirthdaySuccess');
     });
 
     it('should return correct error string for error if errorCode is present', () => {
@@ -53,7 +58,7 @@ describe('#BirthdaySavingsList Selectors', () => {
         'error',
         fromJS({ errorCode: '1234' })
       );
-      expect(getMessageKey(state)).toBe('lbl_profile_1234');
+      expect(getMessage(state)).toBe('lbl_profile_1234');
     });
 
     it('should return default error string for error if errorCode is not present', () => {
@@ -61,7 +66,7 @@ describe('#BirthdaySavingsList Selectors', () => {
         'error',
         fromJS({})
       );
-      expect(getMessageKey(state)).toBe('lbl_profile_genericError');
+      expect(getMessage(state)).toBe('lbl_profile_genericError');
     });
   });
 });

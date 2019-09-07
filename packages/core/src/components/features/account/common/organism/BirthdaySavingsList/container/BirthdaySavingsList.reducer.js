@@ -6,7 +6,7 @@ const initialState = fromJS({
   error: null,
 });
 
-const BirthdaySavingsListReducer = (state, action) => {
+const BirthdaySavingsListReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.GET_CHILDREN:
       return state.set('error', null).set('success', null);

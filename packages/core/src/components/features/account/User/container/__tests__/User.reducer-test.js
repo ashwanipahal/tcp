@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import UserReducer from '../User.reducer';
 import { DEFAULT_REDUCER_KEY } from '../../../../../../utils/cache.util';
-import { setUserInfo, setUserPersonalData } from '../User.actions';
+import { setUserInfo, setUserChildren } from '../User.actions';
 
 describe('User reducer', () => {
   const initialState = fromJS({
@@ -10,6 +10,7 @@ describe('User reducer', () => {
     airmiles: null,
     rewards: null,
     survey: null,
+    children: null,
   });
 
   it('should return default state', () => {
@@ -54,31 +55,14 @@ describe('User reducer', () => {
       expect(state.getIn(['survey', 'answers'])).toEqual(fromJS(payload.surveyAnswers));
     });
 
-    it('should handle SET_USER_PERSONAL_DATA correctly', () => {
+    it('should handle SET_CHILDREN correctly', () => {
       const updatedState = UserReducer(
         initialState,
-        setUserPersonalData({
+        setUserChildren({
           children: [{ childId: '12345' }],
         })
       );
-      expect(updatedState.getIn(['personalData', 'children', '0', 'childId'])).toEqual('12345');
-    });
-
-    it('should handle SET_USER_PERSONAL_DATA correctly if personalData is already present', () => {
-      const currentState = fromJS({
-        [DEFAULT_REDUCER_KEY]: null,
-        personalData: {},
-        airmiles: null,
-        rewards: null,
-        survey: null,
-      });
-      const updatedState = UserReducer(
-        currentState,
-        setUserPersonalData({
-          children: [{ childId: '12345' }],
-        })
-      );
-      expect(updatedState.getIn(['personalData', 'children', '0', 'childId'])).toEqual('12345');
+      expect(updatedState.getIn(['children', '0', 'childId'])).toEqual('12345');
     });
   });
 });

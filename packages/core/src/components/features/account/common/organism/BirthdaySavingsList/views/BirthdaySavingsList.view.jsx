@@ -13,6 +13,10 @@ import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
 import { getLabelValue } from '../../../../../../../utils';
 
+/**
+ * Functional component to render Birthday Saving Info Message
+ * @param {object} props
+ */
 export const InfoMessage = ({ labels }) => (
   <BodyCopy fontSize="fs14" fontFamily="secondary" className="elem-mb-XXL" data-locator="instrText">
     {labels.lbl_profile_birthday_saving_info}
@@ -91,6 +95,11 @@ export class BirthdaySavingsList extends PureComponent {
     };
   };
 
+  /**
+   * @function showRemoveModal
+   * @description This function will handle showing of remove Children Birthday Confirmation Modal
+   * @param {object} activeChild Current active children information to be removed
+   */
   showRemoveModal = activeChild => {
     this.setState({
       removeModal: true,
@@ -98,6 +107,10 @@ export class BirthdaySavingsList extends PureComponent {
     });
   };
 
+  /**
+   * @function closeRemoveModal
+   * @description This function will handle closing of remove Children Birthday Confirmation Modal
+   */
   closeRemoveModal = () => {
     this.setState({
       removeModal: false,
@@ -105,13 +118,18 @@ export class BirthdaySavingsList extends PureComponent {
     });
   };
 
+  /**
+   * @function removeBirthdayHandler
+   * @description This function will call removeBirthday prop with required params
+   * @param {object} activeChild Current active children information to be removed
+   */
   removeBirthdayHandler = activeChild => {
     const { removeBirthday } = this.props;
     removeBirthday(activeChild);
   };
 
   render() {
-    const { labels, childrenBirthdays, view, className, status, messageKey } = this.props;
+    const { labels, childrenBirthdays, view, className, status, message } = this.props;
     const isEditMode = view === 'edit';
     const { removeModal, activeChild } = this.state;
     if (isEditMode || (childrenBirthdays && childrenBirthdays.size > 0)) {
@@ -123,9 +141,7 @@ export class BirthdaySavingsList extends PureComponent {
         <div className={className}>
           {isEditMode && (
             <>
-              {status && (
-                <Notification status={status} message={getLabelValue(labels, messageKey)} />
-              )}
+              {status && <Notification status={status} message={message} />}
               <InfoMessage labels={labels} />
             </>
           )}
@@ -210,7 +226,7 @@ BirthdaySavingsList.propTypes = {
   view: PropTypes.oneOf([constants.VIEW.READ, constants.VIEW.EDIT]),
   removeBirthday: PropTypes.func,
   status: PropTypes.string,
-  messageKey: PropTypes.string,
+  message: PropTypes.string,
 };
 
 BirthdaySavingsList.defaultProps = {
@@ -218,7 +234,7 @@ BirthdaySavingsList.defaultProps = {
   className: '',
   removeBirthday: () => {},
   status: '',
-  messageKey: '',
+  message: '',
 };
 
 export default withStyles(BirthdaySavingsList, styles);

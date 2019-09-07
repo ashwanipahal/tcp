@@ -7,7 +7,7 @@ import {
   removeChildAction,
   resetBirthdaySavingMessageAction,
 } from './BirthdaySavingsList.actions';
-import { getStatus, getMessageKey } from './BirthdaySavingsList.selectors';
+import { getStatus, getMessage } from './BirthdaySavingsList.selectors';
 import BirthdaySavingsComponent from '../views';
 
 /**
@@ -53,7 +53,7 @@ export const mapStateToProps = state => {
   return {
     childrenBirthdays: getChildren(state),
     status: getStatus(state),
-    messageKey: getMessageKey(state),
+    message: getMessage(state),
   };
 };
 

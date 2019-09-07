@@ -92,7 +92,7 @@ describe('BirthdaySavingsList component', () => {
     it('on update status prop, Notification component should be rendered', () => {
       component.setProps({
         status: 'success',
-        messageKey: 'lbl_profile_success',
+        message: 'lbl_profile_success',
       });
       expect(component.find(Notification)).toHaveLength(1);
     });
