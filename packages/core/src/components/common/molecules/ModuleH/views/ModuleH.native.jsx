@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, BodyCopy, Heading, Anchor } from '../../../atoms';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
+import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
@@ -34,9 +34,13 @@ const MODULE_DIRECTION = true;
 const linkStyle = {
   color: colors.white,
   fontSize: fonts.fontSize.body.bodytext.copy6,
-  lineHeight: 20,
   marginTop: 28,
 };
+
+/**
+ * TODO: To manage the PixelRatio .
+ */
+const devicePixelRatio = getPixelRatio();
 
 /**
  * @class ModuleH - global reusable component will provide featured content module
@@ -50,20 +54,10 @@ class ModuleH extends React.PureComponent<Props, State> {
     this.state = {
       currentIndex: 0,
     };
-    this.getUrlWithCrop = this.getUrlWithCrop.bind(this);
     this.renderItem = this.renderItem.bind(this);
     this.renderLinks = this.renderLinks.bind(this);
     this.updateCurrentIndex = this.updateCurrentIndex.bind(this);
   }
-
-  /**
-   * @function getUrlWithCrop : prepare image src with crop details.
-   * @param {String} url : Image url.
-   * @return {String} function returns updated image url.
-   */
-  getUrlWithCrop = (url: String) => {
-    return url.replace('upload/', `upload/c_fill,g_center,h_425,w_${getScreenWidth()}/`);
-  };
 
   /**
    * @function renderItem : renders module H Images.
@@ -75,8 +69,8 @@ class ModuleH extends React.PureComponent<Props, State> {
     return (
       <Image
         key={index.toString()}
-        alt={image.alt}
-        source={{ uri: this.getUrlWithCrop(image.url) }}
+        crop={image.crop_m}
+        url={image.url}
         testID={`${getLocator('moduleH_composite_image')}${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
@@ -118,9 +112,15 @@ class ModuleH extends React.PureComponent<Props, State> {
     this.setState({ currentIndex: index });
   };
 
+  /**
+   * @function render : renders module H .
+   */
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
-    const headingStyle = { height: 38 };
+    let HeadingFontSize = 'fs36';
+    if (devicePixelRatio === 'xxxhdpi' || devicePixelRatio === 'xhdpi') {
+      HeadingFontSize = 'fs32';
+    }
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -130,27 +130,25 @@ class ModuleH extends React.PureComponent<Props, State> {
                 <Anchor key={index.toString()} url={link.url} navigation={navigation}>
                   <Heading
                     fontFamily="primary"
-                    fontSize="fs36"
+                    fontSize={HeadingFontSize}
                     letterSpacing="ls167"
                     textAlign="left"
                     color="white"
                     fontWeight="black"
                     text={textLine.text}
                     testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                    style={headingStyle}
                   />
                 </Anchor>
               ) : (
                 <Heading
                   fontFamily="primary"
-                  fontSize="fs36"
+                  fontSize={HeadingFontSize}
                   letterSpacing="ls167"
                   textAlign="left"
                   color="white"
                   fontWeight="black"
                   text={textLine.text}
                   testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                  style={headingStyle}
                 />
               );
             })}

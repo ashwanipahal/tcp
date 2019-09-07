@@ -57,37 +57,31 @@ exports[`FooterMiddleMobile component renders correctly 1`] = `
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
   </AccordionList>
 </Styled(Col)>
@@ -151,37 +145,31 @@ exports[`FooterMiddleMobile component renders correctly 2`] = `
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
     <Styled(FooterNavLinksList)
       insideAcccordion={true}
       isLoggedIn={false}
       listArray={Array []}
-      openTrackOrder={[Function]}
     />
   </AccordionList>
 </Styled(Col)>

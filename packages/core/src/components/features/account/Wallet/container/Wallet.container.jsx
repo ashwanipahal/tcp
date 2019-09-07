@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WalletView from '../views';
+import { getLabels } from '../../Account/container/Account.selectors';
 
 export const WalletContainer = ({ labels }) => {
-  return (
-    <WalletView labels={labels} />
-  );
+  return <WalletView labels={labels} />;
+};
+
+export const mapStateToProps = state => {
+  return {
+    labels: getLabels(state),
+  };
 };
 
 WalletContainer.propTypes = {
@@ -16,4 +22,4 @@ WalletContainer.defaultProps = {
   labels: {},
 };
 
-export default WalletContainer;
+export default connect(mapStateToProps)(WalletContainer);

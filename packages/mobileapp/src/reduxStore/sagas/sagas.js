@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
 import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
@@ -29,10 +30,14 @@ import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder
 import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.saga';
+import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
+import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
+import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
   yield all([
+    LabelsSaga(),
     BootstrapSaga(),
     HomePageSaga(),
     NavigationSaga(),
@@ -64,5 +69,8 @@ export default function* rootSaga() {
     TrackOrderSaga(),
     ChangePasswordSaga(),
     BillingPaymentSaga(),
+    ProductTabListSaga(),
+    GetCandidSaga(),
+    GiftCardsSaga(),
   ]);
 }

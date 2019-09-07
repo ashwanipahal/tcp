@@ -19,9 +19,9 @@ const srcAttribute = 'data-src';
 describe('DamImage component', () => {
   it('Should create correct srcset only with imgLocation', () => {
     const srcSets = [
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/w_1440/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/w_1024/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/w_768/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
+      'https://test1.theplace.com/image/upload/w_1440/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
+      'https://test1.theplace.com/image/upload/w_1024/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
+      'https://test1.theplace.com/image/upload/w_768/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
     ];
 
     const imgData = {
@@ -41,9 +41,9 @@ describe('DamImage component', () => {
 
   it('Should create correct srcset with imgLocation and cloudinary configuration', () => {
     const srcSets = [
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:auto,q_auto:best,w_1440/dancing-boy1.png',
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face:center,q_auto:best,w_1024/dancing-boy1.png',
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/g_face:center,q_auto:best,w_768/dancing-boy1.png',
+      'https://test1.theplace.com/image/upload/c_crop,g_face:auto,q_auto:best,w_1440/dancing-boy1.png',
+      'https://test1.theplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1024/dancing-boy1.png',
+      'https://test1.theplace.com/image/upload/g_face:center,q_auto:best,w_768/dancing-boy1.png',
     ];
 
     const imgData = {

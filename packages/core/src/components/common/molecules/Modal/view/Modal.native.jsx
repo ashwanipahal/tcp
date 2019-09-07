@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   StyledCrossImage,
   StyledTouchableOpacity,
@@ -9,7 +10,6 @@ import {
   RowWrapper,
   ImageWrapper,
 } from '../Modal.style.native';
-import ToastContainer from '../../../../../../../mobileapp/src/components/common/atoms/Toast/container/Toast.container';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 // How To use this react native modal
@@ -48,6 +48,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
     headingAlign,
     headingFontFamily,
     headerStyle,
+    headingFontWeight,
     fontSize,
     horizontalBar = true,
     borderColor = 'black',
@@ -57,20 +58,20 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
         <ToastContainer />
         <StatusBar hidden />
-        {heading && (
-          <RowWrapper>
+        <RowWrapper>
+          {heading && (
             <ModalHeading>
               <BodyCopy
                 mobileFontFamily={headingFontFamily || 'primary'}
-                fontWeight="extrabold"
+                fontWeight={headingFontWeight || 'extrabold'}
                 textAlign={headingAlign}
                 fontSize={fontSize || 'fs16'}
                 text={heading}
               />
             </ModalHeading>
-            {getCloseIcon({ onRequestClose, headerStyle })}
-          </RowWrapper>
-        )}
+          )}
+          {getCloseIcon({ onRequestClose, headerStyle })}
+        </RowWrapper>
         {horizontalBar ? (
           <LineWrapper>
             <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />

@@ -104,20 +104,21 @@ describe('removeUnqualifiedItemsAndCheckout Saga', () => {
     let takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(select(BAG_SELECTORS.getUnqualifiedItemsIds));
 
+    takeLatestDescriptor = generator.next();
     takeLatestDescriptor = generator.next().value;
-    expect(takeLatestDescriptor).toEqual(call(checkoutCart, true));
+    expect(takeLatestDescriptor).toEqual(call(checkoutCart, true, undefined));
   });
 });
 
 describe('startCartCheckout Saga', () => {
   it('startCartCheckout effect', () => {
-    const generator = startCartCheckout();
+    const generator = startCartCheckout({});
 
     let takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
-    takeLatestDescriptor = generator.next(false).value;
+    takeLatestDescriptor = generator.next(false, {}).value;
     takeLatestDescriptor = generator.next().value;
-    expect(takeLatestDescriptor).toEqual(call(checkoutCart));
+    expect(takeLatestDescriptor).toEqual(call(checkoutCart, false, undefined));
   });
 });
 

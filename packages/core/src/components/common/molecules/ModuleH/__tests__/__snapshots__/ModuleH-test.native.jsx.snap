@@ -17,15 +17,10 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(Heading)
         color="white"
         fontFamily="primary"
-        fontSize="fs36"
+        fontSize="fs32"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        style={
-          Object {
-            "height": 38,
-          }
-        }
         testID="moduleH_header_text_1"
         text="New arrivals"
         textAlign="left"
@@ -45,15 +40,10 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(Heading)
         color="white"
         fontFamily="primary"
-        fontSize="fs36"
+        fontSize="fs32"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
-        style={
-          Object {
-            "height": 38,
-          }
-        }
         testID="moduleH_header_text_2"
         text="New adventures"
         textAlign="left"
@@ -190,7 +180,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -220,7 +209,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -250,7 +238,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -280,7 +267,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }
@@ -310,7 +296,6 @@ exports[`ModuleH component renders correctly 1`] = `
           Object {
             "color": "#fff",
             "fontSize": 20,
-            "lineHeight": 20,
             "marginTop": 38,
           }
         }

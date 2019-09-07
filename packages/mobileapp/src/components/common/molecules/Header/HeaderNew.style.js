@@ -1,48 +1,51 @@
 import styled from 'styled-components/native';
+import { isDisplayWithNotch } from '@tcp/core/src/utils/dimensions';
+
+const getSafeAreaStyle = props => {
+  const { theme } = props;
+  const headerHeight = isDisplayWithNotch()
+    ? theme.spacing.LAYOUT_SPACING.XL
+    : theme.spacing.LAYOUT_SPACING.LRG;
+  return `
+  background: ${theme.colorPalette.white};
+  height: ${headerHeight};
+  border-bottom-color: ${theme.colorPalette.gray[500]};
+  border-bottom-width: 1;
+  `;
+};
 
 export const SafeAreaViewStyle = styled.SafeAreaView`
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  background: ${props => props.theme.colorPalette.white};
-  min-height: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-  border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
-  border-bottom-width: 1;
+  ${getSafeAreaStyle}
 `;
 
 export const Container = styled.View`
   flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const BackgroundView = styled.View`
-  background-color: ${props => props.theme.colorPalette.white};
+export const CartCountContainer = styled.View`
+  background-color: ${props => props.theme.colorPalette.primary.dark};
   width: 22px;
   height: 22px;
   border-radius: 11;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  margin-top: 14px;
-`;
-
-export const RoundView = styled.View`
-  background-color: ${props => props.theme.colorPalette.primary.dark};
-  width: 20px;
-  height: 20px;
-  border-radius: 10;
-  position: absolute;
-  margin-top: 14px;
+  right: 0;
+  bottom: 0;
+  border: 2px solid white;
 `;
 
 export const CartIconView = styled.Image`
   width: 32px;
   height: 32px;
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-export const TextStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.6 };
-
 export const Touchable = styled.TouchableOpacity`
-  align-items: flex-end;
-  align-self: flex-end;
-  width: 45px;
+  flex-direction: row;
+  height: 36;
 `;
 
 export const LeftSection = styled.View`
@@ -58,6 +61,9 @@ export const MiddleSection = styled.View`
   height: 100%;
 `;
 export const RightSection = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
   width: 20%;
   height: 100%;
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};

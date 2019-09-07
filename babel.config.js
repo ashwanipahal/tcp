@@ -28,6 +28,9 @@ module.exports = api => {
       build: {
         ignore: ['**/*.story.tsx', '__snapshots__', '__tests__', '__stories__'],
       },
+      production: {
+        plugins: ['transform-remove-console'],
+      },
     },
     ignore: ['node_modules'],
   };

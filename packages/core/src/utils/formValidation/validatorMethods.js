@@ -170,6 +170,13 @@ function cvvLengthThreeValidator(value, param, linkedProps) {
 function cvvLengthFourValidator(value, param, linkedProps) {
   return linkedProps[0] === 'AMEX' ? (value || '').length === 4 : true;
 }
+function eitherRequiredValidator(value, param, linkedPropsValues, linkedFieldsValues) {
+  return (value || linkedFieldsValues[0] || '').length > 0;
+}
+
+function notEqualToValidator(value, linkedFieldsValues) {
+  return value !== linkedFieldsValues[0];
+}
 
 const validatorMethods = {
   required: requiredValidator,
@@ -199,6 +206,8 @@ const validatorMethods = {
   alphanumeric: alphanumericValidator,
   ssn: ssnValidator,
   dob: dobValidator,
+  eitherRequired: eitherRequiredValidator,
+  notEqualTo: notEqualToValidator,
   cvvNumber: onlyDigitsValidator,
   cvvLengthThree: cvvLengthThreeValidator,
   cvvLengthFour: cvvLengthFourValidator,

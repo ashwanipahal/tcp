@@ -1,12 +1,29 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Anchor, BodyCopy } from '../../../atoms';
+import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
 
-type Props = {
-  promoBanner: Array<Object>,
-  className: String,
+/**
+ * Currency & Up variation of Promo Banner
+ * @param {*} props
+ */
+const renderCurrencyUpVariation = (style, text) => {
+  const textItems = text.split(' ');
+
+  return (
+    <BodyCopy component="div" className={`promo-text ${style}`} fontFamily="primary">
+      <div className="col-1">
+        <span className={`${style}-0`}>{textItems[0]}</span>
+        <span className={`${style}-1`}>{textItems[1]}</span>
+      </div>
+      <div className="col-2">
+        <span className={`${style}-2`}>{textItems[2]}</span>
+        <span className={`${style}-3`}>{`${textItems[3]}${textItems[4]}`}</span>
+      </div>
+    </BodyCopy>
+  );
 };
 
 /**
@@ -19,17 +36,27 @@ type Props = {
  * This component uses BodyCopy atom and accepts all properties of BodyCopy
  * @param {*} props
  */
-const PromoBanner = (props: Props) => {
+const PromoBanner = props => {
   const {
+    headerText,
     promoBanner: [{ textItems, link }],
     className,
+    dataLocatorHeader,
     ...otherProps
   } = props;
 
   return (
     <BodyCopy component="div" className={className} {...otherProps}>
       <React.Fragment>
-        <Anchor {...link}>
+        {headerText && (
+          <LinkText
+            dataLocator={dataLocatorHeader}
+            className="promo-banner-header"
+            fontFamily="primary"
+            headerText={headerText}
+          />
+        )}
+        <Anchor {...link} className="promo-text-link">
           {textItems.map(({ text, style }, index) => {
             let promoText;
 
@@ -50,6 +77,8 @@ const PromoBanner = (props: Props) => {
                   </span>
                 </div>
               );
+            } else if (style === 'currency_up_style') {
+              promoText = renderCurrencyUpVariation(style, text);
             } else {
               promoText = (
                 <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
@@ -62,6 +91,50 @@ const PromoBanner = (props: Props) => {
       </React.Fragment>
     </BodyCopy>
   );
+};
+
+PromoBanner.propTypes = {
+  promoBanner: PropTypes.arrayOf(
+    PropTypes.oneOfType(
+      PropTypes.shape({
+        textItems: PropTypes.arrayOf(
+          PropTypes.oneOfType(
+            PropTypes.shape({
+              style: PropTypes.string,
+              text: PropTypes.string,
+            })
+          )
+        ),
+      })
+    )
+  ).isRequired,
+  className: PropTypes.string.isRequired,
+  dataLocatorHeader: PropTypes.string,
+  headerText: PropTypes.arrayOf(
+    PropTypes.oneOfType(
+      PropTypes.shape({
+        textItems: PropTypes.arrayOf(
+          PropTypes.oneOfType(
+            PropTypes.shape({
+              style: PropTypes.string,
+              text: PropTypes.string,
+            })
+          )
+        ),
+        link: PropTypes.shape({
+          url: PropTypes.string,
+          text: PropTypes.string,
+          target: PropTypes.string,
+          title: PropTypes.string,
+        }),
+      })
+    )
+  ),
+};
+
+PromoBanner.defaultProps = {
+  headerText: '',
+  dataLocatorHeader: '',
 };
 
 export { PromoBanner as PromoBannerVanilla };

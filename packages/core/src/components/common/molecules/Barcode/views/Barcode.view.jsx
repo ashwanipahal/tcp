@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { PureComponent } from 'react';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import JsBarcode from 'jsbarcode';
 import PropTypes from 'prop-types';
 
@@ -19,7 +20,7 @@ class Barcode extends PureComponent {
       JsBarcode(renderElement, value, Object.assign({}, this.props));
     } catch (e) {
       // prevent stop the parent process
-      window.console.error(e);
+      logger.error(e);
     }
   };
 

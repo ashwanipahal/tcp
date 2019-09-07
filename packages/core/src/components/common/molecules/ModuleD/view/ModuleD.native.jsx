@@ -5,7 +5,6 @@ import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
-import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 import LinkText from '../../LinkText';
 
@@ -19,18 +18,6 @@ type Props = {
 
 const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
-
-/**
- * @function getUrlWithCrop : Return updated image URL.
- * @desc Returns updated image URL with crop details.
- *
- * @param {String} url : Image URL received from CMS.
- * @return {String} function returns updated image URL as a string.
- */
-const getUrlWithCrop = url => {
-  const dimension = imageSize;
-  return url.replace('h_650,w_650', `h_${dimension},w_${dimension}`);
-};
 
 /**
  * @function renderItem : Render method for Flatlist.
@@ -52,7 +39,8 @@ const renderItem = (item, navigation) => {
         <Image
           alt={image.alt}
           testID={`${getLocator('moduleD_image')}${index + 1}`}
-          source={{ uri: getUrlWithCrop(image.url) }}
+          url={image.url}
+          crop={image.crop_m}
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
@@ -86,7 +74,7 @@ const renderItem = (item, navigation) => {
 
 const ModuleD = (props: Props) => {
   const { smallCompImage, headerText, promoBanner, singleCTAButton, navigation } = props;
-  const buttonWidth = { width: 225 };
+
   return (
     <Wrapper>
       {headerText && (
@@ -120,10 +108,9 @@ const ModuleD = (props: Props) => {
 
       <ButtonWrapper>
         <Button
-          color={colors.BUTTON.WHITE.TEXT}
+          width="225px"
           accessibilityLabel={singleCTAButton.title}
           buttonVariation="variable-width"
-          style={buttonWidth}
           text={singleCTAButton.text}
           testID={getLocator('moduleD_button')}
           url={singleCTAButton.url}

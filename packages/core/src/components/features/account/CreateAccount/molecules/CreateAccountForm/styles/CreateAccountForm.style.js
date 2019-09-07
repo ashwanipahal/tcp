@@ -4,6 +4,9 @@ const Styles = css`
   .remember-me-text {
     display: block;
   }
+  .i-agree-checkbox {
+    padding-top: 10px;
+  }
   .tooltip-bubble {
     li {
       text-align: left;

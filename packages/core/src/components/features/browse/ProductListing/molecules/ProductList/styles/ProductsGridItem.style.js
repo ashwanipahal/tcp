@@ -28,7 +28,6 @@ const styles = css`
     box-sizing: border-box;
     height: 36px;
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    overflow: hidden;
   }
 
   .added-to-bag {

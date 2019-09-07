@@ -35,6 +35,13 @@ export function getSetPickupAltValuesActn(pickup) {
   };
 }
 
+export function getSetCheckoutStage(payload) {
+  return {
+    payload,
+    type: 'CHECKOUT_UIFLAGS_SET_STAGE',
+  };
+}
+
 export function getSetShippingValuesActn(shipping) {
   return {
     shipping,
@@ -261,5 +268,25 @@ export const emailSignupStatus = payload => {
 export const routeToPickupPage = () => {
   return {
     type: constants.ROUTE_TO_PICKUP_PAGE,
+  };
+};
+
+export const setGiftCardError = payload => {
+  return {
+    type: constants.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
+
+export const resetGiftCardError = () => {
+  return {
+    type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setOrderBalanceTotal = payload => {
+  return {
+    type: constants.SET_ORDER_TOTAL,
+    payload,
   };
 };

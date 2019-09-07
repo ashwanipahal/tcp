@@ -8,6 +8,7 @@ import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
+import { keyboard } from '../../../../../../constants/constants';
 import style from './HeaderMiddleNav.style';
 
 /**
@@ -34,9 +35,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { isLoggedIn: prevLoggedInState } = prevState;
-    const { isLoggedIn: nextLoggedInState } = nextProps;
-    if (prevLoggedInState !== nextLoggedInState) {
+    const { isLoggedIn: prevLoggedInState, cartItemCount } = prevState;
+    const { isLoggedIn: nextLoggedInState, totalItems } = nextProps;
+    if (prevLoggedInState !== nextLoggedInState || totalItems !== cartItemCount) {
       return { cartItemCount: getCartItemCount() };
     }
     return null;
@@ -55,9 +56,17 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     });
   };
 
-  toggleMiniBagModal = ({ e, isOpen }) => {
-    e.preventDefault();
-    if (window.innerWidth <= 1024) {
+  handleKeyDown = (event, openNavigationDrawer, closeNavigationDrawer, isNavigationDrawerOpen) => {
+    const { KEY_ENTER, KEY_SPACE } = keyboard;
+    const { which } = event;
+    if (which === KEY_ENTER || which === KEY_SPACE) {
+      handleNavigationDrawer(openNavigationDrawer, closeNavigationDrawer, isNavigationDrawerOpen)();
+    }
+  };
+
+  toggleMiniBagModal = ({ e, isOpen, isRouting }) => {
+    if (e) e.preventDefault();
+    if (window.innerWidth <= 1024 && !isRouting) {
       routerPush('/bag', '/bag');
     } else {
       this.setState({ isOpenMiniBagModal: isOpen });
@@ -111,12 +120,21 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                   : '/static/images/menu.svg'
               }
               alt="hamburger menu"
+              tabIndex="0"
               className="hamburger-menu"
               onClick={handleNavigationDrawer(
                 openNavigationDrawer,
                 closeNavigationDrawer,
                 navigationDrawer.open
               )}
+              onKeyDown={e =>
+                this.handleKeyDown(
+                  e,
+                  openNavigationDrawer,
+                  closeNavigationDrawer,
+                  navigationDrawer.open
+                )
+              }
               data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
             />
             <BrandLogo
@@ -132,7 +150,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
               medium: 8,
               small: 6,
             }}
-            className="textRight"
+            className="textRight header-middle-login-section"
           >
             {userName ? (
               <React.Fragment>
@@ -215,6 +233,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
             <Navigation
               openNavigationDrawer={navigationDrawer.open}
               closeNavigationDrawer={!navigationDrawer.open}
+              closeNav={closeNavigationDrawer}
             />
           </Col>
         </Row>

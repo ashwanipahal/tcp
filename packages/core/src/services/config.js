@@ -98,6 +98,7 @@ export const API_CONFIG = {
     response: 30000,
     deadline: 40000,
   },
+  overlayTimeout: 5000,
   sessionCookieKey: 'QuantumMetricSessionID',
   apiContentType: 'application/json',
 };

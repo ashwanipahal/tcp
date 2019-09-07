@@ -69,6 +69,12 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
       handleComponentChange={[Function]}
     />
   </Styled(View)>
+  <AboutYouSurveyModal
+    labels={Object {}}
+    openState={false}
+    toggleModalState={[Function]}
+    userSurvey={Immutable.List []}
+  />
 </MyProfileTile>
 `;
 
@@ -157,5 +163,20 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       handleComponentChange={[Function]}
     />
   </Styled(View)>
+  <AboutYouSurveyModal
+    labels={Object {}}
+    openState={false}
+    toggleModalState={[Function]}
+    userSurvey={
+      Immutable.List [
+        Immutable.List [
+          "test",
+        ],
+        Immutable.List [
+          "test",
+        ],
+      ]
+    }
+  />
 </MyProfileTile>
 `;

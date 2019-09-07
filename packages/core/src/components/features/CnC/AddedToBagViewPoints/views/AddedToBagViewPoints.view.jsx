@@ -5,6 +5,7 @@ import Row from '../../../../common/atoms/Row';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import styles from '../styles/AddedToBagViewPoints.style';
 import withStyles from '../../../../common/hoc/withStyles';
+import { isCanada } from '../../../../../utils';
 
 const getModifiedString = (labels, totalItems) => {
   const subHeading = `<span>${labels.bagSubTotal.replace('#items', `${totalItems}`)}</span>`;
@@ -12,6 +13,14 @@ const getModifiedString = (labels, totalItems) => {
     // eslint-disable-next-line react/no-danger
     <span dangerouslySetInnerHTML={{ __html: subHeading }} />
   );
+};
+
+const showUserPoints = userPoints => {
+  return userPoints !== 0 && !isCanada();
+};
+
+const showItemPoints = itemPoints => {
+  return itemPoints !== 0 && !isCanada();
 };
 
 const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
@@ -35,7 +44,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${itemPrice || 0}`}
         </Col>
       </Row>
-      {itemPoints !== 0 && (
+      {showItemPoints(itemPoints) && (
         <Row>
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
@@ -68,7 +77,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${bagSubTotal || 0}`}
         </Col>
       </Row>
-      {userPoints !== 0 && (
+      {showUserPoints(userPoints) && (
         <Row className="row-padding">
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
@@ -88,24 +97,26 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           </Col>
         </Row>
       )}
-      <Row className="row-padding">
-        <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          <BodyCopy fontFamily="secondary" fontWeight="extrabold">
-            {labels.totalNextRewards}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy
-            data-locator="addedtobag-totalpointsnextreward"
-            fontFamily="secondary"
-            className="text-value"
-            color="orange.800"
-            fontWeight="extrabold"
-          >
-            {pointsToNextReward || 0}
-          </BodyCopy>
-        </Col>
-      </Row>
+      {!isCanada() && (
+        <Row className="row-padding">
+          <Col colSize={{ large: 9, small: 4, medium: 6 }}>
+            <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+              {labels.totalNextRewards}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 3, small: 2, medium: 2 }}>
+            <BodyCopy
+              data-locator="addedtobag-totalpointsnextreward"
+              fontFamily="secondary"
+              className="text-value"
+              color="orange.800"
+              fontWeight="extrabold"
+            >
+              {pointsToNextReward || 0}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
     </BodyCopy>
   );
 };

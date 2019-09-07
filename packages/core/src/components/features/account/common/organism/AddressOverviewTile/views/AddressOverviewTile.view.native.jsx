@@ -147,7 +147,6 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             text={labels.lbl_overview_addressBookCTA}
             buttonVariation="variable-width"
             fill="BLUE"
-            color="white"
             onPress={() => handleComponentChange('addressBookMobile')}
           />
         </ButtonWrapperStyle>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CheckoutContainer, mapDispatchToProps } from '../container/Checkout.container';
+import { CheckoutContainer, mapDispatchToProps } from '../container/CheckoutCommonContainer';
 import CheckoutPage from '../views/CheckoutPage.view';
 
 describe('CheckoutPage Container', () => {
@@ -23,6 +23,7 @@ describe('CheckoutPage Container', () => {
     activeStep: 'shipping',
     isUsSite: false,
     initCheckout: jest.fn(),
+    fetchNeedHelpContent: jest.fn(),
   };
   it('should render CheckoutPage view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);

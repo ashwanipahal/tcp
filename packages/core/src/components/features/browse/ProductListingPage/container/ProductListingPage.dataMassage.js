@@ -14,6 +14,7 @@
 // import {PRODUCTS_PER_LOAD} from 'reduxStore/storeViews/productListingStoreView.js';
 // import {isClient, getErrorPagePath} from 'routing/routingHelper';
 import { isBossProduct, isBopisProduct } from '../util/utility.js';
+import logger from '@tcp/core/src/utils/loggerInstance';
 // import {FACETS_FIELD_KEY, FACETS_OPTIONS} from 'views/components/productListingPages/ProductListingToolbarComponents.jsx';
 // import { config } from 'util/config/config.js';
 // import find from 'lodash-es/find';
@@ -1134,7 +1135,7 @@ export const parseProductFromAPI = (
         : '';
   } catch (err) {
     alternateSizes = {};
-    console.error('API response coming for additional_styles key JSON format is incorrect', err);
+    logger.error('API response coming for additional_styles key JSON format is incorrect', err);
   }
 
   // Generate the colorFitsSizeMap needed for mapping colors to fits/sizes
@@ -1542,7 +1543,7 @@ function extractExtraImages(rawColors, altImgs, getImgPath, uniqueId, defaultCol
       };
     }
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
   return colorsImageMap;
 

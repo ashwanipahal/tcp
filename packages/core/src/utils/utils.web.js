@@ -6,7 +6,7 @@ import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
-import pages from '../config/route.config';
+import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -44,8 +44,50 @@ export const getSiteId = () => {
   return siteId;
 };
 
+const isCompleteHTTPUrl = url => /^(http|https):\/\//.test(url);
+
+const getRouteHref = noSlugPath => {
+  const pathArray = noSlugPath ? noSlugPath.replace(/\//, '&').split('&') : ['', ROUTING_MAP.home];
+  const pathValue = pathArray[1];
+  return ROUTING_MAP[pathValue] || ROUTING_MAP.home;
+};
+
+/**
+ * @summary This is to return the Page (inside of Pages folder) which is mapped to the route path
+ * for ex: /home will return /index file name.
+ * @param {String || Object} toPath - list of color options
+ * @returns {String || Object} Mapped actual page href path
+ */
+export const getMappedPageHref = (toPath = '') => {
+  if (typeof toPath === 'string') {
+    if (isCompleteHTTPUrl(toPath)) return toPath;
+    const [noSlugPath = '/', query = ''] = toPath.split('?');
+    const mappedToHref = getRouteHref(noSlugPath);
+    return query ? `${mappedToHref}?${query}` : mappedToHref;
+  }
+  const { pathname = '', query } = toPath;
+  if (isCompleteHTTPUrl(pathname)) return pathname;
+  const mappedToHref = getRouteHref(pathname);
+  return {
+    pathname: mappedToHref,
+    query,
+  };
+};
+
+/**
+ * @summary This is to return the asPath with additional slug values appended
+ * @param {String} as - asPath
+ * @param {String} siteId - siteId dynamic value to be appended
+ * @returns {String} Path with slug value appended
+ */
+export const getAsPathWithSlug = (as, siteId = getSiteId()) => {
+  return isCompleteHTTPUrl(as) ? as : `/${siteId}${as}`;
+};
+
 export const routerPush = (href, as, query, siteId = getSiteId()) => {
-  return Router.push(href, `/${siteId}${as}`, { query });
+  const relHref = getMappedPageHref(href);
+  const asPath = getAsPathWithSlug(as, siteId);
+  return Router.push(relHref, asPath, { query });
 };
 
 export const identifyBrand = () => {
@@ -281,7 +323,7 @@ export const getModifiedLanguageCode = id => {
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location.href, pages.home, null, newSiteId);
+    routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
   }
 };
 
@@ -358,7 +400,7 @@ export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
 
-  const { siteId, brandId, hostname } = resLocals;
+  const { country, currency, language, siteId, brandId, hostname } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
@@ -378,5 +420,8 @@ export const createAPIConfig = resLocals => {
     catalogId,
     isMobile: false,
     cookie: null,
+    country,
+    currency,
+    language,
   };
 };

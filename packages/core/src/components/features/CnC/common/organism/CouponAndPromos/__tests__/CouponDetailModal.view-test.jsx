@@ -30,6 +30,7 @@ describe('Detail Coupon Modal', () => {
   });
   it('should call Cancel Button Correctly', () => {
     const mockedCloseModal = jest.fn();
+    const mockedhandleApplyToBag = jest.fn();
     const dataTwo = {
       labels: {},
       openState: false,
@@ -49,7 +50,7 @@ describe('Detail Coupon Modal', () => {
         expirationDateTimeStamp: '2019-08-10T18:29:00.001Z',
       },
       onRequestClose: mockedCloseModal,
-      applyToBag: mockedCloseModal,
+      onApplyCouponToBagFromList: mockedhandleApplyToBag,
     };
     const tree = shallow(<CouponDetailModalVanilla {...dataTwo} />);
     tree

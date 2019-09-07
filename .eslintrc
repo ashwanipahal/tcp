@@ -19,6 +19,7 @@
     "it": true,
     "jest": true,
     "window": true,
+    "beforeAll": true,
     "__DEV__": true
   },
   "rules": {

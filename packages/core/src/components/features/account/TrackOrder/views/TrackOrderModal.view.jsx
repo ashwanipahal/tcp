@@ -1,27 +1,16 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles';
 import Modal from '../../../../common/molecules/Modal';
 import TrackOrderViewTemplate from '../molecules/TrackOrderView';
 import styles from '../styles/TrackOrderModal.style';
-
-// @flow
-type Props = {
-  openState: boolean,
-  setModalMountState: Function,
-  labels: object,
-  openLoginOverlay: Function,
-  onSubmit: Function,
-  errorMessage: string,
-  onChangeForm: Function,
-  showNotification: string,
-};
 
 /**
  * @function TrackOrderModal The TrackOrderModal component shows the Track Order Modal.
  * This component includes the Track order form view and track order button.
  * @param {props} props object with details to render in modal
  */
-class TrackOrderModal extends React.Component<Props> {
+class TrackOrderModal extends React.Component {
   /**
    * @function onCloseModal  Used to close the modal
    */
@@ -72,6 +61,19 @@ class TrackOrderModal extends React.Component<Props> {
     );
   }
 }
+
+TrackOrderModal.propTypes = {
+  openState: PropTypes.bool.isRequired,
+  setModalMountState: PropTypes.func.isRequired,
+  labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  openLoginOverlay: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  onChangeForm: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+};
 
 export default withStyles(TrackOrderModal, styles);
 export { TrackOrderModal as TrackOrderModalVanilla };

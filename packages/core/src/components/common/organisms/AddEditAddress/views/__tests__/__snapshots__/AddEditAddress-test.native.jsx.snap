@@ -3,20 +3,27 @@
 exports[`AddEditAddress Native should render correctly 1`] = `
 <View
   addressFormLabels={Object {}}
+  addressLine1=""
+  countryState=""
   currentForm="AddAddress"
   initialValues={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
+  setAddressLine1={[Function]}
+  setModalHeading={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <ReduxForm
       addressFormLabels={Object {}}
+      addressLine1=""
+      countryState=""
       currentForm="AddAddress"
       destroyOnUnmount={false}
       enableReinitialize={true}
@@ -31,6 +38,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
+      setModalHeading={[Function]}
       shouldAsyncValidate={[Function]}
       shouldError={[Function]}
       shouldValidate={[Function]}
@@ -50,21 +58,27 @@ exports[`AddEditAddress Native should render correctly 1`] = `
 exports[`AddEditAddress Native should test with verification modal 1`] = `
 <View
   addressFormLabels={Object {}}
+  addressLine1=""
+  countryState=""
   currentForm="VerificationModal"
   initialValues={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
   onCancel={[Function]}
+  setAddressLine1={[Function]}
+  setModalHeading={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
   verifyAddressAction={[Function]}
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Connect(AddressVerification)
       onError={[Function]}
       onSuccess={[Function]}
+      setModalHeading={[Function]}
       toggleAddressModal={[Function]}
     />
   </ScrollViewMock>

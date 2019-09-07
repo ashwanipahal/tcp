@@ -17,12 +17,14 @@ describe('#AirmilesBannerselector', () => {
 
   it('#AirmilesBanner should return AirmilesBanner  accountNumber', () => {
     expect(getCollectorNumber(state)).toEqual(
-      AirmilesBannerState.getIn(['airmiles', 'accountNumber']) || 0
+      AirmilesBannerState.getIn(['airmiles', 'accountNumber']) || ''
     );
   });
 
   it('#AirmilesBanner should return AirmilesBanner promoOffer', () => {
-    expect(getOfferCode(state)).toEqual(AirmilesBannerState.getIn(['airmiles', 'promoOffer']) || 0);
+    expect(getOfferCode(state)).toEqual(
+      AirmilesBannerState.getIn(['airmiles', 'promoOffer']) || ''
+    );
   });
   it('#AirmilesBanner should return AirmilesBanner  orderDetails', () => {
     expect(getCartOrderDetails(state)).toEqual(CartState.get('orderDetails'));

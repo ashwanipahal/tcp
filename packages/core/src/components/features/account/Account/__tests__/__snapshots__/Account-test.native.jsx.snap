@@ -6,7 +6,9 @@ exports[`Account View should render Account Correctly 1`] = `
   enabled={true}
   keyboardVerticalOffset={82}
 >
-  <Styled(ScrollViewMock)>
+  <Styled(ScrollViewMock)
+    keyboardShouldPersistTaps="handled"
+  >
     <Styled(MyAccountLayoutView)
       handleComponentChange={[Function]}
       labels={

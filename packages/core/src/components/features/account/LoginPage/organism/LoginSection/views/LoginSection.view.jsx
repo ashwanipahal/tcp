@@ -59,6 +59,7 @@ class LoginSection extends React.PureComponent<Props> {
     const {
       onSubmit,
       labels,
+      formErrorMessage,
       loginErrorMessage,
       initialValues,
       showRecaptcha,
@@ -69,6 +70,7 @@ class LoginSection extends React.PureComponent<Props> {
       variation,
       handleContinueAsGuest,
       tooltipContent,
+      resetLoginState,
     } = this.props;
     return (
       <Row className={className}>
@@ -89,10 +91,12 @@ class LoginSection extends React.PureComponent<Props> {
                 labels={labels}
                 className="elem-mb-LRG"
                 isCanada={this.isCanada}
+                showForgotPasswordForm={this.showForgotPasswordForm}
               />
               <LoginForm
                 onSubmit={onSubmit}
                 labels={labels}
+                formErrorMessage={formErrorMessage}
                 loginErrorMessage={loginErrorMessage}
                 initialValues={initialValues}
                 showRecaptcha={showRecaptcha}
@@ -103,6 +107,7 @@ class LoginSection extends React.PureComponent<Props> {
                 variation={variation}
                 handleContinueAsGuest={handleContinueAsGuest}
                 tooltipContent={tooltipContent}
+                resetLoginState={resetLoginState}
               />
             </React.Fragment>
           )}
@@ -148,6 +153,7 @@ LoginSection.propTypes = {
   queryParams: PropTypes.shape({}).isRequired,
   currentForm: PropTypes.string,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {

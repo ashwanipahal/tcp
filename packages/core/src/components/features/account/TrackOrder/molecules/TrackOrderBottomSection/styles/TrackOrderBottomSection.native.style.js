@@ -13,7 +13,8 @@ const AnchorTextView = styled.View`
 `;
 
 const LogginView = styled.View`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0
+    ${props => props.theme.spacing.ELEM_SPACING.XL};
   display: flex;
   align-items: center;
   justify-content: center;

@@ -23,6 +23,8 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  getAsPathWithSlug,
+  getMappedPageHref,
 } from './utils.web';
 
 export {
@@ -41,4 +43,6 @@ export {
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  calculateAge,
+  getLabelValue,
 } from './utils';

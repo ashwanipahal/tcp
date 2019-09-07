@@ -11,12 +11,13 @@ export default css`
   }
   .candidate_a_inline_container_button button{
     white-space: nowrap;
-  }
-  .footer_top_candidate_a .candidate_a_inline_container_button button {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-      ${props => props.theme.spacing.ELEM_SPACING.XL};
+    padding: 12px 28px;
     min-height: 42px;
+
+    &.candidate_a_form_button {
+      margin-top: 8px;
+    }
   }
   .candidate-b_buttons {
     padding: 11px 0 0 0;
@@ -26,7 +27,7 @@ export default css`
     text-align: center;
 
     .style1 {
-      color: #6a6a6a;
+      color: ${props => props.theme.colorPalette.gray[800]};
     }
     .style2 {
       color: ${props => props.theme.colorPalette.primary.main};
@@ -34,6 +35,7 @@ export default css`
   }
   .candidate-b_buttons .heading_text {
     font-size: 10px;
+    padding-top: 3px;
   }
   .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up {
     font-size: 12px;
@@ -56,12 +58,7 @@ export default css`
   .poc-hide {
     display: none;
   }
-  .footer-top {
-    > div {
-      border-top: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-      padding-top: 32px;
-    }
-  }
+
   .footer-top__slots {
     padding-bottom: 16px;
   }
@@ -101,6 +98,20 @@ export default css`
   }
 
   &.navigation-footer {
+    padding-top: 0;
+
+    .footer-top, .footer_top_candidate_a {
+      > div {
+        border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+        padding-top: 32px;
+      }
+
+      .refer-a-friend {
+        margin-bottom: 12px;
+        font-size: 15px;
+      }
+    }
+
     .reference-id {
       display: none;
     }
@@ -108,10 +119,18 @@ export default css`
       display: block;
     }
     .social-media-links {
-      padding: 0;
+      padding: 0 0 32px;
     }
     .email-sign-up-form button, .footer_top__signup_form button{
       padding: 0;
+    }
+
+    .footer-bottom__slot--1 {
+      width: 100%;
+
+      > div {
+        padding: 24px 0;
+      }
     }
   }
 
@@ -119,9 +138,7 @@ export default css`
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
-    .footer-top {
-      padding-bottom: 20px;
-    }
+
     .hide-in-medium-up {
       display: none;
     }
@@ -131,6 +148,7 @@ export default css`
     .footer_top_candidate_a .refer-a-friend {
       font-size: 12px;
       line-height: 1.67;
+      margin-bottom: 0;
     }
     &.navigation-footer .col-md-half-width {
       width: 100%;
@@ -141,13 +159,13 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
-    padding-top: 12px;
+    padding-top: 64px;
     .hide-in-large-up {
       display: none;
     }
     .footer-top {
       padding-bottom: 44px;
-      border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     }
     .candidate-b_buttons {
       padding: 11px 38px 0 38px;
@@ -192,6 +210,10 @@ export default css`
       font-size: 15px;
       line-height: 1.67;
     }
+  }
+
+  .checkout-pages &{
+    display: none;
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {

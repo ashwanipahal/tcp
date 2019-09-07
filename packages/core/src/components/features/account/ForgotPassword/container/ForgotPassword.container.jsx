@@ -20,6 +20,8 @@ import {
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import ForgotPasswordView from '../views/ForgotPassword.view';
 
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
+
 class ForgotPasswordContainer extends React.PureComponent {
   render() {
     const {
@@ -32,6 +34,7 @@ class ForgotPasswordContainer extends React.PureComponent {
       showForgotPasswordForm,
       labels,
       showLogin,
+      formErrorMessage,
     } = this.props;
     const initialValues = {
       rememberMe: true,
@@ -49,6 +52,7 @@ class ForgotPasswordContainer extends React.PureComponent {
         successFullResetEmail={successFullResetEmail}
         resetLoginState={resetLoginState}
         showLogin={showLogin}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -64,6 +68,7 @@ ForgotPasswordContainer.propTypes = {
   showForgotPasswordForm: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
   showLogin: PropTypes.func,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 ForgotPasswordContainer.defaultProps = {
@@ -100,6 +105,7 @@ const mapStateToProps = state => {
     loginError: getLoginError(state),
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 
