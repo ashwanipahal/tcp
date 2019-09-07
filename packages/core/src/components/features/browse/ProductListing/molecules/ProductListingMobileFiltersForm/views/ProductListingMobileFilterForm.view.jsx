@@ -220,6 +220,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
           small: 6,
         }}
         ignoreGutter={{ small: true, medium: true }}
+        className="accordion-class"
       >
         <AccordionList accordionItems={accordionItems} className={className} show={show}>
           {/* eslint-disable */}
