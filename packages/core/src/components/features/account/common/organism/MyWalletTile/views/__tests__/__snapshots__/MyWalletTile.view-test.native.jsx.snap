@@ -1,27 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are not present 1`] = `
+exports[`MyWalletTile component should render correctly when coupons are not present 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
+    text="lbl_overview_myWalletHeading"
   />
-  <Styled(LineComp)
-    borderColor="gray"
-    borderWidth={0.5}
-    marginBottom={20}
-    marginTop={20}
-  />
+  <Styled(View) />
   <View>
     <Styled(BodyCopy)
       color="black"
       fontFamily="secondary"
       fontSize="fs13"
+      text="lbl_overview_myWalletNoOfferAvailable lbl_overview_myWalletStartShop"
     />
     <Styled(View)>
       <Styled(Anchor)
-        accessibilityLabel=""
+        accessibilityLabel="lbl_overview_myWalletShopCTA"
         accessibilityRole="link"
         anchorVariation="button"
         borderColor="black"
@@ -29,22 +26,16 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         buttonVariation="variable-width"
         centered={true}
         customStyle={Object {}}
-        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
+        dataLocator="accountoverview-myWallettile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
         locator=""
         onPress={[Function]}
-        text=""
+        text="lbl_overview_myWalletShopCTA"
         visible={false}
       />
     </Styled(View)>
   </View>
-  <Styled(LineComp)
-    borderColor="gray"
-    borderWidth={0.5}
-    marginBottom={20}
-    marginTop={20}
-  />
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
@@ -56,33 +47,29 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       fullWidth=""
       locator=""
       onPress={[Function]}
-      text=""
+      text="lbl_overview_viewMyWalletCTA"
       url=""
     />
   </Styled(View)>
 </Styled(View)>
 `;
 
-exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are present 1`] = `
+exports[`MyWalletTile component should render correctly when coupons are present 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
+    text="lbl_overview_myWalletHeading"
   />
-  <Styled(LineComp)
-    borderColor="gray"
-    borderWidth={0.5}
-    marginBottom={20}
-    marginTop={20}
-  />
+  <Styled(View) />
   <Styled(View)>
     <View>
       <Styled(BodyCopy)
-        data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
+        data-locator="accountoverview-mywallettile-youhavewallettext"
         fontSize="fs14"
         fontWeight="semibold"
-        text=""
+        text="lbl_overview_myWalletOfferAvailable"
       />
     </View>
     <Styled(View)>
@@ -98,24 +85,10 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
             "lbl_overview_myPlaceRewardsAvailable": "",
           }
         }
-        sliceCount={2}
+        sliceCount={3}
       />
     </Styled(View)>
   </Styled(View)>
-  <Styled(LineComp)
-    borderColor="gray"
-    borderWidth={0.5}
-    marginBottom={20}
-    marginTop={20}
-  />
-  <Connect(BonusPointsDays)
-    labels={
-      Object {
-        "lbl_overview_myPlaceRewardsAvailable": "",
-      }
-    }
-    view="read"
-  />
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
@@ -127,7 +100,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       fullWidth=""
       locator=""
       onPress={[Function]}
-      text=""
+      text="lbl_overview_walletViewAllCTA"
       url=""
     />
   </Styled(View)>
