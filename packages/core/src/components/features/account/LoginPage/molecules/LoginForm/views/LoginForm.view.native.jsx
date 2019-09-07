@@ -13,7 +13,6 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { getUserLoginDetails } from '../../../container/loginUtils/keychain.utils.native';
 
 const colorPallete = createThemeColorPalette();
 
@@ -40,7 +39,6 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-
 class LoginForm extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
@@ -49,14 +47,11 @@ class LoginForm extends React.PureComponent<Props> {
     };
   }
 
-  componentDidMount() {
-    const { change } = this.props;
-    getUserLoginDetails().then(credentials => {
-      const getEmail = {
-        emailAddress: credentials.username,
-      };
-      change('emailAddress', getEmail.emailAddress);
-    });
+  componentDidUpdate(prevProps) {
+    const { change, setEmailid } = this.props;
+    if (!prevProps.setEmailid && setEmailid) {
+      change('emailAddress', setEmailid);
+    }
   }
 
   showForgotPassword = () => {

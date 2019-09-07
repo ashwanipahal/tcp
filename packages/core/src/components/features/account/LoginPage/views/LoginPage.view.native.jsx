@@ -15,6 +15,13 @@ import {
 } from '../container/loginUtils/keychain.utils.native';
 
 class LoginView extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      setEmailid: '',
+    };
+  }
+
   componentDidMount() {
     const { onSubmit } = this.props;
     getUserLoginDetails().then(credentials => {
@@ -22,6 +29,7 @@ class LoginView extends React.PureComponent {
         emailAddress: credentials.username,
         password: credentials.password,
       };
+      this.setState({ setEmailid: credentials.username });
       if (credentials) {
         isSupportedTouch().then(techAvailable => {
           if (techAvailable) {
@@ -70,9 +78,11 @@ class LoginView extends React.PureComponent {
       showCheckoutModal,
       showLogin,
     } = this.props;
+    const { setEmailid } = this.state;
     return (
       <ScrollViewStyle keyboardShouldPersistTaps="handled">
         <LoginSection
+          setEmailid={setEmailid}
           onSubmit={this.onSubmitHandler}
           labels={labels}
           loginError={loginError}
