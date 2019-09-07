@@ -485,5 +485,9 @@
   "_ERR_INSUFFICIENT_FUND": {
     "errorMessage": "There is no balance for the account provided. ",
     "formFieldName": ""
+  },
+  "DEFAULT_ERROR": {
+    "errorMessage": "We're sorry that we 're unable to complete your birthday savings request at this time.Please try again later.",
+    "formFieldName": ""
   }
 }
