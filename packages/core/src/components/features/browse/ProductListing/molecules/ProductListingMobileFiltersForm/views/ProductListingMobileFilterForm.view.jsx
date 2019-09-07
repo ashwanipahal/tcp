@@ -431,7 +431,7 @@ ProductListingMobileFiltersForm.propTypes = {
 ProductListingMobileFiltersForm.defaultProps = {
   filtersMaps: {},
   labels: {},
-  handleSubmitOnChange: () => null,
+  handleSubmitOnChange: () => {},
 };
 export default withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle);
 

@@ -81,7 +81,7 @@ export default css`
       }
     }
     .item-highlighted {
-      background: url(${selectedIcon}) no-repeat left top;
+      background: url(${selectedIcon}) no-repeat left top -${props => props.theme.spacing.ELEM_SPACING.XXS};
       background-size: 25px 25px;
       padding-bottom: 0;
     }
