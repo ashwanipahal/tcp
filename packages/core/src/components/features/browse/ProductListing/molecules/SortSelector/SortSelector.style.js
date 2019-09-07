@@ -59,6 +59,9 @@ export default css`
       min-width: 162px;
       margin: 27px 0 0 20px;
     }
+    .custom-sort-dropdown {
+      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[600]};
+    }
     .sort-select-title {
       display: inline-block;
     }

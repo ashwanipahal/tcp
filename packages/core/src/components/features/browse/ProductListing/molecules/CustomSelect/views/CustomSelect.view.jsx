@@ -531,7 +531,7 @@ class CustomSelect extends React.Component {
     const dataLocatorSuffix = getButtonTextLocator(buttonText, optionsMap[selectedIndex]);
 
     const buttonClassName = cssClassName(
-      'custom-select-button ',
+      'custom-select-button custom-sort-dropdown ',
       className,
       '-button',
       { '-closed': !expanded },
