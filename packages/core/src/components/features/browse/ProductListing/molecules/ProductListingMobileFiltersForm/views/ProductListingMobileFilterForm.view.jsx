@@ -109,6 +109,10 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
   sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 
+  /**
+   * @function captureFilterRef This function gets all the filter row ref and push it to an array.
+   * @param {Array} ref - list of filter references
+   */
   captureFilterRef = ref => {
     if (!ref) return;
     const typeRef = ref && ref.getRenderedComponent();
@@ -133,14 +137,14 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   hideModal = isApplyFilter => {
     const { removeAllFilters } = this.props;
+
     if (removeAllFilters && !isApplyFilter) {
       removeAllFilters();
     }
-    setTimeout(() => {
-      this.setState({ show: false });
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'static';
-    });
+
+    this.setState({ show: false });
+    document.body.style.overflow = 'unset';
+    document.body.style.position = 'static';
   };
 
   /**
