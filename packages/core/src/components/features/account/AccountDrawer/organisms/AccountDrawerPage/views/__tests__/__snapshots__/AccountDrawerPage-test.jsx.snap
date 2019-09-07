@@ -11,7 +11,6 @@ exports[`AccountDrawerPage should render correctly 1`] = `
   <Styled(ExtraPointsTeaser)
     plccUser={false}
   />
-  <Styled(MyRewardsAndOffers) />
   <Styled(AccountDrawerBottomLinks) />
 </div>
 `;
@@ -27,7 +26,6 @@ exports[`should not render RewardsPoints should renders correctly when addresses
   <Styled(ExtraPointsTeaser)
     plccUser={false}
   />
-  <Styled(MyRewardsAndOffers) />
   <Styled(AccountDrawerBottomLinks) />
 </div>
 `;

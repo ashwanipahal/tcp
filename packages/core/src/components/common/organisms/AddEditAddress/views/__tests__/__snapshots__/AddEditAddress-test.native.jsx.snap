@@ -17,6 +17,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
   verifyAddressAction={[Function]}
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <ReduxForm
@@ -71,6 +72,7 @@ exports[`AddEditAddress Native should test with verification modal 1`] = `
   verifyAddressAction={[Function]}
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Connect(AddressVerification)

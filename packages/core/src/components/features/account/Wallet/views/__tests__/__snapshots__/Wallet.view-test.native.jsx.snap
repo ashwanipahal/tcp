@@ -2,18 +2,26 @@
 
 exports[`Wallet should render correctly 1`] = `
 <View>
-  <PageHeadingWithLinks
-    labels={Object {}}
-  >
-    <Connect(MyRewardsContainer)
-      labels={
-        Object {
-          "common": Object {},
-          "myPlaceRewards": Object {},
-        }
-      }
-      view="all"
+  <Styled(View)>
+    <Connect(RewardsPointsContainer)
+      tableView={true}
     />
-  </PageHeadingWithLinks>
+    <PageHeadingWithLinks
+      heading="lbl_my_wallet_heading"
+      labels={Object {}}
+      programDetailsCta="lbl_my_rewards_program_details"
+      termsConditionCta="lbl_common_tnc"
+    >
+      <Connect(MyRewardsContainer)
+        labels={
+          Object {
+            "common": Object {},
+            "myPlaceRewards": Object {},
+          }
+        }
+        view="all"
+      />
+    </PageHeadingWithLinks>
+  </Styled(View)>
 </View>
 `;
