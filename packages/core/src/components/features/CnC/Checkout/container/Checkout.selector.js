@@ -41,7 +41,7 @@ const getIsOrderHasShipping = createSelector(
   cartItems => cartItems && cartItems.findIndex(item => !item.getIn(['miscInfo', 'store'])) > -1
 );
 
-const getIsOrderHasPickup = createSelector(
+export const getIsOrderHasPickup = createSelector(
   BagPageSelector.getOrderItems,
   orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
 );
@@ -363,7 +363,7 @@ const isPickupAlt = createSelector(
   pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
 );
 
-export const getPickUpContactFormLabels = state => {
+const getPickUpContactFormLabels = state => {
   const {
     lbl_pickup_title: title,
     lbl_pickup_firstName: firstName,
@@ -474,7 +474,7 @@ function getPickupInitialPickupSectionValues(state) {
   };
 }
 
-function getIsPaymentDisabled(state) {
+export function getIsPaymentDisabled(state) {
   const orderDetails = state.CartPageReducer.get('orderDetails');
   if (orderDetails) {
     return orderDetails.get('grandTotal') <= orderDetails.get('giftCardsTotal');
@@ -500,7 +500,7 @@ function getDetailedCreditCardById(state, id) {
   );
 }
 
-function isCardNotUpdated(state, cardId) {
+export function isCardNotUpdated(state, cardId) {
   return getBillingValues(state).onFileCardId === cardId;
 }
 

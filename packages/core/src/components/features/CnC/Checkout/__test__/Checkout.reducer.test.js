@@ -83,6 +83,16 @@ describe('Checkout Reducer', () => {
     },
   };
 
+  const getSetIsBillingVisitedActn = {
+    type: 'CHECKOUT_FLAGS_SET_BILLING_VISITED',
+    isBillingVisited: true,
+  };
+
+  const checkoutValuesSetBilling = {
+    type: 'CHECKOUT_VALUES_SET_BILLING',
+    billing: true,
+  };
+
   it('CHECKOUT_VALUES_SET_PICKUP', () => {
     const newState = CheckoutReducer(initialState, {
       ...checkoutValuesSetPickup,
@@ -109,5 +119,19 @@ describe('Checkout Reducer', () => {
       ...checkoutOrderOptionsSetGiftWrap,
     });
     expect(newState.getIn(['options', 'giftWrapOptions'])).toEqual(undefined);
+  });
+
+  it('CHECKOUT_FLAGS_SET_BILLING_VISITED', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...getSetIsBillingVisitedActn,
+    });
+    expect(newState.getIn(['uiFlags', 'isBillingVisited'])).toEqual(true);
+  });
+
+  it('CHECKOUT_VALUES_SET_BILLING', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...checkoutValuesSetBilling,
+    });
+    expect(newState.getIn(['values', 'billing'])).toEqual(true);
   });
 });
