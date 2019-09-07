@@ -37,7 +37,15 @@ export const BirthdayCard = ({
         <Image
           alt="closeIcon"
           src={getIconPath('close-icon')}
-          onClick={() => removeBirthday(childId)}
+          onClick={() =>
+            removeBirthday({
+              childId,
+              childName: name,
+              birthYear,
+              birthMonth,
+              gender,
+            })
+          }
           className="closeIcon"
           data-locator="crossIconInTile"
         />

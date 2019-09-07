@@ -12,9 +12,12 @@ const ButtonStyles = css`
   text-transform: uppercase;
   min-height: 42px;
   letter-spacing: 0.93px;
-  ${props => `@media ${props.theme.mediaQuery.large} {
+  ${props =>
+    !props.link
+      ? `@media ${props.theme.mediaQuery.large} {
     letter-spacing: 1px;
-    }`}
+    }`
+      : ''}
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
@@ -198,6 +201,30 @@ const ButtonStyles = css`
   `
       : ``}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+  ${props =>
+    props.link
+      ? `
+        min-height: auto;
+        font-family: ${props.theme.typography.fonts.secondary};
+        font-size: ${props.theme.fonts.fontSize.body.large.secondary}px;
+        letter-spacing: ${props.theme.fonts.letterSpacing.normal};
+        border: 0;
+        padding: 0;
+        text-transform: none;
+      &:hover {
+        border-bottom: 2px solid ${props.theme.colors.ANCHOR.SECONDARY};
+        padding-bottom: 4px;
+        text-decoration: none;
+        border-radius: 0;
+      }
+      &:focus {
+        background: none;
+      }
+      @media ${props.theme.mediaQuery.large} {
+        font-size: ${props.theme.fonts.fontSize.button.size}px;
+      }
+  `
+      : ``}
 `;
 
 export default ButtonStyles;

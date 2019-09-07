@@ -32,7 +32,6 @@ describe('#User selector', () => {
           isComplete: true,
         },
       },
-      children: [{ childId: '12345' }],
       isGuest: false,
       isPlcc: 'false',
       userBirthday: 'aug-8',
@@ -45,6 +44,7 @@ describe('#User selector', () => {
     survey: {
       answers: [[''], ['']],
     },
+    children: [{ childId: '12345' }],
   };
   const state = {
     [USER_REDUCER_KEY]: fromJS(stateObject),
