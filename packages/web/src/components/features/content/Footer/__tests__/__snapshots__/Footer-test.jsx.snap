@@ -20,7 +20,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
     fullBleed={true}
   >
     <FooterMiddleMobile
-      className="footer-class footer__navHeader"
+      className="footer-class"
       isLoggedIn={false}
       navLinkItems={Array []}
     />
@@ -137,7 +137,7 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     fullBleed={true}
   >
     <FooterMiddleMobile
-      className="undefined footer__navHeader"
+      className="undefined"
       isLoggedIn={false}
       navLinkItems={Array []}
     />

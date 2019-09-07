@@ -25,9 +25,6 @@ const GlobalCss = css`
   &.subHeader {
     margin-top: 24px;
   }
-  @media ${props => props.theme.mediaQuery.mediumOnly || props.theme.mediaQuery.smallOnly} {
-    text-transform: capitalize;
-  }
 `;
 
 export default GlobalCss;

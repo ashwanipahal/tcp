@@ -37,6 +37,7 @@ export default {
   'circle-check-fill': '/static/images/circle-check-fill.png',
   'circle-error-fill': '/static/images/circle-error-fill.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
+  'carousel-big-carrot-white': '/static/images/right-carousel-carrot-white.svg',
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
   'cart-icon': '/static/images/bag.png',

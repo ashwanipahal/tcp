@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+const linkDark = 'category-links-dark';
+
 const ButtonStyles = css`
   border: none;
   border-radius: 0;
@@ -59,7 +61,7 @@ const ButtonStyles = css`
       : ''};
 
   ${props =>
-    props.buttonVariation === 'category-links-dark'
+    props.buttonVariation === linkDark
       ? `
       min-height: auto;
       color: ${props.theme.colorPalette.white};
@@ -100,7 +102,7 @@ const ButtonStyles = css`
       : ''};
 
   ${props =>
-    props.buttonVariation === 'category-links-dark'
+    props.buttonVariation === linkDark
       ? `
       &:hover, &:focus {
         background: none;
@@ -183,16 +185,14 @@ const ButtonStyles = css`
 
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
-      props.buttonVariation === 'fixed-width'
-        ? 'min-height: 51px; padding: 16px 20px !important;'
-        : ''};
+      props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 16px 20px;' : ''};
     ${props =>
-      props.buttonVariation === 'variable-width'
-        ? 'min-height: 45px; padding: 16px 32px !important;'
-        : ''};
+      props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 16px 32px;' : ''};
   }
   ${props =>
-    props.theme.isGymboree && props.buttonVariation !== 'mini-nav'
+    props.theme.isGymboree &&
+    props.buttonVariation !== 'mini-nav' &&
+    props.buttonVariation !== linkDark
       ? `
     border-radius: 25px;
   `

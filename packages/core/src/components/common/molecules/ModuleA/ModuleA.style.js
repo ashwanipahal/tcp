@@ -101,7 +101,10 @@ const style = css`
 
   .button-list-container.imageCTAList .image-comp,
   .button-list-container.linkCTAList .link-button-wrapper-class {
-    color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+    color: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colors.BUTTON.WHITE
+        : props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
     border-color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
   }
 
@@ -211,6 +214,20 @@ const style = css`
       background-size: contain;
       right: auto;
       left: 0;
+    }
+  }
+
+  .moduleA__category__links {
+    margin: 0;
+    padding-bottom: 6px;
+    color: ${props => props.theme.colors.WHITE};
+    border-bottom: 2px solid ${props => props.theme.colors.WHITE};
+
+    &:not(:last-child) {
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+    .link__bold {
+      font-weight: ${props => props.theme.fonts.fontWeight.bold};
     }
   }
 `;

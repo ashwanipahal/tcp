@@ -65,7 +65,7 @@ class Footer extends React.Component {
         <SmsSignupModal buttonConfig={smsSignup} />
         <Row className="footer-middle mobile" fullBleed>
           <FooterMiddleMobile
-            className={`${className} footer__navHeader`}
+            className={`${className}`}
             navLinkItems={navLinks}
             isLoggedIn={isLoggedIn}
             linkConfig={linkConfig}
