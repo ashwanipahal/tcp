@@ -107,7 +107,7 @@ describe('DetailedCouponTile', () => {
       expect(onRemove).toBeCalled();
     });
 
-    test('When coupon is returned with error toastmessage should be called with error message', () => {
+    it('should be called toastmessage function with error message when coupon is returned with error', () => {
       const coupon = {
         status: COUPON_STATUS.APPLIED,
         id: '1121',
