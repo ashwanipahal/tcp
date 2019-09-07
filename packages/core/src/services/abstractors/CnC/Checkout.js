@@ -165,7 +165,7 @@ const shippingMethodResponseHandler = res => {
   return resFiltered;
 };
 
-export const getShippingMethods = (state, zipCode, addressField1, addressField2) => {
+export const getShippingMethods = (state, zipCode, addressField1, addressField2, labels) => {
   // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
   // if (this.activeGetShippingMethodsRequest && this.activeGetShippingMethodsRequest.abort) {
   //   this.activeGetShippingMethodsRequest.abort();
@@ -186,7 +186,7 @@ export const getShippingMethods = (state, zipCode, addressField1, addressField2)
   return executeStatefulAPICall(payload)
     .then(shippingMethodResponseHandler)
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
 };
 
@@ -229,7 +229,8 @@ export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
   verifyPrescreen,
-  transVibesSmsPhoneNo
+  transVibesSmsPhoneNo,
+  labels
 ) {
   const payload = {
     body: {
@@ -258,7 +259,7 @@ export function setShippingMethodAndAddressId(
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
 }
 
@@ -322,7 +323,7 @@ export function addGiftCardPaymentToOrder(args) {
     });
 }
 
-export function removeGiftCard(paymentId) {
+export function removeGiftCard(paymentId, labels) {
   const payload = {
     body: {
       piIds: paymentId,
@@ -339,7 +340,7 @@ export function removeGiftCard(paymentId) {
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
 }
 
