@@ -59,6 +59,6 @@ export const obtainInstantCardApplication = payload => {
 export const resetPLCCResponse = payload => {
   return {
     payload,
-    type: constants.RESET_PLCC_CARD_RESPONSE,
+    type: constants.RESET_PLCC_APPLICATION_RESPONSE,
   };
 };
