@@ -72,13 +72,13 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <ReactTooltip
-          backgroundColor="#ffffff"
+          backgroundColor="#fff"
           height={96}
           highlightColor="transparent"
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
-          pointerColor="#ffffff"
+          pointerColor="#fff"
           popover={
             <ForwardRef
               color="gray.900"
@@ -164,13 +164,13 @@ exports[`CouponForm Component AirmilesBanner should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <ReactTooltip
-          backgroundColor="#ffffff"
+          backgroundColor="#fff"
           height={96}
           highlightColor="transparent"
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
-          pointerColor="#ffffff"
+          pointerColor="#fff"
           popover={
             <ForwardRef
               color="gray.900"

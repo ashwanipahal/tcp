@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import { TouchableOpacity, Modal, View, StatusBar, Platform, Dimensions } from 'react-native';
 import Triangle from './Triangle';
 import getTooltipCoordinate, { getElementVisibleWidth } from './getTooltipCoordinate';
@@ -8,6 +9,7 @@ const Screen = Dimensions.get('window');
 const ScreenWidth = Screen.width;
 const ScreenHeight = Screen.height;
 const isIOS = Platform.OS === 'ios';
+const colorPalette = createThemeColorPalette();
 
 const styles = {
   container: (withOverlay, overlayColor) => ({
@@ -28,8 +30,8 @@ const styles = {
     width: elementWidth,
     height: elementHeight,
   }),
-  shadowColor: {
-    shadowColor: '#000',
+  shadowBox: {
+    shadowColor: colorPalette.black,
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
@@ -103,7 +105,6 @@ class ReactTooltip extends React.PureComponent {
       alignItems: 'center',
       justifyContent: 'center',
       flex: 1,
-      borderRadius: 10,
       padding: 10,
     };
   };
@@ -139,7 +140,7 @@ class ReactTooltip extends React.PureComponent {
         >
           {children}
         </View>
-        <View style={styles.shadowColor}>
+        <View style={styles.shadowBox}>
           {withPointer && this.renderPointer(tooltipStyle.top)}
           <View style={tooltipStyle} testID="tooltipPopoverContainer">
             {popover}
@@ -222,8 +223,8 @@ ReactTooltip.defaultProps = {
   toggleOnPress: true,
   height: 96,
   width: 240,
-  pointerColor: '#ffffff',
-  backgroundColor: '#ffffff',
+  pointerColor: colorPalette.white,
+  backgroundColor: colorPalette.white,
   onClose: () => {},
   onOpen: () => {},
 };
