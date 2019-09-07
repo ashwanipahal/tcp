@@ -52,6 +52,7 @@ type Props = {
   hidePlayStopButton?: Boolean,
   autoplayInterval: Number,
   buttonPosition: String,
+  autoplay?: Boolean,
 };
 
 type State = {
@@ -76,7 +77,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      autoplay: true,
+      autoplay: props.autoplay,
       activeSlide: 0,
     };
     this.getPlayButton = this.getPlayButton.bind(this);
