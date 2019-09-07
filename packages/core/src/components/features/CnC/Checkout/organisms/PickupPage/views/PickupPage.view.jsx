@@ -282,7 +282,7 @@ class PickUpFormPart extends React.Component {
           </div>
           {isEditing && !isMobile && this.SaveAndCancelButton()}
         </div>
-        <CheckoutOrderInfo />
+        <CheckoutOrderInfo isGuest={isGuest} />
         <form onSubmit={handleSubmit(this.pickupSubmit)}>
           <CheckoutFooter
             hideBackLink={false}
