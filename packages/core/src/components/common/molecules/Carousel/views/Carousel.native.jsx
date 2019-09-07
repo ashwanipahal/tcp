@@ -368,3 +368,4 @@ SnapCarousel.defaultProps = {
 };
 
 export default withTheme(SnapCarousel);
+export { SnapCarousel as SnapCarouselVanilla };
