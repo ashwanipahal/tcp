@@ -340,6 +340,18 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configurePlpNavigationFromCMSUrl = url => {
+  if (url.includes('/c/')) {
+    const urlItems = url.split('/c/');
+    const queryParam = urlItems[0];
+    return `/c?cid=${queryParam}`;
+  }
+  return url;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
