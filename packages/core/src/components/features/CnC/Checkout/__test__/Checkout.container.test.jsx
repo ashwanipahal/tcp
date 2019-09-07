@@ -23,6 +23,7 @@ describe('CheckoutPage Container', () => {
     activeStep: 'shipping',
     isUsSite: false,
     initCheckout: jest.fn(),
+    fetchNeedHelpContent: jest.fn(),
   };
   it('should render CheckoutPage view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);

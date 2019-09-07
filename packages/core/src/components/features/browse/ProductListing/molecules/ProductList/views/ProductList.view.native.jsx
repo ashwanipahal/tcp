@@ -82,7 +82,7 @@ class ProductList extends React.PureComponent {
         initialNumToRender={4}
         maxToRenderPerBatch={2}
         numColumns={2}
-        extraData={this.state}
+        extraData={this.props}
       />
     );
   };

@@ -48,7 +48,7 @@ const getIsOrderHasPickup = createSelector(
 
 export const isGuest = createSelector(
   getPersonalDataState,
-  state => state && state.get('isGuest')
+  state => (state == null ? true : !!state.get('isGuest'))
 );
 
 function getIsMobile() {
@@ -336,9 +336,20 @@ const getShipmentMethods = state => {
 };
 
 const getDefaultShipmentID = createSelector(
-  getShipmentMethods,
-  shipmentMethods => {
-    const defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+  [getShipmentMethods, getShippingDestinationValues],
+  (shipmentMethods, shippingDestinationValues) => {
+    if (shippingDestinationValues && shippingDestinationValues.method) {
+      const {
+        method: { shippingMethodId },
+      } = shippingDestinationValues;
+      if (shippingMethodId) {
+        const defaultShipment = shipmentMethods.find(method => method.id === shippingMethodId);
+        return defaultShipment && defaultShipment.id;
+      }
+    }
+    const defaultMethod = shipmentMethods.find(
+      (method, index) => method.isDefault === true || index === 0
+    );
     return defaultMethod && defaultMethod.id;
   }
 );
