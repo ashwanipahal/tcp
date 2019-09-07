@@ -21,12 +21,15 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             }
           />
         </Styled(View)>
-        <Styled(BodyCopy)
-          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
-          fontFamily="secondary"
-          fontSize="fs16"
-          textAlign="center"
-        />
+        <Styled(View)>
+          <Styled(BodyCopy)
+            color="gray.900"
+            data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+            fontFamily="secondary"
+            fontSize="fs16"
+            textAlign="center"
+          />
+        </Styled(View)>
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
@@ -95,6 +98,30 @@ exports[`DetailedCouponTile should render correctly 1`] = `
 exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
 <Styled(View)>
   <Styled(View)>
+    <Styled(Styled(View)) />
+    <Styled(Styled(View))>
+      <Styled(View)>
+        <Styled(ImageComp)
+          height="25px"
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/bag.png",
+            }
+          }
+          width="25px"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          color="white"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          text="lbl_common_applied_to_bag"
+          textAlign="center"
+        />
+      </Styled(View)>
+    </Styled(Styled(View))>
     <Styled(View)>
       <Styled(View)>
         <Styled(View)>
@@ -117,18 +144,22 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             }
           />
         </Styled(View)>
-        <Styled(BodyCopy)
-          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
-          fontFamily="secondary"
-          fontSize="fs16"
-          textAlign="center"
-        />
+        <Styled(View)>
+          <Styled(BodyCopy)
+            color="white"
+            data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+            fontFamily="secondary"
+            fontSize="fs16"
+            textAlign="center"
+          />
+        </Styled(View)>
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
           format="CODE128"
           height="50"
         />
+        <Styled(Styled(View)) />
       </Styled(View)>
       <Styled(View)>
         <View>
@@ -153,6 +184,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           underline={true}
           visible={false}
         />
+        <Styled(Styled(View)) />
       </Styled(View)>
       <Styled(View)>
         <Styled(CustomButton)
@@ -168,14 +200,15 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           text="view & print"
           url=""
         />
+        <Styled(Styled(View)) />
       </Styled(View)>
       <Styled(CustomButton)
         active={false}
         buttonVariation="variable-width"
-        color="#fff"
+        color=""
         customStyle={Object {}}
         disableButton={false}
-        fill="BLUE"
+        fill="WHITE"
         fullWidth=""
         locator=""
         onPress={[Function]}
@@ -190,7 +223,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
 exports[`DetailedCouponTile should render expiring soon notification if coupon isExpiring is true 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(Text)>
+    <Styled(Styled(View))>
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
@@ -198,7 +231,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         text="expiring soon"
         textAlign="center"
       />
-    </Styled(Text)>
+    </Styled(Styled(View))>
     <Styled(View)>
       <Styled(View)>
         <Styled(View)>
@@ -221,12 +254,15 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             }
           />
         </Styled(View)>
-        <Styled(BodyCopy)
-          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
-          fontFamily="secondary"
-          fontSize="fs16"
-          textAlign="center"
-        />
+        <Styled(View)>
+          <Styled(BodyCopy)
+            color="gray.900"
+            data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+            fontFamily="secondary"
+            fontSize="fs16"
+            textAlign="center"
+          />
+        </Styled(View)>
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
