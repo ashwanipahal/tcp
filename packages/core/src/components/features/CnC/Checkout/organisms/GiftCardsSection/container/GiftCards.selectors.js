@@ -7,7 +7,7 @@ const getGrandTotal = state => {
 };
 
 const getAppliedGiftCards = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'appliedGiftCards']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'appliedGiftCards']);
 };
 
 const getGiftCardsTotal = state => {
