@@ -1,5 +1,4 @@
 import ExtendableError from 'es6-error';
-import { getLabelValue } from '@tcp/core/src/utils';
 
 const GLOBAL_ERROR = '_error';
 
@@ -68,19 +67,13 @@ function getFormattedErrorFromResponse(response, ERRORS_MAP) {
   errorsList.forEach(error => {
     const errorKey = error.errorKey || error.errorCode || error.errorMessageKey;
     if (ERRORS_MAP[error.errorKey]) {
-      errorMessages[GLOBAL_ERROR] = populateErrorPlaceholder(
-        getLabelValue(ERRORS_MAP, error.errorKey),
-        error
-      );
+      errorMessages[GLOBAL_ERROR] = populateErrorPlaceholder(ERRORS_MAP[error.errorKey], error);
     } else if (ERRORS_MAP[error.errorCode]) {
-      errorMessages[GLOBAL_ERROR] = populateErrorPlaceholder(
-        getLabelValue(ERRORS_MAP, error.errorCode),
-        error
-      );
+      errorMessages[GLOBAL_ERROR] = populateErrorPlaceholder(ERRORS_MAP[error.errorCode], error);
       errorMessages.errorParameters = error.errorParameters;
     } else if (ERRORS_MAP[error.errorMessageKey]) {
       errorMessages[GLOBAL_ERROR] = populateErrorPlaceholder(
-        getLabelValue(ERRORS_MAP, error.errorMessageKey),
+        ERRORS_MAP[error.errorMessageKey],
         error
       );
     } else {
