@@ -23,6 +23,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .padding-left-10 {
     padding-left: 4px;
+    @media ",
+          [Function],
+          " {
+      width: 150px;
+      display: inline-flex;
+    }
   }
   .padding-left-6 {
     padding-left: 6px;
@@ -326,8 +332,30 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
   }
 
+  .parent-myBag {
+    @media ",
+          [Function],
+          " {
+      padding-bottom: 0px;
+    }
+  }
+
   .tile-header {
     position: relative;
+  }
+
+  .cart-item-radio-buttons {
+    margin-top: 23px;
+    @media ",
+          [Function],
+          " {
+      margin-top: 19px;
+    }
+    @media ",
+          [Function],
+          " {
+      margin-top: 27px;
+    }
   }
 
   ",

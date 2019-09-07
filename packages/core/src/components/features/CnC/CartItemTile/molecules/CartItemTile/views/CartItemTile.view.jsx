@@ -261,14 +261,16 @@ class CartItemTile extends React.Component {
               chooseDiff={labels.chooseDiff}
             />
           )}
-          <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
-            <Image
-              alt="closeIcon"
-              className="close-icon-image"
-              src={getIconPath('close-icon')}
-              onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
-            />
-          </div>
+          {!isEdit && (
+            <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
+              <Image
+                alt="closeIcon"
+                className="close-icon-image"
+                src={getIconPath('close-icon')}
+                onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+              />
+            </div>
+          )}
         </div>
         <Row
           fullBleed
@@ -504,7 +506,11 @@ class CartItemTile extends React.Component {
         {pageView === 'myBag' &&
           productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
             <Row fullBleed>
-              <CartItemRadioButtons productDetail={productDetail} labels={labels} />
+              <CartItemRadioButtons
+                className="cart-item-radio-buttons"
+                productDetail={productDetail}
+                labels={labels}
+              />
             </Row>
           )}
       </div>

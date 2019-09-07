@@ -2,6 +2,7 @@
 
 exports[`MyRewards should render carousel if coupons are avalable 1`] = `
 <View>
+  <Connect(ToastContainer) />
   <Styled(View)
     spacingStyles="margin-bottom-LRG margin-top-LRG"
   >
@@ -42,6 +43,7 @@ exports[`MyRewards should render carousel if coupons are avalable 1`] = `
 
 exports[`MyRewards should render correctly 1`] = `
 <View>
+  <Connect(ToastContainer) />
   <Styled(View)
     spacingStyles="margin-bottom-LRG margin-top-LRG"
   >

@@ -278,7 +278,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs26};
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
       line-height: normal;
     }
   }
@@ -293,7 +293,7 @@ export default css`
     vertical-align: top;
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs26};
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
       line-height: normal;
     }
   }
