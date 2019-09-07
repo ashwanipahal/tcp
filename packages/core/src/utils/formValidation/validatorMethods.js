@@ -167,7 +167,12 @@ function notEqualToValidator(value, linkedFieldsValues) {
   return value !== linkedFieldsValues[0];
 }
 
-function nonSequentialNumberValidator(value) {
+/**
+ * @function - nonSequentialNumberValidator
+ *
+ * @param {*} value  - value to be validated for having non sequestial numbers
+ */
+const nonSequentialNumberValidator = value => {
   if (!value) {
     return true;
   }
@@ -177,7 +182,7 @@ function nonSequentialNumberValidator(value) {
     '0123456789012'.indexOf(value) > -1 ||
     '9876543210987'.indexOf(value) > -1;
   return !isInvalid;
-}
+};
 
 const validatorMethods = {
   required: requiredValidator,

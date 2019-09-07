@@ -24,7 +24,7 @@ export default css`
   .ReactModal__Body--open {
     overflow: hidden;
     .pac-container {
-      z-index: 100000;
+      z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
     }
   }
 

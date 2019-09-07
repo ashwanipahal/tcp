@@ -4,7 +4,10 @@ import { APPLY_NOW_MODAL_REDUCER_KEY } from '../../../../../../constants/reducer
 
 describe('#getIsModalOpen selector', () => {
   const stateObject = {
-    isModalOpen: true,
+    modalStatus: {
+      isPLCCModalOpen: true,
+      isModalOpen: true,
+    },
   };
   const state = {
     [APPLY_NOW_MODAL_REDUCER_KEY]: fromJS(stateObject),
@@ -17,7 +20,10 @@ describe('#getIsModalOpen selector', () => {
 
 describe('#getIsPLCCModalOpen selector', () => {
   const stateObject = {
-    isPLCCModalOpen: true,
+    modalStatus: {
+      isPLCCModalOpen: true,
+      isModalOpen: true,
+    },
   };
   const state = {
     [APPLY_NOW_MODAL_REDUCER_KEY]: fromJS(stateObject),

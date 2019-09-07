@@ -181,4 +181,18 @@ describe('validator methods', () => {
       expect(validatorMethods.password('test1234')).toBeFalsy();
     });
   });
+
+  describe('nonSequentialNumberValidator', () => {
+    it('should return true if value passed is non sequential', () => {
+      expect(validatorMethods.nonSequentialNumber('1247')).toBeTruthy();
+    });
+
+    it('should return false  if value passed is not equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.nonSequentialNumber('1234')).toBeFalsy();
+    });
+
+    it('should return true if value passed is empty', () => {
+      expect(validatorMethods.nonSequentialNumber('')).toBeTruthy();
+    });
+  });
 });

@@ -22,8 +22,8 @@ class ApplyNowModalWrapper extends React.Component {
   };
 
   closePLCCModal = () => {
-    const { togglePLCCFormModal, resetPLCCApplicationStatus } = this.props;
-    togglePLCCFormModal({ isPLCCModalOpen: false });
+    const { toggleModal, resetPLCCApplicationStatus } = this.props;
+    toggleModal({ isPLCCModalOpen: false });
     resetPLCCApplicationStatus({ status: null });
   };
 
@@ -35,9 +35,8 @@ class ApplyNowModalWrapper extends React.Component {
 
   openPLCCModal = e => {
     e.preventDefault();
-    const { toggleModal, togglePLCCFormModal } = this.props;
-    toggleModal({ isModalOpen: false });
-    togglePLCCFormModal({ isPLCCModalOpen: true });
+    const { toggleModal } = this.props;
+    toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
   };
 
   render() {
@@ -75,7 +74,6 @@ ApplyNowModalWrapper.propTypes = {
     apply_now_link_modal: PropTypes.string,
   }).isRequired,
   toggleModal: PropTypes.func.isRequired,
-  togglePLCCFormModal: PropTypes.func.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   fetchModuleXContent: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,

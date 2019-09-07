@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { toggleApplyNowModal, togglePLCCFormModal } from './ApplyNowModal.actions';
+import { toggleApplyNowModal } from './ApplyNowModal.actions';
 import { getLabels, getIsModalOpen, getIsPLCCModalOpen } from './ApplyNowModal.selectors';
 import ApplyNowModalWrapper from '../views';
 import {
@@ -12,9 +12,6 @@ export const mapDispatchToProps = dispatch => {
   return {
     toggleModal: payload => {
       dispatch(toggleApplyNowModal(payload));
-    },
-    togglePLCCFormModal: payload => {
-      dispatch(togglePLCCFormModal(payload));
     },
     resetPLCCApplicationStatus: payload => {
       dispatch(resetPLCCResponse(payload));
