@@ -7,6 +7,8 @@ import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 import styles from '../styles/BillingPage.style';
 import GiftCardsContainer from '../../GiftCardsSection';
+import utility from '../../../util/utility';
+import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 
 class BillingPage extends React.PureComponent {
   static propTypes = {
@@ -30,7 +32,7 @@ class BillingPage extends React.PureComponent {
         <CheckoutOrderInfo />
         <CheckoutFooter
           hideBackLink
-          // backLinkHandler={routeToPickupPage}
+          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shipping)}
           nextHandler={submitBilling}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}

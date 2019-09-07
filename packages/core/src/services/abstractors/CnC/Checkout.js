@@ -11,6 +11,7 @@ import {
   getFormattedError,
 } from '../../../utils/errorMessage.util';
 import { getAPIConfig } from '../../../utils';
+import CheckoutConstants from '../../../components/features/CnC/Checkout/Checkout.constants';
 
 const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
@@ -387,7 +388,6 @@ export function addPaymentToOrder({
   }
 
   if (cvv) {
-    // eslint-disable-next-line camelcase
     paymentInstruction.cc_cvc = cvv.toString(); // PLCC doesn't require exp
   }
 
@@ -437,7 +437,7 @@ export function addPaymentToOrder({
     if (res.body && res.body.OosCartItems === 'TRUE') {
       throw new ServiceResponseError({
         body: {
-          errorCode: 'API_CART_OOS_ITEM',
+          errorCode: CheckoutConstants.CUSTOM_OOS_ERROR_CODE,
         },
       });
     }
