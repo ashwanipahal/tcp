@@ -2,12 +2,8 @@ import styled, { css } from 'styled-components';
 import { Carousel, LinkText } from '..';
 
 const StyledLinkText = styled(LinkText)`
-  margin-top: 16px;
+  margin-top: 35px;
   display: inline-block;
-
-  @media ${props => props.theme.mediaQuery.medium} {
-    margin-top: 40px;
-  }
 
   .link-text {
     margin-bottom: 0;
@@ -50,6 +46,9 @@ const style = css`
   }
 
   .banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     position: absolute;
     top: 0;
@@ -74,18 +73,6 @@ const style = css`
 
   .tcp_carousel_wrapper {
     position: relative;
-  }
-
-  .tcp_carousel_wrapper .slick-list {
-    max-height: 311px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      max-height: 406px;
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      max-height: 474px;
-    }
   }
 
   .button-list-wrapper {
