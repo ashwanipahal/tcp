@@ -1,5 +1,4 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
@@ -14,6 +13,7 @@ import {
   setShippingMethodAndAddressId,
   addPickupPerson,
 } from '../../../../../services/abstractors/CnC/index';
+
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
@@ -36,6 +36,7 @@ import { isCanada } from '../../../../../utils/utils';
 import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { isMobileApp } from '../../../../../utils';
+import submitBilling from './CheckoutBilling.saga';
 
 const {
   getRecalcOrderPointsInterval,
@@ -49,8 +50,8 @@ const {
   // isGuest,
   // getIsMobile,
 } = selectors;
-
-const { getOrderPointsRecalcFlag, hasPOBox } = utility;
+const { getOrderPointsRecalcFlag, hasPOBox, redirectToBilling } = utility;
+let oldHasPOB = {};
 
 export function* subscribeEmailAddress(emailObj, status) {
   try {
@@ -87,11 +88,8 @@ function* loadGiftWrappingOptions() {
   }
 }
 
-let oldHasPOB = {};
-
 function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
   // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
-
   const resCheckoutValues = res.payload.res.orderDetails.checkout;
   const actions = [
     resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
@@ -110,14 +108,14 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
     //   ),
     resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing),
   ];
-  yield all([...actions].map(action => put(action)));
+  yield all(actions.map(action => put(action)));
   // if (checkoutStoreView.isExpressCheckout(this.store.getState()) && resCheckoutValues.billing && resCheckoutValues.billing.paymentMethod === 'venmo') {
   //   // We have
   //   this.store.dispatch(setVenmoPaymentInProgress(true));
   // }
 }
 
-function* loadUpdatedCheckoutValues(
+export function* loadUpdatedCheckoutValues(
   isUpdateRewards,
   isTaxCalculation,
   isCartNotRequired,
@@ -566,14 +564,6 @@ function* initCheckout() {
   }
 }
 
-function redirectToBilling(navigation) {
-  if (!isMobileApp()) {
-    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
-  } else if (navigation) {
-    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
-  }
-}
-
 function* saveLocalSmsInfo(smsInfo = {}) {
   let returnVal;
   const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
@@ -595,7 +585,6 @@ function* validateAndSubmitEmailSignup(isEmailSignUpAllowed, emailSignup, emailA
 }
 
 function* submitShippingSection({ payload: { navigation, ...formData } }) {
-  // console.log('>>>', { formData });
   const {
     // giftWrap,
     method,
@@ -703,13 +692,11 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   // }
 
   // Retrieve phone number info for sms updates
-  const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
-  // eslint-disable-next-line no-unused-expressions
-  yield saveLocalSmsInfo(smsInfo);
-  yield all(pendingPromises);
-  redirectToBilling(navigation);
-  const labels = yield select(BagPageSelectors.getErrorMapping);
   try {
+    const transVibesSmsPhoneNo = smsInfo ? smsInfo.smsUpdateNumber : null;
+    yield saveLocalSmsInfo(smsInfo);
+    yield all(pendingPromises);
+    const labels = yield select(BagPageSelectors.getErrorMapping);
     yield call(
       setShippingMethodAndAddressId,
       method.shippingMethodId,
@@ -732,20 +719,25 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       recalcFlag,
       !(isOrderHasPickup && smsNumberForOrderUpdates)
     );
+    redirectToBilling(navigation);
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
 
 export function* routeToPickupPage(recalc) {
-  utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
-  yield;
+  yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
+}
+
+export function* submitBillingSection(payload) {
+  yield call(submitBilling, payload, loadUpdatedCheckoutValues);
 }
 
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);
+  yield takeLatest(CONSTANTS.SUBMIT_BILLING_SECTION, submitBillingSection);
   yield takeLatest('CHECKOUT_SUBMIT_PICKUP_DATA', submitPickupSection);
   yield takeLatest(CONSTANTS.CHECKOUT_LOAD_SHIPMENT_METHODS, loadShipmentMethods);
   yield takeLatest(CONSTANTS.ROUTE_TO_PICKUP_PAGE, routeToPickupPage);
