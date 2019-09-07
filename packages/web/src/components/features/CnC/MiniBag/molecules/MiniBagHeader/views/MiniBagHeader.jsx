@@ -54,7 +54,7 @@ const MiniBagHeader = ({
               <BodyCopy
                 className="userName"
                 component="span"
-                fontSize="fs16"
+                fontSize="fs14"
                 fontWeight="extrabold"
                 textAlign="left"
                 fontFamily="secondary"
@@ -64,7 +64,7 @@ const MiniBagHeader = ({
               <BodyCopy
                 className="pointsRewards"
                 component="span"
-                fontSize="fs15"
+                fontSize="fs13"
                 fontFamily="secondary"
                 fontWeight="semibold"
                 textAlign="left"
