@@ -204,7 +204,7 @@ describe('Checkout Selectors', () => {
     const State = {
       Labels: { checkout: { billing: {} } },
     };
-    expect(CHECKOUT_SELECTORS.getShippingLabels(State)).toEqual({
+    expect(CHECKOUT_SELECTORS.getBillingLabels(State)).toEqual({
       header: undefined,
       backLinkPickup: undefined,
       backLinkShipping: undefined,
