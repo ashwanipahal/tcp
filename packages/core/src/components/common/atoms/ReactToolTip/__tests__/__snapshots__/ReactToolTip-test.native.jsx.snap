@@ -5,8 +5,20 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
   collapsable={false}
 >
   <View
-    activeOpacity={1}
-    onPress={[Function]}
+    accessibilityRole="link"
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
   >
     <Text>
       Press me
@@ -22,6 +34,7 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
     visible={true}
   >
     <View
+      accessibilityRole="link"
       accessible={true}
       isTVSelectable={true}
       onResponderGrant={[Function]}
@@ -101,15 +114,13 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "#ffffff",
+                "borderRadius": 10,
                 "display": "flex",
                 "flex": 1,
                 "height": 100,
                 "justifyContent": "center",
                 "left": -17.999,
-                "paddingBottom": 19,
-                "paddingLeft": 21,
-                "paddingRight": 21,
-                "paddingTop": 19,
+                "padding": 10,
                 "position": "absolute",
                 "top": 10,
                 "width": 200,
@@ -133,8 +144,20 @@ exports[`Tooltip component should render without issues 1`] = `
   collapsable={false}
 >
   <View
-    activeOpacity={1}
-    onPress={[Function]}
+    accessibilityRole="link"
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
   >
     <Text>
       Press me
@@ -150,6 +173,7 @@ exports[`Tooltip component should render without issues 1`] = `
     visible={false}
   >
     <View
+      accessibilityRole="link"
       accessible={true}
       isTVSelectable={true}
       onResponderGrant={[Function]}
@@ -229,15 +253,13 @@ exports[`Tooltip component should render without issues 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "#ffffff",
+                "borderRadius": 10,
                 "display": "flex",
                 "flex": 1,
                 "height": 96,
                 "justifyContent": "center",
                 "left": -17.999,
-                "paddingBottom": 19,
-                "paddingLeft": 21,
-                "paddingRight": 21,
-                "paddingTop": 19,
+                "padding": 10,
                 "position": "absolute",
                 "top": 10,
                 "width": 240,
