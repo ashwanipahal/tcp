@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 import { getIconPath } from '../../../../../../utils';
 
 const selectedIcon = getIconPath('selected-item');
+const selectedNoCircleIcon = getIconPath('selected-item-check-no-circle');
 
 export default css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -18,6 +19,12 @@ export default css`
   }
 
   .item-select {
+    background: url(${selectedNoCircleIcon}) no-repeat left top;
+    background-size: 18px 18px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XSS};
+    padding-bottom: 4px;
+    display: flex;
+
     @media ${props => props.theme.mediaQuery.large} {
       background: url(${selectedIcon}) no-repeat left top;
       background-size: 18px 18px;
