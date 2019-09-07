@@ -20,11 +20,16 @@ const AddressBook = props => {
     addressLine1,
     countryState,
     setModalHeading,
+    verificationResult,
   } = props;
+  const showVerification = currentForm === 'VerificationModal' && !!verificationResult;
+  const showAddAddress =
+    currentForm === 'AddAddress' || (!verificationResult && currentForm === 'VerificationModal');
+
   return (
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-        {currentForm === 'VerificationModal' && (
+        {showVerification && (
           <AddressVerification
             onSuccess={submitAddressFormAction}
             heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
@@ -34,7 +39,7 @@ const AddressBook = props => {
           />
         )}
 
-        {currentForm === 'AddAddress' && (
+        {showAddAddress && (
           <AddressFormComponent
             onSubmit={verifyAddressAction}
             addressFormLabels={addressFormLabels}
@@ -69,6 +74,7 @@ AddressBook.propTypes = {
   setAddressLine1: PropTypes.func,
   countryState: PropTypes.string,
   setModalHeading: PropTypes.func,
+  verificationResult: PropTypes.string,
 };
 
 AddressBook.defaultProps = {
@@ -84,6 +90,7 @@ AddressBook.defaultProps = {
   setAddressLine1: () => {},
   countryState: '',
   setModalHeading: PropTypes.func,
+  verificationResult: '',
 };
 
 export default withStyles(AddressBook, ParentContainer);
