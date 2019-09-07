@@ -3,6 +3,8 @@ import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
+import GiftCardsContainer from '../../GiftCardsSection';
+import CnCTemplate from '../../../../common/organism/CnCTemplate';
 
 export default class BillingPage extends React.PureComponent {
   static propTypes = {
@@ -34,6 +36,13 @@ export default class BillingPage extends React.PureComponent {
         />
         <ScrollView>
           <CheckoutSectionTitleDisplay title={header} />
+          <GiftCardsContainer />
+          <CnCTemplate
+            navigation={navigation}
+            btnText="NEXT:REVIEW"
+            routeToPage=""
+            onPress={() => {}}
+          />
         </ScrollView>
       </>
     );
