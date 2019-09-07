@@ -5,6 +5,7 @@ import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPal
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
+import { getLabelValue } from '@tcp/core/src/utils';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
@@ -130,7 +131,7 @@ class AccountOverview extends PureComponent<Props> {
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={labels.lbl_overview_myWalletHeading}>
+            <Panel title={getLabelValue(labels, 'lbl_overview_myWalletHeading')}>
               <MyWalletTile
                 labels={labels}
                 commonLabels={commonLabels}

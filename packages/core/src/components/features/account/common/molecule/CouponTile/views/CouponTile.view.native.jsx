@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import CouponIcon from '@tcp/core/src/components/features/account/common/molecule/CouponIcon';
-import { CouponTileSection, CouponWrapper, CouponInfo } from '../styles/CouponTile.style.native';
+import {
+  CouponTileSection,
+  CouponWrapper,
+  CouponInfo,
+  TitleWrapper,
+} from '../styles/CouponTile.style.native';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
 export const CouponTile = ({ coupon, commonLabels, labels }) => {
@@ -11,14 +16,15 @@ export const CouponTile = ({ coupon, commonLabels, labels }) => {
       <CouponWrapper>
         <CouponIcon coupon={coupon} labels={commonLabels} />
         <CouponInfo>
-          <BodyCopy
-            fontSize="fs12"
-            fontWeight="semibold"
-            title={coupon.title}
-            data-locator="accountoverview-myplacerewatdstile-rewardvalue"
-            text={coupon.title}
-          />
-
+          <TitleWrapper>
+            <BodyCopy
+              fontSize="fs12"
+              fontWeight="semibold"
+              title={coupon.title}
+              data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+              text={coupon.title}
+            />
+          </TitleWrapper>
           {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH && (
             <BodyCopy
               fontSize="fs10"
