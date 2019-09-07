@@ -88,14 +88,22 @@ class CheckoutPage extends React.PureComponent {
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
-          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} />
+          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} isGuest={isGuest} />
         )}
       </div>
     );
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isCheckoutView />;
+    const { isGuest } = this.props;
+    return (
+      <CnCTemplate
+        leftSection={this.renderLeftSection}
+        marginTop
+        isCheckoutView
+        isGuest={isGuest}
+      />
+    );
   }
 }
 

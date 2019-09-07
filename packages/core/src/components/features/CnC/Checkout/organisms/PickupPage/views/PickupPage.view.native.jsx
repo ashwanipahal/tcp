@@ -220,6 +220,7 @@ class PickUpFormPart extends React.Component {
             btnText="NEXT:SHIPPING"
             routeToPage="ShippingPage"
             onPress={handleSubmit(onPickUpSubmit)}
+            isGuest={isGuest}
           />
         </ScrollView>
       </>
