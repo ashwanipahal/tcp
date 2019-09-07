@@ -17,7 +17,8 @@ const FooterNavLinksListCss = css`
         font-size: ${props.theme.fonts.fontSize.listmenu.large}px;
       `}
   }
-  a {
+  a,
+  button {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
     line-height: ${props => props.theme.fonts.lineHeight.medium};
@@ -30,6 +31,19 @@ const FooterNavLinksListCss = css`
     }
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.fonts.fontSize.promo2.large}px;
+    }
+  }
+
+  button {
+    border: 0;
+    padding: 0;
+    text-transform: none;
+    :hover {
+      border-radius: 0;
+      font-weight: ${props => props.theme.typography.fontWeights.regular};
+    }
+    :focus {
+      background: none;
     }
   }
 `;

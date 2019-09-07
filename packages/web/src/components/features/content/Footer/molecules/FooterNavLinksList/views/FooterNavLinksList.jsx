@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import Button from '@tcp/core/src/components/common/atoms/Button';
 import { routerPush, scrollPage } from '@tcp/core/src/utils';
 import styles from '../FooterNavLinksList.style';
 
@@ -95,19 +96,31 @@ const FooterNavLinksList = ({
 
     return !hideLogoutMyActLink ? (
       <li>
-        <Anchor
-          className={className}
-          noLink
-          to={linkItems.url}
-          anchorVariation="primary"
-          fontSizeVariation="large"
-          dataLocator={`col_${colNum}_link_${index}`}
-          target={linkItems.target}
-          title={linkItems.title}
-          onClick={onClick}
-        >
-          {linkItems.text}
-        </Anchor>
+        {linkAction ? (
+          <Button
+            type="button"
+            buttonVariation="category-links-light"
+            className="navlink__list__button"
+            data-locator={`col_${colNum}_link_${index}`}
+            onClick={onClick}
+          >
+            {linkItems.text}
+          </Button>
+        ) : (
+          <Anchor
+            className={className}
+            noLink
+            to={linkItems.url}
+            anchorVariation="primary"
+            fontSizeVariation="large"
+            dataLocator={`col_${colNum}_link_${index}`}
+            target={linkItems.target}
+            title={linkItems.title}
+            onClick={onClick}
+          >
+            {linkItems.text}
+          </Anchor>
+        )}
       </li>
     ) : null;
   };
