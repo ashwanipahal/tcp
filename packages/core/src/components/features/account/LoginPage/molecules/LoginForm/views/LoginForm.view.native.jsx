@@ -13,6 +13,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { getUserLoginDetails } from '../../../container/loginUtils/keychain.utils.native';
 
 const colorPallete = createThemeColorPalette();
 
@@ -46,6 +47,16 @@ class LoginForm extends React.PureComponent<Props> {
     this.state = {
       type: 'password',
     };
+  }
+
+  componentDidMount() {
+    const { change } = this.props;
+    getUserLoginDetails().then(credentials => {
+      const getEmail = {
+        emailAddress: credentials.username,
+      };
+      change('emailAddress', getEmail.emailAddress);
+    });
   }
 
   showForgotPassword = () => {
