@@ -16,6 +16,7 @@ class BillingPage extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     submitBilling: PropTypes.func.isRequired,
+    isGuest: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -23,13 +24,13 @@ class BillingPage extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, orderHasShipping, submitBilling } = this.props;
+    const { className, labels, orderHasShipping, isGuest, submitBilling } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
         <GiftCardsContainer />
-        <CheckoutOrderInfo />
+        <CheckoutOrderInfo isGuest={isGuest} />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shipping)}

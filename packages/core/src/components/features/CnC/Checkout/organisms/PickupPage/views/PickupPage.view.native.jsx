@@ -318,6 +318,7 @@ class PickUpFormPart extends React.Component {
             navigation={navigation}
             btnText="NEXT:SHIPPING"
             routeToPage="ShippingPage"
+            isGuest={isGuest}
             onPress={handleSubmit(this.pickupSubmit)}
           />
         </ScrollView>
