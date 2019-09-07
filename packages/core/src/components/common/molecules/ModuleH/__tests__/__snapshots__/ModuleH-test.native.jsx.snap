@@ -172,15 +172,13 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
-        fontSize="fs20"
-        fontWeight="extrabold"
+        fontSize="fs22"
+        fontWeight="black"
         key="0"
-        letterSpacing="ls167"
         style={
           Object {
-            "color": "#fff",
-            "fontSize": 20,
-            "marginTop": 38,
+            "marginTop": 16,
+            "opacity": 1,
           }
         }
         testID="moduleH_cta_links_1"
@@ -201,15 +199,13 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
-        fontSize="fs20"
+        fontSize="fs22"
         fontWeight={null}
         key="1"
-        letterSpacing="ls167"
         style={
           Object {
-            "color": "#fff",
-            "fontSize": 20,
-            "marginTop": 38,
+            "marginTop": 16,
+            "opacity": 0.8,
           }
         }
         testID="moduleH_cta_links_2"
@@ -230,15 +226,13 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
-        fontSize="fs20"
+        fontSize="fs22"
         fontWeight={null}
         key="2"
-        letterSpacing="ls167"
         style={
           Object {
-            "color": "#fff",
-            "fontSize": 20,
-            "marginTop": 38,
+            "marginTop": 16,
+            "opacity": 0.8,
           }
         }
         testID="moduleH_cta_links_3"
@@ -259,15 +253,13 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
-        fontSize="fs20"
+        fontSize="fs22"
         fontWeight={null}
         key="3"
-        letterSpacing="ls167"
         style={
           Object {
-            "color": "#fff",
-            "fontSize": 20,
-            "marginTop": 38,
+            "marginTop": 16,
+            "opacity": 0.8,
           }
         }
         testID="moduleH_cta_links_4"
@@ -288,15 +280,13 @@ exports[`ModuleH component renders correctly 1`] = `
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
-        fontSize="fs20"
+        fontSize="fs22"
         fontWeight={null}
         key="4"
-        letterSpacing="ls167"
         style={
           Object {
-            "color": "#fff",
-            "fontSize": 20,
-            "marginTop": 38,
+            "marginTop": 16,
+            "opacity": 0.8,
           }
         }
         testID="moduleH_cta_links_5"
