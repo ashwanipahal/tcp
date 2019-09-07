@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import Image from '@tcp/core/src/components/common/atoms/Image';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { View } from 'react-native';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { getLabelValue } from '../../../../../../../utils';
 import {
   TileWrapper,
   TileContentWrapper,
@@ -15,12 +17,20 @@ import {
   TileDesc,
   ButtonWrapper,
   SpaceWrapper,
+  Overlay,
+  OverlayContent,
+  OverlapElement,
+  OverlayContentText,
+  TitleWrapper,
+  BarWrapper,
 } from '../styles/DetailedCouponTile.native.style';
 import {
   COUPON_REDEMPTION_TYPE,
   COUPON_STATUS,
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import CouponIcon from '../../CouponIcon';
+
+const bagIcon = require('../../../../../../../assets/bag.png');
 
 export class DetailedCouponTile extends React.Component {
   static propTypes = {
@@ -38,16 +48,18 @@ export class DetailedCouponTile extends React.Component {
       lbl_common_couponTypeSaving: PropTypes.string,
     }),
     isDisabled: PropTypes.bool,
-    onApplyCouponToBag: PropTypes.func,
+    onApplyCouponToBagFromList: PropTypes.func,
     onRemove: PropTypes.func,
     onViewCouponDetails: PropTypes.func,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
     isDisabled: false,
-    onApplyCouponToBag: () => {},
+    onApplyCouponToBagFromList: () => {},
     onRemove: () => {},
     onViewCouponDetails: () => {},
+    toastMessage: () => {},
     labels: {
       lbl_coupon_expiringSoon: '',
       lbl_coupon_couponValid: '',
@@ -62,16 +74,25 @@ export class DetailedCouponTile extends React.Component {
     },
   };
 
+  componentDidUpdate() {
+    const { coupon, toastMessage } = this.props;
+    if (coupon.error) {
+      toastMessage(coupon.error);
+    }
+  }
+
   handleApplyToBag = () => {
-    const { onApplyCouponToBag, coupon } = this.props;
-    onApplyCouponToBag({
+    const { onApplyCouponToBagFromList, coupon } = this.props;
+    onApplyCouponToBagFromList({
       couponCode: coupon.id,
+      id: coupon.id,
+      coupon: coupon.id,
     });
   };
 
   handleRemove = () => {
     const { onRemove, coupon } = this.props;
-    onRemove({ couponCode: coupon.id });
+    onRemove({ id: coupon.id });
   };
 
   handleViewCouponDetails = () => {
@@ -85,15 +106,53 @@ export class DetailedCouponTile extends React.Component {
       : labels.lbl_coupon_applyToBag;
   };
 
+  showOverlay = () => {
+    const { coupon, labels } = this.props;
+    if (coupon.status === COUPON_STATUS.APPLIED) {
+      return (
+        <Fragment>
+          <Overlay />
+          <OverlayContent>
+            <OverlayContentText>
+              <Image height="25px" width="25px" source={bagIcon} />
+            </OverlayContentText>
+            <OverlayContentText>
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                textAlign="center"
+                color="white"
+                text={getLabelValue(labels, 'lbl_common_applied_to_bag')}
+              />
+            </OverlayContentText>
+          </OverlayContent>
+        </Fragment>
+      );
+    }
+    return null;
+  };
+
+  showOverlap = () => {
+    const { coupon } = this.props;
+    if (coupon.status === COUPON_STATUS.APPLIED) {
+      return <OverlapElement />;
+    }
+    return null;
+  };
+
   render() {
     const { coupon, labels, isDisabled } = this.props;
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
     const colorPallete = createThemeColorPalette();
+    const overlapSiblings = this.showOverlap();
+
     return (
       <TileWrapper>
         <TileContentWrapper>
+          {this.showOverlay()}
           {coupon.isExpiring && (
             <Notification>
               <BodyCopy
@@ -101,7 +160,7 @@ export class DetailedCouponTile extends React.Component {
                 fontSize="fs12"
                 textAlign="center"
                 color="white"
-                text={labels.lbl_coupon_expiringSoon}
+                text={getLabelValue(labels, 'lbl_coupon_expiringSoon')}
               />
             </Notification>
           )}
@@ -110,17 +169,21 @@ export class DetailedCouponTile extends React.Component {
               <SpaceWrapper>
                 <CouponIcon coupon={coupon} labels={labels} />
               </SpaceWrapper>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs16"
-                textAlign="center"
-                data-locator="accountoverview-myplacerewatdstile-rewardvalue"
-                text={coupon.title}
-              />
+              <TitleWrapper>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  textAlign="center"
+                  color={coupon.status === COUPON_STATUS.APPLIED ? 'white' : 'gray.900'}
+                  data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+                  text={coupon.title}
+                />
+              </TitleWrapper>
             </TileTopContent>
-            <SpaceWrapper>
+            <BarWrapper>
               <Barcode value={coupon.id} height="50" />
-            </SpaceWrapper>
+              {overlapSiblings}
+            </BarWrapper>
             <TileDesc>
               <View>
                 <BodyCopy
@@ -145,9 +208,10 @@ export class DetailedCouponTile extends React.Component {
                 }}
                 anchorVariation="primary"
                 data-locator="my-rewards-program-details"
-                text={labels.lbl_coupon_detailsLink}
+                text={getLabelValue(labels, 'lbl_coupon_detailsLink')}
                 color="gray.900"
               />
+              {overlapSiblings}
             </TileDesc>
             <ButtonWrapper>
               <CustomButton
@@ -158,14 +222,14 @@ export class DetailedCouponTile extends React.Component {
                   this.handleViewCouponDetails();
                 }}
               />
+              {overlapSiblings}
             </ButtonWrapper>
             {coupon.applyAlert && <BodyCopy text={coupon.applyAlert} />}
             {!coupon.applyAlert && coupon.status === COUPON_STATUS.APPLIED ? (
               <CustomButton
                 text={labels.lbl_coupon_removeFromBag}
                 buttonVariation="variable-width"
-                fill="BLUE"
-                color={colorPallete.white}
+                fill="WHITE"
                 onPress={() => {
                   this.handleRemove();
                 }}
