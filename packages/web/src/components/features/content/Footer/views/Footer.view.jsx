@@ -88,7 +88,7 @@ class Footer extends React.Component {
             <Col
               className="footer-bottom__slot--1 default-offset"
               colSize={{
-                large: 4,
+                large: 3,
                 medium: 8,
                 small: 6,
               }}
@@ -102,7 +102,7 @@ class Footer extends React.Component {
             <Col
               className="footer-bottom__slot--2 default-offset"
               colSize={{
-                large: 6,
+                large: 7,
                 medium: 8,
                 small: 6,
               }}

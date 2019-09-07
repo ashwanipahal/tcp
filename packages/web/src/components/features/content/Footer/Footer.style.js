@@ -9,10 +9,10 @@ export default css`
   .footer_top_candidate_a .candidate_a_inline_container_button {
     text-align: center;
   }
+
   .candidate_a_inline_container_button button{
     white-space: nowrap;
     font-size: ${props => props.theme.typography.fontSizes.fs13};
-    padding: 12px 28px;
     min-height: 42px;
 
     &.candidate_a_form_button {
@@ -25,6 +25,7 @@ export default css`
   .heading_text, .footer_top_candidate_a .heading_text  {
     margin-bottom: 15px;
     text-align: center;
+    font-size: 12px;
 
     .style1 {
       color: ${props => props.theme.colorPalette.gray[800]};
@@ -157,6 +158,13 @@ export default css`
     &.navigation-footer .hide-in-medium-up {
       display: block;
     }
+    .candidate_a_inline_container_button button{
+       padding: 12px 20px;
+       width: 100%;
+    }
+    .footer_top_candidate_a .candidate_a_inline_container_button {
+      text-align: right;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
     padding-top: 64px;
@@ -209,6 +217,10 @@ export default css`
     .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up, .footer_top_candidate_a .refer-a-friend {
       font-size: 15px;
       line-height: 1.67;
+    }
+
+    .refer_a_friend_desktop .candidate_a_inline_container_button button {
+       width: auto;
     }
   }
 
