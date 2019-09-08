@@ -151,22 +151,14 @@ exports[`LoginForm component should renders correctly 1`] = `
         name="userTouchId"
       />
     </View>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
       customStyle={
         Object {
           "marginTop": 30,
         }
       }
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(Anchor)
       accessibilityLabel=""

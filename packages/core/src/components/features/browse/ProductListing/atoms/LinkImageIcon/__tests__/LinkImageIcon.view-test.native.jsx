@@ -1,13 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CustomImage from '../views/CustomImage.view.native';
+import { LinkImageIconVanilla } from '../views/LinkImageIcon.view.native';
 
-describe('CustomImage component', () => {
+describe('LinkImageIconVanilla component', () => {
   const props = {
-    imageSource: '',
+    uri: '',
+    selected: false,
+    width: 10,
+    height: 10,
+    resizeMode: 'contain',
+    borderWidth: 1,
+    borderRadius: 6,
+    onPress: () => {},
   };
-  it('should renders CustomImage correctly', () => {
-    const component = shallow(<CustomImage {...props} />);
+  it('should renders LinkImageIconVanilla correctly', () => {
+    const component = shallow(<LinkImageIconVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
