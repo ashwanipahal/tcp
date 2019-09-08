@@ -63,6 +63,7 @@ const TextBox = ({
 }: Props): Node => {
   const elemValue = input.value;
   const { touched, error } = meta;
+  const errorMessagea11yLbl = `textbox__error__${input.name}`;
 
   return (
     <label
@@ -86,6 +87,7 @@ const TextBox = ({
         placeholder=""
         data-locator={dataLocator}
         aria-required={isRequired}
+        aria-describedby={errorMessagea11yLbl}
       />
       <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
@@ -101,6 +103,7 @@ const TextBox = ({
           role="alert"
           aria-live="assertive"
           data-locator={errorDataLocator}
+          id={errorMessagea11yLbl}
         >
           {touched && error ? error : ''}
         </BodyCopy>

@@ -9,7 +9,6 @@ describe('CheckoutPage Container', () => {
       section: '',
     },
   };
-
   const props = {
     router,
     initialValues: {},
@@ -23,7 +22,9 @@ describe('CheckoutPage Container', () => {
     activeStep: 'shipping',
     isUsSite: false,
     initCheckout: jest.fn(),
+    fetchNeedHelpContent: jest.fn(),
   };
+
   it('should render CheckoutPage view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);
     expect(tree.is(CheckoutPage)).toBeTruthy();
@@ -62,18 +63,21 @@ describe('CheckoutPage Container', () => {
       dispatchProps.onEditModeChange();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
+
     it('should return an action loadShipmentMethods which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.loadShipmentMethods();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
+
     it('should return an action routeToPickupPage which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.routeToPickupPage();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
+
     it('should return an action setCheckoutStage which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
@@ -96,6 +100,19 @@ describe('CheckoutPage Container', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.addNewShippingAddressData();
+    });
+
+    it('should return an action submitBilling which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.submitBilling();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action fetchNeedHelpContent which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.fetchNeedHelpContent();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });

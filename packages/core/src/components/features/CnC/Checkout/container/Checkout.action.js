@@ -54,9 +54,9 @@ export function getSetShippingValuesActn(shipping) {
   };
 }
 
-export function getSetBillingValuesActn(shipping) {
+export function getSetBillingValuesActn(billing) {
   return {
-    shipping,
+    billing,
     type: 'CHECKOUT_VALUES_SET_BILLING',
   };
 }
@@ -282,6 +282,20 @@ export const updateShippingAddress = payload => {
     payload,
   };
 };
+export function getSetIsBillingVisitedActn(isBillingVisited) {
+  return {
+    isBillingVisited,
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_VISITED,
+  };
+}
+
+export function submitBillingSection(payload) {
+  return {
+    payload,
+    type: constants.SUBMIT_BILLING_SECTION,
+  };
+}
+
 export const setGiftCardError = payload => {
   return {
     type: constants.SET_GIFTCARD_ERROR,

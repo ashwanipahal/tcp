@@ -1,9 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
-// eslint-disable-next-line import/no-named-as-default
 import { DetailedCouponTile } from '../DetailedCouponTile.view';
-
+import { Overlay, OverlapElement } from '../../styles/DetailedCouponTile.native.style';
 import { COUPON_STATUS } from '../../../../../../../../services/abstractors/CnC/CartItemTile';
 
 const labels = {
@@ -58,5 +57,64 @@ describe('DetailedCouponTile', () => {
     };
     const component = shallow(<DetailedCouponTile {...props} />);
     expect(component.find(Barcode)).toHaveLength(1);
+  });
+
+  it('should show Overlay for available coupon', () => {
+    const props = {
+      labels,
+      coupon: {
+        status: COUPON_STATUS.APPLIED,
+      },
+    };
+    const component = shallow(<DetailedCouponTile {...props} />);
+    expect(component.find(Overlay)).toHaveLength(1);
+  });
+
+  it('should overlap links and barcode for available coupon', () => {
+    const props = {
+      labels,
+      coupon: {
+        status: COUPON_STATUS.APPLIED,
+      },
+    };
+    const component = shallow(<DetailedCouponTile {...props} />);
+    expect(component.find(OverlapElement)).toHaveLength(3);
+  });
+
+  describe('#instances', () => {
+    const onApplyCouponToBagFromList = jest.fn();
+    const onRemove = jest.fn();
+    const toastMessage = jest.fn();
+    let componentInstance;
+    beforeEach(() => {
+      const props = {
+        labels: {},
+        coupon: {},
+        onApplyCouponToBagFromList,
+        onRemove,
+      };
+      const component = shallow(<DetailedCouponTile {...props} />);
+      componentInstance = component.instance();
+    });
+
+    it('#handleApplyToBag should call onApplyCouponToBagFromList prop', () => {
+      componentInstance.handleApplyToBag();
+      expect(onApplyCouponToBagFromList).toBeCalled();
+    });
+
+    it('#handleRemove should call onRemove prop', () => {
+      componentInstance.handleRemove();
+      expect(onRemove).toBeCalled();
+    });
+
+    it('should be called toastmessage function with error message when coupon is returned with error', () => {
+      const coupon = {
+        status: COUPON_STATUS.APPLIED,
+        id: '1121',
+        error: 'error message',
+      };
+      toastMessage(coupon.error);
+      expect(toastMessage).toHaveBeenCalledWith('error message');
+    });
   });
 });

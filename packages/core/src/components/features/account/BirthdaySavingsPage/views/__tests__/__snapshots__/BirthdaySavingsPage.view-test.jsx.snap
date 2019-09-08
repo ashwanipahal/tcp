@@ -27,24 +27,10 @@ exports[`BirthdaySavingsPage component should renders correctly 1`] = `
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
-    className="elem-mb-LRG"
+    className="elem-mb-XL"
     data-locator="birthdaySavingsLbl"
     heading="Birthday Savings"
   />
-  <Styled(BodyCopy)
-    className="elem-mb-XXL"
-    color="text.primary"
-    component="p"
-    data-locator="instrText"
-    fontFamily="secondary"
-    fontSize="fs14"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    Add up to 4 kids’ birthdays to your account and receive special savings during their birthday month!
-  </Styled(BodyCopy)>
   <Connect(BirthdaySavings)
     labels={
       Object {

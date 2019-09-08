@@ -265,6 +265,13 @@ class ShippingForm extends React.Component {
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
+        <CheckoutOrderInfo isGuest={isGuest} />
+        <CheckoutFooter
+          hideBackLink={!!orderHasPickUp}
+          backLinkHandler={routeToPickupPage}
+          nextButtonText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
+          backLinkText={getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')}
+        />
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"

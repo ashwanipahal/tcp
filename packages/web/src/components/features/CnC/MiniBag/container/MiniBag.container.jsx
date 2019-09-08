@@ -30,10 +30,10 @@ export class MiniBagContainer extends React.Component<Props> {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  closeModal(e) {
+  closeModal(e, isRouting) {
     if (e) e.preventDefault();
     const { toggleMiniBagModal } = this.props;
-    toggleMiniBagModal({ e, isOpen: false });
+    toggleMiniBagModal({ e, isOpen: false, isRouting });
   }
 
   render() {

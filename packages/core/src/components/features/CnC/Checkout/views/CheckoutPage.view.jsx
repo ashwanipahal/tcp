@@ -49,6 +49,7 @@ class CheckoutPage extends React.PureComponent {
       addNewShippingAddressData,
       billingProps,
       labels,
+      submitBilling,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -97,14 +98,27 @@ class CheckoutPage extends React.PureComponent {
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
-          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} />
+          <BillingPage
+            {...billingProps}
+            orderHasShipping={orderHasShipping}
+            isGuest={isGuest}
+            submitBilling={submitBilling}
+          />
         )}
       </div>
     );
   };
 
   render() {
-    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isCheckoutView />;
+    const { isGuest } = this.props;
+    return (
+      <CnCTemplate
+        leftSection={this.renderLeftSection}
+        marginTop
+        isCheckoutView
+        isGuest={isGuest}
+      />
+    );
   }
 }
 
@@ -136,6 +150,7 @@ CheckoutPage.propTypes = {
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
+  submitBilling: PropTypes.func.isRequired,
 };
 
 export default CheckoutPage;

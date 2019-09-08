@@ -77,9 +77,90 @@ describe('Checkout Selectors', () => {
 
   it('#igetIsOrderHasShipping', () => {
     const State = {
-      CartPageReducer: fromJS({}),
+      CartPageReducer: fromJS({ orderItems: [] }),
     };
     expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(0);
+  });
+
+  it('#getShippingDestinationValues', () => {
+    const State = {
+      Checkout: fromJS({ values: { shipping: {} } }),
+      User: fromJS({ personalData: {} }),
+    };
+    expect(CHECKOUT_SELECTORS.getShippingDestinationValues(State)).toEqual({
+      emailAddress: undefined,
+    });
+  });
+
+  it('#isCardNotUpdated', () => {
+    const State = {
+      Checkout: fromJS({ values: { billing: {} } }),
+    };
+    expect(CHECKOUT_SELECTORS.isCardNotUpdated(State)).toEqual(true);
+  });
+
+  it('#getBillingValues', () => {
+    const State = {
+      Checkout: fromJS({ values: { billing: {} } }),
+    };
+    expect(CHECKOUT_SELECTORS.getBillingValues(State)).toEqual(fromJS({}));
+  });
+
+  it('#getDetailedCreditCardById', () => {
+    const State = {
+      PaymentReducer: fromJS({ cardList: [{ creditCardId: '' }] }),
+    };
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(fromJS(undefined));
+  });
+
+  it('#getAddressByKey', () => {
+    const State = {
+      PaymentReducer: fromJS({ cardList: [{ creditCardId: '123' }] }),
+    };
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(undefined);
+  });
+
+  it('#getShipmentMethods', () => {
+    const State = {
+      Checkout: fromJS({ options: { shippingMethods: '123' } }),
+    };
+    expect(CHECKOUT_SELECTORS.getShipmentMethods(State)).toEqual('123');
+  });
+
+  it('#getEmailSignUpLabels', () => {
+    const State = {
+      Labels: { checkout: { pickup: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getEmailSignUpLabels(State)).toEqual({
+      emailSignupContact: undefined,
+      emailSignupHeading: undefined,
+      emailSignupSubHeading: undefined,
+      emailSignupSubSubHeading: undefined,
+    });
+  });
+
+  it('#getCheckoutProgressBarLabels', () => {
+    const State = {
+      Labels: { checkout: { checkoutHeader: { lbl_pickup_title: '' }, shipping: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getCheckoutProgressBarLabels(State)).toEqual({
+      pickupLabel: undefined,
+      shippingLabel: undefined,
+      billingLabel: undefined,
+      reviewLabel: undefined,
+    });
+  });
+
+  it('#getBillingLabels', () => {
+    const State = {
+      Labels: { checkout: { billing: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getBillingLabels(State)).toEqual({
+      header: undefined,
+      backLinkPickup: undefined,
+      backLinkShipping: undefined,
+      nextSubmitText: undefined,
+    });
   });
 
   it('#igetUserContactInfo', () => {
@@ -131,61 +212,26 @@ describe('Checkout Selectors', () => {
     expect(getPickupAltValues(State)).toEqual(Checkout.getIn(['values', 'pickUpAlternative']));
   });
 
-  it('#getInitialPickupSectionValues should return boolean', () => {
+  it('#getIsPaymentDisabled', () => {
     const State = {
-      Checkout: fromJS({
-        values: {
-          pickUpContact: {
-            firstName: '',
-            lastName: '',
-            emailAddress: '',
-            phoneNumber: 212,
-          },
-          pickUpAlternative: {
-            firstName: '',
-          },
-          smsInfo: {
-            numberForUpdates: null,
-            smsUpdateNumber: null,
-          },
-        },
-      }),
-      User: fromJS({
-        personalData: {
-          userId: '320503',
-          contactInfo: {
-            profileAddress: {
-              type: 'Mailing',
-              isComplete: false,
-              address: {},
-            },
-            firstName: '',
-            lastName: '',
-            emailAddress: '',
-            phoneNumber: 212,
-          },
-          isGuest: true,
-          isRemembered: false,
-          associateId: '',
-          isExpressEligible: false,
-        },
+      CartPageReducer: fromJS({
+        orderDetails: { grandTotal: 1, giftCardsTotal: 12 },
       }),
     };
-    expect(CHECKOUT_SELECTORS.getPickupInitialPickupSectionValues(State)).toEqual({
-      pickUpContact: {
-        firstName: '',
-        lastName: '',
-        emailAddress: '',
-        phoneNumber: 212,
-      },
-      smsSignUp: {
-        phoneNumber: 212,
-        sendOrderUpdate: false,
-      },
-      hasAlternatePickup: undefined,
-      pickUpAlternate: {},
-    });
+
+    expect(CHECKOUT_SELECTORS.getIsPaymentDisabled(State)).toEqual(true);
   });
+
+  it('#getIsOrderHasPickup', () => {
+    const State = {
+      CartPageReducer: fromJS({
+        orderDetails: { orderItems: [] },
+      }),
+    };
+
+    expect(CHECKOUT_SELECTORS.getIsOrderHasPickup(State)).toEqual(0);
+  });
+
   it('should get checkout state', () => {
     const state = {
       Checkout: fromJS({}),
@@ -245,30 +291,6 @@ describe('Checkout Selectors', () => {
         addressLine: ['abc', 'def'],
       },
     });
-  });
-  it('#getShippingAddress', () => {
-    const CheckoutState = fromJS({
-      values: {
-        shipping: {
-          emailAddress: 'abc@test.com',
-          address: {
-            addressLine: ['abc', 'def'],
-          },
-          onFileAddressId: '34567',
-        },
-      },
-    });
-    const UserState = fromJS({
-      personalData: {
-        email: 'test',
-      },
-    });
-
-    const State = {
-      Checkout: CheckoutState,
-      User: UserState,
-    };
-    expect(CHECKOUT_SELECTORS.getShippingAddress(State)).toEqual({ addressLine: ['abc', 'def'] });
   });
   it('#getAddEditResponseAddressId', () => {
     const CheckoutState = fromJS({
