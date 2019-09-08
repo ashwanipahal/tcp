@@ -83,6 +83,45 @@ describe('Checkout Reducer', () => {
     },
   };
 
+  const getSetIsBillingVisitedActn = {
+    type: 'CHECKOUT_FLAGS_SET_BILLING_VISITED',
+    isBillingVisited: true,
+  };
+
+  const checkoutValuesSetBilling = {
+    type: 'CHECKOUT_VALUES_SET_BILLING',
+    billing: true,
+  };
+
+  const checkoutFlagsSetLoadMethods = {
+    type: 'CHECKOUT_FLAGS_SET_LOAD_METHODS',
+    isLoading: true,
+  };
+
+  const checkoutUiflagsSetStage = {
+    type: 'CHECKOUT_UIFLAGS_SET_STAGE',
+    payload: true,
+  };
+
+  const checkoutFlagsSetEditingSubform = {
+    type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
+    isEditingSubform: true,
+  };
+
+  const setGiftcardError = {
+    type: 'SET_GIFTCARD_ERROR',
+    payload: true,
+  };
+
+  const resetGiftcardError = {
+    type: 'RESET_GIFTCARD_ERROR',
+  };
+
+  const setOrderTotal = {
+    type: 'SET_ORDER_TOTAL',
+    payload: true,
+  };
+
   it('CHECKOUT_VALUES_SET_PICKUP', () => {
     const newState = CheckoutReducer(initialState, {
       ...checkoutValuesSetPickup,
@@ -109,5 +148,61 @@ describe('Checkout Reducer', () => {
       ...checkoutOrderOptionsSetGiftWrap,
     });
     expect(newState.getIn(['options', 'giftWrapOptions'])).toEqual(undefined);
+  });
+
+  it('CHECKOUT_FLAGS_SET_BILLING_VISITED', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...getSetIsBillingVisitedActn,
+    });
+    expect(newState.getIn(['uiFlags', 'isBillingVisited'])).toEqual(true);
+  });
+
+  it('CHECKOUT_VALUES_SET_BILLING', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...checkoutValuesSetBilling,
+    });
+    expect(newState.getIn(['values', 'billing'])).toEqual(true);
+  });
+
+  it('CHECKOUT_FLAGS_SET_LOAD_METHODS', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...checkoutFlagsSetLoadMethods,
+    });
+    expect(newState.getIn(['uiFlags', 'isLoadingShippingMethods'])).toEqual(true);
+  });
+
+  it('CHECKOUT_FLAGS_SET_EDITING_SUBFORM', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...checkoutFlagsSetEditingSubform,
+    });
+    expect(newState.getIn(['uiFlags', 'isEditingSubform'])).toEqual(true);
+  });
+
+  it('CHECKOUT_UIFLAGS_SET_STAGE', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...checkoutUiflagsSetStage,
+    });
+    expect(newState.getIn(['uiFlags', 'stage'])).toEqual(true);
+  });
+
+  it('SET_GIFTCARD_ERROR', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...setGiftcardError,
+    });
+    expect(newState.getIn(['values', 'giftCardError'])).toEqual(true);
+  });
+
+  it('RESET_GIFTCARD_ERROR', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...resetGiftcardError,
+    });
+    expect(newState.getIn(['values', 'giftCardError'])).toEqual(null);
+  });
+
+  it('SET_ORDER_TOTAL', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...setOrderTotal,
+    });
+    expect(newState.getIn(['values', 'orderBalanceTotal'])).toEqual(true);
   });
 });

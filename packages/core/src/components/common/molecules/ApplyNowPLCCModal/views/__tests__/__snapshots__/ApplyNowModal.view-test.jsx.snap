@@ -125,7 +125,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .rewards__benefits {
-    margin: 21px 0 0 21px;
+    margin: 21px 0 0 9px;
     > li {
       font-size: ",
       [Function],
@@ -142,6 +142,16 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         vertical-align: -25%;
       }
     }
+  }
+
+  /* This css is for list coming from module X */
+  .benefit_list {
+    font-size: ",
+      [Function],
+      ";
+    font-weight: ",
+      [Function],
+      ";
   }
 
   .footerLinks {
@@ -300,90 +310,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       lineHeight="normal"
       textAlign="center"
     />
-    <ul
+    <Styled(RichText)
       className="rewards__benefits"
-    >
-      <li>
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="primary"
-          fontSize="fs14"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="center"
-        >
-          abc
-        </Styled(BodyCopy)>
-        abc
-      </li>
-      <li>
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="primary"
-          fontSize="fs14"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="center"
-        >
-          abc
-        </Styled(BodyCopy)>
-        abc
-      </li>
-      <li>
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="primary"
-          fontSize="fs14"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="center"
-        >
-          abc
-        </Styled(BodyCopy)>
-        abc
-      </li>
-      <li>
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="primary"
-          fontSize="fs14"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="center"
-        >
-          abc
-        </Styled(BodyCopy)>
-        abc
-      </li>
-      <li>
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="primary"
-          fontSize="fs14"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="center"
-        >
-          abc
-        </Styled(BodyCopy)>
-        abc
-      </li>
-    </ul>
+    />
     <div
       className="footerLinks"
     >

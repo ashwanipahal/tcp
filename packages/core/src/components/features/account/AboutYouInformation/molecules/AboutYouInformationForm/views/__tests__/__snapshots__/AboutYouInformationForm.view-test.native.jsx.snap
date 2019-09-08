@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouInformationForm should render correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    data-locator="moreaboutyou-edit-q1text"
+    fontFamily="secondary"
+    fontSize="fs14"
+    text="Question 1"
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <LabeledRadioButton
+        buttonInnerColor="#000"
+        buttonOuterColor="#000"
+        checked={false}
+        data-locator="moreaboutyou-radiooption-0"
+        disabled={false}
+        index={0}
+        name="question1"
+        obj={
+          Object {
+            "label": "Parent",
+            "value": "Parent",
+          }
+        }
+        onPress={[Function]}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <LabeledRadioButton
+        buttonInnerColor="#000"
+        buttonOuterColor="#000"
+        checked={false}
+        data-locator="moreaboutyou-radiooption-1"
+        disabled={false}
+        index={1}
+        name="question1"
+        obj={
+          Object {
+            "label": "Grandparent",
+            "value": "Grandparent",
+          }
+        }
+        onPress={[Function]}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <LabeledRadioButton
+        buttonInnerColor="#000"
+        buttonOuterColor="#000"
+        checked={true}
+        data-locator="moreaboutyou-radiooption-2"
+        disabled={false}
+        index={2}
+        name="question1"
+        obj={
+          Object {
+            "label": "Gifting for others",
+            "value": "Gifting for others",
+          }
+        }
+        onPress={[Function]}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <LabeledRadioButton
+        buttonInnerColor="#000"
+        buttonOuterColor="#000"
+        checked={false}
+        data-locator="moreaboutyou-radiooption-3"
+        disabled={false}
+        index={3}
+        name="question1"
+        obj={
+          Object {
+            "label": "Prefer not to answer",
+            "value": "Prefer not to answer",
+          }
+        }
+        onPress={[Function]}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <View>
+    <Styled(BodyCopy)
+      data-locator="moreaboutyou-edit-q2text"
+      fontFamily="secondary"
+      fontSize="fs14"
+      text="Question 2"
+    />
+  </View>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        data-locator="moreaboutyou-checkboxoption-0"
+        fontSize="fs11"
+        isChecked={true}
+        name="question2-option-0"
+        onClick={[Function]}
+        rightText="Girl"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        data-locator="moreaboutyou-checkboxoption-1"
+        fontSize="fs11"
+        isChecked={false}
+        name="question2-option-1"
+        onClick={[Function]}
+        rightText="Boy"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        data-locator="moreaboutyou-checkboxoption-2"
+        fontSize="fs11"
+        isChecked={true}
+        name="question2-option-2"
+        onClick={[Function]}
+        rightText="Toddler Girl"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        data-locator="moreaboutyou-checkboxoption-3"
+        fontSize="fs11"
+        isChecked={false}
+        name="question2-option-3"
+        onClick={[Function]}
+        rightText="Toddler Boy"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        data-locator="moreaboutyou-checkboxoption-4"
+        fontSize="fs11"
+        isChecked={false}
+        name="question2-option-4"
+        onClick={[Function]}
+        rightText="Baby"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        data-locator="moreaboutyou-savebtn"
+        disableButton={false}
+        disabled={true}
+        fill="BLUE"
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        text="SAVE"
+        url=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="variable-width"
+        color=""
+        customStyle={Object {}}
+        data-locator="moreaboutyou-cancelbtn"
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        locator=""
+        onPress={[MockFunction]}
+        text="lbl_profile_personal_info_cancelCta"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
