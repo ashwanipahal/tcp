@@ -74,9 +74,139 @@ describe('Checkout Selectors', () => {
 
   it('#igetIsOrderHasShipping', () => {
     const State = {
-      CartPageReducer: fromJS({}),
+      CartPageReducer: fromJS({ orderItems: [] }),
     };
     expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(0);
+  });
+
+  it('#getShippingDestinationValues', () => {
+    const State = {
+      Checkout: fromJS({ values: { shipping: {} } }),
+      User: fromJS({ personalData: {} }),
+    };
+    expect(CHECKOUT_SELECTORS.getShippingDestinationValues(State)).toEqual({
+      emailAddress: undefined,
+    });
+  });
+
+  it('#isCardNotUpdated', () => {
+    const State = {
+      Checkout: fromJS({ values: { billing: {} } }),
+    };
+    expect(CHECKOUT_SELECTORS.isCardNotUpdated(State)).toEqual(true);
+  });
+
+  it('#getBillingValues', () => {
+    const State = {
+      Checkout: fromJS({ values: { billing: {} } }),
+    };
+    expect(CHECKOUT_SELECTORS.getBillingValues(State)).toEqual(fromJS({}));
+  });
+
+  it('#getDetailedCreditCardById', () => {
+    const State = {
+      PaymentReducer: fromJS({ cardList: [{ creditCardId: '' }] }),
+    };
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(fromJS(undefined));
+  });
+
+  it('#getAddressByKey', () => {
+    const State = {
+      PaymentReducer: fromJS({ cardList: [{ creditCardId: '123' }] }),
+    };
+    expect(CHECKOUT_SELECTORS.getDetailedCreditCardById(State)).toEqual(undefined);
+  });
+
+  it('#getShipmentMethods', () => {
+    const State = {
+      Checkout: fromJS({ options: { shippingMethods: '123' } }),
+    };
+    expect(CHECKOUT_SELECTORS.getShipmentMethods(State)).toEqual('123');
+  });
+
+  it('#getEmailSignUpLabels', () => {
+    const State = {
+      Labels: { checkout: { pickup: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getEmailSignUpLabels(State)).toEqual({
+      emailSignupContact: undefined,
+      emailSignupHeading: undefined,
+      emailSignupSubHeading: undefined,
+      emailSignupSubSubHeading: undefined,
+    });
+  });
+
+  it('#getPickUpContactFormLabels', () => {
+    const State = {
+      Labels: { global: {}, checkout: { pickup: { lbl_pickup_title: '' }, shipping: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getPickUpContactFormLabels(State)).toEqual({
+      SMSHeading: undefined,
+      SMSLongText: undefined,
+      SMSPrivatePolicy: undefined,
+      alternativeEmail: undefined,
+      alternativeFirstName: undefined,
+      alternativeGovIdText: undefined,
+      alternativeHeading: undefined,
+      alternativeLastName: undefined,
+      alternativeSubHeading: undefined,
+      anchorEdit: undefined,
+      billingText: undefined,
+      btnCancel: undefined,
+      btnSaveUpdate: undefined,
+      btnUpdate: undefined,
+      email: undefined,
+      firstName: undefined,
+      govIdText: undefined,
+      lastName: undefined,
+      mobile: undefined,
+      nextText: undefined,
+      pickupContactText: undefined,
+      pickupText: undefined,
+      returnTo: undefined,
+      shippingText: undefined,
+      title: '',
+      titleEditPickup: undefined,
+    });
+  });
+
+  it('#getCheckoutProgressBarLabels', () => {
+    const State = {
+      Labels: { checkout: { checkoutHeader: { lbl_pickup_title: '' }, shipping: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getCheckoutProgressBarLabels(State)).toEqual({
+      pickupLabel: undefined,
+      shippingLabel: undefined,
+      billingLabel: undefined,
+      reviewLabel: undefined,
+    });
+  });
+
+  it('#getShippingLabels', () => {
+    const State = {
+      Labels: { checkout: { shipping: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getShippingLabels(State)).toEqual({
+      header: undefined,
+      sectionHeader: undefined,
+      shipmentHeader: undefined,
+      returnTo: undefined,
+      nextText: undefined,
+      billingText: undefined,
+      backLinkText: undefined,
+    });
+  });
+
+  it('#getBillingLabels', () => {
+    const State = {
+      Labels: { checkout: { billing: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getBillingLabels(State)).toEqual({
+      header: undefined,
+      backLinkPickup: undefined,
+      backLinkShipping: undefined,
+      nextSubmitText: undefined,
+    });
   });
 
   it('#igetUserContactInfo', () => {
@@ -126,6 +256,26 @@ describe('Checkout Selectors', () => {
       }),
     };
     expect(getPickupAltValues(State)).toEqual(Checkout.getIn(['values', 'pickUpAlternative']));
+  });
+
+  it('#getIsPaymentDisabled', () => {
+    const State = {
+      CartPageReducer: fromJS({
+        orderDetails: { grandTotal: 1, giftCardsTotal: 12 },
+      }),
+    };
+
+    expect(CHECKOUT_SELECTORS.getIsPaymentDisabled(State)).toEqual(true);
+  });
+
+  it('#getIsOrderHasPickup', () => {
+    const State = {
+      CartPageReducer: fromJS({
+        orderDetails: { orderItems: [] },
+      }),
+    };
+
+    expect(CHECKOUT_SELECTORS.getIsOrderHasPickup(State)).toEqual(0);
   });
 
   it('#getInitialPickupSectionValues should return boolean', () => {

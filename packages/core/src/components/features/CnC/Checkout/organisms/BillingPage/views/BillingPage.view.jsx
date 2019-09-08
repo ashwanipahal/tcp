@@ -7,12 +7,15 @@ import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
 import styles from '../styles/BillingPage.style';
 import GiftCardsContainer from '../../GiftCardsSection';
+import utility from '../../../util/utility';
+import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 
 class BillingPage extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     labels: PropTypes.shape({}).isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
+    submitBilling: PropTypes.func.isRequired,
     isGuest: PropTypes.bool.isRequired,
   };
 
@@ -21,16 +24,18 @@ class BillingPage extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, orderHasShipping, isGuest } = this.props;
+    const { className, labels, orderHasShipping, isGuest, submitBilling } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
         <GiftCardsContainer />
+        <div className="payment-container" />
         <CheckoutOrderInfo isGuest={isGuest} />
         <CheckoutFooter
           hideBackLink
-          // backLinkHandler={routeToPickupPage}
+          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
+          nextHandler={submitBilling}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
         />

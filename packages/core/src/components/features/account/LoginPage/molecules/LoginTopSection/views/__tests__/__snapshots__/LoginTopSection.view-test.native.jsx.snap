@@ -45,6 +45,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       class="clickhere"
       customStyle={Object {}}
       fontSizeVariation="medium"
+      id="forgotPasswordForm"
       locator=""
       onPress={[Function]}
       text=""

@@ -6,12 +6,14 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 >
   <Styled(StyledApplyNowModal)
     closeModal={[Function]}
+    closePLCCModal={[Function]}
     isModalOpen={true}
     labels={
       Object {
         "plcc_form_contact_info_header": "contact information",
       }
     }
+    openPLCCModal={[Function]}
   />
   <Styled(Anchor)
     anchorVariation="primary"

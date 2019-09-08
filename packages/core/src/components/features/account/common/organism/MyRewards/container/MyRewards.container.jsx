@@ -135,8 +135,9 @@ export const mapDispatchToProps = dispatch => ({
       dispatch(setError({ msg: null, couponCode: coupon.id }));
     }, 5000);
   },
-  toastMessage: palyoad => {
-    dispatch(toastMessageInfo(palyoad));
+  toastMessage: coupon => {
+    dispatch(toastMessageInfo(coupon.error));
+    dispatch(setError({ msg: null, couponCode: coupon.id }));
   },
 });
 

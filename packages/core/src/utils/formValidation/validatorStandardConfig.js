@@ -2,6 +2,7 @@ const enterPhoneNumber = 'Please enter your phone number';
 const validPhoneNumber = 'Please enter a valid phone number';
 const validStreetAddress = 'Please enter a valid street address';
 const validExpirationDate = 'Please enter a valid expiration date';
+const ssnMessage = 'Please enter the last 4 digits of your social security number';
 
 export const formValidationMessages = {
   addressLine1: {
@@ -108,7 +109,9 @@ export const formValidationMessages = {
     alphanumeric: 'Please enter a valid pre-screen code',
   },
   ssNumber: {
-    ssn: 'Please enter the last 4 digits of your social security number',
+    ssn: ssnMessage,
+    nonSequentialNumber: ssnMessage,
+    required: ssnMessage,
   },
   birthDate: 'Please enter a valid date of birth',
   statewocountry: {
@@ -279,6 +282,8 @@ export const formValidationRules = {
   },
   ssNumber: {
     ssn: true,
+    nonSequentialNumber: true,
+    required: true,
   },
   statewocountry: {
     required: true,

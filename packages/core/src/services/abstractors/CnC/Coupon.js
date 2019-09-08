@@ -4,7 +4,7 @@ import endpoints from '../../endpoints';
 import { getFormattedError, getDynamicCodeErrorMessage } from '../../../utils/errorMessage.util';
 import { constructCouponStructure } from './CartItemTile';
 
-export const applyCouponToCart = ({ couponCode = '' }) => {
+export const applyCouponToCart = ({ couponCode = '' }, errorsMapping) => {
   const payload = {
     webService: endpoints.addCoupons,
     body: {
@@ -13,7 +13,7 @@ export const applyCouponToCart = ({ couponCode = '' }) => {
   };
 
   return executeStatefulAPICall(payload, ({ err }) => {
-    const error = getFormattedError(err);
+    const error = getFormattedError(err, errorsMapping);
     getDynamicCodeErrorMessage(error, couponCode);
     const placeCash = 'PC';
     error.errorMessages = error.errorMessages || { _error: 'Oops... an error occured' };
