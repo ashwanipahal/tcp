@@ -67,7 +67,7 @@ const renderDropDownButton = (properties, parentClass) => {
     dataLocatorDropDown,
     dataLocatorTextCta,
   } = properties;
-  console.log(dataLocatorTextCta);
+
   return (
     <DropDownButton
       className={`${className} ${parentClass}`}
