@@ -44,7 +44,11 @@ class CheckoutPage extends React.PureComponent {
       onPickupSubmit,
       orderHasShipping,
       routeToPickupPage,
+      updateShippingMethodSelection,
+      updateShippingAddressData,
+      addNewShippingAddressData,
       billingProps,
+      labels,
       submitBilling,
     } = this.props;
 
@@ -86,6 +90,11 @@ class CheckoutPage extends React.PureComponent {
             handleSubmit={submitShippingSection}
             loadShipmentMethods={loadShipmentMethods}
             routeToPickupPage={routeToPickupPage}
+            isMobile={isMobile}
+            updateShippingMethodSelection={updateShippingMethodSelection}
+            updateShippingAddressData={updateShippingAddressData}
+            addNewShippingAddressData={addNewShippingAddressData}
+            labels={labels}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -127,6 +136,7 @@ CheckoutPage.propTypes = {
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
   smsSignUpLabels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
@@ -137,6 +147,9 @@ CheckoutPage.propTypes = {
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
   routeToPickupPage: PropTypes.func.isRequired,
+  updateShippingMethodSelection: PropTypes.func.isRequired,
+  updateShippingAddressData: PropTypes.func.isRequired,
+  addNewShippingAddressData: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
 };
 
