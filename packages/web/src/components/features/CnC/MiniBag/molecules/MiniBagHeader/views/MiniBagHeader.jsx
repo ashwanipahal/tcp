@@ -39,6 +39,7 @@ const MiniBagHeader = ({
               <Anchor fontSizeVariation="large" anchorVariation="primary" noLink to="">
                 {labels.createAccount}
               </Anchor>
+              <BodyCopy component="span" fontSize="fs10" className="separator" />
               <Anchor
                 className="rightLink"
                 fontSizeVariation="large"
@@ -107,3 +108,4 @@ const MiniBagHeader = ({
   );
 };
 export default withStyles(MiniBagHeader, styles);
+export { MiniBagHeader as MiniBagHeaderVanilla };

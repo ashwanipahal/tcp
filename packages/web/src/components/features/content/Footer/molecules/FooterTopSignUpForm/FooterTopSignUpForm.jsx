@@ -138,6 +138,7 @@ class FooterTopSignUpForm extends React.PureComponent {
                 type="button"
                 data-locator={dataLocators.submitButton}
                 onClick={this.submitForm}
+                className="candidate_a_form_button"
               >
                 {labels.submitButtonLabel}
               </Button>

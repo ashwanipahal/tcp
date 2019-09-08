@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components/native';
 
 const Container = styled.View`
-  flex: 1;
+  width: 100%;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const SafeAreaViewStyle = styled.SafeAreaView`
@@ -14,6 +16,11 @@ const ModalOutsideTouchable = styled.TouchableWithoutFeedback`
   background: #ff0000;
 `;
 
+const ModalCloseTouchable = styled.TouchableOpacity`
+  position: absolute;
+  right: 26;
+`;
+
 const ModalOverlay = styled.View`
   position: absolute;
   top: 0;
@@ -24,14 +31,37 @@ const ModalOverlay = styled.View`
 `;
 
 const ModalContent = styled.View`
-  background: #ffffff;
+  background: ${props => props.theme.colorPalette.white};
   width: 100%;
-  padding-top: 100;
-  height: 66%;
-  border: 1px solid #ff0000;
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+const ModalTitleContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20;
+`;
+
+const ModalTitle = styled.Text`
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  font-size: ${props => props.theme.typography.fontSizes.fs14};
+  color: ${props => props.theme.colorPalette.gray[900]};
+  line-height: 16.8;
+  font-weight: ${props => props.theme.typography.fontWeights.black};
 `;
 
 // margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 const styles = css``;
 
-export { styles, Container, SafeAreaViewStyle, ModalOutsideTouchable, ModalOverlay, ModalContent };
+export {
+  styles,
+  Container,
+  ModalTitle,
+  ModalTitleContainer,
+  SafeAreaViewStyle,
+  ModalOutsideTouchable,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseTouchable,
+};

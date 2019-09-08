@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-
+import { getLabelValue } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -24,6 +24,7 @@ import {
   getSetAirmilesPromoIdActn,
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
+import { routerPush } from '../../../../../utils';
 
 const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
@@ -95,8 +96,31 @@ const hasPOBox = (addressLine1 = '', addressLine2 = '') => {
   );
 };
 
+const isOrderHasShipping = cartItems => {
+  return cartItems && cartItems.filter(item => !item.getIn(['miscInfo', 'store'])).size;
+};
+
 const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
+};
+
+const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
+  const result = [
+    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
+    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
+  ];
+  if (isOrderHasShipping(cartItems)) {
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
+  }
+  if (isOrderHasPickup(cartItems)) {
+    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
+  }
+  return result;
+};
+
+const routeToPage = (dataObj, ...others) => {
+  const { to, asPath } = dataObj;
+  routerPush(to, asPath, ...others);
 };
 
 export default {
@@ -104,4 +128,6 @@ export default {
   updateCartInfo,
   hasPOBox,
   isOrderHasPickup,
+  getAvailableStages,
+  routeToPage,
 };

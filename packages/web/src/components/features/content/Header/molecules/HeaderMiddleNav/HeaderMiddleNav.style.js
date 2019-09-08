@@ -11,10 +11,24 @@ export default css`
     width: 22px;
     height: 22px;
   }
+
+  .header-middle-nav-search {
+    @media ${props => props.theme.mediaQuery.small} and ${props =>
+  props.theme.mediaQuery.mediumMax} {
+    width:20%;
+    }
+  }
+  .header-middle-login-section {
+    margin-top: 30px;
+    @media ${props => props.theme.mediaQuery.small} and ${props =>
+  props.theme.mediaQuery.mediumMax} {
+    width: 74%;
+    margin-top: auto;
+    }
+  }
   .username {
     cursor: pointer;
-    float: left;
-    margin-left: 59%;
+    display: inline-block;
   }
 
   .rightLink {

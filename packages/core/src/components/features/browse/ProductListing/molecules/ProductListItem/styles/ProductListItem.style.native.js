@@ -2,15 +2,16 @@ import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
   width: 50%;
-  height: 428;
+  height: 436;
   background: white;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-const FavoriteIconContainer = styled.View`
-  position: absolute;
-  bottom: 0;
-  right: 0;
+const FavoriteIconContainer = styled.View``;
+
+const OfferPriceAndFavoriteIconContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Badge1Container = styled.View`
@@ -50,7 +51,7 @@ const ListPrice = styled.Text`
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs15};
   color: ${props => props.theme.colorPalette.red[500]};
-  line-height: 18;
+  line-height: 22;
   font-weight: ${props => props.theme.typography.fontWeights.black};
 `;
 
@@ -129,4 +130,5 @@ export {
   PromotionalMessage,
   AddToBagContainer,
   PromotionalMessagePostfix,
+  OfferPriceAndFavoriteIconContainer,
 };

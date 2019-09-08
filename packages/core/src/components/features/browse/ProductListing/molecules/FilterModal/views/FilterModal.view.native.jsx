@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Text, TouchableOpacity } from 'react-native';
+import { Modal } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { withTheme } from 'styled-components/native';
@@ -13,8 +13,12 @@ import {
   ModalOverlay,
   ModalContent,
   ModalOutsideTouchable,
+  ModalTitle,
+  ModalTitleContainer,
+  ModalCloseTouchable,
 } from '../FilterModal.style.native';
 import FilterButtons from '../../FilterButtons';
+import Filters from '../../Filters';
 
 class FilterModal extends React.PureComponent {
   static propTypes = {
@@ -36,34 +40,28 @@ class FilterModal extends React.PureComponent {
     };
   }
 
-  /**
-   * Close the drop down
-   */
-  onCloseModal = () => {
-    console.tron.log('onCloseModal...');
+  setModalVisibilityState = flag => {
     this.setState({
-      showModal: false,
+      showModal: flag,
     });
+  };
+
+  onCloseModal = () => {
+    this.setModalVisibilityState(false);
   };
 
   onPressOut = () => {
-    console.tron.log('onPressOut');
-    this.setState({
-      showModal: false,
-    });
+    this.setModalVisibilityState(false);
   };
 
   onPressFilter = () => {
-    console.tron.log('onPressFilter');
-    this.setState({
-      showModal: true,
-    });
+    this.setModalVisibilityState(true);
   };
 
   onPressSort = () => {};
 
   render() {
-    const { theme, labelsFilter } = this.props;
+    const { theme, labelsFilter, filters } = this.props;
     const { showModal } = this.state;
     const closeIconColor = get(theme, 'colorPalette.gray[900]', '#1a1a1a');
     const closeIconSize = get(theme, 'typography.fontSizes.fs20', 20);
@@ -73,9 +71,10 @@ class FilterModal extends React.PureComponent {
           labelsFilter={labelsFilter}
           onPressFilter={this.onPressFilter}
           onPressSort={this.onPressSort}
+          selected={showModal}
         />
 
-        <Modal visible={showModal} transparent>
+        <Modal visible={showModal} transparent animationType="slide">
           <SafeAreaViewStyle>
             <ModalOutsideTouchable
               accessibilityRole="button"
@@ -85,10 +84,13 @@ class FilterModal extends React.PureComponent {
               <ModalOverlay />
             </ModalOutsideTouchable>
             <ModalContent>
-              <TouchableOpacity onPress={this.onCloseModal} accessibilityRole="button">
-                <CustomIcon name={ICON_NAME.close} size={closeIconSize} color={closeIconColor} />
-              </TouchableOpacity>
-              <Text>This is Filter modal</Text>
+              <ModalTitleContainer>
+                <ModalTitle>{labelsFilter.lbl_filter_by}</ModalTitle>
+                <ModalCloseTouchable onPress={this.onCloseModal} accessibilityRole="button">
+                  <CustomIcon name={ICON_NAME.close} size={closeIconSize} color={closeIconColor} />
+                </ModalCloseTouchable>
+              </ModalTitleContainer>
+              <Filters labelsFilter={labelsFilter} filters={filters} />
             </ModalContent>
           </SafeAreaViewStyle>
         </Modal>

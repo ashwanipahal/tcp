@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ColorSwitch from '../views/FilterButtons.view.native';
+import { FilterButtonsVanilla } from '../views/FilterButtons.view.native';
 
 describe('FilterButtons component', () => {
   const props = {
@@ -11,9 +11,10 @@ describe('FilterButtons component', () => {
     },
     onPressFilter: () => {},
     onPressSort: () => {},
+    selected: false,
   };
   it('should renders FilterButtons correctly', () => {
-    const component = shallow(<ColorSwitch {...props} />);
+    const component = shallow(<FilterButtonsVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

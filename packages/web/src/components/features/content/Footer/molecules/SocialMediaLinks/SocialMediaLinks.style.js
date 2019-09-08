@@ -6,7 +6,7 @@ export default css`
   justify-content: space-between;
   flex-direction: row;
   text-align: center;
-  padding: 12px 0 20px;
+  padding: 12px 0 0;
 
   .social-media-label {
     padding: 15px 0;

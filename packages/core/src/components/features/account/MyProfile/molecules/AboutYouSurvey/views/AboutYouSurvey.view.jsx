@@ -13,6 +13,7 @@ export class AboutYouSurvey extends React.Component {
     const { userSurveyQuestions } = props;
     const question1 = userSurveyQuestions[0];
     const question2 = userSurveyQuestions[1];
+    this.submitDisabled = true;
 
     this.state = {
       question1: {
@@ -56,6 +57,7 @@ export class AboutYouSurvey extends React.Component {
     const selectedAnswers = question.options.filter(item => item.selected);
     question.answers = selectedAnswers.map(item => item.value);
     this.setState({ [questionId]: question, savedStageSelected: true });
+    this.submitDisabled = false;
   };
 
   /**
@@ -182,6 +184,7 @@ export class AboutYouSurvey extends React.Component {
                 type="button"
                 fill="BLUE"
                 className="survey-submit__cta"
+                disabled={this.submitDisabled}
               >
                 {labels.lbl_profile_survey_save}
               </Button>

@@ -96,7 +96,7 @@ export const CheckoutHeaderTextSection = styled.View`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border-bottom-color: ${props => props.theme.colorPalette.gray[600]};
+  border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
   border-bottom-width: 1;
 `;
 

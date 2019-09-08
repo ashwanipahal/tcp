@@ -34,6 +34,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     onCancel: PropTypes.func,
     toggleAddressModal: PropTypes.func,
     currentForm: PropTypes.string,
+    setModalHeading: PropTypes.func,
   };
 
   static defaultProps = {
@@ -52,6 +53,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     onCancel: () => {},
     toggleAddressModal: () => {},
     currentForm: '',
+    setModalHeading: () => {},
   };
 
   constructor(props) {
@@ -154,6 +156,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       currentForm,
       addressLine1,
       countryState,
+      setModalHeading,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -174,6 +177,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         backToAddressBookClick={backToAddressBookClick}
         addressLine1={addressLine1}
         countryState={countryState}
+        setModalHeading={setModalHeading}
       />
     );
   }

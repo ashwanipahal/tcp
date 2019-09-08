@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(WithTheme(CustomButton))
+      buttonVariation="variable-width"
+      data-locator=""
+      fill="WHITE"
+      fontSize="fs14"
+      onPress={[Function]}
+      type="submit"
+      width="48%"
+    />
+    <Styled(WithTheme(CustomButton))
+      buttonVariation="variable-width"
+      data-locator=""
+      fill="BLACK"
+      fontSize="fs14"
+      onPress={[Function]}
+      type="submit"
+      width="48%"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -335,7 +335,7 @@ exports[`ModuleD component renders correctly 1`] = `
       target=""
     >
       <Styled(Button)
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         className="moduleD_button"
         data-locator="moduleD_button"
       >

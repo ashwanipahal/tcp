@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; // eslint-disable-line
+import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
-import { getPlpProducts } from './ProductListing.actions';
-import { processBreadCrumbs } from './ProductListing.util';
+import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
+import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
   getProductsSelect,
   getNavigationTree,
@@ -13,12 +15,34 @@ import {
   getCategoryId,
   getLabelsProductListing,
   getLongDescription,
+  getIsLoadingMore,
+  getLastLoadedPageNumber,
+  getLoadedProductsPages,
+  getTotalProductsCount,
+  getAppliedFilters,
 } from './ProductListing.selectors';
+import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
     this.makeApiCall();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      router: {
+        query: { cid },
+      },
+    } = prevProps;
+    const {
+      router: {
+        query: { cid: currentCid },
+      },
+    } = this.props;
+    if (cid !== currentCid) {
+      this.makeApiCall();
+    }
   }
 
   makeApiCall = () => {
@@ -29,6 +53,7 @@ class ProductListingContainer extends React.PureComponent {
 
   render() {
     const {
+      productsBlock,
       products,
       currentNavIds,
       navTree,
@@ -39,12 +64,17 @@ class ProductListingContainer extends React.PureComponent {
       initialValues,
       longDescription,
       labels,
+      isLoadingMore,
+      lastLoadedPageNumber,
       labelsFilter,
       categoryId,
+      getProducts,
+      onSubmit,
       ...otherProps
     } = this.props;
     return (
       <ProductListing
+        productsBlock={productsBlock}
         products={products}
         filters={filters}
         currentNavIds={currentNavIds}
@@ -57,8 +87,10 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         labelsFilter={labelsFilter}
         labels={labels}
-        // onPressFilter={this.onPressFilter}
-        // onPressSort={this.onPressSort}
+        isLoadingMore={isLoadingMore}
+        lastLoadedPageNumber={lastLoadedPageNumber}
+        getProducts={getProducts}
+        onSubmit={onSubmit}
         {...otherProps}
       />
     );
@@ -66,7 +98,8 @@ class ProductListingContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const appliedFilters = state.ProductListing.appliedFiltersIds;
+  const productBlocks = getLoadedProductsPages(state);
+  const appliedFilters = getAppliedFilters(state);
 
   // eslint-disable-next-line
   let filtersLength = {};
@@ -79,22 +112,31 @@ function mapStateToProps(state) {
   }
 
   return {
+    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
-    currentNavIds: getCategoryId(state),
+    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
+    breadCrumbs: processBreadCrumbs(
+      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
+    ),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
-    totalProductsCount: state.ProductListing.totalProductsCount,
+    totalProductsCount: getTotalProductsCount(state),
     filtersLength,
     initialValues: {
-      ...state.ProductListing.appliedFiltersIds,
+      ...getAppliedFilters(state),
+      sort: '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    isLoadingMore: getIsLoadingMore(state),
+    lastLoadedPageNumber: getLastLoadedPageNumber(state),
+    onSubmit: submitProductListingFiltersForm,
+    // Need to pass form values in as prop so we can compare current values to previous values
+    formValues: getFormValues('filter-form')(state),
     isPlcc: isPlccUser(state),
   };
 }
@@ -104,6 +146,9 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
     },
+    getMoreProducts: payload => {
+      dispatch(getMorePlpProducts(payload));
+    },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
   };
@@ -111,6 +156,8 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  getMoreProducts: PropTypes.func.isRequired,
+  productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
@@ -124,10 +171,15 @@ ProductListingContainer.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isLoadingMore: PropTypes.bool,
+  lastLoadedPageNumber: PropTypes.number,
+  router: PropTypes.shape({}).isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 ProductListingContainer.defaultProps = {
   products: [],
+  productsBlock: [],
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
@@ -138,9 +190,13 @@ ProductListingContainer.defaultProps = {
   longDescription: '',
   labels: {},
   labelsFilter: {},
+  isLoadingMore: false,
+  lastLoadedPageNumber: 0,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductListingContainer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProductListingContainer)
+);

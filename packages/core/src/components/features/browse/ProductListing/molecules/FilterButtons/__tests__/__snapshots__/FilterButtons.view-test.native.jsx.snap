@@ -1,44 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterButtons component should renders FilterButtons correctly 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "labelsFilter": Object {
-          "lbl_filter": "FILTER",
-          "lbl_sort": "SORT",
-        },
-        "onPressFilter": [Function],
-        "onPressSort": [Function],
-        "props": Object {},
-      },
-      "attrs": Array [],
-      "displayName": "Styled(FilterButtons)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labelsFilter={
-    Object {
-      "lbl_filter": "FILTER",
-      "lbl_sort": "SORT",
-    }
-  }
-  onPressFilter={[Function]}
-  onPressSort={[Function]}
-  props={Object {}}
-/>
+<Styled(View)>
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="mobileApp-filter-icon"
+    data-locator="view_gallery_button"
+    onPress={[Function]}
+    selected={false}
+    showIcon={true}
+    text="FILTER"
+    type="button"
+    width="48%"
+  />
+  <Styled(WithTheme(CustomButton))
+    buttonVariation="mobileApp-filter-icon"
+    data-locator="view_gallery_button"
+    onPress={[Function]}
+    selected={false}
+    showIcon={true}
+    text="SORT"
+    type="button"
+    width="48%"
+  />
+</Styled(View)>
 `;

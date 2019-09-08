@@ -1,5 +1,6 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import countrySelectorAbstractor from '@tcp/core/src/services/abstractors/common/countrySelector';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
 import {
   getSiteId,
@@ -76,7 +77,7 @@ export function* submitCountrySelectionData({ payload: data }) {
     };
     const { submitData } = countrySelectorAbstractor;
     const res = yield call(submitData, payload);
-    if (!res) console.log('Error occurered!');
+    if (!res) logger.error('Error occurered!');
     const { country: newCountry, language: newLanguage } = data;
     const oldCountry = yield select(state =>
       state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])

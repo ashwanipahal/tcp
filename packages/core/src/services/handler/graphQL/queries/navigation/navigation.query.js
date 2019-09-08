@@ -61,6 +61,7 @@ const buildQuery = ({ brand, country, channel }) => `
         longDescription
         name
         id
+        catgroupId
         longDescription
         catgroupId
         mainCategory {
@@ -80,6 +81,7 @@ const buildQuery = ({ brand, country, channel }) => `
           longDescription
           name
           id
+          catgroupId
           longDescription
           catgroupId
         }
