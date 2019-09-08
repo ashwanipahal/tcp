@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ImageComp from '../../../../../../common/atoms/Image';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -60,7 +61,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
               className="favt_modal_heading"
               color="gray.700"
             >
-              {labels.login.lbl_login_favorites_modal_heading}
+              {getLabelValue(labels, 'lbl_login_favorites_modal_heading', 'login')}
             </BodyCopy>
 
             <BodyCopy component="span" fontSize="fs12" fontFamily="secondary" textAlign="center">

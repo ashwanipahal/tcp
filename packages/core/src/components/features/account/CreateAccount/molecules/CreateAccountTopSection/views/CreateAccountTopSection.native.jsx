@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import ImageComp from '../../../../../../common/atoms/Image';
-// import LineComp from '../../../../../../common/atoms/';
 import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
 import {
   SectionStyle,
@@ -45,20 +45,20 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 fontSize="fs13"
                 component="span"
                 textAlign="center"
-                text={labels.registration.lbl_createAccount_createA}
+                text={getLabelValue(labels, 'lbl_createAccount_createA', 'registration')}
               />
               <BodyCopy
                 fontSize="fs13"
                 component="span"
                 textAlign="center"
                 color="gray.1000"
-                text={labels.registration.lbl_createAccount_myPlaceRewards}
+                text={getLabelValue(labels, 'lbl_createAccount_myPlaceRewards', 'registration')}
               />
               <BodyCopy
                 fontSize="fs13"
                 component="span"
                 textAlign="center"
-                text={labels.registration.lbl_createAccount_earnPoints}
+                text={getLabelValue(labels, 'lbl_createAccount_earnPoints', 'registration')}
               />
             </HeadingTextWrapper>
             <PointsWrapper>
@@ -66,32 +66,32 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 fontSize="fs14"
                 textAlign="center"
                 color="gray.800"
-                text={labels.registration.lbl_createAccount_spendPoint}
+                text={getLabelValue(labels, 'lbl_createAccount_spendPoint', 'registration')}
               />
               <BodyCopy
                 fontWeight="black"
                 fontSize="fs14"
                 textAlign="center"
                 color="gray.800"
-                text={labels.registration.lbl_createAccount_pointReward}
+                text={getLabelValue(labels, 'lbl_createAccount_pointReward', 'registration')}
               />
             </PointsWrapper>
             <ResetWrapper>
               <BodyCopy
                 fontSize="fs12"
                 textAlign="center"
-                text={labels.registration.lbl_createAccount_signedUp}
+                text={getLabelValue(labels, 'lbl_createAccount_signedUp', 'registration')}
               />
 
               <BodyCopy
                 fontSize="fs12"
                 textAlign="center"
-                text={labels.registration.lbl_createAccount_onlineAccCreated}
+                text={getLabelValue(labels, 'lbl_createAccount_onlineAccCreated', 'registration')}
               />
               <Anchor
                 class="clickhere"
                 fontSizeVariation="medium"
-                text={labels.registration.lbl_createAccount_resetPassword}
+                text={getLabelValue(labels, 'lbl_createAccount_resetPassword', 'registration')}
                 underline
                 onPress={this.showForgotPassword}
               />
