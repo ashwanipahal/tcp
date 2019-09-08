@@ -39,6 +39,14 @@ exports[`Select Item is shown should render select item  1`] = `
           [Function],
           ";
     text-align: left;
+
+    @media ",
+          [Function],
+          " {
+      padding-left: ",
+          [Function],
+          ";
+    }
   }
 
   .item-select {
