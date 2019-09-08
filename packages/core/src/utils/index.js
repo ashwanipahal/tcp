@@ -25,6 +25,7 @@ export {
   redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
+  configurePlpNavigationFromCMSUrl,
 } from './utils.web';
 
 export {
@@ -45,4 +46,5 @@ export {
   formatAddress,
   calculateAge,
   getLabelValue,
+  generateUniqueKeyUsingLabel,
 } from './utils';

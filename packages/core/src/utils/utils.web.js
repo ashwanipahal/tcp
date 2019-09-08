@@ -359,6 +359,19 @@ export const redirectToPdp = productId => {
   };
 };
 
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configurePlpNavigationFromCMSUrl = url => {
+  const route = `${ROUTE_PATH.plp}/`;
+  if (url.includes(route)) {
+    const urlItems = url.split(route);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+  }
+  return url;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
