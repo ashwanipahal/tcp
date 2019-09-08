@@ -130,7 +130,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           locator=""
           noLink={true}
           onPress={[Function]}
-          text="show"
+          text=""
           to="/#"
           visible={false}
         />
