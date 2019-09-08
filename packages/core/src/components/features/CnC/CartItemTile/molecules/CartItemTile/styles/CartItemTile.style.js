@@ -9,6 +9,10 @@ export default css`
   }
   .padding-left-10 {
     padding-left: 4px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 150px;
+      display: inline-flex;
+    }
   }
   .padding-left-6 {
     padding-left: 6px;

@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.View`
 
 export const LinksWrapper = styled.View`
   position: absolute;
-  top: 86px;
+  top: 95px;
   left: 11px;
   z-index: ${props => props.theme.zindex.zOverlay};
 `;

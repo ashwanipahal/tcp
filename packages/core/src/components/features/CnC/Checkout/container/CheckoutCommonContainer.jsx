@@ -9,13 +9,13 @@ import {
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
   getSetCheckoutStage,
+  submitBillingSection,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   isGuest as isGuestUser,
   isExpressCheckout,
   getAlternateFormUpdate,
-  getPickUpContactFormLabels,
   getSendOrderUpdate,
   getCheckoutStage,
 } from './Checkout.selector';
@@ -76,6 +76,7 @@ export class CheckoutContainer extends React.Component<Props> {
       setCheckoutStage,
       billingProps,
       router,
+      submitBilling,
       checkoutProgressBarLabels,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
@@ -112,6 +113,7 @@ export class CheckoutContainer extends React.Component<Props> {
         setCheckoutStage={setCheckoutStage}
         availableStages={availableStages}
         router={router}
+        submitBilling={submitBilling}
       />
     );
   }
@@ -139,6 +141,9 @@ export const mapDispatchToProps = dispatch => {
     },
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
+    },
+    submitBilling: payload => {
+      dispatch(submitBillingSection(payload));
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
@@ -187,7 +192,10 @@ const mapStateToProps = state => {
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
     orderHasShipping: getIsOrderHasShipping(state),
-    pickUpLabels: { ...getPickUpContactFormLabels(state), ...getEmailSignUpLabels(state) },
+    pickUpLabels: {
+      ...selectors.getPickUpContactFormLabels(state),
+      ...getEmailSignUpLabels(state),
+    },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),

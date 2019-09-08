@@ -19,6 +19,15 @@ export class ResetPasswordContainer extends PureComponent {
     }).isRequired,
   };
 
+  componentDidUpdate() {
+    const { successMessage } = this.props;
+    if (successMessage) {
+      setTimeout(() => {
+        this.backHandler();
+      }, 2000);
+    }
+  }
+
   resetPassword = ({ password, confirmPassword }) => {
     const { resetPasswordAction, queryParams } = this.props;
     resetPasswordAction({
@@ -29,7 +38,9 @@ export class ResetPasswordContainer extends PureComponent {
   };
 
   backHandler = e => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     const { resetStateAction, backToLoginAction } = this.props;
     resetStateAction();
     backToLoginAction();

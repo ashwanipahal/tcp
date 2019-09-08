@@ -24,7 +24,11 @@ import {
   getSetAirmilesPromoIdActn,
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
-import { routerPush } from '../../../../../utils';
+import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
+import { isMobileApp, routerPush } from '../../../../../utils';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
+
+const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
 const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
   // let recalcVal = recalcRewards;
@@ -123,6 +127,40 @@ const routeToPage = (dataObj, ...others) => {
   routerPush(to, asPath, ...others);
 };
 
+function getCreditCardType({ cardNumber = '', cardType } = {}) {
+  if (cardNumber.length === 0) {
+    return null;
+  }
+  const keys = Object.keys(CREDIT_CARDS_BIN_RANGES);
+  for (let i = 0; i < keys.length; i += 1) {
+    const type = keys[i];
+    const cartRangeType = CREDIT_CARDS_BIN_RANGES[type];
+    let currentRange = 0;
+    const rangesCount = cartRangeType.length;
+    for (; currentRange < rangesCount; currentRange += 1) {
+      const { from, to } = cartRangeType[currentRange];
+      const prefixLength = from.toString().length;
+      const prefix = cardNumber.substr(0, prefixLength);
+
+      if (prefix >= from && prefix <= to) {
+        return ACCEPTED_CREDIT_CARDS[type];
+      }
+    }
+  }
+  if (cardType && cardNumber.substr(0, 1) === '*') {
+    return cardType.toUpperCase();
+  }
+  return null;
+}
+
+function redirectToBilling(navigation) {
+  if (!isMobileApp()) {
+    routeToPage(CHECKOUT_ROUTES.billingPage);
+  } else if (navigation) {
+    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+  }
+}
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
@@ -130,4 +168,6 @@ export default {
   isOrderHasPickup,
   getAvailableStages,
   routeToPage,
+  getCreditCardType,
+  redirectToBilling,
 };

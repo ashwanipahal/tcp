@@ -30,6 +30,7 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
   setModalHeading={[Function]}
   submitAddressFormAction={[Function]}
   toggleAddressModal={[Function]}
+  verificationResult=""
   verifyAddressAction={[Function]}
 />
 `;
