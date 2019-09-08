@@ -1,10 +1,8 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
-
 /* eslint-disable extra-rules/no-commented-out-code */
 import { getAPIConfig, isMobileApp, getViewportInfo } from '@tcp/core/src/utils';
-
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
 import {
@@ -16,6 +14,8 @@ import {
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
 function getRecalcOrderPointsInterval() {
@@ -48,7 +48,7 @@ const getIsOrderHasPickup = createSelector(
 
 export const isGuest = createSelector(
   getPersonalDataState,
-  state => state && state.get('isGuest')
+  state => (state == null ? true : !!state.get('isGuest'))
 );
 
 function getIsMobile() {
@@ -106,9 +106,8 @@ function getShippingDestinationValues(state) {
   );
   // For shipping address when user logged-in, override email address that of user.
   // When user is guest, keep the address he specified in shipping section.
-  const email = getUserEmail(state) || emailAddress;
   return {
-    emailAddress: email,
+    emailAddress: getUserEmail(state) || emailAddress,
     ...result,
   };
 }
@@ -316,14 +315,40 @@ const getEmailSignUpLabels = state => {
   };
 };
 
+const getCheckoutProgressBarLabels = state => {
+  const {
+    lbl_checkoutheader_pickup: pickupLabel,
+    lbl_checkoutHeader_shipping: shippingLabel,
+    lbl_checkoutHeader_billing: billingLabel,
+    lbl_checkoutHeader_review: reviewLabel,
+  } = state.Labels.checkout && state.Labels.checkout.checkoutHeader;
+  return {
+    pickupLabel,
+    shippingLabel,
+    billingLabel,
+    reviewLabel,
+  };
+};
+
 const getShipmentMethods = state => {
   return state.Checkout.getIn(['options', 'shippingMethods']);
 };
 
 const getDefaultShipmentID = createSelector(
-  getShipmentMethods,
-  shipmentMethods => {
-    const defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+  [getShipmentMethods, getShippingDestinationValues],
+  (shipmentMethods, shippingDestinationValues) => {
+    if (shippingDestinationValues && shippingDestinationValues.method) {
+      const {
+        method: { shippingMethodId },
+      } = shippingDestinationValues;
+      if (shippingMethodId) {
+        const defaultShipment = shipmentMethods.find(method => method.id === shippingMethodId);
+        return defaultShipment && defaultShipment.id;
+      }
+    }
+    const defaultMethod = shipmentMethods.find(
+      (method, index) => method.isDefault === true || index === 0
+    );
     return defaultMethod && defaultMethod.id;
   }
 );
@@ -338,7 +363,7 @@ const isPickupAlt = createSelector(
   pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
 );
 
-export const getPickUpContactFormLabels = state => {
+const getPickUpContactFormLabels = state => {
   const {
     lbl_pickup_title: title,
     lbl_pickup_firstName: firstName,
@@ -433,7 +458,6 @@ function getPickupInitialPickupSectionValues(state) {
     ...{ hasAlternatePickup: isPickupAlt(state) },
     ...getPickupAltValues(state),
   };
-
   return {
     pickUpContact: {
       firstName: pickupValues.get('firstName') || getUserName(state),
@@ -448,6 +472,36 @@ function getPickupInitialPickupSectionValues(state) {
     hasAlternatePickup: isPickupAlt(state),
     pickUpAlternate: isPickupAlt(state) ? alternativeData : {},
   };
+}
+
+function getIsPaymentDisabled(state) {
+  const orderDetails = state.CartPageReducer.get('orderDetails');
+  if (orderDetails) {
+    return orderDetails.get('grandTotal') <= orderDetails.get('giftCardsTotal');
+  }
+  return false;
+}
+
+function getAddressByKey(state, onFileAddressKey) {
+  const addressList = getAddressListState(state);
+  if (addressList) {
+    return addressList.find(address => address.nickName === onFileAddressKey);
+  }
+  return false;
+}
+
+function getBillingValues(state) {
+  return state.Checkout.getIn(['values', 'billing']);
+}
+
+function getDetailedCreditCardById(state, id) {
+  return JSON.parse(JSON.stringify(state.PaymentReducer.get('cardList'))).find(
+    ({ creditCardId }) => (creditCardId && creditCardId.toString()) === id
+  );
+}
+
+function isCardNotUpdated(state, cardId) {
+  return getBillingValues(state).onFileCardId === cardId;
 }
 
 export default {
@@ -484,4 +538,10 @@ export default {
   getPickUpContactFormLabels,
   getUserEmail,
   getBillingLabels,
+  getIsPaymentDisabled,
+  getBillingValues,
+  getAddressByKey,
+  isCardNotUpdated,
+  getDetailedCreditCardById,
+  getCheckoutProgressBarLabels,
 };

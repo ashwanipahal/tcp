@@ -143,6 +143,9 @@ exports[`AccountOverview component should render correctly 1`] = `
     isVariationTypeLink={true}
   />
   <Styled(View) />
+  <Connect(TrackOrderContainer)
+    handleToggle={[Function]}
+  />
   <Styled(View) />
 </View>
 `;

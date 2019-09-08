@@ -15,6 +15,7 @@ import {
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
+import { getVerificationResult } from '../../AddressVerification/container/AddressVerification.selectors';
 import constants from './AddEditAddress.constants';
 
 export class AddEditAddressContainer extends React.PureComponent<Props> {
@@ -34,6 +35,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     onCancel: PropTypes.func,
     toggleAddressModal: PropTypes.func,
     currentForm: PropTypes.string,
+    setModalHeading: PropTypes.func,
+    verificationResult: PropTypes.string,
   };
 
   static defaultProps = {
@@ -52,6 +55,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     onCancel: () => {},
     toggleAddressModal: () => {},
     currentForm: '',
+    setModalHeading: () => {},
+    verificationResult: '',
   };
 
   constructor(props) {
@@ -154,6 +159,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       currentForm,
       addressLine1,
       countryState,
+      setModalHeading,
+      verificationResult,
     } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
@@ -174,6 +181,8 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         backToAddressBookClick={backToAddressBookClick}
         addressLine1={addressLine1}
         countryState={countryState}
+        setModalHeading={setModalHeading}
+        verificationResult={verificationResult}
       />
     );
   }
@@ -205,6 +214,7 @@ const mapStateToProps = state => {
     userEmail: getUserEmail(state),
     addressList: getAddressListState(state),
     labels: getAddEditAddressLabels(state),
+    verificationResult: getVerificationResult(state),
   };
 };
 

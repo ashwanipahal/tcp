@@ -7,11 +7,8 @@ import { getAddressList } from '../../../../AddressBook/container/AddressBook.ac
 
 export class AddressOverviewTile extends React.Component {
   componentDidMount() {
-    const { addressList } = this.props;
-    if (!addressList) {
-      const { getAddressListAction } = this.props;
-      getAddressListAction();
-    }
+    const { getAddressListAction } = this.props;
+    getAddressListAction();
   }
 
   render() {

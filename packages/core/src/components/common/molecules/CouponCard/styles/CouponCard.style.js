@@ -30,7 +30,7 @@ const styles = css`
 
   .couponCard__header_rewards {
     flex: 1;
-    background: ${props => props.theme.colors.BRAND.GIRLS};
+    background: ${props => props.theme.colorPalette.orange[800]};
   }
   .couponCard__header_text {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS} 0px

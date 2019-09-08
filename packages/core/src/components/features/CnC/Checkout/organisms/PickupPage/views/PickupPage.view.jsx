@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, FormSection, change } from 'redux-form';
+import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
@@ -36,6 +36,7 @@ class PickUpFormPart extends React.Component {
     if (pickUpContact) {
       this.setState({
         isEditing,
+        dataUpdated: true,
         pickUpContact: {
           firstName: pickUpContact.firstName,
           lastName: pickUpContact.lastName,
@@ -123,7 +124,7 @@ class PickUpFormPart extends React.Component {
   };
 
   updatePickupForm() {
-    const { pickupInitialValues } = this.props;
+    const { pickupInitialValues, dispatch } = this.props;
     const { pickUpContact } = this.state;
     if (
       pickupInitialValues &&
@@ -138,7 +139,7 @@ class PickUpFormPart extends React.Component {
         phoneNumber: pickupInitialValues.pickUpContact.phoneNumber,
         emailAddress: pickupInitialValues.pickUpContact.emailAddress,
       };
-
+      dispatch(initialize('checkoutPickup', pickupInitialValues));
       this.setState({ pickUpContact: pickUpContactUpdate });
     }
   }
@@ -281,7 +282,7 @@ class PickUpFormPart extends React.Component {
           </div>
           {isEditing && !isMobile && this.SaveAndCancelButton()}
         </div>
-        <CheckoutOrderInfo />
+        <CheckoutOrderInfo isGuest={isGuest} />
         <form onSubmit={handleSubmit(this.pickupSubmit)}>
           <CheckoutFooter
             hideBackLink={false}
@@ -339,7 +340,6 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: 'checkoutPickup', // a unique identifier for this form
   ...validateMethod,
-  enableReinitialize: true,
   destroyOnUnmount: false,
 })(withStyles(PickUpFormPart, styles));
 export { PickUpFormPart as PickUpFormPartVanilla };

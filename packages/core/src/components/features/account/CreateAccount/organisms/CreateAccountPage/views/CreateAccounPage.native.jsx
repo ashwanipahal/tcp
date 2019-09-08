@@ -6,6 +6,12 @@ import { Styles, ErrorWrapper } from '../styles/CreateAccounPage.style.native';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import {
+  setUserLoginDetails,
+  resetTouchPassword,
+  touchIDCheck,
+  isSupportedTouch,
+} from '../../../../LoginPage/container/loginUtils/keychain.utils.native';
 
 class CreateAccounPage extends React.Component {
   static propTypes = {
@@ -43,9 +49,17 @@ class CreateAccounPage extends React.Component {
     this.setState({ confirmHideShowPwd: value });
   };
 
+  // when account is cceate handle submit will submit the form
   handleSubmitForm(payload) {
     const { createAccountAction } = this.props;
     createAccountAction(payload);
+    resetTouchPassword();
+    setUserLoginDetails(payload.emailAddress, payload.password);
+    isSupportedTouch().then(biometryType => {
+      if ((biometryType && payload.useTouchID) || payload.useFaceID) {
+        touchIDCheck();
+      }
+    });
   }
 
   render() {
@@ -59,7 +73,11 @@ class CreateAccounPage extends React.Component {
     } = this.props;
     const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
-      <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        {...this.props}
+        keyboardShouldPersistTaps="handled"
+      >
         <View>
           <CreateAccountTopSection
             showForgotPasswordForm={showForgotPasswordForm}

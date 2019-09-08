@@ -39,13 +39,19 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-
 class LoginForm extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
       type: 'password',
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const { change, setEmailid } = this.props;
+    if (!prevProps.setEmailid && setEmailid) {
+      change('emailAddress', setEmailid);
+    }
   }
 
   showForgotPassword = () => {
@@ -90,7 +96,11 @@ class LoginForm extends React.PureComponent<Props> {
               component={TextBox}
               dataLocator="password"
               secureTextEntry={type === 'password'}
-              rightText={type === 'password' ? 'show' : 'hide'}
+              rightText={
+                type === 'password'
+                  ? labels.registration.lbl_createAccount_show
+                  : labels.registration.lbl_createAccount_hide
+              }
             />
             <HideShowFieldWrapper>
               <Anchor

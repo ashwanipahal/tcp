@@ -12,9 +12,10 @@ export const clearUserInfo = () => {
   };
 };
 
-export const getUserInfo = () => {
+export const getUserInfo = payload => {
   return {
     type: CONSTANTS.GET_USER_INFO,
+    payload,
   };
 };
 
@@ -26,13 +27,13 @@ export const setUserInfo = payload => {
 };
 
 /**
- * @function setUserPersonalData
+ * @function setUserChildren
  * @param { object } payload
- * Action creator for setting user personal data
+ * Action creator for setting user children
  */
-export const setUserPersonalData = payload => {
+export const setUserChildren = payload => {
   return {
-    type: CONSTANTS.SET_USER_PERSONAL_DATA,
+    type: CONSTANTS.SET_CHILDREN,
     payload,
   };
 };

@@ -142,7 +142,7 @@ describe('validator methods', () => {
 
   describe('dobValidator', () => {
     it('should return false if the value is not empty', () => {
-      expect(validatorMethods.dob('')).toBeTruthy();
+      expect(validatorMethods.dob('')).toBeFalsy();
     });
     it('should return false value is any of -->  Mm Dd Yyyy', () => {
       expect(validatorMethods.dob('Mm')).toBeFalsy();
@@ -179,6 +179,20 @@ describe('validator methods', () => {
 
     it('should return false if value passed is not equal to linkedFieldsValues[0]', () => {
       expect(validatorMethods.password('test1234')).toBeFalsy();
+    });
+  });
+
+  describe('nonSequentialNumberValidator', () => {
+    it('should return true if value passed is non sequential', () => {
+      expect(validatorMethods.nonSequentialNumber('1247')).toBeTruthy();
+    });
+
+    it('should return false  if value passed is not equal to linkedFieldsValues[0]', () => {
+      expect(validatorMethods.nonSequentialNumber('1234')).toBeFalsy();
+    });
+
+    it('should return true if value passed is empty', () => {
+      expect(validatorMethods.nonSequentialNumber('')).toBeTruthy();
     });
   });
 });

@@ -8,6 +8,9 @@ const styles = css`
   .logo {
     width: 192px;
   }
+  .signuptext {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
 `;
 
 export default styles;

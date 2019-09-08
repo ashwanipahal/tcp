@@ -1,6 +1,10 @@
 import { put } from 'redux-saga/effects';
-import { getChildrenSaga } from '../BirthdaySavingsList.saga';
-import { setUserPersonalData } from '../../../../../User/container/User.actions';
+import { getChildrenSaga, removeChildSaga } from '../BirthdaySavingsList.saga';
+import {
+  updateBirthdaySavingSuccess,
+  updateBirthdaySavingError,
+} from '../BirthdaySavingsList.actions';
+import { setUserChildren } from '../../../../../User/container/User.actions';
 
 describe('BirthdaySavingsList saga', () => {
   describe('getChildrenSaga', () => {
@@ -10,16 +14,37 @@ describe('BirthdaySavingsList saga', () => {
       gen.next();
     });
 
-    it('should dispatch setUserPersonalData action for success resposnse', () => {
+    it('should dispatch setUserChildren action for success resposnse', () => {
       const response = [{}];
       const putDescriptor = gen.next(response).value;
       expect(putDescriptor).toEqual(
         put(
-          setUserPersonalData({
+          setUserChildren({
             children: response,
           })
         )
       );
+    });
+  });
+
+  describe('removeChildSaga', () => {
+    let gen;
+    beforeEach(() => {
+      gen = removeChildSaga({});
+      gen.next();
+    });
+
+    it('should dispatch updateBirthdaySavingSuccess action for success resposnse', () => {
+      const response = [{}];
+      gen.next(response);
+      const putDescriptor = gen.next(response).value;
+      expect(putDescriptor).toEqual(put(updateBirthdaySavingSuccess(response)));
+    });
+
+    it('should dispatch updateBirthdaySavingError action for error response', () => {
+      const response = [{}];
+      const putDescriptor = gen.throw(response).value;
+      expect(putDescriptor).toEqual(put(updateBirthdaySavingError(response)));
     });
   });
 });

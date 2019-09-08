@@ -17,7 +17,10 @@ import withStyles from '../../../hoc/withStyles';
 // import errorBoundary from '../../../hoc/errorBoundary';
 
 function getParent() {
-  return document.querySelector('.TCPModal__Wrapper');
+  // eslint-disable-next-line no-extra-boolean-cast
+  return !!document.querySelector('.checkout-pages')
+    ? document.querySelector('#overlayWrapper .TCPModal__Wrapper')
+    : document.querySelector('.TCPModal__Wrapper');
 }
 
 class Modal extends React.PureComponent {
@@ -45,6 +48,7 @@ class Modal extends React.PureComponent {
       closeIconLeftAligned,
       ariaLabelledby,
       ariaDescribedby,
+      innerContentClassName = '',
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
@@ -63,7 +67,7 @@ class Modal extends React.PureComponent {
                 <Row>
                   <Col
                     colSize={column}
-                    className="TCPModal__InnerContent"
+                    className={`TCPModal__InnerContent ${innerContentClassName}`}
                     data-locator={dataLocator}
                   >
                     <ModalHeader
@@ -81,7 +85,10 @@ class Modal extends React.PureComponent {
               </Grid>
             )}
             {fixedWidth && (
-              <div className="TCPModal__InnerContent" data-locator={dataLocator}>
+              <div
+                className={`TCPModal__InnerContent ${innerContentClassName}`}
+                data-locator={dataLocator}
+              >
                 <ModalHeader
                   closeFunc={onRequestClose}
                   title={title}

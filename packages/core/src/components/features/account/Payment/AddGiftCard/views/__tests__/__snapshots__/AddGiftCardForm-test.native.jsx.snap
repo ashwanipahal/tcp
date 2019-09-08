@@ -5,6 +5,7 @@ exports[`Add gift card form component render error message 1`] = `
   addGiftCardResponse="foo"
   change={[MockFunction]}
   handleSubmit={[Function]}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},
@@ -45,6 +46,7 @@ exports[`Add gift card form component render error message 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -92,6 +94,7 @@ exports[`Add gift card form component render error message 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -149,6 +152,7 @@ exports[`Add gift card form component render error message 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -240,6 +244,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
   addGiftCardResponse={null}
   change={[MockFunction]}
   handleSubmit={[Function]}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},
@@ -267,6 +272,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -314,6 +320,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -371,6 +378,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,

@@ -22,8 +22,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     />
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mt-XXL"
-    fullBleed={true}
+    className="aboutyou-wrapper"
   >
     <Styled(Col)
       className="aboutyou-radio"
@@ -182,6 +181,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         name="question1"
         onClick={[Function]}
         selectedValue={false}
+        topPosition="0px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -355,6 +355,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         name="question1"
         onClick={[Function]}
         selectedValue={false}
+        topPosition="0px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -528,6 +529,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         name="question1"
         onClick={[Function]}
         selectedValue={true}
+        topPosition="0px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -701,6 +703,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         name="question1"
         onClick={[Function]}
         selectedValue={false}
+        topPosition="0px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -736,11 +739,10 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     />
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mt-XXL"
-    fullBleed={true}
+    className="aboutyou-wrapper"
   >
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -757,7 +759,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={true}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -907,7 +908,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -924,7 +925,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={false}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1074,7 +1074,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -1091,7 +1091,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={true}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1241,7 +1240,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -1258,7 +1257,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={false}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1408,7 +1406,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -1425,7 +1423,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={false}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1576,7 +1573,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mb-LRG elem-mt-XXL"
+    className="elem-mb-LRG elem-mt-XXL actions-wrapper"
   >
     <Styled(Col)
       className="aboutyou_cancel"

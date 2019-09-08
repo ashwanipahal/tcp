@@ -18,6 +18,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -67,6 +68,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -109,9 +111,9 @@ exports[`AddressFields component should render correctly 1`] = `
         }
       }
       dataLocator="addnewaddress-addressl1"
-      id="addressLine1"
-      name="addressLine1"
+      onChangeText={[Function]}
       onValueChange={[Function]}
+      refs={[Function]}
     />
   </Styled(View)>
   <Styled(View)>
@@ -131,6 +133,59 @@ exports[`AddressFields component should render correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine1"
+      label=""
+      name="addressLine1"
+      title=""
+      type="hidden"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -179,6 +234,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -583,7 +639,7 @@ exports[`AddressFields component should render correctly 1`] = `
         }
         name="state"
         onValueChange={[Function]}
-        selectedValue="AL"
+        selectedValue="Select"
         variation="secondary"
       />
     </Styled(View)>
@@ -607,6 +663,7 @@ exports[`AddressFields component should render correctly 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -731,6 +788,7 @@ exports[`AddressFields component should render correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -780,6 +838,7 @@ exports[`AddressFields component should render correctly 1`] = `
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -834,6 +893,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -883,6 +943,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -925,9 +986,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
       }
       dataLocator="addnewaddress-addressl1"
-      id="addressLine1"
-      name="addressLine1"
+      onChangeText={[Function]}
       onValueChange={[Function]}
+      refs={[Function]}
     />
   </Styled(View)>
   <Styled(View)>
@@ -947,6 +1008,59 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine1"
+      label=""
+      name="addressLine1"
+      title=""
+      type="hidden"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -995,6 +1109,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -1399,7 +1514,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         name="state"
         onValueChange={[Function]}
-        selectedValue="AL"
+        selectedValue="Select"
         variation="secondary"
       />
     </Styled(View)>
@@ -1423,6 +1538,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -1547,6 +1663,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -1596,6 +1713,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -1650,6 +1768,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -1699,6 +1818,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -1741,9 +1861,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
       }
       dataLocator="addnewaddress-addressl1"
-      id="addressLine1"
-      name="addressLine1"
+      onChangeText={[Function]}
       onValueChange={[Function]}
+      refs={[Function]}
     />
   </Styled(View)>
   <Styled(View)>
@@ -1763,6 +1883,59 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine1"
+      label=""
+      name="addressLine1"
+      title=""
+      type="hidden"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -1811,6 +1984,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -2215,7 +2389,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         name="state"
         onValueChange={[Function]}
-        selectedValue="AL"
+        selectedValue="Select"
         variation="secondary"
       />
     </Styled(View)>
@@ -2239,6 +2413,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -2363,6 +2538,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -2412,6 +2588,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -2466,6 +2643,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -2515,6 +2693,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -2557,9 +2736,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
       }
       dataLocator="addnewaddress-addressl1"
-      id="addressLine1"
-      name="addressLine1"
+      onChangeText={[Function]}
       onValueChange={[Function]}
+      refs={[Function]}
     />
   </Styled(View)>
   <Styled(View)>
@@ -2579,6 +2758,59 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine1"
+      label=""
+      name="addressLine1"
+      title=""
+      type="hidden"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -2627,6 +2859,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,
@@ -2786,7 +3019,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         }
         name="state"
         onValueChange={[Function]}
-        selectedValue="AL"
+        selectedValue="Select"
         variation="secondary"
       />
     </Styled(View)>
@@ -2810,6 +3043,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -2934,6 +3168,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -2983,6 +3218,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "error": "",
             "touched": "",
           },
+          "onChangeText": [Function],
           "secureTextEntry": false,
           "showErrorIcon": true,
           "showSuccessCheck": false,

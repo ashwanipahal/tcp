@@ -41,7 +41,7 @@ class BagPageView extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, totalCount, orderItemsCount } = this.props;
+    const { className, labels, totalCount, orderItemsCount, isGuest } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     return (
       <div className={className}>
@@ -56,6 +56,7 @@ class BagPageView extends React.PureComponent {
           leftSection={this.renderLeftSection}
           showLeftSection={isNoNEmptyBag}
           bagActions={this.renderActions}
+          isGuest={isGuest}
         />
       </div>
     );
@@ -68,6 +69,7 @@ BagPageView.propTypes = {
   orderItemsCount: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
+  isGuest: PropTypes.bool.isRequired,
 };
 
 export default withStyles(BagPageView, styles);
