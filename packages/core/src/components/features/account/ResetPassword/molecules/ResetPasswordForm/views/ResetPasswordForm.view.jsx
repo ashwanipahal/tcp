@@ -10,6 +10,10 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ResetPasswordForm.style';
 
+const handleClick = handleSubmit => {
+  handleSubmit();
+};
+
 export const ResetPasswordForm = ({
   className,
   labels,
@@ -19,7 +23,15 @@ export const ResetPasswordForm = ({
   handleSubmit,
 }) => {
   return (
-    <form name="ResetPasswordForm" noValidate onSubmit={handleSubmit} className={className}>
+    <form
+      name="ResetPasswordForm"
+      noValidate
+      onSubmit={e => {
+        e.preventDefault();
+        handleClick(handleSubmit);
+      }}
+      className={className}
+    >
       {successMessage && (
         <BodyCopy fontSize="fs12" fontWeight="semibold" color="green.500" className="elem-mb-XL">
           {labels[`lbl_resetPassword_${successMessage}`]}

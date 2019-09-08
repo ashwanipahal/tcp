@@ -239,5 +239,13 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/account/saveUserSurvey',
   },
+  updatePaymentInstruction: {
+    method: 'PUT',
+    URI: 'v2/checkout/updatePaymentInstruction',
+  },
+  deleteChild: {
+    method: 'POST',
+    URI: 'v2/account/deleteBirthdaySavings',
+  },
 };
 export default endpoints;

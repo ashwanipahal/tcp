@@ -3,6 +3,7 @@
 exports[`CouponList Component should render correctly 1`] = `
 <View>
   <CouponTile
+    commonLabels={Object {}}
     coupon={Object {}}
     labels={Object {}}
   />

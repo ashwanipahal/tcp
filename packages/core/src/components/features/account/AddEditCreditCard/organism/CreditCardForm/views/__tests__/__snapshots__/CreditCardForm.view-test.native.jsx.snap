@@ -142,6 +142,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
   handleSubmit={[MockFunction]}
   initialValues={Object {}}
   isEdit={false}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},
@@ -597,6 +598,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
   handleSubmit={[MockFunction]}
   initialValues={Object {}}
   isEdit={false}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},

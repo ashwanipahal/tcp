@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export const modalStyles = css`
-  div.atb-innerContent {
+  div.TCPModal__InnerContent.atb-innerContent {
     right: 0;
     left: auto;
     top: 0;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
+import { getVerificationResult } from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.selectors';
 import {
   getAddressList,
   deleteAddress,
@@ -18,21 +19,6 @@ import {
 } from './AddressBook.selectors';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
-// @flow
-type Props = {
-  getAddressListAction: () => void,
-  addressList: List<any>,
-  isFetching: boolean,
-  onDefaultShippingAddressClick: () => void,
-  showUpdatedNotification: any,
-  onDeleteAddress: Function,
-  deleteModalMountedState: boolean,
-  setDeleteModalMountState: Function,
-  showUpdatedNotificationOnModal: any,
-  clearAddressBookNotification: () => void,
-  labels: object,
-  addressLabels: object,
-};
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
     const { getAddressListAction } = this.props;
@@ -56,6 +42,7 @@ export class AddressBookContainer extends React.Component<Props> {
       showUpdatedNotificationOnModal,
       labels,
       addressLabels,
+      verificationResult,
     } = this.props;
     if (List.isList(addressList)) {
       return (
@@ -70,6 +57,7 @@ export class AddressBookContainer extends React.Component<Props> {
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
           addressLabels={addressLabels}
+          verificationResult={verificationResult}
         />
       );
     }
@@ -77,7 +65,7 @@ export class AddressBookContainer extends React.Component<Props> {
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     getAddressListAction: () => {
       dispatch(getAddressList());
@@ -109,6 +97,7 @@ const mapStateToProps = state => {
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     deleteModalMountedState: deleteModalOpenState(state),
     addressLabels: getAddEditAddressLabels(state),
+    verificationResult: getVerificationResult(state),
   };
 };
 

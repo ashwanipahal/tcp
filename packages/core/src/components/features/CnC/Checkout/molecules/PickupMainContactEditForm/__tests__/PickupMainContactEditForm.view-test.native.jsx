@@ -1,24 +1,61 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { PickupMainContactEditFormVanilla } from '../views/PickupMainContactEditForm.view.native';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
-describe('Coupon component', () => {
-  it('should renders correctly when Coupon are not present', () => {
+describe('PickupMainContactEditFormVanilla component', () => {
+  it('should renders correctly when data not present', () => {
     const props = {
+      dispatch: jest.fn(),
       labels: {},
-      className: '',
-      isCondensed: false,
-      showNoteOnToggle: false,
-      isAlternateUpdateChecked: false,
-      isMobile: true,
-      formData: {},
+      handleSubmit: jest.fn(),
+      isMobile: false,
       isEditing: false,
-      isReset: false,
-      onClose: jest.fn(),
+      className: '',
+      showPhoneNumber: false,
+      formData: {},
+      onEditModeChange: jest.fn(),
+      handleExitEditModeClick: jest.fn(),
     };
     const component = shallow(<PickupMainContactEditFormVanilla {...props} />);
     component.instance().renderSectionTitle();
-    component.instance().SaveButton();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should renders correctly when data are present', () => {
+    const props = {
+      dispatch: jest.fn(),
+      labels: {},
+      handleSubmit: jest.fn(),
+      isMobile: true,
+      isEditing: true,
+      className: '',
+      showPhoneNumber: false,
+      formData: {},
+      onEditModeChange: jest.fn(),
+      handleExitEditModeClick: jest.fn(),
+    };
+    const component = shallow(<PickupMainContactEditFormVanilla {...props} />);
+    component.instance().renderSectionTitle();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should renders on click', () => {
+    const props = {
+      dispatch: jest.fn(),
+      labels: {},
+      handleSubmit: jest.fn(),
+      isMobile: true,
+      isEditing: false,
+      className: '',
+      showPhoneNumber: false,
+      formData: {},
+      onEditModeChange: jest.fn(),
+      handleExitEditModeClick: jest.fn(),
+    };
+    const component = shallow(<PickupMainContactEditFormVanilla {...props} />);
+    component.instance().renderSectionTitle();
+    component.find(Anchor).simulate('click', { preventDefault: jest.fn() });
     expect(component).toMatchSnapshot();
   });
 });

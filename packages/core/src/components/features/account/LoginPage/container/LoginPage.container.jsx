@@ -51,10 +51,8 @@ class LoginPageContainer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const { resetLoginState, loginError } = this.props;
-    if (loginError) {
-      resetLoginState();
-    }
+    const { resetLoginState } = this.props;
+    resetLoginState();
   }
 
   openModal = params => {

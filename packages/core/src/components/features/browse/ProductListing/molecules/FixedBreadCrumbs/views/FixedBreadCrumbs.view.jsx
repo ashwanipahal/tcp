@@ -24,6 +24,7 @@ import { PropTypes } from 'prop-types';
 import { Anchor } from '../../../../../../common/atoms';
 import errorBoundary from '../../../../../../common/hoc/withErrorBoundary';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import { getLocator } from '../../../../../../../utils/utils';
 import FixedBreadCrumbsStyles from '../styles/FixedBreadCrumbs.styles';
 
 const asPathConstructor = url => {
@@ -59,6 +60,7 @@ const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {
                 className={itemClassName}
                 to={`/c?cid=${pathSuffix}`}
                 asPath={`/${asPathConstructor(pathSuffix)}`}
+                data-locator={`${getLocator(`breadCrumb_L${index + 1}_Category`)}`}
                 {...otherHyperLinkProps}
               >
                 {displayName}

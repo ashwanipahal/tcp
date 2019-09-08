@@ -25,7 +25,10 @@ describe('Coupon saga', () => {
     const payload = { formPromise: {}, formData: {}, source: '' };
     const applyCouponSaga = applyCoupon({ payload });
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
-    expect(applyCouponSaga.next().value).toEqual(call(applyCouponToCart, payload.formData));
+    applyCouponSaga.next();
+    expect(applyCouponSaga.next().value).toEqual(
+      call(applyCouponToCart, payload.formData, undefined)
+    );
     expect(applyCouponSaga.next().value).toEqual(put(hideLoader()));
   });
 
@@ -39,7 +42,10 @@ describe('Coupon saga', () => {
     const applyCouponSaga = applyCoupon({ payload });
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
-    expect(applyCouponSaga.next().value).toEqual(call(applyCouponToCart, payload.formData));
+    applyCouponSaga.next();
+    expect(applyCouponSaga.next().value).toEqual(
+      call(applyCouponToCart, payload.formData, undefined)
+    );
     expect(applyCouponSaga.next().value).toEqual(put(hideLoader()));
   });
 
@@ -53,7 +59,10 @@ describe('Coupon saga', () => {
     const applyCouponSaga = applyCoupon({ payload });
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
-    expect(applyCouponSaga.next().value).toEqual(call(applyCouponToCart, payload.formData));
+    applyCouponSaga.next();
+    expect(applyCouponSaga.next().value).toEqual(
+      call(applyCouponToCart, payload.formData, undefined)
+    );
     expect(applyCouponSaga.next().value).toEqual(put(hideLoader()));
   });
 
