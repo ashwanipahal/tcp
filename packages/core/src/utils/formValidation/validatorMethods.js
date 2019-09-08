@@ -156,7 +156,7 @@ function ssnValidator(value) {
 }
 
 function dobValidator(value) {
-  return ['Mm', 'Dd', 'Yyyy'].indexOf(value) === -1;
+  return ['Mm', 'Dd', 'Yyyy', ''].indexOf(value) === -1;
 }
 
 function onlyDigitsValidator(value) {
@@ -177,6 +177,23 @@ function eitherRequiredValidator(value, param, linkedPropsValues, linkedFieldsVa
 function notEqualToValidator(value, linkedFieldsValues) {
   return value !== linkedFieldsValues[0];
 }
+
+/**
+ * @function - nonSequentialNumberValidator
+ *
+ * @param {*} value  - value to be validated for having non sequestial numbers
+ */
+const nonSequentialNumberValidator = value => {
+  if (!value) {
+    return true;
+  }
+
+  const isInvalid =
+    /^([0-9])(\1\1\1)$/gi.test(value) ||
+    '0123456789012'.indexOf(value) > -1 ||
+    '9876543210987'.indexOf(value) > -1;
+  return !isInvalid;
+};
 
 const validatorMethods = {
   required: requiredValidator,
@@ -208,6 +225,7 @@ const validatorMethods = {
   dob: dobValidator,
   eitherRequired: eitherRequiredValidator,
   notEqualTo: notEqualToValidator,
+  nonSequentialNumber: nonSequentialNumberValidator,
   cvvNumber: onlyDigitsValidator,
   cvvLengthThree: cvvLengthThreeValidator,
   cvvLengthFour: cvvLengthFourValidator,

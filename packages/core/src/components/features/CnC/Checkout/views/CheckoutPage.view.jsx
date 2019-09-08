@@ -45,6 +45,7 @@ class CheckoutPage extends React.PureComponent {
       orderHasShipping,
       routeToPickupPage,
       billingProps,
+      submitBilling,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -88,7 +89,12 @@ class CheckoutPage extends React.PureComponent {
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
-          <BillingPage {...billingProps} orderHasShipping={orderHasShipping} isGuest={isGuest} />
+          <BillingPage
+            {...billingProps}
+            orderHasShipping={orderHasShipping}
+            isGuest={isGuest}
+            submitBilling={submitBilling}
+          />
         )}
       </div>
     );
@@ -131,6 +137,7 @@ CheckoutPage.propTypes = {
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
   routeToPickupPage: PropTypes.func.isRequired,
+  submitBilling: PropTypes.func.isRequired,
 };
 
 export default CheckoutPage;

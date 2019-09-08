@@ -77,7 +77,7 @@ export class DetailedCouponTile extends React.Component {
   componentDidUpdate() {
     const { coupon, toastMessage } = this.props;
     if (coupon.error) {
-      toastMessage(coupon.error);
+      toastMessage(coupon);
     }
   }
 

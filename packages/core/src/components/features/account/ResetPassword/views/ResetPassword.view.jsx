@@ -12,6 +12,7 @@ export const ResetPassword = ({ labels, successMessage, errorMessage, onSubmit, 
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={onSubmit}
+        onBack={onBack}
       />
     </React.Fragment>
   );
