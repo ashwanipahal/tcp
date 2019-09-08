@@ -38,6 +38,9 @@ import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCard
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
 import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
+import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
+import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
+import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -87,6 +90,9 @@ import {
   TOAST_REDUCER_KEY,
   MAILING_ADDRESS_REDUCER_KEY,
   PRODUCT_DETAIL_REDUCER_KEY,
+  APPLY_NOW_MODAL_REDUCER_KEY,
+  PRODUCT_TAB_LIST_REDUCER_KEY,
+  BIRTHDAY_SAVING_LIST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -113,6 +119,11 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 //   SessionConfigReducer,
 //   SESSIONCONFIG_REDUCER_KEY
 // );
+
+const filteredProductTabListReducer = createFilteredReducer(
+  ProductTabListReducer,
+  PRODUCT_TAB_LIST_REDUCER_KEY
+);
 
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
@@ -163,4 +174,7 @@ export default combineReducers({
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: ProductDetailReducer,
+  [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
+  [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
+  [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
 });

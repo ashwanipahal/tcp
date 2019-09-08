@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
 
 import CountrySelectorModal from './CountrySelectorModal';
@@ -238,5 +239,5 @@ CountrySelector.defaultProps = {
   updateSiteId: () => {},
 };
 
-export default withStyles(CountrySelector, style);
+export default withStyles(errorBoundary(CountrySelector), style);
 export { CountrySelector as CountrySelectorVanilla };

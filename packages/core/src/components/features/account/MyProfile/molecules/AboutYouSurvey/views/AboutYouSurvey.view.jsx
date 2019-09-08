@@ -81,7 +81,7 @@ export class AboutYouSurvey extends React.Component {
       answer1: question1.answers.length ? question1.answers[0] : '',
       answer2: question2.answers && question2.answers.length ? question2.answers.join('|') : '',
     };
-    saveSurveyData(payload);
+    saveSurveyData(payload, !updateQuestion1);
   };
 
   /**

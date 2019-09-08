@@ -6,6 +6,7 @@ exports[`HomePageView should render correctly 1`] = `
     modules={
       Object {
         "moduleA": [Function],
+        "moduleB": [Function],
         "moduleD": [Function],
         "moduleH": [Function],
         "moduleK": [Function],
@@ -13,6 +14,13 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleN": [Function],
       }
     }
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <ModuleB
     navigation={
       Object {
         "getParam": [Function],
@@ -44,6 +52,5 @@ exports[`HomePageView should render correctly 1`] = `
     text="PLP Page"
     url=""
   />
-  <Connect(ModuleJ) />
 </ScrollViewMock>
 `;

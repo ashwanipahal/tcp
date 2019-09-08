@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
@@ -39,7 +40,6 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-
 class LoginForm extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
@@ -48,9 +48,11 @@ class LoginForm extends React.PureComponent<Props> {
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { change, setEmailid } = this.props;
-    change('emailAddress', setEmailid);
+    if (!prevProps.setEmailid && setEmailid) {
+      change('emailAddress', setEmailid);
+    }
   }
 
   showForgotPassword = () => {
@@ -97,8 +99,8 @@ class LoginForm extends React.PureComponent<Props> {
               secureTextEntry={type === 'password'}
               rightText={
                 type === 'password'
-                  ? labels.registration.lbl_createAccount_show
-                  : labels.registration.lbl_createAccount_hide
+                  ? getLabelValue(labels, 'lbl_createAccount_show', 'registration')
+                  : getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
               }
             />
             <HideShowFieldWrapper>
@@ -110,7 +112,11 @@ class LoginForm extends React.PureComponent<Props> {
                 noLink
                 to="/#"
                 dataLocator=""
-                text={type === 'password' ? 'show' : 'hide'}
+                text={
+                  type === 'password'
+                    ? getLabelValue(labels, 'lbl_createAccount_show', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                }
               />
             </HideShowFieldWrapper>
           </ShowHideWrapper>

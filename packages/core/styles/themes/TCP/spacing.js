@@ -38,6 +38,7 @@ export default {
     SMALL: '458px',
   },
   APP_LAYOUT_SPACING: {
+    XXS: '10px',
     XS: '20px',
     SM: '30px',
   },

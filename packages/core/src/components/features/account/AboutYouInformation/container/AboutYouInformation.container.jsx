@@ -84,7 +84,7 @@ export class AboutYouInformationContainer extends React.PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels } = this.props;
+    const { successMessage, errorMessage, labels, onClose, ...otherProps } = this.props;
     return (
       <AboutYouInformation
         successMessage={successMessage}
@@ -92,6 +92,8 @@ export class AboutYouInformationContainer extends React.PureComponent {
         onSubmit={this.updateAboutYouInformation}
         labels={labels}
         initialValues={this.initialValues}
+        onClose={onClose}
+        {...otherProps}
       />
     );
   }
@@ -103,6 +105,11 @@ AboutYouInformationContainer.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   setSurveyAnswersAction: PropTypes.func.isRequired,
   userSurvey: PropTypes.shape({}).isRequired,
+  onClose: PropTypes.func,
+};
+
+AboutYouInformationContainer.defaultProps = {
+  onClose: () => {},
 };
 
 export const mapStateToProps = state => ({
