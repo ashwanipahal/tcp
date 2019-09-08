@@ -8,7 +8,7 @@ const WalletView = ({ labels }) => {
     <PageHeadingWithLinks
       heading={labels.placeRewards.lbl_my_wallet_heading}
       programDetailsCta={labels.placeRewards.lbl_my_rewards_program_details}
-      termsConditionCta={labels.common.lbl_common_tnc}
+      termsConditionCta={labels.placeRewards.lbl_common_tnc}
     >
       <MyRewards labels={labels} view="all" />
     </PageHeadingWithLinks>
@@ -20,8 +20,6 @@ WalletView.propTypes = {
     placeRewards: PropTypes.shape({
       lbl_my_wallet_heading: PropTypes.string,
       lbl_my_rewards_program_details: PropTypes.string,
-    }),
-    common: PropTypes.shape({
       lbl_common_tnc: PropTypes.string,
     }),
   }),
@@ -32,8 +30,6 @@ WalletView.defaultProps = {
     placeRewards: {
       lbl_my_wallet_heading: '',
       lbl_my_rewards_program_details: '',
-    },
-    common: {
       lbl_common_tnc: '',
     },
   },

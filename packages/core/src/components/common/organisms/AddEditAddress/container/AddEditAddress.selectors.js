@@ -74,20 +74,20 @@ export const getAddEditAddressLabels = state => {
       editAddressLbl: getLabelValue(
         state.Labels,
         'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
-        'account',
-        'addressBook'
+        'addressBook',
+        'account'
       ),
       addNewAddress: getLabelValue(
         state.Labels,
         'ACC_LBL_EDIT_ADDRESS_FORM_HEADING',
-        'account',
-        'addressBook'
+        'addressBook',
+        'account'
       ),
       verifyAddress: getLabelValue(
         state.Labels,
         'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER',
-        'account',
-        'addressBook'
+        'addressBook',
+        'account'
       ),
     },
   };

@@ -77,7 +77,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                   className="reward-points-section"
                 >
                   <div className="my-place-reward-section">
-                    <RewardsPoints labels={labels.common} />
+                    <RewardsPoints labels={labels.placeRewards} />
                   </div>
                 </Col>
               </Row>

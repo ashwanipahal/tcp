@@ -263,26 +263,26 @@ const getCheckoutProgressBarLabels = state => {
     pickupLabel: getLabelValue(
       state.Labels,
       'lbl_checkoutheader_pickup',
-      'checkout',
-      'checkoutHeader'
+      'checkoutHeader',
+      'checkout'
     ),
     shippingLabel: getLabelValue(
       state.Labels,
       'lbl_checkoutHeader_shipping',
-      'checkout',
-      'checkoutHeader'
+      'checkoutHeader',
+      'checkout'
     ),
     billingLabel: getLabelValue(
       state.Labels,
       'lbl_checkoutHeader_billing',
-      'checkout',
-      'checkoutHeader'
+      'checkoutHeader',
+      'checkout'
     ),
     reviewLabel: getLabelValue(
       state.Labels,
       'lbl_checkoutHeader_review',
-      'checkout',
-      'checkoutHeader'
+      'checkoutHeader',
+      'checkout'
     ),
   };
 };

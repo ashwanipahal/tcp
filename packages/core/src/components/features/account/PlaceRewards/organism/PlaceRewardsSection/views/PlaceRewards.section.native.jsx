@@ -31,7 +31,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.common.lbl_common_point_balance}
+            text={labels.placeRewards.lbl_common_point_balance}
           />
           <RewardsPoints />
         </StyledView>

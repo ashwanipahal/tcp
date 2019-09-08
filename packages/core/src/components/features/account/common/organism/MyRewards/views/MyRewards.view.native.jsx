@@ -118,7 +118,7 @@ class MyRewards extends PureComponent {
                 }}
                 anchorVariation="primary"
                 dataLocator="my-rewards-tnc"
-                text={labels.common.lbl_common_tnc}
+                text={labels.placeRewards.lbl_common_tnc}
               />
             </AnchorLeftMargin>
           </StyledAnchorWrapper>
@@ -129,7 +129,7 @@ class MyRewards extends PureComponent {
 }
 
 MyRewards.propTypes = {
-  labels: PropTypes.shape({ common: {}, placeRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
   onApplyCouponToBagFromList: PropTypes.func,
@@ -141,10 +141,10 @@ MyRewards.propTypes = {
 
 MyRewards.defaultProps = {
   labels: {
-    common: { lbl_common_tnc: '' },
     placeRewards: {
       lbl_my_rewards_program_details: '',
       lbl_my_rewards_heading: '',
+      lbl_common_tnc: '',
     },
   },
   coupons: [],

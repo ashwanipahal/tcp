@@ -26,7 +26,7 @@ const getButtonText = ({
     buttonText = labels.placeRewards.lbl_bonus_points_future_use;
     dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
-    buttonText = labels.common.lbl_common_applied_to_order;
+    buttonText = labels.placeRewards.lbl_common_applied_to_order;
     dataLocator = 'appliedtoorderbtn';
   } else {
     buttonText = labels.placeRewards.lbl_bonus_points_available_today;

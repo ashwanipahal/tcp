@@ -11,6 +11,7 @@ describe('BonusPointsAvailabilityVanilla', () => {
       lbl_place_rewards_points: '',
       lbl_place_rewards_day: '',
       lbl_common_details: '',
+      lbl_common_applied_to_order: '',
     },
   };
   const mockedToggleBonusPointsModal = jest.fn();

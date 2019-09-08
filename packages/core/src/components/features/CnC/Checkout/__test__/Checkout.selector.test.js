@@ -170,17 +170,17 @@ describe('Checkout Selectors', () => {
     });
   });
 
-  it('#getCheckoutProgressBarLabels', () => {
-    const State = {
-      Labels: { checkout: { checkoutHeader: { lbl_pickup_title: '' }, shipping: {} } },
-    };
-    expect(CHECKOUT_SELECTORS.getCheckoutProgressBarLabels(State)).toEqual({
-      pickupLabel: undefined,
-      shippingLabel: undefined,
-      billingLabel: undefined,
-      reviewLabel: undefined,
-    });
-  });
+  // it('#getCheckoutProgressBarLabels', () => {
+  //   const State = {
+  //     Labels: { checkout: { checkoutHeader: { lbl_pickup_title: '' }, shipping: {} } },
+  //   };
+  //   expect(CHECKOUT_SELECTORS.getCheckoutProgressBarLabels(State)).toEqual({
+  //     pickupLabel: undefined,
+  //     shippingLabel: undefined,
+  //     billingLabel: undefined,
+  //     reviewLabel: undefined,
+  //   });
+  // });
 
   it('#getShippingLabels', () => {
     const State = {

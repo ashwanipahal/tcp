@@ -9,8 +9,7 @@ describe('WalletView component', () => {
       programDetailsCta: 'test',
       termsConditionCta: 'test',
       labels: {
-        myPlaceRewards: {},
-        common: {},
+        placeRewards: {},
       },
     };
     const component = shallow(<WalletView {...props} />);

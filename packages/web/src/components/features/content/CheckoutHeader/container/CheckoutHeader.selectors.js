@@ -13,14 +13,14 @@ const getCheckoutHeaderLabels = state => {
     checkoutHeaderLabel: getLabelValue(
       state.Labels,
       'lbl_checkoutheader_checkout',
-      'checkout',
-      'checkoutHeader'
+      'checkoutHeader',
+      'checkout'
     ),
     returnBagLabel: getLabelValue(
       state.Labels,
       'lbl_checkoutheader_returnBag',
-      'checkout',
-      'checkoutHeader'
+      'checkoutHeader',
+      'checkout'
     ),
   };
 };
