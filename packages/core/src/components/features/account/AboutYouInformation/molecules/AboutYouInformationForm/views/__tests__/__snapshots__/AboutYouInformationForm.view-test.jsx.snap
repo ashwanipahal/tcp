@@ -1576,7 +1576,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     className="elem-mb-LRG elem-mt-XXL actions-wrapper"
   >
     <Styled(Col)
-      className="aboutyou_cancel"
+      className="aboutyou_save"
       colSize={
         Object {
           "large": 3,
@@ -1588,6 +1588,28 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         Object {
           "large": 3,
           "medium": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mb-XS"
+        data-locator="moreaboutyou-savebtn"
+        disabled={true}
+        fill="BLUE"
+        fullWidth={true}
+        onClick={[Function]}
+      >
+        SAVE
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou_cancel"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
         }
       }
     >
@@ -1603,28 +1625,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
           type="button"
         />
       </Styled(Anchor)>
-    </Styled(Col)>
-    <Styled(Col)
-      className="aboutyou_save"
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="elem-mb-XS"
-        data-locator="moreaboutyou-savebtn"
-        disabled={true}
-        fill="BLUE"
-        fullWidth={true}
-        onClick={[Function]}
-      >
-        SAVE
-      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </div>
