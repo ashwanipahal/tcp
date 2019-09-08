@@ -25,7 +25,6 @@ export default css`
   .heading_text, .footer_top_candidate_a .heading_text  {
     margin-bottom: 15px;
     text-align: center;
-    font-size: 12px;
 
     .style1 {
       color: ${props => props.theme.colorPalette.gray[800]};
@@ -92,9 +91,18 @@ export default css`
   .footer_top_candidate_a_social_links {
     flex-direction: row;
     align-items: center;
+
+    .social-media-label {
+      margin-right: 26px;
+    }
+
     @media ${props => props.theme.mediaQuery.largeMax} and ${props => props.theme.mediaQuery.large}{
       margin: 0 auto;
       flex-direction: column;
+
+      .social-media-label {
+         margin-right: 0;
+      }
     }
   }
 
@@ -116,10 +124,13 @@ export default css`
     .reference-id {
       display: none;
     }
-    .social-media-links, .social-media-label {
-      display: block;
+
+    .social-media-label {
+      margin-right: 0;
+      padding: 8px 0;
     }
     .social-media-links {
+      flex-direction: column;
       padding: 0 0 32px;
     }
     .email-sign-up-form button, .footer_top__signup_form button{
