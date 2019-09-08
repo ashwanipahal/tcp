@@ -11,13 +11,13 @@ describe('ApplyModalReducer', () => {
     expect(ApplyNowModalPLCCReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should trigger RESPONSE_INSTANT_CARD_APPLICATION action', () => {
+  it('should trigger APPLY_NOW_MODAL_TOGGLE action', () => {
     const action = {
       type: constants.APPLY_NOW_MODAL_TOGGLE,
-      payload: { isModalOpen: true },
+      payload: { isPLCCModalOpen: true, isModalOpen: true },
     };
 
     const newState = ApplyNowModalPLCCReducer(fromJS({ isModalOpen: false }), action);
-    expect(newState.get('isModalOpen')).toEqual(true);
+    expect(newState.get('isModalOpen')).toEqual(false);
   });
 });
