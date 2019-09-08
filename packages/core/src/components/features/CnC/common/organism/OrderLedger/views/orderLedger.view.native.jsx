@@ -5,7 +5,25 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
 import IconInfoLogo from '../../../../../../../assets/info-icon.png';
-import { StyledOrderLedger, StyledRowDataContainer } from '../styles/orderLedger.style.native';
+import {
+  StyledOrderLedger,
+  StyledRowDataContainer,
+  LabelContainer,
+  IconContainer,
+} from '../styles/orderLedger.style.native';
+import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
+
+const popover = message => {
+  return (
+    <BodyCopy
+      fontSize="fs13"
+      fontFamily="secondary"
+      fontWeight="semibold"
+      color="gray.900"
+      text={message}
+    />
+  );
+};
 
 const OrderLedger = ({ ledgerSummaryData, labels }) => {
   const {
@@ -214,7 +232,7 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
       </StyledRowDataContainer>
       {totalOrderSavings ? (
         <StyledRowDataContainer>
-          <Text>
+          <LabelContainer>
             <BodyCopy
               bodySize="one"
               fontFamily="secondary"
@@ -223,8 +241,12 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
               fontSize="fs13"
               text={`${labels.totalSavingsLabel}`}
             />
-            <ImageComp source={IconInfoLogo} height={15} width={15} />
-          </Text>
+            <IconContainer>
+              <ReactTooltip withOverlay={false} popover={popover(labels.tooltipText)}>
+                <ImageComp source={IconInfoLogo} height={15} width={15} />
+              </ReactTooltip>
+            </IconContainer>
+          </LabelContainer>
           <Text>
             <BodyCopy
               bodySize="one"
