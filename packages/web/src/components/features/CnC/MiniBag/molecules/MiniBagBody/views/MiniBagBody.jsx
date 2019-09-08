@@ -116,7 +116,13 @@ class MiniBagBody extends React.PureComponent {
           </div>
         ) : (
           <div className="miniBagFooter">
-            <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotalEmpty">
+            <BodyCopy
+              tag="span"
+              fontSize="fs14"
+              fontWeight="semibold"
+              className="subTotalEmpty"
+              fontFamily="secondary"
+            >
               {`${labels.subTotal}: ${currencySymbol}0.00`}
             </BodyCopy>
           </div>
