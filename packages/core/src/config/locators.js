@@ -210,4 +210,13 @@ export default {
   plp_left_Nav_L2: 'leftnav-L2-Link',
   plp_left_Nav_L3: 'leftnav-L3-link',
   plp_left_Nav_header: 'products-header-txt',
+
+  // PLP Sort by Options
+  plp_sort_by_text: 'global-sortby-text',
+  plp_sort_recommended: 'sortoption-recommended-option',
+  plp_sort_high_to_low: 'sortoption-Price: High to low-option',
+  plp_sort_low_to_high: 'sortoption-Price: Low to High-option',
+  plp_sort_newest: 'sortoption-Newest-option',
+  plp_sort_favorited: 'sortoption-Most Favorited-option',
+  plp_sort_top_rated: 'sortoption-Top Rated-option',
 };

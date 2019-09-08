@@ -56,9 +56,10 @@ function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
 
 // returns the data-locator from option value if ButtonText is not a valid string.
 function getButtonTextLocator(title, option) {
-  let locator = title;
+  let locator = '';
   if (typeof title !== 'string') {
-    locator = option.dataLocator;
+    locator = option.value;
+    return locator;
   }
   return locator
     .toLowerCase()
