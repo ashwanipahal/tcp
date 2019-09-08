@@ -2,15 +2,9 @@ import { executeStatefulAPICall } from '../../handler';
 import { getAPIConfig } from '../../../utils';
 import endpoints from '../../endpoints';
 
-const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw new Error(err.response.body.errors[0].errorMessage);
-  }
-  throw new Error('Your action could not be completed due to system error');
-};
-
 export const addAddress = args => {
   const apiConfig = getAPIConfig();
+  const addressKey = Date.now().toString();
   const payload = {
     webService: endpoints.addAddress,
     header: {
@@ -31,18 +25,18 @@ export const addAddress = args => {
           city: args.city,
           country: args.country,
           firstName: args.firstName,
-          // lastName: args.lastName,
-          // nickName: addressKey,
-          // phone1: args.phoneNumber,
-          // phone1Publish: args.phone1Publish || 'false',
-          // phone2: args.alternatePhoneNumber,
-          // primary: args.primary,
-          // state: args.state,
-          // zipCode: args.zip || args.zipCode,
-          // xcont_addressField2: args.isCommercialAddress ? '2' : '1',
-          // email1: args.email || args.emailAddress,
-          // xcont_addressField3: args.zip || args.zipCode,
-          // fromPage: args.fromPage || '',
+          lastName: args.lastName,
+          nickName: addressKey,
+          phone1: args.phoneNumber,
+          phone1Publish: args.phone1Publish || 'false',
+          phone2: args.alternatePhoneNumber,
+          primary: args.primary,
+          state: args.state,
+          zipCode: args.zip || args.zipCode,
+          xcont_addressField2: args.isCommercialAddress ? '2' : '1',
+          email1: args.email || args.emailAddress,
+          xcont_addressField3: args.zip || args.zipCode,
+          fromPage: args.fromPage || '',
         },
       ],
     },
@@ -107,5 +101,7 @@ export const updateAddress = (args, profileUpdate) => {
     .then(res => {
       return res;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };

@@ -1,9 +1,12 @@
 import { createSelector } from 'reselect';
-import { LOGINPAGE_REDUCER_KEY , ADDRESSBOOK_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import {
+  LOGINPAGE_REDUCER_KEY,
+  ADDEDITADDRESS_REDUCER_KEY,
+} from '../../../../../constants/reducer.constants';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {
-  return state[ADDRESSBOOK_REDUCER_KEY]
+  return state[ADDEDITADDRESS_REDUCER_KEY];
 };
 
 export const getUserEmail = state => {
@@ -23,12 +26,14 @@ export const getAddressById = createSelector(
 
 export const getLabels = state => state.Labels.global;
 
+export const getAddEditErrorResponse = state => {
+  return state[ADDEDITADDRESS_REDUCER_KEY].get('error');
+};
 
-export const getAddEditErrorResponse = createSelector(
+export const getshowNotification = createSelector(
   getAddressResponse,
-  resp => resp && resp.get('error')
+  resp => resp && resp.get('showNotification')
 );
-
 
 export const getAddEditLabels = createSelector(
   getLabels,
@@ -38,15 +43,23 @@ export const getAddEditLabels = createSelector(
 export const getAddEditErrorMessage = createSelector(
   [getAddEditErrorResponse, getAddEditLabels],
   (loginState, labels) => {
-    debugger
-    const errorParameters = loginState && loginState.get('errorParameters');
-    if (errorParameters && labels[`lbl_address_book_error_${errorParameters}`]) {
-      return labels[`lbl_address_book_error_${errorParameters}`];
+    const errorParameters = loginState && loginState.getIn(['errorParameters', '0']);
+    const errorCode = loginState && loginState.get('errorCode');
+    if (
+      (errorParameters && labels[`lbl_addEditAddress_error_${errorParameters}`]) ||
+      (errorCode && labels[`lbl_addEditAddress_error_${errorCode}`])
+    ) {
+      if (errorParameters) {
+        return labels[`lbl_addEditAddress_error_${errorParameters}`];
+      }
+      return labels[`lbl_addEditAddress_error_${errorCode}`];
     }
-    return (loginState && loginState.getIn(['errorMessage', '_error'])) || 'hello';
+    return (
+      (loginState && loginState.getIn(['errorMessage', '_error'])) ||
+      labels.lbl_addEditAddress_error
+    );
   }
 );
-
 
 export const getAddEditAddressLabels = state => {
   const {

@@ -14,7 +14,7 @@ const AddAddressReducer = (state = initialState, action) => {
       return fromJS(action.payload);
     default:
       if (state instanceof Object) {
-        return fromJS(null);
+        return fromJS(state);
       }
       return state;
   }

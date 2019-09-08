@@ -13,6 +13,11 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
     }
   }
   isMakeDefaultDisabled={true}
+  labels={
+    Object {
+      "addressFormLabels": Object {},
+    }
+  }
   submitAddressFormAction={[Function]}
   verifyAddressAction={[Function]}
 />
