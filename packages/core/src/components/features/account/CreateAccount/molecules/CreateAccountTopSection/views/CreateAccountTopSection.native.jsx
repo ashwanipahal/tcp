@@ -10,10 +10,10 @@ import {
   SectionStyle,
   CenterAlignWrapper,
   LabelsWrapper,
-  ResetPassword,
   TopSectionWrapper,
   PointsWrapper,
   ResetWrapper,
+  HeadingTextWrapper,
 } from '../styles/CreateAccountTopSection.style.native';
 import LineComp from '../../../../../../common/atoms/Line';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -40,17 +40,29 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
           </CenterAlignWrapper>
           <LineComp marginTop={28} />
           <LabelsWrapper className="labels-wrapper">
-            <BodyCopy
-              fontSize="fs13"
-              component="span"
-              textAlign="center"
-              text={`${labels.registration.lbl_createAccount_createA} ${
-                labels.registration.lbl_createAccount_myPlaceRewards
-              } ${labels.registration.lbl_createAccount_earnPoints}`}
-            />
+            <HeadingTextWrapper>
+              <BodyCopy
+                fontSize="fs13"
+                component="span"
+                textAlign="center"
+                text={labels.registration.lbl_createAccount_createA}
+              />
+              <BodyCopy
+                fontSize="fs13"
+                component="span"
+                textAlign="center"
+                color="gray.1000"
+                text={labels.registration.lbl_createAccount_myPlaceRewards}
+              />
+              <BodyCopy
+                fontSize="fs13"
+                component="span"
+                textAlign="center"
+                text={labels.registration.lbl_createAccount_earnPoints}
+              />
+            </HeadingTextWrapper>
             <PointsWrapper>
               <BodyCopy
-                fontWeight="black"
                 fontSize="fs14"
                 textAlign="center"
                 color="gray.800"
@@ -76,21 +88,14 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 textAlign="center"
                 text={labels.registration.lbl_createAccount_onlineAccCreated}
               />
-            </ResetWrapper>
-            <ResetPassword>
               <Anchor
                 class="clickhere"
                 fontSizeVariation="medium"
-                text="Click here"
+                text={labels.registration.lbl_createAccount_resetPassword}
                 underline
                 onPress={this.showForgotPassword}
               />
-              <BodyCopy
-                component="span"
-                fontSize="fs12"
-                text={labels.registration.lbl_createAccount_resetPassword}
-              />
-            </ResetPassword>
+            </ResetWrapper>
           </LabelsWrapper>
           <LineComp marginTop={28} />
         </TopSectionWrapper>

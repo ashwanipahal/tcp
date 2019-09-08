@@ -111,7 +111,11 @@ class LoginForm extends React.PureComponent<Props> {
                 noLink
                 to="/#"
                 dataLocator=""
-                text={type === 'password' ? 'show' : 'hide'}
+                text={
+                  type === 'password'
+                    ? labels.registration.lbl_createAccount_show
+                    : labels.registration.lbl_createAccount_hide
+                }
               />
             </HideShowFieldWrapper>
           </ShowHideWrapper>
