@@ -49,7 +49,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -180,7 +180,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -311,7 +311,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -442,7 +442,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -550,7 +550,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",

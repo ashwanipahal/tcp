@@ -24,16 +24,16 @@ const getButtonText = ({
   let buttonText = '';
   let dataLocator = '';
   if (isUsed) {
-    buttonText = `${labels.myPlaceRewards.lbl_bonus_points_used_on} ${dateUsed}`;
+    buttonText = `${labels.placeRewards.lbl_bonus_points_used_on} ${dateUsed}`;
     dataLocator = 'usedonbtn';
   } else if (forFutureUse || futureDisabled) {
-    buttonText = labels.myPlaceRewards.lbl_bonus_points_future_use;
+    buttonText = labels.placeRewards.lbl_bonus_points_future_use;
     dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
     buttonText = labels.common.lbl_common_applied_to_order;
     dataLocator = 'appliedtoorderbtn';
   } else {
-    buttonText = labels.myPlaceRewards.lbl_bonus_points_available_today;
+    buttonText = labels.placeRewards.lbl_bonus_points_available_today;
     dataLocator = 'availabletodaybtn';
   }
   return { buttonText, dataLocator };
@@ -95,7 +95,7 @@ const getHeader = ({ labels }) => {
           fontWeight="extrabold"
           component="span"
           color="orange.800"
-          text={labels.myPlaceRewards.lbl_place_rewards_bonus}
+          text={labels.placeRewards.lbl_place_rewards_bonus}
         />
       </MarginRightWrapper>
       <MarginRightWrapper>
@@ -105,7 +105,7 @@ const getHeader = ({ labels }) => {
           fontWeight="extrabold"
           component="span"
           color="primary.main"
-          text={labels.myPlaceRewards.lbl_place_rewards_points}
+          text={labels.placeRewards.lbl_place_rewards_points}
         />
       </MarginRightWrapper>
       <BodyCopy
@@ -114,7 +114,7 @@ const getHeader = ({ labels }) => {
         fontWeight="extrabold"
         component="span"
         color="pink.500"
-        text={labels.myPlaceRewards.lbl_place_rewards_day}
+        text={labels.placeRewards.lbl_place_rewards_day}
       />
     </StyledHeader>
   );
@@ -148,7 +148,7 @@ const getContent = ({
               fontWeight="extrabold"
               data-locator="msgtextinbold"
               textAlign="center"
-              text={labels.myPlaceRewards.lbl_bonus_points_apply_any_day}
+              text={labels.placeRewards.lbl_bonus_points_apply_any_day}
             />
           </ApplyAnyDayWrapper>
           <InfoWrapper>
@@ -158,7 +158,7 @@ const getContent = ({
               fontWeight="regular"
               data-locator="infomsg"
               textAlign="center"
-              text={labels.myPlaceRewards.lbl_bonus_points_msg}
+              text={labels.placeRewards.lbl_bonus_points_msg}
             />
           </InfoWrapper>
         </React.Fragment>
@@ -170,7 +170,7 @@ const getContent = ({
             fontWeight="regular"
             data-locator="infomsg"
             textAlign="center"
-            text={labels.myPlaceRewards.lbl_my_rewards_used_all}
+            text={labels.placeRewards.lbl_my_rewards_used_all}
           />
         </InfoWrapper>
       )}
@@ -191,7 +191,7 @@ const getContent = ({
         dataLocator="detailslink"
         className="details-link"
         onPress={e => toggleBonusPointsModal(e)}
-        text={labels.common.lbl_common_details}
+        text={labels.placeRewards.lbl_common_details}
       />
     </ViewWithSpacing>
   );
@@ -224,7 +224,7 @@ const BonusPointsSection = ({
 };
 
 BonusPointsSection.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
   getBonusDaysData: PropTypes.func,
@@ -233,7 +233,7 @@ BonusPointsSection.propTypes = {
 };
 
 BonusPointsSection.defaultProps = {
-  labels: { myPlaceRewards: { lbl_bonus_points_msg: '' } },
+  labels: { placeRewards: { lbl_bonus_points_msg: '' } },
   bonusData: {},
   toggleBonusPointsModal: () => {},
   getBonusDaysData: () => {},
@@ -242,7 +242,7 @@ BonusPointsSection.defaultProps = {
 };
 
 getContent.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   toggleBonusPointsModal: PropTypes.func,
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
@@ -253,8 +253,11 @@ getContent.propTypes = {
 
 getContent.defaultProps = {
   labels: {
-    myPlaceRewards: { lbl_bonus_points_apply_any_day: '', lbl_bonus_points_msg: '' },
-    common: { lbl_common_details: '' },
+    placeRewards: {
+      lbl_bonus_points_apply_any_day: '',
+      lbl_bonus_points_msg: '',
+      lbl_common_details: '',
+    },
   },
   bonusPoints: [],
   toggleBonusPointsModal: () => {},
@@ -265,13 +268,13 @@ getContent.defaultProps = {
 };
 
 getHeader.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   orderDetails: PropTypes.shape({}),
 };
 
 getHeader.defaultProps = {
   labels: {
-    myPlaceRewards: {
+    placeRewards: {
       lbl_place_rewards_bonus: '',
       lbl_place_rewards_points: '',
       lbl_place_rewards_day: '',

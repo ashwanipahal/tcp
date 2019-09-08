@@ -10,7 +10,7 @@ exports[`BonusPointsView should render correctly 1`] = `
     getBonusDaysData={[Function]}
     labels={
       Object {
-        "myPlaceRewards": Object {
+        "placeRewards": Object {
           "lbl_place_rewards_bonus": "bonus",
           "lbl_place_rewards_points": "points",
         },

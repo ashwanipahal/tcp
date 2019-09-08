@@ -14,7 +14,7 @@ describe('#BonusPointsDays Selectors', () => {
   it('#getLabels should return labels', () => {
     const LabelsState = fromJS({
       account: {
-        myPlaceRewards: {},
+        placeRewards: {},
       },
     });
     const state = {
@@ -74,7 +74,7 @@ describe('#BonusPointsDays Selectors', () => {
     const state = {
       Labels: {
         account: {
-          myPlaceRewards: {
+          placeRewards: {
             referred: [
               {
                 name: 'Bonus Points Days Details',

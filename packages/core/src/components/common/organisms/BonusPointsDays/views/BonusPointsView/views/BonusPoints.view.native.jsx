@@ -19,7 +19,7 @@ class BonusPointsView extends React.Component {
   };
 
   static defaultProps = {
-    labels: { myPlaceRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
+    labels: { placeRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
     bonusData: {},
     bonusDetailsData: '',
     className: '',
@@ -47,7 +47,7 @@ class BonusPointsView extends React.Component {
       <View className={className}>
         {view === constants.VIEWS.READ && (
           <BonusPointsReadSection
-            labels={labels.myPlaceRewards}
+            labels={labels.placeRewards}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
             availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
             usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
@@ -64,8 +64,8 @@ class BonusPointsView extends React.Component {
         <Modal
           isOpen={openModalState}
           onRequestClose={this.toggleBonusPointsModal}
-          heading={`${labels.myPlaceRewards.lbl_place_rewards_bonus} ${
-            labels.myPlaceRewards.lbl_place_rewards_points
+          heading={`${labels.placeRewards.lbl_place_rewards_bonus} ${
+            labels.placeRewards.lbl_place_rewards_points
           } DETAILS`}
           headingAlign="left"
           headingFontFamily="secondary"

@@ -1,8 +1,10 @@
+/* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig, isMobileApp, getViewportInfo } from '@tcp/core/src/utils';
+import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '@tcp/core/src/utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
 import {
@@ -20,7 +22,6 @@ import { getAddressListState } from '../../../account/AddressBook/container/Addr
 
 function getRecalcOrderPointsInterval() {
   return 300000;
-  // return state.session.siteDetails.recalcOrderPointsInterval;
 }
 
 export const getCheckoutState = state => {
@@ -64,27 +65,15 @@ function getIsMobile() {
   return getViewportInfo().isMobile;
 }
 
-// function isExpressCheckout(state) {
-//   return !!state.User.getIn(['personalData', 'isExpressEligible']);
-// }
-
 export const isExpressCheckout = createSelector(
   getPersonalDataState,
   state => state && state.get('isExpressEligible')
 );
 
-// function getCheckoutStage(state) {
-//   return state.Checkout.getIn(['uiFlags', 'stage']);
-// }
-
 export const getCheckoutStage = createSelector(
   getCheckoutUiFlagState,
   state => state && state.get('stage')
 );
-
-// function isRemembered(state) {
-//   return state.User.getIn(['personalData', 'isRemembered']);
-// }
 
 export const isRemembered = createSelector(
   getPersonalDataState,
@@ -112,54 +101,8 @@ function getShippingDestinationValues(state) {
   };
 }
 
-// function getAddressBook(state, country, noBillingAddresses) {
-//   let addresses = [];
-
-//   if (!country) {
-//     // if (noBillingAddresses) {
-//     //   addresses = state.addresses.addressBook.filter(entry => entry.type !== ADDREESS_TYPE.BILLING);
-//     // } else {
-//     addresses = getAddressListState(state);
-//     // }
-//   } // else {
-//   // let filtered = state.addresses.addressBook.filter(
-//   //   entry =>
-//   //     entry.address.country === country &&
-//   //     (!noBillingAddresses || entry.type !== ADDREESS_TYPE.BILLING)
-//   // );
-//   // let defaultAddress = filtered.find(addressEntry => addressEntry.isDefault);
-
-//   // // REVIEW: if there's no default for the selected requested country (country filter might leave it out)
-//   // // then flag the first one as default. Can't be on the abstractor,
-//   // // unless we store different versions of the address book (per country)
-//   // // but I'm not sure about location because storeviews trigger on everything and want to avoid unnecesary renders
-//   // if (!defaultAddress) {
-//   //   addresses = filtered.map((entry, index) => {
-//   //     return {
-//   //       ...entry,
-//   //       isDefault: index === 0,
-//   //     };
-//   //   });
-//   // } else {
-//   //   addresses = filtered;
-//   // }
-//   // }
-
-//   return addresses;
-// }
-
 function getDefaultAddress(/* state, country, noBillingAddresses */) {
   return false;
-  // let countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
-  // let defaultAddress = countryFilteredAddresses.find(
-  //   addressEntry => addressEntry.get && addressEntry.get('primary')
-  // );
-
-  // if (countryFilteredAddresses.length && !defaultAddress) {
-  //   return countryFilteredAddresses.get('0');
-  // } else {
-  //   return defaultAddress;
-  // }
 }
 
 export const getPickupValues = createSelector(
@@ -316,17 +259,31 @@ const getEmailSignUpLabels = state => {
 };
 
 const getCheckoutProgressBarLabels = state => {
-  const {
-    lbl_checkoutheader_pickup: pickupLabel,
-    lbl_checkoutHeader_shipping: shippingLabel,
-    lbl_checkoutHeader_billing: billingLabel,
-    lbl_checkoutHeader_review: reviewLabel,
-  } = state.Labels.checkout && state.Labels.checkout.checkoutHeader;
   return {
-    pickupLabel,
-    shippingLabel,
-    billingLabel,
-    reviewLabel,
+    pickupLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutheader_pickup',
+      'checkout',
+      'checkoutHeader'
+    ),
+    shippingLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_shipping',
+      'checkout',
+      'checkoutHeader'
+    ),
+    billingLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_billing',
+      'checkout',
+      'checkoutHeader'
+    ),
+    reviewLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_review',
+      'checkout',
+      'checkoutHeader'
+    ),
   };
 };
 
@@ -442,12 +399,6 @@ const getSmsNumberForOrderUpdates = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
-
-// export const getUserEmailNew = createSelector(
-//   [isGuest,isRemembered],
-//   (getUserContactInfo)=>
-
-// )
 
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);

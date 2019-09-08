@@ -64,7 +64,7 @@ class MyRewards extends PureComponent {
 
   render() {
     const { labels, showLink, coupons } = this.props;
-    const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
+    const heading = `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
     return (
       <View>
         <ToastContainer />
@@ -106,7 +106,7 @@ class MyRewards extends PureComponent {
               }}
               anchorVariation="primary"
               dataLocator="my-rewards-program-details"
-              text={labels.myPlaceRewards.lbl_my_rewards_program_details}
+              text={labels.placeRewards.lbl_my_rewards_program_details}
             />
             <AnchorLeftMargin>
               <Anchor
@@ -129,7 +129,7 @@ class MyRewards extends PureComponent {
 }
 
 MyRewards.propTypes = {
-  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
+  labels: PropTypes.shape({ common: {}, placeRewards: {} }),
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
   onApplyCouponToBagFromList: PropTypes.func,
@@ -142,7 +142,7 @@ MyRewards.propTypes = {
 MyRewards.defaultProps = {
   labels: {
     common: { lbl_common_tnc: '' },
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_rewards_program_details: '',
       lbl_my_rewards_heading: '',
     },

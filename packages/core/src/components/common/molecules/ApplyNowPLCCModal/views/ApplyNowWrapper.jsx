@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Anchor } from '@tcp/core/src/components/common/atoms';
 
 import StyledApplyNowModal from './ApplyNowModal.view';
@@ -57,7 +58,7 @@ class ApplyNowModalWrapper extends React.Component {
         <Anchor
           fontSizeVariation="medium"
           anchorVariation="primary"
-          text={labels.apply_now_link_modal}
+          text={getLabelValue(labels, 'apply_now_link_modal')}
           onClick={this.openModal}
           underline
         />

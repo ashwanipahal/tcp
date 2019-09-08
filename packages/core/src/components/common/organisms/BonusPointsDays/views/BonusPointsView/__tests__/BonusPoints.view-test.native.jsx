@@ -5,7 +5,7 @@ import BonusPointsView from '../views/BonusPoints.view.native';
 describe('BonusPointsView', () => {
   it('should render correctly', () => {
     const labels = {
-      myPlaceRewards: {
+      placeRewards: {
         lbl_place_rewards_bonus: 'bonus',
         lbl_place_rewards_points: 'points',
       },

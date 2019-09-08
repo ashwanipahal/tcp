@@ -23,7 +23,7 @@ class BonusPointsView extends React.Component {
   };
 
   static defaultProps = {
-    labels: { myPlaceRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
+    labels: { placeRewards: { lbl_place_rewards_bonus: '', lbl_place_rewards_points: '' } },
     bonusData: {},
     bonusDetailsData: '',
     className: '',
@@ -65,7 +65,7 @@ class BonusPointsView extends React.Component {
       <>
         {view === constants.VIEWS.READ && (
           <BonusPointsReadSection
-            labels={labels.myPlaceRewards}
+            labels={labels.placeRewards}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
             availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
             usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
@@ -90,8 +90,8 @@ class BonusPointsView extends React.Component {
           onRequestClose={this.toggleBonusPointsModal}
           overlayClassName="TCPModal__Overlay"
           className="TCPModal__Content bonus-details-modal"
-          heading={`${labels.myPlaceRewards.lbl_place_rewards_bonus} ${
-            labels.myPlaceRewards.lbl_place_rewards_points
+          heading={`${labels.placeRewards.lbl_place_rewards_bonus} ${
+            labels.placeRewards.lbl_place_rewards_points
           } DETAILS`}
           fixedWidth
           maxWidth="704px"

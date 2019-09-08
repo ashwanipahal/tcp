@@ -42,7 +42,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -62,7 +62,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -96,7 +96,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                     "common": Object {
                       "lbl_common_details": "",
                     },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
                       "lbl_place_rewards_bonus": "",
@@ -118,7 +118,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             onClick={[Function]}
             underline={true}
           >
-            
+
           </ForwardRef>
         </React.Fragment>
       }
@@ -145,7 +145,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -164,7 +164,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -183,7 +183,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
         </div>
       }
@@ -316,7 +316,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -384,7 +384,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -404,7 +404,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -448,7 +448,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                     "common": Object {
                       "lbl_common_details": "",
                     },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
                       "lbl_place_rewards_bonus": "",
@@ -470,7 +470,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             onClick={[Function]}
             underline={true}
           >
-            
+
           </ForwardRef>
         </React.Fragment>
       }
@@ -497,7 +497,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -516,7 +516,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -535,7 +535,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
         </div>
       }
@@ -678,7 +678,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -746,7 +746,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -766,7 +766,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -810,7 +810,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                     "common": Object {
                       "lbl_common_details": "",
                     },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
                       "lbl_place_rewards_bonus": "",
@@ -832,7 +832,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             onClick={[Function]}
             underline={true}
           >
-            
+
           </ForwardRef>
         </React.Fragment>
       }
@@ -859,7 +859,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -878,7 +878,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -897,7 +897,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
         </div>
       }
@@ -1040,7 +1040,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -1108,7 +1108,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
             <ForwardRef
               className="availability-msg"
@@ -1128,7 +1128,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               lineHeight="normal"
               textAlign="center"
             >
-              
+
             </ForwardRef>
           </React.Fragment>
           <ForwardRef
@@ -1172,7 +1172,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                     "common": Object {
                       "lbl_common_details": "",
                     },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
                       "lbl_place_rewards_bonus": "",
@@ -1194,7 +1194,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             onClick={[Function]}
             underline={true}
           >
-            
+
           </ForwardRef>
         </React.Fragment>
       }
@@ -1221,7 +1221,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -1240,7 +1240,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -1259,7 +1259,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
         </div>
       }
@@ -1402,7 +1402,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
@@ -1500,7 +1500,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                     "common": Object {
                       "lbl_common_details": "",
                     },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
                       "lbl_place_rewards_bonus": "",
@@ -1522,7 +1522,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             onClick={[Function]}
             underline={true}
           >
-            
+
           </ForwardRef>
         </React.Fragment>
       }
@@ -1549,7 +1549,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className="elem-mr-XS"
@@ -1568,7 +1568,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
           <ForwardRef
             className={null}
@@ -1587,7 +1587,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             lineHeight="normal"
             textAlign="left"
           >
-            
+
           </ForwardRef>
         </div>
       }
@@ -1702,7 +1702,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
               "common": Object {
                 "lbl_common_details": "",
               },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
                 "lbl_place_rewards_bonus": "",
