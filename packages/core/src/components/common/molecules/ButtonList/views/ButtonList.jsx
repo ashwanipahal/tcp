@@ -6,7 +6,7 @@ import withStyles from '../../../hoc/withStyles';
 import config from '../ButtonList.config';
 import ButtonListStyle from '../ButtonList.style';
 import DropDownButton from '../../DropDownButton';
-import { generateUniqueKeyUsingLabel } from '../../../../../utils/utils';
+import { generateUniqueKeyUsingLabel } from '../../../../../utils';
 
 // Class to wrap button text
 const wrappedTextClass = ' wrapped-button-text';
@@ -60,7 +60,13 @@ const getLinkCTAConfig = () => {
  * @param {*} parentClass Class passed from parent component
  */
 const renderDropDownButton = (properties, parentClass) => {
-  const { className, buttonsData, dropdownLabel, dataLocatorDropDown } = properties;
+  const {
+    className,
+    buttonsData,
+    dropdownLabel,
+    dataLocatorDropDown,
+    dataLocatorTextCta,
+  } = properties;
 
   return (
     <DropDownButton
@@ -68,6 +74,7 @@ const renderDropDownButton = (properties, parentClass) => {
       buttonsData={buttonsData}
       dropdownLabel={dropdownLabel}
       dataLocator={dataLocatorDropDown}
+      dataLocatorItemPrefix={dataLocatorTextCta}
     />
   );
 };
