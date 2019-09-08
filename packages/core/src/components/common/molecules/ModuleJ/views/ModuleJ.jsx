@@ -86,7 +86,7 @@ class ModuleJ extends React.PureComponent {
               large: 2,
             }}
           >
-            <Anchor>
+            <Anchor noLink to="/c/toddler-girl-bottoms" asPath="/c/toddler-girl-bottoms">
               <Button buttonVariation="fixed-width" className="moduleJ-cta-btn">
                 SHOP ALL
               </Button>
