@@ -40,18 +40,10 @@ export default css`
   }
 
   .moduleJ-cta-btn {
-    font-size: 13px;
     margin-top: 24px;
-    width: 225px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 161px;
-    }
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 14px;
       margin-top: 16px;
-      width: 210px;
     }
   }
 `;

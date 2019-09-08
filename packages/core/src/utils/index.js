@@ -22,6 +22,7 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
 } from './utils.web';

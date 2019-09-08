@@ -334,6 +334,31 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
+/**
+ * This function will redirect to PDP from HOMEPAGE
+ * on the basis of productId
+ *
+ * TODO: It can be extended as per requirement
+ * to redirect from other pages also
+ */
+export const redirectToPdp = productId => {
+  if (!window) return null;
+
+  const { href } = window.location;
+  // TODO
+  if (href.includes('/p/')) {
+    return {
+      url: `/p?pid=${productId}`,
+      asPath: `/p/${productId}`,
+    };
+  }
+
+  return {
+    url: `/c?cid=toddler-girl-bottoms`,
+    asPath: `/c/toddler-girl-bottoms`,
+  };
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -353,6 +378,7 @@ export default {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {

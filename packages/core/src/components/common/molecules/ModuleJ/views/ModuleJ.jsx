@@ -8,7 +8,7 @@ import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
 import moduleJStyle from '../styles/ModuleJ.style';
-import { getIconPath } from '../../../../../utils';
+import { getIconPath, redirectToPdp } from '../../../../../utils';
 import config from '../moduleJ.config';
 
 class ModuleJ extends React.PureComponent {
@@ -66,9 +66,8 @@ class ModuleJ extends React.PureComponent {
                     <div key={index.toString()}>
                       <Anchor
                         className="moduleJ-image-link"
-                        // TODO: This will be enabled when PDP page will be ready
-                        // in new app untill redirecting to Prod PDP page.
-                        to={`https://www.childrensplace.com/us/p/${uniqueId}`}
+                        to={redirectToPdp(uniqueId).url}
+                        asPath={redirectToPdp(uniqueId).asPath}
                       >
                         <Image src={imageUrl[0]} />
                       </Anchor>
@@ -80,11 +79,19 @@ class ModuleJ extends React.PureComponent {
           </Col>
         </Row>
         <Row centered>
-          <Anchor>
-            <Button buttonVariation="fixed-width" className="moduleJ-cta-btn">
-              SHOP ALL
-            </Button>
-          </Anchor>
+          <Col
+            colSize={{
+              small: 4,
+              medium: 2,
+              large: 2,
+            }}
+          >
+            <Anchor>
+              <Button buttonVariation="fixed-width" className="moduleJ-cta-btn">
+                SHOP ALL
+              </Button>
+            </Anchor>
+          </Col>
         </Row>
       </Grid>
     );
