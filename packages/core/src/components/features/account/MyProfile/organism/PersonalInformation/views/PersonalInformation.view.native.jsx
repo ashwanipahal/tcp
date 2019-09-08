@@ -15,6 +15,7 @@ export const PersonalInformation = ({
   userPhoneNumber,
   airMiles,
   myPlaceNumber,
+  toggleModalState,
 }) => {
   const { address } = profileInfoTile;
   return (
@@ -38,7 +39,7 @@ export const PersonalInformation = ({
         <MyProfileTile
           title={labels.lbl_profile_mailing_address}
           ctaTitle={labels.lbl_profile_edit_mailing_info}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
         >
           <Address address={address} dataLocatorPrefix="profileinfo-editmailing" showName={false} />
         </MyProfileTile>
@@ -60,6 +61,7 @@ PersonalInformation.propTypes = {
   userPhoneNumber: PropTypes.number,
   airMiles: PropTypes.string,
   myPlaceNumber: PropTypes.string,
+  toggleModalState: PropTypes.func.isRequired,
 };
 
 PersonalInformation.defaultProps = {

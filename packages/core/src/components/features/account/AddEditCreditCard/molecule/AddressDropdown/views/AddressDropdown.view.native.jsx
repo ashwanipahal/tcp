@@ -158,13 +158,16 @@ export class AddressDropdown extends React.PureComponent<Props> {
    */
   openDropDown = () => {
     const { data } = this.props;
-    if (data.length === 1 && data[0].id === '') {
+    this.setState({
+      dropDownIsOpen: true,
+    });
+    /* if (data.length === 1 && data[0].id === '') {
       this.openAddressBook();
     } else {
       this.setState({
         dropDownIsOpen: true,
       });
-    }
+    } */
   };
 
   /**
@@ -216,6 +219,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
         <Row
           {...this.props}
           onStartShouldSetResponder={this.openDropDown}
+          onPress={this.openDropDown}
           ref={ref => {
             this.rowMarker = ref;
           }}

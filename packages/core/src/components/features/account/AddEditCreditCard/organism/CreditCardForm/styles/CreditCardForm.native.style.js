@@ -11,7 +11,7 @@ const CreditCardWrapper = styled.View`
 
 const AddressWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  height: 220px;
+  min-height: 220px;
 `;
 
 const ActionsWrapper = styled.View`

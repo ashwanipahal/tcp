@@ -68,7 +68,7 @@ export class MailingInformationContainer extends PureComponent {
     const payload = Object.assign(payloadParam, {
       email: address.emailAddress,
       phoneNumber: address.phoneNumber,
-      nickName: address.emailAddress.toUpperCase(),
+      nickName: address.emailAddress && address.emailAddress.toUpperCase(),
       primary: address.primary ? 'true' : 'false',
     });
     submitNewAddressFormAction(payload);
@@ -116,6 +116,7 @@ export class MailingInformationContainer extends PureComponent {
         pageheading={labels.profile.lbl_profile_heading}
         showCreditCardFields={false}
         showUserName={false}
+        showEmailAddress={false}
         subHeading={labels.profile.lbl_profile_mailing_address}
       />
     );

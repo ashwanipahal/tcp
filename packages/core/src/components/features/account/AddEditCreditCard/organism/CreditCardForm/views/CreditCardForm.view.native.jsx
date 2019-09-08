@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import { reduxForm, Field, change } from 'redux-form';
+import { reduxForm, Field, change, FormSection } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -9,10 +9,12 @@ import { Heading } from '@tcp/core/src/components/common/atoms';
 import AddEditAddressContainer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.container';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import AddressDropdown from '@tcp/core/src/components/features/account/AddEditCreditCard/molecule/AddressDropdown/views/AddressDropdown.view.native';
+import { fromJS } from 'immutable';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/AddEditCreditCard.constants';
 import { CreditCardFields } from '../../../molecule/CreditCardFields/views/CreditCardFields.view.native';
+import AddressFields from '../../../../../../common/molecules/AddressFields';
 import {
   CreditCardWrapper,
   AddressWrapper,
@@ -38,11 +40,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
     isEdit: PropTypes.bool,
+    mailingAddress: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
     dto: PropTypes.shape({}),
     selectedCard: PropTypes.shape({}),
+    showCreditCardFields: PropTypes.bool,
+    showUserName: PropTypes.bool,
+    showEmailAddress: PropTypes.bool,
+    subHeading: PropTypes.string,
   };
 
   static defaultProps = {
@@ -59,6 +66,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       },
       common: { lbl_common_updateCTA: '' },
     },
+    mailingAddress: false,
+    showCreditCardFields: true,
+    showUserName: true,
+    subHeading: null,
+    showEmailAddress: true,
   };
 
   constructor(props) {
@@ -82,7 +94,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           content: address,
           primary: address.primary === 'true',
         }))) ||
-      [];
+      fromJS([]);
 
     addressOptions = addressOptions.push({
       id: '',
@@ -130,6 +142,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     });
   };
 
+  /* eslint-disable */
   render() {
     const {
       labels,
@@ -142,6 +155,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       onFileAddresskey,
       dispatch,
       handleSubmit,
+      showCreditCardFields,
+      pristine,
+      addressFormLabels,
+      showUserName,
+      showEmailAddress,
+      onFileAddressKey,
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
@@ -152,6 +171,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       this.updateExpiryDate(expMonth, expYear);
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
+    const showAddressForm = pristine ? !dto.onFileAddressKey : !onFileAddressKey;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -159,14 +179,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
         keyboardShouldPersistTaps="handled"
       >
         <CreditCardContainer>
-          <CreditCardWrapper>
-            <CreditCardFields
-              {...this.props}
-              updateExpiryDate={this.updateExpiryDate}
-              dto={dto}
-              selectedCard={selectedCard}
-            />
-          </CreditCardWrapper>
+          {showCreditCardFields && (
+            <CreditCardWrapper>
+              <CreditCardFields
+                {...this.props}
+                updateExpiryDate={this.updateExpiryDate}
+                dto={dto}
+                selectedCard={selectedCard}
+              />
+            </CreditCardWrapper>
+          )}
           <AddressWrapper>
             <Heading
               fontFamily="secondary"
@@ -219,6 +241,21 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 />
                 <RightBracket />
               </DefaultAddress>
+            )}
+            {showAddressForm && (
+              <FormSection name="address">
+                <AddressFields
+                  labels={addressLabels}
+                  showDefaultCheckbox={false}
+                  showPhoneNumber={false}
+                  formName={constants.FORM_NAME}
+                  formSection="address"
+                  dispatch={dispatch}
+                  addressFormLabels={addressFormLabels}
+                  showUserName={showUserName}
+                  showEmailAddress={showEmailAddress}
+                />
+              </FormSection>
             )}
           </AddressWrapper>
           <ActionsWrapper>
