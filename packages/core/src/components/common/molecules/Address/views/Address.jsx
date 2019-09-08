@@ -51,7 +51,7 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
       >
         {`${address.city ? `${address.city}, ` : ''}${address.state ? `${address.state} ` : ''}${
           address.zipCode
-          }`}
+        }`}
       </BodyCopy>
     </React.Fragment>
   );
