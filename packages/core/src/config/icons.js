@@ -39,6 +39,7 @@ export default {
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
+  'empty-fav-icon': '/static/images/empty-heart.png',
   'cart-icon': '/static/images/bag.png',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
