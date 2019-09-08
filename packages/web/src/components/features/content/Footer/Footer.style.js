@@ -129,9 +129,6 @@ export default css`
       margin-right: 0;
       padding: 8px 0;
     }
-    .social-media-pallete {
-      justify-content: center;
-    }
     .social-media-links {
       flex-direction: column;
       padding: 0 0 32px;
