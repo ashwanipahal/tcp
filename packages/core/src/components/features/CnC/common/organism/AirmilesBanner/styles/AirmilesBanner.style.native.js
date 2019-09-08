@@ -38,7 +38,7 @@ const InputContainer = styled.View`
 const IconContainer = styled.View`
   position: absolute;
   right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  top: 16px;
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
