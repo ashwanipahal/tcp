@@ -12,13 +12,15 @@ class DropDownButton extends React.Component {
   };
 
   componentDidMount() {
-    document.getElementsByTagName('body')[0].addEventListener('click', e => {
+    document.body.addEventListener('click', e => {
       if (e.target.classList.contains('dropdown-button')) {
         return false;
       }
-      return this.setState({
+      this.setState({
         open: false,
       });
+
+      return true;
     });
   }
 
