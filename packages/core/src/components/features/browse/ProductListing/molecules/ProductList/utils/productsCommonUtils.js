@@ -1,8 +1,3 @@
-/** @module productsCommonUtils
- * @summary product related utility functions.
- *
- * @author Ben
- */
 import { isEmpty } from 'lodash';
 import logger from '@tcp/core/src/utils/loggerInstance';
 // import { getClearanceString } from 'service/WebAPIServiceAbstractors/parsers/productsParser';
@@ -217,4 +212,69 @@ export const getFormattedLoyaltyText = text => {
     .replace(/\s+/g, ' ')
     .trim()
     .split('on');
+};
+export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
+  let showDefaultSizeMsg = false;
+  const defaultSelection = {
+    fit: null,
+    size: null,
+  };
+
+  if (productInfo.categoryId && isShowDefaultSize) {
+    // eslint-disable-next-line extra-rules/no-commented-out-code
+    // defaultSelection = getCustomerSelection(productInfo.categoryId);
+    showDefaultSizeMsg = !!(defaultSelection.size || defaultSelection.fit);
+  }
+
+  const formValuesWithDefaultSizes = {
+    ...formValues,
+    fit: defaultSelection.fit ? defaultSelection.fit : formValues.fit,
+    size: defaultSelection.size ? defaultSelection.size : formValues.size,
+  };
+  const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(
+    productInfo,
+    formValuesWithDefaultSizes
+  );
+  return isSelectedSizeDisabled ||
+    (defaultSelection.size && formValues.size && defaultSelection.size !== formValues.size)
+    ? { showDefaultSizeMsg: false, formValues }
+    : { showDefaultSizeMsg, formValues: formValuesWithDefaultSizes };
+};
+
+/**
+ * @method isProductOOS
+ * @description checks if the selected size variant is having available
+ * quantity
+ */
+export const isProductOOS = (colorFitsSizesMap, selectedSKu) => {
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
+  if (currentFitEntry && currentFitEntry.sizes) {
+    const selectedSKuProductInfo = currentFitEntry.sizes.find(
+      size => size.sizeName === selectedSKu.size
+    );
+    const maxAvailableProducts = selectedSKuProductInfo ? selectedSKuProductInfo.maxAvailable : 0;
+
+    return maxAvailableProducts < 1;
+  }
+  return true;
+};
+
+/**
+ * @method isBOSSProductOOSQtyMismatched
+ * @description checks if the selected size variant is having available
+ * quantity
+ */
+export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) => {
+  const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
+  if (currentFitEntry && currentFitEntry.sizes) {
+    const selectedSKuProductInfo = currentFitEntry.sizes.find(
+      size => size.sizeName === selectedSKu.size
+    );
+    const maxAvailableBossProducts = selectedSKuProductInfo
+      ? selectedSKuProductInfo.maxAvailableBoss
+      : 0;
+    const qtyMismatch = selectedSKu.quantity > maxAvailableBossProducts;
+    return maxAvailableBossProducts < 1 || qtyMismatch;
+  }
+  return true;
 };

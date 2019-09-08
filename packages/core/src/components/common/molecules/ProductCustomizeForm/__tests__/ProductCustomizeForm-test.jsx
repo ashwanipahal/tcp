@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { fromJS } from 'immutable';
-import { ProductCustomizeForm } from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import ProductCustomizeForm from '../views/ProductCustomizeForm';
 
 describe('ProductCustomizeForm Component', () => {
   const props = {

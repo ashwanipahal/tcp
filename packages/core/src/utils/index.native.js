@@ -35,4 +35,7 @@ export {
   getAddressFromPlace,
   formatAddress,
   getLabelValue,
+  capitalize,
+  toTimeString,
+  getPromotionalMessage,
 } from './utils';

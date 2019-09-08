@@ -25,6 +25,7 @@ export {
   languageRedirect,
   getAsPathWithSlug,
   getMappedPageHref,
+  handleGenericKeyDown,
 } from './utils.web';
 
 export {
@@ -45,4 +46,7 @@ export {
   formatAddress,
   calculateAge,
   getLabelValue,
+  capitalize,
+  toTimeString,
+  getPromotionalMessage,
 } from './utils';

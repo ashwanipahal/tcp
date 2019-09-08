@@ -8,7 +8,7 @@ import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecule
 import ColorSelector from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ColorSelect/views/ColorSelect.view';
 import endpoints from '@tcp/core/src/service/endpoint';
 import { getIconPath } from '@tcp/core/src/utils';
-import style, { buttonCustomStyles } from './ProductCustomizeForm.style';
+import style, { buttonCustomStyles } from './styles/ProductCustomizeForm.style';
 
 // @flow
 
@@ -22,7 +22,7 @@ type Props = {
   formVisiblity: () => void,
 };
 
-export class ProductCustomizeForm extends React.PureComponent<Props> {
+class ProductCustomizeForm extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
     this.state = {

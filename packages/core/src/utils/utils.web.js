@@ -340,26 +340,19 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
-export default {
-  importGraphQLClientDynamically,
-  importGraphQLQueriesDynamically,
-  isProduction,
-  isDevelopment,
-  identifyBrand,
-  getObjectValue,
-  createUrlSearchParams,
-  buildUrl,
-  getCreditCardExpirationOptionMap,
-  getBirthDateOptionMap,
-  getSiteId,
-  routerPush,
-  bindAllClassMethodsToThis,
-  scrollPage,
-  getCountriesMap,
-  getCurrenciesMap,
-  getModifiedLanguageCode,
-  siteRedirect,
-  languageRedirect,
+/**
+ *
+ * @param {object} event the HTML element's element
+ * @param {number} key key for which the event needs to be triggered
+ * @param {function} method method passed which is to be invoked.
+ * @description this method invokes the parameter method received when respective
+ * keybord key is triggered
+ */
+
+export const handleGenericKeyDown = (event, key, method) => {
+  if (event.keyCode === key) {
+    method();
+  }
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
@@ -424,4 +417,27 @@ export const createAPIConfig = resLocals => {
     currency,
     language,
   };
+};
+
+export default {
+  importGraphQLClientDynamically,
+  importGraphQLQueriesDynamically,
+  isProduction,
+  isDevelopment,
+  identifyBrand,
+  getObjectValue,
+  createUrlSearchParams,
+  buildUrl,
+  getCreditCardExpirationOptionMap,
+  getBirthDateOptionMap,
+  getSiteId,
+  routerPush,
+  bindAllClassMethodsToThis,
+  scrollPage,
+  getCountriesMap,
+  getCurrenciesMap,
+  getModifiedLanguageCode,
+  siteRedirect,
+  languageRedirect,
+  handleGenericKeyDown,
 };
