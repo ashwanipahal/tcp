@@ -6,8 +6,7 @@ import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
 import { getAPIConfig, isMobileApp } from '../../../utils';
-// TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
-// import { LABELS } from '../../../reduxStore/constants';
+import { LABELS } from '../../../reduxStore/constants';
 import CACHED_KEYS from '../../../constants/cache.config';
 import { defaultBrand, defaultChannel, defaultCountry, MobileChannel } from '../../api.constants';
 import { setDataInRedis } from '../../../utils/redis.util';
@@ -97,9 +96,7 @@ const createBootstrapParams = () => {
   const channelName = isMobileApp() ? MobileChannel : defaultChannel;
   return {
     labels: {
-      // TODO - GLOBAL-LABEL-CHANGE - STEP 1.2 -  Uncomment this line for only global data
-      // TODO - Mobile app should also follows the same pattern
-      // category: LABELS.global,
+      category: LABELS.global,
     },
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: channelName,
