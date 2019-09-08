@@ -39,9 +39,33 @@ exports[`Select Item is shown should render select item  1`] = `
           [Function],
           ";
     text-align: left;
+
+    @media ",
+          [Function],
+          " {
+      padding-left: ",
+          [Function],
+          ";
+    }
   }
 
   .item-select {
+    background: url(",
+          "/static/images/circle-check-no-circle.svg",
+          ") no-repeat left top;
+    background-size: 18px 18px;
+    margin-bottom: ",
+          [Function],
+          ";
+    padding-bottom: 4px;
+    display: flex;
+
+    span {
+      font-weight: ",
+          [Function],
+          ";
+    }
+
     @media ",
           [Function],
           " {

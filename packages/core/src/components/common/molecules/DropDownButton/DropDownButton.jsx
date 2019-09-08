@@ -6,19 +6,21 @@ import ButtonCTA from '../ButtonCTA';
 import style from './DropDownButton.style';
 import { generateUniqueKeyUsingLabel } from '../../../../utils';
 
-class DropDownButton extends React.Component {
+class DropDownButton extends React.PureComponent {
   state = {
     open: false,
   };
 
   componentDidMount() {
-    document.getElementsByTagName('body')[0].addEventListener('click', e => {
+    document.body.addEventListener('click', e => {
       if (e.target.classList.contains('dropdown-button')) {
         return false;
       }
-      return this.setState({
+      this.setState({
         open: false,
       });
+
+      return true;
     });
   }
 

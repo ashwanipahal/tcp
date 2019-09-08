@@ -9,6 +9,7 @@ const styles = css`
 
   .actions-wrapper {
     justify-content: center;
+    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
   }
 
   .aboutyou_cancel {
@@ -17,13 +18,12 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.small} {
     .aboutyou_cancel {
-      order: 2;
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      order: 1;
     }
 
     .aboutyou_save {
-      order: 1;
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      order: 2;
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
 
     .aboutyou-radio {
@@ -40,8 +40,19 @@ const styles = css`
       width: 90%;
     }
 
+    .aboutyou_save {
+      order: 1;
+      margin-left: 0;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+
     .aboutyou_cancel {
-      order: 2;
+      order: 1;
+      margin-left: 0;
+    }
+
+    .actions-wrapper {
+      justify-content: center;
       margin-left: 0;
     }
   }

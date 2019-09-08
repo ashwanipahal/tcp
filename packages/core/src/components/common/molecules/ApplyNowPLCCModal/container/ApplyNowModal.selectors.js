@@ -5,7 +5,13 @@ export const getApplyNowModalState = state => {
 };
 
 export const getIsModalOpen = state => {
-  return getApplyNowModalState(state).get('isModalOpen');
+  const modalStatus = getApplyNowModalState(state).get('modalStatus');
+  return modalStatus && modalStatus.isModalOpen;
+};
+
+export const getIsPLCCModalOpen = state => {
+  const modalStatus = getApplyNowModalState(state).get('modalStatus');
+  return modalStatus && modalStatus.isPLCCModalOpen;
 };
 
 export const getLabels = state => {

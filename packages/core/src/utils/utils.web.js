@@ -344,10 +344,11 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
  * This function configure url for Next/Link using CMS defined url string
  */
 export const configurePlpNavigationFromCMSUrl = url => {
-  if (url.includes('/c/')) {
-    const urlItems = url.split('/c/');
+  const route = `${ROUTE_PATH.plp}/`;
+  if (url.includes(route)) {
+    const urlItems = url.split(route);
     const queryParam = urlItems[0];
-    return `/c?cid=${queryParam}`;
+    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
   }
   return url;
 };

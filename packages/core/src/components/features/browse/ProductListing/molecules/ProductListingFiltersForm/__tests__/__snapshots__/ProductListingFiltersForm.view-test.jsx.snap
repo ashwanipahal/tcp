@@ -2308,431 +2308,437 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         removeAllFilters={[Function]}
       />
     </form>
+    <div
+      className="render-mobile-view"
+    >
+      <Styled(ProductListingMobileFiltersForm)
+        className=""
+        filtersMaps={
+          Object {
+            "TCPColor_uFilter": Array [
+              Object {
+                "displayName": "BLUE",
+                "facetName": "TCPColor_uFilter",
+                "id": "BLUE",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLUE.gif",
+              },
+              Object {
+                "displayName": "WHITE",
+                "facetName": "TCPColor_uFilter",
+                "id": "WHITE",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/WHITE.gif",
+              },
+              Object {
+                "displayName": "BLACK",
+                "facetName": "TCPColor_uFilter",
+                "id": "BLACK",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLACK.gif",
+              },
+              Object {
+                "displayName": "GRAY",
+                "facetName": "TCPColor_uFilter",
+                "id": "GRAY",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GRAY.gif",
+              },
+              Object {
+                "displayName": "PINK",
+                "facetName": "TCPColor_uFilter",
+                "id": "PINK",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PINK.gif",
+              },
+              Object {
+                "displayName": "TAN",
+                "facetName": "TCPColor_uFilter",
+                "id": "TAN",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/TAN.gif",
+              },
+              Object {
+                "displayName": "RED",
+                "facetName": "TCPColor_uFilter",
+                "id": "RED",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/RED.gif",
+              },
+              Object {
+                "displayName": "MULTI",
+                "facetName": "TCPColor_uFilter",
+                "id": "MULTI",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/MULTI.gif",
+              },
+              Object {
+                "displayName": "DENIM",
+                "facetName": "TCPColor_uFilter",
+                "id": "DENIM",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/DENIM.gif",
+              },
+              Object {
+                "displayName": "GREEN",
+                "facetName": "TCPColor_uFilter",
+                "id": "GREEN",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GREEN.gif",
+              },
+              Object {
+                "displayName": "PURPLE",
+                "facetName": "TCPColor_uFilter",
+                "id": "PURPLE",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PURPLE.gif",
+              },
+              Object {
+                "displayName": "YELLOW",
+                "facetName": "TCPColor_uFilter",
+                "id": "YELLOW",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/YELLOW.gif",
+              },
+              Object {
+                "displayName": "BROWN",
+                "facetName": "TCPColor_uFilter",
+                "id": "BROWN",
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BROWN.gif",
+              },
+            ],
+            "age_group_uFilter": Array [
+              Object {
+                "displayName": "Big Kid (4 - 18)",
+                "facetName": "age_group_uFilter",
+                "id": "AB_Big Kid (4 - 18)",
+              },
+              Object {
+                "displayName": "Toddler (6M - 5T)",
+                "facetName": "age_group_uFilter",
+                "id": "AC_Toddler (6M - 5T)",
+              },
+              Object {
+                "displayName": "Baby (0 - 18M)",
+                "facetName": "age_group_uFilter",
+                "id": "AD_Baby (0 - 18M)",
+              },
+            ],
+            "categoryPath2_uFilter": Array [
+              Object {
+                "displayName": "Essentials Shop",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Essentials Shop",
+              },
+              Object {
+                "displayName": "Baby Girl",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Baby Girl",
+              },
+              Object {
+                "displayName": "Bottoms",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Bottoms",
+              },
+              Object {
+                "displayName": "Tops",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Tops",
+              },
+              Object {
+                "displayName": "Shoes & Accessories",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Shoes & Accessories",
+              },
+              Object {
+                "displayName": "Leggings",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Leggings",
+              },
+              Object {
+                "displayName": "Polos",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Polos",
+              },
+              Object {
+                "displayName": "Socks, Tights & Underwear",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Socks, Tights & Underwear",
+              },
+              Object {
+                "displayName": "Online Only",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Online Only",
+              },
+              Object {
+                "displayName": "Baby Boy",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Baby Boy",
+              },
+              Object {
+                "displayName": "Socks & Underwear",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Socks & Underwear",
+              },
+              Object {
+                "displayName": "Unisex",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Unisex",
+              },
+              Object {
+                "displayName": "Active",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Active",
+              },
+              Object {
+                "displayName": "Skorts & Shorts",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Skorts & Shorts",
+              },
+              Object {
+                "displayName": "Jeggings & Chinos",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Jeggings & Chinos",
+              },
+              Object {
+                "displayName": "Shoes",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Shoes",
+              },
+              Object {
+                "displayName": "Dresses & Jumpers",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Dresses & Jumpers",
+              },
+              Object {
+                "displayName": "Dresses",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Dresses",
+              },
+              Object {
+                "displayName": "Shorts",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Shorts",
+              },
+              Object {
+                "displayName": "Activewear",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Activewear",
+              },
+              Object {
+                "displayName": "All Easter Dress Up",
+                "facetName": "categoryPath2_uFilter",
+                "id": "All Easter Dress Up",
+              },
+              Object {
+                "displayName": "Easter Dress Up",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Easter Dress Up",
+              },
+              Object {
+                "displayName": "Sibling Shop",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Sibling Shop",
+              },
+              Object {
+                "displayName": "Big & Lil Sister",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Big & Lil Sister",
+              },
+              Object {
+                "displayName": "Big & Little Sister",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Big & Little Sister",
+              },
+              Object {
+                "displayName": "Flower Girl Shop",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Flower Girl Shop",
+              },
+              Object {
+                "displayName": "Jackets",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Jackets",
+              },
+              Object {
+                "displayName": "Matching Family Collections",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Matching Family Collections",
+              },
+              Object {
+                "displayName": "Accessories",
+                "facetName": "categoryPath2_uFilter",
+                "id": "Accessories",
+              },
+            ],
+            "gender_uFilter": Array [
+              Object {
+                "displayName": "Girl",
+                "facetName": "gender_uFilter",
+                "id": "Girl",
+              },
+              Object {
+                "displayName": "Unisex",
+                "facetName": "gender_uFilter",
+                "id": "Unisex",
+              },
+            ],
+            "l1category": "Toddler Girl",
+            "unbxdDisplayName": Object {
+              "TCPColor_uFilter": "Color",
+              "age_group_uFilter": "Size Range",
+              "categoryPath2_uFilter": "Category",
+              "gender_uFilter": "Gender",
+              "unbxd_price_range_uFilter": "Price",
+              "v_tcpfit_unbxd_uFilter": "Fit",
+              "v_tcpsize_uFilter": "Size",
+            },
+            "unbxd_price_range_uFilter": Array [
+              Object {
+                "displayName": "$10 and Under",
+                "facetName": "unbxd_price_range_uFilter",
+                "id": "$10 and Under",
+              },
+              Object {
+                "displayName": "$10 - $19.99",
+                "facetName": "unbxd_price_range_uFilter",
+                "id": "$10 - $19.99",
+              },
+            ],
+            "v_tcpfit_unbxd_uFilter": Array [
+              Object {
+                "displayName": "Regular",
+                "facetName": "v_tcpfit_unbxd_uFilter",
+                "id": "Regular",
+              },
+            ],
+            "v_tcpsize_uFilter": Array [
+              Object {
+                "displayName": "6-9 M",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EF_6-9 M",
+              },
+              Object {
+                "displayName": "6-12 M",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EG_6-12 M",
+              },
+              Object {
+                "displayName": "9-12 M",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EJ_9-12 M",
+              },
+              Object {
+                "displayName": "12-18 M",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EM_12-18 M",
+              },
+              Object {
+                "displayName": "12-24 M",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EN_12-24 M",
+              },
+              Object {
+                "displayName": "18-24 M",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EP_18-24 M",
+              },
+              Object {
+                "displayName": "2T",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "ET_2T",
+              },
+              Object {
+                "displayName": "2T - 3T",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EV_2T - 3T",
+              },
+              Object {
+                "displayName": "3T",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EX_3T",
+              },
+              Object {
+                "displayName": "3T-4T",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EY_3T-4T",
+              },
+              Object {
+                "displayName": "4T",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "EZ_4T",
+              },
+              Object {
+                "displayName": "5T",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "FB_5T",
+              },
+              Object {
+                "displayName": "TODDLER 4",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "IW_TODDLER 4",
+              },
+              Object {
+                "displayName": "TODDLER 5",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "IZ_TODDLER 5",
+              },
+              Object {
+                "displayName": "TODDLER 6",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "JC_TODDLER 6",
+              },
+              Object {
+                "displayName": "TODDLER 7",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "JF_TODDLER 7",
+              },
+              Object {
+                "displayName": "TODDLER 8",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "JI_TODDLER 8",
+              },
+              Object {
+                "displayName": "TODDLER 9",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "JL_TODDLER 9",
+              },
+              Object {
+                "displayName": "TODDLER 10",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "JO_TODDLER 10",
+              },
+              Object {
+                "displayName": "TODDLER 11",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "JR_TODDLER 11",
+              },
+              Object {
+                "displayName": "ONE SIZE",
+                "facetName": "v_tcpsize_uFilter",
+                "id": "LA_ONE SIZE",
+              },
+            ],
+          }
+        }
+        handleImmediateSubmit={[Function]}
+        handleSubmit={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                [Function],
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        initialValues={
+          Object {
+            "categoryPath2_uFilter": Array [
+              "Shoes & Accessories",
+            ],
+            "sort": "",
+          }
+        }
+        labels={Object {}}
+        onSubmit={[MockFunction]}
+        removeAllFilters={[Function]}
+        totalProductsCount="34"
+      />
+    </div>
   </div>
-  <ReduxForm
-    className=" render-mobile-view"
-    destroyOnUnmount={true}
-    enableReinitialize={false}
-    filtersMaps={
-      Object {
-        "TCPColor_uFilter": Array [
-          Object {
-            "displayName": "BLUE",
-            "facetName": "TCPColor_uFilter",
-            "id": "BLUE",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLUE.gif",
-          },
-          Object {
-            "displayName": "WHITE",
-            "facetName": "TCPColor_uFilter",
-            "id": "WHITE",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/WHITE.gif",
-          },
-          Object {
-            "displayName": "BLACK",
-            "facetName": "TCPColor_uFilter",
-            "id": "BLACK",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLACK.gif",
-          },
-          Object {
-            "displayName": "GRAY",
-            "facetName": "TCPColor_uFilter",
-            "id": "GRAY",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GRAY.gif",
-          },
-          Object {
-            "displayName": "PINK",
-            "facetName": "TCPColor_uFilter",
-            "id": "PINK",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PINK.gif",
-          },
-          Object {
-            "displayName": "TAN",
-            "facetName": "TCPColor_uFilter",
-            "id": "TAN",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/TAN.gif",
-          },
-          Object {
-            "displayName": "RED",
-            "facetName": "TCPColor_uFilter",
-            "id": "RED",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/RED.gif",
-          },
-          Object {
-            "displayName": "MULTI",
-            "facetName": "TCPColor_uFilter",
-            "id": "MULTI",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/MULTI.gif",
-          },
-          Object {
-            "displayName": "DENIM",
-            "facetName": "TCPColor_uFilter",
-            "id": "DENIM",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/DENIM.gif",
-          },
-          Object {
-            "displayName": "GREEN",
-            "facetName": "TCPColor_uFilter",
-            "id": "GREEN",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GREEN.gif",
-          },
-          Object {
-            "displayName": "PURPLE",
-            "facetName": "TCPColor_uFilter",
-            "id": "PURPLE",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PURPLE.gif",
-          },
-          Object {
-            "displayName": "YELLOW",
-            "facetName": "TCPColor_uFilter",
-            "id": "YELLOW",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/YELLOW.gif",
-          },
-          Object {
-            "displayName": "BROWN",
-            "facetName": "TCPColor_uFilter",
-            "id": "BROWN",
-            "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BROWN.gif",
-          },
-        ],
-        "age_group_uFilter": Array [
-          Object {
-            "displayName": "Big Kid (4 - 18)",
-            "facetName": "age_group_uFilter",
-            "id": "AB_Big Kid (4 - 18)",
-          },
-          Object {
-            "displayName": "Toddler (6M - 5T)",
-            "facetName": "age_group_uFilter",
-            "id": "AC_Toddler (6M - 5T)",
-          },
-          Object {
-            "displayName": "Baby (0 - 18M)",
-            "facetName": "age_group_uFilter",
-            "id": "AD_Baby (0 - 18M)",
-          },
-        ],
-        "categoryPath2_uFilter": Array [
-          Object {
-            "displayName": "Essentials Shop",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Essentials Shop",
-          },
-          Object {
-            "displayName": "Baby Girl",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Baby Girl",
-          },
-          Object {
-            "displayName": "Bottoms",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Bottoms",
-          },
-          Object {
-            "displayName": "Tops",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Tops",
-          },
-          Object {
-            "displayName": "Shoes & Accessories",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Shoes & Accessories",
-          },
-          Object {
-            "displayName": "Leggings",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Leggings",
-          },
-          Object {
-            "displayName": "Polos",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Polos",
-          },
-          Object {
-            "displayName": "Socks, Tights & Underwear",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Socks, Tights & Underwear",
-          },
-          Object {
-            "displayName": "Online Only",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Online Only",
-          },
-          Object {
-            "displayName": "Baby Boy",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Baby Boy",
-          },
-          Object {
-            "displayName": "Socks & Underwear",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Socks & Underwear",
-          },
-          Object {
-            "displayName": "Unisex",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Unisex",
-          },
-          Object {
-            "displayName": "Active",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Active",
-          },
-          Object {
-            "displayName": "Skorts & Shorts",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Skorts & Shorts",
-          },
-          Object {
-            "displayName": "Jeggings & Chinos",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Jeggings & Chinos",
-          },
-          Object {
-            "displayName": "Shoes",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Shoes",
-          },
-          Object {
-            "displayName": "Dresses & Jumpers",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Dresses & Jumpers",
-          },
-          Object {
-            "displayName": "Dresses",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Dresses",
-          },
-          Object {
-            "displayName": "Shorts",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Shorts",
-          },
-          Object {
-            "displayName": "Activewear",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Activewear",
-          },
-          Object {
-            "displayName": "All Easter Dress Up",
-            "facetName": "categoryPath2_uFilter",
-            "id": "All Easter Dress Up",
-          },
-          Object {
-            "displayName": "Easter Dress Up",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Easter Dress Up",
-          },
-          Object {
-            "displayName": "Sibling Shop",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Sibling Shop",
-          },
-          Object {
-            "displayName": "Big & Lil Sister",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Big & Lil Sister",
-          },
-          Object {
-            "displayName": "Big & Little Sister",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Big & Little Sister",
-          },
-          Object {
-            "displayName": "Flower Girl Shop",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Flower Girl Shop",
-          },
-          Object {
-            "displayName": "Jackets",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Jackets",
-          },
-          Object {
-            "displayName": "Matching Family Collections",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Matching Family Collections",
-          },
-          Object {
-            "displayName": "Accessories",
-            "facetName": "categoryPath2_uFilter",
-            "id": "Accessories",
-          },
-        ],
-        "gender_uFilter": Array [
-          Object {
-            "displayName": "Girl",
-            "facetName": "gender_uFilter",
-            "id": "Girl",
-          },
-          Object {
-            "displayName": "Unisex",
-            "facetName": "gender_uFilter",
-            "id": "Unisex",
-          },
-        ],
-        "l1category": "Toddler Girl",
-        "unbxdDisplayName": Object {
-          "TCPColor_uFilter": "Color",
-          "age_group_uFilter": "Size Range",
-          "categoryPath2_uFilter": "Category",
-          "gender_uFilter": "Gender",
-          "unbxd_price_range_uFilter": "Price",
-          "v_tcpfit_unbxd_uFilter": "Fit",
-          "v_tcpsize_uFilter": "Size",
-        },
-        "unbxd_price_range_uFilter": Array [
-          Object {
-            "displayName": "$10 and Under",
-            "facetName": "unbxd_price_range_uFilter",
-            "id": "$10 and Under",
-          },
-          Object {
-            "displayName": "$10 - $19.99",
-            "facetName": "unbxd_price_range_uFilter",
-            "id": "$10 - $19.99",
-          },
-        ],
-        "v_tcpfit_unbxd_uFilter": Array [
-          Object {
-            "displayName": "Regular",
-            "facetName": "v_tcpfit_unbxd_uFilter",
-            "id": "Regular",
-          },
-        ],
-        "v_tcpsize_uFilter": Array [
-          Object {
-            "displayName": "6-9 M",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EF_6-9 M",
-          },
-          Object {
-            "displayName": "6-12 M",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EG_6-12 M",
-          },
-          Object {
-            "displayName": "9-12 M",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EJ_9-12 M",
-          },
-          Object {
-            "displayName": "12-18 M",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EM_12-18 M",
-          },
-          Object {
-            "displayName": "12-24 M",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EN_12-24 M",
-          },
-          Object {
-            "displayName": "18-24 M",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EP_18-24 M",
-          },
-          Object {
-            "displayName": "2T",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "ET_2T",
-          },
-          Object {
-            "displayName": "2T - 3T",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EV_2T - 3T",
-          },
-          Object {
-            "displayName": "3T",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EX_3T",
-          },
-          Object {
-            "displayName": "3T-4T",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EY_3T-4T",
-          },
-          Object {
-            "displayName": "4T",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "EZ_4T",
-          },
-          Object {
-            "displayName": "5T",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "FB_5T",
-          },
-          Object {
-            "displayName": "TODDLER 4",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "IW_TODDLER 4",
-          },
-          Object {
-            "displayName": "TODDLER 5",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "IZ_TODDLER 5",
-          },
-          Object {
-            "displayName": "TODDLER 6",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "JC_TODDLER 6",
-          },
-          Object {
-            "displayName": "TODDLER 7",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "JF_TODDLER 7",
-          },
-          Object {
-            "displayName": "TODDLER 8",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "JI_TODDLER 8",
-          },
-          Object {
-            "displayName": "TODDLER 9",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "JL_TODDLER 9",
-          },
-          Object {
-            "displayName": "TODDLER 10",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "JO_TODDLER 10",
-          },
-          Object {
-            "displayName": "TODDLER 11",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "JR_TODDLER 11",
-          },
-          Object {
-            "displayName": "ONE SIZE",
-            "facetName": "v_tcpsize_uFilter",
-            "id": "LA_ONE SIZE",
-          },
-        ],
-      }
-    }
-    forceUnregisterOnUnmount={false}
-    form="filter-form"
-    getFormState={[Function]}
-    initialValues={
-      Object {
-        "categoryPath2_uFilter": Array [
-          "Shoes & Accessories",
-        ],
-        "sort": "",
-      }
-    }
-    keepDirtyOnReinitialize={false}
-    labels={Object {}}
-    persistentSubmitErrors={false}
-    pure={true}
-    shouldAsyncValidate={[Function]}
-    shouldError={[Function]}
-    shouldValidate={[Function]}
-    shouldWarn={[Function]}
-    submitAsSideEffect={false}
-    totalProductsCount="34"
-    touchOnBlur={true}
-    touchOnChange={false}
-    updateUnregisteredFields={false}
-  />
 </Fragment>
 `;

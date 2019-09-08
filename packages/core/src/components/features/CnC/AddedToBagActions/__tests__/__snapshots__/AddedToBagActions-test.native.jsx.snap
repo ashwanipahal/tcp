@@ -35,6 +35,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
     variation="checkout"
   />
   <BagConfirmationModal
+    closeCheckoutConfirmationModal={[Function]}
     isOpen={true}
     labels={
       Object {
