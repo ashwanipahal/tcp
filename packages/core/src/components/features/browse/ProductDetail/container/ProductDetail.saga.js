@@ -1,14 +1,13 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 import PRODUCTLISTING_CONSTANTS from './ProductDetail.constants';
 import { setProductDetails } from './ProductDetail.actions';
 // import { validateReduxCache } from '../../../../../utils/cache.util';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 
-function* fetchProductDetail() {
+function* fetchProductDetail({ payload: { productColorId } }) {
   try {
-    console.log('comes in saga');
-    const productDetail = yield call(getProductInfoById);
-    console.log('productDetail', productDetail);
+    const state = yield select();
+    const productDetail = yield call(getProductInfoById, productColorId, state);
     yield put(setProductDetails({ ...productDetail }));
   } catch (err) {
     console.log(err);

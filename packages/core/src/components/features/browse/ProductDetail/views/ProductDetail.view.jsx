@@ -3,13 +3,21 @@ import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
+import Product from '../molecules/Product/views/Product.view';
+import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 
-const ProductDetailView = ({ className }) => {
+const ProductDetailView = ({ className, productDetails, breadCrumbs }) => {
+  console.log(
+    'productDetail in productdetail view file --> ',
+    productDetails && productDetails.get('product')
+  );
+  console.log('breadCrumbs');
   return (
     <div className={className}>
       <Row className="placeholder">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="bread-crumb">BREAD CRUMB</div>
+          {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs.toJS()} separationChar=">" />}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -25,7 +33,7 @@ const ProductDetailView = ({ className }) => {
           <div className="product-image-carousel">PRODUCT IMAGE CAROUSEL SECTION</div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 5 }}>
-          <div className="product-detail-section">PRODUCT DETAIL SECTION</div>
+          <Product productDetails={productDetails} />
         </Col>
       </Row>
       <Row className="placeholder">
@@ -69,10 +77,14 @@ const ProductDetailView = ({ className }) => {
 
 ProductDetailView.propTypes = {
   className: PropTypes.string,
+  productDetails: PropTypes.shape({}),
+  breadCrumbs: PropTypes.shape({}),
 };
 
 ProductDetailView.defaultProps = {
   className: '',
+  productDetails: {},
+  breadCrumbs: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

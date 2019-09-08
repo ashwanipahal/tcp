@@ -3,43 +3,52 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { getNavTree, prodDetails, getBreadCrumbs } from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
-    console.log('comes here 1 ');
     const { getDetails } = this.props;
-    getDetails();
+    getDetails({ productColorId: '2036238' });
   }
 
   render() {
-    const { products, ...otherProps } = this.props;
-    return <ProductDetail otherProps={otherProps} />;
+    const { productDetails, breadCrumbs, ...otherProps } = this.props;
+    console.log('productDetails in container', productDetails);
+    return (
+      <ProductDetail
+        productDetails={productDetails}
+        breadCrumbs={breadCrumbs}
+        otherProps={otherProps}
+      />
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    products: {},
-    state,
+    navTree: getNavTree(state),
+    productDetails: prodDetails(state),
+    breadCrumbs: getBreadCrumbs(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     getDetails: payload => {
-      console.log('comes here 2 ');
       dispatch(getProductDetails(payload));
     },
   };
 }
 
 ProductListingContainer.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.shape({})),
+  productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
+  breadCrumbs: PropTypes.shape({}),
 };
 
 ProductListingContainer.defaultProps = {
-  products: [],
+  productDetails: [],
+  breadCrumbs: {},
 };
 
 export default connect(

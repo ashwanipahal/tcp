@@ -6,6 +6,142 @@ import processHelpers from './processHelpers';
 import { extractExtraImages } from './productListing.utils';
 import { extractAttributeValue, extractPrioritizedBadge } from '../../../utils/badge.util';
 import utils from '../../../utils';
+import { getNavTree } from '../../../components/features/browse/ProductDetail/container/ProductDetail.selectors';
+import { findCategoryIdandName } from '../../../components/features/browse/ProductListing/container/ProductListing.util';
+
+/* DTN-5579 BE  will be sending the list of badges to be excluded in any category
+and we are checking if the particular category should show/hide a badge */
+function getNavAttributes(navTree, categoryId, attribute) {
+  let index = navTree ? navTree.length : 0;
+  let iterator = 0;
+  let categoryFound = '';
+  while (iterator < index) {
+    if (navTree[iterator].categoryId === categoryId) {
+      categoryFound = navTree[iterator][attribute];
+    } else if (navTree[iterator].menuItems && navTree[iterator].menuItems.length) {
+      categoryFound = getNavAttributes(
+        navTree[iterator].menuItems[0].length
+          ? navTree[iterator].menuItems[0]
+          : navTree[iterator].menuItems,
+        categoryId,
+        attribute
+      );
+    }
+    if (categoryFound) {
+      break;
+    } else {
+      iterator++;
+    }
+  }
+  return categoryFound;
+}
+
+/**
+ * @method homeBreadCrumbFactory -- give array to create Home breadcrumb
+ * @param {undefined}
+ * @return {array} breadCrumbs --contain home breadcrumb object in array
+ */
+export const homeBreadCrumbFactory = () => {
+  let breadCrumbs = [
+    {
+      displayName: 'Home',
+      pathSuffix: '/home',
+    },
+  ];
+  return breadCrumbs;
+};
+
+/**
+ * @function breadCrumbFactory -- create breadcrumb for PDP page
+ * @param {Object} storeState --> contain all redux store data
+ * @return {array} breadCrumbs --> number of obect item in array cotain breadcrumb info
+ */
+export const breadCrumbFactory = state => {
+  // const navList = storeState.globalComponents.header.navigationTree;
+  // const previousPageUrl = document && document.referrer;
+  // const previousPagePathName = seoURLExtactor(previousPageUrl);
+  const plpBreadCrumb = state.ProductListing.get('breadCrumbTrail');
+  let breadCrumbs;
+  if (plpBreadCrumb) {
+    breadCrumbs = plpBreadCrumb;
+  } else {
+    breadCrumbs = homeBreadCrumbFactory();
+  }
+
+  // if (matchPath(previousPagePathName, { path: PAGES.productListing.pathPattern })) {
+  //   /** user can navigate to PDP from PLP then breadcrumb hierarchy need to show but if
+  //     user search a product and click on product in typeahead results then Home breadcrumb need
+  //     to show on PDP so document.referrer will not able to distinguish if user search a  product from
+  //      PLP  and land on PDP , to distinguish this scenario URL param   navigateType=search is used */
+  //   let urlParams = UrlParamExtractor();
+  //   if (urlParams && urlParams.navigateType === 'search') {
+  //     return homeBreadCrumbFactory();
+  //   }
+
+  //   breadCrumbsArray = findCategoryIdandName(navList, previousPagePathName);
+  //   if (breadCrumbsArray) breadCrumbsArray.reverse();
+
+  //   breadCrumbs = breadCrumbsArray && breadCrumbsArray.map((item) => {
+  //     return {
+  //       pathSuffix: seoTokenExtactorFromPathName(item.url, storeState),
+  //       displayName: item.title,
+  //       destination: PAGES.productListing,
+  //       categoryId: item.categoryId
+
+  //     };
+  //   });
+  // }
+
+  // if (breadCrumbs && breadCrumbs.length === 0) {
+  //   breadCrumbs = homeBreadCrumbFactory();
+  // }
+
+  return breadCrumbs;
+};
+
+const routingInfoStoreView = {
+  getOriginImgHostSetting: () => {
+    return 'https://www.childrensplace.com';
+  },
+};
+
+const getImgPath = (id, excludeExtension) => {
+  return {
+    colorSwatch: getSwatchImgPath(id, excludeExtension),
+    productImages: getProductImgPath(id, excludeExtension),
+  };
+};
+
+const getFacetSwatchImgPath = id => {
+  const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
+  return `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/category/color-swatches/${id}.gif`;
+};
+
+const getSwatchImgPath = (id, excludeExtension) => {
+  const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
+  return `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${
+    excludeExtension ? '' : '.jpg'
+  }`;
+};
+
+const getProductImgPath = (id, excludeExtension) => {
+  const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
+
+  return {
+    125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
+      excludeExtension ? '' : '.jpg'
+    }`,
+    380: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/380/${id}${
+      excludeExtension ? '' : '.jpg'
+    }`,
+    500: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/500/${id}${
+      excludeExtension ? '' : '.jpg'
+    }`,
+    900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
+      excludeExtension ? '' : '.jpg'
+    }`,
+  };
+};
 
 // https://tc39.github.io/ecma262/#sec-array.prototype.findindex
 if (!Array.prototype.findIndex) {
@@ -225,8 +361,8 @@ const getColorfitsSizesMap = ({
       hasFits: hasFit,
       miscInfo: {
         isBopisEligible:
-          isBopisProduct(apiHelper.configOptions.isUSStore, itemColor) && !isGiftCard(itemColor),
-        isBossEligible: isBossProduct(bossDisabledFlags) && !isGiftCard(itemColor),
+          isBopisProduct(apiHelper.configOptions.isUSStore, itemColor) && !getIsGiftCard(itemColor),
+        isBossEligible: isBossProduct(bossDisabledFlags) && !getIsGiftCard(itemColor),
         badge1: isBundleProduct
           ? extractPrioritizedBadge(itemColor, productAttributes, '', excludeBage)
           : extractPrioritizedBadge(getFirstVariant(itemColor), productAttributes, '', excludeBage),
@@ -320,7 +456,7 @@ const parseCategoryId = (pathMap, breadCrumbs) => {
   let categoryName;
 
   if (L2Category.length <= 1) {
-    const categoryEntity = this.getParticularCategory(pathMap, L2Category);
+    const categoryEntity = processHelpers.getParticularCategory(pathMap, L2Category);
     const entities = categoryEntity && categoryEntity.split('|');
     categoryName = entities && entities[0].split('>');
   }
@@ -339,8 +475,9 @@ const processResponse = ({
   imagesByColor,
   reviewsCount,
   alternateSizes,
+  breadCrumbs,
 }) => ({
-  breadCrumbTrail: [],
+  breadCrumbs,
   rawBreadCrumb: getRawBreadCrumb(categoryPathMap),
   product: {
     // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
@@ -463,7 +600,6 @@ const parseProductFromAPI = (
   product,
   colorIdOrSeoKeyword,
   dontFetchExtraImages,
-  getImgPath,
   breadCrumbs,
   excludeBage,
   isBundleProduct
@@ -577,7 +713,7 @@ const parseProductFromAPI = (
   const categoryPath = getCategory(baseProduct);
   const categoryId = getCategoryId(breadCrumbs, baseProduct, categoryPath);
 
-  processResponse({
+  return processResponse({
     baseProduct,
     categoryPathMap,
     colorIdOrSeoKeyword,
@@ -588,11 +724,12 @@ const parseProductFromAPI = (
     imagesByColor,
     reviewsCount,
     alternateSizes,
+    breadCrumbs,
   });
 };
 
 const loadProduct = (productKey, justLoadProduct) => {
-  const breadCrumb = breadCrumbFactory(this.store.getState());
+  const breadCrumb = breadCrumbFactory();
   const navigationTree = generalStoreView.getHeaderNavigationTree(this.store.getState());
   const categoryId = breadCrumb[breadCrumb.length - 1].categoryId;
   const excludeBage = categoryId
@@ -773,16 +910,19 @@ const productDetailsInitStore = payload => {
  * @function getProductInfoById
  * @summary This will get product info and all color/sizes for that product
  */
-const getProductInfoById = (
-  productColorId,
-  getImgPath,
-  breadCrumbs,
-  excludeBage,
-  isRadialInvEnabled,
-  isBundleProduct
-) => {
-  productColorId = '2036238';
-  console.log('comes here ');
+const getProductInfoById = (productColorId, state) => {
+  // const isRadialInvEnabled = generalStoreView.getIsRadialInventoryEnabled(this.store.getState());
+  // const location = routingInfoStoreView.getHistory(this.store.getState()).location;
+  // const isBundleProduct = matchPath(location.pathname, { path: PAGES.productBundle.pathPattern });
+  const isRadialInvEnabled = false;
+  const isBundleProduct = false;
+
+  const breadCrumb = breadCrumbFactory(state);
+  const categoryId = breadCrumb[breadCrumb.length - 1].categoryId;
+  const navigationTree = getNavTree(state);
+  const excludeBage = categoryId
+    ? getNavAttributes(navigationTree, categoryId, 'excludeAttribute')
+    : '';
   const productId =
     productColorId.indexOf('-') > -1
       ? productColorId.split('-')[0]
@@ -830,7 +970,14 @@ const getProductInfoById = (
 
   return executeUnbxdAPICall(payload)
     .then(res => {
-      console.log(res);
+      return parseProductFromAPI(
+        res.body.response.products,
+        productColorId,
+        false,
+        breadCrumb,
+        excludeBage,
+        isBundleProduct
+      );
     })
     .catch(err => {
       // if (err && ((err.status >= 400 && err.status <= 404) || err.status === 500) && isClient()) {

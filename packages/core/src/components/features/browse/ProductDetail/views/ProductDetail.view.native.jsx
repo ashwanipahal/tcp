@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-const ProductListView = () => {
-  return <Text>ProductListView</Text>;
+const ProductDetailView = () => {
+  return <Text>ProductDetailView</Text>;
 };
 
-export default ProductListView;
+export default ProductDetailView;

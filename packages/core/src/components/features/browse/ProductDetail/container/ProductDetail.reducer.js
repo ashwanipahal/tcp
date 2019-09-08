@@ -17,8 +17,8 @@ const getDefaultState = state => {
 const ProductDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS:
-      console.log('comes in set products details reducer');
-      return state.set('details', action.payload);
+      console.log('comes in set products details reducer', action.payload);
+      return state.merge(fromJS(action.payload));
     default:
       return getDefaultState(state);
   }
