@@ -42,9 +42,10 @@ const {
   getShippingSendOrderUpdate,
   getSaveToAddressBook,
   getOnFileAddressKey,
-  getShippingAddress,
+  getShippingAddressID,
   getDefaultShipping,
   getAddEditResponseAddressId,
+  getShippingAddress,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
@@ -186,9 +187,10 @@ const mapStateToProps = state => {
       userAddresses: getAddressListState(state),
       onFileAddressKey: getOnFileAddressKey(state), // selected address Id in dropdown
       newUserPhoneNo: getUserPhoneNumber(state), // newly added user phone number to be shown as default in mobile number field in address form
-      shippingAddressId: getShippingAddress(state), // address user has selected should be shown as selected in dropdown, not the default address
+      shippingAddressId: getShippingAddressID(state), // address user has selected should be shown as selected in dropdown, not the default address
       setAsDefaultShipping: getDefaultShipping(state),
       addEditResponseAddressId: getAddEditResponseAddressId(state),
+      shippingAddress: getShippingAddress(state),
     },
     billingProps: {
       labels: getBillingLabels(state),

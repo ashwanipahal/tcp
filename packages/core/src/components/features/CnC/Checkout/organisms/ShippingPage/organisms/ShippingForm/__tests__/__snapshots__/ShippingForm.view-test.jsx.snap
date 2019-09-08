@@ -387,6 +387,30 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 Array [
                   Object {
                     "meta": Object {
+                      "field": "address.addressLine1",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 1 hhhhh",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.addressLine2",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 2 mmmmmmmm",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
                       "field": "address.firstName",
                       "form": "checkoutShipping",
                       "persistentSubmitErrors": undefined,
@@ -441,30 +465,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                       "touch": undefined,
                     },
                     "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine1",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 1 hhhhh",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine2",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 2 mmmmmmmm",
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
@@ -852,6 +852,30 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 Array [
                   Object {
                     "meta": Object {
+                      "field": "address.addressLine1",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 1 hhh",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "address.addressLine2",
+                      "form": "checkoutShipping",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "addressline 2 mmm",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
                       "field": "address.firstName",
                       "form": "checkoutShipping",
                       "persistentSubmitErrors": undefined,
@@ -906,30 +930,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                       "touch": undefined,
                     },
                     "payload": undefined,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine1",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 1 hhh",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "address.addressLine2",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "addressline 2 mmm",
                     "type": "@@redux-form/CHANGE",
                   },
                 ],

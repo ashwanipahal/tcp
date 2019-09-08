@@ -268,7 +268,7 @@ describe('Checkout Selectors', () => {
       Checkout: CheckoutState,
       User: UserState,
     };
-    expect(CHECKOUT_SELECTORS.getShippingAddress(State)).toEqual('34567');
+    expect(CHECKOUT_SELECTORS.getShippingAddress(State)).toEqual({ addressLine: ['abc', 'def'] });
   });
   it('#getAddEditResponseAddressId', () => {
     const CheckoutState = fromJS({

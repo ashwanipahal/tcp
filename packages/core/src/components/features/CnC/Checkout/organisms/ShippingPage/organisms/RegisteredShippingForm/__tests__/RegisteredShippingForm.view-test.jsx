@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { RegisteredShippingFormVanilla } from '../views/RegisteredShippingForm.view';
+import { onSaveBtnClick } from '../views/RegisteredShippingForm.util';
 
 describe('RegisteredShippingFormVanilla', () => {
   it('should render correctly ', () => {
@@ -194,7 +195,13 @@ describe('RegisteredShippingFormVanilla', () => {
       addNewShippingAddress: mockedaddNewShippingAddress,
     };
     const tree = shallow(<RegisteredShippingFormVanilla {...props} />);
-    tree.instance().onSaveBtnClick();
+    onSaveBtnClick({
+      updateShippingAddress: jest.fn(),
+      modalType: props.modalType,
+      addNewShippingAddress: mockedaddNewShippingAddress,
+      modalState: props.modalState,
+      isEditing: props.isEditing,
+    });
     expect(mockedaddNewShippingAddress).toBeCalled();
 
     expect(tree).toMatchSnapshot();
@@ -226,7 +233,13 @@ describe('RegisteredShippingFormVanilla', () => {
       updateShippingAddress: mockedupdateShippingAddress,
     };
     const tree = shallow(<RegisteredShippingFormVanilla {...props} />);
-    tree.instance().onSaveBtnClick();
+    onSaveBtnClick({
+      updateShippingAddress: mockedupdateShippingAddress,
+      modalType: props.modalType,
+      addNewShippingAddress: jest.fn(),
+      modalState: props.modalState,
+      isEditing: props.isEditing,
+    });
     expect(mockedupdateShippingAddress).toBeCalled();
 
     expect(tree).toMatchSnapshot();

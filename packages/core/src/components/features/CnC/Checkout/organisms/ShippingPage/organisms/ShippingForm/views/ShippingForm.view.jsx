@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormSection, reduxForm, Field, change, resetSection } from 'redux-form';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
@@ -15,12 +14,39 @@ import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
 import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
+import { propTypes, defaultProps } from './ShippingForm.view.utils';
 
 import styles from '../styles/ShippingForm.styles';
 
 const formName = 'checkoutShipping';
 
 class ShippingForm extends React.Component {
+  static changeAddressFields(nextProps) {
+    const { onFileAddressKey, dispatch, userAddresses, isMobile, shippingAddress } = nextProps;
+    let address = {};
+    if (userAddresses && userAddresses.size > 0) {
+      address = userAddresses.find(add => add.addressId === onFileAddressKey);
+      dispatch(change(formName, 'address.addressLine1', address.addressLine[0]));
+      dispatch(change(formName, 'address.addressLine2', address.addressLine[1]));
+    } else if (shippingAddress) {
+      address = shippingAddress;
+      dispatch(change(formName, 'address.addressLine1', address.addressLine1));
+      dispatch(change(formName, 'address.addressLine2', address.addressLine2));
+    }
+    const isDefaultAddress = address.primary === 'true';
+    dispatch(change(formName, 'address.firstName', address.firstName));
+    dispatch(change(formName, 'address.lastName', address.lastName));
+    dispatch(change(formName, 'address.city', address.city));
+    dispatch(change(formName, 'address.zipCode', address.zipCode));
+    dispatch(change(formName, 'address.state', address.state));
+    dispatch(change(formName, 'address.phoneNumber', address.phone1));
+    dispatch(change(formName, 'defaultShipping', isDefaultAddress));
+    if (!isMobile) {
+      return { isEditingMode: true };
+    }
+    return { isEditingMobileMode: true };
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,12 +57,14 @@ class ShippingForm extends React.Component {
       isEditingMobileMode: false,
     };
     this.isAddressModalEmptied = false;
+    this.addNewAddressEnabled = false;
   }
 
   componentDidUpdate(prevProps) {
     const {
       shipmentMethods: prevShipmentMethods,
       isSaveToAddressBookChecked: prevSaveToAddressBookChecked,
+      isAddNewAddress: prevAddNewAddress,
     } = prevProps;
     const {
       shipmentMethods: nextShipmentMethods,
@@ -44,6 +72,7 @@ class ShippingForm extends React.Component {
       defaultShipmentId,
       isSaveToAddressBookChecked,
       isAddNewAddress,
+      isAddNewAddress: nextIsAddNewAddress,
     } = this.props;
     const { modalType, modalState } = this.state;
     if (prevShipmentMethods && nextShipmentMethods && prevShipmentMethods !== nextShipmentMethods) {
@@ -55,35 +84,31 @@ class ShippingForm extends React.Component {
     ) {
       dispatch(change(formName, 'defaultShipping', isSaveToAddressBookChecked));
     }
+
+    if (!prevAddNewAddress && nextIsAddNewAddress !== prevAddNewAddress) {
+      dispatch(change(formName, 'saveToAddressBook', nextIsAddNewAddress));
+    }
     this.checkPropsOnUpdation(prevProps);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { isEditing, modalType, modalState, isEditingMode, isEditingMobileMode } = prevState;
-    const { onFileAddressKey, dispatch, userAddresses, isMobile } = nextProps;
+    const {
+      isEditing,
+      modalType,
+      modalState,
+      isEditingMode,
+      isEditingMobileMode,
+      shippingAddress,
+    } = prevState;
+    const { onFileAddressKey, userAddresses } = nextProps;
     if (
       (isEditing || (modalType === 'edit' && modalState)) &&
       onFileAddressKey &&
-      userAddresses &&
-      userAddresses.size > 0 &&
+      ((userAddresses && userAddresses.size > 0) || shippingAddress) &&
       !isEditingMode &&
       !isEditingMobileMode
     ) {
-      const address = userAddresses.find(add => add.addressId === onFileAddressKey);
-      const isDefaultAddress = address.primary === 'true';
-      dispatch(change(formName, 'address.firstName', address.firstName));
-      dispatch(change(formName, 'address.lastName', address.lastName));
-      dispatch(change(formName, 'address.city', address.city));
-      dispatch(change(formName, 'address.zipCode', address.zipCode));
-      dispatch(change(formName, 'address.state', address.state));
-      dispatch(change(formName, 'address.addressLine1', address.addressLine[0]));
-      dispatch(change(formName, 'address.addressLine2', address.addressLine[1]));
-      dispatch(change(formName, 'address.phoneNumber', address.phone1));
-      dispatch(change(formName, 'defaultShipping', isDefaultAddress));
-      if (!isMobile) {
-        return { isEditingMode: true };
-      }
-      return { isEditingMobileMode: true };
+      return ShippingForm.changeAddressFields(nextProps);
     }
     return null;
   }
@@ -91,13 +116,21 @@ class ShippingForm extends React.Component {
   checkPropsOnUpdation = prevProps => {
     const { dispatch, isAddNewAddress } = this.props;
     const { modalType, modalState } = this.state;
-    if (((modalType === 'add' && modalState) || isAddNewAddress) && !this.isAddressModalEmptied) {
+    if (
+      ((modalType === 'add' && modalState) || isAddNewAddress) &&
+      !this.isAddressModalEmptied &&
+      !this.addNewAddressEnabled
+    ) {
       dispatch(resetSection(formName, 'address'));
-      this.isAddressModalEmptied = true;
+      if (!this.isAddressModalEmptied) {
+        this.isAddressModalEmptied = true;
+      }
+      if (!this.addNewAddressEnabled) {
+        this.addNewAddressEnabled = true;
+      }
     }
-    if (!modalState && this.isAddressModalEmptied) {
-      this.isAddressModalEmptied = false;
-    }
+    this.toggleAddressState();
+
     this.checkPropsOnMoreUpdation(prevProps);
   };
 
@@ -115,6 +148,17 @@ class ShippingForm extends React.Component {
     }
     if (!isEditing && isEditingMode) {
       this.setState({ isEditingMode: false });
+    }
+  };
+
+  toggleAddressState = () => {
+    const { isAddNewAddress } = this.props;
+    const { modalState } = this.state;
+    if (!modalState && this.isAddressModalEmptied) {
+      this.isAddressModalEmptied = false;
+    }
+    if (!isAddNewAddress && this.addNewAddressEnabled) {
+      this.addNewAddressEnabled = false;
     }
   };
 
@@ -213,6 +257,7 @@ class ShippingForm extends React.Component {
       updateShippingAddress,
       addNewShippingAddress,
       labels,
+      shippingAddress,
     } = this.props;
     const { isEditing, modalType, modalState } = this.state;
     return (
@@ -226,7 +271,9 @@ class ShippingForm extends React.Component {
           fontWeight="regular"
           data-locator="shipping-details"
           className={`elem-mb-XS elem-mt-MED ${
-            userAddresses && userAddresses.size !== 0 ? 'hide-on-desktop hide-on-tablet' : ''
+            (userAddresses && userAddresses.size !== 0) || shippingAddress
+              ? 'hide-on-desktop hide-on-tablet'
+              : ''
           }`}
         >
           {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
@@ -247,6 +294,7 @@ class ShippingForm extends React.Component {
               shippingAddressId={shippingAddressId}
               updateShippingAddress={updateShippingAddress}
               addNewShippingAddress={addNewShippingAddress}
+              shippingAddress={shippingAddress}
               labels={labels}
             />
           )}
@@ -322,63 +370,9 @@ class ShippingForm extends React.Component {
   }
 }
 
-ShippingForm.propTypes = {
-  addressLabels: PropTypes.shape({}).isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  className: PropTypes.string,
-  dispatch: PropTypes.func.isRequired,
-  isOrderUpdateChecked: PropTypes.bool,
-  smsSignUpLabels: PropTypes.shape({}).isRequired,
-  selectedShipmentId: PropTypes.string,
-  addressPhoneNo: PropTypes.number,
-  emailSignUpLabels: PropTypes.shape({}).isRequired,
-  isGuest: PropTypes.bool,
-  isUsSite: PropTypes.bool,
-  orderHasPickUp: PropTypes.bool,
-  shipmentMethods: PropTypes.shape([]),
-  loadShipmentMethods: PropTypes.func.isRequired,
-  routeToPickupPage: PropTypes.func.isRequired,
-  isSaveToAddressBookChecked: PropTypes.bool,
-  userAddresses: PropTypes.shape([]),
-  onFileAddressKey: PropTypes.string,
-  isMobile: PropTypes.bool,
-  newUserPhoneNo: PropTypes.number,
-  shippingAddressId: PropTypes.string,
-  setAsDefaultShipping: PropTypes.bool,
-  addNewShippingAddressData: PropTypes.func.isRequired,
-  updateShippingMethodSelection: PropTypes.func.isRequired,
-  saveToAddressBook: PropTypes.bool,
-  updateShippingAddressData: PropTypes.func.isRequired,
-  toggleAddNewAddress: PropTypes.func.isRequired,
-  isAddNewAddress: PropTypes.bool,
-  updateShippingAddress: PropTypes.func.isRequired,
-  addNewShippingAddress: PropTypes.func.isRequired,
-  defaultAddressId: PropTypes.string,
-  defaultShipmentId: PropTypes.number,
-  labels: PropTypes.shape({}).isRequired,
-};
+ShippingForm.propTypes = propTypes;
 
-ShippingForm.defaultProps = {
-  className: '',
-  isOrderUpdateChecked: false,
-  selectedShipmentId: null,
-  addressPhoneNo: null,
-  isGuest: true,
-  isUsSite: true,
-  orderHasPickUp: false,
-  shipmentMethods: null,
-  isSaveToAddressBookChecked: false,
-  userAddresses: [],
-  onFileAddressKey: null,
-  isMobile: false,
-  newUserPhoneNo: null,
-  shippingAddressId: null,
-  setAsDefaultShipping: false,
-  saveToAddressBook: false,
-  isAddNewAddress: false,
-  defaultAddressId: null,
-  defaultShipmentId: null,
-};
+ShippingForm.defaultProps = defaultProps;
 
 const validateMethod = createValidateMethod({
   address: AddressFields.addressValidationConfig,

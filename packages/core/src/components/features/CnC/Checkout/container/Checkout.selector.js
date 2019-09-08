@@ -113,11 +113,19 @@ function getShippingDestinationValues(state) {
   };
 }
 
-const getShippingAddress = createSelector(
+const getShippingAddressID = createSelector(
   getShippingDestinationValues,
   shippingDestinationValues => {
     const { onFileAddressId } = shippingDestinationValues;
     return onFileAddressId;
+  }
+);
+
+const getShippingAddress = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { address } = shippingDestinationValues;
+    return address;
   }
 );
 
@@ -503,9 +511,10 @@ export default {
   getSaveToAddressBook,
   getOnFileAddressKey,
   getShippingSmsSignUpFields,
-  getShippingAddress,
+  getShippingAddressID,
   getDefaultShipping,
   getAddEditResponseAddressId,
   getBillingLabels,
   getLabels,
+  getShippingAddress,
 };

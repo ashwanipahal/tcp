@@ -83,7 +83,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 4,
           "medium": 6,
           "small": 6,
         }
@@ -124,6 +124,25 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
   <Styled(Row)
     fullBleed={true}
   >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 5,
+        }
+      }
+    >
+      <Address
+        address={null}
+        className="shipping__address"
+        dataLocatorPrefix="address"
+        isDefault={false}
+        showCountry={true}
+        showName={true}
+        showPhone={true}
+      />
+    </Styled(Col)>
     <Styled(Col)
       className="hide-on-desktop"
       colSize={
@@ -234,12 +253,12 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                   }
                 }
                 className="address"
-                isDefault={false}
+                isDefault={true}
                 showCountry={true}
                 showName={true}
                 showPhone={true}
               />,
-              "title": "test test ",
+              "title": "test test (Default)",
               "value": "123",
             },
             Object {
@@ -273,7 +292,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 4,
           "medium": 6,
           "small": 6,
         }
@@ -319,12 +338,12 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                   Array [
                     Object {
                       "meta": Object {
-                        "field": "address.phoneNumber",
+                        "field": "onFileAddressKey",
                         "form": "checkoutShipping",
                         "persistentSubmitErrors": undefined,
                         "touch": undefined,
                       },
-                      "payload": "",
+                      "payload": "123",
                       "type": "@@redux-form/CHANGE",
                     },
                   ],
@@ -677,7 +696,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 4,
           "medium": 6,
           "small": 6,
         }
@@ -723,12 +742,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                   Array [
                     Object {
                       "meta": Object {
-                        "field": "address.phoneNumber",
+                        "field": "onFileAddressKey",
                         "form": "checkoutShipping",
                         "persistentSubmitErrors": undefined,
                         "touch": undefined,
                       },
-                      "payload": "",
+                      "payload": undefined,
                       "type": "@@redux-form/CHANGE",
                     },
                   ],
@@ -1181,7 +1200,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 4,
           "medium": 6,
           "small": 6,
         }
@@ -1227,12 +1246,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                   Array [
                     Object {
                       "meta": Object {
-                        "field": "address.phoneNumber",
+                        "field": "onFileAddressKey",
                         "form": "checkoutShipping",
                         "persistentSubmitErrors": undefined,
                         "touch": undefined,
                       },
-                      "payload": "",
+                      "payload": undefined,
                       "type": "@@redux-form/CHANGE",
                     },
                   ],
@@ -1685,7 +1704,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 4,
           "medium": 6,
           "small": 6,
         }
@@ -1731,12 +1750,12 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                   Array [
                     Object {
                       "meta": Object {
-                        "field": "address.phoneNumber",
+                        "field": "onFileAddressKey",
                         "form": "checkoutShipping",
                         "persistentSubmitErrors": undefined,
                         "touch": undefined,
                       },
-                      "payload": "",
+                      "payload": undefined,
                       "type": "@@redux-form/CHANGE",
                     },
                   ],
