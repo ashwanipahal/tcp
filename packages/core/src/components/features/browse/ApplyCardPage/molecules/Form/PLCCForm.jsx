@@ -20,14 +20,15 @@ import {
 import { backToHome } from '../../utils/DateOfBirthHelper';
 import StyledPLCCFormWrapper from './styles/PLCCForm.style';
 
-const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
+const PLCCForm = ({ dispatch, plccData, handleSubmit, labels, isPLCCModalFlow }) => {
   return (
-    <StyledPLCCFormWrapper>
+    <StyledPLCCFormWrapper isPLCCModalFlow={isPLCCModalFlow}>
       <form onSubmit={handleSubmit}>
         <Grid>
-          <CreditCardPageHeader labels={labels} />
+          <CreditCardPageHeader labels={labels} isPLCCModalFlow={isPLCCModalFlow} />
           <Row fullBleed>
             <ReviewCreditCardInformation
+              isPLCCModalFlow={isPLCCModalFlow}
               creditCardHeader={plccData && plccData.credit_card_header}
             />
           </Row>
@@ -101,7 +102,7 @@ const PLCCForm = ({ dispatch, plccData, handleSubmit, labels }) => {
             <Row fullBleed className="submit_plcc_form">
               <Col
                 ignoreGutter={{ small: true }}
-                colSize={{ large: 4, medium: 4, small: 6 }}
+                colSize={{ large: 6, medium: 4, small: 6 }}
                 className="submit_button_plcc_form_container"
               >
                 <Button
@@ -152,6 +153,7 @@ PLCCForm.propTypes = {
     plcc_form_nothanks: PropTypes.string.isRequired,
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     plcc_form_checkbox_text: PropTypes.string.isRequired,
