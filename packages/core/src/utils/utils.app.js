@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
@@ -447,6 +447,37 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 };
 
 export const isAndroid = () => Platform.OS === 'android';
+
+/**
+ * getPixelRatio
+ * This method returns the PixelRatio for different devices ( Android & ISO)
+ */
+export const getPixelRatio = () => {
+  // for android iPhone iPhone 6 Plus, 7 Plus, 8 Plus , X, XS, XS Max ,Pixel, Pixel 2 devices. (Note: PixelRatio = 3 ).
+  let devicepixel = 'xxhdpi';
+
+  if (PixelRatio.get() === 1) {
+    // for android devices mdpi.
+    devicepixel = 'mdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() === 1.5) {
+    // for android devices hdpi
+    devicepixel = 'hdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() === 2) {
+    // for android & iPhone 4, 4S ,iPhone 5, 5C, 5S ,iPhone 6, 7, 8 ,iPhone XR devices .
+    devicepixel = 'xhdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() > 3.5) {
+    // for android devices, Nexus 6 , Samsung7 , Pixel XL, Pixel 2 XL, xxxhdpi Android devices.
+    devicepixel = 'xxxhdpi';
+    return devicepixel;
+  }
+  return devicepixel;
+};
 
 export default {
   getSiteId,

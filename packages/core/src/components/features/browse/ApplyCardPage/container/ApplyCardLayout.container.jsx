@@ -12,6 +12,7 @@ class ApplyCardLayoutContainer extends React.Component {
     plccData: PropTypes.shape({}).isRequired,
     labels: PropTypes.shape({}).isRequired,
     fetchModuleXContent: PropTypes.func.isRequired,
+    isPLCCModalFlow: PropTypes.bool.isRequired,
     submitApplication: PropTypes.func.isRequired,
     applicationStatus: PropTypes.string.isRequired,
     plccUser: PropTypes.bool.isRequired,
@@ -37,7 +38,14 @@ class ApplyCardLayoutContainer extends React.Component {
   };
 
   render() {
-    const { applicationStatus, plccData, labels, plccUser, profileInfo } = this.props;
+    const {
+      applicationStatus,
+      isPLCCModalFlow,
+      plccData,
+      labels,
+      plccUser,
+      profileInfo,
+    } = this.props;
     if (plccUser) {
       routerPush('/', '/place-card');
     }
@@ -49,6 +57,7 @@ class ApplyCardLayoutContainer extends React.Component {
         submitPLCCForm={this.submitPLCCForm}
         plccUser={plccUser}
         profileInfo={profileInfo}
+        isPLCCModalFlow={isPLCCModalFlow}
       />
     );
   }

@@ -34,6 +34,8 @@ import {
   setAddressError,
   setSmsNumberForUpdates,
   onEditModeChangeAction,
+  getSetIsBillingVisitedActn,
+  submitBillingSection,
 } from '../container/Checkout.action';
 
 describe('#chekcoutActions', () => {
@@ -224,6 +226,18 @@ describe('#chekcoutActions', () => {
     expect(onEditModeChangeAction()).toEqual({
       isEditingSubform: undefined,
       type: 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM',
+    });
+  });
+  it('getSetIsBillingVisitedActn', () => {
+    expect(getSetIsBillingVisitedActn()).toEqual({
+      isBillingVisited: undefined,
+      type: 'CHECKOUT_FLAGS_SET_BILLING_VISITED',
+    });
+  });
+  it('submitBillingSection', () => {
+    expect(submitBillingSection()).toEqual({
+      payload: undefined,
+      type: 'SUBMIT_BILLING_SECTION',
     });
   });
 });

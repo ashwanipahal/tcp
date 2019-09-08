@@ -37,6 +37,7 @@ export const CreditCardFields = ({
             placeholder={labels.paymentGC.lbl_payment_cardNumber}
             name="cardNumber"
             id="cardNumber"
+            type="number"
             component={CreditCardNumber}
             dataLocator="payment-cardtextfield"
             cardTypeImgUrl={cardTypeImgUrl}

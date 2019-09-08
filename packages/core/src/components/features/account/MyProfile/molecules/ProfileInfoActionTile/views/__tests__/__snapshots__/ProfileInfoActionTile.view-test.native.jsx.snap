@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProfileInfoActionTile should render correctly 1`] = `
-<Styled(View)
+<Styled(TouchableOpacity)
   onPress={[Function]}
 >
   <Styled(Styled(ImageComp))
@@ -23,11 +23,11 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
       textAlign="center"
     />
   </View>
-</Styled(View)>
+</Styled(TouchableOpacity)>
 `;
 
 exports[`ProfileInfoActionTile should render correctly when activityCompletionState is present 1`] = `
-<Styled(View)
+<Styled(TouchableOpacity)
   onPress={[Function]}
 >
   <Styled(Styled(ImageComp))
@@ -58,5 +58,5 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
       textAlign="center"
     />
   </View>
-</Styled(View)>
+</Styled(TouchableOpacity)>
 `;

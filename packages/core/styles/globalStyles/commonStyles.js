@@ -23,6 +23,9 @@ export default css`
 
   .ReactModal__Body--open {
     overflow: hidden;
+    .pac-container {
+      z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
+    }
   }
 
   input[type='text']::-ms-clear {

@@ -16,6 +16,7 @@ import {
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class MyRewardsContainer extends PureComponent {
   static propTypes = {
@@ -26,12 +27,14 @@ export class MyRewardsContainer extends PureComponent {
     couponsLabels: PropTypes.shape({}).isRequired,
     onApplyCouponToBagFromList: PropTypes.func,
     handleErrorCoupon: PropTypes.func,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
     view: 'reward',
     onApplyCouponToBagFromList: () => {},
     handleErrorCoupon: () => {},
+    toastMessage: () => {},
   };
 
   constructor(props) {
@@ -65,6 +68,7 @@ export class MyRewardsContainer extends PureComponent {
       view,
       handleErrorCoupon,
       onApplyCouponToBagFromList,
+      toastMessage,
       ...otherProps
     } = this.props;
     const { selectedCoupon } = this.state;
@@ -77,6 +81,7 @@ export class MyRewardsContainer extends PureComponent {
           onViewCouponDetails={this.onViewCouponDetails}
           onApplyCouponToBagFromList={onApplyCouponToBagFromList}
           handleErrorCoupon={handleErrorCoupon}
+          toastMessage={toastMessage}
           {...otherProps}
         />
         {selectedCoupon && (
@@ -129,6 +134,10 @@ export const mapDispatchToProps = dispatch => ({
     setTimeout(() => {
       dispatch(setError({ msg: null, couponCode: coupon.id }));
     }, 5000);
+  },
+  toastMessage: coupon => {
+    dispatch(toastMessageInfo(coupon.error));
+    dispatch(setError({ msg: null, couponCode: coupon.id }));
   },
 });
 

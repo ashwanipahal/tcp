@@ -9,19 +9,20 @@ import {
   fetchShipmentMethods,
   routeToPickupPage as routeToPickupPageActn,
   getSetCheckoutStage,
+  submitBillingSection,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   isGuest as isGuestUser,
   isExpressCheckout,
   getAlternateFormUpdate,
-  getPickUpContactFormLabels,
   getSendOrderUpdate,
   getCheckoutStage,
 } from './Checkout.selector';
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
   getShippingLabels,
@@ -36,12 +37,14 @@ const {
   getShipmentMethods,
   getDefaultShipmentID,
   getShippingSendOrderUpdate,
+  getCheckoutProgressBarLabels,
 } = selectors;
 
 export class CheckoutContainer extends React.Component<Props> {
   componentDidMount() {
-    const { initCheckout } = this.props;
+    const { initCheckout, needHelpContentId, fetchNeedHelpContent } = this.props;
     initCheckout();
+    fetchNeedHelpContent([needHelpContentId]);
   }
 
   render() {
@@ -73,8 +76,13 @@ export class CheckoutContainer extends React.Component<Props> {
       setCheckoutStage,
       billingProps,
       router,
+      submitBilling,
+      checkoutProgressBarLabels,
     } = this.props;
-    const availableStages = checkoutUtil.getAvailableStages(cartOrderItems);
+    const availableStages = checkoutUtil.getAvailableStages(
+      cartOrderItems,
+      checkoutProgressBarLabels
+    );
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -105,6 +113,7 @@ export class CheckoutContainer extends React.Component<Props> {
         setCheckoutStage={setCheckoutStage}
         availableStages={availableStages}
         router={router}
+        submitBilling={submitBilling}
       />
     );
   }
@@ -132,6 +141,12 @@ export const mapDispatchToProps = dispatch => {
     },
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
+    },
+    submitBilling: payload => {
+      dispatch(submitBillingSection(payload));
+    },
+    fetchNeedHelpContent: contentIds => {
+      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
   };
 };
@@ -177,11 +192,16 @@ const mapStateToProps = state => {
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
     orderHasShipping: getIsOrderHasShipping(state),
-    pickUpLabels: { ...getPickUpContactFormLabels(state), ...getEmailSignUpLabels(state) },
+    pickUpLabels: {
+      ...selectors.getPickUpContactFormLabels(state),
+      ...getEmailSignUpLabels(state),
+    },
     smsSignUpLabels: getSmsSignUpLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
+    checkoutProgressBarLabels: getCheckoutProgressBarLabels(state),
+    needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
   };
 };
 

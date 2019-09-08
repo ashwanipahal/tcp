@@ -62,7 +62,9 @@ exports[`Shipping Page should render correctly 1`] = `
     }
   />
   <ScrollViewMock>
-    <CheckoutSectionTitleDisplay />
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay />
+    </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
         color="black"

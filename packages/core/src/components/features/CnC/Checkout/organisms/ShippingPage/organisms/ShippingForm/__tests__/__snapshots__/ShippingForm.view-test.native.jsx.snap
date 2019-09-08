@@ -42,6 +42,7 @@ exports[`Shipping Form should render correctly 1`] = `
   </Styled(View)>
   <CnCCommonTemplate
     btnText="NEXT:BILLING"
+    isGuest={true}
     routeToPage=""
   />
 </Fragment>

@@ -121,6 +121,7 @@ const ShippingForm = ({
         btnText="NEXT:BILLING"
         routeToPage=""
         onPress={handleSubmit(submitShippingForm)}
+        isGuest={isGuest}
       />
     </>
   );
