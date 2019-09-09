@@ -2,12 +2,8 @@ import styled, { css } from 'styled-components';
 import { Carousel, LinkText } from '..';
 
 const StyledLinkText = styled(LinkText)`
-  margin-top: 16px;
+  margin-top: 10px;
   display: inline-block;
-
-  @media ${props => props.theme.mediaQuery.medium} {
-    margin-top: 40px;
-  }
 
   .link-text {
     margin-bottom: 0;
@@ -50,12 +46,11 @@ const style = css`
   }
 
   .banner-content {
-    text-align: center;
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     width: 100%;
-    height: 100%;
   }
 
   &.gymboree-module-a .banner-content {
@@ -76,7 +71,8 @@ const style = css`
     position: relative;
   }
 
-  .tcp_carousel_wrapper .slick-list {
+  .tcp_carousel_wrapper .slick-list,
+  .banner-slide {
     max-height: 311px;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -179,6 +175,10 @@ const style = css`
     &.gymboree-module-a.tcp_carousel_wrapper .tcp_carousel__play {
       left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     }
+  }
+
+  .moduleA__promoBanner {
+    line-height: unset;
   }
 
   &.gymboree-module-a .moduleA__promoBanner {
