@@ -40,14 +40,6 @@ const style = css`
 
   .banner-slide {
     position: relative;
-    max-height: 311px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      max-height: 406px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      max-height: 474px;
-    }
-
     img {
       width: 100%;
     }
@@ -79,7 +71,8 @@ const style = css`
     position: relative;
   }
 
-  .tcp_carousel_wrapper .slick-list {
+  .tcp_carousel_wrapper .slick-list,
+  .banner-slide {
     max-height: 311px;
 
     @media ${props => props.theme.mediaQuery.medium} {
