@@ -126,12 +126,7 @@ export const getLabelsCartItemTile = state => {
         lbl_info_giftDesign: design,
         lbl_info_giftValue: value,
       },
-    },
-  } = state.Labels;
-
-  const {
-    bag: {
-      bagOverview: {
+      cartItemTile: {
         lbl_cartTile_fit: fit,
         lbl_cartTile_points: points,
         lbl_cartTile_cancel: cancel,
@@ -148,9 +143,10 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_shipToHome: ecomShipping,
         lbl_cartTile_extra: extra,
         lbl_cartTile_off: off,
+        lbl_cartTile_delete: deleteItem,
+      },
+      minibag: {
         lbl_miniBag_problemWithOrder: problemWithOrder,
-        lbl_error_please: pleaseText,
-        lbl_error_remove: remove,
         lbl_miniBag_error: removeSoldOut,
         lbl_miniBag_itemUnavailable: itemUnavailable,
         lbl_miniBag_itemSoldOut: itemSoldOut,
@@ -159,10 +155,15 @@ export const getLabelsCartItemTile = state => {
         lbl_minibag_errorSize: errorSize,
         lbl_minibag_errorUpdateUnavailable: updateUnavailable,
         lbl_minibag_errorRemoveSoldoutHeader: removeSoldoutHeader,
-        lbl_cartTile_delete: deleteItem,
       },
     },
   } = state.Labels;
+
+  // const {
+  //   bag: {
+  //     bagOverview: { lbl_error_please: pleaseText, lbl_error_remove: remove },
+  //   },
+  // } = state.Labels;
 
   return {
     color,
@@ -188,8 +189,8 @@ export const getLabelsCartItemTile = state => {
     extra,
     off,
     problemWithOrder,
-    pleaseText,
-    remove,
+    // pleaseText,
+    // remove,
     removeSoldOut,
     itemUnavailable,
     itemSoldOut,

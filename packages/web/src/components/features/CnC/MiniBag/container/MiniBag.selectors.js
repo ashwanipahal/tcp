@@ -12,7 +12,7 @@ export const getLabelsMiniBag = state => {
   return {
     createAccount: getLabelValue(state.Labels, 'lbl_miniBag_createAccount', 'minibag', 'global'),
     logIn: getLabelValue(state.Labels, 'lbl_miniBag_logIn', 'minibag', 'global'),
-    points: getLabelValue(state.Labels, 'lbl_cartTile_points', 'minibag', 'global'),
+    points: getLabelValue(state.Labels, 'lbl_cartTile_points', 'cartItemTile', 'global'),
     inRewards: getLabelValue(state.Labels, 'lbl_miniBag_inRewards', 'minibag', 'global'),
     hi: getLabelValue(state.Labels, 'lbl_miniBag_hi', 'minibag', 'global'),
     viewBag: getLabelValue(state.Labels, 'lbl_miniBag_viewBag', 'minibag', 'global'),

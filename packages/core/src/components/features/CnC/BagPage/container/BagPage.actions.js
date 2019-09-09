@@ -105,7 +105,10 @@ const routeForCheckout = () => {
   };
 };
 
-const initActions = [loadComponentLabelsData({ category: LABELS.bagPage })];
+const initActions = [
+  loadComponentLabelsData({ category: LABELS.bagPage }),
+  loadComponentLabelsData({ category: LABELS.account }),
+];
 
 export default {
   getOrderDetails,
