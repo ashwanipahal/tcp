@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Carousel, LinkText } from '..';
 
 const StyledLinkText = styled(LinkText)`
-  margin-top: 35px;
+  margin-top: 10px;
   display: inline-block;
 
   .link-text {
@@ -40,21 +40,37 @@ const style = css`
 
   .banner-slide {
     position: relative;
+    max-height: 311px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-height: 406px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 474px;
+    }
+
     img {
       width: 100%;
     }
   }
 
   .banner-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     width: 100%;
-    height: 100%;
+  }
+
+  .tcp_carousel_wrapper .slick-list {
+    max-height: 311px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-height: 406px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 474px;
+    }
   }
 
   &.gymboree-module-a .banner-content {
@@ -163,6 +179,10 @@ const style = css`
     &.gymboree-module-a.tcp_carousel_wrapper .tcp_carousel__play {
       left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     }
+  }
+
+  .moduleA__promoBanner {
+    line-height: unset;
   }
 
   &.gymboree-module-a .moduleA__promoBanner {
