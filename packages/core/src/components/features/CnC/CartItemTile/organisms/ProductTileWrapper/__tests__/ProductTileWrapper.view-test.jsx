@@ -105,7 +105,7 @@ describe('ProductTileWrapper component', () => {
       ]),
       theme: {
         mediaQuery: {
-          large: '(min-width: 1024px)',
+          large: '(min-width: 1200px)',
         },
         fonts: {
           secondaryFontFamily: 'secondary',
@@ -113,7 +113,7 @@ describe('ProductTileWrapper component', () => {
         breakpoints: {
           maxWidth: 1440,
           keys: ['xs', 'sm', 'lg', 'xl'],
-          values: { xs: 0, sm: 768, lg: 1024, xl: 1440 },
+          values: { xs: 0, sm: 768, lg: 1200, xl: 1440 },
         },
       },
     };

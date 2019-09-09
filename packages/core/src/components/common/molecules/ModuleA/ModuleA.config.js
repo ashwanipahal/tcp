@@ -1,3 +1,5 @@
+import { breakpoints } from '../../../../../styles/themes/TCP/mediaQuery';
+
 export default {
   ctaTypes: {
     stackedCTAButtons: 'stackedCTAList',
@@ -16,7 +18,7 @@ export default {
     swipe: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: breakpoints.values.lg,
         settings: {
           arrows: false,
         },

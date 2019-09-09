@@ -66,6 +66,7 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
                 fontSize="fs14"
                 textAlign="center"
                 color="gray.800"
+                fontWeight="black"
                 text={getLabelValue(labels, 'lbl_createAccount_spendPoint', 'registration')}
               />
               <BodyCopy

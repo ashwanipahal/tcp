@@ -7,6 +7,20 @@ export default css`
     .filter-row {
       margin-bottom: 7px;
     }
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin: 14px 14px 0;
+      width: auto;
+      padding: 0;
+
+      .container-accordion {
+        padding: 0;
+      }
+    }
+  }
+
+  .accordion-class {
+    width: 100%;
   }
 
   .open-filter-button {
@@ -34,7 +48,7 @@ export default css`
   }
 
   .item-common {
-    margin-bottom: 18px;
+    margin-bottom: 8px;
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 120px;
@@ -51,6 +65,7 @@ export default css`
     border: 0;
     padding-top: 6px;
     padding-bottom: 0;
+    margin: auto;
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin: 8px auto 0;
@@ -59,6 +74,10 @@ export default css`
     .item-list-common {
       max-width: 98%;
       margin: 0 auto;
+
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        max-width: 99%;
+      }
     }
 
     .item-common {
@@ -66,7 +85,7 @@ export default css`
         width: 120px;
       }
       @media ${props => props.theme.mediaQuery.smallOnly} {
-        width: 104px;
+        width: 96px;
       }
     }
 
@@ -91,7 +110,7 @@ export default css`
 
     .size-title {
       @media ${props => props.theme.mediaQuery.smallOnly} {
-        width: 104px;
+        width: 96px;
       }
     }
 

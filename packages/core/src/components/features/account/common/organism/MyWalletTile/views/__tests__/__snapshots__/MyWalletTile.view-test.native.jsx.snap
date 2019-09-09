@@ -37,18 +37,11 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
     </Styled(View)>
   </View>
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text="lbl_overview_viewMyWalletCTA"
-      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -90,18 +83,11 @@ exports[`MyWalletTile component should render correctly when coupons are present
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text="lbl_overview_walletViewAllCTA"
-      url=""
     />
   </Styled(View)>
 </Styled(View)>

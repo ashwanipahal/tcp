@@ -6,7 +6,7 @@ import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import mediaQuery from '@tcp/core/styles/themes/TCP';
+import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
@@ -76,7 +76,7 @@ class HeaderMiddleNav extends React.PureComponent {
 
   toggleMiniBagModal = ({ e, isOpen, isRouting }) => {
     if (e) e.preventDefault();
-    if (window.innerWidth <= 1024 && !isRouting) {
+    if (window.innerWidth <= breakpoints.values.lg && !isRouting) {
       routerPush('/bag', '/bag');
     } else {
       this.setState({ isOpenMiniBagModal: isOpen });
@@ -90,7 +90,7 @@ class HeaderMiddleNav extends React.PureComponent {
 
   openSearchBar = e => {
     e.preventDefault();
-    if (window.innerWidth <= mediaQuery.large) {
+    if (window.innerWidth <= breakpoints.large) {
       routerPush('/search', '/search');
     } else {
       this.setState({ isSearchOpen: true }, () => {
