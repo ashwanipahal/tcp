@@ -10,7 +10,11 @@ describe('BonusPointsView', () => {
         lbl_bonusPoints_placeRewardsPoints: 'points',
       },
       global: {},
+      bag: {
+        bagBonusPoints: {},
+      },
     };
+
     const bonusData = {};
     const bonusDetailsData = 'hello';
     const e = { preventDefault: jest.fn() };

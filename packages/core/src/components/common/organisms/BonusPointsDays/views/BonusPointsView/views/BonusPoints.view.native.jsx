@@ -19,6 +19,7 @@ class BonusPointsView extends React.Component {
     view: PropTypes.string,
     getBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
+    isBagPage: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -30,6 +31,7 @@ class BonusPointsView extends React.Component {
     view: constants.VIEWS.EDIT,
     getBonusDaysData: () => {},
     orderDetails: {},
+    isBagPage: false,
   };
 
   constructor(props) {
@@ -55,6 +57,7 @@ class BonusPointsView extends React.Component {
       isPlcc,
       getBonusDaysData,
       orderDetails,
+      isBagPage,
     } = this.props;
     const { openModalState } = this.state;
     return (
@@ -76,6 +79,8 @@ class BonusPointsView extends React.Component {
             getBonusDaysData={getBonusDaysData}
             orderDetails={orderDetails}
             isPlcc={isPlcc}
+            isBagPage={isBagPage}
+            bagBonusLabels={labels.bag.bagBonusPoints}
           />
         )}
         <Modal

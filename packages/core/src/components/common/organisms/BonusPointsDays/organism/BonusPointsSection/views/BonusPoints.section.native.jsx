@@ -21,20 +21,25 @@ const getButtonText = ({
   labels,
   forFutureUse,
   isUsed,
+  isBagPage,
+  bagBonusLabels,
 }) => {
   let buttonText = '';
   let dataLocator = '';
+
+  const labelsNode = isBagPage ? bagBonusLabels : labels;
+
   if (isUsed) {
-    buttonText = `${getLabelValue(labels, 'lbl_bonusPoints_usedOn')} ${dateUsed}`;
+    buttonText = `${getLabelValue(labelsNode, 'lbl_bonusPoints_usedOn')} ${dateUsed}`;
     dataLocator = 'usedonbtn';
   } else if (forFutureUse || futureDisabled) {
-    buttonText = getLabelValue(labels, 'lbl_bonusPoints_futureUse');
+    buttonText = getLabelValue(labelsNode, 'lbl_bonusPoints_futureUse');
     dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
-    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApplied');
+    buttonText = getLabelValue(labelsNode, 'lbl_bonusPoints_ctaApplied');
     dataLocator = 'appliedtoorderbtn';
   } else {
-    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApply');
+    buttonText = getLabelValue(labelsNode, 'lbl_bonusPoints_ctaApply');
     dataLocator = 'availabletodaybtn';
   }
   return { buttonText, dataLocator };
@@ -46,7 +51,7 @@ const getButtonText = ({
  * @param {object} props object required for rendering bonus points
  * based on the specific conditions
  */
-const createBonusPoints = ({ bonusData, labels }) => {
+const createBonusPoints = ({ bonusData, labels, isBagPage, bagBonusLabels }) => {
   const {
     totalBonusPointDays,
     availableBonusPointDays,
@@ -72,6 +77,8 @@ const createBonusPoints = ({ bonusData, labels }) => {
       labels,
       forFutureUse,
       isUsed,
+      isBagPage,
+      bagBonusLabels,
     });
 
     const disabled = isUsed || forFutureUse || futureDisabled;
@@ -208,8 +215,11 @@ const BonusPointsSection = ({
   getBonusDaysData,
   orderDetails,
   isPlcc,
+  isBagPage,
+  bagBonusLabels,
 }) => {
-  const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
+  const bonusPoints =
+    bonusData && createBonusPoints({ bonusData, labels, isBagPage, bagBonusLabels });
   const header = getHeader({ labels });
   const body = getContent({
     labels,
@@ -236,6 +246,8 @@ BonusPointsSection.propTypes = {
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   isPlcc: PropTypes.bool,
+  isBagPage: PropTypes.bool,
+  bagBonusLabels: PropTypes.shape({}),
 };
 
 BonusPointsSection.defaultProps = {
@@ -246,6 +258,8 @@ BonusPointsSection.defaultProps = {
   getBonusDaysData: () => {},
   orderDetails: {},
   isPlcc: false,
+  isBagPage: false,
+  bagBonusLabels: {},
 };
 
 getContent.propTypes = {

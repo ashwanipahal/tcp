@@ -5,9 +5,11 @@ exports[`BonusPointsView should render correctly 1`] = `
   className=""
 >
   <BonusPointsSection
+    bagBonusLabels={Object {}}
     bonusData={Object {}}
     enableApplyCta={false}
     getBonusDaysData={[Function]}
+    isBagPage={false}
     isPlcc={false}
     labels={
       Object {
