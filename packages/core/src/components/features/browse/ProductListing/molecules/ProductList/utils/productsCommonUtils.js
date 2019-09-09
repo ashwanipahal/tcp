@@ -218,3 +218,7 @@ export const getFormattedLoyaltyText = text => {
     .trim()
     .split('on');
 };
+
+export const getProductListToPath = str => {
+  return `/p?pid=${str.split('/p/')[1]}`;
+};
