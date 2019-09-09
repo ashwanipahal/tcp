@@ -211,6 +211,7 @@ const processResponse = (
     filters = productListingFilters || {};
     totalProductsCount = productListingTotalCount || 0;
   }
+
   // WHY DO WE NEED THIS??
   const unbxdId = res.headers && res.headers['unbxd-request-id'];
   // TODO - fix this - this.setUnbxdId(unbxdId);
