@@ -2,6 +2,7 @@ import React from 'react';
 import proptypes from 'prop-types';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 
@@ -24,6 +25,8 @@ const SearchBar = props => {
     openSearchBar,
     closeSearchBar,
     isOpen,
+    searchData,
+    labels,
   } = props;
   return (
     <React.Fragment>
@@ -57,7 +60,9 @@ const SearchBar = props => {
               {!showProduct ? (
                 <div className="suggestionBox">
                   <div className="trendingBox">
-                    <BodyCopy className="trendingBoxHead">WHAT&apos;S TRENDING</BodyCopy>
+                    <BodyCopy className="trendingBoxHead">
+                      {getLabelValue(labels, 'lbl_search_whats_trending')}
+                    </BodyCopy>
                     <BodyCopy
                       className="trendingBoxBody"
                       fontFamily="Nunito"
@@ -65,15 +70,20 @@ const SearchBar = props => {
                       lineHeight="39px"
                     >
                       <ul>
-                        <li className="tagName">EASTER</li>
-                        <li className="tagName">EASTER</li>
-                        <li className="tagName">EASTER</li>
-                        <li className="tagName">EASTER</li>
+                        {searchData.trending.map(item => {
+                          return (
+                            <li key={item.id} className="tagName">
+                              {item.text}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </BodyCopy>
                   </div>
                   <div className="recentBox">
-                    <BodyCopy className="recentBoxHead">YOUR RECENT SEARCH</BodyCopy>
+                    <BodyCopy className="recentBoxHead">
+                      {getLabelValue(labels, 'lbl_search_recent_search')}
+                    </BodyCopy>
                     <BodyCopy
                       className="recentBoxBody"
                       fontFamily="Nunito"
@@ -81,10 +91,13 @@ const SearchBar = props => {
                       lineHeight="39px"
                     >
                       <ul>
-                        <li className="recentTag">DRESS</li>
-                        <li className="recentTag">GIRL</li>
-                        <li className="recentTag">DRESS</li>
-                        <li className="recentTag">GIRL</li>
+                        {searchData.recent.map(item => {
+                          return (
+                            <li key={item.id} className="recentTag">
+                              {item.text}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </BodyCopy>
                   </div>
@@ -92,7 +105,9 @@ const SearchBar = props => {
               ) : (
                 <div className="matchBox">
                   <div className="matchLinkBox">
-                    <BodyCopy className="matchLinkBoxHead">I&apos;M Looking For</BodyCopy>
+                    <BodyCopy className="matchLinkBoxHead">
+                      {getLabelValue(labels, 'lbl_search_looking_for')}
+                    </BodyCopy>
                     <BodyCopy
                       className="matchLinkBoxBody"
                       fontFamily="Nunito"
@@ -100,15 +115,20 @@ const SearchBar = props => {
                       lineHeight="39px"
                     >
                       <ul>
-                        <li className="linkName">Pants</li>
-                        <li className="linkName">Jeans</li>
-                        <li className="linkName">Pants Pj</li>
-                        <li className="linkName">Jeans set</li>
+                        {searchData.looking.map(item => {
+                          return (
+                            <li key={item.id} className="linkName">
+                              {item.text}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </BodyCopy>
                   </div>
                   <div className="matchProductBox">
-                    <BodyCopy className="matchProductHead">YOUR RECENT SEARCH</BodyCopy>
+                    <BodyCopy className="matchProductHead">
+                      {getLabelValue(labels, 'lbl_search_product_matches')}
+                    </BodyCopy>
                     <BodyCopy
                       className="matchProductBody"
                       fontFamily="Nunito"
@@ -116,10 +136,9 @@ const SearchBar = props => {
                       lineHeight="39px"
                     >
                       <ul>
-                        <li className="productBox" />
-                        <li className="productBox" />
-                        <li className="productBox" />
-                        <li className="productBox" />
+                        {searchData.products.map(item => {
+                          return <li key={item.id} className="productBox" />;
+                        })}
                       </ul>
                     </BodyCopy>
                   </div>
@@ -150,12 +169,25 @@ SearchBar.propTypes = {
   openSearchBar: proptypes.func.isRequired,
   closeSearchBar: proptypes.func.isRequired,
   isOpen: proptypes.bool,
+  searchData: proptypes.shape({}).isRequired,
+  labels: proptypes.shape({
+    lbl_search_whats_trending: proptypes.string,
+    lbl_search_recent_search: proptypes.string,
+    lbl_search_looking_for: proptypes.string,
+    lbl_search_product_matches: proptypes.string,
+  }),
 };
 
 SearchBar.defaultProps = {
   className: '',
   searchRef: null,
   isOpen: false,
+  labels: proptypes.shape({
+    lbl_search_whats_trending: '',
+    lbl_search_recent_search: '',
+    lbl_search_looking_for: '',
+    lbl_search_product_matches: '',
+  }),
 };
 
 export { SearchBar as SearchBarVanilla };
