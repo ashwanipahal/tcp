@@ -1,6 +1,8 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 
@@ -57,11 +59,11 @@ class HomePageView extends React.PureComponent<Props> {
       screenProps: { apiConfig },
     } = this.props;
     return (
-      <ScrollView>
+      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-      </ScrollView>
+      </LazyloadScrollView>
     );
   }
 }
