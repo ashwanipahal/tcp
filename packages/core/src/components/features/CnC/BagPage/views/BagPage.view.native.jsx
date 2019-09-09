@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
-// import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
+import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
 
@@ -31,7 +31,7 @@ const BagPage = ({
           <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
         </HeadingViewStyle>
         <MainSection>
-          {/* <ProductTileWrapper bagLabels={labels} /> */}
+          <ProductTileWrapper bagLabels={labels} />
           <RowSectionStyle>
             <OrderLedgerContainer />
           </RowSectionStyle>

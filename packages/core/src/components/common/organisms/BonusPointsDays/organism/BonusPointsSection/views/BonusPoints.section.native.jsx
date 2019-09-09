@@ -129,6 +129,7 @@ const getContent = ({
   enableApplyCta,
   getBonusDaysData,
   orderDetails,
+  isPlcc,
 }) => {
   let allUsed = false;
   let valueOfbonusDayAvailableToday = 0;
@@ -183,6 +184,7 @@ const getContent = ({
         orderDetails={orderDetails}
         bonusDayAvailableToday={valueOfbonusDayAvailableToday}
         className="availability-msg"
+        isPlcc={isPlcc}
       />
       <Anchor
         fontSizeVariation="medium"
@@ -205,6 +207,7 @@ const BonusPointsSection = ({
   enableApplyCta,
   getBonusDaysData,
   orderDetails,
+  isPlcc,
 }) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
   const header = getHeader({ labels });
@@ -216,6 +219,7 @@ const BonusPointsSection = ({
     enableApplyCta,
     getBonusDaysData,
     orderDetails,
+    isPlcc,
   });
   return (
     <View>
@@ -231,6 +235,7 @@ BonusPointsSection.propTypes = {
   enableApplyCta: PropTypes.bool,
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
+  isPlcc: PropTypes.bool,
 };
 
 BonusPointsSection.defaultProps = {
@@ -240,6 +245,7 @@ BonusPointsSection.defaultProps = {
   enableApplyCta: false,
   getBonusDaysData: () => {},
   orderDetails: {},
+  isPlcc: false,
 };
 
 getContent.propTypes = {
@@ -250,6 +256,7 @@ getContent.propTypes = {
   enableApplyCta: PropTypes.bool,
   getBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
+  isPlcc: PropTypes.bool,
 };
 
 getContent.defaultProps = {
@@ -260,6 +267,7 @@ getContent.defaultProps = {
   enableApplyCta: false,
   getBonusDaysData: () => {},
   orderDetails: {},
+  isPlcc: false,
 };
 
 getHeader.propTypes = {

@@ -8,6 +8,7 @@ exports[`BonusPointsView should render correctly 1`] = `
     bonusData={Object {}}
     enableApplyCta={false}
     getBonusDaysData={[Function]}
+    isPlcc={false}
     labels={
       Object {
         "myPlaceRewards": Object {

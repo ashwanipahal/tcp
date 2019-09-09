@@ -75,6 +75,7 @@ class BonusPointsView extends React.Component {
             toggleBonusPointsModal={this.toggleBonusPointsModal}
             getBonusDaysData={getBonusDaysData}
             orderDetails={orderDetails}
+            isPlcc={isPlcc}
           />
         )}
         <Modal
