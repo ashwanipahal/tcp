@@ -1,17 +1,11 @@
-/* eslint-disable */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const getColorsChipsOptionsMap = (
-  colorFitsSizesMapArg,
-  isShowZeroInventoryEntries,
-  isDisableZeroInventoryEntries
-) => {
+const getColorsChipsOptionsMap = (colorFitsSizesMapArg, isShowZeroInventoryEntries) => {
   let colorFitsSizesMap = colorFitsSizesMapArg;
   if (!isShowZeroInventoryEntries) {
     colorFitsSizesMap = colorFitsSizesMap.filter(colorEntry => colorEntry.get('maxAvailable') > 0);
   }
-  console.log('colorFitsSizesMap', colorFitsSizesMap);
   return colorFitsSizesMap.map(colorEntry => {
     const name = colorEntry.getIn(['color', 'name']);
     const imagePath = colorEntry.getIn(['color', 'imagePath']);
@@ -27,14 +21,11 @@ const ProductColorChipsSelector = props => {
   const {
     options: colorFitsSizesMap,
     className, // eslint-disable-line no-unused-vars
-    ...otherProps
   } = props;
 
-  const optionsMap = getColorsChipsOptionsMap(
+  return getColorsChipsOptionsMap(
     colorFitsSizesMap /* , isShowZeroInventoryEntries, isDisableZeroInventoryEntries */
   );
-
-  return optionsMap;
 };
 
 ProductColorChipsSelector.propTypes = {
