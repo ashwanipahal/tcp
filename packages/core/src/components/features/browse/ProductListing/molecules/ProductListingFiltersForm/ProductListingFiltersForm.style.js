@@ -6,11 +6,14 @@ export default css`
   margin-bottom: 0px;
 
   .custom-select-common {
-    display: inline-block;
+    display: flex;
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-    border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 
+    @media ${props => props.theme.mediaQuery.large} {
+      border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
+      display: inline-block;
+    }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin: 0;
     }
@@ -54,6 +57,21 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin-right: 84px;
+    }
+  }
+
+  .filters-only-container {
+    display: inline-block;
+  }
+  &.desktop-dropdown {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sort-selector-wrapper {
+    display: inline-block;
+    .custom-select-common {
+      display: flex;
+      border-bottom: none;
     }
   }
 `;

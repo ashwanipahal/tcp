@@ -19,6 +19,7 @@ export const Wrapper = styled.View`
   display: flex;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const Tile = styled.View`

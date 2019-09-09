@@ -7,6 +7,7 @@ export default css`
     overflow: auto;
     padding: 0 14px;
     position: relative;
+    box-sizing: border-box;
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0 15px;

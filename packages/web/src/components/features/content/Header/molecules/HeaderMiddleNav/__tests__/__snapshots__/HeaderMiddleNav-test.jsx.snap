@@ -3,105 +3,196 @@
 exports[`HeaderMiddleNav component renders correctly 1`] = `
 <Fragment>
   <Styled(Row)
-    className="undefined header-middle-nav"
+    className="content-wrapper"
+    fullBleed={true}
   >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    />
-    <Styled(Col)
-      className="header-middle-nav-search"
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 8,
-          "small": 6,
-        }
-      }
+    <Styled(Row)
+      className="undefined header-middle-nav"
     >
-      <Styled(Image)
-        alt="hamburger menu"
-        className="hamburger-menu"
-        data-locator="menu_bar_icon"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        src="/static/images/menu.svg"
-        tabIndex="0"
-      />
-      <Styled(BrandLogo)
-        alt="The Children's Place"
-        className="header-brand__home-logo--brand"
-        dataLocator="global_TCPlink"
-        imgSrc="/static/images/tcp-logo.svg"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      className="textRight header-middle-login-section"
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 8,
-          "small": 6,
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
         }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="leftLink"
-        fontSizeVariation="large"
-        href="#"
-        id="createAccount"
-        noLink={true}
-        onClick={[Function]}
-      >
-        Create Account
-      </Styled(Anchor)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="rightLink"
-        fontSizeVariation="large"
-        href="#"
-        id="login"
-        noLink={true}
-        onClick={[Function]}
-      >
-        Login
-      </Styled(Anchor)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="rightLink"
-        fontSizeVariation="small"
-        id="cartIcon"
-        noLink={true}
-        onClick={[Function]}
-        to=""
+      />
+      <Styled(Col)
+        className="header-middle-nav-search"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
         <Styled(Image)
-          alt="Product"
-          className="product-image"
-          data-locator="addedtobag-bag-icon"
-          src="/static/images/bag.png"
+          alt="hamburger menu"
+          className="hamburger-menu"
+          data-locator="menu_bar_icon"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          src="/static/images/menu.svg"
+          tabIndex="0"
         />
-        <Styled(BodyCopy)
-          className="cartCount"
-          color="text.primary"
-          component="span"
-          fontFamily="primary"
-          fontSize="fs10"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
+        <Styled(BrandLogo)
+          alt="The Children's Place"
+          className="header-brand__home-logo--brand"
+          dataLocator="global_TCPlink"
+          imgSrc="/static/images/tcp-logo.svg"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="textRight header-middle-login-section false"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="leftLink"
+          fontSizeVariation="large"
+          href="#"
+          id="createAccount"
+          noLink={true}
+          onClick={[Function]}
         >
-          0
-        </Styled(BodyCopy)>
-      </Styled(Anchor)>
-    </Styled(Col)>
+          Create Account
+        </Styled(Anchor)>
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="rightLink"
+          fontSizeVariation="large"
+          href="#"
+          id="login"
+          noLink={true}
+          onClick={[Function]}
+        >
+          Login
+        </Styled(Anchor)>
+        <Styled(SearchBar)
+          changeSearchText={[Function]}
+          className="rightLink"
+          closeSearchBar={[Function]}
+          isOpen={false}
+          labels={[Function]}
+          openSearchBar={[Function]}
+          searchData={
+            Object {
+              "looking": Array [
+                Object {
+                  "id": 1,
+                  "text": "Pants",
+                },
+                Object {
+                  "id": 2,
+                  "text": "Jeans",
+                },
+                Object {
+                  "id": 3,
+                  "text": "Shirts",
+                },
+                Object {
+                  "id": 4,
+                  "text": "Jeans Set",
+                },
+              ],
+              "products": Array [
+                Object {
+                  "id": 1,
+                },
+                Object {
+                  "id": 2,
+                },
+                Object {
+                  "id": 3,
+                },
+                Object {
+                  "id": 4,
+                },
+              ],
+              "recent": Array [
+                Object {
+                  "id": 1,
+                  "text": "Girl",
+                },
+                Object {
+                  "id": 2,
+                  "text": "Boy",
+                },
+                Object {
+                  "id": 3,
+                  "text": "Man",
+                },
+                Object {
+                  "id": 4,
+                  "text": "Woman",
+                },
+              ],
+              "trending": Array [
+                Object {
+                  "id": 1,
+                  "text": "EASTER",
+                },
+                Object {
+                  "id": 2,
+                  "text": "EASTER",
+                },
+                Object {
+                  "id": 3,
+                  "text": "EASTER",
+                },
+                Object {
+                  "id": 4,
+                  "text": "EASTER",
+                },
+              ],
+            }
+          }
+          searchRef={
+            Object {
+              "current": null,
+            }
+          }
+          showProduct={false}
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="rightLink"
+          fontSizeVariation="small"
+          id="cartIcon"
+          noLink={true}
+          onClick={[Function]}
+          to=""
+        >
+          <Styled(Image)
+            alt="Product"
+            className="product-image"
+            data-locator="addedtobag-bag-icon"
+            src="/static/images/bag.png"
+          />
+          <Styled(BodyCopy)
+            className="cartCount"
+            color="text.primary"
+            component="span"
+            fontFamily="primary"
+            fontSize="fs10"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            0
+          </Styled(BodyCopy)>
+        </Styled(Anchor)>
+      </Styled(Col)>
+    </Styled(Row)>
   </Styled(Row)>
   <Styled(Row)
     fullBleed={
@@ -138,105 +229,196 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
 exports[`HeaderMiddleNav component renders correctly when props dont change 1`] = `
 <Fragment>
   <Styled(Row)
-    className="undefined header-middle-nav"
+    className="content-wrapper"
+    fullBleed={true}
   >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    />
-    <Styled(Col)
-      className="header-middle-nav-search"
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 8,
-          "small": 6,
-        }
-      }
+    <Styled(Row)
+      className="undefined header-middle-nav"
     >
-      <Styled(Image)
-        alt="hamburger menu"
-        className="hamburger-menu"
-        data-locator="menu_bar_icon"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        src="/static/images/menu.svg"
-        tabIndex="0"
-      />
-      <Styled(BrandLogo)
-        alt="The Children's Place"
-        className="header-brand__home-logo--brand"
-        dataLocator="global_TCPlink"
-        imgSrc="/static/images/tcp-logo.svg"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      className="textRight header-middle-login-section"
-      colSize={
-        Object {
-          "large": 4,
-          "medium": 8,
-          "small": 6,
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
         }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="leftLink"
-        fontSizeVariation="large"
-        href="#"
-        id="createAccount"
-        noLink={true}
-        onClick={[Function]}
-      >
-        Create Account
-      </Styled(Anchor)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="rightLink"
-        fontSizeVariation="large"
-        href="#"
-        id="login"
-        noLink={true}
-        onClick={[Function]}
-      >
-        Login
-      </Styled(Anchor)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="rightLink"
-        fontSizeVariation="small"
-        id="cartIcon"
-        noLink={true}
-        onClick={[Function]}
-        to=""
+      />
+      <Styled(Col)
+        className="header-middle-nav-search"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
         <Styled(Image)
-          alt="Product"
-          className="product-image"
-          data-locator="addedtobag-bag-icon"
-          src="/static/images/bag.png"
+          alt="hamburger menu"
+          className="hamburger-menu"
+          data-locator="menu_bar_icon"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          src="/static/images/menu.svg"
+          tabIndex="0"
         />
-        <Styled(BodyCopy)
-          className="cartCount"
-          color="text.primary"
-          component="span"
-          fontFamily="primary"
-          fontSize="fs10"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
+        <Styled(BrandLogo)
+          alt="The Children's Place"
+          className="header-brand__home-logo--brand"
+          dataLocator="global_TCPlink"
+          imgSrc="/static/images/tcp-logo.svg"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="textRight header-middle-login-section false"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="leftLink"
+          fontSizeVariation="large"
+          href="#"
+          id="createAccount"
+          noLink={true}
+          onClick={[Function]}
         >
-          0
-        </Styled(BodyCopy)>
-      </Styled(Anchor)>
-    </Styled(Col)>
+          Create Account
+        </Styled(Anchor)>
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="rightLink"
+          fontSizeVariation="large"
+          href="#"
+          id="login"
+          noLink={true}
+          onClick={[Function]}
+        >
+          Login
+        </Styled(Anchor)>
+        <Styled(SearchBar)
+          changeSearchText={[Function]}
+          className="rightLink"
+          closeSearchBar={[Function]}
+          isOpen={false}
+          labels={[Function]}
+          openSearchBar={[Function]}
+          searchData={
+            Object {
+              "looking": Array [
+                Object {
+                  "id": 1,
+                  "text": "Pants",
+                },
+                Object {
+                  "id": 2,
+                  "text": "Jeans",
+                },
+                Object {
+                  "id": 3,
+                  "text": "Shirts",
+                },
+                Object {
+                  "id": 4,
+                  "text": "Jeans Set",
+                },
+              ],
+              "products": Array [
+                Object {
+                  "id": 1,
+                },
+                Object {
+                  "id": 2,
+                },
+                Object {
+                  "id": 3,
+                },
+                Object {
+                  "id": 4,
+                },
+              ],
+              "recent": Array [
+                Object {
+                  "id": 1,
+                  "text": "Girl",
+                },
+                Object {
+                  "id": 2,
+                  "text": "Boy",
+                },
+                Object {
+                  "id": 3,
+                  "text": "Man",
+                },
+                Object {
+                  "id": 4,
+                  "text": "Woman",
+                },
+              ],
+              "trending": Array [
+                Object {
+                  "id": 1,
+                  "text": "EASTER",
+                },
+                Object {
+                  "id": 2,
+                  "text": "EASTER",
+                },
+                Object {
+                  "id": 3,
+                  "text": "EASTER",
+                },
+                Object {
+                  "id": 4,
+                  "text": "EASTER",
+                },
+              ],
+            }
+          }
+          searchRef={
+            Object {
+              "current": null,
+            }
+          }
+          showProduct={false}
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="rightLink"
+          fontSizeVariation="small"
+          id="cartIcon"
+          noLink={true}
+          onClick={[Function]}
+          to=""
+        >
+          <Styled(Image)
+            alt="Product"
+            className="product-image"
+            data-locator="addedtobag-bag-icon"
+            src="/static/images/bag.png"
+          />
+          <Styled(BodyCopy)
+            className="cartCount"
+            color="text.primary"
+            component="span"
+            fontFamily="primary"
+            fontSize="fs10"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            0
+          </Styled(BodyCopy)>
+        </Styled(Anchor)>
+      </Styled(Col)>
+    </Styled(Row)>
   </Styled(Row)>
   <Styled(Row)
     fullBleed={

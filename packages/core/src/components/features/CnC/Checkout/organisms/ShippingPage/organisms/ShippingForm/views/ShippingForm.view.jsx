@@ -12,7 +12,6 @@ import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
-import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
 
@@ -265,13 +264,6 @@ class ShippingForm extends React.Component {
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
-        <CheckoutOrderInfo isGuest={isGuest} />
-        <CheckoutFooter
-          hideBackLink={!!orderHasPickUp}
-          backLinkHandler={routeToPickupPage}
-          nextButtonText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
-          backLinkText={getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')}
-        />
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"
@@ -353,7 +345,6 @@ class ShippingForm extends React.Component {
               />
             </div>
           </FormSection>
-          <CheckoutOrderInfo />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}

@@ -87,10 +87,19 @@ export default css`
     .l2-nav-category {
       margin: 0;
     }
+    .content-wrapper {
+      margin: 0;
+      width: 100%;
+    }
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     .l2-nav-category {
       margin: 0;
+    }
+
+    .content-wrapper {
+      margin: 0;
+      width: 100%;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {

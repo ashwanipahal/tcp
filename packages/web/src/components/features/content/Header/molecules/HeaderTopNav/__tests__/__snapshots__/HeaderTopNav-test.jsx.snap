@@ -54,7 +54,7 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
     mobile={true}
   />
   <div
-    className="header-topnav__row"
+    className="header-topnav__row content-wrapper"
   >
     <div
       className="header-topnav__brand-tabs"
@@ -208,7 +208,7 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
     mobile={true}
   />
   <div
-    className="header-topnav__row"
+    className="header-topnav__row content-wrapper"
   >
     <div
       className="header-topnav__brand-tabs"

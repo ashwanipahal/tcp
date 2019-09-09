@@ -39,18 +39,10 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
         showEmailAddress={false}
         showPhoneNumber={true}
       />
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="white"
-        customStyle={Object {}}
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
-        onPress={null}
-        text=""
-        url=""
       />
     </Styled(View)>
   </ModalNative>

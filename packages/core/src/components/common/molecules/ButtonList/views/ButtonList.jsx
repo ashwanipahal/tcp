@@ -67,7 +67,6 @@ const renderDropDownButton = (properties, parentClass) => {
     dataLocatorDropDown,
     dataLocatorTextCta,
   } = properties;
-
   return (
     <DropDownButton
       className={`${className} ${parentClass}`}
@@ -170,8 +169,8 @@ const ButtonList = props => {
             <Component
               uniqueKey={key}
               dataLocator={{
-                image: `${dataLocatorTextCta}${index}`,
-                cta: `${dataLocatorDivisionImages}${index}`,
+                image: `${dataLocatorDivisionImages}${index}`,
+                cta: `${dataLocatorTextCta}${index}`,
               }}
               {...compProps}
               fontWeight="extrabold"

@@ -5,14 +5,6 @@ exports[`Shipping Form should render correctly 1`] = `
   <Styled(CheckoutSectionTitleDisplay)
     title=""
   />
-  <Styled(CheckoutOrderInfo)
-    isGuest={false}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
-  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -92,7 +84,6 @@ exports[`Shipping Form should render correctly 1`] = `
         />
       </div>
     </FormSection>
-    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -107,14 +98,6 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -355,7 +338,6 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
         />
       </div>
     </FormSection>
-    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -370,14 +352,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -792,7 +766,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </div>
     </FormSection>
-    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
@@ -807,14 +780,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1276,7 +1241,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </div>
     </FormSection>
-    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={true}
@@ -1291,14 +1255,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
     title=""
-  />
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1582,7 +1538,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </div>
     </FormSection>
-    <Styled(CheckoutOrderInfo) />
     <Styled(CheckoutFooter)
       backLinkText=""
       disableNext={false}
