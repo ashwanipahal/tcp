@@ -28,6 +28,7 @@ const ProductListView = ({
   labels,
   labelsFilter,
   categoryId,
+  formValues,
   getProducts,
   onSubmit,
   ...otherProps
@@ -65,6 +66,7 @@ const ProductListView = ({
                 filtersLength={filtersLength}
                 labels={labelsFilter}
                 onSubmit={onSubmit}
+                formValues={formValues}
                 getProducts={getProducts}
               />
             </div>
@@ -119,6 +121,7 @@ ProductListView.propTypes = {
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
+  formValues: PropTypes.shape({}).isRequired,
 };
 
 ProductListView.defaultProps = {

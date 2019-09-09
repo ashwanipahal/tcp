@@ -13,7 +13,6 @@ import {
   setShippingMethodAndAddressId,
   addPickupPerson,
 } from '../../../../../services/abstractors/CnC/index';
-
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
@@ -33,7 +32,10 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { isCanada } from '../../../../../utils/utils';
-import { addAddressGet } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
+import {
+  addAddressGet,
+  updateAddressPut,
+} from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { isMobileApp } from '../../../../../utils';
@@ -42,6 +44,7 @@ import {
   updateShippingAddress,
   addNewShippingAddress,
   addRegisteredUserAddress,
+  routeToPickupPage,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
 
@@ -184,8 +187,7 @@ function* callPickupSubmitMethod(formData) {
   });
 }
 
-function* submitPickupSection(data) {
-  const { payload } = data;
+function* submitPickupSection({ payload }) {
   const formData = { ...payload.formData };
   const { navigation } = payload;
   // let pickupOperator = getPickupOperator(this.store);
@@ -656,16 +658,24 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
         },
         false
       );
+    } else {
+      // guest user is editing a previously entered shipping address
+      addOrEditAddressRes = yield call(
+        updateAddressPut,
+        {
+          payload: {
+            ...address,
+            address1: address.addressLine1,
+            address2: address.addressLine2,
+            zip: address.zipCode,
+            phoneNumber,
+            nickName: oldShippingDestination.onFileAddressKey,
+            emailAddress,
+          },
+        },
+        {}
+      );
     }
-    // else {
-    // guest user is editing a previously entered shipping address
-    // addOrEditAddressRes = yield call(
-    //   updateAddress,
-    //   { address, phoneNumber, emailAddress, addressKey: oldShippingDestination.onFileAddressKey },
-    //   {},
-    //   false
-    // );
-    // }
   } else {
     addOrEditAddressRes = yield addRegisteredUserAddress({
       onFileAddressKey,
@@ -711,10 +721,6 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
-}
-
-export function* routeToPickupPage(recalc) {
-  yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 
 export function* submitBillingSection(payload) {

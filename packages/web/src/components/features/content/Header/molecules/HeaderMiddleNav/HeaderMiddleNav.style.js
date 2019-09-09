@@ -6,6 +6,10 @@ export default css`
   position: relative;
   text-align: center;
 
+  .flexbox {
+    display: flex;
+  }
+
   .hamburger-menu {
     cursor: pointer;
     width: 22px;
@@ -30,12 +34,16 @@ export default css`
     cursor: pointer;
     display: inline-block;
   }
+  .product-image {
+    vertical-align: baseline;
+  }
 
   .rightLink {
     border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
     box-sizing: border-box;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
   .cartCount {
     background: ${props => props.theme.colorPalette.blue['800']};
