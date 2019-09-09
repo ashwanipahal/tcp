@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, change } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -14,7 +14,6 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import constants from '../../../container/AddEditCreditCard.constants';
 import { CreditCardFields } from '../../../molecule/CreditCardFields/views/CreditCardFields.view.native';
 import {
-  CreditCardWrapper,
   AddressWrapper,
   ActionsWrapper,
   AddAddressButton,
@@ -159,17 +158,15 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
         keyboardShouldPersistTaps="handled"
       >
         <CreditCardContainer>
-          <CreditCardWrapper>
-            <CreditCardFields
-              {...this.props}
-              updateExpiryDate={this.updateExpiryDate}
-              dto={dto}
-              selectedCard={selectedCard}
-            />
-          </CreditCardWrapper>
+          <CreditCardFields
+            {...this.props}
+            updateExpiryDate={this.updateExpiryDate}
+            dto={dto}
+            selectedCard={selectedCard}
+          />
           <AddressWrapper>
             <Heading
-              fontFamily="secondary"
+              mobilefontFamily="secondary"
               fontSize="fs14"
               letterSpacing="ls167"
               textAlign="left"
@@ -178,10 +175,10 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             />
             <TextWrapper>
               <BodyCopy
-                fontFamily="secondary"
+                mobilefontFamily="secondary"
                 fontSize="fs12"
                 textAlign="left"
-                fontWeight="semibold"
+                fontWeight="black"
                 marginTop="10"
                 text={labels.paymentGC.lbl_payment_ccAdressSelect}
               />
@@ -224,7 +221,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           <ActionsWrapper>
             <Button
               fill="BLUE"
-              buttonVariation="variable-width"
+              buttonVariation="fixed-width"
               text={
                 isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
               }
@@ -234,7 +231,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <Button
               fill="WHITE"
               onPress={onClose}
-              buttonVariation="variable-width"
+              buttonVariation="fixed-width"
               text={labels.common.lbl_common_cancelCTA}
               style={CancelButton}
             />
@@ -245,17 +242,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               onRequestClose={this.toggleModal}
               heading={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
             >
-              <SafeAreaView>
-                <ModalViewWrapper>
-                  <AddEditAddressContainer
-                    onCancel={this.toggleModal}
-                    addressBookLabels={addressLabels}
-                    showHeading={false}
-                    currentForm="AddAddress"
-                    toggleAddressModal={this.toggleModal}
-                  />
-                </ModalViewWrapper>
-              </SafeAreaView>
+              <ModalViewWrapper>
+                <AddEditAddressContainer
+                  onCancel={this.toggleModal}
+                  addressBookLabels={addressLabels}
+                  showHeading={false}
+                  currentForm="AddAddress"
+                  toggleAddressModal={this.toggleModal}
+                  address={null}
+                />
+              </ModalViewWrapper>
             </ModalNative>
           )}
         </CreditCardContainer>
