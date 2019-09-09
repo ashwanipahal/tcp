@@ -7,8 +7,10 @@ export default css`
   .breadcrum-last-item {
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    pointer-events: none;
   }
   .breadcrum-separation {
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+    vertical-align: middle;
   }
 `;
