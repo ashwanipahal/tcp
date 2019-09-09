@@ -17,6 +17,7 @@ import {
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+import getPickUpContactFormLabels from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
@@ -90,7 +91,7 @@ export const getUserContactInfo = createSelector(
 );
 
 function getShippingDestinationValues(state) {
-  const { method, emailAddress, ...result } = JSON.parse(
+  const { emailAddress, ...result } = JSON.parse(
     JSON.stringify(state.Checkout.getIn(['values', 'shipping']))
   );
   // For shipping address when user logged-in, override email address that of user.
@@ -101,8 +102,73 @@ function getShippingDestinationValues(state) {
   };
 }
 
+const getShippingAddressID = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { onFileAddressId } = shippingDestinationValues;
+    return onFileAddressId;
+  }
+);
+
+const getShippingAddress = createSelector(
+  getShippingDestinationValues,
+  shippingDestinationValues => {
+    const { address } = shippingDestinationValues;
+    return address;
+  }
+);
+
+const getAddEditResponseAddressId = state =>
+  state.Checkout.getIn(['values', 'addEditResponseAddressId']);
+
+// function getAddressBook(state, country, noBillingAddresses) {
+//   let addresses = [];
+
+//   if (!country) {
+//     // if (noBillingAddresses) {
+//     //   addresses = state.addresses.addressBook.filter(entry => entry.type !== ADDREESS_TYPE.BILLING);
+//     // } else {
+//     addresses = getAddressListState(state);
+//     // }
+//   } // else {
+//   // let filtered = state.addresses.addressBook.filter(
+//   //   entry =>
+//   //     entry.address.country === country &&
+//   //     (!noBillingAddresses || entry.type !== ADDREESS_TYPE.BILLING)
+//   // );
+//   // let defaultAddress = filtered.find(addressEntry => addressEntry.isDefault);
+
+//   // // REVIEW: if there's no default for the selected requested country (country filter might leave it out)
+//   // // then flag the first one as default. Can't be on the abstractor,
+//   // // unless we store different versions of the address book (per country)
+//   // // but I'm not sure about location because storeviews trigger on everything and want to avoid unnecesary renders
+//   // if (!defaultAddress) {
+//   //   addresses = filtered.map((entry, index) => {
+//   //     return {
+//   //       ...entry,
+//   //       isDefault: index === 0,
+//   //     };
+//   //   });
+//   // } else {
+//   //   addresses = filtered;
+//   // }
+//   // }
+
+//   return addresses;
+// }
+
 function getDefaultAddress(/* state, country, noBillingAddresses */) {
   return false;
+  // const countryFilteredAddresses = getAddressBook(state, country, noBillingAddresses);
+  // const defaultAddress = countryFilteredAddresses.find(
+  //   addressEntry => addressEntry.get && addressEntry.get('primary')
+  // );
+
+  // if (countryFilteredAddresses.length && !defaultAddress) {
+  //   return countryFilteredAddresses.get('0');
+  // } else {
+  //   return defaultAddress;
+  // }
 }
 
 export const getPickupValues = createSelector(
@@ -179,6 +245,16 @@ const getShippingSendOrderUpdate = createSelector(
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
 );
 
+const getSaveToAddressBook = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'saveToAddressBook');
+};
+
+const getOnFileAddressKey = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'onFileAddressKey');
+};
+
 const getAddressFields = state => {
   const selector = formValueSelector('checkoutShipping');
   return selector(state, 'address');
@@ -188,6 +264,11 @@ const getAddressPhoneNo = createSelector(
   getAddressFields,
   addressFields => addressFields && addressFields.phoneNumber
 );
+
+const getDefaultShipping = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'defaultShipping');
+};
 
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
@@ -210,28 +291,6 @@ const getBillingLabels = state => {
       'checkout'
     ),
     nextSubmitText: getLabelValue(state.Labels, 'lbl_billing_nextSubmit', 'billing', 'checkout'),
-  };
-};
-
-const getShippingLabels = state => {
-  return {
-    header: getLabelValue(state.Labels, 'lbl_shipping_header', 'shipping', 'checkout'),
-    sectionHeader: getLabelValue(
-      state.Labels,
-      'lbl_shipping_sectionHeader',
-      'shipping',
-      'checkout'
-    ),
-    shipmentHeader: getLabelValue(
-      state.Labels,
-      'lbl_shipping_shipmentHeader',
-      'shipping',
-      'checkout'
-    ),
-    returnTo: getLabelValue(state.Labels, 'lbl_shipping_returnTo', 'shipping', 'checkout'),
-    nextText: getLabelValue(state.Labels, 'lbl_shipping_nextText', 'shipping', 'checkout'),
-    billingText: getLabelValue(state.Labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout'),
-    backLinkText: getLabelValue(state.Labels, 'lbl_shipping_billingText', 'shipping', 'checkout'),
   };
 };
 
@@ -338,66 +397,7 @@ const isPickupAlt = createSelector(
   getAlternateFormFields,
   pickUpAlternate => pickUpAlternate && pickUpAlternate.firstName
 );
-
-const getPickUpContactFormLabels = state => {
-  const {
-    lbl_pickup_title: title,
-    lbl_pickup_firstName: firstName,
-    lbl_pickup_govIdText: govIdText,
-    lbl_pickup_lastName: lastName,
-    lbl_pickup_email: email,
-    lbl_pickup_mobile: mobile,
-    lbl_pickup_SMSHeading: SMSHeading,
-    lbl_pickup_SMSLongText: SMSLongText,
-    lbl_pickup_SMSPrivatePolicy: SMSPrivatePolicy,
-    lbl_pickup_alternativeHeading: alternativeHeading,
-    lbl_pickup_alternativeSubHeading: alternativeSubHeading,
-    lbl_pickup_alternativeFirstName: alternativeFirstName,
-    lbl_pickup_alternativeGovIdText: alternativeGovIdText,
-    lbl_pickup_alternativeLastName: alternativeLastName,
-    lbl_pickup_alternativeEmail: alternativeEmail,
-    lbl_pickup_pickup_contact: pickupContactText,
-    lbl_pickup_btn_cancel: btnCancel,
-    lbl_pickup_btn_update: btnUpdate,
-    lbl_pickup_btnSaveUpdate: btnSaveUpdate,
-    lbl_pickup_titleEditPickUp: titleEditPickup,
-    lbl_pickup_anchor_edit: anchorEdit,
-    lbl_pickup_buttonText: pickupText,
-    lbl_pickup_billingText: billingText,
-    lbl_pickup_nextText: nextText,
-    lbl_pickup_returnTo: returnTo,
-  } = state.Labels.global && state.Labels.checkout.pickup;
-  const { lbl_shipping_header: shippingText } =
-    state.Labels.checkout && state.Labels.checkout.shipping;
-  return {
-    title: title.toUpperCase(),
-    firstName,
-    govIdText,
-    lastName,
-    email,
-    mobile,
-    SMSHeading,
-    SMSLongText,
-    SMSPrivatePolicy,
-    alternativeHeading,
-    alternativeSubHeading,
-    alternativeFirstName,
-    alternativeGovIdText,
-    alternativeLastName,
-    alternativeEmail,
-    pickupContactText,
-    btnCancel,
-    btnUpdate,
-    btnSaveUpdate,
-    titleEditPickup,
-    anchorEdit,
-    pickupText,
-    billingText,
-    nextText,
-    returnTo,
-    shippingText,
-  };
-};
+const getLabels = state => state.Labels;
 
 export const getAlternateFormUpdate = createSelector(
   getAlternateFormFields,
@@ -495,7 +495,6 @@ export default {
   getSendOrderUpdate,
   getAddressFields,
   getAddressPhoneNo,
-  getShippingLabels,
   getSmsSignUpLabels,
   getIsOrderHasPickup,
   getEmailSignUpLabels,
@@ -507,7 +506,15 @@ export default {
   getAlternateFormUpdate,
   getPickUpContactFormLabels,
   getUserEmail,
+  getSaveToAddressBook,
+  getOnFileAddressKey,
+  getShippingSmsSignUpFields,
+  getShippingAddressID,
+  getDefaultShipping,
+  getAddEditResponseAddressId,
   getBillingLabels,
+  getLabels,
+  getShippingAddress,
   getIsPaymentDisabled,
   getBillingValues,
   getAddressByKey,

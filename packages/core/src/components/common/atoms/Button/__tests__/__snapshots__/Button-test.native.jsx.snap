@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomButton should render correctly 1`] = `
-<TouchableOpacity
+<Styled(TouchableOpacity)
   accessibilityRole="button"
-  activeOpacity={0.2}
   disabled={false}
+  iconColor="gray[800]"
+  iconName="chevron-down"
+  iconSize="fs12"
+  navigation={Object {}}
   onPress={[Function]}
+  selectedIcon="chevron-up"
+  showIcon={false}
   style={Object {}}
+  theme={Object {}}
   url=""
 >
   <Styled(Styled(Text))
@@ -16,6 +22,7 @@ exports[`CustomButton should render correctly 1`] = `
     disableButton={false}
     fill=""
     fullWidth=""
+    selected={false}
   />
-</TouchableOpacity>
+</Styled(TouchableOpacity)>
 `;

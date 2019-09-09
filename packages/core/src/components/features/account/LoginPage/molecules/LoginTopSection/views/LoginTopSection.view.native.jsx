@@ -52,6 +52,7 @@ const LoginTopSection = props => {
           />
           <ResetPassword>
             <Anchor
+              id="forgotPasswordForm"
               class="clickhere"
               fontSizeVariation="medium"
               text={labels.login.lbl_login_Description_clickhere}

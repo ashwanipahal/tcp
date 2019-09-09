@@ -12,15 +12,15 @@ import {
 
 describe('#BonusPointsDays Selectors', () => {
   it('#getLabels should return labels', () => {
-    const LabelsState = fromJS({
-      global: {
-        placeRewards: {},
-      },
-    });
+    // const LabelsState = fromJS({
+    //   global: {
+    //     placeRewards: {},
+    //   },
+    // });
     const state = {
-      Labels: LabelsState,
+      Labels: {},
     };
-    expect(getLabels(state)).toEqual(LabelsState.global);
+    expect(getLabels(state)).toEqual(state.Labels);
   });
   it('#getBonusData should return bonus data ', () => {
     const BonusPointsDaysState = fromJS({

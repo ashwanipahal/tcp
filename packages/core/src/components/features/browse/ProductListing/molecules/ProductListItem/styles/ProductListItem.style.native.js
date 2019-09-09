@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
   width: 50%;
-  height: 432;
+  height: 436;
   background: white;
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import Anchor from '../../../../../atoms/Anchor';
 import Row from '../../../../../atoms/Row';
@@ -20,16 +21,16 @@ const getButtonText = ({
   let buttonText = '';
   let dataLocator = '';
   if (isUsed) {
-    buttonText = `${labels.placeRewards.lbl_bonus_points_used_on} ${dateUsed}`;
+    buttonText = `${getLabelValue(labels, 'lbl_bonusPoints_usedOn')} ${dateUsed}`;
     dataLocator = 'usedonbtn';
   } else if (forFutureUse || futureDisabled) {
-    buttonText = labels.placeRewards.lbl_bonus_points_future_use;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_futureUse');
     dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
-    buttonText = labels.placeRewards.lbl_common_applied_to_order;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApplied');
     dataLocator = 'appliedtoorderbtn';
   } else {
-    buttonText = labels.placeRewards.lbl_bonus_points_available_today;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApply');
     dataLocator = 'availabletodaybtn';
   }
   return { buttonText, dataLocator };
@@ -89,7 +90,7 @@ const getHeader = ({ labels }) => {
         color="orange.800"
         className="elem-mr-XS"
       >
-        {labels.placeRewards.lbl_place_rewards_bonus}
+        {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsBonus')}
       </BodyCopy>
       <BodyCopy
         fontFamily="primary"
@@ -99,7 +100,7 @@ const getHeader = ({ labels }) => {
         className="elem-mr-XS"
         color="primary.main"
       >
-        {labels.placeRewards.lbl_place_rewards_points}
+        {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsPoints')}
       </BodyCopy>
       <BodyCopy
         fontFamily="primary"
@@ -108,7 +109,7 @@ const getHeader = ({ labels }) => {
         component="span"
         color="pink.500"
       >
-        {labels.placeRewards.lbl_place_rewards_day}
+        {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsDay')}
       </BodyCopy>
     </div>
   );
@@ -144,7 +145,7 @@ const getContent = ({
             textAlign="center"
             className="apply-any-day-msg"
           >
-            {labels.placeRewards.lbl_bonus_points_apply_any_day}
+            {getLabelValue(labels, 'lbl_bonusPoints_applyAnyDay')}
           </BodyCopy>
           <BodyCopy
             fontFamily="secondary"
@@ -155,7 +156,7 @@ const getContent = ({
             textAlign="center"
             className="availability-msg"
           >
-            {labels.placeRewards.lbl_bonus_points_msg}
+            {getLabelValue(labels, 'lbl_bonusPoints_msg')}
           </BodyCopy>
         </React.Fragment>
       ) : (
@@ -168,7 +169,7 @@ const getContent = ({
           textAlign="center"
           className="availability-msg"
         >
-          {labels.placeRewards.lbl_my_rewards_used_all}
+          {getLabelValue(labels, 'lbl_bonusPoints_myRewardsUsedAll')}
         </BodyCopy>
       )}
       <Row fullBleed>
@@ -193,7 +194,7 @@ const getContent = ({
         className="details-link"
         onClick={e => toggleBonusPointsModal(e)}
       >
-        {labels.placeRewards.lbl_common_details}
+        {getLabelValue(labels, 'lbl_bonusPoints_details')}
       </Anchor>
     </React.Fragment>
   );
@@ -302,7 +303,7 @@ getHeader.defaultProps = {
   labels: {
     placeRewards: {
       lbl_place_rewards_bonus: '',
-      lbl_place_rewards_points: '',
+      lbl_bonusPoints_placeRewardsPoints: '',
       lbl_place_rewards_day: '',
     },
   },

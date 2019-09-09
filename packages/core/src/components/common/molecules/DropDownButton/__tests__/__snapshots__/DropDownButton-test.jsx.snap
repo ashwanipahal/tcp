@@ -11,7 +11,7 @@ exports[`DropDownButton component renders correctly 1`] = `
           "target": "",
           "text": "Girl",
           "title": "Girl",
-          "url": "/c/girl",
+          "url": "/c/girls-clothing",
         },
         "image": Object {
           "alt": "Girl",
@@ -29,7 +29,7 @@ exports[`DropDownButton component renders correctly 1`] = `
           "target": "",
           "text": "Girl",
           "title": "Girl",
-          "url": "/c/girl",
+          "url": "/c/girls-clothing",
         },
         "image": Object {
           "alt": "Girl",
@@ -47,7 +47,7 @@ exports[`DropDownButton component renders correctly 1`] = `
           "target": "",
           "text": "Toddler Girl",
           "title": "Toddler Girl",
-          "url": "/c/toddler-girl",
+          "url": "/c/toddler-girl-clothes",
         },
         "image": Object {
           "alt": "Girl",
@@ -65,7 +65,7 @@ exports[`DropDownButton component renders correctly 1`] = `
           "target": "",
           "text": "Boy",
           "title": "Boy",
-          "url": "/c/boy",
+          "url": "/c/boys-clothing",
         },
         "image": Object {
           "alt": "Girl",
@@ -83,7 +83,7 @@ exports[`DropDownButton component renders correctly 1`] = `
           "target": "",
           "text": "Toddler Boy",
           "title": "Toddler Boy",
-          "url": "/c/toddler-boy",
+          "url": "/c/toddler-boy-clothes",
         },
         "image": Object {
           "alt": "Girl",
@@ -101,7 +101,7 @@ exports[`DropDownButton component renders correctly 1`] = `
           "target": "",
           "text": "Baby",
           "title": "Baby",
-          "url": "/c/baby",
+          "url": "/c/baby-clothes",
         },
         "image": Object {
           "alt": "Girl",

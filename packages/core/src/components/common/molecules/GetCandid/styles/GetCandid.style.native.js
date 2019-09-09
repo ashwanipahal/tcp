@@ -5,7 +5,7 @@ import { Image } from '../../../atoms';
 export const Wrapper = styled.View`
   display: flex;
   padding: 0 14px;
-  margin: 32px 0;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const ImageWrapper = styled.View`

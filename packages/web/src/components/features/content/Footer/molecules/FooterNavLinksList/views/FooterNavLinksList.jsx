@@ -97,7 +97,13 @@ const FooterNavLinksList = ({
     return !hideLogoutMyActLink ? (
       <li>
         {linkAction ? (
-          <Button type="button" data-locator={`col_${colNum}_link_${index}`} onClick={onClick} link>
+          <Button
+            type="button"
+            data-locator={`col_${colNum}_link_${index}`}
+            onClick={onClick}
+            link
+            title={linkItems.title}
+          >
             {linkItems.text}
           </Button>
         ) : (

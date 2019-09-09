@@ -5,14 +5,22 @@ exports[`BonusPointsView should render correctly 1`] = `
   className=""
 >
   <BonusPointsSection
+    bagBonusLabels={Object {}}
     bonusData={Object {}}
     enableApplyCta={false}
     getBonusDaysData={[Function]}
+    isBagPage={false}
+    isPlcc={false}
     labels={
       Object {
+<<<<<<< HEAD
         "placeRewards": Object {
           "lbl_place_rewards_bonus": "bonus",
           "lbl_place_rewards_points": "points",
+=======
+        "myPlaceRewards": Object {
+          "lbl_bonus_points_msg": "",
+>>>>>>> 4a15596b4d7ffe1c3d91011f24cd14543da69d3c
         },
       }
     }
@@ -20,7 +28,7 @@ exports[`BonusPointsView should render correctly 1`] = `
     toggleBonusPointsModal={[Function]}
   />
   <ModalNative
-    heading="bonus points DETAILS"
+    heading="lbl_bonusPoints_placeRewardsBonus lbl_bonusPoints_placeRewardsPoints DETAILS"
     headingAlign="left"
     headingFontFamily="secondary"
     isOpen={true}

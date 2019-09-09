@@ -12,7 +12,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-VigVT",
-        "isStatic": true,
+        "isStatic": false,
         "rules": Array [
           "
   ",
@@ -22,6 +22,11 @@ exports[`CreateAccountForm should render correctly 1`] = `
   }
   .i-agree-checkbox {
     padding-top: 10px;
+  }
+  .checkbox-hide-show {
+    background: ",
+          [Function],
+          ";
   }
   .tooltip-bubble {
     li {

@@ -82,28 +82,32 @@ class CouponView extends React.PureComponent<Props> {
               handleErrorCoupon={handleErrorCoupon}
             />
           )}
-          <CouponDetailModal
-            labels={labels}
-            openState={detailStatus}
-            coupon={selectedCoupon}
-            onRequestClose={() => {
-              this.setState({
-                detailStatus: false,
-              });
-            }}
-            applyToBag={handleApplyCouponFromList}
-          />
-          <CouponHelpModal
-            labels={labels}
-            openState={helpStatus}
-            coupon={selectedCoupon}
-            onRequestClose={() => {
-              this.setState({
-                helpStatus: false,
-              });
-            }}
-            heading="Help Modal"
-          />
+          {detailStatus && (
+            <CouponDetailModal
+              labels={labels}
+              openState={detailStatus}
+              coupon={selectedCoupon}
+              onRequestClose={() => {
+                this.setState({
+                  detailStatus: false,
+                });
+              }}
+              applyToBag={handleApplyCouponFromList}
+            />
+          )}
+          {helpStatus && (
+            <CouponHelpModal
+              labels={labels}
+              openState={helpStatus}
+              coupon={selectedCoupon}
+              onRequestClose={() => {
+                this.setState({
+                  helpStatus: false,
+                });
+              }}
+              heading="Help Modal"
+            />
+          )}
         </div>
       </div>
     );

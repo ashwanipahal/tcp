@@ -15,7 +15,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
             />
           </ForwardRef>
@@ -25,7 +25,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_msg"
               textAlign="center"
             />
           </ForwardRef>
@@ -35,7 +35,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           bonusPoints={
             Array [
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApply",
                 "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
@@ -44,6 +44,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlcc={false}
           labels={
             Object {
               "placeRewards": Object {
@@ -68,7 +69,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           href="#"
           locator=""
           onPress={[Function]}
-          text=""
+          text="lbl_bonusPoints_details"
           underline={true}
           visible={false}
         />
@@ -88,7 +89,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsBonus"
           />
         </ForwardRef>
         <ForwardRef>
@@ -98,7 +99,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsPoints"
           />
         </ForwardRef>
         <ForwardRef
@@ -107,7 +108,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
+          text="lbl_bonusPoints_placeRewardsDay"
         />
       </ForwardRef>
     }
@@ -134,7 +135,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
             />
           </ForwardRef>
@@ -144,7 +145,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_msg"
               textAlign="center"
             />
           </ForwardRef>
@@ -154,17 +155,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined ",
+                "buttonText": "lbl_bonusPoints_usedOn ",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApplied",
                 "dataLocator": "appliedtoorderbtn",
                 "disabled": false,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_futureUse",
                 "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
@@ -173,6 +174,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlcc={false}
           labels={
             Object {
               "placeRewards": Object {
@@ -197,7 +199,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           href="#"
           locator=""
           onPress={[Function]}
-          text=""
+          text="lbl_bonusPoints_details"
           underline={true}
           visible={false}
         />
@@ -217,7 +219,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsBonus"
           />
         </ForwardRef>
         <ForwardRef>
@@ -227,7 +229,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsPoints"
           />
         </ForwardRef>
         <ForwardRef
@@ -236,7 +238,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
+          text="lbl_bonusPoints_placeRewardsDay"
         />
       </ForwardRef>
     }
@@ -263,7 +265,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
             />
           </ForwardRef>
@@ -273,7 +275,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_msg"
               textAlign="center"
             />
           </ForwardRef>
@@ -283,17 +285,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined ",
+                "buttonText": "lbl_bonusPoints_usedOn ",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApply",
                 "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_futureUse",
                 "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
@@ -302,6 +304,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlcc={false}
           labels={
             Object {
               "placeRewards": Object {
@@ -326,7 +329,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           href="#"
           locator=""
           onPress={[Function]}
-          text=""
+          text="lbl_bonusPoints_details"
           underline={true}
           visible={false}
         />
@@ -346,7 +349,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsBonus"
           />
         </ForwardRef>
         <ForwardRef>
@@ -356,7 +359,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsPoints"
           />
         </ForwardRef>
         <ForwardRef
@@ -365,7 +368,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
+          text="lbl_bonusPoints_placeRewardsDay"
         />
       </ForwardRef>
     }
@@ -392,7 +395,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontSize="fs14"
               fontWeight="extrabold"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_applyAnyDay"
               textAlign="center"
             />
           </ForwardRef>
@@ -402,7 +405,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               fontSize="fs12"
               fontWeight="regular"
               mobileFontFamily="secondary"
-              text=""
+              text="lbl_bonusPoints_msg"
               textAlign="center"
             />
           </ForwardRef>
@@ -412,17 +415,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined 15/7",
+                "buttonText": "lbl_bonusPoints_usedOn 15/7",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_ctaApply",
                 "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
               Object {
-                "buttonText": undefined,
+                "buttonText": "lbl_bonusPoints_futureUse",
                 "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
@@ -431,6 +434,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlcc={false}
           labels={
             Object {
               "placeRewards": Object {
@@ -455,7 +459,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           href="#"
           locator=""
           onPress={[Function]}
-          text=""
+          text="lbl_bonusPoints_details"
           underline={true}
           visible={false}
         />
@@ -475,7 +479,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsBonus"
           />
         </ForwardRef>
         <ForwardRef>
@@ -485,7 +489,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsPoints"
           />
         </ForwardRef>
         <ForwardRef
@@ -494,7 +498,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
+          text="lbl_bonusPoints_placeRewardsDay"
         />
       </ForwardRef>
     }
@@ -520,6 +524,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontSize="fs12"
             fontWeight="regular"
             mobileFontFamily="secondary"
+            text="lbl_bonusPoints_myRewardsUsedAll"
             textAlign="center"
           />
         </ForwardRef>
@@ -528,7 +533,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           bonusPoints={
             Array [
               Object {
-                "buttonText": "undefined ",
+                "buttonText": "lbl_bonusPoints_usedOn ",
                 "dataLocator": "usedonbtn",
                 "disabled": true,
               },
@@ -537,6 +542,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           className="availability-msg"
           enableApplyCta={false}
           getBonusDaysData={[Function]}
+          isPlcc={false}
           labels={
             Object {
               "placeRewards": Object {
@@ -561,7 +567,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           href="#"
           locator=""
           onPress={[Function]}
-          text=""
+          text="lbl_bonusPoints_details"
           underline={true}
           visible={false}
         />
@@ -581,7 +587,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsBonus"
           />
         </ForwardRef>
         <ForwardRef>
@@ -591,7 +597,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             fontSize="fs16"
             fontWeight="extrabold"
             mobileFontFamily="primary"
-            text=""
+            text="lbl_bonusPoints_placeRewardsPoints"
           />
         </ForwardRef>
         <ForwardRef
@@ -600,7 +606,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           fontSize="fs16"
           fontWeight="extrabold"
           mobileFontFamily="primary"
-          text=""
+          text="lbl_bonusPoints_placeRewardsDay"
         />
       </ForwardRef>
     }
