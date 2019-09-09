@@ -88,9 +88,9 @@ export class AboutYouInformationForm extends React.PureComponent {
                   selectedValue={option.selected}
                   name="question1"
                   checked={option.selected}
-                  data-locator={`moreaboutyou-radiooption${index}`}
+                  data-locator={`moreaboutyou-radiooption${index + 1}`}
                   onClick={() => this.onSelectOption(true, option.value)}
-                  topPosition="0px"
+                  topPosition="-1px"
                 >
                   <BodyCopy fontSize="fs12" fontFamily="secondary">
                     {option.value}
@@ -118,7 +118,7 @@ export class AboutYouInformationForm extends React.PureComponent {
                 <Field
                   name={`question2-option-${index}`}
                   component={InputCheckbox}
-                  data-locator={`moreaboutyou-checkboxoption${index}`}
+                  dataLocator={`moreaboutyou-checkboxoption${index + 1}`}
                   checked={option.selected}
                   onChange={() => this.onSelectOption(false, option.value)}
                 >
