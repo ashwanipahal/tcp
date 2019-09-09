@@ -18,17 +18,21 @@ const errorHandler = err => {
  * @param {object} payload - data required to make server request.
  * @returns {object} success response or error response.
  */
-export const makeSearch = payload => {
+export const makeSearch = (payload, defaultResultCount = 4) => {
   const payloadData = {
     body: {
       variants: 'true',
       q: payload.searchTerm,
       version: 'V2',
       sourceFields: 'categoryLinkMap',
-      'sourceField.categoryLinkMap.count': 4,
-      'keywordSuggestions.count': 4,
-      'topQueries.count': 4,
-      'popularProducts.count': 4,
+      'sourceField.categoryLinkMap.count': payload.categoryCount
+        ? payload.categoryCount
+        : defaultResultCount,
+      'keywordSuggestions.count': payload.suggestionsCount
+        ? payload.suggestionsCount
+        : defaultResultCount,
+      'topQueries.count': payload.topQueriesCount ? payload.topQueriesCount : defaultResultCount,
+      'popularProducts.count': payload.productsCounts ? payload.productsCounts : defaultResultCount,
       'popularProducts.fields':
         'catgroup_id,product_name,imageUrl,min_list_price,min_offer_price,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,seo_token,uniqueId,product_type,low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price',
     },
