@@ -62,4 +62,6 @@ export default {
   star: '/static/images/star.svg',
   'star-filled': '/static/images/star-filled.svg',
   'circle-check': '/static/images/circle-check.svg',
+  'search-icon': '/static/images/search-icon.svg',
+  'search-close-icon': '/static/images/search-close-icon.svg',
 };

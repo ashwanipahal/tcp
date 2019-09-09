@@ -12,6 +12,7 @@ import ModuleN from './ModuleN';
 import PromoBanner from './PromoBanner';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
+import SearchBar from './SearchBar';
 
 export {
   AccordionHeader,
@@ -28,4 +29,5 @@ export {
   PromoBanner,
   LinkText,
   ImageGrid,
+  SearchBar,
 };

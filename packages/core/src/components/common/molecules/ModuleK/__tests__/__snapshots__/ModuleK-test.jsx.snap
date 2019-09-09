@@ -99,7 +99,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kkGfuU",
+              "componentId": "sc-iAyFgw",
               "isStatic": false,
               "rules": Array [
                 "
@@ -183,7 +183,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-ckVGcZ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kkGfuU",
+            "styledComponentId": "sc-iAyFgw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -225,7 +225,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kEYyzF",
+              "componentId": "sc-kkGfuU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -513,7 +513,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-fjdhpX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kEYyzF",
+            "styledComponentId": "sc-kkGfuU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
