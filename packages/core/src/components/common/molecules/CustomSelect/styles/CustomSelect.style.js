@@ -26,7 +26,7 @@ const customSelectStyle = css`
       border: 0px;
     }
     .TCPModal__Content_Modal .dropdownliBottomBorder {
-      border: 1px solid #979797;
+      border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
       margin: 20px 10px;
     }
     .TCPModal__Content_Modal .ulBorderWithLastRow li:last-child {

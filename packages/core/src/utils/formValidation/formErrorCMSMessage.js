@@ -50,6 +50,10 @@ const formErrorCMSMessage = {
   lbl_err_state_staterequired_nonus: 'Please select a province',
   lbl_err_altphonenumber_notequalto: 'Phone numbers must not match',
   lbl_err_emailaddressnoasync: 'ERROR: Email format is invalid',
+  lbl_err_cvvcode_required: 'Please enter a valid security code',
+  lbl_err_cvvcode_cvvnumber: 'Please enter a valid security code',
+  lbl_err_cvvcode_cvvlengththree: 'Security code must be a 3-digit number without any spaces',
+  lbl_err_cvvcode_cvvlengthfour: 'Security code must be a 4-digit number without any spaces',
 };
 
 export default formErrorCMSMessage;

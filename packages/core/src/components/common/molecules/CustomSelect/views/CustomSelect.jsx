@@ -103,8 +103,9 @@ class CustomSelect extends React.Component<Props> {
           {activeTitle}
         </BodyCopy>
         {toggle && !showModal && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
-        {showModal && (
+        {toggle && showModal && (
           <Modal
+            fixedWidth
             heading={modalHeading}
             overlayClassName="TCPModal__Overlay"
             className="TCPModal__Content_Modal"

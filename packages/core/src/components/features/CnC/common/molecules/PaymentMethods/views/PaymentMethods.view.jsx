@@ -9,7 +9,7 @@ import styles from '../styles/PaymentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import { getIconPath } from '../../../../../../../utils';
 
-const PaymentMethods = ({ className, paymentHeader, isMobile, labels }) => {
+const PaymentMethods = ({ className, paymentHeader, labels }) => {
   return (
     <>
       <BodyCopy
@@ -23,6 +23,7 @@ const PaymentMethods = ({ className, paymentHeader, isMobile, labels }) => {
       <Row fullBleed className={className}>
         <Col
           colSize={{ small: 2, medium: 4, large: 6 }}
+          offsetLeft={{ small: 1 }}
           className="radio-method payment-method-box credit-card"
         >
           <Field
@@ -44,41 +45,40 @@ const PaymentMethods = ({ className, paymentHeader, isMobile, labels }) => {
             component={LabeledRadioButton}
             key="PayPal"
             selectedValue="payPal"
-            title="Pay Pal"
+            title={labels.lbl_billing_paypal}
             subtitle=""
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
           />
           <img
-            alt="paypal"
+            alt={labels.lbl_billing_paypal}
             className="payment-mothod-paypal-img"
             src={getIconPath('paypal-icon')}
             data-locator="payment-mothod-paypal"
           />
         </Col>
-        {isMobile && (
-          <Col
-            colSize={{ small: 2, medium: 4, large: 6 }}
-            className="radio-method payment-method-box"
-          >
-            <Field
-              component={LabeledRadioButton}
-              key="Venmo"
-              selectedValue="Venmo"
-              title="Venmo"
-              subtitle=""
-              name="paymentMethodId"
-              variation="secondary"
-            />
-            <img
-              alt="venmo"
-              className="payment-mothod-venmo-img"
-              src={getIconPath('venmo-blue-acceptance-mark')}
-              data-locator="payment-mothod-venmo"
-            />
-          </Col>
-        )}
+
+        <Col
+          colSize={{ small: 2, medium: 4, large: 0 }}
+          className="radio-method payment-method-box hideOnDesktop"
+        >
+          <Field
+            component={LabeledRadioButton}
+            key="Venmo"
+            selectedValue="Venmo"
+            title={labels.lbl_billing_venmo}
+            subtitle=""
+            name="paymentMethodId"
+            variation="secondary"
+          />
+          <img
+            alt={labels.lbl_billing_venmo}
+            className="payment-mothod-venmo-img"
+            src={getIconPath('venmo-blue-acceptance-mark')}
+            data-locator="payment-mothod-venmo"
+          />
+        </Col>
       </Row>
     </>
   );
@@ -87,7 +87,6 @@ const PaymentMethods = ({ className, paymentHeader, isMobile, labels }) => {
 PaymentMethods.propTypes = {
   className: PropTypes.string,
   paymentHeader: PropTypes.string,
-  isMobile: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}).isRequired,
 };
 PaymentMethods.defaultProps = {

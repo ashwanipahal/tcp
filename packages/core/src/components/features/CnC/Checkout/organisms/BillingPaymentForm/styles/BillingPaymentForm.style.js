@@ -5,7 +5,7 @@ export default css`
     top: 25px;
     position: relative;
     font-size: 10px;
-    font-weight: 800;
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
   .billing-payment-details {
     display: flex;
@@ -15,8 +15,8 @@ export default css`
     padding-left: 25px;
   }
   .paymentMethodHeading {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     padding-top: 10px;
   }
   .cardImage-card-number {
@@ -62,10 +62,11 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       width: 125px;
     }
+    .TextBox__input {
+      background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+    }
   }
-  .cvvCode .TextBox__input {
-    background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
-  }
+
   .billing-payment-subHeading {
     padding-bottom: 14px;
   }

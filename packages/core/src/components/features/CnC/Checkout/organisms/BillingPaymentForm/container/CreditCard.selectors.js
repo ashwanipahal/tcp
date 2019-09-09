@@ -1,6 +1,6 @@
 import { formValueSelector } from 'redux-form';
-/* eslint-disable extra-rules/no-commented-out-code */
 import { isMobileApp, getViewportInfo } from '@tcp/core/src/utils';
+import { createSelector } from 'reselect';
 import constants from './CreditCard.constants';
 
 const getCreditCardLabels = state => state.Labels.checkout.billing;
@@ -30,10 +30,8 @@ function getIsMobile() {
 
 const getCVVCodeInfoContentId = state => {
   let cvvCodeCID;
-  /* istanbul ignore else */
   if (state.Labels.checkout.billing && Array.isArray(state.Labels.checkout.billing.referred)) {
     state.Labels.checkout.billing.referred.forEach(label => {
-      /* istanbul ignore else */
       if (label.name === constants.CREDIT_CARD_CVV_INFO_LABEL) cvvCodeCID = label.contentId;
     });
   }
@@ -42,6 +40,16 @@ const getCVVCodeInfoContentId = state => {
 const getCVVCodeRichTextSelector = state => {
   return state.BillingPaymentReducer && state.BillingPaymentReducer.get('cvvCodeInfoContent');
 };
+
+export const getErrorMessages = state => {
+  return state.Labels.global;
+};
+
+const getFormValidationErrorMessages = createSelector(
+  getErrorMessages,
+  global => global && global.formValidation
+);
+
 export default {
   getCreditCardLabels,
   getOnFileCardKey,
@@ -49,4 +57,5 @@ export default {
   getPaymentMethodId,
   getCVVCodeInfoContentId,
   getCVVCodeRichTextSelector,
+  getFormValidationErrorMessages,
 };

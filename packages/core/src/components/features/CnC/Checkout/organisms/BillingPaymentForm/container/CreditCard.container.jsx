@@ -93,6 +93,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       backLinkPickup,
       backLinkShipping,
       nextSubmitText,
+      // formErrorMessage,
     } = this.props;
     if (cvvCodeInfoContentId) {
       getCVVCodeInfo(cvvCodeInfoContentId);
@@ -115,6 +116,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         backLinkPickup={backLinkPickup}
         backLinkShipping={backLinkShipping}
         nextSubmitText={nextSubmitText}
+        // formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -140,6 +142,7 @@ const mapStateToProps = (state, ownProps) => {
     paymentMethodId: CreditCardSelector.getPaymentMethodId(state, ownProps),
     cvvCodeInfoContentId: CreditCardSelector.getCVVCodeInfoContentId(state),
     cvvCodeRichText: CreditCardSelector.getCVVCodeRichTextSelector(state),
+    formErrorMessage: CreditCardSelector.getFormValidationErrorMessages(state),
   };
 };
 
