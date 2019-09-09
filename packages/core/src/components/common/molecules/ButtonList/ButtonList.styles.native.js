@@ -26,7 +26,7 @@ export const DivImageContainer = styled.View`
 `;
 
 export const SeparatorView = styled.View`
-  width: 20px;
+  width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 
 export const ContainerView = styled.View`
