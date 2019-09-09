@@ -11,7 +11,7 @@ const BtnWrapper = styled.View`
 const getWrapperStyles = props => {
   return `
     height: 42px;
-    width: 103px;
+    width: ${props.isPlcc ? '103px' : props.theme.spacing.LAYOUT_SPACING.XXL}
     border: 1px solid ${props.theme.colors.BORDER.NORMAL};
     justify-content: space-around;
     padding: ${props.theme.spacing.ELEM_SPACING.XXS};

@@ -2,7 +2,7 @@
 
 exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
 <div
-  className="footer-top"
+  className="footer-top content-wrapper"
 >
   <Styled(Row)>
     <Styled(Col)
