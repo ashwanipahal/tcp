@@ -153,7 +153,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "settings": "unslick",
             },
             Object {
-              "breakpoint": 1023,
+              "breakpoint": 1199,
               "settings": Object {
                 "arrows": false,
               },

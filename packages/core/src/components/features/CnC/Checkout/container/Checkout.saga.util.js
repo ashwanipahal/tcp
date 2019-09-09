@@ -11,6 +11,8 @@ import {
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { setOnFileAddressKey } from './Checkout.action';
+import utility from '../util/utility';
+import { CHECKOUT_ROUTES } from '../Checkout.constants';
 
 export function* addRegisteredUserAddress({
   address,
@@ -138,4 +140,8 @@ export function* addNewShippingAddress({ payload }) {
   );
   yield call(getAddressList);
   yield put(setOnFileAddressKey(addAddressResponse.payload));
+}
+
+export function* routeToPickupPage(recalc) {
+  yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }

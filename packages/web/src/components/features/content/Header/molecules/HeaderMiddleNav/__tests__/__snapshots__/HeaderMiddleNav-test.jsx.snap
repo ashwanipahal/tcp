@@ -41,7 +41,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="textRight header-middle-login-section"
+      className="textRight header-middle-login-section false"
       colSize={
         Object {
           "large": 4,
@@ -72,6 +72,92 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       >
         Login
       </Styled(Anchor)>
+      <Styled(SearchBar)
+        changeSearchText={[Function]}
+        className="rightLink"
+        closeSearchBar={[Function]}
+        isOpen={false}
+        labels={[Function]}
+        openSearchBar={[Function]}
+        searchData={
+          Object {
+            "looking": Array [
+              Object {
+                "id": 1,
+                "text": "Pants",
+              },
+              Object {
+                "id": 2,
+                "text": "Jeans",
+              },
+              Object {
+                "id": 3,
+                "text": "Shirts",
+              },
+              Object {
+                "id": 4,
+                "text": "Jeans Set",
+              },
+            ],
+            "products": Array [
+              Object {
+                "id": 1,
+              },
+              Object {
+                "id": 2,
+              },
+              Object {
+                "id": 3,
+              },
+              Object {
+                "id": 4,
+              },
+            ],
+            "recent": Array [
+              Object {
+                "id": 1,
+                "text": "Girl",
+              },
+              Object {
+                "id": 2,
+                "text": "Boy",
+              },
+              Object {
+                "id": 3,
+                "text": "Man",
+              },
+              Object {
+                "id": 4,
+                "text": "Woman",
+              },
+            ],
+            "trending": Array [
+              Object {
+                "id": 1,
+                "text": "EASTER",
+              },
+              Object {
+                "id": 2,
+                "text": "EASTER",
+              },
+              Object {
+                "id": 3,
+                "text": "EASTER",
+              },
+              Object {
+                "id": 4,
+                "text": "EASTER",
+              },
+            ],
+          }
+        }
+        searchRef={
+          Object {
+            "current": null,
+          }
+        }
+        showProduct={false}
+      />
       <Styled(Anchor)
         anchorVariation="primary"
         className="rightLink"
@@ -176,7 +262,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
       />
     </Styled(Col)>
     <Styled(Col)
-      className="textRight header-middle-login-section"
+      className="textRight header-middle-login-section false"
       colSize={
         Object {
           "large": 4,
@@ -207,6 +293,92 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
       >
         Login
       </Styled(Anchor)>
+      <Styled(SearchBar)
+        changeSearchText={[Function]}
+        className="rightLink"
+        closeSearchBar={[Function]}
+        isOpen={false}
+        labels={[Function]}
+        openSearchBar={[Function]}
+        searchData={
+          Object {
+            "looking": Array [
+              Object {
+                "id": 1,
+                "text": "Pants",
+              },
+              Object {
+                "id": 2,
+                "text": "Jeans",
+              },
+              Object {
+                "id": 3,
+                "text": "Shirts",
+              },
+              Object {
+                "id": 4,
+                "text": "Jeans Set",
+              },
+            ],
+            "products": Array [
+              Object {
+                "id": 1,
+              },
+              Object {
+                "id": 2,
+              },
+              Object {
+                "id": 3,
+              },
+              Object {
+                "id": 4,
+              },
+            ],
+            "recent": Array [
+              Object {
+                "id": 1,
+                "text": "Girl",
+              },
+              Object {
+                "id": 2,
+                "text": "Boy",
+              },
+              Object {
+                "id": 3,
+                "text": "Man",
+              },
+              Object {
+                "id": 4,
+                "text": "Woman",
+              },
+            ],
+            "trending": Array [
+              Object {
+                "id": 1,
+                "text": "EASTER",
+              },
+              Object {
+                "id": 2,
+                "text": "EASTER",
+              },
+              Object {
+                "id": 3,
+                "text": "EASTER",
+              },
+              Object {
+                "id": 4,
+                "text": "EASTER",
+              },
+            ],
+          }
+        }
+        searchRef={
+          Object {
+            "current": null,
+          }
+        }
+        showProduct={false}
+      />
       <Styled(Anchor)
         anchorVariation="primary"
         className="rightLink"

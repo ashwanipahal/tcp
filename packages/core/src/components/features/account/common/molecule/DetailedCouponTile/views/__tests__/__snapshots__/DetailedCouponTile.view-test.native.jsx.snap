@@ -62,33 +62,20 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(CustomButton)
-          active={false}
+        <Styled(WithTheme(CustomButton))
           buttonVariation="variable-width"
-          color=""
-          customStyle={Object {}}
-          disableButton={false}
           fill="WHITE"
-          fullWidth=""
-          locator=""
           onPress={[Function]}
           text="view & print"
-          url=""
         />
       </Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="#fff"
-        customStyle={Object {}}
-        disableButton={false}
         disabled={true}
         fill="BLUE"
-        fullWidth=""
-        locator=""
         onPress={[Function]}
         text="apply"
-        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -187,33 +174,19 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         <Styled(Styled(View)) />
       </Styled(View)>
       <Styled(View)>
-        <Styled(CustomButton)
-          active={false}
+        <Styled(WithTheme(CustomButton))
           buttonVariation="variable-width"
-          color=""
-          customStyle={Object {}}
-          disableButton={false}
           fill="WHITE"
-          fullWidth=""
-          locator=""
           onPress={[Function]}
           text="view & print"
-          url=""
         />
         <Styled(Styled(View)) />
       </Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
-        disableButton={false}
         fill="WHITE"
-        fullWidth=""
-        locator=""
         onPress={[Function]}
         text="remove from bag"
-        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -295,33 +268,20 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         />
       </Styled(View)>
       <Styled(View)>
-        <Styled(CustomButton)
-          active={false}
+        <Styled(WithTheme(CustomButton))
           buttonVariation="variable-width"
-          color=""
-          customStyle={Object {}}
-          disableButton={false}
           fill="WHITE"
-          fullWidth=""
-          locator=""
           onPress={[Function]}
           text="view & print"
-          url=""
         />
       </Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="#fff"
-        customStyle={Object {}}
-        disableButton={false}
         disabled={true}
         fill="BLUE"
-        fullWidth=""
-        locator=""
         onPress={[Function]}
         text="apply"
-        url=""
       />
     </Styled(View)>
   </Styled(View)>

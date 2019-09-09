@@ -50,7 +50,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   />
   <Styled(BodyCopy)
     className="first-label"
-    color="primary.main"
+    color="primary.dark"
     component="p"
     data-locator="sms_copy_text_02"
     fontFamily="secondary"

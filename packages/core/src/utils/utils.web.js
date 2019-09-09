@@ -90,12 +90,6 @@ export const routerPush = (href, as, query, siteId = getSiteId()) => {
   return Router.push(relHref, asPath, { query });
 };
 
-export const identifyBrand = () => {
-  const url = 'http://www.thechildrensplace.com/';
-
-  return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
-};
-
 /**
  * This common function works for finding key in an object.
  * Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
@@ -340,12 +334,49 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
+/**
+ * This function will redirect to PDP from HOMEPAGE
+ * on the basis of productId
+ *
+ * TODO: It can be extended as per requirement
+ * to redirect from other pages also
+ */
+export const redirectToPdp = productId => {
+  if (!window) return null;
+
+  const { href } = window.location;
+  // TODO
+  if (href.includes('/p/')) {
+    return {
+      url: `/p?pid=${productId}`,
+      asPath: `/p/${productId}`,
+    };
+  }
+
+  return {
+    url: `/c?cid=toddler-girl-bottoms`,
+    asPath: `/c/toddler-girl-bottoms`,
+  };
+};
+
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configurePlpNavigationFromCMSUrl = url => {
+  const route = `${ROUTE_PATH.plp}/`;
+  if (url.includes(route)) {
+    const urlItems = url.split(route);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+  }
+  return url;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  identifyBrand,
   getObjectValue,
   createUrlSearchParams,
   buildUrl,
@@ -360,6 +391,7 @@ export default {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {

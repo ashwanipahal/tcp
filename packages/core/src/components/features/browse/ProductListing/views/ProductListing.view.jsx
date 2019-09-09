@@ -28,6 +28,7 @@ const ProductListView = ({
   labels,
   labelsFilter,
   categoryId,
+  formValues,
   getProducts,
   onSubmit,
   ...otherProps
@@ -52,7 +53,9 @@ const ProductListView = ({
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area">Promo area</div>
+            <div className="promo-area">
+              <img src="/static/images/dummy-banner.bmp" alt="dummy-banner" />
+            </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-section">
@@ -63,6 +66,7 @@ const ProductListView = ({
                 filtersLength={filtersLength}
                 labels={labelsFilter}
                 onSubmit={onSubmit}
+                formValues={formValues}
                 getProducts={getProducts}
               />
             </div>
@@ -117,6 +121,7 @@ ProductListView.propTypes = {
   labelsFilter: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   getProducts: PropTypes.func,
   onSubmit: PropTypes.func,
+  formValues: PropTypes.shape({}).isRequired,
 };
 
 ProductListView.defaultProps = {

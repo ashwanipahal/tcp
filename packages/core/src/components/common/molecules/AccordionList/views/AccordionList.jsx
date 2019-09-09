@@ -101,6 +101,7 @@ export default class AccordionList extends React.Component<Props, State> {
                   updateAccordionState={this.changeAccordionState}
                   index={index}
                   activeClass="inactive"
+                  className={className}
                 >
                   {item}
                 </AccordionItem>
@@ -112,6 +113,7 @@ export default class AccordionList extends React.Component<Props, State> {
                   updateAccordionState={this.changeAccordionState}
                   index={index}
                   activeClass="active"
+                  className={className}
                 />
               )}
             </div>

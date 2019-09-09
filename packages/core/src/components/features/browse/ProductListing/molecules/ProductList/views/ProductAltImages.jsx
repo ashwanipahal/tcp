@@ -6,6 +6,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { isClient, getLocator } from '@tcp/core/src/utils';
+import { getProductListToPath } from '../utils/productsCommonUtils';
 // import cssClassName from '../utils/cssClassName';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
 import { Anchor } from '../../../../../../common/atoms';
@@ -132,7 +133,7 @@ class ProductAltImages extends React.PureComponent {
     } = this.props;
     const { currentIndex, videoHeight } = this.state;
     const unbxdData = analyticsData || {};
-
+    const pdpToPath = getProductListToPath(pdpUrl);
     return isMobile ? (
       <figure
         // eslint-disable-next-line no-return-assign
@@ -141,13 +142,15 @@ class ProductAltImages extends React.PureComponent {
         itemScope
         itemType="http://schema.org/ImageObject"
       >
-        <a
-          onClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+        <Anchor
+          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+          to={pdpToPath}
+          asPath={pdpUrl}
           title={productName}
           unbxdattr="product"
-          unbxdparam_sku={analyticsData && analyticsData.pId}
-          unbxdparam_prank={analyticsData && analyticsData.prank}
-          href={pdpUrl}
+          unbxdparam_sku={unbxdData && unbxdData.pId}
+          unbxdparam_prank={unbxdData && unbxdData.prank}
+          inheritedStyles={imageAnchorInheritedStyles}
         >
           {/* <div style={{ position: 'absolute', height: '100%', width: '100%' }} /> */}
           <video
@@ -160,7 +163,7 @@ class ProductAltImages extends React.PureComponent {
             height={videoHeight}
             // onError={this.onVideoError}
           />
-        </a>
+        </Anchor>
       </figure>
     ) : (
       <figure
@@ -173,13 +176,15 @@ class ProductAltImages extends React.PureComponent {
         <button type="button" className="button-prev" onClick={this.handledPrevImage}>
           prev
         </button>
-        <a
-          onClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+        <Anchor
+          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+          to={pdpToPath}
+          asPath={pdpUrl}
           title={productName}
           unbxdattr="product"
-          unbxdparam_sku={unbxdData.pId}
-          unbxdparam_prank={unbxdData.prank}
-          href={pdpUrl}
+          unbxdparam_sku={unbxdData && unbxdData.pId}
+          unbxdparam_prank={unbxdData && unbxdData.prank}
+          inheritedStyles={imageAnchorInheritedStyles}
         >
           {currentIndex === 0 ? (
             <React.Fragment>
@@ -210,7 +215,7 @@ class ProductAltImages extends React.PureComponent {
               itemProp="contentUrl"
             />
           )}
-        </a>
+        </Anchor>
         <button type="button" className="button-next" onClick={this.handledNextImage}>
           next
         </button>
@@ -229,7 +234,7 @@ class ProductAltImages extends React.PureComponent {
     } = this.props;
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
-
+    const pdpToPath = getProductListToPath(pdpUrl);
     return imageUrls.length < 2 ? (
       <figure
         className="product-image-container"
@@ -238,7 +243,8 @@ class ProductAltImages extends React.PureComponent {
       >
         <Anchor
           handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
-          to={pdpUrl}
+          to={pdpToPath}
+          asPath={pdpUrl}
           title={productName}
           unbxdattr="product"
           unbxdparam_sku={unbxdData && unbxdData.pId}
@@ -267,7 +273,8 @@ class ProductAltImages extends React.PureComponent {
 
         <Anchor
           handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
-          to={pdpUrl}
+          to={pdpToPath}
+          asPath={pdpUrl}
           title={productName}
           unbxdattr="product"
           unbxdparam_sku={unbxdData && unbxdData.pId}

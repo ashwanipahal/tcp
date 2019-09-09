@@ -4,6 +4,7 @@ import { Anchor, BodyCopy } from '../../../atoms';
 import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
+import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
 
 /**
  * Currency & Up variation of Promo Banner
@@ -45,6 +46,10 @@ const PromoBanner = props => {
     ...otherProps
   } = props;
 
+  const navigationUrl = link;
+  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+  navigationUrl.asPath = link.url;
+
   return (
     <BodyCopy component="div" className={className} {...otherProps}>
       <React.Fragment>
@@ -56,7 +61,7 @@ const PromoBanner = props => {
             headerText={headerText}
           />
         )}
-        <Anchor {...link} className="promo-text-link">
+        <Anchor {...navigationUrl} className="promo-text-link">
           {textItems.map(({ text, style }, index) => {
             let promoText;
 

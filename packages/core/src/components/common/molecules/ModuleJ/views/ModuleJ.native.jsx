@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '../ModuleJ.style.native';
+import { Container } from '../styles/ModuleJ.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
