@@ -150,3 +150,4 @@ Card.defaultProps = {
 };
 
 export default withStyles(Card, CardStyle);
+export { CardImage as CardVanilla };

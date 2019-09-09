@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<StyledComponent
+  card=""
+  cardNumber=""
+  className=""
+  dataLocatorPrefix=""
+  fontWeight=""
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-VigVT",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .cardImage-card-number {
+    padding: 7px 10px;
+  }
+  .cardImage-img-wrapper {
+    display: flex;
+    margin-bottom: auto;
+    width: 47px;
+    height: 30px;
+    border: 1px solid ",
+          [Function],
+          ";
+    border-radius: ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+  .cardImage-wrapper {
+    display: flex;
+  }
+  .card-title {
+    position: relative;
+    display: flex;
+  }
+  .card-carddefaultbadge {
+    position: absolute;
+    right: 2px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(CardImage)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-VigVT",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isDefault={false}
+  isMobile={false}
+  labels={Object {}}
+  showAddress={false}
+/>
+`;

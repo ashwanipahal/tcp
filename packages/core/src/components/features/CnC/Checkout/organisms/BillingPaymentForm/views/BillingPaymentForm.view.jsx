@@ -339,3 +339,4 @@ export default reduxForm({
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(BillingPaymentForm, styles));
+export { BillingPaymentForm as BillingPaymentFormVanilla };

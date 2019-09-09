@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<form
+  className=""
+  name="checkoutBilling"
+  noValidate={true}
+  onSubmit={[MockFunction]}
+>
+  <Styled(BodyCopy)
+    className="elem-mb-XS elem-mt-MED"
+    color="text.primary"
+    component="p"
+    data-locator="billing-details"
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+  <Styled(PaymentMethods)
+    labels={Object {}}
+  />
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+  />
+</form>
+`;
