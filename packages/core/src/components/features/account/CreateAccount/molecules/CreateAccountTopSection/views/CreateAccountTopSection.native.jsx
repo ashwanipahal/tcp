@@ -1,19 +1,19 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import ImageComp from '../../../../../../common/atoms/Image';
-// import LineComp from '../../../../../../common/atoms/';
 import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
 import {
   SectionStyle,
   CenterAlignWrapper,
   LabelsWrapper,
-  ResetPassword,
   TopSectionWrapper,
   PointsWrapper,
   ResetWrapper,
+  HeadingTextWrapper,
 } from '../styles/CreateAccountTopSection.style.native';
 import LineComp from '../../../../../../common/atoms/Line';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -40,57 +40,62 @@ class CreateAccountTopSection extends React.PureComponent<Props> {
           </CenterAlignWrapper>
           <LineComp marginTop={28} />
           <LabelsWrapper className="labels-wrapper">
-            <BodyCopy
-              fontSize="fs13"
-              component="span"
-              textAlign="center"
-              text={`${labels.registration.lbl_createAccount_createA} ${
-                labels.registration.lbl_createAccount_myPlaceRewards
-              } ${labels.registration.lbl_createAccount_earnPoints}`}
-            />
+            <HeadingTextWrapper>
+              <BodyCopy
+                fontSize="fs13"
+                component="span"
+                textAlign="center"
+                text={getLabelValue(labels, 'lbl_createAccount_createA', 'registration')}
+              />
+              <BodyCopy
+                fontSize="fs13"
+                component="span"
+                textAlign="center"
+                color="gray.1000"
+                text={getLabelValue(labels, 'lbl_createAccount_myPlaceRewards', 'registration')}
+              />
+              <BodyCopy
+                fontSize="fs13"
+                component="span"
+                textAlign="center"
+                text={getLabelValue(labels, 'lbl_createAccount_earnPoints', 'registration')}
+              />
+            </HeadingTextWrapper>
             <PointsWrapper>
               <BodyCopy
-                fontWeight="black"
                 fontSize="fs14"
                 textAlign="center"
                 color="gray.800"
-                text={labels.registration.lbl_createAccount_spendPoint}
+                text={getLabelValue(labels, 'lbl_createAccount_spendPoint', 'registration')}
               />
               <BodyCopy
                 fontWeight="black"
                 fontSize="fs14"
                 textAlign="center"
                 color="gray.800"
-                text={labels.registration.lbl_createAccount_pointReward}
+                text={getLabelValue(labels, 'lbl_createAccount_pointReward', 'registration')}
               />
             </PointsWrapper>
             <ResetWrapper>
               <BodyCopy
                 fontSize="fs12"
                 textAlign="center"
-                text={labels.registration.lbl_createAccount_signedUp}
+                text={getLabelValue(labels, 'lbl_createAccount_signedUp', 'registration')}
               />
 
               <BodyCopy
                 fontSize="fs12"
                 textAlign="center"
-                text={labels.registration.lbl_createAccount_onlineAccCreated}
+                text={getLabelValue(labels, 'lbl_createAccount_onlineAccCreated', 'registration')}
               />
-            </ResetWrapper>
-            <ResetPassword>
               <Anchor
                 class="clickhere"
                 fontSizeVariation="medium"
-                text="Click here"
+                text={getLabelValue(labels, 'lbl_createAccount_resetPassword', 'registration')}
                 underline
                 onPress={this.showForgotPassword}
               />
-              <BodyCopy
-                component="span"
-                fontSize="fs12"
-                text={labels.registration.lbl_createAccount_resetPassword}
-              />
-            </ResetPassword>
+            </ResetWrapper>
           </LabelsWrapper>
           <LineComp marginTop={28} />
         </TopSectionWrapper>

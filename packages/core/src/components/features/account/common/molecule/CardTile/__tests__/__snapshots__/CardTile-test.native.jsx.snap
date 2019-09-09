@@ -668,18 +668,10 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
     />
   </View>
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(View)>
       <Styled(View) />
@@ -1021,18 +1013,10 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     />
   </View>
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(View)>
       <Styled(View) />

@@ -74,7 +74,7 @@ class FilterModal extends React.PureComponent<Props> {
                   type="button"
                   className="gallery-button-left"
                   data-locator="view_gallery_button"
-                  onClick={handleClose}
+                  onClick={() => handleClose()}
                 >
                   {labels.lbl_clear}
                 </Button>
@@ -88,9 +88,9 @@ class FilterModal extends React.PureComponent<Props> {
               >
                 <Button
                   buttonVariation="fixed-width"
-                  type="button"
+                  type="submit"
                   className="gallery-button-left"
-                  data-locator="view_gallery_button"
+                  data-locator="plp_filter_apply_button"
                   fill="BLACK"
                 >
                   {labels.lbl_apply}

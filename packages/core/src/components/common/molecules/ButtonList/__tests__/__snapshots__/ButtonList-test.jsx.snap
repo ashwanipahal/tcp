@@ -579,6 +579,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       ]
     }
     className=" additional-button-list hide-on-small-viewport"
+    dataLocatorItemPrefix="moduleB_cta_links_"
     dropdownLabel="Shop Now"
   />
 </Fragment>

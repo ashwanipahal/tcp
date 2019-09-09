@@ -260,7 +260,7 @@ class ProductListingFiltersForm extends React.Component {
    * @function renderDesktop renders the filter view for desktop
    * @param {Object} appliedFilters - filters if already applied
    */
-  renderDesktop(appliedFilters) {
+  renderFilters(appliedFilters) {
     const {
       filtersMaps,
       totalProductsCount,
@@ -268,6 +268,8 @@ class ProductListingFiltersForm extends React.Component {
       colorSeqMap,
       labels,
       className,
+      initialValues,
+      onSubmit,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
     return (
@@ -306,6 +308,19 @@ class ProductListingFiltersForm extends React.Component {
             />
           )}
         </form>
+        <div className="render-mobile-view">
+          <ProductListingMobileFiltersForm
+            totalProductsCount={totalProductsCount}
+            initialValues={initialValues}
+            filtersMaps={filtersMaps}
+            className={className}
+            labels={labels}
+            onSubmit={onSubmit}
+            handleSubmit={handleSubmit}
+            handleImmediateSubmit={this.handleImmediateSubmit}
+            removeAllFilters={this.handleRemoveAllFilters}
+          />
+        </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
       </div>
     );
@@ -352,7 +367,7 @@ class ProductListingFiltersForm extends React.Component {
   }
 
   render() {
-    const { className, labels, totalProductsCount, initialValues, filtersMaps } = this.props;
+    const { initialValues, filtersMaps } = this.props;
 
     const appliedFilters = [];
 
@@ -366,18 +381,7 @@ class ProductListingFiltersForm extends React.Component {
       appliedFilters.push(selectedFacet);
     }
 
-    return (
-      <Fragment>
-        {this.renderDesktop(appliedFilters)}
-        <ProductListingMobileFiltersForm
-          totalProductsCount={totalProductsCount}
-          initialValues={initialValues}
-          filtersMaps={filtersMaps}
-          className={`${className} render-mobile-view`}
-          labels={labels}
-        />
-      </Fragment>
-    );
+    return <Fragment>{this.renderFilters(appliedFilters)}</Fragment>;
   }
 }
 

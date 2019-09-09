@@ -34,16 +34,5 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Styled(WithTheme(CustomButton))
-    buttonVariation="variable-width"
-    fullWidth={true}
-    onPress={[Function]}
-    style={
-      Object {
-        "margin": 30,
-      }
-    }
-    text="PLP Page"
-  />
 </ScrollViewMock>
 `;
