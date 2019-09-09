@@ -67,4 +67,6 @@ export default {
   'dot-email-blue': '/static/images/dot-email-blue.svg',
   'chat-blue': '/static/images/chat.svg',
   'chat-orange': '/static/images/chat-orange.svg',
+  'search-icon': '/static/images/search-icon.svg',
+  'search-close-icon': '/static/images/search-close-icon.svg',
 };

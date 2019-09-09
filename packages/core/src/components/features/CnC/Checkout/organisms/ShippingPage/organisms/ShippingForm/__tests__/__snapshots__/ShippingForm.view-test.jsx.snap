@@ -8,11 +8,6 @@ exports[`Shipping Form should render correctly 1`] = `
   <Styled(CheckoutOrderInfo)
     isGuest={false}
   />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
-  />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -110,11 +105,6 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
   />
   <Styled(CheckoutOrderInfo)
     isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -373,11 +363,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
   />
   <Styled(CheckoutOrderInfo)
     isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -810,11 +795,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
   />
   <Styled(CheckoutOrderInfo)
     isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1294,11 +1274,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
   />
   <Styled(CheckoutOrderInfo)
     isGuest={true}
-  />
-  <Styled(CheckoutFooter)
-    backLinkText=""
-    hideBackLink={false}
-    nextButtonText=""
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
