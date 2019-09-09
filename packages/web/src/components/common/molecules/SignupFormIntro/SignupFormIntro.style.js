@@ -8,7 +8,10 @@ const SmsSignupModalStyle = css`
       content: '';
       height: 2px;
       width: 100px;
-      background: ${props => props.theme.colors.TEXT.DARKERBLUE};
+      background: ${props =>
+        props.theme.isGymboree
+          ? props.theme.colorPalette.primary.main
+          : props.theme.colors.TEXT.DARKERBLUE};
       margin: 19px auto 48px;
       display: block;
     }

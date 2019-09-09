@@ -28,6 +28,7 @@ import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
+import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
@@ -77,6 +78,7 @@ export default function* rootSaga() {
     CartPageSaga(),
     CreateAccountSaga(),
     ProductListingSaga(),
+    ProductDetailSaga(),
     BonusPointsSaga(),
     CouponSaga(),
     CheckoutSaga(),

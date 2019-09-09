@@ -90,20 +90,13 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
     questionId="question1"
   />
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       disabled={true}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text="SAVE"
       type="button"
-      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -199,20 +192,13 @@ exports[`AboutYouSurvey should render correctly 1`] = `
     questionId="question1"
   />
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       disabled={true}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text="SAVE"
       type="button"
-      url=""
     />
   </Styled(View)>
 </Styled(View)>

@@ -38,6 +38,7 @@ import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCard
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
 import BillingPaymentReducer from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.reducer';
 import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
+import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
@@ -90,6 +91,7 @@ import {
   BILLING_PAYMENT_REDUCER_KEY,
   TOAST_REDUCER_KEY,
   MAILING_ADDRESS_REDUCER_KEY,
+  PRODUCT_DETAIL_REDUCER_KEY,
   APPLY_NOW_MODAL_REDUCER_KEY,
   PRODUCT_TAB_LIST_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
@@ -174,6 +176,7 @@ export default combineReducers({
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
   [BILLING_PAYMENT_REDUCER_KEY]: BillingPaymentReducer,
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
+  [PRODUCT_DETAIL_REDUCER_KEY]: ProductDetailReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,

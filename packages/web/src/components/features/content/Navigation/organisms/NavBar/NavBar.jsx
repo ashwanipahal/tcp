@@ -24,7 +24,7 @@ const NavBar = props => {
 
   return (
     <React.Fragment>
-      <ul className={`${className} nav-bar-l1`}>
+      <ul className={`${className} nav-bar-l1 content-wrapper`}>
         {navigationData.map((navL1Item, index) => {
           let categoryLayout = [];
           let sizesRange = [];

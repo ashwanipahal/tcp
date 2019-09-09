@@ -7,6 +7,10 @@ export default css`
     margin-bottom: 24px;
   }
 
+  .header-middle-nav-bar {
+    border-bottom: 1px solid ${props => props.theme.colorPalette.text.disabled};
+  }
+
   .checkout-pages & {
     display: none;
   }

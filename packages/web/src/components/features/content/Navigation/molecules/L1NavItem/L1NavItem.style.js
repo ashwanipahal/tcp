@@ -40,7 +40,7 @@ export default css`
   }
   .nav-bar-item-content {
     width: 51%;
-    color: ${props => props.theme.colorPalette.primary.main};
+    color: ${props => props.theme.colorPalette.primary.dark};
   }
 
   @media ${props => props.theme.mediaQuery.large} {

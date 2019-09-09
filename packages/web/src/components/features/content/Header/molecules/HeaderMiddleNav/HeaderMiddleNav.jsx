@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
 import style from './HeaderMiddleNav.style';
+import searchData from './HeaderMiddleNav.mock';
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -21,17 +25,23 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
   return isOpen ? closeNavigationDrawer('l1_drawer') : openNavigationDrawer('l1_drawer');
 };
 
-class HeaderMiddleNav extends React.PureComponent<Props> {
+class HeaderMiddleNav extends React.PureComponent {
   constructor(props) {
     super(props);
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
       isOpenMiniBagModal: false,
+      isSearchOpen: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
+      showProduct: false,
     };
+    this.searchInput = React.createRef();
+    this.openSearchBar = this.openSearchBar.bind(this);
+    this.closeSearchBar = this.closeSearchBar.bind(this);
+    this.changeSearchText = this.changeSearchText.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -66,7 +76,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
 
   toggleMiniBagModal = ({ e, isOpen, isRouting }) => {
     if (e) e.preventDefault();
-    if (window.innerWidth <= 1024 && !isRouting) {
+    if (window.innerWidth <= breakpoints.values.lg && !isRouting) {
       routerPush('/bag', '/bag');
     } else {
       this.setState({ isOpenMiniBagModal: isOpen });
@@ -78,6 +88,28 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     }
   };
 
+  openSearchBar = e => {
+    e.preventDefault();
+    if (window.innerWidth <= breakpoints.large) {
+      routerPush('/search', '/search');
+    } else {
+      this.setState({ isSearchOpen: true }, () => {
+        this.searchInput.current.focus();
+      });
+    }
+  };
+
+  closeSearchBar = e => {
+    e.preventDefault();
+    this.setState({ isSearchOpen: false });
+  };
+
+  changeSearchText = e => {
+    e.preventDefault();
+    const searchText = this.searchInput.current.value;
+    this.setState({ showProduct: Boolean(searchText.length) });
+  };
+
   render() {
     const {
       className,
@@ -86,6 +118,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       navigationDrawer,
       openOverlay,
       userName,
+      labels,
     } = this.props;
     const brand = getBrand();
     const {
@@ -93,127 +126,144 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       userNameClick,
       triggerLoginCreateAccount,
       cartItemCount,
+      isSearchOpen,
+      showProduct,
     } = this.state;
 
     return (
       <React.Fragment>
-        <Row className={`${className} header-middle-nav`}>
-          <Col
-            colSize={{
-              large: 4,
-              medium: 8,
-              small: 6,
-            }}
-          />
-          <Col
-            className="header-middle-nav-search"
-            colSize={{
-              large: 4,
-              medium: 8,
-              small: 6,
-            }}
-          >
-            <Image
-              src={
-                navigationDrawer.open
-                  ? '/static/images/mobile-close-dark.svg'
-                  : '/static/images/menu.svg'
-              }
-              alt="hamburger menu"
-              tabIndex="0"
-              className="hamburger-menu"
-              onClick={handleNavigationDrawer(
-                openNavigationDrawer,
-                closeNavigationDrawer,
-                navigationDrawer.open
-              )}
-              onKeyDown={e =>
-                this.handleKeyDown(
-                  e,
+        <Row className="content-wrapper" fullBleed>
+          <Row className={`${className} header-middle-nav`}>
+            <Col
+              colSize={{
+                large: 4,
+                medium: 8,
+                small: 6,
+              }}
+            />
+            <Col
+              className="header-middle-nav-search"
+              colSize={{
+                large: 4,
+                medium: 8,
+                small: 6,
+              }}
+            >
+              <Image
+                src={
+                  navigationDrawer.open
+                    ? '/static/images/mobile-close-dark.svg'
+                    : '/static/images/menu.svg'
+                }
+                alt="hamburger menu"
+                tabIndex="0"
+                className="hamburger-menu"
+                onClick={handleNavigationDrawer(
                   openNavigationDrawer,
                   closeNavigationDrawer,
                   navigationDrawer.open
-                )
-              }
-              data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
-            />
-            <BrandLogo
-              alt={config[brand].alt}
-              className="header-brand__home-logo--brand"
-              dataLocator={config[brand].dataLocator}
-              imgSrc={config[brand].imgSrc}
-            />
-          </Col>
-          <Col
-            colSize={{
-              large: 4,
-              medium: 8,
-              small: 6,
-            }}
-            className="textRight header-middle-login-section"
-          >
-            {userName ? (
-              <React.Fragment>
-                <BodyCopy
-                  id="accountDrawer"
-                  textAlign="right"
-                  className="username"
-                  onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
-                >
-                  {`Hi, ${userName}`}
-                </BodyCopy>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <Anchor
-                  href="#"
-                  noLink
-                  id="createAccount"
-                  className="leftLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                  fontSizeVariation="large"
-                  anchorVariation="primary"
-                >
-                  Create Account
-                </Anchor>
-                <Anchor
-                  href="#"
-                  noLink
-                  id="login"
-                  className="rightLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                  fontSizeVariation="large"
-                  anchorVariation="primary"
-                >
-                  Login
-                </Anchor>
-              </React.Fragment>
-            )}
-            <Anchor
-              to=""
-              id="cartIcon"
-              className="rightLink"
-              onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
-              fontSizeVariation="small"
-              anchorVariation="primary"
-              noLink
-            >
-              <Image
-                alt="Product"
-                className="product-image"
-                src={getIconPath('cart-icon')}
-                data-locator="addedtobag-bag-icon"
+                )}
+                onKeyDown={e =>
+                  this.handleKeyDown(
+                    e,
+                    openNavigationDrawer,
+                    closeNavigationDrawer,
+                    navigationDrawer.open
+                  )
+                }
+                data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
-              <BodyCopy
-                className="cartCount"
-                component="span"
-                fontWeight="semibold"
-                fontSize="fs10"
+              <BrandLogo
+                alt={config[brand].alt}
+                className="header-brand__home-logo--brand"
+                dataLocator={config[brand].dataLocator}
+                imgSrc={config[brand].imgSrc}
+              />
+            </Col>
+            <Col
+              colSize={{
+                large: 4,
+                medium: 8,
+                small: 6,
+              }}
+              className={`textRight header-middle-login-section ${isSearchOpen && 'flexbox'}`}
+            >
+              {userName ? (
+                <React.Fragment>
+                  <BodyCopy
+                    id="accountDrawer"
+                    textAlign="right"
+                    className="username"
+                    onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
+                  >
+                    {`Hi, ${userName}`}
+                  </BodyCopy>
+                </React.Fragment>
+              ) : (
+                !isSearchOpen && (
+                  <React.Fragment>
+                    <Anchor
+                      href="#"
+                      noLink
+                      id="createAccount"
+                      className="leftLink"
+                      onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
+                      fontSizeVariation="large"
+                      anchorVariation="primary"
+                    >
+                      Create Account
+                    </Anchor>
+                    <Anchor
+                      href="#"
+                      noLink
+                      id="login"
+                      className="rightLink"
+                      onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
+                      fontSizeVariation="large"
+                      anchorVariation="primary"
+                    >
+                      Login
+                    </Anchor>
+                  </React.Fragment>
+                )
+              )}
+              <SearchBar
+                className={!isSearchOpen && 'rightLink'}
+                openSearchBar={this.openSearchBar}
+                changeSearchText={this.changeSearchText}
+                closeSearchBar={this.closeSearchBar}
+                isOpen={isSearchOpen}
+                showProduct={showProduct}
+                searchRef={this.searchInput}
+                searchData={searchData}
+                labels={labels}
+              />
+              <Anchor
+                to=""
+                id="cartIcon"
+                className="rightLink"
+                onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
+                fontSizeVariation="small"
+                anchorVariation="primary"
+                noLink
               >
-                {cartItemCount || 0}
-              </BodyCopy>
-            </Anchor>
-          </Col>
+                <Image
+                  alt="Product"
+                  className="product-image"
+                  src={getIconPath('cart-icon')}
+                  data-locator="addedtobag-bag-icon"
+                />
+                <BodyCopy
+                  className="cartCount"
+                  component="span"
+                  fontWeight="semibold"
+                  fontSize="fs10"
+                >
+                  {cartItemCount || 0}
+                </BodyCopy>
+              </Anchor>
+            </Col>
+          </Row>
         </Row>
         <Row
           fullBleed={{
@@ -256,13 +306,31 @@ HeaderMiddleNav.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
+  labels: PropTypes.shape({
+    lbl_search_whats_trending: PropTypes.string,
+    lbl_search_recent_search: PropTypes.string,
+    lbl_search_looking_for: PropTypes.string,
+    lbl_search_product_matches: PropTypes.string,
+  }),
 };
 
 HeaderMiddleNav.defaultProps = {
   navigationDrawer: {
     open: false,
   },
+  labels: PropTypes.shape({
+    lbl_search_whats_trending: '',
+    lbl_search_recent_search: '',
+    lbl_search_looking_for: '',
+    lbl_search_product_matches: '',
+  }),
+};
+
+const mapStateToProps = state => {
+  return {
+    labels: state.Labels.global && state.Labels.global.Search,
+  };
 };
 
 export { HeaderMiddleNav as HeaderMiddleNavVanilla };
-export default withStyles(HeaderMiddleNav, style);
+export default connect(mapStateToProps)(withStyles(HeaderMiddleNav, style));

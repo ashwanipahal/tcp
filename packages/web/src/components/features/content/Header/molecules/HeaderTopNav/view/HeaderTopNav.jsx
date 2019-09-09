@@ -22,7 +22,7 @@ const HeaderTopNav = ({
   return (
     <div className={className}>
       <PromotionalArea mobile data={promoMessageWrapper} />
-      <div className="header-topnav__row">
+      <div className="header-topnav__row content-wrapper">
         <div className="header-topnav__brand-tabs">
           <BrandTabs data={brandTabs} />
         </div>
