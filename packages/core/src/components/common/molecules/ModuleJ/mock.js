@@ -9,9 +9,14 @@ export default {
         {
           textItems: [
             {
-              text: 'ALL CLEARANCE',
+              text: 'Every Length, Style, Color & Size',
               color: 'color2',
-              style: 'style12',
+              style: 'small_text',
+            },
+            {
+              text: 'THE SHORTS SHOP',
+              color: 'color2',
+              style: 'large_text',
             },
           ],
           link: {
