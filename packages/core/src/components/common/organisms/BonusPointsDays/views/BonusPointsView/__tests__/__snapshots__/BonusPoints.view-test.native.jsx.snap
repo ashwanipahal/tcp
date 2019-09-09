@@ -19,7 +19,7 @@ exports[`BonusPointsView should render correctly 1`] = `
     toggleBonusPointsModal={[Function]}
   />
   <ModalNative
-    heading="undefined undefined DETAILS"
+    heading="lbl_bonusPoints_placeRewardsBonus lbl_bonusPoints_placeRewardsPoints DETAILS"
     headingAlign="left"
     headingFontFamily="secondary"
     isOpen={true}

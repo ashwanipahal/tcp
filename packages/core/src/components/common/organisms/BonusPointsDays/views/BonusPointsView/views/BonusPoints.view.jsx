@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
 import Modal from '../../../../../molecules/Modal';
@@ -86,9 +87,10 @@ class BonusPointsView extends React.Component {
           onRequestClose={this.toggleBonusPointsModal}
           overlayClassName="TCPModal__Overlay"
           className="TCPModal__Content bonus-details-modal"
-          heading={`${labels.lbl_bonusPoints_placeRewardsBonus} ${
-            labels.lbl_bonusPoints_placeRewardsPoints
-          } DETAILS`}
+          heading={`${getLabelValue(labels, 'lbl_bonusPoints_placeRewardsBonus')} ${getLabelValue(
+            labels,
+            'lbl_bonusPoints_placeRewardsPoints'
+          )} DETAILS`}
           fixedWidth
           maxWidth="704px"
           minHeight="550px"

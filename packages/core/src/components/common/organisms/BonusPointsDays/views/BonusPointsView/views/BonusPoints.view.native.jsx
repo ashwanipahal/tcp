@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
 import Modal from '../../../../../molecules/Modal';
@@ -79,9 +80,17 @@ class BonusPointsView extends React.Component {
         <Modal
           isOpen={openModalState}
           onRequestClose={this.toggleBonusPointsModal}
-          heading={`${labels.lbl_bonusPoints_placeRewardsBonus} ${
-            labels.lbl_bonusPoints_placeRewardsPoints
-          } DETAILS`}
+          heading={`${getLabelValue(
+            labels,
+            'lbl_bonusPoints_placeRewardsBonus',
+            'bonusPoints',
+            'global'
+          )} ${getLabelValue(
+            labels,
+            'lbl_bonusPoints_placeRewardsPoints',
+            'bonusPoints',
+            'global'
+          )} DETAILS`}
           headingAlign="left"
           headingFontFamily="secondary"
         >

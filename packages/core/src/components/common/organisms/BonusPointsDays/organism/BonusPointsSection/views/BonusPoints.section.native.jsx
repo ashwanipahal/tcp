@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import Anchor from '../../../../../atoms/Anchor';
 import BonusPointsAvailability from '../../../molecules/BonusPointsAvailability';
@@ -24,16 +25,16 @@ const getButtonText = ({
   let buttonText = '';
   let dataLocator = '';
   if (isUsed) {
-    buttonText = `${labels.lbl_bonusPoints_usedOn} ${dateUsed}`;
+    buttonText = `${getLabelValue(labels, 'lbl_bonusPoints_usedOn')} ${dateUsed}`;
     dataLocator = 'usedonbtn';
   } else if (forFutureUse || futureDisabled) {
-    buttonText = labels.lbl_bonusPoints_futureUse;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_futureUse');
     dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
-    buttonText = labels.lbl_bonusPoints_ctaApplied;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApplied');
     dataLocator = 'appliedtoorderbtn';
   } else {
-    buttonText = labels.lbl_bonusPoints_ctaApply;
+    buttonText = getLabelValue(labels, 'lbl_bonusPoints_ctaApply');
     dataLocator = 'availabletodaybtn';
   }
   return { buttonText, dataLocator };
@@ -95,7 +96,7 @@ const getHeader = ({ labels }) => {
           fontWeight="extrabold"
           component="span"
           color="orange.800"
-          text={labels.lbl_bonusPoints_placeRewardsBonus}
+          text={getLabelValue(labels, 'lbl_bonusPoints_placeRewardsBonus')}
         />
       </MarginRightWrapper>
       <MarginRightWrapper>
@@ -105,7 +106,7 @@ const getHeader = ({ labels }) => {
           fontWeight="extrabold"
           component="span"
           color="primary.main"
-          text={labels.lbl_bonusPoints_placeRewardsPoints}
+          text={getLabelValue(labels, 'lbl_bonusPoints_placeRewardsPoints')}
         />
       </MarginRightWrapper>
       <BodyCopy
@@ -114,7 +115,7 @@ const getHeader = ({ labels }) => {
         fontWeight="extrabold"
         component="span"
         color="pink.500"
-        text={labels.lbl_bonusPoints_placeRewardsDay}
+        text={getLabelValue(labels, 'lbl_bonusPoints_placeRewardsDay')}
       />
     </StyledHeader>
   );
@@ -148,7 +149,7 @@ const getContent = ({
               fontWeight="extrabold"
               data-locator="msgtextinbold"
               textAlign="center"
-              text={labels.lbl_bonusPoints_applyAnyDay}
+              text={getLabelValue(labels, 'lbl_bonusPoints_applyAnyDay')}
             />
           </ApplyAnyDayWrapper>
           <InfoWrapper>
@@ -158,7 +159,7 @@ const getContent = ({
               fontWeight="regular"
               data-locator="infomsg"
               textAlign="center"
-              text={labels.lbl_bonusPoints_msg}
+              text={getLabelValue(labels, 'lbl_bonusPoints_msg')}
             />
           </InfoWrapper>
         </React.Fragment>
@@ -170,7 +171,7 @@ const getContent = ({
             fontWeight="regular"
             data-locator="infomsg"
             textAlign="center"
-            text={labels.lbl_bonusPoints_myRewardsUsedAll}
+            text={getLabelValue(labels, 'lbl_bonusPoints_myRewardsUsedAll')}
           />
         </InfoWrapper>
       )}
@@ -191,7 +192,7 @@ const getContent = ({
         dataLocator="detailslink"
         className="details-link"
         onPress={e => toggleBonusPointsModal(e)}
-        text={labels.lbl_bonusPoints_details}
+        text={getLabelValue(labels, 'lbl_bonusPoints_details')}
       />
     </ViewWithSpacing>
   );

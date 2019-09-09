@@ -15,7 +15,7 @@ exports[`BonusPointsViewVanilla should render correctly 1`] = `
   <Styled(Modal)
     className="TCPModal__Content bonus-details-modal"
     fixedWidth={true}
-    heading="undefined undefined DETAILS"
+    heading="lbl_bonusPoints_placeRewardsBonus lbl_bonusPoints_placeRewardsPoints DETAILS"
     inheritedStyles={
       Array [
         "
