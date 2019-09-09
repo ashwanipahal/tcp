@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { Button, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import SurveyQuestion from '@tcp/core/src/components/features/account/MyProfile/molecules/SurveyQuestion';
@@ -21,14 +22,18 @@ const circleCheck = require('../../../../../../../../../mobileapp/src/assets/ima
 export class AboutYouSurvey extends React.Component {
   constructor(props) {
     super(props);
-    const { userSurveyQuestions } = props;
+    const { userSurveyQuestions, userSurvey } = props;
     const question1 = userSurveyQuestions[0];
     const question2 = userSurveyQuestions[1];
     this.submitDisabled = true;
+    this.submitDisabled = true;
+    if (userSurvey && userSurvey.getIn(['0', '0'])) {
+      this.submitDisabled = false;
+    }
 
     this.state = {
       question1: {
-        stage: question1.answers.length ? Constants.Stage.Saved : Constants.Stage.New,
+        stage: Constants.Stage.New,
         optionsMap: question1.optionsMap,
         answers: question1.answers,
         options: question1.options,
@@ -68,7 +73,7 @@ export class AboutYouSurvey extends React.Component {
     const selectedAnswers = question.options.filter(item => item.selected);
     question.answers = selectedAnswers.map(item => item.value);
     this.setState({ [questionId]: question, savedStageSelected: true });
-    this.submitDisabled = false;
+    this.submitDisabled = !question.answers.length;
   };
 
   /**
@@ -93,6 +98,7 @@ export class AboutYouSurvey extends React.Component {
       answer2: question2.answers && question2.answers.length ? question2.answers.join('|') : '',
     };
     saveSurveyData(payload, !updateQuestion1);
+    this.submitDisabled = true;
   };
 
   /**
@@ -106,86 +112,80 @@ export class AboutYouSurvey extends React.Component {
   };
 
   render() {
-    const { className, labels, userFirstName, userSurvey } = this.props;
-    const { question1, question2, savedStageSelected } = this.state;
-    let question1Stage = question1.stage;
-    const updatedQuestion1 = question1;
-    const answer1 = userSurvey && userSurvey.getIn(['0', '0']);
-    if (question1.answers.length && !savedStageSelected) {
-      question1Stage = Constants.Stage.Saved;
-    } else if (answer1 && !question1.answers.length) {
-      updatedQuestion1.answers = answer1;
-      question1Stage = Constants.Stage.Saved;
-    }
+    const { className, labels, userFirstName } = this.props;
+    const { question1, question2 } = this.state;
+    const question1Stage = question1.stage;
 
     return (
-      <SurveyWrapper>
-        <Title>
-          <BodyCopy
-            fontSize="fs20"
-            fontWeight="black"
-            fontFamily="secondary"
-            text={`${getLabelValue(labels, 'lbl_profile_survey_hi')}, ${userFirstName}`}
-          />
-          <BodyCopy
-            fontSize="fs14"
-            fontWeight="regular"
-            fontFamily="secondary"
-            text={getLabelValue(labels, 'lbl_profile_survey_header')}
-            style={TextStyle}
-          />
-        </Title>
-        <StageWrapper>
-          <TouchableWrapper onPress={() => this.selectFirstStage()}>
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+        <SurveyWrapper>
+          <Title>
+            <BodyCopy
+              fontSize="fs20"
+              fontWeight="black"
+              fontFamily="secondary"
+              text={`${getLabelValue(labels, 'lbl_profile_survey_hi')}, ${userFirstName}`}
+            />
+            <BodyCopy
+              fontSize="fs14"
+              fontWeight="regular"
+              fontFamily="secondary"
+              text={getLabelValue(labels, 'lbl_profile_survey_header')}
+              style={TextStyle}
+            />
+          </Title>
+          <StageWrapper>
+            <TouchableWrapper onPress={() => this.selectFirstStage()}>
+              <Image
+                alt="Survey Stage"
+                source={starFilledIcon}
+                height="26px"
+                width="26px"
+                onClick={this.selectFirstStage}
+              />
+            </TouchableWrapper>
+            <StageLine />
             <Image
               alt="Survey Stage"
-              source={starFilledIcon}
               height="26px"
               width="26px"
-              onClick={this.selectFirstStage}
+              source={question1Stage !== Constants.Stage.Saved ? starIcon : starFilledIcon}
             />
-          </TouchableWrapper>
-          <StageLine />
-          <Image
-            alt="Survey Stage"
-            height="26px"
-            width="26px"
-            source={question1Stage !== Constants.Stage.Saved ? starIcon : starFilledIcon}
-          />
-          <StageLine />
-          <Image alt="Survey Stage" height="26px" width="26px" source={circleCheck} />
-        </StageWrapper>
-        {question1Stage !== Constants.Stage.Saved && (
-          <SurveyQuestion
-            labels={labels}
-            className={className}
-            options={updatedQuestion1.options}
-            question={updatedQuestion1.statement}
-            onSelection={this.onSelection}
-            questionId="question1"
-          />
-        )}
-        {question1Stage === Constants.Stage.Saved && (
-          <SurveyQuestion
-            labels={labels}
-            className={className}
-            options={question2.options}
-            question={question2.statement}
-            onSelection={this.onSelection}
-            questionId="question2"
-          />
-        )}
-        <ActionsWrapper>
-          <Button
-            onPress={() => this.updateSurvey(question1Stage !== Constants.Stage.Saved)}
-            buttonVariation="variable-width"
-            type="button"
-            fill="BLUE"
-            disabled={this.submitDisabled}
-            text={getLabelValue(labels, 'lbl_profile_survey_save')}
-          />
-        </ActionsWrapper>
-      </SurveyWrapper>
+            <StageLine />
+            <Image alt="Survey Stage" height="26px" width="26px" source={circleCheck} />
+          </StageWrapper>
+          {question1Stage !== Constants.Stage.Saved && (
+            <SurveyQuestion
+              labels={labels}
+              className={className}
+              options={question1.options}
+              question={question1.statement}
+              onSelection={this.onSelection}
+              questionId={Constants.QUESTION1}
+            />
+          )}
+          {question1Stage === Constants.Stage.Saved && (
+            <SurveyQuestion
+              labels={labels}
+              className={className}
+              options={question2.options}
+              question={question2.statement}
+              onSelection={this.onSelection}
+              questionId={Constants.QUESTION2}
+            />
+          )}
+          <ActionsWrapper>
+            <Button
+              onPress={() => this.updateSurvey(question1Stage !== Constants.Stage.Saved)}
+              buttonVariation="variable-width"
+              type="button"
+              fill="BLUE"
+              disabled={this.submitDisabled}
+              text={getLabelValue(labels, 'lbl_profile_survey_save')}
+            />
+          </ActionsWrapper>
+        </SurveyWrapper>
+      </ScrollView>
     );
   }
 }
