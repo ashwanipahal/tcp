@@ -88,7 +88,7 @@ export class AboutYouInformationForm extends React.PureComponent {
                   selectedValue={option.selected}
                   name="question1"
                   checked={option.selected}
-                  data-locator={`moreaboutyou-radiooption-${index}`}
+                  data-locator={`moreaboutyou-radiooption${index}`}
                   onClick={() => this.onSelectOption(true, option.value)}
                   topPosition="0px"
                 >
@@ -118,7 +118,7 @@ export class AboutYouInformationForm extends React.PureComponent {
                 <Field
                   name={`question2-option-${index}`}
                   component={InputCheckbox}
-                  data-locator={`moreaboutyou-checkboxoption-${index}`}
+                  data-locator={`moreaboutyou-checkboxoption${index}`}
                   checked={option.selected}
                   onChange={() => this.onSelectOption(false, option.value)}
                 >
