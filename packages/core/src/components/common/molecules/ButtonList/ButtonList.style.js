@@ -139,12 +139,6 @@ export default css`
     display: none;
   }
 
-  @media ${props => props.theme.mediaQuery.smallMax} {
-    .stacked-cta-wrapper-class {
-      border-radius: 0;
-    }
-  }
-
   @media ${props => props.theme.mediaQuery.medium} {
     padding-bottom: 16px;
     .stacked-button {
@@ -158,7 +152,6 @@ export default css`
     .stacked-button button {
       width: 140px;
       white-space: nowrap;
-      padding: 12px;
     }
 
     .scroll-button {
@@ -171,7 +164,6 @@ export default css`
     .scroll-button button {
       width: 140px;
       white-space: nowrap;
-      padding: 12px;
     }
 
     .scroll-button:nth-child(1) {

@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 export default css`
   position: relative;
-  padding-top: 32px;
   .footer_top_candidate_a .flex-align-center {
     align-items: center;
   }
@@ -16,7 +15,15 @@ export default css`
     min-height: 42px;
 
     &.candidate_a_form_button {
-      margin-top: 8px;
+      ${props =>
+        props.theme.gridDimensions.gridBreakPointsKeys.map(key =>
+          ['small', 'medium'].includes(key)
+            ? `
+          @media ${props.theme.mediaQuery[`${key}Only`]} {
+            margin-top: 8px;
+          }`
+            : ``
+        )}
     }
   }
   .candidate-b_buttons {
@@ -66,7 +73,7 @@ export default css`
     order: 1;
   }
   .footer-bottom__slot--1 {
-    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    background-color: ${props => props.theme.colorPalette.primary.main};
   }
   .fullbleed-mobile {
     flex-direction: column-reverse;
@@ -80,7 +87,7 @@ export default css`
     display: none;
   }
   .reference-id {
-    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    background-color: ${props => props.theme.colorPalette.primary.main};
     font-size: ${props => props.theme.fonts.fontSize.body.small.tertiary}px;
     padding: 0 15px 24px;
     margin: 0;
@@ -107,7 +114,6 @@ export default css`
   }
 
   &.navigation-footer {
-    padding-top: 0;
 
     .footer-top, .footer_top_candidate_a {
       > div {
@@ -120,7 +126,6 @@ export default css`
         font-size: 15px;
       }
     }
-
     .reference-id {
       display: none;
     }

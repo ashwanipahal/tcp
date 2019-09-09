@@ -1,9 +1,49 @@
 import { css } from 'styled-components';
 
 export default css`
+  .item-common {
+    margin-bottom: 8px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 120px;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: 96px;
+      .item-select {
+        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+    }
+  }
+  &.new-filter-and-sort-form-container.mobile-sort-container {
+    margin-top: 0;
+  }
+  &.mobile-sort-container {
+    padding: 0;
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      .custom-select-common {
+        width: 100%;
+        margin: 0;
+      }
+      .item-list-wrapper {
+        max-width: 600px;
+      }
+      .common-dropdown,
+      .common-dropdown .item-list-wrapper {
+        width: 100%;
+        padding-top: 0;
+      }
+      .common-dropdown .item-list-common {
+        max-width: 100%;
+      }
+    }
+
+    .common-dropdown .item-common {
+      @media ${props => props.theme.mediaQuery.mediumMax} {
+        width: 100%;
+      }
+    }
+  }
   &.new-filter-and-sort-form-container {
     margin-top: 14px;
-
     .filter-row {
       margin-bottom: 7px;
     }
@@ -16,6 +56,10 @@ export default css`
       .container-accordion {
         padding: 0;
       }
+    }
+
+    .accordion {
+      width: auto;
     }
   }
 
@@ -47,18 +91,6 @@ export default css`
     }
   }
 
-  .item-common {
-    margin-bottom: 8px;
-
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 120px;
-
-      .item-select {
-        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      }
-    }
-  }
-
   .common-dropdown {
     width: 98%;
     position: relative;
@@ -80,18 +112,11 @@ export default css`
       }
     }
 
-    .item-common {
-      @media ${props => props.theme.mediaQuery.mediumOnly} {
-        width: 120px;
-      }
-      @media ${props => props.theme.mediaQuery.smallOnly} {
-        width: 96px;
-      }
-    }
-
     .item-list-wrapper {
       max-height: 500px;
       text-align: left;
+      width: 99%;
+      margin: 0 auto;
     }
 
     .apply-button {
