@@ -83,7 +83,7 @@ class ModuleH extends React.PureComponent<Props, State> {
         <Anchor url={link.url} navigation={navigation}>
           <BodyCopy
             key={index.toString()}
-            fontFamily="secondary"
+            mobilefontFamily="secondary"
             fontSize="fs22"
             textAlign="left"
             color="white"
