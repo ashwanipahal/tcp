@@ -9,10 +9,10 @@ export default css`
   .footer_top_candidate_a .candidate_a_inline_container_button {
     text-align: center;
   }
+
   .candidate_a_inline_container_button button{
     white-space: nowrap;
     font-size: ${props => props.theme.typography.fontSizes.fs13};
-    padding: 12px 28px;
     min-height: 42px;
 
     &.candidate_a_form_button {
@@ -91,9 +91,18 @@ export default css`
   .footer_top_candidate_a_social_links {
     flex-direction: row;
     align-items: center;
+
+    .social-media-label {
+      margin-right: 26px;
+    }
+
     @media ${props => props.theme.mediaQuery.largeMax} and ${props => props.theme.mediaQuery.large}{
       margin: 0 auto;
       flex-direction: column;
+
+      .social-media-label {
+         margin-right: 0;
+      }
     }
   }
 
@@ -115,10 +124,13 @@ export default css`
     .reference-id {
       display: none;
     }
-    .social-media-links, .social-media-label {
-      display: block;
+
+    .social-media-label {
+      margin-right: 0;
+      padding: 8px 0;
     }
     .social-media-links {
+      flex-direction: column;
       padding: 0 0 32px;
     }
     .email-sign-up-form button, .footer_top__signup_form button{
@@ -156,6 +168,13 @@ export default css`
     }
     &.navigation-footer .hide-in-medium-up {
       display: block;
+    }
+    .candidate_a_inline_container_button button{
+       padding: 12px 20px;
+       width: 100%;
+    }
+    .footer_top_candidate_a .candidate_a_inline_container_button {
+      text-align: right;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -209,6 +228,10 @@ export default css`
     .footer_top_candidate_a .email-sign-up, .footer_top_candidate_a .sms_sign_up, .footer_top_candidate_a .refer-a-friend {
       font-size: 15px;
       line-height: 1.67;
+    }
+
+    .refer_a_friend_desktop .candidate_a_inline_container_button button {
+       width: auto;
     }
   }
 
