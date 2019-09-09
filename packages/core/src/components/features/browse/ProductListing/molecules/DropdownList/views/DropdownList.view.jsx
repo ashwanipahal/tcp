@@ -196,6 +196,16 @@ class DropdownList extends React.Component {
     const disabledClassStr = ` item-disabledOption ${classNamePrefix}-disabledOption`;
     const isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
     const MAX_FILTER_OPTION_FOR_COLUMN = 27;
+    let columnClass = '';
+    const optionLength = optionsMap.length;
+
+    columnClass =
+      optionsMap.length <= MAX_FILTER_OPTION_FOR_COLUMN ? ' item-list-column ' : ' item-list-row ';
+
+    if (optionLength === 9) {
+      columnClass = ' item-column ';
+    }
+
     return (
       <div className={`${className} common-dropdown`}>
         <div className={cssClassName('item-list-wrapper')}>
@@ -205,9 +215,7 @@ class DropdownList extends React.Component {
               'item-list-common ',
               classNamePrefix,
               '-items-list',
-              optionsMap.length <= MAX_FILTER_OPTION_FOR_COLUMN
-                ? ' item-list-column '
-                : ' item-list-row '
+              columnClass
             )}
           >
             {optionsMap.map((item, index) => (

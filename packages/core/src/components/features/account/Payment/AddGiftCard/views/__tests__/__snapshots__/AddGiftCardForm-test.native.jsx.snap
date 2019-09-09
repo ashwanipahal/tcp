@@ -204,35 +204,19 @@ exports[`Add gift card form component render error message 1`] = `
       </Styled(Text)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="white"
-        customStyle={Object {}}
         data-locator="gift-card-addcardbtn"
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
-        onPress={null}
-        text=""
-        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="black"
-        customStyle={Object {}}
         data-locator="gift-card-cancelbtn"
-        disableButton={false}
-        fill=""
-        fullWidth=""
-        locator=""
         onPress={[Function]}
-        text=""
-        url=""
       />
     </Styled(View)>
   </View>
@@ -430,35 +414,19 @@ exports[`Add gift card form component should render component correctly 1`] = `
       </Styled(Text)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="white"
-        customStyle={Object {}}
         data-locator="gift-card-addcardbtn"
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
-        onPress={null}
-        text=""
-        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="black"
-        customStyle={Object {}}
         data-locator="gift-card-cancelbtn"
-        disableButton={false}
-        fill=""
-        fullWidth=""
-        locator=""
         onPress={[Function]}
-        text=""
-        url=""
       />
     </Styled(View)>
   </View>
