@@ -4,6 +4,10 @@ export const getAddGiftCardResponse = state => {
   return state.AddGiftCardReducer.get('showUpdatedNotification');
 };
 
+export const getshowNotification = state => {
+  return state.AddGiftCardReducer.get('showNotification');
+};
+
 export const getAddGiftCardError = state => {
   return state.AddGiftCardReducer.get('error');
 };
@@ -21,10 +25,9 @@ export const getAddGiftcardLabels = createSelector(
 
 export const getAddGiftCardErrorMessage = createSelector(
   [getAddGiftCardError, getAddGiftcardLabels],
-  (loginState, labels) => {
-    debugger;
-    const errorParameters = loginState && loginState.getIn(['errorParameters', '0']);
-    const errorCode = loginState && loginState.get('errorCode');
+  (addGiftState, labels) => {
+    const errorParameters = addGiftState && addGiftState.getIn(['errorParameters', '0']);
+    const errorCode = addGiftState && addGiftState.get('errorCode');
     if (
       (errorParameters && labels[`lbl_paymentGC_error_${errorParameters}`]) ||
       (errorCode && labels[`lbl_paymentGC_error_${errorCode}`])
@@ -34,6 +37,9 @@ export const getAddGiftCardErrorMessage = createSelector(
       }
       return labels[`lbl_paymentGC_error_${errorCode}`];
     }
-    return loginState && loginState.getIn(['errorMessage', '_error']);
+    return (
+      (addGiftState && addGiftState.getIn(['errorMessage', '_error'])) ||
+      'labels.lbl_paymentGC_error'
+    );
   }
 );

@@ -47,11 +47,14 @@ export function* addCreditCardSaga({ payload }) {
     yield put(getAddressList());
     return yield put(addCreditCardSuccess({ response }));
   } catch (err) {
-    return yield put(
-      addCreditCardError({
-        errorMessage: err.message,
-      })
-    );
+    let error = {};
+    /* istanbul ignore else */
+    if (err instanceof Error) {
+      error = err;
+      console.log('error--------------------', error);
+    }
+
+    return yield put(addCreditCardError(error.response.body.errors[0]));
   }
 }
 

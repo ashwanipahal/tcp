@@ -4,7 +4,11 @@ import { PropTypes } from 'prop-types';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
 import { getCardList } from '../../container/Payment.actions';
-import { getAddGiftCardResponse, getAddGiftCardErrorMessage } from './AddGiftCard.selector';
+import {
+  getAddGiftCardResponse,
+  getAddGiftCardErrorMessage,
+  getshowNotification,
+} from './AddGiftCard.selector';
 import utils, { isMobileApp } from '../../../../../../utils';
 import { getFormValidationErrorMessages } from '../../../Account/container/Account.selectors';
 
@@ -39,6 +43,7 @@ class AddGiftCardContainer extends React.Component {
       labels,
       toggleModal,
       formErrorMessage,
+      showNotification,
     } = this.props;
     return (
       <AddGiftCardComponent
@@ -48,6 +53,7 @@ class AddGiftCardContainer extends React.Component {
         goBackToPayment={this.goBackToPayment}
         toggleModal={toggleModal}
         formErrorMessage={formErrorMessage}
+        showNotification={showNotification}
       />
     );
   }
@@ -72,6 +78,7 @@ const mapStateToProps = state => {
     addGiftCardResponse: getAddGiftCardResponse(state),
     getAddGiftCardErr: getAddGiftCardErrorMessage(state),
     formErrorMessage: getFormValidationErrorMessages(state),
+    showNotification: getshowNotification(state),
   };
 };
 
@@ -84,6 +91,7 @@ AddGiftCardContainer.propTypes = {
   resetNotificationStateAction: PropTypes.func,
   getCardListAction: PropTypes.func,
   formErrorMessage: PropTypes.shape({}).isRequired,
+  showNotification: PropTypes.bool.isRequired,
 };
 
 AddGiftCardContainer.defaultProps = {

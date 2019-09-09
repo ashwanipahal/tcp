@@ -7,6 +7,7 @@ const initialState = fromJS({
   error: null,
   showUpdatedNotification: null,
   onAddGiftCardPage: false,
+  showNotification: false,
 });
 
 type Action = {
@@ -23,6 +24,7 @@ const AddGiftCardReducer = (state = initialState, action: Action) => {
     case ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FAILED:
       return state
         .set('error', fromJS(action.payload))
+        .set('showNotification', true)
         .set('showUpdatedNotification', 'error')
         .set('onAddGiftCardPage', false);
     case ADD_GIFT_CARD_CONSTANTS.RESET_SHOW_NOTIFICATION:
