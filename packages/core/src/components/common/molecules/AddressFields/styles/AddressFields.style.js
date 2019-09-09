@@ -26,6 +26,7 @@ const styles = css`
       bottom: 0;
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;

@@ -14,9 +14,9 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
@@ -52,9 +52,9 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
@@ -90,9 +90,9 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
@@ -128,9 +128,9 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
@@ -166,8 +166,8 @@ exports[`ButtonList component renders correctly 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
@@ -251,9 +251,9 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
@@ -289,9 +289,9 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
@@ -327,9 +327,9 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
@@ -365,9 +365,9 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
@@ -403,8 +403,8 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
@@ -579,6 +579,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       ]
     }
     className=" additional-button-list hide-on-small-viewport"
+    dataLocatorItemPrefix="moduleB_cta_links_"
     dropdownLabel="Shop Now"
   />
 </Fragment>
@@ -597,9 +598,9 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
@@ -634,9 +635,9 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
@@ -671,9 +672,9 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
@@ -708,9 +709,9 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
@@ -745,8 +746,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
@@ -829,9 +830,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
@@ -867,9 +868,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
@@ -905,9 +906,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
@@ -943,9 +944,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
@@ -981,8 +982,8 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
@@ -1066,9 +1067,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
@@ -1104,9 +1105,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
@@ -1142,9 +1143,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
@@ -1180,9 +1181,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
@@ -1218,8 +1219,8 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }
@@ -1303,9 +1304,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
           },
         }
       }
@@ -1341,9 +1342,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
           },
         }
       }
@@ -1379,9 +1380,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
           },
         }
       }
@@ -1417,9 +1418,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
-            "url": "/toddler-boy",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy2",
           },
         }
       }
@@ -1455,8 +1456,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "link": Object {
             "external": 0,
             "target": "",
-            "text": "Alt",
-            "title": "Alt",
+            "text": "Baby",
+            "title": "Baby",
             "url": "/toddler-boy",
           },
         }

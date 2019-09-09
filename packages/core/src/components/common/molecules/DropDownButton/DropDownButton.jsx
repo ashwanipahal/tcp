@@ -4,12 +4,25 @@ import withStyles from '../../hoc/withStyles';
 import Button from '../../atoms/Button';
 import ButtonCTA from '../ButtonCTA';
 import style from './DropDownButton.style';
-import { generateUniqueKeyUsingLabel } from '../../../../utils/utils';
+import { generateUniqueKeyUsingLabel } from '../../../../utils';
 
 class DropDownButton extends React.Component {
   state = {
     open: false,
   };
+
+  componentDidMount() {
+    document.body.addEventListener('click', e => {
+      if (e.target.classList.contains('dropdown-button')) {
+        return false;
+      }
+      this.setState({
+        open: false,
+      });
+
+      return true;
+    });
+  }
 
   togglePanel = () => {
     const { open } = this.state;
@@ -19,14 +32,13 @@ class DropDownButton extends React.Component {
   };
 
   render() {
-    const { className, buttonsData, dropdownLabel } = this.props;
-
-    const compProps = {
-      ctaInfo: {
-        ctaVariation: 'fixed-width',
-      },
-    };
-
+    const {
+      className,
+      buttonsData,
+      dropdownLabel,
+      dataLocator,
+      dataLocatorItemPrefix,
+    } = this.props;
     const { open } = this.state;
     const classToOpen = open ? 'is-open' : '';
 
@@ -36,17 +48,26 @@ class DropDownButton extends React.Component {
           <Button
             className="dropdown-button"
             buttonVariation="fixed-width"
+            data-locator={dataLocator}
             onClick={this.togglePanel}
           >
             {dropdownLabel}
             <span className={`dropdown-icon ${classToOpen}`} />
           </Button>
           <div className={`button-panel ${classToOpen}`}>
-            {buttonsData.map(data => {
+            {buttonsData.map((data, index) => {
               const { button = {} } = data;
+              const compProps = {
+                ctaInfo: {
+                  ctaVariation: 'fixed-width',
+                  link: button,
+                },
+                dataLocator: {
+                  cta: `${dataLocatorItemPrefix}${index}`,
+                },
+              };
               // Code to generate unique key
               const key = button.title && generateUniqueKeyUsingLabel(button.title);
-              compProps.ctaInfo.link = button;
 
               return <ButtonCTA className="dropdown-items" uniqueKey={key} {...compProps} />;
             })}
@@ -61,6 +82,8 @@ DropDownButton.propTypes = {
   className: PropTypes.string.isRequired,
   buttonsData: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
   dropdownLabel: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string.isRequired,
+  dataLocatorItemPrefix: PropTypes.string.isRequired,
 };
 
 export default withStyles(DropDownButton, style);

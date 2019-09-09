@@ -5,14 +5,18 @@ import {
   getCouponList,
   applyCoupon,
   removeCoupon,
+  setError,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
+
 import {
   getAllCoupons,
   getAllRewardsCoupons,
   getCouponsLabels,
+  getCouponFetchingState,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyRewards from '../views';
 import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class MyRewardsContainer extends PureComponent {
   static propTypes = {
@@ -21,10 +25,16 @@ export class MyRewardsContainer extends PureComponent {
     coupons: PropTypes.shape([]).isRequired,
     rewardCoupons: PropTypes.shape([]).isRequired,
     couponsLabels: PropTypes.shape({}).isRequired,
+    onApplyCouponToBagFromList: PropTypes.func,
+    handleErrorCoupon: PropTypes.func,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
     view: 'reward',
+    onApplyCouponToBagFromList: () => {},
+    handleErrorCoupon: () => {},
+    toastMessage: () => {},
   };
 
   constructor(props) {
@@ -51,7 +61,16 @@ export class MyRewardsContainer extends PureComponent {
   };
 
   render() {
-    const { coupons, rewardCoupons, couponsLabels, view, ...otherProps } = this.props;
+    const {
+      coupons,
+      rewardCoupons,
+      couponsLabels,
+      view,
+      handleErrorCoupon,
+      onApplyCouponToBagFromList,
+      toastMessage,
+      ...otherProps
+    } = this.props;
     const { selectedCoupon } = this.state;
 
     return (
@@ -60,6 +79,9 @@ export class MyRewardsContainer extends PureComponent {
           coupons={view === 'reward' ? rewardCoupons : coupons}
           view={view}
           onViewCouponDetails={this.onViewCouponDetails}
+          onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+          handleErrorCoupon={handleErrorCoupon}
+          toastMessage={toastMessage}
           {...otherProps}
         />
         {selectedCoupon && (
@@ -67,11 +89,13 @@ export class MyRewardsContainer extends PureComponent {
             labels={couponsLabels}
             openState={selectedCoupon}
             coupon={selectedCoupon}
+            handleErrorCoupon={handleErrorCoupon}
             onRequestClose={() => {
               this.setState({
                 selectedCoupon: null,
               });
             }}
+            onApplyCouponToBagFromList={onApplyCouponToBagFromList}
           />
         )}
       </>
@@ -83,17 +107,37 @@ const mapStateToProps = state => ({
   coupons: getAllCoupons(state),
   rewardCoupons: getAllRewardsCoupons(state),
   couponsLabels: getCouponsLabels(state),
+  isApplyingOrRemovingCoupon: getCouponFetchingState(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   fetchCoupons: () => {
     dispatch(getCouponList());
   },
-  onApplyCouponToBag: payload => {
-    dispatch(applyCoupon(payload));
+  onApplyCouponToBagFromList: coupon => {
+    return new Promise((resolve, reject) => {
+      dispatch(
+        applyCoupon({
+          formData: { couponCode: coupon.id },
+          formPromise: { resolve, reject },
+          coupon,
+        })
+      );
+    });
   },
-  onRemove: payload => {
-    dispatch(removeCoupon(payload));
+  onRemove: coupon => {
+    return new Promise((resolve, reject) => {
+      dispatch(removeCoupon({ coupon, formPromise: { resolve, reject } }));
+    });
+  },
+  handleErrorCoupon: coupon => {
+    setTimeout(() => {
+      dispatch(setError({ msg: null, couponCode: coupon.id }));
+    }, 5000);
+  },
+  toastMessage: coupon => {
+    dispatch(toastMessageInfo(coupon.error));
+    dispatch(setError({ msg: null, couponCode: coupon.id }));
   },
 });
 

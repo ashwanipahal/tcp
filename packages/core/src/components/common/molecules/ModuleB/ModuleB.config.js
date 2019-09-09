@@ -1,33 +1,47 @@
-export default {
-  ctaTypes: {
-    stackedCTAButtons: 'stackedCTAList',
-    linkList: 'linkCTAList',
-    CTAButtonCarousel: 'scrollCTAList',
-    divImageCTACarousel: 'imageCTAList',
-  },
-  CAROUSEL_OPTIONS: {
-    autoplay: true,
-    arrows: true,
-    autoplaySpeed: 4000,
-    fade: false,
-    speed: 1000,
-    dots: true,
-    dotsClass: 'slick-dots',
-    swipe: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          arrows: false,
-        },
+export const ctaTypes = {
+  divImageCTACarousel: 'imageCTAList',
+  stackedCTAButtonsExpandable: 'stackedCTAList',
+  CTAButtonCarouselExpandable: 'scrollCTAList',
+  stackedCTAButtons: 'stackedCTAList',
+  CTAButtonCarousel: 'scrollCTAList',
+};
+
+export const ctaTypeProps = {
+  stackedCTAButtonsExpandable: {
+    dualVariation: {
+      name: 'dropdownButtonCTA',
+      displayProps: {
+        small: false,
+        medium: true,
+        large: true,
       },
-    ],
+    },
   },
-  IMG_DATA: {
-    crops: [
-      'c_fill,g_face:center,q_auto:best,h_622,w_750',
-      'c_fill,g_face:center,q_auto:best,h_406,w_768',
-      'c_fill,g_face:center,q_auto:best,h_474,w_1410',
-    ],
+  CTAButtonCarouselExpandable: {
+    dualVariation: {
+      name: 'dropdownButtonCTA',
+      displayProps: {
+        small: false,
+        medium: true,
+        large: true,
+      },
+    },
+  },
+};
+
+export const bannerPositionTypes = {
+  top: 'top',
+  topAlt: 'topAlt',
+  bottom: 'bottom',
+  overlay: 'overlay',
+};
+
+export const MODULE_WIDTH_HALF = 'half';
+
+export default {
+  ctaIdentifiers: {
+    STACK_CTA: 'stackedCTAButtons',
+    SCROLL_CTA: 'CTAButtonCarouselExpandable',
+    IMAGE_CTA: 'divImageCTACarousel',
   },
 };

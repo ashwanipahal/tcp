@@ -11,6 +11,9 @@ const styles = css`
     box-sizing: border-box;
     background-color: ${props => props.theme.colors.WHITE};
   }
+  .tooltip-bubble {
+    min-width: 246px;
+  }
   .airmilesRow {
     margin-left: 0;
     margin-right: 0;

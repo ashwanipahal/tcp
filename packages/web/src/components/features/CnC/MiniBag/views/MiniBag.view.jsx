@@ -24,7 +24,7 @@ class MiniBag extends React.Component {
   componentWillReceiveProps({ router: nextRouter }) {
     const { router, onRequestClose } = this.props;
     if (router.asPath !== nextRouter.asPath) {
-      onRequestClose();
+      onRequestClose(false, true);
     }
   }
 

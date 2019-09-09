@@ -6,19 +6,51 @@ import {
   getDefaultStore,
   getUserName,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { isMobileApp } from '@tcp/core/src/utils/utils';
 import { AboutYouSurvey } from '../views/AboutYouSurvey.view';
 import { getAboutYouSurvey } from './AboutYouSurvey';
 
 export class AboutYouSurveyContainer extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.hasMobileApp = isMobileApp();
+  }
+
+  /**
+   * This function if used to return component with wrapper for web
+   */
+  getWebSurvey() {
+    const { className } = this.props;
+    return <div className={className}>{this.getAboutYouSurvey()}</div>;
+  }
+
+  /**
+   * This function contains the component for this container, this made common for app and web.
+   */
+  getAboutYouSurvey() {
+    const { labels, userSurvey, className, ...otherProps } = this.props;
+    const survey = this.setFirstOptions(getAboutYouSurvey(labels));
+    return (
+      <AboutYouSurvey
+        labels={labels}
+        className={className}
+        userSurvey={userSurvey}
+        userSurveyQuestions={survey}
+        saveSurveyData={this.saveSurveyData}
+        {...otherProps}
+      />
+    );
+  }
+
   /**
    * This function will call the api to save the current and final state of the survey selections.
    * @param {object} data - request payload for the api, containing answer1 and answer2 as array.
    */
-  saveSurveyData = data => {
+  saveSurveyData = (data, toggleModal) => {
     const { setSurveyAnswersAction, toggleModalState } = this.props;
     setSurveyAnswersAction(data);
     // Close modal when we have submitted last survey answer
-    if (data.answer2) {
+    if (data.answer2 && toggleModal) {
       toggleModalState();
     }
   };
@@ -47,21 +79,7 @@ export class AboutYouSurveyContainer extends PureComponent {
   };
 
   render() {
-    const { labels, userSurvey, className, ...otherProps } = this.props;
-    const survey = this.setFirstOptions(getAboutYouSurvey(labels));
-
-    return (
-      <div className={className}>
-        <AboutYouSurvey
-          labels={labels}
-          className={className}
-          userSurvey={userSurvey}
-          userSurveyQuestions={survey}
-          saveSurveyData={this.saveSurveyData}
-          {...otherProps}
-        />
-      </div>
-    );
+    return !this.hasMobileApp ? this.getWebSurvey() : this.getAboutYouSurvey();
   }
 }
 

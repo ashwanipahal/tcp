@@ -234,6 +234,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
+  }
 ",
                 ";
 ",
@@ -253,6 +258,11 @@ exports[`LoginForm component should renders correctly 1`] = `
         enableSuccessCheck={false}
         errorDataLocator="login-passworderror"
         id="password"
+        labels={
+          Object {
+            "login": Object {},
+          }
+        }
         name="password"
         showSuccessCheck={false}
       />
@@ -701,6 +711,11 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
+  }
 ",
                 ";
 ",
@@ -720,6 +735,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         enableSuccessCheck={false}
         errorDataLocator="login-passworderror"
         id="password"
+        labels={
+          Object {
+            "login": Object {},
+            "registration": Object {},
+          }
+        }
         name="password"
         showSuccessCheck={false}
       />

@@ -153,7 +153,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
     return (
-      <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        {...this.props}
+        keyboardShouldPersistTaps="handled"
+      >
         <CreditCardContainer>
           <CreditCardWrapper>
             <CreditCardFields

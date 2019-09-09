@@ -72,6 +72,7 @@ const dropDownlist = css`
   .ulBorderWithLastRow li:last-child:hover {
     background: none;
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default dropDownlist;

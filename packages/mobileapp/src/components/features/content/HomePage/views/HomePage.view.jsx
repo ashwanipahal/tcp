@@ -1,9 +1,9 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+
 import {
   ModuleD,
   ModuleH,
@@ -11,7 +11,7 @@ import {
   ModuleL,
   ModuleN,
   ModuleA,
-  ModuleJ,
+  ModuleB,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
@@ -22,9 +22,8 @@ const modulesMap = {
   moduleL: ModuleL,
   moduleN: ModuleN,
   moduleA: ModuleA,
+  moduleB: ModuleB,
 };
-
-const buttonMargin = { margin: 30 };
 
 class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
@@ -57,19 +56,11 @@ class HomePageView extends React.PureComponent<Props> {
       navigation,
       screenProps: { apiConfig },
     } = this.props;
-
     return (
       <ScrollView>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="PLP Page"
-          onPress={() => navigation.navigate('ProductListingPageContainer')}
-          style={buttonMargin}
-        />
-        <ModuleJ />
       </ScrollView>
     );
   }

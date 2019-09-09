@@ -110,9 +110,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                 {!!isValidPromoField && !expanded ? (
                   <Row className="editButton">
                     <Col className="disabledText" colSize={{ large: 10, medium: 6, small: 4 }}>
-                      {!!collectorNumber && !!promoField && promoField === collectorNumber
-                        ? collectorNumber
-                        : promoField}
+                      {!promoField ? collectorNumber : promoField}
                     </Col>
                     <Col colSize={{ large: 2, medium: 2, small: 2 }}>
                       <BodyCopy
@@ -139,6 +137,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
                     dataLocator="airmile-banner-collectorNumber"
                     enableSuccessCheck={false}
                     onBlur={this.handleSubmit}
+                    className="upperCaseOffer"
                   />
                 )}
                 <AirmilesToolTip toolTipText={labels.collectorFlyout} />

@@ -13,22 +13,33 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 10px;
+    padding-right: 28px;
+    width: auto;
 
     .userName {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      width: 108px;
+      width: 90px;
       text-align: right;
+      padding-right: 32px;
     }
   }
   .subHeaderTextLogin {
     display: flex;
-    margin: 6px -20px 1px 0px;
+    margin: 6px -36px 1px 0px;
+    a {
+      font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
+    }
+  }
+  .separator {
+    border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .subHeaderTextIcon {
     width: auto;
+    margin-right: 16px;
   }
   .pointsRewards {
     color: ${props => props.theme.colorPalette.orange['800']};
@@ -47,9 +58,6 @@ export default css`
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .rightLink {
-    border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
     box-sizing: border-box;
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 `;

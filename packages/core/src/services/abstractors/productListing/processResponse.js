@@ -2,6 +2,10 @@ import processHelpers from './processHelpers';
 import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
 import { FACETS_FIELD_KEY } from './productListing.utils';
+import {
+  getProductsFilters,
+  getTotalProductsCount,
+} from '../../../components/features/browse/ProductListing/container/ProductListing.selectors';
 
 const getAvailableL3List = facets => {
   return facets && facets.multilevel && facets.multilevel.bucket;
@@ -11,12 +15,6 @@ const getAppliedL3Filters = availableL3List => {
 };
 const isUnbxdLogicApplied = (shouldApplyUnbxdLogic, bucketingSeqConfig) => {
   return shouldApplyUnbxdLogic && bucketingSeqConfig.bucketingRequired;
-};
-const getL1Cat = l1category => {
-  return l1category || '';
-};
-const isCachedFilterAndCount = (shouldApplyUnbxdLogic, cacheFiltersAndCount) => {
-  return shouldApplyUnbxdLogic && cacheFiltersAndCount;
 };
 const getCurrentListingId = breadCrumbs => {
   return breadCrumbs && breadCrumbs.length ? breadCrumbs[breadCrumbs.length - 1].urlPathSuffix : '';
@@ -154,11 +152,11 @@ const getPlpUrlQueryValues = filtersAndSort => {
 // eslint-disable-next-line complexity
 const processResponse = (
   res,
+  state,
   {
     isSearch,
     breadCrumbs,
     shouldApplyUnbxdLogic,
-    cacheFiltersAndCount,
     getFacetSwatchImgPath,
     filtersAndSort,
     bucketingSeqConfig,
@@ -207,16 +205,11 @@ const processResponse = (
   // from the response of page L2 call.
   if (isUnbxdLogicApplied(shouldApplyUnbxdLogic, bucketingSeqConfig)) {
     // TODO - fix this - const { temp : { filters: newFilters, totalProductsCount:newTotalProductsCount }} = this.fetchCachedFilterAndCount();
-    const newFilters = {};
-    const newTotalProductsCount = 0;
-    newFilters.l1category = getL1Cat(l1category);
-    filters = newFilters;
-    totalProductsCount = newTotalProductsCount;
-  }
-  // This is the case when we need to cache the filter and the count of the number of products in L2. This is a bucketing scenario.
-  if (isCachedFilterAndCount(shouldApplyUnbxdLogic, cacheFiltersAndCount)) {
-    // TODO - fix this - totalProductsCount = this.cacheFiltersAndCount(filters, availableL3InFilter);
-    totalProductsCount = 0;
+    const productListingFilters = getProductsFilters(state);
+    const productListingTotalCount = getTotalProductsCount(state);
+
+    filters = productListingFilters || {};
+    totalProductsCount = productListingTotalCount || 0;
   }
   // WHY DO WE NEED THIS??
   const unbxdId = res.headers && res.headers['unbxd-request-id'];

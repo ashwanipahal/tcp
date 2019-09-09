@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ImageComp from '../../../../../../common/atoms/Image';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -43,17 +44,27 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
 
         {variation === 'favorites' && (
           <>
-            <BodyCopy fontSize="fs16" fontWeight="black" fontFamily="secondary" textAlign="center">
-              {labels.login.lbl_login_favorites_modal_heading}
+            <BodyCopy component="div" textAlign="center">
+              <ImageComp
+                width={25}
+                height={23}
+                src={getIconPath('empty-fav-icon')}
+                className="elem-mb-LRG"
+                data-locator="login-HEART"
+              />
             </BodyCopy>
-
             <BodyCopy
-              component="span"
-              fontSize="fs12"
+              fontSize="fs16"
               fontWeight="black"
               fontFamily="secondary"
               textAlign="center"
+              className="favt_modal_heading"
+              color="gray.700"
             >
+              {getLabelValue(labels, 'lbl_login_favorites_modal_heading', 'login')}
+            </BodyCopy>
+
+            <BodyCopy component="span" fontSize="fs12" fontFamily="secondary" textAlign="center">
               {labels.login.lbl_login_favorites_modal_heading_1}
             </BodyCopy>
           </>
@@ -103,6 +114,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             </BodyCopy>
             <BodyCopy component="div" textAlign="center">
               <Anchor
+                id="forgotPasswordForm"
                 fontSizeVariation="medium"
                 anchorVariation="primary"
                 underline
