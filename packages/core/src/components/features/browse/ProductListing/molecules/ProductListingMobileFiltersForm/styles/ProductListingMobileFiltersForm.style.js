@@ -43,7 +43,7 @@ export default css`
     }
   }
   &.new-filter-and-sort-form-container {
-    margin-top: 14;
+    margin-top: 14px;
     .filter-row {
       margin-bottom: 7px;
     }
@@ -56,6 +56,10 @@ export default css`
       .container-accordion {
         padding: 0;
       }
+    }
+
+    .accordion {
+      width: auto;
     }
   }
 
