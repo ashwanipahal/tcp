@@ -30,10 +30,12 @@ describe('ForgotPassword saga', () => {
     });
 
     it('should dispatch addAddressFail action if response is fail', () => {
-      const errorBody = {};
+     
       const error = {
         response: {
-          body: errorBody,
+          body: {
+            errors:[{error:'error', errorcode : 'errorcode'}]
+          },
         },
       };
       const putDescriptor = ForgotPasswordGeneration.throw(error).value;

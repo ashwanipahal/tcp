@@ -61,7 +61,7 @@ describe('AddEditCreditCard saga', () => {
       expect(putDescriptor).toEqual(
         put(
           addCreditCardError({
-            errorMessage: 'error',
+            error: 'error',
           })
         )
       );
@@ -118,7 +118,13 @@ describe('AddEditCreditCard saga', () => {
       expect(putDescriptor).toEqual(
         put(
           addCreditCardError({
-            errorMessage: 'system error',
+            error : {
+              response : {
+                body : {
+                  errors :'system error'
+                }
+              }
+            }
           })
         )
       );

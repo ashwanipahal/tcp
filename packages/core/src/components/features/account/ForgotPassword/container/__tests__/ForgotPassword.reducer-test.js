@@ -11,7 +11,10 @@ describe('ForgotPasswordReducer List reducer', () => {
   });
 
   it('should handle success ForgotPasswordReducer', () => {
-    const initialState = null;
+    const initialState = fromJS({
+      showNotification: true,
+    });
+
     expect(
       ForgotPasswordReducer(initialState, {
         type: FORGOTPASSWORD_CONSTANTS.USER_NOT_AVAILABLE,
@@ -21,7 +24,8 @@ describe('ForgotPasswordReducer List reducer', () => {
       })
     ).toEqual(
       fromJS({
-        userId: '12345',
+        showNotification: true,
+        error: { userId: '12345'},
       })
     );
   });
