@@ -14,6 +14,7 @@ import {
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
     const { getDetails } = this.props;
+    // TODO - fix this to extract the product ID from the page.
     getDetails({ productColorId: '2036238' });
   }
 
