@@ -22,7 +22,7 @@ const moduleHHeader = ({ headerText: [{ link, textItems }] }: Props) => (
           className="moduleH__header"
           data-locator={`${getLocator('moduleH_header_text')}${index + 1}`}
           HeadingLarge="three"
-          HeadingcolorSm="primary"
+          HeadingcolorSm="secondary"
           tag="h2"
         >
           {link ? (

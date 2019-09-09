@@ -169,8 +169,8 @@ const ButtonList = props => {
             <Component
               uniqueKey={key}
               dataLocator={{
-                image: `${dataLocatorTextCta}${index}`,
-                cta: `${dataLocatorDivisionImages}${index}`,
+                image: `${dataLocatorDivisionImages}${index}`,
+                cta: `${dataLocatorTextCta}${index}`,
               }}
               {...compProps}
               fontWeight="extrabold"

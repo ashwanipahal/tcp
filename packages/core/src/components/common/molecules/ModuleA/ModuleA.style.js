@@ -102,7 +102,10 @@ const style = css`
 
   .button-list-container.imageCTAList .image-comp,
   .button-list-container.linkCTAList .link-button-wrapper-class {
-    color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+    color: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colors.BUTTON.WHITE
+        : props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
     border-color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
   }
 
