@@ -128,7 +128,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
         lineHeight="normal"
         textAlign="left"
       >
-        logged In
+        log In
       </Styled(BodyCopy)>
     </Styled(Button)>
   </div>
