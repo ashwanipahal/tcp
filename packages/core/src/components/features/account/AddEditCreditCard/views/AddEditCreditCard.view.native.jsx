@@ -1,4 +1,4 @@
-import React,  { useState } from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import CreditCardForm from '../organism/CreditCardForm';
@@ -43,6 +43,7 @@ export const AddEditCreditCard = ({
             <CreditCardForm
               labels={labels}
               onSubmit={verifyAddressAction}
+              onClose={onClose}
               initialValues={initialValues}
               isEdit={isEdit}
               showUserName={showUserName}

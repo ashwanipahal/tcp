@@ -117,6 +117,7 @@ export class ProfileInformation extends React.PureComponent {
                 <MailingInformationContainer
                   labels={labelsObj}
                   onUpdateMailingAddress={() => this.toggleModalState('mountMailingAddressModal')}
+                  onClose={() => this.toggleModalState('mountMailingAddressModal')}
                 />
               </ViewWithSpacing>
             </SafeAreaView>

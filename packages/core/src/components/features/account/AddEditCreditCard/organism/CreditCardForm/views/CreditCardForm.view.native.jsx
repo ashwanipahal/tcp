@@ -6,6 +6,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import { Heading } from '@tcp/core/src/components/common/atoms';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import AddEditAddressContainer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.container';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import AddressDropdown from '@tcp/core/src/components/features/account/AddEditCreditCard/molecule/AddressDropdown/views/AddressDropdown.view.native';
@@ -136,7 +137,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   toggleModal = () => {
-    const { addAddressMount, showAddressForm  } = this.state;
+    const { addAddressMount, showAddressForm } = this.state;
     const { mailingAddress } = this.props;
     const valueToChange = mailingAddress ? showAddressForm : addAddressMount;
     this.setState({
@@ -168,7 +169,9 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     const { addAddressMount, selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
 
-    const defaultAddress = selectedAddress ? this.getSelectedAddress(addressList, selectedAddress) : null;
+    const defaultAddress = selectedAddress
+      ? this.getSelectedAddress(addressList, selectedAddress)
+      : null;
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
       // Setting form value to take dropdown values.
@@ -247,19 +250,22 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               </DefaultAddress>
             )}
             {showAddressForm && (
-              <FormSection name="address">
-                <AddressFields
-                  labels={addressLabels}
-                  showDefaultCheckbox={false}
-                  showPhoneNumber={false}
-                  formName={constants.FORM_NAME}
-                  formSection="address"
-                  dispatch={dispatch}
-                  addressFormLabels={addressFormLabels}
-                  showUserName={showUserName}
-                  showEmailAddress={showEmailAddress}
-                />
-              </FormSection>
+              <ViewWithSpacing spacingStyles="margin-top-LRG">
+                <FormSection name="address">
+                  <AddressFields
+                    labels={addressLabels}
+                    showDefaultCheckbox={false}
+                    showPhoneNumber={false}
+                    formName={constants.FORM_NAME}
+                    formSection="address"
+                    dispatch={dispatch}
+                    addressFormLabels={addressFormLabels}
+                    showUserName={showUserName}
+                    showEmailAddress={showEmailAddress}
+                    initialValues={initialValues}
+                  />
+                </FormSection>
+              </ViewWithSpacing>
             )}
           </AddressWrapper>
           <ActionsWrapper>

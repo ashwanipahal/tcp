@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { getAPIConfig } from '@tcp/core/src/utils';
-import {
-  StyledErrorIcon,
-  StyledErrorWrapper,
-} from '@tcp/core/src/components/common/atoms/TextBox/TextBox.style.native';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Image from '@tcp/core/src/components/common/atoms/Image';
 import {
   StyledLabel,
   textInput,
@@ -22,52 +15,32 @@ import {
   container,
 } from './AutoCompleteComponent.native.style';
 
-const errorIcon = require('../../../../assets/alert-triangle.png');
-
-export const ErrorMsg = props => {
-  const {
-    meta: { touched, error },
-    showErrorIcon,
-  } = props;
-  if (touched && error) {
-    return (
-      <StyledErrorWrapper>
-        {showErrorIcon && (
-          <StyledErrorIcon>
-            <Image source={errorIcon} width="15px" height="15px" />
-          </StyledErrorIcon>
-        )}
-        <BodyCopy
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
-          fontSize="fs12"
-          text={error}
-          color="error"
-        />
-      </StyledErrorWrapper>
-    );
-  }
-  return null;
-};
-
-ErrorMsg.propTypes = {
-  meta: PropTypes.shape({}),
-  showErrorIcon: PropTypes.bool,
-};
-
-ErrorMsg.defaultProps = {
-  meta: {},
-  showErrorIcon: true,
-};
-
 export const GooglePlacesInput = props => {
-  const { headerTitle, componentRestrictions, onValueChange, refs, input, inlineError } = props;
+  const {
+    headerTitle,
+    componentRestrictions,
+    onValueChange,
+    initialValue,
+    onSubmitEditing,
+    onEndEditing,
+    refs,
+    onChangeText,
+  } = props;
+  const [focussed, setFocussed] = useState(false);
+  const onFocus = () => {
+    setFocussed(true);
+  };
+
+  const setValue = value => {
+    if (value) setFocussed(true);
+    return value;
+  };
+
   const apiConfigObj = getAPIConfig();
   const { googleApiKey } = apiConfigObj;
-  const [focussed, setFocussed] = useState(false);
   return (
     <Container>
-      <StyledLabel isFocused={focussed || input.value}>{headerTitle}</StyledLabel>
+      <StyledLabel isFocused={focussed}>{headerTitle}</StyledLabel>
       <GooglePlacesAutocomplete
         placeholder={null}
         suppressDefaultStyles
@@ -78,19 +51,27 @@ export const GooglePlacesInput = props => {
         fetchDetails
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
+          setFocussed(true);
           onValueChange(details, data.description);
           // 'details' is provided when fetchDetails = true
           return [data, details];
         }}
+        getDefaultValue={() => setValue(initialValue)}
         query={{
           key: googleApiKey,
           components: `country:${componentRestrictions.country[0]}`,
         }}
-        getDefaultValue={() => input && input.value}
         textInputProps={{
-          ...input,
-          onChangeText: value => input.onChange(value),
-          onFocus: () => setFocussed(true),
+          onFocus,
+          onSubmitEditing: text => {
+            onSubmitEditing(text.nativeEvent.text);
+          },
+          onEndEditing: text => {
+            onEndEditing(text.nativeEvent.text);
+          },
+          onChangeText: text => {
+            onChangeText(text);
+          },
         }}
         styles={{
           textInputContainer,
@@ -104,13 +85,8 @@ export const GooglePlacesInput = props => {
         }}
         nearbyPlacesAPI="GooglePlacesSearch"
         debounce={0} // debounce the requests in ms.
-        listViewDisplayed="auto"
+        listViewDisplayed={false}
       />
-      {inlineError && (
-        <View>
-          <ErrorMsg {...props} />
-        </View>
-      )}
     </Container>
   );
 };
@@ -121,9 +97,11 @@ GooglePlacesInput.propTypes = {
     country: PropTypes.shape([]),
   }),
   onValueChange: PropTypes.func,
+  initialValue: PropTypes.string,
+  onSubmitEditing: PropTypes.func,
+  onEndEditing: PropTypes.func,
   refs: PropTypes.func,
-  input: PropTypes.shape({}),
-  inlineError: PropTypes.bool,
+  onChangeText: PropTypes.func,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -132,9 +110,11 @@ GooglePlacesInput.defaultProps = {
     country: [],
   },
   onValueChange: () => {},
+  initialValue: '',
+  onSubmitEditing: () => {},
+  onEndEditing: () => {},
   refs: () => {},
-  input: {},
-  inlineError: false,
+  onChangeText: () => {},
 };
 
 export default GooglePlacesInput;

@@ -4,6 +4,10 @@ import { View } from 'react-native';
 import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { Field, change } from 'redux-form';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import {
+  HiddenAddressLineWrapper,
+  OptionalAdressWrapper,
+} from '@tcp/core/src/components/common/organisms/AddressForm/AddressForm.native.style';
 import TextBox from '../../../atoms/TextBox';
 import DropDown from '../../../atoms/DropDown/views/DropDown.native';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
@@ -15,7 +19,6 @@ import {
   StateZipCodeContainer,
   Separator,
   GooglePlaceInputWrapper,
-  AddressSecondWrapper,
 } from '../styles/AddressFields.style.native';
 import {
   countriesOptionsMap,
@@ -82,6 +85,17 @@ export class AddressFields extends React.PureComponent {
     this.locationRef = null;
   }
 
+  componentDidMount() {
+    const { initialValues, formName, formSection, dispatch } = this.props;
+    dispatch(
+      change(
+        formName,
+        `${formSection ? 'address.' : ''}addressLine1`,
+        initialValues.address.addressLine1
+      )
+    );
+  }
+
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
     const address = getAddressFromPlace(place, inputValue);
@@ -89,6 +103,7 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
     dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
+    this.locationRef.setAddressText(address.street);
   };
 
   changeShipmentMethods = (e, value) => {
@@ -105,7 +120,10 @@ export class AddressFields extends React.PureComponent {
       showUserName,
       showPhoneNumber,
       showEmailAddress,
-      disableCountry
+      disableCountry,
+      dispatch,
+      initialValues,
+      formName,
     } = this.props;
     const { country } = this.state;
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
@@ -133,22 +151,37 @@ export class AddressFields extends React.PureComponent {
         )}
         <GooglePlaceInputWrapper>
           <Field
-            id="addressLine1"
-            name="addressLine1"
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
+            onChangeText={text => {
+              setTimeout(() => {
+                dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, text));
+              });
+            }}
             refs={instance => {
               this.locationRef = instance;
             }}
+            initialValue={
+              initialValues && initialValues.address && initialValues.address.addressLine1
+            }
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
-            inlineError
           />
         </GooglePlaceInputWrapper>
-        <AddressSecondWrapper>
+        <HiddenAddressLineWrapper>
+          <Field
+            label=""
+            component={TextBox}
+            title=""
+            type="hidden"
+            id="addressLine1"
+            name="addressLine1"
+          />
+        </HiddenAddressLineWrapper>
+        <OptionalAdressWrapper>
           <Field
             id="addressLine2"
             name="addressLine2"
@@ -156,7 +189,7 @@ export class AddressFields extends React.PureComponent {
             component={TextBox}
             dataLocator="addnewaddress-addressl2"
           />
-        </AddressSecondWrapper>
+        </OptionalAdressWrapper>
         <Field
           id="city"
           name="city"
