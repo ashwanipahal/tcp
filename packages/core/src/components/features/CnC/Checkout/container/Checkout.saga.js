@@ -590,15 +590,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     // giftWrap,
     method,
     smsInfo,
-    shipTo: {
-      onFileAddressKey,
-      address,
-      setAsDefault,
-      phoneNumber,
-
-      saveToAccount,
-      emailSignup,
-    },
+    shipTo: { onFileAddressKey, address, setAsDefault, phoneNumber, saveToAccount, emailSignup },
   } = formData;
   let {
     shipTo: { emailAddress },
@@ -610,12 +602,10 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     // on registered user entering a new address the email field is not visible -> emailAddress = null
     emailAddress = yield select(getUserEmail);
   }
-
   const isCanadaUser = yield select(isCanada);
   if (!isCanadaUser && isGuestUser) {
     isEmailSignUpAllowed = false;
   }
-
   // let getGiftWrappingValues = yield select(getGiftWrappingValues);
   // let initialGiftWrappingVal = getGiftWrappingValues.hasGiftWrapping;
   // const giftWrappingStoreOptionID = getGiftWrappingValues.optionId;
@@ -658,6 +648,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
         },
         false
       );
+      addOrEditAddressRes = { payload: addOrEditAddressRes.body };
     } else {
       // guest user is editing a previously entered shipping address
       addOrEditAddressRes = yield call(
