@@ -47,7 +47,9 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                   "small": 4,
                 }
               }
-            />
+            >
+              13131313222
+            </Styled(Col)>
             <Styled(Col)
               colSize={
                 Object {

@@ -41,6 +41,11 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .filter-row {
+        width: auto;
+      }
+    }
   }
 
   .filter-section {

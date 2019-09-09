@@ -5,6 +5,7 @@ exports[`MyRewards should render correctly 1`] = `
   className=""
 >
   <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
   >
     <Styled(Text)>

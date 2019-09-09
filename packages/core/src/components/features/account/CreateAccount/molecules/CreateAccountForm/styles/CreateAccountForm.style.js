@@ -7,6 +7,9 @@ const Styles = css`
   .i-agree-checkbox {
     padding-top: 10px;
   }
+  .checkbox-hide-show {
+    background: ${props => props.theme.colors.WHITE};
+  }
   .tooltip-bubble {
     li {
       text-align: left;

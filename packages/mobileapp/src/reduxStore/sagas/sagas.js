@@ -31,6 +31,7 @@ import NavigationSaga from '@tcp/core/src/components/features/content/Navigation
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
 import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
+import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -68,5 +69,6 @@ export default function* rootSaga() {
     ChangePasswordSaga(),
     ProductTabListSaga(),
     GetCandidSaga(),
+    GiftCardsSaga(),
   ]);
 }

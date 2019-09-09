@@ -14,10 +14,19 @@ export default css`
       border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
       display: inline-block;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin: 0;
+    }
   }
   .item-common.color-filter-chip {
     margin-bottom: 8px;
     padding-bottom: 0;
+  }
+  .color-filter-chip {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-right: 0;
+      white-space: nowrap;
+    }
   }
   .color-chip {
     border-radius: 10px;
@@ -45,5 +54,9 @@ export default css`
   .color-name {
     vertical-align: top;
     width: 86px;
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-right: 84px;
+    }
   }
 `;

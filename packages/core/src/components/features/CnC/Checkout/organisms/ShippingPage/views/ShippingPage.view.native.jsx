@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
-import StyledHeader from '../styles/ShippingPage.style.native';
+import { StyledHeader, HeaderContainer } from '../styles/ShippingPage.style.native';
 import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -57,7 +57,7 @@ export default class ShippingPage extends React.Component {
         (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
         hasPOBox(addressLine1, addressLine2)
       ) {
-        loadShipmentMethods();
+        loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
   }
@@ -124,7 +124,9 @@ export default class ShippingPage extends React.Component {
           availableStages={availableStages}
         />
         <ScrollView>
-          <CheckoutSectionTitleDisplay title={shippingLabels.header} />
+          <HeaderContainer>
+            <CheckoutSectionTitleDisplay title={shippingLabels.header} />
+          </HeaderContainer>
           <StyledHeader>
             <BodyCopy
               color="black"
