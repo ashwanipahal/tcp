@@ -28,3 +28,16 @@ describe('Detail Coupon Modal', () => {
     expect(component).toMatchSnapshot();
   });
 });
+
+describe('#instances', () => {
+  const toastMessage = jest.fn();
+
+  it('should be called toastmessage function with error message when coupon is returned with error', () => {
+    const coupon = {
+      id: '1121',
+      error: 'error message',
+    };
+    toastMessage(coupon.error);
+    expect(toastMessage).toHaveBeenCalledWith('error message');
+  });
+});

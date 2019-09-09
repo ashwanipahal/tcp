@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 const ModalHeaderStyle = { maxHeight: 50 };
 
+const FullHeaderStyle = { width: '100%' };
+
 const StyledModalWrapper = styled.View`
   align-items: center;
   margin: ${props => props.theme.spacing.ELEM_SPACING.LRG};
@@ -24,4 +26,4 @@ const PrivacyContent = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
-export { StyledModalWrapper, Horizontal, PrivacyContent, ModalHeaderStyle };
+export { StyledModalWrapper, Horizontal, PrivacyContent, ModalHeaderStyle, FullHeaderStyle };
