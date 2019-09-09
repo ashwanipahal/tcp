@@ -78,8 +78,9 @@ export class AddressFields extends React.PureComponent {
   }
 
   componentDidMount() {
+    const { country } = this.state;
     const { dispatch, formName, formSection } = this.props;
-    dispatch(change(formName, `${formSection}.country`, 'US'));
+    dispatch(change(formName, `${formSection}.country`, country));
   }
 
   handlePlaceSelected = (place, inputValue) => {
