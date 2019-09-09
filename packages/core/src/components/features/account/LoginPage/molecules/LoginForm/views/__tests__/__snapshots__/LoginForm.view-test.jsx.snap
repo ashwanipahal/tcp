@@ -234,6 +234,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       height: 10px;
     }
   }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
+  }
 ",
                 ";
 ",
@@ -705,6 +710,11 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       width: 10px;
       height: 10px;
     }
+  }
+  .show-hide-password {
+    background: ",
+                [Function],
+                ";
   }
 ",
                 ";

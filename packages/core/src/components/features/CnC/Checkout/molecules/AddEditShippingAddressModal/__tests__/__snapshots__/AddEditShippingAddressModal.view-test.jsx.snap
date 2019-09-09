@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditShippingAddress should render correctly 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="closeeditmodal"
+  fixedWidth={true}
+  heading=""
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+/>
+`;
+
+exports[`AddEditShippingAddress should render correctly with modalType add 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="closeaddmodal"
+  fixedWidth={true}
+  heading=""
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+/>
+`;

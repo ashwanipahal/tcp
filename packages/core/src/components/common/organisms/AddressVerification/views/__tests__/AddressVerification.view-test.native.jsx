@@ -50,10 +50,6 @@ describe('AddressVerification component', () => {
     it('should call onSuccess prop with user address', () => {
       expect(onSuccessSpy.mock.calls[0][0]).toEqual(userAddress);
     });
-
-    it('should call resetVerifyAddressAction props', () => {
-      expect(resetVerifyAddressActionSpy).toBeCalled();
-    });
   });
 
   describe('for invalid address', () => {
@@ -68,7 +64,7 @@ describe('AddressVerification component', () => {
         heading,
         userAddress,
         suggestedAddress,
-        verificationResult: '',
+        verificationResult: 'AE',
         labels: { verifyAddressLabels: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
@@ -95,14 +91,14 @@ describe('AddressVerification component', () => {
       const props = {
         heading,
         userAddress,
-        verificationResult: '',
+        verificationResult: 'AE',
         labels: { verifyAddressLabels: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
       component = shallow(<AddressVerificationVanilla {...props} />);
       component.setProps({
-        verificationResult: 'AE',
+        verificationResult: 'AE10',
       });
     });
 

@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 export default css`
   .bread-crumb,
-  .promo-area,
   .filter-area,
   .product-list {
     background: #d8d8d8;
@@ -41,6 +40,11 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .filter-row {
+        width: auto;
+      }
     }
   }
 

@@ -32,6 +32,7 @@ export class AddressFields extends React.PureComponent {
     className: PropTypes.string,
     variation: PropTypes.string,
     loadShipmentMethods: PropTypes.func.isRequired,
+    isGuest: PropTypes.bool,
   };
 
   static addressValidationConfig = getStandardConfig([
@@ -216,6 +217,7 @@ export class AddressFields extends React.PureComponent {
       addressFormLabels,
       variation,
       formSection,
+      isGuest,
       showUserName,
     } = this.props;
     return (
@@ -311,16 +313,18 @@ export class AddressFields extends React.PureComponent {
                 enableSuccessCheck={false}
               />
             </Col>
-            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <Field
-                placeholder="Email (For Order Updates)"
-                name="emailAddress"
-                id={`${formSection}.emailAddress`}
-                component={TextBox}
-                dataLocator="email-address-field"
-                enableSuccessCheck={false}
-              />
-            </Col>
+            {isGuest && (
+              <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+                <Field
+                  placeholder="Email (For Order Updates)"
+                  name="emailAddress"
+                  id={`${formSection}.emailAddress`}
+                  component={TextBox}
+                  dataLocator="email-address-field"
+                  enableSuccessCheck={false}
+                />
+              </Col>
+            )}
           </Row>
         ) : null}
       </div>
@@ -336,6 +340,7 @@ AddressFields.defaultProps = {
   formSection: '',
   className: '',
   variation: 'primary',
+  isGuest: true,
 };
 
 export default withStyles(AddressFields, styles);

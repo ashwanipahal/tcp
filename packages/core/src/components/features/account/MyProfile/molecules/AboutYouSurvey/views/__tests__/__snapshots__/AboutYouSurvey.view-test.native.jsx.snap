@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight="black"
+      text="lbl_profile_survey_hi, TCP"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      style={
+        Object {
+          "flex": 1,
+          "textAlign": "center",
+        }
+      }
+      text=""
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        alt="Survey Stage"
+        height="26px"
+        onClick={[Function]}
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/star-filled.png",
+          }
+        }
+        width="26px"
+      />
+    </Styled(TouchableOpacity)>
+    <Styled(View) />
+    <Styled(ImageComp)
+      alt="Survey Stage"
+      height="26px"
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/star.png",
+        }
+      }
+      width="26px"
+    />
+    <Styled(View) />
+    <Styled(ImageComp)
+      alt="Survey Stage"
+      height="26px"
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/circle-check.png",
+        }
+      }
+      width="26px"
+    />
+  </Styled(View)>
+  <SurveyQuestion
+    className=""
+    labels={
+      Object {
+        "lbl_profile_survey_describe_yourself": "Yourself?",
+        "lbl_profile_survey_header": "",
+        "lbl_profile_survey_save": "SAVE",
+        "lbl_profile_survey_select_one": "SELECT ONE",
+      }
+    }
+    onSelection={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "shopper1",
+          "selected": false,
+          "value": "Parent",
+        },
+        Object {
+          "id": "shopper2",
+          "selected": false,
+          "value": "Grandparent",
+        },
+      ]
+    }
+    question="Describe yourself?"
+    questionId="question1"
+  />
+  <Styled(View)>
+    <Styled(WithTheme(CustomButton))
+      buttonVariation="variable-width"
+      disabled={true}
+      fill="BLUE"
+      onPress={[Function]}
+      text="SAVE"
+      type="button"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`AboutYouSurvey should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight="black"
+      text="lbl_profile_survey_hi, TCP"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      style={
+        Object {
+          "flex": 1,
+          "textAlign": "center",
+        }
+      }
+      text=""
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        alt="Survey Stage"
+        height="26px"
+        onClick={[Function]}
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/star-filled.png",
+          }
+        }
+        width="26px"
+      />
+    </Styled(TouchableOpacity)>
+    <Styled(View) />
+    <Styled(ImageComp)
+      alt="Survey Stage"
+      height="26px"
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/star.png",
+        }
+      }
+      width="26px"
+    />
+    <Styled(View) />
+    <Styled(ImageComp)
+      alt="Survey Stage"
+      height="26px"
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/circle-check.png",
+        }
+      }
+      width="26px"
+    />
+  </Styled(View)>
+  <SurveyQuestion
+    className=""
+    labels={
+      Object {
+        "lbl_profile_survey_describe_yourself": "Yourself?",
+        "lbl_profile_survey_header": "",
+        "lbl_profile_survey_save": "SAVE",
+        "lbl_profile_survey_select_one": "SELECT ONE",
+      }
+    }
+    onSelection={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "shopper1",
+          "selected": false,
+          "value": "Parent",
+        },
+        Object {
+          "id": "shopper2",
+          "selected": false,
+          "value": "Grandparent",
+        },
+      ]
+    }
+    question="Describe yourself?"
+    questionId="question1"
+  />
+  <Styled(View)>
+    <Styled(WithTheme(CustomButton))
+      buttonVariation="variable-width"
+      disabled={true}
+      fill="BLUE"
+      onPress={[Function]}
+      text="SAVE"
+      type="button"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

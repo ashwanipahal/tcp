@@ -13,7 +13,6 @@ import {
   ModuleN,
   ModuleA,
   ModuleB,
-  ModuleJ,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
@@ -28,7 +27,6 @@ const modulesMap = {
 };
 
 const buttonMargin = { margin: 30 };
-
 class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
     this.loadData();
@@ -72,7 +70,6 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-        <ModuleJ />
       </ScrollView>
     );
   }

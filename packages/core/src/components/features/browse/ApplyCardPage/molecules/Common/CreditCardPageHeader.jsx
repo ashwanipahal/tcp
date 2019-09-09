@@ -5,8 +5,8 @@ import Router from 'next/router';
 import { Anchor, BodyCopy, Col, Row } from '../../../../../common/atoms';
 import CreditCardPageHeaderWrapper from './styles/CreditCardPageHeader.style';
 
-const CreditCardPageHeader = ({ labels }) => {
-  return (
+const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
+  return !isPLCCModalFlow ? (
     <CreditCardPageHeaderWrapper>
       <Row fullBleed>
         <Col
@@ -41,11 +41,12 @@ const CreditCardPageHeader = ({ labels }) => {
         </Col>
       </Row>
     </CreditCardPageHeaderWrapper>
-  );
+  ) : null;
 };
 
 CreditCardPageHeader.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
 };
 
 export default CreditCardPageHeader;

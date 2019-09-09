@@ -1,234 +1,257 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModuleB component should render TCP or default variant correctly 1`] = `
-<Styled(Row)>
-  <Styled(Col)
-    className="undefined parent-wrapper"
-    colSize={
+<div
+  className="undefined parent-wrapper"
+>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <ImageBanner
+        bannerPosition="overlay"
+        linkedImage={
+          Array [
+            Object {
+              "image": Object {
+                "alt": "Graphic Tees",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_690,h_577",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_347,h_295",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_354,h_295",
+                "title": "Graphic Tees",
+                "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png",
+              },
+              "link": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Graphic Tees",
+                "title": "Graphic Tees",
+                "url": "/c/girl-t-shirts",
+              },
+            },
+          ]
+        }
+        promoBanner={
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/girls-denim-bottoms",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "NEW WASHES.",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "MORE FITS.",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "SLIM, PLUS & HUSKY",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "SIZES UP TO 18!",
+                  },
+                ],
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/girls-denim-bottoms",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "small_text_black",
+                    "text": "ALL BASIC DENIM",
+                  },
+                  Object {
+                    "style": "currency_up_style",
+                    "text": "$ 7 80 & UP",
+                  },
+                ],
+              },
+            ],
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={
       Object {
-        "large": 6,
-        "medium": 4,
-        "small": 6,
+        "desktop": false,
+        "medium": false,
+        "small": true,
       }
     }
   >
-    <ImageBanner
-      bannerPosition="overlay"
-      linkedImage={
-        Array [
-          Object {
-            "image": Object {
-              "alt": "Graphic Tees",
-              "crop_d": "c_crop,g_face:center,q_auto:best,w_690,h_577",
-              "crop_m": "c_crop,g_face:center,q_auto:best,w_347,h_295",
-              "crop_t": "c_crop,g_face:center,q_auto:best,w_354,h_295",
-              "title": "Graphic Tees",
-              "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png",
-            },
-            "link": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Graphic Tees",
-              "title": "Graphic Tees",
-              "url": "/node/product/<uuid>",
-            },
-          },
-        ]
-      }
-      promoBanner={
+    <Styled(Col)
+      colSize={
         Object {
-          "headerText": Array [
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(ButtonList)
+        buttonListVariation="stackedCTAList"
+        buttonsData={
+          Array [
             Object {
-              "icon": Object {
-                "icon": "",
-                "placement": "",
-              },
-              "link": Object {
+              "button": Object {
                 "action": "",
                 "external": 0,
                 "target": "",
-                "text": "",
-                "title": "",
-                "url": "/tees",
+                "text": "Girl",
+                "title": "Girl",
+                "url": "/c/girls-clothing",
               },
-              "textItems": Array [
-                Object {
-                  "style": "style1",
-                  "text": "NEW WASHES.",
-                },
-                Object {
-                  "style": "style1",
-                  "text": "MORE FITS.",
-                },
-                Object {
-                  "style": "style2",
-                  "text": "SLIM, PLUS & HUSKY",
-                },
-                Object {
-                  "style": "style1",
-                  "text": "SIZES UP TO 18!",
-                },
-              ],
+              "image": Object {
+                "alt": "Girl",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              },
             },
-          ],
-          "promoBanner": Array [
             Object {
-              "link": Object {
+              "button": Object {
                 "action": "",
                 "external": 0,
                 "target": "",
-                "text": "",
-                "title": "",
-                "url": "/banner/url",
+                "text": "Girl",
+                "title": "Girl",
+                "url": "/c/girls-clothing",
               },
-              "textItems": Array [
-                Object {
-                  "style": "small_text_black",
-                  "text": "ALL BASIC DENIM",
-                },
-                Object {
-                  "style": "currency_up_style",
-                  "text": "$ 7 80 & UP",
-                },
-              ],
+              "image": Object {
+                "alt": "Girl",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              },
             },
-          ],
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Toddler Girl",
+                "title": "Toddler Girl",
+                "url": "/c/toddler-girl-clothes",
+              },
+              "image": Object {
+                "alt": "Girl",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              },
+            },
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Boy",
+                "title": "Boy",
+                "url": "/c/boys-clothing",
+              },
+              "image": Object {
+                "alt": "Girl",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              },
+            },
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Toddler Boy",
+                "title": "Toddler Boy",
+                "url": "/c/toddler-boy-clothes",
+              },
+              "image": Object {
+                "alt": "Girl",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              },
+            },
+            Object {
+              "button": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "Baby",
+                "title": "Baby",
+                "url": "/c/baby-clothes",
+              },
+              "image": Object {
+                "alt": "Girl",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              },
+            },
+          ]
         }
-      }
-    />
-    <Styled(ButtonList)
-      buttonListVariation="stackedCTAList"
-      buttonsData={
-        Array [
+        className="button-list"
+        dataLocatorDivisionImages="moduleB_cta_image_"
+        dataLocatorDropDown="moduleB_shop_now_dropdown"
+        dataLocatorTextCta="moduleB_cta_links_"
+        dropdownLabel="Shop Now"
+        dualVariation={
           Object {
-            "button": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Girl",
-              "title": "Girl",
-              "url": "/girl",
+            "displayProps": Object {
+              "large": true,
+              "medium": true,
+              "small": false,
             },
-            "image": Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            },
-          },
-          Object {
-            "button": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Girl",
-              "title": "Girl",
-              "url": "/girl",
-            },
-            "image": Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            },
-          },
-          Object {
-            "button": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Toddler Girl",
-              "title": "Toddler Girl",
-              "url": "/toddler-girl",
-            },
-            "image": Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            },
-          },
-          Object {
-            "button": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Boy",
-              "title": "Boy",
-              "url": "/boy",
-            },
-            "image": Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            },
-          },
-          Object {
-            "button": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Toddler Boy",
-              "title": "Toddler Boy",
-              "url": "/toddler-boy",
-            },
-            "image": Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            },
-          },
-          Object {
-            "button": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Baby",
-              "title": "Baby",
-              "url": "/baby",
-            },
-            "image": Object {
-              "alt": "Girl",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-            },
-          },
-        ]
-      }
-      className="button-list"
-      dataLocatorDivisionImages="moduleB_cta_image_"
-      dataLocatorDropDown="moduleB_shop_now_dropdown"
-      dataLocatorTextCta="moduleB_cta_links_"
-      dropdownLabel="Shop Now"
-      dualVariation={
-        Object {
-          "displayProps": Object {
-            "large": true,
-            "medium": true,
-            "small": false,
-          },
-          "name": "dropdownButtonCTA",
+            "name": "dropdownButtonCTA",
+          }
         }
-      }
-    />
-  </Styled(Col)>
-</Styled(Row)>
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
 `;
 
 exports[`ModuleB component should render banner bottom variation 1`] = `
@@ -241,12 +264,14 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
   >
     <Styled(Anchor)
       action=""
+      asPath="/c/girl-t-shirts"
       className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      url="/node/product/<uuid>"
+      to="/c?cid="
+      url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)
         className="image"
@@ -280,7 +305,7 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/tees",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -312,7 +337,7 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/banner/url",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -342,12 +367,14 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
   >
     <Styled(Anchor)
       action=""
+      asPath="/c/girl-t-shirts"
       className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      url="/node/product/<uuid>"
+      to="/c?cid="
+      url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)
         className="image"
@@ -381,7 +408,7 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/tees",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -413,7 +440,7 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/banner/url",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -454,7 +481,7 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/tees",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -486,7 +513,7 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/banner/url",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -509,12 +536,14 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
   >
     <Styled(Anchor)
       action=""
+      asPath="/c/girl-t-shirts"
       className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      url="/node/product/<uuid>"
+      to="/c?cid="
+      url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)
         className="image"
@@ -555,7 +584,7 @@ exports[`ModuleB component should render banner top variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/tees",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -587,7 +616,7 @@ exports[`ModuleB component should render banner top variation 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/banner/url",
+            "url": "/c/girls-denim-bottoms",
           },
           "textItems": Array [
             Object {
@@ -610,12 +639,14 @@ exports[`ModuleB component should render banner top variation 1`] = `
   >
     <Styled(Anchor)
       action=""
+      asPath="/c/girl-t-shirts"
       className="image-link"
       external={0}
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      url="/node/product/<uuid>"
+      to="/c?cid="
+      url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)
         className="image"

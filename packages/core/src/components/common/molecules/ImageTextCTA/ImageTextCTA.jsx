@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { configurePlpNavigationFromCMSUrl } from '../../../../utils';
 import { Anchor, DamImage, BodyCopy } from '../../atoms';
 
 /**
@@ -20,19 +21,20 @@ const ImageTextCTA = props => {
     textAlign,
   } = props;
 
-  const { url, target, title, text } = link;
+  const navigationUrl = link;
+  const { text } = navigationUrl;
+  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+  navigationUrl.asPath = link.url;
 
   return (
     <div className="img-wrapper">
       <div>
         <Anchor
           key={uniqueKey}
-          href={url}
-          target={target}
-          title={title}
           fontSizeVariation="large"
           fontWeightVariation="active"
           dataLocator={dataLocator && dataLocator.cta}
+          {...navigationUrl}
           className={ctaClassName}
         >
           {image && (

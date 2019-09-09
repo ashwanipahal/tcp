@@ -122,6 +122,7 @@ export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 export const PRODUCT_TAB_LIST_REDUCER_KEY = 'ProductTabList';
 export const PRODUCT_TAB_LIST_ACTION_PATTERN = '@@ProductTabList-';
 export const MAILING_ADDRESS_REDUCER_KEY = 'AddMailingAddressReducer';
+export const BIRTHDAY_SAVING_LIST_REDUCER_KEY = 'BirthdaySavingsList';
 
 // apply now modal for trigger the plcc application flow in modal.
 export const APPLY_NOW_MODAL_REDUCER_KEY = 'ApplyNowModal';
