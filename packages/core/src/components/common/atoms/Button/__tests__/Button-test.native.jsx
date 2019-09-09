@@ -18,6 +18,6 @@ describe('CustomButton', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('TouchableOpacity')).toHaveLength(1);
+    expect(component.find('Styled(TouchableOpacity)')).toHaveLength(1);
   });
 });

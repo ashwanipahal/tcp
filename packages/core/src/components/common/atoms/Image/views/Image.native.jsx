@@ -19,7 +19,7 @@ const ImageComp = (props: Props) => {
   const cropVal = crop || '';
   const urlVal = url || '';
   const sourceVal = source || '';
-  const ImageComponent = urlVal.length > 0 && host ? LazyloadImage : Image;
+  const ImageComponent = host ? LazyloadImage : Image;
 
   if (sourceVal === '') {
     return (

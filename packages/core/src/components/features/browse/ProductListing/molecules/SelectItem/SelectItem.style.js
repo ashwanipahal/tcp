@@ -14,9 +14,11 @@ export default css`
   }
   .selected-items {
     text-transform: capitalize;
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
     text-align: left;
 
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
     @media ${props => props.theme.mediaQuery.mediumMax} {
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }

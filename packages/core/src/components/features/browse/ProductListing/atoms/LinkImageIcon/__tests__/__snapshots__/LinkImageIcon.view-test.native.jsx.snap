@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkImageIconVanilla component should renders LinkImageIconVanilla correctly 1`] = `
+<TouchableOpacity
+  accessibilityRole="button"
+  activeOpacity={0.2}
+  onPress={[Function]}
+>
+  <Styled(Image)
+    accessibilityLabel="image"
+    accessibilityRole="image"
+    borderRadius={6}
+    borderWidth={1}
+    height={10}
+    resizeMode="contain"
+    selected={false}
+    source={
+      Object {
+        "uri": "",
+      }
+    }
+    width={10}
+  />
+</TouchableOpacity>
+`;

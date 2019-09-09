@@ -35,18 +35,11 @@ exports[`CardList Component should render correctly 1`] = `
   </Styled(View)>
   <Styled(Text) />
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text=""
-      url=""
     />
   </Styled(View)>
 </View>
@@ -104,18 +97,11 @@ exports[`CardList Component should render correctly if list is present 1`] = `
 >
   <Styled(Text) />
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
       text=""
-      url=""
     />
   </Styled(View)>
   <ReduxForm
