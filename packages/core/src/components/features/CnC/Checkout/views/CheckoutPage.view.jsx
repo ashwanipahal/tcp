@@ -111,14 +111,7 @@ class CheckoutPage extends React.PureComponent {
 
   render() {
     const { isGuest } = this.props;
-    return (
-      <CnCTemplate
-        leftSection={this.renderLeftSection}
-        marginTop
-        isCheckoutView
-        isGuest={isGuest}
-      />
-    );
+    return <CnCTemplate leftSection={this.renderLeftSection} marginTop isGuest={isGuest} />;
   }
 }
 

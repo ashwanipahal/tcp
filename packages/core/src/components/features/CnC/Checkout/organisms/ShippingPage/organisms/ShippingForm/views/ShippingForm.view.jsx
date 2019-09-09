@@ -12,7 +12,6 @@ import Anchor from '../../../../../../../../common/atoms/Anchor';
 import getStandardConfig from '../../../../../../../../../utils/formValidation/validatorStandardConfig';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import RegisteredShippingForm from '../../RegisteredShippingForm';
-import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
 
@@ -265,7 +264,6 @@ class ShippingForm extends React.Component {
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
-        <CheckoutOrderInfo isGuest={isGuest} />
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"
@@ -347,7 +345,6 @@ class ShippingForm extends React.Component {
               />
             </div>
           </FormSection>
-          <CheckoutOrderInfo />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}
