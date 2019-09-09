@@ -28,7 +28,7 @@ const HeadingTextWrapper = styled.View`
 
 const LabelsWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 `;
 
