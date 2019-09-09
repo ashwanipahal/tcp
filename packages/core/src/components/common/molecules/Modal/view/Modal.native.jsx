@@ -55,7 +55,12 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   } = otherProps;
   return (
     <SafeAreaView>
-      <Modal transparent={false} visible={isOpen} animationType={animationType}>
+      <Modal
+        transparent={false}
+        visible={isOpen}
+        animationType={animationType}
+        onRequestClose={onRequestClose}
+      >
         <ToastContainer />
         <StatusBar hidden />
         <RowWrapper>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { StyledApplyNowModalVanilla, renderBenefitsList } from '../ApplyNowModal.view';
+import { StyledApplyNowModalVanilla } from '../ApplyNowModal.view';
 
 describe('ApplyNowModalWrapper component', () => {
   const props = {
@@ -25,9 +25,5 @@ describe('ApplyNowModalWrapper component', () => {
 
   it('should renders correctly', () => {
     expect(component).toMatchSnapshot();
-  });
-
-  it('should call renderBenefitsList', async () => {
-    renderBenefitsList(props.labels);
   });
 });

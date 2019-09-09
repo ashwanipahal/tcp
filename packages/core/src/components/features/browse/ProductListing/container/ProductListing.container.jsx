@@ -178,7 +178,9 @@ ProductListingContainer.propTypes = {
   lastLoadedPageNumber: PropTypes.number,
   router: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired,
-  formValues: PropTypes.shape({}).isRequired,
+  formValues: PropTypes.shape({
+    sort: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 ProductListingContainer.defaultProps = {

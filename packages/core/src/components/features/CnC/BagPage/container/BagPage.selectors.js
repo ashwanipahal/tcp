@@ -1,4 +1,5 @@
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+import getErrorList from './Errors.selector';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -46,11 +47,16 @@ const getTotalItems = state => {
 const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
+
 const getConfirmationModalFlag = state => {
   return {
     showModal: state.CartPageReducer.get('showConfirmationModal'),
     isEditingItem: state.CartPageReducer.get('isEditingItem'),
   };
+};
+
+const getErrorMapping = state => {
+  return getErrorList(state);
 };
 
 const getProductsTypes = state => {
@@ -99,4 +105,5 @@ export default {
   getOOSCount,
   getConfirmationModalFlag,
   getFilteredItems,
+  getErrorMapping,
 };

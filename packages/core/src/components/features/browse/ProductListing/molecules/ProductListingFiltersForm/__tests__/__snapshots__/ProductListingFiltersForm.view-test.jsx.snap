@@ -2308,7 +2308,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   >
                     Recommended
                   </ForwardRef>,
-                  "dataLocator": "Recommended",
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2338,7 +2337,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   >
                     Price: High to Low
                   </ForwardRef>,
-                  "dataLocator": "Price: High to Low",
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2368,7 +2366,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   >
                     Price: Low to High
                   </ForwardRef>,
-                  "dataLocator": "Price: Low to High",
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2398,7 +2395,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   >
                     Newest
                   </ForwardRef>,
-                  "dataLocator": "Newest",
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2428,7 +2424,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   >
                     Most Favorited
                   </ForwardRef>,
-                  "dataLocator": "Most Favorited",
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
@@ -2458,7 +2453,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   >
                     Top Rated
                   </ForwardRef>,
-                  "dataLocator": "Top Rated",
                   "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"

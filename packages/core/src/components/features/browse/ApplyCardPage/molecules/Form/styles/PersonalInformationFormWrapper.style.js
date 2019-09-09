@@ -42,6 +42,7 @@ export default styled.div`
   }
 
   .contact_information_form {
+    text-align: left;
       >label {
         >p {
           margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};

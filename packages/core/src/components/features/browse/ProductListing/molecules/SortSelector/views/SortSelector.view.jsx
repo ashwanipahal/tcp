@@ -1,21 +1,9 @@
-/* eslint-disable */
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import SortSelectorStyle from '../SortSelector.style';
 import CustomSelect from '../../CustomSelect/views';
-import { Field } from 'redux-form';
-
-// @flow
-type Props = {
-  className: string,
-  onChange: any,
-  sortSelectOptions: any,
-  selectTextOverride: any,
-  onExpandCallback: any,
-  expanded: any,
-  hideTitle: any,
-};
+import { getLocator } from '../../../../../../../utils';
 
 export const FACETS_FIELD_KEY = {
   sort: 'sort',
@@ -49,6 +37,7 @@ class SortSelector extends React.PureComponent<Props> {
         selectTextOverride={selectTextOverride}
         type={FACETS_FIELD_KEY.sort}
         isSortOpenModal={isSortOpenModal}
+        data-locator={getLocator('plp_sort_by_text')}
       />
     );
   }

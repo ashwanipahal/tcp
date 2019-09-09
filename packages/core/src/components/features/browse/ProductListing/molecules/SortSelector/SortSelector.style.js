@@ -23,16 +23,17 @@ export default css`
     width: 95%;
   }
 
-  .item-select {
+  li.item-select {
     background: ${props => props.theme.colors.ACCORDION.INACTIVE_HEADER} url(${selectedIcon})
-      no-repeat right ${props => props.theme.spacing.ELEM_SPACING.MED};
+      no-repeat right ${props => props.theme.spacing.ELEM_SPACING.SM};
     background-size: 25px 25px;
+  }
+  .item-select {
     .sort-title {
       font-size: ${props => props.theme.typography.fontSizes.fs13};
       font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     }
   }
-
   .sort-list-wrapper {
     overflow-y: auto;
     margin-bottom: 0;
@@ -79,6 +80,9 @@ export default css`
         font-size: ${props => props.theme.typography.fontSizes.fs13};
         font-weight: ${props => props.theme.typography.fontWeights.extrabold};
       }
+    }
+    li.item-select {
+      background: none;
     }
     .item-highlighted {
       background: url(${selectedIcon}) no-repeat left top -${props => props.theme.spacing.ELEM_SPACING.XXS};

@@ -103,6 +103,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             </BodyCopy>
             <BodyCopy component="div" textAlign="center">
               <Anchor
+                id="forgotPasswordForm"
                 fontSizeVariation="medium"
                 anchorVariation="primary"
                 underline

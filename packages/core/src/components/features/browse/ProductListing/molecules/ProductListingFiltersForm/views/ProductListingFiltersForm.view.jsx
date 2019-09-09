@@ -101,7 +101,6 @@ function getSortCustomOptionsMap(sortOptionsMap) {
         {sortOption.displayName}
       </BodyCopy>
     ),
-    dataLocator: sortOption.displayName,
     content: (
       <BodyCopy component="span" className="sort-title" fontSize="fs14" fontFamily="secondary">
         {sortOption.displayName}

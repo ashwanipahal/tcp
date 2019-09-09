@@ -11,13 +11,11 @@ export function* logoutSaga() {
     if (res.statusCode === 200) {
       yield put(resetUserInfo());
       if (!isMobileApp()) {
-        const matchPath = window.location.pathname.split('/')[2];
         yield put(closeOverlayModal());
-        if (window.location.href.indexOf('account')) {
+        if (window.location.href.indexOf('account') > 0) {
           routerPush('/', '/home');
           scrollPage();
         } else {
-          routerPush('/', `/${matchPath}`);
           scrollPage();
         }
       }
