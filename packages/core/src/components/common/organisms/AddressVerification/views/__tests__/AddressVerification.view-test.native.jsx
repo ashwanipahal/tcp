@@ -64,7 +64,7 @@ describe('AddressVerification component', () => {
         heading,
         userAddress,
         suggestedAddress,
-        verificationResult: '',
+        verificationResult: 'AE',
         labels: { verifyAddressLabels: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
@@ -91,14 +91,14 @@ describe('AddressVerification component', () => {
       const props = {
         heading,
         userAddress,
-        verificationResult: '',
+        verificationResult: 'AE',
         labels: { verifyAddressLabels: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
       component = shallow(<AddressVerificationVanilla {...props} />);
       component.setProps({
-        verificationResult: 'AE',
+        verificationResult: 'AE10',
       });
     });
 

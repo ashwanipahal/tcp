@@ -9,15 +9,21 @@ import ReviewCCInformationWrapper from './styles/RewardsCreditCardInformation.st
  * @param - creditCardHeader
  * @description - credit card informations.
  */
-const ReviewCreditCardInformation = ({ creditCardHeader = '' }) => {
+const ReviewCreditCardInformation = ({ isPLCCModalFlow = false, creditCardHeader = '' }) => {
   return (
-    <ReviewCCInformationWrapper>
+    <ReviewCCInformationWrapper isPLCCModalFlow={isPLCCModalFlow}>
       <Col
         className="rewards_card_logo"
         key="container_header_image"
+        isPLCCModalFlow={isPLCCModalFlow}
         colSize={{ large: 2, medium: 2, small: 6 }}
       >
-        <BodyCopy component="div" className="header-image" tabIndex="0" />
+        <BodyCopy
+          component="div"
+          className="header-image"
+          tabIndex="0"
+          isPLCCModalFlow={isPLCCModalFlow}
+        />
       </Col>
       <Col
         className="rewards_card_instruction"
@@ -33,6 +39,7 @@ const ReviewCreditCardInformation = ({ creditCardHeader = '' }) => {
 ReviewCreditCardInformation.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   creditCardHeader: PropTypes.string.isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
 };
 
 export default ReviewCreditCardInformation;

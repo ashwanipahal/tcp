@@ -40,10 +40,12 @@ export default {
   'carousel-big-carrot-white': '/static/images/right-carousel-carrot-white.svg',
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
+  'empty-fav-icon': '/static/images/empty-heart.png',
   'cart-icon': '/static/images/bag.png',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
   'selected-item': '/static/images/selected-item.svg',
+  'selected-item-check-no-circle': '/static/images/circle-check-no-circle.svg',
   'checkout-tick': '/static/images/checkout-tick.svg',
   'checkout-white-dot': '/static/images/checkout-white-dot.svg',
   'carrot-large-left': '/static/images/carrot-large-left.png',

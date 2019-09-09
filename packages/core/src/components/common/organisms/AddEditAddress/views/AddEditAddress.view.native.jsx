@@ -3,6 +3,7 @@ import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { ParentContainer } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
+import CONSTANTS from '../../AddressVerification/AddressVerification.constants';
 import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
 import AddressFormComponent from '../../AddressForm/AddressForm';
 
@@ -22,9 +23,14 @@ const AddressBook = props => {
     setModalHeading,
     verificationResult,
   } = props;
+  const isValidAddress =
+    CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] ===
+    CONSTANTS.VERIFY_ADDRESS_RESULT.VALID;
   const showVerification = currentForm === 'VerificationModal' && !!verificationResult;
   const showAddAddress =
-    currentForm === 'AddAddress' || (!verificationResult && currentForm === 'VerificationModal');
+    currentForm === 'AddAddress' ||
+    isValidAddress ||
+    (!verificationResult && currentForm === 'VerificationModal');
 
   return (
     <View {...props}>
