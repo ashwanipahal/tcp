@@ -1,6 +1,8 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
@@ -108,9 +110,13 @@ export class ProfileInformation extends React.PureComponent {
           <ModalNative
             isOpen={mountMailingAddressModal}
             onRequestClose={() => this.toggleModalState('mountMailingAddressModal')}
-            heading="add edit mailing Address"
+            heading={labelsObj.profile.lbl_profile_heading}
           >
-            <MailingInformationContainer labels={labelsObj} />
+            <SafeAreaView>
+              <ViewWithSpacing spacingStyles="margin-left-MED margin-right-MED margin-top-MED">
+                <MailingInformationContainer labels={labelsObj} onUpdateMailingAddress={() => this.toggleModalState('mountMailingAddressModal')} />
+              </ViewWithSpacing>
+            </SafeAreaView>
           </ModalNative>
         )}
       </>

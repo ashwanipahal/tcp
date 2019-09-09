@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import CreditCardForm from '../organism/CreditCardForm';
@@ -23,6 +23,7 @@ export const AddEditCreditCard = ({
   addressFormLabels,
   ...otherProps
 }) => {
+  const [verifyModalDisplayed, setVerifyModalDisplayed] = useState(false);
   return (
     <SafeAreaView>
       {!showCreditCardFields && (
@@ -36,18 +37,21 @@ export const AddEditCreditCard = ({
             }
             labels={labels}
             onError={submitAddressFormAction}
+            verifyModalRendered={status => setVerifyModalDisplayed(status)}
           />
-          <CreditCardForm
-            labels={labels}
-            onSubmit={verifyAddressAction}
-            initialValues={initialValues}
-            isEdit={isEdit}
-            backToPaymentClick={backToAddressBookClick}
-            showUserName={showUserName}
-            showCreditCardFields={showCreditCardFields}
-            addressFormLabels={addressFormLabels}
-            {...otherProps}
-          />
+          {!verifyModalDisplayed && (
+            <CreditCardForm
+              labels={labels}
+              onSubmit={verifyAddressAction}
+              initialValues={initialValues}
+              isEdit={isEdit}
+              showUserName={showUserName}
+              showCreditCardFields={showCreditCardFields}
+              addressFormLabels={addressFormLabels}
+              onFileAddresskey=""
+              {...otherProps}
+            />
+          )}
         </>
       )}
       {showCreditCardFields && (

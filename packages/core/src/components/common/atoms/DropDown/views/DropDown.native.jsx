@@ -32,6 +32,7 @@ class DropDown extends React.PureComponent<Props> {
   static propTypes = {
     data: PropTypes.shape([]),
     selectedValue: PropTypes.string,
+    input: PropTypes.shape({}),
     onValueChange: PropTypes.func,
     itemStyle: PropTypes.shape({}),
     dropDownStyle: PropTypes.shape({}),
@@ -42,7 +43,8 @@ class DropDown extends React.PureComponent<Props> {
   static defaultProps = {
     data: [],
     selectedValue: null,
-    onValueChange: null,
+    input: null,
+    onValueChange: () => {},
     itemStyle: null,
     dropDownStyle: null,
     variation: 'primary',
@@ -51,10 +53,12 @@ class DropDown extends React.PureComponent<Props> {
 
   static getDerivedStateFromProps(props, state) {
     const { selectedLabelState } = state;
-    if (props.selectedValue !== selectedLabelState) {
+    const { input, selectedValue } = props;
+    const inputValue = input ? input.value : selectedValue;
+    if (inputValue !== selectedLabelState) {
       const result = props.data.find(item => {
-        if (item.value) return item.value === props.selectedValue;
-        return item.id === props.selectedValue;
+        if (item.value) return item.value === inputValue;
+        return item.id === inputValue;
       });
 
       if (result) {
@@ -81,15 +85,16 @@ class DropDown extends React.PureComponent<Props> {
       height: 0,
     };
 
-    const { data, selectedValue } = this.props;
+    const { data, input, selectedValue } = this.props;
+    const inputValue = input ? input.value : selectedValue;
     const selectedObject = data.find(item => {
-      return item.value === selectedValue;
+      return item.value === inputValue;
     });
 
     let selectedLabelState;
-    if (selectedValue) {
+    if (inputValue) {
       if (selectedObject) selectedLabelState = selectedObject.label;
-      else selectedLabelState = selectedValue;
+      else selectedLabelState = inputValue;
     } else {
       selectedLabelState = data.label;
     }
@@ -199,6 +204,7 @@ class DropDown extends React.PureComponent<Props> {
   onDropDownItemClick = item => {
     let { label, value } = item;
     const { id, displayName } = item;
+    const { onValueChange, input } = this.props;
     if (!label) {
       label = displayName;
     }
@@ -207,10 +213,10 @@ class DropDown extends React.PureComponent<Props> {
       dropDownIsOpen: false,
       selectedLabelState: label,
     });
-
-    // pass the callback here with value
-    const { onValueChange } = this.props;
-    if (onValueChange) onValueChange(value);
+    if(input) {
+      input.onChange(value);
+    }
+    onValueChange(value);
   };
 
   /**

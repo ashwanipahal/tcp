@@ -16,7 +16,6 @@ import {
   Separator,
   GooglePlaceInputWrapper,
   AddressSecondWrapper,
-  HiddenAddressLineWrapper,
 } from '../styles/AddressFields.style.native';
 import {
   countriesOptionsMap,
@@ -36,6 +35,7 @@ export class AddressFields extends React.PureComponent {
     showUserName: PropTypes.bool,
     showPhoneNumber: PropTypes.bool,
     showEmailAddress: PropTypes.bool,
+    initialValues: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -77,7 +77,6 @@ export class AddressFields extends React.PureComponent {
     } = API_CONFIG;
     this.state = {
       country: us.toUpperCase(),
-      dropDownItem: this.UScountriesStates[0].displayName,
     };
 
     this.locationRef = null;
@@ -89,7 +88,7 @@ export class AddressFields extends React.PureComponent {
     dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
     dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
     dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
-    this.setState({ dropDownItem: address.state });
+    dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
   };
 
   changeShipmentMethods = (e, value) => {
@@ -103,14 +102,12 @@ export class AddressFields extends React.PureComponent {
     const {
       addressFormLabels,
       formSection,
-      dispatch,
-      formName,
-      disableCountry,
       showUserName,
       showPhoneNumber,
       showEmailAddress,
+      disableCountry
     } = this.props;
-    const { dropDownItem, country } = this.state;
+    const { country } = this.state;
     const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <View>
@@ -136,35 +133,21 @@ export class AddressFields extends React.PureComponent {
         )}
         <GooglePlaceInputWrapper>
           <Field
+            id="addressLine1"
+            name="addressLine1"
             headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
-            onChangeText={text => {
-              setTimeout(() => {
-                dispatch(change(formName, `${formSection}.addressLine1`, text));
-              });
-            }}
             refs={instance => {
               this.locationRef = instance;
             }}
-            // initialValue={addressLine1}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
+            inlineError
           />
         </GooglePlaceInputWrapper>
-
-        <HiddenAddressLineWrapper>
-          <Field
-            label=""
-            component={TextBox}
-            title=""
-            type="hidden"
-            id="addressLine1"
-            name="addressLine1"
-          />
-        </HiddenAddressLineWrapper>
         <AddressSecondWrapper>
           <Field
             id="addressLine2"
@@ -184,16 +167,14 @@ export class AddressFields extends React.PureComponent {
         <StateZipCodeContainer>
           <InputFieldHalf>
             <Field
+              bounces={false}
+              component={DropDown}
               id="state"
               name="state"
-              component={DropDown}
-              heading={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
+              heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"
-              selectedValue={dropDownItem}
-              data={isCA ? CAcountriesStatesTable : UScountriesStatesTable}
-              onValueChange={itemValue => {
-                dispatch(change(formName, `${formSection}.state`, itemValue));
-                this.setState({ dropDownItem: itemValue });
+              data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
+              onValueChange={() => {
                 this.changeShipmentMethods();
               }}
               variation="secondary"
@@ -218,15 +199,9 @@ export class AddressFields extends React.PureComponent {
           name="country"
           component={DropDown}
           heading={addressFormLabels.country}
-          selectedValue={
-            country === 'US'
-              ? countriesOptionsMap[0].displayName
-              : countriesOptionsMap[1].displayName
-          }
           data={countriesOptionsMap}
           dataLocator="addnewaddress-country"
           onValueChange={itemValue => {
-            dispatch(change(formName, `${formSection}.country`, itemValue));
             this.setState({ country: itemValue });
           }}
           variation="secondary"

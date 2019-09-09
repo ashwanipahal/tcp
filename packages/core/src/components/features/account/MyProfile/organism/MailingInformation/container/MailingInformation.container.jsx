@@ -10,7 +10,7 @@ import {
   showUpdatedNotificationState,
 } from '../../../../AddressBook/container/AddressBook.selectors';
 import { getProfileInfoTileData } from '../../../../User/container/User.selectors';
-import { routerPush, isCanada } from '../../../../../../../utils';
+import { routerPush, isCanada, isMobileApp } from '../../../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import { getOnFileAddressKey } from '../../../../AddEditCreditCard/container/AddEditCreditCard.selectors';
 import internalEndpoints from '../../../../common/internalEndpoints';
@@ -22,10 +22,14 @@ export class MailingInformationContainer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const { addressResponse } = this.props;
+    const { addressResponse, onUpdateMailingAddress } = this.props;
     const isSuccess = addressResponse && addressResponse.get('addressId');
     if (isSuccess) {
-      this.backToAddressBookClick();
+      if(!isMobileApp) {
+        this.backToAddressBookClick();
+      } else if (onUpdateMailingAddress) {
+        onUpdateMailingAddress();
+      }
     }
   }
 
@@ -35,10 +39,11 @@ export class MailingInformationContainer extends PureComponent {
         address: {
           firstName: '',
           lastName: '',
+          country: isCanada() ? 'CA' : 'US',
+          addressLine2: '',
         },
         primary: addressList && addressList.size === 0,
-        country: isCanada() ? 'CA' : 'US',
-        addressLine2: '',
+
       };
     }
     return {
@@ -161,6 +166,7 @@ MailingInformationContainer.propTypes = {
   submitNewAddressFormAction: PropTypes.func.isRequired,
   verifyAddressAction: PropTypes.func.isRequired,
   addressKey: PropTypes.string,
+  onUpdateMailingAddress: PropTypes.func.isRequired,
 };
 
 export default connect(

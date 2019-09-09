@@ -39,17 +39,14 @@ export default class AddressVerification extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { verificationResult, userAddress, suggestedAddress } = this.props;
-    this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
     if (this.isValidAddress) {
       this.onConfirm();
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { verificationResult, userAddress, suggestedAddress, onError } = this.props;
+    const { verificationResult, userAddress, onError } = this.props;
     if (verificationResult !== prevProps.verificationResult) {
-      this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
       if (this.isValidAddress) {
         this.onConfirm();
       } else if (this.isError) {
@@ -246,9 +243,12 @@ export default class AddressVerification extends React.PureComponent {
       toggleAddressModal,
       labels: { verifyAddressLabels },
       setModalHeading,
+      verifyModalRendered,
     } = this.props;
+    this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
     if (this.showVerifyModal) {
       setModalHeading();
+      verifyModalRendered(true);
       return (
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -291,6 +291,7 @@ export default class AddressVerification extends React.PureComponent {
         </ScrollView>
       );
     }
+    verifyModalRendered(false);
     return null;
   }
 }
@@ -311,6 +312,7 @@ AddressVerification.propTypes = {
   resetVerifyAddressAction: PropTypes.func,
   toggleAddressModal: PropTypes.func,
   setModalHeading: PropTypes.func,
+  verifyModalRendered: PropTypes.func,
   isValidAddress: PropTypes.bool,
 };
 
@@ -330,6 +332,7 @@ AddressVerification.defaultProps = {
   resetVerifyAddressAction: () => {},
   toggleAddressModal: () => {},
   setModalHeading: () => {},
+  verifyModalRendered: () => {},
   isValidAddress: false,
 };
 

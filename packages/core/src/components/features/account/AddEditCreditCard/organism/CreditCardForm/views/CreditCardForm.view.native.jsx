@@ -136,9 +136,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   toggleModal = () => {
-    const { addAddressMount } = this.state;
+    const { addAddressMount, showAddressForm  } = this.state;
+    const { mailingAddress } = this.props;
+    const valueToChange = mailingAddress ? showAddressForm : addAddressMount;
     this.setState({
-      addAddressMount: !addAddressMount,
+      [valueToChange]: !valueToChange,
     });
   };
 
@@ -161,17 +163,19 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       showUserName,
       showEmailAddress,
       onFileAddressKey,
+      initialValues,
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
-    const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
+
+    const defaultAddress = selectedAddress ? this.getSelectedAddress(addressList, selectedAddress) : null;
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
       // Setting form value to take dropdown values.
       this.updateExpiryDate(expMonth, expYear);
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
-    const showAddressForm = pristine ? !dto.onFileAddressKey : !onFileAddressKey;
+    const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -228,7 +232,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 selectedValue={onFileAddresskey}
               />
             )}
-            {addressComponentList && addressComponentList.length > 1 && (
+            {defaultAddress && (
               <DefaultAddress>
                 <LeftBracket />
                 <Address
@@ -303,6 +307,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
 const validateMethod = createValidateMethod({
   ...getStandardConfig(['cardNumber', 'expMonth', 'expYear']),
+  address: AddressFields.addressValidationConfig,
 });
 
 export default reduxForm({

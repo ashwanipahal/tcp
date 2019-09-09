@@ -66,7 +66,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
     let selectedLabelState;
     const defaultSelectedValue = data && data.length && data[0].label; // If nothing falls under any condition then this value will be selected.
-    if (selectedValue) {
+    if (selectedValue !== null) {
       const selectedAddress = data.filter(item => item.id === selectedValue);
       selectedLabelState =
         selectedAddress && selectedAddress.length ? selectedAddress[0].label : defaultSelectedValue;
@@ -157,29 +157,16 @@ export class AddressDropdown extends React.PureComponent<Props> {
    * Open the drop down
    */
   openDropDown = () => {
-    const { data } = this.props;
-    this.setState({
-      dropDownIsOpen: true,
-    });
-    /* if (data.length === 1 && data[0].id === '') {
-      this.openAddressBook();
+    const { data, addAddress  } = this.props;
+    if (addAddress && data.length === 1 && data[0].id === '') {
+      addAddress();
     } else {
       this.setState({
         dropDownIsOpen: true,
       });
-    } */
+    }
   };
 
-  /**
-   * openAddressBook modal
-   */
-  openAddressBook = () => {
-    const { addAddress } = this.props;
-    this.setState({
-      dropDownIsOpen: false,
-    });
-    addAddress();
-  };
 
   /**
    * Handle the drop down item click
@@ -218,7 +205,6 @@ export class AddressDropdown extends React.PureComponent<Props> {
       <View style={dropDownStyle}>
         <Row
           {...this.props}
-          onStartShouldSetResponder={this.openDropDown}
           onPress={this.openDropDown}
           ref={ref => {
             this.rowMarker = ref;
