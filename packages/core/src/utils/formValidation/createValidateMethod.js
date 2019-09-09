@@ -286,7 +286,7 @@ function evaluateAllSyncRules(
       }
     });
   });
-  return errors;
+  return getErrorMessageLabels(errors, props);
 }
 
 /**
