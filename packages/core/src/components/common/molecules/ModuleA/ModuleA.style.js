@@ -61,18 +61,6 @@ const style = css`
     width: 100%;
   }
 
-  .tcp_carousel_wrapper .slick-list {
-    max-height: 311px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      max-height: 406px;
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      max-height: 474px;
-    }
-  }
-
   &.gymboree-module-a .banner-content {
     @media ${props => props.theme.mediaQuery.medium} {
       top: 40px;
@@ -89,6 +77,18 @@ const style = css`
 
   .tcp_carousel_wrapper {
     position: relative;
+  }
+
+  .tcp_carousel_wrapper .slick-list {
+    max-height: 311px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-height: 406px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 474px;
+    }
   }
 
   .button-list-wrapper {
