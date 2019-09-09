@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EmptyMiniBag from '../views/EmptyMiniBag';
+import { MiniBagHeaderVanilla } from '../views/EmptyMiniBag';
 
 describe('Empty Mini Bag Component', () => {
   it('should render correctly', () => {
@@ -14,7 +14,7 @@ describe('Empty Mini Bag Component', () => {
     };
     const userName = 'User';
     const tree = shallow(
-      <EmptyMiniBag labels={labels} userName={userName} className="cclassName" />
+      <MiniBagHeaderVanilla labels={labels} userName={userName} className="cclassName" />
     );
     expect(tree).toMatchSnapshot();
   });
@@ -29,7 +29,7 @@ describe('Empty Mini Bag Component', () => {
     };
     const userName = 'User';
     const tree = shallow(
-      <EmptyMiniBag labels={labels} userName={userName} className="className2" />
+      <MiniBagHeaderVanilla labels={labels} userName={userName} className="className2" />
     );
     expect(tree).toMatchSnapshot();
   });

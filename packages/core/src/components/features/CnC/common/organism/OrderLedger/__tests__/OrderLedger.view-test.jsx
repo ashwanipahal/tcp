@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import OrderLedger from '../views/orderLedger.view';
+import { OrderLedgerVanilla } from '../views/orderLedger.view';
 
 describe('OrderLedger Component', () => {
   let component;
@@ -23,7 +23,7 @@ describe('OrderLedger Component', () => {
   };
 
   beforeEach(() => {
-    component = shallow(<OrderLedger {...Props} />);
+    component = shallow(<OrderLedgerVanilla {...Props} />);
   });
 
   it('OrderLedger should be defined', () => {
