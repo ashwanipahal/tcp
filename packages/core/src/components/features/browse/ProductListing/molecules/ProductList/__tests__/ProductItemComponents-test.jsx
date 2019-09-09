@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import {
   productLink,
-  ProductSKUInfo,
   ProductTitle,
   ProductPricesSection,
   ProductWishlistIcon,
@@ -13,13 +12,6 @@ import {
 describe('ProductItemComponents component', () => {
   it('productLink called correctly', () => {
     expect(productLink(2, '', { preventDefault: jest.fn() })).toMatchSnapshot();
-  });
-
-  it('ProductSKUInfo called correctly', () => {
-    expect(ProductSKUInfo({ color: '', size: 12, fit: 1 })).toMatchSnapshot();
-  });
-  it('ProductSKUInfo returned null', () => {
-    expect(ProductSKUInfo({ color: false, size: false, fit: false })).toMatchSnapshot();
   });
 
   it('ProductTitle called correctly', () => {

@@ -2,12 +2,6 @@
 import processHelpers from './processHelpers';
 import { extractExtraImages } from './productListing.utils';
 
-// const apiHelper = {
-//   configOptions: {
-//     isUSStore: true,
-//     siteId: '/us',
-//   },
-// };
 export function parseBoolean(bool) {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 }

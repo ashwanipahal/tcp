@@ -73,32 +73,6 @@ exports[`ProductItemComponents component ProductPricesSection called correctly 1
 </div>
 `;
 
-exports[`ProductItemComponents component ProductSKUInfo called correctly 1`] = `
-<div
-  className="product-sku-info-container"
->
-  
-  <span
-    className="size-container"
-  >
-    Size 
-    12
-  </span>
-  <i
-    className="separator-bar-icon"
-  >
-    |
-  </i>
-  <span
-    className="fit-container"
-  >
-    1
-  </span>
-</div>
-`;
-
-exports[`ProductItemComponents component ProductSKUInfo returned null 1`] = `null`;
-
 exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
 <div
   className="product-title-container"
@@ -141,13 +115,22 @@ exports[`ProductItemComponents component ProductTitle called correctly 1`] = `
 `;
 
 exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = `
-<div
+<Styled(BodyCopy)
   className="fav-icon-wrapper"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
   isDisabled={true}
+  letterSpacing="normal"
+  lineHeight="normal"
   onClick={[MockFunction]}
+  role="button"
+  textAlign="left"
 >
   <button
-    class="clear-button"
+    className="clear-button"
   >
     <Styled(Image)
       alt="Add-to-favorite"
@@ -156,14 +139,23 @@ exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = 
       title="addToFavorite"
     />
   </button>
-</div>
+</Styled(BodyCopy)>
 `;
 
 exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
-<div
+<Styled(BodyCopy)
   className="fav-icon-wrapper"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
   isDisabled={true}
+  letterSpacing="normal"
+  lineHeight="normal"
   onClick={[MockFunction]}
+  role="button"
+  textAlign="left"
 >
   <div
     className="information-remove"
@@ -180,7 +172,7 @@ exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
       Remove this item from your Favorites List by clicking the heart icon again.
     </p>
   </div>
-</div>
+</Styled(BodyCopy)>
 `;
 
 exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
