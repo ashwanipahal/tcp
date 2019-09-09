@@ -22,9 +22,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <Styled(PaymentMethods)
     labels={Object {}}
   />
-  <Styled(CheckoutOrderInfo)
-    isGuest={false}
-  />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""

@@ -22,7 +22,6 @@ import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import { getIconPath } from '../../../../../../../utils';
 import RichText from '../../../../../../common/atoms/RichText';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
-import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import utility from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import Modal from '../../../../../../common/molecules/Modal';
@@ -39,7 +38,6 @@ export class BillingPaymentForm extends React.PureComponent {
     cvvCodeRichText: PropTypes.string,
     paymentMethodId: PropTypes.string.isRequired,
     orderHasShipping: PropTypes.bool,
-    isGuest: PropTypes.bool,
     backLinkPickup: PropTypes.string.isRequired,
     backLinkShipping: PropTypes.string.isRequired,
     nextSubmitText: PropTypes.string.isRequired,
@@ -50,7 +48,6 @@ export class BillingPaymentForm extends React.PureComponent {
     onFileCardKey: '',
     cvvCodeRichText: null,
     orderHasShipping: false,
-    isGuest: false,
   };
 
   handleEditClick = () => {};
@@ -321,7 +318,6 @@ export class BillingPaymentForm extends React.PureComponent {
       cvvCodeRichText,
       paymentMethodId,
       orderHasShipping,
-      isGuest,
       backLinkPickup,
       backLinkShipping,
       nextSubmitText,
@@ -350,7 +346,6 @@ export class BillingPaymentForm extends React.PureComponent {
               onFileCardKey,
             })
           : null}
-        <CheckoutOrderInfo isGuest={isGuest} />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
