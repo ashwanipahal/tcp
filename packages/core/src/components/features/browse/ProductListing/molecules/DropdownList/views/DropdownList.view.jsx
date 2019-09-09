@@ -200,6 +200,16 @@ class DropdownList extends React.Component {
     const isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
     const MAX_FILTER_OPTION_FOR_COLUMN = 27;
     const { sortType } = config;
+    let columnClass = '';
+    const optionLength = optionsMap.length;
+
+    columnClass =
+      optionsMap.length <= MAX_FILTER_OPTION_FOR_COLUMN ? ' item-list-column ' : ' item-list-row ';
+
+    if (optionLength === 9) {
+      columnClass = ' item-column ';
+    }
+
     return (
       <div className={`${className} common-dropdown sort-dropdown-wrapper`}>
         <div className={cssClassName('item-list-wrapper sort-list-wrapper')}>
@@ -209,9 +219,7 @@ class DropdownList extends React.Component {
               'item-list-common ',
               classNamePrefix,
               '-items-list',
-              optionsMap.length <= MAX_FILTER_OPTION_FOR_COLUMN
-                ? ' item-list-column '
-                : ' item-list-row '
+              columnClass
             )}
           >
             {optionsMap.map((item, index) => (

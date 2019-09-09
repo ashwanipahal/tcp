@@ -317,6 +317,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
           small: 6,
         }}
         ignoreGutter={{ small: true, medium: true }}
+        className="accordion-class"
       >
         <AccordionList accordionItems={accordionItems} className={className} show={show}>
           {/* eslint-disable */}
@@ -374,6 +375,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     }
     const { isSortOpenModal } = this.state;
 
+    const sortClassName = isSortOpenModal ? 'mobile-sort-container' : '';
+
     return (
       <React.Fragment>
         <form
@@ -390,7 +393,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             labels={labels}
             isSortOpenModal={isSortOpenModal}
           >
-            <div className={`${className} new-filter-and-sort-form-container`}>
+            <div className={`${className} ${sortClassName} new-filter-and-sort-form-container`}>
               {this.renderMobilePlpFilterForm()}
             </div>
           </FilterModal>

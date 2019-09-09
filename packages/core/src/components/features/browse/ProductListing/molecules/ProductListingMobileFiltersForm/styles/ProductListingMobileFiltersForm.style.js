@@ -1,12 +1,65 @@
 import { css } from 'styled-components';
 
 export default css`
+  .item-common {
+    margin-bottom: 8px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 120px;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: 96px;
+      .item-select {
+        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+    }
+  }
+  &.mobile-sort-container {
+    margin-top: 0;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      .custom-select-common {
+        width: 100%;
+        margin: 0;
+      }
+      .item-list-wrapper {
+        max-width: 600px;
+      }
+      .common-dropdown,
+      .common-dropdown .item-list-wrapper {
+        width: 100%;
+      }
+      .common-dropdown .item-list-common {
+        max-width: 100%;
+      }
+    }
+
+    .common-dropdown .item-common {
+      @media ${props => props.theme.mediaQuery.mediumMax} {
+        width: 100%;
+      }
+    }
+  }
   &.new-filter-and-sort-form-container {
     margin-top: 14px;
 
     .filter-row {
       margin-bottom: 7px;
     }
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin: 14px 14px 0;
+      width: auto;
+      padding: 0;
+
+      .container-accordion {
+        padding: 0;
+      }
+    }
+  }
+
+  .accordion-class {
+    width: 100%;
   }
 
   .open-filter-button {
@@ -33,25 +86,13 @@ export default css`
     }
   }
 
-  .item-common {
-    margin-bottom: 18px;
-
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 120px;
-
-      .item-select {
-        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      }
-    }
-  }
-
   .common-dropdown {
     width: 98%;
     position: relative;
     border: 0;
     padding-top: 6px;
     padding-bottom: 0;
-    margin: 0 auto;
+    margin: auto;
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin: 8px auto 0;
@@ -60,14 +101,9 @@ export default css`
     .item-list-common {
       max-width: 98%;
       margin: 0 auto;
-    }
 
-    .item-common {
-      @media ${props => props.theme.mediaQuery.mediumOnly} {
-        width: 120px;
-      }
       @media ${props => props.theme.mediaQuery.smallOnly} {
-        width: 104px;
+        max-width: 99%;
       }
     }
 
@@ -94,7 +130,7 @@ export default css`
 
     .size-title {
       @media ${props => props.theme.mediaQuery.smallOnly} {
-        width: 104px;
+        width: 96px;
       }
     }
 

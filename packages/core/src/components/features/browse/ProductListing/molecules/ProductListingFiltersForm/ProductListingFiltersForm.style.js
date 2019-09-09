@@ -6,11 +6,14 @@ export default css`
   margin-bottom: 0px;
 
   .custom-select-common {
-    display: inline-block;
+    display: flex;
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-    border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 
+    @media ${props => props.theme.mediaQuery.large} {
+      border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
+      display: inline-block;
+    }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin: 0;
     }

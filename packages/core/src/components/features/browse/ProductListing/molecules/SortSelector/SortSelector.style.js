@@ -28,15 +28,26 @@ export default css`
       no-repeat right ${props => props.theme.spacing.ELEM_SPACING.SM};
     background-size: 25px 25px;
   }
-  .item-select {
+  .sort-item-list .item-select {
     .sort-title {
       font-size: ${props => props.theme.typography.fontSizes.fs13};
       font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      background: none;
     }
   }
   .sort-list-wrapper {
     overflow-y: auto;
     margin-bottom: 0;
+    .item-common {
+      width: 100%;
+      @media ${props => props.theme.mediaQuery.mediumMax} {
+        margin: 0;
+        padding: 8px;
+      }
+    }
   }
   .sort-dropdown-wrapper {
     margin-left: 8px;

@@ -14,17 +14,16 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
       <div
         className=" new-filter-and-sort-form-container"
       >
-        <div>
-          <div
-            className="filters-sorting-container"
-          >
-            <Styled(Col)
-              colSize={
-                Object {
-                  "large": 12,
-                  "medium": 8,
-                  "small": 6,
-                }
+        <div
+          className="filters-sorting-container"
+        >
+          <Styled(Col)
+            className="accordion-class"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
               }
               ignoreGutter={
                 Object {

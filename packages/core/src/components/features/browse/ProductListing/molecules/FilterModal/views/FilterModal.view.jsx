@@ -103,15 +103,7 @@ class FilterModal extends React.PureComponent<Props> {
                     data-locator="plp_filter_apply_button"
                     fill="BLACK"
                   >
-                    <Button
-                      buttonVariation="fixed-width"
-                      type="button"
-                      className="gallery-button-left"
-                      data-locator="view_gallery_button"
-                      fill="BLACK"
-                    >
-                      {labels.lbl_apply}
-                    </Button>
+                    {labels.lbl_apply}
                   </Button>
                 </Col>
               </Row>
