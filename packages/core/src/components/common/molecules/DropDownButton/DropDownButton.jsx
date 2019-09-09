@@ -6,7 +6,7 @@ import ButtonCTA from '../ButtonCTA';
 import style from './DropDownButton.style';
 import { generateUniqueKeyUsingLabel } from '../../../../utils';
 
-class DropDownButton extends React.Component {
+class DropDownButton extends React.PureComponent {
   state = {
     open: false,
   };
