@@ -26,11 +26,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
           "small": 2,
         }
       }
-      offsetLeft={
-        Object {
-          "small": 1,
-        }
-      }
     >
       <Field
         component={
@@ -176,7 +171,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="radio-method payment-method-box"
+      className="radio-method payment-method-box payment-method-paypal-img"
       colSize={
         Object {
           "large": 6,
@@ -325,16 +320,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
         name="paymentMethodId"
         selectedValue="payPal"
         subtitle=""
+        title=""
         variation="secondary"
-      />
-      <img
-        className="payment-mothod-paypal-img"
-        data-locator="payment-mothod-paypal"
-        src="/static/images/paypal.svg"
       />
     </Styled(Col)>
     <Styled(Col)
-      className="radio-method payment-method-box hideOnDesktop"
+      className="radio-method payment-method-box payment-method-venmo-img hideOnDesktop"
       colSize={
         Object {
           "large": 0,
@@ -482,12 +473,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
         name="paymentMethodId"
         selectedValue="Venmo"
         subtitle=""
+        title=""
         variation="secondary"
-      />
-      <img
-        className="payment-mothod-venmo-img"
-        data-locator="payment-mothod-venmo"
-        src="/static/images/venmo.svg"
       />
     </Styled(Col)>
   </Styled(Row)>

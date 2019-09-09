@@ -9,7 +9,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
-import AddressDropdown from '../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
+import CreditCardDropdown from './CreditCardDropdown.view';
 import Card from '../../../../../../common/molecules/Card';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -25,6 +25,8 @@ import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import utility from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
+import Modal from '../../../../../../common/molecules/Modal';
+import DropdownList from '../../../../../../common/molecules/DropdownList';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = {
@@ -32,7 +34,6 @@ export class BillingPaymentForm extends React.PureComponent {
     className: PropTypes.string,
     cardList: PropTypes.shape({}).isRequired,
     onFileCardKey: PropTypes.string,
-    isMobile: PropTypes.bool,
     initialValues: PropTypes.shape({}).isRequired,
     labels: PropTypes.shape({}).isRequired,
     cvvCodeRichText: PropTypes.string,
@@ -47,7 +48,6 @@ export class BillingPaymentForm extends React.PureComponent {
   static defaultProps = {
     className: '',
     onFileCardKey: '',
-    isMobile: false,
     cvvCodeRichText: null,
     orderHasShipping: false,
     isGuest: false,
@@ -55,7 +55,7 @@ export class BillingPaymentForm extends React.PureComponent {
 
   handleEditClick = () => {};
 
-  getCardOptions = (cardList, labels, isMobile) => {
+  getCardOptions = (cardList, labels) => {
     let cardOptions = cardList.map(card => ({
       value: card.creditCardId,
       title: `${card.addressDetails.firstName} ${card.addressDetails.lastName} ${
@@ -67,7 +67,6 @@ export class BillingPaymentForm extends React.PureComponent {
           isDefault={card.defaultInd}
           cardNumber={`${labels.lbl_billing_creditCardEnd}${card.accountNo.slice(-4)}`}
           labels={labels}
-          isMobile={isMobile}
         />
       ),
     }));
@@ -98,7 +97,7 @@ export class BillingPaymentForm extends React.PureComponent {
         card.ccType !== constants.ACCEPTED_CREDIT_CARDS.VENMO
     );
 
-  getCVVInfoRichText = cvvCodeRichText => {
+  getCVVInfoRichText = ({ cvvCodeRichText }) => {
     return (
       <RichText
         richTextHtml={cvvCodeRichText}
@@ -108,20 +107,52 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
-  getCvvInfo = ({ cvvCodeRichText }) => (
-    <ReactTooltip
-      fontFamily="secondary"
-      message={this.getCVVInfoRichText({ cvvCodeRichText })}
-      aligned="right"
-    >
-      <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
-    </ReactTooltip>
-  );
+  getCvvInfo = ({ cvvCodeRichText }) => {
+    return (
+      <ReactTooltip
+        fontFamily="secondary"
+        message={this.getCVVInfoRichText({ cvvCodeRichText })}
+        aligned="right"
+      >
+        <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+      </ReactTooltip>
+    );
+  };
+
+  getCreditCardDropDown = (options, onClickHandler, activeValue, onClose) => {
+    return (
+      <>
+        <Modal
+          fixedWidth
+          heading="SELECT CARD"
+          overlayClassName="TCPModal__Overlay"
+          className="TCPModal__Content_Modal hideOnDesktop"
+          onRequestClose={onClose}
+          maxWidth="450px"
+          minHeight="643px"
+          shouldCloseOnOverlayClick={false}
+          isOpen
+        >
+          <DropdownList
+            optionsMap={options}
+            clickHandler={onClickHandler}
+            activeValue={activeValue}
+            className="custom-select-dropDownList"
+          />
+        </Modal>
+        <DropdownList
+          optionsMap={options}
+          clickHandler={onClickHandler}
+          activeValue={activeValue}
+          className="custom-select-dropDownList hideOnMobile"
+        />
+      </>
+    );
+  };
 
   getCreditCardWrapper = ({
     labels,
     creditCardList,
-    isMobile,
     selectedCard,
     cvvCodeRichText,
     onFileCardKey,
@@ -151,11 +182,12 @@ export class BillingPaymentForm extends React.PureComponent {
                   selectListTitle=""
                   name="onFileCardKey"
                   id="onFileCardKey"
-                  component={AddressDropdown}
+                  component={CreditCardDropdown}
                   dataLocator="payment-billingaddressdd"
-                  options={this.getCardOptions(creditCardList, labels, isMobile)}
-                  showModal={isMobile}
-                  modalHeading="SELECT CARD"
+                  options={this.getCardOptions(creditCardList, labels)}
+                  childrenComp={(options, onClickHandler, activeValue, onClose) =>
+                    this.getCreditCardDropDown(options, onClickHandler, activeValue, onClose)
+                  }
                 />
               </Col>
             </Row>
@@ -285,7 +317,6 @@ export class BillingPaymentForm extends React.PureComponent {
       handleSubmit,
       cardList,
       onFileCardKey,
-      isMobile,
       labels,
       cvvCodeRichText,
       paymentMethodId,
@@ -314,7 +345,6 @@ export class BillingPaymentForm extends React.PureComponent {
           ? this.getCreditCardWrapper({
               labels,
               creditCardList,
-              isMobile,
               selectedCard,
               cvvCodeRichText,
               onFileCardKey,

@@ -24,8 +24,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
   .cardImage-img-wrapper {
     display: flex;
     margin-bottom: auto;
-    width: 47px;
-    height: 30px;
     border: 1px solid ",
           [Function],
           ";
@@ -46,6 +44,25 @@ exports[`ButtonList component renders correctly without props 1`] = `
   .card-carddefaultbadge {
     position: absolute;
     right: 2px;
+  }
+  .hideOnMobile {
+    @media ",
+          [Function],
+          " {
+      display: none;
+    }
+  }
+  .hideOnDesktop {
+    @media ",
+          [Function],
+          " {
+      display: none;
+    }
+    @media ",
+          [Function],
+          " {
+      display: none;
+    }
   }
 ",
           ";

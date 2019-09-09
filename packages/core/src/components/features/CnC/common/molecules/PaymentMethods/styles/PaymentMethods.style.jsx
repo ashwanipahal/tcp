@@ -2,14 +2,12 @@ import { css } from 'styled-components';
 
 const styles = css`
   .payment-method-box {
+    box-sizing: border-box;
     border: 1px solid ${props => props.theme.colorPalette.gray[600]};
     background: ${props => props.theme.colors.WHITE};
-    height: 51px;
     padding: 8px;
-    box-sizing: border-box;
     @media ${props => props.theme.mediaQuery.smallMax} {
       margin: 0px;
-      height: 42px;
       padding: 5px 0px;
       width: 33%;
     }
@@ -20,57 +18,56 @@ const styles = css`
   .payment-method-box .radio-button {
     top: 7px;
   }
+
   .payment-method-box > label {
     padding-top: 5px;
     z-index: 1;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       background-color: transparent;
-      height: auto;
       border-radius: 0px;
       border: 0px;
       text-align: center;
     }
-    ::after {
-      content: '§';
-      display: inline-block;
-      height: 10px;
-      width: 10px;
-      vertical-align: top;
-      font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
-      background: transparent url('/static/images/paypal.svg') no-repeat 0 0;
-    }
   }
-  .payment-method-box .input-radio-title {
-    color: transparent !important;
+  .payment-method-paypal-img > label::after {
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
+    background: url('/static/images/paypal.svg') no-repeat -9px -21px;
+    background-size: 88px 64px;
+    width: 71px;
+    height: 22px;
   }
-  & .credit-card .input-radio-title {
+  .payment-method-venmo-img > label::after {
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
+    background: url('/static/images/venmo.svg') no-repeat -9px -21px;
+    background-size: 88px 64px;
+    width: 71px;
+    height: 22px;
+  }
+
+  && .credit-card .input-radio-title {
     @media ${props => props.theme.mediaQuery.smallOnly} {
       font-size: ${props => props.theme.typography.fontSizes.fs13};
       font-weight: ${props => props.theme.typography.fontWeights.extrabold};
       text-transform: uppercase;
+      position: relative;
+      top: 3px;
     }
-    color: ${props => props.theme.colors.BLACK} !important;
+    color: ${props => props.theme.colors.BLACK};
   }
-  .payment-mothod-paypal-img {
-    left: 21px;
-    position: relative;
-    top: -26px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      left: 51px;
-    }
-  }
-  .payment-mothod-venmo-img {
-    left: 21px;
-    position: relative;
-    top: -26px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      left: 51px;
-    }
-  }
+
   @media ${props => props.theme.mediaQuery.smallMax} {
     div[class='radio-button-checked'] {
       border-bottom: solid ${props => props.theme.spacing.ELEM_SPACING.XXXS}
         ${props => props.theme.colors.BLACK};
+    }
+    .radio-button-checked + .input-radio-title {
+      color: ${props => props.theme.colors.BLACK};
     }
   }
   .hideOnDesktop {

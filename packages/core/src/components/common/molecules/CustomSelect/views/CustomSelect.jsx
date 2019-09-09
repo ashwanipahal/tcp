@@ -5,7 +5,6 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CustomSelect.style';
 import withStyles from '../../../hoc/withStyles';
 import CustomSelectConst from './CustomSelect.constants';
-import Modal from '../../Modal';
 
 class CustomSelect extends React.Component<Props> {
   constructor(props) {
@@ -74,15 +73,11 @@ class CustomSelect extends React.Component<Props> {
     clickHandler(e, value, title);
   };
 
-  getDropDownList = () => {
-    const { options, renderList: RenderList } = this.props;
+  getDropDownListWithChild = () => {
+    const { options, childrenComp } = this.props;
     const { activeValue } = this.state;
-    return RenderList ? (
-      <RenderList
-        optionsMap={options}
-        clickHandler={this.onClickHandler}
-        activeValue={activeValue}
-      />
+    return childrenComp !== null ? (
+      childrenComp(options, this.onClickHandler, activeValue, this.onClose)
     ) : (
       <DropdownList
         optionsMap={options}
@@ -93,31 +88,30 @@ class CustomSelect extends React.Component<Props> {
     );
   };
 
+  getDropDownList = () => {
+    const { options, renderList: RenderList } = this.props;
+    const { activeValue } = this.state;
+    return RenderList ? (
+      <RenderList
+        optionsMap={options}
+        clickHandler={this.onClickHandler}
+        activeValue={activeValue}
+      />
+    ) : (
+      this.getDropDownListWithChild()
+    );
+  };
+
   render() {
     const { toggle, activeTitle } = this.state;
-    const { className, selectListTitle, showModal, modalHeading } = this.props;
+    const { className, selectListTitle } = this.props;
     return (
       <BodyCopy component="div" className={`${className} custom-select`}>
         {selectListTitle && <span>{`${selectListTitle}:`}</span>}
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
-        {toggle && !showModal && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
-        {toggle && showModal && (
-          <Modal
-            fixedWidth
-            heading={modalHeading}
-            overlayClassName="TCPModal__Overlay"
-            className="TCPModal__Content_Modal"
-            isOpen={toggle}
-            onRequestClose={this.onClose}
-            maxWidth="450px"
-            minHeight="643px"
-            shouldCloseOnOverlayClick={false}
-          >
-            <BodyCopy>{this.getDropDownList()}</BodyCopy>
-          </Modal>
-        )}
+        {toggle && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
       </BodyCopy>
     );
   }
@@ -130,8 +124,7 @@ CustomSelect.propTypes = {
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
-  showModal: PropTypes.bool,
-  modalHeading: PropTypes.string,
+  childrenComp: PropTypes.node,
 };
 
 CustomSelect.defaultProps = {
@@ -140,8 +133,7 @@ CustomSelect.defaultProps = {
   activeTitle: '',
   activeValue: '',
   clickHandler: () => {},
-  showModal: false,
-  modalHeading: '',
+  childrenComp: null,
 };
 
 export default withStyles(CustomSelect, styles);

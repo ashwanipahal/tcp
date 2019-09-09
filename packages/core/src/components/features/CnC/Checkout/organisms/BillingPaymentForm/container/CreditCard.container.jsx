@@ -5,6 +5,7 @@ import { getCardListState } from '../../../../../account/Payment/container/Payme
 import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import { fetchModuleX } from './CreditCard.action';
+import constants from './CreditCard.constants';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   constructor(props) {
@@ -21,19 +22,22 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     cardList &&
     cardList.size > 0 &&
     cardList.filter(
-      card => card.ccType !== 'GiftCard' && card.ccType !== 'VENMO' && card.defaultInd
+      card =>
+        card.ccType !== constants.ACCEPTED_CREDIT_CARDS.GIFT_CARD &&
+        card.ccType !== constants.ACCEPTED_CREDIT_CARDS.VENMO &&
+        card.defaultInd
     );
 
   getInitialValues = cardList => {
     if (!cardList) {
       return {
         onFileCardKey: 0,
-        paymentMethodId: 'creditCard',
+        paymentMethodId: constants.PAYMENT_METHOD_CREDIT_CARD,
       };
     }
     return {
       onFileCardKey: cardList.get(0).creditCardId,
-      paymentMethodId: 'creditCard',
+      paymentMethodId: constants.PAYMENT_METHOD_CREDIT_CARD,
     };
   };
 
@@ -45,7 +49,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     const { cardList, handleSubmit } = this.props;
     const cardDetails = this.getSelectedCard(cardList, data.onFileCardKey);
 
-    const isCardTypeRequired = cardDetails.cardType !== 'PLACE CARD';
+    const isCardTypeRequired = cardDetails.cardType !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
     handleSubmit({
       address: {
         ...cardDetails.addressDetails,
@@ -83,7 +87,6 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       cardList,
       labels,
       onFileCardKey,
-      isMobile,
       paymentMethodId,
       getCVVCodeInfo,
       cvvCodeInfoContentId,
@@ -93,7 +96,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       backLinkPickup,
       backLinkShipping,
       nextSubmitText,
-      // formErrorMessage,
+      formErrorMessage,
     } = this.props;
     if (cvvCodeInfoContentId) {
       getCVVCodeInfo(cvvCodeInfoContentId);
@@ -104,7 +107,6 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         cardList={cardList}
         labels={labels}
         onFileCardKey={onFileCardKey}
-        isMobile={isMobile}
         initialValues={this.initialValues}
         paymentMethodId={paymentMethodId}
         getCVVCodeInfo={getCVVCodeInfo}
@@ -116,7 +118,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         backLinkPickup={backLinkPickup}
         backLinkShipping={backLinkShipping}
         nextSubmitText={nextSubmitText}
-        // formErrorMessage={formErrorMessage}
+        formErrorMessage={formErrorMessage}
       />
     );
   }
@@ -132,13 +134,12 @@ export const mapDispatchToProps = dispatch => {
     },
   };
 };
-/* istanbul ignore next */
+
 const mapStateToProps = (state, ownProps) => {
   return {
     cardList: getCardListState(state),
     labels: CreditCardSelector.getCreditCardLabels(state),
     onFileCardKey: CreditCardSelector.getOnFileCardKey(state, ownProps),
-    isMobile: CreditCardSelector.getIsMobile(),
     paymentMethodId: CreditCardSelector.getPaymentMethodId(state, ownProps),
     cvvCodeInfoContentId: CreditCardSelector.getCVVCodeInfoContentId(state),
     cvvCodeRichText: CreditCardSelector.getCVVCodeRichTextSelector(state),

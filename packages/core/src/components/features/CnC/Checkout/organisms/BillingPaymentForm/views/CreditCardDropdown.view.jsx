@@ -7,7 +7,7 @@ const getActiveTitle = (options, value) => {
   return selectedOption && selectedOption.title;
 };
 
-export const AddressDropdown = ({ options, input, selectListTitle }) => {
+const CreditCardDropdown = ({ options, input, selectListTitle, childrenComp }) => {
   return (
     <CustomSelect
       options={options}
@@ -15,14 +15,20 @@ export const AddressDropdown = ({ options, input, selectListTitle }) => {
       activeTitle={getActiveTitle(options, input.value)}
       clickHandler={(e, value) => input.onChange(value)}
       selectListTitle={selectListTitle}
+      childrenComp={childrenComp}
     />
   );
 };
 
-AddressDropdown.propTypes = {
+CreditCardDropdown.propTypes = {
   options: PropTypes.shape([]).isRequired,
   input: PropTypes.shape({}).isRequired,
   selectListTitle: PropTypes.string.isRequired,
+  childrenComp: PropTypes.node,
 };
 
-export default AddressDropdown;
+CreditCardDropdown.defaultProps = {
+  childrenComp: null,
+};
+
+export default CreditCardDropdown;

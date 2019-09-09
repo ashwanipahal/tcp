@@ -7,7 +7,6 @@ import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/PaymentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { getIconPath } from '../../../../../../../utils';
 
 const PaymentMethods = ({ className, paymentHeader, labels }) => {
   return (
@@ -23,7 +22,6 @@ const PaymentMethods = ({ className, paymentHeader, labels }) => {
       <Row fullBleed className={className}>
         <Col
           colSize={{ small: 2, medium: 4, large: 6 }}
-          offsetLeft={{ small: 1 }}
           className="radio-method payment-method-box credit-card"
         >
           <Field
@@ -39,44 +37,32 @@ const PaymentMethods = ({ className, paymentHeader, labels }) => {
         </Col>
         <Col
           colSize={{ small: 2, medium: 4, large: 6 }}
-          className="radio-method payment-method-box"
+          className="radio-method payment-method-box payment-method-paypal-img"
         >
           <Field
             component={LabeledRadioButton}
             key="PayPal"
             selectedValue="payPal"
-            title={labels.lbl_billing_paypal}
+            title=""
             subtitle=""
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
           />
-          <img
-            alt={labels.lbl_billing_paypal}
-            className="payment-mothod-paypal-img"
-            src={getIconPath('paypal-icon')}
-            data-locator="payment-mothod-paypal"
-          />
         </Col>
 
         <Col
           colSize={{ small: 2, medium: 4, large: 0 }}
-          className="radio-method payment-method-box hideOnDesktop"
+          className="radio-method payment-method-box payment-method-venmo-img hideOnDesktop"
         >
           <Field
             component={LabeledRadioButton}
             key="Venmo"
             selectedValue="Venmo"
-            title={labels.lbl_billing_venmo}
+            title=""
             subtitle=""
             name="paymentMethodId"
             variation="secondary"
-          />
-          <img
-            alt={labels.lbl_billing_venmo}
-            className="payment-mothod-venmo-img"
-            src={getIconPath('venmo-blue-acceptance-mark')}
-            data-locator="payment-mothod-venmo"
           />
         </Col>
       </Row>

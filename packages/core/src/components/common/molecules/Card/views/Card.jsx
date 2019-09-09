@@ -51,11 +51,10 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
   );
 };
 
-const getSelectWrapper = (isMobile, isDefault) => {
+const getSelectWrapper = isDefault => {
   return (
-    isMobile &&
     !isDefault && (
-      <BodyCopy component="div" textAlign="right" fontFamily="secondary">
+      <BodyCopy component="div" textAlign="right" fontFamily="secondary" className="hideOnDesktop">
         <Button buttonVariation="variable-width" fill="BLACK">
           SELECT
         </Button>
@@ -72,7 +71,6 @@ const Card = ({
   cardNumber,
   showAddress,
   labels,
-  isMobile,
 }) =>
   card && (
     <BodyCopy component="div" fontSize="fs16" color="text.primary" className={className}>
@@ -104,7 +102,7 @@ const Card = ({
       ) : (
         <BodyCopy component="div" fontFamily="secondary">
           <CardImage card={card} cardNumber={cardNumber} />
-          {getSelectWrapper(isMobile, isDefault)}
+          {getSelectWrapper(isDefault)}
         </BodyCopy>
       )}
       {showAddress && getFormattedAddress(card.addressDetails, dataLocatorPrefix)}
@@ -113,8 +111,8 @@ const Card = ({
           {card.addressDetails.country}
         </BodyCopy>
       )}
-      {isMobile && (
-        <BodyCopy component="div" textAlign="right">
+      {labels && (
+        <BodyCopy component="div" textAlign="right" className="hideOnDesktop">
           <Anchor
             fontSizeVariation="medium"
             underline
@@ -139,14 +137,12 @@ Card.propTypes = {
   cardNumber: PropTypes.string,
   showAddress: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
-  isMobile: PropTypes.bool,
 };
 
 Card.defaultProps = {
   isDefault: false,
   cardNumber: '',
   showAddress: false,
-  isMobile: false,
 };
 
 export default withStyles(Card, CardStyle);

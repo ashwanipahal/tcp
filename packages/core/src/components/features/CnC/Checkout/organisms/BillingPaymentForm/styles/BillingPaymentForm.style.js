@@ -25,8 +25,6 @@ export default css`
   .cardImage-img-wrapper {
     display: flex;
     margin-bottom: auto;
-    width: 47px;
-    height: 30px;
     border: 1px solid ${props => props.theme.colorPalette.gray[500]};
     border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
     background-color: ${props => props.theme.colors.WHITE};
@@ -73,7 +71,40 @@ export default css`
   .cvv-code-info {
     font-family: ${props => props.theme.typography.fonts.secondary};
   }
-  .tooltip-bubble {
-    min-width: 238px !important;
+  && .tooltip-bubble {
+    min-width: 238px;
+  }
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .TCPModal__Content_Modal .custom-select-dropDownList {
+      position: relative;
+    }
+    .TCPModal__Content_Modal .dropdownDivOverFlow {
+      max-height: none;
+    }
+    .TCPModal__Content_Modal .dropDownListwrapper {
+      border: 0px;
+    }
+    .TCPModal__Content_Modal .dropdownliBottomBorder {
+      border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+      margin: 20px 10px;
+    }
+    .TCPModal__Content_Modal .ulBorderWithLastRow li:last-child {
+      border: none;
+      padding: 0px;
+      width: 95%;
+    }
+  }
+  .hideOnMobile {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: none;
+    }
+  }
+  .hideOnDesktop {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
   }
 `;
