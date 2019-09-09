@@ -48,7 +48,10 @@ export default css`
     width: auto;
   }
   .cartCount {
-    background: ${props => props.theme.colorPalette.blue['800']};
+    background: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.primary.dark
+        : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
     margin: 1px 0px 0px -8px;

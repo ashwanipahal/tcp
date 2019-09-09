@@ -14,6 +14,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
     prev
   </button>
   <Styled(Anchor)
+    asPath="url"
     handleLinkClick={[Function]}
     inheritedStyles={
       Array [
@@ -23,7 +24,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
       ]
     }
     title=""
-    to="url"
+    to="/p?pid=undefined"
     unbxdattr="product"
     unbxdparam_prank={1}
     unbxdparam_sku={1}
