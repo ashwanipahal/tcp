@@ -286,7 +286,7 @@ class ProductListingFiltersForm extends React.Component {
    * @function renderDesktop renders the filter view for desktop
    * @param {Object} appliedFilters - filters if already applied
    */
-  renderDesktopAndMobile(appliedFilters) {
+  renderFilters(appliedFilters) {
     const {
       filtersMaps,
       totalProductsCount,
@@ -415,7 +415,7 @@ class ProductListingFiltersForm extends React.Component {
       appliedFilters.push(selectedFacet);
     }
 
-    return <Fragment>{this.renderDesktopAndMobile(appliedFilters)}</Fragment>;
+    return <Fragment>{this.renderFilters(appliedFilters)}</Fragment>;
   }
 }
 

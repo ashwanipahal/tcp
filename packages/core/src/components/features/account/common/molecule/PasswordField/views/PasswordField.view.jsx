@@ -47,7 +47,11 @@ export class PasswordField extends React.PureComponent {
     return (
       <BodyCopy component="div" className={className}>
         <TextBox {...otherProps} type={type} />
-        <BodyCopy component="div" className="rightAlignedContent" textAlign="center">
+        <BodyCopy
+          component="div"
+          className="rightAlignedContent show-hide-password"
+          textAlign="center"
+        >
           {tooltipContent && (
             <ReactTooltip
               message={tooltipContent}

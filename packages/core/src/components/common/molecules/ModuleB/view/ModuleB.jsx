@@ -76,21 +76,33 @@ const ModuleB = props => {
   };
 
   return (
-    <Row>
-      <Col className={`${className} parent-wrapper`} colSize={colSize}>
-        <ImageBanner {...imageBannerProps} />
-        <ButtonList
-          className="button-list"
-          buttonsData={ctaItems}
-          buttonListVariation={buttonListCtaType}
-          dataLocatorDropDown={getLocator('moduleB_dropdown')}
-          dataLocatorDivisionImages={getLocator('moduleB_cta_image')}
-          dataLocatorTextCta={getLocator('moduleB_cta_links')}
-          dropdownLabel={expandableTitle}
-          {...buttonListProps}
-        />
-      </Col>
-    </Row>
+    <div className={`${className} parent-wrapper`}>
+      <Row>
+        <Col colSize={colSize}>
+          <ImageBanner {...imageBannerProps} />
+        </Col>
+      </Row>
+      <Row
+        fullBleed={{
+          small: true,
+          medium: false,
+          desktop: false,
+        }}
+      >
+        <Col colSize={colSize}>
+          <ButtonList
+            className="button-list"
+            buttonsData={ctaItems}
+            buttonListVariation={buttonListCtaType}
+            dataLocatorDropDown={getLocator('moduleB_dropdown')}
+            dataLocatorDivisionImages={getLocator('moduleB_cta_image')}
+            dataLocatorTextCta={getLocator('moduleB_cta_links')}
+            dropdownLabel={expandableTitle}
+            {...buttonListProps}
+          />
+        </Col>
+      </Row>
+    </div>
   );
 };
 

@@ -105,6 +105,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     };
   }
 
+  /**
+   * @function getAppliedFiltersCount This gets the applied filter count
+   */
   getAppliedFiltersCount() {
     const { initialValues } = this.props;
     let count = 0;
@@ -120,6 +123,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     return count;
   }
 
+  /**
+   * @function getSelectedFiltersCount This gets the selected filter count
+   */
   getSelectedFiltersCount() {
     const { filtersLength } = this.props;
     return (filtersLength && Object.keys(filtersLength) > 0 && this.sumValues(filtersLength)) || 0;
@@ -127,6 +133,10 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
   sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 
+  /**
+   * @function captureFilterRef This function gets all the filter row ref and push it to an array.
+   * @param {Array} ref - list of filter references
+   */
   captureFilterRef = ref => {
     if (!ref) return;
     const typeRef = ref && ref.getRenderedComponent();
@@ -149,7 +159,13 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @summary This handles to render the desktop filter fields
    * @param none
    */
-  hideModal = () => {
+  hideModal = isApplyFilter => {
+    const { removeAllFilters } = this.props;
+
+    if (removeAllFilters && !isApplyFilter) {
+      removeAllFilters();
+    }
+
     this.setState({ show: false });
     document.body.style.overflow = 'unset';
     document.body.style.position = 'static';
@@ -333,6 +349,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       handleSubmit,
       handleFilterSubmit,
       labels,
+      removeAllFilters,
       handleImmediateSubmit,
     } = this.props;
     const { isOpenFilterSection, show } = this.state;
@@ -361,7 +378,10 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       <React.Fragment>
         <form
           className="available-filters-sorting-container"
-          onSubmit={handleSubmit(handleImmediateSubmit)}
+          onSubmit={handleSubmit(formValues => {
+            this.hideModal(true);
+            handleImmediateSubmit(formValues);
+          })}
         >
           <FilterModal
             show={show}
@@ -389,6 +409,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
               className={classNames}
               data-locator="view_gallery_button"
               onClick={this.showModal}
+              id="filter-open"
             >
               {labels.lbl_filter}
             </Button>
@@ -425,12 +446,14 @@ ProductListingMobileFiltersForm.propTypes = {
   }),
   handleSubmit: PropTypes.func.isRequired,
   handleSubmitOnChange: PropTypes.func,
+  removeAllFilters: PropTypes.func,
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
   filtersMaps: {},
   labels: {},
   handleSubmitOnChange: () => {},
+  removeAllFilters: () => {},
 };
 export default withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle);
 

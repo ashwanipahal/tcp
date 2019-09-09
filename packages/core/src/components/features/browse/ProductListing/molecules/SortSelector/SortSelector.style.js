@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { getIconPath } from '../../../../../../utils';
 
-const selectedIcon = getIconPath('selected-item');
+const selectedIcon = getIconPath('selected-item-check-no-circle');
 
 export default css`
   .sort-select-title {

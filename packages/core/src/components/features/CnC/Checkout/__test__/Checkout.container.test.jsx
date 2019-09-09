@@ -84,6 +84,23 @@ describe('CheckoutPage Container', () => {
       dispatchProps.setCheckoutStage();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
+    it('should return an action updateShippingMethodSelection which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.updateShippingMethodSelection();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('should return an action updateShippingAddressData which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.updateShippingAddressData();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('should return an action addNewShippingAddressData which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.addNewShippingAddressData();
+    });
 
     it('should return an action submitBilling which will call dispatch function on execution', () => {
       const dispatch = jest.fn();

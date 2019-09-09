@@ -38,11 +38,9 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 120px;
-      margin-right: 0;
-      padding-left: 0;
 
       .item-select {
-        padding-left: 20px;
+        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
     }
   }
@@ -55,19 +53,28 @@ export default css`
     padding-bottom: 0;
     margin: 0 auto;
 
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin: 8px auto 0;
+    }
+
     .item-list-common {
       max-width: 98%;
       margin: 0 auto;
+    }
 
-      @media ${props => props.theme.mediaQuery.medium} {
-        max-width: 95%;
+    .item-common {
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        width: 120px;
+      }
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 104px;
       }
     }
 
     .item-list-wrapper {
       max-height: 500px;
       text-align: left;
-      width:99%;
+      width: 99%;
       margin: 0 auto;
     }
 
@@ -83,6 +90,12 @@ export default css`
     .color-name {
       font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
       vertical-align: top;
+    }
+
+    .size-title {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 104px;
+      }
     }
 
     .color-chip {

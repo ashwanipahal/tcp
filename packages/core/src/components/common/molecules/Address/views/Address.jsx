@@ -9,6 +9,7 @@ const getAddressfromDiffLines = (address, dataLocatorPrefix) => {
         fontFamily="secondary"
         tag="p"
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}
+        className="address"
       >
         {address.addressLine1}
       </BodyCopy>
@@ -16,6 +17,7 @@ const getAddressfromDiffLines = (address, dataLocatorPrefix) => {
         fontFamily="secondary"
         tag="p"
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}
+        className="address"
       >
         {address.addressLine2}
       </BodyCopy>
@@ -31,6 +33,7 @@ const getAddessLines = ({ address, dataLocatorPrefix }) => {
         component="p"
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
         fontFamily="secondary"
+        className="address"
       >
         {addressLine}
       </BodyCopy>
@@ -44,6 +47,7 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
         component="p"
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
         fontFamily="secondary"
+        className="address"
       >
         {`${address.city ? `${address.city}, ` : ''}${address.state ? `${address.state} ` : ''}${
           address.zipCode
@@ -77,7 +81,7 @@ const Address = ({
           component="p"
           fontWeight={fontWeight}
           fontFamily="secondary"
-          className="addressTile__name"
+          className="addressTile__name address"
           data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
         >
           {`${address.firstName} ${address.lastName}${isDefault ? ' (Default)' : ''}`}
@@ -88,12 +92,12 @@ const Address = ({
         : getAddressfromDiffLines(address, dataLocatorPrefix)}
       {getFormattedAddress(address, dataLocatorPrefix)}
       {showCountry && address.country && (
-        <BodyCopy component="p" fontFamily="secondary">
+        <BodyCopy component="p" fontFamily="secondary" className="address">
           {address.country}
         </BodyCopy>
       )}
       {showPhone && address.phone1 && (
-        <BodyCopy component="p" fontFamily="secondary">
+        <BodyCopy component="p" fontFamily="secondary" className="address">
           {address.phone1}
         </BodyCopy>
       )}
