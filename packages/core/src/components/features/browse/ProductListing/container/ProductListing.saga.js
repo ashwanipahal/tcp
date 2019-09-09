@@ -12,15 +12,19 @@ import ProductsOperator from './productsRequestFormatter';
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
+const getUrl = url => {
+  return url
+    ? {
+        pathname: url,
+      }
+    : window.location;
+};
 export function* fetchPlpProducts({ payload }) {
   try {
     const { url, formData, sortBySelected } = payload;
-    const location = url
-      ? {
-          pathname: url,
-        }
-      : window.location;
+    const location = getUrl(url);
     let state = yield select();
+    yield put(setPlpLoadingState({ isLoadingMore: true }));
     let reqObj = operatorInstance.getProductListingBucketedData(
       state,
       location,
@@ -29,12 +33,14 @@ export function* fetchPlpProducts({ payload }) {
       1
     );
     if (reqObj.isFetchFiltersAndCountReq) {
+      console.log('in fetch plp products first call for filters');
       const res = yield call(instanceProductListing.getProducts, reqObj, state);
       yield put(setListingFirstProductsPage({ ...res }));
       state = yield select();
       reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
     }
     if (reqObj && reqObj.categoryId) {
+      console.log('in fetch plp products second call for bucketing');
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (
         plpProducts &&
@@ -43,6 +49,8 @@ export function* fetchPlpProducts({ payload }) {
         plpProducts.loadedProductsPages[0].length
       ) {
         operatorInstance.updateBucketingConfig(plpProducts);
+        yield put(setListingFirstProductsPage({ ...plpProducts }));
+      } else if (plpProducts) {
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
@@ -59,6 +67,7 @@ export function* fetchMoreProducts() {
     const reqObj = operatorInstance.getMoreBucketedProducts(state);
     if (reqObj && reqObj.categoryId) {
       state = yield select();
+      console.log('in fetch more plp products just before call');
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (
         plpProducts &&
@@ -66,6 +75,7 @@ export function* fetchMoreProducts() {
         plpProducts.loadedProductsPages[0] &&
         plpProducts.loadedProductsPages[0].length
       ) {
+        console.log('update the bucketing config after getting the next set of data');
         operatorInstance.updateBucketingConfig(plpProducts);
         yield put(setPlpProducts({ ...plpProducts }));
       }
