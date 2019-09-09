@@ -1,9 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { BodyCopy, SelectBox } from '@tcp/core/src/components/common/atoms';
-import selectBoxStyle from './MiniBagSelectBox.style';
+import selectBoxStyle from './ProductSelect.style';
 
-const MiniBagSelect = props => {
+const ProductSelect = props => {
   const {
     input: { name },
   } = props;
@@ -19,10 +19,10 @@ const MiniBagSelect = props => {
   );
 };
 
-MiniBagSelect.propTypes = {
+ProductSelect.propTypes = {
   input: PropTypes.shape({
     name: PropTypes.string,
   }).isRequired,
 };
 
-export default MiniBagSelect;
+export default ProductSelect;

@@ -7,7 +7,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import endpoints from '@tcp/core/src/service/endpoint';
 import { getIconPath } from '@tcp/core/src/utils';
-import MiniBagSelect from '../MiniBagSelectBox/MiniBagSelectBox';
+import MiniBagSelect from '../ProductSelect/ProductSelect';
 import FitSizeSelect from '../FitSizeSelect/FitSizeSelect';
 import ProductColorChipsSelector from '../ColorSelect/views/ColorSelect.view';
 import style from './ProductCustomizeForm.style';
@@ -199,7 +199,6 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   render() {
-    console.log('comes here this.props ==> ', this.props);
     const { colorFitsSizesMap, item } = this.props;
     const {
       selectedColor,
@@ -230,7 +229,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     return (
       <form className={className} noValidate>
         <Row fullBleed className="edit-form-css">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          {/* <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="color-selector">
               <Field
                 width={87}
@@ -242,7 +241,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                 dataLocator="addnewaddress-state"
               />
             </div>
-          </Col>
+          </Col> */}
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {hasFits && (
               <div className="fit-selector">

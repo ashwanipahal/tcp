@@ -15,21 +15,7 @@ const getColorsChipsOptionsMap = (
   return colorFitsSizesMap.map(colorEntry => {
     const name = colorEntry.getIn(['color', 'name']);
     const imagePath = colorEntry.getIn(['color', 'imagePath']);
-    // return {
-    //   value: name,
-    //   title: name,
-    //   content: (
-    //     <span className="color-title-container" title={name}>
-    //       <span className="color-name">{name}</span>
-    //       <img className="color-image" src={imagePath} alt='color' />
-    //     </span>
-    //   ),
-    //   disabled: isDisableZeroInventoryEntries && colorEntry.maxAvailable <= 0
-    // };
     return (
-      // <LabeledRadioButton className="color-chips-selector">
-      //   <img className="color-image" src={imagePath} alt="color" />
-      // </LabeledRadioButton>
       <span className="color-title-container" title={name}>
         <img className="color-image" src={imagePath} alt="color" />
       </span>

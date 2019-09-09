@@ -25,7 +25,6 @@ class ProductListingContainer extends React.PureComponent {
       ratingsProductId,
       ...otherProps
     } = this.props;
-    console.log('productDetails in container', productDetails);
     return (
       <ProductDetail
         productDetails={productDetails}

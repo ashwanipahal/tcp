@@ -1,7 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import PRODUCTLISTING_CONSTANTS from './ProductDetail.constants';
 import { setProductDetails } from './ProductDetail.actions';
-// import { validateReduxCache } from '../../../../../utils/cache.util';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 
 function* fetchProductDetail({ payload: { productColorId } }) {

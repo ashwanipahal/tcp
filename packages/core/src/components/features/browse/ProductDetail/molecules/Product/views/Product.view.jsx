@@ -201,12 +201,7 @@ class Product extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { productDetails } = this.props;
-    console.log(
-      'sdfasdfasd fasdf sdf ads -> ',
-      productDetails && productDetails.get('currentProduct')
-    );
     return (
       <div>
         {productDetails && productDetails.get('currentProduct') && (

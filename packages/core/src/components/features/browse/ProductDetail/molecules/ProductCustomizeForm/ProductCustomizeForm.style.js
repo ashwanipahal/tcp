@@ -18,13 +18,4 @@ const styles = css`
   }
 `;
 
-export const buttonCustomStyles = css`
-  min-height: unset;
-  font-family: ${props => props.theme.fonts.secondaryFontFamily};
-  text-transform: none;
-  &:hover {
-    background-color: transparent;
-  }
-`;
-
 export default styles;
