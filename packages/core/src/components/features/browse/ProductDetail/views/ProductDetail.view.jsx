@@ -1,23 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from '../../../../common/atoms';
+import { Row, Col, RichText } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 
-const ProductDetailView = ({ className, productDetails, breadCrumbs }) => {
-  console.log(
-    'productDetail in productdetail view file --> ',
-    productDetails && productDetails.get('product')
-  );
-  console.log('breadCrumbs');
+const ProductDetailView = ({ className, productDetails, breadCrumbs, longDescription }) => {
   return (
     <div className={className}>
-      <Row className="placeholder">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="bread-crumb">BREAD CRUMB</div>
-          {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs.toJS()} separationChar=">" />}
+          {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -25,7 +19,7 @@ const ProductDetailView = ({ className, productDetails, breadCrumbs }) => {
           <div className="promo-area-1">PROMO AREA 1</div>
         </Col>
       </Row>
-      <Row className="placeholder">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 1 }}>
           <div className="side-tile">MINI TILE PDP</div>
         </Col>
@@ -41,9 +35,11 @@ const ProductDetailView = ({ className, productDetails, breadCrumbs }) => {
           <div className="product-detail-section">PROMO AREA 3</div>
         </Col>
       </Row>
-      <Row className="placeholder">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="product-detail-section">PRODUCT DESCRIPTION</div>
+          <div className="product-detail-section">
+            <RichText richTextHtml={longDescription} />
+          </div>
         </Col>
       </Row>
       <Row className="placeholder">
@@ -79,12 +75,14 @@ ProductDetailView.propTypes = {
   className: PropTypes.string,
   productDetails: PropTypes.shape({}),
   breadCrumbs: PropTypes.shape({}),
+  longDescription: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
   className: '',
   productDetails: {},
   breadCrumbs: {},
+  longDescription: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

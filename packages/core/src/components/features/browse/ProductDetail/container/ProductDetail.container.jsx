@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
-import { getNavTree, prodDetails, getBreadCrumbs } from './ProductDetail.selectors';
+import {
+  getNavTree,
+  prodDetails,
+  getBreadCrumbs,
+  getDescription,
+  getRatingsProductId,
+} from './ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
@@ -12,12 +18,20 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   render() {
-    const { productDetails, breadCrumbs, ...otherProps } = this.props;
+    const {
+      productDetails,
+      breadCrumbs,
+      longDescription,
+      ratingsProductId,
+      ...otherProps
+    } = this.props;
     console.log('productDetails in container', productDetails);
     return (
       <ProductDetail
         productDetails={productDetails}
         breadCrumbs={breadCrumbs}
+        longDescription={longDescription}
+        ratingsProductId={ratingsProductId}
         otherProps={otherProps}
       />
     );
@@ -29,6 +43,8 @@ function mapStateToProps(state) {
     navTree: getNavTree(state),
     productDetails: prodDetails(state),
     breadCrumbs: getBreadCrumbs(state),
+    longDescription: getDescription(state),
+    ratingsProductId: getRatingsProductId(state),
   };
 }
 
@@ -44,11 +60,15 @@ ProductListingContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
   breadCrumbs: PropTypes.shape({}),
+  longDescription: PropTypes.string,
+  ratingsProductId: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
   productDetails: [],
   breadCrumbs: {},
+  longDescription: '',
+  ratingsProductId: '',
 };
 
 export default connect(

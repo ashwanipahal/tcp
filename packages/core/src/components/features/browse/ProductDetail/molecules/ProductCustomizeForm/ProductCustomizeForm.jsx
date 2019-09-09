@@ -8,8 +8,9 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import endpoints from '@tcp/core/src/service/endpoint';
 import { getIconPath } from '@tcp/core/src/utils';
 import MiniBagSelect from '../MiniBagSelectBox/MiniBagSelectBox';
+import FitSizeSelect from '../FitSizeSelect/FitSizeSelect';
 import ProductColorChipsSelector from '../ColorSelect/views/ColorSelect.view';
-import style, { buttonCustomStyles } from './ProductCustomizeForm.style';
+import style from './ProductCustomizeForm.style';
 
 // @flow
 
@@ -19,8 +20,6 @@ type Props = {
   initialValues: any,
   item: any,
   className: any,
-  labels: any,
-  formVisiblity: () => void,
 };
 
 export class ProductCustomizeForm extends React.PureComponent<Props> {
@@ -201,7 +200,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
 
   render() {
     console.log('comes here this.props ==> ', this.props);
-    const { colorFitsSizesMap, item, /* labels, */ formVisiblity } = this.props;
+    const { colorFitsSizesMap, item } = this.props;
     const {
       selectedColor,
       selectedFit,
@@ -211,7 +210,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     } = this.state;
     const labels = {};
 
-    const colorList = this.getColorOptions(colorFitsSizesMap);
+    // const colorList = this.getColorOptions(colorFitsSizesMap);
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
     const hasFits = selectedColorElement && selectedColorElement.getIn([0, 'hasFits']);
     const fitList = hasFits && this.getFitOptions(selectedColorElement.get(0));
@@ -222,111 +221,105 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
         : this.getSizeOptions(selectedColorElement.get(0)));
 
     const { className } = this.props;
-    const { handleSubmit } = this.props;
-    const itemId = item.getIn(['itemInfo', 'itemId']);
-    const quantity = selectedQuantity || '1';
-    const itemPartNumber = item.getIn(['productInfo', 'itemPartNumber']);
-    const variantNo = item.getIn(['productInfo', 'variantNo']);
+    // const { handleSubmit } = this.props;
+    // const itemId = item.getIn(['itemInfo', 'itemId']);
+    // const quantity = selectedQuantity || '1';
+    // const itemPartNumber = item.getIn(['productInfo', 'itemPartNumber']);
+    // const variantNo = item.getIn(['productInfo', 'variantNo']);
 
     return (
       <form className={className} noValidate>
-        <Row className="edit-form-css">
-          <Col colSize={{ small: 10, medium: 10, large: 10 }}>
-            <div className="select-value-wrapper">
-              <div className="color-selector">
-                <Field
-                  width={87}
-                  id="color"
-                  // selectListTitle={this.getColorLabel(item, labels)}
-                  selectListTitle="title select"
-                  name={selectedColor}
-                  component={ProductColorChipsSelector}
-                  options={colorFitsSizesMap}
-                  onChange={this.colorChange}
-                  dataLocator="addnewaddress-state"
-                />
-              </div>
-              {hasFits && (
-                <div className="fit-selector">
-                  <Field
-                    width={69}
-                    id="fit"
-                    name="Fit"
-                    component={MiniBagSelect}
-                    options={fitList}
-                    onChange={this.fitChange}
-                    dataLocator="addnewaddress-state"
-                  />
-                </div>
-              )}
-              <div className="size-selector">
-                <Field
-                  width={49}
-                  className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
-                  id="size"
-                  // name={this.getSizeLabel(item, labels)}
-                  component={MiniBagSelect}
-                  options={sizeList}
-                  onChange={this.sizeChange}
-                  dataLocator="addnewaddress-state"
-                />
-                {isErrorMessageDisplayed && (
-                  <BodyCopy
-                    className="size-error"
-                    fontSize="fs12"
-                    component="div"
-                    fontFamily="secondary"
-                    fontWeight="regular"
-                  >
-                    <Image
-                      alt="Error"
-                      className="error-image"
-                      src={getIconPath('alert-triangle')}
-                      data-locator="productcustomizeform-error-icon"
-                    />
-                    {labels.errorSize}
-                  </BodyCopy>
-                )}
-              </div>
-              <div className="qty-selector">
-                <Field
-                  width={32}
-                  id="quantity"
-                  name="Qty"
-                  component={MiniBagSelect}
-                  options={this.getQuantityList()}
-                  onChange={this.quantityChange}
-                  dataLocator="addnewaddress-state"
-                />
-              </div>
+        <Row fullBleed className="edit-form-css">
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="color-selector">
+              <Field
+                width={87}
+                id="color"
+                name={selectedColor}
+                component={ProductColorChipsSelector}
+                options={colorFitsSizesMap}
+                onChange={this.colorChange}
+                dataLocator="addnewaddress-state"
+              />
             </div>
           </Col>
-          <Col colSize={{ small: 2, medium: 2, large: 2 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            {hasFits && (
+              <div className="fit-selector">
+                <Field
+                  width={69}
+                  id="fit"
+                  name="Fit"
+                  component={FitSizeSelect}
+                  options={fitList}
+                  onChange={this.fitChange}
+                  dataLocator="addnewaddress-state"
+                />
+              </div>
+            )}
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="size-selector">
+              <Field
+                width={49}
+                className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
+                id="size"
+                // name={this.getSizeLabel(item, labels)}
+                component={FitSizeSelect}
+                options={sizeList}
+                onChange={this.sizeChange}
+                dataLocator="addnewaddress-state"
+              />
+              {isErrorMessageDisplayed && (
+                <BodyCopy
+                  className="size-error"
+                  fontSize="fs12"
+                  component="div"
+                  fontFamily="secondary"
+                  fontWeight="regular"
+                >
+                  <Image
+                    alt="Error"
+                    className="error-image"
+                    src={getIconPath('alert-triangle')}
+                    data-locator="productcustomizeform-error-icon"
+                  />
+                  {labels.errorSize}
+                </BodyCopy>
+              )}
+            </div>
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="qty-selector">
+              <Field
+                width={32}
+                id="quantity"
+                name="Qty"
+                component={MiniBagSelect}
+                options={this.getQuantityList()}
+                onChange={this.quantityChange}
+                dataLocator="addnewaddress-state"
+              />
+            </div>
+          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="button-wrapper">
               <Button
-                inheritedStyles={buttonCustomStyles}
+                fill="BLUE"
+                buttonVariation="fixed-width"
+                onPress={this.onUpdate}
                 type="submit"
                 onClick={e => {
                   e.preventDefault();
-                  if (fitChanged) {
-                    this.displayErrorMessage(fitChanged);
-                  } else {
-                    this.displayErrorMessage(fitChanged);
-                    // handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
-                  }
+                  // if (fitChanged) {
+                  //   this.displayErrorMessage(fitChanged);
+                  // } else {
+                  //   this.displayErrorMessage(fitChanged);
+                  //   // handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
+                  // }
                 }}
               >
-                {/* <u>{labels.update}</u> */}
-                <u>Update</u>
-              </Button>
-              <Button
-                className="button-cancel"
-                inheritedStyles={buttonCustomStyles}
-                onClick={() => {
-                  formVisiblity();
-                }}
-              >
-                <u>{labels.cancel}</u>
+                Add to bag
               </Button>
             </div>
           </Col>

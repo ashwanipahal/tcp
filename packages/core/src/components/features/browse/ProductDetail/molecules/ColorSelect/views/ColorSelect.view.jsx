@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { LabeledRadioButton } from '../../../../../../common/atoms';
 
 const getColorsChipsOptionsMap = (
   colorFitsSizesMapArg,
@@ -28,9 +27,12 @@ const getColorsChipsOptionsMap = (
     //   disabled: isDisableZeroInventoryEntries && colorEntry.maxAvailable <= 0
     // };
     return (
-      <LabeledRadioButton className="color-chips-selector" title={name}>
+      // <LabeledRadioButton className="color-chips-selector">
+      //   <img className="color-image" src={imagePath} alt="color" />
+      // </LabeledRadioButton>
+      <span className="color-title-container" title={name}>
         <img className="color-image" src={imagePath} alt="color" />
-      </LabeledRadioButton>
+      </span>
     );
   });
 };

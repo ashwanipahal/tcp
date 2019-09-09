@@ -18,7 +18,9 @@ const ProductDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS:
       console.log('comes in set products details reducer', action.payload);
-      return state.merge(fromJS(action.payload));
+      return state
+        .set('currentProduct', fromJS(action.payload.product))
+        .set('breadCrumbs', action.payload.breadCrumbs);
     default:
       return getDefaultState(state);
   }
