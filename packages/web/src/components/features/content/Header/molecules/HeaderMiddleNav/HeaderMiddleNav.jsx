@@ -14,6 +14,7 @@ import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
 import style from './HeaderMiddleNav.style';
 import searchData from './HeaderMiddleNav.mock';
+import { getSearchResult } from './HeaderMiddleNav.actions';
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -106,8 +107,12 @@ class HeaderMiddleNav extends React.PureComponent {
 
   changeSearchText = e => {
     e.preventDefault();
+    const { startSearch } = this.props;
+
     const searchText = this.searchInput.current.value;
-    this.setState({ showProduct: Boolean(searchText.length) });
+    this.setState({ showProduct: Boolean(searchText.length) }, () => {
+      startSearch(searchText);
+    });
   };
 
   render() {
@@ -119,6 +124,7 @@ class HeaderMiddleNav extends React.PureComponent {
       openOverlay,
       userName,
       labels,
+      searchResults,
     } = this.props;
     const brand = getBrand();
     const {
@@ -130,6 +136,7 @@ class HeaderMiddleNav extends React.PureComponent {
       showProduct,
     } = this.state;
 
+    console.log(searchResults); // only for use purpose
     return (
       <React.Fragment>
         <Row className={`${className} header-middle-nav`}>
@@ -302,8 +309,10 @@ HeaderMiddleNav.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  startSearch: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
+  searchResults: PropTypes.shape({}),
   labels: PropTypes.shape({
     lbl_search_whats_trending: PropTypes.string,
     lbl_search_recent_search: PropTypes.string,
@@ -316,6 +325,7 @@ HeaderMiddleNav.defaultProps = {
   navigationDrawer: {
     open: false,
   },
+  searchResults: {},
   labels: PropTypes.shape({
     lbl_search_whats_trending: '',
     lbl_search_recent_search: '',
@@ -327,8 +337,21 @@ HeaderMiddleNav.defaultProps = {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.Search,
+    searchResults: state.Search.searchResults,
+  };
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    startSearch: searchTerm => {
+      dispatch(getSearchResult(searchTerm));
+    },
   };
 };
 
 export { HeaderMiddleNav as HeaderMiddleNavVanilla };
-export default connect(mapStateToProps)(withStyles(HeaderMiddleNav, style));
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(HeaderMiddleNav, style));

@@ -40,6 +40,7 @@ import AddMailingAddressReducer from '@tcp/core/src/components/features/account/
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
+import HeaderMiddleNavReducer from '@tcp/web/src/components/features/content/Header/molecules/HeaderMiddleNav/HeaderMiddleNav.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -91,6 +92,7 @@ import {
   APPLY_NOW_MODAL_REDUCER_KEY,
   PRODUCT_TAB_LIST_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
+  SEARCH_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -135,6 +137,7 @@ export default combineReducers({
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [LOADER_REDUCER_KEY]: LoaderReducer,
+  [SEARCH_REDUCER_KEY]: HeaderMiddleNavReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,

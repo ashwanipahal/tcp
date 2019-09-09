@@ -30,7 +30,7 @@ const SearchBar = props => {
   } = props;
   return (
     <React.Fragment>
-      <BodyCopy className={className}>
+      <BodyCopy className={className} component="div">
         {isOpen ? (
           <div className="searchWrapper">
             <div className="searchbar">
@@ -67,7 +67,8 @@ const SearchBar = props => {
                       className="trendingBoxBody"
                       fontFamily="Nunito"
                       fontSize="15px"
-                      lineHeight="39px"
+                      lineHeight="39"
+                      component="div"
                     >
                       <ul>
                         {searchData.trending.map(item => {
@@ -85,10 +86,11 @@ const SearchBar = props => {
                       {getLabelValue(labels, 'lbl_search_recent_search')}
                     </BodyCopy>
                     <BodyCopy
+                      component="div"
                       className="recentBoxBody"
                       fontFamily="Nunito"
                       fontSize="15px"
-                      lineHeight="39px"
+                      lineHeight="39"
                     >
                       <ul>
                         {searchData.recent.map(item => {
@@ -109,10 +111,11 @@ const SearchBar = props => {
                       {getLabelValue(labels, 'lbl_search_looking_for')}
                     </BodyCopy>
                     <BodyCopy
+                      component="div"
                       className="matchLinkBoxBody"
                       fontFamily="Nunito"
                       fontSize="15px"
-                      lineHeight="39px"
+                      lineHeight="39"
                     >
                       <ul>
                         {searchData.looking.map(item => {
@@ -133,7 +136,8 @@ const SearchBar = props => {
                       className="matchProductBody"
                       fontFamily="Nunito"
                       fontSize="15px"
-                      lineHeight="39px"
+                      lineHeight="39"
+                      component="div"
                     >
                       <ul>
                         {searchData.products.map(item => {
