@@ -11,7 +11,6 @@ export {
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
-  getBirthDateOptionMap,
   getViewportInfo,
   showOverlay,
   closeOverlay,
@@ -45,4 +44,5 @@ export {
   formatAddress,
   calculateAge,
   getLabelValue,
+  getBirthDateOptionMap,
 } from './utils';

@@ -1,28 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
-import CreateAccount from '@tcp/core/src/components/features/account/CreateAccount';
+import AddEditPersonalInformation from '@tcp/core/src/components/features/account/AddEditPersonalInformation';
 import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay';
 import Address from '../../../../../../common/molecules/Address';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
-
-class PersonalInformation extends React.PureComponent{
+export class PersonalInformation extends React.PureComponent {
   constructor() {
     super();
     this.state = { isOpenBool: false };
   }
 
-  openModal = () => {
+  toggleModal = () => {
     const { isOpenBool } = this.state;
     this.setState({
       isOpenBool: !isOpenBool,
     });
   };
 
-
-  render(){
+  render() {
     const {
       labels,
       handleComponentChange,
@@ -36,13 +34,13 @@ class PersonalInformation extends React.PureComponent{
     } = this.props;
 
     const { address } = profileInfoTile;
-    const {isOpenBool} = this.state;
+    const { isOpenBool } = this.state;
     return (
       <>
         <MyProfileTile
           title={labels.lbl_profile_personal_information}
           ctaTitle={labels.lbl_profile_edit_personal_info}
-          handleComponentChange={this.openModal}
+          handleComponentChange={this.toggleModal}
         >
           <PersonalInformationDisplay
             labels={labels}
@@ -60,16 +58,20 @@ class PersonalInformation extends React.PureComponent{
             ctaTitle={labels.lbl_profile_edit_mailing_info}
             handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
           >
-            <Address address={address} dataLocatorPrefix="profileinfo-editmailing" showName={false} />
+            <Address
+              address={address}
+              dataLocatorPrefix="profileinfo-editmailing"
+              showName={false}
+            />
           </MyProfileTile>
         )}
 
         <ModalNative
           isOpen={isOpenBool}
-          onRequestClose={this.openModal}
+          onRequestClose={this.toggleModal}
           heading={labels.lbl_profile_personal_information}
         >
-          <CreateAccount />
+          <AddEditPersonalInformation onRequestClose={this.toggleModal} />
         </ModalNative>
       </>
     );

@@ -22,6 +22,12 @@ export const formValidationMessages = {
   country: {
     required: 'Please select a country',
   },
+  userBirthMonth: {
+    required: 'Please select a month',
+  },
+  userBirthYear: {
+    required: 'Please select a year',
+  },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
       linkedFieldsValues[0] === 'US' ? 'Please select a state' : 'Please select a province',
@@ -158,6 +164,13 @@ export const formValidationRules = {
     },
   },
   country: {
+    required: true,
+  },
+
+  userBirthMonth: {
+    required: true,
+  },
+  userBirthYear: {
     required: true,
   },
   firstName: {

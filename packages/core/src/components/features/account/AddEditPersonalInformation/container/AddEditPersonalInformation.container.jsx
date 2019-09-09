@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import utils from '@tcp/core/src/utils';
+import { getBirthDateOptionMap, routerPush, isMobileApp } from '@tcp/core/src/utils';
 import { getError, getIsEmployee, getProfileLabels } from './AddEditPersonalInformation.selectors';
 import { getSuccess } from '../../MyProfile/container/MyProfile.selectors';
 import AddEditPersonalInformationComponent from '../views';
 import { updateProfile, updateProfileError } from './AddEditPersonalInformation.actions';
 import internalEndpoints from '../../common/internalEndpoints';
+import { updateProfileSuccess } from '../../MyProfile/container/MyProfile.actions';
 import {
   getUserBirthday,
   getUserName,
@@ -28,19 +29,28 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     labels: PropTypes.shape({}).isRequired,
     isEmployee: PropTypes.string.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
+    onRequestClose: PropTypes.func.isRequired,
+    messageSateChangeAction: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
-    this.yearOptionsMap = utils.getBirthDateOptionMap();
+    this.yearOptionsMap = getBirthDateOptionMap();
     const { labels, ...otherProps } = this.props;
     this.initialValues = this.getInitialValues(otherProps);
   }
 
+  componentWillMount() {
+    const { messageSateChangeAction } = this.props;
+    messageSateChangeAction(null);
+  }
+
   componentDidUpdate() {
-    const { successMessage } = this.props;
+    const { successMessage, onRequestClose } = this.props;
     if (successMessage === 'successMessage') {
-      this.goBackToProfile();
+      if (isMobileApp()) {
+        onRequestClose();
+      } else this.goBackToProfile();
     }
   }
 
@@ -58,23 +68,25 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     userBirthMonth,
     userBirthYear,
     airMilesAccountNumber,
+    isEmployee,
   }) => {
     const { updateProfileAction } = this.props;
     const newUserBirthday =
       userBirthMonth && userBirthYear ? `${userBirthMonth}|${userBirthYear}` : '';
+    const associateIdValue = isEmployee && associateId ? associateId : null;
     updateProfileAction({
       firstName,
       lastName,
       email: Email,
       phone: phoneNumber,
-      associateId,
+      associateId: associateIdValue,
       userBirthday: newUserBirthday,
       airmiles: airMilesAccountNumber,
     });
   };
 
   goBackToProfile = () => {
-    utils.routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
+    routerPush(internalEndpoints.profilePage.link, internalEndpoints.profilePage.path);
     return null;
   };
 
@@ -104,12 +116,21 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels, isEmployee, formErrorMessage } = this.props;
+    const {
+      successMessage,
+      errorMessage,
+      onRequestClose,
+      labels,
+      isEmployee,
+      formErrorMessage,
+    } = this.props;
+
     return (
       <AddEditPersonalInformationComponent
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={this.updateProfileInformation}
+        onCancel={onRequestClose}
         labels={labels}
         isEmployee={isEmployee}
         birthMonthOptionsMap={this.yearOptionsMap.monthsMap}
@@ -139,6 +160,9 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   updateProfileAction: payload => {
     dispatch(updateProfile(payload));
+  },
+  messageSateChangeAction: payload => {
+    dispatch(updateProfileSuccess(payload));
   },
   messageStateChangeAction: payload => {
     dispatch(updateProfileError(payload));
