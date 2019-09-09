@@ -195,38 +195,43 @@ const getCurrentPickupFormNumber = createSelector(
 );
 
 const getBillingLabels = state => {
-  const {
-    lbl_billing_title: header,
-    lbl_billing_backLinkPickup: backLinkPickup,
-    lbl_billing_backLinkShipping: backLinkShipping,
-    lbl_billing_nextSubmit: nextSubmitText,
-  } = state.Labels.checkout && state.Labels.checkout.billing;
   return {
-    header,
-    backLinkPickup,
-    backLinkShipping,
-    nextSubmitText,
+    header: getLabelValue(state.Labels, 'lbl_billing_title', 'billing', 'checkout'),
+    backLinkPickup: getLabelValue(
+      state.Labels,
+      'lbl_billing_backLinkPickup',
+      'billing',
+      'checkout'
+    ),
+    backLinkShipping: getLabelValue(
+      state.Labels,
+      'lbl_billing_backLinkShipping',
+      'billing',
+      'checkout'
+    ),
+    nextSubmitText: getLabelValue(state.Labels, 'lbl_billing_nextSubmit', 'billing', 'checkout'),
   };
 };
 
 const getShippingLabels = state => {
-  const {
-    lbl_shipping_header: header,
-    lbl_shipping_sectionHeader: sectionHeader,
-    lbl_shipping_shipmentHeader: shipmentHeader,
-    lbl_shipping_returnTo: returnTo,
-    lbl_shipping_nextText: nextText,
-    lbl_shipping_backLinkText: backLinkText,
-    lbl_shipping_billingText: billingText,
-  } = state.Labels.checkout && state.Labels.checkout.shipping;
   return {
-    header,
-    sectionHeader,
-    shipmentHeader,
-    returnTo,
-    nextText,
-    billingText,
-    backLinkText,
+    header: getLabelValue(state.Labels, 'lbl_shipping_header', 'shipping', 'checkout'),
+    sectionHeader: getLabelValue(
+      state.Labels,
+      'lbl_shipping_sectionHeader',
+      'shipping',
+      'checkout'
+    ),
+    shipmentHeader: getLabelValue(
+      state.Labels,
+      'lbl_shipping_shipmentHeader',
+      'shipping',
+      'checkout'
+    ),
+    returnTo: getLabelValue(state.Labels, 'lbl_shipping_returnTo', 'shipping', 'checkout'),
+    nextText: getLabelValue(state.Labels, 'lbl_shipping_nextText', 'shipping', 'checkout'),
+    billingText: getLabelValue(state.Labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout'),
+    backLinkText: getLabelValue(state.Labels, 'lbl_shipping_billingText', 'shipping', 'checkout'),
   };
 };
 
@@ -244,17 +249,31 @@ const getSmsSignUpLabels = state => {
 };
 
 const getEmailSignUpLabels = state => {
-  const {
-    lbl_pickup_emailSignupHeading: emailSignupHeading,
-    lbl_pickup_emailSignupSubHeading: emailSignupSubHeading,
-    lbl_pickup_emailSignupSubSubHeading: emailSignupSubSubHeading,
-    lbl_pickup_emailSignupContact: emailSignupContact,
-  } = state.Labels.checkout && state.Labels.checkout.pickup;
   return {
-    emailSignupHeading,
-    emailSignupSubHeading,
-    emailSignupSubSubHeading,
-    emailSignupContact,
+    emailSignupHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupSubHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupSubHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupSubSubHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupSubSubHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupContact: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupContact',
+      'pickup',
+      'checkout'
+    ),
   };
 };
 
