@@ -157,9 +157,9 @@ export class AddressDropdown extends React.PureComponent<Props> {
    * Open the drop down
    */
   openDropDown = () => {
-    const { data, addAddress  } = this.props;
-    if (addAddress && data.length === 1 && data[0].id === '') {
-      addAddress();
+    const { data } = this.props;
+    if (data.length === 1 && data[0].id === '') {
+      this.openAddressBook();
     } else {
       this.setState({
         dropDownIsOpen: true,
@@ -167,6 +167,16 @@ export class AddressDropdown extends React.PureComponent<Props> {
     }
   };
 
+  /**
+   * openAddressBook modal
+   */
+  openAddressBook = () => {
+    const { addAddress } = this.props;
+    this.setState({
+      dropDownIsOpen: false,
+    });
+    addAddress();
+  };
 
   /**
    * Handle the drop down item click

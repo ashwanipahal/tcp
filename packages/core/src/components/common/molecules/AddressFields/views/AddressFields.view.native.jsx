@@ -87,13 +87,15 @@ export class AddressFields extends React.PureComponent {
 
   componentDidMount() {
     const { initialValues, formName, formSection, dispatch } = this.props;
-    dispatch(
-      change(
-        formName,
-        `${formSection ? 'address.' : ''}addressLine1`,
-        initialValues.address.addressLine1
-      )
-    );
+    if (initialValues && typeof initialValues.address === 'object') {
+      dispatch(
+        change(
+          formName,
+          `${formSection ? 'address.' : ''}addressLine1`,
+          initialValues.address.addressLine1
+        )
+      );
+    }
   }
 
   handlePlaceSelected = (place, inputValue) => {

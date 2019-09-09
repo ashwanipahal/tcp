@@ -76,9 +76,10 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    const { onFileAddresskey } = props;
+    const { onFileAddresskey, mailingAddress } = props;
     this.state = {
       addAddressMount: false,
+      showAddressForm: mailingAddress,
       selectedAddress: onFileAddresskey,
     };
   }
@@ -139,10 +140,15 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   toggleModal = () => {
     const { addAddressMount, showAddressForm } = this.state;
     const { mailingAddress } = this.props;
-    const valueToChange = mailingAddress ? showAddressForm : addAddressMount;
-    this.setState({
-      [valueToChange]: !valueToChange,
-    });
+    if (mailingAddress) {
+      this.setState({
+        showAddressForm: !showAddressForm,
+      });
+    } else {
+      this.setState({
+        addAddressMount: !addAddressMount,
+      });
+    }
   };
 
   showAddressDropdown = (mailingAddress, addressComponentList) => {
@@ -172,10 +178,9 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       showUserName,
       showEmailAddress,
       initialValues,
-      mailingAddress,
       subHeading,
     } = this.props;
-    const { addAddressMount, selectedAddress } = this.state;
+    const { addAddressMount, selectedAddress, showAddressForm } = this.state;
     const addressComponentList = this.getAddressOptions();
     const addressDropdown = this.showAddressDropdown();
 
@@ -259,7 +264,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 <RightBracket />
               </DefaultAddress>
             )}
-            {mailingAddress && (
+            {showAddressForm && (
               <ViewWithSpacing spacingStyles="margin-top-LRG">
                 <FormSection name="address">
                   <AddressFields

@@ -21,6 +21,7 @@ exports[`DropDown Test should render correctly 1`] = `
     }
     dropDownStyle={null}
     heading="foo"
+    input={null}
     itemStyle={
       Object {
         "color": "foo",
@@ -103,6 +104,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     }
     dropDownStyle={null}
     heading="foo"
+    input={null}
     itemStyle={
       Object {
         "color": "foo",

@@ -13,6 +13,9 @@ exports[`Shipping Form should render correctly 1`] = `
         formName="checkoutShipping"
         formSection="address"
         showDefaultCheckbox={false}
+        showEmailAddress={true}
+        showPhoneNumber={true}
+        showUserName={true}
       />
     </FormSection>
     <FormSection

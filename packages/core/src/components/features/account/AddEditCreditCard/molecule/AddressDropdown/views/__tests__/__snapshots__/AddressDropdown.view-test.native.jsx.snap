@@ -22,7 +22,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       }
     }
     onLayout={[Function]}
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={null}
     options={
       Array [

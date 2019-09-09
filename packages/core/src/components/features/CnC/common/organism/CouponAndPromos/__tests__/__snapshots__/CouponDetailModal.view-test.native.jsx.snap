@@ -52,20 +52,13 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(View)
         spacingStyles="margin-bottom-LRG"
       >
-        <Styled(CustomButton)
-          active={false}
+        <Styled(WithTheme(CustomButton))
           buttonVariation="fixed-width"
-          color=""
-          customStyle={Object {}}
           data-locator="couponDetailModal_applied_AddToBagBtn"
-          disableButton={false}
           disabled={false}
           fill="BLUE"
-          fullWidth=""
-          locator=""
           onPress={[Function]}
           text="APPLY_TO_BAG"
-          url=""
         />
       </Styled(View)>
       <Styled(Anchor)

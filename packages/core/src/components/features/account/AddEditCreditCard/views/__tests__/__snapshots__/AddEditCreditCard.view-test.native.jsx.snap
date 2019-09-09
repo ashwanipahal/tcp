@@ -40,6 +40,58 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
 </SafeAreaView>
 `;
 
+exports[`AddEditCreditCard component should renders correctly when showCreditCardFields is false 1`] = `
+<SafeAreaView>
+  <Connect(AddressVerification)
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
+    onError={[Function]}
+    onSuccess={[Function]}
+    toggleAddressModal={false}
+    verifyModalRendered={[Function]}
+  />
+  <ReduxForm
+    addressFormLabels={Object {}}
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    initialValues={Object {}}
+    isEdit={false}
+    keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
+    mailingAddress={false}
+    onClose={[Function]}
+    onSubmit={[Function]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    showCreditCardFields={false}
+    showUserName={true}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</SafeAreaView>
+`;
+
 exports[`AddEditCreditCard component should renders correctly with error message 1`] = `
 <SafeAreaView>
   <ReduxForm
