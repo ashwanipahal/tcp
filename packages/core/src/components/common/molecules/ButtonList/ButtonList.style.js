@@ -152,7 +152,6 @@ export default css`
     .stacked-button button {
       width: 140px;
       white-space: nowrap;
-      padding: 16px;
     }
 
     .scroll-button {
@@ -165,7 +164,6 @@ export default css`
     .scroll-button button {
       width: 140px;
       white-space: nowrap;
-      padding: 12px;
     }
 
     .scroll-button:nth-child(1) {

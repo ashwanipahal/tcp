@@ -63,4 +63,8 @@ export default {
   star: '/static/images/star.svg',
   'star-filled': '/static/images/star-filled.svg',
   'circle-check': '/static/images/circle-check.svg',
+  'dot-email-orange': '/static/images/dot-email-orange.svg',
+  'dot-email-blue': '/static/images/dot-email-blue.svg',
+  'chat-blue': '/static/images/chat.svg',
+  'chat-orange': '/static/images/chat-orange.svg',
 };

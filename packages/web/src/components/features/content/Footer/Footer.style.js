@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 export default css`
   position: relative;
-  padding-top: 32px;
   .footer_top_candidate_a .flex-align-center {
     align-items: center;
   }
@@ -16,11 +15,13 @@ export default css`
 
     &.candidate_a_form_button {
       ${props =>
-        props.theme.gridDimensions.gridBreakPointsKeys.map(
-          key => `
+        props.theme.gridDimensions.gridBreakPointsKeys.map(key =>
+          ['small', 'medium'].includes(key)
+            ? `
           @media ${props.theme.mediaQuery[`${key}Only`]} {
             margin-top: 8px;
           }`
+            : ``
         )}
     }
   }

@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isGymboree, getIconPath } from '@tcp/core/src/utils';
 import SignupConfirmStyle from '../SignupConfirm.style';
+
+const emailIcon = `dot-email-${isGymboree() ? 'orange' : 'blue'}`;
+const chatIcon = `chat${isGymboree() ? '-orange' : '-blue'}`;
 
 const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
   <div className={className} id="sign-up-modal-confirm-view">
@@ -27,11 +31,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
       {formViewConfig.joiningTextLabel}
     </BodyCopy>
     <Image
-      src={
-        susbscriptionType === 'email'
-          ? '/static/images/dot-email-blue.svg'
-          : '/static/images/chat.svg'
-      }
+      src={susbscriptionType === 'email' ? getIconPath(emailIcon) : getIconPath(chatIcon)}
       alt={`${susbscriptionType}-icon`}
       className="confirmation-image"
       aria-hidden="true"
@@ -42,7 +42,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
       fontFamily="secondary"
       textAlign="center"
       fontWeight="semibold"
-      color="primary.main"
+      color="primary.dark"
       className="first-label"
       data-locator={`${susbscriptionType}_copy_text_02`}
     >
