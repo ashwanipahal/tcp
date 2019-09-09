@@ -41,23 +41,36 @@ export default css`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 27px;
+    padding: 0 27px;
     overflow-y: auto;
     max-height: 100vh;
 
     @media ${props => props.theme.mediaQuery.medium} {
       width: 80%;
+      max-width: 600px;
     }
 
     .filter-row {
       margin-bottom: 7px;
       margin-top: 14px;
+      margin-right: 0;
+      margin-left: 0;
+      width: auto;
+
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        margin-left: 14px;
+        margin-right: 14px;
+      }
     }
 
     .accordion {
       &.active:after,
       &.inactive:after {
-        right: 42px;
+        right: 44px;
+        /* stylelint-disable max-nesting-depth */
+        @media ${props => props.theme.mediaQuery.smallMax} {
+          right: 58px;
+        }
       }
     }
   }

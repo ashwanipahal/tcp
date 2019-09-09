@@ -14,4 +14,5 @@ export const ICON_NAME = {
   Facebook: 'facebook',
   checkmark: 'check',
   favorite: 'heart-o',
+  close: 'close',
 };
