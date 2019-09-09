@@ -80,7 +80,7 @@ class BonusPointsView extends React.Component {
             orderDetails={orderDetails}
             isPlcc={isPlcc}
             isBagPage={isBagPage}
-            bagBonusLabels={labels.bag.bagBonusPoints}
+            bagBonusLabels={labels.checkout.bagBonusPoints}
           />
         )}
         <Modal
