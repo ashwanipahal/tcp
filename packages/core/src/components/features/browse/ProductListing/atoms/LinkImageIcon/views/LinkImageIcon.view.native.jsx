@@ -1,37 +1,36 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import ImageComp from '../styles/LinkImageIcon.style.native';
+import { ImageComp, ImageTouchableOpacity } from '../styles/LinkImageIcon.style.native';
 
-const getImageComp = values => {
-  const { uri, selected, width, height, resizeMode, borderWidth, borderRadius } = values;
+const LinkImageIcon = props => {
+  const { onPress, uri, selected, width, height, resizeMode, borderWidth, borderRadius } = props;
   return (
-    <ImageComp
-      accessibilityRole="image"
-      accessibilityLabel="image"
-      source={{
-        uri,
-      }}
+    <ImageTouchableOpacity
+      onPress={onPress}
+      accessibilityRole="button"
       selected={selected}
       width={width}
       height={height}
       resizeMode={resizeMode}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
-    />
+    >
+      <ImageComp
+        accessibilityRole="image"
+        accessibilityLabel="image"
+        source={{
+          uri,
+        }}
+        selected={selected}
+        width={width}
+        height={height}
+        resizeMode={resizeMode}
+        borderWidth={borderWidth}
+        borderRadius={borderRadius}
+      />
+    </ImageTouchableOpacity>
   );
-};
-const LinkImageIcon = props => {
-  const { onPress } = props;
-  if (onPress) {
-    return (
-      <TouchableOpacity onPress={onPress} accessibilityRole="button">
-        {getImageComp(props)}
-      </TouchableOpacity>
-    );
-  }
-  return getImageComp(props);
 };
 
 LinkImageIcon.propTypes = {
