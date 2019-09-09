@@ -34,15 +34,9 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Styled(CustomButton)
-    active={false}
+  <Styled(WithTheme(CustomButton))
     buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    disableButton={false}
-    fill=""
     fullWidth={true}
-    locator=""
     onPress={[Function]}
     style={
       Object {
@@ -50,7 +44,6 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
     text="PLP Page"
-    url=""
   />
 </ScrollViewMock>
 `;
