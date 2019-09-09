@@ -6,10 +6,15 @@ describe('BonusPointsView', () => {
   it('should render correctly', () => {
     const labels = {
       myPlaceRewards: {
-        lbl_place_rewards_bonus: 'bonus',
-        lbl_place_rewards_points: 'points',
+        lbl_bonusPoints_placeRewardsBonus: 'bonus',
+        lbl_bonusPoints_placeRewardsPoints: 'points',
+      },
+      global: {},
+      checkout: {
+        bagBonusPoints: {},
       },
     };
+
     const bonusData = {};
     const bonusDetailsData = 'hello';
     const e = { preventDefault: jest.fn() };
