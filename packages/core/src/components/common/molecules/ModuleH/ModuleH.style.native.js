@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.View`
-  margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} 0;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const HeaderWrapper = styled.View`
