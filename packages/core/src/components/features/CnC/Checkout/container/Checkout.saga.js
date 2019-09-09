@@ -188,7 +188,7 @@ function* callPickupSubmitMethod(formData) {
 }
 
 function* submitPickupSection({ payload }) {
-  const formData = { ...payload.formData };
+  const formData = { ...payload };
   const { navigation } = payload;
   // let pickupOperator = getPickupOperator(this.store);
   // let storeState = this.store.getState();
