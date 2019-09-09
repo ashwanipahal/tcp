@@ -6,6 +6,7 @@ exports[`TileOption should render correctly 1`] = `
 >
   <div
     className="tile-container"
+    data-locator=""
     onClick={[Function]}
     role="presentation"
   >
@@ -32,6 +33,7 @@ exports[`TileOption should render with selected tile 1`] = `
 >
   <div
     className="tile-container selected"
+    data-locator=""
     onClick={[Function]}
     role="presentation"
   >
