@@ -21,6 +21,10 @@ import CardImage from '../../../../../../common/molecules/Card/views/CardImage';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import { getIconPath } from '../../../../../../../utils';
 import RichText from '../../../../../../common/atoms/RichText';
+import CheckoutFooter from '../../../molecules/CheckoutFooter';
+import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import utility from '../../../util/utility';
+import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = {
@@ -33,6 +37,11 @@ export class BillingPaymentForm extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     cvvCodeRichText: PropTypes.string,
     paymentMethodId: PropTypes.string.isRequired,
+    orderHasShipping: PropTypes.bool,
+    isGuest: PropTypes.bool,
+    backLinkPickup: PropTypes.string.isRequired,
+    backLinkShipping: PropTypes.string.isRequired,
+    nextSubmitText: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -40,6 +49,8 @@ export class BillingPaymentForm extends React.PureComponent {
     onFileCardKey: '',
     isMobile: false,
     cvvCodeRichText: null,
+    orderHasShipping: false,
+    isGuest: false,
   };
 
   handleEditClick = () => {};
@@ -94,6 +105,11 @@ export class BillingPaymentForm extends React.PureComponent {
       labels,
       cvvCodeRichText,
       paymentMethodId,
+      orderHasShipping,
+      isGuest,
+      backLinkPickup,
+      backLinkShipping,
+      nextSubmitText,
     } = this.props;
     const creditCardList = this.getCreditCardList(cardList);
     const selectedCard = onFileCardKey ? this.getSelectedCard(cardList, onFileCardKey) : '';
@@ -281,6 +297,13 @@ export class BillingPaymentForm extends React.PureComponent {
             )}
           </>
         ) : null}
+        <CheckoutOrderInfo isGuest={isGuest} />
+        <CheckoutFooter
+          hideBackLink
+          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
+          nextButtonText={nextSubmitText}
+          backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+        />
       </form>
     );
   }

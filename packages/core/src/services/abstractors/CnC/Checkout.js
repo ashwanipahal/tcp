@@ -431,21 +431,25 @@ export function addPaymentToOrder({
     webService: endpoints.addPaymentInstruction,
   };
   console.log({ payload });
-  return executeStatefulAPICall(payload).then(res => {
-    if (responseContainsErrors(res)) {
-      throw new ServiceResponseError(res);
-    }
-    if (res.body && res.body.OosCartItems === 'TRUE') {
-      throw new ServiceResponseError({
-        body: {
-          errorCode: CheckoutConstants.CUSTOM_OOS_ERROR_CODE,
-        },
-      });
-    }
-    return {
-      paymentIds: res.body.paymentInstruction,
-    };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      if (res.body && res.body.OosCartItems === 'TRUE') {
+        throw new ServiceResponseError({
+          body: {
+            errorCode: CheckoutConstants.CUSTOM_OOS_ERROR_CODE,
+          },
+        });
+      }
+      return {
+        paymentIds: res.body.paymentInstruction,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
 }
 
 export function updatePaymentOnOrder(args) {

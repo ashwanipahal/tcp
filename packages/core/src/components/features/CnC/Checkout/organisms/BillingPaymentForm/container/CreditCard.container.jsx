@@ -37,6 +37,47 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     };
   };
 
+  getSelectedCard = (cardList, paymentId) => {
+    return cardList.find(card => card.creditCardId === paymentId);
+  };
+
+  submitBillingData = data => {
+    const { cardList, handleSubmit } = this.props;
+    const cardDetails = this.getSelectedCard(cardList, data.onFileCardKey);
+
+    const isCardTypeRequired = cardDetails.cardType !== 'PLACE CARD';
+    handleSubmit({
+      address: {
+        ...cardDetails.addressDetails,
+        onFileAddressId: cardDetails.billingAddressId,
+        onFileAddressKey: undefined,
+        sameAsShipping: true,
+      },
+      billing: {
+        cardNumber: cardDetails.accountNo,
+        cardType: cardDetails.ccBrand,
+        cvv: '',
+        expMonth: cardDetails.expMonth,
+        expYear: cardDetails.expYear,
+        isCVVRequired: isCardTypeRequired,
+        isExpirationRequired: isCardTypeRequired,
+      },
+      cardNumber: cardDetails.accountNo,
+      cardType: cardDetails.ccBrand,
+      cvv: data.cvvCode,
+      emailAddress: undefined,
+      expMonth: cardDetails.expMonth,
+      expYear: cardDetails.expYear,
+      isCVVRequired: isCardTypeRequired,
+      isExpirationRequired: isCardTypeRequired,
+      paymentId: cardDetails.creditCardId,
+      paymentMethod: data.paymentMethodId,
+      phoneNumber: cardDetails.addressDetails && cardDetails.addressDetails.phone1,
+      saveToAccount: true,
+      setAsDefault: data.defaultPaymentMethod || cardDetails.defaultInd,
+    });
+  };
+
   render() {
     const {
       cardList,
@@ -47,6 +88,11 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       getCVVCodeInfo,
       cvvCodeInfoContentId,
       cvvCodeRichText,
+      orderHasShipping,
+      isGuest,
+      backLinkPickup,
+      backLinkShipping,
+      nextSubmitText,
     } = this.props;
     if (cvvCodeInfoContentId) {
       getCVVCodeInfo(cvvCodeInfoContentId);
@@ -63,6 +109,12 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         getCVVCodeInfo={getCVVCodeInfo}
         cvvCodeInfoContentId={cvvCodeInfoContentId}
         cvvCodeRichText={cvvCodeRichText}
+        onSubmit={this.submitBillingData}
+        orderHasShipping={orderHasShipping}
+        isGuest={isGuest}
+        backLinkPickup={backLinkPickup}
+        backLinkShipping={backLinkShipping}
+        nextSubmitText={nextSubmitText}
       />
     );
   }
