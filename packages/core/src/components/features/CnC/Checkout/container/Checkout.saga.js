@@ -53,6 +53,7 @@ const {
   getIsOrderHasShipping,
   getShippingDestinationValues,
   getDefaultAddress,
+  getGiftServicesFormData,
   // isUsSite,
   // getIsOrderHasShipping  ,
   // getShippingDestinationValues,
@@ -617,6 +618,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   // ) {
   //   recalcFlag = true;
   // }
+  yield select(getGiftServicesFormData);
   yield put(setAddressError(null));
   const pendingPromises = [
     // add the requested gift wrap options

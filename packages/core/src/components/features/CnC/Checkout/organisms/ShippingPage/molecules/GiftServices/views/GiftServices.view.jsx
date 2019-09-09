@@ -13,12 +13,14 @@ import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../../../common/atoms/Image';
 import { isGymboree, getIconPath, getLocator } from '../../../../../../../../../utils';
 import GiftServicesDetailsModal from './GiftServicesDetailsModal.view';
+import TextBox from '../../../../../../../../common/atoms/TextBox';
 
 class GiftServices extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       detailStatus: false,
+      isGymboreeBrand: isGymboree(),
     };
   }
 
@@ -37,48 +39,56 @@ class GiftServices extends React.PureComponent {
   };
 
   getServicesOptions = giftWrapOptions => {
-    // const getServicesOptionsMap=[
-    //   {"services":{
-    //     "name":"defualt",
-    //     "cost":"free"
-    //   }
-    //   },
-    //   {"services":{
-    //     "name":"delux",
-    //     "cost":"2"
-    //   }
-    //   },
-    //   {"services":{
-    //     "name":"premium",
-    //     "cost":"6"
-    //   }
-    //   },
-    // ]
-    const getServicesOptionsMap = giftWrapOptions.giftOptions;
+    const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
+    const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
+    const { isGymboreeBrand } = this.state;
+    const brand = isGymboreeBrand ? 'GYM' : 'TCP';
     return (
       getServicesOptionsMap &&
-      getServicesOptionsMap.map(servicesMap => ({
-        title: (
-          <React.Fragment>
-            <span>{servicesMap.catEntryId}</span>
-          </React.Fragment>
-        ),
-        content: (
-          <React.Fragment>
-            <span>{servicesMap.catEntryId}</span>
-            <span>{servicesMap.longDescription}</span>
-          </React.Fragment>
-        ),
-        value: servicesMap.catEntryId,
-      }))
+      getServicesOptionsMap
+        .filter(servicesMap => servicesMap.itemBrand === brand || servicesMap.itemBrand === 'ALL')
+        .map(servicesMap => {
+          return {
+            title: (
+              <React.Fragment>
+                <div>
+                  <span>{servicesMap.name}</span>
+                  <span>{servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}</span>
+                </div>
+              </React.Fragment>
+            ),
+            content: (
+              <React.Fragment>
+                <div>
+                  <span>{servicesMap.name}</span>
+                  <span>{servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}</span>
+                </div>
+                <div>
+                  <span>{servicesMap.longDescription}</span>
+                </div>
+              </React.Fragment>
+            ),
+            value: servicesMap.catEntryId,
+          };
+        })
     );
+  };
+
+  handleToggle = (e, isGymboreeBrand) => {
+    this.setState({ isGymboreeBrand });
+  };
+
+  giftServiceChanged = value => {
+    const { dispatch, formName } = this.props;
+    if (dispatch) {
+      dispatch(change(formName, `optionId`, value));
+    }
   };
 
   render() {
     const { className, labels, isGiftServicesChecked, giftWrapOptions } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions);
-    const { detailStatus } = this.state;
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', giftWrapOptions);
+    const { detailStatus, isGymboreeBrand } = this.state;
 
     return (
       <form className={className} noValidate>
@@ -87,7 +97,7 @@ class GiftServices extends React.PureComponent {
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="checkbox-header">
                 <Field
-                  name="addGiftServices"
+                  name="hasGiftWrapping"
                   component={InputCheckbox}
                   dataLocator="hide-show-checkbox"
                   enableSuccessCheck={false}
@@ -117,11 +127,17 @@ class GiftServices extends React.PureComponent {
               </div>
             </Col>
           </Row>
-          <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="regular" textAlign="left">
+          <BodyCopy
+            className="addReceipt"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="regular"
+            textAlign="left"
+          >
             Add a gift receipt, message and/or gift boxes.
           </BodyCopy>
 
-          {!isGiftServicesChecked && (
+          {isGiftServicesChecked && (
             <>
               <Row fullBleed className="giftServicesContainer">
                 <BodyCopy
@@ -135,8 +151,9 @@ class GiftServices extends React.PureComponent {
                 <Col colSize={{ small: 3, medium: 4, large: 6 }} className="phone-field-wrapper">
                   <LabeledRadioButton
                     className="normal-select-box"
-                    name="gym"
-                    checked={!isGymboree()}
+                    name="brand"
+                    checked={isGymboreeBrand === isGymboree()}
+                    onChange={e => this.handleToggle(e, isGymboree())}
                     disabled={false}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
@@ -152,14 +169,15 @@ class GiftServices extends React.PureComponent {
                 <Col colSize={{ small: 3, medium: 4, large: 6 }} className="phone-field-wrapper">
                   <LabeledRadioButton
                     className="normal-select-box"
-                    name="gym"
-                    checked={isGymboree()}
+                    name="brand"
+                    checked={isGymboreeBrand === !isGymboree()}
+                    onChange={e => this.handleToggle(e, !isGymboree())}
                     disabled={false}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
                         alt="Brand"
-                        className="brand-image"
+                        className="brand-image gymImage"
                         src={getIconPath('header__brand-tab-gymboree')}
                         data-locator={getLocator('header__brand-tab--gymboree')}
                       />
@@ -174,13 +192,50 @@ class GiftServices extends React.PureComponent {
                       <Field
                         width={87}
                         id="color"
-                        name="initail val"
+                        name="optionId"
                         component={ColorSelector}
                         options={giftServicesList}
                         dataLocator="addnewaddress-state"
+                        onChange={this.giftServiceChanged}
                       />
                     </div>
                   </div>
+                </Col>
+              </Row>
+              <Row fullBleed className="messageTextWrapper">
+                <Col colSize={{ small: 3, medium: 4, large: 6 }}>
+                  <BodyCopy
+                    color="gray.900"
+                    fontSize="fs12"
+                    fontFamily="secondary"
+                    textAlign="left"
+                  >
+                    Add your message
+                  </BodyCopy>
+                </Col>
+                <Col colSize={{ small: 3, medium: 4, large: 6 }}>
+                  <BodyCopy
+                    color="gray.900"
+                    fontSize="fs10"
+                    fontFamily="secondary"
+                    textAlign="right"
+                  >
+                    100 Characters limit
+                  </BodyCopy>
+                </Col>
+              </Row>
+
+              <Row className="edit-form-css">
+                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                  <Field
+                    name="message"
+                    id="message"
+                    type="text"
+                    component={TextBox}
+                    maxLength={50}
+                    dataLocator="pickup-phone-number"
+                    enableSuccessCheck={false}
+                  />
                 </Col>
               </Row>
             </>

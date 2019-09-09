@@ -242,6 +242,7 @@ class ShippingForm extends React.Component {
       className,
       dispatch,
       isOrderUpdateChecked,
+      isGiftServicesChecked,
       smsSignUpLabels,
       selectedShipmentId,
       addressPhoneNo,
@@ -353,16 +354,14 @@ class ShippingForm extends React.Component {
               </FormSection>
             </Col>
             <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <FormSection name="giftServices">
-                <GiftServices
-                  showDefaultCheckbox={false}
-                  formName={formName}
-                  formSection="giftServices"
-                  variation="secondary"
-                  isGiftCardChecked={false}
-                  dispatch={dispatch}
-                />
-              </FormSection>
+              <GiftServices
+                showDefaultCheckbox={false}
+                formName={formName}
+                formSection="giftServices"
+                variation="secondary"
+                isGiftServicesChecked={isGiftServicesChecked}
+                dispatch={dispatch}
+              />
             </Col>
           </Row>
 

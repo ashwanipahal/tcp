@@ -6,6 +6,7 @@ import {
   getGiftServicesLabels,
   getDetailsContent,
   getGiftWrapOptions,
+  getInitialGiftWrapOptions,
 } from './GiftServices.selector';
 import { addGiftServicesRequest } from './GiftServices.actions';
 
@@ -19,7 +20,10 @@ class GiftServicesContainer extends React.PureComponent {
       formSection,
       dispatch,
       giftWrapOptions,
+      giftWrap,
     } = this.props;
+    const optionId = giftWrap ? giftWrap.get('optionId') : '';
+    const message = giftWrap ? giftWrap.get('message') : '';
     const updateLabels = { ...labels, DETAILS_RICH_TEXT: detailsRichText };
     return (
       <GiftServices
@@ -29,6 +33,7 @@ class GiftServicesContainer extends React.PureComponent {
         isGiftServicesChecked={isGiftServicesChecked}
         formSection={formSection}
         giftWrapOptions={giftWrapOptions}
+        initialValues={{ optionId, message }}
       />
     );
   }
@@ -41,6 +46,7 @@ GiftServicesContainer.propTypes = {
   dispatch: PropTypes.func,
   detailsRichText: PropTypes.shape.isRequired,
   giftWrapOptions: PropTypes.shape.isRequired,
+  giftWrap: PropTypes.shape.isRequired,
 };
 GiftServicesContainer.defaultProps = {
   isGiftServicesChecked: false,
@@ -59,6 +65,7 @@ export const mapStateToProps = state => ({
   labels: getGiftServicesLabels(state),
   detailsRichText: getDetailsContent(state),
   giftWrapOptions: getGiftWrapOptions(state),
+  giftWrap: getInitialGiftWrapOptions(state),
 });
 
 export default connect(

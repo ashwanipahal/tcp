@@ -20,13 +20,18 @@ export const getGiftServicesLabels = state => {
   };
 };
 export const getGiftWrapOptions = state => {
-  return state.Checkout.getIn(['options', 'giftWrapOptions', 'text']) || '';
+  const giftWrapOptions = state.Checkout.getIn(['options', 'giftWrapOptions']);
+  return giftWrapOptions.text || '';
 };
+
 export const getDetailsContent = state => {
   const detailsContent = state.CartPageReducer.get('moduleXContent').find(
-    moduleX => moduleX.name === BagPageSelector.getDetailsContentTcpId(state)
+    moduleX => moduleX.name === BagPageSelector.getGiftServicesContentTcpId(state)
   );
   return detailsContent && detailsContent.richText;
+};
+export const getInitialGiftWrapOptions = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'checkout', 'giftWrap']);
 };
 
 export const getFormGiftMsg = state => {

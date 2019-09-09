@@ -1,3 +1,5 @@
+import { formValueSelector } from 'redux-form';
+
 const getPickUpContactFormLabels = state => {
   const {
     lbl_pickup_title: title,
@@ -58,4 +60,14 @@ const getPickUpContactFormLabels = state => {
   };
 };
 
-export default getPickUpContactFormLabels;
+const getGiftServicesFormData = state => {
+  const selector = formValueSelector('GiftServices');
+  return {
+    optionId: selector(state, 'optionId'),
+    hasGiftWrapping: selector(state, 'hasGiftWrapping'),
+    message: selector(state, 'message'),
+    brand: selector(state, 'brand'),
+  };
+};
+
+export { getPickUpContactFormLabels, getGiftServicesFormData };

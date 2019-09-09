@@ -12,9 +12,10 @@ class GiftServicesDetailsModal extends React.PureComponent<Props> {
         isOpen={openState}
         onRequestClose={onRequestClose}
         overlayClassName="TCPModal__Overlay"
-        className="TCPModal__Content giftServicesModal"
+        className="TCPModal__Content"
         maxWidth="500px"
         minHeight="90%"
+        heightConfig={{ height: '90%' }}
         closeIconDataLocator="details-cross-icon"
         fixedWidth
       >

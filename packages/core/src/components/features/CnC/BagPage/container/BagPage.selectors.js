@@ -91,6 +91,18 @@ const getDetailsContentGymId = state => {
   return content && content.contentId;
 };
 
+const getGiftServicesContentTcpId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const contentTCP = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
+  return contentTCP && contentTCP.contentId;
+};
+
+const getGiftServicesContentGymId = state => {
+  const { referred = [] } = state.Labels.bag.addedToBag;
+  const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
+  return contentGYM && contentGYM.contentId;
+};
+
 const getFilteredItems = (state, filter) =>
   getOrderItems(state).filter(item => filter(item.getIn(['miscInfo', 'availability'])));
 
@@ -120,4 +132,6 @@ export default {
   getErrorMapping,
   getDetailsContentGymId,
   getDetailsContentTcpId,
+  getGiftServicesContentTcpId,
+  getGiftServicesContentGymId,
 };

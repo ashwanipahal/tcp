@@ -15,7 +15,7 @@ import {
 import constants from '../Checkout.constants';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
-import getPickUpContactFormLabels from './Checkout.selector.util';
+import { getPickUpContactFormLabels, getGiftServicesFormData } from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
@@ -200,7 +200,7 @@ export const getPickupAltValues = createSelector(
 // }
 
 function getGiftWrappingValues(state) {
-  return state.Checkout.getIn(['values', 'giftWrap']);
+  return state.Checkout.getIn(['values', 'giftWrap']) || '';
 }
 
 function getCurrentSiteId() {
@@ -230,6 +230,10 @@ function isSmsUpdatesEnabled() {
 
 //   return phoneNumber;
 // }
+const getShippingGiftServicesField = state => {
+  const selector = formValueSelector('checkoutShipping');
+  return selector(state, 'giftServices');
+};
 
 const getShippingSmsSignUpFields = state => {
   const selector = formValueSelector('checkoutShipping');
@@ -254,6 +258,11 @@ const getSelectedShipmentId = createSelector(
 const getShippingSendOrderUpdate = createSelector(
   getShippingSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.sendOrderUpdate
+);
+
+export const getGiftServicesSend = createSelector(
+  getShippingGiftServicesField,
+  giftServicesFields => giftServicesFields && giftServicesFields.sendGiftServices
 );
 
 const getSaveToAddressBook = state => {
@@ -506,4 +515,6 @@ export default {
   isCardNotUpdated,
   getDetailedCreditCardById,
   getCheckoutProgressBarLabels,
+  getGiftServicesFormData,
+  getGiftServicesSend,
 };
