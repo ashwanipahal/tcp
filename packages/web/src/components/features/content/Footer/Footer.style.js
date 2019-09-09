@@ -87,10 +87,7 @@ export default css`
     display: none;
   }
   .reference-id {
-    background-color: ${props =>
-      !props.theme.isGymboree
-        ? props.theme.colors.BRAND.PRIMARY
-        : props.theme.colorPalette.primary.main};
+    background-color: ${props => props.theme.colorPalette.primary.main};
     font-size: ${props => props.theme.fonts.fontSize.body.small.tertiary}px;
     padding: 0 15px 24px;
     margin: 0;

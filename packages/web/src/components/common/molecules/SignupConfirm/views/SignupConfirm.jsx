@@ -7,8 +7,9 @@ import { isGymboree, getIconPath } from '@tcp/core/src/utils';
 import SignupConfirmStyle from '../SignupConfirm.style';
 
 const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => {
-  const emailIcon = `dot-email-${isGymboree() ? 'orange' : 'blue'}`;
-  const chatIcon = `chat${isGymboree() ? '-orange' : '-blue'}`;
+  const color = isGymboree() ? 'orange' : 'blue';
+  const emailIcon = `dot-email-${color}`;
+  const chatIcon = `chat-${color}`;
 
   return (
     <div className={className} id="sign-up-modal-confirm-view">
