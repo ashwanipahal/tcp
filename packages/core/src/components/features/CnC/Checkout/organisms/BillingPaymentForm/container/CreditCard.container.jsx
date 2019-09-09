@@ -132,7 +132,7 @@ export const mapDispatchToProps = dispatch => {
     },
   };
 };
-
+/* istanbul ignore next */
 const mapStateToProps = (state, ownProps) => {
   return {
     cardList: getCardListState(state),

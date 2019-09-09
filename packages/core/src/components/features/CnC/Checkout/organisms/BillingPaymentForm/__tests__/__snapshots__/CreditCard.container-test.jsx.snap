@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftCardsContainer Container should render CheckoutPage view section 1`] = `
+<ReduxForm
+  backLinkPickup={true}
+  backLinkShipping={true}
+  cardList={Array []}
+  cvvCodeInfoContentId=""
+  cvvCodeRichText={Object {}}
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="checkoutBilling"
+  getCVVCodeInfo={[MockFunction]}
+  getFormState={[Function]}
+  initialValues={
+    Object {
+      "onFileCardKey": 0,
+      "paymentMethodId": "creditCard",
+    }
+  }
+  isGuest={true}
+  isMobile={false}
+  keepDirtyOnReinitialize={false}
+  labels={Array []}
+  nextSubmitText=""
+  onFileCardKey=""
+  onSubmit={[Function]}
+  orderHasShipping={true}
+  paymentMethodId=""
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;
