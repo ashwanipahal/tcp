@@ -18,7 +18,8 @@ export const ImageContainer = styled.View`
 `;
 
 export const ButtonContainer = styled.View`
-  margin: 32px;
+  align-items: center;
+  margin-top: 24px;
 `;
 
 export default {

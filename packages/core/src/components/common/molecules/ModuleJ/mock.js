@@ -10,19 +10,40 @@ export default {
           textItems: [
             {
               text: 'Every Length, Style, Color & Size',
-              color: 'color2',
-              style: 'small_text',
-            },
-            {
-              text: 'THE SHORTS SHOP',
-              color: 'color2',
-              style: 'large_text',
+              style: 'style1',
             },
           ],
           link: {
-            url: 'plpUrl',
+            url: '/node/plp/e499bac3-6770-4757-b924-55c837712dfc',
+            text: '',
             title: '',
             target: '',
+            external: 0,
+            action: '',
+          },
+          icon: {
+            icon: '',
+            placement: '',
+          },
+        },
+        {
+          textItems: [
+            {
+              text: 'The Short Shop',
+              style: 'style1',
+            },
+          ],
+          link: {
+            url: '/node/plp/e499bac3-6770-4757-b924-55c837712dfc',
+            text: '',
+            title: '',
+            target: '',
+            external: 0,
+            action: '',
+          },
+          icon: {
+            icon: '',
+            placement: '',
           },
         },
       ],

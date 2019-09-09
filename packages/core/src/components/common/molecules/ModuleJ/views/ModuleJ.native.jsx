@@ -7,6 +7,7 @@ import {
   PromoContainer,
   HeaderContainer,
   ImageContainer,
+  ButtonContainer,
 } from '../styles/ModuleJ.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
@@ -36,8 +37,9 @@ class ModuleJ extends React.PureComponent {
             width="100%"
           />
         </ImageContainer>
-
-        <Button text="SHOP ALL" />
+        <ButtonContainer>
+          <Button buttonVariation="variable-width" width="225px" text="SHOP ALL" />
+        </ButtonContainer>
       </Container>
     );
   }
