@@ -20,7 +20,7 @@ const FooterTopCandidateB = props => {
   } = props;
 
   return (
-    <div className="footer-top">
+    <div className="footer-top content-wrapper">
       <Row>
         <Col
           className="footer-top__slots col-md-half-width"
