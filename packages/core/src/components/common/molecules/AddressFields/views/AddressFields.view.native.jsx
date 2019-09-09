@@ -77,13 +77,20 @@ export class AddressFields extends React.PureComponent {
     this.locationRef = null;
   }
 
+  componentDidMount() {
+    const { dispatch, formName, formSection } = this.props;
+    dispatch(change(formName, `${formSection}.country`, 'US'));
+  }
+
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
     const address = getAddressFromPlace(place, inputValue);
-    dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
-    dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
-    dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
+    dispatch(change(formName, `${formSection}.city`, address.city));
+    dispatch(change(formName, `${formSection}.zipCode`, address.zip));
+    dispatch(change(formName, `${formSection}.state`, address.state));
+    dispatch(change(formName, `${formSection}.addressLine1`, address.street));
     this.setState({ dropDownItem: address.state });
+    this.locationRef.setAddressText(address.street);
   };
 
   changeShipmentMethods = (e, value) => {
