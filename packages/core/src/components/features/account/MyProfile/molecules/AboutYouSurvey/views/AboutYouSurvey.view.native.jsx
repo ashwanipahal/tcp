@@ -72,7 +72,7 @@ export class AboutYouSurvey extends React.Component {
     });
     const selectedAnswers = question.options.filter(item => item.selected);
     question.answers = selectedAnswers.map(item => item.value);
-    this.setState({ [questionId]: question, savedStageSelected: true });
+    this.setState({ [questionId]: question, savedStageSelected: false });
     this.submitDisabled = !question.answers.length;
   };
 
