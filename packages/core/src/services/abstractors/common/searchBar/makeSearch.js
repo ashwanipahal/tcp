@@ -36,7 +36,11 @@ export const makeSearch = payload => {
   };
   return executeUnbxdAPICall(payloadData)
     .then(res => {
-      return res;
+      const response = res.body;
+      if (!response) {
+        throw new Error('Response has errors!');
+      }
+      return response;
     })
     .catch(errorHandler);
 };

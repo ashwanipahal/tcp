@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
@@ -136,7 +137,7 @@ class HeaderMiddleNav extends React.PureComponent {
       showProduct,
     } = this.state;
 
-    console.log(searchResults); // only for use purpose
+    logger.debug(searchResults); // only for use purpose
     return (
       <React.Fragment>
         <Row className={`${className} header-middle-nav`}>
@@ -312,7 +313,11 @@ HeaderMiddleNav.propTypes = {
   startSearch: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
-  searchResults: PropTypes.shape({}),
+  searchResults: PropTypes.shape({
+    trends: PropTypes.shape({}),
+    categories: PropTypes.shape({}),
+    products: PropTypes.shape({}),
+  }),
   labels: PropTypes.shape({
     lbl_search_whats_trending: PropTypes.string,
     lbl_search_recent_search: PropTypes.string,
@@ -325,7 +330,11 @@ HeaderMiddleNav.defaultProps = {
   navigationDrawer: {
     open: false,
   },
-  searchResults: {},
+  searchResults: {
+    trends: {},
+    categories: {},
+    products: {},
+  },
   labels: PropTypes.shape({
     lbl_search_whats_trending: '',
     lbl_search_recent_search: '',
