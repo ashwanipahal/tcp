@@ -14,6 +14,14 @@ type Props = {
   host: string,
 };
 
+/**
+ * ImageComp returns two types of images
+ * 1. Image from react-native
+ * 2. LazyLoadImage - A image to be loaded only when it is visible on screen
+ *                  - For an image to be lazy loaded, parent scrollview should be LazyLoadScrollView from react-native-lazyload-deux
+ *                  - it needs "host" as props
+ *                  - value of host prop should be same as parent LazyLoadScrollView
+ */
 const ImageComp = (props: Props) => {
   const { url, crop, source, host, ...otherProps } = props;
   const cropVal = crop || '';
