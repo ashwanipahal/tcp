@@ -106,6 +106,7 @@ const isMatchingFamily = (matchingFamily, excludeBadge, siteAttributes) => {
 const isOnlineOrClearing = (isOnlineOnly, categoryType) => {
   return isOnlineOnly && !getClearanceString('ONLINE_ONLY').includes(categoryType);
 };
+
 export function extractPrioritizedBadge(product, siteAttributes, categoryType, excludeBadge) {
   const matchingCategory = extractAttributeValue(product, siteAttributes.matchingCategory);
   const matchingFamily = extractAttributeValue(product, siteAttributes.matchingFamily);

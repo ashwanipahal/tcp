@@ -169,7 +169,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 <Col
                   className="col-md-half-width"
                   colSize={{
-                    large: 7,
+                    large: 6,
                     medium: 4,
                     small: 7,
                   }}
@@ -188,7 +188,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 </Col>
                 <Col
                   colSize={{
-                    large: 5,
+                    large: 6,
                     medium: 4,
                     small: 6,
                   }}

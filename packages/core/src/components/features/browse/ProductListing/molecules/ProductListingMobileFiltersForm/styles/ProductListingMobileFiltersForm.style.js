@@ -7,6 +7,20 @@ export default css`
     .filter-row {
       margin-bottom: 7px;
     }
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin: 14px 14px 0;
+      width: auto;
+      padding: 0;
+
+      .container-accordion {
+        padding: 0;
+      }
+    }
+  }
+
+  .accordion-class {
+    width: 100%;
   }
 
   .open-filter-button {
@@ -34,15 +48,13 @@ export default css`
   }
 
   .item-common {
-    margin-bottom: 18px;
+    margin-bottom: 8px;
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 120px;
-      margin-right: 0;
-      padding-left: 0;
 
       .item-select {
-        padding-left: 20px;
+        padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
       }
     }
   }
@@ -53,14 +65,27 @@ export default css`
     border: 0;
     padding-top: 6px;
     padding-bottom: 0;
+    margin: auto;
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin: 8px auto 0;
+    }
 
     .item-list-common {
       max-width: 98%;
       margin: 0 auto;
 
-      @media ${props => props.theme.mediaQuery.medium} {
-        max-width: 95%;
-        margin: 0 auto;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        max-width: 99%;
+      }
+    }
+
+    .item-common {
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        width: 120px;
+      }
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 96px;
       }
     }
 
@@ -81,6 +106,12 @@ export default css`
     .color-name {
       font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
       vertical-align: top;
+    }
+
+    .size-title {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 96px;
+      }
     }
 
     .color-chip {
