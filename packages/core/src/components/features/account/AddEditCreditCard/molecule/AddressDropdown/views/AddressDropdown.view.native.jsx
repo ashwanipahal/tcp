@@ -95,12 +95,11 @@ export class AddressDropdown extends React.PureComponent<Props> {
   calculateDropDownPosition = () => {
     if (!this.rowMarker) return;
     this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
-      this.rowFrame = { x: pageX, y: height + pageY, width, height };
-
+      const { data, itemStyle, dropDownStyle } = this.props;
+      this.rowFrame = { x: pageX, y: dropDownStyle.height + pageY, width, height };
       const windowHeight = getScreenHeight();
 
       // calculate the list height
-      const { data, itemStyle } = this.props;
       const calculateHeight = data.length * itemStyle.height;
 
       // checking bottom space
@@ -129,9 +128,9 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
     if (showInBottom) {
       if (calculateHeight > dH) {
-        listHeight = dH - 100;
+        listHeight = dH;
       } else {
-        listHeight = calculateHeight - 100;
+        listHeight = calculateHeight;
       }
     } else if (calculateHeight > windowHeight) {
       listMargin = 100;

@@ -221,7 +221,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           <ActionsWrapper>
             <Button
               fill="BLUE"
-              buttonVariation="fixed-width"
+              buttonVariation="variable-width"
               text={
                 isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
               }
@@ -231,7 +231,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <Button
               fill="WHITE"
               onPress={onClose}
-              buttonVariation="fixed-width"
+              buttonVariation="variable-width"
               text={labels.common.lbl_common_cancelCTA}
               style={CancelButton}
             />
