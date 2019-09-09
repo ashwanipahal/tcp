@@ -19,7 +19,9 @@ export const getCardListApi = () => {
     .then(res => {
       return res;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };
 
 export const addGiftCardApi = payload => {
@@ -36,7 +38,11 @@ export const addGiftCardApi = payload => {
       recapchaResponse: payload.recaptchaToken,
     },
   };
-  return executeStatefulAPICall(payloadArgs, errorHandler).then(res => {
-    return res;
-  });
+  return executeStatefulAPICall(payloadArgs)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      throw err;
+    });
 };

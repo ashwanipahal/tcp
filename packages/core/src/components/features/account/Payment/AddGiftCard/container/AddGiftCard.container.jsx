@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
 import { getCardList } from '../../container/Payment.actions';
-import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
+import { getAddGiftCardResponse, getAddGiftCardErrorMessage } from './AddGiftCard.selector';
 import utils, { isMobileApp } from '../../../../../../utils';
 import { getFormValidationErrorMessages } from '../../../Account/container/Account.selectors';
 
@@ -70,7 +70,7 @@ export const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     addGiftCardResponse: getAddGiftCardResponse(state),
-    getAddGiftCardErr: getAddGiftCardError(state),
+    getAddGiftCardErr: getAddGiftCardErrorMessage(state),
     formErrorMessage: getFormValidationErrorMessages(state),
   };
 };

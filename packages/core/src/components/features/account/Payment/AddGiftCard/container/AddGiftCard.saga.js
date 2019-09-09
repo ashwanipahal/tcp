@@ -19,7 +19,13 @@ export function* addGiftCard({
     }
     return yield put(addGiftCardFailure());
   } catch (err) {
-    return yield put(addGiftCardFailure(err.message));
+    let error = {};
+    /* istanbul ignore else */
+    if (err instanceof Error) {
+      error = err;
+      console.log('error--------------------', error);
+    }
+    return yield put(addGiftCardFailure(error.response.body.errors[0]));
   }
 }
 
