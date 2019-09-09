@@ -4,14 +4,14 @@ import { Row, Col, RichText } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
 import Product from '../molecules/Product/views/Product.view';
-import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 
-const ProductDetailView = ({ className, productDetails, breadCrumbs, longDescription }) => {
+const ProductDetailView = ({ className, productDetails, longDescription }) => {
   return (
     <div className={className}>
-      <Row>
+      <Row className="placeholder">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
+          <div className="promo-area-1">BREAD CRUMB</div>
+          {/* {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />} */}
         </Col>
       </Row>
       <Row className="placeholder">
@@ -74,14 +74,12 @@ const ProductDetailView = ({ className, productDetails, breadCrumbs, longDescrip
 ProductDetailView.propTypes = {
   className: PropTypes.string,
   productDetails: PropTypes.shape({}),
-  breadCrumbs: PropTypes.shape({}),
   longDescription: PropTypes.string,
 };
 
 ProductDetailView.defaultProps = {
   className: '',
   productDetails: {},
-  breadCrumbs: {},
   longDescription: '',
 };
 

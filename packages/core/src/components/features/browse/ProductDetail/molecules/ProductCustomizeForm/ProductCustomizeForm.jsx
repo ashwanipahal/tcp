@@ -68,7 +68,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     return (
       colorFitsSizesMap &&
       colorFitsSizesMap.filter(colorItem => {
-        return colorItem.getIn(['color', 'name']) === color.name && colorItem;
+        return color && colorItem.getIn(['color', 'name']) === color.name && colorItem;
       })
     );
   };

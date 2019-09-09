@@ -89,14 +89,9 @@ class Product extends React.Component {
   }
 
   //eslint-disable-next-line class-methods-use-this
-  getInitialValues(props) {
+  getInitialValues(item) {
     return {
-      color: {
-        name: 'H/T SMOKE',
-        imagePath:
-          'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2036238_1363.jpg',
-        family: 'GRAY',
-      },
+      color: item.get(['colorFitsSizesMap', 0, 'color']),
       fit: '',
       size: '',
       quantity: 1,
@@ -202,14 +197,15 @@ class Product extends React.Component {
 
   render() {
     const { productDetails } = this.props;
+    const item = productDetails.get('currentProduct');
     return (
       <div>
         {productDetails && productDetails.get('currentProduct') && (
           <ProductCustomizeReduxForm
-            item={productDetails.get('currentProduct')}
+            item={item}
             colorFitsSizesMap={productDetails.getIn(['currentProduct', 'colorFitsSizesMap'])}
             // handleSubmit={this.handleSubmit}
-            initialValues={this.getInitialValues(/* item */)}
+            initialValues={this.getInitialValues(item)}
           />
         )}
       </div>

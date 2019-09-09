@@ -164,9 +164,8 @@ function getFirstVariant(product) {
   }
 }
 
-const validateQuantityAvailable = sizes => {
+const validateQuantityAvailable = () => {
   // const index = findIndex(sizes, function (size) { return size.maxAvailable !== 0; });
-  console.log('sizes', sizes);
   const index = 0;
   return index > -1 ? Number.MAX_VALUE : 0;
 };

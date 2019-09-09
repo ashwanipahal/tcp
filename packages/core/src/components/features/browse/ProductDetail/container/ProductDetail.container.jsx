@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; // eslint-disable-line
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
@@ -13,9 +14,15 @@ import {
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
-    const { getDetails } = this.props;
+    const {
+      getDetails,
+      router: {
+        query: { pid },
+      },
+    } = this.props;
+
     // TODO - fix this to extract the product ID from the page.
-    getDetails({ productColorId: '2036238' });
+    getDetails({ productColorId: pid });
   }
 
   render() {
@@ -62,6 +69,11 @@ ProductListingContainer.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   longDescription: PropTypes.string,
   ratingsProductId: PropTypes.string,
+  router: PropTypes.shape({
+    query: PropTypes.shape({
+      pid: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 ProductListingContainer.defaultProps = {
@@ -71,7 +83,9 @@ ProductListingContainer.defaultProps = {
   ratingsProductId: '',
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductListingContainer);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProductListingContainer)
+);
