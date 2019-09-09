@@ -244,7 +244,6 @@ class FooterTopCandidateA extends React.PureComponent {
             <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
           </Col>
         </Row>
-        {/* <div className="divider hide-in-medium-down" /> */}
       </Grid>
     );
   }

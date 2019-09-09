@@ -62,9 +62,9 @@ class Footer extends React.Component {
           ) : (
             <FooterTopCandidateA {...props} />
           )}
+          <EmailSignupModal buttonConfig={emailSignup} />
+          <SmsSignupModal buttonConfig={smsSignup} />
         </Row>
-        <EmailSignupModal buttonConfig={emailSignup} />
-        <SmsSignupModal buttonConfig={smsSignup} />
         <Row className="footer-middle mobile" fullBleed>
           <FooterMiddleMobile
             className={className}
