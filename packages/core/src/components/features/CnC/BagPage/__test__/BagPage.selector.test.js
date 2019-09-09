@@ -3,8 +3,16 @@ import BAGPAGE_SELECTORS from '../container/BagPage.selectors';
 
 describe('#Added to bag Selectors', () => {
   const BagPageState = {
-    bag: {
-      bagOverview: { lbl_header_bag: 'bagHeading' },
+    checkout: {
+      bagPage: {
+        lbl_header_bag: 'bagHeading',
+        lbl_emptyBag_loggedInMsg: 'loggedInMsg',
+        lbl_emptyBag_notLoggedInMsg: 'guestUserMsg',
+        lbl_emptyBag_loginIn: 'login',
+        lbl_emptyBag_shopNow: 'shopNow',
+        lbl_emptyBag_inspirationTagLine: 'tagLine',
+        lbl_emptyBag_helperMsg: 'helperMsg',
+      },
     },
     global: {
       addedToBagModal: { lbl_header_addedToBag: 'AddedToBag', lbl_cta_checkout: 'Checkout' },
@@ -28,6 +36,12 @@ describe('#Added to bag Selectors', () => {
       addedToBag: 'AddedToBag',
       bagHeading: 'bagHeading',
       checkout: 'Checkout',
+      guestUserMsg: 'guestUserMsg',
+      helperMsg: 'helperMsg',
+      loggedInMsg: 'loggedInMsg',
+      login: 'login',
+      shopNow: 'shopNow',
+      tagLine: 'tagLine',
     });
   });
 

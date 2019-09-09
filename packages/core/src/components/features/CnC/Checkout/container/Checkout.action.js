@@ -275,10 +275,7 @@ export const routeToPickupPage = () => {
 
 // export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
-export const initActions = [
-  loadComponentLabelsData({ category: LABELS.checkout }),
-  loadComponentLabelsData({ category: LABELS.bagPage }),
-];
+export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export function getSetIsBillingVisitedActn(isBillingVisited) {
   return {

@@ -118,8 +118,8 @@ describe('#Coupon selector', () => {
   it('#Coupon should return labels state', () => {
     const state = {
       Labels: {
-        bag: {
-          bagOverview: {
+        checkout: {
+          bagPage: {
             lbl_couponform_placeholder: '',
             lbl_couponform_submit: 'Submit',
             lbl_couponform_header: 'Header',

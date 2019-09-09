@@ -7,8 +7,8 @@ export const getCouponFetchingState = state => {
 
 export const getCouponsLabels = state => {
   const {
-    bag: {
-      bagOverview: {
+    checkout: {
+      bagPage: {
         lbl_couponform_placeholder: placeholderText,
         lbl_couponform_submit: submitButtonLabel,
         lbl_couponform_header: couponCodeHeader,

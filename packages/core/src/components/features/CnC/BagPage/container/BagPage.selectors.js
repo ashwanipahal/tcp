@@ -14,8 +14,8 @@ export const filterProductsBrand = (arr, searchedValue) => {
 
 const getBagPageLabels = state => {
   const {
-    bag: {
-      bagOverview: {
+    checkout: {
+      bagPage: {
         lbl_header_bag: bagHeading,
         lbl_emptyBag_loggedInMsg: loggedInMsg,
         lbl_emptyBag_notLoggedInMsg: guestUserMsg,

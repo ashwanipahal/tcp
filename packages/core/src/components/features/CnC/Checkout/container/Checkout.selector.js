@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '@tcp/core/src/utils';
+import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
 import {
