@@ -69,11 +69,17 @@ exports[`Shipping Form should render correctly 1`] = `
         variation="secondary"
       />
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
         <Styled(ShipmentMethods)
           formName="checkoutShipping"
@@ -145,7 +151,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -262,7 +268,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -323,11 +329,17 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
         <Styled(ShipmentMethods)
           formName="checkoutShipping"
@@ -567,7 +579,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -684,7 +696,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -745,23 +757,46 @@ exports[`Shipping Form should render correctly with logged in user having addres
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
-        <Styled(ShipmentMethods)
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={
-            Array [
-              Object {
-                "id": 123,
-              },
-            ]
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={
+                Array [
+                  Object {
+                    "id": 123,
+                  },
+                ]
+              }
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
           }
         />
       </div>
@@ -1042,7 +1077,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1159,7 +1194,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1220,23 +1255,46 @@ exports[`Shipping Form should render correctly with logged in user having addres
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
-        <Styled(ShipmentMethods)
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={
-            Array [
-              Object {
-                "id": 123,
-              },
-            ]
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={
+                Array [
+                  Object {
+                    "id": 123,
+                  },
+                ]
+              }
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
           }
         />
       </div>
@@ -1341,7 +1399,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bwzfXH",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1458,7 +1516,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bwzfXH",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1519,21 +1577,44 @@ exports[`Shipping Form should render correctly with logged in user having addres
         </div>
       </div>
     </FormSection>
-    <FormSection
-      name="shipmentMethods"
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="shipment-methods-form"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
-        <Styled(ShipmentMethods)
-          formName="checkoutShipping"
-          formSection="shipmentMethods"
-          selectedShipmentId={null}
-          shipmentHeader=""
-          shipmentMethods={
-            Array [
-              Object {},
-            ]
+        <FormSection
+          name="shipmentMethods"
+        >
+          <div
+            className="shipment-methods-form"
+          >
+            <Styled(ShipmentMethods)
+              formName="checkoutShipping"
+              formSection="shipmentMethods"
+              selectedShipmentId={null}
+              shipmentHeader=""
+              shipmentMethods={
+                Array [
+                  Object {},
+                ]
+              }
+            />
+          </div>
+        </FormSection>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
           }
         />
       </div>
