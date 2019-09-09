@@ -87,6 +87,15 @@ export default class AddressVerification extends React.PureComponent {
     onSuccess(addressPayload);
   };
 
+  onClose = () => {
+    const { toggleAddressModal, resetVerifyAddressAction } = this.props;
+    if (toggleAddressModal) {
+      toggleAddressModal();
+    } else {
+      resetVerifyAddressAction();
+    }
+  };
+
   getMessage = verificationResult => {
     const {
       labels: { verifyAddressLabels },
@@ -240,7 +249,6 @@ export default class AddressVerification extends React.PureComponent {
       verificationResult,
       userAddress,
       suggestedAddress,
-      toggleAddressModal,
       labels: { verifyAddressLabels },
       setModalHeading,
       verifyModalRendered,
@@ -283,7 +291,7 @@ export default class AddressVerification extends React.PureComponent {
                   fill="WHITE"
                   text={verifyAddressLabels.editAddress}
                   buttonVariation="variable-width"
-                  onPress={toggleAddressModal}
+                  onPress={this.onClose}
                 />
               </ButtonWrapper>
             </AddressVerificationContainer>

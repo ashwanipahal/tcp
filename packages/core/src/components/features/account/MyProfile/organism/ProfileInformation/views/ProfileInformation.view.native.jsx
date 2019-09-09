@@ -31,6 +31,10 @@ export class ProfileInformation extends React.PureComponent {
     this.setState({ [type]: !currentState });
   };
 
+  toggleMailingAddressModal = () => {
+    this.toggleModalState('mountMailingAddressModal');
+  };
+
   render() {
     const {
       labels,
@@ -109,15 +113,15 @@ export class ProfileInformation extends React.PureComponent {
         {mountMailingAddressModal && (
           <ModalNative
             isOpen={mountMailingAddressModal}
-            onRequestClose={() => this.toggleModalState('mountMailingAddressModal')}
+            onRequestClose={this.toggleMailingAddressModal}
             heading={labelsObj.profile.lbl_profile_heading}
           >
             <SafeAreaView>
-              <ViewWithSpacing spacingStyles="margin-left-MED margin-right-MED margin-top-MED">
+              <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG margin-top-MED">
                 <MailingInformationContainer
                   labels={labelsObj}
-                  onUpdateMailingAddress={() => this.toggleModalState('mountMailingAddressModal')}
-                  onClose={() => this.toggleModalState('mountMailingAddressModal')}
+                  onUpdateMailingAddress={this.toggleMailingAddressModal}
+                  onClose={this.toggleMailingAddressModal}
                 />
               </ViewWithSpacing>
             </SafeAreaView>

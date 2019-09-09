@@ -38,6 +38,7 @@ export const AddEditCreditCard = ({
             labels={labels}
             onError={submitAddressFormAction}
             verifyModalRendered={status => setVerifyModalDisplayed(status)}
+            toggleAddressModal={false}
           />
           {!verifyModalDisplayed && (
             <CreditCardForm
@@ -49,7 +50,7 @@ export const AddEditCreditCard = ({
               showUserName={showUserName}
               showCreditCardFields={showCreditCardFields}
               addressFormLabels={addressFormLabels}
-              onFileAddresskey=""
+              mailingAddress={mailingAddress}
               {...otherProps}
             />
           )}

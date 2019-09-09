@@ -145,7 +145,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     });
   };
 
-  /* eslint-disable */
+  showAddressDropdown = (mailingAddress, addressComponentList) => {
+    return mailingAddress
+      ? addressComponentList && addressComponentList.length > 1
+      : addressComponentList;
+  };
+
+  getSubHeading = (labels, pagesubHeading) => {
+    return pagesubHeading || labels.paymentGC.lbl_payment_billingAddress;
+  };
+
   render() {
     const {
       labels,
@@ -159,15 +168,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       dispatch,
       handleSubmit,
       showCreditCardFields,
-      pristine,
       addressFormLabels,
       showUserName,
       showEmailAddress,
-      onFileAddressKey,
       initialValues,
+      mailingAddress,
+      subHeading,
     } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
+    const addressDropdown = this.showAddressDropdown();
 
     const defaultAddress = selectedAddress
       ? this.getSelectedAddress(addressList, selectedAddress)
@@ -178,7 +188,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       this.updateExpiryDate(expMonth, expYear);
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
-    const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -203,37 +212,38 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               letterSpacing="ls167"
               textAlign="left"
               fontWeight="black"
-              text={labels.paymentGC.lbl_payment_billingAddress}
+              text={this.getSubHeading(labels, subHeading)}
             />
-            <TextWrapper>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs12"
-                textAlign="left"
-                fontWeight="semibold"
-                marginTop="10"
-                text={labels.paymentGC.lbl_payment_ccAdressSelect}
-              />
-            </TextWrapper>
-
-            {addressComponentList && (
-              <Field
-                selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
-                name="onFileAddressKey"
-                id="onFileAddressKey"
-                component={AddressDropdown}
-                dataLocator="payment-billingaddressdd"
-                data={addressComponentList}
-                variation="secondary"
-                dropDownStyle={{ ...dropDownStyle }}
-                itemStyle={{ ...itemStyle }}
-                addAddress={this.toggleModal}
-                onValueChange={itemValue => {
-                  this.handleComponentChange(itemValue);
-                }}
-                labels={labels}
-                selectedValue={onFileAddresskey}
-              />
+            {addressDropdown && (
+              <>
+                <TextWrapper>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs12"
+                    textAlign="left"
+                    fontWeight="semibold"
+                    marginTop="10"
+                    text={labels.paymentGC.lbl_payment_ccAdressSelect}
+                  />
+                </TextWrapper>
+                <Field
+                  selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
+                  name="onFileAddressKey"
+                  id="onFileAddressKey"
+                  component={AddressDropdown}
+                  dataLocator="payment-billingaddressdd"
+                  data={addressComponentList}
+                  variation="secondary"
+                  dropDownStyle={{ ...dropDownStyle }}
+                  itemStyle={{ ...itemStyle }}
+                  addAddress={this.toggleModal}
+                  onValueChange={itemValue => {
+                    this.handleComponentChange(itemValue);
+                  }}
+                  labels={labels}
+                  selectedValue={onFileAddresskey}
+                />
+              </>
             )}
             {defaultAddress && (
               <DefaultAddress>
@@ -249,7 +259,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 <RightBracket />
               </DefaultAddress>
             )}
-            {showAddressForm && (
+            {mailingAddress && (
               <ViewWithSpacing spacingStyles="margin-top-LRG">
                 <FormSection name="address">
                   <AddressFields
