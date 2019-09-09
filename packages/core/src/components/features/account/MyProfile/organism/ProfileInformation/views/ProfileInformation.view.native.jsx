@@ -114,7 +114,10 @@ export class ProfileInformation extends React.PureComponent {
           >
             <SafeAreaView>
               <ViewWithSpacing spacingStyles="margin-left-MED margin-right-MED margin-top-MED">
-                <MailingInformationContainer labels={labelsObj} onUpdateMailingAddress={() => this.toggleModalState('mountMailingAddressModal')} />
+                <MailingInformationContainer
+                  labels={labelsObj}
+                  onUpdateMailingAddress={() => this.toggleModalState('mountMailingAddressModal')}
+                />
               </ViewWithSpacing>
             </SafeAreaView>
           </ModalNative>

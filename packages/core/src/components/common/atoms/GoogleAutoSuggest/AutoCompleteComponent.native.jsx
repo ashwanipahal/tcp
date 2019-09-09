@@ -3,7 +3,10 @@ import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { getAPIConfig } from '@tcp/core/src/utils';
-import { StyledErrorIcon, StyledErrorWrapper } from '@tcp/core/src/components/common/atoms/TextBox/TextBox.style.native';
+import {
+  StyledErrorIcon,
+  StyledErrorWrapper,
+} from '@tcp/core/src/components/common/atoms/TextBox/TextBox.style.native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import {
@@ -45,27 +48,20 @@ export const ErrorMsg = props => {
     );
   }
   return null;
-}
+};
 
 ErrorMsg.propTypes = {
   meta: PropTypes.shape({}),
   showErrorIcon: PropTypes.bool,
-}
+};
 
 ErrorMsg.defaultProps = {
   meta: {},
   showErrorIcon: true,
-}
+};
 
 export const GooglePlacesInput = props => {
-  const {
-    headerTitle,
-    componentRestrictions,
-    onValueChange,
-    refs,
-    input,
-    inlineError,
-  } = props;
+  const { headerTitle, componentRestrictions, onValueChange, refs, input, inlineError } = props;
   const apiConfigObj = getAPIConfig();
   const { googleApiKey } = apiConfigObj;
   const [focussed, setFocussed] = useState(false);
@@ -90,11 +86,11 @@ export const GooglePlacesInput = props => {
           key: googleApiKey,
           components: `country:${componentRestrictions.country[0]}`,
         }}
+        getDefaultValue={() => input && input.value}
         textInputProps={{
           ...input,
-          text: input.value,
           onChangeText: value => input.onChange(value),
-          onFocus: () => setFocussed(true)
+          onFocus: () => setFocussed(true),
         }}
         styles={{
           textInputContainer,
@@ -110,7 +106,11 @@ export const GooglePlacesInput = props => {
         debounce={0} // debounce the requests in ms.
         listViewDisplayed="auto"
       />
-      {inlineError && <View><ErrorMsg {...props} /></View>}
+      {inlineError && (
+        <View>
+          <ErrorMsg {...props} />
+        </View>
+      )}
     </Container>
   );
 };
