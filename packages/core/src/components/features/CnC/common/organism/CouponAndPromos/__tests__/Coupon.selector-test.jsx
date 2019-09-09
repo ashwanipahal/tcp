@@ -148,6 +148,8 @@ describe('#Coupon selector', () => {
       SHOW_MORE_BUTTON_TEXT: 'Show more',
       TERMS_AND_CONDITIONS: 'Terms & Conditions',
       USE_BY_TEXT: 'Use by',
+      COUPON_VALIDITY: 'Validity',
+      SEE_REDEEM_DATES: 'See Redeem Dates',
     });
   });
 });

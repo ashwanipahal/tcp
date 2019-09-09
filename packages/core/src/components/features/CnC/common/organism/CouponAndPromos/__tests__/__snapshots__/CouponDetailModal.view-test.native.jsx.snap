@@ -59,6 +59,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           customStyle={Object {}}
           data-locator="couponDetailModal_applied_AddToBagBtn"
           disableButton={false}
+          disabled={false}
           fill="BLUE"
           fullWidth=""
           locator=""
