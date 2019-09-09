@@ -137,7 +137,6 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     fullBleed={true}
   >
     <FooterMiddleMobile
-      className="undefined"
       isLoggedIn={false}
       navLinkItems={Array []}
     />
