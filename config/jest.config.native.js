@@ -8,6 +8,7 @@ module.exports = {
   moduleNameMapper: {
     'styled-components':
       '<rootDir>/packages/mobileapp/node_modules/styled-components/native/dist/styled-components.native.cjs.js',
+    barcode: '<rootDir>/packages/mobileapp/node_modules/react-native-barcode-builder/index.js',
   },
   testMatch: [
     '**/core/**/__tests__/*-test.native.+(js|jsx)',
@@ -46,6 +47,7 @@ module.exports = {
     '/pages/',
     '/__mocks__/',
     '/features/account/LoginPage/container/loginUtils/keychain.utils.native.js',
+    '/common/atoms/Swipeable',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   snapshotSerializers: ['enzyme-to-json/serializer'],

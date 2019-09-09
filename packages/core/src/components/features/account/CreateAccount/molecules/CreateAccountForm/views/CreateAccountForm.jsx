@@ -1,18 +1,20 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import TextBox from '../../../../../../common/atoms/TextBox';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
-import Button from '../../../../../../common/atoms/Button';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import Anchor from '../../../../../../common/atoms/Anchor';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import Row from '@tcp/core/src/components/common/atoms/Row';
+import Col from '@tcp/core/src/components/common/atoms/Col';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { Image } from '@tcp/core/src/components/common/atoms';
+import ReactTooltip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { Image } from '../../../../../../common/atoms';
 import { getIconPath } from '../../../../../../../utils';
-import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 
 // @flow
 type Props = {
@@ -192,7 +194,13 @@ let CreateAccountForm = ({
               disabled={isMakeDefaultDisabled}
               alignCheckbox="top"
             >
-              {labels.registration.lbl_createAccount_termsConditions}
+              <BodyCopy fontFamily="secondary" fontSize="fs10">
+                <RichText
+                  richTextHtml={`${labels.registration.lbl_createAccount_termsConditions} ${
+                    labels.registration.lbl_createAccount_termsConditions_1
+                  }`}
+                />
+              </BodyCopy>
             </Field>
           </Col>
           <Col className="elem-pb-MED" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
@@ -202,10 +210,13 @@ let CreateAccountForm = ({
               dataLocator="remember-me-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              <span className="remember-me-text">
+              <BodyCopy fontFamily="secondary" className="remember-me-text" fontSize="fs10">
                 {labels.registration.lbl_createAccount_rememberMe}
-              </span>
-              <span>{labels.registration.lbl_createAccount_rememberMeHelpText}</span>
+              </BodyCopy>
+
+              <BodyCopy fontFamily="secondary" fontSize="fs10">
+                {labels.registration.lbl_createAccount_rememberMeHelpText}
+              </BodyCopy>
             </Field>
           </Col>
           <Col
@@ -227,7 +238,7 @@ let CreateAccountForm = ({
             colSize={{ small: 6 }}
             className="already-account align-center"
           >
-            <Anchor onClick={onAlreadyHaveAnAccountClick}>
+            <Anchor fontSizeVariation="large" onClick={onAlreadyHaveAnAccountClick}>
               {labels.registration.lbl_createAccount_alreadyAccount}
             </Anchor>
           </Col>

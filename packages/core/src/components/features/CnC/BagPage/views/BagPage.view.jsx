@@ -30,7 +30,7 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, handleCartCheckout, showAddTobag } = this.props;
+    const { labels, showAddTobag, handleCartCheckout } = this.props;
 
     return (
       <AddedToBagActions
@@ -52,6 +52,7 @@ class BagPageView extends React.PureComponent {
       showConfirmationModal,
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
+      isGuest,
     } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     return (
@@ -68,12 +69,14 @@ class BagPageView extends React.PureComponent {
           showLeftSection={isNoNEmptyBag}
           bagActions={this.renderActions}
           isUserLoggedIn={isUserLoggedIn}
+          isGuest={isGuest}
         />
         <BagConfirmationModal
           labels={labels}
           isOpen={showConfirmationModal}
           closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
           removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
+          isGuest={isGuest}
         />
       </div>
     );
@@ -85,12 +88,13 @@ BagPageView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItemsCount: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
-  handleCartCheckout: PropTypes.func.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
   showConfirmationModal: PropTypes.bool.isRequired,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
   removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  isGuest: PropTypes.bool.isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
 };
 
 export default withStyles(BagPageView, styles);

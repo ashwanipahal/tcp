@@ -4,6 +4,8 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { View } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth } from '@tcp/core/src/utils';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
   CouponHeading,
@@ -37,7 +39,8 @@ class MyRewards extends PureComponent {
       labels,
       coupons,
       onViewCouponDetails,
-      onApplyCouponToBag,
+      onApplyCouponToBagFromList,
+      toastMessage,
       onRemove,
       isApplyingOrRemovingCoupon,
     } = this.props;
@@ -50,7 +53,8 @@ class MyRewards extends PureComponent {
         labels={labels.common}
         coupon={item}
         onViewCouponDetails={onViewCouponDetails}
-        onApplyCouponToBag={onApplyCouponToBag}
+        onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+        toastMessage={toastMessage}
         onRemove={onRemove}
         isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
         className="elem-mb-LRG"
@@ -59,20 +63,23 @@ class MyRewards extends PureComponent {
   };
 
   render() {
-    const { labels, coupons } = this.props;
+    const { labels, showLink, coupons } = this.props;
     const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (${coupons.size})`;
     return (
       <View>
-        <CouponHeading>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="extrabold"
-            className="my-rewards-heading"
-            data-locator="my-rewards-heading"
-            text={heading}
-          />
-        </CouponHeading>
+        <ToastContainer />
+        <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-LRG">
+          <CouponHeading>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              className="my-rewards-heading"
+              data-locator="my-rewards-heading"
+              text={heading}
+            />
+          </CouponHeading>
+        </ViewWithSpacing>
         {coupons.size > 0 ? (
           <View>
             <Carousel
@@ -89,31 +96,33 @@ class MyRewards extends PureComponent {
         ) : (
           <EmptyRewards labels={labels} />
         )}
-        <StyledAnchorWrapper>
-          <Anchor
-            fontSizeVariation="medium"
-            underline
-            onPress={() => {
-              UrlHandler(endpoints.myPlaceRewardsPage);
-            }}
-            anchorVariation="primary"
-            dataLocator="my-rewards-program-details"
-            text={labels.myPlaceRewards.lbl_my_rewards_program_details}
-          />
-          <AnchorLeftMargin>
+        {showLink && (
+          <StyledAnchorWrapper>
             <Anchor
               fontSizeVariation="medium"
               underline
-              noLink
               onPress={() => {
-                UrlHandler(endpoints.termsAndConditionsPage);
+                UrlHandler(endpoints.myPlaceRewardsPage);
               }}
               anchorVariation="primary"
-              dataLocator="my-rewards-tnc"
-              text={labels.common.lbl_common_tnc}
+              dataLocator="my-rewards-program-details"
+              text={labels.myPlaceRewards.lbl_my_rewards_program_details}
             />
-          </AnchorLeftMargin>
-        </StyledAnchorWrapper>
+            <AnchorLeftMargin>
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                noLink
+                onPress={() => {
+                  UrlHandler(endpoints.termsAndConditionsPage);
+                }}
+                anchorVariation="primary"
+                dataLocator="my-rewards-tnc"
+                text={labels.common.lbl_common_tnc}
+              />
+            </AnchorLeftMargin>
+          </StyledAnchorWrapper>
+        )}
       </View>
     );
   }
@@ -123,9 +132,11 @@ MyRewards.propTypes = {
   labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
-  onApplyCouponToBag: PropTypes.func,
+  onApplyCouponToBagFromList: PropTypes.func,
   onRemove: PropTypes.func,
+  toastMessage: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
+  showLink: PropTypes.bool,
 };
 
 MyRewards.defaultProps = {
@@ -138,9 +149,11 @@ MyRewards.defaultProps = {
   },
   coupons: [],
   onViewCouponDetails: () => {},
-  onApplyCouponToBag: () => {},
+  onApplyCouponToBagFromList: () => {},
   onRemove: () => {},
+  toastMessage: () => {},
   isApplyingOrRemovingCoupon: false,
+  showLink: false,
 };
 
 export default MyRewards;

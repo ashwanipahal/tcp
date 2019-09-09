@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
-import { Anchor, Heading, BodyCopy } from '../../../atoms';
+import { Anchor, Heading, BodyCopy, TextItems } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import LinkTextStyle from '../LinkText.style';
+import { configurePlpNavigationFromCMSUrl } from '../../../../../utils';
 
 type Props = {
   type: String,
@@ -52,16 +53,19 @@ const LinkText = (props: Props) => {
     Component = BodyCopy;
     compProps = {
       component,
+      'data-locator': dataLocator,
       ...otherProps,
     };
   }
 
+  const navigationUrl = link;
+  navigationUrl.to = configurePlpNavigationFromCMSUrl(link.url);
+  navigationUrl.asPath = link.url;
+
   return (
-    <Anchor {...link} className={className}>
+    <Anchor {...navigationUrl} className={className}>
       <Component {...compProps} className={`${heading} link-text`}>
-        {textItems.map(({ style, text }, index) => (
-          <span className={style}>{index ? ` ${text}` : text}</span>
-        ))}
+        <TextItems textItems={textItems} />
       </Component>
     </Anchor>
   );

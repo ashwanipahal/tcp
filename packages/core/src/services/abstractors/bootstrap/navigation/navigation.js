@@ -18,8 +18,19 @@ const Abstractor = {
       `/${
         seoToken.startsWith('content-')
           ? seoToken.replace(new RegExp('content-', 'g'), 'content/')
-          : `c/${seoToken || catgroupId}`
+          : `c?cid=${seoToken || catgroupId}`
       }`
+    );
+  },
+  constructAsPathForUrl: ({ seoUrl, seoToken, catgroupId }) => {
+    return (
+      seoUrl ||
+      `/${
+        seoToken.startsWith('content-')
+          ? seoToken.replace(new RegExp('content-', 'g'), 'content/')
+          : `c/${seoToken || catgroupId}`
+      }` ||
+      ''
     );
   },
   getData: (module, data) => {
@@ -52,9 +63,14 @@ const Abstractor = {
         }
         subCat.hasL3 = subCategory.subCategories && subCategory.subCategories.length;
         subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
+        subCat.asPath = Abstractor.constructAsPathForUrl(subCategory.categoryContent);
+
         subCat.subCategories.map(subCategoryL3 => {
           const subCatL3 = subCategoryL3;
           subCatL3.url = Abstractor.constructUrl(subCategoryL3.categoryContent);
+          subCatL3.categoryContent.url = Abstractor.constructUrl(subCategoryL3.categoryContent);
+          subCatL3.categoryContent.categoryId = subCategoryL3.categoryContent.catgroupId;
+          subCatL3.asPath = Abstractor.constructAsPathForUrl(subCategoryL3.categoryContent);
           return subCatL3;
         });
         subCategories[category].items.push(subCat);
@@ -62,8 +78,8 @@ const Abstractor = {
       });
 
       const { categoryContent } = listItem;
-
       categoryContent.url = Abstractor.constructUrl(listItem.categoryContent);
+      categoryContent.asPath = Abstractor.constructAsPathForUrl(listItem.categoryContent);
 
       return {
         categoryContent,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -39,7 +40,9 @@ export class BagPageContainer extends React.Component<Props> {
       showConfirmationModal,
       closeCheckoutConfirmationModal,
       removeUnqualifiedItemsAndCheckout,
+      isGuest,
     } = this.props;
+
     const showAddTobag = false;
     return (
       <BagPage
@@ -47,12 +50,13 @@ export class BagPageContainer extends React.Component<Props> {
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
         showAddTobag={showAddTobag}
-        handleCartCheckout={handleCartCheckout}
+        navigation={navigation}
+        isUserLoggedIn={isUserLoggedIn}
+        isGuest={isGuest}
         showConfirmationModal={showConfirmationModal}
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
         removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
-        navigation={navigation}
-        isUserLoggedIn={isUserLoggedIn}
+        handleCartCheckout={handleCartCheckout}
       />
     );
   }
@@ -65,15 +69,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
-    },
-    handleCartCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.startCheckout());
-    },
-    closeCheckoutConfirmationModal: () => {
-      dispatch(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
-    },
-    removeUnqualifiedItemsAndCheckout: () => {
-      dispatch(BAG_PAGE_ACTIONS.removeUnqualifiedItemsAndCheckout());
     },
   };
 };
@@ -88,6 +83,7 @@ const mapStateToProps = state => {
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
     isUserLoggedIn: getUserLoggedInState(state),
+    isGuest: isGuestUser(state),
   };
 };
 

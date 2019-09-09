@@ -13,6 +13,7 @@ const data = {
   name: navData[0].categoryContent,
   hideL2Drawer: () => {},
   hideL3Drawer: () => {},
+  accessibilityLabels: { previousButton: 'Previous' },
   className: 'nav-bar-l2',
   openL3Drawer: () => {},
 };
@@ -25,8 +26,7 @@ describe('L2 Panel component', () => {
   });
 
   it('has nav bar loaded', () => {
-    const L1NavItemComp = shallow(<L2Panel {...data} />);
-
+    const L1NavItemComp = shallow(<L2Panel {...data} />, { context: 'handler' }).dive();
     expect(L1NavItemComp.find('.nav-bar-l2')).toHaveLength(1);
   });
 });

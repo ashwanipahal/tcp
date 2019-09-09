@@ -7,10 +7,17 @@ exports[`ProfileInformation should render correctly 1`] = `
     handleComponentChange={[Function]}
     labels={Object {}}
     mailingAddress={Object {}}
+    mountSurveyModal={false}
     percentageIncrement={Object {}}
     profileCompletion=""
+    toggleModalState={[Function]}
     userBirthday=""
-    userSurvey={Array []}
+    userSurvey={
+      Immutable.Map {
+        "answers1": Immutable.List [],
+        "answers2": Immutable.List [],
+      }
+    }
   />
   <PersonalInformation
     airMiles=""
@@ -23,6 +30,15 @@ exports[`ProfileInformation should render correctly 1`] = `
     userFullName=""
     userPhoneNumber=""
   />
+  <AboutYouInfo
+    labels={Object {}}
+    userSurvey={
+      Immutable.Map {
+        "answers1": Immutable.List [],
+        "answers2": Immutable.List [],
+      }
+    }
+  />
   <ChangePasswordInfo
     handleComponentChange={[Function]}
     labels={Object {}}
@@ -33,6 +49,7 @@ exports[`ProfileInformation should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(Anchor)
+      accessibilityLabel=""
       anchorVariation="primary"
       customStyle={Object {}}
       data-locator="my-rewards-program-details"
@@ -45,6 +62,7 @@ exports[`ProfileInformation should render correctly 1`] = `
     />
     <Styled(View)>
       <Styled(Anchor)
+        accessibilityLabel=""
         anchorVariation="primary"
         customStyle={Object {}}
         data-locator="my-rewards-tnc"

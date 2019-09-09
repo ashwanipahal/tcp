@@ -23,7 +23,7 @@ class ContactFormFields extends React.Component {
     return (
       <div className={className}>
         <Row fullBleed>
-          <Col className="fieldFirstName" colSize={{ small: 6, medium: 8, large: 6 }}>
+          <Col className="pickupField fieldFirstName" colSize={{ small: 6, medium: 8, large: 6 }}>
             <Field
               placeholder={labels.firstName}
               name="firstName"
@@ -36,7 +36,7 @@ class ContactFormFields extends React.Component {
               {labels.govIdText}
             </BodyCopy>
           </Col>
-          <Col className="fieldLastName" colSize={{ small: 6, medium: 8, large: 6 }}>
+          <Col className="pickupField fieldLastName" colSize={{ small: 6, medium: 8, large: 6 }}>
             <Field
               placeholder={labels.lastName}
               name="lastName"
@@ -48,7 +48,7 @@ class ContactFormFields extends React.Component {
           </Col>
 
           {showEmailAddress && (
-            <Col className="fieldEmail" colSize={{ small: 6, medium: 8, large: 6 }}>
+            <Col className="pickupField fieldEmail" colSize={{ small: 6, medium: 8, large: 6 }}>
               <Field
                 id="emailAddress"
                 placeholder={labels.email}
@@ -62,7 +62,7 @@ class ContactFormFields extends React.Component {
             </Col>
           )}
           {showPhoneNumber && (
-            <Col className="fieldNumber" colSize={{ small: 6, medium: 8, large: 6 }}>
+            <Col className="pickupField fieldNumber" colSize={{ small: 6, medium: 8, large: 6 }}>
               <Field
                 placeholder={labels.mobile}
                 name="phoneNumber"

@@ -3,7 +3,9 @@
 exports[`AddedToBagActions native component AddedToBagActions native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(TouchableOpacity)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
@@ -15,7 +17,9 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
     </Styled(TouchableOpacity)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(TouchableOpacity)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
       <Styled(BodyCopy)
         color="white"
         fontFamily="secondary"
@@ -29,6 +33,16 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
     handleAfterLogin={[Function]}
     handleContinueAsGuest={[Function]}
     variation="checkout"
+  />
+  <BagConfirmationModal
+    closeCheckoutConfirmationModal={[Function]}
+    isOpen={true}
+    labels={
+      Object {
+        "checkout": "",
+        "viewBag": "",
+      }
+    }
   />
 </Styled(View)>
 `;

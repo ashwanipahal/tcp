@@ -2,8 +2,10 @@
 
 exports[`ProfileInfoActionTile should render correctly 1`] = `
 <Styled(Anchor)
+  asPath=""
   centered={true}
   className=""
+  noLink={false}
   onClick={[Function]}
   to="/"
 >
@@ -71,8 +73,10 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
 
 exports[`ProfileInfoActionTile should render correctly when activityCompletionState is present 1`] = `
 <Styled(Anchor)
+  asPath=""
   centered={true}
   className=""
+  noLink={false}
   onClick={[Function]}
   to=""
 >

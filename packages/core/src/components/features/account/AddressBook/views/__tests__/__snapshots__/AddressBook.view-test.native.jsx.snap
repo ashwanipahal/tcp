@@ -30,6 +30,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
         },
         "onDefaultShippingAddressClick": [Function],
         "setDeleteModalMountState": [Function],
+        "verificationResult": "",
       },
       "attrs": Array [],
       "displayName": "Styled(AddressView)",
@@ -38,7 +39,9 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "
     ",
           "
-  margin-bottom: 100px;
+  margin-bottom: ",
+          "100px",
+          ";
 ",
           ";
   ",
@@ -54,6 +57,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
   labels={Object {}}
   onDefaultShippingAddressClick={[Function]}
   setDeleteModalMountState={[Function]}
+  verificationResult=""
 />
 `;
 
@@ -101,6 +105,7 @@ exports[`Native AddressBook component should renders correctly when addresses ar
         },
         "onDefaultShippingAddressClick": [Function],
         "setDeleteModalMountState": [Function],
+        "verificationResult": "",
       },
       "attrs": Array [],
       "displayName": "Styled(AddressView)",
@@ -109,7 +114,9 @@ exports[`Native AddressBook component should renders correctly when addresses ar
           "
     ",
           "
-  margin-bottom: 100px;
+  margin-bottom: ",
+          "100px",
+          ";
 ",
           ";
   ",
@@ -125,5 +132,6 @@ exports[`Native AddressBook component should renders correctly when addresses ar
   labels={Object {}}
   onDefaultShippingAddressClick={[Function]}
   setDeleteModalMountState={[Function]}
+  verificationResult=""
 />
 `;

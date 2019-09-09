@@ -10,46 +10,45 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 
 import styles from '../styles/CnCTemplate.style';
 
-class CnCTemplate extends React.Component<Props> {
-  submit = () => {};
-
-  render() {
-    const {
-      leftSection: LeftSection,
-      bagActions: BagActions,
-      showLeftSection,
-      className,
-      header: Header,
-      isUserLoggedIn,
-    } = this.props;
-    return (
-      <section className={className}>
-        {Header && <Header />}
-        <Row>
+const CnCTemplate = ({
+  leftSection: LeftSection,
+  bagActions: BagActions,
+  showLeftSection,
+  className,
+  header: Header,
+  isCheckoutView,
+  isGuest,
+}) => {
+  return (
+    <section className={className}>
+      {Header && <Header />}
+      <Row>
+        <Col
+          colSize={{ small: 6, medium: showLeftSection ? 5 : 8, large: showLeftSection ? 8 : 12 }}
+          className="left-sec"
+        >
+          <LeftSection />
+        </Col>
+        {showLeftSection && (
           <Col
-            colSize={{ small: 6, medium: showLeftSection ? 5 : 8, large: showLeftSection ? 8 : 12 }}
-            className="left-sec"
+            colSize={{ small: 6, medium: 3, large: 4 }}
+            className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            <LeftSection />
+            <OrderLedgerContainer />
+            {BagActions && <BagActions />}
+            {!isGuest && (
+              <div className="bonusPointsDaysWrapper elem-mb-MED">
+                <BonusPointsDays showAccordian={false} enableApplyCta />
+              </div>
+            )}
+            <AirmilesBanner />
+            <CouponAndPromos />
           </Col>
-          {showLeftSection && (
-            <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
-              <OrderLedgerContainer />
-              {BagActions && <BagActions />}
-              {isUserLoggedIn && (
-                <div className="bonusPointsDaysWrapper">
-                  <BonusPointsDays enableApplyCta />
-                </div>
-              )}
-              <AirmilesBanner />
-              <CouponAndPromos />
-            </Col>
-          )}
-        </Row>
-      </section>
-    );
-  }
-}
+        )}
+      </Row>
+    </section>
+  );
+};
 
 CnCTemplate.propTypes = {
   className: PropTypes.string.isRequired,
@@ -58,12 +57,15 @@ CnCTemplate.propTypes = {
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
+  isCheckoutView: PropTypes.bool,
+  isGuest: PropTypes.bool.isRequired,
 };
 
 CnCTemplate.defaultProps = {
   bagActions: false,
   header: false,
   showLeftSection: true,
+  isCheckoutView: false,
 };
 
 export default withStyles(CnCTemplate, styles);

@@ -42,6 +42,7 @@ export class TextBox extends React.Component {
     marginBottom: PropTypes.bool,
     showSuccessCheck: PropTypes.bool,
     successText: PropTypes.string,
+    onChangeText: PropTypes.func,
   };
 
   static defaultProps = {
@@ -58,6 +59,7 @@ export class TextBox extends React.Component {
     marginBottom: true,
     showSuccessCheck: false,
     successText: '',
+    onChangeText: () => {},
   };
 
   constructor(props) {
@@ -74,9 +76,11 @@ export class TextBox extends React.Component {
   };
 
   handleBlur = () => {
+    const { input } = this.props;
     this.setState({
       isFocused: false,
     });
+    if (input.onBlur !== undefined) input.onBlur(input.value);
   };
 
   getErrorMsg = () => {
@@ -107,9 +111,9 @@ export class TextBox extends React.Component {
 
   validateInputSuccess = () => {
     const {
-      meta: { invalid, pristine, asyncValidating, active },
+      meta: { invalid, asyncValidating, active },
     } = this.props;
-    return !active && !pristine && !invalid && !asyncValidating;
+    return !active && !invalid && !asyncValidating;
   };
 
   getSuccessMsg = () => {
@@ -148,13 +152,14 @@ export class TextBox extends React.Component {
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
+      onChangeText,
     } = this.props;
     return (
       <View>
         <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
         <StyledTextBox
-          {...others}
           {...input}
+          {...others}
           id={id}
           aria-label={ariaLabel}
           className="TextBox__input"
@@ -172,6 +177,7 @@ export class TextBox extends React.Component {
           error={error}
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
+          onChangeText={onChangeText}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>

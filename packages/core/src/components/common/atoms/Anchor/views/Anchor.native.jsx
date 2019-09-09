@@ -15,6 +15,8 @@ type Props = {
   children?: Object,
   customStyle?: Object,
   locator?: string,
+  onPress?: Function,
+  accessibilityLabel?: string,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -30,6 +32,8 @@ const Anchor = ({
   children,
   customStyle,
   locator,
+  onPress,
+  accessibilityLabel,
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
@@ -46,7 +50,7 @@ const Anchor = ({
     return (
       <TouchableOpacity
         accessibilityRole="link"
-        onPress={openUrl}
+        onPress={onPress || openUrl}
         {...otherProps}
         style={customStyle}
         testID={getLocator(locator)}
@@ -55,20 +59,25 @@ const Anchor = ({
       </TouchableOpacity>
     );
   }
-  return (
-    <AnchorView
-      accessibilityRole="link"
-      accessibilityLabel={text}
-      onPress={openUrl}
-      style={customStyle}
-      testID={getLocator(locator)}
-    >
-      <StyledText anchorVariation={anchorVariation} {...otherProps}>
-        {text}
-      </StyledText>
-      {visible && <AnchorIcon source={Icon} />}
-    </AnchorView>
-  );
+
+  if (text) {
+    return (
+      <AnchorView
+        accessibilityRole="link"
+        onPress={onPress || openUrl}
+        accessibilityLabel={accessibilityLabel || text}
+        style={customStyle}
+        testID={getLocator(locator)}
+      >
+        <StyledText anchorVariation={anchorVariation} {...otherProps}>
+          {text}
+        </StyledText>
+        {visible && <AnchorIcon source={Icon} />}
+      </AnchorView>
+    );
+  }
+
+  return null;
 };
 Anchor.defaultProps = {
   anchorVariation: '',
@@ -77,6 +86,8 @@ Anchor.defaultProps = {
   children: null,
   customStyle: {},
   locator: '',
+  onPress: null,
+  accessibilityLabel: '',
 };
 
 export default withStyles(Anchor, AnchorStyles);

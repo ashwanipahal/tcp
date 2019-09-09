@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, RichText, Col, Row, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import {
+  Button,
+  RichText,
+  Col,
+  Row,
+  BodyCopy,
+  TextItems,
+} from '@tcp/core/src/components/common/atoms';
 import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -39,7 +46,7 @@ class FooterTopCandidateA extends React.PureComponent {
       smsSignup,
       smsSignupLabels,
       socialMediaLinks,
-      referAFriendButton,
+      referAFriendButtonLabels,
       referAFriend,
       emailSignUpAsyncValidate,
       smsSignUpAsyncValidate,
@@ -56,7 +63,7 @@ class FooterTopCandidateA extends React.PureComponent {
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
           <Col
-            className=""
+            className="col-md-half-width"
             colSize={{
               large: 4,
               medium: 4,
@@ -66,11 +73,15 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            <RichText
-              className="heading_text"
+            <BodyCopy
+              component="div"
+              fontWeight="black"
+              fontSize="fs15"
+              className="heading_text email-sign-up"
               dataLocator="email_promo_text"
-              richTextHtml={emailSignup.text}
-            />
+            >
+              <TextItems textItems={emailSignup.textItems} />
+            </BodyCopy>
             <FooterTopEmailSignUpForm
               labels={emailSignupLabels}
               asyncValidate={emailSignUpAsyncValidate}
@@ -85,18 +96,19 @@ class FooterTopCandidateA extends React.PureComponent {
               fieldName={emailSignupFieldName}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
               <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
             </BodyCopy>
-            <div className="divider hide-in-medium-up" />
+            <div>
+              <div className="divider hide-in-medium-up" />
+            </div>
           </Col>
 
           {/* ---------- Email Signup ends here ---------- */}
 
           {/* ---------- SMS Sign Up starts here ---------- */}
           <Col
-            className=""
+            className="col-md-half-width"
             colSize={{
               large: 4,
               medium: 4,
@@ -106,11 +118,15 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            <RichText
+            <BodyCopy
+              component="div"
+              fontWeight="black"
+              fontSize="fs15"
+              className="heading_text sms_sign_up"
               dataLocator="sms_promo_text"
-              className="heading_text"
-              richTextHtml={smsSignup.text}
-            />
+            >
+              <TextItems textItems={smsSignup.textItems} />
+            </BodyCopy>
             <FooterTopSmsSignUpForm
               labels={smsSignupLabels}
               fieldName={smsSignupFieldName}
@@ -128,8 +144,7 @@ class FooterTopCandidateA extends React.PureComponent {
               }}
             />
 
-            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
               <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
             </BodyCopy>
           </Col>
@@ -139,7 +154,7 @@ class FooterTopCandidateA extends React.PureComponent {
           {/* ---------- Refer a friend start here-------- */}
 
           <Col
-            className="refer_a_friend_desktop"
+            className="refer_a_friend_desktop col-md-half-width"
             colSize={{
               large: 4,
               medium: 4,
@@ -152,7 +167,7 @@ class FooterTopCandidateA extends React.PureComponent {
             <Grid>
               <Row fullBleed className="flex-align-center">
                 <Col
-                  className=""
+                  className="col-md-half-width"
                   colSize={{
                     large: 7,
                     medium: 4,
@@ -162,10 +177,14 @@ class FooterTopCandidateA extends React.PureComponent {
                     small: true,
                   }}
                 >
-                  <RichText
-                    className="heading_text refer_friend_text"
-                    richTextHtml={referAFriend.text}
-                  />
+                  <BodyCopy
+                    component="div"
+                    fontWeight="black"
+                    fontSize="fs15"
+                    className="heading_text refer-a-friend"
+                  >
+                    <TextItems textItems={referAFriend.textItems} />
+                  </BodyCopy>
                 </Col>
                 <Col
                   colSize={{
@@ -176,14 +195,14 @@ class FooterTopCandidateA extends React.PureComponent {
                   ignoreGutter={{
                     small: false,
                   }}
-                  className="candidate_a_inline_container_button"
+                  className="candidate_a_inline_container_button col-md-half-width"
                 >
                   <Button
                     id="extole_zone_global_footer"
                     buttonVariation="variable-width"
                     data-locator={getLocator('refer_friend')}
                   >
-                    {referAFriendButton.text}
+                    {referAFriendButtonLabels.text}
                   </Button>
                 </Col>
               </Row>
@@ -212,7 +231,7 @@ class FooterTopCandidateA extends React.PureComponent {
           {/* ---------- Refer a friend ends here-------- */}
           <div className="divider hide-in-medium-up" />
           <Col
-            className="hide-in-large-up refer_a_frient_last_colm"
+            className="hide-in-large-up refer_a_frient_last_colm col-md-half-width"
             colSize={{
               large: 0,
               medium: 4,
@@ -222,7 +241,7 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            <SocialMediaLinks {...socialMediaLinks} />
+            <SocialMediaLinks {...socialMediaLinks} className="social-media-links" />
           </Col>
         </Row>
         <div className="divider hide-in-medium-down" />
@@ -263,7 +282,7 @@ FooterTopCandidateA.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string,
   }),
-  referAFriendButton: PropTypes.shape({
+  referAFriendButtonLabels: PropTypes.shape({
     title: PropTypes.string,
     text: PropTypes.string,
   }),
@@ -281,12 +300,16 @@ FooterTopCandidateA.propTypes = {
 
 FooterTopCandidateA.defaultProps = {
   emailSignup: {
-    text: 'GET $10 OFF BY SIGNING UP FOR EMAIL!',
+    text: '',
     title: '',
   },
   smsSignup: {
-    text: 'GET $10 OFF BY SIGNING UP FOR SMS!',
+    text: '',
     title: '',
+  },
+  referAFriendButtonLabels: {
+    title: '',
+    text: '',
   },
   emailSignupLabels: {
     placeholderText: 'Enter email address',
@@ -303,12 +326,8 @@ FooterTopCandidateA.defaultProps = {
     submitButtonLabel: 'Submit',
   },
   referAFriend: {
-    title: '$10 for a friend, $10 for you!',
-    text: '$10 for a friend, $10 for you!',
-  },
-  referAFriendButton: {
-    title: 'REFER FRIEND',
-    text: 'REFER FRIEND',
+    title: '',
+    text: '',
   },
   showError: false,
   isEmailValid: false,

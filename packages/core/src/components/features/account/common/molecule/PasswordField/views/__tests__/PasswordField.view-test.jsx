@@ -7,6 +7,9 @@ describe('PasswordField component', () => {
     const props = {
       showText: 'show',
       hideText: 'hide',
+      labels: {
+        registration: {},
+      },
     };
     const component = shallow(<PasswordField {...props} />);
     expect(component).toMatchSnapshot();
@@ -16,6 +19,9 @@ describe('PasswordField component', () => {
     const props = {
       showText: 'show',
       hideText: 'hide',
+      labels: {
+        registration: {},
+      },
     };
     const component = shallow(<PasswordField {...props} />);
     component.instance().changeType({ preventDefault: () => {} });

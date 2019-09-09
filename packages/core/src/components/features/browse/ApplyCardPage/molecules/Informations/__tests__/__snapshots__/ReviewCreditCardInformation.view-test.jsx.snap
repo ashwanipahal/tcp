@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
-<styled.div>
+<styled.div
+  isPLCCModalFlow={false}
+>
   <Styled(Col)
     className="rewards_card_logo"
     colSize={
@@ -11,6 +13,7 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
         "small": 6,
       }
     }
+    isPLCCModalFlow={false}
     key="container_header_image"
   >
     <Styled(BodyCopy)
@@ -20,8 +23,10 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"
+      isPLCCModalFlow={false}
       letterSpacing="normal"
       lineHeight="normal"
+      tabIndex="0"
       textAlign="left"
     />
   </Styled(Col)>
@@ -45,7 +50,9 @@ exports[`ReviewCreditCardInformation component should renders correctly 1`] = `
 `;
 
 exports[`ReviewCreditCardInformation component should renders correctly when no arguments are passed 1`] = `
-<styled.div>
+<styled.div
+  isPLCCModalFlow={false}
+>
   <Styled(Col)
     className="rewards_card_logo"
     colSize={
@@ -55,6 +62,7 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
         "small": 6,
       }
     }
+    isPLCCModalFlow={false}
     key="container_header_image"
   >
     <Styled(BodyCopy)
@@ -64,8 +72,10 @@ exports[`ReviewCreditCardInformation component should renders correctly when no 
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"
+      isPLCCModalFlow={false}
       letterSpacing="normal"
       lineHeight="normal"
+      tabIndex="0"
       textAlign="left"
     />
   </Styled(Col)>

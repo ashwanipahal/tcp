@@ -2,7 +2,10 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
+import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
+import { getLabelValue } from '@tcp/core/src/utils';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
@@ -39,21 +42,30 @@ class AccountOverview extends PureComponent<Props> {
   }
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
-    return (
-      <React.Fragment>
-        {(getComponentId.login || getComponentId.favorites) && (
-          <LoginPageContainer
-            onRequestClose={this.toggleModal}
-            navigation={navigation}
-            isUserLoggedIn={isUserLoggedIn}
-            variation={getComponentId.favorites && 'favorites'}
-          />
-        )}
-        {getComponentId.createAccount && (
-          <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
-        )}
-      </React.Fragment>
-    );
+    let componentContainer = null;
+    if (getComponentId.login || getComponentId.favorites) {
+      componentContainer = (
+        <LoginPageContainer
+          onRequestClose={this.toggleModal}
+          navigation={navigation}
+          isUserLoggedIn={isUserLoggedIn}
+          variation={getComponentId.favorites && 'favorites'}
+          showLogin={this.showloginModal}
+          showCheckoutModal={this.showCheckoutModal}
+        />
+      );
+    }
+    if (getComponentId.createAccount) {
+      componentContainer = (
+        <CreateAccount
+          showCheckoutModal={this.showCheckoutModal}
+          showLogin={this.showloginModal}
+          navigation={navigation}
+          onRequestClose={this.toggleModal}
+        />
+      );
+    }
+    return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
   showloginModal = () => {
@@ -64,10 +76,17 @@ class AccountOverview extends PureComponent<Props> {
     });
   };
 
-  toggleModal = ({ getComponentId }) => {
-    const { showModal } = this.state;
+  showCheckoutModal = () => {
     this.setState({
-      showModal: !showModal,
+      getComponentId: {
+        createAccount: true,
+      },
+    });
+  };
+
+  toggleModal = ({ getComponentId }) => {
+    this.setState(state => ({
+      showModal: !state.showModal,
       getComponentId: getComponentId
         ? {
             login: getComponentId.login,
@@ -75,14 +94,32 @@ class AccountOverview extends PureComponent<Props> {
             favorites: getComponentId.favorites,
           }
         : '',
-    });
+    }));
+  };
+
+  showTrackOrderModal = () => {
+    const { openTrackOrder } = this.props;
+    openTrackOrder({ state: true });
+  };
+
+  getModalHeader = (getComponentId, labels) => {
+    let header = null;
+    if (getComponentId.login || getComponentId.favorites) {
+      header = labels.lbl_overview_login_text;
+    }
+    if (getComponentId.createAccount) {
+      header = labels.lbl_overview_createAccount;
+    }
+    return header;
   };
 
   render() {
+    const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
+    const { showModal, getComponentId } = this.state;
+    const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
-    const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId } = this.state;
+
     return (
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
@@ -90,10 +127,17 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={labels.lbl_overview_myPlaceRewardsHeading}>
               <MyPlaceRewardsOverviewTile
                 labels={labels}
+                commonLabels={commonLabels}
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={labels.lbl_overview_myWalletHeading} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myWalletHeading')}>
+              <MyWalletTile
+                labels={labels}
+                commonLabels={commonLabels}
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
             <Panel title={labels.lbl_overview_earnPointsHeading} />
             <Panel title={labels.lbl_overview_ordersHeading} />
             <Panel title={labels.lbl_overview_profileInformationHeading}>
@@ -129,7 +173,6 @@ class AccountOverview extends PureComponent<Props> {
               <CustomButton
                 className="classBtn"
                 color={colorPallete.text.secondary}
-                fill="WHITE"
                 id="createAccount"
                 type="submit"
                 width="150px"
@@ -149,7 +192,6 @@ class AccountOverview extends PureComponent<Props> {
               />
 
               <CustomButton
-                color={colorPallete.white}
                 className="classBtn"
                 fill="BLUE"
                 id="login"
@@ -173,13 +215,11 @@ class AccountOverview extends PureComponent<Props> {
 
             {showModal && (
               <ModalNative
-                heading={
-                  ((getComponentId.login || getComponentId.favorites) &&
-                    `${labels.lbl_overview_login_text}`) ||
-                  (getComponentId.createAccount && `${labels.lbl_overview_createAccount}`)
-                }
                 isOpen={showModal}
                 onRequestClose={this.toggleModal}
+                heading={modalHeaderLbl}
+                headingFontFamily="secondary"
+                fontSize="fs16"
               >
                 <SafeAreaView>
                   <ModalViewWrapper>
@@ -225,9 +265,12 @@ class AccountOverview extends PureComponent<Props> {
 
             <Panel title={labels.lbl_overview_purchase_giftCards} isVariationTypeLink />
             <Panel title={labels.lbl_overview_refer_friend} isVariationTypeLink />
-
+            <Panel
+              title={labels.lbl_overview_trackYourOrder}
+              isVariationTypeLink
+              handleComponentChange={this.showTrackOrderModal}
+            />
             <UnderlineStyle />
-
             <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
             <Panel title={labels.lbl_overview_help} isVariationTypeLink />
             <Panel title={labels.lbl_overview_messages} isVariationTypeLink />
@@ -235,6 +278,7 @@ class AccountOverview extends PureComponent<Props> {
         )}
 
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
+        <TrackOrderContainer handleToggle={this.toggleModal} navigation={navigation} />
         <UnderlineStyle />
       </View>
     );
@@ -245,6 +289,7 @@ AccountOverview.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   handleComponentChange: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  commonLabels: PropTypes.shape({}),
 };
 
 AccountOverview.defaultProps = {
@@ -272,6 +317,7 @@ AccountOverview.defaultProps = {
     lbl_overview_myWalletHeading: '',
     lbl_overview_myPlaceRewardsHeading: '',
   },
+  commonLabels: {},
 };
 
 export default AccountOverview;

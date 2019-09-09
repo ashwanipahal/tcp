@@ -10,6 +10,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="semibold"
+    tabIndex="0"
     textAlign="left"
     variant="h2"
   >
@@ -953,20 +954,20 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
       }
     >
-      <Styled(BodyCopy)
-        className="free_dropdown_label"
-        color="text.primary"
-        component="span"
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      />
       <Styled(Row)
         fullBleed={true}
       >
+        <Styled(BodyCopy)
+          className="free_dropdown_label columnWrapper"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
         <Styled(Col)
           className="contact_information_form"
           colSize={
@@ -1153,7 +1154,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           />
         </Styled(Col)>
         <Styled(Col)
-          className="contact_information_form"
+          className="contact_information_form label_zip"
           colSize={
             Object {
               "large": 6,
@@ -1322,7 +1323,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             }
             dataLocator="plcc_zip_code"
             id="zipCode"
-            maxLength={6}
+            maxLength={5}
             name="noCountryZip"
             placeholder="zipcode"
           />
@@ -1503,7 +1504,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
         dataLocator="plc_mobile_no"
         id="phoneNumber"
-        name="phoneNumber"
+        name="phoneNumberWithAlt"
         placeholder="mobile phone"
         type="tel"
       />
@@ -1856,7 +1857,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
         dataLocator="plcc_alt_mobile_no"
         id="alternatePhone"
-        name="alternatePhone"
+        name="altPhoneNumber"
         placeholder="alternate phone"
       />
     </Styled(Col)>
@@ -1871,6 +1872,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     id="plcc_min_phone"
     letterSpacing="normal"
     lineHeight="normal"
+    tabIndex="0"
     textAlign="left"
   >
     min phone

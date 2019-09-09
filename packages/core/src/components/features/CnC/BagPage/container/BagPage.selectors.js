@@ -1,4 +1,5 @@
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
+import getErrorList from './Errors.selector';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -23,15 +24,8 @@ const getBagPageLabels = state => {
         lbl_emptyBag_shopNow: shopNow,
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
-      },
-    },
-    global: {
-      checkoutConfirmation: {
-        lbl_checkoutmodal_confirmation: confirmationText,
-        lbl_checkoutmodal_backToBag: backToBag,
-        lbl_checkoutmodal_continueCheckout: continueCheckout,
-      },
-    },
+      } = {},
+    } = {},
   } = state.Labels;
   return {
     addedToBag,
@@ -43,9 +37,6 @@ const getBagPageLabels = state => {
     tagLine,
     guestUserMsg,
     helperMsg,
-    confirmationText,
-    backToBag,
-    continueCheckout,
   };
 };
 
@@ -56,8 +47,16 @@ const getTotalItems = state => {
 const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
+
 const getConfirmationModalFlag = state => {
-  return state.CartPageReducer.get('showConfirmationModal');
+  return {
+    showModal: state.CartPageReducer.get('showConfirmationModal'),
+    isEditingItem: state.CartPageReducer.get('isEditingItem'),
+  };
+};
+
+const getErrorMapping = state => {
+  return getErrorList(state);
 };
 
 const getProductsTypes = state => {
@@ -106,4 +105,5 @@ export default {
   getOOSCount,
   getConfirmationModalFlag,
   getFilteredItems,
+  getErrorMapping,
 };

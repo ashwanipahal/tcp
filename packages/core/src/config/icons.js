@@ -39,10 +39,12 @@ export default {
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
+  'empty-fav-icon': '/static/images/empty-heart.png',
   'cart-icon': '/static/images/bag.png',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
   'selected-item': '/static/images/selected-item.svg',
+  'selected-item-check-no-circle': '/static/images/circle-check-no-circle.svg',
   'checkout-tick': '/static/images/checkout-tick.svg',
   'checkout-white-dot': '/static/images/checkout-white-dot.svg',
   'carrot-large-left': '/static/images/carrot-large-left.png',
@@ -54,4 +56,10 @@ export default {
   'smiley-icon': '/static/images/smiley-icon.png',
   'carrot-left': '/static/images/carrot-left.png',
   'add-to-favorite': '/static/images/add-to-favorite.svg',
+  'cross-icon': '/static/images/small.png',
+  'girl-icon': '/static/images/girl-icon.png',
+  'boy-icon': '/static/images/boy-icon.png',
+  star: '/static/images/star.svg',
+  'star-filled': '/static/images/star-filled.svg',
+  'circle-check': '/static/images/circle-check.svg',
 };

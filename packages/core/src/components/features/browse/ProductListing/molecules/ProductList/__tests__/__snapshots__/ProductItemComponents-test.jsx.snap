@@ -210,11 +210,6 @@ exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
   className="loyalty-text-container"
   color="text.primary"
   component="p"
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "",
-    }
-  }
   data-locator="global-loyalty-text"
   fontFamily="secondary"
   fontSize={
@@ -224,13 +219,7 @@ exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
       "fs14",
     ]
   }
-  fontWeight={
-    Array [
-      "extrabold",
-      "semibold",
-      "semibold",
-    ]
-  }
+  fontWeight="extrabold"
   letterSpacing="normal"
   lineHeight="normal"
   textAlign="left"

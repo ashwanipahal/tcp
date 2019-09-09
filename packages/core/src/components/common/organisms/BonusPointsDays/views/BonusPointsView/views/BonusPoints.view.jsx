@@ -18,6 +18,7 @@ class BonusPointsView extends React.Component {
     isPlcc: PropTypes.bool,
     getBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
+    showAccordian: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -54,6 +55,7 @@ class BonusPointsView extends React.Component {
       isPlcc,
       getBonusDaysData,
       orderDetails,
+      showAccordian,
     } = this.props;
     const { openModalState } = this.state;
     return (
@@ -75,6 +77,7 @@ class BonusPointsView extends React.Component {
               toggleBonusPointsModal={this.toggleBonusPointsModal}
               getBonusDaysData={getBonusDaysData}
               orderDetails={orderDetails}
+              showAccordian={showAccordian}
             />
           </div>
         )}

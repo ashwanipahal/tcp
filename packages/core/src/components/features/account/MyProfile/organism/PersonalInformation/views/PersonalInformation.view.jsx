@@ -6,6 +6,7 @@ import Col from '../../../../../../common/atoms/Col';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../../ProfileInformation/styles/ProfileInformation.style';
 import Address from '../../../../../../common/molecules/Address';
+import internalEndpoints from '../../../../common/internalEndpoints';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
@@ -26,6 +27,8 @@ export const PersonalInformation = ({
         title={labels.lbl_profile_personal_information}
         ctaTitle={labels.lbl_profile_edit_personal_info}
         dataLocator="pi-editpersonalinfo"
+        ctaLink={internalEndpoints.editProfileInformationPage.link}
+        ctaPath={internalEndpoints.editProfileInformationPage.path}
       >
         <PersonalInformationDisplay
           labels={labels}
@@ -51,6 +54,8 @@ export const PersonalInformation = ({
               title={labels.lbl_profile_mailing_address}
               ctaTitle={labels.lbl_profile_edit_mailing_info}
               dataLocator="profileinfo-editmailingaddress"
+              ctaLink={internalEndpoints.mailingAddressPage.link}
+              ctaPath={internalEndpoints.mailingAddressPage.path}
             >
               <Address
                 address={address}

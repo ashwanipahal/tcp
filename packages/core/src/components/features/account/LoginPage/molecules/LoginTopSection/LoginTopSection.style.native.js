@@ -34,6 +34,7 @@ const getHeadingStyle = props => {
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
   align-self: ${'center'};
+  padding-bottom: ${props.theme.spacing.ELEM_SPACING.XS};
   `;
 };
 
@@ -52,7 +53,7 @@ const ImageWrapperStyle = () => {
   return `
   ${getTextBaseStyle};
   align-self: ${'center'};
-  margin:${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0;
+  margin:20px 0 10px 0;
   `;
 };
 const getDescriptionStyle = props => {
@@ -67,8 +68,37 @@ const getDescriptionStyle = props => {
   `;
 };
 
+const FavtHeadingStyle = () => {
+  return `
+    padding: 0  0 10px 0;
+  `;
+};
+
+const FavtSubHeadingStyle = () => {
+  // width 57% specific for pixel perfect style of font size
+  return `
+    width:57%;
+    text-align:center;
+    margin :0 auto;
+  `;
+};
+
+const ResetPassword = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: ${'center'};
+`;
+
+const FavtSubHeading = styled.Text`
+  ${FavtSubHeadingStyle}
+`;
+
 const HeadingStyle = styled.Text`
   ${getHeadingStyle}
+`;
+
+const FavtHeading = styled.Text`
+  ${FavtHeadingStyle}
 `;
 
 const SubHeadingStyle = styled.Text`
@@ -81,4 +111,13 @@ const DescriptionStyle = styled.Text`
 const ImageWrapper = styled.Text`
   ${ImageWrapperStyle}
 `;
-export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle, ImageWrapper };
+export {
+  SectionStyle,
+  HeadingStyle,
+  SubHeadingStyle,
+  DescriptionStyle,
+  ImageWrapper,
+  FavtHeading,
+  FavtSubHeading,
+  ResetPassword,
+};

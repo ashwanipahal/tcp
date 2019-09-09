@@ -10,6 +10,7 @@ exports[`BonusPointsDaysContainer should render correctly 1`] = `
   isPlcc={false}
   labels={Object {}}
   orderDetails=""
+  showAccordian={true}
   view="edit"
 />
 `;

@@ -20,6 +20,7 @@ const Header = ({
   isLoggedIn,
   cartItemCount,
   labels,
+  totalItems,
 }) => {
   return (
     <header className={className}>
@@ -39,6 +40,7 @@ const Header = ({
         openOverlay={openOverlay}
         isLoggedIn={isLoggedIn}
         cartItemCount={cartItemCount}
+        totalItems={totalItems}
       />
       <HeaderPromo
         mobileMarkup
@@ -66,12 +68,14 @@ Header.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  totalItems: PropTypes.string,
 };
 
 Header.defaultProps = {
   labels: {
     trackOrder: {},
   },
+  totalItems: 0,
 };
 
 export default withStyles(Header, style);

@@ -2,17 +2,17 @@
 
 exports[`ProductListingFiltersForm is shown should render ProductListingFiltersForm 1`] = `
 <Fragment>
-  <Styled(FilterModal)
-    classNames="open-filter-button"
-    handleClose={[Function]}
-    labels={Object {}}
-    show={false}
+  <form
+    className="available-filters-sorting-container"
   >
-    <div
-      className=" new-filter-and-sort-form-container"
+    <Styled(FilterModal)
+      classNames="open-filter-button"
+      handleClose={[Function]}
+      labels={Object {}}
+      show={false}
     >
-      <form
-        className="available-filters-sorting-container"
+      <div
+        className=" new-filter-and-sort-form-container"
       >
         <div
           className="filters-sorting-container"
@@ -73,6 +73,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 ]
               }
               className=""
+              show={false}
             >
               <Field
                 allowMultipleSelections={true}
@@ -95,6 +96,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -158,6 +160,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 }
                 disableExpandStateChanges={true}
                 expanded={true}
+                forwardRef={true}
                 name="categoryPath2_uFilter"
                 optionsMap={
                   Array [
@@ -425,6 +428,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   ]
                 }
                 placeholder="Category"
+                withRef={true}
               />
               <Field
                 allowMultipleSelections={true}
@@ -447,6 +451,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -511,6 +516,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 disableExpandStateChanges={true}
                 expanded={true}
                 facetName="TCPColor_uFilter"
+                forwardRef={true}
                 labels={Object {}}
                 name="TCPColor_uFilter"
                 optionsMap={
@@ -958,6 +964,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1021,6 +1028,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 }
                 disableExpandStateChanges={true}
                 expanded={true}
+                forwardRef={true}
                 name="v_tcpsize_uFilter"
                 optionsMap={
                   Array [
@@ -1216,6 +1224,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   ]
                 }
                 placeholder="Size"
+                withRef={true}
               />
               <Field
                 allowMultipleSelections={true}
@@ -1238,6 +1247,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1301,6 +1311,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 }
                 disableExpandStateChanges={true}
                 expanded={true}
+                forwardRef={true}
                 name="unbxd_price_range_uFilter"
                 optionsMap={
                   Array [
@@ -1325,6 +1336,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   ]
                 }
                 placeholder="Price"
+                withRef={true}
               />
               <Field
                 allowMultipleSelections={true}
@@ -1347,6 +1359,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1410,6 +1423,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 }
                 disableExpandStateChanges={true}
                 expanded={true}
+                forwardRef={true}
                 name="v_tcpfit_unbxd_uFilter"
                 optionsMap={
                   Array [
@@ -1425,6 +1439,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   ]
                 }
                 placeholder="Fit"
+                withRef={true}
               />
               <Field
                 allowMultipleSelections={true}
@@ -1447,6 +1462,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1510,6 +1526,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 }
                 disableExpandStateChanges={true}
                 expanded={true}
+                forwardRef={true}
                 name="gender_uFilter"
                 optionsMap={
                   Array [
@@ -1534,6 +1551,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   ]
                 }
                 placeholder="Gender"
+                withRef={true}
               />
               <Field
                 allowMultipleSelections={true}
@@ -1556,6 +1574,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
     padding-right: ",
                         [Function],
                         ";
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -1619,6 +1638,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 }
                 disableExpandStateChanges={true}
                 expanded={true}
+                forwardRef={true}
                 name="age_group_uFilter"
                 optionsMap={
                   Array [
@@ -1652,13 +1672,14 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   ]
                 }
                 placeholder="Size Range"
+                withRef={true}
               />
             </AccordionList>
           </Styled(Col)>
         </div>
-      </form>
-    </div>
-  </Styled(FilterModal)>
+      </div>
+    </Styled(FilterModal)>
+  </form>
   <Styled(Row)
     centered={true}
     className="filter-row "
@@ -1676,6 +1697,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         buttonVariation="fixed-width"
         className="open-filter-button"
         data-locator="view_gallery_button"
+        id="filter-open"
         onClick={[Function]}
         type="button"
       />

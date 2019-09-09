@@ -1,5 +1,8 @@
+const enterPhoneNumber = 'Please enter your phone number';
+const validPhoneNumber = 'Please enter a valid phone number';
 const validStreetAddress = 'Please enter a valid street address';
 const validExpirationDate = 'Please enter a valid expiration date';
+const ssnMessage = 'Please enter the last 4 digits of your social security number';
 
 export const formValidationMessages = {
   addressLine1: {
@@ -32,19 +35,19 @@ export const formValidationMessages = {
   lastName: {
     nonEmpty: 'Please enter a last name',
     name: 'Last name field should not contain any special characters',
-    maxLength: 'Please enter a valid last name',
+    maxLength: 'Please enter a valid last Name',
   },
   phoneNumber: {
-    required: 'Please enter your phone number',
-    phone: 'Please enter a valid phone number',
+    required: enterPhoneNumber,
+    phone: validPhoneNumber,
   },
   zipCode: {
-    required: 'Please enter your zip code',
-    zipcode: 'Please enter a valid zip code',
+    required: 'Please enter your zip code.',
+    zipcode: 'Please enter a valid zip code.',
   },
   noCountryZip: {
-    required: 'Please enter your zip code',
-    noCountryZip: 'Please enter a valid zip code',
+    required: 'Please enter your zip code.',
+    noCountryZip: 'Please enter a valid zip code.',
   },
   recaptchaToken: {
     required: 'Please check the recaptcha value',
@@ -71,7 +74,7 @@ export const formValidationMessages = {
   },
   emailAddress: {
     required: `Please enter a valid email`,
-    emailPattern: 'Email format is invalid',
+    emailPattern: 'Please Enter Valid Email Id',
   },
   confirmEmailAddress: {
     required: 'Please confirm your email address',
@@ -90,10 +93,15 @@ export const formValidationMessages = {
     equalTo: 'Passwords must match',
   },
   emailAddressNoAsync: {
-    required: `ERROR: Please enter a valid email`,
-    email: 'ERROR: Email format is invalid.',
+    required: `Please enter a valid email`,
+    email: 'Please Enter Valid Email Id',
     validEmail: 'ERROR: Email format is invalid',
   },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: 'Please enter a valid birth date',
+  },
+  airMilesAccountNumber: 'Please enter a valid 11 digit Air Miles ID',
+  associateId: 'The Associate ID you entered does not exist. Please try again',
   iAgree: {
     required: 'You must agree to the Terms and Conditions to submit the form',
   },
@@ -101,7 +109,9 @@ export const formValidationMessages = {
     alphanumeric: 'Please enter a valid pre-screen code',
   },
   ssNumber: {
-    ssn: 'Please enter the last 4 digits of your social security number',
+    ssn: ssnMessage,
+    nonSequentialNumber: ssnMessage,
+    required: ssnMessage,
   },
   birthDate: 'Please enter a valid date of birth',
   statewocountry: {
@@ -117,6 +127,16 @@ export const formValidationMessages = {
     dob: 'Please select a year',
   },
   orderNumber: 'ERROR: Please enter a valid order number.',
+  phoneNumberWithAlt: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    required: validPhoneNumber,
+  },
+  altPhoneNumber: {
+    eitherRequired: enterPhoneNumber,
+    phone: validPhoneNumber,
+    notEqualTo: 'Phone numbers must not match',
+  },
 };
 
 export const formValidationRules = {
@@ -243,6 +263,17 @@ export const formValidationRules = {
     minLength: 6,
     number: true,
   },
+  dateOfBirthBothRequired: {
+    userDateOfBirth: { linkedFields: ['userBirthYear'] },
+  },
+  airMilesAccountNumber: {
+    number: true,
+    exactLength: 11,
+  },
+  associateId: {
+    required: true,
+    number: true,
+  },
   iAgree: {
     required: true,
   },
@@ -251,6 +282,8 @@ export const formValidationRules = {
   },
   ssNumber: {
     ssn: true,
+    nonSequentialNumber: true,
+    required: true,
   },
   statewocountry: {
     required: true,
@@ -263,6 +296,21 @@ export const formValidationRules = {
   },
   year: {
     dob: true,
+  },
+  phoneNumberWithAlt: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['altPhoneNumber'],
+    },
+  },
+  altPhoneNumber: {
+    phone: true,
+    eitherRequired: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
+    notEqualTo: {
+      linkedFields: ['phoneNumberWithAlt'],
+    },
   },
 };
 

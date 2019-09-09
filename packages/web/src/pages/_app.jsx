@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import dynamic from 'next/dynamic';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -9,7 +10,8 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
-import { createAPIConfig } from '@tcp/core/src/utils';
+import { createAPIConfig, getAPIConfig, isDevelopment } from '@tcp/core/src/utils';
+import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
@@ -23,6 +25,15 @@ import CHECKOUT_STAGES from './App.constants';
 
 // constants
 import constants from '../constants';
+
+// Script injection component
+// This is lazy-loaded so we inject it after SSR
+const Script = dynamic(() => import('../components/common/atoms/Script'), { ssr: false });
+
+// Analytics script injection
+function AnalyticsScript() {
+  return <Script src={process.env.ANALYTICS_SCRIPT_URL} />;
+}
 
 class TCPWebApp extends App {
   constructor(props) {
@@ -65,6 +76,14 @@ class TCPWebApp extends App {
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
+    const { envId, raygunApiKey, channelId } = getAPIConfig();
+    initErrorReporter({
+      isServer: false,
+      envId,
+      raygunApiKey,
+      channelId,
+      isDevelopment: isDevelopment(),
+    });
   }
 
   componentDidUpdate() {
@@ -152,19 +171,21 @@ class TCPWebApp extends App {
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
-            <Grid>
+            <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
               {this.getSEOTags(Component.pageId)}
-              {isNonCheckoutPage && <Header />}
-              {!isNonCheckoutPage && <CheckoutHeader />}
+              <Header />
+              <CheckoutHeader />
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />
-                {isNonCheckoutPage && <Footer />}
+                <Footer />
               </div>
             </Grid>
           </Provider>
         </ThemeProvider>
+        {/* Inject analytics script if enabled */}
+        {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>
     );
   }

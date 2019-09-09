@@ -36,6 +36,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
         color="white"
         customStyle={Object {}}
@@ -51,10 +52,12 @@ exports[`Delete Address Modal should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
+        active={false}
         buttonVariation="variable-width"
+        color="#c84747"
         customStyle={Object {}}
         disableButton={false}
-        fill="WHITE"
+        fill="RED"
         fullWidth=""
         locator=""
         onPress={[Function]}

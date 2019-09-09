@@ -3,8 +3,11 @@
 exports[`BonusPointsAvailabilityVanilla should render correctly available_today 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -56,6 +59,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -68,10 +72,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -104,7 +108,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -112,8 +119,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
 exports[`BonusPointsAvailabilityVanilla should render correctly with applied to bag bonus point days 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -175,6 +185,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -187,10 +198,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -223,7 +234,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -231,8 +245,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
 exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -294,6 +311,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -306,10 +324,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -342,7 +360,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -350,8 +371,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
 exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisabled 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
@@ -413,6 +437,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -425,10 +450,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -461,7 +486,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;
@@ -469,8 +497,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
 exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] = `
 <View>
   <CollapsibleContainer
+    arrowPos={null}
     body={
-      <React.Fragment>
+      <ForwardRef
+        spacingStyles="padding-top-SM"
+      >
         <ForwardRef>
           <ForwardRef
             data-locator="infomsg"
@@ -511,6 +542,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           orderDetails={Object {}}
         />
         <ForwardRef
+          accessibilityLabel=""
           anchorVariation="primary"
           className="details-link"
           customStyle={Object {}}
@@ -523,10 +555,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           underline={true}
           visible={false}
         />
-      </React.Fragment>
+      </ForwardRef>
     }
-    className=""
     defaultOpen={false}
+    getExpandedState={null}
     header={
       <ForwardRef
         className="elem-mb-SM"
@@ -559,7 +591,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         />
       </ForwardRef>
     }
+    height={null}
     iconLocator="arrowicon"
+    index={null}
+    isBag={false}
   />
 </View>
 `;

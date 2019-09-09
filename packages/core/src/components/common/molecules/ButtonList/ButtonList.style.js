@@ -135,12 +135,18 @@ export default css`
     font-size: 13px;
   }
 
+  &.hide-on-small-viewport {
+    display: none;
+  }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .stacked-cta-wrapper-class {
+      border-radius: 0;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     padding-bottom: 16px;
-    > div:first-child {
-      margin: 0 auto;
-    }
-
     .stacked-button {
       width: 100%;
       margin-left: 9px;
@@ -234,6 +240,14 @@ export default css`
       white-space: normal;
       width: 62px;
     }
+
+    &.hide-on-small-viewport {
+      display: block;
+    }
+
+    &.is-tablet-hidden {
+      display: none;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -277,6 +291,10 @@ export default css`
     &.wrapped-button-text .stacked-button,
     &.wrapped-button-text .scroll-button {
       margin: 0 15px;
+    }
+
+    &.is-tablet-hidden {
+      display: none;
     }
   }
 

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoginSection from '../organism/LoginSection';
+import PasswordRequirement from '../../ResetPassword/molecules/PasswordRequirement';
 
 const LoginView = ({
   onSubmit,
   labels,
   loginErrorMessage,
+  formErrorMessage,
   initialValues,
   showRecaptcha,
   resetLoginState,
@@ -25,6 +27,7 @@ const LoginView = ({
     <LoginSection
       onSubmit={onSubmit}
       labels={labels}
+      formErrorMessage={formErrorMessage}
       loginErrorMessage={loginErrorMessage}
       initialValues={initialValues}
       showRecaptcha={showRecaptcha}
@@ -40,6 +43,7 @@ const LoginView = ({
       setLoginModalMountState={setLoginModalMountState}
       variation={variation}
       handleContinueAsGuest={handleContinueAsGuest}
+      tooltipContent={<PasswordRequirement labels={labels.password} />}
     />
   );
 };
@@ -62,6 +66,7 @@ LoginView.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 LoginView.defaultProps = {

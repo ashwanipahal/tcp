@@ -36,9 +36,15 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
   }
 }
 
-export function* updateAddressPut({ payload }) {
+export function* updateAddressPut({ payload }, fromCheckout) {
+  const userEmail = yield select(getUserEmail);
+  const updatedPayload = { ...payload, ...{ email: userEmail } };
   try {
-    const res = yield call(updateAddress, payload);
+    const res = yield call(
+      updateAddress,
+      updatedPayload,
+      fromCheckout && fromCheckout.profileUpdate
+    );
     if (res) {
       yield put(
         setAddressBookNotification({
@@ -47,6 +53,9 @@ export function* updateAddressPut({ payload }) {
       );
       yield put(clearGetAddressListTTL());
       return yield put(addAddressSuccess(res.body));
+    }
+    if (fromCheckout) {
+      return res.body;
     }
     return yield put(addAddressFail(res.body));
   } catch (err) {

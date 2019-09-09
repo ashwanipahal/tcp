@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import Anchor from '../../../../../atoms/Anchor';
 import BonusPointsAvailability from '../../../molecules/BonusPointsAvailability';
@@ -137,7 +138,7 @@ const getContent = ({
   }
 
   return (
-    <React.Fragment>
+    <ViewWithSpacing spacingStyles="padding-top-SM">
       {!allUsed ? (
         <React.Fragment>
           <ApplyAnyDayWrapper>
@@ -192,7 +193,7 @@ const getContent = ({
         onPress={e => toggleBonusPointsModal(e)}
         text={labels.lbl_bonusPoints_details}
       />
-    </React.Fragment>
+    </ViewWithSpacing>
   );
 };
 
@@ -262,6 +263,7 @@ getContent.defaultProps = {
 
 getHeader.propTypes = {
   labels: PropTypes.shape({ myPlaceRewards: {} }),
+  orderDetails: PropTypes.shape({}),
 };
 
 getHeader.defaultProps = {
@@ -272,6 +274,7 @@ getHeader.defaultProps = {
       lbl_place_rewards_day: '',
     },
   },
+  orderDetails: {},
 };
 
 export default BonusPointsSection;

@@ -6,6 +6,7 @@ import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -43,14 +44,50 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const routerPush = (href, as, query, siteId = getSiteId()) => {
-  return Router.push(href, `/${siteId}${as}`, { query });
+const isCompleteHTTPUrl = url => /^(http|https):\/\//.test(url);
+
+const getRouteHref = noSlugPath => {
+  const pathArray = noSlugPath ? noSlugPath.replace(/\//, '&').split('&') : ['', ROUTING_MAP.home];
+  const pathValue = pathArray[1];
+  return ROUTING_MAP[pathValue] || ROUTING_MAP.home;
 };
 
-export const identifyBrand = () => {
-  const url = 'http://www.thechildrensplace.com/';
+/**
+ * @summary This is to return the Page (inside of Pages folder) which is mapped to the route path
+ * for ex: /home will return /index file name.
+ * @param {String || Object} toPath - list of color options
+ * @returns {String || Object} Mapped actual page href path
+ */
+export const getMappedPageHref = (toPath = '') => {
+  if (typeof toPath === 'string') {
+    if (isCompleteHTTPUrl(toPath)) return toPath;
+    const [noSlugPath = '/', query = ''] = toPath.split('?');
+    const mappedToHref = getRouteHref(noSlugPath);
+    return query ? `${mappedToHref}?${query}` : mappedToHref;
+  }
+  const { pathname = '', query } = toPath;
+  if (isCompleteHTTPUrl(pathname)) return pathname;
+  const mappedToHref = getRouteHref(pathname);
+  return {
+    pathname: mappedToHref,
+    query,
+  };
+};
 
-  return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
+/**
+ * @summary This is to return the asPath with additional slug values appended
+ * @param {String} as - asPath
+ * @param {String} siteId - siteId dynamic value to be appended
+ * @returns {String} Path with slug value appended
+ */
+export const getAsPathWithSlug = (as, siteId = getSiteId()) => {
+  return isCompleteHTTPUrl(as) ? as : `/${siteId}${as}`;
+};
+
+export const routerPush = (href, as, query, siteId = getSiteId()) => {
+  const relHref = getMappedPageHref(href);
+  const asPath = getAsPathWithSlug(as, siteId);
+  return Router.push(relHref, asPath, { query });
 };
 
 /**
@@ -140,6 +177,44 @@ export const getCreditCardExpirationOptionMap = () => {
   return {
     monthsMap: expMonthOptionsMap,
     yearsMap: expYearOptionsMap,
+  };
+};
+
+export const getBirthDateOptionMap = () => {
+  const monthOptionsMap = [
+    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
+    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
+    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
+    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
+    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
+    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
+    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
+    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
+    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
+    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
+    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
+    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
+  ];
+
+  const yearOptionsMap = [];
+  const dayOptionsMap = [];
+  const nowYear = new Date().getFullYear();
+
+  for (let i = 1900; i < nowYear - 17; i += 1) {
+    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+  }
+
+  for (let i = 1; i < 32; i += 1) {
+    if (i <= 9) {
+      i = 0 + i;
+    }
+    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+  }
+
+  return {
+    daysMap: dayOptionsMap,
+    monthsMap: monthOptionsMap,
+    yearsMap: yearOptionsMap,
   };
 };
 
@@ -242,7 +317,7 @@ export const getModifiedLanguageCode = id => {
 
 export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location, '/home', newSiteId);
+    routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
   }
 };
 
@@ -259,16 +334,54 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
+/**
+ * This function will redirect to PDP from HOMEPAGE
+ * on the basis of productId
+ *
+ * TODO: It can be extended as per requirement
+ * to redirect from other pages also
+ */
+export const redirectToPdp = productId => {
+  if (!window) return null;
+
+  const { href } = window.location;
+  // TODO
+  if (href.includes('/p/')) {
+    return {
+      url: `/p?pid=${productId}`,
+      asPath: `/p/${productId}`,
+    };
+  }
+
+  return {
+    url: `/c?cid=toddler-girl-bottoms`,
+    asPath: `/c/toddler-girl-bottoms`,
+  };
+};
+
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configurePlpNavigationFromCMSUrl = url => {
+  const route = `${ROUTE_PATH.plp}/`;
+  if (url.includes(route)) {
+    const urlItems = url.split(route);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+  }
+  return url;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  identifyBrand,
   getObjectValue,
   createUrlSearchParams,
   buildUrl,
   getCreditCardExpirationOptionMap,
+  getBirthDateOptionMap,
   getSiteId,
   routerPush,
   bindAllClassMethodsToThis,
@@ -278,6 +391,7 @@ export default {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
@@ -294,10 +408,13 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
     }`,
+    envId: processEnv.RWD_WEB_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+    raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
+    channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
   };
 };
 
@@ -315,11 +432,13 @@ export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
 
-  const { siteId, brandId, hostname } = resLocals;
+  const { country, currency, language, siteId, brandId, hostname } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
@@ -330,7 +449,11 @@ export const createAPIConfig = resLocals => {
     ...graphQLConfig,
     ...countryConfig,
     ...brandConfig,
+    catalogId,
     isMobile: false,
     cookie: null,
+    country,
+    currency,
+    language,
   };
 };

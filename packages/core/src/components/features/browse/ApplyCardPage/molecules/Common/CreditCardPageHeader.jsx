@@ -5,8 +5,8 @@ import Router from 'next/router';
 import { Anchor, BodyCopy, Col, Row } from '../../../../../common/atoms';
 import CreditCardPageHeaderWrapper from './styles/CreditCardPageHeader.style';
 
-const CreditCardPageHeader = ({ labels }) => {
-  return (
+const CreditCardPageHeader = ({ labels, isPLCCModalFlow }) => {
+  return !isPLCCModalFlow ? (
     <CreditCardPageHeaderWrapper>
       <Row fullBleed>
         <Col
@@ -25,12 +25,15 @@ const CreditCardPageHeader = ({ labels }) => {
         <Col
           className="apply_Card_Header_Text"
           key={labels.plcc_form_rewardsCardHeading}
+          aria-label={labels.plcc_form_rewardsCardHeading}
           colSize={{ large: 12, medium: 8, small: 6 }}
         >
           <BodyCopy
             component="h2"
             fontWeight="extrabold"
-            className="Apply_Card_Header_Text"
+            className="credit_card_heading"
+            aria-label={labels.plcc_form_rewardsCardHeading}
+            tabIndex="0"
             data-locator={labels.plcc_form_rewardsCardHeading}
           >
             {labels.plcc_form_rewardsCardHeading}
@@ -38,11 +41,12 @@ const CreditCardPageHeader = ({ labels }) => {
         </Col>
       </Row>
     </CreditCardPageHeaderWrapper>
-  );
+  ) : null;
 };
 
 CreditCardPageHeader.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
 };
 
 export default CreditCardPageHeader;

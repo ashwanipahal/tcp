@@ -28,6 +28,7 @@ export class BonusPointsDays extends React.Component {
     isPlcc: PropTypes.bool,
     getAvailableBonusDaysData: PropTypes.func,
     orderId: PropTypes.string,
+    showAccordian: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -42,6 +43,7 @@ export class BonusPointsDays extends React.Component {
     isPlcc: false,
     getAvailableBonusDaysData: () => {},
     orderId: '',
+    showAccordian: true,
   };
 
   componentDidMount() {
@@ -63,6 +65,7 @@ export class BonusPointsDays extends React.Component {
       isPlcc,
       getAvailableBonusDaysData,
       orderId,
+      showAccordian,
     } = this.props;
     return (
       !isCanada() &&
@@ -75,6 +78,7 @@ export class BonusPointsDays extends React.Component {
           isPlcc={isPlcc}
           getBonusDaysData={getAvailableBonusDaysData}
           orderDetails={orderId}
+          showAccordian={showAccordian}
         />
       )
     );

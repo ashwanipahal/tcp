@@ -188,6 +188,10 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.value}` : `${labels.size}`;
   };
 
+  getColorLabel = (productDetail, labels) => {
+    return productDetail.itemInfo.isGiftItem === true ? `${labels.design}` : `${labels.color}`;
+  };
+
   displayErrorMessage = displayError => {
     this.setState({
       isErrorMessageDisplayed: displayError,
@@ -230,6 +234,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                 <Field
                   width={87}
                   id="color"
+                  selectListTitle={this.getColorLabel(item, labels)}
                   name={selectedColor}
                   component={ColorSelector}
                   options={colorList}
@@ -252,7 +257,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               )}
               <div className="size-selector">
                 <Field
-                  width={69}
+                  width={49}
                   className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
                   id="size"
                   name={this.getSizeLabel(item, labels)}

@@ -41,8 +41,8 @@ class ContactInformationFormWrapper extends React.Component {
     const { dispatch } = this.props;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     dispatch(change('PLCCForm', 'city', address.city));
-    dispatch(change('PLCCForm', 'zipCode', address.zip));
-    dispatch(change('PLCCForm', 'state', address.state));
+    dispatch(change('PLCCForm', 'noCountryZip', address.zip));
+    dispatch(change('PLCCForm', 'statewocountry', address.state));
     dispatch(change('PLCCForm', 'addressLine1', address.street));
   };
 
@@ -57,6 +57,7 @@ class ContactInformationFormWrapper extends React.Component {
           color="black"
           fontWeight="semibold"
           className="title"
+          tabIndex="0"
         >
           {labels.plcc_form_contact_info_header}
         </Heading>
@@ -163,16 +164,16 @@ class ContactInformationFormWrapper extends React.Component {
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }} className="columnWrapper">
-            <BodyCopy
-              component="span"
-              fontSize="fs12"
-              fontFamily="secondary"
-              fontWeight="extrabold"
-              className="free_dropdown_label"
-            >
-              {labels.plcc_form_state}
-            </BodyCopy>
             <Row fullBleed>
+              <BodyCopy
+                component="span"
+                fontSize="fs12"
+                fontFamily="secondary"
+                fontWeight="extrabold"
+                className="free_dropdown_label columnWrapper"
+              >
+                {labels.plcc_form_state}
+              </BodyCopy>
               <Col
                 className="contact_information_form"
                 key="container_state"
@@ -189,7 +190,7 @@ class ContactInformationFormWrapper extends React.Component {
                 />
               </Col>
               <Col
-                className="contact_information_form"
+                className="contact_information_form label_zip"
                 key="container_zip"
                 colSize={{ large: 6, medium: 4, small: 3 }}
               >
@@ -197,7 +198,7 @@ class ContactInformationFormWrapper extends React.Component {
                   placeholder={labels.plcc_form_zipcode}
                   id="zipCode"
                   name="noCountryZip"
-                  maxLength={6}
+                  maxLength={5}
                   component={TextBox}
                   dataLocator={getLocator('plcc_zip_code')}
                   className="field"
@@ -214,7 +215,7 @@ class ContactInformationFormWrapper extends React.Component {
           >
             <Field
               placeholder={labels.plcc_form_mobile_phone_number}
-              name="phoneNumber"
+              name="phoneNumberWithAlt"
               id="phoneNumber"
               component={TextBox}
               dataLocator={getLocator('plc_mobile_no')}
@@ -245,7 +246,7 @@ class ContactInformationFormWrapper extends React.Component {
           >
             <Field
               placeholder={labels.plcc_form_alternate_phone}
-              name="alternatePhone"
+              name="altPhoneNumber"
               id="alternatePhone"
               component={TextBox}
               dataLocator={getLocator('plcc_alt_mobile_no')}
@@ -255,6 +256,7 @@ class ContactInformationFormWrapper extends React.Component {
         </Row>
         <BodyCopy
           className="columnWrapper plcc_min_phone"
+          tabIndex="0"
           fontSize="fs10"
           fontFamily="secondary"
           id="plcc_min_phone"

@@ -5,7 +5,7 @@ export default styled.div`
   padding: 0px 14px;
 
   @media ${props => props.theme.mediaQuery.large} {
-    padding-left: 200px;
+    padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `200px`)};
   }
 
   .iAgree_terms_conditions {
@@ -14,6 +14,7 @@ export default styled.div`
     align-items: flex-start;
     > input {
       flex: -1 0 50%;
+      margin-top: 5px;
     }
     > p {
       flex: 1 0 50%;
@@ -25,6 +26,7 @@ export default styled.div`
   }
 
   .contact_information_form {
+    text-align: left;
     > label {
       > p {
         margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -34,11 +36,10 @@ export default styled.div`
 
   .plcc_min_phone {
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.XXS} 0px
-        ${props => props.theme.spacing.ELEM_SPACING.XS} 0px;
+      padding: 0px 0px ${props => props.theme.spacing.ELEM_SPACING.SM} 0px;
     }
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0px
-      ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
+      ${props => props.theme.spacing.ELEM_SPACING.SM} 0px;
   }
 
   .free_dropdown_label {
@@ -73,6 +74,7 @@ export default styled.div`
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
+    font-weight: ${props => props.theme.fonts.fontWeight.normal};
     letter-spacing: 1px;
     text-align: center;
   }
@@ -95,7 +97,7 @@ export default styled.div`
     font-family: ${props => props.theme.typography.fonts.secondary};
     font-size: ${props => props.theme.typography.fontSizes.fs16};
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
-    margin: 34px 0px 19px 0px;
+    margin: 34px 0px 27px 0px;
     line-height: 1;
   }
 `;

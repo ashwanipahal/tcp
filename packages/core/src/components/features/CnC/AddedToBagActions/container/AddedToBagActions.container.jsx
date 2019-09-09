@@ -1,17 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import AddedToBagActionsView from '../views/AddedToBagActions';
+import AddedToBagActionsView from '../views/AddedToBagActions.view';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 import { checkoutModalOpenState } from '../../../account/LoginPage/container/LoginPage.selectors';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
-import { routerPush } from '../../../../../utils';
+import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
+import utility from '../../Checkout/util/utility';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import bagPageActions from '../../BagPage/container/BagPage.actions';
+import bagPageSelector from '../../BagPage/container/BagPage.selectors';
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.handleContinueShopping = this.handleContinueShopping.bind(this);
+  }
+
+  componentWillUnmount() {
+    const { closeCheckoutModalMountState } = this.props;
+    closeCheckoutModalMountState({ state: false });
   }
 
   handleContinueShopping() {
@@ -29,9 +38,16 @@ export class AddedToBagContainer extends React.Component<Props> {
       checkoutModalMountedState,
       closeCheckoutModalMountState,
       isUserLoggedIn,
+      routeForBagCheckout,
+      closeCheckoutConfirmationModal,
+      modalInfo,
+      isEditingItem,
+      removeUnqualifiedItemsAndCheckout,
+      orderHasPickup,
+      closeModal,
     } = this.props;
     const onClickViewBag = () => {
-      routerPush('/cart', '/bag');
+      utility.routeToPage(CHECKOUT_ROUTES.bagPage);
     };
     return (
       <AddedToBagActionsView
@@ -40,11 +56,18 @@ export class AddedToBagContainer extends React.Component<Props> {
         labels={labels}
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
+        routeForBagCheckout={routeForBagCheckout}
         inheritedStyles={inheritedStyles}
         closeCheckoutModalMountState={closeCheckoutModalMountState}
         checkoutModalMountedState={checkoutModalMountedState}
         navigation={navigation}
         isUserLoggedIn={isUserLoggedIn}
+        closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
+        modalInfo={modalInfo}
+        isEditingItem={isEditingItem}
+        removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
+        orderHasPickup={orderHasPickup}
+        closeModal={closeModal}
       />
     );
   }
@@ -53,12 +76,29 @@ export class AddedToBagContainer extends React.Component<Props> {
 AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  routeForBagCheckout: PropTypes.func.isRequired,
+  handleCartCheckout: PropTypes.func.isRequired,
+  removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
+  closeCheckoutConfirmationModal: PropTypes.func.isRequired,
+  modalInfo: PropTypes.shape({}).isRequired,
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     closeCheckoutModalMountState: payload => {
       dispatch(setCheckoutModalMountedState(payload));
+    },
+    routeForBagCheckout: () => {
+      dispatch(bagPageActions.routeForCheckout());
+    },
+    handleCartCheckout: payload => {
+      dispatch(bagPageActions.startCheckout(payload));
+    },
+    closeCheckoutConfirmationModal: () => {
+      dispatch(bagPageActions.closeCheckoutConfirmationModal());
+    },
+    removeUnqualifiedItemsAndCheckout: () => {
+      dispatch(bagPageActions.removeUnqualifiedItemsAndCheckout(ownProps.navigation));
     },
   };
 };
@@ -68,6 +108,8 @@ const mapStateToProps = state => {
     labels: getLabelsAddToActions(state),
     checkoutModalMountedState: checkoutModalOpenState(state),
     isUserLoggedIn: getUserLoggedInState(state),
+    modalInfo: bagPageSelector.getConfirmationModalFlag(state),
+    orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
   };
 };
 

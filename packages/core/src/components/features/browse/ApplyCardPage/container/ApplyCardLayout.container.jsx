@@ -3,14 +3,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ApplyCardLayoutView from '../views/ApplyCardLayout.View';
 import { fetchModuleX, submitInstantCardApplication } from './ApplyCard.actions';
+import { isPlccUser } from '../../../account/User/container/User.selectors';
+import { getUserProfileData } from './ApplyCard.selectors';
+import { routerPush } from '../../../../../utils';
 
 class ApplyCardLayoutContainer extends React.Component {
   static propTypes = {
     plccData: PropTypes.shape({}).isRequired,
     labels: PropTypes.shape({}).isRequired,
     fetchModuleXContent: PropTypes.func.isRequired,
+    isPLCCModalFlow: PropTypes.bool.isRequired,
     submitApplication: PropTypes.func.isRequired,
     applicationStatus: PropTypes.string.isRequired,
+    plccUser: PropTypes.bool.isRequired,
+    profileInfo: PropTypes.shape({}).isRequired,
   };
 
   componentDidMount() {
@@ -32,13 +38,26 @@ class ApplyCardLayoutContainer extends React.Component {
   };
 
   render() {
-    const { applicationStatus, plccData, labels } = this.props;
+    const {
+      applicationStatus,
+      isPLCCModalFlow,
+      plccData,
+      labels,
+      plccUser,
+      profileInfo,
+    } = this.props;
+    if (plccUser) {
+      routerPush('/', '/place-card');
+    }
     return (
       <ApplyCardLayoutView
         applicationStatus={applicationStatus}
         labels={labels}
         plccData={plccData}
         submitPLCCForm={this.submitPLCCForm}
+        plccUser={plccUser}
+        profileInfo={profileInfo}
+        isPLCCModalFlow={isPLCCModalFlow}
       />
     );
   }
@@ -49,6 +68,8 @@ export const mapStateToProps = state => {
   return {
     applicationStatus: ApplyCardPage.applicationStatus,
     plccData: ApplyCardPage.plccData,
+    plccUser: isPlccUser(state),
+    profileInfo: getUserProfileData(state),
     labels: Labels && Labels.PLCC && Labels.PLCC.plccForm,
   };
 };

@@ -36,8 +36,11 @@ const buildQuery = ({ brand, country, channel }) => `
               text {
                 text
               }
-              richText {
+              linkList {
+                url
+                title
                 text
+                target
               }
             }
           }

@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import { buildUrl, getSiteId } from '../../../../../utils';
+import { buildUrl, getAsPathWithSlug, getMappedPageHref } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
@@ -34,17 +34,17 @@ const Anchor = ({
   ...other
 }) => {
   const targetVal = target || '_self';
-  const siteId = getSiteId();
-
-  const incomingUrl = to || url;
-  const isCompleteUrl = incomingUrl.startsWith('http');
-  const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
-  const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
+  let incomingUrl = to || url;
+  const asLinkPath = getAsPathWithSlug(asPath || incomingUrl);
+  if (!noLink) {
+    incomingUrl = getMappedPageHref(incomingUrl);
+  }
+  const hrefUrl = asLinkPath || buildUrl(incomingUrl);
   let AnchorComponent = null;
   if (children || text) {
     AnchorComponent = noLink ? (
       <a
-        href={buildUrl(linkUrl)}
+        href={buildUrl(incomingUrl)}
         className={className}
         onClick={handleLinkClick}
         title={title}
@@ -55,13 +55,14 @@ const Anchor = ({
         {children}
       </a>
     ) : (
-      <Link href={linkUrl} as={asLinkPath} shallow={shallow} scroll={scroll}>
+      <Link href={incomingUrl} as={asLinkPath} shallow={shallow} scroll={scroll}>
         <a
           className={className}
-          href={linkUrl}
+          href={hrefUrl}
           title={title}
           target={targetVal}
           data-locator={dataLocator}
+          {...other}
         >
           {children || text}
         </a>

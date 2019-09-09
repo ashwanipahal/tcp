@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NavMenuLevel1View from '../views/NavMenuLevel1.view';
+import { NavMenuLevel1View } from '../views/NavMenuLevel1.view';
 
 const navItems = {
   data: {
@@ -127,11 +127,9 @@ const navItemWithImageFirst = {
 };
 
 describe('NavMenuLevel1', () => {
-  it('should be defined', () => {
-    expect(NavMenuLevel1View).toBeDefined();
-  });
+  let component;
 
-  it('should render correctly', () => {
+  beforeEach(() => {
     const props = {
       navigation: {
         navigate: jest.fn(),
@@ -139,59 +137,30 @@ describe('NavMenuLevel1', () => {
       navigationMenuObj: navItems,
       loadNavigationData: () => {},
     };
-    const component = shallow(<NavMenuLevel1View {...props} />);
+    component = shallow(<NavMenuLevel1View {...props} />);
+  });
+
+  it('should render correctly', () => {
     expect(component).toMatchSnapshot();
   });
 
   it('should render component when renderItem is called', () => {
-    const props = {
-      navigation: {
-        navigate: jest.fn(),
-      },
-      navigationMenuObj: navItems,
-      loadNavigationData: () => {},
-    };
-    const component = shallow(<NavMenuLevel1View {...props} />);
     const item = component.props().renderItem({ item: navItems.data.navigation.nav[0] });
     expect(item).toMatchSnapshot();
   });
 
   it('should render component when keyExtractor is called', () => {
-    const props = {
-      navigation: {
-        navigate: jest.fn(),
-      },
-      navigationMenuObj: navItems,
-      loadNavigationData: () => {},
-    };
-    const component = shallow(<NavMenuLevel1View {...props} />);
     const keyString = component.props().keyExtractor(1, 12);
     expect(keyString).toEqual('12');
   });
 
   it('should render component when renderItem is called without nav menu image', () => {
-    const props = {
-      navigation: {
-        navigate: jest.fn(),
-      },
-      navigationMenuObj: navItemsNoImage,
-      loadNavigationData: () => {},
-    };
-    const component = shallow(<NavMenuLevel1View {...props} />);
     const item = component.props().renderItem({ item: navItemsNoImage.data.navigation.nav[0] });
     expect(item).toMatchSnapshot();
   });
 
   // TODO - Fix the test case to expect something after onPress
   it('should render component when renderItem is called with image first config', () => {
-    const props = {
-      navigation: {
-        navigate: jest.fn(),
-      },
-      navigationMenuObj: navItemWithImageFirst,
-      loadNavigationData: () => {},
-    };
-    const component = shallow(<NavMenuLevel1View {...props} />);
     const item = shallow(
       component.props().renderItem({ item: navItemWithImageFirst.data.navigation.nav[0] })
     );
@@ -200,14 +169,6 @@ describe('NavMenuLevel1', () => {
 
   // TODO - Fix the test case to expect something after onPress
   it('should render component when renderItem is called without nav menu image', () => {
-    const props = {
-      navigation: {
-        navigate: jest.fn(),
-      },
-      navigationMenuObj: navItemsNoImage,
-      loadNavigationData: () => {},
-    };
-    const component = shallow(<NavMenuLevel1View {...props} />);
     const item = shallow(
       component.props().renderItem({ item: navItemsNoImage.data.navigation.nav[0] })
     );

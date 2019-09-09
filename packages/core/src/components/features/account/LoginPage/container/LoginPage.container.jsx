@@ -15,6 +15,7 @@ import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 import {
   getLoginError,
   shouldShowRecaptcha,
@@ -22,12 +23,24 @@ import {
   getLabels,
 } from './LoginPage.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay, closeModal, variation } = this.props;
+    const {
+      isUserLoggedIn,
+      closeOverlay,
+      closeModal,
+      variation,
+      toastMessage,
+      loginErrorMessage,
+      loginError,
+    } = this.props;
+    if (!prevProps.loginError && loginError) {
+      toastMessage(loginErrorMessage);
+    }
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       if (variation === 'checkout' || variation === 'favorites') {
         closeModal();
@@ -38,10 +51,8 @@ class LoginPageContainer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const { resetLoginState, loginError } = this.props;
-    if (loginError) {
-      resetLoginState();
-    }
+    const { resetLoginState } = this.props;
+    resetLoginState();
   }
 
   openModal = params => {
@@ -72,6 +83,9 @@ class LoginPageContainer extends React.PureComponent {
       onRequestClose,
       variation,
       handleContinueAsGuest,
+      formErrorMessage,
+      showCheckoutModal,
+      showLogin,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -99,6 +113,9 @@ class LoginPageContainer extends React.PureComponent {
         variation={variation}
         handleContinueAsGuest={handleContinueAsGuest}
         loginError={loginError}
+        formErrorMessage={formErrorMessage}
+        showCheckoutModal={showCheckoutModal}
+        showLogin={showLogin}
       />
     );
   }
@@ -127,6 +144,10 @@ LoginPageContainer.propTypes = {
   closeModal: PropTypes.bool.isRequired,
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func,
+  toastMessage: PropTypes.string.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
+  showCheckoutModal: PropTypes.func.isRequired,
+  showLogin: PropTypes.func.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -163,6 +184,9 @@ const mapDispatchToProps = (dispatch, props) => {
     openOverlay: payload => {
       dispatch(openOverlayModal(payload));
     },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
+    },
   };
 };
 
@@ -176,6 +200,7 @@ const mapStateToProps = state => {
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
     labels: getLabels(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 

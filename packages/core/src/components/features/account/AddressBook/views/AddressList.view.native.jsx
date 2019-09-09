@@ -9,6 +9,7 @@ type Props = {
   onDefaultShippingAddressClick: Object,
   setDeleteModalMountState: Function,
   setSelectedAddress: Function,
+  toggleAddAddressModal: Function,
 };
 
 export const AddressList = ({
@@ -17,6 +18,7 @@ export const AddressList = ({
   onDefaultShippingAddressClick,
   setDeleteModalMountState,
   setSelectedAddress,
+  toggleAddAddressModal,
 }: Props) => {
   return (
     <View>
@@ -28,6 +30,7 @@ export const AddressList = ({
           setDeleteModalMountState={setDeleteModalMountState}
           setSelectedAddress={setSelectedAddress}
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+          toggleAddAddressModal={toggleAddAddressModal}
         />
       ))}
     </View>

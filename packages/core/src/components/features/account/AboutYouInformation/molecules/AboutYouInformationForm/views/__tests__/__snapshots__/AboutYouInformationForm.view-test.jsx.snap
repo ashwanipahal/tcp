@@ -1,0 +1,1631 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouInformationForm should render correctly 1`] = `
+<div
+  className="sc-bYSBpT bphfoR"
+>
+  <Styled(Row)
+    className="elem-mt-XXL"
+    fullBleed={true}
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="moreaboutyou-edit-q1text"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    className="aboutyou-wrapper"
+  >
+    <Styled(Col)
+      className="aboutyou-radio"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={false}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-iwsKbI",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+",
+                [Function],
+                ";
+
+  @media ",
+                [Function],
+                "{
+    padding-left: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                [Function],
+                "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+    ",
+                [Function],
+                "
+    }
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+      }
+  }
+
+  .radio-button-checked:after {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                " {
+      border: 1px solid ",
+                [Function],
+                ";
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                [Function],
+                ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                [Function],
+                ";
+  }
+
+  .input-subtitle {
+    display: ",
+                [Function],
+                ";
+    @media ",
+                [Function],
+                " {
+      display: block;
+    }
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(LabeledRadioButton)",
+            "foldedComponentIds": Array [],
+            "labeledRadioButtonCounter": 0,
+            "render": [Function],
+            "styledComponentId": "sc-iwsKbI",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-radiooption-0"
+        key="question1"
+        name="question1"
+        onClick={[Function]}
+        selectedValue={false}
+        topPosition="0px"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Parent
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou-radio"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={false}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-iwsKbI",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+",
+                [Function],
+                ";
+
+  @media ",
+                [Function],
+                "{
+    padding-left: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                [Function],
+                "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+    ",
+                [Function],
+                "
+    }
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+      }
+  }
+
+  .radio-button-checked:after {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                " {
+      border: 1px solid ",
+                [Function],
+                ";
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                [Function],
+                ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                [Function],
+                ";
+  }
+
+  .input-subtitle {
+    display: ",
+                [Function],
+                ";
+    @media ",
+                [Function],
+                " {
+      display: block;
+    }
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(LabeledRadioButton)",
+            "foldedComponentIds": Array [],
+            "labeledRadioButtonCounter": 0,
+            "render": [Function],
+            "styledComponentId": "sc-iwsKbI",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-radiooption-1"
+        key="question1"
+        name="question1"
+        onClick={[Function]}
+        selectedValue={false}
+        topPosition="0px"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Grandparent
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou-radio"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={true}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-iwsKbI",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+",
+                [Function],
+                ";
+
+  @media ",
+                [Function],
+                "{
+    padding-left: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                [Function],
+                "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+    ",
+                [Function],
+                "
+    }
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+      }
+  }
+
+  .radio-button-checked:after {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                " {
+      border: 1px solid ",
+                [Function],
+                ";
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                [Function],
+                ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                [Function],
+                ";
+  }
+
+  .input-subtitle {
+    display: ",
+                [Function],
+                ";
+    @media ",
+                [Function],
+                " {
+      display: block;
+    }
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(LabeledRadioButton)",
+            "foldedComponentIds": Array [],
+            "labeledRadioButtonCounter": 0,
+            "render": [Function],
+            "styledComponentId": "sc-iwsKbI",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-radiooption-2"
+        key="question1"
+        name="question1"
+        onClick={[Function]}
+        selectedValue={true}
+        topPosition="0px"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Gifting for others
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou-radio"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={false}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-iwsKbI",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+",
+                [Function],
+                ";
+
+  @media ",
+                [Function],
+                "{
+    padding-left: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                [Function],
+                "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+    ",
+                [Function],
+                "
+    }
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+      }
+  }
+
+  .radio-button-checked:after {
+    ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                "{
+      ",
+                [Function],
+                "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                [Function],
+                "
+
+    @media ",
+                [Function],
+                " {
+      border: 1px solid ",
+                [Function],
+                ";
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                [Function],
+                ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                [Function],
+                ";
+  }
+
+  .input-subtitle {
+    display: ",
+                [Function],
+                ";
+    @media ",
+                [Function],
+                " {
+      display: block;
+    }
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(LabeledRadioButton)",
+            "foldedComponentIds": Array [],
+            "labeledRadioButtonCounter": 0,
+            "render": [Function],
+            "styledComponentId": "sc-iwsKbI",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-radiooption-3"
+        key="question1"
+        name="question1"
+        onClick={[Function]}
+        selectedValue={false}
+        topPosition="0px"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Prefer not to answer
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-XXL"
+    fullBleed={true}
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="moreaboutyou-edit-q2text"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    className="aboutyou-wrapper"
+  >
+    <Styled(Col)
+      className="aboutyou-checkbox"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={true}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gZMcBi",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: block;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gZMcBi",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-checkboxoption-0"
+        name="question2-option-0"
+        onChange={[Function]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Girl
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou-checkbox"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={false}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gZMcBi",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: block;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gZMcBi",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-checkboxoption-1"
+        name="question2-option-1"
+        onChange={[Function]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Boy
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou-checkbox"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={true}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gZMcBi",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: block;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gZMcBi",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-checkboxoption-2"
+        name="question2-option-2"
+        onChange={[Function]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Toddler Girl
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou-checkbox"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={false}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gZMcBi",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: block;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gZMcBi",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-checkboxoption-3"
+        name="question2-option-3"
+        onChange={[Function]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Toddler Boy
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou-checkbox"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Field
+        checked={false}
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gZMcBi",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  display: block;
+  align-items: ",
+                [Function],
+                ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                [Function],
+                ";
+    border: 1px solid ",
+                [Function],
+                ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    width: ",
+                [Function],
+                ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                [Function],
+                ";
+  }
+
+  & .disabled {
+    opacity: ",
+                [Function],
+                ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                [Function],
+                ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                [Function],
+                ";
+    width: ",
+                [Function],
+                ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(InputCheckbox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gZMcBi",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data-locator="moreaboutyou-checkboxoption-4"
+        name="question2-option-4"
+        onChange={[Function]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Baby
+        </Styled(BodyCopy)>
+      </Field>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-LRG elem-mt-XXL actions-wrapper"
+  >
+    <Styled(Col)
+      className="aboutyou_save"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 3,
+          "medium": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mb-XS"
+        data-locator="moreaboutyou-savebtn"
+        disabled={true}
+        fill="BLUE"
+        fullWidth={true}
+        onClick={[Function]}
+      >
+        SAVE
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou_cancel"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Anchor)
+        asPath="/account/profile"
+        to="/account?id=profile"
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="elem-mb-XS"
+          data-locator="moreaboutyou-cancelbtn"
+          fullWidth={true}
+          type="button"
+        />
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

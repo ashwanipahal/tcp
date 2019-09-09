@@ -18,6 +18,14 @@ const CenterAlignWrapper = styled.View`
   align-items: center;
 `;
 
+const HeadingTextWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: ${'center'};
+`;
+
 const LabelsWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   width: 80%;
@@ -44,6 +52,12 @@ const ResetWrapper = styled.View`
   padding-top: 10px;
 `;
 
+const ResetPassword = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: ${'center'};
+`;
+
 export {
   SectionStyle,
   CenterAlignWrapper,
@@ -53,4 +67,6 @@ export {
   PointsWrapper,
   ResetWrapper,
   ViewAlignCenter,
+  ResetPassword,
+  HeadingTextWrapper,
 };

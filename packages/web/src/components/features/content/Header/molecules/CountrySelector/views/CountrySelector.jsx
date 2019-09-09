@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import { getFlagIconPath, getLocator } from '@tcp/core/src/utils';
 
 import CountrySelectorModal from './CountrySelectorModal';
@@ -20,11 +21,9 @@ class CountrySelector extends React.Component {
   }
 
   openModal = () => {
-    const { countriesMap, toggleModal } = this.props;
+    const { toggleModal } = this.props;
     toggleModal({ isModalOpen: true });
-    if (!countriesMap.length) {
-      this.getCountryListData();
-    }
+    this.getCountryListData();
   };
 
   closeModal = () => {
@@ -79,11 +78,13 @@ class CountrySelector extends React.Component {
 
   changeCountry = selectedCountry => {
     const { updateCountry, updateSiteId } = this.props;
-    const { siteId } = this.getSelectedCountry(selectedCountry);
-    const currencyCode = this.getCurrencyMap(selectedCountry);
-    this.updateCurrency(currencyCode);
+    if (selectedCountry) {
+      const { siteId } = this.getSelectedCountry(selectedCountry);
+      const currencyCode = this.getCurrencyMap(selectedCountry);
+      this.updateCurrency(currencyCode);
+      updateSiteId(siteId);
+    }
     updateCountry(selectedCountry);
-    updateSiteId(siteId);
   };
 
   changeLanguage = selectedLanguage => {
@@ -130,7 +131,7 @@ class CountrySelector extends React.Component {
               fontFamily="secondary"
               fontSize="fs12"
             >
-              {labelValues.lbl_global_country_selector_header}
+              {labelValues && labelValues.lbl_global_country_selector_header}
             </BodyCopy>
             <CountrySelectorModal
               isModalOpen={isModalOpen}
@@ -238,5 +239,5 @@ CountrySelector.defaultProps = {
   updateSiteId: () => {},
 };
 
-export default withStyles(CountrySelector, style);
+export default withStyles(errorBoundary(CountrySelector), style);
 export { CountrySelector as CountrySelectorVanilla };

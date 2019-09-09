@@ -41,17 +41,31 @@ An online account has been created with your email! Click here to reset your pas
     <Styled(View)
       className="labels-wrapper"
     >
-      <Styled(BodyCopy)
-        component="span"
-        fontSize="fs13"
-        text="Create a My Place Rewards account to earn"
-        textAlign="center"
-      />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          component="span"
+          fontSize="fs13"
+          text="Create a"
+          textAlign="center"
+        />
+        <Styled(BodyCopy)
+          color="gray.1000"
+          component="span"
+          fontSize="fs13"
+          text="My Place Rewards"
+          textAlign="center"
+        />
+        <Styled(BodyCopy)
+          component="span"
+          fontSize="fs13"
+          text="account to earn"
+          textAlign="center"
+        />
+      </Styled(View)>
       <Styled(View)>
         <Styled(BodyCopy)
           color="gray.800"
           fontSize="fs14"
-          fontWeight="black"
           text="points on every purchase"
           textAlign="center"
         />
@@ -74,17 +88,18 @@ An online account has been created with your email! Click here to reset your pas
           text="An online account has been created"
           textAlign="center"
         />
-        <Styled(View)>
-          <Styled(Anchor)
-            anchorVariation=""
-            customStyle={Object {}}
-            fontSizeVariation="medium"
-            locator=""
-            onPress={[Function]}
-            text=""
-            visible={false}
-          />
-        </Styled(View)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation=""
+          class="clickhere"
+          customStyle={Object {}}
+          fontSizeVariation="medium"
+          locator=""
+          onPress={[Function]}
+          text="lbl_createAccount_resetPassword"
+          underline={true}
+          visible={false}
+        />
       </Styled(View)>
     </Styled(View)>
     <Styled(LineComp)

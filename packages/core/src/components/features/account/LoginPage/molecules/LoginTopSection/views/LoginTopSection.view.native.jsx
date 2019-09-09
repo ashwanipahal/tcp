@@ -6,20 +6,27 @@ import ImageComp from '../../../../../../common/atoms/Image';
 import LineComp from '../../../../../../common/atoms/Line';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
-import favIcon from '../../../../../../../../../mobileapp/src/assets/images/filled-heart.png';
+import favIcon from '../../../../../../../../../mobileapp/src/assets/images/empty-heart.png';
 import {
   SectionStyle,
   HeadingStyle,
-  SubHeadingStyle,
-  DescriptionStyle,
+  ResetPassword,
   ImageWrapper,
+  FavtHeading,
+  FavtSubHeading,
 } from '../LoginTopSection.style.native';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
 /**
  * @param {string} props : props for CustomIcon
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
+const showForgotPassword = props => {
+  const { showForgotPasswordForm } = props;
+  showForgotPasswordForm();
+};
+
 const LoginTopSection = props => {
   const { labels, variation } = props;
   const imgStyle = { alignSelf: 'center', marginTop: 20 };
@@ -31,9 +38,35 @@ const LoginTopSection = props => {
 
           <LineComp marginTop={30} marginBottom={17} />
           <HeadingStyle>{labels.login.lbl_login_heading}</HeadingStyle>
-          <SubHeadingStyle>{labels.login.lbl_login_subHeading}</SubHeadingStyle>
-          <DescriptionStyle>{labels.login.lbl_login_Description_heading_1}</DescriptionStyle>
-          <DescriptionStyle>{labels.login.lbl_login_Description_heading_2}</DescriptionStyle>
+
+          <BodyCopy
+            fontSize="fs12"
+            textAlign="center"
+            text={labels.login.lbl_login_subDescription_heading_1}
+          />
+
+          <BodyCopy
+            fontSize="fs12"
+            textAlign="center"
+            text={labels.login.lbl_login_Description_heading_2}
+          />
+          <ResetPassword>
+            <Anchor
+              id="forgotPasswordForm"
+              class="clickhere"
+              fontSizeVariation="medium"
+              text={labels.login.lbl_login_Description_clickhere}
+              underline
+              onPress={() => {
+                showForgotPassword(props);
+              }}
+            />
+            <BodyCopy
+              component="span"
+              fontSize="fs12"
+              text={labels.login.lbl_login_Description_heading_3}
+            />
+          </ResetPassword>
           <LineComp marginTop={25} marginBottom={0} />
         </React.Fragment>
       )}
@@ -41,22 +74,26 @@ const LoginTopSection = props => {
       {variation === 'favorites' && (
         <>
           <ImageWrapper>
-            <ImageComp source={favIcon} width={20} height={18} />
+            <ImageComp source={favIcon} width={22} height={20} />
           </ImageWrapper>
-          <BodyCopy
-            text={labels.login.lbl_login_favorites_modal_heading}
-            fontSize="fs16"
-            fontWeight="black"
-            mobilefontFamily={['secondary']}
-            textAlign="center"
-          />
-          <BodyCopy
-            component="span"
-            fontSize="fs12"
-            mobilefontFamily={['secondary']}
-            textAlign="center"
-            text={labels.login.lbl_login_favorites_modal_heading_1}
-          />
+          <FavtHeading>
+            <BodyCopy
+              text={labels.login.lbl_login_favorites_modal_heading}
+              fontSize="fs16"
+              fontWeight="black"
+              mobilefontFamily={['secondary']}
+              textAlign="center"
+            />
+          </FavtHeading>
+          <FavtSubHeading>
+            <BodyCopy
+              component="span"
+              fontSize="fs12"
+              mobilefontFamily={['secondary']}
+              textAlign="center"
+              text={labels.login.lbl_login_favorites_modal_heading_1}
+            />
+          </FavtSubHeading>
         </>
       )}
 
@@ -86,7 +123,7 @@ const LoginTopSection = props => {
             textAlign="center"
             text={labels.login.lbl_login_checkout_modal_heading_2}
           />
-          <LineComp marginTop={25} marginBottom={0} />
+          <LineComp small marginTop={25} marginBottom={0} />
         </>
       )}
     </View>

@@ -278,6 +278,7 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
           userProfileState: {
             profileCompletion: res.body.x_profilePercentageComplete,
           },
+          contactList: res.body.contact,
         };
       }
     })

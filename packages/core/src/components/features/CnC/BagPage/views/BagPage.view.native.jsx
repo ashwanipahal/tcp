@@ -50,6 +50,7 @@ const BagPage = ({
           </RowSectionStyle>
         </MainSection>
       </ScrollViewWrapper>
+
       <AddedToBagActions
         handleCartCheckout={handleCartCheckout}
         labels={labels}
