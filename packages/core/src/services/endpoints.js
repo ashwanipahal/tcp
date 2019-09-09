@@ -247,5 +247,9 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/account/deleteBirthdaySavings',
   },
+  addGiftOptions: {
+    method: 'POST',
+    URI: 'v2/checkout/addGiftOptions',
+  },
 };
 export default endpoints;

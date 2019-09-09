@@ -132,6 +132,10 @@ export const BIRTHDAY_SAVING_LIST_REDUCER_KEY = 'BirthdaySavingsList';
 export const APPLY_NOW_MODAL_REDUCER_KEY = 'ApplyNowModal';
 export const APPLY_NOW_MODAL_REDUCER_PATTERN = '@@ApplyNowModal-';
 
+// Gift Services Reducer
+export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
+export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,

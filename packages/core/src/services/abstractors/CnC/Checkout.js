@@ -199,6 +199,34 @@ export const getShippingMethods = (state, zipCode, addressField1, addressField2,
     });
 };
 
+export function addGiftWrappingOption(payload) {
+  const payloadArgs = {
+    webService: endpoints.addGiftOptions,
+    body: {
+      orderId: payload.orderId || '.', // '.' means use context one
+      GiftMsg: payload.GiftMsg || '',
+      quantity_0: '1',
+      catEntryId_0: payload.catEntryId,
+    },
+  };
+  return executeStatefulAPICall(payloadArgs).then(res => {
+    return res;
+  });
+}
+export function removeGiftWrappingOption() {
+  const payloadArgs = {
+    webService: endpoints.addGiftOptions,
+    body: {
+      orderId: '.', // '.' means use context one
+      GiftMsg: '',
+      quantity_0: '',
+      catEntryId_0: '',
+    },
+  };
+  return executeStatefulAPICall(payloadArgs).then(res => {
+    return res;
+  });
+}
 export function briteVerifyStatusExtraction(emailAddress) {
   return new Promise(resolve => {
     superagent
@@ -273,16 +301,8 @@ export function setShippingMethodAndAddressId(
 }
 
 export function addGiftCardPaymentToOrder(args) {
-  const {
-    billingAddressId,
-    orderGrandTotal,
-    cardNumber,
-    cardPin,
-    balance,
-    saveToAccount,
-    nickName,
-    creditCardId,
-  } = args;
+  const { billingAddressId, orderGrandTotal } = args;
+  const { cardNumber, cardPin, balance, saveToAccount, nickName, creditCardId } = args;
   const paymentInstruction = {
     billing_address_id: (billingAddressId || '').toString(),
     piAmount: (orderGrandTotal || '').toString(),
@@ -430,7 +450,6 @@ export function addPaymentToOrder({
     },
     webService: endpoints.addPaymentInstruction,
   };
-  console.log({ payload });
   return executeStatefulAPICall(payload).then(res => {
     if (responseContainsErrors(res)) {
       throw new ServiceResponseError(res);
@@ -492,4 +511,6 @@ export default {
   removeGiftCard,
   addPaymentToOrder,
   updatePaymentOnOrder,
+  addGiftWrappingOption,
+  removeGiftWrappingOption,
 };

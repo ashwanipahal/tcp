@@ -79,6 +79,18 @@ const getNeedHelpContentId = state => {
   return content && content.contentId;
 };
 
+const getDetailsContentTcpId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const content = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
+  return content && content.contentId;
+};
+
+const getDetailsContentGymId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
+  const content = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
+  return content && content.contentId;
+};
+
 const getFilteredItems = (state, filter) =>
   getOrderItems(state).filter(item => filter(item.getIn(['miscInfo', 'availability'])));
 
@@ -106,4 +118,6 @@ export default {
   getConfirmationModalFlag,
   getFilteredItems,
   getErrorMapping,
+  getDetailsContentGymId,
+  getDetailsContentTcpId,
 };
