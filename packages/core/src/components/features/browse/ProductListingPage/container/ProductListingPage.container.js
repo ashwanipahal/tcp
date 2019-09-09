@@ -11,7 +11,6 @@ import {
 
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {
-    console.log('componentDidMount');
     this.props.getProducts();
   }
 

@@ -120,7 +120,6 @@ class ProductsGrid extends React.Component {
         findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
 
       if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
-        console.log('from the scroll function !!!!!!!!!!!!!!');
         getMoreProducts();
       }
     }

@@ -27,7 +27,6 @@ import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
-    console.log('componentDidMount');
     this.makeApiCall();
   }
 
@@ -43,7 +42,6 @@ class ProductListingContainer extends React.PureComponent {
       },
     } = this.props;
     if (cid !== currentCid) {
-      console.log('componentDidUpdate --- ', cid, ' --- ', currentCid);
       this.makeApiCall();
     }
   }
@@ -51,7 +49,6 @@ class ProductListingContainer extends React.PureComponent {
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
     const url = navigation && navigation.getParam('url');
-    console.log('makeApiCall');
     getProducts({ URI: 'category', url, ignoreCache: true });
   };
 
@@ -151,11 +148,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getProducts: payload => {
-      console.log('getProducts in container');
       dispatch(getPlpProducts(payload));
     },
     getMoreProducts: payload => {
-      console.log('in here getMore products in container');
       dispatch(getMorePlpProducts(payload));
     },
     addToCartEcom: () => {},
