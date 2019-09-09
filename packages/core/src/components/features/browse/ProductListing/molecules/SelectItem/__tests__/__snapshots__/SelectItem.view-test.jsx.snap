@@ -74,7 +74,7 @@ exports[`Select Item is shown should render select item  1`] = `
           [Function],
           " {
       background: url(",
-          "/static/images/circle-check-no-circle.svg",
+          "/static/images/selected-item.svg",
           ") no-repeat left top;
       background-size: 18px 18px;
       margin-bottom: ",

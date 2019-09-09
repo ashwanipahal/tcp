@@ -2901,8 +2901,15 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
               Array [
                 [Function],
               ],
+              Array [
+                [Function],
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -2910,6 +2917,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             ],
           }
         }
+        handleSubmitOnChange={[Function]}
         initialValues={
           Object {
             "categoryPath2_uFilter": Array [
