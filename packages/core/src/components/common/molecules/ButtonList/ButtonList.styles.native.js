@@ -25,8 +25,8 @@ export const DivImageContainer = styled.View`
   align-items: center;
 `;
 
-export const SeperatorView = styled.View`
-  width: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+export const SeparatorView = styled.View`
+  width: 20px;
 `;
 
 export const ContainerView = styled.View`
@@ -40,6 +40,6 @@ export default {
   TextLinksViewContainer,
   DivImageContainer,
   Wrapper,
-  SeperatorView,
+  SeparatorView,
   ContainerView,
 };
