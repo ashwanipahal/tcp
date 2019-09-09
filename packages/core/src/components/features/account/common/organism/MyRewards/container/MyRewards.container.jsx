@@ -60,17 +60,6 @@ export class MyRewardsContainer extends PureComponent {
     });
   };
 
-  /**
-   * This function use for close coupon details for popup modal
-   * can be passed in the component.
-   * @param coupon - this is coupon data used for show coupon details
-   */
-  onCloseCouponDetails = () => {
-    this.setState({
-      selectedCoupon: null,
-    });
-  };
-
   render() {
     const {
       coupons,
@@ -93,9 +82,6 @@ export class MyRewardsContainer extends PureComponent {
           onApplyCouponToBagFromList={onApplyCouponToBagFromList}
           handleErrorCoupon={handleErrorCoupon}
           toastMessage={toastMessage}
-          selectedCoupon={selectedCoupon}
-          couponsLabels={couponsLabels}
-          onRequestClose={this.onCloseCouponDetails}
           {...otherProps}
         />
         {selectedCoupon && (
@@ -104,7 +90,11 @@ export class MyRewardsContainer extends PureComponent {
             openState={selectedCoupon}
             coupon={selectedCoupon}
             handleErrorCoupon={handleErrorCoupon}
-            onRequestClose={this.onCloseCouponDetails}
+            onRequestClose={() => {
+              this.setState({
+                selectedCoupon: null,
+              });
+            }}
             onApplyCouponToBagFromList={onApplyCouponToBagFromList}
           />
         )}
