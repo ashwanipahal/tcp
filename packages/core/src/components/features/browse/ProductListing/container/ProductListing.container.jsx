@@ -130,7 +130,8 @@ function mapStateToProps(state) {
     filtersLength,
     initialValues: {
       ...getAppliedFilters(state),
-      sort: getAppliedSortId(state),
+      // TODO - change after site id comes for us or ca
+      sort: getAppliedSortId(state) || '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
