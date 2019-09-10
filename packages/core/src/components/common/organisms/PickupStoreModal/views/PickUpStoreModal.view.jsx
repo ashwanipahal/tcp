@@ -22,7 +22,7 @@ import PickupStoreSelectionForm, {
 } from '../molecules/PickupStoreSelectionForm';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 
-const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping');
+const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
 class PickUpStoreModalView extends React.Component {
   static propTypes = {

@@ -70,12 +70,4 @@ describe('ProductCustomizeForm Component', () => {
     const component = shallow(<ProductCustomizeForm {...props} {...state} />);
     expect(component).toBeDefined();
   });
-
-  it('ProductCustomizeForm should render correctly', () => {
-    const component = shallow(<ProductCustomizeForm {...props} {...state} />);
-    component.find('.button-wrapper').simulate('submit', {
-      preventDefault: () => {},
-    });
-    expect(component).toMatchSnapshot();
-  });
 });
