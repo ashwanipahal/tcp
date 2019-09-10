@@ -42,7 +42,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
             </HeaderContainer>
           </Wrapper>
 
-          <PromoContainer>
+          <PromoContainer layout={layout}>
             <PromoBanner promoBanner={promoBanner} navigation={navigation} />
           </PromoContainer>
         </MessageContainer>
@@ -65,7 +65,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
 
 ModuleJ.defaultProps = {
   productTabList: {},
-  layout: 'default',
+  layout: 'alt',
   mediaLinkedList: [],
 };
 

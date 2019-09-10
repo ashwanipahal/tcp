@@ -201,7 +201,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "text_normal_gray",
+              "style": "large_text_semibold_normal",
               "text": "ALL SHORTS",
             },
             Object {

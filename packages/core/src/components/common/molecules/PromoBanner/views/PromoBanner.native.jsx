@@ -162,6 +162,7 @@ export const bodyCopyStyles = {
       fontWeight="regular"
       textAlign="center"
       letterSpacing="ls2"
+      lineHeight="40px"
       {...props}
     />
   ),

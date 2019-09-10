@@ -58,13 +58,9 @@ export default {
             class: '',
           },
           textItems: [
-            // {
-            //   text: 'ALL SHORTS',
-            //   style: 'text_normal_gray',
-            // },
             {
               text: 'ALL SHORTS',
-              style: 'text_normal_gray',
+              style: 'large_text_semibold_normal',
             },
             {
               text: '60% OFF',

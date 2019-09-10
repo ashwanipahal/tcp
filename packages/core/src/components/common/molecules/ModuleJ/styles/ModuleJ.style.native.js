@@ -10,7 +10,10 @@ export const Wrapper = styled.View`
 `;
 
 export const PromoContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  ${props =>
+    props.layout === 'alt'
+      ? `margin-top: ${props.theme.spacing.LAYOUT_SPACING.XS}; `
+      : `margin-top: ${props.theme.spacing.ELEM_SPACING.XXS};`};
 `;
 
 export const HeaderContainer = styled.View`
