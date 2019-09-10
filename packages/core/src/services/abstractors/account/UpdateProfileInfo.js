@@ -1,6 +1,7 @@
 import endpoints from '@tcp/core/src/services/endpoints';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall } from '@tcp/core/src/services/handler';
+import { ERRORS } from '@tcp/core/src/utils/errorMessage.util';
 
 const getFormattedError = err => {
   if (err.response && err.response.body) {
@@ -22,7 +23,7 @@ export const errorHandler = err => {
     // eslint-disable-next-line no-underscore-dangle
     throw err.err.errorMessage._error;
   }
-  throw new Error('Your action could not be completed due to system error');
+  throw new Error(ERRORS.SYSTEM_ERROR);
 };
 
 /**
