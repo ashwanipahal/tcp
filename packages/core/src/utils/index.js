@@ -26,6 +26,8 @@ export {
   getAsPathWithSlug,
   getMappedPageHref,
   configurePlpNavigationFromCMSUrl,
+  isBopisProduct,
+  isBossProduct,
 } from './utils.web';
 
 export {
