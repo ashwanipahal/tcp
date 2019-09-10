@@ -69,6 +69,7 @@ export default css`
       font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
       line-height: 1.07;
       margin-bottom: 4px;
+      background: none;
 
       .applied-filter-remove-button {
         display: inline-block;

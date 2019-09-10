@@ -13,10 +13,11 @@ export default css`
       }
     }
   }
-  &.mobile-sort-container {
+  &.new-filter-and-sort-form-container.mobile-sort-container {
     margin-top: 0;
+  }
+  &.mobile-sort-container {
     padding: 0;
-
     @media ${props => props.theme.mediaQuery.mediumMax} {
       .custom-select-common {
         width: 100%;
@@ -28,6 +29,7 @@ export default css`
       .common-dropdown,
       .common-dropdown .item-list-wrapper {
         width: 100%;
+        padding-top: 0;
       }
       .common-dropdown .item-list-common {
         max-width: 100%;
@@ -42,7 +44,6 @@ export default css`
   }
   &.new-filter-and-sort-form-container {
     margin-top: 14px;
-
     .filter-row {
       margin-bottom: 7px;
     }
@@ -55,6 +56,10 @@ export default css`
       .container-accordion {
         padding: 0;
       }
+    }
+
+    .accordion {
+      width: auto;
     }
   }
 

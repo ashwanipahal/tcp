@@ -8,6 +8,7 @@ describe('AddressFields component', () => {
       formName: 'creditCard',
       addressFormLabels: {},
       formSection: 'address',
+      dispatch: jest.fn(),
     };
     const component = shallow(<AddressFields {...props} />);
     expect(component).toMatchSnapshot();
@@ -18,6 +19,7 @@ describe('AddressFields component', () => {
       formName: 'creditCard',
       formSection: 'address',
       addressFormLabels: {},
+      dispatch: jest.fn(),
     };
     const component = shallow(<AddressFields {...props} />);
     expect(component).toMatchSnapshot();
@@ -28,6 +30,7 @@ describe('AddressFields component', () => {
       formName: 'creditCard',
       formSection: 'address',
       addressFormLabels: {},
+      dispatch: jest.fn(),
     };
 
     const component = shallow(<AddressFields {...props} />);
@@ -43,6 +46,7 @@ describe('AddressFields component', () => {
       formSection: 'address',
       checkPOBoxAddress: mockedcheckPOBoxAddress,
       loadShipmentMethods: mockedloadShipmentMethods,
+      dispatch: jest.fn(),
     };
 
     const component = shallow(<AddressFields {...props} />);
