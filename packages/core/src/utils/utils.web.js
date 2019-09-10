@@ -389,6 +389,50 @@ const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
   };
 };
 
+/*
+ * @method numericStringToBool
+ * @description this method returns the bool value of string numeric passed
+ * @param {string} str the  string numeric value
+ */
+export const numericStringToBool = str => !!+str;
+
+// Parse boolean out of string true|false
+export const parseBoolean = bool => {
+  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+
+/**
+ *
+ * @param {object} bossDisabledFlags carries the boss disability flags -
+ * bossCategoryDisabled,
+ * bossProductDisabled
+ * @returns the disability boolean value
+ */
+export const isBossProduct = bossDisabledFlags => {
+  const { bossCategoryDisabled, bossProductDisabled } = bossDisabledFlags;
+  return !(numericStringToBool(bossCategoryDisabled) || numericStringToBool(bossProductDisabled));
+};
+
+/**
+ * @function isBopsProduct
+ * @param {*} isUSStore
+ * @param {*} product
+ * @summary This BOPIS logic is to validate if product/color variant is eligible for BOPIS
+ * product is a color variant object of a product.
+ */
+export const isBopisProduct = (isUSStore, product) => {
+  let isOnlineOnly;
+  if (isUSStore) {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagUSStore && parseBoolean(product.TCPWebOnlyFlagUSStore)) || false;
+  } else {
+    isOnlineOnly =
+      (product.TCPWebOnlyFlagCanadaStore && parseBoolean(product.TCPWebOnlyFlagCanadaStore)) ||
+      false;
+  }
+  return !isOnlineOnly;
+};
+
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-native';
+import { Modal, Picker, Button, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { withTheme } from 'styled-components/native';
@@ -12,6 +12,7 @@ import {
   SafeAreaViewStyle,
   ModalOverlay,
   ModalContent,
+  SortContent,
   ModalOutsideTouchable,
   ModalTitle,
   ModalTitleContainer,
@@ -19,30 +20,45 @@ import {
 } from '../FilterModal.style.native';
 import FilterButtons from '../../FilterButtons';
 import Filters from '../../Filters';
+import config from '../../SortSelector/SortSelector.config';
 
 class FilterModal extends React.PureComponent {
   static propTypes = {
     filters: PropTypes.shape({}),
     theme: PropTypes.shape({}),
     labelsFilter: PropTypes.shape({}),
+    onSubmit: PropTypes.func.isRequired,
+    getProducts: PropTypes.func.isRequired,
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   };
 
   static defaultProps = {
     filters: {},
     theme: {},
     labelsFilter: {},
+    navigation: {},
   };
 
   constructor(props) {
     super(props);
     this.state = {
       showModal: false,
+      language: '',
+      showSortModal: false,
     };
   }
 
   setModalVisibilityState = flag => {
     this.setState({
       showModal: flag,
+      showSortModal: !flag,
+    });
+  };
+
+  setSortModalVisibilityState = flag => {
+    this.setState({
+      showModal: flag,
+      showSortModal: flag,
     });
   };
 
@@ -58,13 +74,27 @@ class FilterModal extends React.PureComponent {
     this.setModalVisibilityState(true);
   };
 
-  onPressSort = () => {};
+  onPressSort = () => {
+    this.setSortModalVisibilityState(true);
+  };
+
+  handleClick = selectedValue => {
+    const { onSubmit, getProducts, navigation } = this.props;
+    const url = navigation && navigation.getParam('url');
+    const { language } = this.state;
+    const sortValue = Platform.OS === 'ios' ? language : selectedValue;
+    onSubmit({ sort: sortValue }, false, getProducts, url);
+    this.setModalVisibilityState(false);
+  };
 
   render() {
     const { theme, labelsFilter, filters } = this.props;
-    const { showModal } = this.state;
+    const { showModal, language, showSortModal } = this.state;
     const closeIconColor = get(theme, 'colorPalette.gray[900]', '#1a1a1a');
     const closeIconSize = get(theme, 'typography.fontSizes.fs20', 20);
+    const lapsList = config.map(data => {
+      return <Picker.Item label={data.displayName} value={data.id} />;
+    });
     return (
       <Container>
         <FilterButtons
@@ -83,15 +113,46 @@ class FilterModal extends React.PureComponent {
             >
               <ModalOverlay />
             </ModalOutsideTouchable>
-            <ModalContent>
-              <ModalTitleContainer>
-                <ModalTitle>{labelsFilter.lbl_filter_by}</ModalTitle>
-                <ModalCloseTouchable onPress={this.onCloseModal} accessibilityRole="button">
-                  <CustomIcon name={ICON_NAME.close} size={closeIconSize} color={closeIconColor} />
-                </ModalCloseTouchable>
-              </ModalTitleContainer>
-              <Filters labelsFilter={labelsFilter} filters={filters} />
-            </ModalContent>
+            {!showSortModal && (
+              <ModalContent>
+                <ModalTitleContainer>
+                  <ModalTitle>{labelsFilter.lbl_filter_by}</ModalTitle>
+                  <ModalCloseTouchable onPress={this.onCloseModal} accessibilityRole="button">
+                    <CustomIcon
+                      name={ICON_NAME.close}
+                      size={closeIconSize}
+                      color={closeIconColor}
+                    />
+                  </ModalCloseTouchable>
+                </ModalTitleContainer>
+
+                <Filters labelsFilter={labelsFilter} filters={filters} />
+              </ModalContent>
+            )}
+
+            {showSortModal && (
+              <SortContent>
+                {Platform.OS === 'ios' ? (
+                  <Button
+                    title="Done"
+                    onPress={() => {
+                      this.handleClick();
+                    }}
+                  />
+                ) : null}
+                <Picker
+                  selectedValue={language}
+                  onValueChange={itemValue => {
+                    this.setState({ language: itemValue });
+                    if (Platform.OS !== 'ios') {
+                      this.handleClick(itemValue);
+                    }
+                  }}
+                >
+                  {lapsList}
+                </Picker>
+              </SortContent>
+            )}
           </SafeAreaViewStyle>
         </Modal>
       </Container>

@@ -1,9 +1,10 @@
+/* eslint-disable no-useless-constructor */
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
-import { Button, Anchor } from '../../../atoms';
+import { Button, Anchor, Image } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
 
@@ -14,10 +15,19 @@ import {
   ImageSlideWrapper,
   ButtonContainer,
   StyledImage,
+  PromoContainer,
+  HeaderContainer,
+  ImageContainer,
+  MessageContainer,
+  Border,
+  Wrapper,
+  ProductTabListContainer,
 } from '../styles/ModuleJ.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
+import PromoBanner from '../../PromoBanner';
+import LinkText from '../../LinkText';
 
 const PRODUCT_IMAGE_WIDTH = 89;
 const PRODUCT_IMAGE_HEIGHT = 110;
@@ -26,7 +36,7 @@ const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
 
-class ModuleJ extends React.PureComponent {
+class ModuleJ extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
 
@@ -81,11 +91,17 @@ class ModuleJ extends React.PureComponent {
 
   render() {
     const { selectedCategoryId } = this.state;
-    const { productTabList } = this.props;
+    const {
+      productTabList,
+      navigation,
+      layout,
+      mediaLinkedList,
+      headerText,
+      promoBanner,
+    } = this.props;
     const selectedProductList = productTabList[selectedCategoryId] || [];
-    const { navigation } = this.props;
 
-    const selectedProductListCar = selectedProductList.reduce(
+    const selectedProductCarouselList = selectedProductList.reduce(
       (list, item, index) => {
         const lastList = list[list.length - 1];
         if (lastList.length === PRODUCT_IMAGE_PER_SLIDE) {
@@ -101,15 +117,44 @@ class ModuleJ extends React.PureComponent {
 
     return (
       <Container>
-        <ProductTabList
-          onProductTabChange={this.onProductTabChange}
-          categoryList={categoryListMock}
-        />
+        <MessageContainer layout={layout}>
+          <Wrapper>
+            <Border layout={layout} />
+            <HeaderContainer layout={layout}>
+              <LinkText
+                navigation={navigation}
+                headerText={headerText && []}
+                renderComponentInNewLine
+                useStyle
+              />
+            </HeaderContainer>
+          </Wrapper>
+
+          <PromoContainer layout={layout}>
+            <PromoBanner promoBanner={promoBanner} navigation={navigation} />
+          </PromoContainer>
+        </MessageContainer>
+        <ProductTabListContainer>
+          <ProductTabList
+            onProductTabChange={this.onProductTabChange}
+            categoryList={categoryListMock}
+            navigation={navigation}
+          />
+        </ProductTabListContainer>
+        <ImageContainer layout={layout}>
+          <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
+            <Image
+              url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
+              height="300px"
+              width="100%"
+            />
+          </Anchor>
+        </ImageContainer>
 
         <ImageSlidesWrapper>
           {selectedProductList.length ? (
             <Carousel
-              data={selectedProductListCar}
+              data={selectedProductCarouselList}
               renderItem={this.renderCarouselSlide}
               height={MODULE_HEIGHT}
               width={MODULE_WIDTH}
@@ -137,6 +182,8 @@ class ModuleJ extends React.PureComponent {
 ModuleJ.defaultProps = {
   productTabList: {},
   navigation: null,
+  mediaLinkedList: [],
+  layout: 'alt',
 };
 
 ModuleJ.propTypes = {
@@ -148,6 +195,13 @@ ModuleJ.propTypes = {
     }),
   }),
   navigation: PropTypes.shape({}),
+  layout: PropTypes.string,
+  mediaLinkedList: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.object,
+      link: PropTypes.object,
+    })
+  ),
 };
 
 export default ModuleJ;

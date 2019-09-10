@@ -1,13 +1,6 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
-const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw new Error(err.response.body.errors[0].errorMessage);
-  }
-  throw new Error('Your action could not be completed due to system error!!!!');
-};
-
 export const getCardListApi = () => {
   const payloadData = {
     webService: endpoints.getCardList,
@@ -19,7 +12,9 @@ export const getCardListApi = () => {
     .then(res => {
       return res;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };
 
 export const addGiftCardApi = payload => {
@@ -36,7 +31,11 @@ export const addGiftCardApi = payload => {
       recapchaResponse: payload.recaptchaToken,
     },
   };
-  return executeStatefulAPICall(payloadArgs, errorHandler).then(res => {
-    return res;
-  });
+  return executeStatefulAPICall(payloadArgs)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      throw err;
+    });
 };

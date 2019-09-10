@@ -45,9 +45,13 @@ export const resetPassword = ({ newPassword, logonPasswordVerify, logonPasswordO
       isPasswordReset: 'false',
     },
   };
-  return executeStatefulAPICall(payload, errorHandler).then(() => {
-    return 'successMessage';
-  });
+  return executeStatefulAPICall(payload)
+    .then(() => {
+      return 'successMessage';
+    })
+    .catch(err => {
+      throw err;
+    });
 };
 
 export default resetPassword;

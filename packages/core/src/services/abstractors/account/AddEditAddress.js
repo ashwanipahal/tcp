@@ -2,13 +2,6 @@ import { executeStatefulAPICall } from '../../handler';
 import { getAPIConfig } from '../../../utils';
 import endpoints from '../../endpoints';
 
-const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw new Error(err.response.body.errors[0].errorMessage);
-  }
-  throw new Error('Your action could not be completed due to system error');
-};
-
 export const addAddress = args => {
   const apiConfig = getAPIConfig();
   const addressKey = Date.now().toString();
@@ -52,7 +45,9 @@ export const addAddress = args => {
     .then(res => {
       return res;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };
 
 export const updateAddress = (args, profileUpdate) => {
@@ -106,5 +101,7 @@ export const updateAddress = (args, profileUpdate) => {
     .then(res => {
       return res;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };
