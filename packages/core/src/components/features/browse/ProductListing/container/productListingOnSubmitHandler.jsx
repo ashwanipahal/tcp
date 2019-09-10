@@ -1,8 +1,8 @@
-const submitProductListingFiltersForm = (formData, submit, getProducts) => {
+const submitProductListingFiltersForm = (formData, submit, getProducts, url) => {
   const data = {
     URI: 'category',
     ignoreCache: true,
-    url: undefined,
+    url,
     sortBySelected: true,
     formData,
   };
