@@ -11,11 +11,8 @@ export function* ResetPassword({ payload }) {
   } catch (err) {
     let error = {};
     /* istanbul ignore else */
-    if (err instanceof Error) {
-      error = err.response;
-      console.log('error--------------------', error);
-    }
-    return yield put(resetPasswordError(error.body.errors[0]));
+    error = err;
+    return yield put(resetPasswordError(error.response.body.errors[0]));
   }
 }
 

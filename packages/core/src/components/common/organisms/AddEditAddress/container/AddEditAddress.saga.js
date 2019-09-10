@@ -30,12 +30,8 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
   } catch (err) {
     let error = {};
     /* istanbul ignore else */
-    if (err instanceof Error) {
-      error = err.response;
-      console.log('error add address--------------------', error);
-    }
-
-    return yield put(addAddressFail(error.body.errors[0]));
+    error = err;
+    return yield put(addAddressFail(error.response.body.errors[0]));
   }
 }
 

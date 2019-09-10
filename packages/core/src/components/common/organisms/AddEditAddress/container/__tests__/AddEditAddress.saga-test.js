@@ -1,9 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import {
-  addAddressGet,
-  updateAddressPut,
-  AddEditAddressSaga,
-} from '../AddEditAddress.saga';
+import { addAddressGet, updateAddressPut, AddEditAddressSaga } from '../AddEditAddress.saga';
 import { addAddressSuccess, addAddressFail } from '../AddEditAddress.actions';
 import constants from '../AddEditAddress.constants';
 
@@ -31,16 +27,10 @@ describe('addAddressGet saga', () => {
     });
 
     it('should dispatch addAddressFail action if response is fail two', () => {
-      const errorBody = {};
-      const error = {
-        response: {
-          body: {
-            errors: errorBody,
-          },
-        },
-      };
-      const putDescriptor = addAddressGetGeneration.throw(error).value;
-      expect(putDescriptor).toEqual(put(addAddressFail(errorBody)));
+      const putDescriptor = addAddressGetGeneration.throw({
+        response: { body: { errors: ['test'] } },
+      }).value;
+      expect(putDescriptor).toEqual(put(addAddressFail('test')));
     });
   });
 
