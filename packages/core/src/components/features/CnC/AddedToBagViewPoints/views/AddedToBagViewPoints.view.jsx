@@ -19,7 +19,14 @@ const showPoints = userPoints => {
   return userPoints !== 0 && !isCanada();
 };
 
-const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
+const getPointsColor = isPlcc => {
+  if (isPlcc) {
+    return 'blue.B100';
+  }
+  return 'orange.800';
+};
+
+const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc }) => {
   const {
     itemPrice,
     itemPoints,
@@ -52,7 +59,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-pointsonitem"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {itemPoints || 0}
@@ -85,7 +92,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-totalrewardpoints"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {userPoints || 0}
@@ -105,7 +112,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-totalpointsnextreward"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {pointsToNextReward || 0}
@@ -121,6 +128,7 @@ AddedToBagViewPoints.propTypes = {
   className: PropTypes.string.isRequired,
   pointsSummary: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
+  isPlcc: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBagViewPoints, styles);

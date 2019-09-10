@@ -32,6 +32,8 @@ export default class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
       availableStages,
       labels,
+      submitBilling,
+      // setCheckoutStage,
       onPickupSubmit,
     } = this.props;
 
@@ -79,6 +81,7 @@ export default class CheckoutPage extends React.PureComponent {
             isGuest={isGuest}
             isUsSite={isUsSite}
             availableStages={availableStages}
+            submitBilling={submitBilling}
           />
         )}
       </>
@@ -109,6 +112,7 @@ CheckoutPage.propTypes = {
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  submitBilling: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
 };

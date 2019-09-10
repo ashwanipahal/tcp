@@ -1,232 +1,293 @@
 {
-    "branch": {
-        "name": "RELEASE-1-RWD"
+  "branch": {
+    "name": "RELEASE-1-RWD"
+  },
+  "id": 1,
+  "trigger": "manual",
+  "environmentVariables": [
+    {
+      "name": "ENV",
+      "value": "int"
     },
-    "id": 1,
-    "trigger": "manual",
-    "environmentVariables": [{
-            "name": "ENV",
-            "value": "int"
-        }, {
-            "name": "RWD_APP_BRANDID_TCP",
-            "value": "tcp"
-        }, {
-            "name": "RWD_APP_PORT_TCP",
-            "value": "8081"
-        }, {
-            "name": "RWD_APP_LANGID_TCP",
-            "value": "-1"
-        }, {
-            "name": "RWD_APP_LANG_TCP",
-            "value": "en"
-        }, {
-            "name": "RWD_APP_SITE_ID_TCP",
-            "value": "us"
-        }, {
-            "name": "RWD_APP_COUNTRY_TCP",
-            "value": "US"
-        }, {
-            "name": "RWD_APP_CURRENCY_TCP",
-            "value": "USD"
-        }, {
-            "name": "RWD_APP_ACQUISITION_ID_TCP",
-            "value": "ikhNl0Te"
-        }, {
-            "name": "RWD_APP_MELISSA_KEY_TCP",
-            "value": "63987687"
-        }, {
-            "name": "RWD_APP_BV_API_KEY_TCP",
-            "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-        }, {
-            "name": "RWD_APP_API_DOMAIN_TCP",
-            "value": "https://test5.childrensplace.com"
-        }, {
-            "name": "RWD_APP_ASSETHOST_TCP",
-            "value": "https://test5.childrensplace.com"
-        }, {
-            "name": "RWD_APP_API_IDENTIFIER_TCP",
-            "value": "api"
-        }, {
-            "name": "RWD_APP_UNBXD_DOMAIN_TCP",
-            "value": "https://search.unbxd.io"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_IDENTIFIER_TCP",
-            "value": "graphql"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_REGION_TCP",
-            "value": "us-east-2"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_TCP",
-            "value": "API_KEY"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_ENDPOINT_TCP",
-            "value": "https://test5.childrensplace.com"
-        }, {
-            "name": "RWD_WEB_GRAPHQL_API_KEY",
-            "value": "da2-4rbmhsi7t5emdiqukl2cfzuypu"
-        }, {
-            "name": "RWD_APP_CANDID_API_KEY_TCP",
-            "value": "070167ca-8287-4d41-a9bb-6b3850cae9b1"
-        }, {
-            "name": "RWD_APP_CANDID_URL_TCP",
-            "value": "api.getcandid.com"
-        }, {
-            "name": "RWD_APP_GOOGLE_MAPS_API_KEY_TCP",
-            "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
-        }, {
-            "name": "RWD_APP_BRANDID_GYM",
-            "value": "gym"
-        }, {
-            "name": "RWD_APP_PORT_GYM",
-            "value": "3001"
-        }, {
-            "name": "RWD_APP_LANGID_GYM",
-            "value": "-1"
-        }, {
-            "name": "RWD_APP_LANG_GYM",
-            "value": "en"
-        }, {
-            "name": "RWD_APP_SITE_ID_GYM",
-            "value": "us"
-        }, {
-            "name": "RWD_APP_COUNTRY_GYM",
-            "value": "US"
-        }, {
-            "name": "RWD_APP_CURRENCY_GYM",
-            "value": "USD"
-        }, {
-            "name": "RWD_APP_MELISSA_KEY_GYM",
-            "value": "63987687"
-        }, {
-            "name": "RWD_APP_ACQUISITION_ID_GYM",
-            "value": "ikhNl0Te"
-        }, {
-            "name": "RWD_APP_BV_API_KEY_GYM",
-            "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-        }, {
-            "name": "RWD_APP_ASSETHOST_GYM",
-            "value": "https://test5.gymboree.com"
-        }, {
-            "name": "RWD_APP_API_DOMAIN_GYM",
-            "value": "https://test5.gymboree.com"
-        }, {
-            "name": "RWD_APP_API_IDENTIFIER_GYM",
-            "value": "api"
-        }, {
-            "name": "RWD_APP_UNBXD_DOMAIN_GYM",
-            "value": "https://search.unbxd.io"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_IDENTIFIER_GYM",
-            "value": "graphql"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_REGION_GYM",
-            "value": "us-east-2"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_ENDPOINT_GYM",
-            "value": "https://test5.gymboree.com"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_GYM",
-            "value": "API_KEY"
-        }, {
-            "name": "RWD_APP_GRAPHQL_API_KEY_GYM",
-            "value": "da2-mf3uaes3nncszkdir7t4dfj4ya"
-        }, {
-            "name": "RWD_APP_CANDID_API_KEY_GYM",
-            "value": "614fd90a-5b5a-4922-98eb-b433ab6ced81"
-        }, {
-            "name": "RWD_APP_CANDID_URL_GYM",
-            "value": "api.getcandid.com"
-        }, {
-            "name": "RWD_APP_GOOGLE_MAPS_API_KEY_GYM",
-            "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",
-            "value": "'qa1-childrensplace-com702771542012808'"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_US_EN_TCP",
-            "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_TCP",
-            "value": "'qa1-childrensplace-com702771542012808'"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_US_SP_TCP",
-            "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_TCP",
-            "value": "'qa1-canada-childrensplace-com702771542012977'"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_CA_EN_TCP",
-            "value": "'dfce7e656fb9a9a3f358ab4a4b710428'"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_TCP",
-            "value": "''"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_CA_FR_TCP",
-            "value": "''"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_GYM",
-            "value": "'qa1-childrensplace-com702771542012808'"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_US_EN_GYM",
-            "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_GYM",
-            "value": "'qa1-childrensplace-com702771542012808'"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_US_SP_GYM",
-            "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_GYM",
-            "value": "'qa1-canada-childrensplace-com702771542012977'"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_CA_EN_GYM",
-            "value": "'dfce7e656fb9a9a3f358ab4a4b710428'"
-        }, {
-            "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_GYM",
-            "value": "''"
-        }, {
-            "name": "RWD_APP_UNBXD_API_KEY_CA_FR_GYM",
-            "value": "''"
-        }
-    ],
-    "signed": true,
-    "testsEnabled": false,
-    "badgeIsEnabled": false,
-    "toolsets": {
-        "buildscripts": {
-            "packages/mobileapp/package.json": {
-                "postClone": "packages/mobileapp/appcenter-post-clone.sh"
-            }
-        },
-        "android": {
-            "module": "app",
-            "buildVariant": "tcpIntRelease",
-            "isRoot": false,
-            "runTests": false,
-            "runLint": false,
-            "keystorePassword": "__protected__",
-            "keyAlias": "__protected__",
-            "keyPassword": "__protected__",
-            "keystoreFilename": "tcp.jks",
-            "automaticSigning": false,
-            "buildBundle": false,
-            "gradleWrapperPath": "packages/mobileapp/android/gradlew"
-        },
-        "distribution": {
-            "destinationType": "groups",
-            "destinations": [
-                "00000000-0000-0000-0000-000000000000",
-                "1881e243-2da4-473b-a5d7-e19e845f9519"
-            ],
-            "isSilent": false
-        },
-        "javascript": {
-            "nodeVersion": "10.x",
-            "packageJsonPath": "packages/mobileapp/package.json",
-            "runTests": false
-        }
+    {
+      "name": "RWD_APP_BRANDID_TCP",
+      "value": "tcp"
     },
-    "artifactVersioning": {
-        "buildNumberFormat": "buildId"
+    {
+      "name": "RWD_APP_PORT_TCP",
+      "value": "8081"
+    },
+    {
+      "name": "RWD_APP_LANGID_TCP",
+      "value": "-1"
+    },
+    {
+      "name": "RWD_APP_LANG_TCP",
+      "value": "en"
+    },
+    {
+      "name": "RWD_APP_SITE_ID_TCP",
+      "value": "us"
+    },
+    {
+      "name": "RWD_APP_COUNTRY_TCP",
+      "value": "US"
+    },
+    {
+      "name": "RWD_APP_CURRENCY_TCP",
+      "value": "USD"
+    },
+    {
+      "name": "RWD_APP_ACQUISITION_ID_TCP",
+      "value": "ikhNl0Te"
+    },
+    {
+      "name": "RWD_APP_MELISSA_KEY_TCP",
+      "value": "63987687"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_TCP",
+      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
+    },
+    {
+      "name": "RWD_APP_API_DOMAIN_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
+      "name": "RWD_APP_ASSETHOST_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
+      "name": "RWD_APP_API_IDENTIFIER_TCP",
+      "value": "api"
+    },
+    {
+      "name": "RWD_APP_UNBXD_DOMAIN_TCP",
+      "value": "https://search.unbxd.io"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_IDENTIFIER_TCP",
+      "value": "graphql"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_REGION_TCP",
+      "value": "us-east-2"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_TCP",
+      "value": "API_KEY"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_ENDPOINT_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
+      "name": "RWD_WEB_GRAPHQL_API_KEY",
+      "value": "da2-4rbmhsi7t5emdiqukl2cfzuypu"
+    },
+    {
+      "name": "RWD_APP_CANDID_API_KEY_TCP",
+      "value": "070167ca-8287-4d41-a9bb-6b3850cae9b1"
+    },
+    {
+      "name": "RWD_APP_CANDID_URL_TCP",
+      "value": "api.getcandid.com"
+    },
+    {
+      "name": "RWD_APP_GOOGLE_MAPS_API_KEY_TCP",
+      "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
+    },
+    {
+      "name": "RWD_APP_BRANDID_GYM",
+      "value": "gym"
+    },
+    {
+      "name": "RWD_APP_PORT_GYM",
+      "value": "3001"
+    },
+    {
+      "name": "RWD_APP_LANGID_GYM",
+      "value": "-1"
+    },
+    {
+      "name": "RWD_APP_LANG_GYM",
+      "value": "en"
+    },
+    {
+      "name": "RWD_APP_SITE_ID_GYM",
+      "value": "us"
+    },
+    {
+      "name": "RWD_APP_COUNTRY_GYM",
+      "value": "US"
+    },
+    {
+      "name": "RWD_APP_CURRENCY_GYM",
+      "value": "USD"
+    },
+    {
+      "name": "RWD_APP_MELISSA_KEY_GYM",
+      "value": "63987687"
+    },
+    {
+      "name": "RWD_APP_ACQUISITION_ID_GYM",
+      "value": "ikhNl0Te"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_GYM",
+      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
+    },
+    {
+      "name": "RWD_APP_ASSETHOST_GYM",
+      "value": "https://test5.gymboree.com"
+    },
+    {
+      "name": "RWD_APP_API_DOMAIN_GYM",
+      "value": "https://test5.gymboree.com"
+    },
+    {
+      "name": "RWD_APP_API_IDENTIFIER_GYM",
+      "value": "api"
+    },
+    {
+      "name": "RWD_APP_UNBXD_DOMAIN_GYM",
+      "value": "https://search.unbxd.io"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_IDENTIFIER_GYM",
+      "value": "graphql"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_REGION_GYM",
+      "value": "us-east-2"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_ENDPOINT_GYM",
+      "value": "https://test5.gymboree.com"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_GYM",
+      "value": "API_KEY"
+    },
+    {
+      "name": "RWD_APP_GRAPHQL_API_KEY_GYM",
+      "value": "da2-mf3uaes3nncszkdir7t4dfj4ya"
+    },
+    {
+      "name": "RWD_APP_CANDID_API_KEY_GYM",
+      "value": "614fd90a-5b5a-4922-98eb-b433ab6ced81"
+    },
+    {
+      "name": "RWD_APP_CANDID_URL_GYM",
+      "value": "api.getcandid.com"
+    },
+    {
+      "name": "RWD_APP_GOOGLE_MAPS_API_KEY_GYM",
+      "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",
+      "value": "'qa1-childrensplace-com702771542012808'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_US_EN_TCP",
+      "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_TCP",
+      "value": "'qa1-childrensplace-com702771542012808'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_US_SP_TCP",
+      "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_TCP",
+      "value": "'qa1-canada-childrensplace-com702771542012977'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_CA_EN_TCP",
+      "value": "'dfce7e656fb9a9a3f358ab4a4b710428'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_TCP",
+      "value": "''"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_CA_FR_TCP",
+      "value": "''"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_GYM",
+      "value": "'qa1-childrensplace-com702771542012808'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_US_EN_GYM",
+      "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_GYM",
+      "value": "'qa1-childrensplace-com702771542012808'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_US_SP_GYM",
+      "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_GYM",
+      "value": "'qa1-canada-childrensplace-com702771542012977'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_CA_EN_GYM",
+      "value": "'dfce7e656fb9a9a3f358ab4a4b710428'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_GYM",
+      "value": "''"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_CA_FR_GYM",
+      "value": "''"
     }
+  ],
+  "signed": true,
+  "testsEnabled": false,
+  "badgeIsEnabled": false,
+  "toolsets": {
+    "buildscripts": {
+      "packages/mobileapp/package.json": {
+        "postClone": "packages/mobileapp/appcenter-post-clone.sh"
+      }
+    },
+    "android": {
+      "module": "app",
+      "buildVariant": "tcpIntRelease",
+      "isRoot": false,
+      "runTests": false,
+      "runLint": false,
+      "keystorePassword": "__protected__",
+      "keyAlias": "__protected__",
+      "keyPassword": "__protected__",
+      "keystoreFilename": "tcp.jks",
+      "automaticSigning": false,
+      "buildBundle": false,
+      "gradleWrapperPath": "packages/mobileapp/android/gradlew"
+    },
+    "distribution": {
+      "destinationType": "groups",
+      "destinations": [
+        "00000000-0000-0000-0000-000000000000",
+        "1881e243-2da4-473b-a5d7-e19e845f9519"
+      ],
+      "isSilent": false
+    },
+    "javascript": {
+      "nodeVersion": "10.x",
+      "packageJsonPath": "packages/mobileapp/package.json",
+      "runTests": false
+    }
+  },
+  "artifactVersioning": {
+    "buildNumberFormat": "buildId"
+  }
 }

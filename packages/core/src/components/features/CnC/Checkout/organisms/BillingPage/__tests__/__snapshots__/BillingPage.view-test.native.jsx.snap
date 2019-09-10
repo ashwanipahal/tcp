@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickUpFormPart component should renders correctly props not present 1`] = `
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="billing"
+    availableStages={Object {}}
+    navigation={Object {}}
+  />
+  <ScrollViewMock>
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay />
+      <Connect(GiftCardsContainer) />
+    </Styled(View)>
+    <CnCCommonTemplate
+      btnText="NEXT:REVIEW"
+      navigation={Object {}}
+      routeToPage=""
+    />
+  </ScrollViewMock>
+</Fragment>
+`;

@@ -36,4 +36,5 @@ export {
   getAddressFromPlace,
   formatAddress,
   getLabelValue,
+  getBirthDateOptionMap,
 } from './utils';
