@@ -1,5 +1,4 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import CreditCardForm from '../organism/CreditCardForm';
 
@@ -14,18 +13,16 @@ export const AddEditCreditCard = ({
   ...otherProps
 }) => {
   return (
-    <SafeAreaView>
-      <CreditCardForm
-        labels={labels}
-        isEdit={isEdit}
-        onClose={onClose}
-        dto={dto}
-        updateCardList={updateCardList}
-        selectedCard={selectedCard}
-        onFileAddresskey={selectedCard && isEdit ? selectedCard.billingAddressId.toString() : ''}
-        {...otherProps}
-      />
-    </SafeAreaView>
+    <CreditCardForm
+      labels={labels}
+      isEdit={isEdit}
+      onClose={onClose}
+      dto={dto}
+      updateCardList={updateCardList}
+      selectedCard={selectedCard}
+      onFileAddresskey={selectedCard && isEdit ? selectedCard.billingAddressId.toString() : ''}
+      {...otherProps}
+    />
   );
 };
 

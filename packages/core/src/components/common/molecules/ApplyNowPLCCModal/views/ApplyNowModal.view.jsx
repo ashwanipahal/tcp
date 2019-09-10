@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
+
 import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../atoms';
 import Modal from '../../Modal';
 import withStyles from '../../../hoc/withStyles';
@@ -25,7 +27,7 @@ const StyledApplyNowModal = ({
       fixedWidth
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      heading={labels.apply_now_header}
+      heading={getLabelValue(labels, 'apply_now_header')}
       overlayClassName="TCPModal__Overlay"
       className={`${className} TCPModal__Content`}
       dataLocator={getLocator('plcc_apply_now_modal')}
@@ -60,7 +62,7 @@ const StyledApplyNowModal = ({
               data-locator={getLocator('ship_to_text_2')}
               className="header__greeting"
             >
-              {labels.apply_now_subheader}
+              {getLabelValue(labels, 'apply_now_subheader')}
             </BodyCopy>
           </Col>
         </Row>
@@ -75,7 +77,7 @@ const StyledApplyNowModal = ({
               onClick={openPLCCModal}
               data-locator={getLocator('plcc_apply_btn')}
             >
-              {labels.applynow_cta}
+              {getLabelValue(labels, 'applynow_cta')}
             </Button>
           </Col>
         </Row>
@@ -88,20 +90,20 @@ const StyledApplyNowModal = ({
             className="learn_more_link"
           >
             <Anchor
-              url={labels.learn_more_link}
+              url={getLabelValue(labels, 'learn_more_link')}
               fontSizeVariation="large"
               anchorVariation="secondary"
               underline
               target="_blank"
             >
-              {labels.apply_now_learn_more}
+              {getLabelValue(labels, 'apply_now_learn_more')}
             </Anchor>
           </Col>
         </Row>
         <div
           className="offer_info_icon"
           data-locator="plcc_modal_logo"
-          offerType={labels.oneequalstwopointsoffer}
+          offerType={getLabelValue(labels, 'oneequalstwopointsoffer')}
         />
         <BodyCopy
           fontFamily="primary"
@@ -110,44 +112,44 @@ const StyledApplyNowModal = ({
           textAlign="center"
           color="text.secondary"
         >
-          {labels.apply_now_benefits_header}
+          {getLabelValue(labels, 'apply_now_benefits_header')}
         </BodyCopy>
         <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
         <div className="footerLinks">
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
-            {labels.apply_now_links_text}
+            {getLabelValue(labels, 'apply_now_links_text')}
           </BodyCopy>
           <Anchor
             className="linkIconSeperator"
-            url={labels.details_link}
+            url={getLabelValue(labels, 'details_link')}
             target="_blank"
             fontSizeVariation="large"
             anchorVariation="primary"
             underline
           >
-            {labels.apply_now_details}
+            {getLabelValue(labels, 'apply_now_details')}
           </Anchor>
           <Anchor
             className="footerLink"
-            url={labels.faq_link}
+            url={getLabelValue(labels, 'faq_link')}
             target="_blank"
             data-locator="plcc_faq"
             fontSizeVariation="large"
             anchorVariation="primary"
             underline
           >
-            {labels.apply_now_faq}
+            {getLabelValue(labels, 'apply_now_faq')}
           </Anchor>
           <Anchor
             className="footerLink"
-            url={labels.rewards_program_link}
+            url={getLabelValue(labels, 'rewards_program_link')}
             target="_blank"
             data-locator="plcc_rewards_terms"
             fontSizeVariation="large"
             anchorVariation="primary"
             underline
           >
-            {labels.apply_now_rewardTerms}
+            {getLabelValue(labels, 'apply_now_rewardTerms')}
           </Anchor>
         </div>
       </div>
