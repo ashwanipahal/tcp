@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 
-import { Button, Anchor, Image } from '../../../atoms';
+import { Button, Anchor } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 
 import {
@@ -11,6 +11,7 @@ import {
   ImageItemWrapper,
   ImageItemContainer,
   ButtonContainer,
+  StyledImage,
 } from '../styles/ModuleJ.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
@@ -42,7 +43,6 @@ class ModuleJ extends React.PureComponent {
       imageUrl: [imageUrl],
     } = item;
 
-    console.info(imageUrl, '---');
     const pdpUrl = `/p/${seoToken || uniqueId}`;
     return (
       <ImageItemWrapper isFullMargin={index === selectedProductList.length - 1}>
@@ -51,7 +51,7 @@ class ModuleJ extends React.PureComponent {
           navigation={navigation}
           locator={`${getLocator('moduleJ_product_image')}${index}`}
         >
-          <Image url={imageUrl} height={110} width={89} style={{}} />
+          <StyledImage url={imageUrl} height={110} width={89} />
         </Anchor>
       </ImageItemWrapper>
     );
@@ -73,6 +73,7 @@ class ModuleJ extends React.PureComponent {
           <FlatList
             data={selectedProductList}
             renderItem={this.renderProductFlatListItem}
+            showsHorizontalScrollIndicator={false}
             horizontal
           />
         </ImageItemContainer>

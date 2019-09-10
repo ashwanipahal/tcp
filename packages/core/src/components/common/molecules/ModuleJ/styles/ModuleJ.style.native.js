@@ -1,11 +1,18 @@
 import styled from 'styled-components/native';
 
+import { Image } from '../../../atoms';
+
 export const Container = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const ImageItemContainer = styled.View`
   height: 142px;
+`;
+
+export const StyledImage = styled(Image)`
+  /* stylelint-disable-next-line */
+  resize-mode: contain;
 `;
 
 export const ImageItemWrapper = styled.View`
@@ -24,4 +31,5 @@ export default {
   ImageItemWrapper,
   ButtonContainer,
   ImageItemContainer,
+  StyledImage,
 };
