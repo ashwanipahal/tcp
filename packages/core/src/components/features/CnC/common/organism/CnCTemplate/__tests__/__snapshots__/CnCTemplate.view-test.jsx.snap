@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CnC template should render correctly 1`] = `
+<section
+  className="Cnc"
+>
+  <[object Object] />
+  <Styled(Row)>
+    <Styled(Col)
+      className="left-sec"
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 5,
+          "small": 6,
+        }
+      }
+    >
+      <[object Object] />
+    </Styled(Col)>
+    <Styled(Col)
+      className="right-sec"
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(OrderLedgerContainer) />
+      <[object Object] />
+      <Connect(AirmilesBannerContainer) />
+      <Connect(CouponContainer) />
+    </Styled(Col)>
+  </Styled(Row)>
+</section>
+`;
