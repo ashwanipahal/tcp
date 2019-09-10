@@ -218,7 +218,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav, className }) {
               >
                 <Anchor
                   className={activeClassName}
-                  to={`/c?cid=${item.categoryContent.id}`}
+                  to={item.url}
                   asPath={asPathConstructor(item.url)}
                   data-locator={`${getLocator('plp_left_Nav_L2')}`}
                 >
