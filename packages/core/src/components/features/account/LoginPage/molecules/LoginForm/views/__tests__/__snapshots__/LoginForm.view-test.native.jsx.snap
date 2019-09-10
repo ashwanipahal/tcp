@@ -143,15 +143,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           "width": "90%",
         }
       }
-    >
-      <Field
-        component={[Function]}
-        dataLocator="rememberMe"
-        disabled={false}
-        marginBottom={13}
-        name="userTouchId"
-      />
-    </View>
+    />
     <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       customStyle={
