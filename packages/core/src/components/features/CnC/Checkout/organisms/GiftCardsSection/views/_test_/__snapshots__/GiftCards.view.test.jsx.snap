@@ -22,7 +22,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         component="p"
         data-locator="gift-cards"
         fontFamily="primary"
-        fontSize="fs24"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -70,7 +70,12 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         lineHeight="normal"
         textAlign="left"
       >
-        lbl_giftcard_headsUpTitle lbl_giftcard_headsUpMsg
+        <span
+          className="headsUpMsgBoldTitle"
+        >
+          lbl_giftcard_headsUpTitle
+        </span>
+        lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mb-XS elem-mt-XXL"
@@ -113,7 +118,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         component="p"
         data-locator="gift-cards"
         fontFamily="primary"
-        fontSize="fs24"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -161,7 +166,12 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         lineHeight="normal"
         textAlign="left"
       >
-        lbl_giftcard_headsUpTitle lbl_giftcard_headsUpMsg
+        <span
+          className="headsUpMsgBoldTitle"
+        >
+          lbl_giftcard_headsUpTitle
+        </span>
+        lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mb-XS elem-mt-XXL"
@@ -204,7 +214,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         component="p"
         data-locator="gift-cards"
         fontFamily="primary"
-        fontSize="fs24"
+        fontSize="fs26"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -252,7 +262,12 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         lineHeight="normal"
         textAlign="left"
       >
-        lbl_giftcard_headsUpTitle lbl_giftcard_headsUpMsg
+        <span
+          className="headsUpMsgBoldTitle"
+        >
+          lbl_giftcard_headsUpTitle
+        </span>
+        lbl_giftcard_headsUpMsg
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="elem-mb-XS elem-mt-XXL"
