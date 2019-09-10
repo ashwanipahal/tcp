@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WalletView from '../views';
-
-export const getGlobalLabels = state => {
-  return state.Labels.global;
-};
+import { getGlobalLabels } from '../../Account/container/Account.selectors';
 
 export const WalletContainer = ({ labels }) => {
   return <WalletView labels={labels} />;

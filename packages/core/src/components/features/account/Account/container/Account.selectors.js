@@ -4,6 +4,10 @@ export const getLabels = state => {
   return state.Labels.account;
 };
 
+export const getGlobalLabels = state => {
+  return state.Labels.global;
+};
+
 export const getAccountNavigationState = state => {
   return state.AccountReducer.get('accountNavigation');
 };
