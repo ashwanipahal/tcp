@@ -775,7 +775,9 @@ exports[`AddressFields component should render correctly 1`] = `
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -789,7 +791,7 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -1388,7 +1390,9 @@ exports[`AddressFields component should render correctly 1`] = `
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -1402,7 +1406,7 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -2593,7 +2597,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -2607,7 +2613,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -3206,7 +3212,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -3220,7 +3228,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -4083,7 +4091,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -4097,7 +4107,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -4696,7 +4706,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -4710,7 +4722,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -5573,7 +5585,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -5587,7 +5601,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],
@@ -5937,7 +5951,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
-                ") no-repeat right 0px bottom 6px;
+                ") no-repeat right 0px bottom ",
+                [Function],
+                ";
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -5951,7 +5967,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 ";
     font-size: ",
                 [Function],
-                "px;
+                ";
     margin: 0;
     margin-bottom: ",
                 [Function],

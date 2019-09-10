@@ -11,7 +11,8 @@ const selectStyles = css`
 
   .select__input {
     appearance: none;
-    background: url(${downArrowIcon}) no-repeat right 0px bottom 6px;
+    background: url(${downArrowIcon}) no-repeat right 0px bottom
+      ${props => props.theme.spacing.ELEM_SPACING.SM};
     border: 0;
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     ${props =>
@@ -21,7 +22,7 @@ const selectStyles = css`
     border-radius: 0;
     color: ${props =>
       props.disabled ? props.theme.colorPalette.gray[600] : props.theme.colors.TEXTBOX.COLOR};
-    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
