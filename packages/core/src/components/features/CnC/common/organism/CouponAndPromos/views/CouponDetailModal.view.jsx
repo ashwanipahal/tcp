@@ -4,16 +4,13 @@ import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import endpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
 import styles from '../styles/CouponDetailModal.style';
 
 class CouponDetailModal extends React.PureComponent<Props> {
   printClick = event => {
     window.print();
-    event.preventDefault();
-  };
-
-  tAndCClick = event => {
     event.preventDefault();
   };
 
@@ -88,7 +85,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             anchorVariation="primary"
             fontSize="fs14"
             dataLocator={`couponDetailModal_${coupon.status}_tAndC`}
-            onClick={this.tAndCClick}
+            url={endpoints.termsAndConditionsPage}
             className="couponModal_print_anchortext"
           >
             {`${labels.TERMS_AND_CONDITIONS}`}
@@ -100,7 +97,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             anchorVariation="primary"
             fontSize="fs14"
             dataLocator={`couponDetailModal_${coupon.status}_pp`}
-            onClick={this.tAndCClick}
+            url={endpoints.privacyPolicyPage}
             className="couponModal_print_anchortext"
           >
             {`${labels.PRIVACY_POLICY}`}

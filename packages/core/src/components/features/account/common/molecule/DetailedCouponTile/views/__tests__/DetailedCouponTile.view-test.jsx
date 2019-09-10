@@ -87,7 +87,9 @@ describe('DetailedCouponTile', () => {
     });
 
     it('#handleViewCouponDetails should call onViewCouponDetails prop', () => {
-      componentInstance.handleViewCouponDetails();
+      componentInstance.handleViewCouponDetails({
+        preventDefault: () => {},
+      });
       expect(onViewCouponDetails).toBeCalled();
     });
   });

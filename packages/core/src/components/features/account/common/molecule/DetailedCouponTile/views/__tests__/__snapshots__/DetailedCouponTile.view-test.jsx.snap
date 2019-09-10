@@ -127,6 +127,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
           fontSizeVariation="xlarge"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -329,6 +330,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
           fontSizeVariation="xlarge"
+          onClick={[Function]}
           underline={true}
         >
           details
@@ -544,6 +546,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         <Styled(Anchor)
           data-locator="myrewards-detailslink"
           fontSizeVariation="xlarge"
+          onClick={[Function]}
           underline={true}
         >
           details
