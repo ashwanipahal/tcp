@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { Anchor } from '@tcp/core/src/components/common/atoms';
+import { getLabelValue } from '../../../../../utils';
+import { Anchor } from '../../../atoms';
 
 import StyledApplyNowModal from './ApplyNowModal.view';
 

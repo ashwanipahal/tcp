@@ -12,11 +12,6 @@ import {
 
 describe('#BonusPointsDays Selectors', () => {
   it('#getLabels should return labels', () => {
-    // const LabelsState = fromJS({
-    //   global: {
-    //     placeRewards: {},
-    //   },
-    // });
     const state = {
       Labels: {},
     };

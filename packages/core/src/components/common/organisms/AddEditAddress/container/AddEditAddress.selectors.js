@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getLabelValue } from '../../../../../utils';
 
 import { LOGINPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
