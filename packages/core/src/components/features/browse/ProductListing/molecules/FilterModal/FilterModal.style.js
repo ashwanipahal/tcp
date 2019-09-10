@@ -43,11 +43,15 @@ export default css`
     transform: translate(-50%, -50%);
     padding: 0 27px;
     overflow-y: auto;
-    max-height: 80vh;
+    max-height: 100vh;
 
     @media ${props => props.theme.mediaQuery.medium} {
       width: 80%;
       max-width: 600px;
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      max-height: 80vh;
     }
 
     .filter-row {
