@@ -66,6 +66,7 @@ export const SurveyQuestion = ({
 SurveyQuestion.propTypes = {
   labels: PropTypes.shape({
     lbl_profile_survey_select_one: PropTypes.string,
+    lbl_profile_survey_select_all: PropTypes.string,
   }),
   options: PropTypes.arrayOf([]).isRequired,
   className: PropTypes.string,
@@ -78,6 +79,7 @@ SurveyQuestion.defaultProps = {
   className: '',
   labels: PropTypes.shape({
     lbl_profile_survey_select_one: '',
+    lbl_profile_survey_select_all: '',
   }),
   question: '',
   questionId: '',
