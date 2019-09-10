@@ -17,9 +17,14 @@ import {
 class LoginView extends React.PureComponent {
   constructor(props) {
     super(props);
+
     this.state = {
       setEmailid: '',
+      getTouchStatus: false,
     };
+    isSupportedTouch().then(biometryType => {
+      this.setState({ getTouchStatus: biometryType });
+    });
   }
 
   componentDidMount() {
@@ -52,7 +57,7 @@ class LoginView extends React.PureComponent {
     onSubmit(formdata);
 
     isSupportedTouch().then(biometryType => {
-      if (biometryType && formdata.userTouchId) {
+      if (biometryType && (formdata.userTouchId || formdata.FaceId)) {
         touchIDCheck();
       }
     });
@@ -78,10 +83,11 @@ class LoginView extends React.PureComponent {
       showCheckoutModal,
       showLogin,
     } = this.props;
-    const { setEmailid } = this.state;
+    const { setEmailid, getTouchStatus } = this.state;
     return (
       <ScrollViewStyle>
         <LoginSection
+          getTouchStatus={getTouchStatus}
           setEmailid={setEmailid}
           onSubmit={this.onSubmitHandler}
           labels={labels}

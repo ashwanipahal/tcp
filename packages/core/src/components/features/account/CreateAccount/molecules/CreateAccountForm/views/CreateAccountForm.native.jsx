@@ -175,7 +175,7 @@ class CreateAccountForm extends PureComponent<Props> {
             marginTop={13}
           />
           {getTouchStatus === 'TouchID' ||
-            (getTouchStatus && (
+            (getTouchStatus === true && (
               <Field
                 name="useTouchID"
                 component={InputCheckbox}

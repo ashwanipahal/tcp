@@ -72,7 +72,7 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, handleSubmit, onSubmit, variation } = this.props;
+    const { labels, handleSubmit, onSubmit, variation, getTouchStatus } = this.props;
     const { type } = this.state;
     return (
       <Fragment>
@@ -111,14 +111,28 @@ class LoginForm extends React.PureComponent<Props> {
             </HideShowFieldWrapper>
           </ShowHideWrapper>
           <View style={styles.inputCheckBoxStyle}>
-            <Field
-              name="userTouchId"
-              component={InputCheckbox}
-              dataLocator="rememberMe"
-              disabled={false}
-              marginBottom={13}
-              rightText={labels.login.lbl_login_touch_id}
-            />
+            {getTouchStatus === 'TouchID' ||
+              (getTouchStatus === true && (
+                <Field
+                  name="userTouchId"
+                  component={InputCheckbox}
+                  dataLocator="rememberMe"
+                  disabled={false}
+                  marginBottom={13}
+                  rightText={labels.login.lbl_login_touch_id}
+                />
+              ))}
+
+            {getTouchStatus === 'FaceID' && (
+              <Field
+                name="FaceId"
+                component={InputCheckbox}
+                dataLocator="FaceId"
+                disabled={false}
+                marginBottom={13}
+                rightText="Face Id"
+              />
+            )}
           </View>
 
           <CustomButton
