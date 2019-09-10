@@ -45,22 +45,32 @@ const getProductsTypes = orderItems => {
 };
 
 export function* getTranslatedProductInfo(cartInfo) {
-  const productypes = getProductsTypes(cartInfo.orderDetails.orderItems);
-  const gymProdpartNumberList = productypes.gymProducts;
-  const tcpProdpartNumberList = productypes.tcpProducts;
-  let tcpProductsResults;
-  let gymProductsResults;
-  if (tcpProdpartNumberList.length) {
-    tcpProductsResults = yield call(getProductInfoForTranslationData, tcpProdpartNumberList.join());
-  }
+  try {
+    const productypes = getProductsTypes(cartInfo.orderDetails.orderItems);
+    const gymProdpartNumberList = productypes.gymProducts;
+    const tcpProdpartNumberList = productypes.tcpProducts;
+    let tcpProductsResults;
+    let gymProductsResults;
+    if (tcpProdpartNumberList.length) {
+      tcpProductsResults = yield call(
+        getProductInfoForTranslationData,
+        tcpProdpartNumberList.join()
+      );
+    }
 
-  if (gymProdpartNumberList.length) {
-    gymProductsResults = yield call(getProductInfoForTranslationData, gymProdpartNumberList.join());
-  }
-  gymProductsResults = (gymProductsResults && gymProductsResults.body.response.products) || [];
-  tcpProductsResults = (tcpProductsResults && tcpProductsResults.body.response.products) || [];
+    if (gymProdpartNumberList.length) {
+      gymProductsResults = yield call(
+        getProductInfoForTranslationData,
+        gymProdpartNumberList.join()
+      );
+    }
+    gymProductsResults = (gymProductsResults && gymProductsResults.body.response.products) || [];
+    tcpProductsResults = (tcpProductsResults && tcpProductsResults.body.response.products) || [];
 
-  return [...gymProductsResults, ...tcpProductsResults];
+    return [...gymProductsResults, ...tcpProductsResults];
+  } catch (err) {
+    return { error: { err } };
+  }
 }
 
 function createMatchObject(res, translatedProductInfo) {
@@ -111,10 +121,9 @@ export function* getCartDataSaga(payload = {}) {
       isRadialInvEnabled,
     });
     const translatedProductInfo = yield call(getTranslatedProductInfo, res);
-    // yield getFinalTranslatedOrderDetails( res.orderDetails.orderItems ,getTranslatedProductInfo.body.response.products);
-
-    createMatchObject(res, translatedProductInfo);
-
+    if (!translatedProductInfo.error) {
+      createMatchObject(res, translatedProductInfo);
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));

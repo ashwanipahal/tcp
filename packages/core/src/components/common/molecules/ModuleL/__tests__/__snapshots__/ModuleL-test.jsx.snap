@@ -21,6 +21,9 @@ exports[`ModuleL component renders correctly 1`] = `
   > *:last-child {
     margin-right: 0;
   }
+  &.content-wrapper {
+    margin: 0 auto;
+  }
   ",
           [Function],
           ";

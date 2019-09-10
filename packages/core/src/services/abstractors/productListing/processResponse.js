@@ -5,6 +5,7 @@ import { FACETS_FIELD_KEY } from './productListing.utils';
 import {
   getProductsFilters,
   getTotalProductsCount,
+  getCurrentListingIds,
 } from '../../../components/features/browse/ProductListing/container/ProductListing.selectors';
 
 const getAvailableL3List = facets => {
@@ -200,6 +201,7 @@ const processResponse = (
   const availableL3List = getAvailableL3List(res.body.facets);
   const availableL3InFilter = getAppliedL3Filters(availableL3List);
   let totalProductsCount = 0;
+  let productListingCurrentNavIds;
   totalProductsCount = res.body.response.numberOfProducts;
   // This is the scenario when the subsequent L3 calls made in bucekting case. In this scenario we need to send back the filter and count, we cached
   // from the response of page L2 call.
@@ -207,7 +209,7 @@ const processResponse = (
     // TODO - fix this - const { temp : { filters: newFilters, totalProductsCount:newTotalProductsCount }} = this.fetchCachedFilterAndCount();
     const productListingFilters = getProductsFilters(state);
     const productListingTotalCount = getTotalProductsCount(state);
-
+    productListingCurrentNavIds = getCurrentListingIds(state);
     filters = productListingFilters || {};
     totalProductsCount = productListingTotalCount || 0;
   }
@@ -245,7 +247,8 @@ const processResponse = (
     productsInCurrCategory: res.body.response.numberOfProducts,
     unbxdId,
     appliedSortId: sort,
-    currentNavigationIds: processHelpers.getCurrentNavigationIds(res),
+    currentNavigationIds:
+      productListingCurrentNavIds || processHelpers.getCurrentNavigationIds(res),
     breadCrumbTrail: processHelpers.getBreadCrumbTrail(breadCrumbs),
     loadedProductsPages: [[]],
     searchResultSuggestions: processHelpers.getSearchResultsSuggestion(res.body.didYouMean),

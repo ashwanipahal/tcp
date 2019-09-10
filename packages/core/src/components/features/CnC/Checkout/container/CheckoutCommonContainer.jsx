@@ -13,7 +13,9 @@ import {
   updateShippingAddress,
   addNewShippingAddress,
   submitBillingSection,
+  initActions,
 } from './Checkout.action';
+
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   isGuest as isGuestUser,
@@ -136,6 +138,8 @@ export class CheckoutContainer extends React.Component<Props> {
     );
   }
 }
+
+CheckoutContainer.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {

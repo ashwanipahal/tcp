@@ -47,6 +47,7 @@ exports[`Create Account Page should render correctly 1`] = `
       forceUnregisterOnUnmount={false}
       form="myCreateAccountForm"
       getFormState={[Function]}
+      getTouchStatus={false}
       handleSubmitForm={[Function]}
       hideShowPwd={false}
       isIAgreeChecked={false}
