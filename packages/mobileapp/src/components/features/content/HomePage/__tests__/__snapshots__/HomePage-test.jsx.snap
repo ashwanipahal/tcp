@@ -45,5 +45,12 @@ exports[`HomePageView should render correctly 1`] = `
     }
     text="PLP Page"
   />
+  <Connect(ModuleJ)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
 </ScrollViewMock>
 `;
