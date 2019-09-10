@@ -282,7 +282,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           }
         }
         onValueChange={[Function]}
-        selectedValue=""
+        selectedValue="Month"
         variation="secondary"
       />
       <Styled(View)>
@@ -403,7 +403,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           }
         }
         onValueChange={[Function]}
-        selectedValue=""
+        selectedValue="Year"
         variation="secondary"
       />
       <Field
