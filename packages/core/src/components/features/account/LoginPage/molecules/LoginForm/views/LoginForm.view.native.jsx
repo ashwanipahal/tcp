@@ -8,12 +8,12 @@ import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPal
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
 
 const colorPallete = createThemeColorPalette();
 
@@ -32,6 +32,7 @@ const styles = {
 
   inputCheckBoxStyle: {
     width: '90%',
+    marginBottom: 30,
   },
 };
 
@@ -121,7 +122,8 @@ class LoginForm extends React.PureComponent<Props> {
             </HideShowFieldWrapper>
           </ShowHideWrapper>
           <View style={styles.inputCheckBoxStyle}>
-            {getTouchStatus === 'TouchID' ||
+            <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
+            {/* {getTouchStatus === 'TouchID' ||
               (getTouchStatus === true && (
                 <Field
                   name="userTouchId"
@@ -142,7 +144,7 @@ class LoginForm extends React.PureComponent<Props> {
                 marginBottom={13}
                 rightText={getLabelValue(labels, 'lbl_login_face_id', 'login')}
               />
-            )}
+            )} */}
           </View>
 
           <CustomButton

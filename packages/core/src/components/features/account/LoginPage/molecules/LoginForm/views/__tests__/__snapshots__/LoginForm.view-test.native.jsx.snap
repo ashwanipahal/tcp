@@ -140,10 +140,25 @@ exports[`LoginForm component should renders correctly 1`] = `
     <View
       style={
         Object {
+          "marginBottom": 30,
           "width": "90%",
         }
       }
-    />
+    >
+      <CreateAccountCheckBox
+        labels={
+          Object {
+            "handleSubmit": [Function],
+            "login": Object {},
+            "loginErrorMessage": "",
+            "onSubmit": [Function],
+            "registration": Object {},
+            "resetForm": [Function],
+            "showForgotPasswordForm": [Function],
+          }
+        }
+      />
+    </View>
     <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       customStyle={

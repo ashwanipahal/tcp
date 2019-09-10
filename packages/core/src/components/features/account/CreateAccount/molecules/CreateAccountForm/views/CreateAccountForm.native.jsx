@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
+
 import TextBox from '../../../../../../common/atoms/TextBox';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -18,6 +19,7 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
 
 class CreateAccountForm extends PureComponent<Props> {
   onSaveMyPlaceRewards = value => {
@@ -165,29 +167,7 @@ class CreateAccountForm extends PureComponent<Props> {
             }`}
             marginTop={13}
           />
-          {getTouchStatus === 'TouchID' ||
-            (getTouchStatus === true && (
-              <Field
-                name="useTouchID"
-                component={InputCheckbox}
-                dataLocator="useTouchID"
-                disabled={false}
-                marginTop={13}
-                rightText={labels.registration.lbl_createAccount_useTouchId}
-                onClick={this.onUseTouchID}
-              />
-            ))}
-          {getTouchStatus === 'FaceID' && (
-            <Field
-              name="useFaceID"
-              component={InputCheckbox}
-              dataLocator="useFaceID"
-              disabled={false}
-              rightText={labels.registration.lbl_createAccount_useFaceId}
-              marginTop={13}
-              onClick={this.onUseFaceID}
-            />
-          )}
+          <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           <ButtonWrapper>
             <CustomButton
               text={labels.registration.lbl_createAccount_createAccount}
