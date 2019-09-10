@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { bindAllClassMethodsToThis } from '../../../../../utils';
 import BucketingBL from './bucketingLogicHelper';
 import {
@@ -25,14 +26,7 @@ import { PRODUCTS_PER_LOAD, routingInfoStoreView } from './ProductListing.consta
 
 export default class ProductsOperator {
   constructor() {
-    this.bucketingConfig = {
-      start: 0,
-      productsToFetchPerLoad: PRODUCTS_PER_LOAD,
-      L3Left: [],
-      currL2NameList: [],
-      bucketingSeqScenario: false,
-      availableL3: [],
-    };
+    this.resetBucketingConfig();
     this.shouldApplyUnbxdLogic = true; // TODO - this is the prod code - store && store.getState().session.siteDetails.shouldApplyUnbxdLogic;
 
     bindAllClassMethodsToThis(this);
@@ -42,6 +36,17 @@ export default class ProductsOperator {
   get bucketingLogic() {
     return new BucketingBL();
   }
+
+  resetBucketingConfig = () => {
+    this.bucketingConfig = {
+      start: 0,
+      productsToFetchPerLoad: PRODUCTS_PER_LOAD,
+      L3Left: [],
+      currL2NameList: [],
+      bucketingSeqScenario: false,
+      availableL3: [],
+    };
+  };
 
   getImgPath(id, excludeExtension) {
     return {
@@ -257,6 +262,7 @@ export default class ProductsOperator {
     filterAndSortParam = {},
     pageNumber = ''
   ) {
+    this.resetBucketingConfig();
     let filtersAndSort;
     let navigationTree;
     let categoryNameList;
