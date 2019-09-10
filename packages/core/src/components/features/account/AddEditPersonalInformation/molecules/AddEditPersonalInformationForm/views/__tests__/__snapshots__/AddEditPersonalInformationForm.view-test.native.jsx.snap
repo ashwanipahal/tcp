@@ -451,7 +451,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           }
         }
         id="userBirthYear"
-        label=""
         name="userBirthYear"
         title=""
         type="hidden"
