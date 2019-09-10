@@ -3,10 +3,208 @@
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
   <Connect(ModuleJ)
+    bgColor="#f53d3d"
+    ctaItems={
+      Array [
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
+          },
+          "image": Object {
+            "alt": "Girl",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Girl",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
+          },
+          "image": Object {
+            "alt": "Toddler Girl alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Toddler Girl title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
+          },
+          "image": Object {
+            "alt": "Boy",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Boy",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Boy",
+            "title": "Tod Boy",
+            "url": "/toddler-boy",
+          },
+          "image": Object {
+            "alt": "Toddler Boy alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Tod Boy title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Baby",
+            "title": "Baby",
+            "url": "/toddler-boy",
+          },
+          "image": Object {
+            "alt": "Baby Alt",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Baby title",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/p/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "style3",
+              "text": "Every Length, Style, Color & Size",
+            },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/p/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "style4",
+              "text": "THE SHOP ALL",
+            },
+          ],
+        },
+      ]
+    }
+    mediaLinkedList={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Boys",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Boys",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Boys",
+            "title": "Boys",
+          },
+          "url": "/node/product/e499bac3-6770-4757-b924-55c837712dfc",
+        },
+        Object {
+          "image": Object {
+            "alt": "Girls",
+            "crop_d": "",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+            "title": "Girls",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/node/product/e499bac3-6770-4757-b924-55c837712dfc",
+          },
+        },
+      ]
+    }
     navigation={
       Object {
         "getParam": [Function],
       }
+    }
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "class": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "text_normal_gray",
+              "text": "ALL SHORTS",
+            },
+            Object {
+              "style": "large_text_semibold_bold",
+              "text": "60% OFF",
+            },
+          ],
+        },
+      ]
     }
   />
   <HomePageSlots

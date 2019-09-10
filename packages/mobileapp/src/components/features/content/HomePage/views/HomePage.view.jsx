@@ -4,6 +4,7 @@ import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import moduleJMock from '@tcp/core/src/components/common/molecules/ModuleJ/mock';
 
 import {
   ModuleD,
@@ -62,7 +63,7 @@ class HomePageView extends React.PureComponent<Props> {
     } = this.props;
     return (
       <ScrollView>
-        <ModuleJ navigation={navigation} />
+        <ModuleJ navigation={navigation} {...moduleJMock.moduleJ.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />

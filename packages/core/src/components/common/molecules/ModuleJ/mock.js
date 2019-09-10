@@ -29,7 +29,7 @@ export default {
         {
           textItems: [
             {
-              text: 'THE SHORTS SHOP',
+              text: 'THE SHOP ALL',
               style: 'style4',
             },
           ],
@@ -64,7 +64,7 @@ export default {
             // },
             {
               text: 'ALL SHORTS',
-              style: 'large_text_semibold_normal',
+              style: 'text_normal_gray',
             },
             {
               text: '60% OFF',
@@ -112,8 +112,7 @@ export default {
         },
         {
           image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            url: '',
             alt: 'Boy',
             title: 'Boy',
             crop_d: '',
@@ -148,8 +147,7 @@ export default {
         },
         {
           image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            url: '',
             alt: 'Baby Alt',
             title: 'Baby title',
             crop_d: '',
@@ -162,6 +160,47 @@ export default {
             title: 'Baby',
             target: '',
             external: 0,
+          },
+        },
+      ],
+
+      mediaLinkedList: [
+        {
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            alt: 'Boys',
+            title: 'Boys',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          url: '/node/product/e499bac3-6770-4757-b924-55c837712dfc',
+          link: {
+            text: 'Boys',
+            title: 'Boys',
+            target: '',
+            external: 0,
+            action: '',
+          },
+        },
+        {
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            alt: 'Girls',
+            title: 'Girls',
+            crop_d: '',
+            crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+            crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
+          },
+          link: {
+            url: '/node/product/e499bac3-6770-4757-b924-55c837712dfc',
+            text: 'Girls',
+            title: 'Girls',
+            target: '',
+            external: 0,
+            action: '',
           },
         },
       ],

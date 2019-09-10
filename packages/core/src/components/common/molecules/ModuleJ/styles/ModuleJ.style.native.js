@@ -18,14 +18,14 @@ export const HeaderContainer = styled.View`
     props.layout === 'alt'
       ? ` `
       : `background:white;
- margin-left:30px;
- margin-right:30px;`};
+ margin-left:70px;
+ margin-right:70px;`};
 `;
 
 export const Border = styled.View`
   width: 100%;
   height: 1px;
-  top: 10px;
+  top: 8px;
   position: absolute;
   ${props =>
     props.layout === 'alt' ? `` : `border: 1px solid ${props.theme.colorPalette.yellow[500]};`};

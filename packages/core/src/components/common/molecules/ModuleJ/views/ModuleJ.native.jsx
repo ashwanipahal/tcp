@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from '../../../atoms';
+import { Image, Anchor } from '../../../atoms';
 import {
   Container,
   PromoContainer,
@@ -18,7 +18,6 @@ import ProductTabList from '../../../organisms/ProductTabList';
 import categoryListMock from './categoryListMock';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
-import moduleJMock from '../mock';
 
 class ModuleJ extends React.PureComponent<Props, State> {
   constructor(props) {
@@ -26,7 +25,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { navigation, layout } = this.props;
+    const { navigation, layout, mediaLinkedList, headerText, promoBanner } = this.props;
 
     return (
       <Container>
@@ -36,7 +35,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
             <HeaderContainer layout={layout}>
               <LinkText
                 navigation={navigation}
-                headerText={moduleJMock.moduleJ.composites.headerText}
+                headerText={headerText}
                 renderComponentInNewLine
                 useStyle
               />
@@ -44,10 +43,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
           </Wrapper>
 
           <PromoContainer>
-            <PromoBanner
-              promoBanner={moduleJMock.moduleJ.composites.promoBanner}
-              navigation={navigation}
-            />
+            <PromoBanner promoBanner={promoBanner} navigation={navigation} />
           </PromoContainer>
         </MessageContainer>
         <ProductTabListContainer>
@@ -58,11 +54,9 @@ class ModuleJ extends React.PureComponent<Props, State> {
           />
         </ProductTabListContainer>
         <ImageContainer layout={layout}>
-          <Image
-            url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg"
-            height="300px"
-            width="100%"
-          />
+          <Anchor navigation={navigation} url={mediaLinkedList[1].link.url}>
+            <Image url={mediaLinkedList[1].image.url} height="300px" width="100%" />
+          </Anchor>
         </ImageContainer>
       </Container>
     );
@@ -72,11 +66,18 @@ class ModuleJ extends React.PureComponent<Props, State> {
 ModuleJ.defaultProps = {
   productTabList: {},
   layout: 'default',
+  mediaLinkedList: [],
 };
 
 ModuleJ.propTypes = {
   productTabList: PropTypes.shape({}),
   layout: PropTypes.string,
+  mediaLinkedList: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.object,
+      link: PropTypes.object,
+    })
+  ),
 };
 
 export default ModuleJ;
