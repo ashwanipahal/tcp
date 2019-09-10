@@ -202,7 +202,8 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     appearance: none;
     background: url(",
               "/static/images/carrot-small-down.png",
-              ") no-repeat right 0px bottom ",
+              ") no-repeat right 0px bottom
+      ",
               [Function],
               ";
     border: 0;
@@ -319,7 +320,8 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     appearance: none;
     background: url(",
               "/static/images/carrot-small-down.png",
-              ") no-repeat right 0px bottom ",
+              ") no-repeat right 0px bottom
+      ",
               [Function],
               ";
     border: 0;

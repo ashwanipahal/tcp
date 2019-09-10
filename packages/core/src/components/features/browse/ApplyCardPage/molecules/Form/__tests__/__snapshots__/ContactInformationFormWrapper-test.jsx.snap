@@ -1000,7 +1000,8 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
-                    ") no-repeat right 0px bottom ",
+                    ") no-repeat right 0px bottom
+      ",
                     [Function],
                     ";
     border: 0;
