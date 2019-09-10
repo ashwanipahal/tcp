@@ -80,7 +80,7 @@ export class PaymentView extends React.Component<Props> {
               : '',
           description: selectedCard,
           buttons: {
-            cancel: getLabelValue(labels, 'lbl_payment_modalVenmoDeleteHeading', 'paymentGC'),
+            cancel: getLabelValue(labels, 'lbl_payment_modalGCCancel', 'paymentGC'),
             confirm: getLabelValue(labels, 'lbl_payment_modalGCConfirm', 'paymentGC'),
           },
           cardText: {

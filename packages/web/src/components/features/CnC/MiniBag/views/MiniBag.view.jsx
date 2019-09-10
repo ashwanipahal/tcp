@@ -23,8 +23,9 @@ const renderMiniBagHeader = (labels, cartItemCount, userName, currentPoints, tot
 class MiniBag extends React.Component {
   componentWillReceiveProps({ router: nextRouter }) {
     const { router, onRequestClose } = this.props;
+    /* istanbul ignore else */
     if (router.asPath !== nextRouter.asPath) {
-      onRequestClose();
+      onRequestClose(false, true);
     }
   }
 

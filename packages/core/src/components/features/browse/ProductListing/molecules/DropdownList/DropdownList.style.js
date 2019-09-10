@@ -26,6 +26,10 @@ export default css`
     max-height: 430px;
     text-align: center;
     max-width: 590px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 500px;
+    }
   }
 
   .item-list-column-wrapper {
@@ -35,15 +39,21 @@ export default css`
     display: flex;
     position: static;
     max-height: 352px;
-
     overflow-y: auto;
     overflow-x: hidden;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 425px;
+    }
   }
   .item-list-column {
     flex-flow: column wrap;
   }
   .item-list-row {
     flex-flow: row wrap;
+  }
+  .item-column {
+    flex-flow: column;
   }
   .apply-button {
     width: 210px;

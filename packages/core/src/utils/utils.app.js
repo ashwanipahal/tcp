@@ -1,7 +1,8 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
-import { Dimensions, Linking, Platform } from 'react-native';
+import { Dimensions, Linking, Platform, PixelRatio } from 'react-native';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getAPIConfig } from './utils';
 
@@ -277,19 +278,15 @@ export const validateExternalUrl = url => {
 
 /**
  * @function resetNavigationStack
- * This function resets data from navigation stack
+ * This function resets data from navigation stack and navigates to Home
  *
  */
 export const resetNavigationStack = navigation => {
-  const { state } = navigation;
-  const { routes, index: activeRouteIndex } = state;
   navigation.dispatch(
     StackActions.reset({
       index: 0,
       key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: routes[activeRouteIndex].routes[0].routeName }),
-      ],
+      actions: [NavigationActions.navigate({ routeName: 'Home' })],
     })
   );
 };
@@ -304,8 +301,7 @@ export const resetNavigationStack = navigation => {
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
-  // eslint-disable-next-line no-console
-  console.log(
+  logger.info(
     'unboxKey',
     `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
       envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
@@ -367,6 +363,8 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+  const catalogId =
+    API_CONFIG.CATALOGID_CONFIG[isGYMSite ? 'Gymboree' : 'TCP'][isCASite ? 'Canada' : 'USA'];
 
   return {
     ...basicConfig,
@@ -375,6 +373,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     ...brandConfig,
     isMobile: false,
     cookie: null,
+    catalogId,
   };
 };
 
@@ -444,6 +443,37 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 };
 
 export const isAndroid = () => Platform.OS === 'android';
+
+/**
+ * getPixelRatio
+ * This method returns the PixelRatio for different devices ( Android & ISO)
+ */
+export const getPixelRatio = () => {
+  // for android iPhone iPhone 6 Plus, 7 Plus, 8 Plus , X, XS, XS Max ,Pixel, Pixel 2 devices. (Note: PixelRatio = 3 ).
+  let devicepixel = 'xxhdpi';
+
+  if (PixelRatio.get() === 1) {
+    // for android devices mdpi.
+    devicepixel = 'mdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() === 1.5) {
+    // for android devices hdpi
+    devicepixel = 'hdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() === 2) {
+    // for android & iPhone 4, 4S ,iPhone 5, 5C, 5S ,iPhone 6, 7, 8 ,iPhone XR devices .
+    devicepixel = 'xhdpi';
+    return devicepixel;
+  }
+  if (PixelRatio.get() > 3.5) {
+    // for android devices, Nexus 6 , Samsung7 , Pixel XL, Pixel 2 XL, xxxhdpi Android devices.
+    devicepixel = 'xxxhdpi';
+    return devicepixel;
+  }
+  return devicepixel;
+};
 
 export default {
   getSiteId,

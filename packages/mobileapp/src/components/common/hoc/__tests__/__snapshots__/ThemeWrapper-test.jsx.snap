@@ -12,15 +12,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "sm",
           "lg",
         ],
-        "large": "1024px",
+        "large": "1200px",
         "largeMax": "1439px",
         "maxWidth": 1440,
         "medium": "768px",
-        "mediumMax": "1023px",
+        "mediumMax": "1199px",
         "small": "375px",
         "smallMax": "767px",
         "values": Object {
-          "lg": 1024,
+          "lg": 1200,
           "sm": 768,
           "xs": 0,
         },
@@ -42,7 +42,11 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "error": "#c8102e",
         "gray": Object {
           "1000": "#6d7278",
+          "1100": "#4a4a4a",
+          "1200": "#eeeeee",
+          "1300": "#9c9c9c",
           "300": "#f3f3f3",
+          "400": "#4a4a4a",
           "500": "#d8d8d8",
           "600": "#9b9b9b",
           "700": "#575757",
@@ -203,6 +207,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "RED": "#ED0505",
           "YELLOW": "#F6D343",
         },
+        "REWARDS_OVERLAY": "rgba(25, 25, 25, 0.7)",
         "TEXT": Object {
           "BLUE": "#2e6a91",
           "DARK": "#1a1a1a",
@@ -356,19 +361,19 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "isGymboree": false,
       "mediaQuery": Object {
-        "large": "(min-width: 1024px)",
+        "large": "(min-width: 1200px)",
         "largeMax": "(max-width: 1439px)",
         "largeOnly": "
-    (min-width: 1024px)
+    (min-width: 1200px)
     and
     (max-width: 1439px)
   ",
         "medium": "(min-width: 768px)",
-        "mediumMax": "(max-width: 1023px)",
+        "mediumMax": "(max-width: 1199px)",
         "mediumOnly": "
     (min-width: 768px)
     and
-    (max-width: 1023px)
+    (max-width: 1199px)
   ",
         "small": "(min-width: 375px)",
         "smallMax": "(max-width: 767px)",
@@ -390,6 +395,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "APP_LAYOUT_SPACING": Object {
           "SM": "30px",
           "XS": "20px",
+          "XXS": "10px",
         },
         "CREDIT_CARD_ICON_WIDTH": "50px",
         "ELEM_SPACING": Object {
@@ -527,7 +533,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "lineHeight": "normal",
         },
         "letterSpacings": Object {
+          "ls071": "0.71px",
+          "ls1": "1px",
           "ls167": "1.67px",
+          "ls2": "2px",
           "ls222": "2.22px",
           "ls257": "2.57px",
           "ls271": "2.71px",
@@ -577,6 +586,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "zindex": Object {
         "zDrawer": 1200,
+        "zGoogleAutosuggest": 100000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,

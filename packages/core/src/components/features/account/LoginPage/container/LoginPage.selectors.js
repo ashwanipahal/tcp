@@ -1,5 +1,6 @@
 import { LOGINPAGE_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import { createSelector } from 'reselect';
+import { isMobileApp } from '../../../../../utils';
 import constants from '../LoginPage.constants';
 
 export const getLoginState = state => {
@@ -36,6 +37,9 @@ export const getLoginErrorMessage = createSelector(
   (loginState, labels) => {
     const errorCode = loginState && loginState.get('errorCode');
     if (errorCode && labels[`lbl_login_error_${errorCode}`]) {
+      if (isMobileApp()) {
+        return labels[`lbl_login_error_app_${errorCode}`];
+      }
       return labels[`lbl_login_error_${errorCode}`];
     }
     return (

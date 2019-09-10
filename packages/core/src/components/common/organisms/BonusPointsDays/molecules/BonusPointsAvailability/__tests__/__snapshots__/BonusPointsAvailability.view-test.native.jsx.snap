@@ -2,66 +2,31 @@
 
 exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
 <Styled(View)>
-  <Styled(View)
-    bonusPointsLength={2}
+  <Styled(TouchableOpacity)
+    index={0}
+    onPress={[Function]}
   >
-    <Styled(CustomButton)
-      buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={true}
-      fill=""
-      fullWidth=""
-      height="42px"
-      id={0}
-      locator=""
-      onPress={[Function]}
-      style={
-        Object {
-          "color": undefined,
-          "fontSize": 10,
-          "fontWeight": "400",
-          "marginBottom": 24,
-          "paddingBottom": 5,
-          "paddingLeft": 5,
-          "paddingRight": 5,
-          "paddingTop": 5,
-        }
-      }
+    <Styled(BodyCopy)
+      color="#4a4a4a"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="extrabold"
+      letterSpacing="ls071"
       text="Available For Future Use"
-      url=""
-      width="103px"
+      textAlign="center"
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
   <Styled(View)
-    bonusPointsLength={2}
+    index={1}
   >
-    <Styled(CustomButton)
-      buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={true}
-      fill=""
-      fullWidth=""
-      height="42px"
-      id={1}
-      locator=""
-      onPress={[Function]}
-      style={
-        Object {
-          "color": undefined,
-          "fontSize": 10,
-          "fontWeight": "400",
-          "marginBottom": 24,
-          "paddingBottom": 5,
-          "paddingLeft": 5,
-          "paddingRight": 5,
-          "paddingTop": 5,
-        }
-      }
+    <Styled(BodyCopy)
+      color="#4a4a4a"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="extrabold"
+      letterSpacing="ls071"
       text="Applied to Order"
-      url=""
-      width="103px"
+      textAlign="center"
     />
   </Styled(View)>
 </Styled(View)>
@@ -69,36 +34,19 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
 
 exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus point 1`] = `
 <Styled(View)>
-  <Styled(View)
-    bonusPointsLength={1}
+  <Styled(TouchableOpacity)
+    index={0}
+    onPress={[Function]}
   >
-    <Styled(CustomButton)
-      buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={true}
-      fill=""
-      fullWidth=""
-      height="42px"
-      id={0}
-      locator=""
-      onPress={[Function]}
-      style={
-        Object {
-          "color": undefined,
-          "fontSize": 10,
-          "fontWeight": "400",
-          "marginBottom": 24,
-          "paddingBottom": 5,
-          "paddingLeft": 5,
-          "paddingRight": 5,
-          "paddingTop": 14,
-        }
-      }
+    <Styled(BodyCopy)
+      color="#4a4a4a"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="extrabold"
+      letterSpacing="ls071"
       text="Available For Future Use"
-      url=""
-      width="225px"
+      textAlign="center"
     />
-  </Styled(View)>
+  </Styled(TouchableOpacity)>
 </Styled(View)>
 `;

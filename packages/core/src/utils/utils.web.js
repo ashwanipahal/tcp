@@ -90,12 +90,6 @@ export const routerPush = (href, as, query, siteId = getSiteId()) => {
   return Router.push(relHref, asPath, { query });
 };
 
-export const identifyBrand = () => {
-  const url = 'http://www.thechildrensplace.com/';
-
-  return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
-};
-
 /**
  * This common function works for finding key in an object.
  * Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
@@ -340,12 +334,49 @@ export const languageRedirect = (newLanguage, oldLanguage) => {
   }
 };
 
+/**
+ * This function will redirect to PDP from HOMEPAGE
+ * on the basis of productId
+ *
+ * TODO: It can be extended as per requirement
+ * to redirect from other pages also
+ */
+export const redirectToPdp = productId => {
+  if (!window) return null;
+
+  const { href } = window.location;
+  // TODO
+  if (href.includes('/p/')) {
+    return {
+      url: `/p?pid=${productId}`,
+      asPath: `/p/${productId}`,
+    };
+  }
+
+  return {
+    url: `/c?cid=toddler-girl-bottoms`,
+    asPath: `/c/toddler-girl-bottoms`,
+  };
+};
+
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configurePlpNavigationFromCMSUrl = url => {
+  const route = `${ROUTE_PATH.plp}/`;
+  if (url.includes(route)) {
+    const urlItems = url.split(route);
+    const queryParam = urlItems[0];
+    return `${ROUTE_PATH.plp}?cid=${queryParam}`;
+  }
+  return url;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  identifyBrand,
   getObjectValue,
   createUrlSearchParams,
   buildUrl,
@@ -360,6 +391,7 @@ export default {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
 };
 
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
@@ -400,7 +432,7 @@ export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
 
-  const { siteId, brandId, hostname } = resLocals;
+  const { country, currency, language, siteId, brandId, hostname } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
@@ -420,5 +452,8 @@ export const createAPIConfig = resLocals => {
     catalogId,
     isMobile: false,
     cookie: null,
+    country,
+    currency,
+    language,
   };
 };

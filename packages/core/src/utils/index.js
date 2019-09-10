@@ -4,7 +4,6 @@ export {
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  identifyBrand,
   getObjectValue,
   createUrlSearchParams,
   buildUrl,
@@ -23,8 +22,10 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
+  configurePlpNavigationFromCMSUrl,
 } from './utils.web';
 
 export {
@@ -43,5 +44,7 @@ export {
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
+  calculateAge,
   getLabelValue,
+  generateUniqueKeyUsingLabel,
 } from './utils';

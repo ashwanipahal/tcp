@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
+import { getVerificationResult } from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.selectors';
 import {
   getAddressList,
   deleteAddress,
   setDeleteModalMountedState,
   setAddressBookNotification,
 } from './AddressBook.actions';
-import { getUserInfo } from '../../User/container/User.actions';
 import AddressView from '../views/AddressView';
 import {
   getAddressListState,
@@ -19,26 +19,9 @@ import {
 } from './AddressBook.selectors';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
-// @flow
-type Props = {
-  getAddressListAction: () => void,
-  getUserInfoAction: () => void,
-  addressList: List<any>,
-  isFetching: boolean,
-  onDefaultShippingAddressClick: () => void,
-  showUpdatedNotification: any,
-  onDeleteAddress: Function,
-  deleteModalMountedState: boolean,
-  setDeleteModalMountState: Function,
-  showUpdatedNotificationOnModal: any,
-  clearAddressBookNotification: () => void,
-  labels: object,
-  addressLabels: object,
-};
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getAddressListAction, getUserInfoAction } = this.props;
-    getUserInfoAction();
+    const { getAddressListAction } = this.props;
     getAddressListAction();
   }
 
@@ -59,6 +42,7 @@ export class AddressBookContainer extends React.Component<Props> {
       showUpdatedNotificationOnModal,
       labels,
       addressLabels,
+      verificationResult,
     } = this.props;
     if (List.isList(addressList)) {
       return (
@@ -73,6 +57,7 @@ export class AddressBookContainer extends React.Component<Props> {
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
           addressLabels={addressLabels}
+          verificationResult={verificationResult}
         />
       );
     }
@@ -80,7 +65,7 @@ export class AddressBookContainer extends React.Component<Props> {
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     getAddressListAction: () => {
       dispatch(getAddressList());
@@ -93,9 +78,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     setDeleteModalMountState: payload => {
       dispatch(setDeleteModalMountedState(payload));
-    },
-    getUserInfoAction: () => {
-      dispatch(getUserInfo());
     },
     clearAddressBookNotification: () => {
       dispatch(
@@ -115,6 +97,7 @@ const mapStateToProps = state => {
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     deleteModalMountedState: deleteModalOpenState(state),
     addressLabels: getAddEditAddressLabels(state),
+    verificationResult: getVerificationResult(state),
   };
 };
 

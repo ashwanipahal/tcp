@@ -85,7 +85,7 @@ class LoginView extends React.PureComponent {
     } = this.props;
     const { setEmailid, getTouchStatus } = this.state;
     return (
-      <ScrollViewStyle>
+      <ScrollViewStyle keyboardShouldPersistTaps="handled">
         <LoginSection
           getTouchStatus={getTouchStatus}
           setEmailid={setEmailid}

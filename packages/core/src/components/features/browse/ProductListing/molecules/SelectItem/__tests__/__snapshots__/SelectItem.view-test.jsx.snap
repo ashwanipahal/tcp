@@ -33,11 +33,42 @@ exports[`Select Item is shown should render select item  1`] = `
           ";
     width: auto;
   }
-  .item-select {
+  .selected-items {
     text-transform: capitalize;
-    padding-left: ",
+    text-align: left;
+
+    @media ",
+          [Function],
+          " {
+      padding-left: ",
           [Function],
           ";
+    }
+    @media ",
+          [Function],
+          " {
+      padding-left: ",
+          [Function],
+          ";
+    }
+  }
+
+  .item-select {
+    background: url(",
+          "/static/images/circle-check-no-circle.svg",
+          ") no-repeat left top;
+    background-size: 18px 18px;
+    margin-bottom: ",
+          [Function],
+          ";
+    padding-bottom: 4px;
+    display: flex;
+
+    span {
+      font-weight: ",
+          [Function],
+          ";
+    }
 
     @media ",
           [Function],
@@ -45,11 +76,11 @@ exports[`Select Item is shown should render select item  1`] = `
       background: url(",
           "/static/images/selected-item.svg",
           ") no-repeat left top;
-      background-size: 20px 20px;
+      background-size: 18px 18px;
       margin-bottom: ",
           [Function],
           ";
-      padding-bottom: 8px;
+      padding-bottom: 4px;
       display: flex;
     }
   }

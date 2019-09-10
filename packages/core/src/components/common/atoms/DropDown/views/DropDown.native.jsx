@@ -230,7 +230,7 @@ class DropDown extends React.PureComponent<Props> {
         {heading && <StyledLabel isFocused>{heading}</StyledLabel>}
         <Row
           {...this.props}
-          onStartShouldSetResponder={this.openDropDown}
+          onPress={this.openDropDown}
           ref={ref => {
             this.rowMarker = ref;
           }}

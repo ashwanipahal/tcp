@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import BodyCopy from '../../atoms/BodyCopy';
 
-const MainWrapper = styled.View``;
+const MainWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+`;
 
 const HeaderWrapper = styled.View`
   padding: 0 18px;

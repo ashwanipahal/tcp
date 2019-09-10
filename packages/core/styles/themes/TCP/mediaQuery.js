@@ -2,13 +2,13 @@ export const breakpoints = {
   small: '375px',
   smallMax: '767px',
   medium: '768px',
-  mediumMax: '1023px',
-  large: '1024px',
+  mediumMax: '1199px',
+  large: '1200px',
   largeMax: '1439px',
   xlarge: '1440px',
   maxWidth: 1440,
   keys: ['xs', 'sm', 'lg'],
-  values: { xs: 0, sm: 768, lg: 1024 },
+  values: { xs: 0, sm: 768, lg: 1200 },
 };
 
 export const mediaQuery = {

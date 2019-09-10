@@ -2,6 +2,7 @@ const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';
 const validExpirationDate = 'lbl_err_validexpirationedate';
+const ssnMessage = 'lbl_err_ssnumber_ssn';
 
 export const formValidationMessages = {
   addressLine1: {
@@ -66,12 +67,12 @@ export const formValidationMessages = {
     required: validExpirationDate,
     expiration: validExpirationDate,
   },
-  giftCardNumber: 'lbl_err_giftcardnumber',
-  cardPin: 'lbl_err_cardpin',
+  giftCardNumber: 'Please enter a valid gift card number',
+  cardPin: 'Please enter your gift card pin number',
 
   Email: {
-    required: `lbl_err_email_req`,
-    validEmail: 'lbl_err_email_validemail',
+    required: `lbl_err_giftcardnumber`,
+    validEmail: 'lbl_err_cardpin',
   },
   emailAddress: {
     required: `lbl_err_email_req`,
@@ -110,7 +111,9 @@ export const formValidationMessages = {
     alphanumeric: 'lbl_err_prescreencode',
   },
   ssNumber: {
-    ssn: 'lbl_err_ssnumber_ssn',
+    ssn: ssnMessage,
+    nonSequentialNumber: ssnMessage,
+    required: ssnMessage,
   },
   birthDate: 'lbl_err_birthdate',
   statewocountry: {
@@ -281,6 +284,8 @@ export const formValidationRules = {
   },
   ssNumber: {
     ssn: true,
+    nonSequentialNumber: true,
+    required: true,
   },
   statewocountry: {
     required: true,

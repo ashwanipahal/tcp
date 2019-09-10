@@ -6,6 +6,7 @@ exports[`HomePageView should render correctly 1`] = `
     modules={
       Object {
         "moduleA": [Function],
+        "moduleB": [Function],
         "moduleD": [Function],
         "moduleH": [Function],
         "moduleK": [Function],
@@ -19,15 +20,23 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Connect(GetCandid) />
-  <Styled(CustomButton)
+  <ModuleB
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <Connect(GetCandid)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <Styled(WithTheme(CustomButton))
     buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    disableButton={false}
-    fill=""
     fullWidth={true}
-    locator=""
     onPress={[Function]}
     style={
       Object {
@@ -35,7 +44,6 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
     text="PLP Page"
-    url=""
   />
 </ScrollViewMock>
 `;

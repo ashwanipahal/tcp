@@ -18,9 +18,17 @@ const CenterAlignWrapper = styled.View`
   align-items: center;
 `;
 
+const HeadingTextWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: ${'center'};
+`;
+
 const LabelsWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 `;
 
@@ -60,4 +68,5 @@ export {
   ResetWrapper,
   ViewAlignCenter,
   ResetPassword,
+  HeadingTextWrapper,
 };

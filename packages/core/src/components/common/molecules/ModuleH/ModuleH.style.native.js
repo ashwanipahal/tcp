@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.View`
-  margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} 0;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const HeaderWrapper = styled.View`
@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.View`
 
 export const LinksWrapper = styled.View`
   position: absolute;
-  top: 86px;
+  top: 95px;
   left: 11px;
   z-index: ${props => props.theme.zindex.zOverlay};
 `;

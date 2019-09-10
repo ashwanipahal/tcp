@@ -2,6 +2,17 @@
 
 exports[`MyRewards should render carousel if coupons are avalable 1`] = `
 <View>
+  <Connect(ToastContainer) />
+  <CouponDetailModal
+    coupon={Object {}}
+    isApplyingOrRemovingCoupon={false}
+    labels={Object {}}
+    onApplyCouponToBagFromList={[Function]}
+    onRemove={[Function]}
+    onViewCouponDetails={[Function]}
+    openState={true}
+    toastMessage={[Function]}
+  />
   <Styled(View)
     spacingStyles="margin-bottom-LRG margin-top-LRG"
   >
@@ -42,6 +53,17 @@ exports[`MyRewards should render carousel if coupons are avalable 1`] = `
 
 exports[`MyRewards should render correctly 1`] = `
 <View>
+  <Connect(ToastContainer) />
+  <CouponDetailModal
+    coupon={Object {}}
+    isApplyingOrRemovingCoupon={false}
+    labels={Object {}}
+    onApplyCouponToBagFromList={[Function]}
+    onRemove={[Function]}
+    onViewCouponDetails={[Function]}
+    openState={true}
+    toastMessage={[Function]}
+  />
   <Styled(View)
     spacingStyles="margin-bottom-LRG margin-top-LRG"
   >

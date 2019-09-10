@@ -4,6 +4,7 @@
 // TODO: Need fix unused/proptypes eslint error
 
 import { call, takeLatest, put, delay } from 'redux-saga/effects';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
@@ -27,7 +28,7 @@ export function* removeCartItem({ payload }) {
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
@@ -40,7 +41,7 @@ export function* updateCartItemSaga({ payload }) {
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
@@ -83,7 +84,7 @@ export function* getProductSKUInfoSaga(payload) {
     );
     yield put(getProductSKUInfoSuccess(formattedInfo));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 

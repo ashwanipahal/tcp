@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyWalletTile component should render correctly when coupons are not present 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    color="black"
+    fontFamily="secondary"
+    fontSize="fs16"
+    text="lbl_overview_myWalletHeading"
+  />
+  <Styled(View) />
+  <View>
+    <Styled(BodyCopy)
+      color="black"
+      fontFamily="secondary"
+      fontSize="fs13"
+      text="lbl_overview_myWalletNoOfferAvailable lbl_overview_myWalletStartShop"
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel="lbl_overview_myWalletShopCTA"
+        accessibilityRole="link"
+        anchorVariation="button"
+        borderColor="black"
+        borderWidth="1"
+        buttonVariation="variable-width"
+        centered={true}
+        customStyle={Object {}}
+        dataLocator="accountoverview-myWallettile-startshopbtn"
+        fill="WHITE"
+        fullWidth={true}
+        locator=""
+        onPress={[Function]}
+        text="lbl_overview_myWalletShopCTA"
+        visible={false}
+      />
+    </Styled(View)>
+  </View>
+  <Styled(View)>
+    <Styled(WithTheme(CustomButton))
+      buttonVariation="variable-width"
+      fill="BLUE"
+      onPress={[Function]}
+      text="lbl_overview_viewMyWalletCTA"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`MyWalletTile component should render correctly when coupons are present 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    color="black"
+    fontFamily="secondary"
+    fontSize="fs16"
+    text="lbl_overview_myWalletHeading"
+  />
+  <Styled(View) />
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        data-locator="accountoverview-mywallettile-youhavewallettext"
+        fontSize="fs14"
+        fontWeight="semibold"
+        text="lbl_overview_myWalletOfferAvailable"
+      />
+    </View>
+    <Styled(View)>
+      <CouponList
+        commonLabels={Object {}}
+        coupons={
+          Immutable.List [
+            Object {},
+          ]
+        }
+        labels={
+          Object {
+            "lbl_overview_myPlaceRewardsAvailable": "",
+          }
+        }
+        sliceCount={3}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(WithTheme(CustomButton))
+      buttonVariation="variable-width"
+      fill="BLUE"
+      onPress={[Function]}
+      text="lbl_overview_walletViewAllCTA"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

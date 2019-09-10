@@ -33,8 +33,9 @@ describe('Coupon component', () => {
       labels: { addressBook: {}, common: {} },
     };
     const component = shallow(<CouponViewVanilla {...props} />);
+    component.setState({ helpStatus: true, detailStatus: true });
     component.find(CouponDetailModal).prop('onRequestClose')();
-    expect(component.state().helpStatus).toBe(false);
+    expect(component.state().detailStatus).toBe(false);
   });
 
   it('should renders CouponHelpModal component onRequestClose method & update state', () => {
@@ -43,6 +44,7 @@ describe('Coupon component', () => {
       labels: { addressBook: {}, common: {} },
     };
     const component = shallow(<CouponViewVanilla {...props} />);
+    component.setState({ helpStatus: true, detailStatus: true });
     component.find(CouponHelpModal).prop('onRequestClose')();
     expect(component.state().helpStatus).toBe(false);
   });

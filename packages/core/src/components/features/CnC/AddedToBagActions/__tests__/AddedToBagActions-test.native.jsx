@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AddedToBagActions from '../views/AddedToBagActions.view';
+import AddedToBagActions from '../views/AddedToBagActions.view.native';
 
 describe('AddedToBagActions native component', () => {
   it('AddedToBagActions native component renders correctly', () => {

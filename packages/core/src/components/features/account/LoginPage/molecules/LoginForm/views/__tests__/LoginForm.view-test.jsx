@@ -19,6 +19,7 @@ describe('LoginForm component', () => {
     const props = {
       labels: {
         login: {},
+        registration: {},
       },
       handleSubmit: () => {},
       className: 'test-class',
