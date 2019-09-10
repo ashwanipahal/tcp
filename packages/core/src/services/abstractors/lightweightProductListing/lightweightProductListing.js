@@ -6,7 +6,7 @@ import endpoints from '../../endpoints';
  * Abstractor layer for loading Product List Tabs data
  */
 const Abstractor = {
-  getData: ({ categoryId, rows = 15, fields = 'imageUrl' }) => {
+  getData: ({ categoryId, rows = 15, fields = 'imageUrl,seo_token' }) => {
     const payload = {
       body: {
         start: 0,

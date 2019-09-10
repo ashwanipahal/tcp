@@ -13,6 +13,7 @@ import {
   ModuleN,
   ModuleA,
   ModuleB,
+  ModuleJ,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC';
 
@@ -60,6 +61,7 @@ class HomePageView extends React.PureComponent<Props> {
     } = this.props;
     return (
       <ScrollView>
+        <ModuleJ navigation={navigation} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleB navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />

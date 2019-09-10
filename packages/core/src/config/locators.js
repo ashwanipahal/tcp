@@ -73,6 +73,13 @@ export default {
   moduleN_image: 'moduleN_image_',
   moduleN_cta_links: 'moduleN_cta_links_',
 
+  // Module J
+  moduleJ_header_text: 'moduleJ_header_text',
+  moduleJ_promobanner_text: 'moduleJ_promobanner_text',
+  moduleJ_promobanner_img: 'moduleJ_promobanner_img',
+  moduleJ_product_image: 'moduleJ_product_image_',
+  moduleJ_cta_link: 'moduleJ_cta_links',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
