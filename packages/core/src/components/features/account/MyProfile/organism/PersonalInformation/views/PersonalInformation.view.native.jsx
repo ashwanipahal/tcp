@@ -69,7 +69,7 @@ export class PersonalInformation extends React.PureComponent {
         <ModalNative
           isOpen={isOpenBool}
           onRequestClose={this.toggleModal}
-          heading={labels.lbl_profile_personal_information}
+          heading={labels.lbl_profile_heading}
         >
           <AddEditPersonalInformation onRequestClose={this.toggleModal} />
         </ModalNative>

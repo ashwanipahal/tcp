@@ -24,10 +24,10 @@ export const formValidationMessages = {
     required: 'lbl_err_country_required',
   },
   userBirthMonth: {
-    required: 'Please select a month',
+    required: 'lbl_err_userbirthdaymonth_required',
   },
   userBirthYear: {
-    required: 'Please select a year',
+    required: 'lbl_err_userbirthdayyear_required',
   },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
@@ -77,8 +77,8 @@ export const formValidationMessages = {
   cardPin: 'Please enter your gift card pin number',
 
   Email: {
-    required: `lbl_err_giftcardnumber`,
-    validEmail: 'lbl_err_cardpin',
+    required: `lbl_err_email_req`,
+    validEmail: 'lbl_err_email_validemail',
   },
   emailAddress: {
     required: `lbl_err_email_req`,

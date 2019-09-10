@@ -93,6 +93,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs12"
+            fontWeight="regular"
             text={getLabelValue(labels, 'lbl_profile_email_used_login')}
           />
         </AddEditMessageView>
@@ -175,6 +176,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
         <FieldBirthdayTopMarginWrapper>
           <BodyCopy
             fontFamily="secondary"
+            fontWeight="regular"
             fontSize="fs12"
             text={getLabelValue(labels, 'lbl_profile_celebration_birthday')}
           />

@@ -17,6 +17,7 @@ import {
   getAssociateId,
   getAirmilesDetails,
 } from '../../User/container/User.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
@@ -31,6 +32,11 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     formErrorMessage: PropTypes.shape({}).isRequired,
     onRequestClose: PropTypes.func.isRequired,
     messageSateChangeAction: PropTypes.func.isRequired,
+    toastMessage: PropTypes.func,
+  };
+
+  static defaultProps = {
+    toastMessage: () => {},
   };
 
   constructor(props) {
@@ -46,11 +52,14 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const { successMessage, onRequestClose } = this.props;
+    const { successMessage, errorMessage, onRequestClose, toastMessage } = this.props;
     if (successMessage === 'successMessage') {
       if (isMobileApp()) {
         onRequestClose();
       } else this.goBackToProfile();
+    }
+    if(errorMessage){
+      toastMessage(errorMessage);
     }
   }
 
@@ -123,6 +132,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
       labels,
       isEmployee,
       formErrorMessage,
+      toastMessage
     } = this.props;
 
     return (
@@ -132,6 +142,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         onSubmit={this.updateProfileInformation}
         onCancel={onRequestClose}
         labels={labels}
+        toastMessage={toastMessage}
         isEmployee={isEmployee}
         birthMonthOptionsMap={this.yearOptionsMap.monthsMap}
         birthYearOptionsMap={this.yearOptionsMap.yearsMap}
@@ -166,6 +177,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   messageStateChangeAction: payload => {
     dispatch(updateProfileError(payload));
+  },
+  toastMessage: errorMessage => {
+    dispatch(toastMessageInfo(errorMessage));
   },
 });
 
