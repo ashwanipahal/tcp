@@ -13,7 +13,7 @@ exports[`BonusPointsView should render correctly 1`] = `
     isPlcc={false}
     labels={
       Object {
-        "myPlaceRewards": Object {
+        "placeRewards": Object {
           "lbl_bonus_points_msg": "",
         },
       }

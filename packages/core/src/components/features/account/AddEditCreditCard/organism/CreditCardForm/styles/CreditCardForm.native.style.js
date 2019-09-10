@@ -22,7 +22,6 @@ const AddAddressButton = {
 
 const CancelButton = {
   fontWeight: 'normal',
-  opacity: 0.5,
   color: 'black',
   border: 1,
   marginTop: 15,

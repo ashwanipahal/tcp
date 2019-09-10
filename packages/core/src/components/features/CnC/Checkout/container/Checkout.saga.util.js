@@ -18,13 +18,7 @@ import {
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
 
-export function* addRegisteredUserAddress({
-  address,
-  phoneNumber,
-  emailAddress,
-  setAsDefault,
-  saveToAccount,
-}) {
+export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
   const selectedAddressId = yield select(selectors.getOnFileAddressKey);
   const userAddresses = yield select(getAddressListState);
@@ -50,7 +44,7 @@ export function* addRegisteredUserAddress({
           phoneNumber,
           emailAddress,
           primary: `${setAsDefault}`,
-          phone1Publish: `${saveToAccount}`,
+          phone1Publish: 'false',
           fromPage: '',
         },
       },

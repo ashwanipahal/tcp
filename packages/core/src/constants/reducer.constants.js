@@ -9,6 +9,8 @@ export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const FORM_REDUCER_KEY = 'form';
 export const LOADER_REDUCER_KEY = 'PageLoader';
 export const TOAST_REDUCER_KEY = 'Toast';
+export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
+export const SEARCH_REDUCER_KEY = 'Search';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -37,6 +39,7 @@ export const USER_ACTION_PATTERN = '@@User-';
 export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
+export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -160,6 +163,7 @@ export const REDUCER_ACTION_MAPPING = {
   [PRODUCT_TAB_LIST_REDUCER_KEY]: PRODUCT_TAB_LIST_ACTION_PATTERN,
   [NAVIGATION_REDUCER_KEY]: NAVIGATION_ACTION_PATTERN,
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
+  [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

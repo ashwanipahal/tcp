@@ -19,6 +19,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     anchorVariation="primary"
     fontSizeVariation="medium"
     onClick={[Function]}
+    text="apply_now_link_modal"
     underline={true}
   />
 </div>

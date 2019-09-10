@@ -19,7 +19,13 @@ export function* addGiftCard({
     }
     return yield put(addGiftCardFailure());
   } catch (err) {
-    return yield put(addGiftCardFailure(err.message));
+    let error = {};
+    /* istanbul ignore else */
+    error = err;
+    if (error && error.response) {
+      return yield put(addGiftCardFailure(error.response.body.errors[0]));
+    }
+    return null;
   }
 }
 

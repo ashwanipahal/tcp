@@ -23,7 +23,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.myPlaceRewards.ACC_LBL_PLACE_REWARDS_HEADING}
+            text={labels.placeRewards.ACC_LBL_PLACE_REWARDS_HEADING}
           />
         </StyledHeading>
         <UnderlineStyle />
@@ -31,7 +31,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.common.lbl_common_point_balance}
+            text={labels.placeRewards.lbl_common_point_balance}
           />
           <RewardsPoints />
         </StyledView>
@@ -40,7 +40,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
             <BodyCopy
               fontSize="fs16"
               fontWeight="extrabold"
-              text={labels.myPlaceRewards.lbl_my_rewards_points_history}
+              text={labels.placeRewards.lbl_my_rewards_points_history}
             />
           </StyledHeading>
           <PointsHistory />
@@ -58,12 +58,12 @@ const PlaceRewardsSection = ({ labels, className }) => {
 };
 
 PlaceRewardsSection.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   className: PropTypes.string,
 };
 
 PlaceRewardsSection.defaultProps = {
-  labels: { myPlaceRewards: { ACC_LBL_PLACE_REWARDS_HEADING: '' } },
+  labels: { placeRewards: { ACC_LBL_PLACE_REWARDS_HEADING: '' } },
   className: '',
 };
 

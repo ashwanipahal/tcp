@@ -68,8 +68,8 @@ describe('#BonusPointsDays Selectors', () => {
   it('#getBonusDetailsContentIdSelector should return content ID', () => {
     const state = {
       Labels: {
-        account: {
-          myPlaceRewards: {
+        global: {
+          placeRewards: {
             referred: [
               {
                 name: 'Bonus Points Days Details',
