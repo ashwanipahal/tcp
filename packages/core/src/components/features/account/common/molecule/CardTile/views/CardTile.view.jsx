@@ -178,7 +178,7 @@ class CardTile extends React.Component<Props> {
         {!isGiftCardBalanceRequested && (
           <Button
             onClick={this.handleCheckBalanceClick}
-            buttonVariation="sahil-width"
+            buttonVariation="variable-width"
             type="submit"
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"

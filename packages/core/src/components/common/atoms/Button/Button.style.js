@@ -45,20 +45,7 @@ const ButtonStyles = css`
       padding: 12px 32px;
     `
       : ''};
-      ${props =>
-        props.buttonVariation === 'sahil-width'
-          ? `
-          background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-          color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-          font-family: ${props.theme.fonts.secondaryFontFamily};
-          font-size: ${props.theme.fonts.fontSize.button.size}px - 2px;
-          font-weight: ${props.theme.fonts.fontWeight.black};
-          border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
-          width: calc(100% - 51.84px);
-          height: 53px;
 
-        `
-          : ''};
   ${props =>
     props.buttonVariation === 'category-links-light'
       ? `

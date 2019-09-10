@@ -279,8 +279,5 @@
       "scheme": "gymboree_uat",
       "xcodeVersion": "10.2.1"
     }
-  },
-  "artifactVersioning": {
-    "buildNumberFormat": "buildId"
   }
 }

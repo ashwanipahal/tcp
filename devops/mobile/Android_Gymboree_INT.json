@@ -287,8 +287,5 @@
       "packageJsonPath": "packages/mobileapp/package.json",
       "runTests": false
     }
-  },
-  "artifactVersioning": {
-    "buildNumberFormat": "buildId"
   }
 }

@@ -27,11 +27,11 @@ export const modalStyles = css`
 
   .Modal_Heading {
     font-family: ${props => props.theme.typography.fonts.primary};
-    font-weight: 800;
+    font-weight: ${props => props.theme.typography.fontWeights.black};
     border: none;
     margin-bottom: 10px;
     display: block;
-    height: 20px;
+    height: auto;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
     padding: 0;
     margin-top: 47px;
