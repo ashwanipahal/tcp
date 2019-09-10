@@ -76,7 +76,7 @@ class ModuleJ extends React.PureComponent<Props, State> {
                 locator={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
               >
                 <StyledImage
-                  name={LAZYLOAD_HOST_NAME.HOME}
+                  host={LAZYLOAD_HOST_NAME.HOME}
                   url={imageUrl}
                   height={PRODUCT_IMAGE_HEIGHT}
                   width={PRODUCT_IMAGE_WIDTH}
