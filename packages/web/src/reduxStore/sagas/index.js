@@ -45,7 +45,7 @@ import HomePageSaga from '../../components/features/content/HomePage/container/H
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
-import HeaderMiddleNavSaga from '../../components/features/content/Header/molecules/HeaderMiddleNav/HeaderMiddleNav.saga';
+import SearchBarSaga from '../../components/features/content/Header/molecules/SearchBar/SearchBar.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -57,7 +57,7 @@ export default function* rootSaga() {
     UserSaga(),
     LogOutPageSaga(),
     ForgotPasswordSaga(),
-    HeaderMiddleNavSaga(),
+    SearchBarSaga(),
     AddEditAddressSaga(),
     AddressBookSaga(),
     DeleteAddressSaga(),

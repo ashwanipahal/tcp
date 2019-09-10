@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
@@ -13,9 +10,8 @@ import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
+import SearchBar from '../SearchBar/index';
 import style from './HeaderMiddleNav.style';
-import searchData from './HeaderMiddleNav.mock';
-import { getSearchResult } from './HeaderMiddleNav.actions';
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -32,18 +28,18 @@ class HeaderMiddleNav extends React.PureComponent {
     super(props);
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
-      isOpenMiniBagModal: false,
       isSearchOpen: false,
+      isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
-      showProduct: false,
     };
-    this.searchInput = React.createRef();
-    this.openSearchBar = this.openSearchBar.bind(this);
-    this.closeSearchBar = this.closeSearchBar.bind(this);
-    this.changeSearchText = this.changeSearchText.bind(this);
+    this.setSearchState = this.setSearchState.bind(this);
+  }
+
+  setSearchState(currentStatus, cb = null) {
+    this.setState({ isSearchOpen: currentStatus }, cb ? cb() : () => {});
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -90,32 +86,6 @@ class HeaderMiddleNav extends React.PureComponent {
     }
   };
 
-  openSearchBar = e => {
-    e.preventDefault();
-    if (window.innerWidth <= breakpoints.large) {
-      routerPush('/search', '/search');
-    } else {
-      this.setState({ isSearchOpen: true }, () => {
-        this.searchInput.current.focus();
-      });
-    }
-  };
-
-  closeSearchBar = e => {
-    e.preventDefault();
-    this.setState({ isSearchOpen: false });
-  };
-
-  changeSearchText = e => {
-    e.preventDefault();
-    const { startSearch } = this.props;
-
-    const searchText = this.searchInput.current.value;
-    this.setState({ showProduct: Boolean(searchText.length) }, () => {
-      startSearch(searchText);
-    });
-  };
-
   render() {
     const {
       className,
@@ -124,8 +94,6 @@ class HeaderMiddleNav extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
-      labels,
-      searchResults,
     } = this.props;
     const brand = getBrand();
     const {
@@ -134,10 +102,8 @@ class HeaderMiddleNav extends React.PureComponent {
       triggerLoginCreateAccount,
       cartItemCount,
       isSearchOpen,
-      showProduct,
     } = this.state;
 
-    logger.debug(searchResults); // only for use purpose
     return (
       <React.Fragment>
         <Row className={`${className} header-middle-nav`}>
@@ -236,14 +202,8 @@ class HeaderMiddleNav extends React.PureComponent {
             )}
             <SearchBar
               className={!isSearchOpen && 'rightLink'}
-              openSearchBar={this.openSearchBar}
-              changeSearchText={this.changeSearchText}
-              closeSearchBar={this.closeSearchBar}
-              isOpen={isSearchOpen}
-              showProduct={showProduct}
-              searchRef={this.searchInput}
-              searchData={searchData}
-              labels={labels}
+              setSearchState={this.setSearchState}
+              isSearchOpen={isSearchOpen}
             />
             <Anchor
               to=""
@@ -310,57 +270,16 @@ HeaderMiddleNav.propTypes = {
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
-  startSearch: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
-  searchResults: PropTypes.shape({
-    trends: PropTypes.shape({}),
-    categories: PropTypes.shape({}),
-    products: PropTypes.shape({}),
-  }),
-  labels: PropTypes.shape({
-    lbl_search_whats_trending: PropTypes.string,
-    lbl_search_recent_search: PropTypes.string,
-    lbl_search_looking_for: PropTypes.string,
-    lbl_search_product_matches: PropTypes.string,
-  }),
 };
 
 HeaderMiddleNav.defaultProps = {
   navigationDrawer: {
     open: false,
   },
-  searchResults: {
-    trends: {},
-    categories: {},
-    products: {},
-  },
-  labels: PropTypes.shape({
-    lbl_search_whats_trending: '',
-    lbl_search_recent_search: '',
-    lbl_search_looking_for: '',
-    lbl_search_product_matches: '',
-  }),
-};
-
-const mapStateToProps = state => {
-  return {
-    labels: state.Labels.global && state.Labels.global.Search,
-    searchResults: state.Search.searchResults,
-  };
-};
-
-export const mapDispatchToProps = dispatch => {
-  return {
-    startSearch: searchTerm => {
-      dispatch(getSearchResult(searchTerm));
-    },
-  };
 };
 
 export { HeaderMiddleNav as HeaderMiddleNavVanilla };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyles(HeaderMiddleNav, style));
+export default withStyles(HeaderMiddleNav, style);
