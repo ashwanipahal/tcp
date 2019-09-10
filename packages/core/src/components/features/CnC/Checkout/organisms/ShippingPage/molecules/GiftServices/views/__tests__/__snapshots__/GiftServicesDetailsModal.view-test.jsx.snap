@@ -16,16 +16,16 @@ exports[`GiftServices component renders correctly 1`] = `
   .brand-image {
     width: 83px;
   }
-  .shortDesc{
-    font-weight:bold;
-    font-size:14px;
+  .shortDesc {
+    font-weight: bold;
+    font-size: 14px;
   }
   .checkbox-header {
     width: 180px;
     display: flex;
   }
   .TextBox__input {
-    border: 1px solid ;
+    border: 1px solid;
     height: 146px;
     padding: 0;
   }
@@ -54,24 +54,21 @@ exports[`GiftServices component renders correctly 1`] = `
     width: 97%;
     height: 71px;
     cursor: pointer;
-    adding-top: 0px;
+    padding-top: 0px;
     padding-bottom: 0px;
   }
-  .price{
-    float:right;
+  .price {
+    float: right;
   }
-  .longDesc{
-    font-size:12px;
+  .longDesc {
+    font-size: 12px;
   }
   .giftServicesDetailsLink {
     text-decoration: underline;
     cursor: pointer;
     padding-top: 3px;
   }
-  .checkbox-header {
-    width: 180px;
-    display: flex;
-  }
+
   .custom-select {
     width: 100%;
   }
