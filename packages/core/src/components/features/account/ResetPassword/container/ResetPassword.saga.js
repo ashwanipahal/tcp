@@ -12,7 +12,10 @@ export function* ResetPassword({ payload }) {
     let error = {};
     /* istanbul ignore else */
     error = err;
-    return yield put(resetPasswordError(error.response.body.errors[0]));
+    if (error && error.response) {
+      return yield put(resetPasswordError(error.response.body.errors[0]));
+    }
+    return null;
   }
 }
 

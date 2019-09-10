@@ -50,7 +50,6 @@ export function* addCreditCardSaga({ payload }) {
     let error = {};
     /* istanbul ignore else */
     error = err;
-    console.log('error--------------------', error);
     return yield put(addCreditCardError(error.response.body.errors[0]));
   }
 }
@@ -90,8 +89,10 @@ export function* updateCreditCardSaga({ payload }) {
     let error = {};
     /* istanbul ignore else */
     error = err;
-    console.log('error--------------------', error);
-    return yield put(addCreditCardError(error.response.body.errors[0]));
+    if (error && error.response) {
+      return yield put(addCreditCardError(error.response.body.errors[0]));
+    }
+    return null;
   }
 }
 

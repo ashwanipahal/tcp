@@ -21,11 +21,11 @@ export function* addGiftCard({
   } catch (err) {
     let error = {};
     /* istanbul ignore else */
-    if (err instanceof Error) {
-      error = err;
-      console.log('error--------------------', error);
+    error = err;
+    if (error && error.response) {
+      return yield put(addGiftCardFailure(error.response.body.errors[0]));
     }
-    return yield put(addGiftCardFailure(error.response.body.errors[0]));
+    return null;
   }
 }
 

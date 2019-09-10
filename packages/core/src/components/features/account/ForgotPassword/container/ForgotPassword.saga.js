@@ -28,7 +28,7 @@ export function* ForgotPassword(action) {
     let error = {};
     /* istanbul ignore else */
     error = err;
-    if (error) {
+    if (error && error.response) {
       return yield put(userNotAvailable(error.response.body.errors[0]));
     }
     yield put(getResetPasswordFail({ state: true }));
