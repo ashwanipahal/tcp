@@ -1,31 +1,34 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { List } from 'immutable';
 import { BillingPaymentForm } from '../views/BillingPaymentForm.view';
 
-const card = {
-  accountNo: '************3743',
-  addressDetails: {
-    addressLine1: 'Dorney Park Road',
-    addressLine2: '',
-    city: 'Allentown',
-    country: 'US',
+const card = [
+  {
+    accountNo: '************3743',
+    addressDetails: {
+      addressLine1: 'Dorney Park Road',
+      addressLine2: '',
+      city: 'Allentown',
+      country: 'US',
+    },
+    ccBrand: 'PLACE CARD',
+    ccType: 'PLACE CARD1',
+    creditCardId: 82596,
+    defaultInd: false,
   },
-  ccBrand: 'PLACE CARD',
-  ccType: 'PLACE CARD',
-  creditCardId: 82596,
-  defaultInd: false,
-};
+];
 
 describe('ButtonList component', () => {
   const props = {
     className: '',
-    onFileCardKey: '',
+    onFileCardKey: 82596,
     isMobile: false,
     cvvCodeRichText: null,
     orderHasShipping: false,
     isGuest: false,
     handleSubmit: jest.fn(),
-    cardList: [{ card }],
+    cardList: new List(card),
     labels: {
       lbl_billing_paymentMethodTitle: 'Payment Method',
       lbl_billing_creditCard: 'Credit Card',
@@ -50,6 +53,11 @@ describe('ButtonList component', () => {
     backLinkShipping: '',
     nextSubmitText: '',
   };
+
+  it('renders correctly without props', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    expect(component).toMatchSnapshot();
+  });
 
   it('renders correctly without props', () => {
     const component = shallow(<BillingPaymentForm {...props} />);

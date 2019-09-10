@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DropdownListVanilla from '../views/CreditCardDropdownList.view';
+import { CreditCardDropdownListVanilla } from '../views/CreditCardDropdownList.view';
 
 describe('Credit DropdownList component', () => {
   it('should renders correctly', () => {
@@ -22,7 +22,7 @@ describe('Credit DropdownList component', () => {
       activeTitle: 'Please select list item',
       activeValue: 'activeClassValue',
     };
-    const component = shallow(<DropdownListVanilla {...props} />);
+    const component = shallow(<CreditCardDropdownListVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -57,9 +57,9 @@ describe('Credit DropdownList component', () => {
       },
     ];
     const component = shallow(
-      <DropdownListVanilla optionsMap={options} className="sample-class" />
+      <CreditCardDropdownListVanilla optionsMap={options} className="sample-class" />
     );
-    expect(component.find('li')).toHaveLength(0);
+    expect(component.find('li')).toHaveLength(3);
     expect(component).toMatchSnapshot();
   });
 });

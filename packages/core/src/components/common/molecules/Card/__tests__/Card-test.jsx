@@ -26,9 +26,21 @@ describe('Card component', () => {
     cardNumber: '',
     showAddress: false,
   };
+  const component = shallow(<CardVanilla {...props} />);
 
   it('renders correctly without props', () => {
-    const component = shallow(<CardVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+  it('renders correctly with props dataLocatorPrefix', () => {
+    component.setProps({ dataLocatorPrefix: 'card' });
+    expect(component).toBeDefined();
+  });
+  it('renders correctly with showAddress', () => {
+    component.setProps({ showAddress: true });
+    expect(component).toBeDefined();
+  });
+  it('renders correctly with isDefault', () => {
+    component.setProps({ isDefault: true });
+    expect(component).toBeDefined();
   });
 });

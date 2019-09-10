@@ -3,7 +3,7 @@ import CREDIT_CARD_CONSTANTS from './CreditCard.constants';
 import { setModuleX } from './CreditCard.action';
 import { getModuleX } from '../../../../../../../services/abstractors/common/moduleX';
 
-export function* fetchModuleX({ payload = '' }) {
+export function* fetchModuleX({ payload }) {
   try {
     const result = yield call(getModuleX, payload);
     yield put(setModuleX(result));

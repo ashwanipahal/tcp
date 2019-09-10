@@ -36,7 +36,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       };
     }
     return {
-      onFileCardKey: cardList.get(0).creditCardId,
+      onFileCardKey: cardList.get(0) && cardList.get(0).creditCardId,
       paymentMethodId: constants.PAYMENT_METHOD_CREDIT_CARD,
     };
   };
