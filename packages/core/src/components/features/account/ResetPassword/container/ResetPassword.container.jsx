@@ -1,7 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getError, getSuccess } from './ResetPassword.selectors';
+import {
+  getError,
+  getSuccess,
+  getResetPasswordErrorMessage,
+  getShowNotificationState,
+} from './ResetPassword.selectors';
 import ResetPasswordComponent from '../views';
 import { resetPassword, resetState } from './ResetPassword.actions';
 
@@ -17,6 +22,8 @@ export class ResetPasswordContainer extends PureComponent {
       em: PropTypes.string.isRequired,
       logonPasswordOld: PropTypes.string.isRequired,
     }).isRequired,
+    resetPasswordErrorMessage: PropTypes.string.isRequired,
+    showNotification: PropTypes.bool.isRequired,
   };
 
   componentDidUpdate() {
@@ -47,7 +54,13 @@ export class ResetPasswordContainer extends PureComponent {
   };
 
   render() {
-    const { successMessage, errorMessage, labels } = this.props;
+    const {
+      successMessage,
+      errorMessage,
+      labels,
+      resetPasswordErrorMessage,
+      showNotification,
+    } = this.props;
     return (
       <ResetPasswordComponent
         successMessage={successMessage}
@@ -55,6 +68,8 @@ export class ResetPasswordContainer extends PureComponent {
         onSubmit={this.resetPassword}
         onBack={this.backHandler}
         labels={labels}
+        resetPasswordErrorMessage={resetPasswordErrorMessage}
+        showNotification={showNotification}
       />
     );
   }
@@ -63,6 +78,8 @@ export class ResetPasswordContainer extends PureComponent {
 export const mapStateToProps = state => ({
   successMessage: getSuccess(state),
   errorMessage: getError(state),
+  resetPasswordErrorMessage: getResetPasswordErrorMessage(state),
+  showNotification: getShowNotificationState(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

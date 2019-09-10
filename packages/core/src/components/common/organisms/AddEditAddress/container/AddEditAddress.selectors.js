@@ -1,11 +1,13 @@
 import { createSelector } from 'reselect';
+import {
+  LOGINPAGE_REDUCER_KEY,
+  ADDEDITADDRESS_REDUCER_KEY,
+} from '../../../../../constants/reducer.constants';
 import { getLabelValue } from '../../../../../utils';
-
-import { LOGINPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {
-  return state.AddEditAddressReducer;
+  return state[ADDEDITADDRESS_REDUCER_KEY];
 };
 
 export const getUserEmail = state => {
@@ -20,6 +22,43 @@ export const getAddressById = createSelector(
   [getAddressListState, getAddressId],
   (addressList, addressId) => {
     return addressId ? addressList.find(address => address.addressId === addressId) : null;
+  }
+);
+
+export const getLabels = state => state.Labels.global;
+
+export const getAddEditErrorResponse = state => {
+  return state[ADDEDITADDRESS_REDUCER_KEY].get('error');
+};
+
+export const getshowNotification = createSelector(
+  getAddressResponse,
+  resp => resp && resp.get('showNotification')
+);
+
+export const getAddEditLabels = createSelector(
+  getLabels,
+  labels => labels && labels.addEditAddress
+);
+
+export const getAddEditErrorMessage = createSelector(
+  [getAddEditErrorResponse, getAddEditLabels],
+  (loginState, labels) => {
+    const errorParameters = loginState && loginState.getIn(['errorParameters', '0']);
+    const errorCode = loginState && loginState.get('errorCode');
+    if (
+      (errorParameters && labels[`lbl_addEditAddress_error_${errorParameters}`]) ||
+      (errorCode && labels[`lbl_addEditAddress_error_${errorCode}`])
+    ) {
+      if (errorParameters) {
+        return labels[`lbl_addEditAddress_error_${errorParameters}`];
+      }
+      return labels[`lbl_addEditAddress_error_${errorCode}`];
+    }
+    return (
+      (loginState && loginState.getIn(['errorMessage', '_error'])) ||
+      labels.lbl_addEditAddress_error
+    );
   }
 );
 

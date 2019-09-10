@@ -10,6 +10,8 @@ import {
   getOnFileAddressKey,
   getAddEditCreditCardSuccess,
   getAddEditCreditCardError,
+  getAddGiftCardErrorMessage,
+  getshowNotification,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
@@ -18,7 +20,6 @@ import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
-import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -36,6 +37,7 @@ export class AddEditCreditCard extends React.PureComponent {
     labels: PropTypes.shape({}),
     addressLabels: PropTypes.shape({}),
     formErrorMessage: PropTypes.shape({}).isRequired,
+    showNotification: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -173,6 +175,7 @@ export class AddEditCreditCard extends React.PureComponent {
       labels,
       addressLabels,
       formErrorMessage,
+      showNotification,
     } = this.props;
 
     if (addressList === null) {
@@ -201,6 +204,7 @@ export class AddEditCreditCard extends React.PureComponent {
         errorMessage={addEditCreditCardError}
         addressFormLabels={addressLabels.addressFormLabels}
         formErrorMessage={formErrorMessage}
+        showNotification={showNotification}
       />
     );
   }
@@ -216,7 +220,8 @@ const mapStateToProps = (state, ownProps) => {
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
     addressLabels: getAddEditAddressLabels(state),
-    formErrorMessage: getFormValidationErrorMessages(state),
+    formErrorMessage: getAddGiftCardErrorMessage(state),
+    showNotification: getshowNotification(state),
   };
 };
 
