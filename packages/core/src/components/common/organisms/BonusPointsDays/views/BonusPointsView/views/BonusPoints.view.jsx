@@ -63,7 +63,7 @@ class BonusPointsView extends React.Component {
       <>
         {view === constants.VIEWS.READ && (
           <BonusPointsReadSection
-            labels={labels.placeRewards}
+            labels={labels.account.myPlaceRewards}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
             availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
             usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
