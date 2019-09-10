@@ -5,12 +5,16 @@ import { cardIconMapping } from '../../../../features/account/common/molecule/Ca
 import BodyCopy from '../../../atoms/BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import CardStyle from '../Card.style';
+import constants from '../../../../features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.constants';
 
 const CardImage = ({ card, cardNumber }) => {
   let cardTopMargin = 'elem-mt-XL';
   if (card.defaultInd) {
     cardTopMargin = 'elem-mt-XS';
-  } else if (card.ccType !== 'GiftCard' && card.ccType !== 'VENMO') {
+  } else if (
+    card.ccType !== constants.ACCEPTED_CREDIT_CARDS.GIFT_CARD &&
+    card.ccType !== constants.ACCEPTED_CREDIT_CARDS.VENMO
+  ) {
     cardTopMargin = 'elem-mt-MED';
   }
   const cardIcon = getIconPath(cardIconMapping[card.ccBrand]);

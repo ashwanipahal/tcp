@@ -51,12 +51,12 @@ const getFormattedAddress = (address, dataLocatorPrefix) => {
   );
 };
 
-const getSelectWrapper = isDefault => {
+const getSelectWrapper = (isDefault, labels) => {
   return (
     !isDefault && (
       <BodyCopy component="div" textAlign="right" fontFamily="secondary" className="hideOnDesktop">
         <Button buttonVariation="variable-width" fill="BLACK">
-          SELECT
+          {labels.lbl_billing_select}
         </Button>
       </BodyCopy>
     )
@@ -102,7 +102,7 @@ const Card = ({
       ) : (
         <BodyCopy component="div" fontFamily="secondary">
           <CardImage card={card} cardNumber={cardNumber} />
-          {getSelectWrapper(isDefault)}
+          {getSelectWrapper(isDefault, labels)}
         </BodyCopy>
       )}
       {showAddress && getFormattedAddress(card.addressDetails, dataLocatorPrefix)}
@@ -116,7 +116,7 @@ const Card = ({
           <Anchor
             fontSizeVariation="medium"
             underline
-            to="/#"
+            to="/"
             anchorVariation="primary"
             className="billing-payment-edit"
             dataLocator="billing-payment-edit"

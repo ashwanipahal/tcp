@@ -83,7 +83,6 @@ class CustomSelect extends React.Component<Props> {
         optionsMap={options}
         clickHandler={this.onClickHandler}
         activeValue={activeValue}
-        className="custom-select-dropDownList"
       />
     );
   };

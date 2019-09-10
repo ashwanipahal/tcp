@@ -86,7 +86,8 @@ export default css`
     }
     .TCPModal__Content_Modal .dropdownliBottomBorder {
       border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
-      margin: 20px 10px;
+      margin: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS}
+        ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     }
     .TCPModal__Content_Modal .ulBorderWithLastRow li:last-child {
       border: none;
