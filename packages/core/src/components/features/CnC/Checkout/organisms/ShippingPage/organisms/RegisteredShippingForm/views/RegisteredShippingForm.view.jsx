@@ -41,19 +41,37 @@ class RegisteredShippingForm extends React.Component {
     }
     if (userAddresses && userAddresses.size > 0 && !shippingAddress) {
       const defaultAddress = userAddresses.find(address => address.primary === 'true');
-      if (!defaultAddress) {
-        dispatch(change(formName, 'onFileAddressKey', userAddresses.get(0).addressId));
-      }
+      this.setDefaultAddress({ defaultAddress });
     }
+    this.setDefaultShippingValue();
   }
+
+  setDefaultAddress = ({ defaultAddress }) => {
+    const { dispatch, userAddresses } = this.props;
+    if (defaultAddress) {
+      dispatch(change(formName, 'onFileAddressKey', defaultAddress.addressId));
+    }
+    if (!defaultAddress) {
+      dispatch(change(formName, 'onFileAddressKey', userAddresses.get(0).addressId));
+      dispatch(change(formName, 'onFileAddressKey', userAddresses.get(0).addressId));
+    }
+  };
+
+  setDefaultShippingValue = () => {
+    const { userAddresses, dispatch } = this.props;
+    if (userAddresses && userAddresses.size === 0) {
+      dispatch(change(formName, 'defaultShipping', true));
+    }
+  };
 
   getAddressOptions = () => {
     const { userAddresses, shippingAddressId, labels } = this.props;
+    const userAddressesLength = userAddresses && userAddresses.size;
     let addressOptions = userAddresses.map(address => {
       let defaultId = false;
       if (address.primary === 'true') {
         defaultId = true;
-      } else if (shippingAddressId) {
+      } else if (shippingAddressId && !userAddressesLength) {
         defaultId = address.addressId === shippingAddressId;
       }
       return {
@@ -91,19 +109,17 @@ class RegisteredShippingForm extends React.Component {
   };
 
   toggleAddNewAddressMode = () => {
-    const { toggleAddNewAddress, isMobile, toggleAddEditModal } = this.props;
+    const { toggleAddNewAddress, isMobile, toggleAddEditModal, dispatch } = this.props;
+    dispatch(change(formName, 'defaultShipping', false));
     if (isMobile) {
       return toggleAddEditModal({ type: 'add' });
     }
     return toggleAddNewAddress();
   };
 
-  onAddressDropDownChange = () => {
-    const { onFileAddressKey, isEditing, isAddNewAddress, dispatch } = this.props;
-    if ((isEditing || isAddNewAddress) && onFileAddressKey === '') {
-      dispatch(change(formName, 'saveToAddressBook', false));
-    }
-    if (onFileAddressKey === '') {
+  onAddressDropDownChange = value => {
+    const { onFileAddressKey } = this.props;
+    if (onFileAddressKey === '' && value !== '') {
       this.toggleAddNewAddressMode();
     }
   };
@@ -237,6 +253,13 @@ class RegisteredShippingForm extends React.Component {
     );
   };
 
+  onSaveToAccountChange = (e, value) => {
+    const { dispatch, userAddresses } = this.props;
+    if ((userAddresses && userAddresses.size === 0) || !value) {
+      dispatch(change(formName, 'defaultShipping', value));
+    }
+  };
+
   renderDefaultOptions = () => {
     const { isAddNewAddress, userAddresses, isEditing, modalState, modalType, labels } = this.props;
     const showSaveToAddressBook =
@@ -251,7 +274,12 @@ class RegisteredShippingForm extends React.Component {
       <Row fullBleed>
         {showSaveToAddressBook && (
           <Col colSize={{ small: 6, medium: 8, large: 12 }} className="elem-mb-LRG">
-            <Field showDefaultCheckbox={false} component={InputCheckbox} name="saveToAddressBook">
+            <Field
+              showDefaultCheckbox={false}
+              component={InputCheckbox}
+              name="saveToAddressBook"
+              onChange={this.onSaveToAccountChange}
+            >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {getLabelValue(labels, 'lbl_shipping_saveToAccount', 'shipping', 'checkout')}
               </BodyCopy>

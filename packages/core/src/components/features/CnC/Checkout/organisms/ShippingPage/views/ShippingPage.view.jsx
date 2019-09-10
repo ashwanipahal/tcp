@@ -97,7 +97,12 @@ export default class ShippingPage extends React.PureComponent {
       (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
     ) {
       const defaultAddress = userAddresses.filter(item => item.primary === 'true');
-      return { defaultAddressId: defaultAddress.size > 0 ? defaultAddress.get(0).addressId : '' };
+      return {
+        defaultAddressId:
+          defaultAddress && defaultAddress.size > 0
+            ? defaultAddress.addressId
+            : userAddresses.get(0) && userAddresses.get(0).addressId,
+      };
     }
     if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
       return { defaultAddressId: addEditResponseAddressId };
@@ -247,7 +252,7 @@ export default class ShippingPage extends React.PureComponent {
             initialValues={{
               address: { country: getSiteId() && getSiteId().toUpperCase() },
               shipmentMethods: { shippingMethodId: defaultShipmentId },
-              saveToAddressBook: !isGuest && userAddresses && userAddresses.size > 0,
+              saveToAddressBook: !isGuest,
               onFileAddressKey: defaultAddressId,
             }}
             selectedShipmentId={selectedShipmentId}

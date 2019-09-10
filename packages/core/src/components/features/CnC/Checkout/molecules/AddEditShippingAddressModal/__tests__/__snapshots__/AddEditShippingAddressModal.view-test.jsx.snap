@@ -1,25 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddEditShippingAddress should render correctly 1`] = `
-<Styled(Modal)
-  className="TCPModal__Content"
-  closeIconDataLocator="closeeditmodal"
-  fixedWidth={true}
-  heading=""
-  isOpen={true}
-  onRequestClose={[Function]}
-  overlayClassName="TCPModal__Overlay"
+<StyledComponent
+  actionButtons={[Function]}
+  addressFields={[Function]}
+  defaultOptions={[Function]}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gzVnrw",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+input {
+  background-color: ",
+          [Function],
+          ";
+}
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(AddEditShippingAddress)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gzVnrw",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  modalState={true}
+  modalType="edit"
+  toggleAddEditModal={[Function]}
 />
 `;
 
 exports[`AddEditShippingAddress should render correctly with modalType add 1`] = `
-<Styled(Modal)
-  className="TCPModal__Content"
-  closeIconDataLocator="closeaddmodal"
-  fixedWidth={true}
-  heading=""
-  isOpen={true}
-  onRequestClose={[Function]}
-  overlayClassName="TCPModal__Overlay"
+<StyledComponent
+  actionButtons={[Function]}
+  addressFields={[Function]}
+  defaultOptions={[Function]}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gzVnrw",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+input {
+  background-color: ",
+          [Function],
+          ";
+}
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(AddEditShippingAddress)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gzVnrw",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  modalState={true}
+  modalType="add"
+  toggleAddEditModal={[Function]}
 />
 `;

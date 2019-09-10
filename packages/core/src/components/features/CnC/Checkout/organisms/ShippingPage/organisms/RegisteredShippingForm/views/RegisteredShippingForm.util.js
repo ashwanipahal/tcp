@@ -11,19 +11,21 @@ const getSelectedAddress = (addressList, onFileAddressKey) => {
 const getDefaultShippingDisabledState = ({
   isEditing,
   isSaveToAddressBookChecked,
-  isAddNewAddress,
   modalState,
   modalType,
+  userAddresses,
 }) => {
-  let defaultShippingDisabled = !isEditing && !(modalState && modalType === 'edit');
-  if (isAddNewAddress) {
-    if (!isSaveToAddressBookChecked) {
-      defaultShippingDisabled = true;
-    } else {
-      defaultShippingDisabled = false;
-    }
-  } else if (modalState && modalType === 'add') {
-    defaultShippingDisabled = false;
+  let defaultShippingDisabled = false;
+  if (
+    (userAddresses &&
+      userAddresses.size === 1 &&
+      (isEditing || (modalState && modalType === 'edit'))) ||
+    !isSaveToAddressBookChecked
+  ) {
+    defaultShippingDisabled = true;
+  }
+  if (isSaveToAddressBookChecked && (userAddresses && userAddresses.size === 0)) {
+    defaultShippingDisabled = true;
   }
   return defaultShippingDisabled;
 };
