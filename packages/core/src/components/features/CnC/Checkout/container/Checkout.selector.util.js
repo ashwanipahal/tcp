@@ -63,10 +63,9 @@ const getPickUpContactFormLabels = state => {
 const getGiftServicesFormData = state => {
   const selector = formValueSelector('GiftServices');
   return {
-    optionId: selector(state, 'optionId'),
+    catEntryId: selector(state, 'optionId'),
     hasGiftWrapping: selector(state, 'hasGiftWrapping'),
-    message: selector(state, 'message'),
-    brand: selector(state, 'brand'),
+    GiftMsg: selector(state, 'message'),
   };
 };
 

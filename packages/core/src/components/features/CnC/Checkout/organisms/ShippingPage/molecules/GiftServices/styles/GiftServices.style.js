@@ -4,8 +4,16 @@ export default css`
   .brand-image {
     width: 83px;
   }
+  .shortDesc {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .checkbox-header {
+    width: 180px;
+    display: flex;
+  }
   .TextBox__input {
-    border: 1px solid #c3c3c3;
+    border: 1px solid;
     height: 146px;
     padding: 0;
   }
@@ -31,19 +39,24 @@ export default css`
     width: 100%;
   }
   .dropdownliBottomBorder {
-    width: 98%;
+    width: 97%;
     height: 71px;
     cursor: pointer;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .price {
+    float: right;
+  }
+  .longDesc {
+    font-size: 12px;
   }
   .giftServicesDetailsLink {
     text-decoration: underline;
     cursor: pointer;
     padding-top: 3px;
   }
-  .checkbox-header {
-    width: 180px;
-    display: flex;
-  }
+
   .custom-select {
     width: 100%;
   }

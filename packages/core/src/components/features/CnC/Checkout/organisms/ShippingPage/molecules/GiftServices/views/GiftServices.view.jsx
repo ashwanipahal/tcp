@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, change, reduxForm } from 'redux-form';
-import ColorSelector from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ColorSelect/views/ColorSelect.view';
+import CustomSelect from '@tcp/core/src/components/common/molecules/CustomSelect';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/GiftServices.style';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
@@ -18,16 +18,26 @@ import TextBox from '../../../../../../../../common/atoms/TextBox';
 class GiftServices extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { isGiftServicesChecked, initialValues } = this.props;
+
     this.state = {
       detailStatus: false,
       isGymboreeBrand: isGymboree(),
+      isChecked: isGiftServicesChecked,
+      message: initialValues.message,
     };
   }
 
   handleChange = () => {
-    const { dispatch, formName, formSection } = this.props;
-    if (dispatch) {
-      dispatch(change(formName, `${formSection}.phoneNumber`));
+    const { isChecked } = this.state;
+    const { dispatch } = this.props;
+    this.setState({
+      isChecked: !isChecked,
+      message: '',
+    });
+    if (!isChecked && dispatch) {
+      dispatch(change('GiftServices', `message`, ''));
+      dispatch(change('GiftServices', `optionId`, 'standard'));
     }
   };
 
@@ -53,18 +63,22 @@ class GiftServices extends React.PureComponent {
               <React.Fragment>
                 <div>
                   <span>{servicesMap.name}</span>
-                  <span>{servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}</span>
+                  <span className="price">
+                    {servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}
+                  </span>
                 </div>
               </React.Fragment>
             ),
             content: (
               <React.Fragment>
-                <div>
+                <div className="shortDesc">
                   <span>{servicesMap.name}</span>
-                  <span>{servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}</span>
+                  <span className="price">
+                    {servicesMap.price === '0.00' ? 'FREE' : `$${servicesMap.price}`}
+                  </span>
                 </div>
                 <div>
-                  <span>{servicesMap.longDescription}</span>
+                  <span className="longDesc">{servicesMap.longDescription}</span>
                 </div>
               </React.Fragment>
             ),
@@ -78,17 +92,17 @@ class GiftServices extends React.PureComponent {
     this.setState({ isGymboreeBrand });
   };
 
-  giftServiceChanged = value => {
-    const { dispatch, formName } = this.props;
+  giftServiceChanged = (e, value) => {
+    const { dispatch } = this.props;
     if (dispatch) {
-      dispatch(change(formName, `optionId`, value));
+      dispatch(change('GiftServices', `optionId`, value));
     }
   };
 
   render() {
-    const { className, labels, isGiftServicesChecked, giftWrapOptions } = this.props;
+    const { className, labels, giftWrapOptions } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions);
-    const { detailStatus, isGymboreeBrand } = this.state;
+    const { detailStatus, isGymboreeBrand, isChecked, message } = this.state;
 
     return (
       <form className={className} noValidate>
@@ -137,7 +151,7 @@ class GiftServices extends React.PureComponent {
             {labels.addAGift}
           </BodyCopy>
 
-          {isGiftServicesChecked && (
+          {!!isChecked && (
             <>
               <Row fullBleed className="giftServicesContainer">
                 <BodyCopy
@@ -193,10 +207,10 @@ class GiftServices extends React.PureComponent {
                         width={87}
                         id="color"
                         name="optionId"
-                        component={ColorSelector}
+                        component={CustomSelect}
                         options={giftServicesList}
                         dataLocator="addnewaddress-state"
-                        onChange={this.giftServiceChanged}
+                        clickHandler={this.giftServiceChanged}
                       />
                     </div>
                   </div>
@@ -229,6 +243,7 @@ class GiftServices extends React.PureComponent {
                 <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                   <Field
                     name="message"
+                    value={message}
                     id="message"
                     type="text"
                     component={TextBox}
@@ -261,17 +276,15 @@ GiftServices.propTypes = {
   isGiftServicesChecked: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func,
-  formName: PropTypes.string,
-  formSection: PropTypes.string,
   giftWrapOptions: PropTypes.shape({}).isRequired,
+  initialValues: PropTypes.shape({}),
 };
 
 GiftServices.defaultProps = {
   className: '',
   isGiftServicesChecked: false,
   dispatch: () => {},
-  formName: '',
-  formSection: '',
+  initialValues: {},
 };
 
 export { GiftServices as GiftServicesVanilla };

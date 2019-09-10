@@ -45,6 +45,7 @@ import {
   addNewShippingAddress,
   addRegisteredUserAddress,
   routeToPickupPage,
+  addAndSetGiftWrappingOptions,
 } from './Checkout.saga.util';
 import submitBilling from './CheckoutBilling.saga';
 
@@ -618,7 +619,8 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   // ) {
   //   recalcFlag = true;
   // }
-  yield select(getGiftServicesFormData);
+  const giftServicesFormData = yield select(getGiftServicesFormData);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData);
   yield put(setAddressError(null));
   const pendingPromises = [
     // add the requested gift wrap options

@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftServices component renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-cSHVUG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .brand-image {
+    width: 83px;
+  }
+  .shortDesc{
+    font-weight:bold;
+    font-size:14px;
+  }
+  .checkbox-header {
+    width: 180px;
+    display: flex;
+  }
+  .TextBox__input {
+    border: 1px solid ;
+    height: 146px;
+    padding: 0;
+  }
+  .addReceipt {
+    padding-top: 10px;
+    margin-left: 35px;
+  }
+  .giftServicesContainer {
+    margin-left: 35px;
+  }
+  .messageTextWrapper {
+    width: 92%;
+    margin: 29px 0 6px 17px;
+  }
+  .priceDropdown {
+    margin-left: 120px;
+  }
+  .giftServicesField {
+    display: inline-block;
+    width: 142px;
+  }
+  .dropdownDivOverFlow {
+    width: 100%;
+  }
+  .dropdownliBottomBorder {
+    width: 97%;
+    height: 71px;
+    cursor: pointer;
+    adding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .price{
+    float:right;
+  }
+  .longDesc{
+    font-size:12px;
+  }
+  .giftServicesDetailsLink {
+    text-decoration: underline;
+    cursor: pointer;
+    padding-top: 3px;
+  }
+  .checkbox-header {
+    width: 180px;
+    display: flex;
+  }
+  .custom-select {
+    width: 100%;
+  }
+
+  .dropdownUlBorder {
+    width: 100%;
+  }
+  .giftServicesModal {
+    @media ",
+          [Function],
+          " {
+      height: 90%;
+    }
+  }
+  .gymImage {
+    @media ",
+          [Function],
+          " {
+      margin-top: 8px;
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(GiftServicesDetailsModal)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-cSHVUG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isOpen={true}
+  labels={
+    Object {
+      "DETAILS_RICH_TEXT": "DETAILS_RICH_TEXT",
+    }
+  }
+/>
+`;

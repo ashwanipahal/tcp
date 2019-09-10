@@ -329,3 +329,10 @@ export const setOrderBalanceTotal = payload => {
     payload,
   };
 };
+
+export const setGiftWrap = payload => {
+  return {
+    type: 'CHECKOUT_VAlUES_SET_GIFT_WRAP',
+    payload,
+  };
+};
