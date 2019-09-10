@@ -18,8 +18,8 @@ export const HeaderContainer = styled.View`
     props.layout === 'alt'
       ? ` `
       : `background:white;
- margin-left:70px;
- margin-right:70px;`};
+ margin-left:62px;
+ margin-right:62px;`};
 `;
 
 export const Border = styled.View`
