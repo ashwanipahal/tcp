@@ -63,7 +63,6 @@ export default css`
   }
 
   .boxHead {
-    font-family: Nunito;
     font-size: 13px;
     font-weight: 600;
   }
@@ -113,6 +112,7 @@ export default css`
     border-radius: 20px;
     padding: 0px 10px;
     text-align: center;
+    line-height: 40px;
     margin: 6px 5px;
   }
 
