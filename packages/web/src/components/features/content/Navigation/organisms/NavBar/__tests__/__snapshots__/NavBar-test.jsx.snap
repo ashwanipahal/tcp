@@ -3,7 +3,7 @@
 exports[`NavBar component renders correctly 1`] = `
 <Fragment>
   <ul
-    className="undefined nav-bar-l1"
+    className="undefined nav-bar-l1 content-wrapper"
   >
     <Styled(L1NavItem)
       categoryContent={

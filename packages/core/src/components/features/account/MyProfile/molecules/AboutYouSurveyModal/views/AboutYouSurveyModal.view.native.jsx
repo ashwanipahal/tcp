@@ -38,7 +38,7 @@ class AboutYouSurveyModal extends React.Component<Props> {
       <Modal
         isOpen={openState}
         onRequestClose={toggleModalState}
-        heading={labels.lbl_profile_about_you_title}
+        heading={labels.lbl_profile_about_you_modal_heading}
       >
         <SafeAreaView>
           <ModalViewWrapper>

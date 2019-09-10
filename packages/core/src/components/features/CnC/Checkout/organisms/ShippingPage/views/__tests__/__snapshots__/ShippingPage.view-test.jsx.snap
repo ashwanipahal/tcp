@@ -3,7 +3,10 @@
 exports[`Shipping Page should render correctly 1`] = `
 <Fragment>
   <ReduxForm
+    addNewShippingAddress={[Function]}
     addressPhoneNo={null}
+    defaultAddressId=""
+    defaultShipmentId={null}
     destroyOnUnmount={false}
     enableReinitialize={false}
     forceUnregisterOnUnmount={false}
@@ -14,34 +17,234 @@ exports[`Shipping Page should render correctly 1`] = `
         "address": Object {
           "country": "US",
         },
+        "onFileAddressKey": "",
+        "saveToAddressBook": false,
         "shipmentMethods": Object {
           "shippingMethodId": null,
         },
       }
     }
+    isAddNewAddress={false}
     isGuest={true}
+    isMobile={false}
     isOrderUpdateChecked={false}
+    isSaveToAddressBookChecked={false}
     isUsSite={true}
     keepDirtyOnReinitialize={false}
     loadShipmentMethods={[Function]}
+    newUserPhoneNo={null}
+    onFileAddressKey={null}
     onSubmit={[Function]}
     orderHasPickUp={false}
     persistentSubmitErrors={false}
     pure={true}
     selectedShipmentId={null}
+    setAsDefaultShipping={false}
     shipmentMethods={
       Array [
         Object {},
       ]
     }
+    shippingAddressId={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}
     shouldWarn={[Function]}
     submitAsSideEffect={false}
+    toggleAddNewAddress={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
+    updateShippingAddress={[Function]}
     updateUnregisteredFields={false}
+    userAddresses={Array []}
+    validate={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `
+<Fragment>
+  <ReduxForm
+    addNewShippingAddress={[Function]}
+    addressPhoneNo={null}
+    defaultAddressId="34789"
+    defaultShipmentId={null}
+    destroyOnUnmount={false}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="checkoutShipping"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "address": Object {
+          "country": "US",
+        },
+        "onFileAddressKey": "34789",
+        "saveToAddressBook": false,
+        "shipmentMethods": Object {
+          "shippingMethodId": null,
+        },
+      }
+    }
+    isAddNewAddress={false}
+    isGuest={true}
+    isMobile={false}
+    isOrderUpdateChecked={false}
+    isSaveToAddressBookChecked={false}
+    isUsSite={true}
+    keepDirtyOnReinitialize={false}
+    loadShipmentMethods={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "formName": "checkoutShipping",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    newUserPhoneNo={null}
+    onFileAddressKey={null}
+    onSubmit={[Function]}
+    orderHasPickUp={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedShipmentId="336"
+    setAsDefaultShipping={false}
+    shipmentMethods={
+      Array [
+        Object {},
+      ]
+    }
+    shippingAddressId={null}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    toggleAddNewAddress={[Function]}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateShippingAddress={[Function]}
+    updateUnregisteredFields={false}
+    userAddresses={
+      Immutable.List [
+        Object {
+          "addressId": "123",
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+          "primary": "true",
+        },
+      ]
+    }
+    validate={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `
+<Fragment>
+  <ReduxForm
+    addNewShippingAddress={[Function]}
+    addressPhoneNo={null}
+    defaultAddressId="123"
+    defaultShipmentId={null}
+    destroyOnUnmount={false}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="checkoutShipping"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "address": Object {
+          "country": "US",
+        },
+        "onFileAddressKey": "123",
+        "saveToAddressBook": false,
+        "shipmentMethods": Object {
+          "shippingMethodId": null,
+        },
+      }
+    }
+    isAddNewAddress={false}
+    isGuest={true}
+    isMobile={false}
+    isOrderUpdateChecked={false}
+    isSaveToAddressBookChecked={false}
+    isUsSite={true}
+    keepDirtyOnReinitialize={false}
+    loadShipmentMethods={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "formName": "checkoutShipping",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    newUserPhoneNo={null}
+    onFileAddressKey={null}
+    onSubmit={[Function]}
+    orderHasPickUp={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedShipmentId="336"
+    setAsDefaultShipping={false}
+    shipmentMethods={
+      Array [
+        Object {},
+      ]
+    }
+    shippingAddressId={null}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    toggleAddNewAddress={[Function]}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateShippingAddress={[Function]}
+    updateUnregisteredFields={false}
+    userAddresses={
+      Immutable.List [
+        Object {
+          "addressId": "123",
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+          "primary": "true",
+        },
+      ]
+    }
     validate={[Function]}
   />
 </Fragment>

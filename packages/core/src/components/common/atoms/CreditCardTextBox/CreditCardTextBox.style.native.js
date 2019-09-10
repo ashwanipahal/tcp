@@ -14,10 +14,6 @@ const CardTextSection = styled.View`
   position: relative;
 `;
 
-const InputWrapper = styled.View`
-  flex: 1.7;
-`;
-
 const ImageWrapper = styled.View`
   position: absolute;
   right: 0;
@@ -32,6 +28,5 @@ export {
   StyledErrorWrapper,
   StyledTextBoxWrapper,
   CardTextSection,
-  InputWrapper,
   ImageWrapper,
 };

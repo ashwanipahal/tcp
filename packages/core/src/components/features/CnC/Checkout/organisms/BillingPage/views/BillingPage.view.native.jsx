@@ -1,12 +1,16 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import GiftCardsContainer from '../../GiftCardsSection';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
+import style from '../styles/BillingPage.style.native';
 
-export default class BillingPage extends React.PureComponent {
+const { Container } = style;
+
+class BillingPage extends React.PureComponent {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
     shippingLabels: PropTypes.shape({}).isRequired,
@@ -14,6 +18,8 @@ export default class BillingPage extends React.PureComponent {
     address: PropTypes.shape({}),
     emailSignUpLabels: PropTypes.shape({}).isRequired,
     navigation: PropTypes.shape({}).isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    submitBilling: PropTypes.func.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
     labels: PropTypes.shape({}).isRequired,
   };
@@ -23,7 +29,7 @@ export default class BillingPage extends React.PureComponent {
   };
 
   render() {
-    const { navigation, availableStages, labels } = this.props;
+    const { navigation, availableStages, labels, handleSubmit, submitBilling } = this.props;
 
     const { header } = labels;
 
@@ -35,16 +41,25 @@ export default class BillingPage extends React.PureComponent {
           availableStages={availableStages}
         />
         <ScrollView>
-          <CheckoutSectionTitleDisplay title={header} />
-          <GiftCardsContainer />
+          <Container>
+            <CheckoutSectionTitleDisplay title={header} />
+            <GiftCardsContainer />
+          </Container>
           <CnCTemplate
             navigation={navigation}
             btnText="NEXT:REVIEW"
             routeToPage=""
-            onPress={() => {}}
+            onPress={handleSubmit(submitBilling)}
           />
         </ScrollView>
       </>
     );
   }
 }
+
+export default reduxForm({
+  form: 'checkoutBilling',
+  destroyOnUnmount: false,
+})(BillingPage);
+
+export { BillingPage as BillingPageVanilla };

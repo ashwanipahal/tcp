@@ -113,7 +113,7 @@ const HeaderPromo = ({ className, dataPromo, mobileMarkup }) => {
   const wrapperClass = mobileMarkup ? 'header__promo-area--mobile' : 'header__promo-area--desktop';
 
   return (
-    <div className={`header-promo__container ${className}`}>
+    <div className={`header-promo__container ${className} content-wrapper`}>
       {mobileMarkup && renderMobileMarkup(dataPromo, wrapperClass)}
       {!mobileMarkup && renderDesktopMarkup(dataPromo, wrapperClass)}
     </div>

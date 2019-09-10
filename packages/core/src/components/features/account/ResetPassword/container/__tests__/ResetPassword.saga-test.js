@@ -18,9 +18,8 @@ describe('ResetPassword saga', () => {
     });
 
     it('should dispatch resetPasswordError action if response is error', () => {
-      const response = 'error';
-      const putDescriptor = gen.throw(response).value;
-      expect(putDescriptor).toEqual(put(resetPasswordError(response)));
+      const putDescriptor = gen.throw({ response: { body: { errors: ['test'] } } }).value;
+      expect(putDescriptor).toEqual(put(resetPasswordError('test')));
     });
   });
 

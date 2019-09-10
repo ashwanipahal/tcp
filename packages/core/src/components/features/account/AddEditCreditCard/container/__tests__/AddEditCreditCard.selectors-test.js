@@ -32,12 +32,12 @@ describe('AddEditCreditCard selectors', () => {
   it('getAddEditCreditCardError should return errorMessage if available', () => {
     const state = {
       [ADDEDITCREDITCARD_REDUCER_KEY]: fromJS({
-        errorMessage: 'error Message',
+        error: 'error Message',
       }),
     };
 
     expect(getAddEditCreditCardError(state)).toEqual(
-      state[ADDEDITCREDITCARD_REDUCER_KEY].get('errorMessage')
+      state[ADDEDITCREDITCARD_REDUCER_KEY].get('error')
     );
   });
 

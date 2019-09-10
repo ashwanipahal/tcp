@@ -4,14 +4,12 @@ export {
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  identifyBrand,
   getObjectValue,
   createUrlSearchParams,
   buildUrl,
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
-  getBirthDateOptionMap,
   getViewportInfo,
   showOverlay,
   closeOverlay,
@@ -23,9 +21,13 @@ export {
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
+  redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,
+  configurePlpNavigationFromCMSUrl,
+  isBopisProduct,
+  isBossProduct,
 } from './utils.web';
 
 export {
@@ -49,4 +51,6 @@ export {
   capitalize,
   toTimeString,
   getPromotionalMessage,
+  getBirthDateOptionMap,
+  generateUniqueKeyUsingLabel,
 } from './utils';

@@ -182,38 +182,67 @@
       "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
     },
     {
-      "name": ""
-    },
-    {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_EN",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",
       "value": "'qa1-childrensplace-com702771542012808'"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_EN",
+      "name": "RWD_APP_UNBXD_API_KEY_US_EN_TCP",
       "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_TCP",
       "value": "'qa1-childrensplace-com702771542012808'"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_SP",
+      "name": "RWD_APP_UNBXD_API_KEY_US_SP_TCP",
       "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN",
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_TCP",
       "value": "'qa1-canada-childrensplace-com702771542012977'"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_CA_EN",
+      "name": "RWD_APP_UNBXD_API_KEY_CA_EN_TCP",
       "value": "'dfce7e656fb9a9a3f358ab4a4b710428'"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR",
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_TCP",
       "value": "''"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_CA_FR",
+      "name": "RWD_APP_UNBXD_API_KEY_CA_FR_TCP",
+      "value": "''"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_GYM",
+      "value": "'qa1-childrensplace-com702771542012808'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_US_EN_GYM",
+      "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_GYM",
+      "value": "'qa1-childrensplace-com702771542012808'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_US_SP_GYM",
+      "value": "'8eb8cb308b493ec0a6d92bff22ef8df3'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_GYM",
+      "value": "'qa1-canada-childrensplace-com702771542012977'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_CA_EN_GYM",
+      "value": "'dfce7e656fb9a9a3f358ab4a4b710428'"
+    },
+    {
+      "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_GYM",
+      "value": "''"
+    },
+    {
+      "name": "RWD_APP_UNBXD_API_KEY_CA_FR_GYM",
       "value": "''"
     }
   ],
@@ -251,5 +280,8 @@
       "scheme": "mobileapp_uat",
       "xcodeVersion": "10.2.1"
     }
+  },
+  "artifactVersioning": {
+    "buildNumberFormat": "buildId"
   }
 }

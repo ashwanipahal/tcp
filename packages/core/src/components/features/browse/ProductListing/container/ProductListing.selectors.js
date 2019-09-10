@@ -80,6 +80,11 @@ export const getAppliedFilters = createSelector(
   products => products && products.get('appliedFiltersIds')
 );
 
+export const getAppliedSortId = createSelector(
+  getProductListingState,
+  products => products && products.get('appliedSortId')
+);
+
 export const getLoadedProductsCount = createSelector(
   getProductListingState,
   products => {

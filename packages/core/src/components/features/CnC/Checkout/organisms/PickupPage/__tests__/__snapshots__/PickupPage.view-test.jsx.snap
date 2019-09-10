@@ -149,9 +149,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
       />
     </div>
   </div>
-  <Styled(CheckoutOrderInfo)
-    isGuest={false}
-  />
   <form>
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"
@@ -412,9 +409,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
       </FormSection>
     </div>
   </div>
-  <Styled(CheckoutOrderInfo)
-    isGuest={true}
-  />
   <form>
     <Styled(CheckoutFooter)
       backLinkText="undefined undefined"

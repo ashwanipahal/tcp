@@ -213,6 +213,7 @@ export const getFormattedLoyaltyText = text => {
     .trim()
     .split('on');
 };
+
 export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {
   let showDefaultSizeMsg = false;
   const defaultSelection = {
@@ -277,4 +278,8 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
     return maxAvailableBossProducts < 1 || qtyMismatch;
   }
   return true;
+};
+
+export const getProductListToPath = str => {
+  return `/p?pid=${str.split('/p/')[1]}`;
 };

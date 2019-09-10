@@ -16,6 +16,7 @@ export {
   switchAPIConfig,
   isAndroid,
   getPixelRatio,
+  LAZYLOAD_HOST_NAME,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -38,4 +39,5 @@ export {
   capitalize,
   toTimeString,
   getPromotionalMessage,
+  getBirthDateOptionMap,
 } from './utils';

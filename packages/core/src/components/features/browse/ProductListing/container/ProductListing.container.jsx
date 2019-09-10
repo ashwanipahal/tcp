@@ -21,6 +21,7 @@ import {
   getLoadedProductsPages,
   getTotalProductsCount,
   getAppliedFilters,
+  getAppliedSortId,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -72,6 +73,7 @@ class ProductListingContainer extends React.PureComponent {
       getProducts,
       onSubmit,
       onPickUpOpenClick,
+      formValues,
       ...otherProps
     } = this.props;
     return (
@@ -94,6 +96,7 @@ class ProductListingContainer extends React.PureComponent {
         getProducts={getProducts}
         onSubmit={onSubmit}
         onPickUpOpenClick={onPickUpOpenClick}
+        formValues={formValues}
         {...otherProps}
       />
     );
@@ -130,7 +133,8 @@ function mapStateToProps(state) {
     filtersLength,
     initialValues: {
       ...getAppliedFilters(state),
-      sort: '',
+      // TODO - change after site id comes for us or ca
+      sort: getAppliedSortId(state) || '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
@@ -182,6 +186,9 @@ ProductListingContainer.propTypes = {
   lastLoadedPageNumber: PropTypes.number,
   router: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired,
+  formValues: PropTypes.shape({
+    sort: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 ProductListingContainer.defaultProps = {

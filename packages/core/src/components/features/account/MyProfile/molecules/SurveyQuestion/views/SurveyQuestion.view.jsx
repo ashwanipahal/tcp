@@ -12,6 +12,7 @@ export const SurveyQuestion = ({
   options,
   question,
   questionId,
+  dataLocator,
   ...otherProps
 }) => {
   return (
@@ -22,6 +23,7 @@ export const SurveyQuestion = ({
           fontWeight="regular"
           fontFamily="secondary"
           className="question-text"
+          data-locator={dataLocator}
         >
           {question}
         </BodyCopy>
@@ -47,6 +49,7 @@ export const SurveyQuestion = ({
                   optionValue={option.id}
                   isSelected={option.selected}
                   questionId={questionId}
+                  dataLocator={option.dataLocator}
                   {...otherProps}
                 />
               </div>
@@ -65,6 +68,7 @@ SurveyQuestion.propTypes = {
   className: PropTypes.string,
   question: PropTypes.string,
   questionId: PropTypes.string,
+  dataLocator: PropTypes.string,
 };
 
 SurveyQuestion.defaultProps = {
@@ -74,6 +78,7 @@ SurveyQuestion.defaultProps = {
   }),
   question: '',
   questionId: '',
+  dataLocator: '',
 };
 
 export default withStyles(SurveyQuestion, styles);

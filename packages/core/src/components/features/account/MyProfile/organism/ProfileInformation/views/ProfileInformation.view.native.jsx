@@ -1,6 +1,8 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
@@ -9,26 +11,34 @@ import BirthdaySaving from '../../BirthdaySaving';
 import { StyledAnchorWrapper, AnchorLeftMargin } from '../../../../common/styledWrapper';
 import endpoints from '../../../../common/externalEndpoints';
 import AboutYouInfo from '../../AboutYouInfo';
+import MailingInformationContainer from '../../MailingInformation';
+import ModalNative from '../../../../../../common/molecules/Modal';
 
 export class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       mountSurveyModal: false,
+      mountMailingAddressModal: false,
     };
   }
 
   /**
    * This function is to open/close the survey modal from child components
    */
-  toggleModalState = () => {
-    const { mountSurveyModal } = this.state;
-    this.setState({ mountSurveyModal: !mountSurveyModal });
+  toggleModalState = (type = '') => {
+    const { [type]: currentState } = this.state;
+    this.setState({ [type]: !currentState });
+  };
+
+  toggleMailingAddressModal = () => {
+    this.toggleModalState('mountMailingAddressModal');
   };
 
   render() {
     const {
       labels,
+      labelsObj,
       handleComponentChange,
       profileCompletion,
       defaultStore,
@@ -43,7 +53,7 @@ export class ProfileInformation extends React.PureComponent {
       userSurvey,
       percentageIncrement,
     } = this.props;
-    const { mountSurveyModal } = this.state;
+    const { mountSurveyModal, mountMailingAddressModal } = this.state;
     return (
       <>
         <ProfileInfoActions
@@ -68,6 +78,7 @@ export class ProfileInformation extends React.PureComponent {
           userPhoneNumber={userPhoneNumber}
           airMiles={airMiles}
           myPlaceNumber={myPlaceNumber}
+          toggleModalState={this.toggleModalState}
         />
         {userSurvey !== null && userSurvey.getIn(['0', '0']) !== '' && (
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
@@ -99,6 +110,23 @@ export class ProfileInformation extends React.PureComponent {
             />
           </AnchorLeftMargin>
         </StyledAnchorWrapper>
+        {mountMailingAddressModal && (
+          <ModalNative
+            isOpen={mountMailingAddressModal}
+            onRequestClose={this.toggleMailingAddressModal}
+            heading={labelsObj.profile.lbl_profile_heading}
+          >
+            <SafeAreaView>
+              <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
+                <MailingInformationContainer
+                  labels={labelsObj}
+                  onUpdateMailingAddress={this.toggleMailingAddressModal}
+                  onClose={this.toggleMailingAddressModal}
+                />
+              </ViewWithSpacing>
+            </SafeAreaView>
+          </ModalNative>
+        )}
       </>
     );
   }
@@ -106,6 +134,7 @@ export class ProfileInformation extends React.PureComponent {
 
 ProfileInformation.propTypes = {
   labels: PropTypes.shape({}),
+  labelsObj: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
   profileInfoTile: PropTypes.shape({}),
   userEmail: PropTypes.string,
@@ -123,6 +152,7 @@ ProfileInformation.propTypes = {
 
 ProfileInformation.defaultProps = {
   labels: {},
+  labelsObj: {},
   handleComponentChange: () => {},
   profileInfoTile: {},
   userBirthday: '',

@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 import { PICKUP_MODAL_ACTIONS_CONSTANTS } from '../PickUpStoreModal.constants';
 
 const initialState = fromJS({
-  isModalOpen: true, // TODO - Set ErrorBoundary in PICKUP Modal and .. Change it to default as false
+  isModalOpen: false, // TODO - Set ErrorBoundary in PICKUP Modal and .. Change it to default as false
   isBopisCtaEnabled: false,
   isBossCtaEnabled: false,
   isPickUpWarningModal: false,

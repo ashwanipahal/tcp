@@ -15,7 +15,6 @@ import {
   ProductTitle,
   ProductPricesSection,
   ProductWishlistIcon,
-  // ProductPickupIcon,
   BadgeItem,
   PromotionalMessage,
 } from './ProductItemComponents';
@@ -335,24 +334,6 @@ class ProductsGridItem extends React.PureComponent {
         onBlur={this.handleCloseAltImages}
       >
         <div className="item-container-inner">
-          {/* <div className="item-button-container">
-            {!isKeepAlive && !isMobile && this.renderQuickViewCardOrLink()}
-            {!isPLPredesign && (
-              <ProductWishlistIcon
-                onClick={this.handleAddToWishlist}
-                activeButton={isInDefaultWishlist}
-                keepAlive={isKeepAlive}
-              />
-            )}
-            {!isMobile && isPLPShowPickupCTA && (
-              <ProductPickupIcon
-                isMobile={isMobile}
-                onClick={this.handlePickupOpenClick}
-                isShowBopisButton={isShowPickupCTA}
-                keepAlive={isKeepAlive}
-              />
-            )}
-          </div> */}
           {
             <BadgeItem
               isShowBadges={isShowBadges}
@@ -400,22 +381,6 @@ class ProductsGridItem extends React.PureComponent {
               </Col>
             </Row>
           }
-          {/* {!isPLPredesign &&
-            (colorsMap.length > 1 ? (
-              <ProductColorChipWrapper
-                onChipClick={this.handleChangeColor}
-                maxVisibleItems={isGridView ? 4 : 5}
-                selectedColorId={curentColorEntry.color.name}
-                colorsMap={colorsMap}
-                isMobile={isMobile}
-              />
-            ) : (
-              <div className="empty-color-chips-container" />
-            ))} */}
-          {/* {isPLPredesign && isShowBadges && (
-            <BadgeItem className="inline-badge-container" text={badge2} haveSpace />
-          )} */}
-
           {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
 
           <ProductTitle
@@ -428,63 +393,13 @@ class ProductsGridItem extends React.PureComponent {
               requestId: unbxdId,
             }}
           />
-          {/* {!isPLPredesign && (
-            <ProductPricesSection
-              currencySymbol={currencySymbol}
-              listPrice={listPriceForColor}
-              offerPrice={offerPriceForColor}
-              noMerchantBadge={badge3}
-            />
-          )} */}
-          {this.getColorChipContainer(curentColorEntry)}
 
-          {/* {!isPLPredesign && isShowBadges && (
-            <BadgeItem className="merchant-badge-container" text={badge3} />
-          )} */}
-          {/* {isPLPredesign && !isCanada && !isInternationalShipping && (
-            <PromotionalMessage
-              wrapperClassName="promotion-message-container-v1"
-              message={getPromotionalMessage(isPlcc, {
-                promotionalMessage: promotionalMessage,
-                promotionalPLCCMessage: promotionalPLCCMessage,
-              })}
-              haveSpace={
-                siblingProperties &&
-                (!!siblingProperties.promotionalMessage ||
-                  !!siblingProperties.promotionalPLCCMessage)
-              }
-            />
-          )} */}
+          {this.getColorChipContainer(curentColorEntry)}
 
           {this.getPromotionalMessageComponent(
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-
-          {/* {
-            <div className="buttons-container__all-buttons">
-              {!isKeepAlive && this.renderQuickViewCardOrLink()}
-              {isKeepAlive && (
-                <button
-                  type="button"
-                  aria-label="Out of Stock"
-                  disabled
-                  className="bag-button-oos-on-plp"
-                >
-                  <span>Out of Stock</span>
-                </button>
-              )}
-              {!isPLPredesign && isPLPShowPickupCTA && (
-                <ProductPickupIcon
-                  isMobile={isMobile}
-                  onClick={this.handlePickupOpenClick}
-                  isShowBopisButton={isShowPickupCTA}
-                  isProductsGridCTAView={isProductsGridCTAView}
-                />
-              )}
-              {(!isShowPickupCTA || !isPLPShowPickupCTA) && <div className="bopis-placeholder" />}
-            </div>
-          } */}
           <div>
             <Button
               className="added-to-bag"
