@@ -16,11 +16,11 @@ exports[`AddEditShippingAddress should render correctly 1`] = `
           "
   ",
           "
-input {
-  background-color: ",
+  input {
+    background-color: ",
           [Function],
           ";
-}
+  }
 ",
           ";
 ",
@@ -59,11 +59,11 @@ exports[`AddEditShippingAddress should render correctly with modalType add 1`] =
           "
   ",
           "
-input {
-  background-color: ",
+  input {
+    background-color: ",
           [Function],
           ";
-}
+  }
 ",
           ";
 ",
