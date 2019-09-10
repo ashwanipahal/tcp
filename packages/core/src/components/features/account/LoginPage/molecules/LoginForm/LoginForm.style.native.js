@@ -71,7 +71,7 @@ const ForgotDescription = props => {
   font-size: ${typography.fontSizes.fs12};
   padding:10px 0;
   max-width: 238px;
-  margin: auto;
+  margin-bottom: 25px;
   `;
 };
 
@@ -112,7 +112,7 @@ const getSubHeadingSectionStyle = props => {
 const leftAignWrapper = () => {
   return `
     align-items:flex-start;
-    margin:20px 0;
+    margin-bottom:20px;
   `;
 };
 

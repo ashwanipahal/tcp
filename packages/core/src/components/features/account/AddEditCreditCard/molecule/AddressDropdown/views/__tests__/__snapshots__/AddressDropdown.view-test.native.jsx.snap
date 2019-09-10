@@ -22,7 +22,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       }
     }
     onLayout={[Function]}
-    onStartShouldSetResponder={[Function]}
+    onPress={[Function]}
     onValueChange={null}
     options={
       Array [
@@ -66,16 +66,15 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         Object {
           "height": 1334,
           "left": 0,
-          "marginTop": 0,
-          "width": 0,
+          "paddingTop": 0,
         }
       }
     >
       <Styled(View)
         style={
           Object {
-            "marginBottom": 0,
             "top": 0,
+            "width": 0,
           }
         }
       />
