@@ -134,7 +134,7 @@ class GiftServices extends React.PureComponent {
             fontWeight="regular"
             textAlign="left"
           >
-            Add a gift receipt, message and/or gift boxes.
+            {labels.addAGift}
           </BodyCopy>
 
           {isGiftServicesChecked && (
@@ -146,7 +146,7 @@ class GiftServices extends React.PureComponent {
                   fontWeight="regular"
                   textAlign="left"
                 >
-                  Select the brand you’d like for your gift box.
+                  {labels.selectBrand}
                 </BodyCopy>
                 <Col colSize={{ small: 3, medium: 4, large: 6 }} className="phone-field-wrapper">
                   <LabeledRadioButton
@@ -210,7 +210,7 @@ class GiftServices extends React.PureComponent {
                     fontFamily="secondary"
                     textAlign="left"
                   >
-                    Add your message
+                    {labels.addMessage}
                   </BodyCopy>
                 </Col>
                 <Col colSize={{ small: 3, medium: 4, large: 6 }}>
@@ -220,7 +220,7 @@ class GiftServices extends React.PureComponent {
                     fontFamily="secondary"
                     textAlign="right"
                   >
-                    100 Characters limit
+                    {labels.charLimit}
                   </BodyCopy>
                 </Col>
               </Row>
@@ -232,8 +232,8 @@ class GiftServices extends React.PureComponent {
                     id="message"
                     type="text"
                     component={TextBox}
-                    maxLength={50}
-                    dataLocator="pickup-phone-number"
+                    maxLength={100}
+                    dataLocator="gift-message"
                     enableSuccessCheck={false}
                   />
                 </Col>

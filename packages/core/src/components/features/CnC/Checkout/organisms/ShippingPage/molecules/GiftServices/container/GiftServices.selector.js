@@ -8,6 +8,8 @@ export const getGiftServicesLabels = state => {
         lbl_giftServices_details: details,
         lbl_giftServices_add: addAGift,
         lbl_giftServices_select: selectBrand,
+        lbl_giftServices_addMessage: addMessage,
+        lbl_giftServices_charLimit: charLimit,
       } = {},
     } = {},
   } = state.Labels;
@@ -17,6 +19,8 @@ export const getGiftServicesLabels = state => {
     details,
     addAGift,
     selectBrand,
+    addMessage,
+    charLimit,
   };
 };
 export const getGiftWrapOptions = state => {
