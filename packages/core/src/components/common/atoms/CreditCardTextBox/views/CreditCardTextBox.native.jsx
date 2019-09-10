@@ -11,8 +11,6 @@ import {
   StyledLabel,
   StyledErrorWrapper,
   StyledTextBoxWrapper,
-  CardTextSection,
-  InputWrapper,
   ImageWrapper,
 } from '../CreditCardTextBox.style.native';
 
@@ -128,37 +126,35 @@ export class CreditCardTextBox extends React.Component {
       cardType,
     } = this.props;
     return (
-      <CardTextSection>
-        <InputWrapper>
-          <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
-          <StyledTextBox
-            {...others}
-            {...input}
-            id={id}
-            aria-label={ariaLabel}
-            name={input.name}
-            type={type}
-            maxLength={maxLength}
-            value={elemValue}
-            ref={inputRef}
-            data-locator={dataLocator}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onEndEditing={this.handleBlur}
-            keyboardType={keyboardType}
-            returnKeyType="next"
-            error={error}
-            enableSuccessCheck={enableSuccessCheck}
-            secureTextEntry={secureTextEntry}
-            {...customStyle}
-          />
-        </InputWrapper>
+      <View>
+        <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
+        <StyledTextBox
+          {...others}
+          {...input}
+          id={id}
+          aria-label={ariaLabel}
+          name={input.name}
+          type={type}
+          maxLength={maxLength}
+          value={elemValue}
+          ref={inputRef}
+          data-locator={dataLocator}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onEndEditing={this.handleBlur}
+          keyboardType={keyboardType}
+          returnKeyType="next"
+          error={error}
+          enableSuccessCheck={enableSuccessCheck}
+          secureTextEntry={secureTextEntry}
+          {...customStyle}
+        />
         {cardType !== null && (
           <ImageWrapper>
             <Image source={getCardTypeImgUrl(cardType)} width="40" height="30" />
           </ImageWrapper>
         )}
-      </CardTextSection>
+      </View>
     );
   };
 

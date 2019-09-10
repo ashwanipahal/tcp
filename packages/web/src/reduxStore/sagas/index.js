@@ -42,10 +42,12 @@ import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/o
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
+import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
+import SearchBarSaga from '../../components/features/content/Header/molecules/SearchBar/SearchBar.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -57,6 +59,7 @@ export default function* rootSaga() {
     UserSaga(),
     LogOutPageSaga(),
     ForgotPasswordSaga(),
+    SearchBarSaga(),
     AddEditAddressSaga(),
     AddressBookSaga(),
     DeleteAddressSaga(),
@@ -89,11 +92,12 @@ export default function* rootSaga() {
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
     UpdateProfileSaga(),
-    BillingPaymentSaga(),
+    BirthdaySavingsSaga(),
     GiftCardsSaga(),
     AddAirmilesBannerSaga(),
     MailingAddressSaga(),
     ProductTabListSaga(),
-    BirthdaySavingsSaga(),
+    RecommendationsSaga(),
+    BillingPaymentSaga(),
   ]);
 }

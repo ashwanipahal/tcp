@@ -54,8 +54,8 @@ const mapStateToProps = state => {
   // ----------- commenting usage of labels as we are getting labels values from backend intermittently. ------------
 
   const {
-    bag: {
-      addedToBag: {
+    global: {
+      addedToBagModal: {
         lbl_info_color: colorLabel,
         lbl_info_size: sizeLabel,
         lbl_info_Qty: qtyLabel,

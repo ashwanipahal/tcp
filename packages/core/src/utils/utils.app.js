@@ -14,6 +14,14 @@ let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
 let gymAPIConfig = null;
 
+// Host name to be used for lazyload scrollview
+export const LAZYLOAD_HOST_NAME = {
+  HOME: 'lazyload-home',
+  PLP: 'lazyload-plp',
+  ACCOUNT: 'lazyload-account',
+  WALLET: 'lazyload-wallet',
+};
+
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
 };
@@ -278,19 +286,15 @@ export const validateExternalUrl = url => {
 
 /**
  * @function resetNavigationStack
- * This function resets data from navigation stack
+ * This function resets data from navigation stack and navigates to Home
  *
  */
 export const resetNavigationStack = navigation => {
-  const { state } = navigation;
-  const { routes, index: activeRouteIndex } = state;
   navigation.dispatch(
     StackActions.reset({
       index: 0,
       key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: routes[activeRouteIndex].routes[0].routeName }),
-      ],
+      actions: [NavigationActions.navigate({ routeName: 'Home' })],
     })
   );
 };
@@ -307,8 +311,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
   logger.info(
     'unboxKey',
-    `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]}/${
-      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
+    `${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]}/${
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
     }`
   );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
@@ -321,7 +325,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
     unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN`]}/${
-      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN`]
+      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
     }`,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],

@@ -14,13 +14,7 @@ import { setOnFileAddressKey } from './Checkout.action';
 import utility from '../util/utility';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
 
-export function* addRegisteredUserAddress({
-  address,
-  phoneNumber,
-  emailAddress,
-  setAsDefault,
-  saveToAccount,
-}) {
+export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
   const selectedAddressId = yield select(selectors.getOnFileAddressKey);
   const userAddresses = yield select(getAddressListState);
@@ -46,7 +40,7 @@ export function* addRegisteredUserAddress({
           phoneNumber,
           emailAddress,
           primary: `${setAsDefault}`,
-          phone1Publish: `${saveToAccount}`,
+          phone1Publish: 'false',
           fromPage: '',
         },
       },

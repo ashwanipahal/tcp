@@ -37,7 +37,7 @@ describe('AddEditCreditCard saga', () => {
       expect(putDescriptor).toEqual(put(addCreditCardSuccess({ response })));
     });
 
-    it('should dispatch addCreditCardError action for error resposnse', () => {
+    it('should dispatch addCreditCardError action for error resposnse two', () => {
       const payload = {
         address: {
           firstName: 'test',
@@ -57,14 +57,9 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next('1234567890');
-      const putDescriptor = addCreditCardGen.throw(new Error('error')).value;
-      expect(putDescriptor).toEqual(
-        put(
-          addCreditCardError({
-            errorMessage: 'error',
-          })
-        )
-      );
+      const putDescriptor = addCreditCardGen.throw({ response: { body: { errors: ['test'] } } })
+        .value;
+      expect(putDescriptor).toEqual(put(addCreditCardError('test')));
     });
   });
 
@@ -114,14 +109,9 @@ describe('AddEditCreditCard saga', () => {
         ])
       );
       addCreditCardGen.next('1234567890');
-      const putDescriptor = addCreditCardGen.throw(new Error('system error')).value;
-      expect(putDescriptor).toEqual(
-        put(
-          addCreditCardError({
-            errorMessage: 'system error',
-          })
-        )
-      );
+      const putDescriptor = addCreditCardGen.throw({ response: { body: { errors: ['test'] } } })
+        .value;
+      expect(putDescriptor).toEqual(put(addCreditCardError('test')));
     });
   });
 

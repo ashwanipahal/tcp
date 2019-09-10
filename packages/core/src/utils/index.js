@@ -10,7 +10,6 @@ export {
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
-  getBirthDateOptionMap,
   getViewportInfo,
   showOverlay,
   closeOverlay,
@@ -26,6 +25,8 @@ export {
   getAsPathWithSlug,
   getMappedPageHref,
   configurePlpNavigationFromCMSUrl,
+  isBopisProduct,
+  isBossProduct,
 } from './utils.web';
 
 export {
@@ -46,5 +47,6 @@ export {
   formatAddress,
   calculateAge,
   getLabelValue,
+  getBirthDateOptionMap,
   generateUniqueKeyUsingLabel,
 } from './utils';

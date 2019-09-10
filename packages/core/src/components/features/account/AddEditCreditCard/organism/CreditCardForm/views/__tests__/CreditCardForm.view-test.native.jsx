@@ -56,4 +56,89 @@ describe('CreditCardForm component', () => {
     const component = shallow(<CreditCardForm {...props} />);
     expect(component).toMatchSnapshot();
   });
+
+  it('should renders correctly in mailingAddress view', () => {
+    const props = {
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
+      addressLabels: {},
+      addressList: List([
+        {
+          addressId: '12345',
+          firstName: 'test',
+          lastName: 'test',
+          primary: 'true',
+        },
+      ]),
+      pristine: true,
+      initialValues: {},
+      mailingAddress: true,
+      expMonthOptionsMap: getCreditCardExpirationOptionMap().monthsMap,
+      expYearOptionsMap: getCreditCardExpirationOptionMap().yearsMap,
+      handleSubmit: jest.fn(),
+      dispatch: jest.fn(),
+    };
+    const component = shallow(<CreditCardForm {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  describe('#instances', () => {
+    let component;
+    let dispatchSpy;
+    beforeEach(() => {
+      dispatchSpy = jest.fn();
+      const props = {
+        labels: {
+          paymentGC: {},
+          common: {},
+          addressBook: {},
+        },
+        addressLabels: {},
+        addressList: List([
+          {
+            addressId: '12345',
+            firstName: 'test',
+            lastName: 'test',
+            primary: 'true',
+          },
+          {
+            addressId: '54321',
+            firstName: 'test',
+            lastName: 'test',
+          },
+        ]),
+        pristine: true,
+        initialValues: {},
+        mailingAddress: true,
+        expMonthOptionsMap: getCreditCardExpirationOptionMap().monthsMap,
+        expYearOptionsMap: getCreditCardExpirationOptionMap().yearsMap,
+        handleSubmit: jest.fn(),
+        dispatch: dispatchSpy,
+      };
+      component = shallow(<CreditCardForm {...props} />);
+    });
+
+    it('#showAddressDropdown should return true if mailingAddress and addressList contain more than 1 address', () => {
+      expect(component.instance().showAddressDropdown(true, [{}, {}])).toBeTruthy();
+    });
+
+    it('#showAddressDropdown should return false if mailingAddress is false and addressList is not present', () => {
+      expect(component.instance().showAddressDropdown(false)).toBeFalsy();
+    });
+
+    it('#toggleModal should toggle addAddressMount to true if mailingAddress is not present', () => {
+      component.setProps({
+        mailingAddress: false,
+      });
+      component.instance().toggleModal();
+      expect(component.state('addAddressMount')).toBeTruthy();
+    });
+
+    it('#toggleModal should toggle showAddressForm to false if mailingAddress is present', () => {
+      component.instance().toggleModal();
+      expect(component.state('showAddressForm')).toBeFalsy();
+    });
+  });
 });

@@ -9,7 +9,6 @@ import styles from '../styles/AddEditAddress.style';
 
 export const AddEditAddress = ({
   className,
-  addressResponse,
   isEdit,
   initialValues,
   backToAddressBookClick,
@@ -18,19 +17,20 @@ export const AddEditAddress = ({
   addressFormLabels,
   isMakeDefaultDisabled,
   formErrorMessage,
+  addEditErrorMessage,
+  showNotification,
 }) => {
-  const errorObject = addressResponse && addressResponse.get('errors');
-
   return (
     <div className={`${className} addEditAddress`}>
       <Grid>
-        {errorObject && (
+        {addEditErrorMessage && showNotification && (
           <Notification
             status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}
-            message={errorObject.getIn(['0', 'errorKey'])}
+            message={addEditErrorMessage}
           />
         )}
+
         <AddressVerification
           onSuccess={submitAddressFormAction}
           heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
@@ -61,6 +61,8 @@ AddEditAddress.propTypes = {
   isMakeDefaultDisabled: PropTypes.bool,
   addressFormLabels: {},
   formErrorMessage: PropTypes.shape({}),
+  addEditErrorMessage: PropTypes.string.isRequired,
+  showNotification: PropTypes.bool,
 };
 
 AddEditAddress.defaultProps = {
@@ -74,6 +76,7 @@ AddEditAddress.defaultProps = {
   isMakeDefaultDisabled: false,
   addressFormLabels: { editAddress: '', addAddressHeading: '' },
   formErrorMessage: {},
+  showNotification: false,
 };
 
 export default withStyles(AddEditAddress, styles);

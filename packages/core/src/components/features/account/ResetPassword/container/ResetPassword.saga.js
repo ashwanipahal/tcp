@@ -9,7 +9,13 @@ export function* ResetPassword({ payload }) {
     const res = yield call(resetPassword, payload);
     return yield put(resetPasswordSuccess(res));
   } catch (err) {
-    return yield put(resetPasswordError(err));
+    let error = {};
+    /* istanbul ignore else */
+    error = err;
+    if (error && error.response) {
+      return yield put(resetPasswordError(error.response.body.errors[0]));
+    }
+    return null;
   }
 }
 

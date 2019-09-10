@@ -1,7 +1,7 @@
 import React from 'react';
 import { WebView } from 'react-native';
 import Modal from '../../../../../../common/molecules/Modal';
-import styles from '../styles/CouponDetailModal.style.native';
+import { ModalHeaderStyle } from '../styles/CouponDetailModal.style.native';
 
 class CouponHelpModal extends React.PureComponent<Props> {
   render() {
@@ -14,7 +14,7 @@ class CouponHelpModal extends React.PureComponent<Props> {
         overlayClassName="TCPModal__Overlay"
         closeIconDataLocator="added-to-bg-close"
         animationType="slide"
-        headerStyle={styles}
+        headerStyle={ModalHeaderStyle}
       >
         <WebView source={{ html: labels.NEED_HELP_RICH_TEXT }} />
       </Modal>
