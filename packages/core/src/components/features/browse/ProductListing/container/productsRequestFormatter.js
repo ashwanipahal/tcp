@@ -21,7 +21,11 @@ import {
   getPlpCutomizersFromUrlQueryString,
 } from './ProductListing.util';
 import PAGES from '../../../../../constants/pages.constants';
-import { getLastLoadedPageNumber, getMaxPageNumber } from './ProductListing.selectors';
+import {
+  getLastLoadedPageNumber,
+  getMaxPageNumber,
+  getAppliedSortId,
+} from './ProductListing.selectors';
 import { PRODUCTS_PER_LOAD, routingInfoStoreView } from './ProductListing.constants';
 
 export default class ProductsOperator {
@@ -449,7 +453,7 @@ export default class ProductsOperator {
 
     const appliedFiltersIds = state.ProductListing.get('appliedFiltersIds');
     // TODO - take the fallback from sort array once sort functionality is merged
-    const sort = (state.productListing && state.productListing.get('appliedSortId')) || '';
+    const sort = (state.ProductListing && state.ProductListing.get('appliedSortId')) || '';
 
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
     return this.getProductsListingInfo({
@@ -468,7 +472,7 @@ export default class ProductsOperator {
   getMoreBucketedProducts = state => {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     // const state = this.store.getState();
-    const sort = (state.productListing && state.productListing.get('appliedSortId')) || '';
+    const sort = getAppliedSortId(state) || '';
     // If this is not a bucketing scenario and if the sort parameter is applied then we need to follow the original approach.
     if (this.shouldApplyUnbxdLogic && this.bucketingConfig.bucketingSeqScenario && !sort) {
       // If no L3 are left to load means we have brought all the products in current L2, then we need to resolve the promise.
