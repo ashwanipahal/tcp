@@ -171,6 +171,8 @@ describe('#Coupon selector', () => {
       SHOW_MORE_BUTTON_TEXT: 'Show',
       TERMS_AND_CONDITIONS: 'tnc',
       USE_BY_TEXT: 'use',
+      COUPON_VALIDITY: 'Validity',
+      SEE_REDEEM_DATES: 'See Redeem Dates',
     });
   });
 });

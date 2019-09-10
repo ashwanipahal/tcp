@@ -5,12 +5,13 @@ const PaymentContainer = styled.View`
 `;
 
 const CardContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const ExpiryContainer = styled.View`
   flex: 1;
   flex-direction: row;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const ExpiryMonth = styled.View`

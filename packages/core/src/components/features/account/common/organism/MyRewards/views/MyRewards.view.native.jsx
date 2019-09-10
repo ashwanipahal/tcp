@@ -16,6 +16,7 @@ import endpoints from '../../../externalEndpoints';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
+import CouponDetailModal from '../../../../../CnC/common/organism/CouponAndPromos/views/CouponDetailModal.view.native';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
 /**
@@ -63,11 +64,20 @@ class MyRewards extends PureComponent {
   };
 
   render() {
-    const { labels, showLink, coupons } = this.props;
+    const { labels, showLink, coupons, couponsLabels, selectedCoupon, ...otherProps } = this.props;
     const heading = `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
+    const isSelected = selectedCoupon !== null;
     return (
       <View>
         <ToastContainer />
+        {selectedCoupon && (
+          <CouponDetailModal
+            labels={couponsLabels}
+            openState={isSelected}
+            coupon={selectedCoupon}
+            {...otherProps}
+          />
+        )}
         <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-LRG">
           <CouponHeading>
             <BodyCopy
@@ -137,6 +147,8 @@ MyRewards.propTypes = {
   toastMessage: PropTypes.func,
   isApplyingOrRemovingCoupon: PropTypes.bool,
   showLink: PropTypes.bool,
+  selectedCoupon: PropTypes.shape({}),
+  couponsLabels: PropTypes.shape({}),
 };
 
 MyRewards.defaultProps = {
@@ -154,6 +166,8 @@ MyRewards.defaultProps = {
   toastMessage: () => {},
   isApplyingOrRemovingCoupon: false,
   showLink: false,
+  selectedCoupon: {},
+  couponsLabels: {},
 };
 
 export default MyRewards;

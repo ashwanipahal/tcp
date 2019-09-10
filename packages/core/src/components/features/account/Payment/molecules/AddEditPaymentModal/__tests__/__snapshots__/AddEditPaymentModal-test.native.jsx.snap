@@ -5,21 +5,19 @@ exports[`AddEditPaymentModal component should render correctly 1`] = `
   heading=""
   onRequestClose={Object {}}
 >
-  <SafeAreaView>
-    <Styled(View)>
-      <Connect(AddEditCreditCard)
-        dto={Object {}}
-        labels={
-          Object {
-            "paymentGC": Object {
-              "lbl_payment_addCCHeading": "",
-            },
-          }
+  <Styled(View)>
+    <Connect(AddEditCreditCard)
+      dto={Object {}}
+      labels={
+        Object {
+          "paymentGC": Object {
+            "lbl_payment_addCCHeading": "",
+          },
         }
-        onClose={Object {}}
-        updateCardList={Object {}}
-      />
-    </Styled(View)>
-  </SafeAreaView>
+      }
+      onClose={Object {}}
+      updateCardList={Object {}}
+    />
+  </Styled(View)>
 </ModalNative>
 `;
