@@ -1,8 +1,10 @@
+/* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
 import { CHECKOUT_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig, isMobileApp, getViewportInfo } from '@tcp/core/src/utils';
+import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
 import {
@@ -21,7 +23,6 @@ import getPickUpContactFormLabels from './Checkout.selector.util';
 
 function getRecalcOrderPointsInterval() {
   return 300000;
-  // return state.session.siteDetails.recalcOrderPointsInterval;
 }
 
 export const getCheckoutState = state => {
@@ -65,27 +66,15 @@ function getIsMobile() {
   return getViewportInfo().isMobile;
 }
 
-// function isExpressCheckout(state) {
-//   return !!state.User.getIn(['personalData', 'isExpressEligible']);
-// }
-
 export const isExpressCheckout = createSelector(
   getPersonalDataState,
   state => state && state.get('isExpressEligible')
 );
 
-// function getCheckoutStage(state) {
-//   return state.Checkout.getIn(['uiFlags', 'stage']);
-// }
-
 export const getCheckoutStage = createSelector(
   getCheckoutUiFlagState,
   state => state && state.get('stage')
 );
-
-// function isRemembered(state) {
-//   return state.User.getIn(['personalData', 'isRemembered']);
-// }
 
 export const isRemembered = createSelector(
   getPersonalDataState,
@@ -287,17 +276,21 @@ const getCurrentPickupFormNumber = createSelector(
 );
 
 const getBillingLabels = state => {
-  const {
-    lbl_billing_title: header,
-    lbl_billing_backLinkPickup: backLinkPickup,
-    lbl_billing_backLinkShipping: backLinkShipping,
-    lbl_billing_nextSubmit: nextSubmitText,
-  } = state.Labels.checkout && state.Labels.checkout.billing;
   return {
-    header,
-    backLinkPickup,
-    backLinkShipping,
-    nextSubmitText,
+    header: getLabelValue(state.Labels, 'lbl_billing_title', 'billing', 'checkout'),
+    backLinkPickup: getLabelValue(
+      state.Labels,
+      'lbl_billing_backLinkPickup',
+      'billing',
+      'checkout'
+    ),
+    backLinkShipping: getLabelValue(
+      state.Labels,
+      'lbl_billing_backLinkShipping',
+      'billing',
+      'checkout'
+    ),
+    nextSubmitText: getLabelValue(state.Labels, 'lbl_billing_nextSubmit', 'billing', 'checkout'),
   };
 };
 
@@ -315,32 +308,60 @@ const getSmsSignUpLabels = state => {
 };
 
 const getEmailSignUpLabels = state => {
-  const {
-    lbl_pickup_emailSignupHeading: emailSignupHeading,
-    lbl_pickup_emailSignupSubHeading: emailSignupSubHeading,
-    lbl_pickup_emailSignupSubSubHeading: emailSignupSubSubHeading,
-    lbl_pickup_emailSignupContact: emailSignupContact,
-  } = state.Labels.checkout && state.Labels.checkout.pickup;
   return {
-    emailSignupHeading,
-    emailSignupSubHeading,
-    emailSignupSubSubHeading,
-    emailSignupContact,
+    emailSignupHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupSubHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupSubHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupSubSubHeading: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupSubSubHeading',
+      'pickup',
+      'checkout'
+    ),
+    emailSignupContact: getLabelValue(
+      state.Labels,
+      'lbl_pickup_emailSignupContact',
+      'pickup',
+      'checkout'
+    ),
   };
 };
 
 const getCheckoutProgressBarLabels = state => {
-  const {
-    lbl_checkoutheader_pickup: pickupLabel,
-    lbl_checkoutHeader_shipping: shippingLabel,
-    lbl_checkoutHeader_billing: billingLabel,
-    lbl_checkoutHeader_review: reviewLabel,
-  } = state.Labels.checkout && state.Labels.checkout.checkoutHeader;
   return {
-    pickupLabel,
-    shippingLabel,
-    billingLabel,
-    reviewLabel,
+    pickupLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutheader_pickup',
+      'checkoutHeader',
+      'checkout'
+    ),
+    shippingLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_shipping',
+      'checkoutHeader',
+      'checkout'
+    ),
+    billingLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_billing',
+      'checkoutHeader',
+      'checkout'
+    ),
+    reviewLabel: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_review',
+      'checkoutHeader',
+      'checkout'
+    ),
   };
 };
 
@@ -397,12 +418,6 @@ const getSmsNumberForOrderUpdates = createSelector(
   getSmsSignUpFields,
   smsSignUpFields => smsSignUpFields && smsSignUpFields.phoneNumber
 );
-
-// export const getUserEmailNew = createSelector(
-//   [isGuest,isRemembered],
-//   (getUserContactInfo)=>
-
-// )
 
 function getPickupInitialPickupSectionValues(state) {
   // let userContactInfo = userStoreView.getUserContactInfo(state);

@@ -9,7 +9,7 @@ describe('MyRewards', () => {
   it('should render correctly', () => {
     const labels = {
       common: {},
-      myPlaceRewards: {},
+      placeRewards: {},
     };
     const coupons = fromJS([]);
     const tree = shallow(<MyRewards labels={labels} coupons={coupons} />);
@@ -19,7 +19,7 @@ describe('MyRewards', () => {
   it('should render carousel if coupons are avalable', () => {
     const labels = {
       common: {},
-      myPlaceRewards: {},
+      placeRewards: {},
     };
     const coupons = fromJS([{ id: '1234' }, { id: '4321' }]);
     const tree = shallow(<MyRewards labels={labels} coupons={coupons} />);
@@ -29,7 +29,7 @@ describe('MyRewards', () => {
   it('should render EmptyRewards component if there is no coupon', () => {
     const labels = {
       common: {},
-      myPlaceRewards: {},
+      placeRewards: {},
     };
     const coupons = fromJS([]);
     const component = shallow(<MyRewards labels={labels} coupons={coupons} />);
@@ -39,7 +39,7 @@ describe('MyRewards', () => {
   it('should render DetailedCouponTile component equal to coupons size', () => {
     const labels = {
       common: {},
-      myPlaceRewards: {},
+      placeRewards: {},
     };
     const coupons = fromJS([{ id: '1234' }, { id: '4321' }]);
     const component = shallow(<MyRewards labels={labels} coupons={coupons} />);

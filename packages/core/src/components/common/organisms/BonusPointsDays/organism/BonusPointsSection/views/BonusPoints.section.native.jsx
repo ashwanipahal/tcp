@@ -239,7 +239,7 @@ const BonusPointsSection = ({
 };
 
 BonusPointsSection.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
   enableApplyCta: PropTypes.bool,
@@ -251,7 +251,7 @@ BonusPointsSection.propTypes = {
 };
 
 BonusPointsSection.defaultProps = {
-  labels: { myPlaceRewards: { lbl_bonus_points_msg: '' } },
+  labels: { placeRewards: { lbl_bonus_points_msg: '' } },
   bonusData: {},
   toggleBonusPointsModal: () => {},
   enableApplyCta: false,
@@ -263,7 +263,7 @@ BonusPointsSection.defaultProps = {
 };
 
 getContent.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   toggleBonusPointsModal: PropTypes.func,
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
@@ -285,13 +285,13 @@ getContent.defaultProps = {
 };
 
 getHeader.propTypes = {
-  labels: PropTypes.shape({ myPlaceRewards: {} }),
+  labels: PropTypes.shape({ placeRewards: {} }),
   orderDetails: PropTypes.shape({}),
 };
 
 getHeader.defaultProps = {
   labels: {
-    myPlaceRewards: {
+    placeRewards: {
       lbl_bonusPoints_placeRewardsBonus: '',
       lbl_bonusPoints_placeRewardsPoints: '',
       lbl_place_rewards_day: '',

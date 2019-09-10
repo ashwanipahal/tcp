@@ -7,7 +7,7 @@ import constants from '../../../BonusPointsDays.constants';
 describe('BonusPointsViewVanilla', () => {
   it('should render correctly', () => {
     const labels = {
-      myPlaceRewards: {
+      placeRewards: {
         lbl_bonusPoints_placeRewardsBonus: 'bonus',
         lbl_bonusPoints_placeRewardsPoints: 'points',
       },
@@ -30,7 +30,7 @@ describe('BonusPointsViewVanilla', () => {
 
   it('should render BonusPointsReadSection if view is read', () => {
     const labels = {
-      myPlaceRewards: {
+      placeRewards: {
         lbl_place_rewards_bonus: 'bonus',
         lbl_bonusPoints_placeRewardsPoints: 'points',
       },
