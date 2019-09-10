@@ -178,7 +178,7 @@ class CardTile extends React.Component<Props> {
         {!isGiftCardBalanceRequested && (
           <Button
             onClick={this.handleCheckBalanceClick}
-            buttonVariation="variable-width"
+            buttonVariation="sahil-width"
             type="submit"
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
@@ -378,6 +378,7 @@ class CardTile extends React.Component<Props> {
   }
 }
 const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
+
 export default reduxForm({ destroyOnUnmount: false, enableReinitialize: true, ...validateMethod })(
   withStyles(CardTile, styles)
 );

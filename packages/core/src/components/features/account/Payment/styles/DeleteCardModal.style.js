@@ -11,6 +11,7 @@ const deleteCardModalStyle = css`
   }
   .deleteCardModal__venmoDesc {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    height: 100px;
   }
   .deleteCardModal__card {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.mediaQuery};
@@ -44,7 +45,7 @@ const deleteCardModalStyle = css`
     display: inline-block;
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     float: none;
-    width: 60%;
+    width: 162px;
     letter-spacing: ${props => props.theme.fonts.letterSpacing.medium};
     @media ${props => props.theme.mediaQuery.medium} {
       float: right;
@@ -58,7 +59,9 @@ const deleteCardModalStyle = css`
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      padding: 12px 24px;
+      padding: 1px 2px;
+      margin-left: 100px;
+      float: left;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       min-height: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
@@ -79,6 +82,8 @@ const deleteCardModalStyle = css`
     justify-content: center;
   }
   .deleteCardModal__img {
+    border: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: 90px;
     height: 56px;
     float: left;
@@ -90,6 +95,7 @@ const deleteCardModalStyle = css`
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 61px;
       height: 38px;
+      margin-right: 20px;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       float: none;
@@ -113,6 +119,7 @@ const deleteCardModalStyle = css`
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       padding: 12px 24px;
+      width: 162px;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       min-height: 51px;
