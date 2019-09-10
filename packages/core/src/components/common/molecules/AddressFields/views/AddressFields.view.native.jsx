@@ -86,20 +86,25 @@ export class AddressFields extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { dispatch, initialValues } = this.props;
-    dispatch(change('AddressForm', 'country', initialValues.country));
-    dispatch(change('AddressForm', 'addressLine1', initialValues.addressLine1));
+    const { country } = this.state;
+    const { dispatch, formName, formSection, initialValues } = this.props;
+    dispatch(change(formName, `${formSection}.country`, country));
+    dispatch(change(formName, `${formSection}.addressLine1`, initialValues.addressLine1));
   }
 
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
     const address = getAddressFromPlace(place, inputValue);
-    dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
-    dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
-    dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
+    dispatch(change(formName, `${formSection}.city`, address.city));
+    dispatch(change(formName, `${formSection}.zipCode`, address.zip));
+    dispatch(change(formName, `${formSection}.state`, address.state));
     dispatch(change(formName, `${formSection}.addressLine1`, address.street));
     this.setState({ dropDownItem: address.state });
     this.locationRef.setAddressText(address.street);
+  };
+
+  getAddressLine1 = initialValues => {
+    return (initialValues && initialValues.address && initialValues.address.addressLine1) || '';
   };
 
   changeShipmentMethods = (e, value) => {
@@ -107,10 +112,6 @@ export class AddressFields extends React.PureComponent {
     if (loadShipmentMethods) {
       loadShipmentMethods({ state: value, formName });
     }
-  };
-
-  getAddressLine1 = initialValues => {
-    return (initialValues && initialValues.address && initialValues.address.addressLine1) || '';
   };
 
   render() {
@@ -149,7 +150,6 @@ export class AddressFields extends React.PureComponent {
             />
           </>
         )}
-
         <GooglePlaceInputWrapper>
           <Field
             headerTitle={addressFormLabels.addressLine1}
