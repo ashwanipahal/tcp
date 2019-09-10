@@ -7,11 +7,26 @@ import {
 
 describe('#MiniBag Selectors', () => {
   const MinibagLabelsState = {
-    bag: {
-      bagOverview: {
+    global: {
+      minibag: {
         lbl_miniBag_createAccount: 'createAccount',
         lbl_miniBag_logIn: 'logIn',
+        lbl_miniBag_checkout: 'checkout',
+        lbl_miniBag_createOne: 'createOne',
+        lbl_miniBag_dontHaveAccount: '',
+        lbl_miniBag_hi: '',
+        lbl_miniBag_inRewards: '',
+        lbl_minibag_itemDeleted: '',
+        lbl_minibag_itemUpdated: '',
+        lbl_miniBag_subTotal: '',
+        lbl_miniBag_viewBag: '',
+        lbl_miniBag_ViewSaveForLater: '',
+        lbl_miniBag_yourShoppingBag: '',
       },
+      cartItemTile: {
+        lbl_cartTile_points: '',
+      },
+      addedToBagModal: { lbl_footer_continueShopping: 'continueShopping' },
     },
   };
 
@@ -45,6 +60,19 @@ describe('#MiniBag Selectors', () => {
     expect(getLabelsMiniBag(state)).toEqual({
       createAccount: 'createAccount',
       logIn: 'logIn',
+      checkOut: 'checkout',
+      continueShopping: 'continueShopping',
+      createOne: 'createOne',
+      dontHaveAccount: '',
+      hi: '',
+      inRewards: '',
+      itemDeleted: '',
+      itemUpdated: '',
+      points: '',
+      subTotal: '',
+      viewBag: '',
+      viewSaveForLater: '',
+      yourShoppingBag: '',
     });
   });
 

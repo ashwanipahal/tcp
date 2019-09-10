@@ -93,12 +93,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -323,12 +322,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -457,12 +455,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -697,12 +694,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -831,12 +827,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -1071,12 +1066,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -1205,12 +1199,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -1445,12 +1438,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -1547,12 +1539,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                 getBonusDaysData={[Function]}
                 labels={
                   Object {
-                    "common": Object {
-                      "lbl_common_details": "",
-                    },
-                    "myPlaceRewards": Object {
+                    "placeRewards": Object {
                       "lbl_bonus_points_apply_any_day": "",
                       "lbl_bonus_points_msg": "",
+                      "lbl_common_applied_to_order": "",
+                      "lbl_common_details": "",
                       "lbl_place_rewards_bonus": "",
                       "lbl_place_rewards_day": "",
                       "lbl_place_rewards_points": "",
@@ -1757,12 +1748,11 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           getBonusDaysData={[Function]}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_applied_to_order": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",

@@ -6,6 +6,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
+  heading="apply_now_header"
   inheritedStyles={
     Array [
       "
@@ -235,7 +236,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="center"
-        />
+        >
+          apply_now_subheader
+        </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -262,7 +265,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           data-locator="plcc_apply_btn"
           fill="BLUE"
           type="submit"
-        />
+        >
+          applynow_cta
+        </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -290,12 +295,16 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fontSizeVariation="large"
           target="_blank"
           underline={true}
-        />
+          url="learn_more_link"
+        >
+          apply_now_learn_more
+        </Styled(Anchor)>
       </Styled(Col)>
     </Styled(Row)>
     <div
       className="offer_info_icon"
       data-locator="plcc_modal_logo"
+      offerType="oneequalstwopointsoffer"
     />
     <Styled(BodyCopy)
       className={null}
@@ -307,7 +316,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       letterSpacing="normal"
       lineHeight="normal"
       textAlign="center"
-    />
+    >
+      apply_now_benefits_header
+    </Styled(BodyCopy)>
     <Styled(RichText)
       className="rewards__benefits"
     />
@@ -324,14 +335,19 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      />
+      >
+        apply_now_links_text
+      </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
         className="linkIconSeperator"
         fontSizeVariation="large"
         target="_blank"
         underline={true}
-      />
+        url="details_link"
+      >
+        apply_now_details
+      </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
         className="footerLink"
@@ -339,7 +355,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         fontSizeVariation="large"
         target="_blank"
         underline={true}
-      />
+        url="faq_link"
+      >
+        apply_now_faq
+      </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
         className="footerLink"
@@ -347,7 +366,10 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         fontSizeVariation="large"
         target="_blank"
         underline={true}
-      />
+        url="rewards_program_link"
+      >
+        apply_now_rewardTerms
+      </Styled(Anchor)>
     </div>
   </div>
 </Styled(Modal)>
