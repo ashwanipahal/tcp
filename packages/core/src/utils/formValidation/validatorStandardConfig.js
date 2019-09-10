@@ -23,6 +23,12 @@ export const formValidationMessages = {
   country: {
     required: 'lbl_err_country_required',
   },
+  userBirthMonth: {
+    required: 'lbl_err_userbirthdaymonth_required',
+  },
+  userBirthYear: {
+    required: 'lbl_err_userbirthdayyear_required',
+  },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
       linkedFieldsValues[0] === 'US'
@@ -71,8 +77,8 @@ export const formValidationMessages = {
   cardPin: 'Please enter your gift card pin number',
 
   Email: {
-    required: `lbl_err_giftcardnumber`,
-    validEmail: 'lbl_err_cardpin',
+    required: `lbl_err_email_req`,
+    validEmail: 'lbl_err_email_validemail',
   },
   emailAddress: {
     required: `lbl_err_email_req`,
@@ -163,6 +169,13 @@ export const formValidationRules = {
     },
   },
   country: {
+    required: true,
+  },
+
+  userBirthMonth: {
+    required: true,
+  },
+  userBirthYear: {
     required: true,
   },
   firstName: {
