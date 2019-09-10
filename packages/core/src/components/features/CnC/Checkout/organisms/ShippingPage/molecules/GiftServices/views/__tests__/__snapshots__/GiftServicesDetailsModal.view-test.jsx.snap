@@ -28,12 +28,16 @@ exports[`GiftServices component renders correctly 1`] = `
     border: 1px solid;
     height: 146px;
     padding: 0;
+    width: 99%;
   }
   .addReceipt {
     padding-top: 10px;
     margin-left: 35px;
   }
   .giftServicesContainer {
+    p {
+      width: 100%;
+    }
     margin-left: 35px;
   }
   .messageTextWrapper {
@@ -47,18 +51,16 @@ exports[`GiftServices component renders correctly 1`] = `
     display: inline-block;
     width: 142px;
   }
-  .dropdownDivOverFlow {
-    width: 100%;
-  }
+
   .dropdownliBottomBorder {
-    width: 97%;
     height: 71px;
     cursor: pointer;
-    padding-top: 0px;
+    padding-top: 2px;
     padding-bottom: 0px;
   }
   .price {
     float: right;
+    margin-right: 5px;
   }
   .longDesc {
     font-size: 12px;
@@ -69,13 +71,26 @@ exports[`GiftServices component renders correctly 1`] = `
     padding-top: 3px;
   }
 
-  .custom-select {
-    width: 100%;
+  .phone-field-wrapper {
+    width: auto;
+    margin-left: -12px;
+    padding-right: 15px;
   }
 
-  .dropdownUlBorder {
-    width: 100%;
+  .normal-select-box {
+    padding-top: 5px;
   }
+
+  .custom-select {
+    width: 100%;
+    font-family: ",
+          [Function],
+          ";
+    > span {
+      display: none;
+    }
+  }
+
   .giftServicesModal {
     @media ",
           [Function],
@@ -83,6 +98,51 @@ exports[`GiftServices component renders correctly 1`] = `
       height: 90%;
     }
   }
+
+  .customSelectTitle {
+    font-family: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          "px;
+  }
+
+  .dropdownDivOverFlow {
+    div {
+      font-family: ",
+          [Function],
+          ";
+    }
+    .dropdownUlBorder {
+      width: auto;
+      border: 1px solid ",
+          [Function],
+          ";
+    }
+    .dropdownActiveClass {
+      background-color: ",
+          [Function],
+          ";
+      div {
+        color: ",
+          [Function],
+          ";
+        font-family: ",
+          [Function],
+          ";
+      }
+      span {
+        font-family: ",
+          [Function],
+          ";
+      }
+      .dropdownActiveIcon {
+        display: none;
+      }
+    }
+  }
+
   .gymImage {
     @media ",
           [Function],
