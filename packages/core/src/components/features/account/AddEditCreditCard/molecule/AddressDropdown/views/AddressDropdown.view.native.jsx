@@ -81,7 +81,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
       selectedLabelState,
       top: 0,
       flatListTop: 0,
-      flatListBottom: 0,
+      flatListHeight: 0,
     };
   }
 
@@ -95,12 +95,11 @@ export class AddressDropdown extends React.PureComponent<Props> {
   calculateDropDownPosition = () => {
     if (!this.rowMarker) return;
     this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
-      this.rowFrame = { x: pageX, y: height + pageY, width, height };
-
+      const { data, itemStyle, dropDownStyle } = this.props;
+      this.rowFrame = { x: pageX, y: dropDownStyle.height + pageY, width, height };
       const windowHeight = getScreenHeight();
 
       // calculate the list height
-      const { data, itemStyle } = this.props;
       const calculateHeight = data.length * itemStyle.height;
 
       // checking bottom space
@@ -113,13 +112,33 @@ export class AddressDropdown extends React.PureComponent<Props> {
       const topMargin = {
         top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
       };
-      this.setState({ top: topMargin.top });
-      if (showInBottom) {
-        this.setState({ flatListBottom: 300 });
-      } else if (calculateHeight > windowHeight) {
-        this.setState({ flatListTop: 120, flatListBottom: 200 });
-      }
+
+      const dH = windowHeight - pageY - height;
+      this.setDropDownPosition(topMargin, dH, showInBottom, calculateHeight, windowHeight);
     });
+  };
+
+  /**
+   * Set drop down position
+   */
+  setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
+    this.setState({ top: topMargin.top });
+    let listMargin = 0;
+    let listHeight = 0;
+
+    if (showInBottom) {
+      if (calculateHeight > dH) {
+        listHeight = dH;
+      } else {
+        listHeight = calculateHeight;
+      }
+    } else if (calculateHeight > windowHeight) {
+      listMargin = 100;
+      listHeight = (windowHeight * 3) / 4;
+    } else {
+      listHeight = calculateHeight;
+    }
+    this.setState({ flatListHeight: listHeight, flatListTop: listMargin });
   };
 
   /**
@@ -210,7 +229,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
   render() {
     const { data, dropDownStyle, labels } = this.props;
-    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListBottom } = this.state;
+    const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
     return (
       <View style={dropDownStyle}>
         <Row
@@ -245,10 +264,9 @@ export class AddressDropdown extends React.PureComponent<Props> {
             onPress={this.closeDropDown}
             activeOpacity={1}
             style={{
-              width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
-              marginTop: flatListTop,
+              paddingTop: flatListTop,
             }}
           >
             <OverLayView
@@ -257,7 +275,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
               }}
               style={{
                 top,
-                marginBottom: flatListBottom,
+                width: this.rowFrame.width,
               }}
             >
               {dropDownIsOpen && (
@@ -266,6 +284,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.id}
                   bounces={false}
+                  style={{ height: flatListHeight }}
                   ItemSeparatorComponent={() => <Separator />}
                 />
               )}

@@ -23,9 +23,9 @@ exports[`CreditCardFields component should render correctly 1`] = `
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
-        fontFamily="secondary"
         fontSize="fs10"
         fontWeight="black"
+        mobilefontFamily="secondary"
         text=""
       />
       <Field
@@ -143,9 +143,9 @@ exports[`CreditCardFields component should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
-        fontFamily="secondary"
         fontSize="fs10"
         fontWeight="black"
+        mobilefontFamily="secondary"
         text=""
       />
       <Field

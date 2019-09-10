@@ -40,15 +40,8 @@ export function* fetchPlpProducts({ payload }) {
     }
     if (reqObj && reqObj.categoryId) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
-      if (
-        plpProducts &&
-        plpProducts.loadedProductsPages &&
-        plpProducts.loadedProductsPages[0] &&
-        plpProducts.loadedProductsPages[0].length
-      ) {
+      if (plpProducts) {
         operatorInstance.updateBucketingConfig(plpProducts);
-        yield put(setListingFirstProductsPage({ ...plpProducts }));
-      } else if (plpProducts) {
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }

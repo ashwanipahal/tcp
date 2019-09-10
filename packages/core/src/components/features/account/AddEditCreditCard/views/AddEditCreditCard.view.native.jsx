@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import CreditCardForm from '../organism/CreditCardForm';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
@@ -25,7 +24,7 @@ export const AddEditCreditCard = ({
 }) => {
   const [verifyModalDisplayed, setVerifyModalDisplayed] = useState(false);
   return (
-    <SafeAreaView>
+    <>
       {!showCreditCardFields && (
         <>
           <AddressVerification
@@ -68,7 +67,7 @@ export const AddEditCreditCard = ({
           {...otherProps}
         />
       )}
-    </SafeAreaView>
+    </>
   );
 };
 

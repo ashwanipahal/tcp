@@ -1,28 +1,23 @@
 import styled from 'styled-components';
 
 const CreditCardContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-`;
-
-const CreditCardWrapper = styled.View`
-  height: 180px;
+  margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const AddressWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  min-height: 220px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
 `;
 
 const ActionsWrapper = styled.View`
-  align-items: center;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL}
+    ${props => props.theme.spacing.ELEM_SPACING.LRG}
+    ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 const AddAddressButton = {
   color: 'white',
   fontWeight: 'normal',
   marginTop: 48,
-  width: 190,
 };
 
 const CancelButton = {
@@ -31,14 +26,13 @@ const CancelButton = {
   color: 'black',
   border: 1,
   marginTop: 15,
-  width: 190,
 };
 
 const DefaultAddress = styled.View`
-  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const LeftBracket = styled.View`
@@ -65,7 +59,6 @@ const ModalHeading = styled.Text`
 const ModalViewWrapper = styled.View`
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  height: 820px;
 `;
 
 const CustomAddress = {
@@ -88,7 +81,6 @@ const itemStyle = {
 
 export {
   CreditCardContainer,
-  CreditCardWrapper,
   AddressWrapper,
   ActionsWrapper,
   AddAddressButton,

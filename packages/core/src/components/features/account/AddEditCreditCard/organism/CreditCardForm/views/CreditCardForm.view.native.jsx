@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, change, FormSection } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -17,7 +17,6 @@ import constants from '../../../container/AddEditCreditCard.constants';
 import { CreditCardFields } from '../../../molecule/CreditCardFields/views/CreditCardFields.view.native';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import {
-  CreditCardWrapper,
   AddressWrapper,
   ActionsWrapper,
   AddAddressButton,
@@ -201,18 +200,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       >
         <CreditCardContainer>
           {showCreditCardFields && (
-            <CreditCardWrapper>
-              <CreditCardFields
-                {...this.props}
-                updateExpiryDate={this.updateExpiryDate}
-                dto={dto}
-                selectedCard={selectedCard}
-              />
-            </CreditCardWrapper>
+            <CreditCardFields
+              {...this.props}
+              updateExpiryDate={this.updateExpiryDate}
+              dto={dto}
+              selectedCard={selectedCard}
+            />
           )}
           <AddressWrapper>
             <Heading
-              fontFamily="secondary"
+              mobilefontFamily="secondary"
               fontSize="fs14"
               letterSpacing="ls167"
               textAlign="left"
@@ -226,7 +223,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                     fontFamily="secondary"
                     fontSize="fs12"
                     textAlign="left"
-                    fontWeight="semibold"
+                    fontWeight="black"
                     marginTop="10"
                     text={labels.paymentGC.lbl_payment_ccAdressSelect}
                   />
@@ -307,17 +304,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               onRequestClose={this.toggleModal}
               heading={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
             >
-              <SafeAreaView>
-                <ModalViewWrapper>
-                  <AddEditAddressContainer
-                    onCancel={this.toggleModal}
-                    addressBookLabels={addressLabels}
-                    showHeading={false}
-                    currentForm="AddAddress"
-                    toggleAddressModal={this.toggleModal}
-                  />
-                </ModalViewWrapper>
-              </SafeAreaView>
+              <ModalViewWrapper>
+                <AddEditAddressContainer
+                  onCancel={this.toggleModal}
+                  addressBookLabels={addressLabels}
+                  showHeading={false}
+                  currentForm="AddAddress"
+                  toggleAddressModal={this.toggleModal}
+                  address={null}
+                />
+              </ModalViewWrapper>
             </ModalNative>
           )}
         </CreditCardContainer>

@@ -137,152 +137,150 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
   subHeading={null}
 >
   <Styled(View)>
-    <Styled(View)>
-      <CreditCardFields
-        addressLabels={Object {}}
-        addressList={
-          Immutable.List [
-            Object {
-              "addressId": "12345",
-              "firstName": "test",
-              "lastName": "test",
-              "primary": "true",
-            },
-          ]
-        }
-        cardType=""
-        cardTypeImgUrl=""
-        className=""
-        dispatch={[MockFunction]}
-        dto={Object {}}
-        expMonthOptionsMap={
-          Array [
-            Object {
-              "label": "01 (Jan.)",
-              "value": "1",
-            },
-            Object {
-              "label": "02 (Feb.)",
-              "value": "2",
-            },
-            Object {
-              "label": "03 (Mar.)",
-              "value": "3",
-            },
-            Object {
-              "label": "04 (Apr.)",
-              "value": "4",
-            },
-            Object {
-              "label": "05 (May.)",
-              "value": "5",
-            },
-            Object {
-              "label": "06 (Jun.)",
-              "value": "6",
-            },
-            Object {
-              "label": "07 (Jul.)",
-              "value": "7",
-            },
-            Object {
-              "label": "08 (Aug.)",
-              "value": "8",
-            },
-            Object {
-              "label": "09 (Sep.)",
-              "value": "9",
-            },
-            Object {
-              "label": "10 (Oct.)",
-              "value": "10",
-            },
-            Object {
-              "label": "11 (Nov.)",
-              "value": "11",
-            },
-            Object {
-              "label": "12 (Dec.)",
-              "value": "12",
-            },
-          ]
-        }
-        expYearOptionsMap={
-          Array [
-            Object {
-              "label": "2019",
-              "value": "2019",
-            },
-            Object {
-              "label": "2020",
-              "value": "2020",
-            },
-            Object {
-              "label": "2021",
-              "value": "2021",
-            },
-            Object {
-              "label": "2022",
-              "value": "2022",
-            },
-            Object {
-              "label": "2023",
-              "value": "2023",
-            },
-            Object {
-              "label": "2024",
-              "value": "2024",
-            },
-            Object {
-              "label": "2025",
-              "value": "2025",
-            },
-            Object {
-              "label": "2026",
-              "value": "2026",
-            },
-            Object {
-              "label": "2027",
-              "value": "2027",
-            },
-            Object {
-              "label": "2028",
-              "value": "2028",
-            },
-            Object {
-              "label": "2029",
-              "value": "2029",
-            },
-          ]
-        }
-        handleSubmit={[MockFunction]}
-        initialValues={Object {}}
-        isEdit={false}
-        isPLCCEnabled={true}
-        labels={
+    <CreditCardFields
+      addressLabels={Object {}}
+      addressList={
+        Immutable.List [
           Object {
-            "common": Object {},
-            "paymentGC": Object {},
-          }
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          },
+        ]
+      }
+      cardType=""
+      cardTypeImgUrl=""
+      className=""
+      dispatch={[MockFunction]}
+      dto={Object {}}
+      expMonthOptionsMap={
+        Array [
+          Object {
+            "label": "01 (Jan.)",
+            "value": "1",
+          },
+          Object {
+            "label": "02 (Feb.)",
+            "value": "2",
+          },
+          Object {
+            "label": "03 (Mar.)",
+            "value": "3",
+          },
+          Object {
+            "label": "04 (Apr.)",
+            "value": "4",
+          },
+          Object {
+            "label": "05 (May.)",
+            "value": "5",
+          },
+          Object {
+            "label": "06 (Jun.)",
+            "value": "6",
+          },
+          Object {
+            "label": "07 (Jul.)",
+            "value": "7",
+          },
+          Object {
+            "label": "08 (Aug.)",
+            "value": "8",
+          },
+          Object {
+            "label": "09 (Sep.)",
+            "value": "9",
+          },
+          Object {
+            "label": "10 (Oct.)",
+            "value": "10",
+          },
+          Object {
+            "label": "11 (Nov.)",
+            "value": "11",
+          },
+          Object {
+            "label": "12 (Dec.)",
+            "value": "12",
+          },
+        ]
+      }
+      expYearOptionsMap={
+        Array [
+          Object {
+            "label": "2019",
+            "value": "2019",
+          },
+          Object {
+            "label": "2020",
+            "value": "2020",
+          },
+          Object {
+            "label": "2021",
+            "value": "2021",
+          },
+          Object {
+            "label": "2022",
+            "value": "2022",
+          },
+          Object {
+            "label": "2023",
+            "value": "2023",
+          },
+          Object {
+            "label": "2024",
+            "value": "2024",
+          },
+          Object {
+            "label": "2025",
+            "value": "2025",
+          },
+          Object {
+            "label": "2026",
+            "value": "2026",
+          },
+          Object {
+            "label": "2027",
+            "value": "2027",
+          },
+          Object {
+            "label": "2028",
+            "value": "2028",
+          },
+          Object {
+            "label": "2029",
+            "value": "2029",
+          },
+        ]
+      }
+      handleSubmit={[MockFunction]}
+      initialValues={Object {}}
+      isEdit={false}
+      isPLCCEnabled={true}
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
         }
-        mailingAddress={true}
-        onFileAddressKey=""
-        pristine={true}
-        selectedCard={null}
-        showCreditCardFields={true}
-        showEmailAddress={true}
-        showUserName={true}
-        subHeading={null}
-        updateExpiryDate={[Function]}
-      />
-    </Styled(View)>
+      }
+      mailingAddress={true}
+      onFileAddressKey=""
+      pristine={true}
+      selectedCard={null}
+      showCreditCardFields={true}
+      showEmailAddress={true}
+      showUserName={true}
+      subHeading={null}
+      updateExpiryDate={[Function]}
+    />
     <Styled(View)>
       <Styled(Heading)
-        fontFamily="secondary"
         fontSize="fs14"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
+        mobilefontFamily="secondary"
         text=""
         textAlign="left"
       />
@@ -317,7 +315,6 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "color": "white",
             "fontWeight": "normal",
             "marginTop": 48,
-            "width": 190,
           }
         }
       />
@@ -331,7 +328,6 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "fontWeight": "normal",
             "marginTop": 15,
             "opacity": 0.5,
-            "width": 190,
           }
         }
       />
@@ -500,175 +496,173 @@ exports[`CreditCardForm component should renders correctly with address dropdown
   subHeading={null}
 >
   <Styled(View)>
-    <Styled(View)>
-      <CreditCardFields
-        addressLabels={Object {}}
-        addressList={
-          Immutable.List [
-            Object {
-              "addressId": "12345",
-              "firstName": "test",
-              "lastName": "test",
-              "primary": "true",
-            },
-          ]
-        }
-        cardType=""
-        cardTypeImgUrl=""
-        className=""
-        dispatch={
-          [MockFunction] {
-            "calls": Array [
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "onFileAddressKey",
-                    "form": "addEditCreditCard",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": "12345",
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-            ],
-            "results": Array [
+    <CreditCardFields
+      addressLabels={Object {}}
+      addressList={
+        Immutable.List [
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          },
+        ]
+      }
+      cardType=""
+      cardTypeImgUrl=""
+      className=""
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
               Object {
-                "type": "return",
-                "value": undefined,
+                "meta": Object {
+                  "field": "onFileAddressKey",
+                  "form": "addEditCreditCard",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "12345",
+                "type": "@@redux-form/CHANGE",
               },
             ],
-          }
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
         }
-        dto={Object {}}
-        expMonthOptionsMap={
-          Array [
-            Object {
-              "label": "01 (Jan.)",
-              "value": "1",
-            },
-            Object {
-              "label": "02 (Feb.)",
-              "value": "2",
-            },
-            Object {
-              "label": "03 (Mar.)",
-              "value": "3",
-            },
-            Object {
-              "label": "04 (Apr.)",
-              "value": "4",
-            },
-            Object {
-              "label": "05 (May.)",
-              "value": "5",
-            },
-            Object {
-              "label": "06 (Jun.)",
-              "value": "6",
-            },
-            Object {
-              "label": "07 (Jul.)",
-              "value": "7",
-            },
-            Object {
-              "label": "08 (Aug.)",
-              "value": "8",
-            },
-            Object {
-              "label": "09 (Sep.)",
-              "value": "9",
-            },
-            Object {
-              "label": "10 (Oct.)",
-              "value": "10",
-            },
-            Object {
-              "label": "11 (Nov.)",
-              "value": "11",
-            },
-            Object {
-              "label": "12 (Dec.)",
-              "value": "12",
-            },
-          ]
-        }
-        expYearOptionsMap={
-          Array [
-            Object {
-              "label": "2019",
-              "value": "2019",
-            },
-            Object {
-              "label": "2020",
-              "value": "2020",
-            },
-            Object {
-              "label": "2021",
-              "value": "2021",
-            },
-            Object {
-              "label": "2022",
-              "value": "2022",
-            },
-            Object {
-              "label": "2023",
-              "value": "2023",
-            },
-            Object {
-              "label": "2024",
-              "value": "2024",
-            },
-            Object {
-              "label": "2025",
-              "value": "2025",
-            },
-            Object {
-              "label": "2026",
-              "value": "2026",
-            },
-            Object {
-              "label": "2027",
-              "value": "2027",
-            },
-            Object {
-              "label": "2028",
-              "value": "2028",
-            },
-            Object {
-              "label": "2029",
-              "value": "2029",
-            },
-          ]
-        }
-        handleSubmit={[MockFunction]}
-        initialValues={Object {}}
-        isEdit={false}
-        isPLCCEnabled={true}
-        labels={
+      }
+      dto={Object {}}
+      expMonthOptionsMap={
+        Array [
           Object {
-            "common": Object {},
-            "paymentGC": Object {},
-          }
+            "label": "01 (Jan.)",
+            "value": "1",
+          },
+          Object {
+            "label": "02 (Feb.)",
+            "value": "2",
+          },
+          Object {
+            "label": "03 (Mar.)",
+            "value": "3",
+          },
+          Object {
+            "label": "04 (Apr.)",
+            "value": "4",
+          },
+          Object {
+            "label": "05 (May.)",
+            "value": "5",
+          },
+          Object {
+            "label": "06 (Jun.)",
+            "value": "6",
+          },
+          Object {
+            "label": "07 (Jul.)",
+            "value": "7",
+          },
+          Object {
+            "label": "08 (Aug.)",
+            "value": "8",
+          },
+          Object {
+            "label": "09 (Sep.)",
+            "value": "9",
+          },
+          Object {
+            "label": "10 (Oct.)",
+            "value": "10",
+          },
+          Object {
+            "label": "11 (Nov.)",
+            "value": "11",
+          },
+          Object {
+            "label": "12 (Dec.)",
+            "value": "12",
+          },
+        ]
+      }
+      expYearOptionsMap={
+        Array [
+          Object {
+            "label": "2019",
+            "value": "2019",
+          },
+          Object {
+            "label": "2020",
+            "value": "2020",
+          },
+          Object {
+            "label": "2021",
+            "value": "2021",
+          },
+          Object {
+            "label": "2022",
+            "value": "2022",
+          },
+          Object {
+            "label": "2023",
+            "value": "2023",
+          },
+          Object {
+            "label": "2024",
+            "value": "2024",
+          },
+          Object {
+            "label": "2025",
+            "value": "2025",
+          },
+          Object {
+            "label": "2026",
+            "value": "2026",
+          },
+          Object {
+            "label": "2027",
+            "value": "2027",
+          },
+          Object {
+            "label": "2028",
+            "value": "2028",
+          },
+          Object {
+            "label": "2029",
+            "value": "2029",
+          },
+        ]
+      }
+      handleSubmit={[MockFunction]}
+      initialValues={Object {}}
+      isEdit={false}
+      isPLCCEnabled={true}
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
         }
-        mailingAddress={false}
-        onFileAddressKey=""
-        onFileAddresskey="12345"
-        selectedCard={null}
-        showCreditCardFields={true}
-        showEmailAddress={true}
-        showUserName={true}
-        subHeading={null}
-        updateExpiryDate={[Function]}
-      />
-    </Styled(View)>
+      }
+      mailingAddress={false}
+      onFileAddressKey=""
+      onFileAddresskey="12345"
+      selectedCard={null}
+      showCreditCardFields={true}
+      showEmailAddress={true}
+      showUserName={true}
+      subHeading={null}
+      updateExpiryDate={[Function]}
+    />
     <Styled(View)>
       <Styled(Heading)
-        fontFamily="secondary"
         fontSize="fs14"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
+        mobilefontFamily="secondary"
         text=""
         textAlign="left"
       />
@@ -708,7 +702,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "color": "white",
             "fontWeight": "normal",
             "marginTop": 48,
-            "width": 190,
           }
         }
       />
@@ -722,7 +715,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "fontWeight": "normal",
             "marginTop": 15,
             "opacity": 0.5,
-            "width": 190,
           }
         }
       />
@@ -868,152 +860,150 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
   subHeading={null}
 >
   <Styled(View)>
-    <Styled(View)>
-      <CreditCardFields
-        addressLabels={Object {}}
-        addressList={
-          Immutable.List [
-            Object {
-              "addressId": "12345",
-              "firstName": "test",
-              "lastName": "test",
-              "primary": "true",
-            },
-          ]
-        }
-        cardType=""
-        cardTypeImgUrl=""
-        className=""
-        dispatch={[MockFunction]}
-        dto={Object {}}
-        expMonthOptionsMap={
-          Array [
-            Object {
-              "label": "01 (Jan.)",
-              "value": "1",
-            },
-            Object {
-              "label": "02 (Feb.)",
-              "value": "2",
-            },
-            Object {
-              "label": "03 (Mar.)",
-              "value": "3",
-            },
-            Object {
-              "label": "04 (Apr.)",
-              "value": "4",
-            },
-            Object {
-              "label": "05 (May.)",
-              "value": "5",
-            },
-            Object {
-              "label": "06 (Jun.)",
-              "value": "6",
-            },
-            Object {
-              "label": "07 (Jul.)",
-              "value": "7",
-            },
-            Object {
-              "label": "08 (Aug.)",
-              "value": "8",
-            },
-            Object {
-              "label": "09 (Sep.)",
-              "value": "9",
-            },
-            Object {
-              "label": "10 (Oct.)",
-              "value": "10",
-            },
-            Object {
-              "label": "11 (Nov.)",
-              "value": "11",
-            },
-            Object {
-              "label": "12 (Dec.)",
-              "value": "12",
-            },
-          ]
-        }
-        expYearOptionsMap={
-          Array [
-            Object {
-              "label": "2019",
-              "value": "2019",
-            },
-            Object {
-              "label": "2020",
-              "value": "2020",
-            },
-            Object {
-              "label": "2021",
-              "value": "2021",
-            },
-            Object {
-              "label": "2022",
-              "value": "2022",
-            },
-            Object {
-              "label": "2023",
-              "value": "2023",
-            },
-            Object {
-              "label": "2024",
-              "value": "2024",
-            },
-            Object {
-              "label": "2025",
-              "value": "2025",
-            },
-            Object {
-              "label": "2026",
-              "value": "2026",
-            },
-            Object {
-              "label": "2027",
-              "value": "2027",
-            },
-            Object {
-              "label": "2028",
-              "value": "2028",
-            },
-            Object {
-              "label": "2029",
-              "value": "2029",
-            },
-          ]
-        }
-        handleSubmit={[MockFunction]}
-        initialValues={Object {}}
-        isEdit={false}
-        isPLCCEnabled={true}
-        labels={
+    <CreditCardFields
+      addressLabels={Object {}}
+      addressList={
+        Immutable.List [
           Object {
-            "common": Object {},
-            "paymentGC": Object {},
-          }
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          },
+        ]
+      }
+      cardType=""
+      cardTypeImgUrl=""
+      className=""
+      dispatch={[MockFunction]}
+      dto={Object {}}
+      expMonthOptionsMap={
+        Array [
+          Object {
+            "label": "01 (Jan.)",
+            "value": "1",
+          },
+          Object {
+            "label": "02 (Feb.)",
+            "value": "2",
+          },
+          Object {
+            "label": "03 (Mar.)",
+            "value": "3",
+          },
+          Object {
+            "label": "04 (Apr.)",
+            "value": "4",
+          },
+          Object {
+            "label": "05 (May.)",
+            "value": "5",
+          },
+          Object {
+            "label": "06 (Jun.)",
+            "value": "6",
+          },
+          Object {
+            "label": "07 (Jul.)",
+            "value": "7",
+          },
+          Object {
+            "label": "08 (Aug.)",
+            "value": "8",
+          },
+          Object {
+            "label": "09 (Sep.)",
+            "value": "9",
+          },
+          Object {
+            "label": "10 (Oct.)",
+            "value": "10",
+          },
+          Object {
+            "label": "11 (Nov.)",
+            "value": "11",
+          },
+          Object {
+            "label": "12 (Dec.)",
+            "value": "12",
+          },
+        ]
+      }
+      expYearOptionsMap={
+        Array [
+          Object {
+            "label": "2019",
+            "value": "2019",
+          },
+          Object {
+            "label": "2020",
+            "value": "2020",
+          },
+          Object {
+            "label": "2021",
+            "value": "2021",
+          },
+          Object {
+            "label": "2022",
+            "value": "2022",
+          },
+          Object {
+            "label": "2023",
+            "value": "2023",
+          },
+          Object {
+            "label": "2024",
+            "value": "2024",
+          },
+          Object {
+            "label": "2025",
+            "value": "2025",
+          },
+          Object {
+            "label": "2026",
+            "value": "2026",
+          },
+          Object {
+            "label": "2027",
+            "value": "2027",
+          },
+          Object {
+            "label": "2028",
+            "value": "2028",
+          },
+          Object {
+            "label": "2029",
+            "value": "2029",
+          },
+        ]
+      }
+      handleSubmit={[MockFunction]}
+      initialValues={Object {}}
+      isEdit={false}
+      isPLCCEnabled={true}
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
         }
-        mailingAddress={false}
-        onFileAddressKey=""
-        pristine={true}
-        selectedCard={null}
-        showCreditCardFields={true}
-        showEmailAddress={true}
-        showUserName={true}
-        subHeading={null}
-        updateExpiryDate={[Function]}
-      />
-    </Styled(View)>
+      }
+      mailingAddress={false}
+      onFileAddressKey=""
+      pristine={true}
+      selectedCard={null}
+      showCreditCardFields={true}
+      showEmailAddress={true}
+      showUserName={true}
+      subHeading={null}
+      updateExpiryDate={[Function]}
+    />
     <Styled(View)>
       <Styled(Heading)
-        fontFamily="secondary"
         fontSize="fs14"
         fontWeight="black"
         letterSpacing="ls167"
         locator=""
+        mobilefontFamily="secondary"
         text=""
         textAlign="left"
       />
@@ -1028,7 +1018,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "color": "white",
             "fontWeight": "normal",
             "marginTop": 48,
-            "width": 190,
           }
         }
       />
@@ -1042,7 +1031,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "fontWeight": "normal",
             "marginTop": 15,
             "opacity": 0.5,
-            "width": 190,
           }
         }
       />
