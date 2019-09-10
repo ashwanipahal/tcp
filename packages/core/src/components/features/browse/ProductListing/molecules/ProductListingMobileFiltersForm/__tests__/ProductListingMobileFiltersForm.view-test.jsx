@@ -415,6 +415,7 @@ describe('ProductListingFiltersForm is shown', () => {
     labels: {},
     initialValues: {},
     className: '',
+    handleSubmit: jest.fn(),
   };
   it('should render ProductListingFiltersForm', () => {
     const component = shallow(<ProductListingMobileFiltersFormVanilla {...props} />);

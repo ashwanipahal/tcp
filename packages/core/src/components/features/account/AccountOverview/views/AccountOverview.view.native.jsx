@@ -52,6 +52,7 @@ class AccountOverview extends PureComponent<Props> {
           variation={getComponentId.favorites && 'favorites'}
           showLogin={this.showloginModal}
           showCheckoutModal={this.showCheckoutModal}
+          resetAccountOverViewState={this.resetAccountOverViewState}
         />
       );
     }
@@ -95,6 +96,17 @@ class AccountOverview extends PureComponent<Props> {
           }
         : '',
     }));
+  };
+
+  resetAccountOverViewState = () => {
+    this.setState({
+      showModal: false,
+      getComponentId: {
+        login: '',
+        createAccount: '',
+        favorites: '',
+      },
+    });
   };
 
   showTrackOrderModal = () => {

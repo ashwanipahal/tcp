@@ -81,6 +81,7 @@ export const AddEditCreditCard = ({
             onSubmit={verifyAddressAction}
             initialValues={initialValues}
             isEdit={isEdit}
+            mailingAddress
             backToPaymentClick={backToAddressBookClick}
             showUserName={showUserName}
             showCreditCardFields={showCreditCardFields}

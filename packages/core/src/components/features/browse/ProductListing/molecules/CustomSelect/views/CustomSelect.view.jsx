@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 // aria support ?
 // searchable support ?
 // do we want a "clearable" property, and a clear button? (currently escape clears)
@@ -51,6 +52,19 @@ function getIndexOrIndicesOfValue(optionsMap, valueOrValues) {
         item => valueOrValues.findIndex(selectedValue => item.value === selectedValue) >= 0
       )
     : optionsMap.findIndex(item => item.value === valueOrValues);
+}
+
+// returns the data-locator from option value if ButtonText is not a valid string.
+function getButtonTextLocator(title, option) {
+  let locator = '';
+  if (typeof title !== 'string') {
+    locator = option.value;
+    return locator;
+  }
+  return locator
+    .toLowerCase()
+    .split(' ')
+    .join('_');
 }
 
 function getButtonText(selectedIndex, { selectTextOverride, optionsMap, placeholder }) {
@@ -214,13 +228,14 @@ class CustomSelect extends React.Component {
     facetName: PropTypes.string.isRequired,
     appliedFilterVal: PropTypes.number,
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+    type: PropTypes.string,
+    isSortOpenModal: PropTypes.bool,
   };
 
   static customSelectCounter = 0;
 
   constructor(props) {
     super(props);
-
     this.containerDivRef = null; // the HTML DOM element of the containing div element of this component
     this.state = {
       expanded: !!props.expanded, // true if this component is expanded, false if closed;
@@ -240,7 +255,6 @@ class CustomSelect extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { expanded, optionsMap } = this.props;
     const { highlightedIndex } = this.state;
-
     if (nextProps.expanded !== expanded || nextProps.disableExpandStateChanges) {
       this.setState({ expanded: nextProps.expanded });
     }
@@ -480,9 +494,11 @@ class CustomSelect extends React.Component {
   /** closes the dropdown */
   closeMenu() {
     const { expanded } = this.state;
-    const { disableExpandStateChanges } = this.props;
-    if (!expanded || disableExpandStateChanges) return;
-    this.setState({ expanded: false });
+    const { disableExpandStateChanges, isSortOpenModal } = this.props;
+    if (!isSortOpenModal) {
+      if (!expanded || disableExpandStateChanges) return;
+      this.setState({ expanded: false });
+    }
   }
 
   render() {
@@ -505,6 +521,8 @@ class CustomSelect extends React.Component {
       onCloseCallback,
       onExpandCallback,
       labels,
+      type,
+      isSortOpenModal,
       ...otherProps
     } = this.props;
 
@@ -515,12 +533,10 @@ class CustomSelect extends React.Component {
     const selectedIndex = getIndexOrIndicesOfValue(optionsMap, value);
     const buttonText = getButtonText(selectedIndex, this.props);
     const buttonIconText = expanded ? buttonIconExpanded : buttonIconClosed;
-    const dataLocatorSuffix = buttonText
-      .toLowerCase()
-      .split(' ')
-      .join('_');
+    const dataLocatorSuffix = getButtonTextLocator(buttonText, optionsMap[selectedIndex]);
+
     const buttonClassName = cssClassName(
-      'custom-select-button ',
+      'custom-select-button custom-sort-dropdown ',
       className,
       '-button',
       { '-closed': !expanded },
@@ -548,7 +564,16 @@ class CustomSelect extends React.Component {
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
       >
-        {title && <span className="custom-select-title">{title}</span>}
+        {title && (
+          <BodyCopy
+            component="span"
+            className="custom-select-title sort-select-title"
+            fontSize="fs14"
+            fontFamily="secondary"
+          >
+            {title}
+          </BodyCopy>
+        )}
         {!disableExpandStateChanges && (
           <div
             role="button"
@@ -566,7 +591,10 @@ class CustomSelect extends React.Component {
               fontFamily="secondary"
               color="gray.900"
               fontWeight={expanded ? 'extrabold' : 'regular'}
-              className={['filter-label', expanded ? 'filter-label-expanded' : ''].join(' ')}
+              className={[
+                'filter-label sort-filter-label',
+                expanded ? 'filter-label-expanded' : '',
+              ].join(' ')}
               outline="none"
               data-locator={getLocator(`plp_filter_${dataLocatorSuffix}`)}
             >
@@ -585,6 +613,7 @@ class CustomSelect extends React.Component {
             facetName={facetName}
             dataLocator={dataLocatorSuffix}
             labels={labels}
+            type={type}
           />
         )}
 
@@ -612,5 +641,7 @@ CustomSelect.defaultProps = {
   selectTextOverride: '',
   appliedFilterVal: 0,
   labels: {},
+  type: '',
+  isSortOpenModal: false,
 };
 export default withStyles(CustomSelect, CustomSelectStyle);

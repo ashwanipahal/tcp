@@ -4,17 +4,22 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 <footer
   className="footer-class"
 >
-  <Styled(FooterTopCandidateA)
-    className="footer-class"
-    copyrightText=""
-    isLoggedIn={false}
-    legalLinks={Array []}
-    navLinks={Array []}
-    openEmailSignUpModal={[Function]}
-    referenceID=""
-  />
-  <Connect(Styled(ReduxForm)) />
-  <Connect(Styled(ReduxForm)) />
+  <Styled(Row)
+    className="footer-candidate-wrapper"
+    fullBleed={true}
+  >
+    <Styled(FooterTopCandidateA)
+      className="footer-class"
+      copyrightText=""
+      isLoggedIn={false}
+      legalLinks={Array []}
+      navLinks={Array []}
+      openEmailSignUpModal={[Function]}
+      referenceID=""
+    />
+    <Connect(Styled(ReduxForm)) />
+    <Connect(Styled(ReduxForm)) />
+  </Styled(Row)>
   <Styled(Row)
     className="footer-middle mobile"
     fullBleed={true}
@@ -26,95 +31,104 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
     />
   </Styled(Row)>
   <Styled(Row)
-    className="footer-middle desktop"
+    className="content-wrapper"
+    fullBleed={true}
   >
-    <FooterMiddleDesktop
-      className="footer-class"
-      isLoggedIn={false}
-      navLinks={Array []}
-    />
+    <Styled(Row)
+      className="footer-middle desktop"
+    >
+      <FooterMiddleDesktop
+        className="footer-class"
+        isLoggedIn={false}
+        navLinks={Array []}
+      />
+    </Styled(Row)>
   </Styled(Row)>
   <div
     className="footer-bottom"
   >
     <Styled(Row)
-      className="fullbleed-mobile"
+      className="content-wrapper"
     >
-      <Styled(Col)
-        className="footer-bottom__slot--1 default-offset"
-        colSize={
-          Object {
-            "large": 4,
-            "medium": 8,
-            "small": 6,
-          }
-        }
+      <Styled(Row)
+        className="fullbleed-mobile"
       >
-        <Styled(Copyright) />
-        <div
-          className="poc-hide"
+        <Styled(Col)
+          className="footer-bottom__slot--1 default-offset"
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 8,
+              "small": 6,
+            }
+          }
         >
-          <Styled(Button)>
-            Get Registered User Info
-          </Styled(Button)>
-          <Styled(Button)>
-            Get Order detail
-          </Styled(Button)>
-        </div>
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-bottom__slot--2 default-offset"
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 8,
-            "small": 6,
+          <Styled(Copyright) />
+          <div
+            className="poc-hide"
+          >
+            <Styled(Button)>
+              Get Registered User Info
+            </Styled(Button)>
+            <Styled(Button)>
+              Get Order detail
+            </Styled(Button)>
+          </div>
+        </Styled(Col)>
+        <Styled(Col)
+          className="footer-bottom__slot--2 default-offset"
+          colSize={
+            Object {
+              "large": 7,
+              "medium": 8,
+              "small": 6,
+            }
           }
-        }
-      >
-        <Styled(LegalLinks)
-          links={Array []}
-        />
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-bottom__slot--3 default-offset"
-        colSize={
-          Object {
-            "large": 2,
-            "medium": 8,
-            "small": 6,
+        >
+          <Styled(LegalLinks)
+            links={Array []}
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          className="footer-bottom__slot--3 default-offset"
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 8,
+              "small": 6,
+            }
           }
-        }
+        >
+          <Component
+            showInFooter={true}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        fullBleed={true}
       >
-        <Component
-          showInFooter={true}
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
           }
-        }
-      >
-        <Styled(BodyCopy)
-          className="reference-id"
-          color="text.primary"
-          component="p"
-          fontFamily="primary"
-          fontSize="fs32"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        />
-      </Styled(Col)>
+        >
+          <Styled(BodyCopy)
+            className="reference-id"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs32"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
     </Styled(Row)>
   </div>
 </footer>
@@ -122,16 +136,21 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 
 exports[`Footer component Footer component renders correctly without props 1`] = `
 <footer>
-  <Styled(FooterTopCandidateA)
-    copyrightText=""
-    isLoggedIn={false}
-    legalLinks={Array []}
-    navLinks={Array []}
-    openEmailSignUpModal={[Function]}
-    referenceID=""
-  />
-  <Connect(Styled(ReduxForm)) />
-  <Connect(Styled(ReduxForm)) />
+  <Styled(Row)
+    className="footer-candidate-wrapper"
+    fullBleed={true}
+  >
+    <Styled(FooterTopCandidateA)
+      copyrightText=""
+      isLoggedIn={false}
+      legalLinks={Array []}
+      navLinks={Array []}
+      openEmailSignUpModal={[Function]}
+      referenceID=""
+    />
+    <Connect(Styled(ReduxForm)) />
+    <Connect(Styled(ReduxForm)) />
+  </Styled(Row)>
   <Styled(Row)
     className="footer-middle mobile"
     fullBleed={true}
@@ -142,94 +161,103 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     />
   </Styled(Row)>
   <Styled(Row)
-    className="footer-middle desktop"
+    className="content-wrapper"
+    fullBleed={true}
   >
-    <FooterMiddleDesktop
-      isLoggedIn={false}
-      navLinks={Array []}
-    />
+    <Styled(Row)
+      className="footer-middle desktop"
+    >
+      <FooterMiddleDesktop
+        isLoggedIn={false}
+        navLinks={Array []}
+      />
+    </Styled(Row)>
   </Styled(Row)>
   <div
     className="footer-bottom"
   >
     <Styled(Row)
-      className="fullbleed-mobile"
+      className="content-wrapper"
     >
-      <Styled(Col)
-        className="footer-bottom__slot--1 default-offset"
-        colSize={
-          Object {
-            "large": 4,
-            "medium": 8,
-            "small": 6,
-          }
-        }
+      <Styled(Row)
+        className="fullbleed-mobile"
       >
-        <Styled(Copyright) />
-        <div
-          className="poc-hide"
+        <Styled(Col)
+          className="footer-bottom__slot--1 default-offset"
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 8,
+              "small": 6,
+            }
+          }
         >
-          <Styled(Button)>
-            Get Registered User Info
-          </Styled(Button)>
-          <Styled(Button)>
-            Get Order detail
-          </Styled(Button)>
-        </div>
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-bottom__slot--2 default-offset"
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 8,
-            "small": 6,
+          <Styled(Copyright) />
+          <div
+            className="poc-hide"
+          >
+            <Styled(Button)>
+              Get Registered User Info
+            </Styled(Button)>
+            <Styled(Button)>
+              Get Order detail
+            </Styled(Button)>
+          </div>
+        </Styled(Col)>
+        <Styled(Col)
+          className="footer-bottom__slot--2 default-offset"
+          colSize={
+            Object {
+              "large": 7,
+              "medium": 8,
+              "small": 6,
+            }
           }
-        }
-      >
-        <Styled(LegalLinks)
-          links={Array []}
-        />
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-bottom__slot--3 default-offset"
-        colSize={
-          Object {
-            "large": 2,
-            "medium": 8,
-            "small": 6,
+        >
+          <Styled(LegalLinks)
+            links={Array []}
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          className="footer-bottom__slot--3 default-offset"
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 8,
+              "small": 6,
+            }
           }
-        }
+        >
+          <Component
+            showInFooter={true}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        fullBleed={true}
       >
-        <Component
-          showInFooter={true}
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
           }
-        }
-      >
-        <Styled(BodyCopy)
-          className="reference-id"
-          color="text.primary"
-          component="p"
-          fontFamily="primary"
-          fontSize="fs32"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        />
-      </Styled(Col)>
+        >
+          <Styled(BodyCopy)
+            className="reference-id"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs32"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
     </Styled(Row)>
   </div>
 </footer>

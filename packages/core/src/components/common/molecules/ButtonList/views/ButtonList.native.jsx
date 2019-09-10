@@ -10,6 +10,7 @@ import {
   DivImageContainer,
   TextLinksViewContainer,
   ContainerView,
+  SeparatorView,
 } from '../ButtonList.styles.native';
 
 type Props = {
@@ -206,6 +207,10 @@ const renderItemImageCTAList = (item, navigation, locator, color) => {
   );
 };
 
+const renderSeparatorView = () => {
+  return <SeparatorView />;
+};
+
 /**
  * This function is used to generate DivImageCTA view .
  */
@@ -219,6 +224,7 @@ const renderImageCTAList = (ctxButton, navigation, locator, color) => {
       keyExtractor={keyExtractor}
       data={ctxButton}
       renderItem={item => renderItemImageCTAList(item, navigation, locator, color)}
+      ItemSeparatorComponent={renderSeparatorView}
     />
   );
 };

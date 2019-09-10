@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePageView should render correctly 1`] = `
-<ScrollViewMock>
+<LazyloadScrollView
+  horizontal={false}
+  name="lazyload-home"
+  recycle={true}
+  recycleDistance={5336}
+  renderDistance={0}
+>
   <HomePageSlots
     modules={
       Object {
@@ -34,15 +40,9 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Styled(CustomButton)
-    active={false}
+  <Styled(WithTheme(CustomButton))
     buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    disableButton={false}
-    fill=""
     fullWidth={true}
-    locator=""
     onPress={[Function]}
     style={
       Object {
@@ -50,7 +50,6 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
     text="PLP Page"
-    url=""
   />
-</ScrollViewMock>
+</LazyloadScrollView>
 `;

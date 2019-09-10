@@ -49,59 +49,62 @@ class Modal extends React.PureComponent {
       ariaLabelledby,
       ariaDescribedby,
       innerContentClassName = '',
+      isOpen,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
       <div className={className}>
         <div className="TCPModal__Wrapper">
-          <ReactModal
-            {...otherProps}
-            parentSelector={getParent}
-            aria={{
-              labelledby: ariaLabelledby,
-              describedby: ariaDescribedby,
-            }}
-          >
-            {!fixedWidth && (
-              <Grid>
-                <Row>
-                  <Col
-                    colSize={column}
-                    className={`TCPModal__InnerContent ${innerContentClassName}`}
-                    data-locator={dataLocator}
-                  >
-                    <ModalHeader
-                      closeFunc={onRequestClose}
-                      title={title}
-                      heading={heading}
-                      closeIconDataLocator={closeIconDataLocator}
-                      closeIconLeftAligned={closeIconLeftAligned}
-                      dataLocatorHeader={dataLocatorHeader}
-                      headingStyle={headingStyle}
-                    />
-                    {children}
-                  </Col>
-                </Row>
-              </Grid>
-            )}
-            {fixedWidth && (
-              <div
-                className={`TCPModal__InnerContent ${innerContentClassName}`}
-                data-locator={dataLocator}
-              >
-                <ModalHeader
-                  closeFunc={onRequestClose}
-                  title={title}
-                  heading={heading}
-                  closeIconDataLocator={closeIconDataLocator}
-                  closeIconLeftAligned={closeIconLeftAligned}
-                  dataLocatorHeader={dataLocatorHeader}
-                  headingStyle={headingStyle}
-                />
-                {children}
-              </div>
-            )}
-          </ReactModal>
+          {isOpen && (
+            <ReactModal
+              {...otherProps}
+              parentSelector={getParent}
+              aria={{
+                labelledby: ariaLabelledby,
+                describedby: ariaDescribedby,
+              }}
+            >
+              {!fixedWidth && (
+                <Grid>
+                  <Row>
+                    <Col
+                      colSize={column}
+                      className={`TCPModal__InnerContent ${innerContentClassName}`}
+                      data-locator={dataLocator}
+                    >
+                      <ModalHeader
+                        closeFunc={onRequestClose}
+                        title={title}
+                        heading={heading}
+                        closeIconDataLocator={closeIconDataLocator}
+                        closeIconLeftAligned={closeIconLeftAligned}
+                        dataLocatorHeader={dataLocatorHeader}
+                        headingStyle={headingStyle}
+                      />
+                      {children}
+                    </Col>
+                  </Row>
+                </Grid>
+              )}
+              {fixedWidth && (
+                <div
+                  className={`TCPModal__InnerContent ${innerContentClassName}`}
+                  data-locator={dataLocator}
+                >
+                  <ModalHeader
+                    closeFunc={onRequestClose}
+                    title={title}
+                    heading={heading}
+                    closeIconDataLocator={closeIconDataLocator}
+                    closeIconLeftAligned={closeIconLeftAligned}
+                    dataLocatorHeader={dataLocatorHeader}
+                    headingStyle={headingStyle}
+                  />
+                  {children}
+                </div>
+              )}
+            </ReactModal>
+          )}
         </div>
       </div>
     );

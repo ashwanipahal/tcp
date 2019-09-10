@@ -149,36 +149,21 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
         data-locator="moreaboutyou-savebtn"
-        disableButton={false}
         disabled={true}
         fill="BLUE"
-        fullWidth=""
-        locator=""
         onPress={[Function]}
         text="SAVE"
-        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
         data-locator="moreaboutyou-cancelbtn"
-        disableButton={false}
-        fill=""
-        fullWidth=""
-        locator=""
         onPress={[MockFunction]}
         text="lbl_profile_personal_info_cancelCta"
-        url=""
       />
     </Styled(View)>
   </Styled(View)>

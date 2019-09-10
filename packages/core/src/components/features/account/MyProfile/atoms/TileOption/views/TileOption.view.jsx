@@ -11,12 +11,14 @@ export const TileOption = ({
   isSelected,
   onSelection,
   questionId,
+  dataLocator,
 }) => {
   return (
     <div className={className}>
       <div
         className={`tile-container${isSelected ? ' selected' : ''}`}
         onClick={() => onSelection(optionValue, questionId)}
+        data-locator={dataLocator}
         role="presentation"
       >
         <BodyCopy fontSize="fs14" fontWeight="regular" fontFamily="secondary" className="tile-text">
@@ -34,6 +36,7 @@ TileOption.propTypes = {
   className: PropTypes.string,
   isSelected: PropTypes.bool.isRequired,
   questionId: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string,
 };
 
 TileOption.defaultProps = {
@@ -41,6 +44,7 @@ TileOption.defaultProps = {
   optionValue: '',
   onSelection: () => {},
   className: '',
+  dataLocator: '',
 };
 
 export default withStyles(TileOption, styles);

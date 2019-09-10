@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniBag template should render correctly 1`] = `
+<Styled(Modal)
+  aria={
+    Object {
+      "describedby": "Mini Bag Modal",
+      "labelledby": "Mini Bag",
+    }
+  }
+  className="TCPModal__Content, "
+  closeIconDataLocator="mini-bag-close"
+  closeIconLeftAligned={true}
+  data-locator="mini-bag-modal"
+  heading={
+    <ForwardRef
+      cartItemCount={0}
+      currentPoints=""
+      labels={Object {}}
+      totalRewards=""
+      userName=""
+    />
+  }
+  inheritedStyles={
+    Array [
+      "
+  div.TCPModal__InnerContent {
+    right: 0;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    transform: none;
+    box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
+    width: 480px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    overflow: hidden;
+  }
+  .Modal_Heading {
+    font-family: ",
+      [Function],
+      ";
+    font-weight: normal;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid ",
+      [Function],
+      ";
+    height: ",
+      [Function],
+      ";
+    padding: 0;
+    @media ",
+      [Function],
+      " {
+      display: block;
+    }
+  }
+  .alignTop.alignTop {
+    /* stylelint-disable-line */
+    top: 28px;
+  }
+",
+    ]
+  }
+  isOpen={true}
+  onRequestClose={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          false,
+          true,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  overlayClassName="TCPModal__Overlay"
+>
+  <Styled(MiniBagBody)
+    cartItemCount={0}
+    currencySymbol=""
+    isCartItemsUpdating={true}
+    labels={Object {}}
+    subTotal=""
+    userName=""
+  />
+</Styled(Modal)>
+`;

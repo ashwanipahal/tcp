@@ -6,34 +6,6 @@ import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
 
 export default class CheckoutPage extends React.PureComponent {
-  onPickUpSubmit = data => {
-    const { onPickupSubmit } = this.props;
-    const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
-    const { hasAlternatePickup } = data.pickUpAlternate;
-    const { navigation } = this.props;
-    const params = {
-      formData: {
-        pickUpContact: {
-          firstName,
-          lastName,
-          phoneNumber,
-          emailAddress,
-          smsInfo: {
-            wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
-          },
-        },
-        hasAlternatePickup,
-        pickUpAlternate: {
-          firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-          lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-          emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-        },
-      },
-      navigation,
-    };
-    onPickupSubmit(params);
-  };
-
   submitShippingSection = data => {
     const { submitShippingSection, navigation } = this.props;
     submitShippingSection({ ...data, navigation });
@@ -59,7 +31,8 @@ export default class CheckoutPage extends React.PureComponent {
       smsSignUpLabels,
       pickupInitialValues,
       availableStages,
-      // setCheckoutStage,
+      labels,
+      onPickupSubmit,
     } = this.props;
 
     const { routeTo } = navigation.state.params;
@@ -79,7 +52,7 @@ export default class CheckoutPage extends React.PureComponent {
             isAlternateUpdateChecked={isAlternateUpdateChecked}
             pickUpLabels={pickUpLabels}
             smsSignUpLabels={smsSignUpLabels}
-            onPickUpSubmit={this.onPickUpSubmit}
+            onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             availableStages={availableStages}
           />
@@ -95,6 +68,7 @@ export default class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             handleSubmit={this.submitShippingSection}
             availableStages={availableStages}
+            labels={labels}
           />
         )}
         {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.BILLING.toLowerCase() && (
@@ -136,4 +110,5 @@ CheckoutPage.propTypes = {
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };

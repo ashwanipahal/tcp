@@ -50,7 +50,8 @@
     "superagent": "^5.0.8",
     "superagent-jsonp": "^0.2.1",
     "react-native-swipeable": "^0.6.0",
-    "react-native-easy-toast": "1.2.0"
+    "react-native-easy-toast": "1.2.0",
+    "react-native-lazyload-deux": "2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -157,7 +158,9 @@
       "**/react-test-renderer",
       "**/react-test-renderer/**",
       "**/bunyan",
-      "**/bunyan/**"
+      "**/bunyan/**",
+      "**/react-native-lazyload-deux",
+      "**/react-native-lazyload-deux/**"
     ]
   }
 }

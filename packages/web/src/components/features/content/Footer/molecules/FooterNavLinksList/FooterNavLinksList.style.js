@@ -24,7 +24,11 @@ const FooterNavLinksListCss = css`
     letter-spacing: ${props => props.theme.fonts.letterSpacing.normal};
     color: ${props => props.theme.colors.ACCORDION.TEXT};
     :hover {
-      border-bottom: 2px solid ${props => props.theme.colors.ANCHOR.SECONDARY};
+      border-bottom: 2px solid
+        ${props =>
+          props.theme.isGymboree
+            ? props.theme.colorPalette.primary.main
+            : props.theme.colors.ANCHOR.SECONDARY};
       padding-bottom: 4px;
       text-decoration: none;
     }
