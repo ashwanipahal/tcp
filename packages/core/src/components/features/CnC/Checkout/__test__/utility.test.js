@@ -40,6 +40,8 @@ const {
   routeToPage,
   redirectToBilling,
   getCreditCardType,
+  isOrderHasShipping,
+  getAvailableStages,
 } = Utility;
 
 describe('utility', () => {
@@ -123,6 +125,20 @@ describe('utility', () => {
     expect(Router.push).toHaveBeenCalled();
   });
 
+  it('isOrderHasShipping', () => {
+    const cartItems = fromJS({
+      miscInfo: {
+        store: [{}, {}],
+      },
+    });
+    expect(isOrderHasShipping(cartItems)).toBe(1);
+  });
+  it('getCreditCardType', () => {
+    expect(getCreditCardType({ cardNumber: 'a2f', cardType: '' })).toBe(null);
+  });
+  it('getCreditCardType', () => {
+    expect(getCreditCardType({ cardNumber: '', cardType: '' })).toBe(null);
+  });
   it('redirectToBilling', () => {
     const navigate = jest.fn();
     const navigation = {
@@ -137,6 +153,12 @@ describe('utility', () => {
   });
 
   it('getCreditCardType', () => {
+    const navigate = jest.fn();
     expect(getCreditCardType({ cardNumber: '', cardType: '' })).toBe(null);
+    expect(navigate).toHaveBeenCalledTimes(0);
+  });
+  it('getAvailableStages', () => {
+    const cartItems = fromJS({});
+    expect(getAvailableStages(cartItems)).toStrictEqual(['', '']);
   });
 });
