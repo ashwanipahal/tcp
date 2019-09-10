@@ -37,7 +37,6 @@ export const USER_ACTION_PATTERN = '@@User-';
 export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
-export const BILLING_PAYMENT_REDUCER_KEY = 'BillingPaymentReducer';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';

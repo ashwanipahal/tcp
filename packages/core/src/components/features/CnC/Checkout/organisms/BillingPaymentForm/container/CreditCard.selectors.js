@@ -23,10 +23,13 @@ const getCVVCodeInfoContentId = state => {
   }
   return cvvCodeCID;
 };
-const getCVVCodeRichTextSelector = state => {
-  return state.BillingPaymentReducer && state.BillingPaymentReducer.get('cvvCodeInfoContent');
-};
 
+const getCVVCodeRichTextSelector = state => {
+  const rContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === getCVVCodeInfoContentId(state)
+  );
+  return rContent && rContent.richText;
+};
 export const getErrorMessages = state => {
   return state.Labels.global;
 };

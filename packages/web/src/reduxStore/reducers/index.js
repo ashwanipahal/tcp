@@ -36,7 +36,6 @@ import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddE
 import DeviceInfoReducer from '@tcp/core/src/reduxStore/reducers/deviceInfo';
 import ApplyCardReducer from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.reducer';
 import OptimizelyFeaturesReducer from '@tcp/core/src/reduxStore/reducers/optimizelyFeatures';
-import BillingPaymentReducer from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.reducer';
 import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
 import ProductDetailReducer from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.reducer';
 import ApplyNowModalPLCCReducer from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.reducer';
@@ -88,7 +87,6 @@ import {
   DEVICE_INFO_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
   OPTIMIZELY_FEATURES_REDUCER,
-  BILLING_PAYMENT_REDUCER_KEY,
   TOAST_REDUCER_KEY,
   MAILING_ADDRESS_REDUCER_KEY,
   PRODUCT_DETAIL_REDUCER_KEY,
@@ -174,7 +172,6 @@ export default combineReducers({
   [DEVICE_INFO_REDUCER_KEY]: DeviceInfoReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
   [OPTIMIZELY_FEATURES_REDUCER]: OptimizelyFeaturesReducer,
-  [BILLING_PAYMENT_REDUCER_KEY]: BillingPaymentReducer,
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: ProductDetailReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,

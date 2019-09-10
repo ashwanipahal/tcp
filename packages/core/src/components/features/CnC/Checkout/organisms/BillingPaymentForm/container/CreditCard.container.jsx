@@ -4,8 +4,8 @@ import { getCardList } from '../../../../../account/Payment/container/Payment.ac
 import { getCardListState } from '../../../../../account/Payment/container/Payment.selectors';
 import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
-import { fetchModuleX } from './CreditCard.action';
 import constants from './CreditCard.constants';
+import BAG_PAGE_ACTIONS from '../../../../BagPage/container/BagPage.actions';
 
 export class GiftCardsContainer extends React.PureComponent<Props> {
   constructor(props) {
@@ -99,7 +99,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       formErrorMessage,
     } = this.props;
     if (cvvCodeInfoContentId) {
-      getCVVCodeInfo(cvvCodeInfoContentId);
+      getCVVCodeInfo([cvvCodeInfoContentId]);
     }
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -129,8 +129,8 @@ export const mapDispatchToProps = dispatch => {
     getCardListAction: () => {
       dispatch(getCardList());
     },
-    getCVVCodeInfo: cid => {
-      dispatch(fetchModuleX(cid));
+    getCVVCodeInfo: contentIds => {
+      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
   };
 };
