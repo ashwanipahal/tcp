@@ -9,6 +9,10 @@ export default css`
   }
   .padding-left-10 {
     padding-left: 4px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 150px;
+      display: inline-flex;
+    }
   }
   .padding-left-6 {
     padding-left: 6px;
@@ -113,6 +117,12 @@ export default css`
 
   .unavailable-error {
     padding-top: 0px;
+    div {
+      margin-right: 0px;
+      margin-left: 0px;
+      display: inline;
+      width: 100%;
+    }
   }
 
   .product-detail-bag {
@@ -290,8 +300,24 @@ export default css`
     }
   }
 
+  .parent-myBag {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: 0px;
+    }
+  }
+
   .tile-header {
     position: relative;
+  }
+
+  .cart-item-radio-buttons {
+    margin-top: 23px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 19px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 27px;
+    }
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

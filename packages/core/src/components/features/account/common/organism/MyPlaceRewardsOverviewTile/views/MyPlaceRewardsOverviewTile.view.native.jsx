@@ -132,7 +132,7 @@ MyPlaceRewardsOverviewTile.propTypes = {
   }),
   coupons: PropTypes.shape([]).isRequired,
   isBrierleyEnabled: PropTypes.bool,
-  commonLabels: PropTypes.shape({}).isRequired,
+  commonLabels: PropTypes.shape({}),
 };
 
 MyPlaceRewardsOverviewTile.defaultProps = {
@@ -144,6 +144,7 @@ MyPlaceRewardsOverviewTile.defaultProps = {
     lbl_overview_myPlaceRewardsDesc: '',
     lbl_overview_myPlaceRewardsShopNow: '',
   }),
+  commonLabels: {},
 };
 
 export default withNavigation(MyPlaceRewardsOverviewTile);

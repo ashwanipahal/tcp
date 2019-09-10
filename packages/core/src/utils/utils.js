@@ -308,10 +308,15 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
     return ''; // for incorrect params return empty string
   }
   let labelValue = '';
+
   // if category is passed, then subCategory should also be present for ex. getLabelValue(labels, 'lbl_success_message', 'payment', 'account'), where labels = [reduxStore].Labels
-  if (category) {
+  if (
+    category &&
+    typeof labelState[category] === 'object' &&
+    typeof labelState[category][subCategory] === 'object'
+  ) {
     labelValue = labelState[category][subCategory][labelKey];
-  } else if (subCategory) {
+  } else if (subCategory && typeof labelState[subCategory] === 'object') {
     // in case label object contain category, then only subCategory is needed for ex. get getLabelValue(labels, 'lbl_success_message', 'payment') where labels = [reduxStore].Labels.account
     labelValue = labelState[subCategory][labelKey];
   } else {

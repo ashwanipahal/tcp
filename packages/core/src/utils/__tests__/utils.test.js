@@ -28,4 +28,24 @@ describe('getLabelValue', () => {
     const label = getLabelValue('', 'common.account.lbl_last_name');
     expect(label).toBe('');
   });
+
+  it('should return label key if category is passed but not present in label state', () => {
+    const label = getLabelValue(labelState, 'lbl_last_name', 'test', 'test');
+    expect(label).toBe('lbl_last_name');
+  });
+
+  it('should return label key if category & subcategory is passed but subcategory is not present in label state', () => {
+    const label = getLabelValue(labelState, 'lbl_last_name', 'test', 'account');
+    expect(label).toBe('lbl_last_name');
+  });
+
+  it('should return label key if subcategory is passed but subcategory is not present in label state', () => {
+    const label = getLabelValue(labelState.account, 'lbl_last_name', 'test');
+    expect(label).toBe('lbl_last_name');
+  });
+
+  it('should return label key if subcategory is incorrectly passed', () => {
+    const label = getLabelValue(labelState.account, 'lbl_last_name', 'lbl_last_name');
+    expect(label).toBe('lbl_last_name');
+  });
 });

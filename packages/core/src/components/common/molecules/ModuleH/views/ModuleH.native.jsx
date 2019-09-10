@@ -1,10 +1,8 @@
 import React from 'react';
 import { Image, BodyCopy, Heading, Anchor } from '../../../atoms';
-import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
+import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
-import colors from '../../../../../../styles/themes/colors/common';
-import fonts from '../../../../../../styles/themes/TCP/fonts';
 import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
 
 // @flow
@@ -28,14 +26,9 @@ const MODULE_WIDTH = getScreenWidth();
 const MODULE_DIRECTION = true;
 
 /**
- * TODO: Link style has to be updated
- * as per gymboree styleguide in future.
+ * TODO: To manage the PixelRatio .
  */
-const linkStyle = {
-  color: colors.white,
-  fontSize: fonts.fontSize.body.bodytext.copy6,
-  marginTop: 28,
-};
+const devicePixelRatio = getPixelRatio();
 
 /**
  * @class ModuleH - global reusable component will provide featured content module
@@ -80,22 +73,23 @@ class ModuleH extends React.PureComponent<Props, State> {
    */
   renderLinks = (linksData, navigation) => {
     const { currentIndex } = this.state;
-    const { maxLimit } = config.MODULE_H_CTALINKS;
-    const lessThanSixLinkStyle = Object.assign({}, linkStyle, { marginTop: 38 });
     return linksData.map((item, index) => {
       const { link, styled } = item;
+      let customStyle = { opacity: 0.8, marginTop: 16 };
+      if (currentIndex === index) {
+        customStyle = { opacity: 1, marginTop: 16 };
+      }
       return (
         <Anchor url={link.url} navigation={navigation}>
           <BodyCopy
             key={index.toString()}
-            fontFamily="secondary"
-            fontSize="fs20"
-            letterSpacing="ls167"
+            mobilefontFamily="secondary"
+            fontSize="fs22"
             textAlign="left"
             color="white"
-            fontWeight={currentIndex === index ? 'extrabold' : null}
+            fontWeight={currentIndex === index ? 'black' : null}
             text={styled.text}
-            style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
+            style={customStyle}
             testID={`${getLocator('moduleH_cta_links')}${index + 1}`}
           />
         </Anchor>
@@ -107,8 +101,15 @@ class ModuleH extends React.PureComponent<Props, State> {
     this.setState({ currentIndex: index });
   };
 
+  /**
+   * @function render : renders module H .
+   */
   render() {
     const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
+    let HeadingFontSize = 'fs36';
+    if (devicePixelRatio === 'xxxhdpi' || devicePixelRatio === 'xhdpi') {
+      HeadingFontSize = 'fs32';
+    }
     return (
       <Wrapper>
         <HeaderWrapper>
@@ -118,7 +119,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                 <Anchor key={index.toString()} url={link.url} navigation={navigation}>
                   <Heading
                     fontFamily="primary"
-                    fontSize="fs36"
+                    fontSize={HeadingFontSize}
                     letterSpacing="ls167"
                     textAlign="left"
                     color="white"
@@ -130,7 +131,7 @@ class ModuleH extends React.PureComponent<Props, State> {
               ) : (
                 <Heading
                   fontFamily="primary"
-                  fontSize="fs36"
+                  fontSize={HeadingFontSize}
                   letterSpacing="ls167"
                   textAlign="left"
                   color="white"

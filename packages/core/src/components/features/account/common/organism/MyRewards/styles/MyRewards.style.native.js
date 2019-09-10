@@ -18,4 +18,10 @@ const CouponHeading = styled.View`
   align-items: center;
 `;
 
-export { CouponHeading, StyledBodyCopy, StyledAnchorWrapper, AnchorLeftMargin };
+const ToastWrapper = styled.View`
+  flex: none;
+  position: absolute;
+  width: 100%;
+`;
+
+export { CouponHeading, StyledBodyCopy, StyledAnchorWrapper, AnchorLeftMargin, ToastWrapper };

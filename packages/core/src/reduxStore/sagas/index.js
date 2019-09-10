@@ -8,7 +8,7 @@ import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
-
+import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import BootstrapSaga from './bootstrap';
 import LabelsSaga from './labels';
@@ -27,6 +27,7 @@ export {
   CheckoutSaga,
   BootstrapSaga,
   LabelsSaga,
+  GiftCardsSaga,
 };
 
 export default {
@@ -43,4 +44,5 @@ export default {
   CheckoutSaga,
   BootstrapSaga,
   LabelsSaga,
+  GiftCardsSaga,
 };

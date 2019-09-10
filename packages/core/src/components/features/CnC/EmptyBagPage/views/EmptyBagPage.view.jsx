@@ -5,6 +5,7 @@ import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
 import { BodyCopy, Button } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
+import ApplyNowModal from '../../../../common/molecules/ApplyNowPLCCModal';
 
 const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels }) => {
   return (
@@ -18,7 +19,7 @@ const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels }) => {
       >
         {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
       </BodyCopy>
-
+      <ApplyNowModal />
       <div className="element-spacing">
         <Button
           data-locator={getLocator(

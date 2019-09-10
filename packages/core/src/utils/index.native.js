@@ -15,6 +15,7 @@ export {
   createAPIConfig,
   switchAPIConfig,
   isAndroid,
+  getPixelRatio,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';

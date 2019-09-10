@@ -1,8 +1,9 @@
-import { call, takeLatest, put, delay } from 'redux-saga/effects';
+import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import COUPON_CONSTANTS from '../Coupon.constants';
 import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
 import BagPageAction from '../../../../BagPage/container/BagPage.actions';
+import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import {
   applyCouponToCart,
   removeCouponOrPromo,
@@ -31,7 +32,8 @@ export function* applyCoupon({ payload }) {
     try {
       yield put(showLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLYING }));
-      yield call(applyCouponToCart, formData);
+      const labels = yield select(BagPageSelectors.getErrorMapping);
+      yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield put(BagPageAction.getCartData());
@@ -47,7 +49,8 @@ export function* applyCoupon({ payload }) {
   } else {
     try {
       yield put(showLoader());
-      yield call(applyCouponToCart, formData);
+      const labels = yield select(BagPageSelectors.getErrorMapping);
+      yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
       yield put(BagPageAction.getCartData());
       resolve();

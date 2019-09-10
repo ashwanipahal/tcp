@@ -2,9 +2,9 @@ import { css } from 'styled-components';
 
 export default css`
   list-style-type: none;
-  border-bottom: 1px solid ${props => props.theme.colorPalette.text.disabled};
+  box-sizing: border-box;
 
-  @media ${props => props.theme.mediaQuery.medium} {
+  @media ${props => props.theme.mediaQuery.large} {
     padding: 0 15px;
   }
 
@@ -12,6 +12,5 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid ${props => props.theme.colorPalette.text.disabled};
   }
 `;

@@ -11,9 +11,18 @@ import {
   getFormattedError,
 } from '../../../utils/errorMessage.util';
 import { getAPIConfig } from '../../../utils';
+import CheckoutConstants from '../../../components/features/CnC/Checkout/Checkout.constants';
 
 const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
+export const CREDIT_CARDS_PAYMETHODID = {
+  'PLACE CARD': 'ADSPlaceCard',
+  VISA: 'COMPASSVISA',
+  AMEX: 'COMPASSAMEX',
+  MC: 'COMPASSMASTERCARD',
+  DISC: 'COMPASSDISCOVER',
+  VENMO: 'VENMO',
+};
 export const getGiftWrappingOptions = () => {
   const payload = {
     webService: endpoints.giftOptionsCmd,
@@ -165,7 +174,7 @@ const shippingMethodResponseHandler = res => {
   return resFiltered;
 };
 
-export const getShippingMethods = (state, zipCode, addressField1, addressField2) => {
+export const getShippingMethods = (state, zipCode, addressField1, addressField2, labels) => {
   // Note: (2-25, From Melvin Jose): based on his request we're relaxing when state and zipcode is being attached to the header, should values be empty or null we won't be sending them.
   // if (this.activeGetShippingMethodsRequest && this.activeGetShippingMethodsRequest.abort) {
   //   this.activeGetShippingMethodsRequest.abort();
@@ -186,7 +195,7 @@ export const getShippingMethods = (state, zipCode, addressField1, addressField2)
   return executeStatefulAPICall(payload)
     .then(shippingMethodResponseHandler)
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
 };
 
@@ -229,7 +238,8 @@ export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
   verifyPrescreen,
-  transVibesSmsPhoneNo
+  transVibesSmsPhoneNo,
+  labels
 ) {
   const payload = {
     body: {
@@ -258,7 +268,7 @@ export function setShippingMethodAndAddressId(
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
 }
 
@@ -322,7 +332,7 @@ export function addGiftCardPaymentToOrder(args) {
     });
 }
 
-export function removeGiftCard(paymentId) {
+export function removeGiftCard(paymentId, labels) {
   const payload = {
     body: {
       piIds: paymentId,
@@ -339,8 +349,136 @@ export function removeGiftCard(paymentId) {
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw getFormattedError(err, labels);
     });
+}
+
+export function addPaymentToOrder({
+  billingAddressId = '',
+  orderGrandTotal = '',
+  cardType,
+  cardNumber = '',
+  monthExpire = '',
+  yearExpire = '',
+  setAsDefault,
+  saveToAccount,
+  nickName,
+  onFileCardId = '',
+  cvv = '',
+}) {
+  const paymentInstruction = {
+    billing_address_id: billingAddressId.toString(),
+    piAmount: orderGrandTotal.toString(),
+    payMethodId: CREDIT_CARDS_PAYMETHODID[cardType],
+    cc_brand: cardType,
+    account: cardNumber.toString(),
+    expire_month: monthExpire.toString(), // PLCC doesn't require exp
+    expire_year: yearExpire.toString(), // PLCC doesn't require exp
+    isDefault: (!!setAsDefault).toString(),
+  };
+  const apiConfig = getAPIConfig();
+  const header = {
+    isRest: 'true',
+    identifier: 'true',
+    savePayment: saveToAccount ? 'true' : 'false', // save to account for registered users
+    nickName: nickName || `Billing_${apiConfig.storeId}_${new Date().getTime().toString()}`,
+  };
+
+  if (onFileCardId) {
+    paymentInstruction.creditCardId = onFileCardId.toString();
+  }
+
+  if (cvv) {
+    paymentInstruction.cc_cvc = cvv.toString(); // PLCC doesn't require exp
+  }
+
+  // Venmo Support
+  // const { venmoData, saveVenmoTokenIntoProfile } = args;
+  // if (venmoData && venmoData.details && venmoData.details.username) {
+  //   const {
+  //     nonce,
+  //     details: { username },
+  //   } = venmoData;
+  //   const {
+  //     // eslint-disable-next-line camelcase
+  //     billing_address_id,
+  //     piAmount,
+  //     payMethodId,
+  //     cc_brand,
+  //   } = paymentInstruction;
+  //   paymentInstruction = {
+  //     billing_address_id,
+  //     piAmount,
+  //     payMethodId,
+  //     cc_brand,
+  //     account: nonce || '',
+  //     isDefault: 'false', // DTN-4190
+  //   };
+  //   header.savePayment = 'false';
+  //   if (nonce) {
+  //     paymentInstruction.venmo_user_id = username;
+  //     paymentInstruction.save_venmo_token_into_profile = saveVenmoTokenIntoProfile
+  //       ? 'true'
+  //       : 'false';
+  //   }
+  // }
+
+  const payload = {
+    header,
+    body: {
+      paymentInstruction: [paymentInstruction],
+    },
+    webService: endpoints.addPaymentInstruction,
+  };
+  console.log({ payload });
+  return executeStatefulAPICall(payload).then(res => {
+    if (responseContainsErrors(res)) {
+      throw new ServiceResponseError(res);
+    }
+    if (res.body && res.body.OosCartItems === 'TRUE') {
+      throw new ServiceResponseError({
+        body: {
+          errorCode: CheckoutConstants.CUSTOM_OOS_ERROR_CODE,
+        },
+      });
+    }
+    return {
+      paymentIds: res.body.paymentInstruction,
+    };
+  });
+}
+
+export function updatePaymentOnOrder(args) {
+  const payload = {
+    header: {
+      savePayment: args.saveToAccount ? 'true' : 'false',
+    },
+    body: {
+      prescreen: true, // as per backend, DT-19753 & DT-19757, we are to pass this so they can run pre-screen function
+      paymentInstruction: [
+        {
+          expire_month: args.monthExpire ? args.monthExpire.toString() : '',
+          piAmount: args.orderGrandTotal ? args.orderGrandTotal.toString() : '',
+          payMethodId: CREDIT_CARDS_PAYMETHODID[args.cardType],
+          cc_brand: args.cardType,
+          expire_year: args.yearExpire ? args.yearExpire.toString() : '',
+          account: args.cardNumber,
+          piId: args.paymentId,
+          cc_cvc: args.cvv,
+          billing_address_id: args.billingAddressId,
+          isDefault: (!!args.setAsDefault).toString(),
+        },
+      ],
+    },
+    webService: endpoints.updatePaymentInstruction,
+  };
+
+  return executeStatefulAPICall(payload).then(res => {
+    if (responseContainsErrors(res)) {
+      throw new ServiceResponseError(res);
+    }
+    return { paymentId: res.body.paymentInstruction[0].piId };
+  });
 }
 
 export default {
@@ -352,4 +490,6 @@ export default {
   addPickupPerson,
   addGiftCardPaymentToOrder,
   removeGiftCard,
+  addPaymentToOrder,
+  updatePaymentOnOrder,
 };

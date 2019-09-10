@@ -36,7 +36,7 @@ export const AboutYouInfo = ({ labels, userSurvey, className }) => {
           >
             <BodyCopy
               data-locator="moreaboutyou-describetext"
-              fontSize="fs14"
+              fontSize="fs13"
               fontFamily="secondary"
             >
               {`${labels.lbl_profile_about_you_describe}: ${answer1}`}
@@ -55,7 +55,7 @@ export const AboutYouInfo = ({ labels, userSurvey, className }) => {
             {answer2 && (
               <BodyCopy
                 data-locator="moreaboutyou-shoppingfortext"
-                fontSize="fs14"
+                fontSize="fs13"
                 fontFamily="secondary"
               >
                 {`${labels.lbl_profile_about_you_shopping}: ${answer2}`}

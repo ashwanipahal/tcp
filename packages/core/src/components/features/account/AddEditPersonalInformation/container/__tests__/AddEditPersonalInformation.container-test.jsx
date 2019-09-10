@@ -6,16 +6,21 @@ import AddEditPersonalInformationForm from '../../views';
 describe('AddEditPersonalInformationForm container', () => {
   let messageStateChangeActionSpy;
   let updateProfileActionSpy;
+  let onRequestCloseSpy;
   let component;
   beforeEach(() => {
     messageStateChangeActionSpy = jest.fn();
     updateProfileActionSpy = jest.fn();
+    onRequestCloseSpy = jest.fn();
     const props = {
       successMessage: '',
       errorMessage: '',
       messageStateChangeAction: messageStateChangeActionSpy,
       updateProfileAction: updateProfileActionSpy,
+      onRequestClose:onRequestCloseSpy,
       labels: {},
+      formErrorMessage : {},
+      isEmployee:true
     };
     component = shallow(<AddEditPersonalInformationContainer {...props} />);
   });

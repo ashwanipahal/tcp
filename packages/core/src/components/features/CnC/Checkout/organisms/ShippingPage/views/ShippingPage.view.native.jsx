@@ -1,9 +1,10 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
-import StyledHeader from '../styles/ShippingPage.style.native';
+import { StyledHeader, HeaderContainer } from '../styles/ShippingPage.style.native';
 import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -13,7 +14,7 @@ export default class ShippingPage extends React.Component {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
     isOrderUpdateChecked: PropTypes.bool,
-    shippingLabels: PropTypes.shape({}).isRequired,
+    labels: PropTypes.shape({}).isRequired,
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
     selectedShipmentId: PropTypes.string,
@@ -57,7 +58,7 @@ export default class ShippingPage extends React.Component {
         (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
         hasPOBox(addressLine1, addressLine2)
       ) {
-        loadShipmentMethods();
+        loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
   }
@@ -99,7 +100,6 @@ export default class ShippingPage extends React.Component {
 
   render() {
     const {
-      shippingLabels,
       shipmentMethods,
       defaultShipmentId,
       selectedShipmentId,
@@ -114,6 +114,7 @@ export default class ShippingPage extends React.Component {
       loadShipmentMethods,
       navigation,
       availableStages,
+      labels,
     } = this.props;
 
     return (
@@ -124,20 +125,23 @@ export default class ShippingPage extends React.Component {
           availableStages={availableStages}
         />
         <ScrollView>
-          <CheckoutSectionTitleDisplay title={shippingLabels.header} />
+          <HeaderContainer>
+            <CheckoutSectionTitleDisplay
+              title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
+            />
+          </HeaderContainer>
           <StyledHeader>
             <BodyCopy
               color="black"
               fontWeight="regular"
               fontFamily="primary"
               fontSize="fs28"
-              text={shippingLabels.sectionHeader}
+              text={getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
               textAlign="left"
             />
           </StyledHeader>
           {shipmentMethods && shipmentMethods.length > 0 && (
             <ShippingForm
-              shippingLabels={shippingLabels}
               shipmentMethods={shipmentMethods}
               initialValues={{
                 shipmentMethods: { shippingMethodId: defaultShipmentId },
@@ -154,6 +158,7 @@ export default class ShippingPage extends React.Component {
               loadShipmentMethods={loadShipmentMethods}
               navigation={navigation}
               submitShippingForm={this.submitShippingForm}
+              labels={labels}
             />
           )}
         </ScrollView>

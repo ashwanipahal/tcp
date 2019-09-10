@@ -1,5 +1,6 @@
 // z-index
 export default {
+  zGoogleAutosuggest: 100000,
   zLoader: 1000,
   zOverlay: 900,
   zDrawer: 1200,

@@ -48,17 +48,18 @@ export function* fetchPlpProducts({ payload }) {
     }
     yield put(setPlpLoadingState({ isLoadingMore: false }));
   } catch (err) {
-    console.log(err);
+    logger.error(err);
   }
 }
 
 export function* fetchMoreProducts() {
   try {
-    const state = yield select();
+    let state = yield select();
     yield put(setPlpLoadingState({ isLoadingMore: true }));
     const reqObj = operatorInstance.getMoreBucketedProducts(state);
     if (reqObj && reqObj.categoryId) {
-      const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
+      state = yield select();
+      const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (
         plpProducts &&
         plpProducts.loadedProductsPages &&

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouInfo should render correctly 1`] = `
+<MyProfileTile
+  ctaLink="accountOverviewMobile"
+  ctaTitle="UPDATE INFO"
+  dataLocator="moreaboutyou-updateinfo"
+  handleComponentChange={[Function]}
+  title="More About You"
+>
+  <Styled(Styled(BodyCopy))
+    data-locator="moreaboutyou-describetext"
+    fontFamily="secondary"
+    fontSize="fs13"
+    fontWeight="regular"
+    text="I describe myself as: "
+  />
+  <View
+    marginTop={20}
+  />
+  <ModalNative
+    heading="lbl_profile_about_you_modal_heading"
+    isOpen={false}
+    onRequestClose={[Function]}
+  >
+    <SafeAreaView>
+      <Styled(View)>
+        <Connect(AboutYouInformationContainer)
+          labels={
+            Object {
+              "lbl_profile_about_you_describe": "I describe myself as",
+              "lbl_profile_about_you_shopping": "Shopping for",
+              "lbl_profile_about_you_title": "More About You",
+              "lbl_profile_update_info": "UPDATE INFO",
+            }
+          }
+          onClose={[Function]}
+        />
+      </Styled(View)>
+    </SafeAreaView>
+  </ModalNative>
+</MyProfileTile>
+`;

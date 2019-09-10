@@ -59,6 +59,7 @@ export default class CheckoutPage extends React.PureComponent {
       smsSignUpLabels,
       pickupInitialValues,
       availableStages,
+      labels,
       // setCheckoutStage,
     } = this.props;
 
@@ -71,6 +72,7 @@ export default class CheckoutPage extends React.PureComponent {
             isMobile={isMobile}
             isUsSite={isUsSite}
             initialValues={pickupInitialValues}
+            pickupInitialValues={pickupInitialValues}
             onEditModeChange={onEditModeChange}
             isSmsUpdatesEnabled={isSmsUpdatesEnabled}
             currentPhoneNumber={currentPhoneNumber}
@@ -94,6 +96,7 @@ export default class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             handleSubmit={this.submitShippingSection}
             availableStages={availableStages}
+            labels={labels}
           />
         )}
         {routeTo.toLowerCase() === CheckoutConstants.CHECKOUT_PAGES_NAMES.BILLING.toLowerCase() && (
@@ -135,4 +138,5 @@ CheckoutPage.propTypes = {
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };

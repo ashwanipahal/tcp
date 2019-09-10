@@ -142,6 +142,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
   handleSubmit={[MockFunction]}
   initialValues={Object {}}
   isEdit={false}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},
@@ -406,15 +407,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       </Styled(View)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
         onPress={[MockFunction]}
         style={
           Object {
@@ -424,19 +419,10 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "width": 190,
           }
         }
-        text=""
-        url=""
       />
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
-        disableButton={false}
         fill="WHITE"
-        fullWidth=""
-        locator=""
-        onPress={null}
         style={
           Object {
             "border": 1,
@@ -447,8 +433,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "width": 190,
           }
         }
-        text=""
-        url=""
       />
     </Styled(View)>
   </Styled(View)>
@@ -597,6 +581,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
   handleSubmit={[MockFunction]}
   initialValues={Object {}}
   isEdit={false}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},
@@ -860,15 +845,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       </Styled(View)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
         onPress={[MockFunction]}
         style={
           Object {
@@ -878,19 +857,10 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "width": 190,
           }
         }
-        text=""
-        url=""
       />
-      <Styled(CustomButton)
-        active={false}
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
-        color=""
-        customStyle={Object {}}
-        disableButton={false}
         fill="WHITE"
-        fullWidth=""
-        locator=""
-        onPress={null}
         style={
           Object {
             "border": 1,
@@ -901,8 +871,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "width": 190,
           }
         }
-        text=""
-        url=""
       />
     </Styled(View)>
   </Styled(View)>

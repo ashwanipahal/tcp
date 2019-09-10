@@ -13,14 +13,16 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 10px;
+    padding-right: 28px;
+    width: auto;
 
     .userName {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      width: 108px;
+      width: 90px;
       text-align: right;
+      padding-right: 32px;
     }
   }
   .subHeaderTextLogin {
@@ -46,7 +48,10 @@ export default css`
     width: auto;
   }
   .cartCount {
-    background: ${props => props.theme.colorPalette.blue['800']};
+    background: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.primary.dark
+        : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
     margin: 1px 0px 0px -8px;

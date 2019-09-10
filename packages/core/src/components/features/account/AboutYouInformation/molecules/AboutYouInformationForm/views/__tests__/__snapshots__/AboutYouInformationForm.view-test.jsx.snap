@@ -22,8 +22,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     />
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mt-XXL"
-    fullBleed={true}
+    className="aboutyou-wrapper"
   >
     <Styled(Col)
       className="aboutyou-radio"
@@ -177,11 +176,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-0"
+        data-locator="moreaboutyou-radiooption1"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={false}
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -350,11 +350,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-1"
+        data-locator="moreaboutyou-radiooption2"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={false}
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -523,11 +524,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-2"
+        data-locator="moreaboutyou-radiooption3"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={true}
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -696,11 +698,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-radiooption-3"
+        data-locator="moreaboutyou-radiooption4"
         key="question1"
         name="question1"
         onClick={[Function]}
         selectedValue={false}
+        topPosition="-1px"
       >
         <Styled(BodyCopy)
           className={null}
@@ -736,11 +739,10 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     />
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mt-XXL"
-    fullBleed={true}
+    className="aboutyou-wrapper"
   >
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -757,7 +759,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={true}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -887,7 +888,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-0"
+        dataLocator="moreaboutyou-checkboxoption1"
         name="question2-option-0"
         onChange={[Function]}
       >
@@ -907,7 +908,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -924,7 +925,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={false}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1054,7 +1054,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-1"
+        dataLocator="moreaboutyou-checkboxoption2"
         name="question2-option-1"
         onChange={[Function]}
       >
@@ -1074,7 +1074,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -1091,7 +1091,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={true}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1221,7 +1220,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-2"
+        dataLocator="moreaboutyou-checkboxoption3"
         name="question2-option-2"
         onChange={[Function]}
       >
@@ -1241,7 +1240,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -1258,7 +1257,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={false}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1388,7 +1386,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-3"
+        dataLocator="moreaboutyou-checkboxoption4"
         name="question2-option-3"
         onChange={[Function]}
       >
@@ -1408,7 +1406,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       </Field>
     </Styled(Col)>
     <Styled(Col)
-      className="aboutyou-radio"
+      className="aboutyou-checkbox"
       colSize={
         Object {
           "large": 2,
@@ -1425,7 +1423,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     >
       <Field
         checked={false}
-        className="aboutyou-checkbox"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1555,7 +1552,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        data-locator="moreaboutyou-checkboxoption-4"
+        dataLocator="moreaboutyou-checkboxoption5"
         name="question2-option-4"
         onChange={[Function]}
       >
@@ -1576,10 +1573,10 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mb-LRG elem-mt-XXL"
+    className="elem-mb-LRG elem-mt-XXL actions-wrapper"
   >
     <Styled(Col)
-      className="aboutyou_cancel"
+      className="aboutyou_save"
       colSize={
         Object {
           "large": 3,
@@ -1591,6 +1588,28 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         Object {
           "large": 3,
           "medium": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mb-XS"
+        data-locator="moreaboutyou-savebtn"
+        disabled={true}
+        fill="BLUE"
+        fullWidth={true}
+        onClick={[Function]}
+      >
+        SAVE
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="aboutyou_cancel"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
         }
       }
     >
@@ -1606,28 +1625,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
           type="button"
         />
       </Styled(Anchor)>
-    </Styled(Col)>
-    <Styled(Col)
-      className="aboutyou_save"
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="elem-mb-XS"
-        data-locator="moreaboutyou-savebtn"
-        disabled={true}
-        fill="BLUE"
-        fullWidth={true}
-        onClick={[Function]}
-      >
-        SAVE
-      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </div>

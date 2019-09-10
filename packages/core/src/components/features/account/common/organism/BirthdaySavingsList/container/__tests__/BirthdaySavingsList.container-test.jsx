@@ -27,6 +27,20 @@ describe('BirthdaySavingsList container', () => {
     );
     expect(getChildrenBirthdays).toHaveBeenCalled();
   });
+
+  it('should call resetBirthdaySavingMessage prop on unmount', () => {
+    const resetBirthdaySavingMessage = jest.fn();
+    const component = shallow(
+      <BirthdaySavings
+        labels={{}}
+        getChildrenBirthdays={() => {}}
+        removeBirthday={() => {}}
+        resetBirthdaySavingMessage={resetBirthdaySavingMessage}
+      />
+    );
+    component.unmount();
+    expect(resetBirthdaySavingMessage).toHaveBeenCalled();
+  });
 });
 
 describe('#mapDispatchToProps', () => {
@@ -41,6 +55,13 @@ describe('#mapDispatchToProps', () => {
     const dispatch = jest.fn();
     const dispatchProps = mapDispatchToProps(dispatch);
     dispatchProps.removeBirthday();
+    expect(dispatch.mock.calls).toHaveLength(1);
+  });
+
+  it('should return an action resetBirthdaySavingMessage which will call dispatch function on execution', () => {
+    const dispatch = jest.fn();
+    const dispatchProps = mapDispatchToProps(dispatch);
+    dispatchProps.resetBirthdaySavingMessage();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
 });

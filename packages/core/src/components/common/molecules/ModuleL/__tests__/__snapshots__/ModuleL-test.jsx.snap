@@ -21,6 +21,9 @@ exports[`ModuleL component renders correctly 1`] = `
   > *:last-child {
     margin-right: 0;
   }
+  &.content-wrapper {
+    margin: 0 auto;
+  }
   ",
           [Function],
           ";
@@ -153,7 +156,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "settings": "unslick",
             },
             Object {
-              "breakpoint": 1023,
+              "breakpoint": 1199,
               "settings": Object {
                 "arrows": false,
               },

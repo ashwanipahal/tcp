@@ -8,11 +8,13 @@ exports[`CouponTile Component should render correctly 1`] = `
       labels={Object {}}
     />
     <Styled(View)>
-      <Styled(BodyCopy)
-        data-locator="accountoverview-myplacerewatdstile-rewardvalue"
-        fontSize="fs12"
-        fontWeight="semibold"
-      />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          data-locator="accountoverview-myplacerewatdstile-rewardvalue"
+          fontSize="fs12"
+          fontWeight="semibold"
+        />
+      </Styled(View)>
       <Styled(BodyCopy)
         data-locator="accountoverview-myplacerewatdstile-rewarduseby"
         fontSize="fs10"
