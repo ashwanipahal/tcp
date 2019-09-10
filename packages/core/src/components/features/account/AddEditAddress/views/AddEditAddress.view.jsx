@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../common/atoms/Anchor';
 import styles from '../styles/AddEditAddress.style';
 
@@ -28,8 +29,8 @@ const AddEditAddressContainer = ({ labels, isEdit, backToAddressBookClick, class
         className="addAddress__separator"
       >
         {isEdit
-          ? labels.addressBook.ACC_LBL_EDIT_ADDRESS_FORM_HEADING
-          : labels.addressBook.ACC_LBL_ADD_ADDRESS_FORM_HEADING}
+          ? getLabelValue(labels, 'ACC_LBL_EDIT_ADDRESS_FORM_HEADING', 'addressBook')
+          : getLabelValue(labels, 'ACC_LBL_ADD_ADDRESS_FORM_HEADING', 'addressBook')}
       </Heading>
       <AddEditAddress
         backToAddressBookClick={backToAddressBookClick}

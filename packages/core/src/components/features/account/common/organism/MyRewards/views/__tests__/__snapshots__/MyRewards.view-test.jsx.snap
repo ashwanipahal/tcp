@@ -51,7 +51,7 @@ exports[`MyRewards should render correctly 1`] = `
         labels={
           Object {
             "common": Object {},
-            "myPlaceRewards": Object {},
+            "placeRewards": Object {},
           }
         }
       />

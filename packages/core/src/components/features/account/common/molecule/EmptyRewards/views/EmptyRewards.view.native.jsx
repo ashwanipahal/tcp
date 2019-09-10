@@ -15,14 +15,14 @@ const EmptyRewards = ({ labels }) => {
           fontSize="fs14"
           fontWeight="regular"
           data-locator="no_rewards_msg"
-          text={labels.myPlaceRewards.lbl_my_rewards_no_available_rewards}
+          text={labels.placeRewards.lbl_my_rewards_no_available_rewards}
         />
         <BodyCopy
           mobileFontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           data-locator="no_rewards_msg"
-          text={labels.myPlaceRewards.lbl_my_rewards_start_shopping}
+          text={labels.placeRewards.lbl_my_rewards_start_shopping}
         />
       </StyledBodyCopy>
       <ViewWithSpacing spacingStyles="margin-bottom-LRG">
@@ -31,7 +31,7 @@ const EmptyRewards = ({ labels }) => {
           fill="BLUE"
           color="white"
           data-locator="my-rewards-shop-now-btn"
-          text={labels.myPlaceRewards.lbl_my_rewards_shop_now}
+          text={labels.placeRewards.lbl_my_rewards_shop_now}
         />
       </ViewWithSpacing>
     </View>
@@ -39,13 +39,13 @@ const EmptyRewards = ({ labels }) => {
 };
 
 EmptyRewards.propTypes = {
-  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
+  labels: PropTypes.shape({ common: {}, placeRewards: {} }),
 };
 
 EmptyRewards.defaultProps = {
   labels: {
     common: { lbl_common_tnc: '' },
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_rewards_no_available_rewards: '',
       lbl_my_rewards_shop_now: '',
       lbl_my_rewards_start_shopping: '',

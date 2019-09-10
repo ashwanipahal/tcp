@@ -794,7 +794,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
-                    ") no-repeat right 0px bottom 6px;
+                    ") no-repeat right 0px bottom
+      ",
+                    [Function],
+                    ";
     border: 0;
     border-bottom: 1px solid ",
                     [Function],
@@ -808,7 +811,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     ";
     font-size: ",
                     [Function],
-                    "px;
+                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -910,7 +913,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
-                    ") no-repeat right 0px bottom 6px;
+                    ") no-repeat right 0px bottom
+      ",
+                    [Function],
+                    ";
     border: 0;
     border-bottom: 1px solid ",
                     [Function],
@@ -924,7 +930,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     ";
     font-size: ",
                     [Function],
-                    "px;
+                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -2023,7 +2029,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
-                    ") no-repeat right 0px bottom 6px;
+                    ") no-repeat right 0px bottom
+      ",
+                    [Function],
+                    ";
     border: 0;
     border-bottom: 1px solid ",
                     [Function],
@@ -2037,7 +2046,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     ";
     font-size: ",
                     [Function],
-                    "px;
+                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -2138,7 +2147,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
-                    ") no-repeat right 0px bottom 6px;
+                    ") no-repeat right 0px bottom
+      ",
+                    [Function],
+                    ";
     border: 0;
     border-bottom: 1px solid ",
                     [Function],
@@ -2152,7 +2164,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     ";
     font-size: ",
                     [Function],
-                    "px;
+                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],

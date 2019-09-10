@@ -28,4 +28,6 @@ export const LABELS = {
   global: 'global',
   modules: 'modules',
   account: 'account',
+  bagPage: 'bag',
+  checkout: 'checkout',
 };

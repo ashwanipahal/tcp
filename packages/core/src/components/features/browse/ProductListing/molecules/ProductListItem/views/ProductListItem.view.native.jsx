@@ -187,12 +187,7 @@ RenderTitle.propTypes = TextProps;
 const RenderPromotionalMessage = ({ text, isPlcc }) => {
   return (
     <PromotionalMessageContainer>
-      <PromotionalMessage
-        isPlcc={isPlcc}
-        accessibilityRole="text"
-        accessibilityLabel={text}
-        numberOfLines={2}
-      >
+      <PromotionalMessage isPlcc={isPlcc} accessibilityRole="text" numberOfLines={2}>
         {text && getFormattedLoyaltyText(text)[0]}
         {text && (
           <PromotionalMessagePostfix>

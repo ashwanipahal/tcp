@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
@@ -51,7 +52,7 @@ class ModuleJ extends React.PureComponent {
           navigation={navigation}
           locator={`${getLocator('moduleJ_product_image')}${index}`}
         >
-          <StyledImage url={imageUrl} height={110} width={89} />
+          <StyledImage name={LAZYLOAD_HOST_NAME.HOME} url={imageUrl} height={110} width={89} />
         </Anchor>
       </ImageItemWrapper>
     );
@@ -60,7 +61,7 @@ class ModuleJ extends React.PureComponent {
   render() {
     const { selectedCategoryId } = this.state;
     const { productTabList } = this.props;
-    const selectedProductList = productTabList[selectedCategoryId];
+    const selectedProductList = productTabList[selectedCategoryId] || [];
     const { navigation } = this.props;
 
     return (
@@ -70,12 +71,14 @@ class ModuleJ extends React.PureComponent {
           categoryList={categoryListMock}
         />
         <ImageItemContainer>
-          <FlatList
-            data={selectedProductList}
-            renderItem={this.renderProductFlatListItem}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-          />
+          {selectedProductList.length ? (
+            <FlatList
+              data={selectedProductList}
+              renderItem={this.renderProductFlatListItem}
+              showsHorizontalScrollIndicator={false}
+              horizontal
+            />
+          ) : null}
         </ImageItemContainer>
         <ButtonContainer>
           <Button
