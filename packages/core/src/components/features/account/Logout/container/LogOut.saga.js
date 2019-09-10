@@ -4,11 +4,15 @@ import { resetUserInfo } from '../../User/container/User.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
+import { resetWalletAppState } from './LogOut.actions';
 
 export function* logoutSaga() {
   try {
     const res = yield call(LogoutApplication);
     if (res.statusCode === 200) {
+      if (isMobileApp()) {
+        yield put(resetWalletAppState());
+      }
       yield put(resetUserInfo());
       if (!isMobileApp()) {
         yield put(closeOverlayModal());

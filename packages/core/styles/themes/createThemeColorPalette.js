@@ -11,7 +11,13 @@ function createThemeColorPalette(colors = {}) {
   const { primary = { light: blue[300], main: blue[500], dark: blue[700] } } = colors;
   const { secondary = { light: red[100], main: red[300], dark: red[300] } } = colors;
   const {
-    text = { primary: gray[900], secondary: gray[700], disabled: gray[500], hint: gray[600] },
+    text = {
+      primary: gray[900],
+      secondary: gray[700],
+      disabled: gray[500],
+      hint: gray[600],
+      lightgray: gray[300],
+    },
   } = colors;
 
   const { white, black, purple } = common;

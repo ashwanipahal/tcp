@@ -9,7 +9,7 @@ describe('MyRewards', () => {
   it('should render correctly', () => {
     const labels = {
       common: {},
-      myPlaceRewards: {},
+      placeRewards: {},
     };
     const tree = shallow(<MyRewardsVanilla labels={labels} />);
     expect(tree).toMatchSnapshot();
@@ -18,7 +18,7 @@ describe('MyRewards', () => {
   it('should render EmptyRewards component if there is no coupon', () => {
     const labels = {
       common: {},
-      myPlaceRewards: {},
+      placeRewards: {},
     };
     const coupons = fromJS([]);
     const component = shallow(<MyRewardsVanilla labels={labels} coupons={coupons} />);
@@ -28,7 +28,7 @@ describe('MyRewards', () => {
   it('should render DetailedCouponTile component equal to coupons size', () => {
     const labels = {
       common: {},
-      myPlaceRewards: {},
+      placeRewards: {},
     };
     const coupons = fromJS([{ id: '1234' }, { id: '4321' }]);
     const component = shallow(<MyRewardsVanilla labels={labels} coupons={coupons} />);

@@ -53,7 +53,7 @@ const ROUTES_LIST = [
   {
     noSlugPath: 'p',
     path: '/p/:pid',
-    resolver: '/ProductListingPage',
+    resolver: '/ProductDetail',
     params: ['pid'],
   },
   {

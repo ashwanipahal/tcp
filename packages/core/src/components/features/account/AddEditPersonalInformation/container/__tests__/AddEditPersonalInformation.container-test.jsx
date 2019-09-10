@@ -5,17 +5,25 @@ import AddEditPersonalInformationForm from '../../views';
 
 describe('AddEditPersonalInformationForm container', () => {
   let messageStateChangeActionSpy;
+  let messageSuccessStateChangeActionSpy;
   let updateProfileActionSpy;
+  let onRequestCloseSpy;
   let component;
   beforeEach(() => {
     messageStateChangeActionSpy = jest.fn();
+    messageSuccessStateChangeActionSpy = jest.fn();
     updateProfileActionSpy = jest.fn();
+    onRequestCloseSpy = jest.fn();
     const props = {
       successMessage: '',
       errorMessage: '',
       messageStateChangeAction: messageStateChangeActionSpy,
+      messageSuccessStateChangeAction: messageSuccessStateChangeActionSpy,
       updateProfileAction: updateProfileActionSpy,
+      onRequestClose: onRequestCloseSpy,
       labels: {},
+      formErrorMessage: {},
+      isEmployee: true,
     };
     component = shallow(<AddEditPersonalInformationContainer {...props} />);
   });
@@ -39,7 +47,7 @@ describe('AddEditPersonalInformationForm container', () => {
       email: 'test@gmail.com',
       lastName: 'test',
       phone: '3427463864',
-      associateId: '25347',
+      associateId: null,
       userBirthday: '2|1999',
       airmiles: '4637648',
     });

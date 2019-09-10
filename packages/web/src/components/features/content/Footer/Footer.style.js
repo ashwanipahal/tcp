@@ -2,6 +2,21 @@ import { css } from 'styled-components';
 
 export default css`
   position: relative;
+  padding-top: 32px;
+
+  > .footer-candidate-wrapper {
+    .content-wrapper {
+      margin: 0 auto;
+      padding-bottom: 0;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      .content-wrapper {
+        padding-bottom: 24px;
+      }
+    }
+  }
+
   .footer_top_candidate_a .flex-align-center {
     align-items: center;
   }
@@ -136,7 +151,7 @@ export default css`
     }
     .social-media-links {
       flex-direction: column;
-      padding: 0 0 32px;
+      padding: 0;
     }
     .email-sign-up-form button, .footer_top__signup_form button{
       padding: 0;
@@ -147,6 +162,16 @@ export default css`
 
       > div {
         padding: 24px 0;
+      }
+    }
+  }
+
+  .footer-bottom {
+    > .content-wrapper {
+      @media ${props => props.theme.mediaQuery.small} and ${props =>
+  props.theme.mediaQuery.mediumMax} {
+        margin: 0;
+        width: 100%
       }
     }
   }

@@ -29,6 +29,7 @@ const textInput = {
   height: 40,
   paddingTop: 16,
   paddingBottom: 0,
+  paddingLeft: 0,
 };
 
 const textInputContainer = {

@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail Coupon Modal should render correctly 1`] = `
+<ModalNative
+  closeIconDataLocator="added-to-bg-close"
+  closeIconLeftAligned={false}
+  fixedWidth={true}
+  headerStyle={
+    Object {
+      "width": "100%",
+    }
+  }
+  horizontalBar={false}
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        data-locator="couponDetailModal_applied_NameLbl"
+        fontFamily="primary"
+        fontSize="fs42"
+        fontWeight="black"
+        text="$10 OFF On $80"
+      />
+      <Styled(View)
+        spacingStyles="margin-top-SM"
+      >
+        <Styled(BodyCopy)
+          data-locator="couponDetailModal_applied_ValidityDateLbl"
+          fontFamily="secondary"
+          fontSize="fs24"
+          fontWeight="semibold"
+          text="USE_BY_TEXT 8/10/19"
+        />
+      </Styled(View)>
+      <Styled(View) />
+      <View
+        data-locator="couponDetailModal_applied_BarCode"
+      >
+        <BarcodeView
+          format="CODE128"
+          height="50"
+          value="Y00105578"
+        />
+      </View>
+      <Styled(View) />
+      <Styled(View)
+        spacingStyles="margin-bottom-LRG"
+      >
+        <Styled(WithTheme(CustomButton))
+          buttonVariation="fixed-width"
+          data-locator="couponDetailModal_applied_AddToBagBtn"
+          disabled={false}
+          fill="BLUE"
+          onPress={[Function]}
+          text="APPLY_TO_BAG"
+        />
+      </Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="secondary"
+        class="clickhere"
+        customStyle={Object {}}
+        dataLocator="couponDetailModal_applied_printAch"
+        fontSizeVariation="large"
+        locator=""
+        onPress={null}
+        text="PRINT_ANCHOR_TEXT"
+        underlineBlue={true}
+        visible={false}
+      />
+      <Styled(View)
+        data-locator="couponDetailModal_applied_LongDesc"
+      >
+        <HTML
+          allowFontScaling={true}
+          baseFontStyle={
+            Object {
+              "fontSize": 14,
+            }
+          }
+          classesStyles={Object {}}
+          debug={false}
+          decodeEntities={true}
+          emSize={14}
+          html="$10 OFF On $50"
+          ignoredStyles={Array []}
+          ignoredTags={
+            Array [
+              "head",
+              "scripts",
+              "audio",
+              "video",
+              "track",
+              "embed",
+              "object",
+              "param",
+              "source",
+              "canvas",
+              "noscript",
+              "caption",
+              "col",
+              "colgroup",
+              "table",
+              "tbody",
+              "td",
+              "tfoot",
+              "th",
+              "thead",
+              "tr",
+              "button",
+              "datalist",
+              "fieldset",
+              "form",
+              "input",
+              "label",
+              "legend",
+              "meter",
+              "optgroup",
+              "option",
+              "output",
+              "progress",
+              "select",
+              "textarea",
+              "details",
+              "diaglog",
+              "menu",
+              "menuitem",
+              "summary",
+            ]
+          }
+          imagesMaxWidth={750}
+          ptSize={1.3}
+          renderers={
+            Object {
+              "a": [Function],
+              "br": [Function],
+              "iframe": [Function],
+              "img": [Function],
+              "ol": [Function],
+              "pre": [Function],
+              "textwrapper": [Function],
+              "ul": [Function],
+            }
+          }
+          staticContentMaxWidth={750}
+          tagsStyles={Object {}}
+          textSelectable={false}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          data-locator="couponDetailModal_applied_ShortDesc"
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          text="MODAL_SHORT_DESCRIPTION"
+        />
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          customStyle={Object {}}
+          dataLocator="couponDetailModal_applied_tAndC"
+          fontFamily="secondary"
+          fontSizeVariation="medium"
+          locator=""
+          noLink={true}
+          onPress={[Function]}
+          text="TERMS_AND_CONDITIONS"
+          underline={true}
+          visible={false}
+        />
+        <Styled(BodyCopy)
+          data-locator="couponDetailModal_applied_and"
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          text=" and "
+        />
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation="primary"
+          customStyle={Object {}}
+          dataLocator="couponDetailModal_applied_pp"
+          fontSizeVariation="medium"
+          locator=""
+          noLink={true}
+          onPress={[Function]}
+          text="PRIVACY_POLICY"
+          underline={true}
+          visible={false}
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </ScrollViewMock>
+</ModalNative>
+`;

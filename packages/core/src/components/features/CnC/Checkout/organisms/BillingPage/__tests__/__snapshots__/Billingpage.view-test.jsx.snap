@@ -11,7 +11,6 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   <div
     className="payment-container"
   />
-  <Styled(CheckoutOrderInfo) />
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     hideBackLink={true}

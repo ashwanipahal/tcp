@@ -28,6 +28,7 @@ import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
+import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
@@ -44,6 +45,7 @@ import HomePageSaga from '../../components/features/content/HomePage/container/H
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
+import SearchBarSaga from '../../components/features/content/Header/molecules/SearchBar/SearchBar.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -55,6 +57,7 @@ export default function* rootSaga() {
     UserSaga(),
     LogOutPageSaga(),
     ForgotPasswordSaga(),
+    SearchBarSaga(),
     AddEditAddressSaga(),
     AddressBookSaga(),
     DeleteAddressSaga(),
@@ -76,6 +79,7 @@ export default function* rootSaga() {
     CartPageSaga(),
     CreateAccountSaga(),
     ProductListingSaga(),
+    ProductDetailSaga(),
     BonusPointsSaga(),
     CouponSaga(),
     CheckoutSaga(),

@@ -5,7 +5,7 @@ import ButtonList from '../../ButtonList';
 import { Image, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
-import { getScreenWidth } from '../../../../../utils/index.native';
+import { getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 
 import {
   Container,
@@ -106,7 +106,12 @@ const renderImageComponent = (item, navigation) => {
         ? renderHeaderAndBanner(item, navigation)
         : null}
       <Anchor url={link.url} navigation={navigation}>
-        <Image width={MODULE_WIDTH} height={moduleHeight} url={image.url} />
+        <Image
+          width={MODULE_WIDTH}
+          height={moduleHeight}
+          url={image.url}
+          host={LAZYLOAD_HOST_NAME.HOME}
+        />
       </Anchor>
       {bannerPosition === bannerPositionTypes.bottom
         ? renderHeaderAndBanner(item, navigation)

@@ -6,8 +6,8 @@ exports[`BonusPointsDaysContainer should render correctly 1`] = `
 <Styled(BonusPointsView)
   bonusData={Object {}}
   bonusDetailsData=""
-  enableApplyCta={false}
   getBonusDaysData={[Function]}
+  isBagPage={false}
   isPlcc={false}
   labels={Object {}}
   orderDetails=""
