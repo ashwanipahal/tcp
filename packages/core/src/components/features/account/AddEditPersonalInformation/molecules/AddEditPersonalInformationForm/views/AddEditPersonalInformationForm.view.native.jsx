@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, change } from 'redux-form';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
@@ -54,8 +54,24 @@ export class AddEditPersonalInformationForm extends PureComponent {
     };
   }
 
+  onUserBirthMonthChangeValue = itemValue => {
+    const { dispatch } = this.props;
+    dispatch(
+      change(AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM, 'userBirthMonth', itemValue)
+    );
+    this.setState({ birthMonthSelect: itemValue });
+  };
+
+  onUserBirthYear = itemValue => {
+    const { dispatch } = this.props;
+    dispatch(
+      change(AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM, 'userBirthYear', itemValue)
+    );
+    this.setState({ birthYearSelect: itemValue });
+  };
+
   render() {
-    const { labels, handleSubmit, onCancel, dispatch, isEmployee } = this.props;
+    const { labels, handleSubmit, onCancel, isEmployee } = this.props;
     const { birthMonthSelect, birthYearSelect } = this.state;
 
     return (
@@ -118,16 +134,7 @@ export class AddEditPersonalInformationForm extends PureComponent {
               data={this.birthMonthOptionsArr}
               dataLocator="addnewaddress-country"
               dropDownStyle={{ ...dropDownStyle }}
-              onValueChange={itemValue => {
-                dispatch(
-                  change(
-                    AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM,
-                    'userBirthMonth',
-                    itemValue
-                  )
-                );
-                this.setState({ birthMonthSelect: itemValue });
-              }}
+              onValueChange={this.onUserBirthMonthChangeValue}
               itemStyle={{ ...itemStyle }}
               variation="secondary"
             />
@@ -148,21 +155,11 @@ export class AddEditPersonalInformationForm extends PureComponent {
               data={this.birthYearOptionsArr}
               dataLocator="editPersonalInfo-userBirthYear"
               dropDownStyle={{ ...dropDownStyle }}
-              onValueChange={itemValue => {
-                dispatch(
-                  change(
-                    AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM,
-                    'userBirthYear',
-                    itemValue
-                  )
-                );
-                this.setState({ birthYearSelect: itemValue });
-              }}
+              onValueChange={this.onUserBirthYear}
               itemStyle={{ ...itemStyle }}
               variation="secondary"
             />
             <Field
-              label=""
               component={TextBox}
               title=""
               type="hidden"
