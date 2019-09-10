@@ -47,12 +47,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           isPlcc={false}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -179,12 +177,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           isPlcc={false}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -311,12 +307,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           isPlcc={false}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -443,12 +437,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           isPlcc={false}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",
@@ -553,12 +545,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           isPlcc={false}
           labels={
             Object {
-              "common": Object {
-                "lbl_common_details": "",
-              },
-              "myPlaceRewards": Object {
+              "placeRewards": Object {
                 "lbl_bonus_points_apply_any_day": "",
                 "lbl_bonus_points_msg": "",
+                "lbl_common_details": "",
                 "lbl_place_rewards_bonus": "",
                 "lbl_place_rewards_day": "",
                 "lbl_place_rewards_points": "",

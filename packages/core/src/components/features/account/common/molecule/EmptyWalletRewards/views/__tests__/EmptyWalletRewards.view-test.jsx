@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { EmptyWalletRewards } from '../EmptyWalletRewards.view';
 
 const labels = {
-  myPlaceRewards: {
+  placeRewards: {
     lbl_my_rewards_shop_now: 'shop now',
     ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: 'msg',
   },
