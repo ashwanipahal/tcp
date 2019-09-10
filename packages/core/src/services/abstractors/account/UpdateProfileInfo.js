@@ -11,8 +11,18 @@ const getFormattedError = err => {
   return 'genericError';
 };
 
+/**
+ * This method is used to extract error message from the response
+ * @param {object} err - Error response object
+ */
 export const errorHandler = err => {
-  throw err.response && err.response.body !== null ? getFormattedError(err) : 'genericError';
+  if (err.response && err.response.body && err.response.body.errors) {
+    throw getFormattedError(err);
+  } else if (err && err.err && err.err.errorMessage) {
+    // eslint-disable-next-line no-underscore-dangle
+    throw err.err.errorMessage._error;
+  }
+  throw new Error('Your action could not be completed due to system error');
 };
 
 /**
