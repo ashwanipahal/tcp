@@ -7,6 +7,7 @@ import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants';
 import DropDown from '../../../../../../common/atoms/DropDown/views/DropDown.native';
 import {
@@ -61,7 +62,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
       <AddEditInfoWrapper>
         <FieldTopMarginWrapper>
           <Field
-            label={labels.lbl_profile_personal_info_firstName}
+            label={getLabelValue(labels, 'lbl_profile_personal_info_firstName')}
             name="firstName"
             id="firstName"
             type="text"
@@ -72,7 +73,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
         </FieldTopMarginWrapper>
 
         <Field
-          label={labels.lbl_profile_personal_info_lastName}
+          label={getLabelValue(labels, 'lbl_profile_personal_info_lastName')}
           name="lastName"
           id="lastName"
           type="text"
@@ -81,7 +82,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
           dataLocator="editPersonalInfo-lastname"
         />
         <Field
-          label={labels.lbl_profile_personal_info_email}
+          label={getLabelValue(labels, 'lbl_profile_personal_info_email')}
           name="Email"
           id="Email"
           type="email"
@@ -92,13 +93,13 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs12"
-            text={labels.lbl_profile_email_used_login}
+            text={getLabelValue(labels, 'lbl_profile_email_used_login')}
           />
         </AddEditMessageView>
 
         <FieldTopMarginWrapper>
           <Field
-            label={labels.lbl_profile_personal_info_phoneNumber}
+            label={getLabelValue(labels, 'lbl_profile_personal_info_phoneNumber')}
             name="phoneNumber"
             id="phoneNumber"
             component={TextBox}
@@ -111,7 +112,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
           <InputFieldHalf>
             <Field
               component={DropDown}
-              heading={labels.lbl_profile_personal_info_birthday}
+              heading={getLabelValue(labels, 'lbl_profile_personal_info_birthday')}
               selectedValue={birthMonthSelect}
               data={this.birthMonthOptionsArr}
               dataLocator="addnewaddress-country"
@@ -175,7 +176,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs12"
-            text={labels.lbl_profile_celebration_birthday}
+            text={getLabelValue(labels, 'lbl_profile_celebration_birthday')}
           />
         </FieldBirthdayTopMarginWrapper>
 
@@ -186,13 +187,13 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
             component={InputCheckbox}
             isChecked={this.isEmployeeCheck}
             dataLocator="editPersonalInfo-isEmployee"
-            rightText={labels.lbl_profile_personal_info_tcp_employee}
+            rightText={getLabelValue(labels, 'lbl_profile_personal_info_tcp_employee')}
           />
         </FieldTopMarginWrapper>
         {isEmployee && (
           <FieldTopMarginWrapper>
             <Field
-              label={labels.lbl_profile_personal_info_associate_id}
+              label={getLabelValue(labels, 'lbl_profile_personal_info_associate_id')}
               name="associateId"
               id="associateId"
               type="text"
@@ -208,7 +209,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
             color="white"
             onPress={handleSubmit}
             buttonVariation="variable-width"
-            text={labels.lbl_profile_personal_info_updateCta}
+            text={getLabelValue(labels, 'lbl_profile_personal_info_updateCta')}
           />
         </SaveButtonWrapper>
         <CancelButtonWrapper>
@@ -216,7 +217,7 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
             fill="WHITE"
             buttonVariation="variable-width"
             onPress={onCancel}
-            text={labels.lbl_profile_personal_info_cancelCta}
+            text={getLabelValue(labels, 'lbl_profile_personal_info_cancelCta')}
           />
         </CancelButtonWrapper>
       </AddEditInfoWrapper>
@@ -227,6 +228,15 @@ export class AddEditPersonalInformationForm extends React.PureComponent {
 AddEditPersonalInformationForm.propTypes = {
   labels: PropTypes.shape({
     lbl_profile_personal_info_firstName: PropTypes.string,
+    lbl_profile_personal_info_lastName: PropTypes.string,
+    lbl_profile_personal_info_email: PropTypes.string,
+    lbl_profile_email_used_login: PropTypes.string,
+    lbl_profile_personal_info_phoneNumber: PropTypes.string,
+    lbl_profile_personal_info_birthday: PropTypes.string,
+    lbl_profile_personal_info_tcp_employee: PropTypes.string,
+    lbl_profile_personal_info_associate_id: PropTypes.string,
+    lbl_profile_personal_info_cancelCta: PropTypes.string,
+    lbl_profile_personal_info_updateCta: PropTypes.string,
   }),
   initialValues: PropTypes.shape({
     userBirthMonth: PropTypes.string,
@@ -243,6 +253,15 @@ AddEditPersonalInformationForm.propTypes = {
 AddEditPersonalInformationForm.defaultProps = {
   labels: {
     lbl_profile_personal_info_firstName: '',
+    lbl_profile_personal_info_lastName: '',
+    lbl_profile_personal_info_email: '',
+    lbl_profile_email_used_login: '',
+    lbl_profile_personal_info_phoneNumber: '',
+    lbl_profile_personal_info_birthday: '',
+    lbl_profile_personal_info_tcp_employee: '',
+    lbl_profile_personal_info_associate_id: '',
+    lbl_profile_personal_info_cancelCta: '',
+    lbl_profile_personal_info_updateCta: '',
   },
   initialValues: {
     userBirthMonth: '',
