@@ -5,6 +5,7 @@ import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
 import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 
 // @flow
 // type Props = {
@@ -29,7 +30,19 @@ export class BagPageContainer extends React.Component<Props> {
   };
 
   render() {
-    const { labels, totalCount, orderItemsCount, navigation, isGuest } = this.props;
+    const {
+      labels,
+      totalCount,
+      orderItemsCount,
+      navigation,
+      isUserLoggedIn,
+      handleCartCheckout,
+      showConfirmationModal,
+      closeCheckoutConfirmationModal,
+      removeUnqualifiedItemsAndCheckout,
+      isGuest,
+    } = this.props;
+
     const showAddTobag = false;
     return (
       <BagPage
@@ -38,7 +51,12 @@ export class BagPageContainer extends React.Component<Props> {
         orderItemsCount={orderItemsCount}
         showAddTobag={showAddTobag}
         navigation={navigation}
+        isUserLoggedIn={isUserLoggedIn}
         isGuest={isGuest}
+        showConfirmationModal={showConfirmationModal}
+        closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
+        removeUnqualifiedItemsAndCheckout={removeUnqualifiedItemsAndCheckout}
+        handleCartCheckout={handleCartCheckout}
       />
     );
   }
@@ -63,6 +81,8 @@ const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
+    isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),
   };
 };

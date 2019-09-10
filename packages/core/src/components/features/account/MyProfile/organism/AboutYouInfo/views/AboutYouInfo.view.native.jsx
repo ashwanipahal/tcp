@@ -61,7 +61,7 @@ export class AboutYouInfo extends React.PureComponent {
         <ModalNative
           isOpen={showAboutYouInfoEditModal}
           onRequestClose={this.toggleModal}
-          heading={getLabelValue(labels, 'lbl_profile_about_you_title')}
+          heading={getLabelValue(labels, 'lbl_profile_about_you_modal_heading')}
         >
           <SafeAreaView>
             <ModalViewWrapper>
@@ -77,7 +77,7 @@ export class AboutYouInfo extends React.PureComponent {
 AboutYouInfo.propTypes = {
   labels: PropTypes.shape({
     lbl_profile_update_info: PropTypes.string,
-    lbl_profile_about_you_title: PropTypes.string,
+    lbl_profile_about_you_modal_heading: PropTypes.string,
     lbl_profile_about_you_shopping: PropTypes.string,
     lbl_profile_about_you_describe: PropTypes.string,
   }),
@@ -86,7 +86,7 @@ AboutYouInfo.propTypes = {
 
 AboutYouInfo.defaultProps = {
   labels: {
-    lbl_profile_about_you_title: '',
+    lbl_profile_about_you_modal_heading: '',
     lbl_profile_update_info: '',
     lbl_profile_about_you_shopping: '',
     lbl_profile_about_you_describe: '',

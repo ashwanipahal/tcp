@@ -10,17 +10,19 @@ const ApplyCardLayoutView = ({
   plccData,
   labels,
   submitPLCCForm,
+  isPLCCModalFlow,
   plccUser,
   profileInfo,
 }) => {
   return (
-    <ApplyRewardsCreditCardStyle>
+    <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
       {applicationStatus === constants.APPLICATION_STATE_PENDING && !plccUser ? (
         <ApplicationInProgress labels={labels} />
       ) : (
         <PLCCForm
           plccData={plccData}
           labels={labels}
+          isPLCCModalFlow={isPLCCModalFlow}
           onSubmit={submitPLCCForm}
           initialValues={profileInfo}
         />
@@ -34,6 +36,7 @@ ApplyCardLayoutView.propTypes = {
   submitPLCCForm: PropTypes.func.isRequired,
   applicationStatus: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
   plccUser: PropTypes.bool.isRequired,
   profileInfo: PropTypes.shape({}).isRequired,
 };

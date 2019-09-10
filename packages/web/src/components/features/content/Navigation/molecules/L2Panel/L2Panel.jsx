@@ -189,163 +189,168 @@ const L2Panel = props => {
     <HideDrawerConsumer>
       {context => (
         <React.Fragment>
-          <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel`}>
-            <div className="sizes-range-background">
-              <span
-                role="button"
-                aria-label={previousButton}
-                tabIndex={0}
-                className="icon-back"
-                onClick={hideL2Drawer}
-                onKeyDown={hideL2Drawer}
-              />
-              <span className="l1-label">{name}</span>
-            </div>
-            <Row
-              className="nav-bar-l2-details"
-              tabIndex={0}
-              fullBleed={{
-                small: true,
-                medium: true,
-              }}
-            >
-              {Object.keys(panelData)
-                .sort((prevGroup, curGroup) => {
-                  return parseInt(prevGroup.order, 10) - parseInt(curGroup.order, 10);
-                })
-                .map((category, categoryIndex) => {
-                  const { items, label } = panelData[category];
-                  const colSize = {
-                    small: 6,
-                    medium: 8,
-                    large: items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL,
-                  };
-                  const firstCol = items.slice(0, MAX_ITEMS_IN_COL);
-                  const secondCol = items.slice(MAX_ITEMS_IN_COL);
-                  let columnClass = '';
-                  if (firstCol.length && secondCol.length) {
-                    columnClass = 'half-width';
-                  }
-                  const hideOnMobileClass = category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
-                  return (
-                    <React.Fragment>
-                      <Col colSize={colSize} className="l2-nav-category">
-                        {label ? (
-                          <div className="l2-nav-category-header">
-                            <Heading
-                              variant="h6"
-                              className={`l2-nav-category-heading ${hideOnMobileClass}`}
-                              dataLocator={`l2_col_heading_${categoryIndex}`}
-                            >
-                              {label}
-                            </Heading>
-                            <span className="l2-nav-category-divider" />
-                          </div>
-                        ) : (
-                          <div className="l2-nav-category-empty-header" />
-                        )}
-                        <div className="l2-nav-category-links">
-                          {createLinks(firstCol, 1, categoryIndex, {
-                            openL3Drawer,
-                            hideL3Drawer,
-                            l3Drawer,
-                            className: { columnClass },
-                            accessibilityLabels,
-                            hideL2Drawer,
-                            context,
-                            closeNav,
-                          })}
-                          {createLinks(secondCol, 2, categoryIndex, {
-                            openL3Drawer,
-                            hideL3Drawer,
-                            l3Drawer,
-                            className: { columnClass },
-                            accessibilityLabels,
-                            hideL2Drawer,
-                            context,
-                            closeNav,
-                          })}
-                        </div>
-                      </Col>
-                    </React.Fragment>
-                  );
-                })}
-              {categoryLayout &&
-                categoryLayout.map(({ columns }) =>
-                  columns.map(({ imageBanner, shopBySize }) => {
-                    const shopBySizeCol1 = mock.shopBySizeMockData.slice(0, 5);
-                    const shopBySizeCol2 = mock.shopBySizeMockData.slice(5);
-                    return (
-                      <React.Fragment>
-                        {shopBySize && (
-                          <Col
-                            className="l2-nav-category shop-by-size-category"
-                            colSize={{
-                              small: 6,
-                              medium: 8,
-                              large: 2,
-                            }}
-                          >
-                            <div className="l2-nav-category-header">
-                              <Heading
-                                variant="h6"
-                                className="l2-nav-category-heading"
-                                dataLocator="l2_col_heading_3"
-                              >
-                                Shop By Size
-                              </Heading>
-                              <span className="l2-nav-category-divider" />
-                            </div>
-                            <div className="shop-by-size-links">
-                              {createShopByLinks(shopBySizeCol1, 1)}
-                              {createShopByLinks(shopBySizeCol2, 2)}
-                            </div>
-                          </Col>
-                        )}
-                        {imageBanner && (
-                          <Col
-                            className="l2-image-banner"
-                            colSize={{
-                              small: 6,
-                              medium: 8,
-                              large: 2,
-                            }}
-                          >
-                            {imageBanner.map(({ image, link }) => (
-                              <React.Fragment>
-                                <Anchor
-                                  className="l2-image-banner-link"
-                                  to={link.url}
-                                  title={link.title}
-                                  dataLocator={`overlay_img_link_${l1Index}`}
-                                  target={link.target}
+          <div className="content-wrapper">
+            <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel`}>
+              <div className="sizes-range-background">
+                <span
+                  role="button"
+                  aria-label={previousButton}
+                  tabIndex={0}
+                  className="icon-back"
+                  onClick={hideL2Drawer}
+                  onKeyDown={hideL2Drawer}
+                />
+                <span className="l1-label">{name}</span>
+              </div>
+              <Row className="content-wrapper">
+                <Row
+                  className="nav-bar-l2-details"
+                  tabIndex={0}
+                  fullBleed={{
+                    small: true,
+                    medium: true,
+                  }}
+                >
+                  {Object.keys(panelData)
+                    .sort((prevGroup, curGroup) => {
+                      return parseInt(prevGroup.order, 10) - parseInt(curGroup.order, 10);
+                    })
+                    .map((category, categoryIndex) => {
+                      const { items, label } = panelData[category];
+                      const colSize = {
+                        small: 6,
+                        medium: 8,
+                        large: items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL,
+                      };
+                      const firstCol = items.slice(0, MAX_ITEMS_IN_COL);
+                      const secondCol = items.slice(MAX_ITEMS_IN_COL);
+                      let columnClass = '';
+                      if (firstCol.length && secondCol.length) {
+                        columnClass = 'half-width';
+                      }
+                      const hideOnMobileClass =
+                        category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
+                      return (
+                        <React.Fragment>
+                          <Col colSize={colSize} className="l2-nav-category">
+                            {label ? (
+                              <div className="l2-nav-category-header">
+                                <Heading
+                                  variant="h6"
+                                  className={`l2-nav-category-heading ${hideOnMobileClass}`}
+                                  dataLocator={`l2_col_heading_${categoryIndex}`}
                                 >
-                                  <Image
-                                    className="l2-image-banner-image"
-                                    data-locator={`overlay_img_${l1Index}`}
-                                    {...image}
-                                  />
-                                  <BodyCopy
-                                    className="l2-nav-link"
-                                    fontFamily="secondary"
-                                    fontSize={['fs13', 'fs13', 'fs14']}
-                                    lineHeight="lh107"
-                                    color="text.primary"
-                                    textAlign="center"
-                                  >
-                                    <span className="nav-bar-l1-item-label">{link.text}</span>
-                                    <span className="icon-arrow" />
-                                  </BodyCopy>
-                                </Anchor>
-                              </React.Fragment>
-                            ))}
+                                  {label}
+                                </Heading>
+                                <span className="l2-nav-category-divider" />
+                              </div>
+                            ) : (
+                              <div className="l2-nav-category-empty-header" />
+                            )}
+                            <div className="l2-nav-category-links">
+                              {createLinks(firstCol, 1, categoryIndex, {
+                                openL3Drawer,
+                                hideL3Drawer,
+                                l3Drawer,
+                                className: { columnClass },
+                                accessibilityLabels,
+                                hideL2Drawer,
+                                context,
+                                closeNav,
+                              })}
+                              {createLinks(secondCol, 2, categoryIndex, {
+                                openL3Drawer,
+                                hideL3Drawer,
+                                l3Drawer,
+                                className: { columnClass },
+                                accessibilityLabels,
+                                hideL2Drawer,
+                                context,
+                                closeNav,
+                              })}
+                            </div>
                           </Col>
-                        )}
-                      </React.Fragment>
-                    );
-                  })
-                )}
-            </Row>
+                        </React.Fragment>
+                      );
+                    })}
+                  {categoryLayout &&
+                    categoryLayout.map(({ columns }) =>
+                      columns.map(({ imageBanner, shopBySize }) => {
+                        const shopBySizeCol1 = mock.shopBySizeMockData.slice(0, 5);
+                        const shopBySizeCol2 = mock.shopBySizeMockData.slice(5);
+                        return (
+                          <React.Fragment>
+                            {shopBySize && (
+                              <Col
+                                className="l2-nav-category shop-by-size-category"
+                                colSize={{
+                                  small: 6,
+                                  medium: 8,
+                                  large: 2,
+                                }}
+                              >
+                                <div className="l2-nav-category-header">
+                                  <Heading
+                                    variant="h6"
+                                    className="l2-nav-category-heading"
+                                    dataLocator="l2_col_heading_3"
+                                  >
+                                    Shop By Size
+                                  </Heading>
+                                  <span className="l2-nav-category-divider" />
+                                </div>
+                                <div className="shop-by-size-links">
+                                  {createShopByLinks(shopBySizeCol1, 1)}
+                                  {createShopByLinks(shopBySizeCol2, 2)}
+                                </div>
+                              </Col>
+                            )}
+                            {imageBanner && (
+                              <Col
+                                className="l2-image-banner"
+                                colSize={{
+                                  small: 6,
+                                  medium: 8,
+                                  large: 2,
+                                }}
+                              >
+                                {imageBanner.map(({ image, link }) => (
+                                  <React.Fragment>
+                                    <Anchor
+                                      className="l2-image-banner-link"
+                                      to={link.url}
+                                      title={link.title}
+                                      dataLocator={`overlay_img_link_${l1Index}`}
+                                      target={link.target}
+                                    >
+                                      <Image
+                                        className="l2-image-banner-image"
+                                        data-locator={`overlay_img_${l1Index}`}
+                                        {...image}
+                                      />
+                                      <BodyCopy
+                                        className="l2-nav-link"
+                                        fontFamily="secondary"
+                                        fontSize={['fs13', 'fs13', 'fs14']}
+                                        lineHeight="lh107"
+                                        color="text.primary"
+                                        textAlign="center"
+                                      >
+                                        <span className="nav-bar-l1-item-label">{link.text}</span>
+                                        <span className="icon-arrow" />
+                                      </BodyCopy>
+                                    </Anchor>
+                                  </React.Fragment>
+                                ))}
+                              </Col>
+                            )}
+                          </React.Fragment>
+                        );
+                      })
+                    )}
+                </Row>
+              </Row>
+            </div>
           </div>
         </React.Fragment>
       )}

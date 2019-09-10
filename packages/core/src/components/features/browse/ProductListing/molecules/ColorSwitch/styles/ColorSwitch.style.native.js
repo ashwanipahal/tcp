@@ -1,33 +1,49 @@
 import styled, { css } from 'styled-components/native';
 
-const getImageStyle = () => {
+const getImageStyle = props => {
+  const { selected } = props;
+  const size = 15;
+  const radius = 7.5;
+  const width = selected ? size + 1 : size;
+  const height = selected ? size + 1 : size;
+  const borderRadius = selected ? radius + 1 : radius;
   return `
-    width: 16;
-    height: 16;
+    width: ${width};
+    height: ${height};
+    border-radius: ${borderRadius};
     resize-mode: contain;
-    border-color: rgba(26, 26, 26, 0);
-    border-width: 1;
-    border-radius: 8;
+    border-width: 0;
   `;
 };
-// border-radius: 16 / 2;
-const getSelectedImageStyle = props => {
-  const { theme } = props;
+
+const getImageBorderStyle = props => {
+  const { theme, selected } = props;
   const { colorPalette } = theme;
-  const borderColor = colorPalette.gray[900];
+  const borderColor = selected ? colorPalette.gray[900] : colorPalette.gray[600];
+  const size = 16;
+  const radius = 8;
+  const width = selected ? size + 1 : size;
+  const height = selected ? size + 1 : size;
+  const borderRadius = selected ? radius + 1 : radius;
+
   return `
-    width: 16;
-    height: 16;
-    resize-mode: contain;
+    width: ${width};
+    height: ${height};
+    border-radius: ${borderRadius};
     border-color: ${borderColor};
     border-width: 1;
-    border-radius: 8;
+    align-items: center;
+    justify-content: center;
   `;
 };
 
 const ColorSwitchesContainer = styled.View`
   height: 17;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const ImageTouchableOpacity = styled.TouchableOpacity`
+  ${getImageBorderStyle}
 `;
 
 const ItemSeparatorStyle = styled.View`
@@ -37,11 +53,6 @@ const ItemSeparatorStyle = styled.View`
 const ImageStyle = styled.Image`
   ${getImageStyle}
 `;
-
-const SelectedImageStyle = styled.Image`
-  ${getSelectedImageStyle}
-`;
-
 const styles = css``;
 
-export { styles, ColorSwitchesContainer, ItemSeparatorStyle, ImageStyle, SelectedImageStyle };
+export { styles, ImageTouchableOpacity, ColorSwitchesContainer, ItemSeparatorStyle, ImageStyle };

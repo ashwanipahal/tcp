@@ -58,10 +58,12 @@ exports[`Promo Text Banner component renders correctly 1`] = `
   textAlign="left"
 >
   <Styled(Anchor)
+    asPath="http://example.com235"
     className="promo-text-link"
     external={0}
     target=""
     title=""
+    to="http://example.com235"
     url="http://example.com235"
   >
     <span

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutProgressIndicator component should renders correctly props not present 1`] = `
+<div
+  className=""
+>
+  <Styled(CheckoutSectionTitleDisplay)
+    dataLocator="billing-title"
+  />
+  <Connect(GiftCardsContainer) />
+  <div
+    className="payment-container"
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    hideBackLink={true}
+  />
+</div>
+`;

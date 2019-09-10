@@ -23,6 +23,12 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
+
+  .hide-on-desktop {
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
 `;
 
 export default styles;

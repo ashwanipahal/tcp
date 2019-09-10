@@ -6,6 +6,10 @@ export default css`
   position: relative;
   text-align: center;
 
+  .flexbox {
+    display: flex;
+  }
+
   .hamburger-menu {
     cursor: pointer;
     width: 22px;
@@ -30,15 +34,22 @@ export default css`
     cursor: pointer;
     display: inline-block;
   }
+  .product-image {
+    vertical-align: baseline;
+  }
 
   .rightLink {
     border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
     box-sizing: border-box;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
   .cartCount {
-    background: ${props => props.theme.colorPalette.blue['800']};
+    background: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.primary.dark
+        : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
     margin: 1px 0px 0px -8px;

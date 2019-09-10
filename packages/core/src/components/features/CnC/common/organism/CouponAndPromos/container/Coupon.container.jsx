@@ -27,7 +27,6 @@ export class CouponContainer extends React.PureComponent<Props> {
       isCheckout,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
-
     return (
       <Coupon
         labels={updateLabels}

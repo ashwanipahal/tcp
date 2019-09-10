@@ -27,7 +27,6 @@ const modulesMap = {
 };
 
 const buttonMargin = { margin: 30 };
-
 class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
     this.loadData();

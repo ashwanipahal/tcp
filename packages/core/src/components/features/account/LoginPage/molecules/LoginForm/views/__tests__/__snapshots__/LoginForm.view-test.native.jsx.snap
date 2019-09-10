@@ -116,6 +116,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         dataLocator="password"
         id="password"
         name="password"
+        rightText="lbl_createAccount_show"
         secureTextEntry={true}
         type="password"
       />
@@ -130,7 +131,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           locator=""
           noLink={true}
           onPress={[Function]}
-          text="show"
+          text="lbl_createAccount_show"
           to="/#"
           visible={false}
         />
@@ -151,22 +152,14 @@ exports[`LoginForm component should renders correctly 1`] = `
         name="userTouchId"
       />
     </View>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
       customStyle={
         Object {
           "marginTop": 30,
         }
       }
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
-      onPress={null}
-      text=""
-      url=""
     />
     <Styled(Anchor)
       accessibilityLabel=""

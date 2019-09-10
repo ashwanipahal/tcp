@@ -11,11 +11,20 @@ type Props = {
   className: any,
   classNames: any,
   labels: any,
+  isSortOpenModal: boolean,
 };
 
 class FilterModal extends React.PureComponent<Props> {
   render() {
-    const { handleClose, show, children, className, classNames, labels } = this.props;
+    const {
+      handleClose,
+      show,
+      children,
+      className,
+      classNames,
+      labels,
+      isSortOpenModal,
+    } = this.props;
     const showHideClassName = show
       ? `${className} modal display-block`
       : `${className} modal display-none`;
@@ -59,45 +68,47 @@ class FilterModal extends React.PureComponent<Props> {
             </Col>
           </Row>
           {children}
-          <div className="modal-spacing">
-            <Row centered>
-              <Col
-                colSize={{
-                  small: 3,
-                  medium: 3,
-                  large: 3,
-                }}
-                className="close-button"
-              >
-                <Button
-                  buttonVariation="fixed-width"
-                  type="button"
-                  className="gallery-button-left"
-                  data-locator="view_gallery_button"
-                  onClick={handleClose}
+          {!isSortOpenModal && (
+            <div className="modal-spacing">
+              <Row centered>
+                <Col
+                  colSize={{
+                    small: 3,
+                    medium: 3,
+                    large: 3,
+                  }}
+                  className="close-button"
                 >
-                  {labels.lbl_clear}
-                </Button>
-              </Col>
-              <Col
-                colSize={{
-                  small: 3,
-                  medium: 3,
-                  large: 3,
-                }}
-              >
-                <Button
-                  buttonVariation="fixed-width"
-                  type="button"
-                  className="gallery-button-left"
-                  data-locator="view_gallery_button"
-                  fill="BLACK"
+                  <Button
+                    buttonVariation="fixed-width"
+                    type="button"
+                    className="gallery-button-left"
+                    data-locator="view_gallery_button"
+                    onClick={() => handleClose()}
+                  >
+                    {labels.lbl_clear}
+                  </Button>
+                </Col>
+                <Col
+                  colSize={{
+                    small: 3,
+                    medium: 3,
+                    large: 3,
+                  }}
                 >
-                  {labels.lbl_apply}
-                </Button>
-              </Col>
-            </Row>
-          </div>
+                  <Button
+                    buttonVariation="fixed-width"
+                    type="submit"
+                    className="gallery-button-left"
+                    data-locator="plp_filter_apply_button"
+                    fill="BLACK"
+                  >
+                    {labels.lbl_apply}
+                  </Button>
+                </Col>
+              </Row>
+            </div>
+          )}
         </section>
       </div>
     );

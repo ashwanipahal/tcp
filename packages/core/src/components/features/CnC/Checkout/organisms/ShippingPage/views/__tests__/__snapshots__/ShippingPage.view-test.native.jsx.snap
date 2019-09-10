@@ -63,7 +63,9 @@ exports[`Shipping Page should render correctly 1`] = `
   />
   <ScrollViewMock>
     <Styled(View)>
-      <CheckoutSectionTitleDisplay />
+      <CheckoutSectionTitleDisplay
+        title=""
+      />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
@@ -158,11 +160,6 @@ exports[`Shipping Page should render correctly 1`] = `
         Array [
           Object {},
         ]
-      }
-      shippingLabels={
-        Object {
-          "sectionHeader": "",
-        }
       }
       shouldAsyncValidate={[Function]}
       shouldError={[Function]}

@@ -46,18 +46,10 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     marginTop={20}
   />
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
-      text=""
-      url=""
     />
   </Styled(View)>
 </Styled(View)>
@@ -117,18 +109,10 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     view="read"
   />
   <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color=""
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
-      text=""
-      url=""
     />
   </Styled(View)>
 </Styled(View)>

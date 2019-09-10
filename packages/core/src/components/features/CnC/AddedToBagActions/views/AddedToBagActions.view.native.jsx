@@ -14,7 +14,7 @@ import ADDEDTOBAG_CONSTANTS from '../../AddedToBag/AddedToBag.constants';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   routeToCheckout = e => {
-    const { navigation, closeCheckoutModalMountState, orderHasPickup } = this.props;
+    const { navigation, closeCheckoutModalMountState, orderHasPickup, closeModal } = this.props;
     if (e) {
       e.preventDefault();
     }
@@ -23,13 +23,28 @@ class AddedToBagActions extends React.PureComponent<Props> {
     } else {
       navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
+    if (closeModal) {
+      setTimeout(() => {
+        closeModal();
+      });
+    }
     closeCheckoutModalMountState({ state: false });
   };
 
   closeModalAndHandleCheckout = () => {
-    const { closeCheckoutConfirmationModal, handleCartCheckout, navigation } = this.props;
-    closeCheckoutConfirmationModal();
+    const { handleCartCheckout, navigation } = this.props;
+    this.closeCheckoutConfirmationModal();
     return handleCartCheckout({ navigation });
+  };
+
+  closeCheckoutConfirmationModal = () => {
+    const { closeCheckoutConfirmationModal, closeModal } = this.props;
+    closeCheckoutConfirmationModal();
+    if (closeModal) {
+      setTimeout(() => {
+        closeModal();
+      });
+    }
   };
 
   render() {
@@ -38,7 +53,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
       showAddTobag,
       checkoutModalMountedState,
       handleCartCheckout,
-      closeCheckoutConfirmationModal,
       closeCheckoutModalMountState,
       removeUnqualifiedItemsAndCheckout,
       isEditingItem,
@@ -76,7 +90,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
         <ButtonWrapper>
           <CheckoutButton
             onPress={() => {
-              handleCartCheckout({ isEditingItem, navigation });
+              handleCartCheckout({ isEditingItem, navigation, closeModal });
             }}
           >
             <BodyCopy
@@ -98,7 +112,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
         <BagConfirmationModal
           labels={labels}
           isOpen={showModal}
-          closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
+          closeCheckoutConfirmationModal={this.closeCheckoutConfirmationModal}
           removeUnqualifiedItemsAndCheckout={
             modalEditingItem ? this.closeModalAndHandleCheckout : removeUnqualifiedItemsAndCheckout
           }
