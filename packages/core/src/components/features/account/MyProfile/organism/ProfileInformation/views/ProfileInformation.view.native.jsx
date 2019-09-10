@@ -117,7 +117,7 @@ export class ProfileInformation extends React.PureComponent {
             heading={labelsObj.profile.lbl_profile_heading}
           >
             <SafeAreaView>
-              <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG margin-top-MED">
+              <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
                 <MailingInformationContainer
                   labels={labelsObj}
                   onUpdateMailingAddress={this.toggleMailingAddressModal}

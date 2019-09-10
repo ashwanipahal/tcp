@@ -74,6 +74,7 @@ exports[`AddEditCreditCard component should renders correctly when showCreditCar
     }
     mailingAddress={false}
     onClose={[Function]}
+    onFileAddresskey=""
     onSubmit={[Function]}
     persistentSubmitErrors={false}
     pure={true}

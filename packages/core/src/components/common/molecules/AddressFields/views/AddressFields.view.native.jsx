@@ -18,6 +18,7 @@ import {
   AddressSecondWrapper,
   HiddenAddressLineWrapper,
 } from '../styles/AddressFields.style.native';
+import { HiddenStateWrapper } from '../../../organisms/AddressForm/AddressForm.native.style';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
@@ -79,7 +80,8 @@ export class AddressFields extends React.PureComponent {
     } = API_CONFIG;
     this.state = {
       country: us.toUpperCase(),
-      dropDownItem: this.UScountriesStates[0].displayName,
+      dropDownItem:
+        this.getInitialState(props.initialValues) || this.UScountriesStates[0].displayName,
     };
 
     this.locationRef = null;
@@ -103,8 +105,12 @@ export class AddressFields extends React.PureComponent {
     this.locationRef.setAddressText(address.street);
   };
 
-  getAddressLine1 = initialValues => {
+  getInitialAddressLine1 = initialValues => {
     return (initialValues && initialValues.address && initialValues.address.addressLine1) || '';
+  };
+
+  getInitialState = initialValues => {
+    return (initialValues && initialValues.address && initialValues.address.state) || '';
   };
 
   changeShipmentMethods = (e, value) => {
@@ -165,7 +171,7 @@ export class AddressFields extends React.PureComponent {
             refs={instance => {
               this.locationRef = instance;
             }}
-            initialValue={this.getAddressLine1(initialValues)}
+            initialValue={this.getInitialAddressLine1(initialValues)}
             dataLocator="addnewaddress-addressl1"
             componentRestrictions={{ ...{ country: [country] } }}
           />
@@ -200,8 +206,6 @@ export class AddressFields extends React.PureComponent {
         <StateZipCodeContainer>
           <InputFieldHalf>
             <Field
-              id="state"
-              name="state"
               component={DropDown}
               heading={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
               dataLocator="addnewaddress-city"
@@ -216,6 +220,9 @@ export class AddressFields extends React.PureComponent {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
+            <HiddenStateWrapper>
+              <Field label="" component={TextBox} title="" type="hidden" id="state" name="state" />
+            </HiddenStateWrapper>
           </InputFieldHalf>
           <Separator />
           <InputFieldHalf zipCode>

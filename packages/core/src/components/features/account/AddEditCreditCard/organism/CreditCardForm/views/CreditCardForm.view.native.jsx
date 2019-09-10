@@ -31,6 +31,7 @@ import {
   dropDownStyle,
   itemStyle,
 } from '../styles/CreditCardForm.native.style';
+import { getLabelValue } from '../../../../../../../utils';
 
 export class CreditCardForm extends React.PureComponent<Props, State> {
   static propTypes = {
@@ -75,10 +76,9 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    const { onFileAddresskey, mailingAddress } = props;
+    const { onFileAddresskey } = props;
     this.state = {
       addAddressMount: false,
-      showAddressForm: mailingAddress,
       selectedAddress: onFileAddresskey,
     };
   }
@@ -137,13 +137,9 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   toggleModal = () => {
-    const { addAddressMount, showAddressForm } = this.state;
+    const { addAddressMount } = this.state;
     const { mailingAddress } = this.props;
-    if (mailingAddress) {
-      this.setState({
-        showAddressForm: !showAddressForm,
-      });
-    } else {
+    if (!mailingAddress) {
       this.setState({
         addAddressMount: !addAddressMount,
       });
@@ -156,8 +152,21 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       : addressComponentList;
   };
 
+  addressFormVisible = (mailingAddress, selectedAddress) => {
+    return mailingAddress && !selectedAddress;
+  };
+
   getSubHeading = (labels, pagesubHeading) => {
     return pagesubHeading || labels.paymentGC.lbl_payment_billingAddress;
+  };
+
+  getSubmitCTAText = (labels, mailingAddress, isEdit) => {
+    if (mailingAddress) {
+      return getLabelValue(labels, 'lbl_common_saveCTA', 'common');
+    }
+    return isEdit
+      ? getLabelValue(labels, 'lbl_common_updateCTA', 'common')
+      : getLabelValue(labels, 'lbl_payment_addCard', 'paymentGC');
   };
 
   render() {
@@ -178,10 +187,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       showEmailAddress,
       initialValues,
       subHeading,
+      mailingAddress,
     } = this.props;
-    const { addAddressMount, selectedAddress, showAddressForm } = this.state;
+    const { addAddressMount, selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
-    const addressDropdown = this.showAddressDropdown();
+    const addressDropdown = this.showAddressDropdown(mailingAddress, addressComponentList);
+    const isAddressFormVisible = this.addressFormVisible(mailingAddress, selectedAddress);
 
     const defaultAddress = selectedAddress
       ? this.getSelectedAddress(addressList, selectedAddress)
@@ -261,7 +272,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 <RightBracket />
               </DefaultAddress>
             )}
-            {showAddressForm && (
+            {isAddressFormVisible && (
               <ViewWithSpacing spacingStyles="margin-top-LRG">
                 <FormSection name="address">
                   <AddressFields
@@ -284,9 +295,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <Button
               fill="BLUE"
               buttonVariation="variable-width"
-              text={
-                isEdit ? labels.common.lbl_common_updateCTA : labels.paymentGC.lbl_payment_addCard
-              }
+              text={this.getSubmitCTAText(labels, mailingAddress, isEdit)}
               style={AddAddressButton}
               onPress={handleSubmit}
             />

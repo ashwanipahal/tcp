@@ -277,9 +277,8 @@ exports[`AddressFields component should render correctly 1`] = `
               "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
-              "input": null,
               "itemStyle": null,
-              "onValueChange": [Function],
+              "onValueChange": null,
               "selectedValue": null,
               "variation": "primary",
             },
@@ -631,7 +630,6 @@ exports[`AddressFields component should render correctly 1`] = `
             "height": 41,
           }
         }
-        id="state"
         itemStyle={
           Object {
             "color": "black",
@@ -639,11 +637,62 @@ exports[`AddressFields component should render correctly 1`] = `
             "paddingLeft": 6,
           }
         }
-        name="state"
         onValueChange={[Function]}
         selectedValue="Select"
         variation="secondary"
       />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="state"
+          label=""
+          name="state"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View) />
     <Styled(View)
@@ -708,9 +757,8 @@ exports[`AddressFields component should render correctly 1`] = `
           "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
-          "input": null,
           "itemStyle": null,
-          "onValueChange": [Function],
+          "onValueChange": null,
           "selectedValue": null,
           "variation": "primary",
         },
@@ -1155,9 +1203,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
-              "input": null,
               "itemStyle": null,
-              "onValueChange": [Function],
+              "onValueChange": null,
               "selectedValue": null,
               "variation": "primary",
             },
@@ -1509,7 +1556,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "height": 41,
           }
         }
-        id="state"
         itemStyle={
           Object {
             "color": "black",
@@ -1517,11 +1563,62 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "paddingLeft": 6,
           }
         }
-        name="state"
         onValueChange={[Function]}
         selectedValue="Select"
         variation="secondary"
       />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="state"
+          label=""
+          name="state"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View) />
     <Styled(View)
@@ -1586,9 +1683,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
-          "input": null,
           "itemStyle": null,
-          "onValueChange": [Function],
+          "onValueChange": null,
           "selectedValue": null,
           "variation": "primary",
         },
@@ -2033,9 +2129,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
-              "input": null,
               "itemStyle": null,
-              "onValueChange": [Function],
+              "onValueChange": null,
               "selectedValue": null,
               "variation": "primary",
             },
@@ -2387,7 +2482,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "height": 41,
           }
         }
-        id="state"
         itemStyle={
           Object {
             "color": "black",
@@ -2395,11 +2489,62 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "paddingLeft": 6,
           }
         }
-        name="state"
         onValueChange={[Function]}
         selectedValue="Select"
         variation="secondary"
       />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="state"
+          label=""
+          name="state"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View) />
     <Styled(View)
@@ -2464,9 +2609,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
-          "input": null,
           "itemStyle": null,
-          "onValueChange": [Function],
+          "onValueChange": null,
           "selectedValue": null,
           "variation": "primary",
         },
@@ -2911,9 +3055,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
               "bounces": true,
               "data": Array [],
               "dropDownStyle": null,
-              "input": null,
               "itemStyle": null,
-              "onValueChange": [Function],
+              "onValueChange": null,
               "selectedValue": null,
               "variation": "primary",
             },
@@ -3020,7 +3163,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "height": 41,
           }
         }
-        id="state"
         itemStyle={
           Object {
             "color": "black",
@@ -3028,11 +3170,62 @@ exports[`AddressFields component should render correctly without phoneNumber and
             "paddingLeft": 6,
           }
         }
-        name="state"
         onValueChange={[Function]}
         selectedValue="Select"
         variation="secondary"
       />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="state"
+          label=""
+          name="state"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
     </Styled(View)>
     <Styled(View) />
     <Styled(View)
@@ -3097,9 +3290,8 @@ exports[`AddressFields component should render correctly without phoneNumber and
           "bounces": true,
           "data": Array [],
           "dropDownStyle": null,
-          "input": null,
           "itemStyle": null,
-          "onValueChange": [Function],
+          "onValueChange": null,
           "selectedValue": null,
           "variation": "primary",
         },

@@ -284,6 +284,63 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         text=""
         textAlign="left"
       />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="black"
+          marginTop="10"
+          textAlign="left"
+        />
+      </Styled(View)>
+      <Field
+        addAddress={[Function]}
+        component={[Function]}
+        data={
+          Array [
+            Object {
+              "content": Object {
+                "addressId": "12345",
+                "firstName": "test",
+                "lastName": "test",
+                "primary": "true",
+              },
+              "id": "12345",
+              "label": "test test (Default)",
+              "primary": true,
+            },
+            Object {
+              "content": "",
+              "id": "",
+              "label": undefined,
+              "primary": false,
+            },
+          ]
+        }
+        dataLocator="payment-billingaddressdd"
+        dropDownStyle={
+          Object {
+            "borderBottomWidth": 1,
+            "height": 30,
+            "marginTop": 25,
+          }
+        }
+        id="onFileAddressKey"
+        itemStyle={
+          Object {
+            "height": 90,
+          }
+        }
+        labels={
+          Object {
+            "common": Object {},
+            "paymentGC": Object {},
+          }
+        }
+        name="onFileAddressKey"
+        onValueChange={[Function]}
+        variation="secondary"
+      />
       <Styled(View)
         spacingStyles="margin-top-LRG"
       >
@@ -317,6 +374,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "marginTop": 48,
           }
         }
+        text="lbl_common_saveCTA"
       />
       <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
@@ -327,7 +385,6 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "color": "black",
             "fontWeight": "normal",
             "marginTop": 15,
-            "opacity": 0.5,
           }
         }
       />
@@ -667,6 +724,64 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         textAlign="left"
       />
       <Styled(View)>
+        <Styled(BodyCopy)
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="black"
+          marginTop="10"
+          textAlign="left"
+        />
+      </Styled(View)>
+      <Field
+        addAddress={[Function]}
+        component={[Function]}
+        data={
+          Array [
+            Object {
+              "content": Object {
+                "addressId": "12345",
+                "firstName": "test",
+                "lastName": "test",
+                "primary": "true",
+              },
+              "id": "12345",
+              "label": "test test (Default)",
+              "primary": true,
+            },
+            Object {
+              "content": "",
+              "id": "",
+              "label": undefined,
+              "primary": false,
+            },
+          ]
+        }
+        dataLocator="payment-billingaddressdd"
+        dropDownStyle={
+          Object {
+            "borderBottomWidth": 1,
+            "height": 30,
+            "marginTop": 25,
+          }
+        }
+        id="onFileAddressKey"
+        itemStyle={
+          Object {
+            "height": 90,
+          }
+        }
+        labels={
+          Object {
+            "common": Object {},
+            "paymentGC": Object {},
+          }
+        }
+        name="onFileAddressKey"
+        onValueChange={[Function]}
+        selectedValue="12345"
+        variation="secondary"
+      />
+      <Styled(View)>
         <Styled(View) />
         <Address
           address={
@@ -704,6 +819,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "marginTop": 48,
           }
         }
+        text="lbl_payment_addCard"
       />
       <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
@@ -714,7 +830,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "color": "black",
             "fontWeight": "normal",
             "marginTop": 15,
-            "opacity": 0.5,
           }
         }
       />
@@ -1007,6 +1122,63 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         text=""
         textAlign="left"
       />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="black"
+          marginTop="10"
+          textAlign="left"
+        />
+      </Styled(View)>
+      <Field
+        addAddress={[Function]}
+        component={[Function]}
+        data={
+          Array [
+            Object {
+              "content": Object {
+                "addressId": "12345",
+                "firstName": "test",
+                "lastName": "test",
+                "primary": "true",
+              },
+              "id": "12345",
+              "label": "test test (Default)",
+              "primary": true,
+            },
+            Object {
+              "content": "",
+              "id": "",
+              "label": undefined,
+              "primary": false,
+            },
+          ]
+        }
+        dataLocator="payment-billingaddressdd"
+        dropDownStyle={
+          Object {
+            "borderBottomWidth": 1,
+            "height": 30,
+            "marginTop": 25,
+          }
+        }
+        id="onFileAddressKey"
+        itemStyle={
+          Object {
+            "height": 90,
+          }
+        }
+        labels={
+          Object {
+            "common": Object {},
+            "paymentGC": Object {},
+          }
+        }
+        name="onFileAddressKey"
+        onValueChange={[Function]}
+        variation="secondary"
+      />
     </Styled(View)>
     <Styled(View)>
       <Styled(WithTheme(CustomButton))
@@ -1020,6 +1192,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "marginTop": 48,
           }
         }
+        text="lbl_payment_addCard"
       />
       <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
@@ -1030,7 +1203,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "color": "black",
             "fontWeight": "normal",
             "marginTop": 15,
-            "opacity": 0.5,
           }
         }
       />

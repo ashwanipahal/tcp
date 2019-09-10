@@ -50,6 +50,7 @@ export const AddEditCreditCard = ({
               showCreditCardFields={showCreditCardFields}
               addressFormLabels={addressFormLabels}
               mailingAddress={mailingAddress}
+              onFileAddresskey=""
               {...otherProps}
             />
           )}
