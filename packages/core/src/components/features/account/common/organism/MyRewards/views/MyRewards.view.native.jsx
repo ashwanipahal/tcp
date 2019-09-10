@@ -37,7 +37,7 @@ class MyRewards extends PureComponent {
    */
   renderView = ({ item }) => {
     const {
-      labels,
+      commonLabels,
       coupons,
       onViewCouponDetails,
       onApplyCouponToBagFromList,
@@ -51,7 +51,7 @@ class MyRewards extends PureComponent {
     return (
       <DetailedCouponTile
         key={item.id}
-        labels={labels.common}
+        labels={commonLabels}
         coupon={item}
         onViewCouponDetails={onViewCouponDetails}
         onApplyCouponToBagFromList={onApplyCouponToBagFromList}
@@ -140,6 +140,7 @@ class MyRewards extends PureComponent {
 
 MyRewards.propTypes = {
   labels: PropTypes.shape({ placeRewards: {} }),
+  commonLabels: PropTypes.shape({}),
   coupons: PropTypes.shape([]),
   onViewCouponDetails: PropTypes.func,
   onApplyCouponToBagFromList: PropTypes.func,
@@ -159,6 +160,7 @@ MyRewards.defaultProps = {
       lbl_common_tnc: '',
     },
   },
+  commonLabels: '',
   coupons: [],
   onViewCouponDetails: () => {},
   onApplyCouponToBagFromList: () => {},

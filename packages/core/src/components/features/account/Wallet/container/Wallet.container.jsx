@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WalletView from '../views';
-import { getLabels } from '../../Account/container/Account.selectors';
+
+export const getGlobalLabels = state => {
+  return state.Labels.global;
+};
 
 export const WalletContainer = ({ labels }) => {
   return <WalletView labels={labels} />;
@@ -10,7 +13,7 @@ export const WalletContainer = ({ labels }) => {
 
 export const mapStateToProps = state => {
   return {
-    labels: getLabels(state),
+    labels: getGlobalLabels(state),
   };
 };
 

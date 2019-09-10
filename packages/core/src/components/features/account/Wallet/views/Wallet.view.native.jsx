@@ -14,11 +14,11 @@ export const WalletView = ({ labels }) => {
         <WalletLayout>
           <RewardsPoints tableView />
           <PageHeadingWithLinks
-            heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'myPlaceRewards')}
+            heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'placeRewards')}
             programDetailsCta={getLabelValue(
               labels,
               'lbl_my_rewards_program_details',
-              'myPlaceRewards'
+              'placeRewards'
             )}
             termsConditionCta={getLabelValue(labels, 'lbl_common_tnc', 'common')}
           >
@@ -32,7 +32,7 @@ export const WalletView = ({ labels }) => {
 
 WalletView.propTypes = {
   labels: PropTypes.shape({
-    myPlaceRewards: PropTypes.shape({
+    placeRewards: PropTypes.shape({
       lbl_my_wallet_heading: PropTypes.string,
       lbl_my_rewards_program_details: PropTypes.string,
     }),
@@ -44,7 +44,7 @@ WalletView.propTypes = {
 
 WalletView.defaultProps = {
   labels: {
-    myPlaceRewards: {
+    placeRewards: {
       lbl_my_wallet_heading: '',
       lbl_my_rewards_program_details: '',
     },
