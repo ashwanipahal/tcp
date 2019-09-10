@@ -1,9 +1,19 @@
 import { connect } from 'react-redux';
 import PickUpStoreModalView from '../views/PickUpStoreModal.view';
 import * as PickupSelectors from './PickUpStoreModal.selectors';
-import { maxAllowedStoresInCart } from '../PickUpStoreModal.config';
+import { maxAllowedStoresInCart, distancesMap } from '../PickUpStoreModal.config';
 import { PICKUP_HEADING } from '../PickUpStoreModal.constants';
 import { isCanada } from '../../../../../utils';
+import { closePickupModal } from './PickUpStoreModal.actions';
+import errorBoundary from '../../../hoc/withErrorBoundary';
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    closePickupModal: payload => {
+      dispatch(closePickupModal(payload));
+    },
+  };
+};
 
 const mapStateToProps = (state, ownProps) => {
   // creating new prop defaultStore which is a combination of
@@ -11,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   const favStore = PickupSelectors.getDefaultStore(state);
   const geoDefaultStore = PickupSelectors.getGeoDefaultStore(state);
   const defaultStore = favStore || geoDefaultStore || null;
-  const productInfo = null; // TODO - In cart - quickViewStoreView.getQuickViewProduct(state);
+  const productInfo = {}; // TODO - In cart - quickViewStoreView.getQuickViewProduct(state);
   const { colorFitSizeDisplayNames = null } = productInfo;
   const {
     initialValues = {},
@@ -22,12 +32,13 @@ const mapStateToProps = (state, ownProps) => {
   } = ownProps;
   const isShowDefaultSize = false; // TODO - Do we need this ? abTestingStoreView.getIsShowDefaultSize(state);
   const initialValueFromQuickView = initialValues; // TODO - IN QV - quickViewStoreView.getQuickViewFormInitialValues(state, ownProps.initialValues, true);
-  const itemValues = PickupSelectors.getDefaultSizes(
-    initialValueFromQuickView,
-    productInfo,
-    isShowDefaultSize
-  );
-  const pickupModalAttrs = PickupSelectors.getPickupModalAttrs();
+  const itemValues = { showDefaultSizeMsg: false, initialValueFromQuickView };
+  const isPickupModalOpen = PickupSelectors.getIsPickupModalOpen(state);
+  const isBopisCtaEnabled = PickupSelectors.getIsBopisCtaEnabled(state);
+  const isBossCtaEnabled = PickupSelectors.getIsBossCtaEnabled(state);
+  const isPickUpWarningModal = PickupSelectors.getIsPickUpWarningModal(state);
+  const openSkuSelectionForm = PickupSelectors.getOpenSkuSelectionForm(state);
+
   return {
     onAddItemToCart,
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
@@ -35,7 +46,7 @@ const mapStateToProps = (state, ownProps) => {
     onSubmitSuccess,
     maxAllowedStoresInCart,
     cartBopisStoresList: 0, // TODO - IN QV  - storesStoreView.getBopisStoresOnCart(state),
-    distancesMap: {}, // TODO - IN QV - Do we need this ? - storesStoreView.getDistancesMap(),
+    distancesMap,
     isShowExtendedSizesNotification: false,
     productInfo,
     colorFitSizeDisplayNames,
@@ -44,12 +55,16 @@ const mapStateToProps = (state, ownProps) => {
     isPickupStoreUpdating: false, // TODO - IN CART -  cartStoreView.getIsPickupStoreUpdating(state),
     requestorKey: '', // TODO - IN QV  - quickViewStoreView.getQuickViewRequestInfo(state).requestorKey,
     defaultStore,
-    ...pickupModalAttrs,
+    isPickupModalOpen,
+    isBopisCtaEnabled,
+    isBossCtaEnabled,
+    isPickUpWarningModal,
+    openSkuSelectionForm,
     isCanada: isCanada(),
     isPlcc: PickupSelectors.getUserIsPlcc(state),
     currencySymbol: PickupSelectors.getCurrentCurrencySymbol(state),
     isInternationalShipping: PickupSelectors.getIsInternationalShipping(state),
-    isBopisEnabled: PickupSelectors.getIsBopis(state),
+    isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
     isBossEnabled: PickupSelectors.getIsBossEnabled(state),
     isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
     isShowDefaultSize,
@@ -58,4 +73,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(PickUpStoreModalView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(errorBoundary(PickUpStoreModalView));

@@ -35,7 +35,7 @@ export function getMapSliceForSize(colorFitsSizesMap, colorName, fitName, sizeNa
  * @return the first element in the colorFitsSizesMap array that corresponds to the given colorName.
  */
 export function getMapSliceForColor(colorFitsSizesMap, colorName) {
-  return colorFitsSizesMap.find(entry => entry.color.name === colorName);
+  return colorFitsSizesMap && colorFitsSizesMap.find(entry => entry.color.name === colorName);
 }
 
 export function getIconImageForColor(productInfo, colorId) {

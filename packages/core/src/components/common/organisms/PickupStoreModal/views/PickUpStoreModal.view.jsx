@@ -100,9 +100,11 @@ class PickUpStoreModalView extends React.Component {
     onAddItemToCartSuccess: PropTypes.func,
 
     /** callback for closing this modal */
-    onCloseClick: PropTypes.func.isRequired,
+    closePickupModal: PropTypes.func.isRequired,
 
     onColorChange: PropTypes.func.isRequired,
+
+    isPickupModalOpen: PropTypes.bool.isRequired,
 
     /**
      * Callback to run on component mount
@@ -190,13 +192,29 @@ class PickUpStoreModalView extends React.Component {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleNextStep = this.handleNextStep.bind(this);
     this.handleEditSkuDetails = this.handleEditSkuDetails.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
+  }
+
+  onCloseClick() {
+    const { closePickupModal } = this.props;
+    closePickupModal({
+      isModalOpen: false,
+      // To clear QV product selected info..
+      // To clear search results from suggested store list
+    });
   }
 
   /** Validate SKU detils if SKU is resolved or not */
-  validateSkuDetails(initialValues, openSkuSelectionForm) {
+  validateSkuDetails(initialValues = {}, openSkuSelectionForm) {
     if (openSkuSelectionForm) {
       return false;
     }
+    // TODO - Uncomment these...
+    // const invalidInitialValues = !initialValues || (initialValues && !Object.keys(initialValues).length);
+    // if (invalidInitialValues) {
+    //   return false;
+    // }
+
     let isValidSKU = true;
     Object.keys(initialValues).forEach(key => {
       if (
@@ -251,7 +269,6 @@ class PickUpStoreModalView extends React.Component {
   handleAddItemToCart(formData) {
     const {
       productInfo,
-      onCloseClick,
       onAddItemToCartSuccess,
       requestorKey,
       isBopisCtaEnabled,
@@ -263,7 +280,7 @@ class PickUpStoreModalView extends React.Component {
     return onAddItemToCart(formData, requestorKey, isBopisCtaEnabled, isBossCtaEnabled)
       .then(() => {
         // TODO - Do we need this ? - setDefaultSizes(isShowDefaultSize, productInfo, formData);
-        onCloseClick();
+        this.onCloseClick();
         if (!onAddItemToCartSuccess) {
           return null;
         }
@@ -326,7 +343,6 @@ class PickUpStoreModalView extends React.Component {
       isShoppingBag,
       cartBopisStoresList,
       maxAllowedStoresInCart,
-      onCloseClick,
       productInfo,
       productInfo: { name, colorFitsSizesMap },
       distancesMap,
@@ -352,8 +368,8 @@ class PickUpStoreModalView extends React.Component {
     const isSearchOnlyInCartStores = maxAllowedStoresInCart <= cartBopisStoresList.length;
 
     const {
-      formValues,
-      formValues: { color, fit, size },
+      formValues = {},
+      formValues: { color, fit, size } = {},
       isSkuResolved,
       error,
     } = this.state;
@@ -362,7 +378,7 @@ class PickUpStoreModalView extends React.Component {
 
     // initialFormValues has the latest sku details to be passed in step 2
     const initialFormValues = {
-      distance: distancesMap[0].id,
+      distance: distancesMap && distancesMap[0] && distancesMap[0].id,
       ...formValues,
     };
     /** allowBossStoreSearch flag allows searching in stores forcefully irrespective of
@@ -427,7 +443,7 @@ class PickUpStoreModalView extends React.Component {
             name={name}
             offerPrice={prices.offerPrice}
             onAddItemToCart={this.handleAddItemToCart}
-            onCloseClick={onCloseClick}
+            onCloseClick={this.onCloseClick}
             onSubmit={this.handleSearchAreaStoresSubmit}
             promotionalMessage={productInfo.promotionalMessage}
             promotionalPLCCMessage={productInfo.promotionalPLCCMessage}
@@ -455,12 +471,12 @@ class PickUpStoreModalView extends React.Component {
   }
 
   render() {
-    const { pickupHeading } = this.props;
-    return (
+    const { pickupHeading, isPickupModalOpen } = this.props;
+    return isPickupModalOpen ? (
       <Modal
         colSet={{ large: 4, medium: 8, small: 6 }}
         isOpen
-        onRequestClose={this.onCloseModal}
+        onRequestClose={this.onCloseClick}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         heading={pickupHeading}
@@ -470,7 +486,7 @@ class PickUpStoreModalView extends React.Component {
       >
         {this.renderNormal()}
       </Modal>
-    );
+    ) : null;
   }
 }
 

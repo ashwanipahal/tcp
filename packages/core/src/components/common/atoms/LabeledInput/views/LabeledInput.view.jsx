@@ -76,7 +76,7 @@ class LabeledInput extends React.Component {
     }),
     type: PropTypes.string,
     placeholder: PropTypes.string,
-    input: PropTypes.instanceOf(Element),
+    input: PropTypes.elementType,
   };
 
   static defaultProps = {

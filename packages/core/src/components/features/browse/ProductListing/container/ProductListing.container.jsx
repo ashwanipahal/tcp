@@ -5,6 +5,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
+import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
   getProductsSelect,
@@ -70,6 +71,7 @@ class ProductListingContainer extends React.PureComponent {
       categoryId,
       getProducts,
       onSubmit,
+      onPickUpOpenClick,
       ...otherProps
     } = this.props;
     return (
@@ -91,6 +93,7 @@ class ProductListingContainer extends React.PureComponent {
         lastLoadedPageNumber={lastLoadedPageNumber}
         getProducts={getProducts}
         onSubmit={onSubmit}
+        onPickUpOpenClick={onPickUpOpenClick}
         {...otherProps}
       />
     );
@@ -146,6 +149,9 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
     },
+    onPickUpOpenClick: payload => {
+      dispatch(openPickupModalWithValues(payload));
+    },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
     },
@@ -156,6 +162,7 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
   categoryId: PropTypes.string.isRequired,

@@ -39,7 +39,7 @@ class PickupStoreList extends React.Component {
     onCancel: PropTypes.func.isRequired,
 
     /** Function for enabling and disabling Add to bag sticky button */
-    resetAddToBagForBopis: PropTypes.func.isRequired,
+    // resetAddToBagForBopis: PropTypes.func.isRequired,
 
     /** array of added store in the account */
     cartBopisStoresList: PropTypes.shape({
@@ -104,7 +104,7 @@ class PickupStoreList extends React.Component {
       selectedStoreId,
       isBossSelected,
       addToCartError,
-      resetAddToBagForBopis,
+      // resetAddToBagForBopis,
       isBopisCtaEnabled,
       isBossCtaEnabled,
       allowBossStoreSearch,
@@ -149,12 +149,12 @@ class PickupStoreList extends React.Component {
       derivedStoresList = storesList;
     }
 
+    /*
     const isSelectedStoreInList =
       derivedStoresList.length &&
       !!derivedStoresList.find(store => store.basicInfo.id === selectedStoreId);
-
     resetAddToBagForBopis(isSelectedStoreInList);
-
+*/
     return (
       <div className="stores-info">
         {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (

@@ -1,7 +1,14 @@
-export const PICKUP_HEADING = 'Pick Up In Store';
+import { PICKUP_MODAL_REDUCER_PATTERN } from '../../../../constants/reducer.constants';
 
 export const ENTER_KEY_CODE = 13;
+export const PICKUP_MODAL_ACTIONS_CONSTANTS = {
+  PICKUP_MODAL_TOGGLE: `${PICKUP_MODAL_REDUCER_PATTERN}PICKUP_MODAL_TOGGLE`,
+  PICKUP_MODAL_CLOSE: `${PICKUP_MODAL_REDUCER_PATTERN}PICKUP_MODAL_CLOSE`,
+  PICKUP_MODAL_OPEN: `${PICKUP_MODAL_REDUCER_PATTERN}PICKUP_MODAL_OPEN`,
+};
 
+// Label Constants -
+export const PICKUP_HEADING = 'Pick Up In Store';
 export const EDIT = 'Edit';
 
 export const SKU_DETAILS = {
@@ -67,6 +74,7 @@ export const PICKUP_CTA_LABELS = {
 };
 
 export default {
+  PICKUP_MODAL_ACTIONS_CONSTANTS,
   PICKUP_HEADING,
   SKU_DETAILS,
   PICKUP_LABELS,

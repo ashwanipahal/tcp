@@ -55,7 +55,7 @@ export const APICONFIG_REDUCER_KEY = 'APIConfig';
 export const APICONFIG_ACTION_PATTERN = '@@APICONFIG-';
 
 // set api config reducer
-export const SESSIONCONFIG_REDUCER_KEY = 'Session';
+export const SESSIONCONFIG_REDUCER_KEY = 'session';
 export const SESSIONCONFIG_ACTION_PATTERN = '@@SessionConfig-';
 
 // Add/Update Credit Card reducer
@@ -128,6 +128,12 @@ export const BIRTHDAY_SAVING_LIST_REDUCER_KEY = 'BirthdaySavingsList';
 export const APPLY_NOW_MODAL_REDUCER_KEY = 'ApplyNowModal';
 export const APPLY_NOW_MODAL_REDUCER_PATTERN = '@@ApplyNowModal-';
 
+// Toggle Pickup modal..
+export const PICKUP_MODAL_REDUCER_KEY = 'PickupModal';
+export const PICKUP_MODAL_REDUCER_PATTERN = '@@PickupModal-';
+
+export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -151,6 +157,5 @@ export const REDUCER_ACTION_MAPPING = {
   [PRODUCT_TAB_LIST_REDUCER_KEY]: PRODUCT_TAB_LIST_ACTION_PATTERN,
   [NAVIGATION_REDUCER_KEY]: NAVIGATION_ACTION_PATTERN,
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
+  [PICKUP_MODAL_REDUCER_KEY]: PICKUP_MODAL_REDUCER_PATTERN,
 };
-
-export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

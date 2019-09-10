@@ -1,26 +1,15 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-/** @module ProductsGridItem
- * @summary renders a single product in a PLP.
- *
- * @author Gabriel Gomez
- * @author Miguel
- * @author Ben
- */
 import React from 'react';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
 import Button from '../../../../../../common/atoms/Button';
+import FulfillmentSection from '../../../../../../common/organisms/FulfillmentSection';
+import PickupStoreModal from '../../../../../../common/organisms/PickupStoreModal';
 import { getLocator } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
-
 // import { ProductRating } from './ProductRating';
-
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProductsGridItem.style';
-import {
-  getPromotionalMessage,
-  // validateBossEligibility,
-  // validateBopisEligibility,
-} from '../utils/utility';
+import { getPromotionalMessage } from '../utils/utility';
 
 import {
   ProductTitle,
@@ -209,14 +198,13 @@ class ProductsGridItem extends React.PureComponent {
     } = this.props;
     const { selectedColorProductId } = this.state;
     const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
-    onPickUpOpenClick(
+    onPickUpOpenClick({
       generalProductId,
-      { color: colorEntry && colorEntry.color.name },
-      selectedColorProductId,
-      generalProductId,
-      colorEntry.miscInfo.isBopisEligible,
-      colorEntry.miscInfo.isBossEligible
-    );
+      initialValues: { color: colorEntry && colorEntry.color.name },
+      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      colorProductId: selectedColorProductId,
+    });
   }
 
   handleChangeColor(colorProductId) {
@@ -238,25 +226,6 @@ class ProductsGridItem extends React.PureComponent {
     // eslint-disable-next-line react/destructuring-assignment
     this.state.pdpUrl = this.state.pdpUrl.replace(color, selectedColor);
     this.setState({ selectedColorProductId: colorProductId, currentImageIndex: 0 });
-  }
-
-  handleQuickBopisOpenClick() {
-    const {
-      item: {
-        colorsMap,
-        productInfo: { generalProductId },
-      },
-      onQuickBopisOpenClick,
-    } = this.props;
-
-    const { selectedColorProductId } = this.state;
-    const colorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
-    onQuickBopisOpenClick(
-      generalProductId,
-      { color: colorEntry && colorEntry.color.name },
-      selectedColorProductId,
-      generalProductId
-    );
   }
 
   render() {
@@ -525,6 +494,10 @@ class ProductsGridItem extends React.PureComponent {
             >
               {labels.addToBag}
             </Button>
+          </div>
+          <div>
+            <FulfillmentSection onPickupOpenClick={this.handlePickupOpenClick} />
+            <PickupStoreModal />
           </div>
 
           {/* {error && <ErrorMessage error={error} />} */}

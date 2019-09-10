@@ -44,7 +44,7 @@ class LabeledCheckbox extends React.Component {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     className: PropTypes.string,
-    input: PropTypes.instanceOf(Element),
+    input: PropTypes.elementType,
     showErrorIfUntouched: PropTypes.bool,
     showWarningIfUntouched: PropTypes.bool,
     disabled: PropTypes.bool,
