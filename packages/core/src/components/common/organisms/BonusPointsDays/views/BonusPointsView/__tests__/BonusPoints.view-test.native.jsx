@@ -5,9 +5,11 @@ import BonusPointsView from '../views/BonusPoints.view.native';
 describe('BonusPointsView', () => {
   it('should render correctly', () => {
     const labels = {
-      placeRewards: {
-        lbl_bonusPoints_placeRewardsBonus: 'bonus',
-        lbl_bonusPoints_placeRewardsPoints: 'points',
+      account: {
+        myPlaceRewards: {
+          lbl_bonusPoints_placeRewardsBonus: 'bonus',
+          lbl_bonusPoints_placeRewardsPoints: 'points',
+        },
       },
       global: {},
       checkout: {
