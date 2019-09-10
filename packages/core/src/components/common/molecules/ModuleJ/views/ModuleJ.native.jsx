@@ -8,6 +8,7 @@ import {
   HeaderContainer,
   ImageContainer,
   ButtonContainer,
+  MessageContainer,
 } from '../styles/ModuleJ.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
@@ -20,17 +21,19 @@ class ModuleJ extends React.PureComponent {
   render() {
     return (
       <Container>
-        <HeaderContainer>
-          <LinkText headerText={moduleJMock.moduleJ.composites.headerText} />
-        </HeaderContainer>
-        <PromoContainer>
-          <PromoBanner promoBanner={moduleJMock.moduleJ.composites.promoBanner} />
-        </PromoContainer>
+        <MessageContainer layout="layout2">
+          <HeaderContainer>
+            <LinkText headerText={moduleJMock.moduleJ.composites.headerText} />
+          </HeaderContainer>
+          <PromoContainer>
+            <PromoBanner promoBanner={moduleJMock.moduleJ.composites.promoBanner} />
+          </PromoContainer>
+        </MessageContainer>
         <ProductTabList
           onProductTabChange={this.onProductTabChange}
           categoryList={categoryListMock}
         />
-        <ImageContainer>
+        <ImageContainer layout="layout2">
           <Image
             url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg"
             height="300px"
