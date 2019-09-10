@@ -70,13 +70,20 @@ class HeaderNew extends React.PureComponent<Props> {
       <SafeAreaViewStyle>
         <Container data-locator={getLocator('global_headerpanel')}>
           <LeftSection>
-            <TouchableOpacity onPress={this.onBack} accessibilityRole="button">
+            <TouchableOpacity
+              accessible
+              onPress={this.onBack}
+              accessibilityRole="button"
+              accessibilityLabel="back button"
+            >
               <CustomIcon name={ICON_NAME.chevronLeft} size={backIconSize} color={backIconColor} />
             </TouchableOpacity>
           </LeftSection>
 
           <MiddleSection>
-            <TitleText numberOfLines={1}>{title}</TitleText>
+            <TitleText numberOfLines={1} accessibilityRole="text" accessibilityLabel={title}>
+              {title}
+            </TitleText>
           </MiddleSection>
 
           <RightSection>

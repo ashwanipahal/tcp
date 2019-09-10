@@ -1,11 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductListItem from '../views/ProductListItem.view.native';
+import { ListItemVanilla } from '../views/ProductListItem.view.native';
 
 describe('ProductListItem component', () => {
   const props = {
     item: {
-      colorsMap: [],
+      colorsMap: [
+        {
+          colorProductId: '3001084_IV',
+          imageName: '3001084_IV',
+          miscInfo: {},
+          color: {
+            name: 'TIDAL',
+            imagePath: '',
+          },
+        },
+      ],
       productInfo: {
         name: 'tcp',
       },
@@ -20,7 +30,7 @@ describe('ProductListItem component', () => {
     onFavorite: () => {},
   };
   it('should renders ProductListItem correctly', () => {
-    const component = shallow(<ProductListItem {...props} />);
+    const component = shallow(<ListItemVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

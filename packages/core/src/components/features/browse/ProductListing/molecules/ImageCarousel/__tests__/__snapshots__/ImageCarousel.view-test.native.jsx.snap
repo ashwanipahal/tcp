@@ -16,6 +16,7 @@ exports[`ProductAltImages component should renders ListItem correctly 1`] = `
   maxToRenderPerBatch={10}
   numColumns={1}
   onEndReachedThreshold={2}
+  onViewableItemsChanged={[Function]}
   pagingEnabled={true}
   refreshing={false}
   removeClippedSubviews={false}
@@ -23,6 +24,11 @@ exports[`ProductAltImages component should renders ListItem correctly 1`] = `
   scrollEventThrottle={50}
   showsHorizontalScrollIndicator={false}
   updateCellsBatchingPeriod={50}
+  viewabilityConfig={
+    Object {
+      "itemVisiblePercentThreshold": 50,
+    }
+  }
   windowSize={21}
 />
 `;
