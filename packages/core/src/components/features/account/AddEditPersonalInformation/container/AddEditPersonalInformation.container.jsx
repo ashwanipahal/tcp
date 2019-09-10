@@ -31,7 +31,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
     isEmployee: PropTypes.string.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
     onRequestClose: PropTypes.func.isRequired,
-    messageSateChangeAction: PropTypes.func.isRequired,
+    messageSuccessStateChangeAction: PropTypes.func.isRequired,
     toastMessage: PropTypes.func,
   };
 
@@ -42,8 +42,8 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.yearOptionsMap = getBirthDateOptionMap();
-    const { labels,messageSateChangeAction, ...otherProps } = this.props;
-    messageSateChangeAction(null);
+    const { labels, messageSuccessStateChangeAction, ...otherProps } = this.props;
+    messageSuccessStateChangeAction(null);
     this.initialValues = this.getInitialValues(otherProps);
   }
 
@@ -54,7 +54,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
         onRequestClose();
       } else this.goBackToProfile();
     }
-    if(errorMessage){
+    if (errorMessage) {
       toastMessage(errorMessage);
     }
   }
@@ -128,7 +128,7 @@ export class AddEditPersonalInformationContainer extends PureComponent {
       labels,
       isEmployee,
       formErrorMessage,
-      toastMessage
+      toastMessage,
     } = this.props;
 
     return (
@@ -168,7 +168,7 @@ export const mapDispatchToProps = dispatch => ({
   updateProfileAction: payload => {
     dispatch(updateProfile(payload));
   },
-  messageSateChangeAction: payload => {
+  messageSuccessStateChangeAction: payload => {
     dispatch(updateProfileSuccess(payload));
   },
   messageStateChangeAction: payload => {
