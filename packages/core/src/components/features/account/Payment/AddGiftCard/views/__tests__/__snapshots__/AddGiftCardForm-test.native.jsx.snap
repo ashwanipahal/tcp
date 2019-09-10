@@ -5,6 +5,7 @@ exports[`Add gift card form component render error message 1`] = `
   addGiftCardResponse="foo"
   change={[MockFunction]}
   handleSubmit={[Function]}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},
@@ -45,6 +46,7 @@ exports[`Add gift card form component render error message 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -92,6 +94,7 @@ exports[`Add gift card form component render error message 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -149,6 +152,7 @@ exports[`Add gift card form component render error message 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -200,32 +204,19 @@ exports[`Add gift card form component render error message 1`] = `
       </Styled(Text)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="white"
-        customStyle={Object {}}
         data-locator="gift-card-addcardbtn"
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
-        onPress={null}
-        text=""
-        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="black"
-        customStyle={Object {}}
         data-locator="gift-card-cancelbtn"
-        disableButton={false}
-        fullWidth=""
-        locator=""
         onPress={[Function]}
-        text=""
-        url=""
       />
     </Styled(View)>
   </View>
@@ -237,6 +228,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
   addGiftCardResponse={null}
   change={[MockFunction]}
   handleSubmit={[Function]}
+  keyboardShouldPersistTaps="handled"
   labels={
     Object {
       "common": Object {},
@@ -264,6 +256,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -311,6 +304,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
               "error": "",
               "touched": "",
             },
+            "onChangeText": [Function],
             "secureTextEntry": false,
             "showErrorIcon": true,
             "showSuccessCheck": false,
@@ -368,6 +362,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
                 "error": "",
                 "touched": "",
               },
+              "onChangeText": [Function],
               "secureTextEntry": false,
               "showErrorIcon": true,
               "showSuccessCheck": false,
@@ -419,32 +414,19 @@ exports[`Add gift card form component should render component correctly 1`] = `
       </Styled(Text)>
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="white"
-        customStyle={Object {}}
         data-locator="gift-card-addcardbtn"
-        disableButton={false}
         fill="BLUE"
-        fullWidth=""
-        locator=""
-        onPress={null}
-        text=""
-        url=""
       />
     </Styled(View)>
     <Styled(View)>
-      <Styled(CustomButton)
+      <Styled(WithTheme(CustomButton))
         buttonVariation="variable-width"
         color="black"
-        customStyle={Object {}}
         data-locator="gift-card-cancelbtn"
-        disableButton={false}
-        fullWidth=""
-        locator=""
         onPress={[Function]}
-        text=""
-        url=""
       />
     </Styled(View)>
   </View>

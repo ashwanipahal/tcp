@@ -15,6 +15,8 @@ export {
   createAPIConfig,
   switchAPIConfig,
   isAndroid,
+  getPixelRatio,
+  LAZYLOAD_HOST_NAME,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -33,4 +35,6 @@ export {
   isGymboree,
   getAddressFromPlace,
   formatAddress,
+  getLabelValue,
+  getBirthDateOptionMap,
 } from './utils';

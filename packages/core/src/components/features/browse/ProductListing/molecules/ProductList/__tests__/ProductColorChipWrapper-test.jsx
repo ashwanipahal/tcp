@@ -29,13 +29,6 @@ describe('ProductColorChipWrapperVanilla component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('ProductColorChipWrapper should call handlePreviousClick', () => {
-    const component = shallow(<ProductColorChipWrapperVanilla {...props} />);
-    component.setState({ firstItemIndex: 1 });
-    component.instance().handlePreviousClick();
-    expect(component.state('firstItemIndex')).toEqual(0);
-  });
-
   it('ProductColorChipWrapper should call handleNextClick', () => {
     const component = shallow(<ProductColorChipWrapperVanilla {...props} />);
     component.setState({ firstItemIndex: 2, maxVisibleItems: 2 });

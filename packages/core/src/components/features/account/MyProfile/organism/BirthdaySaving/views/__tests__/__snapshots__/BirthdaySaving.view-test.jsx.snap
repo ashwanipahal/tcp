@@ -2,9 +2,11 @@
 
 exports[`BirthdaySaving component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
-  ctaTitle="ADD BIRTHDAY INFO"
-  dataLocator="pi-addbirthdayinfo"
-  title="Birthday Savings"
+  ctaLink="/account?id=profile&subSection=birthday-savings"
+  ctaPath="/account/profile"
+  ctaTitle=""
+  dataLocator="birthdaySaving"
+  title=""
 >
   <Styled(BodyCopy)
     className={null}
@@ -29,17 +31,15 @@ exports[`BirthdaySaving component should render correctly 1`] = `
           }
         }
       >
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="p"
-          dataLocator="pi-addbirthdayinfo"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
+        <Connect(BirthdaySavings)
+          labels={
+            Object {
+              "lbl_profile_add_birthday_info": "",
+              "lbl_profile_birthday_saving_info": "",
+              "lbl_profile_birthday_savings": "",
+            }
+          }
+          view="read"
         />
       </Styled(Col)>
     </Styled(Row)>

@@ -19,7 +19,10 @@ export const LETTER_SPACINGS = {
   ls257: '2.57px',
   ls222: '2.22px',
   ls167: '1.67px',
+  ls071: '0.71px',
   normal: 'normal',
+  ls1: '1px',
+  ls2: '2px',
 };
 
 export const LINE_HEIGHTS = { normal: 'normal', lh115: '1.15', lh107: '1.07' };
@@ -43,6 +46,7 @@ export const FONT_SIZES = {
   fs36: '36px',
   fs32: '32px',
   fs28: '28px',
+  fs26: '26px',
   fs24: '24px',
   fs22: '22px',
   fs20: '20px',

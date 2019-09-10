@@ -73,17 +73,10 @@ exports[`PaymentTile component should render correctly 1`] = `
     validate={[Function]}
   />
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
-      color="white"
-      customStyle={Object {}}
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
-      locator=""
       onPress={[Function]}
-      text=""
-      url=""
     />
   </Styled(View)>
 </Styled(View)>

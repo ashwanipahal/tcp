@@ -56,7 +56,7 @@ export class RewardsPointsContainer extends React.PureComponent {
 }
 
 const commonLabels = state =>
-  state.Labels && state.Labels.account ? state.Labels.account.common : '';
+  state.Labels && state.Labels.global ? state.Labels.global.rewardPoints : '';
 
 const mapStateToProps = state => {
   return {
@@ -74,10 +74,10 @@ RewardsPointsContainer.propTypes = {
   totalRewards: PropTypes.number,
   plccUser: PropTypes.bool,
   labels: PropTypes.shape({
-    lbl_common_current_points: PropTypes.string,
-    lbl_common_heading: PropTypes.string,
-    lbl_common_next_reward: PropTypes.string,
-    lbl_common_currency: PropTypes.string,
+    lbl_rewardPoints_currentPoints: PropTypes.string,
+    lbl_rewardPoints_heading: PropTypes.string,
+    lbl_rewardPoints_nextReward: PropTypes.string,
+    lbl_rewardPoints_currency: PropTypes.string,
   }),
   tableView: PropTypes.bool,
 };
@@ -88,10 +88,10 @@ RewardsPointsContainer.defaultProps = {
   totalRewards: '',
   plccUser: false,
   labels: {
-    lbl_common_current_points: '',
-    lbl_common_heading: '',
-    lbl_common_next_reward: '',
-    lbl_common_currency: '',
+    lbl_rewardPoints_currentPoints: '',
+    lbl_rewardPoints_heading: '',
+    lbl_rewardPoints_nextReward: '',
+    lbl_rewardPoints_currency: '',
   },
   tableView: false,
 };

@@ -24,6 +24,11 @@ import CheckoutReducer from '@tcp/core/src/components/features/CnC/Checkout/cont
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
 import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
+import GetCandidReducer from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.reducer';
+import AddMailingAddressReducer from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.reducer';
+import UpdateProfileReducer from '@tcp/core/src/components/features/account/AddEditPersonalInformation/container/AddEditPersonalInformation.reducer';
+import MyProfileReducer from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.reducer';
+import LOGOUT_CONSTANTS from '@tcp/core/src/components/features/account/Logout/LogOut.constants';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -56,7 +61,12 @@ import {
   ADDEDITADDRESS_REDUCER_KEY,
   ADDRESS_VERIFICATION_REDUCER_KEY,
   TRACK_ORDER_REDUCER_KEY,
+  GET_CANDID_REDUCER_KEY,
   TOAST_REDUCER_KEY,
+  PRODUCT_TAB_LIST_REDUCER_KEY,
+  MAILING_ADDRESS_REDUCER_KEY,
+  UPDATE_PROFILE_REDUCER_KEY,
+  MY_PROFILE_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -65,6 +75,8 @@ import AddressBookReducer from '@tcp/core/src/components/features/account/Addres
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
+import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
+
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
 
@@ -78,9 +90,16 @@ const filteredProductListingReducer = createFilteredReducer(
   PRODUCT_LISTING_REDUCER_KEY
 );
 
+const filteredProductTabListReducer = createFilteredReducer(
+  ProductTabListReducer,
+  PRODUCT_TAB_LIST_REDUCER_KEY
+);
+
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
-const rootReducer = combineReducers({
+const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
+
+const appReducer = combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
@@ -105,7 +124,6 @@ const rootReducer = combineReducers({
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [COUPON_REDUCER_KEY]: CouponReducer,
   [AIRMILES_BANNER_REDUCER_KEY]: AirmilesBannerReducer,
-
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
@@ -114,6 +132,19 @@ const rootReducer = combineReducers({
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [TRACK_ORDER_REDUCER_KEY]: TrackOrderReducer,
+  [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
+  [GET_CANDID_REDUCER_KEY]: filteredGetCandidReducer,
+  [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
+  [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
+  [MY_PROFILE_REDUCER_KEY]: MyProfileReducer,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === LOGOUT_CONSTANTS.USER_LOGOUT) {
+    // eslint-disable-next-line no-param-reassign
+    delete state.CouponsAndPromos; // reset the coupon and promo state
+  }
+  return appReducer(state, action);
+};
 
 export default rootReducer;

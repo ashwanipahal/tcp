@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gift Cards Container should render Gift Card view section 1`] = `
+<Styled(GiftCards)
+  applyExistingGiftCardToOrder={[Function]}
+  giftCardErrors={Object {}}
+  giftCardList={Array []}
+  handleRemoveGiftCard={[MockFunction]}
+  labels={Object {}}
+  orderBalanceTotal={50}
+  toastMessage={[MockFunction]}
+/>
+`;

@@ -12,15 +12,10 @@ import {
 
 describe('#BonusPointsDays Selectors', () => {
   it('#getLabels should return labels', () => {
-    const LabelsState = fromJS({
-      account: {
-        myPlaceRewards: {},
-      },
-    });
     const state = {
-      Labels: LabelsState,
+      Labels: {},
     };
-    expect(getLabels(state)).toEqual(LabelsState.account);
+    expect(getLabels(state)).toEqual(state.Labels);
   });
   it('#getBonusData should return bonus data ', () => {
     const BonusPointsDaysState = fromJS({
@@ -73,8 +68,8 @@ describe('#BonusPointsDays Selectors', () => {
   it('#getBonusDetailsContentIdSelector should return content ID', () => {
     const state = {
       Labels: {
-        account: {
-          myPlaceRewards: {
+        global: {
+          placeRewards: {
             referred: [
               {
                 name: 'Bonus Points Days Details',

@@ -1,3 +1,5 @@
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
 
 export const initCheckoutAction = () => ({
@@ -11,6 +13,11 @@ export const submitPickupSection = payload => ({
 
 export const checkoutSetCartData = payload => ({
   type: 'CHECKOUT_SET_CART_DATA',
+  payload,
+});
+
+export const updateShipmentMethodSelection = payload => ({
+  type: constants.CHECKOUT_UPDATE_SHIPMENT_METHOD_SELECTION,
   payload,
 });
 
@@ -49,9 +56,9 @@ export function getSetShippingValuesActn(shipping) {
   };
 }
 
-export function getSetBillingValuesActn(shipping) {
+export function getSetBillingValuesActn(billing) {
   return {
-    shipping,
+    billing,
     type: 'CHECKOUT_VALUES_SET_BILLING',
   };
 }
@@ -268,5 +275,63 @@ export const emailSignupStatus = payload => {
 export const routeToPickupPage = () => {
   return {
     type: constants.ROUTE_TO_PICKUP_PAGE,
+  };
+};
+
+// export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
+export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
+
+export const updateShippingAddress = payload => {
+  return {
+    type: constants.UPDATE_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+export function getSetIsBillingVisitedActn(isBillingVisited) {
+  return {
+    isBillingVisited,
+    type: constants.CHECKOUT_FLAGS_SET_BILLING_VISITED,
+  };
+}
+
+export function submitBillingSection(payload) {
+  return {
+    payload,
+    type: constants.SUBMIT_BILLING_SECTION,
+  };
+}
+
+export const setGiftCardError = payload => {
+  return {
+    type: constants.SET_GIFTCARD_ERROR,
+    payload,
+  };
+};
+
+export const addNewShippingAddress = payload => {
+  return {
+    type: constants.ADD_NEW_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+
+export const setOnFileAddressKey = payload => {
+  // when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
+  return {
+    type: constants.SET_ON_FILE_ADDRESS_KEY,
+    payload,
+  };
+};
+export const resetGiftCardError = () => {
+  return {
+    type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setOrderBalanceTotal = payload => {
+  return {
+    type: constants.SET_ORDER_TOTAL,
+    payload,
   };
 };

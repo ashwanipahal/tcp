@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
+import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
+import { getLabelValue } from '@tcp/core/src/utils';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
@@ -34,7 +36,6 @@ class AccountOverview extends PureComponent<Props> {
       getComponentId: {
         login: '',
         createAccount: '',
-        trackOrder: '',
         favorites: '',
       },
     };
@@ -49,21 +50,20 @@ class AccountOverview extends PureComponent<Props> {
           navigation={navigation}
           isUserLoggedIn={isUserLoggedIn}
           variation={getComponentId.favorites && 'favorites'}
+          showLogin={this.showloginModal}
+          showCheckoutModal={this.showCheckoutModal}
+          resetAccountOverViewState={this.resetAccountOverViewState}
         />
       );
     }
     if (getComponentId.createAccount) {
       componentContainer = (
         <CreateAccount
+          showCheckoutModal={this.showCheckoutModal}
           showLogin={this.showloginModal}
           navigation={navigation}
           onRequestClose={this.toggleModal}
         />
-      );
-    }
-    if (getComponentId.trackOrder) {
-      componentContainer = (
-        <TrackOrderContainer navigation={navigation} onRequestClose={this.toggleModal} />
       );
     }
     return <React.Fragment>{componentContainer}</React.Fragment>;
@@ -77,6 +77,14 @@ class AccountOverview extends PureComponent<Props> {
     });
   };
 
+  showCheckoutModal = () => {
+    this.setState({
+      getComponentId: {
+        createAccount: true,
+      },
+    });
+  };
+
   toggleModal = ({ getComponentId }) => {
     this.setState(state => ({
       showModal: !state.showModal,
@@ -84,11 +92,26 @@ class AccountOverview extends PureComponent<Props> {
         ? {
             login: getComponentId.login,
             createAccount: getComponentId.createAccount,
-            trackOrder: getComponentId.trackOrder,
             favorites: getComponentId.favorites,
           }
         : '',
     }));
+  };
+
+  resetAccountOverViewState = () => {
+    this.setState({
+      showModal: false,
+      getComponentId: {
+        login: '',
+        createAccount: '',
+        favorites: '',
+      },
+    });
+  };
+
+  showTrackOrderModal = () => {
+    const { openTrackOrder } = this.props;
+    openTrackOrder({ state: true });
   };
 
   getModalHeader = (getComponentId, labels) => {
@@ -99,19 +122,15 @@ class AccountOverview extends PureComponent<Props> {
     if (getComponentId.createAccount) {
       header = labels.lbl_overview_createAccount;
     }
-    if (getComponentId.trackOrder) {
-      header = labels.lbl_overview_trackYourOrder;
-    }
     return header;
   };
 
   render() {
-    const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
+    const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
     const { showModal, getComponentId } = this.state;
     const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
-    const isTrackOrder = getComponentId.trackOrder;
 
     return (
       <View style={viewContainerStyle}>
@@ -120,10 +139,17 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={labels.lbl_overview_myPlaceRewardsHeading}>
               <MyPlaceRewardsOverviewTile
                 labels={labels}
+                commonLabels={commonLabels}
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={labels.lbl_overview_myWalletHeading} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myWalletHeading')}>
+              <MyWalletTile
+                labels={labels}
+                commonLabels={commonLabels}
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
             <Panel title={labels.lbl_overview_earnPointsHeading} />
             <Panel title={labels.lbl_overview_ordersHeading} />
             <Panel title={labels.lbl_overview_profileInformationHeading}>
@@ -159,7 +185,6 @@ class AccountOverview extends PureComponent<Props> {
               <CustomButton
                 className="classBtn"
                 color={colorPallete.text.secondary}
-                fill="WHITE"
                 id="createAccount"
                 type="submit"
                 width="150px"
@@ -173,14 +198,12 @@ class AccountOverview extends PureComponent<Props> {
                       login: false,
                       createAccount: true,
                       favorites: false,
-                      trackOrder: false,
                     },
                   })
                 }
               />
 
               <CustomButton
-                color={colorPallete.white}
                 className="classBtn"
                 fill="BLUE"
                 id="login"
@@ -196,7 +219,6 @@ class AccountOverview extends PureComponent<Props> {
                       login: true,
                       createAccount: false,
                       favorites: false,
-                      trackOrder: false,
                     },
                   })
                 }
@@ -208,10 +230,8 @@ class AccountOverview extends PureComponent<Props> {
                 isOpen={showModal}
                 onRequestClose={this.toggleModal}
                 heading={modalHeaderLbl}
-                horizontalBar={!isTrackOrder}
-                headingAlign={isTrackOrder ? 'center' : ''}
                 headingFontFamily="secondary"
-                fontSize={isTrackOrder ? 'fs22' : 'fs16'}
+                fontSize="fs16"
               >
                 <SafeAreaView>
                   <ModalViewWrapper>
@@ -260,17 +280,7 @@ class AccountOverview extends PureComponent<Props> {
             <Panel
               title={labels.lbl_overview_trackYourOrder}
               isVariationTypeLink
-              handleComponentChange={e =>
-                this.toggleModal({
-                  e,
-                  getComponentId: {
-                    login: false,
-                    createAccount: false,
-                    trackOrder: true,
-                    favorites: false,
-                  },
-                })
-              }
+              handleComponentChange={this.showTrackOrderModal}
             />
             <UnderlineStyle />
             <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
@@ -280,6 +290,7 @@ class AccountOverview extends PureComponent<Props> {
         )}
 
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
+        <TrackOrderContainer handleToggle={this.toggleModal} navigation={navigation} />
         <UnderlineStyle />
       </View>
     );
@@ -290,6 +301,7 @@ AccountOverview.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   handleComponentChange: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  commonLabels: PropTypes.shape({}),
 };
 
 AccountOverview.defaultProps = {
@@ -317,6 +329,7 @@ AccountOverview.defaultProps = {
     lbl_overview_myWalletHeading: '',
     lbl_overview_myPlaceRewardsHeading: '',
   },
+  commonLabels: {},
 };
 
 export default AccountOverview;

@@ -1,34 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
+exports[`PickupMainContactEditFormVanilla component should renders correctly when data are present 1`] = `
 <View>
-  <View
-    className="header"
-  >
+  <Styled(View)>
     <Styled(BodyCopy)
+      color="gray.900"
       fontFamily="primary"
-      fontSize="fs26"
+      fontSize="fs28"
       fontWeight="regular"
     />
-    <View
-      className="EditAnchor"
-    >
+    <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
-        anchorVariation="secondary"
+        anchorVariation="primary"
+        color="gray.900"
         customStyle={Object {}}
         fontSize="fs12"
         href="#"
         locator=""
         noLink={true}
-        noUnderline={true}
         onPress={[Function]}
         target="_blank"
         text=""
+        underline={true}
         visible={false}
       />
-    </View>
-  </View>
+    </Styled(View)>
+  </Styled(View)>
+  <ModalNative
+    horizontalBar={false}
+    isOpen={true}
+    onRequestClose={[MockFunction]}
+  >
+    <Styled(View)>
+      <Styled(ContactFormFields)
+        className="pick-up-input toggle"
+        labels={Object {}}
+        showEmailAddress={false}
+        showPhoneNumber={true}
+      />
+      <Styled(WithTheme(CustomButton))
+        buttonVariation="variable-width"
+        color="white"
+        fill="BLUE"
+      />
+    </Styled(View)>
+  </ModalNative>
+</View>
+`;
+
+exports[`PickupMainContactEditFormVanilla component should renders correctly when data not present 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="regular"
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        color="gray.900"
+        customStyle={Object {}}
+        fontSize="fs12"
+        href="#"
+        locator=""
+        noLink={true}
+        onPress={[Function]}
+        target="_blank"
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(PickUpContactDisplay)
+    formData={Object {}}
+  />
+</View>
+`;
+
+exports[`PickupMainContactEditFormVanilla component should renders on click 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="regular"
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        color="gray.900"
+        customStyle={Object {}}
+        fontSize="fs12"
+        href="#"
+        locator=""
+        noLink={true}
+        onPress={[Function]}
+        target="_blank"
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
   <Styled(PickUpContactDisplay)
     formData={Object {}}
   />

@@ -5,6 +5,7 @@ import Row from '../../../../common/atoms/Row';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import styles from '../styles/AddedToBagViewPoints.style';
 import withStyles from '../../../../common/hoc/withStyles';
+import { isCanada } from '../../../../../utils';
 
 const getModifiedString = (labels, totalItems) => {
   const subHeading = `<span>${labels.bagSubTotal.replace('#items', `${totalItems}`)}</span>`;
@@ -14,7 +15,18 @@ const getModifiedString = (labels, totalItems) => {
   );
 };
 
-const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
+const showPoints = userPoints => {
+  return userPoints !== 0 && !isCanada();
+};
+
+const getPointsColor = isPlcc => {
+  if (isPlcc) {
+    return 'blue.B100';
+  }
+  return 'orange.800';
+};
+
+const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc }) => {
   const {
     itemPrice,
     itemPoints,
@@ -35,7 +47,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${itemPrice || 0}`}
         </Col>
       </Row>
-      {itemPoints !== 0 && (
+      {showPoints(userPoints) && (
         <Row>
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
@@ -47,7 +59,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-pointsonitem"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {itemPoints || 0}
@@ -68,7 +80,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           {`$${bagSubTotal || 0}`}
         </Col>
       </Row>
-      {userPoints !== 0 && (
+      {showPoints(userPoints) && (
         <Row className="row-padding">
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
@@ -80,7 +92,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
               data-locator="addedtobag-totalrewardpoints"
               fontFamily="secondary"
               className="text-value"
-              color="orange.800"
+              color={getPointsColor(isPlcc)}
               fontWeight="extrabold"
             >
               {userPoints || 0}
@@ -88,24 +100,26 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           </Col>
         </Row>
       )}
-      <Row className="row-padding">
-        <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          <BodyCopy fontFamily="secondary" fontWeight="extrabold">
-            {labels.totalNextRewards}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy
-            data-locator="addedtobag-totalpointsnextreward"
-            fontFamily="secondary"
-            className="text-value"
-            color="orange.800"
-            fontWeight="extrabold"
-          >
-            {pointsToNextReward || 0}
-          </BodyCopy>
-        </Col>
-      </Row>
+      {!isCanada() && (
+        <Row className="row-padding">
+          <Col colSize={{ large: 9, small: 4, medium: 6 }}>
+            <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+              {labels.totalNextRewards}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 3, small: 2, medium: 2 }}>
+            <BodyCopy
+              data-locator="addedtobag-totalpointsnextreward"
+              fontFamily="secondary"
+              className="text-value"
+              color={getPointsColor(isPlcc)}
+              fontWeight="extrabold"
+            >
+              {pointsToNextReward || 0}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
     </BodyCopy>
   );
 };
@@ -114,6 +128,7 @@ AddedToBagViewPoints.propTypes = {
   className: PropTypes.string.isRequired,
   pointsSummary: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
+  isPlcc: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBagViewPoints, styles);

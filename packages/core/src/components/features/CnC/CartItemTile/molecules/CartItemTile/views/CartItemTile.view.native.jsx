@@ -44,6 +44,26 @@ const getItemStatus = (productDetail, labels) => {
   }
   return <></>;
 };
+const getCartRadioButtons = (
+  productDetail,
+  labels,
+  itemIndex,
+  openedTile,
+  setSelectedProductTile
+) => {
+  if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
+    return (
+      <CartItemRadioButtons
+        productDetail={productDetail}
+        labels={labels}
+        index={itemIndex}
+        openedTile={openedTile}
+        setSelectedProductTile={setSelectedProductTile}
+      />
+    );
+  }
+  return <></>;
+};
 const getEditError = (productDetail, labels) => {
   if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
     return (
@@ -115,9 +135,16 @@ class ProductInformation extends React.Component {
     );
   };
 
+  onSwipeComplete = swipe => {
+    const { swipedElement, setSwipedElement } = this.props;
+    if (swipedElement && swipedElement !== swipe) {
+      swipedElement.recenter();
+    }
+    setSwipedElement(swipe);
+  };
+
   render() {
     const { productDetail, labels, itemIndex, openedTile, setSelectedProductTile } = this.props;
-
     return (
       <Swipeable
         onRef={ref => {
@@ -126,6 +153,9 @@ class ProductInformation extends React.Component {
         rightButtons={[this.rightButton()]}
         rightButtonWidth={200}
         leftButtons={[null]}
+        onSwipeComplete={(event, gestureState, swipe) => {
+          this.onSwipeComplete(swipe);
+        }}
       >
         <MainWrapper>
           <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
@@ -298,6 +328,7 @@ class ProductInformation extends React.Component {
               </ProductSubDetails>
               <EditButton
                 onPress={() => {
+                  this.onSwipeComplete(this.swipeable);
                   return this.swipeable.toggle('right');
                 }}
               >
@@ -305,13 +336,13 @@ class ProductInformation extends React.Component {
               </EditButton>
             </ProductDescription>
           </OuterContainer>
-          <CartItemRadioButtons
-            productDetail={productDetail}
-            labels={labels}
-            index={itemIndex}
-            openedTile={openedTile}
-            setSelectedProductTile={setSelectedProductTile}
-          />
+          {getCartRadioButtons(
+            productDetail,
+            labels,
+            itemIndex,
+            openedTile,
+            setSelectedProductTile
+          )}
         </MainWrapper>
       </Swipeable>
     );
@@ -325,11 +356,14 @@ ProductInformation.propTypes = {
   itemIndex: PropTypes.number,
   openedTile: PropTypes.number,
   setSelectedProductTile: PropTypes.func.isRequired,
+  swipedElement: PropTypes.shape({}),
+  setSwipedElement: PropTypes.func.isRequired,
 };
 ProductInformation.defaultProps = {
   productDetail: {},
   labels: {},
   itemIndex: 0,
   openedTile: 0,
+  swipedElement: null,
 };
 export default ProductInformation;

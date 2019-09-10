@@ -114,6 +114,15 @@ export const getAssociateId = createSelector(
   state => state && state.get('associateId')
 );
 
+/**
+ * @function getChildren
+ * This function will return the children information from the redux store
+ */
+export const getChildren = createSelector(
+  getUserState,
+  state => state && state.get('children')
+);
+
 export const getAirmilesDetails = createSelector(
   getAirmilesDataState,
   state => state && state.get('accountNumber')
@@ -144,12 +153,12 @@ export const getProfileInfoTileData = createSelector(
     let firstName;
     let lastName;
     let emailAddress;
+    let phoneNumber;
     if (personalInformation) {
       firstName = personalInformation.get('firstName');
       lastName = personalInformation.get('lastName');
-      emailAddress =
-        personalInformation.get('emailAddress') &&
-        personalInformation.get('emailAddress').toLowerCase();
+      phoneNumber = personalInformation.get('phoneNumber');
+      emailAddress = personalInformation.get('emailAddress');
     }
     const rewardsAccountNumber = rewards ? rewards.get('accountNumber') : null;
     const addressTemp = mailingAddress ? mailingAddress.get('address') : null;
@@ -157,11 +166,17 @@ export const getProfileInfoTileData = createSelector(
     return {
       firstName,
       lastName,
+      phoneNumber,
       emailAddress,
       rewardsAccountNumber,
       address,
     };
   }
+);
+
+export const getQuestionsList = createSelector(
+  getSurveyState,
+  state => state && state.get('questions')
 );
 
 export const getPercentageIncrement = () => ({

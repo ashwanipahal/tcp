@@ -29,38 +29,24 @@ exports[`AccountOverview component should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       className="classBtn"
       color="#575757"
-      customStyle={Object {}}
       data-locator=""
-      disableButton={false}
-      fill="WHITE"
-      fullWidth=""
       id="createAccount"
-      locator=""
       onPress={[Function]}
-      text=""
       type="submit"
-      url=""
       width="150px"
     />
-    <Styled(CustomButton)
+    <Styled(WithTheme(CustomButton))
       buttonVariation="variable-width"
       className="classBtn"
-      color="#fff"
-      customStyle={Object {}}
       data-locator=""
-      disableButton={false}
       fill="BLUE"
-      fullWidth=""
       id="login"
-      locator=""
       onPress={[Function]}
-      text=""
       type="submit"
-      url=""
       width="150px"
     />
   </Styled(View)>
@@ -141,6 +127,9 @@ exports[`AccountOverview component should render correctly 1`] = `
     isVariationTypeLink={true}
   />
   <Styled(View) />
+  <Connect(TrackOrderContainer)
+    handleToggle={[Function]}
+  />
   <Styled(View) />
 </View>
 `;

@@ -7,10 +7,12 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import invariant from 'invariant';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import DropdownListStyle from '../DropdownList.style';
 import Button from '../../../../../../common/atoms/Button';
 import { getLocator } from '../../../../../../../utils';
+import config from '../DropDownList.config';
 
 // TODO Fix this import invariant from './node_modules/invariant';
 import cssClassName from '../../utils/cssClassName';
@@ -26,7 +28,7 @@ const PROP_TYPES = {
    * <code>'-highlighted'</code>: the CSS class to use for a highlighted
    * <code>'-disabledOption'</code>: the CSS class to use for a disabled option
    *
-   * Please note that the classes for selected, highlited and disabled elements will be added (instead of replace), as needed, to the item class
+   * Please note that the classes for selected, highlighted and disabled elements will be added (instead of replace), as needed, to the item class
    */
   classNamePrefix: PropTypes.string.isRequired,
 
@@ -69,6 +71,7 @@ const PROP_TYPES = {
   query: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  type: PropTypes.string,
 };
 
 class DropdownList extends React.Component {
@@ -112,8 +115,11 @@ class DropdownList extends React.Component {
         // look for last enabled item in optionsMap
         return DropdownList.getFirstEnabledIndex(optionsMap, optionsMap.length - 1, -1);
       default:
-        // TODO Fix this invariant(true, `${this.displayName}: unknown destination of highlited option ${direction}`);
-        return true; // eslint-disable-line no-useless-return
+        invariant(
+          true,
+          `${this.displayName}: unknown destination of highlighted option ${direction}`
+        );
+        return true;
     }
   }
   // --------------- end of static methods --------------- //
@@ -154,7 +160,7 @@ class DropdownList extends React.Component {
     this.highlightedRef = ref;
   }
 
-  // called to scroll this.itemsListRef to bring this.itemsListRef into view (i.e. to show the highlited item)
+  // called to scroll this.itemsListRef to bring this.itemsListRef into view (i.e. to show the highlighted item)
   scrollToHighlighted() {
     if (this.highlightedRef) {
       const itemsListRect = this.itemsListRef.getBoundingClientRect();
@@ -184,26 +190,36 @@ class DropdownList extends React.Component {
       highlightedIndex,
       dataLocator,
       labels,
+      type,
     } = this.props;
     if (optionsMap.length < 0) return null;
 
-    const selectedClassStr = ` item-selected ${classNamePrefix}-selected`;
-    const highlightedClassStr = ` item-highlighted ${classNamePrefix}-highlighted`;
+    const selectedClassStr = ` item-select ${classNamePrefix}-selected`;
+    const highlightedClassStr = ` item-highlighted ${classNamePrefix}-highlighted sort-item-highlighted`;
     const disabledClassStr = ` item-disabledOption ${classNamePrefix}-disabledOption`;
     const isMultipleSElections = Array.isArray(selectedIndex) && selectedIndex.length > 0;
     const MAX_FILTER_OPTION_FOR_COLUMN = 27;
+    const { sortType } = config;
+    let columnClass = '';
+    const optionLength = optionsMap.length;
+
+    columnClass =
+      optionsMap.length <= MAX_FILTER_OPTION_FOR_COLUMN ? ' item-list-column ' : ' item-list-row ';
+
+    if (optionLength === 9) {
+      columnClass = ' item-column ';
+    }
+
     return (
-      <div className={`${className} common-dropdown`}>
-        <div className={cssClassName('item-list-wrapper')}>
+      <div className={`${className} common-dropdown sort-dropdown-wrapper`}>
+        <div className={cssClassName('item-list-wrapper sort-list-wrapper')}>
           <ul
             ref={this.captureItemsListRef}
             className={cssClassName(
               'item-list-common ',
               classNamePrefix,
               '-items-list',
-              optionsMap.length <= MAX_FILTER_OPTION_FOR_COLUMN
-                ? ' item-list-column '
-                : ' item-list-row '
+              columnClass
             )}
           >
             {optionsMap.map((item, index) => (
@@ -222,8 +238,23 @@ class DropdownList extends React.Component {
                 facetName={facetName}
                 value={item.title}
                 isAutosuggestAnalytics={autosuggestAnalytics}
+                dataLocator={
+                  index === selectedIndex || (isMultipleSElections && selectedIndex[index])
+                    ? `${getLocator(
+                        `plp_filter_${dataLocator
+                          .toLowerCase()
+                          .split(' ')
+                          .join('_')}_option_`
+                      )}${item.value}_selected`
+                    : `${getLocator(
+                        `plp_filter_${dataLocator
+                          .toLowerCase()
+                          .split(' ')
+                          .join('_')}_option_`
+                      )}${item.value}_unselected`
+                }
                 className={cssClassName(
-                  'item-common ',
+                  'item-common sort-item-list ',
                   classNamePrefix,
                   '-item',
                   {
@@ -238,16 +269,18 @@ class DropdownList extends React.Component {
               </SelectItem>
             ))}
           </ul>
-          <Button
-            buttonVariation="fixed-width"
-            type="submit"
-            fill="BLACK"
-            color="WHITE"
-            className={cssClassName('apply-button')}
-            data-locator={getLocator(`plp_filter_${dataLocator}_apply`)}
-          >
-            {`${labels.lbl_apply}`}
-          </Button>
+          {type !== sortType && (
+            <Button
+              buttonVariation="fixed-width"
+              type="submit"
+              fill="BLACK"
+              color="WHITE"
+              className={cssClassName('apply-button')}
+              data-locator={getLocator(`plp_filter_${dataLocator}_apply`)}
+            >
+              {`${labels.lbl_apply}`}
+            </Button>
+          )}
         </div>
       </div>
     );
@@ -259,6 +292,7 @@ DropdownList.propTypes = PROP_TYPES;
 DropdownList.defaultProps = {
   selectedIndex: '',
   labels: {},
+  type: '',
 };
 
 export default withStyles(DropdownList, DropdownListStyle);

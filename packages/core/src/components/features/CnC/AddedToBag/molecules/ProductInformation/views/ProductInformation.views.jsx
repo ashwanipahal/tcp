@@ -19,7 +19,12 @@ const ProductInformation = ({ data, labels, quantity }: Props) => {
   return (
     <ProductInformationStyle>
       <Row tagName="ul" className="product">
-        <Col tagName="li" key="productDetails" colSize={{ small: 2, medium: 2, large: 3 }}>
+        <Col
+          tagName="li"
+          key="productDetails"
+          className="product-logo"
+          colSize={{ small: 2, medium: 2, large: 3 }}
+        >
           <Image
             alt="Product"
             className="product-image"

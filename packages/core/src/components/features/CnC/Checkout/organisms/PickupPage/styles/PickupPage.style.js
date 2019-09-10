@@ -26,13 +26,32 @@ const styles = css`
   .checkoutPickupForm {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
-  .pickUpContact {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .pickUpContact {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
   }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .pickUpContact {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .pickUpContact {
+      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+  }
+
   .pick-up-form-container,
   .mail-signup-container,
   .pickUpAlternate-container {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   }
   .buttonContainer {
     display: flex;

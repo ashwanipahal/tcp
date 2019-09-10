@@ -11,6 +11,14 @@ const styles = css`
     box-sizing: border-box;
     background-color: ${props => props.theme.colors.WHITE};
   }
+  .tooltip-bubble {
+    min-width: 246px;
+  }
+  .airmilesRow {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
   .circle-info-image {
     width: 15px;
   }
@@ -31,9 +39,17 @@ const styles = css`
       flex-direction: column;
     }
   }
-
+  .editButton {
+    margin-top: 26px;
+  }
+  .editCursor {
+    margin-top: 2px;
+    cursor: pointer;
+  }
+  .disabledText {
+    text-align: left;
+  }
   .input-fields-wrapper {
-    padding-right: 8px;
     flex: 1;
 
     input {
@@ -43,6 +59,16 @@ const styles = css`
   }
   .airmilesBannerInput {
     position: relative;
+  }
+  .airmileBannerTooltip {
+    position: absolute;
+    right: -10px;
+    width: 30px;
+    top: 27px;
+  }
+  .info-icon-img-wrapper {
+    display: inline-block;
+    width: 15px;
   }
   .coupon_submit_button {
     display: flex;

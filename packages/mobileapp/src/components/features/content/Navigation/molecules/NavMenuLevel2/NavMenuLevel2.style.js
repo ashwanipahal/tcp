@@ -1,7 +1,25 @@
 import styled from 'styled-components/native';
+import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
+
+/**
+ * getPromoBadgePadding
+ * This method returns the padding according to devices ( Android & ISO) .
+ * To manage the different device pixel for xxxhdpi , xhdpi , xxhdpi.
+ */
+const getPromoBadgePadding = props => {
+  const { theme } = props;
+  if (getPixelRatio() === 'xxxhdpi' || getPixelRatio() === 'xhdpi') {
+    return ` padding: ${theme.spacing.ELEM_SPACING.MED} 0
+    ${theme.spacing.ELEM_SPACING.MED} ${theme.spacing.ELEM_SPACING.LRG};`;
+  }
+  return `
+  padding: ${theme.spacing.ELEM_SPACING.LRG} 0
+  ${theme.spacing.ELEM_SPACING.LRG} ${theme.spacing.ELEM_SPACING.XL};
+  `;
+};
 
 export const TitleContainer = styled.View`
-  background: ${props => props.theme.colors.PRIMARY.COLOR1};
+  background: ${props => props.theme.colorPalette.primary.light};
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG}
     ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
@@ -17,11 +35,11 @@ export const ItemView = styled.TouchableOpacity`
 `;
 
 export const ItemViewWithHeading = styled.TouchableOpacity`
+  width: 100%;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
-    ${props => props.theme.spacing.ELEM_SPACING.LRG} ${props => props.theme.spacing.ELEM_SPACING.XL};
+  ${props => getPromoBadgePadding(props)};
 `;
 
 export const HeadingContainer = styled.View`

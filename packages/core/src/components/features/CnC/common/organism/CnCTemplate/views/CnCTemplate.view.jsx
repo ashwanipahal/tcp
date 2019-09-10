@@ -16,6 +16,7 @@ const CnCTemplate = ({
   showLeftSection,
   className,
   header: Header,
+  isGuest,
 }) => {
   return (
     <section className={className}>
@@ -31,9 +32,11 @@ const CnCTemplate = ({
           <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
             <OrderLedgerContainer />
             {BagActions && <BagActions />}
-            <div className="bonusPointsDaysWrapper">
-              <BonusPointsDays enableApplyCta />
-            </div>
+            {!isGuest && (
+              <div className="bonusPointsDaysWrapper elem-mb-MED">
+                <BonusPointsDays showAccordian={false} enableApplyCta />
+              </div>
+            )}
             <AirmilesBanner />
             <CouponAndPromos />
           </Col>
@@ -50,6 +53,7 @@ CnCTemplate.propTypes = {
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
+  isGuest: PropTypes.bool.isRequired,
 };
 
 CnCTemplate.defaultProps = {

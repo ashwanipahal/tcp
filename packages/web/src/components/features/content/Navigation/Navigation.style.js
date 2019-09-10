@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
-  position: relative;
+  &.navigation {
+    position: relative;
+  }
 `;

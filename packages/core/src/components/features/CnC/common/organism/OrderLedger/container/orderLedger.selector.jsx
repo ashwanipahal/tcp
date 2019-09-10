@@ -47,8 +47,8 @@ export const getLedgerSummaryData = state => {
 };
 export const getOrderLedgerLabels = state => {
   const {
-    bag: {
-      bagOverview: {
+    checkout: {
+      bagPage: {
         lbl_orderledger_items: itemsLabel,
         lbl_orderledger_coupons: couponsLabel,
         lbl_orderledger_promotions: promotionsLabel,
@@ -60,8 +60,8 @@ export const getOrderLedgerLabels = state => {
         lbl_orderledger_totalsavings: totalSavingsLabel,
         lbl_orderledger_tooltiptext: tooltipText,
         lbl_orderledger_free: free,
-      },
-    },
+      } = {},
+    } = {},
   } = state.Labels;
 
   return {

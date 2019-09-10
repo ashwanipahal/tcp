@@ -17,7 +17,7 @@ const NavigationBar = styled.View`
 const NavTitle = styled.Text``;
 
 const PickUpHeading = styled.Text`
-  font-size: ${props => props.theme.typography.fontSizes.fs26};
+  font-size: ${props => props.theme.typography.fontSizes.fs28};
   font-family: ${props => props.theme.typography.fonts.primary};
   color: ${props => props.theme.colors.TEXT.DARK};
 `;
@@ -25,7 +25,7 @@ const PickUpHeading = styled.Text`
 const PickupError = styled.View``;
 
 const PickupContainer = styled.View`
-  margin: 0px;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 const PickUpForm = styled.View`

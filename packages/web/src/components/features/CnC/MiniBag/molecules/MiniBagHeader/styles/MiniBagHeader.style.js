@@ -6,27 +6,52 @@ export default css`
     height: 31px;
     padding-right: 0;
     padding-left: 0;
-    justify-content: center;
+    justify-content: flex-end;
   }
   .subHeaderText {
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-right: 28px;
+    width: auto;
+
+    .userName {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 90px;
+      text-align: right;
+      padding-right: 32px;
+    }
+  }
+  .subHeaderTextLogin {
+    display: flex;
+    margin: 6px -36px 1px 0px;
+    a {
+      font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
+    }
+  }
+  .separator {
+    border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .subHeaderTextIcon {
-    padding-left: 23px;
-    text-decoration: none;
-    align-items: center;
-    justify-content: flex-end;
     width: auto;
+    margin-right: 16px;
   }
   .pointsRewards {
     color: ${props => props.theme.colorPalette.orange['800']};
     padding-left: 6px;
+    white-space: nowrap;
+    width: auto;
   }
   .cartCount {
-    background: ${props => props.theme.colorPalette.blue['800']};
+    background: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.primary.dark
+        : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
     margin: 1px 0px 0px -8px;
@@ -36,9 +61,6 @@ export default css`
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .rightLink {
-    border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
     box-sizing: border-box;
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 `;

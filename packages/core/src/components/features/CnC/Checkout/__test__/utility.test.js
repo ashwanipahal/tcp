@@ -1,4 +1,7 @@
+// eslint-disable-next-line import/no-unresolved
+import Router from 'next/router';
 import Utility from '../util/utility';
+// import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -24,8 +27,20 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import { fromJS } from '../../../../../../../../node_modules/immutable';
+import { isMobileApp } from '../../../../../utils';
 
-const { getOrderPointsRecalcFlag, updateCartInfo, isOrderHasPickup } = Utility;
+jest.mock('next/router', () => ({ push: jest.fn() }));
+
+// const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
+
+const {
+  getOrderPointsRecalcFlag,
+  updateCartInfo,
+  isOrderHasPickup,
+  routeToPage,
+  redirectToBilling,
+  getCreditCardType,
+} = Utility;
 
 describe('utility', () => {
   it('getOrderPointsRecalcFlag', () => {
@@ -101,5 +116,27 @@ describe('utility', () => {
       },
     });
     expect(isOrderHasPickup(cartItems)).toBe(0);
+  });
+
+  it('routeToPage', () => {
+    expect(routeToPage({}, {}));
+    expect(Router.push).toHaveBeenCalled();
+  });
+
+  it('redirectToBilling', () => {
+    const navigate = jest.fn();
+    const navigation = {
+      navigate,
+    };
+    expect(redirectToBilling(navigation));
+    if (isMobileApp()) {
+      expect(Router.push).toHaveBeenCalled();
+    } else if (navigation) {
+      navigation.navigate('Billing');
+    }
+  });
+
+  it('getCreditCardType', () => {
+    expect(getCreditCardType({ cardNumber: '', cardType: '' })).toBe(null);
   });
 });

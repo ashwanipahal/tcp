@@ -8,9 +8,10 @@ import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadio
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 
-import { getIconPath, getLocator } from '../../../../../../../utils';
+import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -163,7 +164,7 @@ class CartItemTile extends React.Component {
   getPointsColor = () => {
     const { isPlcc } = this.props;
     if (isPlcc) {
-      return 'blue.800';
+      return 'blue.B100';
     }
     return 'orange.800';
   };
@@ -260,14 +261,16 @@ class CartItemTile extends React.Component {
               chooseDiff={labels.chooseDiff}
             />
           )}
-          <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
-            <Image
-              alt="closeIcon"
-              className="close-icon-image"
-              src={getIconPath('close-icon')}
-              onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
-            />
-          </div>
+          {!isEdit && (
+            <div className={pageView === 'myBag' ? 'crossDeleteIconBag' : 'crossDeleteIconMiniBag'}>
+              <Image
+                alt="closeIcon"
+                className="close-icon-image"
+                src={getIconPath('close-icon')}
+                onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+              />
+            </div>
+          )}
         </div>
         <Row
           fullBleed
@@ -468,41 +471,48 @@ class CartItemTile extends React.Component {
               </Col>
               {this.getProductPriceList(productDetail, pageView)}
             </Row>
-            <Row className="product-detail-row label-responsive-wrapper">
-              <Col
-                className="label-responsive label-responsive-price"
-                colSize={{ large: 3, medium: 3, small: 2 }}
-              >
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs12"
-                  fontWeight={['extrabold']}
+            {!isCanada() && (
+              <Row className="product-detail-row label-responsive-wrapper">
+                <Col
+                  className="label-responsive label-responsive-price"
+                  colSize={{ large: 3, medium: 3, small: 2 }}
                 >
-                  {`${labels.points}:`}
-                </BodyCopy>
-              </Col>
-              <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 3 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs12"
-                  fontWeight={['extrabold']}
-                  color={this.getPointsColor()}
-                  dataLocator={getLocator('cart_item_points')}
-                >
-                  {productDetail.itemInfo.myPlacePoints}
-                </BodyCopy>
-              </Col>
-            </Row>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="span"
+                    fontSize="fs12"
+                    fontWeight={['extrabold']}
+                  >
+                    {`${labels.points}:`}
+                  </BodyCopy>
+                </Col>
+                <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 3 }}>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="span"
+                    fontSize="fs12"
+                    fontWeight={['extrabold']}
+                    color={this.getPointsColor()}
+                    dataLocator={getLocator('cart_item_points')}
+                  >
+                    {productDetail.itemInfo.myPlacePoints}
+                  </BodyCopy>
+                </Col>
+              </Row>
+            )}
             {this.getItemDetails(removeCartItem, productDetail, labels, pageView)}
           </Col>
         </Row>
-        {pageView === 'myBag' && (
-          <Row fullBleed>
-            <CartItemRadioButtons productDetail={productDetail} labels={labels} />
-          </Row>
-        )}
+        {pageView === 'myBag' &&
+          productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
+            <Row fullBleed>
+              <CartItemRadioButtons
+                className="cart-item-radio-buttons"
+                productDetail={productDetail}
+                labels={labels}
+              />
+            </Row>
+          )}
       </div>
     );
   }

@@ -56,13 +56,21 @@ export default css`
   .moduleH__CTALink {
     color: ${props => props.theme.colors.WHITE};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy6}px;
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy9}px;
     line-height: 20px;
     opacity: 0.8;
 
     &:hover {
       font-family: ${props => props.theme.fonts.secondaryFontBlackFamily};
       opacity: 1;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy6}px;
     }
   }
 

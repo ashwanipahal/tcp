@@ -954,20 +954,20 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         }
       }
     >
-      <Styled(BodyCopy)
-        className="free_dropdown_label"
-        color="text.primary"
-        component="span"
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      />
       <Styled(Row)
         fullBleed={true}
       >
+        <Styled(BodyCopy)
+          className="free_dropdown_label columnWrapper"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
         <Styled(Col)
           className="contact_information_form"
           colSize={
@@ -1000,7 +1000,10 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
-                    ") no-repeat right 0px bottom 6px;
+                    ") no-repeat right 0px bottom
+      ",
+                    [Function],
+                    ";
     border: 0;
     border-bottom: 1px solid ",
                     [Function],
@@ -1014,7 +1017,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     ";
     font-size: ",
                     [Function],
-                    "px;
+                    ";
     margin: 0;
     margin-bottom: ",
                     [Function],
@@ -1154,7 +1157,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           />
         </Styled(Col)>
         <Styled(Col)
-          className="contact_information_form"
+          className="contact_information_form label_zip"
           colSize={
             Object {
               "large": 6,

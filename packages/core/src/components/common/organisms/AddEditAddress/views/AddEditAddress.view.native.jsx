@@ -3,6 +3,7 @@ import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { ParentContainer } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
+import CONSTANTS from '../../AddressVerification/AddressVerification.constants';
 import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
 import AddressFormComponent from '../../AddressForm/AddressForm';
 
@@ -17,20 +18,34 @@ const AddressBook = props => {
     initialValues,
     currentForm,
     toggleAddressModal,
+    addressLine1,
+    countryState,
+    setModalHeading,
+    verificationResult,
   } = props;
+  const isValidAddress =
+    CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] ===
+    CONSTANTS.VERIFY_ADDRESS_RESULT.VALID;
+  const showVerification = currentForm === 'VerificationModal' && !!verificationResult;
+  const showAddAddress =
+    currentForm === 'AddAddress' ||
+    isValidAddress ||
+    (!verificationResult && currentForm === 'VerificationModal');
+
   return (
     <View {...props}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {currentForm === 'VerificationModal' && (
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+        {showVerification && (
           <AddressVerification
             onSuccess={submitAddressFormAction}
             heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
             onError={submitAddressFormAction}
             toggleAddressModal={toggleAddressModal}
+            setModalHeading={setModalHeading}
           />
         )}
 
-        {currentForm === 'AddAddress' && (
+        {showAddAddress && (
           <AddressFormComponent
             onSubmit={verifyAddressAction}
             addressFormLabels={addressFormLabels}
@@ -41,6 +56,9 @@ const AddressBook = props => {
             onCancel={onCancel}
             initialValues={initialValues}
             currentForm={currentForm}
+            addressLine1={addressLine1}
+            countryState={countryState}
+            setModalHeading={setModalHeading}
           />
         )}
       </ScrollView>
@@ -58,6 +76,11 @@ AddressBook.propTypes = {
   initialValues: PropTypes.shape({}),
   currentForm: PropTypes.string,
   toggleAddressModal: PropTypes.func,
+  addressLine1: PropTypes.string,
+  setAddressLine1: PropTypes.func,
+  countryState: PropTypes.string,
+  setModalHeading: PropTypes.func,
+  verificationResult: PropTypes.string,
 };
 
 AddressBook.defaultProps = {
@@ -69,6 +92,11 @@ AddressBook.defaultProps = {
   onCancel: () => null,
   initialValues: {},
   currentForm: null,
+  addressLine1: '',
+  setAddressLine1: () => {},
+  countryState: '',
+  setModalHeading: PropTypes.func,
+  verificationResult: '',
 };
 
 export default withStyles(AddressBook, ParentContainer);

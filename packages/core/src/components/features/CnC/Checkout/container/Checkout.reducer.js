@@ -20,6 +20,9 @@ const initialState = fromJS({
       deviceData: '',
       supportedByBrowser: true,
     },
+    addEditResponseAddressId: null,
+    giftCardError: null,
+    orderBalanceTotal: 0,
   },
   options: {
     shippingMethods: [],
@@ -73,8 +76,14 @@ function uiFlagReducer(checkout, action) {
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':
       return checkout.setIn(['uiFlags', 'stage'], action.payload);
-    // case 'CHECKOUT_FLAGS_SET_BILLING_VISITED':
-    //   return merge(uiFlags, { isBillingVisited: action.isBillingVisited });
+    case CheckoutConstants.CHECKOUT_FLAGS_SET_BILLING_VISITED:
+      return checkout.setIn(['uiFlags', 'isBillingVisited'], action.isBillingVisited);
+    case CheckoutConstants.SET_GIFTCARD_ERROR:
+      return checkout.setIn(['values', 'giftCardError'], action.payload);
+    case CheckoutConstants.RESET_GIFTCARD_ERROR:
+      return checkout.setIn(['values', 'giftCardError'], null);
+    case CheckoutConstants.SET_ORDER_TOTAL:
+      return checkout.setIn(['values', 'orderBalanceTotal'], action.payload);
     // case 'CHECKOUT_FLAGS_SET_REVIEW_VISTED':
     //   return merge(uiFlags, { isReviewVisited: action.payload });
     // case 'CHECKOUT_FLAGS_SET_PAYMENT_ERROR':
@@ -109,7 +118,7 @@ export default function CheckoutReducer(state = initialState, action) {
   // const uiFlags = checkout.get('uiFlags');
   switch (action.type) {
     case 'CHECKOUT_VALUES_SET_PICKUP':
-      return checkout.setIn(['values', 'pickUpContact'], action.pickUpContact);
+      return checkout.setIn(['values', 'pickUpContact'], fromJS(action.pickUpContact));
     case 'CHECKOUT_VALUES_SET_PICKUP_ALT':
       return checkout.setIn(['values', 'pickUpAlternative'], action.pickUpAlternative);
     // case 'CHECKOUT_VALUES_SET_GIFTCARDS':
@@ -119,13 +128,15 @@ export default function CheckoutReducer(state = initialState, action) {
     case 'CHECKOUT_ORDER_OPTIONS_SET_GIFT_WRAP':
       return checkout.setIn(['options', 'giftWrapOptions'], action.giftWrapOptions);
     case 'CHECKOUT_VALUES_SET_BILLING':
-      return checkout.setIn(['options', 'billing'], action.billing);
+      return checkout.setIn(['values', 'billing'], action.billing);
     // case 'CHECKOUT_VALUES_SET_SHIPPING_METHOD':
     //   return orderValues.setIn(['shipping', 'method'], action.method);
     // case 'CHECKOUT_VALUES_SET_GIFT_WRAP':
     //   return merge(orderValues, { giftWrap: action.giftWrap });
     case CheckoutConstants.CHECKOUT_VALUES_SET_SMS_UPDATES:
       return checkout.setIn(['values', 'smsInfo'], { numberForUpdates: action.phoneNumber });
+    case CheckoutConstants.SET_ON_FILE_ADDRESS_KEY:
+      return checkout.setIn(['values', 'addEditResponseAddressId'], action.payload.addressId);
     // case 'CHECKOUT_VALUES_SET_SMS_MARKETING':
     //   return orderValues.setIn(['smsInfo', 'numberForMarketing'], action.phoneNumber);
     // case 'CHECKOUT_VALUES_SET_SELECTED_SHIPPING_PHONE_NUMBER':

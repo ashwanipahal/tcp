@@ -16,7 +16,14 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
   return (
     <div className={className}>
       <div className="continue-shopping">
-        <BodyCopy component="span" fontSize="fs18" fontWeight="semibold" textAlign="left">
+        <BodyCopy
+          component="span"
+          fontSize="fs18"
+          fontWeight="semibold"
+          textAlign="left"
+          fontFamily="secondary"
+          color="gray.800"
+        >
           {labels.yourShoppingBag}
         </BodyCopy>
       </div>
@@ -76,3 +83,4 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
   );
 };
 export default withStyles(MiniBagHeader, styles);
+export { MiniBagHeader as MiniBagHeaderVanilla };

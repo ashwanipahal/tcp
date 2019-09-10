@@ -8,6 +8,7 @@ import Carousel from '../../Carousel';
 import { Image } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
+import { isGymboree, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import {
   Container,
   ButtonContainer,
@@ -16,16 +17,14 @@ import {
   DivImageCTAContainer,
   ButtonLinksContainer,
   HeaderWrapper,
-  PromoRibbonWrapperLeft,
-  PromoRibbonWrapperRight,
   MessageContainer,
   RibbonBannerHeight,
   RibbonBannerWidth,
   PromoBannerWrapper,
   HeaderView,
+  PromoRibbonWrapper,
 } from '../ModuleA.style.native';
 import config from '../../ModuleN/ModuleN.config';
-import { getScreenWidth } from '../../../../../utils/utils.app';
 
 /**
  * Module height and width.
@@ -44,40 +43,36 @@ const ribbonRightImage = require('../../../../../assets/module-a-ribbon-right.pn
 const { ctaTypes } = config;
 
 const ribbonView = ({ ribbonBanner, navigation, position }) => {
-  let ribbonConfig = {};
-  let Component;
+  let ribbonConfig = {
+    width: RibbonBannerHeight,
+    height: RibbonBannerWidth,
+    source: ribbonRightImage,
+  };
   if (position === 'right') {
     ribbonConfig = {
-      width: RibbonBannerHeight,
-      height: RibbonBannerWidth,
+      ...ribbonConfig,
       source: ribbonLeftImage,
     };
-    Component = PromoRibbonWrapperLeft;
-  } else {
-    ribbonConfig = {
-      width: RibbonBannerHeight,
-      height: RibbonBannerWidth,
-      source: ribbonRightImage,
-    };
-    Component = PromoRibbonWrapperRight;
   }
   return (
     <ContainerView>
-      <Component>
-        <Image {...ribbonConfig} />
-        <MessageContainer>
-          <PromoBanner
-            promoBanner={ribbonBanner}
-            navigation={navigation}
-            locator="moduleA_promoribbonbanner_text"
-          />
-        </MessageContainer>
-      </Component>
+      {ribbonBanner && (
+        <PromoRibbonWrapper viewdirection={position}>
+          <Image {...ribbonConfig} />
+          <MessageContainer>
+            <PromoBanner
+              promoBanner={ribbonBanner}
+              navigation={navigation}
+              locator="moduleA_promoribbonbanner_text"
+            />
+          </MessageContainer>
+        </PromoRibbonWrapper>
+      )}
     </ContainerView>
   );
 };
 
-const renderView = (item, navigation, variant, position) => {
+const renderView = (item, navigation, position) => {
   let PromoBannerComponent;
   let HeaderComponent;
   let HeaderConfig = {};
@@ -89,22 +84,23 @@ const renderView = (item, navigation, variant, position) => {
       linkedImage: [{ image }],
     },
   } = item;
-  if (variant === 'tcp') {
-    PromoBannerComponent = ContainerView;
-    HeaderComponent = ContainerView;
-    HeaderConfig = { color: 'text.primary' };
-  } else {
+  if (isGymboree()) {
     PromoBannerComponent = PromoBannerWrapper;
     HeaderComponent = HeaderView;
     HeaderConfig = { color: 'white' };
+  } else {
+    PromoBannerComponent = ContainerView;
+    HeaderComponent = ContainerView;
+    HeaderConfig = { color: 'text.primary' };
   }
 
   return (
     <ContainerView>
       <Image
         width={MODULE_WIDTH}
-        height={variant === 'tcp' ? MODULE_TCP_HEIGHT : MODULE_GYM_HEIGHT}
+        height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
+        host={LAZYLOAD_HOST_NAME.HOME}
       />
       <HeaderWrapper>
         <HeaderComponent>
@@ -133,30 +129,30 @@ const renderView = (item, navigation, variant, position) => {
         </PromoBannerComponent>
       </HeaderWrapper>
 
-      {variant === 'gym' && ribbonView({ ribbonBanner, navigation, position })}
+      {ribbonView({ ribbonBanner, navigation, position })}
     </ContainerView>
   );
 };
 
-const renderCarousel = (largeCompImageCarousel, navigation, variant, position) => {
+const renderCarousel = (largeCompImageCarousel, navigation, position) => {
   let config = {};
-  if (variant === 'tcp') {
-    config = {
-      height: MODULE_TCP_HEIGHT,
-    };
-  } else {
+  if (isGymboree()) {
     config = {
       height: MODULE_GYM_HEIGHT,
       buttonPosition: position,
     };
+  } else {
+    config = {
+      height: MODULE_TCP_HEIGHT,
+    };
   }
   return (
     <ContainerView>
-      {largeCompImageCarousel.length > 1 ? (
+      {largeCompImageCarousel && largeCompImageCarousel.length > 1 ? (
         <Carousel
           {...config}
           data={largeCompImageCarousel}
-          renderItem={item => renderView(item, navigation, variant, position)}
+          renderItem={item => renderView(item, navigation, position)}
           width={MODULE_WIDTH}
           carouselConfig={{
             autoplay: true,
@@ -165,9 +161,7 @@ const renderCarousel = (largeCompImageCarousel, navigation, variant, position) =
           overlap
         />
       ) : (
-        <View>
-          {renderView({ item: largeCompImageCarousel[0] }, navigation, variant, position)}
-        </View>
+        <View>{renderView({ item: largeCompImageCarousel[0] }, navigation, position)}</View>
       )}
     </ContainerView>
   );
@@ -209,7 +203,7 @@ const ModuleA = (props: Props) => {
 
   return (
     <Container>
-      {renderCarousel(largeCompImageCarousel, navigation, 'tcp', 'left')}
+      {renderCarousel(largeCompImageCarousel, navigation, 'left')}
 
       {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
@@ -220,7 +214,7 @@ const ModuleA = (props: Props) => {
       {ctaType === 'stackedCTAList' && (
         <ContainerView>
           <Border background="gray" />
-          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'gray')}
+          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
           <Border background="gray" />
         </ContainerView>
       )}

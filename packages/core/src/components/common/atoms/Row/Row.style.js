@@ -38,6 +38,9 @@ const StyledRow = css`
   > *:last-child {
     margin-right: 0;
   }
+  &.content-wrapper {
+    margin: 0 auto;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

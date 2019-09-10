@@ -9,6 +9,10 @@ export default css`
   }
   .padding-left-10 {
     padding-left: 4px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 150px;
+      display: inline-flex;
+    }
   }
   .padding-left-6 {
     padding-left: 6px;
@@ -90,6 +94,13 @@ export default css`
     padding-top: 0px;
   }
 
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .crossDeleteIconBag {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
   .product-detail {
     display: flex;
     flex-wrap: wrap;
@@ -106,6 +117,12 @@ export default css`
 
   .unavailable-error {
     padding-top: 0px;
+    div {
+      margin-right: 0px;
+      margin-left: 0px;
+      display: inline;
+      width: 100%;
+    }
   }
 
   .product-detail-bag {
@@ -188,7 +205,7 @@ export default css`
       }
 
       .responsive-edit-css {
-        padding-top: 2px;
+        padding-top: 4px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
@@ -275,16 +292,32 @@ export default css`
   }
 
   .parent- {
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    bottom: 17px;
-    right: 2px;
-    width: auto;
+    padding-bottom: 0px;
+    .save-for-later-label {
+      right: -57px;
+      position: absolute;
+      bottom: 17px;
+    }
+  }
+
+  .parent-myBag {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: 0px;
+    }
   }
 
   .tile-header {
     position: relative;
+  }
+
+  .cart-item-radio-buttons {
+    margin-top: 23px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 19px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 27px;
+    }
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

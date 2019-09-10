@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
+
 import TextBox from '../../../../../../common/atoms/TextBox';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -10,7 +11,6 @@ import {
   ButtonWrapper,
   AlreadyAccountWrapper,
   PasswordWrapper,
-  HideShowField,
   ConfirmPasswordWrapper,
   ConfirmHideShowField,
 } from '../styles/CreateAccountForm.style.native';
@@ -19,6 +19,7 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
 
 class CreateAccountForm extends PureComponent<Props> {
   onSaveMyPlaceRewards = value => {
@@ -47,6 +48,7 @@ class CreateAccountForm extends PureComponent<Props> {
       hideShowPwd,
       onConfirmPwdHideShowClick,
       confirmHideShowPwd,
+      getTouchStatus,
     } = this.props;
     return (
       <View {...this.props}>
@@ -110,7 +112,7 @@ class CreateAccountForm extends PureComponent<Props> {
               secureTextEntry={!hideShowPwd}
             />
 
-            <HideShowField>
+            <ConfirmHideShowField>
               <Field
                 name="hide-show-pwd"
                 component={InputCheckbox}
@@ -124,7 +126,7 @@ class CreateAccountForm extends PureComponent<Props> {
                 onClick={onPwdHideShowClick}
                 hideCheckboxIcon
               />
-            </HideShowField>
+            </ConfirmHideShowField>
           </PasswordWrapper>
           <ConfirmPasswordWrapper>
             <Field
@@ -155,46 +157,23 @@ class CreateAccountForm extends PureComponent<Props> {
 
           {/* CHECKBOXES */}
           <Field
-            name="saveMyPlaceRewards"
-            component={InputCheckbox}
-            dataLocator="saveMyPlaceRewards"
-            disabled={false}
-            rightText={labels.registration.lbl_createAccount_saveRewards}
-            onClick={this.onSaveMyPlaceRewards}
-          />
-          <Field
+            inputVariation="inputVariation-1"
             name="iAgree"
             component={InputCheckbox}
             dataLocator="iAgree"
             disabled={false}
-            rightText={labels.registration.lbl_createAccount_termsConditions}
+            rightText={`${labels.registration.lbl_createAccount_termsConditions_app} ${
+              labels.registration.lbl_createAccount_termsConditions_1_app
+            }`}
             marginTop={13}
           />
-          <Field
-            name="useTouchID"
-            component={InputCheckbox}
-            dataLocator="useTouchID"
-            disabled={false}
-            marginTop={13}
-            rightText={labels.registration.lbl_createAccount_useTouchId}
-            onClick={this.onUseTouchID}
-          />
-          <Field
-            name="useFaceID"
-            component={InputCheckbox}
-            dataLocator="useFaceID"
-            disabled={false}
-            rightText={labels.registration.lbl_createAccount_useFaceId}
-            marginTop={13}
-            onClick={this.onUseFaceID}
-          />
+          <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           <ButtonWrapper>
             <CustomButton
               text={labels.registration.lbl_createAccount_createAccount}
               buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
-              color="white"
             />
           </ButtonWrapper>
           <AlreadyAccountWrapper>

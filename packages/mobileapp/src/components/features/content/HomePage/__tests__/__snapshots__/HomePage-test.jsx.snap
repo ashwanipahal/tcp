@@ -1,60 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePageView should render correctly 1`] = `
-<ScrollViewMock>
-  <SlotA
-    className="moduleD"
+<LazyloadScrollView
+  horizontal={false}
+  name="lazyload-home"
+  recycle={true}
+  recycleDistance={5336}
+  renderDistance={0}
+>
+  <HomePageSlots
+    modules={
+      Object {
+        "moduleA": [Function],
+        "moduleB": [Function],
+        "moduleD": [Function],
+        "moduleH": [Function],
+        "moduleK": [Function],
+        "moduleL": [Function],
+        "moduleN": [Function],
+      }
+    }
     navigation={
       Object {
         "getParam": [Function],
       }
     }
   />
-  <SlotB
-    className="moduleH"
+  <ModuleB
     navigation={
       Object {
         "getParam": [Function],
       }
     }
   />
-  <SlotC
+  <Connect(GetCandid)
     navigation={
       Object {
         "getParam": [Function],
       }
     }
   />
-  <SlotD
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <SlotE
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <SlotF
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <Styled(CustomButton)
+  <Styled(WithTheme(CustomButton))
     buttonVariation="variable-width"
-    customStyle={Object {}}
-    disableButton={false}
     fullWidth={true}
-    locator=""
     onPress={[Function]}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
     text="PLP Page"
-    url=""
   />
-</ScrollViewMock>
+</LazyloadScrollView>
 `;

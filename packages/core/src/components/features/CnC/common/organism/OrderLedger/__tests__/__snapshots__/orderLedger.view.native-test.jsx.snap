@@ -17,7 +17,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
   background-color: ",
           [Function],
           ";
-  padding: 23px 1px 32px;
+  padding: 23px 1px 21px;
 
   .rowMargin {
     margin-bottom: 8px;
@@ -37,6 +37,16 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
     position: relative;
     left: 5px;
     top: 2px;
+  }
+  .tooltip-bubble {
+    left: 100%;
+    ::after {
+      right: 42%;
+    }
+
+    ::before {
+      right: 39%;
+    }
   }
 ",
           ";

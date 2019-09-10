@@ -50,10 +50,6 @@ describe('AddressVerification component', () => {
     it('should call onSuccess prop with user address', () => {
       expect(onSuccessSpy.mock.calls[0][0]).toEqual(userAddress);
     });
-
-    it('should call resetVerifyAddressAction props', () => {
-      expect(resetVerifyAddressActionSpy).toBeCalled();
-    });
   });
 
   describe('for invalid address', () => {
@@ -68,7 +64,7 @@ describe('AddressVerification component', () => {
         heading,
         userAddress,
         suggestedAddress,
-        verificationResult: '',
+        verificationResult: 'AE',
         labels: { verifyAddressLabels: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
@@ -95,14 +91,14 @@ describe('AddressVerification component', () => {
       const props = {
         heading,
         userAddress,
-        verificationResult: '',
+        verificationResult: 'AE',
         labels: { verifyAddressLabels: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
       component = shallow(<AddressVerificationVanilla {...props} />);
       component.setProps({
-        verificationResult: 'AE',
+        verificationResult: 'AE10',
       });
     });
 
@@ -112,6 +108,50 @@ describe('AddressVerification component', () => {
 
     it('should show input radio', () => {
       expect(component.instance().showInput).toEqual(true);
+    });
+  });
+
+  describe('#instances', () => {
+    let component;
+    let toggleAddressModalSpy;
+    let resetVerifyAddressActionSpy;
+
+    beforeEach(() => {
+      toggleAddressModalSpy = jest.fn();
+      resetVerifyAddressActionSpy = jest.fn();
+      const props = {
+        heading,
+        userAddress,
+        suggestedAddress: userAddress,
+        verificationResult: '',
+        labels: { verifyAddressLabels: {} },
+        toggleAddressModal: toggleAddressModalSpy,
+        resetVerifyAddressAction: resetVerifyAddressActionSpy,
+      };
+      component = shallow(<AddressVerificationVanilla {...props} />);
+    });
+
+    it('#onClose should call toggleAddressModal if prop is present', () => {
+      component.instance().onClose();
+      expect(toggleAddressModalSpy).toBeCalled();
+    });
+
+    it('#onClose should call resetVerifyAddressAction if toggleAddressModal prop is not present', () => {
+      component.setProps({
+        toggleAddressModal: false,
+      });
+      component.instance().onClose();
+      expect(resetVerifyAddressActionSpy).toBeCalled();
+    });
+
+    it('#handleUserAddress should set selectAddress to userAddress', () => {
+      component.instance().handleUserAddress();
+      expect(component.state('selectAddress')).toBe('userAddress');
+    });
+
+    it('#handleSuggestAddress should set selectAddress to suggestedAddress', () => {
+      component.instance().handleSuggestAddress();
+      expect(component.state('selectAddress')).toBe('suggestedAddress');
     });
   });
 });

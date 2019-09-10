@@ -5,7 +5,7 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.medium} {
     .pickupField {
-      margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
     .fieldLastName,
     .fieldNumber {
@@ -15,7 +15,7 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.smallMax} {
     .pickupField {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
     .fieldFirstName,
     .fieldEmail {

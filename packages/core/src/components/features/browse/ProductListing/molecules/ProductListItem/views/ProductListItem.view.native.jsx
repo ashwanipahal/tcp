@@ -22,7 +22,10 @@ import {
   PromotionalMessageContainer,
   PromotionalMessage,
   AddToBagContainer,
+  PromotionalMessagePostfix,
+  OfferPriceAndFavoriteIconContainer,
 } from '../styles/ProductListItem.style.native';
+import { getFormattedLoyaltyText } from '../../ProductList/utils/productsCommonUtils';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
@@ -49,6 +52,8 @@ const ListItem = props => {
     onFavorite,
     currencyExchange,
     theme,
+    currencySymbol,
+    isPlcc,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
@@ -59,21 +64,21 @@ const ListItem = props => {
   return (
     <ListContainer>
       <RenderTopBadge1 text={badge1} />
-      <ImageSection
+      <ImageSection item={item} selectedColorIndex={selectedColorIndex} />
+      <RenderBadge2 text={badge2} />
+      <RenderPricesSection
         onFavorite={onFavorite}
-        item={item}
-        selectedColorIndex={selectedColorIndex}
         favoriteIconColor={favoriteIconColor}
         favoriteIconSize={favoriteIconSize}
+        miscInfo={miscInfo}
+        currencyExchange={currencyExchange}
+        currencySymbol={currencySymbol}
       />
-      <RenderBadge2 text={badge2} />
-      <RenderPricesSection miscInfo={miscInfo} currencyExchange={currencyExchange} />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      <RenderPromotionalMessage text={loyaltyPromotionMessage} />
+      <RenderPromotionalMessage isPlcc={isPlcc} text={loyaltyPromotionMessage} />
       <AddToBagContainer>
         <CustomButton
-          color="white"
           fill="BLUE"
           type="submit"
           buttonVariation="variable-width"
@@ -101,34 +106,17 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({
-  item,
-  onFavorite,
-  selectedColorIndex,
-  favoriteIconColor,
-  favoriteIconSize,
-}) => {
+const ImageSection = ({ item, selectedColorIndex }) => {
   return (
     <View>
       <ImageCarousel item={item} selectedColorIndex={selectedColorIndex} />
-      <FavoriteIconContainer>
-        <CustomIcon
-          name={ICON_NAME.favorite}
-          size={favoriteIconSize}
-          color={favoriteIconColor}
-          onPress={onFavorite}
-        />
-      </FavoriteIconContainer>
     </View>
   );
 };
 
 ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
-  onFavorite: PropTypes.func.isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
-  favoriteIconColor: PropTypes.string.isRequired,
-  favoriteIconSize: PropTypes.string.isRequired,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -144,17 +132,34 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
-  const { miscInfo, currencyExchange } = values;
+  const {
+    miscInfo,
+    currencyExchange,
+    currencySymbol,
+    onFavorite,
+    favoriteIconColor,
+    favoriteIconSize,
+  } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
-  const listPriceForColor = listPrice * currencyExchange[0].exchangevalue;
+  const listPriceForColor = `${currencySymbol}${listPrice * currencyExchange[0].exchangevalue}`;
   // calculate default offer price
-  const offerPriceForColor = offerPrice * currencyExchange[0].exchangevalue;
+  const offerPriceForColor = `${currencySymbol}${offerPrice * currencyExchange[0].exchangevalue}`;
   return (
     <PricesSection>
-      <ListPrice accessibilityRole="text" accessibilityLabel={listPriceForColor}>
-        {listPriceForColor}
-      </ListPrice>
+      <OfferPriceAndFavoriteIconContainer>
+        <ListPrice accessibilityRole="text" accessibilityLabel={listPriceForColor}>
+          {listPriceForColor}
+        </ListPrice>
+        <FavoriteIconContainer>
+          <CustomIcon
+            name={ICON_NAME.favorite}
+            size={favoriteIconSize}
+            color={favoriteIconColor}
+            onPress={onFavorite}
+          />
+        </FavoriteIconContainer>
+      </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
         <ListOfferPrice accessibilityRole="text" accessibilityLabel={offerPriceForColor}>
           {offerPriceForColor}
@@ -179,17 +184,22 @@ const RenderTitle = ({ text }) => {
 
 RenderTitle.propTypes = TextProps;
 
-const RenderPromotionalMessage = ({ text }) => {
+const RenderPromotionalMessage = ({ text, isPlcc }) => {
   return (
     <PromotionalMessageContainer>
-      <PromotionalMessage accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
-        {text}
+      <PromotionalMessage isPlcc={isPlcc} accessibilityRole="text" numberOfLines={2}>
+        {text && getFormattedLoyaltyText(text)[0]}
+        {text && (
+          <PromotionalMessagePostfix>
+            {` on${getFormattedLoyaltyText(text)[1]}`}
+          </PromotionalMessagePostfix>
+        )}
       </PromotionalMessage>
     </PromotionalMessageContainer>
   );
 };
 
-RenderPromotionalMessage.propTypes = TextProps;
+RenderPromotionalMessage.propTypes = { ...TextProps, isPlcc: PropTypes.bool };
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
@@ -199,7 +209,9 @@ ListItem.propTypes = {
   loyaltyPromotionMessage: PropTypes.string,
   onAddToBag: PropTypes.func,
   onFavorite: PropTypes.func,
+  isPlcc: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 ListItem.defaultProps = {
@@ -210,6 +222,11 @@ ListItem.defaultProps = {
   loyaltyPromotionMessage: '',
   onAddToBag: () => {},
   onFavorite: () => {},
+  isPlcc: false,
+};
+
+RenderPromotionalMessage.defaultProps = {
+  isPlcc: false,
 };
 
 export default withStyles(withTheme(ListItem), styles);

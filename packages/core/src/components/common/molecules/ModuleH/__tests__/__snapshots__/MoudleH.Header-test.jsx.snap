@@ -4,7 +4,7 @@ exports[`ModuleH Header Component renders correctly 1`] = `
 <Fragment>
   <Styled(HeadingStyle)
     HeadingLarge="three"
-    HeadingcolorSm="primary"
+    HeadingcolorSm="secondary"
     className="moduleH__header"
     data-locator="moduleH_header_text_1"
     key="0"
@@ -20,7 +20,7 @@ exports[`ModuleH Header Component renders correctly 1`] = `
   </Styled(HeadingStyle)>
   <Styled(HeadingStyle)
     HeadingLarge="three"
-    HeadingcolorSm="primary"
+    HeadingcolorSm="secondary"
     className="moduleH__header"
     data-locator="moduleH_header_text_2"
     key="1"

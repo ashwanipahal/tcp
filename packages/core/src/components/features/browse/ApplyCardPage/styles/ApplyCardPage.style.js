@@ -5,7 +5,7 @@ export default styled.div`
   padding: 0px 14px;
 
   @media ${props => props.theme.mediaQuery.large} {
-    padding-left: 200px;
+    padding-left: ${props => (props.isPLCCModalFlow ? `0px` : `200px`)};
   }
 
   .iAgree_terms_conditions {
@@ -26,6 +26,7 @@ export default styled.div`
   }
 
   .contact_information_form {
+    text-align: left;
     > label {
       > p {
         margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};

@@ -16,20 +16,24 @@ class CheckoutFooter extends React.PureComponent {
       disableNext,
       backLinkHandler,
       disableBackLink,
+      hideBackLink,
+      nextHandler,
     } = this.props;
     return (
       <div className={className}>
-        {!!backLinkText && (
-          <Button
-            disabled={disableBackLink}
-            type="button"
-            className="back-link"
-            onClick={backLinkHandler}
-          >
-            <Image src={carrotLeft} className="back-link-image" />
-            {backLinkText}
-          </Button>
-        )}
+        <div className="back-space">
+          {hideBackLink && (
+            <Button
+              disabled={disableBackLink}
+              type="button"
+              className="back-link"
+              onClick={backLinkHandler}
+            >
+              <Image src={carrotLeft} className="back-link-image" />
+              {backLinkText}
+            </Button>
+          )}
+        </div>
         <Button
           disabled={disableNext}
           type="submit"
@@ -38,6 +42,7 @@ class CheckoutFooter extends React.PureComponent {
           fontWeight="extrabold"
           buttonVariation="variable-width"
           fill="BLUE"
+          onClick={nextHandler}
         >
           {nextButtonText}
         </Button>
@@ -52,7 +57,13 @@ CheckoutFooter.propTypes = {
   nextButtonText: PropTypes.string.isRequired,
   disableNext: PropTypes.bool.isRequired,
   backLinkHandler: PropTypes.func.isRequired,
+  nextHandler: PropTypes.oneOf([PropTypes.func, undefined]).isRequired,
   disableBackLink: PropTypes.bool.isRequired,
+  hideBackLink: PropTypes.bool,
+};
+
+CheckoutFooter.defaultProps = {
+  hideBackLink: false,
 };
 
 export default withStyles(CheckoutFooter, style);

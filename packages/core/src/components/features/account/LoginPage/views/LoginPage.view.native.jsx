@@ -15,6 +15,18 @@ import {
 } from '../container/loginUtils/keychain.utils.native';
 
 class LoginView extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      setEmailid: '',
+      getTouchStatus: false,
+    };
+    isSupportedTouch().then(biometryType => {
+      this.setState({ getTouchStatus: biometryType });
+    });
+  }
+
   componentDidMount() {
     const { onSubmit } = this.props;
     getUserLoginDetails().then(credentials => {
@@ -22,6 +34,7 @@ class LoginView extends React.PureComponent {
         emailAddress: credentials.username,
         password: credentials.password,
       };
+      this.setState({ setEmailid: credentials.username });
       if (credentials) {
         isSupportedTouch().then(techAvailable => {
           if (techAvailable) {
@@ -40,10 +53,11 @@ class LoginView extends React.PureComponent {
     const { onSubmit } = this.props;
     resetTouchPassword();
     setUserLoginDetails(formdata.emailAddress, formdata.password);
+
     onSubmit(formdata);
 
-    isSupportedTouch().then(touchAvailable => {
-      if (touchAvailable && formdata.userTouchId) {
+    isSupportedTouch().then(biometryType => {
+      if (biometryType && (formdata.userTouchId || formdata.FaceId)) {
         touchIDCheck();
       }
     });
@@ -66,10 +80,15 @@ class LoginView extends React.PureComponent {
       variation,
       handleContinueAsGuest,
       loginError,
+      showCheckoutModal,
+      showLogin,
     } = this.props;
+    const { setEmailid, getTouchStatus } = this.state;
     return (
-      <ScrollViewStyle>
+      <ScrollViewStyle keyboardShouldPersistTaps="handled">
         <LoginSection
+          getTouchStatus={getTouchStatus}
+          setEmailid={setEmailid}
           onSubmit={this.onSubmitHandler}
           labels={labels}
           loginError={loginError}
@@ -86,6 +105,8 @@ class LoginView extends React.PureComponent {
           navigation={navigation}
           variation={variation}
           handleContinueAsGuest={handleContinueAsGuest}
+          showCheckoutModal={showCheckoutModal}
+          showLogin={showLogin}
         />
       </ScrollViewStyle>
     );
@@ -108,11 +129,15 @@ LoginView.propTypes = {
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
   loginError: PropTypes.bool.isRequired,
+  showCheckoutModal: PropTypes.func,
+  showLogin: PropTypes.func,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   navigation: {},
+  showCheckoutModal: () => {},
+  showLogin: () => {},
 };
 
 export default LoginView;

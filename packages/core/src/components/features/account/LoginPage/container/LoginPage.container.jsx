@@ -15,6 +15,7 @@ import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
+import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 import {
   getLoginError,
   shouldShowRecaptcha,
@@ -50,9 +51,13 @@ class LoginPageContainer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const { resetLoginState, loginError } = this.props;
+    const { resetLoginState, loginError, resetAccountOverViewState } = this.props;
     if (loginError) {
       resetLoginState();
+    }
+
+    if (resetAccountOverViewState) {
+      resetAccountOverViewState();
     }
   }
 
@@ -84,6 +89,9 @@ class LoginPageContainer extends React.PureComponent {
       onRequestClose,
       variation,
       handleContinueAsGuest,
+      formErrorMessage,
+      showCheckoutModal,
+      showLogin,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -111,6 +119,9 @@ class LoginPageContainer extends React.PureComponent {
         variation={variation}
         handleContinueAsGuest={handleContinueAsGuest}
         loginError={loginError}
+        formErrorMessage={formErrorMessage}
+        showCheckoutModal={showCheckoutModal}
+        showLogin={showLogin}
       />
     );
   }
@@ -140,6 +151,10 @@ LoginPageContainer.propTypes = {
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func,
   toastMessage: PropTypes.string.isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
+  showCheckoutModal: PropTypes.func.isRequired,
+  showLogin: PropTypes.func.isRequired,
+  resetAccountOverViewState: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -154,6 +169,7 @@ LoginPageContainer.defaultProps = {
   navigation: {},
   currentForm: '',
   queryParams: {},
+  resetAccountOverViewState: () => {},
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -192,6 +208,7 @@ const mapStateToProps = state => {
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
     labels: getLabels(state),
+    formErrorMessage: getFormValidationErrorMessages(state),
   };
 };
 

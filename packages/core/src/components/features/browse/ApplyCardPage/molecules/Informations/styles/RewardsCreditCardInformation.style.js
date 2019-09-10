@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export default styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: ${props => (props.isPLCCModalFlow ? props.theme.spacing.LAYOUT_SPACING.MED : `0px`)};
 
   @media ${props => props.theme.mediaQuery.medium} {
     flex-direction: row;
@@ -28,12 +29,16 @@ export default styled.div`
     }
 
   .rewards_card_instruction {
+    text-align: left;
     @media ${props => props.theme.mediaQuery.medium} and ${props =>
   props.theme.mediaQuery.largeMax} {
       padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     }
-
+    
     @media ${props => props.theme.mediaQuery.large} {
-      padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+      padding-left: ${props =>
+        props.isPLCCModalFlow
+          ? props.theme.spacing.LAYOUT_SPACING.XL
+          : props.theme.spacing.LAYOUT_SPACING.MED};
     }
   }`;
