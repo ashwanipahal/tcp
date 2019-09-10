@@ -6,34 +6,6 @@ import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
 
 export default class CheckoutPage extends React.PureComponent {
-  onPickUpSubmit = data => {
-    const { onPickupSubmit } = this.props;
-    const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
-    const { hasAlternatePickup } = data.pickUpAlternate;
-    const { navigation } = this.props;
-    const params = {
-      formData: {
-        pickUpContact: {
-          firstName,
-          lastName,
-          phoneNumber,
-          emailAddress,
-          smsInfo: {
-            wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
-          },
-        },
-        hasAlternatePickup,
-        pickUpAlternate: {
-          firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-          lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-          emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-        },
-      },
-      navigation,
-    };
-    onPickupSubmit(params);
-  };
-
   submitShippingSection = data => {
     const { submitShippingSection, navigation } = this.props;
     submitShippingSection({ ...data, navigation });
@@ -60,7 +32,7 @@ export default class CheckoutPage extends React.PureComponent {
       pickupInitialValues,
       availableStages,
       labels,
-      // setCheckoutStage,
+      onPickupSubmit,
     } = this.props;
 
     const { routeTo } = navigation.state.params;
@@ -80,7 +52,7 @@ export default class CheckoutPage extends React.PureComponent {
             isAlternateUpdateChecked={isAlternateUpdateChecked}
             pickUpLabels={pickUpLabels}
             smsSignUpLabels={smsSignUpLabels}
-            onPickUpSubmit={this.onPickUpSubmit}
+            onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             availableStages={availableStages}
           />
