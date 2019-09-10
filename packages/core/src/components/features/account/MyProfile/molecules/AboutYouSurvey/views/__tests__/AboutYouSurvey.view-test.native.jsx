@@ -92,7 +92,7 @@ describe('AboutYouSurvey', () => {
     const tree = shallow(<AboutYouSurvey {...props} />);
     const componentInstance = tree.instance();
     componentInstance.onSelection('Parent', 'question1');
-    expect(tree.state('savedStageSelected')).toBeTruthy();
+    expect(tree.state('savedStageSelected')).toBeFalsy();
   });
 
   it('calling selectFirstStage method', () => {

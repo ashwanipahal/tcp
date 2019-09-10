@@ -23,21 +23,25 @@ exports[`AboutYouSurveyContainer should render correctly 1`] = `
           "multiSelect": false,
           "options": Array [
             Object {
+              "dataLocator": "moreaboutyou-question-parentbtn",
               "id": "shopper1",
               "selected": false,
               "value": undefined,
             },
             Object {
+              "dataLocator": "moreaboutyou-question-grandparentbtn",
               "id": "shopper2",
               "selected": false,
               "value": undefined,
             },
             Object {
+              "dataLocator": "moreaboutyou-question-giftingforothersbtn",
               "id": "shopper3",
               "selected": false,
               "value": undefined,
             },
             Object {
+              "dataLocator": "moreaboutyou-question-prefernottoanswerbtn",
               "id": "shopper4",
               "selected": false,
               "value": undefined,
@@ -57,26 +61,31 @@ exports[`AboutYouSurveyContainer should render correctly 1`] = `
           "multiSelect": true,
           "options": Array [
             Object {
+              "dataLocator": "moreaboutyou-question-girlbtn",
               "id": "shopper1",
               "selected": false,
               "value": undefined,
             },
             Object {
+              "dataLocator": "moreaboutyou-question-boybtn",
               "id": "shopper2",
               "selected": false,
               "value": undefined,
             },
             Object {
+              "dataLocator": "moreaboutyou-question-toddlergirlbtn",
               "id": "shopper3",
               "selected": false,
               "value": undefined,
             },
             Object {
+              "dataLocator": "moreaboutyou-question-toddlerboybtn",
               "id": "shopper4",
               "selected": false,
               "value": undefined,
             },
             Object {
+              "dataLocator": "moreaboutyou-question-babybtn",
               "id": "shopper5",
               "selected": false,
               "value": undefined,

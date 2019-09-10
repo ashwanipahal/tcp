@@ -12,15 +12,19 @@ import ProductsOperator from './productsRequestFormatter';
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
+const getUrl = url => {
+  return url
+    ? {
+        pathname: url,
+      }
+    : window.location;
+};
 export function* fetchPlpProducts({ payload }) {
   try {
     const { url, formData, sortBySelected } = payload;
-    const location = url
-      ? {
-          pathname: url,
-        }
-      : window.location;
+    const location = getUrl(url);
     let state = yield select();
+    yield put(setPlpLoadingState({ isLoadingMore: true }));
     let reqObj = operatorInstance.getProductListingBucketedData(
       state,
       location,
@@ -43,6 +47,8 @@ export function* fetchPlpProducts({ payload }) {
         plpProducts.loadedProductsPages[0].length
       ) {
         operatorInstance.updateBucketingConfig(plpProducts);
+        yield put(setListingFirstProductsPage({ ...plpProducts }));
+      } else if (plpProducts) {
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }

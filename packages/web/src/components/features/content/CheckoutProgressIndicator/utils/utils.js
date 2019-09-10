@@ -1,7 +1,7 @@
 import Router from 'next/router';
 import CHECKOUT_STAGES, { CHECKOUT_SECTIONS } from '../../../../../pages/App.constants';
 
-const isOrderHasShipping = cartItems => {
+export const isOrderHasShipping = cartItems => {
   return cartItems && cartItems.filter(item => !item.getIn(['miscInfo', 'store'])).size;
 };
 
