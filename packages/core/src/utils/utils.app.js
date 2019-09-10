@@ -278,19 +278,15 @@ export const validateExternalUrl = url => {
 
 /**
  * @function resetNavigationStack
- * This function resets data from navigation stack
+ * This function resets data from navigation stack and navigates to Home
  *
  */
 export const resetNavigationStack = navigation => {
-  const { state } = navigation;
-  const { routes, index: activeRouteIndex } = state;
   navigation.dispatch(
     StackActions.reset({
       index: 0,
       key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: routes[activeRouteIndex].routes[0].routeName }),
-      ],
+      actions: [NavigationActions.navigate({ routeName: 'Home' })],
     })
   );
 };
