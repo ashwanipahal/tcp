@@ -123,28 +123,6 @@ class LoginForm extends React.PureComponent<Props> {
           </ShowHideWrapper>
           <View style={styles.inputCheckBoxStyle}>
             <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
-            {/* {getTouchStatus === 'TouchID' ||
-              (getTouchStatus === true && (
-                <Field
-                  name="userTouchId"
-                  component={InputCheckbox}
-                  dataLocator="rememberMe"
-                  disabled={false}
-                  marginBottom={13}
-                  rightText={getLabelValue(labels, 'lbl_login_touch_id', 'login')}
-                />
-              ))}
-
-            {getTouchStatus === 'FaceID' && (
-              <Field
-                name="FaceId"
-                component={InputCheckbox}
-                dataLocator="FaceId"
-                disabled={false}
-                marginBottom={13}
-                rightText={getLabelValue(labels, 'lbl_login_face_id', 'login')}
-              />
-            )} */}
           </View>
 
           <CustomButton
