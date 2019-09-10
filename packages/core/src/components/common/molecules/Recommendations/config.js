@@ -13,14 +13,15 @@ export default {
     slidesToShow: 4,
     responsive: [
       {
-        breakpoint: breakpoints.values.lg,
+        breakpoint: breakpoints.values.lg - 1,
         settings: {
-          arrows: false,
+          slidesToShow: 3,
         },
       },
       {
-        breakpoints: breakpoints.values.sm,
+        breakpoint: breakpoints.values.sm - 1,
         settings: {
+          arrows: false,
           slidesToShow: 1,
         },
       },
